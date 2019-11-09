@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Plumber - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390899:npOEI8wbJjv7hBC7JXKbAeFyzxJpYzgGaawq7Nwj+ns=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Little%20John%20aspires%20to%20become%20a%20plumber%21%20Today%20he%20has%20drawn%20a%20grid%20consisting%20of%20%24%20n%20%24%20rows%20and%20%24%20m%20%24%20columns%2C%20consisting%20of%20%24%20n%5Cu00d7m%20%24%20square%20cells.%5Cn%5CnIn%20each%20cell%20he%20will%20draw%20a%20pipe%20segment.%20He%20can%20only%20draw%20four%20types%20of%20segments%20numbered%20from%20%24%201%20%24%20to%20%24%204%20%24%20%2C%20illustrated%20as%20follows%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115C%5C%2F5684a4b13082e2a77497ef1a54b7d0e8d10cf63a.png%29Each%20pipe%20segment%20has%20two%20ends%2C%20illustrated%20by%20the%20arrows%20in%20the%20picture%20above.%20For%20example%2C%20segment%20%24%201%20%24%20has%20ends%20at%20top%20and%20left%20side%20of%20it.%5Cn%5CnLittle%20John%20considers%20the%20piping%20system%20to%20be%20leaking%20if%20there%20is%20at%20least%20one%20pipe%20segment%20inside%20the%20grid%20whose%20end%20is%20not%20connected%20to%20another%20pipe%27s%20end%20or%20to%20the%20border%20of%20the%20grid.%20The%20image%20below%20shows%20an%20example%20of%20leaking%20and%20non-leaking%20systems%20of%20size%20%24%201%5Cu00d72%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115C%5C%2F27e564b3757fd632050e90769548f2507e6d8614.png%29Now%2C%20you%20will%20be%20given%20the%20grid%20that%20has%20been%20partially%20filled%20by%20Little%20John.%20Each%20cell%20will%20either%20contain%20one%20of%20the%20four%20segments%20above%2C%20or%20be%20empty.%20Find%20the%20number%20of%20possible%20different%20non-leaking%20final%20systems%20after%20Little%20John%20finishes%20filling%20all%20of%20the%20empty%20cells%20with%20pipe%20segments.%20Print%20this%20number%20modulo%20%24%201000003%20%24%20%28%20%24%2010%5E%7B6%7D%2B3%20%24%20%29.%5Cn%5CnNote%20that%20rotations%20or%20flipping%20of%20the%20grid%20are%20not%20allowed%20and%20so%20two%20configurations%20that%20are%20identical%20only%20when%20one%20of%20them%20has%20been%20rotated%20or%20flipped%20either%20horizontally%20or%20vertically%20are%20considered%20two%20different%20configurations.%22%2C%22inputFormat%22%3A%22The%20first%20line%20will%20contain%20two%20single-space%20separated%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%2Cn%5Cu00b7m%3C%3D5%5Cu00b710%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20and%20columns%20respectively.%20Then%20%24%20n%20%24%20lines%20follow%2C%20each%20contains%20exactly%20%24%20m%20%24%20characters%20%5Cu2014%20the%20description%20of%20the%20grid.%20Each%20character%20describes%20a%20cell%20and%20is%20either%20one%20of%20these%3A%5Cn%5Cn-%20%5C%221%5C%22%20-%20%5C%224%5C%22%20%5Cu2014%20a%20pipe%20segment%20of%20one%20of%20four%20types%20as%20described%20above%5Cn-%20%5C%22.%5C%22%20%5Cu2014%20an%20empty%20cell%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20denoting%20the%20number%20of%20possible%20final%20non-leaking%20pipe%20systems%20modulo%20%24%201000003%20%24%20%28%20%24%2010%5E%7B6%7D%2B3%20%24%20%29.%20If%20there%20are%20no%20such%20configurations%2C%20print%20%24%200%20%24%20.%22%2C%22samples%22%3A%5B%5B%222%202%5Cn13%5Cn..%5Cn%22%2C%222%5Cn%22%5D%2C%5B%223%201%5Cn1%5Cn4%5Cn.%5Cn%22%2C%220%5Cn%22%5D%2C%5B%222%202%5Cn3.%5Cn.1%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22For%20the%20first%20example%2C%20the%20initial%20configuration%20of%20the%20grid%20is%20as%20follows.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115C%5C%2Fea03cb91df64d965734fe547ca6374a2eb82152f.png%29The%20only%20two%20possible%20final%20non-leaking%20pipe%20configurations%20are%20as%20follows%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115C%5C%2F61cdf177228590fa8ab090a556a9fd6e592dd21d.png%29%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115C%5C%2F023c7b7445c5e47c887c46cd5386151bace1eae5.png%29For%20the%20second%20example%2C%20the%20initial%20grid%20is%20already%20leaking%2C%20so%20there%20will%20be%20no%20final%20grid%20that%20is%20non-leaking.%5Cn%5CnFor%20the%20final%20example%2C%20there%27s%20only%20one%20possible%20non-leaking%20final%20grid%20as%20follows.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115C%5C%2Fe72e3ca7692dff7d542a5eb082c86ab442d32df7.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F115%5C%2FC%22%2C%22id%22%3A%22115C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF115C%22%2C%22title%22%3A%22Plumber%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Plumber%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Plumber</h1>
+<h2>题目描述</h2>
+<div>Little John aspires to become a plumber! Today he has drawn a grid consisting of $ n $ rows and $ m $ columns, consisting of $ n×m $ square cells.
+In each cell he will draw a pipe segment. He can only draw four types of segments numbered from $ 1 $ to $ 4 $ , illustrated as follows:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115C/5684a4b13082e2a77497ef1a54b7d0e8d10cf63a.png)Each pipe segment has two ends, illustrated by the arrows in the picture above. For example, segment $ 1 $ has ends at top and left side of it.
+Little John considers the piping system to be leaking if there is at least one pipe segment inside the grid whose end is not connected to another pipe's end or to the border of the grid. The image below shows an example of leaking and non-leaking systems of size $ 1×2 $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115C/27e564b3757fd632050e90769548f2507e6d8614.png)Now, you will be given the grid that has been partially filled by Little John. Each cell will either contain one of the four segments above, or be empty. Find the number of possible different non-leaking final systems after Little John finishes filling all of the empty cells with pipe segments. Print this number modulo $ 1000003 $ ( $ 10^{6}+3 $ ).
+Note that rotations or flipping of the grid are not allowed and so two configurations that are identical only when one of them has been rotated or flipped either horizontally or vertically are considered two different configurations.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line will contain two single-space separated integers $ n $ and $ m $ ( $ 1<=n,m,n·m<=5·10^{5} $ ) — the number of rows and columns respectively. Then $ n $ lines follow, each contains exactly $ m $ characters — the description of the grid. Each character describes a cell and is either one of these:
+- "1" - "4" — a pipe segment of one of four types as described above
+- "." — an empty cell</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer denoting the number of possible final non-leaking pipe systems modulo $ 1000003 $ ( $ 10^{6}+3 $ ). If there are no such configurations, print $ 0 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 2
+13
+..
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 1
+1
+4
+.
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2 2
+3.
+.1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>For the first example, the initial configuration of the grid is as follows.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115C/ea03cb91df64d965734fe547ca6374a2eb82152f.png)The only two possible final non-leaking pipe configurations are as follows:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115C/61cdf177228590fa8ab090a556a9fd6e592dd21d.png) ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115C/023c7b7445c5e47c887c46cd5386151bace1eae5.png)For the second example, the initial grid is already leaking, so there will be no final grid that is non-leaking.
+For the final example, there's only one possible non-leaking final grid as follows.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115C/e72e3ca7692dff7d542a5eb082c86ab442d32df7.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

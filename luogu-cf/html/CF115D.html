@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Unambiguous Arithmetic Expression - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390902:tEARvx7I6lgHPgMIPpeu1cO6X0TPRlVmdb0c4V0EN8M=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20define%20an%20unambiguous%20arithmetic%20expression%20%28UAE%29%20as%20follows.%5Cn%5Cn-%20All%20non-negative%20integers%20are%20UAE%27s.%20Integers%20may%20have%20leading%20zeroes%20%28for%20example%2C%20%24%200000%20%24%20and%20%24%200010%20%24%20are%20considered%20valid%20integers%29.%5Cn-%20If%20%24%20X%20%24%20and%20%24%20Y%20%24%20are%20two%20UAE%27s%2C%20then%20%5C%22%20%24%20%28X%29%2B%28Y%29%20%24%20%5C%22%2C%20%5C%22%20%24%20%28X%29-%28Y%29%20%24%20%5C%22%2C%20%5C%22%20%24%20%28X%29%2A%28Y%29%20%24%20%5C%22%2C%20and%20%5C%22%20%24%20%28X%29%5C%2F%28Y%29%20%24%20%5C%22%20%28all%20without%20the%20double%20quotes%29%20are%20UAE%27s.%5Cn-%20If%20%24%20X%20%24%20is%20an%20UAE%2C%20then%20%5C%22%20%24%20-%28X%29%20%24%20%5C%22%20and%20%5C%22%20%24%20%2B%28X%29%20%24%20%5C%22%20%28both%20without%20the%20double%20quotes%29%20are%20UAE%27s.You%20are%20given%20a%20string%20consisting%20only%20of%20digits%20%28%5C%220%5C%22%20-%20%5C%229%5C%22%29%20and%20characters%20%5C%22-%5C%22%2C%20%5C%22%2B%5C%22%2C%20%5C%22%5C%5C%2A%5C%22%2C%20and%20%5C%22%5C%2F%5C%22.%20Your%20task%20is%20to%20compute%20the%20number%20of%20different%20possible%20unambiguous%20arithmetic%20expressions%20such%20that%20if%20all%20brackets%20%28characters%20%5C%22%28%5C%22%20and%20%5C%22%29%5C%22%29%20of%20that%20unambiguous%20arithmetic%20expression%20are%20removed%2C%20it%20becomes%20the%20input%20string.%20Since%20the%20answer%20may%20be%20very%20large%2C%20print%20it%20modulo%20%24%201000003%20%24%20%28%20%24%2010%5E%7B6%7D%2B3%20%24%20%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20is%20a%20non-empty%20string%20consisting%20of%20digits%20%28%270%27-%279%27%29%20and%20characters%20%27-%27%2C%20%27%2B%27%2C%20%27%5C%5C%2A%27%2C%20and%5C%2For%20%27%5C%2F%27.%20Its%20length%20will%20not%20exceed%20%24%202000%20%24%20.%20The%20line%20doesn%27t%20contain%20any%20spaces.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20representing%20the%20number%20of%20different%20unambiguous%20arithmetic%20expressions%20modulo%20%24%201000003%20%24%20%28%20%24%2010%5E%7B6%7D%2B3%20%24%20%29%20such%20that%20if%20all%20its%20brackets%20are%20removed%2C%20it%20becomes%20equal%20to%20the%20input%20string%20%28character-by-character%29.%22%2C%22samples%22%3A%5B%5B%221%2B2%2A3%5Cn%22%2C%222%5Cn%22%5D%2C%5B%2203%2B-30%2B40%5Cn%22%2C%223%5Cn%22%5D%2C%5B%225%5C%2F%5C%2F4%5Cn%22%2C%220%5Cn%22%5D%2C%5B%225%5C%2F0%5Cn%22%2C%221%5Cn%22%5D%2C%5B%221%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%2B1%5Cn%22%2C%22100728%5Cn%22%5D%5D%2C%22hint%22%3A%22For%20the%20first%20example%2C%20the%20two%20possible%20unambiguous%20arithmetic%20expressions%20are%3A%5Cn%5Cn%60%20%24%20%28%281%29%2B%282%29%29%2A%283%29%20%24%20%3Cbr%3E%3C%5C%2Fbr%3E%20%24%20%281%29%2B%28%282%29%2A%283%29%29%20%24%20%60For%20the%20second%20example%2C%20the%20three%20possible%20unambiguous%20arithmetic%20expressions%20are%3A%5Cn%5Cn%60%20%24%20%2803%29%2B%28%28-%2830%29%29%2B%2840%29%29%20%24%20%3Cbr%3E%3C%5C%2Fbr%3E%20%24%20%2803%29%2B%28-%28%2830%29%2B%2840%29%29%29%20%24%20%3Cbr%3E%3C%5C%2Fbr%3E%20%24%20%28%2803%29%2B%28-%2830%29%29%29%2B%2840%29%20%24%20%60%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F115%5C%2FD%22%2C%22id%22%3A%22115D%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%20%5Cr%5Cn%5Cu5bf9%24UAE%24%5Cu4f5c%5Cu51fa%5Cu5982%5Cu4e0b%5Cu5b9a%5Cu4e49%5Cuff1a%20%20%5Cr%5Cn%5Cr%5Cn%5Cu6240%5Cu6709%5Cu7684%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cu90fd%5Cu662f%24UAE%24%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu6574%5Cu6570%5Cu53ef%5Cu80fd%5Cu542b%5Cu6709%5Cu524d%5Cu5bfc%5Cu96f6%5Cuff08%5Cu5982%240000%5C%5C%200000%24%5Cu548c%240010%5C%5C%200010%24%5Cu88ab%5Cu8ba4%5Cu4e3a%5Cu662f%5Cu6709%5Cu6548%5Cu7684%5Cu6574%5Cu6570%5Cuff09%5Cu3002%5Cu5982%5Cu679c%24X%24%5Cu548c%24Y%24%5Cu662f%24UAE%24%5Cuff0c%5Cu90a3%5Cu4e48%5C%22%24%28X%29%2B%28Y%29%24%5C%22%5Cuff0c%5C%22%28X%29-%28Y%29%5C%22%5Cuff0c%5C%22%24%28X%29%2A%20%28Y%29%24%5C%22%5Cuff0c%5C%22%24%28X%29%5C%2F%28Y%29%24%5C%22%5Cu90fd%5Cu662f%24UAE%24%5Cu3002%5Cuff08%5Cu4e0d%5Cu542b%5Cu5f15%5Cu53f7%5Cuff09%20%20%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%24X%24%5Cu662f%24UAE%24%5Cuff0c%5Cu90a3%5Cu4e48%5C%22%24-%28X%29%24%5C%22%5Cu548c%5C%22%24%2B%28X%29%24%5C%22%5Cu4e5f%5Cu662f%24UAE%24%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu53ea%5Cu7531%240-9%24%5Cu7684%5Cu6570%5Cu5b57%5Cu3001%5C%22-%5C%22%5Cu3001%5C%22%2B%5C%22%5Cu3001%5C%22%20%2A%20%5C%22%5Cu3001%5C%22%5C%2F%5C%22%5Cu7ec4%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu8ba1%5Cu7b97%5Cu542b%5Cu6709%5Cu4e0d%5Cu540c%24UAE%24%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu5982%5Cu679c%5Cu53bb%5Cu6389%5Cu6240%5Cu6709%5Cu7684%5Cu62ec%5Cu53f7%5Cuff0c%5Cu8fd9%5Cu4e9b%24UAE%24%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu80fd%5Cu6210%5Cu4e3a%5Cu7ed9%5Cu51fa%5Cu7684%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu4e2d%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu56e0%5Cu4e3a%5Cu7b54%5Cu6848%5Cu53ef%5Cu80fd%5Cu975e%5Cu5e38%5Cu5927%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu8f93%5Cu51fa%5Cu5bf9%2410%5E6%2B3%24%5Cu53d6%5Cu6a21%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%20%20%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu975e%5Cu7a7a%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu53ea%5Cu7531%240-9%24%5Cu7684%5Cu6570%5Cu5b57%5Cu3001%5C%22-%5C%22%5Cu3001%5C%22%2B%5C%22%5Cu3001%5C%22%20%2A%20%5C%22%5Cu3001%5C%22%5C%2F%5C%22%5Cu7ec4%5Cu6210%5Cu3002%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc7%242000%24%5Cu3002%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e2d%5Cu4e0d%5Cu5305%5Cu542b%5Cu4efb%5Cu4f55%5Cu7a7a%5Cu683c%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu53bb%5Cu9664%5Cu6240%5Cu6709%5Cu62ec%5Cu53f7%5Cu540e%5Cu80fd%5Cu591f%5Cu4e0e%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu4e2d%5Cu7684%5Cu5b57%5Cu4e32%5Cu76f8%5Cu540c%5Cu7684%24UAE%24%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu7684%5Cu4e2a%5Cu6570%5Cu5bf9%2410%5E6%2B3%24%5Cu53d6%5Cu6a21%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cu7ffb%5Cu8bd1By%20%40%5Cu82e5%5Cu5982%5Cu521d%5Cu89c1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A39%2C%22totalAccepted%22%3A20%2C%22pid%22%3A%22CF115D%22%2C%22title%22%3A%22Unambiguous%20Arithmetic%20Expression%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Unambiguous%20Arithmetic%20Expression%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Unambiguous Arithmetic Expression</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+对$UAE$作出如下定义：
+所有的非负整数都是$UAE$。这些整数可能含有前导零（如$0000\ 0000$和$0010\ 0010$被认为是有效的整数）。如果$X$和$Y$是$UAE$，那么"$(X)+(Y)$"，"(X)-(Y)"，"$(X)* (Y)$"，"$(X)/(Y)$"都是$UAE$。（不含引号）
+如果$X$是$UAE$，那么"$-(X)$"和"$+(X)$"也是$UAE$。
+给出一个只由$0-9$的数字、"-"、"+"、" * "、"/"组成的字符串。你的任务是计算含有不同$UAE$表达式的数量，使得如果去掉所有的括号，这些$UAE$表达式能成为给出的输入文件中的字符串。因为答案可能非常大，请你输出对$10^6+3$取模的结果。
+## 输入格式
+输入文件的第一行是一个非空的字符串，只由$0-9$的数字、"-"、"+"、" * "、"/"组成。字符串的长度不超过$2000$。字符串中不包含任何空格。
+## 输出格式
+输出一行一个整数，去除所有括号后能够与输入文件中的字串相同的$UAE$表达式的个数对$10^6+3$取模的结果。
+翻译By @若如初见</div>
+<h2>题目描述</h2>
+<div>Let's define an unambiguous arithmetic expression (UAE) as follows.
+- All non-negative integers are UAE's. Integers may have leading zeroes (for example, $ 0000 $ and $ 0010 $ are considered valid integers).
+- If $ X $ and $ Y $ are two UAE's, then " $ (X)+(Y) $ ", " $ (X)-(Y) $ ", " $ (X)*(Y) $ ", and " $ (X)/(Y) $ " (all without the double quotes) are UAE's.
+- If $ X $ is an UAE, then " $ -(X) $ " and " $ +(X) $ " (both without the double quotes) are UAE's.You are given a string consisting only of digits ("0" - "9") and characters "-", "+", "\*", and "/". Your task is to compute the number of different possible unambiguous arithmetic expressions such that if all brackets (characters "(" and ")") of that unambiguous arithmetic expression are removed, it becomes the input string. Since the answer may be very large, print it modulo $ 1000003 $ ( $ 10^{6}+3 $ ).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line is a non-empty string consisting of digits ('0'-'9') and characters '-', '+', '\*', and/or '/'. Its length will not exceed $ 2000 $ . The line doesn't contain any spaces.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer representing the number of different unambiguous arithmetic expressions modulo $ 1000003 $ ( $ 10^{6}+3 $ ) such that if all its brackets are removed, it becomes equal to the input string (character-by-character).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1+2*3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>03+-30+40
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5//4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>5/0
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>100728
+</code></pre>
+<h2>说明</h2>
+<div>For the first example, the two possible unambiguous arithmetic expressions are:
+` $ ((1)+(2))*(3) $ <br></br> $ (1)+((2)*(3)) $ `For the second example, the three possible unambiguous arithmetic expressions are:
+` $ (03)+((-(30))+(40)) $ <br></br> $ (03)+(-((30)+(40))) $ <br></br> $ ((03)+(-(30)))+(40) $ `</div>
+</article>
+</div>
+</div>
+</body>
+</html>

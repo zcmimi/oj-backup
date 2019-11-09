@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Average Numbers - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391059:J6wPgR/D2jZR/Uv8iiT3qZqpnQQiCjNhhvPsP1IIwPg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20sequence%20of%20positive%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20.%20Find%20all%20such%20indices%20%24%20i%20%24%20%2C%20that%20the%20%24%20i%20%24%20-th%20element%20equals%20the%20arithmetic%20mean%20of%20all%20other%20elements%20%28that%20is%20all%20elements%20except%20for%20this%20one%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%29.%20The%20second%20line%20contains%20elements%20of%20the%20sequence%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D1000%20%24%20%29.%20All%20the%20elements%20are%20positive%20integers.%22%2C%22outputFormat%22%3A%22Print%20on%20the%20first%20line%20the%20number%20of%20the%20sought%20indices.%20Print%20on%20the%20second%20line%20the%20sought%20indices%20in%20the%20increasing%20order.%20All%20indices%20are%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%5Cn%5CnIf%20the%20sought%20elements%20do%20not%20exist%2C%20then%20the%20first%20output%20line%20should%20contain%20number%20%24%200%20%24%20.%20In%20this%20case%20you%20may%20either%20not%20print%20the%20second%20line%20or%20print%20an%20empty%20line.%22%2C%22samples%22%3A%5B%5B%225%5Cn1%202%203%204%205%5Cn%22%2C%221%5Cn3%20%22%5D%2C%5B%224%5Cn50%2050%2050%2050%5Cn%22%2C%224%5Cn1%202%203%204%20%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F134%5C%2FA%22%2C%22id%22%3A%22134A%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9an%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570a1%5Cuff0ca2%5Cu2026%5Cu2026an%5Cuff0c%5Cu6c42%5Cu51fa%5Cu6240%5Cu6709%5Cu7684i%5Cuff0c%5Cu4f7f%5Cu5f97ai%5Cu4e0e%5Cu5176%5Cu4ed6%5Cu6240%5Cu6709%5Cu6574%5Cu6570%5Cu7684%5Cu7b97%5Cu672f%5Cu5e73%5Cu5747%5Cu503c%5Cu76f8%5Cu7b49%5Cuff1b%20%5Cu8f93%5Cu5165%5Cuff1a%5Cu5171%5Cu4e24%5Cu884c%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff0cn%5Cu2208%5B2%2C200000%5D%2C%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5171n%5Cu4e2a%5Cu6574%5Cu6570a1%2Ca2%5Cu2026%5Cu2026an%5Cuff0c%5Cu4e14a1%5Cuff0ca2%5Cu2026%5Cu2026an%5Cu2208%5B1%2C1000%5D%5Cuff0c%5Cu6bcf%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu4e4b%5Cu95f4%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu3002%20%5Cu8f93%5Cu51fa%5Cuff1a%5Cu5171%5Cu4e24%5Cu884c%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu7b26%5Cu5408%5Cu6761%5Cu4ef6%5Cu7684i%5Cu7684%5Cu4e2a%5Cu6570%5Cuff1b%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3a%5Cu6240%5Cu6709%5Cu7b26%5Cu5408%5Cu6761%5Cu4ef6%5Cu7684i%5Cu3002%5Cu5982%5Cu679c%5Cu6ca1%5Cu6709%5Cu7b26%5Cu5408%5Cu6761%5Cu4ef6%5Cu7684i%5Cuff0c%5Cu8bf7%5Cu5728%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa0%5Cuff0c%5Cu8fd9%5Cu65f6%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu884c%5Cuff0c%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu4e0d%5Cu8f93%5Cu51fa%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40daifucong%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A125%2C%22totalAccepted%22%3A40%2C%22pid%22%3A%22CF134A%22%2C%22title%22%3A%22Average%20Numbers%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32643%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12065%2C%22name%22%3A%22CF134A%20Average%20Numbers%22%2C%22slug%22%3A%22CF134A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1031%22%2C%22title%22%3A%22%5Cu5747%5Cu5206%5Cu7eb8%5Cu724c%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1164%22%2C%22title%22%3A%22%5Cu5c0fA%5Cu70b9%5Cu83dc%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2118%22%2C%22title%22%3A%22%5Cu6bd4%5Cu4f8b%5Cu7b80%5Cu5316%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF822A%22%2C%22title%22%3A%22I%27m%20bored%20with%20life%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF266B%22%2C%22title%22%3A%22Queue%20at%20the%20School%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Average%20Numbers%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Average Numbers</h1>
+<h2>题意翻译</h2>
+<div>给定n个正整数a1，a2……an，求出所有的i，使得ai与其他所有整数的算术平均值相等； 输入：共两行，第一行一个整数n，n∈[2,200000],第二行共n个整数a1,a2……an，且a1，a2……an∈[1,1000]，每两个整数之间用空格隔开。 输出：共两行，第一行为符合条件的i的个数；第二行为所有符合条件的i。如果没有符合条件的i，请在第一行输出0，这时，可以输出一个空行，也可以不输出。
+感谢@daifucong 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You are given a sequence of positive integers $ a_{1},a_{2},...,a_{n} $ . Find all such indices $ i $ , that the $ i $ -th element equals the arithmetic mean of all other elements (that is all elements except for this one).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the integer $ n $ ( $ 2<=n<=2·10^{5} $ ). The second line contains elements of the sequence $ a_{1},a_{2},...,a_{n} $ ( $ 1<=a_{i}<=1000 $ ). All the elements are positive integers.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print on the first line the number of the sought indices. Print on the second line the sought indices in the increasing order. All indices are integers from $ 1 $ to $ n $ .
+If the sought elements do not exist, then the first output line should contain number $ 0 $ . In this case you may either not print the second line or print an empty line.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+1 2 3 4 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+3 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+50 50 50 50
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4
+1 2 3 4 </code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

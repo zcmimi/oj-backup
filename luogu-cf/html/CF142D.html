@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Help Shrek and Donkey 2 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391125:p4mUuiez1dfVluc2wqtBUNhWQwbVuGQo4QIY2H6MvIw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Having%20learned%20%28not%20without%20some%20help%20from%20the%20Codeforces%20participants%29%20to%20play%20the%20card%20game%20from%20the%20previous%20round%20optimally%2C%20Shrek%20and%20Donkey%20%28as%20you%20may%20remember%2C%20they%20too%20live%20now%20in%20the%20Kingdom%20of%20Far%20Far%20Away%29%20have%20decided%20to%20quit%20the%20boring%20card%20games%20and%20play%20with%20toy%20soldiers.%5Cn%5CnThe%20rules%20of%20the%20game%20are%20as%20follows%3A%20there%20is%20a%20battlefield%2C%20its%20size%20equals%20%24%20n%5Cu00d7m%20%24%20squares%2C%20some%20squares%20contain%20the%20toy%20soldiers%20%28the%20green%20ones%20belong%20to%20Shrek%20and%20the%20red%20ones%20belong%20to%20Donkey%29.%20Besides%2C%20each%20of%20the%20%24%20n%20%24%20lines%20of%20the%20area%20contains%20not%20more%20than%20two%20soldiers.%20During%20a%20move%20a%20players%20should%20select%20not%20less%20than%20%24%201%20%24%20and%20not%20more%20than%20%24%20k%20%24%20soldiers%20belonging%20to%20him%20and%20make%20them%20either%20attack%20or%20retreat.%5Cn%5CnAn%20attack%20is%20moving%20all%20of%20the%20selected%20soldiers%20along%20the%20lines%20on%20which%20they%20stand%20in%20the%20direction%20of%20an%20enemy%20soldier%2C%20if%20he%20is%20in%20this%20line.%20If%20this%20line%20doesn%27t%20have%20an%20enemy%20soldier%2C%20then%20the%20selected%20soldier%20on%20this%20line%20can%20move%20in%20any%20direction%20during%20the%20player%27s%20move.%20Each%20selected%20soldier%20has%20to%20move%20at%20least%20by%20one%20cell.%20Different%20soldiers%20can%20move%20by%20a%20different%20number%20of%20cells.%20During%20the%20attack%20the%20soldiers%20are%20not%20allowed%20to%20cross%20the%20cells%20where%20other%20soldiers%20stand%20%28or%20stood%20immediately%20before%20the%20attack%29.%20It%20is%20also%20not%20allowed%20to%20go%20beyond%20the%20battlefield%20or%20finish%20the%20attack%20in%20the%20cells%2C%20where%20other%20soldiers%20stand%20%28or%20stood%20immediately%20before%20attack%29.%5Cn%5CnA%20retreat%20is%20moving%20all%20of%20the%20selected%20soldiers%20along%20the%20lines%20on%20which%20they%20stand%20in%20the%20direction%20from%20an%20enemy%20soldier%2C%20if%20he%20is%20in%20this%20line.%20The%20other%20rules%20repeat%20the%20rules%20of%20the%20attack.%5Cn%5CnFor%20example%2C%20let%27s%20suppose%20that%20the%20original%20battlefield%20had%20the%20form%20%28here%20symbols%20%5C%22G%5C%22%20mark%20Shrek%27s%20green%20soldiers%20and%20symbols%20%5C%22R%5C%22%20mark%20Donkey%27s%20red%20ones%29%3A%5Cn%5Cn%20%20%60-G-R-%3Cbr%3E%3C%5C%2Fbr%3E-R-G-%3Cbr%3E%3C%5C%2Fbr%3E%60%20Let%27s%20suppose%20that%20%24%20k%3D2%20%24%20and%20Shrek%20moves%20first.%20If%20he%20decides%20to%20attack%2C%20then%20after%20his%20move%20the%20battlefield%20can%20look%20like%20that%3A%5Cn%5Cn%20%20%60--GR-%20%20%20%20%20--GR-%20%20%20%20%20-G-R-%3Cbr%3E%3C%5C%2Fbr%3E-RG--%20%20%20%20%20-R-G-%20%20%20%20%20-RG--%3Cbr%3E%3C%5C%2Fbr%3E%60%20If%20in%20the%20previous%20example%20Shrek%20decides%20to%20retreat%2C%20then%20after%20his%20move%20the%20battlefield%20can%20look%20like%20that%3A%5Cn%5Cn%20%20%60G--R-%20%20%20%20%20G--R-%20%20%20%20%20-G-R-%3Cbr%3E%3C%5C%2Fbr%3E-R--G%20%20%20%20%20-R-G-%20%20%20%20%20-R--G%3Cbr%3E%3C%5C%2Fbr%3E%60%20On%20the%20other%20hand%2C%20the%20followings%20fields%20cannot%20result%20from%20Shrek%27s%20correct%20move%3A%5Cn%5Cn%20%20%60G--R-%20%20%20%20%20---RG%20%20%20%20%20--GR-%3Cbr%3E%3C%5C%2Fbr%3E-RG--%20%20%20%20%20-R-G-%20%20%20%20%20GR---%3Cbr%3E%3C%5C%2Fbr%3E%60%20Shrek%20starts%20the%20game.%20To%20make%20a%20move%20means%20to%20attack%20or%20to%20retreat%20by%20the%20rules.%20A%20player%20who%20cannot%20make%20a%20move%20loses%20and%20his%20opponent%20is%20the%20winner.%20Determine%20the%20winner%20of%20the%20given%20toy%20soldier%20game%20if%20Shrek%20and%20Donkey%20continue%20to%20be%20under%20the%20yellow%20pills%20from%20the%20last%20rounds%27%20problem.%20Thus%2C%20they%20always%20play%20optimally%20%28that%20is%2C%20they%20try%20to%20win%20if%20it%20is%20possible%2C%20or%20finish%20the%20game%20in%20a%20draw%2C%20by%20ensuring%20that%20it%20lasts%20forever%2C%20if%20they%20cannot%20win%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20space-separated%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%2Cm%2Ck%3C%3D100%20%24%20%29.%20Then%20%24%20n%20%24%20lines%20contain%20%24%20m%20%24%20characters%20each.%20These%20characters%20belong%20to%20the%20set%20%7B%5C%22-%5C%22%2C%20%5C%22G%5C%22%2C%20%5C%22R%5C%22%7D%2C%20denoting%2C%20respectively%2C%20a%20battlefield%27s%20free%20cell%2C%20a%20cell%20occupied%20by%20Shrek%27s%20soldiers%20and%20a%20cell%20occupied%20by%20Donkey%27s%20soldiers.%5Cn%5CnIt%20is%20guaranteed%20that%20each%20line%20contains%20no%20more%20than%20two%20soldiers.%22%2C%22outputFormat%22%3A%22Print%20%5C%22First%5C%22%20%28without%20the%20quotes%29%20if%20Shrek%20wins%20in%20the%20given%20Toy%20Soldier%20game.%20If%20Donkey%20wins%2C%20print%20%5C%22Second%5C%22%20%28without%20the%20quotes%29.%20If%20the%20game%20continues%20forever%2C%20print%20%5C%22Draw%5C%22%20%28also%20without%20the%20quotes%29.%22%2C%22samples%22%3A%5B%5B%222%203%201%5CnR-G%5CnRG-%5Cn%22%2C%22First%5Cn%22%5D%2C%5B%223%203%202%5CnG-R%5CnR-G%5CnG-R%5Cn%22%2C%22Second%5Cn%22%5D%2C%5B%222%203%201%5Cn-R-%5Cn-G-%5Cn%22%2C%22Draw%5Cn%22%5D%2C%5B%222%205%202%5Cn-G-R-%5Cn-R-G-%5Cn%22%2C%22First%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F142%5C%2FD%22%2C%22id%22%3A%22142D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF142D%22%2C%22title%22%3A%22Help%20Shrek%20and%20Donkey%202%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Help%20Shrek%20and%20Donkey%202%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Help Shrek and Donkey 2</h1>
+<h2>题目描述</h2>
+<div>Having learned (not without some help from the Codeforces participants) to play the card game from the previous round optimally, Shrek and Donkey (as you may remember, they too live now in the Kingdom of Far Far Away) have decided to quit the boring card games and play with toy soldiers.
+The rules of the game are as follows: there is a battlefield, its size equals $ n×m $ squares, some squares contain the toy soldiers (the green ones belong to Shrek and the red ones belong to Donkey). Besides, each of the $ n $ lines of the area contains not more than two soldiers. During a move a players should select not less than $ 1 $ and not more than $ k $ soldiers belonging to him and make them either attack or retreat.
+An attack is moving all of the selected soldiers along the lines on which they stand in the direction of an enemy soldier, if he is in this line. If this line doesn't have an enemy soldier, then the selected soldier on this line can move in any direction during the player's move. Each selected soldier has to move at least by one cell. Different soldiers can move by a different number of cells. During the attack the soldiers are not allowed to cross the cells where other soldiers stand (or stood immediately before the attack). It is also not allowed to go beyond the battlefield or finish the attack in the cells, where other soldiers stand (or stood immediately before attack).
+A retreat is moving all of the selected soldiers along the lines on which they stand in the direction from an enemy soldier, if he is in this line. The other rules repeat the rules of the attack.
+For example, let's suppose that the original battlefield had the form (here symbols "G" mark Shrek's green soldiers and symbols "R" mark Donkey's red ones):
+`-G-R-<br></br>-R-G-<br></br>` Let's suppose that $ k=2 $ and Shrek moves first. If he decides to attack, then after his move the battlefield can look like that:
+`--GR- --GR- -G-R-<br></br>-RG-- -R-G- -RG--<br></br>` If in the previous example Shrek decides to retreat, then after his move the battlefield can look like that:
+`G--R- G--R- -G-R-<br></br>-R--G -R-G- -R--G<br></br>` On the other hand, the followings fields cannot result from Shrek's correct move:
+`G--R- ---RG --GR-<br></br>-RG-- -R-G- GR---<br></br>` Shrek starts the game. To make a move means to attack or to retreat by the rules. A player who cannot make a move loses and his opponent is the winner. Determine the winner of the given toy soldier game if Shrek and Donkey continue to be under the yellow pills from the last rounds' problem. Thus, they always play optimally (that is, they try to win if it is possible, or finish the game in a draw, by ensuring that it lasts forever, if they cannot win).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains space-separated integers $ n $ , $ m $ and $ k $ ( $ 1<=n,m,k<=100 $ ). Then $ n $ lines contain $ m $ characters each. These characters belong to the set {"-", "G", "R"}, denoting, respectively, a battlefield's free cell, a cell occupied by Shrek's soldiers and a cell occupied by Donkey's soldiers.
+It is guaranteed that each line contains no more than two soldiers.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print "First" (without the quotes) if Shrek wins in the given Toy Soldier game. If Donkey wins, print "Second" (without the quotes). If the game continues forever, print "Draw" (also without the quotes).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 3 1
+R-G
+RG-
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>First
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3 2
+G-R
+R-G
+G-R
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>Second
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2 3 1
+-R-
+-G-
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>Draw
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>2 5 2
+-G-R-
+-R-G-
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>First
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

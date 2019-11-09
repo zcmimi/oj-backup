@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Item World - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390833:JKjAiNeWCo+gJgSYTGzuRJs5c9Ze2EpYaIrXz66O3AA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Each%20item%20in%20the%20game%20has%20a%20level.%20The%20higher%20the%20level%20is%2C%20the%20higher%20basic%20parameters%20the%20item%20has.%20We%20shall%20consider%20only%20the%20following%20basic%20parameters%3A%20attack%20%28atk%29%2C%20defense%20%28def%29%20and%20resistance%20to%20different%20types%20of%20impact%20%28res%29.%5Cn%5CnEach%20item%20belongs%20to%20one%20class.%20In%20this%20problem%20we%20will%20only%20consider%20three%20of%20such%20classes%3A%20weapon%2C%20armor%2C%20orb.%5Cn%5CnBesides%2C%20there%27s%20a%20whole%20new%20world%20hidden%20inside%20each%20item.%20We%20can%20increase%20an%20item%27s%20level%20travelling%20to%20its%20world.%20We%20can%20also%20capture%20the%20so-called%20residents%20in%20the%20Item%20World%5Cn%5CnResidents%20are%20the%20creatures%20that%20live%20inside%20items.%20Each%20resident%20gives%20some%20bonus%20to%20the%20item%20in%20which%20it%20is%20currently%20located.%20We%20will%20only%20consider%20residents%20of%20types%3A%20gladiator%20%28who%20improves%20the%20item%27s%20atk%29%2C%20sentry%20%28who%20improves%20def%29%20and%20physician%20%28who%20improves%20res%29.%5Cn%5CnEach%20item%20has%20the%20size%20parameter.%20The%20parameter%20limits%20the%20maximum%20number%20of%20residents%20that%20can%20live%20inside%20an%20item.%20We%20can%20move%20residents%20between%20items.%20Within%20one%20moment%20of%20time%20we%20can%20take%20some%20resident%20from%20an%20item%20and%20move%20it%20to%20some%20other%20item%20if%20it%20has%20a%20free%20place%20for%20a%20new%20resident.%20We%20cannot%20remove%20a%20resident%20from%20the%20items%20and%20leave%20outside%20%5Cu2014%20any%20of%20them%20should%20be%20inside%20of%20some%20item%20at%20any%20moment%20of%20time.%5Cn%5CnLaharl%20has%20a%20certain%20number%20of%20items.%20He%20wants%20to%20move%20the%20residents%20between%20items%20so%20as%20to%20equip%20himself%20with%20weapon%2C%20armor%20and%20a%20defensive%20orb.%20The%20weapon%27s%20atk%20should%20be%20largest%20possible%20in%20the%20end.%20Among%20all%20equipping%20patterns%20containing%20weapon%27s%20maximum%20atk%20parameter%20we%20should%20choose%20the%20ones%20where%20the%20armor%5Cu2019s%20def%20parameter%20is%20the%20largest%20possible.%20Among%20all%20such%20equipment%20patterns%20we%20should%20choose%20the%20one%20where%20the%20defensive%20orb%20would%20have%20the%20largest%20possible%20res%20parameter.%20Values%20of%20the%20parameters%20def%20and%20res%20of%20weapon%2C%20atk%20and%20res%20of%20armor%20and%20atk%20and%20def%20of%20orb%20are%20indifferent%20for%20Laharl.%5Cn%5CnFind%20the%20optimal%20equipment%20pattern%20Laharl%20can%20get.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20number%20%24%20n%20%24%20%28%20%24%203%3C%3Dn%3C%3D100%20%24%20%29%20%5Cu2014%20representing%20how%20many%20items%20Laharl%20has.%5Cn%5CnThen%20follow%20%24%20n%20%24%20lines.%20Each%20line%20contains%20description%20of%20an%20item.%20The%20description%20has%20the%20following%20form%3A%20%5C%22%20%24%20name%20%24%20%24%20class%20%24%20%24%20atk%20%24%20%24%20def%20%24%20%24%20res%20%24%20%24%20size%20%24%20%5C%22%20%5Cu2014%20the%20item%27s%20name%2C%20class%2C%20basic%20attack%2C%20defense%20and%20resistance%20parameters%20and%20its%20size%20correspondingly.%5Cn%5Cn-%20%24%20name%20%24%20and%20%24%20class%20%24%20are%20strings%20and%20%24%20atk%20%24%20%2C%20%24%20def%20%24%20%2C%20%24%20res%20%24%20and%20%24%20size%20%24%20are%20integers.%5Cn-%20%24%20name%20%24%20consists%20of%20lowercase%20Latin%20letters%20and%20its%20length%20can%20range%20from%20%24%201%20%24%20to%20%24%2010%20%24%20%2C%20inclusive.%5Cn-%20%24%20class%20%24%20can%20be%20%5C%22weapon%5C%22%2C%20%5C%22armor%5C%22%20or%20%5C%22orb%5C%22.%5Cn-%20%24%200%3C%3Datk%2Cdef%2Cres%3C%3D1000%20%24%20.%5Cn-%20%24%201%3C%3Dsize%3C%3D10%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20Laharl%20has%20at%20least%20one%20item%20of%20each%20class.%5Cn%5CnThe%20next%20line%20contains%20an%20integer%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20residents.%5Cn%5CnThen%20%24%20k%20%24%20lines%20follow.%20Each%20of%20them%20describes%20a%20resident.%20A%20resident%20description%20looks%20like%3A%20%5C%22%20%24%20name%20%24%20%24%20type%20%24%20%24%20bonus%20%24%20%24%20home%20%24%20%5C%22%20%5Cu2014%20the%20resident%27s%20name%2C%20his%20type%2C%20the%20number%20of%20points%20the%20resident%20adds%20to%20the%20item%27s%20corresponding%20parameter%20and%20the%20name%20of%20the%20item%20which%20currently%20contains%20the%20resident.%5Cn%5Cn-%20%24%20name%20%24%20%2C%20%24%20type%20%24%20and%20%24%20home%20%24%20are%20strings%20and%20%24%20bonus%20%24%20is%20an%20integer.%5Cn-%20%24%20name%20%24%20consists%20of%20lowercase%20Latin%20letters%20and%20its%20length%20can%20range%20from%20%24%201%20%24%20to%20%24%2010%20%24%20%2C%20inclusive.%5Cn-%20%24%20type%20%24%20may%20be%20%5C%22gladiator%5C%22%2C%20%5C%22sentry%5C%22%20or%20%5C%22physician%5C%22.%5Cn-%20%24%201%3C%3Dbonus%3C%3D100%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20number%20of%20residents%20in%20each%20item%20does%20not%20exceed%20the%20item%27s%20size.%5Cn%5CnThe%20names%20of%20all%20items%20and%20residents%20are%20pairwise%20different.%5Cn%5CnAll%20words%20and%20numbers%20in%20the%20input%20are%20separated%20by%20single%20spaces.%22%2C%22outputFormat%22%3A%22Print%20on%20the%20first%20line%20the%20name%20of%20the%20weapon%20in%20the%20optimal%20equipping%20pattern%3B%20then%20print%20the%20number%20of%20residents%20the%20weapon%20contains%3B%20then%20print%20the%20residents%27%20names.%5Cn%5CnPrint%20on%20the%20second%20and%20third%20lines%20in%20the%20same%20form%20the%20names%20of%20the%20armor%20and%20defensive%20orb%20as%20well%20as%20the%20residents%20they%20contain.%5Cn%5CnUse%20single%20spaces%20for%20separation.%5Cn%5CnIf%20there%20are%20several%20possible%20solutions%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%224%5Cnsword%20weapon%2010%202%203%202%5Cnpagstarmor%20armor%200%2015%203%201%5Cniceorb%20orb%203%202%2013%202%5Cnlongbow%20weapon%209%201%202%201%5Cn5%5Cnmike%20gladiator%205%20longbow%5Cnbobby%20sentry%206%20pagstarmor%5Cnpetr%20gladiator%207%20iceorb%5Cnteddy%20physician%206%20sword%5Cnblackjack%20sentry%208%20sword%5Cn%22%2C%22sword%202%20petr%20mike%20%5Cnpagstarmor%201%20blackjack%20%5Cniceorb%202%20teddy%20bobby%20%5Cn%22%5D%2C%5B%224%5Cnsword%20weapon%2010%202%203%202%5Cnpagstarmor%20armor%200%2015%203%201%5Cniceorb%20orb%203%202%2013%202%5Cnlongbow%20weapon%209%201%202%201%5Cn6%5Cnmike%20gladiator%205%20longbow%5Cnbobby%20sentry%206%20pagstarmor%5Cnpetr%20gladiator%207%20iceorb%5Cnteddy%20physician%206%20sword%5Cnblackjack%20sentry%208%20sword%5Cnjoe%20physician%206%20iceorb%5Cn%22%2C%22longbow%201%20mike%20%5Cnpagstarmor%201%20bobby%20%5Cniceorb%202%20petr%20joe%20%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20second%20sample%20we%20have%20no%20free%20space%20inside%20the%20items%2C%20therefore%20we%20cannot%20move%20the%20residents%20between%20them.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F105%5C%2FC%22%2C%22id%22%3A%22105C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF105C%22%2C%22title%22%3A%22Item%20World%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Item%20World%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Item World</h1>
+<h2>题目描述</h2>
+<div>Each item in the game has a level. The higher the level is, the higher basic parameters the item has. We shall consider only the following basic parameters: attack (atk), defense (def) and resistance to different types of impact (res).
+Each item belongs to one class. In this problem we will only consider three of such classes: weapon, armor, orb.
+Besides, there's a whole new world hidden inside each item. We can increase an item's level travelling to its world. We can also capture the so-called residents in the Item World
+Residents are the creatures that live inside items. Each resident gives some bonus to the item in which it is currently located. We will only consider residents of types: gladiator (who improves the item's atk), sentry (who improves def) and physician (who improves res).
+Each item has the size parameter. The parameter limits the maximum number of residents that can live inside an item. We can move residents between items. Within one moment of time we can take some resident from an item and move it to some other item if it has a free place for a new resident. We cannot remove a resident from the items and leave outside — any of them should be inside of some item at any moment of time.
+Laharl has a certain number of items. He wants to move the residents between items so as to equip himself with weapon, armor and a defensive orb. The weapon's atk should be largest possible in the end. Among all equipping patterns containing weapon's maximum atk parameter we should choose the ones where the armor’s def parameter is the largest possible. Among all such equipment patterns we should choose the one where the defensive orb would have the largest possible res parameter. Values of the parameters def and res of weapon, atk and res of armor and atk and def of orb are indifferent for Laharl.
+Find the optimal equipment pattern Laharl can get.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains number $ n $ ( $ 3<=n<=100 $ ) — representing how many items Laharl has.
+Then follow $ n $ lines. Each line contains description of an item. The description has the following form: " $ name $ $ class $ $ atk $ $ def $ $ res $ $ size $ " — the item's name, class, basic attack, defense and resistance parameters and its size correspondingly.
+- $ name $ and $ class $ are strings and $ atk $ , $ def $ , $ res $ and $ size $ are integers.
+- $ name $ consists of lowercase Latin letters and its length can range from $ 1 $ to $ 10 $ , inclusive.
+- $ class $ can be "weapon", "armor" or "orb".
+- $ 0<=atk,def,res<=1000 $ .
+- $ 1<=size<=10 $ .
+It is guaranteed that Laharl has at least one item of each class.
+The next line contains an integer $ k $ ( $ 1<=k<=1000 $ ) — the number of residents.
+Then $ k $ lines follow. Each of them describes a resident. A resident description looks like: " $ name $ $ type $ $ bonus $ $ home $ " — the resident's name, his type, the number of points the resident adds to the item's corresponding parameter and the name of the item which currently contains the resident.
+- $ name $ , $ type $ and $ home $ are strings and $ bonus $ is an integer.
+- $ name $ consists of lowercase Latin letters and its length can range from $ 1 $ to $ 10 $ , inclusive.
+- $ type $ may be "gladiator", "sentry" or "physician".
+- $ 1<=bonus<=100 $ .
+It is guaranteed that the number of residents in each item does not exceed the item's size.
+The names of all items and residents are pairwise different.
+All words and numbers in the input are separated by single spaces.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print on the first line the name of the weapon in the optimal equipping pattern; then print the number of residents the weapon contains; then print the residents' names.
+Print on the second and third lines in the same form the names of the armor and defensive orb as well as the residents they contain.
+Use single spaces for separation.
+If there are several possible solutions, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+sword weapon 10 2 3 2
+pagstarmor armor 0 15 3 1
+iceorb orb 3 2 13 2
+longbow weapon 9 1 2 1
+5
+mike gladiator 5 longbow
+bobby sentry 6 pagstarmor
+petr gladiator 7 iceorb
+teddy physician 6 sword
+blackjack sentry 8 sword
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>sword 2 petr mike 
+pagstarmor 1 blackjack 
+iceorb 2 teddy bobby 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+sword weapon 10 2 3 2
+pagstarmor armor 0 15 3 1
+iceorb orb 3 2 13 2
+longbow weapon 9 1 2 1
+6
+mike gladiator 5 longbow
+bobby sentry 6 pagstarmor
+petr gladiator 7 iceorb
+teddy physician 6 sword
+blackjack sentry 8 sword
+joe physician 6 iceorb
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>longbow 1 mike 
+pagstarmor 1 bobby 
+iceorb 2 petr joe 
+</code></pre>
+<h2>说明</h2>
+<div>In the second sample we have no free space inside the items, therefore we cannot move the residents between them.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

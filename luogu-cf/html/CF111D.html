@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Petya and Coloring - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390880:7Ixil0qJiAdGnCXBrElXZ3o2oS+YIwLKWwDusFSpVzc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Little%20Petya%20loves%20counting.%20He%20wants%20to%20count%20the%20number%20of%20ways%20to%20paint%20a%20rectangular%20checkered%20board%20of%20size%20%24%20n%5Cu00d7m%20%24%20%28%20%24%20n%20%24%20rows%2C%20%24%20m%20%24%20columns%29%20in%20%24%20k%20%24%20colors.%20Besides%2C%20the%20coloring%20should%20have%20the%20following%20property%3A%20for%20any%20vertical%20line%20that%20passes%20along%20the%20grid%20lines%20and%20divides%20the%20board%20in%20two%20non-empty%20parts%20the%20number%20of%20distinct%20colors%20in%20both%20these%20parts%20should%20be%20the%20same.%20Help%20Petya%20to%20count%20these%20colorings.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20space-separated%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D1000%2C1%3C%3Dk%3C%3D10%5E%7B6%7D%20%24%20%29%20%5Cu2014%20the%20board%27s%20vertical%20and%20horizontal%20sizes%20and%20the%20number%20of%20colors%20respectively.%22%2C%22outputFormat%22%3A%22Print%20the%20answer%20to%20the%20problem.%20As%20the%20answer%20can%20be%20quite%20a%20large%20number%2C%20you%20should%20print%20it%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20%28%20%24%201000000007%20%24%20%29.%22%2C%22samples%22%3A%5B%5B%222%202%201%5Cn%22%2C%221%5Cn%22%5D%2C%5B%222%202%202%5Cn%22%2C%228%5Cn%22%5D%2C%5B%223%202%202%5Cn%22%2C%2240%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F111%5C%2FD%22%2C%22id%22%3A%22111D%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn--%5Cr%5Cn%24Petya%24%5Cu559c%5Cu6b22%5Cu8ba1%5Cu6570%5Cu3002%5Cu4ed6%5Cu60f3%5Cu8ba1%5Cu7b97%5Cuff1a%5Cr%5Cn%5Cr%5Cn%20%20%20%5Cu7528%24K%24%5Cu79cd%5Cu989c%5Cu8272%5Cu7ed8%5Cu5236%5Cu5c3a%5Cu5bf8%5Cu4e3a%24n%2Am%24%20%28%20%24n%24%5Cu884c%5Cuff0c%24m%24%5Cu5217%29%5Cu7684%5Cu77e9%5Cu5f62%5Cu68cb%5Cu76d8%5Cu7684%5Cu65b9%5Cu6cd5%5Cu6570%5Cu3002%5Cr%5Cn%20%20%20%5Cr%5Cn%5Cu6b64%5Cu5916%5Cuff0c%5Cu7740%5Cu8272%5Cu5e94%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu8981%5Cu6c42%5Cuff1a%5Cr%5Cn%20%20%20%5Cr%5Cn%20%20%20%5Cu5bf9%5Cu4e8e%5Cu6cbf%5Cu683c%5Cu5b50%5Cu7684%5Cu7ebf%5Cu7a7f%5Cu8fc7%5Cu7684%5Cu4efb%5Cu4f55%5Cu5782%5Cu76f4%5Cu7ebf%5Cuff0c%5Cu4f1a%5Cu5c06%5Cu68cb%5Cu76d8%5Cu5206%5Cu6210%5Cu4e24%5Cu4e2a%5Cu975e%5Cu7a7a%5Cu7684%5Cu90e8%5Cu5206%5Cuff0c%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu90e8%5Cu5206%5Cu4e2d%5Cu7684%5Cu4e0d%5Cu540c%5Cu989c%5Cu8272%5Cu7684%5Cu6570%5Cu91cf%5Cu5e94%5Cu76f8%5Cu540c%5Cu3002%5Cr%5Cn%20%20%5Cr%5Cn%5Cu5e2e%5Cu52a9%24Petya%24%5Cu5bf9%5Cu8fd9%5Cu4e9b%5Cu989c%5Cu8272%5Cu8fdb%5Cu884c%5Cu8ba1%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn---%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e09%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%24n%24%5Cuff0c%24m%24%5Cuff0c%24k%24%20%24%281%3C%3Dn%2Cm%3C%3D1000%2C1%3C%3Dk%3C%3D1e6%29%24%5Cr%5Cn%5Cr%5Cn%5Cu542b%5Cu4e49%5Cu5982%5Cu9898%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu5171%5Cu4e00%5Cu884c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn--%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu5982%5Cu9898%5Cu8981%5Cu6c42%5Cu7684%5Cu7b54%5Cu6848%5Cu3002%5Cu7531%5Cu4e8e%5Cu7b54%5Cu6848%5Cu53ef%5Cu80fd%5Cu8fc7%5Cu5927%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5176%5Cu6a21%241e9%2B7%24%5Cu7684%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF111D%22%2C%22title%22%3A%22Petya%20and%20Coloring%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Petya%20and%20Coloring%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Petya and Coloring</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+--
+$Petya$喜欢计数。他想计算：
+用$K$种颜色绘制尺寸为$n*m$ ( $n$行，$m$列)的矩形棋盘的方法数。
+此外，着色应满足以下要求：
+对于沿格子的线穿过的任何垂直线，会将棋盘分成两个非空的部分，这两个部分中的不同颜色的数量应相同。
+帮助$Petya$对这些颜色进行计数。
+输入格式
+---
+第一行有三个用空格隔开的整数$n$，$m$，$k$ $(1<=n,m<=1000,1<=k<=1e6)$
+含义如题。
+输入共一行。
+输出格式
+--
+输出如题要求的答案。由于答案可能过大，输出其模$1e9+7$的值。</div>
+<h2>题目描述</h2>
+<div>Little Petya loves counting. He wants to count the number of ways to paint a rectangular checkered board of size $ n×m $ ( $ n $ rows, $ m $ columns) in $ k $ colors. Besides, the coloring should have the following property: for any vertical line that passes along the grid lines and divides the board in two non-empty parts the number of distinct colors in both these parts should be the same. Help Petya to count these colorings.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains space-separated integers $ n $ , $ m $ and $ k $ ( $ 1<=n,m<=1000,1<=k<=10^{6} $ ) — the board's vertical and horizontal sizes and the number of colors respectively.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the answer to the problem. As the answer can be quite a large number, you should print it modulo $ 10^{9}+7 $ ( $ 1000000007 $ ).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2 2 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>8
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 2 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>40
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

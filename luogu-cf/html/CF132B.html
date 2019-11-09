@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Piet - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391049:9yQnBpOw3HtrOxyvoUAWbKxvqZvyQEoNUtoj2IhFlsc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Piet%20is%20one%20of%20the%20most%20known%20visual%20esoteric%20programming%20languages.%20The%20programs%20in%20Piet%20are%20constructed%20from%20colorful%20blocks%20of%20pixels%20and%20interpreted%20using%20pretty%20complicated%20rules.%20In%20this%20problem%20we%20will%20use%20a%20subset%20of%20Piet%20language%20with%20simplified%20rules.%5Cn%5CnThe%20program%20will%20be%20a%20rectangular%20image%20consisting%20of%20colored%20and%20black%20pixels.%20The%20color%20of%20each%20pixel%20will%20be%20given%20by%20an%20integer%20number%20between%200%20and%209%2C%20inclusive%2C%20with%200%20denoting%20black.%20A%20block%20of%20pixels%20is%20defined%20as%20a%20rectangle%20of%20pixels%20of%20the%20same%20color%20%28not%20black%29.%20It%20is%20guaranteed%20that%20all%20connected%20groups%20of%20colored%20pixels%20of%20the%20same%20color%20will%20form%20rectangular%20blocks.%20Groups%20of%20black%20pixels%20can%20form%20arbitrary%20shapes.%5Cn%5CnThe%20program%20is%20interpreted%20using%20movement%20of%20instruction%20pointer%20%28IP%29%20which%20consists%20of%20three%20parts%3A%5Cn%5Cn-%20current%20block%20pointer%20%28BP%29%3B%20note%20that%20there%20is%20no%20concept%20of%20current%20pixel%20within%20the%20block%3B%5Cn-%20direction%20pointer%20%28DP%29%20which%20can%20point%20left%2C%20right%2C%20up%20or%20down%3B%5Cn-%20block%20chooser%20%28CP%29%20which%20can%20point%20to%20the%20left%20or%20to%20the%20right%20from%20the%20direction%20given%20by%20DP%3B%20in%20absolute%20values%20CP%20can%20differ%20from%20DP%20by%2090%20degrees%20counterclockwise%20or%20clockwise%2C%20respectively.%5Cn%5CnInitially%20BP%20points%20to%20the%20block%20which%20contains%20the%20top-left%20corner%20of%20the%20program%2C%20DP%20points%20to%20the%20right%2C%20and%20CP%20points%20to%20the%20left%20%28see%20the%20orange%20square%20on%20the%20image%20below%29.%5Cn%5CnOne%20step%20of%20program%20interpretation%20changes%20the%20state%20of%20IP%20in%20a%20following%20way.%20The%20interpreter%20finds%20the%20furthest%20edge%20of%20the%20current%20color%20block%20in%20the%20direction%20of%20the%20DP.%20From%20all%20pixels%20that%20form%20this%20edge%2C%20the%20interpreter%20selects%20the%20furthest%20one%20in%20the%20direction%20of%20CP.%20After%20this%2C%20BP%20attempts%20to%20move%20from%20this%20pixel%20into%20the%20next%20one%20in%20the%20direction%20of%20DP.%20If%20the%20next%20pixel%20belongs%20to%20a%20colored%20block%2C%20this%20block%20becomes%20the%20current%20one%2C%20and%20two%20other%20parts%20of%20IP%20stay%20the%20same.%20It%20the%20next%20pixel%20is%20black%20or%20outside%20of%20the%20program%2C%20BP%20stays%20the%20same%20but%20two%20other%20parts%20of%20IP%20change.%20If%20CP%20was%20pointing%20to%20the%20left%2C%20now%20it%20points%20to%20the%20right%2C%20and%20DP%20stays%20the%20same.%20If%20CP%20was%20pointing%20to%20the%20right%2C%20now%20it%20points%20to%20the%20left%2C%20and%20DP%20is%20rotated%2090%20degrees%20clockwise.%5Cn%5CnThis%20way%20BP%20will%20never%20point%20to%20a%20black%20block%20%28it%20is%20guaranteed%20that%20top-left%20pixel%20of%20the%20program%20will%20not%20be%20black%29.%5Cn%5CnYou%20are%20given%20a%20Piet%20program.%20You%20have%20to%20figure%20out%20which%20block%20of%20the%20program%20will%20be%20current%20after%20%24%20n%20%24%20steps.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integer%20numbers%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3D50%20%24%20%29%20and%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D5%5Cu00b710%5E%7B7%7D%20%24%20%29.%20Next%20%24%20m%20%24%20lines%20contain%20the%20rows%20of%20the%20program.%20All%20the%20lines%20have%20the%20same%20length%20between%201%20and%2050%20pixels%2C%20and%20consist%20of%20characters%200-9.%20The%20first%20character%20of%20the%20first%20line%20will%20not%20be%20equal%20to%200.%22%2C%22outputFormat%22%3A%22Output%20the%20color%20of%20the%20block%20which%20will%20be%20current%20after%20%24%20n%20%24%20steps%20of%20program%20interpretation.%22%2C%22samples%22%3A%5B%5B%222%2010%5Cn12%5Cn43%5Cn%22%2C%221%5Cn%22%5D%2C%5B%223%2012%5Cn1423%5Cn6624%5Cn6625%5Cn%22%2C%226%5Cn%22%5D%2C%5B%225%209%5Cn10345%5Cn23456%5Cn34567%5Cn45678%5Cn56789%5Cn%22%2C%225%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20IP%20changes%20in%20the%20following%20way.%20After%20step%201%20block%202%20becomes%20current%20one%20and%20stays%20it%20after%20two%20more%20steps.%20After%20step%204%20BP%20moves%20to%20block%203%2C%20after%20step%207%20%5Cu2014%20to%20block%204%2C%20and%20finally%20after%20step%2010%20BP%20returns%20to%20block%201.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF132B%5C%2Fce209b4d4ed0181e1c11bf614ed9fbec2a05e0d7.png%29The%20sequence%20of%20states%20of%20IP%20is%20shown%20on%20the%20image%3A%20the%20arrows%20are%20traversed%20clockwise%2C%20the%20main%20arrow%20shows%20direction%20of%20DP%2C%20the%20side%20one%20%5Cu2014%20the%20direction%20of%20CP.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F132%5C%2FB%22%2C%22id%22%3A%22132B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF132B%22%2C%22title%22%3A%22Piet%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Piet%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Piet</h1>
+<h2>题目描述</h2>
+<div>Piet is one of the most known visual esoteric programming languages. The programs in Piet are constructed from colorful blocks of pixels and interpreted using pretty complicated rules. In this problem we will use a subset of Piet language with simplified rules.
+The program will be a rectangular image consisting of colored and black pixels. The color of each pixel will be given by an integer number between 0 and 9, inclusive, with 0 denoting black. A block of pixels is defined as a rectangle of pixels of the same color (not black). It is guaranteed that all connected groups of colored pixels of the same color will form rectangular blocks. Groups of black pixels can form arbitrary shapes.
+The program is interpreted using movement of instruction pointer (IP) which consists of three parts:
+- current block pointer (BP); note that there is no concept of current pixel within the block;
+- direction pointer (DP) which can point left, right, up or down;
+- block chooser (CP) which can point to the left or to the right from the direction given by DP; in absolute values CP can differ from DP by 90 degrees counterclockwise or clockwise, respectively.
+Initially BP points to the block which contains the top-left corner of the program, DP points to the right, and CP points to the left (see the orange square on the image below).
+One step of program interpretation changes the state of IP in a following way. The interpreter finds the furthest edge of the current color block in the direction of the DP. From all pixels that form this edge, the interpreter selects the furthest one in the direction of CP. After this, BP attempts to move from this pixel into the next one in the direction of DP. If the next pixel belongs to a colored block, this block becomes the current one, and two other parts of IP stay the same. It the next pixel is black or outside of the program, BP stays the same but two other parts of IP change. If CP was pointing to the left, now it points to the right, and DP stays the same. If CP was pointing to the right, now it points to the left, and DP is rotated 90 degrees clockwise.
+This way BP will never point to a black block (it is guaranteed that top-left pixel of the program will not be black).
+You are given a Piet program. You have to figure out which block of the program will be current after $ n $ steps.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integer numbers $ m $ ( $ 1<=m<=50 $ ) and $ n $ ( $ 1<=n<=5·10^{7} $ ). Next $ m $ lines contain the rows of the program. All the lines have the same length between 1 and 50 pixels, and consist of characters 0-9. The first character of the first line will not be equal to 0.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the color of the block which will be current after $ n $ steps of program interpretation.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 10
+12
+43
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 12
+1423
+6624
+6625
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>6
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 9
+10345
+23456
+34567
+45678
+56789
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>5
+</code></pre>
+<h2>说明</h2>
+<div>In the first example IP changes in the following way. After step 1 block 2 becomes current one and stays it after two more steps. After step 4 BP moves to block 3, after step 7 — to block 4, and finally after step 10 BP returns to block 1.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF132B/ce209b4d4ed0181e1c11bf614ed9fbec2a05e0d7.png)The sequence of states of IP is shown on the image: the arrows are traversed clockwise, the main arrow shows direction of DP, the side one — the direction of CP.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Weak Subsequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391072:3wVjJ1Dbaf9P1N+1RoRH2ovRKIavC8FCJ5J6eORocFI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Little%20Petya%20very%20much%20likes%20strings.%20Recently%20he%20has%20received%20a%20voucher%20to%20purchase%20a%20string%20as%20a%20gift%20from%20his%20mother.%20The%20string%20can%20be%20bought%20in%20the%20local%20shop.%20One%20can%20consider%20that%20the%20shop%20has%20all%20sorts%20of%20strings%20over%20the%20alphabet%20of%20fixed%20size.%20The%20size%20of%20the%20alphabet%20is%20equal%20to%20%24%20k%20%24%20.%20However%2C%20the%20voucher%20has%20a%20string%20type%20limitation%3A%20specifically%2C%20the%20voucher%20can%20be%20used%20to%20purchase%20string%20%24%20s%20%24%20if%20the%20length%20of%20string%27s%20longest%20substring%20that%20is%20also%20its%20weak%20subsequence%20%28see%20the%20definition%20given%20below%29%20equals%20%24%20w%20%24%20.%5Cn%5CnString%20%24%20a%20%24%20with%20the%20length%20of%20%24%20n%20%24%20is%20considered%20the%20weak%20subsequence%20of%20the%20string%20%24%20s%20%24%20with%20the%20length%20of%20%24%20m%20%24%20%2C%20if%20there%20exists%20such%20a%20set%20of%20indexes%20%24%201%3C%3Di_%7B1%7D%26lt%3Bi_%7B2%7D%26lt%3B...%26lt%3Bi_%7Bn%7D%3C%3Dm%20%24%20%2C%20that%20has%20the%20following%20two%20properties%3A%5Cn%5Cn-%20%24%20a_%7Bk%7D%3Ds_%7Bik%7D%20%24%20for%20all%20%24%20k%20%24%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%3B%5Cn-%20there%20exists%20at%20least%20one%20such%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%26lt%3Bn%20%24%20%29%2C%20for%20which%20%24%20i_%7Bk%2B1%7D%5Cu2013i_%7Bk%7D%26gt%3B1%20%24%20.%5Cn%5CnPetya%20got%20interested%20how%20many%20different%20strings%20are%20available%20for%20him%20to%20purchase%20in%20the%20shop.%20As%20the%20number%20of%20strings%20can%20be%20very%20large%2C%20please%20find%20it%20modulo%20%24%201000000007%20%24%20%28%20%24%2010%5E%7B9%7D%2B7%20%24%20%29.%20If%20there%20are%20infinitely%20many%20such%20strings%2C%20print%20%5C%22-1%5C%22.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%3C%3D10%5E%7B6%7D%20%24%20%29%20and%20%24%20w%20%24%20%28%20%24%202%3C%3Dw%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20alphabet%20size%20and%20the%20required%20length%20of%20the%20maximum%20substring%20that%20also%20is%20the%20weak%20subsequence%2C%20correspondingly.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20number%20%5Cu2014%20the%20number%20of%20strings%20Petya%20can%20buy%20using%20the%20voucher%2C%20modulo%20%24%201000000007%20%24%20%28%20%24%2010%5E%7B9%7D%2B7%20%24%20%29.%20If%20there%20are%20infinitely%20many%20such%20strings%2C%20print%20%5C%22-1%5C%22%20%28without%20the%20quotes%29.%22%2C%22samples%22%3A%5B%5B%222%202%5Cn%22%2C%2210%5Cn%22%5D%2C%5B%223%205%5Cn%22%2C%221593%5Cn%22%5D%2C%5B%222%20139%5Cn%22%2C%22717248223%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20Petya%20can%20buy%20the%20following%20strings%3A%20aaa%2C%20aab%2C%20abab%2C%20abb%2C%20abba%2C%20baa%2C%20baab%2C%20baba%2C%20bba%2C%20bbb.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F135%5C%2FE%22%2C%22id%22%3A%22135E%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%20%20%5Cr%5Cn%5Cr%5Cn%5Cu5c0f%24Petya%24%5Cu975e%5Cu5e38%5Cu559c%5Cu6b22%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu6700%5Cu8fd1%5Cu4ed6%5Cu6536%5Cu5230%5Cu4e86%5Cu4ed6%5Cu5988%5Cu5988%5Cu9001%5Cu7ed9%5Cu4ed6%5Cu7684%5Cu4e00%5Cu4efd%5Cu793c%5Cu7269%5Cuff1a%5Cu4e00%5Cu5f20%5Cu8d2d%5Cu4e70%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu4f18%5Cu60e0%5Cu5238%5Cu3002%5Cu5b57%5Cu7b26%5Cu4e32%5Cu53ef%5Cu4ee5%5Cu5728%5Cu5f53%5Cu5730%5Cu7684%5Cu5546%5Cu5e97%5Cu4e70%5Cu5230%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu8ba4%5Cu4e3a%5Cu5546%5Cu5e97%5Cu91cc%5Cu6709%5Cu6240%5Cu6709%5Cu957f%5Cu5ea6%5Cu4e3a%24k%24%5Cu7684%5Cu3001%5Cu7531%5Cu5b57%5Cu6bcd%5Cu7ec4%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu7136%5Cu800c%5Cuff0c%5Cu8fd9%5Cu5f20%5Cu4f18%5Cu60e0%5Cu5238%5Cu5bf9%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6709%5Cu4e00%5Cu4e9b%5Cu9650%5Cu5236%5Cuff1a%5Cu4f18%5Cu60e0%5Cu5238%5Cu80fd%5Cu7528%5Cu4e8e%5Cu8d2d%5Cu4e70%5Cu5b57%5Cu7b26%5Cu4e32%24s%24%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%24s%24%5Cu7684%5Cu5b50%5Cu4e32%5Cu4e2d%5Cuff0c%5Cu6700%5Cu957f%5Cu201c%5Cu5f31%5Cu5b57%5Cu4e32%5Cu201d%5Cuff08%5Cu4e0b%5Cu9762%5Cu7ed9%5Cu51fa%5Cu4e86%5Cu201c%5Cu5f31%5Cu5b57%5Cu4e32%5Cu7684%5Cu5b9a%5Cu4e49%5Cu201d%5Cuff09%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e3a%24w%24.%20%20%5Cr%5Cn%5Cr%5Cn%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%24a%24%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e3a%24m%24%5Cu7684%5Cu5b50%5Cu4e32%24s%24%5Cu88ab%5Cu79f0%5Cu4f5c%5Cu201c%5Cu5f31%5Cu5b57%5Cu4e32%5Cu201d%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5b58%5Cu5728%5Cu4e00%5Cu7cfb%5Cu5217%5Cu6570%241%5C%5Cleq%20i_1%20%3C%20i_2%20%3C...%3Ci_n%5C%5Cleq%20m%24%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu4e0b%5Cu5217%5Cu6761%5Cu4ef6%5Cu6210%5Cu7acb%5Cuff1a%20%20%5Cr%5Cn%5Cu00b7%20%24%5C%5Cforall%20k%5C%5Cin%5B1%2Cn%5D%24%5Cuff0c%20%24a_%7Bk%7D%3Ds_%7Bik%7D%24%5Cuff1b%20%20%5Cr%5Cn%5Cu00b7%20%5Cu5b58%5Cu5728%5Cu81f3%5Cu5c11%5Cu4e00%5Cu4e2a%24k%5C%5Cin%20%5B1%2Cn%5D%24%5Cuff0c%5Cu4f7f%5Cu5f97%24i_%7Bk%2B1%7D-i_%7Bk%7D%3E1%24.%20%20%5Cr%5Cn%5Cr%5Cn%24Petya%24%5Cu5bf9%5Cu4ed6%5Cu80fd%5Cu7528%5Cu4f18%5Cu60e0%5Cu5238%5Cu8d2d%5Cu4e70%5Cu5546%5Cu5e97%5Cu4e2d%5Cu591a%5Cu5c11%5Cu79cd%5Cu4e0d%5Cu540c%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu4ea7%5Cu751f%5Cu4e86%5Cu5174%5Cu8da3%5Cu3002%5Cu7531%5Cu4e8e%5Cu7b54%5Cu6848%5Cu53ef%5Cu80fd%5Cu5f88%5Cu5927%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu7ed3%5Cu679c%5Cu5bf9%2410%5E%7B9%7D%2B7%24%5Cu53d6%5Cu6a21%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%5Cu5982%5Cu679c%5Cu4e0d%5Cu5b58%5Cu5728%5Cu8fd9%5Cu6837%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%24-1%24.%20%20%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%20%20%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24k%281%3C%3Dk%3C%3D10%5E%7B6%7D%29%24%5Cu548c%24w%282%3C%3Dw%3C%3D10%5E%7B9%7D%29%24%5Cu2014%5Cu2014%5Cu5b57%5Cu6bcd%5Cu8868%5Cu7684%5Cu5927%5Cu5c0f%5Cu548c%5Cu5b50%5Cu4e32%5Cu957f%5Cu5ea6%5Cuff0c%5Cu4e5f%5Cu662f%5Cu201c%5Cu5f31%5Cu5b57%5Cu4e32%5Cu201d%5Cu7684%5Cu957f%5Cu5ea6.%20%20%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%20%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu2014%5Cu2014%24Petya%24%5Cu80fd%5Cu7528%5Cu4f18%5Cu60e0%5Cu5238%5Cu8d2d%5Cu4e70%5Cu7684%5Cu5b57%5Cu4e32%5Cu6570%5Cuff0c%5Cu5bf9%2410%5E9%2B7%24%5Cu53d6%5Cu6a21%5Cuff1b%5Cu82e5%5Cu4e0d%5Cu5b58%5Cu5728%5Cu8fd9%5Cu6837%5Cu7684%5Cu5b57%5Cu4e32%5Cuff0c%5Cu8f93%5Cu51fa%24-1%24.%20%20%5Cr%5Cn%5Cr%5Cn%5Cu7ffb%5Cu8bd1%20By%20%40%5Cu82e5%5Cu5982%5Cu521d%5Cu89c1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A19%2C%22totalAccepted%22%3A10%2C%22pid%22%3A%22CF135E%22%2C%22title%22%3A%22Weak%20Subsequence%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Weak%20Subsequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Weak Subsequence</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+小$Petya$非常喜欢字符串。最近他收到了他妈妈送给他的一份礼物：一张购买字符串的优惠券。字符串可以在当地的商店买到。你可以认为商店里有所有长度为$k$的、由字母组成的字符串。然而，这张优惠券对字符串有一些限制：优惠券能用于购买字符串$s$，当且仅当$s$的子串中，最长“弱字串”（下面给出了“弱字串的定义”）的长度为$w$.
+长度为$n$的字符串$a$的长度为$m$的子串$s$被称作“弱字串”，当且仅当存在一系列数$1\leq i_1 < i_2 <...<i_n\leq m$，使得下列条件成立： · $\forall k\in[1,n]$， $a_{k}=s_{ik}$； · 存在至少一个$k\in [1,n]$，使得$i_{k+1}-i_{k}>1$.
+$Petya$对他能用优惠券购买商店中多少种不同的字符串这个问题产生了兴趣。由于答案可能很大，请输出结果对$10^{9}+7$取模的结果。如果不存在这样的字符串，请输出$-1$.
+## 输入格式
+输入文件的第一行包含两个整数$k(1<=k<=10^{6})$和$w(2<=w<=10^{9})$——字母表的大小和子串长度，也是“弱字串”的长度.
+## 输出格式
+输出一个整数——$Petya$能用优惠券购买的字串数，对$10^9+7$取模；若不存在这样的字串，输出$-1$.
+翻译 By @若如初见</div>
+<h2>题目描述</h2>
+<div>Little Petya very much likes strings. Recently he has received a voucher to purchase a string as a gift from his mother. The string can be bought in the local shop. One can consider that the shop has all sorts of strings over the alphabet of fixed size. The size of the alphabet is equal to $ k $ . However, the voucher has a string type limitation: specifically, the voucher can be used to purchase string $ s $ if the length of string's longest substring that is also its weak subsequence (see the definition given below) equals $ w $ .
+String $ a $ with the length of $ n $ is considered the weak subsequence of the string $ s $ with the length of $ m $ , if there exists such a set of indexes $ 1<=i_{1}&lt;i_{2}&lt;...&lt;i_{n}<=m $ , that has the following two properties:
+- $ a_{k}=s_{ik} $ for all $ k $ from $ 1 $ to $ n $ ;
+- there exists at least one such $ k $ ( $ 1<=k&lt;n $ ), for which $ i_{k+1}–i_{k}&gt;1 $ .
+Petya got interested how many different strings are available for him to purchase in the shop. As the number of strings can be very large, please find it modulo $ 1000000007 $ ( $ 10^{9}+7 $ ). If there are infinitely many such strings, print "-1".</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ k $ ( $ 1<=k<=10^{6} $ ) and $ w $ ( $ 2<=w<=10^{9} $ ) — the alphabet size and the required length of the maximum substring that also is the weak subsequence, correspondingly.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single number — the number of strings Petya can buy using the voucher, modulo $ 1000000007 $ ( $ 10^{9}+7 $ ). If there are infinitely many such strings, print "-1" (without the quotes).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1593
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2 139
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>717248223
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample Petya can buy the following strings: aaa, aab, abab, abb, abba, baa, baab, baba, bba, bbb.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

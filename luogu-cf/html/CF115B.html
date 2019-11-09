@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Lawnmower - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390897:Wbu9J12VhQ8a6u51O+abZ1cQ0nwCG3TNxiFFYZ4olgs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20have%20a%20garden%20consisting%20entirely%20of%20grass%20and%20weeds.%20Your%20garden%20is%20described%20by%20an%20%24%20n%5Cu00d7m%20%24%20grid%2C%20with%20rows%20numbered%20%24%201%20%24%20to%20%24%20n%20%24%20from%20top%20to%20bottom%2C%20and%20columns%20%24%201%20%24%20to%20%24%20m%20%24%20from%20left%20to%20right.%20Each%20cell%20is%20identified%20by%20a%20pair%20%24%20%28r%2Cc%29%20%24%20which%20means%20that%20the%20cell%20is%20located%20at%20row%20%24%20r%20%24%20and%20column%20%24%20c%20%24%20.%20Each%20cell%20may%20contain%20either%20grass%20or%20weeds.%20For%20example%2C%20a%20%24%204%5Cu00d75%20%24%20garden%20may%20look%20as%20follows%20%28empty%20cells%20denote%20grass%29%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2F593291ddc8205e086d1d9f0caee6daf221cd4d06.png%29You%20have%20a%20land-mower%20with%20you%20to%20mow%20all%20the%20weeds.%20Initially%2C%20you%20are%20standing%20with%20your%20lawnmower%20at%20the%20top-left%20corner%20of%20the%20garden.%20That%20is%2C%20at%20cell%20%24%20%281%2C1%29%20%24%20.%20At%20any%20moment%20of%20time%20you%20are%20facing%20a%20certain%20direction%20%5Cu2014%20either%20left%20or%20right.%20And%20initially%2C%20you%20face%20right.%5Cn%5CnIn%20one%20move%20you%20can%20do%20either%20one%20of%20these%3A%5Cn%5Cn1%5C%5C%29%20Move%20one%20cell%20in%20the%20direction%20that%20you%20are%20facing.%5Cn%5Cn-%20if%20you%20are%20facing%20right%3A%20move%20from%20cell%20%24%20%28r%2Cc%29%20%24%20to%20cell%20%24%20%28r%2Cc%2B1%29%20%24%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2Ff511b6ec3d5ee7e9c4711b72b12f3f163a26b1cb.png%29%5Cn-%20if%20you%20are%20facing%20left%3A%20move%20from%20cell%20%24%20%28r%2Cc%29%20%24%20to%20cell%20%24%20%28r%2Cc-1%29%20%24%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2F817d99d95ad6751bb75b016614c67edbc38bc05f.png%29%5Cn%5Cn%202%29%20Move%20one%20cell%20down%20%28that%20is%2C%20from%20cell%20%24%20%28r%2Cc%29%20%24%20to%20cell%20%24%20%28r%2B1%2Cc%29%20%24%20%29%2C%20and%20change%20your%20direction%20to%20the%20opposite%20one.-%20if%20you%20were%20facing%20right%20previously%2C%20you%20will%20face%20left%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2Feaac793c8ad146f5aa886c6e03e5682029ae2d0f.png%29%5Cn-%20if%20you%20were%20facing%20left%20previously%2C%20you%20will%20face%20right%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2F0279ba704667c612234f39ddc6d6e73ff67745d6.png%29%5Cn%5CnYou%20are%20not%20allowed%20to%20leave%20the%20garden.%20Weeds%20will%20be%20mowed%20if%20you%20and%20your%20lawnmower%20are%20standing%20at%20the%20cell%20containing%20the%20weeds%20%28your%20direction%20doesn%27t%20matter%29.%20This%20action%20isn%27t%20counted%20as%20a%20move.%5Cn%5CnWhat%20is%20the%20minimum%20number%20of%20moves%20required%20to%20mow%20all%20the%20weeds%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D150%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20and%20columns%20respectively.%20Then%20follow%20%24%20n%20%24%20lines%20containing%20%24%20m%20%24%20characters%20each%20%5Cu2014%20the%20content%20of%20the%20grid.%20%5C%22G%5C%22%20means%20that%20this%20cell%20contains%20grass.%20%5C%22W%5C%22%20means%20that%20this%20cell%20contains%20weeds.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20top-left%20corner%20of%20the%20grid%20will%20contain%20grass.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20number%20%5Cu2014%20the%20minimum%20number%20of%20moves%20required%20to%20mow%20all%20the%20weeds.%22%2C%22samples%22%3A%5B%5B%224%205%5CnGWGGW%5CnGGWGG%5CnGWGGG%5CnWGGGG%5Cn%22%2C%2211%5Cn%22%5D%2C%5B%223%203%5CnGWW%5CnWWW%5CnWWG%5Cn%22%2C%227%5Cn%22%5D%2C%5B%221%201%5CnG%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22For%20the%20first%20example%2C%20this%20is%20the%20picture%20of%20the%20initial%20state%20of%20the%20grid%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2Fa51efd23c5bfa4baf6ef0e23e14eb6170b199d79.png%29A%20possible%20solution%20is%20by%20mowing%20the%20weeds%20as%20illustrated%20below%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2F15b84025b88eba28511a1ee3af7d5faed84e0e48.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F115%5C%2FB%22%2C%22id%22%3A%22115B%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu4f60%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5b8c%5Cu5168%5Cu7531%5Cu8349%5Cu548c%5Cu6742%5Cu8349%5Cu7ec4%5Cu6210%5Cu7684%5Cu82b1%5Cu56ed%5Cu3002%5Cu4f60%5Cu7684%5Cu82b1%5Cu56ed%5Cu662f%5Cu4e00%5Cu4e2a%20n%5Cu00d7m%5Cu7684%5Cu7f51%5Cu683c%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu65b9%5Cu683c%5Cu6709%5Cu4e00%5Cu5bf9%5Cu5750%5Cu6807%5Cuff08r%5Cuff0cc%5Cuff09%5Cu8868%5Cu793a%5Cu5355%5Cu5143%5Cu683c%5Cu4f4d%5Cu4e8er%5Cu884cc%5Cu5217%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu65b9%5Cu683c%5Cu53ef%5Cu80fd%5Cu6709%5Cu8349%5Cu6216%5Cu6742%5Cu8349%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu4e00%5Cu4e2a4%5Cu00d75%5Cu7684%5Cu82b1%5Cu56ed%5Cu53ef%5Cu80fd%5Cu5982%5Cu4e0b%5Cuff08%5Cu7a7a%5Cu5355%5Cu5143%5Cu683c%5Cu8868%5Cu793a%5Cu8349%5Cuff09%5Cuff1a%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2F593291ddc8205e086d1d9f0caee6daf221cd4d06.png%29%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu6709%5Cu4e00%5Cu53f0%5Cu5272%5Cu8349%5Cu673a%5Cu53ef%5Cu4ee5%5Cu5272%5Cu9664%5Cu6240%5Cu6709%5Cu7684%5Cu6742%5Cu8349%5Cu3002%5Cu6700%5Cu521d%5Cuff0c%5Cu4f60%5Cu7ad9%5Cu5728%5Cu82b1%5Cu56ed%5Cu7684%5Cu5de6%5Cu4e0a%5Cu89d2%5Cu3002%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu5728%5Cu65b9%5Cu683c%5Cuff081%2C1%5Cuff09%5Cu5904%5Cu3002%5Cu5728%5Cu4efb%5Cu4f55%5Cu65f6%5Cu523b%5Cuff0c%5Cu4f60%5Cu90fd%5Cu9762%5Cu4e34%5Cu7740%5Cu67d0%5Cu4e2a%5Cu65b9%5Cu5411%5Cu2014%5Cu2014%5Cu5de6%5Cu6216%5Cu53f3%5Cu3002%5Cu6700%5Cu521d%5Cuff0c%5Cu4f60%5Cu9762%5Cu5bf9%5Cu53f3%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6b65%5Cu9aa4%5Cu4e2d%5Cuff0c%5Cu60a8%5Cu53ef%5Cu4ee5%5Cu6267%5Cu884c%5Cu4ee5%5Cu4e0b%5Cu4efb%5Cu4e00%5Cu64cd%5Cu4f5c%5Cuff1a%5Cr%5Cn%5Cr%5Cn1.%20%5Cu6cbf%5Cu60a8%5Cu9762%5Cu5411%5Cu7684%5Cu65b9%5Cu5411%5Cu79fb%5Cu52a8%5Cu4e00%5Cu4e2a%5Cu5355%5Cu5143%5Cu683c%5Cu3002%5Cr%5Cn%5Cr%5Cn-%20%5Cu5982%5Cu679c%5Cu4f60%5Cu9762%5Cu5411%5Cu53f3%5Cuff1a%5Cu4ece%5Cu65b9%5Cu683c%5Cuff08r%5Cuff0cc%20%5Cuff09%5Cu79fb%5Cu52a8%5Cu5230%5Cu65b9%5Cu683c%5Cuff08r%5Cuff0cc%20%2B%201%20%5Cuff09%20%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2Ff511b6ec3d5ee7e9c4711b72b12f3f163a26b1cb.png%29%5Cr%5Cn%5Cr%5Cn-%20%5Cu5982%5Cu679c%5Cu4f60%5Cu9762%5Cu5411%5Cu5de6%5Cuff1a%5Cu4ece%5Cu65b9%5Cu683c%5Cuff08r%5Cuff0cc%20%5Cuff09%5Cu79fb%5Cu52a8%5Cu5230%5Cu65b9%5Cu683c%5Cuff08r%5Cuff0cc%20-%201%20%5Cuff09%20%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2F817d99d95ad6751bb75b016614c67edbc38bc05f.png%29%5Cr%5Cn%5Cr%5Cn2%29%20%5Cu5411%5Cu4e0b%5Cu79fb%5Cu52a8%5Cu4e00%5Cu683c%5Cuff08%5Cu5373%5Cu4ece%5Cuff08r%5Cuff0cc%20%5Cuff09%5Cu79fb%5Cu52a8%5Cu5230%5Cu65b9%5Cu683c%5Cuff08r%20%2B%201%5Cuff0cc%20%5Cuff09%5Cu4e2d%5Cuff09%5Cuff0c%5Cu5e76%5Cu5c06%5Cu4f60%5Cu7684%5Cu65b9%5Cu5411%5Cu6539%5Cu4e3a%5Cu76f8%5Cu53cd%5Cu7684%5Cu65b9%5Cu5411.%5Cr%5Cn-%20%5Cu5982%5Cu679c%5Cu4f60%5Cu9762%5Cu5411%5Cu53f3%5Cuff0c%5Cu4f60%5Cu5c06%5Cu9762%5Cu5411%5Cu5de6%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2Feaac793c8ad146f5aa886c6e03e5682029ae2d0f.png%29%5Cr%5Cn%5Cr%5Cn-%20%5Cu5982%5Cu679c%5Cu4f60%5Cu9762%5Cu5411%5Cu5de6%5Cuff0c%5Cu4f60%5Cu5c06%5Cu9762%5Cu5bf9%5Cu53f3%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF115B%5C%2F0279ba704667c612234f39ddc6d6e73ff67745d6.png%29%5Cr%5Cn%5Cr%5Cn%5Cu60a8%5Cu4e0d%5Cu5f97%5Cu79bb%5Cu5f00%5Cu82b1%5Cu56ed%5Cu3002%5Cu5982%5Cu679c%5Cu4f60%5Cu548c%5Cu4f60%5Cu7684%5Cu5272%5Cu8349%5Cu673a%5Cu7ad9%5Cu5728%5Cu542b%5Cu6709%5Cu6742%5Cu8349%5Cu7684%5Cu65b9%5Cu683c%5Cu4e2d%5Cuff08%5Cu4f60%5Cu7684%5Cu65b9%5Cu5411%5Cu65e0%5Cu5173%5Cu7d27%5Cu8981%5Cuff09%5Cuff0c%5Cu6742%5Cu8349%5Cu5c31%5Cu4f1a%5Cu88ab%5Cu4fee%5Cu526a%5Cu6389%5Cu3002%5Cu6b64%5Cu64cd%5Cu4f5c%5Cu4e0d%5Cu7b97%5Cu4f5c%5Cu52a8%5Cu4f5c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5272%5Cu9664%5Cu6240%5Cu6709%5Cu6742%5Cu8349%5Cu6240%5Cu9700%5Cu7684%5Cu6700%5Cu5c0f%5Cu79fb%5Cu52a8%5Cu6b21%5Cu6570%5Cu662f%5Cu591a%5Cu5c11%5Cuff1f%5Cr%5Cn%5Cr%5Cn------------%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%5Cu548cm%5Cuff081%3C%3DN%5Cuff0cM%3C%3D150%5Cuff09%5Cu2014%5Cu2014%20%5Cu5206%5Cu522b%5Cu4e3a%5Cu884c%5Cu6570%5Cu548c%5Cu5217%5Cu6570%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765n%5Cu884c%5Cu5305%5Cu542b%5Cu6bcf%5Cu884cm%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu2014%5Cu2014%5Cu65b9%5Cu683c%5Cuff08r%5Cuff0cc%5Cuff09%5Cu7684%5Cu5185%5Cu5bb9%5Cu3002%5Cu201cG%5Cu201d%5Cu8868%5Cu793a%5Cu8be5%5Cu65b9%5Cu683c%5Cu542b%5Cu6709%5Cu8349%5Cu3002%5Cu201cW%5Cu201d%5Cu8868%5Cu793a%5Cu8be5%5Cu65b9%5Cu683c%5Cu542b%5Cu6709%5Cu6742%5Cu8349%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu7f51%5Cu683c%5Cu7684%5Cu5de6%5Cu4e0a%5Cu89d2%5Cu5c06%5Cu5305%5Cu542b%5Cu8349%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cu2014%5Cu2014%5Cu5272%5Cu9664%5Cu6240%5Cu6709%5Cu6742%5Cu8349%5Cu6240%5Cu9700%5Cu7684%5Cu6700%5Cu5c0f%5Cu79fb%5Cu52a8%5Cu6b21%5Cu6570%5Cu3002%22%2C%22tags%22%3A%5B7%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A134%2C%22totalAccepted%22%3A52%2C%22pid%22%3A%22CF115B%22%2C%22title%22%3A%22Lawnmower%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A97056%2C%22title%22%3A%22%5Cu8c01%5Cu8981%5Cu662f%5Cu5e2e%5Cu6211%5Cu628a%5Cu8fd9%5Cu4efd%5Cu4ee3%5Cu7801%5Cu6539%5Cu597d%5Cu4e86%5Cuff0c%5Cu8981%5Cu6211%5Cu5e72%5Cu561b%5Cu6211%5Cu5e72%5Cu561b%22%2C%22forum%22%3A%7B%22id%22%3A12152%2C%22name%22%3A%22CF115B%20Lawnmower%22%2C%22slug%22%3A%22CF115B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3166%22%2C%22title%22%3A%22%5BCQOI2014%5D%5Cu6570%5Cu4e09%5Cu89d2%5Cu5f62%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4040%22%2C%22title%22%3A%22%5BAHOI2014%5C%2FJSOI2014%5D%5Cu5b85%5Cu7537%5Cu8ba1%5Cu5212%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22AT2170%22%2C%22title%22%3A%22Pushing%20Balls%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22AT%22%7D%2C%7B%22pid%22%3A%22P4551%22%2C%22title%22%3A%22%5Cu6700%5Cu957f%5Cu5f02%5Cu6216%5Cu8def%5Cu5f84%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4931%22%2C%22title%22%3A%22%5Cu60c5%5Cu4fa3%5Cuff1f%5Cu7ed9%5Cu6211%5Cu70e7%5Cu4e86%5Cuff01%5Cuff08%5Cu52a0%5Cu5f3a%5Cu7248%5Cuff09%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Lawnmower%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Lawnmower</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+你有一个完全由草和杂草组成的花园。你的花园是一个 n×m的网格。每个方格有一对坐标（r，c）表示单元格位于r行c列。每个方格可能有草或杂草。例如，一个4×5的花园可能如下（空单元格表示草）：
+![](https://cdn.luogu.org/upload/vjudge_pic/CF115B/593291ddc8205e086d1d9f0caee6daf221cd4d06.png)
+你有一台割草机可以割除所有的杂草。最初，你站在花园的左上角。也就是说，在方格（1,1）处。在任何时刻，你都面临着某个方向——左或右。最初，你面对右。
+在一个步骤中，您可以执行以下任一操作：
+1. 沿您面向的方向移动一个单元格。
+- 如果你面向右：从方格（r，c ）移动到方格（r，c + 1 ）
+![](https://cdn.luogu.org/upload/vjudge_pic/CF115B/f511b6ec3d5ee7e9c4711b72b12f3f163a26b1cb.png)
+- 如果你面向左：从方格（r，c ）移动到方格（r，c - 1 ）
+![](https://cdn.luogu.org/upload/vjudge_pic/CF115B/817d99d95ad6751bb75b016614c67edbc38bc05f.png)
+2) 向下移动一格（即从（r，c ）移动到方格（r + 1，c ）中），并将你的方向改为相反的方向.
+- 如果你面向右，你将面向左
+![](https://cdn.luogu.org/upload/vjudge_pic/CF115B/eaac793c8ad146f5aa886c6e03e5682029ae2d0f.png)
+- 如果你面向左，你将面对右
+![](https://cdn.luogu.org/upload/vjudge_pic/CF115B/0279ba704667c612234f39ddc6d6e73ff67745d6.png)
+您不得离开花园。如果你和你的割草机站在含有杂草的方格中（你的方向无关紧要），杂草就会被修剪掉。此操作不算作动作。
+割除所有杂草所需的最小移动次数是多少？
+------------
+# 输入输出格式
+### 输入格式：
+第一行包含两个整数n和m（1<=N，M<=150）—— 分别为行数和列数。接下来n行包含每行m个字符——方格（r，c）的内容。“G”表示该方格含有草。“W”表示该方格含有杂草。
+保证网格的左上角将包含草。
+### 输出格式：
+输出一个数字——割除所有杂草所需的最小移动次数。</div>
+<h2>题目描述</h2>
+<div>You have a garden consisting entirely of grass and weeds. Your garden is described by an $ n×m $ grid, with rows numbered $ 1 $ to $ n $ from top to bottom, and columns $ 1 $ to $ m $ from left to right. Each cell is identified by a pair $ (r,c) $ which means that the cell is located at row $ r $ and column $ c $ . Each cell may contain either grass or weeds. For example, a $ 4×5 $ garden may look as follows (empty cells denote grass):
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115B/593291ddc8205e086d1d9f0caee6daf221cd4d06.png)You have a land-mower with you to mow all the weeds. Initially, you are standing with your lawnmower at the top-left corner of the garden. That is, at cell $ (1,1) $ . At any moment of time you are facing a certain direction — either left or right. And initially, you face right.
+In one move you can do either one of these:
+1\) Move one cell in the direction that you are facing.
+- if you are facing right: move from cell $ (r,c) $ to cell $ (r,c+1) $ ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115B/f511b6ec3d5ee7e9c4711b72b12f3f163a26b1cb.png)
+- if you are facing left: move from cell $ (r,c) $ to cell $ (r,c-1) $ ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115B/817d99d95ad6751bb75b016614c67edbc38bc05f.png)
+2) Move one cell down (that is, from cell $ (r,c) $ to cell $ (r+1,c) $ ), and change your direction to the opposite one.- if you were facing right previously, you will face left ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115B/eaac793c8ad146f5aa886c6e03e5682029ae2d0f.png)
+- if you were facing left previously, you will face right ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115B/0279ba704667c612234f39ddc6d6e73ff67745d6.png)
+You are not allowed to leave the garden. Weeds will be mowed if you and your lawnmower are standing at the cell containing the weeds (your direction doesn't matter). This action isn't counted as a move.
+What is the minimum number of moves required to mow all the weeds?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 1<=n,m<=150 $ ) — the number of rows and columns respectively. Then follow $ n $ lines containing $ m $ characters each — the content of the grid. "G" means that this cell contains grass. "W" means that this cell contains weeds.
+It is guaranteed that the top-left corner of the grid will contain grass.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single number — the minimum number of moves required to mow all the weeds.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+GWGGW
+GGWGG
+GWGGG
+WGGGG
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>11
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3
+GWW
+WWW
+WWG
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>7
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>1 1
+G
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+</code></pre>
+<h2>说明</h2>
+<div>For the first example, this is the picture of the initial state of the grid:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115B/a51efd23c5bfa4baf6ef0e23e14eb6170b199d79.png)A possible solution is by mowing the weeds as illustrated below:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF115B/15b84025b88eba28511a1ee3af7d5faed84e0e48.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>
