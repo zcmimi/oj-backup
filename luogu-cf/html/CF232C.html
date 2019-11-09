@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Doe Graphs - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391927:A7sfBy2DkU9jCdhVcT2un0kUipdjddrn3r19v7sc9Vw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22John%20Doe%20decided%20that%20some%20mathematical%20object%20must%20be%20named%20after%20him.%20So%20he%20invented%20the%20Doe%20graphs.%20The%20Doe%20graphs%20are%20a%20family%20of%20undirected%20graphs%2C%20each%20of%20them%20is%20characterized%20by%20a%20single%20non-negative%20number%20%5Cu2014%20its%20order.%5Cn%5CnWe%27ll%20denote%20a%20graph%20of%20order%20%24%20k%20%24%20as%20%24%20D%28k%29%20%24%20%2C%20and%20we%27ll%20denote%20the%20number%20of%20vertices%20in%20the%20graph%20%24%20D%28k%29%20%24%20as%20%24%20%7CD%28k%29%7C%20%24%20.%20Then%20let%27s%20define%20the%20Doe%20graphs%20as%20follows%3A%5Cn%5Cn-%20%24%20D%280%29%20%24%20consists%20of%20a%20single%20vertex%2C%20that%20has%20number%20%24%201%20%24%20.%5Cn-%20%24%20D%281%29%20%24%20consists%20of%20two%20vertices%20with%20numbers%20%24%201%20%24%20and%20%24%202%20%24%20%2C%20connected%20by%20an%20edge.%5Cn-%20%24%20D%28n%29%20%24%20for%20%24%20n%3E%3D2%20%24%20is%20obtained%20from%20graphs%20%24%20D%28n-1%29%20%24%20and%20%24%20D%28n-2%29%20%24%20.%20%24%20D%28n-1%29%20%24%20and%20%24%20D%28n-2%29%20%24%20are%20joined%20in%20one%20graph%2C%20at%20that%20numbers%20of%20all%20vertices%20of%20graph%20%24%20D%28n-2%29%20%24%20increase%20by%20%24%20%7CD%28n-1%29%7C%20%24%20%28for%20example%2C%20vertex%20number%20%24%201%20%24%20of%20graph%20%24%20D%28n-2%29%20%24%20becomes%20vertex%20number%20%24%201%2B%7CD%28n-1%29%7C%20%24%20%29.%20After%20that%20two%20edges%20are%20added%20to%20the%20graph%3A%20the%20first%20one%20goes%20between%20vertices%20with%20numbers%20%24%20%7CD%28n-1%29%7C%20%24%20and%20%24%20%7CD%28n-1%29%7C%2B1%20%24%20%2C%20the%20second%20one%20goes%20between%20vertices%20with%20numbers%20%24%20%7CD%28n-1%29%7C%2B1%20%24%20and%20%24%201%20%24%20.%20Note%20that%20the%20definition%20of%20graph%20%24%20D%28n%29%20%24%20implies%2C%20that%20%24%20D%28n%29%20%24%20is%20a%20connected%20graph%2C%20its%20vertices%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20%7CD%28n%29%7C%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF232C%5C%2Fef320fe60e1714744a7b026fb199d2799a6e48f5.png%29The%20picture%20shows%20the%20Doe%20graphs%20of%20order%201%2C%202%2C%203%20and%204%2C%20from%20left%20to%20right.John%20thinks%20that%20Doe%20graphs%20are%20that%20great%20because%20for%20them%20exists%20a%20polynomial%20algorithm%20for%20the%20search%20of%20Hamiltonian%20path.%20However%2C%20your%20task%20is%20to%20answer%20queries%20of%20finding%20the%20shortest-length%20path%20between%20the%20vertices%20%24%20a_%7Bi%7D%20%24%20and%20%24%20b_%7Bi%7D%20%24%20in%20the%20graph%20%24%20D%28n%29%20%24%20.%5Cn%5CnA%20path%20between%20a%20pair%20of%20vertices%20%24%20u%20%24%20and%20%24%20v%20%24%20in%20the%20graph%20is%20a%20sequence%20of%20vertices%20%24%20x_%7B1%7D%20%24%20%2C%20%24%20x_%7B2%7D%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20x_%7Bk%7D%20%24%20%24%20%28k%26gt%3B1%29%20%24%20such%2C%20that%20%24%20x_%7B1%7D%3Du%20%24%20%2C%20%24%20x_%7Bk%7D%3Dv%20%24%20%2C%20and%20for%20any%20%24%20i%20%24%20%24%20%28i%26lt%3Bk%29%20%24%20vertices%20%24%20x_%7Bi%7D%20%24%20and%20%24%20x_%7Bi%2B1%7D%20%24%20are%20connected%20by%20a%20graph%20edge.%20The%20length%20of%20path%20%24%20x_%7B1%7D%20%24%20%2C%20%24%20x_%7B2%7D%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20x_%7Bk%7D%20%24%20is%20number%20%24%20%28k-1%29%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20t%20%24%20and%20%24%20n%20%24%20%28%20%24%201%3C%3Dt%3C%3D10%5E%7B5%7D%3B%5Cu00a01%3C%3Dn%3C%3D10%5E%7B3%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries%20and%20the%20order%20of%20the%20given%20graph.%20The%20%24%20i%20%24%20-th%20of%20the%20next%20%24%20t%20%24%20lines%20contains%20two%20integers%20%24%20a_%7Bi%7D%20%24%20and%20%24%20b_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%2Cb_%7Bi%7D%3C%3D10%5E%7B16%7D%20%24%20%2C%20%24%20a_%7Bi%7D%5Cu2260b_%7Bi%7D%20%24%20%29%20%5Cu2014%20numbers%20of%20two%20vertices%20in%20the%20%24%20i%20%24%20-th%20query.%20It%20is%20guaranteed%20that%20%24%20a_%7Bi%7D%2Cb_%7Bi%7D%3C%3D%7CD%28n%29%7C%20%24%20.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specifier%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20preferred%20to%20use%20cin%2C%20cout%20streams%20or%20the%20%25I64d%20specifier.%22%2C%22outputFormat%22%3A%22For%20each%20query%20print%20a%20single%20integer%20on%20a%20single%20line%20%5Cu2014%20the%20length%20of%20the%20shortest%20path%20between%20vertices%20%24%20a_%7Bi%7D%20%24%20and%20%24%20b_%7Bi%7D%20%24%20.%20Print%20the%20answers%20to%20the%20queries%20in%20the%20order%2C%20in%20which%20the%20queries%20are%20given%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%2210%205%5Cn1%202%5Cn1%203%5Cn1%204%5Cn1%205%5Cn2%203%5Cn2%204%5Cn2%205%5Cn3%204%5Cn3%205%5Cn4%205%5Cn%22%2C%221%5Cn1%5Cn1%5Cn2%5Cn1%5Cn2%5Cn3%5Cn1%5Cn2%5Cn1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F232%5C%2FC%22%2C%22id%22%3A%22232C%22%7D%2C%22translation%22%3A%22Doe%5Cu4ee5%5Cu5979%5Cu81ea%5Cu5df1%5Cu7684%5Cu540d%5Cu5b57%5Cu6765%5Cu547d%5Cu540d%5Cu4e0b%5Cu9762%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cr%5Cn%5Cr%5CnD%280%29%5Cu662f%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7f16%5Cu53f7%5Cu4e3a1%5Cu7684%5Cu7ed3%5Cu70b9%5Cu7684%5Cu56fe.%5Cr%5Cn%5Cr%5Cn%20D%281%29%5Cu662f%5Cu53ea%5Cu6709%5Cu4e24%5Cu4e2a%5Cu7f16%5Cu53f7%5Cu5206%5Cu522b%5Cu4e3a1%5Cu548c2%5Cu7684%5Cu70b9%5Cu4e0e%5Cu4e00%5Cu6761%5Cu8fde%5Cu63a5%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu70b9%5Cu7684%5Cu8fb9%5Cu7684%5Cu56fe.%5Cr%5Cn%20%5Cr%5CnD%28n%29%5Cu4ee5%5Cu5982%5Cu4e0b%5Cu65b9%5Cu6cd5%5Cu6784%5Cu9020%5Cr%5Cn%5Cr%5Cn%5Cu5c06D%28n-2%29%5Cu4e2d%5Cu6240%5Cu6709%5Cu70b9%5Cu7684%5Cu7f16%5Cu53f7%5Cu52a0%5Cu4e0a%7CD%28n-1%29%7C%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu70b9%7CD%28n-1%29%7C%5Cu4e0e%5Cu70b9%7CD%28n-1%29%7C%2B1%5Cu4e4b%5Cu95f4%5Cu8fde%5Cu8fb9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu70b9%7CD%28n-1%29%7C%2B1%5Cu4e0e%5Cu70b91%5Cu4e4b%5Cu95f4%5Cu8fde%5Cu8fb9%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728Doe%5Cu5df2%5Cu7ecf%5Cu6784%5Cu9020%5Cu51fa%5Cu4e86D%28n%29%28n%5Cu2264100%29%2C%5Cu5979%5Cu4f1a%5Cu591a%5Cu6b21%5Cu8be2%5Cu95ee%5Cu4f60%5Cu5728%5Cu8fd9%5Cu5f20%5Cu56fe%5Cu4e2dab%5Cu4e24%5Cu70b9%5Cu95f4%5Cu7684%5Cu6700%5Cu77ed%5Cu8def%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A64%2C%22totalAccepted%22%3A31%2C%22pid%22%3A%22CF232C%22%2C%22title%22%3A%22Doe%20Graphs%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1429%22%2C%22title%22%3A%22%5Cu5e73%5Cu9762%5Cu6700%5Cu8fd1%5Cu70b9%5Cu5bf9%5Cuff08%5Cu52a0%5Cu5f3a%5Cu7248%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2231%22%2C%22title%22%3A%22%5BHNOI2002%5D%5Cu8df3%5Cu86a4%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3379%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu8fd1%5Cu516c%5Cu5171%5Cu7956%5Cu5148%5Cuff08LCA%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4451%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu6574%5Cu6570%5Cu7684lqp%5Cu62c6%5Cu5206%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1244G%22%2C%22title%22%3A%22Running%20in%20Pairs%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Doe%20Graphs%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Doe Graphs</h1>
+<h2>题意翻译</h2>
+<div>Doe以她自己的名字来命名下面的无向图
+D(0)是只有一个编号为1的结点的图.
+D(1)是只有两个编号分别为1和2的点与一条连接这两个点的边的图.
+D(n)以如下方法构造
+将D(n-2)中所有点的编号加上|D(n-1)|
+在点|D(n-1)|与点|D(n-1)|+1之间连边。
+在点|D(n-1)|+1与点1之间连边
+现在Doe已经构造出了D(n)(n≤100),她会多次询问你在这张图中ab两点间的最短路</div>
+<h2>题目描述</h2>
+<div>John Doe decided that some mathematical object must be named after him. So he invented the Doe graphs. The Doe graphs are a family of undirected graphs, each of them is characterized by a single non-negative number — its order.
+We'll denote a graph of order $ k $ as $ D(k) $ , and we'll denote the number of vertices in the graph $ D(k) $ as $ |D(k)| $ . Then let's define the Doe graphs as follows:
+- $ D(0) $ consists of a single vertex, that has number $ 1 $ .
+- $ D(1) $ consists of two vertices with numbers $ 1 $ and $ 2 $ , connected by an edge.
+- $ D(n) $ for $ n>=2 $ is obtained from graphs $ D(n-1) $ and $ D(n-2) $ . $ D(n-1) $ and $ D(n-2) $ are joined in one graph, at that numbers of all vertices of graph $ D(n-2) $ increase by $ |D(n-1)| $ (for example, vertex number $ 1 $ of graph $ D(n-2) $ becomes vertex number $ 1+|D(n-1)| $ ). After that two edges are added to the graph: the first one goes between vertices with numbers $ |D(n-1)| $ and $ |D(n-1)|+1 $ , the second one goes between vertices with numbers $ |D(n-1)|+1 $ and $ 1 $ . Note that the definition of graph $ D(n) $ implies, that $ D(n) $ is a connected graph, its vertices are numbered from $ 1 $ to $ |D(n)| $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF232C/ef320fe60e1714744a7b026fb199d2799a6e48f5.png)The picture shows the Doe graphs of order 1, 2, 3 and 4, from left to right.John thinks that Doe graphs are that great because for them exists a polynomial algorithm for the search of Hamiltonian path. However, your task is to answer queries of finding the shortest-length path between the vertices $ a_{i} $ and $ b_{i} $ in the graph $ D(n) $ .
+A path between a pair of vertices $ u $ and $ v $ in the graph is a sequence of vertices $ x_{1} $ , $ x_{2} $ , $ ... $ , $ x_{k} $ $ (k&gt;1) $ such, that $ x_{1}=u $ , $ x_{k}=v $ , and for any $ i $ $ (i&lt;k) $ vertices $ x_{i} $ and $ x_{i+1} $ are connected by a graph edge. The length of path $ x_{1} $ , $ x_{2} $ , $ ... $ , $ x_{k} $ is number $ (k-1) $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ t $ and $ n $ ( $ 1<=t<=10^{5}; 1<=n<=10^{3} $ ) — the number of queries and the order of the given graph. The $ i $ -th of the next $ t $ lines contains two integers $ a_{i} $ and $ b_{i} $ ( $ 1<=a_{i},b_{i}<=10^{16} $ , $ a_{i}≠b_{i} $ ) — numbers of two vertices in the $ i $ -th query. It is guaranteed that $ a_{i},b_{i}<=|D(n)| $ .
+Please, do not use the %lld specifier to read or write 64-bit integers in С++. It is preferred to use cin, cout streams or the %I64d specifier.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query print a single integer on a single line — the length of the shortest path between vertices $ a_{i} $ and $ b_{i} $ . Print the answers to the queries in the order, in which the queries are given in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 5
+1 2
+1 3
+1 4
+1 5
+2 3
+2 4
+2 5
+3 4
+3 5
+4 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+1
+1
+2
+1
+2
+3
+1
+2
+1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Little Elephant and Strings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391694:aa+vPXHeN4DG0OWc5OESL4NIE42PgGYYSZPd9l7QOf0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20Little%20Elephant%20loves%20strings%20very%20much.%5Cn%5CnHe%20has%20an%20array%20%24%20a%20%24%20from%20%24%20n%20%24%20strings%2C%20consisting%20of%20lowercase%20English%20letters.%20Let%27s%20number%20the%20elements%20of%20the%20array%20from%201%20to%20%24%20n%20%24%20%2C%20then%20let%27s%20denote%20the%20element%20number%20%24%20i%20%24%20as%20%24%20a_%7Bi%7D%20%24%20.%20For%20each%20string%20%24%20a_%7Bi%7D%20%24%20%24%20%281%3C%3Di%3C%3Dn%29%20%24%20the%20Little%20Elephant%20wants%20to%20find%20the%20number%20of%20pairs%20of%20integers%20%24%20l%20%24%20and%20%24%20r%20%24%20%24%20%281%3C%3Dl%3C%3Dr%3C%3D%7Ca_%7Bi%7D%7C%29%20%24%20such%20that%20substring%20%24%20a_%7Bi%7D%5Bl...%5C%5C%20r%5D%20%24%20is%20a%20substring%20to%20at%20least%20%24%20k%20%24%20strings%20from%20array%20%24%20a%20%24%20%28including%20the%20%24%20i%20%24%20-th%20string%29.%5Cn%5CnHelp%20the%20Little%20Elephant%20solve%20this%20problem.%5Cn%5CnIf%20you%20are%20not%20familiar%20with%20the%20basic%20notation%20in%20string%20problems%2C%20you%20can%20find%20the%20corresponding%20definitions%20in%20the%20notes.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20space-separated%20integers%20%5Cu2014%20%24%20n%20%24%20and%20%24%20k%20%24%20%24%20%281%3C%3Dn%2Ck%3C%3D10%5E%7B5%7D%29%20%24%20.%20Next%20%24%20n%20%24%20lines%20contain%20array%20%24%20a%20%24%20.%20The%20%24%20i%20%24%20-th%20line%20contains%20a%20non-empty%20string%20%24%20a_%7Bi%7D%20%24%20%2C%20consisting%20of%20lowercase%20English%20letter.%20The%20total%20length%20of%20all%20strings%20%24%20a_%7Bi%7D%20%24%20does%20not%20exceed%20%24%2010%5E%7B5%7D%20%24%20.%22%2C%22outputFormat%22%3A%22On%20a%20single%20line%20print%20%24%20n%20%24%20space-separated%20integers%20%5Cu2014%20the%20%24%20i%20%24%20-th%20number%20is%20the%20answer%20for%20string%20%24%20a_%7Bi%7D%20%24%20.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specifier%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20preferred%20to%20use%20the%20cin%2C%20cout%20streams%20or%20the%20%25I64d%20specifier.%22%2C%22samples%22%3A%5B%5B%223%201%5Cnabc%5Cna%5Cnab%5Cn%22%2C%226%201%203%20%5Cn%22%5D%2C%5B%227%204%5Cnrubik%5Cnfurik%5Cnabab%5Cnbaba%5Cnaaabbbababa%5Cnabababababa%5Cnzero%5Cn%22%2C%221%200%209%209%2021%2030%200%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Let%27s%20assume%20that%20you%20are%20given%20string%20%24%20a%3Da_%7B1%7Da_%7B2%7D...%5C%5C%20a_%7B%7Ca%7C%7D%20%24%20%2C%20then%20let%27s%20denote%20the%20string%27s%20length%20as%20%24%20%7Ca%7C%20%24%20and%20the%20string%27s%20%24%20i%20%24%20-th%20character%20as%20%24%20a_%7Bi%7D%20%24%20.%5Cn%5CnA%20substring%20%24%20a%5Bl...%5C%5C%20r%5D%20%24%20%24%20%281%3C%3Dl%3C%3Dr%3C%3D%7Ca%7C%29%20%24%20of%20string%20%24%20a%20%24%20is%20string%20%24%20a_%7Bl%7Da_%7Bl%2B1%7D...%5C%5C%20a_%7Br%7D%20%24%20.%5Cn%5CnString%20%24%20a%20%24%20is%20a%20substring%20of%20string%20%24%20b%20%24%20%2C%20if%20there%20exists%20such%20pair%20of%20integers%20%24%20l%20%24%20and%20%24%20r%20%24%20%24%20%281%3C%3Dl%3C%3Dr%3C%3D%7Cb%7C%29%20%24%20%2C%20that%20%24%20b%5Bl...%5C%5C%20r%5D%3Da%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F204%5C%2FE%22%2C%22id%22%3A%22204E%22%7D%2C%22translation%22%3A%22%5Cu5c0f%5Cu8c61%5Cu975e%5Cu5e38%5Cu559c%5Cu6b22%5Cu5b57%5Cu7b26%5Cu4e32.%5Cn%5Cn%5Cu4ed6%5Cu73b0%5Cu5728%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6570%5Cu7ec4%24a%24%2C%5Cu5176%5Cu4e2d%5Cu542b%5Cu6709%24n%24%5Cu4e2a%5Cu4ec5%5Cu5305%5Cu542b%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32.%5Cu8ba9%5Cu6211%5Cu4eec%5Cu628a%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7684%5Cu5143%5Cu7d20%5Cu4ece%241%24%5Cu5230%24n%24%5Cu6807%5Cu53f7%2C%5Cu7136%5Cu540e%5Cu6211%5Cu4eec%5Cu8d4b%5Cu4e88%5Cu6bcf%5Cu4e2a%5Cu5143%5Cu7d20%5Cu4e00%5Cu4e2a%5Cu6807%5Cu53f7%24a_i%24.%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%24a_i%281%20%3C%3D%20i%20%3C%3D%20n%24%2C%5Cu5c0f%5Cu8c61%5Cu60f3%5Cu8981%5Cu627e%5Cu5230%5Cu8fd9%5Cu6837%5Cu7684%5Cu4e8c%5Cu5143%5Cu6709%5Cu5e8f%5Cu5bfe%24%28l%2Cr%29%20%28%201%20%3C%3D%20l%20%3C%3D%20r%20%3C%3D%20%7Ca_i%7C%24%5Cu6ee1%5Cu8db3%24a_i%24%5Cu7684%5Cu5b50%5Cu4e32%24%5Bl...r%5D%24%5Cu662f%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6570%5Cu7ec4a%5Cu4e2d%5Cu81f3%5Cu5c11k%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu5b50%5Cu4e32.%5Cn%5Cn%5Cu8bf7%5Cu5e2e%5Cu52a9%5Cu5c0f%5Cu8c61%5Cu89e3%5Cu51b3%5Cu95ee%5Cu9898.%5Cn%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24n%2Ck%24%2C%5Cu610f%5Cu4e49%5Cu5982%5Cu4e0a.%5Cu4e0b%5Cu9762%24n%24%5Cu884c%2C%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%24a_i%24.%20%5Cu4fdd%5Cu8bc1%24%5C%5Csum%20length%28a_i%29%20%3C%3D%2010%5E5%24%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%3A%5Cn%5Cn%5Cu4e00%5Cu884c%2C%24n%24%5Cu4e2a%5Cu6574%5Cu6570%2C%5Cu8868%5Cu793a%5Cu5bf9%5Cu4e8e%5Cu5b57%5Cu7b26%5Cu4e32%24a_i%24%5Cu7684%5Cu7b54%5Cu6848.%5CnC%2B%2B%20%5Cu9009%5Cu624b%5Cu8bf7%5Cu4f7f%5Cu7528%25i64d%5Cu8f93%5Cu51falong%20long.%5Cn%5Cn%5Cn%5Cu611f%5Cu8c22%40Maniac%5Cu4e36%5Cu575a%5Cu679c%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A86%2C%22totalAccepted%22%3A38%2C%22pid%22%3A%22CF204E%22%2C%22title%22%3A%22Little%20Elephant%20and%20Strings%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A36743%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11779%2C%22name%22%3A%22CF204E%20Little%20Elephant%20and%20Strings%22%2C%22slug%22%3A%22CF204E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1659%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu62c9%5Cu62c9%5Cu961f%5Cu6392%5Cu7ec3%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF258D%22%2C%22title%22%3A%22Little%20Elephant%20and%20Broken%20Sorting%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF163E%22%2C%22title%22%3A%22e-Government%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4770%22%2C%22title%22%3A%22%5BNOI2018%5D%5Cu4f60%5Cu7684%5Cu540d%5Cu5b57%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5283%22%2C%22title%22%3A%22%5B%5Cu5341%5Cu4e8c%5Cu7701%5Cu8054%5Cu80032019%5D%5Cu5f02%5Cu6216%5Cu7cbd%5Cu5b50%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Little%20Elephant%20and%20Strings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Little Elephant and Strings</h1>
+<h2>题意翻译</h2>
+<div>小象非常喜欢字符串.
+他现在有一个字符串数组$a$,其中含有$n$个仅包含小写字母的字符串.让我们把这个序列中的元素从$1$到$n$标号,然后我们赋予每个元素一个标号$a_i$.对于每个字符串$a_i(1 <= i <= n$,小象想要找到这样的二元有序対$(l,r) ( 1 <= l <= r <= |a_i|$满足$a_i$的子串$[l...r]$是字符串数组a中至少k个字符串的子串.
+请帮助小象解决问题.
+输入格式:
+第一行两个整数$n,k$,意义如上.下面$n$行,每行一个字符串$a_i$. 保证$\sum length(a_i) <= 10^5$
+输出格式:
+一行,$n$个整数,表示对于字符串$a_i$的答案.
+C++ 选手请使用%i64d输出long long.
+感谢@Maniac丶坚果 提供的翻译</div>
+<h2>题目描述</h2>
+<div>The Little Elephant loves strings very much.
+He has an array $ a $ from $ n $ strings, consisting of lowercase English letters. Let's number the elements of the array from 1 to $ n $ , then let's denote the element number $ i $ as $ a_{i} $ . For each string $ a_{i} $ $ (1<=i<=n) $ the Little Elephant wants to find the number of pairs of integers $ l $ and $ r $ $ (1<=l<=r<=|a_{i}|) $ such that substring $ a_{i}[l...\ r] $ is a substring to at least $ k $ strings from array $ a $ (including the $ i $ -th string).
+Help the Little Elephant solve this problem.
+If you are not familiar with the basic notation in string problems, you can find the corresponding definitions in the notes.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two space-separated integers — $ n $ and $ k $ $ (1<=n,k<=10^{5}) $ . Next $ n $ lines contain array $ a $ . The $ i $ -th line contains a non-empty string $ a_{i} $ , consisting of lowercase English letter. The total length of all strings $ a_{i} $ does not exceed $ 10^{5} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>On a single line print $ n $ space-separated integers — the $ i $ -th number is the answer for string $ a_{i} $ .
+Please, do not use the %lld specifier to read or write 64-bit integers in С++. It is preferred to use the cin, cout streams or the %I64d specifier.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+abc
+a
+ab
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6 1 3 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7 4
+rubik
+furik
+abab
+baba
+aaabbbababa
+abababababa
+zero
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1 0 9 9 21 30 0 
+</code></pre>
+<h2>说明</h2>
+<div>Let's assume that you are given string $ a=a_{1}a_{2}...\ a_{|a|} $ , then let's denote the string's length as $ |a| $ and the string's $ i $ -th character as $ a_{i} $ .
+A substring $ a[l...\ r] $ $ (1<=l<=r<=|a|) $ of string $ a $ is string $ a_{l}a_{l+1}...\ a_{r} $ .
+String $ a $ is a substring of string $ b $ , if there exists such pair of integers $ l $ and $ r $ $ (1<=l<=r<=|b|) $ , that $ b[l...\ r]=a $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

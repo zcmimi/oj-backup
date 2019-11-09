@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Two Segments - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391613:zgbwQXSs12uJkDER92lvFv0ZDukIAjKyIBPBh8lgO8I=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Nick%20has%20some%20permutation%20consisting%20of%20%24%20p%20%24%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20A%20segment%20%24%20%5Bl%2Cr%5D%20%24%20%28%20%24%20l%3C%3Dr%20%24%20%29%20is%20a%20set%20of%20elements%20%24%20p_%7Bi%7D%20%24%20satisfying%20%24%20l%3C%3Di%3C%3Dr%20%24%20.%5Cn%5CnNick%20calls%20a%20pair%20of%20segments%20%24%20%5Ba_%7B0%7D%2Ca_%7B1%7D%5D%20%24%20and%20%24%20%5Bb_%7B0%7D%2Cb_%7B1%7D%5D%20%24%20%28%20%24%201%3C%3Da_%7B0%7D%3C%3Da_%7B1%7D%26lt%3Bb_%7B0%7D%3C%3Db_%7B1%7D%3C%3Dn%20%24%20%29%20good%20if%20all%20their%20%24%20%28a_%7B1%7D-a_%7B0%7D%2Bb_%7B1%7D-b_%7B0%7D%2B2%29%20%24%20elements%2C%20when%20sorted%20in%20ascending%20order%2C%20form%20an%20arithmetic%20progression%20with%20a%20difference%20of%20%24%201%20%24%20.%20That%20is%2C%20when%20they%20sorted%20in%20ascending%20order%2C%20the%20elements%20are%20in%20the%20form%20%24%20%7Bx%2Cx%2B1%2Cx%2B2%2C...%2Cx%2Bm-1%7D%20%24%20%2C%20for%20some%20%24%20x%20%24%20and%20%24%20m%20%24%20.%5Cn%5CnYour%20task%20is%20to%20find%20the%20number%20of%20distinct%20pairs%20of%20good%20segments%20in%20the%20given%20permutation.%20Two%20pairs%20of%20segments%20are%20considered%20distinct%20if%20the%20sets%20of%20elements%20contained%20in%20these%20pairs%20of%20segments%20are%20distinct.%20For%20example%2C%20any%20segment%20%24%20%5Bl%2Cr%5D%20%24%20%24%20%28l%26lt%3Br%29%20%24%20can%20be%20represented%20as%20a%20pair%20of%20segments%2C%20as%20%24%20%5Bl%2Ci%5D%20%24%20and%20%24%20%5Bi%2B1%2Cr%5D%20%24%20%28%20%24%20l%3C%3Di%3C%3Dr%20%24%20%29.%20As%20all%20these%20pairs%20consist%20of%20the%20same%20set%20of%20elements%2C%20they%20are%20considered%20identical.%5Cn%5CnSee%20the%20notes%20accompanying%20the%20sample%20tests%20for%20clarification.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D3%5Cu00b710%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20permutation%20size.%20The%20second%20line%20contains%20%24%20n%20%24%20space-separated%20distinct%20integers%20%24%20p_%7Bi%7D%20%24%20%2C%20%28%20%24%201%3C%3Dp_%7Bi%7D%3C%3Dn%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20number%20of%20good%20pairs%20of%20segments%20of%20permutation%20%24%20p%20%24%20.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specifier%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20preferred%20to%20use%20the%20cin%2C%20cout%20streams%20or%20the%20%25I64d%20specifier.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%202%203%5Cn%22%2C%223%5Cn%22%5D%2C%5B%225%5Cn1%204%205%203%202%5Cn%22%2C%2210%5Cn%22%5D%2C%5B%225%5Cn5%204%203%201%202%5Cn%22%2C%2210%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20the%20following%20pairs%20of%20segments%20are%20good%3A%20%28%20%24%20%5B1%2C1%5D%20%24%20%2C%20%24%20%5B2%2C2%5D%20%24%20%29%3B%20%28%20%24%20%5B2%2C2%5D%20%24%20%2C%20%24%20%5B3%2C3%5D%20%24%20%29%3B%20%28%20%24%20%5B1%2C2%5D%20%24%20%2C%20%24%20%5B3%2C3%5D%20%24%20%29.%20Pair%20of%20segments%20%28%20%24%20%5B1%2C1%5D%20%24%20%2C%20%24%20%5B2%2C3%5D%20%24%20%29%20is%20by%20definition%20equivalent%20to%20pair%20%28%20%24%20%5B1%2C2%5D%20%24%20%2C%20%24%20%5B3%2C3%5D%20%24%20%29%2C%20since%20both%20of%20them%20covers%20the%20same%20set%20of%20elements%2C%20namely%20%24%20%7B1%2C2%2C3%7D%20%24%20.%5Cn%5CnIn%20the%20third%20sample%20the%20following%20pairs%20of%20segments%20are%20good%3A%20%28%20%24%20%5B4%2C4%5D%20%24%20%2C%20%24%20%5B5%2C5%5D%20%24%20%29%3B%20%28%20%24%20%5B3%2C3%5D%20%24%20%2C%20%24%20%5B4%2C5%5D%20%24%20%29%3B%20%28%20%24%20%5B2%2C2%5D%20%24%20%2C%20%24%20%5B3%2C5%5D%20%24%20%29%3B%20%28%20%24%20%5B1%2C1%5D%20%24%20%2C%20%24%20%5B2%2C5%5D%20%24%20%29%3B%20%28%20%24%20%5B3%2C3%5D%20%24%20%2C%20%24%20%5B5%2C5%5D%20%24%20%29%3B%20%28%20%24%20%5B2%2C3%5D%20%24%20%2C%20%24%20%5B5%2C5%5D%20%24%20%29%3B%20%28%20%24%20%5B1%2C3%5D%20%24%20%2C%20%24%20%5B5%2C5%5D%20%24%20%29%3B%20%28%20%24%20%5B2%2C2%5D%20%24%20%2C%20%24%20%5B3%2C3%5D%20%24%20%29%3B%20%28%20%24%20%5B1%2C1%5D%20%24%20%2C%20%24%20%5B2%2C3%5D%20%24%20%29%3B%20%28%20%24%20%5B1%2C1%5D%20%24%20%2C%20%24%20%5B2%2C2%5D%20%24%20%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F193%5C%2FD%22%2C%22id%22%3A%22193D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%241%5C%5Csim%20N%24%5Cu7684%5Cu6392%5Cu5217%5Cuff0c%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu6392%5Cu5217%5Cu4e2d%5Cu9009%5Cu51fa%5Cu4e24%5Cu6bb5%5Cu4e92%5Cu4e0d%5Cu91cd%5Cu53e0%5Cu7684%5Cu533a%5Cu95f4%5Cuff0c%5Cu6c42%5Cu4f7f%5Cu9009%5Cu51fa%5Cu7684%5Cu5143%5Cu7d20%5Cu6392%5Cu5e8f%5Cu540e%5Cu6784%5Cu6210%5Cu516c%5Cu5dee%5Cu4e3a1%5Cu7684%5Cu7b49%5Cu5dee%5Cu6570%5Cu5217%5Cu7684%5Cu65b9%5Cu6848%5Cu6570%5Cu3002%5Cu9009%5Cu51fa%5Cu7684%5Cu4e24%5Cu6bb5%5Cu533a%5Cu95f4%5Cu4e2d%5Cu5143%5Cu7d20%5Cu6784%5Cu6210%5Cu7684%5Cu96c6%5Cu5408%5Cu76f8%5Cu540c%5Cu65f6%5Cu89c6%5Cu4e3a%5Cu540c%5Cu4e00%5Cu79cd%5Cu65b9%5Cu6848%5Cu3002%241%5C%5Cle%20N%5C%5Cle%203%5C%5Ctimes%2010%5E5%24%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A37%2C%22totalAccepted%22%3A21%2C%22pid%22%3A%22CF193D%22%2C%22title%22%3A%22Two%20Segments%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A67826%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A11823%2C%22name%22%3A%22CF193D%20Two%20Segments%22%2C%22slug%22%3A%22CF193D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Two%20Segments%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Two Segments</h1>
+<h2>题意翻译</h2>
+<div>给定一个$1\sim N$的排列，在这个排列中选出两段互不重叠的区间，求使选出的元素排序后构成公差为1的等差数列的方案数。选出的两段区间中元素构成的集合相同时视为同一种方案。$1\le N\le 3\times 10^5$。</div>
+<h2>题目描述</h2>
+<div>Nick has some permutation consisting of $ p $ integers from $ 1 $ to $ n $ . A segment $ [l,r] $ ( $ l<=r $ ) is a set of elements $ p_{i} $ satisfying $ l<=i<=r $ .
+Nick calls a pair of segments $ [a_{0},a_{1}] $ and $ [b_{0},b_{1}] $ ( $ 1<=a_{0}<=a_{1}&lt;b_{0}<=b_{1}<=n $ ) good if all their $ (a_{1}-a_{0}+b_{1}-b_{0}+2) $ elements, when sorted in ascending order, form an arithmetic progression with a difference of $ 1 $ . That is, when they sorted in ascending order, the elements are in the form $ {x,x+1,x+2,...,x+m-1} $ , for some $ x $ and $ m $ .
+Your task is to find the number of distinct pairs of good segments in the given permutation. Two pairs of segments are considered distinct if the sets of elements contained in these pairs of segments are distinct. For example, any segment $ [l,r] $ $ (l&lt;r) $ can be represented as a pair of segments, as $ [l,i] $ and $ [i+1,r] $ ( $ l<=i<=r $ ). As all these pairs consist of the same set of elements, they are considered identical.
+See the notes accompanying the sample tests for clarification.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 1<=n<=3·10^{5} $ ) — the permutation size. The second line contains $ n $ space-separated distinct integers $ p_{i} $ , ( $ 1<=p_{i}<=n $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the number of good pairs of segments of permutation $ p $ .
+Please, do not use the %lld specifier to read or write 64-bit integers in С++. It is preferred to use the cin, cout streams or the %I64d specifier.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+1 4 5 3 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>10
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5
+5 4 3 1 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>10
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample the following pairs of segments are good: ( $ [1,1] $ , $ [2,2] $ ); ( $ [2,2] $ , $ [3,3] $ ); ( $ [1,2] $ , $ [3,3] $ ). Pair of segments ( $ [1,1] $ , $ [2,3] $ ) is by definition equivalent to pair ( $ [1,2] $ , $ [3,3] $ ), since both of them covers the same set of elements, namely $ {1,2,3} $ .
+In the third sample the following pairs of segments are good: ( $ [4,4] $ , $ [5,5] $ ); ( $ [3,3] $ , $ [4,5] $ ); ( $ [2,2] $ , $ [3,5] $ ); ( $ [1,1] $ , $ [2,5] $ ); ( $ [3,3] $ , $ [5,5] $ ); ( $ [2,3] $ , $ [5,5] $ ); ( $ [1,3] $ , $ [5,5] $ ); ( $ [2,2] $ , $ [3,3] $ ); ( $ [1,1] $ , $ [2,3] $ ); ( $ [1,1] $ , $ [2,2] $ ).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

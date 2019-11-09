@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>LLPS - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391675:Qbc97w3rrwfqZlF06dRz5wyzMOs0r9F0Vo9Dw4MbiZE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22This%20problem%27s%20actual%20name%2C%20%5C%22Lexicographically%20Largest%20Palindromic%20Subsequence%5C%22%20is%20too%20long%20to%20fit%20into%20the%20page%20headline.%5Cn%5CnYou%20are%20given%20string%20%24%20s%20%24%20consisting%20of%20lowercase%20English%20letters%20only.%20Find%20its%20lexicographically%20largest%20palindromic%20subsequence.%5Cn%5CnWe%27ll%20call%20a%20non-empty%20string%20%24%20s%5Bp_%7B1%7D%20%24%20%24%20p_%7B2%7D...%5C%5C%20p_%7Bk%7D%5D%20%24%20%3D%20%24%20s_%7Bp1%7Ds_%7Bp2%7D...%5C%5C%20s_%7Bpk%7D%20%24%20%28%20%24%201%20%24%20%24%20%3C%3D%20%24%20%24%20p_%7B1%7D%26lt%3Bp_%7B2%7D%26lt%3B...%26lt%3Bp_%7Bk%7D%20%24%20%24%20%3C%3D%20%24%20%24%20%7Cs%7C%20%24%20%29%20a%20subsequence%20of%20string%20%24%20s%20%24%20%3D%20%24%20s_%7B1%7D%20%24%20%24%20s_%7B2%7D...%5C%5C%20s_%7B%7Cs%7C%7D%20%24%20%2C%20where%20%24%20%7Cs%7C%20%24%20is%20the%20length%20of%20string%20%24%20s%20%24%20.%20For%20example%2C%20strings%20%5C%22abcb%5C%22%2C%20%5C%22b%5C%22%20and%20%5C%22abacaba%5C%22%20are%20subsequences%20of%20string%20%5C%22abacaba%5C%22.%5Cn%5CnString%20%24%20x%20%24%20%3D%20%24%20x_%7B1%7D%20%24%20%24%20x_%7B2%7D...%5C%5C%20x_%7B%7Cx%7C%7D%20%24%20is%20lexicographically%20larger%20than%20string%20%24%20y%20%24%20%3D%20%24%20y_%7B1%7D%20%24%20%24%20y_%7B2%7D...%5C%5C%20y_%7B%7Cy%7C%7D%20%24%20if%20either%20%24%20%7Cx%7C%20%24%20%3E%20%24%20%7Cy%7C%20%24%20and%20%24%20x_%7B1%7D%3Dy_%7B1%7D%20%24%20%2C%20%24%20x_%7B2%7D%3Dy_%7B2%7D%20%24%20%2C%20...%2C%20%24%20x_%7B%7Cy%7C%7D%3Dy_%7B%7Cy%7C%7D%20%24%20%2C%20or%20there%20exists%20such%20number%20%24%20r%20%24%20%28%20%24%20r%26lt%3B%7Cx%7C%20%24%20%2C%20%24%20r%26lt%3B%7Cy%7C%20%24%20%29%20that%20%24%20x_%7B1%7D%3Dy_%7B1%7D%20%24%20%2C%20%24%20x_%7B2%7D%3Dy_%7B2%7D%20%24%20%2C%20...%2C%20%24%20x_%7Br%7D%3Dy_%7Br%7D%20%24%20and%20%24%20x_%7Br%2B1%7D%26gt%3By_%7Br%2B1%7D%20%24%20.%20Characters%20in%20the%20strings%20are%20compared%20according%20to%20their%20ASCII%20codes.%20For%20example%2C%20string%20%5C%22ranger%5C%22%20is%20lexicographically%20larger%20than%20string%20%5C%22racecar%5C%22%20and%20string%20%5C%22poster%5C%22%20is%20lexicographically%20larger%20than%20string%20%5C%22post%5C%22.%5Cn%5CnString%20%24%20s%20%24%20%3D%20%24%20s_%7B1%7D%20%24%20%24%20s_%7B2%7D...%5C%5C%20s_%7B%7Cs%7C%7D%20%24%20is%20a%20palindrome%20if%20it%20matches%20string%20%24%20rev%28s%29%20%24%20%3D%20%24%20s_%7B%7Cs%7C%7D%20%24%20%24%20s_%7B%7Cs%7C-1%7D...%5C%5C%20s_%7B1%7D%20%24%20.%20In%20other%20words%2C%20a%20string%20is%20a%20palindrome%20if%20it%20reads%20the%20same%20way%20from%20left%20to%20right%20and%20from%20right%20to%20left.%20For%20example%2C%20palindromic%20strings%20are%20%5C%22racecar%5C%22%2C%20%5C%22refer%5C%22%20and%20%5C%22z%5C%22.%22%2C%22inputFormat%22%3A%22The%20only%20input%20line%20contains%20a%20non-empty%20string%20%24%20s%20%24%20consisting%20of%20lowercase%20English%20letters%20only.%20Its%20length%20does%20not%20exceed%20%24%2010%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20the%20lexicographically%20largest%20palindromic%20subsequence%20of%20string%20%24%20s%20%24%20.%22%2C%22samples%22%3A%5B%5B%22radar%5Cn%22%2C%22rr%5Cn%22%5D%2C%5B%22bowwowwow%5Cn%22%2C%22wwwww%5Cn%22%5D%2C%5B%22codeforces%5Cn%22%2C%22s%5Cn%22%5D%2C%5B%22mississipp%5Cn%22%2C%22ssss%5Cn%22%5D%5D%2C%22hint%22%3A%22Among%20all%20distinct%20subsequences%20of%20string%20%5C%22radar%5C%22%20the%20following%20ones%20are%20palindromes%3A%20%5C%22a%5C%22%2C%20%5C%22d%5C%22%2C%20%5C%22r%5C%22%2C%20%5C%22aa%5C%22%2C%20%5C%22rr%5C%22%2C%20%5C%22ada%5C%22%2C%20%5C%22rar%5C%22%2C%20%5C%22rdr%5C%22%2C%20%5C%22raar%5C%22%20and%20%5C%22radar%5C%22.%20The%20lexicographically%20largest%20of%20them%20is%20%5C%22rr%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F202%5C%2FA%22%2C%22id%22%3A%22202A%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A11%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF202A%22%2C%22title%22%3A%22LLPS%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22LLPS%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>LLPS</h1>
+<h2>题目描述</h2>
+<div>This problem's actual name, "Lexicographically Largest Palindromic Subsequence" is too long to fit into the page headline.
+You are given string $ s $ consisting of lowercase English letters only. Find its lexicographically largest palindromic subsequence.
+We'll call a non-empty string $ s[p_{1} $ $ p_{2}...\ p_{k}] $ = $ s_{p1}s_{p2}...\ s_{pk} $ ( $ 1 $ $ <= $ $ p_{1}&lt;p_{2}&lt;...&lt;p_{k} $ $ <= $ $ |s| $ ) a subsequence of string $ s $ = $ s_{1} $ $ s_{2}...\ s_{|s|} $ , where $ |s| $ is the length of string $ s $ . For example, strings "abcb", "b" and "abacaba" are subsequences of string "abacaba".
+String $ x $ = $ x_{1} $ $ x_{2}...\ x_{|x|} $ is lexicographically larger than string $ y $ = $ y_{1} $ $ y_{2}...\ y_{|y|} $ if either $ |x| $ > $ |y| $ and $ x_{1}=y_{1} $ , $ x_{2}=y_{2} $ , ..., $ x_{|y|}=y_{|y|} $ , or there exists such number $ r $ ( $ r&lt;|x| $ , $ r&lt;|y| $ ) that $ x_{1}=y_{1} $ , $ x_{2}=y_{2} $ , ..., $ x_{r}=y_{r} $ and $ x_{r+1}&gt;y_{r+1} $ . Characters in the strings are compared according to their ASCII codes. For example, string "ranger" is lexicographically larger than string "racecar" and string "poster" is lexicographically larger than string "post".
+String $ s $ = $ s_{1} $ $ s_{2}...\ s_{|s|} $ is a palindrome if it matches string $ rev(s) $ = $ s_{|s|} $ $ s_{|s|-1}...\ s_{1} $ . In other words, a string is a palindrome if it reads the same way from left to right and from right to left. For example, palindromic strings are "racecar", "refer" and "z".</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only input line contains a non-empty string $ s $ consisting of lowercase English letters only. Its length does not exceed $ 10 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the lexicographically largest palindromic subsequence of string $ s $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>radar
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>rr
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>bowwowwow
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>wwwww
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>codeforces
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>s
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>mississipp
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>ssss
+</code></pre>
+<h2>说明</h2>
+<div>Among all distinct subsequences of string "radar" the following ones are palindromes: "a", "d", "r", "aa", "rr", "ada", "rar", "rdr", "raar" and "radar". The lexicographically largest of them is "rr".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

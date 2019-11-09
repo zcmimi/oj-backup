@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Hit Ball - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391683:ROfhuPiRGGFFRUnPJoldMzxZu50baCBVpjN3YRGSjiY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22When%20Valera%20was%20playing%20football%20on%20a%20stadium%2C%20it%20suddenly%20began%20to%20rain.%20Valera%20hid%20in%20the%20corridor%20under%20the%20grandstand%20not%20to%20get%20wet.%20However%2C%20the%20desire%20to%20play%20was%20so%20great%20that%20he%20decided%20to%20train%20his%20hitting%20the%20ball%20right%20in%20this%20corridor.%20Valera%20went%20back%20far%20enough%2C%20put%20the%20ball%20and%20hit%20it.%20The%20ball%20bounced%20off%20the%20walls%2C%20the%20ceiling%20and%20the%20floor%20corridor%20and%20finally%20hit%20the%20exit%20door.%20As%20the%20ball%20was%20wet%2C%20it%20left%20a%20spot%20on%20the%20door.%20Now%20Valera%20wants%20to%20know%20the%20coordinates%20for%20this%20spot.%5Cn%5CnLet%27s%20describe%20the%20event%20more%20formally.%20The%20ball%20will%20be%20considered%20a%20point%20in%20space.%20The%20door%20of%20the%20corridor%20will%20be%20considered%20a%20rectangle%20located%20on%20plane%20%24%20xOz%20%24%20%2C%20such%20that%20the%20lower%20left%20corner%20of%20the%20door%20is%20located%20at%20point%20%24%20%280%2C0%2C0%29%20%24%20%2C%20and%20the%20upper%20right%20corner%20is%20located%20at%20point%20%24%20%28a%2C0%2Cb%29%20%24%20.%20The%20corridor%20will%20be%20considered%20as%20a%20rectangular%20parallelepiped%2C%20infinite%20in%20the%20direction%20of%20increasing%20coordinates%20of%20%24%20y%20%24%20.%20In%20this%20corridor%20the%20floor%20will%20be%20considered%20as%20plane%20%24%20xOy%20%24%20%2C%20and%20the%20ceiling%20as%20plane%2C%20parallel%20to%20%24%20xOy%20%24%20and%20passing%20through%20point%20%24%20%28a%2C0%2Cb%29%20%24%20.%20We%20will%20also%20assume%20that%20one%20of%20the%20walls%20is%20plane%20%24%20yOz%20%24%20%2C%20and%20the%20other%20wall%20is%20plane%2C%20parallel%20to%20%24%20yOz%20%24%20and%20passing%20through%20point%20%24%20%28a%2C0%2Cb%29%20%24%20.%5Cn%5CnWe%27ll%20say%20that%20the%20ball%20hit%20the%20door%20when%20its%20coordinate%20%24%20y%20%24%20was%20equal%20to%20%24%200%20%24%20.%20Thus%20the%20coordinates%20of%20the%20spot%20are%20point%20%24%20%28x_%7B0%7D%2C0%2Cz_%7B0%7D%29%20%24%20%2C%20where%20%24%200%3C%3Dx_%7B0%7D%3C%3Da%2C0%3C%3Dz_%7B0%7D%3C%3Db%20%24%20.%20To%20hit%20the%20ball%2C%20Valera%20steps%20away%20from%20the%20door%20at%20distance%20%24%20m%20%24%20and%20puts%20the%20ball%20in%20the%20center%20of%20the%20corridor%20at%20point%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF203D%5C%2F926534e341a195c576b439af3eb565130841d0c4.png%29.%20After%20the%20hit%20the%20ball%20flies%20at%20speed%20%24%20%28v_%7Bx%7D%2Cv_%7By%7D%2Cv_%7Bz%7D%29%20%24%20.%20This%20means%20that%20if%20the%20ball%20has%20coordinates%20%24%20%28x%2Cy%2Cz%29%20%24%20%2C%20then%20after%20one%20second%20it%20will%20have%20coordinates%20%24%20%28x%2Bv_%7Bx%7D%2Cy%2Bv_%7By%7D%2Cz%2Bv_%7Bz%7D%29%20%24%20.%5Cn%5CnSee%20image%20in%20notes%20for%20clarification.%5Cn%5CnWhen%20the%20ball%20collides%20with%20the%20ceiling%2C%20the%20floor%20or%20a%20wall%20of%20the%20corridor%2C%20it%20bounces%20off%20in%20accordance%20with%20the%20laws%20of%20reflection%20%28the%20angle%20of%20incidence%20equals%20the%20angle%20of%20reflection%29.%20In%20the%20problem%20we%20consider%20the%20ideal%20physical%20model%2C%20so%20we%20can%20assume%20that%20there%20is%20no%20air%20resistance%2C%20friction%20force%2C%20or%20any%20loss%20of%20energy.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20space-separated%20integers%20%24%20a%2Cb%2Cm%20%24%20%24%20%281%3C%3Da%2Cb%2Cm%3C%3D100%29%20%24%20.%20The%20first%20two%20integers%20specify%20point%20%24%20%28a%2C0%2Cb%29%20%24%20%2C%20through%20which%20the%20ceiling%20and%20one%20of%20the%20corridor%20walls%20pass.%20The%20third%20integer%20is%20the%20distance%20at%20which%20Valera%20went%20away%20from%20the%20door.%5Cn%5CnThe%20second%20line%20has%20three%20space-separated%20integers%20%24%20v_%7Bx%7D%2Cv_%7By%7D%2Cv_%7Bz%7D%20%24%20%24%20%28%7Cv_%7Bx%7D%7C%2C%7Cv_%7By%7D%7C%2C%7Cv_%7Bz%7D%7C%3C%3D100%2Cv_%7By%7D%26lt%3B0%2Cv_%7Bz%7D%3E%3D0%29%20%24%20%5Cu2014%20the%20speed%20of%20the%20ball%20after%20the%20hit.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20ball%20hits%20the%20door.%22%2C%22outputFormat%22%3A%22Print%20two%20real%20numbers%20%24%20x_%7B0%7D%2Cz_%7B0%7D%20%24%20%5Cu2014%20the%20%24%20x%20%24%20and%20%24%20z%20%24%20coordinates%20of%20point%20%24%20%28x_%7B0%7D%2C0%2Cz_%7B0%7D%29%20%24%20%2C%20at%20which%20the%20ball%20hits%20the%20exit%20door.%20The%20answer%20will%20be%20considered%20correct%2C%20if%20its%20absolute%20or%20relative%20error%20does%20not%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%227%202%2011%5Cn3%20-11%202%5Cn%22%2C%226.5000000000%202.0000000000%5Cn%22%5D%2C%5B%227%202%2011%5Cn4%20-3%203%5Cn%22%2C%224.1666666667%201.0000000000%5Cn%22%5D%5D%2C%22hint%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF203D%5C%2F0c7708e89f91300ab8f995583354dd8383126f21.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F203%5C%2FD%22%2C%22id%22%3A%22203D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF203D%22%2C%22title%22%3A%22Hit%20Ball%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Hit%20Ball%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Hit Ball</h1>
+<h2>题目描述</h2>
+<div>When Valera was playing football on a stadium, it suddenly began to rain. Valera hid in the corridor under the grandstand not to get wet. However, the desire to play was so great that he decided to train his hitting the ball right in this corridor. Valera went back far enough, put the ball and hit it. The ball bounced off the walls, the ceiling and the floor corridor and finally hit the exit door. As the ball was wet, it left a spot on the door. Now Valera wants to know the coordinates for this spot.
+Let's describe the event more formally. The ball will be considered a point in space. The door of the corridor will be considered a rectangle located on plane $ xOz $ , such that the lower left corner of the door is located at point $ (0,0,0) $ , and the upper right corner is located at point $ (a,0,b) $ . The corridor will be considered as a rectangular parallelepiped, infinite in the direction of increasing coordinates of $ y $ . In this corridor the floor will be considered as plane $ xOy $ , and the ceiling as plane, parallel to $ xOy $ and passing through point $ (a,0,b) $ . We will also assume that one of the walls is plane $ yOz $ , and the other wall is plane, parallel to $ yOz $ and passing through point $ (a,0,b) $ .
+We'll say that the ball hit the door when its coordinate $ y $ was equal to $ 0 $ . Thus the coordinates of the spot are point $ (x_{0},0,z_{0}) $ , where $ 0<=x_{0}<=a,0<=z_{0}<=b $ . To hit the ball, Valera steps away from the door at distance $ m $ and puts the ball in the center of the corridor at point ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF203D/926534e341a195c576b439af3eb565130841d0c4.png). After the hit the ball flies at speed $ (v_{x},v_{y},v_{z}) $ . This means that if the ball has coordinates $ (x,y,z) $ , then after one second it will have coordinates $ (x+v_{x},y+v_{y},z+v_{z}) $ .
+See image in notes for clarification.
+When the ball collides with the ceiling, the floor or a wall of the corridor, it bounces off in accordance with the laws of reflection (the angle of incidence equals the angle of reflection). In the problem we consider the ideal physical model, so we can assume that there is no air resistance, friction force, or any loss of energy.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three space-separated integers $ a,b,m $ $ (1<=a,b,m<=100) $ . The first two integers specify point $ (a,0,b) $ , through which the ceiling and one of the corridor walls pass. The third integer is the distance at which Valera went away from the door.
+The second line has three space-separated integers $ v_{x},v_{y},v_{z} $ $ (|v_{x}|,|v_{y}|,|v_{z}|<=100,v_{y}&lt;0,v_{z}>=0) $ — the speed of the ball after the hit.
+It is guaranteed that the ball hits the door.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print two real numbers $ x_{0},z_{0} $ — the $ x $ and $ z $ coordinates of point $ (x_{0},0,z_{0}) $ , at which the ball hits the exit door. The answer will be considered correct, if its absolute or relative error does not exceed $ 10^{-6} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 2 11
+3 -11 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6.5000000000 2.0000000000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7 2 11
+4 -3 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4.1666666667 1.0000000000
+</code></pre>
+<h2>说明</h2>
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF203D/0c7708e89f91300ab8f995583354dd8383126f21.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

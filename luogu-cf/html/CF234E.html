@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Champions&#039; League - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391945:PDDOhUNjlDwYah6B0wYKk9zscL0Yf0pUf+2FD/X4WuA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22In%20the%20autumn%20of%20this%20year%2C%20two%20Russian%20teams%20came%20into%20the%20group%20stage%20of%20the%20most%20prestigious%20football%20club%20competition%20in%20the%20world%20%5Cu2014%20the%20UEFA%20Champions%20League.%20Now%2C%20these%20teams%20have%20already%20started%20to%20play%20in%20the%20group%20stage%20and%20are%20fighting%20for%20advancing%20to%20the%20playoffs.%20In%20this%20problem%20we%20are%20interested%20in%20the%20draw%20stage%2C%20the%20process%20of%20sorting%20teams%20into%20groups.%5Cn%5CnThe%20process%20of%20the%20draw%20goes%20as%20follows%20%28the%20rules%20that%20are%20described%20in%20this%20problem%2C%20are%20somehow%20simplified%20compared%20to%20the%20real%20life%29.%20Suppose%20%24%20n%20%24%20teams%20will%20take%20part%20in%20the%20group%20stage%20%28%20%24%20n%20%24%20is%20divisible%20by%20four%29.%20The%20teams%20should%20be%20divided%20into%20groups%20of%20four.%20Let%27s%20denote%20the%20number%20of%20groups%20as%20%24%20m%20%24%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2F65e4300bd0cdae46f7d260b1389d3b214f9ce521.png%29%29.%20Each%20team%20has%20a%20rating%20%5Cu2014%20an%20integer%20characterizing%20the%20team%27s%20previous%20achievements.%20The%20teams%20are%20sorted%20by%20the%20rating%27s%20decreasing%20%28no%20two%20teams%20have%20the%20same%20rating%29.%5Cn%5CnAfter%20that%20four%20%5C%22baskets%5C%22%20are%20formed%2C%20each%20of%20which%20will%20contain%20%24%20m%20%24%20teams%3A%20the%20first%20%24%20m%20%24%20teams%20with%20the%20highest%20rating%20go%20to%20the%20first%20basket%2C%20the%20following%20%24%20m%20%24%20teams%20go%20to%20the%20second%20one%2C%20and%20so%20on.%5Cn%5CnThen%20the%20following%20procedure%20repeats%20%24%20m-1%20%24%20times.%20A%20team%20is%20randomly%20taken%20from%20each%20basket%2C%20first%20from%20the%20first%20basket%2C%20then%20from%20the%20second%2C%20then%20from%20the%20third%2C%20and%20at%20last%2C%20from%20the%20fourth.%20The%20taken%20teams%20form%20another%20group.%20After%20that%2C%20they%20are%20removed%20from%20their%20baskets.%5Cn%5CnThe%20four%20teams%20remaining%20in%20the%20baskets%20after%20%24%20%28m-1%29%20%24%20such%20procedures%20are%20performed%2C%20form%20the%20last%20group.%5Cn%5CnIn%20the%20real%20draw%20the%20random%20selection%20of%20teams%20from%20the%20basket%20is%20performed%20by%20people%20%5Cu2014%20as%20a%20rule%2C%20the%20well-known%20players%20of%20the%20past.%20As%20we%20have%20none%2C%20we%20will%20use%20a%20random%20number%20generator%2C%20which%20is%20constructed%20as%20follows.%20Its%20parameters%20are%20four%20positive%20integers%20%24%20x%2Ca%2Cb%2Cc%20%24%20.%20Every%20time%20there%20is%20a%20call%20to%20the%20random%20number%20generator%2C%20it%20produces%20the%20following%20actions%3A%5Cn%5Cn-%20calculates%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2F2fe2894178b5b7478ae2269aae243e7c851b6173.png%29%3B%5Cn-%20replaces%20parameter%20%24%20x%20%24%20by%20value%20%24%20y%20%24%20%28assigns%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2F72e8070934423a6837039e7a1e2f312765ec26ab.png%29%29%3B%5Cn-%20returns%20%24%20x%20%24%20as%20another%20random%20number.%5Cn%5CnOperation%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2F99fd5677ca5c02520be7595d9b1eaf3e9972e601.png%29%20means%20taking%20the%20remainder%20after%20division%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2Fc19545677f47a50d181dd7b00e822282597427db.png%29%2C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2F770f8dc8f9b95dc42d2401b09019f707ad7418fc.png%29.%5Cn%5CnA%20random%20number%20generator%20will%20be%20used%20in%20the%20draw%20as%20follows%3A%20each%20time%20we%20need%20to%20randomly%20choose%20a%20team%20from%20the%20basket%2C%20it%20will%20generate%20a%20random%20number%20%24%20k%20%24%20.%20The%20teams%20that%20yet%20remain%20in%20the%20basket%20are%20considered%20numbered%20with%20consecutive%20integers%20from%20%24%200%20%24%20to%20%24%20s-1%20%24%20%2C%20in%20the%20order%20of%20decreasing%20rating%2C%20where%20%24%20s%20%24%20is%20the%20current%20size%20of%20the%20basket.%20Then%20a%20team%20number%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2F65912cf5ed5c94787700c166a6eeb79e0114a14b.png%29%20is%20taken%20from%20the%20basket.%5Cn%5CnGiven%20a%20list%20of%20teams%20and%20the%20parameters%20of%20the%20random%20number%20generator%2C%20determine%20the%20result%20of%20the%20draw.%22%2C%22inputFormat%22%3A%22The%20first%20input%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%204%3C%3Dn%3C%3D64%20%24%20%2C%20%24%20n%20%24%20is%20divisible%20by%20four%29%20%5Cu2014%20the%20number%20of%20teams%20that%20take%20part%20in%20the%20sorting.%20The%20second%20line%20contains%20four%20space-separated%20integers%20%24%20x%2Ca%2Cb%2Cc%20%24%20%28%20%24%201%3C%3Dx%2Ca%2Cb%2Cc%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20parameters%20of%20the%20random%20number%20generator.%20Each%20of%20the%20following%20%24%20n%20%24%20lines%20describes%20one%20team.%20The%20description%20consists%20of%20the%20name%20of%20the%20team%20and%20its%20rating%2C%20separated%20by%20a%20single%20space.%20The%20name%20of%20a%20team%20consists%20of%20uppercase%20and%20lowercase%20English%20letters%20and%20has%20length%20from%201%20to%2020%20characters.%20A%20team%27s%20rating%20is%20an%20integer%20from%200%20to%201000.%20All%20teams%27%20names%20are%20distinct.%20All%20team%27s%20ratings%20are%20also%20distinct.%22%2C%22outputFormat%22%3A%22Print%20the%20way%20the%20teams%20must%20be%20sorted%20into%20groups.%20Print%20the%20groups%20in%20the%20order%2C%20in%20which%20they%20are%20formed%20in%20the%20sorting.%20Number%20the%20groups%20by%20consecutive%20uppercase%20English%20letters%2C%20starting%20from%20letter%20%27A%27.%20Inside%20each%20group%20print%20the%20teams%27%20names%20one%20per%20line%2C%20in%20the%20order%20of%20decreasing%20of%20the%20teams%27%20rating.%20See%20samples%20for%20a%20better%20understanding%20of%20the%20output%20format.%22%2C%22samples%22%3A%5B%5B%228%5Cn1%203%201%207%5CnBarcelona%20158%5CnMilan%2090%5CnSpartak%2046%5CnAnderlecht%2048%5CnCeltic%2032%5CnBenfica%2087%5CnZenit%2079%5CnMalaga%2016%5Cn%22%2C%22Group%20A%3A%5CnBarcelona%5CnBenfica%5CnSpartak%5CnCeltic%5CnGroup%20B%3A%5CnMilan%5CnZenit%5CnAnderlecht%5CnMalaga%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20given%20sample%20the%20random%20number%20generator%20will%20be%20executed%20four%20times%3A%5Cn%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2Ffe99c797dbb307d601e0f59e424f6250c45a7d38.png%29%2C%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2Fbaa288fe7b8d960b815b5367ff1126e08e6c706b.png%29%2C%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2F81b191782fc61308d51cf88ac0aba6c561fc0212.png%29%2C%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF234E%5C%2F549ef2ab2cbb05e99d689f6ca803b6fab657873d.png%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F234%5C%2FE%22%2C%22id%22%3A%22234E%22%7D%2C%22tags%22%3A%5B1%2C113%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A34%2C%22totalAccepted%22%3A13%2C%22pid%22%3A%22CF234E%22%2C%22title%22%3A%22Champions%27%20League%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Champions%27%20League%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Champions&#039; League</h1>
+<h2>题目描述</h2>
+<div>In the autumn of this year, two Russian teams came into the group stage of the most prestigious football club competition in the world — the UEFA Champions League. Now, these teams have already started to play in the group stage and are fighting for advancing to the playoffs. In this problem we are interested in the draw stage, the process of sorting teams into groups.
+The process of the draw goes as follows (the rules that are described in this problem, are somehow simplified compared to the real life). Suppose $ n $ teams will take part in the group stage ( $ n $ is divisible by four). The teams should be divided into groups of four. Let's denote the number of groups as $ m $ (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/65e4300bd0cdae46f7d260b1389d3b214f9ce521.png)). Each team has a rating — an integer characterizing the team's previous achievements. The teams are sorted by the rating's decreasing (no two teams have the same rating).
+After that four "baskets" are formed, each of which will contain $ m $ teams: the first $ m $ teams with the highest rating go to the first basket, the following $ m $ teams go to the second one, and so on.
+Then the following procedure repeats $ m-1 $ times. A team is randomly taken from each basket, first from the first basket, then from the second, then from the third, and at last, from the fourth. The taken teams form another group. After that, they are removed from their baskets.
+The four teams remaining in the baskets after $ (m-1) $ such procedures are performed, form the last group.
+In the real draw the random selection of teams from the basket is performed by people — as a rule, the well-known players of the past. As we have none, we will use a random number generator, which is constructed as follows. Its parameters are four positive integers $ x,a,b,c $ . Every time there is a call to the random number generator, it produces the following actions:
+- calculates ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/2fe2894178b5b7478ae2269aae243e7c851b6173.png);
+- replaces parameter $ x $ by value $ y $ (assigns ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/72e8070934423a6837039e7a1e2f312765ec26ab.png));
+- returns $ x $ as another random number.
+Operation ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/99fd5677ca5c02520be7595d9b1eaf3e9972e601.png) means taking the remainder after division: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/c19545677f47a50d181dd7b00e822282597427db.png), ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/770f8dc8f9b95dc42d2401b09019f707ad7418fc.png).
+A random number generator will be used in the draw as follows: each time we need to randomly choose a team from the basket, it will generate a random number $ k $ . The teams that yet remain in the basket are considered numbered with consecutive integers from $ 0 $ to $ s-1 $ , in the order of decreasing rating, where $ s $ is the current size of the basket. Then a team number ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/65912cf5ed5c94787700c166a6eeb79e0114a14b.png) is taken from the basket.
+Given a list of teams and the parameters of the random number generator, determine the result of the draw.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first input line contains integer $ n $ ( $ 4<=n<=64 $ , $ n $ is divisible by four) — the number of teams that take part in the sorting. The second line contains four space-separated integers $ x,a,b,c $ ( $ 1<=x,a,b,c<=1000 $ ) — the parameters of the random number generator. Each of the following $ n $ lines describes one team. The description consists of the name of the team and its rating, separated by a single space. The name of a team consists of uppercase and lowercase English letters and has length from 1 to 20 characters. A team's rating is an integer from 0 to 1000. All teams' names are distinct. All team's ratings are also distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the way the teams must be sorted into groups. Print the groups in the order, in which they are formed in the sorting. Number the groups by consecutive uppercase English letters, starting from letter 'A'. Inside each group print the teams' names one per line, in the order of decreasing of the teams' rating. See samples for a better understanding of the output format.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8
+1 3 1 7
+Barcelona 158
+Milan 90
+Spartak 46
+Anderlecht 48
+Celtic 32
+Benfica 87
+Zenit 79
+Malaga 16
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Group A:
+Barcelona
+Benfica
+Spartak
+Celtic
+Group B:
+Milan
+Zenit
+Anderlecht
+Malaga
+</code></pre>
+<h2>说明</h2>
+<div>In the given sample the random number generator will be executed four times:
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/fe99c797dbb307d601e0f59e424f6250c45a7d38.png),
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/baa288fe7b8d960b815b5367ff1126e08e6c706b.png),
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/81b191782fc61308d51cf88ac0aba6c561fc0212.png),
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF234E/549ef2ab2cbb05e99d689f6ca803b6fab657873d.png).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

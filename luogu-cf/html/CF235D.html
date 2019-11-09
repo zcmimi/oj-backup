@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Graph Game - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391957:XZYw1oysYC2cp7OnRO5y6ytvT9Qfnpz2iRUZU902n8E=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20computer%20science%2C%20there%20is%20a%20method%20called%20%5C%22Divide%20And%20Conquer%20By%20Node%5C%22%20to%20solve%20some%20hard%20problems%20about%20paths%20on%20a%20tree.%20Let%27s%20desribe%20how%20this%20method%20works%20by%20function%3A%5Cn%5Cn%20%24%20solve%28t%29%20%24%20%28%20%24%20t%20%24%20is%20a%20tree%29%3A%5Cn%5Cn1.%20Chose%20a%20node%20%24%20x%20%24%20%28it%27s%20common%20to%20chose%20weight-center%29%20in%20tree%20%24%20t%20%24%20.%20Let%27s%20call%20this%20step%20%5C%22Line%20A%5C%22.%5Cn2.%20Deal%20with%20all%20paths%20that%20pass%20%24%20x%20%24%20.%5Cn3.%20Then%20delete%20%24%20x%20%24%20from%20tree%20%24%20t%20%24%20.%5Cn4.%20After%20that%20%24%20t%20%24%20becomes%20some%20subtrees.%5Cn5.%20Apply%20%24%20solve%20%24%20on%20each%20subtree.%5Cn%5CnThis%20ends%20when%20%24%20t%20%24%20has%20only%20one%20node%20because%20after%20deleting%20it%2C%20there%27s%20nothing.%5Cn%5CnNow%2C%20WJMZBMR%20has%20mistakenly%20believed%20that%20it%27s%20ok%20to%20chose%20any%20node%20in%20%5C%22Line%20A%5C%22.%20So%20he%27ll%20chose%20a%20node%20at%20random.%20To%20make%20the%20situation%20worse%2C%20he%20thinks%20a%20%5C%22tree%5C%22%20should%20have%20the%20same%20number%20of%20edges%20and%20nodes%21%20So%20this%20procedure%20becomes%20like%20that.%5Cn%5CnLet%27s%20define%20the%20variable%20%24%20totalCost%20%24%20.%20Initially%20the%20value%20of%20%24%20totalCost%20%24%20equal%20to%20%24%200%20%24%20.%20So%2C%20%24%20solve%28t%29%20%24%20%28now%20%24%20t%20%24%20is%20a%20graph%29%3A%5Cn%5Cn1.%20%24%20totalCost%3DtotalCost%2B%28size%5Cu00a0of%5Cu00a0t%29%20%24%20.%20The%20operation%20%5C%22%3D%5C%22%20means%20assignment.%20%24%20%28Size%5Cu00a0of%5Cu00a0t%29%20%24%20means%20the%20number%20of%20nodes%20in%20%24%20t%20%24%20.%5Cn2.%20Choose%20a%20node%20%24%20x%20%24%20in%20graph%20%24%20t%20%24%20at%20random%20%28uniformly%20among%20all%20nodes%20of%20%24%20t%20%24%20%29.%5Cn3.%20Then%20delete%20%24%20x%20%24%20from%20graph%20%24%20t%20%24%20.%5Cn4.%20After%20that%20%24%20t%20%24%20becomes%20some%20connected%20components.%5Cn5.%20Apply%20%24%20solve%20%24%20on%20each%20component.%5Cn%5CnHe%27ll%20apply%20%24%20solve%20%24%20on%20a%20connected%20graph%20with%20%24%20n%20%24%20nodes%20and%20%24%20n%20%24%20edges.%20He%20thinks%20it%20will%20work%20quickly%2C%20but%20it%27s%20very%20slow.%20So%20he%20wants%20to%20know%20the%20expectation%20of%20%24%20totalCost%20%24%20of%20this%20procedure.%20Can%20you%20help%20him%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%203%3C%3Dn%3C%3D3000%20%24%20%29%20%5Cu2014%20the%20number%20of%20nodes%20and%20edges%20in%20the%20graph.%20Each%20of%20the%20next%20%24%20n%20%24%20lines%20contains%20two%20space-separated%20integers%20%24%20a_%7Bi%7D%2Cb_%7Bi%7D%20%24%20%24%20%280%3C%3Da_%7Bi%7D%2Cb_%7Bi%7D%3C%3Dn-1%29%20%24%20indicating%20an%20edge%20between%20nodes%20%24%20a_%7Bi%7D%20%24%20and%20%24%20b_%7Bi%7D%20%24%20.%5Cn%5CnConsider%20that%20the%20graph%20nodes%20are%20numbered%20from%20%24%200%20%24%20to%20%24%20%28n-1%29%20%24%20.%20It%27s%20guaranteed%20that%20there%20are%20no%20self-loops%2C%20no%20multiple%20edges%20in%20that%20graph.%20It%27s%20guaranteed%20that%20the%20graph%20is%20connected.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20real%20number%20%5Cu2014%20the%20expectation%20of%20%24%20totalCost%20%24%20.%20Your%20answer%20will%20be%20considered%20correct%20if%20its%20absolute%20or%20relative%20error%20does%20not%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%225%5Cn3%204%5Cn2%203%5Cn2%204%5Cn0%204%5Cn1%202%5Cn%22%2C%2213.166666666666666%5Cn%22%5D%2C%5B%223%5Cn0%201%5Cn1%202%5Cn0%202%5Cn%22%2C%226.000000000000000%5Cn%22%5D%2C%5B%225%5Cn0%201%5Cn1%202%5Cn2%200%5Cn3%200%5Cn4%201%5Cn%22%2C%2213.166666666666666%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20second%20example.%20No%20matter%20what%20we%20choose%20first%2C%20the%20%24%20totalCost%20%24%20will%20always%20be%20%24%203%2B2%2B1%3D6%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F235%5C%2FD%22%2C%22id%22%3A%22235D%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu6c42%5Cu57fa%5Cu73af%5Cu6811%5Cu968f%5Cu673a%5Cu70b9%5Cu5206%5Cu6cbb%5Cu603b%5Cu904d%5Cu5386%5Cu6b21%5Cu6570%5Cu671f%5Cu671b%5Cr%5Cn%5Cr%5Cn%5Cu57fa%5Cu73af%5Cu6811%5Cu968f%5Cu673a%5Cu70b9%5Cu5206%5Cu6cbb%5Cu6b65%5Cu9aa4%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu2460%5Cu904d%5Cu5386%5Cu5f53%5Cu524d%5Cu5206%5Cu6cbb%5Cu533a%5Cu57df%5Cu6240%5Cu6709%5Cu70b9%5Cu4e00%5Cu6b21%5Cr%5Cn%5Cr%5Cn%5Cu2461%5Cu5728%5Cu5f53%5Cu524d%5Cu5206%5Cu6cbb%5Cu533a%5Cu57df%5Cu968f%5Cu673a%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu70b9%24x%24%5Cr%5Cn%5Cr%5Cn%5Cu2462%5Cu5c06%24x%24%5Cu5220%5Cu6389%5Cuff0c%5Cu4ea7%5Cu751f%5Cu7684%5Cu6240%5Cu6709%5Cu8fde%5Cu901a%5Cu5757%5Cu9012%5Cu5f52%5Cu5904%5Cu7406%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%281%20%5C%5Cleq%20n%20%5C%5Cleq%203000%29%24%5Cu8868%5Cu793a%5Cu6811%5Cu7684%5Cu5927%5Cu5c0f%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%24n%24%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%24a_i%20%2C%20b_i%280%20%5C%5Cleq%20a_i%2Cb_i%20%3C%20n%29%24%5Cu8868%5Cu793a%5Cu4e00%5Cu6761%5Cu8fb9%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu6570%5Cu636e%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6d6e%5Cu70b9%5Cu6570%5Cu8868%5Cu793a%5Cu671f%5Cu671b%5Cuff0c%5Cu8bef%5Cu5dee%5Cu4e0d%5Cu8d85%5Cu8fc7%2410%5E%7B-6%7D%24%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A48%2C%22totalAccepted%22%3A25%2C%22pid%22%3A%22CF235D%22%2C%22title%22%3A%22Graph%20Game%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Graph%20Game%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Graph Game</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+求基环树随机点分治总遍历次数期望
+基环树随机点分治步骤：
+①遍历当前分治区域所有点一次
+②在当前分治区域随机选择一个点$x$
+③将$x$删掉，产生的所有连通块递归处理。
+输入数据
+第一行一个正整数$n(1 \leq n \leq 3000)$表示树的大小，接下来$n$行每行两个非负整数$a_i , b_i(0 \leq a_i,b_i < n)$表示一条边
+输出数据
+一行一个浮点数表示期望，误差不超过$10^{-6}$。</div>
+<h2>题目描述</h2>
+<div>In computer science, there is a method called "Divide And Conquer By Node" to solve some hard problems about paths on a tree. Let's desribe how this method works by function:
+$ solve(t) $ ( $ t $ is a tree):
+1. Chose a node $ x $ (it's common to chose weight-center) in tree $ t $ . Let's call this step "Line A".
+2. Deal with all paths that pass $ x $ .
+3. Then delete $ x $ from tree $ t $ .
+4. After that $ t $ becomes some subtrees.
+5. Apply $ solve $ on each subtree.
+This ends when $ t $ has only one node because after deleting it, there's nothing.
+Now, WJMZBMR has mistakenly believed that it's ok to chose any node in "Line A". So he'll chose a node at random. To make the situation worse, he thinks a "tree" should have the same number of edges and nodes! So this procedure becomes like that.
+Let's define the variable $ totalCost $ . Initially the value of $ totalCost $ equal to $ 0 $ . So, $ solve(t) $ (now $ t $ is a graph):
+1. $ totalCost=totalCost+(size of t) $ . The operation "=" means assignment. $ (Size of t) $ means the number of nodes in $ t $ .
+2. Choose a node $ x $ in graph $ t $ at random (uniformly among all nodes of $ t $ ).
+3. Then delete $ x $ from graph $ t $ .
+4. After that $ t $ becomes some connected components.
+5. Apply $ solve $ on each component.
+He'll apply $ solve $ on a connected graph with $ n $ nodes and $ n $ edges. He thinks it will work quickly, but it's very slow. So he wants to know the expectation of $ totalCost $ of this procedure. Can you help him?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $ n $ ( $ 3<=n<=3000 $ ) — the number of nodes and edges in the graph. Each of the next $ n $ lines contains two space-separated integers $ a_{i},b_{i} $ $ (0<=a_{i},b_{i}<=n-1) $ indicating an edge between nodes $ a_{i} $ and $ b_{i} $ .
+Consider that the graph nodes are numbered from $ 0 $ to $ (n-1) $ . It's guaranteed that there are no self-loops, no multiple edges in that graph. It's guaranteed that the graph is connected.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single real number — the expectation of $ totalCost $ . Your answer will be considered correct if its absolute or relative error does not exceed $ 10^{-6} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+3 4
+2 3
+2 4
+0 4
+1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>13.166666666666666
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+0 1
+1 2
+0 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>6.000000000000000
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5
+0 1
+1 2
+2 0
+3 0
+4 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>13.166666666666666
+</code></pre>
+<h2>说明</h2>
+<div>Consider the second example. No matter what we choose first, the $ totalCost $ will always be $ 3+2+1=6 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

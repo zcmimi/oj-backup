@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Little Elephant and Function - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391824:1sTUX3ayWNCYh8so6SpRJz3cs1eVfqHzbvsWpibEZQk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20Little%20Elephant%20enjoys%20recursive%20functions.%5Cn%5CnThis%20time%20he%20enjoys%20the%20sorting%20function.%20Let%20%24%20a%20%24%20is%20a%20permutation%20of%20an%20integers%20from%201%20to%20%24%20n%20%24%20%2C%20inclusive%2C%20and%20%24%20a_%7Bi%7D%20%24%20denotes%20the%20%24%20i%20%24%20-th%20element%20of%20the%20permutation.%20The%20Little%20Elephant%27s%20recursive%20function%20%24%20f%28x%29%20%24%20%2C%20that%20sorts%20the%20first%20%24%20x%20%24%20permutation%27s%20elements%2C%20works%20as%20follows%3A%5Cn%5Cn-%20If%20%24%20x%3D1%20%24%20%2C%20exit%20the%20function.%5Cn-%20Otherwise%2C%20call%20%24%20f%28x-1%29%20%24%20%2C%20and%20then%20make%20%24%20swap%28a_%7Bx-1%7D%2Ca_%7Bx%7D%29%20%24%20%28swap%20the%20%24%20x%20%24%20-th%20and%20%24%20%28x-1%29%20%24%20-th%20elements%20of%20%24%20a%20%24%20%29.%5Cn%5CnThe%20Little%20Elephant%27s%20teacher%20believes%20that%20this%20function%20does%20not%20work%20correctly.%20But%20that-be%20do%20not%20get%20an%20F%2C%20the%20Little%20Elephant%20wants%20to%20show%20the%20performance%20of%20its%20function.%20Help%20him%2C%20find%20a%20permutation%20of%20numbers%20from%201%20to%20%24%20n%20%24%20%2C%20such%20that%20after%20performing%20the%20Little%20Elephant%27s%20function%20%28that%20is%20call%20%24%20f%28n%29%20%24%20%29%2C%20the%20permutation%20will%20be%20sorted%20in%20ascending%20order.%22%2C%22inputFormat%22%3A%22A%20single%20line%20contains%20integer%20%24%20n%20%24%20%24%20%281%3C%3Dn%3C%3D1000%29%20%24%20%5Cu2014%20the%20size%20of%20permutation.%22%2C%22outputFormat%22%3A%22In%20a%20single%20line%20print%20%24%20n%20%24%20distinct%20integers%20from%201%20to%20%24%20n%20%24%20%5Cu2014%20the%20required%20permutation.%20Numbers%20in%20a%20line%20should%20be%20separated%20by%20spaces.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20answer%20exists.%22%2C%22samples%22%3A%5B%5B%221%5Cn%22%2C%221%20%22%5D%2C%5B%222%5Cn%22%2C%222%201%20%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F221%5C%2FA%22%2C%22id%22%3A%22221A%22%7D%2C%22translation%22%3A%22%23%23%23%23%20%5Cu9898%5Cu76ee%5Cu80cc%5Cu666f%20%20%5Cr%5Cn%5Cu5c0f%5Cu8c61%5Cu6709%5Cu4e00%5Cu4e2a%5Cu9012%5Cu5f52%5Cu51fd%5Cu6570%20%20%5Cr%5Cn%23%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%20%20%5Cr%5Cn%5Cu5c0f%5Cu8c61%5Cu5f88%5Cu559c%5Cu6b22%5Cu5bf9%5Cu4e00%5Cu4e2a%5Cu5347%5Cu5e8f%5Cu5e8f%5Cu5217%5Cu8fdb%5Cu884c%5Cu7f16%5Cu8f91%5Cuff0c%5Cu5b83%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5305%5Cu542b%241%24-%24n%24%5Cu5171%24n%24%5Cu4e2a%5Cu6574%5Cu6570%5Cu7684%5Cu5347%5Cu5e8f%5Cu5e8f%5Cu5217%5Cu3002%24a_i%24%5Cu4ee3%5Cu8868%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7b2c%24i%24%5Cu4e2a%5Cu6570%5Cu3002%5Cu5c0f%5Cu8c61%5Cu7684%5Cu9012%5Cu5f52%5Cu51fd%5Cu6570%24f%28x%29%24%5Cu5de5%5Cu4f5c%5Cu539f%5Cu7406%5Cu5982%5Cu4e0b%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%5Cu5982%5Cu679c%24x%3D1%24%5Cuff0c%5Cu9000%5Cu51fa%5Cu51fd%5Cu6570%20%20%5Cr%5Cn-%20%5Cu5426%5Cu5219%5Cuff0c%5Cu8c03%5Cu7528%24f%28x-1%29%24%2C%5Cu5e76%5Cu4e14%5Cu4ea4%5Cu6362%28%24a_%7Bx-1%7D%2Ca_x%24%29%5Cuff08%5Cu5148%5Cu8fdb%5Cu884c%24swap%24%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu8bf7%5Cu5e2e%5Cu52a9%5Cu5c0f%5Cu8c61%5Cu8f93%5Cu51fa%5Cu8fd0%5Cu884c%5Cu51fd%5Cu6570%5Cu540e%5Cu6570%5Cu5217%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24%5Cuff08%241%20%5C%5Cleq%20n%20%5C%5Cleq%201000%24%5Cuff09%5Cu3002%5Cu610f%5Cu4e49%5Cu5982%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%20%20%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%24n%24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6392%5Cu5e8f%5Cu540e%5Cu7684%5Cu5e8f%5Cu5217%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A9%2C%22totalAccepted%22%3A6%2C%22pid%22%3A%22CF221A%22%2C%22title%22%3A%22Little%20Elephant%20and%20Function%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Little%20Elephant%20and%20Function%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Little Elephant and Function</h1>
+<h2>题意翻译</h2>
+<div>#### 题目背景
+小象有一个递归函数
+#### 题目描述
+小象很喜欢对一个升序序列进行编辑，它有一个包含$1$-$n$共$n$个整数的升序序列。$a_i$代表这个序列中第$i$个数。小象的递归函数$f(x)$工作原理如下：
+- 如果$x=1$，退出函数
+- 否则，调用$f(x-1)$,并且交换($a_{x-1},a_x$)（先进行$swap$）
+请帮助小象输出运行函数后数列的结果。
+#### 输入格式
+只有一个整数$n$（$1 \leq n \leq 1000$）。意义如题目描述
+#### 输出格式
+$n$个整数，表示排序后的序列
+</div>
+<h2>题目描述</h2>
+<div>The Little Elephant enjoys recursive functions.
+This time he enjoys the sorting function. Let $ a $ is a permutation of an integers from 1 to $ n $ , inclusive, and $ a_{i} $ denotes the $ i $ -th element of the permutation. The Little Elephant's recursive function $ f(x) $ , that sorts the first $ x $ permutation's elements, works as follows:
+- If $ x=1 $ , exit the function.
+- Otherwise, call $ f(x-1) $ , and then make $ swap(a_{x-1},a_{x}) $ (swap the $ x $ -th and $ (x-1) $ -th elements of $ a $ ).
+The Little Elephant's teacher believes that this function does not work correctly. But that-be do not get an F, the Little Elephant wants to show the performance of its function. Help him, find a permutation of numbers from 1 to $ n $ , such that after performing the Little Elephant's function (that is call $ f(n) $ ), the permutation will be sorted in ascending order.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>A single line contains integer $ n $ $ (1<=n<=1000) $ — the size of permutation.</div>
+<h3>输出格式</h3>
+<br />
+<div>In a single line print $ n $ distinct integers from 1 to $ n $ — the required permutation. Numbers in a line should be separated by spaces.
+It is guaranteed that the answer exists.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 1 </code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

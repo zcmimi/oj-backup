@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Little Elephant and Sorting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391699:1fM/7QuaVQWxsNvZwnFtnhzSU0PrFCS8F9iVigF97AU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20Little%20Elephant%20loves%20sortings.%5Cn%5CnHe%20has%20an%20array%20%24%20a%20%24%20consisting%20of%20%24%20n%20%24%20integers.%20Let%27s%20number%20the%20array%20elements%20from%201%20to%20%24%20n%20%24%20%2C%20then%20the%20%24%20i%20%24%20-th%20element%20will%20be%20denoted%20as%20%24%20a_%7Bi%7D%20%24%20.%20The%20Little%20Elephant%20can%20make%20one%20move%20to%20choose%20an%20arbitrary%20pair%20of%20integers%20%24%20l%20%24%20and%20%24%20r%20%24%20%24%20%281%3C%3Dl%3C%3Dr%3C%3Dn%29%20%24%20and%20increase%20%24%20a_%7Bi%7D%20%24%20by%20%24%201%20%24%20for%20all%20%24%20i%20%24%20such%20that%20%24%20l%3C%3Di%3C%3Dr%20%24%20.%5Cn%5CnHelp%20the%20Little%20Elephant%20find%20the%20minimum%20number%20of%20moves%20he%20needs%20to%20convert%20array%20%24%20a%20%24%20to%20an%20arbitrary%20array%20sorted%20in%20the%20non-decreasing%20order.%20Array%20%24%20a%20%24%20%2C%20consisting%20of%20%24%20n%20%24%20elements%2C%20is%20sorted%20in%20the%20non-decreasing%20order%20if%20for%20any%20%24%20i%20%24%20%24%20%281%3C%3Di%26lt%3Bn%29%20%24%20%24%20a_%7Bi%7D%3C%3Da_%7Bi%2B1%7D%20%24%20holds.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%24%20%281%3C%3Dn%3C%3D10%5E%7B5%7D%29%20%24%20%5Cu2014%20the%20size%20of%20array%20%24%20a%20%24%20.%20The%20next%20line%20contains%20%24%20n%20%24%20integers%2C%20separated%20by%20single%20spaces%20%5Cu2014%20array%20%24%20a%20%24%20%24%20%281%3C%3Da_%7Bi%7D%3C%3D10%5E%7B9%7D%29%20%24%20.%20The%20array%20elements%20are%20listed%20in%20the%20line%20in%20the%20order%20of%20their%20index%27s%20increasing.%22%2C%22outputFormat%22%3A%22In%20a%20single%20line%20print%20a%20single%20integer%20%5Cu2014%20the%20answer%20to%20the%20problem.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specifier%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20preferred%20to%20use%20the%20cin%2C%20cout%20streams%20or%20the%20%25I64d%20specifier.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%202%203%5Cn%22%2C%220%5Cn%22%5D%2C%5B%223%5Cn3%202%201%5Cn%22%2C%222%5Cn%22%5D%2C%5B%224%5Cn7%204%201%2047%5Cn%22%2C%226%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20the%20array%20is%20already%20sorted%20in%20the%20non-decreasing%20order%2C%20so%20the%20answer%20is%20%24%200%20%24%20.%5Cn%5CnIn%20the%20second%20sample%20you%20need%20to%20perform%20two%20operations%3A%20first%20increase%20numbers%20from%20second%20to%20third%20%28after%20that%20the%20array%20will%20be%3A%20%5C%5C%5B3%2C%203%2C%202%5C%5C%5D%29%2C%20and%20second%20increase%20only%20the%20last%20element%20%28the%20array%20will%20be%3A%20%5C%5C%5B3%2C%203%2C%203%5C%5C%5D%29.%5Cn%5CnIn%20the%20third%20sample%20you%20should%20make%20at%20least%206%20steps.%20The%20possible%20sequence%20of%20the%20operations%20is%3A%20%282%3B%203%29%2C%20%282%3B%203%29%2C%20%282%3B%203%29%2C%20%283%3B%203%29%2C%20%283%3B%203%29%2C%20%283%3B%203%29.%20After%20that%20the%20array%20converts%20to%20%5C%5C%5B7%2C%207%2C%207%2C%2047%5C%5C%5D.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F205%5C%2FB%22%2C%22id%22%3A%22205B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF205B%22%2C%22title%22%3A%22Little%20Elephant%20and%20Sorting%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Little%20Elephant%20and%20Sorting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Little Elephant and Sorting</h1>
+<h2>题目描述</h2>
+<div>The Little Elephant loves sortings.
+He has an array $ a $ consisting of $ n $ integers. Let's number the array elements from 1 to $ n $ , then the $ i $ -th element will be denoted as $ a_{i} $ . The Little Elephant can make one move to choose an arbitrary pair of integers $ l $ and $ r $ $ (1<=l<=r<=n) $ and increase $ a_{i} $ by $ 1 $ for all $ i $ such that $ l<=i<=r $ .
+Help the Little Elephant find the minimum number of moves he needs to convert array $ a $ to an arbitrary array sorted in the non-decreasing order. Array $ a $ , consisting of $ n $ elements, is sorted in the non-decreasing order if for any $ i $ $ (1<=i&lt;n) $ $ a_{i}<=a_{i+1} $ holds.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ $ (1<=n<=10^{5}) $ — the size of array $ a $ . The next line contains $ n $ integers, separated by single spaces — array $ a $ $ (1<=a_{i}<=10^{9}) $ . The array elements are listed in the line in the order of their index's increasing.</div>
+<h3>输出格式</h3>
+<br />
+<div>In a single line print a single integer — the answer to the problem.
+Please, do not use the %lld specifier to read or write 64-bit integers in С++. It is preferred to use the cin, cout streams or the %I64d specifier.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+3 2 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+7 4 1 47
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>6
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample the array is already sorted in the non-decreasing order, so the answer is $ 0 $ .
+In the second sample you need to perform two operations: first increase numbers from second to third (after that the array will be: \[3, 3, 2\]), and second increase only the last element (the array will be: \[3, 3, 3\]).
+In the third sample you should make at least 6 steps. The possible sequence of the operations is: (2; 3), (2; 3), (2; 3), (3; 3), (3; 3), (3; 3). After that the array converts to \[7, 7, 7, 47\].</div>
+</article>
+</div>
+</div>
+</body>
+</html>

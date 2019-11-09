@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Snake - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391855:NAAVFSJyWxbe37X7GBVZxo5PiFQDgVglfrAuSPxmQMg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%20us%20remind%20you%20the%20rules%20of%20a%20very%20popular%20game%20called%20%5C%22Snake%5C%22%20%28or%20sometimes%20%5C%22Boa%5C%22%2C%20%5C%22Python%5C%22%20or%20%5C%22Worm%5C%22%29.%5Cn%5CnThe%20game%20field%20is%20represented%20by%20an%20%24%20n%5Cu00d7m%20%24%20rectangular%20table.%20Some%20squares%20of%20the%20field%20are%20considered%20impassable%20%28walls%29%2C%20all%20other%20squares%20of%20the%20fields%20are%20passable.%5Cn%5CnYou%20control%20a%20snake%2C%20the%20snake%20consists%20of%20segments.%20Each%20segment%20takes%20up%20exactly%20one%20passable%20square%20of%20the%20field%2C%20but%20any%20passable%20square%20contains%20at%20most%20one%20segment.%20All%20segments%20are%20indexed%20by%20integers%20from%20%24%201%20%24%20to%20%24%20k%20%24%20%2C%20where%20%24%20k%20%24%20is%20the%20snake%27s%20length.%20The%20%24%201%20%24%20-th%20segment%20is%20the%20head%20and%20the%20%24%20k%20%24%20-th%20segment%20is%20the%20tail.%20For%20any%20%24%20i%20%24%20%28%20%24%201%3C%3Di%26lt%3Bk%20%24%20%29%2C%20segments%20with%20indexes%20%24%20i%20%24%20and%20%24%20i%2B1%20%24%20are%20located%20in%20the%20adjacent%20squares%20of%20the%20field%2C%20that%20is%2C%20these%20squares%20share%20a%20common%20side.%5Cn%5CnOne%20of%20the%20passable%20field%20squares%20contains%20an%20apple.%20The%20snake%27s%20aim%20is%20to%20reach%20the%20apple%20and%20eat%20it%20%28that%20is%2C%20to%20position%20its%20head%20in%20the%20square%20with%20the%20apple%29.%5Cn%5CnThe%20snake%20moves%20throughout%20the%20game.%20During%20one%20move%20the%20snake%20can%20move%20its%20head%20to%20an%20adjacent%20field%20square.%20All%20other%20segments%20follow%20the%20head.%20That%20is%2C%20each%20segment%20number%20%24%20i%20%24%20%24%20%281%26lt%3Bi%3C%3Dk%29%20%24%20moves%20to%20the%20square%20that%20has%20just%20had%20segment%20number%20%24%20i-1%20%24%20.%20Consider%20that%20all%20segments%20including%20the%20head%20move%20simultaneously%20%28see%20the%20second%20test%20sample%29.%20If%20the%20snake%27s%20head%20moves%20to%20an%20unpassable%20square%20or%20to%20the%20square%2C%20occupied%20by%20its%20other%20segment%2C%20the%20snake%20dies.%20That%27s%20why%20we%20will%20consider%20such%20moves%20unvalid.%5Cn%5CnYour%20task%20is%20to%20determine%20the%20minimum%20number%20of%20valid%20moves%20that%20the%20snake%20needs%20to%20reach%20the%20apple.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20space-separated%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D15%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20and%20columns%20of%20the%20game%20field.%5Cn%5CnNext%20%24%20n%20%24%20lines%20describe%20the%20game%20field.%20Each%20of%20these%20lines%20contains%20%24%20m%20%24%20characters.%20Character%20%5C%22%5C%5C%23%5C%22%20represents%20a%20wall%2C%20%5C%22.%5C%22%20is%20a%20passable%20square%2C%20%5C%22%40%5C%22%20is%20an%20apple.%20The%20snake%27s%20first%20segment%20is%20represented%20by%20character%20%5C%221%5C%22%2C%20the%20second%20one%20segment%20%5Cu2014%20by%20character%20%5C%222%5C%22%20and%20so%20on.%5Cn%5CnThe%20game%20field%20description%20doesn%27t%20contain%20any%20characters%20besides%20%5C%22%5C%5C%23%27%2C%20%5C%22.%5C%22%2C%20%5C%22%40%5C%22%20and%20digits%20%28except%200%29.%20It%20is%20guaranteed%20that%20the%20described%20field%20is%20correct.%20It%20is%20guaranteed%20that%20the%20described%20field%20contains%20exactly%20one%20apple%20and%20exactly%20one%20snake%2C%20the%20snake%27s%20length%20is%20at%20least%203%20and%20at%20most%209.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20to%20the%20output%20%5Cu2014%20the%20minimum%20number%20of%20moves%20needed%20to%20reach%20the%20apple.%20If%20the%20snake%20can%27t%20reach%20the%20apple%2C%20print%20-1.%22%2C%22samples%22%3A%5B%5B%224%205%5Cn%23%23...%5Cn..1%23%40%5Cn432%23.%5Cn...%23.%5Cn%22%2C%224%5Cn%22%5D%2C%5B%224%204%5Cn%2378%23%5Cn.612%5Cn.543%5Cn..%40.%5Cn%22%2C%226%5Cn%22%5D%2C%5B%223%202%5Cn3%40%5Cn2%23%5Cn1%23%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F225%5C%2FD%22%2C%22id%22%3A%22225D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu81f3%5Cu591a15%2A15%5Cu7684%5Cu8d2a%5Cu5403%5Cu86c7%5Cu68cb%5Cu76d8%5Cuff0c%5Cu86c7%5Cu957f%5Cu5ea6%5Cu81f3%5Cu591a%5Cu662f9%5Cuff0c%5Cu5176%5Cu4e2d%5Cuff0c%27.%27%5Cu8868%5Cu793a%5Cu7a7a%5Cu683c%5Cuff0c%27%23%27%5Cu8868%5Cu793a%5Cu969c%5Cu788d%5Cuff0c%27%40%27%5Cu662f%5Cu86c7%5Cu8981%5Cu5403%5Cu7684%5Cu4e1c%5Cu897f%5Cu3002%5Cu86c7%5Cu4e0d%5Cu80fd%5Cu8d70%5Cu51fa%5Cu68cb%5Cu76d8%5Cuff0c%5Cu4e5f%5Cu4e0d%5Cu80fd%5Cu8d70%5Cu5230%5Cu81ea%5Cu5df1%5Cu8eab%5Cu4e0a%5Cu6216%5Cu969c%5Cu788d%5Cu4e0a%5Cu95ee%5Cu6700%5Cu5c11%5Cu8d70%5Cu51e0%5Cu6b65%5Cu80fd%5Cu5403%5Cu5230%5Cu98df%5Cu7269%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A123%2C%22totalAccepted%22%3A39%2C%22pid%22%3A%22CF225D%22%2C%22title%22%3A%22Snake%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2210%22%2C%22title%22%3A%22Haywire%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF796E%22%2C%22title%22%3A%22Exam%20Cheating%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF292C%22%2C%22title%22%3A%22Beautiful%20IP%20Addresses%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4323%22%2C%22title%22%3A%22%5BJSOI2016%5D%5Cu72ec%5Cu7279%5Cu7684%5Cu6811%5Cu53f6%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5020%22%2C%22title%22%3A%22%5Cu8d27%5Cu5e01%5Cu7cfb%5Cu7edf%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Snake%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Snake</h1>
+<h2>题意翻译</h2>
+<div>给定一个至多15*15的贪吃蛇棋盘，蛇长度至多是9，其中，'.'表示空格，'#'表示障碍，'@'是蛇要吃的东西。蛇不能走出棋盘，也不能走到自己身上或障碍上问最少走几步能吃到食物 </div>
+<h2>题目描述</h2>
+<div>Let us remind you the rules of a very popular game called "Snake" (or sometimes "Boa", "Python" or "Worm").
+The game field is represented by an $ n×m $ rectangular table. Some squares of the field are considered impassable (walls), all other squares of the fields are passable.
+You control a snake, the snake consists of segments. Each segment takes up exactly one passable square of the field, but any passable square contains at most one segment. All segments are indexed by integers from $ 1 $ to $ k $ , where $ k $ is the snake's length. The $ 1 $ -th segment is the head and the $ k $ -th segment is the tail. For any $ i $ ( $ 1<=i&lt;k $ ), segments with indexes $ i $ and $ i+1 $ are located in the adjacent squares of the field, that is, these squares share a common side.
+One of the passable field squares contains an apple. The snake's aim is to reach the apple and eat it (that is, to position its head in the square with the apple).
+The snake moves throughout the game. During one move the snake can move its head to an adjacent field square. All other segments follow the head. That is, each segment number $ i $ $ (1&lt;i<=k) $ moves to the square that has just had segment number $ i-1 $ . Consider that all segments including the head move simultaneously (see the second test sample). If the snake's head moves to an unpassable square or to the square, occupied by its other segment, the snake dies. That's why we will consider such moves unvalid.
+Your task is to determine the minimum number of valid moves that the snake needs to reach the apple.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two space-separated integers $ n $ and $ m $ ( $ 1<=n,m<=15 $ ) — the number of rows and columns of the game field.
+Next $ n $ lines describe the game field. Each of these lines contains $ m $ characters. Character "\#" represents a wall, "." is a passable square, "@" is an apple. The snake's first segment is represented by character "1", the second one segment — by character "2" and so on.
+The game field description doesn't contain any characters besides "\#', ".", "@" and digits (except 0). It is guaranteed that the described field is correct. It is guaranteed that the described field contains exactly one apple and exactly one snake, the snake's length is at least 3 and at most 9.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer to the output — the minimum number of moves needed to reach the apple. If the snake can't reach the apple, print -1.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+##...
+..1#@
+432#.
+...#.
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 4
+#78#
+.612
+.543
+..@.
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>6
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 2
+3@
+2#
+1#
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>-1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

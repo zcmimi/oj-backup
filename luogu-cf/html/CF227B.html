@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Effective Approach - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391881:bbucyvakLYo6gwK4KhrbUk/bpRPMjDb9xPUiKo80/Qw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Once%20at%20a%20team%20training%20Vasya%2C%20Petya%20and%20Sasha%20got%20a%20problem%20on%20implementing%20linear%20search%20in%20an%20array.%5Cn%5CnAccording%20to%20the%20boys%2C%20linear%20search%20works%20as%20follows.%20The%20array%20elements%20in%20a%20pre-selected%20order%20are%20in%20turn%20compared%20with%20the%20number%20that%20you%20need%20to%20find.%20Once%20you%20find%20the%20array%20element%20that%20is%20equal%20to%20the%20required%20one%2C%20the%20search%20ends.%20The%20efficiency%20of%20the%20algorithm%20is%20the%20number%20of%20performed%20comparisons.%20The%20fewer%20comparisons%20the%20linear%20search%20has%20made%2C%20the%20more%20effective%20it%20is.%5Cn%5CnVasya%20believes%20that%20a%20linear%20search%20would%20work%20better%20if%20it%20sequentially%20iterates%20through%20the%20elements%2C%20starting%20with%20the%20%24%201%20%24%20-st%20one%20%28in%20this%20problem%20we%20consider%20the%20elements%20of%20the%20array%20indexed%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%29%20and%20ending%20with%20the%20%24%20n%20%24%20-th%20one.%20And%20Petya%20says%20that%20Vasya%20is%20wrong%3A%20the%20search%20will%20need%20less%20comparisons%20if%20it%20sequentially%20iterates%20the%20elements%20starting%20from%20the%20%24%20n%20%24%20-th%20and%20ending%20with%20the%20%24%201%20%24%20-st%20one.%20Sasha%20argues%20that%20the%20two%20approaches%20are%20equivalent.%5Cn%5CnTo%20finally%20begin%20the%20task%2C%20the%20teammates%20decided%20to%20settle%20the%20debate%20and%20compare%20the%20two%20approaches%20on%20an%20example.%20For%20this%2C%20they%20took%20an%20array%20that%20is%20a%20permutation%20of%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%2C%20and%20generated%20%24%20m%20%24%20queries%20of%20the%20form%3A%20find%20element%20with%20value%20%24%20b_%7Bi%7D%20%24%20in%20the%20array.%20They%20want%20to%20calculate%20for%20both%20approaches%20how%20many%20comparisons%20in%20total%20the%20linear%20search%20will%20need%20to%20respond%20to%20all%20queries.%20If%20the%20first%20search%20needs%20fewer%20comparisons%2C%20then%20the%20winner%20of%20the%20dispute%20is%20Vasya.%20If%20the%20second%20one%20does%2C%20then%20the%20winner%20is%20Petya.%20If%20both%20approaches%20make%20the%20same%20number%20of%20comparisons%2C%20then%20Sasha%27s%20got%20the%20upper%20hand.%5Cn%5CnBut%20the%20problem%20is%2C%20linear%20search%20is%20too%20slow.%20That%27s%20why%20the%20boys%20aren%27t%20going%20to%20find%20out%20who%20is%20right%20before%20the%20end%20of%20the%20training%2C%20unless%20you%20come%20in%20here.%20Help%20them%20to%20determine%20who%20will%20win%20the%20dispute.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%24%20%281%3C%3Dn%3C%3D10%5E%7B5%7D%29%20%24%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20array.%20The%20second%20line%20contains%20%24%20n%20%24%20distinct%20space-separated%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%24%20%281%3C%3Da_%7Bi%7D%3C%3Dn%29%20%24%20%5Cu2014%20the%20elements%20of%20array.%5Cn%5CnThe%20third%20line%20contains%20integer%20%24%20m%20%24%20%24%20%281%3C%3Dm%3C%3D10%5E%7B5%7D%29%20%24%20%5Cu2014%20the%20number%20of%20queries.%20The%20last%20line%20contains%20%24%20m%20%24%20space-separated%20integers%20%24%20b_%7B1%7D%2Cb_%7B2%7D%2C...%2Cb_%7Bm%7D%20%24%20%24%20%281%3C%3Db_%7Bi%7D%3C%3Dn%29%20%24%20%5Cu2014%20the%20search%20queries.%20Note%20that%20the%20queries%20can%20repeat.%22%2C%22outputFormat%22%3A%22Print%20two%20integers%2C%20showing%20how%20many%20comparisons%20Vasya%27s%20approach%20needs%20and%20how%20many%20comparisons%20Petya%27s%20approach%20needs.%20Separate%20the%20numbers%20by%20spaces.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specifier%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20preferred%20to%20use%20cin%2C%20cout%20streams%20or%20the%20%25I64d%20specifier.%22%2C%22samples%22%3A%5B%5B%222%5Cn1%202%5Cn1%5Cn1%5Cn%22%2C%221%202%5Cn%22%5D%2C%5B%222%5Cn2%201%5Cn1%5Cn1%5Cn%22%2C%222%201%5Cn%22%5D%2C%5B%223%5Cn3%201%202%5Cn3%5Cn1%202%203%5Cn%22%2C%226%206%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20Vasya%27s%20approach%20will%20make%20one%20comparison%20%28it%20starts%20with%20the%20%24%201%20%24%20-st%20element%20and%20immediately%20finds%20the%20required%20number%29%2C%20and%20Petya%27s%20approach%20makes%20two%20comparisons%20%28first%20he%20compares%20with%20the%20%24%202%20%24%20-nd%20array%20element%2C%20doesn%27t%20find%20the%20search%20item%20and%20compares%20with%20the%20%24%201%20%24%20-st%20element%29.%5Cn%5CnIn%20the%20second%20sample%2C%20on%20the%20contrary%2C%20Vasya%27s%20approach%20will%20need%20two%20comparisons%20%28first%20with%20%24%201%20%24%20-st%20element%2C%20and%20then%20with%20the%20%24%202%20%24%20-nd%29%2C%20and%20Petya%27s%20approach%20will%20find%20the%20required%20value%20in%20one%20comparison%20%28the%20first%20comparison%20with%20the%20%24%202%20%24%20-nd%20element%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F227%5C%2FB%22%2C%22id%22%3A%22227B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A9%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF227B%22%2C%22title%22%3A%22Effective%20Approach%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Effective%20Approach%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Effective Approach</h1>
+<h2>题目描述</h2>
+<div>Once at a team training Vasya, Petya and Sasha got a problem on implementing linear search in an array.
+According to the boys, linear search works as follows. The array elements in a pre-selected order are in turn compared with the number that you need to find. Once you find the array element that is equal to the required one, the search ends. The efficiency of the algorithm is the number of performed comparisons. The fewer comparisons the linear search has made, the more effective it is.
+Vasya believes that a linear search would work better if it sequentially iterates through the elements, starting with the $ 1 $ -st one (in this problem we consider the elements of the array indexed from $ 1 $ to $ n $ ) and ending with the $ n $ -th one. And Petya says that Vasya is wrong: the search will need less comparisons if it sequentially iterates the elements starting from the $ n $ -th and ending with the $ 1 $ -st one. Sasha argues that the two approaches are equivalent.
+To finally begin the task, the teammates decided to settle the debate and compare the two approaches on an example. For this, they took an array that is a permutation of integers from $ 1 $ to $ n $ , and generated $ m $ queries of the form: find element with value $ b_{i} $ in the array. They want to calculate for both approaches how many comparisons in total the linear search will need to respond to all queries. If the first search needs fewer comparisons, then the winner of the dispute is Vasya. If the second one does, then the winner is Petya. If both approaches make the same number of comparisons, then Sasha's got the upper hand.
+But the problem is, linear search is too slow. That's why the boys aren't going to find out who is right before the end of the training, unless you come in here. Help them to determine who will win the dispute.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ $ (1<=n<=10^{5}) $ — the number of elements in the array. The second line contains $ n $ distinct space-separated integers $ a_{1},a_{2},...,a_{n} $ $ (1<=a_{i}<=n) $ — the elements of array.
+The third line contains integer $ m $ $ (1<=m<=10^{5}) $ — the number of queries. The last line contains $ m $ space-separated integers $ b_{1},b_{2},...,b_{m} $ $ (1<=b_{i}<=n) $ — the search queries. Note that the queries can repeat.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print two integers, showing how many comparisons Vasya's approach needs and how many comparisons Petya's approach needs. Separate the numbers by spaces.
+Please, do not use the %lld specifier to read or write 64-bit integers in С++. It is preferred to use cin, cout streams or the %I64d specifier.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+1 2
+1
+1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+2 1
+1
+1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+3 1 2
+3
+1 2 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>6 6
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample Vasya's approach will make one comparison (it starts with the $ 1 $ -st element and immediately finds the required number), and Petya's approach makes two comparisons (first he compares with the $ 2 $ -nd array element, doesn't find the search item and compares with the $ 1 $ -st element).
+In the second sample, on the contrary, Vasya's approach will need two comparisons (first with $ 1 $ -st element, and then with the $ 2 $ -nd), and Petya's approach will find the required value in one comparison (the first comparison with the $ 2 $ -nd element).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

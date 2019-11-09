@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Range Increments - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391401:VSulXSVEWSWLyyYfDep1Bvy0UV0RHAPxc8fxLH33wTw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Polycarpus%20is%20an%20amateur%20programmer.%20Now%20he%20is%20analyzing%20a%20friend%27s%20program.%20He%20has%20already%20found%20there%20the%20function%20rangeIncrement%28l%2C%20r%29%2C%20that%20adds%201%20to%20each%20element%20of%20some%20array%20%24%20a%20%24%20for%20all%20indexes%20in%20the%20segment%20%24%20%5Bl%2Cr%5D%20%24%20.%20In%20other%20words%2C%20this%20function%20does%20the%20following%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3Efunction%20rangeIncrement%28l%2C%20r%29%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20for%20i%20%3A%3D%20l%20..%20r%20do%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20a%5Bi%5D%20%3D%20a%5Bi%5D%20%2B%201%3Cbr%3E%3C%5C%2Fbr%3E%60Polycarpus%20knows%20the%20state%20of%20the%20array%20%24%20a%20%24%20after%20a%20series%20of%20function%20calls.%20He%20wants%20to%20determine%20the%20minimum%20number%20of%20function%20calls%20that%20lead%20to%20such%20state.%20In%20addition%2C%20he%20wants%20to%20find%20what%20function%20calls%20are%20needed%20in%20this%20case.%20It%20is%20guaranteed%20that%20the%20required%20number%20of%20calls%20does%20not%20exceed%20%24%2010%5E%7B5%7D%20%24%20.%5Cn%5CnBefore%20calls%20of%20function%20rangeIncrement%28l%2C%20r%29%20all%20array%20elements%20equal%20zero.%22%2C%22inputFormat%22%3A%22The%20first%20input%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20array%20%24%20a%5B1...%5C%5C%20n%5D%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20its%20integer%20space-separated%20elements%2C%20%24%20a%5B1%5D%2Ca%5B2%5D%2C...%2Ca%5Bn%5D%20%24%20%28%20%24%200%3C%3Da%5Bi%5D%3C%3D10%5E%7B5%7D%20%24%20%29%20after%20some%20series%20of%20function%20calls%20rangeIncrement%28l%2C%20r%29.%5Cn%5CnIt%20is%20guaranteed%20that%20at%20least%20one%20element%20of%20the%20array%20is%20positive.%20It%20is%20guaranteed%20that%20the%20answer%20contains%20no%20more%20than%20%24%2010%5E%7B5%7D%20%24%20calls%20of%20function%20rangeIncrement%28l%2C%20r%29.%22%2C%22outputFormat%22%3A%22Print%20on%20the%20first%20line%20%24%20t%20%24%20%5Cu2014%20the%20minimum%20number%20of%20calls%20of%20function%20rangeIncrement%28l%2C%20r%29%2C%20that%20lead%20to%20the%20array%20from%20the%20input%20data.%20It%20is%20guaranteed%20that%20this%20number%20will%20turn%20out%20not%20more%20than%20%24%2010%5E%7B5%7D%20%24%20.%5Cn%5CnThen%20print%20%24%20t%20%24%20lines%20%5Cu2014%20the%20descriptions%20of%20function%20calls%2C%20one%20per%20line.%20Each%20line%20should%20contain%20two%20integers%20%24%20l_%7Bi%7D%2Cr_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dl_%7Bi%7D%3C%3Dr_%7Bi%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20arguments%20of%20the%20%24%20i%20%24%20-th%20call%20rangeIncrement%28l%2C%20r%29.%20Calls%20can%20be%20applied%20in%20any%20order.%5Cn%5CnIf%20there%20are%20multiple%20solutions%2C%20you%20are%20allowed%20to%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%226%5Cn1%202%201%201%204%201%5Cn%22%2C%225%5Cn2%202%5Cn5%205%5Cn5%205%5Cn5%205%5Cn1%206%5Cn%22%5D%2C%5B%225%5Cn1%200%201%200%201%5Cn%22%2C%223%5Cn1%201%5Cn3%203%5Cn5%205%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20sample%20requires%20a%20call%20for%20the%20entire%20array%2C%20and%20four%20additional%20calls%3A%5Cn%5Cn-%20one%20for%20the%20segment%20%5C%5C%5B2%2C2%5C%5C%5D%20%28i.e.%20the%20second%20element%20of%20the%20array%29%2C%5Cn-%20three%20for%20the%20segment%20%5C%5C%5B5%2C5%5C%5C%5D%20%28i.e.%20the%20fifth%20element%20of%20the%20array%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F174%5C%2FC%22%2C%22id%22%3A%22174C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF174C%22%2C%22title%22%3A%22Range%20Increments%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Range%20Increments%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Range Increments</h1>
+<h2>题目描述</h2>
+<div>Polycarpus is an amateur programmer. Now he is analyzing a friend's program. He has already found there the function rangeIncrement(l, r), that adds 1 to each element of some array $ a $ for all indexes in the segment $ [l,r] $ . In other words, this function does the following:
+`<br></br>function rangeIncrement(l, r)<br></br> for i := l .. r do<br></br> a[i] = a[i] + 1<br></br>`Polycarpus knows the state of the array $ a $ after a series of function calls. He wants to determine the minimum number of function calls that lead to such state. In addition, he wants to find what function calls are needed in this case. It is guaranteed that the required number of calls does not exceed $ 10^{5} $ .
+Before calls of function rangeIncrement(l, r) all array elements equal zero.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first input line contains a single integer $ n $ ( $ 1<=n<=10^{5} $ ) — the length of the array $ a[1...\ n] $ .
+The second line contains its integer space-separated elements, $ a[1],a[2],...,a[n] $ ( $ 0<=a[i]<=10^{5} $ ) after some series of function calls rangeIncrement(l, r).
+It is guaranteed that at least one element of the array is positive. It is guaranteed that the answer contains no more than $ 10^{5} $ calls of function rangeIncrement(l, r).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print on the first line $ t $ — the minimum number of calls of function rangeIncrement(l, r), that lead to the array from the input data. It is guaranteed that this number will turn out not more than $ 10^{5} $ .
+Then print $ t $ lines — the descriptions of function calls, one per line. Each line should contain two integers $ l_{i},r_{i} $ ( $ 1<=l_{i}<=r_{i}<=n $ ) — the arguments of the $ i $ -th call rangeIncrement(l, r). Calls can be applied in any order.
+If there are multiple solutions, you are allowed to print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+1 2 1 1 4 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+2 2
+5 5
+5 5
+5 5
+1 6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+1 0 1 0 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3
+1 1
+3 3
+5 5
+</code></pre>
+<h2>说明</h2>
+<div>The first sample requires a call for the entire array, and four additional calls:
+- one for the segment \[2,2\] (i.e. the second element of the array),
+- three for the segment \[5,5\] (i.e. the fifth element of the array).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

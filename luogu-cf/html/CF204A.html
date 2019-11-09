@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Little Elephant and Interval - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391686:1SXJLWLMuA0z67H8MeEL1szArLlpnma+TVRZ7ha8DnI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20Little%20Elephant%20very%20much%20loves%20sums%20on%20intervals.%5Cn%5CnThis%20time%20he%20has%20a%20pair%20of%20integers%20%24%20l%20%24%20and%20%24%20r%20%24%20%24%20%28l%3C%3Dr%29%20%24%20.%20The%20Little%20Elephant%20has%20to%20find%20the%20number%20of%20such%20integers%20%24%20x%20%24%20%24%20%28l%3C%3Dx%3C%3Dr%29%20%24%20%2C%20that%20the%20first%20digit%20of%20integer%20%24%20x%20%24%20equals%20the%20last%20one%20%28in%20decimal%20notation%29.%20For%20example%2C%20such%20numbers%20as%20%24%20101%20%24%20%2C%20%24%20477474%20%24%20or%20%24%209%20%24%20will%20be%20included%20in%20the%20answer%20and%20%24%2047%20%24%20%2C%20%24%20253%20%24%20or%20%24%201020%20%24%20will%20not.%5Cn%5CnHelp%20him%20and%20count%20the%20number%20of%20described%20numbers%20%24%20x%20%24%20for%20a%20given%20pair%20%24%20l%20%24%20and%20%24%20r%20%24%20.%22%2C%22inputFormat%22%3A%22The%20single%20line%20contains%20a%20pair%20of%20integers%20%24%20l%20%24%20and%20%24%20r%20%24%20%24%20%281%3C%3Dl%3C%3Dr%3C%3D10%5E%7B18%7D%29%20%24%20%5Cu2014%20the%20boundaries%20of%20the%20interval.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specifier%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20preferred%20to%20use%20cin%2C%20cout%20streams%20or%20the%20%25I64d%20specifier.%22%2C%22outputFormat%22%3A%22On%20a%20single%20line%20print%20a%20single%20integer%20%5Cu2014%20the%20answer%20to%20the%20problem.%22%2C%22samples%22%3A%5B%5B%222%2047%5Cn%22%2C%2212%5Cn%22%5D%2C%5B%2247%201024%5Cn%22%2C%2298%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20the%20answer%20includes%20integers%202%2C%203%2C%204%2C%205%2C%206%2C%207%2C%208%2C%209%2C%2011%2C%2022%2C%2033%2C%2044.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F204%5C%2FA%22%2C%22id%22%3A%22204A%22%7D%2C%22translation%22%3A%22%5Cu5c0f%5Cu8c61%5Cu975e%5Cu5e38%5Cu559c%5Cu6b22%5Cu533a%5Cu95f4%5Cu4e2d%5Cu7684%5Cu6570.%5Cn%5Cn%5Cu6b64%5Cu65f6%5Cu4ed6%5Cu6709%5Cu4e00%5Cu5bfe%5Cu6574%5Cu6570%24l%24%5Cu548c%24r%28l%20%3C%3D%20r%29%24.%20%5Cu5c0f%5Cu8c61%5Cu9700%5Cu8981%5Cu627e%5Cu5230%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu6761%5Cu4ef6%5Cu7684%24x%20%28%20l%20%3C%3D%20x%20%3C%3D%20r%29%20%24%2C%5Cu4f7f%5Cu5f97%5Cu6570x%5Cu7684%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cu4e0e%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cu76f8%5Cu7b49.%20%5Cu4f8b%5Cu5982%2C%20%24101%2C%20477474%2C9%24%5Cu662f%5Cu7b26%5Cu5408%5Cu8fd9%5Cu4e2a%5Cu6761%5Cu4ef6%5Cu7684%2C%5Cu800c%2447%2C%20253%2C%201020%24%5Cu5219%5Cu4e0d%5Cu7b26%5Cu5408.%5Cn%5Cn%5Cu8bf7%5Cu5e2e%5Cu52a9%5Cu4ed6%5Cu627e%5Cu5230%5Cu7b26%5Cu5408%5Cu8fd9%5Cu4e2a%5Cu6761%5Cu4ef6%5Cu7684%5Cu6570%5Cu7684%5Cu6570%5Cu76ee.%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cn%5Cn%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%24l%2Cr%281%20%3C%3D%20l%20%3C%3D%20r%20%3C%3D%2010%5E%7B18%7D%29%24%2C%5Cu610f%5Cu4e49%5Cu5982%5Cu4e0a.%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%3A%5Cn%5Cn%5Cu4e00%5Cu884c%2C%5Cu4e00%5Cu4e2a%5Cu6570%2C%5Cu8868%5Cu793a%5Cu7b54%5Cu6848.%5Cn%5Cntip%3A%5Cu56e0%5Cu4e3a%5Cu8fd9%5Cu5957%5Cu9898%5Cu5e74%5Cu4ee3%5Cu4e45%5Cu8fdc%5Cu6240%5Cu4ee5%5Cu5f53%5Cu65f6%5Cu8bf4%5Cu4e86%5Cu4e0d%5Cu8ba9%5Cu4f60%5Cu7528%25i64d%2C%5Cu4f46%5Cu73b0%5Cu5728%5Cu80af%5Cu5b9a%5Cu662f%5Cu53ef%5Cu4ee5%5Cu7528%5Cu7684.%5Cu4e0d%5Cu8fc7%5Cu6211%5Cu5728%5Cu7ffb%5Cu8bd1204D%5Cu7684%5Cu65f6%5Cu5019%5Cu628a%5Cu5b83%5Cu7ffb%5Cu8bd1%5Cu8fdb%5Cu53bb%5Cu4e86%3A%29%5Cn%5Cn%5Cu611f%5Cu8c22%40Maniac%5Cu4e36%5Cu575a%5Cu679c%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A3%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22CF204A%22%2C%22title%22%3A%22Little%20Elephant%20and%20Interval%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A36748%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11783%2C%22name%22%3A%22CF204A%20Little%20Elephant%20and%20Interval%22%2C%22slug%22%3A%22CF204A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Little%20Elephant%20and%20Interval%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Little Elephant and Interval</h1>
+<h2>题意翻译</h2>
+<div>小象非常喜欢区间中的数.
+此时他有一対整数$l$和$r(l <= r)$. 小象需要找到满足以下条件的$x ( l <= x <= r) $,使得数x的第一个数字与最后一个数字相等. 例如, $101, 477474,9$是符合这个条件的,而$47, 253, 1020$则不符合.
+请帮助他找到符合这个条件的数的数目.
+输入格式:
+一行两个数$l,r(1 <= l <= r <= 10^{18})$,意义如上.
+输出格式:
+一行,一个数,表示答案.
+tip:因为这套题年代久远所以当时说了不让你用%i64d,但现在肯定是可以用的.不过我在翻译204D的时候把它翻译进去了:)
+感谢@Maniac丶坚果 提供的翻译</div>
+<h2>题目描述</h2>
+<div>The Little Elephant very much loves sums on intervals.
+This time he has a pair of integers $ l $ and $ r $ $ (l<=r) $ . The Little Elephant has to find the number of such integers $ x $ $ (l<=x<=r) $ , that the first digit of integer $ x $ equals the last one (in decimal notation). For example, such numbers as $ 101 $ , $ 477474 $ or $ 9 $ will be included in the answer and $ 47 $ , $ 253 $ or $ 1020 $ will not.
+Help him and count the number of described numbers $ x $ for a given pair $ l $ and $ r $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The single line contains a pair of integers $ l $ and $ r $ $ (1<=l<=r<=10^{18}) $ — the boundaries of the interval.
+Please, do not use the %lld specifier to read or write 64-bit integers in С++. It is preferred to use cin, cout streams or the %I64d specifier.</div>
+<h3>输出格式</h3>
+<br />
+<div>On a single line print a single integer — the answer to the problem.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 47
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>47 1024
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>98
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample the answer includes integers 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

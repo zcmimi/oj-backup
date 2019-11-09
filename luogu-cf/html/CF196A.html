@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Lexicographically Maximum Subsequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391627:1FhJ4DiyNz7PV7oGRB7hm/1plaYBiE9MBNgEp1oSolY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%27ve%20got%20string%20%24%20s%20%24%20%2C%20consisting%20of%20only%20lowercase%20English%20letters.%20Find%20its%20lexicographically%20maximum%20subsequence.%5Cn%5CnWe%27ll%20call%20a%20non-empty%20string%20%24%20s%5Bp_%7B1%7Dp_%7B2%7D...%5C%5C%20p_%7Bk%7D%5D%3Ds_%7Bp1%7Ds_%7Bp2%7D...%5C%5C%20s_%7Bpk%7D%281%3C%3Dp_%7B1%7D%26lt%3Bp_%7B2%7D%26lt%3B...%26lt%3Bp_%7Bk%7D%3C%3D%7Cs%7C%29%20%24%20a%20subsequence%20of%20string%20%24%20s%3Ds_%7B1%7Ds_%7B2%7D...%5C%5C%20s_%7B%7Cs%7C%7D%20%24%20.%5Cn%5CnString%20%24%20x%3Dx_%7B1%7Dx_%7B2%7D...%5C%5C%20x_%7B%7Cx%7C%7D%20%24%20is%20lexicographically%20larger%20than%20string%20%24%20y%3Dy_%7B1%7Dy_%7B2%7D...%5C%5C%20y_%7B%7Cy%7C%7D%20%24%20%2C%20if%20either%20%24%20%7Cx%7C%26gt%3B%7Cy%7C%20%24%20and%20%24%20x_%7B1%7D%3Dy_%7B1%7D%2Cx_%7B2%7D%3Dy_%7B2%7D%2C...%5C%5C%20%2Cx_%7B%7Cy%7C%7D%3Dy_%7B%7Cy%7C%7D%20%24%20%2C%20or%20exists%20such%20number%20%24%20r%20%24%20%24%20%28r%26lt%3B%7Cx%7C%2Cr%26lt%3B%7Cy%7C%29%20%24%20%2C%20that%20%24%20x_%7B1%7D%3Dy_%7B1%7D%2Cx_%7B2%7D%3Dy_%7B2%7D%2C...%5C%5C%20%2Cx_%7Br%7D%3Dy_%7Br%7D%20%24%20and%20%24%20x_%7Br%2B1%7D%26gt%3By_%7Br%2B1%7D%20%24%20.%20Characters%20in%20lines%20are%20compared%20like%20their%20ASCII%20codes.%22%2C%22inputFormat%22%3A%22The%20single%20line%20contains%20a%20non-empty%20string%20%24%20s%20%24%20%2C%20consisting%20only%20of%20lowercase%20English%20letters.%20The%20string%27s%20length%20doesn%27t%20exceed%20%24%2010%5E%7B5%7D%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20the%20lexicographically%20maximum%20subsequence%20of%20string%20%24%20s%20%24%20.%22%2C%22samples%22%3A%5B%5B%22ababba%5Cn%22%2C%22bbba%5Cn%22%5D%2C%5B%22abbcbccacbbcbaaba%5Cn%22%2C%22cccccbba%5Cn%22%5D%5D%2C%22hint%22%3A%22Let%27s%20look%20at%20samples%20and%20see%20what%20the%20sought%20subsequences%20look%20like%20%28they%20are%20marked%20with%20uppercase%20bold%20letters%29.%5Cn%5CnThe%20first%20sample%3A%20aBaBBA%5Cn%5CnThe%20second%20sample%3A%20abbCbCCaCbbCBaaBA%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F196%5C%2FA%22%2C%22id%22%3A%22196A%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff1a%5Cr%5Cn%5Cu4f60%5Cu73b0%5Cu5728%5Cu6709%5Cu4e00%5Cu4e2a%5Cu53ea%5Cu5305%5Cu542b%5Cu5c0f%5Cu5199%5Cu82f1%5Cu6587%5Cu5b57%5Cu6bcd%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8981%5Cu6c42%5Cu6c42%5Cu5b83%5Cu7684%5Cu6700%5Cu5927%5Cu5b57%5Cu5178%5Cu5e8f%5Cu5b50%5Cu5e8f%5Cu5217%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu628a%5Cu4e00%5Cu4e2a%5Cu975e%5Cu7a7a%5Cu5b57%5Cu7b26%5Cu4e32s%5Bp_%7B1%7Dp_%7B2%7D...%5C%5C%20p_%7Bk%7D%5D%3Ds_%7Bp1%7Ds_%7Bp2%7D...%5C%5C%20s_%7Bpk%7D%281%3C%3Dp_%7B1%7D%3Cp_%7B2%7D%3C...%3Cp_%7Bk%7D%3C%3D%7Cs%7C%29%5Cu53eb%5Cu505a%5Cu5b57%5Cu7b26%5Cu4e32s%3Ds1s2%5Cu2026s%7Cs%7C%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%7Cx%7C%3E%7Cy%7C%5Cu800c%5Cu4e14x1%3Dy1%2Cx2%3Dy2%5Cu2026X%7Cy%7C%3DY%7Cy%7C%5Cu6216%5Cu8005%5Cu5b58%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57r%20%28r%3C%7Cx%7C%2Cr%3C%7Cy%7C%29%5Cu6ee1%5Cu8db3x1%3Dy1%2Cx2%3Dy2%5Cu2026X%7Cy%7C%3DY%7Cy%7C%5Cu5e76%5Cu4e14x_%7Br%2B1%7D%3Ey_%7Br%2B1%7D%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5b57%5Cu7b26%5Cu4e32x%3Dx1x2%5Cu2026x%7Cx%7C%5Cu5728%5Cu5b57%5Cu5178%5Cu5e8f%5Cu4e0a%5Cu6bd4%5Cu5b57%5Cu7b26%5Cu4e32y%3Dy1y2%5Cu2026y%7Cy%7C%5Cu5927%5Cu3002%5Cu5728%5Cu884c%5Cu4e2d%5Cu7684%5Cu5b57%5Cu7b26%5Cu6839%5Cu636e%5Cu4ed6%5Cu4eec%5Cu7684ASCII%5Cu7801%5Cu8fdb%5Cu884c%5Cu6bd4%5Cu8f83%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2a%5Cu975e%5Cu7a7a%5Cu7684%5Cu53ea%5Cu542b%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32s%5Cuff0c%5Cu5b57%5Cu7b26%5Cu4e32%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc710%5E5%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5b57%5Cu7b26%5Cu4e32s%5Cu7684%20%5Cu6700%5Cu5927%5Cu5b57%5Cu5178%5Cu5e8f%5Cu5b50%5Cu5e8f%5Cu5217%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%5C%2F%5Cu63d0%5Cu793a%5Cuff1a%5Cr%5Cn%5Cu8ba9%5Cu6211%5Cu4eec%5Cu770b%5Cu4e00%5Cu4e0b%5Cu6837%5Cu4f8b%5Cu5e76%5Cu770b%5Cu4e00%5Cu770b%5Cu5f85%5Cu6c42%5Cu7684%5Cu5b50%5Cu5e8f%5Cu5217%5Cu957f%5Cu4ec0%5Cu4e48%5Cu6837%5Cu5b50%28%5Cu7528%5Cu5927%5Cu5199%5Cu7c97%5Cu4f53%5Cu5b57%5Cu6bcd%5Cu6807%5Cu6ce8%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b1%3Aa%2A%2AB%2A%2Aa%2A%2ABBA%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b2%3Aabb%2A%2AC%2A%2Ab%2A%2ACC%2A%2Aa%2A%2AC%2A%2Abb%2A%2ACB%2A%2Aaa%2A%2ABA%2A%2A%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A57%2C%22totalAccepted%22%3A38%2C%22pid%22%3A%22CF196A%22%2C%22title%22%3A%22Lexicographically%20Maximum%20Subsequence%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF441A%22%2C%22title%22%3A%22Valera%20and%20Antique%20Items%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF299A%22%2C%22title%22%3A%22Ksusha%20and%20Array%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF294A%22%2C%22title%22%3A%22Shaass%20and%20Oskols%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF196B%22%2C%22title%22%3A%22Infinite%20Maze%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4779%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Lexicographically%20Maximum%20Subsequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Lexicographically Maximum Subsequence</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述：
+你现在有一个只包含小写英文字母的字符串，要求求它的最大字典序子序列。
+我们把一个非空字符串s[p_{1}p_{2}...\ p_{k}]=s_{p1}s_{p2}...\ s_{pk}(1<=p_{1}<p_{2}<...<p_{k}<=|s|)叫做字符串s=s1s2…s|s|的一个子序列。 如果|x|>|y|而且x1=y1,x2=y2…X|y|=Y|y|或者存在一个数字r (r<|x|,r<|y|)满足x1=y1,x2=y2…X|y|=Y|y|并且x_{r+1}>y_{r+1}，那么字符串x=x1x2…x|x|在字典序上比字符串y=y1y2…y|y|大。在行中的字符根据他们的ASCII码进行比较
+## 输入格式：
+只有一行，包括一个非空的只含小写字母的字符串s，字符串长度不超过10^5
+## 输出格式：
+输出只有一行，输出字符串s的 最大字典序子序列
+## 说明/提示：
+让我们看一下样例并看一看待求的子序列长什么样子(用大写粗体字母标注）
+样例1:a**B**a**BBA**
+样例2:abb**C**b**CC**a**C**bb**CB**aa**BA**</div>
+<h2>题目描述</h2>
+<div>You've got string $ s $ , consisting of only lowercase English letters. Find its lexicographically maximum subsequence.
+We'll call a non-empty string $ s[p_{1}p_{2}...\ p_{k}]=s_{p1}s_{p2}...\ s_{pk}(1<=p_{1}&lt;p_{2}&lt;...&lt;p_{k}<=|s|) $ a subsequence of string $ s=s_{1}s_{2}...\ s_{|s|} $ .
+String $ x=x_{1}x_{2}...\ x_{|x|} $ is lexicographically larger than string $ y=y_{1}y_{2}...\ y_{|y|} $ , if either $ |x|&gt;|y| $ and $ x_{1}=y_{1},x_{2}=y_{2},...\ ,x_{|y|}=y_{|y|} $ , or exists such number $ r $ $ (r&lt;|x|,r&lt;|y|) $ , that $ x_{1}=y_{1},x_{2}=y_{2},...\ ,x_{r}=y_{r} $ and $ x_{r+1}&gt;y_{r+1} $ . Characters in lines are compared like their ASCII codes.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The single line contains a non-empty string $ s $ , consisting only of lowercase English letters. The string's length doesn't exceed $ 10^{5} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the lexicographically maximum subsequence of string $ s $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>ababba
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>bbba
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>abbcbccacbbcbaaba
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>cccccbba
+</code></pre>
+<h2>说明</h2>
+<div>Let's look at samples and see what the sought subsequences look like (they are marked with uppercase bold letters).
+The first sample: aBaBBA
+The second sample: abbCbCCaCbbCBaaBA</div>
+</article>
+</div>
+</div>
+</body>
+</html>

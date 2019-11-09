@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Primes on Interval - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391968:+cPJ4IJzxKdV/JDhd1AfsAABKZ0R3WmETySPgt9qqwc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%27ve%20decided%20to%20carry%20out%20a%20survey%20in%20the%20theory%20of%20prime%20numbers.%20Let%20us%20remind%20you%20that%20a%20prime%20number%20is%20a%20positive%20integer%20that%20has%20exactly%20two%20distinct%20positive%20integer%20divisors.%5Cn%5CnConsider%20positive%20integers%20%24%20a%20%24%20%2C%20%24%20a%2B1%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20b%20%24%20%24%20%28a%3C%3Db%29%20%24%20.%20You%20want%20to%20find%20the%20minimum%20integer%20%24%20l%20%24%20%24%20%281%3C%3Dl%3C%3Db-a%2B1%29%20%24%20such%20that%20for%20any%20integer%20%24%20x%20%24%20%24%20%28a%3C%3Dx%3C%3Db-l%2B1%29%20%24%20among%20%24%20l%20%24%20integers%20%24%20x%20%24%20%2C%20%24%20x%2B1%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20x%2Bl-1%20%24%20there%20are%20at%20least%20%24%20k%20%24%20prime%20numbers.%5Cn%5CnFind%20and%20print%20the%20required%20minimum%20%24%20l%20%24%20.%20If%20no%20value%20%24%20l%20%24%20meets%20the%20described%20limitations%2C%20print%20-1.%22%2C%22inputFormat%22%3A%22A%20single%20line%20contains%20three%20space-separated%20integers%20%24%20a%2Cb%2Ck%20%24%20%28%20%24%201%3C%3Da%2Cb%2Ck%3C%3D10%5E%7B6%7D%3B%5Cu00a0a%3C%3Db%20%24%20%29.%22%2C%22outputFormat%22%3A%22In%20a%20single%20line%20print%20a%20single%20integer%20%5Cu2014%20the%20required%20minimum%20%24%20l%20%24%20.%20If%20there%27s%20no%20solution%2C%20print%20-1.%22%2C%22samples%22%3A%5B%5B%222%204%202%5Cn%22%2C%223%5Cn%22%5D%2C%5B%226%2013%201%5Cn%22%2C%224%5Cn%22%5D%2C%5B%221%204%203%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F237%5C%2FC%22%2C%22id%22%3A%22237C%22%7D%2C%22translation%22%3A%22%5Cu3010%5Cu9898%5Cu9762%5Cu3011%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu51b3%5Cu5b9a%5Cu7528%5Cu7d20%5Cu6570%5Cu5b9a%5Cu7406%5Cu6765%5Cu505a%5Cu4e00%5Cu4e2a%5Cu8c03%5Cu67e5.%20%5Cu4f17%5Cu6240%5Cu5468%5Cu77e5%2C%20%5Cu7d20%5Cu6570%5Cu53c8%5Cu88ab%5Cu79f0%5Cu4e3a%5Cu8d28%5Cu6570%5Cuff0c%5Cu5176%5Cu542b%5Cu4e49%5Cu5c31%5Cu662f%5Cu9664%5Cu4e86%5Cu6570%5Cu5b57%5Cu4e00%5Cu548c%5Cu672c%5Cu8eab%5Cu4e4b%5Cu5916%5Cu4e0d%5Cu80fd%5Cu88ab%5Cu5176%5Cu4ed6%5Cu4efb%5Cu4f55%5Cu7684%5Cu6570%5Cu5b57%5Cu9664%5Cu5c3d.%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%20%24a%2Ca%2B1%2C%5C%5Ccdots%2Cb%24%20%24%28a%20%5C%5Cle%20b%29%24%2C%20%5Cu8bf7%5Cu627e%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6700%5Cu5c0f%5Cu503c%20%24l%24%2C%20%5Cu4f7f%5Cu5176%5Cu6ee1%5Cu8db3%5Cu5bf9%5Cu4e8e%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24l%24%20%5Cu7684%5Cu5b50%5Cu4e32%2C%20%5Cu90fd%5Cu5305%5Cu542b%20%24k%24%20%5Cu4e2a%5Cu8d28%5Cu6570.%5Cr%5Cn%5Cr%5Cn%5Cu627e%5Cu5230%5Cu5e76%5Cu8f93%5Cu51fa%5Cu7b26%5Cu5408%5Cu8981%5Cu6c42%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%20%24l%24%2C%20%5Cu5982%5Cu679c%5Cu4e0d%5Cu5b58%5Cu5728%5Cu7b26%5Cu5408%5Cu8981%5Cu6c42%5Cu7684%5Cu957f%5Cu5ea6%20%24l%24%2C%20%5Cu5219%5Cu8f93%5Cu51fa%20%24-1%24.%5Cr%5Cn%5Cr%5Cn%5Cu3010%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cu3011%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu4e00%5Cu884c%2C%20%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%20%24a%2Cb%2Ck%24%20%28%241%20%5C%5Cle%20a%2Cb%2Ck%20%5C%5Cle%2010%5E%7B6%7D%3B%20a%20%5C%5Cle%20b%24%29%5Cr%5Cn%5Cr%5Cn%5Cu3010%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cu3011%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%2C%20%5Cu4e3a%5Cu7b26%5Cu5408%5Cu8981%5Cu6c42%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%20%24l%24%2C%20%5Cu82e5%5Cu4e0d%5Cu5b58%5Cu5728%2C%20%5Cu8f93%5Cu51fa%20%24-1%24.%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A121%2C%22totalAccepted%22%3A51%2C%22pid%22%3A%22CF237C%22%2C%22title%22%3A%22Primes%20on%20Interval%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF650B%22%2C%22title%22%3A%22Image%20Preview%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF515C%22%2C%22title%22%3A%22Drazil%20and%20Factorial%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF514C%22%2C%22title%22%3A%22Watto%20and%20Mechanism%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22AT2334%22%2C%22title%22%3A%22Menagerie%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22AT%22%7D%2C%7B%22pid%22%3A%22CF1230B%22%2C%22title%22%3A%22Ania%20and%20Minimizing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Primes%20on%20Interval%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Primes on Interval</h1>
+<h2>题意翻译</h2>
+<div>【题面】
+你决定用素数定理来做一个调查. 众所周知, 素数又被称为质数，其含义就是除了数字一和本身之外不能被其他任何的数字除尽.
+现在给定一个正整数序列 $a,a+1,\cdots,b$ $(a \le b)$, 请找出一个最小值 $l$, 使其满足对于任意一个长度为 $l$ 的子串, 都包含 $k$ 个质数.
+找到并输出符合要求的最小值 $l$, 如果不存在符合要求的长度 $l$, 则输出 $-1$.
+【输入格式】
+输入一行, 包含三个用空格隔开的整数 $a,b,k$ ($1 \le a,b,k \le 10^{6}; a \le b$)
+【输出格式】
+输出一行, 为符合要求的最小值 $l$, 若不存在, 输出 $-1$.</div>
+<h2>题目描述</h2>
+<div>You've decided to carry out a survey in the theory of prime numbers. Let us remind you that a prime number is a positive integer that has exactly two distinct positive integer divisors.
+Consider positive integers $ a $ , $ a+1 $ , $ ... $ , $ b $ $ (a<=b) $ . You want to find the minimum integer $ l $ $ (1<=l<=b-a+1) $ such that for any integer $ x $ $ (a<=x<=b-l+1) $ among $ l $ integers $ x $ , $ x+1 $ , $ ... $ , $ x+l-1 $ there are at least $ k $ prime numbers.
+Find and print the required minimum $ l $ . If no value $ l $ meets the described limitations, print -1.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>A single line contains three space-separated integers $ a,b,k $ ( $ 1<=a,b,k<=10^{6}; a<=b $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>In a single line print a single integer — the required minimum $ l $ . If there's no solution, print -1.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 4 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6 13 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>1 4 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>-1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>
