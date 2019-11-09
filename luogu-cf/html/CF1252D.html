@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Find String in a Grid - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403814:r3cng3ID8BgDrQ+AaGssTwYUjrmPg+1t39JST5lQqKA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20have%20a%20grid%20%24%20G%20%24%20containing%20%24%20R%20%24%20rows%20%28numbered%20from%20%24%201%20%24%20to%20%24%20R%20%24%20%2C%20top%20to%20bottom%29%20and%20%24%20C%20%24%20columns%20%28numbered%20from%20%24%201%20%24%20to%20%24%20C%20%24%20%2C%20left%20to%20right%29%20of%20uppercase%20characters.%20The%20character%20in%20the%20%24%20r%5E%7Bth%7D%20%24%20row%20and%20the%20%24%20c%5E%7Bth%7D%20%24%20column%20is%20denoted%20by%20%24%20G_%7Br%2C%20c%7D%20%24%20.%20You%20also%20have%20%24%20Q%20%24%20strings%20containing%20uppercase%20characters.%20For%20each%20of%20the%20string%2C%20you%20want%20to%20find%20the%20number%20of%20occurrences%20of%20the%20string%20in%20the%20grid.%5Cn%5CnAn%20occurrence%20of%20string%20%24%20S%20%24%20in%20the%20grid%20is%20counted%20if%20%24%20S%20%24%20can%20be%20constructed%20by%20starting%20at%20one%20of%20the%20cells%20in%20the%20grid%2C%20going%20right%20%24%200%20%24%20or%20more%20times%2C%20and%20then%20going%20down%20%24%200%20%24%20or%20more%20times.%20Two%20occurrences%20are%20different%20if%20the%20set%20of%20cells%20used%20to%20construct%20the%20string%20is%20different.%20Formally%2C%20for%20each%20string%20%24%20S%20%24%20%2C%20you%20would%20like%20to%20count%20the%20number%20of%20tuples%20%24%20%5C%5Clangle%20r%2C%20c%2C%20%5C%5CDelta%20r%2C%20%5C%5CDelta%20c%20%5C%5Crangle%20%24%20such%20that%3A%5Cn%5Cn-%20%24%201%20%5C%5Cle%20r%20%5C%5Cle%20R%20%24%20and%20%24%20r%20%5C%5Cle%20r%20%2B%20%5C%5CDelta%20r%20%5C%5Cle%20R%20%24%5Cn-%20%24%201%20%5C%5Cle%20c%20%5C%5Cle%20C%20%24%20and%20%24%20c%20%5C%5Cle%20c%20%2B%20%5C%5CDelta%20c%20%5C%5Cle%20C%20%24%5Cn-%20%24%20S%20%3D%20G_%7Br%2C%20c%7D%20G_%7Br%2C%20c%20%2B%201%7D%20%5C%5Cdots%20G_%7Br%2C%20c%20%2B%20%5C%5CDelta%20c%7D%20G_%7Br%20%2B%201%2C%20c%20%2B%20%5C%5CDelta%20c%7D%20%5C%5Cdots%20G_%7Br%20%2B%20%5C%5CDelta%20r%2C%20c%20%2B%20%5C%5CDelta%20c%7D%20%24%22%2C%22inputFormat%22%3A%22Input%20begins%20with%20a%20line%20containing%20three%20integers%3A%20%24%20R%20%24%20%24%20C%20%24%20%24%20Q%20%24%20%28%20%24%201%20%5C%5Cle%20R%2C%20C%20%5C%5Cle%20500%20%24%20%3B%20%24%201%20%5C%5Cle%20Q%20%5C%5Cle%20200%5C%5C%2C000%20%24%20%29%20representing%20the%20size%20of%20the%20grid%20and%20the%20number%20of%20strings%2C%20respectively.%20The%20next%20%24%20R%20%24%20lines%20each%20contains%20%24%20C%20%24%20uppercase%20characters%20representing%20the%20grid.%20The%20%24%20c%5E%7Bth%7D%20%24%20character%20on%20the%20%24%20r%5E%7Bth%7D%20%24%20line%20is%20%24%20G_%7Br%2C%20c%7D%20%24%20.%20The%20next%20%24%20Q%20%24%20lines%20each%20contains%20a%20string%20%24%20S%20%24%20containing%20uppercase%20characters.%20The%20length%20of%20this%20string%20is%20a%20positive%20integer%20not%20more%20than%20%24%20200%5C%5C%2C000%20%24%20.%20The%20sum%20of%20the%20length%20of%20all%20%24%20Q%20%24%20strings%20combined%20is%20not%20more%20than%20%24%20200%5C%5C%2C000%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20query%20in%20the%20same%20order%20as%20input%2C%20output%20in%20a%20line%20an%20integer%20representing%20the%20number%20of%20occurrences%20of%20the%20string%20in%20the%20grid.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%203%205%5CnABC%5CnBCD%5CnDAB%5CnABC%5CnBC%5CnBD%5CnAC%5CnA%5Cn%22%2C%22%5Cn2%5Cn3%5Cn1%5Cn0%5Cn2%5Cn%22%5D%2C%5B%22%5Cn2%203%203%5CnAAA%5CnAAA%5CnA%5CnAAA%5CnAAAAA%5Cn%22%2C%22%5Cn6%5Cn4%5Cn0%5Cn%22%5D%5D%2C%22hint%22%3A%22Explanation%20for%20the%20sample%20input%5C%2Foutput%20%231%5Cn%5Cn-%20There%20are%20%24%202%20%24%20occurrences%20of%20%5C%22ABC%5C%22%2C%20represented%20by%20the%20tuples%20%24%20%5C%5Clangle%201%2C%201%2C%201%2C%201%20%5C%5Crangle%20%24%20and%20%24%20%5C%5Clangle%201%2C%201%2C%200%2C%202%20%5C%5Crangle%20%24%20.%5Cn-%20There%20are%20%24%203%20%24%20occurrences%20of%20%5C%22BC%5C%22%2C%20represented%20by%20the%20tuples%20%24%20%5C%5Clangle%201%2C%202%2C%200%2C%201%20%5C%5Crangle%20%24%20%2C%20%24%20%5C%5Clangle%201%2C%202%2C%201%2C%200%20%5C%5Crangle%20%24%20%2C%20and%20%24%20%5C%5Clangle%202%2C%201%2C%200%2C%201%20%5C%5Crangle%20%24%20.%5Cn-%20There%20is%20%24%201%20%24%20occurrence%20of%20%5C%22BD%5C%22%2C%20represented%20by%20the%20tuple%20%24%20%5C%5Clangle%202%2C%201%2C%201%2C%200%20%5C%5Crangle%20%24%20.%5Cn-%20There%20is%20no%20occurrence%20of%20%5C%22AC%5C%22.%5Cn-%20There%20are%20%24%202%20%24%20occurrences%20of%20%5C%22A%5C%22%2C%20represented%20by%20the%20tuples%20%24%20%5C%5Clangle%201%2C%201%2C%200%2C%200%20%5C%5Crangle%20%24%20and%20%24%20%5C%5Clangle%203%2C%202%2C%200%2C%200%20%5C%5Crangle%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1252%5C%2FD%22%2C%22id%22%3A%221252D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF1252D%22%2C%22title%22%3A%22Find%20String%20in%20a%20Grid%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Find%20String%20in%20a%20Grid%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Find String in a Grid</h1>
+<h2>题目描述</h2>
+<div>You have a grid $ G $ containing $ R $ rows (numbered from $ 1 $ to $ R $ , top to bottom) and $ C $ columns (numbered from $ 1 $ to $ C $ , left to right) of uppercase characters. The character in the $ r^{th} $ row and the $ c^{th} $ column is denoted by $ G_{r, c} $ . You also have $ Q $ strings containing uppercase characters. For each of the string, you want to find the number of occurrences of the string in the grid.
+An occurrence of string $ S $ in the grid is counted if $ S $ can be constructed by starting at one of the cells in the grid, going right $ 0 $ or more times, and then going down $ 0 $ or more times. Two occurrences are different if the set of cells used to construct the string is different. Formally, for each string $ S $ , you would like to count the number of tuples $ \langle r, c, \Delta r, \Delta c \rangle $ such that:
+- $ 1 \le r \le R $ and $ r \le r + \Delta r \le R $
+- $ 1 \le c \le C $ and $ c \le c + \Delta c \le C $
+- $ S = G_{r, c} G_{r, c + 1} \dots G_{r, c + \Delta c} G_{r + 1, c + \Delta c} \dots G_{r + \Delta r, c + \Delta c} $</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Input begins with a line containing three integers: $ R $ $ C $ $ Q $ ( $ 1 \le R, C \le 500 $ ; $ 1 \le Q \le 200\,000 $ ) representing the size of the grid and the number of strings, respectively. The next $ R $ lines each contains $ C $ uppercase characters representing the grid. The $ c^{th} $ character on the $ r^{th} $ line is $ G_{r, c} $ . The next $ Q $ lines each contains a string $ S $ containing uppercase characters. The length of this string is a positive integer not more than $ 200\,000 $ . The sum of the length of all $ Q $ strings combined is not more than $ 200\,000 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query in the same order as input, output in a line an integer representing the number of occurrences of the string in the grid.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3 3 5
+ABC
+BCD
+DAB
+ABC
+BC
+BD
+AC
+A
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+3
+1
+0
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+2 3 3
+AAA
+AAA
+A
+AAA
+AAAAA
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+6
+4
+0
+</code></pre>
+<h2>说明</h2>
+<div>Explanation for the sample input/output #1
+- There are $ 2 $ occurrences of "ABC", represented by the tuples $ \langle 1, 1, 1, 1 \rangle $ and $ \langle 1, 1, 0, 2 \rangle $ .
+- There are $ 3 $ occurrences of "BC", represented by the tuples $ \langle 1, 2, 0, 1 \rangle $ , $ \langle 1, 2, 1, 0 \rangle $ , and $ \langle 2, 1, 0, 1 \rangle $ .
+- There is $ 1 $ occurrence of "BD", represented by the tuple $ \langle 2, 1, 1, 0 \rangle $ .
+- There is no occurrence of "AC".
+- There are $ 2 $ occurrences of "A", represented by the tuples $ \langle 1, 1, 0, 0 \rangle $ and $ \langle 3, 2, 0, 0 \rangle $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

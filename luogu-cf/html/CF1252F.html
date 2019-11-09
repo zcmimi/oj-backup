@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Regular Forestation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403819:jGOp+p3rNpkI39o8Yuz6K9LTSE4UUSew3neBbw2dnJ8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20forestation%20is%20an%20act%20of%20planting%20a%20bunch%20of%20trees%20to%20grow%20a%20forest%2C%20usually%20to%20replace%20a%20forest%20that%20had%20been%20cut%20down.%20Strangely%20enough%2C%20graph%20theorists%20have%20another%20idea%20on%20how%20to%20make%20a%20forest%2C%20i.e.%20by%20cutting%20down%20a%20tree%21%5Cn%5CnA%20tree%20is%20a%20graph%20of%20%24%20N%20%24%20nodes%20connected%20by%20%24%20N%20-%201%20%24%20edges.%20Let%20%24%20u%20%24%20be%20a%20node%20in%20a%20tree%20%24%20U%20%24%20which%20degree%20is%20at%20least%20%24%202%20%24%20%28i.e.%20directly%20connected%20to%20at%20least%20%24%202%20%24%20other%20nodes%20in%20%24%20U%20%24%20%29.%20If%20we%20remove%20%24%20u%20%24%20from%20%24%20U%20%24%20%2C%20then%20we%20will%20get%20two%20or%20more%20disconnected%20%28smaller%29%20trees%2C%20or%20also%20known%20as%20forest%20by%20graph%20theorists.%20In%20this%20problem%2C%20we%20are%20going%20to%20investigate%20a%20special%20forestation%20of%20a%20tree%20done%20by%20graph%20theorists.%5Cn%5CnLet%20%24%20V%28S%29%20%24%20be%20the%20set%20of%20nodes%20in%20a%20tree%20%24%20S%20%24%20and%20%24%20V%28T%29%20%24%20be%20the%20set%20of%20nodes%20in%20a%20tree%20%24%20T%20%24%20.%20Tree%20%24%20S%20%24%20and%20tree%20%24%20T%20%24%20are%20identical%20if%20there%20exists%20a%20bijection%20%24%20f%20%3A%20V%28S%29%20%5C%5Crightarrow%20V%28T%29%20%24%20such%20that%20for%20all%20pairs%20of%20nodes%20%24%20%28s_i%2C%20s_j%29%20%24%20in%20%24%20V%28S%29%20%24%20%2C%20%24%20s_i%20%24%20and%20%24%20s_j%20%24%20is%20connected%20by%20an%20edge%20in%20%24%20S%20%24%20if%20and%20only%20if%20node%20%24%20f%28s_i%29%20%24%20and%20%24%20f%28s_j%29%20%24%20is%20connected%20by%20an%20edge%20in%20%24%20T%20%24%20.%20Note%20that%20%24%20f%28s%29%20%3D%20t%20%24%20implies%20node%20%24%20s%20%24%20in%20%24%20S%20%24%20corresponds%20to%20node%20%24%20t%20%24%20in%20%24%20T%20%24%20.%5Cn%5CnWe%20call%20a%20node%20%24%20u%20%24%20in%20a%20tree%20%24%20U%20%24%20as%20a%20good%20cutting%20point%20if%20and%20only%20if%20the%20removal%20of%20%24%20u%20%24%20from%20%24%20U%20%24%20causes%20two%20or%20more%20disconnected%20trees%2C%20and%20all%20those%20disconnected%20trees%20are%20pairwise%20identical.%5Cn%5CnGiven%20a%20tree%20%24%20U%20%24%20%2C%20your%20task%20is%20to%20determine%20whether%20there%20exists%20a%20good%20cutting%20point%20in%20%24%20U%20%24%20.%20If%20there%20is%20such%20a%20node%2C%20then%20you%20should%20output%20the%20maximum%20number%20of%20disconnected%20trees%20that%20can%20be%20obtained%20by%20removing%20exactly%20one%20good%20cutting%20point.%5Cn%5CnFor%20example%2C%20consider%20the%20following%20tree%20of%20%24%2013%20%24%20nodes.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1252F%5C%2F3ac5ebb3c1888c727ec26f8cc5bfb5407a38403b.png%29%5Cn%5CnThere%20is%20exactly%20one%20good%20cutting%20point%20in%20this%20tree%2C%20i.e.%20node%20%24%204%20%24%20.%20Observe%20that%20by%20removing%20node%20%24%204%20%24%20%2C%20we%20will%20get%20three%20identical%20trees%20%28in%20this%20case%2C%20line%20graphs%29%2C%20i.e.%20%24%20%5C%5C%7B5%2C%201%2C%207%2C%2013%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B8%2C%202%2C%2011%2C%206%5C%5C%7D%20%24%20%2C%20and%20%24%20%5C%5C%7B3%2C%2012%2C%209%2C%2010%5C%5C%7D%20%24%20%2C%20which%20are%20denoted%20by%20%24%20A%20%24%20%2C%20%24%20B%20%24%20%2C%20and%20%24%20C%20%24%20respectively%20in%20the%20figure.%5Cn%5Cn-%20The%20bijection%20function%20between%20%24%20A%20%24%20and%20%24%20B%20%24%20%3A%20%24%20f%285%29%20%3D%208%20%24%20%2C%20%24%20f%281%29%20%3D%202%20%24%20%2C%20%24%20f%287%29%20%3D%2011%20%24%20%2C%20and%20%24%20f%2813%29%20%3D%206%20%24%20.%5Cn-%20The%20bijection%20function%20between%20%24%20A%20%24%20and%20%24%20C%20%24%20%3A%20%24%20f%285%29%20%3D%203%20%24%20%2C%20%24%20f%281%29%20%3D%2012%20%24%20%2C%20%24%20f%287%29%20%3D%209%20%24%20%2C%20and%20%24%20f%2813%29%20%3D%2010%20%24%20.%5Cn-%20The%20bijection%20function%20between%20%24%20B%20%24%20and%20%24%20C%20%24%20%3A%20%24%20f%288%29%20%3D%203%20%24%20%2C%20%24%20f%282%29%20%3D%2012%20%24%20%2C%20%24%20f%2811%29%20%3D%209%20%24%20%2C%20and%20%24%20f%286%29%20%3D%2010%20%24%20.%5Cn%5Cn%20Of%20course%2C%20there%20exists%20other%20bijection%20functions%20for%20those%20trees.%22%2C%22inputFormat%22%3A%22Input%20begins%20with%20a%20line%20containting%20an%20integer%3A%20%24%20N%20%24%20%28%20%24%203%20%5C%5Cle%20N%20%5C%5Cle%204000%20%24%20%29%20representing%20the%20number%20of%20nodes%20in%20the%20given%20tree.%20The%20next%20%24%20N%20-%201%20%24%20lines%20each%20contains%20two%20integers%3A%20%24%20a_i%20%24%20%24%20b_i%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%3C%20b_i%20%5C%5Cle%20N%20%24%20%29%20representing%20an%20edge%20%24%20%28a_i%2Cb_i%29%20%24%20in%20the%20given%20tree.%20It%20is%20guaranteed%20that%20any%20two%20nodes%20in%20the%20given%20tree%20are%20connected%20to%20each%20other%20by%20a%20sequence%20of%20edges.%22%2C%22outputFormat%22%3A%22Output%20in%20a%20line%20an%20integer%20representing%20the%20maximum%20number%20of%20disconnected%20trees%20that%20can%20be%20obtained%20by%20removing%20exactly%20one%20good%20cutting%20point%2C%20or%20output%20-1%20if%20there%20is%20no%20such%20good%20cutting%20point.%22%2C%22samples%22%3A%5B%5B%22%5Cn13%5Cn1%205%5Cn1%207%5Cn2%204%5Cn2%208%5Cn2%2011%5Cn3%2012%5Cn4%207%5Cn4%2012%5Cn6%2011%5Cn7%2013%5Cn9%2010%5Cn9%2012%5Cn%22%2C%22%5Cn3%5Cn%22%5D%2C%5B%22%5Cn6%5Cn1%202%5Cn1%203%5Cn2%204%5Cn3%205%5Cn3%206%5Cn%22%2C%22%5Cn-1%5Cn%22%5D%5D%2C%22hint%22%3A%22Explanation%20for%20the%20sample%20input%5C%2Foutput%20%231%5Cn%5CnThis%20is%20the%20example%20from%20the%20problem%20description.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1252%5C%2FF%22%2C%22id%22%3A%221252F%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF1252F%22%2C%22title%22%3A%22Regular%20Forestation%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Regular%20Forestation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Regular Forestation</h1>
+<h2>题目描述</h2>
+<div>A forestation is an act of planting a bunch of trees to grow a forest, usually to replace a forest that had been cut down. Strangely enough, graph theorists have another idea on how to make a forest, i.e. by cutting down a tree!
+A tree is a graph of $ N $ nodes connected by $ N - 1 $ edges. Let $ u $ be a node in a tree $ U $ which degree is at least $ 2 $ (i.e. directly connected to at least $ 2 $ other nodes in $ U $ ). If we remove $ u $ from $ U $ , then we will get two or more disconnected (smaller) trees, or also known as forest by graph theorists. In this problem, we are going to investigate a special forestation of a tree done by graph theorists.
+Let $ V(S) $ be the set of nodes in a tree $ S $ and $ V(T) $ be the set of nodes in a tree $ T $ . Tree $ S $ and tree $ T $ are identical if there exists a bijection $ f : V(S) \rightarrow V(T) $ such that for all pairs of nodes $ (s_i, s_j) $ in $ V(S) $ , $ s_i $ and $ s_j $ is connected by an edge in $ S $ if and only if node $ f(s_i) $ and $ f(s_j) $ is connected by an edge in $ T $ . Note that $ f(s) = t $ implies node $ s $ in $ S $ corresponds to node $ t $ in $ T $ .
+We call a node $ u $ in a tree $ U $ as a good cutting point if and only if the removal of $ u $ from $ U $ causes two or more disconnected trees, and all those disconnected trees are pairwise identical.
+Given a tree $ U $ , your task is to determine whether there exists a good cutting point in $ U $ . If there is such a node, then you should output the maximum number of disconnected trees that can be obtained by removing exactly one good cutting point.
+For example, consider the following tree of $ 13 $ nodes.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1252F/3ac5ebb3c1888c727ec26f8cc5bfb5407a38403b.png)
+There is exactly one good cutting point in this tree, i.e. node $ 4 $ . Observe that by removing node $ 4 $ , we will get three identical trees (in this case, line graphs), i.e. $ \{5, 1, 7, 13\} $ , $ \{8, 2, 11, 6\} $ , and $ \{3, 12, 9, 10\} $ , which are denoted by $ A $ , $ B $ , and $ C $ respectively in the figure.
+- The bijection function between $ A $ and $ B $ : $ f(5) = 8 $ , $ f(1) = 2 $ , $ f(7) = 11 $ , and $ f(13) = 6 $ .
+- The bijection function between $ A $ and $ C $ : $ f(5) = 3 $ , $ f(1) = 12 $ , $ f(7) = 9 $ , and $ f(13) = 10 $ .
+- The bijection function between $ B $ and $ C $ : $ f(8) = 3 $ , $ f(2) = 12 $ , $ f(11) = 9 $ , and $ f(6) = 10 $ .
+Of course, there exists other bijection functions for those trees.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Input begins with a line containting an integer: $ N $ ( $ 3 \le N \le 4000 $ ) representing the number of nodes in the given tree. The next $ N - 1 $ lines each contains two integers: $ a_i $ $ b_i $ ( $ 1 \le a_i < b_i \le N $ ) representing an edge $ (a_i,b_i) $ in the given tree. It is guaranteed that any two nodes in the given tree are connected to each other by a sequence of edges.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output in a line an integer representing the maximum number of disconnected trees that can be obtained by removing exactly one good cutting point, or output -1 if there is no such good cutting point.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+13
+1 5
+1 7
+2 4
+2 8
+2 11
+3 12
+4 7
+4 12
+6 11
+7 13
+9 10
+9 12
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+6
+1 2
+1 3
+2 4
+3 5
+3 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+-1
+</code></pre>
+<h2>说明</h2>
+<div>Explanation for the sample input/output #1
+This is the example from the problem description.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

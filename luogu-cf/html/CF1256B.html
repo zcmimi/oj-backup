@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minimize the Permutation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403848:5/qpU+gYvfiYXkVaAiWeol0MteCU387jyBo4wN2Hhys=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20permutation%20of%20length%20%24%20n%20%24%20.%20Recall%20that%20the%20permutation%20is%20an%20array%20consisting%20of%20%24%20n%20%24%20distinct%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20in%20arbitrary%20order.%20For%20example%2C%20%24%20%5B2%2C%203%2C%201%2C%205%2C%204%5D%20%24%20is%20a%20permutation%2C%20but%20%24%20%5B1%2C%202%2C%202%5D%20%24%20is%20not%20a%20permutation%20%28%20%24%202%20%24%20appears%20twice%20in%20the%20array%29%20and%20%24%20%5B1%2C%203%2C%204%5D%20%24%20is%20also%20not%20a%20permutation%20%28%20%24%20n%3D3%20%24%20but%20there%20is%20%24%204%20%24%20in%20the%20array%29.%5Cn%5CnYou%20can%20perform%20at%20most%20%24%20n-1%20%24%20operations%20with%20the%20given%20permutation%20%28it%20is%20possible%20that%20you%20don%27t%20perform%20any%20operations%20at%20all%29.%20The%20%24%20i%20%24%20-th%20operation%20allows%20you%20to%20swap%20elements%20of%20the%20given%20permutation%20on%20positions%20%24%20i%20%24%20and%20%24%20i%2B1%20%24%20.%20Each%20operation%20can%20be%20performed%20at%20most%20once.%20The%20operations%20can%20be%20performed%20in%20arbitrary%20order.%5Cn%5CnYour%20task%20is%20to%20find%20the%20lexicographically%20minimum%20possible%20permutation%20obtained%20by%20performing%20some%20of%20the%20given%20operations%20in%20some%20order.%5Cn%5CnYou%20can%20see%20the%20definition%20of%20the%20lexicographical%20order%20in%20the%20notes%20section.%5Cn%5CnYou%20have%20to%20answer%20%24%20q%20%24%20independent%20test%20cases.%5Cn%5CnFor%20example%2C%20let%27s%20consider%20the%20permutation%20%24%20%5B5%2C%204%2C%201%2C%203%2C%202%5D%20%24%20.%20The%20minimum%20possible%20permutation%20we%20can%20obtain%20is%20%24%20%5B1%2C%205%2C%202%2C%204%2C%203%5D%20%24%20and%20we%20can%20do%20it%20in%20the%20following%20way%3A%5Cn%5Cn1.%20perform%20the%20second%20operation%20%28swap%20the%20second%20and%20the%20third%20elements%29%20and%20obtain%20the%20permutation%20%24%20%5B5%2C%201%2C%204%2C%203%2C%202%5D%20%24%20%3B%5Cn2.%20perform%20the%20fourth%20operation%20%28swap%20the%20fourth%20and%20the%20fifth%20elements%29%20and%20obtain%20the%20permutation%20%24%20%5B5%2C%201%2C%204%2C%202%2C%203%5D%20%24%20%3B%5Cn3.%20perform%20the%20third%20operation%20%28swap%20the%20third%20and%20the%20fourth%20elements%29%20and%20obtain%20the%20permutation%20%24%20%5B5%2C%201%2C%202%2C%204%2C%203%5D%20%24%20.%5Cn4.%20perform%20the%20first%20operation%20%28swap%20the%20first%20and%20the%20second%20elements%29%20and%20obtain%20the%20permutation%20%24%20%5B1%2C%205%2C%202%2C%204%2C%203%5D%20%24%20%3B%5Cn%5CnAnother%20example%20is%20%24%20%5B1%2C%202%2C%204%2C%203%5D%20%24%20.%20The%20minimum%20possible%20permutation%20we%20can%20obtain%20is%20%24%20%5B1%2C%202%2C%203%2C%204%5D%20%24%20by%20performing%20the%20third%20operation%20%28swap%20the%20third%20and%20the%20fourth%20elements%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20number%20of%20test%20cases.%20Then%20%24%20q%20%24%20test%20cases%20follow.%5Cn%5CnThe%20first%20line%20of%20the%20test%20case%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20permutation.%5Cn%5CnThe%20second%20line%20of%20the%20test%20case%20contains%20%24%20n%20%24%20distinct%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%5Cu2014%20the%20given%20permutation.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20print%20the%20answer%20on%20it%20%5Cu2014%20the%20lexicograhically%20minimum%20possible%20permutation%20obtained%20by%20performing%20some%20of%20the%20given%20operations%20in%20some%20order.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%5Cn5%5Cn5%204%201%203%202%5Cn4%5Cn1%202%204%203%5Cn1%5Cn1%5Cn4%5Cn4%203%202%201%5Cn%22%2C%22%5Cn1%205%202%204%203%20%5Cn1%202%203%204%20%5Cn1%20%5Cn1%204%203%202%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Recall%20that%20the%20permutation%20%24%20p%20%24%20of%20length%20%24%20n%20%24%20is%20lexicographically%20less%20than%20the%20permutation%20%24%20q%20%24%20of%20length%20%24%20n%20%24%20if%20there%20is%20such%20index%20%24%20i%20%5C%5Cle%20n%20%24%20that%20for%20all%20%24%20j%20%24%20from%20%24%201%20%24%20to%20%24%20i%20-%201%20%24%20the%20condition%20%24%20p_j%20%3D%20q_j%20%24%20is%20satisfied%2C%20and%20%24%20p_i%20%3C%20q_i%20%24%20.%20For%20example%3A%5Cn%5Cn-%20%24%20p%20%3D%20%5B1%2C%203%2C%205%2C%202%2C%204%5D%20%24%20is%20less%20than%20%24%20q%20%3D%20%5B1%2C%203%2C%205%2C%204%2C%202%5D%20%24%20%28such%20%24%20i%3D4%20%24%20exists%2C%20that%20%24%20p_i%20%3C%20q_i%20%24%20and%20for%20each%20%24%20j%20%3C%20i%20%24%20holds%20%24%20p_j%20%3D%20q_j%20%24%20%29%2C%5Cn-%20%24%20p%20%3D%20%5B1%2C%202%5D%20%24%20is%20less%20than%20%24%20q%20%3D%20%5B2%2C%201%5D%20%24%20%28such%20%24%20i%3D1%20%24%20exists%2C%20that%20%24%20p_i%20%3C%20q_i%20%24%20and%20for%20each%20%24%20j%20%3C%20i%20%24%20holds%20%24%20p_j%20%3D%20q_j%20%24%20%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1256%5C%2FB%22%2C%22id%22%3A%221256B%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu6392%5Cu5217%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu7ecf%5Cu8fc7%5Cu81f3%5Cu591a%24n-1%24%5Cu6b21%5Cu7684%5Cu4ea4%5Cu6362%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu6392%5Cu5217%5Cu7684%5Cu5b57%5Cu5178%5Cu5e8f%5Cu5c3d%5Cu91cf%5Cu5c0f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8fd9%5Cu91cc%5Cu8981%5Cu6ce8%5Cu610f%5Cuff1a%5Cu4ea4%5Cu6362%5Cu4ec5%5Cu80fd%5Cu4ea4%5Cu6362%5Cu76f8%5Cu90bb%5Cu7684%5Cu4e24%5Cu6570%5Cuff0c%5Cu4e14%5Cu6bcf%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu53ea%5Cu80fd%5Cu4ea4%5Cu6362%5Cu4e00%5Cu6b21%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu5b9a%5Cu4e49%5Cu5982%5Cu4e0b%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu4ea4%5Cu6362%24a%5B1%5D%2Ca%5B2%5D%24%5Cu4e24%5Cu6570%5Cu79f0%5Cu4e3a%5Cu5728%5Cu4f4d%5Cu7f6e%241%24%5Cu4e0a%5Cu7684%5Cu4ea4%5Cu6362%5Cuff0c%5Cu4ea4%5Cu6362%24a%5B2%5D%2Ca%5B3%5D%24%5Cu4e24%5Cu6570%5Cu79f0%5Cu4e3a%5Cu5728%5Cu4f4d%5Cu7f6e%242%24%5Cu4e0a%5Cu7684%5Cu4ea4%5Cu6362%5Cuff0c......%5Cuff0c%5Cu4ea4%5Cu6362%24a%5Bn%20-%201%5D%2Ca%5Bn%5D%24%5Cu4e24%5Cu6570%5Cu79f0%5Cu4e3a%5Cu5728%5Cu4f4d%5Cu7f6e%24n-1%24%5Cu4e0a%5Cu7684%5Cu4ea4%5Cu6362%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu672c%5Cu9898%5Cu6709%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6570%24q%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6709%24q%24%5Cu7ec4%5Cu6570%5Cu636e%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6570%24n%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6709%24n%24%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu9762%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%24n%24%5Cu4e2a%5Cu6570%5Cuff0c%5Cu4ee3%5Cu8868%5Cu7ed9%5Cu51fa%5Cu7684%5Cu6392%5Cu5217%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4ea4%5Cu6362%5Cu540e%5Cuff0c%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A104%2C%22totalAccepted%22%3A82%2C%22pid%22%3A%22CF1256B%22%2C%22title%22%3A%22Minimize%20the%20Permutation%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1541%22%2C%22title%22%3A%22%5Cu4e4c%5Cu9f9f%5Cu68cb%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1256F%22%2C%22title%22%3A%22Equalizing%20Two%20Strings%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1256D%22%2C%22title%22%3A%22Binary%20String%20Minimizing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1256C%22%2C%22title%22%3A%22Platforms%20Jumping%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1256A%22%2C%22title%22%3A%22Payment%20Without%20Change%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minimize%20the%20Permutation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minimize the Permutation</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+给你一个长度为$n$排列，你需要经过至多$n-1$次的交换，使得排列的字典序尽量小。
+这里要注意：交换仅能交换相邻的两数，且每个位置只能交换一次。
+位置的定义如下：
+交换$a[1],a[2]$两数称为在位置$1$上的交换，交换$a[2],a[3]$两数称为在位置$2$上的交换，......，交换$a[n - 1],a[n]$两数称为在位置$n-1$上的交换
+## 输入格式
+本题有多组数据
+第一行输入一个数$q$，表示有$q$组数据
+对于每组数据：
+第一行输入一个数$n$，表示有$n$个数。
+下面一行输入$n$个数，代表给出的排列
+## 输出格式
+对于每个数据，输出交换后，字典序最小的结果。</div>
+<h2>题目描述</h2>
+<div>You are given a permutation of length $ n $ . Recall that the permutation is an array consisting of $ n $ distinct integers from $ 1 $ to $ n $ in arbitrary order. For example, $ [2, 3, 1, 5, 4] $ is a permutation, but $ [1, 2, 2] $ is not a permutation ( $ 2 $ appears twice in the array) and $ [1, 3, 4] $ is also not a permutation ( $ n=3 $ but there is $ 4 $ in the array).
+You can perform at most $ n-1 $ operations with the given permutation (it is possible that you don't perform any operations at all). The $ i $ -th operation allows you to swap elements of the given permutation on positions $ i $ and $ i+1 $ . Each operation can be performed at most once. The operations can be performed in arbitrary order.
+Your task is to find the lexicographically minimum possible permutation obtained by performing some of the given operations in some order.
+You can see the definition of the lexicographical order in the notes section.
+You have to answer $ q $ independent test cases.
+For example, let's consider the permutation $ [5, 4, 1, 3, 2] $ . The minimum possible permutation we can obtain is $ [1, 5, 2, 4, 3] $ and we can do it in the following way:
+1. perform the second operation (swap the second and the third elements) and obtain the permutation $ [5, 1, 4, 3, 2] $ ;
+2. perform the fourth operation (swap the fourth and the fifth elements) and obtain the permutation $ [5, 1, 4, 2, 3] $ ;
+3. perform the third operation (swap the third and the fourth elements) and obtain the permutation $ [5, 1, 2, 4, 3] $ .
+4. perform the first operation (swap the first and the second elements) and obtain the permutation $ [1, 5, 2, 4, 3] $ ;
+Another example is $ [1, 2, 4, 3] $ . The minimum possible permutation we can obtain is $ [1, 2, 3, 4] $ by performing the third operation (swap the third and the fourth elements).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ q $ ( $ 1 \le q \le 100 $ ) — the number of test cases. Then $ q $ test cases follow.
+The first line of the test case contains one integer $ n $ ( $ 1 \le n \le 100 $ ) — the number of elements in the permutation.
+The second line of the test case contains $ n $ distinct integers from $ 1 $ to $ n $ — the given permutation.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, print the answer on it — the lexicograhically minimum possible permutation obtained by performing some of the given operations in some order.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4
+5
+5 4 1 3 2
+4
+1 2 4 3
+1
+1
+4
+4 3 2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+1 5 2 4 3 
+1 2 3 4 
+1 
+1 4 3 2 
+</code></pre>
+<h2>说明</h2>
+<div>Recall that the permutation $ p $ of length $ n $ is lexicographically less than the permutation $ q $ of length $ n $ if there is such index $ i \le n $ that for all $ j $ from $ 1 $ to $ i - 1 $ the condition $ p_j = q_j $ is satisfied, and $ p_i < q_i $ . For example:
+- $ p = [1, 3, 5, 2, 4] $ is less than $ q = [1, 3, 5, 4, 2] $ (such $ i=4 $ exists, that $ p_i < q_i $ and for each $ j < i $ holds $ p_j = q_j $ ),
+- $ p = [1, 2] $ is less than $ q = [2, 1] $ (such $ i=1 $ exists, that $ p_i < q_i $ and for each $ j < i $ holds $ p_j = q_j $ ).</div>
+</article>
+</div>
+</div>
+</body>
+</html>
