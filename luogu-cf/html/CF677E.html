@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Vanya and Balloons - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396590:ys2V3jrZl+lSzlTu6pX+pYGVMX8/kx84ITHf9xqXUjY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Vanya%20plays%20a%20game%20of%20balloons%20on%20the%20field%20of%20size%20%24%20n%5Cu00d7n%20%24%20%2C%20where%20each%20cell%20contains%20a%20balloon%20with%20one%20of%20the%20values%20%24%200%20%24%20%2C%20%24%201%20%24%20%2C%20%24%202%20%24%20or%20%24%203%20%24%20.%20The%20goal%20is%20to%20destroy%20a%20cross%2C%20such%20that%20the%20product%20of%20all%20values%20of%20balloons%20in%20the%20cross%20is%20maximum%20possible.%20There%20are%20two%20types%20of%20crosses%3A%20normal%20and%20rotated.%20For%20example%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3E%2A%2Ao%2A%2A%3Cbr%3E%3C%5C%2Fbr%3E%2A%2Ao%2A%2A%3Cbr%3E%3C%5C%2Fbr%3Eooooo%3Cbr%3E%3C%5C%2Fbr%3E%2A%2Ao%2A%2A%3Cbr%3E%3C%5C%2Fbr%3E%2A%2Ao%2A%2A%3Cbr%3E%3C%5C%2Fbr%3E%60or%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3Eo%2A%2A%2Ao%3Cbr%3E%3C%5C%2Fbr%3E%2Ao%2Ao%2A%3Cbr%3E%3C%5C%2Fbr%3E%2A%2Ao%2A%2A%3Cbr%3E%3C%5C%2Fbr%3E%2Ao%2Ao%2A%3Cbr%3E%3C%5C%2Fbr%3Eo%2A%2A%2Ao%3Cbr%3E%3C%5C%2Fbr%3E%60Formally%2C%20the%20cross%20is%20given%20by%20three%20integers%20%24%20r%20%24%20%2C%20%24%20c%20%24%20and%20%24%20d%20%24%20%2C%20such%20that%20%24%20d%3C%3Dr%2Cc%3C%3Dn-d%2B1%20%24%20.%20The%20normal%20cross%20consists%20of%20balloons%20located%20in%20cells%20%24%20%28x%2Cy%29%20%24%20%28where%20%24%20x%20%24%20stay%20for%20the%20number%20of%20the%20row%20and%20%24%20y%20%24%20for%20the%20number%20of%20the%20column%29%2C%20such%20that%20%24%20%7Cx-r%7C%5Cu00b7%7Cy-c%7C%3D0%20%24%20and%20%24%20%7Cx-r%7C%2B%7Cy-c%7C%26lt%3Bd%20%24%20.%20Rotated%20cross%20consists%20of%20balloons%20located%20in%20cells%20%24%20%28x%2Cy%29%20%24%20%2C%20such%20that%20%24%20%7Cx-r%7C%3D%7Cy-c%7C%20%24%20and%20%24%20%7Cx-r%7C%26lt%3Bd%20%24%20.%5Cn%5CnVanya%20wants%20to%20know%20the%20maximum%20possible%20product%20of%20the%20values%20of%20balls%20forming%20one%20cross.%20As%20this%20value%20can%20be%20large%2C%20output%20it%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20and%20columns%20in%20the%20table%20with%20balloons.%5Cn%5CnThe%20each%20of%20the%20following%20%24%20n%20%24%20lines%20contains%20%24%20n%20%24%20characters%20%270%27%2C%20%271%27%2C%20%272%27%20or%20%273%27%20%5Cu2014%20the%20description%20of%20the%20values%20in%20balloons.%22%2C%22outputFormat%22%3A%22Print%20the%20maximum%20possible%20product%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%20Note%2C%20that%20you%20are%20not%20asked%20to%20maximize%20the%20remainder%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20%2C%20but%20to%20find%20the%20maximum%20value%20and%20print%20it%20this%20modulo.%22%2C%22samples%22%3A%5B%5B%224%5Cn1233%5Cn0213%5Cn2020%5Cn0303%5Cn%22%2C%22108%5Cn%22%5D%2C%5B%225%5Cn00300%5Cn00300%5Cn33333%5Cn00300%5Cn00300%5Cn%22%2C%2219683%5Cn%22%5D%2C%5B%225%5Cn00003%5Cn02030%5Cn00300%5Cn03020%5Cn30000%5Cn%22%2C%22108%5Cn%22%5D%2C%5B%225%5Cn21312%5Cn10003%5Cn10002%5Cn10003%5Cn23231%5Cn%22%2C%223%5Cn%22%5D%2C%5B%225%5Cn12131%5Cn12111%5Cn12112%5Cn21311%5Cn21212%5Cn%22%2C%2224%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20the%20maximum%20product%20is%20achieved%20for%20a%20rotated%20cross%20with%20a%20center%20in%20the%20cell%20%24%20%283%2C3%29%20%24%20and%20radius%20%24%201%20%24%20%3A%20%24%202%5Cu00b72%5Cu00b73%5Cu00b73%5Cu00b73%3D108%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F677%5C%2FE%22%2C%22id%22%3A%22677E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF677E%22%2C%22title%22%3A%22Vanya%20and%20Balloons%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Vanya%20and%20Balloons%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Vanya and Balloons</h1>
+<h2>题目描述</h2>
+<div>Vanya plays a game of balloons on the field of size $ n×n $ , where each cell contains a balloon with one of the values $ 0 $ , $ 1 $ , $ 2 $ or $ 3 $ . The goal is to destroy a cross, such that the product of all values of balloons in the cross is maximum possible. There are two types of crosses: normal and rotated. For example:
+`<br></br>**o**<br></br>**o**<br></br>ooooo<br></br>**o**<br></br>**o**<br></br>`or
+`<br></br>o***o<br></br>*o*o*<br></br>**o**<br></br>*o*o*<br></br>o***o<br></br>`Formally, the cross is given by three integers $ r $ , $ c $ and $ d $ , such that $ d<=r,c<=n-d+1 $ . The normal cross consists of balloons located in cells $ (x,y) $ (where $ x $ stay for the number of the row and $ y $ for the number of the column), such that $ |x-r|·|y-c|=0 $ and $ |x-r|+|y-c|&lt;d $ . Rotated cross consists of balloons located in cells $ (x,y) $ , such that $ |x-r|=|y-c| $ and $ |x-r|&lt;d $ .
+Vanya wants to know the maximum possible product of the values of balls forming one cross. As this value can be large, output it modulo $ 10^{9}+7 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ n $ ( $ 1<=n<=1000 $ ) — the number of rows and columns in the table with balloons.
+The each of the following $ n $ lines contains $ n $ characters '0', '1', '2' or '3' — the description of the values in balloons.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the maximum possible product modulo $ 10^{9}+7 $ . Note, that you are not asked to maximize the remainder modulo $ 10^{9}+7 $ , but to find the maximum value and print it this modulo.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1233
+0213
+2020
+0303
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>108
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+00300
+00300
+33333
+00300
+00300
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>19683
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5
+00003
+02030
+00300
+03020
+30000
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>108
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>5
+21312
+10003
+10002
+10003
+23231
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>5
+12131
+12111
+12112
+21311
+21212
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>24
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, the maximum product is achieved for a rotated cross with a center in the cell $ (3,3) $ and radius $ 1 $ : $ 2·2·3·3·3=108 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

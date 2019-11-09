@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Pashmak and Graph - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394313:2ZuVHDtAY96YSN/jmX82qxxR1JFl8qYJlguiMOvXZrY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Pashmak%27s%20homework%20is%20a%20problem%20about%20graphs.%20Although%20he%20always%20tries%20to%20do%20his%20homework%20completely%2C%20he%20can%27t%20solve%20this%20problem.%20As%20you%20know%2C%20he%27s%20really%20weak%20at%20graph%20theory%3B%20so%20try%20to%20help%20him%20in%20solving%20the%20problem.%5Cn%5CnYou%20are%20given%20a%20weighted%20directed%20graph%20with%20%24%20n%20%24%20vertices%20and%20%24%20m%20%24%20edges.%20You%20need%20to%20find%20a%20path%20%28perhaps%2C%20non-simple%29%20with%20maximum%20number%20of%20edges%2C%20such%20that%20the%20weights%20of%20the%20edges%20increase%20along%20the%20path.%20In%20other%20words%2C%20each%20edge%20of%20the%20path%20must%20have%20strictly%20greater%20weight%20than%20the%20previous%20edge%20in%20the%20path.%5Cn%5CnHelp%20Pashmak%2C%20print%20the%20number%20of%20edges%20in%20the%20required%20path.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20%24%20%282%3C%3Dn%3C%3D3%5Cu00b710%5E%7B5%7D%3B%5Cu00a01%3C%3Dm%3C%3Dmin%28n%5Cu00b7%28n-1%29%2C3%5Cu00b710%5E%7B5%7D%29%29%20%24%20.%20Then%2C%20%24%20m%20%24%20lines%20follows.%20The%20%24%20i%20%24%20-th%20line%20contains%20three%20space%20separated%20integers%3A%20%24%20u_%7Bi%7D%20%24%20%2C%20%24%20v_%7Bi%7D%20%24%20%2C%20%24%20w_%7Bi%7D%20%24%20%24%20%281%3C%3Du_%7Bi%7D%2Cv_%7Bi%7D%3C%3Dn%3B%5Cu00a01%3C%3Dw_%7Bi%7D%3C%3D10%5E%7B5%7D%29%20%24%20which%20indicates%20that%20there%27s%20a%20directed%20edge%20with%20weight%20%24%20w_%7Bi%7D%20%24%20from%20vertex%20%24%20u_%7Bi%7D%20%24%20to%20vertex%20%24%20v_%7Bi%7D%20%24%20.%5Cn%5CnIt%27s%20guaranteed%20that%20the%20graph%20doesn%27t%20contain%20self-loops%20and%20multiple%20edges.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20answer%20to%20the%20problem.%22%2C%22samples%22%3A%5B%5B%223%203%5Cn1%202%201%5Cn2%203%201%5Cn3%201%201%5Cn%22%2C%221%5Cn%22%5D%2C%5B%223%203%5Cn1%202%201%5Cn2%203%202%5Cn3%201%203%5Cn%22%2C%223%5Cn%22%5D%2C%5B%226%207%5Cn1%202%201%5Cn3%202%205%5Cn2%204%202%5Cn2%205%202%5Cn2%206%209%5Cn5%204%203%5Cn4%203%204%5Cn%22%2C%226%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20the%20maximum%20trail%20can%20be%20any%20of%20this%20trails%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF459E%5C%2F46950f7ebb1a8fb1042610e7d90ce693216dd148.png%29.%5Cn%5CnIn%20the%20second%20sample%20the%20maximum%20trail%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF459E%5C%2F0a8ef1a8d44f73ed1581f13e754f7328cc98bdea.png%29.%5Cn%5CnIn%20the%20third%20sample%20the%20maximum%20trail%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF459E%5C%2F077a752077571978dd842d2ca5ed7e4dcecd7b85.png%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F459%5C%2FE%22%2C%22id%22%3A%22459E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9an%20%5Cu4e2a%5Cu70b9%5Cuff0cm%20%5Cu6761%5Cu5e26%5Cu6743%5Cu8fb9%5Cu7684%5Cu6709%5Cu5411%5Cu56fe%5Cu3002%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu8bf7%5Cu4f60%5Cu627e%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cuff0c%5Cu8d77%5Cu70b9%5Cu548c%5Cu7ec8%5Cu70b9%5Cu81ea%5Cu53d6%5Cuff0c%5Cu5728%5Cu4fdd%5Cu8bc1%5Cu8def%5Cu5f84%5Cu4e0a%5Cu7684%5Cu8fb9%5Cu6743%5Cu4e25%5Cu683c%5Cu9012%5Cu589e%5Cuff08%5Cu5373%5Cr%5Cn%5Cu4e0b%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684v%20%5Cu4e25%5Cu683c%5Cu5c0f%5Cu4e8e%5Cu4e0a%5Cu4e00%5Cu6761%5Cu7684v%5Cuff09%5Cu7684%5Cu60c5%5Cu51b5%5Cu4e0b%5Cu5305%5Cu542b%5Cu6700%5Cu591a%5Cu7684%5Cu8fb9%5Cu3002%5Cr%5Cn%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu53ea%5Cu7528%5Cu4e00%5Cu6b21%5Cu3002%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu8def%5Cu5f84%5Cu6700%5Cu591a%5Cu80fd%5Cu5305%5Cu542b%5Cu591a%5Cu5c11%5Cu6761%5Cu8fb9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51652%5Cu4e2a%5Cu6570%5Cu5b57n%2Cm%2C%20%5Cu8868%5Cu793an%20%5Cu4e2a%5Cu70b9m%20%5Cu6761%5Cu6709%5Cu5411%5Cu8fb9%5Cu3002%5Cr%5Cn%5Cu7b2c2%20%5Cu5230m%2B1%20%5Cu884c%5Cu6bcf%5Cu884c3%20%5Cu4e2a%5Cu6570s%2Ct%20%5Cu548cv%5Cuff0c%5Cu8868%5Cu793a%5Cu8fb9%5Cu7684%5Cu8d77%5Cu70b9%5Cu3001%5Cu7ec8%5Cu70b9%5Cu3001%5Cu8fb9%5Cu6743%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A177%2C%22totalAccepted%22%3A57%2C%22pid%22%3A%22CF459E%22%2C%22title%22%3A%22Pashmak%20and%20Graph%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3768%22%2C%22title%22%3A%22%5Cu7b80%5Cu5355%5Cu7684%5Cu6570%5Cu5b66%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3899%22%2C%22title%22%3A%22%5B%5Cu6e56%5Cu5357%5Cu96c6%5Cu8bad%5D%5Cu8c08%5Cu7b11%5Cu98ce%5Cu751f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF540D%22%2C%22title%22%3A%22Bad%20Luck%20Island%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF496C%22%2C%22title%22%3A%22Removing%20Columns%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1237B%22%2C%22title%22%3A%22Balanced%20Tunnel%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Pashmak%20and%20Graph%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Pashmak and Graph</h1>
+<h2>题意翻译</h2>
+<div>给定n 个点，m 条带权边的有向图。
+现在请你找一条路径，起点和终点自取，在保证路径上的边权严格递增（即
+下一条边的v 严格小于上一条的v）的情况下包含最多的边。
+每条边只用一次。请输出路径最多能包含多少条边。
+第一行输入2个数字n,m, 表示n 个点m 条有向边。
+第2 到m+1 行每行3 个数s,t 和v，表示边的起点、终点、边权。
+</div>
+<h2>题目描述</h2>
+<div>Pashmak's homework is a problem about graphs. Although he always tries to do his homework completely, he can't solve this problem. As you know, he's really weak at graph theory; so try to help him in solving the problem.
+You are given a weighted directed graph with $ n $ vertices and $ m $ edges. You need to find a path (perhaps, non-simple) with maximum number of edges, such that the weights of the edges increase along the path. In other words, each edge of the path must have strictly greater weight than the previous edge in the path.
+Help Pashmak, print the number of edges in the required path.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ , $ m $ $ (2<=n<=3·10^{5}; 1<=m<=min(n·(n-1),3·10^{5})) $ . Then, $ m $ lines follows. The $ i $ -th line contains three space separated integers: $ u_{i} $ , $ v_{i} $ , $ w_{i} $ $ (1<=u_{i},v_{i}<=n; 1<=w_{i}<=10^{5}) $ which indicates that there's a directed edge with weight $ w_{i} $ from vertex $ u_{i} $ to vertex $ v_{i} $ .
+It's guaranteed that the graph doesn't contain self-loops and multiple edges.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the answer to the problem.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3
+1 2 1
+2 3 1
+3 1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3
+1 2 1
+2 3 2
+3 1 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>6 7
+1 2 1
+3 2 5
+2 4 2
+2 5 2
+2 6 9
+5 4 3
+4 3 4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>6
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample the maximum trail can be any of this trails: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF459E/46950f7ebb1a8fb1042610e7d90ce693216dd148.png).
+In the second sample the maximum trail is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF459E/0a8ef1a8d44f73ed1581f13e754f7328cc98bdea.png).
+In the third sample the maximum trail is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF459E/077a752077571978dd842d2ca5ed7e4dcecd7b85.png).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

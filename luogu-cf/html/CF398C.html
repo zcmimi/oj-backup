@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tree and Array - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393686:FR+SJaVIy+OIe8p3f5hbnhqh0mmxVeDKJi2MCqrCeng=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22User%20ainta%20likes%20trees.%20This%20time%20he%20is%20going%20to%20make%20an%20undirected%20tree%20with%20%24%20n%20%24%20vertices%20numbered%20by%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20The%20tree%20is%20weighted%2C%20so%20each%20edge%20of%20the%20tree%20will%20have%20some%20integer%20weight.%5Cn%5CnAlso%20he%20has%20an%20array%20%24%20t%20%24%20%3A%20%24%20t%5B1%5D%2Ct%5B2%5D%2C...%2Ct%5Bn%5D%20%24%20.%20At%20first%20all%20the%20elements%20of%20the%20array%20are%20initialized%20to%20%24%200%20%24%20.%20Then%20for%20each%20edge%20connecting%20vertices%20%24%20u%20%24%20and%20%24%20v%20%24%20%28%20%24%20u%26lt%3Bv%20%24%20%29%20of%20the%20tree%20with%20weight%20%24%20c%20%24%20%2C%20ainta%20adds%20value%20%24%20c%20%24%20to%20the%20elements%20%24%20t%5Bu%5D%2Ct%5Bu%2B1%5D%2C...%2Ct%5Bv-1%5D%2Ct%5Bv%5D%20%24%20of%20array%20%24%20t%20%24%20.%5Cn%5CnLet%27s%20assume%20that%20%24%20d%28u%2Cv%29%20%24%20is%20the%20total%20weight%20of%20edges%20on%20the%20shortest%20path%20between%20vertex%20%24%20u%20%24%20and%20vertex%20%24%20v%20%24%20.%20User%20ainta%20calls%20a%20pair%20of%20integers%20%24%20x%2Cy%20%24%20%28%20%24%201%3C%3Dx%26lt%3By%3C%3Dn%20%24%20%29%20good%20if%20and%20only%20if%20%24%20d%28x%2Cy%29%3Dt%5Bx%5D%2Bt%5Bx%2B1%5D%2B...%2Bt%5By-1%5D%2Bt%5By%5D%20%24%20.%5Cn%5CnUser%20ainta%20wants%20to%20make%20at%20least%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF398C%5C%2Fd289004abb1deda75bd015b817d8e89f3dffdc1a.png%29%20good%20pairs%2C%20but%20he%20couldn%27t%20make%20a%20proper%20tree.%20Help%20ainta%20to%20find%20such%20a%20tree.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%205%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20%24%20n-1%20%24%20lines%20containing%20the%20description%20of%20the%20edges.%20The%20%24%20i%20%24%20-th%20line%20should%20contain%20three%20space-separated%20integers%20%24%20u_%7Bi%7D%2Cv_%7Bi%7D%2Cc_%7Bi%7D%20%24%20%28%20%24%201%3C%3Du_%7Bi%7D%26lt%3Bv_%7Bi%7D%3C%3Dn%3B%5Cu00a01%3C%3Dc_%7Bi%7D%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20two%20vertices%20connected%20by%20the%20edge%2C%20and%20the%20weight%20of%20the%20edge.%5Cn%5CnNext%20print%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF398C%5C%2Fd289004abb1deda75bd015b817d8e89f3dffdc1a.png%29%20lines%20containing%20the%20good%20pairs.%20The%20%24%20k%20%24%20-th%20line%20should%20contain%20two%20space-separated%20integers%20%24%20x_%7Bk%7D%20%24%20and%20%24%20y_%7Bk%7D%20%24%20%28%20%24%201%3C%3Dx_%7Bk%7D%26lt%3By_%7Bk%7D%3C%3Dn%20%24%20%29.%20Of%20course%2C%20%24%20x_%7Bk%7D%2Cy_%7Bk%7D%20%24%20must%20be%20a%20good%20pair.%20All%20pairs%20should%20be%20distinct%20%5Cu2014%20that%20is%2C%20for%20all%20%24%20j%2Ck%20%24%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF398C%5C%2Feded318345fe4bfa1a0ddcf83d7da297b7a9245e.png%29%2C%20%24%20x_%7Bj%7D%5Cu2260x_%7Bk%7D%20%24%20or%20%24%20y_%7Bj%7D%5Cu2260y_%7Bk%7D%20%24%20must%20be%20satisfied.%5Cn%5CnIf%20there%20are%20many%20correct%20solutions%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%227%22%2C%221%204%201%5Cn1%202%202%5Cn2%203%205%5Cn3%205%203%5Cn2%206%202%5Cn6%207%203%5Cn4%205%5Cn5%206%5Cn5%207%22%5D%5D%2C%22hint%22%3A%22%20%24%20%5Cu230ax%5Cu230b%20%24%20is%20the%20largest%20integer%20not%20greater%20than%20%24%20x%20%24%20.%5Cn%5CnYou%20can%20find%20the%20definition%20of%20a%20tree%20by%20the%20following%20link%3A%20http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FTree%5C%5C_%28graph%5C%5C_theory%29%5Cn%5CnYou%20can%20also%20find%20the%20definition%20of%20the%20shortest%20path%20by%20the%20following%20link%3A%20http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FShortest%5C%5C_path%5C%5C_problem%5Cn%5CnThe%20tree%20and%20the%20array%20%24%20t%20%24%20in%20the%20sample%20output%20look%20like%20this%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF398C%5C%2F35985a8a384c3c5c49cf867a39dc5edbaf21fc27.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F398%5C%2FC%22%2C%22id%22%3A%22398C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF398C%22%2C%22title%22%3A%22Tree%20and%20Array%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Tree%20and%20Array%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Tree and Array</h1>
+<h2>题目描述</h2>
+<div>User ainta likes trees. This time he is going to make an undirected tree with $ n $ vertices numbered by integers from $ 1 $ to $ n $ . The tree is weighted, so each edge of the tree will have some integer weight.
+Also he has an array $ t $ : $ t[1],t[2],...,t[n] $ . At first all the elements of the array are initialized to $ 0 $ . Then for each edge connecting vertices $ u $ and $ v $ ( $ u&lt;v $ ) of the tree with weight $ c $ , ainta adds value $ c $ to the elements $ t[u],t[u+1],...,t[v-1],t[v] $ of array $ t $ .
+Let's assume that $ d(u,v) $ is the total weight of edges on the shortest path between vertex $ u $ and vertex $ v $ . User ainta calls a pair of integers $ x,y $ ( $ 1<=x&lt;y<=n $ ) good if and only if $ d(x,y)=t[x]+t[x+1]+...+t[y-1]+t[y] $ .
+User ainta wants to make at least ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF398C/d289004abb1deda75bd015b817d8e89f3dffdc1a.png) good pairs, but he couldn't make a proper tree. Help ainta to find such a tree.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 5<=n<=10^{5} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n-1 $ lines containing the description of the edges. The $ i $ -th line should contain three space-separated integers $ u_{i},v_{i},c_{i} $ ( $ 1<=u_{i}&lt;v_{i}<=n; 1<=c_{i}<=10^{5} $ ) — two vertices connected by the edge, and the weight of the edge.
+Next print ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF398C/d289004abb1deda75bd015b817d8e89f3dffdc1a.png) lines containing the good pairs. The $ k $ -th line should contain two space-separated integers $ x_{k} $ and $ y_{k} $ ( $ 1<=x_{k}&lt;y_{k}<=n $ ). Of course, $ x_{k},y_{k} $ must be a good pair. All pairs should be distinct — that is, for all $ j,k $ ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF398C/eded318345fe4bfa1a0ddcf83d7da297b7a9245e.png), $ x_{j}≠x_{k} $ or $ y_{j}≠y_{k} $ must be satisfied.
+If there are many correct solutions, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 4 1
+1 2 2
+2 3 5
+3 5 3
+2 6 2
+6 7 3
+4 5
+5 6
+5 7</code></pre>
+<h2>说明</h2>
+<div> $ ⌊x⌋ $ is the largest integer not greater than $ x $ .
+You can find the definition of a tree by the following link: http://en.wikipedia.org/wiki/Tree\_(graph\_theory)
+You can also find the definition of the shortest path by the following link: http://en.wikipedia.org/wiki/Shortest\_path\_problem
+The tree and the array $ t $ in the sample output look like this:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF398C/35985a8a384c3c5c49cf867a39dc5edbaf21fc27.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

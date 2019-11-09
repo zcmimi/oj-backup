@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Two Circles - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393256:8VqmtdtpFt9wsWmqE4Jlm0ur6xYkKgHA4dE3Gt6ATk4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20assume%20that%20we%20are%20given%20an%20%24%20n%5Cu00d7m%20%24%20table%20filled%20by%20integers.%20We%27ll%20mark%20a%20cell%20in%20the%20%24%20i%20%24%20-th%20row%20and%20%24%20j%20%24%20-th%20column%20as%20%24%20%28i%2Cj%29%20%24%20.%20Thus%2C%20%24%20%281%2C1%29%20%24%20is%20the%20upper%20left%20cell%20of%20the%20table%20and%20%24%20%28n%2Cm%29%20%24%20is%20the%20lower%20right%20cell.%20We%27ll%20assume%20that%20a%20circle%20of%20radius%20%24%20r%20%24%20with%20the%20center%20in%20cell%20%24%20%28i_%7B0%7D%2Cj_%7B0%7D%29%20%24%20is%20a%20set%20of%20such%20cells%20%24%20%28i%2Cj%29%20%24%20that%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF363E%5C%2Fb2bafc764d119b32ea0c24f4e018ab3429f5d29b.png%29.%20We%27ll%20consider%20only%20the%20circles%20that%20do%20not%20go%20beyond%20the%20limits%20of%20the%20table%2C%20that%20is%2C%20for%20which%20%24%20r%2B1%3C%3Di_%7B0%7D%3C%3Dn-r%20%24%20and%20%24%20r%2B1%3C%3Dj_%7B0%7D%3C%3Dm-r%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF363E%5C%2Fbad0cdc2b050c5b55562fdf359ccf805d34e586b.png%29%20A%20circle%20of%20radius%203%20with%20the%20center%20at%20%24%20%284%2C5%29%20%24%20.%20Find%20two%20such%20non-intersecting%20circles%20of%20the%20given%20radius%20%24%20r%20%24%20that%20the%20sum%20of%20numbers%20in%20the%20cells%20that%20belong%20to%20these%20circles%20is%20maximum.%20Two%20circles%20intersect%20if%20there%20is%20a%20cell%20that%20belongs%20to%20both%20circles.%20As%20there%20can%20be%20more%20than%20one%20way%20to%20choose%20a%20pair%20of%20circles%20with%20the%20maximum%20sum%2C%20we%20will%20also%20be%20interested%20in%20the%20number%20of%20such%20pairs.%20Calculate%20the%20number%20of%20unordered%20pairs%20of%20circles%2C%20for%20instance%2C%20a%20pair%20of%20circles%20of%20radius%202%20with%20centers%20at%20%24%20%283%2C4%29%20%24%20and%20%24%20%287%2C7%29%20%24%20is%20the%20same%20pair%20as%20the%20pair%20of%20circles%20of%20radius%202%20with%20centers%20at%20%24%20%287%2C7%29%20%24%20and%20%24%20%283%2C4%29%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20r%20%24%20%28%20%24%202%3C%3Dn%2Cm%3C%3D500%20%24%20%2C%20%24%20r%3E%3D0%20%24%20%29.%20Each%20of%20the%20following%20%24%20n%20%24%20lines%20contains%20%24%20m%20%24%20integers%20from%201%20to%201000%20each%20%5Cu2014%20the%20elements%20of%20the%20table.%20The%20rows%20of%20the%20table%20are%20listed%20from%20top%20to%20bottom%20at%20the%20elements%20in%20the%20rows%20are%20listed%20from%20left%20to%20right.%20It%20is%20guaranteed%20that%20there%20is%20at%20least%20one%20circle%20of%20radius%20%24%20r%20%24%20%2C%20not%20going%20beyond%20the%20table%20limits.%22%2C%22outputFormat%22%3A%22Print%20two%20integers%20%5Cu2014%20the%20maximum%20sum%20of%20numbers%20in%20the%20cells%20that%20are%20located%20into%20two%20non-intersecting%20circles%20and%20the%20number%20of%20pairs%20of%20non-intersecting%20circles%20with%20the%20maximum%20sum.%20If%20there%20isn%27t%20a%20single%20pair%20of%20non-intersecting%20circles%2C%20print%200%200.%22%2C%22samples%22%3A%5B%5B%222%202%200%5Cn1%202%5Cn2%204%5Cn%22%2C%226%202%5Cn%22%5D%2C%5B%225%206%201%5Cn4%202%201%203%202%206%5Cn2%203%202%204%207%202%5Cn5%202%202%201%201%203%5Cn1%204%203%203%206%204%5Cn5%201%204%202%203%202%5Cn%22%2C%2234%203%5Cn%22%5D%2C%5B%223%203%201%5Cn1%202%203%5Cn4%205%206%5Cn7%208%209%5Cn%22%2C%220%200%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F363%5C%2FE%22%2C%22id%22%3A%22363E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A17%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF363E%22%2C%22title%22%3A%22Two%20Circles%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Two%20Circles%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Two Circles</h1>
+<h2>题目描述</h2>
+<div>Let's assume that we are given an $ n×m $ table filled by integers. We'll mark a cell in the $ i $ -th row and $ j $ -th column as $ (i,j) $ . Thus, $ (1,1) $ is the upper left cell of the table and $ (n,m) $ is the lower right cell. We'll assume that a circle of radius $ r $ with the center in cell $ (i_{0},j_{0}) $ is a set of such cells $ (i,j) $ that ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF363E/b2bafc764d119b32ea0c24f4e018ab3429f5d29b.png). We'll consider only the circles that do not go beyond the limits of the table, that is, for which $ r+1<=i_{0}<=n-r $ and $ r+1<=j_{0}<=m-r $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF363E/bad0cdc2b050c5b55562fdf359ccf805d34e586b.png) A circle of radius 3 with the center at $ (4,5) $ . Find two such non-intersecting circles of the given radius $ r $ that the sum of numbers in the cells that belong to these circles is maximum. Two circles intersect if there is a cell that belongs to both circles. As there can be more than one way to choose a pair of circles with the maximum sum, we will also be interested in the number of such pairs. Calculate the number of unordered pairs of circles, for instance, a pair of circles of radius 2 with centers at $ (3,4) $ and $ (7,7) $ is the same pair as the pair of circles of radius 2 with centers at $ (7,7) $ and $ (3,4) $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ and $ r $ ( $ 2<=n,m<=500 $ , $ r>=0 $ ). Each of the following $ n $ lines contains $ m $ integers from 1 to 1000 each — the elements of the table. The rows of the table are listed from top to bottom at the elements in the rows are listed from left to right. It is guaranteed that there is at least one circle of radius $ r $ , not going beyond the table limits.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print two integers — the maximum sum of numbers in the cells that are located into two non-intersecting circles and the number of pairs of non-intersecting circles with the maximum sum. If there isn't a single pair of non-intersecting circles, print 0 0.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 2 0
+1 2
+2 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6 2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 6 1
+4 2 1 3 2 6
+2 3 2 4 7 2
+5 2 2 1 1 3
+1 4 3 3 6 4
+5 1 4 2 3 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>34 3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 3 1
+1 2 3
+4 5 6
+7 8 9
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0 0
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

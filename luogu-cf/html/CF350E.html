@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Wrong Floyd - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393112:1rRMI7h8/irt41HA2cLGaQhaGsMr6pRyCrDo7yGp5vc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Valera%20conducts%20experiments%20with%20algorithms%20that%20search%20for%20shortest%20paths.%20He%20has%20recently%20studied%20the%20Floyd%27s%20algorithm%2C%20so%20it%27s%20time%20to%20work%20with%20it.%5Cn%5CnValera%27s%20already%20written%20the%20code%20that%20counts%20the%20shortest%20distance%20between%20any%20pair%20of%20vertexes%20in%20a%20non-directed%20connected%20graph%20from%20%24%20n%20%24%20vertexes%20and%20%24%20m%20%24%20edges%2C%20containing%20no%20loops%20and%20multiple%20edges.%20Besides%2C%20Valera%27s%20decided%20to%20mark%20part%20of%20the%20vertexes.%20He%27s%20marked%20exactly%20%24%20k%20%24%20vertexes%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bk%7D%20%24%20.%5Cn%5CnValera%27s%20code%20is%20given%20below.%5Cn%60%60%60%5Cnans%5Bi%5D%5Bj%5D%20%5C%2F%5C%2F%20the%20shortest%20distance%20for%20a%20pair%20of%20vertexes%20%20i%2Cj%20%5Cna%5Bi%5D%20%20%5C%2F%5C%2F%20vertexes%2C%20marked%20by%20Valera%5Cnfor%28i%20%3D%201%3B%20i%20%3C%3D%20n%3B%20i%2B%2B%29%20%5Cn%7B%20%20%20%20%5Cn%5Ctfor%28j%20%3D%201%3B%20j%20%3C%3D%20n%3B%20j%2B%2B%29%20%5Cn%5Ct%7B%20%20%20%20%20%20%20%20%5Cn%5Ct%5Ctif%20%28i%20%3D%3D%20j%29%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%5Ct%5Ct%5Ctans%5Bi%5D%5Bj%5D%20%3D%200%3B%20%20%20%20%20%20%20%20%5Cn%5Ct%5Ctelse%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%5Ct%5Ct%5Ctans%5Bi%5D%5Bj%5D%20%3D%20INF%3B%20%20%5C%2F%5C%2FINF%20is%20a%20very%20large%20number%20%20%20%20%20%5Cn%5Ct%7D%5Cn%7D%20%20%20%20%5Cnfor%28i%20%3D%201%3B%20i%20%3C%3D%20m%3B%20i%2B%2B%29%20%5Cn%7B%20%20%20%20%5Cn%5Ctread%20a%20pair%20of%20vertexes%20u%2C%20v%20that%20have%20a%20non-directed%20edge%20between%20them%3B%20%20%20%20%5Cn%5Ctans%5Bu%5D%5Bv%5D%20%3D%201%3B%20%20%20%20%5Cn%5Ctans%5Bv%5D%5Bu%5D%20%3D%201%3B%5Cn%7D%5Cnfor%20%28i%20%3D%201%3B%20i%20%3C%3D%20k%3B%20i%2B%2B%29%20%5Cn%7B%20%20%20%20%5Cn%5Ctv%20%3D%20a%5Bi%5D%3B%20%20%20%20%5Cn%5Ctfor%28j%20%3D%201%3B%20j%20%3C%3D%20n%3B%20j%2B%2B%29%20%20%20%20%20%20%20%20%5Cn%5Ct%5Ctfor%28r%20%3D%201%3B%20r%20%3C%3D%20n%3B%20r%2B%2B%29%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%5Ct%5Ct%5Ctans%5Bj%5D%5Br%5D%20%3D%20min%28ans%5Bj%5D%5Br%5D%2C%20ans%5Bj%5D%5Bv%5D%20%2B%20ans%5Bv%5D%5Br%5D%29%3B%5Cn%7D%5Cn%60%60%60%5CnValera%20has%20seen%20that%20his%20code%20is%20wrong.%20Help%20the%20boy.%20Given%20the%20set%20of%20marked%20vertexes%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bk%7D%20%24%20%2C%20find%20such%20non-directed%20connected%20graph%2C%20consisting%20of%20%24%20n%20%24%20vertexes%20and%20%24%20m%20%24%20edges%2C%20for%20which%20Valera%27s%20code%20counts%20the%20wrong%20shortest%20distance%20for%20at%20least%20one%20pair%20of%20vertexes%20%24%20%28i%2Cj%29%20%24%20.%20Valera%20is%20really%20keen%20to%20get%20a%20graph%20without%20any%20loops%20and%20multiple%20edges.%20If%20no%20such%20graph%20exists%2C%20print%20-1.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20three%20integers%20%24%20n%2Cm%2Ck%20%24%20%28%20%24%203%3C%3Dn%3C%3D300%20%24%20%2C%20%24%202%3C%3Dk%3C%3Dn%20%24%20%2C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF350E%5C%2F5d1246889ad04671f4f532ebb3f380ef9ac31a26.png%29%29%20%5Cu2014%20the%20number%20of%20vertexes%2C%20the%20number%20of%20edges%20and%20the%20number%20of%20marked%20vertexes.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20k%20%24%20space-separated%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%5C%5C%20a_%7Bk%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20numbers%20of%20the%20marked%20vertexes.%20It%20is%20guaranteed%20that%20all%20numbers%20%24%20a_%7Bi%7D%20%24%20are%20distinct.%22%2C%22outputFormat%22%3A%22If%20the%20graph%20doesn%27t%20exist%2C%20print%20-1%20on%20a%20single%20line.%20Otherwise%2C%20print%20%24%20m%20%24%20lines%2C%20each%20containing%20two%20integers%20%24%20u%2Cv%20%24%20%5Cu2014%20the%20description%20of%20the%20edges%20of%20the%20graph%20Valera%27s%20been%20looking%20for.%22%2C%22samples%22%3A%5B%5B%223%202%202%5Cn1%202%5Cn%22%2C%221%203%5Cn2%203%5Cn%22%5D%2C%5B%223%203%202%5Cn1%202%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F350%5C%2FE%22%2C%22id%22%3A%22350E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%24n%24%5Cu4e2a%5Cu70b9%2C%24m%24%5Cu6761%5Cu8fb9%5Cu4ee5%5Cu53ca%24k%24%5Cu4e2a%5Cu6807%5Cu8bb0%5Cu70b9%5Cuff0c%5Cu8981%5Cu6c42%5Cu8fdb%5Cu884c%24Floyd%24%5Cu65f6%5Cu53ea%5Cu4ee5%5Cu6807%5Cu8bb0%5Cu7684%5Cu70b9%5Cu4e3a%5Cu4e2d%5Cu95f4%5Cu70b9%5Cu8fdb%5Cu884c%5Cu677e%5Cu5f1b%5Cu64cd%5Cu4f5c%5Cuff08%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu8fb9%5Cu6743%5Cu4e3a%241%24%5Cuff09%5Cu8981%5Cu6c42%5Cu4f60%5Cu9020%5Cu51fa%5Cu4e00%5Cu5171%24m%24%5Cu6761%5Cu8fb9%5Cu7684%5Cu6570%5Cu636e%5Cu6765%24hack%24%5Cu6389%24Valera%24%5Cu7684%5Cu7a0b%5Cu5e8f%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A59%2C%22totalAccepted%22%3A21%2C%22pid%22%3A%22CF350E%22%2C%22title%22%3A%22Wrong%20Floyd%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A94334%2C%22title%22%3A%22%5Cu9898%5Cu9762%5Cu7206%5Cu70b8%5Cu4e86%5Cu5417..%22%2C%22forum%22%3A%7B%22id%22%3A11236%2C%22name%22%3A%22CF350E%20Wrong%20Floyd%22%2C%22slug%22%3A%22CF350E%22%7D%7D%2C%7B%22id%22%3A46215%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11236%2C%22name%22%3A%22CF350E%20Wrong%20Floyd%22%2C%22slug%22%3A%22CF350E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1393%22%2C%22title%22%3A%22%5Cu52a8%5Cu6001%5Cu9006%5Cu5e8f%5Cu5bf9%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2495%22%2C%22title%22%3A%22%5BSDOI2011%5D%5Cu6d88%5Cu8017%5Cu6218%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF356A%22%2C%22title%22%3A%22Knight%20Tournament%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF353D%22%2C%22title%22%3A%22Queue%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4180%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu4e25%5Cu683c%5Cu6b21%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%5BBJWC2010%5D%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Wrong%20Floyd%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Wrong Floyd</h1>
+<h2>题意翻译</h2>
+<div>给定$n$个点,$m$条边以及$k$个标记点，要求进行$Floyd$时只以标记的点为中间点进行松弛操作（每条边边权为$1$）要求你造出一共$m$条边的数据来$hack$掉$Valera$的程序</div>
+<h2>题目描述</h2>
+<div>Valera conducts experiments with algorithms that search for shortest paths. He has recently studied the Floyd's algorithm, so it's time to work with it.
+Valera's already written the code that counts the shortest distance between any pair of vertexes in a non-directed connected graph from $ n $ vertexes and $ m $ edges, containing no loops and multiple edges. Besides, Valera's decided to mark part of the vertexes. He's marked exactly $ k $ vertexes $ a_{1},a_{2},...,a_{k} $ .
+Valera's code is given below.
+```
+ans[i][j] // the shortest distance for a pair of vertexes i,j
+a[i] // vertexes, marked by Valera
+for(i = 1; i <= n; i++)
+{
+for(j = 1; j <= n; j++)
+{
+if (i == j)
+ans[i][j] = 0;
+else
+ans[i][j] = INF; //INF is a very large number
+}
+}
+for(i = 1; i <= m; i++)
+{
+read a pair of vertexes u, v that have a non-directed edge between them;
+ans[u][v] = 1;
+ans[v][u] = 1;
+}
+for (i = 1; i <= k; i++)
+{
+v = a[i];
+for(j = 1; j <= n; j++)
+for(r = 1; r <= n; r++)
+ans[j][r] = min(ans[j][r], ans[j][v] + ans[v][r]);
+}
+```
+Valera has seen that his code is wrong. Help the boy. Given the set of marked vertexes $ a_{1},a_{2},...,a_{k} $ , find such non-directed connected graph, consisting of $ n $ vertexes and $ m $ edges, for which Valera's code counts the wrong shortest distance for at least one pair of vertexes $ (i,j) $ . Valera is really keen to get a graph without any loops and multiple edges. If no such graph exists, print -1.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains three integers $ n,m,k $ ( $ 3<=n<=300 $ , $ 2<=k<=n $ , ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF350E/5d1246889ad04671f4f532ebb3f380ef9ac31a26.png)) — the number of vertexes, the number of edges and the number of marked vertexes.
+The second line of the input contains $ k $ space-separated integers $ a_{1},a_{2},...\ a_{k} $ ( $ 1<=a_{i}<=n $ ) — the numbers of the marked vertexes. It is guaranteed that all numbers $ a_{i} $ are distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>If the graph doesn't exist, print -1 on a single line. Otherwise, print $ m $ lines, each containing two integers $ u,v $ — the description of the edges of the graph Valera's been looking for.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 2 2
+1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 3
+2 3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3 2
+1 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

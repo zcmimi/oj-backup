@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Maze 1D - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393752:7uHtkFBxC6NBAZBY89Sr9QgStOPZXhSdvxoUtVeegkM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Valera%20has%20a%20strip%20infinite%20in%20both%20directions%20and%20consisting%20of%20cells.%20The%20cells%20are%20numbered%20by%20integers.%20The%20cell%20number%20%24%200%20%24%20has%20a%20robot.%5Cn%5CnThe%20robot%20has%20instructions%20%5Cu2014%20the%20sequence%20of%20moves%20that%20he%20must%20perform.%20In%20one%20move%2C%20the%20robot%20moves%20one%20cell%20to%20the%20left%20or%20one%20cell%20to%20the%20right%2C%20according%20to%20instructions.%20Before%20the%20robot%20starts%20moving%2C%20Valera%20puts%20obstacles%20in%20some%20cells%20of%20the%20strip%2C%20excluding%20cell%20number%20%24%200%20%24%20.%20If%20the%20robot%20should%20go%20into%20the%20cell%20with%20an%20obstacle%20according%20the%20instructions%2C%20it%20will%20skip%20this%20move.%5Cn%5CnAlso%20Valera%20indicates%20the%20finish%20cell%20in%20which%20the%20robot%20has%20to%20be%20after%20completing%20the%20entire%20instructions.%20The%20finishing%20cell%20should%20be%20different%20from%20the%20starting%20one.%20It%20is%20believed%20that%20the%20robot%20completed%20the%20instructions%20successfully%2C%20if%20during%20the%20process%20of%20moving%20he%20visited%20the%20finish%20cell%20exactly%20once%20%5Cu2014%20at%20its%20last%20move.%20Moreover%2C%20the%20latter%20move%20cannot%20be%20skipped.%5Cn%5CnLet%27s%20assume%20that%20%24%20k%20%24%20is%20the%20minimum%20number%20of%20obstacles%20that%20Valera%20must%20put%20to%20make%20the%20robot%20able%20to%20complete%20the%20entire%20sequence%20of%20instructions%20successfully%20and%20end%20up%20in%20some%20finishing%20cell.%20You%20need%20to%20calculate%20in%20how%20many%20ways%20Valera%20can%20choose%20%24%20k%20%24%20obstacles%20and%20the%20finishing%20cell%20so%20that%20the%20robot%20is%20able%20to%20complete%20the%20instructions%20successfully.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20sequence%20of%20characters%20without%20spaces%20%24%20s_%7B1%7Ds_%7B2%7D...%5C%5C%20s_%7Bn%7D%20%24%20%24%20%281%3C%3Dn%3C%3D10%5E%7B6%7D%29%20%24%20%2C%20consisting%20only%20of%20letters%20%5C%22L%5C%22%20and%20%5C%22R%5C%22.%20If%20character%20%24%20s_%7Bi%7D%20%24%20equals%20%5C%22L%5C%22%2C%20then%20the%20robot%20on%20the%20%24%20i%20%24%20-th%20move%20must%20try%20to%20move%20one%20cell%20to%20the%20left.%20If%20the%20%24%20s_%7Bi%7D%20%24%20-th%20character%20equals%20%5C%22R%5C%22%2C%20then%20the%20robot%20on%20the%20%24%20i%20%24%20-th%20move%20must%20try%20to%20move%20one%20cell%20to%20the%20right.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20required%20number%20of%20ways.%20It%27s%20guaranteed%20that%20this%20number%20fits%20into%2064-bit%20signed%20integer%20type.%22%2C%22samples%22%3A%5B%5B%22RR%5Cn%22%2C%221%5Cn%22%5D%2C%5B%22RRL%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20Valera%20mustn%27t%20add%20any%20obstacles%20and%20his%20finishing%20cell%20must%20be%20cell%20%24%202%20%24%20.%5Cn%5CnIn%20the%20second%20sample%2C%20Valera%20must%20add%20an%20obstacle%20in%20cell%20number%20%24%201%20%24%20%2C%20and%20his%20finishing%20cell%20must%20be%20cell%20number%20%24%20-1%20%24%20.%20In%20this%20case%20robot%20skips%20the%20first%20two%20moves%20and%20on%20the%20third%20move%20he%20goes%20straight%20from%20the%20starting%20cell%20to%20the%20finishing%20one.%20But%20if%20Valera%20doesn%27t%20add%20any%20obstacles%2C%20or%20adds%20an%20obstacle%20to%20another%20cell%2C%20then%20the%20robot%20visits%20the%20finishing%20cell%20more%20than%20once.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F404%5C%2FE%22%2C%22id%22%3A%22404E%22%7D%2C%22translation%22%3A%22%5Cu4e00%5Cu4e2a%5Cu673a%5Cu5668%5Cu4eba%5Cu5728%5Cu6570%5Cu8f74%5Cu4e0a%5Cu76840%5Cu70b9%5Cu3002%5Cu7ed9%5Cu4e00%5Cu4e32%5Cu6307%5Cu4ee4%5Cuff0c%5Cu673a%5Cu5668%5Cu4eba%5Cu6309%5Cu7167%5Cu6307%5Cu4ee4%5Cu8d70%5Cu3002%5Cu4e3a%5Cu4e86%5Cu4f7f%5Cu673a%5Cu5668%5Cu4eba%5Cu6700%5Cu540e%5Cu4e00%5Cu6b65%5Cu8d70%5Cu5230%5Cu4e00%5Cu4e2a%5Cu4ece%5Cu6765%5Cu6ca1%5Cu6765%5Cu8fc7%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu5728%5Cu6570%5Cu8f74%5Cu4e0a%5Cu653e%5Cu77f3%5Cu5934%5Cu3002%5Cu6bcf%5Cu6b21%5Cu673a%5Cu5668%5Cu4eba%5Cu88ab%5Cu77f3%5Cu5934%5Cu5361%5Cu4f4f%5Cu4ed6%5Cu5c31%5Cu8df3%5Cu8fc7%5Cu5f53%5Cu524d%5Cu7684%5Cu90a3%5Cu4e2a%5Cu6307%5Cu4ee4%5Cu3002%5Cu95ee%5Cuff1a%5Cu6700%5Cu5c11%5Cu4f7f%5Cu7528%5Cu77f3%5Cu5934%5Cu7684%5Cu524d%5Cu63d0%5Cu4e0b%5Cuff0c%5Cu4e00%5Cu5171%5Cu6709%5Cu51e0%5Cu79cd%5Cu653e%5Cu77f3%5Cu5934%5Cu65b9%5Cu6cd5%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A39%2C%22totalAccepted%22%3A19%2C%22pid%22%3A%22CF404E%22%2C%22title%22%3A%22Maze%201D%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A144006%2C%22title%22%3A%22%5Cu4ec0%5Cu4e48%5Cu9b3c%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A11022%2C%22name%22%3A%22CF404E%20Maze%201D%22%2C%22slug%22%3A%22CF404E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Maze%201D%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Maze 1D</h1>
+<h2>题意翻译</h2>
+<div>一个机器人在数轴上的0点。给一串指令，机器人按照指令走。为了使机器人最后一步走到一个从来没来过的位置，我们可以在数轴上放石头。每次机器人被石头卡住他就跳过当前的那个指令。问：最少使用石头的前提下，一共有几种放石头方法。</div>
+<h2>题目描述</h2>
+<div>Valera has a strip infinite in both directions and consisting of cells. The cells are numbered by integers. The cell number $ 0 $ has a robot.
+The robot has instructions — the sequence of moves that he must perform. In one move, the robot moves one cell to the left or one cell to the right, according to instructions. Before the robot starts moving, Valera puts obstacles in some cells of the strip, excluding cell number $ 0 $ . If the robot should go into the cell with an obstacle according the instructions, it will skip this move.
+Also Valera indicates the finish cell in which the robot has to be after completing the entire instructions. The finishing cell should be different from the starting one. It is believed that the robot completed the instructions successfully, if during the process of moving he visited the finish cell exactly once — at its last move. Moreover, the latter move cannot be skipped.
+Let's assume that $ k $ is the minimum number of obstacles that Valera must put to make the robot able to complete the entire sequence of instructions successfully and end up in some finishing cell. You need to calculate in how many ways Valera can choose $ k $ obstacles and the finishing cell so that the robot is able to complete the instructions successfully.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a sequence of characters without spaces $ s_{1}s_{2}...\ s_{n} $ $ (1<=n<=10^{6}) $ , consisting only of letters "L" and "R". If character $ s_{i} $ equals "L", then the robot on the $ i $ -th move must try to move one cell to the left. If the $ s_{i} $ -th character equals "R", then the robot on the $ i $ -th move must try to move one cell to the right.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the required number of ways. It's guaranteed that this number fits into 64-bit signed integer type.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>RR
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>RRL
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample Valera mustn't add any obstacles and his finishing cell must be cell $ 2 $ .
+In the second sample, Valera must add an obstacle in cell number $ 1 $ , and his finishing cell must be cell number $ -1 $ . In this case robot skips the first two moves and on the third move he goes straight from the starting cell to the finishing one. But if Valera doesn't add any obstacles, or adds an obstacle to another cell, then the robot visits the finishing cell more than once.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

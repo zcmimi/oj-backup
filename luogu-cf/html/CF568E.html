@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Longest Increasing Subsequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395481:xXpwYOzOxRaNHkj2732ZEzhbCU0rkgD0JnXK5HE1c24=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Note%20that%20the%20memory%20limit%20in%20this%20problem%20is%20less%20than%20usual.%5Cn%5CnLet%27s%20consider%20an%20array%20consisting%20of%20positive%20integers%2C%20some%20positions%20of%20which%20contain%20gaps.%5Cn%5CnWe%20have%20a%20collection%20of%20numbers%20that%20can%20be%20used%20to%20fill%20the%20gaps.%20Each%20number%20from%20the%20given%20collection%20can%20be%20used%20at%20most%20once.%5Cn%5CnYour%20task%20is%20to%20determine%20such%20way%20of%20filling%20gaps%20that%20the%20longest%20increasing%20subsequence%20in%20the%20formed%20array%20has%20a%20maximum%20size.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%5Cu2014%20the%20length%20of%20the%20array%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%5Cu2014%20the%20elements%20of%20the%20sequence.%20A%20gap%20is%20marked%20as%20%5C%22-1%5C%22.%20The%20elements%20that%20are%20not%20gaps%20are%20positive%20integers%20not%20exceeding%20%24%2010%5E%7B9%7D%20%24%20.%20It%20is%20guaranteed%20that%20the%20sequence%20contains%20%24%200%3C%3Dk%3C%3D1000%20%24%20gaps.%5Cn%5CnThe%20third%20line%20contains%20a%20single%20positive%20integer%20%24%20m%20%24%20%5Cu2014%20the%20number%20of%20elements%20to%20fill%20the%20gaps%20%28%20%24%20k%3C%3Dm%3C%3D10%5E%7B5%7D%20%24%20%29.%5Cn%5CnThe%20fourth%20line%20contains%20%24%20m%20%24%20positive%20integers%20%5Cu2014%20the%20numbers%20to%20fill%20gaps.%20Each%20number%20is%20a%20positive%20integer%20not%20exceeding%20%24%2010%5E%7B9%7D%20%24%20.%20Some%20numbers%20may%20be%20equal.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20space-separated%20numbers%20in%20a%20single%20line%20%5Cu2014%20the%20resulting%20sequence.%20If%20there%20are%20multiple%20possible%20answers%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%202%203%5Cn1%5Cn10%5Cn%22%2C%221%202%203%20%5Cn%22%5D%2C%5B%223%5Cn1%20-1%203%5Cn3%5Cn1%202%203%5Cn%22%2C%221%202%203%20%5Cn%22%5D%2C%5B%222%5Cn-1%202%5Cn2%5Cn2%204%5Cn%22%2C%222%202%20%5Cn%22%5D%2C%5B%223%5Cn-1%20-1%20-1%5Cn5%5Cn1%201%201%201%202%5Cn%22%2C%221%201%202%20%5Cn%22%5D%2C%5B%224%5Cn-1%20-1%20-1%202%5Cn4%5Cn1%201%202%202%5Cn%22%2C%221%202%201%202%20%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20there%20are%20no%20gaps%2C%20so%20the%20correct%20answer%20is%20the%20initial%20sequence.%5Cn%5CnIn%20the%20second%20sample%20there%20is%20only%20one%20way%20to%20get%20an%20increasing%20subsequence%20of%20length%20%24%203%20%24%20.%5Cn%5CnIn%20the%20third%20sample%20answer%20%5C%224%202%5C%22%20would%20also%20be%20correct.%20Note%20that%20only%20strictly%20increasing%20subsequences%20are%20considered.%5Cn%5CnIn%20the%20fifth%20sample%20the%20answer%20%5C%221%201%201%202%5C%22%20is%20not%20considered%20correct%2C%20as%20number%20%24%201%20%24%20can%20be%20used%20in%20replacing%20only%20two%20times.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%5D%2C%22memory%22%3A%5B128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F568%5C%2FE%22%2C%22id%22%3A%22568E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF568E%22%2C%22title%22%3A%22Longest%20Increasing%20Subsequence%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Longest%20Increasing%20Subsequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Longest Increasing Subsequence</h1>
+<h2>题目描述</h2>
+<div>Note that the memory limit in this problem is less than usual.
+Let's consider an array consisting of positive integers, some positions of which contain gaps.
+We have a collection of numbers that can be used to fill the gaps. Each number from the given collection can be used at most once.
+Your task is to determine such way of filling gaps that the longest increasing subsequence in the formed array has a maximum size.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ — the length of the array ( $ 1<=n<=10^{5} $ ).
+The second line contains $ n $ space-separated integers — the elements of the sequence. A gap is marked as "-1". The elements that are not gaps are positive integers not exceeding $ 10^{9} $ . It is guaranteed that the sequence contains $ 0<=k<=1000 $ gaps.
+The third line contains a single positive integer $ m $ — the number of elements to fill the gaps ( $ k<=m<=10^{5} $ ).
+The fourth line contains $ m $ positive integers — the numbers to fill gaps. Each number is a positive integer not exceeding $ 10^{9} $ . Some numbers may be equal.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ space-separated numbers in a single line — the resulting sequence. If there are multiple possible answers, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 2 3
+1
+10
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 2 3 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+1 -1 3
+3
+1 2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1 2 3 
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2
+-1 2
+2
+2 4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>2 2 
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>3
+-1 -1 -1
+5
+1 1 1 1 2
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>1 1 2 
+</code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>4
+-1 -1 -1 2
+4
+1 1 2 2
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>1 2 1 2 
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample there are no gaps, so the correct answer is the initial sequence.
+In the second sample there is only one way to get an increasing subsequence of length $ 3 $ .
+In the third sample answer "4 2" would also be correct. Note that only strictly increasing subsequences are considered.
+In the fifth sample the answer "1 1 1 2" is not considered correct, as number $ 1 $ can be used in replacing only two times.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Inversions problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394956:/reyvbl9NPXulWoj/WivWESNsSw0po9TehY7O4020lY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20permutation%20of%20%24%20n%20%24%20numbers%20%24%20p_%7B1%7D%2Cp_%7B2%7D%2C...%2Cp_%7Bn%7D%20%24%20.%20We%20perform%20%24%20k%20%24%20operations%20of%20the%20following%20type%3A%20choose%20uniformly%20at%20random%20two%20indices%20%24%20l%20%24%20and%20%24%20r%20%24%20%28%20%24%20l%3C%3Dr%20%24%20%29%20and%20reverse%20the%20order%20of%20the%20elements%20%24%20p_%7Bl%7D%2Cp_%7Bl%2B1%7D%2C...%2Cp_%7Br%7D%20%24%20.%20Your%20task%20is%20to%20find%20the%20expected%20value%20of%20the%20number%20of%20inversions%20in%20the%20resulting%20permutation.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%3C%3D100%20%24%20%2C%20%24%201%3C%3Dk%3C%3D10%5E%7B9%7D%20%24%20%29.%20The%20next%20line%20contains%20%24%20n%20%24%20integers%20%24%20p_%7B1%7D%2Cp_%7B2%7D%2C...%2Cp_%7Bn%7D%20%24%20%5Cu2014%20the%20given%20permutation.%20All%20%24%20p_%7Bi%7D%20%24%20are%20different%20and%20in%20range%20from%201%20to%20%24%20n%20%24%20.%5Cn%5CnThe%20problem%20consists%20of%20three%20subproblems.%20The%20subproblems%20have%20different%20constraints%20on%20the%20input.%20You%20will%20get%20some%20score%20for%20the%20correct%20submission%20of%20the%20subproblem.%20The%20description%20of%20the%20subproblems%20follows.%5Cn%5Cn-%20In%20subproblem%20G1%20%28%20%24%203%20%24%20points%29%2C%20the%20constraints%20%24%201%3C%3Dn%3C%3D6%20%24%20%2C%20%24%201%3C%3Dk%3C%3D4%20%24%20will%20hold.%5Cn-%20In%20subproblem%20G2%20%28%20%24%205%20%24%20points%29%2C%20the%20constraints%20%24%201%3C%3Dn%3C%3D30%20%24%20%2C%20%24%201%3C%3Dk%3C%3D200%20%24%20will%20hold.%5Cn-%20In%20subproblem%20G3%20%28%20%24%2016%20%24%20points%29%2C%20the%20constraints%20%24%201%3C%3Dn%3C%3D100%20%24%20%2C%20%24%201%3C%3Dk%3C%3D10%5E%7B9%7D%20%24%20will%20hold.%22%2C%22outputFormat%22%3A%22Output%20the%20answer%20with%20absolute%20or%20relative%20error%20no%20more%20than%20%24%201e-9%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%201%5Cn1%202%203%5Cn%22%2C%220.833333333333333%5Cn%22%5D%2C%5B%223%204%5Cn1%203%202%5Cn%22%2C%221.458333333333334%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20sample%20test.%20We%20will%20randomly%20pick%20an%20interval%20of%20the%20permutation%20%24%20%281%2C2%2C3%29%20%24%20%28which%20has%20no%20inversions%29%20and%20reverse%20the%20order%20of%20its%20elements.%20With%20probability%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF513G3%5C%2F6201067a97da7a97c457211e210f5a8e998bdde9.png%29%2C%20the%20interval%20will%20consist%20of%20a%20single%20element%20and%20the%20permutation%20will%20not%20be%20altered.%20With%20probability%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF513G3%5C%2Ff7ba68e3a158029dadd77767404a7d3ca97f69d2.png%29%20we%20will%20inverse%20the%20first%20two%20elements%27%20order%20and%20obtain%20the%20permutation%20%24%20%282%2C1%2C3%29%20%24%20which%20has%20one%20inversion.%20With%20the%20same%20probability%20we%20might%20pick%20the%20interval%20consisting%20of%20the%20last%20two%20elements%20which%20will%20lead%20to%20the%20permutation%20%24%20%281%2C3%2C2%29%20%24%20with%20one%20inversion.%20Finally%2C%20with%20probability%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF513G3%5C%2Ff7ba68e3a158029dadd77767404a7d3ca97f69d2.png%29%20the%20randomly%20picked%20interval%20will%20contain%20all%20elements%2C%20leading%20to%20the%20permutation%20%24%20%283%2C2%2C1%29%20%24%20with%203%20inversions.%20Hence%2C%20the%20expected%20number%20of%20inversions%20is%20equal%20to%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF513G3%5C%2F35fd27aec725b8812c04480f588647c66aec3f9c.png%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F513%5C%2FG3%22%2C%22id%22%3A%22513G3%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF513G3%22%2C%22title%22%3A%22Inversions%20problem%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Inversions%20problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Inversions problem</h1>
+<h2>题目描述</h2>
+<div>You are given a permutation of $ n $ numbers $ p_{1},p_{2},...,p_{n} $ . We perform $ k $ operations of the following type: choose uniformly at random two indices $ l $ and $ r $ ( $ l<=r $ ) and reverse the order of the elements $ p_{l},p_{l+1},...,p_{r} $ . Your task is to find the expected value of the number of inversions in the resulting permutation.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains two integers $ n $ and $ k $ ( $ 1<=n<=100 $ , $ 1<=k<=10^{9} $ ). The next line contains $ n $ integers $ p_{1},p_{2},...,p_{n} $ — the given permutation. All $ p_{i} $ are different and in range from 1 to $ n $ .
+The problem consists of three subproblems. The subproblems have different constraints on the input. You will get some score for the correct submission of the subproblem. The description of the subproblems follows.
+- In subproblem G1 ( $ 3 $ points), the constraints $ 1<=n<=6 $ , $ 1<=k<=4 $ will hold.
+- In subproblem G2 ( $ 5 $ points), the constraints $ 1<=n<=30 $ , $ 1<=k<=200 $ will hold.
+- In subproblem G3 ( $ 16 $ points), the constraints $ 1<=n<=100 $ , $ 1<=k<=10^{9} $ will hold.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the answer with absolute or relative error no more than $ 1e-9 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+1 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0.833333333333333
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 4
+1 3 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1.458333333333334
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first sample test. We will randomly pick an interval of the permutation $ (1,2,3) $ (which has no inversions) and reverse the order of its elements. With probability ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF513G3/6201067a97da7a97c457211e210f5a8e998bdde9.png), the interval will consist of a single element and the permutation will not be altered. With probability ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF513G3/f7ba68e3a158029dadd77767404a7d3ca97f69d2.png) we will inverse the first two elements' order and obtain the permutation $ (2,1,3) $ which has one inversion. With the same probability we might pick the interval consisting of the last two elements which will lead to the permutation $ (1,3,2) $ with one inversion. Finally, with probability ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF513G3/f7ba68e3a158029dadd77767404a7d3ca97f69d2.png) the randomly picked interval will contain all elements, leading to the permutation $ (3,2,1) $ with 3 inversions. Hence, the expected number of inversions is equal to ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF513G3/35fd27aec725b8812c04480f588647c66aec3f9c.png).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

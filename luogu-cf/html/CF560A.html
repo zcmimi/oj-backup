@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Currency System in Geraldion - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395421:ZxO3Ycw9ee93irL2tD+RnucfB/KdAfDu07Fzzz/ajnM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20magic%20island%20Geraldion%2C%20where%20Gerald%20lives%2C%20has%20its%20own%20currency%20system.%20It%20uses%20banknotes%20of%20several%20values.%20But%20the%20problem%20is%2C%20the%20system%20is%20not%20perfect%20and%20sometimes%20it%20happens%20that%20Geraldionians%20cannot%20express%20a%20certain%20sum%20of%20money%20with%20any%20set%20of%20banknotes.%20Of%20course%2C%20they%20can%20use%20any%20number%20of%20banknotes%20of%20each%20value.%20Such%20sum%20is%20called%20unfortunate.%20Gerald%20wondered%3A%20what%20is%20the%20minimum%20unfortunate%20sum%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20number%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20values%20of%20the%20banknotes%20that%20used%20in%20Geraldion.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20distinct%20space-separated%20numbers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29%20%5Cu2014%20the%20values%20of%20the%20banknotes.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20line%20%5Cu2014%20the%20minimum%20unfortunate%20sum.%20If%20there%20are%20no%20unfortunate%20sums%2C%20print%20%24%20-1%20%24%20.%22%2C%22samples%22%3A%5B%5B%225%5Cn1%202%203%204%205%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F560%5C%2FA%22%2C%22id%22%3A%22560A%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu610f%5Cr%5CnGerald%5Cu5c45%5Cu4f4f%5Cu7684%5Cu9b54%5Cu5e7b%5Cu5c9bGeraldion%5Cu6709%5Cu81ea%5Cu5df1%5Cu7684%5Cu8d27%5Cu5e01%5Cu4f53%5Cu7cfb%5Cu3002%5Cu5b83%5Cu4f7f%5Cu7528%5Cu51e0%5Cu79cd%5Cu4ef7%5Cu503c%5Cu7684%5Cu949e%5Cu7968%5Cu3002%5Cu4f46%5Cu95ee%5Cu9898%5Cu662f%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu4f53%5Cu7cfb%5Cu5e76%5Cu4e0d%5Cu5b8c%5Cu7f8e%5Cuff0c%5Cu6709%5Cu65f6Geraldion%5Cu4eba%5Cu4e0d%5Cu80fd%5Cu7528%5Cu4efb%5Cu4f55%5Cu7eb8%5Cu5e01%5Cu6765%5Cu8868%5Cu8fbe%5Cu4e00%5Cu5b9a%5Cu6570%5Cu989d%5Cu7684%5Cu94b1%5Cu3002%5Cu5f53%5Cu7136%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu4f7f%5Cu7528%5Cu4efb%5Cu4f55%5Cu6570%5Cu91cf%5Cu7684%5Cu949e%5Cu7968%5Cu3002%5Cu8fd9%5Cu6837%5Cu7684%5Cu8bdd%5Cu79f0%5Cu4e3a%5Cu4e0d%5Cu5e78%5Cu3002Gerald%5Cu60f3%5Cu77e5%5Cu9053%5Cuff1a%5Cu6700%5Cu5c0f%5Cu7684%5Cu4e0d%5Cu5e78%5Cu91d1%5Cu989d%5Cu662f%5Cu591a%5Cu5c11%5Cuff1f%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%23%23%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542bn%5Cuff081%5Cuff1c%3Dn%5Cuff1d1000%5Cu00d71%5Cuff09Geraldion%5Cu4f7f%5Cu7528%5Cu7684%5Cu949e%5Cu7968%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542bn%5Cu4e2a%5Cu4e0d%5Cu540c%5Cu7684%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu5f00%5Cu7684%5Cu6570a_1%2Ca_2%5Cu2026%5Cu2026a_n%5Cr%5Cn%5Cu8868%5Cu793a%5Cu949e%5Cu7968%5Cu7684%5Cu4ef7%5Cu503c%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu3002%5Cu6700%5Cu5c0f%5Cu4e0d%5Cu5e78%5Cu7684%5Cu6570%5Cu3002%5Cu5982%5Cu679c%5Cu6ca1%5Cu6709%5Cu4e0d%5Cu5e78%5Cu7684%5Cu6570%5Cuff0c%5Cu6253%5Cu5370-1%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A67%2C%22totalAccepted%22%3A44%2C%22pid%22%3A%22CF560A%22%2C%22title%22%3A%22Currency%20System%20in%20Geraldion%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A62114%2C%22title%22%3A%22%5Cu672c%5Cu9898%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10421%2C%22name%22%3A%22CF560A%20Currency%20System%20in%20Geraldion%22%2C%22slug%22%3A%22CF560A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF839A%22%2C%22title%22%3A%22Arya%20and%20Bran%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF611A%22%2C%22title%22%3A%22New%20Year%20and%20Days%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF577A%22%2C%22title%22%3A%22Multiplication%20Table%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF570A%22%2C%22title%22%3A%22Elections%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF149A%22%2C%22title%22%3A%22Business%20trip%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Currency%20System%20in%20Geraldion%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Currency System in Geraldion</h1>
+<h2>题意翻译</h2>
+<div>## 题意
+Gerald居住的魔幻岛Geraldion有自己的货币体系。它使用几种价值的钞票。但问题是，这个体系并不完美，有时Geraldion人不能用任何纸币来表达一定数额的钱。当然，他们可以使用任何数量的钞票。这样的话称为不幸。Gerald想知道：最小的不幸金额是多少？
+## 输入格式##
+第一行包含n（1＜=n＝1000×1）Geraldion使用的钞票的数量。
+第二行包含n个不同的用空格分开的数a_1,a_2……a_n
+表示钞票的价值。
+## 输出格式
+输出一行。最小不幸的数。如果没有不幸的数，打印-1 </div>
+<h2>题目描述</h2>
+<div>A magic island Geraldion, where Gerald lives, has its own currency system. It uses banknotes of several values. But the problem is, the system is not perfect and sometimes it happens that Geraldionians cannot express a certain sum of money with any set of banknotes. Of course, they can use any number of banknotes of each value. Such sum is called unfortunate. Gerald wondered: what is the minimum unfortunate sum?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains number $ n $ ( $ 1<=n<=1000 $ ) — the number of values of the banknotes that used in Geraldion.
+The second line contains $ n $ distinct space-separated numbers $ a_{1},a_{2},...,a_{n} $ ( $ 1<=a_{i}<=10^{6} $ ) — the values of the banknotes.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single line — the minimum unfortunate sum. If there are no unfortunate sums, print $ -1 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+1 2 3 4 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>-1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

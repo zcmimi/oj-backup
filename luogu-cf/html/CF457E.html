@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Flow Optimality - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394300:8zbwpBEWcyC/qdRL/9ZcdqNHjFCX5ThKz4g8bXNstqo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20is%20a%20computer%20network%20consisting%20of%20%24%20n%20%24%20nodes%20numbered%201%20through%20%24%20n%20%24%20.%20There%20are%20links%20in%20the%20network%20that%20connect%20pairs%20of%20nodes.%20A%20pair%20of%20nodes%20may%20have%20multiple%20links%20between%20them%2C%20but%20no%20node%20has%20a%20link%20to%20itself.%5Cn%5CnEach%20link%20supports%20unlimited%20bandwidth%20%28in%20either%20direction%29%2C%20however%20a%20link%20may%20only%20transmit%20in%20a%20single%20direction%20at%20any%20given%20time.%20The%20cost%20of%20sending%20data%20across%20a%20link%20is%20proportional%20to%20the%20square%20of%20the%20bandwidth.%20Specifically%2C%20each%20link%20has%20a%20positive%20weight%2C%20and%20the%20cost%20of%20sending%20data%20across%20the%20link%20is%20the%20weight%20times%20the%20square%20of%20the%20bandwidth.%5Cn%5CnThe%20network%20is%20connected%20%28there%20is%20a%20series%20of%20links%20from%20any%20node%20to%20any%20other%20node%29%2C%20and%20furthermore%20designed%20to%20remain%20connected%20in%20the%20event%20of%20any%20single%20node%20failure.%5Cn%5CnYou%20needed%20to%20send%20data%20from%20node%201%20to%20node%20%24%20n%20%24%20at%20a%20bandwidth%20of%20some%20positive%20number%20%24%20k%20%24%20.%20That%20is%2C%20you%20wish%20to%20assign%20a%20bandwidth%20to%20each%20link%20so%20that%20the%20bandwidth%20into%20a%20node%20minus%20the%20bandwidth%20out%20of%20a%20node%20is%20%24%20-k%20%24%20for%20node%201%2C%20%24%20k%20%24%20for%20node%20%24%20n%20%24%20%2C%20and%200%20for%20all%20other%20nodes.%20The%20individual%20bandwidths%20do%20not%20need%20to%20be%20integers.%5Cn%5CnWishing%20to%20minimize%20the%20total%20cost%2C%20you%20drew%20a%20diagram%20of%20the%20network%2C%20then%20gave%20the%20task%20to%20an%20intern%20to%20solve.%20The%20intern%20claimed%20to%20have%20solved%20the%20task%20and%20written%20the%20optimal%20bandwidths%20on%20your%20diagram%2C%20but%20then%20spilled%20coffee%20on%20it%2C%20rendering%20much%20of%20it%20unreadable%20%28including%20parts%20of%20the%20original%20diagram%2C%20and%20the%20value%20of%20%24%20k%20%24%20%29.%5Cn%5CnFrom%20the%20information%20available%2C%20determine%20if%20the%20intern%27s%20solution%20may%20have%20been%20optimal.%20That%20is%2C%20determine%20if%20there%20exists%20a%20valid%20network%2C%20total%20bandwidth%2C%20and%20optimal%20solution%20which%20is%20a%20superset%20of%20the%20given%20information.%20Furthermore%2C%20determine%20the%20efficiency%20of%20the%20intern%27s%20solution%20%28if%20possible%29%2C%20where%20efficiency%20is%20defined%20as%20total%20cost%20divided%20by%20total%20bandwidth.%22%2C%22inputFormat%22%3A%22Input%20will%20begin%20with%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%3C%3Dn%3C%3D200000%20%24%20%3B%20%24%200%3C%3Dm%3C%3D200000%20%24%20%29%2C%20the%20number%20of%20nodes%20and%20number%20of%20known%20links%20in%20the%20network%2C%20respectively.%20Following%20this%20are%20%24%20m%20%24%20lines%20with%20four%20integers%20each%3A%20%24%20f%20%24%20%2C%20%24%20t%20%24%20%2C%20%24%20w%20%24%20%2C%20%24%20b%20%24%20%28%20%24%201%3C%3Df%3C%3Dn%3B%5Cu00a01%3C%3Dt%3C%3Dn%3B%5Cu00a0f%5Cu2260t%3B%5Cu00a01%3C%3Dw%3C%3D100%3B%5Cu00a00%3C%3Db%3C%3D100%20%24%20%29.%20This%20indicates%20there%20is%20a%20link%20between%20nodes%20%24%20f%20%24%20and%20%24%20t%20%24%20with%20weight%20%24%20w%20%24%20and%20carrying%20%24%20b%20%24%20bandwidth.%20The%20direction%20of%20bandwidth%20is%20from%20%24%20f%20%24%20to%20%24%20t%20%24%20.%22%2C%22outputFormat%22%3A%22If%20the%20intern%27s%20solution%20is%20definitely%20not%20optimal%2C%20print%20%5C%22BAD%20%24%20x%20%24%20%5C%22%2C%20where%20%24%20x%20%24%20is%20the%20first%20link%20in%20the%20input%20that%20violates%20the%20optimality%20of%20the%20solution.%20If%20the%20intern%27s%20solution%20may%20be%20optimal%2C%20print%20the%20efficiency%20of%20the%20solution%20if%20it%20can%20be%20determined%20rounded%20to%20the%20nearest%20integer%2C%20otherwise%20print%20%5C%22UNKNOWN%5C%22.%22%2C%22samples%22%3A%5B%5B%224%205%5Cn1%202%201%202%5Cn1%203%204%201%5Cn2%203%202%201%5Cn2%204%204%201%5Cn3%204%201%202%5Cn%22%2C%226%5Cn%22%5D%2C%5B%225%205%5Cn2%203%201%201%5Cn3%204%201%201%5Cn4%202%201%201%5Cn1%205%201%201%5Cn1%205%20100%20100%5Cn%22%2C%22BAD%203%5Cn%22%5D%2C%5B%226%204%5Cn1%203%2031%2041%5Cn1%205%2059%2026%5Cn2%206%2053%2058%5Cn4%206%2097%2093%5Cn%22%2C%22UNKNOWN%5Cn%22%5D%2C%5B%227%205%5Cn1%207%202%201%5Cn2%203%201%201%5Cn4%205%201%200%5Cn6%201%2010%200%5Cn1%203%201%201%5Cn%22%2C%22BAD%204%5Cn%22%5D%5D%2C%22hint%22%3A%22Although%20the%20known%20weights%20and%20bandwidths%20happen%20to%20always%20be%20integers%2C%20the%20weights%20and%20bandwidths%20of%20the%20remaining%20links%20are%20not%20restricted%20to%20integers.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F457%5C%2FE%22%2C%22id%22%3A%22457E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF457E%22%2C%22title%22%3A%22Flow%20Optimality%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Flow%20Optimality%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Flow Optimality</h1>
+<h2>题目描述</h2>
+<div>There is a computer network consisting of $ n $ nodes numbered 1 through $ n $ . There are links in the network that connect pairs of nodes. A pair of nodes may have multiple links between them, but no node has a link to itself.
+Each link supports unlimited bandwidth (in either direction), however a link may only transmit in a single direction at any given time. The cost of sending data across a link is proportional to the square of the bandwidth. Specifically, each link has a positive weight, and the cost of sending data across the link is the weight times the square of the bandwidth.
+The network is connected (there is a series of links from any node to any other node), and furthermore designed to remain connected in the event of any single node failure.
+You needed to send data from node 1 to node $ n $ at a bandwidth of some positive number $ k $ . That is, you wish to assign a bandwidth to each link so that the bandwidth into a node minus the bandwidth out of a node is $ -k $ for node 1, $ k $ for node $ n $ , and 0 for all other nodes. The individual bandwidths do not need to be integers.
+Wishing to minimize the total cost, you drew a diagram of the network, then gave the task to an intern to solve. The intern claimed to have solved the task and written the optimal bandwidths on your diagram, but then spilled coffee on it, rendering much of it unreadable (including parts of the original diagram, and the value of $ k $ ).
+From the information available, determine if the intern's solution may have been optimal. That is, determine if there exists a valid network, total bandwidth, and optimal solution which is a superset of the given information. Furthermore, determine the efficiency of the intern's solution (if possible), where efficiency is defined as total cost divided by total bandwidth.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Input will begin with two integers $ n $ and $ m $ ( $ 2<=n<=200000 $ ; $ 0<=m<=200000 $ ), the number of nodes and number of known links in the network, respectively. Following this are $ m $ lines with four integers each: $ f $ , $ t $ , $ w $ , $ b $ ( $ 1<=f<=n; 1<=t<=n; f≠t; 1<=w<=100; 0<=b<=100 $ ). This indicates there is a link between nodes $ f $ and $ t $ with weight $ w $ and carrying $ b $ bandwidth. The direction of bandwidth is from $ f $ to $ t $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>If the intern's solution is definitely not optimal, print "BAD $ x $ ", where $ x $ is the first link in the input that violates the optimality of the solution. If the intern's solution may be optimal, print the efficiency of the solution if it can be determined rounded to the nearest integer, otherwise print "UNKNOWN".</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+1 2 1 2
+1 3 4 1
+2 3 2 1
+2 4 4 1
+3 4 1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 5
+2 3 1 1
+3 4 1 1
+4 2 1 1
+1 5 1 1
+1 5 100 100
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>BAD 3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>6 4
+1 3 31 41
+1 5 59 26
+2 6 53 58
+4 6 97 93
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>UNKNOWN
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>7 5
+1 7 2 1
+2 3 1 1
+4 5 1 0
+6 1 10 0
+1 3 1 1
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>BAD 4
+</code></pre>
+<h2>说明</h2>
+<div>Although the known weights and bandwidths happen to always be integers, the weights and bandwidths of the remaining links are not restricted to integers.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

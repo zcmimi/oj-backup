@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>DZY Loves FFT - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394149:Q+DDdZs+7S0qd5Z7+aOWEAsJ9gb93651n1bOhGj3MMQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22DZY%20loves%20Fast%20Fourier%20Transformation%2C%20and%20he%20enjoys%20using%20it.%5Cn%5CnFast%20Fourier%20Transformation%20is%20an%20algorithm%20used%20to%20calculate%20convolution.%20Specifically%2C%20if%20%24%20a%20%24%20%2C%20%24%20b%20%24%20and%20%24%20c%20%24%20are%20sequences%20with%20length%20%24%20n%20%24%20%2C%20which%20are%20indexed%20from%20%24%200%20%24%20to%20%24%20n-1%20%24%20%2C%20and%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF444B%5C%2F7b8bbc996edafee525df233cf5ddc2a80add55f1.png%29We%20can%20calculate%20%24%20c%20%24%20fast%20using%20Fast%20Fourier%20Transformation.%5Cn%5CnDZY%20made%20a%20little%20change%20on%20this%20formula.%20Now%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF444B%5C%2Fe4369feaf99b9f895a003f77c4672d4618de9da5.png%29To%20make%20things%20easier%2C%20%24%20a%20%24%20is%20a%20permutation%20of%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%2C%20and%20%24%20b%20%24%20is%20a%20sequence%20only%20containing%20%24%200%20%24%20and%20%24%201%20%24%20.%20Given%20%24%20a%20%24%20and%20%24%20b%20%24%20%2C%20DZY%20needs%20your%20help%20to%20calculate%20%24%20c%20%24%20.%5Cn%5CnBecause%20he%20is%20naughty%2C%20DZY%20provides%20a%20special%20way%20to%20get%20%24%20a%20%24%20and%20%24%20b%20%24%20.%20What%20you%20need%20is%20only%20three%20integers%20%24%20n%20%24%20%2C%20%24%20d%20%24%20%2C%20%24%20x%20%24%20.%20After%20getting%20them%2C%20use%20the%20code%20below%20to%20generate%20%24%20a%20%24%20and%20%24%20b%20%24%20.%5Cn%5Cn%60%60%60%5Cn%5C%2F%5C%2Fx%20is%2064-bit%20variable%3B%5Cnfunction%20getNextX%28%29%20%7B%5Cn%20%20%20%20x%20%3D%20%28x%20%2A%2037%20%2B%2010007%29%20%25%201000000007%3B%5Cn%20%20%20%20return%20x%3B%5Cn%7D%5Cnfunction%20initAB%28%29%20%7B%5Cn%20%20%20%20for%28i%20%3D%200%3B%20i%20%3C%20n%3B%20i%20%3D%20i%20%2B%201%29%7B%5Cn%20%20%20%20%20%20%20%20a%5Bi%5D%20%3D%20i%20%2B%201%3B%5Cn%20%20%20%20%7D%5Cn%20%20%20%20for%28i%20%3D%200%3B%20i%20%3C%20n%3B%20i%20%3D%20i%20%2B%201%29%7B%5Cn%20%20%20%20%20%20%20%20swap%28a%5Bi%5D%2C%20a%5BgetNextX%28%29%20%25%20%28i%20%2B%201%29%5D%29%3B%5Cn%20%20%20%20%7D%5Cn%20%20%20%20for%28i%20%3D%200%3B%20i%20%3C%20n%3B%20i%20%3D%20i%20%2B%201%29%7B%5Cn%20%20%20%20%20%20%20%20if%20%28i%20%3C%20d%29%5Cn%20%20%20%20%20%20%20%20%20%20%20%20b%5Bi%5D%20%3D%201%3B%5Cn%20%20%20%20%20%20%20%20else%5Cn%20%20%20%20%20%20%20%20%20%20%20%20b%5Bi%5D%20%3D%200%3B%5Cn%20%20%20%20%7D%5Cn%20%20%20%20for%28i%20%3D%200%3B%20i%20%3C%20n%3B%20i%20%3D%20i%20%2B%201%29%7B%5Cn%20%20%20%20%20%20%20%20swap%28b%5Bi%5D%2C%20b%5BgetNextX%28%29%20%25%20%28i%20%2B%201%29%5D%29%3B%5Cn%20%20%20%20%7D%5Cn%7D%5Cn%60%60%60%5Cn%5CnOperation%20x%20%25%20y%20denotes%20remainder%20after%20division%20%24%20x%20%24%20by%20%24%20y%20%24%20.%20Function%20swap%28x%2C%20y%29%20swaps%20two%20values%20%24%20x%20%24%20and%20%24%20y%20%24%20.%22%2C%22inputFormat%22%3A%22The%20only%20line%20of%20input%20contains%20three%20space-separated%20integers%20%24%20n%2Cd%2Cx%5Cu00a0%281%3C%3Dd%3C%3Dn%3C%3D100000%3B%5Cu00a00%3C%3Dx%3C%3D1000000006%29%20%24%20.%20Because%20DZY%20is%20naughty%2C%20%24%20x%20%24%20can%27t%20be%20equal%20to%20%24%2027777500%20%24%20.%22%2C%22outputFormat%22%3A%22Output%20%24%20n%20%24%20lines%2C%20the%20%24%20i%20%24%20-th%20line%20should%20contain%20an%20integer%20%24%20c_%7Bi-1%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%201%201%5Cn%22%2C%221%5Cn3%5Cn2%5Cn%22%5D%2C%5B%225%204%202%5Cn%22%2C%222%5Cn2%5Cn4%5Cn5%5Cn5%5Cn%22%5D%2C%5B%225%204%203%5Cn%22%2C%225%5Cn5%5Cn5%5Cn5%5Cn4%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20%24%20a%20%24%20is%20%24%20%5B1%5C%5C%203%5C%5C%202%5D%20%24%20%2C%20%24%20b%20%24%20is%20%24%20%5B1%5C%5C%200%5C%5C%200%5D%20%24%20%2C%20so%20%24%20c_%7B0%7D%3Dmax%281%5Cu00b71%29%3D1%20%24%20%2C%20%24%20c_%7B1%7D%3Dmax%281%5Cu00b70%2C3%5Cu00b71%29%3D3%20%24%20%2C%20%24%20c_%7B2%7D%3Dmax%281%5Cu00b70%2C3%5Cu00b70%2C2%5Cu00b71%29%3D2%20%24%20.%5Cn%5CnIn%20the%20second%20sample%2C%20%24%20a%20%24%20is%20%24%20%5B2%5C%5C%201%5C%5C%204%5C%5C%205%5C%5C%203%5D%20%24%20%2C%20%24%20b%20%24%20is%20%24%20%5B1%5C%5C%201%5C%5C%201%5C%5C%200%5C%5C%201%5D%20%24%20.%5Cn%5CnIn%20the%20third%20sample%2C%20%24%20a%20%24%20is%20%24%20%5B5%5C%5C%202%5C%5C%201%5C%5C%204%5C%5C%203%5D%20%24%20%2C%20%24%20b%20%24%20is%20%24%20%5B1%5C%5C%201%5C%5C%201%5C%5C%201%5C%5C%200%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F444%5C%2FB%22%2C%22id%22%3A%22444B%22%7D%2C%22translation%22%3A%22%23%20CF444B%20DZY%20Loves%20FFT%5Cr%5Cn%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5CnDzy%5Cu559c%5Cu6b22%5Cu5feb%5Cu901f%5Cu5085%5Cu7acb%5Cu53f6%5Cu53d8%5Cu6362%5Cuff0c%5Cu4ed6%5Cu559c%5Cu6b22%5Cu4f7f%5Cu7528%5Cu5b83%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5feb%5Cu901f%5Cu5085%5Cu7acb%5Cu53f6%5Cu53d8%5Cu6362%5Cu662f%5Cu4e00%5Cu79cd%5Cu7528%5Cu4e8e%5Cu8ba1%5Cu7b97%5Cu5377%5Cu79ef%5Cu7684%5Cu7b97%5Cu6cd5%5Cu3002%5Cu5177%5Cu4f53%5Cu5730%5Cu8bf4%5Cuff0c%5Cu5982%5Cu679ca%5Cu3001b%5Cu548cc%5Cu662f%5Cu957f%5Cu5ea6%5Cu4e3an%5Cu7684%5Cu5e8f%5Cu5217%5Cuff0c%5Cu4ece0%5Cu53d8%5Cu4e3an-1%5Cuff0c%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu4f7f%5Cu7528%5Cu5feb%5Cu901f%5Cu5085%5Cu7acb%5Cu53f6%5Cu53d8%5Cu6362%5Cu5feb%5Cu901f%5Cu8ba1%5Cu7b97c%5Cu3002%5Cr%5Cn%5Cr%5CnDzy%5Cu5bf9%5Cu8fd9%5Cu4e2a%5Cu516c%5Cu5f0f%5Cu505a%5Cu4e86%5Cu4e00%5Cu70b9%5Cu4fee%5Cu6539%5Cu3002%5Cu73b0%5Cu5728%5Cu8ba9%5Cu4e8b%5Cu60c5%5Cu7b80%5Cu5355%5Cu70b9%5Cuff0ca%5Cu662f%5Cu4ece1%5Cu5230n%5Cu7684%5Cu6574%5Cu6570%5Cu6392%5Cu5217%5Cuff0cb%5Cu662f%5Cu4e00%5Cu4e2a%5Cu53ea%5Cu5305%5Cu542b0%5Cu548c1%5Cu7684%5Cu5e8f%5Cu5217%5Cu3002%5Cu7ed9%5Cu5b9aa%5Cu548cb%5Cuff0cdzy%5Cu9700%5Cu8981%5Cu4f60%5Cu7684%5Cu5e2e%5Cu52a9%5Cu6765%5Cu8ba1%5Cu7b97c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu56e0%5Cu4e3a%5Cu4ed6%5Cu6dd8%5Cu6c14%5Cuff0cDZY%5Cu63d0%5Cu4f9b%5Cu4e86%5Cu4e00%5Cu79cd%5Cu7279%5Cu6b8a%5Cu7684%5Cu65b9%5Cu6cd5%5Cu6765%5Cu83b7%5Cu5f97A%5Cu548cB%5Cu3002%5Cu4f60%5Cu53ea%5Cu9700%5Cu8981%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff0cd%5Cuff0cx%5Cu3002%5Cu83b7%5Cu53d6%5Cu5b83%5Cu4eec%5Cu4e4b%5Cu540e%5Cuff0c%5Cu4f7f%5Cu7528%5Cu4e0b%5Cu9762%5Cu7684%5Cu4ee3%5Cu7801%5Cu751f%5Cu6210A%5Cu548cB%5Cu3002%5Cr%5Cn%60%60%60%5Cr%5Cn%5C%2F%5C%2Fx%20is%2064-bit%20variable%3B%5Cr%5Cnfunction%20getNextX%28%29%20%7B%5Cr%5Cn%20%20%20%20x%20%3D%20%28x%20%2A%2037%20%2B%2010007%29%20%25%201000000007%3B%5Cr%5Cn%20%20%20%20return%20x%3B%5Cr%5Cn%7D%5Cr%5Cnfunction%20initAB%28%29%20%7B%5Cr%5Cn%20%20%20%20for%28i%20%3D%200%3B%20i%20%3C%20n%3B%20i%20%3D%20i%20%2B%201%29%7B%5Cr%5Cn%20%20%20%20%20%20%20%20a%5Bi%5D%20%3D%20i%20%2B%201%3B%5Cr%5Cn%20%20%20%20%7D%5Cr%5Cn%20%20%20%20for%28i%20%3D%200%3B%20i%20%3C%20n%3B%20i%20%3D%20i%20%2B%201%29%7B%5Cr%5Cn%20%20%20%20%20%20%20%20swap%28a%5Bi%5D%2C%20a%5BgetNextX%28%29%20%25%20%28i%20%2B%201%29%5D%29%3B%5Cr%5Cn%20%20%20%20%7D%5Cr%5Cn%20%20%20%20for%28i%20%3D%200%3B%20i%20%3C%20n%3B%20i%20%3D%20i%20%2B%201%29%7B%5Cr%5Cn%20%20%20%20%20%20%20%20if%20%28i%20%3C%20d%29%5Cr%5Cn%20%20%20%20%20%20%20%20%20%20%20%20b%5Bi%5D%20%3D%201%3B%5Cr%5Cn%20%20%20%20%20%20%20%20else%5Cr%5Cn%20%20%20%20%20%20%20%20%20%20%20%20b%5Bi%5D%20%3D%200%3B%5Cr%5Cn%20%20%20%20%7D%5Cr%5Cn%20%20%20%20for%28i%20%3D%200%3B%20i%20%3C%20n%3B%20i%20%3D%20i%20%2B%201%29%7B%5Cr%5Cn%20%20%20%20%20%20%20%20swap%28b%5Bi%5D%2C%20b%5BgetNextX%28%29%20%25%20%28i%20%2B%201%29%5D%29%3B%5Cr%5Cn%20%20%20%20%7D%5Cr%5Cn%7D%5Cr%5Cn%60%60%60%5Cr%5Cn%5Cu64cd%5Cu4f5cx%25y%5Cu8868%5Cu793ax%5Cu9664%5Cu4ee5y%5Cu540e%5Cu7684%5Cu4f59%5Cu6570%5Cu3002%5Cu51fd%5Cu6570%5Cu4ea4%5Cu6362%5Cuff08x%5Cuff0cy%5Cuff09%5Cu4ea4%5Cu6362%5Cu4e24%5Cu4e2a%5Cu503cx%5Cu548cy%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu552f%5Cu4e00%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu7684%5Cu6574%5Cu6570n%5Cu3001d%5Cu3001x%5Cuff081%3C%3Dd%3C%3Dn%3C%3D100000%5Cuff1b0%3C%3Dx%3C%3D10000000006%5Cuff09%5Cu3002%5Cu56e0%5Cu4e3adzy%5Cu5f88%5Cu6dd8%5Cu6c14%5Cuff0cx%5Cu4e0d%5Cu80fd%5Cu7b49%5Cu4e8e2777500%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu8f93%5Cu51fan%5Cu884c%5Cuff0c%5Cu7b2ci%5Cu884c%5Cu5e94%5Cu5305%5Cu542b%5Cu6574%5Cu6570c_%7Bi-1%7D%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF444B%22%2C%22title%22%3A%22DZY%20Loves%20FFT%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A100895%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10878%2C%22name%22%3A%22CF444B%20DZY%20Loves%20FFT%22%2C%22slug%22%3A%22CF444B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22DZY%20Loves%20FFT%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>DZY Loves FFT</h1>
+<h2>题意翻译</h2>
+<div># CF444B DZY Loves FFT
+## 题目描述
+Dzy喜欢快速傅立叶变换，他喜欢使用它。
+快速傅立叶变换是一种用于计算卷积的算法。具体地说，如果a、b和c是长度为n的序列，从0变为n-1，我们可以使用快速傅立叶变换快速计算c。
+Dzy对这个公式做了一点修改。现在让事情简单点，a是从1到n的整数排列，b是一个只包含0和1的序列。给定a和b，dzy需要你的帮助来计算c。
+因为他淘气，DZY提供了一种特殊的方法来获得A和B。你只需要三个整数n，d，x。获取它们之后，使用下面的代码生成A和B。
+```
+//x is 64-bit variable;
+function getNextX() {
+x = (x * 37 + 10007) % 1000000007;
+return x;
+}
+function initAB() {
+for(i = 0; i < n; i = i + 1){
+a[i] = i + 1;
+}
+for(i = 0; i < n; i = i + 1){
+swap(a[i], a[getNextX() % (i + 1)]);
+}
+for(i = 0; i < n; i = i + 1){
+if (i < d)
+b[i] = 1;
+else
+b[i] = 0;
+}
+for(i = 0; i < n; i = i + 1){
+swap(b[i], b[getNextX() % (i + 1)]);
+}
+}
+```
+操作x%y表示x除以y后的余数。函数交换（x，y）交换两个值x和y。
+## 输入格式
+唯一一行输入包含三个空格分隔的整数n、d、x（1<=d<=n<=100000；0<=x<=10000000006）。因为dzy很淘气，x不能等于2777500
+## 输出格式
+输出n行，第i行应包含整数c_{i-1}。</div>
+<h2>题目描述</h2>
+<div>DZY loves Fast Fourier Transformation, and he enjoys using it.
+Fast Fourier Transformation is an algorithm used to calculate convolution. Specifically, if $ a $ , $ b $ and $ c $ are sequences with length $ n $ , which are indexed from $ 0 $ to $ n-1 $ , and
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF444B/7b8bbc996edafee525df233cf5ddc2a80add55f1.png)We can calculate $ c $ fast using Fast Fourier Transformation.
+DZY made a little change on this formula. Now
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF444B/e4369feaf99b9f895a003f77c4672d4618de9da5.png)To make things easier, $ a $ is a permutation of integers from $ 1 $ to $ n $ , and $ b $ is a sequence only containing $ 0 $ and $ 1 $ . Given $ a $ and $ b $ , DZY needs your help to calculate $ c $ .
+Because he is naughty, DZY provides a special way to get $ a $ and $ b $ . What you need is only three integers $ n $ , $ d $ , $ x $ . After getting them, use the code below to generate $ a $ and $ b $ .
+```
+//x is 64-bit variable;
+function getNextX() {
+x = (x * 37 + 10007) % 1000000007;
+return x;
+}
+function initAB() {
+for(i = 0; i < n; i = i + 1){
+a[i] = i + 1;
+}
+for(i = 0; i < n; i = i + 1){
+swap(a[i], a[getNextX() % (i + 1)]);
+}
+for(i = 0; i < n; i = i + 1){
+if (i < d)
+b[i] = 1;
+else
+b[i] = 0;
+}
+for(i = 0; i < n; i = i + 1){
+swap(b[i], b[getNextX() % (i + 1)]);
+}
+}
+```
+Operation x % y denotes remainder after division $ x $ by $ y $ . Function swap(x, y) swaps two values $ x $ and $ y $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line of input contains three space-separated integers $ n,d,x (1<=d<=n<=100000; 0<=x<=1000000006) $ . Because DZY is naughty, $ x $ can't be equal to $ 27777500 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $ n $ lines, the $ i $ -th line should contain an integer $ c_{i-1} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+3
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 4 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+2
+4
+5
+5
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 4 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>5
+5
+5
+5
+4
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, $ a $ is $ [1\ 3\ 2] $ , $ b $ is $ [1\ 0\ 0] $ , so $ c_{0}=max(1·1)=1 $ , $ c_{1}=max(1·0,3·1)=3 $ , $ c_{2}=max(1·0,3·0,2·1)=2 $ .
+In the second sample, $ a $ is $ [2\ 1\ 4\ 5\ 3] $ , $ b $ is $ [1\ 1\ 1\ 0\ 1] $ .
+In the third sample, $ a $ is $ [5\ 2\ 1\ 4\ 3] $ , $ b $ is $ [1\ 1\ 1\ 1\ 0] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

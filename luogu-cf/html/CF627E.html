@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Orchestra - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396150:SuOPkXqYqZJygETcwYQwdZDj1ihQI5y+nYIlHscU8cA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Paul%20is%20at%20the%20orchestra.%20The%20string%20section%20is%20arranged%20in%20an%20%24%20r%5Cu00d7c%20%24%20rectangular%20grid%20and%20is%20filled%20with%20violinists%20with%20the%20exception%20of%20%24%20n%20%24%20violists.%20Paul%20really%20likes%20violas%2C%20so%20he%20would%20like%20to%20take%20a%20picture%20including%20at%20least%20%24%20k%20%24%20of%20them.%20Paul%20can%20take%20a%20picture%20of%20any%20axis-parallel%20rectangle%20in%20the%20orchestra.%20Count%20the%20number%20of%20possible%20pictures%20that%20Paul%20can%20take.%5Cn%5CnTwo%20pictures%20are%20considered%20to%20be%20different%20if%20the%20coordinates%20of%20corresponding%20rectangles%20are%20different.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20four%20space-separated%20integers%20%24%20r%20%24%20%2C%20%24%20c%20%24%20%2C%20%24%20n%20%24%20%2C%20%24%20k%20%24%20%28%20%24%201%3C%3Dr%2Cc%2Cn%3C%3D3000%20%24%20%2C%20%24%201%3C%3Dk%3C%3Dmin%28n%2C10%29%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20and%20columns%20of%20the%20string%20section%2C%20the%20total%20number%20of%20violas%2C%20and%20the%20minimum%20number%20of%20violas%20Paul%20would%20like%20in%20his%20photograph%2C%20respectively.%5Cn%5CnThe%20next%20%24%20n%20%24%20lines%20each%20contain%20two%20integers%20%24%20x_%7Bi%7D%20%24%20and%20%24%20y_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dx_%7Bi%7D%3C%3Dr%20%24%20%2C%20%24%201%3C%3Dy_%7Bi%7D%3C%3Dc%20%24%20%29%3A%20the%20position%20of%20the%20%24%20i%20%24%20-th%20viola.%20It%20is%20guaranteed%20that%20no%20location%20appears%20more%20than%20once%20in%20the%20input.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20number%20of%20photographs%20Paul%20can%20take%20which%20include%20at%20least%20%24%20k%20%24%20violas.%22%2C%22samples%22%3A%5B%5B%222%202%201%201%5Cn1%202%5Cn%22%2C%224%5Cn%22%5D%2C%5B%223%202%203%203%5Cn1%201%5Cn3%201%5Cn2%202%5Cn%22%2C%221%5Cn%22%5D%2C%5B%223%202%203%202%5Cn1%201%5Cn3%201%5Cn2%202%5Cn%22%2C%224%5Cn%22%5D%5D%2C%22hint%22%3A%22We%20will%20use%20%27%5C%5C%2A%27%20to%20denote%20violinists%20and%20%27%5C%5C%23%27%20to%20denote%20violists.%5Cn%5CnIn%20the%20first%20sample%2C%20the%20orchestra%20looks%20as%20follows%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3E%2A%23%3Cbr%3E%3C%5C%2Fbr%3E%2A%2A%3Cbr%3E%3C%5C%2Fbr%3E%60%20Paul%20can%20take%20a%20photograph%20of%20just%20the%20viola%2C%20the%20%24%201%5Cu00d72%20%24%20column%20containing%20the%20viola%2C%20the%20%24%202%5Cu00d71%20%24%20row%20containing%20the%20viola%2C%20or%20the%20entire%20string%20section%2C%20for%20%24%204%20%24%20pictures%20total.In%20the%20second%20sample%2C%20the%20orchestra%20looks%20as%20follows%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3E%23%2A%3Cbr%3E%3C%5C%2Fbr%3E%2A%23%3Cbr%3E%3C%5C%2Fbr%3E%23%2A%3Cbr%3E%3C%5C%2Fbr%3E%60%20Paul%20must%20take%20a%20photograph%20of%20the%20entire%20section.In%20the%20third%20sample%2C%20the%20orchestra%20looks%20the%20same%20as%20in%20the%20second%20sample.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F627%5C%2FE%22%2C%22id%22%3A%22627E%22%7D%2C%22translation%22%3A%22%5Cu672c%5Cu7ffb%5Cu8bd1%5Cu7531%5B%24Morning%5C%5C_Glory%24%5D%28https%3A%5C%2F%5C%2Fwww.luogu.org%5C%2Fspace%5C%2Fshow%3Fuid%3D89048%29%5Cu7ffb%5Cu8bd1%5Cuff0c%5Cu7531%5Cu4e8e%5Cu6682%5Cu88ab%5Cu7981%5Cu8a00%5Cuff0c%5Cu6211%5Cu6765%5Cu4ee3%5Cu53d1%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%2A%2A%5Ct%5Cu6709%5Cu4e00%5Cu4e2a%24r%20%2A%20c%24%5Cu7684%5Cu77e9%5Cu9635%5Cu4e0a%5Cu6709%24n%24%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu95ee%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu5b50%5Cu77e9%5Cu9635%5Cu91cc%5Cu5305%5Cu542b%5Cu81f3%5Cu5c11%24k%24%5Cu4e2a%5Cu70b9%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%2A%2A%5Ct%5Cu7b2c%5Cu4e00%5Cu884c%5Cu56db%5Cu4e2a%5Cu6570%24r%2Cc%2Cn%2Ck%24%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%24n%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%24x_i%2Cy_i%24%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2c%24i%24%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Ct%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu8868%5Cu793a%5Cu5408%5Cu6cd5%5Cu5b50%5Cu77e9%5Cu9635%5Cu4e2a%5Cu6570%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%2A%2A%5Ct%20%241%5C%5Cleq%20r%2Cc%2Cn%5C%5Cleq%203000%20%2C%201%5C%5Cleq%20k%5C%5Cleq%20%5C%5Cmin%28n%2C10%29%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A14%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF627E%22%2C%22title%22%3A%22Orchestra%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Orchestra%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Orchestra</h1>
+<h2>题意翻译</h2>
+<div>本翻译由[$Morning\_Glory$](https://www.luogu.org/space/show?uid=89048)翻译，由于暂被禁言，我来代发
+**题目大意** 有一个$r * c$的矩阵上有$n$个点，问有多少个子矩阵里包含至少$k$个点
+**输入格式** 第一行四个数$r,c,n,k$，接下来$n$行，每行两个数$x_i,y_i$，表示第$i$个点的坐标
+**输出格式** 一行一个数表示合法子矩阵个数
+**数据范围** $1\leq r,c,n\leq 3000 , 1\leq k\leq \min(n,10)$</div>
+<h2>题目描述</h2>
+<div>Paul is at the orchestra. The string section is arranged in an $ r×c $ rectangular grid and is filled with violinists with the exception of $ n $ violists. Paul really likes violas, so he would like to take a picture including at least $ k $ of them. Paul can take a picture of any axis-parallel rectangle in the orchestra. Count the number of possible pictures that Paul can take.
+Two pictures are considered to be different if the coordinates of corresponding rectangles are different.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains four space-separated integers $ r $ , $ c $ , $ n $ , $ k $ ( $ 1<=r,c,n<=3000 $ , $ 1<=k<=min(n,10) $ ) — the number of rows and columns of the string section, the total number of violas, and the minimum number of violas Paul would like in his photograph, respectively.
+The next $ n $ lines each contain two integers $ x_{i} $ and $ y_{i} $ ( $ 1<=x_{i}<=r $ , $ 1<=y_{i}<=c $ ): the position of the $ i $ -th viola. It is guaranteed that no location appears more than once in the input.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the number of photographs Paul can take which include at least $ k $ violas.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 2 1 1
+1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 2 3 3
+1 1
+3 1
+2 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 2 3 2
+1 1
+3 1
+2 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>4
+</code></pre>
+<h2>说明</h2>
+<div>We will use '\*' to denote violinists and '\#' to denote violists.
+In the first sample, the orchestra looks as follows:
+`<br></br>*#<br></br>**<br></br>` Paul can take a photograph of just the viola, the $ 1×2 $ column containing the viola, the $ 2×1 $ row containing the viola, or the entire string section, for $ 4 $ pictures total.In the second sample, the orchestra looks as follows:
+`<br></br>#*<br></br>*#<br></br>#*<br></br>` Paul must take a photograph of the entire section.In the third sample, the orchestra looks the same as in the second sample.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Recover Polygon (medium) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396720:fzIsNvLjAFp3EcvNqJXqkYi9SoMZIRJjsVQfPvdn0kY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Now%20that%20Heidi%20has%20made%20sure%20her%20Zombie%20Contamination%20level%20checker%20works%2C%20it%27s%20time%20to%20strike%21%20This%20time%2C%20the%20zombie%20lair%20is%20a%20strictly%20convex%20polygon%20on%20the%20lattice.%20Each%20vertex%20of%20the%20polygon%20occupies%20a%20point%20on%20the%20lattice.%20For%20each%20cell%20of%20the%20lattice%2C%20Heidi%20knows%20the%20level%20of%20Zombie%20Contamination%20%5Cu2013%20the%20number%20of%20corners%20of%20the%20cell%20that%20are%20inside%20or%20on%20the%20border%20of%20the%20lair.%5Cn%5CnGiven%20this%20information%2C%20Heidi%20wants%20to%20know%20the%20exact%20shape%20of%20the%20lair%20to%20rain%20destruction%20on%20the%20zombies.%20Help%20her%21%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF690B2%5C%2F2c935730d8a3e2a07073e9f21e778227fe9ea585.png%29%22%2C%22inputFormat%22%3A%22The%20input%20contains%20multiple%20test%20cases.%5Cn%5CnThe%20first%20line%20of%20each%20test%20case%20contains%20one%20integer%20%24%20N%20%24%20%2C%20the%20size%20of%20the%20lattice%20grid%20%28%20%24%205%3C%3DN%3C%3D500%20%24%20%29.%20The%20next%20%24%20N%20%24%20lines%20each%20contain%20%24%20N%20%24%20characters%2C%20describing%20the%20level%20of%20Zombie%20Contamination%20of%20each%20cell%20in%20the%20lattice.%20Every%20character%20of%20every%20line%20is%20a%20digit%20between%200%20and%204.%5Cn%5CnCells%20are%20given%20in%20the%20same%20order%20as%20they%20are%20shown%20in%20the%20picture%20above%3A%20rows%20go%20in%20the%20decreasing%20value%20of%20%24%20y%20%24%20coordinate%2C%20and%20in%20one%20row%20cells%20go%20in%20the%20order%20of%20increasing%20%24%20x%20%24%20coordinate.%20This%20means%20that%20the%20first%20row%20corresponds%20to%20cells%20with%20coordinates%20%24%20%281%2CN%29%2C...%2C%28N%2CN%29%20%24%20and%20the%20last%20row%20corresponds%20to%20cells%20with%20coordinates%20%24%20%281%2C1%29%2C...%2C%28N%2C1%29%20%24%20.%5Cn%5CnThe%20last%20line%20of%20the%20file%20contains%20a%20zero.%20This%20line%20should%20not%20be%20treated%20as%20a%20test%20case.%20The%20sum%20of%20the%20%24%20N%20%24%20values%20for%20all%20tests%20in%20one%20file%20will%20not%20exceed%20%24%205000%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20give%20the%20following%20output%3A%5Cn%5CnThe%20first%20line%20of%20the%20output%20should%20contain%20one%20integer%20%24%20V%20%24%20%2C%20the%20number%20of%20vertices%20of%20the%20polygon%20that%20is%20the%20secret%20lair.%20The%20next%20%24%20V%20%24%20lines%20each%20should%20contain%20two%20integers%2C%20denoting%20the%20vertices%20of%20the%20polygon%20in%20the%20clockwise%20order%2C%20starting%20from%20the%20lexicographically%20smallest%20vertex.%22%2C%22samples%22%3A%5B%5B%228%5Cn00000000%5Cn00000110%5Cn00012210%5Cn01234200%5Cn02444200%5Cn01223200%5Cn00001100%5Cn00000000%5Cn5%5Cn00000%5Cn01210%5Cn02420%5Cn01210%5Cn00000%5Cn7%5Cn0000000%5Cn0122100%5Cn0134200%5Cn0013200%5Cn0002200%5Cn0001100%5Cn0000000%5Cn0%5Cn%22%2C%224%5Cn2%203%5Cn2%204%5Cn6%206%5Cn5%202%5Cn4%5Cn2%202%5Cn2%203%5Cn3%203%5Cn3%202%5Cn3%5Cn2%205%5Cn4%205%5Cn4%202%5Cn%22%5D%5D%2C%22hint%22%3A%22It%20is%20guaranteed%20that%20the%20solution%20always%20exists%20and%20is%20unique.%20It%20is%20guaranteed%20that%20in%20the%20correct%20solution%20the%20coordinates%20of%20the%20polygon%20vertices%20are%20between%20%24%202%20%24%20and%20%24%20N-2%20%24%20.%20A%20vertex%20%24%20%28x_%7B1%7D%2Cy_%7B1%7D%29%20%24%20is%20lexicographically%20smaller%20than%20vertex%20%24%20%28x_%7B2%7D%2Cy_%7B2%7D%29%20%24%20if%20%24%20x_%7B1%7D%3Cx_%7B2%7D%20%24%20or%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF690B2%5C%2Fd2bfbe49d551bf0cc9cbeba8f0c1469bad61d202.png%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F690%5C%2FB2%22%2C%22id%22%3A%22690B2%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF690B2%22%2C%22title%22%3A%22Recover%20Polygon%20%28medium%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Recover%20Polygon%20%28medium%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Recover Polygon (medium)</h1>
+<h2>题目描述</h2>
+<div>Now that Heidi has made sure her Zombie Contamination level checker works, it's time to strike! This time, the zombie lair is a strictly convex polygon on the lattice. Each vertex of the polygon occupies a point on the lattice. For each cell of the lattice, Heidi knows the level of Zombie Contamination – the number of corners of the cell that are inside or on the border of the lair.
+Given this information, Heidi wants to know the exact shape of the lair to rain destruction on the zombies. Help her!
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF690B2/2c935730d8a3e2a07073e9f21e778227fe9ea585.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input contains multiple test cases.
+The first line of each test case contains one integer $ N $ , the size of the lattice grid ( $ 5<=N<=500 $ ). The next $ N $ lines each contain $ N $ characters, describing the level of Zombie Contamination of each cell in the lattice. Every character of every line is a digit between 0 and 4.
+Cells are given in the same order as they are shown in the picture above: rows go in the decreasing value of $ y $ coordinate, and in one row cells go in the order of increasing $ x $ coordinate. This means that the first row corresponds to cells with coordinates $ (1,N),...,(N,N) $ and the last row corresponds to cells with coordinates $ (1,1),...,(N,1) $ .
+The last line of the file contains a zero. This line should not be treated as a test case. The sum of the $ N $ values for all tests in one file will not exceed $ 5000 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, give the following output:
+The first line of the output should contain one integer $ V $ , the number of vertices of the polygon that is the secret lair. The next $ V $ lines each should contain two integers, denoting the vertices of the polygon in the clockwise order, starting from the lexicographically smallest vertex.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8
+00000000
+00000110
+00012210
+01234200
+02444200
+01223200
+00001100
+00000000
+5
+00000
+01210
+02420
+01210
+00000
+7
+0000000
+0122100
+0134200
+0013200
+0002200
+0001100
+0000000
+0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+2 3
+2 4
+6 6
+5 2
+4
+2 2
+2 3
+3 3
+3 2
+3
+2 5
+4 5
+4 2
+</code></pre>
+<h2>说明</h2>
+<div>It is guaranteed that the solution always exists and is unique. It is guaranteed that in the correct solution the coordinates of the polygon vertices are between $ 2 $ and $ N-2 $ . A vertex $ (x_{1},y_{1}) $ is lexicographically smaller than vertex $ (x_{2},y_{2}) $ if $ x_{1}<x_{2} $ or ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF690B2/d2bfbe49d551bf0cc9cbeba8f0c1469bad61d202.png).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

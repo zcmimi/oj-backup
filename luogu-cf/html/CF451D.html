@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Count Good Substrings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394227:ASMUU93y8CmMuZJ+XdOL6VIY5MD5BCPCCkidRaJvvbg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22We%20call%20a%20string%20good%2C%20if%20after%20merging%20all%20the%20consecutive%20equal%20characters%2C%20the%20resulting%20string%20is%20palindrome.%20For%20example%2C%20%5C%22aabba%5C%22%20is%20good%2C%20because%20after%20the%20merging%20step%20it%20will%20become%20%5C%22aba%5C%22.%5Cn%5CnGiven%20a%20string%2C%20you%20have%20to%20find%20two%20values%3A%5Cn%5Cn1.%20the%20number%20of%20good%20substrings%20of%20even%20length%3B%5Cn2.%20the%20number%20of%20good%20substrings%20of%20odd%20length.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20string%20of%20length%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29.%20Each%20character%20of%20the%20string%20will%20be%20either%20%27a%27%20or%20%27b%27.%22%2C%22outputFormat%22%3A%22Print%20two%20space-separated%20integers%3A%20the%20number%20of%20good%20substrings%20of%20even%20length%20and%20the%20number%20of%20good%20substrings%20of%20odd%20length.%22%2C%22samples%22%3A%5B%5B%22bb%5Cn%22%2C%221%202%5Cn%22%5D%2C%5B%22baab%5Cn%22%2C%222%204%5Cn%22%5D%2C%5B%22babb%5Cn%22%2C%222%205%5Cn%22%5D%2C%5B%22babaa%5Cn%22%2C%222%207%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20example%201%2C%20there%20are%20three%20good%20substrings%20%28%5C%22b%5C%22%2C%20%5C%22b%5C%22%2C%20and%20%5C%22bb%5C%22%29.%20One%20of%20them%20has%20even%20length%20and%20two%20of%20them%20have%20odd%20length.%5Cn%5CnIn%20example%202%2C%20there%20are%20six%20good%20substrings%20%28i.e.%20%5C%22b%5C%22%2C%20%5C%22a%5C%22%2C%20%5C%22a%5C%22%2C%20%5C%22b%5C%22%2C%20%5C%22aa%5C%22%2C%20%5C%22baab%5C%22%29.%20Two%20of%20them%20have%20even%20length%20and%20four%20of%20them%20have%20odd%20length.%5Cn%5CnIn%20example%203%2C%20there%20are%20seven%20good%20substrings%20%28i.e.%20%5C%22b%5C%22%2C%20%5C%22a%5C%22%2C%20%5C%22b%5C%22%2C%20%5C%22b%5C%22%2C%20%5C%22bb%5C%22%2C%20%5C%22bab%5C%22%2C%20%5C%22babb%5C%22%29.%20Two%20of%20them%20have%20even%20length%20and%20five%20of%20them%20have%20odd%20length.%5Cn%5CnDefinitions%5Cn%5CnA%20substring%20%24%20s%5Bl%2Cr%5D%20%24%20%24%20%281%3C%3Dl%3C%3Dr%3C%3Dn%29%20%24%20of%20string%20%24%20s%3Ds_%7B1%7Ds_%7B2%7D...%5C%5C%20s_%7Bn%7D%20%24%20is%20string%20%24%20s_%7Bl%7Ds_%7Bl%2B1%7D...%5C%5C%20s_%7Br%7D%20%24%20.%5Cn%5CnA%20string%20%24%20s%3Ds_%7B1%7Ds_%7B2%7D...%5C%5C%20s_%7Bn%7D%20%24%20is%20a%20palindrome%20if%20it%20is%20equal%20to%20string%20%24%20s_%7Bn%7Ds_%7Bn-1%7D...%5C%5C%20s_%7B1%7D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F451%5C%2FD%22%2C%22id%22%3A%22451D%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu662f%5Cu201c%5Cu597d%5Cu7684%5Cu201d%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5408%5Cu5e76%5Cu5176%5Cu4e2d%5Cu7684%5Cu8fde%5Cu7eed%5Cu533a%5Cu95f4%5Cu540e%5Cuff0c%5Cu5b83%5Cu662f%5Cu4e00%5Cu4e2a%5Cu56de%5Cu6587%5Cu4e32%5Cu3002%5Cu6bd4%5Cu5982%5Cu201c%60aabba%60%5Cu201d%5Cu662f%5Cu597d%5Cu7684%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu5728%5Cu5408%5Cu5e76%5Cu540e%5Cu5b83%5Cu53d8%5Cu6210%5Cu4e86%60aba%60%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu73b0%5Cu5728%5Cu8981%5Cu4f60%5Cu5206%5Cu522b%5Cu6c42%5Cu51fa%5Cu957f%5Cu5ea6%5Cu4e3a%5Cu5947%5Cu6570%5Cu548c%5Cu5076%5Cu6570%5Cu7684%5Cu201c%5Cu597d%5Cu7684%5Cu201d%5Cu5b50%5Cu4e32%5Cu6570%5Cu91cf%5Cu3002%5Cuff08%5Cu63d0%5Cu793a%5Cuff1a%5Cu4e0d%5Cu662f%5Cu672c%5Cu8d28%5Cu4e0d%5Cu540c%5Cu7684%5Cu5b50%5Cu4e32%5Cuff0c%5Cu4e0d%5Cu5141%5Cu8bb8%5Cu7a7a%5Cu4e32%5Cuff09%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu5b57%5Cu7b26%5Cu4e32%24s%24%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%5Cuff0c%5Cu5206%5Cu522b%5Cu4e3a%5Cu957f%5Cu5ea6%5Cu662f%5Cu5076%5Cu6570%5Cu548c%5Cu5947%5Cu6570%5Cu7684%5Cu201c%5Cu597d%5Cu7684%5Cu201d%5Cu5b57%5Cu4e32%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b1%5Cu4e2d%5Cuff0c%5Cu6709%24s%5B1..1%5D%3D%20%60%60b%5C%22%24%5Cuff0c%24s%5B2..2%5D%20%3D%20%60%60b%5C%22%24%5Cu548c%24s%5B1..2%5D%3D%20%60%60bb%5C%22%24%5Cu662f%5Cu597d%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b2%5Cu4e2d%5Cuff0c%5Cu597d%5Cu7684%5Cu5b50%5Cu4e32%5Cu6709%5Cuff1a%5C%22%24b%24%5C%22%2C%20%5C%22%24a%24%5C%22%2C%20%5C%22%24a%24%5C%22%2C%20%5C%22%24b%24%5C%22%2C%20%5C%22%24aa%24%5C%22%2C%20%5C%22%24baab%24%5C%22%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b3%5Cu4e2d%5Cuff0c%5Cu597d%5Cu7684%5Cu5b50%5Cu4e32%5Cu6709%5Cuff1a%5C%22%24b%24%5C%22%2C%20%5C%22%24a%24%5C%22%2C%20%5C%22%24b%24%5C%22%2C%20%5C%22%24b%24%5C%22%2C%20%5C%22%24bb%24%5C%22%2C%20%5C%22%24bab%24%5C%22%2C%20%5C%22%24babb%24%5C%22%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cr%5Cn%5Cr%5Cn%241%20%5C%5Cleq%20%7Cs%7C%20%5C%5Cleq%2010%5E5%24%5Cuff0c%5Cu5176%5Cu4e2d%24%7Cs%7C%24%5Cu662f%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5b57%5Cu7b26%5Cu4e32%5Cu53ea%5Cu5305%5Cu542b%5Cu5c0f%5Cu5199%24a%24%5Cu548c%24b%24%5Cu4e24%5Cu79cd%5Cu5b57%5Cu7b26%5Cu3002%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A12%2C%22totalAccepted%22%3A7%2C%22pid%22%3A%22CF451D%22%2C%22title%22%3A%22Count%20Good%20Substrings%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Count%20Good%20Substrings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Count Good Substrings</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述
+一个字符串是“好的”，当且仅当合并其中的连续区间后，它是一个回文串。比如“`aabba`”是好的，因为在合并后它变成了`aba`
+给你一个字符串，现在要你分别求出长度为奇数和偶数的“好的”子串数量。（提示：不是本质不同的子串，不允许空串）
+### 输入格式
+一行，字符串$s$
+### 输出格式
+一行，两个空格隔开的整数，分别为长度是偶数和奇数的“好的”字串数量。
+### 样例解释
+样例1中，有$s[1..1]= ``b"$，$s[2..2] = ``b"$和$s[1..2]= ``bb"$是好的。
+样例2中，好的子串有："$b$", "$a$", "$a$", "$b$", "$aa$", "$baab$"
+样例3中，好的子串有："$b$", "$a$", "$b$", "$b$", "$bb$", "$bab$", "$babb$"
+### 数据范围
+$1 \leq |s| \leq 10^5$，其中$|s|$是字符串的长度。
+字符串只包含小写$a$和$b$两种字符。
+</div>
+<h2>题目描述</h2>
+<div>We call a string good, if after merging all the consecutive equal characters, the resulting string is palindrome. For example, "aabba" is good, because after the merging step it will become "aba".
+Given a string, you have to find two values:
+1. the number of good substrings of even length;
+2. the number of good substrings of odd length.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single string of length $ n $ ( $ 1<=n<=10^{5} $ ). Each character of the string will be either 'a' or 'b'.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print two space-separated integers: the number of good substrings of even length and the number of good substrings of odd length.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>bb
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>baab
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 4
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>babb
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>2 5
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>babaa
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>2 7
+</code></pre>
+<h2>说明</h2>
+<div>In example 1, there are three good substrings ("b", "b", and "bb"). One of them has even length and two of them have odd length.
+In example 2, there are six good substrings (i.e. "b", "a", "a", "b", "aa", "baab"). Two of them have even length and four of them have odd length.
+In example 3, there are seven good substrings (i.e. "b", "a", "b", "b", "bb", "bab", "babb"). Two of them have even length and five of them have odd length.
+Definitions
+A substring $ s[l,r] $ $ (1<=l<=r<=n) $ of string $ s=s_{1}s_{2}...\ s_{n} $ is string $ s_{l}s_{l+1}...\ s_{r} $ .
+A string $ s=s_{1}s_{2}...\ s_{n} $ is a palindrome if it is equal to string $ s_{n}s_{n-1}...\ s_{1} $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

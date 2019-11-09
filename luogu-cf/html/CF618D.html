@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Hamiltonian Spanning Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396052:27luyefgInpIQXmOMUVKAXRxVXwmWKp51RN8lu6VdNA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20group%20of%20%24%20n%20%24%20cities%20is%20connected%20by%20a%20network%20of%20roads.%20There%20is%20an%20undirected%20road%20between%20every%20pair%20of%20cities%2C%20so%20there%20are%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF618D%5C%2F34979ffded59b995b51f393a25216d8c29f7ba4b.png%29%20roads%20in%20total.%20It%20takes%20exactly%20%24%20y%20%24%20seconds%20to%20traverse%20any%20single%20road.%5Cn%5CnA%20spanning%20tree%20is%20a%20set%20of%20roads%20containing%20exactly%20%24%20n-1%20%24%20roads%20such%20that%20it%27s%20possible%20to%20travel%20between%20any%20two%20cities%20using%20only%20these%20roads.%5Cn%5CnSome%20spanning%20tree%20of%20the%20initial%20network%20was%20chosen.%20For%20every%20road%20in%20this%20tree%20the%20time%20one%20needs%20to%20traverse%20this%20road%20was%20changed%20from%20%24%20y%20%24%20to%20%24%20x%20%24%20seconds.%20Note%20that%20it%27s%20not%20guaranteed%20that%20%24%20x%20%24%20is%20smaller%20than%20%24%20y%20%24%20.%5Cn%5CnYou%20would%20like%20to%20travel%20through%20all%20the%20cities%20using%20the%20shortest%20path%20possible.%20Given%20%24%20n%20%24%20%2C%20%24%20x%20%24%20%2C%20%24%20y%20%24%20and%20a%20description%20of%20the%20spanning%20tree%20that%20was%20chosen%2C%20find%20the%20cost%20of%20the%20shortest%20path%20that%20starts%20in%20any%20city%2C%20ends%20in%20any%20city%20and%20visits%20all%20cities%20exactly%20once.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20x%20%24%20and%20%24%20y%20%24%20%28%20%24%202%3C%3Dn%3C%3D200000%2C1%3C%3Dx%2Cy%3C%3D10%5E%7B9%7D%20%24%20%29.%5Cn%5CnEach%20of%20the%20next%20%24%20n-1%20%24%20lines%20contains%20a%20description%20of%20a%20road%20in%20the%20spanning%20tree.%20The%20%24%20i%20%24%20-th%20of%20these%20lines%20contains%20two%20integers%20%24%20u_%7Bi%7D%20%24%20and%20%24%20v_%7Bi%7D%20%24%20%28%20%24%201%3C%3Du_%7Bi%7D%2Cv_%7Bi%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20indices%20of%20the%20cities%20connected%20by%20the%20%24%20i%20%24%20-th%20road.%20It%20is%20guaranteed%20that%20these%20roads%20form%20a%20spanning%20tree.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20minimum%20number%20of%20seconds%20one%20needs%20to%20spend%20in%20order%20to%20visit%20all%20the%20cities%20exactly%20once.%22%2C%22samples%22%3A%5B%5B%225%202%203%5Cn1%202%5Cn1%203%5Cn3%204%5Cn5%203%5Cn%22%2C%229%5Cn%22%5D%2C%5B%225%203%202%5Cn1%202%5Cn1%203%5Cn3%204%5Cn5%203%5Cn%22%2C%228%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20roads%20of%20the%20spanning%20tree%20have%20cost%20%24%202%20%24%20%2C%20while%20other%20roads%20have%20cost%20%24%203%20%24%20.%20One%20example%20of%20an%20optimal%20path%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF618D%5C%2Ffd268aca39dc90ab942d5fab2a7a973aad83077f.png%29.%5Cn%5CnIn%20the%20second%20sample%2C%20we%20have%20the%20same%20spanning%20tree%2C%20but%20roads%20in%20the%20spanning%20tree%20cost%203%2C%20while%20other%20roads%20cost%202.%20One%20example%20of%20an%20optimal%20path%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF618D%5C%2Ffadc5e503a235380faa309138f414501c6fe529a.png%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F618%5C%2FD%22%2C%22id%22%3A%22618D%22%7D%2C%22translation%22%3A%22%23%23%23%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff1a%20%20%5Cr%5Cnn%20%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu4e4b%5Cu95f4%5Cu5f62%5Cu6210%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu6709n%2A%28n-1%29%5C%2F2%5Cu6761%5Cu8fb9%5Cu7684%5Cu5b8c%5Cu5168%5Cu65e0%5Cu5411%5Cu56fe%5Cu3002%5Cu8d70%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu9700%5Cu8981y%5Cu79d2%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu8be5%5Cu56fe%5Cu7684%5Cu4e00%5Cu4e2an-1%5Cu6761%5Cu8fb9%5Cu7684%5Cu751f%5Cu6210%5Cu6811%5Cuff0c%5Cu8d70%5Cu6811%5Cu4e0a%5Cu7684%5Cu6bcf%5Cu4e00%5Cu6761%5Cu8fb9%5Cu53ea%5Cu9700%5Cu8981x%5Cu79d2%5Cuff08%5Cu4e0d%5Cu8fc7%5Cu6ce8%5Cu610fx%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu5c0f%5Cu4e8ey%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu5e0c%5Cu671b%5Cu4ece%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu5f00%5Cu59cb%5Cuff0c%5Cu7ecf%5Cu8fc7%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu6070%5Cu597d%5Cu4e00%5Cu6b21%5Cuff0c%5Cu5728%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu7ed3%5Cu675f%5Cu7684%5Cu8def%5Cu5f84%5Cu7684%5Cu957f%5Cu5ea6%5Cu6240%5Cu82b1%5Cu65f6%5Cu95f4%5Cu6700%5Cu5c11%5Cu3002%5Cu6c42%5Cu6700%5Cu5c11%5Cu65f6%5Cu95f4%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%20n%2Cx%2Cy%20%20%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20n%5Cu22121%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570a%5Cu548cb%5Cuff0c%5Cu8868%5Cu793a%5Cu751f%5Cu6210%5Cu6811%5Cu4e0aa%5Cu4e0e%20b%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cu3002%5Cu4fdd%5Cu8bc1%5Cu8fd9%5Cu4e9b%5Cu8fb9%5Cu5f62%5Cu6210%5Cu4e00%5Cu68f5%5Cu751f%5Cu6210%5Cu6811%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu73af%5Cu6e38%5Cu57ce%5Cu5e02%5Cu6700%5Cu5c0f%5Cu65f6%5Cu95f4%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A9%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF618D%22%2C%22title%22%3A%22Hamiltonian%20Spanning%20Tree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Hamiltonian%20Spanning%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Hamiltonian Spanning Tree</h1>
+<h2>题意翻译</h2>
+<div>###### 题目描述：
+n 个城市之间形成了一个有n*(n-1)/2条边的完全无向图。走每条边需要y秒。
+给定该图的一个n-1条边的生成树，走树上的每一条边只需要x秒（不过注意x不一定小于y）。
+你希望从任意一个点开始，经过每个点恰好一次，在任意一个点结束的路径的长度所花时间最少。求最少时间。
+###### 输入格式：
+第一行包含三个整数 n,x,y
+接下来 n−1行每行包含两个整数a和b，表示生成树上a与 b之间有一条边。保证这些边形成一棵生成树。
+###### 输出格式：
+输出一个整数，表示环游城市最小时间。</div>
+<h2>题目描述</h2>
+<div>A group of $ n $ cities is connected by a network of roads. There is an undirected road between every pair of cities, so there are ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF618D/34979ffded59b995b51f393a25216d8c29f7ba4b.png) roads in total. It takes exactly $ y $ seconds to traverse any single road.
+A spanning tree is a set of roads containing exactly $ n-1 $ roads such that it's possible to travel between any two cities using only these roads.
+Some spanning tree of the initial network was chosen. For every road in this tree the time one needs to traverse this road was changed from $ y $ to $ x $ seconds. Note that it's not guaranteed that $ x $ is smaller than $ y $ .
+You would like to travel through all the cities using the shortest path possible. Given $ n $ , $ x $ , $ y $ and a description of the spanning tree that was chosen, find the cost of the shortest path that starts in any city, ends in any city and visits all cities exactly once.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains three integers $ n $ , $ x $ and $ y $ ( $ 2<=n<=200000,1<=x,y<=10^{9} $ ).
+Each of the next $ n-1 $ lines contains a description of a road in the spanning tree. The $ i $ -th of these lines contains two integers $ u_{i} $ and $ v_{i} $ ( $ 1<=u_{i},v_{i}<=n $ ) — indices of the cities connected by the $ i $ -th road. It is guaranteed that these roads form a spanning tree.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the minimum number of seconds one needs to spend in order to visit all the cities exactly once.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 2 3
+1 2
+1 3
+3 4
+5 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>9
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 3 2
+1 2
+1 3
+3 4
+5 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>8
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, roads of the spanning tree have cost $ 2 $ , while other roads have cost $ 3 $ . One example of an optimal path is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF618D/fd268aca39dc90ab942d5fab2a7a973aad83077f.png).
+In the second sample, we have the same spanning tree, but roads in the spanning tree cost 3, while other roads cost 2. One example of an optimal path is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF618D/fadc5e503a235380faa309138f414501c6fe529a.png).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

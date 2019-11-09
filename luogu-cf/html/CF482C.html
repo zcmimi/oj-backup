@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Game with Strings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394557:OJbPLjy9pJCfELWK2r2Ge6X2TeMexskeJgqBt7LvxLA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20play%20the%20game%20with%20your%20friend.%20The%20description%20of%20this%20game%20is%20listed%20below.%5Cn%5CnYour%20friend%20creates%20%24%20n%20%24%20distinct%20strings%20of%20the%20same%20length%20%24%20m%20%24%20and%20tells%20you%20all%20the%20strings.%20Then%20he%20randomly%20chooses%20one%20of%20them.%20He%20chooses%20strings%20equiprobably%2C%20i.e.%20the%20probability%20of%20choosing%20each%20of%20the%20%24%20n%20%24%20strings%20equals%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2Fcec343c6baaa60537c4b5905738b928218fa103b.png%29.%20You%20want%20to%20guess%20which%20string%20was%20chosen%20by%20your%20friend.%5Cn%5CnIn%20order%20to%20guess%20what%20string%20your%20friend%20has%20chosen%2C%20you%20are%20allowed%20to%20ask%20him%20questions.%20Each%20question%20has%20the%20following%20form%3A%20%5Cu00abWhat%20character%20stands%20on%20position%20%24%20pos%20%24%20in%20the%20string%20you%20have%20chosen%3F%5Cu00bb%20A%20string%20is%20considered%20guessed%20when%20the%20answers%20to%20the%20given%20questions%20uniquely%20identify%20the%20string.%20After%20the%20string%20is%20guessed%2C%20you%20stop%20asking%20questions.%5Cn%5CnYou%20do%20not%20have%20a%20particular%20strategy%2C%20so%20as%20each%20question%20you%20equiprobably%20ask%20about%20a%20position%20that%20hasn%27t%20been%20yet%20mentioned.%20Your%20task%20is%20to%20determine%20the%20expected%20number%20of%20questions%20needed%20to%20guess%20the%20string%20chosen%20by%20your%20friend.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D50%20%24%20%29%20%5Cu2014%20the%20number%20of%20strings%20your%20friend%20came%20up%20with.%5Cn%5CnThe%20next%20%24%20n%20%24%20lines%20contain%20the%20strings%20that%20your%20friend%20has%20created.%20It%20is%20guaranteed%20that%20all%20the%20strings%20are%20distinct%20and%20only%20consist%20of%20large%20and%20small%20English%20letters.%20Besides%2C%20the%20lengths%20of%20all%20strings%20are%20the%20same%20and%20are%20between%20%24%201%20%24%20to%20%24%2020%20%24%20inclusive.%22%2C%22outputFormat%22%3A%22Print%20the%20single%20number%20%5Cu2014%20the%20expected%20value.%20Your%20answer%20will%20be%20considered%20correct%20if%20its%20absolute%20or%20relative%20error%20doesn%27t%20exceed%20%24%2010%5E%7B-9%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%222%5Cnaab%5Cnaac%5Cn%22%2C%222.000000000000000%5Cn%22%5D%2C%5B%223%5CnaaA%5CnaBa%5CnCaa%5Cn%22%2C%221.666666666666667%5Cn%22%5D%2C%5B%223%5Cnaca%5Cnvac%5Cnwqq%5Cn%22%2C%221.000000000000000%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20the%20strings%20only%20differ%20in%20the%20character%20in%20the%20third%20position.%20So%20only%20the%20following%20situations%20are%20possible%3A%5Cn%5Cn-%20you%20guess%20the%20string%20in%20one%20question.%20The%20event%27s%20probability%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2F513b47d544fbfd2b63900943a3b125c3476d7507.png%29%3B%5Cn-%20you%20guess%20the%20string%20in%20two%20questions.%20The%20event%27s%20probability%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2F52f687c8c3ebad32aaf54f6658a640f43d093f4f.png%29%20%24%20%5Cu00b7%20%24%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2Fc7153f63e3d01fc37aee4c4e23b360f1f43974ad.png%29%20%3D%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2F513b47d544fbfd2b63900943a3b125c3476d7507.png%29%20%28as%20in%20this%20case%20the%20first%20question%20should%20ask%20about%20the%20position%20that%20is%20other%20than%20the%20third%20one%29%3B%5Cn-%20you%20guess%20the%20string%20in%20three%20questions.%20The%20event%27s%20probability%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2F52f687c8c3ebad32aaf54f6658a640f43d093f4f.png%29%20%24%20%5Cu00b7%20%24%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2Fc7153f63e3d01fc37aee4c4e23b360f1f43974ad.png%29%20%24%20%5Cu00b7%20%24%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2F167351ebd6917ee61e9c20726ae6dbc47b94319a.png%29%20%3D%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2F513b47d544fbfd2b63900943a3b125c3476d7507.png%29%3B%5Cn%5CnThus%2C%20the%20expected%20value%20is%20equal%20to%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2Fdf311d20e652e4c180fe1e82a15c664c3619e1a0.png%29%5Cn%5CnIn%20the%20second%20sample%20we%20need%20at%20most%20two%20questions%20as%20any%20pair%20of%20questions%20uniquely%20identifies%20the%20string.%20So%20the%20expected%20number%20of%20questions%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF482C%5C%2F37a4409e8fd878cfcc15e4b3a111dbfc894bbb01.png%29.%5Cn%5CnIn%20the%20third%20sample%20whatever%20position%20we%20ask%20about%20in%20the%20first%20question%2C%20we%20immediately%20identify%20the%20string.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F482%5C%2FC%22%2C%22id%22%3A%22482C%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu548c%5Cu4f60%5Cu7684%5Cu670b%5Cu53cb%5Cu73a9%5Cu4e00%5Cu4e2a%5Cu6e38%5Cu620f%5Cuff0c%5Cu6e38%5Cu620f%5Cu89c4%5Cu5219%5Cu5982%5Cu4e0b%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu7684%5Cu670b%5Cu53cb%5Cu521b%5Cu9020%20n%20%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu5747%5Cu4e3a%20m%20%5Cu7684%5Cu4e0d%5Cu76f8%5Cu540c%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu7136%5Cu540e%5Cu4ed6%5Cu968f%5Cu673a%5Cu5730%5Cu9009%5Cu62e9%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu3002%5Cu4ed6%5Cu9009%5Cu62e9%5Cu8fd9%5Cu4e9b%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu6982%5Cu7387%5Cu662f%5Cu76f8%5Cu7b49%5Cu7684%5Cuff0c%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu4ed6%5Cu9009%5Cu62e9%20n%20%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e2d%5Cu7684%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu7684%5Cu6982%5Cu7387%5Cu662f%201%5C%2Fn%20%5Cu3002%5Cu4f60%5Cu60f3%5Cu731c%5Cu731c%5Cu4f60%5Cu7684%5Cu670b%5Cu53cb%5Cu9009%5Cu62e9%5Cu4e86%5Cu54ea%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu731c%5Cu5230%5Cu4f60%5Cu7684%5Cu670b%5Cu53cb%5Cu9009%5Cu62e9%5Cu4e86%5Cu54ea%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu95ee%5Cu4ed6%5Cu95ee%5Cu9898%5Cuff0c%5Cu5f62%5Cu5f0f%5Cu5982%5Cu4e0b%5Cuff1a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e2d%5Cu7b2c%5Cu3000%5Cuff50%5Cuff4f%5Cuff53%5Cu3000%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu662f%5Cu4ec0%5Cu4e48%5Cuff1f%5Cu5f53%5Cu95ee%5Cu9898%5Cu7684%5Cu7b54%5Cu6848%5Cu4e3a%5Cu552f%5Cu4e00%5Cu6807%5Cu8bc6%5Cu5b57%5Cu7b26%5Cu4e32%5Cu65f6%5Cuff0c%5Cu6211%5Cu4eec%5Cu8ba4%5Cu4e3a%5Cu8fd9%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu662f%5Cu731c%5Cu6d4b%5Cu7684%5Cu3002%5Cu5728%5Cu5b57%5Cu7b26%5Cu4e32%5Cu88ab%5Cu731c%5Cu6d4b%5Cu540e%5Cuff0c%5Cu4f60%5Cu5c06%5Cu505c%5Cu6b62%5Cu63d0%5Cu95ee%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu6ca1%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7279%5Cu6b8a%5Cu7684%5Cu7b56%5Cu7565%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4f60%5Cu6bcf%5Cu6b21%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu7b49%5Cu6982%5Cu7387%5Cu7684%5Cu95ee%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%5Cu4f60%5Cu4ece%5Cu6ca1%5Cu63d0%5Cu8fc7%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu3002%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu786e%5Cu5b9a%5Cu4f60%5Cu731c%5Cu5230%5Cu4f60%5Cu7684%5Cu670b%5Cu53cb%5Cu9009%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6240%5Cu9700%5Cu6b21%5Cu6570%5Cu7684%5Cu671f%5Cu671b%5Cu3002%5Cn%5Cn%23%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cu3000%5Cuff4e%5Cu3000%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu3000%5Cuff4e%5Cu3000%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8868%5Cu793a%5Cu4f60%5Cu670b%5Cu53cb%5Cu521b%5Cu9020%5Cu51fa%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu9664%5Cu6b64%5Cu4e4b%5Cu5916%5Cuff0c%5Cu6240%5Cu6709%5Cu5b57%5Cu7b26%5Cu7684%5Cu957f%5Cu5ea6%5Cu662f%5Cu76f8%5Cu540c%5Cu7684%5Cuff0c%5Cu5728%5Cuff11~%5Cuff12%5Cuff10%5Cu4e4b%5Cu95f4%5Cu3002%5Cn%23%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cu8f93%5Cu51fa%5Cu671f%5Cu671b%5Cu3002%5Cu7b54%5Cu6848%5Cu4fdd%5Cu7559%5Cu4e5d%5Cu4f4d%5Cu5c0f%5Cu6570%5Cu3002%5Cu8bef%5Cu5dee%5Cu572810%5E-9%5Cu4ee5%5Cu5185.%22%2C%22tags%22%3A%5B2%2C151%2C270%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A106%2C%22totalAccepted%22%3A34%2C%22pid%22%3A%22CF482C%22%2C%22title%22%3A%22Game%20with%20Strings%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A52670%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10723%2C%22name%22%3A%22CF482C%20Game%20with%20Strings%22%2C%22slug%22%3A%22CF482C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF643G%22%2C%22title%22%3A%22Choosing%20Ads%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF600E%22%2C%22title%22%3A%22Lomsat%20gelral%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF453A%22%2C%22title%22%3A%22Little%20Pony%20and%20Expected%20Maximum%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF449D%22%2C%22title%22%3A%22Jzzhu%20and%20Numbers%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22UVA12633%22%2C%22title%22%3A%22Super%20Rooks%20on%20Chessboard%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Game%20with%20Strings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Game with Strings</h1>
+<h2>题意翻译</h2>
+<div>你和你的朋友玩一个游戏，游戏规则如下。
+你的朋友创造 n 个长度均为 m 的不相同的字符串，然后他随机地选择其中一个。他选择这些字符串的概率是相等的，也就是说，他选择 n 个字符串中的每一个的概率是 1/n 。你想猜猜你的朋友选择了哪个字符串。
+为了猜到你的朋友选择了哪个字符串，你可以问他问题，形式如下：字符串中第　ｐｏｓ　个字符是什么？当问题的答案为唯一标识字符串时，我们认为这个字符串是猜测的。在字符串被猜测后，你将停止提问。
+你没有一个特殊的策略，所以你每次可能会等概率的问任何一个你从没提过的位置。你的任务是确定你猜到你的朋友选的字符串所需次数的期望。
+##### 输入格式
+第一行包括一个数字　ｎ　。接下来　ｎ　行，每行一个字符串，表示你朋友创造出的字符串。除此之外，所有字符的长度是相同的，在１~２０之间。
+##### 输出格式
+输出期望。答案保留九位小数。误差在10^-9以内.</div>
+<h2>题目描述</h2>
+<div>You play the game with your friend. The description of this game is listed below.
+Your friend creates $ n $ distinct strings of the same length $ m $ and tells you all the strings. Then he randomly chooses one of them. He chooses strings equiprobably, i.e. the probability of choosing each of the $ n $ strings equals ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/cec343c6baaa60537c4b5905738b928218fa103b.png). You want to guess which string was chosen by your friend.
+In order to guess what string your friend has chosen, you are allowed to ask him questions. Each question has the following form: «What character stands on position $ pos $ in the string you have chosen?» A string is considered guessed when the answers to the given questions uniquely identify the string. After the string is guessed, you stop asking questions.
+You do not have a particular strategy, so as each question you equiprobably ask about a position that hasn't been yet mentioned. Your task is to determine the expected number of questions needed to guess the string chosen by your friend.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1<=n<=50 $ ) — the number of strings your friend came up with.
+The next $ n $ lines contain the strings that your friend has created. It is guaranteed that all the strings are distinct and only consist of large and small English letters. Besides, the lengths of all strings are the same and are between $ 1 $ to $ 20 $ inclusive.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the single number — the expected value. Your answer will be considered correct if its absolute or relative error doesn't exceed $ 10^{-9} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+aab
+aac
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2.000000000000000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+aaA
+aBa
+Caa
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1.666666666666667
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+aca
+vac
+wqq
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1.000000000000000
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample the strings only differ in the character in the third position. So only the following situations are possible:
+- you guess the string in one question. The event's probability is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/513b47d544fbfd2b63900943a3b125c3476d7507.png);
+- you guess the string in two questions. The event's probability is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/52f687c8c3ebad32aaf54f6658a640f43d093f4f.png) $ · $ ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/c7153f63e3d01fc37aee4c4e23b360f1f43974ad.png) = ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/513b47d544fbfd2b63900943a3b125c3476d7507.png) (as in this case the first question should ask about the position that is other than the third one);
+- you guess the string in three questions. The event's probability is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/52f687c8c3ebad32aaf54f6658a640f43d093f4f.png) $ · $ ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/c7153f63e3d01fc37aee4c4e23b360f1f43974ad.png) $ · $ ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/167351ebd6917ee61e9c20726ae6dbc47b94319a.png) = ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/513b47d544fbfd2b63900943a3b125c3476d7507.png);
+Thus, the expected value is equal to ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/df311d20e652e4c180fe1e82a15c664c3619e1a0.png)
+In the second sample we need at most two questions as any pair of questions uniquely identifies the string. So the expected number of questions is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF482C/37a4409e8fd878cfcc15e4b3a111dbfc894bbb01.png).
+In the third sample whatever position we ask about in the first question, we immediately identify the string.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

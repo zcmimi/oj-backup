@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Mean Requests - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395055:Y2ScoGZaEg94EHkIJ3ws4AxrjvbaRWhJlmVvo8duS+0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20this%20problem%20you%20will%20have%20to%20deal%20with%20a%20real%20algorithm%20that%20is%20used%20in%20the%20VK%20social%20network.%5Cn%5CnAs%20in%20any%20other%20company%20that%20creates%20high-loaded%20websites%2C%20the%20VK%20developers%20have%20to%20deal%20with%20request%20statistics%20regularly.%20An%20important%20indicator%20reflecting%20the%20load%20of%20the%20site%20is%20the%20mean%20number%20of%20requests%20for%20a%20certain%20period%20of%20time%20of%20%24%20T%20%24%20seconds%20%28for%20example%2C%20%24%20T%3D60%5Cu00a0seconds%3D1%5Cu00a0min%20%24%20and%20%24%20T%3D86400%5Cu00a0seconds%3D1%5Cu00a0day%20%24%20%29.%20For%20example%2C%20if%20this%20value%20drops%20dramatically%2C%20that%20shows%20that%20the%20site%20has%20access%20problem.%20If%20this%20value%20grows%2C%20that%20may%20be%20a%20reason%20to%20analyze%20the%20cause%20for%20the%20growth%20and%20add%20more%20servers%20to%20the%20website%20if%20it%20is%20really%20needed.%5Cn%5CnHowever%2C%20even%20such%20a%20natural%20problem%20as%20counting%20the%20mean%20number%20of%20queries%20for%20some%20period%20of%20time%20can%20be%20a%20challenge%20when%20you%20process%20the%20amount%20of%20data%20of%20a%20huge%20social%20network.%20That%27s%20why%20the%20developers%20have%20to%20use%20original%20techniques%20to%20solve%20problems%20approximately%2C%20but%20more%20effectively%20at%20the%20same%20time.%5Cn%5CnLet%27s%20consider%20the%20following%20formal%20model.%20We%20have%20a%20service%20that%20works%20for%20%24%20n%20%24%20seconds.%20We%20know%20the%20number%20of%20queries%20to%20this%20resource%20%24%20a_%7Bt%7D%20%24%20at%20each%20moment%20of%20time%20%24%20t%20%24%20%28%20%24%201%3C%3Dt%3C%3Dn%20%24%20%29.%20Let%27s%20formulate%20the%20following%20algorithm%20of%20calculating%20the%20mean%20with%20exponential%20decay.%20Let%20%24%20c%20%24%20be%20some%20real%20number%2C%20strictly%20larger%20than%20one.%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3E%5C%2F%5C%2F%20setting%20this%20constant%20value%20correctly%20can%20adjust%20%20%20%3Cbr%3E%3C%5C%2Fbr%3E%5C%2F%5C%2F%20the%20time%20range%20for%20which%20statistics%20will%20be%20calculated%3Cbr%3E%3C%5C%2Fbr%3Edouble%20c%20%3D%20%3Cspan%20class%3D%5C%22tex-font-style-it%5C%22%3Esome%20constant%20value%3C%5C%2Fspan%3E%3B%20%3Cbr%3E%3C%5C%2Fbr%3E%3Cbr%3E%3C%5C%2Fbr%3E%5C%2F%5C%2F%20as%20the%20result%20of%20the%20algorithm%27s%20performance%20this%20variable%20will%20contain%20%3Cbr%3E%3C%5C%2Fbr%3E%5C%2F%5C%2F%20the%20mean%20number%20of%20queries%20for%20the%20last%20%3Cbr%3E%3C%5C%2Fbr%3E%5C%2F%5C%2F%20T%20seconds%20by%20the%20current%20moment%20of%20time%3Cbr%3E%3C%5C%2Fbr%3Edouble%20mean%20%3D%200.0%3B%20%3Cbr%3E%3C%5C%2Fbr%3E%3Cbr%3E%3C%5C%2Fbr%3Efor%20t%20%3D%201..n%3A%20%5C%2F%5C%2F%20at%20each%20second%2C%20we%20do%20the%20following%3A%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%5C%2F%5C%2F%20%20%24%20a_%7Bt%7D%20%24%20%20is%20the%20number%20of%20queries%20that%20came%20at%20the%20last%20second%3B%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20mean%20%3D%20%28mean%20%2B%20%20%24%20a_%7Bt%7D%20%24%20%20%5C%2F%20T%29%20%5C%2F%20c%3B%3Cbr%3E%3C%5C%2Fbr%3E%60Thus%2C%20the%20mean%20variable%20is%20recalculated%20each%20second%20using%20the%20number%20of%20queries%20that%20came%20at%20that%20second.%20We%20can%20make%20some%20mathematical%20calculations%20and%20prove%20that%20choosing%20the%20value%20of%20constant%20%24%20c%20%24%20correctly%20will%20make%20the%20value%20of%20mean%20not%20very%20different%20from%20the%20real%20mean%20value%20%24%20a_%7Bx%7D%20%24%20at%20%24%20t-T%2B1%3C%3Dx%3C%3Dt%20%24%20.%5Cn%5CnThe%20advantage%20of%20such%20approach%20is%20that%20it%20only%20uses%20the%20number%20of%20requests%20at%20the%20current%20moment%20of%20time%20and%20doesn%27t%20require%20storing%20the%20history%20of%20requests%20for%20a%20large%20time%20range.%20Also%2C%20it%20considers%20the%20recent%20values%20with%20the%20weight%20larger%20than%20the%20weight%20of%20the%20old%20ones%2C%20which%20helps%20to%20react%20to%20dramatic%20change%20in%20values%20quicker.%5Cn%5CnHowever%20before%20using%20the%20new%20theoretical%20approach%20in%20industrial%20programming%2C%20there%20is%20an%20obligatory%20step%20to%20make%2C%20that%20is%2C%20to%20test%20its%20credibility%20practically%20on%20given%20test%20data%20sets.%20Your%20task%20is%20to%20compare%20the%20data%20obtained%20as%20a%20result%20of%20the%20work%20of%20an%20approximate%20algorithm%20to%20the%20real%20data.%5Cn%5CnYou%20are%20given%20%24%20n%20%24%20values%20%24%20a_%7Bt%7D%20%24%20%2C%20integer%20%24%20T%20%24%20and%20real%20number%20%24%20c%20%24%20.%20Also%2C%20you%20are%20given%20%24%20m%20%24%20moments%20%24%20p_%7Bj%7D%20%24%20%28%20%24%201%3C%3Dj%3C%3Dm%20%24%20%29%2C%20where%20we%20are%20interested%20in%20the%20mean%20value%20of%20the%20number%20of%20queries%20for%20the%20last%20%24%20T%20%24%20seconds.%20Implement%20two%20algorithms.%20The%20first%20one%20should%20calculate%20the%20required%20value%20by%20definition%2C%20i.e.%20by%20the%20formula%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF523B%5C%2F39b0157f54538cc886080bc9ab082aefaa069278.png%29.%20The%20second%20algorithm%20should%20calculate%20the%20mean%20value%20as%20is%20described%20above.%20Print%20both%20values%20and%20calculate%20the%20relative%20error%20of%20the%20second%20algorithm%20by%20the%20formula%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF523B%5C%2F4b57cc4cd99b2594c9965dc36459d21d357fee0d.png%29%2C%20where%20%24%20approx%20%24%20is%20the%20approximate%20value%2C%20obtained%20by%20the%20second%20algorithm%2C%20and%20%24%20real%20%24%20is%20the%20exact%20value%20obtained%20by%20the%20first%20algorithm.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%29%2C%20integer%20%24%20T%20%24%20%28%20%24%201%3C%3DT%3C%3Dn%20%24%20%29%20and%20real%20number%20%24%20c%20%24%20%28%20%24%201%26lt%3Bc%3C%3D100%20%24%20%29%20%5Cu2014%20the%20time%20range%20when%20the%20resource%20should%20work%2C%20the%20length%20of%20the%20time%20range%20during%20which%20we%20need%20the%20mean%20number%20of%20requests%20and%20the%20coefficient%20%24%20c%20%24%20of%20the%20work%20of%20approximate%20algorithm.%20Number%20%24%20c%20%24%20is%20given%20with%20exactly%20six%20digits%20after%20the%20decimal%20point.%5Cn%5CnThe%20next%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_%7Bt%7D%20%24%20%28%20%24%201%3C%3Da_%7Bt%7D%3C%3D10%5E%7B6%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries%20to%20the%20service%20at%20each%20moment%20of%20time.%5Cn%5CnThe%20next%20line%20contains%20integer%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20number%20of%20moments%20of%20time%20when%20we%20are%20interested%20in%20the%20mean%20number%20of%20queries%20for%20the%20last%20%24%20T%20%24%20seconds.%5Cn%5CnThe%20next%20line%20contains%20%24%20m%20%24%20integers%20%24%20p_%7Bj%7D%20%24%20%28%20%24%20T%3C%3Dp_%7Bj%7D%3C%3Dn%20%24%20%29%2C%20representing%20another%20moment%20of%20time%20for%20which%20we%20need%20statistics.%20Moments%20%24%20p_%7Bj%7D%20%24%20are%20strictly%20increasing.%22%2C%22outputFormat%22%3A%22Print%20%24%20m%20%24%20lines.%20The%20%24%20j%20%24%20-th%20line%20must%20contain%20three%20numbers%20%24%20real%20%24%20%2C%20%24%20approx%20%24%20and%20%24%20error%20%24%20%2C%20where%3A%5Cn%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF523B%5C%2Fb7234395b6dbdb9b7a7f3edccb4d4893a40d5d8b.png%29%20is%20the%20real%20mean%20number%20of%20queries%20for%20the%20last%20%24%20T%20%24%20seconds%3B%5Cn-%20%24%20approx%20%24%20is%20calculated%20by%20the%20given%20algorithm%20and%20equals%20%24%20mean%20%24%20at%20the%20moment%20of%20time%20%24%20t%3Dp_%7Bj%7D%20%24%20%28that%20is%2C%20after%20implementing%20the%20%24%20p_%7Bj%7D%20%24%20-th%20iteration%20of%20the%20cycle%29%3B%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF523B%5C%2F6ed516bae730002debbbf0fe9f9f09a1e9ba3dee.png%29%20is%20the%20relative%20error%20of%20the%20approximate%20algorithm.%5Cn%5CnThe%20numbers%20you%20printed%20will%20be%20compared%20to%20the%20correct%20numbers%20with%20the%20relative%20or%20absolute%20error%20%24%2010%5E%7B-4%7D%20%24%20.%20It%20is%20recommended%20to%20print%20the%20numbers%20with%20at%20least%20five%20digits%20after%20the%20decimal%20point.%22%2C%22samples%22%3A%5B%5B%221%201%202.000000%5Cn1%5Cn1%5Cn1%5Cn%22%2C%221.000000%200.500000%200.500000%5Cn%22%5D%2C%5B%2211%204%201.250000%5Cn9%2011%207%205%2015%206%206%206%206%206%206%5Cn8%5Cn4%205%206%207%208%209%2010%2011%5Cn%22%2C%228.000000%204.449600%200.443800%5Cn9.500000%206.559680%200.309507%5Cn8.250000%206.447744%200.218455%5Cn8.000000%206.358195%200.205226%5Cn8.250000%206.286556%200.237993%5Cn6.000000%206.229245%200.038207%5Cn6.000000%206.183396%200.030566%5Cn6.000000%206.146717%200.024453%5Cn%22%5D%2C%5B%2213%204%201.250000%5Cn3%203%203%203%203%2020%203%203%203%203%203%203%203%5Cn10%5Cn4%205%206%207%208%209%2010%2011%2012%2013%5Cn%22%2C%223.000000%201.771200%200.409600%5Cn3.000000%202.016960%200.327680%5Cn7.250000%205.613568%200.225715%5Cn7.250000%205.090854%200.297813%5Cn7.250000%204.672684%200.355492%5Cn7.250000%204.338147%200.401635%5Cn3.000000%204.070517%200.356839%5Cn3.000000%203.856414%200.285471%5Cn3.000000%203.685131%200.228377%5Cn3.000000%203.548105%200.182702%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F523%5C%2FB%22%2C%22id%22%3A%22523B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF523B%22%2C%22title%22%3A%22Mean%20Requests%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Mean%20Requests%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Mean Requests</h1>
+<h2>题目描述</h2>
+<div>In this problem you will have to deal with a real algorithm that is used in the VK social network.
+As in any other company that creates high-loaded websites, the VK developers have to deal with request statistics regularly. An important indicator reflecting the load of the site is the mean number of requests for a certain period of time of $ T $ seconds (for example, $ T=60 seconds=1 min $ and $ T=86400 seconds=1 day $ ). For example, if this value drops dramatically, that shows that the site has access problem. If this value grows, that may be a reason to analyze the cause for the growth and add more servers to the website if it is really needed.
+However, even such a natural problem as counting the mean number of queries for some period of time can be a challenge when you process the amount of data of a huge social network. That's why the developers have to use original techniques to solve problems approximately, but more effectively at the same time.
+Let's consider the following formal model. We have a service that works for $ n $ seconds. We know the number of queries to this resource $ a_{t} $ at each moment of time $ t $ ( $ 1<=t<=n $ ). Let's formulate the following algorithm of calculating the mean with exponential decay. Let $ c $ be some real number, strictly larger than one.
+`<br></br>// setting this constant value correctly can adjust <br></br>// the time range for which statistics will be calculated<br></br>double c = <span class="tex-font-style-it">some constant value</span>; <br></br><br></br>// as the result of the algorithm's performance this variable will contain <br></br>// the mean number of queries for the last <br></br>// T seconds by the current moment of time<br></br>double mean = 0.0; <br></br><br></br>for t = 1..n: // at each second, we do the following:<br></br> // $ a_{t} $ is the number of queries that came at the last second;<br></br> mean = (mean + $ a_{t} $ / T) / c;<br></br>`Thus, the mean variable is recalculated each second using the number of queries that came at that second. We can make some mathematical calculations and prove that choosing the value of constant $ c $ correctly will make the value of mean not very different from the real mean value $ a_{x} $ at $ t-T+1<=x<=t $ .
+The advantage of such approach is that it only uses the number of requests at the current moment of time and doesn't require storing the history of requests for a large time range. Also, it considers the recent values with the weight larger than the weight of the old ones, which helps to react to dramatic change in values quicker.
+However before using the new theoretical approach in industrial programming, there is an obligatory step to make, that is, to test its credibility practically on given test data sets. Your task is to compare the data obtained as a result of the work of an approximate algorithm to the real data.
+You are given $ n $ values $ a_{t} $ , integer $ T $ and real number $ c $ . Also, you are given $ m $ moments $ p_{j} $ ( $ 1<=j<=m $ ), where we are interested in the mean value of the number of queries for the last $ T $ seconds. Implement two algorithms. The first one should calculate the required value by definition, i.e. by the formula ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF523B/39b0157f54538cc886080bc9ab082aefaa069278.png). The second algorithm should calculate the mean value as is described above. Print both values and calculate the relative error of the second algorithm by the formula ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF523B/4b57cc4cd99b2594c9965dc36459d21d357fee0d.png), where $ approx $ is the approximate value, obtained by the second algorithm, and $ real $ is the exact value obtained by the first algorithm.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 1<=n<=2·10^{5} $ ), integer $ T $ ( $ 1<=T<=n $ ) and real number $ c $ ( $ 1&lt;c<=100 $ ) — the time range when the resource should work, the length of the time range during which we need the mean number of requests and the coefficient $ c $ of the work of approximate algorithm. Number $ c $ is given with exactly six digits after the decimal point.
+The next line contains $ n $ integers $ a_{t} $ ( $ 1<=a_{t}<=10^{6} $ ) — the number of queries to the service at each moment of time.
+The next line contains integer $ m $ ( $ 1<=m<=n $ ) — the number of moments of time when we are interested in the mean number of queries for the last $ T $ seconds.
+The next line contains $ m $ integers $ p_{j} $ ( $ T<=p_{j}<=n $ ), representing another moment of time for which we need statistics. Moments $ p_{j} $ are strictly increasing.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ m $ lines. The $ j $ -th line must contain three numbers $ real $ , $ approx $ and $ error $ , where:
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF523B/b7234395b6dbdb9b7a7f3edccb4d4893a40d5d8b.png) is the real mean number of queries for the last $ T $ seconds;
+- $ approx $ is calculated by the given algorithm and equals $ mean $ at the moment of time $ t=p_{j} $ (that is, after implementing the $ p_{j} $ -th iteration of the cycle);
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF523B/6ed516bae730002debbbf0fe9f9f09a1e9ba3dee.png) is the relative error of the approximate algorithm.
+The numbers you printed will be compared to the correct numbers with the relative or absolute error $ 10^{-4} $ . It is recommended to print the numbers with at least five digits after the decimal point.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 1 2.000000
+1
+1
+1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1.000000 0.500000 0.500000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>11 4 1.250000
+9 11 7 5 15 6 6 6 6 6 6
+8
+4 5 6 7 8 9 10 11
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>8.000000 4.449600 0.443800
+9.500000 6.559680 0.309507
+8.250000 6.447744 0.218455
+8.000000 6.358195 0.205226
+8.250000 6.286556 0.237993
+6.000000 6.229245 0.038207
+6.000000 6.183396 0.030566
+6.000000 6.146717 0.024453
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>13 4 1.250000
+3 3 3 3 3 20 3 3 3 3 3 3 3
+10
+4 5 6 7 8 9 10 11 12 13
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3.000000 1.771200 0.409600
+3.000000 2.016960 0.327680
+7.250000 5.613568 0.225715
+7.250000 5.090854 0.297813
+7.250000 4.672684 0.355492
+7.250000 4.338147 0.401635
+3.000000 4.070517 0.356839
+3.000000 3.856414 0.285471
+3.000000 3.685131 0.228377
+3.000000 3.548105 0.182702
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

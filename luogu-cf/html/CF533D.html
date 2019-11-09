@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Landmarks - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395169:npIRJA/duTUhePOhru+v4xaHJrbys7OXOXJGHUU87uM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22We%20have%20an%20old%20building%20with%20%24%20n%2B2%20%24%20columns%20in%20a%20row.%20These%20columns%20support%20the%20ceiling.%20These%20columns%20are%20located%20in%20points%20with%20coordinates%20%24%200%3Dx_%7B0%7D%26lt%3Bx_%7B1%7D%26lt%3B...%26lt%3Bx_%7Bn%7D%26lt%3Bx_%7Bn%2B1%7D%20%24%20.%20The%20leftmost%20and%20the%20rightmost%20columns%20are%20special%2C%20we%20will%20call%20them%20bearing%2C%20the%20other%20columns%20are%20ordinary.%5Cn%5CnFor%20each%20column%20we%20know%20its%20durability%20%24%20d_%7Bi%7D%20%24%20.%20Let%27s%20consider%20an%20ordinary%20column%20with%20coordinate%20%24%20x%20%24%20.%20Let%27s%20assume%20that%20the%20coordinate%20of%20the%20closest%20to%20it%20column%20to%20the%20left%20%28bearing%20or%20ordinary%29%20is%20%24%20a%20%24%20and%20the%20coordinate%20of%20the%20closest%20to%20it%20column%20to%20the%20right%20%28also%2C%20bearing%20or%20ordinary%29%20is%20%24%20b%20%24%20.%20In%20this%20task%20let%27s%20assume%20that%20this%20column%20supports%20the%20segment%20of%20the%20ceiling%20from%20point%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF533D%5C%2F66864f9e336140886f7768d39b36c960f91df1e0.png%29%20to%20point%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF533D%5C%2F5bf2201d164029a69ace52fc3b8a95a324b809c5.png%29%20%28here%20both%20fractions%20are%20considered%20as%20real%20division%29.%20If%20the%20length%20of%20the%20segment%20of%20the%20ceiling%20supported%20by%20the%20column%20exceeds%20%24%20d_%7Bi%7D%20%24%20%2C%20then%20the%20column%20cannot%20support%20it%20and%20it%20crashes%20after%20a%20while%2C%20and%20after%20that%20the%20load%20is%20being%20redistributeed%20between%20the%20neighbouring%20columns%20according%20to%20the%20same%20principle.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF533D%5C%2F519a45f660fd68fc606c960f34696fcbbaad3c02.png%29Thus%2C%20ordinary%20columns%20will%20be%20crashing%20for%20some%20time%20until%20the%20process%20stops%20at%20some%20state.%20One%20can%20prove%20that%20the%20set%20of%20the%20remaining%20columns%20doesn%27t%20depend%20on%20the%20order%20in%20which%20columns%20crash.%20If%20there%20are%20only%20two%20bearing%20columns%20left%20in%20the%20end%2C%20then%20we%20assume%20that%20the%20whole%20construction%20crashes%20under%20the%20weight%20of%20the%20roof.%20But%20if%20at%20least%20one%20ordinary%20column%20stays%20in%20addition%20to%20the%20bearing%20ones%2C%20then%20the%20building%20doesn%27t%20crash.%5Cn%5CnTo%20make%20the%20building%20stronger%2C%20we%20can%20add%20one%20extra%20ordinary%20column%20of%20arbitrary%20durability%20%24%20d%27%20%24%20at%20any%20%28not%20necessarily%20integer%29%20point%20%24%200%26lt%3Bx%27%26lt%3Bx_%7Bn%2B1%7D%20%24%20.%20If%20point%20%24%20x%27%20%24%20is%20already%20occupied%20by%20an%20ordinary%20column%2C%20it%20is%20replaced%20by%20a%20new%20one.%5Cn%5CnYour%20task%20is%20to%20find%20out%3A%20what%20minimal%20durability%20can%20the%20added%20column%20have%20so%20that%20the%20building%20doesn%27t%20crash%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20ordinary%20columns.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%2B2%20%24%20integers%20%24%20x_%7B0%7D%2Cx_%7B1%7D%2C...%2Cx_%7Bn%7D%2Cx_%7Bn%2B1%7D%20%24%20%28%20%24%20x_%7B0%7D%3D0%20%24%20%2C%20%24%20x_%7Bi%7D%26lt%3Bx_%7Bi%2B1%7D%20%24%20for%20%24%200%3C%3Di%3C%3Dn%20%24%20%2C%20%24%20x_%7Bn%2B1%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20coordinates%20of%20the%20columns.%5Cn%5CnThe%20third%20line%20contains%20%24%20n%20%24%20integers%20%24%20d_%7B1%7D%2Cd_%7B2%7D%2C...%2Cd_%7Bn%7D%20%24%20%28%20%24%201%3C%3Dd_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20number%20%5Cu2014%20the%20minimum%20possible%20durability%20of%20the%20column%20that%20you%20need%20to%20add%20in%20order%20to%20make%20the%20building%20stay.%20If%20you%20do%20not%20have%20to%20add%20the%20column%2C%20please%20print%20%24%200%20%24%20.%20Your%20answer%20will%20be%20checked%20with%20the%20relative%20or%20absolute%20error%20%24%2010%5E%7B-4%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%222%5Cn0%2020%2040%20100%5Cn15%2040%5Cn%22%2C%2210%5Cn%22%5D%2C%5B%223%5Cn0%204%2010%2028%2030%5Cn9%2013%205%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F533%5C%2FD%22%2C%22id%22%3A%22533D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF533D%22%2C%22title%22%3A%22Landmarks%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Landmarks%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Landmarks</h1>
+<h2>题目描述</h2>
+<div>We have an old building with $ n+2 $ columns in a row. These columns support the ceiling. These columns are located in points with coordinates $ 0=x_{0}&lt;x_{1}&lt;...&lt;x_{n}&lt;x_{n+1} $ . The leftmost and the rightmost columns are special, we will call them bearing, the other columns are ordinary.
+For each column we know its durability $ d_{i} $ . Let's consider an ordinary column with coordinate $ x $ . Let's assume that the coordinate of the closest to it column to the left (bearing or ordinary) is $ a $ and the coordinate of the closest to it column to the right (also, bearing or ordinary) is $ b $ . In this task let's assume that this column supports the segment of the ceiling from point ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF533D/66864f9e336140886f7768d39b36c960f91df1e0.png) to point ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF533D/5bf2201d164029a69ace52fc3b8a95a324b809c5.png) (here both fractions are considered as real division). If the length of the segment of the ceiling supported by the column exceeds $ d_{i} $ , then the column cannot support it and it crashes after a while, and after that the load is being redistributeed between the neighbouring columns according to the same principle.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF533D/519a45f660fd68fc606c960f34696fcbbaad3c02.png)Thus, ordinary columns will be crashing for some time until the process stops at some state. One can prove that the set of the remaining columns doesn't depend on the order in which columns crash. If there are only two bearing columns left in the end, then we assume that the whole construction crashes under the weight of the roof. But if at least one ordinary column stays in addition to the bearing ones, then the building doesn't crash.
+To make the building stronger, we can add one extra ordinary column of arbitrary durability $ d' $ at any (not necessarily integer) point $ 0&lt;x'&lt;x_{n+1} $ . If point $ x' $ is already occupied by an ordinary column, it is replaced by a new one.
+Your task is to find out: what minimal durability can the added column have so that the building doesn't crash?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 1<=n<=10^{5} $ ) — the number of ordinary columns.
+The second line contains $ n+2 $ integers $ x_{0},x_{1},...,x_{n},x_{n+1} $ ( $ x_{0}=0 $ , $ x_{i}&lt;x_{i+1} $ for $ 0<=i<=n $ , $ x_{n+1}<=10^{9} $ ) — the coordinates of the columns.
+The third line contains $ n $ integers $ d_{1},d_{2},...,d_{n} $ ( $ 1<=d_{i}<=10^{9} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single number — the minimum possible durability of the column that you need to add in order to make the building stay. If you do not have to add the column, please print $ 0 $ . Your answer will be checked with the relative or absolute error $ 10^{-4} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+0 20 40 100
+15 40
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+0 4 10 28 30
+9 13 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

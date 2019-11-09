@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>A Trivial Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396252:oLgxei+nlpdvF7tQYMAq3KFC4/tsDMH9IoZ4IoSm7pk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Mr.%20Santa%20asks%20all%20the%20great%20programmers%20of%20the%20world%20to%20solve%20a%20trivial%20problem.%20He%20gives%20them%20an%20integer%20%24%20m%20%24%20and%20asks%20for%20the%20number%20of%20positive%20integers%20%24%20n%20%24%20%2C%20such%20that%20the%20factorial%20of%20%24%20n%20%24%20ends%20with%20exactly%20%24%20m%20%24%20zeroes.%20Are%20you%20among%20those%20great%20programmers%20who%20can%20solve%20this%20problem%3F%22%2C%22inputFormat%22%3A%22The%20only%20line%20of%20input%20contains%20an%20integer%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3D100000%20%24%20%29%20%5Cu2014%20the%20required%20number%20of%20trailing%20zeroes%20in%20factorial.%22%2C%22outputFormat%22%3A%22First%20print%20%24%20k%20%24%20%5Cu2014%20the%20number%20of%20values%20of%20%24%20n%20%24%20such%20that%20the%20factorial%20of%20%24%20n%20%24%20ends%20with%20%24%20m%20%24%20zeroes.%20Then%20print%20these%20%24%20k%20%24%20integers%20in%20increasing%20order.%22%2C%22samples%22%3A%5B%5B%221%5Cn%22%2C%225%5Cn5%206%207%208%209%20%22%5D%2C%5B%225%5Cn%22%2C%220%22%5D%5D%2C%22hint%22%3A%22The%20factorial%20of%20%24%20n%20%24%20is%20equal%20to%20the%20product%20of%20all%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20inclusive%2C%20that%20is%20%24%20n%21%3D1%5Cu00b72%5Cu00b73%5Cu00b7...%5Cu00b7n%20%24%20.%5Cn%5CnIn%20the%20first%20sample%2C%20%24%205%21%3D120%20%24%20%2C%20%24%206%21%3D720%20%24%20%2C%20%24%207%21%3D5040%20%24%20%2C%20%24%208%21%3D40320%20%24%20and%20%24%209%21%3D362880%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F633%5C%2FB%22%2C%22id%22%3A%22633B%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu5723%5Cu5854%5Cu5148%5Cu751f%5Cu8981%5Cu6c42%5Cu4e16%5Cu754c%5Cu4e0a%5Cu6240%5Cu6709%5Cu4f1f%5Cu5927%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu5458%5Cu89e3%5Cu51b3%5Cu4e00%5Cu4e2a%5Cu5c0f%5Cu95ee%5Cu9898%5Cu3002%5Cu4ed6%5Cu7ed9%5Cu4e86%5Cu4ed6%5Cu4eec%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570m%5Cuff0c%5Cu5e76%5Cu8981%5Cu6c42%5Cu6b63%5Cu6574%5Cu6570n%5Cu7684%5Cu4e2a%5Cu6570%5Cu5f53n%5Cu7684%5Cu9636%5Cu4e58%5Cu6070%5Cu597d%5Cu4ee5m%5Cu4e2a0%5Cu7ed3%5Cu675f%5Cu3002%5Cu60a8%5Cu662f%5Cu80fd%5Cu591f%5Cu89e3%5Cu51b3%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu7684%5Cu4f18%5Cu79c0%5Cu7a0b%5Cu5e8f%5Cu5458%5Cu4e4b%5Cu4e00%5Cu5417%3F%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu7684%5Cu552f%5Cu4e00%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570m%20%281%3C%3Dm%3C%3D100000%29%5Cu4ee3%5Cu8868%5Cu9636%5Cu4e58%5Cu4e2d%5Cu6240%5Cu9700%5Cu7684%5Cu5c3e%5Cu968f%5Cu96f6%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu5982%5Cu679c%5Cu53ef%5Cu4ee5%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570k%5Cu4ee3%5Cu8868n%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu662fk%5Cu4e2an%5Cuff1b%5Cu5982%5Cu679c%5Cu4e0d%5Cu53ef%5Cu4ee5%5Cuff0c%5Cu8f93%5Cu51fa0%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A14%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF633B%22%2C%22title%22%3A%22A%20Trivial%20Problem%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22A%20Trivial%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>A Trivial Problem</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+圣塔先生要求世界上所有伟大的程序员解决一个小问题。他给了他们一个整数m，并要求正整数n的个数当n的阶乘恰好以m个0结束。您是能够解决这个问题的优秀程序员之一吗?
+### 输入格式：
+输入的唯一一行包含一个整数m (1<=m<=100000)代表阶乘中所需的尾随零的数量。
+### 输出格式
+如果可以，输出一个整数k代表n的数量，接下来是k个n；如果不可以，输出0。</div>
+<h2>题目描述</h2>
+<div>Mr. Santa asks all the great programmers of the world to solve a trivial problem. He gives them an integer $ m $ and asks for the number of positive integers $ n $ , such that the factorial of $ n $ ends with exactly $ m $ zeroes. Are you among those great programmers who can solve this problem?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line of input contains an integer $ m $ ( $ 1<=m<=100000 $ ) — the required number of trailing zeroes in factorial.</div>
+<h3>输出格式</h3>
+<br />
+<div>First print $ k $ — the number of values of $ n $ such that the factorial of $ n $ ends with $ m $ zeroes. Then print these $ k $ integers in increasing order.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+5 6 7 8 9 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0</code></pre>
+<h2>说明</h2>
+<div>The factorial of $ n $ is equal to the product of all integers from $ 1 $ to $ n $ inclusive, that is $ n!=1·2·3·...·n $ .
+In the first sample, $ 5!=120 $ , $ 6!=720 $ , $ 7!=5040 $ , $ 8!=40320 $ and $ 9!=362880 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

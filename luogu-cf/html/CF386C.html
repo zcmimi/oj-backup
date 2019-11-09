@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Diverse Substrings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393550:cXdJSsnHxhocaxu9t8im36yWcDgKpJfIJ4NLKcOO3XI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22String%20diversity%20is%20the%20number%20of%20symbols%20that%20occur%20in%20the%20string%20at%20least%20once.%20Diversity%20of%20%24%20s%20%24%20will%20be%20denoted%20by%20%24%20d%28s%29%20%24%20.%20For%20example%20%2C%20%24%20d%20%24%20%28%5C%22aaa%5C%22%29%3D1%2C%20%24%20d%20%24%20%28%5C%22abacaba%5C%22%29%3D3.%5Cn%5CnGiven%20a%20string%20%24%20s%20%24%20%2C%20consisting%20of%20lowercase%20Latin%20letters.%20Consider%20all%20its%20substrings.%20Obviously%2C%20any%20substring%20diversity%20is%20a%20number%20from%201%20to%20%24%20d%28s%29%20%24%20.%20Find%20statistics%20about%20substrings%20diversity%3A%20for%20each%20%24%20k%20%24%20from%201%20to%20%24%20d%28s%29%20%24%20%2C%20find%20how%20many%20substrings%20of%20%24%20s%20%24%20has%20a%20diversity%20of%20exactly%20%24%20k%20%24%20.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20a%20single%20line%20containing%20%24%20s%20%24%20.%20It%20contains%20only%20lowercase%20Latin%20letters%2C%20the%20length%20of%20%24%20s%20%24%20is%20from%201%20to%20%24%203%5Cu00b710%5E%7B5%7D%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20to%20the%20first%20line%20the%20value%20%24%20d%28s%29%20%24%20.%20Print%20sequence%20%24%20t_%7B1%7D%2Ct_%7B2%7D%2C...%2Ct_%7Bd%28s%29%7D%20%24%20to%20the%20following%20lines%2C%20where%20%24%20t_%7Bi%7D%20%24%20is%20the%20number%20of%20substrings%20of%20%24%20s%20%24%20having%20diversity%20of%20exactly%20%24%20i%20%24%20.%22%2C%22samples%22%3A%5B%5B%22abca%5Cn%22%2C%223%5Cn4%5Cn3%5Cn3%5Cn%22%5D%2C%5B%22aabacaabbad%5Cn%22%2C%224%5Cn14%5Cn19%5Cn28%5Cn5%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20example.%5Cn%5CnWe%20denote%20by%20%24%20s%28i%2Cj%29%20%24%20a%20substring%20of%20%5C%22abca%5C%22%20with%20the%20indices%20in%20the%20segment%20%24%20%5Bi%2Cj%5D%20%24%20.%5Cn%5Cn-%20%24%20s%281%2C1%29%3D%20%24%20%5C%22a%5C%22%2C%20%24%20d%28%20%24%20%5C%22a%5C%22%20%24%20%29%3D1%20%24%5Cn-%20%24%20s%282%2C2%29%3D%20%24%20%5C%22b%5C%22%2C%20%24%20d%28%20%24%20%5C%22b%5C%22%20%24%20%29%3D1%20%24%5Cn-%20%24%20s%283%2C3%29%3D%20%24%20%5C%22c%5C%22%2C%20%24%20d%28%20%24%20%5C%22c%5C%22%20%24%20%29%3D1%20%24%5Cn-%20%24%20s%284%2C4%29%3D%20%24%20%5C%22a%5C%22%2C%20%24%20d%28%20%24%20%5C%22a%5C%22%20%24%20%29%3D1%20%24%5Cn-%20%24%20s%281%2C2%29%3D%20%24%20%5C%22ab%5C%22%2C%20%24%20d%28%20%24%20%5C%22ab%5C%22%20%24%20%29%3D2%20%24%5Cn-%20%24%20s%282%2C3%29%3D%20%24%20%5C%22bc%5C%22%2C%20%24%20d%28%20%24%20%5C%22bc%5C%22%20%24%20%29%3D2%20%24%5Cn-%20%24%20s%283%2C4%29%3D%20%24%20%5C%22ca%5C%22%2C%20%24%20d%28%20%24%20%5C%22ca%5C%22%20%24%20%29%3D2%20%24%5Cn-%20%24%20s%281%2C3%29%3D%20%24%20%5C%22abc%5C%22%2C%20%24%20d%28%20%24%20%5C%22abc%5C%22%20%24%20%29%3D3%20%24%5Cn-%20%24%20s%282%2C4%29%3D%20%24%20%5C%22bca%5C%22%2C%20%24%20d%28%20%24%20%5C%22bca%5C%22%20%24%20%29%3D3%20%24%5Cn-%20%24%20s%281%2C4%29%3D%20%24%20%5C%22abca%5C%22%2C%20%24%20d%28%20%24%20%5C%22abca%5C%22%20%24%20%29%3D3%20%24%5Cn%5CnTotal%20number%20of%20substring%20with%20diversity%201%20is%204%2C%20with%20diversity%202%20equals%203%2C%203%20diversity%20is%203.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F386%5C%2FC%22%2C%22id%22%3A%22386C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF386C%22%2C%22title%22%3A%22Diverse%20Substrings%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Diverse%20Substrings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Diverse Substrings</h1>
+<h2>题目描述</h2>
+<div>String diversity is the number of symbols that occur in the string at least once. Diversity of $ s $ will be denoted by $ d(s) $ . For example , $ d $ ("aaa")=1, $ d $ ("abacaba")=3.
+Given a string $ s $ , consisting of lowercase Latin letters. Consider all its substrings. Obviously, any substring diversity is a number from 1 to $ d(s) $ . Find statistics about substrings diversity: for each $ k $ from 1 to $ d(s) $ , find how many substrings of $ s $ has a diversity of exactly $ k $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of a single line containing $ s $ . It contains only lowercase Latin letters, the length of $ s $ is from 1 to $ 3·10^{5} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print to the first line the value $ d(s) $ . Print sequence $ t_{1},t_{2},...,t_{d(s)} $ to the following lines, where $ t_{i} $ is the number of substrings of $ s $ having diversity of exactly $ i $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>abca
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+4
+3
+3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>aabacaabbad
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4
+14
+19
+28
+5
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first example.
+We denote by $ s(i,j) $ a substring of "abca" with the indices in the segment $ [i,j] $ .
+- $ s(1,1)= $ "a", $ d( $ "a" $ )=1 $
+- $ s(2,2)= $ "b", $ d( $ "b" $ )=1 $
+- $ s(3,3)= $ "c", $ d( $ "c" $ )=1 $
+- $ s(4,4)= $ "a", $ d( $ "a" $ )=1 $
+- $ s(1,2)= $ "ab", $ d( $ "ab" $ )=2 $
+- $ s(2,3)= $ "bc", $ d( $ "bc" $ )=2 $
+- $ s(3,4)= $ "ca", $ d( $ "ca" $ )=2 $
+- $ s(1,3)= $ "abc", $ d( $ "abc" $ )=3 $
+- $ s(2,4)= $ "bca", $ d( $ "bca" $ )=3 $
+- $ s(1,4)= $ "abca", $ d( $ "abca" $ )=3 $
+Total number of substring with diversity 1 is 4, with diversity 2 equals 3, 3 diversity is 3.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

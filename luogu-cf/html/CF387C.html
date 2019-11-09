@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>George and Number - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393563:z2ffI+KttQz1zugwBDuzLv6HQ40eso5uZOeqe6OPuh4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22George%20is%20a%20cat%2C%20so%20he%20really%20likes%20to%20play.%20Most%20of%20all%20he%20likes%20to%20play%20with%20his%20array%20of%20positive%20integers%20%24%20b%20%24%20.%20During%20the%20game%2C%20George%20modifies%20the%20array%20by%20using%20special%20changes.%20Let%27s%20mark%20George%27s%20current%20array%20as%20%24%20b_%7B1%7D%2Cb_%7B2%7D%2C...%2Cb_%7B%7Cb%7C%7D%20%24%20%28record%20%24%20%7Cb%7C%20%24%20denotes%20the%20current%20length%20of%20the%20array%29.%20Then%20one%20change%20is%20a%20sequence%20of%20actions%3A%5Cn%5Cn-%20Choose%20two%20distinct%20indexes%20%24%20i%20%24%20and%20%24%20j%20%24%20%24%20%281%3C%3Di%2Cj%3C%3D%7Cb%7C%3B%5Cu00a0i%5Cu2260j%29%20%24%20%2C%20such%20that%20%24%20b_%7Bi%7D%3E%3Db_%7Bj%7D%20%24%20.%5Cn-%20Get%20number%20%24%20v%3Dconcat%28b_%7Bi%7D%2Cb_%7Bj%7D%29%20%24%20%2C%20where%20%24%20concat%28x%2Cy%29%20%24%20is%20a%20number%20obtained%20by%20adding%20number%20%24%20y%20%24%20to%20the%20end%20of%20the%20decimal%20record%20of%20number%20%24%20x%20%24%20.%20For%20example%2C%20%24%20concat%28500%2C10%29%3D50010%20%24%20%2C%20%24%20concat%282%2C2%29%3D22%20%24%20.%5Cn-%20Add%20number%20%24%20v%20%24%20to%20the%20end%20of%20the%20array.%20The%20length%20of%20the%20array%20will%20increase%20by%20one.%5Cn-%20Remove%20from%20the%20array%20numbers%20with%20indexes%20%24%20i%20%24%20and%20%24%20j%20%24%20.%20The%20length%20of%20the%20array%20will%20decrease%20by%20two%2C%20and%20elements%20of%20the%20array%20will%20become%20re-numbered%20from%20%24%201%20%24%20to%20current%20length%20of%20the%20array.%5Cn%5CnGeorge%20played%20for%20a%20long%20time%20with%20his%20array%20%24%20b%20%24%20and%20received%20from%20array%20%24%20b%20%24%20an%20array%20consisting%20of%20exactly%20one%20number%20%24%20p%20%24%20.%20Now%20George%20wants%20to%20know%3A%20what%20is%20the%20maximum%20number%20of%20elements%20array%20%24%20b%20%24%20could%20contain%20originally%3F%20Help%20him%20find%20this%20number.%20Note%20that%20originally%20the%20array%20could%20contain%20only%20positive%20integers.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20p%20%24%20%28%20%24%201%3C%3Dp%26lt%3B10%5E%7B100000%7D%20%24%20%29.%20It%20is%20guaranteed%20that%20number%20%24%20p%20%24%20doesn%27t%20contain%20any%20leading%20zeroes.%22%2C%22outputFormat%22%3A%22Print%20an%20integer%20%5Cu2014%20the%20maximum%20number%20of%20elements%20array%20%24%20b%20%24%20could%20contain%20originally.%22%2C%22samples%22%3A%5B%5B%229555%5Cn%22%2C%224%22%5D%2C%5B%2210000000005%5Cn%22%2C%222%22%5D%2C%5B%22800101%5Cn%22%2C%223%22%5D%2C%5B%2245%5Cn%22%2C%221%22%5D%2C%5B%221000000000000001223300003342220044555%5Cn%22%2C%2217%22%5D%2C%5B%2219992000%5Cn%22%2C%221%22%5D%2C%5B%22310200%5Cn%22%2C%222%22%5D%5D%2C%22hint%22%3A%22Let%27s%20consider%20the%20test%20examples%3A%5Cn%5Cn-%20Originally%20array%20%24%20b%20%24%20can%20be%20equal%20to%20%24%20%7B5%2C9%2C5%2C5%7D%20%24%20.%20The%20sequence%20of%20George%27s%20changes%20could%20have%20been%3A%20%24%20%7B5%2C9%2C5%2C5%7D%5Cu2192%7B5%2C5%2C95%7D%5Cu2192%7B95%2C55%7D%5Cu2192%7B9555%7D%20%24%20.%5Cn-%20Originally%20array%20%24%20b%20%24%20could%20be%20equal%20to%20%24%20%7B1000000000%2C5%7D%20%24%20.%20Please%20note%20that%20the%20array%20%24%20b%20%24%20cannot%20contain%20zeros.%5Cn-%20Originally%20array%20%24%20b%20%24%20could%20be%20equal%20to%20%24%20%7B800%2C10%2C1%7D%20%24%20.%5Cn-%20Originally%20array%20%24%20b%20%24%20could%20be%20equal%20to%20%24%20%7B45%7D%20%24%20.%20It%20cannot%20be%20equal%20to%20%24%20%7B4%2C5%7D%20%24%20%2C%20because%20George%20can%20get%20only%20array%20%24%20%7B54%7D%20%24%20from%20this%20array%20in%20one%20operation.%5Cn%5CnNote%20that%20the%20numbers%20can%20be%20very%20large.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F387%5C%2FC%22%2C%22id%22%3A%22387C%22%7D%2C%22translation%22%3A%22%5Cu4e54%5Cu6cbb%5Cu559c%5Cu6b22%5Cu5bf9%5Cu4ed6%5Cu7684%5Cu6570%5Cu5217%20b%20%5Cu8fdb%5Cu884c%5Cu64cd%5Cu4f5c%5Cu3002%20%5Cu6211%5Cu4eec%5Cu5c06%5Cu4e54%5Cu6cbb%5Cu7684%5Cu6570%5Cu5217%5Cu8868%5Cu793a%5Cu6210%20b1%2C%5Cu2009b2%2C%5Cu2009...%2C%5Cu2009b%7Cb%7C%20%28%5Cu5176%5Cu4e2d%20%7Cb%7C%20%5Cu8868%5Cu793a%5Cu6570%5Cu5217%20b%20%5Cu7684%5Cu957f%5Cu5ea6%29%5Cu3002%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu5206%5Cu4e3a%5Cu4ee5%5Cu4e0b%5Cu51e0%5Cu4e2a%5Cu6b65%5Cu9aa4%3A%5Cr%5Cn%5Cr%5Cn%5Cu9009%5Cu62e9%5Cu4e24%5Cu4e2a%5Cu4e0d%5Cu540c%5Cu7684%5Cu6570%20i%20%5Cu548c%20j%20%281%5Cu2009%5Cu2264%5Cu2009i%2C%5Cu2009j%5Cu2009%5Cu2264%5Cu2009%7Cb%7C%3B%20i%5Cu2009%5Cu2260%5Cu2009j%29%5Cuff0c%5Cu6ee1%5Cu8db3%20bi%5Cu2009%5Cu2265%5Cu2009bj.%5Cr%5Cn%5Cu5b9a%5Cu4e49%5Cu6570%20v%5Cu2009%3D%5Cu2009concat%28bi%2C%5Cu2009bj%29%5Cuff0c%5Cu5176%5Cu4e2d%20concat%28x%2C%5Cu2009y%29%20%5Cu662f%5Cu5c06%5Cu6570%20y%20%5Cu8fde%5Cu63a5%5Cu5728%5Cu6570%20x%5Cu540e%5Cu9762%5Cu5f62%5Cu6210%5Cu7684%5Cu65b0%5Cu6570%5Cu3002%5Cu4e3e%5Cu4e2a%5Cu4f8b%5Cu5b50%5Cuff0cconcat%28500%2C%5Cu200910%29%5Cu2009%3D%5Cu200950010%2C%20concat%282%2C%5Cu20092%29%5Cu2009%3D%5Cu200922%5Cu3002%5Cr%5Cn%5Cu5c06%5Cu6570%20v%20%5Cu52a0%5Cu5230%5Cu6570%5Cu5217%5Cu7684%5Cu672b%5Cu5c3e%5Cu3002%5Cu6570%5Cu5217%5Cu957f%5Cu5ea6%5Cu589e%5Cu52a01%5Cu3002%5Cr%5Cn%5Cu5c06%5Cu6570%5Cu5217%5Cu4e2d%5Cu7b2c%20i%20%5Cu9879%5Cu548c%5Cu7b2c%20j%20%5Cu9879%5Cu5220%5Cu9664%5Cu3002%5Cu6570%5Cu5217%5Cu957f%5Cu5ea6%5Cu7f29%5Cu77ed%202%20%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6570%5Cu5217%5Cu4f1a%5Cu88ab%5Cu91cd%5Cu65b0%5Cu7f16%5Cu53f7%5Cu4e3a%201%20%5Cu5230%5Cu5f53%5Cu524d%5Cu6570%5Cu5217%5Cu957f%5Cu5ea6%5Cu3002%5Cr%5Cn%5Cu4e54%5Cu6cbb%5Cu8fdb%5Cu884c%5Cu4e86%5Cu592a%5Cu591a%5Cu7684%5Cu64cd%5Cu4f5c%5Cu4f7f%5Cu5f97%5Cu6570%5Cu5217%20b%20%5Cu4f7f%5Cu5f97%5Cu6570%5Cu5217%5Cu6700%5Cu7ec8%5Cu53ea%5Cu5b58%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6570%20p%5Cu3002%5Cu73b0%5Cu5728%5Cu4e54%5Cu6cbb%5Cu60f3%5Cu77e5%5Cu9053%5Cuff0c%5Cu6570%5Cu5217%20b%20%5Cu6700%5Cu521d%5Cu6700%5Cu591a%5Cu80fd%5Cu6709%5Cu51e0%5Cu4e2a%5Cu6570%5Cuff1f%5Cu5e2e%5Cu4ed6%5Cu6c42%5Cu51fa%5Cu7b54%5Cu6848%5Cu3002%5Cu6ce8%5Cu610f%5Cu6570%5Cu5217%5Cu6700%5Cu521d%5Cu53ea%5Cu80fd%5Cu5305%5Cu542b%5Cu6b63%5Cu6574%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5CnInput%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20p%20%281%5Cu2009%5Cu2264%5Cu2009p%5Cu2009%3C%5Cu200910100000%29%5Cu3002%20%5Cu4fdd%5Cu8bc1%5Cu6570%5Cu5b57%20p%20%5Cu6700%5Cu9ad8%5Cu4f4d%5Cu4e0d%5Cu4e3a0%5Cu3002%5Cr%5Cn%5Cr%5CnOutput%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%5Cu2014%20%5Cu6570%5Cu5217%20b%20%5Cu6700%5Cu521d%5Cu7684%5Cu6700%5Cu957f%5Cu957f%5Cu5ea6%5Cu3002%5Cr%5Cn%5Cr%5CnExample%5Cr%5CnInput%5Cr%5Cn9555%5Cr%5CnOutput%5Cr%5Cn4%5Cr%5CnInput%5Cr%5Cn10000000005%5Cr%5CnOutput%5Cr%5Cn2%5Cr%5CnInput%5Cr%5Cn800101%5Cr%5CnOutput%5Cr%5Cn3%5Cr%5CnInput%5Cr%5Cn45%5Cr%5CnOutput%5Cr%5Cn1%5Cr%5CnInput%5Cr%5Cn1000000000000001223300003342220044555%5Cr%5CnOutput%5Cr%5Cn17%5Cr%5CnInput%5Cr%5Cn19992000%5Cr%5CnOutput%5Cr%5Cn1%5Cr%5CnInput%5Cr%5Cn310200%5Cr%5CnOutput%5Cr%5Cn2%5Cr%5CnNote%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu6765%5Cu770b%5Cu6837%5Cu4f8b%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu6570%5Cu5217%20b%20%5Cu6700%5Cu521d%5Cu53ef%5Cu4ee5%5Cu662f%20%7B5%2C%5Cu20099%2C%5Cu20095%2C%5Cu20095%7D%5Cu3002%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu5217%5Cu7684%5Cu53d8%5Cu5316%5Cu53ef%5Cu4ee5%5Cu662f%5Cuff1a%7B5%2C%5Cu20099%2C%5Cu20095%2C%5Cu20095%7D%5Cu2009%5Cu2192%5Cu2009%7B5%2C%5Cu20095%2C%5Cu200995%7D%5Cu2009%5Cu2192%5Cu2009%7B95%2C%5Cu200955%7D%5Cu2009%5Cu2192%5Cu2009%7B9555%7D.%5Cr%5Cn%5Cu6570%5Cu5217%20b%20%5Cu6700%5Cu521d%5Cu53ef%5Cu4ee5%5Cu662f%20%7B1000000000%2C%5Cu20095%7D%5Cu3002%5Cu6ce8%5Cu610f%5Cu6570%5Cu5217%20b%20%5Cu4e0d%5Cu80fd%5Cu5305%5Cu542b0%5Cu3002%5Cr%5Cn%5Cu6570%5Cu5217%20b%20%5Cu6700%5Cu521d%5Cu53ef%5Cu4ee5%5Cu662f%20%7B800%2C%5Cu200910%2C%5Cu20091%7D.%5Cr%5Cn%5Cu6570%5Cu5217%20b%20%5Cu6700%5Cu521d%5Cu53ef%5Cu4ee5%5Cu662f%20%7B45%7D%5Cu3002%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu5217%5Cu6700%5Cu521d%5Cu4e0d%5Cu80fd%5Cu662f%20%7B4%2C%5Cu20095%7D%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu4e54%5Cu6cbb%5Cu53ea%5Cu80fd%5Cu5c06%5Cu4ed6%5Cu53d8%5Cu6210%20%7B54%7D%5Cu3002%5Cr%5Cn%5Cu6ce8%5Cu610f%5Cu8fd9%5Cu4e9b%5Cu6570%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu5f88%5Cu5927%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF387C%22%2C%22title%22%3A%22George%20and%20Number%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22George%20and%20Number%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>George and Number</h1>
+<h2>题意翻译</h2>
+<div>乔治喜欢对他的数列 b 进行操作。 我们将乔治的数列表示成 b1, b2, ..., b|b| (其中 |b| 表示数列 b 的长度)。一次操作分为以下几个步骤:
+选择两个不同的数 i 和 j (1 ≤ i, j ≤ |b|; i ≠ j)，满足 bi ≥ bj.
+定义数 v = concat(bi, bj)，其中 concat(x, y) 是将数 y 连接在数 x后面形成的新数。举个例子，concat(500, 10) = 50010, concat(2, 2) = 22。
+将数 v 加到数列的末尾。数列长度增加1。
+将数列中第 i 项和第 j 项删除。数列长度缩短 2 ，并且数列会被重新编号为 1 到当前数列长度。
+乔治进行了太多的操作使得数列 b 使得数列最终只存在一个数 p。现在乔治想知道，数列 b 最初最多能有几个数？帮他求出答案。注意数列最初只能包含正整数。
+Input
+第一行包含一个整数 p (1 ≤ p < 10100000)。 保证数字 p 最高位不为0。
+Output
+输出一个整数 — 数列 b 最初的最长长度。
+Example
+Input
+9555
+Output
+4
+Input
+10000000005
+Output
+2
+Input
+800101
+Output
+3
+Input
+45
+Output
+1
+Input
+1000000000000001223300003342220044555
+Output
+17
+Input
+19992000
+Output
+1
+Input
+310200
+Output
+2
+Note
+我们来看样例：
+数列 b 最初可以是 {5, 9, 5, 5}。这个数列的变化可以是：{5, 9, 5, 5} → {5, 5, 95} → {95, 55} → {9555}.
+数列 b 最初可以是 {1000000000, 5}。注意数列 b 不能包含0。
+数列 b 最初可以是 {800, 10, 1}.
+数列 b 最初可以是 {45}。这个数列最初不能是 {4, 5}，因为乔治只能将他变成 {54}。
+注意这些数可能会很大。</div>
+<h2>题目描述</h2>
+<div>George is a cat, so he really likes to play. Most of all he likes to play with his array of positive integers $ b $ . During the game, George modifies the array by using special changes. Let's mark George's current array as $ b_{1},b_{2},...,b_{|b|} $ (record $ |b| $ denotes the current length of the array). Then one change is a sequence of actions:
+- Choose two distinct indexes $ i $ and $ j $ $ (1<=i,j<=|b|; i≠j) $ , such that $ b_{i}>=b_{j} $ .
+- Get number $ v=concat(b_{i},b_{j}) $ , where $ concat(x,y) $ is a number obtained by adding number $ y $ to the end of the decimal record of number $ x $ . For example, $ concat(500,10)=50010 $ , $ concat(2,2)=22 $ .
+- Add number $ v $ to the end of the array. The length of the array will increase by one.
+- Remove from the array numbers with indexes $ i $ and $ j $ . The length of the array will decrease by two, and elements of the array will become re-numbered from $ 1 $ to current length of the array.
+George played for a long time with his array $ b $ and received from array $ b $ an array consisting of exactly one number $ p $ . Now George wants to know: what is the maximum number of elements array $ b $ could contain originally? Help him find this number. Note that originally the array could contain only positive integers.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ p $ ( $ 1<=p&lt;10^{100000} $ ). It is guaranteed that number $ p $ doesn't contain any leading zeroes.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print an integer — the maximum number of elements array $ b $ could contain originally.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>9555
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>10000000005
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>800101
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>45
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>1</code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>1000000000000001223300003342220044555
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>17</code></pre>
+<h3>输入样例 #6</h3>
+<pre><code>19992000
+</code></pre>
+<h3>输出样例 #6</h3>
+<pre><code>1</code></pre>
+<h3>输入样例 #7</h3>
+<pre><code>310200
+</code></pre>
+<h3>输出样例 #7</h3>
+<pre><code>2</code></pre>
+<h2>说明</h2>
+<div>Let's consider the test examples:
+- Originally array $ b $ can be equal to $ {5,9,5,5} $ . The sequence of George's changes could have been: $ {5,9,5,5}→{5,5,95}→{95,55}→{9555} $ .
+- Originally array $ b $ could be equal to $ {1000000000,5} $ . Please note that the array $ b $ cannot contain zeros.
+- Originally array $ b $ could be equal to $ {800,10,1} $ .
+- Originally array $ b $ could be equal to $ {45} $ . It cannot be equal to $ {4,5} $ , because George can get only array $ {54} $ from this array in one operation.
+Note that the numbers can be very large.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Levko and Array Recovery - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393219:4MZjZS2IOlaHrUI+13m+tKcEagpKI8YcGJ4i9r7HYLA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Levko%20loves%20array%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%5C%5C%20%2Ca_%7Bn%7D%20%24%20%2C%20consisting%20of%20integers%2C%20very%20much.%20That%20is%20why%20Levko%20is%20playing%20with%20array%20%24%20a%20%24%20%2C%20performing%20all%20sorts%20of%20operations%20with%20it.%20Each%20operation%20Levko%20performs%20is%20of%20one%20of%20two%20types%3A%5Cn%5Cn1.%20Increase%20all%20elements%20from%20%24%20l_%7Bi%7D%20%24%20to%20%24%20r_%7Bi%7D%20%24%20by%20%24%20d_%7Bi%7D%20%24%20.%20In%20other%20words%2C%20perform%20assignments%20%24%20a_%7Bj%7D%3Da_%7Bj%7D%2Bd_%7Bi%7D%20%24%20for%20all%20%24%20j%20%24%20that%20meet%20the%20inequation%20%24%20l_%7Bi%7D%3C%3Dj%3C%3Dr_%7Bi%7D%20%24%20.%5Cn2.%20Find%20the%20maximum%20of%20elements%20from%20%24%20l_%7Bi%7D%20%24%20to%20%24%20r_%7Bi%7D%20%24%20.%20That%20is%2C%20calculate%20the%20value%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF360A%5C%2Fb8abcd9e917cd04eb743a84b9d9be23896e61fc8.png%29.%5Cn%5CnSadly%2C%20Levko%20has%20recently%20lost%20his%20array.%20Fortunately%2C%20Levko%20has%20records%20of%20all%20operations%20he%20has%20performed%20on%20array%20%24%20a%20%24%20.%20Help%20Levko%2C%20given%20the%20operation%20records%2C%20find%20at%20least%20one%20suitable%20array.%20The%20results%20of%20all%20operations%20for%20the%20given%20array%20must%20coincide%20with%20the%20record%20results.%20Levko%20clearly%20remembers%20that%20all%20numbers%20in%20his%20array%20didn%27t%20exceed%20%24%2010%5E%7B9%7D%20%24%20in%20their%20absolute%20value%2C%20so%20he%20asks%20you%20to%20find%20such%20an%20array.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D5000%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20array%20and%20the%20number%20of%20operations%20in%20Levko%27s%20records%2C%20correspondingly.%5Cn%5CnNext%20%24%20m%20%24%20lines%20describe%20the%20operations%2C%20the%20%24%20i%20%24%20-th%20line%20describes%20the%20%24%20i%20%24%20-th%20operation.%20The%20first%20integer%20in%20the%20%24%20i%20%24%20-th%20line%20is%20integer%20%24%20t_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dt_%7Bi%7D%3C%3D2%20%24%20%29%20that%20describes%20the%20operation%20type.%20If%20%24%20t_%7Bi%7D%3D1%20%24%20%2C%20then%20it%20is%20followed%20by%20three%20integers%20%24%20l_%7Bi%7D%20%24%20%2C%20%24%20r_%7Bi%7D%20%24%20and%20%24%20d_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dl_%7Bi%7D%3C%3Dr_%7Bi%7D%3C%3Dn%20%24%20%2C%20%24%20-10%5E%7B4%7D%3C%3Dd_%7Bi%7D%3C%3D10%5E%7B4%7D%20%24%20%29%20%5Cu2014%20the%20description%20of%20the%20operation%20of%20the%20first%20type.%20If%20%24%20t_%7Bi%7D%3D2%20%24%20%2C%20then%20it%20is%20followed%20by%20three%20integers%20%24%20l_%7Bi%7D%20%24%20%2C%20%24%20r_%7Bi%7D%20%24%20and%20%24%20m_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dl_%7Bi%7D%3C%3Dr_%7Bi%7D%3C%3Dn%20%24%20%2C%20%24%20-5%5Cu00b710%5E%7B7%7D%3C%3Dm_%7Bi%7D%3C%3D5%5Cu00b710%5E%7B7%7D%20%24%20%29%20%5Cu2014%20the%20description%20of%20the%20operation%20of%20the%20second%20type.%5Cn%5CnThe%20operations%20are%20given%20in%20the%20order%20Levko%20performed%20them%20on%20his%20array.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20%5C%22YES%5C%22%20%28without%20the%20quotes%29%2C%20if%20the%20solution%20exists%20and%20%5C%22NO%5C%22%20%28without%20the%20quotes%29%20otherwise.%5Cn%5CnIf%20the%20solution%20exists%2C%20then%20on%20the%20second%20line%20print%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%5C%5C%20%2Ca_%7Bn%7D%20%24%20%24%20%28%7Ca_%7Bi%7D%7C%3C%3D10%5E%7B9%7D%29%20%24%20%5Cu2014%20the%20recovered%20array.%22%2C%22samples%22%3A%5B%5B%224%205%5Cn1%202%203%201%5Cn2%201%202%208%5Cn2%203%204%207%5Cn1%201%203%203%5Cn2%203%204%208%5Cn%22%2C%22YES%5Cn4%207%204%207%22%5D%2C%5B%224%205%5Cn1%202%203%201%5Cn2%201%202%208%5Cn2%203%204%207%5Cn1%201%203%203%5Cn2%203%204%2013%5Cn%22%2C%22NO%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F360%5C%2FA%22%2C%22id%22%3A%22360A%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF360A%22%2C%22title%22%3A%22Levko%20and%20Array%20Recovery%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Levko%20and%20Array%20Recovery%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Levko and Array Recovery</h1>
+<h2>题目描述</h2>
+<div>Levko loves array $ a_{1},a_{2},...\ ,a_{n} $ , consisting of integers, very much. That is why Levko is playing with array $ a $ , performing all sorts of operations with it. Each operation Levko performs is of one of two types:
+1. Increase all elements from $ l_{i} $ to $ r_{i} $ by $ d_{i} $ . In other words, perform assignments $ a_{j}=a_{j}+d_{i} $ for all $ j $ that meet the inequation $ l_{i}<=j<=r_{i} $ .
+2. Find the maximum of elements from $ l_{i} $ to $ r_{i} $ . That is, calculate the value ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF360A/b8abcd9e917cd04eb743a84b9d9be23896e61fc8.png).
+Sadly, Levko has recently lost his array. Fortunately, Levko has records of all operations he has performed on array $ a $ . Help Levko, given the operation records, find at least one suitable array. The results of all operations for the given array must coincide with the record results. Levko clearly remembers that all numbers in his array didn't exceed $ 10^{9} $ in their absolute value, so he asks you to find such an array.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 1<=n,m<=5000 $ ) — the size of the array and the number of operations in Levko's records, correspondingly.
+Next $ m $ lines describe the operations, the $ i $ -th line describes the $ i $ -th operation. The first integer in the $ i $ -th line is integer $ t_{i} $ ( $ 1<=t_{i}<=2 $ ) that describes the operation type. If $ t_{i}=1 $ , then it is followed by three integers $ l_{i} $ , $ r_{i} $ and $ d_{i} $ ( $ 1<=l_{i}<=r_{i}<=n $ , $ -10^{4}<=d_{i}<=10^{4} $ ) — the description of the operation of the first type. If $ t_{i}=2 $ , then it is followed by three integers $ l_{i} $ , $ r_{i} $ and $ m_{i} $ ( $ 1<=l_{i}<=r_{i}<=n $ , $ -5·10^{7}<=m_{i}<=5·10^{7} $ ) — the description of the operation of the second type.
+The operations are given in the order Levko performed them on his array.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print "YES" (without the quotes), if the solution exists and "NO" (without the quotes) otherwise.
+If the solution exists, then on the second line print $ n $ integers $ a_{1},a_{2},...\ ,a_{n} $ $ (|a_{i}|<=10^{9}) $ — the recovered array.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+1 2 3 1
+2 1 2 8
+2 3 4 7
+1 1 3 3
+2 3 4 8
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES
+4 7 4 7</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 5
+1 2 3 1
+2 1 2 8
+2 3 4 7
+1 1 3 3
+2 3 4 13
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>NO
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

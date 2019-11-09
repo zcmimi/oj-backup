@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Maximum in Table - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394883:Pj/wYX7KwrHCUI28dad562iunWYe+WPx5drAeK+tnZQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22An%20%24%20n%5Cu00d7n%20%24%20table%20%24%20a%20%24%20is%20defined%20as%20follows%3A%5Cn%5Cn-%20The%20first%20row%20and%20the%20first%20column%20contain%20ones%2C%20that%20is%3A%20%24%20a_%7Bi%2C1%7D%3Da_%7B1%2Ci%7D%3D1%20%24%20for%20all%20%24%20i%3D1%2C2%2C...%2Cn%20%24%20.%5Cn-%20Each%20of%20the%20remaining%20numbers%20in%20the%20table%20is%20equal%20to%20the%20sum%20of%20the%20number%20above%20it%20and%20the%20number%20to%20the%20left%20of%20it.%20In%20other%20words%2C%20the%20remaining%20elements%20are%20defined%20by%20the%20formula%20%24%20a_%7Bi%2Cj%7D%3Da_%7Bi-1%2Cj%7D%2Ba_%7Bi%2Cj-1%7D%20%24%20.%5Cn%5CnThese%20conditions%20define%20all%20the%20values%20in%20the%20table.%5Cn%5CnYou%20are%20given%20a%20number%20%24%20n%20%24%20.%20You%20need%20to%20determine%20the%20maximum%20value%20in%20the%20%24%20n%5Cu00d7n%20%24%20table%20defined%20by%20the%20rules%20above.%22%2C%22inputFormat%22%3A%22The%20only%20line%20of%20input%20contains%20a%20positive%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20and%20columns%20of%20the%20table.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20line%20containing%20a%20positive%20integer%20%24%20m%20%24%20%5Cu2014%20the%20maximum%20value%20in%20the%20table.%22%2C%22samples%22%3A%5B%5B%221%5Cn%22%2C%221%22%5D%2C%5B%225%5Cn%22%2C%2270%22%5D%5D%2C%22hint%22%3A%22In%20the%20second%20test%20the%20rows%20of%20the%20table%20look%20as%20follows%3A%5Cn%5Cn%20%24%20%7B1%2C1%2C1%2C1%2C1%7D%2C%20%24%20%20%20%24%20%7B1%2C2%2C3%2C4%2C5%7D%2C%20%24%20%20%20%24%20%7B1%2C3%2C6%2C10%2C15%7D%2C%20%24%20%20%20%24%20%7B1%2C4%2C10%2C20%2C35%7D%2C%20%24%20%20%20%24%20%7B1%2C5%2C15%2C35%2C70%7D.%20%24%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F509%5C%2FA%22%2C%22id%22%3A%22509A%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%20%24N%24%20%2A%20%24N%24%20%5Cu7684%5Cu77e9%5Cu9635%5Cuff0c%5Cu4ee4%20%24a_%7Bi%2Cj%7D%24%20%5Cu4e3a%5Cu77e9%5Cu9635%5Cu4e2d%5Cu7b2ci%5Cu884c%5Cu7b2cj%5Cu5217%5Cu7684%5Cu5143%5Cu7d20%5Cuff0c%5Cu5219%5Cu6709%5Cuff1a%5Cn1.%20%24a_%7Bk%2C1%7D%3Da_%7B1%2Ck%7D%3D1%281%5Cu2264k%5Cu2264N%29%24%20%5Cn2.%20%24a_%7Bi%2Cj%7D%3Da_%7Bi-1%2Cj%7D%2Ba_%7Bi%2Cj-1%7D%282%5Cu2264i%2Cj%5Cu2264N%29%24%20%5Cn%5Cu73b0%5Cu8bf7%5Cu6c42%5Cu51fa%5Cu8be5%5Cu77e9%5Cu9635%5Cu4e2d%5Cu6700%5Cu5927%5Cu5143%5Cu7d20%5Cu7684%5Cu503c%5Cu3002%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24N%28N%20%5Cu2264%2010%29%24%20%5Cu3002%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu4e0a%5Cu8ff0%5Cu7b54%5Cu6848%5Cu3002%22%2C%22tags%22%3A%5B3%2C12%2C54%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1003%2C%22totalAccepted%22%3A615%2C%22pid%22%3A%22CF509A%22%2C%22title%22%3A%22Maximum%20in%20Table%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A116305%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu4f1aUKE%5Cuff1f%5Cu6709%5Cu54ea%5Cu4f4ddalao%5Cu6765%5Cu5e2e%5Cu5e2e%5Cu5fd9%5Cuff1f%5Cu6551%5Cu6551%5Cu849f%5Cu84bb%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A10623%2C%22name%22%3A%22CF509A%20Maximum%20in%20Table%22%2C%22slug%22%3A%22CF509A%22%7D%7D%2C%7B%22id%22%3A54514%2C%22title%22%3A%22CF509A%20%5Cu8868%5Cu4e2d%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%22%2C%22forum%22%3A%7B%22id%22%3A10623%2C%22name%22%3A%22CF509A%20Maximum%20in%20Table%22%2C%22slug%22%3A%22CF509A%22%7D%7D%2C%7B%22id%22%3A53976%2C%22title%22%3A%22%5Cu6c34%5Cu9898%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10623%2C%22name%22%3A%22CF509A%20Maximum%20in%20Table%22%2C%22slug%22%3A%22CF509A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2639%22%2C%22title%22%3A%22%5BUSACO09OCT%5DBessie%5Cu7684%5Cu4f53%5Cu91cd%5Cu95ee%5Cu9898Bessie%27s%20We%5Cu2026%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2871%22%2C%22title%22%3A%22%5BUSACO07DEC%5D%5Cu624b%5Cu94feCharm%20Bracelet%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3009%22%2C%22title%22%3A%22%5BUSACO11JAN%5D%5Cu5229%5Cu6da6Profits%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF894A%22%2C%22title%22%3A%22QAQ%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF71A%22%2C%22title%22%3A%22Way%20Too%20Long%20Words%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Maximum%20in%20Table%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Maximum in Table</h1>
+<h2>题意翻译</h2>
+<div>给定一个 $N$ * $N$ 的矩阵，令 $a_{i,j}$ 为矩阵中第i行第j列的元素，则有：
+1. $a_{k,1}=a_{1,k}=1(1≤k≤N)$
+2. $a_{i,j}=a_{i-1,j}+a_{i,j-1}(2≤i,j≤N)$
+现请求出该矩阵中最大元素的值。
+输入格式：
+一行一个正整数 $N(N ≤ 10)$ 。
+输出格式：
+一行一个正整数表示上述答案。</div>
+<h2>题目描述</h2>
+<div>An $ n×n $ table $ a $ is defined as follows:
+- The first row and the first column contain ones, that is: $ a_{i,1}=a_{1,i}=1 $ for all $ i=1,2,...,n $ .
+- Each of the remaining numbers in the table is equal to the sum of the number above it and the number to the left of it. In other words, the remaining elements are defined by the formula $ a_{i,j}=a_{i-1,j}+a_{i,j-1} $ .
+These conditions define all the values in the table.
+You are given a number $ n $ . You need to determine the maximum value in the $ n×n $ table defined by the rules above.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line of input contains a positive integer $ n $ ( $ 1<=n<=10 $ ) — the number of rows and columns of the table.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single line containing a positive integer $ m $ — the maximum value in the table.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>70</code></pre>
+<h2>说明</h2>
+<div>In the second test the rows of the table look as follows:
+$ {1,1,1,1,1}, $ $ {1,2,3,4,5}, $ $ {1,3,6,10,15}, $ $ {1,4,10,20,35}, $ $ {1,5,15,35,70}. $</div>
+</article>
+</div>
+</div>
+</body>
+</html>

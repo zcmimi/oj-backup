@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Read Time - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393026:LomkYVch+qbrScXuW4X7YnAF6DabPJSmc8WHhAp1Xqo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Mad%20scientist%20Mike%20does%20not%20use%20slow%20hard%20disks.%20His%20modification%20of%20a%20hard%20drive%20has%20not%20one%2C%20but%20%24%20n%20%24%20different%20heads%20that%20can%20read%20data%20in%20parallel.%5Cn%5CnWhen%20viewed%20from%20the%20side%2C%20Mike%27s%20hard%20drive%20is%20an%20endless%20array%20of%20tracks.%20The%20tracks%20of%20the%20array%20are%20numbered%20from%20left%20to%20right%20with%20integers%2C%20starting%20with%201.%20In%20the%20initial%20state%20the%20%24%20i%20%24%20-th%20reading%20head%20is%20above%20the%20track%20number%20%24%20h_%7Bi%7D%20%24%20.%20For%20each%20of%20the%20reading%20heads%2C%20the%20hard%20drive%27s%20firmware%20can%20move%20the%20head%20exactly%20one%20track%20to%20the%20right%20or%20to%20the%20left%2C%20or%20leave%20it%20on%20the%20current%20track.%20During%20the%20operation%20each%20head%27s%20movement%20does%20not%20affect%20the%20movement%20of%20the%20other%20heads%3A%20the%20heads%20can%20change%20their%20relative%20order%3B%20there%20can%20be%20multiple%20reading%20heads%20above%20any%20of%20the%20tracks.%20A%20track%20is%20considered%20read%20if%20at%20least%20one%20head%20has%20visited%20this%20track.%20In%20particular%2C%20all%20of%20the%20tracks%20numbered%20%24%20h_%7B1%7D%20%24%20%2C%20%24%20h_%7B2%7D%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20h_%7Bn%7D%20%24%20have%20been%20read%20at%20the%20beginning%20of%20the%20operation.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF343C%5C%2F477411d635199d18d36c6b93ba130f0f6f88e682.png%29Mike%20needs%20to%20read%20the%20data%20on%20%24%20m%20%24%20distinct%20tracks%20with%20numbers%20%24%20p_%7B1%7D%20%24%20%2C%20%24%20p_%7B2%7D%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20p_%7Bm%7D%20%24%20.%20Determine%20the%20minimum%20time%20the%20hard%20drive%20firmware%20needs%20to%20move%20the%20heads%20and%20read%20all%20the%20given%20tracks.%20Note%20that%20an%20arbitrary%20number%20of%20other%20tracks%20can%20also%20be%20read.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20space-separated%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20disk%20heads%20and%20the%20number%20of%20tracks%20to%20read%2C%20accordingly.%20The%20second%20line%20contains%20%24%20n%20%24%20distinct%20integers%20%24%20h_%7Bi%7D%20%24%20in%20ascending%20order%20%28%20%24%201%3C%3Dh_%7Bi%7D%3C%3D10%5E%7B10%7D%20%24%20%2C%20%24%20h_%7Bi%7D%26lt%3Bh_%7Bi%2B1%7D%20%24%20%29%20%5Cu2014%20the%20initial%20positions%20of%20the%20heads.%20The%20third%20line%20contains%20%24%20m%20%24%20distinct%20integers%20%24%20p_%7Bi%7D%20%24%20in%20ascending%20order%20%28%20%24%201%3C%3Dp_%7Bi%7D%3C%3D10%5E%7B10%7D%20%24%20%2C%20%24%20p_%7Bi%7D%26lt%3Bp_%7Bi%2B1%7D%20%24%20%29%20-%20the%20numbers%20of%20tracks%20to%20read.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specifier%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20recommended%20to%20use%20the%20cin%2C%20cout%20streams%20or%20the%20%25I64d%20specifier.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20number%20%5Cu2014%20the%20minimum%20time%20required%2C%20in%20seconds%2C%20to%20read%20all%20the%20needed%20tracks.%22%2C%22samples%22%3A%5B%5B%223%204%5Cn2%205%206%5Cn1%203%206%208%5Cn%22%2C%222%5Cn%22%5D%2C%5B%223%203%5Cn1%202%203%5Cn1%202%203%5Cn%22%2C%220%5Cn%22%5D%2C%5B%221%202%5Cn165%5Cn142%20200%5Cn%22%2C%2281%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20test%20coincides%20with%20the%20figure.%20In%20this%20case%20the%20given%20tracks%20can%20be%20read%20in%202%20seconds%20in%20the%20following%20way%3A%5Cn%5Cn1.%20during%20the%20first%20second%20move%20the%201-st%20head%20to%20the%20left%20and%20let%20it%20stay%20there%3B%5Cn2.%20move%20the%20second%20head%20to%20the%20left%20twice%3B%5Cn3.%20move%20the%20third%20head%20to%20the%20right%20twice%20%28note%20that%20the%206-th%20track%20has%20already%20been%20read%20at%20the%20beginning%29.%5Cn%5CnOne%20cannot%20read%20the%20tracks%20in%201%20second%20as%20the%203-rd%20head%20is%20at%20distance%202%20from%20the%208-th%20track.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F343%5C%2FC%22%2C%22id%22%3A%22343C%22%7D%2C%22translation%22%3A%22%5Cu610f%5Cuff1a%5Cu7ed9%5Cu4f60n%5Cu4e2a%5Cu63a2%5Cu5934%5Cuff0cm%5Cu4e2a%5Cu8981%5Cu8bfb%5Cu7684%5Cu8f68%5Cu9053%5Cuff0cn%5Cu4e2a%5Cu63a2%5Cu5934%5Cu7684%5Cu521d%5Cu59cb%5Cu4f4d%5Cu7f6e%5Cu662fh1---hn%5Cuff08%5Cu4ece%5Cu5c0f%5Cu5230%5Cu5927%5Cuff09%5Cuff0cm%5Cu4e2a%5Cu8f68%5Cu9053%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu4e3ap1------pn%28%5Cu4e5f%5Cu662f%5Cu4ece%5Cu5c0f%5Cu5230%5Cu5927%29%5Cuff0c%5Cu63a2%5Cu5934%5Cu53ef%5Cu4ee5%5Cu5de6%5Cu79fb%5Cu6216%5Cu53f3%5Cu79fb%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu63a2%5Cu5934%5Cu53ef%5Cu4ee5%5Cu4e00%5Cu8d77%5Cu52a8%5Cuff0c%5Cu6bcf%5Cu79fb%5Cu52a8%5Cu4e00%5Cu683c%5Cu7684%5Cu65f6%5Cu95f4%5Cu4e3a1%5Cuff0c%5Cu63a2%5Cu5934%5Cu8bfb%5Cu8f68%5Cu9053%5Cu4e0d%5Cu8ba1%5Cu65f6%5Cu95f4%5Cuff0c%5Cu5982%5Cu679c%5Cu8981%5Cu8bfb%5Cu7684%5Cu8f68%5Cu9053%5Cu4e0a%5Cu5c31%5Cu6709%5Cu63a2%5Cu5934%5Cu90a3%5Cu4e48%5Cu5c31%5Cu4e0d%5Cu9700%5Cu8981%5Cu65f6%5Cu95f4%5Cuff0c%5Cu627e%5Cu6700%5Cu5c0f%5Cu7684%5Cu65f6%5Cu95f4%5Cu6765%5Cu8bfb%5Cu5b8c%5Cu8fd9%5Cu4e9b%5Cu8f68%5Cu9053%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A35%2C%22totalAccepted%22%3A12%2C%22pid%22%3A%22CF343C%22%2C%22title%22%3A%22Read%20Time%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Read%20Time%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Read Time</h1>
+<h2>题意翻译</h2>
+<div>意：给你n个探头，m个要读的轨道，n个探头的初始位置是h1---hn（从小到大），m个轨道的位置为p1------pn(也是从小到大)，探头可以左移或右移，这些探头可以一起动，每移动一格的时间为1，探头读轨道不计时间，如果要读的轨道上就有探头那么就不需要时间，找最小的时间来读完这些轨道。</div>
+<h2>题目描述</h2>
+<div>Mad scientist Mike does not use slow hard disks. His modification of a hard drive has not one, but $ n $ different heads that can read data in parallel.
+When viewed from the side, Mike's hard drive is an endless array of tracks. The tracks of the array are numbered from left to right with integers, starting with 1. In the initial state the $ i $ -th reading head is above the track number $ h_{i} $ . For each of the reading heads, the hard drive's firmware can move the head exactly one track to the right or to the left, or leave it on the current track. During the operation each head's movement does not affect the movement of the other heads: the heads can change their relative order; there can be multiple reading heads above any of the tracks. A track is considered read if at least one head has visited this track. In particular, all of the tracks numbered $ h_{1} $ , $ h_{2} $ , $ ... $ , $ h_{n} $ have been read at the beginning of the operation.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF343C/477411d635199d18d36c6b93ba130f0f6f88e682.png)Mike needs to read the data on $ m $ distinct tracks with numbers $ p_{1} $ , $ p_{2} $ , $ ... $ , $ p_{m} $ . Determine the minimum time the hard drive firmware needs to move the heads and read all the given tracks. Note that an arbitrary number of other tracks can also be read.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two space-separated integers $ n $ , $ m $ ( $ 1<=n,m<=10^{5} $ ) — the number of disk heads and the number of tracks to read, accordingly. The second line contains $ n $ distinct integers $ h_{i} $ in ascending order ( $ 1<=h_{i}<=10^{10} $ , $ h_{i}&lt;h_{i+1} $ ) — the initial positions of the heads. The third line contains $ m $ distinct integers $ p_{i} $ in ascending order ( $ 1<=p_{i}<=10^{10} $ , $ p_{i}&lt;p_{i+1} $ ) - the numbers of tracks to read.
+Please, do not use the %lld specifier to read or write 64-bit integers in С++. It is recommended to use the cin, cout streams or the %I64d specifier.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single number — the minimum time required, in seconds, to read all the needed tracks.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 4
+2 5 6
+1 3 6 8
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3
+1 2 3
+1 2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>1 2
+165
+142 200
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>81
+</code></pre>
+<h2>说明</h2>
+<div>The first test coincides with the figure. In this case the given tracks can be read in 2 seconds in the following way:
+1. during the first second move the 1-st head to the left and let it stay there;
+2. move the second head to the left twice;
+3. move the third head to the right twice (note that the 6-th track has already been read at the beginning).
+One cannot read the tracks in 1 second as the 3-rd head is at distance 2 from the 8-th track.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

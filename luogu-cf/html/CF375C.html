@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Circling Round Treasures - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393396:Mv4p++pIiXAURlsTTJq8GeO1fngfAsuUAlmKbfPNWDs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20have%20a%20map%20as%20a%20rectangle%20table.%20Each%20cell%20of%20the%20table%20is%20either%20an%20obstacle%2C%20or%20a%20treasure%20with%20a%20certain%20price%2C%20or%20a%20bomb%2C%20or%20an%20empty%20cell.%20Your%20initial%20position%20is%20also%20given%20to%20you.%5Cn%5CnYou%20can%20go%20from%20one%20cell%20of%20the%20map%20to%20a%20side-adjacent%20one.%20At%20that%2C%20you%20are%20not%20allowed%20to%20go%20beyond%20the%20borders%20of%20the%20map%2C%20enter%20the%20cells%20with%20treasures%2C%20obstacles%20and%20bombs.%20To%20pick%20the%20treasures%2C%20you%20need%20to%20build%20a%20closed%20path%20%28starting%20and%20ending%20in%20the%20starting%20cell%29.%20The%20closed%20path%20mustn%27t%20contain%20any%20cells%20with%20bombs%20inside.%20Let%27s%20assume%20that%20the%20sum%20of%20the%20treasures%27%20values%20that%20are%20located%20inside%20the%20closed%20path%20equals%20%24%20v%20%24%20%2C%20and%20besides%2C%20you%27ve%20made%20%24%20k%20%24%20single%20moves%20%28from%20one%20cell%20to%20another%29%20while%20you%20were%20going%20through%20the%20path%2C%20then%20such%20path%20brings%20you%20the%20profit%20of%20%24%20v-k%20%24%20rubles.%5Cn%5CnYour%20task%20is%20to%20build%20a%20closed%20path%20that%20doesn%27t%20contain%20any%20bombs%20and%20brings%20maximum%20profit.%5Cn%5CnNote%20that%20the%20path%20can%20have%20self-intersections.%20In%20order%20to%20determine%20if%20a%20cell%20lies%20inside%20a%20path%20or%20not%2C%20use%20the%20following%20algorithm%3A%5Cn%5Cn1.%20Assume%20that%20the%20table%20cells%20are%20points%20on%20the%20plane%20%28the%20table%20cell%20on%20the%20intersection%20of%20the%20%24%20i%20%24%20-th%20column%20and%20the%20%24%20j%20%24%20-th%20row%20is%20point%20%24%20%28i%2Cj%29%20%24%20%29.%20And%20the%20given%20path%20is%20a%20closed%20polyline%20that%20goes%20through%20these%20points.%5Cn2.%20You%20need%20to%20find%20out%20if%20the%20point%20%24%20p%20%24%20of%20the%20table%20that%20is%20not%20crossed%20by%20the%20polyline%20lies%20inside%20the%20polyline.%5Cn3.%20Let%27s%20draw%20a%20ray%20that%20starts%20from%20point%20%24%20p%20%24%20and%20does%20not%20intersect%20other%20points%20of%20the%20table%20%28such%20ray%20must%20exist%29.%5Cn4.%20Let%27s%20count%20the%20number%20of%20segments%20of%20the%20polyline%20that%20intersect%20the%20painted%20ray.%20If%20this%20number%20is%20odd%2C%20we%20assume%20that%20point%20%24%20p%20%24%20%28and%20consequently%2C%20the%20table%20cell%29%20lie%20inside%20the%20polyline%20%28path%29.%20Otherwise%2C%20we%20assume%20that%20it%20lies%20outside.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%24%20%281%3C%3Dn%2Cm%3C%3D20%29%20%24%20%5Cu2014%20the%20sizes%20of%20the%20table.%20Next%20%24%20n%20%24%20lines%20each%20contains%20%24%20m%20%24%20characters%20%5Cu2014%20the%20description%20of%20the%20table.%20The%20description%20means%20the%20following%3A%5Cn%5Cn-%20character%20%5C%22B%5C%22%20is%20a%20cell%20with%20a%20bomb%3B%5Cn-%20character%20%5C%22S%5C%22%20is%20the%20starting%20cell%2C%20you%20can%20assume%20that%20it%27s%20empty%3B%5Cn-%20digit%20%24%20c%20%24%20%281-8%29%20is%20treasure%20with%20index%20%24%20c%20%24%20%3B%5Cn-%20character%20%5C%22.%5C%22%20is%20an%20empty%20cell%3B%5Cn-%20character%20%5C%22%5C%5C%23%5C%22%20is%20an%20obstacle.%5Cn%5CnAssume%20that%20the%20map%20has%20%24%20t%20%24%20treasures.%20Next%20%24%20t%20%24%20lines%20contain%20the%20prices%20of%20the%20treasures.%20The%20%24%20i%20%24%20-th%20line%20contains%20the%20price%20of%20the%20treasure%20with%20index%20%24%20i%20%24%20%2C%20%24%20v_%7Bi%7D%20%24%20%24%20%28-200%3C%3Dv_%7Bi%7D%3C%3D200%29%20%24%20.%20It%20is%20guaranteed%20that%20the%20treasures%20are%20numbered%20from%201%20to%20%24%20t%20%24%20.%20It%20is%20guaranteed%20that%20the%20map%20has%20not%20more%20than%208%20objects%20in%20total.%20Objects%20are%20bombs%20and%20treasures.%20It%20is%20guaranteed%20that%20the%20map%20has%20exactly%20one%20character%20%5C%22S%5C%22.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20maximum%20possible%20profit%20you%20can%20get.%22%2C%22samples%22%3A%5B%5B%224%204%5Cn....%5Cn.S1.%5Cn....%5Cn....%5Cn10%5Cn%22%2C%222%5Cn%22%5D%2C%5B%227%207%5Cn.......%5Cn.1%23%23%232.%5Cn.%23...%23.%5Cn.%23.B.%23.%5Cn.3...4.%5Cn..%23%23...%5Cn......S%5Cn100%5Cn100%5Cn100%5Cn100%5Cn%22%2C%22364%5Cn%22%5D%2C%5B%227%208%5Cn........%5Cn........%5Cn....1B..%5Cn.S......%5Cn....2...%5Cn3.......%5Cn........%5Cn100%5Cn-100%5Cn100%5Cn%22%2C%220%5Cn%22%5D%2C%5B%221%201%5CnS%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20the%20answer%20will%20look%20as%20follows.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF375C%5C%2Fcb0dbb1d435c2b4c4d748d9831291d273e4bf3cf.png%29In%20the%20second%20example%20the%20answer%20will%20look%20as%20follows.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF375C%5C%2F8027ff788009012e6263f482eda32fa57c7a9ae8.png%29In%20the%20third%20example%20you%20cannot%20get%20profit.%5Cn%5CnIn%20the%20fourth%20example%20you%20cannot%20get%20profit%20as%20you%20cannot%20construct%20a%20closed%20path%20with%20more%20than%20one%20cell.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F375%5C%2FC%22%2C%22id%22%3A%22375C%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2aN%2AM%5Cu7684%5Cu5730%5Cu56fe%28N%2CM%3C%3D20%29%2C%5Cu5730%5Cu56fe%5Cu4e0a%5Cu2019%23%5Cu2019%5Cu8868%5Cu793a%5Cu969c%5Cu788d%5Cu7269%5Cuff0c%5Cu2019B%5Cu2019%5Cu8868%5Cu793a%5Cu70b8%5Cu5f39%5Cuff0c%5Cu6570%5Cu5b57%5Cu8868%5Cu793a%5Cu5b9d%5Cu85cf%5Cu5e8f%5Cu53f7%5Cuff08%5Cu5b9d%5Cu85cf%5Cu4e2a%5Cu6570%20%3C%3D8%5Cuff09%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5b9d%5Cu85cf%5Cu6709%5Cu4ef7%5Cu503c%5Cuff08-200%3C%3Dv%3C%3D200%5Cuff09%5Cuff0c%5Cu2019S%5Cu2019%5Cu8868%5Cu793a%5Cu51fa%5Cu53d1%5Cu70b9%5Cu3002%5Cu6bcf%5Cu6b21%5Cu79fb%5Cu52a8%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu683c%5Cu5b50%5Cu79fb%5Cu52a8%5Cu5230%5Cu76f8%5Cu90bb%5Cu683c%5Cu5b50%28%5Cu4e0a%5Cu4e0b%5Cu5de6%5Cu53f3%29%5Cu3002%5Cu5bfb%5Cu627e%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cu4ece%5Cu2019S%5Cu2019%5Cu51fa%5Cu53d1%5Cu518d%5Cu56de%5Cu5230%5Cu2019S%5Cu2019%5Cu7684%5Cu5c01%5Cu95ed%5Cu8def%5Cu5f84%5Cuff0c%5Cu79fb%5Cu52a8%5Cu6b65%5Cu6570%5Cu8bb0%5Cu4e3aK%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu8def%5Cu5f84%5Cu6240%5Cu5305%5Cu56f4%5Cu7684%5Cu5b9d%5Cu85cf%5Cu4ef7%5Cu503c%5Cu603b%5Cu548c%5Cu8bb0%5Cu4e3aV%5Cuff0c%5Cu5219%5Cu8fd9%5Cu6761%5Cu8def%5Cu5f84%5Cu7684%5Cu4ef7%5Cu503c%5Cu4e3aV-K%5Cu3002%5Cu9898%5Cu76ee%5Cu5373%5Cu662f%5Cu6c42%5Cu53ef%5Cu884c%5Cu7684%5Cu6700%5Cu5927%5Cu7684%5Cu8def%5Cu5f84%5Cu4ef7%5Cu503c%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4e0d%5Cu80fd%5Cu5305%5Cu56f4%5Cu70b8%5Cu5f39%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cn%5Cu7b2c%5Cu4e00%5Cu884c2%5Cu4e2a%5Cu6574%5Cu6570N%2CM%5Cu8868%5Cu793a%5Cu5730%5Cu56fe%5Cu7684%5Cu957f%5Cu548c%5Cu5bbd%20%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu53bbN%5Cu884c%2C%5Cu6bcf%5Cu884cM%5Cu4e2a%5Cu5b57%5Cu7b26%2C%5Cu63cf%5Cu8ff0%5Cu6574%5Cu4e2a%5Cu5730%5Cu56fe%2C%5Cu5730%5Cu56fe%5Cu53ea%5Cu53ef%5Cu80fd%5Cu5305%5Cu542b%5Cu5982%5Cu4e0b%5Cu5b57%5Cu7b26%3A%20%5Cn%5Cn%5Cu5b57%5Cu7b26%27B%27%5Cu8868%5Cu793a%5Cu70b8%5Cu5f39%3B%20%5Cn%5Cn%5Cu5b57%5Cu7b26%27S%27%5Cu8868%5Cu793a%5Cu8d77%5Cu70b9%2C%5Cu4fdd%5Cu8bc1%5Cu6709%5Cu4e14%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%3B%20%5Cn%5Cn%5Cu6570%5Cu5b57c%281-8%29%5Cu4ee3%5Cu8868%5Cu5b9d%5Cu85cf%5Cu6807%5Cu53f7%2C%5Cu6700%5Cu591a%5Cu53ea%5Cu67098%5Cu4e2a%5Cu5b9d%5Cu85cf%3B%20%5Cn%5Cn%5Cu5b57%5Cu7b26%27.%27%5Cu8868%5Cu793a%5Cu7a7a%5Cu767d%5Cu683c%3B%20%5Cn%5Cn%5Cu5b57%5Cu7b26%27%23%27%5Cu8868%5Cu793a%5Cu969c%5Cu788d%5Cu7269%28%5Cu5899%29%3B%20%5Cn%5Cn%5Cu5047%5Cu8bbe%5Cu5730%5Cu56fe%5Cu5305%5Cu542bt%5Cu4e2a%5Cu5b9d%5Cu85cf%2C%5Cu63a5%5Cu4e0b%5Cu53bbt%5Cu884c%2C%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24v_i%28-200%3C%3Dv_i%3C%3D200%29%24%2C%5Cu4f9d%5Cu5e8f%5Cu8868%5Cu793a%5Cu7b2ci%5Cu4e2a%5Cu5b9d%5Cu85cf%5Cu7684%5Cu4ef7%5Cu503c.%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%3A%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%2C%5Cu5373%5Cu80fd%5Cu591f%5Cu83b7%5Cu5f97%5Cu7684%5Cu6700%5Cu5927%5Cu4ef7%5Cu503c%5Cn%5Cn%5Cu611f%5Cu8c22%40xjdx%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B6%2C151%2C160%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A52%2C%22totalAccepted%22%3A32%2C%22pid%22%3A%22CF375C%22%2C%22title%22%3A%22Circling%20Round%20Treasures%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A37631%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A11134%2C%22name%22%3A%22CF375C%20Circling%20Round%20Treasures%22%2C%22slug%22%3A%22CF375C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3349%22%2C%22title%22%3A%22%5BZJOI2016%5D%5Cu5c0f%5Cu661f%5Cu661f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF528D%22%2C%22title%22%3A%22Fuzzy%20Search%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF526F%22%2C%22title%22%3A%22Pudding%20Monsters%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF319E%22%2C%22title%22%3A%22Ping-Pong%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4428%22%2C%22title%22%3A%22%5BBJOI2018%5D%5Cu4e8c%5Cu8fdb%5Cu5236%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Circling%20Round%20Treasures%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Circling Round Treasures</h1>
+<h2>题意翻译</h2>
+<div>给你一个N*M的地图(N,M<=20),地图上’#’表示障碍物，’B’表示炸弹，数字表示宝藏序号（宝藏个数 <=8），每个宝藏有价值（-200<=v<=200），’S’表示出发点。每次移动可以从一个格子移动到相邻格子(上下左右)。寻找一条路径从’S’出发再回到’S’的封闭路径，移动步数记为K，这个路径所包围的宝藏价值总和记为V，则这条路径的价值为V-K。题目即是求可行的最大的路径价值，并且不能包围炸弹。
+## 输入格式:
+第一行2个整数N,M表示地图的长和宽
+接下去N行,每行M个字符,描述整个地图,地图只可能包含如下字符:
+字符'B'表示炸弹;
+字符'S'表示起点,保证有且只有一个;
+数字c(1-8)代表宝藏标号,最多只有8个宝藏;
+字符'.'表示空白格;
+字符'#'表示障碍物(墙);
+假设地图包含t个宝藏,接下去t行,每行一个整数$v_i(-200<=v_i<=200)$,依序表示第i个宝藏的价值.
+## 输出格式:
+一个整数,即能够获得的最大价值
+感谢@xjdx 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You have a map as a rectangle table. Each cell of the table is either an obstacle, or a treasure with a certain price, or a bomb, or an empty cell. Your initial position is also given to you.
+You can go from one cell of the map to a side-adjacent one. At that, you are not allowed to go beyond the borders of the map, enter the cells with treasures, obstacles and bombs. To pick the treasures, you need to build a closed path (starting and ending in the starting cell). The closed path mustn't contain any cells with bombs inside. Let's assume that the sum of the treasures' values that are located inside the closed path equals $ v $ , and besides, you've made $ k $ single moves (from one cell to another) while you were going through the path, then such path brings you the profit of $ v-k $ rubles.
+Your task is to build a closed path that doesn't contain any bombs and brings maximum profit.
+Note that the path can have self-intersections. In order to determine if a cell lies inside a path or not, use the following algorithm:
+1. Assume that the table cells are points on the plane (the table cell on the intersection of the $ i $ -th column and the $ j $ -th row is point $ (i,j) $ ). And the given path is a closed polyline that goes through these points.
+2. You need to find out if the point $ p $ of the table that is not crossed by the polyline lies inside the polyline.
+3. Let's draw a ray that starts from point $ p $ and does not intersect other points of the table (such ray must exist).
+4. Let's count the number of segments of the polyline that intersect the painted ray. If this number is odd, we assume that point $ p $ (and consequently, the table cell) lie inside the polyline (path). Otherwise, we assume that it lies outside.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ $ (1<=n,m<=20) $ — the sizes of the table. Next $ n $ lines each contains $ m $ characters — the description of the table. The description means the following:
+- character "B" is a cell with a bomb;
+- character "S" is the starting cell, you can assume that it's empty;
+- digit $ c $ (1-8) is treasure with index $ c $ ;
+- character "." is an empty cell;
+- character "\#" is an obstacle.
+Assume that the map has $ t $ treasures. Next $ t $ lines contain the prices of the treasures. The $ i $ -th line contains the price of the treasure with index $ i $ , $ v_{i} $ $ (-200<=v_{i}<=200) $ . It is guaranteed that the treasures are numbered from 1 to $ t $ . It is guaranteed that the map has not more than 8 objects in total. Objects are bombs and treasures. It is guaranteed that the map has exactly one character "S".</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the maximum possible profit you can get.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 4
+....
+.S1.
+....
+....
+10
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7 7
+.......
+.1###2.
+.#...#.
+.#.B.#.
+.3...4.
+..##...
+......S
+100
+100
+100
+100
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>364
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>7 8
+........
+........
+....1B..
+.S......
+....2...
+3.......
+........
+100
+-100
+100
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>1 1
+S
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>0
+</code></pre>
+<h2>说明</h2>
+<div>In the first example the answer will look as follows.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF375C/cb0dbb1d435c2b4c4d748d9831291d273e4bf3cf.png)In the second example the answer will look as follows.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF375C/8027ff788009012e6263f482eda32fa57c7a9ae8.png)In the third example you cannot get profit.
+In the fourth example you cannot get profit as you cannot construct a closed path with more than one cell.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

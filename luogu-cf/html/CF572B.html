@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Order Book - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395508:HQWtQhhTkhoMWXwdRI0lqtmqgg8xbzExkjv0GW/l9wQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22In%20this%20task%20you%20need%20to%20process%20a%20set%20of%20stock%20exchange%20orders%20and%20use%20them%20to%20create%20order%20book.%5Cn%5CnAn%20order%20is%20an%20instruction%20of%20some%20participant%20to%20buy%20or%20sell%20stocks%20on%20stock%20exchange.%20The%20order%20number%20%24%20i%20%24%20has%20price%20%24%20p_%7Bi%7D%20%24%20%2C%20direction%20%24%20d_%7Bi%7D%20%24%20%5Cu2014%20buy%20or%20sell%2C%20and%20integer%20%24%20q_%7Bi%7D%20%24%20.%20This%20means%20that%20the%20participant%20is%20ready%20to%20buy%20or%20sell%20%24%20q_%7Bi%7D%20%24%20stocks%20at%20price%20%24%20p_%7Bi%7D%20%24%20for%20one%20stock.%20A%20value%20%24%20q_%7Bi%7D%20%24%20is%20also%20known%20as%20a%20volume%20of%20an%20order.%5Cn%5CnAll%20orders%20with%20the%20same%20price%20%24%20p%20%24%20and%20direction%20%24%20d%20%24%20are%20merged%20into%20one%20aggregated%20order%20with%20price%20%24%20p%20%24%20and%20direction%20%24%20d%20%24%20.%20The%20volume%20of%20such%20order%20is%20a%20sum%20of%20volumes%20of%20the%20initial%20orders.%5Cn%5CnAn%20order%20book%20is%20a%20list%20of%20aggregated%20orders%2C%20the%20first%20part%20of%20which%20contains%20sell%20orders%20sorted%20by%20price%20in%20descending%20order%2C%20the%20second%20contains%20buy%20orders%20also%20sorted%20by%20price%20in%20descending%20order.%5Cn%5CnAn%20order%20book%20of%20depth%20%24%20s%20%24%20contains%20%24%20s%20%24%20best%20aggregated%20orders%20for%20each%20direction.%20A%20buy%20order%20is%20better%20if%20it%20has%20higher%20price%20and%20a%20sell%20order%20is%20better%20if%20it%20has%20lower%20price.%20If%20there%20are%20less%20than%20%24%20s%20%24%20aggregated%20orders%20for%20some%20direction%20then%20all%20of%20them%20will%20be%20in%20the%20final%20order%20book.%5Cn%5CnYou%20are%20given%20%24%20n%20%24%20stock%20exhange%20orders.%20Your%20task%20is%20to%20print%20order%20book%20of%20depth%20%24%20s%20%24%20for%20these%20orders.%22%2C%22inputFormat%22%3A%22The%20input%20starts%20with%20two%20positive%20integers%20%24%20n%20%24%20and%20%24%20s%20%24%20%28%20%24%201%3C%3Dn%3C%3D1000%2C1%3C%3Ds%3C%3D50%20%24%20%29%2C%20the%20number%20of%20orders%20and%20the%20book%20depth.%5Cn%5CnNext%20%24%20n%20%24%20lines%20contains%20a%20letter%20%24%20d_%7Bi%7D%20%24%20%28either%20%27B%27%20or%20%27S%27%29%2C%20an%20integer%20%24%20p_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dp_%7Bi%7D%3C%3D10%5E%7B5%7D%20%24%20%29%20and%20an%20integer%20%24%20q_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dq_%7Bi%7D%3C%3D10%5E%7B4%7D%20%24%20%29%20%5Cu2014%20direction%2C%20price%20and%20volume%20respectively.%20The%20letter%20%27B%27%20means%20buy%2C%20%27S%27%20means%20sell.%20The%20price%20of%20any%20sell%20order%20is%20higher%20than%20the%20price%20of%20any%20buy%20order.%22%2C%22outputFormat%22%3A%22Print%20no%20more%20than%20%24%202s%20%24%20lines%20with%20aggregated%20orders%20from%20order%20book%20of%20depth%20%24%20s%20%24%20.%20The%20output%20format%20for%20orders%20should%20be%20the%20same%20as%20in%20input.%22%2C%22samples%22%3A%5B%5B%226%202%5CnB%2010%203%5CnS%2050%202%5CnS%2040%201%5CnS%2050%206%5CnB%2020%204%5CnB%2025%2010%5Cn%22%2C%22S%2050%208%5CnS%2040%201%5CnB%2025%2010%5CnB%2020%204%5Cn%22%5D%5D%2C%22hint%22%3A%22Denote%20%28x%2C%20y%29%20an%20order%20with%20price%20%24%20x%20%24%20and%20volume%20%24%20y%20%24%20.%20There%20are%203%20aggregated%20buy%20orders%20%2810%2C%203%29%2C%20%2820%2C%204%29%2C%20%2825%2C%2010%29%20and%20two%20sell%20orders%20%2850%2C%208%29%2C%20%2840%2C%201%29%20in%20the%20sample.%5Cn%5CnYou%20need%20to%20print%20no%20more%20than%20two%20best%20orders%20for%20each%20direction%2C%20so%20you%20shouldn%27t%20print%20the%20order%20%2810%203%29%20having%20the%20worst%20price%20among%20buy%20orders.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F572%5C%2FB%22%2C%22id%22%3A%22572B%22%7D%2C%22translation%22%3A%22%5Cu6709%24n%24%20%5Cu4e2a%5Cu8bb0%5Cu5f55%5Cuff0c%5Cu5176%5Cu4e2d%5Cu6bcf%5Cu4e2a%5Cu8bb0%5Cu5f55%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu4fe1%5Cu606f%24p_i%2Cq_i%24%20%5Cuff0c%5Cu8868%5Cu793a%5Cu4ea4%5Cu6613%5Cu5355%5Cu54c1%5Cu91d1%5Cu989d%5Cu548c%5Cu4ea4%5Cu6613%5Cu6570%5Cu91cf%5Cu3002%5Cu73b0%5Cu5728%5Cu9700%5Cu8981%5Cu628a%5Cu8fd9%5Cu4e9b%5Cu8bb0%5Cu5f55%5Cu505a%5Cu6210%5Cu6e05%5Cu5355%5Cu3002%5Cu89c4%5Cu5219%5Cu5982%5Cu4e0b%5Cuff1a%5Cn1.%20%5Cu628a%24p_i%24%20%5Cu76f8%5Cu540c%5Cu7684%5Cu8bb0%5Cu5f55%5Cu5408%5Cu5e76%5Cuff0c%24q_i%24%20%5Cu53d6%5Cu8fd9%5Cu4e9b%5Cu8bb0%5Cu5f55%5Cu4e2d%5Cu539f%5Cu6709%5Cu7684%24q_i%24%20%5Cu4e4b%5Cu548c%5Cu3002%5Cn2.%20%5Cu5408%5Cu5e76%5Cu4e4b%5Cu540e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5356%5Cu51fa%5Cu8bb0%5Cu5f55%5Cuff08%60S%60%5Cuff09%5Cu4e2d%5Cu7684%24p_i%24%20%5Cu6700%5Cu5c0f%5Cu7684%24s%24%20%5Cu6761%5Cu8bb0%5Cu5f55%5Cuff0c%5Cu6309%5Cu7167%24p_i%24%20%2A%2A%5Cu964d%5Cu5e8f%5Cu8f93%5Cu51fa%2A%2A%5Cu3002%5Cn3.%20%5Cu5408%5Cu5e76%5Cu4e4b%5Cu540e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e70%5Cu5165%5Cu8bb0%5Cu5f55%5Cuff08%60B%60%5Cuff09%5Cu4e2d%5Cu7684%24p_i%24%20%5Cu6700%5Cu5927%5Cu7684%24s%24%20%5Cu6761%5Cu8bb0%5Cu5f55%5Cuff0c%5Cu6309%5Cu7167%24p_i%24%20%2A%2A%5Cu964d%5Cu5e8f%5Cu8f93%5Cu51fa%2A%2A%5Cu3002%5Cn%5Cn%5Cu5176%5Cu4e2d%5Cuff082%5Cuff09%5Cuff083%5Cuff09%5Cu6761%5Cu7684%5Cu683c%5Cu5f0f%5Cu662f%24opt%5C%5C%3Bp_i%5C%5C%3Bq_i%24%20%5Cuff0c%24opt%24%20%5Cu662f%60S%60%5Cu548c%60B%60%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu3002%5Cu8bb0%5Cu5f55%5Cu4e0d%5Cu8db3%24s%24%20%5Cu6761%5Cu53ea%5Cu8981%5Cu8f93%5Cu51fa%5Cu6240%5Cu6709%5Cu7684%5Cu5373%5Cu53ef%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A5%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22CF572B%22%2C%22title%22%3A%22Order%20Book%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A34246%2C%22title%22%3A%22%5Cu3010%5Cu7ffb%5Cu8bd1%5Cu3011for%20CF572B%22%2C%22forum%22%3A%7B%22id%22%3A10388%2C%22name%22%3A%22CF572B%20Order%20Book%22%2C%22slug%22%3A%22CF572B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Order%20Book%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Order Book</h1>
+<h2>题意翻译</h2>
+<div>有$n$ 个记录，其中每个记录包含两个信息$p_i,q_i$ ，表示交易单品金额和交易数量。现在需要把这些记录做成清单。规则如下：
+1. 把$p_i$ 相同的记录合并，$q_i$ 取这些记录中原有的$q_i$ 之和。
+2. 合并之后，输出卖出记录（`S`）中的$p_i$ 最小的$s$ 条记录，按照$p_i$ **降序输出**。
+3. 合并之后，输出买入记录（`B`）中的$p_i$ 最大的$s$ 条记录，按照$p_i$ **降序输出**。
+其中（2）（3）条的格式是$opt\;p_i\;q_i$ ，$opt$ 是`S`和`B`中的一个。记录不足$s$ 条只要输出所有的即可。</div>
+<h2>题目描述</h2>
+<div>In this task you need to process a set of stock exchange orders and use them to create order book.
+An order is an instruction of some participant to buy or sell stocks on stock exchange. The order number $ i $ has price $ p_{i} $ , direction $ d_{i} $ — buy or sell, and integer $ q_{i} $ . This means that the participant is ready to buy or sell $ q_{i} $ stocks at price $ p_{i} $ for one stock. A value $ q_{i} $ is also known as a volume of an order.
+All orders with the same price $ p $ and direction $ d $ are merged into one aggregated order with price $ p $ and direction $ d $ . The volume of such order is a sum of volumes of the initial orders.
+An order book is a list of aggregated orders, the first part of which contains sell orders sorted by price in descending order, the second contains buy orders also sorted by price in descending order.
+An order book of depth $ s $ contains $ s $ best aggregated orders for each direction. A buy order is better if it has higher price and a sell order is better if it has lower price. If there are less than $ s $ aggregated orders for some direction then all of them will be in the final order book.
+You are given $ n $ stock exhange orders. Your task is to print order book of depth $ s $ for these orders.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input starts with two positive integers $ n $ and $ s $ ( $ 1<=n<=1000,1<=s<=50 $ ), the number of orders and the book depth.
+Next $ n $ lines contains a letter $ d_{i} $ (either 'B' or 'S'), an integer $ p_{i} $ ( $ 0<=p_{i}<=10^{5} $ ) and an integer $ q_{i} $ ( $ 1<=q_{i}<=10^{4} $ ) — direction, price and volume respectively. The letter 'B' means buy, 'S' means sell. The price of any sell order is higher than the price of any buy order.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print no more than $ 2s $ lines with aggregated orders from order book of depth $ s $ . The output format for orders should be the same as in input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 2
+B 10 3
+S 50 2
+S 40 1
+S 50 6
+B 20 4
+B 25 10
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>S 50 8
+S 40 1
+B 25 10
+B 20 4
+</code></pre>
+<h2>说明</h2>
+<div>Denote (x, y) an order with price $ x $ and volume $ y $ . There are 3 aggregated buy orders (10, 3), (20, 4), (25, 10) and two sell orders (50, 8), (40, 1) in the sample.
+You need to print no more than two best orders for each direction, so you shouldn't print the order (10 3) having the worst price among buy orders.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

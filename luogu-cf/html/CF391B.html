@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Word Folding - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393604:xOfaEldE0BYEmyy3Pd9JXTb6/hMTeu1S3Z8emmU8mq0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20will%20receive%205%20points%20for%20solving%20this%20problem.%5Cn%5CnManao%20has%20invented%20a%20new%20operation%20on%20strings%20that%20is%20called%20folding.%20Each%20fold%20happens%20between%20a%20pair%20of%20consecutive%20letters%20and%20places%20the%20second%20part%20of%20the%20string%20above%20first%20part%2C%20running%20in%20the%20opposite%20direction%20and%20aligned%20to%20the%20position%20of%20the%20fold.%20Using%20this%20operation%2C%20Manao%20converts%20the%20string%20into%20a%20structure%20that%20has%20one%20more%20level%20than%20there%20were%20fold%20operations%20performed.%20See%20the%20following%20examples%20for%20clarity.%5Cn%5CnWe%20will%20denote%20the%20positions%20of%20folds%20with%20%27%7C%27%20characters.%20For%20example%2C%20the%20word%20%5C%22ABRACADABRA%5C%22%20written%20as%20%5C%22AB%7CRACA%7CDAB%7CRA%5C%22%20indicates%20that%20it%20has%20been%20folded%20three%20times%3A%20first%2C%20between%20the%20leftmost%20pair%20of%20%27B%27%20and%20%27R%27%20letters%3B%20second%2C%20between%20%27A%27%20and%20%27D%27%3B%20and%20third%2C%20between%20the%20rightmost%20pair%20of%20%27B%27%20and%20%27R%27%20letters.%20Here%20are%20several%20examples%20of%20folded%20strings%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3E%5C%22ABCDEF%7CGHIJK%5C%22%20%7C%20%20%5C%22A%7CBCDEFGHIJK%5C%22%20%7C%20%20%5C%22AB%7CRACA%7CDAB%7CRA%5C%22%20%7C%20%20%5C%22X%7CXXXXX%7CX%7CX%7CXXXXXX%5C%22%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20XXXXXX%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20KJIHG%20%20%20%20%20%20%7C%20%20%20KJIHGFEDCB%20%20%20%20%7C%20%20%20%20%20%20AR%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20X%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20ABCDEF%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20A%20%20%20%20%7C%20%20%20%20%20DAB%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20X%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20ACAR%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20XXXXX%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20AB%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20X%3Cbr%3E%3C%5C%2Fbr%3E%60One%20last%20example%20for%20%5C%22ABCD%7CEFGH%7CIJ%7CK%5C%22%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3E%20K%3Cbr%3E%3C%5C%2Fbr%3EIJ%3Cbr%3E%3C%5C%2Fbr%3EHGFE%3Cbr%3E%3C%5C%2Fbr%3EABCD%3Cbr%3E%3C%5C%2Fbr%3E%60Manao%20noticed%20that%20each%20folded%20string%20can%20be%20viewed%20as%20several%20piles%20of%20letters.%20For%20instance%2C%20in%20the%20previous%20example%2C%20there%20are%20four%20piles%2C%20which%20can%20be%20read%20as%20%5C%22AHI%5C%22%2C%20%5C%22BGJK%5C%22%2C%20%5C%22CF%5C%22%2C%20and%20%5C%22DE%5C%22%20from%20bottom%20to%20top.%20Manao%20wonders%20what%20is%20the%20highest%20pile%20of%20identical%20letters%20he%20can%20build%20using%20fold%20operations%20on%20a%20given%20word.%20Note%20that%20the%20pile%20should%20not%20contain%20gaps%20and%20should%20start%20at%20the%20bottom%20level.%20For%20example%2C%20in%20the%20rightmost%20of%20the%20four%20examples%20above%2C%20none%20of%20the%20piles%20would%20be%20considered%20valid%20since%20each%20of%20them%20has%20gaps%2C%20starts%20above%20the%20bottom%20level%2C%20or%20both.%22%2C%22inputFormat%22%3A%22The%20input%20will%20consist%20of%20one%20line%20containing%20a%20single%20string%20of%20%24%20n%20%24%20characters%20with%20%24%201%3C%3Dn%3C%3D1000%20%24%20and%20no%20spaces.%20All%20characters%20of%20the%20string%20will%20be%20uppercase%20letters.%5Cn%5CnThis%20problem%20doesn%27t%20have%20subproblems.%20You%20will%20get%205%20points%20for%20the%20correct%20submission.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20size%20of%20the%20largest%20pile%20composed%20of%20identical%20characters%20that%20can%20be%20seen%20in%20a%20valid%20result%20of%20folding%20operations%20on%20the%20given%20string.%22%2C%22samples%22%3A%5B%5B%22ABRACADABRA%5Cn%22%2C%223%5Cn%22%5D%2C%5B%22ABBBCBDB%5Cn%22%2C%223%5Cn%22%5D%2C%5B%22AB%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20example.%20Manao%20can%20create%20a%20pile%20of%20three%20%27A%27s%20using%20the%20folding%20%5C%22AB%7CRACAD%7CABRA%5C%22%2C%20which%20results%20in%20the%20following%20structure%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3EABRA%3Cbr%3E%3C%5C%2Fbr%3EDACAR%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20AB%3Cbr%3E%3C%5C%2Fbr%3E%60In%20the%20second%20example%2C%20Manao%20can%20create%20a%20pile%20of%20three%20%27B%27s%20using%20the%20following%20folding%3A%20%5C%22AB%7CBB%7CCBDB%5C%22.%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3ECBDB%3Cbr%3E%3C%5C%2Fbr%3EBB%3Cbr%3E%3C%5C%2Fbr%3EAB%3Cbr%3E%3C%5C%2Fbr%3E%60Another%20way%20for%20Manao%20to%20create%20a%20pile%20of%20three%20%27B%27s%20with%20%5C%22ABBBCBDB%5C%22%20is%20the%20following%20folding%3A%20%5C%22AB%7CB%7CBCBDB%5C%22.%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3E%20BCBDB%3Cbr%3E%3C%5C%2Fbr%3E%20B%3Cbr%3E%3C%5C%2Fbr%3EAB%3Cbr%3E%3C%5C%2Fbr%3E%60In%20the%20third%20example%2C%20there%20are%20no%20folds%20performed%20and%20the%20string%20is%20just%20written%20in%20one%20line.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F391%5C%2FB%22%2C%22id%22%3A%22391B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF391B%22%2C%22title%22%3A%22Word%20Folding%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Word%20Folding%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Word Folding</h1>
+<h2>题目描述</h2>
+<div>You will receive 5 points for solving this problem.
+Manao has invented a new operation on strings that is called folding. Each fold happens between a pair of consecutive letters and places the second part of the string above first part, running in the opposite direction and aligned to the position of the fold. Using this operation, Manao converts the string into a structure that has one more level than there were fold operations performed. See the following examples for clarity.
+We will denote the positions of folds with '|' characters. For example, the word "ABRACADABRA" written as "AB|RACA|DAB|RA" indicates that it has been folded three times: first, between the leftmost pair of 'B' and 'R' letters; second, between 'A' and 'D'; and third, between the rightmost pair of 'B' and 'R' letters. Here are several examples of folded strings:
+`<br></br>"ABCDEF|GHIJK" | "A|BCDEFGHIJK" | "AB|RACA|DAB|RA" | "X|XXXXX|X|X|XXXXXX"<br></br> | | | XXXXXX<br></br> KJIHG | KJIHGFEDCB | AR | X<br></br> ABCDEF | A | DAB | X<br></br> | | ACAR | XXXXX<br></br> | | AB | X<br></br>`One last example for "ABCD|EFGH|IJ|K":
+`<br></br> K<br></br>IJ<br></br>HGFE<br></br>ABCD<br></br>`Manao noticed that each folded string can be viewed as several piles of letters. For instance, in the previous example, there are four piles, which can be read as "AHI", "BGJK", "CF", and "DE" from bottom to top. Manao wonders what is the highest pile of identical letters he can build using fold operations on a given word. Note that the pile should not contain gaps and should start at the bottom level. For example, in the rightmost of the four examples above, none of the piles would be considered valid since each of them has gaps, starts above the bottom level, or both.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input will consist of one line containing a single string of $ n $ characters with $ 1<=n<=1000 $ and no spaces. All characters of the string will be uppercase letters.
+This problem doesn't have subproblems. You will get 5 points for the correct submission.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the size of the largest pile composed of identical characters that can be seen in a valid result of folding operations on the given string.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>ABRACADABRA
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>ABBBCBDB
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>AB
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first example. Manao can create a pile of three 'A's using the folding "AB|RACAD|ABRA", which results in the following structure:
+`<br></br>ABRA<br></br>DACAR<br></br> AB<br></br>`In the second example, Manao can create a pile of three 'B's using the following folding: "AB|BB|CBDB".
+`<br></br>CBDB<br></br>BB<br></br>AB<br></br>`Another way for Manao to create a pile of three 'B's with "ABBBCBDB" is the following folding: "AB|B|BCBDB".
+`<br></br> BCBDB<br></br> B<br></br>AB<br></br>`In the third example, there are no folds performed and the string is just written in one line.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

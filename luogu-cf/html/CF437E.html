@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>The Child and Polygon - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394076:bisbzfICZO0O+dp8X5C2s4cJTpVFYwonV1QSiWa4qg8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22This%20time%20our%20child%20has%20a%20simple%20polygon.%20He%20has%20to%20find%20the%20number%20of%20ways%20to%20split%20the%20polygon%20into%20non-degenerate%20triangles%2C%20each%20way%20must%20satisfy%20the%20following%20requirements%3A%5Cn%5Cn-%20each%20vertex%20of%20each%20triangle%20is%20one%20of%20the%20polygon%20vertex%3B%5Cn-%20each%20side%20of%20the%20polygon%20must%20be%20the%20side%20of%20exactly%20one%20triangle%3B%5Cn-%20the%20area%20of%20intersection%20of%20every%20two%20triangles%20equals%20to%20zero%2C%20and%20the%20sum%20of%20all%20areas%20of%20triangles%20equals%20to%20the%20area%20of%20the%20polygon%3B%5Cn-%20each%20triangle%20must%20be%20completely%20inside%20the%20polygon%3B%5Cn-%20each%20side%20of%20each%20triangle%20must%20contain%20exactly%20two%20vertices%20of%20the%20polygon.%5Cn%5CnThe%20picture%20below%20depicts%20an%20example%20of%20a%20correct%20splitting.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF437E%5C%2Fa8e2701cc66365983a77c546adbf6d2315ebb4eb.png%29Please%2C%20help%20the%20child.%20Calculate%20the%20described%20number%20of%20ways%20modulo%20%24%201000000007%20%24%20%24%20%2810%5E%7B9%7D%2B7%29%20%24%20for%20him.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%24%20%283%3C%3Dn%3C%3D200%29%20%24%20%5Cu2014%20the%20number%20of%20vertices%20of%20the%20polygon.%20Then%20follow%20%24%20n%20%24%20lines%2C%20each%20line%20containing%20two%20integers.%20The%20%24%20i%20%24%20-th%20line%20contains%20%24%20x_%7Bi%7D%2Cy_%7Bi%7D%20%24%20%24%20%28%7Cx_%7Bi%7D%7C%2C%7Cy_%7Bi%7D%7C%3C%3D10%5E%7B7%7D%29%20%24%20%5Cu2014%20the%20%24%20i%20%24%20-th%20vertex%20of%20the%20polygon%20in%20clockwise%20or%20counterclockwise%20order.%5Cn%5CnIt%27s%20guaranteed%20that%20the%20polygon%20is%20simple.%22%2C%22outputFormat%22%3A%22Output%20the%20number%20of%20ways%20modulo%20%24%201000000007%20%24%20%24%20%2810%5E%7B9%7D%2B7%29%20%24%20.%22%2C%22samples%22%3A%5B%5B%224%5Cn0%200%5Cn0%201%5Cn1%201%5Cn1%200%5Cn%22%2C%222%5Cn%22%5D%2C%5B%224%5Cn0%200%5Cn1%200%5Cn0%201%5Cn-1%200%5Cn%22%2C%221%5Cn%22%5D%2C%5B%225%5Cn0%200%5Cn1%200%5Cn1%201%5Cn0%201%5Cn-2%20-1%5Cn%22%2C%223%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20there%20are%20two%20possible%20splittings%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF437E%5C%2F02e2009a70acb17a1ce2cf1ec7df448a4afdd92f.png%29In%20the%20second%20sample%2C%20there%20are%20only%20one%20possible%20splitting%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF437E%5C%2F2a38e13bdc3c393812a8729aaf5a7d6b365647bf.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F437%5C%2FE%22%2C%22id%22%3A%22437E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%24n%24%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu6c42%5Cu8fd9%5Cu4e2a%5Cu591a%5Cu8fb9%5Cu5f62%5Cu7684%5Cu4e09%5Cu89d2%5Cu5256%5Cu5206%5Cu7684%5Cu65b9%5Cu6848%5Cu6570%5Cr%5Cn%5Cr%5Cnmod%201e9%2B7%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A8%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22CF437E%22%2C%22title%22%3A%22The%20Child%20and%20Polygon%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22The%20Child%20and%20Polygon%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>The Child and Polygon</h1>
+<h2>题意翻译</h2>
+<div>给出$n$个点，求这个多边形的三角剖分的方案数
+mod 1e9+7</div>
+<h2>题目描述</h2>
+<div>This time our child has a simple polygon. He has to find the number of ways to split the polygon into non-degenerate triangles, each way must satisfy the following requirements:
+- each vertex of each triangle is one of the polygon vertex;
+- each side of the polygon must be the side of exactly one triangle;
+- the area of intersection of every two triangles equals to zero, and the sum of all areas of triangles equals to the area of the polygon;
+- each triangle must be completely inside the polygon;
+- each side of each triangle must contain exactly two vertices of the polygon.
+The picture below depicts an example of a correct splitting.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF437E/a8e2701cc66365983a77c546adbf6d2315ebb4eb.png)Please, help the child. Calculate the described number of ways modulo $ 1000000007 $ $ (10^{9}+7) $ for him.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ $ (3<=n<=200) $ — the number of vertices of the polygon. Then follow $ n $ lines, each line containing two integers. The $ i $ -th line contains $ x_{i},y_{i} $ $ (|x_{i}|,|y_{i}|<=10^{7}) $ — the $ i $ -th vertex of the polygon in clockwise or counterclockwise order.
+It's guaranteed that the polygon is simple.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the number of ways modulo $ 1000000007 $ $ (10^{9}+7) $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+0 0
+0 1
+1 1
+1 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+0 0
+1 0
+0 1
+-1 0
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5
+0 0
+1 0
+1 1
+0 1
+-2 -1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, there are two possible splittings:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF437E/02e2009a70acb17a1ce2cf1ec7df448a4afdd92f.png)In the second sample, there are only one possible splitting:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF437E/2a38e13bdc3c393812a8729aaf5a7d6b365647bf.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Acyclic Organic Compounds - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395865:mtdZE4DpuvFybjrCYQ0YzXIAMe5XrbH8Lmc9DuKbAtI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20tree%20%24%20T%20%24%20with%20%24%20n%20%24%20vertices%20%28numbered%20%24%201%20%24%20through%20%24%20n%20%24%20%29%20and%20a%20letter%20in%20each%20vertex.%20The%20tree%20is%20rooted%20at%20vertex%20%24%201%20%24%20.%5Cn%5CnLet%27s%20look%20at%20the%20subtree%20%24%20T_%7Bv%7D%20%24%20of%20some%20vertex%20%24%20v%20%24%20.%20It%20is%20possible%20to%20read%20a%20string%20along%20each%20simple%20path%20starting%20at%20%24%20v%20%24%20and%20ending%20at%20some%20vertex%20in%20%24%20T_%7Bv%7D%20%24%20%28possibly%20%24%20v%20%24%20itself%29.%20Let%27s%20denote%20the%20number%20of%20distinct%20strings%20which%20can%20be%20read%20this%20way%20as%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Fa0c9096effba09473c4b51e3186b592318344485.png%29.%5Cn%5CnAlso%2C%20there%27s%20a%20number%20%24%20c_%7Bv%7D%20%24%20assigned%20to%20each%20vertex%20%24%20v%20%24%20.%20We%20are%20interested%20in%20vertices%20with%20the%20maximum%20value%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Fc561564d7b2aed4877e755dc8d366f0ff87cf302.png%29.%5Cn%5CnYou%20should%20compute%20two%20statistics%3A%20the%20maximum%20value%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Fc561564d7b2aed4877e755dc8d366f0ff87cf302.png%29%20and%20the%20number%20of%20vertices%20%24%20v%20%24%20with%20the%20maximum%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Fc561564d7b2aed4877e755dc8d366f0ff87cf302.png%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D300000%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20of%20the%20tree.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%24%20c_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dc_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29.%5Cn%5CnThe%20third%20line%20contains%20a%20string%20%24%20s%20%24%20consisting%20of%20%24%20n%20%24%20lowercase%20English%20letters%20%5Cu2014%20the%20%24%20i%20%24%20-th%20character%20of%20this%20string%20is%20the%20letter%20in%20vertex%20%24%20i%20%24%20.%5Cn%5CnThe%20following%20%24%20n-1%20%24%20lines%20describe%20the%20tree%20%24%20T%20%24%20.%20Each%20of%20them%20contains%20two%20space-separated%20integers%20%24%20u%20%24%20and%20%24%20v%20%24%20%28%20%24%201%3C%3Du%2Cv%3C%3Dn%20%24%20%29%20indicating%20an%20edge%20between%20vertices%20%24%20u%20%24%20and%20%24%20v%20%24%20.%5Cn%5CnIt%27s%20guaranteed%20that%20the%20input%20will%20describe%20a%20tree.%22%2C%22outputFormat%22%3A%22Print%20two%20lines.%5Cn%5CnOn%20the%20first%20line%2C%20print%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Fab594599a15dce04b620c4b306a1a124f3c93d49.png%29%20over%20all%20%24%201%3C%3Di%3C%3Dn%20%24%20.%5Cn%5CnOn%20the%20second%20line%2C%20print%20the%20number%20of%20vertices%20%24%20v%20%24%20for%20which%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Ff0eef52a01ab9da1eb6f064715fdae90a5a11537.png%29.%22%2C%22samples%22%3A%5B%5B%2210%5Cn1%202%207%2020%2020%2030%2040%2050%2050%2050%5Cncacabbcddd%5Cn1%202%5Cn6%208%5Cn7%202%5Cn6%202%5Cn5%204%5Cn5%209%5Cn3%2010%5Cn2%205%5Cn2%203%5Cn%22%2C%2251%5Cn3%5Cn%22%5D%2C%5B%226%5Cn0%202%204%201%201%201%5Cnraaaba%5Cn1%202%5Cn2%203%5Cn2%204%5Cn2%205%5Cn3%206%5Cn%22%2C%226%5Cn2%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20the%20tree%20looks%20like%20this%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2F9244e4a8ade3af9b76853a18eae8ae654a6d5be1.png%29The%20sets%20of%20strings%20that%20can%20be%20read%20from%20individual%20vertices%20are%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Fb0a25806e20ff995abfb34a167834abd113ae6f1.png%29Finally%2C%20the%20values%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Fc561564d7b2aed4877e755dc8d366f0ff87cf302.png%29%20are%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2F6c3fc4aa4c72ec4c2646ac39d7110bd6544e120f.png%29In%20the%20second%20sample%2C%20the%20values%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2F4c35255ca2e85f9a2c304b6b5d98f8aa96f62b0c.png%29%20are%20%24%20%285%2C4%2C2%2C1%2C1%2C1%29%20%24%20.%20The%20distinct%20strings%20read%20in%20%24%20T_%7B2%7D%20%24%20are%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2F6427dc79a89c97e7e81a3e52fb54938acda3e0b8.png%29%3B%20note%20that%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601D%5C%2Fff39f896bb407bf8e8d94b0a5b47a67e60c595d8.png%29%20can%20be%20read%20down%20to%20vertices%20%24%203%20%24%20or%20%24%204%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F601%5C%2FD%22%2C%22id%22%3A%22601D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF601D%22%2C%22title%22%3A%22Acyclic%20Organic%20Compounds%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Acyclic%20Organic%20Compounds%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Acyclic Organic Compounds</h1>
+<h2>题目描述</h2>
+<div>You are given a tree $ T $ with $ n $ vertices (numbered $ 1 $ through $ n $ ) and a letter in each vertex. The tree is rooted at vertex $ 1 $ .
+Let's look at the subtree $ T_{v} $ of some vertex $ v $ . It is possible to read a string along each simple path starting at $ v $ and ending at some vertex in $ T_{v} $ (possibly $ v $ itself). Let's denote the number of distinct strings which can be read this way as ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/a0c9096effba09473c4b51e3186b592318344485.png).
+Also, there's a number $ c_{v} $ assigned to each vertex $ v $ . We are interested in vertices with the maximum value of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/c561564d7b2aed4877e755dc8d366f0ff87cf302.png).
+You should compute two statistics: the maximum value of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/c561564d7b2aed4877e755dc8d366f0ff87cf302.png) and the number of vertices $ v $ with the maximum ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/c561564d7b2aed4877e755dc8d366f0ff87cf302.png).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ n $ ( $ 1<=n<=300000 $ ) — the number of vertices of the tree.
+The second line contains $ n $ space-separated integers $ c_{i} $ ( $ 0<=c_{i}<=10^{9} $ ).
+The third line contains a string $ s $ consisting of $ n $ lowercase English letters — the $ i $ -th character of this string is the letter in vertex $ i $ .
+The following $ n-1 $ lines describe the tree $ T $ . Each of them contains two space-separated integers $ u $ and $ v $ ( $ 1<=u,v<=n $ ) indicating an edge between vertices $ u $ and $ v $ .
+It's guaranteed that the input will describe a tree.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print two lines.
+On the first line, print ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/ab594599a15dce04b620c4b306a1a124f3c93d49.png) over all $ 1<=i<=n $ .
+On the second line, print the number of vertices $ v $ for which ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/f0eef52a01ab9da1eb6f064715fdae90a5a11537.png).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10
+1 2 7 20 20 30 40 50 50 50
+cacabbcddd
+1 2
+6 8
+7 2
+6 2
+5 4
+5 9
+3 10
+2 5
+2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>51
+3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6
+0 2 4 1 1 1
+raaaba
+1 2
+2 3
+2 4
+2 5
+3 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>6
+2
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, the tree looks like this:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/9244e4a8ade3af9b76853a18eae8ae654a6d5be1.png)The sets of strings that can be read from individual vertices are:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/b0a25806e20ff995abfb34a167834abd113ae6f1.png)Finally, the values of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/c561564d7b2aed4877e755dc8d366f0ff87cf302.png) are:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/6c3fc4aa4c72ec4c2646ac39d7110bd6544e120f.png)In the second sample, the values of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/4c35255ca2e85f9a2c304b6b5d98f8aa96f62b0c.png) are $ (5,4,2,1,1,1) $ . The distinct strings read in $ T_{2} $ are ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/6427dc79a89c97e7e81a3e52fb54938acda3e0b8.png); note that ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601D/ff39f896bb407bf8e8d94b0a5b47a67e60c595d8.png) can be read down to vertices $ 3 $ or $ 4 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

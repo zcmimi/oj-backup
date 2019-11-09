@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Restoring Increasing Sequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394639:icEniOiTozI7sIWvsxvUJKE/yZvXtd1eX4FC34mw1dI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Peter%20wrote%20on%20the%20board%20a%20strictly%20increasing%20sequence%20of%20positive%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20.%20Then%20Vasil%20replaced%20some%20digits%20in%20the%20numbers%20of%20this%20sequence%20by%20question%20marks.%20Thus%2C%20each%20question%20mark%20corresponds%20to%20exactly%20one%20lost%20digit.%5Cn%5CnRestore%20the%20the%20original%20sequence%20knowing%20digits%20remaining%20on%20the%20board.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20sequence.%20Next%20%24%20n%20%24%20lines%20contain%20one%20element%20of%20the%20sequence%20each.%20Each%20element%20consists%20only%20of%20digits%20and%20question%20marks.%20No%20element%20starts%20from%20digit%200.%20Each%20element%20has%20length%20from%201%20to%208%20characters%2C%20inclusive.%22%2C%22outputFormat%22%3A%22If%20the%20answer%20exists%2C%20print%20in%20the%20first%20line%20%5C%22YES%5C%22%20%28without%20the%20quotes%29.%20Next%20%24%20n%20%24%20lines%20must%20contain%20the%20sequence%20of%20positive%20integers%20%5Cu2014%20a%20possible%20variant%20of%20Peter%27s%20sequence.%20The%20found%20sequence%20must%20be%20strictly%20increasing%2C%20it%20must%20be%20transformed%20from%20the%20given%20one%20by%20replacing%20each%20question%20mark%20by%20a%20single%20digit.%20All%20numbers%20on%20the%20resulting%20sequence%20must%20be%20written%20without%20leading%20zeroes.%20If%20there%20are%20multiple%20solutions%2C%20print%20any%20of%20them.%5Cn%5CnIf%20there%20is%20no%20answer%2C%20print%20a%20single%20line%20%5C%22NO%5C%22%20%28without%20the%20quotes%29.%22%2C%22samples%22%3A%5B%5B%223%5Cn%3F%5Cn18%5Cn1%3F%5Cn%22%2C%22YES%5Cn1%5Cn18%5Cn19%5Cn%22%5D%2C%5B%222%5Cn%3F%3F%5Cn%3F%5Cn%22%2C%22NO%5Cn%22%5D%2C%5B%225%5Cn12224%5Cn12%3F%3F5%5Cn12226%5Cn%3F0000%5Cn%3F00000%5Cn%22%2C%22YES%5Cn12224%5Cn12225%5Cn12226%5Cn20000%5Cn100000%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F490%5C%2FE%22%2C%22id%22%3A%22490E%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff1a%2A%2A%5Cn%5CnPeter%5Cu5728%5Cu9ed1%5Cu677f%5Cu4e0a%5Cu5199%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu4e25%5Cu683c%5Cu9012%5Cu589e%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217a1%2Ca2%2C....%2Can%5Cu3002Vasil%5Cu5c06%5Cu5176%5Cu4e2d%5Cu7684%5Cu67d0%5Cu4e9b%5Cu6570%5Cu4f4d%5Cu6539%5Cu6210%5Cu4e86%5Cu95ee%5Cu53f7%28%5C%22%3F%5C%22%29%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu95ee%5Cu53f7%5Cu4ee3%5Cu8868%5Cu4e00%5Cu4e2a%5Cu6570%5Cu4f4d%5Cn%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Cuff1a%5Cn%5Cn%5Cu8f93%5Cu5165%5Cuff1a%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%281%3C%3Dn%3C%3D100000%29%5Cuff0c%5Cu8868%5Cu793a%5Cu5e8f%5Cu5217%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cn%5Cu7b2c2%5Cu884c%5Cu5230%5Cu7b2cn%2B1%5Cu884c%5Cu6bcf%5Cu884c%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu63cf%5Cu8ff0%5Cu5e8f%5Cu5217%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5143%5Cu7d20%5Cu90fd%5Cu7531%5Cu6570%5Cu5b57%5Cu548c%5C%22%3F%5C%22%5Cu7ec4%5Cu6210%5Cu4e14%5Cu4e0d%5Cu542b%5Cu524d%5Cu5bfc0%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5143%5Cu7d20%5Cu7684%5Cu957f%5Cu5ea6l%5Cu6ee1%5Cu8db31%3C%3Dl%3C%3D8%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cuff1a%5Cn%5Cn%5Cu5982%5Cu679c%5Cu5b58%5Cu5728%5Cu7b26%5Cu5408%5Cu8981%5Cu6c42%5Cu7684%5Cu89e3%5Cuff0c%5Cu5728%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5C%22YES%5C%22%28%5Cu4e0d%5Cu542b%5Cu5f15%5Cu53f7%29%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684n%5Cu884c%5Cu8f93%5Cu51fa%5Cu5e8f%5Cu5217%5Cu7684%5Cu4e00%5Cu79cd%5Cu53ef%5Cu80fd%5Cu7684%5Cu60c5%5Cu51b5%5Cuff0c%5Cu5e8f%5Cu5217%5Cu5fc5%5Cu987b%5Cu4e25%5Cu683c%5Cu9012%5Cu589e%5Cuff0c%5Cu4e14%5Cu4e0d%5Cu80fd%5Cu6539%5Cu53d8%5Cu539f%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu6570%5Cu5b57%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu548c%5Cu6570%5Cu503c%28%5Cu4ec5%5Cu6539%5Cu53d8%5Cu95ee%5Cu53f7%29%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e2d%5Cu7684%5Cu6240%5Cu6709%5Cu6570%5Cu636e%5Cu5747%5Cu4e0d%5Cu80fd%5Cu5305%5Cu542b%5Cu524d%5Cu5bfc0%5Cu3002%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu7ec4%5Cu89e3%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu7ec4%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4e0d%5Cu5b58%5Cu5728%5Cu7b26%5Cu5408%5Cu8981%5Cu6c42%5Cu7684%5Cu89e3%5Cuff0c%5Cu4ec5%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5C%22NO%5C%22%28%5Cu4e0d%5Cu542b%5Cu5f15%5Cu53f7%29%22%2C%22tags%22%3A%5B2%2C111%2C318%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A48%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF490E%22%2C%22title%22%3A%22Restoring%20Increasing%20Sequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A51743%2C%22title%22%3A%22%5Cu63d0%5Cu9ad8%2B%20%5Cu6c42%5Cu52a9%20CF490E%22%2C%22forum%22%3A%7B%22id%22%3A10689%2C%22name%22%3A%22CF490E%20Restoring%20Increasing%20Sequence%22%2C%22slug%22%3A%22CF490E%22%7D%7D%2C%7B%22id%22%3A51609%2C%22title%22%3A%22%5Cu5927%5Cu81f4%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10689%2C%22name%22%3A%22CF490E%20Restoring%20Increasing%20Sequence%22%2C%22slug%22%3A%22CF490E%22%7D%7D%2C%7B%22id%22%3A51606%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10689%2C%22name%22%3A%22CF490E%20Restoring%20Increasing%20Sequence%22%2C%22slug%22%3A%22CF490E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Restoring%20Increasing%20Sequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Restoring Increasing Sequence</h1>
+<h2>题意翻译</h2>
+<div>**题目描述：**
+Peter在黑板上写了一个严格递增的正整数序列a1,a2,....,an。Vasil将其中的某些数位改成了问号("?")，每个问号代表一个数位
+**输入输出格式**：
+输入：
+输入文件的第一行是一个正整数n(1<=n<=100000)，表示序列的长度。
+第2行到第n+1行每行给出一个元素描述序列，每个元素都由数字和"?"组成且不含前导0，每个元素的长度l满足1<=l<=8
+输出：
+如果存在符合要求的解，在第一行输出一行"YES"(不含引号)，接下来的n行输出序列的一种可能的情况，序列必须严格递增，且不能改变原序列中数字的位置和数值(仅改变问号)，输出中的所有数据均不能包含前导0。如果有多组解，输出任意一组。
+如果不存在符合要求的解，仅输出一行"NO"(不含引号)</div>
+<h2>题目描述</h2>
+<div>Peter wrote on the board a strictly increasing sequence of positive integers $ a_{1},a_{2},...,a_{n} $ . Then Vasil replaced some digits in the numbers of this sequence by question marks. Thus, each question mark corresponds to exactly one lost digit.
+Restore the the original sequence knowing digits remaining on the board.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains integer $ n $ ( $ 1<=n<=10^{5} $ ) — the length of the sequence. Next $ n $ lines contain one element of the sequence each. Each element consists only of digits and question marks. No element starts from digit 0. Each element has length from 1 to 8 characters, inclusive.</div>
+<h3>输出格式</h3>
+<br />
+<div>If the answer exists, print in the first line "YES" (without the quotes). Next $ n $ lines must contain the sequence of positive integers — a possible variant of Peter's sequence. The found sequence must be strictly increasing, it must be transformed from the given one by replacing each question mark by a single digit. All numbers on the resulting sequence must be written without leading zeroes. If there are multiple solutions, print any of them.
+If there is no answer, print a single line "NO" (without the quotes).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+?
+18
+1?
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES
+1
+18
+19
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+??
+?
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>NO
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5
+12224
+12??5
+12226
+?0000
+?00000
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>YES
+12224
+12225
+12226
+20000
+100000
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

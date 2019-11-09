@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Preorder Test - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396148:/+5ShtQBXl+/gkeqeqxML3JxNdKRFVWqXw3STioSlKo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22For%20his%20computer%20science%20class%2C%20Jacob%20builds%20a%20model%20tree%20with%20sticks%20and%20balls%20containing%20%24%20n%20%24%20nodes%20in%20the%20shape%20of%20a%20tree.%20Jacob%20has%20spent%20%24%20a_%7Bi%7D%20%24%20minutes%20building%20the%20%24%20i%20%24%20-th%20ball%20in%20the%20tree.%5Cn%5CnJacob%27s%20teacher%20will%20evaluate%20his%20model%20and%20grade%20Jacob%20based%20on%20the%20effort%20he%20has%20put%20in.%20However%2C%20she%20does%20not%20have%20enough%20time%20to%20search%20his%20whole%20tree%20to%20determine%20this%3B%20Jacob%20knows%20that%20she%20will%20examine%20the%20first%20%24%20k%20%24%20nodes%20in%20a%20DFS-order%20traversal%20of%20the%20tree.%20She%20will%20then%20assign%20Jacob%20a%20grade%20equal%20to%20the%20minimum%20%24%20a_%7Bi%7D%20%24%20she%20finds%20among%20those%20%24%20k%20%24%20nodes.%5Cn%5CnThough%20Jacob%20does%20not%20have%20enough%20time%20to%20rebuild%20his%20model%2C%20he%20can%20choose%20the%20root%20node%20that%20his%20teacher%20starts%20from.%20Furthermore%2C%20he%20can%20rearrange%20the%20list%20of%20neighbors%20of%20each%20node%20in%20any%20order%20he%20likes.%20Help%20Jacob%20find%20the%20best%20grade%20he%20can%20get%20on%20this%20assignment.%5Cn%5CnA%20DFS-order%20traversal%20is%20an%20ordering%20of%20the%20nodes%20of%20a%20rooted%20tree%2C%20built%20by%20a%20recursive%20DFS-procedure%20initially%20called%20on%20the%20root%20of%20the%20tree.%20When%20called%20on%20a%20given%20node%20%24%20v%20%24%20%2C%20the%20procedure%20does%20the%20following%3A%5Cn%5Cn1.%20Print%20%24%20v%20%24%20.%5Cn2.%20Traverse%20the%20list%20of%20neighbors%20of%20the%20node%20%24%20v%20%24%20in%20order%20and%20iteratively%20call%20DFS-procedure%20on%20each%20one.%20Do%20not%20call%20DFS-procedure%20on%20node%20%24%20u%20%24%20if%20you%20came%20to%20node%20%24%20v%20%24%20directly%20from%20%24%20u%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20positive%20integers%2C%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%202%3C%3Dn%3C%3D200000%20%24%20%2C%20%24%201%3C%3Dk%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20number%20of%20balls%20in%20Jacob%27s%20tree%20and%20the%20number%20of%20balls%20the%20teacher%20will%20inspect.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%2C%20%24%20a_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D1000000%20%24%20%29%2C%20the%20time%20Jacob%20used%20to%20build%20the%20%24%20i%20%24%20-th%20ball.%5Cn%5CnEach%20of%20the%20next%20%24%20n-1%20%24%20lines%20contains%20two%20integers%20%24%20u_%7Bi%7D%20%24%20%2C%20%24%20v_%7Bi%7D%20%24%20%28%20%24%201%3C%3Du_%7Bi%7D%2Cv_%7Bi%7D%3C%3Dn%20%24%20%2C%20%24%20u_%7Bi%7D%5Cu2260v_%7Bi%7D%20%24%20%29%20representing%20a%20connection%20in%20Jacob%27s%20tree%20between%20balls%20%24%20u_%7Bi%7D%20%24%20and%20%24%20v_%7Bi%7D%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20maximum%20grade%20Jacob%20can%20get%20by%20picking%20the%20right%20root%20of%20the%20tree%20and%20rearranging%20the%20list%20of%20neighbors.%22%2C%22samples%22%3A%5B%5B%225%203%5Cn3%206%201%204%202%5Cn1%202%5Cn2%204%5Cn2%205%5Cn1%203%5Cn%22%2C%223%5Cn%22%5D%2C%5B%224%202%5Cn1%205%205%205%5Cn1%202%5Cn1%203%5Cn1%204%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20Jacob%20can%20root%20the%20tree%20at%20node%20%24%202%20%24%20and%20order%20%24%202%20%24%20%27s%20neighbors%20in%20the%20order%20%24%204%20%24%20%2C%20%24%201%20%24%20%2C%20%24%205%20%24%20%28all%20other%20nodes%20have%20at%20most%20two%20neighbors%29.%20The%20resulting%20preorder%20traversal%20is%20%24%202%20%24%20%2C%20%24%204%20%24%20%2C%20%24%201%20%24%20%2C%20%24%203%20%24%20%2C%20%24%205%20%24%20%2C%20and%20the%20minimum%20%24%20a_%7Bi%7D%20%24%20of%20the%20first%20%24%203%20%24%20nodes%20is%20%24%203%20%24%20.%5Cn%5CnIn%20the%20second%20sample%2C%20it%20is%20clear%20that%20any%20preorder%20traversal%20will%20contain%20node%20%24%201%20%24%20as%20either%20its%20first%20or%20second%20node%2C%20so%20Jacob%20cannot%20do%20better%20than%20a%20grade%20of%20%24%201%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B7000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F627%5C%2FD%22%2C%22id%22%3A%22627D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu68f5%5Cu65e0%5Cu6839%5Cu6811%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6743%5Cu503c%5Cuff0c%5Cu73b0%5Cu5728%5Cu8981%5Cu8ba9dfs%5Cu5e8f%5Cu7684%5Cu524dk%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu6700%5Cu5927%5Cuff0c%5Cu6c42%5Cu51fa%5Cu8fd9%5Cu4e2a%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B45%2C127%2C266%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A39%2C%22totalAccepted%22%3A17%2C%22pid%22%3A%22CF627D%22%2C%22title%22%3A%22Preorder%20Test%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A41592%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A10132%2C%22name%22%3A%22CF627D%20Preorder%20Test%22%2C%22slug%22%3A%22CF627D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Preorder%20Test%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Preorder Test</h1>
+<h2>题意翻译</h2>
+<div>给出一棵无根树，每个节点有一个权值，现在要让dfs序的前k个结点的最小值最大，求出这个值。</div>
+<h2>题目描述</h2>
+<div>For his computer science class, Jacob builds a model tree with sticks and balls containing $ n $ nodes in the shape of a tree. Jacob has spent $ a_{i} $ minutes building the $ i $ -th ball in the tree.
+Jacob's teacher will evaluate his model and grade Jacob based on the effort he has put in. However, she does not have enough time to search his whole tree to determine this; Jacob knows that she will examine the first $ k $ nodes in a DFS-order traversal of the tree. She will then assign Jacob a grade equal to the minimum $ a_{i} $ she finds among those $ k $ nodes.
+Though Jacob does not have enough time to rebuild his model, he can choose the root node that his teacher starts from. Furthermore, he can rearrange the list of neighbors of each node in any order he likes. Help Jacob find the best grade he can get on this assignment.
+A DFS-order traversal is an ordering of the nodes of a rooted tree, built by a recursive DFS-procedure initially called on the root of the tree. When called on a given node $ v $ , the procedure does the following:
+1. Print $ v $ .
+2. Traverse the list of neighbors of the node $ v $ in order and iteratively call DFS-procedure on each one. Do not call DFS-procedure on node $ u $ if you came to node $ v $ directly from $ u $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two positive integers, $ n $ and $ k $ ( $ 2<=n<=200000 $ , $ 1<=k<=n $ ) — the number of balls in Jacob's tree and the number of balls the teacher will inspect.
+The second line contains $ n $ integers, $ a_{i} $ ( $ 1<=a_{i}<=1000000 $ ), the time Jacob used to build the $ i $ -th ball.
+Each of the next $ n-1 $ lines contains two integers $ u_{i} $ , $ v_{i} $ ( $ 1<=u_{i},v_{i}<=n $ , $ u_{i}≠v_{i} $ ) representing a connection in Jacob's tree between balls $ u_{i} $ and $ v_{i} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the maximum grade Jacob can get by picking the right root of the tree and rearranging the list of neighbors.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3
+3 6 1 4 2
+1 2
+2 4
+2 5
+1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 2
+1 5 5 5
+1 2
+1 3
+1 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, Jacob can root the tree at node $ 2 $ and order $ 2 $ 's neighbors in the order $ 4 $ , $ 1 $ , $ 5 $ (all other nodes have at most two neighbors). The resulting preorder traversal is $ 2 $ , $ 4 $ , $ 1 $ , $ 3 $ , $ 5 $ , and the minimum $ a_{i} $ of the first $ 3 $ nodes is $ 3 $ .
+In the second sample, it is clear that any preorder traversal will contain node $ 1 $ as either its first or second node, so Jacob cannot do better than a grade of $ 1 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

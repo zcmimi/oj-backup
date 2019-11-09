@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Heap Operations - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396622:wJTgtMh2R8DZCgeIV9jSVksGSWXvrmsRPu7KL28x/ZA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Petya%20has%20recently%20learned%20data%20structure%20named%20%5C%22Binary%20heap%5C%22.%5Cn%5CnThe%20heap%20he%20is%20now%20operating%20with%20allows%20the%20following%20operations%3A%5Cn%5Cn-%20put%20the%20given%20number%20into%20the%20heap%3B%5Cn-%20get%20the%20value%20of%20the%20minimum%20element%20in%20the%20heap%3B%5Cn-%20extract%20the%20minimum%20element%20from%20the%20heap%3B%5Cn%5CnThus%2C%20at%20any%20moment%20of%20time%20the%20heap%20contains%20several%20integers%20%28possibly%20none%29%2C%20some%20of%20them%20might%20be%20equal.%5Cn%5CnIn%20order%20to%20better%20learn%20this%20data%20structure%20Petya%20took%20an%20empty%20heap%20and%20applied%20some%20operations%20above%20to%20it.%20Also%2C%20he%20carefully%20wrote%20down%20all%20the%20operations%20and%20their%20results%20to%20his%20event%20log%2C%20following%20the%20format%3A%5Cn%5Cn-%20insert%20%24%20x%20%24%20%5Cu2014%20put%20the%20element%20with%20value%20%24%20x%20%24%20in%20the%20heap%3B%5Cn-%20getMin%20%24%20x%20%24%20%5Cu2014%20the%20value%20of%20the%20minimum%20element%20contained%20in%20the%20heap%20was%20equal%20to%20%24%20x%20%24%20%3B%5Cn-%20removeMin%20%5Cu2014%20the%20minimum%20element%20was%20extracted%20from%20the%20heap%20%28only%20one%20instance%2C%20if%20there%20were%20many%29.%5Cn%5CnAll%20the%20operations%20were%20correct%2C%20i.e.%20there%20was%20at%20least%20one%20element%20in%20the%20heap%20each%20time%20getMin%20or%20removeMin%20operations%20were%20applied.%5Cn%5CnWhile%20Petya%20was%20away%20for%20a%20lunch%2C%20his%20little%20brother%20Vova%20came%20to%20the%20room%2C%20took%20away%20some%20of%20the%20pages%20from%20Petya%27s%20log%20and%20used%20them%20to%20make%20paper%20boats.%5Cn%5CnNow%20Vova%20is%20worried%2C%20if%20he%20made%20Petya%27s%20sequence%20of%20operations%20inconsistent.%20For%20example%2C%20if%20one%20apply%20operations%20one-by-one%20in%20the%20order%20they%20are%20written%20in%20the%20event%20log%2C%20results%20of%20getMin%20operations%20might%20differ%20from%20the%20results%20recorded%20by%20Petya%2C%20and%20some%20of%20getMin%20or%20removeMin%20operations%20may%20be%20incorrect%2C%20as%20the%20heap%20is%20empty%20at%20the%20moment%20they%20are%20applied.%5Cn%5CnNow%20Vova%20wants%20to%20add%20some%20new%20operation%20records%20to%20the%20event%20log%20in%20order%20to%20make%20the%20resulting%20sequence%20of%20operations%20correct.%20That%20is%2C%20the%20result%20of%20each%20getMin%20operation%20is%20equal%20to%20the%20result%20in%20the%20record%2C%20and%20the%20heap%20is%20non-empty%20when%20getMin%20ad%20removeMin%20are%20applied.%20Vova%20wants%20to%20complete%20this%20as%20fast%20as%20possible%2C%20as%20the%20Petya%20may%20get%20back%20at%20any%20moment.%20He%20asks%20you%20to%20add%20the%20least%20possible%20number%20of%20operation%20records%20to%20the%20current%20log.%20Note%20that%20arbitrary%20number%20of%20operations%20may%20be%20added%20at%20the%20beginning%2C%20between%20any%20two%20other%20operations%2C%20or%20at%20the%20end%20of%20the%20log.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20the%20only%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D100000%20%24%20%29%20%5Cu2014%20the%20number%20of%20the%20records%20left%20in%20Petya%27s%20journal.%5Cn%5CnEach%20of%20the%20following%20%24%20n%20%24%20lines%20describe%20the%20records%20in%20the%20current%20log%20in%20the%20order%20they%20are%20applied.%20Format%20described%20in%20the%20statement%20is%20used.%20All%20numbers%20in%20the%20input%20are%20integers%20not%20exceeding%20%24%2010%5E%7B9%7D%20%24%20by%20their%20absolute%20value.%22%2C%22outputFormat%22%3A%22The%20first%20line%20of%20the%20output%20should%20contain%20a%20single%20integer%20%24%20m%20%24%20%5Cu2014%20the%20minimum%20possible%20number%20of%20records%20in%20the%20modified%20sequence%20of%20operations.%5Cn%5CnNext%20%24%20m%20%24%20lines%20should%20contain%20the%20corrected%20sequence%20of%20records%20following%20the%20format%20of%20the%20input%20%28described%20in%20the%20statement%29%2C%20one%20per%20line%20and%20in%20the%20order%20they%20are%20applied.%20All%20the%20numbers%20in%20the%20output%20should%20be%20integers%20not%20exceeding%20%24%2010%5E%7B9%7D%20%24%20by%20their%20absolute%20value.%5Cn%5CnNote%20that%20the%20input%20sequence%20of%20operations%20must%20be%20the%20subsequence%20of%20the%20output%20sequence.%5Cn%5CnIt%27s%20guaranteed%20that%20there%20exists%20the%20correct%20answer%20consisting%20of%20no%20more%20than%20%24%201000000%20%24%20operations.%22%2C%22samples%22%3A%5B%5B%222%5Cninsert%203%5CngetMin%204%5Cn%22%2C%224%5Cninsert%203%5CnremoveMin%5Cninsert%204%5CngetMin%204%5Cn%22%5D%2C%5B%224%5Cninsert%201%5Cninsert%201%5CnremoveMin%5CngetMin%202%5Cn%22%2C%226%5Cninsert%201%5Cninsert%201%5CnremoveMin%5CnremoveMin%5Cninsert%202%5CngetMin%202%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20after%20number%20%24%203%20%24%20is%20inserted%20into%20the%20heap%2C%20the%20minimum%20number%20is%20%24%203%20%24%20.%20To%20make%20the%20result%20of%20the%20first%20getMin%20equal%20to%20%24%204%20%24%20one%20should%20firstly%20remove%20number%20%24%203%20%24%20from%20the%20heap%20and%20then%20add%20number%20%24%204%20%24%20into%20the%20heap.%5Cn%5CnIn%20the%20second%20sample%20case%20number%20%24%201%20%24%20is%20inserted%20two%20times%2C%20so%20should%20be%20similarly%20removed%20twice.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F681%5C%2FC%22%2C%22id%22%3A%22681C%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cuff1a%5Cu5806%5Cu7684%5Cu64cd%5Cu4f5c%5Cn%5Cn%5Cu9898%5Cu9762%5Cuff1a%5Cn%5CnPetya%5Cu8fd1%5Cu65e5%5Cu5b66%5Cu4e60%5Cu4e86%5Cu4e00%5Cu79cd%5Cu540d%5Cu4e3a%5C%22%5Cu4e8c%5Cu5143%5Cu5806%5C%22%5Cu7684%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cu3002%5Cn%5Cn%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cu652f%5Cu6301%5Cu4ee5%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn%5Cn-%5Cu5c06%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu6570%5Cu5b57%5Cu653e%5Cu5165%5Cu5806%5Cu4e2d%5Cuff1b%5Cn%5Cn-%5Cu53d6%5Cu5f97%5Cu5806%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%5Cu5143%5Cu7d20%5Cu7684%5Cu503c%5Cuff1b%5Cn%5Cn-%5Cu53d6%5Cu51fa%28%5Cu53bb%5Cu9664%29%5Cu5806%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%5Cu5143%5Cu7d20%5Cuff1b%5Cn%5Cn%5Cu4e8e%5Cu662f%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu5806%5Cu5728%5Cu4efb%5Cu4f55%5Cu65f6%5Cu5019%5Cu90fd%5Cu5305%5Cu542b%5Cu6570%5Cu4e2a%5Cu6574%5Cu6570%28%5Cu53ef%5Cu80fd%5Cu662f%5Cu4e00%5Cu4e2a%29%5Cuff0c%5Cu5b83%5Cu4eec%5Cu5f53%5Cu4e2d%5Cu6709%5Cu4e00%5Cu4e9b%5Cu662f%5Cu76f8%5Cu7b49%5Cu7684%5Cu3002%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu66f4%5Cu597d%5Cu5730%5Cu5b66%5Cu4e60%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cuff0cPetya%5Cu521b%5Cu7acb%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu7684%5Cu5806%5Cu5e76%5Cu5728%5Cu4e0a%5Cu9762%5Cu5e94%5Cu7528%5Cu4e86%5Cu4e00%5Cu4e9b%5Cu64cd%5Cu4f5c%5Cu3002%5Cu540c%5Cu65f6%5Cuff0c%5Cu4ed6%5Cu5c0f%5Cu5fc3%5Cu7ffc%5Cu7ffc%5Cu5730%5Cu5728%5Cu4ed6%5Cu7684%5Cu65e5%5Cu5fd7%5Cu4e2d%5Cu5199%5Cu4e0b%5Cu4e86%5Cu6240%5Cu6709%5Cu7684%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu5982%5Cu4e0b%5Cuff1a%5Cn%5Cninsert%20x%20%5Cu2014%20%5Cu5c06%5Cu4e00%5Cu4e2a%5Cu503c%5Cu4e3ax%5Cu7684%5Cu5143%5Cu7d20%5Cu63d2%5Cu5165%5Cu5806%5Cu4e2d%3B%5Cn%5CngetMin%20x%20%5Cu2014%20%5Cu8fd9%5Cu4e2a%5Cu65f6%5Cu5019%5Cuff0c%5Cu5806%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%5Cu5143%5Cu7d20%5Cu7684%5Cu503c%5Cu4e3ax.%5Cn%5CnremoveMin%20%5Cu2014%20%5Cu79fb%5Cu9664%5Cu5806%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%5Cu5143%5Cu7d20%28%5Cu82e5%5Cu6709%5Cu591a%5Cu4e2a%5Cu76f8%5Cu540c%5Cuff0c%5Cu53ea%5Cu79fb%5Cu9664%5Cu5176%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%29.%5Cn%5Cn%5Cu6240%5Cu6709%5Cu7684%5Cu64cd%5Cu4f5c%5Cu90fd%5Cu662f%5Cu4e0d%5Cu77db%5Cu76fe%5Cu7684%5Cu3002%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu5f53%5Cu5e94%5Cu7528%20getMin%20%5Cu6216%5Cu8005%20removeMin%20%5Cu64cd%5Cu4f5c%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu5806%5Cu4e2d%5Cu6709%5Cu81f3%5Cu5c11%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu3002%5Cn%5Cn%5Cu5f53Petya%5Cu53bb%5Cu5403%5Cu5348%5Cu996d%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu4ed6%5Cu7684%5Cu5f1f%5Cu5f1fVova%5Cu8fdb%5Cu5165%5Cu4e86%5Cu4ed6%5Cu7684%5Cu623f%5Cu95f4%5Cuff0c%5Cu62ff%5Cu8d70%5Cu4e86Petya%5Cu65e5%5Cu5fd7%5Cu4e2d%5Cu7684%5Cu6570%5Cu9875%5Cu6765%5Cu505a%5Cu7eb8%5Cu8239%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728Vova%5Cu975e%5Cu5e38%5Cu5730%5Cu7126%5Cu8651%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu4ed6%5Cu53ef%5Cu80fd%5Cu5df2%5Cu7ecf%5Cu8ba9Petya%5Cu7684%5Cu4e00%5Cu7cfb%5Cu5217%5Cu64cd%5Cu4f5c%5Cu53d8%5Cu5f97%5Cu524d%5Cu540e%5Cu77db%5Cu76fe%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5982%5Cu679c%5Cu4e00%5Cu4e2a%5Cu4e00%5Cu4e2a%5Cu5730%5Cu6267%5Cu884c%5Cu65e5%5Cu5fd7%5Cu4e0a%5Cu6240%5Cu5199%5Cu7740%5Cu7684%5Cu64cd%5Cu4f5c%5Cuff0cgetMin%5Cu64cd%5Cu4f5c%5Cu6240%5Cu53d6%5Cu5f97%5Cu7684%5Cu7ed3%5Cu679c%5Cu53ef%5Cu80fd%5Cu4e0ePetya%5Cu8bb0%5Cu5f55%5Cu7684%5Cu7ed3%5Cu679c%5Cu4e0d%5Cu540c%5Cuff0c%5Cu800c%5Cu4e14%5Cu5982%5Cu679c%5Cu8fd9%5Cu4e2a%5Cu65f6%5Cu5019%5Cu5806%5Cu662f%5Cu7a7a%5Cu7684%5Cuff0c%5Cu90a3%5Cu4e48%20getMin%20%5Cu548c%20removeMin%20%5Cu64cd%5Cu4f5c%5Cu5c06%5Cu4f1a%5Cu4ea7%5Cu751f%5Cu9519%5Cu8bef%5Cu3002%5Cn%5CnVova%5Cu5e0c%5Cu671b%5Cu5728%5Cu65e5%5Cu5fd7%5Cu4e2d%5Cu6dfb%5Cu52a0%5Cu4e00%5Cu4e9b%5Cu65b0%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6765%5Cu8ba9%5Cu5404%5Cu9879%5Cu64cd%5Cu4f5c%5Cu7684%5Cu7ed3%5Cu679c%5Cu6b63%5Cu786e%5Cu3002%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu6bcf%5Cu4e2a%20getMin%20%5Cu64cd%5Cu4f5c%5Cu6240%5Cu5f97%5Cu5230%5Cu7684%5Cu7ed3%5Cu679c%5Cu5fc5%5Cu987b%5Cu4e0e%5Cu65e5%5Cu5fd7%5Cu4e2d%5Cu8bb0%5Cu5f55%5Cu7684%5Cu76f8%5Cu543b%5Cu5408%5Cuff0c%5Cu4e14%5Cu4e0d%5Cu4f1a%5Cu51fa%5Cu73b0%5Cu64cd%5Cu4f5c%5Cu524d%5Cu540e%5Cu77db%5Cu76fe%5Cu6216%5Cu8005%5Cu5bfc%5Cu81f4%5Cu9519%5Cu8bef%5Cu3002Vova%5Cu60f3%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5feb%5Cu5730%5Cu5b8c%5Cu6210%5Cu8fd9%5Cu4e9b%5Cuff0c%5Cu56e0%5Cu4e3aPetya%5Cu5f88%5Cu5feb%5Cu5c31%5Cu4f1a%5Cu56de%5Cu6765%5Cu3002%5Cu73b0%5Cu5728Vova%5Cu60f3%5Cu8981%5Cu4f60%5Cu5728%5Cu65e5%5Cu5fd7%5Cu4e2d%5Cu6dfb%5Cu52a0%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5c11%5Cu7684%5Cu64cd%5Cu4f5c%5Cu7eaa%5Cu5f55%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu8bb0%5Cu5f55%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu6dfb%5Cu52a0%5Cu5728%5Cu65e5%5Cu5fd7%5Cu7684%5Cu4efb%5Cu4f55%5Cu4f4d%5Cu7f6e%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%20%281%3C%3Dn%3C%3D100000%29%20%5Cuff0c%5Cu4ee3%5Cu8868%5Cu73b0%5Cu5728%5Cu65e5%5Cu5fd7%5Cu4e2d%5Cu5269%5Cu4f59%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765n%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu73b0%5Cu5728%5Cu65e5%5Cu5fd7%5Cu4e2d%5Cu5269%5Cu4f59%5Cu7684%5Cu6bcf%5Cu4e00%5Cu9879%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6240%5Cu6709%5Cu63d2%5Cu5165%5Cu5806%5Cu4e2d%5Cu7684%5Cu6570%5Cu7684%5Cu7edd%5Cu5bf9%5Cu503c%5Cu90fd%5Cu4e0d%5Cu8d85%5Cu8fc710%5E9.%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5e94%5Cu8be5%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5355%5Cu72ec%5Cu7684%5Cu6574%5Cu6570m%5Cuff0c%5Cu4ee3%5Cu8868%5Cu6700%5Cu5c0f%5Cu7684%5Cu66f4%5Cu6539%5Cu540e%5Cu7684%5Cu65e5%5Cu5fd7%5Cu6587%5Cu4ef6%5Cu5305%5Cu542b%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765m%5Cu884c%5Cu8f93%5Cu51fa%5Cu66f4%5Cu6539%5Cu540e%5Cu7684%5Cu6b63%5Cu786e%5Cu65e5%5Cu5fd7%5Cuff0c%5Cu6309%5Cu987a%5Cu5e8f%5Cu5730%5Cu6bcf%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu64cd%5Cu4f5c%5Cu540d%5Cu79f0%5Cu548c%5Cu53c2%5Cu6570%5Cu6216%5Cu8005%5Cu5f97%5Cu5230%5Cu7684%5Cu7ed3%5Cu679c%5Cuff0c%5Cu6240%5Cu6709%5Cu8f93%5Cu51fa%5Cu7684%5Cu6570%5Cu5b57%5Cu90fd%5Cu5e94%5Cu8be5%5Cu662f%5Cu6574%5Cu6570%5Cu800c%5Cu4e14%5Cu7edd%5Cu5bf9%5Cu503c%5Cu4e0d%5Cu5927%5Cu4e8e10%5E9.%5Cn%5Cn%5Cu4fdd%5Cu8bc1%5Cu6700%5Cu540e%5Cu6b63%5Cu786e%5Cu7684%5Cu64cd%5Cu4f5c%5Cu5e8f%5Cu5217%5Cu65e5%5Cu5fd7%5Cu4e2d%5Cu6240%5Cu5305%5Cu542b%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6570%5Cu91cf%5Cu4e0d%5Cu5927%5Cu4e8e1000000.%5Cn%5Cn%5Cu611f%5Cu8c22%40Mickey_snow%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A8%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22CF681C%22%2C%22title%22%3A%22Heap%20Operations%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A43820%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9925%2C%22name%22%3A%22CF681C%20Heap%20Operations%22%2C%22slug%22%3A%22CF681C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Heap%20Operations%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Heap Operations</h1>
+<h2>题意翻译</h2>
+<div>题目：堆的操作
+题面：
+Petya近日学习了一种名为"二元堆"的数据结构。
+这个数据结构支持以下操作：
+-将给定的数字放入堆中；
+-取得堆中最小的元素的值；
+-取出(去除)堆中最小的元素；
+于是，这个堆在任何时候都包含数个整数(可能是一个)，它们当中有一些是相等的。
+为了更好地学习这个数据结构，Petya创立了一个空的堆并在上面应用了一些操作。同时，他小心翼翼地在他的日志中写下了所有的操作，如下：
+insert x — 将一个值为x的元素插入堆中;
+getMin x — 这个时候，堆中最小的元素的值为x.
+removeMin — 移除堆中最小的元素(若有多个相同，只移除其中的一个).
+所有的操作都是不矛盾的。换句话说，当应用 getMin 或者 removeMin 操作的时候，堆中有至少一个元素。
+当Petya去吃午饭的时候，他的弟弟Vova进入了他的房间，拿走了Petya日志中的数页来做纸船。
+现在Vova非常地焦虑，因为他可能已经让Petya的一系列操作变得前后矛盾。例如，如果一个一个地执行日志上所写着的操作，getMin操作所取得的结果可能与Petya记录的结果不同，而且如果这个时候堆是空的，那么 getMin 和 removeMin 操作将会产生错误。
+Vova希望在日志中添加一些新的操作来让各项操作的结果正确。也就是说，每个 getMin 操作所得到的结果必须与日志中记录的相吻合，且不会出现操作前后矛盾或者导致错误。Vova想尽可能快地完成这些，因为Petya很快就会回来。现在Vova想要你在日志中添加尽可能少的操作纪录，这些记录可以被添加在日志的任何位置。
+输入格式：
+第一行一个整数n (1<=n<=100000) ，代表现在日志中剩余的操作数量。
+接下来n行描述了现在日志中剩余的每一项操作，所有插入堆中的数的绝对值都不超过10^9.
+输出格式：
+输出的第一行应该输出一个单独的整数m，代表最小的更改后的日志文件包含的操作数量。
+接下来m行输出更改后的正确日志，按顺序地每一行输出操作名称和参数或者得到的结果，所有输出的数字都应该是整数而且绝对值不大于10^9.
+保证最后正确的操作序列日志中所包含的操作数量不大于1000000.
+感谢@Mickey_snow 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Petya has recently learned data structure named "Binary heap".
+The heap he is now operating with allows the following operations:
+- put the given number into the heap;
+- get the value of the minimum element in the heap;
+- extract the minimum element from the heap;
+Thus, at any moment of time the heap contains several integers (possibly none), some of them might be equal.
+In order to better learn this data structure Petya took an empty heap and applied some operations above to it. Also, he carefully wrote down all the operations and their results to his event log, following the format:
+- insert $ x $ — put the element with value $ x $ in the heap;
+- getMin $ x $ — the value of the minimum element contained in the heap was equal to $ x $ ;
+- removeMin — the minimum element was extracted from the heap (only one instance, if there were many).
+All the operations were correct, i.e. there was at least one element in the heap each time getMin or removeMin operations were applied.
+While Petya was away for a lunch, his little brother Vova came to the room, took away some of the pages from Petya's log and used them to make paper boats.
+Now Vova is worried, if he made Petya's sequence of operations inconsistent. For example, if one apply operations one-by-one in the order they are written in the event log, results of getMin operations might differ from the results recorded by Petya, and some of getMin or removeMin operations may be incorrect, as the heap is empty at the moment they are applied.
+Now Vova wants to add some new operation records to the event log in order to make the resulting sequence of operations correct. That is, the result of each getMin operation is equal to the result in the record, and the heap is non-empty when getMin ad removeMin are applied. Vova wants to complete this as fast as possible, as the Petya may get back at any moment. He asks you to add the least possible number of operation records to the current log. Note that arbitrary number of operations may be added at the beginning, between any two other operations, or at the end of the log.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains the only integer $ n $ ( $ 1<=n<=100000 $ ) — the number of the records left in Petya's journal.
+Each of the following $ n $ lines describe the records in the current log in the order they are applied. Format described in the statement is used. All numbers in the input are integers not exceeding $ 10^{9} $ by their absolute value.</div>
+<h3>输出格式</h3>
+<br />
+<div>The first line of the output should contain a single integer $ m $ — the minimum possible number of records in the modified sequence of operations.
+Next $ m $ lines should contain the corrected sequence of records following the format of the input (described in the statement), one per line and in the order they are applied. All the numbers in the output should be integers not exceeding $ 10^{9} $ by their absolute value.
+Note that the input sequence of operations must be the subsequence of the output sequence.
+It's guaranteed that there exists the correct answer consisting of no more than $ 1000000 $ operations.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+insert 3
+getMin 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+insert 3
+removeMin
+insert 4
+getMin 4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+insert 1
+insert 1
+removeMin
+getMin 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>6
+insert 1
+insert 1
+removeMin
+removeMin
+insert 2
+getMin 2
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, after number $ 3 $ is inserted into the heap, the minimum number is $ 3 $ . To make the result of the first getMin equal to $ 4 $ one should firstly remove number $ 3 $ from the heap and then add number $ 4 $ into the heap.
+In the second sample case number $ 1 $ is inserted two times, so should be similarly removed twice.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cron - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396791:fHMXWVoO9deTqQE3Pu3zU3gKRI8wstgMukpYvc5z22g=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Sometime%20the%20classic%20solution%20are%20not%20powerful%20enough%20and%20we%20have%20to%20design%20our%20own.%20For%20the%20purpose%20of%20this%20problem%20you%20have%20to%20implement%20the%20part%20of%20the%20system%20of%20task%20scheduling.%5Cn%5CnEach%20task%20should%20be%20executed%20at%20some%20particular%20moments%20of%20time.%20In%20our%20system%20you%20may%20set%20the%20exact%20value%20for%20the%20second%2C%20minute%2C%20hour%2C%20day%20of%20the%20week%2C%20day%20and%20month%2C%20when%20the%20task%20should%20be%20executed.%20Moreover%2C%20one%20can%20set%20a%20special%20value%20-1%20that%20means%20any%20value%20of%20this%20parameter%20is%20valid.%5Cn%5CnFor%20example%2C%20if%20the%20parameter%20string%20is%20-1%2059%2023%20-1%20-1%20-1%2C%20the%20problem%20will%20be%20executed%20every%20day%20at%2023%3A59%3A00%2C%2023%3A59%3A01%2C%2023%3A59%3A02%2C%20...%2C%2023%3A59%3A59%20%28%20%24%2060%20%24%20times%20in%20total%29.%5Cn%5CnSeconds%2C%20minutes%20and%20hours%20are%20numbered%20starting%20from%20zero%2C%20while%20day%2C%20months%20and%20days%20of%20the%20week%20are%20numbered%20starting%20from%20one.%20The%20first%20day%20of%20the%20week%20is%20Monday.%5Cn%5CnThere%20is%20one%20special%20case%20that%20is%20treated%20separately.%20If%20both%20day%20of%20the%20week%20and%20day%20are%20given%20%28i.e.%20differ%20from%20-1%29%20to%20execute%20the%20task%20only%20one%20of%20these%20two%20%28at%20least%20one%2C%20if%20both%20match%20this%20is%20fine%20too%29%20parameters%20should%20match%20the%20current%20time%20%28of%20course%2C%20all%20other%20parameters%20should%20match%20too%29.%20For%20example%2C%20the%20string%20of%20parameters%200%200%2012%206%203%207%20means%20that%20the%20task%20will%20be%20executed%20both%20on%20Saturday%2C%20July%202nd%2C%202016%20and%20on%20Sunday%2C%20July%203rd%2C%202016%20at%20noon.%5Cn%5CnOne%20should%20not%20forget%20about%20the%20existence%20of%20the%20leap%20years.%20The%20year%20is%20leap%20if%20it%27s%20number%20is%20divisible%20by%20%24%20400%20%24%20%2C%20or%20is%20not%20divisible%20by%20%24%20100%20%24%20%2C%20but%20is%20divisible%20by%20%24%204%20%24%20.%20Each%20leap%20year%20has%20366%20days%20instead%20of%20usual%20365%2C%20by%20extending%20February%20to%2029%20days%20rather%20than%20the%20common%2028.%5Cn%5CnThe%20current%20time%20is%20represented%20as%20the%20number%20of%20seconds%20passed%20after%2000%3A00%3A00%20January%201st%2C%201970%20%28Thursday%29.%5Cn%5CnYou%20are%20given%20the%20string%20of%20six%20parameters%2C%20describing%20the%20moments%20of%20time%20the%20task%20should%20be%20executed.%20You%20are%20also%20given%20a%20number%20of%20moments%20of%20time.%20For%20each%20of%20them%20you%20have%20to%20find%20the%20first%20moment%20of%20time%20strictly%20greater%20than%20the%20current%20when%20the%20task%20will%20be%20executed.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20six%20integers%20%24%20s%20%24%20%2C%20%24%20m%20%24%20%2C%20%24%20h%20%24%20%2C%20%24%20day%20%24%20%2C%20%24%20date%20%24%20and%20%24%20month%20%24%20%28%20%24%200%3C%3Ds%2Cm%3C%3D59%20%24%20%2C%20%24%200%3C%3Dh%3C%3D23%20%24%20%2C%20%24%201%3C%3Dday%3C%3D7%20%24%20%2C%20%24%201%3C%3Ddate%3C%3D31%20%24%20%2C%20%24%201%3C%3Dmonth%3C%3D12%20%24%20%29.%20Each%20of%20the%20number%20can%20also%20be%20equal%20to%20%24%20-1%20%24%20.%20It%27s%20guaranteed%2C%20that%20there%20are%20infinitely%20many%20moments%20of%20time%20when%20this%20task%20should%20be%20executed.%5Cn%5CnNext%20line%20contains%20the%20only%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20moments%20of%20time%20you%20have%20to%20solve%20the%20problem%20for.%20Each%20of%20the%20next%20%24%20n%20%24%20lines%20contains%20a%20single%20integer%20%24%20t_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dt_%7Bi%7D%3C%3D10%5E%7B12%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20lines%2C%20the%20%24%20i%20%24%20-th%20of%20them%20should%20contain%20the%20first%20moment%20of%20time%20strictly%20greater%20than%20%24%20t_%7Bi%7D%20%24%20%2C%20when%20the%20task%20should%20be%20executed.%22%2C%22samples%22%3A%5B%5B%22-1%2059%2023%20-1%20-1%20-1%5Cn6%5Cn1467372658%5Cn1467417540%5Cn1467417541%5Cn1467417598%5Cn1467417599%5Cn1467417600%5Cn%22%2C%221467417540%5Cn1467417541%5Cn1467417542%5Cn1467417599%5Cn1467503940%5Cn1467503940%5Cn%22%5D%2C%5B%220%200%2012%206%203%207%5Cn3%5Cn1467372658%5Cn1467460810%5Cn1467547200%5Cn%22%2C%221467460800%5Cn1467547200%5Cn1468065600%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20moment%20of%20time%20%24%201467372658%20%24%20after%20the%20midnight%20of%20January%201st%2C%201970%20is%2011%3A30%3A58%20July%201st%2C%202016.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F698%5C%2FE%22%2C%22id%22%3A%22698E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF698E%22%2C%22title%22%3A%22Cron%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Cron%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Cron</h1>
+<h2>题目描述</h2>
+<div>Sometime the classic solution are not powerful enough and we have to design our own. For the purpose of this problem you have to implement the part of the system of task scheduling.
+Each task should be executed at some particular moments of time. In our system you may set the exact value for the second, minute, hour, day of the week, day and month, when the task should be executed. Moreover, one can set a special value -1 that means any value of this parameter is valid.
+For example, if the parameter string is -1 59 23 -1 -1 -1, the problem will be executed every day at 23:59:00, 23:59:01, 23:59:02, ..., 23:59:59 ( $ 60 $ times in total).
+Seconds, minutes and hours are numbered starting from zero, while day, months and days of the week are numbered starting from one. The first day of the week is Monday.
+There is one special case that is treated separately. If both day of the week and day are given (i.e. differ from -1) to execute the task only one of these two (at least one, if both match this is fine too) parameters should match the current time (of course, all other parameters should match too). For example, the string of parameters 0 0 12 6 3 7 means that the task will be executed both on Saturday, July 2nd, 2016 and on Sunday, July 3rd, 2016 at noon.
+One should not forget about the existence of the leap years. The year is leap if it's number is divisible by $ 400 $ , or is not divisible by $ 100 $ , but is divisible by $ 4 $ . Each leap year has 366 days instead of usual 365, by extending February to 29 days rather than the common 28.
+The current time is represented as the number of seconds passed after 00:00:00 January 1st, 1970 (Thursday).
+You are given the string of six parameters, describing the moments of time the task should be executed. You are also given a number of moments of time. For each of them you have to find the first moment of time strictly greater than the current when the task will be executed.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains six integers $ s $ , $ m $ , $ h $ , $ day $ , $ date $ and $ month $ ( $ 0<=s,m<=59 $ , $ 0<=h<=23 $ , $ 1<=day<=7 $ , $ 1<=date<=31 $ , $ 1<=month<=12 $ ). Each of the number can also be equal to $ -1 $ . It's guaranteed, that there are infinitely many moments of time when this task should be executed.
+Next line contains the only integer $ n $ ( $ 1<=n<=1000 $ ) — the number of moments of time you have to solve the problem for. Each of the next $ n $ lines contains a single integer $ t_{i} $ ( $ 0<=t_{i}<=10^{12} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ lines, the $ i $ -th of them should contain the first moment of time strictly greater than $ t_{i} $ , when the task should be executed.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>-1 59 23 -1 -1 -1
+6
+1467372658
+1467417540
+1467417541
+1467417598
+1467417599
+1467417600
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1467417540
+1467417541
+1467417542
+1467417599
+1467503940
+1467503940
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>0 0 12 6 3 7
+3
+1467372658
+1467460810
+1467547200
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1467460800
+1467547200
+1468065600
+</code></pre>
+<h2>说明</h2>
+<div>The moment of time $ 1467372658 $ after the midnight of January 1st, 1970 is 11:30:58 July 1st, 2016.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

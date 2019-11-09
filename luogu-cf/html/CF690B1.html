@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Recover Polygon (easy) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396719:uz274QlxLjPHxJ9NIa3TDVQe+rTcaem8cgFQAXgeG2I=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20zombies%20are%20gathering%20in%20their%20secret%20lair%21%20Heidi%20will%20strike%20hard%20to%20destroy%20them%20once%20and%20for%20all.%20But%20there%20is%20a%20little%20problem...%20Before%20she%20can%20strike%2C%20she%20needs%20to%20know%20where%20the%20lair%20is.%20And%20the%20intel%20she%20has%20is%20not%20very%20good.%5Cn%5CnHeidi%20knows%20that%20the%20lair%20can%20be%20represented%20as%20a%20rectangle%20on%20a%20lattice%2C%20with%20sides%20parallel%20to%20the%20axes.%20Each%20vertex%20of%20the%20polygon%20occupies%20an%20integer%20point%20on%20the%20lattice.%20For%20each%20cell%20of%20the%20lattice%2C%20Heidi%20can%20check%20the%20level%20of%20Zombie%20Contamination.%20This%20level%20is%20an%20integer%20between%20%24%200%20%24%20and%20%24%204%20%24%20%2C%20equal%20to%20the%20number%20of%20corners%20of%20the%20cell%20that%20are%20inside%20or%20on%20the%20border%20of%20the%20rectangle.%5Cn%5CnAs%20a%20test%2C%20Heidi%20wants%20to%20check%20that%20her%20Zombie%20Contamination%20level%20checker%20works.%20Given%20the%20output%20of%20the%20checker%2C%20Heidi%20wants%20to%20know%20whether%20it%20could%20have%20been%20produced%20by%20a%20single%20non-zero%20area%20rectangular-shaped%20lair%20%28with%20axis-parallel%20sides%29.%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF690B1%5C%2F6a1d528b09269e46ea8342fade1ffbca11000e9c.png%29%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20each%20test%20case%20contains%20one%20integer%20%24%20N%20%24%20%2C%20the%20size%20of%20the%20lattice%20grid%20%28%20%24%205%3C%3DN%3C%3D50%20%24%20%29.%20The%20next%20%24%20N%20%24%20lines%20each%20contain%20%24%20N%20%24%20characters%2C%20describing%20the%20level%20of%20Zombie%20Contamination%20of%20each%20cell%20in%20the%20lattice.%20Every%20character%20of%20every%20line%20is%20a%20digit%20between%200%20and%204.%5Cn%5CnCells%20are%20given%20in%20the%20same%20order%20as%20they%20are%20shown%20in%20the%20picture%20above%3A%20rows%20go%20in%20the%20decreasing%20value%20of%20%24%20y%20%24%20coordinate%2C%20and%20in%20one%20row%20cells%20go%20in%20the%20order%20of%20increasing%20%24%20x%20%24%20coordinate.%20This%20means%20that%20the%20first%20row%20corresponds%20to%20cells%20with%20coordinates%20%24%20%281%2CN%29%2C...%2C%28N%2CN%29%20%24%20and%20the%20last%20row%20corresponds%20to%20cells%20with%20coordinates%20%24%20%281%2C1%29%2C...%2C%28N%2C1%29%20%24%20.%22%2C%22outputFormat%22%3A%22The%20first%20line%20of%20the%20output%20should%20contain%20Yes%20if%20there%20exists%20a%20single%20non-zero%20area%20rectangular%20lair%20with%20corners%20on%20the%20grid%20for%20which%20checking%20the%20levels%20of%20Zombie%20Contamination%20gives%20the%20results%20given%20in%20the%20input%2C%20and%20No%20otherwise.%22%2C%22samples%22%3A%5B%5B%226%5Cn000000%5Cn000000%5Cn012100%5Cn024200%5Cn012100%5Cn000000%5Cn%22%2C%22Yes%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20lair%2C%20if%20it%20exists%2C%20has%20to%20be%20rectangular%20%28that%20is%2C%20have%20corners%20at%20some%20grid%20points%20with%20coordinates%20%24%20%28x_%7B1%7D%2Cy_%7B1%7D%29%20%24%20%2C%20%24%20%28x_%7B1%7D%2Cy_%7B2%7D%29%20%24%20%2C%20%24%20%28x_%7B2%7D%2Cy_%7B1%7D%29%20%24%20%2C%20%24%20%28x_%7B2%7D%2Cy_%7B2%7D%29%20%24%20%29%2C%20has%20a%20non-zero%20area%20and%20be%20contained%20inside%20of%20the%20grid%20%28that%20is%2C%20%24%200%3C%3Dx_%7B1%7D%3Cx_%7B2%7D%3C%3DN%20%24%20%2C%20%24%200%3C%3Dy_%7B1%7D%3Cy_%7B2%7D%3C%3DN%20%24%20%29%2C%20and%20result%20in%20the%20levels%20of%20Zombie%20Contamination%20as%20reported%20in%20the%20input.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F690%5C%2FB1%22%2C%22id%22%3A%22690B1%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF690B1%22%2C%22title%22%3A%22Recover%20Polygon%20%28easy%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Recover%20Polygon%20%28easy%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Recover Polygon (easy)</h1>
+<h2>题目描述</h2>
+<div>The zombies are gathering in their secret lair! Heidi will strike hard to destroy them once and for all. But there is a little problem... Before she can strike, she needs to know where the lair is. And the intel she has is not very good.
+Heidi knows that the lair can be represented as a rectangle on a lattice, with sides parallel to the axes. Each vertex of the polygon occupies an integer point on the lattice. For each cell of the lattice, Heidi can check the level of Zombie Contamination. This level is an integer between $ 0 $ and $ 4 $ , equal to the number of corners of the cell that are inside or on the border of the rectangle.
+As a test, Heidi wants to check that her Zombie Contamination level checker works. Given the output of the checker, Heidi wants to know whether it could have been produced by a single non-zero area rectangular-shaped lair (with axis-parallel sides). ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF690B1/6a1d528b09269e46ea8342fade1ffbca11000e9c.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of each test case contains one integer $ N $ , the size of the lattice grid ( $ 5<=N<=50 $ ). The next $ N $ lines each contain $ N $ characters, describing the level of Zombie Contamination of each cell in the lattice. Every character of every line is a digit between 0 and 4.
+Cells are given in the same order as they are shown in the picture above: rows go in the decreasing value of $ y $ coordinate, and in one row cells go in the order of increasing $ x $ coordinate. This means that the first row corresponds to cells with coordinates $ (1,N),...,(N,N) $ and the last row corresponds to cells with coordinates $ (1,1),...,(N,1) $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>The first line of the output should contain Yes if there exists a single non-zero area rectangular lair with corners on the grid for which checking the levels of Zombie Contamination gives the results given in the input, and No otherwise.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+000000
+000000
+012100
+024200
+012100
+000000
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Yes
+</code></pre>
+<h2>说明</h2>
+<div>The lair, if it exists, has to be rectangular (that is, have corners at some grid points with coordinates $ (x_{1},y_{1}) $ , $ (x_{1},y_{2}) $ , $ (x_{2},y_{1}) $ , $ (x_{2},y_{2}) $ ), has a non-zero area and be contained inside of the grid (that is, $ 0<=x_{1}<x_{2}<=N $ , $ 0<=y_{1}<y_{2}<=N $ ), and result in the levels of Zombie Contamination as reported in the input.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>LRU - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396787:9N6l6Lx+tsYTu4nvcxEEjdNmays9UUhJ/YTvmq1GM5U=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22While%20creating%20high%20loaded%20systems%20one%20should%20pay%20a%20special%20attention%20to%20caching.%20This%20problem%20will%20be%20about%20one%20of%20the%20most%20popular%20caching%20algorithms%20called%20LRU%20%28Least%20Recently%20Used%29.%5Cn%5CnSuppose%20the%20cache%20may%20store%20no%20more%20than%20%24%20k%20%24%20objects.%20At%20the%20beginning%20of%20the%20workflow%20the%20cache%20is%20empty.%20When%20some%20object%20is%20queried%20we%20check%20if%20it%20is%20present%20in%20the%20cache%20and%20move%20it%20here%20if%20it%27s%20not.%20If%20there%20are%20more%20than%20%24%20k%20%24%20objects%20in%20the%20cache%20after%20this%2C%20the%20least%20recently%20used%20one%20should%20be%20removed.%20In%20other%20words%2C%20we%20remove%20the%20object%20that%20has%20the%20smallest%20time%20of%20the%20last%20query.%5Cn%5CnConsider%20there%20are%20%24%20n%20%24%20videos%20being%20stored%20on%20the%20server%2C%20all%20of%20the%20same%20size.%20Cache%20can%20store%20no%20more%20than%20%24%20k%20%24%20videos%20and%20caching%20algorithm%20described%20above%20is%20applied.%20We%20know%20that%20any%20time%20a%20user%20enters%20the%20server%20he%20pick%20the%20video%20%24%20i%20%24%20with%20probability%20%24%20p_%7Bi%7D%20%24%20.%20The%20choice%20of%20the%20video%20is%20independent%20to%20any%20events%20before.%5Cn%5CnThe%20goal%20of%20this%20problem%20is%20to%20count%20for%20each%20of%20the%20videos%20the%20probability%20it%20will%20be%20present%20in%20the%20cache%20after%20%24%2010%5E%7B100%7D%20%24%20queries.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%3C%3Dn%3C%3D20%20%24%20%29%20%5Cu2014%20the%20number%20of%20videos%20and%20the%20size%20of%20the%20cache%20respectively.%20Next%20line%20contains%20%24%20n%20%24%20real%20numbers%20%24%20p_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dp_%7Bi%7D%3C%3D1%20%24%20%29%2C%20each%20of%20them%20is%20given%20with%20no%20more%20than%20two%20digits%20after%20decimal%20point.%5Cn%5CnIt%27s%20guaranteed%20that%20the%20sum%20of%20all%20%24%20p_%7Bi%7D%20%24%20is%20equal%20to%20%24%201%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20real%20numbers%2C%20the%20%24%20i%20%24%20-th%20of%20them%20should%20be%20equal%20to%20the%20probability%20that%20the%20%24%20i%20%24%20-th%20video%20will%20be%20present%20in%20the%20cache%20after%20%24%2010%5E%7B100%7D%20%24%20queries.%20You%20answer%20will%20be%20considered%20correct%20if%20its%20absolute%20or%20relative%20error%20does%20not%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%5Cn%5CnNamely%3A%20let%27s%20assume%20that%20your%20answer%20is%20%24%20a%20%24%20%2C%20and%20the%20answer%20of%20the%20jury%20is%20%24%20b%20%24%20.%20The%20checker%20program%20will%20consider%20your%20answer%20correct%2C%20if%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF698C%5C%2F259203790d90e969d73ec841bd0673c1e8e7d69a.png%29.%22%2C%22samples%22%3A%5B%5B%223%201%5Cn0.3%200.2%200.5%5Cn%22%2C%220.3%200.2%200.5%20%22%5D%2C%5B%222%201%5Cn0.0%201.0%5Cn%22%2C%220.0%201.0%20%22%5D%2C%5B%223%202%5Cn0.3%200.2%200.5%5Cn%22%2C%220.675%200.4857142857142857%200.8392857142857143%20%22%5D%2C%5B%223%203%5Cn0.2%200.3%200.5%5Cn%22%2C%221.0%201.0%201.0%20%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F698%5C%2FC%22%2C%22id%22%3A%22698C%22%7D%2C%22translation%22%3A%22%5Cu6709%24n%24%20%5Cu79cd%5Cu7269%5Cu54c1%5Cu548c%5Cu5927%5Cu5c0f%5Cu4e3a%24k%24%20%20%5Cu7684%5Cu961f%5Cu5217%24%2Cp_i%24%20%5Cu7684%5Cu6982%5Cu7387%5Cu9009%5Cu62e9%5Cu7b2c%24i%24%20%5Cu79cd%5Cu7269%5Cu54c1%5Cu653e%5Cu5165%5Cu961f%5Cu5c3e%24%2C%24%20%5Cu5982%5Cu679c%5Cu5df2%5Cu7ecf%5Cu6709%24i%24%20%5Cu4e86%5Cu5c31%5Cu4e0d%5Cu653e%5Cu4e86%5Cn%5Cn%5Cu961f%5Cu5217%5Cu5927%5Cu5c0f%24%5C%5Cgt%20k%24%20%5Cu65f6%5Cu5f39%5Cu51fa%5Cu961f%5Cu9996%5Cn%5Cn%5Cu6c42%2410%5E%7B100%7D%24%20%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu540e%5Cu6bcf%5Cu79cd%5Cu7269%5Cu54c1%5Cu5728%5Cu961f%5Cu5217%5Cu91cc%5Cu7684%5Cu6982%5Cu7387%5Cn%5Cn%5Cu611f%5Cu8c22%40Kelin%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A33%2C%22totalAccepted%22%3A14%2C%22pid%22%3A%22CF698C%22%2C%22title%22%3A%22LRU%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A38837%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A9872%2C%22name%22%3A%22CF698C%20LRU%22%2C%22slug%22%3A%22CF698C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22LRU%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>LRU</h1>
+<h2>题意翻译</h2>
+<div>有$n$ 种物品和大小为$k$ 的队列$,p_i$ 的概率选择第$i$ 种物品放入队尾$,$ 如果已经有$i$ 了就不放了
+队列大小$\gt k$ 时弹出队首
+求$10^{100}$ 次操作后每种物品在队列里的概率
+感谢@Kelin 提供的翻译</div>
+<h2>题目描述</h2>
+<div>While creating high loaded systems one should pay a special attention to caching. This problem will be about one of the most popular caching algorithms called LRU (Least Recently Used).
+Suppose the cache may store no more than $ k $ objects. At the beginning of the workflow the cache is empty. When some object is queried we check if it is present in the cache and move it here if it's not. If there are more than $ k $ objects in the cache after this, the least recently used one should be removed. In other words, we remove the object that has the smallest time of the last query.
+Consider there are $ n $ videos being stored on the server, all of the same size. Cache can store no more than $ k $ videos and caching algorithm described above is applied. We know that any time a user enters the server he pick the video $ i $ with probability $ p_{i} $ . The choice of the video is independent to any events before.
+The goal of this problem is to count for each of the videos the probability it will be present in the cache after $ 10^{100} $ queries.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ k $ ( $ 1<=k<=n<=20 $ ) — the number of videos and the size of the cache respectively. Next line contains $ n $ real numbers $ p_{i} $ ( $ 0<=p_{i}<=1 $ ), each of them is given with no more than two digits after decimal point.
+It's guaranteed that the sum of all $ p_{i} $ is equal to $ 1 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ real numbers, the $ i $ -th of them should be equal to the probability that the $ i $ -th video will be present in the cache after $ 10^{100} $ queries. You answer will be considered correct if its absolute or relative error does not exceed $ 10^{-6} $ .
+Namely: let's assume that your answer is $ a $ , and the answer of the jury is $ b $ . The checker program will consider your answer correct, if ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF698C/259203790d90e969d73ec841bd0673c1e8e7d69a.png).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+0.3 0.2 0.5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0.3 0.2 0.5 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2 1
+0.0 1.0
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0.0 1.0 </code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 2
+0.3 0.2 0.5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0.675 0.4857142857142857 0.8392857142857143 </code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>3 3
+0.2 0.3 0.5
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>1.0 1.0 1.0 </code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

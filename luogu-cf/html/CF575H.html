@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bots - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395549:C6mQ60X1731ELABFWbvsYZDdEqnN9SMd6z3qFshDcUM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Sasha%20and%20Ira%20are%20two%20best%20friends.%20But%20they%20aren%5Cu2019t%20just%20friends%2C%20they%20are%20software%20engineers%20and%20experts%20in%20artificial%20intelligence.%20They%20are%20developing%20an%20algorithm%20for%20two%20bots%20playing%20a%20two-player%20game.%20The%20game%20is%20cooperative%20and%20turn%20based.%20In%20each%20turn%2C%20one%20of%20the%20players%20makes%20a%20move%20%28it%20doesn%5Cu2019t%20matter%20which%20player%2C%20it%27s%20possible%20that%20players%20turns%20do%20not%20alternate%29.%5Cn%5CnAlgorithm%20for%20bots%20that%20Sasha%20and%20Ira%20are%20developing%20works%20by%20keeping%20track%20of%20the%20state%20the%20game%20is%20in.%20Each%20time%20either%20bot%20makes%20a%20move%2C%20the%20state%20changes.%20And%2C%20since%20the%20game%20is%20very%20dynamic%2C%20it%20will%20never%20go%20back%20to%20the%20state%20it%20was%20already%20in%20at%20any%20point%20in%20the%20past.%5Cn%5CnSasha%20and%20Ira%20are%20perfectionists%20and%20want%20their%20algorithm%20to%20have%20an%20optimal%20winning%20strategy.%20They%20have%20noticed%20that%20in%20the%20optimal%20winning%20strategy%2C%20both%20bots%20make%20exactly%20%24%20N%20%24%20moves%20each.%20But%2C%20in%20order%20to%20find%20the%20optimal%20strategy%2C%20their%20algorithm%20needs%20to%20analyze%20all%20possible%20states%20of%20the%20game%20%28they%20haven%5Cu2019t%20learned%20about%20alpha-beta%20pruning%20yet%29%20and%20pick%20the%20best%20sequence%20of%20moves.%5Cn%5CnThey%20are%20worried%20about%20the%20efficiency%20of%20their%20algorithm%20and%20are%20wondering%20what%20is%20the%20total%20number%20of%20states%20of%20the%20game%20that%20need%20to%20be%20analyzed%3F%22%2C%22inputFormat%22%3A%22The%20first%20and%20only%20line%20contains%20integer%20N.%5Cn%5Cn-%20%24%201%3C%3DN%3C%3D10%5E%7B6%7D%20%24%22%2C%22outputFormat%22%3A%22Output%20should%20contain%20a%20single%20integer%20%5Cu2013%20number%20of%20possible%20states%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%22%2C%22samples%22%3A%5B%5B%222%5Cn%22%2C%2219%5Cn%22%5D%5D%2C%22hint%22%3A%22Start%3A%20Game%20is%20in%20state%20A.%5Cn%5Cn-%20Turn%201%3A%20Either%20bot%20can%20make%20a%20move%20%28first%20bot%20is%20red%20and%20second%20bot%20is%20blue%29%2C%20so%20there%20are%20two%20possible%20states%20after%20the%20first%20turn%20%5Cu2013%20B%20and%20C.%5Cn-%20Turn%202%3A%20In%20both%20states%20B%20and%20C%2C%20either%20bot%20can%20again%20make%20a%20turn%2C%20so%20the%20list%20of%20possible%20states%20is%20expanded%20to%20include%20D%2C%20E%2C%20F%20and%20G.%5Cn-%20Turn%203%3A%20Red%20bot%20already%20did%20N%3D2%20moves%20when%20in%20state%20D%2C%20so%20it%20cannot%20make%20any%20more%20moves%20there.%20It%20can%20make%20moves%20when%20in%20state%20E%2C%20F%20and%20G%2C%20so%20states%20I%2C%20K%20and%20M%20are%20added%20to%20the%20list.%20Similarly%2C%20blue%20bot%20cannot%20make%20a%20move%20when%20in%20state%20G%2C%20but%20can%20when%20in%20D%2C%20E%20and%20F%2C%20so%20states%20H%2C%20J%20and%20L%20are%20added.%5Cn-%20Turn%204%3A%20Red%20bot%20already%20did%20N%3D2%20moves%20when%20in%20states%20H%2C%20I%20and%20K%2C%20so%20it%20can%20only%20make%20moves%20when%20in%20J%2C%20L%20and%20M%2C%20so%20states%20P%2C%20R%20and%20S%20are%20added.%20Blue%20bot%20cannot%20make%20a%20move%20when%20in%20states%20J%2C%20L%20and%20M%2C%20but%20only%20when%20in%20H%2C%20I%20and%20K%2C%20so%20states%20N%2C%20O%20and%20Q%20are%20added.%5Cn%5CnOverall%2C%20there%20are%2019%20possible%20states%20of%20the%20game%20their%20algorithm%20needs%20to%20analyze.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF575H%5C%2Ffe492a4b59f95857f16ee99d37e8da94ed083cf9.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F575%5C%2FH%22%2C%22id%22%3A%22575H%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF575H%22%2C%22title%22%3A%22Bots%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Bots%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Bots</h1>
+<h2>题目描述</h2>
+<div>Sasha and Ira are two best friends. But they aren’t just friends, they are software engineers and experts in artificial intelligence. They are developing an algorithm for two bots playing a two-player game. The game is cooperative and turn based. In each turn, one of the players makes a move (it doesn’t matter which player, it's possible that players turns do not alternate).
+Algorithm for bots that Sasha and Ira are developing works by keeping track of the state the game is in. Each time either bot makes a move, the state changes. And, since the game is very dynamic, it will never go back to the state it was already in at any point in the past.
+Sasha and Ira are perfectionists and want their algorithm to have an optimal winning strategy. They have noticed that in the optimal winning strategy, both bots make exactly $ N $ moves each. But, in order to find the optimal strategy, their algorithm needs to analyze all possible states of the game (they haven’t learned about alpha-beta pruning yet) and pick the best sequence of moves.
+They are worried about the efficiency of their algorithm and are wondering what is the total number of states of the game that need to be analyzed?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first and only line contains integer N.
+- $ 1<=N<=10^{6} $</div>
+<h3>输出格式</h3>
+<br />
+<div>Output should contain a single integer – number of possible states modulo $ 10^{9}+7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>19
+</code></pre>
+<h2>说明</h2>
+<div>Start: Game is in state A.
+- Turn 1: Either bot can make a move (first bot is red and second bot is blue), so there are two possible states after the first turn – B and C.
+- Turn 2: In both states B and C, either bot can again make a turn, so the list of possible states is expanded to include D, E, F and G.
+- Turn 3: Red bot already did N=2 moves when in state D, so it cannot make any more moves there. It can make moves when in state E, F and G, so states I, K and M are added to the list. Similarly, blue bot cannot make a move when in state G, but can when in D, E and F, so states H, J and L are added.
+- Turn 4: Red bot already did N=2 moves when in states H, I and K, so it can only make moves when in J, L and M, so states P, R and S are added. Blue bot cannot make a move when in states J, L and M, but only when in H, I and K, so states N, O and Q are added.
+Overall, there are 19 possible states of the game their algorithm needs to analyze.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF575H/fe492a4b59f95857f16ee99d37e8da94ed083cf9.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

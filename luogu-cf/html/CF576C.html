@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Points on Plane - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395558:SHymuWtzqaFZp8WxM5itj8wyDs/fcK5xbfnhf1fA3MQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22On%20a%20plane%20are%20%24%20n%20%24%20points%20%28%20%24%20x_%7Bi%7D%20%24%20%2C%20%24%20y_%7Bi%7D%20%24%20%29%20with%20integer%20coordinates%20between%20%24%200%20%24%20and%20%24%2010%5E%7B6%7D%20%24%20.%20The%20distance%20between%20the%20two%20points%20with%20numbers%20%24%20a%20%24%20and%20%24%20b%20%24%20is%20said%20to%20be%20the%20following%20value%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF576C%5C%2Fa7b10c3a7062b1d795a13da5c9f45189a64ee615.png%29%20%28the%20distance%20calculated%20by%20such%20formula%20is%20called%20Manhattan%20distance%29.%5Cn%5CnWe%20call%20a%20hamiltonian%20path%20to%20be%20some%20permutation%20%24%20p_%7Bi%7D%20%24%20of%20numbers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20We%20say%20that%20the%20length%20of%20this%20path%20is%20value%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF576C%5C%2F78b5c50a357f607418f8669a3857aad07c09d987.png%29.%5Cn%5CnFind%20some%20hamiltonian%20path%20with%20a%20length%20of%20no%20more%20than%20%24%2025%5Cu00d710%5E%7B8%7D%20%24%20.%20Note%20that%20you%20do%20not%20have%20to%20minimize%20the%20path%20length.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B6%7D%20%24%20%29.%5Cn%5CnThe%20%24%20i%2B1%20%24%20-th%20line%20contains%20the%20coordinates%20of%20the%20%24%20i%20%24%20-th%20point%3A%20%24%20x_%7Bi%7D%20%24%20and%20%24%20y_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dx_%7Bi%7D%2Cy_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29.%5Cn%5CnIt%20is%20guaranteed%20that%20no%20two%20points%20coincide.%22%2C%22outputFormat%22%3A%22Print%20the%20permutation%20of%20numbers%20%24%20p_%7Bi%7D%20%24%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%5Cu2014%20the%20sought%20Hamiltonian%20path.%20The%20permutation%20must%20meet%20the%20inequality%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF576C%5C%2F2d8fdd98534a91e5b367141c299ffdad8da235c6.png%29.%5Cn%5CnIf%20there%20are%20multiple%20possible%20answers%2C%20print%20any%20of%20them.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20answer%20exists.%22%2C%22samples%22%3A%5B%5B%225%5Cn0%207%5Cn8%2010%5Cn3%204%5Cn5%200%5Cn9%2012%5Cn%22%2C%224%203%201%202%205%20%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20sample%20test%20the%20total%20distance%20is%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF576C%5C%2F1f55becbebb3a433830fac06fad46fefec8bbb8f.png%29%5Cn%5Cn%20%24%20%28%7C5-3%7C%2B%7C0-4%7C%29%2B%28%7C3-0%7C%2B%7C4-7%7C%29%2B%28%7C0-8%7C%2B%7C7-10%7C%29%2B%28%7C8-9%7C%2B%7C10-12%7C%29%3D2%2B4%2B3%2B3%2B8%2B3%2B1%2B2%3D26%20%24%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F576%5C%2FC%22%2C%22id%22%3A%22576C%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu51fa%24N%24%5Cu4e2a%5Cu6574%5Cu70b9%24%28x_i%2Cy_i%29%24%5Cuff0c%5Cu6c42%5Cu4e00%5Cu4e2a%5Cu6392%5Cu5217%24p_i%24%5Cuff0c%5Cu4f7f%5Cu5f97%24%5C%5Csum%5C%5Climits_%7Bi%3D2%7D%5EN%20%7Cx_%7Bp_i%7D%20-%20x_%7Bp_%7Bi-1%7D%7D%7C%20%2B%20%7Cy_%7Bp_i%7D%20-%20y_%7Bp_%7Bi-1%7D%7D%7C%20%5C%5Cleq%202.5%20%5C%5Ctimes%2010%5E9%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24N%281%20%5C%5Cleq%20N%20%5C%5Cleq%2010%5E6%29%24%5Cu8868%5Cu793a%5Cu70b9%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%24N%24%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%24x_i%2Cy_i%280%20%5C%5Cleq%20x_i%2Cy_i%20%5C%5Cleq%2010%5E6%29%24%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu6570%5Cu636e%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%24N%24%5Cu4e2a%5Cu6570%5Cu8868%5Cu793a%5Cu4f60%5Cu7ed9%5Cu51fa%5Cu7684%5Cu6392%5Cu5217%5Cuff0c%5Cu6bcf%5Cu4e24%5Cu4e2a%5Cu6570%5Cu4e4b%5Cu95f4%5Cu7528%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu3002%22%2C%22tags%22%3A%5B41%2C113%2C289%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A88%2C%22totalAccepted%22%3A35%2C%22pid%22%3A%22CF576C%22%2C%22title%22%3A%22Points%20on%20Plane%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A51600%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A10369%2C%22name%22%3A%22CF576C%20Points%20on%20Plane%22%2C%22slug%22%3A%22CF576C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF578C%22%2C%22title%22%3A%22Weakness%20and%20Poorness%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1000F%22%2C%22title%22%3A%22One%20Occurrence%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207G%22%2C%22title%22%3A%22Indie%20Album%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207E%22%2C%22title%22%3A%22XOR%20Guessing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1225B1%22%2C%22title%22%3A%22TV%20Subscriptions%20%28Easy%20Version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Points%20on%20Plane%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Points on Plane</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+给出$N$个整点$(x_i,y_i)$，求一个排列$p_i$，使得$\sum\limits_{i=2}^N |x_{p_i} - x_{p_{i-1}}| + |y_{p_i} - y_{p_{i-1}}| \leq 2.5 \times 10^9$。
+输入数据
+输入的第一行一个正整数$N(1 \leq N \leq 10^6)$表示点的数量，接下来$N$行每行两个非负整数$x_i,y_i(0 \leq x_i,y_i \leq 10^6)$描述一个点。
+输出数据
+一行$N$个数表示你给出的排列，每两个数之间用一个空格隔开。</div>
+<h2>题目描述</h2>
+<div>On a plane are $ n $ points ( $ x_{i} $ , $ y_{i} $ ) with integer coordinates between $ 0 $ and $ 10^{6} $ . The distance between the two points with numbers $ a $ and $ b $ is said to be the following value: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF576C/a7b10c3a7062b1d795a13da5c9f45189a64ee615.png) (the distance calculated by such formula is called Manhattan distance).
+We call a hamiltonian path to be some permutation $ p_{i} $ of numbers from $ 1 $ to $ n $ . We say that the length of this path is value ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF576C/78b5c50a357f607418f8669a3857aad07c09d987.png).
+Find some hamiltonian path with a length of no more than $ 25×10^{8} $ . Note that you do not have to minimize the path length.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 1<=n<=10^{6} $ ).
+The $ i+1 $ -th line contains the coordinates of the $ i $ -th point: $ x_{i} $ and $ y_{i} $ ( $ 0<=x_{i},y_{i}<=10^{6} $ ).
+It is guaranteed that no two points coincide.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the permutation of numbers $ p_{i} $ from $ 1 $ to $ n $ — the sought Hamiltonian path. The permutation must meet the inequality ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF576C/2d8fdd98534a91e5b367141c299ffdad8da235c6.png).
+If there are multiple possible answers, print any of them.
+It is guaranteed that the answer exists.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+0 7
+8 10
+3 4
+5 0
+9 12
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4 3 1 2 5 
+</code></pre>
+<h2>说明</h2>
+<div>In the sample test the total distance is:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF576C/1f55becbebb3a433830fac06fad46fefec8bbb8f.png)
+$ (|5-3|+|0-4|)+(|3-0|+|4-7|)+(|0-8|+|7-10|)+(|8-9|+|10-12|)=2+4+3+3+8+3+1+2=26 $</div>
+</article>
+</div>
+</div>
+</body>
+</html>

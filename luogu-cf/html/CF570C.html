@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Replacement - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395490:26ogYDpxDitDlEz6n1dOMGPW5HqAvBl5FSNUr++HRN4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Daniel%20has%20a%20string%20%24%20s%20%24%20%2C%20consisting%20of%20lowercase%20English%20letters%20and%20period%20signs%20%28characters%20%27.%27%29.%20Let%27s%20define%20the%20operation%20of%20replacement%20as%20the%20following%20sequence%20of%20steps%3A%20find%20a%20substring%20%5C%22..%5C%22%20%28two%20consecutive%20periods%29%20in%20string%20%24%20s%20%24%20%2C%20of%20all%20occurrences%20of%20the%20substring%20let%27s%20choose%20the%20first%20one%2C%20and%20replace%20this%20substring%20with%20string%20%5C%22.%5C%22.%20In%20other%20words%2C%20during%20the%20replacement%20operation%2C%20the%20first%20two%20consecutive%20periods%20are%20replaced%20by%20one.%20If%20string%20%24%20s%20%24%20contains%20no%20two%20consecutive%20periods%2C%20then%20nothing%20happens.%5Cn%5CnLet%27s%20define%20%24%20f%28s%29%20%24%20as%20the%20minimum%20number%20of%20operations%20of%20replacement%20to%20perform%2C%20so%20that%20the%20string%20does%20not%20have%20any%20two%20consecutive%20periods%20left.%5Cn%5CnYou%20need%20to%20process%20%24%20m%20%24%20queries%2C%20the%20%24%20i%20%24%20-th%20results%20in%20that%20the%20character%20at%20position%20%24%20x_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dx_%7Bi%7D%3C%3Dn%20%24%20%29%20of%20string%20%24%20s%20%24%20is%20assigned%20value%20%24%20c_%7Bi%7D%20%24%20.%20After%20each%20operation%20you%20have%20to%20calculate%20and%20output%20the%20value%20of%20%24%20f%28s%29%20%24%20.%5Cn%5CnHelp%20Daniel%20to%20process%20all%20queries.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D300000%20%24%20%29%20the%20length%20of%20the%20string%20and%20the%20number%20of%20queries.%5Cn%5CnThe%20second%20line%20contains%20string%20%24%20s%20%24%20%2C%20consisting%20of%20%24%20n%20%24%20lowercase%20English%20letters%20and%20period%20signs.%5Cn%5CnThe%20following%20%24%20m%20%24%20lines%20contain%20the%20descriptions%20of%20queries.%20The%20%24%20i%20%24%20-th%20line%20contains%20integer%20%24%20x_%7Bi%7D%20%24%20and%20%24%20c_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dx_%7Bi%7D%3C%3Dn%20%24%20%2C%20%24%20c_%7Bi%7D%20%24%20%5Cu2014%20a%20lowercas%20English%20letter%20or%20a%20period%20sign%29%2C%20describing%20the%20query%20of%20assigning%20symbol%20%24%20c_%7Bi%7D%20%24%20to%20position%20%24%20x_%7Bi%7D%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20%24%20m%20%24%20numbers%2C%20one%20per%20line%2C%20the%20%24%20i%20%24%20-th%20of%20these%20numbers%20must%20be%20equal%20to%20the%20value%20of%20%24%20f%28s%29%20%24%20after%20performing%20the%20%24%20i%20%24%20-th%20assignment.%22%2C%22samples%22%3A%5B%5B%2210%203%5Cn.b..bz....%5Cn1%20h%5Cn3%20c%5Cn9%20f%5Cn%22%2C%224%5Cn3%5Cn1%5Cn%22%5D%2C%5B%224%204%5Cn.cc.%5Cn2%20.%5Cn3%20.%5Cn2%20a%5Cn1%20a%5Cn%22%2C%221%5Cn3%5Cn1%5Cn1%5Cn%22%5D%5D%2C%22hint%22%3A%22Note%20to%20the%20first%20sample%20test%20%28replaced%20periods%20are%20enclosed%20in%20square%20brackets%29.%5Cn%5CnThe%20original%20string%20is%20%5C%22.b..bz....%5C%22.%5Cn%5Cn-%20after%20the%20first%20query%20%24%20f%28%20%24%20hb..bz....%20%24%20%29%20%24%20%3D%204%20%28%5C%22hb%5C%5C%5B..%5C%5C%5Dbz....%5C%22%20%24%20%5Cu2192%20%24%20%5C%22hb.bz%5C%5C%5B..%5C%5C%5D..%5C%22%20%24%20%5Cu2192%20%24%20%5C%22hb.bz%5C%5C%5B..%5C%5C%5D.%5C%22%20%24%20%5Cu2192%20%24%20%5C%22hb.bz%5C%5C%5B..%5C%5C%5D%5C%22%20%24%20%5Cu2192%20%24%20%5C%22hb.bz.%5C%22%29%5Cn-%20after%20the%20second%20query%20%24%20f%28%20%24%20hb%5Cu0441.bz....%20%24%20%29%20%24%20%3D%203%20%28%5C%22hb%5Cu0441.bz%5C%5C%5B..%5C%5C%5D..%5C%22%20%24%20%5Cu2192%20%24%20%5C%22hb%5Cu0441.bz%5C%5C%5B..%5C%5C%5D.%5C%22%20%24%20%5Cu2192%20%24%20%5C%22hb%5Cu0441.bz%5C%5C%5B..%5C%5C%5D%5C%22%20%24%20%5Cu2192%20%24%20%5C%22hb%5Cu0441.bz.%5C%22%29%5Cn-%20after%20the%20third%20query%20%24%20f%28%20%24%20hb%5Cu0441.bz..f.%20%24%20%29%20%24%20%3D%201%20%28%5C%22hb%5Cu0441.bz%5C%5C%5B..%5C%5C%5Df.%5C%22%20%24%20%5Cu2192%20%24%20%5C%22hb%5Cu0441.bz.f.%5C%22%29%5Cn%5CnNote%20to%20the%20second%20sample%20test.%5Cn%5CnThe%20original%20string%20is%20%5C%22.cc.%5C%22.%5Cn%5Cn-%20after%20the%20first%20query%3A%20%24%20f%28%20%24%20..c.%20%24%20%29%20%24%20%3D%201%20%28%5C%22%5C%5C%5B..%5C%5C%5Dc.%5C%22%20%24%20%5Cu2192%20%24%20%5C%22.c.%5C%22%29%5Cn-%20after%20the%20second%20query%3A%20%24%20f%28%20%24%20....%20%24%20%29%20%24%20%3D%203%20%28%5C%22%5C%5C%5B..%5C%5C%5D..%5C%22%20%24%20%5Cu2192%20%24%20%5C%22%5C%5C%5B..%5C%5C%5D.%5C%22%20%24%20%5Cu2192%20%24%20%5C%22%5C%5C%5B..%5C%5C%5D%5C%22%20%24%20%5Cu2192%20%24%20%5C%22.%5C%22%29%5Cn-%20after%20the%20third%20query%3A%20%24%20f%28%20%24%20.a..%20%24%20%29%20%24%20%3D%201%20%28%5C%22.a%5C%5C%5B..%5C%5C%5D%5C%22%20%24%20%5Cu2192%20%24%20%5C%22.a.%5C%22%29%5Cn-%20after%20the%20fourth%20query%3A%20%24%20f%28%20%24%20aa..%20%24%20%29%20%24%20%3D%201%20%28%5C%22aa%5C%5C%5B..%5C%5C%5D%5C%22%20%24%20%5Cu2192%20%24%20%5C%22aa.%5C%22%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F570%5C%2FC%22%2C%22id%22%3A%22570C%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu628a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e2d%5Cu7684%60%60..%60%60%5Cu8f6c%5Cu5316%5Cu6210%60%60.%60%60%5Cr%5Cn%5Cr%5Cn%5Cu6709%24m%24%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24x%24%5Cu548c%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%24c%24%5Cuff0c%5Cu8868%5Cu793a%5Cu628a%5Cu539f%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu7b2c%24x%24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4fee%5Cu6539%5Cu6210%24c%24%5Cuff0c%5Cu5e76%5Cu8f93%5Cu51fa%5Cu628a%5Cu8fd9%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu8f6c%5Cu5316%5Cu6210%5Cu6700%5Cu7b80%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6240%5Cu9700%5Cu7684%5Cu8f6c%5Cu5316%5Cu6b21%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu7b80%5Cu5b57%5Cu7b26%5Cu4e32%5Cu662f%5Cu4e0d%5Cu5b58%5Cu5728%5Cu4e24%5Cu4e2a%5Cu76f8%5Cu8fde%5Cu7684%60%60.%60%60%5Cr%5Cn%5Cr%5Cn%24n%2C%20m%5C%5Cle%203e5%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A65%2C%22totalAccepted%22%3A31%2C%22pid%22%3A%22CF570C%22%2C%22title%22%3A%22Replacement%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF846D%22%2C%22title%22%3A%22Monitor%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF743C%22%2C%22title%22%3A%22Vladik%20and%20fractions%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF580C%22%2C%22title%22%3A%22Kefa%20and%20Park%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF570E%22%2C%22title%22%3A%22Pig%20and%20Palindromes%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P5119%22%2C%22title%22%3A%22%5BUSACO18DEC%5DConvention%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Replacement%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Replacement</h1>
+<h2>题意翻译</h2>
+<div>给定一个长度为$n$的字符串，你可以把字符串中的``..``转化成``.``
+有$m$次操作，每次给定一个整数$x$和一个字符$c$，表示把原字符串的第$x$个字符修改成$c$，并输出把这个字符串转化成最简字符串所需的转化次数。
+最简字符串是不存在两个相连的``.``
+$n, m\le 3e5$</div>
+<h2>题目描述</h2>
+<div>Daniel has a string $ s $ , consisting of lowercase English letters and period signs (characters '.'). Let's define the operation of replacement as the following sequence of steps: find a substring ".." (two consecutive periods) in string $ s $ , of all occurrences of the substring let's choose the first one, and replace this substring with string ".". In other words, during the replacement operation, the first two consecutive periods are replaced by one. If string $ s $ contains no two consecutive periods, then nothing happens.
+Let's define $ f(s) $ as the minimum number of operations of replacement to perform, so that the string does not have any two consecutive periods left.
+You need to process $ m $ queries, the $ i $ -th results in that the character at position $ x_{i} $ ( $ 1<=x_{i}<=n $ ) of string $ s $ is assigned value $ c_{i} $ . After each operation you have to calculate and output the value of $ f(s) $ .
+Help Daniel to process all queries.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 1<=n,m<=300000 $ ) the length of the string and the number of queries.
+The second line contains string $ s $ , consisting of $ n $ lowercase English letters and period signs.
+The following $ m $ lines contain the descriptions of queries. The $ i $ -th line contains integer $ x_{i} $ and $ c_{i} $ ( $ 1<=x_{i}<=n $ , $ c_{i} $ — a lowercas English letter or a period sign), describing the query of assigning symbol $ c_{i} $ to position $ x_{i} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ m $ numbers, one per line, the $ i $ -th of these numbers must be equal to the value of $ f(s) $ after performing the $ i $ -th assignment.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 3
+.b..bz....
+1 h
+3 c
+9 f
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+3
+1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 4
+.cc.
+2 .
+3 .
+2 a
+1 a
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+3
+1
+1
+</code></pre>
+<h2>说明</h2>
+<div>Note to the first sample test (replaced periods are enclosed in square brackets).
+The original string is ".b..bz....".
+- after the first query $ f( $ hb..bz.... $ ) $ = 4 ("hb\[..\]bz...." $ → $ "hb.bz\[..\].." $ → $ "hb.bz\[..\]." $ → $ "hb.bz\[..\]" $ → $ "hb.bz.")
+- after the second query $ f( $ hbс.bz.... $ ) $ = 3 ("hbс.bz\[..\].." $ → $ "hbс.bz\[..\]." $ → $ "hbс.bz\[..\]" $ → $ "hbс.bz.")
+- after the third query $ f( $ hbс.bz..f. $ ) $ = 1 ("hbс.bz\[..\]f." $ → $ "hbс.bz.f.")
+Note to the second sample test.
+The original string is ".cc.".
+- after the first query: $ f( $ ..c. $ ) $ = 1 ("\[..\]c." $ → $ ".c.")
+- after the second query: $ f( $ .... $ ) $ = 3 ("\[..\].." $ → $ "\[..\]." $ → $ "\[..\]" $ → $ ".")
+- after the third query: $ f( $ .a.. $ ) $ = 1 (".a\[..\]" $ → $ ".a.")
+- after the fourth query: $ f( $ aa.. $ ) $ = 1 ("aa\[..\]" $ → $ "aa.")</div>
+</article>
+</div>
+</div>
+</body>
+</html>

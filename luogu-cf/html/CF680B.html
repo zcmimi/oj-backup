@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bear and Finding Criminals - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396617:VZA8G4qPHhPerPOK9r2/abYfoybBCg348hEdwDxwE9k=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20%24%20n%20%24%20cities%20in%20Bearland%2C%20numbered%20%24%201%20%24%20through%20%24%20n%20%24%20.%20Cities%20are%20arranged%20in%20one%20long%20row.%20The%20distance%20between%20cities%20%24%20i%20%24%20and%20%24%20j%20%24%20is%20equal%20to%20%24%20%7Ci-j%7C%20%24%20.%5Cn%5CnLimak%20is%20a%20police%20officer.%20He%20lives%20in%20a%20city%20%24%20a%20%24%20.%20His%20job%20is%20to%20catch%20criminals.%20It%27s%20hard%20because%20he%20doesn%27t%20know%20in%20which%20cities%20criminals%20are.%20Though%2C%20he%20knows%20that%20there%20is%20at%20most%20one%20criminal%20in%20each%20city.%5Cn%5CnLimak%20is%20going%20to%20use%20a%20BCD%20%28Bear%20Criminal%20Detector%29.%20The%20BCD%20will%20tell%20Limak%20how%20many%20criminals%20there%20are%20for%20every%20distance%20from%20a%20city%20%24%20a%20%24%20.%20After%20that%2C%20Limak%20can%20catch%20a%20criminal%20in%20each%20city%20for%20which%20he%20is%20sure%20that%20there%20must%20be%20a%20criminal.%5Cn%5CnYou%20know%20in%20which%20cities%20criminals%20are.%20Count%20the%20number%20of%20criminals%20Limak%20will%20catch%2C%20after%20he%20uses%20the%20BCD.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20a%20%24%20%28%20%24%201%3C%3Da%3C%3Dn%3C%3D100%20%24%20%29%20%5Cu2014%20the%20number%20of%20cities%20and%20the%20index%20of%20city%20where%20Limak%20lives.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20t_%7B1%7D%2Ct_%7B2%7D%2C...%2Ct_%7Bn%7D%20%24%20%28%20%24%200%3C%3Dt_%7Bi%7D%3C%3D1%20%24%20%29.%20There%20are%20%24%20t_%7Bi%7D%20%24%20criminals%20in%20the%20%24%20i%20%24%20-th%20city.%22%2C%22outputFormat%22%3A%22Print%20the%20number%20of%20criminals%20Limak%20will%20catch.%22%2C%22samples%22%3A%5B%5B%226%203%5Cn1%201%201%200%201%200%5Cn%22%2C%223%5Cn%22%5D%2C%5B%225%202%5Cn0%200%200%201%200%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20there%20are%20six%20cities%20and%20Limak%20lives%20in%20the%20third%20one%20%28blue%20arrow%20below%29.%20Criminals%20are%20in%20cities%20marked%20red.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF680B%5C%2F53b34f04c80c68b5459bb6787b79d861ce7bb49e.png%29Using%20the%20BCD%20gives%20Limak%20the%20following%20information%3A%5Cn%5Cn-%20There%20is%20one%20criminal%20at%20distance%20%24%200%20%24%20from%20the%20third%20city%20%5Cu2014%20Limak%20is%20sure%20that%20this%20criminal%20is%20exactly%20in%20the%20third%20city.%5Cn-%20There%20is%20one%20criminal%20at%20distance%20%24%201%20%24%20from%20the%20third%20city%20%5Cu2014%20Limak%20doesn%27t%20know%20if%20a%20criminal%20is%20in%20the%20second%20or%20fourth%20city.%5Cn-%20There%20are%20two%20criminals%20at%20distance%20%24%202%20%24%20from%20the%20third%20city%20%5Cu2014%20Limak%20is%20sure%20that%20there%20is%20one%20criminal%20in%20the%20first%20city%20and%20one%20in%20the%20fifth%20city.%5Cn-%20There%20are%20zero%20criminals%20for%20every%20greater%20distance.%5Cn%5CnSo%2C%20Limak%20will%20catch%20criminals%20in%20cities%20%24%201%20%24%20%2C%20%24%203%20%24%20and%20%24%205%20%24%20%2C%20that%20is%20%24%203%20%24%20criminals%20in%20total.%5Cn%5CnIn%20the%20second%20sample%20%28drawing%20below%29%2C%20the%20BCD%20gives%20Limak%20the%20information%20that%20there%20is%20one%20criminal%20at%20distance%20%24%202%20%24%20from%20Limak%27s%20city.%20There%20is%20only%20one%20city%20at%20distance%20%24%202%20%24%20so%20Limak%20is%20sure%20where%20a%20criminal%20is.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF680B%5C%2F9b09abcaba16810167119bac2c883bc8bf99b11b.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F680%5C%2FB%22%2C%22id%22%3A%22680B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A8%2C%22totalAccepted%22%3A6%2C%22pid%22%3A%22CF680B%22%2C%22title%22%3A%22Bear%20and%20Finding%20Criminals%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Bear%20and%20Finding%20Criminals%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Bear and Finding Criminals</h1>
+<h2>题目描述</h2>
+<div>There are $ n $ cities in Bearland, numbered $ 1 $ through $ n $ . Cities are arranged in one long row. The distance between cities $ i $ and $ j $ is equal to $ |i-j| $ .
+Limak is a police officer. He lives in a city $ a $ . His job is to catch criminals. It's hard because he doesn't know in which cities criminals are. Though, he knows that there is at most one criminal in each city.
+Limak is going to use a BCD (Bear Criminal Detector). The BCD will tell Limak how many criminals there are for every distance from a city $ a $ . After that, Limak can catch a criminal in each city for which he is sure that there must be a criminal.
+You know in which cities criminals are. Count the number of criminals Limak will catch, after he uses the BCD.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ a $ ( $ 1<=a<=n<=100 $ ) — the number of cities and the index of city where Limak lives.
+The second line contains $ n $ integers $ t_{1},t_{2},...,t_{n} $ ( $ 0<=t_{i}<=1 $ ). There are $ t_{i} $ criminals in the $ i $ -th city.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the number of criminals Limak will catch.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 3
+1 1 1 0 1 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 2
+0 0 0 1 0
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, there are six cities and Limak lives in the third one (blue arrow below). Criminals are in cities marked red.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF680B/53b34f04c80c68b5459bb6787b79d861ce7bb49e.png)Using the BCD gives Limak the following information:
+- There is one criminal at distance $ 0 $ from the third city — Limak is sure that this criminal is exactly in the third city.
+- There is one criminal at distance $ 1 $ from the third city — Limak doesn't know if a criminal is in the second or fourth city.
+- There are two criminals at distance $ 2 $ from the third city — Limak is sure that there is one criminal in the first city and one in the fifth city.
+- There are zero criminals for every greater distance.
+So, Limak will catch criminals in cities $ 1 $ , $ 3 $ and $ 5 $ , that is $ 3 $ criminals in total.
+In the second sample (drawing below), the BCD gives Limak the information that there is one criminal at distance $ 2 $ from Limak's city. There is only one city at distance $ 2 $ so Limak is sure where a criminal is.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF680B/9b09abcaba16810167119bac2c883bc8bf99b11b.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

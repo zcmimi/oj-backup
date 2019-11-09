@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Nanami&#039;s Power Plant - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394028:c12jYNi1uB07FcDWN/s+e0Vq0k0Z4C6n1GMxvlNA2xU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Nanami%20likes%20playing%20games%2C%20and%20is%20also%20really%20good%20at%20it.%20This%20day%20she%20was%20playing%20a%20new%20game%20which%20involved%20operating%20a%20power%20plant.%20Nanami%27s%20job%20is%20to%20control%20the%20generators%20in%20the%20plant%20and%20produce%20maximum%20output.%5Cn%5CnThere%20are%20%24%20n%20%24%20generators%20in%20the%20plant.%20Each%20generator%20should%20be%20set%20to%20a%20generating%20level.%20Generating%20level%20is%20an%20integer%20%28possibly%20zero%20or%20negative%29%2C%20the%20generating%20level%20of%20the%20%24%20i%20%24%20-th%20generator%20should%20be%20between%20%24%20l_%7Bi%7D%20%24%20and%20%24%20r_%7Bi%7D%20%24%20%28both%20inclusive%29.%20The%20output%20of%20a%20generator%20can%20be%20calculated%20using%20a%20certain%20quadratic%20function%20%24%20f%28x%29%20%24%20%2C%20where%20%24%20x%20%24%20is%20the%20generating%20level%20of%20the%20generator.%20Each%20generator%20has%20its%20own%20function%2C%20the%20function%20of%20the%20%24%20i%20%24%20-th%20generator%20is%20denoted%20as%20%24%20f_%7Bi%7D%28x%29%20%24%20.%5Cn%5CnHowever%2C%20there%20are%20%24%20m%20%24%20further%20restrictions%20to%20the%20generators.%20Let%20the%20generating%20level%20of%20the%20%24%20i%20%24%20-th%20generator%20be%20%24%20x_%7Bi%7D%20%24%20.%20Each%20restriction%20is%20of%20the%20form%20%24%20x_%7Bu%7D%3C%3Dx_%7Bv%7D%2Bd%20%24%20%2C%20where%20%24%20u%20%24%20and%20%24%20v%20%24%20are%20IDs%20of%20two%20different%20generators%20and%20%24%20d%20%24%20is%20an%20integer.%5Cn%5CnNanami%20found%20the%20game%20tedious%20but%20giving%20up%20is%20against%20her%20creed.%20So%20she%20decided%20to%20have%20a%20program%20written%20to%20calculate%20the%20answer%20for%20her%20%28the%20maximum%20total%20output%20of%20generators%29.%20Somehow%2C%20this%20became%20your%20job.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%5Cu00a0%281%3C%3Dn%3C%3D50%3B%5Cu00a00%3C%3Dm%3C%3D100%29%20%24%20%5Cu2014%20the%20number%20of%20generators%20and%20the%20number%20of%20restrictions.%5Cn%5CnThen%20follow%20%24%20n%20%24%20lines%2C%20each%20line%20contains%20three%20integers%20%24%20a_%7Bi%7D%20%24%20%2C%20%24%20b_%7Bi%7D%20%24%20%2C%20and%20%24%20c_%7Bi%7D%5Cu00a0%28%7Ca_%7Bi%7D%7C%3C%3D10%3B%5Cu00a0%7Cb_%7Bi%7D%7C%2C%7Cc_%7Bi%7D%7C%3C%3D1000%29%20%24%20%5Cu2014%20the%20coefficients%20of%20the%20function%20%24%20f_%7Bi%7D%28x%29%20%24%20.%20That%20is%2C%20%24%20f_%7Bi%7D%28x%29%3Da_%7Bi%7Dx%5E%7B2%7D%2Bb_%7Bi%7Dx%2Bc_%7Bi%7D%20%24%20.%5Cn%5CnThen%20follow%20another%20%24%20n%20%24%20lines%2C%20each%20line%20contains%20two%20integers%20%24%20l_%7Bi%7D%20%24%20and%20%24%20r_%7Bi%7D%5Cu00a0%28-100%3C%3Dl_%7Bi%7D%3C%3Dr_%7Bi%7D%3C%3D100%29%20%24%20.%5Cn%5CnThen%20follow%20%24%20m%20%24%20lines%2C%20each%20line%20contains%20three%20integers%20%24%20u_%7Bi%7D%20%24%20%2C%20%24%20v_%7Bi%7D%20%24%20%2C%20and%20%24%20d_%7Bi%7D%5Cu00a0%281%3C%3Du_%7Bi%7D%2Cv_%7Bi%7D%3C%3Dn%3B%5Cu00a0u_%7Bi%7D%5Cu2260v_%7Bi%7D%3B%5Cu00a0%7Cd_%7Bi%7D%7C%3C%3D200%29%20%24%20%2C%20describing%20a%20restriction.%20The%20%24%20i%20%24%20-th%20restriction%20is%20%24%20x_%7Bui%7D%3C%3Dx_%7Bvi%7D%2Bd_%7Bi%7D%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20line%20containing%20a%20single%20integer%20%5Cu2014%20the%20maximum%20output%20of%20all%20the%20generators.%20It%20is%20guaranteed%20that%20there%20exists%20at%20least%20one%20valid%20configuration.%22%2C%22samples%22%3A%5B%5B%223%203%5Cn0%201%200%5Cn0%201%201%5Cn0%201%202%5Cn0%203%5Cn1%202%5Cn-100%20100%5Cn1%202%200%5Cn2%203%200%5Cn3%201%200%5Cn%22%2C%229%5Cn%22%5D%2C%5B%225%208%5Cn1%20-8%2020%5Cn2%20-4%200%5Cn-1%2010%20-10%5Cn0%201%200%5Cn0%20-1%201%5Cn1%209%5Cn1%204%5Cn0%2010%5Cn3%2011%5Cn7%209%5Cn2%201%203%5Cn1%202%203%5Cn2%203%203%5Cn3%202%203%5Cn3%204%203%5Cn4%203%203%5Cn4%205%203%5Cn5%204%203%5Cn%22%2C%2246%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20%24%20f_%7B1%7D%28x%29%3Dx%20%24%20%2C%20%24%20f_%7B2%7D%28x%29%3Dx%2B1%20%24%20%2C%20and%20%24%20f_%7B3%7D%28x%29%3Dx%2B2%20%24%20%2C%20so%20we%20are%20to%20maximize%20the%20sum%20of%20the%20generating%20levels.%20The%20restrictions%20are%20%24%20x_%7B1%7D%3C%3Dx_%7B2%7D%20%24%20%2C%20%24%20x_%7B2%7D%3C%3Dx_%7B3%7D%20%24%20%2C%20and%20%24%20x_%7B3%7D%3C%3Dx_%7B1%7D%20%24%20%2C%20which%20gives%20us%20%24%20x_%7B1%7D%3Dx_%7B2%7D%3Dx_%7B3%7D%20%24%20.%20The%20optimal%20configuration%20is%20%24%20x_%7B1%7D%3Dx_%7B2%7D%3Dx_%7B3%7D%3D2%20%24%20%2C%20which%20produces%20an%20output%20of%209.%5Cn%5CnIn%20the%20second%20sample%2C%20restrictions%20are%20equal%20to%20%24%20%7Cx_%7Bi%7D-x_%7Bi%2B1%7D%7C%3C%3D3%20%24%20for%20%24%201%3C%3Di%26lt%3Bn%20%24%20.%20One%20of%20the%20optimal%20configurations%20is%20%24%20x_%7B1%7D%3D1%20%24%20%2C%20%24%20x_%7B2%7D%3D4%20%24%20%2C%20%24%20x_%7B3%7D%3D5%20%24%20%2C%20%24%20x_%7B4%7D%3D8%20%24%20and%20%24%20x_%7B5%7D%3D7%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F434%5C%2FD%22%2C%22id%22%3A%22434D%22%7D%2C%22translation%22%3A%22%5Cu6709%24n%24%5Cu4e2a%5Cu4e8c%5Cu6b21%5Cu51fd%5Cu6570%5Cuff0c%5Cu7b2c%24i%24%5Cu4e2a%5Cu5f62%5Cu5982%24f%28i%2Cx%29%3Da_ix%5E2%2Bb_ix%2Bc_i%24%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu603b%5Cu6536%5Cu76ca%5Cu662f%24%5C%5Csum_%7Bi%3D1%7D%5Enf%28i%2Cx_i%29%24%5Cuff0c%5Cu4f46%5Cu662f%5Cu6709%5Cu51e0%5Cu4e2a%5Cu9650%5Cu5236%5Cuff1a%5Cr%5Cn%5Cr%5Cn1.%20%24x_i%24%5Cu662f%24%5Bl_i%2Cr_i%5D%24%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cr%5Cn2.%20%5Cu8fd8%5Cu7ed9%5Cu4e86%24m%24%5Cu6761%5Cu989d%5Cu5916%5Cu7684%5Cu9650%5Cu5236%5Cuff0c%5Cu6bcf%5Cu6761%5Cu5f62%5Cu5982%60u%20v%20d%60%5Cuff0c%5Cu8868%5Cu793a%5Cu7684%5Cu662f%24x_u%5C%5Cleq%20x_v%2Bd%24%5Cr%5Cn%5Cr%5Cn%5Cu6c42%5Cu6700%5Cu5927%5Cu7684%5Cu603b%5Cu6536%5Cu76ca%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A40%2C%22totalAccepted%22%3A19%2C%22pid%22%3A%22CF434D%22%2C%22title%22%3A%22Nanami%27s%20Power%20Plant%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A41753%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A10920%2C%22name%22%3A%22CF434D%20Nanami%27s%20Power%20Plant%22%2C%22slug%22%3A%22CF434D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Nanami%27s%20Power%20Plant%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Nanami&#039;s Power Plant</h1>
+<h2>题意翻译</h2>
+<div>有$n$个二次函数，第$i$个形如$f(i,x)=a_ix^2+b_ix+c_i$
+你的总收益是$\sum_{i=1}^nf(i,x_i)$，但是有几个限制：
+1. $x_i$是$[l_i,r_i]$中的一个整数
+2. 还给了$m$条额外的限制，每条形如`u v d`，表示的是$x_u\leq x_v+d$
+求最大的总收益。</div>
+<h2>题目描述</h2>
+<div>Nanami likes playing games, and is also really good at it. This day she was playing a new game which involved operating a power plant. Nanami's job is to control the generators in the plant and produce maximum output.
+There are $ n $ generators in the plant. Each generator should be set to a generating level. Generating level is an integer (possibly zero or negative), the generating level of the $ i $ -th generator should be between $ l_{i} $ and $ r_{i} $ (both inclusive). The output of a generator can be calculated using a certain quadratic function $ f(x) $ , where $ x $ is the generating level of the generator. Each generator has its own function, the function of the $ i $ -th generator is denoted as $ f_{i}(x) $ .
+However, there are $ m $ further restrictions to the generators. Let the generating level of the $ i $ -th generator be $ x_{i} $ . Each restriction is of the form $ x_{u}<=x_{v}+d $ , where $ u $ and $ v $ are IDs of two different generators and $ d $ is an integer.
+Nanami found the game tedious but giving up is against her creed. So she decided to have a program written to calculate the answer for her (the maximum total output of generators). Somehow, this became your job.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m (1<=n<=50; 0<=m<=100) $ — the number of generators and the number of restrictions.
+Then follow $ n $ lines, each line contains three integers $ a_{i} $ , $ b_{i} $ , and $ c_{i} (|a_{i}|<=10; |b_{i}|,|c_{i}|<=1000) $ — the coefficients of the function $ f_{i}(x) $ . That is, $ f_{i}(x)=a_{i}x^{2}+b_{i}x+c_{i} $ .
+Then follow another $ n $ lines, each line contains two integers $ l_{i} $ and $ r_{i} (-100<=l_{i}<=r_{i}<=100) $ .
+Then follow $ m $ lines, each line contains three integers $ u_{i} $ , $ v_{i} $ , and $ d_{i} (1<=u_{i},v_{i}<=n; u_{i}≠v_{i}; |d_{i}|<=200) $ , describing a restriction. The $ i $ -th restriction is $ x_{ui}<=x_{vi}+d_{i} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single line containing a single integer — the maximum output of all the generators. It is guaranteed that there exists at least one valid configuration.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3
+0 1 0
+0 1 1
+0 1 2
+0 3
+1 2
+-100 100
+1 2 0
+2 3 0
+3 1 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>9
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 8
+1 -8 20
+2 -4 0
+-1 10 -10
+0 1 0
+0 -1 1
+1 9
+1 4
+0 10
+3 11
+7 9
+2 1 3
+1 2 3
+2 3 3
+3 2 3
+3 4 3
+4 3 3
+4 5 3
+5 4 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>46
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, $ f_{1}(x)=x $ , $ f_{2}(x)=x+1 $ , and $ f_{3}(x)=x+2 $ , so we are to maximize the sum of the generating levels. The restrictions are $ x_{1}<=x_{2} $ , $ x_{2}<=x_{3} $ , and $ x_{3}<=x_{1} $ , which gives us $ x_{1}=x_{2}=x_{3} $ . The optimal configuration is $ x_{1}=x_{2}=x_{3}=2 $ , which produces an output of 9.
+In the second sample, restrictions are equal to $ |x_{i}-x_{i+1}|<=3 $ for $ 1<=i&lt;n $ . One of the optimal configurations is $ x_{1}=1 $ , $ x_{2}=4 $ , $ x_{3}=5 $ , $ x_{4}=8 $ and $ x_{5}=7 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

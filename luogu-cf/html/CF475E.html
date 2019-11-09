@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Strongly Connected City 2 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394503:HyibeXzXVrKpKa4UG/XmIVBc0jrwJzvz//4JDwLUO94=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Imagine%20a%20city%20with%20%24%20n%20%24%20junctions%20and%20%24%20m%20%24%20streets.%20Junctions%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%5Cn%5CnIn%20order%20to%20increase%20the%20traffic%20flow%2C%20mayor%20of%20the%20city%20has%20decided%20to%20make%20each%20street%20one-way.%20This%20means%20in%20the%20street%20between%20junctions%20%24%20u%20%24%20and%20%24%20v%20%24%20%2C%20the%20traffic%20moves%20only%20from%20%24%20u%20%24%20to%20%24%20v%20%24%20or%20only%20from%20%24%20v%20%24%20to%20%24%20u%20%24%20.%5Cn%5CnThe%20problem%20is%20to%20direct%20the%20traffic%20flow%20of%20streets%20in%20a%20way%20that%20maximizes%20the%20number%20of%20pairs%20%24%20%28u%2Cv%29%20%24%20where%20%24%201%3C%3Du%2Cv%3C%3Dn%20%24%20and%20it%20is%20possible%20to%20reach%20junction%20%24%20v%20%24%20from%20%24%20u%20%24%20by%20passing%20the%20streets%20in%20their%20specified%20direction.%20Your%20task%20is%20to%20find%20out%20maximal%20possible%20number%20of%20such%20pairs.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%2C%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF475E%5C%2F05db91a084cfb5bf0fdc25594d21f636925d7afa.png%29%29%2C%20denoting%20the%20number%20of%20junctions%20and%20streets%20of%20the%20city.%5Cn%5CnEach%20of%20the%20following%20%24%20m%20%24%20lines%20contains%20two%20integers%20%24%20u%20%24%20and%20%24%20v%20%24%20%2C%20%28%20%24%20u%5Cu2260v%20%24%20%29%2C%20denoting%20endpoints%20of%20a%20street%20in%20the%20city.%5Cn%5CnBetween%20every%20two%20junctions%20there%20will%20be%20at%20most%20one%20street.%20It%20is%20guaranteed%20that%20before%20mayor%20decision%20%28when%20all%20streets%20were%20two-way%29%20it%20was%20possible%20to%20reach%20each%20junction%20from%20any%20other%20junction.%22%2C%22outputFormat%22%3A%22Print%20the%20maximal%20number%20of%20pairs%20%24%20%28u%2Cv%29%20%24%20such%20that%20that%20it%20is%20possible%20to%20reach%20junction%20%24%20v%20%24%20from%20%24%20u%20%24%20after%20directing%20the%20streets.%22%2C%22samples%22%3A%5B%5B%225%204%5Cn1%202%5Cn1%203%5Cn1%204%5Cn1%205%5Cn%22%2C%2213%5Cn%22%5D%2C%5B%224%205%5Cn1%202%5Cn2%203%5Cn3%204%5Cn4%201%5Cn1%203%5Cn%22%2C%2216%5Cn%22%5D%2C%5B%222%201%5Cn1%202%5Cn%22%2C%223%5Cn%22%5D%2C%5B%226%207%5Cn1%202%5Cn2%203%5Cn1%203%5Cn1%204%5Cn4%205%5Cn5%206%5Cn6%204%5Cn%22%2C%2227%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20if%20the%20mayor%20makes%20first%20and%20second%20streets%20one-way%20towards%20the%20junction%20%24%201%20%24%20and%20third%20and%20fourth%20streets%20in%20opposite%20direction%2C%20there%20would%20be%2013%20pairs%20of%20reachable%20junctions%3A%20%24%20%7B%281%2C1%29%2C%282%2C2%29%2C%283%2C3%29%2C%284%2C4%29%2C%285%2C5%29%2C%282%2C1%29%2C%283%2C1%29%2C%281%2C4%29%2C%281%2C5%29%2C%282%2C4%29%2C%282%2C5%29%2C%283%2C4%29%2C%283%2C5%29%7D%20%24%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F475%5C%2FE%22%2C%22id%22%3A%22475E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu7ed9%5Cu6240%5Cu6709%5Cu8fb9%5Cu5b9a%5Cu5411%5Cuff0c%5Cu4f7f%5Cu5b9a%5Cu5411%5Cu4e4b%5Cu540e%5Cu5b58%5Cu5728%5Cu6700%5Cu591a%5Cu7684%5Cu70b9%5Cu5bf9%20%24%28a%2Cb%29%24%20%5Cu4f7f%5Cu5f97%5Cu4ece%20%24a%24%20%5Cu80fd%5Cu5230%20%24b%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A7%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF475E%22%2C%22title%22%3A%22Strongly%20Connected%20City%202%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Strongly%20Connected%20City%202%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Strongly Connected City 2</h1>
+<h2>题意翻译</h2>
+<div>给一个无向图，你需要给所有边定向，使定向之后存在最多的点对 $(a,b)$ 使得从 $a$ 能到 $b$</div>
+<h2>题目描述</h2>
+<div>Imagine a city with $ n $ junctions and $ m $ streets. Junctions are numbered from $ 1 $ to $ n $ .
+In order to increase the traffic flow, mayor of the city has decided to make each street one-way. This means in the street between junctions $ u $ and $ v $ , the traffic moves only from $ u $ to $ v $ or only from $ v $ to $ u $ .
+The problem is to direct the traffic flow of streets in a way that maximizes the number of pairs $ (u,v) $ where $ 1<=u,v<=n $ and it is possible to reach junction $ v $ from $ u $ by passing the streets in their specified direction. Your task is to find out maximal possible number of such pairs.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains integers $ n $ and $ m $ , (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF475E/05db91a084cfb5bf0fdc25594d21f636925d7afa.png)), denoting the number of junctions and streets of the city.
+Each of the following $ m $ lines contains two integers $ u $ and $ v $ , ( $ u≠v $ ), denoting endpoints of a street in the city.
+Between every two junctions there will be at most one street. It is guaranteed that before mayor decision (when all streets were two-way) it was possible to reach each junction from any other junction.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the maximal number of pairs $ (u,v) $ such that that it is possible to reach junction $ v $ from $ u $ after directing the streets.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 4
+1 2
+1 3
+1 4
+1 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>13
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 5
+1 2
+2 3
+3 4
+4 1
+1 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>16
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2 1
+1 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>6 7
+1 2
+2 3
+1 3
+1 4
+4 5
+5 6
+6 4
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>27
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, if the mayor makes first and second streets one-way towards the junction $ 1 $ and third and fourth streets in opposite direction, there would be 13 pairs of reachable junctions: $ {(1,1),(2,2),(3,3),(4,4),(5,5),(2,1),(3,1),(1,4),(1,5),(2,4),(2,5),(3,4),(3,5)} $</div>
+</article>
+</div>
+</div>
+</body>
+</html>

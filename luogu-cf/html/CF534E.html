@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Berland Local Positioning System - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395189:ZjOS0PDqDANv+QhVOyxhWPk3RMk3IiWwi87vlo6btHU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20Berland%20a%20bus%20travels%20along%20the%20main%20street%20of%20the%20capital.%20The%20street%20begins%20from%20the%20main%20square%20and%20looks%20like%20a%20very%20long%20segment.%20There%20are%20%24%20n%20%24%20bus%20stops%20located%20along%20the%20street%2C%20the%20%24%20i%20%24%20-th%20of%20them%20is%20located%20at%20the%20distance%20%24%20a_%7Bi%7D%20%24%20from%20the%20central%20square%2C%20all%20distances%20are%20distinct%2C%20the%20stops%20are%20numbered%20in%20the%20order%20of%20increasing%20distance%20from%20the%20square%2C%20that%20is%2C%20%24%20a_%7Bi%7D%26lt%3Ba_%7Bi%2B1%7D%20%24%20for%20all%20%24%20i%20%24%20from%201%20to%20%24%20n-1%20%24%20.%20The%20bus%20starts%20its%20journey%20from%20the%20first%20stop%2C%20it%20passes%20stops%20%24%202%20%24%20%2C%20%24%203%20%24%20and%20so%20on.%20It%20reaches%20the%20stop%20number%20%24%20n%20%24%20%2C%20turns%20around%20and%20goes%20in%20the%20opposite%20direction%20to%20stop%20%24%201%20%24%20%2C%20passing%20all%20the%20intermediate%20stops%20in%20the%20reverse%20order.%20After%20that%2C%20it%20again%20starts%20to%20move%20towards%20stop%20%24%20n%20%24%20.%20During%20the%20day%2C%20the%20bus%20runs%20non-stop%20on%20this%20route.%5Cn%5CnThe%20bus%20is%20equipped%20with%20the%20Berland%20local%20positioning%20system.%20When%20the%20bus%20passes%20a%20stop%2C%20the%20system%20notes%20down%20its%20number.%5Cn%5CnOne%20of%20the%20key%20features%20of%20the%20system%20is%20that%20it%20can%20respond%20to%20the%20queries%20about%20the%20distance%20covered%20by%20the%20bus%20for%20the%20parts%20of%20its%20path%20between%20some%20pair%20of%20stops.%20A%20special%20module%20of%20the%20system%20takes%20the%20input%20with%20the%20information%20about%20a%20set%20of%20stops%20on%20a%20segment%20of%20the%20path%2C%20a%20stop%20number%20occurs%20in%20the%20set%20as%20many%20times%20as%20the%20bus%20drove%20past%20it.%20This%20module%20returns%20the%20length%20of%20the%20traveled%20segment%20of%20the%20path%20%28or%20-1%20if%20it%20is%20impossible%20to%20determine%20the%20length%20uniquely%29.%20The%20operation%20of%20the%20module%20is%20complicated%20by%20the%20fact%20that%20stop%20numbers%20occur%20in%20the%20request%20not%20in%20the%20order%20they%20were%20visited%20but%20in%20the%20non-decreasing%20order.%5Cn%5CnFor%20example%2C%20if%20the%20number%20of%20stops%20is%20%24%206%20%24%20%2C%20and%20the%20part%20of%20the%20bus%20path%20starts%20at%20the%20bus%20stop%20number%20%24%205%20%24%20%2C%20ends%20at%20the%20stop%20number%20%24%203%20%24%20and%20passes%20the%20stops%20as%20follows%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF534E%5C%2Faf31d14addb6c65568bda25f3a02c691a79c56de.png%29%2C%20then%20the%20request%20about%20this%20segment%20of%20the%20path%20will%20have%20form%3A%20%24%203%2C4%2C5%2C5%2C6%20%24%20.%20If%20the%20bus%20on%20the%20segment%20of%20the%20path%20from%20stop%20%24%205%20%24%20to%20stop%20%24%203%20%24%20has%20time%20to%20drive%20past%20the%20%24%201%20%24%20-th%20stop%20%28i.e.%2C%20if%20we%20consider%20a%20segment%20that%20ends%20with%20the%20second%20visit%20to%20stop%20%24%203%20%24%20on%20the%20way%20from%20%24%205%20%24%20%29%2C%20then%20the%20request%20will%20have%20form%3A%20%24%201%2C2%2C2%2C3%2C3%2C4%2C5%2C5%2C6%20%24%20.%5Cn%5CnYou%20will%20have%20to%20repeat%20the%20Berland%20programmers%20achievement%20and%20implement%20this%20function.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20stops.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20distance%20from%20the%20%24%20i%20%24%20-th%20stop%20to%20the%20central%20square.%20The%20numbers%20in%20the%20second%20line%20go%20in%20the%20increasing%20order.%5Cn%5CnThe%20third%20line%20contains%20integer%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3D4%5Cu00b710%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20stops%20the%20bus%20visited%20on%20some%20segment%20of%20the%20path.%5Cn%5CnThe%20fourth%20line%20contains%20%24%20m%20%24%20integers%20%28%20%24%201%3C%3Db_%7Bi%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20sorted%20list%20of%20numbers%20of%20the%20stops%20visited%20by%20the%20bus%20on%20the%20segment%20of%20the%20path.%20The%20number%20of%20a%20stop%20occurs%20as%20many%20times%20as%20it%20was%20visited%20by%20a%20bus.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20query%20corresponds%20to%20some%20segment%20of%20the%20path.%22%2C%22outputFormat%22%3A%22In%20the%20single%20line%20please%20print%20the%20distance%20covered%20by%20a%20bus.%20If%20it%20is%20impossible%20to%20determine%20it%20unambiguously%2C%20print%20%24%20-1%20%24%20.%22%2C%22samples%22%3A%5B%5B%226%5Cn2%203%205%207%2011%2013%5Cn5%5Cn3%204%205%205%206%5Cn%22%2C%2210%5Cn%22%5D%2C%5B%226%5Cn2%203%205%207%2011%2013%5Cn9%5Cn1%202%202%203%203%204%205%205%206%5Cn%22%2C%2216%5Cn%22%5D%2C%5B%223%5Cn10%20200%20300%5Cn4%5Cn1%202%202%203%5Cn%22%2C%22-1%5Cn%22%5D%2C%5B%223%5Cn1%202%203%5Cn4%5Cn1%202%202%203%5Cn%22%2C%223%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20test%20from%20the%20statement%20demonstrates%20the%20first%20example%20shown%20in%20the%20statement%20of%20the%20problem.%5Cn%5CnThe%20second%20test%20from%20the%20statement%20demonstrates%20the%20second%20example%20shown%20in%20the%20statement%20of%20the%20problem.%5Cn%5CnIn%20the%20third%20sample%20there%20are%20two%20possible%20paths%20that%20have%20distinct%20lengths%2C%20consequently%2C%20the%20sought%20length%20of%20the%20segment%20isn%27t%20defined%20uniquely.%5Cn%5CnIn%20the%20fourth%20sample%2C%20even%20though%20two%20distinct%20paths%20correspond%20to%20the%20query%2C%20they%20have%20the%20same%20lengths%2C%20so%20the%20sought%20length%20of%20the%20segment%20is%20defined%20uniquely.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F534%5C%2FE%22%2C%22id%22%3A%22534E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF534E%22%2C%22title%22%3A%22Berland%20Local%20Positioning%20System%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Berland%20Local%20Positioning%20System%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Berland Local Positioning System</h1>
+<h2>题目描述</h2>
+<div>In Berland a bus travels along the main street of the capital. The street begins from the main square and looks like a very long segment. There are $ n $ bus stops located along the street, the $ i $ -th of them is located at the distance $ a_{i} $ from the central square, all distances are distinct, the stops are numbered in the order of increasing distance from the square, that is, $ a_{i}&lt;a_{i+1} $ for all $ i $ from 1 to $ n-1 $ . The bus starts its journey from the first stop, it passes stops $ 2 $ , $ 3 $ and so on. It reaches the stop number $ n $ , turns around and goes in the opposite direction to stop $ 1 $ , passing all the intermediate stops in the reverse order. After that, it again starts to move towards stop $ n $ . During the day, the bus runs non-stop on this route.
+The bus is equipped with the Berland local positioning system. When the bus passes a stop, the system notes down its number.
+One of the key features of the system is that it can respond to the queries about the distance covered by the bus for the parts of its path between some pair of stops. A special module of the system takes the input with the information about a set of stops on a segment of the path, a stop number occurs in the set as many times as the bus drove past it. This module returns the length of the traveled segment of the path (or -1 if it is impossible to determine the length uniquely). The operation of the module is complicated by the fact that stop numbers occur in the request not in the order they were visited but in the non-decreasing order.
+For example, if the number of stops is $ 6 $ , and the part of the bus path starts at the bus stop number $ 5 $ , ends at the stop number $ 3 $ and passes the stops as follows: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF534E/af31d14addb6c65568bda25f3a02c691a79c56de.png), then the request about this segment of the path will have form: $ 3,4,5,5,6 $ . If the bus on the segment of the path from stop $ 5 $ to stop $ 3 $ has time to drive past the $ 1 $ -th stop (i.e., if we consider a segment that ends with the second visit to stop $ 3 $ on the way from $ 5 $ ), then the request will have form: $ 1,2,2,3,3,4,5,5,6 $ .
+You will have to repeat the Berland programmers achievement and implement this function.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 2<=n<=2·10^{5} $ ) — the number of stops.
+The second line contains $ n $ integers ( $ 1<=a_{i}<=10^{9} $ ) — the distance from the $ i $ -th stop to the central square. The numbers in the second line go in the increasing order.
+The third line contains integer $ m $ ( $ 1<=m<=4·10^{5} $ ) — the number of stops the bus visited on some segment of the path.
+The fourth line contains $ m $ integers ( $ 1<=b_{i}<=n $ ) — the sorted list of numbers of the stops visited by the bus on the segment of the path. The number of a stop occurs as many times as it was visited by a bus.
+It is guaranteed that the query corresponds to some segment of the path.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the single line please print the distance covered by a bus. If it is impossible to determine it unambiguously, print $ -1 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+2 3 5 7 11 13
+5
+3 4 5 5 6
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6
+2 3 5 7 11 13
+9
+1 2 2 3 3 4 5 5 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>16
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+10 200 300
+4
+1 2 2 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>-1
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>3
+1 2 3
+4
+1 2 2 3
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>3
+</code></pre>
+<h2>说明</h2>
+<div>The first test from the statement demonstrates the first example shown in the statement of the problem.
+The second test from the statement demonstrates the second example shown in the statement of the problem.
+In the third sample there are two possible paths that have distinct lengths, consequently, the sought length of the segment isn't defined uniquely.
+In the fourth sample, even though two distinct paths correspond to the query, they have the same lengths, so the sought length of the segment is defined uniquely.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

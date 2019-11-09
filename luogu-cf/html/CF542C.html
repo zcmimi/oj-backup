@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Idempotent functions - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395254:mnErmkagxq4+qFMjHGXQf7Zl0YQyezV6YLJ14gzk1R0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Some%20time%20ago%20Leonid%20have%20known%20about%20idempotent%20functions.%20Idempotent%20function%20defined%20on%20a%20set%20%24%20%7B1%2C2%2C...%2Cn%7D%20%24%20is%20such%20function%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF542C%5C%2Fbd89689373264189cd84dae0d69467be68ca323b.png%29%2C%20that%20for%20any%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF542C%5C%2F9a41c8470dbaa5967772aedda0040717aaf30fea.png%29%20the%20formula%20%24%20g%28g%28x%29%29%3Dg%28x%29%20%24%20holds.%5Cn%5CnLet%27s%20denote%20as%20%24%20f%5E%7B%28k%29%7D%28x%29%20%24%20the%20function%20%24%20f%20%24%20applied%20%24%20k%20%24%20times%20to%20the%20value%20%24%20x%20%24%20.%20More%20formally%2C%20%24%20f%5E%7B%281%29%7D%28x%29%3Df%28x%29%20%24%20%2C%20%24%20f%5E%7B%28k%29%7D%28x%29%3Df%28f%5E%7B%28k-1%29%7D%28x%29%29%20%24%20for%20each%20%24%20k%26gt%3B1%20%24%20.%5Cn%5CnYou%20are%20given%20some%20function%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF542C%5C%2F7ed3c9bd96ebefaf9c2ae2aa09921c0d35366e17.png%29.%20Your%20task%20is%20to%20find%20minimum%20positive%20integer%20%24%20k%20%24%20such%20that%20function%20%24%20f%5E%7B%28k%29%7D%28x%29%20%24%20is%20idempotent.%22%2C%22inputFormat%22%3A%22In%20the%20first%20line%20of%20the%20input%20there%20is%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D200%20%24%20%29%20%5Cu2014%20the%20size%20of%20function%20%24%20f%20%24%20domain.%5Cn%5CnIn%20the%20second%20line%20follow%20%24%20f%281%29%2Cf%282%29%2C...%2Cf%28n%29%20%24%20%28%20%24%201%3C%3Df%28i%29%3C%3Dn%20%24%20for%20each%20%24%201%3C%3Di%3C%3Dn%20%24%20%29%2C%20the%20values%20of%20a%20function.%22%2C%22outputFormat%22%3A%22Output%20minimum%20%24%20k%20%24%20such%20that%20function%20%24%20f%5E%7B%28k%29%7D%28x%29%20%24%20is%20idempotent.%22%2C%22samples%22%3A%5B%5B%224%5Cn1%202%202%204%5Cn%22%2C%221%5Cn%22%5D%2C%5B%223%5Cn2%203%203%5Cn%22%2C%222%5Cn%22%5D%2C%5B%223%5Cn2%203%201%5Cn%22%2C%223%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20test%20function%20%24%20f%28x%29%3Df%5E%7B%281%29%7D%28x%29%20%24%20is%20already%20idempotent%20since%20%24%20f%28f%281%29%29%3Df%281%29%3D1%20%24%20%2C%20%24%20f%28f%282%29%29%3Df%282%29%3D2%20%24%20%2C%20%24%20f%28f%283%29%29%3Df%283%29%3D2%20%24%20%2C%20%24%20f%28f%284%29%29%3Df%284%29%3D4%20%24%20.%5Cn%5CnIn%20the%20second%20sample%20test%3A%5Cn%5Cn-%20function%20%24%20f%28x%29%3Df%5E%7B%281%29%7D%28x%29%20%24%20isn%27t%20idempotent%20because%20%24%20f%28f%281%29%29%3D3%20%24%20but%20%24%20f%281%29%3D2%20%24%20%3B%5Cn-%20function%20%24%20f%28x%29%3Df%5E%7B%282%29%7D%28x%29%20%24%20is%20idempotent%20since%20for%20any%20%24%20x%20%24%20it%20is%20true%20that%20%24%20f%5E%7B%282%29%7D%28x%29%3D3%20%24%20%2C%20so%20it%20is%20also%20true%20that%20%24%20f%5E%7B%282%29%7D%28f%5E%7B%282%29%7D%28x%29%29%3D3%20%24%20.%5Cn%5CnIn%20the%20third%20sample%20test%3A%5Cn%5Cn-%20function%20%24%20f%28x%29%3Df%5E%7B%281%29%7D%28x%29%20%24%20isn%27t%20idempotent%20because%20%24%20f%28f%281%29%29%3D3%20%24%20but%20%24%20f%281%29%3D2%20%24%20%3B%5Cn-%20function%20%24%20f%28f%28x%29%29%3Df%5E%7B%282%29%7D%28x%29%20%24%20isn%27t%20idempotent%20because%20%24%20f%5E%7B%282%29%7D%28f%5E%7B%282%29%7D%281%29%29%3D2%20%24%20but%20%24%20f%5E%7B%282%29%7D%281%29%3D3%20%24%20%3B%5Cn-%20function%20%24%20f%28f%28f%28x%29%29%29%3Df%5E%7B%283%29%7D%28x%29%20%24%20is%20idempotent%20since%20it%20is%20identity%20function%3A%20%24%20f%5E%7B%283%29%7D%28x%29%3Dx%20%24%20for%20any%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF542C%5C%2F11e22b0eed3b852ef44d62d2479b42e2534a18a6.png%29%20meaning%20that%20the%20formula%20%24%20f%5E%7B%283%29%7D%28f%5E%7B%283%29%7D%28x%29%29%3Df%5E%7B%283%29%7D%28x%29%20%24%20also%20holds.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F542%5C%2FC%22%2C%22id%22%3A%22542C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF542C%22%2C%22title%22%3A%22Idempotent%20functions%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Idempotent%20functions%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Idempotent functions</h1>
+<h2>题目描述</h2>
+<div>Some time ago Leonid have known about idempotent functions. Idempotent function defined on a set $ {1,2,...,n} $ is such function ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF542C/bd89689373264189cd84dae0d69467be68ca323b.png), that for any ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF542C/9a41c8470dbaa5967772aedda0040717aaf30fea.png) the formula $ g(g(x))=g(x) $ holds.
+Let's denote as $ f^{(k)}(x) $ the function $ f $ applied $ k $ times to the value $ x $ . More formally, $ f^{(1)}(x)=f(x) $ , $ f^{(k)}(x)=f(f^{(k-1)}(x)) $ for each $ k&gt;1 $ .
+You are given some function ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF542C/7ed3c9bd96ebefaf9c2ae2aa09921c0d35366e17.png). Your task is to find minimum positive integer $ k $ such that function $ f^{(k)}(x) $ is idempotent.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>In the first line of the input there is a single integer $ n $ ( $ 1<=n<=200 $ ) — the size of function $ f $ domain.
+In the second line follow $ f(1),f(2),...,f(n) $ ( $ 1<=f(i)<=n $ for each $ 1<=i<=n $ ), the values of a function.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output minimum $ k $ such that function $ f^{(k)}(x) $ is idempotent.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1 2 2 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+2 3 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+2 3 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample test function $ f(x)=f^{(1)}(x) $ is already idempotent since $ f(f(1))=f(1)=1 $ , $ f(f(2))=f(2)=2 $ , $ f(f(3))=f(3)=2 $ , $ f(f(4))=f(4)=4 $ .
+In the second sample test:
+- function $ f(x)=f^{(1)}(x) $ isn't idempotent because $ f(f(1))=3 $ but $ f(1)=2 $ ;
+- function $ f(x)=f^{(2)}(x) $ is idempotent since for any $ x $ it is true that $ f^{(2)}(x)=3 $ , so it is also true that $ f^{(2)}(f^{(2)}(x))=3 $ .
+In the third sample test:
+- function $ f(x)=f^{(1)}(x) $ isn't idempotent because $ f(f(1))=3 $ but $ f(1)=2 $ ;
+- function $ f(f(x))=f^{(2)}(x) $ isn't idempotent because $ f^{(2)}(f^{(2)}(1))=2 $ but $ f^{(2)}(1)=3 $ ;
+- function $ f(f(f(x)))=f^{(3)}(x) $ is idempotent since it is identity function: $ f^{(3)}(x)=x $ for any ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF542C/11e22b0eed3b852ef44d62d2479b42e2534a18a6.png) meaning that the formula $ f^{(3)}(f^{(3)}(x))=f^{(3)}(x) $ also holds.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

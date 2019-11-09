@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bear and Square Grid - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396608:YlTT7ngxBBmZz+jlg2Q/mGtFkTPNRil5fVeXHOyl7Cw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20have%20a%20grid%20with%20%24%20n%20%24%20rows%20and%20%24%20n%20%24%20columns.%20Each%20cell%20is%20either%20empty%20%28denoted%20by%20%27.%27%29%20or%20blocked%20%28denoted%20by%20%27X%27%29.%5Cn%5CnTwo%20empty%20cells%20are%20directly%20connected%20if%20they%20share%20a%20side.%20Two%20cells%20%24%20%28r_%7B1%7D%2Cc_%7B1%7D%29%20%24%20%28located%20in%20the%20row%20%24%20r_%7B1%7D%20%24%20and%20column%20%24%20c_%7B1%7D%20%24%20%29%20and%20%24%20%28r_%7B2%7D%2Cc_%7B2%7D%29%20%24%20are%20connected%20if%20there%20exists%20a%20sequence%20of%20empty%20cells%20that%20starts%20with%20%24%20%28r_%7B1%7D%2Cc_%7B1%7D%29%20%24%20%2C%20finishes%20with%20%24%20%28r_%7B2%7D%2Cc_%7B2%7D%29%20%24%20%2C%20and%20any%20two%20consecutive%20cells%20in%20this%20sequence%20are%20directly%20connected.%20A%20connected%20component%20is%20a%20set%20of%20empty%20cells%20such%20that%20any%20two%20cells%20in%20the%20component%20are%20connected%2C%20and%20there%20is%20no%20cell%20in%20this%20set%20that%20is%20connected%20to%20some%20cell%20not%20in%20this%20set.%5Cn%5CnYour%20friend%20Limak%20is%20a%20big%20grizzly%20bear.%20He%20is%20able%20to%20destroy%20any%20obstacles%20in%20some%20range.%20More%20precisely%2C%20you%20can%20choose%20a%20square%20of%20size%20%24%20k%5Cu00d7k%20%24%20in%20the%20grid%20and%20Limak%20will%20transform%20all%20blocked%20cells%20there%20to%20empty%20ones.%20However%2C%20you%20can%20ask%20Limak%20to%20help%20only%20once.%5Cn%5CnThe%20chosen%20square%20must%20be%20completely%20inside%20the%20grid.%20It%27s%20possible%20that%20Limak%20won%27t%20change%20anything%20because%20all%20cells%20are%20empty%20anyway.%5Cn%5CnYou%20like%20big%20connected%20components.%20After%20Limak%20helps%20you%2C%20what%20is%20the%20maximum%20possible%20size%20of%20the%20biggest%20connected%20component%20in%20the%20grid%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%3C%3Dn%3C%3D500%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20grid%20and%20Limak%27s%20range%2C%20respectively.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20%24%20lines%20contains%20a%20string%20with%20%24%20n%20%24%20characters%2C%20denoting%20the%20%24%20i%20%24%20-th%20row%20of%20the%20grid.%20Each%20character%20is%20%27.%27%20or%20%27X%27%2C%20denoting%20an%20empty%20cell%20or%20a%20blocked%20one%2C%20respectively.%22%2C%22outputFormat%22%3A%22Print%20the%20maximum%20possible%20size%20%28the%20number%20of%20cells%29%20of%20the%20biggest%20connected%20component%2C%20after%20using%20Limak%27s%20help.%22%2C%22samples%22%3A%5B%5B%225%202%5Cn..XXX%5CnXX.XX%5CnX.XXX%5CnX...X%5CnXXXX.%5Cn%22%2C%2210%5Cn%22%5D%2C%5B%225%203%5Cn.....%5Cn.XXX.%5Cn.XXX.%5Cn.XXX.%5Cn.....%5Cn%22%2C%2225%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20you%20can%20choose%20a%20square%20of%20size%20%24%202%5Cu00d72%20%24%20.%20It%27s%20optimal%20to%20choose%20a%20square%20in%20the%20red%20frame%20on%20the%20left%20drawing%20below.%20Then%2C%20you%20will%20get%20a%20connected%20component%20with%20%24%2010%20%24%20cells%2C%20marked%20blue%20in%20the%20right%20drawing.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF679C%5C%2F73f9f2e0fd56d2fb7f7f3062a32953f02d9af103.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F679%5C%2FC%22%2C%22id%22%3A%22679C%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2an%5Cu884cn%5Cu5217%5Cu7684%5Cu77e9%5Cu9635%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu683c%5Cu5b50%5Cu91cc%5Cu662f%5Cu7a7a%5Cu7684%5Cu6216%5Cu8005%5Cu662f%5Cu5c01%5Cu95ed%5Cu7684%5Cu3002%5Cu5f53%5Cu76f8%5Cu90bb%5Cu7684%5Cu683c%5Cu5b50%5Cu90fd%5Cu662f%5Cu7a7a%5Cu7684%5Cuff0c%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu683c%5Cu5b50%5Cu5c31%5Cu662f%5Cu8054%5Cu901a%5Cu7684%5Cuff0c%5Cu591a%5Cu4e2a%5Cu8fde%5Cu901a%5Cu683c%5Cu5b50%5Cu7ec4%5Cu6210%5Cu4e00%5Cu4e2a%5Cu8fde%5Cu901a%5Cu5feb%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu4f60%5Cu6709%5Cu4e00%5Cu4e2ak%5Cu00d7k%5Cu7684%5Cu6846%5Cuff0c%5Cu4f7f%5Cu7528%5Cu8fd9%5Cu4e2a%5Cu6846%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu5305%5Cu542b%5Cu7684%5Cu5c01%5Cu95ed%5Cu683c%5Cu5b50%5Cu53d8%5Cu6210%5Cu662f%5Cu7a7a%5Cu7684%5Cu3002%5Cu4f7f%5Cu7528%5Cu6846%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu6574%5Cu4e2a%5Cu6846%5Cu5fc5%5Cu987b%5Cu5168%5Cu90e8%5Cu5728%5Cu77e9%5Cu9635%5Cu5185%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8bf7%5Cu95ee%5Cu8fd9%5Cu4e2a%5Cu77e9%5Cu9635%5Cu7684%5Cu6700%5Cu5927%5Cu8fde%5Cu901a%5Cu5757%5Cu5305%5Cu542b%5Cu7684%5Cu683c%5Cu5b50%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%22%2C%22tags%22%3A%5B2%2C4%2C175%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A13%2C%22totalAccepted%22%3A7%2C%22pid%22%3A%22CF679C%22%2C%22title%22%3A%22Bear%20and%20Square%20Grid%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A48671%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A9932%2C%22name%22%3A%22CF679C%20Bear%20and%20Square%20Grid%22%2C%22slug%22%3A%22CF679C%22%7D%7D%2C%7B%22id%22%3A46907%2C%22title%22%3A%22Bear%20and%20Square%20Grid%22%2C%22forum%22%3A%7B%22id%22%3A9932%2C%22name%22%3A%22CF679C%20Bear%20and%20Square%20Grid%22%2C%22slug%22%3A%22CF679C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Bear%20and%20Square%20Grid%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Bear and Square Grid</h1>
+<h2>题意翻译</h2>
+<div>给定一个n行n列的矩阵，每个格子里是空的或者是封闭的。当相邻的格子都是空的，这两个格子就是联通的，多个连通格子组成一个连通快。
+现在你有一个k×k的框，使用这个框可以将包含的封闭格子变成是空的。使用框的时候，整个框必须全部在矩阵内。
+请问这个矩阵的最大连通块包含的格子的数量。</div>
+<h2>题目描述</h2>
+<div>You have a grid with $ n $ rows and $ n $ columns. Each cell is either empty (denoted by '.') or blocked (denoted by 'X').
+Two empty cells are directly connected if they share a side. Two cells $ (r_{1},c_{1}) $ (located in the row $ r_{1} $ and column $ c_{1} $ ) and $ (r_{2},c_{2}) $ are connected if there exists a sequence of empty cells that starts with $ (r_{1},c_{1}) $ , finishes with $ (r_{2},c_{2}) $ , and any two consecutive cells in this sequence are directly connected. A connected component is a set of empty cells such that any two cells in the component are connected, and there is no cell in this set that is connected to some cell not in this set.
+Your friend Limak is a big grizzly bear. He is able to destroy any obstacles in some range. More precisely, you can choose a square of size $ k×k $ in the grid and Limak will transform all blocked cells there to empty ones. However, you can ask Limak to help only once.
+The chosen square must be completely inside the grid. It's possible that Limak won't change anything because all cells are empty anyway.
+You like big connected components. After Limak helps you, what is the maximum possible size of the biggest connected component in the grid?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ k $ ( $ 1<=k<=n<=500 $ ) — the size of the grid and Limak's range, respectively.
+Each of the next $ n $ lines contains a string with $ n $ characters, denoting the $ i $ -th row of the grid. Each character is '.' or 'X', denoting an empty cell or a blocked one, respectively.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the maximum possible size (the number of cells) of the biggest connected component, after using Limak's help.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 2
+..XXX
+XX.XX
+X.XXX
+X...X
+XXXX.
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 3
+.....
+.XXX.
+.XXX.
+.XXX.
+.....
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>25
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, you can choose a square of size $ 2×2 $ . It's optimal to choose a square in the red frame on the left drawing below. Then, you will get a connected component with $ 10 $ cells, marked blue in the right drawing.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF679C/73f9f2e0fd56d2fb7f7f3062a32953f02d9af103.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

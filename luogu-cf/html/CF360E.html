@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Levko and Game - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393226:TccTNlveUN+51F5+Yra/I2op8kV9tncAAzZ2uihSEIk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Levko%20loves%20sports%20pathfinding%20competitions%20in%20his%20city%20very%20much.%20In%20order%20to%20boost%20his%20performance%2C%20Levko%20spends%20his%20spare%20time%20practicing.%20The%20practice%20is%20a%20game.%5Cn%5CnThe%20city%20consists%20of%20%24%20n%20%24%20intersections%20connected%20by%20%24%20m%2Bk%20%24%20directed%20roads.%20Two%20or%20more%20roads%20can%20connect%20the%20same%20pair%20of%20intersections.%20Besides%2C%20there%20can%20be%20roads%20leading%20from%20an%20intersection%20to%20itself.%5Cn%5CnLevko%20and%20Zenyk%20are%20playing%20a%20game.%20First%20Levko%20stands%20on%20intersection%20%24%20s_%7B1%7D%20%24%20%2C%20and%20Zenyk%20stands%20on%20intersection%20%24%20s_%7B2%7D%20%24%20.%20They%20both%20want%20to%20get%20to%20intersection%20%24%20f%20%24%20.%20The%20person%20who%20does%20it%20quicker%20wins.%20If%20they%20get%20there%20at%20the%20same%20time%2C%20the%20game%20ends%20with%20a%20draw.%20By%20agreement%20both%20players%20start%20simultaneously%20and%20move%20with%20the%20same%20speed.%5Cn%5CnLevko%20wants%20to%20win%20very%20much.%20He%20knows%20the%20lengths%20of%20all%20the%20roads%20in%20the%20city.%20Also%20he%20knows%20that%20he%20can%20change%20the%20lengths%20of%20some%20roads%20%28there%20are%20%24%20k%20%24%20such%20roads%20at%20all%29%20if%20he%20pays%20the%20government.%20So%2C%20the%20government%20can%20change%20the%20length%20of%20the%20%24%20i%20%24%20-th%20road%20to%20any%20integer%20value%20in%20the%20segment%20%5C%5C%5B%20%24%20l_%7Bi%7D%20%24%20%2C%20%24%20r_%7Bi%7D%20%24%20%5C%5C%5D%20%28both%20borders%20inclusive%29.%20Levko%20wondered%20if%20he%20can%20reconstruct%20the%20roads%20so%20as%20to%20win%20the%20game%20and%20whether%20he%20can%20hope%20for%20the%20draw%20if%20he%20cannot%20win.%5Cn%5CnYou%20should%20consider%20that%20both%20players%20play%20optimally%20well.%20It%20is%20guaranteed%20that%20we%20can%20get%20from%20intersections%20%24%20s_%7B1%7D%20%24%20and%20%24%20s_%7B2%7D%20%24%20to%20intersection%20%24%20f%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D10%5E%7B4%7D%20%24%20%2C%20%24%201%3C%3Dk%3C%3D100%20%24%20%29.%20The%20second%20line%20contains%20three%20integers%20%24%20s_%7B1%7D%20%24%20%2C%20%24%20s_%7B2%7D%20%24%20and%20%24%20f%20%24%20%28%20%24%201%3C%3Ds_%7B1%7D%2Cs_%7B2%7D%2Cf%3C%3Dn%20%24%20%29.%5Cn%5CnThe%20next%20%24%20m%20%24%20lines%20contains%20the%20descriptions%20of%20the%20roads%20that%20cannot%20be%20changed%20by%20Levko.%20Each%20line%20contains%20three%20integers%20%24%20a_%7Bi%7D%20%24%20%2C%20%24%20b_%7Bi%7D%20%24%20and%20%24%20c_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%2Cb_%7Bi%7D%3C%3Dn%2C1%3C%3Dc_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%2C%20representing%20a%20road%20from%20intersection%20%24%20a_%7Bi%7D%20%24%20to%20intersection%20%24%20b_%7Bi%7D%20%24%20of%20length%20%24%20c_%7Bi%7D%20%24%20.%5Cn%5CnThe%20next%20%24%20k%20%24%20lines%20contains%20the%20descriptions%20of%20the%20roads%20that%20can%20be%20changed%20by%20Levko.%20Each%20line%20contains%20four%20integers%20%24%20a_%7Bi%7D%20%24%20%2C%20%24%20b_%7Bi%7D%20%24%20%2C%20%24%20l_%7Bi%7D%20%24%20and%20%24%20r_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%2Cb_%7Bi%7D%3C%3Dn%2C1%3C%3Dl_%7Bi%7D%3C%3Dr_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%2C%20representing%20a%20road%20from%20intersection%20%24%20a_%7Bi%7D%20%24%20to%20intersection%20%24%20b_%7Bi%7D%20%24%20%2C%20Levko%20can%20set%20the%20road%27s%20length%20within%20limits%20%24%20%5Bl_%7Bi%7D%2Cr_%7Bi%7D%5D%20%24%20.%5Cn%5CnConsider%20all%20intersections%20numbered%20from%201%20to%20%24%20n%20%24%20.%20It%20is%20guaranteed%20that%20you%20can%20get%20from%20intersections%20%24%20s_%7B1%7D%20%24%20and%20%24%20s_%7B2%7D%20%24%20to%20intersection%20%24%20f%20%24%20.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20string%20%5C%22WIN%5C%22%20%28without%20the%20quotes%29%20if%20Levko%20can%20win%20this%20game%2C%20string%20%5C%22DRAW%5C%22%20%28without%20the%20quotes%29%20if%20Levko%20can%20end%20the%20game%20with%20a%20draw%20and%20%5C%22LOSE%5C%22%20%28without%20the%20quotes%29%20if%20he%20loses%20for%20sure.%5Cn%5CnIf%20the%20answer%20is%20%5C%22WIN%5C%22%20or%20%5C%22DRAW%5C%22%2C%20then%20print%20on%20the%20second%20line%20%24%20k%20%24%20space-separated%20integers%20%5Cu2014%20the%20length%20of%20the%20roads%20Levko%20sets%20in%20the%20order%20they%20occur%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%224%201%203%5Cn1%203%204%5Cn3%202%202%5Cn1%202%201%203%5Cn2%204%201%203%5Cn3%204%201%203%5Cn%22%2C%22WIN%5Cn1%201%203%20%22%5D%2C%5B%224%201%203%5Cn1%203%204%5Cn3%202%202%5Cn1%202%201%203%5Cn2%204%201%203%5Cn3%204%201%202%5Cn%22%2C%22DRAW%5Cn1%201%202%20%22%5D%2C%5B%225%204%202%5Cn1%202%205%5Cn1%203%203%5Cn1%204%204%5Cn2%203%202%5Cn2%204%203%5Cn3%205%201%205%5Cn4%205%204%207%5Cn%22%2C%22LOSE%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F360%5C%2FE%22%2C%22id%22%3A%22360E%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu548c%5Cu4f60%5Cu7684%5Cu670b%5Cu53cb%5Cu5728%5Cu4e00%5Cu5f20%5Cu6709%24n%24%28%5Cu2264%241e4%24%29%5Cu4e2a%5Cu70b9%24m%24%28%5Cu2264%241e4%24%29%5Cu6761%5Cu8fb9%5Cu7684%5Cu5e26%5Cu6743%5Cu6709%5Cu5411%5Cu56fe%5Cu4e0a%5Cu73a9%5Cu4e00%5Cu4e2a%5Cu6e38%5Cu620f.%5Cr%5Cn%20%20%20%20%5Cr%5Cn%5Cu4e00%5Cu5f00%5Cu59cb%5Cu4f60%5Cu4eec%5Cu5206%5Cu522b%5Cu5904%5Cu5728%24S_1%24%5Cu548c%24S_2%24%5Cu4e0a%2C%5Cu4f60%5Cu4eec%5Cu9700%5Cu8981%5Cu5230%5Cu8fbe%24T%24.%5Cr%5Cn%20%20%20%20%5Cr%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu7ed9%5Cu5b9a%5Cu7684%24k%24%28%5Cu2264%24100%24%29%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu4fee%5Cu6539%5Cu4e3a%24%5BL%2CR%5D%24%5Cu4e2d%5Cu4efb%5Cu4f55%5Cu6570.%5Cr%5Cn%20%20%20%20%5Cr%5Cn%5Cu5728%5Cu5f00%5Cu5c40%5Cu65f6%2C%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu90fd%5Cu5728%24%5BL%2CR%5D%24%5Cu4e2d.%5Cr%5Cn%20%20%20%20%5Cr%5Cn%5Cu95ee%5Cu4f60%5Cu662f%5Cu5426%5Cu80fd%5Cu5148%5Cu5230%5Cu8fbe%24T%24%2C%5Cu5982%5Cu679c%5Cu4e0d%5Cu80fd%2C%5Cu80fd%5Cu5426%5Cu8fbe%5Cu6210%5Cu5e73%5Cu5c40.%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A43%2C%22totalAccepted%22%3A23%2C%22pid%22%3A%22CF360E%22%2C%22title%22%3A%22Levko%20and%20Game%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Levko%20and%20Game%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Levko and Game</h1>
+<h2>题意翻译</h2>
+<div>你和你的朋友在一张有$n$(≤$1e4$)个点$m$(≤$1e4$)条边的带权有向图上玩一个游戏.
+一开始你们分别处在$S_1$和$S_2$上,你们需要到达$T$.
+你可以将给定的$k$(≤$100$)条边的权值修改为$[L,R]$中任何数.
+在开局时,每条边的权值都在$[L,R]$中.
+问你是否能先到达$T$,如果不能,能否达成平局.
+</div>
+<h2>题目描述</h2>
+<div>Levko loves sports pathfinding competitions in his city very much. In order to boost his performance, Levko spends his spare time practicing. The practice is a game.
+The city consists of $ n $ intersections connected by $ m+k $ directed roads. Two or more roads can connect the same pair of intersections. Besides, there can be roads leading from an intersection to itself.
+Levko and Zenyk are playing a game. First Levko stands on intersection $ s_{1} $ , and Zenyk stands on intersection $ s_{2} $ . They both want to get to intersection $ f $ . The person who does it quicker wins. If they get there at the same time, the game ends with a draw. By agreement both players start simultaneously and move with the same speed.
+Levko wants to win very much. He knows the lengths of all the roads in the city. Also he knows that he can change the lengths of some roads (there are $ k $ such roads at all) if he pays the government. So, the government can change the length of the $ i $ -th road to any integer value in the segment \[ $ l_{i} $ , $ r_{i} $ \] (both borders inclusive). Levko wondered if he can reconstruct the roads so as to win the game and whether he can hope for the draw if he cannot win.
+You should consider that both players play optimally well. It is guaranteed that we can get from intersections $ s_{1} $ and $ s_{2} $ to intersection $ f $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ and $ k $ ( $ 1<=n,m<=10^{4} $ , $ 1<=k<=100 $ ). The second line contains three integers $ s_{1} $ , $ s_{2} $ and $ f $ ( $ 1<=s_{1},s_{2},f<=n $ ).
+The next $ m $ lines contains the descriptions of the roads that cannot be changed by Levko. Each line contains three integers $ a_{i} $ , $ b_{i} $ and $ c_{i} $ ( $ 1<=a_{i},b_{i}<=n,1<=c_{i}<=10^{9} $ ), representing a road from intersection $ a_{i} $ to intersection $ b_{i} $ of length $ c_{i} $ .
+The next $ k $ lines contains the descriptions of the roads that can be changed by Levko. Each line contains four integers $ a_{i} $ , $ b_{i} $ , $ l_{i} $ and $ r_{i} $ ( $ 1<=a_{i},b_{i}<=n,1<=l_{i}<=r_{i}<=10^{9} $ ), representing a road from intersection $ a_{i} $ to intersection $ b_{i} $ , Levko can set the road's length within limits $ [l_{i},r_{i}] $ .
+Consider all intersections numbered from 1 to $ n $ . It is guaranteed that you can get from intersections $ s_{1} $ and $ s_{2} $ to intersection $ f $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print string "WIN" (without the quotes) if Levko can win this game, string "DRAW" (without the quotes) if Levko can end the game with a draw and "LOSE" (without the quotes) if he loses for sure.
+If the answer is "WIN" or "DRAW", then print on the second line $ k $ space-separated integers — the length of the roads Levko sets in the order they occur in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 1 3
+1 3 4
+3 2 2
+1 2 1 3
+2 4 1 3
+3 4 1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>WIN
+1 1 3 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 1 3
+1 3 4
+3 2 2
+1 2 1 3
+2 4 1 3
+3 4 1 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>DRAW
+1 1 2 </code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 4 2
+1 2 5
+1 3 3
+1 4 4
+2 3 2
+2 4 3
+3 5 1 5
+4 5 4 7
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>LOSE
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

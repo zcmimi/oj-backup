@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>LCS Again - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395576:ZGTSGs0C3imXCDNY0vTAKW0n+Ui6ZNG+2O946WsA1h8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20string%20%24%20S%20%24%20of%20length%20%24%20n%20%24%20with%20each%20character%20being%20one%20of%20the%20first%20%24%20m%20%24%20lowercase%20English%20letters.%5Cn%5CnCalculate%20how%20many%20different%20strings%20%24%20T%20%24%20of%20length%20%24%20n%20%24%20composed%20from%20the%20first%20%24%20m%20%24%20lowercase%20English%20letters%20exist%20such%20that%20the%20length%20of%20LCS%20%28longest%20common%20subsequence%29%20between%20%24%20S%20%24%20and%20%24%20T%20%24%20is%20%24%20n-1%20%24%20.%5Cn%5CnRecall%20that%20LCS%20of%20two%20strings%20%24%20S%20%24%20and%20%24%20T%20%24%20is%20the%20longest%20string%20%24%20C%20%24%20such%20that%20%24%20C%20%24%20both%20in%20%24%20S%20%24%20and%20%24%20T%20%24%20as%20a%20subsequence.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20numbers%20%24%20n%20%24%20and%20%24%20m%20%24%20denoting%20the%20length%20of%20string%20%24%20S%20%24%20and%20number%20of%20first%20English%20lowercase%20characters%20forming%20the%20character%20set%20for%20strings%20%28%20%24%201%3C%3Dn%3C%3D100000%20%24%20%2C%20%24%202%3C%3Dm%3C%3D26%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20string%20%24%20S%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20the%20only%20line%20containing%20the%20answer.%22%2C%22samples%22%3A%5B%5B%223%203%5Cnaaa%5Cn%22%2C%226%5Cn%22%5D%2C%5B%223%203%5Cnaab%5Cn%22%2C%2211%5Cn%22%5D%2C%5B%221%202%5Cna%5Cn%22%2C%221%5Cn%22%5D%2C%5B%2210%209%5Cnabacadefgh%5Cn%22%2C%22789%5Cn%22%5D%5D%2C%22hint%22%3A%22For%20the%20first%20sample%2C%20the%20%24%206%20%24%20possible%20strings%20%24%20T%20%24%20are%3A%20aab%2C%20aac%2C%20aba%2C%20aca%2C%20baa%2C%20caa.%5Cn%5CnFor%20the%20second%20sample%2C%20the%20%24%2011%20%24%20possible%20strings%20%24%20T%20%24%20are%3A%20aaa%2C%20aac%2C%20aba%2C%20abb%2C%20abc%2C%20aca%2C%20acb%2C%20baa%2C%20bab%2C%20caa%2C%20cab.%5Cn%5CnFor%20the%20third%20sample%2C%20the%20only%20possible%20string%20%24%20T%20%24%20is%20b.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F578%5C%2FD%22%2C%22id%22%3A%22578D%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3an%2C%5Cu524dm%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu90fd%5Cu662f%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32S.%5Cn%5Cu8bd5%5Cu8ba1%5Cu7b97%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3an%2C%5Cu524dm%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu4e3a%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu4e14%5Cu4e0e%5Cu5b57%5Cu7b26%5Cu4e32S%5Cu7684LCS%28%5Cu6700%5Cu957f%5Cu4e0a%5Cu5347%5Cu5b50%5Cu5e8f%5Cu5217%2CLongest%20Common%20Subsequence%29%5Cu957f%5Cu5ea6%5Cu4e3an-1%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32T%5Cn%5Cu6ce8%3A%5Cu5b57%5Cu7b26%5Cu4e32S%5Cu548cT%5Cu7684LCS%5Cu662f%5Cu6307%5Cu4e00%5Cu4e2a%5Cu5728S%5Cu548cT%5Cu4e2d%5Cu90fd%5Cu80fd%5Cu627e%5Cu5f97%5Cu5230%5Cu7684%5Cu6700%5Cu957f%5Cu5b50%5Cu5e8f%5Cu5217.%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57n%5Cu548cm%2C%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu662f%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32S.%5Cn%5Cn%5Cu611f%5Cu8c22%40mMmP%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A45%2C%22totalAccepted%22%3A25%2C%22pid%22%3A%22CF578D%22%2C%22title%22%3A%22LCS%20Again%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A61749%2C%22title%22%3A%22%5Cu9010%5Cu5b57%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10360%2C%22name%22%3A%22CF578D%20LCS%20Again%22%2C%22slug%22%3A%22CF578D%22%7D%7D%2C%7B%22id%22%3A51761%2C%22title%22%3A%22%5Cu6284%5Cu5199%5Cu4e00%5Cu6ce2%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10360%2C%22name%22%3A%22CF578D%20LCS%20Again%22%2C%22slug%22%3A%22CF578D%22%7D%7D%2C%7B%22id%22%3A37659%2C%22title%22%3A%22%5Cu3010%5Cu7ffb%5Cu8bd1%5Cu3011for%20CF578D%22%2C%22forum%22%3A%7B%22id%22%3A10360%2C%22name%22%3A%22CF578D%20LCS%20Again%22%2C%22slug%22%3A%22CF578D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22LCS%20Again%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>LCS Again</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+给定一个长度为n,前m个字母都是小写字母的字符串S.
+试计算有多少个长度为n,前m个字母为小写字母且与字符串S的LCS(最长上升子序列,Longest Common Subsequence)长度为n-1的字符串T
+注:字符串S和T的LCS是指一个在S和T中都能找得到的最长子序列.
+# 输入输出格式
+## 输入格式:
+第一行包括两个数字n和m,第二行是给定的字符串S.
+感谢@mMmP 提供的翻译
+</div>
+<h2>题目描述</h2>
+<div>You are given a string $ S $ of length $ n $ with each character being one of the first $ m $ lowercase English letters.
+Calculate how many different strings $ T $ of length $ n $ composed from the first $ m $ lowercase English letters exist such that the length of LCS (longest common subsequence) between $ S $ and $ T $ is $ n-1 $ .
+Recall that LCS of two strings $ S $ and $ T $ is the longest string $ C $ such that $ C $ both in $ S $ and $ T $ as a subsequence.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two numbers $ n $ and $ m $ denoting the length of string $ S $ and number of first English lowercase characters forming the character set for strings ( $ 1<=n<=100000 $ , $ 2<=m<=26 $ ).
+The second line contains string $ S $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the only line containing the answer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3
+aaa
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3
+aab
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>11
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>1 2
+a
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>10 9
+abacadefgh
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>789
+</code></pre>
+<h2>说明</h2>
+<div>For the first sample, the $ 6 $ possible strings $ T $ are: aab, aac, aba, aca, baa, caa.
+For the second sample, the $ 11 $ possible strings $ T $ are: aaa, aac, aba, abb, abc, aca, acb, baa, bab, caa, cab.
+For the third sample, the only possible string $ T $ is b.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

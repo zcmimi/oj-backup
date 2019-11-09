@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Correct Bracket Sequence Editor - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396540:nBhbpPij3eqQbefQvB94ijJ9YWo8yK3pc57jUoWKAwQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Recently%20Polycarp%20started%20to%20develop%20a%20text%20editor%20that%20works%20only%20with%20correct%20bracket%20sequences%20%28abbreviated%20as%20CBS%29.%5Cn%5CnNote%20that%20a%20bracket%20sequence%20is%20correct%20if%20it%20is%20possible%20to%20get%20a%20correct%20mathematical%20expression%20by%20adding%20%5C%22%2B%5C%22-s%20and%20%5C%221%5C%22-s%20to%20it.%20For%20example%2C%20sequences%20%5C%22%28%28%29%29%28%29%5C%22%2C%20%5C%22%28%29%5C%22%20and%20%5C%22%28%28%29%28%28%29%29%29%5C%22%20are%20correct%2C%20while%20%5C%22%29%28%5C%22%2C%20%5C%22%28%28%29%5C%22%20and%20%5C%22%28%28%29%29%29%28%5C%22%20are%20not.%20Each%20bracket%20in%20CBS%20has%20a%20pair.%20For%20example%2C%20in%20%5C%22%28%28%29%28%28%29%29%29%5C%22%3A%5Cn%5Cn-%201st%20bracket%20is%20paired%20with%208th%2C%5Cn-%202d%20bracket%20is%20paired%20with%203d%2C%5Cn-%203d%20bracket%20is%20paired%20with%202d%2C%5Cn-%204th%20bracket%20is%20paired%20with%207th%2C%5Cn-%205th%20bracket%20is%20paired%20with%206th%2C%5Cn-%206th%20bracket%20is%20paired%20with%205th%2C%5Cn-%207th%20bracket%20is%20paired%20with%204th%2C%5Cn-%208th%20bracket%20is%20paired%20with%201st.%5Cn%5CnPolycarp%27s%20editor%20currently%20supports%20only%20three%20operations%20during%20the%20use%20of%20CBS.%20The%20cursor%20in%20the%20editor%20takes%20the%20whole%20position%20of%20one%20of%20the%20brackets%20%28not%20the%20position%20between%20the%20brackets%21%29.%20There%20are%20three%20operations%20being%20supported%3A%5Cn%5Cn-%20%5Cu00abL%5Cu00bb%20%5Cu2014%20move%20the%20cursor%20one%20position%20to%20the%20left%2C%5Cn-%20%5Cu00abR%5Cu00bb%20%5Cu2014%20move%20the%20cursor%20one%20position%20to%20the%20right%2C%5Cn-%20%5Cu00abD%5Cu00bb%20%5Cu2014%20delete%20the%20bracket%20in%20which%20the%20cursor%20is%20located%2C%20delete%20the%20bracket%20it%27s%20paired%20to%20and%20all%20brackets%20between%20them%20%28that%20is%2C%20delete%20a%20substring%20between%20the%20bracket%20in%20which%20the%20cursor%20is%20located%20and%20the%20one%20it%27s%20paired%20to%29.%5Cn%5CnAfter%20the%20operation%20%5C%22D%5C%22%20the%20cursor%20moves%20to%20the%20nearest%20bracket%20to%20the%20right%20%28of%20course%2C%20among%20the%20non-deleted%29.%20If%20there%20is%20no%20such%20bracket%20%28that%20is%2C%20the%20suffix%20of%20the%20CBS%20was%20deleted%29%2C%20then%20the%20cursor%20moves%20to%20the%20nearest%20bracket%20to%20the%20left%20%28of%20course%2C%20among%20the%20non-deleted%29.%5Cn%5CnThere%20are%20pictures%20illustrated%20several%20usages%20of%20operation%20%5C%22D%5C%22%20below.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF670E%5C%2F08b0f9032003921a97680a954e716fd13a3de759.png%29All%20incorrect%20operations%20%28shift%20cursor%20over%20the%20end%20of%20CBS%2C%20delete%20the%20whole%20CBS%2C%20etc.%29%20are%20not%20supported%20by%20Polycarp%27s%20editor.%5Cn%5CnPolycarp%20is%20very%20proud%20of%20his%20development%2C%20can%20you%20implement%20the%20functionality%20of%20his%20editor%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20positive%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20p%20%24%20%28%20%24%202%3C%3Dn%3C%3D500000%20%24%20%2C%20%24%201%3C%3Dm%3C%3D500000%20%24%20%2C%20%24%201%3C%3Dp%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20number%20of%20brackets%20in%20the%20correct%20bracket%20sequence%2C%20the%20number%20of%20operations%20and%20the%20initial%20position%20of%20cursor.%20Positions%20in%20the%20sequence%20are%20numbered%20from%20left%20to%20right%2C%20starting%20from%20one.%20It%20is%20guaranteed%20that%20%24%20n%20%24%20is%20even.%5Cn%5CnIt%20is%20followed%20by%20the%20string%20of%20%24%20n%20%24%20characters%20%5C%22%28%5C%22%20and%20%5C%22%29%5C%22%20forming%20the%20correct%20bracket%20sequence.%5Cn%5CnThen%20follow%20a%20string%20of%20%24%20m%20%24%20characters%20%5C%22L%5C%22%2C%20%5C%22R%5C%22%20and%20%5C%22D%5C%22%20%5Cu2014%20a%20sequence%20of%20the%20operations.%20Operations%20are%20carried%20out%20one%20by%20one%20from%20the%20first%20to%20the%20last.%20It%20is%20guaranteed%20that%20the%20given%20operations%20never%20move%20the%20cursor%20outside%20the%20bracket%20sequence%2C%20as%20well%20as%20the%20fact%20that%20after%20all%20operations%20a%20bracket%20sequence%20will%20be%20non-empty.%22%2C%22outputFormat%22%3A%22Print%20the%20correct%20bracket%20sequence%2C%20obtained%20as%20a%20result%20of%20applying%20all%20operations%20to%20the%20initial%20sequence.%22%2C%22samples%22%3A%5B%5B%228%204%205%5Cn%28%28%29%29%28%29%28%29%5CnRDLD%5Cn%22%2C%22%28%29%5Cn%22%5D%2C%5B%2212%205%203%5Cn%28%28%28%29%28%29%29%28%28%29%29%29%5CnRRDLD%5Cn%22%2C%22%28%28%29%28%28%29%29%29%5Cn%22%5D%2C%5B%228%208%208%5Cn%28%28%29%29%28%29%28%29%5CnLLLLLLDD%5Cn%22%2C%22%28%29%28%29%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20the%20cursor%20is%20initially%20at%20position%20%24%205%20%24%20.%20Consider%20actions%20of%20the%20editor%3A%5Cn%5Cn1.%20command%20%5C%22R%5C%22%20%5Cu2014%20the%20cursor%20moves%20to%20the%20position%20%24%206%20%24%20on%20the%20right%3B%5Cn2.%20command%20%5C%22D%5C%22%20%5Cu2014%20the%20deletion%20of%20brackets%20from%20the%20position%20%24%205%20%24%20to%20the%20position%20%24%206%20%24%20.%20After%20that%20CBS%20takes%20the%20form%20%28%28%29%29%28%29%2C%20the%20cursor%20is%20at%20the%20position%20%24%205%20%24%20%3B%5Cn3.%20command%20%5C%22L%5C%22%20%5Cu2014%20the%20cursor%20moves%20to%20the%20position%20%24%204%20%24%20on%20the%20left%3B%5Cn4.%20command%20%5C%22D%5C%22%20%5Cu2014%20the%20deletion%20of%20brackets%20from%20the%20position%20%24%201%20%24%20to%20the%20position%20%24%204%20%24%20.%20After%20that%20CBS%20takes%20the%20form%20%28%29%2C%20the%20cursor%20is%20at%20the%20position%20%24%201%20%24%20.%5Cn%5CnThus%2C%20the%20answer%20is%20equal%20to%20%28%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F670%5C%2FE%22%2C%22id%22%3A%22670E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF670E%22%2C%22title%22%3A%22Correct%20Bracket%20Sequence%20Editor%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Correct%20Bracket%20Sequence%20Editor%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Correct Bracket Sequence Editor</h1>
+<h2>题目描述</h2>
+<div>Recently Polycarp started to develop a text editor that works only with correct bracket sequences (abbreviated as CBS).
+Note that a bracket sequence is correct if it is possible to get a correct mathematical expression by adding "+"-s and "1"-s to it. For example, sequences "(())()", "()" and "(()(()))" are correct, while ")(", "(()" and "(()))(" are not. Each bracket in CBS has a pair. For example, in "(()(()))":
+- 1st bracket is paired with 8th,
+- 2d bracket is paired with 3d,
+- 3d bracket is paired with 2d,
+- 4th bracket is paired with 7th,
+- 5th bracket is paired with 6th,
+- 6th bracket is paired with 5th,
+- 7th bracket is paired with 4th,
+- 8th bracket is paired with 1st.
+Polycarp's editor currently supports only three operations during the use of CBS. The cursor in the editor takes the whole position of one of the brackets (not the position between the brackets!). There are three operations being supported:
+- «L» — move the cursor one position to the left,
+- «R» — move the cursor one position to the right,
+- «D» — delete the bracket in which the cursor is located, delete the bracket it's paired to and all brackets between them (that is, delete a substring between the bracket in which the cursor is located and the one it's paired to).
+After the operation "D" the cursor moves to the nearest bracket to the right (of course, among the non-deleted). If there is no such bracket (that is, the suffix of the CBS was deleted), then the cursor moves to the nearest bracket to the left (of course, among the non-deleted).
+There are pictures illustrated several usages of operation "D" below.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF670E/08b0f9032003921a97680a954e716fd13a3de759.png)All incorrect operations (shift cursor over the end of CBS, delete the whole CBS, etc.) are not supported by Polycarp's editor.
+Polycarp is very proud of his development, can you implement the functionality of his editor?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three positive integers $ n $ , $ m $ and $ p $ ( $ 2<=n<=500000 $ , $ 1<=m<=500000 $ , $ 1<=p<=n $ ) — the number of brackets in the correct bracket sequence, the number of operations and the initial position of cursor. Positions in the sequence are numbered from left to right, starting from one. It is guaranteed that $ n $ is even.
+It is followed by the string of $ n $ characters "(" and ")" forming the correct bracket sequence.
+Then follow a string of $ m $ characters "L", "R" and "D" — a sequence of the operations. Operations are carried out one by one from the first to the last. It is guaranteed that the given operations never move the cursor outside the bracket sequence, as well as the fact that after all operations a bracket sequence will be non-empty.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the correct bracket sequence, obtained as a result of applying all operations to the initial sequence.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8 4 5
+(())()()
+RDLD
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>()
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>12 5 3
+((()())(()))
+RRDLD
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>(()(()))
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>8 8 8
+(())()()
+LLLLLLDD
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>()()
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample the cursor is initially at position $ 5 $ . Consider actions of the editor:
+1. command "R" — the cursor moves to the position $ 6 $ on the right;
+2. command "D" — the deletion of brackets from the position $ 5 $ to the position $ 6 $ . After that CBS takes the form (())(), the cursor is at the position $ 5 $ ;
+3. command "L" — the cursor moves to the position $ 4 $ on the left;
+4. command "D" — the deletion of brackets from the position $ 1 $ to the position $ 4 $ . After that CBS takes the form (), the cursor is at the position $ 1 $ .
+Thus, the answer is equal to ().</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>More Reclamation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392913:Jeqm3XYvaDYu+iY2026V7ARJgUgxs6bA53I6yxURgUg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20a%20far%20away%20land%2C%20there%20are%20two%20cities%20near%20a%20river.%20One%20day%2C%20the%20cities%20decide%20that%20they%20have%20too%20little%20space%20and%20would%20like%20to%20reclaim%20some%20of%20the%20river%20area%20into%20land.%5Cn%5CnThe%20river%20area%20can%20be%20represented%20by%20a%20grid%20with%20%24%20r%20%24%20rows%20and%20exactly%20two%20columns%20%5Cu2014%20each%20cell%20represents%20a%20rectangular%20area.%20The%20rows%20are%20numbered%20%24%201%20%24%20through%20%24%20r%20%24%20from%20top%20to%20bottom%2C%20while%20the%20columns%20are%20numbered%20%24%201%20%24%20and%20%24%202%20%24%20.%5Cn%5CnInitially%2C%20all%20of%20the%20cells%20are%20occupied%20by%20the%20river.%20The%20plan%20is%20to%20turn%20some%20of%20those%20cells%20into%20land%20one%20by%20one%2C%20with%20the%20cities%20alternately%20choosing%20a%20cell%20to%20reclaim%2C%20and%20continuing%20until%20no%20more%20cells%20can%20be%20reclaimed.%5Cn%5CnHowever%2C%20the%20river%20is%20also%20used%20as%20a%20major%20trade%20route.%20The%20cities%20need%20to%20make%20sure%20that%20ships%20will%20still%20be%20able%20to%20sail%20from%20one%20end%20of%20the%20river%20to%20the%20other.%20More%20formally%2C%20if%20a%20cell%20%24%20%28r%2Cc%29%20%24%20has%20been%20reclaimed%2C%20it%20is%20not%20allowed%20to%20reclaim%20any%20of%20the%20cells%20%24%20%28r-1%2C3-c%29%20%24%20%2C%20%24%20%28r%2C3-c%29%20%24%20%2C%20or%20%24%20%28r%2B1%2C3-c%29%20%24%20.%5Cn%5CnThe%20cities%20are%20not%20on%20friendly%20terms%2C%20and%20each%20city%20wants%20to%20be%20the%20last%20city%20to%20reclaim%20a%20cell%20%28they%20don%27t%20care%20about%20how%20many%20cells%20they%20reclaim%2C%20just%20who%20reclaims%20a%20cell%20last%29.%20The%20cities%20have%20already%20reclaimed%20%24%20n%20%24%20cells.%20Your%20job%20is%20to%20determine%20which%20city%20will%20be%20the%20last%20to%20reclaim%20a%20cell%2C%20assuming%20both%20choose%20cells%20optimally%20from%20current%20moment.%22%2C%22inputFormat%22%3A%22The%20first%20line%20consists%20of%20two%20integers%20%24%20r%20%24%20and%20%24%20n%20%24%20%28%20%24%201%3C%3Dr%3C%3D100%2C0%3C%3Dn%3C%3Dr%20%24%20%29.%20Then%20%24%20n%20%24%20lines%20follow%2C%20describing%20the%20cells%20that%20were%20already%20reclaimed.%20Each%20line%20consists%20of%20two%20integers%3A%20%24%20r_%7Bi%7D%20%24%20and%20%24%20c_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dr_%7Bi%7D%3C%3Dr%2C1%3C%3Dc_%7Bi%7D%3C%3D2%20%24%20%29%2C%20which%20represent%20the%20cell%20located%20at%20row%20%24%20r_%7Bi%7D%20%24%20and%20column%20%24%20c_%7Bi%7D%20%24%20.%20All%20of%20the%20lines%20describing%20the%20cells%20will%20be%20distinct%2C%20and%20the%20reclaimed%20cells%20will%20not%20violate%20the%20constraints%20above.%22%2C%22outputFormat%22%3A%22Output%20%5C%22WIN%5C%22%20if%20the%20city%20whose%20turn%20it%20is%20to%20choose%20a%20cell%20can%20guarantee%20that%20they%20will%20be%20the%20last%20to%20choose%20a%20cell.%20Otherwise%20print%20%5C%22LOSE%5C%22.%22%2C%22samples%22%3A%5B%5B%223%201%5Cn1%201%5Cn%22%2C%22WIN%5Cn%22%5D%2C%5B%2212%202%5Cn4%201%5Cn8%201%5Cn%22%2C%22WIN%5Cn%22%5D%2C%5B%221%201%5Cn1%202%5Cn%22%2C%22LOSE%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20there%20are%203%20possible%20cells%20for%20the%20first%20city%20to%20reclaim%3A%20%24%20%282%2C1%29%20%24%20%2C%20%24%20%283%2C1%29%20%24%20%2C%20or%20%24%20%283%2C2%29%20%24%20.%20The%20first%20two%20possibilities%20both%20lose%2C%20as%20they%20leave%20exactly%20one%20cell%20for%20the%20other%20city.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF335C%5C%2F9dcf00d73fa4874adb1a93b4ff0aff43602b2edb.png%29However%2C%20reclaiming%20the%20cell%20at%20%24%20%283%2C2%29%20%24%20leaves%20no%20more%20cells%20that%20can%20be%20reclaimed%2C%20and%20therefore%20the%20first%20city%20wins.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF335C%5C%2F3534861a36cc5545c6ce50c4536d43f04309cbd9.png%29In%20the%20third%20example%2C%20there%20are%20no%20cells%20that%20can%20be%20reclaimed.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F335%5C%2FC%22%2C%22id%22%3A%22335C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF335C%22%2C%22title%22%3A%22More%20Reclamation%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22More%20Reclamation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>More Reclamation</h1>
+<h2>题目描述</h2>
+<div>In a far away land, there are two cities near a river. One day, the cities decide that they have too little space and would like to reclaim some of the river area into land.
+The river area can be represented by a grid with $ r $ rows and exactly two columns — each cell represents a rectangular area. The rows are numbered $ 1 $ through $ r $ from top to bottom, while the columns are numbered $ 1 $ and $ 2 $ .
+Initially, all of the cells are occupied by the river. The plan is to turn some of those cells into land one by one, with the cities alternately choosing a cell to reclaim, and continuing until no more cells can be reclaimed.
+However, the river is also used as a major trade route. The cities need to make sure that ships will still be able to sail from one end of the river to the other. More formally, if a cell $ (r,c) $ has been reclaimed, it is not allowed to reclaim any of the cells $ (r-1,3-c) $ , $ (r,3-c) $ , or $ (r+1,3-c) $ .
+The cities are not on friendly terms, and each city wants to be the last city to reclaim a cell (they don't care about how many cells they reclaim, just who reclaims a cell last). The cities have already reclaimed $ n $ cells. Your job is to determine which city will be the last to reclaim a cell, assuming both choose cells optimally from current moment.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line consists of two integers $ r $ and $ n $ ( $ 1<=r<=100,0<=n<=r $ ). Then $ n $ lines follow, describing the cells that were already reclaimed. Each line consists of two integers: $ r_{i} $ and $ c_{i} $ ( $ 1<=r_{i}<=r,1<=c_{i}<=2 $ ), which represent the cell located at row $ r_{i} $ and column $ c_{i} $ . All of the lines describing the cells will be distinct, and the reclaimed cells will not violate the constraints above.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output "WIN" if the city whose turn it is to choose a cell can guarantee that they will be the last to choose a cell. Otherwise print "LOSE".</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>WIN
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>12 2
+4 1
+8 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>WIN
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>1 1
+1 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>LOSE
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, there are 3 possible cells for the first city to reclaim: $ (2,1) $ , $ (3,1) $ , or $ (3,2) $ . The first two possibilities both lose, as they leave exactly one cell for the other city.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF335C/9dcf00d73fa4874adb1a93b4ff0aff43602b2edb.png)However, reclaiming the cell at $ (3,2) $ leaves no more cells that can be reclaimed, and therefore the first city wins.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF335C/3534861a36cc5545c6ce50c4536d43f04309cbd9.png)In the third example, there are no cells that can be reclaimed.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

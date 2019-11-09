@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>A Heap of Heaps - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395231:7i3GiQxW7fGQzFfokqBoHY3KpQ0JhwxjglgqHSb9UNc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Andrew%20skipped%20lessons%20on%20the%20subject%20%27Algorithms%20and%20Data%20Structures%27%20for%20the%20entire%20term.%20When%20he%20came%20to%20the%20final%20test%2C%20the%20teacher%20decided%20to%20give%20him%20a%20difficult%20task%20as%20a%20punishment.%5Cn%5CnThe%20teacher%20gave%20Andrew%20an%20array%20of%20%24%20n%20%24%20numbers%20%24%20a_%7B1%7D%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20a_%7Bn%7D%20%24%20.%20After%20that%20he%20asked%20Andrew%20for%20each%20%24%20k%20%24%20from%201%20to%20%24%20n-1%20%24%20to%20build%20a%20%24%20k%20%24%20-ary%20heap%20on%20the%20array%20and%20count%20the%20number%20of%20elements%20for%20which%20the%20property%20of%20the%20minimum-rooted%20heap%20is%20violated%2C%20i.e.%20the%20value%20of%20an%20element%20is%20less%20than%20the%20value%20of%20its%20parent.%5Cn%5CnAndrew%20looked%20up%20on%20the%20Wikipedia%20that%20a%20%24%20k%20%24%20-ary%20heap%20is%20a%20rooted%20tree%20with%20vertices%20in%20elements%20of%20the%20array.%20If%20the%20elements%20of%20the%20array%20are%20indexed%20from%201%20to%20%24%20n%20%24%20%2C%20then%20the%20children%20of%20element%20%24%20v%20%24%20are%20elements%20with%20indices%20%24%20k%28v-1%29%2B2%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20kv%2B1%20%24%20%28if%20some%20of%20these%20elements%20lie%20outside%20the%20borders%20of%20the%20array%2C%20the%20corresponding%20children%20are%20absent%29.%20In%20any%20%24%20k%20%24%20-ary%20heap%20every%20element%20except%20for%20the%20first%20one%20has%20exactly%20one%20parent%3B%20for%20the%20element%201%20the%20parent%20is%20absent%20%28this%20element%20is%20the%20root%20of%20the%20heap%29.%20Denote%20%24%20p%28v%29%20%24%20as%20the%20number%20of%20the%20parent%20of%20the%20element%20with%20the%20number%20%24%20v%20%24%20.%20Let%27s%20say%20that%20for%20a%20non-root%20element%20%24%20v%20%24%20the%20property%20of%20the%20heap%20is%20violated%20if%20%24%20a_%7Bv%7D%26lt%3Ba_%7Bp%28v%29%7D%20%24%20.%5Cn%5CnHelp%20Andrew%20cope%20with%20the%20task%21%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%24%20a_%7B1%7D%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20a_%7Bn%7D%20%24%20%28%20%24%20-10%5E%7B9%7D%3C%3Da_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22in%20a%20single%20line%20print%20%24%20n-1%20%24%20integers%2C%20separate%20the%20consecutive%20numbers%20with%20a%20single%20space%20%5Cu2014%20the%20number%20of%20elements%20for%20which%20the%20property%20of%20the%20%24%20k%20%24%20-ary%20heap%20is%20violated%2C%20for%20%24%20k%3D1%20%24%20%2C%20%24%202%20%24%20%2C%20%24%20...%20%24%20%2C%20%24%20n-1%20%24%20.%22%2C%22samples%22%3A%5B%5B%225%5Cn1%205%204%203%202%5Cn%22%2C%223%202%201%200%5Cn%22%5D%2C%5B%226%5Cn2%202%202%202%202%202%5Cn%22%2C%220%200%200%200%200%5Cn%22%5D%5D%2C%22hint%22%3A%22Pictures%20with%20the%20heaps%20for%20the%20first%20sample%20are%20given%20below%3B%20elements%20for%20which%20the%20property%20of%20the%20heap%20is%20violated%20are%20marked%20with%20red.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF538F%5C%2F93339df0bb68880a8de271a66f4adc3a53f4751c.png%29%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF538F%5C%2F09a247d73f8afabd6ccdbd7561ab6cba57bb254c.png%29%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF538F%5C%2F3c0e248cafc99373f75eddf4c10072a9aa8272ce.png%29%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF538F%5C%2F7432dc3933cf2b180164676f7f3edca3f7ec9ee0.png%29In%20the%20second%20sample%20all%20elements%20are%20equal%2C%20so%20the%20property%20holds%20for%20all%20pairs.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F538%5C%2FF%22%2C%22id%22%3A%22538F%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5c0f%5Cu6839%5Cu5806%5Cuff0c%5Cu4f46%5Cu662f%5Cu56e0%5Cu4e3a%5Cu5947%5Cu5947%5Cu602a%5Cu602a%5Cu7684%5Cu539f%5Cu56e0%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu5806%5Cu53d8%5Cu6210%5Cu4e86%5Cu4e00%5Cu4e2ak%5Cu53c9%5Cu5806%5Cuff0c%5Cu800c%5Cu4e14%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu662f%5Cu5408%5Cu6cd5%5Cu7684%5Cuff08%5Cu5373%5Cu6709%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu8282%5Cu70b9%5Cu5c0f%5Cu4e8e%5Cu5b83%5Cu7684%5Cu7236%5Cu4eb2%5Cuff09%5Cu3002%5Cu95ee%5Cu73b0%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu5806%5Cu6709%5Cu591a%5Cu5c11%5Cu4e0d%5Cu5408%5Cu6cd5%5Cu7684%5Cu5143%5Cu7d20%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A91%2C%22totalAccepted%22%3A40%2C%22pid%22%3A%22CF538F%22%2C%22title%22%3A%22A%20Heap%20of%20Heaps%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF869E%22%2C%22title%22%3A%22The%20Untended%20Antiquity%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF773D%22%2C%22title%22%3A%22Perishable%20Roads%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF551D%22%2C%22title%22%3A%22GukiZ%20and%20Binary%20Operations%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF519E%22%2C%22title%22%3A%22A%20and%20B%20and%20Lecture%20Rooms%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF500D%22%2C%22title%22%3A%22New%20Year%20Santa%20Network%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22A%20Heap%20of%20Heaps%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>A Heap of Heaps</h1>
+<h2>题意翻译</h2>
+<div>有一个小根堆，但是因为奇奇怪怪的原因，这个堆变成了一个k叉堆，而且不一定是合法的（即有若干个节点小于它的父亲）。问现在这个堆有多少不合法的元素。</div>
+<h2>题目描述</h2>
+<div>Andrew skipped lessons on the subject 'Algorithms and Data Structures' for the entire term. When he came to the final test, the teacher decided to give him a difficult task as a punishment.
+The teacher gave Andrew an array of $ n $ numbers $ a_{1} $ , $ ... $ , $ a_{n} $ . After that he asked Andrew for each $ k $ from 1 to $ n-1 $ to build a $ k $ -ary heap on the array and count the number of elements for which the property of the minimum-rooted heap is violated, i.e. the value of an element is less than the value of its parent.
+Andrew looked up on the Wikipedia that a $ k $ -ary heap is a rooted tree with vertices in elements of the array. If the elements of the array are indexed from 1 to $ n $ , then the children of element $ v $ are elements with indices $ k(v-1)+2 $ , $ ... $ , $ kv+1 $ (if some of these elements lie outside the borders of the array, the corresponding children are absent). In any $ k $ -ary heap every element except for the first one has exactly one parent; for the element 1 the parent is absent (this element is the root of the heap). Denote $ p(v) $ as the number of the parent of the element with the number $ v $ . Let's say that for a non-root element $ v $ the property of the heap is violated if $ a_{v}&lt;a_{p(v)} $ .
+Help Andrew cope with the task!</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 2<=n<=2·10^{5} $ ).
+The second line contains $ n $ space-separated integers $ a_{1} $ , $ ... $ , $ a_{n} $ ( $ -10^{9}<=a_{i}<=10^{9} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>in a single line print $ n-1 $ integers, separate the consecutive numbers with a single space — the number of elements for which the property of the $ k $ -ary heap is violated, for $ k=1 $ , $ 2 $ , $ ... $ , $ n-1 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+1 5 4 3 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 2 1 0
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6
+2 2 2 2 2 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0 0 0 0 0
+</code></pre>
+<h2>说明</h2>
+<div>Pictures with the heaps for the first sample are given below; elements for which the property of the heap is violated are marked with red.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF538F/93339df0bb68880a8de271a66f4adc3a53f4751c.png)![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF538F/09a247d73f8afabd6ccdbd7561ab6cba57bb254c.png)![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF538F/3c0e248cafc99373f75eddf4c10072a9aa8272ce.png)![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF538F/7432dc3933cf2b180164676f7f3edca3f7ec9ee0.png)In the second sample all elements are equal, so the property holds for all pairs.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

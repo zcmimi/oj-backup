@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Little Pony and Sort by Shift - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394263:ca3HujYzSJLBpdc2A8IYM2srDDHROL8e01tL16dyIjI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22One%20day%2C%20Twilight%20Sparkle%20is%20interested%20in%20how%20to%20sort%20a%20sequence%20of%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20in%20non-decreasing%20order.%20Being%20a%20young%20unicorn%2C%20the%20only%20operation%20she%20can%20perform%20is%20a%20unit%20shift.%20That%20is%2C%20she%20can%20move%20the%20last%20element%20of%20the%20sequence%20to%20its%20beginning%3A%5Cn%5Cn%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%5Cu2192a_%7Bn%7D%2Ca_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn-1%7D.%20%24%20Help%20Twilight%20Sparkle%20to%20calculate%3A%20what%20is%20the%20minimum%20number%20of%20operations%20that%20she%20needs%20to%20sort%20the%20sequence%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%24%20%282%3C%3Dn%3C%3D10%5E%7B5%7D%29%20%24%20.%20The%20second%20line%20contains%20%24%20n%20%24%20integer%20numbers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%24%20%281%3C%3Da_%7Bi%7D%3C%3D10%5E%7B5%7D%29%20%24%20.%22%2C%22outputFormat%22%3A%22If%20it%27s%20impossible%20to%20sort%20the%20sequence%20output%20-1.%20Otherwise%20output%20the%20minimum%20number%20of%20operations%20Twilight%20Sparkle%20needs%20to%20sort%20it.%22%2C%22samples%22%3A%5B%5B%222%5Cn2%201%5Cn%22%2C%221%5Cn%22%5D%2C%5B%223%5Cn1%203%202%5Cn%22%2C%22-1%5Cn%22%5D%2C%5B%222%5Cn1%202%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F454%5C%2FB%22%2C%22id%22%3A%22454B%22%7D%2C%22translation%22%3A%22%5Cn%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff1a%5Cn%5Cn%5Cu4e00%5Cu5929%5Cuff0c%5Cu66ae%5Cu5149%5Cu95ea%5Cu95ea%5Cu5bf9%5Cu5982%5Cu4f55%5Cu7ed9%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu6570%5Cu7ec4%5Cu6309%5Cu7167%5Cu4e0d%5Cu9012%5Cu51cf%5Cu987a%5Cu5e8f%5Cu6392%5Cu5e8f%5Cu4ea7%5Cu751f%5Cu4e86%5Cu5174%5Cu8da3%5Cu3002%5Cu4f5c%5Cu4e3a%5Cu4e00%5Cu53ea%5Cu5e74%5Cu8f7b%5Cu7684%5Cu72ec%5Cu89d2%5Cu517d%5Cuff0c%5Cu5979%5Cu80fd%5Cu505a%5Cu7684%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu5355%5Cu4f4d%5Cu79fb%5Cu52a8%5Cu3002%5Cu5979%5Cu53ef%5Cu4ee5%5Cu628a%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu79fb%5Cu52a8%5Cu5230%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu53bb%5Cuff1a%24a_1%2Ca_2%2C%5C%5Ccdots%20%2Ca_n%5C%5Cto%20a_n%2Ca_1%2Ca_2%2C%5C%5Ccdots%20%2Ca_%7Bn-1%7D%24%5Cn%5Cu5e2e%5Cu52a9%5Cu66ae%5Cu5149%5Cu95ea%5Cu95ea%5Cu786e%5Cu5b9a%5Cuff1a%5Cu6700%5Cu5c11%5Cu9700%5Cu8981%5Cu82b1%5Cu591a%5Cu5c11%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu624d%5Cu80fd%5Cu628a%5Cu6570%5Cu7ec4%5Cu6392%5Cu597d%5Cu5e8f%5Cuff1f%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20n%24%282%5C%5Cle%20n%5C%5Cle%2010%5E5%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu7ec4%5Cu5927%5Cu5c0f%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%20n%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24a_1%2Ca_2%2C%5C%5Ccdots%2Ca_n%20%281%5C%5Cle%20a_i%5C%5Cle%2010%5E5%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu7ec4%5Cu4e2d%5Cu7684%5Cu5143%5Cu7d20%5Cu3002%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu5b8c%5Cu6210%5Cuff0c%5Cu8f93%5Cu51fa-1%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%5Cu6700%5Cu5c11%5Cu82b1%5Cu8d39%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6570%5Cu3002%5Cn%5CnTranslated%20by%20%5Cu5c0f%5Cu7c89%5Cu5154%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A25%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF454B%22%2C%22title%22%3A%22Little%20Pony%20and%20Sort%20by%20Shift%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32389%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10836%2C%22name%22%3A%22CF454B%20Little%20Pony%20and%20Sort%20by%20Shift%22%2C%22slug%22%3A%22CF454B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Little%20Pony%20and%20Sort%20by%20Shift%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Little Pony and Sort by Shift</h1>
+<h2>题意翻译</h2>
+<div>
+题目描述：
+一天，暮光闪闪对如何给一个整数数组按照不递减顺序排序产生了兴趣。作为一只年轻的独角兽，她能做的只有一个操作：单位移动。她可以把最后一个元素移动到第一个去：$a_1,a_2,\cdots ,a_n\to a_n,a_1,a_2,\cdots ,a_{n-1}$
+帮助暮光闪闪确定：最少需要花多少次操作才能把数组排好序？
+输入格式：
+第一行一个正整数 n$(2\le n\le 10^5)$，表示数组大小。
+第二行 n个正整数 $a_1,a_2,\cdots,a_n (1\le a_i\le 10^5)$，表示数组中的元素。
+输出格式：
+如果不可能完成，输出-1，否则输出最少花费的操作数。
+Translated by 小粉兔
+</div>
+<h2>题目描述</h2>
+<div>One day, Twilight Sparkle is interested in how to sort a sequence of integers $ a_{1},a_{2},...,a_{n} $ in non-decreasing order. Being a young unicorn, the only operation she can perform is a unit shift. That is, she can move the last element of the sequence to its beginning:
+$ a_{1},a_{2},...,a_{n}→a_{n},a_{1},a_{2},...,a_{n-1}. $ Help Twilight Sparkle to calculate: what is the minimum number of operations that she needs to sort the sequence?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $ n $ $ (2<=n<=10^{5}) $ . The second line contains $ n $ integer numbers $ a_{1},a_{2},...,a_{n} $ $ (1<=a_{i}<=10^{5}) $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>If it's impossible to sort the sequence output -1. Otherwise output the minimum number of operations Twilight Sparkle needs to sort it.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+1 3 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2
+1 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

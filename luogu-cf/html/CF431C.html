@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>k-Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394002:hGGTvB1HnCkjHvA/mJ4ZrIMthfdkh7zoeGhOrraWnm0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Quite%20recently%20a%20creative%20student%20Lesha%20had%20a%20lecture%20on%20trees.%20After%20the%20lecture%20Lesha%20was%20inspired%20and%20came%20up%20with%20the%20tree%20of%20his%20own%20which%20he%20called%20a%20%24%20k%20%24%20-tree.%5Cn%5CnA%20%24%20k%20%24%20-tree%20is%20an%20infinite%20rooted%20tree%20where%3A%5Cn%5Cn-%20each%20vertex%20has%20exactly%20%24%20k%20%24%20children%3B%5Cn-%20each%20edge%20has%20some%20weight%3B%5Cn-%20if%20we%20look%20at%20the%20edges%20that%20goes%20from%20some%20vertex%20to%20its%20children%20%28exactly%20%24%20k%20%24%20edges%29%2C%20then%20their%20weights%20will%20equal%20%24%201%2C2%2C3%2C...%2Ck%20%24%20.%5Cn%5CnThe%20picture%20below%20shows%20a%20part%20of%20a%203-tree.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF431C%5C%2F83eea7df0a509cbc1e6d27ff0b5f74fa2e2e451c.png%29%5Cn%5Cn%20As%20soon%20as%20Dima%2C%20a%20good%20friend%20of%20Lesha%2C%20found%20out%20about%20the%20tree%2C%20he%20immediately%20wondered%3A%20%5C%22How%20many%20paths%20of%20total%20weight%20%24%20n%20%24%20%28the%20sum%20of%20all%20weights%20of%20the%20edges%20in%20the%20path%29%20are%20there%2C%20starting%20from%20the%20root%20of%20a%20%24%20k%20%24%20-tree%20and%20also%20containing%20at%20least%20one%20edge%20of%20weight%20at%20least%20%24%20d%20%24%20%3F%5C%22.Help%20Dima%20find%20an%20answer%20to%20his%20question.%20As%20the%20number%20of%20ways%20can%20be%20rather%20large%2C%20print%20it%20modulo%20%24%201000000007%20%24%20%28%20%24%2010%5E%7B9%7D%2B7%20%24%20%29.%22%2C%22inputFormat%22%3A%22A%20single%20line%20contains%20three%20space-separated%20integers%3A%20%24%20n%20%24%20%2C%20%24%20k%20%24%20and%20%24%20d%20%24%20%28%20%24%201%3C%3Dn%2Ck%3C%3D100%3B%20%24%20%24%201%3C%3Dd%3C%3Dk%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20answer%20to%20the%20problem%20modulo%20%24%201000000007%20%24%20%28%20%24%2010%5E%7B9%7D%2B7%20%24%20%29.%22%2C%22samples%22%3A%5B%5B%223%203%202%5Cn%22%2C%223%5Cn%22%5D%2C%5B%223%203%203%5Cn%22%2C%221%5Cn%22%5D%2C%5B%224%203%202%5Cn%22%2C%226%5Cn%22%5D%2C%5B%224%205%202%5Cn%22%2C%227%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F431%5C%2FC%22%2C%22id%22%3A%22431C%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu6700%5Cu8fd1%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5bcc%5Cu6709%5Cu521b%5Cu9020%5Cu529b%5Cu7684%5Cu5b66%5Cu751fLesha%5Cu542c%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu5173%5Cu4e8e%5Cu6811%5Cu7684%5Cu8bb2%5Cu5ea7%5Cu3002%5Cu5728%5Cu542c%5Cu5b8c%5Cu8bb2%5Cu5ea7%5Cu4e4b%5Cu540e%5Cuff0cLesha%5Cu53d7%5Cu5230%5Cu4e86%5Cu542f%5Cu53d1%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4ed6%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5173%5Cu4e8ek-tree%5Cuff08k%5Cu53c9%5Cu6811%5Cuff09%5Cu7684%5Cu60f3%5Cu6cd5%5Cu3002%5Cr%5Cnk-tree%5Cu90fd%5Cu662f%5Cu65e0%5Cu6839%5Cu6811%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6ee1%5Cu8db3%5Cuff1a%5Cr%5Cn1.%20%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu975e%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9%5Cu90fd%5Cu6709k%5Cu4e2a%5Cu5b69%5Cu5b50%5Cu8282%5Cu70b9%5Cuff1b%5Cr%5Cn2.%20%5Cu6bcf%5Cu4e00%5Cu6761%5Cu8fb9%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu8fb9%5Cu6743%5Cuff1b%5Cr%5Cn3.%20%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu975e%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9%5Cu6307%5Cu5411%5Cu5176k%5Cu4e2a%5Cu5b69%5Cu5b50%5Cu8282%5Cu70b9%5Cu7684k%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu5206%5Cu522b%5Cu4e3a1%2C2%2C3%2C...%2Ck%5Cu3002%5Cr%5Cn%5Cr%5Cn---------------%5Cr%5Cn%5Cr%5Cn%5Cu5f53Lesha%5Cu7684%5Cu597d%5Cu670b%5Cu53cbDima%5Cu770b%5Cu5230%5Cu8fd9%5Cu79cd%5Cu6811%5Cu65f6%5Cuff0cDima%5Cu9a6c%5Cu4e0a%5Cu60f3%5Cu5230%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu95ee%5Cu9898%5Cuff1a%5Cu201c%5Cu6709%5Cu591a%5Cu5c11%5Cu6761%5Cu4ecek-tree%5Cu7684%5Cu6839%5Cu8282%5Cu70b9%5Cu51fa%5Cu53d1%5Cu7684%5Cu8def%5Cu4e0a%5Cu7684%5Cu8fb9%5Cu6743%5Cu4e4b%5Cu548c%5Cu7b49%5Cu4e8en%5Cuff0c%5Cu5e76%5Cu4e14%5Cu7ecf%5Cu8fc7%5Cu7684%5Cu8fd9%5Cu4e9b%5Cu8fb9%5Cu4e2d%5Cu81f3%5Cu5c11%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu8fb9%5Cu6743%5Cu5927%5Cu4e8e%5Cu7b49%5Cu4e8ed%5Cu5462%3F%5Cu201d%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu4f60%5Cu9700%5Cu8981%5Cu5e2e%5Cu52a9Dima%5Cu89e3%5Cu51b3%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu3002%5Cu8003%5Cu8651%5Cu5230%5Cu8def%5Cu5f84%5Cu603b%5Cu6570%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu975e%5Cu5e38%5Cu5927%5Cuff0c%5Cu6240%5Cu4ee5%5Cu53ea%5Cu9700%5Cu8f93%5Cu51fa%5Cu8def%5Cu5f84%5Cu603b%5Cu6570%20mod%201000000007%20%5Cu5373%5Cu53ef%5Cu3002%5Cuff081000000007%3D10%5E9%2B7%5Cuff09%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cu6570%5Cuff0cn%5Cuff0ck%5Cuff0cd.%20%281%20%3C%3D%20n%2C%20k%20%3C%3D%20100%3B%201%20%3C%3D%20d%20%3C%3D%20k%3B%20n%2C%20d%2C%20k%20%5Cu4e09%5Cu8005%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%29%5Cu3002%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5373%5Cu8f93%5Cu51fa%5Cu8def%5Cu5f84%5Cu603b%5Cu6570%20mod%201000000007%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A57%2C%22totalAccepted%22%3A29%2C%22pid%22%3A%22CF431C%22%2C%22title%22%3A%22k-Tree%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF711C%22%2C%22title%22%3A%22Coloring%20Trees%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF706C%22%2C%22title%22%3A%22Hard%20problem%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF553A%22%2C%22title%22%3A%22Kyoya%20and%20Colored%20Balls%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF455A%22%2C%22title%22%3A%22Boredom%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF225C%22%2C%22title%22%3A%22Barcode%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22k-Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>k-Tree</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+最近有一个富有创造力的学生Lesha听了一个关于树的讲座。在听完讲座之后，Lesha受到了启发，并且他有一个关于k-tree（k叉树）的想法。
+k-tree都是无根树，并且满足：
+1. 每一个非叶子节点都有k个孩子节点；
+2. 每一条边都有一个边权；
+3. 每一个非叶子节点指向其k个孩子节点的k条边的权值分别为1,2,3,...,k。
+---------------
+当Lesha的好朋友Dima看到这种树时，Dima马上想到了一个问题：“有多少条从k-tree的根节点出发的路上的边权之和等于n，并且经过的这些边中至少有一条边的边权大于等于d呢?”
+现在你需要帮助Dima解决这个问题。考虑到路径总数可能会非常大，所以只需输出路径总数 mod 1000000007 即可。（1000000007=10^9+7）
+## 输入输出格式
+### 输入格式：
+只有一行数，n，k，d. (1 <= n, k <= 100; 1 <= d <= k; n, d, k 三者用空格隔开)。
+### 输出格式：
+只有一行，一个整数，即输出路径总数 mod 1000000007。</div>
+<h2>题目描述</h2>
+<div>Quite recently a creative student Lesha had a lecture on trees. After the lecture Lesha was inspired and came up with the tree of his own which he called a $ k $ -tree.
+A $ k $ -tree is an infinite rooted tree where:
+- each vertex has exactly $ k $ children;
+- each edge has some weight;
+- if we look at the edges that goes from some vertex to its children (exactly $ k $ edges), then their weights will equal $ 1,2,3,...,k $ .
+The picture below shows a part of a 3-tree.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF431C/83eea7df0a509cbc1e6d27ff0b5f74fa2e2e451c.png)
+As soon as Dima, a good friend of Lesha, found out about the tree, he immediately wondered: "How many paths of total weight $ n $ (the sum of all weights of the edges in the path) are there, starting from the root of a $ k $ -tree and also containing at least one edge of weight at least $ d $ ?".Help Dima find an answer to his question. As the number of ways can be rather large, print it modulo $ 1000000007 $ ( $ 10^{9}+7 $ ).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>A single line contains three space-separated integers: $ n $ , $ k $ and $ d $ ( $ 1<=n,k<=100; $ $ 1<=d<=k $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the answer to the problem modulo $ 1000000007 $ ( $ 10^{9}+7 $ ).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4 3 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>6
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>4 5 2
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>7
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

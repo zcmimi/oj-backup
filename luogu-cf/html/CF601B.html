@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Lipshitz Sequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395858:x0HTdCl1BXVlHYNipelP1ddd/o1TEnI8Z4Nvrda1Iig=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20function%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F430ebcefe96c88310ccd261882b0ff945145df52.png%29%20is%20called%20Lipschitz%20continuous%20if%20there%20is%20a%20real%20constant%20%24%20K%20%24%20such%20that%20the%20inequality%20%24%20%7Cf%28x%29-f%28y%29%7C%3C%3DK%5Cu00b7%7Cx-y%7C%20%24%20holds%20for%20all%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F261d3c24b04ab9fe2bfe5b80cef7a0d93e455362.png%29.%20We%27ll%20deal%20with%20a%20more...%20discrete%20version%20of%20this%20term.%5Cn%5CnFor%20an%20array%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2Fccfdce10ff74cd472d9792ed111da871e7a50f00.png%29%2C%20we%20define%20it%27s%20Lipschitz%20constant%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2Fdea73c73292e257d3ec0493d833cd87ce60d4100.png%29%20as%20follows%3A%5Cn%5Cn-%20if%20%24%20n%26lt%3B2%20%24%20%2C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F3ff8c17ca1f7b3e483996c6b0a65fe8821444f77.png%29%5Cn-%20if%20%24%20n%3E%3D2%20%24%20%2C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F02820989bea357555f19945647d60c22d98153a5.png%29%20over%20all%20%24%201%3C%3Di%26lt%3Bj%3C%3Dn%20%24%5Cn%5CnIn%20other%20words%2C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F7f78e6e27f8b58a065808f48924984c382457583.png%29%20is%20the%20smallest%20non-negative%20integer%20such%20that%20%24%20%7Ch%5Bi%5D-h%5Bj%5D%7C%3C%3DL%5Cu00b7%7Ci-j%7C%20%24%20holds%20for%20all%20%24%201%3C%3Di%2Cj%3C%3Dn%20%24%20.%5Cn%5CnYou%20are%20given%20an%20array%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F3c996d04a1a028eb850ea279befed0060d54e243.png%29%20of%20size%20%24%20n%20%24%20and%20%24%20q%20%24%20queries%20of%20the%20form%20%24%20%5Bl%2Cr%5D%20%24%20.%20For%20each%20query%2C%20consider%20the%20subarray%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2Ffab57d281524c7eb59473c192b040dba9062a2ef.png%29%3B%20determine%20the%20sum%20of%20Lipschitz%20constants%20of%20all%20subarrays%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F933dbfa1108f94092075e7b3a5cee6b27ee2f330.png%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20space-separated%20integers%20%24%20n%20%24%20and%20%24%20q%20%24%20%28%20%24%202%3C%3Dn%3C%3D100000%20%24%20and%20%24%201%3C%3Dq%3C%3D100%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20array%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F3c996d04a1a028eb850ea279befed0060d54e243.png%29%20and%20the%20number%20of%20queries%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2Fa894c656178c8b0dc4902212cccb3f110230b59c.png%29%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F9e8c0fade12c84c7014a7013ed96f5825cfef4b1.png%29%29.%5Cn%5CnThe%20following%20%24%20q%20%24%20lines%20describe%20queries.%20The%20%24%20i%20%24%20-th%20of%20those%20lines%20contains%20two%20space-separated%20integers%20%24%20l_%7Bi%7D%20%24%20and%20%24%20r_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dl_%7Bi%7D%26lt%3Br_%7Bi%7D%3C%3Dn%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20the%20answers%20to%20all%20queries%20in%20the%20order%20in%20which%20they%20are%20given%20in%20the%20input.%20For%20the%20%24%20i%20%24%20-th%20query%2C%20print%20one%20line%20containing%20a%20single%20integer%20%5Cu2014%20the%20sum%20of%20Lipschitz%20constants%20of%20all%20subarrays%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F5d9ebef2ff7149a76a7b22b08cb78cb7d7617492.png%29.%22%2C%22samples%22%3A%5B%5B%2210%204%5Cn1%205%202%209%201%203%204%202%201%207%5Cn2%204%5Cn3%208%5Cn7%2010%5Cn1%209%5Cn%22%2C%2217%5Cn82%5Cn23%5Cn210%5Cn%22%5D%2C%5B%227%206%5Cn5%207%207%204%206%206%202%5Cn1%202%5Cn2%203%5Cn2%206%5Cn1%207%5Cn4%207%5Cn3%205%5Cn%22%2C%222%5Cn0%5Cn22%5Cn59%5Cn16%5Cn8%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20query%20of%20the%20first%20sample%2C%20the%20Lipschitz%20constants%20of%20subarrays%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2F6f9417fdcb9c3ca8d78dd9307c5187f8fb187e89.png%29%20with%20length%20at%20least%20%24%202%20%24%20are%3A%5Cn%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2Fad0807635c6133e89feb982a2e00b9c60b15e05e.png%29%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2Fb5fd24d5adf442c68d175bf047b1975f7d5e9c25.png%29%5Cn-%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF601B%5C%2Fbb2421b16fa9a9eeeb4115e7a2a3b1e115becb80.png%29%5Cn%5CnThe%20answer%20to%20the%20query%20is%20their%20sum.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F601%5C%2FB%22%2C%22id%22%3A%22601B%22%7D%2C%22translation%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%20v%5B1..n%5D%5Cuff0c%5Cu5f53%201%3C%3Dx%3Cy%3C%3Dn%5Cr%5Cn%5Cu4e14%20x%2Cy%20%5Cu5747%5Cu4e3a%5Cu6574%5Cu6570%5Cu65f6%5Cuff0c%20%5Cu540c%5Cu6837%5Cu6ee1%5Cu8db3%7Cv%5Bx%5D-v%5By%5D%7C%3C%3DK%2A%7Cx-y%7C%5Cuff0c%20%5Cu5219%5Cu79f0%20K%20%5Cu7684%5Cu6700%5Cu5c0f%5Cu6574%5Cu6570%5Cu503c%5Cr%5Cn%5Cu4e3a%5Cu5e8f%5Cu5217%20v%20%5Cu7684%20Lipschitz%20%5Cu5e38%5Cu6570%5Cu3002%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20n%20%5Cu7684%5Cu5e8f%5Cu5217%20v%5B1..n%5D%5Cu5e76%5Cu7ed9%5Cu51fa%20q%20%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu5bf9%5Cu8be2%5Cu95ee%5Bl%2Cr%5D%5Cuff0c%5Cr%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu6c42%5Cu51fa%20v%5Bl..r%5D%5Cu7684%5Cu6240%5Cu6709%5Cu5b50%5Cu5e8f%5Cu5217%20v%5Bx..y%5D%5Cuff08l%3C%3Dx%3Cy%3C%3Dr%5Cuff09%5Cu7684%20Lipschitz%20%5Cu5e38%5Cu6570%5Cu4e4b%5Cu548c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5B%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5D%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20n%20%5Cu548c%20q%5Cuff0c%20%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu5e8f%5Cu5217%5Cu7684%5Cu957f%5Cu5ea6%5Cu4ee5%5Cu53ca%5Cu8be2%5Cu95ee%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%20n%20%5Cu4e2a%5Cu6570%5Cuff0c%20%5Cu8868%5Cu793a%20v%5B1..n%5D%5Cuff0c%200%3C%3Dv%5Bi%5D%3C%3D10%5E8%5Cu3002%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20q%20%5Cu884c%5Cuff0c%20%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%20l%20%5Cu548c%20r%5Cuff0c%20%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%5Cu7684%5Cu533a%5Cu95f4%5Cu4e3a%5Bl..r%5D%5Cu3002%5Cr%5Cn%5Cr%5Cn%5B%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5D%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%20%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%20%5Cu5373%20v%5Bl..r%5D%5Cu7684%5Cu6240%5Cu6709%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7684%20Lipschitz%20%5Cu5e38%5Cu6570%5Cu4e4b%5Cu548c%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF601B%22%2C%22title%22%3A%22Lipshitz%20Sequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Lipshitz%20Sequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Lipshitz Sequence</h1>
+<h2>题意翻译</h2>
+<div>对于一个序列 v[1..n]，当 1<=x<y<=n 且 x,y 均为整数时， 同样满足|v[x]-v[y]|<=K*|x-y|， 则称 K 的最小整数值 为序列 v 的 Lipschitz 常数。 现在给你一个长度为 n 的序列 v[1..n]并给出 q 个询问，对于每对询问[l,r]， 你需要求出 v[l..r]的所有子序列 v[x..y]（l<=x<y<=r）的 Lipschitz 常数之和。 [输入格式] 第一行两个整数 n 和 q， 分别表示序列的长度以及询问的个数。 第二行 n 个数， 表示 v[1..n]， 0<=v[i]<=10^8。 接下来 q 行， 每行两个数 l 和 r， 表示询问的区间为[l..r]。 [输出格式] 对于每个询问， 输出一行一个数， 即 v[l..r]的所有子序列的 Lipschitz 常数之和。</div>
+<h2>题目描述</h2>
+<div>A function ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/430ebcefe96c88310ccd261882b0ff945145df52.png) is called Lipschitz continuous if there is a real constant $ K $ such that the inequality $ |f(x)-f(y)|<=K·|x-y| $ holds for all ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/261d3c24b04ab9fe2bfe5b80cef7a0d93e455362.png). We'll deal with a more... discrete version of this term.
+For an array ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/ccfdce10ff74cd472d9792ed111da871e7a50f00.png), we define it's Lipschitz constant ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/dea73c73292e257d3ec0493d833cd87ce60d4100.png) as follows:
+- if $ n&lt;2 $ , ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/3ff8c17ca1f7b3e483996c6b0a65fe8821444f77.png)
+- if $ n>=2 $ , ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/02820989bea357555f19945647d60c22d98153a5.png) over all $ 1<=i&lt;j<=n $
+In other words, ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/7f78e6e27f8b58a065808f48924984c382457583.png) is the smallest non-negative integer such that $ |h[i]-h[j]|<=L·|i-j| $ holds for all $ 1<=i,j<=n $ .
+You are given an array ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/3c996d04a1a028eb850ea279befed0060d54e243.png) of size $ n $ and $ q $ queries of the form $ [l,r] $ . For each query, consider the subarray ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/fab57d281524c7eb59473c192b040dba9062a2ef.png); determine the sum of Lipschitz constants of all subarrays of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/933dbfa1108f94092075e7b3a5cee6b27ee2f330.png).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two space-separated integers $ n $ and $ q $ ( $ 2<=n<=100000 $ and $ 1<=q<=100 $ ) — the number of elements in array ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/3c996d04a1a028eb850ea279befed0060d54e243.png) and the number of queries respectively.
+The second line contains $ n $ space-separated integers ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/a894c656178c8b0dc4902212cccb3f110230b59c.png) (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/9e8c0fade12c84c7014a7013ed96f5825cfef4b1.png)).
+The following $ q $ lines describe queries. The $ i $ -th of those lines contains two space-separated integers $ l_{i} $ and $ r_{i} $ ( $ 1<=l_{i}&lt;r_{i}<=n $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the answers to all queries in the order in which they are given in the input. For the $ i $ -th query, print one line containing a single integer — the sum of Lipschitz constants of all subarrays of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/5d9ebef2ff7149a76a7b22b08cb78cb7d7617492.png).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 4
+1 5 2 9 1 3 4 2 1 7
+2 4
+3 8
+7 10
+1 9
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>17
+82
+23
+210
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7 6
+5 7 7 4 6 6 2
+1 2
+2 3
+2 6
+1 7
+4 7
+3 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+0
+22
+59
+16
+8
+</code></pre>
+<h2>说明</h2>
+<div>In the first query of the first sample, the Lipschitz constants of subarrays of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/6f9417fdcb9c3ca8d78dd9307c5187f8fb187e89.png) with length at least $ 2 $ are:
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/ad0807635c6133e89feb982a2e00b9c60b15e05e.png)
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/b5fd24d5adf442c68d175bf047b1975f7d5e9c25.png)
+- ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF601B/bb2421b16fa9a9eeeb4115e7a2a3b1e115becb80.png)
+The answer to the query is their sum.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

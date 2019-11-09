@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Raffles - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396140:cXOEkjhaYl7dOU2CyLHprDfiS1Fw2R+MModXFGDE5Nw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Johnny%20is%20at%20a%20carnival%20which%20has%20%24%20n%20%24%20raffles.%20Raffle%20%24%20i%20%24%20has%20a%20prize%20with%20value%20%24%20p_%7Bi%7D%20%24%20.%20Each%20participant%20can%20put%20tickets%20in%20whichever%20raffles%20they%20choose%20%28they%20may%20have%20more%20than%20one%20ticket%20in%20a%20single%20raffle%29.%20At%20the%20end%20of%20the%20carnival%2C%20one%20ticket%20is%20selected%20at%20random%20from%20each%20raffle%2C%20and%20the%20owner%20of%20the%20ticket%20wins%20the%20associated%20prize.%20A%20single%20person%20can%20win%20multiple%20prizes%20from%20different%20raffles.%5Cn%5CnHowever%2C%20county%20rules%20prevent%20any%20one%20participant%20from%20owning%20more%20than%20half%20the%20tickets%20in%20a%20single%20raffle%2C%20i.e.%20putting%20more%20tickets%20in%20the%20raffle%20than%20all%20the%20other%20participants%20combined.%20To%20help%20combat%20this%20%28and%20possibly%20win%20some%20prizes%29%2C%20the%20organizers%20started%20by%20placing%20a%20single%20ticket%20in%20each%20raffle%2C%20which%20they%20will%20never%20remove.%5Cn%5CnJohnny%20bought%20%24%20t%20%24%20tickets%20and%20is%20wondering%20where%20to%20place%20them.%20Currently%2C%20there%20are%20a%20total%20of%20%24%20l_%7Bi%7D%20%24%20tickets%20in%20the%20%24%20i%20%24%20-th%20raffle.%20He%20watches%20as%20other%20participants%20place%20tickets%20and%20modify%20their%20decisions%20and%2C%20at%20every%20moment%20in%20time%2C%20wants%20to%20know%20how%20much%20he%20can%20possibly%20earn.%20Find%20the%20maximum%20possible%20expected%20value%20of%20Johnny%27s%20winnings%20at%20each%20moment%20if%20he%20distributes%20his%20tickets%20optimally.%20Johnny%20may%20redistribute%20all%20of%20his%20tickets%20arbitrarily%20between%20each%20update%2C%20but%20he%20may%20not%20place%20more%20than%20%24%20t%20%24%20tickets%20total%20or%20have%20more%20tickets%20in%20a%20single%20raffle%20than%20all%20other%20participants%20combined.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20%2C%20%24%20t%20%24%20%2C%20and%20%24%20q%20%24%20%28%20%24%201%3C%3Dn%2Ct%2Cq%3C%3D200%5C%5C%20000%20%24%20%29%20%5Cu2014%20the%20number%20of%20raffles%2C%20the%20number%20of%20tickets%20Johnny%20has%2C%20and%20the%20total%20number%20of%20updates%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%24%20p_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dp_%7Bi%7D%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20value%20of%20the%20%24%20i%20%24%20-th%20prize.%5Cn%5CnThe%20third%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%24%20l_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dl_%7Bi%7D%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20tickets%20initially%20in%20the%20%24%20i%20%24%20-th%20raffle.%5Cn%5CnThe%20last%20%24%20q%20%24%20lines%20contain%20the%20descriptions%20of%20the%20updates.%20Each%20description%20contains%20two%20integers%20%24%20t_%7Bk%7D%20%24%20%2C%20%24%20r_%7Bk%7D%20%24%20%28%20%24%201%3C%3Dt_%7Bk%7D%3C%3D2%20%24%20%2C%20%24%201%3C%3Dr_%7Bk%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20type%20of%20the%20update%20and%20the%20raffle%20number.%20An%20update%20of%20type%20%24%201%20%24%20represents%20another%20participant%20adding%20a%20ticket%20to%20raffle%20%24%20r_%7Bk%7D%20%24%20.%20An%20update%20of%20type%20%24%202%20%24%20represents%20another%20participant%20removing%20a%20ticket%20from%20raffle%20%24%20r_%7Bk%7D%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%2C%20after%20each%20update%2C%20each%20raffle%20has%20at%20least%20%24%201%20%24%20ticket%20%28not%20including%20Johnny%27s%29%20in%20it.%22%2C%22outputFormat%22%3A%22Print%20%24%20q%20%24%20lines%2C%20each%20containing%20a%20single%20real%20number%20%5Cu2014%20the%20maximum%20expected%20value%20of%20Johnny%27s%20winnings%20after%20the%20%24%20k%20%24%20-th%20update.%20Your%20answer%20will%20be%20considered%20correct%20if%20its%20absolute%20or%20relative%20error%20does%20not%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%5Cn%5CnNamely%3A%20let%27s%20assume%20that%20your%20answer%20is%20%24%20a%20%24%20%2C%20and%20the%20answer%20of%20the%20jury%20is%20%24%20b%20%24%20.%20The%20checker%20program%20will%20consider%20your%20answer%20correct%2C%20if%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF626G%5C%2F259203790d90e969d73ec841bd0673c1e8e7d69a.png%29.%22%2C%22samples%22%3A%5B%5B%222%201%203%5Cn4%205%5Cn1%202%5Cn1%201%5Cn1%202%5Cn2%201%5Cn%22%2C%221.666666667%5Cn1.333333333%5Cn2.000000000%5Cn%22%5D%2C%5B%223%2020%205%5Cn6%208%2010%5Cn6%206%206%5Cn1%201%5Cn1%202%5Cn1%203%5Cn2%203%5Cn2%203%5Cn%22%2C%2212.000000000%5Cn12.000000000%5Cn11.769230769%5Cn12.000000000%5Cn12.000000000%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20case%2C%20Johnny%20only%20has%20one%20ticket%20to%20distribute.%20The%20prizes%20are%20worth%20%24%204%20%24%20and%20%24%205%20%24%20%2C%20and%20the%20raffles%20initially%20have%20%24%201%20%24%20and%20%24%202%20%24%20tickets%2C%20respectively.%20After%20the%20first%20update%2C%20each%20raffle%20has%20%24%202%20%24%20tickets%2C%20so%20Johnny%20has%20expected%20value%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF626G%5C%2F6b3899b68ddbbb0f7be3fe6b0138da4ad0a78d00.png%29%20of%20winning%20by%20placing%20his%20ticket%20into%20the%20second%20raffle.%20The%20second%20update%20adds%20a%20ticket%20to%20the%20second%20raffle%2C%20so%20Johnny%20can%20win%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF626G%5C%2F02a9893655e2526bd8576bc654e9f03be42e84e3.png%29%20in%20the%20first%20raffle.%20After%20the%20final%20update%2C%20Johnny%20keeps%20his%20ticket%20in%20the%20first%20raffle%20and%20wins%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF626G%5C%2F382e96367d194a03ee920b4d0883f816643d58ba.png%29.%5Cn%5CnIn%20the%20second%20case%2C%20Johnny%20has%20more%20tickets%20than%20he%20is%20allowed%20to%20spend.%20In%20particular%2C%20after%20the%20first%20update%2C%20there%20are%20%24%207%20%24%20%2C%20%24%206%20%24%20%2C%20and%20%24%206%20%24%20tickets%20in%20each%20raffle%2C%20respectively%2C%20so%20Johnny%20can%20only%20put%20in%20%24%2019%20%24%20tickets%2C%20winning%20each%20prize%20with%20probability%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF626G%5C%2Ffda96725ccc697b767e5edbf0d5cfb5ba17d9aa2.png%29.%20Also%2C%20note%20that%20after%20the%20last%20two%20updates%2C%20Johnny%20must%20remove%20a%20ticket%20from%20the%20last%20raffle%20in%20order%20to%20stay%20under%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF626G%5C%2Ffda96725ccc697b767e5edbf0d5cfb5ba17d9aa2.png%29%20the%20tickets%20in%20the%20third%20raffle.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F626%5C%2FG%22%2C%22id%22%3A%22626G%22%7D%2C%22translation%22%3A%22%5Cu7ed9n%5Cu4e2a%5Cu5956%5Cu6c60%5Cuff0ct%5Cu5f20%5Cu5f69%5Cu7968%5Cuff0cq%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu4e2a%5Cu5956%5Cu6c60%5Cu7684%5Cu5956%5Cu91d1%5Cu4e3api%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu4e2a%5Cu5956%5Cu6c60%5Cu73b0%5Cu6709%5Cu7684%5Cu5f69%5Cu7968%5Cu7684%5Cu6570%5Cu91cf%5Cu4e3aai%5Cuff0c%5Cu4fdd%5Cu8bc1ai%3E%3D1%5Cuff1b%5Cr%5Cn%5Cr%5Cnq%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu6709%5Cu4e24%5Cu79cd%5Cuff0c%5Cu7b2ci%5Cu4e2a%5Cu5956%5Cu6c60%5Cu7684%5Cu73b0%5Cu6709%5Cu5f69%5Cu7968%5Cu6570%5Cu91cf%5Cu52a0%5Cu4e00%5Cuff0c%5Cu6216%5Cu51cf%5Cu4e00%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e0d%5Cu5141%5Cu8bb8%5Cu6295%5Cu7968%5Cu7684%5Cu6570%5Cu91cf%5Cu591a%5Cu4e8e%5Cu5956%5Cu6c60%5Cu6570%5Cu91cf%5Cu7684%5Cu4e8c%5Cu5206%5Cu4e4b%5Cu4e00%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cuff1a%5Cr%5Cn%5Cr%5Cnn%2Ct%2Cq%3C%3D2e5%5Cr%5Cn%5Cr%5Cnai%3C%3D1000%20pi%3C%3D1000%5Cr%5Cn%5Cr%5Cn%5Cu6c42%5Cu5728%5Cu91c7%5Cu7528%5Cu6700%5Cu4f73%5Cu7b56%5Cu7565%5Cu7684%5Cu524d%5Cu63d0%5Cu4e0b%5Cu83b7%5Cu5f97%5Cu5956%5Cu91d1%5Cu7684%5Cu671f%5Cu671b%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A37%2C%22totalAccepted%22%3A25%2C%22pid%22%3A%22CF626G%22%2C%22title%22%3A%22Raffles%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Raffles%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Raffles</h1>
+<h2>题意翻译</h2>
+<div>给n个奖池，t张彩票，q次操作。
+每个奖池的奖金为pi。
+每个奖池现有的彩票的数量为ai，保证ai>=1；
+q次操作，每次有两种，第i个奖池的现有彩票数量加一，或减一。
+不允许投票的数量多于奖池数量的二分之一。
+保证：
+n,t,q<=2e5
+ai<=1000 pi<=1000
+求在采用最佳策略的前提下获得奖金的期望。</div>
+<h2>题目描述</h2>
+<div>Johnny is at a carnival which has $ n $ raffles. Raffle $ i $ has a prize with value $ p_{i} $ . Each participant can put tickets in whichever raffles they choose (they may have more than one ticket in a single raffle). At the end of the carnival, one ticket is selected at random from each raffle, and the owner of the ticket wins the associated prize. A single person can win multiple prizes from different raffles.
+However, county rules prevent any one participant from owning more than half the tickets in a single raffle, i.e. putting more tickets in the raffle than all the other participants combined. To help combat this (and possibly win some prizes), the organizers started by placing a single ticket in each raffle, which they will never remove.
+Johnny bought $ t $ tickets and is wondering where to place them. Currently, there are a total of $ l_{i} $ tickets in the $ i $ -th raffle. He watches as other participants place tickets and modify their decisions and, at every moment in time, wants to know how much he can possibly earn. Find the maximum possible expected value of Johnny's winnings at each moment if he distributes his tickets optimally. Johnny may redistribute all of his tickets arbitrarily between each update, but he may not place more than $ t $ tickets total or have more tickets in a single raffle than all other participants combined.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ , $ t $ , and $ q $ ( $ 1<=n,t,q<=200\ 000 $ ) — the number of raffles, the number of tickets Johnny has, and the total number of updates, respectively.
+The second line contains $ n $ space-separated integers $ p_{i} $ ( $ 1<=p_{i}<=1000 $ ) — the value of the $ i $ -th prize.
+The third line contains $ n $ space-separated integers $ l_{i} $ ( $ 1<=l_{i}<=1000 $ ) — the number of tickets initially in the $ i $ -th raffle.
+The last $ q $ lines contain the descriptions of the updates. Each description contains two integers $ t_{k} $ , $ r_{k} $ ( $ 1<=t_{k}<=2 $ , $ 1<=r_{k}<=n $ ) — the type of the update and the raffle number. An update of type $ 1 $ represents another participant adding a ticket to raffle $ r_{k} $ . An update of type $ 2 $ represents another participant removing a ticket from raffle $ r_{k} $ .
+It is guaranteed that, after each update, each raffle has at least $ 1 $ ticket (not including Johnny's) in it.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ q $ lines, each containing a single real number — the maximum expected value of Johnny's winnings after the $ k $ -th update. Your answer will be considered correct if its absolute or relative error does not exceed $ 10^{-6} $ .
+Namely: let's assume that your answer is $ a $ , and the answer of the jury is $ b $ . The checker program will consider your answer correct, if ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF626G/259203790d90e969d73ec841bd0673c1e8e7d69a.png).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 1 3
+4 5
+1 2
+1 1
+1 2
+2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1.666666667
+1.333333333
+2.000000000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 20 5
+6 8 10
+6 6 6
+1 1
+1 2
+1 3
+2 3
+2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>12.000000000
+12.000000000
+11.769230769
+12.000000000
+12.000000000
+</code></pre>
+<h2>说明</h2>
+<div>In the first case, Johnny only has one ticket to distribute. The prizes are worth $ 4 $ and $ 5 $ , and the raffles initially have $ 1 $ and $ 2 $ tickets, respectively. After the first update, each raffle has $ 2 $ tickets, so Johnny has expected value ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF626G/6b3899b68ddbbb0f7be3fe6b0138da4ad0a78d00.png) of winning by placing his ticket into the second raffle. The second update adds a ticket to the second raffle, so Johnny can win ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF626G/02a9893655e2526bd8576bc654e9f03be42e84e3.png) in the first raffle. After the final update, Johnny keeps his ticket in the first raffle and wins ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF626G/382e96367d194a03ee920b4d0883f816643d58ba.png).
+In the second case, Johnny has more tickets than he is allowed to spend. In particular, after the first update, there are $ 7 $ , $ 6 $ , and $ 6 $ tickets in each raffle, respectively, so Johnny can only put in $ 19 $ tickets, winning each prize with probability ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF626G/fda96725ccc697b767e5edbf0d5cfb5ba17d9aa2.png). Also, note that after the last two updates, Johnny must remove a ticket from the last raffle in order to stay under ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF626G/fda96725ccc697b767e5edbf0d5cfb5ba17d9aa2.png) the tickets in the third raffle.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

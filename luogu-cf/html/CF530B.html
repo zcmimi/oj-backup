@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>String inside out - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395141:AHbcm4GkvPgAm2fsmqCSVYD/cv03YXoNFd2Kz1teB7c=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20string%20%24%20S%20%24%20of%20even%20length%20%24%20s_%7B1%7D..s_%7B2n%7D%20%24%20.%20Perform%20the%20following%20manipulations%3A%5Cn%5Cn-%20divide%20it%20into%20two%20halves%20%24%20s_%7B1%7D..s_%7Bn%7D%20%24%20and%20%24%20s_%7Bn%2B1%7D..s_%7B2n%7D%20%24%5Cn-%20reverse%20each%20of%20them%20%24%20s_%7Bn%7D..s_%7B1%7D%20%24%20and%20%24%20s_%7B2n%7D..s_%7Bn%2B1%7D%20%24%5Cn-%20concatenate%20the%20resulting%20strings%20into%20%24%20s_%7Bn%7D..s_%7B1%7Ds_%7B2n%7D..s_%7Bn%2B1%7D%20%24%5Cn%5CnOutput%20the%20result%20of%20these%20manipulations.%22%2C%22inputFormat%22%3A%22The%20only%20line%20of%20the%20input%20contains%20a%20string%20of%20lowercase%20Latin%20letters.%20The%20length%20of%20the%20string%20is%20between%202%20and%2020%2C%20inclusive%2C%20and%20it%20is%20even.%22%2C%22outputFormat%22%3A%22Output%20the%20string%20which%20is%20the%20result%20of%20the%20described%20manipulations.%22%2C%22samples%22%3A%5B%5B%22codeforces%5Cn%22%2C%22fedocsecro%5Cn%22%5D%2C%5B%22qwertyasdfgh%5Cn%22%2C%22ytrewqhgfdsa%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F530%5C%2FB%22%2C%22id%22%3A%22530B%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4e88%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%5Cu5076%5Cu6570%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32S1---S2n%5Cuff0c%5Cu5176%5Cu4e2d%5Cu53ea%5Cu5305%5Cu542b%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu4f9d%5Cu6b21%5Cu5bf9%5Cu8fd9%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu8fdb%5Cu884c%5Cu5982%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cr%5Cn-%20%5Cu5c06%5Cu8fd9%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu62c6%5Cu6210%5Cu4e24%5Cu534a%5Cuff0c%5Cu5206%5Cu522b%5Cu4e3aS1%5Cu5230Sn%5Cuff0cSn%2B1%5Cu5230S2n%5Cr%5Cn-%20%5Cu5c06%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu5206%5Cu522b%5Cu5012%5Cu7f6e%5Cr%5Cn-%20%5Cu5c06%5Cu5b57%5Cu7b26%5Cu4e32%5Cu5408%5Cu5e76%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu64cd%5Cu4f5c%5Cu540e%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e3a%5Cu64cd%5Cu4f5c%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff082%3C%3Dserlen%3C%3D20%5Cuff09%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cr%5Cn%5Cu64cd%5Cu4f5c%5Cu540e%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF530B%22%2C%22title%22%3A%22String%20inside%20out%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A83607%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10543%2C%22name%22%3A%22CF530B%20String%20inside%20out%22%2C%22slug%22%3A%22CF530B%22%7D%7D%2C%7B%22id%22%3A83588%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu4e0d%5Cu80fd%5Cu6d4b%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A10543%2C%22name%22%3A%22CF530B%20String%20inside%20out%22%2C%22slug%22%3A%22CF530B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22String%20inside%20out%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>String inside out</h1>
+<h2>题意翻译</h2>
+<div>给予你一个长度为偶数的字符串S1---S2n，其中只包含小写字母，你需要依次对这个字符串进行如下操作：
+- 将这个字符串拆成两半，分别为S1到Sn，Sn+1到S2n
+- 将这两个字符串分别倒置
+- 将字符串合并
+输出操作后的字符串
+## 输入
+一行，为操作字符串（2<=serlen<=20）
+## 输出
+操作后的字符串
+</div>
+<h2>题目描述</h2>
+<div>You are given a string $ S $ of even length $ s_{1}..s_{2n} $ . Perform the following manipulations:
+- divide it into two halves $ s_{1}..s_{n} $ and $ s_{n+1}..s_{2n} $
+- reverse each of them $ s_{n}..s_{1} $ and $ s_{2n}..s_{n+1} $
+- concatenate the resulting strings into $ s_{n}..s_{1}s_{2n}..s_{n+1} $
+Output the result of these manipulations.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line of the input contains a string of lowercase Latin letters. The length of the string is between 2 and 20, inclusive, and it is even.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the string which is the result of the described manipulations.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>codeforces
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>fedocsecro
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>qwertyasdfgh
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>ytrewqhgfdsa
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

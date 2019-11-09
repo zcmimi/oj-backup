@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Hostname Aliases - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396340:o9q3hYY1MMTXHXmxJi1AO8fNHPMGKWO6r4iH0EtxV3M=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20some%20websites%20that%20are%20accessible%20through%20several%20different%20addresses.%20For%20example%2C%20for%20a%20long%20time%20Codeforces%20was%20accessible%20with%20two%20hostnames%20codeforces.com%20and%20codeforces.ru.%5Cn%5CnYou%20are%20given%20a%20list%20of%20page%20addresses%20being%20queried.%20For%20simplicity%20we%20consider%20all%20addresses%20to%20have%20the%20form%20http%3A%5C%2F%5C%2F%3Chostname%3E%5C%5C%5B%5C%2F%3Cpath%3E%5C%5C%5D%2C%20where%3A%5Cn%5Cn-%20%3Chostname%3E%20%5Cu2014%20server%20name%20%28consists%20of%20words%20and%20maybe%20some%20dots%20separating%20them%29%2C%5Cn-%20%5C%2F%3Cpath%3E%20%5Cu2014%20optional%20part%2C%20where%20%3Cpath%3E%20consists%20of%20words%20separated%20by%20slashes.%5Cn%5CnWe%20consider%20two%20%3Chostname%3E%20to%20correspond%20to%20one%20website%20if%20for%20each%20query%20to%20the%20first%20%3Chostname%3E%20there%20will%20be%20exactly%20the%20same%20query%20to%20the%20second%20one%20and%20vice%20versa%20%5Cu2014%20for%20each%20query%20to%20the%20second%20%3Chostname%3E%20there%20will%20be%20the%20same%20query%20to%20the%20first%20one.%20Take%20a%20look%20at%20the%20samples%20for%20further%20clarifications.%5Cn%5CnYour%20goal%20is%20to%20determine%20the%20groups%20of%20server%20names%20that%20correspond%20to%20one%20website.%20Ignore%20groups%20consisting%20of%20the%20only%20server%20name.%5Cn%5CnPlease%20note%2C%20that%20according%20to%20the%20above%20definition%20queries%20http%3A%5C%2F%5C%2F%3Chostname%3E%20and%20http%3A%5C%2F%5C%2F%3Chostname%3E%5C%2F%20are%20different.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D100000%20%24%20%29%20%5Cu2014%20the%20number%20of%20page%20queries.%20Then%20follow%20%24%20n%20%24%20lines%20each%20containing%20exactly%20one%20address.%20Each%20address%20is%20of%20the%20form%20http%3A%5C%2F%5C%2F%3Chostname%3E%5C%5C%5B%5C%2F%3Cpath%3E%5C%5C%5D%2C%20where%3A%5Cn%5Cn-%20%3Chostname%3E%20consists%20of%20lowercase%20English%20letters%20and%20dots%2C%20there%20are%20no%20two%20consecutive%20dots%2C%20%3Chostname%3E%20doesn%27t%20start%20or%20finish%20with%20a%20dot.%20The%20length%20of%20%3Chostname%3E%20is%20positive%20and%20doesn%27t%20exceed%20%24%2020%20%24%20.%5Cn-%20%3Cpath%3E%20consists%20of%20lowercase%20English%20letters%2C%20dots%20and%20slashes.%20There%20are%20no%20two%20consecutive%20slashes%2C%20%3Cpath%3E%20doesn%27t%20start%20with%20a%20slash%20and%20its%20length%20doesn%27t%20exceed%20%24%2020%20%24%20.%5Cn%5CnAddresses%20are%20not%20guaranteed%20to%20be%20distinct.%22%2C%22outputFormat%22%3A%22First%20print%20%24%20k%20%24%20%5Cu2014%20the%20number%20of%20groups%20of%20server%20names%20that%20correspond%20to%20one%20website.%20You%20should%20count%20only%20groups%20of%20size%20greater%20than%20one.%5Cn%5CnNext%20%24%20k%20%24%20lines%20should%20contain%20the%20description%20of%20groups%2C%20one%20group%20per%20line.%20For%20each%20group%20print%20all%20server%20names%20separated%20by%20a%20single%20space.%20You%20are%20allowed%20to%20print%20both%20groups%20and%20names%20inside%20any%20group%20in%20arbitrary%20order.%22%2C%22samples%22%3A%5B%5B%2210%5Cnhttp%3A%5C%2F%5C%2Fabacaba.ru%5C%2Ftest%5Cnhttp%3A%5C%2F%5C%2Fabacaba.ru%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fabacaba.com%5Cnhttp%3A%5C%2F%5C%2Fabacaba.com%5C%2Ftest%5Cnhttp%3A%5C%2F%5C%2Fabacaba.de%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fabacaba.ru%5C%2Ftest%5Cnhttp%3A%5C%2F%5C%2Fabacaba.de%5C%2Ftest%5Cnhttp%3A%5C%2F%5C%2Fabacaba.com%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fabacaba.com%5C%2Ft%5Cnhttp%3A%5C%2F%5C%2Fabacaba.com%5C%2Ftest%5Cn%22%2C%221%5Cnhttp%3A%5C%2F%5C%2Fabacaba.de%20http%3A%5C%2F%5C%2Fabacaba.ru%20%5Cn%22%5D%2C%5B%2214%5Cnhttp%3A%5C%2F%5C%2Fc%5Cnhttp%3A%5C%2F%5C%2Fccc.bbbb%5C%2Faba..b%5Cnhttp%3A%5C%2F%5C%2Fcba.com%5Cnhttp%3A%5C%2F%5C%2Fa.c%5C%2Faba..b%5C%2Fa%5Cnhttp%3A%5C%2F%5C%2Fabc%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fa.c%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fccc.bbbb%5Cnhttp%3A%5C%2F%5C%2Fab.ac.bc.aa%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fa.a.a%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fccc.bbbb%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fcba.com%5C%2F%5Cnhttp%3A%5C%2F%5C%2Fcba.com%5C%2Faba..b%5Cnhttp%3A%5C%2F%5C%2Fa.a.a%5C%2Faba..b%5C%2Fa%5Cnhttp%3A%5C%2F%5C%2Fabc%5C%2Faba..b%5C%2Fa%5Cn%22%2C%222%5Cnhttp%3A%5C%2F%5C%2Fcba.com%20http%3A%5C%2F%5C%2Fccc.bbbb%20%5Cnhttp%3A%5C%2F%5C%2Fa.a.a%20http%3A%5C%2F%5C%2Fa.c%20http%3A%5C%2F%5C%2Fabc%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F644%5C%2FC%22%2C%22id%22%3A%22644C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF644C%22%2C%22title%22%3A%22Hostname%20Aliases%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Hostname%20Aliases%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Hostname Aliases</h1>
+<h2>题目描述</h2>
+<div>There are some websites that are accessible through several different addresses. For example, for a long time Codeforces was accessible with two hostnames codeforces.com and codeforces.ru.
+You are given a list of page addresses being queried. For simplicity we consider all addresses to have the form http://<hostname>\[/<path>\], where:
+- <hostname> — server name (consists of words and maybe some dots separating them),
+- /<path> — optional part, where <path> consists of words separated by slashes.
+We consider two <hostname> to correspond to one website if for each query to the first <hostname> there will be exactly the same query to the second one and vice versa — for each query to the second <hostname> there will be the same query to the first one. Take a look at the samples for further clarifications.
+Your goal is to determine the groups of server names that correspond to one website. Ignore groups consisting of the only server name.
+Please note, that according to the above definition queries http://<hostname> and http://<hostname>/ are different.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ n $ ( $ 1<=n<=100000 $ ) — the number of page queries. Then follow $ n $ lines each containing exactly one address. Each address is of the form http://<hostname>\[/<path>\], where:
+- <hostname> consists of lowercase English letters and dots, there are no two consecutive dots, <hostname> doesn't start or finish with a dot. The length of <hostname> is positive and doesn't exceed $ 20 $ .
+- <path> consists of lowercase English letters, dots and slashes. There are no two consecutive slashes, <path> doesn't start with a slash and its length doesn't exceed $ 20 $ .
+Addresses are not guaranteed to be distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>First print $ k $ — the number of groups of server names that correspond to one website. You should count only groups of size greater than one.
+Next $ k $ lines should contain the description of groups, one group per line. For each group print all server names separated by a single space. You are allowed to print both groups and names inside any group in arbitrary order.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10
+http://abacaba.ru/test
+http://abacaba.ru/
+http://abacaba.com
+http://abacaba.com/test
+http://abacaba.de/
+http://abacaba.ru/test
+http://abacaba.de/test
+http://abacaba.com/
+http://abacaba.com/t
+http://abacaba.com/test
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+http://abacaba.de http://abacaba.ru 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>14
+http://c
+http://ccc.bbbb/aba..b
+http://cba.com
+http://a.c/aba..b/a
+http://abc/
+http://a.c/
+http://ccc.bbbb
+http://ab.ac.bc.aa/
+http://a.a.a/
+http://ccc.bbbb/
+http://cba.com/
+http://cba.com/aba..b
+http://a.a.a/aba..b/a
+http://abc/aba..b/a
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+http://cba.com http://ccc.bbbb 
+http://a.a.a http://a.c http://abc 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

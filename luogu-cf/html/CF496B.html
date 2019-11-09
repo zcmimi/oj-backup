@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Secret Combination - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394740:P99QAaok1JnrxOJ1VLhx+UPAfVlkzxx9sHZLNn2wRnE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20got%20a%20box%20with%20a%20combination%20lock.%20The%20lock%20has%20a%20display%20showing%20%24%20n%20%24%20digits.%20There%20are%20two%20buttons%20on%20the%20box%2C%20each%20button%20changes%20digits%20on%20the%20display.%20You%20have%20quickly%20discovered%20that%20the%20first%20button%20adds%201%20to%20all%20the%20digits%20%28all%20digits%209%20become%20digits%200%29%2C%20and%20the%20second%20button%20shifts%20all%20the%20digits%20on%20the%20display%20one%20position%20to%20the%20right%20%28the%20last%20digit%20becomes%20the%20first%20one%29.%20For%20example%2C%20if%20the%20display%20is%20currently%20showing%20number%20579%2C%20then%20if%20we%20push%20the%20first%20button%2C%20the%20display%20will%20show%20680%2C%20and%20if%20after%20that%20we%20push%20the%20second%20button%2C%20the%20display%20will%20show%20068.%5Cn%5CnYou%20know%20that%20the%20lock%20will%20open%20if%20the%20display%20is%20showing%20the%20smallest%20possible%20number%20that%20can%20be%20obtained%20by%20pushing%20the%20buttons%20in%20some%20order.%20The%20leading%20zeros%20are%20ignored%20while%20comparing%20numbers.%20Now%20your%20task%20is%20to%20find%20the%20desired%20number.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20digits%20on%20the%20display.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20digits%20%5Cu2014%20the%20initial%20state%20of%20the%20display.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20line%20containing%20%24%20n%20%24%20digits%20%5Cu2014%20the%20desired%20state%20of%20the%20display%20containing%20the%20smallest%20possible%20number.%22%2C%22samples%22%3A%5B%5B%223%5Cn579%5Cn%22%2C%22024%5Cn%22%5D%2C%5B%224%5Cn2014%5Cn%22%2C%220142%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F496%5C%2FB%22%2C%22id%22%3A%22496B%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20n%20%5Cu7684%5Cu53ea%5Cu542b%5Cu6570%5Cu5b57%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu73b0%5Cu5728%5Cu53ef%5Cu4ee5%5Cu6709%5Cu4e24%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cr%5Cn-%201.%5Cu5c06%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6240%5Cu6709%5Cu5b57%5Cu7b26%5Cu53f3%5Cu79fb%5Cu4e00%5Cu4f4d%5Cuff08%5Cu6700%5Cu540e%5Cu4e00%5Cu4f4d%5Cu53d8%5Cu6210%5Cu7b2c%5Cu4e00%5Cu4f4d%5Cuff09%5Cuff1b%5Cr%5Cn-%202.%5Cu5c06%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6240%5Cu6709%5Cu5b57%5Cu7b26%5Cu52a0%5Cu4e00%5Cuff08%279%27%20%5Cu53d8%5Cu6210%20%271%27%5Cuff09%5Cu3002%5Cr%5Cn--------%5Cr%5Cn%5Cu6c42%5Cu901a%5Cu8fc7%5Cu8fd9%5Cu6837%5Cu7684%5Cu64cd%5Cu4f5c%5Cuff08%5Cu6b21%5Cu6570%5Cu4e0d%5Cu9650%5Cuff09%5Cu5f97%5Cu5230%5Cu7684%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu662f%5Cu4ec0%5Cu4e48%5Cuff1f%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A11%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF496B%22%2C%22title%22%3A%22Secret%20Combination%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Secret%20Combination%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Secret Combination</h1>
+<h2>题意翻译</h2>
+<div>给定一个长度为 n 的只含数字的字符串，现在可以有两个操作：
+- 1.将字符串所有字符右移一位（最后一位变成第一位）；
+- 2.将字符串所有字符加一（'9' 变成 '1'）。
+--------
+求通过这样的操作（次数不限）得到的字典序最小的字符串是什么？</div>
+<h2>题目描述</h2>
+<div>You got a box with a combination lock. The lock has a display showing $ n $ digits. There are two buttons on the box, each button changes digits on the display. You have quickly discovered that the first button adds 1 to all the digits (all digits 9 become digits 0), and the second button shifts all the digits on the display one position to the right (the last digit becomes the first one). For example, if the display is currently showing number 579, then if we push the first button, the display will show 680, and if after that we push the second button, the display will show 068.
+You know that the lock will open if the display is showing the smallest possible number that can be obtained by pushing the buttons in some order. The leading zeros are ignored while comparing numbers. Now your task is to find the desired number.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1<=n<=1000 $ ) — the number of digits on the display.
+The second line contains $ n $ digits — the initial state of the display.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single line containing $ n $ digits — the desired state of the display containing the smallest possible number.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+579
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>024
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+2014
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0142
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

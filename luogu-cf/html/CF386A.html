@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Second-Price Auction - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393540:ABIaw/92OQVJRzKeN1LIsATNyVy2auKQzMf1DpE6GcY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20this%20problem%20we%20consider%20a%20special%20type%20of%20an%20auction%2C%20which%20is%20called%20the%20second-price%20auction.%20As%20in%20regular%20auction%20%24%20n%20%24%20bidders%20place%20a%20bid%20which%20is%20price%20a%20bidder%20ready%20to%20pay.%20The%20auction%20is%20closed%2C%20that%20is%2C%20each%20bidder%20secretly%20informs%20the%20organizer%20of%20the%20auction%20price%20he%20is%20willing%20to%20pay.%20After%20that%2C%20the%20auction%20winner%20is%20the%20participant%20who%20offered%20the%20highest%20price.%20However%2C%20he%20pay%20not%20the%20price%20he%20offers%2C%20but%20the%20highest%20price%20among%20the%20offers%20of%20other%20participants%20%28hence%20the%20name%3A%20the%20second-price%20auction%29.%5Cn%5CnWrite%20a%20program%20that%20reads%20prices%20offered%20by%20bidders%20and%20finds%20the%20winner%20and%20the%20price%20he%20will%20pay.%20Consider%20that%20all%20of%20the%20offered%20prices%20are%20different.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D1000%20%24%20%29%20%5Cu2014%20number%20of%20bidders.%20The%20second%20line%20contains%20%24%20n%20%24%20distinct%20integer%20numbers%20%24%20p_%7B1%7D%2Cp_%7B2%7D%2C...%5C%5C%20p_%7Bn%7D%20%24%20%2C%20separated%20by%20single%20spaces%20%28%20%24%201%3C%3Dp_%7Bi%7D%3C%3D10000%20%24%20%29%2C%20where%20%24%20p_%7Bi%7D%20%24%20stands%20for%20the%20price%20offered%20by%20the%20%24%20i%20%24%20-th%20bidder.%22%2C%22outputFormat%22%3A%22The%20single%20output%20line%20should%20contain%20two%20integers%3A%20index%20of%20the%20winner%20and%20the%20price%20he%20will%20pay.%20Indices%20are%201-based.%22%2C%22samples%22%3A%5B%5B%222%5Cn5%207%5Cn%22%2C%222%205%5Cn%22%5D%2C%5B%223%5Cn10%202%208%5Cn%22%2C%221%208%5Cn%22%5D%2C%5B%226%5Cn3%208%202%209%204%2014%5Cn%22%2C%226%209%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F386%5C%2FA%22%2C%22id%22%3A%22386A%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60n%5Cu4e2a%5Cu6570%5Cuff0c%5Cu6c42%5Cu51fa%5Cu5176%5Cu4e2d%5Cu6700%5Cu5927%5Cu503c%5Cu7684%5Cu7f16%5Cu53f7%5Cu548c%5Cu7b2c%5Cu4e8c%5Cu5927%5Cu7684%5Cu503c%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6570n%3B%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu8f93%5Cu5165n%5Cu4e2a%5Cu6574%5Cu6570%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cuff1a%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu5176%5Cu4e2d%5Cu6700%5Cu5927%5Cu503c%5Cu7684%5Cu7f16%5Cu53f7%5Cu548c%5Cu7b2c%5Cu4e8c%5Cu5927%5Cu7684%5Cu503c%5Cuff0c%5Cu4e2d%5Cu95f4%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cn%5Cn%5Cu611f%5Cu8c22%40zhangyanbo%5Cu2650%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B113%2C114%2C266%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A426%2C%22totalAccepted%22%3A258%2C%22pid%22%3A%22CF386A%22%2C%22title%22%3A%22Second-Price%20Auction%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A60647%2C%22title%22%3A%22%5Cu5b8c%5Cu6574%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11091%2C%22name%22%3A%22CF386A%20Second-Price%20Auction%22%2C%22slug%22%3A%22CF386A%22%7D%7D%2C%7B%22id%22%3A60644%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1~~%5Cu9690%5Cu85cf%5Cu9884%5Cu5b9a~~%22%2C%22forum%22%3A%7B%22id%22%3A11091%2C%22name%22%3A%22CF386A%20Second-Price%20Auction%22%2C%22slug%22%3A%22CF386A%22%7D%7D%2C%7B%22id%22%3A60633%2C%22title%22%3A%22%5Cu6076%5Cu610f%5Cu8bc4%5Cu5206%5Cu73b0%5Cu573a%22%2C%22forum%22%3A%7B%22id%22%3A11091%2C%22name%22%3A%22CF386A%20Second-Price%20Auction%22%2C%22slug%22%3A%22CF386A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1004%22%2C%22title%22%3A%22%5Cu65b9%5Cu683c%5Cu53d6%5Cu6570%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2014%22%2C%22title%22%3A%22%5Cu9009%5Cu8bfe%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF656A%22%2C%22title%22%3A%22Da%20Vinci%20Powers%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF290B%22%2C%22title%22%3A%22QR%20code%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4484%22%2C%22title%22%3A%22%5BBJWC2018%5D%5Cu6700%5Cu957f%5Cu4e0a%5Cu5347%5Cu5b50%5Cu5e8f%5Cu5217%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Second-Price%20Auction%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Second-Price Auction</h1>
+<h2>题意翻译</h2>
+<div>给你n个数，求出其中最大值的编号和第二大的值。
+输入：
+第一行，输入一个数n;
+接下来输入n个整数。
+输出：
+输出其中最大值的编号和第二大的值，中间用空格隔开
+感谢@zhangyanbo♐ 提供的翻译</div>
+<h2>题目描述</h2>
+<div>In this problem we consider a special type of an auction, which is called the second-price auction. As in regular auction $ n $ bidders place a bid which is price a bidder ready to pay. The auction is closed, that is, each bidder secretly informs the organizer of the auction price he is willing to pay. After that, the auction winner is the participant who offered the highest price. However, he pay not the price he offers, but the highest price among the offers of other participants (hence the name: the second-price auction).
+Write a program that reads prices offered by bidders and finds the winner and the price he will pay. Consider that all of the offered prices are different.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains $ n $ ( $ 2<=n<=1000 $ ) — number of bidders. The second line contains $ n $ distinct integer numbers $ p_{1},p_{2},...\ p_{n} $ , separated by single spaces ( $ 1<=p_{i}<=10000 $ ), where $ p_{i} $ stands for the price offered by the $ i $ -th bidder.</div>
+<h3>输出格式</h3>
+<br />
+<div>The single output line should contain two integers: index of the winner and the price he will pay. Indices are 1-based.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+5 7
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 5
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+10 2 8
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1 8
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>6
+3 8 2 9 4 14
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>6 9
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

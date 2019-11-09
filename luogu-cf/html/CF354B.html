@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Game with Strings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393148:Fx6wqkpoEk3jxKt/L0FZ2kNef9tF4qR+EajdqwUz1mk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Given%20an%20%24%20n%5Cu00d7n%20%24%20table%20%24%20T%20%24%20consisting%20of%20lowercase%20English%20letters.%20We%27ll%20consider%20some%20string%20%24%20s%20%24%20good%20if%20the%20table%20contains%20a%20correct%20path%20corresponding%20to%20the%20given%20string.%20In%20other%20words%2C%20good%20strings%20are%20all%20strings%20we%20can%20obtain%20by%20moving%20from%20the%20left%20upper%20cell%20of%20the%20table%20only%20to%20the%20right%20and%20down.%20Here%27s%20the%20formal%20definition%20of%20correct%20paths%3A%5Cn%5CnConsider%20rows%20of%20the%20table%20are%20numbered%20from%201%20to%20%24%20n%20%24%20from%20top%20to%20bottom%2C%20and%20columns%20of%20the%20table%20are%20numbered%20from%201%20to%20%24%20n%20%24%20from%20left%20to%20the%20right.%20Cell%20%24%20%28r%2Cc%29%20%24%20is%20a%20cell%20of%20table%20%24%20T%20%24%20on%20the%20%24%20r%20%24%20-th%20row%20and%20in%20the%20%24%20c%20%24%20-th%20column.%20This%20cell%20corresponds%20to%20letter%20%24%20T_%7Br%2Cc%7D%20%24%20.%5Cn%5CnA%20path%20of%20length%20%24%20k%20%24%20is%20a%20sequence%20of%20table%20cells%20%24%20%5B%28r_%7B1%7D%2Cc_%7B1%7D%29%2C%28r_%7B2%7D%2Cc_%7B2%7D%29%2C...%2C%28r_%7Bk%7D%2Cc_%7Bk%7D%29%5D%20%24%20.%20The%20following%20paths%20are%20correct%3A%5Cn%5Cn1.%20There%20is%20only%20one%20correct%20path%20of%20length%20%24%201%20%24%20%2C%20that%20is%2C%20consisting%20of%20a%20single%20cell%3A%20%24%20%5B%281%2C1%29%5D%20%24%20%3B%5Cn2.%20Let%27s%20assume%20that%20%24%20%5B%28r_%7B1%7D%2Cc_%7B1%7D%29%2C...%2C%28r_%7Bm%7D%2Cc_%7Bm%7D%29%5D%20%24%20is%20a%20correct%20path%20of%20length%20%24%20m%20%24%20%2C%20then%20paths%20%24%20%5B%28r_%7B1%7D%2Cc_%7B1%7D%29%2C...%2C%28r_%7Bm%7D%2Cc_%7Bm%7D%29%2C%28r_%7Bm%7D%2B1%2Cc_%7Bm%7D%29%5D%20%24%20and%20%24%20%5B%28r_%7B1%7D%2Cc_%7B1%7D%29%2C...%2C%28r_%7Bm%7D%2Cc_%7Bm%7D%29%2C%28r_%7Bm%7D%2Cc_%7Bm%7D%2B1%29%5D%20%24%20are%20correct%20paths%20of%20length%20%24%20m%2B1%20%24%20.%5Cn%5CnWe%20should%20assume%20that%20a%20path%20%24%20%5B%28r_%7B1%7D%2Cc_%7B1%7D%29%2C%28r_%7B2%7D%2Cc_%7B2%7D%29%2C...%2C%28r_%7Bk%7D%2Cc_%7Bk%7D%29%5D%20%24%20corresponds%20to%20a%20string%20of%20length%20%24%20k%20%24%20%3A%20%24%20T_%7Br1%7D%2Cc_%7B1%7D%2BT_%7Br2%7D%2Cc_%7B2%7D%2B...%2BT_%7Brk%7D%2Cc_%7Bk%7D%20%24%20.%5Cn%5CnTwo%20players%20play%20the%20following%20game%3A%20initially%20they%20have%20an%20empty%20string.%20Then%20the%20players%20take%20turns%20to%20add%20a%20letter%20to%20the%20end%20of%20the%20string.%20After%20each%20move%20%28adding%20a%20new%20letter%29%20the%20resulting%20string%20must%20be%20good.%20The%20game%20ends%20after%20%24%202n-1%20%24%20turns.%20A%20player%20wins%20by%20the%20following%20scenario%3A%5Cn%5Cn1.%20If%20the%20resulting%20string%20has%20strictly%20more%20letters%20%5C%22a%5C%22%20than%20letters%20%5C%22b%5C%22%2C%20then%20the%20first%20player%20wins%3B%5Cn2.%20If%20the%20resulting%20string%20has%20strictly%20more%20letters%20%5C%22b%5C%22%20than%20letters%20%5C%22a%5C%22%2C%20then%20the%20second%20player%20wins%3B%5Cn3.%20If%20the%20resulting%20string%20has%20the%20same%20number%20of%20letters%20%5C%22a%5C%22%20and%20%5C%22b%5C%22%2C%20then%20the%20players%20end%20the%20game%20with%20a%20draw.%5Cn%5CnYour%20task%20is%20to%20determine%20the%20result%20of%20the%20game%20provided%20that%20both%20players%20played%20optimally%20well.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20number%20%24%20n%20%24%20%24%20%281%3C%3Dn%3C%3D20%29%20%24%20.%5Cn%5CnNext%20%24%20n%20%24%20lines%20contain%20%24%20n%20%24%20lowercase%20English%20letters%20each%20%5Cu2014%20table%20%24%20T%20%24%20.%22%2C%22outputFormat%22%3A%22In%20a%20single%20line%20print%20string%20%5C%22FIRST%5C%22%2C%20if%20the%20first%20player%20wins%2C%20%5C%22SECOND%5C%22%2C%20if%20the%20second%20player%20wins%20and%20%5C%22DRAW%5C%22%2C%20if%20the%20game%20ends%20with%20a%20draw.%22%2C%22samples%22%3A%5B%5B%222%5Cnab%5Cncd%5Cn%22%2C%22DRAW%5Cn%22%5D%2C%5B%222%5Cnxa%5Cnay%5Cn%22%2C%22FIRST%5Cn%22%5D%2C%5B%223%5Cnaab%5Cnbcb%5Cnbac%5Cn%22%2C%22DRAW%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20sample%3A%5Cn%5CnGood%20strings%20are%20strings%3A%20a%2C%20ab%2C%20ac%2C%20abd%2C%20acd.%5Cn%5CnThe%20first%20player%20moves%20first%20and%20adds%20letter%20a%20to%20the%20string%2C%20as%20there%20is%20only%20one%20good%20string%20of%20length%20%24%201%20%24%20.%20Then%20the%20second%20player%20can%20add%20b%20or%20c%20and%20the%20game%20will%20end%20with%20strings%20abd%20or%20acd%2C%20correspondingly.%20In%20the%20first%20case%20it%20will%20be%20a%20draw%20%28the%20string%20has%20one%20a%20and%20one%20b%29%2C%20in%20the%20second%20case%20the%20first%20player%20wins.%20Naturally%2C%20in%20this%20case%20the%20second%20player%20prefers%20to%20choose%20letter%20b%20and%20end%20the%20game%20with%20a%20draw.%5Cn%5CnConsider%20the%20second%20sample%3A%5Cn%5CnGood%20strings%20are%3A%20x%2C%20xa%2C%20xay.%5Cn%5CnWe%20can%20see%20that%20the%20game%20will%20end%20with%20string%20xay%20and%20the%20first%20player%20wins.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F354%5C%2FB%22%2C%22id%22%3A%22354B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A3%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF354B%22%2C%22title%22%3A%22Game%20with%20Strings%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Game%20with%20Strings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Game with Strings</h1>
+<h2>题目描述</h2>
+<div>Given an $ n×n $ table $ T $ consisting of lowercase English letters. We'll consider some string $ s $ good if the table contains a correct path corresponding to the given string. In other words, good strings are all strings we can obtain by moving from the left upper cell of the table only to the right and down. Here's the formal definition of correct paths:
+Consider rows of the table are numbered from 1 to $ n $ from top to bottom, and columns of the table are numbered from 1 to $ n $ from left to the right. Cell $ (r,c) $ is a cell of table $ T $ on the $ r $ -th row and in the $ c $ -th column. This cell corresponds to letter $ T_{r,c} $ .
+A path of length $ k $ is a sequence of table cells $ [(r_{1},c_{1}),(r_{2},c_{2}),...,(r_{k},c_{k})] $ . The following paths are correct:
+1. There is only one correct path of length $ 1 $ , that is, consisting of a single cell: $ [(1,1)] $ ;
+2. Let's assume that $ [(r_{1},c_{1}),...,(r_{m},c_{m})] $ is a correct path of length $ m $ , then paths $ [(r_{1},c_{1}),...,(r_{m},c_{m}),(r_{m}+1,c_{m})] $ and $ [(r_{1},c_{1}),...,(r_{m},c_{m}),(r_{m},c_{m}+1)] $ are correct paths of length $ m+1 $ .
+We should assume that a path $ [(r_{1},c_{1}),(r_{2},c_{2}),...,(r_{k},c_{k})] $ corresponds to a string of length $ k $ : $ T_{r1},c_{1}+T_{r2},c_{2}+...+T_{rk},c_{k} $ .
+Two players play the following game: initially they have an empty string. Then the players take turns to add a letter to the end of the string. After each move (adding a new letter) the resulting string must be good. The game ends after $ 2n-1 $ turns. A player wins by the following scenario:
+1. If the resulting string has strictly more letters "a" than letters "b", then the first player wins;
+2. If the resulting string has strictly more letters "b" than letters "a", then the second player wins;
+3. If the resulting string has the same number of letters "a" and "b", then the players end the game with a draw.
+Your task is to determine the result of the game provided that both players played optimally well.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single number $ n $ $ (1<=n<=20) $ .
+Next $ n $ lines contain $ n $ lowercase English letters each — table $ T $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>In a single line print string "FIRST", if the first player wins, "SECOND", if the second player wins and "DRAW", if the game ends with a draw.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+ab
+cd
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>DRAW
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+xa
+ay
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>FIRST
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+aab
+bcb
+bac
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>DRAW
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first sample:
+Good strings are strings: a, ab, ac, abd, acd.
+The first player moves first and adds letter a to the string, as there is only one good string of length $ 1 $ . Then the second player can add b or c and the game will end with strings abd or acd, correspondingly. In the first case it will be a draw (the string has one a and one b), in the second case the first player wins. Naturally, in this case the second player prefers to choose letter b and end the game with a draw.
+Consider the second sample:
+Good strings are: x, xa, xay.
+We can see that the game will end with string xay and the first player wins.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

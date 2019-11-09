@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>CNF 2 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395499:efHVkyPGDXcD4tkSlIrZ3wEnpO+pHC1OZgIaUiDUqfs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%27In%20Boolean%20logic%2C%20a%20formula%20is%20in%20conjunctive%20normal%20form%20%28CNF%29%20or%20clausal%20normal%20form%20if%20it%20is%20a%20conjunction%20of%20clauses%2C%20where%20a%20clause%20is%20a%20disjunction%20of%20literals%27%20%28cited%20from%20https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FConjunctive%5C%5C_normal%5C%5C_form%29%5Cn%5CnIn%20the%20other%20words%2C%20CNF%20is%20a%20formula%20of%20type%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF571C%5C%2Fda94d4e24134d35cc07e6645e48c609e19333457.png%29%2C%20where%20%24%20%26amp%3B%20%24%20represents%20a%20logical%20%5C%22AND%5C%22%20%28conjunction%29%2C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF571C%5C%2F228ea8924d84782194ed9458038dbd5525d21a6e.png%29%20represents%20a%20logical%20%5C%22OR%5C%22%20%28disjunction%29%2C%20and%20%24%20v_%7Bij%7D%20%24%20are%20some%20boolean%20variables%20or%20their%20negations.%20Each%20statement%20in%20brackets%20is%20called%20a%20clause%2C%20and%20%24%20v_%7Bij%7D%20%24%20are%20called%20literals.%5Cn%5CnYou%20are%20given%20a%20CNF%20containing%20variables%20%24%20x_%7B1%7D%2C...%2Cx_%7Bm%7D%20%24%20and%20their%20negations.%20We%20know%20that%20each%20variable%20occurs%20in%20at%20most%20two%20clauses%20%28with%20negation%20and%20without%20negation%20in%20total%29.%20Your%20task%20is%20to%20determine%20whether%20this%20CNF%20is%20satisfiable%2C%20that%20is%2C%20whether%20there%20are%20such%20values%20of%20variables%20where%20the%20CNF%20value%20is%20true.%20If%20CNF%20is%20satisfiable%2C%20then%20you%20also%20need%20to%20determine%20the%20values%20of%20the%20variables%20at%20which%20the%20CNF%20is%20true.%5Cn%5CnIt%20is%20guaranteed%20that%20each%20variable%20occurs%20at%20most%20once%20in%20each%20clause.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20clauses%20and%20the%20number%20variables%2C%20correspondingly.%5Cn%5CnNext%20%24%20n%20%24%20lines%20contain%20the%20descriptions%20of%20each%20clause.%20The%20%24%20i%20%24%20-th%20line%20first%20contains%20first%20number%20%24%20k_%7Bi%7D%20%24%20%28%20%24%20k_%7Bi%7D%3E%3D1%20%24%20%29%20%5Cu2014%20the%20number%20of%20literals%20in%20the%20%24%20i%20%24%20-th%20clauses.%20Then%20follow%20space-separated%20literals%20%24%20v_%7Bij%7D%20%24%20%28%20%24%201%3C%3D%7Cv_%7Bij%7D%7C%3C%3Dm%20%24%20%29.%20A%20literal%20that%20corresponds%20to%20%24%20v_%7Bij%7D%20%24%20is%20%24%20x_%7B%7Cvij%7D%7C%20%24%20either%20with%20negation%2C%20if%20%24%20v_%7Bij%7D%20%24%20is%20negative%2C%20or%20without%20negation%20otherwise.%22%2C%22outputFormat%22%3A%22If%20CNF%20is%20not%20satisfiable%2C%20print%20a%20single%20line%20%5C%22NO%5C%22%20%28without%20the%20quotes%29%2C%20otherwise%20print%20two%20strings%3A%20string%20%5C%22YES%5C%22%20%28without%20the%20quotes%29%2C%20and%20then%20a%20string%20of%20%24%20m%20%24%20numbers%20zero%20or%20one%20%5Cu2014%20the%20values%20of%20variables%20in%20satisfying%20assignment%20in%20the%20order%20from%20%24%20x_%7B1%7D%20%24%20to%20%24%20x_%7Bm%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%222%202%5Cn2%201%20-2%5Cn2%202%20-1%5Cn%22%2C%22YES%5Cn11%5Cn%22%5D%2C%5B%224%203%5Cn1%201%5Cn1%202%5Cn3%20-1%20-2%203%5Cn1%20-3%5Cn%22%2C%22NO%5Cn%22%5D%2C%5B%225%206%5Cn2%201%202%5Cn3%201%20-2%203%5Cn4%20-3%205%204%206%5Cn2%20-6%20-4%5Cn1%205%5Cn%22%2C%22YES%5Cn100010%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20test%20formula%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF571C%5C%2F8119494d9d2819ab3160ce2ee0cb9169df45a4da.png%29.%20One%20of%20possible%20answer%20is%20%24%20x_%7B1%7D%3DTRUE%2Cx_%7B2%7D%3DTRUE%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F571%5C%2FC%22%2C%22id%22%3A%22571C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF571C%22%2C%22title%22%3A%22CNF%202%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22CNF%202%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>CNF 2</h1>
+<h2>题目描述</h2>
+<div>'In Boolean logic, a formula is in conjunctive normal form (CNF) or clausal normal form if it is a conjunction of clauses, where a clause is a disjunction of literals' (cited from https://en.wikipedia.org/wiki/Conjunctive\_normal\_form)
+In the other words, CNF is a formula of type ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF571C/da94d4e24134d35cc07e6645e48c609e19333457.png), where $ &amp; $ represents a logical "AND" (conjunction), ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF571C/228ea8924d84782194ed9458038dbd5525d21a6e.png) represents a logical "OR" (disjunction), and $ v_{ij} $ are some boolean variables or their negations. Each statement in brackets is called a clause, and $ v_{ij} $ are called literals.
+You are given a CNF containing variables $ x_{1},...,x_{m} $ and their negations. We know that each variable occurs in at most two clauses (with negation and without negation in total). Your task is to determine whether this CNF is satisfiable, that is, whether there are such values of variables where the CNF value is true. If CNF is satisfiable, then you also need to determine the values of the variables at which the CNF is true.
+It is guaranteed that each variable occurs at most once in each clause.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integers $ n $ and $ m $ ( $ 1<=n,m<=2·10^{5} $ ) — the number of clauses and the number variables, correspondingly.
+Next $ n $ lines contain the descriptions of each clause. The $ i $ -th line first contains first number $ k_{i} $ ( $ k_{i}>=1 $ ) — the number of literals in the $ i $ -th clauses. Then follow space-separated literals $ v_{ij} $ ( $ 1<=|v_{ij}|<=m $ ). A literal that corresponds to $ v_{ij} $ is $ x_{|vij}| $ either with negation, if $ v_{ij} $ is negative, or without negation otherwise.</div>
+<h3>输出格式</h3>
+<br />
+<div>If CNF is not satisfiable, print a single line "NO" (without the quotes), otherwise print two strings: string "YES" (without the quotes), and then a string of $ m $ numbers zero or one — the values of variables in satisfying assignment in the order from $ x_{1} $ to $ x_{m} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 2
+2 1 -2
+2 2 -1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES
+11
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 3
+1 1
+1 2
+3 -1 -2 3
+1 -3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>NO
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 6
+2 1 2
+3 1 -2 3
+4 -3 5 4 6
+2 -6 -4
+1 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>YES
+100010
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample test formula is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF571C/8119494d9d2819ab3160ce2ee0cb9169df45a4da.png). One of possible answer is $ x_{1}=TRUE,x_{2}=TRUE $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

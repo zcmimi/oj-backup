@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Fox and Box Accumulation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393572:jw0erKu9heYn0/hY7M0mQghp3XK3Xxytz+kFLbGTKvg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Fox%20Ciel%20has%20%24%20n%20%24%20boxes%20in%20her%20room.%20They%20have%20the%20same%20size%20and%20weight%2C%20but%20they%20might%20have%20different%20strength.%20The%20%24%20i%20%24%20-th%20box%20can%20hold%20at%20most%20%24%20x_%7Bi%7D%20%24%20boxes%20on%20its%20top%20%28we%27ll%20call%20%24%20x_%7Bi%7D%20%24%20the%20strength%20of%20the%20box%29.%5Cn%5CnSince%20all%20the%20boxes%20have%20the%20same%20size%2C%20Ciel%20cannot%20put%20more%20than%20one%20box%20directly%20on%20the%20top%20of%20some%20box.%20For%20example%2C%20imagine%20Ciel%20has%20three%20boxes%3A%20the%20first%20has%20strength%202%2C%20the%20second%20has%20strength%201%20and%20the%20third%20has%20strength%201.%20She%20cannot%20put%20the%20second%20and%20the%20third%20box%20simultaneously%20directly%20on%20the%20top%20of%20the%20first%20one.%20But%20she%20can%20put%20the%20second%20box%20directly%20on%20the%20top%20of%20the%20first%20one%2C%20and%20then%20the%20third%20box%20directly%20on%20the%20top%20of%20the%20second%20one.%20We%20will%20call%20such%20a%20construction%20of%20boxes%20a%20pile.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF388A%5C%2F6d2633af40be72721ab147bac34f10adae362d79.png%29Fox%20Ciel%20wants%20to%20construct%20piles%20from%20all%20the%20boxes.%20Each%20pile%20will%20contain%20some%20boxes%20from%20top%20to%20bottom%2C%20and%20there%20cannot%20be%20more%20than%20%24%20x_%7Bi%7D%20%24%20boxes%20on%20the%20top%20of%20%24%20i%20%24%20-th%20box.%20What%20is%20the%20minimal%20number%20of%20piles%20she%20needs%20to%20construct%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D100%20%24%20%29.%20The%20next%20line%20contains%20%24%20n%20%24%20integers%20%24%20x_%7B1%7D%2Cx_%7B2%7D%2C...%2Cx_%7Bn%7D%20%24%20%28%20%24%200%3C%3Dx_%7Bi%7D%3C%3D100%20%24%20%29.%22%2C%22outputFormat%22%3A%22Output%20a%20single%20integer%20%5Cu2014%20the%20minimal%20possible%20number%20of%20piles.%22%2C%22samples%22%3A%5B%5B%223%5Cn0%200%2010%5Cn%22%2C%222%5Cn%22%5D%2C%5B%225%5Cn0%201%202%203%204%5Cn%22%2C%221%5Cn%22%5D%2C%5B%224%5Cn0%200%200%200%5Cn%22%2C%224%5Cn%22%5D%2C%5B%229%5Cn0%201%200%202%200%201%201%202%2010%5Cn%22%2C%223%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20example%201%2C%20one%20optimal%20way%20is%20to%20build%202%20piles%3A%20the%20first%20pile%20contains%20boxes%201%20and%203%20%28from%20top%20to%20bottom%29%2C%20the%20second%20pile%20contains%20only%20box%202.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF388A%5C%2F8da8ac854632528901b4b6d1d556d9ee8e51a35b.png%29In%20example%202%2C%20we%20can%20build%20only%201%20pile%20that%20contains%20boxes%201%2C%202%2C%203%2C%204%2C%205%20%28from%20top%20to%20bottom%29.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF388A%5C%2Fc58e3e4af77310d72ce6f918487297f03a91630c.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F388%5C%2FA%22%2C%22id%22%3A%22388A%22%7D%2C%22translation%22%3A%22%5Cu6709%24n%281%3C%3Dn%3C%3D100%29%24%20%5Cu4e2a%5Cu7bb1%5Cu5b50%2C%20%5Cu6bcf%5Cu4e2a%5Cu7bb1%5Cu5b50%5Cu6709%5Cu4e00%5Cu4e2a%5Cu529b%5Cu91cf%5Cu503c%24X_i%280%3C%3DX_i%3C%3D100%29%24%20%2C%20%5Cu8868%5Cu793a%5Cu8fd9%5Cu4e2a%5Cu7bb1%5Cu5b50%5Cu53ef%5Cu4ee5%5Cu652f%5Cu6491%24X_i%24%20%5Cu4e2a%5Cu7bb1%5Cu5b50%2C%20%5Cu6c42%5Cu8fd9%5Cu4e9b%5Cu7bb1%5Cu5b50%5Cu6700%5Cu5c11%5Cu53ef%5Cu4ee5%5Cu6446%5Cu6210%5Cu591a%5Cu5c11%5Cu5806.%5Cn%5Cn%5Cu611f%5Cu8c22%40%5Cu51cc%5Cu5e7d%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A38%2C%22totalAccepted%22%3A14%2C%22pid%22%3A%22CF388A%22%2C%22title%22%3A%22Fox%20and%20Box%20Accumulation%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A35594%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A11082%2C%22name%22%3A%22CF388A%20Fox%20and%20Box%20Accumulation%22%2C%22slug%22%3A%22CF388A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Fox%20and%20Box%20Accumulation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Fox and Box Accumulation</h1>
+<h2>题意翻译</h2>
+<div>有$n(1<=n<=100)$ 个箱子, 每个箱子有一个力量值$X_i(0<=X_i<=100)$ , 表示这个箱子可以支撑$X_i$ 个箱子, 求这些箱子最少可以摆成多少堆.
+感谢@凌幽 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Fox Ciel has $ n $ boxes in her room. They have the same size and weight, but they might have different strength. The $ i $ -th box can hold at most $ x_{i} $ boxes on its top (we'll call $ x_{i} $ the strength of the box).
+Since all the boxes have the same size, Ciel cannot put more than one box directly on the top of some box. For example, imagine Ciel has three boxes: the first has strength 2, the second has strength 1 and the third has strength 1. She cannot put the second and the third box simultaneously directly on the top of the first one. But she can put the second box directly on the top of the first one, and then the third box directly on the top of the second one. We will call such a construction of boxes a pile.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF388A/6d2633af40be72721ab147bac34f10adae362d79.png)Fox Ciel wants to construct piles from all the boxes. Each pile will contain some boxes from top to bottom, and there cannot be more than $ x_{i} $ boxes on the top of $ i $ -th box. What is the minimal number of piles she needs to construct?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $ n $ ( $ 1<=n<=100 $ ). The next line contains $ n $ integers $ x_{1},x_{2},...,x_{n} $ ( $ 0<=x_{i}<=100 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Output a single integer — the minimal possible number of piles.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+0 0 10
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+0 1 2 3 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+0 0 0 0
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>9
+0 1 0 2 0 1 1 2 10
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>3
+</code></pre>
+<h2>说明</h2>
+<div>In example 1, one optimal way is to build 2 piles: the first pile contains boxes 1 and 3 (from top to bottom), the second pile contains only box 2.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF388A/8da8ac854632528901b4b6d1d556d9ee8e51a35b.png)In example 2, we can build only 1 pile that contains boxes 1, 2, 3, 4, 5 (from top to bottom).
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF388A/c58e3e4af77310d72ce6f918487297f03a91630c.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

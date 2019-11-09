@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Haar Features - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395321:pJ/GAzpClgUCNnpdZjhMPnMRHLK10vP76YvudE8hSlE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20first%20algorithm%20for%20detecting%20a%20face%20on%20the%20image%20working%20in%20realtime%20was%20developed%20by%20Paul%20Viola%20and%20Michael%20Jones%20in%202001.%20A%20part%20of%20the%20algorithm%20is%20a%20procedure%20that%20computes%20Haar%20features.%20As%20part%20of%20this%20task%2C%20we%20consider%20a%20simplified%20model%20of%20this%20concept.%5Cn%5CnLet%27s%20consider%20a%20rectangular%20image%20that%20is%20represented%20with%20a%20table%20of%20size%20%24%20n%5Cu00d7m%20%24%20.%20The%20table%20elements%20are%20integers%20that%20specify%20the%20brightness%20of%20each%20pixel%20in%20the%20image.%5Cn%5CnA%20feature%20also%20is%20a%20rectangular%20table%20of%20size%20%24%20n%5Cu00d7m%20%24%20.%20Each%20cell%20of%20a%20feature%20is%20painted%20black%20or%20white.%5Cn%5CnTo%20calculate%20the%20value%20of%20the%20given%20feature%20at%20the%20given%20image%2C%20you%20must%20perform%20the%20following%20steps.%20First%20the%20table%20of%20the%20feature%20is%20put%20over%20the%20table%20of%20the%20image%20%28without%20rotations%20or%20reflections%29%2C%20thus%20each%20pixel%20is%20entirely%20covered%20with%20either%20black%20or%20white%20cell.%20The%20value%20of%20a%20feature%20in%20the%20image%20is%20the%20value%20of%20%24%20W-B%20%24%20%2C%20where%20%24%20W%20%24%20is%20the%20total%20brightness%20of%20the%20pixels%20in%20the%20image%2C%20covered%20with%20white%20feature%20cells%2C%20and%20%24%20B%20%24%20is%20the%20total%20brightness%20of%20the%20pixels%20covered%20with%20black%20feature%20cells.%5Cn%5CnSome%20examples%20of%20the%20most%20popular%20Haar%20features%20are%20given%20below.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF549D%5C%2F3d348e10da05febca9a35d1c282ccc79140e13d5.png%29Your%20task%20is%20to%20determine%20the%20number%20of%20operations%20that%20are%20required%20to%20calculate%20the%20feature%20by%20using%20the%20so-called%20prefix%20rectangles.%5Cn%5CnA%20prefix%20rectangle%20is%20any%20rectangle%20on%20the%20image%2C%20the%20upper%20left%20corner%20of%20which%20coincides%20with%20the%20upper%20left%20corner%20of%20the%20image.%5Cn%5CnYou%20have%20a%20variable%20%24%20value%20%24%20%2C%20whose%20value%20is%20initially%20zero.%20In%20one%20operation%20you%20can%20count%20the%20sum%20of%20pixel%20values%20%5Cu200b%5Cu200bat%20any%20prefix%20rectangle%2C%20multiply%20it%20by%20any%20integer%20and%20add%20to%20variable%20%24%20value%20%24%20.%5Cn%5CnYou%20are%20given%20a%20feature.%20It%20is%20necessary%20to%20calculate%20the%20minimum%20number%20of%20operations%20required%20to%20calculate%20the%20values%20of%20this%20attribute%20at%20an%20arbitrary%20image.%20For%20a%20better%20understanding%20of%20the%20statement%2C%20read%20the%20explanation%20of%20the%20first%20sample.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20space-separated%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D100%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20and%20columns%20in%20the%20feature.%5Cn%5CnNext%20%24%20n%20%24%20lines%20contain%20the%20description%20of%20the%20feature.%20Each%20line%20consists%20of%20%24%20m%20%24%20characters%2C%20the%20%24%20j%20%24%20-th%20character%20of%20the%20%24%20i%20%24%20-th%20line%20equals%20to%20%5C%22W%5C%22%2C%20if%20this%20element%20of%20the%20feature%20is%20white%20and%20%5C%22B%5C%22%20if%20it%20is%20black.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20number%20%5Cu2014%20the%20minimum%20number%20of%20operations%20that%20you%20need%20to%20make%20to%20calculate%20the%20value%20of%20the%20feature.%22%2C%22samples%22%3A%5B%5B%226%208%5CnBBBBBBBB%5CnBBBBBBBB%5CnBBBBBBBB%5CnWWWWWWWW%5CnWWWWWWWW%5CnWWWWWWWW%5Cn%22%2C%222%5Cn%22%5D%2C%5B%223%203%5CnWBW%5CnBWW%5CnWWW%5Cn%22%2C%224%5Cn%22%5D%2C%5B%223%206%5CnWWBBWW%5CnWWBBWW%5CnWWBBWW%5Cn%22%2C%223%5Cn%22%5D%2C%5B%224%204%5CnBBBB%5CnBBBB%5CnBBBB%5CnBBBW%5Cn%22%2C%224%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20sample%20corresponds%20to%20feature%20%24%20B%20%24%20%2C%20the%20one%20shown%20in%20the%20picture.%20The%20value%20of%20this%20feature%20in%20an%20image%20of%20size%20%24%206%5Cu00d78%20%24%20equals%20to%20the%20difference%20of%20the%20total%20brightness%20of%20the%20pixels%20in%20the%20lower%20and%20upper%20half%20of%20the%20image.%20To%20calculate%20its%20value%2C%20perform%20the%20following%20two%20operations%3A%5Cn%5Cn1.%20add%20the%20sum%20of%20pixels%20in%20the%20prefix%20rectangle%20with%20the%20lower%20right%20corner%20in%20the%20%24%206%20%24%20-th%20row%20and%20%24%208%20%24%20-th%20column%20with%20coefficient%20%24%201%20%24%20to%20the%20variable%20%24%20value%20%24%20%28the%20rectangle%20is%20indicated%20by%20a%20red%20frame%29%3B%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF549D%5C%2F2a4a67a2e1ced99b2d41037631914ffb613316f1.png%29%5Cn2.%20add%20the%20number%20of%20pixels%20in%20the%20prefix%20rectangle%20with%20the%20lower%20right%20corner%20in%20the%20%24%203%20%24%20-rd%20row%20and%20%24%208%20%24%20-th%20column%20with%20coefficient%20%24%20-2%20%24%20and%20variable%20%24%20value%20%24%20.%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF549D%5C%2Ff32eba3b14c07c0be2e93f2b2793934534ce56fc.png%29%5Cn%5CnThus%2C%20all%20the%20pixels%20in%20the%20lower%20three%20rows%20of%20the%20image%20will%20be%20included%20with%20factor%20%24%201%20%24%20%2C%20and%20all%20pixels%20in%20the%20upper%20three%20rows%20of%20the%20image%20will%20be%20included%20with%20factor%20%24%201-2%3D-1%20%24%20%2C%20as%20required.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F549%5C%2FD%22%2C%22id%22%3A%22549D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF549D%22%2C%22title%22%3A%22Haar%20Features%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Haar%20Features%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Haar Features</h1>
+<h2>题目描述</h2>
+<div>The first algorithm for detecting a face on the image working in realtime was developed by Paul Viola and Michael Jones in 2001. A part of the algorithm is a procedure that computes Haar features. As part of this task, we consider a simplified model of this concept.
+Let's consider a rectangular image that is represented with a table of size $ n×m $ . The table elements are integers that specify the brightness of each pixel in the image.
+A feature also is a rectangular table of size $ n×m $ . Each cell of a feature is painted black or white.
+To calculate the value of the given feature at the given image, you must perform the following steps. First the table of the feature is put over the table of the image (without rotations or reflections), thus each pixel is entirely covered with either black or white cell. The value of a feature in the image is the value of $ W-B $ , where $ W $ is the total brightness of the pixels in the image, covered with white feature cells, and $ B $ is the total brightness of the pixels covered with black feature cells.
+Some examples of the most popular Haar features are given below.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF549D/3d348e10da05febca9a35d1c282ccc79140e13d5.png)Your task is to determine the number of operations that are required to calculate the feature by using the so-called prefix rectangles.
+A prefix rectangle is any rectangle on the image, the upper left corner of which coincides with the upper left corner of the image.
+You have a variable $ value $ , whose value is initially zero. In one operation you can count the sum of pixel values ​​at any prefix rectangle, multiply it by any integer and add to variable $ value $ .
+You are given a feature. It is necessary to calculate the minimum number of operations required to calculate the values of this attribute at an arbitrary image. For a better understanding of the statement, read the explanation of the first sample.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two space-separated integers $ n $ and $ m $ ( $ 1<=n,m<=100 $ ) — the number of rows and columns in the feature.
+Next $ n $ lines contain the description of the feature. Each line consists of $ m $ characters, the $ j $ -th character of the $ i $ -th line equals to "W", if this element of the feature is white and "B" if it is black.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single number — the minimum number of operations that you need to make to calculate the value of the feature.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 8
+BBBBBBBB
+BBBBBBBB
+BBBBBBBB
+WWWWWWWW
+WWWWWWWW
+WWWWWWWW
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3
+WBW
+BWW
+WWW
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 6
+WWBBWW
+WWBBWW
+WWBBWW
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>4 4
+BBBB
+BBBB
+BBBB
+BBBW
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>4
+</code></pre>
+<h2>说明</h2>
+<div>The first sample corresponds to feature $ B $ , the one shown in the picture. The value of this feature in an image of size $ 6×8 $ equals to the difference of the total brightness of the pixels in the lower and upper half of the image. To calculate its value, perform the following two operations:
+1. add the sum of pixels in the prefix rectangle with the lower right corner in the $ 6 $ -th row and $ 8 $ -th column with coefficient $ 1 $ to the variable $ value $ (the rectangle is indicated by a red frame); ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF549D/2a4a67a2e1ced99b2d41037631914ffb613316f1.png)
+2. add the number of pixels in the prefix rectangle with the lower right corner in the $ 3 $ -rd row and $ 8 $ -th column with coefficient $ -2 $ and variable $ value $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF549D/f32eba3b14c07c0be2e93f2b2793934534ce56fc.png)
+Thus, all the pixels in the lower three rows of the image will be included with factor $ 1 $ , and all pixels in the upper three rows of the image will be included with factor $ 1-2=-1 $ , as required.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Strongly Connected City - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394496:xuZNLAubyMKTmWc5rsMlj5v4/HQ4eau+w9QB/8/aCmQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Imagine%20a%20city%20with%20%24%20n%20%24%20horizontal%20streets%20crossing%20%24%20m%20%24%20vertical%20streets%2C%20forming%20an%20%24%20%28n-1%29%5Cu00d7%28m-1%29%20%24%20grid.%20In%20order%20to%20increase%20the%20traffic%20flow%2C%20mayor%20of%20the%20city%20has%20decided%20to%20make%20each%20street%20one%20way.%20This%20means%20in%20each%20horizontal%20street%2C%20the%20traffic%20moves%20only%20from%20west%20to%20east%20or%20only%20from%20east%20to%20west.%20Also%2C%20traffic%20moves%20only%20from%20north%20to%20south%20or%20only%20from%20south%20to%20north%20in%20each%20vertical%20street.%20It%20is%20possible%20to%20enter%20a%20horizontal%20street%20from%20a%20vertical%20street%2C%20or%20vice%20versa%2C%20at%20their%20intersection.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF475B%5C%2F7015745b6e36cd9d1741bb00e67e81a4ab310705.png%29The%20mayor%20has%20received%20some%20street%20direction%20patterns.%20Your%20task%20is%20to%20check%20whether%20it%20is%20possible%20to%20reach%20any%20junction%20from%20any%20other%20junction%20in%20the%20proposed%20street%20direction%20pattern.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%2C%20%28%20%24%202%3C%3Dn%2Cm%3C%3D20%20%24%20%29%2C%20denoting%20the%20number%20of%20horizontal%20streets%20and%20the%20number%20of%20vertical%20streets.%5Cn%5CnThe%20second%20line%20contains%20a%20string%20of%20length%20%24%20n%20%24%20%2C%20made%20of%20characters%20%27%3C%27%20and%20%27%3E%27%2C%20denoting%20direction%20of%20each%20horizontal%20street.%20If%20the%20%24%20i%20%24%20-th%20character%20is%20equal%20to%20%27%3C%27%2C%20the%20street%20is%20directed%20from%20east%20to%20west%20otherwise%2C%20the%20street%20is%20directed%20from%20west%20to%20east.%20Streets%20are%20listed%20in%20order%20from%20north%20to%20south.%5Cn%5CnThe%20third%20line%20contains%20a%20string%20of%20length%20%24%20m%20%24%20%2C%20made%20of%20characters%20%27%5E%27%20and%20%27v%27%2C%20denoting%20direction%20of%20each%20vertical%20street.%20If%20the%20%24%20i%20%24%20-th%20character%20is%20equal%20to%20%27%5E%27%2C%20the%20street%20is%20directed%20from%20south%20to%20north%2C%20otherwise%20the%20street%20is%20directed%20from%20north%20to%20south.%20Streets%20are%20listed%20in%20order%20from%20west%20to%20east.%22%2C%22outputFormat%22%3A%22If%20the%20given%20pattern%20meets%20the%20mayor%27s%20criteria%2C%20print%20a%20single%20line%20containing%20%5C%22YES%5C%22%2C%20otherwise%20print%20a%20single%20line%20containing%20%5C%22NO%5C%22.%22%2C%22samples%22%3A%5B%5B%223%203%5Cn%26gt%3B%26lt%3B%26gt%3B%5Cnv%5Ev%5Cn%22%2C%22NO%5Cn%22%5D%2C%5B%224%206%5Cn%26lt%3B%26gt%3B%26lt%3B%26gt%3B%5Cnv%5Ev%5Ev%5E%5Cn%22%2C%22YES%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20figure%20above%20shows%20street%20directions%20in%20the%20second%20sample%20test%20case.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F475%5C%2FB%22%2C%22id%22%3A%22475B%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%24n%24%5Cu6761%5Cu6c34%5Cu5e73%5Cu7684%5Cu5355%5Cu5411%5Cu8857%5Cu9053%5Cu548c%24m%24%5Cu6761%5Cu7ad6%5Cu76f4%5Cu5355%5Cu5411%5Cu7684%5Cu8857%5Cu9053%5Cuff0c%5Cu5176%5Cu4ea4%5Cu70b9%5Cu5171%5Cu6709%24n%24%20%2A%20%24m%24%5Cu4e2a%5Cuff0c%5Cu95ee%5Cu8fd9%5Cu4e9b%5Cu8282%5Cu70b9%5Cu662f%5Cu5426%5Cu90fd%5Cu80fd%5Cu4e92%5Cu76f8%5Cu5230%5Cu8fbe%5Cu3002%5Cr%5Cn%5Cr%5Cn%242%20%3C%3D%20n%24%2C%20%24m%20%3C%3D%2020%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A68%2C%22totalAccepted%22%3A43%2C%22pid%22%3A%22CF475B%22%2C%22title%22%3A%22Strongly%20Connected%20City%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A121520%2C%22title%22%3A%22%5Cu518d%5Cu6765%5Cuff1a%5Cu6837%5Cu4f8b%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A10749%2C%22name%22%3A%22CF475B%20Strongly%20Connected%20City%22%2C%22slug%22%3A%22CF475B%22%7D%7D%2C%7B%22id%22%3A121107%2C%22title%22%3A%22%5Cu6837%5Cu4f8b%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A10749%2C%22name%22%3A%22CF475B%20Strongly%20Connected%20City%22%2C%22slug%22%3A%22CF475B%22%7D%7D%2C%7B%22id%22%3A69233%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10749%2C%22name%22%3A%22CF475B%20Strongly%20Connected%20City%22%2C%22slug%22%3A%22CF475B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2120%22%2C%22title%22%3A%22%5BZJOI2007%5D%5Cu4ed3%5Cu5e93%5Cu5efa%5Cu8bbe%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2652%22%2C%22title%22%3A%22%5Cu540c%5Cu82b1%5Cu987a%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF639B%22%2C%22title%22%3A%22Bear%20and%20Forgotten%20Tree%203%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF510C%22%2C%22title%22%3A%22Fox%20And%20Names%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1037E%22%2C%22title%22%3A%22Trips%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Strongly%20Connected%20City%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Strongly Connected City</h1>
+<h2>题意翻译</h2>
+<div>给定$n$条水平的单向街道和$m$条竖直单向的街道，其交点共有$n$ * $m$个，问这些节点是否都能互相到达。
+$2 <= n$, $m <= 20$</div>
+<h2>题目描述</h2>
+<div>Imagine a city with $ n $ horizontal streets crossing $ m $ vertical streets, forming an $ (n-1)×(m-1) $ grid. In order to increase the traffic flow, mayor of the city has decided to make each street one way. This means in each horizontal street, the traffic moves only from west to east or only from east to west. Also, traffic moves only from north to south or only from south to north in each vertical street. It is possible to enter a horizontal street from a vertical street, or vice versa, at their intersection.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF475B/7015745b6e36cd9d1741bb00e67e81a4ab310705.png)The mayor has received some street direction patterns. Your task is to check whether it is possible to reach any junction from any other junction in the proposed street direction pattern.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains two integers $ n $ and $ m $ , ( $ 2<=n,m<=20 $ ), denoting the number of horizontal streets and the number of vertical streets.
+The second line contains a string of length $ n $ , made of characters '<' and '>', denoting direction of each horizontal street. If the $ i $ -th character is equal to '<', the street is directed from east to west otherwise, the street is directed from west to east. Streets are listed in order from north to south.
+The third line contains a string of length $ m $ , made of characters '^' and 'v', denoting direction of each vertical street. If the $ i $ -th character is equal to '^', the street is directed from south to north, otherwise the street is directed from north to south. Streets are listed in order from west to east.</div>
+<h3>输出格式</h3>
+<br />
+<div>If the given pattern meets the mayor's criteria, print a single line containing "YES", otherwise print a single line containing "NO".</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3
+&amp;gt;&amp;lt;&amp;gt;
+v^v
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>NO
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 6
+&amp;lt;&amp;gt;&amp;lt;&amp;gt;
+v^v^v^
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>YES
+</code></pre>
+<h2>说明</h2>
+<div>The figure above shows street directions in the second sample test case.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

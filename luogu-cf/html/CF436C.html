@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dungeons and Candies - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394051:ZMdlTYdcFxNYsw6k5wqZhBzzGu4oRYE/GMhwDXNTIAI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22During%20the%20loading%20of%20the%20game%20%5C%22Dungeons%20and%20Candies%5C%22%20you%20are%20required%20to%20get%20descriptions%20of%20%24%20k%20%24%20levels%20from%20the%20server.%20Each%20description%20is%20a%20map%20of%20an%20%24%20n%5Cu00d7m%20%24%20checkered%20rectangular%20field.%20Some%20cells%20of%20the%20field%20contain%20candies%20%28each%20cell%20has%20at%20most%20one%20candy%29.%20An%20empty%20cell%20is%20denoted%20as%20%5C%22.%5C%22%20on%20the%20map%2C%20but%20if%20a%20cell%20has%20a%20candy%2C%20it%20is%20denoted%20as%20a%20letter%20of%20the%20English%20alphabet.%20A%20level%20may%20contain%20identical%20candies%2C%20in%20this%20case%20the%20letters%20in%20the%20corresponding%20cells%20of%20the%20map%20will%20be%20the%20same.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF436C%5C%2Fc09385c75e1e3c00ab7d9905ff0e52aa5d43a3f9.png%29When%20you%20transmit%20information%20via%20a%20network%2C%20you%20want%20to%20minimize%20traffic%20%5Cu2014%20the%20total%20size%20of%20the%20transferred%20data.%20The%20levels%20can%20be%20transmitted%20in%20any%20order.%20There%20are%20two%20ways%20to%20transmit%20the%20current%20level%20%24%20A%20%24%20%3A%5Cn%5Cn1.%20You%20can%20transmit%20the%20whole%20level%20%24%20A%20%24%20.%20Then%20you%20need%20to%20transmit%20%24%20n%5Cu00b7m%20%24%20bytes%20via%20the%20network.%5Cn2.%20You%20can%20transmit%20the%20difference%20between%20level%20%24%20A%20%24%20and%20some%20previously%20transmitted%20level%20%24%20B%20%24%20%28if%20it%20exists%29%3B%20this%20operation%20requires%20to%20transmit%20%24%20d_%7BA%2CB%7D%5Cu00b7w%20%24%20bytes%2C%20where%20%24%20d_%7BA%2CB%7D%20%24%20is%20the%20number%20of%20cells%20of%20the%20field%20that%20are%20different%20for%20%24%20A%20%24%20and%20%24%20B%20%24%20%2C%20and%20%24%20w%20%24%20is%20a%20constant.%20Note%2C%20that%20you%20should%20compare%20only%20the%20corresponding%20cells%20of%20levels%20%24%20A%20%24%20and%20%24%20B%20%24%20to%20calculate%20%24%20d_%7BA%2CB%7D%20%24%20.%20You%20cannot%20transform%20the%20maps%20of%20levels%2C%20i.e.%20rotate%20or%20shift%20them%20relatively%20to%20each%20other.%5Cn%5CnYour%20task%20is%20to%20find%20a%20way%20to%20transfer%20all%20the%20%24%20k%20%24%20levels%20and%20minimize%20the%20traffic.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20four%20integers%20%24%20n%2Cm%2Ck%2Cw%20%24%20%24%20%281%3C%3Dn%2Cm%3C%3D10%3B%5Cu00a01%3C%3Dk%2Cw%3C%3D1000%29%20%24%20.%20Then%20follows%20the%20description%20of%20%24%20k%20%24%20levels.%20Each%20level%20is%20described%20by%20%24%20n%20%24%20lines%2C%20each%20line%20contains%20%24%20m%20%24%20characters.%20Each%20character%20is%20either%20a%20letter%20of%20the%20English%20alphabet%20or%20a%20dot%20%28%5C%22.%5C%22%29.%20Please%20note%20that%20the%20case%20of%20the%20letters%20matters.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20the%20required%20minimum%20number%20of%20transferred%20bytes.%5Cn%5CnThen%20print%20%24%20k%20%24%20pairs%20of%20integers%20%24%20x_%7B1%7D%2Cy_%7B1%7D%2Cx_%7B2%7D%2Cy_%7B2%7D%2C...%2Cx_%7Bk%7D%2Cy_%7Bk%7D%20%24%20%2C%20describing%20the%20way%20to%20transfer%20levels.%20Pair%20%24%20x_%7Bi%7D%20%24%20%2C%20%24%20y_%7Bi%7D%20%24%20means%20that%20level%20%24%20x_%7Bi%7D%20%24%20needs%20to%20be%20transferred%20by%20way%20%24%20y_%7Bi%7D%20%24%20.%20If%20%24%20y_%7Bi%7D%20%24%20equals%200%2C%20that%20means%20that%20the%20level%20must%20be%20transferred%20using%20the%20first%20way%2C%20otherwise%20%24%20y_%7Bi%7D%20%24%20must%20be%20equal%20to%20the%20number%20of%20a%20previously%20transferred%20level.%20It%20means%20that%20you%20will%20transfer%20the%20difference%20between%20levels%20%24%20y_%7Bi%7D%20%24%20and%20%24%20x_%7Bi%7D%20%24%20to%20transfer%20level%20%24%20x_%7Bi%7D%20%24%20.%20Print%20the%20pairs%20in%20the%20order%20of%20transferring%20levels.%20The%20levels%20are%20numbered%201%20through%20%24%20k%20%24%20in%20the%20order%20they%20follow%20in%20the%20input.%5Cn%5CnIf%20there%20are%20multiple%20optimal%20solutions%2C%20you%20can%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%222%203%203%202%5CnA.A%5Cn...%5CnA.a%5Cn..C%5CnX.Y%5Cn...%5Cn%22%2C%2214%5Cn1%200%5Cn2%201%5Cn3%201%5Cn%22%5D%2C%5B%221%201%204%201%5CnA%5Cn.%5CnB%5Cn.%5Cn%22%2C%223%5Cn1%200%5Cn2%200%5Cn4%202%5Cn3%200%5Cn%22%5D%2C%5B%221%203%205%202%5CnABA%5CnBBB%5CnBBA%5CnBAB%5CnABB%5Cn%22%2C%2211%5Cn1%200%5Cn3%201%5Cn2%203%5Cn4%202%5Cn5%201%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F436%5C%2FC%22%2C%22id%22%3A%22436C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF436C%22%2C%22title%22%3A%22Dungeons%20and%20Candies%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Dungeons%20and%20Candies%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Dungeons and Candies</h1>
+<h2>题目描述</h2>
+<div>During the loading of the game "Dungeons and Candies" you are required to get descriptions of $ k $ levels from the server. Each description is a map of an $ n×m $ checkered rectangular field. Some cells of the field contain candies (each cell has at most one candy). An empty cell is denoted as "." on the map, but if a cell has a candy, it is denoted as a letter of the English alphabet. A level may contain identical candies, in this case the letters in the corresponding cells of the map will be the same.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF436C/c09385c75e1e3c00ab7d9905ff0e52aa5d43a3f9.png)When you transmit information via a network, you want to minimize traffic — the total size of the transferred data. The levels can be transmitted in any order. There are two ways to transmit the current level $ A $ :
+1. You can transmit the whole level $ A $ . Then you need to transmit $ n·m $ bytes via the network.
+2. You can transmit the difference between level $ A $ and some previously transmitted level $ B $ (if it exists); this operation requires to transmit $ d_{A,B}·w $ bytes, where $ d_{A,B} $ is the number of cells of the field that are different for $ A $ and $ B $ , and $ w $ is a constant. Note, that you should compare only the corresponding cells of levels $ A $ and $ B $ to calculate $ d_{A,B} $ . You cannot transform the maps of levels, i.e. rotate or shift them relatively to each other.
+Your task is to find a way to transfer all the $ k $ levels and minimize the traffic.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains four integers $ n,m,k,w $ $ (1<=n,m<=10; 1<=k,w<=1000) $ . Then follows the description of $ k $ levels. Each level is described by $ n $ lines, each line contains $ m $ characters. Each character is either a letter of the English alphabet or a dot ("."). Please note that the case of the letters matters.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print the required minimum number of transferred bytes.
+Then print $ k $ pairs of integers $ x_{1},y_{1},x_{2},y_{2},...,x_{k},y_{k} $ , describing the way to transfer levels. Pair $ x_{i} $ , $ y_{i} $ means that level $ x_{i} $ needs to be transferred by way $ y_{i} $ . If $ y_{i} $ equals 0, that means that the level must be transferred using the first way, otherwise $ y_{i} $ must be equal to the number of a previously transferred level. It means that you will transfer the difference between levels $ y_{i} $ and $ x_{i} $ to transfer level $ x_{i} $ . Print the pairs in the order of transferring levels. The levels are numbered 1 through $ k $ in the order they follow in the input.
+If there are multiple optimal solutions, you can print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 3 3 2
+A.A
+...
+A.a
+..C
+X.Y
+...
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>14
+1 0
+2 1
+3 1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1 1 4 1
+A
+.
+B
+.
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3
+1 0
+2 0
+4 2
+3 0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>1 3 5 2
+ABA
+BBB
+BBA
+BAB
+ABB
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>11
+1 0
+3 1
+2 3
+4 2
+5 1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

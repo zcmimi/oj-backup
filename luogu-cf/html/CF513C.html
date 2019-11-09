@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Second price auction - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573394930:xP3xyb17/aPmkG0SLV+tixSczuHo6+GLC3rd5+NwxrA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Nowadays%2C%20most%20of%20the%20internet%20advertisements%20are%20not%20statically%20linked%20to%20a%20web%20page.%20Instead%2C%20what%20will%20be%20shown%20to%20the%20person%20opening%20a%20web%20page%20is%20determined%20within%20100%20milliseconds%20after%20the%20web%20page%20is%20opened.%20Usually%2C%20multiple%20companies%20compete%20for%20each%20ad%20slot%20on%20the%20web%20page%20in%20an%20auction.%20Each%20of%20them%20receives%20a%20request%20with%20details%20about%20the%20user%2C%20web%20page%20and%20ad%20slot%20and%20they%20have%20to%20respond%20within%20those%20100%20milliseconds%20with%20a%20bid%20they%20would%20pay%20for%20putting%20an%20advertisement%20on%20that%20ad%20slot.%20The%20company%20that%20suggests%20the%20highest%20bid%20wins%20the%20auction%20and%20gets%20to%20place%20its%20advertisement.%20If%20there%20are%20several%20companies%20tied%20for%20the%20highest%20bid%2C%20the%20winner%20gets%20picked%20at%20random.%5Cn%5CnHowever%2C%20the%20company%20that%20won%20the%20auction%20does%20not%20have%20to%20pay%20the%20exact%20amount%20of%20its%20bid.%20In%20most%20of%20the%20cases%2C%20a%20second-price%20auction%20is%20used.%20This%20means%20that%20the%20amount%20paid%20by%20the%20company%20is%20equal%20to%20the%20maximum%20of%20all%20the%20other%20bids%20placed%20for%20this%20ad%20slot.%5Cn%5CnLet%27s%20consider%20one%20such%20bidding.%20There%20are%20%24%20n%20%24%20companies%20competing%20for%20placing%20an%20ad.%20The%20%24%20i%20%24%20-th%20of%20these%20companies%20will%20bid%20an%20integer%20number%20of%20microdollars%20equiprobably%20randomly%20chosen%20from%20the%20range%20between%20%24%20L_%7Bi%7D%20%24%20and%20%24%20R_%7Bi%7D%20%24%20%2C%20inclusive.%20In%20the%20other%20words%2C%20the%20value%20of%20the%20%24%20i%20%24%20-th%20company%20bid%20can%20be%20any%20integer%20from%20the%20range%20%24%20%5BL_%7Bi%7D%2CR_%7Bi%7D%5D%20%24%20with%20the%20same%20probability.%5Cn%5CnDetermine%20the%20expected%20value%20that%20the%20winner%20will%20have%20to%20pay%20in%20a%20second-price%20auction.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20an%20integer%20number%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D5%20%24%20%29.%20%24%20n%20%24%20lines%20follow%2C%20the%20%24%20i%20%24%20-th%20of%20them%20containing%20two%20numbers%20%24%20L_%7Bi%7D%20%24%20and%20%24%20R_%7Bi%7D%20%24%20%28%20%24%201%3C%3DL_%7Bi%7D%3C%3DR_%7Bi%7D%3C%3D10000%20%24%20%29%20describing%20the%20%24%20i%20%24%20-th%20company%27s%20bid%20preferences.%5Cn%5CnThis%20problem%20doesn%27t%20have%20subproblems.%20You%20will%20get%208%20points%20for%20the%20correct%20submission.%22%2C%22outputFormat%22%3A%22Output%20the%20answer%20with%20absolute%20or%20relative%20error%20no%20more%20than%20%24%201e-9%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%5Cn4%207%5Cn8%2010%5Cn5%205%5Cn%22%2C%225.7500000000%5Cn%22%5D%2C%5B%223%5Cn2%205%5Cn3%204%5Cn1%206%5Cn%22%2C%223.5000000000%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20example.%20The%20first%20company%20bids%20a%20random%20integer%20number%20of%20microdollars%20in%20range%20%24%20%5B4%2C7%5D%20%24%20%3B%20the%20second%20company%20bids%20between%20%24%208%20%24%20and%20%24%2010%20%24%20%2C%20and%20the%20third%20company%20bids%20%24%205%20%24%20microdollars.%20The%20second%20company%20will%20win%20regardless%20of%20the%20exact%20value%20it%20bids%2C%20however%20the%20price%20it%20will%20pay%20depends%20on%20the%20value%20of%20first%20company%27s%20bid.%20With%20probability%20%24%200.5%20%24%20the%20first%20company%20will%20bid%20at%20most%20%24%205%20%24%20microdollars%2C%20and%20the%20second-highest%20price%20of%20the%20whole%20auction%20will%20be%20%24%205%20%24%20.%20With%20probability%20%24%200.25%20%24%20it%20will%20bid%20%24%206%20%24%20microdollars%2C%20and%20with%20probability%20%24%200.25%20%24%20it%20will%20bid%20%24%207%20%24%20microdollars.%20Thus%2C%20the%20expected%20value%20the%20second%20company%20will%20have%20to%20pay%20is%20%24%200.5%5Cu00b75%2B0.25%5Cu00b76%2B0.25%5Cu00b77%3D5.75%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F513%5C%2FC%22%2C%22id%22%3A%22513C%22%7D%2C%22translation%22%3A%22%5Cu6709%20%24n%24%20%5Cu4e2a%5Cu4eba%5Cu7ade%5Cu62cd%5Cu4e00%5Cu4ef6%5Cu5546%5Cu54c1%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu4eba%5Cu5c06%5Cu4ece%20%24%5BL_i%2CR_i%5D%24%20%5Cu4e2d%20%5Cu7b49%5Cu6982%5Cu7387%5Cu5730%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu6570%5Cu4f5c%5Cu4e3a%5Cu51fa%5Cu4ef7%5Cuff0c%5Cu6c42%5Cu7b2c%5Cu4e8c%5Cu9ad8%5Cu7684%5Cu51fa%5Cu4ef7%5Cu7684%5Cu671f%5Cu671b%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF513C%22%2C%22title%22%3A%22Second%20price%20auction%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Second%20price%20auction%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Second price auction</h1>
+<h2>题意翻译</h2>
+<div>有 $n$ 个人竞拍一件商品，第 $i$ 个人将从 $[L_i,R_i]$ 中 等概率地选择一个数作为出价，求第二高的出价的期望。</div>
+<h2>题目描述</h2>
+<div>Nowadays, most of the internet advertisements are not statically linked to a web page. Instead, what will be shown to the person opening a web page is determined within 100 milliseconds after the web page is opened. Usually, multiple companies compete for each ad slot on the web page in an auction. Each of them receives a request with details about the user, web page and ad slot and they have to respond within those 100 milliseconds with a bid they would pay for putting an advertisement on that ad slot. The company that suggests the highest bid wins the auction and gets to place its advertisement. If there are several companies tied for the highest bid, the winner gets picked at random.
+However, the company that won the auction does not have to pay the exact amount of its bid. In most of the cases, a second-price auction is used. This means that the amount paid by the company is equal to the maximum of all the other bids placed for this ad slot.
+Let's consider one such bidding. There are $ n $ companies competing for placing an ad. The $ i $ -th of these companies will bid an integer number of microdollars equiprobably randomly chosen from the range between $ L_{i} $ and $ R_{i} $ , inclusive. In the other words, the value of the $ i $ -th company bid can be any integer from the range $ [L_{i},R_{i}] $ with the same probability.
+Determine the expected value that the winner will have to pay in a second-price auction.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains an integer number $ n $ ( $ 2<=n<=5 $ ). $ n $ lines follow, the $ i $ -th of them containing two numbers $ L_{i} $ and $ R_{i} $ ( $ 1<=L_{i}<=R_{i}<=10000 $ ) describing the $ i $ -th company's bid preferences.
+This problem doesn't have subproblems. You will get 8 points for the correct submission.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the answer with absolute or relative error no more than $ 1e-9 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+4 7
+8 10
+5 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5.7500000000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+2 5
+3 4
+1 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3.5000000000
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first example. The first company bids a random integer number of microdollars in range $ [4,7] $ ; the second company bids between $ 8 $ and $ 10 $ , and the third company bids $ 5 $ microdollars. The second company will win regardless of the exact value it bids, however the price it will pay depends on the value of first company's bid. With probability $ 0.5 $ the first company will bid at most $ 5 $ microdollars, and the second-highest price of the whole auction will be $ 5 $ . With probability $ 0.25 $ it will bid $ 6 $ microdollars, and with probability $ 0.25 $ it will bid $ 7 $ microdollars. Thus, the expected value the second company will have to pay is $ 0.5·5+0.25·6+0.25·7=5.75 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

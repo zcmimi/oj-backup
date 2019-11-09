@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Little Artem and Time Machine - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396312:qPWHkhOeF+1JCNCBVS+pwPeZ0Fe9WhD/ehPDWwaSm9o=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Little%20Artem%20has%20invented%20a%20time%20machine%21%20He%20could%20go%20anywhere%20in%20time%2C%20but%20all%20his%20thoughts%20of%20course%20are%20with%20computer%20science.%20He%20wants%20to%20apply%20this%20time%20machine%20to%20a%20well-known%20data%20structure%3A%20multiset.%5Cn%5CnArtem%20wants%20to%20create%20a%20basic%20multiset%20of%20integers.%20He%20wants%20these%20structure%20to%20support%20operations%20of%20three%20types%3A%5Cn%5Cn1.%20Add%20integer%20to%20the%20multiset.%20Note%20that%20the%20difference%20between%20set%20and%20multiset%20is%20that%20multiset%20may%20store%20several%20instances%20of%20one%20integer.%5Cn2.%20Remove%20integer%20from%20the%20multiset.%20Only%20one%20instance%20of%20this%20integer%20is%20removed.%20Artem%20doesn%27t%20want%20to%20handle%20any%20exceptions%2C%20so%20he%20assumes%20that%20every%20time%20remove%20operation%20is%20called%2C%20that%20integer%20is%20presented%20in%20the%20multiset.%5Cn3.%20Count%20the%20number%20of%20instances%20of%20the%20given%20integer%20that%20are%20stored%20in%20the%20multiset.%5Cn%5CnBut%20what%20about%20time%20machine%3F%20Artem%20doesn%27t%20simply%20apply%20operations%20to%20the%20multiset%20one%20by%20one%2C%20he%20now%20travels%20to%20different%20moments%20of%20time%20and%20apply%20his%20operation%20there.%20Consider%20the%20following%20example.%5Cn%5Cn-%20First%20Artem%20adds%20integer%20%24%205%20%24%20to%20the%20multiset%20at%20the%20%24%201%20%24%20-st%20moment%20of%20time.%5Cn-%20Then%20Artem%20adds%20integer%20%24%203%20%24%20to%20the%20multiset%20at%20the%20moment%20%24%205%20%24%20.%5Cn-%20Then%20Artem%20asks%20how%20many%20%24%205%20%24%20are%20there%20in%20the%20multiset%20at%20moment%20%24%206%20%24%20.%20The%20answer%20is%20%24%201%20%24%20.%5Cn-%20Then%20Artem%20returns%20back%20in%20time%20and%20asks%20how%20many%20integers%20%24%203%20%24%20are%20there%20in%20the%20set%20at%20moment%20%24%204%20%24%20.%20Since%20%24%203%20%24%20was%20added%20only%20at%20moment%20%24%205%20%24%20%2C%20the%20number%20of%20integers%20%24%203%20%24%20at%20moment%20%24%204%20%24%20equals%20to%20%24%200%20%24%20.%5Cn-%20Then%20Artem%20goes%20back%20in%20time%20again%20and%20removes%20%24%205%20%24%20from%20the%20multiset%20at%20moment%20%24%203%20%24%20.%5Cn-%20Finally%20Artyom%20asks%20at%20moment%20%24%207%20%24%20how%20many%20integers%20%24%205%20%24%20are%20there%20in%20the%20set.%20The%20result%20is%20%24%200%20%24%20%2C%20since%20we%20have%20removed%20%24%205%20%24%20at%20the%20moment%20%24%203%20%24%20.%5Cn%5CnNote%20that%20Artem%20dislikes%20exceptions%20so%20much%20that%20he%20assures%20that%20after%20each%20change%20he%20makes%20all%20delete%20operations%20are%20applied%20only%20to%20element%20that%20is%20present%20in%20the%20multiset.%20The%20answer%20to%20the%20query%20of%20the%20third%20type%20is%20computed%20at%20the%20moment%20Artem%20makes%20the%20corresponding%20query%20and%20are%20not%20affected%20in%20any%20way%20by%20future%20changes%20he%20makes.%5Cn%5CnHelp%20Artem%20implement%20time%20travellers%20multiset.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D100000%20%24%20%29%20%5Cu2014%20the%20number%20of%20Artem%27s%20queries.%5Cn%5CnThen%20follow%20%24%20n%20%24%20lines%20with%20queries%20descriptions.%20Each%20of%20them%20contains%20three%20integers%20%24%20a_%7Bi%7D%20%24%20%2C%20%24%20t_%7Bi%7D%20%24%20and%20%24%20x_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D3%20%24%20%2C%20%24%201%3C%3Dt_%7Bi%7D%2Cx_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20type%20of%20the%20query%2C%20moment%20of%20time%20Artem%20travels%20to%20in%20order%20to%20execute%20this%20query%20and%20the%20value%20of%20the%20query%20itself%2C%20respectively.%20It%27s%20guaranteed%20that%20all%20moments%20of%20time%20are%20distinct%20and%20that%20after%20each%20operation%20is%20applied%20all%20operations%20of%20the%20first%20and%20second%20types%20are%20consistent.%22%2C%22outputFormat%22%3A%22For%20each%20ask%20operation%20output%20the%20number%20of%20instances%20of%20integer%20being%20queried%20at%20the%20given%20moment%20of%20time.%22%2C%22samples%22%3A%5B%5B%226%5Cn1%201%205%5Cn3%205%205%5Cn1%202%205%5Cn3%206%205%5Cn2%203%205%5Cn3%207%205%5Cn%22%2C%221%5Cn2%5Cn1%5Cn%22%5D%2C%5B%223%5Cn1%201%201%5Cn2%202%201%5Cn3%203%201%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F641%5C%2FE%22%2C%22id%22%3A%22641E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5e26%5Cu65f6%5Cu95f4%5Cu6233%5Cu7684%20multiset%20%5Cuff0c%5Cu8fdb%5Cu884c%20n%20%5Cu6b21%5Cu64cd%5Cu4f5c%5Cr%5Cn%5Cr%5Cn1%3A%20%5Cu5728%20t%20%5Cu65f6%5Cu523b%5Cu63d2%5Cu5165%5Cu4e00%5Cu4e2a%20x%5Cr%5Cn%5Cr%5Cn2%3A%20%5Cu5728%20t%20%5Cu65f6%5Cu523b%5Cu5220%5Cu9664%5Cu4e00%5Cu4e2a%20x%5Cr%5Cn%5Cr%5Cn3%3A%20%5Cu8be2%5Cu95ee%5Cu73b0%5Cu5728%5Cu5728%20t%20%5Cu65f6%5Cu523b%5Cu6709%5Cu51e0%5Cu4e2a%20x%5Cr%5Cn%5Cr%5Cn%5Cu64cd%5Cu4f5c%5Cu6309%5Cu7167%5Cu7ed9%5Cu7684%5Cu987a%5Cu5e8f%5Cu8fdb%5Cu884c%5Cuff0c%5Cr%5Cn%5Cr%5Cn%5Cu64cd%5Cu4f5c%5Cu5f62%5Cu5982%20q%20t%20x%20%5Cuff0cq%20%5Cu8868%5Cu793a%5Cu64cd%5Cu4f5c%5Cu7684%5Cu7c7b%5Cu578b%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A35%2C%22totalAccepted%22%3A19%2C%22pid%22%3A%22CF641E%22%2C%22title%22%3A%22Little%20Artem%20and%20Time%20Machine%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Little%20Artem%20and%20Time%20Machine%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Little Artem and Time Machine</h1>
+<h2>题意翻译</h2>
+<div>给你一个带时间戳的 multiset ，进行 n 次操作
+1: 在 t 时刻插入一个 x
+2: 在 t 时刻删除一个 x
+3: 询问现在在 t 时刻有几个 x
+操作按照给的顺序进行，
+操作形如 q t x ，q 表示操作的类型</div>
+<h2>题目描述</h2>
+<div>Little Artem has invented a time machine! He could go anywhere in time, but all his thoughts of course are with computer science. He wants to apply this time machine to a well-known data structure: multiset.
+Artem wants to create a basic multiset of integers. He wants these structure to support operations of three types:
+1. Add integer to the multiset. Note that the difference between set and multiset is that multiset may store several instances of one integer.
+2. Remove integer from the multiset. Only one instance of this integer is removed. Artem doesn't want to handle any exceptions, so he assumes that every time remove operation is called, that integer is presented in the multiset.
+3. Count the number of instances of the given integer that are stored in the multiset.
+But what about time machine? Artem doesn't simply apply operations to the multiset one by one, he now travels to different moments of time and apply his operation there. Consider the following example.
+- First Artem adds integer $ 5 $ to the multiset at the $ 1 $ -st moment of time.
+- Then Artem adds integer $ 3 $ to the multiset at the moment $ 5 $ .
+- Then Artem asks how many $ 5 $ are there in the multiset at moment $ 6 $ . The answer is $ 1 $ .
+- Then Artem returns back in time and asks how many integers $ 3 $ are there in the set at moment $ 4 $ . Since $ 3 $ was added only at moment $ 5 $ , the number of integers $ 3 $ at moment $ 4 $ equals to $ 0 $ .
+- Then Artem goes back in time again and removes $ 5 $ from the multiset at moment $ 3 $ .
+- Finally Artyom asks at moment $ 7 $ how many integers $ 5 $ are there in the set. The result is $ 0 $ , since we have removed $ 5 $ at the moment $ 3 $ .
+Note that Artem dislikes exceptions so much that he assures that after each change he makes all delete operations are applied only to element that is present in the multiset. The answer to the query of the third type is computed at the moment Artem makes the corresponding query and are not affected in any way by future changes he makes.
+Help Artem implement time travellers multiset.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ n $ ( $ 1<=n<=100000 $ ) — the number of Artem's queries.
+Then follow $ n $ lines with queries descriptions. Each of them contains three integers $ a_{i} $ , $ t_{i} $ and $ x_{i} $ ( $ 1<=a_{i}<=3 $ , $ 1<=t_{i},x_{i}<=10^{9} $ ) — type of the query, moment of time Artem travels to in order to execute this query and the value of the query itself, respectively. It's guaranteed that all moments of time are distinct and that after each operation is applied all operations of the first and second types are consistent.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each ask operation output the number of instances of integer being queried at the given moment of time.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+1 1 5
+3 5 5
+1 2 5
+3 6 5
+2 3 5
+3 7 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+2
+1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+1 1 1
+2 2 1
+3 3 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

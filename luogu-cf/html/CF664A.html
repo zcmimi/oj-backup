@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Complicated GCD - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396490:x16E83izD5LzrcptIiFB7zEg5Hi2k42Edfn4y8/w4mo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Greatest%20common%20divisor%20%24%20GCD%28a%2Cb%29%20%24%20of%20two%20positive%20integers%20%24%20a%20%24%20and%20%24%20b%20%24%20is%20equal%20to%20the%20biggest%20integer%20%24%20d%20%24%20such%20that%20both%20integers%20%24%20a%20%24%20and%20%24%20b%20%24%20are%20divisible%20by%20%24%20d%20%24%20.%20There%20are%20many%20efficient%20algorithms%20to%20find%20greatest%20common%20divisor%20%24%20GCD%28a%2Cb%29%20%24%20%2C%20for%20example%2C%20Euclid%20algorithm.%5Cn%5CnFormally%2C%20find%20the%20biggest%20integer%20%24%20d%20%24%20%2C%20such%20that%20all%20integers%20%24%20a%2Ca%2B1%2Ca%2B2%2C...%2Cb%20%24%20are%20divisible%20by%20%24%20d%20%24%20.%20To%20make%20the%20problem%20even%20more%20complicated%20we%20allow%20%24%20a%20%24%20and%20%24%20b%20%24%20to%20be%20up%20to%20googol%2C%20%24%2010%5E%7B100%7D%20%24%20%5Cu2014%20such%20number%20do%20not%20fit%20even%20in%2064-bit%20integer%20type%21%22%2C%22inputFormat%22%3A%22The%20only%20line%20of%20the%20input%20contains%20two%20integers%20%24%20a%20%24%20and%20%24%20b%20%24%20%28%20%24%201%3C%3Da%3C%3Db%3C%3D10%5E%7B100%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22Output%20one%20integer%20%5Cu2014%20greatest%20common%20divisor%20of%20all%20integers%20from%20%24%20a%20%24%20to%20%24%20b%20%24%20inclusive.%22%2C%22samples%22%3A%5B%5B%221%202%5Cn%22%2C%221%5Cn%22%5D%2C%5B%2261803398874989484820458683436563811772030917980576%2061803398874989484820458683436563811772030917980576%5Cn%22%2C%2261803398874989484820458683436563811772030917980576%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F664%5C%2FA%22%2C%22id%22%3A%22664A%22%7D%2C%22translation%22%3A%22%5Cu3010%5Cu95ee%5Cu9898%5Cu63cf%5Cu8ff0%5Cu3011%20%5Cu7ed9%5Cu4f60%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5b83%5Cu4eec%5Cu662fa%2Ca%2B1%2Ca%2B2%2C%5Cu2026%2Cb%5Cuff0c%5Cu8bf7%5Cu6c42%5Cu51fa%5Cu5b83%5Cu4eec%5Cu7684%5Cu6700%5Cu5927%5Cu516c%5Cu7ea6%5Cu6570%5Cuff0c%5Cu5373%20gcd%28a%2C%20a%2B1%2C%20a%2B2%2C%20%5Cu2026%2C%20b%29%5Cu3002%5Cn%5Cn%5Cu3010%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cu3011%20%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570a%5Cu548c%20b%5Cuff081%3C%3Da%3C%3Db%3C%3D10%5E100%5Cuff09%5Cu3002%5Cn%5Cn%5Cu3010%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cu3011%20%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu4ecea%5Cu5230b%5Cu6240%5Cu6709%5Cu6574%5Cu6570%5Cu7684%5Cu6700%5Cu5927%5Cu516c%5Cu7ea6%5Cu6570%5Cu3002%5Cn%5Cn%5Cu3010%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b1%5Cu3011%201%202%5Cn%5Cn%5Cu3010%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b1%5Cu3011%201%5Cn%5Cn%5Cu3010%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b2%5Cu3011%2061803398874989484820458683436563811772030917980576%20%5Cn%5Cn61803398874989484820458683436563811772030917980576%5Cn%5Cn%5Cu3010%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b2%5Cu3011%2061803398874989484820458683436563811772030917980576%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A334%2C%22totalAccepted%22%3A208%2C%22pid%22%3A%22CF664A%22%2C%22title%22%3A%22Complicated%20GCD%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A78033%2C%22title%22%3A%22%5Cu8fd9%5Cu662f%5Cu9ad8%5Cu7cbe%5Cu5417%5Cuff1f%5Cu771f%5Cu7684%5Cu662f%5Cu666e%5Cu53ca%5Cu8d1f%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A9984%2C%22name%22%3A%22CF664A%20Complicated%20GCD%22%2C%22slug%22%3A%22CF664A%22%7D%7D%2C%7B%22id%22%3A75702%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A9984%2C%22name%22%3A%22CF664A%20Complicated%20GCD%22%2C%22slug%22%3A%22CF664A%22%7D%7D%2C%7B%22id%22%3A63173%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9984%2C%22name%22%3A%22CF664A%20Complicated%20GCD%22%2C%22slug%22%3A%22CF664A%22%7D%7D%2C%7B%22id%22%3A63172%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9984%2C%22name%22%3A%22CF664A%20Complicated%20GCD%22%2C%22slug%22%3A%22CF664A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1094%22%2C%22title%22%3A%22%5Cu7eaa%5Cu5ff5%5Cu54c1%5Cu5206%5Cu7ec4%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3383%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7ebf%5Cu6027%5Cu7b5b%5Cu7d20%5Cu6570%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF776B%22%2C%22title%22%3A%22Sherlock%20and%20his%20girlfriend%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF757B%22%2C%22title%22%3A%22Bash%27s%20Big%20Day%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF762A%22%2C%22title%22%3A%22k-th%20divisor%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Complicated%20GCD%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Complicated GCD</h1>
+<h2>题意翻译</h2>
+<div>【问题描述】 给你若干个整数，它们是a,a+1,a+2,…,b，请求出它们的最大公约数，即 gcd(a, a+1, a+2, …, b)。
+【输入格式】 一行，包含两个整数a和 b（1<=a<=b<=10^100）。
+【输出格式】 一个整数，表示从a到b所有整数的最大公约数。
+【输入样例1】 1 2
+【输出样例1】 1
+【输入样例2】 61803398874989484820458683436563811772030917980576
+61803398874989484820458683436563811772030917980576
+【输出样例2】 61803398874989484820458683436563811772030917980576</div>
+<h2>题目描述</h2>
+<div>Greatest common divisor $ GCD(a,b) $ of two positive integers $ a $ and $ b $ is equal to the biggest integer $ d $ such that both integers $ a $ and $ b $ are divisible by $ d $ . There are many efficient algorithms to find greatest common divisor $ GCD(a,b) $ , for example, Euclid algorithm.
+Formally, find the biggest integer $ d $ , such that all integers $ a,a+1,a+2,...,b $ are divisible by $ d $ . To make the problem even more complicated we allow $ a $ and $ b $ to be up to googol, $ 10^{100} $ — such number do not fit even in 64-bit integer type!</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line of the input contains two integers $ a $ and $ b $ ( $ 1<=a<=b<=10^{100} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one integer — greatest common divisor of all integers from $ a $ to $ b $ inclusive.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>61803398874989484820458683436563811772030917980576 61803398874989484820458683436563811772030917980576
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>61803398874989484820458683436563811772030917980576
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

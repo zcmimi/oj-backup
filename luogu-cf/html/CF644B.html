@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Processing Queries - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396338:szYzzCxNQMspWk+lKjSEkGubzOT2/0FnoJE4h0qakws=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20this%20problem%20you%20have%20to%20simulate%20the%20workflow%20of%20one-thread%20server.%20There%20are%20%24%20n%20%24%20queries%20to%20process%2C%20the%20%24%20i%20%24%20-th%20will%20be%20received%20at%20moment%20%24%20t_%7Bi%7D%20%24%20and%20needs%20to%20be%20processed%20for%20%24%20d_%7Bi%7D%20%24%20units%20of%20time.%20All%20%24%20t_%7Bi%7D%20%24%20are%20guaranteed%20to%20be%20distinct.%5Cn%5CnWhen%20a%20query%20appears%20server%20may%20react%20in%20three%20possible%20ways%3A%5Cn%5Cn1.%20If%20server%20is%20free%20and%20query%20queue%20is%20empty%2C%20then%20server%20immediately%20starts%20to%20process%20this%20query.%5Cn2.%20If%20server%20is%20busy%20and%20there%20are%20less%20than%20%24%20b%20%24%20queries%20in%20the%20queue%2C%20then%20new%20query%20is%20added%20to%20the%20end%20of%20the%20queue.%5Cn3.%20If%20server%20is%20busy%20and%20there%20are%20already%20%24%20b%20%24%20queries%20pending%20in%20the%20queue%2C%20then%20new%20query%20is%20just%20rejected%20and%20will%20never%20be%20processed.%5Cn%5CnAs%20soon%20as%20server%20finished%20to%20process%20some%20query%2C%20it%20picks%20new%20one%20from%20the%20queue%20%28if%20it%27s%20not%20empty%2C%20of%20course%29.%20If%20a%20new%20query%20comes%20at%20some%20moment%20%24%20x%20%24%20%2C%20and%20the%20server%20finishes%20to%20process%20another%20query%20at%20exactly%20the%20same%20moment%2C%20we%20consider%20that%20first%20query%20is%20picked%20from%20the%20queue%20and%20only%20then%20new%20query%20appears.%5Cn%5CnFor%20each%20query%20find%20the%20moment%20when%20the%20server%20will%20finish%20to%20process%20it%20or%20print%20-1%20if%20this%20query%20will%20be%20rejected.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20b%20%24%20%28%20%24%201%3C%3Dn%2Cb%3C%3D200000%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries%20and%20the%20maximum%20possible%20size%20of%20the%20query%20queue.%5Cn%5CnThen%20follow%20%24%20n%20%24%20lines%20with%20queries%20descriptions%20%28in%20chronological%20order%29.%20Each%20description%20consists%20of%20two%20integers%20%24%20t_%7Bi%7D%20%24%20and%20%24%20d_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dt_%7Bi%7D%2Cd_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%2C%20where%20%24%20t_%7Bi%7D%20%24%20is%20the%20moment%20of%20time%20when%20the%20%24%20i%20%24%20-th%20query%20appears%20and%20%24%20d_%7Bi%7D%20%24%20is%20the%20time%20server%20needs%20to%20process%20it.%20It%20is%20guaranteed%20that%20%24%20t_%7Bi-1%7D%26lt%3Bt_%7Bi%7D%20%24%20for%20all%20%24%20i%26gt%3B1%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20the%20sequence%20of%20%24%20n%20%24%20integers%20%24%20e_%7B1%7D%2Ce_%7B2%7D%2C...%2Ce_%7Bn%7D%20%24%20%2C%20where%20%24%20e_%7Bi%7D%20%24%20is%20the%20moment%20the%20server%20will%20finish%20to%20process%20the%20%24%20i%20%24%20-th%20query%20%28queries%20are%20numbered%20in%20the%20order%20they%20appear%20in%20the%20input%29%20or%20%24%20-1%20%24%20if%20the%20corresponding%20query%20will%20be%20rejected.%22%2C%22samples%22%3A%5B%5B%225%201%5Cn2%209%5Cn4%208%5Cn10%209%5Cn15%202%5Cn19%201%5Cn%22%2C%2211%2019%20-1%2021%2022%20%5Cn%22%5D%2C%5B%224%201%5Cn2%208%5Cn4%208%5Cn10%209%5Cn15%202%5Cn%22%2C%2210%2018%2027%20-1%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20sample.%5Cn%5Cn1.%20The%20server%20will%20start%20to%20process%20first%20query%20at%20the%20moment%20%24%202%20%24%20and%20will%20finish%20to%20process%20it%20at%20the%20moment%20%24%2011%20%24%20.%5Cn2.%20At%20the%20moment%20%24%204%20%24%20second%20query%20appears%20and%20proceeds%20to%20the%20queue.%5Cn3.%20At%20the%20moment%20%24%2010%20%24%20third%20query%20appears.%20However%2C%20the%20server%20is%20still%20busy%20with%20query%20%24%201%20%24%20%2C%20%24%20b%3D1%20%24%20and%20there%20is%20already%20query%20%24%202%20%24%20pending%20in%20the%20queue%2C%20so%20third%20query%20is%20just%20rejected.%5Cn4.%20At%20the%20moment%20%24%2011%20%24%20server%20will%20finish%20to%20process%20first%20query%20and%20will%20take%20the%20second%20query%20from%20the%20queue.%5Cn5.%20At%20the%20moment%20%24%2015%20%24%20fourth%20query%20appears.%20As%20the%20server%20is%20currently%20busy%20it%20proceeds%20to%20the%20queue.%5Cn6.%20At%20the%20moment%20%24%2019%20%24%20two%20events%20occur%20simultaneously%3A%20server%20finishes%20to%20proceed%20the%20second%20query%20and%20the%20fifth%20query%20appears.%20As%20was%20said%20in%20the%20statement%20above%2C%20first%20server%20will%20finish%20to%20process%20the%20second%20query%2C%20then%20it%20will%20pick%20the%20fourth%20query%20from%20the%20queue%20and%20only%20then%20will%20the%20fifth%20query%20appear.%20As%20the%20queue%20is%20empty%20fifth%20query%20is%20proceed%20there.%5Cn7.%20Server%20finishes%20to%20process%20query%20number%20%24%204%20%24%20at%20the%20moment%20%24%2021%20%24%20.%20Query%20number%20%24%205%20%24%20is%20picked%20from%20the%20queue.%5Cn8.%20Server%20finishes%20to%20process%20query%20number%20%24%205%20%24%20at%20the%20moment%20%24%2022%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F644%5C%2FB%22%2C%22id%22%3A%22644B%22%7D%2C%22translation%22%3A%22%23%5Cu95ee%5Cu9898%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu6709%5Cu4e00%5Cu6761%5Cu5355%5Cu7ebf%5Cu7a0b%5Cu7684%5Cu751f%5Cu4ea7%5Cu7ebf%5Cuff0c%5Cu5373%5Cu540c%5Cu65f6%5Cu53ea%5Cu80fd%5Cu5904%5Cu7406%5Cu4e00%5Cu9879%5Cu5de5%5Cu4f5c%5Cuff0c%5Cu6709%20n%20%5Cu4e2a%5Cu5de5%5Cu4f5c%5Cu7533%5Cu8bf7%5Cuff0c%5Cu7b2ci%5Cu4e2a%5Cu5de5%5Cu4f5c%5Cu7684%5Cu5f00%5Cu59cb%5Cu65f6%5Cu95f4%5Cu4e3a%20ti%20%5Cuff0c%5Cu5b8c%5Cu6210%5Cu9700%5Cu8981%20di%20%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu65f6%5Cu95f4%5Cuff0c%5Cu6240%5Cu6709%5Cu7684%20ti%20%5Cu90fd%5Cu4e0d%5Cu76f8%5Cu540c%5Cu3002%5Cn%5Cn%5Cu5f53%5Cu4e00%5Cu9879%5Cu5de5%5Cu4f5c%5Cu7533%5Cu8bf7%5Cu51fa%5Cu73b0%5Cu65f6%5Cuff0c%5Cu751f%5Cu4ea7%5Cu7ebf%5Cu4f1a%5Cu6709%5Cu5982%5Cu4e0b%5Cu4e09%5Cu79cd%5Cu5904%5Cu7406%5Cu65b9%5Cu6848%5Cuff1a%5Cn%5Cn1%5Cuff1a%5Cu5982%5Cu679c%5Cu751f%5Cu4ea7%5Cu7ebf%5Cu662f%5Cu7a7a%5Cu95f2%5Cu7684%5Cuff0c%5Cu800c%5Cu4e14%5Cu7b49%5Cu5f85%5Cu961f%5Cu5217%5Cu662f%5Cu7a7a%5Cu7684%5Cuff0c%5Cu5219%5Cu5f53%5Cu524d%5Cu7533%5Cu8bf7%5Cu7684%5Cu5de5%5Cu4f5c%5Cu4f1a%5Cu88ab%5Cu9a6c%5Cu4e0a%5Cu6267%5Cu884c%5Cuff1b%5Cn%5Cn2%5Cuff1a%5Cu5982%5Cu679c%5Cu751f%5Cu4ea7%5Cu7ebf%5Cu6b63%5Cu5728%5Cu5de5%5Cu4f5c%5Cuff0c%5Cu800c%5Cu4e14%5Cu7b49%5Cu5f85%5Cu961f%5Cu5217%5Cu4e2d%5Cu7684%5Cu5de5%5Cu4f5c%5Cu5c11%5Cu4e8e%20b%20%5Cu4e2a%5Cuff0c%5Cu5219%5Cu5f53%5Cu524d%5Cu7533%5Cu8bf7%5Cu7684%5Cu5de5%5Cu4f5c%5Cu4f1a%5Cu88ab%5Cu52a0%5Cu5165%5Cu5230%5Cu7b49%5Cu5f85%5Cu961f%5Cu5217%5Cu7684%5Cu961f%5Cu5c3e%5Cuff1b%5Cn%5Cn3%5Cuff1a%5Cu5982%5Cu679c%5Cu751f%5Cu4ea7%5Cu7ebf%5Cu6b63%5Cu5728%5Cu5de5%5Cu4f5c%5Cuff0c%5Cu800c%5Cu4e14%5Cu7b49%5Cu5f85%5Cu961f%5Cu5217%5Cu4e2d%5Cu7684%5Cu5de5%5Cu4f5c%5Cu5df2%5Cu7ecf%5Cu6709%20b%20%5Cu4e2a%5Cuff0c%5Cu5219%5Cu5f53%5Cu524d%5Cu7533%5Cu8bf7%5Cu7684%5Cu5de5%5Cu4f5c%5Cu4f1a%5Cu88ab%5Cu62d2%5Cu7edd%5Cuff0c%5Cu800c%5Cu4e14%5Cu518d%5Cu4e5f%5Cu4e0d%5Cu4f1a%5Cu63a5%5Cu53d7%5Cu8be5%5Cu5de5%5Cu4f5c%5Cu7684%5Cu7533%5Cu8bf7%5Cu3002%5Cn%5Cn%23%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%23%23%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%20%20%20%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20n%20%5Cu548c%20b%20%5Cuff0c%28%201%20%5Cu2264%20n%20%2C%20b%20%5Cu2264%20200000%20%29%5Cuff1b%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20n%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20ti%20%5Cu548c%20di%20%5Cuff0c%28%201%20%5Cu2264%20ti%20%2Cdi%20%5Cu2264%2010%5E9%20%29%5Cuff0c%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1t%5Bi-1%5D%20%3C%20t%5Bi%5D%5Cu3002%5Cn%5Cn%23%23%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu5171%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu542b%20n%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu4f9d%5Cu6b21%5Cu8868%5Cu793a%20n%20%5Cu4e2a%5Cu5de5%5Cu4f5c%5Cu7684%5Cu5b8c%5Cu6210%5Cu65f6%5Cu95f4%5Cuff0c%5Cu5982%5Cu679c%5Cu5f53%5Cu524d%5Cu5de5%5Cu4f5c%5Cu88ab%5Cu62d2%5Cu7edd%5Cu5219%5Cu8f93%5Cu51fa%20-1%20%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A40%2C%22totalAccepted%22%3A14%2C%22pid%22%3A%22CF644B%22%2C%22title%22%3A%22Processing%20Queries%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A54425%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu5728%5Cu6b64%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A10049%2C%22name%22%3A%22CF644B%20Processing%20Queries%22%2C%22slug%22%3A%22CF644B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Processing%20Queries%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Processing Queries</h1>
+<h2>题意翻译</h2>
+<div>#问题描述
+有一条单线程的生产线，即同时只能处理一项工作，有 n 个工作申请，第i个工作的开始时间为 ti ，完成需要 di 个单位时间，所有的 ti 都不相同。
+当一项工作申请出现时，生产线会有如下三种处理方案：
+1：如果生产线是空闲的，而且等待队列是空的，则当前申请的工作会被马上执行；
+2：如果生产线正在工作，而且等待队列中的工作少于 b 个，则当前申请的工作会被加入到等待队列的队尾；
+3：如果生产线正在工作，而且等待队列中的工作已经有 b 个，则当前申请的工作会被拒绝，而且再也不会接受该工作的申请。
+#输入输出格式
+##输入格式
+第一行，两个整数 n 和 b ，( 1 ≤ n , b ≤ 200000 )；
+接下来 n 行，每行两个整数 ti 和 di ，( 1 ≤ ti ,di ≤ 10^9 )，输入数据保证t[i-1] < t[i]。
+##输出格式
+输出共一行，包含 n 个整数，依次表示 n 个工作的完成时间，如果当前工作被拒绝则输出 -1 。</div>
+<h2>题目描述</h2>
+<div>In this problem you have to simulate the workflow of one-thread server. There are $ n $ queries to process, the $ i $ -th will be received at moment $ t_{i} $ and needs to be processed for $ d_{i} $ units of time. All $ t_{i} $ are guaranteed to be distinct.
+When a query appears server may react in three possible ways:
+1. If server is free and query queue is empty, then server immediately starts to process this query.
+2. If server is busy and there are less than $ b $ queries in the queue, then new query is added to the end of the queue.
+3. If server is busy and there are already $ b $ queries pending in the queue, then new query is just rejected and will never be processed.
+As soon as server finished to process some query, it picks new one from the queue (if it's not empty, of course). If a new query comes at some moment $ x $ , and the server finishes to process another query at exactly the same moment, we consider that first query is picked from the queue and only then new query appears.
+For each query find the moment when the server will finish to process it or print -1 if this query will be rejected.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ b $ ( $ 1<=n,b<=200000 $ ) — the number of queries and the maximum possible size of the query queue.
+Then follow $ n $ lines with queries descriptions (in chronological order). Each description consists of two integers $ t_{i} $ and $ d_{i} $ ( $ 1<=t_{i},d_{i}<=10^{9} $ ), where $ t_{i} $ is the moment of time when the $ i $ -th query appears and $ d_{i} $ is the time server needs to process it. It is guaranteed that $ t_{i-1}&lt;t_{i} $ for all $ i&gt;1 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the sequence of $ n $ integers $ e_{1},e_{2},...,e_{n} $ , where $ e_{i} $ is the moment the server will finish to process the $ i $ -th query (queries are numbered in the order they appear in the input) or $ -1 $ if the corresponding query will be rejected.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 1
+2 9
+4 8
+10 9
+15 2
+19 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>11 19 -1 21 22 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 1
+2 8
+4 8
+10 9
+15 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>10 18 27 -1 
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first sample.
+1. The server will start to process first query at the moment $ 2 $ and will finish to process it at the moment $ 11 $ .
+2. At the moment $ 4 $ second query appears and proceeds to the queue.
+3. At the moment $ 10 $ third query appears. However, the server is still busy with query $ 1 $ , $ b=1 $ and there is already query $ 2 $ pending in the queue, so third query is just rejected.
+4. At the moment $ 11 $ server will finish to process first query and will take the second query from the queue.
+5. At the moment $ 15 $ fourth query appears. As the server is currently busy it proceeds to the queue.
+6. At the moment $ 19 $ two events occur simultaneously: server finishes to proceed the second query and the fifth query appears. As was said in the statement above, first server will finish to process the second query, then it will pick the fourth query from the queue and only then will the fifth query appear. As the queue is empty fifth query is proceed there.
+7. Server finishes to process query number $ 4 $ at the moment $ 21 $ . Query number $ 5 $ is picked from the queue.
+8. Server finishes to process query number $ 5 $ at the moment $ 22 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

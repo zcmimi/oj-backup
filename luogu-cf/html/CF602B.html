@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Approximating a Constant Range - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573395882:7jGLzYJMsg2rGykGWGEvWSoxzSu1Nnjq/TA1ru3ZZbM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22When%20Xellos%20was%20doing%20a%20practice%20course%20in%20university%2C%20he%20once%20had%20to%20measure%20the%20intensity%20of%20an%20effect%20that%20slowly%20approached%20equilibrium.%20A%20good%20way%20to%20determine%20the%20equilibrium%20intensity%20would%20be%20choosing%20a%20sufficiently%20large%20number%20of%20consecutive%20data%20points%20that%20seems%20as%20constant%20as%20possible%20and%20taking%20their%20average.%20Of%20course%2C%20with%20the%20usual%20sizes%20of%20data%2C%20it%27s%20nothing%20challenging%20%5Cu2014%20but%20why%20not%20make%20a%20similar%20programming%20contest%20problem%20while%20we%27re%20at%20it%3F%5Cn%5CnYou%27re%20given%20a%20sequence%20of%20%24%20n%20%24%20data%20points%20%24%20a_%7B1%7D%2C...%2Ca_%7Bn%7D%20%24%20.%20There%20aren%27t%20any%20big%20jumps%20between%20consecutive%20data%20points%20%5Cu2014%20for%20each%20%24%201%3C%3Di%26lt%3Bn%20%24%20%2C%20it%27s%20guaranteed%20that%20%24%20%7Ca_%7Bi%2B1%7D-a_%7Bi%7D%7C%3C%3D1%20%24%20.%5Cn%5CnA%20range%20%24%20%5Bl%2Cr%5D%20%24%20of%20data%20points%20is%20said%20to%20be%20almost%20constant%20if%20the%20difference%20between%20the%20largest%20and%20the%20smallest%20value%20in%20that%20range%20is%20at%20most%20%24%201%20%24%20.%20Formally%2C%20let%20%24%20M%20%24%20be%20the%20maximum%20and%20%24%20m%20%24%20the%20minimum%20value%20of%20%24%20a_%7Bi%7D%20%24%20for%20%24%20l%3C%3Di%3C%3Dr%20%24%20%3B%20the%20range%20%24%20%5Bl%2Cr%5D%20%24%20is%20almost%20constant%20if%20%24%20M-m%3C%3D1%20%24%20.%5Cn%5CnFind%20the%20length%20of%20the%20longest%20almost%20constant%20range.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D100000%20%24%20%29%20%5Cu2014%20the%20number%20of%20data%20points.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D100000%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20number%20%5Cu2014%20the%20maximum%20length%20of%20an%20almost%20constant%20range%20of%20the%20given%20sequence.%22%2C%22samples%22%3A%5B%5B%225%5Cn1%202%203%203%202%5Cn%22%2C%224%5Cn%22%5D%2C%5B%2211%5Cn5%204%205%205%206%207%208%208%208%207%206%5Cn%22%2C%225%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20the%20longest%20almost%20constant%20range%20is%20%24%20%5B2%2C5%5D%20%24%20%3B%20its%20length%20%28the%20number%20of%20data%20points%20in%20it%29%20is%204.%5Cn%5CnIn%20the%20second%20sample%2C%20there%20are%20three%20almost%20constant%20ranges%20of%20length%20%24%204%20%24%20%3A%20%24%20%5B1%2C4%5D%20%24%20%2C%20%24%20%5B6%2C9%5D%20%24%20and%20%24%20%5B7%2C10%5D%20%24%20%3B%20the%20only%20almost%20constant%20range%20of%20the%20maximum%20length%20%24%205%20%24%20is%20%24%20%5B6%2C10%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F602%5C%2FB%22%2C%22id%22%3A%22602B%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu76f8%5Cu90bb%5Cu6570%5Cu5dee%5Cu4e0d%5Cu8d85%5Cu8fc7%20%241%24%20%5Cu7684%5Cu5e8f%5Cu5217%5Cuff0c%5Cu6c42%5Cu6700%5Cu957f%5Cu5b50%5Cu4e32%5Cu7684%5Cu957f%5Cu5ea6%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu5b50%5Cu4e32%5Cu4e2d%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu51cf%5Cu6700%5Cu5c0f%5Cu503c%5Cu4e5f%5Cu4e0d%5Cu8d85%5Cu8fc7%20%241%24%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A372%2C%22totalAccepted%22%3A180%2C%22pid%22%3A%22CF602B%22%2C%22title%22%3A%22Approximating%20a%20Constant%20Range%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A111183%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A10248%2C%22name%22%3A%22CF602B%20Approximating%20a%20Constant%20Range%22%2C%22slug%22%3A%22CF602B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF656B%22%2C%22title%22%3A%22Scrambled%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF390A%22%2C%22title%22%3A%22Inna%20and%20Alarm%20Clock%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF387A%22%2C%22title%22%3A%22George%20and%20Sleep%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF290C%22%2C%22title%22%3A%22WTF%3F%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF260C%22%2C%22title%22%3A%22Balls%20and%20Boxes%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Approximating%20a%20Constant%20Range%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Approximating a Constant Range</h1>
+<h2>题意翻译</h2>
+<div>给你一个相邻数差不超过 $1$ 的序列，求最长子串的长度，满足子串中的最大值减最小值也不超过 $1$。</div>
+<h2>题目描述</h2>
+<div>When Xellos was doing a practice course in university, he once had to measure the intensity of an effect that slowly approached equilibrium. A good way to determine the equilibrium intensity would be choosing a sufficiently large number of consecutive data points that seems as constant as possible and taking their average. Of course, with the usual sizes of data, it's nothing challenging — but why not make a similar programming contest problem while we're at it?
+You're given a sequence of $ n $ data points $ a_{1},...,a_{n} $ . There aren't any big jumps between consecutive data points — for each $ 1<=i&lt;n $ , it's guaranteed that $ |a_{i+1}-a_{i}|<=1 $ .
+A range $ [l,r] $ of data points is said to be almost constant if the difference between the largest and the smallest value in that range is at most $ 1 $ . Formally, let $ M $ be the maximum and $ m $ the minimum value of $ a_{i} $ for $ l<=i<=r $ ; the range $ [l,r] $ is almost constant if $ M-m<=1 $ .
+Find the length of the longest almost constant range.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ n $ ( $ 2<=n<=100000 $ ) — the number of data points.
+The second line contains $ n $ integers $ a_{1},a_{2},...,a_{n} $ ( $ 1<=a_{i}<=100000 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single number — the maximum length of an almost constant range of the given sequence.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+1 2 3 3 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>11
+5 4 5 5 6 7 8 8 8 7 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>5
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, the longest almost constant range is $ [2,5] $ ; its length (the number of data points in it) is 4.
+In the second sample, there are three almost constant ranges of length $ 4 $ : $ [1,4] $ , $ [6,9] $ and $ [7,10] $ ; the only almost constant range of the maximum length $ 5 $ is $ [6,10] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

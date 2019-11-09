@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Magic Matrix - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396250:Kx2RKlSHNnLfIX0QoBJkqn63mo6I3T+FQdi6E+ECBZU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%27re%20given%20a%20matrix%20%24%20A%20%24%20of%20size%20%24%20n%5Cu00d7n%20%24%20.%5Cn%5CnLet%27s%20call%20the%20matrix%20with%20nonnegative%20elements%20magic%20if%20it%20is%20symmetric%20%28so%20%24%20a_%7Bij%7D%3Da_%7Bji%7D%20%24%20%29%2C%20%24%20a_%7Bii%7D%3D0%20%24%20and%20%24%20a_%7Bij%7D%3C%3Dmax%28a_%7Bik%7D%2Ca_%7Bjk%7D%29%20%24%20for%20all%20triples%20%24%20i%2Cj%2Ck%20%24%20.%20Note%20that%20%24%20i%2Cj%2Ck%20%24%20do%20not%20need%20to%20be%20distinct.%5Cn%5CnDetermine%20if%20the%20matrix%20is%20magic.%5Cn%5CnAs%20the%20input%5C%2Foutput%20can%20reach%20very%20huge%20size%20it%20is%20recommended%20to%20use%20fast%20input%5C%2Foutput%20methods%3A%20for%20example%2C%20prefer%20to%20use%20scanf%5C%2Fprintf%20instead%20of%20cin%5C%2Fcout%20in%20C%2B%2B%2C%20prefer%20to%20use%20BufferedReader%5C%2FPrintWriter%20instead%20of%20Scanner%5C%2FSystem.out%20in%20Java.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D2500%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20matrix%20%24%20A%20%24%20.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20%24%20lines%20contains%20%24%20n%20%24%20integers%20%24%20a_%7Bij%7D%20%24%20%28%20%24%200%3C%3Da_%7Bij%7D%26lt%3B10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20elements%20of%20the%20matrix%20%24%20A%20%24%20.%5Cn%5CnNote%20that%20the%20given%20matrix%20not%20necessarily%20is%20symmetric%20and%20can%20be%20arbitrary.%22%2C%22outputFormat%22%3A%22Print%20%27%27MAGIC%5C%22%20%28without%20quotes%29%20if%20the%20given%20matrix%20%24%20A%20%24%20is%20magic.%20Otherwise%20print%20%27%27NOT%20MAGIC%5C%22.%22%2C%22samples%22%3A%5B%5B%223%5Cn0%201%202%5Cn1%200%202%5Cn2%202%200%5Cn%22%2C%22MAGIC%5Cn%22%5D%2C%5B%222%5Cn0%201%5Cn2%203%5Cn%22%2C%22NOT%20MAGIC%5Cn%22%5D%2C%5B%224%5Cn0%201%202%203%5Cn1%200%203%204%5Cn2%203%200%205%5Cn3%204%205%200%5Cn%22%2C%22NOT%20MAGIC%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F632%5C%2FF%22%2C%22id%22%3A%22632F%22%7D%2C%22translation%22%3A%22%5Cu79f0%5Cu4e00%5Cu4e2a%5Cu77e9%5Cu9635%5Cu4e3a%5Cu9b54%5Cu6cd5%5Cu77e9%5Cu9635%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu6ee1%5Cu8db3%5Cu4e00%5Cu4e0b%5Cu4e09%5Cu70b9%5Cuff1a%5Cn1.%20%24%5C%5Cforall%201%20%5C%5Cle%20i%2Cj%20%5C%5Cle%20n%2C%20a_%7Bi%2Cj%7D%3Da_%7Bj%2Ci%7D%24%5Cn%5Cn2.%20%24%5C%5Cforall%201%20%5C%5Cle%20i%20%5C%5Cle%20n%2C%20a_%7Bi%2Ci%7D%20%3D%200%24%5Cn%5Cn3.%20%24%5C%5Cforall%201%20%5C%5Cle%20i%2Cj%2Ck%5C%5Cle%20n%2C%20a_%7Bi%2Cj%7D%20%5C%5Cge%20%5C%5Cmax%28a_%7Bi%2Ck%7D%2C%20a_%7Bk%2Cj%7D%29%20%24%5Cn%5Cn%5Cu8be2%5Cu95ee%5Cu4e00%5Cu4e2a%5Cu77e9%5Cu9635%5Cu662f%5Cu5426%5Cu4e3a%5Cu9b54%5Cu6cd5%5Cu77e9%5Cu9635%5Cuff0c%5Cu662f%5Cu8f93%5Cu51fa%20MAGIC%5Cuff0c%5Cu4e0d%5Cu662f%5Cu8f93%5Cu51fa%20NOT%20MAGIC%5Cn%5Cn%5Cuff08%24n%20%5C%5Cle%202500%24%5Cuff09%5Cn%5Cn%5Cu7531%20%40WJiannan%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A127%2C%22totalAccepted%22%3A47%2C%22pid%22%3A%22CF632F%22%2C%22title%22%3A%22Magic%20Matrix%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A160698%2C%22title%22%3A%22%5Cu6ce8%5Cu610f%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A10090%2C%22name%22%3A%22CF632F%20Magic%20Matrix%22%2C%22slug%22%3A%22CF632F%22%7D%7D%2C%7B%22id%22%3A42019%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A10090%2C%22name%22%3A%22CF632F%20Magic%20Matrix%22%2C%22slug%22%3A%22CF632F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3541%22%2C%22title%22%3A%22%5BPOI2012%5DLIC-Bidding%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF662C%22%2C%22title%22%3A%22Binary%20Table%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4197%22%2C%22title%22%3A%22Peaks%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4949%22%2C%22title%22%3A%22%5Cu6700%5Cu77ed%5Cu8ddd%5Cu79bb%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5205%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu591a%5Cu9879%5Cu5f0f%5Cu5f00%5Cu6839%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Magic%20Matrix%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Magic Matrix</h1>
+<h2>题意翻译</h2>
+<div>称一个矩阵为魔法矩阵，当且仅当满足一下三点：
+1. $\forall 1 \le i,j \le n, a_{i,j}=a_{j,i}$
+2. $\forall 1 \le i \le n, a_{i,i} = 0$
+3. $\forall 1 \le i,j,k\le n, a_{i,j} \ge \max(a_{i,k}, a_{k,j}) $
+询问一个矩阵是否为魔法矩阵，是输出 MAGIC，不是输出 NOT MAGIC
+（$n \le 2500$）
+由 @WJiannan 提供翻译</div>
+<h2>题目描述</h2>
+<div>You're given a matrix $ A $ of size $ n×n $ .
+Let's call the matrix with nonnegative elements magic if it is symmetric (so $ a_{ij}=a_{ji} $ ), $ a_{ii}=0 $ and $ a_{ij}<=max(a_{ik},a_{jk}) $ for all triples $ i,j,k $ . Note that $ i,j,k $ do not need to be distinct.
+Determine if the matrix is magic.
+As the input/output can reach very huge size it is recommended to use fast input/output methods: for example, prefer to use scanf/printf instead of cin/cout in C++, prefer to use BufferedReader/PrintWriter instead of Scanner/System.out in Java.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 1<=n<=2500 $ ) — the size of the matrix $ A $ .
+Each of the next $ n $ lines contains $ n $ integers $ a_{ij} $ ( $ 0<=a_{ij}&lt;10^{9} $ ) — the elements of the matrix $ A $ .
+Note that the given matrix not necessarily is symmetric and can be arbitrary.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print ''MAGIC" (without quotes) if the given matrix $ A $ is magic. Otherwise print ''NOT MAGIC".</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+0 1 2
+1 0 2
+2 2 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>MAGIC
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+0 1
+2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>NOT MAGIC
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+0 1 2 3
+1 0 3 4
+2 3 0 5
+3 4 5 0
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>NOT MAGIC
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

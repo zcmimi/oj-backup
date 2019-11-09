@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minesweeper 1D - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573393750:kqG3kG7PfGGELbBeLX9zjf9vAhyJOP2qa7l3vacoOnc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Game%20%5C%22Minesweeper%201D%5C%22%20is%20played%20on%20a%20line%20of%20squares%2C%20the%20line%27s%20height%20is%201%20square%2C%20the%20line%27s%20width%20is%20%24%20n%20%24%20squares.%20Some%20of%20the%20squares%20contain%20bombs.%20If%20a%20square%20doesn%27t%20contain%20a%20bomb%2C%20then%20it%20contains%20a%20number%20from%200%20to%202%20%5Cu2014%20the%20total%20number%20of%20bombs%20in%20adjacent%20squares.%5Cn%5CnFor%20example%2C%20the%20correct%20field%20to%20play%20looks%20like%20that%3A%20001%5C%5C%2A2%5C%5C%2A%5C%5C%2A%5C%5C%2A101%5C%5C%2A.%20The%20cells%20that%20are%20marked%20with%20%5C%22%5C%5C%2A%5C%22%20contain%20bombs.%20Note%20that%20on%20the%20correct%20field%20the%20numbers%20represent%20the%20number%20of%20bombs%20in%20adjacent%20cells.%20For%20example%2C%20field%202%5C%5C%2A%20is%20not%20correct%2C%20because%20cell%20with%20value%202%20must%20have%20two%20adjacent%20cells%20with%20bombs.%5Cn%5CnValera%20wants%20to%20make%20a%20correct%20field%20to%20play%20%5C%22Minesweeper%201D%5C%22.%20He%20has%20already%20painted%20a%20squared%20field%20with%20width%20of%20%24%20n%20%24%20cells%2C%20put%20several%20bombs%20on%20the%20field%20and%20wrote%20numbers%20into%20some%20cells.%20Now%20he%20wonders%20how%20many%20ways%20to%20fill%20the%20remaining%20cells%20with%20bombs%20and%20numbers%20are%20there%20if%20we%20should%20get%20a%20correct%20field%20in%20the%20end.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20sequence%20of%20characters%20without%20spaces%20%24%20s_%7B1%7Ds_%7B2%7D...%5C%5C%20s_%7Bn%7D%20%24%20%24%20%281%3C%3Dn%3C%3D10%5E%7B6%7D%29%20%24%20%2C%20containing%20only%20characters%20%5C%22%5C%5C%2A%5C%22%2C%20%5C%22%3F%5C%22%20and%20digits%20%5C%220%5C%22%2C%20%5C%221%5C%22%20or%20%5C%222%5C%22.%20If%20character%20%24%20s_%7Bi%7D%20%24%20equals%20%5C%22%5C%5C%2A%5C%22%2C%20then%20the%20%24%20i%20%24%20-th%20cell%20of%20the%20field%20contains%20a%20bomb.%20If%20character%20%24%20s_%7Bi%7D%20%24%20equals%20%5C%22%3F%5C%22%2C%20then%20Valera%20hasn%27t%20yet%20decided%20what%20to%20put%20in%20the%20%24%20i%20%24%20-th%20cell.%20Character%20%24%20s_%7Bi%7D%20%24%20%2C%20that%20is%20equal%20to%20a%20digit%2C%20represents%20the%20digit%20written%20in%20the%20%24%20i%20%24%20-th%20square.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20number%20of%20ways%20Valera%20can%20fill%20the%20empty%20cells%20and%20get%20a%20correct%20field.%5Cn%5CnAs%20the%20answer%20can%20be%20rather%20large%2C%20print%20it%20modulo%20%24%201000000007%20%24%20%24%20%2810%5E%7B9%7D%2B7%29%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%3F01%3F%3F%3F%5Cn%22%2C%224%5Cn%22%5D%2C%5B%22%3F%5Cn%22%2C%222%5Cn%22%5D%2C%5B%22%2A%2A12%5Cn%22%2C%220%5Cn%22%5D%2C%5B%221%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20test%20sample%20you%20can%20get%20the%20following%20correct%20fields%3A%20001%5C%5C%2A%5C%5C%2A1%2C%20001%5C%5C%2A%5C%5C%2A%5C%5C%2A%2C%20001%5C%5C%2A2%5C%5C%2A%2C%20001%5C%5C%2A10.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F404%5C%2FD%22%2C%22id%22%3A%22404D%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu9762%5Cuff1a%5Cn%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu4e32%2C%5Cu7531%270%27%2C%271%27%2C%272%27%2C%27%2A%27%2C%27%3F%27%5Cu7ec4%5Cu6210.%5Cn%5Cu6c42%5Cu5c06%27%3F%27%5Cu66ff%5Cu6362%5Cu6210%5Cu5176%5Cu4ed6%5Cu5b57%5Cu7b26%5Cu4e2d%5Cu7684%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%2C%5Cu4f7f%5Cu539f%5Cu4e32%5Cu5408%5Cu6cd5%5Cu7684%5Cu65b9%5Cu6848%5Cu6570.%5Cn%5Cu5c06%27%2A%27%5Cu89c6%5Cu4e3a%5Cu96f7%2C%5Cu6570%5Cu5b57%5Cu5c31%5Cu662f%5Cu6570%5Cu5b57%2C%5Cu5408%5Cu6cd5%5Cu4e3a%5Cu626b%5Cu96f7%5Cu5730%5Cu56fe%5Cu7684%5Cu5408%5Cu6cd5%5Cu6027.%5CnPS%5Cuff1a%5Cn%5Cu6570%5Cu5b57i%5Cu8868%5Cu793a%5Cu4ee5i%5Cu4e3a%5Cu4e2d%5Cu5fc3%5Cu7684%5Cu4e5d%5Cu5bab%5Cu683c%5Cu4e2d%5Cu53ea%5Cu6709i%5Cu4e2a%5Cu96f7.%5Cn%5Cu5982%272%2A%27%5Cu662f%5Cu975e%5Cu6cd5%5Cu7684%2C%5Cu800c%27%2A2%2A%27%5Cu662f%5Cu5408%5Cu6cd5%5Cu7684.%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cuff1a%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%2C%5Cu4ec5%5Cu7531%270%27%2C%271%27%2C%272%27%2C%27%2A%27%2C%27%3F%27%5Cu7ec4%5Cu6210.%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu6570%5Cu636e%5Cuff1a%5Cn%5Cn%5Cu4ec5%5Cu4e00%5Cu4e2a%5Cu6570%28%251e9%2B7%29.%5Cn%5Cn%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cuff1a%5Cn%5Cnlenth%28s%29%3A%5B1%2C1e6%5D%5Cn%5Cn%5Cu611f%5Cu8c22%40%5Cu5c18%5Cu67d3%5Cu68a6%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A60%2C%22totalAccepted%22%3A34%2C%22pid%22%3A%22CF404D%22%2C%22title%22%3A%22Minesweeper%201D%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A33213%2C%22title%22%3A%22%5B%5Cu7ffb%5Cu8bd1%5DCF404D%22%2C%22forum%22%3A%7B%22id%22%3A11023%2C%22name%22%3A%22CF404D%20Minesweeper%201D%22%2C%22slug%22%3A%22CF404D%22%7D%7D%2C%7B%22id%22%3A33175%2C%22title%22%3A%22%5Cu8bb0%5Cu5f97%5Cu5f00long%20long%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A11023%2C%22name%22%3A%22CF404D%20Minesweeper%201D%22%2C%22slug%22%3A%22CF404D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2146%22%2C%22title%22%3A%22%5BNOI2015%5D%5Cu8f6f%5Cu4ef6%5Cu5305%5Cu7ba1%5Cu7406%5Cu5668%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3620%22%2C%22title%22%3A%22%5BAPIO%5C%2FCTSC%202007%5D%5Cu6570%5Cu636e%5Cu5907%5Cu4efd%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2939%22%2C%22title%22%3A%22%5BUSACO09FEB%5D%5Cu6539%5Cu9020%5Cu8defRevamping%20Trails%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3338%22%2C%22title%22%3A%22%5BZJOI2014%5D%5Cu529b%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4195%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011exBSGS%5C%2FSpoj3105%20Mod%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minesweeper%201D%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minesweeper 1D</h1>
+<h2>题意翻译</h2>
+<div>题面：
+给定一个串,由'0','1','2','*','?'组成.
+求将'?'替换成其他字符中的任意一个,使原串合法的方案数.
+将'*'视为雷,数字就是数字,合法为扫雷地图的合法性.
+PS：
+数字i表示以i为中心的九宫格中只有i个雷.
+如'2*'是非法的,而'*2*'是合法的.
+输入数据：
+一个字符串,仅由'0','1','2','*','?'组成.
+输出数据：
+仅一个数(%1e9+7).
+数据范围：
+lenth(s):[1,1e6]
+感谢@尘染梦 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Game "Minesweeper 1D" is played on a line of squares, the line's height is 1 square, the line's width is $ n $ squares. Some of the squares contain bombs. If a square doesn't contain a bomb, then it contains a number from 0 to 2 — the total number of bombs in adjacent squares.
+For example, the correct field to play looks like that: 001\*2\*\*\*101\*. The cells that are marked with "\*" contain bombs. Note that on the correct field the numbers represent the number of bombs in adjacent cells. For example, field 2\* is not correct, because cell with value 2 must have two adjacent cells with bombs.
+Valera wants to make a correct field to play "Minesweeper 1D". He has already painted a squared field with width of $ n $ cells, put several bombs on the field and wrote numbers into some cells. Now he wonders how many ways to fill the remaining cells with bombs and numbers are there if we should get a correct field in the end.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains sequence of characters without spaces $ s_{1}s_{2}...\ s_{n} $ $ (1<=n<=10^{6}) $ , containing only characters "\*", "?" and digits "0", "1" or "2". If character $ s_{i} $ equals "\*", then the $ i $ -th cell of the field contains a bomb. If character $ s_{i} $ equals "?", then Valera hasn't yet decided what to put in the $ i $ -th cell. Character $ s_{i} $ , that is equal to a digit, represents the digit written in the $ i $ -th square.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the number of ways Valera can fill the empty cells and get a correct field.
+As the answer can be rather large, print it modulo $ 1000000007 $ $ (10^{9}+7) $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>?01???
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>?
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>**12
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>1
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>0
+</code></pre>
+<h2>说明</h2>
+<div>In the first test sample you can get the following correct fields: 001\*\*1, 001\*\*\*, 001\*2\*, 001\*10.</div>
+</article>
+</div>
+</div>
+</body>
+</html>
