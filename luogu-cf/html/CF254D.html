@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Rats - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392092:o0U1Qn2YknoeqFSLoVS9n8XQtHFUIov7ntFGzIIggWY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Rats%20have%20bred%20to%20hundreds%20and%20hundreds%20in%20the%20basement%20of%20the%20store%2C%20owned%20by%20Vasily%20Petrovich.%20Vasily%20Petrovich%20may%20have%20not%20noticed%20their%20presence%2C%20but%20they%20got%20into%20the%20habit%20of%20sneaking%20into%20the%20warehouse%20and%20stealing%20food%20from%20there.%20Vasily%20Petrovich%20cannot%20put%20up%20with%20it%20anymore%2C%20he%20has%20to%20destroy%20the%20rats%20in%20the%20basement.%20Since%20mousetraps%20are%20outdated%20and%20do%20not%20help%2C%20and%20rat%20poison%20can%20poison%20inattentive%20people%20as%20well%20as%20rats%2C%20he%20chose%20a%20radical%20way%3A%20to%20blow%20up%20two%20grenades%20in%20the%20basement%20%28he%20does%20not%20have%20more%29.%5Cn%5CnIn%20this%20problem%2C%20we%20will%20present%20the%20shop%20basement%20as%20a%20rectangular%20table%20of%20%24%20n%5Cu00d7m%20%24%20cells.%20Some%20of%20the%20cells%20are%20occupied%20by%20walls%2C%20and%20the%20rest%20of%20them%20are%20empty.%20Vasily%20has%20been%20watching%20the%20rats%20and%20he%20found%20out%20that%20at%20a%20certain%20time%20they%20go%20to%20sleep%2C%20and%20all%20the%20time%20they%20sleep%20in%20the%20same%20places.%20He%20wants%20to%20blow%20up%20a%20grenade%20when%20this%20convenient%20time%20comes.%20On%20the%20plan%20of%20his%20basement%2C%20he%20marked%20cells%20with%20sleeping%20rats%20in%20them.%20Naturally%2C%20these%20cells%20are%20not%20occupied%20by%20walls.%5Cn%5CnGrenades%20can%20only%20blow%20up%20in%20a%20cell%20that%20is%20not%20occupied%20by%20a%20wall.%20The%20blast%20wave%20from%20a%20grenade%20distributes%20as%20follows.%20We%20assume%20that%20the%20grenade%20blast%20occurs%20at%20time%200.%20During%20this%20initial%20time%20only%20the%20cell%20where%20the%20grenade%20blew%20up%20gets%20%27clear%27.%20If%20at%20time%20%24%20t%20%24%20some%20cell%20is%20clear%2C%20then%20at%20time%20%24%20t%2B1%20%24%20those%20side-neighbouring%20cells%20which%20are%20not%20occupied%20by%20the%20walls%20get%20clear%20too%20%28some%20of%20them%20could%20have%20been%20cleared%20before%29.%20The%20blast%20wave%20distributes%20for%20exactly%20%24%20d%20%24%20seconds%2C%20then%20it%20dies%20immediately.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF254D%5C%2Fb144e2334a4b3ed6e085b2980cabe248fcd67fba.png%29An%20example%20of%20a%20distributing%20blast%20wave%3A%20Picture%201%20shows%20the%20situation%20before%20the%20blast%2C%20and%20the%20following%20pictures%20show%20%5C%22clear%5C%22%20cells%20by%20time%200%2C1%2C2%2C3%20and%204.%20Thus%2C%20the%20blast%20wave%20on%20the%20picture%20distributes%20for%20%24%20d%3D4%20%24%20seconds.Vasily%20Petrovich%20wonders%2C%20whether%20he%20can%20choose%20two%20cells%20to%20blast%20the%20grenades%20so%20as%20to%20clear%20all%20cells%20with%20sleeping%20rats.%20Write%20the%20program%20that%20finds%20it%20out.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20d%20%24%20%2C%20separated%20by%20single%20spaces%20%28%20%24%204%3C%3Dn%2Cm%3C%3D1000%2C1%3C%3Dd%3C%3D8%20%24%20%29.%20Next%20%24%20n%20%24%20lines%20contain%20the%20table%20that%20represents%20the%20basement%20plan.%20Each%20row%20of%20the%20table%20consists%20of%20%24%20m%20%24%20characters.%20Character%20%5C%22X%5C%22%20means%20that%20the%20corresponding%20cell%20is%20occupied%20by%20the%20wall%2C%20character%20%5C%22.%5C%22%20represents%20a%20empty%20cell%2C%20character%20%5C%22R%5C%22%20represents%20a%20empty%20cell%20with%20sleeping%20rats.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20first%20and%20the%20last%20row%2C%20as%20well%20as%20the%20first%20and%20the%20last%20column%20consist%20of%20characters%20%5C%22X%5C%22.%20The%20plan%20has%20at%20least%20two%20empty%20cells.%20There%20is%20at%20least%20one%20cell%20with%20sleeping%20rats.%22%2C%22outputFormat%22%3A%22If%20it%20is%20impossible%20to%20blow%20up%20all%20cells%20with%20sleeping%20rats%2C%20print%20a%20single%20integer%20-1.%20Otherwise%2C%20print%20four%20space-separated%20integers%20%24%20r_%7B1%7D%2Cc_%7B1%7D%2Cr_%7B2%7D%2Cc_%7B2%7D%20%24%20%2C%20that%20mean%20that%20one%20grenade%20should%20go%20off%20in%20cell%20%24%20%28r_%7B1%7D%2Cc_%7B1%7D%29%20%24%20%2C%20and%20the%20other%20one%20%5Cu2014%20in%20cell%20%24%20%28r_%7B2%7D%2Cc_%7B2%7D%29%20%24%20.%5Cn%5CnConsider%20the%20table%20rows%20numbered%20from%20top%20to%20bottom%20from%201%20to%20%24%20n%20%24%20and%20the%20table%20columns%20%5Cu2014%20from%20left%20to%20right%20from%201%20to%20%24%20m%20%24%20.%20As%20%24%20r_%7B1%7D%20%24%20and%20%24%20r_%7B2%7D%20%24%20represent%20the%20row%20numbers%2C%20and%20%24%20c_%7B1%7D%20%24%20and%20%24%20c_%7B2%7D%20%24%20represent%20the%20column%20numbers%20in%20the%20table%2C%20they%20should%20fit%20the%20limits%3A%20%24%201%3C%3Dr_%7B1%7D%2Cr_%7B2%7D%3C%3Dn%2C1%3C%3Dc_%7B1%7D%2Cc_%7B2%7D%3C%3Dm%20%24%20.%20It%20is%20forbidden%20to%20blow%20a%20grenade%20twice%20in%20the%20same%20cell.%20The%20blast%20waves%20of%20the%20grenades%20can%20intersect.%20It%20is%20possible%20that%20one%20grenade%20blast%20destroys%20no%20rats%2C%20and%20the%20other%20one%20destroys%20all%20of%20them.%22%2C%22samples%22%3A%5B%5B%224%204%201%5CnXXXX%5CnXR.X%5CnX.RX%5CnXXXX%5Cn%22%2C%222%202%202%203%5Cn%22%5D%2C%5B%229%2014%205%5CnXXXXXXXXXXXXXX%5CnX....R...R...X%5CnX..R.........X%5CnX....RXR..R..X%5CnX..R...X.....X%5CnXR.R...X.....X%5CnX....XXR.....X%5CnX....R..R.R..X%5CnXXXXXXXXXXXXXX%5Cn%22%2C%222%203%206%209%5Cn%22%5D%2C%5B%227%207%201%5CnXXXXXXX%5CnX.R.R.X%5CnX.....X%5CnX..X..X%5CnX..R..X%5CnX....RX%5CnXXXXXXX%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F254%5C%2FD%22%2C%22id%22%3A%22254D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A34%2C%22totalAccepted%22%3A7%2C%22pid%22%3A%22CF254D%22%2C%22title%22%3A%22Rats%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Rats%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Rats</h1>
+<h2>题目描述</h2>
+<div>Rats have bred to hundreds and hundreds in the basement of the store, owned by Vasily Petrovich. Vasily Petrovich may have not noticed their presence, but they got into the habit of sneaking into the warehouse and stealing food from there. Vasily Petrovich cannot put up with it anymore, he has to destroy the rats in the basement. Since mousetraps are outdated and do not help, and rat poison can poison inattentive people as well as rats, he chose a radical way: to blow up two grenades in the basement (he does not have more).
+In this problem, we will present the shop basement as a rectangular table of $ n×m $ cells. Some of the cells are occupied by walls, and the rest of them are empty. Vasily has been watching the rats and he found out that at a certain time they go to sleep, and all the time they sleep in the same places. He wants to blow up a grenade when this convenient time comes. On the plan of his basement, he marked cells with sleeping rats in them. Naturally, these cells are not occupied by walls.
+Grenades can only blow up in a cell that is not occupied by a wall. The blast wave from a grenade distributes as follows. We assume that the grenade blast occurs at time 0. During this initial time only the cell where the grenade blew up gets 'clear'. If at time $ t $ some cell is clear, then at time $ t+1 $ those side-neighbouring cells which are not occupied by the walls get clear too (some of them could have been cleared before). The blast wave distributes for exactly $ d $ seconds, then it dies immediately.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF254D/b144e2334a4b3ed6e085b2980cabe248fcd67fba.png)An example of a distributing blast wave: Picture 1 shows the situation before the blast, and the following pictures show "clear" cells by time 0,1,2,3 and 4. Thus, the blast wave on the picture distributes for $ d=4 $ seconds.Vasily Petrovich wonders, whether he can choose two cells to blast the grenades so as to clear all cells with sleeping rats. Write the program that finds it out.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ and $ d $ , separated by single spaces ( $ 4<=n,m<=1000,1<=d<=8 $ ). Next $ n $ lines contain the table that represents the basement plan. Each row of the table consists of $ m $ characters. Character "X" means that the corresponding cell is occupied by the wall, character "." represents a empty cell, character "R" represents a empty cell with sleeping rats.
+It is guaranteed that the first and the last row, as well as the first and the last column consist of characters "X". The plan has at least two empty cells. There is at least one cell with sleeping rats.</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is impossible to blow up all cells with sleeping rats, print a single integer -1. Otherwise, print four space-separated integers $ r_{1},c_{1},r_{2},c_{2} $ , that mean that one grenade should go off in cell $ (r_{1},c_{1}) $ , and the other one — in cell $ (r_{2},c_{2}) $ .
+Consider the table rows numbered from top to bottom from 1 to $ n $ and the table columns — from left to right from 1 to $ m $ . As $ r_{1} $ and $ r_{2} $ represent the row numbers, and $ c_{1} $ and $ c_{2} $ represent the column numbers in the table, they should fit the limits: $ 1<=r_{1},r_{2}<=n,1<=c_{1},c_{2}<=m $ . It is forbidden to blow a grenade twice in the same cell. The blast waves of the grenades can intersect. It is possible that one grenade blast destroys no rats, and the other one destroys all of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 4 1
+XXXX
+XR.X
+X.RX
+XXXX
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 2 2 3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>9 14 5
+XXXXXXXXXXXXXX
+X....R...R...X
+X..R.........X
+X....RXR..R..X
+X..R...X.....X
+XR.R...X.....X
+X....XXR.....X
+X....R..R.R..X
+XXXXXXXXXXXXXX
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 3 6 9
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>7 7 1
+XXXXXXX
+X.R.R.X
+X.....X
+X..X..X
+X..R..X
+X....RX
+XXXXXXX
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>-1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tree-String Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392386:k1kb143y1K/h9lozhwA2w29KQBQnJ/WzLfBB2GI4YN0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20rooted%20tree%20is%20a%20non-directed%20connected%20graph%20without%20any%20cycles%20with%20a%20distinguished%20vertex%2C%20which%20is%20called%20the%20tree%20root.%20Consider%20the%20vertices%20of%20a%20rooted%20tree%2C%20that%20consists%20of%20%24%20n%20%24%20vertices%2C%20numbered%20from%201%20to%20%24%20n%20%24%20.%20In%20this%20problem%20the%20tree%20root%20is%20the%20vertex%20number%201.%5Cn%5CnLet%27s%20represent%20the%20length%20of%20the%20shortest%20by%20the%20number%20of%20edges%20path%20in%20the%20tree%20between%20vertices%20%24%20v%20%24%20and%20%24%20u%20%24%20as%20%24%20d%28v%2Cu%29%20%24%20.%5Cn%5CnA%20parent%20of%20vertex%20%24%20v%20%24%20in%20the%20rooted%20tree%20with%20the%20root%20in%20vertex%20%24%20r%20%24%20%24%20%28v%5Cu2260r%29%20%24%20is%20vertex%20%24%20p_%7Bv%7D%20%24%20%2C%20such%20that%20%24%20d%28r%2Cp_%7Bv%7D%29%2B1%3Dd%28r%2Cv%29%20%24%20and%20%20%24%20d%28p_%7Bv%7D%2Cv%29%3D1%20%24%20.%20For%20example%2C%20on%20the%20picture%20the%20parent%20of%20vertex%20%24%20v%3D5%20%24%20is%20vertex%20%24%20p_%7B5%7D%3D2%20%24%20.%5Cn%5CnOne%20day%20Polycarpus%20came%20across%20a%20rooted%20tree%2C%20consisting%20of%20%24%20n%20%24%20vertices.%20The%20tree%20wasn%27t%20exactly%20ordinary%3A%20it%20had%20strings%20written%20on%20its%20edges.%20Polycarpus%20positioned%20the%20tree%20on%20the%20plane%20so%20as%20to%20make%20all%20edges%20lead%20from%20top%20to%20bottom%20if%20you%20go%20from%20the%20vertex%20parent%20to%20the%20vertex%20%28see%20the%20picture%29.%20For%20any%20edge%20that%20lead%20from%20vertex%20%24%20p_%7Bv%7D%20%24%20to%20vertex%20%24%20v%20%24%20%24%20%281%26lt%3Bv%3C%3Dn%29%20%24%20%2C%20he%20knows%20string%20%24%20s_%7Bv%7D%20%24%20that%20is%20written%20on%20it.%20All%20strings%20are%20written%20on%20the%20edges%20from%20top%20to%20bottom.%20For%20example%2C%20on%20the%20picture%20%24%20s_%7B7%7D%20%24%20%3D%5C%22ba%5C%22.%20The%20characters%20in%20the%20strings%20are%20numbered%20starting%20from%200.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF291E%5C%2F5987d6fa331503653665dfdb5083832d68b0b965.png%29An%20example%20of%20Polycarpus%27s%20tree%20%28corresponds%20to%20the%20example%20from%20the%20statement%29Polycarpus%20defines%20the%20position%20in%20this%20tree%20as%20a%20specific%20letter%20on%20a%20specific%20string.%20The%20position%20is%20written%20as%20a%20pair%20of%20integers%20%24%20%28v%2Cx%29%20%24%20that%20means%20that%20the%20position%20is%20the%20%24%20x%20%24%20-th%20letter%20of%20the%20string%20%24%20s_%7Bv%7D%20%24%20%28%20%24%201%26lt%3Bv%3C%3Dn%20%24%20%2C%20%24%200%3C%3Dx%26lt%3B%7Cs_%7Bv%7D%7C%20%24%20%29%2C%20where%20%24%20%7Cs_%7Bv%7D%7C%20%24%20is%20the%20length%20of%20string%20%24%20s_%7Bv%7D%20%24%20.%20For%20example%2C%20the%20highlighted%20letters%20are%20positions%20%28%20%24%202%2C1%20%24%20%29%20and%20%28%20%24%203%2C1%20%24%20%29.%5Cn%5CnLet%27s%20consider%20the%20pair%20of%20positions%20%24%20%28v%2Cx%29%20%24%20and%20%24%20%28u%2Cy%29%20%24%20in%20Polycarpus%27%20tree%2C%20such%20that%20the%20way%20from%20the%20first%20position%20to%20the%20second%20goes%20down%20on%20each%20step.%20We%20will%20consider%20that%20the%20pair%20of%20such%20positions%20defines%20string%20%24%20z%20%24%20.%20String%20%24%20z%20%24%20consists%20of%20all%20letters%20on%20the%20way%20from%20%24%20%28v%2Cx%29%20%24%20to%20%24%20%28u%2Cy%29%20%24%20%2C%20written%20in%20the%20order%20of%20this%20path.%20For%20example%2C%20in%20the%20picture%20the%20highlighted%20positions%20define%20string%20%5C%22bacaba%5C%22.%5Cn%5CnPolycarpus%20has%20a%20string%20%24%20t%20%24%20%2C%20he%20wants%20to%20know%20the%20number%20of%20pairs%20of%20positions%20that%20define%20string%20%24%20t%20%24%20.%20Note%20that%20the%20way%20from%20the%20first%20position%20to%20the%20second%20in%20the%20pair%20must%20go%20down%20everywhere.%20Help%20him%20with%20this%20challenging%20tree-string%20problem%21%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%24%20%282%3C%3Dn%3C%3D10%5E%7B5%7D%29%20%24%20%5Cu2014%20the%20number%20of%20vertices%20of%20Polycarpus%27s%20tree.%20Next%20%24%20n-1%20%24%20lines%20contain%20the%20tree%20edges.%20The%20%24%20i%20%24%20-th%20of%20them%20contains%20number%20%24%20p_%7Bi%2B1%7D%20%24%20and%20string%20%24%20s_%7Bi%2B1%7D%20%24%20%24%20%281%3C%3Dp_%7Bi%2B1%7D%3C%3Dn%3B%5Cu00a0p_%7Bi%2B1%7D%5Cu2260%28i%2B1%29%29%20%24%20.%20String%20%24%20s_%7Bi%2B1%7D%20%24%20is%20non-empty%20and%20consists%20of%20lowercase%20English%20letters.%20The%20last%20line%20contains%20string%20%24%20t%20%24%20.%20String%20%24%20t%20%24%20consists%20of%20lowercase%20English%20letters%2C%20its%20length%20is%20at%20least%202.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20input%20contains%20at%20most%20%24%203%5Cu00b710%5E%7B5%7D%20%24%20English%20letters.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20required%20number.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specifier%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20preferred%20to%20use%20the%20cin%2C%20cout%20streams%20or%20the%20%25I64d%20specifier.%22%2C%22samples%22%3A%5B%5B%227%5Cn1%20ab%5Cn5%20bacaba%5Cn1%20abacaba%5Cn2%20aca%5Cn5%20ba%5Cn2%20ba%5Cnaba%5Cn%22%2C%226%5Cn%22%5D%2C%5B%227%5Cn1%20ab%5Cn5%20bacaba%5Cn1%20abacaba%5Cn2%20aca%5Cn5%20ba%5Cn2%20ba%5Cnbacaba%5Cn%22%2C%224%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20test%20case%20string%20%5C%22aba%5C%22%20is%20determined%20by%20the%20pairs%20of%20positions%3A%20%282%2C%200%29%20and%20%285%2C%200%29%3B%20%285%2C%202%29%20and%20%286%2C%201%29%3B%20%285%2C%202%29%20and%20%283%2C%201%29%3B%20%284%2C%200%29%20and%20%284%2C%202%29%3B%20%284%2C%204%29%20and%20%284%2C%206%29%3B%20%283%2C%203%29%20and%20%283%2C%205%29.%5Cn%5CnNote%20that%20the%20string%20is%20not%20defined%20by%20the%20pair%20of%20positions%20%287%2C%201%29%20and%20%285%2C%200%29%2C%20as%20the%20way%20between%20them%20doesn%27t%20always%20go%20down.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F291%5C%2FE%22%2C%22id%22%3A%22291E%22%7D%2C%22translation%22%3A%22%5Cu4e00%5Cu9897%24n%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu4ee5%5Cu4e00%5Cu4e3a%5Cu6839%5Cu7684%5Cu6811%5Cuff0c%5Cu6811%5Cu8fb9%5Cu4e0a%5Cu6709%5Cu5c0f%5Cu5199%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu4e32%5Cu5b9a%5Cu4e49%5Cu4e3a%5Cu4ece%5Cu6839%5Cu5230%5Cu8282%5Cu70b9%5Cu7684%5Cu8def%5Cu5f84%5Cu4e0a%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu76f8%5Cu8fde%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6c42%5Cu4e32%24t%24%5Cu5728%5Cu6240%5Cu6709%5Cu8282%5Cu70b9%5Cu7684%5Cu4e32%5Cu4e2d%5Cu51fa%5Cu73b0%5Cu7684%5Cu6b21%5Cu6570%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A25%2C%22totalAccepted%22%3A11%2C%22pid%22%3A%22CF291E%22%2C%22title%22%3A%22Tree-String%20Problem%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Tree-String%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Tree-String Problem</h1>
+<h2>题意翻译</h2>
+<div>一颗$n$个节点的以一为根的树，树边上有小写字符串。
+一个节点的串定义为从根到节点的路径上的字符串相连。
+求串$t$在所有节点的串中出现的次数。</div>
+<h2>题目描述</h2>
+<div>A rooted tree is a non-directed connected graph without any cycles with a distinguished vertex, which is called the tree root. Consider the vertices of a rooted tree, that consists of $ n $ vertices, numbered from 1 to $ n $ . In this problem the tree root is the vertex number 1.
+Let's represent the length of the shortest by the number of edges path in the tree between vertices $ v $ and $ u $ as $ d(v,u) $ .
+A parent of vertex $ v $ in the rooted tree with the root in vertex $ r $ $ (v≠r) $ is vertex $ p_{v} $ , such that $ d(r,p_{v})+1=d(r,v) $ and $ d(p_{v},v)=1 $ . For example, on the picture the parent of vertex $ v=5 $ is vertex $ p_{5}=2 $ .
+One day Polycarpus came across a rooted tree, consisting of $ n $ vertices. The tree wasn't exactly ordinary: it had strings written on its edges. Polycarpus positioned the tree on the plane so as to make all edges lead from top to bottom if you go from the vertex parent to the vertex (see the picture). For any edge that lead from vertex $ p_{v} $ to vertex $ v $ $ (1&lt;v<=n) $ , he knows string $ s_{v} $ that is written on it. All strings are written on the edges from top to bottom. For example, on the picture $ s_{7} $ ="ba". The characters in the strings are numbered starting from 0.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF291E/5987d6fa331503653665dfdb5083832d68b0b965.png)An example of Polycarpus's tree (corresponds to the example from the statement)Polycarpus defines the position in this tree as a specific letter on a specific string. The position is written as a pair of integers $ (v,x) $ that means that the position is the $ x $ -th letter of the string $ s_{v} $ ( $ 1&lt;v<=n $ , $ 0<=x&lt;|s_{v}| $ ), where $ |s_{v}| $ is the length of string $ s_{v} $ . For example, the highlighted letters are positions ( $ 2,1 $ ) and ( $ 3,1 $ ).
+Let's consider the pair of positions $ (v,x) $ and $ (u,y) $ in Polycarpus' tree, such that the way from the first position to the second goes down on each step. We will consider that the pair of such positions defines string $ z $ . String $ z $ consists of all letters on the way from $ (v,x) $ to $ (u,y) $ , written in the order of this path. For example, in the picture the highlighted positions define string "bacaba".
+Polycarpus has a string $ t $ , he wants to know the number of pairs of positions that define string $ t $ . Note that the way from the first position to the second in the pair must go down everywhere. Help him with this challenging tree-string problem!</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ $ (2<=n<=10^{5}) $ — the number of vertices of Polycarpus's tree. Next $ n-1 $ lines contain the tree edges. The $ i $ -th of them contains number $ p_{i+1} $ and string $ s_{i+1} $ $ (1<=p_{i+1}<=n; p_{i+1}≠(i+1)) $ . String $ s_{i+1} $ is non-empty and consists of lowercase English letters. The last line contains string $ t $ . String $ t $ consists of lowercase English letters, its length is at least 2.
+It is guaranteed that the input contains at most $ 3·10^{5} $ English letters.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the required number.
+Please, do not use the %lld specifier to read or write 64-bit integers in С++. It is preferred to use the cin, cout streams or the %I64d specifier.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7
+1 ab
+5 bacaba
+1 abacaba
+2 aca
+5 ba
+2 ba
+aba
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7
+1 ab
+5 bacaba
+1 abacaba
+2 aca
+5 ba
+2 ba
+bacaba
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4
+</code></pre>
+<h2>说明</h2>
+<div>In the first test case string "aba" is determined by the pairs of positions: (2, 0) and (5, 0); (5, 2) and (6, 1); (5, 2) and (3, 1); (4, 0) and (4, 2); (4, 4) and (4, 6); (3, 3) and (3, 5).
+Note that the string is not defined by the pair of positions (7, 1) and (5, 0), as the way between them doesn't always go down.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

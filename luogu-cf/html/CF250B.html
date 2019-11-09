@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Restoring IPv6 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392062:Jk9PwI2EtqtYd7YFcl89Y7RdFvCxzX7n9xrA/Urnogs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22An%20IPv6-address%20is%20a%20128-bit%20number.%20For%20convenience%2C%20this%20number%20is%20recorded%20in%20blocks%20of%2016%20bits%20in%20hexadecimal%20record%2C%20the%20blocks%20are%20separated%20by%20colons%20%5Cu2014%208%20blocks%20in%20total%2C%20each%20block%20has%20four%20hexadecimal%20digits.%20Here%20is%20an%20example%20of%20the%20correct%20record%20of%20a%20IPv6%20address%3A%20%5C%220124%3A5678%3A90ab%3Acdef%3A0124%3A5678%3A90ab%3Acdef%5C%22.%20We%27ll%20call%20such%20format%20of%20recording%20an%20IPv6-address%20full.%5Cn%5CnBesides%20the%20full%20record%20of%20an%20IPv6%20address%20there%20is%20a%20short%20record%20format.%20The%20record%20of%20an%20IPv6%20address%20can%20be%20shortened%20by%20removing%20one%20or%20more%20leading%20zeroes%20at%20the%20beginning%20of%20each%20block.%20However%2C%20each%20block%20should%20contain%20at%20least%20one%20digit%20in%20the%20short%20format.%20For%20example%2C%20the%20leading%20zeroes%20can%20be%20removed%20like%20that%3A%20%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3Af19a%3A1000%3A0000%5C%22%20%24%20%5Cu2192%20%24%20%5C%22a56f%3Ad3%3A0%3A0124%3A01%3Af19a%3A1000%3A00%5C%22.%20There%20are%20more%20ways%20to%20shorten%20zeroes%20in%20this%20IPv6%20address.%5Cn%5CnSome%20IPv6%20addresses%20contain%20long%20sequences%20of%20zeroes.%20Continuous%20sequences%20of%2016-bit%20zero%20blocks%20can%20be%20shortened%20to%20%5C%22%3A%3A%5C%22.%20A%20sequence%20can%20consist%20of%20one%20or%20several%20consecutive%20blocks%2C%20with%20all%2016%20bits%20equal%20to%200.%5Cn%5CnYou%20can%20see%20examples%20of%20zero%20block%20shortenings%20below%3A%5Cn%5Cn-%20%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3A0000%3A0000%3A0000%5C%22%20%24%20%5Cu2192%20%24%20%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3A%3A%5C%22%3B%5Cn-%20%5C%22a56f%3A0000%3A0000%3A0124%3A0001%3A0000%3A1234%3A0ff0%5C%22%20%24%20%5Cu2192%20%24%20%5C%22a56f%3A%3A0124%3A0001%3A0000%3A1234%3A0ff0%5C%22%3B%5Cn-%20%5C%22a56f%3A0000%3A0000%3A0000%3A0001%3A0000%3A1234%3A0ff0%5C%22%20%24%20%5Cu2192%20%24%20%5C%22a56f%3A0000%3A%3A0000%3A0001%3A0000%3A1234%3A0ff0%5C%22%3B%5Cn-%20%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3A0000%3A0000%3A0000%5C%22%20%24%20%5Cu2192%20%24%20%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3A%3A0000%5C%22%3B%5Cn-%20%5C%220000%3A0000%3A0000%3A0000%3A0000%3A0000%3A0000%3A0000%5C%22%20%24%20%5Cu2192%20%24%20%5C%22%3A%3A%5C%22.%5Cn%5CnIt%20is%20not%20allowed%20to%20shorten%20zero%20blocks%20in%20the%20address%20more%20than%20once.%20This%20means%20that%20the%20short%20record%20can%27t%20contain%20the%20sequence%20of%20characters%20%5C%22%3A%3A%5C%22%20more%20than%20once.%20Otherwise%2C%20it%20will%20sometimes%20be%20impossible%20to%20determine%20the%20number%20of%20zero%20blocks%2C%20each%20represented%20by%20a%20double%20colon.%5Cn%5CnThe%20format%20of%20the%20record%20of%20the%20IPv6%20address%20after%20removing%20the%20leading%20zeroes%20and%20shortening%20the%20zero%20blocks%20is%20called%20short.%5Cn%5CnYou%27ve%20got%20several%20short%20records%20of%20IPv6%20addresses.%20Restore%20their%20full%20record.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%5Cu2014%20the%20number%20of%20records%20to%20restore%20%28%20%24%201%3C%3Dn%3C%3D100%20%24%20%29.%5Cn%5CnEach%20of%20the%20following%20%24%20n%20%24%20lines%20contains%20a%20string%20%5Cu2014%20the%20short%20IPv6%20addresses.%20Each%20string%20only%20consists%20of%20string%20characters%20%5C%220123456789abcdef%3A%5C%22.%5Cn%5CnIt%20is%20guaranteed%20that%20each%20short%20address%20is%20obtained%20by%20the%20way%20that%20is%20described%20in%20the%20statement%20from%20some%20full%20IPv6%20address.%22%2C%22outputFormat%22%3A%22For%20each%20short%20IPv6%20address%20from%20the%20input%20print%20its%20full%20record%20on%20a%20separate%20line.%20Print%20the%20full%20records%20for%20the%20short%20IPv6%20addresses%20in%20the%20order%2C%20in%20which%20the%20short%20records%20follow%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%226%5Cna56f%3Ad3%3A0%3A0124%3A01%3Af19a%3A1000%3A00%5Cna56f%3A00d3%3A0000%3A0124%3A0001%3A%3A%5Cna56f%3A%3A0124%3A0001%3A0000%3A1234%3A0ff0%5Cna56f%3A0000%3A%3A0000%3A0001%3A0000%3A1234%3A0ff0%5Cn%3A%3A%5Cn0ea%3A%3A4d%3Af4%3A6%3A0%5Cn%22%2C%22a56f%3A00d3%3A0000%3A0124%3A0001%3Af19a%3A1000%3A0000%5Cna56f%3A00d3%3A0000%3A0124%3A0001%3A0000%3A0000%3A0000%5Cna56f%3A0000%3A0000%3A0124%3A0001%3A0000%3A1234%3A0ff0%5Cna56f%3A0000%3A0000%3A0000%3A0001%3A0000%3A1234%3A0ff0%5Cn0000%3A0000%3A0000%3A0000%3A0000%3A0000%3A0000%3A0000%5Cn00ea%3A0000%3A0000%3A0000%3A004d%3A00f4%3A0006%3A0000%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F250%5C%2FB%22%2C%22id%22%3A%22250B%22%7D%2C%22translation%22%3A%22IPv6%5Cu5730%5Cu5740%5Cu662f%5Cu4e00%5Cu4e2a128%5Cu4f4d%5Cu7684%5Cu6570%5Cu5b57%5Cu3002%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu65b9%5Cu4fbf%5Cu8d77%5Cu89c1%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu5b57%5Cu88ab%5Cu8bb0%5Cu5f55%5Cu5728%5Cu5341%5Cu516d%5Cu8fdb%5Cu5236%5Cu8bb0%5Cu5f55%5Cu4e2d%5Cu768416%5Cu4f4d%5Cu5757%5Cu4e2d%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu5757%5Cu7531%5Cu5192%5Cu53f7%5Cu5206%5Cu9694%5Cu62108%5Cu4e2a%5Cu5757%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5206%5Cu5757%5Cu6709%5Cu56db%5Cu4e2a%5Cu5341%5Cu516d%5Cu8fdb%5Cu5236%5Cu6570%5Cu5b57%5Cu3002%5Cu4e0b%5Cu9762%5Cu662f%5Cu4e00%5Cu4e2aIPv6%5Cu5730%5Cu5740%5Cu6b63%5Cu786e%5Cu538b%5Cu7f29%5Cu7684%5Cu4f8b%5Cu5b50%5Cn%5Cn%5Cuff1a%5Cu201c0124%3A5678%3A90Ab%3ACDEF%3A0124%3A5678%3A90Ab%3ACDEF%5Cu201d%5Cu3002%5Cn%5Cn%5Cu6211%5Cu4eec%5Cu5c06%5Cu79f0%5Cu8fd9%5Cu79cd%5Cu683c%5Cu5f0f%5Cu7684IPv6%5Cu5730%5Cu5740%5Cu8bb0%5Cu5f55%5Cu5b8c%5Cu6574%5Cu3002%5Cn%20%5Cu9664%5Cu4e86IPv6%5Cu5730%5Cu5740%5Cu7684%5Cu5b8c%5Cu6574%5Cu8bb0%5Cu5f55%5Cu5916%5Cuff0c%5Cu8fd8%5Cu6709%5Cu4e00%5Cu4e2a%5Cu77ed%5Cu7684%5Cu8bb0%5Cu5f55%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%20%5Cn%20IPv6%5Cu5730%5Cu5740%5Cu7684%5Cu8bb0%5Cu5f55%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu5728%5Cu6bcf%5Cu4e2a%5Cu5757%5Cu7684%5Cu5f00%5Cu59cb%5Cu5904%5Cu79fb%5Cu9664%5Cu4e00%5Cu4e2a%5Cu6216%5Cu591a%5Cu4e2a%5Cu524d%5Cu5bfc%5Cu96f6%5Cu6765%5Cu7f29%5Cu77ed%5Cu3002%5Cu4f46%5Cu662f%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5757%5Cu5e94%5Cu8be5%5Cu81f3%5Cu5c11%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cu3002%5Cn%20%5Cn%20%5Cu4f8b%5Cu5982%5Cuff0c%5Cu524d%5Cu5bfc%5Cu96f6%5Cu70b9%5Cu53ef%5Cu4ee5%5Cu50cf%5Cu8fd9%5Cu6837%5Cu5220%5Cu9664%5Cuff1a%5Cu201cA56F%3A00%20D3%3A000%5Cuff1a0124%3A001%5Cuff1aF19A%3A1000%5Cu2236%5Cu2192%5Cu2192%5Cu201cA56F%3AD3%3A0%3A0124%3A01%5Cuff1aF19A%3A1000%5Cu201d%5Cu3002%5Cu5728%5Cu8fd9%5Cu4e2aIPv6%5Cu5730%5Cu5740%5Cu4e2d%5Cu6709%5Cu66f4%5Cu591a%5Cu7684%5Cu65b9%5Cu6cd5%5Cu6765%5Cu7f29%5Cu77ed%5Cu96f6%5Cu70b9%5Cu3002%5Cn%20%5Cn%20%5Cn%5Cu4e00%5Cu4e9bIPv6%5Cu5730%5Cu5740%5Cu5305%5Cu542b%5Cu957f%5Cu5e8f%5Cu5217%5Cu7684%5Cu96f6%5Cu70b9%5Cu300216%5Cu4f4d%5Cu96f6%5Cu5757%5Cu7684%5Cu8fde%5Cu7eed%5Cu5e8f%5Cu5217%5Cu53ef%5Cu4ee5%5Cu7f29%5Cu77ed%5Cu4e3a%5Cu201c%5Cuff1a%5Cuff1a%5Cu201d%5Cu3002%5Cu5e8f%5Cu5217%5Cu53ef%5Cu4ee5%5Cu7531%5Cu4e00%5Cu4e2a%5Cu6216%5Cu51e0%5Cu4e2a%5Cu8fde%5Cu7eed%5Cu5757%5Cu7ec4%5Cu6210%5Cu3002%5Cn%5Cu8fd8%5Cu6709%5Cu4e00%5Cu4e9b%5Cu8fde%5Cu7eed0%5Cu7684%5Cu60c5%5Cu51b5%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu7f29%5Cu5199%5Cu6210%5Cu201c%3A%3A%5Cu201d%2C%5Cu53ef%5Cu4ee5%5Cu770b%5Cu770b%5Cu4e0b%5Cu9762%5Cu7684%5Cu4f8b%5Cu5b50%5Cuff1a%5Cn%5Cn%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3A0000%3A0000%3A0000%5C%22%5Cn%5Cu2192%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3A%3A%5C%22%3B%5Cn%5C%22a56f%3A0000%3A0000%3A0124%3A0001%3A0000%3A1234%3A0ff0%5C%22%20%5Cu2192%5C%22a56f%3A%3A0124%3A0001%3A0000%3A1234%3A0ff0%5C%22%3B%5Cn%5C%22a56f%3A0000%3A0000%3A0000%3A0001%3A0000%3A1234%3A0ff0%5C%22%20%5Cu2192%5C%22a56f%3A0000%3A%3A0000%3A0001%3A0000%3A1234%3A0ff0%5C%22%3B%5Cn%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3A0000%3A0000%3A0000%5C%22%20%5Cu2192%5C%22a56f%3A00d3%3A0000%3A0124%3A0001%3A%3A0000%5C%22%3B%5Cn%5C%220000%3A0000%3A0000%3A0000%3A0000%3A0000%3A0000%3A0000%5C%22%20%5Cu2192%5C%22%3A%3A%5C%22.%5Cn%5Cn%5Cu4e0d%5Cu5141%5Cu8bb8%5Cu5728%5Cu4e00%5Cu6b21%5Cu5730%5Cu5740%5Cu4e2d%5Cu7f29%5Cu77ed%5Cu96f6%5Cu5757%5Cu3002%5Cu8fd9%5Cu610f%5Cu5473%5Cu7740%5Cu77ed%5Cu8bb0%5Cu5f55%5Cu4e0d%5Cu80fd%5Cu5305%5Cu542b%5Cu5b57%5Cu7b26%5Cu5e8f%5Cu5217%5Cu201c%5Cuff1a%5Cuff1a%5Cu201d%5Cu591a%5Cu6b21%5Cu3002%5Cu5426%5Cu5219%5Cuff0c%5Cu6709%5Cu65f6%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu786e%5Cu5b9a%5Cu96f6%5Cu5757%5Cu7684%5Cu6570%5Cu76ee%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5757%5Cu7531%5Cu53cc%5Cu5192%5Cu53f7%5Cu8868%5Cu793a%5Cu3002%5Cn%5Cn%5Cu5220%5Cu9664%5Cu524d%5Cu5bfc%5Cu96f6%5Cu70b9%5Cu548c%5Cu7f29%5Cu77ed%5Cu96f6%5Cu5757%5Cu540e%5Cu7684IPv6%5Cu5730%5Cu5740%5Cu7684%5Cu8bb0%5Cu5f55%5Cu683c%5Cu5f0f%5Cu79f0%5Cu4e3a%5Cu201c%5Cu77ed%5Cu8bb0%5Cu5f55%5Cu201d%5Cu3002%5Cn%2A%2A%2A%2A%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff080%3C%3Dn%3C%3D100%5Cuff09%5Cuff0c%5Cu8868%5Cu793a%5Cu7f29%5Cu5199%5Cu5730%5Cu5740%5Cu7684%5Cu603b%5Cu6570%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765n%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu7f29%5Cu5199%5Cu7684%5Cu5730%5Cu5740%5Cuff0c%5Cu5730%5Cu5740%5Cu4e2d%5Cu53ea%5Cu5305%5Cu542b%5Cu5b57%5Cu7b26%5Cu4e32%5Cu201c0123456789abcdef%3A%5Cu201d%5Cu4e2d%5Cu7684%5Cu5b57%5Cu7b26%5Cu3002%5Cn%5Cn%5Cu4fdd%5Cu8bc1%5Cu6bcf%5Cu4e2a%5Cu77ed%5Cu5730%5Cu5740%5Cu662f%5Cu4ece%5Cu8bed%5Cu53e5%5Cu4e2d%5Cu4ece%5Cu4e00%5Cu4e9b%5Cu5b8c%5Cu6574%5Cu7684IPv6%5Cu5730%5Cu5740%5Cu4e2d%5Cu63cf%5Cu8ff0%5Cu7684%5Cu65b9%5Cu5f0f%5Cu83b7%5Cu5f97%5Cu7684%5Cu3002%5Cn%5Cu4f60%5Cu8981%5Cu505a%5Cu7684%5Cuff0c%5Cu5c31%5Cu662f%5Cu5c06%5Cu7f29%5Cu5199%5Cuff0c%5Cu8fd8%5Cu539f%5Cu6210%5Cu6807%5Cu51c6%5Cu7684%5Cu5f62%5Cu5f0f%5Cn%5Cn%5Cn------------%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu8f93%5Cu51fan%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu7f29%5Cu5199%5Cu5c55%5Cu5f00%5Cu7684%5Cu6807%5Cu51c6%5Cu5730%5Cu5740%5Cu3002%5Cn%5Cn%5Cu7531%20%40%5Cu6d1b%5Cu662d%5Cu541b%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A100%2C%22totalAccepted%22%3A41%2C%22pid%22%3A%22CF250B%22%2C%22title%22%3A%22Restoring%20IPv6%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A42649%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cuff08ipv6%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A11610%2C%22name%22%3A%22CF250B%20Restoring%20IPv6%22%2C%22slug%22%3A%22CF250B%22%7D%7D%2C%7B%22id%22%3A42475%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cuff08%5Cu849f%5Cu84bb%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A11610%2C%22name%22%3A%22CF250B%20Restoring%20IPv6%22%2C%22slug%22%3A%22CF250B%22%7D%7D%2C%7B%22id%22%3A37796%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11610%2C%22name%22%3A%22CF250B%20Restoring%20IPv6%22%2C%22slug%22%3A%22CF250B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1095%22%2C%22title%22%3A%22%5Cu5b88%5Cu671b%5Cu8005%5Cu7684%5Cu9003%5Cu79bb%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1197%22%2C%22title%22%3A%22%5BJSOI2008%5D%5Cu661f%5Cu7403%5Cu5927%5Cu6218%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF864E%22%2C%22title%22%3A%22Fire%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF377A%22%2C%22title%22%3A%22Maze%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1221C%22%2C%22title%22%3A%22Perfect%20Team%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Restoring%20IPv6%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Restoring IPv6</h1>
+<h2>题意翻译</h2>
+<div>IPv6地址是一个128位的数字。
+为了方便起见，这个数字被记录在十六进制记录中的16位块中，这些块由冒号分隔成8个块，每个分块有四个十六进制数字。下面是一个IPv6地址正确压缩的例子
+：“0124:5678:90Ab:CDEF:0124:5678:90Ab:CDEF”。
+我们将称这种格式的IPv6地址记录完整。
+除了IPv6地址的完整记录外，还有一个短的记录格式：
+IPv6地址的记录可以通过在每个块的开始处移除一个或多个前导零来缩短。但是，每个块应该至少包含一个数字。
+例如，前导零点可以像这样删除：“A56F:00 D3:000：0124:001：F19A:1000∶→→“A56F:D3:0:0124:01：F19A:1000”。在这个IPv6地址中有更多的方法来缩短零点。
+一些IPv6地址包含长序列的零点。16位零块的连续序列可以缩短为“：：”。序列可以由一个或几个连续块组成。
+还有一些连续0的情况，可以缩写成“::”,可以看看下面的例子：
+"a56f:00d3:0000:0124:0001:0000:0000:0000"
+→"a56f:00d3:0000:0124:0001::";
+"a56f:0000:0000:0124:0001:0000:1234:0ff0" →"a56f::0124:0001:0000:1234:0ff0";
+"a56f:0000:0000:0000:0001:0000:1234:0ff0" →"a56f:0000::0000:0001:0000:1234:0ff0";
+"a56f:00d3:0000:0124:0001:0000:0000:0000" →"a56f:00d3:0000:0124:0001::0000";
+"0000:0000:0000:0000:0000:0000:0000:0000" →"::".
+不允许在一次地址中缩短零块。这意味着短记录不能包含字符序列“：：”多次。否则，有时不可能确定零块的数目，每个块由双冒号表示。
+删除前导零点和缩短零块后的IPv6地址的记录格式称为“短记录”。
+****
+输入格式：
+第一行一个整数n（0<=n<=100），表示缩写地址的总数。
+接下来n行，每行一个缩写的地址，地址中只包含字符串“0123456789abcdef:”中的字符。
+保证每个短地址是从语句中从一些完整的IPv6地址中描述的方式获得的。
+你要做的，就是将缩写，还原成标准的形式
+------------
+输出格式：
+输出n行，每行为一个缩写展开的标准地址。
+由 @洛昭君 提供翻译</div>
+<h2>题目描述</h2>
+<div>An IPv6-address is a 128-bit number. For convenience, this number is recorded in blocks of 16 bits in hexadecimal record, the blocks are separated by colons — 8 blocks in total, each block has four hexadecimal digits. Here is an example of the correct record of a IPv6 address: "0124:5678:90ab:cdef:0124:5678:90ab:cdef". We'll call such format of recording an IPv6-address full.
+Besides the full record of an IPv6 address there is a short record format. The record of an IPv6 address can be shortened by removing one or more leading zeroes at the beginning of each block. However, each block should contain at least one digit in the short format. For example, the leading zeroes can be removed like that: "a56f:00d3:0000:0124:0001:f19a:1000:0000" $ → $ "a56f:d3:0:0124:01:f19a:1000:00". There are more ways to shorten zeroes in this IPv6 address.
+Some IPv6 addresses contain long sequences of zeroes. Continuous sequences of 16-bit zero blocks can be shortened to "::". A sequence can consist of one or several consecutive blocks, with all 16 bits equal to 0.
+You can see examples of zero block shortenings below:
+- "a56f:00d3:0000:0124:0001:0000:0000:0000" $ → $ "a56f:00d3:0000:0124:0001::";
+- "a56f:0000:0000:0124:0001:0000:1234:0ff0" $ → $ "a56f::0124:0001:0000:1234:0ff0";
+- "a56f:0000:0000:0000:0001:0000:1234:0ff0" $ → $ "a56f:0000::0000:0001:0000:1234:0ff0";
+- "a56f:00d3:0000:0124:0001:0000:0000:0000" $ → $ "a56f:00d3:0000:0124:0001::0000";
+- "0000:0000:0000:0000:0000:0000:0000:0000" $ → $ "::".
+It is not allowed to shorten zero blocks in the address more than once. This means that the short record can't contain the sequence of characters "::" more than once. Otherwise, it will sometimes be impossible to determine the number of zero blocks, each represented by a double colon.
+The format of the record of the IPv6 address after removing the leading zeroes and shortening the zero blocks is called short.
+You've got several short records of IPv6 addresses. Restore their full record.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ — the number of records to restore ( $ 1<=n<=100 $ ).
+Each of the following $ n $ lines contains a string — the short IPv6 addresses. Each string only consists of string characters "0123456789abcdef:".
+It is guaranteed that each short address is obtained by the way that is described in the statement from some full IPv6 address.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each short IPv6 address from the input print its full record on a separate line. Print the full records for the short IPv6 addresses in the order, in which the short records follow in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+a56f:d3:0:0124:01:f19a:1000:00
+a56f:00d3:0000:0124:0001::
+a56f::0124:0001:0000:1234:0ff0
+a56f:0000::0000:0001:0000:1234:0ff0
+::
+0ea::4d:f4:6:0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>a56f:00d3:0000:0124:0001:f19a:1000:0000
+a56f:00d3:0000:0124:0001:0000:0000:0000
+a56f:0000:0000:0124:0001:0000:1234:0ff0
+a56f:0000:0000:0000:0001:0000:1234:0ff0
+0000:0000:0000:0000:0000:0000:0000:0000
+00ea:0000:0000:0000:004d:00f4:0006:0000
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

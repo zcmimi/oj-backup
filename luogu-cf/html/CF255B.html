@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Code Parsing - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392097:JM5JQn90JACtCc64Y8PkKl6ASOHyoCxxG+WXnKDmsIA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Little%20Vitaly%20loves%20different%20algorithms.%20Today%20he%20has%20invented%20a%20new%20algorithm%20just%20for%20you.%20Vitaly%27s%20algorithm%20works%20with%20string%20%24%20s%20%24%20%2C%20consisting%20of%20characters%20%5C%22x%5C%22%20and%20%5C%22y%5C%22%2C%20and%20uses%20two%20following%20operations%20at%20runtime%3A%5Cn%5Cn1.%20Find%20two%20consecutive%20characters%20in%20the%20string%2C%20such%20that%20the%20first%20of%20them%20equals%20%5C%22y%5C%22%2C%20and%20the%20second%20one%20equals%20%5C%22x%5C%22%20and%20swap%20them.%20If%20there%20are%20several%20suitable%20pairs%20of%20characters%2C%20we%20choose%20the%20pair%20of%20characters%20that%20is%20located%20closer%20to%20the%20beginning%20of%20the%20string.%5Cn2.%20Find%20in%20the%20string%20two%20consecutive%20characters%2C%20such%20that%20the%20first%20of%20them%20equals%20%5C%22x%5C%22%20and%20the%20second%20one%20equals%20%5C%22y%5C%22.%20Remove%20these%20characters%20from%20the%20string.%20If%20there%20are%20several%20suitable%20pairs%20of%20characters%2C%20we%20choose%20the%20pair%20of%20characters%20that%20is%20located%20closer%20to%20the%20beginning%20of%20the%20string.%5Cn%5CnThe%20input%20for%20the%20new%20algorithm%20is%20string%20%24%20s%20%24%20%2C%20and%20the%20algorithm%20works%20as%20follows%3A%5Cn%5Cn1.%20If%20you%20can%20apply%20at%20least%20one%20of%20the%20described%20operations%20to%20the%20string%2C%20go%20to%20step%202%20of%20the%20algorithm.%20Otherwise%2C%20stop%20executing%20the%20algorithm%20and%20print%20the%20current%20string.%5Cn2.%20If%20you%20can%20apply%20operation%201%2C%20then%20apply%20it.%20Otherwise%2C%20apply%20operation%202.%20After%20you%20apply%20the%20operation%2C%20go%20to%20step%201%20of%20the%20algorithm.%5Cn%5CnNow%20Vitaly%20wonders%2C%20what%20is%20going%20to%20be%20printed%20as%20the%20result%20of%20the%20algorithm%27s%20work%2C%20if%20the%20input%20receives%20string%20%24%20s%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20non-empty%20string%20%24%20s%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20string%20only%20consists%20of%20characters%20%5C%22x%5C%22%20and%20%5C%22y%5C%22.%20It%20is%20guaranteed%20that%20the%20string%20consists%20of%20at%20most%20%24%2010%5E%7B6%7D%20%24%20characters.%20It%20is%20guaranteed%20that%20as%20the%20result%20of%20the%20algorithm%27s%20execution%20won%27t%20be%20an%20empty%20string.%22%2C%22outputFormat%22%3A%22In%20the%20only%20line%20print%20the%20string%20that%20is%20printed%20as%20the%20result%20of%20the%20algorithm%27s%20work%2C%20if%20the%20input%20of%20the%20algorithm%20input%20receives%20string%20%24%20s%20%24%20.%22%2C%22samples%22%3A%5B%5B%22x%5Cn%22%2C%22x%5Cn%22%5D%2C%5B%22yxyxy%5Cn%22%2C%22y%5Cn%22%5D%2C%5B%22xxxxxy%5Cn%22%2C%22xxxx%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20test%20the%20algorithm%20will%20end%20after%20the%20first%20step%20of%20the%20algorithm%2C%20as%20it%20is%20impossible%20to%20apply%20any%20operation.%20Thus%2C%20the%20string%20won%27t%20change.%5Cn%5CnIn%20the%20second%20test%20the%20transformation%20will%20be%20like%20this%3A%5Cn%5Cn1.%20string%20%5C%22yxyxy%5C%22%20transforms%20into%20string%20%5C%22xyyxy%5C%22%3B%5Cn2.%20string%20%5C%22xyyxy%5C%22%20transforms%20into%20string%20%5C%22xyxyy%5C%22%3B%5Cn3.%20string%20%5C%22xyxyy%5C%22%20transforms%20into%20string%20%5C%22xxyyy%5C%22%3B%5Cn4.%20string%20%5C%22xxyyy%5C%22%20transforms%20into%20string%20%5C%22xyy%5C%22%3B%5Cn5.%20string%20%5C%22xyy%5C%22%20transforms%20into%20string%20%5C%22y%5C%22.%5Cn%5CnAs%20a%20result%2C%20we%27ve%20got%20string%20%5C%22y%5C%22.%5Cn%5CnIn%20the%20third%20test%20case%20only%20one%20transformation%20will%20take%20place%3A%20string%20%5C%22xxxxxy%5C%22%20transforms%20into%20string%20%5C%22xxxx%5C%22.%20Thus%2C%20the%20answer%20will%20be%20string%20%5C%22xxxx%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F255%5C%2FB%22%2C%22id%22%3A%22255B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF255B%22%2C%22title%22%3A%22Code%20Parsing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Code%20Parsing%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Code Parsing</h1>
+<h2>题目描述</h2>
+<div>Little Vitaly loves different algorithms. Today he has invented a new algorithm just for you. Vitaly's algorithm works with string $ s $ , consisting of characters "x" and "y", and uses two following operations at runtime:
+1. Find two consecutive characters in the string, such that the first of them equals "y", and the second one equals "x" and swap them. If there are several suitable pairs of characters, we choose the pair of characters that is located closer to the beginning of the string.
+2. Find in the string two consecutive characters, such that the first of them equals "x" and the second one equals "y". Remove these characters from the string. If there are several suitable pairs of characters, we choose the pair of characters that is located closer to the beginning of the string.
+The input for the new algorithm is string $ s $ , and the algorithm works as follows:
+1. If you can apply at least one of the described operations to the string, go to step 2 of the algorithm. Otherwise, stop executing the algorithm and print the current string.
+2. If you can apply operation 1, then apply it. Otherwise, apply operation 2. After you apply the operation, go to step 1 of the algorithm.
+Now Vitaly wonders, what is going to be printed as the result of the algorithm's work, if the input receives string $ s $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a non-empty string $ s $ .
+It is guaranteed that the string only consists of characters "x" and "y". It is guaranteed that the string consists of at most $ 10^{6} $ characters. It is guaranteed that as the result of the algorithm's execution won't be an empty string.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the only line print the string that is printed as the result of the algorithm's work, if the input of the algorithm input receives string $ s $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>x
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>x
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>yxyxy
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>y
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>xxxxxy
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>xxxx
+</code></pre>
+<h2>说明</h2>
+<div>In the first test the algorithm will end after the first step of the algorithm, as it is impossible to apply any operation. Thus, the string won't change.
+In the second test the transformation will be like this:
+1. string "yxyxy" transforms into string "xyyxy";
+2. string "xyyxy" transforms into string "xyxyy";
+3. string "xyxyy" transforms into string "xxyyy";
+4. string "xxyyy" transforms into string "xyy";
+5. string "xyy" transforms into string "y".
+As a result, we've got string "y".
+In the third test case only one transformation will take place: string "xxxxxy" transforms into string "xxxx". Thus, the answer will be string "xxxx".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

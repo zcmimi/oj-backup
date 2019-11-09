@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Berland Traffic - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392187:u35p11DZbFHebISnbWMIbT5rnYVsYmUTfNrUH9ageZ0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Berland%20traffic%20is%20very%20different%20from%20traffic%20in%20other%20countries.%20The%20capital%20of%20Berland%20consists%20of%20%24%20n%20%24%20junctions%20and%20%24%20m%20%24%20roads.%20Each%20road%20connects%20a%20pair%20of%20junctions.%20There%20can%20be%20multiple%20roads%20between%20a%20pair%20of%20junctions.%20For%20each%20road%20we%20know%20its%20capacity%3A%20value%20%24%20c_%7Bi%7D%20%24%20is%20the%20maximum%20number%20of%20cars%20that%20can%20drive%20along%20a%20road%20in%20any%20direction%20per%20a%20unit%20of%20time.%20For%20each%20road%2C%20the%20cars%20can%20drive%20along%20it%20in%20one%20of%20two%20direction.%20That%20it%2C%20the%20cars%20can%27t%20simultaneously%20move%20in%20both%20directions.%20A%20road%27s%20traffic%20is%20the%20number%20of%20cars%20that%20goes%20along%20it%20per%20a%20unit%20of%20time.%20For%20road%20%28%20%24%20a_%7Bi%7D%2Cb_%7Bi%7D%20%24%20%29%20this%20value%20is%20negative%2C%20if%20the%20traffic%20moves%20from%20%24%20b_%7Bi%7D%20%24%20to%20%24%20a_%7Bi%7D%20%24%20.%20A%20road%27s%20traffic%20can%20be%20a%20non-integer%20number.%5Cn%5CnThe%20capital%20has%20two%20special%20junctions%20%5Cu2014%20the%20entrance%20to%20the%20city%20%28junction%201%29%20and%20the%20exit%20from%20the%20city%20%28junction%20%24%20n%20%24%20%29.%20For%20all%20other%20junctions%20it%20is%20true%20that%20the%20traffic%20is%20not%20lost%20there.%20That%20is%2C%20for%20all%20junctions%20except%20for%201%20and%20%24%20n%20%24%20the%20incoming%20traffic%20sum%20equals%20the%20outgoing%20traffic%20sum.%5Cn%5CnTraffic%20has%20an%20unusual%20peculiarity%20in%20the%20capital%20of%20Berland%20%5Cu2014%20for%20any%20pair%20of%20junctions%20%28%20%24%20x%2Cy%20%24%20%29%20the%20sum%20of%20traffics%20along%20any%20path%20from%20%24%20x%20%24%20to%20%24%20y%20%24%20doesn%27t%20change%20depending%20on%20the%20choice%20of%20the%20path.%20Such%20sum%20includes%20traffic%20along%20all%20roads%20on%20the%20path%20%28possible%20with%20the%20%5C%22minus%5C%22%20sign%2C%20if%20the%20traffic%20along%20the%20road%20is%20directed%20against%20the%20direction%20of%20the%20road%20on%20the%20path%20from%20%24%20x%20%24%20to%20%24%20y%20%24%20%29.%5Cn%5CnYour%20task%20is%20to%20find%20the%20largest%20traffic%20that%20can%20pass%20trough%20the%20city%20per%20one%20unit%20of%20time%20as%20well%20as%20the%20corresponding%20traffic%20for%20each%20road.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20positive%20integer%20%24%20n%20%24%20%5Cu2014%20the%20number%20of%20junctions%20%28%20%24%202%3C%3Dn%3C%3D100%20%24%20%29.%20The%20second%20line%20contains%20integer%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3D5000%20%24%20%29%20%5Cu2014%20the%20number%20of%20roads.%20Next%20%24%20m%20%24%20lines%20contain%20the%20roads%27%20descriptions.%20Each%20road%20contains%20a%20group%20of%20three%20numbers%20%24%20a_%7Bi%7D%20%24%20%2C%20%24%20b_%7Bi%7D%20%24%20%2C%20%24%20c_%7Bi%7D%20%24%20%2C%20where%20%24%20a_%7Bi%7D%2Cb_%7Bi%7D%20%24%20are%20the%20numbers%20of%20junctions%2C%20connected%20by%20the%20given%20road%2C%20and%20%24%20c_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%2Cb_%7Bi%7D%3C%3Dn%20%24%20%3B%20%24%20a_%7Bi%7D%5Cu2260b_%7Bi%7D%20%24%20%3B%20%24%200%3C%3Dc_%7Bi%7D%3C%3D10000%20%24%20%29%20is%20the%20largest%20permissible%20traffic%20along%20this%20road.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20the%20required%20largest%20traffic%20across%20the%20city.%20Then%20print%20%24%20m%20%24%20lines%2C%20on%20each%20line%20print%20the%20speed%2C%20at%20which%20the%20traffic%20moves%20along%20the%20corresponding%20road.%20If%20the%20direction%20doesn%27t%20match%20the%20order%20of%20the%20junctions%2C%20given%20in%20the%20input%2C%20then%20print%20the%20traffic%20with%20the%20minus%20sign.%20Print%20the%20numbers%20with%20accuracy%20of%20at%20least%20five%20digits%20after%20the%20decimal%20point.%5Cn%5CnIf%20there%20are%20many%20optimal%20solutions%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%222%5Cn3%5Cn1%202%202%5Cn1%202%204%5Cn2%201%201000%5Cn%22%2C%226.00000%5Cn2.00000%5Cn2.00000%5Cn-2.00000%5Cn%22%5D%2C%5B%227%5Cn11%5Cn1%202%207%5Cn1%202%207%5Cn1%203%207%5Cn1%204%207%5Cn2%203%207%5Cn2%205%207%5Cn3%206%207%5Cn4%207%207%5Cn5%204%207%5Cn5%206%207%5Cn6%207%207%5Cn%22%2C%2213.00000%5Cn2.00000%5Cn2.00000%5Cn3.00000%5Cn6.00000%5Cn1.00000%5Cn3.00000%5Cn4.00000%5Cn7.00000%5Cn1.00000%5Cn2.00000%5Cn6.00000%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F267%5C%2FC%22%2C%22id%22%3A%22267C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF267C%22%2C%22title%22%3A%22Berland%20Traffic%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Berland%20Traffic%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Berland Traffic</h1>
+<h2>题目描述</h2>
+<div>Berland traffic is very different from traffic in other countries. The capital of Berland consists of $ n $ junctions and $ m $ roads. Each road connects a pair of junctions. There can be multiple roads between a pair of junctions. For each road we know its capacity: value $ c_{i} $ is the maximum number of cars that can drive along a road in any direction per a unit of time. For each road, the cars can drive along it in one of two direction. That it, the cars can't simultaneously move in both directions. A road's traffic is the number of cars that goes along it per a unit of time. For road ( $ a_{i},b_{i} $ ) this value is negative, if the traffic moves from $ b_{i} $ to $ a_{i} $ . A road's traffic can be a non-integer number.
+The capital has two special junctions — the entrance to the city (junction 1) and the exit from the city (junction $ n $ ). For all other junctions it is true that the traffic is not lost there. That is, for all junctions except for 1 and $ n $ the incoming traffic sum equals the outgoing traffic sum.
+Traffic has an unusual peculiarity in the capital of Berland — for any pair of junctions ( $ x,y $ ) the sum of traffics along any path from $ x $ to $ y $ doesn't change depending on the choice of the path. Such sum includes traffic along all roads on the path (possible with the "minus" sign, if the traffic along the road is directed against the direction of the road on the path from $ x $ to $ y $ ).
+Your task is to find the largest traffic that can pass trough the city per one unit of time as well as the corresponding traffic for each road.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a positive integer $ n $ — the number of junctions ( $ 2<=n<=100 $ ). The second line contains integer $ m $ ( $ 1<=m<=5000 $ ) — the number of roads. Next $ m $ lines contain the roads' descriptions. Each road contains a group of three numbers $ a_{i} $ , $ b_{i} $ , $ c_{i} $ , where $ a_{i},b_{i} $ are the numbers of junctions, connected by the given road, and $ c_{i} $ ( $ 1<=a_{i},b_{i}<=n $ ; $ a_{i}≠b_{i} $ ; $ 0<=c_{i}<=10000 $ ) is the largest permissible traffic along this road.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print the required largest traffic across the city. Then print $ m $ lines, on each line print the speed, at which the traffic moves along the corresponding road. If the direction doesn't match the order of the junctions, given in the input, then print the traffic with the minus sign. Print the numbers with accuracy of at least five digits after the decimal point.
+If there are many optimal solutions, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+3
+1 2 2
+1 2 4
+2 1 1000
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6.00000
+2.00000
+2.00000
+-2.00000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7
+11
+1 2 7
+1 2 7
+1 3 7
+1 4 7
+2 3 7
+2 5 7
+3 6 7
+4 7 7
+5 4 7
+5 6 7
+6 7 7
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>13.00000
+2.00000
+2.00000
+3.00000
+6.00000
+1.00000
+3.00000
+4.00000
+7.00000
+1.00000
+2.00000
+6.00000
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

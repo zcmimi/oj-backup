@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SMSC - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392387:KIVul4Tlp9owcquP9gzsY02RjRknviMr96gTn44jEuo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Some%20large%20corporation%20where%20Polycarpus%20works%20has%20its%20own%20short%20message%20service%20center%20%28SMSC%29.%20The%20center%27s%20task%20is%20to%20send%20all%20sorts%20of%20crucial%20information.%20Polycarpus%20decided%20to%20check%20the%20efficiency%20of%20the%20SMSC.%5Cn%5CnFor%20that%2C%20he%20asked%20to%20give%20him%20the%20statistics%20of%20the%20performance%20of%20the%20SMSC%20for%20some%20period%20of%20time.%20In%20the%20end%2C%20Polycarpus%20got%20a%20list%20of%20%24%20n%20%24%20tasks%20that%20went%20to%20the%20SMSC%20of%20the%20corporation.%20Each%20task%20was%20described%20by%20the%20time%20it%20was%20received%20by%20the%20SMSC%20and%20the%20number%20of%20text%20messages%20to%20send.%20More%20formally%2C%20the%20%24%20i%20%24%20-th%20task%20was%20described%20by%20two%20integers%20%24%20t_%7Bi%7D%20%24%20and%20%24%20c_%7Bi%7D%20%24%20%5Cu2014%20the%20receiving%20time%20%28the%20second%29%20and%20the%20number%20of%20the%20text%20messages%2C%20correspondingly.%5Cn%5CnPolycarpus%20knows%20that%20the%20SMSC%20cannot%20send%20more%20than%20one%20text%20message%20per%20second.%20The%20SMSC%20uses%20a%20queue%20to%20organize%20its%20work.%20Consider%20a%20time%20moment%20%24%20x%20%24%20%2C%20the%20SMSC%20work%20at%20that%20moment%20as%20follows%3A%5Cn%5Cn1.%20If%20at%20the%20time%20moment%20%24%20x%20%24%20the%20queue%20is%20not%20empty%2C%20then%20SMSC%20sends%20one%20message%20from%20the%20queue%20%28SMSC%20gets%20the%20message%20from%20the%20head%20of%20the%20queue%29.%20Otherwise%20it%20doesn%27t%20send%20messages%20at%20the%20time%20moment%20%24%20x%20%24%20.%5Cn2.%20If%20at%20the%20time%20moment%20%24%20x%20%24%20SMSC%20receives%20a%20task%2C%20then%20it%20adds%20to%20the%20queue%20all%20the%20messages%20from%20this%20task%20%28SMSC%20adds%20messages%20to%20the%20tail%20of%20the%20queue%29.%20Note%2C%20that%20the%20messages%20from%20the%20task%20cannot%20be%20send%20at%20time%20moment%20%24%20x%20%24%20.%20That%27s%20because%20the%20decision%20about%20sending%20message%20or%20not%20is%20made%20at%20point%201%20before%20adding%20these%20messages%20to%20the%20queue.%5Cn%5CnGiven%20the%20information%20about%20all%20%24%20n%20%24%20tasks%2C%20Polycarpus%20wants%20to%20count%20two%20values%3A%20the%20time%20when%20the%20last%20text%20message%20was%20sent%20and%20the%20maximum%20size%20of%20the%20queue%20at%20some%20time.%20Help%20him%20count%20these%20two%20characteristics%20he%20needs%20to%20evaluate%20the%20efficiency%20of%20the%20SMSC.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%24%20%281%3C%3Dn%3C%3D10%5E%7B3%7D%29%20%24%20%5Cu2014%20the%20number%20of%20tasks%20of%20the%20SMSC.%20Next%20%24%20n%20%24%20lines%20contain%20the%20tasks%27%20descriptions%3A%20the%20%24%20i%20%24%20-th%20line%20contains%20two%20space-separated%20integers%20%24%20t_%7Bi%7D%20%24%20and%20%24%20c_%7Bi%7D%20%24%20%24%20%281%3C%3Dt_%7Bi%7D%2Cc_%7Bi%7D%3C%3D10%5E%7B6%7D%29%20%24%20%5Cu2014%20the%20time%20%28the%20second%29%20when%20the%20%24%20i%20%24%20-th%20task%20was%20received%20and%20the%20number%20of%20messages%20to%20send%2C%20correspondingly.%5Cn%5CnIt%20is%20guaranteed%20that%20all%20tasks%20were%20received%20at%20different%20moments%20of%20time.%20It%20is%20guaranteed%20that%20the%20tasks%20are%20sorted%20in%20the%20chronological%20order%2C%20that%20is%2C%20%24%20t_%7Bi%7D%26lt%3Bt_%7Bi%2B1%7D%20%24%20for%20all%20integer%20%24%20i%20%24%20%24%20%281%3C%3Di%26lt%3Bn%29%20%24%20.%22%2C%22outputFormat%22%3A%22In%20a%20single%20line%20print%20two%20space-separated%20integers%20%5Cu2014%20the%20time%20when%20the%20last%20text%20message%20was%20sent%20and%20the%20maximum%20queue%20size%20at%20a%20certain%20moment%20of%20time.%22%2C%22samples%22%3A%5B%5B%222%5Cn1%201%5Cn2%201%5Cn%22%2C%223%201%5Cn%22%5D%2C%5B%221%5Cn1000000%2010%5Cn%22%2C%221000010%2010%5Cn%22%5D%2C%5B%223%5Cn3%203%5Cn4%203%5Cn5%203%5Cn%22%2C%2212%207%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20test%20sample%3A%5Cn%5Cn-%20second%201%3A%20the%20first%20message%20has%20appeared%20in%20the%20queue%2C%20the%20queue%27s%20size%20is%201%3B%5Cn-%20second%202%3A%20the%20first%20message%20is%20sent%2C%20the%20second%20message%20has%20been%20received%2C%20the%20queue%27s%20size%20is%201%3B%5Cn-%20second%203%3A%20the%20second%20message%20is%20sent%2C%20the%20queue%27s%20size%20is%200%2C%5Cn%5CnThus%2C%20the%20maximum%20size%20of%20the%20queue%20is%201%2C%20the%20last%20message%20was%20sent%20at%20the%20second%203.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F292%5C%2FA%22%2C%22id%22%3A%22292A%22%7D%2C%22translation%22%3A%22%5Cu3010%5Cu63cf%5Cu8ff0%5Cu3011%5Cn%5CnCZYZ%20%5Cu6709%5Cu4e00%5Cu53f0%5Cu7f13%5Cu6162%5Cu7684%20SMSC%28short%20message%20service%20center%29%5Cu7528%5Cu6765%5Cu53d1%5Cu9001%5Cu6821%5Cu4fe1%5Cu901a%5Cu3002%5Cu4f5c%5Cu4e3a%5Cu673a%5Cu623f%5Cu7ba1%5Cu7406%5Cu5458%5Cu7684LazyLie%20%5Cu8981%5Cu65f6%5Cu523b%5Cu5173%5Cu6ce8%20SMSC%20%5Cu4ee5%5Cu514d%5Cu5b83%5Cu51fa%5Cu73b0%5Cu6545%5Cu969c%5Cu3002%5Cn%5CnLazyLie%20%5Cu9884%5Cu8ba1%5Cuff0c%5Cu8001%5Cu5e08%5Cu4f1a%5Cu5728%20%24T_i%24%20%5Cu65f6%5Cu523b%5Cu63d0%5Cu4ea4%5Cu53d1%5Cu9001%20%24C_i%24%20%5Cu4efd%5Cu6821%5Cu4fe1%5Cu901a%5Cu7684%5Cu7533%5Cu8bf7%5Cu3002%5Cu8fd9%5Cu53f0%20SMSC%20%5Cu8fc7%5Cu4e8e%5Cu7f13%5Cu6162%5Cu4ee5%5Cu81f3%5Cu4e8e%5Cu5b83%5Cu6bcf%5Cu79d2%5Cu53ea%5Cu80fd%5Cu53d1%5Cu9001%241%24%5Cu6761%5Cu6821%5Cu4fe1%5Cu901a%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu4e0d%5Cu80fd%5Cu53ca%5Cu65f6%5Cu53d1%5Cu51fa%5Cu53bb%5Cu7684%5Cu4fe1%5Cu606f%5Cuff0c%5Cu7cfb%5Cu7edf%5Cu4f1a%5Cu628a%5Cu5b83%5Cu6dfb%5Cu52a0%5Cu5230%5Cu7b49%5Cu5f85%5Cu961f%5Cu5217%5Cu7684%5Cu961f%5Cu5c3e%5Cu3002%5Cn%5Cn%5Cu7cfb%5Cu7edf%5Cu5728%5Cu7b2c%20%24x%24%20%5Cu79d2%5Cu4f9d%5Cu6b21%5Cu8fda%5Cu884c%5Cu5982%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn%5Cn-%201%29%20%20%5Cu82e5%5Cu961f%5Cu5217%5Cu975e%5Cu7a7a%5Cu5219%5Cu53d1%5Cu9001%5Cu961f%5Cu5934%5Cu7684%5Cu6d88%5Cu606f%5Cu3002%5Cn-%202%29%20%20%5Cu82e5%5Cu8be5%5Cu65f6%5Cu523b%5Cu6709%5Cu65b0%5Cu7684%5Cu7533%5Cu8bf7%5Cuff0c%5Cu5219%5Cu52a0%5Cu5230%5Cu961f%5Cu5c3e%5Cu3002%5Cn%5CnLazyLie%20%5Cu5e0c%5Cu671b%5Cu77e5%5Cu9053%5Cu81ea%5Cu5df1%5Cu4ec0%5Cu4e48%5Cu65f6%5Cu5019%5Cu53ef%5Cu4ee5%5Cu4e0b%5Cu73ed%5Cuff0c%5Cu5373%5Cu6700%5Cu540e%5Cu4e00%5Cu6761%5Cu6d88%5Cu606f%5Cu4f55%5Cu65f6%5Cu53d1%5Cu51fa%5Cu3002%5Cu540c%5Cu65f6%5Cuff0c%5Cu4ed6%5Cu8fd8%5Cu60f3%5Cu77e5%5Cu9053%5Cu961f%5Cu5217%5Cu6700%5Cu5927%5Cu7684%5Cu5927%5Cu5c0f%5Cuff0c%5Cu4ee5%5Cu786e%5Cu4fdd%5Cu7cfb%5Cu7edf%5Cu88c5%5Cu6709%5Cu8db3%5Cu591f%5Cu7684%5Cu5185%5Cu5b58%5Cu3002%5Cn%5CnLazyLie%20%5Cu7b80%5Cu76f4%5Cu5f31%5Cu7206%5Cu4e86%5Cuff0c%5Cu4ed6%5Cu603b%5Cu662f%5Cu4f1a%5Cu72af%5Cu5404%5Cu79cd%5Cu9519%5Cu8bef%5Cuff0c%5Cu6240%5Cu4ee5%5Cu9700%5Cu8981%5Cu4f60%5Cu6765%5Cu5b8c%5Cu6210%5Cu8fd9%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu3002%5Cn%5Cn%5Cu3010%5Cu8f93%5Cu5165%5Cu3011%5Cn%5Cn-%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%5Cuff0c%5Cu8868%5Cu793a%5Cu7533%5Cu8bf7%5Cu6570%5Cu3002%5Cn-%20%5Cu4e4b%5Cu540e%20%24n%24%20%5Cu884c%5Cu6bcf%5Cu884c%20%242%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%20%24T_i%24%20%5Cu548c%20%24C_i%24%5Cu3002%5Cn%5Cn%5Cu3010%5Cu8f93%5Cu51fa%5Cu3011%5Cn%5Cn%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu540e%5Cu4e00%5Cu6761%5Cu6d88%5Cu606f%5Cu53d1%5Cu51fa%5Cu7684%5Cu65f6%5Cu95f4%5Cu548c%5Cu961f%5Cu5217%5Cu6700%5Cu5927%5Cu7684%5Cu5927%5Cu5c0f%5Cu3002%5Cn%5Cn%5Cu3010%5Cu8bf4%5Cu660e%5Cu3011%5Cn%5Cn-%20%241%20%5Cu2264%20C_i%2CT_i%20%5Cu2264%2010%5E6%20%2Cn%20%5Cu2264%201000%24%5Cn-%20%24T_i%24%20%5Cu5355%5Cu8c03%5Cu4e0d%5Cu51cf%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A949%2C%22totalAccepted%22%3A552%2C%22pid%22%3A%22CF292A%22%2C%22title%22%3A%22SMSC%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A66991%2C%22title%22%3A%22%5Cu53d1%5Cu5e03%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11441%2C%22name%22%3A%22CF292A%20SMSC%22%2C%22slug%22%3A%22CF292A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF859A%22%2C%22title%22%3A%22Declined%20Finalists%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF632A%22%2C%22title%22%3A%22Grandma%20Laura%20and%20Apples%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF409D%22%2C%22title%22%3A%22Big%20Data%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF383A%22%2C%22title%22%3A%22Milking%20cows%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF304B%22%2C%22title%22%3A%22Calendar%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SMSC%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SMSC</h1>
+<h2>题意翻译</h2>
+<div>【描述】
+CZYZ 有一台缓慢的 SMSC(short message service center)用来发送校信通。作为机房管理员的LazyLie 要时刻关注 SMSC 以免它出现故障。
+LazyLie 预计，老师会在 $T_i$ 时刻提交发送 $C_i$ 份校信通的申请。这台 SMSC 过于缓慢以至于它每秒只能发送$1$条校信通。对于不能及时发出去的信息，系统会把它添加到等待队列的队尾。
+系统在第 $x$ 秒依次迚行如下操作：
+- 1) 若队列非空则发送队头的消息。
+- 2) 若该时刻有新的申请，则加到队尾。
+LazyLie 希望知道自己什么时候可以下班，即最后一条消息何时发出。同时，他还想知道队列最大的大小，以确保系统装有足够的内存。
+LazyLie 简直弱爆了，他总是会犯各种错误，所以需要你来完成这个任务。
+【输入】
+- 第一行一个整数 $n$，表示申请数。
+- 之后 $n$ 行每行 $2$ 个整数，表示 $T_i$ 和 $C_i$。
+【输出】
+一行两个整数，表示最后一条消息发出的时间和队列最大的大小。
+【说明】
+- $1 ≤ C_i,T_i ≤ 10^6 ,n ≤ 1000$
+- $T_i$ 单调不减 </div>
+<h2>题目描述</h2>
+<div>Some large corporation where Polycarpus works has its own short message service center (SMSC). The center's task is to send all sorts of crucial information. Polycarpus decided to check the efficiency of the SMSC.
+For that, he asked to give him the statistics of the performance of the SMSC for some period of time. In the end, Polycarpus got a list of $ n $ tasks that went to the SMSC of the corporation. Each task was described by the time it was received by the SMSC and the number of text messages to send. More formally, the $ i $ -th task was described by two integers $ t_{i} $ and $ c_{i} $ — the receiving time (the second) and the number of the text messages, correspondingly.
+Polycarpus knows that the SMSC cannot send more than one text message per second. The SMSC uses a queue to organize its work. Consider a time moment $ x $ , the SMSC work at that moment as follows:
+1. If at the time moment $ x $ the queue is not empty, then SMSC sends one message from the queue (SMSC gets the message from the head of the queue). Otherwise it doesn't send messages at the time moment $ x $ .
+2. If at the time moment $ x $ SMSC receives a task, then it adds to the queue all the messages from this task (SMSC adds messages to the tail of the queue). Note, that the messages from the task cannot be send at time moment $ x $ . That's because the decision about sending message or not is made at point 1 before adding these messages to the queue.
+Given the information about all $ n $ tasks, Polycarpus wants to count two values: the time when the last text message was sent and the maximum size of the queue at some time. Help him count these two characteristics he needs to evaluate the efficiency of the SMSC.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ $ (1<=n<=10^{3}) $ — the number of tasks of the SMSC. Next $ n $ lines contain the tasks' descriptions: the $ i $ -th line contains two space-separated integers $ t_{i} $ and $ c_{i} $ $ (1<=t_{i},c_{i}<=10^{6}) $ — the time (the second) when the $ i $ -th task was received and the number of messages to send, correspondingly.
+It is guaranteed that all tasks were received at different moments of time. It is guaranteed that the tasks are sorted in the chronological order, that is, $ t_{i}&lt;t_{i+1} $ for all integer $ i $ $ (1<=i&lt;n) $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>In a single line print two space-separated integers — the time when the last text message was sent and the maximum queue size at a certain moment of time.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+1 1
+2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1
+1000000 10
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1000010 10
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+3 3
+4 3
+5 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>12 7
+</code></pre>
+<h2>说明</h2>
+<div>In the first test sample:
+- second 1: the first message has appeared in the queue, the queue's size is 1;
+- second 2: the first message is sent, the second message has been received, the queue's size is 1;
+- second 3: the second message is sent, the queue's size is 0,
+Thus, the maximum size of the queue is 1, the last message was sent at the second 3.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

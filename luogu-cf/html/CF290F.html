@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Greedy Petya - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392375:5UcB2Re3s/qzwzN2MK+YYMa3jsyXS9c9r1rg9vcMQJg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Petya%20is%20an%20unexperienced%20programming%20contestant.%20Recently%20he%20has%20come%20across%20the%20following%20problem%3A%5Cn%5CnYou%20are%20given%20a%20non-directed%20graph%20which%20consists%20of%20%24%20n%20%24%20nodes%20and%20%24%20m%20%24%20edges.%20Your%20task%20is%20to%20determine%20whether%20the%20graph%20contains%20a%20Hamiltonian%20path.%5Cn%5CnPetya%20wrote%20a%20quick%20bug-free%20code%20which%20he%20believes%20solves%20this%20problem.%20After%20that%20Petya%20decided%20to%20give%20this%20problem%20for%20April%20Fools%20Day%20contest.%20Unfortunately%2C%20Petya%20might%20have%20made%20a%20mistake%2C%20and%20it%27s%20quite%20possible%20that%20his%20algorithm%20is%20wrong.%20But%20this%20isn%27t%20a%20good%20excuse%20to%20leave%20the%20contest%20without%20submitting%20this%20problem%2C%20is%20it%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%2Cm%20%24%20%24%20%281%3C%3Dn%3C%3D20%3B%5Cu00a00%3C%3Dm%3C%3D400%29%20%24%20.%20Next%20%24%20m%20%24%20lines%20contain%20pairs%20of%20integers%20%24%20v_%7Bi%7D%2Cu_%7Bi%7D%20%24%20%24%20%281%3C%3Dv_%7Bi%7D%2Cu_%7Bi%7D%3C%3Dn%29%20%24%20.%22%2C%22outputFormat%22%3A%22Follow%20the%20format%20of%20Petya%27s%20code%20output.%22%2C%22samples%22%3A%5B%5B%222%203%5Cn1%202%5Cn2%201%5Cn1%201%5Cn%22%2C%22Yes%5Cn%22%5D%2C%5B%223%200%5Cn%22%2C%22No%5Cn%22%5D%2C%5B%2210%2020%5Cn3%2010%5Cn4%206%5Cn4%209%5Cn7%205%5Cn8%208%5Cn3%2010%5Cn9%207%5Cn5%202%5Cn9%202%5Cn10%206%5Cn10%204%5Cn1%201%5Cn7%202%5Cn8%204%5Cn7%202%5Cn1%208%5Cn5%204%5Cn10%202%5Cn8%205%5Cn5%202%5Cn%22%2C%22No%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F290%5C%2FF%22%2C%22id%22%3A%22290F%22%7D%2C%22translation%22%3A%22%5Cuff08%5Cu672c%5Cu9898%5Cu51fa%5Cu81ea%20%24CodeForces%24%20%242013%24%20%5Cu5e74%5Cu611a%5Cu4eba%5Cu8282%5Cu6bd4%5Cu8d5b%20%24F%24%20%5Cu9898%5Cuff09%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%20%24Petya%24%20%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6ca1%5Cu6709%5Cu7ecf%5Cu9a8c%5Cu7684%5Cu7f16%5Cu7a0b%5Cu9009%5Cu624b%5Cuff0c%5Cu6700%5Cu8fd1%5Cu4ed6%5Cu9047%5Cu5230%5Cu4e86%5Cu4e0b%5Cu9762%5Cu7684%5Cu95ee%5Cu9898%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu7531%20%24n%24%20%5Cu4e2a%5Cu70b9%5Cu548c%20%24m%24%20%5Cu6761%5Cu8fb9%5Cu7ec4%5Cu6210%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cu3002%5Cu8bf7%5Cu786e%5Cu5b9a%5Cu56fe%5Cu5f62%5Cu662f%5Cu5426%5Cu5305%5Cu542b%5Cu54c8%5Cu5bc6%5Cu5c14%5Cu987f%5Cu8def%5Cu5f84%5Cu3002%5Cr%5Cn%5Cr%5Cn%20%24Petya%24%20%5Cu5f88%5Cu5feb%5Cu5c31%5Cu7f16%5Cu5199%5Cu4e86%5Cu4e00%5Cu4efd%5Cu6ca1%5Cu6709%20%24bug%24%20%5Cu7684%5Cu4ee3%5Cu7801%5Cu3002%5Cu4ed6%5Cu8ba4%5Cu4e3a%5Cu8fd9%5Cu4efd%5Cu4ee3%5Cu7801%5Cu53ef%5Cu4ee5%5Cu89e3%5Cu51b3%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu3002%5Cu4e4b%5Cu540e%5Cuff0c%20%24Petya%24%20%5Cu51b3%5Cu5b9a%5Cu5728%5Cu611a%5Cu4eba%5Cu8282%5Cu6bd4%5Cu8d5b%5Cu4e2d%5Cu63d0%5Cu51fa%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu3002%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%5Cuff0c%20%24Petya%24%20%5Cu53ef%5Cu80fd%5Cu72af%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu9519%5Cu8bef%5Cuff0c%5Cu4ed6%5Cu7684%5Cu7b97%5Cu6cd5%5Cu5f88%5Cu53ef%5Cu80fd%5Cu662f%5Cu9519%5Cu8bef%5Cu7684%5Cu3002%5Cu4f46%5Cu8fd9%5Cu4e0d%5Cu662f%5Cu4e00%5Cu4e2a%5Cu79bb%5Cu5f00%5Cu6bd4%5Cu8d5b%5Cu800c%5Cu4e0d%5Cu63d0%5Cu4ea4%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu7684%5Cu5f88%5Cu597d%5Cu7684%5Cu501f%5Cu53e3%5Cuff0c%5Cu5bf9%5Cu5417%5Cuff1f%5Cr%5Cn%20%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%20%5Cu548c%20%24m%24%20%5Cuff08%20%241%20%5C%5Cleqslant%20n%20%5C%5Cleqslant%2020%24%20%240%20%5C%5Cleqslant%20m%20%5C%5Cleqslant%20400%24%20%5Cuff09%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%20%24m%24%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e3a%5Cu4e00%5Cu5bf9%5Cu6574%5Cu6570%20%24%28v_i%2Cu_i%29%24%20%5Cuff08%20%241%20%5C%5Cleqslant%20v_i%2Cu_i%20%5C%5Cleqslant%20n%24%20%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu6309%5Cu7167%5Cu6837%5Cu4f8b%5Cu4e2d%5Cu7ed9%5Cu51fa%5Cu7684%20%24Petya%24%20%5Cu7684%5Cu4ee3%5Cu7801%5Cu8f93%5Cu51fa%5Cu7684%5Cu683c%5Cu5f0f%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF290F%22%2C%22title%22%3A%22Greedy%20Petya%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Greedy%20Petya%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Greedy Petya</h1>
+<h2>题意翻译</h2>
+<div>（本题出自 $CodeForces$ $2013$ 年愚人节比赛 $F$ 题）
+## 题目描述
+$Petya$ 是一个没有经验的编程选手，最近他遇到了下面的问题：
+给定一个由 $n$ 个点和 $m$ 条边组成的无向图。请确定图形是否包含哈密尔顿路径。
+$Petya$ 很快就编写了一份没有 $bug$ 的代码。他认为这份代码可以解决这个问题。之后， $Petya$ 决定在愚人节比赛中提出这个问题。不幸的是， $Petya$ 可能犯了一个错误，他的算法很可能是错误的。但这不是一个离开比赛而不提交这个问题的很好的借口，对吗？
+## 输入输出格式
+### 输入格式
+第一行为两个整数 $n$ 和 $m$ （ $1 \leqslant n \leqslant 20$ $0 \leqslant m \leqslant 400$ ），接下来 $m$ 行每行为一对整数 $(v_i,u_i)$ （ $1 \leqslant v_i,u_i \leqslant n$ ）。
+### 输出格式
+按照样例中给出的 $Petya$ 的代码输出的格式。</div>
+<h2>题目描述</h2>
+<div>Petya is an unexperienced programming contestant. Recently he has come across the following problem:
+You are given a non-directed graph which consists of $ n $ nodes and $ m $ edges. Your task is to determine whether the graph contains a Hamiltonian path.
+Petya wrote a quick bug-free code which he believes solves this problem. After that Petya decided to give this problem for April Fools Day contest. Unfortunately, Petya might have made a mistake, and it's quite possible that his algorithm is wrong. But this isn't a good excuse to leave the contest without submitting this problem, is it?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n,m $ $ (1<=n<=20; 0<=m<=400) $ . Next $ m $ lines contain pairs of integers $ v_{i},u_{i} $ $ (1<=v_{i},u_{i}<=n) $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Follow the format of Petya's code output.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 3
+1 2
+2 1
+1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Yes
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 0
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>No
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>10 20
+3 10
+4 6
+4 9
+7 5
+8 8
+3 10
+9 7
+5 2
+9 2
+10 6
+10 4
+1 1
+7 2
+8 4
+7 2
+1 8
+5 4
+10 2
+8 5
+5 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>No
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Parallel Programming - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392384:WSGD4BLMPUmAB3xEj+i/ZlKiVTOmsW+M9NWgKmgDRiI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Polycarpus%20has%20a%20computer%20with%20%24%20n%20%24%20processors.%20Also%2C%20his%20computer%20has%20%24%20n%20%24%20memory%20cells.%20We%27ll%20consider%20the%20processors%20numbered%20by%20integers%20from%201%20to%20%24%20n%20%24%20and%20that%20the%20memory%20cells%20are%20consecutively%20numbered%20by%20integers%20from%201%20to%20%24%20n%20%24%20.%5Cn%5CnPolycarpus%20needs%20to%20come%20up%20with%20a%20parallel%20program%20model.%20For%20each%20memory%20cell%20number%20%24%20i%20%24%20this%20program%20must%20record%20the%20value%20%24%20n-i%20%24%20to%20this%20cell.%20In%20other%20words%2C%20for%20each%20cell%20you%27ve%20got%20to%20find%20the%20distance%20to%20cell%20%24%20n%20%24%20.%5Cn%5CnLet%27s%20denote%20the%20value%20that%20is%20written%20in%20the%20%24%20i%20%24%20-th%20cell%20as%20%24%20a_%7Bi%7D%20%24%20.%20Initially%2C%20%24%20a_%7Bi%7D%3D1%20%24%20%24%20%281%3C%3Di%26lt%3Bn%29%20%24%20and%20%24%20a_%7Bn%7D%3D0%20%24%20.%20We%20will%20consider%20that%20only%20processor%20%24%20i%20%24%20can%20write%20values%20in%20the%20memory%20cell%20number%20%24%20i%20%24%20.%20All%20processors%20can%20read%20an%20information%20from%20some%20cell%20%28several%20processors%20can%20read%20an%20information%20from%20some%20cell%20simultaneously%29.%5Cn%5CnThe%20parallel%20program%20is%20executed%20in%20several%20steps.%20During%20each%20step%20we%20execute%20the%20parallel%20version%20of%20the%20increment%20operation.%20Executing%20the%20parallel%20version%20of%20the%20increment%20operation%20goes%20as%20follows%3A%5Cn%5Cn1.%20Each%20processor%20independently%20of%20the%20other%20ones%20chooses%20some%20memory%20cell.%20Let%27s%20say%20that%20processor%20%24%20i%20%24%20has%20chosen%20a%20cell%20with%20number%20%24%20c_%7Bi%7D%20%24%20%24%20%281%3C%3Dc_%7Bi%7D%3C%3Dn%29%20%24%20.%5Cn2.%20All%20processors%20simultaneously%20execute%20operation%20%24%20a_%7Bi%7D%3Da_%7Bi%7D%2Ba_%7Bci%7D%20%24%20.%5Cn%5CnHelp%20Polycarpus%20come%20up%20with%20the%20parallel%20program%20model%20that%20is%20executed%20in%20exactly%20%24%20k%20%24%20steps.%20Calculate%20the%20operations%20that%20need%20to%20be%20executed.%20Note%20that%20after%20%24%20k%20%24%20steps%20for%20all%20%24%20i%20%24%20%27s%20value%20%24%20a_%7Bi%7D%20%24%20must%20be%20equal%20%24%20n-i%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20space-separated%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%24%20%281%3C%3Dn%3C%3D10%5E%7B4%7D%2C1%3C%3Dk%3C%3D20%29%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20at%20the%20given%20%24%20n%20%24%20and%20%24%20k%20%24%20the%20required%20sequence%20of%20operations%20exists.%22%2C%22outputFormat%22%3A%22Print%20exactly%20%24%20n%5Cu00b7k%20%24%20integers%20in%20%24%20k%20%24%20lines.%20In%20the%20first%20line%20print%20numbers%20%24%20c_%7B1%7D%2Cc_%7B2%7D%2C...%2Cc_%7Bn%7D%20%24%20%24%20%281%3C%3Dc_%7Bi%7D%3C%3Dn%29%20%24%20for%20the%20first%20increment%20operation.%20In%20the%20second%20line%20print%20the%20numbers%20for%20the%20second%20increment%20operation.%20In%20the%20%24%20k%20%24%20-th%20line%20print%20the%20numbers%20for%20the%20%24%20k%20%24%20-th%20increment%20operation.%5Cn%5CnAs%20a%20result%20of%20the%20printed%20operations%20for%20any%20%24%20i%20%24%20value%20%24%20a_%7Bi%7D%20%24%20must%20equal%20%24%20n-i%20%24%20.%22%2C%22samples%22%3A%5B%5B%221%201%5Cn%22%2C%221%5Cn%22%5D%2C%5B%223%202%5Cn%22%2C%222%203%203%5Cn3%203%203%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F291%5C%2FD%22%2C%22id%22%3A%22291D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF291D%22%2C%22title%22%3A%22Parallel%20Programming%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Parallel%20Programming%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Parallel Programming</h1>
+<h2>题目描述</h2>
+<div>Polycarpus has a computer with $ n $ processors. Also, his computer has $ n $ memory cells. We'll consider the processors numbered by integers from 1 to $ n $ and that the memory cells are consecutively numbered by integers from 1 to $ n $ .
+Polycarpus needs to come up with a parallel program model. For each memory cell number $ i $ this program must record the value $ n-i $ to this cell. In other words, for each cell you've got to find the distance to cell $ n $ .
+Let's denote the value that is written in the $ i $ -th cell as $ a_{i} $ . Initially, $ a_{i}=1 $ $ (1<=i&lt;n) $ and $ a_{n}=0 $ . We will consider that only processor $ i $ can write values in the memory cell number $ i $ . All processors can read an information from some cell (several processors can read an information from some cell simultaneously).
+The parallel program is executed in several steps. During each step we execute the parallel version of the increment operation. Executing the parallel version of the increment operation goes as follows:
+1. Each processor independently of the other ones chooses some memory cell. Let's say that processor $ i $ has chosen a cell with number $ c_{i} $ $ (1<=c_{i}<=n) $ .
+2. All processors simultaneously execute operation $ a_{i}=a_{i}+a_{ci} $ .
+Help Polycarpus come up with the parallel program model that is executed in exactly $ k $ steps. Calculate the operations that need to be executed. Note that after $ k $ steps for all $ i $ 's value $ a_{i} $ must be equal $ n-i $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two space-separated integers $ n $ and $ k $ $ (1<=n<=10^{4},1<=k<=20) $ .
+It is guaranteed that at the given $ n $ and $ k $ the required sequence of operations exists.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print exactly $ n·k $ integers in $ k $ lines. In the first line print numbers $ c_{1},c_{2},...,c_{n} $ $ (1<=c_{i}<=n) $ for the first increment operation. In the second line print the numbers for the second increment operation. In the $ k $ -th line print the numbers for the $ k $ -th increment operation.
+As a result of the printed operations for any $ i $ value $ a_{i} $ must equal $ n-i $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 3 3
+3 3 3
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

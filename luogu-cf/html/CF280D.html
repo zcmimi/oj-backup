@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>k-Maximum Subsequence Sum - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392300:Q+WVT8aDgXrBK1KAL3j5dX1biG71AdzKq/yqskkfUww=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Consider%20integer%20sequence%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20.%20You%20should%20run%20queries%20of%20two%20types%3A%5Cn%5Cn-%20The%20query%20format%20is%20%5C%22%20%24%200%20%24%20%24%20i%20%24%20%24%20val%20%24%20%5C%22.%20In%20reply%20to%20this%20query%20you%20should%20make%20the%20following%20assignment%3A%20%24%20a_%7Bi%7D%3Dval%20%24%20.%5Cn-%20The%20query%20format%20is%20%5C%22%20%24%201%20%24%20%24%20l%20%24%20%24%20r%20%24%20%24%20k%20%24%20%5C%22.%20In%20reply%20to%20this%20query%20you%20should%20print%20the%20maximum%20sum%20of%20at%20most%20%24%20k%20%24%20non-intersecting%20subsegments%20of%20sequence%20%24%20a_%7Bl%7D%2Ca_%7Bl%2B1%7D%2C...%2Ca_%7Br%7D%20%24%20.%20Formally%2C%20you%20should%20choose%20at%20most%20%24%20k%20%24%20pairs%20of%20integers%20%24%20%28x_%7B1%7D%2Cy_%7B1%7D%29%2C%28x_%7B2%7D%2Cy_%7B2%7D%29%2C...%2C%28x_%7Bt%7D%2Cy_%7Bt%7D%29%20%24%20%24%20%28l%3C%3Dx_%7B1%7D%3C%3Dy_%7B1%7D%3Cx_%7B2%7D%3C%3Dy_%7B2%7D%3C...%3Cx_%7Bt%7D%3C%3Dy_%7Bt%7D%3C%3Dr%3B%5Cu00a0t%3C%3Dk%29%20%24%20such%20that%20the%20sum%20%24%20a_%7Bx1%7D%2Ba_%7Bx1%7D%2B1%2B...%2Ba_%7By1%7D%2Ba_%7Bx2%7D%2Ba_%7Bx2%7D%2B1%2B...%2Ba_%7By2%7D%2B...%2Ba_%7Bxt%7D%2Ba_%7Bxt%7D%2B1%2B...%2Ba_%7Byt%7D%20%24%20is%20as%20large%20as%20possible.%20Note%20that%20you%20should%20choose%20at%20most%20%24%20k%20%24%20subsegments.%20Particularly%2C%20you%20can%20choose%200%20subsegments.%20In%20this%20case%20the%20described%20sum%20considered%20equal%20to%20zero.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%24%20%281%3C%3Dn%3C%3D10%5E%7B5%7D%29%20%24%20%2C%20showing%20how%20many%20numbers%20the%20sequence%20has.%20The%20next%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%24%20%28%7Ca_%7Bi%7D%7C%3C%3D500%29%20%24%20.%5Cn%5CnThe%20third%20line%20contains%20integer%20%24%20m%20%24%20%24%20%281%3C%3Dm%3C%3D10%5E%7B5%7D%29%20%24%20%5Cu2014%20the%20number%20of%20queries.%20The%20next%20%24%20m%20%24%20lines%20contain%20the%20queries%20in%20the%20format%2C%20given%20in%20the%20statement.%5Cn%5CnAll%20changing%20queries%20fit%20into%20limits%3A%20%24%201%3C%3Di%3C%3Dn%20%24%20%2C%20%24%20%7Cval%7C%3C%3D500%20%24%20.%5Cn%5CnAll%20queries%20to%20count%20the%20maximum%20sum%20of%20at%20most%20%24%20k%20%24%20non-intersecting%20subsegments%20fit%20into%20limits%3A%20%24%201%3C%3Dl%3C%3Dr%3C%3Dn%20%24%20%2C%20%24%201%3C%3Dk%3C%3D20%20%24%20.%20It%20is%20guaranteed%20that%20the%20number%20of%20the%20queries%20to%20count%20the%20maximum%20sum%20of%20at%20most%20%24%20k%20%24%20non-intersecting%20subsegments%20doesn%27t%20exceed%20%24%2010000%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20query%20to%20count%20the%20maximum%20sum%20of%20at%20most%20%24%20k%20%24%20non-intersecting%20subsegments%20print%20the%20reply%20%5Cu2014%20the%20maximum%20sum.%20Print%20the%20answers%20to%20the%20queries%20in%20the%20order%2C%20in%20which%20the%20queries%20follow%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%229%5Cn9%20-8%209%20-1%20-1%20-1%209%20-8%209%5Cn3%5Cn1%201%209%201%5Cn1%201%209%202%5Cn1%204%206%203%5Cn%22%2C%2217%5Cn25%5Cn0%5Cn%22%5D%2C%5B%2215%5Cn-4%208%20-3%20-10%2010%204%20-7%20-7%200%20-6%203%208%20-10%207%202%5Cn15%5Cn1%203%209%202%5Cn1%206%2012%201%5Cn0%206%205%5Cn0%2010%20-7%5Cn1%204%209%201%5Cn1%207%209%201%5Cn0%2010%20-3%5Cn1%204%2010%202%5Cn1%203%2013%202%5Cn1%204%2011%202%5Cn0%2015%20-9%5Cn0%2013%20-9%5Cn0%2011%20-10%5Cn1%205%2014%202%5Cn1%206%2012%201%5Cn%22%2C%2214%5Cn11%5Cn15%5Cn0%5Cn15%5Cn26%5Cn18%5Cn23%5Cn8%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20query%20of%20the%20first%20example%20you%20can%20select%20a%20single%20pair%20%24%20%281%2C9%29%20%24%20.%20So%20the%20described%20sum%20will%20be%2017.%5Cn%5CnLook%20at%20the%20second%20query%20of%20the%20first%20example.%20How%20to%20choose%20two%20subsegments%3F%20%281%2C%203%29%20and%20%287%2C%209%29%3F%20Definitely%20not%2C%20the%20sum%20we%20could%20get%20from%20%281%2C%203%29%20and%20%287%2C%209%29%20is%2020%2C%20against%20the%20optimal%20configuration%20%281%2C%207%29%20and%20%289%2C%209%29%20with%2025.%5Cn%5CnThe%20answer%20to%20the%20third%20query%20is%200%2C%20we%20prefer%20select%20nothing%20if%20all%20of%20the%20numbers%20in%20the%20given%20interval%20are%20negative.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F280%5C%2FD%22%2C%22id%22%3A%22280D%22%7D%2C%22translation%22%3A%22%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%20%5Cu7684%5Cu6570%5Cu5217%5Cuff0c%5Cu652f%5Cu6301%5Cu4e24%5Cu79cd%5Cu64cd%5Cu4f5c%5Cuff1a%20%20%5Cn1.%5Cu4fee%5Cu6539%5Cu67d0%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu503c%20%20%5Cn2.%5Cu8be2%5Cu95ee%5Cu533a%5Cu95f4%24%5Bl%2Cr%5D%24%20%5Cu91cc%5Cu9009%5Cu51fa%5Cu81f3%5Cu591a%24k%24%20%5Cu4e2a%5Cu4e0d%5Cu76f8%5Cu4ea4%5Cu7684%5Cu5b50%5Cu6bb5%5Cu548c%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cn%5Cu4e00%5Cu5171%5Cu6709%24m%24%20%5Cu4e2a%5Cu64cd%5Cu4f5c%20%20%5Cn%5Cn%5Cu611f%5Cu8c22%40Fheiwn%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A236%2C%22totalAccepted%22%3A113%2C%22pid%22%3A%22CF280D%22%2C%22title%22%3A%22k-Maximum%20Subsequence%20Sum%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A159505%2C%22title%22%3A%22%5Cu521a%5Cu5b66%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%5Cu7384%5Cu5b66%28O_O%29%3F%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A11487%2C%22name%22%3A%22CF280D%20k-Maximum%20Subsequence%20Sum%22%2C%22slug%22%3A%22CF280D%22%7D%7D%2C%7B%22id%22%3A101268%2C%22title%22%3A%22%5Cu6c42%5Cu6551%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A11487%2C%22name%22%3A%22CF280D%20k-Maximum%20Subsequence%20Sum%22%2C%22slug%22%3A%22CF280D%22%7D%7D%2C%7B%22id%22%3A32650%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A11487%2C%22name%22%3A%22CF280D%20k-Maximum%20Subsequence%20Sum%22%2C%22slug%22%3A%22CF280D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2048%22%2C%22title%22%3A%22%5BNOI2010%5D%5Cu8d85%5Cu7ea7%5Cu94a2%5Cu7434%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2864%22%2C%22title%22%3A%22%5BUSACO06JAN%5D%5Cu6811%5Cu6797The%20Grove%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF525E%22%2C%22title%22%3A%22Anya%20and%20Cubes%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF464E%22%2C%22title%22%3A%22The%20Classic%20Problem%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1208G%22%2C%22title%22%3A%22Polygons%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22k-Maximum%20Subsequence%20Sum%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>k-Maximum Subsequence Sum</h1>
+<h2>题意翻译</h2>
+<div>长度为$n$ 的数列，支持两种操作：
+1.修改某个位置的值
+2.询问区间$[l,r]$ 里选出至多$k$ 个不相交的子段和的最大值。
+一共有$m$ 个操作
+感谢@Fheiwn 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Consider integer sequence $ a_{1},a_{2},...,a_{n} $ . You should run queries of two types:
+- The query format is " $ 0 $ $ i $ $ val $ ". In reply to this query you should make the following assignment: $ a_{i}=val $ .
+- The query format is " $ 1 $ $ l $ $ r $ $ k $ ". In reply to this query you should print the maximum sum of at most $ k $ non-intersecting subsegments of sequence $ a_{l},a_{l+1},...,a_{r} $ . Formally, you should choose at most $ k $ pairs of integers $ (x_{1},y_{1}),(x_{2},y_{2}),...,(x_{t},y_{t}) $ $ (l<=x_{1}<=y_{1}<x_{2}<=y_{2}<...<x_{t}<=y_{t}<=r; t<=k) $ such that the sum $ a_{x1}+a_{x1}+1+...+a_{y1}+a_{x2}+a_{x2}+1+...+a_{y2}+...+a_{xt}+a_{xt}+1+...+a_{yt} $ is as large as possible. Note that you should choose at most $ k $ subsegments. Particularly, you can choose 0 subsegments. In this case the described sum considered equal to zero.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ $ (1<=n<=10^{5}) $ , showing how many numbers the sequence has. The next line contains $ n $ integers $ a_{1},a_{2},...,a_{n} $ $ (|a_{i}|<=500) $ .
+The third line contains integer $ m $ $ (1<=m<=10^{5}) $ — the number of queries. The next $ m $ lines contain the queries in the format, given in the statement.
+All changing queries fit into limits: $ 1<=i<=n $ , $ |val|<=500 $ .
+All queries to count the maximum sum of at most $ k $ non-intersecting subsegments fit into limits: $ 1<=l<=r<=n $ , $ 1<=k<=20 $ . It is guaranteed that the number of the queries to count the maximum sum of at most $ k $ non-intersecting subsegments doesn't exceed $ 10000 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query to count the maximum sum of at most $ k $ non-intersecting subsegments print the reply — the maximum sum. Print the answers to the queries in the order, in which the queries follow in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>9
+9 -8 9 -1 -1 -1 9 -8 9
+3
+1 1 9 1
+1 1 9 2
+1 4 6 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>17
+25
+0
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>15
+-4 8 -3 -10 10 4 -7 -7 0 -6 3 8 -10 7 2
+15
+1 3 9 2
+1 6 12 1
+0 6 5
+0 10 -7
+1 4 9 1
+1 7 9 1
+0 10 -3
+1 4 10 2
+1 3 13 2
+1 4 11 2
+0 15 -9
+0 13 -9
+0 11 -10
+1 5 14 2
+1 6 12 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>14
+11
+15
+0
+15
+26
+18
+23
+8
+</code></pre>
+<h2>说明</h2>
+<div>In the first query of the first example you can select a single pair $ (1,9) $ . So the described sum will be 17.
+Look at the second query of the first example. How to choose two subsegments? (1, 3) and (7, 9)? Definitely not, the sum we could get from (1, 3) and (7, 9) is 20, against the optimal configuration (1, 7) and (9, 9) with 25.
+The answer to the third query is 0, we prefer select nothing if all of the numbers in the given interval are negative.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

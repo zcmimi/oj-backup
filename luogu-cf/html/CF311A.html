@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>The Closest Pair - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392540:V1QKVCc5zqeaYL8ujz67d21eNTCzVxvTrMn+ZtCdRno=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Currently%20Tiny%20is%20learning%20Computational%20Geometry.%20When%20trying%20to%20solve%20a%20problem%20called%20%5C%22The%20Closest%20Pair%20Of%20Points%20In%20The%20Plane%5C%22%2C%20he%20found%20that%20a%20code%20which%20gave%20a%20wrong%20time%20complexity%20got%20Accepted%20instead%20of%20Time%20Limit%20Exceeded.%5Cn%5CnThe%20problem%20is%20the%20follows.%20Given%20%24%20n%20%24%20points%20in%20the%20plane%2C%20find%20a%20pair%20of%20points%20between%20which%20the%20distance%20is%20minimized.%20Distance%20between%20%24%20%28x_%7B1%7D%2Cy_%7B1%7D%29%20%24%20and%20%24%20%28x_%7B2%7D%2Cy_%7B2%7D%29%20%24%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF311A%5C%2F22fd88ba9a7f84161b680cf39a97d9a06bc287ba.png%29.%5Cn%5CnThe%20pseudo%20code%20of%20the%20unexpected%20code%20is%20as%20follows%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3Einput%20n%3Cbr%3E%3C%5C%2Fbr%3Efor%20i%20from%201%20to%20n%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20input%20the%20i-th%20point%27s%20coordinates%20into%20p%5Bi%5D%3Cbr%3E%3C%5C%2Fbr%3Esort%20array%20p%5B%5D%20by%20increasing%20of%20x%20coordinate%20first%20and%20increasing%20of%20y%20coordinate%20second%3Cbr%3E%3C%5C%2Fbr%3Ed%3DINF%20%20%20%20%20%20%20%20%5C%2F%5C%2Fhere%20INF%20is%20a%20number%20big%20enough%3Cbr%3E%3C%5C%2Fbr%3Etot%3D0%3Cbr%3E%3C%5C%2Fbr%3Efor%20i%20from%201%20to%20n%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20for%20j%20from%20%28i%2B1%29%20to%20n%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20%2B%2Btot%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20if%20%28p%5Bj%5D.x-p%5Bi%5D.x%3E%3Dd%29%20then%20break%20%20%20%20%5C%2F%5C%2Fnotice%20that%20%5C%22break%5C%22%20is%20only%20to%20be%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%2F%5C%2Fout%20of%20the%20loop%20%5C%22for%20j%5C%22%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20d%3Dmin%28d%2Cdistance%28p%5Bi%5D%2Cp%5Bj%5D%29%29%3Cbr%3E%3C%5C%2Fbr%3Eoutput%20d%3Cbr%3E%3C%5C%2Fbr%3E%60Here%2C%20%24%20tot%20%24%20can%20be%20regarded%20as%20the%20running%20time%20of%20the%20code.%20Due%20to%20the%20fact%20that%20a%20computer%20can%20only%20run%20a%20limited%20number%20of%20operations%20per%20second%2C%20%24%20tot%20%24%20should%20not%20be%20more%20than%20%24%20k%20%24%20in%20order%20not%20to%20get%20Time%20Limit%20Exceeded.%5Cn%5CnYou%20are%20a%20great%20hacker.%20Would%20you%20please%20help%20Tiny%20generate%20a%20test%20data%20and%20let%20the%20code%20get%20Time%20Limit%20Exceeded%3F%22%2C%22inputFormat%22%3A%22A%20single%20line%20which%20contains%20two%20space-separated%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%202%3C%3Dn%3C%3D2000%20%24%20%2C%20%24%201%3C%3Dk%3C%3D10%5E%7B9%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22If%20there%20doesn%27t%20exist%20such%20a%20data%20which%20let%20the%20given%20code%20get%20TLE%2C%20print%20%5C%22no%20solution%5C%22%20%28without%20quotes%29%3B%20else%20print%20%24%20n%20%24%20lines%2C%20and%20the%20%24%20i%20%24%20-th%20line%20contains%20two%20integers%20%24%20x_%7Bi%7D%2Cy_%7Bi%7D%20%24%20%24%20%28%7Cx_%7Bi%7D%7C%2C%7Cy_%7Bi%7D%7C%3C%3D10%5E%7B9%7D%29%20%24%20representing%20the%20coordinates%20of%20the%20%24%20i%20%24%20-th%20point.%5Cn%5CnThe%20conditions%20below%20must%20be%20held%3A%5Cn%5Cn-%20All%20the%20points%20must%20be%20distinct.%5Cn-%20%24%20%7Cx_%7Bi%7D%7C%2C%7Cy_%7Bi%7D%7C%3C%3D10%5E%7B9%7D%20%24%20.%5Cn-%20After%20running%20the%20given%20code%2C%20the%20value%20of%20%24%20tot%20%24%20should%20be%20larger%20than%20%24%20k%20%24%20.%22%2C%22samples%22%3A%5B%5B%224%203%5Cn%22%2C%220%200%5Cn0%201%5Cn1%200%5Cn1%201%5Cn%22%5D%2C%5B%222%20100%5Cn%22%2C%22no%20solution%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F311%5C%2FA%22%2C%22id%22%3A%22311A%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF311A%22%2C%22title%22%3A%22The%20Closest%20Pair%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22The%20Closest%20Pair%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>The Closest Pair</h1>
+<h2>题目描述</h2>
+<div>Currently Tiny is learning Computational Geometry. When trying to solve a problem called "The Closest Pair Of Points In The Plane", he found that a code which gave a wrong time complexity got Accepted instead of Time Limit Exceeded.
+The problem is the follows. Given $ n $ points in the plane, find a pair of points between which the distance is minimized. Distance between $ (x_{1},y_{1}) $ and $ (x_{2},y_{2}) $ is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF311A/22fd88ba9a7f84161b680cf39a97d9a06bc287ba.png).
+The pseudo code of the unexpected code is as follows:
+`<br></br>input n<br></br>for i from 1 to n<br></br> input the i-th point's coordinates into p[i]<br></br>sort array p[] by increasing of x coordinate first and increasing of y coordinate second<br></br>d=INF //here INF is a number big enough<br></br>tot=0<br></br>for i from 1 to n<br></br> for j from (i+1) to n<br></br> ++tot<br></br> if (p[j].x-p[i].x>=d) then break //notice that "break" is only to be<br></br> //out of the loop "for j"<br></br> d=min(d,distance(p[i],p[j]))<br></br>output d<br></br>`Here, $ tot $ can be regarded as the running time of the code. Due to the fact that a computer can only run a limited number of operations per second, $ tot $ should not be more than $ k $ in order not to get Time Limit Exceeded.
+You are a great hacker. Would you please help Tiny generate a test data and let the code get Time Limit Exceeded?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>A single line which contains two space-separated integers $ n $ and $ k $ ( $ 2<=n<=2000 $ , $ 1<=k<=10^{9} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>If there doesn't exist such a data which let the given code get TLE, print "no solution" (without quotes); else print $ n $ lines, and the $ i $ -th line contains two integers $ x_{i},y_{i} $ $ (|x_{i}|,|y_{i}|<=10^{9}) $ representing the coordinates of the $ i $ -th point.
+The conditions below must be held:
+- All the points must be distinct.
+- $ |x_{i}|,|y_{i}|<=10^{9} $ .
+- After running the given code, the value of $ tot $ should be larger than $ k $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0 0
+0 1
+1 0
+1 1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2 100
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>no solution
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Little Xor - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392079:xBhAZmpQVgko2rkvb1eizTcsSGNrWfi4RdmQH238Lh0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Little%20Petya%20likes%20arrays%20that%20consist%20of%20non-negative%20integers%20a%20lot.%20Recently%20his%20mom%20has%20presented%20him%20one%20such%20array%20consisting%20of%20%24%20n%20%24%20elements.%20Petya%20immediately%20decided%20to%20find%20there%20a%20segment%20of%20consecutive%20elements%2C%20such%20that%20the%20%24%20xor%20%24%20of%20all%20numbers%20from%20this%20segment%20was%20maximal%20possible.%20Help%20him%20with%20that.%5Cn%5CnThe%20%24%20xor%20%24%20operation%20is%20the%20bitwise%20exclusive%20%5C%22OR%5C%22%2C%20that%20is%20denoted%20as%20%5C%22xor%5C%22%20in%20Pascal%20and%20%5C%22%5E%5C%22%20in%20C%5C%2FC%2B%2B%5C%2FJava.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D100%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20array.%20The%20second%20line%20contains%20the%20space-separated%20integers%20from%20the%20array.%20All%20numbers%20are%20non-negative%20integers%20strictly%20less%20than%20%24%202%5E%7B30%7D%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20required%20maximal%20%24%20xor%20%24%20of%20a%20segment%20of%20consecutive%20elements.%22%2C%22samples%22%3A%5B%5B%225%5Cn1%202%201%201%202%5Cn%22%2C%223%5Cn%22%5D%2C%5B%223%5Cn1%202%207%5Cn%22%2C%227%5Cn%22%5D%2C%5B%224%5Cn4%202%204%208%5Cn%22%2C%2214%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20one%20of%20the%20optimal%20segments%20is%20the%20segment%20that%20consists%20of%20the%20first%20and%20the%20second%20array%20elements%2C%20if%20we%20consider%20the%20array%20elements%20indexed%20starting%20from%20one.%5Cn%5CnThe%20second%20sample%20contains%20only%20one%20optimal%20segment%2C%20which%20contains%20exactly%20one%20array%20element%20%28element%20with%20index%20three%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F252%5C%2FA%22%2C%22id%22%3A%22252A%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cuff1a%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%5Cuff0c%5Cu6c42%5Cu5f02%5Cu6216%5Cu548c%5Cu6700%5Cu5927%5Cu7684%5Cu8fde%5Cu7eed%5Cu5b50%5Cu6bb5%5Cu548c%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6570n%5Cuff0c%28%241%5C%5Cleq%20n%5C%5Cleq%20100%24%20%29%3B%5Cu7b2c%5Cu4e8c%5Cu884cn%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu6240%5Cu6709%5Cu6570%5Cu6700%5Cu5927%5Cu4e0d%5Cu8d85%5Cu8fc7%242%5E%7B30%7D%24%20%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cuff1a%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu5373%5Cu6700%5Cu5927%5Cu7684%5Cu5f02%5Cu6216%5Cu548c%5Cu3002%22%2C%22tags%22%3A%5B13%2C111%2C254%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A204%2C%22totalAccepted%22%3A100%2C%22pid%22%3A%22CF252A%22%2C%22title%22%3A%22Little%20Xor%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A33683%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11601%2C%22name%22%3A%22CF252A%20Little%20Xor%22%2C%22slug%22%3A%22CF252A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1216%22%2C%22title%22%3A%22%5BIOI1994%5D%5BUSACO1.5%5D%5Cu6570%5Cu5b57%5Cu4e09%5Cu89d2%5Cu5f62%20Number%20Triangles%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3374%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6811%5Cu72b6%5Cu6570%5Cu7ec4%201%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3397%22%2C%22title%22%3A%22%5Cu5730%5Cu6bef%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4136%22%2C%22title%22%3A%22%5Cu8c01%5Cu80fd%5Cu8d62%5Cu5462%5Cuff1f%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF4B%22%2C%22title%22%3A%22Before%20an%20Exam%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Little%20Xor%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Little Xor</h1>
+<h2>题意翻译</h2>
+<div>### 题目大意：
+给出一个正整数序列，求异或和最大的连续子段和。
+### 输入：
+第一行一个数n，($1\leq n\leq 100$ );第二行n个整数，所有数最大不超过$2^{30}$ 。
+### 输出：
+一个数，即最大的异或和。</div>
+<h2>题目描述</h2>
+<div>Little Petya likes arrays that consist of non-negative integers a lot. Recently his mom has presented him one such array consisting of $ n $ elements. Petya immediately decided to find there a segment of consecutive elements, such that the $ xor $ of all numbers from this segment was maximal possible. Help him with that.
+The $ xor $ operation is the bitwise exclusive "OR", that is denoted as "xor" in Pascal and "^" in C/C++/Java.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 1<=n<=100 $ ) — the number of elements in the array. The second line contains the space-separated integers from the array. All numbers are non-negative integers strictly less than $ 2^{30} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the required maximal $ xor $ of a segment of consecutive elements.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+1 2 1 1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+1 2 7
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>7
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+4 2 4 8
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>14
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample one of the optimal segments is the segment that consists of the first and the second array elements, if we consider the array elements indexed starting from one.
+The second sample contains only one optimal segment, which contains exactly one array element (element with index three).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

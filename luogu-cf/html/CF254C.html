@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Anagram - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392091:3iuuwxR6Zl+4rmfslArGwj09UWPKLxJCdX3DdW5/x2s=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22String%20%24%20x%20%24%20is%20an%20anagram%20of%20string%20%24%20y%20%24%20%2C%20if%20we%20can%20rearrange%20the%20letters%20in%20string%20%24%20x%20%24%20and%20get%20exact%20string%20%24%20y%20%24%20.%20For%20example%2C%20strings%20%5C%22DOG%5C%22%20and%20%5C%22GOD%5C%22%20are%20anagrams%2C%20so%20are%20strings%20%5C%22BABA%5C%22%20and%20%5C%22AABB%5C%22%2C%20but%20strings%20%5C%22ABBAC%5C%22%20and%20%5C%22CAABA%5C%22%20are%20not.%5Cn%5CnYou%20are%20given%20two%20strings%20%24%20s%20%24%20and%20%24%20t%20%24%20of%20the%20same%20length%2C%20consisting%20of%20uppercase%20English%20letters.%20You%20need%20to%20get%20the%20anagram%20of%20string%20%24%20t%20%24%20from%20string%20%24%20s%20%24%20.%20You%20are%20permitted%20to%20perform%20the%20replacing%20operation%3A%20every%20operation%20is%20replacing%20some%20character%20from%20the%20string%20%24%20s%20%24%20by%20any%20other%20character.%20Get%20the%20anagram%20of%20string%20%24%20t%20%24%20in%20the%20least%20number%20of%20replacing%20operations.%20If%20you%20can%20get%20multiple%20anagrams%20of%20string%20%24%20t%20%24%20in%20the%20least%20number%20of%20operations%2C%20get%20the%20lexicographically%20minimal%20one.%5Cn%5CnThe%20lexicographic%20order%20of%20strings%20is%20the%20familiar%20to%20us%20%5C%22dictionary%5C%22%20order.%20Formally%2C%20the%20string%20%24%20p%20%24%20of%20length%20%24%20n%20%24%20is%20lexicographically%20smaller%20than%20string%20%24%20q%20%24%20of%20the%20same%20length%2C%20if%20%24%20p_%7B1%7D%3Dq_%7B1%7D%20%24%20%2C%20%24%20p_%7B2%7D%3Dq_%7B2%7D%20%24%20%2C%20...%2C%20%24%20p_%7Bk-1%7D%3Dq_%7Bk-1%7D%20%24%20%2C%20%24%20p_%7Bk%7D%26lt%3Bq_%7Bk%7D%20%24%20for%20some%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%3C%3Dn%20%24%20%29.%20Here%20characters%20in%20the%20strings%20are%20numbered%20from%201.%20The%20characters%20of%20the%20strings%20are%20compared%20in%20the%20alphabetic%20order.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20two%20lines.%20The%20first%20line%20contains%20string%20%24%20s%20%24%20%2C%20the%20second%20line%20contains%20string%20%24%20t%20%24%20.%20The%20strings%20have%20the%20same%20length%20%28from%20%24%201%20%24%20to%20%24%2010%5E%7B5%7D%20%24%20characters%29%20and%20consist%20of%20uppercase%20English%20letters.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20%24%20z%20%24%20%5Cu2014%20the%20minimum%20number%20of%20replacement%20operations%2C%20needed%20to%20get%20an%20anagram%20of%20string%20%24%20t%20%24%20from%20string%20%24%20s%20%24%20.%20In%20the%20second%20line%20print%20the%20lexicographically%20minimum%20anagram%20that%20could%20be%20obtained%20in%20%24%20z%20%24%20operations.%22%2C%22samples%22%3A%5B%5B%22ABA%5CnCBA%5Cn%22%2C%221%5CnABC%5Cn%22%5D%2C%5B%22CDBABC%5CnADCABD%5Cn%22%2C%222%5CnADBADC%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20second%20sample%20has%20eight%20anagrams%20of%20string%20%24%20t%20%24%20%2C%20that%20can%20be%20obtained%20from%20string%20%24%20s%20%24%20by%20replacing%20exactly%20two%20letters%3A%20%5C%22ADBADC%5C%22%2C%20%5C%22ADDABC%5C%22%2C%20%5C%22CDAABD%5C%22%2C%20%5C%22CDBAAD%5C%22%2C%20%5C%22CDBADA%5C%22%2C%20%5C%22CDDABA%5C%22%2C%20%5C%22DDAABC%5C%22%2C%20%5C%22DDBAAC%5C%22.%20These%20anagrams%20are%20listed%20in%20the%20lexicographical%20order.%20The%20lexicographically%20minimum%20anagram%20is%20%5C%22ADBADC%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F254%5C%2FC%22%2C%22id%22%3A%22254C%22%7D%2C%22translation%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu4e24%5Cu4e2a%5Cu7531%5Cu5927%5Cu5199%5Cu5b57%5Cu6bcd%5Cu7ec4%5Cu6210%5Cu3001%5Cu957f%5Cu5ea6%5Cu76f8%5Cu7b49%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32S%5Cu3001T%5Cuff0c%5Cu4f60%5Cu7684%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu53ef%5Cu4ee5%5Cu5c06S%5Cu4e2d%5Cu7684%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu66ff%5Cu6362%5Cu4e3a%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu5927%5Cu5199%5Cu5b57%5Cu6bcd%5Cr%5Cn%5Cr%5Cn%5Cu6c42%5Cu53ef%5Cu4ee5%5Cu4f7fS%5Cu53d8%5Cu4e3aT%5Cu7684%2A%2A%5Cu6362%5Cu4f4d%5Cu4e32%2A%2A%5Cu7684%5Cu51fa%5Cu6700%5Cu5c0f%5Cu6b65%5Cu6570%5Cuff0c%5Cu5e76%5Cu8f93%5Cu51fa%5Cu53d8%5Cu6362%5Cu540e%5Cu7684S%5Cuff0c%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu7ec4%5Cu89e3%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu90a3%5Cu4e00%5Cu4e2a%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu6362%5Cu4f4d%5Cu4e32%2A%2A%5Cu7684%5Cu5b9a%5Cu4e49%5Cu5982%5Cu4e0b%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu4e24%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu76f8%5Cu7b49%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32A%5Cu3001B%5Cuff0c%5Cu5982%5Cu679cA%5Cu4e2d%5Cu7684%5Cu5b57%5Cu6bcd%5Cu7ecf%5Cu91cd%5Cu65b0%5Cu7ec4%5Cu5408%5Cu6392%5Cu5217%5Cu53ef%5Cu4ee5%5Cu53d8%5Cu4e3aB%5Cuff0c%5Cu5c31%5Cu79f0A%5Cu4e3aB%5Cu7684%2A%2A%5Cu6362%5Cu4f4d%5Cu4e32%2A%2A%22%2C%22tags%22%3A%5B2%2C3%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A53%2C%22totalAccepted%22%3A13%2C%22pid%22%3A%22CF254C%22%2C%22title%22%3A%22Anagram%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A163523%2C%22title%22%3A%22%5Cu672c%5Cu9898%5Cu6709%5Cu5751%22%2C%22forum%22%3A%7B%22id%22%3A11592%2C%22name%22%3A%22CF254C%20Anagram%22%2C%22slug%22%3A%22CF254C%22%7D%7D%2C%7B%22id%22%3A50159%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A11592%2C%22name%22%3A%22CF254C%20Anagram%22%2C%22slug%22%3A%22CF254C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2540%22%2C%22title%22%3A%22%5Cu6597%5Cu5730%5Cu4e3b%5Cu589e%5Cu5f3a%5Cu7248%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2668%22%2C%22title%22%3A%22%5Cu6597%5Cu5730%5Cu4e3b%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3084%22%2C%22title%22%3A%22%5BUSACO13OPEN%5D%5Cu7167%5Cu7247Photo%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3118%22%2C%22title%22%3A%22%5BUSACO15JAN%5D%5Cu7535%5Cu5f71%5Cu79fb%5Cu52a8Moovie%20Mooving%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4187%22%2C%22title%22%3A%22%5BUSACO18JAN%5DStamp%20Painting%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Anagram%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Anagram</h1>
+<h2>题意翻译</h2>
+<div>对于给定的两个由大写字母组成、长度相等的字符串S、T，你的每一次操作可以将S中的任意一个字符替换为任意一个大写字母
+求可以使S变为T的**换位串**的出最小步数，并输出变换后的S，如果有多组解，输出字典序最小的那一个
+**换位串**的定义如下，对于两个长度相等的字符串A、B，如果A中的字母经重新组合排列可以变为B，就称A为B的**换位串**</div>
+<h2>题目描述</h2>
+<div>String $ x $ is an anagram of string $ y $ , if we can rearrange the letters in string $ x $ and get exact string $ y $ . For example, strings "DOG" and "GOD" are anagrams, so are strings "BABA" and "AABB", but strings "ABBAC" and "CAABA" are not.
+You are given two strings $ s $ and $ t $ of the same length, consisting of uppercase English letters. You need to get the anagram of string $ t $ from string $ s $ . You are permitted to perform the replacing operation: every operation is replacing some character from the string $ s $ by any other character. Get the anagram of string $ t $ in the least number of replacing operations. If you can get multiple anagrams of string $ t $ in the least number of operations, get the lexicographically minimal one.
+The lexicographic order of strings is the familiar to us "dictionary" order. Formally, the string $ p $ of length $ n $ is lexicographically smaller than string $ q $ of the same length, if $ p_{1}=q_{1} $ , $ p_{2}=q_{2} $ , ..., $ p_{k-1}=q_{k-1} $ , $ p_{k}&lt;q_{k} $ for some $ k $ ( $ 1<=k<=n $ ). Here characters in the strings are numbered from 1. The characters of the strings are compared in the alphabetic order.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of two lines. The first line contains string $ s $ , the second line contains string $ t $ . The strings have the same length (from $ 1 $ to $ 10^{5} $ characters) and consist of uppercase English letters.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print $ z $ — the minimum number of replacement operations, needed to get an anagram of string $ t $ from string $ s $ . In the second line print the lexicographically minimum anagram that could be obtained in $ z $ operations.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>ABA
+CBA
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+ABC
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>CDBABC
+ADCABD
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+ADBADC
+</code></pre>
+<h2>说明</h2>
+<div>The second sample has eight anagrams of string $ t $ , that can be obtained from string $ s $ by replacing exactly two letters: "ADBADC", "ADDABC", "CDAABD", "CDBAAD", "CDBADA", "CDDABA", "DDAABC", "DDBAAC". These anagrams are listed in the lexicographical order. The lexicographically minimum anagram is "ADBADC".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

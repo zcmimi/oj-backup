@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Reclamation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392734:Kh95um9xsED08FDljauQaKtJkmB2XwgZpEntuY59Brg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20a%20far%20away%20land%2C%20there%20exists%20a%20planet%20shaped%20like%20a%20cylinder.%20There%20are%20three%20regions%20in%20this%20planet%3A%20top%2C%20bottom%2C%20and%20side%20as%20shown%20in%20the%20following%20picture.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2F7753f6c4e7359f22ca0332e116f022a6bdefcaf9.png%29Both%20the%20top%20and%20the%20bottom%20areas%20consist%20of%20big%20cities.%20The%20side%20area%20consists%20entirely%20of%20the%20sea.%5Cn%5CnOne%20day%2C%20a%20city%20decides%20that%20it%20has%20too%20little%20space%20and%20would%20like%20to%20reclamate%20some%20of%20the%20side%20area%20into%20land.%20The%20side%20area%20can%20be%20represented%20by%20a%20grid%20with%20%24%20r%20%24%20rows%20and%20%24%20c%20%24%20columns%20%5Cu2014%20each%20cell%20represents%20a%20rectangular%20area%20in%20the%20side%20area.%20The%20rows%20are%20numbered%201%20through%20%24%20r%20%24%20from%20top%20to%20bottom%2C%20while%20the%20columns%20are%20numbered%201%20through%20%24%20c%20%24%20from%20left%20to%20right.%20Two%20cells%20are%20adjacent%20if%20they%20share%20a%20side.%20In%20addition%2C%20two%20cells%20located%20on%20the%20same%20row%20%5Cu2014%20one%20in%20the%20leftmost%20column%2C%20and%20the%20other%20in%20the%20rightmost%20column%20%5Cu2014%20are%20also%20adjacent.%5Cn%5CnInitially%2C%20all%20of%20the%20cells%20are%20occupied%20by%20the%20sea.%20The%20plan%20is%20to%20turn%20some%20of%20those%20cells%20into%20land%20one%20by%20one%20in%20a%20particular%20order%20that%20will%20be%20given%20to%20you.%5Cn%5CnHowever%2C%20the%20sea%20on%20the%20side%20area%20is%20also%20used%20as%20a%20major%20trade%20route.%20More%20formally%2C%20it%20is%20not%20allowed%20to%20reclamate%20the%20sea%20cells%20into%20land%20in%20such%20way%20that%20there%20does%20not%20exist%20a%20sequence%20of%20cells%20with%20the%20following%20property%3A%5Cn%5Cn-%20All%20cells%20in%20the%20sequence%20are%20occupied%20by%20the%20sea%20%28i.e.%2C%20they%20are%20not%20reclamated%29.%5Cn-%20The%20first%20cell%20in%20the%20sequence%20is%20in%20the%20top%20row.%5Cn-%20The%20last%20cell%20in%20the%20sequence%20is%20in%20the%20bottom%20row.%5Cn-%20Consecutive%20cells%20in%20the%20sequence%20are%20adjacent.%5Cn%5CnThus%2C%20the%20plan%20is%20revised.%20Each%20time%20a%20cell%20is%20going%20to%20be%20turned%20from%20sea%20to%20land%2C%20the%20city%20first%20needs%20to%20check%20whether%20or%20not%20it%20would%20violate%20the%20above%20condition%20by%20doing%20that.%20If%20it%20would%2C%20then%20the%20cell%20is%20not%20turned%20into%20land%20and%20the%20plan%20proceeds%20into%20the%20next%20cell.%20Otherwise%2C%20the%20cell%20is%20turned%20into%20land.%5Cn%5CnYour%20job%20is%20to%20simulate%20this%20and%20output%20the%20number%20of%20cells%20that%20were%20successfully%20turned%20into%20land.%22%2C%22inputFormat%22%3A%22The%20first%20line%20consists%20of%20three%20integers%20%24%20r%20%24%20%2C%20%24%20c%20%24%20%2C%20and%20%24%20n%20%24%20%28%20%24%201%3C%3Dr%2Cc%3C%3D3000%20%24%20%2C%20%24%201%3C%3Dn%3C%3D3%5Cu00b710%5E%7B5%7D%20%24%20%29.%20Then%2C%20%24%20n%20%24%20lines%20follow%2C%20describing%20the%20cells%20in%20the%20order%20you%20will%20reclamate%20them.%20Each%20line%20will%20consists%20of%20two%20integers%3A%20%24%20r_%7Bi%7D%20%24%20and%20%24%20c_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dr_%7Bi%7D%3C%3Dr%20%24%20%2C%20%24%201%3C%3Dc_%7Bi%7D%3C%3Dc%20%24%20%29%2C%20which%20represents%20the%20cell%20located%20at%20row%20%24%20r_%7Bi%7D%20%24%20and%20column%20%24%20c_%7Bi%7D%20%24%20.%20All%20of%20the%20lines%20describing%20the%20cells%20will%20be%20distinct.%22%2C%22outputFormat%22%3A%22You%20should%20output%20a%20single%20number%20representing%20the%20number%20of%20cells%20that%20were%20successfully%20turned%20to%20land.%22%2C%22samples%22%3A%5B%5B%223%204%209%5Cn2%202%5Cn3%202%5Cn2%203%5Cn3%204%5Cn3%201%5Cn1%203%5Cn2%201%5Cn1%201%5Cn1%204%5Cn%22%2C%226%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20pictures%20below%20show%20the%20sequence%20of%20reclamations%20that%20are%20performed%20in%20the%20example%20input.%20Blue%20cells%20represent%20the%20cells%20occupied%20by%20sea%2C%20while%20other%20colored%20cells%20represent%20land.%20The%20latest%20cell%20that%20are%20reclamated%20is%20colored%20either%20yellow%20or%20red%2C%20depending%20on%20whether%20the%20addition%20violates%20the%20condition%20in%20the%20statement.%20The%20dashed%20red%20line%20represents%20a%20possible%20trade%20route%2C%20if%20it%20exists.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2Fd6ec8125e55a1906d7581cbff9a6ee87ddc2353d.png%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2Faef1157a0827de2a801d26fae3b1c851c9f2d8df.png%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2Fe133e83ccbd4802abe981cfd4b05c5d7ba860aec.png%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2F1cc7f576d305fdf90a3b9b4943250133612ce65d.png%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2Fb3f861e0bbdac64175ce462101d9dcd6abb05302.png%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2F7aacfff1f5d1fec99c575effbe7f4526fc6d63ab.png%29%5Cn%5CnNo%20route%20exists%2C%20so%20this%20reclamation%20is%20not%20performed.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2F0d8309eeef1033c7c6d711bc90d29fb1bf8f05ed.png%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2F9114b7758ba6fee6e395cf86ed73fbca75c14132.png%29%5Cn%5CnNo%20route%20exists%2C%20skipped.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2Fdd3359aa424a23f7486bdb3fd9b4d1736723003a.png%29%5Cn%5CnRemember%20that%20the%20leftmost%20and%20rightmost%20cells%20in%20the%20same%20row%20are%20adjacent.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2F2b437fd296a68b1926dba0367513cbacf22495c3.png%29%5Cn%5CnNo%20route%20exists%2C%20skipped.%5Cn%5CnHence%20the%20result%20is%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF325D%5C%2F9d0f47bed88870496229a4384523053b576aaa67.png%29%5Cn%5CnThere%20are%206%20successful%20reclamation%20and%203%20failed%20ones.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F325%5C%2FD%22%2C%22id%22%3A%22325D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A14%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22CF325D%22%2C%22title%22%3A%22Reclamation%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Reclamation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Reclamation</h1>
+<h2>题目描述</h2>
+<div>In a far away land, there exists a planet shaped like a cylinder. There are three regions in this planet: top, bottom, and side as shown in the following picture.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/7753f6c4e7359f22ca0332e116f022a6bdefcaf9.png)Both the top and the bottom areas consist of big cities. The side area consists entirely of the sea.
+One day, a city decides that it has too little space and would like to reclamate some of the side area into land. The side area can be represented by a grid with $ r $ rows and $ c $ columns — each cell represents a rectangular area in the side area. The rows are numbered 1 through $ r $ from top to bottom, while the columns are numbered 1 through $ c $ from left to right. Two cells are adjacent if they share a side. In addition, two cells located on the same row — one in the leftmost column, and the other in the rightmost column — are also adjacent.
+Initially, all of the cells are occupied by the sea. The plan is to turn some of those cells into land one by one in a particular order that will be given to you.
+However, the sea on the side area is also used as a major trade route. More formally, it is not allowed to reclamate the sea cells into land in such way that there does not exist a sequence of cells with the following property:
+- All cells in the sequence are occupied by the sea (i.e., they are not reclamated).
+- The first cell in the sequence is in the top row.
+- The last cell in the sequence is in the bottom row.
+- Consecutive cells in the sequence are adjacent.
+Thus, the plan is revised. Each time a cell is going to be turned from sea to land, the city first needs to check whether or not it would violate the above condition by doing that. If it would, then the cell is not turned into land and the plan proceeds into the next cell. Otherwise, the cell is turned into land.
+Your job is to simulate this and output the number of cells that were successfully turned into land.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line consists of three integers $ r $ , $ c $ , and $ n $ ( $ 1<=r,c<=3000 $ , $ 1<=n<=3·10^{5} $ ). Then, $ n $ lines follow, describing the cells in the order you will reclamate them. Each line will consists of two integers: $ r_{i} $ and $ c_{i} $ ( $ 1<=r_{i}<=r $ , $ 1<=c_{i}<=c $ ), which represents the cell located at row $ r_{i} $ and column $ c_{i} $ . All of the lines describing the cells will be distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>You should output a single number representing the number of cells that were successfully turned to land.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 4 9
+2 2
+3 2
+2 3
+3 4
+3 1
+1 3
+2 1
+1 1
+1 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6
+</code></pre>
+<h2>说明</h2>
+<div>The pictures below show the sequence of reclamations that are performed in the example input. Blue cells represent the cells occupied by sea, while other colored cells represent land. The latest cell that are reclamated is colored either yellow or red, depending on whether the addition violates the condition in the statement. The dashed red line represents a possible trade route, if it exists.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/d6ec8125e55a1906d7581cbff9a6ee87ddc2353d.png)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/aef1157a0827de2a801d26fae3b1c851c9f2d8df.png)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/e133e83ccbd4802abe981cfd4b05c5d7ba860aec.png)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/1cc7f576d305fdf90a3b9b4943250133612ce65d.png)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/b3f861e0bbdac64175ce462101d9dcd6abb05302.png)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/7aacfff1f5d1fec99c575effbe7f4526fc6d63ab.png)
+No route exists, so this reclamation is not performed.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/0d8309eeef1033c7c6d711bc90d29fb1bf8f05ed.png)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/9114b7758ba6fee6e395cf86ed73fbca75c14132.png)
+No route exists, skipped.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/dd3359aa424a23f7486bdb3fd9b4d1736723003a.png)
+Remember that the leftmost and rightmost cells in the same row are adjacent.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/2b437fd296a68b1926dba0367513cbacf22495c3.png)
+No route exists, skipped.
+Hence the result is:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF325D/9d0f47bed88870496229a4384523053b576aaa67.png)
+There are 6 successful reclamation and 3 failed ones.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

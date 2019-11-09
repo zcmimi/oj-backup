@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Rectangle Puzzle - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392294:JHrO+f9+7fjRMcBZYtWSgvUi92xVYVKLYTNHmeqfHls=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20two%20rectangles%20on%20a%20plane.%20The%20centers%20of%20both%20rectangles%20are%20located%20in%20the%20origin%20of%20coordinates%20%28meaning%20the%20center%20of%20the%20rectangle%27s%20symmetry%29.%20The%20first%20rectangle%27s%20sides%20are%20parallel%20to%20the%20coordinate%20axes%3A%20the%20length%20of%20the%20side%20that%20is%20parallel%20to%20the%20%24%20Ox%20%24%20axis%2C%20equals%20%24%20w%20%24%20%2C%20the%20length%20of%20the%20side%20that%20is%20parallel%20to%20the%20%24%20Oy%20%24%20axis%2C%20equals%20%24%20h%20%24%20.%20The%20second%20rectangle%20can%20be%20obtained%20by%20rotating%20the%20first%20rectangle%20relative%20to%20the%20origin%20of%20coordinates%20by%20angle%20%24%20%5Cu03b1%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF280A%5C%2F052b43ecd665cd6e4ffd3e118c46f92dcd4eb612.png%29Your%20task%20is%20to%20find%20the%20area%20of%20the%20region%20which%20belongs%20to%20both%20given%20rectangles.%20This%20region%20is%20shaded%20in%20the%20picture.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20w%2Ch%2C%5Cu03b1%20%24%20%24%20%281%3C%3Dw%2Ch%3C%3D10%5E%7B6%7D%3B%5Cu00a00%3C%3D%5Cu03b1%3C%3D180%29%20%24%20.%20Angle%20%24%20%5Cu03b1%20%24%20is%20given%20in%20degrees.%22%2C%22outputFormat%22%3A%22In%20a%20single%20line%20print%20a%20real%20number%20%5Cu2014%20the%20area%20of%20the%20region%20which%20belongs%20to%20both%20given%20rectangles.%5Cn%5CnThe%20answer%20will%20be%20considered%20correct%20if%20its%20relative%20or%20absolute%20error%20doesn%27t%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%221%201%2045%5Cn%22%2C%220.828427125%5Cn%22%5D%2C%5B%226%204%2030%5Cn%22%2C%2219.668384925%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20second%20sample%20has%20been%20drawn%20on%20the%20picture%20above.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F280%5C%2FA%22%2C%22id%22%3A%22280A%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu80cc%5Cu666f%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu5e73%5Cu9762%5Cu4e0a%5Cu6709%5Cu4e24%5Cu4e2a%5Cu77e9%5Cu5f62%5Cu3002%5Cr%5Cn%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu4e24%5Cu4e2a%5Cu77e9%5Cu5f62%5Cu7684%5Cu4e2d%5Cu5fc3%5Cu90fd%5Cu4f4d%5Cu4e8e%5Cu5750%5Cu6807%5Cu8f74%5Cu539f%5Cu70b9%5Cuff08%5Cu5373%5Cu77e9%5Cu5f62%5Cu5bf9%5Cu79f0%5Cu7684%5Cu4e2d%5Cu5fc3%5Cuff09%5Cu3002%20%20%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu77e9%5Cu5f62%5Cu7684%5Cu8fb9%5Cu4e0e%5Cu5750%5Cu6807%5Cu8f74%5Cu5e73%5Cu884c%5Cuff0c%5Cu4e0e%24x%24%5Cu8f74%5Cu5e73%5Cu884c%5Cu7684%5Cu8fb9%5Cu7684%5Cu957f%5Cu5ea6%5Cu7b49%5Cu4e8e%24w%24%5Cuff0c%5Cu4e0e%24y%24%5Cu8f74%5Cu5e73%5Cu884c%5Cu7684%5Cu8fb9%5Cu7684%5Cu957f%5Cu5ea6%5Cu7b49%5Cu4e8e%24h%24%5Cu3002%20%20%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu77e9%5Cu5f62%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu7528%5Cu89d2%5Cu5ea6%24%5Cu03b1%24%5Cu76f8%5Cu5bf9%5Cu4e8e%5Cu5750%5Cu6807%5Cu539f%5Cu70b9%5Cu65cb%5Cu8f6c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu77e9%5Cu5f62%5Cu6765%5Cu83b7%5Cu5f97%5Cu3002%20%20%5Cr%5Cn%5Cu8bf7%5Cu4f60%5Cu6c42%5Cu51fa%5Cu4e24%5Cu4e2a%5Cu77e9%5Cu5f62%5Cu7684%5Cu91cd%5Cu53e0%5Cu9762%5Cu79ef%5Cuff08%5Cu56fe%5Cu4e2d%5Cu9634%5Cu5f71%5Cu9762%5Cu79ef%5Cuff09%20%20%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF280A%5C%2F052b43ecd665cd6e4ffd3e118c46f92dcd4eb612.png%29%20%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A44%2C%22totalAccepted%22%3A20%2C%22pid%22%3A%22CF280A%22%2C%22title%22%3A%22Rectangle%20Puzzle%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Rectangle%20Puzzle%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Rectangle Puzzle</h1>
+<h2>题意翻译</h2>
+<div>## 题目背景
+一个平面上有两个矩形。
+## 题目描述
+两个矩形的中心都位于坐标轴原点（即矩形对称的中心）。
+第一个矩形的边与坐标轴平行，与$x$轴平行的边的长度等于$w$，与$y$轴平行的边的长度等于$h$。
+第二个矩形可以通过用角度$α$相对于坐标原点旋转第一个矩形来获得。
+请你求出两个矩形的重叠面积（图中阴影面积）
+![](https://cdn.luogu.org/upload/vjudge_pic/CF280A/052b43ecd665cd6e4ffd3e118c46f92dcd4eb612.png) </div>
+<h2>题目描述</h2>
+<div>You are given two rectangles on a plane. The centers of both rectangles are located in the origin of coordinates (meaning the center of the rectangle's symmetry). The first rectangle's sides are parallel to the coordinate axes: the length of the side that is parallel to the $ Ox $ axis, equals $ w $ , the length of the side that is parallel to the $ Oy $ axis, equals $ h $ . The second rectangle can be obtained by rotating the first rectangle relative to the origin of coordinates by angle $ α $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF280A/052b43ecd665cd6e4ffd3e118c46f92dcd4eb612.png)Your task is to find the area of the region which belongs to both given rectangles. This region is shaded in the picture.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ w,h,α $ $ (1<=w,h<=10^{6}; 0<=α<=180) $ . Angle $ α $ is given in degrees.</div>
+<h3>输出格式</h3>
+<br />
+<div>In a single line print a real number — the area of the region which belongs to both given rectangles.
+The answer will be considered correct if its relative or absolute error doesn't exceed $ 10^{-6} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 1 45
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0.828427125
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6 4 30
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>19.668384925
+</code></pre>
+<h2>说明</h2>
+<div>The second sample has been drawn on the picture above.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

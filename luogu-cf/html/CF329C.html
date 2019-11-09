@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Graph Reconstruction - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392802:cl8dbW58QJwG/Ao2eHybZ+LOE+NYBPxeThXi39kyoSc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22I%20have%20an%20undirected%20graph%20consisting%20of%20%24%20n%20%24%20nodes%2C%20numbered%201%20through%20%24%20n%20%24%20.%20Each%20node%20has%20at%20most%20two%20incident%20edges.%20For%20each%20pair%20of%20nodes%2C%20there%20is%20at%20most%20an%20edge%20connecting%20them.%20No%20edge%20connects%20a%20node%20to%20itself.%5Cn%5CnI%20would%20like%20to%20create%20a%20new%20graph%20in%20such%20a%20way%20that%3A%5Cn%5Cn-%20The%20new%20graph%20consists%20of%20the%20same%20number%20of%20nodes%20and%20edges%20as%20the%20old%20graph.%5Cn-%20The%20properties%20in%20the%20first%20paragraph%20still%20hold.%5Cn-%20For%20each%20two%20nodes%20%24%20u%20%24%20and%20%24%20v%20%24%20%2C%20if%20there%20is%20an%20edge%20connecting%20them%20in%20the%20old%20graph%2C%20there%20is%20no%20edge%20connecting%20them%20in%20the%20new%20graph.%5Cn%5CnHelp%20me%20construct%20the%20new%20graph%2C%20or%20tell%20me%20if%20it%20is%20impossible.%22%2C%22inputFormat%22%3A%22The%20first%20line%20consists%20of%20two%20space-separated%20integers%3A%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%2C%20denoting%20the%20number%20of%20nodes%20and%20edges%2C%20respectively.%20Then%20%24%20m%20%24%20lines%20follow.%20Each%20of%20the%20%24%20m%20%24%20lines%20consists%20of%20two%20space-separated%20integers%20%24%20u%20%24%20and%20%24%20v%20%24%20%28%20%24%201%3C%3Du%2Cv%3C%3Dn%3B%5Cu00a0u%5Cu2260v%20%24%20%29%2C%20denoting%20an%20edge%20between%20nodes%20%24%20u%20%24%20and%20%24%20v%20%24%20.%22%2C%22outputFormat%22%3A%22If%20it%20is%20not%20possible%20to%20construct%20a%20new%20graph%20with%20the%20mentioned%20properties%2C%20output%20a%20single%20line%20consisting%20of%20-1.%20Otherwise%2C%20output%20exactly%20%24%20m%20%24%20lines.%20Each%20line%20should%20contain%20a%20description%20of%20edge%20in%20the%20same%20way%20as%20used%20in%20the%20input%20format.%22%2C%22samples%22%3A%5B%5B%228%207%5Cn1%202%5Cn2%203%5Cn4%205%5Cn5%206%5Cn6%208%5Cn8%207%5Cn7%204%5Cn%22%2C%221%204%5Cn4%206%5Cn1%206%5Cn2%207%5Cn7%205%5Cn8%205%5Cn2%208%5Cn%22%5D%2C%5B%223%202%5Cn1%202%5Cn2%203%5Cn%22%2C%22-1%5Cn%22%5D%2C%5B%225%204%5Cn1%202%5Cn2%203%5Cn3%204%5Cn4%201%5Cn%22%2C%221%203%5Cn3%205%5Cn5%202%5Cn2%204%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20old%20graph%20of%20the%20first%20example%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF329C%5C%2Fb1129560868ff844afcd23de4bd0225b3c2eaffb.png%29%5Cn%5CnA%20possible%20new%20graph%20for%20the%20first%20example%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF329C%5C%2Fa236c3432a9690ef14f3805128dc6f4078063345.png%29%5Cn%5CnIn%20the%20second%20example%2C%20we%20cannot%20create%20any%20new%20graph.%5Cn%5CnThe%20old%20graph%20of%20the%20third%20example%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF329C%5C%2F0c623aea06e6e65528063142d300db01a6c49816.png%29%5Cn%5CnA%20possible%20new%20graph%20for%20the%20third%20example%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF329C%5C%2Fa607e4e3b511cfdb5ff11751224f590048568b98.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F329%5C%2FC%22%2C%22id%22%3A%22329C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A4%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22CF329C%22%2C%22title%22%3A%22Graph%20Reconstruction%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Graph%20Reconstruction%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Graph Reconstruction</h1>
+<h2>题目描述</h2>
+<div>I have an undirected graph consisting of $ n $ nodes, numbered 1 through $ n $ . Each node has at most two incident edges. For each pair of nodes, there is at most an edge connecting them. No edge connects a node to itself.
+I would like to create a new graph in such a way that:
+- The new graph consists of the same number of nodes and edges as the old graph.
+- The properties in the first paragraph still hold.
+- For each two nodes $ u $ and $ v $ , if there is an edge connecting them in the old graph, there is no edge connecting them in the new graph.
+Help me construct the new graph, or tell me if it is impossible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line consists of two space-separated integers: $ n $ and $ m $ ( $ 1<=m<=n<=10^{5} $ ), denoting the number of nodes and edges, respectively. Then $ m $ lines follow. Each of the $ m $ lines consists of two space-separated integers $ u $ and $ v $ ( $ 1<=u,v<=n; u≠v $ ), denoting an edge between nodes $ u $ and $ v $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is not possible to construct a new graph with the mentioned properties, output a single line consisting of -1. Otherwise, output exactly $ m $ lines. Each line should contain a description of edge in the same way as used in the input format.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8 7
+1 2
+2 3
+4 5
+5 6
+6 8
+8 7
+7 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 4
+4 6
+1 6
+2 7
+7 5
+8 5
+2 8
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 2
+1 2
+2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 4
+1 2
+2 3
+3 4
+4 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1 3
+3 5
+5 2
+2 4
+</code></pre>
+<h2>说明</h2>
+<div>The old graph of the first example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF329C/b1129560868ff844afcd23de4bd0225b3c2eaffb.png)
+A possible new graph for the first example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF329C/a236c3432a9690ef14f3805128dc6f4078063345.png)
+In the second example, we cannot create any new graph.
+The old graph of the third example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF329C/0c623aea06e6e65528063142d300db01a6c49816.png)
+A possible new graph for the third example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF329C/a607e4e3b511cfdb5ff11751224f590048568b98.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

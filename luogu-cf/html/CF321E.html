@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Ciel and Gondolas - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392692:yPMyAsT3MmgWSeD2i3BJ8wf78J4cggRru6kkHnodVUU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Fox%20Ciel%20is%20in%20the%20Amusement%20Park.%20And%20now%20she%20is%20in%20a%20queue%20in%20front%20of%20the%20Ferris%20wheel.%20There%20are%20%24%20n%20%24%20people%20%28or%20foxes%20more%20precisely%29%20in%20the%20queue%3A%20we%20use%20first%20people%20to%20refer%20one%20at%20the%20head%20of%20the%20queue%2C%20and%20%24%20n%20%24%20-th%20people%20to%20refer%20the%20last%20one%20in%20the%20queue.%5Cn%5CnThere%20will%20be%20%24%20k%20%24%20gondolas%2C%20and%20the%20way%20we%20allocate%20gondolas%20looks%20like%20this%3A%5Cn%5Cn-%20When%20the%20first%20gondolas%20come%2C%20the%20%24%20q_%7B1%7D%20%24%20people%20in%20head%20of%20the%20queue%20go%20into%20the%20gondolas.%5Cn-%20Then%20when%20the%20second%20gondolas%20come%2C%20the%20%24%20q_%7B2%7D%20%24%20people%20in%20head%20of%20the%20remain%20queue%20go%20into%20the%20gondolas.%20...%5Cn-%20The%20remain%20%24%20q_%7Bk%7D%20%24%20people%20go%20into%20the%20last%20%28%20%24%20k%20%24%20-th%29%20gondolas.%5Cn%5CnNote%20that%20%24%20q_%7B1%7D%20%24%20%2C%20%24%20q_%7B2%7D%20%24%20%2C%20...%2C%20%24%20q_%7Bk%7D%20%24%20must%20be%20positive.%20You%20can%20get%20from%20the%20statement%20that%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF321E%5C%2F5aa86331c628d3d47e29fa23648bea351737ffff.png%29%20and%20%24%20q_%7Bi%7D%3E0%20%24%20.%5Cn%5CnYou%20know%2C%20people%20don%27t%20want%20to%20stay%20with%20strangers%20in%20the%20gondolas%2C%20so%20your%20task%20is%20to%20find%20an%20optimal%20allocation%20way%20%28that%20is%20find%20an%20optimal%20sequence%20%24%20q%20%24%20%29%20to%20make%20people%20happy.%20For%20every%20pair%20of%20people%20%24%20i%20%24%20and%20%24%20j%20%24%20%2C%20there%20exists%20a%20value%20%24%20u_%7Bij%7D%20%24%20denotes%20a%20level%20of%20unfamiliar.%20You%20can%20assume%20%24%20u_%7Bij%7D%3Du_%7Bji%7D%20%24%20for%20all%20%24%20i%2Cj%20%24%20%24%20%281%3C%3Di%2Cj%3C%3Dn%29%20%24%20and%20%24%20u_%7Bii%7D%3D0%20%24%20for%20all%20%24%20i%20%24%20%24%20%281%3C%3Di%3C%3Dn%29%20%24%20.%20Then%20an%20unfamiliar%20value%20of%20a%20gondolas%20is%20the%20sum%20of%20the%20levels%20of%20unfamiliar%20between%20any%20pair%20of%20people%20that%20is%20into%20the%20gondolas.%5Cn%5CnA%20total%20unfamiliar%20value%20is%20the%20sum%20of%20unfamiliar%20values%20for%20all%20gondolas.%20Help%20Fox%20Ciel%20to%20find%20the%20minimal%20possible%20total%20unfamiliar%20value%20for%20some%20optimal%20allocation.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%3C%3D4000%20%24%20and%20%24%201%3C%3Dk%3C%3Dmin%28n%2C800%29%20%24%20%29%20%5Cu2014%20the%20number%20of%20people%20in%20the%20queue%20and%20the%20number%20of%20gondolas.%20Each%20of%20the%20following%20%24%20n%20%24%20lines%20contains%20%24%20n%20%24%20integers%20%5Cu2014%20matrix%20%24%20u%20%24%20%2C%20%28%20%24%200%3C%3Du_%7Bij%7D%3C%3D9%20%24%20%2C%20%24%20u_%7Bij%7D%3Du_%7Bji%7D%20%24%20and%20%24%20u_%7Bii%7D%3D0%20%24%20%29.%5Cn%5CnPlease%2C%20use%20fast%20input%20methods%20%28for%20example%2C%20please%20use%20BufferedReader%20instead%20of%20Scanner%20for%20Java%29.%22%2C%22outputFormat%22%3A%22Print%20an%20integer%20%5Cu2014%20the%20minimal%20possible%20total%20unfamiliar%20value.%22%2C%22samples%22%3A%5B%5B%225%202%5Cn0%200%201%201%201%5Cn0%200%201%201%201%5Cn1%201%200%200%200%5Cn1%201%200%200%200%5Cn1%201%200%200%200%5Cn%22%2C%220%5Cn%22%5D%2C%5B%228%203%5Cn0%201%201%201%201%201%201%201%5Cn1%200%201%201%201%201%201%201%5Cn1%201%200%201%201%201%201%201%5Cn1%201%201%200%201%201%201%201%5Cn1%201%201%201%200%201%201%201%5Cn1%201%201%201%201%200%201%201%5Cn1%201%201%201%201%201%200%201%5Cn1%201%201%201%201%201%201%200%5Cn%22%2C%227%5Cn%22%5D%2C%5B%223%202%5Cn0%202%200%5Cn2%200%203%5Cn0%203%200%5Cn%22%2C%222%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20we%20can%20allocate%20people%20like%20this%3A%20%7B1%2C%202%7D%20goes%20into%20a%20gondolas%2C%20%7B3%2C%204%2C%205%7D%20goes%20into%20another%20gondolas.%5Cn%5CnIn%20the%20second%20example%2C%20an%20optimal%20solution%20is%20%3A%20%7B1%2C%202%2C%203%7D%20%7C%20%7B4%2C%205%2C%206%7D%20%7C%20%7B7%2C%208%7D.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F321%5C%2FE%22%2C%22id%22%3A%22321E%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu610f%5Cuff1a%5CnCiel%5Cu72d0%5Cu72f8%5Cu5728%5Cu6e38%5Cu4e50%5Cu56ed%5Cu91cc%5Cu6392%5Cu961f%5Cu7b49%5Cu5f85%5Cu4e0a%5Cu6469%5Cu5929%5Cu8f6e%5Cu3002%5Cu73b0%5Cu5728%5Cu6709%24n%24%20%5Cu4e2a%5Cu4eba%5Cu5728%5Cu961f%5Cu5217%5Cu91cc%5Cuff0c%5Cu6709%24k%24%20%5Cu6761%5Cu8239%5Cuff0c%5Cu7b2ci%5Cu6761%5Cu8239%5Cu5230%5Cu65f6%5Cuff0c%5Cu524d%24q_%7Bi%7D%24%20%5Cu4e2a%5Cu4eba%5Cu53ef%5Cu4ee5%5Cu4e0a%5Cu8239%5Cu3002%5Cu6700%5Cu540e%5Cu4e00%5Cu6761%5Cu8239%5Cu5c06%5Cu8f7d%5Cu8d70%5Cu5269%5Cu4e0b%5Cu7684%5Cu6240%5Cu6709%5Cu4eba%5Cuff0c%5Cu5219%24q_%7Bk%7D%24%20%5Cu6b64%5Cu65f6%5Cu8f7d%5Cu8d70%5Cu7684%5Cu4eba%5Cu6570%5Cu3002%5Cn%5Cu4eba%5Cu603b%5Cu662f%5Cu4e0d%5Cu613f%5Cu610f%5Cu548c%5Cu964c%5Cu751f%5Cu4eba%5Cu4e0a%5Cu540c%5Cu4e00%5Cu6761%5Cu8239%5Cu7684%5Cuff0c%5Cu5f53%5Cu7b2c%24i%24%20%5Cu4e2a%5Cu4eba%5Cu4e0e%5Cu7b2c%24j%24%20%5Cu4e2a%5Cu4eba%5Cu5904%5Cu4e8e%5Cu540c%5Cu4e00%5Cu6761%5Cu8239%5Cu4e0a%5Cu65f6%5Cuff0c%5Cu4f1a%5Cu4ea7%5Cu751f%24u_%7Bi%2Cj%7D%24%20%5Cu7684%5Cu6cae%5Cu4e27%5Cu503c%5Cu3002%5Cu8bf7%5Cu4f60%5Cu6c42%5Cu51fa%5Cu6700%5Cu5c0f%5Cu7684%5Cu6cae%5Cu4e27%5Cu503c%5Cu548c%5Cu3002%5Cn%5Cu4e00%5Cu6761%5Cu8239%5Cu4e0a%5Cu7684%5Cu4eba%5Cu4e24%5Cu4e24%5Cu90fd%5Cu4f1a%5Cu4ea7%5Cu751f%5Cu6cae%5Cu4e27%5Cu503c%5Cu3002%5Cn%23%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%5Cu4ee3%5Cu8868%24n%24%20%2C%24k%24%20%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%24n%24%20%5Cu884c%5Cu6bcf%5Cu884c%24n%24%20%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7b2c%24i%24%20%5Cu884c%5Cu7b2c%24j%24%20%5Cu4e2a%5Cu6570%5Cu8868%5Cu793a%24u_%7Bi%2Cj%7D%24%20%5Cu3002%5Cn%5Cu8bf7%5Cu4f7f%5Cu7528%5Cu5feb%5Cu901f%5Cu8bfb%5Cu5165%5Cu7684%5Cu6280%5Cu5de7%5Cuff0c%5Cu9632%5Cu6b62%5Cu8bfb%5Cu5165%5Cu5bfc%5Cu81f4%5Cu7684TLE%5Cu3002%5Cn%5Cn%23%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu6700%5Cu5c0f%5Cu6cae%5Cu4e27%5Cu503c%5Cu3002%5Cn%5Cu8d21%5Cu732e%5Cu8005%5Cuff1aMSF_Akatsuki%22%2C%22tags%22%3A%5B3%2C56%2C150%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A278%2C%22totalAccepted%22%3A113%2C%22pid%22%3A%22CF321E%22%2C%22title%22%3A%22Ciel%20and%20Gondolas%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A57260%2C%22title%22%3A%22%5Cu66f4%5Cu50cf%5Cu4eba%5Cu8bdd%5Cu7684%5Cu7ffb%5Cu8bd1QwQ%22%2C%22forum%22%3A%7B%22id%22%3A11340%2C%22name%22%3A%22CF321E%20Ciel%20and%20Gondolas%22%2C%22slug%22%3A%22CF321E%22%7D%7D%2C%7B%22id%22%3A33182%2C%22title%22%3A%22%5Cu9898%5Cu610f%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11340%2C%22name%22%3A%22CF321E%20Ciel%20and%20Gondolas%22%2C%22slug%22%3A%22CF321E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1912%22%2C%22title%22%3A%22%5BNOI2009%5D%5Cu8bd7%5Cu4eba%5Cu5c0fG%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3620%22%2C%22title%22%3A%22%5BAPIO%5C%2FCTSC%202007%5D%5Cu6570%5Cu636e%5Cu5907%5Cu4efd%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF868F%22%2C%22title%22%3A%22Yet%20Another%20Minimization%20Problem%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4383%22%2C%22title%22%3A%22%5B%5Cu516b%5Cu7701%5Cu8054%5Cu80032018%5D%5Cu6797%5Cu514b%5Cu5361%5Cu7279%5Cu6811lct%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF960G%22%2C%22title%22%3A%22Bandit%20Blues%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Ciel%20and%20Gondolas%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Ciel and Gondolas</h1>
+<h2>题意翻译</h2>
+<div>## 题意：
+Ciel狐狸在游乐园里排队等待上摩天轮。现在有$n$ 个人在队列里，有$k$ 条船，第i条船到时，前$q_{i}$ 个人可以上船。最后一条船将载走剩下的所有人，则$q_{k}$ 此时载走的人数。
+人总是不愿意和陌生人上同一条船的，当第$i$ 个人与第$j$ 个人处于同一条船上时，会产生$u_{i,j}$ 的沮丧值。请你求出最小的沮丧值和。
+一条船上的人两两都会产生沮丧值。
+##### 输入格式：
+第一行两个数代表$n$ ,$k$ ，接下来$n$ 行每行$n$ 个数，第$i$ 行第$j$ 个数表示$u_{i,j}$ 。
+请使用快速读入的技巧，防止读入导致的TLE。
+##### 输出格式：
+一行一个整数表示最小沮丧值。
+贡献者：MSF_Akatsuki</div>
+<h2>题目描述</h2>
+<div>Fox Ciel is in the Amusement Park. And now she is in a queue in front of the Ferris wheel. There are $ n $ people (or foxes more precisely) in the queue: we use first people to refer one at the head of the queue, and $ n $ -th people to refer the last one in the queue.
+There will be $ k $ gondolas, and the way we allocate gondolas looks like this:
+- When the first gondolas come, the $ q_{1} $ people in head of the queue go into the gondolas.
+- Then when the second gondolas come, the $ q_{2} $ people in head of the remain queue go into the gondolas. ...
+- The remain $ q_{k} $ people go into the last ( $ k $ -th) gondolas.
+Note that $ q_{1} $ , $ q_{2} $ , ..., $ q_{k} $ must be positive. You can get from the statement that ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF321E/5aa86331c628d3d47e29fa23648bea351737ffff.png) and $ q_{i}>0 $ .
+You know, people don't want to stay with strangers in the gondolas, so your task is to find an optimal allocation way (that is find an optimal sequence $ q $ ) to make people happy. For every pair of people $ i $ and $ j $ , there exists a value $ u_{ij} $ denotes a level of unfamiliar. You can assume $ u_{ij}=u_{ji} $ for all $ i,j $ $ (1<=i,j<=n) $ and $ u_{ii}=0 $ for all $ i $ $ (1<=i<=n) $ . Then an unfamiliar value of a gondolas is the sum of the levels of unfamiliar between any pair of people that is into the gondolas.
+A total unfamiliar value is the sum of unfamiliar values for all gondolas. Help Fox Ciel to find the minimal possible total unfamiliar value for some optimal allocation.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 1<=n<=4000 $ and $ 1<=k<=min(n,800) $ ) — the number of people in the queue and the number of gondolas. Each of the following $ n $ lines contains $ n $ integers — matrix $ u $ , ( $ 0<=u_{ij}<=9 $ , $ u_{ij}=u_{ji} $ and $ u_{ii}=0 $ ).
+Please, use fast input methods (for example, please use BufferedReader instead of Scanner for Java).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print an integer — the minimal possible total unfamiliar value.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 2
+0 0 1 1 1
+0 0 1 1 1
+1 1 0 0 0
+1 1 0 0 0
+1 1 0 0 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>8 3
+0 1 1 1 1 1 1 1
+1 0 1 1 1 1 1 1
+1 1 0 1 1 1 1 1
+1 1 1 0 1 1 1 1
+1 1 1 1 0 1 1 1
+1 1 1 1 1 0 1 1
+1 1 1 1 1 1 0 1
+1 1 1 1 1 1 1 0
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>7
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 2
+0 2 0
+2 0 3
+0 3 0
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>2
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, we can allocate people like this: {1, 2} goes into a gondolas, {3, 4, 5} goes into another gondolas.
+In the second example, an optimal solution is : {1, 2, 3} | {4, 5, 6} | {7, 8}.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

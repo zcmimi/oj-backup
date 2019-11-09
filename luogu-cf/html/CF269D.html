@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Maximum Waterfall - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573392207:jTq9vfFbn0GxEZa5j7L4qvtyyvxcaBLMvfUpHTvpa0w=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Emuskald%20was%20hired%20to%20design%20an%20artificial%20waterfall%20according%20to%20the%20latest%20trends%20in%20landscape%20architecture.%20A%20modern%20artificial%20waterfall%20consists%20of%20multiple%20horizontal%20panels%20affixed%20to%20a%20wide%20flat%20wall.%20The%20water%20flows%20down%20the%20top%20of%20the%20wall%20from%20panel%20to%20panel%20until%20it%20reaches%20the%20bottom%20of%20the%20wall.%5Cn%5CnThe%20wall%20has%20height%20%24%20t%20%24%20and%20has%20%24%20n%20%24%20panels%20on%20the%20wall.%20Each%20panel%20is%20a%20horizontal%20segment%20at%20height%20%24%20h_%7Bi%7D%20%24%20which%20begins%20at%20%24%20l_%7Bi%7D%20%24%20and%20ends%20at%20%24%20r_%7Bi%7D%20%24%20.%20The%20%24%20i%20%24%20-th%20panel%20connects%20the%20points%20%24%20%28l_%7Bi%7D%2Ch_%7Bi%7D%29%20%24%20and%20%24%20%28r_%7Bi%7D%2Ch_%7Bi%7D%29%20%24%20of%20the%20plane.%20The%20top%20of%20the%20wall%20can%20be%20considered%20a%20panel%20connecting%20the%20points%20%24%20%28-10%5E%7B9%7D%2Ct%29%20%24%20and%20%24%20%2810%5E%7B9%7D%2Ct%29%20%24%20.%20Similarly%2C%20the%20bottom%20of%20the%20wall%20can%20be%20considered%20a%20panel%20connecting%20the%20points%20%24%20%28-10%5E%7B9%7D%2C0%29%20%24%20and%20%24%20%2810%5E%7B9%7D%2C0%29%20%24%20.%20No%20two%20panels%20share%20a%20common%20point.%5Cn%5CnEmuskald%20knows%20that%20for%20the%20waterfall%20to%20be%20aesthetically%20pleasing%2C%20it%20can%20flow%20from%20panel%20%24%20i%20%24%20to%20panel%20%24%20j%20%24%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF269D%5C%2F5a41f87b0168f94e6178285e1ee91e69b10580d9.png%29%29%20only%20if%20the%20following%20conditions%20hold%3A%5Cn%5Cn1.%20%24%20max%28l_%7Bi%7D%2Cl_%7Bj%7D%29%26lt%3Bmin%28r_%7Bi%7D%2Cr_%7Bj%7D%29%20%24%20%28horizontal%20projections%20of%20the%20panels%20overlap%29%3B%5Cn2.%20%24%20h_%7Bj%7D%26lt%3Bh_%7Bi%7D%20%24%20%28panel%20%24%20j%20%24%20is%20below%20panel%20%24%20i%20%24%20%29%3B%5Cn3.%20there%20is%20no%20such%20panel%20%24%20k%20%24%20%24%20%28h_%7Bj%7D%26lt%3Bh_%7Bk%7D%26lt%3Bh_%7Bi%7D%29%20%24%20that%20the%20first%20two%20conditions%20hold%20for%20the%20pairs%20%24%20%28i%2Ck%29%20%24%20and%20%24%20%28k%2Cj%29%20%24%20.%5Cn%5CnThen%20the%20flow%20for%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF269D%5C%2F5a41f87b0168f94e6178285e1ee91e69b10580d9.png%29%20is%20equal%20to%20%24%20min%28r_%7Bi%7D%2Cr_%7Bj%7D%29-max%28l_%7Bi%7D%2Cl_%7Bj%7D%29%20%24%20%2C%20the%20length%20of%20their%20horizontal%20projection%20overlap.%5Cn%5CnEmuskald%20has%20decided%20that%20in%20his%20waterfall%20the%20water%20will%20flow%20in%20a%20single%20path%20from%20top%20to%20bottom.%20If%20water%20flows%20to%20a%20panel%20%28except%20the%20bottom%20of%20the%20wall%29%2C%20the%20water%20will%20fall%20further%20to%20exactly%20one%20lower%20panel.%20The%20total%20amount%20of%20water%20flow%20in%20the%20waterfall%20is%20then%20defined%20as%20the%20minimum%20horizontal%20projection%20overlap%20between%20two%20consecutive%20panels%20in%20the%20path%20of%20the%20waterfall.%20Formally%3A%5Cn%5Cn1.%20the%20waterfall%20consists%20of%20a%20single%20path%20of%20panels%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF269D%5C%2F94bd9e9fe8db4cd80fd47cf8dd35094a595a876f.png%29%3B%5Cn2.%20the%20flow%20of%20the%20waterfall%20is%20the%20minimum%20flow%20in%20the%20path%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF269D%5C%2F94bd9e9fe8db4cd80fd47cf8dd35094a595a876f.png%29.%5Cn%5Cn%20To%20make%20a%20truly%20great%20waterfall%20Emuskald%20must%20maximize%20this%20water%20flow%2C%20but%20there%20are%20too%20many%20panels%20and%20he%20is%20having%20a%20hard%20time%20planning%20his%20creation.%20Below%20is%20an%20example%20of%20a%20waterfall%20Emuskald%20wants%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF269D%5C%2F772bd38da020894115b05646ae3719e2b6fc3c60.png%29Help%20Emuskald%20maintain%20his%20reputation%20and%20find%20the%20value%20of%20the%20maximum%20possible%20water%20flow.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20two%20space-separated%20integers%20%24%20n%20%24%20and%20%24%20t%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%2C%20%24%202%3C%3Dt%3C%3D10%5E%7B9%7D%20%24%20%29%2C%20the%20number%20of%20the%20panels%20excluding%20the%20top%20and%20the%20bottom%20panels%2C%20and%20the%20height%20of%20the%20wall.%20Each%20of%20the%20%24%20n%20%24%20following%20lines%20contain%20three%20space-separated%20integers%20%24%20h_%7Bi%7D%20%24%20%2C%20%24%20l_%7Bi%7D%20%24%20and%20%24%20r_%7Bi%7D%20%24%20%28%20%24%200%26lt%3Bh_%7Bi%7D%26lt%3Bt%20%24%20%2C%20%24%20-10%5E%7B9%7D%3C%3Dl_%7Bi%7D%26lt%3Br_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%2C%20the%20height%2C%20left%20and%20right%20ends%20of%20the%20%24%20i%20%24%20-th%20panel%20segment.%5Cn%5CnIt%20is%20guaranteed%20that%20no%20two%20segments%20share%20a%20common%20point.%22%2C%22outputFormat%22%3A%22Output%20a%20single%20integer%20%5Cu2014%20the%20maximum%20possible%20amount%20of%20water%20flow%20in%20the%20desired%20waterfall.%22%2C%22samples%22%3A%5B%5B%225%206%5Cn4%201%206%5Cn3%202%207%5Cn5%209%2011%5Cn3%2010%2015%5Cn1%2013%2016%5Cn%22%2C%224%5Cn%22%5D%2C%5B%226%205%5Cn4%202%208%5Cn3%201%202%5Cn2%202%203%5Cn2%206%2012%5Cn1%200%207%5Cn1%208%2011%5Cn%22%2C%222%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20test%20case%20corresponds%20to%20the%20picture.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F269%5C%2FD%22%2C%22id%22%3A%22269D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF269D%22%2C%22title%22%3A%22Maximum%20Waterfall%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Maximum%20Waterfall%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Maximum Waterfall</h1>
+<h2>题目描述</h2>
+<div>Emuskald was hired to design an artificial waterfall according to the latest trends in landscape architecture. A modern artificial waterfall consists of multiple horizontal panels affixed to a wide flat wall. The water flows down the top of the wall from panel to panel until it reaches the bottom of the wall.
+The wall has height $ t $ and has $ n $ panels on the wall. Each panel is a horizontal segment at height $ h_{i} $ which begins at $ l_{i} $ and ends at $ r_{i} $ . The $ i $ -th panel connects the points $ (l_{i},h_{i}) $ and $ (r_{i},h_{i}) $ of the plane. The top of the wall can be considered a panel connecting the points $ (-10^{9},t) $ and $ (10^{9},t) $ . Similarly, the bottom of the wall can be considered a panel connecting the points $ (-10^{9},0) $ and $ (10^{9},0) $ . No two panels share a common point.
+Emuskald knows that for the waterfall to be aesthetically pleasing, it can flow from panel $ i $ to panel $ j $ (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF269D/5a41f87b0168f94e6178285e1ee91e69b10580d9.png)) only if the following conditions hold:
+1. $ max(l_{i},l_{j})&lt;min(r_{i},r_{j}) $ (horizontal projections of the panels overlap);
+2. $ h_{j}&lt;h_{i} $ (panel $ j $ is below panel $ i $ );
+3. there is no such panel $ k $ $ (h_{j}&lt;h_{k}&lt;h_{i}) $ that the first two conditions hold for the pairs $ (i,k) $ and $ (k,j) $ .
+Then the flow for ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF269D/5a41f87b0168f94e6178285e1ee91e69b10580d9.png) is equal to $ min(r_{i},r_{j})-max(l_{i},l_{j}) $ , the length of their horizontal projection overlap.
+Emuskald has decided that in his waterfall the water will flow in a single path from top to bottom. If water flows to a panel (except the bottom of the wall), the water will fall further to exactly one lower panel. The total amount of water flow in the waterfall is then defined as the minimum horizontal projection overlap between two consecutive panels in the path of the waterfall. Formally:
+1. the waterfall consists of a single path of panels ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF269D/94bd9e9fe8db4cd80fd47cf8dd35094a595a876f.png);
+2. the flow of the waterfall is the minimum flow in the path ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF269D/94bd9e9fe8db4cd80fd47cf8dd35094a595a876f.png).
+To make a truly great waterfall Emuskald must maximize this water flow, but there are too many panels and he is having a hard time planning his creation. Below is an example of a waterfall Emuskald wants:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF269D/772bd38da020894115b05646ae3719e2b6fc3c60.png)Help Emuskald maintain his reputation and find the value of the maximum possible water flow.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains two space-separated integers $ n $ and $ t $ ( $ 1<=n<=10^{5} $ , $ 2<=t<=10^{9} $ ), the number of the panels excluding the top and the bottom panels, and the height of the wall. Each of the $ n $ following lines contain three space-separated integers $ h_{i} $ , $ l_{i} $ and $ r_{i} $ ( $ 0&lt;h_{i}&lt;t $ , $ -10^{9}<=l_{i}&lt;r_{i}<=10^{9} $ ), the height, left and right ends of the $ i $ -th panel segment.
+It is guaranteed that no two segments share a common point.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output a single integer — the maximum possible amount of water flow in the desired waterfall.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 6
+4 1 6
+3 2 7
+5 9 11
+3 10 15
+1 13 16
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6 5
+4 2 8
+3 1 2
+2 2 3
+2 6 12
+1 0 7
+1 8 11
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h2>说明</h2>
+<div>The first test case corresponds to the picture.</div>
+</article>
+</div>
+</div>
+</body>
+</html>
