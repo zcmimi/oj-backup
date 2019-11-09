@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>zhtobu3232的线段树 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382202:7Ou+c5LlM2e7VuDUApR6ii+PtPI3GTdDeVc5yLeyDHM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%24zhtobu3232%24%5Cu53d1%5Cu73b0%5Cu4e86%5Cu4e00%5Cu9053%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu9898%2C%5Cu5728%2430s%24%5Cu540e%24zhtobu3232%24%5Cu6572%5Cu51fa%5Cu4e86%5Cu4e00%5Cu4efd%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu5e76%5Cu4e14ac%5Cu4e86%5Cu8fd9%5Cu9898%5Cn%5Cn%5Cu5f53%5Cu7136%5Cuff0c%5Cu8fd9%5Cu662f%24zhtobu3232%24%5Cu521a%5Cu521a%5Cu5b66oi%5Cu65f6%5Cu5019%5Cu7684%5Cu4e8b%5Cu60c5%5Cu4e86%5Cuff0c%5Cu73b0%5Cu5728%5Cu7684%5Cu4ed6%5Cu53ea%5Cu9700%241s%24%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu6572%5Cu51fa%5Cu4e00%5Cu4efd%5Cu5b8c%5Cu7f8e%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu677f%5Cu5b50%5Cn%5Cn%5Cu73b0%5Cu5728%24ztb%24%5Cu60f3%5Cu8981%5Cu91cd%5Cu6e29%5Cu4e00%5Cu4e0b%5Cu4ed6%5Cu4e4b%5Cu524d%5Cu5207%5Cu8fc7%5Cu7684%5Cu6c34%5Cu9898%2C%5Cu4e0d%5Cu8fc7%5Cu4ed6%5Cu7684%5Cu7b14%5Cu8bb0%5Cu672c%5Cu7535%5Cu8111%5Cu5e74%5Cu4ee3%5Cu6709%5Cu4e9b%5Cu4e45%5Cu8fdc%5Cuff0c%5Cu5bfc%5Cu81f4%5Cu5185%5Cu5b58%5Cu6761%5Cu635f%5Cu574f%5Cu4e86%5Cu5f88%5Cu591a%5Cuff0c%5Cu4ece%5Cu800c%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu4e5f%5Cu5f00%5Cu59cb%5Cu635f%5Cu574f%5Cu4e86%5Cuff0c%5Cu73b0%5Cu5728%5Cu4ed6%5Cu4e0d%5Cu5173%5Cu5fc3%5Cu5f53%5Cu5e74%5Cu6572%5Cu4e86%5Cu4ec0%5Cu4e48%5Cu6c34%5Cu9898%5Cu800c%5Cu53ea%5Cu5173%5Cu5fc3%5Cu8fd9%5Cu4e2a%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu53ef%5Cu4ee5%5Cu8868%5Cu793a%5Cu51fa%5Cu591a%5Cu5c11%5Cu5408%5Cu6cd5%5Cu7684%5Cu533a%5Cu95f4%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu5b57%5Cu5e76%5Cu5bf9%24998244353%24%5Cu53d6%5Cu6a21%5Cn%5Cn%5Cu987a%5Cu4fbf%5Cu8bf4%5Cu4e00%5Cu53e5%24ztb%24%5Cu8ba4%5Cu4e3a%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu6bd4%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7b80%5Cu5355%5Cu591a%5Cu4e86%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu8282%5Cu70b9%5Cu5c11%5Cu4e86%2C%5Cu6240%5Cu4ee5%5Cu7ef4%5Cu62a4%5Cu7684%5Cu4fe1%5Cu606f%5Cu4e5f%5Cu5c11%5Cu4e86%5Cuff0c%5Cu4ed6%5Cu5df2%5Cu7ecf%5Cu7528%241ms%24%5Cu6572%5Cu597d%5Cu4e86%24std%24%2C%5Cu63a5%5Cu4e0b%5Cu6765%5Cu5c31%5Cu7b49%5Cu7740%5Cu4f60%5Cu5e2e%5Cu4ed6%5Cu9a8c%5Cu9898%5Cu4e86%5Cn%5Cn%22%2C%22description%22%3A%22%5Cu6211%5Cu4eec%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu9897%5Cu957f%5Cu5ea6%5Cu4e3an%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu662f%5Cu8fd9%5Cu6837%5Cu7684%5Cu7b97%5Cu6cd5%5Cu6d41%5Cu7a0b%5Cu6267%5Cu884cbuild%280%2Cn%29%5Cu540e%5Cu5efa%5Cu51fa%5Cu7684%5Cu4e8c%5Cu53c9%5Cu6811%5Cn%5Cn%28%5Cu6ce8%5Cu610f%5Cu8fd9%5Cu91cc%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu5e94%5Cu8be5%5Cu548c%5Cu5927%5Cu5bb6%5Cu5e73%5Cu5e38%5Cu5199%5Cu7684%5Cu6ca1%5Cu4ec0%5Cu4e48%5Cu533a%5Cu522b%28%5Cu9664%5Cu4e86%5Cu533a%5Cu95f4%5Cu662f%5Cu5de6%5Cu5f00%5Cu53f3%5Cu95ed%5Cu8868%5Cu793a%5Cu7684%5Cu4ee5%5Cu5916%29%5Cuff0c%5Cu4f1a%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu53ef%5Cu4ee5%5Cu5ffd%5Cu7565%29%5Cn%5Cn%60%60%60C%5Cn%5Cnnode%20build%20%28l%2Cr%29%5Cn%7B%5Cn%5Ctnode%20p%3Dnewnode%28%29%3Bp.l%3Dl%2B1%3Bp.r%3Dr%3B%5Cn%20%20%20%20if%28r-l%3D%3D1%29return%20p%3B%5Cn%20%20%20%20mid%3D%28l%2Br%29%5C%2F2%3B%5Cn%20%20%20%20node.leftson%3Dbuild%28l%2Cmid%29%3B%5Cn%5Ctnode.rightson%3Dbuild%28mid%2Cr%29%3B%5Cn%20%20%20%20return%20p%3B%5Cn%7D%5Cn%5Cn%60%60%60%5Cn%5Cn%5Cu800c%5Cu6211%5Cu4eec%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu533a%5Cu95f4%24%28l%2Cr%29%24%5Cu5728%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu4e0a%5Cu7684%2A%2A%5Cu62c6%5Cu5206%2A%2A%5Cu662f%5Cu5c06%5Cu8fd9%5Cu4e2a%5Cu533a%5Cu95f4%5Cu8868%5Cu793a%5Cu4e3a%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu4e0a%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu96c6%5Cu5408%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu8fd9%5Cu4e9b%5Cu8282%5Cu70b9%5Cu5bf9%5Cu5e94%5Cu7684%5Cu533a%5Cu95f4%5Cu4e0d%5Cu76f8%5Cu4ea4%2C%5Cu4e0d%5Cu5d4c%5Cu5957%2C%5Cu8fd9%5Cu4e9b%5Cu533a%5Cu95f4%5Cu7684%5Cu5e76%5Cu96c6%5Cu6070%5Cu597d%5Cu662f%24%28l%2Cr%29%24%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6ca1%5Cu6709%5Cu4e24%5Cu4e2a%5Cu8282%5Cu70b9%5Cu662f%5Cu5144%5Cu5f1f%5Cu5173%5Cu7cfb%5Cn%5Cn%5Cu62c6%5Cu5206%5Cu7684%5Cu4f2a%5Cu4ee3%5Cu7801%5Cu5982%5Cu4e0b%5Cn%5Cn%60%60%60C%5Cnvoid%20solve%28l%2Cr%2Cdl%2Cdr%29%5Cn%7B%5Cn%5Ctif%28dl%3D%3Dl%26%26dr%3D%3Dr%29%7BS.push%28node%28l%2B1%2Cr%29%29%3Breturn%3B%7D%5Cn%5Ct%20mid%3D%28l%2Br%29%5C%2F2%3B%5Cn%20%20%20%20if%28dl%3Cmid%29solve%28l%2Cmid%2Cdl%2Cmin%28dr%2Cmid%29%29%3B%5Cn%20%20%20%20if%28mid%3Cdr%29solve%28mid%2Cr%2Cmax%28dl%2Cmid%29%2Cdr%29%3B%5Cn%7D%5Cn%5Cn%60%60%60%5Cn%5Cu5f53%5Cu6211%5Cu4eec%5Cu6267%5Cu884c%5Cu5b8c%24solve%280%2Cn%2Cl-1%2Cr%29%24%5Cu4e4b%5Cu540e%5Cu5f97%5Cu5230%5Cu7684S%5Cu96c6%5Cu5408%5Cu5c31%5Cu662f%5Cu533a%5Cu95f4%24%28l%2Cr%29%24%5Cu5728%24%281%2Cn%29%24%5Cu8fd9%5Cu9897%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu4e0a%5Cu7684%2A%2A%5Cu62c6%5Cu5206%2A%2A%5Cu4e86%5Cn%5Cn%28%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cu5c31%5Cu662f%5Cu4f60%5Cu5e73%5Cu65f6%5Cu5199%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu65f6%5Cu5c06%5Cu4e00%5Cu4e2a%5Cu533a%5Cu95f4%5Cu62c6%5Cu6210%24O%28logn%29%24%5Cu4e2a%5Cu533a%5Cu95f4%5Cu7684%5Cu64cd%5Cu4f5c%29%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu6211%5Cu4eec%5Cu7ed9%5Cu51fa%5Cu4e86m%5Cu4e2a%5Cu533a%5Cu95f4%24%28l%2Cr%29%24%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu533a%5Cu95f4%5Cu5728%5Cu7ebf%5Cu6bb5%5Cu6811%24%281%2Cn%29%24%5Cu4e0a%5Cu62c6%5Cu5206%5Cu51fa%5Cu6765%5Cu7684%5Cu8282%5Cu70b9%5Cu90fd%5Cu662f%5Cu975e%5Cu6cd5%5Cu8282%5Cu70b9%5Cuff0c%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cu8fd9%5Cu4e9b%5Cu8282%5Cu70b9%5Cu90fd%5Cu4e0d%5Cu53ef%5Cu4ee5%5Cu4f7f%5Cu7528%5Cu4e86%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu8bf7%5Cu4f60%5Cu8ba1%5Cu7b97%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu533a%5Cu95f4%24%28l%2Cr%29%24%5Cu662f%5Cu5408%5Cu6cd5%5Cu7684%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu4e24%5Cu4e2a%5Cu9650%5Cu5236%5Cu6761%5Cu4ef6%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cuff1a%241%20%5C%5Cleq%20l%20%5C%5Cleq%20r%20%5C%5Cleq%20n%24%5Cn%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cuff1a%5Cu8fd9%5Cu4e2a%5Cu533a%5Cu95f4%5Cu5728%5Cu7ebf%5Cu6bb5%5Cu6811%24%281%2Cn%29%24%5Cu4e0a%5Cu7684%5Cu62c6%5Cu5206%5Cu4e0d%5Cu542b%5Cu6709%5Cu975e%5Cu6cd5%5Cu7684%5Cu8282%5Cu70b9%5Cn%5Cn%5Cu7b54%5Cu6848%5Cu5bf9998244353%5Cu53d6%5Cu6a21%5Cn%22%2C%22inputFormat%22%3A%22%2A%2A%5Cu4e3a%5Cu4e86%5Cu907f%5Cu514d%5Cu60a8%5Cu88ab%5Cu9898%5Cu610f%5Cu6740%5Cuff0c%5Cu8bf7%5Cu52a1%5Cu5fc5%5Cu6309%5Cu7167%5Cu9898%5Cu76ee%5Cu4e2d%5Cu7ed9%5Cu51fa%5Cu7684%5Cu5de6%5Cu5f00%5Cu53f3%5Cu95ed%5Cu6cd5%5Cu5efa%5Cu7ebf%5Cu6bb5%5Cu6811%5Cuff0c%5Cu91c7%5Cu7528%5Cu5176%5Cu4ed6%5Cu7684%5Cu5efa%5Cu6811%5Cu65b9%5Cu5f0f%5Cu53ef%5Cu80fd%5Cu5bfc%5Cu81f4%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu5f62%5Cu6001%5Cu548cstd%5Cu4e2d%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu4e0d%5Cu7b26%5Cu5bfc%5Cu81f4wa%2A%2A%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%2Cm%5Cu8868%5Cu793a%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu957f%5Cu5ea6%5Cu548c%5Cu533a%5Cu95f4%5Cu4e2a%5Cu6570%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765m%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570l%2Cr%2C%5Cu8868%5Cu793a%24%28l%2Cr%29%24%5Cu8fd9%5Cu4e2a%5Cu533a%5Cu95f4%5Cu5728%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu4e0a%5Cu62c6%5Cu5206%5Cu51fa%5Cu7684%5Cu8282%5Cu70b9%5Cu5168%5Cu90e8%5Cu4e3a%5Cu975e%5Cu6cd5%5Cu8282%5Cu70b9%22%2C%22outputFormat%22%3A%22%5Cu4ec5%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6240%5Cu6709%5Cu5408%5Cu6cd5%5Cu7684%5Cu533a%5Cu95f4%5Cu4e2a%5Cu6570%5Cu5bf9998244353%5Cu53d6%5Cu6a21%5Cu4e4b%5Cu540e%5Cu7684%5Cu503c%22%2C%22samples%22%3A%5B%5B%2220%205%5Cn11%2012%5Cn14%2020%5Cn6%2012%5Cn8%2013%5Cn10%2019%5Cn%22%2C%2267%22%5D%5D%2C%22hint%22%3A%221%2C2%2C3%2C4%2C5%2C6%2C7%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu7684%5Cu5206%5Cu6570%5Cu5168%5Cu90e8%5Cu4e3a1%5Cu5206%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6d4b%5Cu8bd5%5Cu70b91%2C2%5Cn%5Cn%24%24n%20%5C%5Cleq%201000%2Cm%5C%5Cleq%20100%24%24%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6d4b%5Cu8bd5%5Cu70b93%2C4%5Cn%5Cn%24%24n%20%5C%5Cleq%20100000%2Cm%20%5C%5Cleq%205000%24%24%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6d4b%5Cu8bd5%5Cu70b95%2C6%2C7%5Cn%5Cn%24%24n%20%5C%5Cleq%2010%5E7%2Cm%20%5C%5Cleq%2010%5E5%24%24%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu6570%5Cu636e%5Cn%5Cn%24%241%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E%7B14%7D%24%24%5Cn%5Cn%24%241%20%5C%5Cleq%20m%20%5C%5Cleq%2010%5E5%24%24%5Cn%5Cn%24%241%20%5C%5Cleq%20l%20%5C%5Cleq%20r%20%5C%5Cleq%20n%24%24%22%2C%22provider%22%3A%7B%22uid%22%3A56384%2C%22name%22%3A%22shadowice1984%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B108%2C109%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A284%2C%22totalAccepted%22%3A50%2C%22pid%22%3A%22P5111%22%2C%22title%22%3A%22zhtobu3232%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P5112%22%2C%22title%22%3A%22FZOUTSY%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5168%22%2C%22title%22%3A%22xtq%5Cu73a9%5Cu9b54%5Cu5854%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4993%22%2C%22title%22%3A%22%5Cu8bc4%5Cu5206%5Cu7cfb%5Cu7edf%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5110%22%2C%22title%22%3A%22%5Cu5757%5Cu901f%5Cu9012%5Cu63a8%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5115%22%2C%22title%22%3A%22Check%2CCheck%2CCheck%20one%20two%21%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22zhtobu3232%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>zhtobu3232的线段树</h1>
+<h2>题目背景</h2>
+<div>$zhtobu3232$发现了一道线段树题,在$30s$后$zhtobu3232$敲出了一份线段树并且ac了这题
+当然，这是$zhtobu3232$刚刚学oi时候的事情了，现在的他只需$1s$就可以敲出一份完美的线段树板子
+现在$ztb$想要重温一下他之前切过的水题,不过他的笔记本电脑年代有些久远，导致内存条损坏了很多，从而线段树也开始损坏了，现在他不关心当年敲了什么水题而只关心这个线段树可以表示出多少合法的区间，请你计算出这个数字并对$998244353$取模
+顺便说一句$ztb$认为这个问题比线段树简单多了，因为线段树的节点少了,所以维护的信息也少了，他已经用$1ms$敲好了$std$,接下来就等着你帮他验题了
+</div>
+<h2>题目描述</h2>
+<div>我们定义一颗长度为n的线段树是这样的算法流程执行build(0,n)后建出的二叉树
+(注意这里的线段树应该和大家平常写的没什么区别(除了区间是左开右闭表示的以外)，会线段树的可以忽略)
+```C
+node build (l,r)
+{
+node p=newnode();p.l=l+1;p.r=r;
+if(r-l==1)return p;
+mid=(l+r)/2;
+node.leftson=build(l,mid);
+node.rightson=build(mid,r);
+return p;
+}
+```
+而我们定义一个区间$(l,r)$在线段树上的**拆分**是将这个区间表示为线段树上若干个节点的集合，满足这些节点对应的区间不相交,不嵌套,这些区间的并集恰好是$(l,r)$，并且没有两个节点是兄弟关系
+拆分的伪代码如下
+```C
+void solve(l,r,dl,dr)
+{
+if(dl==l&&dr==r){S.push(node(l+1,r));return;}
+mid=(l+r)/2;
+if(dl<mid)solve(l,mid,dl,min(dr,mid)); if(mid<dr)solve(mid,r,max(dl,mid),dr); } ``` 当我们执行完$solve(0,n,l-1,r)$之后得到的S集合就是区间$(l,r)$在$(1,n)$这颗线段树上的**拆分**了 (换句话说就是你平时写线段树时将一个区间拆成$O(logn)$个区间的操作) 现在我们给出了m个区间$(l,r)$，这些区间在线段树$(1,n)$上拆分出来的节点都是非法节点，换句话说这些节点都不可以使用了 现在请你计算有多少个区间$(l,r)$是合法的，满足两个限制条件 第一：$1 \leq l \leq r \leq n$ 第二：这个区间在线段树$(1,n)$上的拆分不含有非法的节点 答案对998244353取模 </div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>**为了避免您被题意杀，请务必按照题目中给出的左开右闭法建线段树，采用其他的建树方式可能导致线段树的形态和std中的线段树不符导致wa**
+第一行两个整数n,m表示线段树的长度和区间个数
+接下来m行每行两个整数l,r,表示$(l,r)$这个区间在线段树上拆分出的节点全部为非法节点</div>
+<h3>输出格式</h3>
+<br />
+<div>仅一行一个整数，表示所有合法的区间个数对998244353取模之后的值</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>20 5
+11 12
+14 20
+6 12
+8 13
+10 19
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>67</code></pre>
+<h2>说明</h2>
+<div>1,2,3,4,5,6,7测试点的分数全部为1分
+对于测试点1,2
+$$n \leq 1000,m\leq 100$$
+对于测试点3,4
+$$n \leq 100000,m \leq 5000$$
+对于测试点5,6,7
+$$n \leq 10^7,m \leq 10^5$$
+对于所有数据
+$$1 \leq n \leq 10^{14}$$
+$$1 \leq m \leq 10^5$$
+$$1 \leq l \leq r \leq n$$</div>
+</article>
+</div>
+</div>
+</body>
+</html>

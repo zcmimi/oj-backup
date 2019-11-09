@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[APIO2016]最大差分 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573377142:inoolgmYMSHjyKIaCCkwoIbnCbbVzCEwrfJtIl1tpDg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu4ea4%5Cu4e92%5Cu9898%5Cuff0c%5Cu6682%5Cu4e0d%5Cu652f%5Cu6301%5Cn%22%2C%22description%22%3A%22%5Cu6709%20%24N%24%20%5Cu4e2a%5Cu4e25%5Cu683c%5Cu9012%5Cu589e%5Cu7684%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%20%24a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_N%24%5Cuff08%240%20%5C%5Cleq%20a_1%20%3C%20a_2%20%3C%20%5C%5Ccdots%20%3C%20a_N%20%5C%5Cleq%2010%5E%7B18%7D%24%5Cuff09%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu627e%5Cu51fa%20%24a_%7Bi%20%2B%201%7D%20-%20a_i%24%5Cuff08%240%20%5C%5Cleq%20i%20%5C%5Cleq%20N%20-%201%24%5Cuff09%5Cu91cc%5Cu7684%5Cu6700%5Cu5927%5Cu7684%5Cu503c%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu4e0d%5Cu80fd%5Cu76f4%5Cu63a5%5Cu8bfb%5Cu5165%5Cu8fd9%5Cu4e2a%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%2C%5Cu4f46%5Cu662f%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu51fd%5Cu6570%5Cu6765%5Cu67e5%5Cu8be2%5Cu8be5%5Cu5e8f%5Cu5217%5Cu7684%5Cu4fe1%5Cu606f%5Cu3002%5Cu5173%5Cu4e8e%5Cu67e5%5Cu8be2%5Cu51fd%5Cu6570%5Cu7684%5Cu7ec6%5Cu8282%2C%5Cu8bf7%5Cu6839%5Cu636e%5Cu4f60%5Cu6240%5Cu4f7f%5Cu7528%5Cu7684%5Cu8bed%5Cu8a00%2C%5Cu53c2%5Cu8003%5Cu4e0b%5Cu9762%5Cu7684%5Cu5b9e%5Cu73b0%5Cu7ec6%5Cu8282%5Cu90e8%5Cu5206%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu5b9e%5Cu73b0%5Cu4e00%5Cu4e2a%5Cu51fd%5Cu6570%2C%5Cu8be5%5Cu51fd%5Cu6570%5Cu8fd4%5Cu56de%20%24a_%7Bi%20%2B%201%7D%20-%20a_i%24%5Cuff08%240%20%5C%5Cleq%20i%20%5C%5Cleq%20N%20-%201%24%5Cuff09%5Cu4e2d%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cn%5Cn%5Cu5b9e%5Cu73b0%5Cu7ec6%5Cu8282%5Cn%5Cn%5Cu672c%5Cu9898%5Cu53ea%5Cu652f%5Cu6301%20C%5C%2FC%2B%2B%5C%2FPascal%5Cu3002%5Cn%5CnC%5C%2FC%2B%2B%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu5305%5Cu542b%5Cu5934%5Cu6587%5Cu4ef6%20gap.h%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu5b9e%5Cu73b0%5Cu4e00%5Cu4e2a%5Cu51fd%5Cu6570%20findGap%28T%2C%20N%29%5Cuff0c%5Cu8be5%5Cu51fd%5Cu6570%5Cu63a5%5Cu53d7%5Cu4e0b%5Cu9762%5Cu7684%5Cu53c2%5Cu6570%5Cuff0c%5Cu5e76%5Cu8fd4%5Cu56de%5Cu4e00%5Cu4e2a%20long%20long%20%5Cu7c7b%5Cu578b%5Cu7684%5Cu6574%5Cu6570%5Cuff1a%5Cn%5Cn%24T%24%5Cuff1a%5Cu5b50%5Cu4efb%5Cu52a1%5Cu7684%5Cu7f16%5Cu53f7%5Cuff08%241%24%20%5Cu6216%5Cu8005%20%242%24%5Cuff09%5Cn%5Cn%24N%24%5Cuff1a%5Cu5e8f%5Cu5217%5Cu7684%5Cu957f%5Cu5ea6%5Cn%5Cn%5Cu4f60%5Cu7684%5Cu51fd%5Cu6570%20findGap%20%5Cu53ef%5Cu4ee5%5Cu8c03%5Cu7528%5Cu7cfb%5Cu7edf%5Cu63d0%5Cu4f9b%5Cu7684%5Cu67e5%5Cu8be2%5Cu51fd%5Cu6570%20MinMax%28s%2C%20t%2C%20%26mn%2C%20%26mx%29%5Cuff0c%5Cu8be5%5Cu51fd%5Cu6570%5Cu7684%5Cu524d%5Cu4e24%5Cu4e2a%5Cu53c2%5Cu6570%20%24s%24%20%5Cu548c%20%24t%24%20%5Cu662f%20long%20long%20%5Cu7c7b%5Cu578b%5Cu7684%5Cu6574%5Cu6570%5Cuff0c%5Cu540e%5Cu4e24%5Cu4e2a%5Cu53c2%5Cu6570%20%26mn%20%5Cu548c%20%26mx%20%5Cu662f%20long%20long%20%5Cu7c7b%5Cu578b%5Cu7684%5Cu6574%5Cu6570%5Cu7684%5Cu6307%5Cu9488%5Cuff08mn%20%5Cu548c%20mx%20%5Cu662f%20long%20long%20%5Cu7c7b%5Cu578b%5Cu7684%5Cu6574%5Cu6570%5Cuff09%5Cu3002%5Cu5f53%20MinMax%28s%2C%20t%2C%20%26mn%2C%20%26mx%29%20%5Cu8fd4%5Cu56de%5Cu65f6%5Cuff0c%5Cu53d8%5Cu91cf%20mn%20%5Cu5c06%5Cu4f1a%5Cu5b58%5Cu50a8%5Cu6ee1%5Cu8db3%20%24a_i%20%5C%5Cin%20%5Bs%2C%20t%5D%24%20%5Cu4e2d%20%24a_i%24%20%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cuff0c%5Cu53d8%5Cu91cf%20mx%20%5Cu5c06%5Cu4f1a%5Cu5b58%5Cu50a8%5Cu6ee1%5Cu8db3%20%24a_i%20%5C%5Cin%20%5Bs%2C%20t%5D%24%5Cuff0c%24a_i%24%20%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cu5982%5Cu679c%5Cu533a%5Cu95f4%20%24%5Bs%2C%20t%5D%24%20%5Cu4e2d%5Cu6ca1%5Cu6709%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7684%5Cu6570%5Cuff0c%5Cu5219%20mn%20%5Cu548c%20mx%20%5Cu90fd%5Cu5c06%5Cu5b58%5Cu50a8%20%24-1%24%5Cu3002%5Cu5728%5Cu67e5%5Cu8be2%5Cu65f6%5Cu9700%5Cu8981%5Cu6ee1%5Cu8db3%20%24s%20%5C%5Cleq%20t%24%5Cuff0c%5Cu5426%5Cu5219%5Cu7a0b%5Cu5e8f%5Cu5c06%5Cu4f1a%5Cu7ec8%5Cu6b62%5Cuff0c%5Cu8be5%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu8ba1%5Cu4e3a%20%240%24%20%5Cu5206%5Cu3002%5Cn%5CnPascal%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu4f7f%5Cu7528%5Cu5355%5Cu5143%20graderhelperlib%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu5b9e%5Cu73b0%5Cu4e00%5Cu4e2a%5Cu51fd%5Cu6570%20findGap%28T%2C%20N%29%5Cuff0c%5Cu8be5%5Cu51fd%5Cu6570%5Cu63a5%5Cu53d7%5Cu4e0b%5Cu9762%5Cu7684%5Cu53c2%5Cu6570%5Cuff0c%5Cu5e76%5Cu8fd4%5Cu56de%5Cu4e00%5Cu4e2a%20Int64%20%5Cu7c7b%5Cu578b%5Cu7684%5Cu6574%5Cu6570%5Cuff1a%5Cn%5Cn%24T%24%5Cuff1a%5Cu5b50%5Cu4efb%5Cu52a1%5Cu7684%5Cu7f16%5Cu53f7%5Cuff08%241%24%20%5Cu6216%5Cu8005%20%242%24%5Cuff09%5Cuff08Integer%20%5Cu7c7b%5Cu578b%5Cuff09%5Cn%5Cn%24N%24%5Cuff1a%5Cu5e8f%5Cu5217%5Cu7684%5Cu957f%5Cu5ea6%5Cuff08LongInt%20%5Cu7c7b%5Cu578b%5Cuff09%5Cn%5Cn%5Cu4f60%5Cu7684%5Cu51fd%5Cu6570%20findGap%20%5Cu53ef%5Cu4ee5%5Cu8c03%5Cu7528%5Cu7cfb%5Cu7edf%5Cu63d0%5Cu4f9b%5Cu7684%5Cu67e5%5Cu8be2%5Cu51fd%5Cu6570%20MinMax%28s%2C%20t%2C%20mn%2C%20mx%29%5Cuff0c%5Cu8be5%5Cu51fd%5Cu6570%5Cu7684%5Cu524d%5Cu4e24%5Cu4e2a%5Cu53c2%5Cu6570%20%24s%24%20%5Cu548c%20%24t%24%20%5Cu662f%20Int64%20%5Cu7c7b%5Cu578b%5Cu7684%5Cu6574%5Cu6570%5Cuff0c%5Cu540e%5Cu4e24%5Cu4e2a%5Cu53c2%5Cu6570%20mn%20%5Cu548c%20mx%20%5Cu662f%5Cu4f20%5Cu5f15%5Cu7528%5Cu65b9%5Cu5f0f%5Cu7684%20Int64%20%5Cu7c7b%5Cu578b%5Cu7684%5Cu6574%5Cu6570%5Cuff08%5Cu8fc7%5Cu7a0b%5Cu5185%5Cu90e8%5Cu5bf9%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu53d8%5Cu91cf%5Cu7684%5Cu4fee%5Cu6539%5Cu4f1a%5Cu5f71%5Cu54cd%5Cu5230%5Cu5916%5Cu90e8%5Cu7684%5Cu5bf9%5Cu5e94%5Cu53d8%5Cu91cf%5Cu7684%5Cu503c%5Cuff09%5Cu3002%5Cu5f53%20MinMax%28s%2C%20t%2C%20mn%2C%20mx%29%20%5Cu6267%5Cu884c%5Cu5b8c%5Cu6bd5%5Cu65f6%5Cuff0c%5Cu53d8%5Cu91cf%20mn%20%5Cu5c06%5Cu4f1a%5Cu5b58%5Cu50a8%5Cu6ee1%5Cu8db3%20%24a_i%20%5C%5Cin%20%5Bs%2C%20t%5D%24%20%5Cu4e2d%20%24a_i%24%20%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cuff0c%5Cu53d8%5Cu91cf%20mx%20%5Cu5c06%5Cu4f1a%5Cu5b58%5Cu50a8%5Cu6ee1%5Cu8db3%20%24a_i%20%5C%5Cin%20%5Bs%2C%20t%5D%24%5Cuff0c%24a_i%24%20%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cu5982%5Cu679c%5Cu533a%5Cu95f4%20%24%5Bs%2C%20t%5D%24%20%5Cu4e2d%5Cu6ca1%5Cu6709%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7684%5Cu6570%5Cuff0c%5Cu5219%20mn%20%5Cu548c%20mx%20%5Cu90fd%5Cu5c06%5Cu5b58%5Cu50a8%20%24-1%24%5Cu3002%5Cu5728%5Cu67e5%5Cu8be2%5Cu65f6%5Cu9700%5Cu8981%5Cu6ee1%5Cu8db3%20%24s%20%5C%5Cleq%20t%24%5Cuff0c%5Cu5426%5Cu5219%5Cu7a0b%5Cu5e8f%5Cu5c06%5Cu4f1a%5Cu7ec8%5Cu6b62%5Cuff0c%5Cu8be5%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu8ba1%5Cu4e3a%20%240%24%20%5Cu5206%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu6837%5Cu4f8b%5Cu4e00%5Cn%5CnC%5C%2FC%2B%2B%5Cn%5Cu8003%5Cu8651%20%24N%20%3D%204%2C%20a_1%20%3D%202%2C%20a_2%20%3D%203%2C%20a_3%20%3D%206%2C%20a_4%20%3D%208%24%5Cu3002%5Cn%5Cn%5Cu5219%5Cu7b54%5Cu6848%5Cu5e94%5Cu8be5%5Cu662f%20%243%24%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu4e0b%5Cu9762%5Cu7684%5Cu51e0%5Cu7ec4%5Cu5bf9%20MinMax%20%5Cu7684%5Cu8be2%5Cu95ee%5Cu83b7%5Cu5f97%5Cuff1a%5Cn%5Cn%5Cu8c03%5Cu7528%20MinMax%281%2C%202%2C%20%26mn%2C%20%26mx%29%5Cuff0c%5Cu5219%20mn%20%5Cu548c%20mx%20%5Cu7686%5Cu8fd4%5Cu56de%20%242%24%5Cu3002%5Cn%5Cn%5Cu8c03%5Cu7528%20MinMax%283%2C%207%2C%20%26mn%2C%20%26mx%29%5Cuff0c%5Cu5219%20mn%20%5Cu8fd4%5Cu56de%20%243%24%5Cuff0cmx%20%5Cu8fd4%5Cu56de%20%246%24%5Cu3002%5Cn%5Cn%5Cu8c03%5Cu7528%20MinMax%288%2C%209%2C%20%26mn%2C%20%26mx%29%5Cuff0c%5Cu5219%20mn%20%5Cu548c%20mx%20%5Cu7686%5Cu8fd4%5Cu56de%20%248%24%5Cu3002%5Cn%5CnPascal%5Cn%5Cu8003%5Cu8651%20%24N%20%3D%204%2C%20a_1%20%3D%202%2C%20a_2%20%3D%203%2C%20a_3%20%3D%206%2C%20a_4%20%3D%208%24%5Cu3002%5Cn%5Cn%5Cu5219%5Cu7b54%5Cu6848%5Cu5e94%5Cu8be5%5Cu662f%20%243%24%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu4e0b%5Cu9762%5Cu7684%5Cu51e0%5Cu7ec4%5Cu5bf9%20MinMax%20%5Cu7684%5Cu8be2%5Cu95ee%5Cu83b7%5Cu5f97%5Cuff1a%5Cn%5Cn%5Cu8c03%5Cu7528%20MinMax%281%2C%202%2C%20mn%2C%20mx%29%5Cuff0c%5Cu5219%20mn%20%5Cu548c%20mx%20%5Cu7686%5Cu8fd4%5Cu56de%20%242%24%5Cu3002%5Cn%5Cn%5Cu8c03%5Cu7528%20MinMax%283%2C%207%2C%20mn%2C%20mx%29%5Cuff0c%5Cu5219%20mn%20%5Cu8fd4%5Cu56de%20%243%24%5Cuff0cmx%20%5Cu8fd4%5Cu56de%20%246%24%5Cu3002%5Cn%5Cn%5Cu8c03%5Cu7528%20MinMax%288%2C%209%2C%20mn%2C%20mx%29%5Cuff0c%5Cu5219%20mn%20%5Cu548c%20mx%20%5Cu7686%5Cu8fd4%5Cu56de%20%248%24%5Cu3002%5Cn%5Cn%5Cu6837%5Cu4f8b%5Cu8bc4%5Cu6d4b%5Cu65b9%5Cu5f0f%5Cn%5Cn%5Cu6837%5Cu4f8b%5Cu6d4b%5Cu8bc4%5Cu7cfb%5Cu7edf%5Cu4ece%5Cu6807%5Cu51c6%5Cu8f93%5Cu5165%5Cu4e2d%5Cu8bfb%5Cu5165%5Cu4e24%5Cu884c%5Cu3002%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5b50%5Cu4efb%5Cu52a1%5Cu7f16%5Cu53f7%20%24T%24%5Cuff0c%5Cu548c%5Cu5e8f%5Cu5217%5Cu957f%5Cu5ea6%20%24N%24%5Cu3002%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%20%24N%24%20%5Cu4e2a%5Cu4e25%5Cu683c%5Cu9012%5Cu589e%5Cu7684%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cu3002%5Cu7136%5Cu540e%5Cu8be5%5Cu7a0b%5Cu5e8f%5Cu4f1a%5Cu5411%5Cu6807%5Cu51c6%5Cu8f93%5Cu51fa%5Cu4e2d%5Cu5199%5Cu5165%5Cu4e24%5Cu884c%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%20findGap%20%5Cu7684%5Cu8fd4%5Cu56de%5Cu503c%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3a%5Cu82b1%5Cu8d39%20%24M%24%20%5Cu7684%5Cu503c%5Cu3002%5Cn%5Cn%5Cu4e0b%5Cu9762%5Cu7684%5Cu8f93%5Cu5165%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu4e0a%5Cu9762%5Cu7684%5Cu6837%5Cu4f8b%5Cuff1a%5Cn%5Cn%5Cn2%204%5Cn2%203%206%208%5Cn%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%5Cu9650%5Cu5236%5Cu4e0e%5Cu7ea6%5Cu5b9a%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu7684%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cuff0c%5Cu6709%20%242%20%5C%5Cleq%20N%20%5C%5Cleq%20100000%24%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu5f00%5Cu59cb%5Cu6d4b%5Cu8bd5%5Cu4e4b%5Cu524d%5Cuff0c%24M%24%20%5Cu90fd%5Cu5c06%5Cu88ab%5Cu521d%5Cu59cb%5Cu5316%5Cu4e3a%20%240%24%5Cu3002%5Cn%5Cn%5Cu5b50%5Cu4efb%5Cu52a1%201%5Cuff0830%20%5Cu5206%5Cuff09%5Cuff1a%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu8c03%5Cu7528%20MinMax%20%5Cu90fd%5Cu5c06%5Cu4f7f%20%24M%24%20%5Cu52a0%20%241%24%5Cu3002%5Cu4e3a%5Cu4e86%5Cu83b7%5Cu5f97%5Cu6240%5Cu6709%5Cu5206%5Cu6570%5Cuff0c%5Cu9700%5Cu8981%5Cu6ee1%5Cu8db3%5Cu5bf9%5Cu4e8e%5Cu8be5%5Cu5b50%5Cu4efb%5Cu52a1%5Cu4e0b%5Cu7684%5Cu6240%5Cu6709%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cuff0c%5Cu90fd%5Cu6709%20%24M%20%5C%5Cleq%20%5C%5Cfrac%7BN%20%2B%201%7D%7B2%7D%24%5Cu3002%5Cn%5Cn%5Cu5b50%5Cu4efb%5Cu52a1%202%5Cuff0870%20%5Cu5206%5Cuff09%5Cuff1a%5Cu5b9a%5Cu4e49%20%24k%24%20%5Cu4e3a%5Cu8c03%5Cu7528%20MinMax%20%5Cu65f6%5Cuff0c%5Cu533a%5Cu95f4%20%24%5Bs%2C%20t%5D%24%20%5Cu4e2d%5Cu7684%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu6570%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cu6bcf%5Cu6b21%5Cu8c03%5Cu7528%20MinMax%5Cuff0c%5Cu5c06%5Cu4f7f%20%24M%24%20%5Cu52a0%5Cu4e0a%20%24k%20%2B%201%24%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cuff0c%5Cu5982%5Cu679c%20%24M%20%5C%5Cleq%203N%24%5Cuff0c%5Cu4f60%5Cu5c06%5Cu5f97%5Cu5230%2070%20%5Cu5206%5Cuff0c%5Cu5426%5Cu5219%5Cu5c06%5Cu5f97%5Cu5230%20%24%5C%5Cfrac%7B60%7D%7B%5C%5Csqrt%7BM%5C%2FN%20%2B%201%7D%20-%201%7D%24%20%5Cu5206%5Cu3002%5Cu4f60%5Cu7684%5Cu8be5%5Cu5b50%5Cu4efb%5Cu52a1%5Cu7684%5Cu5f97%5Cu5206%5Cu662f%5Cu5176%5Cu4e0b%5Cu6240%5Cu6709%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu4e2d%5Cu7684%5Cu6700%5Cu4f4e%5Cu5206%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B%5D%2C%22memory%22%3A%5B%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B33%2C85%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22P3641%22%2C%22title%22%3A%22%5BAPIO2016%5D%5Cu6700%5Cu5927%5Cu5dee%5Cu5206%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BAPIO2016%5D%5Cu6700%5Cu5927%5Cu5dee%5Cu5206%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[APIO2016]最大差分</h1>
+<h2>题目背景</h2>
+<div>交互题，暂不支持
+</div>
+<h2>题目描述</h2>
+<div>有 $N$ 个严格递增的非负整数 $a_1, a_2, \dots, a_N$（$0 \leq a_1 < a_2 < \cdots < a_N \leq 10^{18}$）。你需要找出 $a_{i + 1} - a_i$（$0 \leq i \leq N - 1$）里的最大的值。
+你的程序不能直接读入这个整数序列,但是你可以通过给定的函数来查询该序列的信息。关于查询函数的细节,请根据你所使用的语言,参考下面的实现细节部分。
+你需要实现一个函数,该函数返回 $a_{i + 1} - a_i$（$0 \leq i \leq N - 1$）中的最大值。
+实现细节
+本题只支持 C/C++/Pascal。
+C/C++
+你需要包含头文件 gap.h。
+你需要实现一个函数 findGap(T, N)，该函数接受下面的参数，并返回一个 long long 类型的整数：
+$T$：子任务的编号（$1$ 或者 $2$）
+$N$：序列的长度
+你的函数 findGap 可以调用系统提供的查询函数 MinMax(s, t, &mn, &mx)，该函数的前两个参数 $s$ 和 $t$ 是 long long 类型的整数，后两个参数 &mn 和 &mx 是 long long 类型的整数的指针（mn 和 mx 是 long long 类型的整数）。当 MinMax(s, t, &mn, &mx) 返回时，变量 mn 将会存储满足 $a_i \in [s, t]$ 中 $a_i$ 的最小值，变量 mx 将会存储满足 $a_i \in [s, t]$，$a_i$ 的最大值。如果区间 $[s, t]$ 中没有序列中的数，则 mn 和 mx 都将存储 $-1$。在查询时需要满足 $s \leq t$，否则程序将会终止，该测试点计为 $0$ 分。
+Pascal
+你需要使用单元 graderhelperlib。
+你需要实现一个函数 findGap(T, N)，该函数接受下面的参数，并返回一个 Int64 类型的整数：
+$T$：子任务的编号（$1$ 或者 $2$）（Integer 类型）
+$N$：序列的长度（LongInt 类型）
+你的函数 findGap 可以调用系统提供的查询函数 MinMax(s, t, mn, mx)，该函数的前两个参数 $s$ 和 $t$ 是 Int64 类型的整数，后两个参数 mn 和 mx 是传引用方式的 Int64 类型的整数（过程内部对这两个变量的修改会影响到外部的对应变量的值）。当 MinMax(s, t, mn, mx) 执行完毕时，变量 mn 将会存储满足 $a_i \in [s, t]$ 中 $a_i$ 的最小值，变量 mx 将会存储满足 $a_i \in [s, t]$，$a_i$ 的最大值。如果区间 $[s, t]$ 中没有序列中的数，则 mn 和 mx 都将存储 $-1$。在查询时需要满足 $s \leq t$，否则程序将会终止，该测试点计为 $0$ 分。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>样例一
+C/C++
+考虑 $N = 4, a_1 = 2, a_2 = 3, a_3 = 6, a_4 = 8$。
+则答案应该是 $3$，可以通过下面的几组对 MinMax 的询问获得：
+调用 MinMax(1, 2, &mn, &mx)，则 mn 和 mx 皆返回 $2$。
+调用 MinMax(3, 7, &mn, &mx)，则 mn 返回 $3$，mx 返回 $6$。
+调用 MinMax(8, 9, &mn, &mx)，则 mn 和 mx 皆返回 $8$。
+Pascal
+考虑 $N = 4, a_1 = 2, a_2 = 3, a_3 = 6, a_4 = 8$。
+则答案应该是 $3$，可以通过下面的几组对 MinMax 的询问获得：
+调用 MinMax(1, 2, mn, mx)，则 mn 和 mx 皆返回 $2$。
+调用 MinMax(3, 7, mn, mx)，则 mn 返回 $3$，mx 返回 $6$。
+调用 MinMax(8, 9, mn, mx)，则 mn 和 mx 皆返回 $8$。
+样例评测方式
+样例测评系统从标准输入中读入两行。第一行包含两个整数，子任务编号 $T$，和序列长度 $N$。第二行包含 $N$ 个严格递增的非负整数。然后该程序会向标准输出中写入两行，第一行为 findGap 的返回值，第二行为花费 $M$ 的值。
+下面的输入描述了上面的样例：
+2 4
+2 3 6 8
+</div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+<h2>说明</h2>
+<div>限制与约定
+对于所有的测试点，有 $2 \leq N \leq 100000$。
+每一个测试点开始测试之前，$M$ 都将被初始化为 $0$。
+子任务 1（30 分）：每一次调用 MinMax 都将使 $M$ 加 $1$。为了获得所有分数，需要满足对于该子任务下的所有测试点，都有 $M \leq \frac{N + 1}{2}$。
+子任务 2（70 分）：定义 $k$ 为调用 MinMax 时，区间 $[s, t]$ 中的序列中数的数量。每次调用 MinMax，将使 $M$ 加上 $k + 1$。对于每一个测试点，如果 $M \leq 3N$，你将得到 70 分，否则将得到 $\frac{60}{\sqrt{M/N + 1} - 1}$ 分。你的该子任务的得分是其下所有测试点中的最低分。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

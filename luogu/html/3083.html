@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13OPEN]豪华游船Luxury River Cruise - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376378:gACn+bZ+FsaDTj5XsHwMOd7cQWwLsobJazapG9N2X7E=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20taking%20Bessie%20and%20the%20cows%20on%20a%20cruise%21%20They%20are%20sailing%20on%20a%20network%20of%20rivers%20with%20N%20ports%20%281%20%3C%3D%20N%20%3C%3D%201%2C000%29%20labeled%201..N%2C%20and%20Bessie%20starts%20at%20port%201.%20Each%20port%20has%20exactly%20two%20rivers%20leading%20out%20of%20it%20which%20lead%20directly%20to%20other%20ports%2C%20and%20rivers%20can%20only%20be%20sailed%20one%20way.%5Cn%5CnAt%20each%20port%2C%20the%20tour%20guides%20choose%20either%20the%20%5C%22left%5C%22%20river%20or%20the%20%5C%22right%5C%22%20river%20to%20sail%20down%20next%2C%20but%20they%20keep%20repeating%20the%20same%20choices%20over%20and%20over.%20More%20specifically%2C%20the%20tour%20guides%20have%20chosen%20a%20short%20sequence%20of%20M%20directions%20%281%20%3C%3D%20M%20%3C%3D%20500%29%2C%20each%20either%20%5C%22left%5C%22%20or%20%5C%22right%5C%22%2C%20and%20have%20repeated%20it%20K%20times%20%281%20%3C%3D%20K%20%3C%3D%201%2C000%2C000%2C000%29.%20Bessie%20thinks%20she%20is%20going%20in%20circles%20--%20help%20her%20figure%20out%20where%20she%20ends%20up%21%5Cn%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu5e26%5Cu7740Bessie%5Cu548c%5Cu5976%5Cu725b%5Cu5728%5Cu90ae%5Cu8f6e%5Cu4e0a%5Cuff01%5Cu4ed6%5Cu4eec%5Cu5728%5Cu7f51%5Cu683c%5Cu4e0a%5Cu7684N%5Cu6761%5Cu6cb3%5Cu6d41%5Cu822a%5Cu884c%5Cuff081%5Cu2264N%5Cu22641000%5Cuff09%5Cu6807%5Cu8bb0%5Cu4e3a1%5Cu5230N%5Cuff0c%5Cu4e00%5Cu5f00%5Cu59cb%5Cu4ed6%5Cu4eec%5Cu5728%5Cu5f00%5Cu59cb%5Cu5728%5Cu6cb3%5Cu53e31%5Cu3002%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6e2f%5Cu53e3%5Cu90fd%5Cu6709%5Cu4e24%5Cu6761%5Cu6cb3%5Cu6d41%5Cu76f4%5Cu901a%5Cuff0c%5Cu76f4%5Cu63a5%5Cu901a%5Cu5f80%5Cu5176%5Cu4ed6%5Cu6e2f%5Cu53e3%5Cuff0c%5Cu6cb3%5Cu6d41%5Cu53ea%5Cu80fd%5Cu901a%5Cu8fc7%5Cu4e00%5Cu6761%5Cu8def%5Cu822a%5Cu884c%5Cu3002%5Cn%5Cn%5Cn%5Cu5728%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6e2f%5Cu53e3%5Cuff0c%5Cu5bfc%5Cu6e38%5Cu9009%5Cu62e9%5Cu5de6%5Cu8fb9%5Cu7684%5Cu6cb3%5Cu6216%5Cu53f3%5Cu8fb9%5Cu7684%5Cu6cb3%5Cu5411%5Cu4e0b%5Cu822a%5Cu884c%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu4eec%5Cu4e0d%5Cu65ad%5Cu91cd%5Cu590d%5Cu76f8%5Cu540c%5Cu7684%5Cu9009%5Cu62e9%5Cu4e00%5Cu904d%5Cu53c8%5Cu4e00%5Cu904d%5Cu3002%5Cu66f4%5Cu5177%5Cu4f53%5Cu5730%5Cu8bf4%5Cuff0c%5Cu5bfc%5Cu6e38%5Cu9009%5Cu62e9%5Cu4e86%5Cu4e00%5Cu4e2am%5Cu65b9%5Cu5411%5Cuff081%20%3C%20%3Dm%3D%20500%5Cuff09%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu5411%5Cu5de6%5Cu6216%5Cu5411%5Cu53f3%5Cuff0c%5Cu5e76%5Cu91cd%5Cu590d%5Cu5b83K%5Cu6b21%5Cuff081%20%3C%20%3D%20K%20%3D%201000000000%5Cuff09%5Cu3002Bessie%5Cu8ba4%5Cu4e3a%5Cu5979%5Cu662f%5Cu5728%5Cu515c%5Cu5708%5Cu5b50%5Cuff0c%5Cu5e2e%5Cu5979%5Cu627e%5Cu51fa%5Cu7ed3%5Cu675f%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff01%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Three%20space-separated%20integers%20N%2C%20M%2C%20and%20K.%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20has%20two%20space-separated%20integers%2C%5Cn%5Cnrepresenting%20the%20number%20of%20the%20ports%20that%20port%20i%27s%20left%20and%20right%20rivers%20lead%20to%2C%20respectively.%5Cn%5Cn%5C%5C%2A%20Line%20N%2B2%3A%20M%20space-separated%20characters%2C%20either%20%27L%27%20or%20%27R%27.%20%27L%27%20represents%20a%20choice%20of%20%20%27left%27%20and%20%27R%27%20represents%20a%20choice%20of%20%27right%27.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20giving%20the%20number%20of%20the%20port%20where%20Bessie%27s%20cruise%20ends.%5Cn%22%2C%22samples%22%3A%5B%5B%224%203%203%20%5Cn2%204%20%5Cn3%201%20%5Cn4%202%20%5Cn1%203%20%5CnL%20L%20R%20%5Cn%22%2C%224%20%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20port%20numbers%20are%20arranged%20clockwise%20in%20a%20circle%2C%20with%20%27L%27%20being%20a%20clockwise%20rotation%20and%20%27R%27%20being%20a%20counterclockwise%20rotation.%20The%20sequence%20taken%20is%20LLRLLRLLR.%5Cn%5Cn%5CnAfter%20the%20first%20iteration%20of%20the%20sequence%20of%20directions%2C%20Bessie%20is%20at%20port%202%20%281%20-%3E%202%20-%3E%203%20-%3E%202%29%3B%20after%20the%20second%2C%20she%20is%20at%20port%203%20%282%20-%3E%203%20-%3E%204%20-%3E%203%29%2C%20and%20at%20the%20end%20she%20is%20at%20port%204%20%283%20-%3E%204%20-%3E%201%20-%3E%204%29.%5Cn%5Cn%5Cu611f%5Cu8c22%20%40%20SilverWolf%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B30%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A215%2C%22totalAccepted%22%3A76%2C%22pid%22%3A%22P3083%22%2C%22title%22%3A%22%5BUSACO13OPEN%5D%5Cu8c6a%5Cu534e%5Cu6e38%5Cu8239Luxury%20River%20Cruise%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A8174%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2200%2C%22name%22%3A%22P3083%20%5BUSACO13OPEN%5D%5Cu8c6a%5Cu534e%5Cu6e38%5Cu8239Luxury%20River%20Cruise%22%2C%22slug%22%3A%22P3083%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1083%22%2C%22title%22%3A%22%5Cu501f%5Cu6559%5Cu5ba4%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3049%22%2C%22title%22%3A%22%5BUSACO12MAR%5D%5Cu56ed%5Cu6797%5Cu7eff%5Cu5316Landscaping%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3489%22%2C%22title%22%3A%22%5BPOI2009%5DWIE-Hexer%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4279%22%2C%22title%22%3A%22%5BSHOI2008%5D%5Cu5c0f%5Cu7ea6%5Cu7ff0%5Cu7684%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5196%22%2C%22title%22%3A%22%5BUSACO19JAN%5DCow%20Poetry%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13OPEN%5D%5Cu8c6a%5Cu534e%5Cu6e38%5Cu8239Luxury%20River%20Cruise%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13OPEN]豪华游船Luxury River Cruise</h1>
+<h2>题目描述</h2>
+<div>Farmer John is taking Bessie and the cows on a cruise! They are sailing on a network of rivers with N ports (1 <= N <= 1,000) labeled 1..N, and Bessie starts at port 1. Each port has exactly two rivers leading out of it which lead directly to other ports, and rivers can only be sailed one way.
+At each port, the tour guides choose either the "left" river or the "right" river to sail down next, but they keep repeating the same choices over and over. More specifically, the tour guides have chosen a short sequence of M directions (1 <= M <= 500), each either "left" or "right", and have repeated it K times (1 <= K <= 1,000,000,000). Bessie thinks she is going in circles -- help her figure out where she ends up!
+农民约翰带着Bessie和奶牛在邮轮上！他们在网格上的N条河流航行（1≤N≤1000）标记为1到N，一开始他们在开始在河口1。每一个港口都有两条河流直通，直接通往其他港口，河流只能通过一条路航行。
+在每一个港口，导游选择左边的河或右边的河向下航行，但他们不断重复相同的选择一遍又一遍。更具体地说，导游选择了一个m方向（1 < =m= 500），每一个向左或向右，并重复它K次（1 < = K = 1000000000）。Bessie认为她是在兜圈子，帮她找出结束的位置！
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Three space-separated integers N, M, and K.
+\* Lines 2..N+1: Line i+1 has two space-separated integers,
+representing the number of the ports that port i's left and right rivers lead to, respectively.
+\* Line N+2: M space-separated characters, either 'L' or 'R'. 'L' represents a choice of 'left' and 'R' represents a choice of 'right'.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer giving the number of the port where Bessie's cruise ends.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 3 3 
+2 4 
+3 1 
+4 2 
+1 3 
+L L R 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4 
+</code></pre>
+<h2>说明</h2>
+<div>The port numbers are arranged clockwise in a circle, with 'L' being a clockwise rotation and 'R' being a counterclockwise rotation. The sequence taken is LLRLLRLLR.
+After the first iteration of the sequence of directions, Bessie is at port 2 (1 -> 2 -> 3 -> 2); after the second, she is at port 3 (2 -> 3 -> 4 -> 3), and at the end she is at port 4 (3 -> 4 -> 1 -> 4).
+感谢 @ SilverWolf 提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10HOL]牛的战争Cow War - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376223:lLhWxqM9JaFL6bEagQ2WP/mJZ2XzDr2vYFhpMh4D4hk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20has%20long%20had%20a%20dispute%20with%20neighbor%20Farmer%20Tom%20over%20a%20group%20of%20V%20%281%20%3C%3D%20V%20%3C%3D%201%2C000%29%20pastures%20conveniently%20numbered%201..V.%20Both%20farmers%20currently%20graze%20their%20cows%20on%20the%20pastures%3B%20each%20pasture%20might%20be%20empty%20or%20might%20have%20a%20single%20cow%20which%20is%20owned%20by%20either%20Farmer%20John%20or%20Farmer%20Tom.%5Cn%5CnFarmer%20John%27s%20patience%20is%20at%20an%20end%2C%20and%20he%20wishes%20to%20settle%20the%20dispute%20with%20Farmer%20Tom%20by%20tipping%20over%20Tom%27s%20cows.%20Of%20course%2C%20he%20wants%20to%20strike%20first%20and%20to%20tip%20as%20many%20of%20Farmer%20Tom%27s%20cows%20as%20possible.%5Cn%5CnA%20total%20of%20E%20%281%20%3C%3D%20E%20%3C%3D%205%2C000%29%20bidirectional%20cowpaths%20connect%20pairs%20of%20pastures.%20No%20two%20pastures%20are%20connected%20by%20more%20than%20one%20cowpath%3B%20each%20path%20connects%20exactly%20two%20distinct%20pastures.%20Paths%20are%20described%20by%20their%20endpoints%20P1%5C%5C_i%20and%20P2%5C%5C_i%20%281%20%3C%3D%20P1%5C%5C_i%20%3C%3D%20V%3B%201%20%3C%3D%20P2%5C%5C_i%20%3C%3D%20V%29.%5Cn%5CnDuring%20his%20offense%2C%20each%20of%20Farmer%20John%27s%20cows%20can%20traverse%20a%20single%20cowpath%20if%20she%20wishes.%20Whether%20or%20not%20she%20chooses%20to%20traverse%20a%20cowpath%2C%20she%20can%20then%20%28if%20she%20wishes%29%20launch%20a%20cow%20tipping%20attack%20to%20a%20pasture%20connected%20to%20her%20pasture%20by%20a%20single%20cowpath%2C%20thus%20tipping%20the%20enemy%20cow%20on%20that%20pasture.%20Note%20that%20a%20cow%20can%20move%20and%20then%20attack%20--%20but%20she%20is%20not%20able%20to%20attack%20and%20then%20move.%5Cn%5CnEach%20pasture%20can%20hold%20exactly%20one%20cow%20at%20a%20time%3B%20no%20cow%20can%20move%20to%20a%20pasture%20occupied%20by%20another%20cow%2C%20especially%20if%20it%20has%20been%20tipped.%20Of%20course%2C%20if%20a%20pasture%20is%20vacated%2C%20another%20cow%20can%20later%20move%20in%20to%20take%20its%20place.%20A%20tipped%20cow%20cannot%20be%20tipped%20again.%5Cn%5CnFarmer%20John%20wants%20to%20know%20two%20things%3A%5Cn%5Cn%5C%5C%2A%20How%20many%20of%20Farmer%20Tom%27s%20cows%20he%20can%20tip%20in%20the%20first%20salvo%5Cn%5Cnof%20the%20war%5Cn%5Cn%5C%5C%2A%20How%20to%20command%20his%20cows%20to%20move%20and%20attack%20so%20as%20to%20tip%5Cn%5Cnthat%20maximal%20number%20of%20Farmer%20Tom%27s%20cows%20in%20that%20first%20salvo%5Cn%5CnFind%20the%20maximum%20number%20of%20cows%20that%20can%20be%20tipped%20and%20construct%20a%20sequence%20of%20move%20and%20attack%20commands%20to%20his%20cows%20that%20then%20obey%20the%20rules%20and%20tip%20that%20number%20of%20cows.%20Any%20such%20sequence%20is%20acceptable%2C%20as%20long%20as%20it%20tips%20the%20maximum%20number%20of%20Farmer%20Tom%27s%20cows.%5Cn%5CnConsider%2C%20for%20instance%2C%20a%20group%20of%205%20pastures%20arranged%20in%20a%20line%2C%20with%20each%20pasture%20connected%20%28via%20%27--%27%3B%20see%20diagram%20below%29%20to%20its%20left%20and%20right%20neighbors%20%28if%20they%20exist%29.%20In%20other%20words%2C%20there%20is%20a%20cowpath%20from%20Pasture%201%20to%20Pasture%202%2C%20Pasture%202%20to%20Pasture%203%2C%20etc.%20Farmer%20Tom%20%28%27T%27%29%20has%202%20cows%2C%20standing%20on%20pastures%201%20and%204%2C%20while%20Farmer%20John%20%28%27J%27%29%20has%202%20cows%20standing%20on%20pastures%203%20and%205%20%28%27E%27%20means%20empty%29%3A%5Cn%5Cn1%20%20%20%202%20%20%20%203%20%20%20%204%20%20%20%205%5Cn%5CnT%20--%20E%20--%20J%20--%20T%20--%20J%5Cn%5CnIn%20this%20case%2C%20Farmer%20John%20can%20tip%20both%20of%20Farmer%20Tom%27s%20cows%20by%20first%20moving%20his%20cow%20on%20Pasture%203%20to%20Pasture%202%2C%20so%20that%20the%20pastures%20in%20order%20are%20now%20TJETJ.%20Farmer%20John%20can%20then%20have%20both%20of%20his%20cows%20attack%20to%20the%20left.%20%20Note%20that%20although%20the%20cow%20in%20Pasture%203%20could%20have%20attacked%20to%20the%20right%20without%20moving%2C%20the%20rightmost%20cow%20would%20then%20be%20unable%20to%20attack.%20The%20only%20valid%20solutions%20thus%20have%20the%20same%20move%20and%20attacks%2C%20although%20the%20order%20in%20which%20Farmer%20John%20commands%20his%20cows%20can%20vary%20slightly.%5Cn%5CnIf%20you%20compute%20the%20correct%20maximum%20number%20but%20do%20not%20provide%20a%20sequence%20%28or%20your%20sequence%20is%20wrong%29%2C%20you%20will%20get%2050%25%20of%20the%20points%20for%20that%20test%20case.%20A%20program%20will%20grade%20your%20output.%5Cn%5CnPartial%20feedback%20will%20be%20provided%20for%20your%20first%2050%20submissions.%5Cn%5Cn%5Cu6709n%5Cu4e2a%5Cu70b9%5Cuff0cm%5Cu6761%5Cu8fb9%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cu3002%5Cn%5Cn%5Cn%5Cu4e0a%5Cu9762%5Cu7684%5Cu70b9%5Cu4e00%5Cu5f00%5Cu59cb%5Cu8981%5Cu4e48%5Cu662fJ%5Cu725b%5Cuff0c%5Cu8981%5Cu4e48%5Cu662fT%5Cu725b%5Cuff0c%5Cu8981%5Cu4e48%5Cu662fE%5Cuff0c%5Cu8868%5Cu793a%5Cu6ca1%5Cu6709%5Cu725b%5Cu3002%5Cn%5Cn%5Cn%5Cu7136%5Cu540eJ%5Cu725b%5Cu6709%5Cu4e24%5Cu79cd%5Cu9009%5Cu62e9%5Cuff1a%5Cn%5Cn%5Cn1%5Cu3001%5Cu76f4%5Cu63a5%5Cu653b%5Cu51fb%5Cu81ea%5Cu5df1%5Cu9644%5Cu8fd1%5Cu7684%5Cu4e00%5Cu53eaT%5Cu725b%5Cuff0c%5Cu7136%5Cu540e%5Cu505c%5Cu4f4f%5Cu6c38%5Cu8fdc%5Cu4e0d%5Cu52a8%5Cu3002%5Cn%5Cn%5Cn2%5Cu3001%5Cu5411%5Cu90bb%5Cu8fd1%5Cu7684%5Cu70b9%5Cu8d70%5Cu4e00%5Cu6b65%5Cuff0c%5Cu7136%5Cu540e%5Cu653b%5Cu51fbor%5Cu4e0d%5Cu653b%5Cu51fb%5Cu9644%5Cu8fd1%5Cu7684%5Cu4e00%5Cu53eaT%5Cu725b%5Cuff0c%5Cu7136%5Cu540e%5Cu505c%5Cu4f4f%5Cu6c38%5Cu8fdc%5Cu4e0d%5Cu52a8%5Cu3002%5Cn%5Cn%5Cn%5Cu7279%5Cu522b%5Cu5f97%5Cuff0c%5Cn%5Cn%5CnJ%5Cu725b%5Cu4e0d%5Cu80fd%5Cu8dd1%5Cu8fdb%5Cu4efb%5Cu4f55%5Cu4e00%5Cu53ea%5Cu672c%5Cu8eab%5Cu6709%5Cu725b%5Cu7684%5Cu70b9%5Cu3002%5Cn%5Cn%5CnT%5Cu725b%5Cu4e0d%5Cu4f1a%5Cu52a8%5Cu3002%5Cu5e76%5Cu4e14%5Cu53ea%5Cu80fd%5Cu88ab%5Cu6253%5Cu6b7b%5Cu4e00%5Cu6b21%5Cu3002%5Cu7136%5Cu540e%5Cu5c31%5Cu7b97%5Cu4ed6%5Cu6b7b%5Cu4e86%5Cuff0cJ%5Cu725b%5Cu4e5f%5Cu4e0d%5Cu80fd%5Cu8fdb%5Cu5165%5Cu4ed6%5Cu7684%5Cu9886%5Cu571f%5Cuff08%5Cu4ed6%5Cu7684%5Cu7075%5Cu9b42%5Cu5f00%5Cu65e0%5Cu654c%5Cu4e86%5Cuff09%21%21%21%5Cn%5Cn%5Cn%5Cu7136%5Cu540e%5Cu4ed6%5Cu4eec%5Cu52a8%5Cu90fd%5Cu6709%5Cu5148%5Cu540e%5Cu987a%5Cu5e8f%5Cuff0c%5Cu7136%5Cu540e%5Cu95ee%5Cu6700%5Cu591a%5Cu80fd%5Cu6253%5Cu6b7b%5Cu591a%5Cu5c11%5Cu53eaT%5Cu725b%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space%20separated%20integers%3A%20V%20and%20E%5Cn%5Cn%5C%5C%2A%20Line%202%3A%20A%20string%20of%20V%20characters%20%28no%20spaces%29%3B%20character%20%23i%20indicates%20whether%20pasture%20%23i%20is%20empty%20%28%27E%27%29%20or%20has%20a%20cow%20owned%20by%20Farmer%20John%20%28%27J%27%29%20or%20Farmer%20Tom%20%28%27T%27%29%5Cn%5Cn%5C%5C%2A%20Lines%203..E%2B2%3A%20Line%20i%2B2%20contains%20two%20space%20separated%20integers%3A%20P1%5C%5C_i%20and%20P2%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%2C%20the%20maximum%20number%20of%20enemy%20cows%20Farmer%20John%20can%20have%20tipped%5Cn%5Cn%5C%5C%2A%20Lines%202.....%3A%20One%20of%20Farmer%20John%27s%20instructions%20to%20his%20cows%20%28to%20be%20executed%20in%20the%20order%20given%29%3A%5Cn%5CnMOVE%20A%20B%5Cn%5Cnor%5CnATTACK%20A%20B%5Cn%5Cnwhere%20A%20is%20the%20vertex%20the%20cow%20occupies%20before%20taking%20the%20action%20and%20B%20is%20the%20vertex%20it%20is%20moving%20to%20or%20attacking%2C%20respectively.%20Note%20that%20when%20instructing%20a%20cow%20that%20has%20already%20moved%20to%20attack%2C%20the%20instruction%20specifies%20the%20location%20the%20cow%20is%20currently%20standing%2C%20not%20where%20it%20was%20originally.%5Cn%22%2C%22samples%22%3A%5B%5B%225%204%20%5CnTEJTJ%20%5Cn1%202%20%5Cn2%203%20%5Cn3%204%20%5Cn4%205%20%5Cn%22%2C%222%20%5CnMOVE%203%202%20%5CnATTACK%202%201%20%5CnATTACK%205%204%20%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20other%20valid%20outputs%20are%3A%5Cn%5Cn2%5CnMOVE%203%202%5Cn%5CnATTACK%205%204%5Cn%5CnATTACK%202%201%5Cn%5Cnand%5Cn2%5CnATTACK%205%204%5Cn%5CnMOVE%203%202%5Cn%5CnATTACK%202%201%5Cn%5Cnwhich%20are%20just%20reorderings%20of%20the%20output%20shown.%20%20This%20might%20not%20be%20true%20on%20other%20testdata.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C107%2C194%2C204%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A32%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22P2974%22%2C%22title%22%3A%22%5BUSACO10HOL%5D%5Cu725b%5Cu7684%5Cu6218%5Cu4e89Cow%20War%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A67823%2C%22title%22%3A%22%5Cu4eca%5Cu65e5%5Cu4efd%5Cu586b%5Cu5751%5Cu2026%5Cu2026%2816%5C%2F18%29%22%2C%22forum%22%3A%7B%22id%22%3A2103%2C%22name%22%3A%22P2974%20%5BUSACO10HOL%5D%5Cu725b%5Cu7684%5Cu6218%5Cu4e89Cow%20War%22%2C%22slug%22%3A%22P2974%22%7D%7D%2C%7B%22id%22%3A38582%2C%22title%22%3A%22%5Cu6c42SPJ%22%2C%22forum%22%3A%7B%22id%22%3A2103%2C%22name%22%3A%22P2974%20%5BUSACO10HOL%5D%5Cu725b%5Cu7684%5Cu6218%5Cu4e89Cow%20War%22%2C%22slug%22%3A%22P2974%22%7D%7D%2C%7B%22id%22%3A19124%2C%22title%22%3A%22%5Cu7f51%5Cu4e0a%5Cu7684%5Cu7ffb%5Cu8bd1%5Cuff08%5Cu4e0d%5Cu662f%5Cu767e%5Cu5ea6%5Cu7ffb%5Cu8bd1%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A2103%2C%22name%22%3A%22P2974%20%5BUSACO10HOL%5D%5Cu725b%5Cu7684%5Cu6218%5Cu4e89Cow%20War%22%2C%22slug%22%3A%22P2974%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10HOL%5D%5Cu725b%5Cu7684%5Cu6218%5Cu4e89Cow%20War%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10HOL]牛的战争Cow War</h1>
+<h2>题目描述</h2>
+<div>Farmer John has long had a dispute with neighbor Farmer Tom over a group of V (1 <= V <= 1,000) pastures conveniently numbered 1..V. Both farmers currently graze their cows on the pastures; each pasture might be empty or might have a single cow which is owned by either Farmer John or Farmer Tom.
+Farmer John's patience is at an end, and he wishes to settle the dispute with Farmer Tom by tipping over Tom's cows. Of course, he wants to strike first and to tip as many of Farmer Tom's cows as possible.
+A total of E (1 <= E <= 5,000) bidirectional cowpaths connect pairs of pastures. No two pastures are connected by more than one cowpath; each path connects exactly two distinct pastures. Paths are described by their endpoints P1\_i and P2\_i (1 <= P1\_i <= V; 1 <= P2\_i <= V).
+During his offense, each of Farmer John's cows can traverse a single cowpath if she wishes. Whether or not she chooses to traverse a cowpath, she can then (if she wishes) launch a cow tipping attack to a pasture connected to her pasture by a single cowpath, thus tipping the enemy cow on that pasture. Note that a cow can move and then attack -- but she is not able to attack and then move.
+Each pasture can hold exactly one cow at a time; no cow can move to a pasture occupied by another cow, especially if it has been tipped. Of course, if a pasture is vacated, another cow can later move in to take its place. A tipped cow cannot be tipped again.
+Farmer John wants to know two things:
+\* How many of Farmer Tom's cows he can tip in the first salvo
+of the war
+\* How to command his cows to move and attack so as to tip
+that maximal number of Farmer Tom's cows in that first salvo
+Find the maximum number of cows that can be tipped and construct a sequence of move and attack commands to his cows that then obey the rules and tip that number of cows. Any such sequence is acceptable, as long as it tips the maximum number of Farmer Tom's cows.
+Consider, for instance, a group of 5 pastures arranged in a line, with each pasture connected (via '--'; see diagram below) to its left and right neighbors (if they exist). In other words, there is a cowpath from Pasture 1 to Pasture 2, Pasture 2 to Pasture 3, etc. Farmer Tom ('T') has 2 cows, standing on pastures 1 and 4, while Farmer John ('J') has 2 cows standing on pastures 3 and 5 ('E' means empty):
+1 2 3 4 5
+T -- E -- J -- T -- J
+In this case, Farmer John can tip both of Farmer Tom's cows by first moving his cow on Pasture 3 to Pasture 2, so that the pastures in order are now TJETJ. Farmer John can then have both of his cows attack to the left. Note that although the cow in Pasture 3 could have attacked to the right without moving, the rightmost cow would then be unable to attack. The only valid solutions thus have the same move and attacks, although the order in which Farmer John commands his cows can vary slightly.
+If you compute the correct maximum number but do not provide a sequence (or your sequence is wrong), you will get 50% of the points for that test case. A program will grade your output.
+Partial feedback will be provided for your first 50 submissions.
+有n个点，m条边的无向图。
+上面的点一开始要么是J牛，要么是T牛，要么是E，表示没有牛。
+然后J牛有两种选择：
+1、直接攻击自己附近的一只T牛，然后停住永远不动。
+2、向邻近的点走一步，然后攻击or不攻击附近的一只T牛，然后停住永远不动。
+特别得，
+J牛不能跑进任何一只本身有牛的点。
+T牛不会动。并且只能被打死一次。然后就算他死了，J牛也不能进入他的领土（他的灵魂开无敌了）!!!
+然后他们动都有先后顺序，然后问最多能打死多少只T牛。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space separated integers: V and E
+\* Line 2: A string of V characters (no spaces); character #i indicates whether pasture #i is empty ('E') or has a cow owned by Farmer John ('J') or Farmer Tom ('T')
+\* Lines 3..E+2: Line i+2 contains two space separated integers: P1\_i and P2\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer, the maximum number of enemy cows Farmer John can have tipped
+\* Lines 2.....: One of Farmer John's instructions to his cows (to be executed in the order given):
+MOVE A B
+or
+ATTACK A B
+where A is the vertex the cow occupies before taking the action and B is the vertex it is moving to or attacking, respectively. Note that when instructing a cow that has already moved to attack, the instruction specifies the location the cow is currently standing, not where it was originally.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 4 
+TEJTJ 
+1 2 
+2 3 
+3 4 
+4 5 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+MOVE 3 2 
+ATTACK 2 1 
+ATTACK 5 4 
+</code></pre>
+<h2>说明</h2>
+<div>The other valid outputs are:
+2
+MOVE 3 2
+ATTACK 5 4
+ATTACK 2 1
+and
+2
+ATTACK 5 4
+MOVE 3 2
+ATTACK 2 1
+which are just reorderings of the output shown. This might not be true on other testdata.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

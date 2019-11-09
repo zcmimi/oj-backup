@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO14JAN]失败的滑雪Bessie Slows Down - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573375229:x8rV8bLsytFlPNk9olarAJ3rUtkwm0J+xi8cKMe5448=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu5976%5Cu725b%5Cu9898%5Cn%22%2C%22description%22%3A%22Bessie%20the%20cow%20is%20competing%20in%20a%20cross-country%20skiing%20event%20at%20the%20winter%20Moolympic%20games.%20%20She%20starts%20out%20at%20a%20speed%20of%201%20meter%20per%20second.%20However%2C%20as%20she%20becomes%20more%20tired%20over%20time%2C%20she%20begins%20to%20slow%20down.%20Each%20time%20Bessie%20slows%20down%2C%20her%20speed%20decreases%3A%20she%20moves%20at%201%5C%2F2%20meter%20per%20second%20after%20slowing%20down%20once%2C%20then%201%5C%2F3%20meter%20per%20second%20after%20slowing%20down%20twice%2C%20and%20so%20on.%5Cn%5CnYou%20are%20told%20when%20and%20where%20Bessie%20slows%20down%2C%20in%20terms%20of%20a%20series%20of%20events.%20%20An%20event%20like%20this%3A%5Cn%5CnT%2017%5Cnmeans%20that%20Bessie%20slows%20down%20at%20a%20specific%20time%20--%20here%2C%2017%20seconds%20into%20the%20race.%20%20An%20event%20like%20this%3A%5Cn%5CnD%2010%5Cnmeans%20that%20Bessie%20slows%20down%20at%20a%20specific%20distance%20from%20the%20start%20--%20in%20this%20case%2C%2010%20meters.%5Cn%5CnGiven%20a%20list%20of%20N%20such%20events%20%281%20%3C%3D%20N%20%3C%3D%2010%2C000%29%2C%20please%20compute%20the%20amount%20of%20time%2C%20in%20seconds%2C%20for%20Bessie%20to%20travel%20an%20entire%20kilometer.%20%20Round%20your%20answer%20to%20the%20nearest%20integer%20second%20%280.5%20rounds%20up%20to%201%29.%5Cn%5Cn%5Cu8d1d%5Cu897f%5Cu6b63%5Cu5728%5Cu53c2%5Cu52a0%5Cu4e00%5Cu9879%5Cu6ed1%5Cu96ea%5Cu6bd4%5Cu8d5b%5Cu3002%5Cu5979%5Cu4ece%5Cu8d77%5Cu70b9%5Cu51fa%5Cu53d1%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu901f%5Cu5ea6%5Cu6052%5Cu5b9a%5Cu4e3a%5Cu6bcf%5Cu79d2%201%20%5Cu7c73%5Cu3002%5Cu7136%5Cu800c%5Cuff0c%5Cu968f%5Cu7740%5Cu6bd4%5Cu8d5b%5Cu8fdb%5Cu7a0b%5Cu7684%5Cu589e%5Cu52a0%5Cuff0c%5Cu5979%5Cu4f1a%5Cu72af%5Cu5f88%5Cu591a%5Cu9519%5Cu8bef%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu5931%5Cu8bef%5Cu90fd%5Cu4f1a%5Cu4f7f%5Cu5979%5Cu7684%5Cu901f%5Cu5ea6%5Cu4e0b%5Cu964d%5Cu3002%5Cu5f53%5Cu5979%5Cu7b2c%5Cu4e00%5Cu6b21%5Cu5931%5Cu8bef%5Cu540e%5Cuff0c%5Cu901f%5Cu5ea6%5Cu4f1a%5Cu4e0b%5Cu964d%5Cu5230%5Cu6bcf%5Cu79d21%5C%2F2%20%5Cu7c73%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu6b21%5Cu5931%5Cu8bef%5Cu540e%5Cuff0c%5Cu901f%5Cu5ea6%5Cu4f1a%5Cu4e0b%5Cu964d%5Cu5230%5Cu6bcf%5Cu79d2%201%5C%2F3%20%5Cu7c73%5Cuff0c%5Cu7b2c%20k%20%5Cu6b21%5Cu5931%5Cu8bef%5Cu540e%5Cuff0c%5Cu901f%5Cu5ea6%5Cu4f1a%5Cu4e0b%5Cu964d%5Cu5230%5Cu6bcf%5Cu79d2%201%5C%2F%28k%20%2B%201%29%20%5Cu7c73%5Cu3002%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu8bb0%5Cu5f55%5Cu4e86%5Cu8d1d%5Cu897f%5Cu7684%5Cu6240%5Cu6709%5Cu5931%5Cu8bef%5Cuff0c%5Cu4e00%5Cu5171%5Cu6709%20N%20%5Cu4e2a%5Cu3002%5Cu6709%5Cu4e24%5Cu79cd%5Cu5931%5Cu8bef%5Cuff0c%5Cu4e00%5Cu79cd%5Cu53d1%5Cu751f%5Cu5728%5Cu6bd4%5Cu8d5b%5Cu5f00%5Cu59cb%5Cu540e%5Cu7684%5Cu67d0%5Cu4e2a%5Cu65f6%5Cu95f4%5Cu70b9%5Cuff0c%5Cu53e6%5Cu4e00%5Cu79cd%5Cu53d1%5Cu751f%5Cu5728%5Cu8d5b%5Cu9053%5Cu7684%5Cu67d0%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu4e0a%5Cu3002%5Cu6709%5Cu65f6%5Cuff0c%5Cu8d1d%5Cu897f%5Cu53ef%5Cu80fd%5Cu5728%5Cu67d0%5Cu4e2a%5Cu65f6%5Cu95f4%5Cu70b9%5Cu5230%5Cu8fbe%5Cu67d0%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu800c%5Cu6070%5Cu597d%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu65f6%5Cu95f4%5Cu70b9%5Cu548c%5Cu4f4d%5Cu7f6e%5Cu4e0a%5Cu90fd%5Cu6709%5Cu4e00%5Cu6b21%5Cu5931%5Cu8bef%5Cu7684%5Cu8bb0%5Cu5f55%5Cuff0c%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu8bb0%5Cu5f55%5Cu8981%5Cu7b97%5Cu4f5c%5Cu4e0d%5Cu540c%5Cu7684%5Cu5931%5Cu8bef%5Cuff0c%5Cu4f1a%5Cu5bf9%5Cu8d1d%5Cu897f%5Cu7684%5Cu901f%5Cu5ea6%5Cu9020%5Cu6210%5Cu4e24%5Cu6b21%5Cu5f71%5Cu54cd%5Cu3002%5Cu6bd4%5Cu8d5b%5Cu7684%5Cu7ec8%5Cu70b9%5Cu8ddd%5Cu79bb%5Cu8d77%5Cu70b9%5Cu6709%201000%20%5Cu7c73%5Cuff0c%5Cu8bf7%5Cu95ee%5Cu8d1d%5Cu897f%5Cu9700%5Cu8981%5Cu591a%5Cu5c11%5Cu65f6%5Cu95f4%5Cu624d%5Cu80fd%5Cu6ed1%5Cu8fc7%5Cu7ec8%5Cu70b9%5Cuff1f%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu5355%5Cu4e2a%5Cu6574%5Cu6570%20N%20%5Cuff0c1%20%5Cu2264%20N%20%5Cu2264%2010000%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5230%5Cu7b2c%20N%20%2B%201%20%5Cu884c%5Cuff1a%5Cu6bcf%5Cu884c%5Cu5f00%5Cu5934%5Cu6709%5Cu4e2a%5Cu5927%5Cu5199%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu4ee3%5Cu8868%5Cu8d1d%5Cu897f%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5931%5Cu8bef%5Cu7c7b%5Cu578b%5Cuff1a%5Cn%5Cn%5Cu2013%20%5Cu5982%5Cu679c%5Cu662f%20T%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4f1a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20S%5Cuff0c%5Cu8868%5Cu793a%5Cu5728%5Cu6bd4%5Cu8d5b%5Cu5f00%5Cu59cb%5Cu540e%5Cu7684%5Cu7b2c%20S%20%5Cu79d2%5Cu949f%5Cu6574%5Cu53d1%5Cu751f%5Cu4e86%5Cu4e00%5Cu6b21%5Cu5931%5Cu8bef%5Cuff0c%5Cn%5Cn1%20%5Cu2264%20S%20%5Cu2264%2010%5E7%5Cn%5Cn%5Cu2013%20%5Cu5982%5Cu679c%5Cu662f%20D%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4f1a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20X%5Cuff0c%5Cu8868%5Cu793a%5Cu5728%5Cu8ddd%5Cu79bb%5Cu8d77%5Cu70b9%20X%20%5Cu7c73%5Cu5904%5Cu53d1%5Cu751f%5Cu4e86%5Cu4e00%5Cu6b21%5Cu5931%5Cu8bef%5Cuff0c1%20%5Cu2264%20X%20%5Cu2264%5Cn%5Cn1000%22%2C%22outputFormat%22%3A%22%5Cu5355%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1a%5Cu8868%5Cu793a%5Cu8d1d%5Cu897f%5Cu9700%5Cu8981%5Cu591a%5Cu5c11%5Cu79d2%5Cu624d%5Cu80fd%5Cu6ed1%5Cu5230%5Cu7ec8%5Cu70b9%5Cuff0c%5Cu5982%5Cu679c%5Cu7cbe%5Cu786e%5Cu7684%5Cu65f6%5Cu95f4%5Cu4e0d%5Cu662f%5Cu6574%5Cu6570%5Cuff0c%5Cu5219%5Cu7528%5Cu56db%5Cu820d%5Cu4e94%5Cu5165%5Cu7684%5Cu65b9%5Cn%5Cn%5Cu6cd5%5Cu5411%5Cu6700%5Cu63a5%5Cu8fd1%5Cu7684%5Cu6574%5Cu6570%5Cu53d6%5Cu6574%5Cn%22%2C%22samples%22%3A%5B%5B%222%5CnT%2030%5CnD%2010%22%2C%222970%22%5D%5D%2C%22hint%22%3A%22%5Cu524d%2010%20%5Cu79d2%5Cuff0c%5Cu8d1d%5Cu897f%5Cu7684%5Cu901f%5Cu5ea6%5Cu662f%5Cu6bcf%5Cu79d2%201%20%5Cu7c73%5Cuff0c%5Cu5979%5Cu6ed1%5Cu4e86%2010%20%5Cu7c73%5Cu3002%5Cu7136%5Cu540e%5Cu5979%5Cu906d%5Cu9047%5Cu4e86%5Cu7b2c%5Cu4e00%5Cu6b21%5Cu5931%5Cu8bef%5Cuff0c%5Cu5728%5Cu63a5%5Cu4e0b%5Cn%5Cn%5Cu6765%5Cu7684%2020%20%5Cu79d2%5Cu5185%5Cuff0c%5Cu5979%5Cu53c8%5Cu6ed1%5Cu4e86%2010%20%5Cu7c73%5Cu3002%5Cu4e4b%5Cu540e%5Cu5979%5Cu906d%5Cu9047%5Cu4e86%5Cu7b2c%5Cu4e8c%5Cu6b21%5Cu5931%5Cu8bef%5Cuff0c%5Cu8fd8%5Cu5269%5Cu4e0b%20980%20%5Cu7c73%5Cuff0c%5Cu6240%5Cu4ee5%5Cu5979%5Cu5171%5Cu8ba1%5Cu82b1%5Cu53bb%5Cn%5Cn10%20%2B%2020%20%2B%202940%20%3D%202970%20%5Cu79d2%5Cu624d%5Cu5b8c%5Cu6210%5Cu6bd4%5Cu8d5b%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B1%2C7%2C31%2C44%2C46%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1220%2C%22totalAccepted%22%3A494%2C%22pid%22%3A%22P2338%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu5931%5Cu8d25%5Cu7684%5Cu6ed1%5Cu96eaBessie%20Slows%20Down%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A65462%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu4f1aCE%3F%3F%3F%3F%3F%22%2C%22forum%22%3A%7B%22id%22%3A1426%2C%22name%22%3A%22P2338%20%5BUSACO14JAN%5D%5Cu5931%5Cu8d25%5Cu7684%5Cu6ed1%5Cu96eaBessie%20Slows%20Down%22%2C%22slug%22%3A%22P2338%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1269%22%2C%22title%22%3A%22%5Cu4fe1%5Cu53f7%5Cu653e%5Cu5927%5Cu5668%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2255%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu8bb0%5Cu5f55%5Cu5965%5Cu6797%5Cu6bd4%5Cu514bRecording%20the%20M%5Cu2026%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2854%22%2C%22title%22%3A%22%5BUSACO06DEC%5D%5Cu725b%5Cu7684%5Cu8fc7%5Cu5c71%5Cu8f66Cow%20Roller%20Coaster%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3100%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu5efa%5Cu9020%5Cu6ed1%5Cu96ea%5Cu573aBuilding%20a%20Ski%20Course%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3101%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu6ed1%5Cu96ea%5Cu7b49%5Cu7ea7Ski%20Course%20Rating%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO14JAN%5D%5Cu5931%5Cu8d25%5Cu7684%5Cu6ed1%5Cu96eaBessie%20Slows%20Down%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO14JAN]失败的滑雪Bessie Slows Down</h1>
+<h2>题目背景</h2>
+<div>奶牛题
+</div>
+<h2>题目描述</h2>
+<div>Bessie the cow is competing in a cross-country skiing event at the winter Moolympic games. She starts out at a speed of 1 meter per second. However, as she becomes more tired over time, she begins to slow down. Each time Bessie slows down, her speed decreases: she moves at 1/2 meter per second after slowing down once, then 1/3 meter per second after slowing down twice, and so on.
+You are told when and where Bessie slows down, in terms of a series of events. An event like this:
+T 17
+means that Bessie slows down at a specific time -- here, 17 seconds into the race. An event like this:
+D 10
+means that Bessie slows down at a specific distance from the start -- in this case, 10 meters.
+Given a list of N such events (1 <= N <= 10,000), please compute the amount of time, in seconds, for Bessie to travel an entire kilometer. Round your answer to the nearest integer second (0.5 rounds up to 1).
+贝西正在参加一项滑雪比赛。她从起点出发的时候，速度恒定为每秒 1 米。然而，随着比赛进程的增加，她会犯很多错误，每次失误都会使她的速度下降。当她第一次失误后，速度会下降到每秒1/2 米，第二次失误后，速度会下降到每秒 1/3 米，第 k 次失误后，速度会下降到每秒 1/(k + 1) 米。
+约翰记录了贝西的所有失误，一共有 N 个。有两种失误，一种发生在比赛开始后的某个时间点，另一种发生在赛道的某个位置上。有时，贝西可能在某个时间点到达某个位置，而恰好在这个时间点和位置上都有一次失误的记录，这两个记录要算作不同的失误，会对贝西的速度造成两次影响。比赛的终点距离起点有 1000 米，请问贝西需要多少时间才能滑过终点？
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行：单个整数 N ，1 ≤ N ≤ 10000
+第二行到第 N + 1 行：每行开头有个大写字母，代表贝西的一个失误类型：
+– 如果是 T，接下来会有一个整数 S，表示在比赛开始后的第 S 秒钟整发生了一次失误，
+1 ≤ S ≤ 10^7
+– 如果是 D，接下来会有一个整数 X，表示在距离起点 X 米处发生了一次失误，1 ≤ X ≤
+1000</div>
+<h3>输出格式</h3>
+<br />
+<div>单个整数：表示贝西需要多少秒才能滑到终点，如果精确的时间不是整数，则用四舍五入的方
+法向最接近的整数取整
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+T 30
+D 10</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2970</code></pre>
+<h2>说明</h2>
+<div>前 10 秒，贝西的速度是每秒 1 米，她滑了 10 米。然后她遭遇了第一次失误，在接下
+来的 20 秒内，她又滑了 10 米。之后她遭遇了第二次失误，还剩下 980 米，所以她共计花去
+10 + 20 + 2940 = 2970 秒才完成比赛
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

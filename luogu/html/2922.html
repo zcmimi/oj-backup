@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08DEC]秘密消息Secret Message - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376147:lvo415pFNLBQueDDNcLnb0lqXYSYDNn6+EmJ3cwaLt8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bessie%20is%20leading%20the%20cows%20in%20an%20attempt%20to%20escape%21%20To%20do%20this%2C%20the%20cows%20are%20sending%20secret%20binary%20messages%20to%20each%20other.%5Cn%5CnEver%20the%20clever%20counterspy%2C%20Farmer%20John%20has%20intercepted%20the%20first%20b%5C%5C_i%20%281%20%3C%3D%20b%5C%5C_i%20%3C%3D%2010%2C000%29%20bits%20of%20each%20of%20M%20%281%20%3C%3D%20M%20%3C%3D%2050%2C000%29%20of%20these%20secret%20binary%20messages.%5Cn%5CnHe%20has%20compiled%20a%20list%20of%20N%20%281%20%3C%3D%20N%20%3C%3D%2050%2C000%29%20partial%20codewords%20that%20he%20thinks%20the%20cows%20are%20using.%20Sadly%2C%20he%20only%20knows%20the%20first%20c%5C%5C_j%20%281%20%3C%3D%20c%5C%5C_j%20%3C%3D%2010%2C000%29%20bits%20of%20codeword%20j.%5Cn%5CnFor%20each%20codeword%20j%2C%20he%20wants%20to%20know%20how%20many%20of%20the%20intercepted%20messages%20match%20that%20codeword%20%28i.e.%2C%20for%20codeword%20j%2C%20how%20many%20times%20does%20a%20message%20and%20the%20codeword%20have%20the%20same%20initial%20bits%29.%20%20Your%20job%20is%20to%20compute%20this%20number.%5Cn%5CnThe%20total%20number%20of%20bits%20in%20the%20input%20%28i.e.%2C%20the%20sum%20of%20the%20b%5C%5C_i%20and%20the%20c%5C%5C_j%29%20will%20not%20exceed%20500%2C000.%5Cn%5CnMemory%20Limit%3A%2032MB%5Cn%5CnPOINTS%3A%20270%5Cn%5Cn%5Cu8d1d%5Cu831c%5Cu6b63%5Cu5728%5Cu9886%5Cu5bfc%5Cu5976%5Cu725b%5Cu4eec%5Cu9003%5Cu8dd1%5Cuff0e%5Cu4e3a%5Cu4e86%5Cu8054%5Cu7edc%5Cuff0c%5Cu5976%5Cu725b%5Cu4eec%5Cu4e92%5Cu76f8%5Cu53d1%5Cu9001%5Cu79d8%5Cu5bc6%5Cu4fe1%5Cu606f%5Cuff0e%5Cn%5Cn%5Cu4fe1%5Cu606f%5Cu662f%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu7684%5Cuff0c%5Cu5171%5Cu6709M%281%5Cu2264M%5Cu226450000%29%5Cu6761%5Cuff0e%5Cu53cd%5Cu95f4%5Cu8c0d%5Cu80fd%5Cu529b%5Cu5f88%5Cu5f3a%5Cu7684%5Cu7ea6%5Cu7ff0%5Cu5df2%5Cu7ecf%5Cu90e8%5Cu5206%5Cu62e6%5Cu622a%5Cu4e86%5Cu8fd9%5Cu4e9b%5Cu4fe1%5Cu606f%5Cuff0c%5Cu77e5%5Cu9053%5Cu4e86%5Cu7b2ci%5Cu6761%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu4fe1%5Cu606f%5Cu7684%5Cu524dbi%28l%5Cu300abi%5Cu226410000%29%5Cu4f4d%5Cuff0e%5Cu4ed6%5Cu540c%5Cu65f6%5Cu77e5%5Cu9053%5Cuff0c%5Cu5976%5Cu725b%5Cu4f7f%5Cu7528N%281%5Cu2264N%5Cu226450000%29%5Cu6761%5Cu5bc6%5Cu7801%5Cuff0e%5Cu4f46%5Cu662f%5Cuff0c%5Cu4ed6%5Cu4ec5%5Cu4ec5%5Cu4e86%5Cu89e3%5Cu7b2cJ%5Cu6761%5Cu5bc6%5Cu7801%5Cu7684%5Cu524dcj%281%5Cu2264cj%5Cu226410000%29%5Cu4f4d%5Cuff0e%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu6761%5Cu5bc6%5Cu7801J%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu77e5%5Cu9053%5Cu6709%5Cu591a%5Cu5c11%5Cu622a%5Cu5f97%5Cu7684%5Cu4fe1%5Cu606f%5Cu80fd%5Cu591f%5Cu548c%5Cu5b83%5Cu5339%5Cu914d%5Cuff0e%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu6709%5Cu591a%5Cu5c11%5Cu4fe1%5Cu606f%5Cu548c%5Cu8fd9%5Cu6761%5Cu5bc6%5Cu7801%5Cu6709%5Cu7740%5Cu76f8%5Cu540c%5Cu7684%5Cu524d%5Cu7f00%5Cuff0e%5Cu5f53%5Cu7136%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu524d%5Cu7f00%5Cu957f%5Cu5ea6%5Cu5fc5%5Cu987b%5Cu7b49%5Cu4e8e%5Cu5bc6%5Cu7801%5Cu548c%5Cu90a3%5Cu6761%5Cu4fe1%5Cu606f%5Cu957f%5Cu5ea6%5Cu7684%5Cu8f83%5Cu5c0f%5Cu8005%5Cuff0e%5Cn%5Cn%5Cu5728%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu4e2d%5Cuff0c%5Cu4f4d%5Cu7684%5Cu603b%5Cu6570%5Cuff08%5Cu5373%5Cu2211Bi%2B%5Cu2211Ci%5Cuff09%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc7500000.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20integers%3A%20M%20and%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..M%2B1%3A%20Line%20i%2B1%20describes%20intercepted%20code%20i%20with%20an%20integer%20b%5C%5C_i%20followed%20by%20b%5C%5C_i%20space-separated%200%27s%20and%201%27s%5Cn%5Cn%5C%5C%2A%20Lines%20M%2B2..M%2BN%2B1%3A%20Line%20M%2Bj%2B1%20describes%20codeword%20j%20with%20an%20integer%20c%5C%5C_j%20followed%20by%20c%5C%5C_j%20space-separated%200%27s%20and%201%27s%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..M%3A%20Line%20j%3A%20The%20number%20of%20messages%20that%20the%20jth%20codeword%20could%20match.%5Cn%22%2C%22samples%22%3A%5B%5B%224%205%20%5Cr%5Cn3%200%201%200%20%5Cr%5Cn1%201%20%5Cr%5Cn3%201%200%200%20%5Cr%5Cn3%201%201%200%20%5Cr%5Cn1%200%20%5Cr%5Cn1%201%20%5Cr%5Cn2%200%201%20%5Cr%5Cn5%200%201%200%200%201%20%5Cr%5Cn2%201%201%20%5Cr%5Cn%22%2C%221%20%5Cr%5Cn3%20%5Cr%5Cn1%20%5Cr%5Cn1%20%5Cr%5Cn2%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22Four%20messages%3B%20five%20codewords.%20%5Cn%5CnThe%20intercepted%20messages%20start%20with%20010%2C%201%2C%20100%2C%20and%20110.%5Cn%5CnThe%20possible%20codewords%20start%20with%200%2C%201%2C%2001%2C%2001001%2C%20and%2011.%5Cn%5Cn%5Cn0%20matches%20only%20010%3A%201%20match%5Cn%5Cn1%20matches%201%2C%20100%2C%20and%20110%3A%203%20matches%5Cn%5Cn01%20matches%20only%20010%3A%201%20match%5Cn%5Cn01001%20matches%20010%3A%201%20match%5Cn%5Cn11%20matches%201%20and%20110%3A%202%20matches%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C46%2C244%2C300%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2390%2C%22totalAccepted%22%3A1208%2C%22pid%22%3A%22P2922%22%2C%22title%22%3A%22%5BUSACO08DEC%5D%5Cu79d8%5Cu5bc6%5Cu6d88%5Cu606fSecret%20Message%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A140322%2C%22title%22%3A%22%5Cu6551%5Cu6551%5Cu5b69%5Cu5b50%5Cu5427%22%2C%22forum%22%3A%7B%22id%22%3A2051%2C%22name%22%3A%22P2922%20%5BUSACO08DEC%5D%5Cu79d8%5Cu5bc6%5Cu6d88%5Cu606fSecret%20Message%22%2C%22slug%22%3A%22P2922%22%7D%7D%2C%7B%22id%22%3A105676%2C%22title%22%3A%22%5Cu6211%5Cu7684Trie%5Cuff0c%5Cu5b83%5Cu6b7b%5Cuff08%5Cu672c%5Cu673aRE%5Cuff09%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A2051%2C%22name%22%3A%22P2922%20%5BUSACO08DEC%5D%5Cu79d8%5Cu5bc6%5Cu6d88%5Cu606fSecret%20Message%22%2C%22slug%22%3A%22P2922%22%7D%7D%2C%7B%22id%22%3A101229%2C%22title%22%3A%22%5Cu7f16%5Cu8bd1%5Cu4e0d%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A2051%2C%22name%22%3A%22P2922%20%5BUSACO08DEC%5D%5Cu79d8%5Cu5bc6%5Cu6d88%5Cu606fSecret%20Message%22%2C%22slug%22%3A%22P2922%22%7D%7D%2C%7B%22id%22%3A93187%2C%22title%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu9898%5Cu9762%5Cu7684%5Cu7406%5Cu89e3%22%2C%22forum%22%3A%7B%22id%22%3A2051%2C%22name%22%3A%22P2922%20%5BUSACO08DEC%5D%5Cu79d8%5Cu5bc6%5Cu6d88%5Cu606fSecret%20Message%22%2C%22slug%22%3A%22P2922%22%7D%7D%2C%7B%22id%22%3A75354%2C%22title%22%3A%22%5Cu795e%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A2051%2C%22name%22%3A%22P2922%20%5BUSACO08DEC%5D%5Cu79d8%5Cu5bc6%5Cu6d88%5Cu606fSecret%20Message%22%2C%22slug%22%3A%22P2922%22%7D%7D%2C%7B%22id%22%3A42145%2C%22title%22%3A%2215%5Cu5206%5Cu6c42%5Cu6551%22%2C%22forum%22%3A%7B%22id%22%3A2051%2C%22name%22%3A%22P2922%20%5BUSACO08DEC%5D%5Cu79d8%5Cu5bc6%5Cu6d88%5Cu606fSecret%20Message%22%2C%22slug%22%3A%22P2922%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2292%22%2C%22title%22%3A%22%5BHNOI2004%5DL%5Cu8bed%5Cu8a00%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3065%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu7b2c%5Cu4e00%21First%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3294%22%2C%22title%22%3A%22%5BSCOI2016%5D%5Cu80cc%5Cu5355%5Cu8bcd%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3808%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011AC%5Cu81ea%5Cu52a8%5Cu673a%5Cuff08%5Cu7b80%5Cu5355%5Cu7248%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4551%22%2C%22title%22%3A%22%5Cu6700%5Cu957f%5Cu5f02%5Cu6216%5Cu8def%5Cu5f84%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08DEC%5D%5Cu79d8%5Cu5bc6%5Cu6d88%5Cu606fSecret%20Message%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08DEC]秘密消息Secret Message</h1>
+<h2>题目描述</h2>
+<div>Bessie is leading the cows in an attempt to escape! To do this, the cows are sending secret binary messages to each other.
+Ever the clever counterspy, Farmer John has intercepted the first b\_i (1 <= b\_i <= 10,000) bits of each of M (1 <= M <= 50,000) of these secret binary messages.
+He has compiled a list of N (1 <= N <= 50,000) partial codewords that he thinks the cows are using. Sadly, he only knows the first c\_j (1 <= c\_j <= 10,000) bits of codeword j.
+For each codeword j, he wants to know how many of the intercepted messages match that codeword (i.e., for codeword j, how many times does a message and the codeword have the same initial bits). Your job is to compute this number.
+The total number of bits in the input (i.e., the sum of the b\_i and the c\_j) will not exceed 500,000.
+Memory Limit: 32MB
+POINTS: 270
+贝茜正在领导奶牛们逃跑．为了联络，奶牛们互相发送秘密信息．
+信息是二进制的，共有M(1≤M≤50000)条．反间谍能力很强的约翰已经部分拦截了这些信息，知道了第i条二进制信息的前bi(l《bi≤10000)位．他同时知道，奶牛使用N(1≤N≤50000)条密码．但是，他仅仅了解第J条密码的前cj(1≤cj≤10000)位．
+对于每条密码J，他想知道有多少截得的信息能够和它匹配．也就是说，有多少信息和这条密码有着相同的前缀．当然，这个前缀长度必须等于密码和那条信息长度的较小者．
+在输入文件中，位的总数（即∑Bi+∑Ci）不会超过500000.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two integers: M and N
+\* Lines 2..M+1: Line i+1 describes intercepted code i with an integer b\_i followed by b\_i space-separated 0's and 1's
+\* Lines M+2..M+N+1: Line M+j+1 describes codeword j with an integer c\_j followed by c\_j space-separated 0's and 1's
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..M: Line j: The number of messages that the jth codeword could match.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5 
+3 0 1 0 
+1 1 
+3 1 0 0 
+3 1 1 0 
+1 0 
+1 1 
+2 0 1 
+5 0 1 0 0 1 
+2 1 1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 
+3 
+1 
+1 
+2 
+</code></pre>
+<h2>说明</h2>
+<div>Four messages; five codewords.
+The intercepted messages start with 010, 1, 100, and 110.
+The possible codewords start with 0, 1, 01, 01001, and 11.
+0 matches only 010: 1 match
+1 matches 1, 100, and 110: 3 matches
+01 matches only 010: 1 match
+01001 matches 010: 1 match
+11 matches 1 and 110: 2 matches
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

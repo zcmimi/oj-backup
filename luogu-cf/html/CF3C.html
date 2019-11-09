@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tic-tac-toe - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573389857:SJ8DSSbvFs8wsVUtbdXC+vgU11CVtkSxFxykh+8yNrY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Certainly%2C%20everyone%20is%20familiar%20with%20tic-tac-toe%20game.%20The%20rules%20are%20very%20simple%20indeed.%20Two%20players%20take%20turns%20marking%20the%20cells%20in%20a%20%24%203%5Cu00d73%20%24%20grid%20%28one%20player%20always%20draws%20crosses%2C%20the%20other%20%5Cu2014%20noughts%29.%20The%20player%20who%20succeeds%20first%20in%20placing%20three%20of%20his%20marks%20in%20a%20horizontal%2C%20vertical%20or%20diagonal%20line%20wins%2C%20and%20the%20game%20is%20finished.%20The%20player%20who%20draws%20crosses%20goes%20first.%20If%20the%20grid%20is%20filled%2C%20but%20neither%20Xs%2C%20nor%200s%20form%20the%20required%20line%2C%20a%20draw%20is%20announced.%5Cn%5CnYou%20are%20given%20a%20%24%203%5Cu00d73%20%24%20grid%2C%20each%20grid%20cell%20is%20empty%2C%20or%20occupied%20by%20a%20cross%20or%20a%20nought.%20You%20have%20to%20find%20the%20player%20%28first%20or%20second%29%2C%20whose%20turn%20is%20next%2C%20or%20print%20one%20of%20the%20verdicts%20below%3A%5Cn%5Cn-%20illegal%20%5Cu2014%20if%20the%20given%20board%20layout%20can%27t%20appear%20during%20a%20valid%20game%3B%5Cn-%20the%20first%20player%20won%20%5Cu2014%20if%20in%20the%20given%20board%20layout%20the%20first%20player%20has%20just%20won%3B%5Cn-%20the%20second%20player%20won%20%5Cu2014%20if%20in%20the%20given%20board%20layout%20the%20second%20player%20has%20just%20won%3B%5Cn-%20draw%20%5Cu2014%20if%20the%20given%20board%20layout%20has%20just%20let%20to%20a%20draw.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20three%20lines%2C%20each%20of%20the%20lines%20contains%20characters%20%5C%22.%5C%22%2C%20%5C%22X%5C%22%20or%20%5C%220%5C%22%20%28a%20period%2C%20a%20capital%20letter%20X%2C%20or%20a%20digit%20zero%29.%22%2C%22outputFormat%22%3A%22Print%20one%20of%20the%20six%20verdicts%3A%20first%2C%20second%2C%20illegal%2C%20the%20first%20player%20won%2C%20the%20second%20player%20won%20or%20draw.%22%2C%22samples%22%3A%5B%5B%22X0X%5Cn.0.%5Cn.X.%5Cn%22%2C%22second%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B64000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F3%5C%2FC%22%2C%22id%22%3A%223C%22%7D%2C%22translation%22%3A%22%5Cu5f53%5Cu7136%5Cuff0c%5Cu5927%5Cu5bb6%5Cu90fd%5Cu719f%5Cu6089%5Cu4e95%5Cu5b57%5Cu68cb%5Cu6e38%5Cu620f%5Cu3002%20%5Cu8fd9%5Cu4e9b%5Cu89c4%5Cu5219%5Cu786e%5Cu5b9e%5Cu5f88%5Cu7b80%5Cu5355%5Cu3002%20%5Cu4e24%5Cu4e2a%5Cu73a9%5Cu5bb6A%5Cu3001B%5Cu8f6e%5Cu6d41%5Cu57283x3%5Cu7684%5Cu65b9%5Cu683c%5Cu7684%5Cu5355%5Cu5143%5Cu683c%5Cu4e2d%5Cu753b%5Cu7b26%5Cu53f7%5Cuff08%5Cu73a9%5Cu5bb6A%5Cu603b%5Cu662f%5Cu753b%5Cu201cX%5Cu201d%5Cuff0c%5Cu73a9%5Cu5bb6B%5Cu603b%5Cu662f%5Cu753b%5Cu201c0%5Cu201d%5Cuff09%5Cu3002%20%5Cu9996%5Cu5148%5Cu5728%5Cu6c34%5Cu5e73%5Cu3001%5Cu5782%5Cu76f4%5Cu6216%5Cu5bf9%5Cu89d2%5Cu7ebf%5Cu4e0a%5Cu51fa%5Cu73b03%5Cu4e2a%5Cu76f8%5Cu540c%5Cu7684%5Cu7b26%5Cu53f7%5Cu7684%5Cu73a9%5Cu5bb6%5Cu83b7%5Cu80dc%5Cuff0c%5Cu6bd4%5Cu8d5b%5Cu7ed3%5Cu675f%5Cu3002%20%5Cu73a9%5Cu5bb6A%5Cu603b%5Cu662f%5Cu4e3a%5Cu5148%5Cu624b%5Cu3002%20%5Cu5982%5Cu679c3x3%5Cu7684%5Cu65b9%5Cu683c%5Cu88ab%5Cu586b%5Cu6ee1%5Cuff0c%5Cu4f46%5Cu662f%5Cu5728%5Cu6240%5Cu6709%5Cu6c34%5Cu5e73%5Cu3001%5Cu5782%5Cu76f4%5Cu6216%5Cu5bf9%5Cu89d2%5Cu7ebf%5Cu4e0a%5Cu5747%5Cu672a%5Cu51fa%5Cu73b03%5Cu4e2a%5Cu76f8%5Cu540c%5Cu7684%5Cu7b26%5Cu53f7%5Cuff0c%5Cu5ba3%5Cu5e03%5Cu5e73%5Cu5c40%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a3%2A3%5Cu7684%5Cu65b9%5Cu683c%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5355%5Cu5143%5Cu683c%5Cu662f%5Cu201c.%5Cu201d%5Cuff08%5Cu7a7a%5Cu767d%5Cuff09%5Cuff0c%5Cu201cX%5Cu201d%5Cu6216%5Cu201c0%5Cu201d%5Cu3002%20%5Cu4f60%5Cu5fc5%5Cu987b%5Cu8f93%5Cu51fa%5Cu4ee5%5Cu4e0b%5Cu5185%5Cu5bb9%5Cu4e4b%5Cu4e00%5Cuff1a%5Cn%5Cn%5Cu73a9%5Cu5bb6A%5Cu8d70%5Cu68cb%5Cuff08%5Cu8f93%5Cu51fa%5Cu201cfirst%5Cu201d%5Cuff09%5Cu2014%5Cu2014%5Cu5982%5Cu679c%5Cu51fa%5Cu73b0%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu72b6%5Cu6001%5Cu540e%5Cuff0c%5Cu4e0b%5Cu4e00%5Cu6b65%5Cu4e3a%5Cu73a9%5Cu5bb6A%5Cu8d70%5Cu68cb%5Cu3002%20%5Cn%5Cn%5Cu73a9%5Cu5bb6B%5Cu8d70%5Cu68cb%5Cuff08%5Cu8f93%5Cu51fa%5Cu201csecond%5Cu201d%5Cuff09%5Cu2014%5Cu2014%5Cu5982%5Cu679c%5Cu51fa%5Cu73b0%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu72b6%5Cu6001%5Cu540e%5Cuff0c%5Cu4e0b%5Cu4e00%5Cu6b65%5Cu4e3a%5Cu73a9%5Cu5bb6B%5Cu8d70%5Cu68cb%5Cu3002%5Cn%5Cn%5Cu975e%5Cu6cd5%5Cuff08%5Cu8f93%5Cu51fa%5Cu201cillegal%5Cu201d%5Cuff09%5Cu2014%5Cu2014%5Cu5982%5Cu679c%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu72b6%5Cu6001%5Cu65e0%5Cu6cd5%5Cu5728%5Cu6b63%5Cu5e38%5Cu6e38%5Cu620f%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cu51fa%5Cu73b0%5Cu3002%5Cn%5Cn%5Cu73a9%5Cu5bb6A%5Cu80dc%5Cu5229%5Cuff08%5Cu8f93%5Cu51fa%5Cu201cthe%20first%20player%20won%5Cu201d%5Cuff09%5Cu2014%5Cu2014%5Cu5982%5Cu679c%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu72b6%5Cu6001%5Cu4e2d%5Cu73a9%5Cu5bb6A%5Cu80dc%5Cu5229%5Cu3002%5Cn%5Cn%5Cu73a9%5Cu5bb6B%5Cu80dc%5Cu5229%5Cuff08%5Cu8f93%5Cu51fa%5Cu201cthe%20second%20player%20won%5Cu201d%5Cuff09%5Cu2014%5Cu2014%5Cu5982%5Cu679c%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu72b6%5Cu6001%5Cu4e2d%5Cu73a9%5Cu5bb6B%5Cu80dc%5Cu5229%5Cu3002%5Cn%5Cn%5Cu5e73%5Cu5c40%5Cuff08%5Cu8f93%5Cu51fa%5Cu201cdraw%5Cu201d%5Cuff09%5Cu2014%5Cu2014%5Cu5982%5Cu679c%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu72b6%5Cu6001%5Cu662f%5Cu5e73%5Cu5c40%5Cu3002%22%2C%22tags%22%3A%5B1%2C111%2C266%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1072%2C%22totalAccepted%22%3A253%2C%22pid%22%3A%22CF3C%22%2C%22title%22%3A%22Tic-tac-toe%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A84711%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu662f%239WA%3F%3F%3F%3F%5Cuff1f%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A12701%2C%22name%22%3A%22CF3C%20Tic-tac-toe%22%2C%22slug%22%3A%22CF3C%22%7D%7D%2C%7B%22id%22%3A66516%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%239%20WA%22%2C%22forum%22%3A%7B%22id%22%3A12701%2C%22name%22%3A%22CF3C%20Tic-tac-toe%22%2C%22slug%22%3A%22CF3C%22%7D%7D%2C%7B%22id%22%3A63385%2C%22title%22%3A%22%5Cu6211WA%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu6c42%5Cu52a9~~~%22%2C%22forum%22%3A%7B%22id%22%3A12701%2C%22name%22%3A%22CF3C%20Tic-tac-toe%22%2C%22slug%22%3A%22CF3C%22%7D%7D%2C%7B%22id%22%3A42621%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu90fdWA%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu70b9%22%2C%22forum%22%3A%7B%22id%22%3A12701%2C%22name%22%3A%22CF3C%20Tic-tac-toe%22%2C%22slug%22%3A%22CF3C%22%7D%7D%2C%7B%22id%22%3A40789%2C%22title%22%3A%22%5Cu624b%5Cu5de5%5Cu7ffb%5Cu8bd1%5Cuff08%5Cu4ee3%5Cu66ff%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu4e2d%5Cu7684%5Cu673a%5Cu5668%5Cu7ffb%5Cu8bd1%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A12701%2C%22name%22%3A%22CF3C%20Tic-tac-toe%22%2C%22slug%22%3A%22CF3C%22%7D%7D%2C%7B%22id%22%3A32059%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12701%2C%22name%22%3A%22CF3C%20Tic-tac-toe%22%2C%22slug%22%3A%22CF3C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF74C%22%2C%22title%22%3A%22Chessboard%20Billiard%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF12B%22%2C%22title%22%3A%22Correct%20Solution%3F%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF11B%22%2C%22title%22%3A%22Jumping%20Jack%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF4A%22%2C%22title%22%3A%22Watermelon%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF3D%22%2C%22title%22%3A%22Least%20Cost%20Bracket%20Sequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Tic-tac-toe%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Tic-tac-toe</h1>
+<h2>题意翻译</h2>
+<div>当然，大家都熟悉井字棋游戏。 这些规则确实很简单。 两个玩家A、B轮流在3x3的方格的单元格中画符号（玩家A总是画“X”，玩家B总是画“0”）。 首先在水平、垂直或对角线上出现3个相同的符号的玩家获胜，比赛结束。 玩家A总是为先手。 如果3x3的方格被填满，但是在所有水平、垂直或对角线上均未出现3个相同的符号，宣布平局。
+给你一个3*3的方格，每个单元格是“.”（空白），“X”或“0”。 你必须输出以下内容之一：
+玩家A走棋（输出“first”）——如果出现给定的状态后，下一步为玩家A走棋。
+玩家B走棋（输出“second”）——如果出现给定的状态后，下一步为玩家B走棋。
+非法（输出“illegal”）——如果给定的状态无法在正常游戏过程中出现。
+玩家A胜利（输出“the first player won”）——如果给定的状态中玩家A胜利。
+玩家B胜利（输出“the second player won”）——如果给定的状态中玩家B胜利。
+平局（输出“draw”）——如果给定的状态是平局。</div>
+<h2>题目描述</h2>
+<div>Certainly, everyone is familiar with tic-tac-toe game. The rules are very simple indeed. Two players take turns marking the cells in a $ 3×3 $ grid (one player always draws crosses, the other — noughts). The player who succeeds first in placing three of his marks in a horizontal, vertical or diagonal line wins, and the game is finished. The player who draws crosses goes first. If the grid is filled, but neither Xs, nor 0s form the required line, a draw is announced.
+You are given a $ 3×3 $ grid, each grid cell is empty, or occupied by a cross or a nought. You have to find the player (first or second), whose turn is next, or print one of the verdicts below:
+- illegal — if the given board layout can't appear during a valid game;
+- the first player won — if in the given board layout the first player has just won;
+- the second player won — if in the given board layout the second player has just won;
+- draw — if the given board layout has just let to a draw.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of three lines, each of the lines contains characters ".", "X" or "0" (a period, a capital letter X, or a digit zero).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one of the six verdicts: first, second, illegal, the first player won, the second player won or draw.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>X0X
+.0.
+.X.
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>second
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

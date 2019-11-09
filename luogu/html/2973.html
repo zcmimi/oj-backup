@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10HOL]赶小猪Driving Out the Piggi… - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376222:/JwU+5nHjHHF4yZv+kJecVL7uY47NhH7sBLiH8G2Ibo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20Cows%20have%20constructed%20a%20randomized%20stink%20bomb%20for%20the%20purpose%20of%20driving%20away%20the%20Piggies.%20The%20Piggy%20civilization%20consists%20of%20N%20%282%20%3C%3D%20N%20%3C%3D%20300%29%20Piggy%20cities%20conveniently%20numbered%201..N%20connected%20by%20M%20%281%20%3C%3D%20M%20%3C%3D%2044%2C850%29%20bidirectional%20roads%20specified%20by%20their%20distinct%20endpoints%20A%5C%5C_j%20and%20B%5C%5C_j%20%281%20%3C%3D%20A%5C%5C_j%20%3C%3D%20N%3B%201%20%3C%3D%20B%5C%5C_j%20%3C%3D%20N%29.%20Piggy%20city%201%20is%20always%20connected%20to%20at%20least%20one%20other%20city.%5Cn%5CnThe%20stink%20bomb%20is%20deployed%20in%20Piggy%20city%201.%20Each%20hour%20%28including%20the%20first%20one%29%2C%20it%20has%20a%20P%5C%2FQ%20%281%20%3C%3D%20P%20%3C%3D%201%2C000%2C000%3B%201%20%3C%3D%20Q%20%3C%3D%5Cn%5Cn1%2C000%2C000%3B%20P%20%3C%3D%20Q%29%20chance%20of%20polluting%20the%20city%20it%20occupies.%20If%20it%20does%20not%20go%20off%2C%20it%20chooses%20a%20random%20road%20out%20of%20the%20city%20and%20follows%20it%20until%20it%20reaches%20a%20new%20city.%20%20All%20roads%20out%20of%20a%20city%20are%20equally%20likely%20to%20be%20chosen.%5Cn%5CnBecause%20of%20the%20random%20nature%20of%20the%20stink%20bomb%2C%20the%20Cows%20are%20wondering%20which%20cities%20are%20most%20likely%20to%20be%20polluted.%20Given%20a%20map%20of%20the%20Piggy%20civilization%20and%20the%20probability%20that%20the%20stink%20bomb%20detonates%20in%20a%20given%20hour%2C%20compute%20for%20each%20city%20the%20probability%20that%20it%20will%20be%20polluted.%5Cn%5CnFor%20example%2C%20suppose%20that%20the%20Piggie%20civilization%20consists%20of%20two%20cities%20connected%20together%20and%20that%20the%20stink%20bomb%2C%20which%20starts%20in%20city%201%2C%20has%20a%20probability%20of%201%5C%2F2%20of%20detonating%20each%20time%20it%20enters%20a%20city%3A%5Cn%5Cn1--2%5CnWe%20have%20the%20following%20possible%20paths%20for%20the%20stink%20bomb%20%28where%20the%20last%20entry%20is%20the%20ending%20city%29%3A%5Cn%5Cn1%3A%201%5Cn2%3A%201-2%5Cn3%3A%201-2-1%5Cn%5Cn4%3A%201-2-1-2%5Cn%5Cn5%3A%201-2-1-2-1%5Cn%5Cnetc.%5CnTo%20find%20the%20probability%20that%20the%20stink%20bomb%20ends%20at%20city%201%2C%20we%20can%20add%20up%20the%20probabilities%20of%20taking%20the%201st%2C%203rd%2C%205th%2C%20...%20paths%20above%20%28specifically%2C%20every%20odd-numbered%20path%20in%20the%20above%20list%29.%20The%20probability%20of%20taking%20path%20number%20k%20is%20exactly%20%281%5C%2F2%29%5Ek%20-%20the%20bomb%20must%20not%20remain%20in%20its%20city%20for%20k%20-%201%20turns%20%28each%20time%20with%20a%20probability%20of%201%20-%201%5C%2F2%20%3D%201%5C%2F2%29%20and%20then%20land%20in%20the%20last%20city%5Cn%5Cn%28probability%201%5C%2F2%29.%20%5Cn%5CnSo%20our%20probability%20of%20ending%20in%20city%201%20is%20represented%20by%20the%20sum%201%5C%2F2%20%2B%20%281%5C%2F2%29%5E3%20%2B%20%281%5C%2F2%29%5E5%20%2B%20...%20.%20When%20we%20sum%20these%20terms%20infinitely%2C%20we%20will%20end%20up%20with%20exactly%202%5C%2F3%20as%20our%20probability%2C%20approximately%200.666666667.%20This%20means%20the%20probability%20of%20landing%20in%20city%202%20is%201%5C%2F3%2C%20approximately%200.333333333.%20%5Cn%5CnPartial%20feedback%20will%20be%20provided%20for%20your%20first%2050%20submissions.%20%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu8282%5Cu70b91%5Cu6709%5Cu4e00%5Cu4e2a%5Cu70b8%5Cu5f39%5Cuff0c%5Cu5728%5Cu6bcf%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu65f6%5Cu95f4%5Cu5185%5Cuff0c%5Cu6709p%5C%2Fq%5Cu7684%5Cu6982%5Cu7387%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu8282%5Cu70b9%5Cu70b8%5Cu6389%5Cuff0c%5Cu67091-p%5C%2Fq%5Cu7684%5Cu6982%5Cu7387%5Cu968f%5Cu673a%5Cu9009%5Cu62e9%5Cu4e00%5Cu6761%5Cu51fa%5Cu53bb%5Cu7684%5Cu8def%5Cu5230%5Cu5176%5Cu4ed6%5Cu7684%5Cu8282%5Cu70b9%5Cu4e0a%5Cu3002%5Cu95ee%5Cu6700%5Cu7ec8%5Cu70b8%5Cu5f39%5Cu5728%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu4e0a%5Cu7206%5Cu70b8%5Cu7684%5Cu6982%5Cu7387%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Four%20space%20separated%20integers%3A%20N%2C%20M%2C%20P%2C%20and%20Q%5Cn%5Cn%5C%5C%2A%20Lines%202..M%2B1%3A%20Line%20i%2B1%20describes%20a%20road%20with%20two%20space%20separated%20integers%3A%20A%5C%5C_j%20and%20B%5C%5C_j%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..N%3A%20On%20line%20i%2C%20print%20the%20probability%20that%20city%20i%20will%20be%20destroyed%20as%20a%20floating%20point%20number.%20An%20answer%20with%20an%20absolute%20error%20of%20at%20most%2010%5E-6%20will%20be%20accepted%20%28note%20that%20you%20should%20output%20at%20least%206%20decimal%20places%20for%20this%20to%20take%20effect%29.%5Cn%22%2C%22samples%22%3A%5B%5B%222%201%201%202%20%5Cn1%202%20%5Cn%22%2C%220.666666667%20%5Cn0.333333333%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C274%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A672%2C%22totalAccepted%22%3A265%2C%22pid%22%3A%22P2973%22%2C%22title%22%3A%22%5BUSACO10HOL%5D%5Cu8d76%5Cu5c0f%5Cu732aDriving%20Out%20the%20Piggi%5Cu2026%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A123207%2C%22title%22%3A%226pts%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2102%2C%22name%22%3A%22P2973%20%5BUSACO10HOL%5D%5Cu8d76%5Cu5c0f%5Cu732aDriving%20Out%20the%20Piggi%5Cu2026%22%2C%22slug%22%3A%22P2973%22%7D%7D%2C%7B%22id%22%3A105448%2C%22title%22%3A%22%5Cu6709%5Cu6ca1%5Cu6709%5Cu5927%5Cu4f6c%5Cu5e2e%5Cu5fd9%5Cu641e%5Cu4e2a%20SPJ%22%2C%22forum%22%3A%7B%22id%22%3A2102%2C%22name%22%3A%22P2973%20%5BUSACO10HOL%5D%5Cu8d76%5Cu5c0f%5Cu732aDriving%20Out%20the%20Piggi%5Cu2026%22%2C%22slug%22%3A%22P2973%22%7D%7D%2C%7B%22id%22%3A70783%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu4f1a%5Cu6302%5Cu6389%5Cu7b2c5%5Cuff0c15%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2102%2C%22name%22%3A%22P2973%20%5BUSACO10HOL%5D%5Cu8d76%5Cu5c0f%5Cu732aDriving%20Out%20the%20Piggi%5Cu2026%22%2C%22slug%22%3A%22P2973%22%7D%7D%2C%7B%22id%22%3A68580%2C%22title%22%3A%22%5Cu597d%5Cu50cf%5Cu6ca1%5Cu5361%5Cu7cbe%5Cu5ea6%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A2102%2C%22name%22%3A%22P2973%20%5BUSACO10HOL%5D%5Cu8d76%5Cu5c0f%5Cu732aDriving%20Out%20the%20Piggi%5Cu2026%22%2C%22slug%22%3A%22P2973%22%7D%7D%2C%7B%22id%22%3A47552%2C%22title%22%3A%22%5Cu88ab%5Cu5361%5Cu7cbe%5Cu5ea6%5Cu7684%5Cu6ce8%5Cu610f%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A2102%2C%22name%22%3A%22P2973%20%5BUSACO10HOL%5D%5Cu8d76%5Cu5c0f%5Cu732aDriving%20Out%20the%20Piggi%5Cu2026%22%2C%22slug%22%3A%22P2973%22%7D%7D%2C%7B%22id%22%3A37700%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu66f4%5Cu6b63%22%2C%22forum%22%3A%7B%22id%22%3A2102%2C%22name%22%3A%22P2973%20%5BUSACO10HOL%5D%5Cu8d76%5Cu5c0f%5Cu732aDriving%20Out%20the%20Piggi%5Cu2026%22%2C%22slug%22%3A%22P2973%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3164%22%2C%22title%22%3A%22%5BCQOI2014%5D%5Cu548c%5Cu8c10%5Cu77e9%5Cu9635%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3211%22%2C%22title%22%3A%22%5BHNOI2011%5DXOR%5Cu548c%5Cu8def%5Cu5f84%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3232%22%2C%22title%22%3A%22%5BHNOI2013%5D%5Cu6e38%5Cu8d70%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4111%22%2C%22title%22%3A%22%5BHEOI2015%5D%5Cu5c0fZ%5Cu7684%5Cu623f%5Cu95f4%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4457%22%2C%22title%22%3A%22%5BBJOI2018%5D%5Cu6cbb%5Cu7597%5Cu4e4b%5Cu96e8%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10HOL%5D%5Cu8d76%5Cu5c0f%5Cu732aDriving%20Out%20the%20Piggi%5Cu2026%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10HOL]赶小猪Driving Out the Piggi…</h1>
+<h2>题目描述</h2>
+<div>The Cows have constructed a randomized stink bomb for the purpose of driving away the Piggies. The Piggy civilization consists of N (2 <= N <= 300) Piggy cities conveniently numbered 1..N connected by M (1 <= M <= 44,850) bidirectional roads specified by their distinct endpoints A\_j and B\_j (1 <= A\_j <= N; 1 <= B\_j <= N). Piggy city 1 is always connected to at least one other city.
+The stink bomb is deployed in Piggy city 1. Each hour (including the first one), it has a P/Q (1 <= P <= 1,000,000; 1 <= Q <=
+1,000,000; P <= Q) chance of polluting the city it occupies. If it does not go off, it chooses a random road out of the city and follows it until it reaches a new city. All roads out of a city are equally likely to be chosen.
+Because of the random nature of the stink bomb, the Cows are wondering which cities are most likely to be polluted. Given a map of the Piggy civilization and the probability that the stink bomb detonates in a given hour, compute for each city the probability that it will be polluted.
+For example, suppose that the Piggie civilization consists of two cities connected together and that the stink bomb, which starts in city 1, has a probability of 1/2 of detonating each time it enters a city:
+1--2
+We have the following possible paths for the stink bomb (where the last entry is the ending city):
+1: 1
+2: 1-2
+3: 1-2-1
+4: 1-2-1-2
+5: 1-2-1-2-1
+etc.
+To find the probability that the stink bomb ends at city 1, we can add up the probabilities of taking the 1st, 3rd, 5th, ... paths above (specifically, every odd-numbered path in the above list). The probability of taking path number k is exactly (1/2)^k - the bomb must not remain in its city for k - 1 turns (each time with a probability of 1 - 1/2 = 1/2) and then land in the last city
+(probability 1/2).
+So our probability of ending in city 1 is represented by the sum 1/2 + (1/2)^3 + (1/2)^5 + ... . When we sum these terms infinitely, we will end up with exactly 2/3 as our probability, approximately 0.666666667. This means the probability of landing in city 2 is 1/3, approximately 0.333333333.
+Partial feedback will be provided for your first 50 submissions.
+一个无向图，节点1有一个炸弹，在每个单位时间内，有p/q的概率在这个节点炸掉，有1-p/q的概率随机选择一条出去的路到其他的节点上。问最终炸弹在每个节点上爆炸的概率。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Four space separated integers: N, M, P, and Q
+\* Lines 2..M+1: Line i+1 describes a road with two space separated integers: A\_j and B\_j
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..N: On line i, print the probability that city i will be destroyed as a floating point number. An answer with an absolute error of at most 10^-6 will be accepted (note that you should output at least 6 decimal places for this to take effect).
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 1 1 2 
+1 2 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0.666666667 
+0.333333333 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

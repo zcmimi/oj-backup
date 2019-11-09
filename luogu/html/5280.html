@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[ZJOI2019]线段树 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382414:sC7GiN0yo7zZNaBZksEkzDj5/gm00OwR/98Cn/ZtNi0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu4e5d%5Cu6761%5Cu53ef%5Cu601c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu559c%5Cu6b22%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cu7684%5Cu5973%5Cu5b69%5Cu5b50%5Cuff0c%5Cu5728%5Cu5e38%5Cu89c1%5Cu7684%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cu4e2d%5Cuff0c%5Cu53ef%5Cu601c%5Cu6700%5Cu559c%5Cu6b22%5Cu7684%5Cu5c31%5Cu662f%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu3002%5Cn%5Cn%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu6838%5Cu5fc3%5Cu662f%5Cu61d2%5Cu6807%5Cu8bb0%5Cuff0c%5Cu4e0b%5Cu9762%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5e26%5Cu61d2%5Cu6807%5Cu8bb0%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu4f2a%5Cu4ee3%5Cu7801%5Cuff0c%5Cu5176%5Cu4e2d%20%24tag%24%20%5Cu6570%5Cu7ec4%5Cu4e3a%5Cu61d2%5Cu6807%5Cu8bb0%5Cuff1a%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F55648.png%29%5Cn%5Cn%5Cu5176%5Cu4e2d%5Cu51fd%5Cu6570%20%24%5C%5Coperatorname%7BLson%7D%28Node%29%24%20%5Cu8868%5Cu793a%20%24Node%24%20%5Cu7684%5Cu5de6%5Cu513f%5Cu5b50%5Cuff0c%24%5C%5Coperatorname%7BRson%7D%28Node%29%24%20%5Cu8868%5Cu793a%20%24Node%24%20%5Cu7684%5Cu53f3%5Cu513f%5Cu5b50%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu53ef%5Cu601c%5Cu624b%5Cu4e0a%5Cu6709%5Cu4e00%5Cu68f5%20%24%5B1%2Cn%5D%24%20%5Cu4e0a%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cuff0c%5Cu7f16%5Cu53f7%5Cu4e3a%20%241%24%5Cu3002%5Cu8fd9%5Cu68f5%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu4e0a%5Cu7684%5Cu6240%5Cu6709%5Cu8282%5Cu70b9%5Cu7684%20%24tag%24%20%5Cu5747%5Cu4e3a%240%24%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu53ef%5Cu601c%5Cu8fdb%5Cu884c%5Cu4e86%20%24m%24%20%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu64cd%5Cu4f5c%5Cu6709%5Cu4e24%5Cu79cd%5Cuff1a%5Cn%5Cn-%20%241%5C%5C%20l%5C%5C%20r%24%5Cuff0c%5Cu5047%5Cu8bbe%5Cu53ef%5Cu601c%5Cu5f53%5Cu524d%5Cu624b%5Cu4e0a%5Cu6709%20%24t%24%20%5Cu68f5%5Cu7ebf%5Cu6bb5%5Cu6811%5Cuff0c%5Cu53ef%5Cu601c%5Cu4f1a%5Cu628a%5Cu6bcf%5Cu68f5%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu590d%5Cu5236%5Cu4e24%5Cu4efd%5Cuff08%24tag%24%20%5Cu6570%5Cu7ec4%5Cu4e5f%5Cu4e00%5Cu8d77%5Cu590d%5Cu5236%5Cuff09%5Cuff0c%5Cu539f%5Cu5148%5Cu7f16%5Cu53f7%5Cu4e3a%20%24i%24%20%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu590d%5Cu5236%5Cu5f97%5Cu5230%5Cu7684%5Cu4e24%5Cu68f5%5Cu7f16%5Cu53f7%5Cu4e3a%20%242i-1%24%20%5Cu4e0e%20%242i%24%5Cuff0c%5Cu5728%5Cu590d%5Cu5236%5Cu7ed3%5Cu675f%5Cu540e%5Cuff0c%5Cu53ef%5Cu601c%5Cu624b%5Cu4e0a%5Cu4e00%5Cu5171%5Cu6709%20%242t%24%20%5Cu68f5%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu3002%5Cu63a5%5Cu7740%5Cuff0c%5Cu53ef%5Cu601c%5Cu4f1a%5Cu5bf9%5Cu6240%5Cu6709%5Cu7f16%5Cu53f7%5Cu4e3a%5Cu5947%5Cu6570%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu8fdb%5Cu884c%5Cu4e00%5Cu6b21%20%24%5C%5Coperatorname%7BModify%7D%28root%2C1%2Cn%2Cl%2Cr%29%24%5Cu3002%5Cn%5Cn-%20%242%24%5Cuff0c%5Cu53ef%5Cu601c%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu68f5%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu6743%5Cu503c%5Cu4e3a%5Cu5b83%5Cu4e0a%5Cu9762%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu8282%5Cu70b9%20%24tag%24%20%5Cu4e3a%20%241%24%5Cu3002%5Cu53ef%5Cu601c%5Cu60f3%5Cu8981%5Cu77e5%5Cu9053%5Cu5979%5Cu624b%5Cu4e0a%5Cu6240%5Cu6709%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7684%5Cu6743%5Cu503c%5Cu548c%5Cu662f%5Cu591a%5Cu5c11%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24n%2Cm%24%20%5Cu8868%5Cu793a%5Cu521d%5Cu59cb%5Cu533a%5Cu95f4%5Cu957f%5Cu5ea6%5Cu548c%5Cu64cd%5Cu4f5c%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24m%24%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu8f93%5Cu5165%5Cu4fdd%5Cu8bc1%20%241%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%24%5Cu3002%22%2C%22outputFormat%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu6b21%5Cu8be2%5Cu95ee%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu7b54%5Cu6848%5Cuff0c%5Cu7b54%5Cu6848%5Cu53ef%5Cu80fd%5Cu5f88%5Cu5927%5Cuff0c%5Cu5bf9%20%24998244353%24%20%5Cu53d6%5Cu6a21%5Cu540e%5Cu8f93%5Cu51fa%5Cu5373%5Cu53ef%5Cu3002%22%2C%22samples%22%3A%5B%5B%225%205%5Cn2%5Cn1%201%203%5Cn2%5Cn1%203%205%5Cn2%22%2C%220%5Cn1%5Cn6%22%5D%5D%2C%22hint%22%3A%22%5B1%2C5%5D%20%5Cu4e0a%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu5982%5Cu4e0b%5Cu56fe%5Cu6240%5Cu793a%5Cuff1a%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F55649.png%29%5Cn%5Cn%5Cu5728%5Cu7b2c%5Cu4e00%5Cu6b21%5Cu8be2%5Cu95ee%5Cu65f6%5Cuff0c%5Cu53ef%5Cu601c%5Cu624b%5Cu4e0a%5Cu6709%5Cu4e00%5Cu68f5%5Cu7ebf%5Cu6bb5%5Cu6811%5Cuff0c%5Cu5b83%5Cu6240%5Cu6709%5Cu70b9%5Cu4e0a%5Cu90fd%5Cu6ca1%5Cu6709%5Cu6807%5Cu8bb0%5Cuff0c%5Cu56e0%5Cu6b64%5Cu7b54%5Cu6848%5Cu4e3a%20%240%24%5Cu3002%5Cn%5Cn%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu6b21%5Cu8be2%5Cu95ee%5Cu65f6%5Cuff0c%5Cu53ef%5Cu601c%5Cu624b%5Cu4e0a%5Cu6709%5Cu4e24%5Cu68f5%5Cu7ebf%5Cu6bb5%5Cu6811%5Cuff0c%5Cu6309%5Cu7167%5Cu7f16%5Cu53f7%5Cuff0c%5Cu5b83%5Cu4eec%5Cu7684%5Cu6807%5Cu8bb0%5Cu60c5%5Cu51b5%5Cu4e3a%5Cuff1a%5Cn%5Cn1.%20%5Cu70b9%20%24%5B1%2C3%5D%24%20%5Cu4e0a%5Cu6709%5Cu6807%5Cu8bb0%5Cuff0c%5Cu6743%5Cu503c%5Cu4e3a%20%241%24%5Cu3002%5Cn2.%20%5Cu6ca1%5Cu6709%5Cu70b9%5Cu6709%5Cu6807%5Cu8bb0%5Cuff0c%5Cu6743%5Cu503c%5Cu4e3a%20%240%24%5Cu3002%5Cn%5Cn%5Cu56e0%5Cu6b64%5Cu7b54%5Cu6848%5Cu4e3a%20%241%24%5Cu3002%5Cn%5Cn%5Cu5728%5Cu7b2c%5Cu4e09%5Cu6b21%5Cu8be2%5Cu95ee%5Cu65f6%5Cuff0c%5Cu53ef%5Cu601c%5Cu624b%5Cu4e0a%5Cu6709%5Cu56db%5Cu68f5%5Cu7ebf%5Cu6bb5%5Cu6811%5Cuff0c%5Cu6309%5Cu7167%5Cu7f16%5Cu53f7%5Cuff0c%5Cu5b83%5Cu4eec%5Cu7684%5Cu6807%5Cu8bb0%5Cu60c5%5Cu51b5%5Cu4e3a%5Cuff1a%5Cn%5Cn1.%20%5Cu70b9%20%24%5B1%2C2%5D%2C%5B3%2C3%5D%2C%5B4%2C5%5D%24%20%5Cu4e0a%5Cu6709%5Cu6807%5Cu8bb0%5Cuff0c%5Cu6743%5Cu503c%5Cu4e3a%20%243%24%5Cu3002%5Cn2.%20%5Cu70b9%20%24%5B1%2C3%5D%24%20%5Cu4e0a%5Cu6709%5Cu6807%5Cu8bb0%5Cuff0c%5Cu6743%5Cu503c%5Cu4e3a%20%241%24%5Cu3002%5Cn3.%20%5Cu70b9%20%24%5B3%2C3%5D%2C%5B4%2C5%5D%24%20%5Cu4e0a%5Cu6709%5Cu6807%5Cu8bb0%5Cuff0c%5Cu6743%5Cu503c%5Cu4e3a%20%242%24%5Cu3002%5Cn4.%20%5Cu6ca1%5Cu6709%5Cu70b9%5Cu6709%5Cu6807%5Cu8bb0%5Cuff0c%5Cu6743%5Cu503c%5Cu4e3a%20%240%24%5Cu3002%5Cn%5Cn%5Cu56e0%5Cu6b64%5Cu7b54%5Cu6848%5Cu4e3a%20%246%24%5Cu3002%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F55650.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A4223%2C%22name%22%3A%22jiry_2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B36%2C48%2C88%2C108%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A758%2C%22totalAccepted%22%3A355%2C%22pid%22%3A%22P5280%22%2C%22title%22%3A%22%5BZJOI2019%5D%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A152088%2C%22title%22%3A%22%5Cu521a%5Cu5b66OI%5Cuff0c%5Cu6c42%5Cu52a9%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A35435%2C%22name%22%3A%22P5280%20%5BZJOI2019%5D%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22slug%22%3A%22P5280%22%7D%7D%2C%7B%22id%22%3A109386%2C%22title%22%3A%22%5Cu5185%5Cu5b58%5Cu65f6%5Cu95f4%5Cu5bbd%5Cu88d5%5Cuff0c%5Cu5168%5Cu5f00long%20long%5Cu5427%22%2C%22forum%22%3A%7B%22id%22%3A35435%2C%22name%22%3A%22P5280%20%5BZJOI2019%5D%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22slug%22%3A%22P5280%22%7D%7D%2C%7B%22id%22%3A108559%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu624d%5Cu7d2b%5Cu9898%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A35435%2C%22name%22%3A%22P5280%20%5BZJOI2019%5D%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22slug%22%3A%22P5280%22%7D%7D%2C%7B%22id%22%3A107922%2C%22title%22%3A%22%5Cu53d1%5Cu73b0%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu89c4%5Cu5f8b%22%2C%22forum%22%3A%7B%22id%22%3A35435%2C%22name%22%3A%22P5280%20%5BZJOI2019%5D%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22slug%22%3A%22P5280%22%7D%7D%2C%7B%22id%22%3A107897%2C%22title%22%3A%22%5Cu84dd%5Cu7684%22%2C%22forum%22%3A%7B%22id%22%3A35435%2C%22name%22%3A%22P5280%20%5BZJOI2019%5D%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22slug%22%3A%22P5280%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P5279%22%2C%22title%22%3A%22%5BZJOI2019%5D%5Cu9ebb%5Cu5c06%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5281%22%2C%22title%22%3A%22%5BZJOI2019%5DMinimax%5Cu641c%5Cu7d22%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5283%22%2C%22title%22%3A%22%5B%5Cu5341%5Cu4e8c%5Cu7701%5Cu8054%5Cu80032019%5D%5Cu5f02%5Cu6216%5Cu7cbd%5Cu5b50%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5284%22%2C%22title%22%3A%22%5B%5Cu5341%5Cu4e8c%5Cu7701%5Cu8054%5Cu80032019%5D%5Cu5b57%5Cu7b26%5Cu4e32%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5290%22%2C%22title%22%3A%22%5B%5Cu5341%5Cu4e8c%5Cu7701%5Cu8054%5Cu80032019%5D%5Cu6625%5Cu8282%5Cu5341%5Cu4e8c%5Cu54cd%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BZJOI2019%5D%5Cu7ebf%5Cu6bb5%5Cu6811%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[ZJOI2019]线段树</h1>
+<h2>题目描述</h2>
+<div>九条可怜是一个喜欢数据结构的女孩子，在常见的数据结构中，可怜最喜欢的就是线段树。
+线段树的核心是懒标记，下面是一个带懒标记的线段树的伪代码，其中 $tag$ 数组为懒标记：
+![](https://cdn.luogu.com.cn/upload/pic/55648.png)
+其中函数 $\operatorname{Lson}(Node)$ 表示 $Node$ 的左儿子，$\operatorname{Rson}(Node)$ 表示 $Node$ 的右儿子。
+现在可怜手上有一棵 $[1,n]$ 上的线段树，编号为 $1$。这棵线段树上的所有节点的 $tag$ 均为$0$。接下来可怜进行了 $m$ 次操作，操作有两种：
+- $1\ l\ r$，假设可怜当前手上有 $t$ 棵线段树，可怜会把每棵线段树复制两份（$tag$ 数组也一起复制），原先编号为 $i$ 的线段树复制得到的两棵编号为 $2i-1$ 与 $2i$，在复制结束后，可怜手上一共有 $2t$ 棵线段树。接着，可怜会对所有编号为奇数的线段树进行一次 $\operatorname{Modify}(root,1,n,l,r)$。
+- $2$，可怜定义一棵线段树的权值为它上面有多少个节点 $tag$ 为 $1$。可怜想要知道她手上所有线段树的权值和是多少。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行输入两个整数 $n,m$ 表示初始区间长度和操作个数。
+接下来 $m$ 行每行描述一个操作，输入保证 $1 \le l \le r \le n$。</div>
+<h3>输出格式</h3>
+<br />
+<div>对于每次询问，输出一行一个整数表示答案，答案可能很大，对 $998244353$ 取模后输出即可。</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 5
+2
+1 1 3
+2
+1 3 5
+2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0
+1
+6</code></pre>
+<h2>说明</h2>
+<div>[1,5] 上的线段树如下图所示：
+![](https://cdn.luogu.com.cn/upload/pic/55649.png)
+在第一次询问时，可怜手上有一棵线段树，它所有点上都没有标记，因此答案为 $0$。
+在第二次询问时，可怜手上有两棵线段树，按照编号，它们的标记情况为：
+1. 点 $[1,3]$ 上有标记，权值为 $1$。
+2. 没有点有标记，权值为 $0$。
+因此答案为 $1$。
+在第三次询问时，可怜手上有四棵线段树，按照编号，它们的标记情况为：
+1. 点 $[1,2],[3,3],[4,5]$ 上有标记，权值为 $3$。
+2. 点 $[1,3]$ 上有标记，权值为 $1$。
+3. 点 $[3,3],[4,5]$ 上有标记，权值为 $2$。
+4. 没有点有标记，权值为 $0$。
+因此答案为 $6$。
+![](https://cdn.luogu.com.cn/upload/pic/55650.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

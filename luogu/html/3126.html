@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO15OPEN]回文的路径Palindromic Paths - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376440:JBdT7d0bGbcgJ9Sn52KmUcBixzUaVAMoCP3A5/EGn7A=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20farm%20is%20in%20the%20shape%20of%20an%20%24N%20%5C%5Ctimes%20N%24%20grid%20of%20fields%20%28%241%20%5C%5Cle%20N%20%5C%5Cle%20500%24%29%2C%20each%20labeled%20with%20a%20letter%20in%20the%20alphabet.%20%20For%20example%3A%5Cn%5Cn%60%60%60cpp%5CnABCD%5CnBXZX%5CnCDXB%5CnWCBA%5Cn%60%60%60%5CnEach%20day%2C%20Bessie%20the%20cow%20walks%20from%20the%20upper-left%20field%20to%20the%20lower-right%20field%2C%20each%20step%20taking%20her%20either%20one%20field%20to%20the%20right%20or%20one%20field%20downward.%20Bessie%20keeps%20track%20of%20the%20string%20that%20she%20generates%20during%20this%20process%2C%20built%20from%20the%20letters%20she%20walks%20across.%20%20She%20gets%20very%20disoriented%2C%20however%2C%20if%20this%20string%20is%20a%20palindrome%20%28reading%20the%20same%20forward%20as%20backward%29%2C%20since%20she%20gets%20confused%20about%20which%20direction%20she%20had%20walked.%20%20%20Please%20help%20Bessie%20determine%20the%20number%20of%20distinct%20routes%20she%20can%20take%20that%20%20correspond%20to%20palindromes.%20%20Different%20ways%20of%20obtaining%20the%20same%20palindrome%20count%20multiple%20times.%20%20Please%20print%20your%20answer%20modulo%201%2C000%2C000%2C007.%5Cn%5Cn%5Cu519c%5Cu592bFJ%5Cu7684%5Cu519c%5Cu573a%5Cu662f%5Cu4e00%5Cu4e2aN%5C%5C%2AN%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu77e9%5Cu9635%5Cuff08%242%5C%5Cle%20N%5C%5Cle%20500%24%5Cuff09%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu5757%5Cu7528%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu4f5c%5Cu6807%5Cu8bb0%5Cu3002%5Cu6bd4%5Cu5982%5Cu8bf4%5Cuff1a%5Cn%5Cn%60%60%60cpp%5CnABCD%20%5CnBXZX%20%5CnCDXB%20%5CnWCBA%20%5Cn%60%60%60%5Cn%5Cu67d0%5Cu4e00%5Cu5929%5Cuff0cFJ%5Cu4ece%5Cu519c%5Cu573a%5Cu7684%5Cu5de6%5Cu4e0a%5Cu89d2%5Cu8d70%5Cu5230%5Cu53f3%5Cu4e0b%5Cu89d2%5Cuff0c%5Cu5f53%5Cu7136%5Cu5566%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu4ed6%5Cu53ea%5Cu80fd%5Cu5f80%5Cu53f3%5Cu6216%5Cu8005%5Cu5f80%5Cu4e0b%5Cu8d70%5Cu4e00%5Cu683c%5Cu3002FJ%5Cu628a%5Cu4ed6%5Cu8d70%5Cu8fc7%5Cu7684%5Cu8def%5Cu5f84%5Cu8bb0%5Cu5f55%5Cu4e0b%5Cu6765%5Cu3002%5Cu73b0%5Cu5728%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu628a%5Cu4ed6%5Cu7edf%5Cu8ba1%5Cu4e00%5Cu4e0b%5Cuff0c%5Cu6240%5Cu6709%5Cu8def%5Cu5f84%5Cu4e2d%5Cuff0c%5Cu56de%5Cu6587%5Cu4e32%5Cu7684%5Cu6570%5Cu91cf%5Cuff08%5Cu4ece%5Cu524d%5Cu5f80%5Cu540e%5Cu8bfb%5Cu548c%5Cu4ece%5Cu540e%5Cu5f80%5Cu524d%5Cu8bfb%5Cu4e00%5Cu6a21%5Cu4e00%5Cu6837%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu79f0%5Cu4e3a%5Cu56de%5Cu6587%5Cu4e32%5Cuff09%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20%24N%24%2C%20and%20the%20remaining%20%24N%24%20lines%20contain%20the%5Cn%5Cn%24N%24%20rows%20of%20the%20grid%20of%20fields.%20%20Each%20row%20contains%20%24N%24%20characters%20that%20are%5Cn%5Cnin%20the%20range%20A..Z.%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570N%5Cuff0c%5Cu8868%5Cu793a%5Cu519c%5Cu573a%5Cu7684%5Cu5927%5Cu5c0f%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2aN%5C%5C%2AN%5Cu7684%5Cu5b57%5Cu6bcd%5Cu77e9%5Cu9635%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22Please%20output%20the%20number%20of%20distinct%20palindromic%20routes%20Bessie%20can%20take%2C%5Cn%5Cnmodulo%201%2C000%2C000%2C007.%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu56de%5Cu6587%5Cu4e32%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%224%5CnABCD%5CnBXZX%5CnCDXB%5CnWCBA%22%2C%2212%22%5D%5D%2C%22hint%22%3A%22Bessie%20can%20make%20the%20following%20palindromes%5Cn%5Cn1%20x%20%5C%22ABCDCBA%5C%22%5Cn%5Cn1%20x%20%5C%22ABCWCBA%5C%22%5Cn%5Cn6%20x%20%5C%22ABXZXBA%5C%22%5Cn%5Cn4%20x%20%5C%22ABXDXBA%5C%22%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B2%2C3%2C32%2C46%2C111%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A845%2C%22totalAccepted%22%3A309%2C%22pid%22%3A%22P3126%22%2C%22title%22%3A%22%5BUSACO15OPEN%5D%5Cu56de%5Cu6587%5Cu7684%5Cu8def%5Cu5f84Palindromic%20Paths%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A140986%2C%22title%22%3A%22%5Cu653e%5Cu798f%5Cu5229%5Cuff1a%5Cu53cc%5Cu500d%5Cu7ecf%5Cu9a8c%22%2C%22forum%22%3A%7B%22id%22%3A2242%2C%22name%22%3A%22P3126%20%5BUSACO15OPEN%5D%5Cu56de%5Cu6587%5Cu7684%5Cu8def%5Cu5f84Palindromic%20Paths%22%2C%22slug%22%3A%22P3126%22%7D%7D%2C%7B%22id%22%3A50314%2C%22title%22%3A%22%5Cu5efa%5Cu8bae%5Cu5728%5Cu4e2d%5Cu6587%5Cu9898%5Cu9762%5Cu4e2d%5Cu52a0%5Cu4e0a%5Cu6a211e9%2B7%22%2C%22forum%22%3A%7B%22id%22%3A2242%2C%22name%22%3A%22P3126%20%5BUSACO15OPEN%5D%5Cu56de%5Cu6587%5Cu7684%5Cu8def%5Cu5f84Palindromic%20Paths%22%2C%22slug%22%3A%22P3126%22%7D%7D%2C%7B%22id%22%3A12944%2C%22title%22%3A%22%5Cu8fd9%5Cu9898n%5Cu7684%5Cu8303%5Cu56f4%5Cu662f18%5Cu8fd8%5Cu662f500%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2242%2C%22name%22%3A%22P3126%20%5BUSACO15OPEN%5D%5Cu56de%5Cu6587%5Cu7684%5Cu8def%5Cu5f84Palindromic%20Paths%22%2C%22slug%22%3A%22P3126%22%7D%7D%2C%7B%22id%22%3A5895%2C%22title%22%3A%22%5Cu81ea%5Cu7ffb%5Cu9898%5Cu76ee%22%2C%22forum%22%3A%7B%22id%22%3A2242%2C%22name%22%3A%22P3126%20%5BUSACO15OPEN%5D%5Cu56de%5Cu6587%5Cu7684%5Cu8def%5Cu5f84Palindromic%20Paths%22%2C%22slug%22%3A%22P3126%22%7D%7D%2C%7B%22id%22%3A4278%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu662f%5Cu53d1%5Cu4e86%5Cu4ec0%5Cu4e48%5Cu75af%5Cu2026%5Cu2026%22%2C%22forum%22%3A%7B%22id%22%3A2242%2C%22name%22%3A%22P3126%20%5BUSACO15OPEN%5D%5Cu56de%5Cu6587%5Cu7684%5Cu8def%5Cu5f84Palindromic%20Paths%22%2C%22slug%22%3A%22P3126%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1354%22%2C%22title%22%3A%22%5Cu623f%5Cu95f4%5Cu6700%5Cu77ed%5Cu8def%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2098%22%2C%22title%22%3A%22%5BUSACO16DEC%5DTeam%20Building%5Cu56e2%5Cu961f%5Cu5efa%5Cu8bbe%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3084%22%2C%22title%22%3A%22%5BUSACO13OPEN%5D%5Cu7167%5Cu7247Photo%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3127%22%2C%22title%22%3A%22%5BUSACO15OPEN%5D%5Cu88ab%5Cu56f0%5Cu5728haybales%5Cuff08%5Cu91d1%5Cuff09Trappe%5Cu2026%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF570E%22%2C%22title%22%3A%22Pig%20and%20Palindromes%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO15OPEN%5D%5Cu56de%5Cu6587%5Cu7684%5Cu8def%5Cu5f84Palindromic%20Paths%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO15OPEN]回文的路径Palindromic Paths</h1>
+<h2>题目描述</h2>
+<div>Farmer John's farm is in the shape of an $N \times N$ grid of fields ($1 \le N \le 500$), each labeled with a letter in the alphabet. For example:
+```cpp
+ABCD
+BXZX
+CDXB
+WCBA
+```
+Each day, Bessie the cow walks from the upper-left field to the lower-right field, each step taking her either one field to the right or one field downward. Bessie keeps track of the string that she generates during this process, built from the letters she walks across. She gets very disoriented, however, if this string is a palindrome (reading the same forward as backward), since she gets confused about which direction she had walked. Please help Bessie determine the number of distinct routes she can take that correspond to palindromes. Different ways of obtaining the same palindrome count multiple times. Please print your answer modulo 1,000,000,007.
+农夫FJ的农场是一个N\*N的正方形矩阵（$2\le N\le 500$），每一块用一个字母作标记。比如说：
+```cpp
+ABCD
+BXZX
+CDXB
+WCBA
+```
+某一天，FJ从农场的左上角走到右下角，当然啦，每次他只能往右或者往下走一格。FJ把他走过的路径记录下来。现在，请你把他统计一下，所有路径中，回文串的数量（从前往后读和从后往前读一模一样的字符串称为回文串）。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains $N$, and the remaining $N$ lines contain the
+$N$ rows of the grid of fields. Each row contains $N$ characters that are
+in the range A..Z.
+第一行包括一个整数N，表示农场的大小，接下来输入一个N\*N的字母矩阵。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Please output the number of distinct palindromic routes Bessie can take,
+modulo 1,000,000,007.
+输出一个整数，表示回文串的数量。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+ABCD
+BXZX
+CDXB
+WCBA</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12</code></pre>
+<h2>说明</h2>
+<div>Bessie can make the following palindromes
+1 x "ABCDCBA"
+1 x "ABCWCBA"
+6 x "ABXZXBA"
+4 x "ABXDXBA"
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

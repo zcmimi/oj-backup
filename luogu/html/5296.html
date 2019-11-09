@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[北京省选集训2019]生成树计数 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382436:6tqqqPANBW7IEtcoJ+T7e0OKOHzRiEdAQnaiR+Tt8+Y=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu5c0fS%5Cu521a%5Cu521a%5Cu5b66%5Cu4e60%5Cu4e86%5Cu751f%5Cu6210%5Cu6811%5Cu7684%5Cu77e5%5Cu8bc6%5Cuff0c%5Cu806a%5Cu660e%5Cu7684%5Cu4ed6%5Cu60f3%5Cu51fa%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu95ee%5Cu9898%5Cuff1a%20%20%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%24n%24%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5e26%5Cu6743%5Cu65e0%5Cu5411%5Cu5b8c%5Cu5168%5Cu56fe%5Cuff0c%5Cu6c42%5Cu5176%5Cu6240%5Cu6709%5Cu751f%5Cu6210%5Cu6811%5Cu6743%5Cu503c%5Cu7684%24k%24%5Cu6b21%5Cu65b9%5Cu4e4b%5Cu548c%5Cu3002%20%20%5Cn%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu6811%5Cu7684%5Cu6743%5Cu503c%5Cuff0c%5Cu4e3a%5Cu5176%5Cu6240%5Cu6709%5Cu8fb9%5Cu6743%5Cu503c%5Cu548c%5Cu3002%20%20%20%20%5Cn%5Cu56e0%5Cu4e3a%5Cu4ed6%5Cu4e0d%5Cu4f1a%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4f60%5Cu8981%5Cu6765%5Cu505a%5Cu8fd9%5Cu9898%5Cu3002%20%20%5Cn%5Cu7531%5Cu4e8e%5Cu7b54%5Cu6848%5Cu53ef%5Cu80fd%5Cu5f88%5Cu5927%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu7b54%5Cu6848%5Cu5bf9%24998244353%24%5Cu53d6%5Cu6a21%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%24n%2Ck%24%5Cuff0c%5Cu610f%5Cu4e49%5Cu5982%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu3002%20%20%20%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24n%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%24n%24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu4e3a%5Cu8fd9%5Cu4e2a%5Cu5e26%5Cu6743%5Cu65e0%5Cu5411%5Cu5b8c%5Cu5168%5Cu56fe%5Cu7684%5Cu90bb%5Cu63a5%5Cu77e9%5Cu9635%5Cu8868%5Cu793a%5Cu3002%20%20%5Cn%5Cu8bbe%24w_%7Bi%2Cj%7D%24%5Cu8868%5Cu793a%5Cu77e9%5Cu9635%5Cu7684%5Cu7b2c%24i%24%5Cu884c%5Cu7b2c%24j%24%5Cu5217%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cuff1a%20%20%5Cn%24w_%7Bi%2Ci%7D%3D0%24%5Cuff0c%5Cu4e14%24w_%7Bi%2Cj%7D%3Dw_%7Bj%2Ci%7D%24%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu7b54%5Cu6848%5Cu5bf9%24998244353%24%5Cu53d6%5Cu6a21%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%22%2C%22samples%22%3A%5B%5B%223%201%5Cn0%200%201%5Cn0%200%201%5Cn1%201%200%22%2C%224%22%5D%5D%2C%22hint%22%3A%22%23%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cuff1a%20%20%5Cn%5Cu5bf9%5Cu4e8e%2420%5C%5C%25%24%5Cu7684%5Cu6570%5Cu636e%5Cuff1a%20%20%241%5C%5Cle%20n%5C%5Cle%205%24%20%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu53e6%5Cu5916%2410%5C%5C%25%24%5Cu7684%5Cu6570%5Cu636e%5Cuff1a%20%20%24k%20%3D%200%24%20%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu53e6%5Cu5916%2410%5C%5C%25%24%5Cu7684%5Cu6570%5Cu636e%5Cuff1a%20%20%24k%20%3D%201%24%20%20%20%20%5Cn%5Cu5bf9%5Cu4e8e%2460%5C%5C%25%24%5Cu7684%5Cu6570%5Cu636e%5Cuff1a%20%20%241%5C%5Cle%20n%20%5C%5Cle%2015%24%20%20%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu53e6%5Cu5916%2415%5C%5C%25%24%5Cu7684%5Cu6570%5Cu636e%5Cuff1a%20%241%5C%5Cle%20k%20%5C%5Cle%2015%24%20%20%5Cn%5Cu5bf9%5Cu4e8e%24100%5C%5C%25%24%5Cu7684%5Cu6570%5Cu636e%5Cuff1a%20%20%20%5Cn%241%5C%5Cle%20n%2Ck%20%5C%5Cle%2030%24%20%20%5Cn%240%5C%5Cle%20w_%7Bi%2Cj%7D%20%5C%5Cle%20998244352%24%20%20%5Cn%5Cn%5Cu6ce8%5Cu610f%240%5E0%20%3D%201%24%22%2C%22provider%22%3A%7B%22uid%22%3A115864%2C%22name%22%3A%22NaCly_Fish%22%2C%22slogan%22%3A%22%5Cu5c31%5Cu7b97%5Cu524d%5Cu8fdb%5Cu7684%5Cu8def%5Cu518d%5Cu82e6%5Cuff0c%5Cu4e5f%5Cu6bd4%5Cu7ad9%5Cu5728%5Cu539f%5Cu5730%5Cu66f4%5Cu63a5%5Cu8fd1%5Cu5e78%5Cu798f%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A6%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B5%2C36%2C94%2C108%2C264%2C274%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A105%2C%22totalAccepted%22%3A38%2C%22pid%22%3A%22P5296%22%2C%22title%22%3A%22%5B%5Cu5317%5Cu4eac%5Cu7701%5Cu9009%5Cu96c6%5Cu8bad2019%5D%5Cu751f%5Cu6210%5Cu6811%5Cu8ba1%5Cu6570%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A109225%2C%22title%22%3A%22%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu81ea%5Cu76f8%5Cu77db%5Cu76fe%22%2C%22forum%22%3A%7B%22id%22%3A35613%2C%22name%22%3A%22P5296%20%5B%5Cu5317%5Cu4eac%5Cu7701%5Cu9009%5Cu96c6%5Cu8bad2019%5D%5Cu751f%5Cu6210%5Cu6811%5Cu8ba1%5Cu6570%22%2C%22slug%22%3A%22P5296%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1587%22%2C%22title%22%3A%22%5BNOI2016%5D%5Cu5faa%5Cu73af%5Cu4e4b%5Cu7f8e%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5292%22%2C%22title%22%3A%22%5BHNOI2019%5D%5Cu6821%5Cu56ed%5Cu65c5%5Cu884c%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5295%22%2C%22title%22%3A%22%5B%5Cu5317%5Cu4eac%5Cu7701%5Cu9009%5Cu96c6%5Cu8bad2019%5D%5Cu56fe%5Cu7684%5Cu96be%5Cu9898%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5305%22%2C%22title%22%3A%22%5BGXOI%5C%2FGZOI2019%5D%5Cu65e7%5Cu8bcd%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5320%22%2C%22title%22%3A%22%5BBJOI2019%5D%5Cu52d8%5Cu7834%5Cu795e%5Cu673a%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5B%5Cu5317%5Cu4eac%5Cu7701%5Cu9009%5Cu96c6%5Cu8bad2019%5D%5Cu751f%5Cu6210%5Cu6811%5Cu8ba1%5Cu6570%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[北京省选集训2019]生成树计数</h1>
+<h2>题目描述</h2>
+<div>小S刚刚学习了生成树的知识，聪明的他想出了一个问题：
+给定一个$n$个点的带权无向完全图，求其所有生成树权值的$k$次方之和。
+定义一个树的权值，为其所有边权值和。
+因为他不会，所以你要来做这题。
+由于答案可能很大，请输出答案对$998244353$取模的结果。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行两个非负整数$n,k$，意义如题目描述。
+接下来$n$行，每行$n$个整数，为这个带权无向完全图的邻接矩阵表示。
+设$w_{i,j}$表示矩阵的第$i$行第$j$列，保证：
+$w_{i,i}=0$，且$w_{i,j}=w_{j,i}$</div>
+<h3>输出格式</h3>
+<br />
+<div>输出一行一个整数表示答案对$998244353$取模的结果。</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+0 0 1
+0 0 1
+1 1 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4</code></pre>
+<h2>说明</h2>
+<div>### 数据范围：
+对于$20\%$的数据： $1\le n\le 5$
+对于另外$10\%$的数据： $k = 0$
+对于另外$10\%$的数据： $k = 1$
+对于$60\%$的数据： $1\le n \le 15$
+对于另外$15\%$的数据： $1\le k \le 15$
+对于$100\%$的数据：
+$1\le n,k \le 30$
+$0\le w_{i,j} \le 998244352$
+注意$0^0 = 1$</div>
+</article>
+</div>
+</div>
+</body>
+</html>

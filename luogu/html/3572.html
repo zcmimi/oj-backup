@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[POI2014]PTA-Little Bird - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573377057:y8ymtz7OSdTsKDati8Eb0GCcW+y2WuemUUvM05d4sGE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22In%20the%20Byteotian%20Line%20Forest%20there%20are%20%24n%24%20trees%20in%20a%20row.%5Cn%5CnOn%20top%20of%20the%20first%20one%2C%20there%20is%20a%20little%20bird%20who%20would%20like%20to%20fly%20over%20to%20the%20top%20of%20the%20last%20tree.%5Cn%5CnBeing%20in%20fact%20very%20little%2C%20the%20bird%20might%20lack%20the%20strength%20to%20fly%20there%20without%20any%20stop.%5Cn%5CnIf%20the%20bird%20is%20sitting%20on%20top%20of%20the%20tree%20no.%20i%2C%20then%20in%20a%20single%20flight%20leg%20it%20can%20fly%20toany%20of%20the%20trees%20no.%20%24i%2B1%2Ci%2B2%2C%5C%5Ccdots%2Ci%2Bk%24%2C%20and%20then%20has%20to%20rest%20afterward.%5Cn%5CnMoreover%2C%20flying%20up%20is%20far%20harder%20to%20flying%20down.%20%20A%20flight%20leg%20is%20tiresome%20if%20it%20ends%20in%20a%20tree%20at%20leastas%20high%20as%20the%20one%20where%20is%20started.%20%20Otherwise%20the%20flight%20leg%20is%20not%20tiresome.%5Cn%5CnThe%20goal%20is%20to%20select%20the%20trees%20on%20which%20the%20little%20bird%20will%20land%20so%20that%20the%20overall%20flight%20is%20leasttiresome%2C%20i.e.%2C%20it%20has%20the%20minimum%20number%20of%20tiresome%20legs.%5Cn%5CnWe%20note%20that%20birds%20are%20social%20creatures%2C%20and%20our%20bird%20has%20a%20few%20bird-friends%20who%20would%20also%20like%20to%20getfrom%20the%20first%20tree%20to%20the%20last%20one.%20%20The%20stamina%20of%20all%20the%20birds%20varies%2Cso%20the%20bird%27s%20friends%20may%20have%20different%20values%20of%20the%20parameter%20%24k%24.%5Cn%5CnHelp%20all%20the%20birds%2C%20little%20and%20big%21%5Cn%5Cn%5Cu4ece1%5Cu5f00%5Cu59cb%5Cuff0c%5Cu8df3%5Cu5230%5Cu6bd4%5Cu5f53%5Cu524d%5Cu77ee%5Cu7684%5Cu4e0d%5Cu6d88%5Cu8017%5Cu4f53%5Cu529b%5Cuff0c%5Cu5426%5Cu5219%5Cu6d88%5Cu8017%5Cu4e00%5Cu70b9%5Cu4f53%5Cu529b%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu8be2%5Cu95ee%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b65%5Cu4f10%5Cu9650%5Cu5236%5Cuff0c%5Cu6c42%5Cu6bcf%5Cu6b21%5Cu6700%5Cu5c11%5Cu8017%5Cu8d39%5Cu591a%5Cu5c11%5Cu4f53%5Cu529b%5Cn%22%2C%22inputFormat%22%3A%22There%20is%20a%20single%20integer%20%24n%24%20%28%242%5C%5Cle%20n%5C%5Cle%201%5C%5C%20000%5C%5C%20000%24%29%20in%20the%20first%20line%20of%20the%20standard%20input%3A%5Cn%5Cnthe%20number%20of%20trees%20in%20the%20Byteotian%20Line%20Forest.%5Cn%5CnThe%20second%20line%20of%20input%20holds%20%24n%24%20integers%20%24d_1%2Cd_2%2C%5C%5Ccdots%2Cd_n%24%20%28%241%5C%5Cle%20d_i%5C%5Cle%2010%5E9%24%29separated%20by%20single%20spaces%3A%20%24d_i%24%20is%20the%20height%20of%20the%20i-th%20tree.%5Cn%5CnThe%20third%20line%20of%20the%20input%20holds%20a%20single%20integer%20%24q%24%20%28%241%5C%5Cle%20q%5C%5Cle%2025%24%29%3A%20the%20number%20of%20birds%20whoseflights%20need%20to%20be%20planned.%5Cn%5CnThe%20following%20%24q%24%20lines%20describe%20these%20birds%3A%20in%20the%20%24i%24-th%20of%20these%20lines%2C%20there%20is%20an%20integer%20%24k_i%24%20%28%241%5C%5Cle%20k_i%5C%5Cle%20n-1%24%29%20specifying%20the%20%24i%24-th%20bird%27s%20stamina.%20In%20other%20words%2C%20the%20maximum%20number%20of%20trees%20that%20the%20%24i%24-th%20bird%20can%20pass%20before%20it%20has%20to%20rest%20is%20%24k_i-1%24.%5Cn%22%2C%22outputFormat%22%3A%22Your%20program%20should%20print%20exactly%20%24q%24%20lines%20to%20the%20standard%20output.%5Cn%5CnIn%20the%20%24i%24-th%20line%2C%20it%20should%20specify%20the%20minimum%20number%20of%20tiresome%20flight%20legs%20of%20the%20%24i%24-th%20bird.%5Cn%22%2C%22samples%22%3A%5B%5B%229%5Cn4%206%203%206%203%207%202%206%205%5Cn2%5Cn2%5Cn5%5Cn%22%2C%222%5Cn1%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu4ece1%5Cu5f00%5Cu59cb%5Cuff0c%5Cu8df3%5Cu5230%5Cu6bd4%5Cu5f53%5Cu524d%5Cu77ee%5Cu7684%5Cu4e0d%5Cu6d88%5Cu8017%5Cu4f53%5Cu529b%5Cuff0c%5Cu5426%5Cu5219%5Cu6d88%5Cu8017%5Cu4e00%5Cu70b9%5Cu4f53%5Cu529b%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu8be2%5Cu95ee%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b65%5Cu4f10%5Cu9650%5Cu5236%5Cuff0c%5Cu6c42%5Cu6bcf%5Cu6b21%5Cu6700%5Cu5c11%5Cu8017%5Cu8d39%5Cu591a%5Cu5c11%5Cu4f53%5Cu529b%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C31%2C56%2C57%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1694%2C%22totalAccepted%22%3A624%2C%22pid%22%3A%22P3572%22%2C%22title%22%3A%22%5BPOI2014%5DPTA-Little%20Bird%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A159628%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2641%2C%22name%22%3A%22P3572%20%5BPOI2014%5DPTA-Little%20Bird%22%2C%22slug%22%3A%22P3572%22%7D%7D%2C%7B%22id%22%3A139989%2C%22title%22%3A%22%5Cu5efa%5Cu8bae%5Cu6b64%5Cu9898%5Cu52a0%5Cu4e0aO2%5Cu4f18%5Cu5316%22%2C%22forum%22%3A%7B%22id%22%3A2641%2C%22name%22%3A%22P3572%20%5BPOI2014%5DPTA-Little%20Bird%22%2C%22slug%22%3A%22P3572%22%7D%7D%2C%7B%22id%22%3A67194%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%2C%5Cu5927%5Cu6982%5Cu5427%22%2C%22forum%22%3A%7B%22id%22%3A2641%2C%22name%22%3A%22P3572%20%5BPOI2014%5DPTA-Little%20Bird%22%2C%22slug%22%3A%22P3572%22%7D%7D%2C%7B%22id%22%3A51084%2C%22title%22%3A%22%5Cu4e3a%5Cu5565%5Cu7206-1%5Cu4e86%5Cu5462%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2641%2C%22name%22%3A%22P3572%20%5BPOI2014%5DPTA-Little%20Bird%22%2C%22slug%22%3A%22P3572%22%7D%7D%2C%7B%22id%22%3A49784%2C%22title%22%3A%22%5Cu5efa%5Cu8bae%5Cu6b64%5Cu9898%5Cu52a0%5Cu4e0aO2%5Cu4f18%5Cu5316%22%2C%22forum%22%3A%7B%22id%22%3A2641%2C%22name%22%3A%22P3572%20%5BPOI2014%5DPTA-Little%20Bird%22%2C%22slug%22%3A%22P3572%22%7D%7D%2C%7B%22id%22%3A31528%2C%22title%22%3A%22%5Cu63d0%5Cu4f9b%5Cu4e00%5Cu4e2a%5Cu4eba%5Cu6027%5Cu5316%5Cu4e00%5Cu70b9%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2641%2C%22name%22%3A%22P3572%20%5BPOI2014%5DPTA-Little%20Bird%22%2C%22slug%22%3A%22P3572%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2569%22%2C%22title%22%3A%22%5BSCOI2010%5D%5Cu80a1%5Cu7968%5Cu4ea4%5Cu6613%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2900%22%2C%22title%22%3A%22%5BUSACO08MAR%5D%5Cu571f%5Cu5730%5Cu5f81%5Cu7528Land%20Acquisition%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3195%22%2C%22title%22%3A%22%5BHNOI2008%5D%5Cu73a9%5Cu5177%5Cu88c5%5Cu7bb1TOY%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3522%22%2C%22title%22%3A%22%5BPOI2011%5DTEM-Temperature%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3594%22%2C%22title%22%3A%22%5BPOI2015%5DWIL-Wilcze%20do%5Cu0142y%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BPOI2014%5DPTA-Little%20Bird%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[POI2014]PTA-Little Bird</h1>
+<h2>题目描述</h2>
+<div>In the Byteotian Line Forest there are $n$ trees in a row.
+On top of the first one, there is a little bird who would like to fly over to the top of the last tree.
+Being in fact very little, the bird might lack the strength to fly there without any stop.
+If the bird is sitting on top of the tree no. i, then in a single flight leg it can fly toany of the trees no. $i+1,i+2,\cdots,i+k$, and then has to rest afterward.
+Moreover, flying up is far harder to flying down. A flight leg is tiresome if it ends in a tree at leastas high as the one where is started. Otherwise the flight leg is not tiresome.
+The goal is to select the trees on which the little bird will land so that the overall flight is leasttiresome, i.e., it has the minimum number of tiresome legs.
+We note that birds are social creatures, and our bird has a few bird-friends who would also like to getfrom the first tree to the last one. The stamina of all the birds varies,so the bird's friends may have different values of the parameter $k$.
+Help all the birds, little and big!
+从1开始，跳到比当前矮的不消耗体力，否则消耗一点体力，每次询问有一个步伐限制，求每次最少耗费多少体力
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>There is a single integer $n$ ($2\le n\le 1\ 000\ 000$) in the first line of the standard input:
+the number of trees in the Byteotian Line Forest.
+The second line of input holds $n$ integers $d_1,d_2,\cdots,d_n$ ($1\le d_i\le 10^9$)separated by single spaces: $d_i$ is the height of the i-th tree.
+The third line of the input holds a single integer $q$ ($1\le q\le 25$): the number of birds whoseflights need to be planned.
+The following $q$ lines describe these birds: in the $i$-th of these lines, there is an integer $k_i$ ($1\le k_i\le n-1$) specifying the $i$-th bird's stamina. In other words, the maximum number of trees that the $i$-th bird can pass before it has to rest is $k_i-1$.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Your program should print exactly $q$ lines to the standard output.
+In the $i$-th line, it should specify the minimum number of tiresome flight legs of the $i$-th bird.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>9
+4 6 3 6 3 7 2 6 5
+2
+2
+5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+1
+</code></pre>
+<h2>说明</h2>
+<div>从1开始，跳到比当前矮的不消耗体力，否则消耗一点体力，每次询问有一个步伐限制，求每次最少耗费多少体力
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

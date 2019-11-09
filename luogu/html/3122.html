@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO15FEB]圈住牛Fencing the Herd - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376434:/ecXmqWB6uOI4Kmy/IzI6hF5x34tgZCBQf2pG91pVB4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20needs%20your%20help%20deciding%20where%20to%20build%20a%20fence%20in%20the%20shape%20of%20a%20straight%20line%20to%20help%20restrict%20the%20movement%20of%20his%20cows.%20%20He%20has%20considered%20several%20possible%20fence%20locations%20and%20needs%20your%20help%20to%20determine%20which%20of%20these%20are%20usable%2C%20where%20a%20fence%20is%20considered%20usable%20if%20all%20of%20the%20cows%20are%20on%20the%20same%20side%20of%20the%20fence.%20%20A%20fence%20is%20not%20usable%20if%20there%20is%20a%20cow%20that%20lies%20directly%20on%20it.%20%20FJ%20will%20be%20asking%20you%20a%20number%20of%20queries%20regarding%20possible%20fence%20locations%3B%20a%20query%20should%20be%20answered%20%5C%22YES%5C%22%20if%20it%20corresponds%20to%20a%20usable%20fence%20location%2C%20%5C%22NO%5C%22%20otherwise.%5Cn%5CnAdditionally%2C%20FJ%20may%20occasionally%20bring%20new%20cows%20into%20the%20herd.%20%20When%20a%20new%20cow%20joins%20the%20herd%2C%20all%20fence%20queries%20from%20that%20point%20onward%20will%20require%20her%20to%20be%20on%20the%20same%20side%20of%20a%20fence%20as%20the%20rest%20of%20the%20herd%20for%20the%20fence%20to%20be%20usable.%5Cn%5CnFJ%5Cu9700%5Cu8981%5Cu4f60%5Cu5e2e%5Cu52a9%5Cu4ed6%5Cu51b3%5Cu5b9a%5Cu5728%5Cu54ea%5Cu91cc%5Cu5efa%5Cu9020%5Cu5f62%5Cu72b6%5Cu662f%5Cu4e00%5Cu6761%5Cu65e0%5Cu9650%5Cu957f%5Cu7684%5Cu76f4%5Cu7ebf%5Cu7684%5Cu6805%5Cu680f%5Cu6765%5Cu9650%5Cu5236%5Cu4ed6%5Cu7684%5Cu725b%5Cu7684%5Cu6d3b%5Cu52a8%5Cu3002%5Cu4ed6%5Cu9009%5Cu51fa%5Cu4e86%5Cu51e0%5Cu4e2a%5Cu53ef%5Cu80fd%5Cu7684%5Cu5efa%5Cu9020%5Cu6805%5Cu680f%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu5e2e%5Cu52a9%5Cu4ed6%5Cu5224%5Cu65ad%5Cu54ea%5Cu4e9b%5Cu6805%5Cu680f%5Cu662f%5Cu6709%5Cu7528%5Cu7684%5Cu3002%5Cu4e00%5Cu4e2a%5Cu6805%5Cu680f%5Cu662f%5Cu6709%5Cu7528%5Cu7684%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu6240%5Cu6709%5Cu5976%5Cu725b%5Cu90fd%5Cu5728%5Cu6805%5Cu680f%5Cu7684%5Cu540c%5Cu4e00%5Cu4fa7%28%5Cu5982%5Cu679c%5Cu6709%5Cu725b%5Cu7fa4%5Cu5728%5Cu6805%5Cu680f%5Cu6240%5Cu5728%5Cu7684%5Cu76f4%5Cu7ebf%5Cu4e0a%5Cuff0c%5Cu90a3%5Cu4e48%5Cu6805%5Cu680f%5Cu662f%5Cu6ca1%5Cu7528%5Cu7684%29%5Cuff0cFJ%5Cu5c06%5Cu4f1a%5Cu95ee%5Cu4f60%5Cu4e00%5Cu4e9b%5Cu95ee%5Cu9898%5Cuff0c%5Cu5982%5Cu679c%5Cu8fd9%5Cu4e2a%5Cu6805%5Cu680f%5Cu662f%5Cu6709%5Cu7528%5Cu7684%5Cuff0c%5Cu9700%5Cu8981%5Cu8f93%5Cu51fa%5Cu201cYES%5Cu201d%5Cuff0c%5Cu53cd%5Cu4e4b%5Cu8f93%5Cu51fa%5Cu201cNO%5Cu201d%5Cu3002%5Cn%5Cn%5Cu53e6%5Cu5916%5Cuff0cFJ%5Cu4e5f%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu5e26%5Cu6765%5Cu4e00%5Cu4e9b%5Cu65b0%5Cu7684%5Cu5976%5Cu725b%5Cu52a0%5Cu5165%5Cu8fd9%5Cu4e2a%5Cu725b%5Cu7fa4%5Cu3002%5Cu4e00%5Cu5934%5Cu725b%5Cu52a0%5Cu5165%5Cu4e4b%5Cu540e%5Cuff0c%5Cu4ee5%5Cu540e%5Cu7684%5Cu6240%5Cu6709%5Cu8be2%5Cu95ee%5Cu4e2d%5Cuff0c%5Cu8fd9%5Cu5934%5Cu725b%5Cu4e5f%5Cu9700%5Cu8981%5Cu4e0e%5Cu5176%5Cu5b83%5Cu7684%5Cu725b%5Cu5728%5Cu6805%5Cu680f%5Cu7684%5Cu540c%5Cu4e00%5Cu4fa7%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20and%20Q%20%281%20%3C%3D%20Q%20%3C%3D%20100%2C000%29%20separated%20by%20a%20space.%20%20These%20give%20the%20number%20of%20cows%20initially%20in%20the%20herd%20and%20the%20number%20of%20queries%2C%20respectively.%5Cn%5CnThe%20following%20N%20lines%20describe%20the%20initial%20state%20of%20the%20herd.%20Each%20line%20will%20contain%20two%20space%20separated%20integers%20x%20and%20y%20giving%20the%20position%20of%20a%20cow.%5Cn%5CnThe%20remaining%20Q%20lines%20contain%20queries%20either%20adding%20a%20new%20cow%20to%20the%20herd%20or%20testing%20a%20fence%20for%20usability.%20%20A%20line%20of%20the%20form%20%5C%221%20x%20y%5C%22%20means%20that%20a%20new%20cow%20has%20been%20added%20to%20the%20herd%20at%20position%20%28x%2C%20y%29.%20%20A%20line%20of%20the%20form%20%5C%222%20A%20B%20C%5C%22%20indicates%20that%20FJ%20would%20like%20to%20test%20a%20fence%20described%20by%20the%20line%20Ax%20%2B%20By%20%3D%20C.%5Cn%5CnAll%20cow%20positions%20will%20be%20unique%20over%20the%20whole%20data%20set%20and%20will%20satisfy%20%28-10%5E9%20%3C%3D%20x%2C%20y%20%3C%3D%2010%5E9%29.%20%20Additionally%20the%20fence%20queries%20will%20satisfy%20-10%5E9%20%3C%3D%20A%2C%20B%20%3C%3D%2010%5E9%20and%20-10%5E18%20%3C%3D%20C%20%3C%3D%2010%5E18.%20%20No%20fence%20query%20will%20have%20A%20%3D%20B%20%3D%200.%5Cn%5Cn%22%2C%22outputFormat%22%3A%22For%20each%20fence%20query%2C%20output%20%5C%22YES%5C%22%20if%20the%20fence%20is%20usable.%20%20Otherwise%20output%20%5C%22NO%5C%22.%5Cn%5Cn%22%2C%22samples%22%3A%5B%5B%223%204%20%5Cn0%200%20%5Cn0%201%20%5Cn1%200%20%5Cn2%202%202%203%20%5Cn1%201%201%20%5Cn2%202%202%203%20%5Cn2%200%201%201%20%5Cn%22%2C%22YES%20%5CnNO%20%5CnNO%20%5Cn%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20line%202x%20%2B%202y%20%3D%203%20leaves%20the%20initial%203%20cows%20on%20the%20same%20side.%20%20However%20the%20cow%20%281%2C%201%29%20is%20on%20the%20other%20side%20of%20this%20fence%20making%20it%20no%20longer%20usable%20after%20she%20joins%20the%20herd.%20%20The%20line%20Y%20%3D%201%20cannot%20be%20used%20because%20the%20cows%20%280%2C%201%29%20and%20%281%2C%201%29%20lie%20directly%20on%20it.%5Cn%5Cn%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B8%2C32%2C46%2C291%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A36%2C%22totalAccepted%22%3A11%2C%22pid%22%3A%22P3122%22%2C%22title%22%3A%22%5BUSACO15FEB%5D%5Cu5708%5Cu4f4f%5Cu725bFencing%20the%20Herd%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO15FEB%5D%5Cu5708%5Cu4f4f%5Cu725bFencing%20the%20Herd%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO15FEB]圈住牛Fencing the Herd</h1>
+<h2>题目描述</h2>
+<div>Farmer John needs your help deciding where to build a fence in the shape of a straight line to help restrict the movement of his cows. He has considered several possible fence locations and needs your help to determine which of these are usable, where a fence is considered usable if all of the cows are on the same side of the fence. A fence is not usable if there is a cow that lies directly on it. FJ will be asking you a number of queries regarding possible fence locations; a query should be answered "YES" if it corresponds to a usable fence location, "NO" otherwise.
+Additionally, FJ may occasionally bring new cows into the herd. When a new cow joins the herd, all fence queries from that point onward will require her to be on the same side of a fence as the rest of the herd for the fence to be usable.
+FJ需要你帮助他决定在哪里建造形状是一条无限长的直线的栅栏来限制他的牛的活动。他选出了几个可能的建造栅栏的位置，你需要帮助他判断哪些栅栏是有用的。一个栅栏是有用的当且仅当所有奶牛都在栅栏的同一侧(如果有牛群在栅栏所在的直线上，那么栅栏是没用的)，FJ将会问你一些问题，如果这个栅栏是有用的，需要输出“YES”，反之输出“NO”。
+另外，FJ也可能会带来一些新的奶牛加入这个牛群。一头牛加入之后，以后的所有询问中，这头牛也需要与其它的牛在栅栏的同一侧。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains N (1 <= N <= 100,000) and Q (1 <= Q <= 100,000) separated by a space. These give the number of cows initially in the herd and the number of queries, respectively.
+The following N lines describe the initial state of the herd. Each line will contain two space separated integers x and y giving the position of a cow.
+The remaining Q lines contain queries either adding a new cow to the herd or testing a fence for usability. A line of the form "1 x y" means that a new cow has been added to the herd at position (x, y). A line of the form "2 A B C" indicates that FJ would like to test a fence described by the line Ax + By = C.
+All cow positions will be unique over the whole data set and will satisfy (-10^9 <= x, y <= 10^9). Additionally the fence queries will satisfy -10^9 <= A, B <= 10^9 and -10^18 <= C <= 10^18. No fence query will have A = B = 0.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>For each fence query, output "YES" if the fence is usable. Otherwise output "NO".
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 4 
+0 0 
+0 1 
+1 0 
+2 2 2 3 
+1 1 1 
+2 2 2 3 
+2 0 1 1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES 
+NO 
+NO 
+
+</code></pre>
+<h2>说明</h2>
+<div>The line 2x + 2y = 3 leaves the initial 3 cows on the same side. However the cow (1, 1) is on the other side of this fence making it no longer usable after she joins the herd. The line Y = 1 cannot be used because the cows (0, 1) and (1, 1) lie directly on it.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

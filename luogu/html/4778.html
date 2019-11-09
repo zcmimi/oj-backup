@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Counting swaps - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381794:cjTzYZd2r2IexbDo+vXOFWMfq1yDC50pdtKmEi+y0mg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22Just%20like%20yesterday%20%28in%20problem%20U%20of%20the%20practice%20session%29%2C%20Bob%20is%20busy%2C%20so%20Alice%20keeps%20on%20playing%20some%20single-player%20games%20and%20puzzles.%20In%20her%20newest%20puzzle%20she%20has%20a%20permutation%20of%20numbers%20from%201%20to%20n.%20The%20goal%20of%20the%20puzzle%20is%20to%20sort%20the%20permutation%20using%20the%20smallest%20possible%20number%20of%20swaps.%20%20%20%20%5Cn%5CnInstead%20of%20simply%20solving%20the%20puzzle%2C%20Alice%20is%20wondering%20about%20the%20probability%20of%20winning%20it%20just%20by%20playing%20at%20random.%20In%20order%20to%20answer%20this%20question%2C%20she%20needs%20to%20know%20the%20number%20of%20optimal%20solutions%20to%20her%20puzzle.%20%20%20%20%22%2C%22description%22%3A%22You%20are%20given%20a%20permutation%20p1%2C%5Cu2006%5Cu2026%2C%5Cu2006pn%20of%20the%20numbers%201%20through%20n.%20In%20each%20step%20you%20can%20choose%20two%20numbers%20x%5Cu2004%3C%5Cu2004y%20and%20swap%20px%20with%20py.%20%20%5Cn%5CnLet%20m%20be%20the%20minimum%20number%20of%20such%20swaps%20needed%20to%20sort%20the%20given%20permutation.%20Compute%20the%20number%20of%20different%20sequences%20of%20exactly%20m%20swaps%20that%20sort%20the%20given%20permutation.%20Since%20this%20number%20may%20be%20large%2C%20compute%20it%20modulo%2010%5E9%5Cu2005%2B%5Cu20059.%20%20%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20file%20contains%20an%20integer%20t%20specifying%20the%20number%20of%20test%20cases.%20Each%20test%20case%20is%20preceded%20by%20a%20blank%20line.%20%20%5Cn%5CnEach%20test%20case%20consists%20of%20two%20lines.%20The%20first%20line%20contains%20the%20integer%20n.%20The%20second%20line%20contains%20the%20sequence%20p1%2C%5Cu2006%5Cu2026%2C%5Cu2006pn%3A%20a%20permutation%20of%201%2C%5Cu2006%5Cu2026%2C%5Cu2006n.%20%20%5Cn%5CnIn%20the%20easy%20subproblem%20C1%2C%201%5Cu2004%5Cu2264%5Cu2004n%5Cu2004%5Cu2264%5Cu200410.%20%20%5Cn%5CnIn%20the%20hard%20subproblem%20C2%2C%201%5Cu2004%5Cu2264%5Cu2004n%5Cu2004%5Cu2264%5Cu2004105.%20%20%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20a%20single%20line%20with%20a%20single%20integer%3A%20x%25%2810%5E9%2B9%29%2C%20where%20x%20is%20the%20number%20of%20ways%20to%20sort%20the%20given%20sequence%20using%20as%20few%20swaps%20as%20possible.%20%20%22%2C%22samples%22%3A%5B%5B%223%5Cn%5Cn3%5Cn2%203%201%5Cn%5Cn4%5Cn2%201%204%203%5Cn%5Cn2%5Cn1%202%22%2C%223%5Cn2%5Cn1%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20test%20case%2C%20we%20can%20sort%20the%20permutation%20in%20two%20swaps.%20We%20can%20make%20the%20first%20swap%20arbitrarily%3B%20for%20each%20of%20them%2C%20there%5Cu2019s%20exactly%20one%20optimal%20second%20swap.%20For%20example%2C%20one%20of%20the%20three%20shortest%20solutions%20is%20%5Cu201cswap%20p1%20with%20p2%20and%20then%20swap%20p1%20with%20p3%5Cu201d.%20%20%5Cn%5CnIn%20the%20second%20test%20case%2C%20the%20optimal%20solution%20involves%20swapping%20p1%20with%20p2%20and%20swapping%20p3%20with%20p4.%20We%20can%20do%20these%20two%20swaps%20in%20either%20order.%20%20%5Cn%5CnThe%20third%20sequence%20is%20already%20sorted.%20The%20optimal%20number%20of%20swaps%20is%200%2C%20and%20thus%20the%20only%20optimal%20solution%20is%20an%20empty%20sequence%20of%20swaps.%20%20%5Cn%5Cu9898%5Cu76ee%5Cu6765%5Cu6e90%5Cuff1a%5BIPSC2016%5D%28https%3A%5C%2F%5C%2Fipsc.ksp.sk%5C%2F2016%5C%2Freal%5C%2Fproblems%5C%2Fc.html%29%22%2C%22provider%22%3A%7B%22uid%22%3A5846%2C%22name%22%3A%22yyy2015c01%22%2C%22slogan%22%3A%22%5Cu672a%5Cu6765%5Cu9053%5Cu5177%5Cu7814%5Cu7a76%5Cu6240%22%2C%22badge%22%3A%22%5Cu5624%5Cu5624%5Cu5624%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A7%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%5D%2C%22memory%22%3A%5B32000%2C32000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4f60%5Cu4e00%5Cu4e2a%20%24%201%5Cu223cn%20%24%20%5Cu7684%5Cu6392%5Cu5217%20%24p%24%5Cuff0c%5Cu53ef%5Cu8fdb%5Cu884c%5Cu82e5%5Cu5e72%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu9009%5Cu62e9%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24x%2Cy%24%5Cuff0c%5Cu4ea4%5Cu6362%20%24px%2Cpy%24%5Cu3002%5Cn%5Cn%5Cu8bf7%5Cu4f60%5Cu544a%5Cu8bc9%5Cu7a70%5Cu5b50%5Cuff0c%5Cu7528%5Cu6700%5Cu5c11%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6b21%5Cu6570%5Cu5c06%5Cu7ed9%5Cu5b9a%5Cu6392%5Cu5217%5Cu53d8%5Cu6210%5Cu5355%5Cu8c03%5Cu4e0a%5Cu5347%5Cu7684%5Cu5e8f%5Cu5217%20%241%2C2%2C%5Cu2026%2Cn%24%5Cuff0c%5Cu6709%5Cu591a%5Cu5c11%5Cu79cd%5Cu65b9%5Cu5f0f%5Cu5462%5Cuff1f%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu65b9%5Cu5f0f%5Cu6570%5Cu5bf9%20%2410%5E9%2B9%24%20%5Cu53d6%5Cu6a21%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%5Cn%5CnTranslated%20by%20%40LJC00118%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A332%2C%22totalAccepted%22%3A153%2C%22pid%22%3A%22P4778%22%2C%22title%22%3A%22Counting%20swaps%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A62688%2C%22title%22%3A%22%5Cu6c42%5Cu95ee%22%2C%22forum%22%3A%7B%22id%22%3A27588%2C%22name%22%3A%22P4778%20Counting%20swaps%22%2C%22slug%22%3A%22P4778%22%7D%7D%2C%7B%22id%22%3A55312%2C%22title%22%3A%22%5Cu51fa%5Cu5904%5Cu53c8%5Cu53cc%5Cu53d2%5Cu53d5%5Cu6807%5Cu9519%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A27588%2C%22name%22%3A%22P4778%20Counting%20swaps%22%2C%22slug%22%3A%22P4778%22%7D%7D%2C%7B%22id%22%3A53018%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu96be%5Cu5ea6......%22%2C%22forum%22%3A%7B%22id%22%3A27588%2C%22name%22%3A%22P4778%20Counting%20swaps%22%2C%22slug%22%3A%22P4778%22%7D%7D%2C%7B%22id%22%3A50832%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu6709%5Cu6bd2%22%2C%22forum%22%3A%7B%22id%22%3A27588%2C%22name%22%3A%22P4778%20Counting%20swaps%22%2C%22slug%22%3A%22P4778%22%7D%7D%2C%7B%22id%22%3A50736%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A27588%2C%22name%22%3A%22P4778%20Counting%20swaps%22%2C%22slug%22%3A%22P4778%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2261%22%2C%22title%22%3A%22%5BCQOI2007%5D%5Cu4f59%5Cu6570%5Cu6c42%5Cu548c%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2480%22%2C%22title%22%3A%22%5BSDOI2010%5D%5Cu53e4%5Cu4ee3%5Cu732a%5Cu6587%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3455%22%2C%22title%22%3A%22%5BPOI2007%5DZAP-Queries%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3807%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5362%5Cu5361%5Cu65af%5Cu5b9a%5Cu7406%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF451E%22%2C%22title%22%3A%22Devu%20and%20Flowers%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Counting%20swaps%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Counting swaps</h1>
+<h2>题意翻译</h2>
+<div>给定你一个 $ 1∼n $ 的排列 $p$，可进行若干次操作，每次选择两个整数 $x,y$，交换 $px,py$。
+请你告诉穰子，用最少的操作次数将给定排列变成单调上升的序列 $1,2,…,n$，有多少种方式呢？请输出方式数对 $10^9+9$ 取模的结果。
+Translated by @LJC00118 </div>
+<h2>题目背景</h2>
+<div>Just like yesterday (in problem U of the practice session), Bob is busy, so Alice keeps on playing some single-player games and puzzles. In her newest puzzle she has a permutation of numbers from 1 to n. The goal of the puzzle is to sort the permutation using the smallest possible number of swaps.
+Instead of simply solving the puzzle, Alice is wondering about the probability of winning it just by playing at random. In order to answer this question, she needs to know the number of optimal solutions to her puzzle. </div>
+<h2>题目描述</h2>
+<div>You are given a permutation p1, …, pn of the numbers 1 through n. In each step you can choose two numbers x < y and swap px with py.
+Let m be the minimum number of such swaps needed to sort the given permutation. Compute the number of different sequences of exactly m swaps that sort the given permutation. Since this number may be large, compute it modulo 10^9 + 9. </div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input file contains an integer t specifying the number of test cases. Each test case is preceded by a blank line.
+Each test case consists of two lines. The first line contains the integer n. The second line contains the sequence p1, …, pn: a permutation of 1, …, n.
+In the easy subproblem C1, 1 ≤ n ≤ 10.
+In the hard subproblem C2, 1 ≤ n ≤ 105. </div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output a single line with a single integer: x%(10^9+9), where x is the number of ways to sort the given sequence using as few swaps as possible. </div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+
+3
+2 3 1
+
+4
+2 1 4 3
+
+2
+1 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+2
+1</code></pre>
+<h2>说明</h2>
+<div>In the first test case, we can sort the permutation in two swaps. We can make the first swap arbitrarily; for each of them, there’s exactly one optimal second swap. For example, one of the three shortest solutions is “swap p1 with p2 and then swap p1 with p3”.
+In the second test case, the optimal solution involves swapping p1 with p2 and swapping p3 with p4. We can do these two swaps in either order.
+The third sequence is already sorted. The optimal number of swaps is 0, and thus the only optimal solution is an empty sequence of swaps.
+题目来源：[IPSC2016](https://ipsc.ksp.sk/2016/real/problems/c.html)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

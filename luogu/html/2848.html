@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO16DEC]Cow Checklist奶牛确认单 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376047:OwtY8sBKPD64qDkrkb1tLrjdHrV/QhurJFDpJs9G9Gg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Every%20day%2C%20Farmer%20John%20walks%20through%20his%20pasture%20to%20check%20on%20the%20well-being%20ofeach%20of%20his%20cows.%20%20%20On%20his%20farm%20he%20has%20two%20breeds%20of%20cows%2C%20Holsteins%20andGuernseys.%20%20His%20%24H%24%20Holsteins%20are%20conveniently%20numbered%20%241%20%5C%5Cldots%20H%24%2C%20and%20his%24G%24%20Guernseys%20are%20conveniently%20numbered%20%241%20%5C%5Cldots%20G%24%28%241%20%5C%5Cleq%20H%20%5C%5Cleq%201000%2C%201%20%5C%5Cleq%20G%20%5C%5Cleq%201000%24%29.%20%20Each%20cow%20is%20located%20at%20a%20point%20inthe%202D%20plane%20%28not%20necessarily%20distinct%29.%5Cn%5Cn%5Cu6bcf%5Cu5929%5Cuff0c%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu8d70%5Cu8fc7%5Cu4ed6%5Cu7684%5Cu7267%5Cu573a%5Cuff0c%5Cu68c0%5Cu67e5%5Cu4ed6%5Cu7684%5Cu6bcf%5Cu5934%5Cu5976%5Cu725b%5Cu7684%5Cu5b58%5Cu5728%5Cu611f%5Cu3002%5Cu5728%5Cu4ed6%5Cu7684%5Cu519c%5Cu573a%5Cuff0c%5Cu4ed6%5Cu6709%5Cu4e24%5Cu4e2a%5Cu54c1%5Cu79cd%5Cu7684%5Cu725b%5Cuff0cHolsteins%5Cu548cGuernseys%5Cu3002%5Cu4ed6%5Cu7684H%20Holsteins%5Cu65b9%5Cu4fbf%5Cu5730%5Cu7f16%5Cu53f7%5Cu4e3a%241%20%5C%5Cldots%20H%24%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4ed6%5Cu7684G%20Guernseys%5Cu65b9%5Cu4fbf%5Cu5730%5Cu7f16%5Cu53f7%5Cu4e3a%241%20%5C%5Cldots%20G%24%28%241%20%5C%5Cleq%20H%20%5C%5Cleq%201000%2C%201%20%5C%5Cleq%20G%20%5C%5Cleq%201000%24%29%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu725b%5Cu4f4d%5Cu4e8e2D%5Cu5e73%5Cu9762%5Cu4e2d%5Cu7684%5Cu70b9%5Cuff08%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu662f%5Cu4e0d%5Cu540c%5Cu7684%5Cuff09%5Cu3002%5Cn%5CnFarmer%20John%20starts%20his%20tour%20at%20Holstein%201%2C%20and%20ends%20at%20Holstein%20%24H%24.%20%20He%20wantsto%20visit%20each%20cow%20along%20the%20way%2C%20and%20for%20convenience%20in%20maintaining%20hischecklist%20of%20cows%20visited%20so%20far%2C%20he%20wants%20to%20visit%20the%20Holsteins%20and%20Guernseysin%20the%20order%20in%20which%20they%20are%20numbered.%20%20In%20the%20sequence%20of%20all%20%24H%2BG%24%20cows%20hevisits%2C%20the%20Holsteins%20numbered%20%241%20%5C%5Cldots%20H%24%20should%20appear%20as%20a%20%28not%20necessarilycontiguous%29%20subsequence%2C%20and%20likewise%20for%20the%20Guernseys.%20Otherwise%20stated%2C%20thesequence%20of%20all%20%24H%2BG%24%20cows%20should%20be%20formed%20by%20%20interleaving%20the%20list%20ofHolsteins%20numbered%20%241%20%5C%5Cldots%20H%24%20with%20the%20list%20of%20Guernseys%20numbered%241%20%5C%5Cldots%20G%24.%5Cn%5Cn%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu4eceHolsteins%201%5Cu51fa%5Cu53d1%5Cuff0c%5Cu5728Holsteins%20H%5Cu7ed3%5Cu675f%5Cu3002%5Cu4ed6%5Cu60f3%5Cu8981%5Cu6cbf%5Cu9014%5Cu53c2%5Cu89c2%5Cu6bcf%5Cu5934%5Cu725b%5Cuff0c%5Cu4e3a%5Cu4e86%5Cu65b9%5Cu4fbf%5Cu4fdd%5Cu6301%5Cu4ed6%5Cu5230%5Cu76ee%5Cu524d%5Cu4e3a%5Cu6b62%5Cu8bbf%5Cu95ee%5Cu7684%5Cu725b%5Cu7684%5Cu6e05%5Cu5355%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu6309%5Cu4ed6%5Cu4eec%5Cu7684%5Cu7f16%5Cu53f7%5Cu987a%5Cu5e8f%5Cu8bbf%5Cu95eeHolsteins%5Cu548cGuernseys%5Cu3002%5Cu5728%5Cu4ed6%5Cu8bbf%5Cu95ee%5Cu7684%5Cu6240%5Cu6709%24H%2BG%24%5Cu5934%5Cu725b%5Cu7684%5Cu5e8f%5Cu5217%5Cu4e2d%5Cuff0cHolsteins%5Cu7f16%5Cu53f7%5Cu4e3a%241%20%5C%5Cldots%20H%24%5Cu5e94%5Cu8be5%5Cu663e%5Cu793a%5Cu4e3a%5Cuff08%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu662f%5Cu8fde%5Cu7eed%5Cu7684%5Cuff09%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff0c%5Cu5bf9%5Cu4e8eGuernseys%5Cu4e5f%5Cu76f8%5Cu540c%5Cu3002%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu6240%5Cu6709%24H%2BG%24%5Cu725b%5Cu7684%5Cu5e8f%5Cu5217%5Cu5e94%5Cu8be5%5Cu901a%5Cu8fc7%5Cu5c06%5Cu7f16%5Cu53f7%5Cu4e3a%241%20%5C%5Cldots%20H%24%5Cu7684Holsteins%5Cu5217%5Cu8868%5Cu4e0e%5Cu7f16%5Cu53f7%5Cu4e3a%241%20%5C%5Cldots%20G%24%5Cu7684Guernseys%5Cu5217%5Cu8868%5Cu4ea4%5Cu9519%5Cu5f62%5Cu6210%5Cu3002%5Cn%5CnWhen%20FJ%20moves%20from%20one%20cow%20to%20another%20cow%20traveling%20a%20distance%20of%20%24D%24%2C%20heexpends%20%24D%5E2%24%20energy.%20%20Please%20help%20him%20determine%20the%20minimum%20amount%20of%20energyrequired%20to%20visit%20all%20his%20cows%20according%20to%20a%20tour%20as%20described%20above.%5Cn%5Cn%5Cu5f53FJ%5Cu4ece%5Cu4e00%5Cu5934%5Cu6bcd%5Cu725b%5Cu79fb%5Cu52a8%5Cu5230%5Cu53e6%5Cu4e00%5Cu5934%5Cu6bcd%5Cu725b%5Cuff0c%5Cu884c%5Cu8fdb%5Cu8ddd%5Cu79bb%5Cu4e3a%24D%24%5Cu65f6%5Cuff0c%5Cu4ed6%5Cu6d88%5Cu8017%24D%5E2%24%5Cu80fd%5Cu91cf%5Cu3002%5Cu8bf7%5Cu5e2e%5Cu52a9%5Cu4ed6%5Cu786e%5Cu5b9a%5Cu8bbf%5Cu95ee%5Cu6240%5Cu6709%5Cu5976%5Cu725b%5Cu6240%5Cu9700%5Cu7684%5Cu6700%5Cu4f4e%5Cu80fd%5Cu91cf%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20%24H%24%20and%20%24G%24%2C%20separated%20by%20a%20space.%5Cn%5Cn%5CnThe%20next%20%24H%24%20lines%20contain%20the%20%24x%24%20and%20%24y%24%20coordinates%20of%20the%20%24H%24%20Holsteins%2C%20and%20the%20next%20%24G%24%20lines%20after%20that%20contain%20coordinates%20of%20the%20Guernseys.%20%20Each%5Cn%5Cncoordinate%20is%20an%20integer%20in%20the%20range%20%240%20%5C%5Cldots%201000%24.%5Cn%22%2C%22outputFormat%22%3A%22Write%20a%20single%20line%20of%20output%2C%20giving%20the%20minimum%20energy%20required%20for%20FJ%27s%20tour%20of%20all%20the%20cows.%5Cn%22%2C%22samples%22%3A%5B%5B%223%202%5Cn0%200%5Cn1%200%5Cn2%200%5Cn0%203%5Cn1%203%22%2C%2220%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%40e169887125%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B33%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A382%2C%22totalAccepted%22%3A137%2C%22pid%22%3A%22P2848%22%2C%22title%22%3A%22%5BUSACO16DEC%5DCow%20Checklist%5Cu5976%5Cu725b%5Cu786e%5Cu8ba4%5Cu5355%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A15352%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cuff1a%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A1951%2C%22name%22%3A%22P2848%20%5BUSACO16DEC%5DCow%20Checklist%5Cu5976%5Cu725b%5Cu786e%5Cu8ba4%5Cu5355%22%2C%22slug%22%3A%22P2848%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1462%22%2C%22title%22%3A%22%5Cu901a%5Cu5f80%5Cu5965%5Cu683c%5Cu745e%5Cu739b%5Cu7684%5Cu9053%5Cu8def%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1771%22%2C%22title%22%3A%22%5Cu65b9%5Cu7a0b%5Cu7684%5Cu89e3_NOI%5Cu5bfc%5Cu520a2010%5Cu63d0%5Cu9ad8%5Cuff0801%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2851%22%2C%22title%22%3A%22%5BUSACO06DEC%5D%5Cu6700%5Cu5c11%5Cu7684%5Cu786c%5Cu5e01The%20Fewest%20Coins%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2875%22%2C%22title%22%3A%22%5BUSACO07FEB%5D%5Cu725b%5Cu7684%5Cu8bcd%5Cu6c47The%20Cow%20Lexicon%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3036%22%2C%22title%22%3A%22%5BUSACO16DEC%5DLasers%20and%20Mirrors%5Cu6fc0%5Cu5149%5Cu548c%5Cu955c%5Cu5b50%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO16DEC%5DCow%20Checklist%5Cu5976%5Cu725b%5Cu786e%5Cu8ba4%5Cu5355%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO16DEC]Cow Checklist奶牛确认单</h1>
+<h2>题目描述</h2>
+<div>Every day, Farmer John walks through his pasture to check on the well-being ofeach of his cows. On his farm he has two breeds of cows, Holsteins andGuernseys. His $H$ Holsteins are conveniently numbered $1 \ldots H$, and his$G$ Guernseys are conveniently numbered $1 \ldots G$($1 \leq H \leq 1000, 1 \leq G \leq 1000$). Each cow is located at a point inthe 2D plane (not necessarily distinct).
+每天，农夫约翰走过他的牧场，检查他的每头奶牛的存在感。在他的农场，他有两个品种的牛，Holsteins和Guernseys。他的H Holsteins方便地编号为$1 \ldots H$，并且他的G Guernseys方便地编号为$1 \ldots G$($1 \leq H \leq 1000, 1 \leq G \leq 1000$)。每个牛位于2D平面中的点（不一定是不同的）。
+Farmer John starts his tour at Holstein 1, and ends at Holstein $H$. He wantsto visit each cow along the way, and for convenience in maintaining hischecklist of cows visited so far, he wants to visit the Holsteins and Guernseysin the order in which they are numbered. In the sequence of all $H+G$ cows hevisits, the Holsteins numbered $1 \ldots H$ should appear as a (not necessarilycontiguous) subsequence, and likewise for the Guernseys. Otherwise stated, thesequence of all $H+G$ cows should be formed by interleaving the list ofHolsteins numbered $1 \ldots H$ with the list of Guernseys numbered$1 \ldots G$.
+农夫约翰从Holsteins 1出发，在Holsteins H结束。他想要沿途参观每头牛，为了方便保持他到目前为止访问的牛的清单，他想按他们的编号顺序访问Holsteins和Guernseys。在他访问的所有$H+G$头牛的序列中，Holsteins编号为$1 \ldots H$应该显示为（不一定是连续的）子序列，对于Guernseys也相同。换句话说，所有$H+G$牛的序列应该通过将编号为$1 \ldots H$的Holsteins列表与编号为$1 \ldots G$的Guernseys列表交错形成。
+When FJ moves from one cow to another cow traveling a distance of $D$, heexpends $D^2$ energy. Please help him determine the minimum amount of energyrequired to visit all his cows according to a tour as described above.
+当FJ从一头母牛移动到另一头母牛，行进距离为$D$时，他消耗$D^2$能量。请帮助他确定访问所有奶牛所需的最低能量。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains $H$ and $G$, separated by a space.
+The next $H$ lines contain the $x$ and $y$ coordinates of the $H$ Holsteins, and the next $G$ lines after that contain coordinates of the Guernseys. Each
+coordinate is an integer in the range $0 \ldots 1000$.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Write a single line of output, giving the minimum energy required for FJ's tour of all the cows.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 2
+0 0
+1 0
+2 0
+0 3
+1 3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>20</code></pre>
+<h2>说明</h2>
+<div>感谢@e169887125 提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

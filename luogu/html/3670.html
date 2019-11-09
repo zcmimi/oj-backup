@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO17OPEN]Bovine Genomics S奶牛基因组（银） - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573377179:o8940kh8x4HwcILabVxFPUCeZ7Q/fIIe7KStseUnTrw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20owns%20%24N%24%20cows%20with%20spots%20and%20%24N%24%20cows%20without%20spots.%20Having%20just%20completed%20a%20course%20in%20bovine%20genetics%2C%20he%20is%20convinced%20that%20the%20spots%20on%20his%20cows%20are%20caused%20by%20mutations%20in%20the%20bovine%20genome.%5Cn%5Cn%5CnAt%20great%20expense%2C%20Farmer%20John%20sequences%20the%20genomes%20of%20his%20cows.%20Each%20genome%20is%20a%20string%20of%20length%20%24M%24%20built%20from%20the%20four%20characters%20A%2C%20C%2C%20G%2C%20and%20T.%20When%20he%20lines%20up%20the%20genomes%20of%20his%20cows%2C%20he%20gets%20a%20table%20like%20the%20following%2C%20shown%20here%5Cn%5Cn%5Cnfor%20%24N%3D3%24%3A%5Cn%5Cn%5Cn%60%60%60cpp%5CnPositions%3A%201%202%203%204%205%206%207%20...%20M%5Cn%5CnSpotty%20Cow%201%3A%20A%20A%20T%20C%20C%20C%20A%20...%20T%5CnSpotty%20Cow%202%3A%20G%20A%20T%20T%20G%20C%20A%20...%20A%5CnSpotty%20Cow%203%3A%20G%20G%20T%20C%20G%20C%20A%20...%20A%5Cn%5CnPlain%20Cow%201%3A%20A%20C%20T%20C%20C%20C%20A%20...%20G%5CnPlain%20Cow%202%3A%20A%20G%20T%20T%20G%20C%20A%20...%20T%5CnPlain%20Cow%203%3A%20A%20G%20T%20T%20C%20C%20A%20...%20T%5Cn%60%60%60%5Cn%5CnLooking%20carefully%20at%20this%20table%2C%20he%20surmises%20that%20positions%202%20and%204%20are%20sufficient%20to%20explain%20spottiness.%20That%20is%2C%20by%20looking%20at%20the%20characters%20in%20just%20these%20two%20positions%2C%20Farmer%20John%20can%20predict%20which%20of%20his%20cows%20are%20spotty%20and%20which%20are%20not%20%28for%20example%2C%20if%20he%20sees%20G%20and%20C%2C%20the%20cow%20must%20be%20spotty%29.%5Cn%5Cn%5CnFarmer%20John%20is%20convinced%20that%20spottiness%20can%20be%20explained%20not%20by%20just%20one%20or%20two%20positions%20in%20the%20genome%2C%20but%20by%20looking%20at%20a%20set%20of%20three%20distinct%20positions.%20%20Please%20help%20him%20count%20the%20number%20of%20sets%20of%20three%20distinct%20positions%20that%20can%20each%20explain%20spottiness.%5Cn%5CnFJ%5Cu6709n%5Cu5934%5Cu6709%5Cu6591%5Cu70b9%5Cu7684%5Cu725b%5Cu548cn%5Cu5934%5Cu6ca1%5Cu6709%5Cu6591%5Cu70b9%5Cu7684%5Cu725b%5Cu3002%5Cu7531%5Cu4e8e%5Cu4ed6%5Cu521a%5Cu521a%5Cu5b66%5Cu5b8c%5Cu725b%5Cu7684%5Cu57fa%5Cu56e0%5Cu5b66%5Cu7684%5Cu8bfe%5Cu7a0b%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu77e5%5Cu9053%5Cu725b%5Cu6709%5Cu6ca1%5Cu6709%5Cu6591%5Cu70b9%5Cu662f%5Cu5426%5Cn%5Cn%5Cn%5Cu4e0e%5Cu725b%5Cu7684%5Cu57fa%5Cu56e0%5Cu6709%5Cu5173%5Cu3002%5Cn%5Cn%5CnFJ%5Cu82b1%5Cu4e86%5Cu5de8%5Cu5927%5Cu7684%5Cu4ee3%5Cu4ef7%5Cu6d4b%5Cu51fa%5Cu4e86%5Cu6bcf%5Cu4e2a%5Cu725b%5Cu7684%5Cu57fa%5Cu56e0%5Cuff0c%5Cu6bcf%5Cu5934%5Cu725b%5Cu7684%5Cu57fa%5Cu56e0%5Cu7528%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3aM%5Cu7684%5Cu7531%5Cu201cA%2CC%2CG%2CT%5Cu201d%5Cu7684%5Cu4e32%5Cu6784%5Cu6210%5Cu3002FJ%5Cu5c06%5Cu8fd9%5Cn%5Cn%5Cn%5Cu4e9b%5Cu4e32%5Cu5199%5Cu6210%5Cu4e00%5Cu4e2a%5Cu8868%5C%2F%5Cu77e9%5Cu9635%5Cuff0c%5Cu5c31%5Cu50cf%5Cu56fe%5Cu4e2d%5Cu8fd9%5Cu6837%5Cn%5Cn%5Cn%5Cuff08N%3D3%5Cu7684%5Cu4f8b%5Cu5b50%5Cuff09%5Cn%5Cn%5CnFJ%5Cu4ed4%5Cu7ec6%5Cu7684%5Cu89c2%5Cu5bdf%5Cu8fd9%5Cu4e2a%5Cu8868%5Cuff0c%5Cu4ed6%5Cu53d1%5Cu73b0%5Cu901a%5Cu8fc7%5Cu89c2%5Cu6d4b2%2C4%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu53ef%5Cu4ee5%5Cu9884%5Cu6d4b%5Cu725b%5Cu662f%5Cu5426%5Cu6709%5Cu6591%5Cu70b9%5Cu3002%5Cn%5Cn%5Cn%5Cuff08%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu4f8b%5Cu5b50%5Cu4e2d%5Cuff0c%5Cu5047%5Cu5982%5Cu4ed6%5Cu770b%5Cu523024%5Cu4f4d%5Cu7f6e%5Cu662fGC%5Cu3001AT%5Cu6216%5Cu8005AC%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu65ad%5Cu5b9a%5Cu5176%5Cu6709%5Cu6591%5Cu70b9%5Cuff0c%5Cu56e0%5Cu4e3a1%5Cu53f7%5Cu6709%5Cu6591%5Cu70b9%5Cu7684%5Cu725b24%5Cu4f4d%5Cu7f6e%5Cu57fa%5Cu56e0%5Cu4e3aAC%5Cuff0c2%5Cu53f7%5Cu4e3aAT%5Cuff0c3%5Cu53f7%5Cu4e3aGC%5Cuff0c%5Cu800c%5Cu4e14%5Cu6ca1%5Cu6709%5Cu4efb%5Cu4f55%5Cu4e00%5Cu5934%5Cu65e0%5Cu6591%5Cu70b9%5Cu7684%5Cu725b%5Cu768424%5Cu4f4d%5Cu7f6e%5Cu51fa%5Cu73b0%5Cu8fc7%5Cu8fd9%5Cu4e09%5Cu4e2a%5Cu4e32%5Cuff09%5Cn%5Cn%5CnFJ%5Cu8ba4%5Cu4e3a%5Cuff0c1%5Cu4e2a%5Cu6216%5Cu8005%5Cu4e24%5Cu4e2a%5Cu4f4d%5Cu70b9%5Cu662f%5Cu4e0d%5Cu80fd%5Cu591f%5Cu533a%5Cu5206%5Cu54c1%5Cu79cd%5Cu7684%5Cuff0c%5Cu5fc5%5Cu987b%5Cu662f%5Cu521a%5Cu597d3%5Cu4e2a%5Cu4f4d%5Cu70b9%5Cu3002%5Cu4ed6%5Cu60f3%5Cu77e5%5Cu9053%5Cu80fd%5Cu7528%5Cu591a%5Cu5c11%5Cu7ec4%5Cu4e09%5Cu4e2a%5Cu672c%5Cu8d28%5Cu4e0d%5Cu540c%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu5224%5Cu65ad%5Cu725b%5Cu7684%5Cu6591%5Cu70b9%5Cuff0c%7B1%2C2%2C3%7D%5Cu548c%7B1%2C3%2C2%7D%5Cu662f%5Cu672c%5Cu8d28%5Cu76f8%5Cu540c%5Cu7684%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20%24N%24%20%28%241%20%5C%5Cleq%20N%20%5C%5Cleq%20500%24%29%20and%20%24M%24%20%28%243%20%5C%5Cleq%20M%20%5C%5Cleq%2050%24%29.%20The%20next%20%24N%24%20lines%20each%20contain%20a%20string%20of%20%24M%24%20characters%3B%20these%20describe%20the%20genomes%20of%20the%20spotty%20cows.%20The%20final%20%24N%24%20lines%20describe%20the%20genomes%20of%20the%20plain%20cows.%5Cn%22%2C%22outputFormat%22%3A%22Please%20count%20the%20number%20of%20sets%20of%20three%20distinct%20positions%20that%20can%20explain%20spottiness.%20A%20set%20of%20three%20positions%20explains%20spottiness%20if%20the%20spottiness%20trait%20can%20be%20predicted%20with%20perfect%20accuracy%20among%20Farmer%20John%27s%20population%20of%20cows%20by%20looking%20at%20just%20those%20three%20locations%20in%20the%20genome.%5Cn%22%2C%22samples%22%3A%5B%5B%223%208%5CnAATCCCAT%5CnGATTGCAA%5CnGGTCGCAA%5CnACTCCCAG%5CnACTCGCAT%5CnACTTCCAT%22%2C%2222%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%40%20%5Cu79d8%5Cu5bc6%5Cu89c2%5Cu6d4b%5Cu8005%20%5Cu7684%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B34%2C46%2C54%2C78%2C111%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A281%2C%22totalAccepted%22%3A142%2C%22pid%22%3A%22P3670%22%2C%22title%22%3A%22%5BUSACO17OPEN%5DBovine%20Genomics%20S%5Cu5976%5Cu725b%5Cu57fa%5Cu56e0%5Cu7ec4%5Cuff08%5Cu94f6%5Cuff09%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A82796%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A3707%2C%22name%22%3A%22P3670%20%5BUSACO17OPEN%5DBovine%20Genomics%20S%5Cu5976%5Cu725b%5Cu57fa%5Cu56e0%5Cu7ec4%5Cuff08%5Cu94f6%5Cuff09%22%2C%22slug%22%3A%22P3670%22%7D%7D%2C%7B%22id%22%3A27323%2C%22title%22%3A%22fj%5Cu5b66%5Cu8fc7%5Cu751f%5Cu7269%5Cu5417%22%2C%22forum%22%3A%7B%22id%22%3A3707%2C%22name%22%3A%22P3670%20%5BUSACO17OPEN%5DBovine%20Genomics%20S%5Cu5976%5Cu725b%5Cu57fa%5Cu56e0%5Cu7ec4%5Cuff08%5Cu94f6%5Cuff09%22%2C%22slug%22%3A%22P3670%22%7D%7D%2C%7B%22id%22%3A9572%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A3707%2C%22name%22%3A%22P3670%20%5BUSACO17OPEN%5DBovine%20Genomics%20S%5Cu5976%5Cu725b%5Cu57fa%5Cu56e0%5Cu7ec4%5Cuff08%5Cu94f6%5Cuff09%22%2C%22slug%22%3A%22P3670%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1123%22%2C%22title%22%3A%22%5Cu53d6%5Cu6570%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1239%22%2C%22title%22%3A%22%5Cu8ba1%5Cu6570%5Cu5668%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1865%22%2C%22title%22%3A%22A%20%25%20B%20Problem%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3671%22%2C%22title%22%3A%22%5BUSACO17OPEN%5DWhere%27s%20Bessie%3F%20%5Cu8d1d%5Cu897f%5Cu5728%5Cu54ea%5Cu5462%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3078%22%2C%22title%22%3A%22%5BUSACO13MAR%5D%5Cu6251%5Cu514b%5Cu724c%5Cu578bPoker%20Hands%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO17OPEN%5DBovine%20Genomics%20S%5Cu5976%5Cu725b%5Cu57fa%5Cu56e0%5Cu7ec4%5Cuff08%5Cu94f6%5Cuff09%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO17OPEN]Bovine Genomics S奶牛基因组（银）</h1>
+<h2>题目描述</h2>
+<div>Farmer John owns $N$ cows with spots and $N$ cows without spots. Having just completed a course in bovine genetics, he is convinced that the spots on his cows are caused by mutations in the bovine genome.
+At great expense, Farmer John sequences the genomes of his cows. Each genome is a string of length $M$ built from the four characters A, C, G, and T. When he lines up the genomes of his cows, he gets a table like the following, shown here
+for $N=3$:
+```cpp
+Positions: 1 2 3 4 5 6 7 ... M
+Spotty Cow 1: A A T C C C A ... T
+Spotty Cow 2: G A T T G C A ... A
+Spotty Cow 3: G G T C G C A ... A
+Plain Cow 1: A C T C C C A ... G
+Plain Cow 2: A G T T G C A ... T
+Plain Cow 3: A G T T C C A ... T
+```
+Looking carefully at this table, he surmises that positions 2 and 4 are sufficient to explain spottiness. That is, by looking at the characters in just these two positions, Farmer John can predict which of his cows are spotty and which are not (for example, if he sees G and C, the cow must be spotty).
+Farmer John is convinced that spottiness can be explained not by just one or two positions in the genome, but by looking at a set of three distinct positions. Please help him count the number of sets of three distinct positions that can each explain spottiness.
+FJ有n头有斑点的牛和n头没有斑点的牛。由于他刚刚学完牛的基因学的课程，他想知道牛有没有斑点是否
+与牛的基因有关。
+FJ花了巨大的代价测出了每个牛的基因，每头牛的基因用一个长度为M的由“A,C,G,T”的串构成。FJ将这
+些串写成一个表/矩阵，就像图中这样
+（N=3的例子）
+FJ仔细的观察这个表，他发现通过观测2,4位置的字符串可以预测牛是否有斑点。
+（在这个例子中，假如他看到24位置是GC、AT或者AC就可以断定其有斑点，因为1号有斑点的牛24位置基因为AC，2号为AT，3号为GC，而且没有任何一头无斑点的牛的24位置出现过这三个串）
+FJ认为，1个或者两个位点是不能够区分品种的，必须是刚好3个位点。他想知道能用多少组三个本质不同的位置判断牛的斑点，{1,2,3}和{1,3,2}是本质相同的
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains $N$ ($1 \leq N \leq 500$) and $M$ ($3 \leq M \leq 50$). The next $N$ lines each contain a string of $M$ characters; these describe the genomes of the spotty cows. The final $N$ lines describe the genomes of the plain cows.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Please count the number of sets of three distinct positions that can explain spottiness. A set of three positions explains spottiness if the spottiness trait can be predicted with perfect accuracy among Farmer John's population of cows by looking at just those three locations in the genome.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 8
+AATCCCAT
+GATTGCAA
+GGTCGCAA
+ACTCCCAG
+ACTCGCAT
+ACTTCCAT</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>22</code></pre>
+<h2>说明</h2>
+<div>感谢@ 秘密观测者 的提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

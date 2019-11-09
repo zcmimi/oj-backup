@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[COCI2017-2018#5] Pictionary - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381614:KswYOLY484hELY4kAnqpk+qv/DlT+DLf3w5LCzOU7V4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22There%20is%20a%20planet%2C%20in%20a%20yet%20undiscovered%20part%20of%20the%20universe%2C%20with%20a%20country%20inhabited%20solely%5Cnby%20mathematicians.%20In%20this%20country%2C%20there%20are%20a%20total%20of%20%5Cu200bN%20mathematicians%2C%20and%20the%20interesting%5Cnfact%20is%20that%20each%20mathematician%20lives%20in%20their%20own%20city.%20Is%20it%20also%20interesting%20that%20no%20two%20cities%5Cnare%20connected%20with%20a%20road%2C%20because%20mathematicians%20can%20communicate%20online%20or%20by%5Cnreviewing%20academic%20papers.%20Naturally%2C%20the%20cities%20are%20labeled%20with%20numbers%20from%201%20to%20%5Cu200bN.%5Cn%5CnLife%20was%20perfect%20until%20one%20mathematician%20decided%20to%20write%20an%20academic%20paper%20on%20their%5Cnsmartphone.%20The%20smartphone%20auto-corrected%20the%20word%20%5Cu201cself-evident%5Cu201d%20to%20%5Cu201cPictionary%5Cu201d%20and%20the%5Cnpaper%20was%20published%20as%20such.%20Soon%20after%2C%20the%20entire%20country%20discovered%20pictionary%20and%5Cnwanted%20to%20meet%20up%20and%20play%2C%20so%20construction%20work%20on%20roads%20between%20cities%20began%20shortly.%5Cn.%5CnThe%20road%20construction%20will%20last%20a%20total%20of%20%5Cu200bM%20days%2C%20according%20to%20the%20following%20schedule%3A%20on%20the%5Cnfirst%20day%2C%20construction%20is%20done%20on%20roads%20between%20all%20pairs%20of%20cities%20that%20have%20%5Cu200bM%20as%20their%5Cngreatest%20common%20divisor.%20On%20the%20second%20day%2C%20construction%20is%20done%20on%20roads%20between%20all%5Cnpairs%20of%20cities%20that%20have%20%5Cu200bM-1%20as%20their%20greatest%20common%20divisor%2C%20and%20so%20on%20until%20the%20%5Cu200b%24M%5E%7Bth%7D%24%20day%5Cnwhen%20construction%20is%20done%20on%20roads%20between%20all%20pairs%20of%20cities%20that%20are%20co-prime.%20More%5Cnformally%2C%20on%20the%20%24i%5E%7Bth%7D%24%20day%2C%20construction%20is%20done%20on%20roads%20between%20cities%20%5Cu200ba%20and%20%5Cu200bb%20if%20%5Cu200bgcd%28a%2C%20b%29%20%3D%20%24M-i%2B1%24.%5Cn%5CnSince%20the%20mathematicians%20are%20busy%20with%20construction%20work%2C%20they%5Cu2019ve%20asked%20you%20to%20help%20them%5Cndetermine%20the%20minimal%20number%20of%20days%20before%20a%20given%20pair%20of%20mathematicians%20can%20play%5Cnpictionary%20together.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20three%20positive%20integers%20%5Cu200bN%2C%20M%5Cnand%20%5Cu200bQ%5Cn%281%20%5Cu2264%20%5Cu200bN%5Cn%2C%20%5Cu200bQ%20%5Cu2264%20100%20000%2C%201%20%5Cu2264%20%5Cu200bM%5Cn%5Cu2264%20%5Cu200bN%5Cn%29%2C%20the%20number%20of%20cities%2C%20the%20number%20of%20days%20it%20takes%20to%20build%20the%20roads%2C%20and%20the%20number%20of%5Cnqueries.%5Cn%5CnEach%20of%20the%20following%20%5Cu200bQ%20lines%20contains%20two%20distinct%20positive%20integers%20%5Cu200bA%20and%20%5Cu200bB%5Cn%281%20%5Cu2264%20%5Cu200bA%5Cn%2C%20%5Cu200bB%20%5Cu2264%20%5Cu200bN%5Cn%29%5Cnthat%20denote%20the%20cities%20of%20the%20mathematicians%20who%20want%20to%20find%20out%20the%20minimal%20number%20of%20days%5Cnbefore%20they%20can%20play%20pictionary%20together.%22%2C%22outputFormat%22%3A%22The%20%24i%5E%7Bth%7D%24%20line%20must%20contain%20the%20minimal%20number%20of%20days%20before%20the%20mathematicians%20from%20the%20%24i%5E%7Bth%7D%24%20query%20can%20play%20pictionary%20together.%22%2C%22samples%22%3A%5B%5B%228%203%203%5Cn2%205%5Cn3%206%5Cn4%208%22%2C%223%5Cn1%5Cn2%22%5D%2C%5B%2225%206%201%5Cn20%209%22%2C%224%22%5D%2C%5B%229999%202222%202%5Cn1025%202405%5Cn3154%208949%22%2C%221980%5Cn2160%22%5D%5D%2C%22hint%22%3A%22In%20test%20cases%20worth%2040%25%20of%20total%20points%2C%20it%20will%20hold%20%5Cu200bN%5Cn%5Cu2264%201000%2C%20%5Cu200bQ%5Cn%5Cu2264%20100%20000.%5Cn%5Cn%2A%2AClarification%20of%20the%20first%20test%20case%3A%2A%2A%5Cn%5CnOn%20the%20first%20day%2C%20road%20%283%2C%206%29%20is%20built.%20Therefore%20the%20answer%20to%20the%20second%20query%20is%201.%5Cn%5CnOn%20the%20second%20day%2C%20roads%20%282%2C%204%29%2C%20%282%2C%206%29%2C%20%282%2C%208%29%2C%20%284%2C%206%29%20and%20%286%2C%208%29%20are%20built.%20Cities%204%20and%208%20are%20now%5Cnconnected%20%28it%20is%20possible%20to%20get%20from%20the%20first%20to%20the%20second%20using%20city%206%29.%5Cn%5CnOn%20the%20third%20day%2C%20roads%20between%20relatively%20prime%20cities%20are%20built%2C%20so%20cities%202%20and%205%20are%20connected.%5Cn%5Cn%2A%2AClarification%20of%20the%20second%20test%20case%3A%2A%2A%5Cn%5CnOn%20the%20second%20day%2C%20road%20%2820%2C%2015%29%20is%20built%2C%20whereas%20on%20the%20fourth%20day%2C%20road%20%2815%2C%209%29%20is%20built.%20After%20the%5Cnfourth%20day%2C%20cities%2020%20and%209%20are%20connected%20via%20city%2015.%22%2C%22provider%22%3A%7B%22uid%22%3A50092%2C%22name%22%3A%22da32s1da%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cu5728%5Cu5b87%5Cu5b99%5Cu4e00%5Cu4e2a%5Cu4e0d%5Cu4e3a%5Cu4eba%5Cu77e5%5Cu7684%5Cu5730%5Cu65b9%5Cuff0c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu661f%5Cu7403%5Cuff0c%5Cu4e0a%5Cu9762%5Cu6709%5Cu4e00%5Cu4e2a%5Cu56fd%5Cu5bb6%5Cuff0c%5Cu53ea%5Cu6709%5Cu6570%5Cu5b66%5Cu5bb6%5Cu5c45%5Cu4f4f%5Cu3002%5Cn%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu56fd%5Cu5bb6%5Cu6709%24n%24%5Cu4e2a%5Cu6570%5Cu5b66%5Cu5bb6%5Cuff0c%5Cu6709%5Cu8da3%5Cu7684%5Cu662f%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu5b66%5Cu5bb6%5Cu90fd%5Cu4f4f%5Cu5728%5Cu81ea%5Cu5df1%5Cu7684%5Cu57ce%5Cu5e02%5Cuff0c%5Cu4e14%5Cu57ce%5Cu5e02%5Cu95f4%5Cu65e0%5Cu9053%5Cu8def%5Cu76f8%5Cu8fde%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu4ed6%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu5728%5Cu7ebf%5Cu4ea4%5Cu6d41%5Cu3002%5Cu5f53%5Cu7136%5Cuff0c%5Cu57ce%5Cu5e02%5Cu6709%5Cu4ece%241%24%5Cu5230%24n%24%5Cu7684%5Cu7f16%5Cu53f7%5Cu3002%5Cn%5Cn%5Cu4e00%5Cu4f4d%5Cu6570%5Cu5b66%5Cu5bb6%5Cu51b3%5Cu5b9a%5Cu7528%5Cu624b%5Cu673a%5Cu53d1%5Cu8bba%5Cu6587%5Cuff0c%5Cu800c%5Cu624b%5Cu673a%5Cu5c06%5Cu201c%5Cu4e0d%5Cu8a00%5Cu800c%5Cu55bb%5Cu201d%5Cu81ea%5Cu52a8%5Cu66f4%5Cu6b63%5Cu6210%5Cu4e86%5Cu201c%5Cu731c%5Cu8c1c%5Cu6e38%5Cu620f%5Cu201d%5Cu3002%5Cn%5Cu4e0d%5Cu4e45%5Cu4e4b%5Cu540e%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu56fd%5Cu5bb6%5Cu5c31%5Cu53d1%5Cu73b0%5Cu4e86%5Cu731c%5Cu8c1c%5Cu6e38%5Cu620f%5Cu3002%5Cu4ed6%5Cu4eec%5Cu60f3%5Cu8981%5Cu89c1%5Cu9762%5Cu4e00%5Cu8d77%5Cu73a9%5Cuff0c%5Cu4e8e%5Cu662f%5Cu8fd9%5Cu4e2a%5Cu56fd%5Cu5bb6%5Cu5c31%5Cu5f00%5Cu59cb%5Cu4e86%5Cu4fee%5Cu8def%5Cu5de5%5Cu7a0b%5Cu3002%5Cn%5Cu9053%5Cu8def%5Cu4fee%5Cu5efa%5Cu4f1a%5Cu6301%5Cu7eed%24m%24%5Cu5929%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu7b2c%24i%24%5Cu5929%5Cuff0c%5Cu82e5%24%5C%5Cgcd%28a%2Cb%29%3Dm-i%2B1%24%5Cuff0c%5Cu5219%24a%24%5Cu548c%24b%24%5Cu57ce%5Cu5e02%5Cu95f4%5Cu4f1a%5Cu4fee%5Cu4e00%5Cu6761%5Cu8def%5Cu3002%5Cn%5Cn%5Cu7531%5Cu4e8e%5Cu6570%5Cu5b66%5Cu5bb6%5Cu4eec%5Cu5fd9%5Cu4e8e%5Cu5efa%5Cu7b51%5Cu5de5%5Cu4f5c%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu6765%5Cu786e%5Cu5b9a%5Cu4e00%5Cu5bf9%5Cu6570%5Cu5b66%5Cu5bb6%5Cu6700%5Cu65e9%5Cu4ec0%5Cu4e48%5Cu65f6%5Cu5019%5Cu80fd%5Cu51d1%5Cu5230%5Cu4e00%5Cu8d77%5Cu73a9%5Cu3002%20%20%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e09%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%2Cm%2Cq%24%5Cuff0c%5Cu8868%5Cu793a%5Cu57ce%5Cu5e02%5Cu6570%5Cu91cf%5Cu3001%5Cu4fee%5Cu8def%5Cu6301%5Cu7eed%5Cu5929%5Cu6570%5Cu3001%5Cu8be2%5Cu95ee%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24q%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24a%2Cb%24%5Cuff0c%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%24a%24%5Cu548c%24b%24%5Cu4e24%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu7684%5Cu6570%5Cu5b66%5Cu5bb6%5Cu6700%5Cu65e9%5Cu4ec0%5Cu4e48%5Cu65f6%5Cu5019%5Cu80fd%5Cu5728%5Cu4e00%5Cu8d77%5Cu73a9%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cu8f93%5Cu51fa%24q%24%5Cu884c%5Cuff0c%5Cu7b2c%24i%24%5Cu884c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2c%24i%24%5Cu6b21%5Cu8be2%5Cu95ee%5Cu7684%5Cu7ed3%5Cu679c%5Cn%5Cn%23%23%20%5Cu8bf4%5Cu660e%20%20%5Cn%2A%2A%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cuff1a%2A%2A%20%20%5Cn%5Cu5bf9%5Cu4e8e%2440%5C%5C%25%24%5Cu7684%5Cu6570%5Cu636e%5Cuff1a%5Cn%24n%5Cu22644000%2Cq%5Cu226410%5E5%24%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu5168%5Cu90e8%5Cu6570%5Cu636e%5Cuff1a%20%20%5Cn%241%5Cu2264n%2Cq%5Cu226410%5E5%24%20%20%5Cn%241%5Cu2264m%5Cu2264n%24%5Cn%5Cn%5Cu6837%5Cu4f8b1%5Cu89e3%5Cu91ca%5Cuff1a%5Cn%5Cu5728%5Cu7b2c%5Cu4e00%5Cu5929%5Cuff0c%24%283%2C6%29%24%5Cu4e4b%5Cu95f4%5Cu4fee%5Cu4e86%5Cu4e00%5Cu6761%5Cu8def%5Cuff0c%5Cu56e0%5Cu6b64%5Cu7b2c%5Cu4e8c%5Cu6b21%5Cu8be2%5Cu95ee%5Cu8f93%5Cu51fa%601%60%20%20%5Cn%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu5929%5Cuff0c%24%282%2C4%29%2C%282%2C6%29%2C%282%2C8%29%2C%284%2C6%29%2C%286%2C8%29%24%5Cu4e4b%5Cu95f4%5Cu90fd%5Cu4fee%5Cu4e86%5Cu4e00%5Cu6761%5Cu8def%5Cuff0c%5Cu6b64%5Cu65f6%244%24%5Cu548c%248%24%5Cu53f7%5Cu57ce%5Cu5e02%5Cu8fde%5Cu901a%5Cuff0c%5Cu7b2c%5Cu4e09%5Cu6b21%5Cu8be2%5Cu95ee%5Cu8f93%5Cu51fa%602%60%20%20%5Cn%5Cu5728%5Cu7b2c%5Cu4e09%5Cu5929%5Cuff0c%5Cu6240%5Cu6709%5Cu7f16%5Cu53f7%5Cu4e92%5Cu8d28%5Cu7684%5Cu57ce%5Cu5e02%5Cu4e4b%5Cu95f4%5Cu90fd%5Cu4fee%5Cu4e86%5Cu8def%5Cuff0c%242%24%5Cu548c%245%24%5Cu53f7%5Cu57ce%5Cu5e02%5Cu5728%5Cu6b64%5Cu65f6%5Cu8fde%5Cu901a%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu6b21%5Cu8be2%5Cu95ee%5Cu8f93%5Cu51fa%601%60%5Cn%5Cn%5Cu6837%5Cu4f8b2%5Cu89e3%5Cu91ca%5Cuff1a%5Cn%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu5929%5Cuff0c%24%2820%2C15%29%24%5Cu4e4b%5Cu95f4%5Cu4fee%5Cu4e86%5Cu4e00%5Cu6761%5Cu8def%20%20%5Cn%5Cu7b2c%5Cu56db%5Cu5929%5Cuff0c%24%2815%2C9%29%24%5Cu4e4b%5Cu95f4%5Cu4fee%5Cu4e86%5Cu4e00%5Cu6761%5Cu8def%20%20%5Cn%5Cu6240%5Cu4ee5%2420%24%5Cu548c%249%24%5Cu53f7%5Cu57ce%5Cu5e02%5Cu5728%5Cu7b2c%5Cu56db%5Cu5929%5Cu8fde%5Cu901a%5Cuff0c%5Cu8f93%5Cu51fa%604%60%22%2C%22tags%22%3A%5B35%2C42%2C47%2C228%2C319%2C333%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A97%2C%22totalAccepted%22%3A52%2C%22pid%22%3A%22P4616%22%2C%22title%22%3A%22%5BCOCI2017-2018%235%5D%20Pictionary%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A91451%2C%22title%22%3A%22%5Cu3010%5Cu91cd%5Cu53d1%5Cu3011%5Cu5b8c%5Cu6574%5Cu9898%5Cu610f%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A25908%2C%22name%22%3A%22P4616%20%5BCOCI2017-2018%235%5D%20Pictionary%22%2C%22slug%22%3A%22P4616%22%7D%7D%2C%7B%22id%22%3A91309%2C%22title%22%3A%22%5Cu5b8c%5Cu6574%5Cu9898%5Cu610f%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A25908%2C%22name%22%3A%22P4616%20%5BCOCI2017-2018%235%5D%20Pictionary%22%2C%22slug%22%3A%22P4616%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4617%22%2C%22title%22%3A%22%5BCOCI2017-2018%235%5D%20Planinarenje%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4650%22%2C%22title%22%3A%22%5BCOCI2017-2018%235%5D%20Karte%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4957%22%2C%22title%22%3A%22%5BCOCI2017-2018%236%5D%20Alkemija%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4958%22%2C%22title%22%3A%22%5BCOCI2017-2018%236%5D%20Mate%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1190D%22%2C%22title%22%3A%22Tokitsukaze%20and%20Strange%20Rectangle%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BCOCI2017-2018%235%5D%20Pictionary%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[COCI2017-2018#5] Pictionary</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+在宇宙一个不为人知的地方，有一个星球，上面有一个国家，只有数学家居住。
+在这个国家有$n$个数学家，有趣的是，每个数学家都住在自己的城市，且城市间无道路相连，因为他们可以在线交流。当然，城市有从$1$到$n$的编号。
+一位数学家决定用手机发论文，而手机将“不言而喻”自动更正成了“猜谜游戏”。
+不久之后，这个国家就发现了猜谜游戏。他们想要见面一起玩，于是这个国家就开始了修路工程。
+道路修建会持续$m$天。对于第$i$天，若$\gcd(a,b)=m-i+1$，则$a$和$b$城市间会修一条路。
+由于数学家们忙于建筑工作，请你来确定一对数学家最早什么时候能凑到一起玩。
+## 输入输出格式
+### 输入格式
+第一行有三个正整数$n,m,q$，表示城市数量、修路持续天数、询问数量。
+接下来$q$行，每行有两个正整数$a,b$，表示询问$a$和$b$两个城市的数学家最早什么时候能在一起玩。
+### 输出格式
+输出$q$行，第$i$行有一个正整数，表示第$i$次询问的结果
+## 说明
+**数据范围：**
+对于$40\%$的数据：
+$n≤4000,q≤10^5$
+对于全部数据：
+$1≤n,q≤10^5$
+$1≤m≤n$
+样例1解释：
+在第一天，$(3,6)$之间修了一条路，因此第二次询问输出`1`
+在第二天，$(2,4),(2,6),(2,8),(4,6),(6,8)$之间都修了一条路，此时$4$和$8$号城市连通，第三次询问输出`2`
+在第三天，所有编号互质的城市之间都修了路，$2$和$5$号城市在此时连通，第一次询问输出`1`
+样例2解释：
+在第二天，$(20,15)$之间修了一条路
+第四天，$(15,9)$之间修了一条路
+所以$20$和$9$号城市在第四天连通，输出`4`</div>
+<h2>题目描述</h2>
+<div>There is a planet, in a yet undiscovered part of the universe, with a country inhabited solely
+by mathematicians. In this country, there are a total of ​N mathematicians, and the interesting
+fact is that each mathematician lives in their own city. Is it also interesting that no two cities
+are connected with a road, because mathematicians can communicate online or by
+reviewing academic papers. Naturally, the cities are labeled with numbers from 1 to ​N.
+Life was perfect until one mathematician decided to write an academic paper on their
+smartphone. The smartphone auto-corrected the word “self-evident” to “Pictionary” and the
+paper was published as such. Soon after, the entire country discovered pictionary and
+wanted to meet up and play, so construction work on roads between cities began shortly.
+.
+The road construction will last a total of ​M days, according to the following schedule: on the
+first day, construction is done on roads between all pairs of cities that have ​M as their
+greatest common divisor. On the second day, construction is done on roads between all
+pairs of cities that have ​M-1 as their greatest common divisor, and so on until the ​$M^{th}$ day
+when construction is done on roads between all pairs of cities that are co-prime. More
+formally, on the $i^{th}$ day, construction is done on roads between cities ​a and ​b if ​gcd(a, b) = $M-i+1$.
+Since the mathematicians are busy with construction work, they’ve asked you to help them
+determine the minimal number of days before a given pair of mathematicians can play
+pictionary together.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains three positive integers ​N, M
+and ​Q
+(1 ≤ ​N
+, ​Q ≤ 100 000, 1 ≤ ​M
+≤ ​N
+), the number of cities, the number of days it takes to build the roads, and the number of
+queries.
+Each of the following ​Q lines contains two distinct positive integers ​A and ​B
+(1 ≤ ​A
+, ​B ≤ ​N
+)
+that denote the cities of the mathematicians who want to find out the minimal number of days
+before they can play pictionary together.</div>
+<h3>输出格式</h3>
+<br />
+<div>The $i^{th}$ line must contain the minimal number of days before the mathematicians from the $i^{th}$ query can play pictionary together.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8 3 3
+2 5
+3 6
+4 8</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+1
+2</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>25 6 1
+20 9</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>9999 2222 2
+1025 2405
+3154 8949</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1980
+2160</code></pre>
+<h2>说明</h2>
+<div>In test cases worth 40% of total points, it will hold ​N
+≤ 1000, ​Q
+≤ 100 000.
+**Clarification of the first test case:**
+On the first day, road (3, 6) is built. Therefore the answer to the second query is 1.
+On the second day, roads (2, 4), (2, 6), (2, 8), (4, 6) and (6, 8) are built. Cities 4 and 8 are now
+connected (it is possible to get from the first to the second using city 6).
+On the third day, roads between relatively prime cities are built, so cities 2 and 5 are connected.
+**Clarification of the second test case:**
+On the second day, road (20, 15) is built, whereas on the fourth day, road (15, 9) is built. After the
+fourth day, cities 20 and 9 are connected via city 15.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

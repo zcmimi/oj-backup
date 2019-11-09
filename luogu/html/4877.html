@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO14FEB] Cow Decathlon 牛的十项全能 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381912:O6c8DNAVGaIbmMoUH2K1xkGjwdhKZNAqHzA+wz7v4TQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20%24N%24%20cows%20%24%281%20%3C%3D%20N%20%3C%3D%2020%29%24%2C%20conveniently%20labeled%20%241...N%24%20as%20always%2C%20are%20preparing%20for%20a%20decathlon%20that%20has%20%24N%24%20different%20events%20%28so%20perhaps%20it%20would%20be%20better%20called%20an%20N-athlon%20instead%20of%20a%20decathlon%2C%20which%20traditionally%20has%20exactly%2010%20events%29.%5Cn%5CnCow%20i%20has%20a%20skill%20level%20of%20%24s_ij%24%20%24%281%20%3C%3D%20s_ij%20%3C%3D%201000%29%24%20when%20competing%20in%20event%20j.%20%20Each%20cow%20must%20compete%20in%20one%20and%20only%20one%20event%2C%20and%20each%20event%20must%20have%20some%20cow%20competing%20in%20it.%5Cn%5CnThe%20total%20score%20for%20all%20cows%20is%20the%20sum%20of%20their%20skill%20levels%20for%20the%20events%20in%20which%20they%20are%20competing.%20%20However%2C%20the%20event%20judges%20can%20also%20give%20out%20bonus%20points%20if%20they%20are%20particularly%20impressed.%20%20There%20are%20%24B%24%20bonuses%20%24%281%20%3C%3D%20B%20%3C%3D%2020%29%24%20that%20the%20judges%20can%20give%20out.%20Bonus%20i%20has%20three%20parts%3A%20if%20the%20cows%20obtain%20at%20least%20%24P_i%24%20points%20%24%281%20%3C%3D%20P_i%20%3C%3D%2040%2C000%29%24%20for%20the%20first%20%24K_i%24%20events%20%28including%20other%20bonuses%20involving%20just%20those%20events%29%2C%20they%20will%20get%20an%20additional%20%24A_i%24%20points%20%24%281%20%3C%3D%20A_i%20%3C%3D%201000%29%24.%20%20%5Cn%5CnFor%20example%2C%20let%20us%20consider%20%24N%20%3D%203%24%20cows%20with%20the%20following%20skills%3A%5Cn%5Cn%60%60%60%5Cn%20%20%20%20%20%20E%20V%20E%20N%20T%5Cn%20%20%20%20%20%7C%201%20%7C%202%20%7C%203%5Cn%20%20%20--%2B---%2B---%2B--%5CnC%20%201%20%7C%205%20%7C%201%20%7C%207%5Cn%20%20%20--%2B---%2B---%2B--%5CnO%20%202%20%7C%202%20%7C%202%20%7C%204%5Cn%20%20%20--%2B---%2B---%2B--%5CnW%20%203%20%7C%204%20%7C%202%20%7C%201%5Cn%60%60%60%5CnFor%20example%2C%20cow%201%20would%20earn%20the%20team%207%20points%20if%20she%20participates%20in%20event%203.%20%20%5Cn%5CnSuppose%20the%20judges%20offer%20a%20bonus%20%28B%20%3D%201%29%2C%20such%20that%20if%20the%20if%20the%20cows%20score%20at%20least%207%20points%20in%20the%20first%20two%20events%2C%20they%20will%20get%20an%20%20additional%206%20points.%20%20Here%2C%20the%20optimal%20assignment%20would%20be%20to%20assign%20cow%201%20to%20event%201%2C%20cow%202%20to%20event%203%20and%20cow%203%20to%20event%202.%20%20For%20the%20first%20two%20events%2C%20cow%201%20will%20score%205%20points%20and%20cow%203%20will%20score%202%20points%20giving%20them%207%20points%2C%20which%20is%20enough%20to%20satisfy%20bonus%201.%20%20Therefore%2C%20the%20total%20points%20that%20they%20score%20will%20be%205%2B2%2B4%2B6%3D17.%5Cn%5CnPlease%20help%20decide%20which%20events%20the%20cows%20should%20attempt%20to%20maximize%20their%20total%20score.%22%2C%22inputFormat%22%3A%22%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20%24N%2C%20B%24%5Cn%5Cn%2A%20Lines%202..B%2B1%3A%20Line%20i%2B1%20will%20contain%20the%20information%20for%20bonus%20i%20which%20is%20three%20space-%20separated%20integers%3A%20%24K_i%2C%20P_i%2C%20A_i%24.%5Cn%5Cn%2A%20Lines%20B%2B2..B%2BN%2B1%3A%20Line%20B%2B1%2Bj%20will%20contain%20the%20information%20on%20how%20cow%20j%20will%20perform%20at%20each%20%20of%20her%20events.%20This%20will%20be%20given%20in%20%24N%24%20space-separated%20integers%3A%20%24s_j1...s_jN.%24%22%2C%22outputFormat%22%3A%22%2A%20Line%201%3A%20The%20maximum%20amount%20of%20points%20that%20the%20cows%20can%20receive%2C%20including%20bonuses.%5Cn%22%2C%22samples%22%3A%5B%5B%223%201%5Cn2%207%206%5Cn5%201%207%5Cn2%202%204%5Cn4%202%201%22%2C%2217%22%5D%5D%2C%22hint%22%3A%22Cow%201%20will%20perform%20event%201%2C%20cow%203%20will%20perform%20event%202%2C%20and%20cow%202%20will%20%20perform%20event%203.%22%2C%22provider%22%3A%7B%22uid%22%3A57705%2C%22name%22%3A%22%5Cu4ffa%5Cu662f%5Cu5c0f%5Cu7a0b%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cn%5Cu7ea6%5Cu7ff0%5Cu6709N%5Cu5934%5Cu5976%5Cu725b%5Cuff0c%5Cu7ec4%5Cu6210%5Cu4e86%5Cu4e00%5Cu76f4%5Cu961f%5Cu4f0d%5Cu53c2%5Cu52a0%5Cu5168%5Cu80fd%5Cu6bd4%5Cu8d5b%5Cu3002%5Cu6bd4%5Cu8d5b%5Cu4e00%5Cu5171%5Cu6709N%5Cu9879%5Cuff0c%5Cu6bcf%5Cu5934%5Cu5976%5Cu725b%5Cu5fc5%5Cu987b%5Cu53c2%5Cu52a0%5Cu4e00%5Cu9879%5Cu6bd4%5Cu8d5b%5Cuff0c%5Cu6bcf%5Cu9879%5Cu6bd4%5Cu8d5b%5Cu4e5f%5Cu5fc5%5Cu987b%5Cu6709%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu53c2%5Cu52a0%5Cu3002%5Cu4efb%5Cu4f55%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu53ef%5Cu4ee5%5Cu80dc%5Cu4efb%5Cu4efb%5Cu4f55%5Cu4e00%5Cu9879%5Cu6bd4%5Cu8d5b%5Cuff0c%5Cu4f46%5Cu5f97%5Cu5206%5Cu4e0d%5Cu4e00%5Cu6837%5Cu3002%5Cu5982%5Cu679c%5Cu7b2ci%5Cu5934%5Cu5976%5Cu725b%5Cu53c2%5Cu52a0%5Cu7b2cj%5Cu9879%5Cu6bd4%5Cu8d5b%5Cuff0c%5Cu5728%5Cu6bd4%5Cu8d5b%5Cu7ed3%5Cu675f%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu4e3a%5Cu56e2%5Cu4f53%5Cu603b%5Cu5206%5Cu589e%5Cu52a0Si%2Cj%5Cu3002%5Cn%5Cu6bd4%5Cu8d5b%5Cu662f%5Cu6309%5Cu7167%5Cu987a%5Cu5e8f%5Cu4f9d%5Cu6b21%5Cu8fdb%5Cu884c%5Cu7684%5Cu3002%5Cu9664%5Cu4e86%5Cu4e0a%5Cu8ff0%5Cu83b7%5Cu5f97%5Cu5206%5Cu6570%5Cu7684%5Cu65b9%5Cu6cd5%5Cu4e4b%5Cu5916%5Cuff0c%5Cu8fd8%5Cu6709B%5Cu79cd%5Cu5956%5Cu52b1%5Cu5206%5Cu3002%5Cu83b7%5Cu5f97%5Cu5956%5Cu52b1%5Cu7684%5Cu65b9%5Cu6cd5%5Cu662f%5Cu5728%5Cu524d%5Cu51e0%5Cu9879%5Cu6bd4%5Cu8d5b%5Cu91cc%5Cu83b7%5Cu5f97%5Cu8db3%5Cu591f%5Cu7684%5Cu5206%5Cu6570%5Cu3002%5Cu5177%5Cu4f53%5Cu6765%5Cu8bf4%5Cuff0c%5Cu7b2ci%5Cu9879%5Cu5956%5Cu52b1%5Cu4f1a%5Cu5728%5Cu7b2cKi%5Cu9879%5Cu6bd4%5Cu8d5b%5Cu7ed3%5Cu675f%5Cu7684%5Cu65f6%5Cu5019%5Cu68c0%5Cu67e5%5Cuff0c%5Cu5982%5Cu679c%20%5Cu5f53%5Cu65f6%5Cu7684%5Cu603b%5Cu5206%5Cu5927%5Cu4e8e%5Cu6216%5Cu7b49%5Cu4e8ePi%5Cuff0c%5Cu5976%5Cu725b%5Cu4eec%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu7acb%5Cu5373%5Cu83b7%5Cu5f97%5Cu989d%5Cu5916%5Cu7684Ai%20%5Cu5206%5Cu3002%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu9879%5Cu5956%5Cu52b1%5Cu5728%5Cu540c%5Cu4e00%5Cu65f6%5Cu523b%5Cu68c0%5Cu67e5%5Cuff0c%5Cu5976%5Cu725b%5Cu53ef%5Cu4ee5%5Cu81ea%5Cu7531%5Cu5b89%5Cu6392%5Cu68c0%5Cu67e5%5Cu548c%5Cu52a0%5Cu5206%5Cu7684%5Cu987a%5Cu5e8f%5Cu3002%5Cu8bf7%5Cu95ee%5Cu7ea6%5Cu7ff0%5Cu5e94%5Cu8be5%5Cu5982%5Cu4f55%5Cu5b89%5Cu6392%5Cu5976%5Cu725b%5Cu53c2%5Cu52a0%5Cu6bd4%5Cu8d5b%5Cuff0c%5Cu624d%5Cu80fd%5Cu8ba9%5Cu5b83%5Cu4eec%5Cu83b7%5Cu5f97%5Cu6700%5Cu9ad8%5Cu7684%5Cu5206%5Cu6570%5Cuff1f%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570N%5Cu548cB%5Cuff0c1%5Cu2264N%5Cu226420%20%2C%201%5Cu2264B%5Cu226420%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5230%5Cu7b2cB%2B1%5Cu884c%5Cuff1a%5Cu7b2ci%2B1%5Cu884c%5Cu6709%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570Ki%5Cuff0cPi%5Cu548cAi%5Cuff0c1%5Cu2264Ki%5Cu2264N%20%2C1%5Cu2264Pi%5Cu226440000%20%2C%201%5Cu2264Ai%5Cu22641000%5Cn%5Cu7b2cB%2B2%5Cu884c%5Cu5230%5Cu7b2cB%2BN%2B1%5Cu884c%5Cuff1a%5Cu7b2ci%2BB%2B1%20%5Cu884c%5Cu6709N%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu4ee3%5Cu8868Si%2C1%5Cu5230Si%2CN%5Cuff0c%5Cu5bf9%5Cu6bcf%5Cu4e2a1%5Cu2264j%5Cu2264N%20%2C%201%5Cu2264Si%2Cj%5Cu22641000%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cu5355%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1a%5Cu8868%5Cu793a%5Cu5976%5Cu725b%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu83b7%5Cu5f97%5Cu7684%5Cu6700%5Cu5927%5Cu5f97%5Cu5206%5Cn%5Cn%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cn3%201%5Cn2%207%206%5Cn5%201%207%5Cn2%202%204%5Cn4%202%201%5Cn%5Cn%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%5Cn17%5Cn%5Cn%5Cu63d0%5Cu793a%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu9879%5Cu6bd4%5Cu8d5b%5Cu7531%5Cu7b2c%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu53c2%5Cu52a0%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu9879%5Cu6bd4%5Cu8d5b%5Cu7531%5Cu7b2c%5Cu4e09%5Cu5934%5Cu5976%5Cu725b%5Cu53c2%5Cu52a0%5Cuff0c%5Cu7b2c%5Cu4e09%5Cu9879%5Cu6bd4%5Cu8d5b%5Cu7531%5Cu7b2c%5Cu4e8c%5Cu5934%5Cu5976%5Cu725b%5Cu53c2%5Cu52a0%5Cu3002%5Cn%5Cntranslator%5Cuff1a2018_RNG%5Cu4e36%5Cu5996%5Cu5922%22%2C%22tags%22%3A%5B7%2C31%2C46%2C151%2C244%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A219%2C%22totalAccepted%22%3A83%2C%22pid%22%3A%22P4877%22%2C%22title%22%3A%22%5BUSACO14FEB%5D%20Cow%20Decathlon%20%5Cu725b%5Cu7684%5Cu5341%5Cu9879%5Cu5168%5Cu80fd%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A138466%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu6570%5Cu636e%5Cu6709%5Cu70b9H2O%5Cu2026%5Cu2026%5Cuff08%5Cu6ca1%5Cu6709%5Cu4eb5%5Cu6e0eUSACO%5Cu7684%5Cu610f%5Cu601d%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A29035%2C%22name%22%3A%22P4877%20%5BUSACO14FEB%5D%20Cow%20Decathlon%20%5Cu725b%5Cu7684%5Cu5341%5Cu9879%5Cu5168%5Cu80fd%22%2C%22slug%22%3A%22P4877%22%7D%7D%2C%7B%22id%22%3A123757%2C%22title%22%3A%22%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu5e94%5Cu8be5%5Cu8f93%5Cu51fa19%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A29035%2C%22name%22%3A%22P4877%20%5BUSACO14FEB%5D%20Cow%20Decathlon%20%5Cu725b%5Cu7684%5Cu5341%5Cu9879%5Cu5168%5Cu80fd%22%2C%22slug%22%3A%22P4877%22%7D%7D%2C%7B%22id%22%3A86368%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29035%2C%22name%22%3A%22P4877%20%5BUSACO14FEB%5D%20Cow%20Decathlon%20%5Cu725b%5Cu7684%5Cu5341%5Cu9879%5Cu5168%5Cu80fd%22%2C%22slug%22%3A%22P4877%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2115%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu7834%5Cu574fSabotage%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2340%22%2C%22title%22%3A%22%5Cu5976%5Cu725b%5Cu4f1a%5Cu5c55%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2899%22%2C%22title%22%3A%22%5BUSACO08JAN%5D%5Cu624b%5Cu673a%5Cu7f51%5Cu7edcCell%20Phone%20Network%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1051F%22%2C%22title%22%3A%22The%20Shortest%20Statement%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4954%22%2C%22title%22%3A%22%5BUSACO09Open%5D%20%20Tower%20of%20Hay%20%5Cu5e72%5Cu8349%5Cu5854%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO14FEB%5D%20Cow%20Decathlon%20%5Cu725b%5Cu7684%5Cu5341%5Cu9879%5Cu5168%5Cu80fd%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO14FEB] Cow Decathlon 牛的十项全能</h1>
+<h2>题意翻译</h2>
+<div>题目大意
+约翰有N头奶牛，组成了一直队伍参加全能比赛。比赛一共有N项，每头奶牛必须参加一项比赛，每项比赛也必须有一头奶牛参加。任何一头奶牛可以胜任任何一项比赛，但得分不一样。如果第i头奶牛参加第j项比赛，在比赛结束的时候，可以为团体总分增加Si,j。
+比赛是按照顺序依次进行的。除了上述获得分数的方法之外，还有B种奖励分。获得奖励的方法是在前几项比赛里获得足够的分数。具体来说，第i项奖励会在第Ki项比赛结束的时候检查，如果 当时的总分大于或等于Pi，奶牛们就可以立即获得额外的Ai 分。如果有多项奖励在同一时刻检查，奶牛可以自由安排检查和加分的顺序。请问约翰应该如何安排奶牛参加比赛，才能让它们获得最高的分数？
+输入输出格式
+输入格式
+第一行：两个整数N和B，1≤N≤20 , 1≤B≤20
+第二行到第B+1行：第i+1行有三个整数Ki，Pi和Ai，1≤Ki≤N ,1≤Pi≤40000 , 1≤Ai≤1000
+第B+2行到第B+N+1行：第i+B+1 行有N个整数，代表Si,1到Si,N，对每个1≤j≤N , 1≤Si,j≤1000。
+输出格式
+单个整数：表示奶牛们可以获得的最大得分
+样例输入
+3 1
+2 7 6
+5 1 7
+2 2 4
+4 2 1
+样例输出
+17
+提示：
+第一项比赛由第一头奶牛参加，第二项比赛由第三头奶牛参加，第三项比赛由第二头奶牛参加。
+translator：2018_RNG丶妖夢</div>
+<h2>题目描述</h2>
+<div>Farmer John's $N$ cows $(1 <= N <= 20)$, conveniently labeled $1...N$ as always, are preparing for a decathlon that has $N$ different events (so perhaps it would be better called an N-athlon instead of a decathlon, which traditionally has exactly 10 events).
+Cow i has a skill level of $s_ij$ $(1 <= s_ij <= 1000)$ when competing in event j. Each cow must compete in one and only one event, and each event must have some cow competing in it.
+The total score for all cows is the sum of their skill levels for the events in which they are competing. However, the event judges can also give out bonus points if they are particularly impressed. There are $B$ bonuses $(1 <= B <= 20)$ that the judges can give out. Bonus i has three parts: if the cows obtain at least $P_i$ points $(1 <= P_i <= 40,000)$ for the first $K_i$ events (including other bonuses involving just those events), they will get an additional $A_i$ points $(1 <= A_i <= 1000)$.
+For example, let us consider $N = 3$ cows with the following skills:
+```
+E V E N T
+| 1 | 2 | 3
+--+---+---+--
+C 1 | 5 | 1 | 7
+--+---+---+--
+O 2 | 2 | 2 | 4
+--+---+---+--
+W 3 | 4 | 2 | 1
+```
+For example, cow 1 would earn the team 7 points if she participates in event 3.
+Suppose the judges offer a bonus (B = 1), such that if the if the cows score at least 7 points in the first two events, they will get an additional 6 points. Here, the optimal assignment would be to assign cow 1 to event 1, cow 2 to event 3 and cow 3 to event 2. For the first two events, cow 1 will score 5 points and cow 3 will score 2 points giving them 7 points, which is enough to satisfy bonus 1. Therefore, the total points that they score will be 5+2+4+6=17.
+Please help decide which events the cows should attempt to maximize their total score.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>* Line 1: Two space-separated integers: $N, B$
+* Lines 2..B+1: Line i+1 will contain the information for bonus i which is three space- separated integers: $K_i, P_i, A_i$.
+* Lines B+2..B+N+1: Line B+1+j will contain the information on how cow j will perform at each of her events. This will be given in $N$ space-separated integers: $s_j1...s_jN.$</div>
+<h3>输出格式</h3>
+<br />
+<div>* Line 1: The maximum amount of points that the cows can receive, including bonuses.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+2 7 6
+5 1 7
+2 2 4
+4 2 1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>17</code></pre>
+<h2>说明</h2>
+<div>Cow 1 will perform event 1, cow 3 will perform event 2, and cow 2 will perform event 3.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

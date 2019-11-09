@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08JAN]人工湖Artificial Lake - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376116:RkDHnFVl7hCiid1xn+rh8mhv86Piet0kYaXQo0VLs40=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20oppressively%20hot%20summer%20days%20have%20raised%20the%20cows%27%20clamoring%20to%20its%20highest%20level.%20Farmer%20John%20has%20finally%20decided%20to%20build%20an%20artificial%20lake.%20For%20his%20engineering%20studies%2C%20he%20is%20modeling%20the%20lake%20as%20a%20two-dimensional%20landscape%20consisting%20of%20a%20contiguous%20sequence%20of%20N%20soon-to-be-submerged%20levels%20%281%20%5Cu2264%20N%20%5Cu2264%20100%2C000%29%20conveniently%20numbered%201..N%20from%20left%20to%20right.%5Cn%5Cn%5CnEach%20level%20i%20is%20described%20by%20two%20integers%2C%20its%20width%20Wi%20%281%20%5Cu2264%20Wi%20%5Cu2264%201%2C000%29%20and%20height%20%28like%20a%20relative%20elevation%29%20Hi%20%281%20%5Cu2264%20Hi%20%5Cu2264%201%2C000%2C000%29.%20The%20heights%20of%20FJ%27s%20levels%20are%20unique.%20An%20infinitely%20tall%20barrier%20encloses%20the%20lake%27s%20model%20on%20the%20left%20and%20right.%20One%20example%20lake%20profile%20is%20shown%20below.%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%5Cn%60%60%60cpp%5Cn%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%20%20%20%20%20%20%20%20%20%2A%20%20%3A%5Cn%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%20%20%20%20%20%20%20%20%20%2A%20%20%3A%5Cn%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%20%20%20%20%20%20%20%20%20%2A%20%208%5Cn%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%2A%2A%2A%20%20%20%20%20%20%2A%20%207%5Cn%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%2A%2A%2A%20%20%20%20%20%20%2A%20%206%5Cn%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%2A%2A%2A%20%20%20%20%20%20%2A%20%205%5Cn%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%204%20%3C-%20height%5Cn%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%203%5Cn%20%20%20%20%20%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%202%5Cn%20%20%20%20%20%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%201%5CnLevel%20%20%20%20%7C%20%201%20%7C2%7C%20%203%20%20%20%7C%5Cn%60%60%60%5CnIn%20FJ%27s%20model%2C%20he%20starts%20filling%20his%20lake%20at%20sunrise%20by%20flowing%20water%20into%20the%20bottom%20of%20the%20lowest%20elevation%20at%20a%20rate%20of%201%20square%20unit%20of%20water%20per%20minute.%20The%20water%20falls%20directly%20downward%20until%20it%20hits%20something%2C%20and%20then%20it%20flows%20and%20spreads%20as%20room-temperature%20water%20always%20does.%20As%20in%20all%20good%20models%2C%20assume%20that%20falling%20and%20flowing%20happen%20instantly.%20Determine%20the%20time%20at%20which%20each%20elevation%27s%20becomes%20submerged%20by%20a%20single%20unit%20of%20water.%5Cn%5Cn%5Cn%60%60%60cpp%5CnWATER%20%20%20%20%20%20%20%20%20%20%20%20%20%20WATER%20OVERFLOWS%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cn%20%20%20%20%20%2A%20%7C%20%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%20%20%2A%20%20%20%20%20%7C%20%20%20%20%20%20%2A%20%20%20%20%20%20%2A%20%20%20%20%20%20%20%20%20%20%20%20%2A%5Cn%20%20%20%20%20%2A%20V%20%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%20%20%2A%20%20%20%20%20V%20%20%20%20%20%20%2A%20%20%20%20%20%20%2A%20%20%20%20%20%20%20%20%20%20%20%20%2A%5Cn%20%20%20%20%20%2A%20%20%20%20%20%20%20%20%20%20%20%20%2A%20%20%20%20%20%20%2A%20%20%20%20....%20%20%20%20%2A%20%20%20%20%20%20%2A~~~~~~~~~~~~%2A%5Cn%20%20%20%20%20%2A%20%20%20%20%2A%2A%20%20%20%20%20%20%2A%20%20%20%20%20%20%2A~~~~%2A%2A%20%3A%20%20%20%20%2A%20%20%20%20%20%20%2A~~~~%2A%2A~~~~~~%2A%5Cn%20%20%20%20%20%2A%20%20%20%20%2A%2A%20%20%20%20%20%20%2A%20%20%20%20%20%20%2A~~~~%2A%2A%20%3A%20%20%20%20%2A%20%20%20%20%20%20%2A~~~~%2A%2A~~~~~~%2A%5Cn%20%20%20%20%20%2A%20%20%20%20%2A%2A%20%20%20%20%20%20%2A%20%20%20%20%20%20%2A~~~~%2A%2A~~~~~~%2A%20%20%20%20%20%20%2A~~~~%2A%2A~~~~~~%2A%5Cn%20%20%20%20%20%2A%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%20%20%20%20%20%2A~~~~%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%20%20%20%20%20%2A~~~~%2A%2A%2A%2A%2A%2A%2A%2A%2A%5Cn%20%20%20%20%20%2A~~~~%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%20%20%20%20%20%2A~~~~%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%20%20%20%20%20%2A~~~~%2A%2A%2A%2A%2A%2A%2A%2A%2A%5Cn%20%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%20%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%20%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%5Cn%20%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%20%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%20%20%20%20%20%20%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%2A%5Cn%20%20%20%20%20After%204%20mins%20%20%20%20%20%20%20%20After%2026%20mins%20%20%20%20%20%20%20After%2050%20mins%5Cn%5Cn%20%20%20%20%20Lvl%201%20submerged%20%20%20%20%20Lvl%203%20submerged%20%20%20%20%20Lvl%202%20submerged%5Cn%60%60%60%5CnWarning%3A%20The%20answer%20will%20not%20always%20fit%20in%2032%20bits.%5Cn%5Cn%5Cu590f%5Cu65e5%5Cu90a3%5Cu8ba9%5Cu4eba%5Cu5598%5Cu4e0d%5Cu8fc7%5Cu6c14%5Cu7684%5Cu9177%5Cu70ed%5Cu5c06%5Cu5976%5Cu725b%5Cu4eec%5Cu7684%5Cu70e6%5Cu8e81%5Cu60c5%5Cu7eea%5Cu63a8%5Cu5230%5Cu4e86%5Cu6700%5Cu9ad8%5Cu70b9%5Cu3002%5Cu6700%5Cu7ec8%5Cuff0cFJ%5Cu51b3%5Cu5b9a%5Cu5efa%5Cu4e00%5Cu4e2a%5Cu4eba%5Cu5de5%5Cu6e56%5Cu4f9b%5Cu5976%5Cu725b%5Cu6d88%5Cu6691%5Cu4e4b%5Cu7528%5Cu3002%5Cu4e3a%5Cu4e86%5Cu4f7f%5Cu6e56%5Cu770b%5Cu8d77%5Cu6765%5Cu66f4%5Cu52a0%5Cu771f%5Cu5b9e%5Cuff0cFJ%5Cu51b3%5Cu5b9a%5Cu5c06%5Cu6e56%5Cu7684%5Cu6a2a%5Cu622a%5Cu9762%5Cu5efa%5Cu6210N%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%5Cu4e2a%5Cu8fde%5Cu7eed%5Cu7684%5Cu5e73%5Cu53f0%5Cu9ad8%5Cu4f4e%5Cu9519%5Cu843d%5Cu7684%5Cu7ec4%5Cu5408%5Cu72b6%5Cuff0c%5Cu6240%5Cu6709%5Cu7684%5Cu5e73%5Cu53f0%5Cu4ece%5Cu5de6%5Cu5230%5Cu53f3%5Cu63091..N%5Cu4f9d%5Cu6b21%5Cu7f16%5Cu53f7%5Cu3002%5Cu5f53%5Cu7136%5Cu54af%5Cuff0c%5Cu5728%5Cu6e56%5Cu4e2d%5Cu6ce8%5Cu5165%5Cu6c34%5Cu540e%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu5e73%5Cu53f0%5Cu90fd%5Cu5c06%5Cu88ab%5Cu6df9%5Cu6ca1%5Cu3002%20%20%20%20%5Cu5e73%5Cu53f0i%5Cu5728%5Cu8bbe%5Cu8ba1%5Cu56fe%5Cu4e0a%5Cu7528%5Cu5b83%5Cu7684%5Cu5bbd%5Cu5ea6W%5C%5C_i%281%20%3C%3D%20W%5C%5C_i%20%3C%3D%201%2C000%29%5Cu548c%5Cu9ad8%5Cu5ea6%5Cuff08%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu7406%5Cu89e3%5Cu4e3a%5Cu8be5%5Cu5e73%5Cu53f0%5Cu9876%5Cu79bbFJ%5Cu6316%5Cu7684%5Cu5730%5Cu57fa%5Cu7684%5Cu9ad8%5Cu5ea6%5Cuff09H%5C%5C_i%281%20%3C%3D%20H%5C%5C_i%20%3C%3D%201%2C000%2C000%29%5Cu6765%5Cu63cf%5Cu8ff0%5Cu7684%5Cu3002%5Cu6240%5Cu6709%5Cu5e73%5Cu53f0%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu90fd%5Cu662f%5Cu72ec%5Cu4e00%5Cu65e0%5Cu4e8c%5Cu7684%5Cu3002%5Cu6e56%5Cu7684%5Cu8fb9%5Cu7f18%5Cu53ef%5Cu4ee5%5Cu89c6%5Cu4e3a%5Cu65e0%5Cu9650%5Cu9ad8%5Cu7684%5Cu5e73%5Cu53f0%5Cu3002%5Cu4e0b%5Cu9762%5Cu7ed9%5Cu51fa%5Cu4e86%5Cu4e00%5Cu5f20FJ%5Cu7684%5Cu8bbe%5Cu8ba1%5Cu56fe%5Cuff1a%5Cn%5Cn%5Cn%5Cu6309FJ%5Cu7684%5Cu8bbe%5Cu60f3%5Cuff0c%5Cu5728%5Cu5751%5Cu6316%5Cu597d%5Cu540e%5Cuff0c%5Cu4ed6%5Cu4f1a%5Cu4ee51%5Cu5355%5Cu4f4d%5C%2F%5Cu5206%5Cu949f%5Cu7684%5Cu901f%5Cu5ea6%5Cu5f80%5Cu6700%5Cu4f4e%5Cu7684%5Cu90a3%5Cu4e2a%5Cu5e73%5Cu53f0%5Cu4e0a%5Cu6ce8%5Cu6c34%5Cu3002%5Cu6c34%5Cu5728%5Cu79bb%5Cu5f00%5Cu6c34%5Cu7ba1%5Cu540e%5Cu7acb%5Cu5373%5Cu4e0b%5Cu843d%5Cuff0c%5Cu76f4%5Cu5230%5Cu649e%5Cu5230%5Cu5e73%5Cu53f0%5Cu9876%5Cu6216%5Cu662f%5Cu66f4%5Cu65e9%5Cu4e9b%5Cu65f6%5Cu5019%5Cu6ce8%5Cu5165%5Cu7684%5Cu6c34%5Cu3002%5Cu7136%5Cu540e%5Cuff0c%5Cu4e0e%5Cu6240%5Cu6709%5Cu5e38%5Cu6e29%5Cu4e0b%5Cu7684%5Cu6c34%5Cu4e00%5Cu6837%5Cuff0c%5Cu5b83%5Cu4f1a%5Cu8fc5%5Cu901f%5Cu5730%5Cu6d41%5Cu52a8%5Cu3001%5Cu6269%5Cu6563%5Cu3002%5Cu7b80%5Cu5355%5Cu8d77%5Cu89c1%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu8ba4%5Cu4e3a%5Cu8fd9%5Cu4e9b%5Cu90fd%5Cu662f%5Cu5728%5Cu77ac%5Cu95f4%5Cu5b8c%5Cu6210%5Cu7684%5Cu3002FJ%5Cu60f3%5Cu77e5%5Cu9053%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu5e73%5Cu53f0%5Cuff0c%5Cu5b83%5Cu7684%5Cu9876%5Cu90e8%5Cu662f%5Cu4ece%5Cu54ea%5Cu4e2a%5Cu65f6%5Cu523b%5Cu5f00%5Cu59cb%5Cuff0c%5Cu4e0e%5Cu6c34%5Cu9762%5Cu7684%5Cu8ddd%5Cu79bb%5Cu81f3%5Cu5c11%5Cu4e3a1%5Cu5355%5Cu4f4d%5Cu957f%5Cu5ea6%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20describes%20level%20i%20with%20two%20space-separated%20integers%3A%20Wi%20and%20Hi%5Cn%22%2C%22outputFormat%22%3A%22USACO%202008%20January%20Gold%5Cn%22%2C%22samples%22%3A%5B%5B%223%5Cn4%202%5Cn2%207%5Cn6%204%22%2C%224%5Cr%5Cn50%5Cr%5Cn26%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C46%2C287%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A223%2C%22totalAccepted%22%3A95%2C%22pid%22%3A%22P2897%22%2C%22title%22%3A%22%5BUSACO08JAN%5D%5Cu4eba%5Cu5de5%5Cu6e56Artificial%20Lake%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A5605%2C%22title%22%3A%22%5Cu8fd9%5Cu96be%5Cu9053%5Cu4e0d%5Cu5bf9%5Cu5417%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2027%2C%22name%22%3A%22P2897%20%5BUSACO08JAN%5D%5Cu4eba%5Cu5de5%5Cu6e56Artificial%20Lake%22%2C%22slug%22%3A%22P2897%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2898%22%2C%22title%22%3A%22%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2899%22%2C%22title%22%3A%22%5BUSACO08JAN%5D%5Cu624b%5Cu673a%5Cu7f51%5Cu7edcCell%20Phone%20Network%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2900%22%2C%22title%22%3A%22%5BUSACO08MAR%5D%5Cu571f%5Cu5730%5Cu5f81%5Cu7528Land%20Acquisition%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2901%22%2C%22title%22%3A%22%5BUSACO08MAR%5D%5Cu725b%5Cu6162%5Cu8dd1Cow%20Jogging%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3043%22%2C%22title%22%3A%22%5BUSACO12JAN%5D%5Cu725b%5Cu8054%5Cu76dfBovine%20Alliance%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08JAN%5D%5Cu4eba%5Cu5de5%5Cu6e56Artificial%20Lake%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08JAN]人工湖Artificial Lake</h1>
+<h2>题目描述</h2>
+<div>The oppressively hot summer days have raised the cows' clamoring to its highest level. Farmer John has finally decided to build an artificial lake. For his engineering studies, he is modeling the lake as a two-dimensional landscape consisting of a contiguous sequence of N soon-to-be-submerged levels (1 ≤ N ≤ 100,000) conveniently numbered 1..N from left to right.
+Each level i is described by two integers, its width Wi (1 ≤ Wi ≤ 1,000) and height (like a relative elevation) Hi (1 ≤ Hi ≤ 1,000,000). The heights of FJ's levels are unique. An infinitely tall barrier encloses the lake's model on the left and right. One example lake profile is shown below.
+```cpp
+* * :
+* * :
+* * 8
+* *** * 7
+* *** * 6
+* *** * 5
+* ********** 4 <- height
+* ********** 3
+*************** 2
+*************** 1
+Level | 1 |2| 3 |
+```
+In FJ's model, he starts filling his lake at sunrise by flowing water into the bottom of the lowest elevation at a rate of 1 square unit of water per minute. The water falls directly downward until it hits something, and then it flows and spreads as room-temperature water always does. As in all good models, assume that falling and flowing happen instantly. Determine the time at which each elevation's becomes submerged by a single unit of water.
+```cpp
+WATER WATER OVERFLOWS
+| |
+* | * * | * * *
+* V * * V * * *
+* * * .... * *~~~~~~~~~~~~*
+* ** * *~~~~** : * *~~~~**~~~~~~*
+* ** * *~~~~** : * *~~~~**~~~~~~*
+* ** * *~~~~**~~~~~~* *~~~~**~~~~~~*
+* ********* *~~~~********* *~~~~*********
+*~~~~********* *~~~~********* *~~~~*********
+************** ************** **************
+************** ************** **************
+After 4 mins After 26 mins After 50 mins
+Lvl 1 submerged Lvl 3 submerged Lvl 2 submerged
+```
+Warning: The answer will not always fit in 32 bits.
+夏日那让人喘不过气的酷热将奶牛们的烦躁情绪推到了最高点。最终，FJ决定建一个人工湖供奶牛消暑之用。为了使湖看起来更加真实，FJ决定将湖的横截面建成N(1 <= N <= 100,000)个连续的平台高低错落的组合状，所有的平台从左到右按1..N依次编号。当然咯，在湖中注入水后，这些平台都将被淹没。 平台i在设计图上用它的宽度W\_i(1 <= W\_i <= 1,000)和高度（你可以理解为该平台顶离FJ挖的地基的高度）H\_i(1 <= H\_i <= 1,000,000)来描述的。所有平台的高度都是独一无二的。湖的边缘可以视为无限高的平台。下面给出了一张FJ的设计图：
+按FJ的设想，在坑挖好后，他会以1单位/分钟的速度往最低的那个平台上注水。水在离开水管后立即下落，直到撞到平台顶或是更早些时候注入的水。然后，与所有常温下的水一样，它会迅速地流动、扩散。简单起见，你可以认为这些都是在瞬间完成的。FJ想知道，对于每一个平台，它的顶部是从哪个时刻开始，与水面的距离至少为1单位长度。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: N
+\* Lines 2..N+1: Line i+1 describes level i with two space-separated integers: Wi and Hi
+</div>
+<h3>输出格式</h3>
+<br />
+<div>USACO 2008 January Gold
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+4 2
+2 7
+6 4</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+50
+26</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[CERC2015]Export Estimate - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381308:EbAjMQ3B+pr682ZD80wTsfLuZVnSEFiDhARFf3PK7+8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22Luka%20owns%20a%20geographic%20data%20company%20that%20maintains%20a%20detailed%20city%20map%20and%20exports%20the%20data%20to%20interested%20parties.%20Often%2C%20clients%20do%20not%20want%20the%20complete%20map.%20Instead%2C%20they%20want%20a%20simpli%5Cufb01ed%20map%20containing%20only%20major%20streets.%20%22%2C%22description%22%3A%22City%20map%20is%20an%20undirected%20graph%20consisting%20of%20n%20intersections%20denoted%20with%20integers%20from%201%20to%20n%20and%20m%20two-way%20streets.%20Each%20street%20is%20assigned%20a%20priority%20%5Cu2013%20a%20non-negative%20integer.%20When%20requesting%20a%20map%2C%20the%20client%20selects%20a%20threshold%20priority%20p.%20The%20original%20map%20is%20then%20copied%20and%20converted%20to%20the%20exported%20map%20using%20the%20following%20procedure%3A%5Cn%5Cn1.%20All%20streets%20whose%20priority%20is%20lower%20than%20p%20are%20deleted.%20%5Cn%5Cn2.%20For%20each%20intersection%20i%20from%201%2C2%2C...%2Cn%20%28processed%20in%20that%20order%29%3A%20%5Cn%5Cn%28a%29%20If%20the%20intersection%20i%20is%20not%20connected%20to%20any%20streets%20it%20is%20deleted.%20%5Cn%5Cn%28b%29%20If%20the%20intersection%20i%20is%20connected%20to%20exactly%20two%20different%20streets%20x%20and%20y%20leading%20to%20intersections%20a%20and%20b%20both%20different%20from%20i%20then%20the%20intersection%20i%20is%20contracted%20using%20the%20following%20procedure%3A%20%5Cn%5Cni.%20Streets%20x%20and%20y%20are%20deleted.%20%5Cn%5Cnii.%20Intersection%20i%20is%20deleted.%20%5Cn%5Cniii.%20New%20street%20z%20connecting%20intersections%20a%20and%20b%20is%20added.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F16236.png%20%29%5Cn%5CnInitially%2C%20the%20map%20does%20not%20contain%20loops%20%28loop%20is%20a%20street%20that%20connects%20an%20intersection%20to%20itself%29%20or%20parallel%20edges%20%28more%20than%20one%20street%20between%20the%20same%20pair%20of%20intersections%29%2C%20but%20the%20loops%20and%20parallel%20edges%20may%20form%20during%20the%20contraction%20procedure.%20Notice%20that%2C%20in%20the%20step%202.%20%28b%29%20above%2C%20neither%20x%20nor%20y%20can%20be%20a%20loop%20%28both%20a%20and%20b%20have%20to%20be%20different%20from%20i%29%2C%20but%20the%20newly%20added%20street%20z%20could%20be%20a%20loop%20%28it%20is%20possible%20that%20a%20and%20b%20are%20same%29.%20%5Cn%5CnGiven%20a%20map%20and%20a%20sequence%20of%20incoming%20export%20requests%2C%20for%20each%20request%20%5Cufb01nd%20the%20number%20of%20intersections%20and%20the%20number%20of%20streets%20in%20the%20exported%20map.%22%2C%22inputFormat%22%3A%22The%20%5Cufb01rst%20line%20contains%20two%20integers%20n%20%281%20%5Cu2264%20n%20%5Cu2264%20300000%29%20and%20m%20%281%20%5Cu2264%20m%20%5Cu2264%20300000%29%20%5Cu2013%20the%20number%20of%20intersections%20and%20the%20number%20of%20streets%2C%20respectively.%20Each%20of%20the%20following%20m%20lines%20contains%20three%20integers%20a%2C%20b%20and%20p%20%281%5Cu2264%20a%2Cb%5Cu2264n%2C0%5Cu2264%20p%5Cu2264300000%29%20which%20describe%20a%20street%20with%20priority%20p%20connecting%20intersections%20a%20and%20b.%20No%20street%20connects%20an%20intersection%20to%20itself.%20There%20is%20at%20most%20one%20street%20between%20every%20two%20intersections.%20%5Cn%5CnThe%20following%20line%20contains%20an%20integer%20q%20%281%20%5Cu2264%20q%20%5Cu2264%20300000%29%20%5Cu2013%20the%20number%20of%20export%20requests.%20The%20following%20line%20contains%20q%20integers.%20The%20k-th%20integer%20tk%20%280%5Cu2264tk%20%5Cu2264300000%29%20is%20the%20threshold%20priority%20of%20the%20k-th%20request.%22%2C%22outputFormat%22%3A%22Output%20should%20consist%20of%20q%20lines.%20The%20k-th%20line%20should%20contain%20two%20integers%5Cu2013the%20number%20of%20intersections%20and%20the%20number%20of%20streets%2C%20respectively%2C%20in%20the%20exported%20map%20for%20the%20k-th%20request.%22%2C%22samples%22%3A%5B%5B%226%207%20%5Cn1%202%2020%20%5Cn2%203%2080%20%5Cn2%205%20100%20%5Cn3%205%2050%20%5Cn3%204%20100%20%5Cn5%206%2090%20%5Cn4%206%20100%20%5Cn4%20%5Cn25%2075%2085%2095%22%2C%222%203%20%5Cn1%201%20%5Cn2%201%20%5Cn4%202%5Cn%22%5D%2C%5B%2210%2014%20%5Cn2%207%20150%20%5Cn1%202%20100%20%5Cn2%203%20150%20%5Cn3%201%20200%20%5Cn1%204%2060%20%5Cn4%205%2020%20%5Cn2%205%20100%20%5Cn5%206%2090%20%5Cn6%207%20120%20%5Cn7%205%20130%20%5Cn6%208%2050%20%5Cn8%209%20200%20%5Cn9%2010%20200%20%5Cn10%207%20200%20%5Cn5%20%5Cn300%2050%2095%20100%20110%22%2C%220%200%20%5Cn6%209%20%5Cn4%205%20%5Cn4%205%20%5Cn5%204%22%5D%5D%2C%22hint%22%3A%22Central%20Europe%20Regional%20Contest%202015%20Problem%20E%22%2C%22provider%22%3A%7B%22uid%22%3A53374%2C%22name%22%3A%22SuperJvRuo%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A6%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%24Luka%24%5Cu62e5%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5730%5Cu7406%5Cu6570%5Cu636e%5Cu516c%5Cu53f8%5Cu4fdd%5Cu6301%5Cu7740%5Cu8be6%5Cu7ec6%5Cu7684%5Cu57ce%5Cu5e02%5Cu5730%5Cu56fe%5Cu548c%5Cu51fa%5Cu53e3%5Cu76f8%5Cu5173%5Cu7684%5Cu6570%5Cu636e%5Cu3002%5Cu4f46%5Cu662f%5Cu901a%5Cu5e38%5Cu5ba2%5Cu6237%5Cu4e0d%5Cu60f3%5Cu8981%5Cu5b8c%5Cu6574%5Cu7684%5Cu5730%5Cu56fe%5Cu3002%5Cu76f8%5Cu53cd%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu66f4%5Cu60f3%5Cu8981%5Cu4e00%5Cu4e2a%5Cu53ea%5Cu5305%5Cu542b%5Cu4e3b%5Cu8981%5Cu8857%5Cu9053%5Cu7684%5Cu7b80%5Cu5355%5Cu5730%5Cu56fe%5Cn%5Cn1.%20%5Cu6240%5Cu6709%5Cu4f18%5Cu5148%5Cu7ea7%5Cu5c0f%5Cu4e8ep%5Cu7684%5Cu8857%5Cu9053%5Cu88ab%5Cu5220%5Cu9664%5Cn%5Cn2.%20%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu8def%5Cu53e3%5Cu70b9i%5Cu4ece1%5Cu5230n%5Cuff08%5Cu6309%5Cu7167%5Cu8fd9%5Cu4e2a%5Cu987a%5Cu5e8f%5Cu5904%5Cu7406%5Cuff09%5Cuff1a%5Cn%5Cn%20%20%20%20%20%24%28a%29%24%5Cu5982%5Cu679c%5Cu8fd9%5Cu4e2a%5Cu8def%5Cu53e3%5Cu6ca1%5Cu6709%5Cu8fde%5Cu63a5%5Cu5230%5Cu4efb%5Cu4f55%5Cu8857%5Cu9053%5Cuff0c%5Cu5b83%5Cu5c31%5Cu4f1a%5Cu88ab%5Cu5220%5Cu9664%5Cn%20%20%20%20%20%5Cn%20%20%20%20%24%28b%29%24%5Cu5982%5Cu679c%5Cu8def%5Cu53e3i%5Cu6b63%5Cu597d%5Cu8fde%5Cu63a5%5Cu5230%5Cu4e24%5Cu4e2a%5Cu4e0d%5Cu540c%5Cu7684%5Cu8857%5Cu9053x%5Cu548cy%5Cuff0c%5Cu5bfc%5Cu81f4a%5Cu548cb%5Cu4e24%5Cu4e2a%5Cu8def%5Cu53e3%5Cu90fd%5Cu4e0e%5Cu8def%5Cu53e3i%5Cu4e0d%5Cu540c%5Cuff0c%5Cu90a3%5Cu4e48i%5Cu5c31%5Cu4f1a%5Cu6839%5Cu636e%5Cu4e0b%5Cu9762%5Cu7684%5Cu8fc7%5Cu7a0b%5Cu8fdb%5Cu884c%5Cu6536%5Cu7f29%5Cuff1a%5Cn%20%20%20%20%5Cn%20%20%20%20%20%24i.%24%5Cu5220%5Cu9664%5Cu9053%5Cu8defx%5Cu548c%5Cu9053%5Cu8defy%5Cn%20%20%20%20%20%5Cn%20%20%20%20%20%24ii.%24%5Cu5220%5Cu9664%5Cu8def%5Cu53e3i%5Cn%20%20%20%20%20%5Cn%20%20%20%20%20%24iii.%24%5Cu52a0%5Cu5165%5Cu4e00%5Cu4e2a%5Cu8fde%5Cu63a5%5Cu8def%5Cu53e3a%5Cu548cb%5Cu7684%5Cu65b0%5Cu9053%5Cu8defz%5Cn%20%20%20%20%20%5Cn%5Cu6700%5Cu521d%5Cuff0c%5Cu56fe%5Cu4e2d%5Cu6ca1%5Cu6709%5Cu73af%5Cuff08%5Cu5373%5Cu4e00%5Cu6761%5Cu8fde%5Cu63a5%5Cu5230%5Cu81ea%5Cu8eab%5Cu7684%5Cu8fb9%5Cuff09%5Cu6216%5Cu8005%5Cu5e73%5Cu884c%5Cu7684%5Cu8fb9%5Cuff08%5Cu5373%5Cu5728%5Cu540c%5Cu4e00%5Cu5bf9%5Cu4ea4%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu4ee5%5Cu4e0a%5Cu7684%5Cu8fb9%5Cuff09%5Cuff0c%5Cu4f46%5Cu5728%5Cu6536%5Cu7f29%5Cu7684%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu5f62%5Cu6210%5Cu73af%5Cu548c%5Cu5e73%5Cu884c%5Cu8fb9%5Cu3002%5Cu8bf7%5Cu6ce8%5Cu610f%5Cuff0c%5Cu5728%5Cu6b65%5Cu9aa42.%5Cuff08b%5Cuff09%5Cu4e4b%5Cu524d%5Cuff0cx%5Cu548cy%5Cu90fd%5Cu4e0d%5Cu80fd%5Cu662f%5Cu73af%5Cuff08%5Cu5373a%5Cu548cb%5Cu5fc5%5Cu987b%5Cu548ci%5Cu4e0d%5Cu540c%5Cuff09%5Cuff0c%5Cu4f46%5Cu662f%5Cu65b0%5Cu589e%5Cu7684z%5Cu53ef%5Cu4ee5%5Cu662f%5Cu4e00%5Cu4e2a%5Cu73af%5Cuff08%5Cu5373a%5Cu548cb%5Cu53ef%5Cu80fd%5Cu662f%5Cu76f8%5Cu540c%5Cu7684%5Cuff09%5Cn%20%20%20%20%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu5730%5Cu56fe%5Cu548c%5Cu4e00%5Cu7cfb%5Cu5217%5Cu7684%5Cu51fa%5Cu53e3%5Cu7684%5Cu8be2%5Cu95ee%2C%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu627e%5Cu5230%5Cu8def%5Cu53e3%5Cu7684%5Cu6570%5Cu91cf%5Cu548c%5Cu8857%5Cu9053%5Cu5730%5Cu56fe%5Cu51fa%5Cu53e3%5Cu7684%5Cu6570%5Cu91cf%5Cn%20%20%20%20%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cn%5Ct%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24n%281%20%5C%5Cle%20n%5C%5Cle300000%29%24%5Cu548c%24m%281%5C%5Cle%20m%5C%5Cle%20300000%29%24%5Cu5206%5Cu522b%5Cu662f%5Cu70b9%5Cu548c%5Cu8fb9%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cu540e%5Cu9762m%5Cu884c%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%5Cu5206%5Cu522b%5Cu662f%24a%2Cb%24%5Cu548c%24p%281%5C%5Cle%20a%2Cb%20%5C%5Cle%20n%2C0%5C%5Cle%20p%5C%5Cle%20300000%29%24%5Cu7528%5Cu6765%5Cu63cf%5Cu8ff0%24a%2Cb%24%5Cu4e4b%5Cu95f4%5Cu8fb9%5Cu7684%5Cu4f18%5Cu5148%5Cu7ea7%24p%2C%24%5Cu6ca1%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cu53ea%5Cu8fde%5Cu63a5%5Cu4e00%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu6700%5Cu591a%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cn%5Ct%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24q%28q%5C%5Cle%20q%5C%5Cle%20300000%29%24%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%5Cu7684%5Cu4e2a%5Cu6570%5Cuff0c%5Cu4e0b%5Cu4e00%5Cu884c%5Cu6709%24q%24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu7b2c%24k%24%5Cu4e2a%5Cu6574%5Cu6570%24tk%280%5C%5Cle%20tk%5C%5Cle%20300000%29%24%5Cu662f%5Cu7b2c%24k%24%5Cu6b21%5Cu8be2%5Cu95ee%5Cu7684%5Cu4f18%5Cu5148%5Cu7ea7%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cn%5Ct%5Cu8f93%5Cu51fa%5Cu5305%5Cu62ec%24q%24%5Cu884c%5Cu3002%5Cu7b2c%24k%24%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5206%5Cu522b%5Cu662f%5Cu7b2c%24k%24%5Cu6b21%5Cu8be2%5Cu95ee%5Cu7684%5Cu70b9%5Cu548c%5Cu8fb9%5Cu7684%5Cu4e2a%5Cu6570%5Cn%5CnTranslated%20by%20%40Ervin%20%22%2C%22tags%22%3A%5B32%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A25%2C%22totalAccepted%22%3A16%2C%22pid%22%3A%22P4350%22%2C%22title%22%3A%22%5BCERC2015%5DExport%20Estimate%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A37830%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu7684%5Cu7ffb%5Cu8bd1%5Cu3002%5Cu3002%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A24666%2C%22name%22%3A%22P4350%20%5BCERC2015%5DExport%20Estimate%22%2C%22slug%22%3A%22P4350%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BCERC2015%5DExport%20Estimate%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[CERC2015]Export Estimate</h1>
+<h2>题意翻译</h2>
+<div>$Luka$拥有一个地理数据公司保持着详细的城市地图和出口相关的数据。但是通常客户不想要完整的地图。相反，他们更想要一个只包含主要街道的简单地图
+1. 所有优先级小于p的街道被删除
+2. 对于每一个路口点i从1到n（按照这个顺序处理）：
+$(a)$如果这个路口没有连接到任何街道，它就会被删除
+$(b)$如果路口i正好连接到两个不同的街道x和y，导致a和b两个路口都与路口i不同，那么i就会根据下面的过程进行收缩：
+$i.$删除道路x和道路y
+$ii.$删除路口i
+$iii.$加入一个连接路口a和b的新道路z
+最初，图中没有环（即一条连接到自身的边）或者平行的边（即在同一对交点之间有一条以上的边），但在收缩的过程中可能会形成环和平行边。请注意，在步骤2.（b）之前，x和y都不能是环（即a和b必须和i不同），但是新增的z可以是一个环（即a和b可能是相同的）
+给定一个地图和一系列的出口的询问,每个询问找到路口的数量和街道地图出口的数量
+**输入格式：**
+第一行包含两个整数$n(1 \le n\le300000)$和$m(1\le m\le 300000)$分别是点和边的数量。后面m行包含三个整数分别是$a,b$和$p(1\le a,b \le n,0\le p\le 300000)$用来描述$a,b$之间边的优先级$p,$没有一条边只连接一个点，两个点之间最多有一条边
+第二行包含一个整数$q(q\le q\le 300000)$表示询问的个数，下一行有$q$个整数，第$k$个整数$tk(0\le tk\le 300000)$是第$k$次询问的优先级
+**输出格式：**
+输出包括$q$行。第$k$行包含两个整数，分别是第$k$次询问的点和边的个数
+Translated by @Ervin </div>
+<h2>题目背景</h2>
+<div>Luka owns a geographic data company that maintains a detailed city map and exports the data to interested parties. Often, clients do not want the complete map. Instead, they want a simpliﬁed map containing only major streets. </div>
+<h2>题目描述</h2>
+<div>City map is an undirected graph consisting of n intersections denoted with integers from 1 to n and m two-way streets. Each street is assigned a priority – a non-negative integer. When requesting a map, the client selects a threshold priority p. The original map is then copied and converted to the exported map using the following procedure:
+1. All streets whose priority is lower than p are deleted.
+2. For each intersection i from 1,2,...,n (processed in that order):
+(a) If the intersection i is not connected to any streets it is deleted.
+(b) If the intersection i is connected to exactly two different streets x and y leading to intersections a and b both different from i then the intersection i is contracted using the following procedure:
+i. Streets x and y are deleted.
+ii. Intersection i is deleted.
+iii. New street z connecting intersections a and b is added.
+![](https://cdn.luogu.com.cn/upload/pic/16236.png )
+Initially, the map does not contain loops (loop is a street that connects an intersection to itself) or parallel edges (more than one street between the same pair of intersections), but the loops and parallel edges may form during the contraction procedure. Notice that, in the step 2. (b) above, neither x nor y can be a loop (both a and b have to be different from i), but the newly added street z could be a loop (it is possible that a and b are same).
+Given a map and a sequence of incoming export requests, for each request ﬁnd the number of intersections and the number of streets in the exported map.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The ﬁrst line contains two integers n (1 ≤ n ≤ 300000) and m (1 ≤ m ≤ 300000) – the number of intersections and the number of streets, respectively. Each of the following m lines contains three integers a, b and p (1≤ a,b≤n,0≤ p≤300000) which describe a street with priority p connecting intersections a and b. No street connects an intersection to itself. There is at most one street between every two intersections.
+The following line contains an integer q (1 ≤ q ≤ 300000) – the number of export requests. The following line contains q integers. The k-th integer tk (0≤tk ≤300000) is the threshold priority of the k-th request.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output should consist of q lines. The k-th line should contain two integers–the number of intersections and the number of streets, respectively, in the exported map for the k-th request.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 7 
+1 2 20 
+2 3 80 
+2 5 100 
+3 5 50 
+3 4 100 
+5 6 90 
+4 6 100 
+4 
+25 75 85 95</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 3 
+1 1 
+2 1 
+4 2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>10 14 
+2 7 150 
+1 2 100 
+2 3 150 
+3 1 200 
+1 4 60 
+4 5 20 
+2 5 100 
+5 6 90 
+6 7 120 
+7 5 130 
+6 8 50 
+8 9 200 
+9 10 200 
+10 7 200 
+5 
+300 50 95 100 110</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0 0 
+6 9 
+4 5 
+4 5 
+5 4</code></pre>
+<h2>说明</h2>
+<div>Central Europe Regional Contest 2015 Problem E</div>
+</article>
+</div>
+</div>
+</body>
+</html>

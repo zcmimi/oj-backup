@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[SHOI2011]扫雷机器人 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381640:mm9mVmS+4tGjX4BMtPUv6EB4/hEcjaFv+rQIbj0n+wU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu626b%5Cu96f7%5Cu662f%5Cu9646%5Cu519b%5Cu6218%5Cu573a%5Cu4e0a%5Cu4e00%5Cu9879%5Cu91cd%5Cu8981%5Cu7684%5Cu800c%5Cu5371%5Cu9669%5Cu7684%5Cu4efb%5Cu52a1%5Cu3002%5Cu4e3a%5Cu6b64%5Cuff0c%20AL%20%5Cu519b%5Cu5de5%5Cu5382%5Cu4e13%5Cu95e8%5Cu7814%5Cu5236%5Cu4e86%5Cu4e00%5Cu79cd%5Cu626b%5Cu96f7%5Cu673a%5Cu5668%5Cu4eba%5Cu3002%5Cu8fd9%5Cu79cd%5Cu673a%5Cu5668%5Cu4eba%5Cu662f%5Cu4e13%5Cu95e8%5Cu9488%5Cu5bf9%5Cu76f4%5Cu7ebf%5Cu5f62%5Cu96f7%5Cu9635%5Cu8bbe%5Cu8ba1%5Cu7684%5Cu3002%5Cu6240%5Cu8c13%5Cu76f4%5Cu7ebf%5Cu5f62%5Cu96f7%5Cu9635%5Cuff0c%5Cu5c31%5Cu662f%5Cu6240%5Cu6709%5Cu7684%5Cu5730%5Cu96f7%5Cu90fd%5Cu57cb%5Cu5728%5Cu540c%5Cu4e00%5Cu6761%5Cu76f4%5Cu7ebf%5Cu4e0a%5Cu3002%5Cu4f8b%5Cu5982%5Cu56fe%5Cu4e2d%5Cu9ed1%5Cu70b9%5Cu8868%5Cu793a%5Cu7684%5Cu96f7%5Cu9635%5Cu5c31%5Cu662f%5Cu76f4%5Cu7ebf%5Cu5f62%5Cu96f7%5Cu9635%5Cu3002%5Cn%5Cn%21%5B0%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F20066.png%29%5Cn%5CnAL%20%5Cu519b%5Cu5de5%5Cu5382%5Cu751f%5Cu4ea7%5Cu7684%5Cu626b%5Cu96f7%5Cu673a%5Cu5668%5Cu4eba%5Cu7684%5Cu6392%5Cu96f7%5Cu65b9%5Cu6cd5%5Cu53ea%5Cu6709%5Cu4e00%5Cu79cd%5Cuff0c%5Cu90a3%5Cu5c31%5Cu662f%5Cu5b89%5Cu5168%5Cu5f15%5Cu7206%5Cu3002%5Cu6bcf%5Cu6b21%5Cuff0c%5Cu673a%5Cu5668%5Cu4eba%5Cu5728%5Cu6240%5Cu6709%5Cu63a2%5Cu6d4b%5Cu5230%5Cu7684%5Cu5730%5Cu96f7%5Cu4e2d%5Cu9009%5Cu62e9%5Cu4e00%5Cu9897%5Cu5f15%5Cu7206%5Cu3002%5Cu88ab%5Cu5f15%5Cu7206%5Cu7684%5Cu5730%5Cu96f7%5Cu4f1a%5Cu63a5%5Cu8fde%5Cu5f15%5Cu7206%5Cu4e0d%5Cu8d85%5Cu8fc7%5Cu4ed6%5Cu7684%5Cu7206%5Cu70b8%5Cu5a01%5Cu529b%5Cu8303%5Cu56f4%5Cu7684%5Cu5176%5Cu5b83%5Cu5730%5Cu96f7%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu88ab%5Cu95f4%5Cu63a5%5Cu5f15%5Cu7206%5Cu7684%5Cu5730%5Cu96f7%5Cu8fd8%5Cu80fd%5Cu5f15%5Cu8d77%5Cu8fdb%5Cu4e00%5Cu6b65%5Cu7684%5Cu8fde%5Cu9501%5Cu7206%5Cu70b8%5Cu3002%5Cu4f8b%5Cu5982%5Cu56fe%5Cu4e2d%5Cuff0c%5Cu7528%5Cu4e00%5Cu4e2a%5Cu5706%5Cu7684%5Cu534a%5Cu5f84%5Cu8868%5Cu793a%5Cu5730%5Cu96f7%5Cu7684%5Cu7206%5Cu70b8%5Cu5a01%5Cu529b%5Cu3002%5Cu5982%5Cu679c%5Cu5f15%5Cu7206%20%242%24%20%5Cu53f7%5Cu96f7%5Cuff0c%20%241%24%20%5Cu3001%20%242%24%20%5Cu53f7%5Cu96f7%5Cu90fd%5Cu4f1a%5Cu7206%5Cu70b8%5Cuff1b%5Cu5982%5Cu679c%5Cu5f15%5Cu7206%20%243%24%20%5Cu53f7%5Cu96f7%5Cuff0c%20%244%24%20%5Cu9897%5Cu5730%5Cu96f7%5Cu5168%5Cu90fd%5Cu4f1a%5Cu7206%5Cu70b8%5Cuff1b%5Cu800c%5Cu5982%5Cu679c%5Cu5f15%5Cu7206%20%244%24%20%5Cu53f7%5Cu96f7%5Cuff0c%5Cu90a3%5Cu5c31%5Cu53ea%5Cu6709%5Cu5b83%5Cu4e00%5Cu9897%5Cu7206%5Cu70b8%5Cu3002%5Cn%5Cn%5Cu867d%5Cu7136%5Cu662f%5Cu673a%5Cu5668%5Cu4eba%5Cuff0c%5Cu4f46%5Cu5f15%5Cu7206%5Cu4e5f%5Cu662f%5Cu5371%5Cu9669%5Cu7684%5Cu3002%5Cu6240%5Cu4ee5%5Cuff0c%5Cu626b%5Cu96f7%5Cu673a%5Cu5668%5Cu4eba%5Cu7684%5Cu8ba2%5Cu8d2d%5Cu4eba%5Cu5e0c%5Cu671b%5Cu673a%5Cu5668%5Cu4eba%5Cu80fd%5Cu5728%5Cu5b9e%5Cu6218%5Cu4e2d%5Cu91c7%5Cu53d6%5Cu5f15%5Cu7206%5Cu6b21%5Cu6570%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5c11%5Cu7684%5Cu70b8%5Cu6bc1%5Cu6240%5Cu6709%5Cu5730%5Cu96f7%5Cu7684%5Cu6392%5Cu96f7%5Cu65b9%5Cu6848%5Cu3002%5Cu4e8e%5Cu662f%20AL%20%5Cu519b%5Cu5de5%5Cu5382%5Cu60f3%5Cu5c31%5Cu6b64%5Cu65b9%5Cu9762%5Cu5bf9%5Cu673a%5Cu5668%5Cu4eba%5Cu8fdb%5Cu884c%5Cu6d4b%5Cu8bd5%5Cu3002%5Cu4e3a%5Cu4e86%5Cu8bc4%5Cu4f30%5Cu673a%5Cu5668%5Cu4eba%5Cu7684%5Cu8868%5Cu73b0%5Cuff0c%20AL%20%5Cu519b%5Cu5de5%5Cu5382%5Cu6253%5Cu7b97%5Cu4e8b%5Cu5148%5Cu8ba1%5Cu7b97%5Cu51fa%5Cuff1a%5Cu5728%5Cu4e00%5Cu4e2a%5Cu76f4%5Cu7ebf%5Cu5f62%5Cu96f7%5Cu9635%5Cuff08%5Cu5373%5Cu8f93%5Cu5165%5Cu7684%5Cu96f7%5Cu9635%5Cuff09%5Cu4e2d%5Cuff0c%5Cu5982%5Cu679c%5Cu968f%5Cu673a%5Cu8fdb%5Cu884c%5Cu5f15%5Cu7206%5Cuff0c%5Cu5b8c%5Cu6210%5Cu6392%5Cu96f7%5Cu5de5%5Cu4f5c%5Cu6240%5Cu9700%5Cu8981%5Cu5f15%5Cu7206%5Cu6b21%5Cu6570%5Cu7684%5Cu671f%5Cu671b%5Cuff1b%5Cu5e76%5Cu5c06%5Cu8fd9%5Cu4e2a%5Cu503c%5Cu4e0e%5Cu673a%5Cu5668%5Cu4eba%5Cu7684%5Cu5b9e%5Cu9645%5Cu6392%5Cu96f7%5Cu65b9%5Cu6848%5Cu76f8%5Cu6bd4%5Cu8f83%5Cuff0c%5Cu6765%5Cu8bc4%5Cu4f30%5Cu4ed6%5Cu7684%5Cu8868%5Cu73b0%5Cu3002%5Cn%5Cn%5Cu6240%5Cu8c13%5Cu201c%5Cu968f%5Cu673a%5Cu8fdb%5Cu884c%5Cu5f15%5Cu7206%5Cu201d%5Cu662f%5Cu6307%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu5728%5Cu6240%5Cu6709%5Cu6ca1%5Cu6709%5Cu88ab%5Cu5f15%5Cu7206%5Cu7684%5Cu5730%5Cu96f7%5Cu4e2d%5Cu7b49%5Cu6982%5Cu7387%5Cu7684%5Cu968f%5Cu673a%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu8fdb%5Cu884c%5Cu5f15%5Cu7206%5Cu3002%5Cu5f53%5Cu8fd9%5Cu4e00%5Cu6b21%5Cu5f15%5Cu7206%5Cu5f15%5Cu53d1%5Cu7684%5Cu8fde%5Cu73af%5Cu7206%5Cu70b8%5Cu7ed3%5Cu675f%5Cu540e%5Cuff0c%5Cu5982%5Cu679c%5Cu8fd8%5Cu6709%5Cu5730%5Cu96f7%5Cu6ca1%5Cu6709%5Cu88ab%5Cu5f15%5Cu7206%5Cuff0c%5Cu5219%5Cu91cd%5Cu590d%5Cu4e0a%5Cu9762%5Cu7684%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu76f4%5Cu5230%5Cu6240%5Cu6709%5Cu5730%5Cu96f7%5Cu90fd%5Cu88ab%5Cu5f15%5Cu7206%5Cu4e3a%5Cu6b62%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu8f93%5Cu5165%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24n%24%20%5Cuff0c%5Cu8868%5Cu793a%5Cu5730%5Cu96f7%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu53bb%20%24n%24%20%5Cu884c%5Cuff0c%5Cu6309%5Cu7167%5Cu5730%5Cu96f7%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu987a%5Cu5e8f%5Cuff0c%5Cu6bcf%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu9897%5Cu5730%5Cu96f7%5Cu3002%5Cu5176%5Cu4e2d%5Cuff0c%5Cu7b2c%20%24i%2B1%24%20%5Cu884c%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24x_i%24%20%5Cu548c%20%24d_i%24%20%5Cuff0c%5Cu5206%5Cu522b%5Cu662f%5Cu5730%5Cu96f7%5Cu7684%5Cu5750%5Cu6807%5Cu548c%5Cu5730%5Cu96f7%5Cu7684%5Cu7206%5Cu70b8%5Cu5a01%5Cu529b%5Cu3002%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu53f7%5Cu5730%5Cu96f7%5Cu7684%5Cu7206%5Cu70b8%5Cu80fd%5Cu76f4%5Cu63a5%5Cu8fdb%5Cu4e00%5Cu6b65%5Cu5f15%5Cu7206%5Cu7b2c%20%24j%24%20%5Cu53f7%5Cu5730%5Cu96f7%5Cu7684%5Cu6761%5Cu4ef6%5Cu662f%20%24%7Cx_i-x_j%7C%20%5C%5Cle%20d%24%20%5Cu3002%20%5Cu8f93%5Cu5165%5Cu4fdd%5Cu8bc1%5Cuff1a%20%24%7Cx_i%7C%20%5C%5Cle%2010%5E8%24%20%5Cuff0c%20%241%20%5C%5Cle%20d_i%20%5C%5Cle%2010%5E8%24%20%5Cu3002%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu5b9e%5Cu6570%5Cuff0c%5Cu5373%5Cu4e3a%5Cu7b54%5Cu6848%5Cu3002%5Cu56db%5Cu820d%5Cu4e94%5Cu5165%5Cu5230%5Cu5c0f%5Cu6570%5Cu70b9%5Cu540e%5Cu56db%5Cu4f4d%5Cu3002%22%2C%22samples%22%3A%5B%5B%224%5Cn0%201%5Cn2%202%5Cn8%207%5Cn11%202%22%2C%222.3333%22%5D%2C%5B%223%5Cn-10%2010%5Cn0%201%5Cn10%2010%22%2C%222.3333%22%5D%2C%5B%222%5Cn1%2010%5Cn2%20100%22%2C%221.0000%5Cn%22%5D%2C%5B%229%5Cn1%2010%5Cn2%2010%5Cn3%2010%5Cn4%2010%5Cn5%2010%5Cn6%2010%5Cn7%2010%5Cn8%2010%5Cn1000%202000%22%2C%221.8889%22%5D%5D%2C%22hint%22%3A%22%2A%2A%5Cu63d0%5Cu793a%2A%2A%5Cn%5Cn%5Cu672c%5Cu9898%5Cu7684%5Cu8bd5%5Cu9898%5Cu76ee%5Cu5f55%5Cu4e0b%5Cu6709%20%2410%24%20%5Cu4e2a%5Cu989d%5Cu5916%5Cu7684%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%5Cu6587%5Cu4ef6%20%60%60robot20111.in~robot201110.in%60%60%20%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu5b83%5Cu4eec%5Cu5bf9%5Cu5e94%5Cu7684%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cu6587%5Cu4ef6%20%60%60robot20111.out~robot201110.out%60%60%20%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu6570%5Cu636e%5Cu7b26%5Cu5408%5Cu672c%5Cu9898%5Cu4e2d%5Cu5173%5Cu4e8e%5Cu6570%5Cu636e%5Cu89c4%5Cu6a21%5Cu7684%5Cu5168%5Cu90e8%5Cu7ea6%5Cu5b9a%5Cuff0c%5Cu4f46%5Cu5b83%5Cu4eec%5Cu4e0d%5Cu662f%5Cu6700%5Cu7ec8%5Cu7684%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu3002%5Cn%5Cn%2A%2A%5B%5Cu4e0b%5Cu8f7d%5Cu5730%5Cu5740%5D%28https%3A%5C%2F%5C%2Fpan.baidu.com%5C%2Fs%5C%2F1Q5X52FMH38UYvmrEsVsEkA%29%2A%2A%5Cuff0c%5Cu5bc6%5Cu7801%5Cuff1aypbv%5Cu3002%5Cn%5Cn%2A%2A%5Cu8bc4%5Cu5206%5Cu65b9%5Cu5f0f%2A%2A%5Cn%5Cn%5Cu5728%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cuff0c%5Cu5982%5Cu679c%5Cu60a8%5Cu7684%5Cu8f93%5Cu51fa%5Cu662f%20%24YourAns%24%20%5Cuff0c%5Cu800c%5Cu6807%5Cu51c6%5Cu7b54%5Cu6848%5Cu662f%20%24StdAns%24%20%5Cuff0c%5Cu90a3%5Cu4e48%5Cuff1a%5Cn%5Cn-%20%20%20%20%5Cu5f53%20%24%20%7CYourAns-StdAns%7C%20%5C%5Cle%200.0001%24%20%5Cu65f6%5Cuff0c%5Cu8be5%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu5f97%20%2410%24%20%5Cu5206%5Cu3002%5Cn%5Cn-%20%20%20%20%5Cu5f53%20%240.01%20%5C%5Cge%20%7CYourAns-StdAns%7C%20%3E%200.0001%24%20%5Cu65f6%5Cuff0c%5Cu8be5%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu5f97%20%246%24%20%5Cu5206%5Cu3002%5Cn%5Cn-%20%20%20%20%5Cu5f53%20%240.5%20%5C%5Cge%20%7CYourAns-StdAns%7C%20%3E%200.01%24%20%5Cu65f6%5Cuff0c%5Cu8be5%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu5f97%20%242%24%20%5Cu5206%5Cu3002%5Cn%5Cn-%20%20%20%20%5Cu5426%5Cu5219%5Cu5f97%20%240%24%20%5Cu5206%5Cu3002%5Cn%5Cn%2A%2A%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%2A%2A%5Cn%5Cn%5Cu6d4b%5Cu8bd5%5Cu70b9%20%241%24%5Cuff1a%24n%20%5C%5Cle%2020%24%5Cu3002%5Cn%5Cn%5Cu6d4b%5Cu8bd5%5Cu70b9%20%242%24%5Cuff1a%24n%20%5C%5Cle%20200%24%20%5Cuff0c%5Cu4e14%5Cu4efb%5Cu610f%5Cu65b9%5Cu6848%5Cu90fd%5Cu4fdd%5Cu8bc1%5Cu5f15%5Cu7206%5Cu6b21%5Cu6570%5Cu4e0d%5Cu8d85%5Cu8fc7%20%2420%24%5Cu3002%5Cn%5Cn%5Cu6d4b%5Cu8bd5%5Cu70b9%20%243%24%5Cuff1a%24n%20%5C%5Cle%20200%24%5Cu3002%5Cn%5Cn%5Cu6d4b%5Cu8bd5%5Cu70b9%20%244%20%5C%5Csim%205%24%5Cuff1a%24n%20%5C%5Cle%204000%24%20%5Cuff0c%5Cu4e14%5Cu4efb%5Cu610f%5Cu65b9%5Cu6848%5Cu90fd%5Cu4fdd%5Cu8bc1%5Cu5f15%5Cu7206%5Cu6b21%5Cu6570%5Cu4e0d%5Cu8d85%5Cu8fc7%20%2420%24%5Cu3002%5Cn%5Cn%5Cu6d4b%5Cu8bd5%5Cu70b9%20%246%20%5C%5Csim%2010%24%5Cuff1a%24n%20%5C%5Cle%204000%24%5Cu3002%22%2C%22provider%22%3A%7B%22uid%22%3A41051%2C%22name%22%3A%22%5Cu548c%5Cu6cc9%5Cu6b63%5Cu5b97%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B28%2C48%2C89%2C107%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A19%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22P4637%22%2C%22title%22%3A%22%5BSHOI2011%5D%5Cu626b%5Cu96f7%5Cu673a%5Cu5668%5Cu4eba%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BSHOI2011%5D%5Cu626b%5Cu96f7%5Cu673a%5Cu5668%5Cu4eba%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[SHOI2011]扫雷机器人</h1>
+<h2>题目描述</h2>
+<div>扫雷是陆军战场上一项重要的而危险的任务。为此， AL 军工厂专门研制了一种扫雷机器人。这种机器人是专门针对直线形雷阵设计的。所谓直线形雷阵，就是所有的地雷都埋在同一条直线上。例如图中黑点表示的雷阵就是直线形雷阵。
+![0](https://cdn.luogu.com.cn/upload/pic/20066.png)
+AL 军工厂生产的扫雷机器人的排雷方法只有一种，那就是安全引爆。每次，机器人在所有探测到的地雷中选择一颗引爆。被引爆的地雷会接连引爆不超过他的爆炸威力范围的其它地雷，这些被间接引爆的地雷还能引起进一步的连锁爆炸。例如图中，用一个圆的半径表示地雷的爆炸威力。如果引爆 $2$ 号雷， $1$ 、 $2$ 号雷都会爆炸；如果引爆 $3$ 号雷， $4$ 颗地雷全都会爆炸；而如果引爆 $4$ 号雷，那就只有它一颗爆炸。
+虽然是机器人，但引爆也是危险的。所以，扫雷机器人的订购人希望机器人能在实战中采取引爆次数尽可能少的炸毁所有地雷的排雷方案。于是 AL 军工厂想就此方面对机器人进行测试。为了评估机器人的表现， AL 军工厂打算事先计算出：在一个直线形雷阵（即输入的雷阵）中，如果随机进行引爆，完成排雷工作所需要引爆次数的期望；并将这个值与机器人的实际排雷方案相比较，来评估他的表现。
+所谓“随机进行引爆”是指，每次在所有没有被引爆的地雷中等概率的随机选择一个进行引爆。当这一次引爆引发的连环爆炸结束后，如果还有地雷没有被引爆，则重复上面的操作，直到所有地雷都被引爆为止。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>输入的第一行是一个正整数 $n$ ，表示地雷的个数。
+接下去 $n$ 行，按照地雷的位置顺序，每行描述一颗地雷。其中，第 $i+1$ 行有两个整数 $x_i$ 和 $d_i$ ，分别是地雷的坐标和地雷的爆炸威力。也就是说，第 $i$ 号地雷的爆炸能直接进一步引爆第 $j$ 号地雷的条件是 $|x_i-x_j| \le d$ 。 输入保证： $|x_i| \le 10^8$ ， $1 \le d_i \le 10^8$ 。</div>
+<h3>输出格式</h3>
+<br />
+<div>输出只有一行，包含一个实数，即为答案。四舍五入到小数点后四位。</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+0 1
+2 2
+8 7
+11 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2.3333</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+-10 10
+0 1
+10 10</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2.3333</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2
+1 10
+2 100</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1.0000
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>9
+1 10
+2 10
+3 10
+4 10
+5 10
+6 10
+7 10
+8 10
+1000 2000</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>1.8889</code></pre>
+<h2>说明</h2>
+<div>**提示**
+本题的试题目录下有 $10$ 个额外的输入样例文件 ``robot20111.in~robot201110.in`` ，以及它们对应的输出样例文件 ``robot20111.out~robot201110.out`` 。这些数据符合本题中关于数据规模的全部约定，但它们不是最终的测试数据。
+**[下载地址](https://pan.baidu.com/s/1Q5X52FMH38UYvmrEsVsEkA)**，密码：ypbv。
+**评分方式**
+在每个测试点，如果您的输出是 $YourAns$ ，而标准答案是 $StdAns$ ，那么：
+- 当 $ |YourAns-StdAns| \le 0.0001$ 时，该测试点得 $10$ 分。
+- 当 $0.01 \ge |YourAns-StdAns| > 0.0001$ 时，该测试点得 $6$ 分。
+- 当 $0.5 \ge |YourAns-StdAns| > 0.01$ 时，该测试点得 $2$ 分。
+- 否则得 $0$ 分。
+**数据范围**
+测试点 $1$：$n \le 20$。
+测试点 $2$：$n \le 200$ ，且任意方案都保证引爆次数不超过 $20$。
+测试点 $3$：$n \le 200$。
+测试点 $4 \sim 5$：$n \le 4000$ ，且任意方案都保证引爆次数不超过 $20$。
+测试点 $6 \sim 10$：$n \le 4000$。</div>
+</article>
+</div>
+</div>
+</body>
+</html>

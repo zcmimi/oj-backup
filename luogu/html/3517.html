@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[POI2011]WYK-Plot - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376990:W+GmbZuHrYXp6hwuWsaqFNGranEL/E35E4EKz2wt6/o=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22We%20call%20any%20sequence%20of%20points%20in%20the%20plane%20a%20plot.%5Cn%5CnWe%20intend%20to%20replace%20a%20given%20plot%20%24%28P_1%2C%5C%5Ccdots%2CP_n%29%24%20with%20another%20that%20will%20%20%20%20have%20at%20most%20%24m%24%20points%20%28%24m%5C%5Cle%20n%24%29%20in%20such%20a%20way%20that%20it%20%5C%22resembles%5C%22%20the%20%20%20%20original%20plot%20best.%5Cn%5CnThe%20new%20plot%20is%20created%20as%20follows.%20The%20sequence%20of%20points%20%24P_1%2C%5C%5Ccdots%2CP_n%24%20can%20be%20partitioned%20into%20%24s%24%20%28%24s%5C%5Cle%20m%24%29%20contiguous%20subsequences%3A%5Cn%5Cn%24%28P_%7Bk_0%2B1%7D%2C%5C%5Ccdots%2CP_%7Bk_1%7D%29%2C%28P_%7Bk_1%2B1%7D%2C%5C%5Ccdots%2CP_%7Bk_2%7D%29%2C%5C%5Ccdots%2C%28P_%7Bk_%7Bs-1%7D%2B1%7D%2C%5C%5Ccdots%2CP_%7Bk_s%7D%29%24%20where%20%240%3Dk_0%3Ck_1%3Ck_2%3C%5C%5Ccdots%3Ck_s%3Dn%24%2Cand%20afterwards%20each%20subsequence%20%24%28P_%7Bk_%7Bi-1%7D%2B1%7D%2C%5C%5Ccdots%2CP_%7Bk_i%7D%29%24%2C%20for%20%24i%3D1%2C%5C%5Ccdots%2Cs%24%2Cis%20replaced%20by%20a%20new%20point%20%24Q_i%24.%5Cn%5CnIn%20that%20case%20we%20say%20that%20each%20of%20the%20points%20%24P_%7Bk_%7Bi-1%7D%2B1%7D%2C%5C%5Ccdots%2CP_%7Bk_i%7D%24%20has%20been%20contracted%20to%20the%20point%20%24Q_i%24.%5Cn%5CnAs%20a%20result%20a%20new%20plot%2C%20represented%20by%20the%20points%20%24Q_1%2C%5C%5Ccdots%2CQ_s%24%2C%20is%20created.%5Cn%5CnThe%20measure%20of%20such%20plot%27s%20resemblance%20to%20the%20original%20is%20the%20maximum%20distance%20of%20all%20the%20points%20%24P_1%2C%5C%5Ccdots%2CP_n%24%20to%20the%20point%20it%20has%20been%20contracted%20to%3A%5Cn%5Cn%24max_%7Bi%3D1%2C%5C%5Ccdots%2Cs%7D%28max_%7Bj%3Dk_%7Bi-1%7D%2B1%2C%5C%5Ccdots%2Ck_i%7D%28d%28P_j%2CQ_i%29%29%29%24%20%20%20%20where%20%24d%28P_j%2CQ_i%29%24%20denotes%20the%20distance%20between%20%24P_j%24%20and%20%24Q_i%24%2C%20given%20by%20the%20well-known%20formula%3A%5Cn%5Cn%24d%28%28x_1%2Cy_1%29%2C%28x_2%2Cy_2%29%29%3D%5C%5Csqrt%7B%28x_2-x_1%29%5E2%2B%28y_2-y_1%29%5E2%7D%24%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F6975.png%29%20%5Cn%5CnAn%20exemplary%20plot%20%24P_1%2C%5C%5Ccdots%2CP_7%24%20and%20the%20new%20plot%20%24%28Q_1%2CQ_2%29%24%2C%20where%20%24%28P_1%2C%5C%5Ccdots%2CP_4%29%24%20are%20contracted%20to%20%24Q_1%24%2C%20whereas%20%24%28P_5%2CP_6%2CP_7%29%24%20to%20%24Q_2%24.%5Cn%5CnFor%20a%20given%20plot%20consisting%20of%20%24n%24%20points%2C%20you%20are%20to%20find%20the%20plot%20that%20%20%20%20resembles%20it%20most%20while%20having%20at%20most%20%24m%24%20points%2C%20%20%20%20where%20the%20partitioning%20into%20contiguous%20subsequences%20is%20arbitrary.%5Cn%5CnDue%20to%20limited%20precision%20of%20floating%20point%20operations%2C%20a%20result%20is%20deemed%20%20%20%20correct%20if%20its%20resemblance%20to%20the%20given%20plot%20is%20larger%20than%20the%20optimum%20%20%20%20resemblance%20by%20at%20most%20%240.000001%24.%5Cn%5Cn%5Cu7ed9%5Cu5b9an%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu8981%5Cu6c42%5Cu628an%5Cu4e2a%5Cu70b9%5Cu5206%5Cu6210%5Cu4e0d%5Cu591a%5Cu4e8em%5Cu6bb5%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu6c42%5Cu51fa%5Cu6bcf%5Cu6bb5%5Cu7684%5Cu6700%5Cu5c0f%5Cu8986%5Cu76d6%5Cu5706%5Cu7684%5Cu534a%5Cu5f84%5Cu540e%5Cuff0c%5Cu6700%5Cu5927%5Cu7684%5Cu534a%5Cu5f84%5Cu6700%5Cu5c0f%5Cu3002%5Cn%5Cn%5Cn%22%2C%22inputFormat%22%3A%22In%20the%20first%20line%20of%20the%20standard%20input%20there%20are%20two%20integers%20%24n%24%20and%20%24m%24%2C%20%20%20%20%20%20%241%5C%5Cle%20m%5C%5Cle%20n%5C%5Cle%20100%5C%5C%20000%24%2C%20separated%20by%20a%20single%20space.%5Cn%5CnEach%20of%20the%20following%20%24n%24%20lines%20holds%20two%20integers%2C%20separated%20by%20a%20single%20space.%5Cn%5CnThe%20%24%28i%2B1%29%24-th%20line%20gives%20%24x_i%24%2C%24y_i%24%2C%24-1%5C%5C%20000%5C%5C%20000%5C%5Cle%20x_i%2Cy_i%5C%5Cle%201%5C%5C%20000%5C%5C%20000%24%20denoting%20the%20coordinates%20%24%28x_i%2Cy_i%29%24%20of%20the%20point%20%24P_i%24.%5Cn%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20of%20the%20standard%20output%20one%20real%20number%20%24d%24%20should%20be%20printed%20out%2C%20%20%20%20%20%20the%20resemblance%20measure%20of%20the%20plot%20found%20to%20the%20original%20one.%5Cn%5CnIn%20the%20second%20line%20of%20the%20standard%20output%20there%20should%20be%20another%20integer%20%24s%24%2C%20%241%5C%5Cle%20s%5C%5Cle%20m%24.%5Cn%5CnNext%2C%20the%20following%20%24s%24%20lines%20should%20specify%20the%20coordinates%20of%20the%20points%20%24Q_1%2C%5C%5Ccdots%2CQ_s%24%2Cone%20point%20per%20line.%5Cn%5CnThus%20the%20%24%28i%2B2%29%24-th%20line%20should%20give%20two%20real%20numbers%20%24u_i%24%20and%20%24v_i%24%2C%20%20%20%20%20%20separated%20by%20a%20single%20space%2C%20that%20denote%20the%20coordinates%20%24%28u_i%2Cv_i%29%24%20of%20the%20point%20%24Q_i%24.All%20the%20real%20numbers%20should%20be%20printed%20with%20at%20most%2015%20digits%20after%20the%20decimal%20point.%5Cn%22%2C%22samples%22%3A%5B%5B%227%202%5Cn2%200%5Cn0%204%5Cn4%204%5Cn4%202%5Cn8%202%5Cn11%203%5Cn14%202%22%2C%223.00000000%5Cn2%5Cn2.00000000%201.76393202%5Cn11.00000000%201.99998199%22%5D%5D%2C%22hint%22%3A%22%5Cu7ed9%5Cu5b9an%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu8981%5Cu6c42%5Cu628an%5Cu4e2a%5Cu70b9%5Cu5206%5Cu6210%5Cu4e0d%5Cu591a%5Cu4e8em%5Cu6bb5%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu6c42%5Cu51fa%5Cu6bcf%5Cu6bb5%5Cu7684%5Cu6700%5Cu5c0f%5Cu8986%5Cu76d6%5Cu5706%5Cu7684%5Cu534a%5Cu5f84%5Cu540e%5Cuff0c%5Cu6700%5Cu5927%5Cu7684%5Cu534a%5Cu5f84%5Cu6700%5Cu5c0f%5Cu3002%5Cn%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B10000%2C10000%2C10000%2C10000%2C10000%2C10000%2C10000%2C10000%2C10000%2C10000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B28%2C43%2C45%2C57%2C107%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A49%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22P3517%22%2C%22title%22%3A%22%5BPOI2011%5DWYK-Plot%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A103186%2C%22title%22%3A%22spj%20fixed%22%2C%22forum%22%3A%7B%22id%22%3A2598%2C%22name%22%3A%22P3517%20%5BPOI2011%5DWYK-Plot%22%2C%22slug%22%3A%22P3517%22%7D%7D%2C%7B%22id%22%3A93965%2C%22title%22%3A%22%5Cu8fd9%5Cu662f%5Cu4e00%5Cu4e2aLoj%5Cu7684Spj%5Cuff0c%5Cu4e0d%5Cu77e5%5Cu9053luogu%5Cu652f%5Cu4e0d%5Cu652f%5Cu6301%22%2C%22forum%22%3A%7B%22id%22%3A2598%2C%22name%22%3A%22P3517%20%5BPOI2011%5DWYK-Plot%22%2C%22slug%22%3A%22P3517%22%7D%7D%2C%7B%22id%22%3A79481%2C%22title%22%3A%22%5Cu672c%5Cu9898%5Cu6709%5Cu51e0%5Cu70b9%5Cu95ee%5Cu9898%5Cu2026%5Cu2026%22%2C%22forum%22%3A%7B%22id%22%3A2598%2C%22name%22%3A%22P3517%20%5BPOI2011%5DWYK-Plot%22%2C%22slug%22%3A%22P3517%22%7D%7D%2C%7B%22id%22%3A75795%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu597d%5Cu50cf%5Cu8981%5Cu4e2aspj%5Cu554a...%22%2C%22forum%22%3A%7B%22id%22%3A2598%2C%22name%22%3A%22P3517%20%5BPOI2011%5DWYK-Plot%22%2C%22slug%22%3A%22P3517%22%7D%7D%2C%7B%22id%22%3A37749%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2598%2C%22name%22%3A%22P3517%20%5BPOI2011%5DWYK-Plot%22%2C%22slug%22%3A%22P3517%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3516%22%2C%22title%22%3A%22%5BPOI2011%5DPRZ-Shift%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3518%22%2C%22title%22%3A%22%5BPOI2011%5DSEJ-Strongbox%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3535%22%2C%22title%22%3A%22%5BPOI2012%5DTOU-Tour%20de%20Byteotia%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3998%22%2C%22title%22%3A%22%5BSHOI2013%5D%5Cu53d1%5Cu5fae%5Cu535a%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4115%22%2C%22title%22%3A%22Qtree4%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BPOI2011%5DWYK-Plot%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[POI2011]WYK-Plot</h1>
+<h2>题目描述</h2>
+<div>We call any sequence of points in the plane a plot.
+We intend to replace a given plot $(P_1,\cdots,P_n)$ with another that will have at most $m$ points ($m\le n$) in such a way that it "resembles" the original plot best.
+The new plot is created as follows. The sequence of points $P_1,\cdots,P_n$ can be partitioned into $s$ ($s\le m$) contiguous subsequences:
+$(P_{k_0+1},\cdots,P_{k_1}),(P_{k_1+1},\cdots,P_{k_2}),\cdots,(P_{k_{s-1}+1},\cdots,P_{k_s})$ where $0=k_0<k_1<k_2<\cdots<k_s=n$,and afterwards each subsequence $(P_{k_{i-1}+1},\cdots,P_{k_i})$, for $i=1,\cdots,s$,is replaced by a new point $Q_i$. In that case we say that each of the points $P_{k_{i-1}+1},\cdots,P_{k_i}$ has been contracted to the point $Q_i$. As a result a new plot, represented by the points $Q_1,\cdots,Q_s$, is created. The measure of such plot's resemblance to the original is the maximum distance of all the points $P_1,\cdots,P_n$ to the point it has been contracted to:
+
+$max_{i=1,\cdots,s}(max_{j=k_{i-1}+1,\cdots,k_i}(d(P_j,Q_i)))$    where $d(P_j,Q_i)$ denotes the distance between $P_j$ and $Q_i$, given by the well-known formula:
+
+$d((x_1,y_1),(x_2,y_2))=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$
+
+ ![](https://cdn.luogu.com.cn/upload/pic/6975.png) 
+
+An exemplary plot $P_1,\cdots,P_7$ and the new plot $(Q_1,Q_2)$, where $(P_1,\cdots,P_4)$ are contracted to $Q_1$, whereas $(P_5,P_6,P_7)$ to $Q_2$.
+
+For a given plot consisting of $n$ points, you are to find the plot that    resembles it most while having at most $m$ points,    where the partitioning into contiguous subsequences is arbitrary.
+
+Due to limited precision of floating point operations, a result is deemed    correct if its resemblance to the given plot is larger than the optimum    resemblance by at most $0.000001$.
+
+给定n个点，要求把n个点分成不多于m段，使得求出每段的最小覆盖圆的半径后，最大的半径最小。
+
+
+</div>
+
+    <h2>输入输出格式</h2>
+    <h3>输入格式</h3>
+    <br />
+    <div>In the first line of the standard input there are two integers $n$ and $m$,      $1\le m\le n\le 100\ 000$, separated by a single space.
+
+Each of the following $n$ lines holds two integers, separated by a single space.
+
+The $(i+1)$-th line gives $x_i$,$y_i$,$-1\ 000\ 000\le x_i,y_i\le 1\ 000\ 000$ denoting the coordinates $(x_i,y_i)$ of the point $P_i$.
+</div>
+    <h3>输出格式</h3>
+    <br />
+    <div>In the first line of the standard output one real number $d$ should be printed out,      the resemblance measure of the plot found to the original one.
+
+In the second line of the standard output there should be another integer $s$, $1\le s\le m$.
+
+Next, the following $s$ lines should specify the coordinates of the points $Q_1,\cdots,Q_s$,one point per line.
+
+Thus the $(i+2)$-th line should give two real numbers $u_i$ and $v_i$,      separated by a single space, that denote the coordinates $(u_i,v_i)$ of the point $Q_i$.All the real numbers should be printed with at most 15 digits after the decimal point.
+</div>
+
+    <h2>输入输出样例</h2>
+                        <h3>输入样例 #1</h3>
+            <pre><code>7 2
+2 0
+0 4
+4 4
+4 2
+8 2
+11 3
+14 2</code></pre>
+            <h3>输出样例 #1</h3>
+            <pre><code>3.00000000
+2
+2.00000000 1.76393202
+11.00000000 1.99998199</code></pre>
+            
+            <h2>说明</h2>
+        <div>给定n个点，要求把n个点分成不多于m段，使得求出每段的最小覆盖圆的半径后，最大的半径最小。
+
+</div>
+    </article>
+    </div>
+</div>
+<!-- <script src="//www.recaptcha.net/recaptcha/api.js?hl=zh-CN&render=explicit&onload=renderCaptcha" async defer></script> -->
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Triangles - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573389937:BSFD225YoILkV/4XaIXe2jAT/RK4nOR9AmbNTUngOuw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Little%20Petya%20likes%20to%20draw.%20He%20drew%20%24%20N%20%24%20red%20and%20%24%20M%20%24%20blue%20points%20on%20the%20plane%20in%20such%20a%20way%20that%20no%20three%20points%20lie%20on%20the%20same%20line.%20Now%20he%20wonders%20what%20is%20the%20number%20of%20distinct%20triangles%20with%20vertices%20in%20red%20points%20which%20do%20not%20contain%20any%20blue%20point%20inside.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20non-negative%20integer%20numbers%20%24%20N%20%24%20and%20%24%20M%20%24%20%28%20%24%200%3C%3DN%3C%3D500%20%24%20%2C%20%24%200%3C%3DM%3C%3D500%20%24%20%29%20%5Cu2014%20the%20number%20of%20red%20and%20blue%20points%20respectively.%20The%20following%20%24%20N%20%24%20lines%20contain%20two%20integer%20numbers%20each%20%5Cu2014%20coordinates%20of%20red%20points.%20The%20following%20%24%20M%20%24%20lines%20contain%20two%20integer%20numbers%20each%20%5Cu2014%20coordinates%20of%20blue%20points.%20All%20coordinates%20do%20not%20exceed%20%24%2010%5E%7B9%7D%20%24%20by%20absolute%20value.%22%2C%22outputFormat%22%3A%22Output%20one%20integer%20%5Cu2014%20the%20number%20of%20distinct%20triangles%20with%20vertices%20in%20red%20points%20which%20do%20not%20contain%20any%20blue%20point%20inside.%22%2C%22samples%22%3A%5B%5B%224%201%5Cn0%200%5Cn10%200%5Cn10%2010%5Cn5%204%5Cn2%201%5Cn%22%2C%222%5Cn%22%5D%2C%5B%225%205%5Cn5%2010%5Cn6%201%5Cn8%206%5Cn-6%20-7%5Cn7%20-1%5Cn5%20-1%5Cn10%20-4%5Cn-10%20-8%5Cn-10%205%5Cn-2%20-8%5Cn%22%2C%227%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B64000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F13%5C%2FD%22%2C%22id%22%3A%2213D%22%7D%2C%22translation%22%3A%22%5Cu5c0fP%5Cu5728%5Cu7eb8%5Cu4e0a%5Cu82b1%5Cu4e86N%5Cu4e2a%5Cu7ea2%5Cu70b9%5Cuff0cM%5Cu4e2a%5Cu84dd%5Cu70b9%5Cuff0c%5Cu5df2%5Cu77e5%5Cu6ca1%5Cu6709%5Cu4efb%5Cu4f55%5Cu4e09%5Cu4e2a%5Cu70b9%5Cu5171%5Cu7ebf%5Cuff0c%5Cu73b0%5Cu5728%5Cu8bf7%5Cu4f60%5Cu5e2e%5Cu4ed6%5Cu6c42%5Cu51fa%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu7531%5Cu4e09%5Cu4e2a%5Cu7ea2%5Cu70b9%5Cu6784%5Cu6210%5Cu7684%5Cu4e09%5Cu89d2%5Cu5f62%5Cu4e2d%5Cu4e0d%5Cu5305%5Cu542b%5Cu84dd%5Cu70b9%5Cn%5Cu8f93%5Cu5165%5Cuff1a%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570N%5Cuff0cM%5Cuff0c%5Cu4e4b%5Cu540eN%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu4ee3%5Cu8868%5Cu6bcf%5Cu4e2a%5Cu7ea2%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%5Cuff0c%5Cu4e0b%5Cu9762M%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu4ee3%5Cu8868%5Cu6bcf%5Cu4e2a%5Cu84dd%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%5Cn%5Cu8f93%5Cu51fa%5Cuff1a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu4e3a%5Cu9898%5Cu9762%5Cu6240%5Cu8981%5Cu6c42%5Cu7684%5Cu7b54%5Cu6848%5Cn0%3C%3DN%3C%3D500%200%3C%3DM%3C%3D500%5Cn%5Cu6240%5Cu6709%5Cu5750%5Cu6807%5Cu7684%5Cu7edd%5Cu5bf9%5Cu503c%5Cu5747%5Cu4e0d%5Cu8d85%5Cu8fc710%5E9%5Cn%5Cu611f%5Cu8c22%20%40%5Cu7a00%5Cu795e%5Cu63a2%5Cu5973%20%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A28%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF13D%22%2C%22title%22%3A%22Triangles%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32463%2C%22title%22%3A%22%5Cu3010%5Cu7b2c%5Cu2468%5Cu7bc7%5Cu3011%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12652%2C%22name%22%3A%22CF13D%20Triangles%22%2C%22slug%22%3A%22CF13D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Triangles%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Triangles</h1>
+<h2>题意翻译</h2>
+<div>小P在纸上花了N个红点，M个蓝点，已知没有任何三个点共线，现在请你帮他求出有多少个由三个红点构成的三角形中不包含蓝点
+输入：第一行两个非负整数N，M，之后N行每行两个整数代表每个红点的坐标，下面M行每行两个整数代表每个蓝点的坐标
+输出：一个整数，为题面所要求的答案
+0<=N<=500 0<=M<=500
+所有坐标的绝对值均不超过10^9
+感谢 @稀神探女 提供的翻译。</div>
+<h2>题目描述</h2>
+<div>Little Petya likes to draw. He drew $ N $ red and $ M $ blue points on the plane in such a way that no three points lie on the same line. Now he wonders what is the number of distinct triangles with vertices in red points which do not contain any blue point inside.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two non-negative integer numbers $ N $ and $ M $ ( $ 0<=N<=500 $ , $ 0<=M<=500 $ ) — the number of red and blue points respectively. The following $ N $ lines contain two integer numbers each — coordinates of red points. The following $ M $ lines contain two integer numbers each — coordinates of blue points. All coordinates do not exceed $ 10^{9} $ by absolute value.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one integer — the number of distinct triangles with vertices in red points which do not contain any blue point inside.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 1
+0 0
+10 0
+10 10
+5 4
+2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 5
+5 10
+6 1
+8 6
+-6 -7
+7 -1
+5 -1
+10 -4
+-10 -8
+-10 5
+-2 -8
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>7
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

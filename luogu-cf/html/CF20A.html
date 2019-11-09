@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BerOS file system - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390006:yKFkqRJZvnubvqulSKXAu18oxq/E//PLQn7myPslkCw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20new%20operating%20system%20BerOS%20has%20a%20nice%20feature.%20It%20is%20possible%20to%20use%20any%20number%20of%20characters%20%27%5C%2F%27%20as%20a%20delimiter%20in%20path%20instead%20of%20one%20traditional%20%27%5C%2F%27.%20For%20example%2C%20strings%20%5C%2F%5C%2Fusr%5C%2F%5C%2F%5C%2Flocal%5C%2F%5C%2Fnginx%5C%2Fsbin%5C%2F%5C%2F%20and%20%5C%2Fusr%5C%2Flocal%5C%2Fnginx%5C%2F%5C%2F%5C%2Fsbin%20are%20equivalent.%20The%20character%20%27%5C%2F%27%20%28or%20some%20sequence%20of%20such%20characters%29%20at%20the%20end%20of%20the%20path%20is%20required%20only%20in%20case%20of%20the%20path%20to%20the%20root%20directory%2C%20which%20can%20be%20represented%20as%20single%20character%20%27%5C%2F%27.%5Cn%5CnA%20path%20called%20normalized%20if%20it%20contains%20the%20smallest%20possible%20number%20of%20characters%20%27%5C%2F%27.%5Cn%5CnYour%20task%20is%20to%20transform%20a%20given%20path%20to%20the%20normalized%20form.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20only%20lowercase%20Latin%20letters%20and%20character%20%27%5C%2F%27%20%5Cu2014%20the%20path%20to%20some%20directory.%20All%20paths%20start%20with%20at%20least%20one%20character%20%27%5C%2F%27.%20The%20length%20of%20the%20given%20line%20is%20no%20more%20than%20100%20characters%2C%20it%20is%20not%20empty.%22%2C%22outputFormat%22%3A%22The%20path%20in%20normalized%20form.%22%2C%22samples%22%3A%5B%5B%22%5C%2F%5C%2Fusr%5C%2F%5C%2F%5C%2Flocal%5C%2F%5C%2Fnginx%5C%2Fsbin%5Cn%22%2C%22%5C%2Fusr%5C%2Flocal%5C%2Fnginx%5C%2Fsbin%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B64000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F20%5C%2FA%22%2C%22id%22%3A%2220A%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu7535%5Cu8111%5Cu8def%5Cu5f84%5Cuff0c%5Cu8fde%5Cu7eed%5Cu7684%5Cu591a%5Cu4e2a%5C%2F%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu7b80%5Cu5316%5Cu4e3a%5Cu4e00%5Cu4e2a%5C%2F%5Cuff0c%5Cu4e14%5Cu8def%5Cu5f84%5Cu672b%5Cu7684%5C%2F%5Cu53ef%5Cu4ee5%5Cu7701%5Cu7565%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu7b80%5Cu5316%5Cu540e%5Cu7684%5Cu6700%5Cu77ed%5Cu7684%5Cu53ef%5Cu80fd%5Cu7684%5Cu8def%5Cu5f84%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4ec5%5Cu5305%5Cu542b%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu548c%5C%2F%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu8def%5Cu5f84%5Cu81f3%5Cu5c11%5Cu542b%5Cu6709%5Cu4e00%5Cu4e2a%5C%2F%5Cuff0c%5Cu4e0d%5Cu8d85%5Cu8fc7100%5Cu4e2a%5Cu5b57%5Cu7b26%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8868%5Cu793a%5Cu7b80%5Cu5316%5Cu540e%5Cu7684%5Cu8def%5Cu5f84%22%2C%22tags%22%3A%5B1%2C2%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1069%2C%22totalAccepted%22%3A282%2C%22pid%22%3A%22CF20A%22%2C%22title%22%3A%22BerOS%20file%20system%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A129113%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A12620%2C%22name%22%3A%22CF20A%20BerOS%20file%20system%22%2C%22slug%22%3A%22CF20A%22%7D%7D%2C%7B%22id%22%3A35764%2C%22title%22%3A%22%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu70b9%5Cu4e3a%5Cu4f55%5Cu4f1aWA%5Cuff1f%5Cuff08%5Cu6211%5Cu662fP%5Cu515a%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A12620%2C%22name%22%3A%22CF20A%20BerOS%20file%20system%22%2C%22slug%22%3A%22CF20A%22%7D%7D%2C%7B%22id%22%3A32064%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12620%2C%22name%22%3A%22CF20A%20BerOS%20file%20system%22%2C%22slug%22%3A%22CF20A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF49A%22%2C%22title%22%3A%22Sleuth%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF25B%22%2C%22title%22%3A%22Phone%20numbers%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF25A%22%2C%22title%22%3A%22IQ%20test%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF22A%22%2C%22title%22%3A%22Second%20Order%20Statistics%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF16A%22%2C%22title%22%3A%22Flag%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22BerOS%20file%20system%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>BerOS file system</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+给出一个电脑路径，连续的多个/可以被简化为一个/，且路径末的/可以省略，请输出简化后的最短的可能的路径。
+输入输出格式
+输入格式
+第一行：仅包含小写字母和/的字符串，保证路径至少含有一个/，不超过100个字符
+输出格式
+第一行：一个字符串，表示简化后的路径</div>
+<h2>题目描述</h2>
+<div>The new operating system BerOS has a nice feature. It is possible to use any number of characters '/' as a delimiter in path instead of one traditional '/'. For example, strings //usr///local//nginx/sbin// and /usr/local/nginx///sbin are equivalent. The character '/' (or some sequence of such characters) at the end of the path is required only in case of the path to the root directory, which can be represented as single character '/'.
+A path called normalized if it contains the smallest possible number of characters '/'.
+Your task is to transform a given path to the normalized form.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains only lowercase Latin letters and character '/' — the path to some directory. All paths start with at least one character '/'. The length of the given line is no more than 100 characters, it is not empty.</div>
+<h3>输出格式</h3>
+<br />
+<div>The path in normalized form.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>//usr///local//nginx/sbin
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>/usr/local/nginx/sbin
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13DEC]假期计划（黄金）Vacation Planning (gold) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376397:3GqkYHdHWg3YVVhUX4ZE0h3mvlY78+d4LSB3EeZ2SaA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Air%20Bovinia%20operates%20flights%20connecting%20the%20N%20farms%20that%20the%20cows%20live%20on%20%281%20%3C%3D%20N%20%3C%3D%2020%2C000%29.%20As%20with%20any%20airline%2C%20K%20of%20these%20farms%20have%20been%20designated%20as%20hubs%20%281%20%3C%3D%20K%20%3C%3D%20200%2C%20K%20%3C%3D%20N%29.%5Cn%5CnCurrently%2C%20Air%20Bovinia%20offers%20M%20one-way%20flights%20%281%20%3C%3D%20M%20%3C%3D%2020%2C000%29%2C%20where%20flight%20i%20travels%20from%20farm%20u%5C%5C_i%20to%20farm%20v%5C%5C_i%20and%20costs%20d%5C%5C_i%20%281%20%3C%3D%20d%5C%5C_i%20%3C%3D%2010%2C000%29%20dollars.%20%20As%20with%20any%20other%20sensible%20airline%2C%20for%20each%20of%20these%20flights%2C%20at%20least%20one%20of%20u%5C%5C_i%20and%20v%5C%5C_i%20is%20a%20hub.%20%20There%20is%20at%20most%20one%20direct%20flight%20between%20two%20farms%20in%20any%20given%20direction%2C%20and%20no%20flight%20starts%20and%20ends%20at%20the%20same%20farm.%5Cn%5CnBessie%20is%20in%20charge%20of%20running%20the%20ticketing%20services%20for%20Air%20Bovinia.%20Unfortunately%2C%20while%20she%20was%20away%20chewing%20on%20delicious%20hay%20for%20a%20few%20hours%2C%20Q%20one-way%20travel%20requests%20for%20the%20cows%27%20holiday%20vacations%20were%20received%20%281%20%3C%3D%20Q%20%3C%3D%2050%2C000%29%2C%20where%20the%20ith%20request%20is%20from%20farm%20a%5C%5C_i%20to%20farm%20b%5C%5C_i.%5Cn%5CnAs%20Bessie%20is%20overwhelmed%20with%20the%20task%20of%20processing%20these%20tickets%2C%20please%20help%20her%20compute%20whether%20each%20ticket%20request%20can%20be%20fullfilled%2C%20and%20its%20minimum%20cost%20if%20it%20can%20be%20done.%5Cn%5CnTo%20reduce%20the%20output%20size%2C%20you%20should%20only%20output%20the%20total%20number%20of%20ticket%20requests%20that%20are%20possible%2C%20and%20the%20minimum%20total%20cost%20for%20them.%20Note%20that%20this%20number%20might%20not%20fit%20into%20a%2032-bit%20integer.%5Cn%5Cn%5Cu662fn%5Cu4e2a%5Cu70b9m%5Cu6761%5Cu6709%5Cu5411%5Cu8fb9%5Cuff0c%5Cu6c42%5Cu4e24%5Cu4e24%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6700%5Cu77ed%5Cu8def%5Cuff0c%5Cu8981%5Cu6c42%5Cu8def%5Cu5f84%5Cu4e0a%5Cu5fc5%5Cu987b%5Cu7ecf%5Cu8fc7%5Cu7f16%5Cu53f71~k%5Cu7684%5Cu81f3%5Cu5c11%5Cu4e00%5Cu4e2a%5Cu70b9%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20integers%20N%2C%20M%2C%20K%2C%20and%20Q.%5Cn%5Cn%5C%5C%2A%20Lines%202..M%20%2B%201%3A%20Line%20i%2B1%20contains%20u%5C%5C_i%2C%20v%5C%5C_i%2C%20and%20d%5C%5C_i.%20%281%20%3C%3D%20u%5C%5C_i%2C%20v%5C%5C_i%20%3C%3D%20N%2C%20u%5C%5C_i%20%21%3D%20v%5C%5C_i%29%5Cn%5Cn%5C%5C%2A%20Lines%20M%20%2B%202..M%20%2B%20K%20%2B%201%3A%20Each%20of%20these%20lines%20contains%20the%20ID%20of%20a%20single%20hub%20%28in%20the%20range%201..N%29.%5Cn%5Cn%5C%5C%2A%20Lines%20M%20%2B%20K%20%2B%202..M%20%2B%20K%20%2B%20Q%20%2B%201%3A%20Two%20numbers%20per%20line%2C%20indicating%20a%20request%20for%20a%20ticket%20from%20farm%20a%5C%5C_i%20to%20b%5C%5C_i.%20%281%20%3C%3D%20a%5C%5C_i%2C%20b%5C%5C_i%20%3C%3D%20N%2C%20a%5C%5C_i%20%21%3D%20b%5C%5C_i%29%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20number%20of%20ticket%20requests%20that%20can%20be%20fullfilled.%5Cn%5Cn%5C%5C%2A%20Line%202%3A%20The%20minimum%20total%20cost%20of%20fulling%20the%20possible%20ticket%20requests%5Cn%22%2C%22samples%22%3A%5B%5B%223%203%201%202%20%5Cn1%202%2010%20%5Cn2%203%2010%20%5Cn2%201%205%20%5Cn2%20%5Cn1%203%20%5Cn3%201%20%5Cn%22%2C%221%20%5Cn20%20%5Cn%22%5D%5D%2C%22hint%22%3A%22For%20the%20first%20flight%2C%20the%20only%20feasible%20route%20is%201-%3E2-%3E3%2C%20costing%2020.%20There%20are%20no%20flights%20leaving%20farm%203%2C%20so%20the%20poor%20cows%20are%20stranded%20there.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22Bovinia%5Cu822a%5Cu7a7a%5Cu516c%5Cu53f8%5Cu7684%5Cu822a%5Cu7ebf%5Cu8fde%5Cu63a5%5Cu4e86%5Cu5976%5Cu725b%5Cu5c45%5Cu4f4f%5Cu7684N%5Cu4e2a%5Cu519c%5Cu573a%281%3C%3DN%3C%3D20000%29.%5Cu5982%5Cu540c%5Cu5176%5Cu4ed6%5Cu516c%5Cu53f8%5Cu4e00%5Cu6837%5Cuff0c%5Cu6240%5Cu6709%5Cu519c%5Cu573a%5Cu5f53%5Cu4e2d%5Cu7684K%5Cu4e2a%5Cu88ab%5Cu8bbe%5Cu5b9a%5Cu4e3a%5Cu67a2%5Cu7ebd%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728Bovinia%5Cu822a%5Cu7a7a%5Cu516c%5Cu53f8%5Cu63d0%5Cu4f9bM%5Cu6761%5Cu5355%5Cu9879%5Cu822a%5Cu7ebf%281%3C%3DM%3C%3D20000%29%5Cuff0c%5Cu7b2ci%5Cu6761%5Cu822a%5Cu7ebf%5Cu4eceu_i%5Cu53f7%5Cu519c%5Cu573a%5Cu51fa%5Cu53d1%5Cuff0c%5Cu76ee%5Cu7684%5Cu5730%5Cu662f%5Cu7b2cv_i%5Cu53f7%5Cu519c%5Cu573a%5Cuff0c%5Cu5f00%5Cu9500%5Cu4e3ak_i%5Cu7f8e%5Cu5200%5Cu3002%281%3C%3Dd_i%3C%3D10000%29%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu6761%5Cu822a%5Cu7ebf%5Cuff0cu_i%5Cu548cv_i%5Cu5f53%5Cu4e2d%5Cu81f3%5Cu5c11%5Cu6709%5Cu4e00%5Cu4e2a%5Cu662f%5Cu67a2%5Cu7ebd%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu519c%5Cu573a%5Cu95f4%5Cu7684%5Cu822a%5Cu7ebf%5Cu6700%5Cu591a%5Cu53ea%5Cu67091%5Cu6761%5Cuff0c%5Cu6ca1%5Cu6709%5Cu8d77%5Cu70b9%5Cu7ec8%5Cu70b9%5Cu76f8%5Cu540c%5Cu7684%5Cu822a%5Cu7ebf%5Cu3002%5Cn%5CnBessie%5Cu8d1f%5Cu8d23%5Cu7ba1%5Cu7406Bovinia%5Cu822a%5Cu7a7a%5Cu516c%5Cu53f8%5Cu7684%5Cu552e%5Cu7968%5Cu670d%5Cu52a1%5Cu3002%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%5Cuff0c%5Cn%5Cn%5Cu5f53%5Cu5979%5Cu79bb%5Cu5f00%5Cu4e86%5Cu51e0%5Cu4e2a%5Cu5c0f%5Cu65f6%5Cu53bb%5Cu5403%5Cu4e00%5Cu4e9b%5Cu7f8e%5Cu5473%5Cu7684%5Cu5e72%5Cu8349%5Cu65f6%5Cuff0c%5Cu5976%5Cu725b%5Cu4eec%5Cu53d1%5Cu6765%5Cu4e86%5Cn%5CnQ%281%3C%3DQ%3C%3D50000%29%5Cu4e2a%5Cu5355%5Cu7a0b%5Cu7684%5Cu5047%5Cu671f%5Cu65c5%5Cu884c%5Cu8ba2%5Cu5355%5Cuff0ci%5Cu53f7%5Cu8ba2%5Cu5355%5Cu5e0c%5Cu671b%5Cu4ecea_i%5Cu53f7%5Cu519c%5Cu573a%5Cu98de%5Cu5230b_i%5Cu53f7%5Cu519c%5Cu573a%5Cu3002%5Cn%5CnBessie%5Cu5feb%5Cu8981%5Cu88ab%5Cu8ba2%5Cu7968%5Cu7684%5Cu5de5%5Cu4f5c%5Cu538b%5Cu57ae%5Cu4e86%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu5e2e%5Cu5e2e%5Cu5979%5Cu8ba1%5Cu7b97%5Cu4e00%5Cu4e0b%5Cu6bcf%5Cu4e2a%5Cu8ba2%5Cu5355%5Cu80fd%5Cu5426%5Cu88ab%5Cu6ee1%5Cu8db3%5Cuff0c%5Cu5982%5Cu679c%5Cu80fd%5Cu6ee1%5Cu8db3%5Cuff0c%5Cn%5Cn%5Cu8ba1%5Cu7b97%5Cu6ee1%5Cu8db3%5Cu8be5%5Cu8ba2%5Cu5355%5Cu7684%5Cu6700%5Cu5c0f%5Cu82b1%5Cu8d39%5Cu3002%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu51cf%5Cu5c11%5Cu8f93%5Cu51fa%5Cu91cf%5Cuff0c%5Cu4f60%5Cu5e94%5Cu5f53%5Cu53ea%5Cu8f93%5Cu51fa%5Cu6700%5Cu591a%5Cu53ef%5Cu6ee1%5Cu8db3%5Cu7684%5Cu8ba2%5Cu5355%5Cu6570%5Cu548c%5Cu6700%5Cu5c0f%5Cu7684%5Cu603b%5Cu82b1%5Cu8d39%5Cu3002%5Cn%5Cn%5Cu7b54%5Cu6848%5Cu53ef%5Cu80fd%5Cu8d85%5Cu51faint%5Cu8303%5Cu56f4%5Cn%5Cn%5Cu611f%5Cu8c22%40xiwang%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B30%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A500%2C%22totalAccepted%22%3A156%2C%22pid%22%3A%22P3096%22%2C%22title%22%3A%22%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212%5Cuff08%5Cu9ec4%5Cu91d1%5Cuff09Vacation%20Planning%20%28gold%29%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A63293%2C%22title%22%3A%22%5Cu5947%5Cu602a%22%2C%22forum%22%3A%7B%22id%22%3A2213%2C%22name%22%3A%22P3096%20%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212%5Cuff08%5Cu9ec4%5Cu91d1%5Cuff09Vacation%20Planning%20%28gold%29%22%2C%22slug%22%3A%22P3096%22%7D%7D%2C%7B%22id%22%3A63255%2C%22title%22%3A%22%5Cu8fd9%5Cu4e2a%5Cu7ffb%5Cu8bd1%5Cu8fd8%5Cu4e0d%5Cu5982%5Cu8c37%5Cu6b4c%5Cu7ffb%5Cu8bd1%5Cu5462%22%2C%22forum%22%3A%7B%22id%22%3A2213%2C%22name%22%3A%22P3096%20%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212%5Cuff08%5Cu9ec4%5Cu91d1%5Cuff09Vacation%20Planning%20%28gold%29%22%2C%22slug%22%3A%22P3096%22%7D%7D%2C%7B%22id%22%3A61558%2C%22title%22%3A%22%5Cu8fd9%5Cu4e2a%5Cu9898%5Cu8c8c%5Cu4f3c%5Cu5361dijkstra%5Cu4f46%5Cu662fspfa%5Cu98de%5Cu5feb%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2213%2C%22name%22%3A%22P3096%20%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212%5Cuff08%5Cu9ec4%5Cu91d1%5Cuff09Vacation%20Planning%20%28gold%29%22%2C%22slug%22%3A%22P3096%22%7D%7D%2C%7B%22id%22%3A25594%2C%22title%22%3A%22%5Cu6e23%5Cu7ffb%22%2C%22forum%22%3A%7B%22id%22%3A2213%2C%22name%22%3A%22P3096%20%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212%5Cuff08%5Cu9ec4%5Cu91d1%5Cuff09Vacation%20Planning%20%28gold%29%22%2C%22slug%22%3A%22P3096%22%7D%7D%2C%7B%22id%22%3A4929%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu4e0d%5Cu5145%5Cu5206%22%2C%22forum%22%3A%7B%22id%22%3A2213%2C%22name%22%3A%22P3096%20%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212%5Cuff08%5Cu9ec4%5Cu91d1%5Cuff09Vacation%20Planning%20%28gold%29%22%2C%22slug%22%3A%22P3096%22%7D%7D%2C%7B%22id%22%3A4905%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu597d%5Cu96be%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A2213%2C%22name%22%3A%22P3096%20%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212%5Cuff08%5Cu9ec4%5Cu91d1%5Cuff09Vacation%20Planning%20%28gold%29%22%2C%22slug%22%3A%22P3096%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3385%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu8d1f%5Cu73af%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3094%22%2C%22title%22%3A%22%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212Vacation%20Planning%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3097%22%2C%22title%22%3A%22%5BUSACO13DEC%5D%5Cu6700%5Cu4f18%5Cu6324%5Cu5976Optimal%20Milking%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3098%22%2C%22title%22%3A%22%5BUSACO13DEC%5D%5Cu8d1d%5Cu897f%5Cu6d17%5Cu724c%5Cuff08%5Cu91d1%5Cuff09The%20Bessie%20Shuffle%20%28gol%5Cu2026%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4186%22%2C%22title%22%3A%22%5BUSACO18JAN%5DCow%20at%20Large%20G%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13DEC%5D%5Cu5047%5Cu671f%5Cu8ba1%5Cu5212%5Cuff08%5Cu9ec4%5Cu91d1%5Cuff09Vacation%20Planning%20%28gold%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13DEC]假期计划（黄金）Vacation Planning (gold)</h1>
+<h2>题意翻译</h2>
+<div>Bovinia航空公司的航线连接了奶牛居住的N个农场(1<=N<=20000).如同其他公司一样，所有农场当中的K个被设定为枢纽。
+现在Bovinia航空公司提供M条单项航线(1<=M<=20000)，第i条航线从u_i号农场出发，目的地是第v_i号农场，开销为k_i美刀。(1<=d_i<=10000)
+对于每一条航线，u_i和v_i当中至少有一个是枢纽，两个农场间的航线最多只有1条，没有起点终点相同的航线。
+Bessie负责管理Bovinia航空公司的售票服务。不幸的是，
+当她离开了几个小时去吃一些美味的干草时，奶牛们发来了
+Q(1<=Q<=50000)个单程的假期旅行订单，i号订单希望从a_i号农场飞到b_i号农场。
+Bessie快要被订票的工作压垮了，请你帮帮她计算一下每个订单能否被满足，如果能满足，
+计算满足该订单的最小花费。
+为了减少输出量，你应当只输出最多可满足的订单数和最小的总花费。
+答案可能超出int范围
+感谢@xiwang 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Air Bovinia operates flights connecting the N farms that the cows live on (1 <= N <= 20,000). As with any airline, K of these farms have been designated as hubs (1 <= K <= 200, K <= N).
+Currently, Air Bovinia offers M one-way flights (1 <= M <= 20,000), where flight i travels from farm u\_i to farm v\_i and costs d\_i (1 <= d\_i <= 10,000) dollars. As with any other sensible airline, for each of these flights, at least one of u\_i and v\_i is a hub. There is at most one direct flight between two farms in any given direction, and no flight starts and ends at the same farm.
+Bessie is in charge of running the ticketing services for Air Bovinia. Unfortunately, while she was away chewing on delicious hay for a few hours, Q one-way travel requests for the cows' holiday vacations were received (1 <= Q <= 50,000), where the ith request is from farm a\_i to farm b\_i.
+As Bessie is overwhelmed with the task of processing these tickets, please help her compute whether each ticket request can be fullfilled, and its minimum cost if it can be done.
+To reduce the output size, you should only output the total number of ticket requests that are possible, and the minimum total cost for them. Note that this number might not fit into a 32-bit integer.
+是n个点m条有向边，求两两之间的最短路，要求路径上必须经过编号1~k的至少一个点
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The integers N, M, K, and Q.
+\* Lines 2..M + 1: Line i+1 contains u\_i, v\_i, and d\_i. (1 <= u\_i, v\_i <= N, u\_i != v\_i)
+\* Lines M + 2..M + K + 1: Each of these lines contains the ID of a single hub (in the range 1..N).
+\* Lines M + K + 2..M + K + Q + 1: Two numbers per line, indicating a request for a ticket from farm a\_i to b\_i. (1 <= a\_i, b\_i <= N, a\_i != b\_i)
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The number of ticket requests that can be fullfilled.
+\* Line 2: The minimum total cost of fulling the possible ticket requests
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3 1 2 
+1 2 10 
+2 3 10 
+2 1 5 
+2 
+1 3 
+3 1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 
+20 
+</code></pre>
+<h2>说明</h2>
+<div>For the first flight, the only feasible route is 1->2->3, costing 20. There are no flights leaving farm 3, so the poor cows are stranded there.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

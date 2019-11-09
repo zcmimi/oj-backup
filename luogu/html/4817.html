@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO15DEC]Fruit Feast 水果盛宴 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381838:sfbhyNLnGfF57Sx9VByu5lgJbAzFxjf+/pEeH95AmNw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bessie%20has%20broken%20into%20Farmer%20John%27s%20house%20again%21%20She%20has%20discovered%20a%20pile%20of%20lemons%20and%20a%20pile%20of%20oranges%20in%20the%20kitchen%20%28effectively%20an%20unlimited%20number%20of%20each%29%2C%20and%20she%20is%20determined%20to%20eat%20as%20much%20as%20possible.%5Cn%5CnBessie%20has%20a%20maximum%20fullness%20of%20%24T%24%20%24%281%20%5Cu2264%20T%20%5Cu2264%205%2C000%2C000%29%24.%20Eating%20an%20orange%20increases%20her%20fullness%20by%20%24A%24%2C%20and%20eating%20a%20lemon%20increases%20her%20fullness%20by%20%24B%24%20%28%241%20%5Cu2264%20A%2CB%20%5Cu2264%20T%24%29.%20Additionally%2C%20if%20she%20wants%2C%20Bessie%20can%20drink%20water%20at%20most%20one%20time%2C%20which%20will%20instantly%20decrease%20her%20fullness%20by%20half%20%28and%20will%20round%20down%29.%5Cn%5CnHelp%20Bessie%20determine%20the%20maximum%20fullness%20she%20can%20achieve%21%20%22%2C%22inputFormat%22%3A%22The%20first%20%28and%20only%29%20line%20has%20three%20integers%20%24T%24%2C%20%24A%24%2C%20and%20%24B%24.%20%22%2C%22outputFormat%22%3A%22%20A%20single%20integer%2C%20representing%20the%20maximum%20fullness%20Bessie%20can%20achieve.%20%22%2C%22samples%22%3A%5B%5B%228%205%206%22%2C%228%22%5D%5D%2C%22hint%22%3A%22Problem%20credits%3A%20Nathan%20Pinsker%20%22%2C%22provider%22%3A%7B%22uid%22%3A57705%2C%22name%22%3A%22%5Cu4ffa%5Cu662f%5Cu5c0f%5Cu7a0b%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu73b0%5Cu5728Bessie%5Cu7684%5Cu9971%5Cu98df%5Cu5ea6%5Cu4e3a%20%240%24%20%5Cuff0c%5Cu5979%5Cu6bcf%5Cu5403%5Cu4e00%5Cu4e2a%5Cu6a59%5Cu5b50%5Cuff0c%5Cu9971%5Cu98df%5Cu5ea6%5Cu5c31%5Cu4f1a%5Cu589e%5Cu52a0%20%24A%24%20%5Cuff1b%5Cu6bcf%5Cu5403%5Cu4e00%5Cu4e2a%5Cu67e0%5Cu6aac%5Cuff0c%5Cu9971%5Cu98df%5Cu5ea6%5Cu5c31%5Cu4f1a%5Cu589e%5Cu52a0%20%24B%24%20%5Cu3002Bessie%5Cu8fd8%5Cu6709%5Cu4e00%5Cu6b21%5Cu559d%5Cu6c34%5Cu7684%5Cu673a%5Cu4f1a%5Cuff0c%5Cu5982%5Cu679cBessie%5Cu559d%5Cu6c34%5Cu524d%5Cu9971%5Cu98df%5Cu5ea6%5Cu4e3a%20%24x%24%20%5Cuff0c%5Cu559d%5Cu6c34%5Cu540e%5Cu9971%5Cu98df%5Cu5ea6%5Cu4f1a%5Cu53d8%5Cu4e3a%20%24%5C%5Cleft%5C%5Clfloor%5C%5Cdfrac%7Bx%7D%7B2%7D%5C%5Cright%5C%5Crfloor%24%20%5Cu3002%20%20%5CnBessie%5Cu7684%5Cu9971%5Cu98df%5Cu5ea6%5Cu4e0d%5Cu80fd%5Cu8d85%5Cu8fc7%20%24T%24%20%5Cuff0c%5Cu5426%5Cu5219%5Cu809a%5Cu5b50%5Cu4f1a%5Cu7206%5Cu70b8%5Cu3002%5Cu8bd5%5Cu6c42Bessie%5Cu7684%5Cu9971%5Cu98df%5Cu5ea6%5Cu6700%5Cu5927%5Cu80fd%5Cu8fbe%5Cu5230%5Cu591a%5Cu5c11%5Cu3002%5Cn%5CnTranslated%20by%20%40Planet6174%20%22%2C%22tags%22%3A%5B32%2C46%2C111%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A812%2C%22totalAccepted%22%3A338%2C%22pid%22%3A%22P4817%22%2C%22title%22%3A%22%5BUSACO15DEC%5DFruit%20Feast%20%5Cu6c34%5Cu679c%5Cu76db%5Cu5bb4%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A59327%2C%22title%22%3A%22%5Cu987a%5Cu624b%5Cu89e3%5Cu51b3%5Cu8fd9%5Cu9898%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A28798%2C%22name%22%3A%22P4817%20%5BUSACO15DEC%5DFruit%20Feast%20%5Cu6c34%5Cu679c%5Cu76db%5Cu5bb4%22%2C%22slug%22%3A%22P4817%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2627%22%2C%22title%22%3A%22%5Cu4fee%5Cu526a%5Cu8349%5Cu576a%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2849%22%2C%22title%22%3A%22%5BUSACO14DEC%5D%5Cu9a6c%5Cu62c9%5Cu677e%5Cu8d5b%5Cu8dd1Marathon_Sliver%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3129%22%2C%22title%22%3A%22%5BUSACO15DEC%5D%5Cu9ad8%5Cu4f4e%5Cu5361%28%5Cu767d%5Cu91d1%29High%20Card%20Low%20Card%20%28Platinum%29%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4818%22%2C%22title%22%3A%22%5BUSACO15DEC%5DBessie%27s%20Dream%20%5Cu8d1d%5Cu897f%5Cu7684%5Cu68a6%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5020%22%2C%22title%22%3A%22%5Cu8d27%5Cu5e01%5Cu7cfb%5Cu7edf%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO15DEC%5DFruit%20Feast%20%5Cu6c34%5Cu679c%5Cu76db%5Cu5bb4%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO15DEC]Fruit Feast 水果盛宴</h1>
+<h2>题意翻译</h2>
+<div>现在Bessie的饱食度为 $0$ ，她每吃一个橙子，饱食度就会增加 $A$ ；每吃一个柠檬，饱食度就会增加 $B$ 。Bessie还有一次喝水的机会，如果Bessie喝水前饱食度为 $x$ ，喝水后饱食度会变为 $\left\lfloor\dfrac{x}{2}\right\rfloor$ 。
+Bessie的饱食度不能超过 $T$ ，否则肚子会爆炸。试求Bessie的饱食度最大能达到多少。
+Translated by @Planet6174 </div>
+<h2>题目描述</h2>
+<div>Bessie has broken into Farmer John's house again! She has discovered a pile of lemons and a pile of oranges in the kitchen (effectively an unlimited number of each), and she is determined to eat as much as possible.
+Bessie has a maximum fullness of $T$ $(1 ≤ T ≤ 5,000,000)$. Eating an orange increases her fullness by $A$, and eating a lemon increases her fullness by $B$ ($1 ≤ A,B ≤ T$). Additionally, if she wants, Bessie can drink water at most one time, which will instantly decrease her fullness by half (and will round down).
+Help Bessie determine the maximum fullness she can achieve! </div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first (and only) line has three integers $T$, $A$, and $B$. </div>
+<h3>输出格式</h3>
+<br />
+<div> A single integer, representing the maximum fullness Bessie can achieve. </div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8 5 6</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>8</code></pre>
+<h2>说明</h2>
+<div>Problem credits: Nathan Pinsker </div>
+</article>
+</div>
+</div>
+</body>
+</html>

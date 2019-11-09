@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10NOV]糖果Candy - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376262:SiCWVJLn7gpwGKKtlyf4IPzq4PO1ifTyH01kFTGvVE4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20knows%20that%20Bessie%20loves%20to%20eat%20candy.%20FJ%20has%20N%20%281%20%3C%3D%20N%20%3C%3D%2040%2C000%29%20candies%20that%20he%20wants%20to%20give%20Bessie%20over%20some%20number%20of%20days.%20Each%20day%2C%20Farmer%20John%20gives%20Bessie%20a%20choice%20of%20how%20many%20candies%20she%20chooses%20to%20eat%20that%20day%20by%20choosing%20the%20number%20from%20a%20master%20list%20FJ%20supplies%20that%20has%20Nopt%20%281%20%3C%3D%20Nopt%20%3C%3D%2050%29%20different%20options%2C%20C%5C%5C_i%20%281%20%3C%3D%20C%5C%5C_i%20%3C%3D%20N%29.%20She%20must%20take%20exactly%20C%5C%5C_i%20candies%2C%20no%20more%2C%20no%20less.%5Cn%5CnFarmer%20John%20has%20also%20disclosed%20F%20%281%20%3C%3D%20F%20%3C%3D%2050%29%20of%20his%20favorite%20numbers%2C%20FN%5C%5C_i%20%281%20%3C%3D%20FN%5C%5C_i%20%3C%3D%20N%29.%20Whenever%20the%20number%20of%20candies%20remaining%20at%20the%20end%20of%20the%20day%20precisely%20matches%20one%20of%20these%20favorite%20numbers%2C%20Bessie%20has%20the%20option%20to%20have%20him%20add%20exactly%20M%20%281%20%3C%3D%20M%20%3C%3D%20100%29%20more%20candies%20to%20the%20candy%20supply.%20Bessie%20might%20get%20another%20option%20to%20add%20M%20candies%20several%20times%20if%20adding%20candies%20creates%20another%20favorite%20number.%20In%20the%20best%20circumstances%2C%20Bessie%20can%20obtain%20an%20infinite%20amount%20of%20candy%21%5Cn%5CnWhen%20Bessie%20cannot%20choose%20some%20amount%20of%20candy%20to%20take%20%28because%20there%20is%20not%20enough%29%2C%20and%20the%20number%20of%20candies%20remaining%20is%20not%20any%20of%20FJ%27s%20favorite%20numbers%2C%20she%20cannot%20have%20any%20more%20candy.%5Cn%5CnUnfortunately%2C%20Bessie%20cannot%20think%20ahead%20as%20far%20as%20she%27d%20like%20to%2C%20so%20she%20needs%20your%20help%20in%20order%20to%20eat%20as%20many%20candies%20as%20possible.%5Cn%5CnBy%20way%20of%20example%2C%20consider%20this%20scenario%3A%5Cn%5Cn%5C%5C%2A%20Farmer%20John%27s%20basket%20initially%20contains%2010%20candies%5Cn%5Cn%5C%5C%2A%20Bessie%20can%20chose%20to%20eat%20either%203%20or%205%20candies%20each%20day%5Cn%5Cn%5C%5C%2A%20Farmer%20John%20will%20add%201%20candy%20any%20time%20the%20remaining%20number%20of%20candies%20is%202%20or%204%5Cn%5CnBessie%20could%20use%20this%20set%20of%20choices%20to%20maximize%20the%20amount%20of%20candy%20she%20can%20eat%3A%5Cn%5Cn%60%60%60cpp%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Initial%20%20%20%20%20%20%23%20Candies%20%20%20Remaining%20%20%20%20%20Bonus%20%20%20%20%20Final%5Cn%20%20%20%20%20%20%20%20Day%20%20%20%20%20%20%23%20Candies%20%20%20%20%20%20%20Eaten%20%20%20%20%20%20Candies%20%20%20%20%20Candies%20%20%20Candies%5Cn%5Cn%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%2010%20%20%20%20%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%207%20%20%20%20%20%20%20%20%20%20%20%200%20%20%20%20%20%20%20%207%5Cn%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%207%20%20%20%20%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%204%20%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%205%5Cn%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%20%205%20%20%20%20%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%203%5Cn%20%20%20%20%20%20%20%20%204%20%20%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%200%20%20%20%20%20%20%20%20%20%20%20%200%20%20%20%20%20%20%20%200%5Cn%5Cn%60%60%60%5Cn%5CnTotal%20candies%20eaten%20%3D%203%20%2B%203%20%2B%203%20%2B%203%20%3D%2012.%20%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu77e5%5Cu9053Bessie%5Cu559c%5Cu6b22%5Cu5403%5Cu7cd6%5Cu679c%5Cu3002%5Cu7ea6%5Cu7ff0%5Cu6709N%5Cuff081%5Cu2264N%5Cu226440000%5Cuff09%5Cu7684%5Cu7cd6%5Cu679c%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu7ed9Bessie%5Cu51e0%5Cu5929%5Cu3002%5Cu6bcf%5Cu4e00%5Cu5929%5Cuff0c%5Cu8d1d%5Cu831c%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu5217%5Cu8868%5Cuff08%5Cu6709nopt%5Cuff081%20%3C%3D%20nopt%20%3C%3D%2050%5Cuff09%5Cu79cd%5Cu4e0d%5Cu540c%5Cu7684%5Cu9009%5Cu62e9%5Cuff09%5Cuff0c%5Cu9009%5Cu62e9%5Cu90a3%5Cu4e00%5Cu5929%5Cu5403%5Cu6389%5Cu521a%5Cu597dC%5C%5C_i%5Cuff081%20%3C%3D%20c%5C%5C_i%20%3C%3D%20N%5Cuff09%5Cu4e2a%5Cu7cd6%5Cu679c%5Cu3002%5Cn%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu4e5f%5Cu900f%5Cu9732F%5Cuff081%5Cu2264f%5Cu226450%5Cuff09%5Cu4ed6%5Cu6700%5Cu559c%5Cu6b22%5Cu7684%5Cu6570%5Cu5b57%5Cuff0cFN%5C%5C_i%5Cuff081%20%3C%3D%20FN%5C%5C_i%20%3C%3D%20N%5Cuff09%5Cu3002%5Cu5f53%5Cu5f53%5Cu5929%5Cu6700%5Cu540e%5Cu5269%5Cu4e0b%5Cu7684%5Cu7cd6%5Cu679c%5Cu6570%5Cu91cf%5Cu7cbe%5Cu786e%5Cu5339%5Cu914d%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu559c%5Cu6b22%5Cu7684%5Cu53f7%5Cu7801%5Cuff0cBessie%5Cu53ef%5Cu4ee5%5Cu8ba9%5Cu4ed6%5Cu6dfb%5Cu52a0%5Cu6070%5Cu597dM%5Cuff081%20%3C%3D%20M%20%3D%20100%5Cuff09%5Cu4e2a%5Cu7cd6%5Cu679c%5Cu3002%5Cu5982%5Cu679c%5Cu52a0%5Cu540e%5Cu5f97%5Cu5230%5Cu7684%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8fd8%5Cu662fFJ%5Cu559c%5Cu6b22%5Cu7684%5Cu6570%5Cu5b57%5Cuff0c%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu7ee7%5Cu7eed%5Cu6dfb%5Cu52a0%5Cu7cd6%5Cu679cM%5Cu4e2a%5Cuff08%5Cu52a0%5Cu51e0%5Cu6b21%5Cu7531%5Cu8d1d%5Cu897f%5Cu51b3%5Cu5b9a%5Cuff09%5Cu3002%5Cu5728%5Cu6700%5Cu597d%5Cu7684%5Cu60c5%5Cu51b5%5Cu4e0b%5Cuff0cBessie%5Cu53ef%5Cu4ee5%5Cu5403%5Cu6389%5Cu65e0%5Cu9650%5Cu91cf%5Cu7684%5Cu7cd6%5Cu679c%5Cuff01%5Cn%5Cn%5Cn%5Cu5f53Bessie%5Cu4e0d%5Cu80fd%5Cu9009%5Cu62e9%5Cu4e00%5Cu5b9a%5Cu91cf%5Cu7684%5Cu7cd6%5Cuff08%5Cu56e0%5Cu4e3a%5Cu6ca1%5Cu6709%5Cu8db3%5Cu591f%5Cu7684%5Cuff09%5Cuff0c%5Cu6216%5Cu8005%5Cu7cd6%5Cu679c%5Cu7684%5Cu5269%5Cu4f59%5Cu6570%5Cu91cf%5Cu4e0d%5Cu662f%5Cu4efb%5Cu4f55%5Cu7ea6%5Cu7ff0%5Cu6700%5Cu559c%5Cu6b22%5Cu7684%5Cu53f7%5Cu7801%5Cuff0c%5Cu5979%5Cu4e0d%5Cu80fd%5Cu6709%5Cu4efb%5Cu4f55%5Cu66f4%5Cu591a%5Cu7684%5Cu7cd6%5Cu679c%5Cu3002%5Cn%5Cn%5Cn%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%5Cuff0cBessie%5Cu60f3%5Cu4e0d%5Cu51fa%5Cu5979%5Cu60f3%5Cu505a%5Cu7684%5Cu4e8b%5Cuff0c%5Cu6240%5Cu4ee5%5Cu5979%5Cu9700%5Cu8981%5Cu4f60%5Cu7684%5Cu5e2e%5Cu52a9%5Cu624d%5Cu80fd%5Cu5403%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu591a%5Cu7684%5Cu7cd6%5Cu679c%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Four%20space-separated%20integers%3A%20N%2C%20Nopt%2C%20F%2C%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..Nopt%2B1%3A%20Line%20i%2B1%20contains%20a%20single%20integer%3A%20C%5C%5C_i%5Cn%5Cn%5C%5C%2A%20Lines%20Nopt%2B2..Nopt%2BF%2B1%3A%20Line%20i%2BNopt%2B1%20contains%20a%20single%20integer%3A%20FN%5C%5C_i%5Cn%5Cn1%5Cu884c%5Cuff1a%5Cu56db%5Cu4e2a%5Cu6574%5Cu6570N%5Cuff0cNopt%5Cuff0cF%5Cu548cM%5Cn%5Cn2%5Cu884c%5Cu3002nopt%20%2B%201%5Cuff1ai%2B%201%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1ac%5C%5C_i%5Cn%5Cnnopt%20%2B%202%20..%20nopt%20%2B%20F%20%2B%201%20%2B%201%20%2B%20nopt%5Cu884c%5Cuff1a%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1afn%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%2C%20denoting%20the%20maximum%20amount%20of%20candies%20Bessie%20can%20eat%2C%20or%20-1%20if%20%20Bessie%20can%20eat%20an%20infinite%20amount%20of%20candy.%5Cn%5Cn1%5Cu884c%5Cuff1a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793aBessie%5Cu6700%5Cu591a%5Cu53ef%5Cu4ee5%5Cu5403%5Cu51e0%5Cu4e2a%5Cu3002%5Cu5982%5Cu679cBessie%5Cu53ef%5Cu4ee5%5Cu65e0%5Cu9650%5Cu91cf%5Cu5403%5Cu7cd6%5Cu8f93%5Cu51fa-1%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%2210%202%202%201%20%5Cn3%20%5Cn5%20%5Cn4%20%5Cn2%20%5Cn%22%2C%2212%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%40%20%5Cu738b%5Cu5f66%5Cu6893%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cuff0ckkksc03%5Cu8fdb%5Cu884c%5Cu4e86%5Cu4fee%5Cu6b63%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A78%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22P2998%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu7cd6%5Cu679cCandy%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A8159%2C%22title%22%3A%22%5Cu5927%5Cu6982%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A2127%2C%22name%22%3A%22P2998%20%5BUSACO10NOV%5D%5Cu7cd6%5Cu679cCandy%22%2C%22slug%22%3A%22P2998%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2376%22%2C%22title%22%3A%22%5BUSACO09OCT%5D%5Cu6d25%5Cu8d34Allowance%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2708%22%2C%22title%22%3A%22%5Cu786c%5Cu5e01%5Cu7ffb%5Cu8f6c%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2997%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu65d7%5Cu5e1cBanner%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5594%22%2C%22title%22%3A%22%5Cu3010XR-4%5Cu3011%5Cu6a21%5Cu62df%5Cu8d5b%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5595%22%2C%22title%22%3A%22%5Cu3010XR-4%5Cu3011%5Cu6b4c%5Cu5531%5Cu6bd4%5Cu8d5b%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10NOV%5D%5Cu7cd6%5Cu679cCandy%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10NOV]糖果Candy</h1>
+<h2>题目描述</h2>
+<div>Farmer John knows that Bessie loves to eat candy. FJ has N (1 <= N <= 40,000) candies that he wants to give Bessie over some number of days. Each day, Farmer John gives Bessie a choice of how many candies she chooses to eat that day by choosing the number from a master list FJ supplies that has Nopt (1 <= Nopt <= 50) different options, C\_i (1 <= C\_i <= N). She must take exactly C\_i candies, no more, no less.
+Farmer John has also disclosed F (1 <= F <= 50) of his favorite numbers, FN\_i (1 <= FN\_i <= N). Whenever the number of candies remaining at the end of the day precisely matches one of these favorite numbers, Bessie has the option to have him add exactly M (1 <= M <= 100) more candies to the candy supply. Bessie might get another option to add M candies several times if adding candies creates another favorite number. In the best circumstances, Bessie can obtain an infinite amount of candy!
+When Bessie cannot choose some amount of candy to take (because there is not enough), and the number of candies remaining is not any of FJ's favorite numbers, she cannot have any more candy.
+Unfortunately, Bessie cannot think ahead as far as she'd like to, so she needs your help in order to eat as many candies as possible.
+By way of example, consider this scenario:
+\* Farmer John's basket initially contains 10 candies
+\* Bessie can chose to eat either 3 or 5 candies each day
+\* Farmer John will add 1 candy any time the remaining number of candies is 2 or 4
+Bessie could use this set of choices to maximize the amount of candy she can eat:
+```cpp
+Initial # Candies Remaining Bonus Final
+Day # Candies Eaten Candies Candies Candies
+1 10 3 7 0 7
+2 7 3 4 1 5
+3 5 3 2 1 3
+4 3 3 0 0 0
+```
+Total candies eaten = 3 + 3 + 3 + 3 = 12.
+农民约翰知道Bessie喜欢吃糖果。约翰有N（1≤N≤40000）的糖果，他想给Bessie几天。每一天，贝茜从一个列表（有nopt（1 <= nopt <= 50）种不同的选择），选择那一天吃掉刚好C\_i（1 <= c\_i <= N）个糖果。
+农民约翰也透露F（1≤f≤50）他最喜欢的数字，FN\_i（1 <= FN\_i <= N）。当当天最后剩下的糖果数量精确匹配其中一个喜欢的号码，Bessie可以让他添加恰好M（1 <= M = 100）个糖果。如果加后得到的个数，还是FJ喜欢的数字，就可以继续添加糖果M个（加几次由贝西决定）。在最好的情况下，Bessie可以吃掉无限量的糖果！
+当Bessie不能选择一定量的糖（因为没有足够的），或者糖果的剩余数量不是任何约翰最喜欢的号码，她不能有任何更多的糖果。
+不幸的是，Bessie想不出她想做的事，所以她需要你的帮助才能吃尽可能多的糖果。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Four space-separated integers: N, Nopt, F, and M
+\* Lines 2..Nopt+1: Line i+1 contains a single integer: C\_i
+\* Lines Nopt+2..Nopt+F+1: Line i+Nopt+1 contains a single integer: FN\_i
+1行：四个整数N，Nopt，F和M
+2行。nopt + 1：i+ 1行包含一个整数：c\_i
+nopt + 2 .. nopt + F + 1 + 1 + nopt行：行包含一个整数：fn\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer, denoting the maximum amount of candies Bessie can eat, or -1 if Bessie can eat an infinite amount of candy.
+1行：一个整数，表示Bessie最多可以吃几个。如果Bessie可以无限量吃糖输出-1。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 2 2 1 
+3 
+5 
+4 
+2 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12 
+</code></pre>
+<h2>说明</h2>
+<div>感谢@ 王彦梓 提供翻译，kkksc03进行了修正。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

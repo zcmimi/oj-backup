@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>树链剖分（非模板） - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573380920:dz74WeEn3RPyDOiCcTGhcnX80l8GIT2BAqa/x4JOCS4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu6811%5Cu94fe%5Cu5256%5Cu5206%5Cuff0c%5Cu8ba1%5Cu7b97%5Cu673a%5Cu672f%5Cu8bed%5Cuff0c%5Cu6307%5Cu4e00%5Cu79cd%5Cu5bf9%5Cu6811%5Cu8fdb%5Cu884c%5Cu5212%5Cu5206%5Cu7684%5Cu7b97%5Cu6cd5%5Cuff0c%5Cu5b83%5Cu5148%5Cu901a%5Cu8fc7%5Cu8f7b%5Cu91cd%5Cu8fb9%5Cu5256%5Cu5206%5Cu5c06%5Cu6811%5Cu5206%5Cu4e3a%5Cu591a%5Cu6761%5Cu94fe%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu5c5e%5Cu4e8e%5Cu4e14%5Cu53ea%5Cu5c5e%5Cu4e8e%5Cu4e00%5Cu6761%5Cu94fe%5Cuff0c%5Cu7136%5Cu540e%5Cu518d%5Cu901a%5Cu8fc7%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cuff08%5Cu6811%5Cu72b6%5Cu6570%5Cu7ec4%5Cu3001SBT%5Cu3001SPLAY%5Cu3001%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu7b49%5Cuff09%5Cu6765%5Cu7ef4%5Cu62a4%5Cu6bcf%5Cu4e00%5Cu6761%5Cu94fe%5Cu3002%28%5Cu6458%5Cu81ea%5Cu767e%5Cu5ea6%5Cu767e%5Cu79d1%29%5Cn%22%2C%22description%22%3A%22%5Cu5927%5Cu5b81%5Cu6700%5Cu8fd1%5Cu5728%5Cu7814%5Cu7a76%5Cu6811%5Cu94fe%5Cu5256%5Cu5206%5Cu3002%5Cu4ed6%5Cu53d1%5Cu73b0%5Cu6811%5Cu94fe%5Cu5256%5Cu5206%5Cu7684%5Cu65f6%5Cu95f4%5Cu590d%5Cu6742%5Cu5ea6%5Cu4e3b%5Cu8981%5Cu7531%5Cu8f7b%5Cu91cd%5Cu94fe%5Cu7684%5Cu5212%5Cu5206%5Cu65b9%5Cu5f0f%5Cu4fdd%5Cu8bc1%5Cuff0c%5Cu6700%5Cu5e38%5Cu89c1%5Cu7684%5Cu5256%5Cu5206%5Cu65b9%5Cu5f0f%5Cu662f%5Cu6309%5Cu7167%5Cu5b50%5Cu6811%5Cu5927%5Cu5c0f%5Cu5256%5Cu5206%5Cu3002%5Cu5982%5Cu56fe%5Cuff08%5Cu6458%5Cu81ea%5Cu767e%5Cu5ea6%5Cu767e%5Cu79d1%5Cuff09%5Cuff0c%5Cu9ed1%5Cu8fb9%5Cu4e3a%5Cu91cd%5Cu94fe%5Cuff0c%5Cu957f%5Cu5ea6%5Cu4efb%5Cu610f%5Cuff0c%5Cu767d%5Cu8fb9%5Cu4e3a%5Cu8f7b%5Cu94fe%2C%5Cu957f%5Cu5ea6%5Cu5168%5Cu90e8%5Cu4e3a1%5Cu3002%5Cu6ce8%5Cu610f%5Cuff0c%5Cu4e0b%5Cu56fe1-2%2C1-3%5Cu4e3a%5Cu4e0d%5Cu540c%5Cu8f7b%5Cu94fe%5Cu3002%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F11502.png%29%20%5Cn%5Cn%5Cu5176%5Cu4e2d%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff0c%5Cu5176%5Cu5728%5Cu91cd%5Cu94fe%5Cu4e0a%5Cu7684%5Cu513f%5Cu5b50%5Cu53eb%5Cu505a%5Cu91cd%5Cu513f%5Cu5b50%5Cuff0c%5Cu4e14%5Cu53ea%5Cu6709%5Cu552f%5Cu4e00%5Cu4e00%5Cu4e2a%5Cuff0c%5Cu800c%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9%5Cu6ca1%5Cu6709%5Cu91cd%5Cu513f%5Cu5b50%5Cu3002%5Cu4f8b%5Cu5982%5Cu5bf9%5Cu4e8e%5Cu56fe%5Cu4e0a1%5Cu53f7%5Cu70b9%5Cuff0c%5Cu91cd%5Cu513f%5Cu5b50%5Cu662f4%5Cu53f7%5Cu70b9%5Cu3002%5Cu663e%5Cu7136%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu4e0d%5Cu540c%5Cu5256%5Cu5206%5Cu65b9%5Cu5f0f%5Cuff0c%5Cu540c%5Cu4e00%5Cu7ec4%5Cu67e5%5Cu8be2%5Cu8bbf%5Cu95ee%5Cu7684%5Cu94fe%5Cu7684%5Cu6570%5Cu91cf%5Cu4e0d%5Cu540c%5Cu3002%5Cu73b0%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu68f5%5Cu6839%5Cu4e3a1%5Cu53f7%5Cu8282%5Cu70b9%5Cu7684%5Cu6709%5Cu6839%5Cu6811%5Cu548c%5Cu82e5%5Cu5e72%5Cu8be2%5Cu95ee%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu8be2%5Cu95ee%5Cu8bbf%5Cu95ee%5Cu4eceu%5Cu5230v%5Cu4e0a%5Cu9762%5Cu7684%5Cu6240%5Cu6709%5Cu8f7b%5Cu91cd%5Cu94fe%5Cu4e00%5Cu6b21%5Cu3002%5Cu4f8b%5Cu5982%5Cu5728%5Cu4e0a%5Cu56fe%5Cu7684%5Cu5256%5Cu5206%5Cu65b9%5Cu5f0f%5Cu4e2d%5Cuff0c%5Cu67e5%5Cu8be23%5Cu52308%5Cu4e00%5Cu5171%5Cu8bbf%5Cu95ee%5Cu4e863%5Cu6761%5Cuff1a%5Cu8f7b%5Cu94fe1-3%5Cuff0c%5Cu91cd%5Cu94fe1--4%5Cuff0c%5Cu8f7b%5Cu94fe4--8%5Cuff1b%5Cu67e5%5Cu8be23-11%5Cu4e00%5Cu5171%5Cu8bbf%5Cu95ee%5Cu4e863%5Cu6761%5Cuff1a%5Cu8f7b%5Cu94fe1-3%5Cuff0c%5Cu8f7b%5Cu94fe1-2%5Cuff0c%5Cu91cd%5Cu94fe2-11%5Cu3002%5Cn%5Cn%5Cu5927%5Cu5b81%5Cu8bf7%5Cu4f60%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu79cd%5Cu5256%5Cu5206%5Cu65b9%5Cu6848%5Cuff0c%5Cu4f7f%5Cu6240%5Cu6709%5Cu8be2%5Cu95ee%5Cu64cd%5Cu4f5c%5Cu603b%5Cu5171%5Cu8bbf%5Cu95ee%5Cu7684%2A%2A%5Cu8f7b%5Cu91cd%5Cu94fe%5Cu603b%5Cu6761%5Cu6570%2A%2A%5Cu6700%5Cu5c0f%5Cuff0c%5Cu7531%5Cu4e8e%5Cu53ef%5Cu80fd%5Cu6709%5Cu8bb8%5Cu591a%5Cu5408%5Cu6cd5%5Cu65b9%5Cu6848%5Cuff0c%5Cu8bf7%5Cu4efb%5Cu610f%5Cu8f93%5Cu51fa%5Cu4e00%5Cu79cd%5Cuff0c%5Cu6211%5Cu4eec%5Cu63d0%5Cu4f9bSpecial%20Judge%5Cu68c0%5Cu9a8c%5Cu4f60%5Cu7684%5Cu65b9%5Cu6848%5Cu7684%5Cu6b63%5Cu786e%5Cu6027%5Cu3002%5Cn%5Cn%5Cu8bbe%5Cu4f60%5Cu7684%5Cu5256%5Cu5206%5Cu65b9%5Cu5f0f%5Cu7684%5Cu67e5%5Cu8be2%5Cu94fe%5Cu6570%5Cu4e3ax%5Cuff0cstd%5Cu7b54%5Cu6848%5Cu7684%5Cu67e5%5Cu8be2%5Cu6570%5Cu4e3ax0%5Cuff0c%5Cu8bc4%5Cu5206%5Cu53c2%5Cu6570%5Cu4e3aa%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu5f97%5Cu5230%5Cu7684%5Cu5206%5Cu6570%5Cu662f%5Cuff1a%5Cn%5Cn10%5Cu5206%20%20%20%20%20%20x%3C%3Dx0%5Cn%5Cn8%20%5Cu5206%20%20%20%20%20%20%20%200%3C%28x-x0%29%3C%3Da%5Cn%5Cn7%20%5Cu5206%20%20%20%20%20%20%20%20a%3C%28x-x0%29%3C%3D2%5C%5C%2Aa%5Cn%5Cn6%20%5Cu5206%20%20%20%20%20%20%20%202%5C%5C%2Aa%3C%28x-x0%29%3C%3D3%5C%5C%2Aa%5Cn%5Cn1%20%5Cu5206%20%20%20%20%20%5Cu8f93%5Cu51fa%5Cu4e86%5Cu5408%5Cu6cd5%5Cu7684%5Cu65b9%5Cu6848%5Cn%5Cn%5Cn%5Cna%3Dq%5C%2F300%2Cq%5Cu4e3a%5Cu8be2%5Cu95ee%5Cu603b%5Cu6570%5Cu3002%5Cn%5Cn%5Cu6211%5Cu4eec%5Cu63d0%5Cu4f9b%5Cu4e86Div%5C%5C_Checker.exe%5Cu6765%5Cu68c0%5Cu9a8c%5Cu4f60%5Cu7684%5Cu7b54%5Cu6848%5Cu3002%5Cu628a%5Cu5b83%5Cu653e%5Cu5230div.in%2Cdiv.out%5Cu540c%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e0b%5Cu8fd0%5Cu884c%5Cuff0c%5Cu5176%5Cu4e2ddiv.in%5Cu662f%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu7684%5Cu6587%5Cu4ef6%5Cu5f62%5Cu5f0f%2Cdiv.out%5Cu662f%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu5728%5Cu8be5%5Cu8f93%5Cu5165%5Cu4e0b%5Cu7684%5Cu8f93%5Cu51fa%5Cu3002%5Cu5982%5Cu679c%5Cu4f60%5Cu7684div.out%5Cu7b54%5Cu6848%5Cu5408%5Cu6cd5%5Cuff0c%5Cu5b83%5Cu4f1a%5Cu8fd4%5Cu56de%5Cuff1a%5Cn%5CnYour%20answer%20is%20XXX.%5Cn%5CnXXX%5Cu662f%5Cu4f60%5Cu7684%5Cu5256%5Cu5206%5Cu65b9%5Cu5f0f%5Cu5728%5Cu8be5%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu4e0b%5Cu7684%5Cu67e5%5Cu8be2%5Cu6b21%5Cu6570%5Cuff0c%5Cu5426%5Cu5219%5Cu8fd4%5Cu56de%5Cuff1a%5Cn%5CnWrong%20Outdata.%5Cn%5Cn%2A%2A%5Cu6ce8%5Cu610f%3A%5Cu5728%5Cu6b63%5Cu5f0f%5Cu63d0%5Cu4ea4%5Cu7684%5Cu65f6%5Cu5019%5Cu4e0d%5Cu80fd%5Cu4f7f%5Cu7528%5Cu6587%5Cu4ef6%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu3002%2A%2A%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%5Cu548cq%5Cuff0c%5Cu8868%5Cu793a%5Cu8be5%5Cu6811%5Cu7684%5Cu8282%5Cu70b9%5Cu6570n%5Cu548c%5Cu67e5%5Cu8be2%5Cu6b21%5Cu6570q%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765n-1%5Cu884c%5Cuff0c%5Cu5404%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570u%5Cuff0cv%5Cuff0c%5Cu8868%5Cu793au%5Cu548cv%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765q%5Cu884c%5Cu4e3aq%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu4e3aU%5Cuff0cV%5Cuff0c%5Cu8868%5Cu793a%5Cu6709%5Cu4e00%5Cu6b21%5Cu4eceU%5Cu5230V%5Cu7684%5Cu8be2%5Cu95ee%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu4e00%5Cu5171n%5Cu884c%5Cuff0c%5Cu5bf9%5Cu4e8ei%5Cu53f7%5Cu8282%5Cu70b9%5Cuff0c%5Cu5982%5Cu679c%5Cu5b83%5Cu4e0d%5Cu662f%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9%5Cuff0c%5Cu90a3%5Cu4e48%5Cu8f93%5Cu51fa%5Cu5b83%5Cu5728%5Cu4f60%5Cu7684%5Cu5256%5Cu5206%5Cu65b9%5Cu6848%5Cu91cc%5Cu7684%5Cu91cd%5Cu513f%5Cu5b50%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa0%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%2214%207%5Cn1%204%5Cn4%2010%5Cn4%209%5Cn4%208%5Cn9%2013%5Cn13%2014%5Cn3%201%5Cn7%203%5Cn2%201%5Cn2%206%5Cn6%2012%5Cn11%206%5Cn5%202%5Cn11%203%5Cn7%208%5Cn2%208%5Cn11%201%5Cn8%2014%5Cn5%207%5Cn9%2014%5Cn%22%2C%222%5Cn6%5Cn7%5Cn8%5Cn0%5Cn11%5Cn0%5Cn0%5Cn13%5Cn0%5Cn0%5Cn0%5Cn14%5Cn0%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu6837%5Cu4f8b%5Cu5373%5Cu4e3a%5Cu4e0a%5Cu56fe%5Cuff0c%5Cu4f46%5Cu56fe%5Cu4e0a%5Cu7684%5Cu5256%5Cu5206%5Cu65b9%5Cu5f0f%5Cu5bf9%5Cu4e8e%5Cu6b64%5Cu5904%5Cu7684%5Cu67e5%5Cu8be2%5Cu5e76%5Cu975e%5Cu6700%5Cu4f18%5Cu3002%5Cn%5Cn%5Cu5bf9%5Cu4e8e20%25%5Cu7684%5Cu6570%5Cu636e%5Cuff0cn%2Cq%3C%3D10%5Cn%5Cn%5Cu5bf9%5Cu4e8e60%25%5Cu7684%5Cu6570%5Cu636e%5Cuff0cn%2Cq%3C%3D1000%5Cn%5Cn%5Cu5bf9%5Cu4e8e100%25%5Cu7684%5Cu6570%5Cu636e%5Cuff0c1%3C%3Dn%3C%3D100000%2C1%3C%3Dq%3C%3D200000%2C%5Cu4fdd%5Cu8bc1%5Cu7ed9%5Cu51fa%5Cu7684%5Cu662f%5Cu4e00%5Cu68f5%5Cu5408%5Cu6cd5%5Cu7684%5Cu6811%5Cu3002%5Cn%5CnDiv%5C%5C_Checker%5Cu4e0b%5Cu8f7d%5Cuff1ahttps%3A%5C%2F%5C%2Fpan.baidu.com%5C%2Fs%5C%2F1c26OLf6%5Cn%5Cn%5Cu5982%5Cu679c%5Cu5bf9Checker%5Cu7684%5Cu4f7f%5Cu7528%5Cu65b9%5Cu5f0f%5Cu4e0d%5Cu592a%5Cu7406%5Cu89e3%5Cuff0c%5Cu8bf7%5Cu53c2%5Cu7167%5Cu4e0b%5Cu9762%5Cu7684%5Cu56fe%5Cu7247%5Cn%5Cn%5Cu56fe%5Cu4e2d%5Cu6570%5Cu636e%5Cu4e3a%5Cu6837%5Cu4f8b%5Cu3002%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F11563.png%29%20%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu5408%5Cu6cd5%5Cu65b9%5Cu6848%5Cu7684%5Cu8f93%5Cu51fa%5Cu3002%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F11564.png%29%20%5Cn%5Cn%5Cu4e0d%5Cu5408%5Cu6cd5%5Cu65b9%5Cu6848%5Cu7684%5Cu8f93%5Cu51fa%5Cu3002%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F11565.png%29%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A26090%2C%22name%22%3A%22%5Cu6253%5Cu6742%5Cu76848%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A9%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B107%2C108%2C228%2C270%2C330%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A344%2C%22totalAccepted%22%3A67%2C%22pid%22%3A%22P3995%22%2C%22title%22%3A%22%5Cu6811%5Cu94fe%5Cu5256%5Cu5206%5Cuff08%5Cu975e%5Cu6a21%5Cu677f%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3953%22%2C%22title%22%3A%22%5Cu901b%5Cu516c%5Cu56ed%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3258%22%2C%22title%22%3A%22%5BJLOI2014%5D%5Cu677e%5Cu9f20%5Cu7684%5Cu65b0%5Cu5bb6%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF893F%22%2C%22title%22%3A%22Subtree%20Minimum%20Query%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF567F%22%2C%22title%22%3A%22Mausoleum%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4211%22%2C%22title%22%3A%22%5BLNOI2014%5DLCA%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu6811%5Cu94fe%5Cu5256%5Cu5206%5Cuff08%5Cu975e%5Cu6a21%5Cu677f%5Cuff09%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>树链剖分（非模板）</h1>
+<h2>题目背景</h2>
+<div>树链剖分，计算机术语，指一种对树进行划分的算法，它先通过轻重边剖分将树分为多条链，保证每个点属于且只属于一条链，然后再通过数据结构（树状数组、SBT、SPLAY、线段树等）来维护每一条链。(摘自百度百科)
+</div>
+<h2>题目描述</h2>
+<div>大宁最近在研究树链剖分。他发现树链剖分的时间复杂度主要由轻重链的划分方式保证，最常见的剖分方式是按照子树大小剖分。如图（摘自百度百科），黑边为重链，长度任意，白边为轻链,长度全部为1。注意，下图1-2,1-3为不同轻链。
+![](https://cdn.luogu.com.cn/upload/pic/11502.png)
+其中对于每个节点，其在重链上的儿子叫做重儿子，且只有唯一一个，而叶子节点没有重儿子。例如对于图上1号点，重儿子是4号点。显然，对于不同剖分方式，同一组查询访问的链的数量不同。现在给定一棵根为1号节点的有根树和若干询问操作，每次询问访问从u到v上面的所有轻重链一次。例如在上图的剖分方式中，查询3到8一共访问了3条：轻链1-3，重链1--4，轻链4--8；查询3-11一共访问了3条：轻链1-3，轻链1-2，重链2-11。
+大宁请你给出一种剖分方案，使所有询问操作总共访问的**轻重链总条数**最小，由于可能有许多合法方案，请任意输出一种，我们提供Special Judge检验你的方案的正确性。
+设你的剖分方式的查询链数为x，std答案的查询数为x0，评分参数为a。
+你得到的分数是：
+10分 x<=x0
+8 分 0<(x-x0)<=a
+7 分 a<(x-x0)<=2\*a
+6 分 2\*a<(x-x0)<=3\*a
+1 分 输出了合法的方案
+a=q/300,q为询问总数。
+我们提供了Div\_Checker.exe来检验你的答案。把它放到div.in,div.out同文件夹下运行，其中div.in是输入数据的文件形式,div.out是你的程序在该输入下的输出。如果你的div.out答案合法，它会返回：
+Your answer is XXX.
+XXX是你的剖分方式在该输入数据下的查询次数，否则返回：
+Wrong Outdata.
+**注意:在正式提交的时候不能使用文件输入输出。**
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行有两个正整数n和q，表示该树的节点数n和查询次数q。
+接下来n-1行，各有两个正整数u，v，表示u和v之间有一条边。
+接下来q行为q个询问，为U，V，表示有一次从U到V的询问。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>一共n行，对于i号节点，如果它不是叶子节点，那么输出它在你的剖分方案里的重儿子，否则输出0。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>14 7
+1 4
+4 10
+4 9
+4 8
+9 13
+13 14
+3 1
+7 3
+2 1
+2 6
+6 12
+11 6
+5 2
+11 3
+7 8
+2 8
+11 1
+8 14
+5 7
+9 14
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+6
+7
+8
+0
+11
+0
+0
+13
+0
+0
+0
+14
+0
+</code></pre>
+<h2>说明</h2>
+<div>样例即为上图，但图上的剖分方式对于此处的查询并非最优。
+对于20%的数据，n,q<=10
+对于60%的数据，n,q<=1000
+对于100%的数据，1<=n<=100000,1<=q<=200000,保证给出的是一棵合法的树。
+Div\_Checker下载：https://pan.baidu.com/s/1c26OLf6
+如果对Checker的使用方式不太理解，请参照下面的图片
+图中数据为样例。
+![](https://cdn.luogu.com.cn/upload/pic/11563.png)
+一个合法方案的输出。
+![](https://cdn.luogu.com.cn/upload/pic/11564.png)
+不合法方案的输出。
+![](https://cdn.luogu.com.cn/upload/pic/11565.png)
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

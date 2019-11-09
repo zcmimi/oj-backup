@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[CERC2015]Looping Labyrinth - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381315:PcwUDGYxUQDpRob/PPz+T8yJHiD023xp/np0C/mII6s=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22A%20labyrinth%20is%20obtained%20by%20tiling%20the%20entire%20plane%20with%20a%20pattern%20%5Cu2013%20a%20rectangular%20grid%20consisting%20of%20n%20rows%20and%20m%20columns%20where%20every%20cell%20is%20either%20empty%20or%20blocked.%20The%20result%20is%20an%20in%5Cufb01nite%20grid%20of%20cells%20with%20the%20pattern%20repeating%20in%20all%20four%20directions.%20%5Cn%5CnFormally%2C%20suppose%20we%20denote%20both%20rows%20and%20columns%20of%20the%20in%5Cufb01nite%20grid%20with%20integers%20%28including%20the%20negative%20integers%29.%20The%20row%20number%20increases%20as%20we%20move%20downwards%20in%20the%20grid%2C%20while%20the%20column%20number%20increases%20as%20we%20go%20to%20the%20right.%20The%20cell%20at%20coordinates%20%280%2C0%29%20is%20called%20the%20origin.%20The%20labyrinth%20is%20obtained%20by%20copying%20the%20pattern%20%28without%20mirroring%20or%20rotation%29%20to%20every%20n-by-m%20rectangular%20area%20that%2C%20in%20the%20upper-left%20corner%2C%20has%20a%20cell%20with%20the%20row%20number%20divisible%20by%20n%20and%20the%20column%20number%20divisible%20by%20m.%20In%20particular%2C%20the%20upper-left%20corner%20of%20the%20pattern%20gets%20copied%20to%20the%20origin%2C%20while%20the%20lower-right%20corner%20gets%20copied%20to%20the%20cell%20with%20coordinates%20%28n%5Cu22121%2Cm%5Cu22121%29.%20%5Cn%5CnTo%20escape%20the%20labyrinth%20starting%20from%20a%20particular%20cell%2C%20we%20need%20to%20reach%20the%20origin%20via%20a%20sequence%20of%20empty%20cells%2C%20going%20up%2C%20down%2C%20left%20or%20right%20in%20each%20step.%20%5Cn%5CnYou%20are%20given%20a%20pattern%20and%20a%20sequence%20of%20possible%20starting%20cells.%20For%20each%20starting%20cell%20determine%20if%20it%20is%20possible%20to%20escape%20the%20labyrinth.%22%2C%22inputFormat%22%3A%22The%20%5Cufb01rst%20line%20contains%20two%20integers%20n%20and%20m%20%281%5Cu2264n%2C%20m%5Cu2264100%29%5Cu2013the%20number%20of%20rows%20and%20columns%20in%20the%20pattern%2C%20respectively.%20Each%20of%20the%20following%20n%20lines%20contains%20a%20string%20of%20exactly%20m%20characters%20describing%20one%20row%20of%20the%20pattern.%20The%20character%20%23%20denotes%20a%20blocked%20cell%20while%20the%20dot%20character%20denotes%20an%20empty%20cell.%20The%20following%20line%20contains%20an%20integer%20q%20%281%5Cu2264q%5Cu2264200%2C000%29%20%5Cu2013%20the%20number%20of%20starting%20cells.%20The%20k-th%20of%20the%20following%20q%20lines%20contains%20two%20integers%20r%20and%20c%20%28%24%5Cu221210%5E9%24%20%5Cu2264%20r%2C%20c%20%5Cu2264%20%2410%5E9%24%29%20%5Cu2013%20the%20row%20and%20column%20of%20the%20k-th%20starting%20cell.%20%5Cn%5CnThe%20origin%20and%20all%20starting%20cells%20will%20be%20empty.%5Cn%22%2C%22outputFormat%22%3A%22Output%20should%20consist%20of%20q%20lines.%20The%20k-th%20line%20should%20contain%20the%20word%20yes%20if%20it%20is%20possible%20to%20exit%20the%20labyrinth%20from%20the%20k-th%20starting%20cell%20and%20the%20word%20no%20otherwise.%5Cn%22%2C%22samples%22%3A%5B%5B%226%209%20%5Cn..%23%23%23%23%23..%20%5Cn..%23...%23..%20%5Cn......%23..%20%5Cn..%23%23%23%23%23..%20%5Cn..%23......%20%5Cn..%23...%23..%20%5Cn5%20%5Cn1%204%20%5Cn5%204%20%5Cn1%20-5%20%5Cn5%20-5%20%5Cn-1000000000%200%22%2C%22yes%20%5Cnno%20%5Cnno%20%5Cnyes%20%5Cnyes%22%5D%5D%2C%22hint%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F16244.png%20%29%5Cn%5CnCentral%20Europe%20Regional%20Contest%202015%20Problem%20L%22%2C%22provider%22%3A%7B%22uid%22%3A53374%2C%22name%22%3A%22SuperJvRuo%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A6%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu4e00%5Cu4e2a%24n%5Cu00d7m%24%5Cu7684%5Cu77e9%5Cu5f62%5Cuff0c%5Cu5176%5Cu4e2d%5Cu6bcf%5Cu683c%5Cu4e3a%5Cu8def%5Cu6216%5Cu5899%5Cuff0c%5Cu901a%5Cu8fc7%5Cu5c06%5Cu56fe%5Cu6848%5Cu5e73%5Cu79fb%5Cu6765%5Cu83b7%5Cu5f97%5Cu8ff7%5Cu5bab%5Cu3002%5Cu8ff7%5Cu5bab%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5927%5Cu5c0f%5Cu6709%5Cu9650%5Cu7684%5Cu5750%5Cu6807%5Cu7cfb%5Cuff0c%5Cu5176%5Cu56fe%5Cu6848%5Cu5728%5Cu56db%5Cu4e2a%5Cu65b9%5Cu5411%5Cu4e0a%5Cu91cd%5Cu590d%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7528%5Cu6574%5Cu6570%5Cuff08%5Cu5305%5Cu62ec%5Cu8d1f%5Cu6574%5Cu6570%5Cuff09%5Cu8868%5Cu793a%5Cu6a2a%5Cu7eb5%5Cu5750%5Cu6807%5Cu3002%5Cu5411%5Cu4e0b%5Cu884c%5Cu6570%5Cu589e%5Cu52a0%5Cuff0c%5Cu5411%5Cu53f3%5Cu5217%5Cu6570%5Cu589e%5Cu52a0%5Cuff0c%5Cu5750%5Cu6807%24%280%2C0%29%24%5Cu5904%5Cu79f0%5Cu4e3a%5Cu539f%5Cu70b9%5Cu3002%5Cu7279%5Cu522b%5Cu5730%5Cuff0c%5Cu56fe%5Cu6848%5Cu7684%5Cu5de6%5Cu4e0a%5Cu89d2%5Cu5728%5Cu539f%5Cu70b9%5Cuff0c%5Cu800c%5Cu53f3%5Cu4e0b%5Cu89d2%5Cu5728%5Cu5750%5Cu6807%24%28n-1%2Cm-1%29%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu539f%5Cu70b9%5Cu662f%5Cu51fa%5Cu53e3%5Cuff0c%5Cu4e3a%5Cu4e86%5Cu4ece%5Cu5f00%5Cu59cb%5Cu9003%5Cu79bb%5Cu8ff7%5Cu5bab%5Cuff0c%5Cu6211%5Cu4eec%5Cu8981%5Cu4ece%5Cu4e0d%5Cu540c%5Cu7684%5Cu8d77%5Cu70b9%5Cu5230%5Cu8fbe%5Cu539f%5Cu70b9%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu6b65%5Cu53ef%5Cu5411%5Cu4e0a%5Cuff0c%5Cu4e0b%5Cuff0c%5Cu5de6%5Cu6216%5Cu53f3%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu8d77%5Cu70b9%5Cuff0c%5Cu786e%5Cu5b9a%5Cu662f%5Cu5426%5Cu53ef%5Cu4ee5%5Cu9003%5Cu79bb%5Cu8ff7%5Cu5bab%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24n%24%5Cu548c%24m%24%5Cuff08%241%5Cu2264n%24%5Cuff0c%24m%5Cu2264100%24%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4ee5%5Cu4e0b%5Cu6bcf%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%24m%24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu3002%5Cu201c%23%5Cu201d%5Cu8868%5Cu793a%5Cu5899%5Cuff0c%5Cu201c.%5Cu201d%5Cu8868%5Cu793a%5Cu8def%5Cu3002%5Cr%5Cn%5Cu4ee5%5Cu4e0b%5Cu7684%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu6574%5Cu6570%24q%24%5Cuff08%241%5Cu2264q%5Cu2264200000%24%5Cuff09%5Cu8868%5Cu793a%5Cu8d77%5Cu70b9%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4ee5%5Cu4e0b%24q%24%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24r%24%5Cu548c%24c%24%5Cuff08%24-10%5E9%5Cu2264r%24%5Cuff0c%24c%5Cu226410%5E9%24%5Cuff09%5Cuff0c%5Cu8868%5Cu793a%5Cu6bcf%5Cu4e2a%5Cu8d77%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu539f%5Cu70b9%5Cu548c%5Cu6240%5Cu6709%5Cu8d77%5Cu70b9%5Cu4e3a%5Cu8def%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fa%24q%24%5Cu884c%5Cu3002%5Cu5982%5Cu679c%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu5f53%5Cu524d%5Cu8d77%5Cu70b9%5Cu9003%5Cu51fa%5Cu8ff7%5Cu5bab%5Cuff0c%5Cu5219%5Cu6bcf%5Cu884c%5Cu8f93%5Cu51fa%24yes%24%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%24no%24%5Cu3002%22%2C%22tags%22%3A%5B32%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A16%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22P4356%22%2C%22title%22%3A%22%5BCERC2015%5DLooping%20Labyrinth%20%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A38160%2C%22title%22%3A%22%20P4356%20%5BCERC2015%5D%5Cu200e%5Cu5faa%5Cu73af%5Cu8ff7%5Cu5bab%5Cuff08Looping%20Labyrinth%5Cu7684%5Cu7ffb%5Cu8bd1%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A24672%2C%22name%22%3A%22P4356%20%5BCERC2015%5DLooping%20Labyrinth%20%22%2C%22slug%22%3A%22P4356%22%7D%7D%2C%7B%22id%22%3A37685%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A24672%2C%22name%22%3A%22P4356%20%5BCERC2015%5DLooping%20Labyrinth%20%22%2C%22slug%22%3A%22P4356%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BCERC2015%5DLooping%20Labyrinth%20%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[CERC2015]Looping Labyrinth </h1>
+<h2>题意翻译</h2>
+<div>一个$n×m$的矩形，其中每格为路或墙，通过将图案平移来获得迷宫。迷宫是一个大小有限的坐标系，其图案在四个方向上重复。
+用整数（包括负整数）表示横纵坐标。向下行数增加，向右列数增加，坐标$(0,0)$处称为原点。特别地，图案的左上角在原点，而右下角在坐标$(n-1,m-1)$。
+原点是出口，为了从开始逃离迷宫，我们要从不同的起点到达原点，每一步可向上，下，左或右。对于每个起点，确定是否可以逃离迷宫。
+输入格式：
+第一行包含两个整数$n$和$m$（$1≤n$，$m≤100$）。
+以下每一行包含$m$个字符。“#”表示墙，“.”表示路。
+以下的一行包含整数$q$（$1≤q≤200000$）表示起点的数量。
+以下$q$行每行包含两个整数$r$和$c$（$-10^9≤r$，$c≤10^9$），表示每个起点的坐标。
+保证原点和所有起点为路。
+输出格式：
+输出$q$行。如果可以从当前起点逃出迷宫，则每行输出$yes$，否则输出$no$。</div>
+<h2>题目描述</h2>
+<div>A labyrinth is obtained by tiling the entire plane with a pattern – a rectangular grid consisting of n rows and m columns where every cell is either empty or blocked. The result is an inﬁnite grid of cells with the pattern repeating in all four directions.
+Formally, suppose we denote both rows and columns of the inﬁnite grid with integers (including the negative integers). The row number increases as we move downwards in the grid, while the column number increases as we go to the right. The cell at coordinates (0,0) is called the origin. The labyrinth is obtained by copying the pattern (without mirroring or rotation) to every n-by-m rectangular area that, in the upper-left corner, has a cell with the row number divisible by n and the column number divisible by m. In particular, the upper-left corner of the pattern gets copied to the origin, while the lower-right corner gets copied to the cell with coordinates (n−1,m−1).
+To escape the labyrinth starting from a particular cell, we need to reach the origin via a sequence of empty cells, going up, down, left or right in each step.
+You are given a pattern and a sequence of possible starting cells. For each starting cell determine if it is possible to escape the labyrinth.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The ﬁrst line contains two integers n and m (1≤n, m≤100)–the number of rows and columns in the pattern, respectively. Each of the following n lines contains a string of exactly m characters describing one row of the pattern. The character # denotes a blocked cell while the dot character denotes an empty cell. The following line contains an integer q (1≤q≤200,000) – the number of starting cells. The k-th of the following q lines contains two integers r and c ($−10^9$ ≤ r, c ≤ $10^9$) – the row and column of the k-th starting cell.
+The origin and all starting cells will be empty.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Output should consist of q lines. The k-th line should contain the word yes if it is possible to exit the labyrinth from the k-th starting cell and the word no otherwise.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 9 
+..#####.. 
+..#...#.. 
+......#.. 
+..#####.. 
+..#...... 
+..#...#.. 
+5 
+1 4 
+5 4 
+1 -5 
+5 -5 
+-1000000000 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>yes 
+no 
+no 
+yes 
+yes</code></pre>
+<h2>说明</h2>
+<div>![](https://cdn.luogu.com.cn/upload/pic/16244.png )
+Central Europe Regional Contest 2015 Problem L</div>
+</article>
+</div>
+</div>
+</body>
+</html>

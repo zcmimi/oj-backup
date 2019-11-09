@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10DEC]牛的健美操Cow Calisthenics - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376266:vpAtnv1CaBpwysLlqzQK97OxvmxndqSh75vT6TMFxlY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20continues%20his%20never-ending%20quest%20to%20keep%20the%20cows%20fit%20by%20having%20them%20exercise%20on%20various%20cow%20paths%20that%20run%20through%20the%20pastures.%20These%20cow%20paths%20can%20be%20represented%20as%20a%20set%20of%20vertices%20connected%20with%20bidirectional%20edges%20so%20that%20each%20pair%20of%20vertices%20has%20exactly%20one%20simple%20path%20between%20them.%20In%20the%20abstract%2C%20their%20layout%20bears%20a%20remarkable%20resemblance%20to%20a%20tree.%20Surprisingly%2C%20each%20edge%20%28as%20it%20winds%20its%20way%20through%20the%20pastures%29%20has%20the%20same%20length.%5Cn%5CnFor%20any%20given%20set%20of%20cow%20paths%2C%20the%20canny%20cows%20calculate%20the%20longest%20possible%20distance%20between%20any%20pair%20of%20vertices%20on%20the%20set%20of%20cowpaths%20and%20call%20it%20the%20pathlength.%20If%20they%20think%20this%20pathlength%20is%20too%20large%2C%20they%20simply%20refuse%20to%20exercise%20at%20all.%5Cn%5CnFarmer%20John%20has%20mapped%20the%20paths%20and%20found%20V%20%282%20%3C%3D%20V%20%3C%3D%20100%2C000%29%20vertices%2C%20conveniently%20numbered%20from%201..V.%20In%20order%20to%20make%20shorter%20cowpaths%2C%20he%20can%20block%20the%20path%20between%20any%20two%20vertices%2C%20thus%20creating%20more%20sets%20of%20cow%20paths%20while%20reducing%20the%20pathlength%20of%20both%20cowpath%20sets.%5Cn%5CnStarting%20from%20a%20single%20completely%20connected%20set%20of%20paths%20%28which%20have%20the%20properties%20of%20a%20tree%29%2C%20FJ%20can%20block%20S%20%281%20%3C%3D%20S%20%3C%3D%20V-1%29%20paths%2C%20creating%20S%2B1%20sets%20of%20paths.%20Your%20goal%20is%20to%20compute%20the%20best%20paths%20he%20can%20create%20so%20that%20the%20largest%20pathlength%20of%20all%20those%20sets%20is%20minimized.%5Cn%5CnFarmer%20John%20has%20a%20list%20of%20all%20V-1%20edges%20in%20his%20tree%2C%20each%20described%20by%20the%20two%20vertices%20A%5C%5C_i%20%281%20%3C%3D%20A%5C%5C_i%20%3C%3D%20V%29%20and%20B%5C%5C_i%20%281%20%3C%3D%20B%5C%5C_i%20%3C%3D%20V%3B%20A%5C%5C_i%20%21%3D%20B%5C%5C_i%29%20that%20it%20connects.%5Cn%5CnConsider%20this%20rather%20linear%20cowpath%20set%20%28a%20tree%20with%207%20vertices%29%3A%5Cn%5Cn1---2---3---4---5---6---7%5Cn%5CnIf%20FJ%20can%20block%20two%20paths%2C%20he%20might%20choose%20them%20to%20make%20a%20map%20like%20this%3A%5Cn%5Cn1---2%20%7C%203---4%20%7C%205---6---7%20%5Cnwhere%20the%20longest%20pathlength%20is%202%2C%20which%20would%20be%20the%20answer%20in%20this%20case.%20He%20can%20do%20no%20better%20than%20this.%5Cn%5CnTIME%20LIMIT%3A%202%20seconds%5Cn%5CnMEMORY%20LIMIT%3A%2032%20MB%5Cn%5Cn%20%5CnFarmer%20John%5Cu4e3a%5Cu4e86%5Cu4fdd%5Cu6301%5Cu5976%5Cu725b%5Cu4eec%5Cu7684%5Cu5065%5Cu5eb7%5Cuff0c%5Cu8ba9%5Cu53ef%5Cu601c%5Cu7684%5Cu5976%5Cu725b%5Cu4eec%5Cu4e0d%5Cu505c%5Cu5728%5Cu7267%5Cu573a%5Cu4e4b%5Cu95f4%20%5Cu7684%5Cu5c0f%5Cu8def%5Cu4e0a%5Cu5954%5Cu8dd1%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu5976%5Cu725b%5Cu7684%5Cu8def%5Cu5f84%5Cu96c6%5Cu5408%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu8868%5Cu793a%5Cu6210%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu96c6%5Cu548c%5Cu4e00%5Cu4e9b%5Cu8fde%5Cu63a5%20%5Cu4e24%5Cu4e2a%5Cu9876%5Cu70b9%5Cu7684%5Cu53cc%5Cu5411%5Cu8def%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu6bcf%5Cu5bf9%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu6070%5Cu597d%5Cu6709%5Cu4e00%5Cu6761%5Cu7b80%5Cu5355%5Cu8def%5Cu5f84%5Cu3002%5Cu7b80%5Cu5355%5Cu7684%5Cu8bf4%5Cu6765%5Cuff0c%20%5Cu8fd9%5Cu4e9b%5Cu70b9%5Cu7684%5Cu5e03%5Cu5c40%5Cu5c31%5Cu662f%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu4e14%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu7b49%5Cu957f%5Cuff0c%5Cu90fd%5Cu4e3a1%5Cu3002%20%5Cu5bf9%5Cu4e8e%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5976%5Cu725b%5Cu8def%5Cu5f84%5Cu96c6%5Cu5408%5Cuff0c%5Cu7cbe%5Cu660e%5Cu7684%5Cu5976%5Cu725b%5Cu4eec%5Cu4f1a%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu4efb%5Cu610f%5Cu70b9%5Cu5bf9%5Cu8def%5Cu5f84%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cuff0c%20%5Cu6211%5Cu4eec%5Cu79f0%5Cu4e4b%5Cu4e3a%5Cu8fd9%5Cu4e2a%5Cu8def%5Cu5f84%5Cu96c6%5Cu5408%5Cu7684%5Cu76f4%5Cu5f84%5Cu3002%5Cu5982%5Cu679c%5Cu76f4%5Cu5f84%5Cu592a%5Cu5927%5Cuff0c%5Cu5976%5Cu725b%5Cu4eec%5Cu5c31%5Cu4f1a%5Cu62d2%5Cu7edd%5Cu953b%5Cu70bc%5Cu3002%20Farmer%20John%5Cu628a%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu6807%5Cu8bb0%5Cu4e3a1..V%20%282%20%3C%3D%20V%20%3C%3D%20100%2C000%29%5Cu3002%5Cu4e3a%5Cu4e86%5Cu83b7%5Cu5f97%5Cu66f4%5Cu52a0%5Cu77ed%20%5Cu7684%5Cu76f4%5Cu5f84%5Cuff0c%5Cu4ed6%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu5c01%5Cu9501%5Cu4e00%5Cu4e9b%5Cu5df2%5Cu7ecf%5Cu5b58%5Cu5728%5Cu7684%5Cu9053%5Cu8def%5Cuff0c%5Cu8fd9%5Cu6837%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu5f97%5Cu5230%5Cu66f4%5Cu591a%5Cu7684%5Cu8def%5Cu5f84%5Cu96c6%5Cu5408%5Cuff0c%20%5Cu4ece%5Cu800c%5Cu51cf%5Cu5c0f%5Cu4e00%5Cu4e9b%5Cu8def%5Cu5f84%5Cu96c6%5Cu5408%5Cu7684%5Cu76f4%5Cu5f84%5Cu3002%20%5Cu6211%5Cu4eec%5Cu4ece%5Cu4e00%5Cu68f5%5Cu6811%5Cu5f00%5Cu59cb%5Cuff0cFJ%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu5c01%5Cu9501S%20%281%20%3C%3D%20S%20%3C%3D%20V-1%29%5Cu6761%5Cu53cc%5Cu5411%5Cu8def%5Cuff0c%5Cu4ece%5Cu800c%5Cu83b7%5Cu5f97%20S%2B1%5Cu4e2a%5Cu8def%5Cu5f84%5Cu96c6%5Cu5408%5Cu3002%5Cu4f60%5Cu8981%5Cu505a%5Cu7684%5Cu662f%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu6700%5Cu4f73%5Cu7684%5Cu5c01%5Cu9501%5Cu65b9%5Cu6848%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu4ed6%5Cu5f97%5Cu5230%5Cu7684%5Cu6240%5Cu6709%5Cu8def%5Cu5f84%5Cu96c6%5Cu5408%20%5Cu76f4%5Cu5f84%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5c0f%5Cu3002%20Farmer%20John%5Cu544a%5Cu8bc9%5Cu4f60%5Cu6240%5Cu6709V-1%5Cu6761%5Cu53cc%5Cu5411%5Cu9053%5Cu8def%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8868%5Cu8ff0%5Cu4e3a%5Cuff1a%5Cu9876%5Cu70b9A%5C%5C_i%20%281%20%3C%3D%20A%5C%5C_i%20%3C%3D%20V%29%20%5Cu548c%20B%5C%5C_i%20%281%20%3C%3D%20B%5C%5C_i%20%3C%3D%20V%3B%20A%5C%5C_i%21%3D%20B%5C%5C_i%29%5Cu8fde%5Cu63a5%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space%20separated%20integers%3A%20V%20and%20S%5Cn%5Cn%5C%5C%2A%20Lines%202..V%3A%20Two%20space%20separated%20integers%3A%20A%5C%5C_i%20and%20B%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20that%20is%20the%20best%20maximum%20pathlength%20FJ%20can%20achieve%20with%20S%20blocks%5Cn%22%2C%22samples%22%3A%5B%5B%227%202%20%5Cn6%207%20%5Cn3%204%20%5Cn6%205%20%5Cn1%202%20%5Cn3%202%20%5Cn4%205%20%5Cn%22%2C%222%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A513%2C%22totalAccepted%22%3A250%2C%22pid%22%3A%22P3000%22%2C%22title%22%3A%22%5BUSACO10DEC%5D%5Cu725b%5Cu7684%5Cu5065%5Cu7f8e%5Cu64cdCow%20Calisthenics%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A5539%2C%22title%22%3A%22%5Cu5e0c%5Cu671b%5Cu8fd9%5Cu9898%5Cu65f6%5Cu9650%5Cu8bbe%5Cu5bbd%5Cu4e00%5Cu4e9b%22%2C%22forum%22%3A%7B%22id%22%3A2129%2C%22name%22%3A%22P3000%20%5BUSACO10DEC%5D%5Cu725b%5Cu7684%5Cu5065%5Cu7f8e%5Cu64cdCow%20Calisthenics%22%2C%22slug%22%3A%22P3000%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1084%22%2C%22title%22%3A%22%5Cu75ab%5Cu60c5%5Cu63a7%5Cu5236%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2339%22%2C%22title%22%3A%22%5Cu63d0%5Cu4ea4%5Cu4f5c%5Cu4e1ausaco%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2619%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f2%5DTree%20I%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3001%22%2C%22title%22%3A%22%5BUSACO10DEC%5D%5Cu5de8%5Cu65e0%5Cu9738Big%20Macs%20Around%20the%20w%5Cu2026%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3047%22%2C%22title%22%3A%22%5BUSACO12FEB%5D%5Cu9644%5Cu8fd1%5Cu7684%5Cu725bNearby%20Cows%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10DEC%5D%5Cu725b%5Cu7684%5Cu5065%5Cu7f8e%5Cu64cdCow%20Calisthenics%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10DEC]牛的健美操Cow Calisthenics</h1>
+<h2>题目描述</h2>
+<div>Farmer John continues his never-ending quest to keep the cows fit by having them exercise on various cow paths that run through the pastures. These cow paths can be represented as a set of vertices connected with bidirectional edges so that each pair of vertices has exactly one simple path between them. In the abstract, their layout bears a remarkable resemblance to a tree. Surprisingly, each edge (as it winds its way through the pastures) has the same length.
+For any given set of cow paths, the canny cows calculate the longest possible distance between any pair of vertices on the set of cowpaths and call it the pathlength. If they think this pathlength is too large, they simply refuse to exercise at all.
+Farmer John has mapped the paths and found V (2 <= V <= 100,000) vertices, conveniently numbered from 1..V. In order to make shorter cowpaths, he can block the path between any two vertices, thus creating more sets of cow paths while reducing the pathlength of both cowpath sets.
+Starting from a single completely connected set of paths (which have the properties of a tree), FJ can block S (1 <= S <= V-1) paths, creating S+1 sets of paths. Your goal is to compute the best paths he can create so that the largest pathlength of all those sets is minimized.
+Farmer John has a list of all V-1 edges in his tree, each described by the two vertices A\_i (1 <= A\_i <= V) and B\_i (1 <= B\_i <= V; A\_i != B\_i) that it connects.
+Consider this rather linear cowpath set (a tree with 7 vertices):
+1---2---3---4---5---6---7
+If FJ can block two paths, he might choose them to make a map like this:
+1---2 | 3---4 | 5---6---7
+where the longest pathlength is 2, which would be the answer in this case. He can do no better than this.
+TIME LIMIT: 2 seconds
+MEMORY LIMIT: 32 MB
+Farmer John为了保持奶牛们的健康，让可怜的奶牛们不停在牧场之间 的小路上奔跑。这些奶牛的路径集合可以被表示成一个点集和一些连接 两个顶点的双向路，使得每对点之间恰好有一条简单路径。简单的说来， 这些点的布局就是一棵树，且每条边等长，都为1。 对于给定的一个奶牛路径集合，精明的奶牛们会计算出任意点对路径的最大值， 我们称之为这个路径集合的直径。如果直径太大，奶牛们就会拒绝锻炼。 Farmer John把每个点标记为1..V (2 <= V <= 100,000)。为了获得更加短 的直径，他可以选择封锁一些已经存在的道路，这样就可以得到更多的路径集合， 从而减小一些路径集合的直径。 我们从一棵树开始，FJ可以选择封锁S (1 <= S <= V-1)条双向路，从而获得 S+1个路径集合。你要做的是计算出最佳的封锁方案，使得他得到的所有路径集合 直径的最大值尽可能小。 Farmer John告诉你所有V-1条双向道路，每条表述为：顶点A\_i (1 <= A\_i <= V) 和 B\_i (1 <= B\_i <= V; A\_i!= B\_i)连接。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space separated integers: V and S
+\* Lines 2..V: Two space separated integers: A\_i and B\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer that is the best maximum pathlength FJ can achieve with S blocks
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 2 
+6 7 
+3 4 
+6 5 
+1 2 
+3 2 
+4 5 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

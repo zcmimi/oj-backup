@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[BalticOI 2016 day1]Bosses - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381683:mNEnok8SAujKDPotBASjTduhySrP4SN4QAlW4f3aQPo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22A%20company%20of%20%24n%24%20employees%20is%20due%20for%20a%20restructuring.%20In%20the%20resulting%20hierarchy%2Crepresented%20as%20a%20rooted%20tree%2C%20every%20node%20will%20be%20the%20boss%20of%20its%20children.%5Cn%5CnEach%20employee%20has%20a%20list%20of%20bosses%20they%20will%20accept.%20In%20addition%2C%20all%20employees%20mustbe%20assigned%20a%20salary.%20The%20salary%20must%20be%20a%20positive%20integer%2C%20and%20the%20salary%20of%20eachboss%20must%20be%20larger%20than%20the%20sum%20of%20salaries%20of%20their%20immediate%20subordinates.%5Cn%5CnYour%20task%20is%20to%20structure%20the%20company%20so%20that%20all%20above%20conditions%20hold%2C%20and%20the%20sumof%20all%20the%20salaries%20is%20as%20small%20as%20possible.%22%2C%22inputFormat%22%3A%22The%20first%20input%20line%20contains%20an%20integer%20%24n%24%20%3A%20the%20number%20of%20employees.%20The%20employees%20are%20numbered%20%241%2C2%2C...%2Cn%24%5Cn%5Cn.After%20this%2C%20the%20input%20contains%20%24n%24%20lines%20that%20describe%20the%20preferences%20of%20the%20employees.The%20%24i%24th%20such%20line%20contains%20an%20integer%20%24k_i%24%20%2C%20followed%20by%20a%20list%20of%20%24k_i%24%20integers.%20The%20list%20consists%20of%20all%20employees%20that%20the%20%24i%24th%20employee%20accepts%20as%20their%20boss.%22%2C%22outputFormat%22%3A%22You%20should%20output%20the%20lowest%20total%20salary%20among%20all%20valid%20restructurings.%20You%20can%20assume%20that%20at%20least%20one%20solution%20exists.%22%2C%22samples%22%3A%5B%5B%224%5Cn1%204%5Cn3%201%203%204%5Cn2%201%202%5Cn1%203%5Cn%22%2C%228%22%5D%5D%2C%22hint%22%3A%22%23%23%23%20Subtask%201%20~~%2822%20points%29~~%5Cn%5Cn-%20%242%5C%5Cleq%20n%20%5C%5Cleq%2010%24%5Cn%5Cn-%20%24%5C%5Csum%5En_%7Bi%3D1%7Dk_i%5C%5Cleq%2020%24%5Cn%5Cn%23%23%23%20Subtask%202%20~~%2845%20points%29~~%5Cn%5Cn-%20%242%5C%5Cleq%20n%20%5C%5Cleq%20100%24%5Cn%5Cn-%20%24%5C%5Csum%5En_%7Bi%3D1%7Dk_i%5C%5Cleq%20200%24%5Cn%5Cn%23%23%23%20Subtask%203%20~~%2833%20points%29~~%5Cn%5Cn-%20%242%5C%5Cleq%20n%20%5C%5Cleq%205000%24%5Cn%5Cn-%20%24%5C%5Csum%5En_%7Bi%3D1%7Dk_i%5C%5Cleq%2010000%24%22%2C%22provider%22%3A%7B%22uid%22%3A82152%2C%22name%22%3A%22khong%22%2C%22slogan%22%3A%22%5Cu83dc%5Cu9e21ACMer%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Orange%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%5D%2C%22memory%22%3A%5B256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5BBalticOI%202016%20Day1%5D%5Cu4e0a%5Cu53f8%5Cu4eec%5Cn%5Cn%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu67d0%5Cu516c%5Cu53f8%5Cu6709%20%24n%24%20%5Cu4e2a%5Cu804c%5Cu5458%5Cuff0c%5Cu5176%5Cu804c%5Cu5458%5Cu4e4b%5Cu95f4%5Cu7684%5Cu9636%5Cu7ea7%5Cu5173%5Cu7cfb%5Cu53ef%5Cu4ee5%5Cu7528%5Cu4e00%5Cu68f5%5Cu6709%5Cu6839%5Cu6811%5Cu8868%5Cu793a%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu90fd%5Cu662f%5Cu5176%5Cu6240%5Cu6709%5Cu513f%5Cu5b50%5Cu7684%5Cu4e0a%5Cu53f8%5Cu3002%20%20%5Cn%5Cu6bcf%5Cu4e2a%5Cu804c%5Cu5458%5Cu5e94%5Cu5f53%5Cu5206%5Cu914d%5Cu4e00%5Cu4e2a%5Cu5de5%5Cu8d44%5Cu3002%5Cu5de5%5Cu8d44%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu4e14%5Cu6bcf%5Cu4e2a%5Cu4e0a%5Cu53f8%5Cu7684%5Cu5de5%5Cu8d44%5Cu5fc5%5Cu987b%5Cu5927%5Cu4e8e%5Cu5b83%5Cu6240%5Cu6709%5Cu76f4%5Cu7cfb%5Cu4e0b%5Cu5c5e%5Cu7684%5Cu5de5%5Cu8d44%5Cu4e4b%5Cu548c%5Cu3002%20%20%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu627e%5Cu5230%5Cu4e00%5Cu79cd%5Cu5de5%5Cu8d44%5Cu5206%5Cu914d%5Cu65b9%5Cu6848%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu4ee5%5Cu4e0a%5Cu6240%5Cu6709%5Cu6761%5Cu4ef6%5Cu6ee1%5Cu8db3%5Cu4e14%5Cu5de5%5Cu8d44%5Cu4e4b%5Cu548c%5Cu5c3d%5Cu91cf%5Cu5c0f%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%5Cuff0c%5Cu8868%5Cu793a%5Cu804c%5Cu5458%5Cu7684%5Cu4e2a%5Cu6570%5Cuff0c%5Cu804c%5Cu5458%5Cu4f9d%5Cu6b21%5Cu7f16%5Cu53f7%5Cu4e3a%20%241%2C2%2C%5C%5Cdots%2Cn%24%5Cu3002%20%20%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24n%24%20%5Cu884c%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24k_i%24%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu4e00%5Cu4e2a%5Cu5305%5Cu542b%20%24k_i%24%20%5Cu4e2a%5Cu6570%5Cu7684%5Cu6570%5Cu5217%5Cu3002%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu5217%5Cu8868%5Cu793a%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu5458%5Cu5de5%5Cu7684%5Cu6240%5Cu6709%5Cu4e0b%5Cu5c5e%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu6240%5Cu6709%5Cu65b9%5Cu6848%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%5Cu5de5%5Cu8d44%5Cu4e4b%5Cu548c%5Cuff0c%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1%5Cu6709%5Cu89e3%5Cu3002%5Cn%5Cn%5Cu7531%20%40I_love_him52%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B33%2C108%2C319%2C334%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A29%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22P4674%22%2C%22title%22%3A%22%5BBalticOI%202016%20day1%5DBosses%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A46454%2C%22title%22%3A%22%5Cu9898%5Cu610f%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A26457%2C%22name%22%3A%22P4674%20%5BBalticOI%202016%20day1%5DBosses%22%2C%22slug%22%3A%22P4674%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BBalticOI%202016%20day1%5DBosses%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[BalticOI 2016 day1]Bosses</h1>
+<h2>题意翻译</h2>
+<div>[BalticOI 2016 Day1]上司们
+## 题目描述
+某公司有 $n$ 个职员，其职员之间的阶级关系可以用一棵有根树表示，每个结点都是其所有儿子的上司。
+每个职员应当分配一个工资。工资是一个正整数，且每个上司的工资必须大于它所有直系下属的工资之和。
+你的任务是找到一种工资分配方案，使得以上所有条件满足且工资之和尽量小。
+## 输入格式
+第一行包含一个整数 $n$，表示职员的个数，职员依次编号为 $1,2,\dots,n$。
+接下来 $n$ 行，第 $i$ 行包含一个整数 $k_i$，以及一个包含 $k_i$ 个数的数列。这个数列表示第 $i$ 个员工的所有下属。
+## 输出格式
+输出所有方案中最小的工资之和，数据保证有解。
+由 @I_love_him52 提供翻译</div>
+<h2>题目描述</h2>
+<div>A company of $n$ employees is due for a restructuring. In the resulting hierarchy,represented as a rooted tree, every node will be the boss of its children.
+Each employee has a list of bosses they will accept. In addition, all employees mustbe assigned a salary. The salary must be a positive integer, and the salary of eachboss must be larger than the sum of salaries of their immediate subordinates.
+Your task is to structure the company so that all above conditions hold, and the sumof all the salaries is as small as possible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first input line contains an integer $n$ : the number of employees. The employees are numbered $1,2,...,n$
+.After this, the input contains $n$ lines that describe the preferences of the employees.The $i$th such line contains an integer $k_i$ , followed by a list of $k_i$ integers. The list consists of all employees that the $i$th employee accepts as their boss.</div>
+<h3>输出格式</h3>
+<br />
+<div>You should output the lowest total salary among all valid restructurings. You can assume that at least one solution exists.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1 4
+3 1 3 4
+2 1 2
+1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>8</code></pre>
+<h2>说明</h2>
+<div>### Subtask 1 ~~(22 points)~~
+- $2\leq n \leq 10$
+- $\sum^n_{i=1}k_i\leq 20$
+### Subtask 2 ~~(45 points)~~
+- $2\leq n \leq 100$
+- $\sum^n_{i=1}k_i\leq 200$
+### Subtask 3 ~~(33 points)~~
+- $2\leq n \leq 5000$
+- $\sum^n_{i=1}k_i\leq 10000$</div>
+</article>
+</div>
+</div>
+</body>
+</html>

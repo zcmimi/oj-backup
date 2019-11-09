@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12DEC]伊斯坦布尔的帮派Gangs of Istanbull/Cowstantinople - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376354:wuvu99LW7nkEU9dN/bFcUvxGVRdlLHHe898jOV6/SZ8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Life%20is%20tough%20on%20the%20farm%2C%20and%20when%20life%20is%20tough%20you%20have%20to%20get%20tough.%20The%20cows%20have%20formed%20gangs%20%28conveniently%20numbered%201%20to%20M%29.%20%20The%20gangs%20coexisted%20in%20peace%20for%20a%20while%2C%20but%20now%20things%20are%20really%20getting%20out%20of%20control%21%5Cn%5CnThe%20cows%20are%20competing%20over%20control%20of%20a%20great%20grazing%20field.%20%20This%20conflict%20happens%20over%20a%20series%20of%20minutes.%20%20Each%20minute%20a%20single%20cow%20walks%20into%20the%20field.%20%20If%20the%20field%20is%20empty%20the%20new%20cow%27s%20gang%20is%20considered%20to%20take%20control%20of%20the%20field.%20%20If%20the%20field%20is%20already%20controlled%20by%20the%20new%20cow%27s%20gang%20then%20the%20cow%20just%20starts%20grazing.%20%20Otherwise%2C%20a%20single%20cow%20from%20the%20controlling%20gang%20that%20is%20grazing%20confronts%20the%20new%20cow.%5Cn%5CnThese%20confrontations%20between%20two%20cows%20start%20with%20some%20arguing%20and%20inevitably%20end%20up%20with%20the%20pair%20coming%20to%20realize%20how%20much%20more%20more%20alike%20than%20different%20they%20are.%20%20The%20cows%2C%20seeing%20the%20error%20in%20their%20ways%2C%20leave%20the%20gang%20and%20the%20field%20and%20get%20a%20cold%20glass%20of%20soy%20milk%20at%20FJ%27s%20tavern.%20%20If%20after%20this%20confrontation%20the%20field%20is%20empty%20than%20no%20gang%20controls%20the%20field.%5Cn%5CnBessie%20realizes%20how%20these%20confrontations%20will%20occur.%20%20She%20knows%20how%20many%20cows%20are%20in%20each%20gang.%20%20Bessie%20really%20wants%20her%20gang%20to%20control%20the%20field%20after%20the%20conflict%20is%20over%20and%20all%20cows%20are%20either%20on%20the%20field%20or%20at%20FJ%27s%20tavern.%20%20Help%20Bessie%20determine%20if%20it%20is%20possible%20for%20her%20gang%2C%20labeled%201%2C%20to%20control%20the%20field%20in%20the%20end.%5Cn%5CnIf%20it%20is%20possible%2C%20Bessie%20wants%20to%20know%20the%20maximum%20number%20of%20cows%20from%20her%20gang%20that%20could%20be%20on%20the%20field%20at%20the%20end.%20%20Output%20this%20number%20and%20the%20lexicographically%20earliest%20ordering%20of%20cows%20that%20results%20in%20this%20number%20of%20cows%20from%20Bessie%27s%20gang%20at%20the%20end.%20%20An%20ordering%20X%20is%20said%20to%20be%20lexicographically%20earlier%20than%20Y%20if%20there%20is%20some%20k%20such%20that%20X%5Bk%5D%20%3C%20Y%5Bk%5D%20and%20X%5Bi%5D%20%3D%20Y%5Bi%5D%20for%20i%20%3C%20k.%5Cn%5Cnn%5Cu5934%5Cu725b%5Cu7ed3%5Cu6210%5Cu4e86m%5Cu4e2a%5Cu5e2e%5Cu6d3e%5Cuff0c%5Cu73b0%5Cu5728%5Cu5b83%5Cu4eec%5Cu4e89%5Cu593a%5Cu4e00%5Cu5757%5Cu8349%5Cu5730%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu65f6%5Cu95f4%5Cu5185%5Cu4f1a%5Cu6709%5Cu4e00%5Cu5934%5Cu725b%5Cu6765%5Cu3002%5Cu5982%5Cu679c%5Cu8349%5Cu5730%5Cu4e0a%5Cu8fd8%5Cu6ca1%5Cu6709%5Cu725b%5Cu6216%5Cu8005%5Cu53ea%5Cu6709%5Cu81ea%5Cu5df1%5Cu5e2e%5Cu6d3e%5Cu7684%5Cu725b%5Cuff0c%5Cu4ed6%5Cu4f1a%5Cu7559%5Cu5728%5Cu8fd9%5Cu91cc%5Cu3002%5Cu4f46%5Cu5982%5Cu679c%5Cu5df2%5Cu7ecf%5Cu6709%5Cu522b%5Cu7684%5Cu5e2e%5Cu6d3e%5Cu7684%5Cu725b%5Cuff0c%5Cu5b83%5Cu4eec%5Cu4f1a%5Cu6253%5Cu4e00%5Cu67b6%5Cuff0c%5Cu8fd9%5Cu4f7f%5Cu5f97%5Cu5f53%5Cu524d%5Cu725b%5Cu548c%5Cu8349%5Cu5730%5Cu4e0a%5Cu7684%5Cu4e00%5Cu5934%5Cu725b%5Cu53bb%5Cu627e%5Cu519c%5Cu592b%5Cu601d%5Cu8003%5Cu4eba%5Cu751f%5Cu3002%5Cu95ee%5Cu5982%5Cu4f55%5Cu5b89%5Cu6392%5Cu6765%5Cu7684%5Cu725b%5Cu7684%5Cu7f16%5Cu53f7%5Cu987a%5Cu5e8f%5Cuff0c%5Cu80fd%5Cu4f7f%5Cu4e00%20%20%5Cu53f7%5Cu5e2e%5Cu6d3e%5Cu6700%5Cu540e%5Cu6709%5Cu6700%5Cu591a%5Cu7684%5Cu725b%5Cu7559%5Cu5728%5Cu8349%5Cu5730%5Cu4e0a%5Cuff0c%5Cu5982%5Cu679c%5Cu4e0d%5Cu4e3a0%5Cuff0c%5Cu8fd8%5Cu8981%5Cu8f93%5Cu51fa%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu4e00%5Cu7ec4%5Cu65b9%5Cu6848%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%29%20and%20M%20%281%20%3C%3D%20M%20%3C%3D%20N%29%20separated%20by%20a%20space.%20The%20total%20number%20of%20cows%20in%20all%20the%20gangs%20will%20be%20N.%20%20The%20total%20number%20of%20gangs%20is%20M.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BM%3A%20The%20%281%2Bi%29th%20line%20indicates%20how%20many%20members%20are%20in%20gang%20i.%20%20Each%20gang%20has%20at%20least%201%20member.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Output%20YES%20on%20a%20single%20line%20if%20Bessie%27s%20gang%20can%20control%20the%20field%20after%20the%20conflict.%20%20Otherwise%20output%20NO%20on%20a%20single%20line.%5Cn%5Cn%5C%5C%2A%20Line%202%3A%20If%20Bessie%27s%20gang%20can%20control%20the%20field%20after%20the%20conflict%20output%20the%20maximum%20number%20of%20cows%20that%20could%20be%20on%20the%20field%20on%20a%20single%20line.%5Cn%5Cn%5C%5C%2A%20Lines%203..2%2BN%3A%20On%20the%20%28i%2B2%29th%20line%20output%20the%20index%20of%20the%20gang%20of%20the%20cow%20that%20appears%20in%20the%20ith%20minute%20in%20the%5Cn%5Cnlexicographically%20earliest%20ordering%20that%20leaves%20the%20maximum%20number%20of%20cows%20on%20the%20field%20after%20the%20conflict.%5Cn%22%2C%22samples%22%3A%5B%5B%225%203%20%5Cn2%20%5Cn1%20%5Cn2%20%5Cn%22%2C%22YES%20%5Cn1%20%5Cn1%20%5Cn3%20%5Cn2%20%5Cn3%20%5Cn1%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%205%20cows%20and%203%20gangs.%20%20Bessie%27s%20gang%20%28gang%201%29%20has%202%20members%2C%20gang%202%20has%201%20member%2C%20and%20gang%203%20has%202%20members.%5Cn%5Cn%5CnOnly%20one%20cow%20from%20Bessie%27s%20gang%20can%20end%20up%20on%20the%20field.%20%5Cn%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A59%2C%22totalAccepted%22%3A27%2C%22pid%22%3A%22P3064%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu4f0a%5Cu65af%5Cu5766%5Cu5e03%5Cu5c14%5Cu7684%5Cu5e2e%5Cu6d3eGangs%20of%20Istanbull%5C%2FCowstantinople%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A117821%2C%22title%22%3A%22%5Cu5f69%5Cu86cb%5Cuff1f%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2182%2C%22name%22%3A%22P3064%20%5BUSACO12DEC%5D%5Cu4f0a%5Cu65af%5Cu5766%5Cu5e03%5Cu5c14%5Cu7684%5Cu5e2e%5Cu6d3eGangs%20of%20Istanbull%5C%2FCowstantinople%22%2C%22slug%22%3A%22P3064%22%7D%7D%2C%7B%22id%22%3A54606%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A2182%2C%22name%22%3A%22P3064%20%5BUSACO12DEC%5D%5Cu4f0a%5Cu65af%5Cu5766%5Cu5e03%5Cu5c14%5Cu7684%5Cu5e2e%5Cu6d3eGangs%20of%20Istanbull%5C%2FCowstantinople%22%2C%22slug%22%3A%22P3064%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3065%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu7b2c%5Cu4e00%21First%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3066%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu9003%5Cu8dd1%5Cu7684BarnRunning%20Away%20From%5Cu2026%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4188%22%2C%22title%22%3A%22%5BUSACO18JAN%5DLifeguards%20S%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4801%22%2C%22title%22%3A%22%5BCCO%202015%5D%5Cu9965%5Cu997f%5Cu7684%5Cu72d0%5Cu72f8%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1237A%22%2C%22title%22%3A%22Balanced%20Rating%20Changes%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12DEC%5D%5Cu4f0a%5Cu65af%5Cu5766%5Cu5e03%5Cu5c14%5Cu7684%5Cu5e2e%5Cu6d3eGangs%20of%20Istanbull%5C%2FCowstantinople%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12DEC]伊斯坦布尔的帮派Gangs of Istanbull/Cowstantinople</h1>
+<h2>题目描述</h2>
+<div>Life is tough on the farm, and when life is tough you have to get tough. The cows have formed gangs (conveniently numbered 1 to M). The gangs coexisted in peace for a while, but now things are really getting out of control!
+The cows are competing over control of a great grazing field. This conflict happens over a series of minutes. Each minute a single cow walks into the field. If the field is empty the new cow's gang is considered to take control of the field. If the field is already controlled by the new cow's gang then the cow just starts grazing. Otherwise, a single cow from the controlling gang that is grazing confronts the new cow.
+These confrontations between two cows start with some arguing and inevitably end up with the pair coming to realize how much more more alike than different they are. The cows, seeing the error in their ways, leave the gang and the field and get a cold glass of soy milk at FJ's tavern. If after this confrontation the field is empty than no gang controls the field.
+Bessie realizes how these confrontations will occur. She knows how many cows are in each gang. Bessie really wants her gang to control the field after the conflict is over and all cows are either on the field or at FJ's tavern. Help Bessie determine if it is possible for her gang, labeled 1, to control the field in the end.
+If it is possible, Bessie wants to know the maximum number of cows from her gang that could be on the field at the end. Output this number and the lexicographically earliest ordering of cows that results in this number of cows from Bessie's gang at the end. An ordering X is said to be lexicographically earlier than Y if there is some k such that X[k] < Y[k] and X[i] = Y[i] for i < k.
+n头牛结成了m个帮派，现在它们争夺一块草地。每个单位时间内会有一头牛来。如果草地上还没有牛或者只有自己帮派的牛，他会留在这里。但如果已经有别的帮派的牛，它们会打一架，这使得当前牛和草地上的一头牛去找农夫思考人生。问如何安排来的牛的编号顺序，能使一 号帮派最后有最多的牛留在草地上，如果不为0，还要输出字典序最小的一组方案。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: N (1 <= N <= 100) and M (1 <= M <= N) separated by a space. The total number of cows in all the gangs will be N. The total number of gangs is M.
+\* Lines 2..1+M: The (1+i)th line indicates how many members are in gang i. Each gang has at least 1 member.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: Output YES on a single line if Bessie's gang can control the field after the conflict. Otherwise output NO on a single line.
+\* Line 2: If Bessie's gang can control the field after the conflict output the maximum number of cows that could be on the field on a single line.
+\* Lines 3..2+N: On the (i+2)th line output the index of the gang of the cow that appears in the ith minute in the
+lexicographically earliest ordering that leaves the maximum number of cows on the field after the conflict.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3 
+2 
+1 
+2 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES 
+1 
+1 
+3 
+2 
+3 
+1 
+</code></pre>
+<h2>说明</h2>
+<div>There are 5 cows and 3 gangs. Bessie's gang (gang 1) has 2 members, gang 2 has 1 member, and gang 3 has 2 members.
+Only one cow from Bessie's gang can end up on the field.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

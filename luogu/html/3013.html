@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO11FEB]丢失的牛The Lost Cows - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376282:MUnV5CTLo1algxH9Bf9G8P51LWpezISnfqZX12coUbg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu8fd9%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6674%5Cu5929%5Cuff0c%5Cu519c%5Cu6c11John%5Cuff08%5Cu540e%5Cu9762%5Cu7b80%5Cu79f0%5Cu82f1%5Cu6587%5Cu7f29%5Cu5199FJ%5Cuff09%5Cu7684%5Cu5976%5Cu725b%5Cu88ab%5Cu90aa%5Cu6076%5Cu7684%5Cu519c%5Cu6c11Marcus%5Cuff08%5Cu540e%5Cu9762%5Cu7b80%5Cu79f0%5Cu82f1%5Cu6587%5Cu7f29%5Cu5199FW%5Cuff09%5Cu7ed1%5Cu67b6%5Cu4e86%5Cu3002FJ%5Cu5e0c%5Cu671b%5Cu77e5%5Cu9053%5Cu4ed6%5Cu7684%5Cu5976%5Cu725b%5Cu662f%5Cu5426%5Cu5b89%5Cu5168%5Cu7684%5Cu56de%5Cu5230%5Cu5bb6%5Cu4e86%5Cu3002%5Cn%22%2C%22description%22%3A%22One%20sunny%20day%20farmer%20John%20was%20kidnapped%20by%20evil%20farmer%20Marcus%27s%20cows.%20FJ%20wasn%27t%20too%20concerned%20about%20his%20forced%20holiday%20but%20wanted%20to%20make%20sure%20that%20his%20cows%20got%20home%20safely%20together.%5Cn%5CnThe%20cows%20are%20spread%20out%20in%20every%20one%20of%20FJ%27s%20N%20%283%20%3C%3D%20N%20%3C%3D%20200%29%20pastures%20conveniently%20numbered%201..N.%20The%20barn%20is%20located%20at%20pasture%201.%20The%20farm%20has%20an%20interesting%20navigation%20system%3A%20at%20every%20pasture%20i%20there%20are%20M%20%281%20%3C%3D%20M%20%3C%3D%20200%29%20signs%20S%5C%5C_ij%20%281%20%3C%3D%20S%5C%5C_ij%20%3C%3D%20N%29%20which%20one%20could%20reference%20as%20S%5C%5C_i1..S%5C%5C_iM%3B%20each%20sign%20points%20the%20way%20to%20a%20pasture.%20Sometimes%20a%20sign%20points%20to%20a%20path%20that%20leads%20back%20to%20the%20same%5Cn%5Cnpasture.%5Cn%5CnFarmer%20Marcus%27s%20cows%20allow%20FJ%20to%20write%20a%20single%20message%20to%20all%20of%20his%20cows.%20FJ%27s%20plan%20is%20to%20write%20a%20list%20of%20sign%20numbers%20such%20that%20any%20cow%20who%20follows%20those%20instructions%20will%20all%20arrive%20at%20the%20barn%20when%20each%20cow%20has%20completed%20all%20the%20instructions.%5Cn%5CnWhen%20a%20cow%20starts%20at%20a%20given%20pasture%20then%20she%20will%20first%20follow%20the%20path%20indicated%20by%20the%20first%20sign%20number%20on%20FJ%27s%20list.%20When%20she%20arrives%20at%20the%20second%20pasture%2C%20she%20looks%20at%20the%20second%20sign%20of%20FJ%27s%20list%20and%20follows%20the%20path%20marked%20by%20that%20sign.%20She%20continues%20until%20she%20exhausts%20the%20instruction%20list%2C%20at%20which%20point%20she%20should%20be%20at%20the%20barn.%5Cn%5CnFind%20a%20list%20of%20instructions%20containing%20no%20more%20than%205%2C000%2C000%20sign%20numbers%20that%20will%20guide%20every%20cow%2C%20from%20every%20pasture%2C%20to%20the%20barn%20after%20all%20instructions%20are%20followed.%20%20It%20is%20guaranteed%20that%20such%20a%20list%20exists.%5Cn%5CnConsider%20a%20set%20of%20three%20signs%20in%20four%20pastures%20that%20direct%20the%20cows%20like%20these%20do%3A%5Cn%5Cn%60%60%60cpp%5Cn%2A%2A%20Pasture%23%20%2A%2A%20%5Cn1%20%20%20%202%20%20%20%203%20%20%20%204%20%5CnSign%201%20%20%204%20%20%20%204%20%20%20%201%20%20%20%203%20%5CnSign%202%20%20%201%20%20%20%203%20%20%20%202%20%20%20%204%20%5CnSign%203%20%20%204%20%20%20%202%20%20%20%203%20%20%20%201%20%5Cn%60%60%60%5CnThe%20set%20of%20instructions%20below%20will%20direct%20cows%20to%20the%20barn%20from%20any%20of%20the%20four%20pastures%3A%5Cn%5Cn%60%60%60cpp%5CnInstruction%23%20%20%20Sign%23%20%20%20%20%20%20%20%20%20%20%20%20Instruction%23%20%20%20Sign%23%20%5Cn1%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%205%20%20%20%20%20%20%20%20%20%20%203%20%5Cn2%20%20%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%206%20%20%20%20%20%20%20%20%20%20%201%20%5Cn3%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%207%20%20%20%20%20%20%20%20%20%20%203%20%5Cn4%20%20%20%20%20%20%20%20%20%20%202%20%5Cn%60%60%60%5CnThe%20cow%20in%20pasture%201%20will%20read%20sign%20%231%20at%20time%201%20and%20be%20directed%20to%20pasture%204.%20%20At%20time%202%2C%20she%20is%20in%20pasture%204%20and%20%28per%20FJ%27s%5Cn%5Cninstructions%29%20read%20sign%20%232%20and%20then%20be%20directed%20to%20pasture%204.%20Below%20is%20a%20table%20that%20shows%20the%20cow%27s%20travels%3A%5Cn%5Cn%60%60%60cpp%5Cn%2A%20%2A%20%2A%20%2A%20%20Cow%20in%20pasture%20%201%20%20%2A%20%2A%20%2A%20%2A%20%5CnTime%20%20%20%20CurrentPasture%23%20%20%20%20WhichSign%20%20%20%20%20Sign-%3ENextpasture%20%5Cn1%20%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%204%20%5Cn2%20%20%20%20%20%20%20%20%20%20%20%204%20%20%20%20%20%20%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%204%20%28same%20pasture%21%29%20%5Cn3%20%20%20%20%20%20%20%20%20%20%20%204%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%20%5Cn4%20%20%20%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%202%20%5Cn5%20%20%20%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%202%20%28same%20pasture%29%5Cn6%20%20%20%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%204%20%5Cn7%20%20%20%20%20%20%20%20%20%20%20%204%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201%20Barn%21%20%5Cn%60%60%60%5CnSimilarly%3A%20Pasture%202%27s%20cow%20visits%20pastures%20%5B2%5D-4-4-3-2-2-4-1.%20Pasture%203%27s%20cow%20visits%20pastures%20%5B3%5D-1-1-4-4-1-4-1.%5Cn%5CnPasture%204%27s%20cow%20visits%20pastures%20%5B4%5D-3-2-4-4-1-4-1.%5Cn%5Cn%5CnGiven%20a%20set%20of%20signs%2C%20create%20a%20set%20of%20instructions.%20%5Cn%5Cn%5B%5Cu7531%5Cu4e8e%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu957f%5Cu5ea6%5Cu6709%5Cu9650%5Cu5236%5Cuff0c%5Cu70b9%5Cu51fb%5Cu8fd9%5Cu91cc%5Cu67e5%5Cu770b%5Cu7ffb%5Cu8bd1%5D%28https%3A%5C%2F%5C%2Fwww.luogu.org%5C%2Fdiscuss%5C%2Fshow%3Fpostid%3D5983%29%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space%20separated%20integers%3A%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..M%2B1%3A%20Line%20i%2B1%20describes%20the%20contents%20of%20each%20pasture%27s%20N%20signs%20with%20N%20integers%3A%20S%5C%5C_1i..S%5C%5C_Ni%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..%3F%3A%20The%20sign%20numbers%20the%20cows%20should%20follow%2C%20one%20per%20line.%5Cn%22%2C%22samples%22%3A%5B%5B%224%203%20%5Cn4%204%201%203%20%5Cn1%203%202%204%20%5Cn4%202%203%201%20%5Cn%22%2C%221%20%5Cn2%20%5Cn1%20%5Cn2%20%5Cn3%20%5Cn1%20%5Cn3%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%40JJYZ%5C%5C_cbh%20%5Cu7684%5Cu8010%5Cu5fc3%5Cu7ffb%5Cu8bd1%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B1%2C2%2C28%2C46%2C127%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A111%2C%22totalAccepted%22%3A31%2C%22pid%22%3A%22P3013%22%2C%22title%22%3A%22%5BUSACO11FEB%5D%5Cu4e22%5Cu5931%5Cu7684%5Cu725bThe%20Lost%20Cows%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A145435%2C%22title%22%3A%22%5Cu60f3%5Cu8981%5Cu6c34%5Cu9898%5Cu7684%5Cu770b%5Cu8fc7%5Cu6765%22%2C%22forum%22%3A%7B%22id%22%3A2141%2C%22name%22%3A%22P3013%20%5BUSACO11FEB%5D%5Cu4e22%5Cu5931%5Cu7684%5Cu725bThe%20Lost%20Cows%22%2C%22slug%22%3A%22P3013%22%7D%7D%2C%7B%22id%22%3A86951%2C%22title%22%3A%22%5Cu8ba8%5Cu8bba%5Cu672c%5Cu9898%5Cu7684%5Cu89e3%5Cu662f%5Cu600e%5Cu4e48%5Cu6765%5Cu7684%22%2C%22forum%22%3A%7B%22id%22%3A2141%2C%22name%22%3A%22P3013%20%5BUSACO11FEB%5D%5Cu4e22%5Cu5931%5Cu7684%5Cu725bThe%20Lost%20Cows%22%2C%22slug%22%3A%22P3013%22%7D%7D%2C%7B%22id%22%3A5983%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2141%2C%22name%22%3A%22P3013%20%5BUSACO11FEB%5D%5Cu4e22%5Cu5931%5Cu7684%5Cu725bThe%20Lost%20Cows%22%2C%22slug%22%3A%22P3013%22%7D%7D%2C%7B%22id%22%3A5922%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2141%2C%22name%22%3A%22P3013%20%5BUSACO11FEB%5D%5Cu4e22%5Cu5931%5Cu7684%5Cu725bThe%20Lost%20Cows%22%2C%22slug%22%3A%22P3013%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1035%22%2C%22title%22%3A%22%5Cu7ea7%5Cu6570%5Cu6c42%5Cu548c%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1098%22%2C%22title%22%3A%22%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu5c55%5Cu5f00%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1801%22%2C%22title%22%3A%22%5Cu9ed1%5Cu5323%5Cu5b50_NOI%5Cu5bfc%5Cu520a2010%5Cu63d0%5Cu9ad8%5Cuff0806%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1807%22%2C%22title%22%3A%22%5Cu6700%5Cu957f%5Cu8def_NOI%5Cu5bfc%5Cu520a2010%5Cu63d0%5Cu9ad8%5Cuff0807%5Cuff09%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1867%22%2C%22title%22%3A%22%5Cu3010Mc%5Cu751f%5Cu5b58%5Cu3011%5Cu7ecf%5Cu9a8c%5Cu503c%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO11FEB%5D%5Cu4e22%5Cu5931%5Cu7684%5Cu725bThe%20Lost%20Cows%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO11FEB]丢失的牛The Lost Cows</h1>
+<h2>题目背景</h2>
+<div>这是一个晴天，农民John（后面简称英文缩写FJ）的奶牛被邪恶的农民Marcus（后面简称英文缩写FW）绑架了。FJ希望知道他的奶牛是否安全的回到家了。
+</div>
+<h2>题目描述</h2>
+<div>One sunny day farmer John was kidnapped by evil farmer Marcus's cows. FJ wasn't too concerned about his forced holiday but wanted to make sure that his cows got home safely together.
+The cows are spread out in every one of FJ's N (3 <= N <= 200) pastures conveniently numbered 1..N. The barn is located at pasture 1. The farm has an interesting navigation system: at every pasture i there are M (1 <= M <= 200) signs S\_ij (1 <= S\_ij <= N) which one could reference as S\_i1..S\_iM; each sign points the way to a pasture. Sometimes a sign points to a path that leads back to the same
+pasture.
+Farmer Marcus's cows allow FJ to write a single message to all of his cows. FJ's plan is to write a list of sign numbers such that any cow who follows those instructions will all arrive at the barn when each cow has completed all the instructions.
+When a cow starts at a given pasture then she will first follow the path indicated by the first sign number on FJ's list. When she arrives at the second pasture, she looks at the second sign of FJ's list and follows the path marked by that sign. She continues until she exhausts the instruction list, at which point she should be at the barn.
+Find a list of instructions containing no more than 5,000,000 sign numbers that will guide every cow, from every pasture, to the barn after all instructions are followed. It is guaranteed that such a list exists.
+Consider a set of three signs in four pastures that direct the cows like these do:
+```cpp
+** Pasture# **
+1 2 3 4
+Sign 1 4 4 1 3
+Sign 2 1 3 2 4
+Sign 3 4 2 3 1
+```
+The set of instructions below will direct cows to the barn from any of the four pastures:
+```cpp
+Instruction# Sign# Instruction# Sign#
+1 1 5 3
+2 2 6 1
+3 1 7 3
+4 2
+```
+The cow in pasture 1 will read sign #1 at time 1 and be directed to pasture 4. At time 2, she is in pasture 4 and (per FJ's
+instructions) read sign #2 and then be directed to pasture 4. Below is a table that shows the cow's travels:
+```cpp
+* * * * Cow in pasture 1 * * * *
+Time CurrentPasture# WhichSign Sign->Nextpasture
+1 1 1 4
+2 4 2 4 (same pasture!)
+3 4 1 3
+4 3 2 2
+5 2 3 2 (same pasture)
+6 2 1 4
+7 4 3 1 Barn!
+```
+Similarly: Pasture 2's cow visits pastures [2]-4-4-3-2-2-4-1. Pasture 3's cow visits pastures [3]-1-1-4-4-1-4-1.
+Pasture 4's cow visits pastures [4]-3-2-4-4-1-4-1.
+Given a set of signs, create a set of instructions.
+[由于题目描述长度有限制，点击这里查看翻译](https://www.luogu.org/discuss/show?postid=5983)
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space separated integers: N and M
+\* Lines 2..M+1: Line i+1 describes the contents of each pasture's N signs with N integers: S\_1i..S\_Ni
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..?: The sign numbers the cows should follow, one per line.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 3 
+4 4 1 3 
+1 3 2 4 
+4 2 3 1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 
+2 
+1 
+2 
+3 
+1 
+3 
+</code></pre>
+<h2>说明</h2>
+<div>感谢@JJYZ\_cbh 的耐心翻译。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

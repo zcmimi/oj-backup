@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO06JAN]冗余路径Redundant Paths - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376064:7swPPU0Sa0Qp77coPp7Lrp4ROhHSkgZYVzkmv0lq6Kg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22In%20order%20to%20get%20from%20one%20of%20the%20F%20%281%20%3C%3D%20F%20%3C%3D%205%2C000%29%20grazing%20fields%20%28which%20are%20numbered%201..F%29%20to%20another%20field%2C%20Bessie%20and%20the%20rest%20of%20the%20herd%20are%20forced%20to%20cross%20near%20the%20Tree%20of%20Rotten%20Apples.%20%20The%20cows%20are%20now%20tired%20of%20often%20being%20forced%20to%20take%20a%20particular%20path%20and%20want%20to%20build%20some%20new%20paths%20so%20that%20they%20will%20always%20have%20a%20choice%20of%20at%20least%20two%20separate%20routes%20between%20any%20pair%20of%20fields.%20They%20currently%20have%20at%20least%20one%20route%20between%20each%20pair%20of%20fields%20and%20want%20to%20have%20at%20least%20two.%20Of%20course%2C%20they%20can%20only%20travel%20on%20Official%20Paths%20when%20they%20move%20from%20one%20field%20to%20another.%5Cn%5Cn%5CnGiven%20a%20description%20of%20the%20current%20set%20of%20R%20%28F-1%20%3C%3D%20R%20%3C%3D%2010%2C000%29%20paths%20that%20each%20connect%20exactly%20two%20different%20fields%2C%20determine%20the%20minimum%20number%20of%20new%20paths%20%28each%20of%20which%20connects%20exactly%20two%20fields%29%20that%20must%20be%20built%20so%20that%20there%20are%20at%20least%20two%20separate%20routes%20between%20any%20pair%20of%20fields.%20Routes%20are%20considered%20separate%20if%20they%20use%20none%20of%20the%20same%20paths%2C%20even%20if%20they%20visit%20the%20same%20intermediate%20field%20along%20the%20way.%5Cn%5Cn%5CnThere%20might%20already%20be%20more%20than%20one%20paths%20between%20the%20same%20pair%20of%20fields%2C%20and%20you%20may%20also%20build%20a%20new%20path%20that%20connects%20the%20same%20fields%20as%20some%20other%20path.%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu4eceF%281%5Cu2264F%5Cu22645000%29%5Cu4e2a%5Cu8349%5Cu573a%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu8d70%5Cu5230%5Cu53e6%5Cu4e00%5Cu4e2a%5Cuff0c%5Cu8d1d%5Cu831c%5Cu548c%5Cu5979%5Cu7684%5Cu540c%5Cu4f34%5Cu4eec%5Cu6709%5Cu65f6%5Cu4e0d%5Cu5f97%5Cu4e0d%5Cu8def%5Cu8fc7%5Cu4e00%5Cu4e9b%5Cu5979%5Cu4eec%5Cu8ba8%5Cu538c%5Cu7684%5Cu53ef%5Cu6015%5Cu7684%5Cu6811%5Cuff0e%5Cu5976%5Cu725b%5Cu4eec%5Cu5df2%5Cu7ecf%5Cu538c%5Cu5026%5Cu4e86%5Cu88ab%5Cu8feb%5Cu8d70%5Cu67d0%5Cu4e00%5Cu6761%5Cu8def%5Cuff0c%5Cu6240%5Cu4ee5%5Cu5979%5Cu4eec%5Cu60f3%5Cu5efa%5Cu4e00%5Cu4e9b%5Cu65b0%5Cu8def%5Cuff0c%5Cu4f7f%5Cu6bcf%5Cu4e00%5Cu5bf9%5Cu8349%5Cu573a%5Cu4e4b%5Cu95f4%5Cu90fd%5Cu4f1a%5Cu81f3%5Cu5c11%5Cu6709%5Cu4e24%5Cu6761%5Cu76f8%5Cu4e92%5Cu5206%5Cu79bb%5Cu7684%5Cu8def%5Cu5f84%5Cuff0c%5Cu8fd9%5Cu6837%5Cu5979%5Cu4eec%5Cu5c31%5Cu6709%5Cu591a%5Cu4e00%5Cu4e9b%5Cu9009%5Cu62e9%5Cuff0e%5Cn%5Cn%5Cu6bcf%5Cu5bf9%5Cu8349%5Cu573a%5Cu4e4b%5Cu95f4%5Cu5df2%5Cu7ecf%5Cu6709%5Cu81f3%5Cu5c11%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cuff0e%5Cu7ed9%5Cu51fa%5Cu6240%5Cu6709R%28F-1%5Cu2264R%5Cu226410000%29%5Cu6761%5Cu53cc%5Cu5411%5Cu8def%5Cu7684%5Cu63cf%5Cu8ff0%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8def%5Cu8fde%5Cu63a5%5Cu4e86%5Cu4e24%5Cu4e2a%5Cu4e0d%5Cu540c%5Cu7684%5Cu8349%5Cu573a%5Cuff0c%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu6700%5Cu5c11%5Cu7684%5Cu65b0%5Cu5efa%5Cu9053%5Cu8def%5Cu7684%5Cu6570%5Cu91cf%2C%20%5Cu8def%5Cu5f84%5Cu7531%5Cu82e5%5Cu5e72%5Cu9053%5Cu8def%5Cu9996%5Cu5c3e%5Cu76f8%5Cu8fde%5Cu800c%5Cu6210%5Cuff0e%5Cu4e24%5Cu6761%5Cu8def%5Cu5f84%5Cu76f8%5Cu4e92%5Cu5206%5Cu79bb%5Cuff0c%5Cu662f%5Cu6307%5Cu4e24%5Cu6761%5Cu8def%5Cu5f84%5Cu6ca1%5Cu6709%5Cu4e00%5Cu6761%5Cu91cd%5Cu5408%5Cu7684%5Cu9053%5Cu8def%5Cuff0e%5Cu4f46%5Cu662f%5Cuff0c%5Cu4e24%5Cu6761%5Cu5206%5Cu79bb%5Cu7684%5Cu8def%5Cu5f84%5Cu4e0a%5Cu53ef%5Cu4ee5%5Cu6709%5Cu4e00%5Cu4e9b%5Cu76f8%5Cu540c%5Cu7684%5Cu8349%5Cu573a%5Cuff0e%20%5Cu5bf9%5Cu4e8e%5Cu540c%5Cu4e00%5Cu5bf9%5Cu8349%5Cu573a%5Cu4e4b%5Cu95f4%5Cuff0c%5Cu53ef%5Cu80fd%5Cu5df2%5Cu7ecf%5Cu6709%5Cu4e24%5Cu6761%5Cu4e0d%5Cu540c%5Cu7684%5Cu9053%5Cu8def%5Cuff0c%5Cu4f60%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu5728%5Cu5b83%5Cu4eec%5Cu4e4b%5Cu95f4%5Cu518d%5Cu5efa%5Cu4e00%5Cu6761%5Cu9053%5Cu8def%5Cuff0c%5Cu4f5c%5Cu4e3a%5Cu53e6%5Cu4e00%5Cu6761%5Cu4e0d%5Cu540c%5Cu7684%5Cu9053%5Cu8def%5Cuff0e%5Cn%22%2C%22inputFormat%22%3A%22Line%201%3A%20Two%20space-separated%20integers%3A%20F%20and%20R%5Cn%5Cn%5Cn%5Cn%5CnLines%202..R%2B1%3A%20Each%20line%20contains%20two%20space-separated%20integers%20which%20are%20the%20fields%20at%20the%20endpoints%20of%20some%20path.%5Cn%22%2C%22outputFormat%22%3A%22Line%201%3A%20A%20single%20integer%20that%20is%20the%20number%20of%20new%20paths%20that%20must%20be%20built.%5Cn%22%2C%22samples%22%3A%5B%5B%227%207%5Cr%5Cn1%202%5Cr%5Cn2%203%5Cr%5Cn3%204%5Cr%5Cn2%205%5Cr%5Cn4%205%5Cr%5Cn5%206%5Cr%5Cn5%207%22%2C%222%22%5D%5D%2C%22hint%22%3A%22Explanation%20of%20the%20sample%3A%5Cn%5Cn%5Cn%5Cn%5CnOne%20visualization%20of%20the%20paths%20is%3A%5Cn%5Cn%5Cn1%20%20%202%20%20%203%5Cn%5Cn%2B---%2B---%2B%5Cn%5Cn%20%20%20%20%20%20%20%7C%20%20%20%7C%5Cn%20%20%20%20%20%20%20%7C%20%20%20%7C%5Cn6%20%2B---%2B---%2B%204%5Cn%5Cn%5C%2F%205%5Cn%5C%2F%5Cn%5C%2F%5Cn7%20%2BBuilding%20new%20paths%20from%201%20to%206%20and%20from%204%20to%207%20satisfies%20the%20conditions.%5Cn%5Cn%5Cn1%20%20%202%20%20%203%5Cn%5Cn%2B---%2B---%2B%5Cn%5Cn%20%20%20%3A%20%20%20%7C%20%20%20%7C%5Cn%20%20%20%3A%20%20%20%7C%20%20%20%7C%5Cn6%20%2B---%2B---%2B%204%5Cn%5Cn%5C%2F%205%20%20%3A%5Cn%5C%2F%20%20%20%20%20%3A%5Cn%5Cn%5C%2F%20%20%20%20%20%20%3A%5Cn%5Cn7%20%2B%20-%20-%20-%20-%20Check%20some%20of%20the%20routes%3A%5Cn%5Cn%5Cn1%20%5Cu2013%202%3A%20%201%20%5Cu2013%3E%202%20and%201%20%5Cu2013%3E%206%20%5Cu2013%3E%205%20%5Cu2013%3E%202%5Cn%5Cn%5Cn1%20%5Cu2013%204%3A%20%201%20%5Cu2013%3E%202%20%5Cu2013%3E%203%20%5Cu2013%3E%204%20and%201%20%5Cu2013%3E%206%20%5Cu2013%3E%205%20%5Cu2013%3E%204%5Cn%5Cn%5Cn3%20%5Cu2013%207%3A%20%203%20%5Cu2013%3E%204%20%5Cu2013%3E%207%20and%203%20%5Cu2013%3E%202%20%5Cu2013%3E%205%20%5Cu2013%3E%207%5Cn%5Cn%5CnEvery%20pair%20of%20fields%20is%2C%20in%20fact%2C%20connected%20by%20two%20routes.%5Cn%5Cn%5Cn%5Cn%5CnIt%27s%20possible%20that%20adding%20some%20other%20path%20will%20also%20solve%20the%20problem%20%28like%20one%20from%206%20to%207%29.%20Adding%20two%20paths%2C%20however%2C%20is%20the%20minimum.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B6%2C23%2C46%2C179%2C314%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A3177%2C%22totalAccepted%22%3A1252%2C%22pid%22%3A%22P2860%22%2C%22title%22%3A%22%5BUSACO06JAN%5D%5Cu5197%5Cu4f59%5Cu8def%5Cu5f84Redundant%20Paths%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A160712%2C%22title%22%3A%22%5Cu4e00%5Cu4e2a%5Cu4e0d%5Cu662f%5Cu59b9%5Cu5b50%5Cu7684%5Cu849f%5Cu84bb%5Cu5173%5Cu4e8eac%5Cu4ee3%5Cu7801%5Cu7684%5Cu4e00%5Cu70b9%5Cu7591%5Cu95ee%22%2C%22forum%22%3A%7B%22id%22%3A1990%2C%22name%22%3A%22P2860%20%5BUSACO06JAN%5D%5Cu5197%5Cu4f59%5Cu8def%5Cu5f84Redundant%20Paths%22%2C%22slug%22%3A%22P2860%22%7D%7D%2C%7B%22id%22%3A145084%2C%22title%22%3A%2273%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A1990%2C%22name%22%3A%22P2860%20%5BUSACO06JAN%5D%5Cu5197%5Cu4f59%5Cu8def%5Cu5f84Redundant%20Paths%22%2C%22slug%22%3A%22P2860%22%7D%7D%2C%7B%22id%22%3A100999%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cu554a%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A1990%2C%22name%22%3A%22P2860%20%5BUSACO06JAN%5D%5Cu5197%5Cu4f59%5Cu8def%5Cu5f84Redundant%20Paths%22%2C%22slug%22%3A%22P2860%22%7D%7D%2C%7B%22id%22%3A96087%2C%22title%22%3A%22%5Cu672c%5Cu673a%5Cu6b63%5Cu786e%5Cuff0c%5Cu6d1b%5Cu8c37WA%3F%22%2C%22forum%22%3A%7B%22id%22%3A1990%2C%22name%22%3A%22P2860%20%5BUSACO06JAN%5D%5Cu5197%5Cu4f59%5Cu8def%5Cu5f84Redundant%20Paths%22%2C%22slug%22%3A%22P2860%22%7D%7D%2C%7B%22id%22%3A91250%2C%22title%22%3A%22%5Cu5927%5Cu795e%5Cu6c42%5Cu52a9%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A1990%2C%22name%22%3A%22P2860%20%5BUSACO06JAN%5D%5Cu5197%5Cu4f59%5Cu8def%5Cu5f84Redundant%20Paths%22%2C%22slug%22%3A%22P2860%22%7D%7D%2C%7B%22id%22%3A75194%2C%22title%22%3A%22%5Cu5efa%5Cu8bae%5Cu52a0%5Cu5f3a%5Cu6570%5Cu636e%22%2C%22forum%22%3A%7B%22id%22%3A1990%2C%22name%22%3A%22P2860%20%5BUSACO06JAN%5D%5Cu5197%5Cu4f59%5Cu8def%5Cu5f84Redundant%20Paths%22%2C%22slug%22%3A%22P2860%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2341%22%2C%22title%22%3A%22%5BHAOI2006%5D%5Cu53d7%5Cu6b22%5Cu8fce%5Cu7684%5Cu725b%7C%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5f3a%5Cu8fde%5Cu901a%5Cu5206%5Cu91cf%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3119%22%2C%22title%22%3A%22%5BUSACO15JAN%5D%5Cu8349%5Cu9274%5Cu5b9aGrass%20Cownoisseur%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3225%22%2C%22title%22%3A%22%5BHNOI2012%5D%5Cu77ff%5Cu573a%5Cu642d%5Cu5efa%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3469%22%2C%22title%22%3A%22%5BPOI2008%5DBLO-Blockade%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5058%22%2C%22title%22%3A%22%5BZJOI2004%5D%5Cu55c5%5Cu63a2%5Cu5668%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO06JAN%5D%5Cu5197%5Cu4f59%5Cu8def%5Cu5f84Redundant%20Paths%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO06JAN]冗余路径Redundant Paths</h1>
+<h2>题目描述</h2>
+<div>In order to get from one of the F (1 <= F <= 5,000) grazing fields (which are numbered 1..F) to another field, Bessie and the rest of the herd are forced to cross near the Tree of Rotten Apples. The cows are now tired of often being forced to take a particular path and want to build some new paths so that they will always have a choice of at least two separate routes between any pair of fields. They currently have at least one route between each pair of fields and want to have at least two. Of course, they can only travel on Official Paths when they move from one field to another.
+Given a description of the current set of R (F-1 <= R <= 10,000) paths that each connect exactly two different fields, determine the minimum number of new paths (each of which connects exactly two fields) that must be built so that there are at least two separate routes between any pair of fields. Routes are considered separate if they use none of the same paths, even if they visit the same intermediate field along the way.
+There might already be more than one paths between the same pair of fields, and you may also build a new path that connects the same fields as some other path.
+为了从F(1≤F≤5000)个草场中的一个走到另一个，贝茜和她的同伴们有时不得不路过一些她们讨厌的可怕的树．奶牛们已经厌倦了被迫走某一条路，所以她们想建一些新路，使每一对草场之间都会至少有两条相互分离的路径，这样她们就有多一些选择．
+每对草场之间已经有至少一条路径．给出所有R(F-1≤R≤10000)条双向路的描述，每条路连接了两个不同的草场，请计算最少的新建道路的数量, 路径由若干道路首尾相连而成．两条路径相互分离，是指两条路径没有一条重合的道路．但是，两条分离的路径上可以有一些相同的草场． 对于同一对草场之间，可能已经有两条不同的道路，你也可以在它们之间再建一条道路，作为另一条不同的道路．
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Line 1: Two space-separated integers: F and R
+Lines 2..R+1: Each line contains two space-separated integers which are the fields at the endpoints of some path.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Line 1: A single integer that is the number of new paths that must be built.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 7
+1 2
+2 3
+3 4
+2 5
+4 5
+5 6
+5 7</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2</code></pre>
+<h2>说明</h2>
+<div>Explanation of the sample:
+One visualization of the paths is:
+1 2 3
++---+---+
+| |
+| |
+6 +---+---+ 4
+/ 5
+/
+/
+7 +Building new paths from 1 to 6 and from 4 to 7 satisfies the conditions.
+1 2 3
++---+---+
+: | |
+: | |
+6 +---+---+ 4
+/ 5 :
+/ :
+/ :
+7 + - - - - Check some of the routes:
+1 – 2: 1 –> 2 and 1 –> 6 –> 5 –> 2
+1 – 4: 1 –> 2 –> 3 –> 4 and 1 –> 6 –> 5 –> 4
+3 – 7: 3 –> 4 –> 7 and 3 –> 2 –> 5 –> 7
+Every pair of fields is, in fact, connected by two routes.
+It's possible that adding some other path will also solve the problem (like one from 6 to 7). Adding two paths, however, is the minimum.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>The least round way - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573389849:fA84aX9Uemc5G2ouLQcl5GwZB0sVR3ew6OAgRgXy7sA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22There%20is%20a%20square%20matrix%20%24%20n%5Cu00d7n%20%24%20%2C%20consisting%20of%20non-negative%20integer%20numbers.%20You%20should%20find%20such%20a%20way%20on%20it%20that%5Cn%5Cn-%20starts%20in%20the%20upper%20left%20cell%20of%20the%20matrix%3B%5Cn-%20each%20following%20cell%20is%20to%20the%20right%20or%20down%20from%20the%20current%20cell%3B%5Cn-%20the%20way%20ends%20in%20the%20bottom%20right%20cell.%5Cn%5CnMoreover%2C%20if%20we%20multiply%20together%20all%20the%20numbers%20along%20the%20way%2C%20the%20result%20should%20be%20the%20least%20%5C%22round%5C%22.%20In%20other%20words%2C%20it%20should%20end%20in%20the%20least%20possible%20number%20of%20zeros.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20number%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D1000%20%24%20%29%2C%20%24%20n%20%24%20is%20the%20size%20of%20the%20matrix.%20Then%20follow%20%24%20n%20%24%20lines%20containing%20the%20matrix%20elements%20%28non-negative%20integer%20numbers%20not%20exceeding%20%24%2010%5E%7B9%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20the%20least%20number%20of%20trailing%20zeros.%20In%20the%20second%20line%20print%20the%20correspondent%20way%20itself.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%202%203%5Cn4%205%206%5Cn7%208%209%5Cn%22%2C%220%5CnDDRR%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B64000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F2%5C%2FB%22%2C%22id%22%3A%222B%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu7ed9%5Cu5b9a%5Cu7531%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cu7ec4%5Cu6210%5Cu7684%24n%20%5C%5Ctimes%20n%24%20%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu77e9%5Cu9635%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu5bfb%5Cu627e%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cuff1a%5Cn%5Cn%5Cu4ee5%5Cu5de6%5Cu4e0a%5Cu89d2%5Cu4e3a%5Cu8d77%5Cu70b9%5Cn%5Cn%5Cu6bcf%5Cu6b21%5Cu53ea%5Cu80fd%5Cu5411%5Cu53f3%5Cu6216%5Cu5411%5Cu4e0b%5Cu8d70%5Cn%5Cn%5Cu4ee5%5Cu53f3%5Cu4e0b%5Cu89d2%5Cu4e3a%5Cu7ec8%5Cu70b9%5Cn%5Cu5e76%5Cu4e14%5Cuff0c%5Cu5982%5Cu679c%5Cu6211%5Cu4eec%5Cu628a%5Cu6cbf%5Cu8def%5Cu9047%5Cu5230%5Cu7684%5Cu6570%5Cu8fdb%5Cu884c%5Cu76f8%5Cu4e58%5Cuff0c%5Cu79ef%5Cu5e94%5Cu5f53%5Cu662f%5Cu6700%5Cu5c0f%5Cu201cround%5Cu201d%5Cuff0c%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu5e94%5Cu5f53%5Cu4ee5%5Cu6700%5Cu5c0f%5Cu6570%5Cu76ee%5Cu76840%5Cu7684%5Cu7ed3%5Cu5c3e.%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20n%20%28%242%20%5C%5Cleq%20n%20%5C%5Cleq%201000%24%29%5Cuff0cn%20%5Cu4e3a%5Cu77e9%5Cu9635%5Cu7684%5Cu89c4%5Cu6a21%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684n%5Cu884c%5Cu5305%5Cu542b%5Cu77e9%5Cu9635%5Cu7684%5Cu5143%5Cu7d20%5Cuff08%5Cu4e0d%5Cu8d85%5Cu8fc710%5E9%5Cu7684%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cuff09.%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5e94%5Cu5305%5Cu542b%5Cu6700%5Cu5c0f%5Cu5c3e0%5Cu7684%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6253%5Cu5370%5Cu51fa%5Cu76f8%5Cu5e94%5Cu7684%5Cu8def%5Cu5f84%5Cuff08%5Cu8bd1%5Cu6ce8%5Cuff1aD%5Cu4e3a%5Cu4e0b%5Cuff0cR%5Cu4e3a%5Cu53f3%5Cuff09%22%2C%22tags%22%3A%5B3%2C5%2C54%2C266%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A942%2C%22totalAccepted%22%3A221%2C%22pid%22%3A%22CF2B%22%2C%22title%22%3A%22The%20least%20round%20way%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A151711%2C%22title%22%3A%22%5Cu521a%5Cu5b66%5Cu4e09%5Cu5929OI%5Cu7684%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A12705%2C%22name%22%3A%22CF2B%20The%20least%20round%20way%22%2C%22slug%22%3A%22CF2B%22%7D%7D%2C%7B%22id%22%3A140882%2C%22title%22%3A%22%5Cu795e%5Cu4ed9%5Cu6570%5Cu636e%5Cu53d1%5Cu653e%22%2C%22forum%22%3A%7B%22id%22%3A12705%2C%22name%22%3A%22CF2B%20The%20least%20round%20way%22%2C%22slug%22%3A%22CF2B%22%7D%7D%2C%7B%22id%22%3A140860%2C%22title%22%3A%22hack%5Cu5927%5Cu7247%5Cu9898%5Cu89e3%22%2C%22forum%22%3A%7B%22id%22%3A12705%2C%22name%22%3A%22CF2B%20The%20least%20round%20way%22%2C%22slug%22%3A%22CF2B%22%7D%7D%2C%7B%22id%22%3A125340%2C%22title%22%3A%22%5Cu6211%5Cu5df2%5Cu54ed%5Cu6655%5Cu5728%5Cu5395%5Cu6240%5Cu2026%5Cu2026%22%2C%22forum%22%3A%7B%22id%22%3A12705%2C%22name%22%3A%22CF2B%20The%20least%20round%20way%22%2C%22slug%22%3A%22CF2B%22%7D%7D%2C%7B%22id%22%3A122736%2C%22title%22%3A%22%5Cu6709%5Cu6ca1%5Cu6709%5Cu5927%5Cu4f6c%5Cu5e2e%5Cu5fd9%5Cu770b%5Cu4e00%5Cu4e0b%5Cu3002%5Cu3002%5Cu795e%5Cu4ed9%5Cu6570%5Cu636e%5Cu70b93%5Cu8fc7%5Cu4e0d%5Cu53bb%5Cu554a%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A12705%2C%22name%22%3A%22CF2B%20The%20least%20round%20way%22%2C%22slug%22%3A%22CF2B%22%7D%7D%2C%7B%22id%22%3A122714%2C%22title%22%3A%22%5Cu5d29%5Cu6e83%20%20%20%5Cu54ea%5Cu4f4d%5Cu5927%5Cu4f6c%5Cu80fd%5Cu5e2e%5Cu672c%5Cu849f%5Cu84bb%5Cu770b%5Cu770b%5Cu5230%5Cu5e95%5Cu54ea%5Cu9519%5Cu4e86%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A12705%2C%22name%22%3A%22CF2B%20The%20least%20round%20way%22%2C%22slug%22%3A%22CF2B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF5C%22%2C%22title%22%3A%22Longest%20Regular%20Bracket%20Sequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF4D%22%2C%22title%22%3A%22Mysterious%20Present%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF3D%22%2C%22title%22%3A%22Least%20Cost%20Bracket%20Sequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF3B%22%2C%22title%22%3A%22Lorry%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF2C%22%2C%22title%22%3A%22Commentator%20problem%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22The%20least%20round%20way%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>The least round way</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+给定由非负整数组成的$n \times n$ 的正方形矩阵，你需要寻找一条路径：
+以左上角为起点
+每次只能向右或向下走
+以右下角为终点
+并且，如果我们把沿路遇到的数进行相乘，积应当是最小“round”，换句话说，应当以最小数目的0的结尾.
+输入格式
+第一行包含一个整数 n ($2 \leq n \leq 1000$)，n 为矩阵的规模，接下来的n行包含矩阵的元素（不超过10^9的非负整数）.
+输出格式
+第一行应包含最小尾0的个数，第二行打印出相应的路径（译注：D为下，R为右）</div>
+<h2>题目描述</h2>
+<div>There is a square matrix $ n×n $ , consisting of non-negative integer numbers. You should find such a way on it that
+- starts in the upper left cell of the matrix;
+- each following cell is to the right or down from the current cell;
+- the way ends in the bottom right cell.
+Moreover, if we multiply together all the numbers along the way, the result should be the least "round". In other words, it should end in the least possible number of zeros.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer number $ n $ ( $ 2<=n<=1000 $ ), $ n $ is the size of the matrix. Then follow $ n $ lines containing the matrix elements (non-negative integer numbers not exceeding $ 10^{9} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print the least number of trailing zeros. In the second line print the correspondent way itself.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 2 3
+4 5 6
+7 8 9
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0
+DDRR
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

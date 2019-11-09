@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO17JAN]Subsequence Reversal序列反转 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573377097:xEkUf3b4zRrPpof7XTJXCdXQS0LySus89dh881Pz0IY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20arranging%20his%20%24N%24%20cows%20in%20a%20line%20to%20take%20a%20photo%20%28%241%20%5C%5Cleq%20N%20%5C%5Cleq%2050%24%29.%20The%20height%20of%20the%20%24i%24th%20cow%20in%20sequence%20is%20%24a%28i%29%24%2C%20and%20Farmer%20John%20thinks%20it%20would%20make%20for%20an%20aesthetically%20pleasing%20photo%20if%20the%20cow%20lineup%20has%20a%20large%20increasing%20subsequence%20of%20cows%20by%20height.%5Cn%5CnTo%20recall%2C%20a%20subsequence%20is%20a%20subset%20%24a%28i_1%29%2C%20a%28i_2%29%2C%20%5C%5Cldots%2C%20a%28i_k%29%24%20of%20elements%20from%20the%20cow%20sequence%2C%20found%20at%20some%20series%20of%20indices%20%24i_1%20%3C%20i_2%20%3C%20%5C%5Cldots%20%3C%20i_k%24.%20We%20say%20the%20subsequence%20is%20increasing%20if%20%24a%28i_1%29%20%5C%5Cleq%20a%28i_2%29%20%5C%5Cleq%20%5C%5Cldots%20%5C%5Cleq%20a%28i_k%29%24.%5Cn%5CnFJ%20would%20like%20there%20to%20be%20a%20long%20increasing%20subsequence%20within%20his%20ordering%20of%20the%20cows.%20In%20order%20to%20ensure%20this%2C%20he%20allows%20himself%20initially%20to%20choose%20any%20subsequence%20and%20reverse%20its%20elements.%5Cn%5Cn%60%60%60cpp%5CnFor%20example%2C%20if%20we%20had%20the%20list%5Cn%5Cn1%206%202%203%204%203%205%203%204%5CnWe%20can%20reverse%20the%20chosen%20elements%5Cn%5Cn1%206%202%203%204%203%205%203%204%5Cn%20%20%5E%20%20%20%20%20%20%20%20%20%5E%20%5E%20%5E%5Cnto%20get%5Cn%5Cn1%204%202%203%204%203%203%205%206%5Cn%20%20%5E%20%20%20%20%20%20%20%20%20%5E%20%5E%20%5E%5Cn%60%60%60%5CnObserve%20how%20the%20subsequence%20being%20reversed%20ends%20up%20using%20the%20same%20indices%20as%20it%20initially%20occupied%2C%20leaving%20the%20other%20elements%20unchanged.%5Cn%5CnPlease%20find%20the%20maximum%20possible%20length%20of%20an%20increasing%20subsequence%2C%20given%20that%20you%20can%20choose%20to%20reverse%20an%20arbitrary%20subsequence%20once.%5Cn%5Cn%5CnFJ%5Cu6b63%5Cu5728%5Cu5b89%5Cu6392%5Cu4ed6%5Cu7684N%5Cu5934%5Cu5976%5Cu725b%5Cu6392%5Cu6210%5Cu4e00%5Cu961f%5Cu4ee5%5Cu62cd%5Cu7167%5Cuff081%3C%3Dn%3C%3D50%29%5Cu3002%5Cu961f%5Cu5217%5Cu4e2d%5Cu7684%5Cu7b2ci%5Cu5934%5Cu5976%5Cu725b%5Cu7684%5Cu8eab%5Cu9ad8%5Cu4e3aa%5Bi%5D%5Cuff0c%5Cu5e76%5Cu4e14FJ%5Cu8ba4%5Cu4e3a%5Cu5982%5Cu679c%5Cu5976%5Cu725b%5Cu7684%5Cu8eab%5Cu9ad8%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu542b%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5f88%5Cu957f%5Cu7684%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7684%5Cu8bdd%5Cuff0c%5Cu8fd9%5Cu4f1a%5Cu662f%5Cu4e00%5Cu5f20%5Cu5f88%5Cu597d%5Cu7684%5Cu7167%5Cu7247%5Cu3002%5Cn%5Cn%5Cn%5Cu56de%5Cu5fc6%5Cu4e00%5Cu4e0b%5Cuff0c%5Cu5b50%5Cu5e8f%5Cu5217%5Cu662f%5Cu7531%5Cu725b%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e9b%5Cu5143%5Cu7d20a%5Bi%5C%5C_1%5D%2Ca%5Bi%5C%5C_2%5D%2C.....a%5Bi%5C%5C_k%5D%5Cu7ec4%5Cu6210%5Cu7684%5Cu5b50%5Cu96c6%5Cu3002%28i%5C%5C_1%3Ci%5C%5C_2%3C...%3Ci%5C%5C_k%29%20%5Cu5982%5Cu679ca%5Bi%5C%5C_1%5D%3C%3Da%5Bi%5C%5C_2%5D%3C%3Da%5Bi%5C%5C_3%5D%3C%3D......%3C%3Da%5Bi%5C%5C_k%5D%5Cu7684%5Cu8bdd%5Cuff0c%5Cu6211%5Cu4eec%5Cu5c31%5Cu8bf4%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu662f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu7684%5Cu3002%5Cn%5Cn%5CnFJ%5Cu60f3%5Cu8981%5Cu5728%5Cu4ed6%5Cu7684%5Cu5976%5Cu725b%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2a%5Cu957f%5Cu671f%5Cu589e%5Cu957f%5Cu7684%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff08%5Cu4e5f%5Cu5c31%5Cu662f%5Cu5f88%5Cu957f%5Cu7684%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff09%5Cu3002%5Cu4e3a%5Cu4e86%5Cu786e%5Cu4fdd%5Cu8fd9%5Cu4e00%5Cu70b9%5Cuff0c%5Cu4ed6%5Cu5141%5Cu8bb8%5Cu81ea%5Cu5df1%5Cu5728%5Cu4e00%5Cu5f00%5Cu59cb%5Cu9009%5Cu62e9%5Cu4efb%5Cu4f55%5Cu5b50%5Cu5e8f%5Cu5217%5Cu5e76%5Cu9006%5Cu8f6c%5Cu5176%5Cu5143%5Cu7d20%5Cu3002%5Cn%5Cn%5Cn%5Cu89c2%5Cu5bdf%5Cu8fd9%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff08%5Cu4e0a%5Cu65b9%5Cu82f1%5Cu6587%5Cuff09%5Cu662f%5Cu5982%5Cu4f55%5Cu53cd%5Cu8f6c%5Cu5e76%5Cu5360%5Cu636e%5Cu4ed6%5Cu4eec%5Cu6700%5Cu521d%5Cu7684%5Cu76f8%5Cu540c%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu7684%5Cuff0c%5Cu4e14%5Cu5176%5Cu4ed6%5Cu5143%5Cu7d20%5Cu4fdd%5Cu6301%5Cu4e0d%5Cu53d8%5Cu3002%5Cn%5Cn%5Cn%5Cu5728%5Cu53ea%5Cu80fd%5Cu53cd%5Cu8f6c%5Cu4e00%5Cu6b21%5Cu4efb%5Cu610f%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7684%5Cu60c5%5Cu51b5%5Cu4e0b%5Cuff0c%5Cu8bf7%5Cu627e%5Cu5230%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7684%5Cu6700%5Cu5927%5Cu53ef%5Cu80fd%5Cu957f%5Cu5ea6%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20%24N%24.%20The%20remaining%20%24N%24%20lines%20contain%20%24a%281%29%20%5C%5Cldots%20a%28N%29%24%2C%20each%20an%20integer%20in%20the%20range%20%241%20%5C%5Cldots%2050%24.%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570N%5Cu3002%5Cn%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765N%5Cu884c%5Cu5305%5Cu62ecN%5Cu4e2a%5Cu6574%5Cu6570a%5B1%5D...a%5Bn%5D%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu57281%5Cu523050%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6574%5Cu6570%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22Output%20the%20number%20of%20elements%20that%20can%20possibly%20form%20a%20longest%20increasing%20subsequence%20after%20reversing%20the%20contents%20of%20at%20most%20one%20subsequence.%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu53cd%5Cu8f6c%5Cu4e00%5Cu6b21%5Cu4efb%5Cu610f%5Cu5b50%5Cu5e8f%5Cu5217%5Cu540e%5Cu6240%5Cu5f97%5Cu5230%5Cu7684%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7684%5Cu6700%5Cu5927%5Cu53ef%5Cu80fd%5Cu957f%5Cu5ea6%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%229%5Cn1%5Cn2%5Cn3%5Cn9%5Cn5%5Cn6%5Cn8%5Cn7%5Cn4%22%2C%229%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%20%40XY%5Cu661f%5Cu7cfb%5Cu8d28%5Cu91cfPK%20%20%5Cu7684%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C34%2C46%2C111%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A469%2C%22totalAccepted%22%3A180%2C%22pid%22%3A%22P3607%22%2C%22title%22%3A%22%5BUSACO17JAN%5DSubsequence%20Reversal%5Cu5e8f%5Cu5217%5Cu53cd%5Cu8f6c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A8005%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2682%2C%22name%22%3A%22P3607%20%5BUSACO17JAN%5DSubsequence%20Reversal%5Cu5e8f%5Cu5217%5Cu53cd%5Cu8f6c%22%2C%22slug%22%3A%22P3607%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3605%22%2C%22title%22%3A%22%5BUSACO17JAN%5DPromotion%20Counting%5Cu664b%5Cu5347%5Cu8005%5Cu8ba1%5Cu6570%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3606%22%2C%22title%22%3A%22%5BUSACO17JAN%5DBuilding%20a%20Tall%20Barn%5Cu5efa%5Cu8c37%5Cu4ed3%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3431%22%2C%22title%22%3A%22%5BPOI2005%5DAUT-The%20Bus%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3558%22%2C%22title%22%3A%22%5BPOI2013%5DBAJ-Bytecomputer%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4103%22%2C%22title%22%3A%22%5BHEOI2014%5D%5Cu5927%5Cu5de5%5Cu7a0b%20%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO17JAN%5DSubsequence%20Reversal%5Cu5e8f%5Cu5217%5Cu53cd%5Cu8f6c%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO17JAN]Subsequence Reversal序列反转</h1>
+<h2>题目描述</h2>
+<div>Farmer John is arranging his $N$ cows in a line to take a photo ($1 \leq N \leq 50$). The height of the $i$th cow in sequence is $a(i)$, and Farmer John thinks it would make for an aesthetically pleasing photo if the cow lineup has a large increasing subsequence of cows by height.
+To recall, a subsequence is a subset $a(i_1), a(i_2), \ldots, a(i_k)$ of elements from the cow sequence, found at some series of indices $i_1 < i_2 < \ldots < i_k$. We say the subsequence is increasing if $a(i_1) \leq a(i_2) \leq \ldots \leq a(i_k)$.
+FJ would like there to be a long increasing subsequence within his ordering of the cows. In order to ensure this, he allows himself initially to choose any subsequence and reverse its elements.
+```cpp
+For example, if we had the list
+1 6 2 3 4 3 5 3 4
+We can reverse the chosen elements
+1 6 2 3 4 3 5 3 4
+^ ^ ^ ^
+to get
+1 4 2 3 4 3 3 5 6
+^ ^ ^ ^
+```
+Observe how the subsequence being reversed ends up using the same indices as it initially occupied, leaving the other elements unchanged.
+Please find the maximum possible length of an increasing subsequence, given that you can choose to reverse an arbitrary subsequence once.
+FJ正在安排他的N头奶牛排成一队以拍照（1<=n<=50)。队列中的第i头奶牛的身高为a[i]，并且FJ认为如果奶牛的身高序列中含有一个很长的不下降子序列的话，这会是一张很好的照片。
+回忆一下，子序列是由牛序列中的一些元素a[i\_1],a[i\_2],.....a[i\_k]组成的子集。(i\_1<i\_2<...<i\_k) 如果a[i\_1]<=a[i\_2]<=a[i\_3]<=......<=a[i\_k]的话，我们就说这个序列是不下降的。 FJ想要在他的奶牛序列中包括一个长期增长的子序列（也就是很长的不下降子序列）。为了确保这一点，他允许自己在一开始选择任何子序列并逆转其元素。 观察这个子序列（上方英文）是如何反转并占据他们最初的相同的位置的，且其他元素保持不变。 在只能反转一次任意子序列的情况下，请找到不下降子序列的最大可能长度。 </div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains $N$. The remaining $N$ lines contain $a(1) \ldots a(N)$, each an integer in the range $1 \ldots 50$.
+第一行一个整数N。
+接下来N行包括N个整数a[1]...a[n]，每行一个在1到50之间的整数。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the number of elements that can possibly form a longest increasing subsequence after reversing the contents of at most one subsequence.
+输出反转一次任意子序列后所得到的不下降子序列的最大可能长度。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>9
+1
+2
+3
+9
+5
+6
+8
+7
+4</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>9
+</code></pre>
+<h2>说明</h2>
+<div>感谢 @XY星系质量PK 的翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

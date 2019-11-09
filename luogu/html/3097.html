@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13DEC]最优挤奶Optimal Milking - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376402:/Eeq41grGa3xpIGNlPW6hujS0Pqpj+VyarLwrBPPNaA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20has%20recently%20purchased%20a%20new%20barn%20containing%20N%20milking%20machines%20%281%20%3C%3D%20N%20%3C%3D%2040%2C000%29%2C%20conveniently%20numbered%201..N%20and%20arranged%20in%20a%20row.%5Cn%5CnMilking%20machine%20i%20is%20capable%20of%20extracting%20M%28i%29%20units%20of%20milk%20per%20day%20%281%20%3C%3D%20M%28i%29%20%3C%3D%20100%2C000%29.%20%20Unfortunately%2C%20the%20machines%20were%20installed%20so%20close%20together%20that%20if%20a%20machine%20i%20is%20in%20use%20on%20a%20particular%20day%2C%20its%20two%20neighboring%20machines%20cannot%20be%20used%20that%20day%20%28endpoint%20machines%20have%20only%20one%20neighbor%2C%20of%20course%29.%20%20Farmer%20John%20is%20free%20to%20select%20different%20subsets%20of%20machines%20to%20operate%20on%20different%20days.%5Cn%5CnFarmer%20John%20is%20interested%20in%20computing%20the%20maximum%20amount%20of%20milk%20he%20can%20extract%20over%20a%20series%20of%20D%20days%20%281%20%3C%3D%20D%20%3C%3D%2050%2C000%29.%20%20At%20the%20beginning%20of%20each%20day%2C%20he%20has%20enough%20time%20to%20perform%20maintenance%20on%20one%20selected%20milking%20machine%20i%2C%20thereby%20changing%20its%20daily%20milk%20output%20M%28i%29%20from%20that%20day%20forward.%20Given%20a%20list%20of%20these%20daily%20modifications%2C%20please%20tell%20Farmer%20John%20how%20much%20milk%20he%20can%20produce%20over%20D%20days%20%28note%20that%20this%20number%20might%20not%20fit%20into%20a%2032-bit%20integer%29.%5Cn%5CnFJ%5Cu6700%5Cu8fd1%5Cu4e70%5Cu4e861%5Cu4e2a%5Cu65b0%5Cu4ed3%5Cu5e93%2C%20%5Cu5185%5Cu542bN%20%5Cu4e2a%5Cu6324%5Cu5976%5Cu673a%2C1%20%5Cu5230N%20%5Cu7f16%5Cu53f7%5Cu5e76%5Cu6392%5Cu6210%5Cu4e00%5Cu884c%5Cu3002%5Cn%5Cn%5Cn%5Cu6324%5Cu5976%5Cu673ai%20%5Cu6bcf%5Cu5929%5Cu80fd%5Cu4ea7%5Cu51faM%28i%29%20%5Cu5355%5Cu4f4d%5Cu7684%5Cu5976%5Cu3002%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%2C%20%5Cu673a%5Cu5668%5Cu88c5%5Cu5f97%5Cu592a%5Cu8fd1%5Cu4ee5%5Cu81f3%5Cu4e8e%5Cu5982%5Cu679c%5Cu4e00%5Cu53f0%5Cu673a%5Cu5668i%20%5Cu5728%5Cu67d0%5Cu5929%5Cu88ab%5Cu4f7f%5Cu7528%2C%20%5Cu90a3%5Cu4e0e%5Cu5b83%5Cu76f8%5Cu90bb%5Cu7684%5Cu4e24%5Cu53f0%5Cu673a%5Cu5668%5Cu90a3%5Cu4e00%5Cu5929%5Cu4e0d%5Cu80fd%5Cu88ab%5Cu4f7f%5Cu7528%5Cn%5Cn%5Cn%28%5Cu5f53%5Cu7136%2C%20%5Cu4e24%5Cu7aef%5Cu70b9%5Cu5904%5Cu7684%5Cu673a%5Cu5668%5Cu5206%5Cu522b%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu4e0e%5Cu4e4b%5Cu76f8%5Cu90bb%5Cu7684%5Cu673a%5Cu5668%29%5Cu3002%5Cn%5Cn%5CnFJ%20%5Cu53ef%5Cu81ea%5Cu7531%5Cu9009%5Cu62e9%5Cu4e0d%5Cu540c%5Cu7684%5Cu673a%5Cu5668%5Cu5728%5Cu4e0d%5Cu540c%5Cu7684%5Cu65e5%5Cu5b50%5Cu5de5%5Cu4f5c%5Cu3002%5Cn%5Cn%5CnFJ%5Cu611f%5Cu5174%5Cu8da3%5Cu4e8e%5Cu8ba1%5Cu7b97%5Cu5728D%20%5Cu5929%5Cu5185%5Cu4ed6%5Cu80fd%5Cu4ea7%5Cu51fa%5Cu5976%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cu5728%5Cu6bcf%5Cu5929%5Cu5f00%5Cu59cb%5Cu65f6%2C%20%5Cu4ed6%5Cu6709%5Cu8db3%5Cu591f%5Cu7684%5Cu65f6%5Cu95f4%5Cu7ef4%5Cu62a4%5Cu4e00%5Cu4e2a%5Cu9009%5Cu4e2d%5Cu7684%5Cu6324%5Cu5976%5Cu673ai%2C%20%5Cu4ece%5Cu800c%5Cu6539%5Cu53d8%5Cu5b83%5Cu4ece%5Cu90a3%5Cu5929%5Cu8d77%5Cu7684%5Cu6bcf%5Cu65e5%5Cu4ea7%5Cu5976%5Cu91cfM%28i%29%5Cu3002%5Cn%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu8fd9%5Cu4e9b%5Cu6bcf%5Cu65e5%5Cu7684%5Cu4fee%5Cu6539%2C%5Cu8bf7%5Cu544a%5Cu8bc9FJ%5Cu4ed6D%20%5Cu5929%5Cu4e2d%5Cu80fd%5Cu4ea7%5Cu591a%5Cu5c11%5Cu5976%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20values%20of%20N%20and%20D.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Line%20i%2B1%20contains%20the%20initial%20value%20of%20M%28i%29.%5Cn%5Cn%5C%5C%2A%20Lines%202%2BN..1%2BN%2BD%3A%20Line%201%2BN%2Bd%20contains%20two%20integers%20i%20and%20m%2C%5Cn%5Cnindicating%20that%20Farmer%20John%20updates%20the%20value%20of%20M%28i%29%20to%20m%20at%20the%20beginning%20of%20day%20d.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20maximum%20total%20amount%20of%20milk%20FJ%20can%20produce%20over%20D%20days.%5Cn%22%2C%22samples%22%3A%5B%5B%225%203%20%5Cn1%20%5Cn2%20%5Cn3%20%5Cn4%20%5Cn5%20%5Cn5%202%20%5Cn2%207%20%5Cn1%2010%20%5Cn%22%2C%2232%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%205%20machines%2C%20with%20initial%20milk%20outputs%201%2C2%2C3%2C4%2C5.%20%20On%20day%201%2C%20machine%205%20is%20updated%20to%20output%202%20unit%20of%20milk%2C%20and%20so%20on.%5Cn%5Cn%5CnOn%20day%20one%2C%20the%20optimal%20amount%20of%20milk%20is%202%2B4%20%3D%206%20%28also%20achievable%20as%201%2B3%2B2%29.%20%20On%20day%20two%2C%20the%20optimal%20amount%20is%207%2B4%20%3D%2011.%20%20On%20day%20three%2C%20the%20optimal%20amount%20is%2010%2B3%2B2%3D15.%5Cn%5Cn%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%5Cuff1a%5Cu7ed9%5Cu5b9an%5Cu4e2a%5Cu70b9%5Cu6392%5Cu6210%5Cu4e00%5Cu6392%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu6709%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu6743%5Cuff0c%5Cu591a%5Cu6b21%5Cu6539%5Cu53d8%5Cu67d0%5Cu4e2a%5Cu70b9%5Cu7684%5Cu70b9%5Cu6743%5Cu5e76%5Cu5c06%5Cu6700%5Cu5927%5Cu70b9%5Cu72ec%5Cu7acb%5Cu96c6%5Cu8ba1%5Cu5165%5Cu7b54%5Cu6848%5Cuff0c%5Cu8f93%5Cu51fa%5Cu6700%5Cu7ec8%5Cu7684%5Cu7b54%5Cu6848%5Cn%5Cn%5Cu611f%5Cu8c22%40zht467%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B30%2C42%2C46%2C161%2C194%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A586%2C%22totalAccepted%22%3A257%2C%22pid%22%3A%22P3097%22%2C%22title%22%3A%22%5BUSACO13DEC%5D%5Cu6700%5Cu4f18%5Cu6324%5Cu5976Optimal%20Milking%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A76263%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu4f1a%5Cu6709Floyd%5Cu7684%5Cu7b97%5Cu6cd5%5Cu6807%5Cu7b7e%22%2C%22forum%22%3A%7B%22id%22%3A2214%2C%22name%22%3A%22P3097%20%5BUSACO13DEC%5D%5Cu6700%5Cu4f18%5Cu6324%5Cu5976Optimal%20Milking%22%2C%22slug%22%3A%22P3097%22%7D%7D%2C%7B%22id%22%3A23240%2C%22title%22%3A%22%5Cu6bd4%5Cu8f83%5Cu6b63%5Cu5e38%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2214%2C%22name%22%3A%22P3097%20%5BUSACO13DEC%5D%5Cu6700%5Cu4f18%5Cu6324%5Cu5976Optimal%20Milking%22%2C%22slug%22%3A%22P3097%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2617%22%2C%22title%22%3A%22Dynamic%20Rankings%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2590%22%2C%22title%22%3A%22%5BZJOI2008%5D%5Cu6811%5Cu7684%5Cu7edf%5Cu8ba1%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3098%22%2C%22title%22%3A%22%5BUSACO13DEC%5D%5Cu8d1d%5Cu897f%5Cu6d17%5Cu724c%5Cuff08%5Cu91d1%5Cuff09The%20Bessie%20Shuffle%20%28gol%5Cu2026%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3582%22%2C%22title%22%3A%22%5BPOI2015%5DKIN%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4180%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu4e25%5Cu683c%5Cu6b21%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%5BBJWC2010%5D%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13DEC%5D%5Cu6700%5Cu4f18%5Cu6324%5Cu5976Optimal%20Milking%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13DEC]最优挤奶Optimal Milking</h1>
+<h2>题目描述</h2>
+<div>Farmer John has recently purchased a new barn containing N milking machines (1 <= N <= 40,000), conveniently numbered 1..N and arranged in a row.
+Milking machine i is capable of extracting M(i) units of milk per day (1 <= M(i) <= 100,000). Unfortunately, the machines were installed so close together that if a machine i is in use on a particular day, its two neighboring machines cannot be used that day (endpoint machines have only one neighbor, of course). Farmer John is free to select different subsets of machines to operate on different days.
+Farmer John is interested in computing the maximum amount of milk he can extract over a series of D days (1 <= D <= 50,000). At the beginning of each day, he has enough time to perform maintenance on one selected milking machine i, thereby changing its daily milk output M(i) from that day forward. Given a list of these daily modifications, please tell Farmer John how much milk he can produce over D days (note that this number might not fit into a 32-bit integer).
+FJ最近买了1个新仓库, 内含N 个挤奶机,1 到N 编号并排成一行。
+挤奶机i 每天能产出M(i) 单位的奶。不幸的是, 机器装得太近以至于如果一台机器i 在某天被使用, 那与它相邻的两台机器那一天不能被使用
+(当然, 两端点处的机器分别只有一个与之相邻的机器)。
+FJ 可自由选择不同的机器在不同的日子工作。
+FJ感兴趣于计算在D 天内他能产出奶的最大值。在每天开始时, 他有足够的时间维护一个选中的挤奶机i, 从而改变它从那天起的每日产奶量M(i)。
+给出这些每日的修改,请告诉FJ他D 天中能产多少奶。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The values of N and D.
+\* Lines 2..1+N: Line i+1 contains the initial value of M(i).
+\* Lines 2+N..1+N+D: Line 1+N+d contains two integers i and m,
+indicating that Farmer John updates the value of M(i) to m at the beginning of day d.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The maximum total amount of milk FJ can produce over D days.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3 
+1 
+2 
+3 
+4 
+5 
+5 2 
+2 7 
+1 10 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>32 
+</code></pre>
+<h2>说明</h2>
+<div>There are 5 machines, with initial milk outputs 1,2,3,4,5. On day 1, machine 5 is updated to output 2 unit of milk, and so on.
+On day one, the optimal amount of milk is 2+4 = 6 (also achievable as 1+3+2). On day two, the optimal amount is 7+4 = 11. On day three, the optimal amount is 10+3+2=15.
+题意简述：给定n个点排成一排，每个点有一个点权，多次改变某个点的点权并将最大点独立集计入答案，输出最终的答案
+感谢@zht467 提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

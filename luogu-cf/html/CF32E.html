@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Hide-and-Seek - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390122:zuElaKpE9kTp8ZktZs/2ig6ZAaJXUST5EdAl6oUHjdI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Victor%20and%20Peter%20are%20playing%20hide-and-seek.%20Peter%20has%20hidden%2C%20and%20Victor%20is%20to%20find%20him.%20In%20the%20room%20where%20they%20are%20playing%2C%20there%20is%20only%20one%20non-transparent%20wall%20and%20one%20double-sided%20mirror.%20Victor%20and%20Peter%20are%20points%20with%20coordinates%20%24%20%28x_%7Bv%7D%2Cy_%7Bv%7D%29%20%24%20and%20%24%20%28x_%7Bp%7D%2Cy_%7Bp%7D%29%20%24%20respectively.%20The%20wall%20is%20a%20segment%20joining%20points%20with%20coordinates%20%24%20%28x_%7Bw%2C1%7D%2Cy_%7Bw%2C1%7D%29%20%24%20and%20%24%20%28x_%7Bw%2C2%7D%2Cy_%7Bw%2C2%7D%29%20%24%20%2C%20the%20mirror%20%5Cu2014%20a%20segment%20joining%20points%20%24%20%28x_%7Bm%2C1%7D%2Cy_%7Bm%2C1%7D%29%20%24%20and%20%24%20%28x_%7Bm%2C2%7D%2Cy_%7Bm%2C2%7D%29%20%24%20.%5Cn%5CnIf%20an%20obstacle%20has%20a%20common%20point%20with%20a%20line%20of%20vision%2C%20it%27s%20considered%2C%20that%20the%20boys%20can%27t%20see%20each%20other%20with%20this%20line%20of%20vision.%20If%20the%20mirror%20has%20a%20common%20point%20with%20the%20line%20of%20vision%2C%20it%27s%20considered%2C%20that%20the%20boys%20can%20see%20each%20other%20in%20the%20mirror%2C%20i.e.%20reflection%20takes%20place.%20The%20reflection%20process%20is%20governed%20by%20laws%20of%20physics%20%5Cu2014%20the%20angle%20of%20incidence%20is%20equal%20to%20the%20angle%20of%20reflection.%20The%20incident%20ray%20is%20in%20the%20same%20half-plane%20as%20the%20reflected%20ray%2C%20relative%20to%20the%20mirror.%20I.e.%20to%20see%20each%20other%20Victor%20and%20Peter%20should%20be%20to%20the%20same%20side%20of%20the%20line%2C%20containing%20the%20mirror%20%28see%20example%201%29.%20If%20the%20line%20of%20vision%20is%20parallel%20to%20the%20mirror%2C%20reflection%20doesn%27t%20take%20place%2C%20and%20the%20mirror%20isn%27t%20regarded%20as%20an%20obstacle%20%28see%20example%204%29.%5Cn%5CnVictor%20got%20interested%20if%20he%20can%20see%20Peter%2C%20while%20standing%20at%20the%20same%20spot.%20Help%20him%20solve%20this%20problem.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20numbers%20%24%20x_%7Bv%7D%20%24%20and%20%24%20y_%7Bv%7D%20%24%20%5Cu2014%20coordinates%20of%20Victor.%5Cn%5CnThe%20second%20line%20contains%20two%20numbers%20%24%20x_%7Bp%7D%20%24%20and%20%24%20y_%7Bp%7D%20%24%20%5Cu2014%20coordinates%20of%20Peter.%5Cn%5CnThe%20third%20line%20contains%204%20numbers%20%24%20x_%7Bw%2C1%7D%20%24%20%2C%20%24%20y_%7Bw%2C1%7D%20%24%20%2C%20%24%20x_%7Bw%2C2%7D%20%24%20%2C%20%24%20y_%7Bw%2C2%7D%20%24%20%5Cu2014%20coordinates%20of%20the%20wall.%5Cn%5CnThe%20forth%20line%20contains%204%20numbers%20%24%20x_%7Bm%2C1%7D%20%24%20%2C%20%24%20y_%7Bm%2C1%7D%20%24%20%2C%20%24%20x_%7Bm%2C2%7D%20%24%20%2C%20%24%20y_%7Bm%2C2%7D%20%24%20%5Cu2014%20coordinates%20of%20the%20mirror.%5Cn%5CnAll%20the%20coordinates%20are%20integer%20numbers%2C%20and%20don%27t%20exceed%20%24%2010%5E%7B4%7D%20%24%20in%20absolute%20value.%20It%27s%20guaranteed%2C%20that%20the%20segments%20don%27t%20have%20common%20points%2C%20Victor%20and%20Peter%20are%20not%20on%20any%20of%20the%20segments%2C%20coordinates%20of%20Victor%20and%20Peter%20aren%27t%20the%20same%2C%20the%20segments%20don%27t%20degenerate%20into%20points.%22%2C%22outputFormat%22%3A%22Output%20YES%2C%20if%20Victor%20can%20see%20Peter%20without%20leaving%20the%20initial%20spot.%20Otherwise%20output%20NO.%22%2C%22samples%22%3A%5B%5B%22-1%203%5Cn1%203%5Cn0%202%200%204%5Cn0%200%200%201%5Cn%22%2C%22NO%5Cn%22%5D%2C%5B%220%200%5Cn1%201%5Cn0%201%201%200%5Cn-100%20-100%20-101%20-101%5Cn%22%2C%22NO%5Cn%22%5D%2C%5B%220%200%5Cn1%201%5Cn0%201%201%200%5Cn-1%201%201%203%5Cn%22%2C%22YES%5Cn%22%5D%2C%5B%220%200%5Cn10%200%5Cn100%20100%20101%20101%5Cn1%200%203%200%5Cn%22%2C%22YES%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F32%5C%2FE%22%2C%22id%22%3A%2232E%22%7D%2C%22translation%22%3A%22%5Cu5e73%5Cu9762%5Cu4e0a%5Cu6709%5Cu4e24%5Cu4e2a%5Cu70b9A%5Cuff0cB%5Cu3001%20%5Cu4e00%5Cu5835%5Cu5899%5Cuff08%5Cu8bbe%5Cu4e3a%5Cu7ebf%5Cu6bb5W%20%5Cuff09%5Cu3001%5Cu4e00%5Cu9762%5Cu955c%5Cu5b50%5Cuff08%5Cu8bbe%5Cu4e3a%5Cu6709%5Cu5411%5Cu7ebf%5Cu6bb5M%20%5Cuff0c%5Cu9006%5Cu65f6%5Cu9488%5Cu65b9%5Cn%5Cu5411%5Cu4e3a%5Cu53cd%5Cu5c04%5Cu9762%5Cuff09%5Cu3002%5Cn%5Cu95eeA%5Cu80fd%5Cu4e0d%5Cu80fd%5Cu4ee5%5Cu9002%5Cu5f53%5Cu7684%5Cu65b9%5Cu5411%5Cu53d1%5Cu51fa%5Cu4e00%5Cu9053%5Cu5149%5Cu7ebf%5Cu5230%5Cu8fbeB%5Cu3002%20%5Cu5149%5Cu7ebf%5Cu78b0%5Cu5230%5Cu5899%5Cu6216%5Cu955c%5Cu5b50%5Cu7684%5Cu975e%5Cu53cd%5Cu5c04%5Cu9762%5Cu4f1a%5Cu88ab%5Cu5438%5Cu6536%5Cuff0c%5Cn%5Cu78b0%5Cu5230%5Cu955c%5Cu5b50%5Cu7684%5Cu53cd%5Cu5c04%5Cu9762%5Cu4f1a%5Cu955c%5Cu9762%5Cu53cd%5Cu5c04%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cn%5Cu7b2c%5Cu4e00%5Cu884c2%5Cu4e2a%5Cu70b9xv%5Cu548cyv%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57xp%5Cu548cyp%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e09%5Cu884c%5Cu5305%5Cu542b4%5Cu4e2a%5Cu6570%5Cu5b57%28xw%2C1%5Cuff0cyw%5Cuff0c1%5Cuff0cxw%5Cuff0c2%5Cuff0cyw%5Cuff0c2%29%20%5Cu7684%20%5Cu5750%5Cu6807%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu56db%5Cu884c%5Cu5305%5Cu542b4%5Cu4e2a%5Cu6570%5Cu5b57%28xm%5Cuff0c1%5Cuff0cym%5Cuff0c1%5Cuff0cxm%5Cuff0c2%5Cuff0cym%5Cuff0c2%29%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cn%5Cn%5Cu6240%5Cu6709%5Cu7684%5Cu5750%5Cu6807%5Cu90fd%5Cu662f%5Cu6574%5Cu6570%5Cuff0c%5Cu7edd%5Cu5bf9%5Cu503c%5Cu4e0d%5Cu8d85%5Cu8fc710%5E4%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cn%5Cu5982%5Cu679c%5Cu7ef4%5Cu53ef%5Cu4ee5%5Cu8f93%5Cu51faYES%5Cu3002%5Cu5426%5Cu5219%5Cu8f93%5Cu51faNO%5Cu3002%5Cn%5CnTranslated%20by%20liyifeng%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A4%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF32E%22%2C%22title%22%3A%22Hide-and-Seek%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32520%2C%22title%22%3A%2225%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12559%2C%22name%22%3A%22CF32E%20Hide-and-Seek%22%2C%22slug%22%3A%22CF32E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Hide-and-Seek%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Hide-and-Seek</h1>
+<h2>题意翻译</h2>
+<div>平面上有两个点A，B、 一堵墙（设为线段W ）、一面镜子（设为有向线段M ，逆时针方
+向为反射面）。
+问A能不能以适当的方向发出一道光线到达B。 光线碰到墙或镜子的非反射面会被吸收，
+碰到镜子的反射面会镜面反射。
+### 输入
+第一行2个点xv和yv的坐标。
+第二行包两个数字xp和yp的坐标。
+第三行包含4个数字(xw,1，yw，1，xw，2，yw，2) 的 坐标。
+第四行包含4个数字(xm，1，ym，1，xm，2，ym，2)的坐标。
+所有的坐标都是整数，绝对值不超过10^4。
+### 输出
+如果维可以输出YES。否则输出NO。
+Translated by liyifeng</div>
+<h2>题目描述</h2>
+<div>Victor and Peter are playing hide-and-seek. Peter has hidden, and Victor is to find him. In the room where they are playing, there is only one non-transparent wall and one double-sided mirror. Victor and Peter are points with coordinates $ (x_{v},y_{v}) $ and $ (x_{p},y_{p}) $ respectively. The wall is a segment joining points with coordinates $ (x_{w,1},y_{w,1}) $ and $ (x_{w,2},y_{w,2}) $ , the mirror — a segment joining points $ (x_{m,1},y_{m,1}) $ and $ (x_{m,2},y_{m,2}) $ .
+If an obstacle has a common point with a line of vision, it's considered, that the boys can't see each other with this line of vision. If the mirror has a common point with the line of vision, it's considered, that the boys can see each other in the mirror, i.e. reflection takes place. The reflection process is governed by laws of physics — the angle of incidence is equal to the angle of reflection. The incident ray is in the same half-plane as the reflected ray, relative to the mirror. I.e. to see each other Victor and Peter should be to the same side of the line, containing the mirror (see example 1). If the line of vision is parallel to the mirror, reflection doesn't take place, and the mirror isn't regarded as an obstacle (see example 4).
+Victor got interested if he can see Peter, while standing at the same spot. Help him solve this problem.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two numbers $ x_{v} $ and $ y_{v} $ — coordinates of Victor.
+The second line contains two numbers $ x_{p} $ and $ y_{p} $ — coordinates of Peter.
+The third line contains 4 numbers $ x_{w,1} $ , $ y_{w,1} $ , $ x_{w,2} $ , $ y_{w,2} $ — coordinates of the wall.
+The forth line contains 4 numbers $ x_{m,1} $ , $ y_{m,1} $ , $ x_{m,2} $ , $ y_{m,2} $ — coordinates of the mirror.
+All the coordinates are integer numbers, and don't exceed $ 10^{4} $ in absolute value. It's guaranteed, that the segments don't have common points, Victor and Peter are not on any of the segments, coordinates of Victor and Peter aren't the same, the segments don't degenerate into points.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output YES, if Victor can see Peter without leaving the initial spot. Otherwise output NO.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>-1 3
+1 3
+0 2 0 4
+0 0 0 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>NO
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>0 0
+1 1
+0 1 1 0
+-100 -100 -101 -101
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>NO
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>0 0
+1 1
+0 1 1 0
+-1 1 1 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>YES
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>0 0
+10 0
+100 100 101 101
+1 0 3 0
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>YES
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

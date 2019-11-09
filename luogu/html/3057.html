@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12NOV]远处的牧场Distant Pastures - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376347:yPM6vDNf/ZOrvP2X3symdiOgpCOLFAN6rn4O0GlffdA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20farm%20is%20made%20up%20of%20an%20N%20x%20N%20grid%20of%20pastures%2C%20where%20each%20pasture%20contains%20one%20of%20two%20different%20types%20of%20grass.%20%20To%20specify%20these%20two%20types%20of%20grass%2C%20we%20use%20the%20characters%20%28%20and%20%29%2C%20so%20for%20example%20FJ%27s%20farm%20might%20look%20like%20the%20following%20grid%3A%5Cn%5Cn%28%28%29%29%20%5Cn%29%28%29%28%20%5Cn%29%28%28%28%20%5Cn%29%29%29%29%5CnWhen%20Bessie%20the%20cow%20travels%20around%20the%20farm%2C%20it%20takes%20her%20A%20units%20of%20time%20to%20move%20from%20a%20pasture%20to%20an%20adjacent%20pasture%20%28one%20step%20north%2C%20south%2C%20east%2C%20or%20west%29%20with%20the%20same%20grass%20type%2C%20or%20B%20units%20of%20time%20to%20move%20to%20an%20adjacent%20pasture%20with%20a%20different%20grass%20type.%20%20Whenever%20Bessie%20travels%20from%20one%20pasture%20to%20a%20distant%20pasture%2C%20she%20always%20uses%20a%20sequence%20of%20steps%20that%20takes%20the%20minimum%20amount%20of%20time.%20%20Please%20compute%20the%20greatest%20amount%20of%20time%20Bessie%20will%20ever%20need%20to%20take%20while%20traveling%20between%20some%20pair%20of%20pastures%20on%20the%20farm.%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2an%5C%5C%2An%5Cu7684%5Cu62ec%5Cu53f7%5Cu77e9%5Cu9635%5Cuff0c%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu8d70%5Cu5230%5Cu76f8%5Cu90bb%5Cu7684%5Cu540c%5Cu5b57%5Cu7b26%5Cu70b9%5Cu9700%5Cu4ed8%5Cu51faA%5Cu7684%5Cu4ee3%5Cu4ef7%5Cuff0c%5Cu5230%5Cu4e0d%5Cu540c%5Cu5b57%5Cu7b26%5Cu70b9%5Cu9700%5Cu4ed8%5Cu51faB%5Cu7684%5Cu4ee3%5Cu4ef7%5Cu3002%5Cu6c42%5Cu6240%5Cu6709%5Cu70b9%5Cu5bf9%5Cu4e4b%5Cu95f4%5Cu6700%5Cu77ed%5Cu8def%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Three%20integers%3A%20N%20%281%20%3C%3D%20N%20%3C%3D%2030%29%2C%20A%20%280%20%3C%3D%20A%20%3C%3D%201%2C000%2C000%29%2C%20and%20B%20%280%20%3C%3D%20B%20%3C%3D%201%2C000%2C000%29.%5Cn%5Cn%5C%5C%2A%20Lines%201..N%2B1%3A%20Each%20line%20contains%20a%20string%20of%20parentheses%20of%20length%20N.%20%20Collectively%2C%20these%20N%20lines%20form%20an%20N%20x%20N%20grid%20of%5Cn%5Cnparentheses.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20specifying%20the%20maximum%20amount%20of%20time%20Bessie%20can%20spend%20traveling%20between%20a%20pair%20of%20pastures%20%28given%20that%20she%20always%20follows%20a%20route%20that%20takes%20a%20minimum%20amount%20of%20time%29.%5Cn%22%2C%22samples%22%3A%5B%5B%223%201%202%20%5Cr%5Cn%28%28%28%20%5Cr%5Cn%28%29%28%20%5Cr%5Cn%28%28%29%20%5Cr%5Cn%22%2C%225%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22It%20takes%20Bessie%205%20units%20of%20time%20to%20travel%20between%20the%20upper-left%20corner%20and%20the%20lower-right%20corner%20of%20the%20grid.%20%20No%20other%20pair%20of%20pastures%20causes%20her%20to%20travel%20for%20more%20time%20than%20this.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A427%2C%22totalAccepted%22%3A173%2C%22pid%22%3A%22P3057%22%2C%22title%22%3A%22%5BUSACO12NOV%5D%5Cu8fdc%5Cu5904%5Cu7684%5Cu7267%5Cu573aDistant%20Pastures%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A73091%2C%22title%22%3A%22MLE%2BTLE%2BWA%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2175%2C%22name%22%3A%22P3057%20%5BUSACO12NOV%5D%5Cu8fdc%5Cu5904%5Cu7684%5Cu7267%5Cu573aDistant%20Pastures%22%2C%22slug%22%3A%22P3057%22%7D%7D%2C%7B%22id%22%3A71679%2C%22title%22%3A%22floyed%5Cu4e0d%5Cu80fd%5Cu8fc7%5Cu5417%5Cuff0cn%5Cuff0c%5Cu53ea%5Cu670930%22%2C%22forum%22%3A%7B%22id%22%3A2175%2C%22name%22%3A%22P3057%20%5BUSACO12NOV%5D%5Cu8fdc%5Cu5904%5Cu7684%5Cu7267%5Cu573aDistant%20Pastures%22%2C%22slug%22%3A%22P3057%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2255%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu8bb0%5Cu5f55%5Cu5965%5Cu6797%5Cu6bd4%5Cu514bRecording%20the%20M%5Cu2026%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3058%22%2C%22title%22%3A%22%5BUSACO12NOV%5D%5Cu5e73%5Cu8861%5Cu7684%5Cu5976%5Cu725b%5Cu54c1%5Cu79cdBalanced%20Cow%20Breeds%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3062%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu65e0%5Cu7ebf%5Cu7f51%5Cu7edc%5Cu8bbe%5Cu7f6eWifi%20Setup%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3088%22%2C%22title%22%3A%22%5BUSACO13NOV%5D%5Cu6324%5Cu5976%5Cu725bCrowded%20Cows%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3609%22%2C%22title%22%3A%22%5BUSACO17JAN%5DHoof%2C%20Paper%2C%20Scissor%5Cu8e44%5Cu5b50%5Cu526a%5Cu5200%5Cu2026%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12NOV%5D%5Cu8fdc%5Cu5904%5Cu7684%5Cu7267%5Cu573aDistant%20Pastures%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12NOV]远处的牧场Distant Pastures</h1>
+<h2>题目描述</h2>
+<div>Farmer John's farm is made up of an N x N grid of pastures, where each pasture contains one of two different types of grass. To specify these two types of grass, we use the characters ( and ), so for example FJ's farm might look like the following grid:
+(())
+)()(
+)(((
+))))
+When Bessie the cow travels around the farm, it takes her A units of time to move from a pasture to an adjacent pasture (one step north, south, east, or west) with the same grass type, or B units of time to move to an adjacent pasture with a different grass type. Whenever Bessie travels from one pasture to a distant pasture, she always uses a sequence of steps that takes the minimum amount of time. Please compute the greatest amount of time Bessie will ever need to take while traveling between some pair of pastures on the farm.
+给出一个n\*n的括号矩阵，从一个点走到相邻的同字符点需付出A的代价，到不同字符点需付出B的代价。求所有点对之间最短路的最大值。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Three integers: N (1 <= N <= 30), A (0 <= A <= 1,000,000), and B (0 <= B <= 1,000,000).
+\* Lines 1..N+1: Each line contains a string of parentheses of length N. Collectively, these N lines form an N x N grid of
+parentheses.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer specifying the maximum amount of time Bessie can spend traveling between a pair of pastures (given that she always follows a route that takes a minimum amount of time).
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1 2 
+((( 
+()( 
+(() 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5 
+</code></pre>
+<h2>说明</h2>
+<div>It takes Bessie 5 units of time to travel between the upper-left corner and the lower-right corner of the grid. No other pair of pastures causes her to travel for more time than this.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

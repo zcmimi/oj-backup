@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO14MAR]数朋友Counting Friends - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376411:uQ2VePXhScVc3zqDacxDppHL7APxqKcLZyIyfmDWsrA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20N%20cows%20%282%20%3C%3D%20N%20%3C%3D%20500%29%20have%20joined%20the%20social%20network%20%5C%22MooBook%5C%22.%5Cn%5CnEach%20cow%20has%20one%20or%20more%20friends%20with%20whom%20they%20interact%20on%20MooBook.%20%20Just%20for%20fun%2C%20Farmer%20John%20makes%20a%20list%20of%20the%20number%20of%20friends%20for%20each%20of%20his%20cows%2C%20but%20during%20the%20process%20of%20writing%20the%20list%20he%20becomes%20distracted%2C%20and%20he%20includes%20one%20extra%20number%20by%20mistake%20%28so%20his%20list%20contains%20N%2B1%20numbers%2C%20instead%20of%20N%20numbers%20as%20he%20intended%29.%5Cn%5CnPlease%20help%20Farmer%20John%20figure%20out%20which%20numbers%20on%20his%20list%20could%20have%20been%20the%20erroneous%20extra%20number.%5Cn%5CnFJ%5Cu53c8%5Cu6709n%281%3C%3Dn%3C%3D500%29%5Cu5934%5Cu5976%5Cu725b%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6216%5Cu4e00%5Cu4e2a%5Cu4ee5%5Cu4e0a%5Cu7684%5Cu670b%5Cu53cb%5Cu3002FJ%5Cu8bb0%5Cu5f55%5Cu6bcf%5Cu5934%5Cu725b%5Cu7684%5Cu670b%5Cu53cb%5Cu6570%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu50bb%5Cu4e0d%5Cu5c0f%5Cu5fc3%5Cu6df7%5Cu5165%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu9519%5Cu7684%5Cu6570%5Cu5b57%5Cuff0c%5Cu8bf7%5Cu627e%5Cu51fa%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20integer%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..2%2BN%3A%20Line%20i%2B1%20contains%20the%20number%20of%20friends%20for%20one%20of%20FJ%27s%20cows%2C%20or%20possibly%20the%20extra%20erroneous%20number.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20An%20integer%20K%20giving%20the%20number%20of%20entries%20in%20FJ%27s%20list%20that%20could%20be%20the%20extra%20number%20%28or%2C%20K%3D0%20means%20that%20there%20is%20no%20number%20on%20the%20list%20whose%20removal%20yields%20a%20feasible%20pairing%20of%20friends%29.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BK%3A%20Each%20line%20contains%20the%20index%20%281..N%2B1%29%20within%20the%20input%20ordering%20of%20a%20number%20of%20FJ%27s%20list%20that%20could%20potentially%20be%20the%20extra%20number%20--%20that%20is%2C%20a%20number%20that%20can%20be%20removed%20such%20that%20the%20remaining%20N%20numbers%20admit%20a%20feasible%20set%20of%5Cn%5Cnfriendships%20among%20the%20cows.%20%20These%20lines%20should%20be%20in%20sorted%20order.%5Cn%22%2C%22samples%22%3A%5B%5B%224%20%5Cr%5Cn1%20%5Cr%5Cn2%20%5Cr%5Cn2%20%5Cr%5Cn1%20%5Cr%5Cn3%20%5Cr%5Cn%22%2C%223%20%5Cr%5Cn1%20%5Cr%5Cn4%20%5Cr%5Cn5%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22Farmer%20John%20has%204%20cows.%20%20Two%20cows%20have%20only%201%20friend%20each%2C%20two%20cows%20have%202%20friends%20each%2C%20and%201%20cow%20has%203%20friends%20%28of%20course%2C%20one%20of%20these%20numbers%20is%20extra%20and%20does%20not%20belong%20on%20the%20list%29.%5Cn%5Cn%5CnRemoval%20of%20the%20first%20number%20in%20FJ%27s%20list%20%28the%20number%201%29%20gives%20a%20remaining%20list%20of%202%2C2%2C1%2C3%2C%20which%20does%20lead%20to%20a%20feasible%20friendship%20pairing%20--%20for%20example%2C%20if%20we%20name%20the%20cows%20A..D%2C%20then%20the%20pairings%20%28A%2CB%29%2C%20%28A%2CC%29%2C%20%28A%2CD%29%2C%20and%20%28B%2CC%29%20suffice%2C%20since%20A%20has%203%20friends%2C%20B%20and%20C%20have%202%20friends%2C%20and%20D%20has%201%20friend.%20%20Similarly%2C%20removing%20the%20other%20%5C%221%5C%22%20from%20FJ%27s%20list%20also%20works%2C%20and%20so%20does%20removing%20the%20%5C%223%5C%22%20from%20FJ%27s%20list.%20%20Removal%20of%20either%20%5C%222%5C%22%20from%20FJ%27s%20list%20does%20not%20work%20--%20we%20can%20see%20this%20by%20the%20fact%20that%20the%20sum%20of%20the%20remaining%20numbers%20is%20odd%2C%20which%20clearly%20prohibits%20us%20from%20finding%20a%20feasible%20pairing.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B31%2C45%2C46%2C166%2C167%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A434%2C%22totalAccepted%22%3A155%2C%22pid%22%3A%22P3104%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu6570%5Cu670b%5Cu53cbCounting%20Friends%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A71193%2C%22title%22%3A%22%5Cu6211%5Cu66f0%5Cu5c34%5Cu5c2c%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A2220%2C%22name%22%3A%22P3104%20%5BUSACO14MAR%5D%5Cu6570%5Cu670b%5Cu53cbCounting%20Friends%22%2C%22slug%22%3A%22P3104%22%7D%7D%2C%7B%22id%22%3A45132%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu6570%5Cu636e%5Cu662f%5Cu5426%5Cu6709%5Cu8bef%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2220%2C%22name%22%3A%22P3104%20%5BUSACO14MAR%5D%5Cu6570%5Cu670b%5Cu53cbCounting%20Friends%22%2C%22slug%22%3A%22P3104%22%7D%7D%2C%7B%22id%22%3A5954%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2220%2C%22name%22%3A%22P3104%20%5BUSACO14MAR%5D%5Cu6570%5Cu670b%5Cu53cbCounting%20Friends%22%2C%22slug%22%3A%22P3104%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2115%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu7834%5Cu574fSabotage%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2234%22%2C%22title%22%3A%22%5BHNOI2002%5D%5Cu8425%5Cu4e1a%5Cu989d%5Cu7edf%5Cu8ba1%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3105%22%2C%22title%22%3A%22%5BUSACO14OPEN%5D%5Cu516c%5Cu5e73%5Cu7684%5Cu6444%5Cu5f71Fair%20Photography%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3112%22%2C%22title%22%3A%22%5BUSACO14DEC%5D%5Cu540e%5Cu536b%5Cu9a6c%5Cu514bGuard%20Mark%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4876%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%20The%20Lazy%20Cow_Gold%20%5Cu61d2%5Cu60f0%5Cu7684%5Cu725b%28%5Cu91d1%29%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO14MAR%5D%5Cu6570%5Cu670b%5Cu53cbCounting%20Friends%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO14MAR]数朋友Counting Friends</h1>
+<h2>题目描述</h2>
+<div>Farmer John's N cows (2 <= N <= 500) have joined the social network "MooBook".
+Each cow has one or more friends with whom they interact on MooBook. Just for fun, Farmer John makes a list of the number of friends for each of his cows, but during the process of writing the list he becomes distracted, and he includes one extra number by mistake (so his list contains N+1 numbers, instead of N numbers as he intended).
+Please help Farmer John figure out which numbers on his list could have been the erroneous extra number.
+FJ又有n(1<=n<=500)头奶牛都有一个或一个以上的朋友。FJ记录每头牛的朋友数，但他傻不小心混入了一个错的数字，请找出。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The integer N.
+\* Lines 2..2+N: Line i+1 contains the number of friends for one of FJ's cows, or possibly the extra erroneous number.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: An integer K giving the number of entries in FJ's list that could be the extra number (or, K=0 means that there is no number on the list whose removal yields a feasible pairing of friends).
+\* Lines 2..1+K: Each line contains the index (1..N+1) within the input ordering of a number of FJ's list that could potentially be the extra number -- that is, a number that can be removed such that the remaining N numbers admit a feasible set of
+friendships among the cows. These lines should be in sorted order.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 
+1 
+2 
+2 
+1 
+3 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+1 
+4 
+5 
+</code></pre>
+<h2>说明</h2>
+<div>Farmer John has 4 cows. Two cows have only 1 friend each, two cows have 2 friends each, and 1 cow has 3 friends (of course, one of these numbers is extra and does not belong on the list).
+Removal of the first number in FJ's list (the number 1) gives a remaining list of 2,2,1,3, which does lead to a feasible friendship pairing -- for example, if we name the cows A..D, then the pairings (A,B), (A,C), (A,D), and (B,C) suffice, since A has 3 friends, B and C have 2 friends, and D has 1 friend. Similarly, removing the other "1" from FJ's list also works, and so does removing the "3" from FJ's list. Removal of either "2" from FJ's list does not work -- we can see this by the fact that the sum of the remaining numbers is odd, which clearly prohibits us from finding a feasible pairing.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

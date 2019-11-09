@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10FEB]覆盖的围栏Covering the Corral - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376235:Pe9Zb6PUGrsvzoS/rJ1H8qdJtXH439jxIRpkPD2kaKA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20cows%20are%20so%20modest%20they%20want%20Farmer%20John%20to%20install%20covers%20around%20the%20circular%20corral%20where%20they%20occasionally%20gather.%20The%20corral%20has%20circumference%20C%20%281%20%3C%3D%20C%20%3C%3D%201%2C000%2C000%2C000%29%2C%20and%20FJ%20can%20choose%20from%20a%20set%20of%20M%20%281%20%3C%3D%20M%20%3C%3D%20100%2C000%29%20covers%20that%20have%20fixed%20starting%20points%20and%20sizes.%20At%20least%20one%20set%20of%20covers%20can%20surround%20the%20entire%20corral.%5Cn%5CnCover%20i%20can%20be%20installed%20at%20integer%20location%20x%5C%5C_i%20%28distance%20from%20starting%20point%20around%20corral%29%20%280%20%3C%3D%20x%5C%5C_i%20%3C%20C%29%20and%20has%20integer%20length%20l%5C%5C_i%20%281%20%3C%3D%20l%5C%5C_i%20%3C%3D%20C%29.%5Cn%5CnFJ%20wants%20to%20minimize%20the%20number%20of%20segments%20he%20must%20install.%20What%20is%20the%20minimum%20number%20of%20segments%20required%20to%20cover%20the%20entire%20circumference%20of%20the%20corral%3F%5Cn%5CnConsider%20a%20corral%20of%20circumference%205%2C%20shown%20below%20as%20a%20pair%20of%20connected%20line%20segments%20where%20both%20%270%27s%20are%20the%20same%20point%20on%20the%20corral%20%28as%20are%20both%201%27s%2C%202%27s%2C%20and%203%27s%29.%5Cn%5CnThree%20potential%20covering%20segments%20are%20available%20for%20installation%3A%5Cn%5CnStart%20%20%20Length%5Cn%5Cni%20%20%20%20%20x%5C%5C_i%20%20%20%20%20l%5C%5C_i%5Cn%5Cn1%20%20%20%20%20%200%20%20%20%20%20%20%201%5Cn%5Cn2%20%20%20%20%20%201%20%20%20%20%20%20%202%5Cn%5Cn3%20%20%20%20%20%203%20%20%20%20%20%20%203%5Cn%5Cn0%20%20%201%20%20%202%20%20%203%20%20%204%20%20%200%20%20%201%20%20%202%20%20%203%20%20...%5Cn%5Cncorral%3A%20%2B---%2B---%2B---%2B---%2B--%3A%2B---%2B---%2B---%2B-%20...%5Cn%5Cn11111%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201111%5Cn%5Cn22222222%20%20%20%20%20%20%20%20%20%20%20%2022222222%5Cn%5Cn333333333333%5Cn%5Cn%7C..................%7C%20%5CnAs%20shown%2C%20installing%20segments%202%20and%203%20cover%20an%20extent%20of%20%28at%20least%29%20five%20units%20around%20the%20circumference.%20FJ%20has%20no%20trouble%20with%20the%20overlap%2C%20so%20don%27t%20worry%20about%20that.%5Cn%5Cn%5Cu5976%5Cu725b%5Cu4eec%5Cu975e%5Cu5e38%5Cu7f9e%5Cu6da9%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu8981%5Cu6c42Farmer%20John%5Cu5728%5Cu4ed6%5Cu4eec%5Cu7684%5Cu5706%5Cu5f62%5Cu725b%5Cu68da%5Cu5468%5Cu56f4%5Cu5efa%5Cu9020%5Cu56f4%5Cu680f%5Cu3002%5Cu725b%5Cu68da%5Cu7684%5Cu5468%5Cu957f%5Cu4e3ac%281%20%3C%3D%20C%20%3C%3D%201%2C000%2C000%2C000%29%5Cuff0c%5Cu73b0%5Cu5728%5Cuff0cFJ%5Cu5e0c%5Cu671b%5Cu4ece%5Cu4e00%5Cu4e9b%5Cu6709%5Cu56fa%5Cu5b9a%5Cu8d77%5Cu70b9%5Cu548c%5Cu7ec8%5Cu70b9%5Cu7684%5Cu680f%5Cu6746%5Cu7684%5Cu96c6%5Cu5408%5Cu91cc%5Cu9009%5Cu51fa%5Cu4e00%5Cu4e9b%5Cu680f%5Cu6746%5Cu3002%20%5Cu680f%5Cu6746i%20%5Cu7684%5Cu8d77%5Cu70b9%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu5efa%5Cu9020%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu4f4d%5Cu7f6e%20x%5C%5C_i%28%5Cu76f8%5Cu8ddd%5Cu56f4%5Cu680f%5Cu8d77%5Cu70b9i%5Cu4e2a%5Cu957f%5Cu5ea6%29%20%280%20%3C%3D%20x%5C%5C_i%20%3C%20C%29%2C%5Cu5e76%5Cu4e14%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu680f%5Cu6746%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu957f%5Cu5ea6l%5C%5C_i%281%20%3C%3D%20l%5C%5C_i%20%3C%3D%20C%29%5Cu3002%20FJ%20%5Cu5e0c%5Cu671b%5Cu6700%5Cu5c0f%5Cu5316%5Cu680f%5Cu6746%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu4ece%5Cu800c%5Cu8fbe%5Cu5230%5Cu8986%5Cu76d6%5Cu6574%5Cu4e2a%5Cu725b%5Cu68da%5Cu7684%5Cu5916%5Cu5708%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20C%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..M%2B1%3A%20Line%20i%2B1%20contains%20two%20space-separated%20integers%3A%20x%5C%5C_i%20and%20l%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20that%20is%20the%20minimum%20number%20of%20segments%20required%20to%20cover%20all%20segments%20of%20the%20circumference%20of%20the%20corral%5Cn%22%2C%22samples%22%3A%5B%5B%225%203%20%5Cr%5Cn0%201%20%5Cr%5Cn1%202%20%5Cr%5Cn3%203%20%5Cr%5Cn%22%2C%222%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C164%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A229%2C%22totalAccepted%22%3A52%2C%22pid%22%3A%22P2980%22%2C%22title%22%3A%22%5BUSACO10FEB%5D%5Cu8986%5Cu76d6%5Cu7684%5Cu56f4%5Cu680fCovering%20the%20Corral%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A88683%2C%22title%22%3A%22%5Cu6240%5Cu4ee5%5Cu8fd9%5Cu771f%5Cu7684%5Cu662f%5Cu84dd%5Cu724c%5Cu9898%5Cu5417%22%2C%22forum%22%3A%7B%22id%22%3A2109%2C%22name%22%3A%22P2980%20%5BUSACO10FEB%5D%5Cu8986%5Cu76d6%5Cu7684%5Cu56f4%5Cu680fCovering%20the%20Corral%22%2C%22slug%22%3A%22P2980%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2899%22%2C%22title%22%3A%22%5BUSACO08JAN%5D%5Cu624b%5Cu673a%5Cu7f51%5Cu7edcCell%20Phone%20Network%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2982%22%2C%22title%22%3A%22%5BUSACO10FEB%5D%5Cu6162%5Cu4e0b%5Cu6765Slowing%20down%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2988%22%2C%22title%22%3A%22%5BUSACO10MAR%5D%5Cu8003%5Cu8bd5Test%20Taking%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3960%22%2C%22title%22%3A%22%5Cu5217%5Cu961f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1251E1%22%2C%22title%22%3A%22Voting%20%28Easy%20Version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10FEB%5D%5Cu8986%5Cu76d6%5Cu7684%5Cu56f4%5Cu680fCovering%20the%20Corral%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10FEB]覆盖的围栏Covering the Corral</h1>
+<h2>题目描述</h2>
+<div>The cows are so modest they want Farmer John to install covers around the circular corral where they occasionally gather. The corral has circumference C (1 <= C <= 1,000,000,000), and FJ can choose from a set of M (1 <= M <= 100,000) covers that have fixed starting points and sizes. At least one set of covers can surround the entire corral.
+Cover i can be installed at integer location x\_i (distance from starting point around corral) (0 <= x\_i < C) and has integer length l\_i (1 <= l\_i <= C).
+FJ wants to minimize the number of segments he must install. What is the minimum number of segments required to cover the entire circumference of the corral?
+Consider a corral of circumference 5, shown below as a pair of connected line segments where both '0's are the same point on the corral (as are both 1's, 2's, and 3's).
+Three potential covering segments are available for installation:
+Start Length
+i x\_i l\_i
+1 0 1
+2 1 2
+3 3 3
+0 1 2 3 4 0 1 2 3 ...
+corral: +---+---+---+---+--:+---+---+---+- ...
+11111 1111
+22222222 22222222
+333333333333
+|..................|
+As shown, installing segments 2 and 3 cover an extent of (at least) five units around the circumference. FJ has no trouble with the overlap, so don't worry about that.
+奶牛们非常羞涩，他们要求Farmer John在他们的圆形牛棚周围建造围栏。牛棚的周长为c(1 <= C <= 1,000,000,000)，现在，FJ希望从一些有固定起点和终点的栏杆的集合里选出一些栏杆。 栏杆i 的起点可以被建造在一个整数位置 x\_i(相距围栏起点i个长度) (0 <= x\_i < C),并且，这个栏杆有一个整数长度l\_i(1 <= l\_i <= C)。 FJ 希望最小化栏杆的数量，从而达到覆盖整个牛棚的外圈。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: C and M
+\* Lines 2..M+1: Line i+1 contains two space-separated integers: x\_i and l\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer that is the minimum number of segments required to cover all segments of the circumference of the corral
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3 
+0 1 
+1 2 
+3 3 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

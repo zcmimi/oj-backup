@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12DEC]疯狂的栅栏Crazy Fences - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376351:qI3D/IYvgfiJ0FRXlcH+/n5ie6mQdthxovOYsp3oXLM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22After%20visiting%20a%20modern%20art%20museum%2C%20Farmer%20John%20decides%20to%20re-design%20his%20farm%20by%20moving%20all%20of%20the%20N%20%281%20%3C%3D%20N%20%3C%3D%201000%29%20fences%20between%20his%20pastures%21%20Each%20fence%20is%20describe%20by%20a%20line%20segment%20in%20the%202D%20plane.%20%20If%20two%20fences%20meet%2C%20they%20do%20so%20only%20at%20their%20endpoints.%20%20Each%20fence%20touches%20exactly%20two%20other%20fences%2C%20one%20at%20both%20endpoints.%5Cn%5CnFJ%20has%20C%20cows%20%281%20%3C%3D%20C%20%3C%3D%201000%29%20on%20his%20farm.%20%20Each%20cow%20resides%20at%20a%20point%20in%20the%202D%20plane%20that%20is%20not%20on%20any%20fence%2C%20and%20no%20two%20cows%20reside%20at%20the%20same%20point.%20%20Two%20cows%20are%20said%20to%20be%20in%20the%20same%20community%20if%20one%20could%20walk%20to%20the%20other%20without%20touching%20any%20fences.%20%20Please%20help%20FJ%20determine%20the%20size%20of%20the%20largest%20community.%5Cn%5Cn%20%5Cn%5Cu5728%5Cu8bbf%5Cu95ee%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu73b0%5Cu4ee3%5Cu7f8e%5Cu672f%5Cu9986%5Cu540e%5Cuff0c%5Cu7ea6%5Cu7ff0%5Cu519c%5Cu592b%5Cu51b3%5Cu5b9a%5Cu79fb%5Cu52a8n%5Cu4e2a%5Cu5728%5Cu4ed6%5Cu7684%5Cu7267%5Cu573a%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6805%5Cu680f%5Cu6765%5Cn%5Cn%5Cn%5Cu91cd%5Cu65b0%5Cu8bbe%5Cu8ba1%5Cu4ed6%5Cu7684%5Cu519c%5Cu573a%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu6805%5Cu680f%5Cu7528%5Cu4e00%5Cu4e2a2D%5Cu5e73%5Cu9762%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6765%5Cu63cf%5Cu8ff0%5Cu3002%5Cu4e24%5Cu4e2a%5Cu6805%5Cu680f%5Cu53ea%5Cu6709%5Cu5728%5Cu4ed6%5Cu4eec%5Cu7684%5Cu7aef%5Cu70b9%5Cu624d%5Cu4f1a%5Cu76f8%5Cu9047%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu6805%5Cu680f%5Cu5728%5Cu4e24%5Cu4e2a%5Cu7aef%5Cu70b9%5Cu63a5%5Cu89e6%5Cu5176%5Cu4ed6%5Cu7684%5Cu4e24%5Cu4e2a%5Cu6805%5Cu680f%5Cu3002%5Cn%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu519c%5Cu592b%5Cu6709c%5Cu5934%5Cu725b%5Cu5728%5Cu4ed6%5Cu7684%5Cu519c%5Cu573a%5Cu3002%5Cu6bcf%5Cu5934%5Cu725b%5Cu4f4f%5Cu57282D%5Cu5e73%5Cu9762%5Cu7684%5Cu4e0d%5Cu5728%5Cu4efb%5Cu4f55%5Cu6805%5Cu680f%5Cu7684%5Cu4e00%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6ca1%5Cu6709%5Cu4e24%5Cu5934%5Cu725b%5Cu5728%5Cu540c%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu3002%5Cu5982%5Cu679c%5Cu4e24%5Cu5934%5Cu725b%5Cu53ef%5Cu4ee5%5Cu4e0d%5Cu63a5%5Cu89e6%5Cu4efb%5Cu4f55%5Cu6805%5Cu680f%5Cu5730%5Cu8d70%5Cu5230%5Cu4e00%5Cu8d77%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu5c31%5Cu662f%5Cu5728%5Cu540c%5Cu4e00%5Cu4e2a%5Cu793e%5Cu533a%5Cu3002%5Cu8bf7%5Cu786e%5Cu5b9a%5Cu6700%5Cu5927%5Cu7684%5Cu793e%5Cu533a%5Cu7684%5Cu725b%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%20N%20and%20C.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Each%20line%20contains%20four%20integers%3A%20x1%2C%20y1%2C%20x2%2C%20y2%2C%20indicating%20a%20fence%20from%20point%20%28x1%2Cy1%29%20to%20point%20%28x2%2Cy2%29.%20%20All%20coordinates%20are%20integers%20in%20the%20range%200..1%2C000%2C000.%5Cn%5Cn%5C%5C%2A%20Lines%202%2BN..1%2BN%2BC%3A%20Each%20line%20contains%20two%20integers%20x%20and%20y%20describing%20the%20location%20of%20a%20cow.%20%20All%20coordinates%20are%20integers%20in%20the%20range%200..1%2C000%2C000.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20number%20of%20cows%20in%20the%20largest%20community.%5Cn%22%2C%22samples%22%3A%5B%5B%2210%204%20%5Cn0%200%2010%200%20%5Cn10%200%2010%2010%20%5Cn0%200%200%2010%20%5Cn10%2010%200%2010%20%5Cn8%208%209%208%20%5Cn9%208%208%209%20%5Cn8%209%208%208%20%5Cn2%207%203%202%20%5Cn3%202%207%205%20%5Cn7%205%202%207%20%5Cn15%203%20%5Cn1%204%20%5Cn4%205%20%5Cn7%201%20%5Cn%22%2C%222%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%2010%20fences%20and%204%20cows.%20%20The%20fences%20form%20a%20square%20containing%20two%20triangles.%5Cn%5Cn%5CnCows%20%232%20and%20%234%20belong%20to%20the%20same%20community.%20%20Cows%20%231%20and%20%233%20are%20each%20members%20of%20a%20community%20of%20size%201.%5Cn%5Cn%5Cn%5Cu611f%5Cu8c22%40kczno1%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B2%2C29%2C46%2C111%2C300%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A63%2C%22totalAccepted%22%3A14%2C%22pid%22%3A%22P3061%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu75af%5Cu72c2%5Cu7684%5Cu6805%5Cu680fCrazy%20Fences%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A148251%2C%22title%22%3A%22%5Cu8fd9%5Cu6284%5Cu88ad%5Cu6709%5Cu70b9%5Cu4e25%5Cu91cd%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A2179%2C%22name%22%3A%22P3061%20%5BUSACO12DEC%5D%5Cu75af%5Cu72c2%5Cu7684%5Cu6805%5Cu680fCrazy%20Fences%22%2C%22slug%22%3A%22P3061%22%7D%7D%2C%7B%22id%22%3A111038%2C%22title%22%3A%22%5Cu7edd%5Cu4e16%5Cu597d%5Cu9898QwQ%22%2C%22forum%22%3A%7B%22id%22%3A2179%2C%22name%22%3A%22P3061%20%5BUSACO12DEC%5D%5Cu75af%5Cu72c2%5Cu7684%5Cu6805%5Cu680fCrazy%20Fences%22%2C%22slug%22%3A%22P3061%22%7D%7D%2C%7B%22id%22%3A8091%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2179%2C%22name%22%3A%22P3061%20%5BUSACO12DEC%5D%5Cu75af%5Cu72c2%5Cu7684%5Cu6805%5Cu680fCrazy%20Fences%22%2C%22slug%22%3A%22P3061%22%7D%7D%2C%7B%22id%22%3A5066%2C%22title%22%3A%22%5Cu81ea%5Cu5df1%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2179%2C%22name%22%3A%22P3061%20%5BUSACO12DEC%5D%5Cu75af%5Cu72c2%5Cu7684%5Cu6805%5Cu680fCrazy%20Fences%22%2C%22slug%22%3A%22P3061%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1792%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu79cd%5Cu6811%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2245%22%2C%22title%22%3A%22%5Cu661f%5Cu9645%5Cu5bfc%5Cu822a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3062%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu65e0%5Cu7ebf%5Cu7f51%5Cu7edc%5Cu8bbe%5Cu7f6eWifi%20Setup%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3899%22%2C%22title%22%3A%22%5B%5Cu6e56%5Cu5357%5Cu96c6%5Cu8bad%5D%5Cu8c08%5Cu7b11%5Cu98ce%5Cu751f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF375D%22%2C%22title%22%3A%22Tree%20and%20Queries%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12DEC%5D%5Cu75af%5Cu72c2%5Cu7684%5Cu6805%5Cu680fCrazy%20Fences%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12DEC]疯狂的栅栏Crazy Fences</h1>
+<h2>题目描述</h2>
+<div>After visiting a modern art museum, Farmer John decides to re-design his farm by moving all of the N (1 <= N <= 1000) fences between his pastures! Each fence is describe by a line segment in the 2D plane. If two fences meet, they do so only at their endpoints. Each fence touches exactly two other fences, one at both endpoints.
+FJ has C cows (1 <= C <= 1000) on his farm. Each cow resides at a point in the 2D plane that is not on any fence, and no two cows reside at the same point. Two cows are said to be in the same community if one could walk to the other without touching any fences. Please help FJ determine the size of the largest community.
+在访问了一个现代美术馆后，约翰农夫决定移动n个在他的牧场之间的栅栏来
+重新设计他的农场。每个栅栏用一个2D平面的线段来描述。两个栅栏只有在他们的端点才会相遇。每个栅栏在两个端点接触其他的两个栅栏。
+约翰农夫有c头牛在他的农场。每头牛住在2D平面的不在任何栅栏的一个点，并且没有两头牛在同一个点。如果两头牛可以不接触任何栅栏地走到一起，他们就是在同一个社区。请确定最大的社区的牛的数量。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers N and C.
+\* Lines 2..1+N: Each line contains four integers: x1, y1, x2, y2, indicating a fence from point (x1,y1) to point (x2,y2). All coordinates are integers in the range 0..1,000,000.
+\* Lines 2+N..1+N+C: Each line contains two integers x and y describing the location of a cow. All coordinates are integers in the range 0..1,000,000.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The number of cows in the largest community.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 4 
+0 0 10 0 
+10 0 10 10 
+0 0 0 10 
+10 10 0 10 
+8 8 9 8 
+9 8 8 9 
+8 9 8 8 
+2 7 3 2 
+3 2 7 5 
+7 5 2 7 
+15 3 
+1 4 
+4 5 
+7 1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+<h2>说明</h2>
+<div>There are 10 fences and 4 cows. The fences form a square containing two triangles.
+Cows #2 and #4 belong to the same community. Cows #1 and #3 are each members of a community of size 1.
+感谢@kczno1 提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

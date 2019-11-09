@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Defining Macros - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573389891:fb68e/rv3KHbD2u1c/nd9ST4QOy9JnEqKsvBE78zo0c=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Most%20C%5C%2FC%2B%2B%20programmers%20know%20about%20excellent%20opportunities%20that%20preprocessor%20%23define%20directives%20give%3B%20but%20many%20know%20as%20well%20about%20the%20problems%20that%20can%20arise%20because%20of%20their%20careless%20use.%5Cn%5CnIn%20this%20problem%20we%20consider%20the%20following%20model%20of%20%23define%20constructions%20%28also%20called%20macros%29.%20Each%20macro%20has%20its%20name%20and%20value.%20The%20generic%20syntax%20for%20declaring%20a%20macro%20is%20the%20following%3A%5Cn%5Cn%5C%5C%23define%20macro%5C%5C_name%20macro%5C%5C_value%5Cn%5CnAfter%20the%20macro%20has%20been%20declared%2C%20%5C%22macro%5C%5C_name%5C%22%20is%20replaced%20with%20%5C%22macro%5C%5C_value%5C%22%20each%20time%20it%20is%20met%20in%20the%20program%20%28only%20the%20whole%20tokens%20can%20be%20replaced%3B%20i.e.%20%5C%22macro%5C%5C_name%5C%22%20is%20replaced%20only%20when%20it%20is%20surrounded%20by%20spaces%20or%20other%20non-alphabetic%20symbol%29.%20A%20%5C%22macro%5C%5C_value%5C%22%20within%20our%20model%20can%20only%20be%20an%20arithmetic%20expression%20consisting%20of%20variables%2C%20four%20arithmetic%20operations%2C%20brackets%2C%20and%20also%20the%20names%20of%20previously%20declared%20macros%20%28in%20this%20case%20replacement%20is%20performed%20sequentially%29.%20The%20process%20of%20replacing%20macros%20with%20their%20values%20is%20called%20substitution.%5Cn%5CnOne%20of%20the%20main%20problems%20arising%20while%20using%20macros%20%5Cu2014%20the%20situation%20when%20as%20a%20result%20of%20substitution%20we%20get%20an%20arithmetic%20expression%20with%20the%20changed%20order%20of%20calculation%20because%20of%20different%20priorities%20of%20the%20operations.%5Cn%5CnLet%27s%20consider%20the%20following%20example.%20Say%2C%20we%20declared%20such%20a%20%23define%20construction%3A%5Cn%5Cn%5C%5C%23define%20sum%20x%20%2B%20y%5Cn%5Cnand%20further%20in%20the%20program%20the%20expression%20%5C%222%20%5C%5C%2A%20sum%5C%22%20is%20calculated.%20After%20macro%20substitution%20is%20performed%20we%20get%20%5C%222%20%5C%5C%2A%20x%20%2B%20y%5C%22%2C%20instead%20of%20intuitively%20expected%20%5C%222%20%5C%5C%2A%20%28x%20%2B%20y%29%5C%22.%5Cn%5CnLet%27s%20call%20the%20situation%20%5C%22suspicious%5C%22%2C%20if%20after%20the%20macro%20substitution%20the%20order%20of%20calculation%20changes%2C%20falling%20outside%20the%20bounds%20of%20some%20macro.%20Thus%2C%20your%20task%20is%20to%20find%20out%20by%20the%20given%20set%20of%20%23define%20definitions%20and%20the%20given%20expression%20if%20this%20expression%20is%20suspicious%20or%20not.%5Cn%5CnLet%27s%20speak%20more%20formally.%20We%20should%20perform%20an%20ordinary%20macros%20substitution%20in%20the%20given%20expression.%20Moreover%2C%20we%20should%20perform%20a%20%5C%22safe%5C%22%20macros%20substitution%20in%20the%20expression%2C%20putting%20in%20brackets%20each%20macro%20value%3B%20after%20this%2C%20guided%20by%20arithmetic%20rules%20of%20brackets%20expansion%2C%20we%20can%20omit%20some%20of%20the%20brackets.%20If%20there%20exist%20a%20way%20to%20get%20an%20expression%2C%20absolutely%20coinciding%20with%20the%20expression%20that%20is%20the%20result%20of%20an%20ordinary%20substitution%20%28character-by-character%2C%20but%20ignoring%20spaces%29%2C%20then%20this%20expression%20and%20the%20macros%20system%20are%20called%20correct%2C%20otherwise%20%5Cu2014%20suspicious.%5Cn%5CnNote%20that%20we%20consider%20the%20%5C%22%5C%2F%5C%22%20operation%20as%20the%20usual%20mathematical%20division%2C%20not%20the%20integer%20division%20like%20in%20C%5C%2FC%2B%2B.%20That%27s%20why%2C%20for%20example%2C%20in%20the%20expression%20%5C%22a%5C%5C%2A%28b%5C%2Fc%29%5C%22%20we%20can%20omit%20brackets%20to%20get%20the%20expression%20%5C%22a%5C%5C%2Ab%5C%2Fc%5C%22.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20only%20number%20%24%20n%20%24%20%28%20%24%200%3C%3Dn%3C%3D100%20%24%20%29%20%5Cu2014%20the%20amount%20of%20%23define%20constructions%20in%20the%20given%20program.%5Cn%5CnThen%20there%20follow%20%24%20n%20%24%20lines%2C%20each%20of%20them%20contains%20just%20one%20%23define%20construction.%20Each%20construction%20has%20the%20following%20syntax%3A%5Cn%5Cn%5C%5C%23define%20name%20expression%5Cn%5Cnwhere%5Cn%5Cn-%20name%20%5Cu2014%20the%20macro%20name%2C%5Cn-%20expression%20%5Cu2014%20the%20expression%20with%20which%20the%20given%20macro%20will%20be%20replaced.%20An%20expression%20is%20a%20non-empty%20string%2C%20containing%20digits%2Cnames%20of%20variables%2C%20names%20of%20previously%20declared%20macros%2C%20round%20brackets%20and%20operational%20signs%20%2B-%5C%5C%2A%5C%2F.%20It%20is%20guaranteed%20that%20the%20expression%20%28before%20and%20after%20macros%20substitution%29%20is%20a%20correct%20arithmetic%20expression%2C%20having%20no%20unary%20operations.%20The%20expression%20contains%20only%20non-negative%20integers%2C%20not%20exceeding%20%24%2010%5E%7B9%7D%20%24%20.%5Cn%5CnAll%20the%20names%20%28%23define%20constructions%27%20names%20and%20names%20of%20their%20arguments%29%20are%20strings%20of%20case-sensitive%20Latin%20characters.%20It%20is%20guaranteed%20that%20the%20name%20of%20any%20variable%20is%20different%20from%20any%20%23define%20construction.%5Cn%5CnThen%2C%20the%20last%20line%20contains%20an%20expression%20that%20you%20are%20to%20check.%20This%20expression%20is%20non-empty%20and%20satisfies%20the%20same%20limitations%20as%20the%20expressions%20in%20%23define%20constructions.%5Cn%5CnThe%20input%20lines%20may%20contain%20any%20number%20of%20spaces%20anywhere%2C%20providing%20these%20spaces%20do%20not%20break%20the%20word%20%5C%22define%5C%22%20or%20the%20names%20of%20constructions%20and%20variables.%20In%20particular%2C%20there%20can%20be%20any%20number%20of%20spaces%20before%20and%20after%20the%20%5C%22%23%5C%22%20symbol.%5Cn%5CnThe%20length%20of%20any%20line%20from%20the%20input%20file%20does%20not%20exceed%20100%20characters.%22%2C%22outputFormat%22%3A%22Output%20%5C%22OK%5C%22%2C%20if%20the%20expression%20is%20correct%20according%20to%20the%20above%20given%20criterion%2C%20otherwise%20output%20%5C%22Suspicious%5C%22.%22%2C%22samples%22%3A%5B%5B%221%5Cn%23define%20sum%20x%20%2B%20y%5Cn1%20%2A%20sum%5Cn%22%2C%22Suspicious%5Cn%22%5D%2C%5B%221%5Cn%23define%20sum%20%20%28x%20%2B%20y%29%5Cnsum%20-%20sum%5Cn%22%2C%22OK%5Cn%22%5D%2C%5B%224%5Cn%23define%20sum%20%20x%20%2B%20y%5Cn%23define%20mul%20%20a%20%2A%20b%5Cn%23define%20div%20%20a%20%5C%2F%20b%5Cn%23define%20expr%20sum%20%2B%20mul%20%2A%20div%20%2A%20mul%5Cnexpr%5Cn%22%2C%22OK%5Cn%22%5D%2C%5B%223%5Cn%23define%20SumSafe%20%20%20%28a%2Bb%29%5Cn%23define%20DivUnsafe%20%20a%5C%2Fb%5Cn%23define%20DenominatorUnsafe%20%20a%2Ab%5Cn%28%28SumSafe%29%20%2B%20DivUnsafe%5C%2FDivUnsafe%20%2B%20x%5C%2FDenominatorUnsafe%29%5Cn%22%2C%22Suspicious%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F7%5C%2FE%22%2C%22id%22%3A%227E%22%7D%2C%22translation%22%3A%22%5Cn%5Cn%5Cu9898%5Cu76ee%5Cu7ed9%5Cu4e86%5Cu4e00%5Cu7cfb%5Cu5217C%20%2B%20%2B%5Cu7684%5Cu5b8f%5Cu5b9a%5Cu4e49%5Cuff0c%5Cu95ee%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu662f%5Cu5426%5Cu662f%5Cu201c%5Cu5b89%5Cu5168%5C%22%5Cu7684%5Cu3002%5Cu5b89%5Cu5168%5Cu7684%5Cu5b9a%5Cu4e49%5Cu662f%5Cuff0c%5Cu5c55%5Cu5f00%5Cu540e%5Cu7684%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu4e2d%5Cuff0c%5Cu6240%5Cu6709%5Cu7684%5Cu5b8f%5Cu5728%5Cu8ba1%5Cu7b97%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cu90fd%5Cu88ab%5Cu4f5c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu4f53%5Cu8fd0%5Cu7b97%5Cu3002%5Cn%5Cn%5Cu5982%23define%20sumx%5Cu5341y%5Cu540e%5Cuff0c2%20%2Asum%5Cu5c31%5Cu4f1a%5Cu88ab%5Cu66ff%5Cu6362%5Cu4e582%2Ax%2By%20%5Cu6b64%5Cu65f6%5Cu6b64%5Cu65f6%5Cu56e0%5Cu4e3a%5Cu4e58%5Cu53f7%5Cu4f18%5Cu5148%5Cu7ea7%5Cu6bd4%5Cu52a0%5Cu53f7%5Cu9ad8%5Cuff0c%5Cu5bfc%5Cu81f4%5Cu5b8f%5Cu5728%5Cu5b9e%5Cu9645%5Cu8ba1%5Cu7b97%5Cu4e2d%5Cu88ab%5Cu62c6%5Cu5f00%5Cu4e86%5Cuff0c%5Cu53ef%5Cu80fd%5Cu4ea7%5Cu751f%5Cu9519%5Cu8bef%5Cu3002%5Cn%5Cn%5Cu5b8f%5Cu7684%5Cu4e2a%5Cu6570%3C%3D10%2C%5Cu6bcf%5Cu4e2a%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu957f%5Cu5ea6%3C%3D10.%5Cu53ea%5Cu6709%5Cu56db%5Cu5219%5Cu8fd0%5Cu7b97%5Cu548c%5Cu62ec%5Cu53f7%5Cu3002%5Cn%5CnTranslated%20by%20liyifeng%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A186%2C%22totalAccepted%22%3A51%2C%22pid%22%3A%22CF7E%22%2C%22title%22%3A%22Defining%20Macros%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32324%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12681%2C%22name%22%3A%22CF7E%20Defining%20Macros%22%2C%22slug%22%3A%22CF7E%22%7D%7D%2C%7B%22id%22%3A32313%2C%22title%22%3A%22%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%22%2C%22forum%22%3A%7B%22id%22%3A12681%2C%22name%22%3A%22CF7E%20Defining%20Macros%22%2C%22slug%22%3A%22CF7E%22%7D%7D%2C%7B%22id%22%3A32310%2C%22title%22%3A%22%20%5Cu4ee5%5Cu4e0b%5Cu662f%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12681%2C%22name%22%3A%22CF7E%20Defining%20Macros%22%2C%22slug%22%3A%22CF7E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF590E%22%2C%22title%22%3A%22Birthday%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF338D%22%2C%22title%22%3A%22GCD%20Table%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF13B%22%2C%22title%22%3A%22Letter%20A%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF10E%22%2C%22title%22%3A%22Greedy%20Change%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF8D%22%2C%22title%22%3A%22Two%20Friends%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Defining%20Macros%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Defining Macros</h1>
+<h2>题意翻译</h2>
+<div>
+题目给了一系列C + +的宏定义，问你一个表达式是否是“安全"的。安全的定义是，展开后的表达式中，所有的宏在计算过程中都被作为一个整体运算。
+如#define sumx十y后，2 *sum就会被替换乘2*x+y 此时此时因为乘号优先级比加号高，导致宏在实际计算中被拆开了，可能产生错误。
+宏的个数<=10,每个表达式长度<=10.只有四则运算和括号。
+Translated by liyifeng
+</div>
+<h2>题目描述</h2>
+<div>Most C/C++ programmers know about excellent opportunities that preprocessor #define directives give; but many know as well about the problems that can arise because of their careless use.
+In this problem we consider the following model of #define constructions (also called macros). Each macro has its name and value. The generic syntax for declaring a macro is the following:
+\#define macro\_name macro\_value
+After the macro has been declared, "macro\_name" is replaced with "macro\_value" each time it is met in the program (only the whole tokens can be replaced; i.e. "macro\_name" is replaced only when it is surrounded by spaces or other non-alphabetic symbol). A "macro\_value" within our model can only be an arithmetic expression consisting of variables, four arithmetic operations, brackets, and also the names of previously declared macros (in this case replacement is performed sequentially). The process of replacing macros with their values is called substitution.
+One of the main problems arising while using macros — the situation when as a result of substitution we get an arithmetic expression with the changed order of calculation because of different priorities of the operations.
+Let's consider the following example. Say, we declared such a #define construction:
+\#define sum x + y
+and further in the program the expression "2 \* sum" is calculated. After macro substitution is performed we get "2 \* x + y", instead of intuitively expected "2 \* (x + y)".
+Let's call the situation "suspicious", if after the macro substitution the order of calculation changes, falling outside the bounds of some macro. Thus, your task is to find out by the given set of #define definitions and the given expression if this expression is suspicious or not.
+Let's speak more formally. We should perform an ordinary macros substitution in the given expression. Moreover, we should perform a "safe" macros substitution in the expression, putting in brackets each macro value; after this, guided by arithmetic rules of brackets expansion, we can omit some of the brackets. If there exist a way to get an expression, absolutely coinciding with the expression that is the result of an ordinary substitution (character-by-character, but ignoring spaces), then this expression and the macros system are called correct, otherwise — suspicious.
+Note that we consider the "/" operation as the usual mathematical division, not the integer division like in C/C++. That's why, for example, in the expression "a\*(b/c)" we can omit brackets to get the expression "a\*b/c".</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the only number $ n $ ( $ 0<=n<=100 $ ) — the amount of #define constructions in the given program.
+Then there follow $ n $ lines, each of them contains just one #define construction. Each construction has the following syntax:
+\#define name expression
+where
+- name — the macro name,
+- expression — the expression with which the given macro will be replaced. An expression is a non-empty string, containing digits,names of variables, names of previously declared macros, round brackets and operational signs +-\*/. It is guaranteed that the expression (before and after macros substitution) is a correct arithmetic expression, having no unary operations. The expression contains only non-negative integers, not exceeding $ 10^{9} $ .
+All the names (#define constructions' names and names of their arguments) are strings of case-sensitive Latin characters. It is guaranteed that the name of any variable is different from any #define construction.
+Then, the last line contains an expression that you are to check. This expression is non-empty and satisfies the same limitations as the expressions in #define constructions.
+The input lines may contain any number of spaces anywhere, providing these spaces do not break the word "define" or the names of constructions and variables. In particular, there can be any number of spaces before and after the "#" symbol.
+The length of any line from the input file does not exceed 100 characters.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output "OK", if the expression is correct according to the above given criterion, otherwise output "Suspicious".</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+#define sum x + y
+1 * sum
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Suspicious
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1
+#define sum  (x + y)
+sum - sum
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>OK
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+#define sum  x + y
+#define mul  a * b
+#define div  a / b
+#define expr sum + mul * div * mul
+expr
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>OK
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>3
+#define SumSafe   (a+b)
+#define DivUnsafe  a/b
+#define DenominatorUnsafe  a*b
+((SumSafe) + DivUnsafe/DivUnsafe + x/DenominatorUnsafe)
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>Suspicious
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

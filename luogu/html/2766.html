@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>最长不下降子序列问题 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573375936:jJcL97GbpHqpOMT+xXHBGUlaeBvOF9FZ+4CS6EYZS6o=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu00ab%5Cu95ee%5Cu9898%5Cu63cf%5Cu8ff0%5Cuff1a%5Cn%5Cn%5Cu7ed9%5Cu5b9a%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217x1%2C...%2Cxn%20%5Cu3002%5Cn%5Cn%5Cuff081%5Cuff09%5Cu8ba1%5Cu7b97%5Cu5176%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7684%5Cu957f%5Cu5ea6s%5Cu3002%5Cn%5Cn%5Cuff082%5Cuff09%5Cu8ba1%5Cu7b97%5Cu4ece%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu6700%5Cu591a%5Cu53ef%5Cu53d6%5Cu51fa%5Cu591a%5Cu5c11%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3as%5Cu7684%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu3002%5Cn%5Cn%5Cuff083%5Cuff09%5Cu5982%5Cu679c%5Cu5141%5Cu8bb8%5Cu5728%5Cu53d6%5Cu51fa%5Cu7684%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu591a%5Cu6b21%5Cu4f7f%5Cu7528x1%5Cu548cxn%5Cuff0c%5Cu5219%5Cu4ece%5Cu7ed9%5Cu5b9a%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu6700%5Cu591a%5Cu53ef%5Cu53d6%5Cu51fa%5Cu591a%5Cu5c11%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3as%5Cu7684%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu3002%5Cn%5Cn%5Cu00ab%5Cu7f16%5Cu7a0b%5Cu4efb%5Cu52a1%5Cuff1a%5Cn%5Cn%5Cu8bbe%5Cu8ba1%5Cu6709%5Cu6548%5Cu7b97%5Cu6cd5%5Cu5b8c%5Cu6210%5Cuff081%5Cuff09%5Cuff082%5Cuff09%5Cuff083%5Cuff09%5Cu63d0%5Cu51fa%5Cu7684%5Cu8ba1%5Cu7b97%5Cu4efb%5Cu52a1%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c1%20%5Cu884c%5Cu67091%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%5Cuff0c%5Cu8868%5Cu793a%5Cu7ed9%5Cu5b9a%5Cu5e8f%5Cu5217%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu76841%20%5Cu884c%5Cu6709n%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%3Ax1%2C%20...%2C%20xn%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu7b2c1%20%5Cu884c%5Cu662f%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7684%5Cu957f%5Cu5ea6s%5Cu3002%5Cu7b2c2%5Cu884c%5Cu662f%5Cu53ef%5Cu53d6%5Cu51fa%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e3as%20%5Cu7684%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu4e2a%5Cu6570%5Cu3002%5Cu7b2c3%5Cu884c%5Cu662f%5Cu5141%5Cu8bb8%5Cu5728%5Cu53d6%5Cu51fa%5Cu7684%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu591a%5Cu6b21%5Cu4f7f%5Cu7528x1%5Cu548cxn%5Cu65f6%5Cu53ef%5Cu53d6%5Cu51fa%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e3as%20%5Cu7684%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu4e2a%5Cu6570%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%224%5Cn3%206%202%205%22%2C%222%5Cn2%5Cn3%22%5D%5D%2C%22hint%22%3A%22%24n%5C%5Cle%20500%24%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A5846%2C%22name%22%3A%22yyy2015c01%22%2C%22slogan%22%3A%22%5Cu672a%5Cu6765%5Cu9053%5Cu5177%5Cu7814%5Cu7a76%5Cu6240%22%2C%22badge%22%3A%22%5Cu5624%5Cu5624%5Cu5624%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A7%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C79%2C108%2C194%2C332%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A5899%2C%22totalAccepted%22%3A1717%2C%22pid%22%3A%22P2766%22%2C%22title%22%3A%22%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A149407%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff1a%5Cu6700%5Cu957f%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu90a3%5Cu9898%5Cuff0c%5Cuff08%5Cu6700%5Cu5c0f%5Cu7684%5Cu90a3%5Cu4e2a%5Cu6570%5Cu636e%5Cuff09%5Cu672c%5Cu5730AC%5Cuff0c%5Cu63d0%5Cu4ea4RE%22%2C%22forum%22%3A%7B%22id%22%3A1868%2C%22name%22%3A%22P2766%20%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P2766%22%7D%7D%2C%7B%22id%22%3A125271%2C%22title%22%3A%22%5Cu521a%5Cu5b66OI%5Cu4e00%5Cu79d2%5Cu949f%5Cuff0cwa%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu70b9%22%2C%22forum%22%3A%7B%22id%22%3A1868%2C%22name%22%3A%22P2766%20%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P2766%22%7D%7D%2C%7B%22id%22%3A124700%2C%22title%22%3A%22H.A.C.K%22%2C%22forum%22%3A%7B%22id%22%3A1868%2C%22name%22%3A%22P2766%20%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P2766%22%7D%7D%2C%7B%22id%22%3A103067%2C%22title%22%3A%22%5Cu6211%5Cu662f%5Cu840c%5Cu65b0%5Cuff0c%5Cu521a%5Cu5b66%5Cu5f00%5Cu7535%5Cu8111%5Cuff0c%5Cu8fd9%5Cu9898%5Cu7384%5Cu5b66RE%5Cuff0c%5Cu6c42%5Cu5404%5Cu4f4d%5Cu795e%5Cu4ed9%5Cu5e2e%5Cu5fd9%22%2C%22forum%22%3A%7B%22id%22%3A1868%2C%22name%22%3A%22P2766%20%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P2766%22%7D%7D%2C%7B%22id%22%3A100626%2C%22title%22%3A%22%5Cu6c42%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A1868%2C%22name%22%3A%22P2766%20%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P2766%22%7D%7D%2C%7B%22id%22%3A95723%2C%22title%22%3A%22%5Cu521a%5Cu5b66OI%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A1868%2C%22name%22%3A%22P2766%20%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P2766%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1251%22%2C%22title%22%3A%22%5Cu9910%5Cu5dfe%5Cu8ba1%5Cu5212%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2763%22%2C%22title%22%3A%22%5Cu8bd5%5Cu9898%5Cu5e93%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2774%22%2C%22title%22%3A%22%5Cu65b9%5Cu683c%5Cu53d6%5Cu6570%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2770%22%2C%22title%22%3A%22%5Cu822a%5Cu7a7a%5Cu8def%5Cu7ebf%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3355%22%2C%22title%22%3A%22%5Cu9a91%5Cu58eb%5Cu5171%5Cu5b58%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu95ee%5Cu9898%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>最长不下降子序列问题</h1>
+<h2>题目描述</h2>
+<div>«问题描述：
+给定正整数序列x1,...,xn 。
+（1）计算其最长不下降子序列的长度s。
+（2）计算从给定的序列中最多可取出多少个长度为s的不下降子序列。
+（3）如果允许在取出的序列中多次使用x1和xn，则从给定序列中最多可取出多少个长度为s的不下降子序列。
+«编程任务：
+设计有效算法完成（1）（2）（3）提出的计算任务。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第1 行有1个正整数n，表示给定序列的长度。接下来的1 行有n个正整数n:x1, ..., xn。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>第1 行是最长不下降子序列的长度s。第2行是可取出的长度为s 的不下降子序列个数。第3行是允许在取出的序列中多次使用x1和xn时可取出的长度为s 的不下降子序列个数。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+3 6 2 5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+2
+3</code></pre>
+<h2>说明</h2>
+<div>$n\le 500$
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

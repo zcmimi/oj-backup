@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO14MAR]浇地Watering the Fields - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573375054:5lGuhcwThjRpZoFZZkhscFr62YhUfA+BsgCKWPZcHgI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Due%20to%20a%20lack%20of%20rain%2C%20Farmer%20John%20wants%20to%20build%20an%20irrigation%20system%20to%5Cn%5Cn%5Cnsend%20water%20between%20his%20N%20fields%20%281%20%3C%3D%20N%20%3C%3D%202000%29.%5Cn%5CnEach%20field%20i%20is%20described%20by%20a%20distinct%20point%20%28xi%2C%20yi%29%20in%20the%202D%20plane%2C%5Cn%5Cnwith%200%20%3C%3D%20xi%2C%20yi%20%3C%3D%201000.%20%20The%20cost%20of%20building%20a%20water%20pipe%20between%20two%5Cn%5Cnfields%20i%20and%20j%20is%20equal%20to%20the%20squared%20Euclidean%20distance%20between%20them%3A%5Cn%5Cn%5Cn%5Cn%28xi%20-%20xj%29%5E2%20%2B%20%28yi%20-%20yj%29%5E2%5Cn%5CnFJ%20would%20like%20to%20build%20a%20minimum-cost%20system%20of%20pipes%20so%20that%20all%20of%20his%5Cn%5Cnfields%20are%20linked%20together%20--%20so%20that%20water%20in%20any%20field%20can%20follow%20a%5Cn%5Cnsequence%20of%20pipes%20to%20reach%20any%20other%20field.%5Cn%5Cn%5CnUnfortunately%2C%20the%20contractor%20who%20is%20helping%20FJ%20install%20his%20irrigation%5Cn%5Cnsystem%20refuses%20to%20install%20any%20pipe%20unless%20its%20cost%20%28squared%20Euclidean%5Cn%5Cn%5Cnlength%29%20is%20at%20least%20C%20%281%20%3C%3D%20C%20%3C%3D%201%2C000%2C000%29.%20%20%5Cn%5CnPlease%20help%20FJ%20compute%20the%20minimum%20amount%20he%20will%20need%20pay%20to%20connect%20all%5Cn%5Cnhis%20fields%20with%20a%20network%20of%20pipes.%5Cn%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu60f3%5Cu5efa%5Cu7acb%5Cu4e00%5Cu4e2a%5Cu704c%5Cu6e89%5Cu7cfb%5Cu7edf%5Cuff0c%5Cu7ed9%5Cu4ed6%5Cu7684%24N%24%20%281%20%3C%3D%20%24N%24%20%20%3C%3D%202000%29%5Cu5757%5Cu7530%5Cu9001%5Cu6c34%5Cu3002%5Cu519c%5Cu7530%5Cu5728%5Cu4e00%5Cu4e2a%5Cu4e8c%5Cu7ef4%5Cu5e73%5Cu9762%5Cu4e0a%5Cuff0c%5Cu7b2ci%5Cu5757%5Cu519c%5Cu7530%5Cu5750%5Cu6807%5Cu4e3a%28%24x_i%24%20%2C%20%24y_i%24%20%29%5Cuff080%20%3C%3D%20%24x_i%24%20%2C%20%24y_i%24%20%20%3C%3D%201000%5Cuff09%5Cuff0c%5Cu5728%5Cu519c%5Cu7530%24i%24%20%5Cu548c%5Cu519c%5Cu7530%24j%24%20%5Cu81ea%5Cu5df1%5Cu94fa%5Cu8bbe%5Cu6c34%5Cu7ba1%5Cu7684%5Cu8d39%5Cu7528%5Cu662f%5Cu8fd9%5Cu4e24%5Cu5757%5Cu519c%5Cu7530%5Cu7684%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu8ddd%5Cu79bb%5Cu7684%5Cu5e73%5Cu65b9%24%28x_i%20-%20x_j%29%5E2%20%2B%20%28y_i%20-%20y_j%29%5E2%24%20%5Cu3002%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu5e0c%5Cu671b%5Cu6240%5Cu6709%5Cu7684%5Cu519c%5Cu7530%5Cu4e4b%5Cu95f4%5Cu90fd%5Cu80fd%5Cu901a%5Cu6c34%5Cuff0c%5Cu800c%5Cu4e14%5Cu5e0c%5Cu671b%5Cu82b1%5Cu8d39%5Cu6700%5Cu5c11%5Cu7684%5Cu94b1%5Cu3002%5Cu4f46%5Cu662f%5Cu5b89%5Cu88c5%5Cu5de5%5Cu4eba%5Cu62d2%5Cu7edd%5Cu5b89%5Cu88c5%5Cu8d39%5Cu7528%5Cu5c0f%5Cu4e8eC%5Cu7684%5Cu6c34%5Cu7ba1%281%20%3C%3D%20%24C%24%20%20%3C%3D%201%2C000%2C000%29%5Cu3002%5Cn%5Cn%5Cu8bf7%5Cu5e2e%5Cu52a9%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu5efa%5Cu7acb%5Cu4e00%5Cu4e2a%5Cu82b1%5Cu8d39%5Cu6700%5Cu5c0f%5Cu7684%5Cu704c%5Cu6e89%5Cu7f51%5Cu7edc%5Cuff0c%5Cu5982%5Cu679c%5Cu65e0%5Cu6cd5%5Cu5efa%5Cu7acb%5Cu8bf7%5Cu8f93%5Cu51fa-1%5Cu3002%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20integers%20N%20and%20C.%5Cn%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Line%20i%2B1%20contains%20the%20integers%20xi%20and%20yi.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20minimum%20cost%20of%20a%20network%20of%20pipes%20connecting%20the%5Cn%5Cnfields%2C%20or%20-1%20if%20no%20such%20network%20can%20be%20built.%5Cn%22%2C%22samples%22%3A%5B%5B%223%2011%5Cn0%202%5Cn5%200%5Cn4%203%22%2C%2246%22%5D%5D%2C%22hint%22%3A%22INPUT%20DETAILS%3A%5Cn%5Cn%5CnThere%20are%203%20fields%2C%20at%20locations%20%280%2C2%29%2C%20%285%2C0%29%2C%20and%20%284%2C3%29.%20%20The%20contractor%5Cn%5Cnwill%20only%20install%20pipes%20of%20cost%20at%20least%2011.%5Cn%5CnOUTPUT%20DETAILS%3A%5Cn%5Cn%5CnFJ%20cannot%20build%20a%20pipe%20between%20the%20fields%20at%20%284%2C3%29%20and%20%285%2C0%29%2C%20since%20its%5Cn%5Cncost%20would%20be%20only%2010.%20%20He%20therefore%20builds%20a%20pipe%20between%20%280%2C2%29%20and%20%285%2C0%29%5Cn%5Cn%5Cnat%20cost%2029%2C%20and%20a%20pipe%20between%20%280%2C2%29%20and%20%284%2C3%29%20at%20cost%2017.%20%20%5Cn%5CnSource%3A%20USACO%202014%20March%20Contest%2C%20Silver%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B31%2C46%2C166%2C167%2C168%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A5857%2C%22totalAccepted%22%3A1757%2C%22pid%22%3A%22P2212%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A151096%2C%22title%22%3A%22o%28n%5Cu00b2%5Cu00d7log%5Cu2082%28n%5Cu00b2%29%5Cu00d7a%28n%29%29%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu4f1a%5Cu8d85%5Cu65f6%22%2C%22forum%22%3A%7B%22id%22%3A1302%2C%22name%22%3A%22P2212%20%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22slug%22%3A%22P2212%22%7D%7D%2C%7B%22id%22%3A120115%2C%22title%22%3A%22%5Cu90fd%5Cu662f%5Cu88f8Kruskal%5Cuff0c%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu6211T%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu70b9%22%2C%22forum%22%3A%7B%22id%22%3A1302%2C%22name%22%3A%22P2212%20%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22slug%22%3A%22P2212%22%7D%7D%2C%7B%22id%22%3A98066%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff0c%5Cu7b2c%5Cu4e5d%5Cu4e2a%5Cu70b9T%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A1302%2C%22name%22%3A%22P2212%20%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22slug%22%3A%22P2212%22%7D%7D%2C%7B%22id%22%3A95543%2C%22title%22%3A%22%5Cu540c%5Cu6837%5Cu662fkruskal%5Cuff0c%5Cu5dee%5Cu8ddd%5Cu600e%5Cu4e48%5Cu90a3%5Cu4e48%5Cu5927qwq%22%2C%22forum%22%3A%7B%22id%22%3A1302%2C%22name%22%3A%22P2212%20%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22slug%22%3A%22P2212%22%7D%7D%2C%7B%22id%22%3A62512%2C%22title%22%3A%22%5Cu6211%5Cu53ef%5Cu80fd%5Cu5b66%5Cu4e86%5Cu4e2a%5Cu5047%5Cu7684prim%2Bheap%22%2C%22forum%22%3A%7B%22id%22%3A1302%2C%22name%22%3A%22P2212%20%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22slug%22%3A%22P2212%22%7D%7D%2C%7B%22id%22%3A49838%2C%22title%22%3A%22dalao%5Cu5e2e%5Cu5fd9%5Cu770b%5Cu4e00%5Cu4e0b%5Cu6211%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu54ea%5Cu9519%5Cu4e86orz%5Cu8ff7%5Cu4e4b%5Cu7206%5Cu70b8%22%2C%22forum%22%3A%7B%22id%22%3A1302%2C%22name%22%3A%22P2212%20%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22slug%22%3A%22P2212%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1991%22%2C%22title%22%3A%22%5Cu65e0%5Cu7ebf%5Cu901a%5Cu8baf%5Cu7f51%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2214%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu54de%5Cu54de%5Cu54deMooo%20Moo%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2323%22%2C%22title%22%3A%22%5BHNOI2006%5D%5Cu516c%5Cu8def%5Cu4fee%5Cu5efa%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2504%22%2C%22title%22%3A%22%5BHAOI2006%5D%5Cu806a%5Cu660e%5Cu7684%5Cu7334%5Cu5b50%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2872%22%2C%22title%22%3A%22%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO14MAR]浇地Watering the Fields</h1>
+<h2>题目描述</h2>
+<div>Due to a lack of rain, Farmer John wants to build an irrigation system to
+send water between his N fields (1 <= N <= 2000).
+Each field i is described by a distinct point (xi, yi) in the 2D plane,
+with 0 <= xi, yi <= 1000. The cost of building a water pipe between two
+fields i and j is equal to the squared Euclidean distance between them:
+(xi - xj)^2 + (yi - yj)^2
+FJ would like to build a minimum-cost system of pipes so that all of his
+fields are linked together -- so that water in any field can follow a
+sequence of pipes to reach any other field.
+Unfortunately, the contractor who is helping FJ install his irrigation
+system refuses to install any pipe unless its cost (squared Euclidean
+length) is at least C (1 <= C <= 1,000,000).
+Please help FJ compute the minimum amount he will need pay to connect all
+his fields with a network of pipes.
+农民约翰想建立一个灌溉系统，给他的$N$ (1 <= $N$ <= 2000)块田送水。农田在一个二维平面上，第i块农田坐标为($x_i$ , $y_i$ )（0 <= $x_i$ , $y_i$ <= 1000），在农田$i$ 和农田$j$ 自己铺设水管的费用是这两块农田的欧几里得距离的平方$(x_i - x_j)^2 + (y_i - y_j)^2$ 。
+农民约翰希望所有的农田之间都能通水，而且希望花费最少的钱。但是安装工人拒绝安装费用小于C的水管(1 <= $C$ <= 1,000,000)。
+请帮助农民约翰建立一个花费最小的灌溉网络，如果无法建立请输出-1。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The integers N and C.
+\* Lines 2..1+N: Line i+1 contains the integers xi and yi.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The minimum cost of a network of pipes connecting the
+fields, or -1 if no such network can be built.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 11
+0 2
+5 0
+4 3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>46</code></pre>
+<h2>说明</h2>
+<div>INPUT DETAILS:
+There are 3 fields, at locations (0,2), (5,0), and (4,3). The contractor
+will only install pipes of cost at least 11.
+OUTPUT DETAILS:
+FJ cannot build a pipe between the fields at (4,3) and (5,0), since its
+cost would be only 10. He therefore builds a pipe between (0,2) and (5,0)
+at cost 29, and a pipe between (0,2) and (4,3) at cost 17.
+Source: USACO 2014 March Contest, Silver
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

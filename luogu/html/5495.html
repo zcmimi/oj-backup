@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>【模板】Dirichlet 前缀和 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382678:bjXqMvmOAPdEobnhZorE6+0rWSL+yQ6Cw/+prCxSwK4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu6a21%5Cu677f%5Cu9898%5Cuff0c%5Cu65e0%5Cu80cc%5Cu666f%5Cu3002%22%2C%22description%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24n%24%20%5Cu7684%5Cu6570%5Cu5217%20%24a_1%2Ca_2%2Ca_3%2C%5C%5Cdots%2Ca_n%24%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu4f60%5Cu8981%5Cu6c42%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24n%24%20%5Cu7684%5Cu6570%5Cu5217%20%24b_1%2Cb_2%2Cb_3%2C%5C%5Cdots%2Cb_n%24%5Cuff0c%5Cu6ee1%5Cu8db3%5Cn%5Cn%24%24b_k%3D%5C%5Csum_%7Bi%7Ck%7Da_i%24%24%5Cn%5Cn%5Cu7531%5Cu4e8e%5Cu67d0%5Cu4e9b%5Cu795e%5Cu79d8%5Cu539f%5Cu56e0%5Cuff0c%5Cu8fd9%5Cu91cc%5Cu7684%20%24b_k%24%20%5Cu8981%5Cu5bf9%20%242%5E%7B32%7D%24%20%5Cu53d6%5Cu6a21%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu4e3a%5Cu4e86%5Cu907f%5Cu514d%5Cu8fc7%5Cu5927%5Cu7684%5Cu8f93%5Cu5165%5Cuff0c%5Cu672c%5Cu9898%5Cu7684%5Cu8f93%5Cu5165%5Cu4f7f%5Cu7528%5Cu968f%5Cu673a%5Cu6570%5Cu751f%5Cu6210%5Cu5668%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu4e2d%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24n%2Cseed%24%5Cu3002%5Cu5176%5Cu4e2d%20%24seed%24%20%5Cu4e3a%20%2432%24%20%5Cu4f4d%5Cu65e0%5Cu7b26%5Cu53f7%5Cu6574%5Cu6570%5Cuff0c%5Cu7528%5Cu6765%5Cu751f%5Cu6210%5Cu6570%5Cu636e%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cuff0c%5Cu4f60%5Cu8981%5Cu8c03%5Cu7528%20%24n%24%20%5Cu6b21%5Cu968f%5Cu673a%5Cu6570%5Cu751f%5Cu6210%5Cu5668%5Cuff0c%5Cu5206%5Cu522b%5Cu751f%5Cu6210%20%24a_1%5C%5Csim%20a_n%24%5Cu3002%5Cn%5Cn%5Cu5bf9%5Cu4e8e%60%60%60C%5C%2FC%2B%2B%60%60%60%5Cu9009%5Cu624b%5Cuff0c%5Cu751f%5Cu6210%5Cu5668%5Cu6a21%5Cu677f%5Cu5982%5Cu4e0b%5Cuff1a%5Cn%5Cn%60%60%60cpp%5Cn%23define%20uint%20unsigned%20int%5Cnuint%20seed%3B%5Cninline%20uint%20getnext%28%29%7B%5Cn%5Ctseed%5E%3Dseed%3C%3C13%3B%5Cn%5Ctseed%5E%3Dseed%3E%3E17%3B%5Cn%5Ctseed%5E%3Dseed%3C%3C5%3B%5Cn%5Ctreturn%20seed%3B%5Cn%7D%5Cn%60%60%60%5Cn%5Cn%5Cu5bf9%5Cu4e8e%60%60%60Pascal%60%60%60%5Cu9009%5Cu624b%5Cuff0c%5Cu751f%5Cu6210%5Cu5668%5Cu6a21%5Cu677f%5Cu5982%5Cu4e0b%5Cuff1a%5Cn%5Cn%60%60%60pas%5Cnvar%20seed%3Adword%3B%5Cnfunction%20getnext%3Adword%3B%5Cnbegin%5Cn%5Ctseed%3A%3Dseed%20xor%28seed%20shl%2013%29%3B%5Cn%5Ctseed%3A%3Dseed%20xor%28seed%20shr%2017%29%3B%5Cn%5Ctseed%3A%3Dseed%20xor%28seed%20shl%205%29%3B%5Cn%5Ctgetnext%3A%3Dseed%3B%5Cnend%3B%5Cn%60%60%60%5Cn%5Cn%5Cu6ce8%5Cu610f%5Cuff1a%2A%2A%5Cu6240%5Cu6709%20%24n%24%20%5Cu4e2a%5Cu6570%5Cu5747%5Cu4e3a%20%2432%24%20%5Cu4f4d%5Cu65e0%5Cu7b26%5Cu53f7%5Cu6574%5Cu6570%2A%2A%5Cu3002%22%2C%22outputFormat%22%3A%22%5Cu4e3a%5Cu4e86%5Cu907f%5Cu514d%5Cu8fc7%5Cu5927%5Cu7684%5Cu8f93%5Cu51fa%5Cuff0c%5Cu4f60%5Cu53ea%5Cu9700%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%20%2432%24%20%5Cu4f4d%5Cu65e0%5Cu7b26%5Cu53f7%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6240%5Cu6709%20%24b_i%24%20%5Cu7684%5Cu5f02%5Cu6216%5Cu548c%5Cu3002%22%2C%22samples%22%3A%5B%5B%225%201477%5Cn%22%2C%222608816472%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu6837%5Cu4f8b%5Cu4e2d%5Cuff0c%5Cu6570%5Cu5217%20%24a%24%20%5Cu4e3a%20%24397153977%2C%20974453892%2C%20352446086%2C%20334987182%2C%202086335567%24%5Cu3002%5Cn%5Cn%5Cu6570%5Cu5217%20%24b%24%20%5Cu4e3a%20%24397153977%2C%201371607869%2C%20749600063%2C%201706595051%2C%202483489544%24%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu9650%5Cu5236%5Cu4e0e%5Cu7ea6%5Cu5b9a%5Cn%5Cn%5Cu5bf9%5Cu4e8e%20%24100%5C%5C%25%24%20%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%20%241%5C%5Cleq%20n%5C%5Cleq%202%5C%5Ctimes%2010%5E7%3B0%5C%5Cleq%20seed%3C%202%5E%7B32%7D%24%22%2C%22provider%22%3A%7B%22uid%22%3A6813%2C%22name%22%3A%22mrsrz%22%2C%22slogan%22%3A%22%5Cu53ef%5Cu4ee5%5Cu62b1%5Cu62b1%5Cu561b%5Cuff5e%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Red%22%2C%22ccfLevel%22%3A7%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%5D%2C%22memory%22%3A%5B262144%2C262144%2C262144%2C262144%2C262144%2C262144%2C262144%2C262144%2C262144%2C262144%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B5%2C108%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A152%2C%22totalAccepted%22%3A84%2C%22pid%22%3A%22P5495%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Dirichlet%20%5Cu524d%5Cu7f00%5Cu548c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A165015%2C%22title%22%3A%22%5Cu6bd4%5Cu8f83%5Cu5c11%5Cu7528%5Cu5427%22%2C%22forum%22%3A%7B%22id%22%3A39379%2C%22name%22%3A%22P5495%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Dirichlet%20%5Cu524d%5Cu7f00%5Cu548c%22%2C%22slug%22%3A%22P5495%22%7D%7D%2C%7B%22id%22%3A157032%2C%22title%22%3A%22%5Cu662f%5Cu4e0d%5Cu662f%5Cu8fd8%5Cu53ef%5Cu4ee5%5Cu51fa%5Cu4e2a%5Cu5377%5Cu03bc%5Cu7684%5Cu554a...%5Cu611f%5Cu89c9%5Cu8fd9%5Cu4e2a%5Cu66f4%5Cu5e38%5Cu7528%5Cu554a...%22%2C%22forum%22%3A%7B%22id%22%3A39379%2C%22name%22%3A%22P5495%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Dirichlet%20%5Cu524d%5Cu7f00%5Cu548c%22%2C%22slug%22%3A%22P5495%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1587%22%2C%22title%22%3A%22%5BNOI2016%5D%5Cu5faa%5Cu73af%5Cu4e4b%5Cu7f8e%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5491%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu4e8c%5Cu6b21%5Cu5269%5Cu4f59%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5496%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu56de%5Cu6587%5Cu81ea%5Cu52a8%5Cu673a%5Cuff08PAM%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5540%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5c0f%5Cu4e58%5Cu79ef%5Cu751f%5Cu6210%5Cu6811%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1215D%22%2C%22title%22%3A%22Ticket%20Game%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Dirichlet%20%5Cu524d%5Cu7f00%5Cu548c%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>【模板】Dirichlet 前缀和</h1>
+<h2>题目背景</h2>
+<div>模板题，无背景。</div>
+<h2>题目描述</h2>
+<div>给定一个长度为 $n$ 的数列 $a_1,a_2,a_3,\dots,a_n$。
+现在你要求出一个长度为 $n$ 的数列 $b_1,b_2,b_3,\dots,b_n$，满足
+$$b_k=\sum_{i|k}a_i$$
+由于某些神秘原因，这里的 $b_k$ 要对 $2^{32}$ 取模。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>为了避免过大的输入，本题的输入使用随机数生成器。
+输入中只有一行两个整数 $n,seed$。其中 $seed$ 为 $32$ 位无符号整数，用来生成数据。
+接下来，你要调用 $n$ 次随机数生成器，分别生成 $a_1\sim a_n$。
+对于```C/C++```选手，生成器模板如下：
+```cpp
+#define uint unsigned int
+uint seed;
+inline uint getnext(){
+seed^=seed<<13;
+seed^=seed>>17;
+seed^=seed<<5;
+return seed;
+}
+```
+对于```Pascal```选手，生成器模板如下：
+```pas
+var seed:dword;
+function getnext:dword;
+begin
+seed:=seed xor(seed shl 13);
+seed:=seed xor(seed shr 17);
+seed:=seed xor(seed shl 5);
+getnext:=seed;
+end;
+```
+注意：**所有 $n$ 个数均为 $32$ 位无符号整数**。</div>
+<h3>输出格式</h3>
+<br />
+<div>为了避免过大的输出，你只需输出一个 $32$ 位无符号整数，表示所有 $b_i$ 的异或和。</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 1477
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2608816472
+</code></pre>
+<h2>说明</h2>
+<div>样例中，数列 $a$ 为 $397153977, 974453892, 352446086, 334987182, 2086335567$。
+数列 $b$ 为 $397153977, 1371607869, 749600063, 1706595051, 2483489544$。
+### 限制与约定
+对于 $100\%$ 的数据， $1\leq n\leq 2\times 10^7;0\leq seed< 2^{32}$</div>
+</article>
+</div>
+</div>
+</body>
+</html>

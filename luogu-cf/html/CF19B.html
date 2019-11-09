@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Checkout Assistant - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573389996:5HHMfJFmMbSrB/63LfgdHKUbC6TfEZ/BFdfZhvIpJuQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bob%20came%20to%20a%20cash%20%26%20carry%20store%2C%20put%20%24%20n%20%24%20items%20into%20his%20trolley%2C%20and%20went%20to%20the%20checkout%20counter%20to%20pay.%20Each%20item%20is%20described%20by%20its%20price%20%24%20c_%7Bi%7D%20%24%20and%20time%20%24%20t_%7Bi%7D%20%24%20in%20seconds%20that%20a%20checkout%20assistant%20spends%20on%20this%20item.%20While%20the%20checkout%20assistant%20is%20occupied%20with%20some%20item%2C%20Bob%20can%20steal%20some%20other%20items%20from%20his%20trolley.%20To%20steal%20one%20item%20Bob%20needs%20exactly%201%20second.%20What%20is%20the%20minimum%20amount%20of%20money%20that%20Bob%20will%20have%20to%20pay%20to%20the%20checkout%20assistant%3F%20Remember%2C%20please%2C%20that%20it%20is%20Bob%2C%20who%20determines%20the%20order%20of%20items%20for%20the%20checkout%20assistant.%22%2C%22inputFormat%22%3A%22The%20first%20input%20line%20contains%20number%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D2000%20%24%20%29.%20In%20each%20of%20the%20following%20%24%20n%20%24%20lines%20each%20item%20is%20described%20by%20a%20pair%20of%20numbers%20%24%20t_%7Bi%7D%20%24%20%2C%20%24%20c_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dt_%7Bi%7D%3C%3D2000%2C1%3C%3Dc_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29.%20If%20%24%20t_%7Bi%7D%20%24%20is%200%2C%20Bob%20won%27t%20be%20able%20to%20steal%20anything%2C%20while%20the%20checkout%20assistant%20is%20occupied%20with%20item%20%24%20i%20%24%20.%22%2C%22outputFormat%22%3A%22Output%20one%20number%20%5Cu2014%20answer%20to%20the%20problem%3A%20what%20is%20the%20minimum%20amount%20of%20money%20that%20Bob%20will%20have%20to%20pay.%22%2C%22samples%22%3A%5B%5B%224%5Cn2%2010%5Cn0%2020%5Cn1%205%5Cn1%203%5Cn%22%2C%228%5Cn%22%5D%2C%5B%223%5Cn0%201%5Cn0%2010%5Cn0%20100%5Cn%22%2C%22111%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F19%5C%2FB%22%2C%22id%22%3A%2219B%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5CnBob%20%5Cu6765%5Cu5230%5Cu4e00%5Cu5bb6%5Cu73b0%5Cu8d2d%5Cu81ea%5Cu8fd0%5Cu5546%5Cu5e97%5Cuff0c%5Cu5c06%20n%20%5Cu4ef6%5Cu5546%5Cu54c1%5Cu653e%5Cu5165%5Cu4e86%5Cu4ed6%5Cu7684%5Cu624b%5Cu63a8%5Cu8f66%5Cuff0c%5Cu7136%5Cu540e%5Cu5230%5Cu6536%5Cu94f6%5Cu53f0%20%5Cu4ed8%5Cu6b3e%5Cu3002%5Cu6bcf%5Cu4ef6%5Cu5546%5Cu54c1%5Cu7531%5Cu5b83%5Cu7684%5Cu4ef7%5Cu683c%20pi%20%5Cu548c%5Cu6536%5Cu94f6%5Cu5458%5Cu626b%5Cu63cf%5Cu5b83%5Cu7684%5Cu65f6%5Cu95f4%20ti%20%5Cu79d2%5Cu5b9a%5Cu4e49%5Cu3002%5Cu5f53%5Cu6536%5Cu94f6%5Cu5458%5Cu6b63%5Cu5728%5Cu626b%20%5Cu63cf%5Cu67d0%5Cu4ef6%5Cu5546%5Cu54c1%5Cu65f6%5Cuff0cBob%20%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu4ed6%5Cu7684%5Cu624b%5Cu63a8%5Cu8f66%5Cu4e2d%5Cu5077%5Cu8d70%5Cu67d0%5Cu4e9b%5Cu5176%5Cu5b83%5Cu5546%5Cu54c1%5Cu3002Bob%20%5Cu9700%5Cu8981%5Cu6070%5Cu597d%201%20%5Cu79d2%20%5Cn%5Cu6765%5Cu5077%5Cu8d70%5Cu4e00%5Cu4ef6%5Cu5546%5Cu54c1%5Cu3002Bob%20%5Cu9700%5Cu8981%5Cu4ed8%5Cu7ed9%5Cu6536%5Cu94f6%5Cu5458%5Cu7684%5Cu6700%5Cu5c11%5Cu94b1%5Cu6570%5Cu662f%5Cu591a%5Cu5c11%5Cuff1f%5Cu8bf7%5Cu8bb0%5Cu4f4f%5Cuff0c%5Cu6536%5Cu94f6%5Cu5458%5Cu626b%5Cu63cf%20%5Cu5546%5Cu54c1%5Cu7684%5Cu987a%5Cu5e8f%5Cu7531%20Bob%20%5Cu51b3%5Cu5b9a%5Cu3002%20%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu8f93%5Cu5165%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu6570%20n%5Cuff081%5Cu2264n%5Cu22642000%5Cuff09%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%20n%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu6bcf%5Cu4ef6%5Cu5546%5Cu54c1%5Cu7531%20%5Cu4e00%5Cu5bf9%5Cu6570%20ti%5Cuff0cci%5Cuff080%5Cu2264ti%5Cu22642000%5Cuff0c1%5Cu2264ci%5Cu226410%5E9%5Cuff09%5Cu63cf%5Cu8ff0%5Cu3002%5Cu5982%5Cu679c%20ti%20%5Cu662f%200%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5f53%5Cu6536%5Cu94f6%5Cu5458%5Cu626b%5Cu63cf%20%5Cu5546%5Cu54c1i%5Cu65f6%5Cuff0cBob%20%5Cu4e0d%5Cu80fd%5Cu5077%5Cu4efb%5Cu4f55%5Cu4e1c%5Cu897f%5Cu3002%20%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cu2014%5Cu2014Bob%5Cu9700%5Cu8981%5Cu652f%5Cu4ed8%5Cu7684%5Cu6700%5Cu5c0f%5Cu91d1%5Cu989d%5Cu662f%5Cu591a%5Cu5c11%5Cu3002%22%2C%22tags%22%3A%5B139%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A333%2C%22totalAccepted%22%3A89%2C%22pid%22%3A%22CF19B%22%2C%22title%22%3A%22Checkout%20Assistant%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A33408%2C%22title%22%3A%22%5Cu8d21%5Cu732e%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12624%2C%22name%22%3A%22CF19B%20Checkout%20Assistant%22%2C%22slug%22%3A%22CF19B%22%7D%7D%2C%7B%22id%22%3A32926%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12624%2C%22name%22%3A%22CF19B%20Checkout%20Assistant%22%2C%22slug%22%3A%22CF19B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF543A%22%2C%22title%22%3A%22Writing%20Code%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF366C%22%2C%22title%22%3A%22Dima%20and%20Salad%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF118D%22%2C%22title%22%3A%22Caesar%27s%20Legions%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P5021%22%2C%22title%22%3A%22%5Cu8d5b%5Cu9053%5Cu4fee%5Cu5efa%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5022%22%2C%22title%22%3A%22%5Cu65c5%5Cu884c%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Checkout%20Assistant%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Checkout Assistant</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+Bob 来到一家现购自运商店，将 n 件商品放入了他的手推车，然后到收银台 付款。每件商品由它的价格 pi 和收银员扫描它的时间 ti 秒定义。当收银员正在扫 描某件商品时，Bob 可以从他的手推车中偷走某些其它商品。Bob 需要恰好 1 秒
+来偷走一件商品。Bob 需要付给收银员的最少钱数是多少？请记住，收银员扫描 商品的顺序由 Bob 决定。
+输入输出格式
+输入格式：
+输入第一行包含数 n（1≤n≤2000）。接下来 n 行每行每件商品由 一对数 ti，ci（0≤ti≤2000，1≤ci≤10^9）描述。如果 ti 是 0，那么当收银员扫描 商品i时，Bob 不能偷任何东西。
+输出格式
+输出一个数字——Bob需要支付的最小金额是多少。</div>
+<h2>题目描述</h2>
+<div>Bob came to a cash & carry store, put $ n $ items into his trolley, and went to the checkout counter to pay. Each item is described by its price $ c_{i} $ and time $ t_{i} $ in seconds that a checkout assistant spends on this item. While the checkout assistant is occupied with some item, Bob can steal some other items from his trolley. To steal one item Bob needs exactly 1 second. What is the minimum amount of money that Bob will have to pay to the checkout assistant? Remember, please, that it is Bob, who determines the order of items for the checkout assistant.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first input line contains number $ n $ ( $ 1<=n<=2000 $ ). In each of the following $ n $ lines each item is described by a pair of numbers $ t_{i} $ , $ c_{i} $ ( $ 0<=t_{i}<=2000,1<=c_{i}<=10^{9} $ ). If $ t_{i} $ is 0, Bob won't be able to steal anything, while the checkout assistant is occupied with item $ i $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one number — answer to the problem: what is the minimum amount of money that Bob will have to pay.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+2 10
+0 20
+1 5
+1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>8
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+0 1
+0 10
+0 100
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>111
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

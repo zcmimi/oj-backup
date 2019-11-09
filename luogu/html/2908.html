@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08OPEN]文字的力量Word Power - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376130:N6DemTCcDv+nSARaaz2eGDbuDssj5f3/RFBQGu5RHAY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20wants%20to%20evaluate%20the%20quality%20of%20the%20names%20of%20his%20N%20%281%20%3C%3D%20N%20%3C%3D%201000%29%20cows.%20Each%20name%20is%20a%20string%20with%20no%20more%20than%201000%20characters%2C%20all%20of%20which%20are%20non-blank.%5Cn%5CnHe%20has%20created%20a%20set%20of%20M%20%281%20%3C%3D%20M%20%3C%3D%20100%29%20%27good%27%20strings%20%28no%5Cn%5Cnlonger%20than%2030%20characters%20and%20fully%20non-blank%29.%20If%20the%20sequence%20letters%20of%20a%20cow%27s%20name%20contains%20the%20letters%20of%20a%20%27good%27%20string%20in%20the%20correct%20order%20as%20a%20subsequence%20%28i.e.%2C%20not%20necessarily%20all%20next%20to%20each%20other%29%2C%20the%20cow%27s%20name%20gets%201%20quality%20point.%5Cn%5CnAll%20strings%20is%20case-insensitive%2C%20i.e.%2C%20capital%20letters%20and%20lower%20case%20letters%20are%20considered%20equivalent.%20%20For%20example%2C%20the%20name%20%27Bessie%27%20contains%20the%20letters%20of%20%27Be%27%2C%20%27sI%27%2C%20%27EE%27%2C%20and%20%27Es%27%20in%20the%20correct%20order%2C%20but%20not%20%27is%27%20or%20%27eB%27.%20Help%20Farmer%20John%20determine%20the%20number%20of%20quality%20points%20in%20each%20of%20his%20cow%27s%20names.%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu60f3%5Cu8981%5Cu8ba1%5Cu7b97%5Cu4ed6%5Cu90a3N%28l%20%3C%20%3DN%20%3C%3D%201000%29%5Cu53ea%5Cu5976%5Cu725b%5Cu7684%5Cu540d%5Cu5b57%5Cu7684%5Cu80fd%5Cu91cf.%5Cu6bcf%5Cu53ea%5Cu5976%5Cu725b%5Cu7684%5Cu540d%5Cu5b57%5Cu7531%5Cu4e0d%5Cu8d85%5Cu8fc71000%5Cu4e2a%5Cu5b57%20%5Cu7b26%5Cu6784%5Cu6210%5Cuff0c%5Cu6ca1%5Cu6709%5Cu4e00%5Cu4e2a%5Cu540d%5Cu5b57%5Cu662f%5Cu7a7a%5Cu5b57%5Cu4f53%5Cu4e32.%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu6709%5Cu4e00%5Cu5f20%5Cu201c%5Cu80fd%5Cu91cf%5Cu5b57%5Cu7b26%5Cu4e32%5Cu8868%5Cu201d%5Cuff0c%5Cu4e0a%5Cu9762%5Cu6709M%281%20%3C%20%3DM%20%3C%20%3D100%29%5Cu4e2a%5Cu4ee3%5Cu8868%5Cu80fd%5Cu91cf%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32.%5Cu6bcf%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%20%5Cu7531%5Cu4e0d%5Cu8d85%5Cu8fc730%5Cu4e2a%5Cu5b57%5Cu4f53%5Cu6784%5Cu6210%5Cuff0c%5Cu540c%5Cu6837%5Cu4e0d%5Cu5b58%5Cu5728%5Cu7a7a%5Cu5b57%5Cu7b26%5Cu4e32.%5Cu4e00%5Cu4e2a%5Cu5976%5Cu725b%5Cu7684%5Cu540d%5Cu5b57%5Cu8574%5Cu542b%5Cu591a%5Cu5c11%5Cu4e2a%5Cu80fd%5Cu91cf%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu540d%20%5Cu5b57%5Cu5c31%5Cu6709%5Cu591a%5Cu5c11%5Cu80fd%5Cu91cf.%5Cu6240%5Cu8c13%5Cu201c%5Cu8574%5Cu542b%5Cu201d%5Cuff0c%5Cu662f%5Cu6307%5Cu67d0%5Cu4e2a%5Cu80fd%5Cu91cf%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu6240%5Cu6709%5Cu5b57%5Cu7b26%5Cu90fd%5Cu5728%5Cu540d%5Cu5b57%5Cu4e32%5Cu4e2d%5Cu6309%5Cu987a%5Cu5e8f%5Cu51fa%5Cu73b0%5Cuff08%5Cu4e0d%20%5Cu4e00%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu7d27%5Cu63a5%5Cu7740%5Cu4e00%5Cu4e2a%5Cuff09.%5Cn%5Cn%5Cu6240%5Cu6709%5Cu7684%5Cu5927%5Cu5199%5Cu5b57%5Cu6bcd%5Cu548c%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu90fd%5Cu662f%5Cu7b49%5Cu4ef7%5Cu7684.%5Cu6bd4%5Cu5982%5Cuff0c%5Cu5728%5Cu8d1d%5Cu831c%5Cu7684%5Cu540d%5Cu5b57%5Cu201cBessie%5Cu201d%5Cu91cc%5Cuff0c%5Cu8574%5Cu542b%5Cu6709%5Cu201cBe%5Cu201d%20%5Cu201csi%5Cu201d%20%5Cu201cEE%5Cu201d%5Cu4ee5%5Cu53ca%5Cu201cEs%5Cu201d%5Cu7b49%5Cu7b49%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu4f46%5Cu4e0d%5Cu8574%5Cu542b%5Cu201cLs%5Cu201d%5Cu6216%5Cu201ceB%5Cu201d%20.%5Cu8bf7%5Cu5e2e%5Cu7ea6%5Cu7ff0%5Cu8ba1%5Cu7b97%5Cu4ed6%5Cu7684%5Cu5976%5Cu725b%5Cu7684%5Cu540d%5Cu5b57%20%5Cu7684%5Cu80fd%5Cu91cf.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20a%20string%20that%20is%20the%20name%20of%20the%20ith%20cow%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B2..N%2BM%2B1%3A%20Line%20N%2Bi%2B1%20contains%20the%20ith%20good%20string%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..N%2B1%3A%20Line%20i%2B1%20contains%20the%20number%20of%20quality%20points%20of%20the%20ith%20name%5Cn%22%2C%22samples%22%3A%5B%5B%225%203%20%5CnBessie%20%5CnJonathan%20%5CnMontgomery%20%5CnAlicia%20%5CnAngola%20%5Cnse%20%5CnnGo%20%5CnOnt%20%5Cn%22%2C%221%20%5Cn1%20%5Cn2%20%5Cn0%20%5Cn1%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%205%20cows%2C%20and%20their%20names%20are%20%5C%22Bessie%5C%22%2C%20%5C%22Jonathan%5C%22%2C%20%5C%22Montgomery%5C%22%2C%20%5C%22Alicia%5C%22%2C%20and%20%5C%22Angola%5C%22.%20The%203%20good%20strings%20are%20%5C%22se%5C%22%2C%20%5C%22nGo%5C%22%2C%20and%20%5C%22Ont%5C%22.%5Cn%5Cn%5Cn%5C%22Bessie%5C%22%20contains%20%5C%22se%5C%22%2C%20%5C%22Jonathan%5C%22%20contains%20%5C%22Ont%5C%22%2C%20%5C%22Montgomery%5C%22%20contains%20both%20%5C%22nGo%5C%22%20and%20%5C%22Ont%5C%22%2C%20Alicia%20contains%20none%20of%20the%20good%20strings%2C%20and%20%5C%22Angola%5C%22%20contains%20%5C%22nGo%5C%22.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B1%2C2%2C25%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1107%2C%22totalAccepted%22%3A491%2C%22pid%22%3A%22P2908%22%2C%22title%22%3A%22%5BUSACO08OPEN%5D%5Cu6587%5Cu5b57%5Cu7684%5Cu529b%5Cu91cfWord%20Power%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A134461%2C%22title%22%3A%22T%5Cu4e86%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu8bf7%5Cu5927%5Cu4f6c%5Cu4f18%5Cu5316%22%2C%22forum%22%3A%7B%22id%22%3A2037%2C%22name%22%3A%22P2908%20%5BUSACO08OPEN%5D%5Cu6587%5Cu5b57%5Cu7684%5Cu529b%5Cu91cfWord%20Power%22%2C%22slug%22%3A%22P2908%22%7D%7D%2C%7B%22id%22%3A31934%2C%22title%22%3A%22%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9TLE%5Cu4e86%5Cuff0c%5Cu6c42%5Cu52a9%5Cu5927%5Cu4f6c%21%21%21%21%21%21%22%2C%22forum%22%3A%7B%22id%22%3A2037%2C%22name%22%3A%22P2908%20%5BUSACO08OPEN%5D%5Cu6587%5Cu5b57%5Cu7684%5Cu529b%5Cu91cfWord%20Power%22%2C%22slug%22%3A%22P2908%22%7D%7D%2C%7B%22id%22%3A29230%2C%22title%22%3A%22%5Cu597d%5Cu5947treap%5Cu8981%5Cu600e%5Cu4e48%5Cu505a%22%2C%22forum%22%3A%7B%22id%22%3A2037%2C%22name%22%3A%22P2908%20%5BUSACO08OPEN%5D%5Cu6587%5Cu5b57%5Cu7684%5Cu529b%5Cu91cfWord%20Power%22%2C%22slug%22%3A%22P2908%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1599%22%2C%22title%22%3A%22%5Cu7ed3%5Cu7b97%5Cu65e5%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2095%22%2C%22title%22%3A%22%5Cu8425%5Cu517b%5Cu81b3%5Cu98df%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2909%22%2C%22title%22%3A%22%5BUSACO08OPEN%5D%5Cu725b%5Cu7684%5Cu8f66Cow%20Cars%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2925%22%2C%22title%22%3A%22%5BUSACO08DEC%5D%5Cu5e72%5Cu8349%5Cu51fa%5Cu552eHay%20For%20Sale%20%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2952%22%2C%22title%22%3A%22%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08OPEN%5D%5Cu6587%5Cu5b57%5Cu7684%5Cu529b%5Cu91cfWord%20Power%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08OPEN]文字的力量Word Power</h1>
+<h2>题目描述</h2>
+<div>Farmer John wants to evaluate the quality of the names of his N (1 <= N <= 1000) cows. Each name is a string with no more than 1000 characters, all of which are non-blank.
+He has created a set of M (1 <= M <= 100) 'good' strings (no
+longer than 30 characters and fully non-blank). If the sequence letters of a cow's name contains the letters of a 'good' string in the correct order as a subsequence (i.e., not necessarily all next to each other), the cow's name gets 1 quality point.
+All strings is case-insensitive, i.e., capital letters and lower case letters are considered equivalent. For example, the name 'Bessie' contains the letters of 'Be', 'sI', 'EE', and 'Es' in the correct order, but not 'is' or 'eB'. Help Farmer John determine the number of quality points in each of his cow's names.
+约翰想要计算他那N(l < =N <= 1000)只奶牛的名字的能量.每只奶牛的名字由不超过1000个字 符构成，没有一个名字是空字体串.
+约翰有一张“能量字符串表”，上面有M(1 < =M < =100)个代表能量的字符串.每个字符串 由不超过30个字体构成，同样不存在空字符串.一个奶牛的名字蕴含多少个能量字符串，这个名 字就有多少能量.所谓“蕴含”，是指某个能量字符串的所有字符都在名字串中按顺序出现（不 一定一个紧接着一个）.
+所有的大写字母和小写字母都是等价的.比如，在贝茜的名字“Bessie”里，蕴含有“Be” “si” “EE”以及“Es”等等字符串，但不蕴含“Ls”或“eB” .请帮约翰计算他的奶牛的名字 的能量.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and M
+\* Lines 2..N+1: Line i+1 contains a string that is the name of the ith cow
+\* Lines N+2..N+M+1: Line N+i+1 contains the ith good string
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..N+1: Line i+1 contains the number of quality points of the ith name
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3 
+Bessie 
+Jonathan 
+Montgomery 
+Alicia 
+Angola 
+se 
+nGo 
+Ont 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 
+1 
+2 
+0 
+1 
+</code></pre>
+<h2>说明</h2>
+<div>There are 5 cows, and their names are "Bessie", "Jonathan", "Montgomery", "Alicia", and "Angola". The 3 good strings are "se", "nGo", and "Ont".
+"Bessie" contains "se", "Jonathan" contains "Ont", "Montgomery" contains both "nGo" and "Ont", Alicia contains none of the good strings, and "Angola" contains "nGo".
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

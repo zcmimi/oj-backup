@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12JAN]牛联盟Bovine Alliance - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376325:Kahui+0hNe2wcET3XXNqfuynbbBl/M5wFsFnMC5XHIg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bessie%20and%20her%20bovine%20pals%20from%20nearby%20farms%20have%20finally%20decided%20that%20they%20are%20going%20to%20start%20connecting%20their%20farms%20together%20by%20trails%20in%20an%20effort%20to%20form%20an%20alliance%20against%20the%20farmers.%20%20The%20cows%20in%20each%20of%20the%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20farms%20were%20initially%20instructed%20to%20build%20a%20trail%20to%20exactly%20one%20other%20farm%2C%20for%20a%20total%20of%20N%20trails.%20%20However%20months%20into%20the%20project%20only%20M%20%281%20%3C%3D%20M%20%3C%20N%29%20of%20these%20trails%20had%20actually%20been%20built.%5Cn%5CnArguments%20between%20the%20farms%20over%20which%20farms%20already%20built%20a%20trail%20now%20threaten%20to%20split%20apart%20the%20cow%20alliance.%20%20To%20ease%20tension%2C%20Bessie%20wishes%20to%20calculate%20how%20many%20ways%20the%20M%20trails%20that%20exist%20so%20far%20could%20have%20been%20built.%20%20For%20example%2C%20if%20there%20is%20a%20trail%20connecting%20farms%203%20and%204%2C%20then%20one%20possibility%20is%20that%20farm%203%20built%20the%20trail%2C%20and%20the%20other%20possibility%20is%20that%20farm%204%20built%20the%20trail.%20%20Help%20Bessie%20by%20calculating%20the%20number%20of%20different%20assignments%20of%20trails%20to%20the%20farms%20that%20built%20them%2C%20modulo%201%2C000%2C000%2C007.%20%20Two%20assignments%20are%20considered%20different%20if%20there%20is%20at%20least%20one%20trail%20built%20by%20a%20different%20farm%20in%20each%20assignment.%5Cn%5Cn%5Cu7ed9%5Cu51fan%5Cu4e2a%5Cu70b9m%5Cu6761%5Cu8fb9%5Cu7684%5Cu56fe%5Cuff0c%5Cu73b0%5Cu628a%5Cu70b9%5Cu548c%5Cu8fb9%5Cu5206%5Cu7ec4%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu53ea%5Cu80fd%5Cu548c%5Cu76f8%5Cu90bb%5Cu4e24%5Cu70b9%5Cu4e4b%5Cu4e00%5Cu5206%5Cu5728%5Cu4e00%5Cu7ec4%5Cuff0c%5Cu70b9%5Cu53ef%5Cu4ee5%5Cu5355%5Cu72ec%5Cu4e00%5Cu7ec4%5Cuff0c%5Cu95ee%5Cu5206%5Cu7ec4%5Cu65b9%5Cu6848%5Cu6570%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BM%3A%20Line%20i%2B1%20describes%20the%20ith%20trail.%20%20Each%20line%20contains%20two%20space-separated%20integers%20u%5C%5C_i%20and%20v%5C%5C_i%20%281%20%3C%3D%20u%5C%5C_i%2C%20v%5C%5C_i%20%3C%3D%20N%2C%20u%5C%5C_i%20%21%3D%20v%5C%5C_i%29%20describing%20the%20pair%20of%20farms%20connected%20by%20the%20trail.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20line%20containing%20the%20number%20of%20assignments%20of%20trails%20to%20farms%2C%20taken%20modulo%201%2C000%2C000%2C007.%20%20If%20no%20assignment%20satisfies%20the%20above%20conditions%20output%200.%5Cn%22%2C%22samples%22%3A%5B%5B%225%204%20%5Cr%5Cn1%202%20%5Cr%5Cn3%202%20%5Cr%5Cn4%205%20%5Cr%5Cn4%205%20%5Cr%5Cn%22%2C%226%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22Note%20that%20there%20can%20be%20two%20trails%20between%20the%20same%20pair%20of%20farms.%5Cn%5Cn%5CnThere%20are%206%20possible%20assignments.%20%20Letting%20%7Ba%2Cb%2Cc%2Cd%7D%20mean%20that%20farm%201%20builds%20trail%20a%2C%20farm%202%20builds%20trail%20b%2C%20farm%203%20builds%20trail%20c%2C%20and%20farm%204%20builds%20trail%20d%2C%20the%20assignments%20are%3A%5Cn%5Cn%60%60%60cpp%5Cn%7B2%2C%203%2C%204%2C%205%7D%20%5Cn%7B2%2C%203%2C%205%2C%204%7D%20%5Cn%7B1%2C%203%2C%204%2C%205%7D%20%5Cn%7B1%2C%203%2C%205%2C%204%7D%20%5Cn%7B1%2C%202%2C%204%2C%205%7D%20%5Cn%7B1%2C%202%2C%205%2C%204%7D%20%5Cn%5Cn%60%60%60%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C46%2C175%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A468%2C%22totalAccepted%22%3A206%2C%22pid%22%3A%22P3043%22%2C%22title%22%3A%22%5BUSACO12JAN%5D%5Cu725b%5Cu8054%5Cu76dfBovine%20Alliance%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A143806%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5E_%5E%22%2C%22forum%22%3A%7B%22id%22%3A2162%2C%22name%22%3A%22P3043%20%5BUSACO12JAN%5D%5Cu725b%5Cu8054%5Cu76dfBovine%20Alliance%22%2C%22slug%22%3A%22P3043%22%7D%7D%2C%7B%22id%22%3A77403%2C%22title%22%3A%22%5Cu8c01%5Cu77e5%5Cu9053%5Cu8fd9%5Cu9898%5Cu5728%5Cu8bb2%5Cu4ec0%5Cu4e48...%22%2C%22forum%22%3A%7B%22id%22%3A2162%2C%22name%22%3A%22P3043%20%5BUSACO12JAN%5D%5Cu725b%5Cu8054%5Cu76dfBovine%20Alliance%22%2C%22slug%22%3A%22P3043%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1345%22%2C%22title%22%3A%22%5BUSACO5.4%5D%5Cu5976%5Cu725b%5Cu7684%5Cu7535%5Cu4fe1Telecowmunication%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3663%22%2C%22title%22%3A%22%5BUSACO17FEB%5DWhy%20Did%20the%20Cow%20Cross%20the%20Road%20III%20S%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3037%22%2C%22title%22%3A%22%5BUSACO11DEC%5D%5Cu7b80%5Cu5316%5Cu7684%5Cu519c%5Cu573aSimplifying%20the%20Farm%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3047%22%2C%22title%22%3A%22%5BUSACO12FEB%5D%5Cu9644%5Cu8fd1%5Cu7684%5Cu725bNearby%20Cows%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF339D%22%2C%22title%22%3A%22Xenia%20and%20Bit%20Operations%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12JAN%5D%5Cu725b%5Cu8054%5Cu76dfBovine%20Alliance%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12JAN]牛联盟Bovine Alliance</h1>
+<h2>题目描述</h2>
+<div>Bessie and her bovine pals from nearby farms have finally decided that they are going to start connecting their farms together by trails in an effort to form an alliance against the farmers. The cows in each of the N (1 <= N <= 100,000) farms were initially instructed to build a trail to exactly one other farm, for a total of N trails. However months into the project only M (1 <= M < N) of these trails had actually been built.
+Arguments between the farms over which farms already built a trail now threaten to split apart the cow alliance. To ease tension, Bessie wishes to calculate how many ways the M trails that exist so far could have been built. For example, if there is a trail connecting farms 3 and 4, then one possibility is that farm 3 built the trail, and the other possibility is that farm 4 built the trail. Help Bessie by calculating the number of different assignments of trails to the farms that built them, modulo 1,000,000,007. Two assignments are considered different if there is at least one trail built by a different farm in each assignment.
+给出n个点m条边的图，现把点和边分组，每条边只能和相邻两点之一分在一组，点可以单独一组，问分组方案数。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers N and M
+\* Lines 2..1+M: Line i+1 describes the ith trail. Each line contains two space-separated integers u\_i and v\_i (1 <= u\_i, v\_i <= N, u\_i != v\_i) describing the pair of farms connected by the trail.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single line containing the number of assignments of trails to farms, taken modulo 1,000,000,007. If no assignment satisfies the above conditions output 0.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 4 
+1 2 
+3 2 
+4 5 
+4 5 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6 
+</code></pre>
+<h2>说明</h2>
+<div>Note that there can be two trails between the same pair of farms.
+There are 6 possible assignments. Letting {a,b,c,d} mean that farm 1 builds trail a, farm 2 builds trail b, farm 3 builds trail c, and farm 4 builds trail d, the assignments are:
+```cpp
+{2, 3, 4, 5}
+{2, 3, 5, 4}
+{1, 3, 4, 5}
+{1, 3, 5, 4}
+{1, 2, 4, 5}
+{1, 2, 5, 4}
+```</div>
+</article>
+</div>
+</div>
+</body>
+</html>

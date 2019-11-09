@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>最大划分乘积 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573374642:e/+i18yF8i4Vslvgk4AlKpzO1aki1sC4oeTUKVzPH0I=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu6b27%5Cu62c9%5Cu5de5%5Cu7a0b183%5Cu9898%20%5Cu6709%5Cu6539%5Cu52a8%5Cn%22%2C%22description%22%3A%22Let%20N%20be%20a%20positive%20integer%20and%20let%20N%20be%20split%20into%20k%20equal%20parts%2C%20r%20%3D%20N%5C%2Fk%2C%20so%20that%20N%20%3D%20r%20%2B%20r%20%2B%20...%20%2B%20r.%5Cn%5CnLet%20P%20be%20the%20product%20of%20these%20parts%2C%20P%20%3D%20r%20%5Cu00d7r%20%5Cu00d7%20...%20%5Cu00d7%20r%20%3D%20rk.%5Cn%5Cn%5Cn%5Cu5c06%5Cu6b63%5Cu6574%5Cu6570N%5Cu5206%5Cu4e3ak%5Cu4e2a%5Cu76f8%5Cu7b49%5Cu7684%5Cu90e8%5Cu5206r%2C%5Cu6709r%3DN%5C%2Fk%5Cn%5Cn%5Cu53e6P%3Dr%5Cu00d7r%5Cu00d7...%5Cu00d7r%3Drk%5Cn%5Cn%5CnFor%20example%2C%20if%2011%20is%20split%20into%20five%20equal%20parts%2C%2011%20%3D%202.2%20%2B%202.2%20%2B%202.2%20%2B%202.2%20%2B%202.2%2C%20then%20P%20%3D%202.2%5E5%20%3D%2051.53632.%5Cn%5Cn%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5c0611%5Cu5206%5Cu4e3a%5Cu4e94%5Cu7b49%5Cu4efd%20%5Cu5219P%3D2.2%5E5%5Cn%5Cn%5Cn%5CnLet%20M%28N%29%20%3D%20Pmax%20for%20a%20given%20value%20of%20N.%5Cn%5Cn%5Cu53e6M%28N%29%5Cu4e3a%5Cu6ee1%5Cu8db3%5Cu8981%5Cu6c42%5Cu7684%5Cu5bf9%5Cu5e94N%5Cu7684%5Cu6700%5Cu5927%5Cu7684P%5Cn%5Cn%5CnIt%20turns%20out%20that%20the%20maximum%20for%20N%20%3D%2011%20is%20found%20by%20splitting%20eleven%20into%20four%20equal%20parts%20which%20leads%20to%20Pmax%20%3D%20%2811%5C%2F4%29%5E4%3B%20that%20is%2C%20M%2811%29%20%3D%2014641%5C%2F256%20%3D%2057.19140625%2C%20which%20is%20a%20terminating%20decimal.%5Cn%5Cn%5Cn%5Cu5bb9%5Cu6613%5Cu77e5%5Cu9053%5Cuff0cN%3D11%5Cu65f6%5Cuff0cPmax%3D57.19140625%5Cuff0c%5Cu662f%5Cu6709%5Cu7a77%5Cu5c0f%5Cu6570%5Cn%5Cn%5CnHowever%2C%20for%20N%20%3D%208%20the%20maximum%20is%20achieved%20by%20splitting%20it%20into%20three%20equal%20parts%2C%20so%20M%288%29%20%3D%20512%5C%2F27%2C%20which%20is%20a%20non-terminating%20decimal.%5Cn%5Cn%5Cn%5Cu800cN%3D8%5Cu65f6%5Cuff0cPmax%3D512%5C%2F27%5Cuff0c%5Cu662f%5Cu65e0%5Cu5c3d%5Cu5c0f%5Cu6570%5Cn%5Cn%5CnLet%20D%28N%29%20%3D%20N%20if%20M%28N%29%20is%20a%20non-terminating%20decimal%20and%20D%28N%29%20%3D%20-N%20if%20M%28N%29%20is%20a%20terminating%20decimal.%5Cn%5Cn%5Cn%5Cu8bbeD%28n%29%3Dn%28%5Cu82e5M%28n%29%5Cu65e0%5Cu5c3d%29%2CD%28n%29%3D-n%28%5Cu82e5M%28n%29%5Cu6709%5Cu5c3d%29%5Cn%22%2C%22inputFormat%22%3A%22%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu4ec5%5Cu4e00%5Cu884c%20%5Cu4e3a%5Cu6b63%5Cu6574%5Cu6570a%285%5Cu2264a%5Cu226432767%29.%5Cn%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu6587%5Cu4ef6%5Cu4ec5%5Cu4e00%5Cu884c%20%5Cu4e3aD%285%29%2BD%286%29%2B...%2BD%28a%29%5Cu7684%5Cu503c.%5Cn%22%2C%22samples%22%3A%5B%5B%2210%22%2C%22-15%22%5D%2C%5B%22100%22%2C%222438%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A718%2C%22name%22%3A%22pw384%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B5%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A64%2C%22totalAccepted%22%3A34%2C%22pid%22%3A%22P1925%22%2C%22title%22%3A%22%5Cu6700%5Cu5927%5Cu5212%5Cu5206%5Cu4e58%5Cu79ef%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A78605%2C%22title%22%3A%22%5Cu6c42%5Cu5206%5Cu5f00%5Cu6837%5Cu4f8b%22%2C%22forum%22%3A%7B%22id%22%3A998%2C%22name%22%3A%22P1925%20%5Cu6700%5Cu5927%5Cu5212%5Cu5206%5Cu4e58%5Cu79ef%22%2C%22slug%22%3A%22P1925%22%7D%7D%2C%7B%22id%22%3A570%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu88ab%5Cu7cfb%5Cu7edf%5Cu541e%5Cu4e86%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A998%2C%22name%22%3A%22P1925%20%5Cu6700%5Cu5927%5Cu5212%5Cu5206%5Cu4e58%5Cu79ef%22%2C%22slug%22%3A%22P1925%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1306%22%2C%22title%22%3A%22%5Cu6590%5Cu6ce2%5Cu90a3%5Cu5951%5Cu516c%5Cu7ea6%5Cu6570%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1565%22%2C%22title%22%3A%22%5Cu725b%5Cu5bab%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2455%22%2C%22title%22%3A%22%5BSDOI2006%5D%5Cu7ebf%5Cu6027%5Cu65b9%5Cu7a0b%5Cu7ec4%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2687%22%2C%22title%22%3A%22%5BUSACO4.3%5D%5Cu9022%5Cu4f4e%5Cu5438%5Cu7eb3Buy%20Low%2C%20Buy%20Lower%20%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2785%22%2C%22title%22%3A%22%5Cu7269%5Cu74061%5Cuff08phsic1%5Cuff09-%20%5Cu78c1%5Cu901a%5Cu91cf%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu6700%5Cu5927%5Cu5212%5Cu5206%5Cu4e58%5Cu79ef%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>最大划分乘积</h1>
+<h2>题目背景</h2>
+<div>欧拉工程183题 有改动
+</div>
+<h2>题目描述</h2>
+<div>Let N be a positive integer and let N be split into k equal parts, r = N/k, so that N = r + r + ... + r.
+Let P be the product of these parts, P = r ×r × ... × r = rk.
+将正整数N分为k个相等的部分r,有r=N/k
+另P=r×r×...×r=rk
+For example, if 11 is split into five equal parts, 11 = 2.2 + 2.2 + 2.2 + 2.2 + 2.2, then P = 2.2^5 = 51.53632.
+例如，将11分为五等份 则P=2.2^5
+Let M(N) = Pmax for a given value of N.
+另M(N)为满足要求的对应N的最大的P
+It turns out that the maximum for N = 11 is found by splitting eleven into four equal parts which leads to Pmax = (11/4)^4; that is, M(11) = 14641/256 = 57.19140625, which is a terminating decimal.
+容易知道，N=11时，Pmax=57.19140625，是有穷小数
+However, for N = 8 the maximum is achieved by splitting it into three equal parts, so M(8) = 512/27, which is a non-terminating decimal.
+而N=8时，Pmax=512/27，是无尽小数
+Let D(N) = N if M(N) is a non-terminating decimal and D(N) = -N if M(N) is a terminating decimal.
+设D(n)=n(若M(n)无尽),D(n)=-n(若M(n)有尽)
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>输入文件仅一行 为正整数a(5≤a≤32767).
+</div>
+<h3>输出格式</h3>
+<br />
+<div>输出文件仅一行 为D(5)+D(6)+...+D(a)的值.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>-15</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>100</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2438</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

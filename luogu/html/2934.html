@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO09JAN]安全出行Safe Travel - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376163:7L5toTKktGSx/k9TZFOL0+K/Kk0Qyh5SWSvLLaZ4SnQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Gremlins%20have%20infested%20the%20farm.%20These%20nasty%2C%20ugly%20fairy-like%5Cn%5Cncreatures%20thwart%20the%20cows%20as%20each%20one%20walks%20from%20the%20barn%20%28conveniently%20located%20at%20pasture%5C%5C_1%29%20to%20the%20other%20fields%2C%20with%20cow%5C%5C_i%20traveling%20to%20from%20pasture%5C%5C_1%20to%20pasture%5C%5C_i.%20Each%20gremlin%20is%20personalized%20and%20knows%20the%20quickest%20path%20that%20cow%5C%5C_i%20normally%20takes%20to%20pasture%5C%5C_i.%20Gremlin%5C%5C_i%20waits%20for%20cow%5C%5C_i%20in%20the%20middle%20of%20the%20final%20cowpath%20of%20the%20quickest%20route%20to%20pasture%5C%5C_i%2C%20hoping%20to%20harass%20cow%5C%5C_i.%5Cn%5CnEach%20of%20the%20cows%2C%20of%20course%2C%20wishes%20not%20to%20be%20harassed%20and%20thus%20chooses%20an%20at%20least%20slightly%20%20different%20route%20from%20pasture%5C%5C_1%20%28the%20barn%29%20to%20pasture%5C%5C_i.%5Cn%5CnCompute%20the%20best%20time%20to%20traverse%20each%20of%20these%20new%20not-quite-quickest%20routes%20that%20enable%20each%20cow%5C%5C_i%20that%20avoid%20gremlin%5C%5C_i%20who%20is%20located%20on%20the%20final%20cowpath%20of%20the%20quickest%20route%20from%20pasture%5C%5C_1%20to%5Cn%5Cnpasture%5C%5C_i.%5Cn%5CnAs%20usual%2C%20the%20M%20%282%20%3C%3D%20M%20%3C%3D%20200%2C000%29%20cowpaths%20conveniently%20numbered%201..M%20are%20bidirectional%20and%20enable%20travel%20to%20all%20N%20%283%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20pastures%20conveniently%20numbered%201..N.%20Cowpath%20i%20connects%20pastures%20a%5C%5C_i%20%281%20%3C%3D%20a%5C%5C_i%20%3C%3D%20N%29%20and%20b%5C%5C_i%20%281%20%3C%3D%20b%5C%5C_i%20%3C%3D%20N%29%20and%20requires%20t%5C%5C_i%20%281%20%3C%3D%20t%5C%5C_i%20%3C%3D%201%2C000%29%20time%20to%20traverse.%20No%20two%20cowpaths%20connect%20the%20same%20two%20pastures%2C%20and%20no%20path%20connects%20a%20pasture%20to%20itself%20%28a%5C%5C_i%20%21%3D%20b%5C%5C_i%29.%20Best%20of%20all%2C%20the%20shortest%20path%20regularly%20taken%20by%20cow%5C%5C_i%20from%20pasture%5C%5C_1%20to%20pasture%5C%5C_i%20is%20unique%20in%20all%20the%20test%20data%20supplied%20to%20your%20program.%5Cn%5CnBy%20way%20of%20example%2C%20consider%20these%20pastures%2C%20cowpaths%2C%20and%20%5Btimes%5D%3A%5Cn%5Cn%60%60%60cpp%5Cn1--%5B2%5D--2-------%2B%20%5Cn%7C%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%7C%20%5Cn%5B2%5D%20%20%20%20%20%5B1%5D%20%20%20%20%20%5B3%5D%20%5Cn%7C%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%7C%20%5Cn%2B-------3--%5B4%5D--4%5Cn%60%60%60%5Cn%60%60%60%20%5CnTRAVEL%20%20%20%20%20BEST%20ROUTE%20%20%20BEST%20TIME%20%20%20LAST%20PATH%20%5Cnp_1%20to%20p_2%20%20%20%20%20%20%201-%3E2%20%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%201-%3E2%20%5Cnp_1%20to%20p_3%20%20%20%20%20%20%201-%3E3%20%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%201-%3E3%20%5Cnp_1%20to%20p_4%20%20%20%20%20%201-%3E2-%3E4%20%20%20%20%20%20%20%205%20%20%20%20%20%20%20%20%202-%3E4%20%5Cn%60%60%60%5CnWhen%20gremlins%20are%20present%3A%5Cn%5Cn%60%60%60cpp%5CnTRAVEL%20%20%20%20%20BEST%20ROUTE%20%20%20BEST%20TIME%20%20%20%20AVOID%20%5Cnp_1%20to%20p_2%20%20%20%20%201-%3E3-%3E2%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%201-%3E2%20%5Cnp_1%20to%20p_3%20%20%20%20%201-%3E2-%3E3%20%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20%201-%3E3%20%5Cnp_1%20to%20p_4%20%20%20%20%201-%3E3-%3E4%20%20%20%20%20%20%20%20%206%20%20%20%20%20%20%20%20%202-%3E4%20%5Cn%60%60%60%5CnFor%2020%25%20of%20the%20test%20data%2C%20N%20%3C%3D%20200.%20%5Cn%5CnFor%2050%25%20of%20the%20test%20data%2C%20N%20%3C%3D%203000.%20%5Cn%5CnTIME%20LIMIT%3A%203%20Seconds%5Cn%5CnMEMORY%20LIMIT%3A%2064%20MB%5Cn%5Cn%5CnGremlins%5Cu6700%5Cu8fd1%5Cu5728%5Cu519c%5Cu573a%5Cu4e0a%5Cu6cdb%5Cu6ee5%2C%5Cu5b83%5Cu4eec%5Cu7ecf%5Cu5e38%5Cu4f1a%5Cu963b%5Cu6b62%5Cu725b%5Cu4eec%5Cu4ece%5Cu519c%5Cu5e84%28%5Cu725b%5Cu68da%5C%5C_1%29%5Cu8d70%5Cu5230%5Cu522b%5Cu7684%5Cu725b%5Cu68da%28%5Cu725b%5C%5C_i%5Cu7684%5Cu76ee%5Cu7684%20%5Cu5730%5Cu662f%5Cu725b%5Cu68da%5C%5C_i%29.%5Cu6bcf%5Cu4e00%5Cu4e2agremlin%5Cu53ea%5Cu8ba4%5Cu8bc6%5Cu725b%5C%5C_i%5Cu5e76%5Cu4e14%5Cu77e5%5Cu9053%5Cu725b%5C%5C_i%5Cu4e00%5Cu822c%5Cu8d70%5Cu5230%5Cu725b%5Cu68da%5C%5C_i%5Cu7684%5Cu6700%5Cu77ed%5Cu8def%5Cu7ecf.%5Cu6240%5Cu4ee5%5Cu5b83%20%5Cu4eec%5Cu5728%5Cu725b%5C%5C_i%5Cu5230%5Cu725b%5Cu68da%5C%5C_i%5Cu4e4b%5Cu524d%5Cu7684%5Cu6700%5Cu540e%5Cu4e00%5Cu6761%5Cu725b%5Cu8def%5Cu4e0a%5Cu7b49%5Cu725b%5C%5C_i.%20%5Cu5f53%5Cu7136%2C%5Cu725b%5Cu4e0d%5Cu613f%5Cu610f%5Cu9047%5Cu5230Gremlins%2C%5Cu6240%5Cu4ee5%5Cu51c6%5Cu5907%5Cu627e%20%5Cu4e00%5Cu6761%5Cu7a0d%5Cu5fae%5Cu4e0d%5Cu540c%5Cu7684%5Cu8def%5Cu7ecf%5Cu4ece%5Cu725b%5Cu68da%5C%5C_1%5Cu8d70%5Cu5230%5Cu725b%5Cu68da%5C%5C_i.%5Cu6240%5Cu4ee5%2C%5Cu8bf7%5Cu4f60%5Cu4e3a%5Cu6bcf%5Cu4e00%5Cu5934%5Cu725b%5C%5C_i%5Cu627e%5Cu51fa%5Cu907f%5Cu514dgremlin%5C%5C_i%5Cu7684%5Cu6700%20%5Cu77ed%5Cu8def%5Cu7ecf%5Cu7684%5Cu957f%5Cu5ea6.%5Cn%5Cn%5Cu548c%5Cu4ee5%5Cu5f80%5Cu4e00%5Cu6837%2C%20%5Cu519c%5Cu573a%5Cu4e0a%5Cu7684M%20%282%20%3C%3D%20M%20%3C%3D%20200%2C000%29%5Cu6761%5Cu53cc%5Cu5411%5Cu725b%5Cu8def%5Cu7f16%5Cu53f7%5Cu4e3a1..M%5Cu5e76%5Cu4e14%5Cu80fd%5Cu8ba9%5Cu6240%5Cu6709%5Cu725b%5Cu5230%20%5Cu8fbe%5Cu5b83%5Cu4eec%5Cu7684%5Cu76ee%5Cu7684%5Cu5730%2C%20N%283%20%3C%3D%20N%20%3C%3D%20100%2C000%29%5Cu4e2a%5Cu7f16%5Cu53f7%5Cu4e3a1..N%5Cu7684%5Cu725b%5Cu68da.%5Cu725b%5Cu8defi%5Cu8fde%5Cu63a5%5Cu725b%5Cu68daa%5C%5C_i%20%281%20%3C%3D%20a%5C%5C_i%20%3C%3D%20N%29%5Cu548cb%5C%5C_i%20%281%20%3C%3D%20b%5C%5C_i%20%3C%3D%20N%29%5Cu5e76%5Cu4e14%5Cu9700%5Cu8981%5Cu65f6%5Cu95f4t%5C%5C_i%20%281%20%3C%3Dt%5C%5C_i%20%3C%3D%201%2C000%29%5Cu901a%5Cu8fc7.%20%5Cu6ca1%5Cu6709%5Cu4e24%5Cu6761%5Cu725b%5Cu8def%5Cu8fde%5Cu63a5%5Cu540c%5Cu6837%5Cu7684%5Cu725b%5Cu68da%2C%5Cu6240%5Cu6709%5Cu725b%5Cu8def%5Cu6ee1%5Cu8db3a%5C%5C_i%21%3Db%5C%5C_i.%5Cu5728%5Cu6240%5Cu6709%5Cu6570%5Cu636e%5Cu4e2d%2C%5Cu725b%5C%5C_i%5Cu4f7f%5Cu7528%5Cu7684%5Cu725b%5Cu68da%5C%5C_1%5Cu5230%5Cu725b%20%5Cu68da%5C%5C_i%5Cu7684%5Cu6700%5Cu77ed%5Cu8def%5Cu7ecf%5Cu662f%5Cu552f%5Cu4e00%5Cu7684.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..M%2B1%3A%20Three%20space-separated%20integers%3A%20a%5C%5C_i%2C%20b%5C%5C_i%2C%20and%20t%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..N-1%3A%20Line%20i%20contains%20the%20smallest%20time%20required%20to%20travel%20from%20pasture%5C%5C_1%20to%20pasture%5C%5C_i%2B1%20while%20avoiding%20the%20final%20cowpath%20of%20the%20shortest%20path%20from%20pasture%5C%5C_1%20to%20pasture%5C%5C_i%2B1.%20If%20no%20such%20path%20exists%20from%20pasture%5C%5C_1%20to%20pasture%5C%5C_i%2B1%2C%20output%20-1%20alone%20on%20the%20line.%5Cn%22%2C%22samples%22%3A%5B%5B%224%205%20%5Cn1%202%202%20%5Cn1%203%202%20%5Cn3%204%204%20%5Cn3%202%201%20%5Cn2%204%203%20%5Cn%22%2C%223%20%5Cn3%20%5Cn6%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%20karlven%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B26%2C46%2C47%2C160%2C211%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1251%2C%22totalAccepted%22%3A364%2C%22pid%22%3A%22P2934%22%2C%22title%22%3A%22%5BUSACO09JAN%5D%5Cu5b89%5Cu5168%5Cu51fa%5Cu884cSafe%20Travel%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A38214%2C%22title%22%3A%22%5Cu65f6%5Cu95f4%5Cu9650%5Cu5236%5Cu5230%5Cu5e95%5Cu662f%5Cu4ec0%5Cu4e48%22%2C%22forum%22%3A%7B%22id%22%3A2063%2C%22name%22%3A%22P2934%20%5BUSACO09JAN%5D%5Cu5b89%5Cu5168%5Cu51fa%5Cu884cSafe%20Travel%22%2C%22slug%22%3A%22P2934%22%7D%7D%2C%7B%22id%22%3A27771%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu4e0d%5Cu7406%5Cu89e3%22%2C%22forum%22%3A%7B%22id%22%3A2063%2C%22name%22%3A%22P2934%20%5BUSACO09JAN%5D%5Cu5b89%5Cu5168%5Cu51fa%5Cu884cSafe%20Travel%22%2C%22slug%22%3A%22P2934%22%7D%7D%2C%7B%22id%22%3A4908%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1-%22%2C%22forum%22%3A%7B%22id%22%3A2063%2C%22name%22%3A%22P2934%20%5BUSACO09JAN%5D%5Cu5b89%5Cu5168%5Cu51fa%5Cu884cSafe%20Travel%22%2C%22slug%22%3A%22P2934%22%7D%7D%2C%7B%22id%22%3A4631%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2063%2C%22name%22%3A%22P2934%20%5BUSACO09JAN%5D%5Cu5b89%5Cu5168%5Cu51fa%5Cu884cSafe%20Travel%22%2C%22slug%22%3A%22P2934%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1607%22%2C%22title%22%3A%22%5BUSACO09FEB%5D%5Cu5e99%5Cu4f1a%5Cu73ed%5Cu8f66Fair%20Shuttle%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2939%22%2C%22title%22%3A%22%5BUSACO09FEB%5D%5Cu6539%5Cu9020%5Cu8defRevamping%20Trails%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2664%22%2C%22title%22%3A%22%5Cu6811%5Cu4e0a%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4066%22%2C%22title%22%3A%22%5BSHOI2003%5D%5Cu5403%5Cu8c46%5Cu8c46%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4211%22%2C%22title%22%3A%22%5BLNOI2014%5DLCA%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO09JAN%5D%5Cu5b89%5Cu5168%5Cu51fa%5Cu884cSafe%20Travel%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO09JAN]安全出行Safe Travel</h1>
+<h2>题目描述</h2>
+<div>Gremlins have infested the farm. These nasty, ugly fairy-like
+creatures thwart the cows as each one walks from the barn (conveniently located at pasture\_1) to the other fields, with cow\_i traveling to from pasture\_1 to pasture\_i. Each gremlin is personalized and knows the quickest path that cow\_i normally takes to pasture\_i. Gremlin\_i waits for cow\_i in the middle of the final cowpath of the quickest route to pasture\_i, hoping to harass cow\_i.
+Each of the cows, of course, wishes not to be harassed and thus chooses an at least slightly different route from pasture\_1 (the barn) to pasture\_i.
+Compute the best time to traverse each of these new not-quite-quickest routes that enable each cow\_i that avoid gremlin\_i who is located on the final cowpath of the quickest route from pasture\_1 to
+pasture\_i.
+As usual, the M (2 <= M <= 200,000) cowpaths conveniently numbered 1..M are bidirectional and enable travel to all N (3 <= N <= 100,000) pastures conveniently numbered 1..N. Cowpath i connects pastures a\_i (1 <= a\_i <= N) and b\_i (1 <= b\_i <= N) and requires t\_i (1 <= t\_i <= 1,000) time to traverse. No two cowpaths connect the same two pastures, and no path connects a pasture to itself (a\_i != b\_i). Best of all, the shortest path regularly taken by cow\_i from pasture\_1 to pasture\_i is unique in all the test data supplied to your program.
+By way of example, consider these pastures, cowpaths, and [times]:
+```cpp
+1--[2]--2-------+
+| | |
+[2] [1] [3]
+| | |
++-------3--[4]--4
+```
+```
+TRAVEL BEST ROUTE BEST TIME LAST PATH
+p_1 to p_2 1->2 2 1->2
+p_1 to p_3 1->3 2 1->3
+p_1 to p_4 1->2->4 5 2->4
+```
+When gremlins are present:
+```cpp
+TRAVEL BEST ROUTE BEST TIME AVOID
+p_1 to p_2 1->3->2 3 1->2
+p_1 to p_3 1->2->3 3 1->3
+p_1 to p_4 1->3->4 6 2->4
+```
+For 20% of the test data, N <= 200.
+For 50% of the test data, N <= 3000.
+TIME LIMIT: 3 Seconds
+MEMORY LIMIT: 64 MB
+Gremlins最近在农场上泛滥,它们经常会阻止牛们从农庄(牛棚\_1)走到别的牛棚(牛\_i的目的 地是牛棚\_i).每一个gremlin只认识牛\_i并且知道牛\_i一般走到牛棚\_i的最短路经.所以它 们在牛\_i到牛棚\_i之前的最后一条牛路上等牛\_i. 当然,牛不愿意遇到Gremlins,所以准备找 一条稍微不同的路经从牛棚\_1走到牛棚\_i.所以,请你为每一头牛\_i找出避免gremlin\_i的最 短路经的长度.
+和以往一样, 农场上的M (2 <= M <= 200,000)条双向牛路编号为1..M并且能让所有牛到 达它们的目的地, N(3 <= N <= 100,000)个编号为1..N的牛棚.牛路i连接牛棚a\_i (1 <= a\_i <= N)和b\_i (1 <= b\_i <= N)并且需要时间t\_i (1 <=t\_i <= 1,000)通过. 没有两条牛路连接同样的牛棚,所有牛路满足a\_i!=b\_i.在所有数据中,牛\_i使用的牛棚\_1到牛 棚\_i的最短路经是唯一的.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and M
+\* Lines 2..M+1: Three space-separated integers: a\_i, b\_i, and t\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..N-1: Line i contains the smallest time required to travel from pasture\_1 to pasture\_i+1 while avoiding the final cowpath of the shortest path from pasture\_1 to pasture\_i+1. If no such path exists from pasture\_1 to pasture\_i+1, output -1 alone on the line.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5 
+1 2 2 
+1 3 2 
+3 4 4 
+3 2 1 
+2 4 3 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+3 
+6 
+</code></pre>
+<h2>说明</h2>
+<div>感谢 karlven 提供翻译。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

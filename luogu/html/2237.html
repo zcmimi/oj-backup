@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO14FEB]自动完成Auto-complete - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573375089:mBi3VskVUheuio/L6WovaqxJ/JvC46d3xSRQdK2pMVA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bessie%20the%20cow%20has%20a%20new%20cell%20phone%20and%20enjoys%20sending%20text%20messages%2C%20although%20she%20keeps%20making%20spelling%20errors%20since%20she%20has%20trouble%20typing%20on%20such%20a%20small%20screen%20with%20her%20large%20hooves.%20%20Farmer%20John%20has%20agreed%20to%20help%20her%20by%20writing%20an%20auto-completion%20app%20that%20takes%20a%20partial%20word%20and%20suggests%20how%20to%20complete%20it.%5Cn%5CnThe%20auto-completion%20app%20has%20access%20to%20a%20dictionary%20of%20W%20words%2C%20each%20consisting%20of%20lowercase%20letters%20in%20the%20range%20a..z%2C%20where%20the%20total%20number%20of%20letters%20among%20all%20words%20is%20at%20most%201%2C000%2C000.%20%20The%20app%20is%20given%20as%20input%20a%20list%20of%20N%20partial%20words%20%281%20%3C%3D%20N%20%3C%3D%201000%29%2C%20each%20containing%20at%20most%201000%20lowercase%20letters.%20%20Along%20with%20each%20partial%20word%20i%2C%20an%20integer%20K%5C%5C_i%20is%20also%20provided%2C%20such%20that%20the%20app%20must%20find%20the%20%28K%5C%5C_i%29th%20word%20in%20alphabetical%20order%20that%20has%20partial%20word%20i%20as%20a%20prefix.%20%20That%20is%2C%20if%20one%20ordered%20all%20of%20the%20valid%20completions%20of%20the%20ith%20partial%20word%2C%20the%20app%20should%20output%20the%20completion%20that%20is%20%28K%5C%5C_i%29th%20in%20this%20sequence.%5Cn%5Cn%5Cu8d1d%5Cu897f%5Cu65b0%5Cu4e70%5Cu4e86%5Cu624b%5Cu673a%5Cuff0c%5Cu6253%5Cu5b57%5Cu4e0d%5Cu65b9%5Cu4fbf%5Cuff0c%5Cu8bf7%5Cu8bbe%5Cu8ba1%5Cu4e00%5Cu6b3e%5Cu5e94%5Cu7528%5Cuff0c%5Cu5e2e%5Cu52a9%5Cu5979%5Cu5feb%5Cu901f%5Cu53d1%5Cu6d88%5Cu606f%5Cu3002%5Cn%5Cn%5Cn%5Cu5b57%5Cu5178%5Cu91cc%5Cu6709W%5Cuff08W%3C%3D30000%5Cuff09%5Cu4e2a%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu6784%5Cu6210%5Cu7684%5Cu5355%5Cu8bcd%5Cuff0c%5Cu6240%5Cu6709%5Cu5355%5Cu8bcd%5Cu7684%5Cu5b57%5Cu7b26%5Cu603b%5Cu6570%5Cu91cf%5Cu4e0d%5Cu8d85%5Cu8fc71%2C000%2C000%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu5355%5Cu8bcd%5Cu662f%5Cu65e0%5Cu5e8f%5Cu7684%5Cu3002%5Cu73b0%5Cu5728%5Cu7ed9%5Cu51faN%281%20%3C%3D%20N%20%3C%3D%201000%29%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95eei%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32s%5C%5C_i%5Cuff08%5Cu6bcf%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6700%5Cu591a%5Cu5305%5Cu542b1000%5Cu4e2a%5Cu5b57%5Cu7b26%5Cuff09%5Cu548c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570K%5C%5C_i%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu4ee5s%5C%5C_i%5Cu4e3a%5Cu524d%5Cu7f00%5Cu7684%5Cu5355%5Cu8bcd%5Cuff0c%5Cu5176%5Cu4e2d%5Cu6309%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6392%5Cu5e8f%5Cu540e%5Cu7684%5Cu7b2cK%5C%5C_i%5Cu4e2a%5Cu5355%5Cu8bcd%5Cuff0c%5Cu6c42%5Cu8be5%5Cu5355%5Cu8bcd%5Cu5728%5Cu539f%5Cu5b57%5Cu5178%5Cu91cc%5Cu7684%5Cu5e8f%5Cu53f7%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20integers%3A%20W%20and%20N.%5Cn%5Cn%5Cn%5C%5C%2A%20Lines%202..W%2B1%3A%20Line%20i%2B1%3A%20The%20ith%20word%20in%20the%20dictionary.%5Cn%5Cn%5Cn%5C%5C%2A%20Lines%20W%2B2..W%2BN%2B1%3A%20Line%20W%2Bi%2B1%3A%20A%20single%20integer%20K%5C%5C_i%20followed%20by%20a%20%20%20%20partial%20word.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..N%3A%20Line%20i%20should%20contain%20the%20index%20within%20the%20dictionary%5Cn%5Cn%28an%20integer%20in%20the%20range%201..W%29%20of%20the%20%28K%5C%5C_i%29th%20completion%20%28in%5Cn%5Cnalphabetical%20order%29%20of%20the%20ith%20partial%20word%2C%20or%20-1%20if%20there%5Cn%5Cnare%20less%20than%20K%5C%5C_i%20completions.%5Cn%22%2C%22samples%22%3A%5B%5B%2210%203%5Cndab%5Cnba%5Cnab%5Cndaa%5Cnaa%5Cnaaa%5Cnaab%5Cnabc%5Cnac%5Cndadba%5Cn4%20a%5Cn2%20da%5Cn4%20da%22%2C%223%5Cn1%5Cn-1%22%5D%5D%2C%22hint%22%3A%22OUTPUT%20DETAILS%3A%5Cn%5Cn%5CnThe%20completions%20of%20a%20are%20%7Baa%2Caaa%2Caab%2Cab%2Cabc%2Cac%7D.%20The%204th%20is%20ab%2C%20which%5Cn%5Cnis%20listed%20on%20line%203%20of%20the%20dictionary.%20%20The%20completions%20of%20da%20are%5Cn%5Cn%7Bdaa%2Cdab%2Cdadba%7D.%20The%202nd%20is%20dab%2C%20listed%20on%20line%201%20of%20the%20dictionary.%5Cn%5CnThere%20is%20no%204th%20completion%20of%20da.%5Cn%5Cn%5CnSource%3A%20USACO%202014%20Feburary%20Contest%2C%20Silver%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B31%2C46%2C111%2C160%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A516%2C%22totalAccepted%22%3A217%2C%22pid%22%3A%22P2237%22%2C%22title%22%3A%22%5BUSACO14FEB%5D%5Cu81ea%5Cu52a8%5Cu5b8c%5Cu6210Auto-complete%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A137195%2C%22title%22%3A%22%5Cu8fd9%5Cu9053%5Cu9898%5Cu6570%5Cu636e%5Cu597d%5Cu6c34%5Cu554a%5E%22%2C%22forum%22%3A%7B%22id%22%3A1327%2C%22name%22%3A%22P2237%20%5BUSACO14FEB%5D%5Cu81ea%5Cu52a8%5Cu5b8c%5Cu6210Auto-complete%22%2C%22slug%22%3A%22P2237%22%7D%7D%2C%7B%22id%22%3A18661%2C%22title%22%3A%22%5Cu6570%5Cu636e%5Cu662f%5Cu4e0d%5Cu662f%5Cu6709%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A1327%2C%22name%22%3A%22P2237%20%5BUSACO14FEB%5D%5Cu81ea%5Cu52a8%5Cu5b8c%5Cu6210Auto-complete%22%2C%22slug%22%3A%22P2237%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2176%22%2C%22title%22%3A%22%5BUSACO14FEB%5D%5Cu8def%5Cu969cRoadblock%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2338%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu5931%5Cu8d25%5Cu7684%5Cu6ed1%5Cu96eaBessie%20Slows%20Down%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2255%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu8bb0%5Cu5f55%5Cu5965%5Cu6797%5Cu6bd4%5Cu514bRecording%20the%20M%5Cu2026%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3102%22%2C%22title%22%3A%22%5BUSACO14FEB%5D%5Cu79d8%5Cu5bc6%5Cu4ee3%5Cu7801Secret%20Code%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3104%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu6570%5Cu670b%5Cu53cbCounting%20Friends%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO14FEB%5D%5Cu81ea%5Cu52a8%5Cu5b8c%5Cu6210Auto-complete%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO14FEB]自动完成Auto-complete</h1>
+<h2>题目描述</h2>
+<div>Bessie the cow has a new cell phone and enjoys sending text messages, although she keeps making spelling errors since she has trouble typing on such a small screen with her large hooves. Farmer John has agreed to help her by writing an auto-completion app that takes a partial word and suggests how to complete it.
+The auto-completion app has access to a dictionary of W words, each consisting of lowercase letters in the range a..z, where the total number of letters among all words is at most 1,000,000. The app is given as input a list of N partial words (1 <= N <= 1000), each containing at most 1000 lowercase letters. Along with each partial word i, an integer K\_i is also provided, such that the app must find the (K\_i)th word in alphabetical order that has partial word i as a prefix. That is, if one ordered all of the valid completions of the ith partial word, the app should output the completion that is (K\_i)th in this sequence.
+贝西新买了手机，打字不方便，请设计一款应用，帮助她快速发消息。
+字典里有W（W<=30000）个小写字母构成的单词，所有单词的字符总数量不超过1,000,000，这些单词是无序的。现在给出N(1 <= N <= 1000)个询问，每个询问i包含一个的字符串s\_i（每个字符串最多包含1000个字符）和一个整数K\_i，对于所有以s\_i为前缀的单词，其中按字典序排序后的第K\_i个单词，求该单词在原字典里的序号。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two integers: W and N.
+\* Lines 2..W+1: Line i+1: The ith word in the dictionary.
+\* Lines W+2..W+N+1: Line W+i+1: A single integer K\_i followed by a partial word.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..N: Line i should contain the index within the dictionary
+(an integer in the range 1..W) of the (K\_i)th completion (in
+alphabetical order) of the ith partial word, or -1 if there
+are less than K\_i completions.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 3
+dab
+ba
+ab
+daa
+aa
+aaa
+aab
+abc
+ac
+dadba
+4 a
+2 da
+4 da</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+1
+-1</code></pre>
+<h2>说明</h2>
+<div>OUTPUT DETAILS:
+The completions of a are {aa,aaa,aab,ab,abc,ac}. The 4th is ab, which
+is listed on line 3 of the dictionary. The completions of da are
+{daa,dab,dadba}. The 2nd is dab, listed on line 1 of the dictionary.
+There is no 4th completion of da.
+Source: USACO 2014 Feburary Contest, Silver
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

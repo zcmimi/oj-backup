@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[POI2008]PER-Permutation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376942:2istH9JMTH2jHmwKjjg95kqaHdtpid4cI17tWiYbAJQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Multiset%20is%20a%20mathematical%20object%20similar%20to%20a%20set%2C%20%20%20%20but%20each%20member%20of%20a%20multiset%20may%20have%20more%20than%20one%20membership.%5Cn%5CnJust%20as%20with%20any%20set%2C%20the%20members%20of%20a%20multiset%20can%20be%20ordered%20%20%20%20in%20many%20ways.%20We%20call%20each%20such%20ordering%20a%20permutation%20%20%20%20of%20the%20multiset.%20For%20example%2C%20among%20the%20permutations%20of%20the%20%20%20%20multiset%7B1%2C1%2C2%2C3%2C3%2C3%2C7%2C8%7D.%20there%20are%20%7B2%2C3%2C1%2C3%2C3%2C7%2C1%2C8%7D%20%20%20and%7B8%2C7%2C3%2C3%2C3%2C2%2C1%2C1%7D.%5Cn%5CnWe%20will%20say%20that%20one%20permutation%20of%20a%20given%20multiset%20is%20smaller%20%20%20%20%28in%20lexicographic%20order%29%20than%20another%20permutation%2C%20if%20on%20the%20first%20%20%20%20position%20that%20does%20not%20match%20the%20first%20permutation%20has%20a%20smaller%20%20%20%20element%20than%20the%20other%20one.%20All%20permutations%20of%20a%20given%20multiset%20%20%20%20can%20be%20numbered%20%28starting%20from%20one%29%20in%20an%20increasing%20order.%5Cn%5CnTask%20%20%20%20%20%20Write%20a%20programme%20that%20%20%20reads%20the%20description%20of%20a%20permutation%20of%20a%20multiset%20and%20a%20positive%20%20%20%20%20%20%20%20%20%20integerm%20from%20the%20standard%20input%2C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20determines%20the%20remainder%20of%20the%20rank%20of%20that%20permutation%20in%20the%20%20%20%20%20%20%20%20%20%20lexicographic%20ordering%20modulo%20m%2C%20%20%20%20%20%20%20%20%20writes%20out%20the%20result%20to%20the%20standard%20output.%5Cn%5Cn%5Cu591a%5Cu91cd%5Cu96c6%5Cu5408%5Cu662f%5Cu6570%5Cu5b66%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu6982%5Cu5ff5%5Cuff0c%5Cu5b83%5Cu7684%5Cu5b9a%5Cu4e49%5Cu5f88%5Cu50cf%5Cu96c6%5Cu5408%5Cuff0c%5Cu4f46%5Cu662f%5Cu5728%5Cu591a%5Cu91cd%5Cu96c6%5Cu4e4b%5Cu4e2d%5Cuff0c%5Cu540c%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu53ef%5Cu4ee5%5Cu51fa%5Cu73b0%5Cu591a%5Cu6b21%5Cu3002%5Cn%5Cn%5Cn%5Cu548c%5Cu96c6%5Cu5408%5Cu4e00%5Cu6837%5Cuff0c%5Cu591a%5Cu91cd%5Cu96c6%5Cu7684%5Cu7684%5Cu5143%5Cu7d20%5Cu53ef%5Cu4ee5%5Cu6709%5Cu5f88%5Cu591a%5Cu79cd%5Cu5143%5Cu7d20%5Cu7684%5Cu6392%5Cu5e03%5Cu987a%5Cu5e8f%5Cu3002%5Cu6211%5Cu4eec%5Cu628a%5Cu5b83%5Cu53eb%5Cu4f5c%5Cu591a%5Cu91cd%5Cu96c6%5Cu7684%5Cu6392%5Cu5217%5Cu3002%5Cn%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu6211%5Cu4eec%5Cu5b9a%5Cu4e49%5Cu591a%5Cu91cd%5Cu96c6%5Cu7684%5Cu67d0%5Cu4e2a%5Cu6392%5Cu5217%24s_i%24%5Cu6bd4%5Cu67d0%5Cu4e2a%5Cu6392%5Cu5217%24s_j%24%5Cn%5Cn%5Cu7684%5Cu5927%5Cu5c0f%5Cu6bd4%5Cu8f83%5Cu4e3a%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6bd4%5Cu8f83%5Cu3002%5Cu8fd9%5Cu6837%5Cu67d0%5Cu4e2a%5Cu591a%5Cu91cd%5Cu96c6%5Cu7684%5Cu6392%5Cu5217%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu5c0f%5Cu5230%5Cu5927%5Cu5f97%5Cu6392%5Cu8d77%5Cu6765%5Cu3002%5Cn%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu4e2a%5Cu6570%5Cu4e3an%5Cu7684%5Cu591a%5Cu91cd%5Cu96c6%5Cu7684%5Cu4e00%5Cu4e2a%5Cu6392%5Cu5217%5Cu548cm%5Cuff0c%5Cu6c42%5Cu8fd9%5Cu4e2a%5Cu6392%5Cu5217%5Cu7684%5Cu6392%5Cu540d%5Cu53d6%5Cu6a21m%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20standard%20input%20holds%20two%20integers%20n%28%241%5C%5Cle%20n%20%5C%5Cle%20300000%24%29%20and%20m%20%20%28%242%20%5C%5Cle%20m%20%5C%5Cle%2010%5E9%24%20%29%20%2Cseparated%20by%20%20%20%20%20%20a%20single%20space.%20These%20denote%2C%20respectively%2C%20the%20cardinality%20of%20the%20%20%20%20%20%20multiset%20and%20%5C%5Cdots%5C%5C%20the%20number%20m.%5Cn%5CnThe%20second%20line%20of%20the%20standard%20input%20contains%20n%20positive%20integers%20%20%20%20%20%20%24a_i%24%28%241%5C%5Cle%20a_i%20%5C%5Cle%20300000%24%29%2C%20separated%20by%20single%20spaces%20and%20denoting%20%20%20%20%20%20successive%20elements%20of%20the%20multiset%20permutation.%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%20%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%2Cm%5Cn%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%20n%5Cu4e2a%5Cu6570%5Cuff0c%5Cu4ee3%5Cu8868%5Cu591a%5Cu91cd%5Cu96c6%5Cu7684%5Cu6392%5Cu5217%5Cn%22%2C%22outputFormat%22%3A%22The%20first%20and%20only%20line%20of%20the%20standard%20output%20is%20to%20hold%20one%20integer%2C%20%20%20%20%20%20the%20remainder%20modulo%20m%20of%20the%20rank%20of%20the%20input%20permutation%20in%20the%20%20%20%20%20%20lexicographic%20ordering.%5Cn%5Cn%5Cn%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%5Cu6392%5Cu540d%5Cu53d6%5Cu6a21m%5Cn%22%2C%22samples%22%3A%5B%5B%224%201000%5Cn2%201%2010%202%5Cn%22%2C%225%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%40%5Cu8fdc%5Cu822a%5Cu4e4b%5Cu66f2%20%5Cu8d21%5Cu732e%5Cu7684%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C57%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A167%2C%22totalAccepted%22%3A44%2C%22pid%22%3A%22P3477%22%2C%22title%22%3A%22%5BPOI2008%5DPER-Permutation%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A24684%2C%22title%22%3A%22%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2704%2C%22name%22%3A%22P3477%20%5BPOI2008%5DPER-Permutation%22%2C%22slug%22%3A%22P3477%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1852%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu8df3%5Cu8df3%5Cu68cb%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2048%22%2C%22title%22%3A%22%5BNOI2010%5D%5Cu8d85%5Cu7ea7%5Cu94a2%5Cu7434%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3343%22%2C%22title%22%3A%22%5BZJOI2015%5D%5Cu5730%5Cu9707%5Cu540e%5Cu7684%5Cu5e7b%5Cu60f3%5Cu4e61%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP208%22%2C%22title%22%3A%22STORE%20-%20Store-keeper%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22P4233%22%2C%22title%22%3A%22%5Cu5c04%5Cu547d%5Cu4e38%5Cu6587%5Cu7684%5Cu7b14%5Cu8bb0%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BPOI2008%5DPER-Permutation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[POI2008]PER-Permutation</h1>
+<h2>题目描述</h2>
+<div>Multiset is a mathematical object similar to a set, but each member of a multiset may have more than one membership.
+Just as with any set, the members of a multiset can be ordered in many ways. We call each such ordering a permutation of the multiset. For example, among the permutations of the multiset{1,1,2,3,3,3,7,8}. there are {2,3,1,3,3,7,1,8} and{8,7,3,3,3,2,1,1}.
+We will say that one permutation of a given multiset is smaller (in lexicographic order) than another permutation, if on the first position that does not match the first permutation has a smaller element than the other one. All permutations of a given multiset can be numbered (starting from one) in an increasing order.
+Task Write a programme that reads the description of a permutation of a multiset and a positive integerm from the standard input, determines the remainder of the rank of that permutation in the lexicographic ordering modulo m, writes out the result to the standard output.
+多重集合是数学中的一个概念，它的定义很像集合，但是在多重集之中，同一个元素可以出现多次。
+和集合一样，多重集的的元素可以有很多种元素的排布顺序。我们把它叫作多重集的排列。
+现在我们定义多重集的某个排列$s_i$比某个排列$s_j$
+的大小比较为字典序比较。这样某个多重集的排列可以从小到大得排起来。
+现在给你一个元素个数为n的多重集的一个排列和m，求这个排列的排名取模m。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the standard input holds two integers n($1\le n \le 300000$) and m ($2 \le m \le 10^9$ ) ,separated by a single space. These denote, respectively, the cardinality of the multiset and \dots\ the number m.
+The second line of the standard input contains n positive integers $a_i$($1\le a_i \le 300000$), separated by single spaces and denoting successive elements of the multiset permutation.
+第一行 两个整数n,m
+第二行 n个数，代表多重集的排列
+</div>
+<h3>输出格式</h3>
+<br />
+<div>The first and only line of the standard output is to hold one integer, the remainder modulo m of the rank of the input permutation in the lexicographic ordering.
+一行一个整数 排名取模m
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 1000
+2 1 10 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+</code></pre>
+<h2>说明</h2>
+<div>感谢@远航之曲 贡献的翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

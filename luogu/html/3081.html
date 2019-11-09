@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13MAR]山走Hill Walk - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376376:+IZIcfTy7Jp5uGbhUL3/s1HSKEjkAGNw9nOC1KblZ+Y=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22There%20are%20N%20hills%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29.%20Each%20hill%20takes%20the%20form%20of%20a%20line%20segment%20from%20%28x1%2C%20y1%29%20to%20%28x2%2C%20y2%29%20where%20x1%20%3C%20x2%20and%20y1%20%3C%20y2.%20None%20of%20these%20segments%20intersect%20or%20touch%2C%20even%20at%20their%20endpoints%2C%20and%20furthermore%2C%20the%20first%20hill%20satisfies%20%28x1%2C%20y1%29%20%3D%20%280%2C0%29.%5Cn%5CnBessie%20the%20cow%20starts%20at%20%280%2C0%29%20on%20the%20first%20hill.%20Whenever%20Bessie%20is%20on%20a%20hill%2C%20she%20climbs%20up%20until%20she%20reaches%20the%20end.%20Then%20she%20jumps%20off%20the%20edge.%20If%20she%20lands%20on%20another%20hill%2C%20she%20continues%20walking%20on%20that%20hill%3B%20otherwise%2C%20she%20falls%20very%20far%20until%20she%20lands%20safely%20on%20a%20cushion%20of%20pillows%20at%20y%20%3D%20-infinity.%20%20Each%20hill%20%28x1%2C%20y1%29%20-%3E%20%28x2%2C%20y2%29%20should%20be%20regarded%20as%20containing%20the%20point%20%28x1%2C%20y1%29%20but%20not%20containing%20the%20point%20%28x2%2C%20y2%29%2C%20so%20that%20Bessie%20will%20land%20on%20the%20hill%20if%20she%20falls%20on%20it%20from%20above%20at%20a%20position%20with%20x%20%3D%20x1%2C%20but%20she%20will%20not%20land%20on%20the%20hill%20if%20she%20falls%20on%20it%20from%20above%20at%20x%20%3D%20x2.%5Cn%5CnPlease%20count%20the%20total%20number%20of%20hills%20that%20Bessie%20touches%20at%20some%20point%20during%20her%20walk.%5Cn%5Cn%5Cu6709N%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%5Cu5ea7%5Cu5c0f%5Cu5c71%5Cuff0c%5Cu6bcf%5Cu5ea7%5Cu5c71%5Cu6240%5Cu5360%5Cu7684%5Cu533a%5Cu57df%5Cu7528%5Cu76f4%5Cu7ebf%28x1%2C%20y1%29%20%5Cu5230%20%28x2%2C%20y2%29%5Cu6765%5Cu8868%5Cu793a%5Cuff08x1%20%3C%20x2%20%5Cu5e76%5Cu4e14%20y1%20%3C%20y2%5Cuff09%5Cu3002%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cu8fd9%5Cu4e9b%5Cu5c71%5Cu7528%5Cu7b1b%5Cu5361%5Cu5c14%5Cu5750%5Cu6807%5Cu7cfb%5Cu91cc%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu6765%5Cu8868%5Cu793a%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu7528%5Cu4e8e%5Cu8868%5Cu793a%5Cu5c0f%5Cu5c71%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu90fd%5Cu6ca1%5Cu6709%5Cu4efb%5Cu4f55%5Cu4ea4%5Cu70b9%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu5ea7%5Cu5c71%5Cu7684%5Cu4e00%5Cu7aef%5Cu4f4d%5Cu4e8e%28x1%2C%20y1%29%20%3D%20%280%2C0%29%5Cn%5Cn%5Cn%5Cu8d1d%5Cu897f%5Cu4ece%280%2C0%29%5Cu5f00%5Cu59cb%5Cu5728%5Cu7b2c%5Cu4e00%5Cu5ea7%5Cu5c71%5Cu4e0a%5Cu6f2b%5Cu6b65%5Cuff0c%5Cu4e00%5Cu65e6%5Cu8d1d%5Cu897f%5Cu5230%5Cu4e86%5Cu4e00%5Cu5ea7%5Cu5c71%5Cuff0c%5Cu5979%5Cu4f1a%5Cu4e00%5Cu76f4%5Cu8d70%5Cu5230%5Cu8be5%5Cu5c71%5Cu7684%5Cu7ec8%5Cu70b9%5Cuff0c%5Cu8fd9%5Cu65f6%5Cuff0c%5Cu5979%5Cu4f1a%5Cu4ece%5Cu8fb9%5Cu7f18%5Cu5904%5Cu8d77%5Cu8df3%5Cuff0c%5Cu5982%5Cu679c%5Cu5979%5Cu964d%5Cu843d%5Cu5230%5Cu53e6%5Cu4e00%5Cu5ea7%5Cu5c71%5Cu4e0a%5Cuff0c%5Cu5979%5Cu4f1a%5Cu7ee7%5Cu7eed%5Cu5728%5Cu65b0%5Cu7684%5Cu5c71%5Cu4e0a%5Cu6f2b%5Cu6b65%5Cu3002%5Cu8d1d%5Cu897f%5Cu8d77%5Cu8df3%5Cu540e%5Cu6cbfy%5Cu8f74%5Cu65b9%5Cu5411%5Cu4e0b%5Cu843d%5Cuff0c%5Cu5982%5Cu679c%5Cu8d1d%5Cu897f%5Cu4e0d%5Cu80fd%5Cu964d%5Cu843d%5Cu5230%5Cu4e00%5Cu5ea7%5Cu5c71%5Cu4e0a%5Cuff0c%5Cu5979%5Cu4f1a%5Cu4e00%5Cu76f4%5Cu4e0b%5Cu843d%5Cuff0c%5Cu76f4%5Cu5230%5Cu5230%5Cu8fbey%5Cu8f74%5Cu7684%5Cu8d1f%5Cu65e0%5Cu7a77%5Cu5927%5Cu4f4d%5Cu7f6e%28y%20%3D%20-infinity%29%5Cu3002%5Cn%5Cn%5Cn%5Cu6bcf%5Cu5ea7%5Cu7528%5Cu7ebf%5Cu6bb5%5Cu8868%5Cu793a%5Cu7684%5Cu5c71%20%28x1%2C%20y1%29%20-%3E%20%28x2%2C%20y2%29%5Cu5305%5Cu542b%28x1%2C%20y1%29%5Cu8fd9%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu4f46%5Cu4e0d%5Cu5305%5Cu542b%28x2%2C%20y2%29%20%5Cuff0c%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu8d1d%5Cu897f%5Cu603b%5Cu5171%5Cu5728%5Cu591a%5Cu5c11%5Cu5ea7%5Cu5c71%5Cu4e0a%5Cu6f2b%5Cu6b65%5Cu4e86%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20number%20of%20hills%2C%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Line%20i%2B1%20contains%20four%20integers%20%28x1%2Cy1%2Cx2%2Cy2%29%5Cn%5Cndescribing%20hill%20i.%20%20Each%20integer%20is%20in%20the%20range%5Cn%5Cn0..1%2C000%2C000%2C000.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20number%20of%20hills%20Bessie%20touches%20on%20her%20journey.%5Cn%22%2C%22samples%22%3A%5B%5B%224%20%5Cr%5Cn0%200%205%206%20%5Cr%5Cn1%200%202%201%20%5Cr%5Cn7%202%208%205%20%5Cr%5Cn3%200%207%207%20%5Cr%5Cn%22%2C%223%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%20four%20hills.%20%20The%20first%20hill%20runs%20from%20%280%2C0%29%20to%20%285%2C6%29%2C%20and%20so%20on.%5Cn%5Cn%5CnBessie%20walks%20on%20hills%20%231%2C%20%234%2C%20and%20finally%20%233.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B30%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A57%2C%22totalAccepted%22%3A17%2C%22pid%22%3A%22P3081%22%2C%22title%22%3A%22%5BUSACO13MAR%5D%5Cu5c71%5Cu8d70Hill%20Walk%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3077%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu8def%5Cu7ebf%5Cu8bbe%5Cu8ba1Route%20Designing%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3084%22%2C%22title%22%3A%22%5BUSACO13OPEN%5D%5Cu7167%5Cu7247Photo%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3607%22%2C%22title%22%3A%22%5BUSACO17JAN%5DSubsequence%20Reversal%5Cu5e8f%5Cu5217%5Cu53cd%5Cu8f6c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3978%22%2C%22title%22%3A%22%5BTJOI2015%5D%5Cu6982%5Cu7387%5Cu8bba%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4168%22%2C%22title%22%3A%22%5BViolet%5D%5Cu84b2%5Cu516c%5Cu82f1%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13MAR%5D%5Cu5c71%5Cu8d70Hill%20Walk%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13MAR]山走Hill Walk</h1>
+<h2>题目描述</h2>
+<div>There are N hills (1 <= N <= 100,000). Each hill takes the form of a line segment from (x1, y1) to (x2, y2) where x1 < x2 and y1 < y2. None of these segments intersect or touch, even at their endpoints, and furthermore, the first hill satisfies (x1, y1) = (0,0).
+Bessie the cow starts at (0,0) on the first hill. Whenever Bessie is on a hill, she climbs up until she reaches the end. Then she jumps off the edge. If she lands on another hill, she continues walking on that hill; otherwise, she falls very far until she lands safely on a cushion of pillows at y = -infinity. Each hill (x1, y1) -> (x2, y2) should be regarded as containing the point (x1, y1) but not containing the point (x2, y2), so that Bessie will land on the hill if she falls on it from above at a position with x = x1, but she will not land on the hill if she falls on it from above at x = x2.
+Please count the total number of hills that Bessie touches at some point during her walk.
+有N(1 <= N <= 100,000)座小山，每座山所占的区域用直线(x1, y1) 到 (x2, y2)来表示（x1 < x2 并且 y1 < y2）。也就是说这些山用笛卡尔坐标系里的线段来表示，这些用于表示小山的线段都没有任何交点，第一座山的一端位于(x1, y1) = (0,0)
+贝西从(0,0)开始在第一座山上漫步，一旦贝西到了一座山，她会一直走到该山的终点，这时，她会从边缘处起跳，如果她降落到另一座山上，她会继续在新的山上漫步。贝西起跳后沿y轴方向下落，如果贝西不能降落到一座山上，她会一直下落，直到到达y轴的负无穷大位置(y = -infinity)。
+每座用线段表示的山 (x1, y1) -> (x2, y2)包含(x1, y1)这个点，但不包含(x2, y2) ，请计算出贝西总共在多少座山上漫步了。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The number of hills, N.
+\* Lines 2..1+N: Line i+1 contains four integers (x1,y1,x2,y2)
+describing hill i. Each integer is in the range
+0..1,000,000,000.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The number of hills Bessie touches on her journey.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 
+0 0 5 6 
+1 0 2 1 
+7 2 8 5 
+3 0 7 7 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+</code></pre>
+<h2>说明</h2>
+<div>There are four hills. The first hill runs from (0,0) to (5,6), and so on.
+Bessie walks on hills #1, #4, and finally #3.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

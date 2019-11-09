@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13FEB]出租车Taxi - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376369:49IVe0QgYsDf5ESvQIMidO4E9vXqDRYhyvXeN1CLbgk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bessie%20is%20running%20a%20taxi%20service%20for%20the%20other%20cows%20on%20the%20farm.%20%20The%20cows%20have%20been%20gathering%20at%20different%20locations%20along%20a%20fence%20of%20length%20M%20%281%20%3C%3D%20M%20%3C%3D%201%2C000%2C000%2C000%29.%20%20Unfortunately%2C%20they%20have%20grown%20bored%20with%20their%20current%20locations%20and%20each%20wish%20to%20go%20somewhere%20else%20along%20the%20fence.%20%20Bessie%20must%20pick%20up%20each%20of%20her%20friends%20at%20their%20starting%20positions%20and%20drive%20them%20to%20their%20destinations.%20%20Bessie%27s%20car%20is%20small%20so%20she%20can%20only%20transport%20one%20cow%20in%20her%20car%20at%20a%20time.%20%20Cows%20can%20enter%20and%20exit%20the%20car%20instantaneously.%5Cn%5CnTo%20save%20gas%2C%20Bessie%20would%20like%20to%20minimize%20the%20amount%20she%20has%20to%20drive.%20%20Given%20the%20starting%20and%20ending%20positions%20of%20each%20of%20the%20N%20cows%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%2C%20determine%20the%20least%20amount%20of%20driving%20Bessie%20has%20to%20do.%20%20Bessie%20realizes%20that%20to%20save%20the%20most%20gas%20she%20may%20need%20to%20occasionally%20drop%20a%20cow%20off%20at%20a%20position%20other%20than%20her%20destination.%5Cn%5CnBessie%20starts%20at%20the%20leftmost%20point%20of%20the%20fence%2C%20position%200%2C%20and%20must%20finish%20her%20journey%20at%20the%20rightmost%20point%20on%20the%20fence%2C%20position%20M.%5Cn%5Cn%5Cu957f%5Cu5ea6%5Cu4e3am%5Cu7684%5Cu6805%5Cu680f%5Cu4e0a%5Cuff0c%5Cu6709n%5Cu5934%5Cu725b%5Cu9700%5Cu8981%5Cu5750%5Cu8f66%5Cu524d%5Cu5f80%5Cu522b%5Cu7684%5Cu5730%5Cu65b9%5Cuff0c%5Cu8d77%5Cu70b9%5Cu548c%5Cu7ec8%5Cu70b9%5Cu5206%5Cu522b%5Cu4e3aa%5C%5C_i%5Cu548cb%5C%5C_i%5Cu3002%5Cu73b0%5Cu5728%5Cu4e00%5Cu8f86%5Cu51fa%5Cu79df%5Cu8f66%5Cu4ece%5Cu6700%5Cu5de6%5Cu7aef0%5Cu51fa%5Cu53d1%5Cuff0c%5Cu8981%5Cu8fd0%5Cu9001%5Cu5b8c%5Cu6240%5Cu6709%5Cu725b%5Cuff0c%5Cu6700%5Cu540e%5Cu5230%5Cu8fbe%5Cu6700%5Cu53f3%5Cu7aefm%5Cuff0c%5Cu6c42%5Cu6700%5Cu5c0f%5Cu8def%5Cu7a0b%5Cu3002%5Cu51fa%5Cu79df%5Cu8f66%5Cu53ea%5Cu80fd%5Cu4e00%5Cu6b21%5Cu8f7d%5Cu4e00%5Cu53ea%5Cu725b%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20N%20and%20M%20separated%20by%20a%20space.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20The%20%28i%2B1%29th%20line%20contains%20two%20space%20separated%5Cn%5Cnintegers%2C%20s%5C%5C_i%20and%20t%5C%5C_i%20%280%20%3C%3D%20s%5C%5C_i%2C%20t%5C%5C_i%20%3C%3D%20M%29%2C%20indicating%20the%20starting%20position%20and%20destination%20position%20of%20the%20ith%20cow.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20indicating%20the%20total%20amount%20of%20driving%20Bessie%20must%20do.%20%20Note%20that%20the%20result%20may%20not%20fit%20into%20a%2032%20bit%20integer.%5Cn%22%2C%22samples%22%3A%5B%5B%222%2010%20%5Cn0%209%20%5Cn6%205%20%5Cn%22%2C%2212%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%20two%20cows%20waiting%20to%20be%20transported%20along%20a%20fence%20of%20length%2010.%20The%20first%20cow%20wants%20to%20go%20from%20position%200%20%28where%20Bessie%20starts%29%20to%20position%209.%20%20The%20second%20cow%20wishes%20to%20go%20from%20position%206%20to%20position%205.%5Cn%5Cn%5CnBessie%20picks%20up%20the%20first%20cow%20at%20position%200%20and%20drives%20to%20position%206.%20There%20she%20drops%20off%20the%20first%20cow%2C%20delivers%20the%20second%20cow%20to%20her%20destination%20and%20returns%20to%20pick%20up%20the%20first%20cow.%20%20She%20drops%20off%20the%20first%20cow%20and%20then%20drives%20the%20remainder%20of%20the%20way%20to%20the%20right%20side%20of%20the%20fence.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B7%2C30%2C46%2C119%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A638%2C%22totalAccepted%22%3A345%2C%22pid%22%3A%22P3076%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu51fa%5Cu79df%5Cu8f66Taxi%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A109990%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu9057%5Cu6f0f%5Cu5bfc%5Cu81f4%5Cu9519%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A2193%2C%22name%22%3A%22P3076%20%5BUSACO13FEB%5D%5Cu51fa%5Cu79df%5Cu8f66Taxi%22%2C%22slug%22%3A%22P3076%22%7D%7D%2C%7B%22id%22%3A105955%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu4e0e%5Cu9898%5Cu9762%5Cu4e0d%5Cu7b26%22%2C%22forum%22%3A%7B%22id%22%3A2193%2C%22name%22%3A%22P3076%20%5BUSACO13FEB%5D%5Cu51fa%5Cu79df%5Cu8f66Taxi%22%2C%22slug%22%3A%22P3076%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3943%22%2C%22title%22%3A%22%5Cu661f%5Cu7a7a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2985%22%2C%22title%22%3A%22%5BUSACO10FEB%5D%5Cu5403%5Cu5de7%5Cu514b%5Cu529bChocolate%20Eating%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3077%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu8def%5Cu7ebf%5Cu8bbe%5Cu8ba1Route%20Designing%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3805%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011manacher%5Cu7b97%5Cu6cd5%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4552%22%2C%22title%22%3A%22%5BPoetize6%5D%20IncDec%20Sequence%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13FEB%5D%5Cu51fa%5Cu79df%5Cu8f66Taxi%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13FEB]出租车Taxi</h1>
+<h2>题目描述</h2>
+<div>Bessie is running a taxi service for the other cows on the farm. The cows have been gathering at different locations along a fence of length M (1 <= M <= 1,000,000,000). Unfortunately, they have grown bored with their current locations and each wish to go somewhere else along the fence. Bessie must pick up each of her friends at their starting positions and drive them to their destinations. Bessie's car is small so she can only transport one cow in her car at a time. Cows can enter and exit the car instantaneously.
+To save gas, Bessie would like to minimize the amount she has to drive. Given the starting and ending positions of each of the N cows (1 <= N <= 100,000), determine the least amount of driving Bessie has to do. Bessie realizes that to save the most gas she may need to occasionally drop a cow off at a position other than her destination.
+Bessie starts at the leftmost point of the fence, position 0, and must finish her journey at the rightmost point on the fence, position M.
+长度为m的栅栏上，有n头牛需要坐车前往别的地方，起点和终点分别为a\_i和b\_i。现在一辆出租车从最左端0出发，要运送完所有牛，最后到达最右端m，求最小路程。出租车只能一次载一只牛。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: N and M separated by a space.
+\* Lines 2..1+N: The (i+1)th line contains two space separated
+integers, s\_i and t\_i (0 <= s\_i, t\_i <= M), indicating the starting position and destination position of the ith cow.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer indicating the total amount of driving Bessie must do. Note that the result may not fit into a 32 bit integer.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 10 
+0 9 
+6 5 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12 
+</code></pre>
+<h2>说明</h2>
+<div>There are two cows waiting to be transported along a fence of length 10. The first cow wants to go from position 0 (where Bessie starts) to position 9. The second cow wishes to go from position 6 to position 5.
+Bessie picks up the first cow at position 0 and drives to position 6. There she drops off the first cow, delivers the second cow to her destination and returns to pick up the first cow. She drops off the first cow and then drives the remainder of the way to the right side of the fence.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

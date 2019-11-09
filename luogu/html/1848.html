@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12OPEN]书架Bookshelf - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573374524:QRAF/pCobdhWCtgbFfpjkUZoMPcQgFALuWF54zzJJdQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22When%20Farmer%20John%20isn%27t%20milking%20cows%2C%20stacking%20haybales%2C%20lining%20up%20his%20cows%2C%20or%20building%20fences%2C%20he%20enjoys%20sitting%20down%20with%20a%20good%20book.%20%20Over%20the%20years%2C%20he%20has%20collected%20N%20books%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%2C%20and%20he%20wants%20to%20build%20a%20new%20set%20of%20bookshelves%20to%20hold%20them%20all.%5Cn%5CnEach%20book%20i%20has%20a%20width%20W%28i%29%20and%20height%20H%28i%29.%20%20The%20books%20need%20to%20be%20added%20to%20a%20set%20of%20shelves%20in%20order%3B%20for%20example%2C%20the%20first%20shelf%20should%20contain%20books%201...k%20for%20some%20k%2C%20the%20second%20shelf%20should%20start%20with%20book%20k%2B1%2C%20and%20so%20on.%20%20Each%20shelf%20can%20have%20a%20total%20width%20of%20at%20most%20L%20%281%20%3C%3D%20L%20%3C%3D%201%2C000%2C000%2C000%29.%20%20The%20height%20of%20a%20shelf%20is%20equal%20to%20the%20height%20of%20the%20tallest%20book%20on%20that%20shelf%2C%20and%20the%20height%20of%20the%20entire%20set%20of%20bookshelves%20is%20the%20sum%20of%20the%20heights%20of%20all%20the%20individual%20shelves%2C%20since%20they%20are%20all%20stacked%20vertically.%5Cn%5CnPlease%20help%20FJ%20compute%20the%20minimum%20possible%20height%20for%20the%20entire%20set%20of%20bookshelves.%5Cn%5Cn%5Cu5f53%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu95f2%5Cu7684%5Cu6ca1%5Cu4e8b%5Cu5e72%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu4ed6%5Cu559c%5Cu6b22%5Cu5750%5Cu4e0b%5Cu6765%5Cu770b%5Cu4e66%5Cu3002%5Cu591a%5Cu5e74%5Cu8fc7%5Cu53bb%5Cuff0c%5Cu4ed6%5Cu5df2%5Cu7ecf%5Cu6536%5Cu96c6%5Cu4e86%20N%20%5Cu672c%5Cu4e66%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%5Cuff0c%20%5Cu4ed6%5Cu60f3%5Cu9020%5Cu4e00%5Cu4e2a%5Cu65b0%5Cu7684%5Cu4e66%5Cu67b6%5Cu6765%5Cu88c5%5Cu6240%5Cu6709%5Cu4e66%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu672c%5Cu4e66%20i%20%5Cu90fd%5Cu6709%5Cu5bbd%5Cu5ea6%20W%28i%29%20%5Cu548c%5Cu9ad8%5Cu5ea6%20H%28i%29%5Cu3002%5Cu4e66%5Cu9700%5Cu8981%5Cu6309%5Cu987a%5Cu5e8f%5Cu6dfb%5Cu52a0%5Cu5230%5Cu4e00%5Cu7ec4%5Cu4e66%5Cu67b6%5Cu4e0a%5Cuff1b%5Cu6bd4%5Cu5982%5Cu8bf4%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu5c42%5Cu67b6%5Cu5b50%5Cu5e94%5Cu8be5%5Cu5305%5Cu542b%5Cu4e66%5Cu7c4d1%20...%20k%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu5c42%5Cu67b6%5Cu5b50%5Cu5e94%5Cu8be5%5Cu4ee5%5Cu7b2ck%20%2B%201%5Cu672c%5Cu4e66%5Cu5f00%5Cu59cb%5Cuff0c%5Cu4ee5%5Cu4e0b%5Cu5982%5Cu6b64%5Cu3002%5Cu6bcf%5Cu5c42%5Cu67b6%5Cu5b50%5Cu7684%5Cu603b%5Cu5bbd%5Cu5ea6%5Cu6700%5Cu5927%5Cu4e3aL%5Cuff081%5Cu2264L%5Cu22641%2C000%2C000%2C000%5Cuff09%5Cu3002%5Cu6bcf%5Cu5c42%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu7b49%5Cu4e8e%5Cu8be5%5Cu5c42%5Cu4e0a%5Cu6700%5Cu9ad8%5Cu7684%5Cu4e66%5Cu7684%5Cu9ad8%5Cu5ea6%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6574%5Cu4e2a%5Cu4e66%5Cu67b6%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu662f%5Cu6240%5Cu6709%5Cu5c42%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu7684%5Cu603b%5Cu548c%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu5b83%5Cu4eec%5Cu90fd%5Cu5782%5Cu76f4%5Cu5806%5Cu53e0%5Cu3002%5Cn%5Cn%5Cu8bf7%5Cu5e2e%5Cu52a9%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu8ba1%5Cu7b97%5Cu6574%5Cu4e2a%5Cu4e66%5Cu67b6%5Cu7684%5Cu6700%5Cu5c0f%5Cu53ef%5Cu80fd%5Cu9ad8%5Cu5ea6%5Cu3002%5Cn%5Cn%5Cu6709N%281%20%3C%3D%20N%20%3C%3D%20100000%29%5Cu672c%5Cu4e66%5Cuff0c%5Cu6bcf%5Cu672c%5Cu4e66%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5bbd%5Cu5ea6W%28i%29%5Cuff0c%5Cu9ad8%5Cu5ea6H%28i%29%5Cuff0c%281%20%3C%3D%20H%28i%29%20%3C%3D%201%2C000%2C000%3B%201%20%3C%3D%20W%28i%29%20%3C%3D%20L%29%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu6709%5Cu8db3%5Cu591f%5Cu591a%5Cu7684%5Cu4e66%5Cu67b6%5Cuff0c%5Cu4e66%5Cu67b6%5Cu5bbd%5Cu5ea6%5Cu6700%5Cu591a%5Cu662fL%20%281%20%3C%3D%20L%20%3C%3D%201%2C000%2C000%2C000%29%5Cuff0c%5Cu628a%5Cu4e66%5Cu6309%5Cu987a%5Cu5e8f%5Cuff08%5Cu5148%5Cu653e1%5Cuff0c%5Cu518d%5Cu653e2.....%5Cuff09%5Cu653e%5Cu5165%5Cu4e66%5Cu67b6%5Cu3002%5Cu67d0%5Cu4e2a%5Cu4e66%5Cu67b6%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu662f%5Cu8be5%5Cu4e66%5Cu67b6%5Cu4e2d%5Cu6240%5Cu653e%5Cu7684%5Cu6700%5Cu9ad8%5Cu7684%5Cu4e66%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu3002%5Cn%5Cn%5Cu5c06%5Cu6240%5Cu6709%5Cu4e66%5Cu653e%5Cu5165%5Cu4e66%5Cu67b6%5Cu540e%5Cuff0c%5Cu6c42%5Cu6240%5Cu6709%5Cu4e66%5Cu67b6%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu548c%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cuff1f%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e24%5Cu4e2a%5Cu6570N%5Cu548cL%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765N%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570Hi%5Cu548cWi%5Cn%22%2C%22outputFormat%22%3A%22%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu4e66%5Cu67b6%5Cu9ad8%5Cu5ea6%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cn%22%2C%22samples%22%3A%5B%5B%225%2010%5Cn5%207%5Cn9%202%5Cn8%205%5Cn13%202%5Cn3%208%22%2C%2221%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C42%2C45%2C46%2C50%2C221%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1187%2C%22totalAccepted%22%3A382%2C%22pid%22%3A%22P1848%22%2C%22title%22%3A%22%5BUSACO12OPEN%5D%5Cu4e66%5Cu67b6Bookshelf%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A157102%2C%22title%22%3A%22%5Cu5173%5Cu4e8e%5Cu5355%5Cu8c03%5Cu6808%22%2C%22forum%22%3A%7B%22id%22%3A902%2C%22name%22%3A%22P1848%20%5BUSACO12OPEN%5D%5Cu4e66%5Cu67b6Bookshelf%22%2C%22slug%22%3A%22P1848%22%7D%7D%2C%7B%22id%22%3A9075%2C%22title%22%3A%22%5Cu563f%5Cuff0c%5Cu8fd9%5Cu91cc%5Cu662f%5Cu4e2d%5Cu6587%5Cu7ffb%5Cu8bd1%5Cu7684%5Cu9898%5Cu9762%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A902%2C%22name%22%3A%22P1848%20%5BUSACO12OPEN%5D%5Cu4e66%5Cu67b6Bookshelf%22%2C%22slug%22%3A%22P1848%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1295%22%2C%22title%22%3A%22%5BTJOI2011%5D%5Cu4e66%5Cu67b6%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1856%22%2C%22title%22%3A%22%5BUSACO5.5%5D%5Cu77e9%5Cu5f62%5Cu5468%5Cu957fPicture%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2607%22%2C%22title%22%3A%22%5BZJOI2008%5D%5Cu9a91%5Cu58eb%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4211%22%2C%22title%22%3A%22%5BLNOI2014%5DLCA%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP11469%22%2C%22title%22%3A%22SUBSET%20-%20Balanced%20Cow%20Subsets%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12OPEN%5D%5Cu4e66%5Cu67b6Bookshelf%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12OPEN]书架Bookshelf</h1>
+<h2>题目描述</h2>
+<div>When Farmer John isn't milking cows, stacking haybales, lining up his cows, or building fences, he enjoys sitting down with a good book. Over the years, he has collected N books (1 <= N <= 100,000), and he wants to build a new set of bookshelves to hold them all.
+Each book i has a width W(i) and height H(i). The books need to be added to a set of shelves in order; for example, the first shelf should contain books 1...k for some k, the second shelf should start with book k+1, and so on. Each shelf can have a total width of at most L (1 <= L <= 1,000,000,000). The height of a shelf is equal to the height of the tallest book on that shelf, and the height of the entire set of bookshelves is the sum of the heights of all the individual shelves, since they are all stacked vertically.
+Please help FJ compute the minimum possible height for the entire set of bookshelves.
+当农夫约翰闲的没事干的时候，他喜欢坐下来看书。多年过去，他已经收集了 N 本书 (1 <= N <= 100,000)， 他想造一个新的书架来装所有书。
+每本书 i 都有宽度 W(i) 和高度 H(i)。书需要按顺序添加到一组书架上；比如说，第一层架子应该包含书籍1 ... k，第二层架子应该以第k + 1本书开始，以下如此。每层架子的总宽度最大为L（1≤L≤1,000,000,000）。每层的高度等于该层上最高的书的高度，并且整个书架的高度是所有层的高度的总和，因为它们都垂直堆叠。
+请帮助农夫约翰计算整个书架的最小可能高度。
+有N(1 <= N <= 100000)本书，每本书有一个宽度W(i)，高度H(i)，(1 <= H(i) <= 1,000,000; 1 <= W(i) <= L)。
+现在有足够多的书架，书架宽度最多是L (1 <= L <= 1,000,000,000)，把书按顺序（先放1，再放2.....）放入书架。某个书架的高度是该书架中所放的最高的书的高度。
+将所有书放入书架后，求所有书架的高度和的最小值？
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行：两个数N和L
+接下来N行每行两个数Hi和Wi
+</div>
+<h3>输出格式</h3>
+<br />
+<div>一个数，书架高度的最小值
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 10
+5 7
+9 2
+8 5
+13 2
+3 8</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>21</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

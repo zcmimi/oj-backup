@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO16DEC]Lots of Triangles好多三角形 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573374323:d9+rtePj810f2B+X3U8hACd5oEdcWvaKciWiuQoW7Tc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20thinking%20of%20selling%20some%20of%20his%20land%20to%20earn%20a%20bit%20of%20extra%20income.%20His%20property%20contains%20%24N%24%20trees%20%28%243%20%5C%5Cleq%20N%20%5C%5Cleq%20300%24%29%2C%20each%20described%20by%20a%20point%20in%20the%202D%20plane%2C%20no%20three%20of%20which%20are%20collinear.%20FJ%20is%20thinking%20about%20selling%20triangular%20lots%20of%20land%20defined%20by%20having%20trees%20at%20their%20vertices%3B%20there%20are%20of%20course%20%24L%20%3D%20%5C%5Cbinom%7BN%7D%7B3%7D%24%20such%20lots%20he%20can%20consider%2C%20based%20on%20all%20possible%20triples%20of%20trees%20on%20his%20property.%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu5e0c%5Cu671b%5Cu901a%5Cu8fc7%5Cu5356%5Cu51fa%5Cu4ed6%5Cu62e5%5Cu6709%5Cu7684%5Cu4e00%5Cu90e8%5Cu5206%5Cu571f%5Cu5730%5Cu6765%5Cu589e%5Cu52a0%5Cu6536%5Cu5165%5Cu3002%5Cu4ed6%5Cu5728%5Cu8fd9%5Cu7247%5Cu571f%5Cu5730%5Cu4e0a%5Cu79cd%5Cu4e86%24N%24%5Cu68f5%5Cu6811%28%243%5C%5Cle%20N%5C%5Cle%20300%24%29%5Cuff0c%5Cu6bcf%5Cu68f5%5Cu6811%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu7528%5Cu4e00%5Cu4e2a%5Cu4e8c%5Cu7ef4%5Cu7f51%5Cu683c%5Cu56fe%5Cu4e0a%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5750%5Cu6807%5Cu6765%5Cu8868%5Cu793a%5Cuff0c%5Cu6ca1%5Cu6709%5Cu4e09%5Cu68f5%5Cu6811%5Cu662f%5Cu5171%5Cu7ebf%5Cu7684%5Cu3002%5Cu7ea6%5Cu7ff0%5Cu60f3%5Cu4ee53%5Cu68f5%5Cu6811%5Cu505a%5Cu9876%5Cu70b9%5Cu56f4%5Cu6210%5Cu4e09%5Cu89d2%5Cu5f62%5Cu6765%5Cu5206%5Cu5272%5Cu5730%5Cuff0c%5Cu4ee5%5Cu786e%5Cu5b9a%5Cu5730%5Cu7684%5Cu5927%5Cu5c0f%5Cu548c%5Cu5f62%5Cu72b6%5Cuff0c%5Cu57fa%5Cu4e8e%5Cu7ea6%5Cu7ff0%5Cu6240%5Cu6709%5Cu6811%5Cu53ef%5Cu80fd%5Cu7ec4%5Cu6210%5Cu7684%5Cu4e09%5Cu6811%5Cu7ec4%5Cu5408%5Cuff0c%5Cu5f53%5Cu7136%5Cu6709%24L%20%3D%20%5C%5Cbinom%7BN%7D%7B3%7D%24%5Cu79cd%5Cu53ef%5Cu80fd%5Cu8003%5Cu8651%5Cu5206%5Cu5272%5Cu8d29%5Cu5356%5Cu7684%5Cu571f%5Cu5730%5Cu5207%5Cu5757%5Cu3002%5Cn%5CnA%20triangular%20lot%20has%20value%20%24v%24%20if%20it%20contains%20exactly%20%24v%24%20trees%20in%20its%20interior%20%28the%20trees%20on%20the%20corners%20do%20not%20count%2C%20and%20note%20that%20there%20are%20no%20trees%20on%20the%20boundaries%20since%20no%20three%20trees%20are%20collinear%29.%20For%20every%20%24v%20%3D%200%20%5C%5Cldots%20N-3%24%2C%20please%20help%20FJ%20determine%20how%20many%20of%20his%20%24L%24%20potential%20lots%20have%20value%20%24v%24.%5Cn%5Cn%5Cu4e00%5Cu5757%5Cu5206%5Cu51fa%5Cu7684%5Cu4e09%5Cu89d2%5Cu5f62%5Cu571f%5Cu5730%5Cu6709%5Cu4ef7%5Cu503c%24v%24%5Cuff0c%24v%24%5Cu7684%5Cu5927%5Cu5c0f%5Cu51b3%5Cu5b9a%5Cu4e8e%5Cu571f%5Cu5730%5Cu4e0a%5Cu6811%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu6811%5Cu7684%5Cu6570%5Cu91cf%3D%5Cu571f%5Cu5730%5Cu4ef7%5Cu503c%3Dv%20%5Cuff08%5Cu9876%5Cu70b9%5Cu4e0a%5Cu7684%5Cu6811%5Cu4e0d%5Cu7b97%5Cuff0c%5Cu7f51%5Cu683c%5Cu56fe%5Cu8fb9%5Cu754c%5Cu4e0d%5Cu79cd%5Cu6811%5Cuff09%5Cu3002%5Cu5f53%24v%3D0%2C1...N-3%24%5Cu65f6%5Cuff0c%5Cu8bf7%5Cu5e2e%5Cu7ea6%5Cu7ff0%5Cu6c42%5Cu51fa%5Cu6709%5Cu591a%5Cu5c11%5Cu4e09%5Cu89d2%5Cu5f62%5Cu5730%24L%24%5Cu62e5%5Cu6709%5Cu4ef7%5Cu503c%24v%24%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20%24N%24.%5Cn%5CnThe%20following%20%24N%24%20lines%20contain%20the%20%24x%24%20and%20%24y%24%20coordinates%20of%20a%20single%20tree%3B%20these%20are%20both%20integers%20in%20the%20range%20%240%20%5C%5Cldots%201%2C000%2C000%24.%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu6811%5Cu7684%5Cu68f5%5Cu6570%24N%24%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684%24N%24%5Cu884c%5Cu5206%5Cu522b%5Cu4e3a%5Cu4e0d%5Cu540c%5Cu6811%5Cu5728%5Cu4e8c%5Cu7ef4%5Cu7f51%5Cu683c%5Cu56fe%5Cu4e0a%5Cu7684%5Cu5750%5Cu6807%5Cuff1b%5Cu5b83%5Cu4eec%5Cu90fd%5Cu662f%5Cu4ecb%5Cu4e8e%240%24%5Cu548c%241000000%24%5Cu4e4b%5Cu95f4%5Cu7684%5Cu7684%5Cu6574%5Cu6570%5Cuff1b%5Cu884c%5Cu548c%5Cu5217%5Cu6570%5Cu95f4%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22Output%20%24N-2%24%20lines%2C%20where%20output%20line%20%24i%24%20contains%20a%20count%20of%20the%20number%20of%20lots%20having%20value%20%24i-1%24.%5Cn%5Cn%5Cu8f93%5Cu51fa%24N-2%24%5Cu884c%5Cuff0c%5Cu5176%5Cu4e2d%5Cu7b2c%24i%24%5Cu884c%5Cu662f%5Cu4ef7%5Cu503c%24v%24%5Cu7b49%5Cu4e8e%24i-1%24%5Cu7684%5Cu571f%5Cu5730%5Cu5757%5Cu6570%5Cu91cf%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%227%5Cn3%206%5Cn17%2015%5Cn13%2015%5Cn6%2012%5Cn9%201%5Cn2%207%5Cn10%2019%22%2C%2228%5Cn6%5Cn1%5Cn0%5Cn0%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%40Aaronlxz%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B33%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A129%2C%22totalAccepted%22%3A44%2C%22pid%22%3A%22P1715%22%2C%22title%22%3A%22%5BUSACO16DEC%5DLots%20of%20Triangles%5Cu597d%5Cu591a%5Cu4e09%5Cu89d2%5Cu5f62%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A14863%2C%22title%22%3A%22%5Cu3010P1715%5Cu3011%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A755%2C%22name%22%3A%22P1715%20%5BUSACO16DEC%5DLots%20of%20Triangles%5Cu597d%5Cu591a%5Cu4e09%5Cu89d2%5Cu5f62%22%2C%22slug%22%3A%22P1715%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1494%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu5c0fZ%5Cu7684%5Cu889c%5Cu5b50%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1728%22%2C%22title%22%3A%22%5Cu9ad8%5Cu624b%5Cu73a9%5Cu7535%5Cu7ade%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2098%22%2C%22title%22%3A%22%5BUSACO16DEC%5DTeam%20Building%5Cu56e2%5Cu961f%5Cu5efa%5Cu8bbe%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4081%22%2C%22title%22%3A%22%5BUSACO17DEC%5DStanding%20Out%20from%20the%20Herd%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4169%22%2C%22title%22%3A%22%5BViolet%5D%5Cu5929%5Cu4f7f%5Cu73a9%5Cu5076%5C%2FSJY%5Cu6446%5Cu68cb%5Cu5b50%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO16DEC%5DLots%20of%20Triangles%5Cu597d%5Cu591a%5Cu4e09%5Cu89d2%5Cu5f62%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO16DEC]Lots of Triangles好多三角形</h1>
+<h2>题目描述</h2>
+<div>Farmer John is thinking of selling some of his land to earn a bit of extra income. His property contains $N$ trees ($3 \leq N \leq 300$), each described by a point in the 2D plane, no three of which are collinear. FJ is thinking about selling triangular lots of land defined by having trees at their vertices; there are of course $L = \binom{N}{3}$ such lots he can consider, based on all possible triples of trees on his property.
+农民约翰希望通过卖出他拥有的一部分土地来增加收入。他在这片土地上种了$N$棵树($3\le N\le 300$)，每棵树都可以用一个二维网格图上的一个坐标来表示，没有三棵树是共线的。约翰想以3棵树做顶点围成三角形来分割地，以确定地的大小和形状，基于约翰所有树可能组成的三树组合，当然有$L = \binom{N}{3}$种可能考虑分割贩卖的土地切块。
+A triangular lot has value $v$ if it contains exactly $v$ trees in its interior (the trees on the corners do not count, and note that there are no trees on the boundaries since no three trees are collinear). For every $v = 0 \ldots N-3$, please help FJ determine how many of his $L$ potential lots have value $v$.
+一块分出的三角形土地有价值$v$，$v$的大小决定于土地上树的数量，树的数量=土地价值=v （顶点上的树不算，网格图边界不种树）。当$v=0,1...N-3$时，请帮约翰求出有多少三角形地$L$拥有价值$v$。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains $N$.
+The following $N$ lines contain the $x$ and $y$ coordinates of a single tree; these are both integers in the range $0 \ldots 1,000,000$.
+输入的第一行为树的棵数$N$。
+接下来的$N$行分别为不同树在二维网格图上的坐标；它们都是介于$0$和$1000000$之间的的整数；行和列数间用空格隔开。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $N-2$ lines, where output line $i$ contains a count of the number of lots having value $i-1$.
+输出$N-2$行，其中第$i$行是价值$v$等于$i-1$的土地块数量。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7
+3 6
+17 15
+13 15
+6 12
+9 1
+2 7
+10 19</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>28
+6
+1
+0
+0</code></pre>
+<h2>说明</h2>
+<div>感谢@Aaronlxz提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

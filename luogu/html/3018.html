@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO11MAR]树装饰Tree Decoration - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376289:d6KlxtmJpyVZYbep9z+nctifjMqqOYKb4FyAAZXkk5I=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu5f81%5Cu6c42%5Cu7ffb%5Cu8bd1%5Cu3002%5Cu5982%5Cu679c%5Cu4f60%5Cu80fd%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cu6216%5Cu8005%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%5Cuff0c%5Cu8bf7%5Cu76f4%5Cu63a5%5Cu53d1%5Cu8ba8%5Cu8bba%5Cuff0c%5Cu611f%5Cu8c22%5Cu4f60%5Cu7684%5Cu8d21%5Cu732e%5Cu3002%5Cn%22%2C%22description%22%3A%22Farmer%20John%20is%20decorating%20his%20Spring%20Equinox%20Tree%20%28like%20a%20Christmas%20tree%20but%20popular%20about%20three%20months%20later%29.%20It%20can%20be%20modeled%20as%20a%20rooted%20mathematical%20tree%20with%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20elements%2C%20labeled%201...N%2C%20with%20element%201%20as%20the%20root%20of%20the%20tree.%20Each%20tree%20element%20e%20%3E%201%20has%20a%20parent%2C%20P%5C%5C_e%20%281%20%3C%3D%20P%5C%5C_e%20%3C%3D%20N%29.%20Element%201%20has%20no%20parent%20%28denoted%20%27-1%27%20in%20the%20input%29%2C%20of%20course%2C%20because%20it%20is%20the%20root%20of%20the%20tree.%5Cn%5CnEach%20element%20i%20has%20a%20corresponding%20subtree%20%28potentially%20of%20size%201%29%20rooted%20there.%20FJ%20would%20like%20to%20make%20sure%20that%20the%20subtree%20corresponding%20to%20element%20i%20has%20a%20total%20of%20at%20least%20C%5C%5C_i%20%280%20%3C%3D%20C%5C%5C_i%20%3C%3D%2010%2C000%2C000%29%20ornaments%20scattered%20among%20its%20members.%20He%20would%20also%20like%20to%20minimize%20the%20total%20amount%20of%20time%20it%20takes%20him%20to%20place%20all%20the%20ornaments%20%28it%20takes%20time%20K%5C%5C%2AT%5C%5C_i%20to%20place%20K%20ornaments%20at%20element%20i%20%281%20%3C%3D%20T%5C%5C_i%20%3C%3D%20100%29%29.%5Cn%5CnHelp%20FJ%20determine%20the%20minimum%20amount%20of%20time%20it%20takes%20to%20place%20ornaments%20that%20satisfy%20the%20constraints.%20%20Note%20that%20this%20answer%20might%20not%20fit%20into%20a%2032-bit%20integer%2C%20but%20it%20will%20fit%20into%20a%20signed%2064-bit%20integer.%5Cn%5CnFor%20example%2C%20consider%20the%20tree%20below%20where%20nodes%20located%20higher%20on%20the%20display%20are%20parents%20of%20connected%20lower%20nodes%20%281%20is%20the%20root%29%3A%5Cn%5Cn%60%60%60cpp%5CnFor%20example%2C%20consider%20the%20tree%20below%20where%20nodes%20located%20higher%20on%5Cnthe%20display%20are%20parents%20of%20connected%20lower%20nodes%20%281%20is%20the%20root%29%3A%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%202%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%205%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%2F%20%5C%5C%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%204%20%20%203%5Cn%5CnSuppose%20that%20FJ%20has%20the%20following%20subtree%20constraints%3A%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Minimum%20ornaments%20the%20subtree%20requires%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20Time%20to%20install%20an%20ornament%5Cn%20%20%20%20%20%20%20Subtree%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20root%20%20%20%7C%20%20%20C_i%20%20%7C%20%20T_i%5Cn%20%20%20%20%20%20%20--------%2B--------%2B-------%5Cn%20%20%20%20%20%20%20%20%20%201%20%20%20%20%7C%20%20%20%209%20%20%20%7C%20%20%203%5Cn%20%20%20%20%20%20%20%20%20%202%20%20%20%20%7C%20%20%20%202%20%20%20%7C%20%20%202%5Cn%20%20%20%20%20%20%20%20%20%203%20%20%20%20%7C%20%20%20%203%20%20%20%7C%20%20%202%5Cn%20%20%20%20%20%20%20%20%20%204%20%20%20%20%7C%20%20%20%201%20%20%20%7C%20%20%204%5Cn%20%20%20%20%20%20%20%20%20%205%20%20%20%20%7C%20%20%20%203%20%20%20%7C%20%20%203%5Cn%5CnThen%20FJ%20can%20place%20all%20the%20ornaments%20as%20shown%20below%2C%20for%20a%20total%5Cncost%20of%2020%3A%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%201%20%5B0%5C%2F9%280%29%5D%20%20%20%20%20legend%3A%20element%23%20%5Bornaments%20here%5C%2F%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20total%20ornaments%20in%20subtree%28node%20install%20time%29%5D%5Cn%20%20%20%20%20%20%20%20%20%20%20%202%20%5B3%5C%2F9%286%29%5D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%20%205%20%5B0%5C%2F6%280%29%5D%5Cn%20%20%20%20%20%20%20%20%20%20%20%5C%2F%20%5C%5C%5Cn%20%5B1%5C%2F1%284%29%5D%204%20%20%203%20%5B5%5C%2F5%2810%29%5D%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20three%20space-separated%20integers%3A%20P%5C%5C_i%2C%20C%5C%5C_i%2C%20and%20T%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20The%20minimum%20time%20to%20place%20all%20the%5Cn%5Cnornaments%5Cn%22%2C%22samples%22%3A%5B%5B%225%20%5Cn-1%209%203%20%5Cn1%202%202%20%5Cn5%203%202%20%5Cn5%201%204%20%5Cn2%203%203%20%5Cn%22%2C%2220%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu6b63%5Cu5728%5Cu88c5%5Cu9970%5Cu4ed6%5Cu5bb6%5Cu7684%5Cu5723%5Cu8bde%5Cu6811%5Cu3002%5Cu5723%5Cu8bde%5Cu6811%5Cu4e0a%5Cu6709%5Cu4e2a%20N%20%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu662f%5Cu6839%5Cuff0c%5Cu5176%5Cu4f59%5Cu7ed3%5Cu70b9%5Cu90fd%5Cu6709%5Cu552f%5Cu4e00%5Cu7684%5Cn%5Cn%5Cu7236%5Cu4eb2%5Cu7ed3%5Cu70b9%5Cuff0c%5Cu7b2c%20i%20%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu7684%5Cu7236%5Cu4eb2%5Cu662f%20P%20i%20%5Cu3002%5Cu7531%5Cu4e8e%5Cu6839%5Cu6ca1%5Cu6709%5Cu7236%5Cu4eb2%5Cuff0c%5Cu6240%5Cu4ee5%5Cu8bb0%20P%201%20%3D%20%5Cu22121%5Cu3002%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu53ef%5Cu4ee5%5Cu5728%5Cu6bcf%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu4e0a%5Cu6302%5Cu8f7d%5Cu88c5%5Cu9970%5Cu7269%5Cuff0c%5Cu4f46%5Cu8d39%5Cu7528%5Cu662f%5Cu53d8%5Cu5316%5Cu3002%5Cu5728%5Cu7b2c%20i%20%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu4e0a%5Cu6302%5Cu8f7d%5Cu4e00%5Cu4e2a%5Cu88c5%5Cu9970%5Cu7269%5Cu9700%5Cu8981%5Cu82b1%5Cu8d39%20C%20i%5Cn%5Cn%5Cu5143%5Cu94b1%5Cu3002%5Cu5976%5Cu725b%5Cu5bf9%5Cu8fd9%5Cu4e2a%5Cu5723%5Cu8bde%5Cu6811%5Cu4e0a%5Cu6bcf%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu90fd%5Cu6709%5Cu7279%5Cu6b8a%5Cu7684%5Cu88c5%5Cu9970%5Cu9700%5Cu6c42%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu7b2c%20i%20%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cuff0c%5Cu5976%5Cu725b%5Cu8981%5Cu6c42%5Cu4ee5%5Cu5b83%5Cu4e3a%5Cu6839%5Cu7684%5Cu5b50%5Cn%5Cn%5Cu6811%5Cu4e0a%5Cu5fc5%5Cu987b%5Cu6709%20D%20i%20%5Cu4e2a%5Cu88c5%5Cu9970%5Cu7269%5Cu3002%5Cu8bf7%5Cu95ee%5Cu7ea6%5Cu7ff0%5Cu5728%5Cu54ea%5Cu4e9b%5Cu7ed3%5Cu70b9%5Cu4e0a%5Cu6302%5Cu8f7d%5Cu88c5%5Cu9970%5Cu7269%5Cuff0c%5Cu624d%5Cu80fd%5Cu6ee1%5Cu8db3%5Cu5976%5Cu725b%5Cu7684%5Cu8981%5Cu6c42%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4f7f%5Cu5f97%5Cu88c5%5Cu9970%5Cn%5Cn%5Cu8d39%5Cu7528%5Cu6700%5Cu5c11%5Cuff1f%5Cn%5Cn%5Cu8f93%5Cu5165%20%5Cu2022%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu5355%5Cu4e2a%5Cu6574%5Cu6570%20N%5Cuff0c1%20%5Cu2264%20N%20%5Cu2264%2010%205%5Cn%5Cn%5Cu2022%20%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5230%20N%20%5Cu884c%5Cuff1a%5Cu7b2c%20i%2B1%20%5Cu884c%5Cu6709%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1aP%20i%20%5Cuff0cD%20i%20%5Cu548c%20C%20i%20%5Cuff0c1%20%5Cu2264%20P%20i%20%5Cu2264%20N%2C%200%20%5Cu2264%20D%20i%20%5Cu2264%2010%206%20%2C%201%20%5Cu2264%20C%20i%20%5Cu2264%20100%5Cn%5Cn%5Cu8f93%5Cu51fa%20%5Cu2022%20%5Cu5355%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu5b8c%5Cu6210%5Cu6240%5Cu6709%5Cu88c5%5Cu9970%5Cu8981%5Cu6c42%5Cu7684%5Cu6700%5Cu5c11%5Cu8d39%5Cu7528%5Cn%5Cn%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cn%5Cn5%20-1%209%203%201%202%202%205%203%202%205%201%204%202%203%203%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%5Cn%5Cn20%20%5Cu63d0%5Cu793a%20%5Cu5728%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu4e0a%5Cu653e%5Cu4e00%5Cu4e2a%5Cuff0c%5Cu82b1%204%20%5Cu5143%5Cuff1b%5Cu5728%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cn%5Cn%5Cu7ed3%5Cu70b9%5Cu4e0a%5Cu653e%5Cu4e94%5Cu4e2a%5Cuff0c%5Cu82b1%2010%20%5Cu5143%5Cuff1b%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu4e0a%5Cu653e%5Cu4e09%5Cn%5Cn%5Cu4e2a%5Cuff0c%5Cu82b1%206%20%5Cu5143%5Cuff1b%5Cn%5Cn%5Cu611f%5Cu8c22%40lushangyin%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B28%2C46%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A378%2C%22totalAccepted%22%3A169%2C%22pid%22%3A%22P3018%22%2C%22title%22%3A%22%5BUSACO11MAR%5D%5Cu6811%5Cu88c5%5Cu9970Tree%20Decoration%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A69705%2C%22title%22%3A%22%5Cu56e0%5Cu4e3a%5Cu9898%5Cu76ee%5Cu770b%5Cu9519%5Cu6240%5Cu4ee5%5Cu53ea%5Cu4f1a%5Cu7528%5Cu53ef%5Cu5e76%5Cu5806%5Cu548c%5Cu6811%5Cu5256%5Cu5199%5Cu8fd9%5Cu9898%5Cu7684%5Cu849f%5Cu84bbQAQ%22%2C%22forum%22%3A%7B%22id%22%3A2146%2C%22name%22%3A%22P3018%20%5BUSACO11MAR%5D%5Cu6811%5Cu88c5%5Cu9970Tree%20Decoration%22%2C%22slug%22%3A%22P3018%22%7D%7D%2C%7B%22id%22%3A59248%2C%22title%22%3A%22%5Cu9898%5Cu5e72%5Cu81f3%5Cu5c11%5Cu6709Di%5Cu4e2a%5Cu88c5%5Cu9970%5Cu7269%5Cuff0c%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cu662f%3A%5Cu7236%5Cu8282%5Cu70b9-%5Cu6570%5Cu91cf-%5Cu4ef7%5Cu683c%22%2C%22forum%22%3A%7B%22id%22%3A2146%2C%22name%22%3A%22P3018%20%5BUSACO11MAR%5D%5Cu6811%5Cu88c5%5Cu9970Tree%20Decoration%22%2C%22slug%22%3A%22P3018%22%7D%7D%2C%7B%22id%22%3A8083%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2146%2C%22name%22%3A%22P3018%20%5BUSACO11MAR%5D%5Cu6811%5Cu88c5%5Cu9970Tree%20Decoration%22%2C%22slug%22%3A%22P3018%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2052%22%2C%22title%22%3A%22%5BNOI2011%5D%5Cu9053%5Cu8def%5Cu4fee%5Cu5efa%20%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2340%22%2C%22title%22%3A%22%5Cu5976%5Cu725b%5Cu4f1a%5Cu5c55%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2365%22%2C%22title%22%3A%22%5Cu4efb%5Cu52a1%5Cu5b89%5Cu6392%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3026%22%2C%22title%22%3A%22%5BUSACO11OPEN%5D%5Cu5b66%5Cu4e60%5Cu8bed%5Cu8a00Learning%20Languages%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3480%22%2C%22title%22%3A%22%5BPOI2009%5DKAM-Pebbles%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO11MAR%5D%5Cu6811%5Cu88c5%5Cu9970Tree%20Decoration%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO11MAR]树装饰Tree Decoration</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+约翰正在装饰他家的圣诞树。圣诞树上有个 N 个结点，第一个结点是根，其余结点都有唯一的
+父亲结点，第 i 个结点的父亲是 P i 。由于根没有父亲，所以记 P 1 = −1。
+约翰可以在每个结点上挂载装饰物，但费用是变化。在第 i 个结点上挂载一个装饰物需要花费 C i
+元钱。奶牛对这个圣诞树上每个结点都有特殊的装饰需求，对于第 i 个结点，奶牛要求以它为根的子
+树上必须有 D i 个装饰物。请问约翰在哪些结点上挂载装饰物，才能满足奶牛的要求，并且使得装饰
+费用最少？
+输入 • 第一行：单个整数 N，1 ≤ N ≤ 10 5
+• 第二行到 N 行：第 i+1 行有三个整数：P i ，D i 和 C i ，1 ≤ P i ≤ N, 0 ≤ D i ≤ 10 6 , 1 ≤ C i ≤ 100
+输出 • 单个整数，表示完成所有装饰要求的最少费用
+样例输入
+5 -1 9 3 1 2 2 5 3 2 5 1 4 2 3 3 样例输出
+20 提示 在第四个结点上放一个，花 4 元；在第三个
+结点上放五个，花 10 元；在第二个结点上放三
+个，花 6 元；
+感谢@lushangyin 提供的翻译</div>
+<h2>题目背景</h2>
+<div>征求翻译。如果你能提供翻译或者题意简述，请直接发讨论，感谢你的贡献。
+</div>
+<h2>题目描述</h2>
+<div>Farmer John is decorating his Spring Equinox Tree (like a Christmas tree but popular about three months later). It can be modeled as a rooted mathematical tree with N (1 <= N <= 100,000) elements, labeled 1...N, with element 1 as the root of the tree. Each tree element e > 1 has a parent, P\_e (1 <= P\_e <= N). Element 1 has no parent (denoted '-1' in the input), of course, because it is the root of the tree.
+Each element i has a corresponding subtree (potentially of size 1) rooted there. FJ would like to make sure that the subtree corresponding to element i has a total of at least C\_i (0 <= C\_i <= 10,000,000) ornaments scattered among its members. He would also like to minimize the total amount of time it takes him to place all the ornaments (it takes time K\*T\_i to place K ornaments at element i (1 <= T\_i <= 100)).
+Help FJ determine the minimum amount of time it takes to place ornaments that satisfy the constraints. Note that this answer might not fit into a 32-bit integer, but it will fit into a signed 64-bit integer.
+For example, consider the tree below where nodes located higher on the display are parents of connected lower nodes (1 is the root):
+```cpp
+For example, consider the tree below where nodes located higher on
+the display are parents of connected lower nodes (1 is the root):
+1
+|
+2
+|
+5
+/ \
+4 3
+Suppose that FJ has the following subtree constraints:
+Minimum ornaments the subtree requires
+| Time to install an ornament
+Subtree | |
+root | C_i | T_i
+--------+--------+-------
+1 | 9 | 3
+2 | 2 | 2
+3 | 3 | 2
+4 | 1 | 4
+5 | 3 | 3
+Then FJ can place all the ornaments as shown below, for a total
+cost of 20:
+1 [0/9(0)] legend: element# [ornaments here/
+| total ornaments in subtree(node install time)]
+2 [3/9(6)]
+|
+5 [0/6(0)]
+/ \
+[1/1(4)] 4 3 [5/5(10)]
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: N
+\* Lines 2..N+1: Line i+1 contains three space-separated integers: P\_i, C\_i, and T\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer: The minimum time to place all the
+ornaments
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 
+-1 9 3 
+1 2 2 
+5 3 2 
+5 1 4 
+2 3 3 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>20 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13MAR]农场的画Farm Painting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376374:HIcj6ZqV8PisLd5Oqs2vZL+Wmv/Gziq8HUDhU9dD6CY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22After%20several%20harsh%20winters%2C%20Farmer%20John%20has%20decided%20it%20is%20time%20to%20re-paint%20his%20farm.%20%20The%20farm%20consists%20of%20N%20fenced%20enclosures%20%281%20%3C%3D%20N%20%3C%3D%2050%2C000%29%2C%20each%20of%20which%20can%20be%20described%20by%20a%20rectangle%20in%20the%202D%20plane%20whose%20sides%20are%20parallel%20to%20the%20x%20and%20y%20axes.%20%20Enclosures%20may%20be%20contained%20within%20other%20enclosures%2C%20but%20no%20two%20fences%20intersect%2C%20so%20if%20two%20enclosures%20cover%20the%20same%20area%20of%20the%202D%20plane%2C%20one%20must%20be%20contained%20within%20the%20other.%5Cn%5CnFJ%20figures%20that%20an%20enclosure%20contained%20within%20another%20enclosure%20will%20not%20be%20visible%20to%20the%20outside%20world%2C%20so%20he%20only%20wants%20to%20re-paint%20enclosures%20that%20are%20themselves%20not%20contained%20within%20any%20other%20enclosures.%20%20Please%20help%20FJ%20determine%20the%20total%20number%20of%20enclosures%20he%20needs%20to%20paint.%5Cn%5Cn%5Cu7ecf%5Cu8fc7%5Cu51e0%5Cu4e2a%5Cu4e25%5Cu51ac%5Cuff0c%5Cu519c%5Cu573a%5Cu4e3b%5Cu7ea6%5Cu7ff0%5Cu51b3%5Cu5b9a%5Cu662f%5Cu91cd%5Cu65b0%5Cu7c89%5Cu5237%5Cu519c%5Cu573a%5Cu7684%5Cu65f6%5Cu5019%5Cu4e86%5Cu3002%5Cu8be5%5Cu519c%5Cu573a%5Cu7531%24n%24%5Cu4e2a%5Cu56f4%5Cu680f%5Cu56f4%5Cu6210%5Cuff08%241%3C%3Dn%3D50000%24%5Cuff09%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu7528%5Cu4e8c%5Cu7ef4%5Cu5e73%5Cu9762%5Cu4e0a%5Cu7684%5Cu77e9%5Cu5f62%5Cu6765%5Cu63cf%5Cu8ff0%5Cuff0c%5Cu5176%5Cu4e24%5Cu4fa7%5Cu5e73%5Cu884c%5Cu4e8ex%5Cu548cy%5Cu8f74%5Cu3002%5Cu725b%5Cu5708%5Cu53ef%5Cu80fd%5Cu5305%5Cu542b%5Cu5728%5Cu5176%5Cu4ed6%5Cu725b%5Cu5708%5Cu4e2d%5Cuff0c%5Cu4f46%5Cu6ca1%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6805%5Cu680f%5Cu76f8%5Cu4ea4%5Cuff08%5Cu4e0d%5Cu540c%5Cu725b%5Cu5708%5Cu7684%5Cu8fb9%5Cu4e0d%5Cu4f1a%5Cu6709%5Cu63a5%5Cu89e6%5Cuff09%5Cu3002%5Cu56e0%5Cu6b64%5Cu5982%5Cu679c%5Cu4e24%5Cu4e2a%5Cu725b%5Cu5708%5Cu8986%5Cu76d6%5Cu4e86%5Cu4e8c%5Cu7ef4%5Cu5e73%5Cu9762%5Cu7684%5Cu540c%5Cu4e00%5Cu533a%5Cu57df%5Cuff0c%5Cu90a3%5Cu4e48%5Cu4e00%5Cu4e2a%5Cu5fc5%5Cu987b%5Cu5305%5Cu542b%5Cu5728%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu5185%5Cu3002%5Cn%5CnFJ%5Cu77e5%5Cu9053%5Cuff0c%5Cu88ab%5Cu5176%5Cu4ed6%5Cu725b%5Cu5708%5Cu5305%5Cu542b%5Cu7684%5Cu725b%5Cu5708%5Cu662f%5Cu4e0d%5Cu4f1a%5Cu88ab%5Cu5916%5Cu9762%5Cu7684%5Cu4eba%5Cu770b%5Cu5230%5Cu7684%5Cu3002%5Cu4f17%5Cu6240%5Cu5468%5Cu77e5%5Cuff0cFJ%5Cu975e%5Cu5e38%5Cu61d2%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4ed6%5Cu53ea%5Cu60f3%5Cu5237%5Cu9732%5Cu5728%5Cu5916%5Cu9762%5Cu7684%5Cu725b%5Cu5708%5Cuff0c%5Cu8bf7%5Cu5e2e%5Cu52a9%5Cu4ed6%5Cu6c42%5Cu51fa%5Cu603b%5Cu5171%5Cu9700%5Cu8981%5Cu5237%5Cu7684%5Cu725b%5Cu5708%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20number%20of%20enclosures%2C%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Each%20line%20describes%20an%20enclosure%20by%204%20space-separated%20integers%20x1%2C%20y1%2C%20x2%2C%20and%20y2%2C%20where%20%28x1%2Cy1%29%20is%20the%20lower-left%20corner%20of%20the%20enclosure%20and%20%28x2%2Cy2%29%20is%20the%20upper-right%20corner.%20All%20coordinates%20are%20in%20the%20range%200..1%2C000%2C000.%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%20%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu725b%5Cu5708%5Cu7684%5Cu603b%5Cu6570%24n%24%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu5230%24n%2B1%24%5Cu884c%20%5Cu6bcf%5Cu884c%5Cu56db%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8d77%5Cu70b9%5Cu5750%5Cu6807%24x1%2Cy1%24%5Cu548c%5Cu7ec8%5Cu70b9%5Cu5750%5Cu6807%24x2%2Cy2%24%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20number%20of%20enclosures%20that%20are%20not%20contained%20within%20other%20enclosures.%5Cn%5CnFJ%5Cu603b%5Cu5171%5Cu9700%5Cu8981%5Cu5237%5Cu7684%5Cu725b%5Cu5708%5Cu7684%5Cu4e2a%5Cu6570%5Cn%22%2C%22samples%22%3A%5B%5B%223%20%5Cn2%200%208%209%20%5Cn10%202%2011%203%20%5Cn4%202%206%205%20%5Cn%22%2C%222%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%20three%20enclosures.%20%20The%20first%20has%20corners%20%282%2C0%29%20and%20%288%2C9%29%2C%20and%20so%20on.%5Cn%5Cn%5CnEnclosure%203%20is%20contained%20within%20enclosure%201%2C%20so%20there%20are%20two%20enclosures%20not%20contained%20within%20other%20enclosures.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B30%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A447%2C%22totalAccepted%22%3A149%2C%22pid%22%3A%22P3079%22%2C%22title%22%3A%22%5BUSACO13MAR%5D%5Cu519c%5Cu573a%5Cu7684%5Cu753bFarm%20Painting%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A47390%2C%22title%22%3A%22%5Cu5bfb%5Cu6c42%5Cu6b63%5Cu89e3%22%2C%22forum%22%3A%7B%22id%22%3A2196%2C%22name%22%3A%22P3079%20%5BUSACO13MAR%5D%5Cu519c%5Cu573a%5Cu7684%5Cu753bFarm%20Painting%22%2C%22slug%22%3A%22P3079%22%7D%7D%2C%7B%22id%22%3A27093%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2196%2C%22name%22%3A%22P3079%20%5BUSACO13MAR%5D%5Cu519c%5Cu573a%5Cu7684%5Cu753bFarm%20Painting%22%2C%22slug%22%3A%22P3079%22%7D%7D%2C%7B%22id%22%3A5971%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2196%2C%22name%22%3A%22P3079%20%5BUSACO13MAR%5D%5Cu519c%5Cu573a%5Cu7684%5Cu753bFarm%20Painting%22%2C%22slug%22%3A%22P3079%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1306%22%2C%22title%22%3A%22%5Cu6590%5Cu6ce2%5Cu90a3%5Cu5951%5Cu516c%5Cu7ea6%5Cu6570%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2338%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu5931%5Cu8d25%5Cu7684%5Cu6ed1%5Cu96eaBessie%20Slows%20Down%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3076%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu51fa%5Cu79df%5Cu8f66Taxi%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3077%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu8def%5Cu7ebf%5Cu8bbe%5Cu8ba1Route%20Designing%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3080%22%2C%22title%22%3A%22%5BUSACO13MAR%5D%5Cu725b%5Cu8dd1The%20Cow%20Run%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13MAR%5D%5Cu519c%5Cu573a%5Cu7684%5Cu753bFarm%20Painting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13MAR]农场的画Farm Painting</h1>
+<h2>题目描述</h2>
+<div>After several harsh winters, Farmer John has decided it is time to re-paint his farm. The farm consists of N fenced enclosures (1 <= N <= 50,000), each of which can be described by a rectangle in the 2D plane whose sides are parallel to the x and y axes. Enclosures may be contained within other enclosures, but no two fences intersect, so if two enclosures cover the same area of the 2D plane, one must be contained within the other.
+FJ figures that an enclosure contained within another enclosure will not be visible to the outside world, so he only wants to re-paint enclosures that are themselves not contained within any other enclosures. Please help FJ determine the total number of enclosures he needs to paint.
+经过几个严冬，农场主约翰决定是重新粉刷农场的时候了。该农场由$n$个围栏围成（$1<=n=50000$），每一个都可以用二维平面上的矩形来描述，其两侧平行于x和y轴。牛圈可能包含在其他牛圈中，但没有两个栅栏相交（不同牛圈的边不会有接触）。因此如果两个牛圈覆盖了二维平面的同一区域，那么一个必须包含在另一个内。
+FJ知道，被其他牛圈包含的牛圈是不会被外面的人看到的。众所周知，FJ非常懒，所以他只想刷露在外面的牛圈，请帮助他求出总共需要刷的牛圈的个数。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The number of enclosures, N.
+\* Lines 2..1+N: Each line describes an enclosure by 4 space-separated integers x1, y1, x2, and y2, where (x1,y1) is the lower-left corner of the enclosure and (x2,y2) is the upper-right corner. All coordinates are in the range 0..1,000,000.
+第一行 一个数，牛圈的总数$n$
+第二到$n+1$行 每行四个数，起点坐标$x1,y1$和终点坐标$x2,y2$
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The number of enclosures that are not contained within other enclosures.
+FJ总共需要刷的牛圈的个数
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 
+2 0 8 9 
+10 2 11 3 
+4 2 6 5 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+<h2>说明</h2>
+<div>There are three enclosures. The first has corners (2,0) and (8,9), and so on.
+Enclosure 3 is contained within enclosure 1, so there are two enclosures not contained within other enclosures.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

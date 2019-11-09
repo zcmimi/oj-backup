@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12FEB]附近的牛Nearby Cows - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376332:urizemPVJ0Pgyr2e3L93lqFc6JHp3VuJ5ZlYWE5f9Bg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20has%20noticed%20that%20his%20cows%20often%20move%20between%20nearby%20fields.%20Taking%20this%20into%20account%2C%20he%20wants%20to%20plant%20enough%20grass%20in%20each%20of%20his%20fields%20not%20only%20for%20the%20cows%20situated%20initially%20in%20that%20field%2C%20but%20also%20for%20cows%20visiting%20from%20nearby%20fields.%5Cn%5CnSpecifically%2C%20FJ%27s%20farm%20consists%20of%20N%20fields%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%2C%20where%20some%20pairs%20of%20fields%20are%20connected%20with%20bi-directional%20trails%20%28N-1%20of%20them%20in%20total%29.%20%20FJ%20has%20designed%20the%20farm%20so%20that%20between%20any%20two%20fields%20i%20and%20j%2C%20there%20is%20a%20unique%20path%20made%20up%20of%20trails%20connecting%20between%20i%20and%20j.%20Field%20i%20is%20home%20to%20C%28i%29%20cows%2C%20although%20cows%20sometimes%20move%20to%20a%20different%20field%20by%20crossing%20up%20to%20K%20trails%20%281%20%3C%3D%20K%20%3C%3D%2020%29.%5Cn%5CnFJ%20wants%20to%20plant%20enough%20grass%20in%20each%20field%20i%20to%20feed%20the%20maximum%20number%20of%20cows%2C%20M%28i%29%2C%20that%20could%20possibly%20end%20up%20in%20that%20field%20--%20that%20is%2C%20the%20number%20of%20cows%20that%20can%20potentially%20reach%20field%20i%20by%20following%20at%20most%20K%20trails.%20%20Given%20the%20structure%20of%20FJ%27s%20farm%20and%20the%20value%20of%20C%28i%29%20for%20each%20field%20i%2C%20please%20help%20FJ%20compute%20M%28i%29%20for%20every%20field%20i.%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu5df2%5Cu7ecf%5Cu6ce8%5Cu610f%5Cu5230%5Cu4ed6%5Cu7684%5Cu5976%5Cu725b%5Cu7ecf%5Cu5e38%5Cu5728%5Cu9644%5Cu8fd1%5Cu7684%5Cu7530%5Cu91ce%5Cu4e4b%5Cu95f4%5Cu79fb%5Cu52a8%5Cu3002%5Cu8003%5Cu8651%5Cu5230%5Cu8fd9%5Cu4e00%5Cu70b9%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu5728%5Cu6bcf%5Cu4e00%5Cu5757%5Cu571f%5Cu5730%5Cu4e0a%5Cu79cd%5Cu4e0a%5Cu8db3%5Cu591f%5Cu7684%5Cu8349%5Cuff0c%5Cu4e0d%5Cu4ec5%5Cu662f%5Cu4e3a%5Cu4e86%5Cu6700%5Cu521d%5Cu5728%5Cu8fd9%5Cu7247%5Cu571f%5Cu5730%5Cu4e0a%5Cu7684%5Cu5976%5Cu725b%5Cuff0c%5Cu800c%5Cu4e14%5Cu662f%5Cu4e3a%5Cu4e86%5Cu4ece%5Cu9644%5Cu8fd1%5Cu7684%5Cu7530%5Cu5730%5Cu91cc%5Cu53bb%5Cu5403%5Cu8349%5Cu7684%5Cu5976%5Cu725b%5Cu3002%5Cn%5Cn%5Cn%5Cu5177%5Cu4f53%5Cu6765%5Cu8bf4%5Cuff0cFJ%5Cu7684%5Cu519c%5Cu573a%5Cu7531N%5Cu5757%5Cu7530%5Cu91ce%5Cu6784%5Cu6210%5Cuff081%20%3C%3D%20n%20%3C%3D%20100%5Cuff0c000%29%2C%5Cu6bcf%5Cu4e24%5Cu5757%5Cu7530%5Cu91ce%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu65e0%5Cu5411%5Cu8fb9%5Cu8fde%5Cu63a5%5Cuff08%5Cu603b%5Cu5171n-1%5Cu6761%5Cu8fb9%5Cuff09%5Cu3002FJ%5Cu8bbe%5Cu8ba1%5Cu4e86%5Cu519c%5Cu573a%5Cuff0c%5Cu4efb%5Cu4f55%5Cu4e24%5Cu4e2a%5Cu7530%5Cu91cei%5Cu548cj%5Cu4e4b%5Cu95f4%5Cuff0c%5Cu6709%5Cu4e14%5Cu53ea%5Cu6709%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cu8fde%5Cu63a5i%5Cu548cj%5Cu3002%5Cu7b2c%20i%5Cu5757%5Cu7530%5Cu91ce%5Cu662fC%28i%29%5Cu5934%5Cu725b%5Cu7684%5Cu4f4f%5Cu6240%5Cuff0c%5Cu5c3d%5Cu7ba1%5Cu5976%5Cu725b%5Cu4eec%5Cu6709%5Cu65f6%5Cu4f1a%5Cu901a%5Cu8fc7k%5Cu6761%5Cu8def%5Cu5230%5Cu8fbe%5Cu5176%5Cu4ed6%5Cu4e0d%5Cu540c%5Cu7684%5Cu7530%5Cu91ce%5Cuff081%3C%3Dk%3C%3D20%5Cuff09%5Cu3002%5Cn%5Cn%5CnFJ%5Cu60f3%5Cu5728%5Cu6bcf%5Cu5757%5Cu7530%5Cu91ce%5Cu4e0a%5Cu79cd%5Cu4e0a%5Cu591fM%28i%29%5Cu5934%5Cu5976%5Cu725b%5Cu5403%5Cu7684%5Cu8349%5Cu3002M%28i%29%5Cu6307%5Cu80fd%5Cu4ece%5Cu5176%5Cu4ed6%5Cu70b9%5Cu7ecf%5Cu8fc7%5Cu6700%5Cu591ak%5Cu6b65%5Cu5c31%5Cu80fd%5Cu5230%5Cu8fbe%5Cu8fd9%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5976%5Cu725b%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%5Cn%5Cu73b0%5Cu7ed9%5Cu51faFJ%5Cu7684%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu7530%5Cu91ce%5Cu7684%5Cu5976%5Cu725b%5Cu7684%5Cu6570%5Cu76ee%5Cuff0c%5Cu8bf7%5Cu5e2e%5Cu52a9FJ%5Cu8ba1%5Cu7b97%5Cu6bcf%5Cu4e00%5Cu5757%5Cu7530%5Cu91ce%5Cu7684M%28i%29%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%2C%20N%20and%20K.%5Cn%5Cn%5C%5C%2A%20Lines%202..N%3A%20Each%20line%20contains%20two%20space-separated%20integers%2C%20i%20and%20j%20%281%20%3C%3D%20i%2Cj%20%3C%3D%20N%29%20indicating%20that%20fields%20i%20and%20j%20are%20directly%20connected%20by%20a%20trail.%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B1..2N%3A%20Line%20N%2Bi%20contains%20the%20integer%20C%28i%29.%20%280%20%3C%3D%20C%28i%29%20%3C%3D%201000%29%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1an%5Cu548ck%3B%5Cn%5Cn%5Cu540e%5Cu9762n-1%5Cu884c%5Cuff1ai%5Cu548cj%5Cuff08%5Cu4e24%5Cu5757%5Cu7530%5Cu91ce%5Cuff09%3B%5Cn%5Cn%5Cu4e4b%5Cu540en%5Cu884c%5Cuff1a1..n%5Cu6bcf%5Cu4e00%5Cu5757%5Cu7684C%28i%29%3B%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..N%3A%20Line%20i%20should%20contain%20the%20value%20of%20M%28i%29.%20%5Cn%5Cnn%5Cu884c%5Cuff1a%5Cu6bcf%5Cu884cM%28i%29%3B%5C%2F%5C%2Fi%5Cuff1a1..2%5Cn%22%2C%22samples%22%3A%5B%5B%226%202%20%5Cn5%201%20%5Cn3%206%20%5Cn2%204%20%5Cn2%201%20%5Cn3%202%20%5Cn1%20%5Cn2%20%5Cn3%20%5Cn4%20%5Cn5%20%5Cn6%20%5Cn%22%2C%2215%20%5Cn21%20%5Cn16%20%5Cn10%20%5Cn8%20%5Cn11%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%206%20fields%2C%20with%20trails%20connecting%20%285%2C1%29%2C%20%283%2C6%29%2C%20%282%2C4%29%2C%20%282%2C1%29%2C%20and%20%283%2C2%29.%20%20Field%20i%20has%20C%28i%29%20%3D%20i%20cows.%5Cn%5Cn%5CnField%201%20has%20M%281%29%20%3D%2015%20cows%20within%20a%20distance%20of%202%20trails%2C%20etc.%5Cn%5Cn%5Cu9898%5Cu76ee%5Cu7b80%5Cu8ff0%5Cuff1a%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu68f5n%5Cu4e2a%5Cu70b9%5Cu7684%5Cu6811%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu4e0a%5Cu6709C%5C%5C_i%5Cu5934%5Cu725b%5Cuff0c%5Cu95ee%5Cu6bcf%5Cu4e2a%5Cu70b9k%5Cu6b65%5Cu8303%5Cu56f4%5Cu5185%5Cu5404%5Cu6709%5Cu591a%5Cu5c11%5Cu5934%5Cu725b%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40Slager%5C%5C_Z%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C29%2C46%2C152%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1845%2C%22totalAccepted%22%3A881%2C%22pid%22%3A%22P3047%22%2C%22title%22%3A%22%5BUSACO12FEB%5D%5Cu9644%5Cu8fd1%5Cu7684%5Cu725bNearby%20Cows%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A54914%2C%22title%22%3A%22%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu70b9%5Cu8c01%5Cu80fd%5Cu63d0%5Cu4f9b%5Cu601d%5Cu8def%5Cuff1f%5Cuff1f%5Cuff1forz%5Cu5927%5Cu4f6c%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A1955%2C%22name%22%3A%22P3047%20%5BUSACO12FEB%5D%5Cu9644%5Cu8fd1%5Cu7684%5Cu725bNearby%20Cows%22%2C%22slug%22%3A%22P3047%22%7D%7D%2C%7B%22id%22%3A35624%2C%22title%22%3A%22%5Cu5173%5Cu4e8e%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu70b9%5Cu548c%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu70b9%22%2C%22forum%22%3A%7B%22id%22%3A1955%2C%22name%22%3A%22P3047%20%5BUSACO12FEB%5D%5Cu9644%5Cu8fd1%5Cu7684%5Cu725bNearby%20Cows%22%2C%22slug%22%3A%22P3047%22%7D%7D%2C%7B%22id%22%3A23825%2C%22title%22%3A%22%5Cu53cb%5Cu60c5%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A1955%2C%22name%22%3A%22P3047%20%5BUSACO12FEB%5D%5Cu9644%5Cu8fd1%5Cu7684%5Cu725bNearby%20Cows%22%2C%22slug%22%3A%22P3047%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2986%22%2C%22title%22%3A%22%5BUSACO10MAR%5D%5Cu4f1f%5Cu5927%5Cu7684%5Cu5976%5Cu725b%5Cu805a%5Cu96c6Great%20Cow%20Gat%5Cu2026%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3174%22%2C%22title%22%3A%22%5BHAOI2009%5D%5Cu6bdb%5Cu6bdb%5Cu866b%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3360%22%2C%22title%22%3A%22%5Cu5077%5Cu5929%5Cu6362%5Cu65e5%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3554%22%2C%22title%22%3A%22%5BPOI2013%5DLUK-Triumphal%20arch%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4084%22%2C%22title%22%3A%22%5BUSACO17DEC%5DBarn%20Painting%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12FEB%5D%5Cu9644%5Cu8fd1%5Cu7684%5Cu725bNearby%20Cows%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12FEB]附近的牛Nearby Cows</h1>
+<h2>题目描述</h2>
+<div>Farmer John has noticed that his cows often move between nearby fields. Taking this into account, he wants to plant enough grass in each of his fields not only for the cows situated initially in that field, but also for cows visiting from nearby fields.
+Specifically, FJ's farm consists of N fields (1 <= N <= 100,000), where some pairs of fields are connected with bi-directional trails (N-1 of them in total). FJ has designed the farm so that between any two fields i and j, there is a unique path made up of trails connecting between i and j. Field i is home to C(i) cows, although cows sometimes move to a different field by crossing up to K trails (1 <= K <= 20).
+FJ wants to plant enough grass in each field i to feed the maximum number of cows, M(i), that could possibly end up in that field -- that is, the number of cows that can potentially reach field i by following at most K trails. Given the structure of FJ's farm and the value of C(i) for each field i, please help FJ compute M(i) for every field i.
+农民约翰已经注意到他的奶牛经常在附近的田野之间移动。考虑到这一点，他想在每一块土地上种上足够的草，不仅是为了最初在这片土地上的奶牛，而且是为了从附近的田地里去吃草的奶牛。
+具体来说，FJ的农场由N块田野构成（1 <= n <= 100，000),每两块田野之间有一条无向边连接（总共n-1条边）。FJ设计了农场，任何两个田野i和j之间，有且只有一条路径连接i和j。第 i块田野是C(i)头牛的住所，尽管奶牛们有时会通过k条路到达其他不同的田野（1<=k<=20）。
+FJ想在每块田野上种上够M(i)头奶牛吃的草。M(i)指能从其他点经过最多k步就能到达这个点的奶牛的个数。
+现给出FJ的每一个田野的奶牛的数目，请帮助FJ计算每一块田野的M(i)。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers, N and K.
+\* Lines 2..N: Each line contains two space-separated integers, i and j (1 <= i,j <= N) indicating that fields i and j are directly connected by a trail.
+\* Lines N+1..2N: Line N+i contains the integer C(i). (0 <= C(i) <= 1000)
+第一行：n和k;
+后面n-1行：i和j（两块田野）;
+之后n行：1..n每一块的C(i);
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..N: Line i should contain the value of M(i).
+n行：每行M(i);//i：1..2
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 2 
+5 1 
+3 6 
+2 4 
+2 1 
+3 2 
+1 
+2 
+3 
+4 
+5 
+6 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>15 
+21 
+16 
+10 
+8 
+11 
+</code></pre>
+<h2>说明</h2>
+<div>There are 6 fields, with trails connecting (5,1), (3,6), (2,4), (2,1), and (3,2). Field i has C(i) = i cows.
+Field 1 has M(1) = 15 cows within a distance of 2 trails, etc.
+题目简述：给出一棵n个点的树，每个点上有C\_i头牛，问每个点k步范围内各有多少头牛。
+感谢@Slager\_Z 提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

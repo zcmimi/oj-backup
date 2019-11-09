@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10NOV]牛的照片Cow Photographs - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376256:cTIT3KHtWgUI1Hi9JMsCXi4/i+anoFOdu6dM10zgsv8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20wants%20to%20take%20a%20picture%20of%20his%20entire%20herd%20of%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20cows%20conveniently%20numbered%201..N%20so%20he%20can%20show%20off%20to%20his%20friends.%5Cn%5CnOn%20picture%20day%2C%20the%20cows%20run%20to%20form%20a%20single%20line%20in%20some%20arbitrary%20order%20with%20position%20i%20containing%20cow%20c%5C%5C_i%20%281%20%3C%3D%20c%5C%5C_i%20%3C%3D%20N%29.%20Farmer%20John%20has%20his%20own%20ideas%20about%20how%20the%20cows%20should%20line%20up.%5Cn%5CnFJ%20thinks%20cow%20i%20may%20stand%20only%20to%20the%20left%20of%20cow%20i%2B1%20%28for%20all%20i%2C%201%20%3C%3D%20i%20%3C%3D%20N-1%29%20and%20that%20cow%20N%20may%20only%20stand%20to%20the%20left%20of%20Cow%201.%20Of%20course%2C%20no%20cow%20will%20stand%20to%20the%20left%20of%20the%20first%20%28leftmost%29%20cow%20in%20the%20line.%5Cn%5CnThe%20cows%20are%20hungry%20for%20the%20promised%20post-photo%20dinner%2C%20so%20Farmer%20John%20wants%20to%20take%20the%20picture%20as%20quickly%20as%20possible.%20Cows%20are%20not%20great%20at%20following%20directions%2C%20so%20he%20will%20only%20choose%20a%20pair%20of%20adjacent%20cows%20and%20have%20them%20switch%20places%20once%20per%20minute.%20How%20quickly%20is%20Farmer%20John%20able%20to%20get%20them%20into%20some%20acceptable%20order%3F%5Cn%5CnConsider%20a%20set%20of%205%20cows%20whose%20initial%20lineup%20looks%20like%20this%3A%5Cn%5CnLeft%20%20%20%20%20%20%20%20%20%20%20Right%5Cn%5Cn3%20%205%20%204%20%202%20%201%5Cn%5CnHe%20can%20first%20swap%20the%20second%20pair%20of%20cows%3A%5Cn%5Cn3%20%204%20%205%20%202%201%5Cn%5Cnand%20then%20swap%20the%20rightmost%20pair%3A%20%5Cn%5Cn3%20%204%20%205%20%201%20%202%5Cn%5Cnto%20yield%20an%20acceptable%20lineup%20that%20required%20but%20two%20minutes%20of%20cow%20swapping.%5Cn%5CnFarmer%20John%5Cu5e0c%5Cu671b%5Cu7ed9%5Cu4ed6%5Cu7684N%281%3C%3DN%3C%3D100%2C000%29%5Cu53ea%5Cu5976%5Cu725b%5Cu62cd%5Cu7167%5Cu7247%2C%5Cu8fd9%5Cu6837%5Cu4ed6%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu5411%5Cu4ed6%5Cu7684%5Cu670b%5Cu53cb%5Cu70ab%5Cu8000%5Cu4ed6%5Cu7684%5Cu5976%5Cu725b.%5Cu8fd9N%5Cu53ea%5Cu5976%5Cu725b%5Cu88ab%5Cu6807%5Cu53f7%5Cu4e3a1..N.%20%5Cu5728%5Cu7167%5Cu76f8%5Cu7684%5Cu90a3%5Cu4e00%5Cu5929%2C%5Cu5976%5Cu725b%5Cu4eec%5Cu6392%5Cu6210%5Cu4e86%5Cu4e00%5Cu6392.%5Cu5176%5Cu4e2d%5Cu7b2ci%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu4e0a%5Cu662f%5Cu6807%5Cu53f7%5Cu4e3ac%5C%5C_i%281%3C%3Dc%5C%5C_i%3C%3DN%29%5Cu7684%5Cu5976%5Cu725b.%5Cu5bf9%5Cu4e8e%5Cu5976%5Cu725b%5Cu7684%5Cu7ad9%5Cu4f4d%2CFarmer%20John%5Cu6709%5Cu4ed6%5Cu81ea%5Cu5df1%5Cu7684%5Cu60f3%5Cu6cd5.%5Cn%5CnFJ%5Cu662f%5Cu8fd9%5Cu4e48%5Cu60f3%5Cu7684%2C%5Cu6807%5Cu53f7%5Cu4e3ai%281%3C%3Di%3C%3Dn-1%29%5Cu7684%5Cu5976%5Cu725b%5Cu53ea%5Cu80fd%5Cu7ad9%5Cu5728%5Cu6807%5Cu53f7%5Cu4e3ai%2B1%5Cu7684%5Cu5976%5Cu725b%5Cu7684%5Cu5de6%5Cu8fb9%2C%5Cu800c%5Cu6807%5Cu53f7%5Cu4e3aN%5Cu7684%5Cu5976%5Cu725b%5Cu53ea%5Cu80fd%5Cu7ad9%5Cu5728%5Cu6807%5Cu53f7%5Cu4e3a1%5Cu7684%5Cu5976%5Cu725b%5Cu7684%5Cu5de6%5Cu8fb9.%5Cu5f53%5Cu7136%2C%5Cu6ca1%5Cu6709%5Cu725b%5Cu53ef%5Cu4ee5%5Cu7ad9%5Cu5728%5Cu961f%5Cu5217%5Cu4e2d%5Cu6700%5Cu5de6%5Cu8fb9%5Cu7684%5Cu5976%5Cu725b%5Cu7684%5Cu5de6%5Cu8fb9%5Cu4e86.%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%2C%5Cu6700%5Cu5de6%5Cu8fb9%5Cu7684%5Cu5976%5Cu725b%5Cu7f16%5Cu53f7%5Cu662f%5Cu968f%5Cu610f%5Cu7684.%20%5Cu8fd9%5Cu4e9b%5Cu5976%5Cu725b%5Cu90fd%5Cu975e%5Cu5e38%5Cu7684%5Cu997f%2C%5Cu6025%5Cu5207%5Cu7684%5Cu5e0c%5Cu671b%5Cu5403%5Cu5230FJ%5Cu627f%5Cu8bfa%5Cu7684%5Cu5728%5Cu62cd%5Cu7167%5Cu540e%5Cu7684%5Cu5927%5Cu9910%2C%5Cu6240%5Cu4ee5FJ%5Cu60f3%5Cu5c3d%5Cu5feb%5Cu7684%5Cu62cd%5Cu7167.%5Cu5976%5Cu725b%5Cu4eec%5Cu7684%5Cu65b9%5Cu5411%5Cu611f%5Cu975e%5Cu5e38%5Cu7684%5Cu4e0d%5Cu597d%2C%5Cu6240%5Cu4ee5FJ%5Cu6bcf%5Cu4e00%5Cu5206%5Cu949f%5Cu53ea%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu76f8%5Cu90bb%5Cu7684%5Cu4e24%5Cu53ea%5Cu5976%5Cu725b%5Cu7136%5Cu540e%5Cu8ba9%5Cu4ed6%5Cu4eec%5Cu4ea4%5Cu6362%5Cu4f4d%5Cu7f6e.%5Cn%5CnFJ%5Cu6700%5Cu5c0f%5Cu9700%5Cu8981%5Cu591a%5Cu5c11%5Cu65f6%5Cu95f4%5Cu5c31%5Cu80fd%5Cu4f7f%5Cu5976%5Cu725b%5Cu7ad9%5Cu6210%5Cu4e00%5Cu4e2a%5Cu53ef%5Cu4ee5%5Cu63a5%5Cu53d7%5Cu7684%5Cu5e8f%5Cu5217%3F%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20the%20number%20of%20the%20i-th%20cow%20in%20line%3A%20c%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20minimum%20amount%20of%20time%2C%20in%20minutes%2C%20that%20it%20takes%20Farmer%20John%20to%20get%20the%20cows%20into%20some%20appropriate%20order.%5Cn%22%2C%22samples%22%3A%5B%5B%225%20%5Cn3%20%5Cn5%20%5Cn4%20%5Cn2%20%5Cn1%20%5Cn%22%2C%222%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C108%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A208%2C%22totalAccepted%22%3A98%2C%22pid%22%3A%22P2995%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu725b%5Cu7684%5Cu7167%5Cu7247Cow%20Photographs%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A124960%2C%22title%22%3A%22%5Cu9898%5Cu89e3%5Cu6709%5Cu8bef%5Cuff0c%5Cu5efa%5Cu8bae%5Cu64a4%5Cu6389%22%2C%22forum%22%3A%7B%22id%22%3A2124%2C%22name%22%3A%22P2995%20%5BUSACO10NOV%5D%5Cu725b%5Cu7684%5Cu7167%5Cu7247Cow%20Photographs%22%2C%22slug%22%3A%22P2995%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2997%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu65d7%5Cu5e1cBanner%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2999%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu5de7%5Cu514b%5Cu529b%5Cu725b%5Cu5976Chocolate%20Milk%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4545%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu5976%5Cu725b%5Cu7684%5Cu56fe%5Cu7247Cow%20Photographs%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4777%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6269%5Cu5c55%5Cu4e2d%5Cu56fd%5Cu5269%5Cu4f59%5Cu5b9a%5Cu7406%5Cuff08EXCRT%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5594%22%2C%22title%22%3A%22%5Cu3010XR-4%5Cu3011%5Cu6a21%5Cu62df%5Cu8d5b%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10NOV%5D%5Cu725b%5Cu7684%5Cu7167%5Cu7247Cow%20Photographs%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10NOV]牛的照片Cow Photographs</h1>
+<h2>题目描述</h2>
+<div>Farmer John wants to take a picture of his entire herd of N (1 <= N <= 100,000) cows conveniently numbered 1..N so he can show off to his friends.
+On picture day, the cows run to form a single line in some arbitrary order with position i containing cow c\_i (1 <= c\_i <= N). Farmer John has his own ideas about how the cows should line up.
+FJ thinks cow i may stand only to the left of cow i+1 (for all i, 1 <= i <= N-1) and that cow N may only stand to the left of Cow 1. Of course, no cow will stand to the left of the first (leftmost) cow in the line.
+The cows are hungry for the promised post-photo dinner, so Farmer John wants to take the picture as quickly as possible. Cows are not great at following directions, so he will only choose a pair of adjacent cows and have them switch places once per minute. How quickly is Farmer John able to get them into some acceptable order?
+Consider a set of 5 cows whose initial lineup looks like this:
+Left Right
+3 5 4 2 1
+He can first swap the second pair of cows:
+3 4 5 2 1
+and then swap the rightmost pair:
+3 4 5 1 2
+to yield an acceptable lineup that required but two minutes of cow swapping.
+Farmer John希望给他的N(1<=N<=100,000)只奶牛拍照片,这样他就可以向他的朋友炫耀他的奶牛.这N只奶牛被标号为1..N. 在照相的那一天,奶牛们排成了一排.其中第i个位置上是标号为c\_i(1<=c\_i<=N)的奶牛.对于奶牛的站位,Farmer John有他自己的想法.
+FJ是这么想的,标号为i(1<=i<=n-1)的奶牛只能站在标号为i+1的奶牛的左边,而标号为N的奶牛只能站在标号为1的奶牛的左边.当然,没有牛可以站在队列中最左边的奶牛的左边了.也就是说,最左边的奶牛编号是随意的. 这些奶牛都非常的饿,急切的希望吃到FJ承诺的在拍照后的大餐,所以FJ想尽快的拍照.奶牛们的方向感非常的不好,所以FJ每一分钟只可以选择相邻的两只奶牛然后让他们交换位置.
+FJ最小需要多少时间就能使奶牛站成一个可以接受的序列?
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: N
+\* Lines 2..N+1: Line i+1 contains the number of the i-th cow in line: c\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The minimum amount of time, in minutes, that it takes Farmer John to get the cows into some appropriate order.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 
+3 
+5 
+4 
+2 
+1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

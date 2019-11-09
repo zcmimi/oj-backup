@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Shortest path of the king - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573389853:YK8du50oJs3VRxO+7sAM0vMZiLiyFdcPGh9TRUADsCc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20king%20is%20left%20alone%20on%20the%20chessboard.%20In%20spite%20of%20this%20loneliness%2C%20he%20doesn%27t%20lose%20heart%2C%20because%20he%20has%20business%20of%20national%20importance.%20For%20example%2C%20he%20has%20to%20pay%20an%20official%20visit%20to%20square%20%24%20t%20%24%20.%20As%20the%20king%20is%20not%20in%20habit%20of%20wasting%20his%20time%2C%20he%20wants%20to%20get%20from%20his%20current%20position%20%24%20s%20%24%20to%20square%20%24%20t%20%24%20in%20the%20least%20number%20of%20moves.%20Help%20him%20to%20do%20this.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF3A%5C%2F5ee13bc754378d9b20e7cf9389534f02014d55d0.png%29In%20one%20move%20the%20king%20can%20get%20to%20the%20square%20that%20has%20a%20common%20side%20or%20a%20common%20vertex%20with%20the%20square%20the%20king%20is%20currently%20in%20%28generally%20there%20are%208%20different%20squares%20he%20can%20move%20to%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20chessboard%20coordinates%20of%20square%20%24%20s%20%24%20%2C%20the%20second%20line%20%5Cu2014%20of%20square%20%24%20t%20%24%20.%5Cn%5CnChessboard%20coordinates%20consist%20of%20two%20characters%2C%20the%20first%20one%20is%20a%20lowercase%20Latin%20letter%20%28from%20a%20to%20h%29%2C%20the%20second%20one%20is%20a%20digit%20from%201%20to%208.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20%24%20n%20%24%20%5Cu2014%20minimum%20number%20of%20the%20king%27s%20moves.%20Then%20in%20%24%20n%20%24%20lines%20print%20the%20moves%20themselves.%20Each%20move%20is%20described%20with%20one%20of%20the%208%3A%20L%2C%20R%2C%20U%2C%20D%2C%20LU%2C%20LD%2C%20RU%20or%20RD.%5Cn%5CnL%2C%20R%2C%20U%2C%20D%20stand%20respectively%20for%20moves%20left%2C%20right%2C%20up%20and%20down%20%28according%20to%20the%20picture%29%2C%20and%202-letter%20combinations%20stand%20for%20diagonal%20moves.%20If%20the%20answer%20is%20not%20unique%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22a8%5Cnh1%5Cn%22%2C%227%5CnRD%5CnRD%5CnRD%5CnRD%5CnRD%5CnRD%5CnRD%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B64000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F3%5C%2FA%22%2C%22id%22%3A%223A%22%7D%2C%22translation%22%3A%22%5Cu56fd%5Cu738b%5Cu72ec%5Cu81ea%5Cu4e00%5Cu4eba%5Cu5728%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu3002%5Cu5c3d%5Cu7ba1%5Cu4ed6%5Cu5f88%5Cu5b64%5Cu72ec%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu5e76%5Cu4e0d%5Cu4f1a%5Cu7070%5Cu5fc3%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu4ed6%5Cu6709%5Cu56fd%5Cu5bb6%5Cu5927%5Cu4e8b%5Cu8981%5Cu505a%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu4ed6%5Cu5fc5%5Cu987b%5Cu5bf9%5Cu5e7f%5Cu573aT%5Cu8fdb%5Cu884c%5Cu6b63%5Cu5f0f%5Cu8bbf%5Cu95ee%5Cu3002%5Cu56e0%5Cu4e3a%5Cu56fd%5Cu738b%5Cu6ca1%5Cu6709%5Cu6d6a%5Cu8d39%5Cu65f6%5Cu95f4%5Cu7684%5Cu4e60%5Cu60ef%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4ed6%5Cu60f3%5Cu4ece%5Cu76ee%5Cu524d%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu4e0a%5Cu5c3d%5Cu91cf%5Cu8d70%5Cu6700%5Cu5c11%5Cu7684%5Cu6b65%5Cu6570%5Cu3002%5Cu8bf7%5Cu4f60%5Cu5e2e%5Cu4ed6%5Cu505a%5Cu8fd9%5Cu4ef6%5Cu4e8b%5Cu3002%5Cn%5Cn%5Cu5728%5Cu4e00%5Cu6b21%5Cu79fb%5Cu52a8%5Cu4e2d%5Cuff0c%5Cu56fd%5Cu738b%5Cu53ef%5Cu4ee5%5Cu5230%5Cu8fbe%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5171%5Cu540c%5Cu7684%5Cu8fb9%5Cu6216%5Cu4e00%5Cu4e2a%5Cu5171%5Cu540c%5Cu7684%5Cu9876%5Cu70b9%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu4e0a%5Cuff0c%5Cuff08%5Cu4ed6%5Cu901a%5Cu5e38%5Cu53ef%5Cu4ee5%5Cu79fb%5Cu52a8%5Cu52308%5Cu4e2a%5Cu4e0d%5Cu540c%5Cu7684%5Cu65b9%5Cu683c%5Cu4e0a%5Cuff09%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu65b9%5Cu5f62s%5Cu7684%5Cu68cb%5Cu76d8%5Cu5750%5Cu6807%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%5Cu5e73%5Cu65b9t%5Cu3002%5Cn%5Cn%5Cu68cb%5Cu76d8%5Cu5750%5Cu6807%5Cu7531%5Cu4e24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu7ec4%5Cu6210%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu662f%5Cu5c0f%5Cu5199%5Cu62c9%5Cu4e01%5Cu5b57%5Cu6bcd%5Cuff08%5Cu4ecea%5Cu5230h%5Cuff09%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu662f%5Cu4ece1%5Cu52308%5Cu7684%5Cu6570%5Cu5b57%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu5728%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6253%5Cu5370n%20-%20%5Cu56fd%5Cu738b%5Cu79fb%5Cu52a8%5Cu7684%5Cu6700%5Cu5c0f%5Cu6570%5Cu91cf%5Cu3002%5Cu7136%5Cu540e%5Cu5728n%5Cu884c%5Cu6253%5Cu5370%5Cu79fb%5Cu52a8%5Cu672c%5Cu8eab%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu79fb%5Cu52a8%5Cu75288%5Cuff1aL%5Cuff0cR%5Cuff0cU%5Cuff0cD%5Cuff0cLU%5Cuff0cLD%5Cuff0cRU%5Cu6216RD%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu6765%5Cu63cf%5Cu8ff0%5Cu3002%5Cn%5CnL%5Cuff0cR%5Cuff0cU%5Cuff0cD%5Cu5206%5Cu522b%5Cu9488%5Cu5bf9%5Cu5de6%5Cuff0c%5Cu53f3%5Cuff0c%5Cu4e0a%5Cuff0c%5Cu4e0b%5Cu79fb%5Cu52a8%5Cuff08%5Cu6839%5Cu636e%5Cu56fe%5Cu7247%5Cuff09%5Cuff0c2%5Cu5b57%5Cu6bcd%5Cu7ec4%5Cu5408%5Cu4ee3%5Cu8868%5Cu5bf9%5Cu89d2%5Cu7ebf%5Cu79fb%5Cu52a8%5Cu3002%5Cu5982%5Cu679c%5Cu7b54%5Cu6848%5Cu4e0d%5Cu662f%5Cu552f%5Cu4e00%5Cu7684%5Cuff0c%5Cu8bf7%5Cu6253%5Cu5370%5Cu5176%5Cu4e2d%5Cu7684%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%5Cu3002%5Cn%5CnTranslated%20by%20%40liyifeng%22%2C%22tags%22%3A%5B1%2C7%2C160%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A392%2C%22totalAccepted%22%3A210%2C%22pid%22%3A%22CF3A%22%2C%22title%22%3A%22Shortest%20path%20of%20the%20king%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A116132%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu662fUnknown%20Error%22%2C%22forum%22%3A%7B%22id%22%3A12703%2C%22name%22%3A%22CF3A%20Shortest%20path%20of%20the%20king%22%2C%22slug%22%3A%22CF3A%22%7D%7D%2C%7B%22id%22%3A112360%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu5dee%5Cu8bc4%22%2C%22forum%22%3A%7B%22id%22%3A12703%2C%22name%22%3A%22CF3A%20Shortest%20path%20of%20the%20king%22%2C%22slug%22%3A%22CF3A%22%7D%7D%2C%7B%22id%22%3A55979%2C%22title%22%3A%22%5Cu63d0%5Cu4ea4%5Cu4e0d%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A12703%2C%22name%22%3A%22CF3A%20Shortest%20path%20of%20the%20king%22%2C%22slug%22%3A%22CF3A%22%7D%7D%2C%7B%22id%22%3A32304%2C%22title%22%3A%22%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%22%2C%22forum%22%3A%7B%22id%22%3A12703%2C%22name%22%3A%22CF3A%20Shortest%20path%20of%20the%20king%22%2C%22slug%22%3A%22CF3A%22%7D%7D%2C%7B%22id%22%3A32052%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12703%2C%22name%22%3A%22CF3A%20Shortest%20path%20of%20the%20king%22%2C%22slug%22%3A%22CF3A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF5A%22%2C%22title%22%3A%22Chat%20Server%27s%20Outgoing%20Traffic%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF4B%22%2C%22title%22%3A%22Before%20an%20Exam%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF4A%22%2C%22title%22%3A%22Watermelon%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF3C%22%2C%22title%22%3A%22Tic-tac-toe%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF3B%22%2C%22title%22%3A%22Lorry%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Shortest%20path%20of%20the%20king%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Shortest path of the king</h1>
+<h2>题意翻译</h2>
+<div>国王独自一人在棋盘上。尽管他很孤独，但他并不会灰心，因为他有国家大事要做。例如，他必须对广场T进行正式访问。因为国王没有浪费时间的习惯，所以他想从目前的位置上尽量走最少的步数。请你帮他做这件事。
+在一次移动中，国王可以到达有一个共同的边或一个共同的顶点的正方形上，（他通常可以移动到8个不同的方格上）。
+输入格式
+第一行包含方形s的棋盘坐标，第二行包含平方t。
+棋盘坐标由两个字符组成，第一个是小写拉丁字母（从a到h），第二个是从1到8的数字。
+输出格式
+在第一行打印n - 国王移动的最小数量。然后在n行打印移动本身。每个移动用8：L，R，U，D，LU，LD，RU或RD中的一个来描述。
+L，R，U，D分别针对左，右，上，下移动（根据图片），2字母组合代表对角线移动。如果答案不是唯一的，请打印其中的任何一个。
+Translated by @liyifeng</div>
+<h2>题目描述</h2>
+<div>The king is left alone on the chessboard. In spite of this loneliness, he doesn't lose heart, because he has business of national importance. For example, he has to pay an official visit to square $ t $ . As the king is not in habit of wasting his time, he wants to get from his current position $ s $ to square $ t $ in the least number of moves. Help him to do this.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF3A/5ee13bc754378d9b20e7cf9389534f02014d55d0.png)In one move the king can get to the square that has a common side or a common vertex with the square the king is currently in (generally there are 8 different squares he can move to).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the chessboard coordinates of square $ s $ , the second line — of square $ t $ .
+Chessboard coordinates consist of two characters, the first one is a lowercase Latin letter (from a to h), the second one is a digit from 1 to 8.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print $ n $ — minimum number of the king's moves. Then in $ n $ lines print the moves themselves. Each move is described with one of the 8: L, R, U, D, LU, LD, RU or RD.
+L, R, U, D stand respectively for moves left, right, up and down (according to the picture), and 2-letter combinations stand for diagonal moves. If the answer is not unique, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>a8
+h1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>7
+RD
+RD
+RD
+RD
+RD
+RD
+RD
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

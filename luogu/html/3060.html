@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12NOV]平衡树Balanced Trees - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376350:SOMOJiRIbQuCf3fBHV1+HMiXS7InA5pOcISZCdv8XD4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Fascinated%20by%20his%20experience%20with%20balanced%20parentheses%20so%20far%2C%20Farmer%20John%20is%20curious%20if%20you%20can%20help%20him%20solve%20one%20final%20problem.%20%20As%20it%20turns%20out%2C%20FJ%27s%20farm%20is%20in%20the%20shape%20of%20a%20giant%20tree%20of%20N%20pastures%20%281%20%3C%3D%20N%20%3C%3D%2040%2C000%29%2C%20each%20of%20which%20he%20has%20labeled%20with%20either%20%28%20or%20%29.%20%20For%20example%3A%5Cn%5Cn%27%28%27--%27%28%27--%27%29%27--%27%28%27--%27%29%27%20%5Cn%5Cn%7C%20%20%20%20%20%20%20%20%20%7C%5Cn%5Cn%27%29%27%20%20%20%20%20%20%20%27%29%27--%27%28%27--%27%28%27%20%5Cn%5Cn%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%5Cn%27%29%27%20%20%20%20%20%20%20%20%20%20%20%20%27%28%27--%27%29%27--%27%29%27--%27%29%27--%27%28%27%20%5Cn%5CnRecall%20that%20since%20his%20farm%20is%20a%20tree%2C%20this%20means%20that%20certain%20pairs%20of%20pastures%20are%20connected%20by%20corridors%20so%20that%20there%20is%20one%20unique%20path%20between%20any%20given%20pair%20of%20pastures.%20%20FJ%20believes%20that%20some%20of%20these%20paths%20represent%20balanced%20strings%20of%20parentheses.%20%20In%20particular%2C%20he%20would%20like%20to%20know%2C%20among%20all%20such%20balanced%20strings%20represented%20by%20paths%20through%20the%20tree%2C%20what%20is%20the%20maximum%20nesting%20depth%20one%20can%20find.%20%20The%20nesting%20depth%20of%20a%20balanced%20string%20of%20parentheses%20is%20the%20maximum%2C%20over%20all%20prefixes%20of%20the%20string%2C%20of%20the%20excess%20number%20of%20%28%27s%20within%20the%20prefix.%20%20For%20example%2C%20the%20string%20%28%29%28%29%28%29%20has%20nesting%20depth%201%2C%20but%20the%20string%20%28%28%28%29%29%29%28%29%20has%20nesting%20depth%203%2C%20as%20we%20can%20see%20clearly%20if%20we%20count%20excess%20%28%27s%20for%20every%20prefix%20of%20the%20string%3A%20%5Cn%5Cn%28%28%28%29%29%29%28%29%20%5Cn%5Cn12321010%5Cn%5CnFor%20the%20example%20farm%20above%2C%20the%20deepest%20string%20is%20%28%28%28%29%29%29%20with%20a%20depth%20of%203%2C%20and%20can%20be%20obtained%20by%20taking%20the%20path%20from%20A%20to%20B%20below%3A%5Cn%5Cn%60%60%60cpp%5Cn%27%28%27--%27%28%27--%27%29%27--%27%28%27--%27%29%27%20%5Cn%7C%20%20%20%20%20%20%20%20%20%7C%20%5Cn%27%29%27%20%20%20%20%20%20%20%27%29%27--%27%28%27--%27%28%27%20%3C%20A%20%5Cn%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%5Cn%27%29%27%20%20%20%20%20%20%20%20%20%20%20%20%27%28%27--%27%29%27--%27%29%27--%27%29%27--%27%28%27%20%5Cn%5EC%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5EB%20%5Cn%60%60%60%5CnNote%20that%20this%20is%20different%20than%20the%20longest%20balanced%20string%3B%20for%20instance%20%28%28%29%29%28%28%29%29%2C%20starting%20at%20A%20and%20ending%20at%20C%2C%20has%20length%208.%5Cn%5CnYour%20task%20is%20to%20output%20the%20nesting%20depth%20of%20the%20deepest%20balanced%20path%20in%20the%20tree.%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu4e0a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu62ec%5Cu53f7%5Cu3002%5Cu95ee%5Cu5728%5Cu6240%5Cu6709%5Cu62ec%5Cu53f7%5Cu5e73%5Cu8861%5Cu7684%5Cu8def%5Cu5f84%5Cu4e2d%5Cuff0c%5Cu6700%5Cu5927%5Cu6df1%5Cu5ea6%5Cu4e3a%5Cu591a%5Cu5c11%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20N%2C%20the%20number%20of%20nodes%20in%20the%20tree.%5Cn%5Cn%5C%5C%2A%20Lines%202..N%3A%20Line%20i%2B1%3A%20A%20single%20integer%20p%5C%5C_%28i%2B1%29%20%281%20%3C%3D%20p%5C%5C_%28i%2B1%29%20%3C%3D%20i%29%2C%20denoting%20an%20edge%20between%20nodes%20i%2B1%20and%20p%5C%5C_%7Bi%2B1%7D%20in%20the%20tree.%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B1..2N%3A%20Line%20N%2Bi%3A%20Either%20%28%20or%20%29%2C%20the%20label%20of%20node%20i.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%2C%20giving%20the%20maximum%20nesting%20depth%20of%20a%20balanced%20path.%5Cn%22%2C%22samples%22%3A%5B%5B%2215%20%5Cr%5Cn1%20%5Cr%5Cn2%20%5Cr%5Cn1%20%5Cr%5Cn4%20%5Cr%5Cn4%20%5Cr%5Cn6%20%5Cr%5Cn7%20%5Cr%5Cn5%20%5Cr%5Cn9%20%5Cr%5Cn9%20%5Cr%5Cn11%20%5Cr%5Cn12%20%5Cr%5Cn13%20%5Cr%5Cn14%20%5Cr%5Cn%28%20%5Cr%5Cn%29%20%5Cr%5Cn%29%20%5Cr%5Cn%28%20%5Cr%5Cn%29%20%5Cr%5Cn%29%20%5Cr%5Cn%28%20%5Cr%5Cn%29%20%5Cr%5Cn%28%20%5Cr%5Cn%28%20%5Cr%5Cn%28%20%5Cr%5Cn%29%20%5Cr%5Cn%29%20%5Cr%5Cn%29%20%5Cr%5Cn%28%20%5Cr%5Cn%22%2C%223%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22This%20is%20the%20example%20from%20the%20problem%20description%2C%20with%20the%20following%20node%20labels%3A%5Cn%5Cn1%27%28%27--4%27%28%27--6%27%29%27--7%27%28%27--8%27%29%27%20%5Cn%5Cn%7C%20%20%20%20%20%7C%5Cn%5Cn2%27%29%27%20%205%27%29%27--9%27%28%27--10%27%28%27%20%5Cn%5Cn%7C%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%5Cn3%27%29%27%20%20%20%20%20%20%2011%27%28%27--12%27%29%27--13%27%29%27--14%27%29%27--15%27%28%27%20%5Cn%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B2%2C29%2C46%2C111%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A56%2C%22totalAccepted%22%3A14%2C%22pid%22%3A%22P3060%22%2C%22title%22%3A%22%5BUSACO12NOV%5D%5Cu5e73%5Cu8861%5Cu6811Balanced%20Trees%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1587%22%2C%22title%22%3A%22%5BNOI2016%5D%5Cu5faa%5Cu73af%5Cu4e4b%5Cu7f8e%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3065%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu7b2c%5Cu4e00%21First%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4146%22%2C%22title%22%3A%22%5Cu5e8f%5Cu5217%5Cu7ec8%5Cu7ed3%5Cu8005%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF914F%22%2C%22title%22%3A%22Substrings%20in%20a%20String%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4351%22%2C%22title%22%3A%22%5BCERC2015%5DFrightful%20Formula%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12NOV%5D%5Cu5e73%5Cu8861%5Cu6811Balanced%20Trees%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12NOV]平衡树Balanced Trees</h1>
+<h2>题目描述</h2>
+<div>Fascinated by his experience with balanced parentheses so far, Farmer John is curious if you can help him solve one final problem. As it turns out, FJ's farm is in the shape of a giant tree of N pastures (1 <= N <= 40,000), each of which he has labeled with either ( or ). For example:
+'('--'('--')'--'('--')'
+| |
+')' ')'--'('--'('
+| |
+')' '('--')'--')'--')'--'('
+Recall that since his farm is a tree, this means that certain pairs of pastures are connected by corridors so that there is one unique path between any given pair of pastures. FJ believes that some of these paths represent balanced strings of parentheses. In particular, he would like to know, among all such balanced strings represented by paths through the tree, what is the maximum nesting depth one can find. The nesting depth of a balanced string of parentheses is the maximum, over all prefixes of the string, of the excess number of ('s within the prefix. For example, the string ()()() has nesting depth 1, but the string ((()))() has nesting depth 3, as we can see clearly if we count excess ('s for every prefix of the string:
+((()))()
+12321010
+For the example farm above, the deepest string is ((())) with a depth of 3, and can be obtained by taking the path from A to B below:
+```cpp
+'('--'('--')'--'('--')'
+| |
+')' ')'--'('--'(' < A
+| |
+')' '('--')'--')'--')'--'('
+^C ^B
+```
+Note that this is different than the longest balanced string; for instance (())(()), starting at A and ending at C, has length 8.
+Your task is to output the nesting depth of the deepest balanced path in the tree.
+给出一棵树，每个结点上有一个括号。问在所有括号平衡的路径中，最大深度为多少。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer N, the number of nodes in the tree.
+\* Lines 2..N: Line i+1: A single integer p\_(i+1) (1 <= p\_(i+1) <= i), denoting an edge between nodes i+1 and p\_{i+1} in the tree.
+\* Lines N+1..2N: Line N+i: Either ( or ), the label of node i.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer, giving the maximum nesting depth of a balanced path.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>15 
+1 
+2 
+1 
+4 
+4 
+6 
+7 
+5 
+9 
+9 
+11 
+12 
+13 
+14 
+( 
+) 
+) 
+( 
+) 
+) 
+( 
+) 
+( 
+( 
+( 
+) 
+) 
+) 
+( 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+</code></pre>
+<h2>说明</h2>
+<div>This is the example from the problem description, with the following node labels:
+1'('--4'('--6')'--7'('--8')'
+| |
+2')' 5')'--9'('--10'('
+| |
+3')' 11'('--12')'--13')'--14')'--15'('
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

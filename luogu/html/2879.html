@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO07JAN]区间统计Tallest Cow - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376088:VhyDli1IE+J45wfB9pum5n7CNCtdGvcqdSSXIsBOkL8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22FJ%27s%20N%20%281%20%5Cu2264%20N%20%5Cu2264%2010%2C000%29%20cows%20conveniently%20indexed%201..N%20are%20standing%20in%20a%20line.%20Each%20cow%20has%20a%20positive%20integer%20height%20%28which%20is%20a%20bit%20of%20secret%29.%20You%20are%20told%20only%20the%20height%20H%20%281%20%5Cu2264%20H%20%5Cu2264%201%2C000%2C000%29%20of%20the%20tallest%20cow%20along%20with%20the%20index%20I%20of%20that%20cow.%5Cn%5CnFJ%20has%20made%20a%20list%20of%20R%20%280%20%5Cu2264%20R%20%5Cu2264%2010%2C000%29%20lines%20of%20the%20form%20%5C%22cow%2017%20sees%20cow%2034%5C%22.%20This%20means%20that%20cow%2034%20is%20at%20least%20as%20tall%20as%20cow%2017%2C%20and%20that%20every%20cow%20between%2017%20and%2034%20has%20a%20height%20that%20is%20strictly%20smaller%20than%20that%20of%20cow%2017.%5Cn%5CnFor%20each%20cow%20from%201..N%2C%20determine%20its%20maximum%20possible%20height%2C%20such%20that%20all%20of%20the%20information%20given%20is%20still%20correct.%20It%20is%20guaranteed%20that%20it%20is%20possible%20to%20satisfy%20all%20the%20constraints.%5Cn%5Cn%22%2C%22inputFormat%22%3A%22Line%201%3A%20Four%20space-separated%20integers%3A%20N%2C%20I%2C%20H%20and%20R%5Cn%5Cn%5CnLines%202..R%2B1%3A%20Two%20distinct%20space-separated%20integers%20A%20and%20B%20%281%20%5Cu2264%20A%2C%20B%20%5Cu2264%20N%29%2C%20indicating%20that%20cow%20A%20can%20see%20cow%20B.%5Cn%22%2C%22outputFormat%22%3A%22Lines%201..N%3A%20Line%20i%20contains%20the%20maximum%20possible%20height%20of%20cow%20i.%5Cn%22%2C%22samples%22%3A%5B%5B%229%203%205%205%5Cn1%203%5Cn5%203%5Cn4%203%5Cn3%207%5Cn9%208%22%2C%225%5Cn4%5Cn5%5Cn3%5Cn4%5Cn4%5Cn5%5Cn5%5Cn5%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff1a%5Cn%5CnFarmerJohn%20%5Cu6709n%5Cu5934%5Cu725b%5Cuff0c%5Cu5b83%5Cu4eec%5Cu6309%5Cu987a%5Cu5e8f%5Cu6392%5Cu6210%5Cu4e00%5Cu5217%5Cu3002%20FarmerJohn%20%5Cu53ea%5Cu77e5%5Cu9053%5Cu5176%5Cu4e2d%5Cu6700%5Cu9ad8%5Cu7684%5Cu5976%5Cu725b%5Cu7684%5Cu5e8f%5Cu53f7%5Cu53ca%5Cu5b83%5Cu7684%5Cu9ad8%5Cu5ea6%5Cuff0c%5Cu5176%5Cu4ed6%5Cu5976%5Cu725b%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu90fd%5Cu662f%5Cu672a%5Cu77e5%5Cu7684%5Cu3002%5Cu73b0%5Cu5728%20FarmerJohn%20%5Cu624b%5Cu4e0a%5Cu6709%24R%24%5Cu6761%5Cu4fe1%5Cu606f%5Cuff0c%5Cu6bcf%5Cu6761%5Cu4fe1%5Cu606f%5Cu4e0a%5Cu6709%5Cu4e24%5Cu5934%5Cu5976%5Cu725b%5Cu7684%5Cu5e8f%5Cu53f7%5Cuff08%24a%24%5Cu548c%24b%24%5Cuff09%5Cuff0c%5Cu5176%5Cu4e2d%24b%24%5Cu5976%5Cu725b%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu4e00%5Cu5b9a%5Cu5927%5Cu4e8e%5Cu7b49%5Cu4e8e%24a%24%5Cu5976%5Cu725b%5Cu7684%5Cu9ad8%5Cu5ea6%5Cuff0c%5Cu4e14%24a%24%5Cuff0c%24b%24%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6240%5Cu6709%5Cu5976%5Cu725b%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu90fd%5Cu6bd4%24a%24%5Cu5c0f%5Cu3002%5Cu73b0%5Cu5728%24FarmerJohn%24%5Cu60f3%5Cu8ba9%5Cu4f60%5Cu6839%5Cu636e%5Cu8fd9%5Cu4e9b%5Cu4fe1%5Cu606f%5Cu6c42%5Cu51fa%5Cu6bcf%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu7684%5Cu53ef%5Cu80fd%5Cu7684%5Cu6700%5Cu5927%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu3002%5Cuff08%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1%5Cu6709%5Cu89e3%5Cuff09%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c1%5Cu884c%5Cuff1a%5Cu56db%5Cu4e2a%5Cu4ee5%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu7684%5Cu6574%5Cu6570%5Cuff1a%24n%24%5Cuff0c%24i%24%5Cuff0c%24h%24%5Cu548c%24R%24%5Cuff08%24n%24%5Cu548c%24R%24%5Cu610f%5Cu4e49%5Cu89c1%5Cu9898%5Cu9762%3B%20%24i%24%20%5Cu548c%20%24h%24%20%5Cu8868%5Cu793a%5Cu7b2c%20%24i%24%20%5Cu5934%5Cu725b%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu4e3a%20%24h%24%20%5Cuff0c%5Cu4ed6%5Cu662f%5Cu6700%5Cu9ad8%5Cu7684%5Cu5976%5Cu725b%5Cuff09%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765R%5Cu884c%5Cuff1a%5Cu4e24%5Cu4e2a%5Cu4e0d%5Cu540c%5Cu7684%5Cu6574%5Cu6570%24a%24%5Cu548c%24b%24%5Cuff081%20%5Cu2264%20%24a%24%5Cuff0c%24b%24%20%5Cu2264%20n%5Cuff09%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu4e00%5Cu5171n%5Cu884c%5Cuff0c%5Cu8868%5Cu793a%5Cu6bcf%5Cu5934%5Cu5976%5Cu725b%5Cu7684%5Cu6700%5Cu5927%5Cu53ef%5Cu80fd%5Cu9ad8%5Cu5ea6.%5Cn%5Cn%23%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cuff1a%5Cn%5Cn1%20%5Cu2264%20n%20%5Cu2264%2010000%20%3B%201%20%5Cu2264%20h%20%5Cu2264%201000000%20%3B%200%20%5Cu2264%20R%20%5Cu2264%2010000%29%5Cn%5Cn%5CnTranslate%20provided%20by%20%40%5Cu9165%5Cu76ae%22%2C%22tags%22%3A%5B1%2C24%2C46%2C235%2C254%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A3282%2C%22totalAccepted%22%3A1759%2C%22pid%22%3A%22P2879%22%2C%22title%22%3A%22%5BUSACO07JAN%5D%5Cu533a%5Cu95f4%5Cu7edf%5Cu8ba1Tallest%20Cow%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A136966%2C%22title%22%3A%22%5Cu5bf9%5Cu9898%5Cu89e3%5Cu6709%5Cu4e00%5Cu70b9%5Cu4e0d%5Cu660e%5Cu767d%22%2C%22forum%22%3A%7B%22id%22%3A2009%2C%22name%22%3A%22P2879%20%5BUSACO07JAN%5D%5Cu533a%5Cu95f4%5Cu7edf%5Cu8ba1Tallest%20Cow%22%2C%22slug%22%3A%22P2879%22%7D%7D%2C%7B%22id%22%3A116431%2C%22title%22%3A%22%5Cu8fd9%5Cu9053%5Cu9898%5Cu8f93%5Cu5165%5Cu7684i%5Cu6ca1%5Cu6709%5Cu7528%5Cu5427%5Cu2026%5Cu2026%22%2C%22forum%22%3A%7B%22id%22%3A2009%2C%22name%22%3A%22P2879%20%5BUSACO07JAN%5D%5Cu533a%5Cu95f4%5Cu7edf%5Cu8ba1Tallest%20Cow%22%2C%22slug%22%3A%22P2879%22%7D%7D%2C%7B%22id%22%3A103017%2C%22title%22%3A%22%5Cu8bf7%5Cu5927%5Cu4f6c%20%5Cu6307%5Cu6559%20%5Cuff0c%5Cu6b64code%20%5Cu5982%5Cu4f55%5Cu53bb%5Cu91cd%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2009%2C%22name%22%3A%22P2879%20%5BUSACO07JAN%5D%5Cu533a%5Cu95f4%5Cu7edf%5Cu8ba1Tallest%20Cow%22%2C%22slug%22%3A%22P2879%22%7D%7D%2C%7B%22id%22%3A93401%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7684%5Cu610f%5Cu601d%5Cuff1a%5Cuff1a%22%2C%22forum%22%3A%7B%22id%22%3A2009%2C%22name%22%3A%22P2879%20%5BUSACO07JAN%5D%5Cu533a%5Cu95f4%5Cu7edf%5Cu8ba1Tallest%20Cow%22%2C%22slug%22%3A%22P2879%22%7D%7D%2C%7B%22id%22%3A91733%2C%22title%22%3A%22%5Cu602a%5Cu5f02%22%2C%22forum%22%3A%7B%22id%22%3A2009%2C%22name%22%3A%22P2879%20%5BUSACO07JAN%5D%5Cu533a%5Cu95f4%5Cu7edf%5Cu8ba1Tallest%20Cow%22%2C%22slug%22%3A%22P2879%22%7D%7D%2C%7B%22id%22%3A87475%2C%22title%22%3A%22%5Cu80fd%5Cu4e0d%5Cu80fd%5Cu628a%5Cu8fd9%5Cu9898%5Cu7684%5Cu7ffb%5Cu8bd1%5Cu6362%5Cu6389%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2009%2C%22name%22%3A%22P2879%20%5BUSACO07JAN%5D%5Cu533a%5Cu95f4%5Cu7edf%5Cu8ba1Tallest%20Cow%22%2C%22slug%22%3A%22P2879%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1083%22%2C%22title%22%3A%22%5Cu501f%5Cu6559%5Cu5ba4%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2280%22%2C%22title%22%3A%22%5BHNOI2003%5D%5Cu6fc0%5Cu5149%5Cu70b8%5Cu5f39%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2887%22%2C%22title%22%3A%22%5BUSACO07NOV%5D%5Cu9632%5Cu6652%5Cu971cSunscreen%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF670C%22%2C%22title%22%3A%22Cinema%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4552%22%2C%22title%22%3A%22%5BPoetize6%5D%20IncDec%20Sequence%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO07JAN%5D%5Cu533a%5Cu95f4%5Cu7edf%5Cu8ba1Tallest%20Cow%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO07JAN]区间统计Tallest Cow</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述：
+FarmerJohn 有n头牛，它们按顺序排成一列。 FarmerJohn 只知道其中最高的奶牛的序号及它的高度，其他奶牛的高度都是未知的。现在 FarmerJohn 手上有$R$条信息，每条信息上有两头奶牛的序号（$a$和$b$），其中$b$奶牛的高度一定大于等于$a$奶牛的高度，且$a$，$b$之间的所有奶牛的高度都比$a$小。现在$FarmerJohn$想让你根据这些信息求出每一头奶牛的可能的最大的高度。（数据保证有解）
+### 输入格式：
+第1行：四个以空格分隔的整数：$n$，$i$，$h$和$R$（$n$和$R$意义见题面; $i$ 和 $h$ 表示第 $i$ 头牛的高度为 $h$ ，他是最高的奶牛）
+接下来R行：两个不同的整数$a$和$b$（1 ≤ $a$，$b$ ≤ n）
+### 输出格式：
+一共n行，表示每头奶牛的最大可能高度.
+### 数据范围：
+1 ≤ n ≤ 10000 ; 1 ≤ h ≤ 1000000 ; 0 ≤ R ≤ 10000)
+Translate provided by @酥皮</div>
+<h2>题目描述</h2>
+<div>FJ's N (1 ≤ N ≤ 10,000) cows conveniently indexed 1..N are standing in a line. Each cow has a positive integer height (which is a bit of secret). You are told only the height H (1 ≤ H ≤ 1,000,000) of the tallest cow along with the index I of that cow.
+FJ has made a list of R (0 ≤ R ≤ 10,000) lines of the form "cow 17 sees cow 34". This means that cow 34 is at least as tall as cow 17, and that every cow between 17 and 34 has a height that is strictly smaller than that of cow 17.
+For each cow from 1..N, determine its maximum possible height, such that all of the information given is still correct. It is guaranteed that it is possible to satisfy all the constraints.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Line 1: Four space-separated integers: N, I, H and R
+Lines 2..R+1: Two distinct space-separated integers A and B (1 ≤ A, B ≤ N), indicating that cow A can see cow B.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Lines 1..N: Line i contains the maximum possible height of cow i.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>9 3 5 5
+1 3
+5 3
+4 3
+3 7
+9 8</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+4
+5
+3
+4
+4
+5
+5
+5</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

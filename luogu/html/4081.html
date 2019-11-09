@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO17DEC]Standing Out from the Herd - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381007:g81eNRQ2THB4EWWI4afBxNGO2FVXfQp2QvF+UCwQP+M=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Just%20like%20humans%2C%20cows%20often%20appreciate%20feeling%20they%20are%20unique%20in%20some%20way.%20Since%20Farmer%20John%27s%20cows%20all%20come%20from%20the%20same%20breed%20and%20look%20quite%20similar%2C%20they%20want%20to%20measure%20uniqueness%20in%20their%20names.%5Cn%5CnEach%20cow%27s%20name%20has%20some%20number%20of%20substrings.%20For%20example%2C%20%5C%22amy%5C%22%20has%20substrings%20%7Ba%2C%20m%2C%20y%2C%20am%2C%20my%2C%20amy%7D%2C%20and%20%5C%22tommy%5C%22%20would%20have%20the%20following%20substrings%3A%20%7Bt%2C%20o%2C%20m%2C%20y%2C%20to%2C%20om%2C%20mm%2C%20my%2C%20tom%2C%20omm%2C%20mmy%2C%20tomm%2C%20ommy%2C%20tommy%7D.%5Cn%5Cn%5CnA%20cow%20name%20has%20a%20%5C%22uniqueness%20factor%5C%22%20which%20is%20the%20number%20of%20substrings%20of%20that%20name%20not%20shared%20with%20any%20other%20cow.%20For%20example%2C%20If%20amy%20was%20in%20a%20herd%20by%20herself%2C%20her%20uniqueness%20factor%20would%20be%206.%20If%20tommy%20was%20in%20a%20herd%20by%20himself%2C%20his%20uniqueness%20factor%20would%20be%2014.%20If%20they%20were%20in%20a%20herd%20together%2C%20however%2C%20amy%27s%20uniqueness%20factor%20would%20be%203%20and%20tommy%27s%20would%20be%2011.%5Cn%5Cn%5CnGiven%20a%20herd%20of%20cows%2C%20please%20determine%20each%20cow%27s%20uniqueness%20factor.%5Cn%5Cn%5Cn%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu300c%5Cu72ec%5Cu7279%5Cu503c%5Cu300d%5Cu4e3a%5Cu53ea%5Cu5c5e%5Cu4e8e%5Cu8be5%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu672c%5Cu8d28%5Cu4e0d%5Cu540c%5Cu7684%5Cu975e%5Cu7a7a%5Cu5b50%5Cu4e32%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cu5982%20%5C%22amy%5C%22%20%5Cu4e0e%20%5Cu201ctommy%5Cu201d%20%5Cu4e24%5Cu4e2a%5Cu4e32%5Cuff0c%5Cu53ea%5Cu5c5e%5Cu4e8e%20%5C%22amy%5C%22%20%5Cu7684%5Cu672c%5Cu8d28%5Cu4e0d%5Cu540c%5Cu7684%5Cu5b50%5Cu4e32%5Cu4e3a%20%5C%22a%5C%22%20%5C%22am%5C%22%20%5C%22amy%5C%22%20%5Cu5171%203%20%5Cu4e2a%5Cu3002%5Cu53ea%5Cu5c5e%5Cu4e8e%20%5C%22tommy%5C%22%20%5Cu7684%5Cu672c%5Cu8d28%5Cu4e0d%5Cu540c%5Cu7684%5Cu5b50%5Cu4e32%5Cu4e3a%20%5C%22t%5C%22%20%5C%22to%5C%22%20%5C%22tom%5C%22%20%5C%22tomm%5C%22%20%5C%22tommy%5C%22%20%5C%22o%5C%22%20%5C%22om%5C%22%20%5C%22omm%5C%22%20%5C%22ommy%5C%22%20%5C%22mm%5C%22%20%5C%22mmy%5C%22%20%5Cu5171%2011%20%5Cu4e2a%5Cu3002%20%5Cu6240%5Cu4ee5%20%5C%22amy%5C%22%20%5Cu7684%5Cu300c%5Cu72ec%5Cu7279%5Cu503c%5Cu300d%5Cu4e3a%203%20%5Cuff0c%5C%22tommy%5C%22%20%5Cu7684%5Cu300c%5Cu72ec%5Cu7279%5Cu503c%5Cu300d%5Cu4e3a%2011%20%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu5b9a%20N%20%28%24N%20%5C%5Cleq%2010%5E5%24%29%20%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu96c6%5Cu4e3a%5Cu5c0f%5Cu5199%5Cu82f1%5Cu6587%5Cu5b57%5Cu6bcd%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu6240%5Cu6709%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu957f%5Cu5ea6%5Cu548c%5Cu5c0f%5Cu4e8e%20%2410%5E5%24%5Cuff0c%5Cu6c42%5Cu51fa%5Cu6bcf%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu300c%5Cu72ec%5Cu7279%5Cu503c%5Cu300d%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20will%20contain%20%24N%24%20%28%241%20%5C%5Cle%20N%20%5C%5Cle%2010%5E5%24%29.%20The%20following%20%24N%24%20lines%20will%20each%20contain%20the%20name%20of%20a%20cow%20in%20the%20herd.%20Each%20name%20will%20contain%20only%20lowercase%20characters%20a-z.%20The%20total%20length%20of%20all%20names%20will%20not%20exceed%20%2410%5E5%24.%5Cn%22%2C%22outputFormat%22%3A%22Output%20%24N%24%20numbers%2C%20one%20per%20line%2C%20describing%20the%20uniqueness%20factor%20of%20each%20cow.%5Cn%22%2C%22samples%22%3A%5B%5B%223%5Cnamy%5Cntommy%5Cnbessie%22%2C%223%5Cn11%5Cn19%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B2%2C34%2C46%2C101%2C113%2C303%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A585%2C%22totalAccepted%22%3A299%2C%22pid%22%3A%22P4081%22%2C%22title%22%3A%22%5BUSACO17DEC%5DStanding%20Out%20from%20the%20Herd%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A84552%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu7684%5Cu6570%5Cu636e%5Cu4e0b%5Cu8f7d%5Cu662f%5Cu4e0d%5Cu662f%5Cu51fa%5Cu9505%5Cu4e86%5Cu2026%5Cu2026%22%2C%22forum%22%3A%7B%22id%22%3A8565%2C%22name%22%3A%22P4081%20%5BUSACO17DEC%5DStanding%20Out%20from%20the%20Herd%22%2C%22slug%22%3A%22P4081%22%7D%7D%2C%7B%22id%22%3A31681%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A8565%2C%22name%22%3A%22P4081%20%5BUSACO17DEC%5DStanding%20Out%20from%20the%20Herd%22%2C%22slug%22%3A%22P4081%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3346%22%2C%22title%22%3A%22%5BZJOI2015%5D%5Cu8bf8%5Cu795e%5Cu7737%5Cu987e%5Cu7684%5Cu5e7b%5Cu60f3%5Cu4e61%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4022%22%2C%22title%22%3A%22%5BCTSC2012%5D%5Cu719f%5Cu6089%5Cu7684%5Cu6587%5Cu7ae0%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4112%22%2C%22title%22%3A%22%5BHEOI2015%5D%5Cu6700%5Cu77ed%5Cu4e0d%5Cu516c%5Cu5171%5Cu5b50%5Cu4e32%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF666E%22%2C%22title%22%3A%22Forensic%20Examination%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4770%22%2C%22title%22%3A%22%5BNOI2018%5D%5Cu4f60%5Cu7684%5Cu540d%5Cu5b57%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO17DEC%5DStanding%20Out%20from%20the%20Herd%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO17DEC]Standing Out from the Herd</h1>
+<h2>题目描述</h2>
+<div>Just like humans, cows often appreciate feeling they are unique in some way. Since Farmer John's cows all come from the same breed and look quite similar, they want to measure uniqueness in their names.
+Each cow's name has some number of substrings. For example, "amy" has substrings {a, m, y, am, my, amy}, and "tommy" would have the following substrings: {t, o, m, y, to, om, mm, my, tom, omm, mmy, tomm, ommy, tommy}.
+A cow name has a "uniqueness factor" which is the number of substrings of that name not shared with any other cow. For example, If amy was in a herd by herself, her uniqueness factor would be 6. If tommy was in a herd by himself, his uniqueness factor would be 14. If they were in a herd together, however, amy's uniqueness factor would be 3 and tommy's would be 11.
+Given a herd of cows, please determine each cow's uniqueness factor.
+定义一个字符串的「独特值」为只属于该字符串的本质不同的非空子串的个数。如 "amy" 与 “tommy” 两个串，只属于 "amy" 的本质不同的子串为 "a" "am" "amy" 共 3 个。只属于 "tommy" 的本质不同的子串为 "t" "to" "tom" "tomm" "tommy" "o" "om" "omm" "ommy" "mm" "mmy" 共 11 个。 所以 "amy" 的「独特值」为 3 ，"tommy" 的「独特值」为 11 。
+给定 N ($N \leq 10^5$) 个字符集为小写英文字母的字符串，所有字符串的长度和小于 $10^5$，求出每个字符串「独特值」。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input will contain $N$ ($1 \le N \le 10^5$). The following $N$ lines will each contain the name of a cow in the herd. Each name will contain only lowercase characters a-z. The total length of all names will not exceed $10^5$.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $N$ numbers, one per line, describing the uniqueness factor of each cow.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+amy
+tommy
+bessie</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+11
+19</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cinema Cashier - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573389910:jVBuyIpFM1/B0tvu7sYrw7bMrRyLm3YUSC1oK7aoMjY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22All%20cinema%20halls%20in%20Berland%20are%20rectangles%20with%20%24%20K%20%24%20rows%20of%20%24%20K%20%24%20seats%20each%2C%20and%20%24%20K%20%24%20is%20an%20odd%20number.%20Rows%20and%20seats%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20K%20%24%20.%20For%20safety%20reasons%20people%2C%20who%20come%20to%20the%20box%20office%20to%20buy%20tickets%2C%20are%20not%20allowed%20to%20choose%20seats%20themselves.%20Formerly%20the%20choice%20was%20made%20by%20a%20cashier%2C%20but%20now%20this%20is%20the%20responsibility%20of%20a%20special%20seating%20program.%20It%20was%20found%20out%20that%20the%20large%20majority%20of%20Berland%27s%20inhabitants%20go%20to%20the%20cinema%20in%20order%20to%20watch%20a%20movie%2C%20that%27s%20why%20they%20want%20to%20sit%20as%20close%20to%20the%20hall%20center%20as%20possible.%20Moreover%2C%20a%20company%20of%20%24%20M%20%24%20people%2C%20who%20come%20to%20watch%20a%20movie%2C%20want%20necessarily%20to%20occupy%20%24%20M%20%24%20successive%20seats%20in%20one%20row.%20Let%27s%20formulate%20the%20algorithm%2C%20according%20to%20which%20the%20program%20chooses%20seats%20and%20sells%20tickets.%20As%20the%20request%20for%20%24%20M%20%24%20seats%20comes%2C%20the%20program%20should%20determine%20the%20row%20number%20%24%20x%20%24%20and%20the%20segment%20%24%20%5By_%7Bl%7D%2Cy_%7Br%7D%5D%20%24%20of%20the%20seats%20numbers%20in%20this%20row%2C%20where%20%24%20y_%7Br%7D-y_%7Bl%7D%2B1%3DM%20%24%20.%20From%20all%20such%20possible%20variants%20as%20a%20final%20result%20the%20program%20should%20choose%20the%20one%20with%20the%20minimum%20function%20value%20of%20total%20seats%20remoteness%20from%20the%20center.%20Say%2C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF10B%5C%2Fc9748a84837b67ee9aa2cbea2b55fdd9ec523940.png%29%20%5Cu2014%20the%20row%20and%20the%20seat%20numbers%20of%20the%20most%20%5C%22central%5C%22%20seat.%20Then%20the%20function%20value%20of%20seats%20remoteness%20from%20the%20hall%20center%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF10B%5C%2F9bc644baca5d1a575e01b85fce16d96f8e180ca4.png%29.%20If%20the%20amount%20of%20minimum%20function%20values%20is%20more%20than%20one%2C%20the%20program%20should%20choose%20the%20one%20that%20is%20closer%20to%20the%20screen%20%28i.e.%20the%20row%20number%20%24%20x%20%24%20is%20lower%29.%20If%20the%20variants%20are%20still%20multiple%2C%20it%20should%20choose%20the%20one%20with%20the%20minimum%20%24%20y_%7Bl%7D%20%24%20.%20If%20you%20did%20not%20get%20yet%2C%20your%20task%20is%20to%20simulate%20the%20work%20of%20this%20program.%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20N%20%24%20and%20%24%20K%20%24%20%28%20%24%201%3C%3DN%3C%3D1000%2C1%3C%3DK%3C%3D99%20%24%20%29%20%5Cu2014%20the%20amount%20of%20requests%20and%20the%20hall%20size%20respectively.%20The%20second%20line%20contains%20%24%20N%20%24%20space-separated%20integers%20%24%20M_%7Bi%7D%20%24%20from%20the%20range%20%24%20%5B1%2CK%5D%20%24%20%5Cu2014%20requests%20to%20the%20program.%22%2C%22outputFormat%22%3A%22Output%20%24%20N%20%24%20lines.%20In%20the%20%24%20i%20%24%20-th%20line%20output%20%5Cu00ab-1%5Cu00bb%20%28without%20quotes%29%2C%20if%20it%20is%20impossible%20to%20find%20%24%20M_%7Bi%7D%20%24%20successive%20seats%20in%20one%20row%2C%20otherwise%20output%20three%20numbers%20%24%20x%2Cy_%7Bl%7D%2Cy_%7Br%7D%20%24%20.%20Separate%20the%20numbers%20with%20a%20space.%22%2C%22samples%22%3A%5B%5B%222%201%5Cn1%201%5Cn%22%2C%221%201%201%5Cn-1%5Cn%22%5D%2C%5B%224%203%5Cn1%202%203%201%5Cn%22%2C%222%202%202%5Cn1%201%202%5Cn3%201%203%5Cn2%201%201%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F10%5C%2FB%22%2C%22id%22%3A%2210B%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7535%5Cu5f71%5Cu9662%5Cuff0c%5Cu5927%5Cu5c0f%5Cu662fk%2Ak%5Cu7684%5Cuff0c%5Cu7136%5Cu540e%5Cu6709n%5Cu6ce2%5Cu4eba%5Cu4f9d%5Cu6b21%5Cu5230%5Cu6765%5Cn%5Cn%5Cu6bcf%5Cu4e00%5Cu6ce2%5Cu4eba%5Cu90fd%5Cu60f3%5Cu9009%5Cu62e9%5Cu5c3d%5Cu91cf%5Cu9760%5Cu4e2d%5Cu95f4%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu5c31%5Cu662f%5Cu8fd9%5Cu4e00%5Cu6ce2%5Cu4eba%5Cu90fd%5Cu5fc5%5Cu987b%5Cu5750%5Cu5728%5Cu540c%5Cu4e00%5Cu884c%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6709%5Cu4e00%5Cu4e2a%5Cu82b1%5Cu8d39%5Cu5c31%5Cu662fabs%28x-zx%29%2Babs%28y-zy%29%5Cn%5Cn%5Cu7136%5Cu540e%5Cu4f60%5Cu9700%5Cu8981%5Cu7ed9%5Cu4ed6%5Cu4eec%5Cu5b89%5Cu6392%5Cu5ea7%5Cu4f4d%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu82b1%5Cu8d39%5Cu6700%5Cu5c0f%5Cuff0c%5Cu5982%5Cu679c%5Cu82b1%5Cu8d39%5Cu4e00%5Cu6837%5Cuff0c%5Cu5c31%5Cu5750%5Cu5de6%5Cu524d%5Cu65b9%5Cu3002%5Cn%5Cn%5Cu95ee%5Cu4f60%5Cu600e%5Cu4e48%5Cu53bb%5Cu5b89%5Cu6392%22%2C%22tags%22%3A%5B1%2C53%2C288%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A36%2C%22totalAccepted%22%3A22%2C%22pid%22%3A%22CF10B%22%2C%22title%22%3A%22Cinema%20Cashier%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32006%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A12669%2C%22name%22%3A%22CF10B%20Cinema%20Cashier%22%2C%22slug%22%3A%22CF10B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Cinema%20Cashier%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Cinema Cashier</h1>
+<h2>题意翻译</h2>
+<div>有一个电影院，大小是k*k的，然后有n波人依次到来
+每一波人都想选择尽量靠中间的位置，就是这一波人都必须坐在同一行，并且有一个花费就是abs(x-zx)+abs(y-zy)
+然后你需要给他们安排座位，使得花费最小，如果花费一样，就坐左前方。
+问你怎么去安排</div>
+<h2>题目描述</h2>
+<div>All cinema halls in Berland are rectangles with $ K $ rows of $ K $ seats each, and $ K $ is an odd number. Rows and seats are numbered from $ 1 $ to $ K $ . For safety reasons people, who come to the box office to buy tickets, are not allowed to choose seats themselves. Formerly the choice was made by a cashier, but now this is the responsibility of a special seating program. It was found out that the large majority of Berland's inhabitants go to the cinema in order to watch a movie, that's why they want to sit as close to the hall center as possible. Moreover, a company of $ M $ people, who come to watch a movie, want necessarily to occupy $ M $ successive seats in one row. Let's formulate the algorithm, according to which the program chooses seats and sells tickets. As the request for $ M $ seats comes, the program should determine the row number $ x $ and the segment $ [y_{l},y_{r}] $ of the seats numbers in this row, where $ y_{r}-y_{l}+1=M $ . From all such possible variants as a final result the program should choose the one with the minimum function value of total seats remoteness from the center. Say, ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF10B/c9748a84837b67ee9aa2cbea2b55fdd9ec523940.png) — the row and the seat numbers of the most "central" seat. Then the function value of seats remoteness from the hall center is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF10B/9bc644baca5d1a575e01b85fce16d96f8e180ca4.png). If the amount of minimum function values is more than one, the program should choose the one that is closer to the screen (i.e. the row number $ x $ is lower). If the variants are still multiple, it should choose the one with the minimum $ y_{l} $ . If you did not get yet, your task is to simulate the work of this program.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ N $ and $ K $ ( $ 1<=N<=1000,1<=K<=99 $ ) — the amount of requests and the hall size respectively. The second line contains $ N $ space-separated integers $ M_{i} $ from the range $ [1,K] $ — requests to the program.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $ N $ lines. In the $ i $ -th line output «-1» (without quotes), if it is impossible to find $ M_{i} $ successive seats in one row, otherwise output three numbers $ x,y_{l},y_{r} $ . Separate the numbers with a space.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 1
+1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 1 1
+-1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 3
+1 2 3 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 2 2
+1 1 2
+3 1 3
+2 1 1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

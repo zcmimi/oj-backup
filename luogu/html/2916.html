@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08NOV]安慰奶牛Cheering up the Cow - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376139:M8umrzEICPRhMaobnGzzdqoBwEOTBQluZjkjhOCXPc0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20has%20grown%20so%20lazy%20that%20he%20no%20longer%20wants%20to%20continue%20maintaining%20the%20cow%20paths%20that%20currently%20provide%20a%20way%20to%20visit%20each%20of%20his%20N%20%285%20%3C%3D%20N%20%3C%3D%2010%2C000%29%20pastures%20%28conveniently%20numbered%201..N%29.%20Each%20and%20every%20pasture%20is%20home%20to%20one%20cow.%20FJ%20plans%20to%20remove%20as%20many%20of%20the%20P%20%28N-1%20%3C%3D%20P%20%3C%3D%20100%2C000%29%20paths%20as%20possible%20while%20keeping%20the%20pastures%20connected.%20You%20must%20determine%20which%20N-1%20paths%20to%20keep.%5Cn%5CnBidirectional%20path%20j%20connects%20pastures%20S%5C%5C_j%20and%20E%5C%5C_j%20%281%20%3C%3D%20S%5C%5C_j%20%3C%3D%20N%3B%201%20%3C%3D%20E%5C%5C_j%20%3C%3D%20N%3B%20S%5C%5C_j%20%21%3D%20E%5C%5C_j%29%20and%20requires%20L%5C%5C_j%20%280%20%3C%3D%20L%5C%5C_j%20%3C%3D%201%2C000%29%20time%20to%20traverse.%20No%20pair%20of%20pastures%20is%20directly%20connected%20by%20more%20than%20one%20path.%5Cn%5CnThe%20cows%20are%20sad%20that%20their%20transportation%20system%20is%20being%20reduced.%20You%20must%20visit%20each%20cow%20at%20least%20once%20every%20day%20to%20cheer%20her%20up.%20Every%20time%20you%20visit%20pasture%20i%20%28even%20if%20you%27re%20just%20traveling%5Cn%5Cnthrough%29%2C%20you%20must%20talk%20to%20the%20cow%20for%20time%20C%5C%5C_i%20%281%20%3C%3D%20C%5C%5C_i%20%3C%3D%201%2C000%29.%5Cn%5CnYou%20will%20spend%20each%20night%20in%20the%20same%20pasture%20%28which%20you%20will%20choose%29%20until%20the%20cows%20have%20recovered%20from%20their%20sadness.%20You%20will%20end%20up%20talking%20to%20the%20cow%20in%20the%20sleeping%20pasture%20at%20least%20in%20the%20morning%20when%20you%20wake%20up%20and%20in%20the%20evening%20after%20you%20have%20returned%20to%20sleep.%5Cn%5CnAssuming%20that%20Farmer%20John%20follows%20your%20suggestions%20of%20which%20paths%20to%20keep%20and%20you%20pick%20the%20optimal%20pasture%20to%20sleep%20in%2C%20determine%20the%20minimal%20amount%20of%20time%20it%20will%20take%20you%20to%20visit%20each%20cow%20at%20least%20once%20in%20a%20day.%5Cn%5CnFor%20your%20first%2010%20submissions%2C%20you%20will%20be%20provided%20with%20the%20results%20of%20running%20your%20program%20on%20a%20part%20of%20the%20actual%20test%20data.%5Cn%5CnPOINTS%3A%20300%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu6709N%5Cu4e2a%5Cu7267%5Cu573a%5Cuff0c%5Cu7f16%5Cu53f7%5Cu4f9d%5Cu6b21%5Cu4e3a1%5Cu5230N%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu7267%5Cu573a%5Cu91cc%5Cu4f4f%5Cu7740%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu3002%5Cu8fde%5Cu63a5%5Cu8fd9%5Cu4e9b%5Cu7267%5Cu573a%5Cu7684%5Cu6709P%5Cu6761%5Cu9053%5Cu8def%5Cuff0c%5Cu6bcf%5Cu6761%5Cu9053%5Cu8def%5Cu90fd%5Cu662f%5Cu53cc%5Cu5411%5Cu7684%5Cu3002%5Cu7b2cj%5Cu6761%5Cu9053%5Cu8def%5Cu8fde%5Cu63a5%5Cu7684%5Cu662f%5Cu7267%5Cu573aSj%5Cu548cEj%5Cuff0c%5Cu901a%5Cu884c%5Cu9700%5Cu8981Lj%5Cu7684%5Cu65f6%5Cu95f4%5Cu3002%5Cu4e24%5Cu7267%5Cu573a%5Cu4e4b%5Cu95f4%5Cu6700%5Cu591a%5Cu53ea%5Cu6709%5Cu4e00%5Cu6761%5Cu9053%5Cu8def%5Cu3002%5Cu7ea6%5Cu7ff0%5Cu6253%5Cu7b97%5Cu5728%5Cu4fdd%5Cu6301%5Cu5404%5Cu7267%5Cu573a%5Cu8fde%5Cu901a%5Cu7684%5Cu60c5%5Cu51b5%5Cu4e0b%5Cu53bb%5Cu6389%5Cu5c3d%5Cu91cf%5Cu591a%5Cu7684%5Cu9053%5Cu8def%5Cu3002%5Cu00a0%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu77e5%5Cu9053%5Cuff0c%5Cu5728%5Cu9053%5Cu8def%5Cu88ab%5Cu5f3a%5Cu62c6%5Cu540e%5Cuff0c%5Cu5976%5Cu725b%5Cu4f1a%5Cu975e%5Cu5e38%5Cu4f24%5Cu5fc3%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4ed6%5Cu8ba1%5Cu5212%5Cu62c6%5Cu9664%5Cu9053%5Cu8def%5Cu4e4b%5Cu540e%5Cu5c31%5Cu53bb%5Cu5ffd%5Cu60a0%5Cu5979%5Cu4eec%5Cu3002%5Cu7ea6%5Cu7ff0%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu4ece%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu7267%5Cu573a%5Cu51fa%5Cu53d1%5Cu5f00%5Cu59cb%5Cu4ed6%5Cu7ef4%5Cu7a33%5Cu5de5%5Cu4f5c%5Cu3002%5Cu5f53%5Cu4ed6%5Cu8d70%5Cu8bbf%5Cu5b8c%5Cu6240%5Cu6709%5Cu7684%5Cu5976%5Cu725b%5Cu4e4b%5Cu540e%5Cuff0c%5Cu8fd8%5Cu8981%5Cu56de%5Cu5230%5Cu4ed6%5Cu7684%5Cu51fa%5Cu53d1%5Cu5730%5Cu3002%5Cu6bcf%5Cu6b21%5Cu8def%5Cu8fc7%5Cu7267%5Cu573ai%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu4ed6%5Cu5fc5%5Cu987b%5Cu82b1Ci%5Cu7684%5Cu65f6%5Cu95f4%5Cu548c%5Cu5976%5Cu725b%5Cu4ea4%5Cu8c08%5Cuff0c%5Cu5373%5Cu4f7f%5Cu4e4b%5Cu524d%5Cu5df2%5Cu7ecf%5Cu505a%5Cu8fc7%5Cu5de5%5Cu4f5c%5Cu4e86%5Cuff0c%5Cu4e5f%5Cu8981%5Cu7559%5Cu4e0b%5Cu6765%5Cu518d%5Cu8c08%5Cu4e00%5Cu6b21%5Cu3002%5Cu6ce8%5Cu610f%5Cu7ea6%5Cu7ff0%5Cu5728%5Cu51fa%5Cu53d1%5Cu548c%5Cu56de%5Cu53bb%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu90fd%5Cu8981%5Cu548c%5Cu51fa%5Cu53d1%5Cu5730%5Cu7684%5Cu5976%5Cu725b%5Cu8c08%5Cu4e00%5Cu6b21%5Cu8bdd%5Cu3002%5Cu8bf7%5Cu4f60%5Cu8ba1%5Cu7b97%5Cu4e00%5Cu4e0b%5Cuff0c%5Cu7ea6%5Cu7ff0%5Cu8981%5Cu62c6%5Cu9664%5Cu54ea%5Cu4e9b%5Cu9053%5Cu8def%5Cuff0c%5Cu624d%5Cu80fd%5Cu8ba9%5Cu5ffd%5Cu60a0%5Cu5976%5Cu725b%5Cu7684%5Cu65f6%5Cu95f4%5Cu53d8%5Cu5f97%5Cu6700%5Cu5c11%5Cuff1f%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20P%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20a%20single%20integer%3A%20C%5C%5C_i%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B2..N%2BP%2B1%3A%20Line%20N%2Bj%2B1%20contains%20three%20space-separated%5Cn%5Cnintegers%3A%20S%5C%5C_j%2C%20E%5C%5C_j%2C%20and%20L%5C%5C_j%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%2C%20the%20total%20time%20it%20takes%20to%20visit%20all%20the%20cows%20%28including%20the%20two%20visits%20to%20the%20cow%20in%20your%5Cn%5Cnsleeping-pasture%29%5Cn%22%2C%22samples%22%3A%5B%5B%225%207%20%5Cn10%20%5Cn10%20%5Cn20%20%5Cn6%20%5Cn30%20%5Cn1%202%205%20%5Cn2%203%205%20%5Cn2%204%2012%20%5Cn3%204%2017%20%5Cn2%205%2015%20%5Cn3%205%206%20%5Cn4%205%2012%20%5Cn%22%2C%22176%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%60%60%60cpp%5Cn%20%20%20%2B-%2815%29-%2B%20%5Cn%20%20%5C%2F%20%20%20%20%20%20%20%20%5C%5C%20%5Cn%20%5C%2F%20%20%20%20%20%20%20%20%20%20%5C%5C%20%5Cn1-%285%29-2-%285%29-3-%286%29--5%20%5Cn%20%20%20%5C%5C%20%20%20%5C%2F%2817%29%20%20%5C%2F%20%5Cn%2812%29%5C%5C%20%5C%2F%20%20%20%20%20%20%5C%2F%2812%29%20%5Cn%20%20%20%20%204------%2B%20%5Cn%5CnKeep%20these%20paths%3A%20%5Cn1-%285%29-2-%285%29-3%20%20%20%20%20%205%20%5Cn%20%20%20%20%20%20%20%5C%5C%20%20%20%20%20%20%20%20%20%20%5C%2F%20%5Cn%20%20%20%20%2812%29%5C%5C%20%20%20%20%20%20%20%20%5C%2F%2812%29%20%5Cn%20%20%20%20%20%20%20%20%2A4------%2B%20%5Cn%60%60%60%5CnWake%20up%20in%20pasture%204%20and%20visit%20pastures%20in%20the%20order%204%2C%205%2C%204%2C%202%2C%203%2C%202%2C%201%2C%202%2C%204%20yielding%20a%20total%20time%20of%20176%20before%20going%20back%20to%20sleep.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C46%2C166%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1674%2C%22totalAccepted%22%3A941%2C%22pid%22%3A%22P2916%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5b89%5Cu6170%5Cu5976%5Cu725bCheering%20up%20the%20Cow%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A158538%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu8981%5Cu5ffd%5Cu60a0%5Cu5976%5Cu725b%5Cu5440%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2045%2C%22name%22%3A%22P2916%20%5BUSACO08NOV%5D%5Cu5b89%5Cu6170%5Cu5976%5Cu725bCheering%20up%20the%20Cow%22%2C%22slug%22%3A%22P2916%22%7D%7D%2C%7B%22id%22%3A79249%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff1aKruskal%5Cu4e3a%5Cu5565T%5Cu4e86%5Cu4e24%5Cu4e2a%5Cu70b9%22%2C%22forum%22%3A%7B%22id%22%3A2045%2C%22name%22%3A%22P2916%20%5BUSACO08NOV%5D%5Cu5b89%5Cu6170%5Cu5976%5Cu725bCheering%20up%20the%20Cow%22%2C%22slug%22%3A%22P2916%22%7D%7D%2C%7B%22id%22%3A46931%2C%22title%22%3A%22%5Cu628a%5Cu8bf4%5Cu660e%5Cu91cc%5Cu7684%5Cu56fe%5Cu6539%5Cu4e00%5Cu4e0b%5Cu884c%5Cu5417%5Cuff1f%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2045%2C%22name%22%3A%22P2916%20%5BUSACO08NOV%5D%5Cu5b89%5Cu6170%5Cu5976%5Cu725bCheering%20up%20the%20Cow%22%2C%22slug%22%3A%22P2916%22%7D%7D%2C%7B%22id%22%3A42381%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%22%2C%22forum%22%3A%7B%22id%22%3A2045%2C%22name%22%3A%22P2916%20%5BUSACO08NOV%5D%5Cu5b89%5Cu6170%5Cu5976%5Cu725bCheering%20up%20the%20Cow%22%2C%22slug%22%3A%22P2916%22%7D%7D%2C%7B%22id%22%3A10036%2C%22title%22%3A%22%5Cu611f%5Cu89c9%5Cu6807%5Cu9898%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A2045%2C%22name%22%3A%22P2916%20%5BUSACO08NOV%5D%5Cu5b89%5Cu6170%5Cu5976%5Cu725bCheering%20up%20the%20Cow%22%2C%22slug%22%3A%22P2916%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1195%22%2C%22title%22%3A%22%5Cu53e3%5Cu888b%5Cu7684%5Cu5929%5Cu7a7a%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1340%22%2C%22title%22%3A%22%5Cu517d%5Cu5f84%5Cu7ba1%5Cu7406%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1991%22%2C%22title%22%3A%22%5Cu65e0%5Cu7ebf%5Cu901a%5Cu8baf%5Cu7f51%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2212%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2504%22%2C%22title%22%3A%22%5BHAOI2006%5D%5Cu806a%5Cu660e%5Cu7684%5Cu7334%5Cu5b50%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08NOV%5D%5Cu5b89%5Cu6170%5Cu5976%5Cu725bCheering%20up%20the%20Cow%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08NOV]安慰奶牛Cheering up the Cow</h1>
+<h2>题目描述</h2>
+<div>Farmer John has grown so lazy that he no longer wants to continue maintaining the cow paths that currently provide a way to visit each of his N (5 <= N <= 10,000) pastures (conveniently numbered 1..N). Each and every pasture is home to one cow. FJ plans to remove as many of the P (N-1 <= P <= 100,000) paths as possible while keeping the pastures connected. You must determine which N-1 paths to keep.
+Bidirectional path j connects pastures S\_j and E\_j (1 <= S\_j <= N; 1 <= E\_j <= N; S\_j != E\_j) and requires L\_j (0 <= L\_j <= 1,000) time to traverse. No pair of pastures is directly connected by more than one path.
+The cows are sad that their transportation system is being reduced. You must visit each cow at least once every day to cheer her up. Every time you visit pasture i (even if you're just traveling
+through), you must talk to the cow for time C\_i (1 <= C\_i <= 1,000).
+You will spend each night in the same pasture (which you will choose) until the cows have recovered from their sadness. You will end up talking to the cow in the sleeping pasture at least in the morning when you wake up and in the evening after you have returned to sleep.
+Assuming that Farmer John follows your suggestions of which paths to keep and you pick the optimal pasture to sleep in, determine the minimal amount of time it will take you to visit each cow at least once in a day.
+For your first 10 submissions, you will be provided with the results of running your program on a part of the actual test data.
+POINTS: 300
+约翰有N个牧场，编号依次为1到N。每个牧场里住着一头奶牛。连接这些牧场的有P条道路，每条道路都是双向的。第j条道路连接的是牧场Sj和Ej，通行需要Lj的时间。两牧场之间最多只有一条道路。约翰打算在保持各牧场连通的情况下去掉尽量多的道路。 
+约翰知道，在道路被强拆后，奶牛会非常伤心，所以他计划拆除道路之后就去忽悠她们。约翰可以选择从任意一个牧场出发开始他维稳工作。当他走访完所有的奶牛之后，还要回到他的出发地。每次路过牧场i的时候，他必须花Ci的时间和奶牛交谈，即使之前已经做过工作了，也要留下来再谈一次。注意约翰在出发和回去的时候，都要和出发地的奶牛谈一次话。请你计算一下，约翰要拆除哪些道路，才能让忽悠奶牛的时间变得最少？
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and P
+\* Lines 2..N+1: Line i+1 contains a single integer: C\_i
+\* Lines N+2..N+P+1: Line N+j+1 contains three space-separated
+integers: S\_j, E\_j, and L\_j
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer, the total time it takes to visit all the cows (including the two visits to the cow in your
+sleeping-pasture)
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 7 
+10 
+10 
+20 
+6 
+30 
+1 2 5 
+2 3 5 
+2 4 12 
+3 4 17 
+2 5 15 
+3 5 6 
+4 5 12 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>176 
+</code></pre>
+<h2>说明</h2>
+<div>```cpp
++-(15)-+
+/ \
+/ \
+1-(5)-2-(5)-3-(6)--5
+\ /(17) /
+(12)\ / /(12)
+4------+
+Keep these paths:
+1-(5)-2-(5)-3 5
+\ /
+(12)\ /(12)
+*4------+
+```
+Wake up in pasture 4 and visit pastures in the order 4, 5, 4, 2, 3, 2, 1, 2, 4 yielding a total time of 176 before going back to sleep.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

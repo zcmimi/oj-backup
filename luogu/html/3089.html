@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13NOV]POGO的牛Pogo-Cow - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376386:GTxajSiOPgW1+fvVoQKqihVw3ZBIJMReSqNZqr3Xipw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22In%20an%20ill-conceived%20attempt%20to%20enhance%20the%20mobility%20of%20his%20prize%20cow%20Bessie%2C%20Farmer%20John%20has%20attached%20a%20pogo%20stick%20to%20each%20of%20Bessie%27s%20legs.%20Bessie%20can%20now%20hop%20around%20quickly%20throughout%20the%20farm%2C%20but%20she%20has%20not%20yet%20learned%20how%20to%20slow%20down.%5Cn%5CnTo%20help%20train%20Bessie%20to%20hop%20with%20greater%20control%2C%20Farmer%20John%20sets%20up%20a%20practice%20course%20for%20her%20along%20a%20straight%20one-dimensional%20path%20across%20his%20farm.%20%20At%20various%20distinct%20positions%20on%20the%20path%2C%20he%20places%20N%20targets%20on%20which%20Bessie%20should%20try%20to%20land%20%281%20%3C%3D%20N%20%3C%3D%201000%29.%20%20Target%20i%20is%20located%20at%20position%20x%28i%29%2C%20and%20is%20worth%20p%28i%29%20points%20if%20Bessie%20lands%20on%20it.%20%20Bessie%20starts%20at%20the%20location%20of%20any%20target%20of%20her%20choosing%20and%20is%20allowed%20to%20move%20in%20only%20one%20direction%2C%20hopping%20from%20target%20to%20target.%20%20Each%20hop%20must%20cover%20at%20least%20as%20much%20distance%20as%20the%20previous%20hop%2C%20and%20must%20land%20on%20a%20target.%5Cn%5CnBessie%20receives%20credit%20for%20every%20target%20she%20touches%20%28including%20the%20initial%20target%20on%20which%20she%20starts%29.%20%20Please%20compute%20the%20maximum%20number%20of%20points%20she%20can%20obtain.%5Cn%5CnFJ%5Cu7ed9%5Cu5976%5Cu725b%5Cu8d1d%5Cu897f%5Cu7684%5Cu811a%5Cu5b89%5Cu88c5%5Cu4e0a%5Cu4e86%5Cu5f39%5Cu7c27%5Cuff0c%5Cu4f7f%5Cu5b83%5Cu53ef%5Cu4ee5%5Cu5728%5Cu519c%5Cu573a%5Cu91cc%5Cu5feb%5Cu901f%5Cu5730%5Cu8df3%5Cu8dc3%5Cuff0c%5Cu4f46%5Cu662f%5Cu5b83%5Cu8fd8%5Cu6ca1%5Cu6709%5Cu5b66%5Cu4f1a%5Cu5982%5Cu4f55%5Cu964d%5Cu4f4e%5Cu901f%5Cu5ea6%5Cu3002%5Cn%5Cn%5CnFJ%5Cu89c9%5Cu5f97%5Cu8ba9%5Cu8d1d%5Cu897f%5Cu5728%5Cu4e00%5Cu6761%5Cu76f4%5Cu7ebf%5Cu7684%5Cu4e00%5Cu7ef4%5Cu7ebf%5Cu8def%5Cu4e0a%5Cu8fdb%5Cu884c%5Cu7ec3%5Cu4e60%5Cuff0c%5Cu4ed6%5Cu5728%5Cu4e0d%5Cu540c%5Cu7684%5Cu76ee%5Cu6807%5Cu70b9%5Cu653e%5Cu7f6e%5Cu4e86N%20%281%20%3C%3D%20N%20%3C%3D%201000%29%5Cu4e2a%5Cu76ee%5Cu6807%5Cu70b9%5Cuff0c%5Cu76ee%5Cu6807%5Cu70b9i%5Cu5728%5Cu76ee%5Cu6807%5Cu70b9x%28i%29%5Cuff0c%5Cu8be5%5Cu70b9%5Cu5f97%5Cu5206%5Cu4e3ap%28i%29%5Cu3002%5Cu8d1d%5Cu897f%5Cu5f00%5Cu59cb%5Cu65f6%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu7ad9%5Cu5728%5Cu4e00%5Cu4e2a%5Cu76ee%5Cu6807%5Cu70b9%5Cu4e0a%5Cuff0c%5Cu53ea%5Cu5141%5Cu8bb8%5Cu671d%5Cu4e00%5Cu4e2a%5Cu65b9%5Cu5411%5Cu8df3%5Cu8dc3%5Cuff0c%5Cu4ece%5Cu4e00%5Cu76ee%5Cu6807%5Cu70b9%5Cu8df3%5Cu5230%5Cu53e6%5Cu5916%5Cu4e00%5Cu4e2a%5Cu76ee%5Cu6807%5Cu70b9%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu8df3%5Cu8dc3%5Cu7684%5Cu8ddd%5Cu79bb%5Cu81f3%5Cu5c11%5Cu548c%5Cu4e0a%5Cu4e00%5Cu6b21%5Cu8df3%5Cu8dc3%5Cu7684%5Cu8ddd%5Cu79bb%5Cu76f8%5Cu7b49%5Cuff0c%5Cu5e76%5Cu4e14%5Cu5fc5%5Cu987b%5Cu8df3%5Cu5230%5Cu4e00%5Cu4e2a%5Cu76ee%5Cu6807%5Cu70b9%5Cu3002%5Cn%5Cn%5Cn%5Cu6bcf%5Cu8df3%5Cu5230%5Cu4e00%5Cu4e2a%5Cu76ee%5Cu6807%5Cu70b9%5Cuff0c%5Cu8d1d%5Cu897f%5Cu53ef%5Cu4ee5%5Cu62ff%5Cu5230%5Cu8be5%5Cu70b9%5Cu7684%5Cu5f97%5Cu5206%5Cuff0c%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu4ed6%5Cu7684%5Cu6700%5Cu5927%5Cu53ef%5Cu80fd%5Cu5f97%5Cu5206%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20integer%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Line%20i%2B1%20contains%20x%28i%29%20and%20p%28i%29%2C%20each%20an%20integer%20in%20the%20range%200..1%2C000%2C000.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20maximum%20number%20of%20points%20Bessie%20can%20receive.%5Cn%22%2C%22samples%22%3A%5B%5B%226%20%5Cr%5Cn5%206%20%5Cr%5Cn1%201%20%5Cr%5Cn10%205%20%5Cr%5Cn7%206%20%5Cr%5Cn4%208%20%5Cr%5Cn8%2010%20%5Cr%5Cn%22%2C%2225%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%206%20targets.%20%20The%20first%20is%20at%20position%20x%3D5%20and%20is%20worth%206%20points%2C%20and%20so%20on.%5Cn%5Cn%5CnBessie%20hops%20from%20position%20x%3D4%20%288%20points%29%20to%20position%20x%3D5%20%286%20points%29%20to%20position%20x%3D7%20%286%20points%29%20to%20position%20x%3D10%20%285%20points%29.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C30%2C46%2C56%2C111%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A868%2C%22totalAccepted%22%3A257%2C%22pid%22%3A%22P3089%22%2C%22title%22%3A%22%5BUSACO13NOV%5DPOGO%5Cu7684%5Cu725bPogo-Cow%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A87539%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff0c%5Cu5fc3%5Cu6001%5Cu5d29%5Cu4e86P3089%22%2C%22forum%22%3A%7B%22id%22%3A2206%2C%22name%22%3A%22P3089%20%5BUSACO13NOV%5DPOGO%5Cu7684%5Cu725bPogo-Cow%22%2C%22slug%22%3A%22P3089%22%7D%7D%2C%7B%22id%22%3A53715%2C%22title%22%3A%22%5Cu9898%5Cu9762%22%2C%22forum%22%3A%7B%22id%22%3A2206%2C%22name%22%3A%22P3089%20%5BUSACO13NOV%5DPOGO%5Cu7684%5Cu725bPogo-Cow%22%2C%22slug%22%3A%22P3089%22%7D%7D%2C%7B%22id%22%3A27046%2C%22title%22%3A%22%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu548c%5Cu8bf4%5Cu660e%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2206%2C%22name%22%3A%22P3089%20%5BUSACO13NOV%5DPOGO%5Cu7684%5Cu725bPogo-Cow%22%2C%22slug%22%3A%22P3089%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2569%22%2C%22title%22%3A%22%5BSCOI2010%5D%5Cu80a1%5Cu7968%5Cu4ea4%5Cu6613%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3092%22%2C%22title%22%3A%22%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3522%22%2C%22title%22%3A%22%5BPOI2011%5DTEM-Temperature%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3572%22%2C%22title%22%3A%22%5BPOI2014%5DPTA-Little%20Bird%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4544%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu8d2d%5Cu4e70%5Cu9972%5Cu6599Buying%20Feed%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13NOV%5DPOGO%5Cu7684%5Cu725bPogo-Cow%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13NOV]POGO的牛Pogo-Cow</h1>
+<h2>题目描述</h2>
+<div>In an ill-conceived attempt to enhance the mobility of his prize cow Bessie, Farmer John has attached a pogo stick to each of Bessie's legs. Bessie can now hop around quickly throughout the farm, but she has not yet learned how to slow down.
+To help train Bessie to hop with greater control, Farmer John sets up a practice course for her along a straight one-dimensional path across his farm. At various distinct positions on the path, he places N targets on which Bessie should try to land (1 <= N <= 1000). Target i is located at position x(i), and is worth p(i) points if Bessie lands on it. Bessie starts at the location of any target of her choosing and is allowed to move in only one direction, hopping from target to target. Each hop must cover at least as much distance as the previous hop, and must land on a target.
+Bessie receives credit for every target she touches (including the initial target on which she starts). Please compute the maximum number of points she can obtain.
+FJ给奶牛贝西的脚安装上了弹簧，使它可以在农场里快速地跳跃，但是它还没有学会如何降低速度。
+FJ觉得让贝西在一条直线的一维线路上进行练习，他在不同的目标点放置了N (1 <= N <= 1000)个目标点，目标点i在目标点x(i)，该点得分为p(i)。贝西开始时可以选择站在一个目标点上，只允许朝一个方向跳跃，从一目标点跳到另外一个目标点，每次跳跃的距离至少和上一次跳跃的距离相等，并且必须跳到一个目标点。
+每跳到一个目标点，贝西可以拿到该点的得分，请计算他的最大可能得分。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The integer N.
+\* Lines 2..1+N: Line i+1 contains x(i) and p(i), each an integer in the range 0..1,000,000.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The maximum number of points Bessie can receive.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 
+5 6 
+1 1 
+10 5 
+7 6 
+4 8 
+8 10 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>25 
+</code></pre>
+<h2>说明</h2>
+<div>There are 6 targets. The first is at position x=5 and is worth 6 points, and so on.
+Bessie hops from position x=4 (8 points) to position x=5 (6 points) to position x=7 (6 points) to position x=10 (5 points).
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

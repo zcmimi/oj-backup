@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dijkstra? - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390010:2x+YYYNjAqxOV4lw0aGl+JgoE+XOLu//INR/DfJnfXI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20weighted%20undirected%20graph.%20The%20vertices%20are%20enumerated%20from%201%20to%20%24%20n%20%24%20.%20Your%20task%20is%20to%20find%20the%20shortest%20path%20between%20the%20vertex%20%24%201%20%24%20and%20the%20vertex%20%24%20n%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%3C%3Dn%3C%3D10%5E%7B5%7D%2C0%3C%3Dm%3C%3D10%5E%7B5%7D%20%24%20%29%2C%20where%20%24%20n%20%24%20is%20the%20number%20of%20vertices%20and%20%24%20m%20%24%20is%20the%20number%20of%20edges.%20Following%20%24%20m%20%24%20lines%20contain%20one%20edge%20each%20in%20form%20%24%20a_%7Bi%7D%20%24%20%2C%20%24%20b_%7Bi%7D%20%24%20and%20%24%20w_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%2Cb_%7Bi%7D%3C%3Dn%2C1%3C%3Dw_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29%2C%20where%20%24%20a_%7Bi%7D%2Cb_%7Bi%7D%20%24%20are%20edge%20endpoints%20and%20%24%20w_%7Bi%7D%20%24%20is%20the%20length%20of%20the%20edge.%5Cn%5CnIt%20is%20possible%20that%20the%20graph%20has%20loops%20and%20multiple%20edges%20between%20pair%20of%20vertices.%22%2C%22outputFormat%22%3A%22Write%20the%20only%20integer%20-1%20in%20case%20of%20no%20path.%20Write%20the%20shortest%20path%20in%20opposite%20case.%20If%20there%20are%20many%20solutions%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%225%206%5Cn1%202%202%5Cn2%205%205%5Cn2%203%204%5Cn1%204%201%5Cn4%203%203%5Cn3%205%201%5Cn%22%2C%221%204%203%205%20%22%5D%2C%5B%225%206%5Cn1%202%202%5Cn2%205%205%5Cn2%203%204%5Cn1%204%201%5Cn4%203%203%5Cn3%205%201%5Cn%22%2C%221%204%203%205%20%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B64000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F20%5C%2FC%22%2C%22id%22%3A%2220C%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu5f20%5Cu56fe%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu5176%5Cu4e2d%5Cu4efb%5Cu610f%5Cu4e00%5Cu6761%5Cu53ef%5Cu884c%5Cu7684%5Cu4ece%5Cu70b9%20%241%24%20%5Cu5230%5Cu70b9%20%24n%24%20%5Cu7684%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff0cm%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu70b9%5Cu6570%5Cu548c%5Cu8fb9%5Cu6570%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765m%5Cu884c%5Cuff1a%5Cu6bcf%5Cu884c%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570u%5Cuff0cv%5Cuff0cw%5Cuff0c%5Cu8868%5Cu793au%5Cu548cv%5Cu4e4b%5Cu95f4%5Cu8fde%5Cu4e00%5Cu6761%5Cu8fb9%5Cu6743%5Cu4e3aw%5Cu7684%5Cu53cc%5Cu5411%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e00%5Cu4e2a%5Cu53ef%5Cu884c%5Cu7684%5Cu8def%5Cu5f84%5Cuff0c%5Cu5982%5Cu679c%5Cu4e0d%5Cu5b58%5Cu5728%5Cu8fd9%5Cu79cd%5Cu8def%5Cu5f84%5Cu8f93%5Cu51fa-1%5Cn%5Cn2%3C%3Dn%3C%3D10%5E5%5Cuff0c0%3C%3Dm%3C%3D10%5E5%22%2C%22tags%22%3A%5B54%2C160%2C164%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2334%2C%22totalAccepted%22%3A426%2C%22pid%22%3A%22CF20C%22%2C%22title%22%3A%22Dijkstra%3F%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A165400%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cu5927%5Cu4f6cmle%5Cu600e%5Cu4e48%5Cu529e%5Cu554aQAQ%22%2C%22forum%22%3A%7B%22id%22%3A12618%2C%22name%22%3A%22CF20C%20Dijkstra%3F%22%2C%22slug%22%3A%22CF20C%22%7D%7D%2C%7B%22id%22%3A143145%2C%22title%22%3A%22%5Cu5173%5Cu4e8emle%22%2C%22forum%22%3A%7B%22id%22%3A12618%2C%22name%22%3A%22CF20C%20Dijkstra%3F%22%2C%22slug%22%3A%22CF20C%22%7D%7D%2C%7B%22id%22%3A134025%2C%22title%22%3A%22%5Cu8bd5%5Cu95ee%5Cu5404%5Cu4f4ddalao%5Cu5982%5Cu4f55%5Cu5b58%5Cu8def%5Cu5f84%22%2C%22forum%22%3A%7B%22id%22%3A12618%2C%22name%22%3A%22CF20C%20Dijkstra%3F%22%2C%22slug%22%3A%22CF20C%22%7D%7D%2C%7B%22id%22%3A131002%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu6551%22%2C%22forum%22%3A%7B%22id%22%3A12618%2C%22name%22%3A%22CF20C%20Dijkstra%3F%22%2C%22slug%22%3A%22CF20C%22%7D%7D%2C%7B%22id%22%3A124138%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu521a%5Cu5b66%5Cu56fe%5Cu8bba%5Cu4e24%5Cu5929%22%2C%22forum%22%3A%7B%22id%22%3A12618%2C%22name%22%3A%22CF20C%20Dijkstra%3F%22%2C%22slug%22%3A%22CF20C%22%7D%7D%2C%7B%22id%22%3A99531%2C%22title%22%3A%22spfa%5Cu88ab%5Cu5361%5Cu4e86%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A12618%2C%22name%22%3A%22CF20C%20Dijkstra%3F%22%2C%22slug%22%3A%22CF20C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1144%22%2C%22title%22%3A%22%5Cu6700%5Cu77ed%5Cu8def%5Cu8ba1%5Cu6570%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1730%22%2C%22title%22%3A%22%5Cu6700%5Cu5c0f%5Cu5bc6%5Cu5ea6%5Cu8def%5Cu5f84%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3385%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu8d1f%5Cu73af%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3372%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7ebf%5Cu6bb5%5Cu6811%201%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4779%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Dijkstra%3F%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Dijkstra?</h1>
+<h2>题意翻译</h2>
+<div>题目大意
+给出一张图，请输出其中任意一条可行的从点 $1$ 到点 $n$ 的最短路径。
+输入输出格式
+输入格式
+第一行：两个整数n，m，分别表示点数和边数
+接下来m行：每行三个整数u，v，w，表示u和v之间连一条边权为w的双向边。
+输出格式
+一行：一个可行的路径，如果不存在这种路径输出-1
+2<=n<=10^5，0<=m<=10^5</div>
+<h2>题目描述</h2>
+<div>You are given a weighted undirected graph. The vertices are enumerated from 1 to $ n $ . Your task is to find the shortest path between the vertex $ 1 $ and the vertex $ n $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 2<=n<=10^{5},0<=m<=10^{5} $ ), where $ n $ is the number of vertices and $ m $ is the number of edges. Following $ m $ lines contain one edge each in form $ a_{i} $ , $ b_{i} $ and $ w_{i} $ ( $ 1<=a_{i},b_{i}<=n,1<=w_{i}<=10^{6} $ ), where $ a_{i},b_{i} $ are edge endpoints and $ w_{i} $ is the length of the edge.
+It is possible that the graph has loops and multiple edges between pair of vertices.</div>
+<h3>输出格式</h3>
+<br />
+<div>Write the only integer -1 in case of no path. Write the shortest path in opposite case. If there are many solutions, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 6
+1 2 2
+2 5 5
+2 3 4
+1 4 1
+4 3 3
+3 5 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 4 3 5 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 6
+1 2 2
+2 5 5
+2 3 4
+1 4 1
+4 3 3
+3 5 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1 4 3 5 </code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

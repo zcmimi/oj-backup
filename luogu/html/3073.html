@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13FEB]拖拉机Tractor - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376365:a6vip/vG2nlzRPiT4h6xIBnyXL4Q2E+7NvusYrfbAb0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22One%20of%20Farmer%20John%27s%20fields%20is%20particularly%20hilly%2C%20and%20he%20wants%20to%20purchase%20a%20new%20tractor%20to%20drive%20around%20on%20it.%20%20The%20field%20is%20described%20by%20an%20N%20x%20N%20grid%20of%20non-negative%20integer%20elevations%20%281%20%3C%3D%20N%20%3C%3D%20500%29.%20%20A%20tractor%20capable%20of%20moving%20from%20one%20grid%20cell%20to%20an%20adjacent%20cell%20%28one%20step%20north%2C%20east%2C%20south%2C%20or%20west%29%20of%20height%20difference%20D%20costs%20exactly%20D%20units%20of%20money.%5Cn%5CnFJ%20would%20like%20to%20pay%20enough%20for%20his%20tractor%20so%20that%2C%20starting%20from%20some%20grid%20cell%20in%20his%20field%2C%20he%20can%20successfully%20drive%20the%20tractor%20around%20to%20visit%20at%20least%20half%20the%20grid%20cells%20in%20the%20field%20%28if%20the%20number%20of%20total%20cells%20in%20the%20field%20is%20odd%2C%20he%20wants%20to%20visit%20at%20least%20half%20the%20cells%20rounded%20up%29.%20%20Please%20help%20him%20compute%20the%20minimum%20cost%20necessary%20for%20buying%20a%20tractor%20capable%20of%20this%20task.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20value%20of%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Each%20line%20contains%20N%20space-separated%20non-negative%20integers%20%28each%20at%20most%201%20million%29%20specifying%20a%20row%20of%20FJ%27s%20field.%5Cn%5Cn%5Cn%5Cn%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20minimum%20cost%20of%20a%20tractor%20that%20is%20capable%20of%20driving%20around%20at%20least%20half%20of%20FJ%27s%20field.%5Cn%5Cn%5Cn%22%2C%22samples%22%3A%5B%5B%225%20%5Cn0%200%200%203%203%20%5Cn0%200%200%200%203%20%5Cn0%209%209%203%203%20%5Cn9%209%209%203%203%20%5Cn9%209%209%209%203%20%5Cn%22%2C%223%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5CnFJ%5Cu6709%5Cu5757%5Cu519c%5Cu7530%5Cu592a%5Cu5d0e%5Cu5c96%5Cu4e86%5Cuff0c%5Cu4ed6%5Cu8981%5Cu4e70%5Cu4e00%5Cu8f86%5Cu65b0%5Cu62d6%5Cu62c9%5Cu673a%5Cu624d%5Cu80fd%5Cu5728%5Cu8fd9%5Cu91cc%5Cu5de1%5Cu89c6%5Cu3002%5Cu8fd9%5Cu5757%5Cu519c%5Cu7530%5Cu7531N%20x%20N%5Cu4e2a%5Cu683c%5Cu5b50%5Cu7684%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu9ad8%5Cu5ea6%281%3C%3DN%3C%3D500%29%5Cu3002%5Cu62d6%5Cu62c9%5Cu673a%5Cu4ece%5Cu5f53%5Cu524d%5Cu683c%5Cu5b50%5Cu8d70%5Cu5230%5Cu76f8%5Cu90bb%5Cu683c%5Cu5b50%5Cuff08%5Cu4e1c%5Cu3001%5Cu5357%5Cu3001%5Cu897f%5Cu3001%5Cu5317%5Cu56db%5Cu4e2a%5Cu65b9%5Cu5411%5Cuff09%5Cu7684%5Cu4ee3%5Cu4ef7%5Cu4e3a%5Cu9ad8%5Cu5ea6%5Cu5deeD%5Cuff0c%5Cu5219FJ%5Cu9a76%5Cu8fc7%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu683c%5Cu5b50%5Cu7684%5Cu62d6%5Cu62c9%5Cu673a%5Cu6700%5Cu5c11%5Cu4e5f%5Cu8981%5Cu503cD%5Cu5757%5Cu94b1%5Cu3002%5Cn%5CnFJ%5Cu613f%5Cu610f%5Cu82b1%5Cu8db3%5Cu591f%5Cu7684%5Cu94b1%5Cu4e70%5Cu4e00%5Cu8f86%5Cu65b0%5Cu7684%5Cu62d6%5Cu62c9%5Cu673a%5Cu4f7f%5Cu5f97%5Cu4ed6%5Cu80fd%5Cu4ee5%5Cu6700%5Cu5c0f%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu5dee%5Cu8d70%5Cu904d%5Cu6240%5Cu6709%5Cu683c%5Cu5b50%5Cu7684%5Cu4e00%5Cu534a%28%5Cu5982%5Cu679c%5Cu683c%5Cu5b50%5Cu603b%5Cu6570%5Cu662f%5Cu5947%5Cu6570%5Cuff0c%5Cu90a3%5Cu4e48%5Cu4e00%5Cu534a%5Cu7684%5Cu503c%5Cu4e3a%5Cu56db%5Cu820d%5Cu4e94%5Cu5165%5Cu7684%5Cu503c%29%5Cu3002%5Cu56e0%5Cu4e3aFJ%5Cu5f88%5Cu61d2%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4ed6%5Cu627e%5Cu5230%5Cu4f60%5Cu5e2e%5Cu4ed6%5Cu7f16%5Cu7a0b%5Cu8ba1%5Cu7b97%5Cu4ed6%5Cu6700%5Cu5c0f%5Cu9700%5Cu8981%5Cu82b1%5Cu591a%5Cu5c11%5Cu94b1%5Cu4e70%5Cu5230%5Cu7b26%5Cu5408%5Cu8fd9%5Cu4e9b%5Cu8981%5Cu6c42%5Cu7684%5Cu62d6%5Cu62c9%5Cu673a%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570N%5Cn%5Cn%5Cu7b2c2%5Cu5230N%2B1%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542bN%5Cu4e2a%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cuff08%5Cu4e0d%5Cu8d85%5Cu8fc71%2C000%2C000%5Cuff09%5Cuff0c%5Cu8868%5Cu793a%5Cu5f53%5Cu524d%5Cu683c%5Cu5b50%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu5171%5Cu4e00%5Cu884c%5Cuff0c%5Cu8868%5Cu793aFJ%5Cu4e70%5Cu62d6%5Cu62c9%5Cu673a%5Cu8981%5Cu82b1%5Cu7684%5Cu6700%5Cu5c0f%5Cu4ef7%5Cu94b1%5Cu3002%22%2C%22tags%22%3A%5B4%2C30%2C45%2C46%2C47%2C113%2C166%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A633%2C%22totalAccepted%22%3A288%2C%22pid%22%3A%22P3073%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu62d6%5Cu62c9%5Cu673aTractor%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A110869%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%5Cu2026%5Cuff08%5Cu4e0d%5Cu67e5%5Cu9519%22%2C%22forum%22%3A%7B%22id%22%3A2190%2C%22name%22%3A%22P3073%20%5BUSACO13FEB%5D%5Cu62d6%5Cu62c9%5Cu673aTractor%22%2C%22slug%22%3A%22P3073%22%7D%7D%2C%7B%22id%22%3A71055%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu7ffb%5Cu8bd1%5Cu662f%5Cu673a%5Cu7ffb%5Cu5427%22%2C%22forum%22%3A%7B%22id%22%3A2190%2C%22name%22%3A%22P3073%20%5BUSACO13FEB%5D%5Cu62d6%5Cu62c9%5Cu673aTractor%22%2C%22slug%22%3A%22P3073%22%7D%7D%2C%7B%22id%22%3A69350%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2190%2C%22name%22%3A%22P3073%20%5BUSACO13FEB%5D%5Cu62d6%5Cu62c9%5Cu673aTractor%22%2C%22slug%22%3A%22P3073%22%7D%7D%2C%7B%22id%22%3A60285%2C%22title%22%3A%22%5Cu8fd9%5Cu62d6%5Cu62c9%5Cu673a%5Cu3002%5Cu3002%5Cu3002%5Cu3002%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A2190%2C%22name%22%3A%22P3073%20%5BUSACO13FEB%5D%5Cu62d6%5Cu62c9%5Cu673aTractor%22%2C%22slug%22%3A%22P3073%22%7D%7D%2C%7B%22id%22%3A20623%2C%22title%22%3A%22%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2190%2C%22name%22%3A%22P3073%20%5BUSACO13FEB%5D%5Cu62d6%5Cu62c9%5Cu673aTractor%22%2C%22slug%22%3A%22P3073%22%7D%7D%2C%7B%22id%22%3A17010%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu5185%5Cu5bb9%5Cu7ffb%5Cu8bd1%5Cuff0c%5Cu8fdb%5Cu6765%5Cu770b%5Cu770b%22%2C%22forum%22%3A%7B%22id%22%3A2190%2C%22name%22%3A%22P3073%20%5BUSACO13FEB%5D%5Cu62d6%5Cu62c9%5Cu673aTractor%22%2C%22slug%22%3A%22P3073%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1993%22%2C%22title%22%3A%22%5Cu5c0fK%5Cu7684%5Cu519c%5Cu573a%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2846%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3076%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu51fa%5Cu79df%5Cu8f66Taxi%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2574%22%2C%22title%22%3A%22XOR%5Cu7684%5Cu827a%5Cu672f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4878%22%2C%22title%22%3A%22%5BUSACO05DEC%5D%20%5Cu5e03%5Cu5c40%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13FEB%5D%5Cu62d6%5Cu62c9%5Cu673aTractor%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13FEB]拖拉机Tractor</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+FJ有块农田太崎岖了，他要买一辆新拖拉机才能在这里巡视。这块农田由N x N个格子的非负整数表示高度(1<=N<=500)。拖拉机从当前格子走到相邻格子（东、南、西、北四个方向）的代价为高度差D，则FJ驶过这两个格子的拖拉机最少也要值D块钱。
+FJ愿意花足够的钱买一辆新的拖拉机使得他能以最小的高度差走遍所有格子的一半(如果格子总数是奇数，那么一半的值为四舍五入的值)。因为FJ很懒，所以他找到你帮他编程计算他最小需要花多少钱买到符合这些要求的拖拉机。
+输入输出格式
+输入格式：
+第一行为一个整数N
+第2到N+1行每行包含N个非负整数（不超过1,000,000），表示当前格子的高度。
+输出格式：
+共一行，表示FJ买拖拉机要花的最小价钱。</div>
+<h2>题目描述</h2>
+<div>One of Farmer John's fields is particularly hilly, and he wants to purchase a new tractor to drive around on it. The field is described by an N x N grid of non-negative integer elevations (1 <= N <= 500). A tractor capable of moving from one grid cell to an adjacent cell (one step north, east, south, or west) of height difference D costs exactly D units of money.
+FJ would like to pay enough for his tractor so that, starting from some grid cell in his field, he can successfully drive the tractor around to visit at least half the grid cells in the field (if the number of total cells in the field is odd, he wants to visit at least half the cells rounded up). Please help him compute the minimum cost necessary for buying a tractor capable of this task.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The value of N.
+\* Lines 2..1+N: Each line contains N space-separated non-negative integers (each at most 1 million) specifying a row of FJ's field.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The minimum cost of a tractor that is capable of driving around at least half of FJ's field.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 
+0 0 0 3 3 
+0 0 0 0 3 
+0 9 9 3 3 
+9 9 9 3 3 
+9 9 9 9 3 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO11OPEN]焊接Soldering - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376296:F5WCJNdvRm4pTdpJTgebStgrd2P4N1CDU2yr3z+eotw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20cows%20are%20playing%20with%20wires%21%20They%20have%20learned%20a%20technique%20called%20soldering%2C%20in%20which%20they%20connect%20two%20pieces%20of%20wire%20together%20by%20attaching%20the%20endpoint%20of%20one%20wire%20to%20a%20location%20along%20the%20length%20of%20the%20other.%20%28Soldering%20endpoint%20to%20endpoint%20is%20not%20allowed.%29%20There%20can%20be%20multiple%20solder%20junctions%20at%20the%20same%20point.%5Cn%5CnThe%20cows%20have%20a%20plan%20for%20an%20Amazing%20Structure%20they%20would%20like%20to%20build.%20It%20is%20in%20the%20form%20of%20a%20graph%20with%20N%20%281%20%3C%3D%20N%20%3C%3D%2050%2C000%29%20nodes%20and%20N-1%20edges%20of%20unit%20length%20so%20that%20each%20pair%20of%20nodes%20is%20connected.%20Each%20edge%20is%20described%20by%20a%20pair%20of%20integers%2C%20A%20and%20B%20%281%20%3C%3D%20A%20%3C%3D%20N%3B%201%20%3C%3D%20B%20%3C%3D%20N%3B%20A%20%21%3D%20B%29.%5Cn%5CnThe%20cows%20are%20able%20to%20buy%20wire%20from%20a%20local%20store%3B%20however%20longer%20wire%20is%20more%20expensive.%20In%20particular%20the%20cows%20can%20buy%20a%20wire%20of%20length%20L%20with%20cost%20L%5C%5C%2AL%2C%20but%20they%20cannot%20cut%20wires%20or%20join%20wires%20together.%5Cn%5CnGiven%20the%20plan%2C%20the%20cows%20would%20like%20solder%20wires%20together%20to%20build%20their%20Amazing%20Structure.%20Please%20help%20them%20find%20the%20minimum%20possible%20cost%21%5Cn%5CnTest%20data%20worth%20at%20least%2050%25%20of%20the%20points%20will%20have%20N%20%3C%3D%202%2C000.%5Cn%5CnPartial%20feedback%20will%20be%20provided%20on%20your%20first%2050%20submissions%20to%20this%20problem.%5Cn%5CnTIME%20LIMIT%3A%202%20seconds%5Cn%5CnMEMORY%20LIMIT%3A%2064%20MB%5Cn%5Cn%5Cu5976%5Cu725b%5Cu51b3%5Cu5b9a%5Cu7528%5Cu7535%5Cu7ebf%5Cu710a%5Cu63a5%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu7279%5Cu6b8a%5Cu56fe%5Cu5f62%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu56fe%5Cu5f62%5Cu662f%5Cu8fde%5Cu901a%5Cu7684%5Cuff0c%5Cu7531N%5Cu4e2a%5Cu70b9%5Cuff0cN%20-1%5Cu6761%5Cu8fb9%5Cu7ec4%5Cu6210%5Cuff0c%20%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu7684%5Cu957f%5Cu5ea6%5Cu90fd%5Cu662f1%5Cu3002%5Cu710a%5Cu63a5%5Cu6240%5Cu7528%5Cu7684%5Cu7535%5Cu7ebf%5Cu8981%5Cu4ece%5Cu5f53%5Cu5730%5Cu7684%5Cu5546%5Cu5e97%5Cu91cc%5Cu4e70%5Cu3002%5Cu8d8a%5Cu957f%5Cu7684%5Cu7535%5Cu7ebf%5Cu8d8a%5Cu8d35%5Cuff0c%5Cu4e00%5Cu6761%5Cu957f%5Cu5ea6%5Cu4e3a%20L%5Cu7684%5Cu7535%5Cu7ebf%5Cu552e%5Cu4ef7%5Cu4e3aL%5E2%20%5Cu3002%20%5Cu5976%5Cu725b%5Cu4eec%5Cu5df2%5Cu7ecf%5Cu5b66%5Cu4f1a%5Cu4e86%5Cu57fa%5Cu672c%5Cu7684%5Cu710a%5Cu63a5%5Cu65b9%5Cu6cd5%5Cuff0c%20%5Cu5979%5Cu4eec%5Cu4f1a%5Cu628a%5Cu67d0%5Cu6761%5Cu7535%5Cu7ebf%5Cu7684%5Cu4e00%5Cu4e2a%5Cu7aef%5Cu70b9%5Cu710a%5Cu63a5%5Cu5230%5Cu53e6%5Cu4e00%5Cu6761%5Cu7535%5Cu7ebf%5Cu7684%20%5Cu4e2d%5Cu95f4%5Cu67d0%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cuff0c%20%5Cu4f46%5Cu5979%5Cu4eec%5Cu6ca1%5Cu6709%5Cu5b66%5Cu4f1a%5Cu5982%5Cu4f55%5Cu628a%5Cu4e24%5Cu6761%5Cu7535%5Cu7ebf%5Cu7684%5Cu7aef%5Cu70b9%5Cu76f4%5Cu63a5%5Cu710a%5Cu63a5%5Cu8d77%5Cu6765%5Cuff0c%20%5Cu4e5f%5Cu6ca1%5Cu6709%5Cu5b66%5Cu4f1a%5Cu600e%5Cu4e48%5Cu628a%5Cu7535%20%5Cu7ebf%5Cu526a%5Cu65ad%5Cu3002%20%5Cu544a%5Cu8bc9%5Cu4f60%5Cu5976%5Cu725b%5Cu51c6%5Cu5907%5Cu710a%5Cu63a5%5Cu7684%5Cu56fe%5Cu5f62%5Cuff0c%5Cu8bf7%5Cu544a%5Cu8bc9%5Cu5976%5Cu725b%5Cu600e%5Cu4e48%5Cu710a%5Cu63a5%5Cu624d%5Cu80fd%5Cu6700%5Cu8282%5Cu7ea6%5Cu6750%5Cu6599%5Cu8d39%5Cu7528%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..N%3A%20Two%20space-separated%20integers%20describing%20an%20edge%3A%20A%20and%20B%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%2C%20the%20cost%20of%20soldering%20the%20tree%20together.%20Note%20that%20this%20number%20may%20not%20always%20fit%20in%20a%2032-bit%20integer.%5Cn%22%2C%22samples%22%3A%5B%5B%226%20%5Cn1%202%20%5Cn1%203%20%5Cn1%204%20%5Cn1%205%20%5Cn1%206%20%5Cn%22%2C%227%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Since%20all%20nodes%20in%20the%20structure%20are%20connected%20to%20node%201%2C%20we%20only%20need%20to%20buy%20one%20wire%20of%20length%202%20and%20three%20of%20length%201%2C%20for%20a%20total%20cost%20of%202%20%5C%5C%2A%202%20%2B%201%20%5C%5C%2A%201%20%2B%201%20%5C%5C%2A%201%20%2B%201%20%5C%5C%2A%201%20%3D%207.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B28%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A48%2C%22totalAccepted%22%3A18%2C%22pid%22%3A%22P3023%22%2C%22title%22%3A%22%5BUSACO11OPEN%5D%5Cu710a%5Cu63a5Soldering%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A71061%2C%22title%22%3A%22%5Cu9898%5Cu89e3%5Cu6709%5Cu8bef%5Cuff01%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2151%2C%22name%22%3A%22P3023%20%5BUSACO11OPEN%5D%5Cu710a%5Cu63a5Soldering%22%2C%22slug%22%3A%22P3023%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO11OPEN%5D%5Cu710a%5Cu63a5Soldering%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO11OPEN]焊接Soldering</h1>
+<h2>题目描述</h2>
+<div>The cows are playing with wires! They have learned a technique called soldering, in which they connect two pieces of wire together by attaching the endpoint of one wire to a location along the length of the other. (Soldering endpoint to endpoint is not allowed.) There can be multiple solder junctions at the same point.
+The cows have a plan for an Amazing Structure they would like to build. It is in the form of a graph with N (1 <= N <= 50,000) nodes and N-1 edges of unit length so that each pair of nodes is connected. Each edge is described by a pair of integers, A and B (1 <= A <= N; 1 <= B <= N; A != B).
+The cows are able to buy wire from a local store; however longer wire is more expensive. In particular the cows can buy a wire of length L with cost L\*L, but they cannot cut wires or join wires together.
+Given the plan, the cows would like solder wires together to build their Amazing Structure. Please help them find the minimum possible cost!
+Test data worth at least 50% of the points will have N <= 2,000.
+Partial feedback will be provided on your first 50 submissions to this problem.
+TIME LIMIT: 2 seconds
+MEMORY LIMIT: 64 MB
+奶牛决定用电线焊接出一个特殊图形，这个图形是连通的，由N个点，N -1条边组成， 每条边的长度都是1。焊接所用的电线要从当地的商店里买。越长的电线越贵，一条长度为 L的电线售价为L^2 。 奶牛们已经学会了基本的焊接方法， 她们会把某条电线的一个端点焊接到另一条电线的 中间某个位置， 但她们没有学会如何把两条电线的端点直接焊接起来， 也没有学会怎么把电 线剪断。 告诉你奶牛准备焊接的图形，请告诉奶牛怎么焊接才能最节约材料费用。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: N
+\* Lines 2..N: Two space-separated integers describing an edge: A and B
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer, the cost of soldering the tree together. Note that this number may not always fit in a 32-bit integer.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 
+1 2 
+1 3 
+1 4 
+1 5 
+1 6 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>7 
+</code></pre>
+<h2>说明</h2>
+<div>Since all nodes in the structure are connected to node 1, we only need to buy one wire of length 2 and three of length 1, for a total cost of 2 \* 2 + 1 \* 1 + 1 \* 1 + 1 \* 1 = 7.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

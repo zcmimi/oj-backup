@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10NOV]巧克力牛奶Chocolate Milk - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376265:u8+Iefw/pvAjPlA4+vZbFTLprw0EvG1ukU9UaZ/yT+w=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20milk%20production%20and%20shipping%20system%20is%20an%20intricate%20one%21%20He%20uses%20milking%20machines%20for%20his%20many%20cows%20to%20harvest%20the%20milk%20that%20then%20flows%20into%20pipes.%5Cn%5CnEach%20of%20these%20pipes%20connects%20a%20milking%20machine%20to%20a%20joint%2C%20where%20it%20might%20be%20joined%20by%20exactly%20one%20more%20pipe%20%28the%20milk%20flowing%20through%20both%20pipes%20merges%29.%20The%20milk%20then%20flows%20through%20additional%20pipes%20%28which%20all%20start%20and%20end%20at%20joints%29%20until%20it%20reaches%20the%20long%20central%20pipe%20connecting%20to%20the%20distribution%20room.%5Cn%5CnThe%20milk%20then%20goes%20through%20a%20reverse%20process%20of%20splitting%20at%20various%20joints%20until%20it%20is%20flows%20into%20milk%20tanks%20that%20are%20picked%20up%20and%20taken%20to%20market.%5Cn%5CnFarmer%20John%20notices%20that%20there%20is%20at%20most%20one%20way%20for%20milk%20to%20travel%20from%20one%20joint%20to%20any%20other%20joint.%20Furthermore%2C%20since%20Farmer%20John%20is%20an%20efficient%20man%20by%20nature%2C%20he%20has%20made%20sure%20that%20milk%20will%20flow%20through%20each%20and%20every%20pipe%3B%20in%20other%20words%2C%20no%20pipe%20is%20unneeded.%5Cn%5CnIf%20we%20think%20of%20a%20milking%20machine%2C%20joint%2C%20or%20milk%20tank%20as%20a%20node%2C%20there%20are%20N%20%282%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20nodes%20in%20total%20%28and%20N-1%20pipes%5Cn%5Cnconnecting%20them%29.%20The%20input%20describes%20each%20pipe%20as%20an%20ordered%20pair%20of%20nodes%2C%20A%5C%5C_i%20%281%20%3C%3D%20A%5C%5C_i%20%3C%3D%20N%29%20and%20B%5C%5C_i%20%281%20%3C%3D%20B%5C%5C_i%20%3C%3D%20N%3B%20A%5C%5C_i%20%3C%20B%5C%5C_i%29%20indicating%20milk%20flows%20from%20node%20A%5C%5C_i%20to%20node%20B%5C%5C_i.%20If%20there%20is%20no%20pipe%20coming%20in%20to%20A%5C%5C_i%2C%20it%20is%20a%20milking%20machine.%20Likewise%2C%20if%20no%20pipe%20goes%20out%20from%20B%5C%5C_i%2C%20it%20is%20a%20tank.%5Cn%5CnThe%20demand%20of%20chocolate%20milk%20has%20skyrocketed%20in%20recent%20months%2C%20and%20Farmer%20John%20wants%20to%20install%20a%20chocolate%20inserter%20at%20one%20of%20the%20joints%20so%20he%20can%20create%20delicious%20chocolate%20milk%20for%20customers.%5Cn%5CnBeing%20thrifty%2C%20Farmer%20John%20has%20only%20bought%20one%20chocolate%20inserter%2C%20so%20he%20wants%20to%20place%20it%20at%20a%20joint%20through%20which%20all%20the%20milk%20passes.%20He%20knows%20that%20such%20a%20joint%20exists.%5Cn%5CnHelp%20Farmer%20John%20find%20all%20the%20possible%20places%20he%20can%20install%20the%20chocolate%20inserter.%20%20%28Note%20that%20Farmer%20John%20cannot%20install%20the%20chocolate%20inserter%20at%20the%20same%20location%20as%20a%20milking%20machine.%29%5Cn%5CnAs%20an%20example%2C%20consider%20a%20milking%20setup%20like%20this%20one%3A%5Cn%5Cn%60%60%60cpp%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%201%20----%2B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20v%5Cn%20%20%20%20%20%20%20%20%20%20%202%20--%3E%204%20--%3E%206%20------------------%3E%207%20--%3E%208%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%203%20--%3E%205%20----%2B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B%20--%3E%209%5Cn%5Cn%60%60%60%5CnVisual%20inspection%20shows%20that%20the%20chocolate%20inserter%20can%20be%20installed%20at%20either%20joint%206%20or%207%2C%20as%20all%20milk%20flows%20through%20those%20joints.%5Cn%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu7684%5Cu725b%5Cu5976%5Cu751f%5Cu4ea7%5Cu548c%5Cu8fd0%5Cu8f93%5Cu7cfb%5Cu7edf%5Cu662f%5Cu6781%5Cu5176%5Cu590d%5Cu6742%5Cu7684%5Cuff01%5Cu4ed6%5Cu7528%5Cu6324%5Cu5976%5Cu673a%5Cu4e3a%5Cu4ed6%5Cu7684%5Cu8bb8%5Cu591a%5Cu5976%5Cu725b%5Cu6536%5Cu83b7%5Cu725b%5Cu5976%5Cuff0c%5Cu7136%5Cu540e%5Cu6d41%5Cu5165%5Cu7ba1%5Cu9053%5Cu3002%5Cn%5Cn%5Cn%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu7ba1%5Cu9053%5Cu8fde%5Cu63a5%5Cu6324%5Cu5976%5Cu673a%5Cu5230%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff0c%5Cu5728%5Cu90a3%5Cu91cc%5Cu5b83%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu52a0%5Cu5165%5Cu4e00%5Cu4e2a%5Cu7ba1%5Cu9053%5Cuff08%5Cu725b%5Cu5976%5Cu6d41%5Cu8fc7%5Cu4e24%5Cu4e2a%5Cu7ba1%5Cu9053%5Cu5408%5Cu5e76%5Cuff09%5Cu3002%5Cu7136%5Cu540e%5Cuff0c%5Cu725b%5Cu5976%5Cu6d41%5Cu901a%5Cu8fc7%5Cu989d%5Cu5916%5Cu7684%5Cu7ba1%5Cu9053%5Cuff08%5Cu6240%5Cu6709%5Cu7684%5Cu5f00%5Cu59cb%5Cu70b9%5Cu548c%5Cu7ed3%5Cu675f%5Cu70b9%5Cu5728%5Cu5176%5Cu5b83%5Cu8282%5Cu70b9%5Cu4e0a%5Cu7684%5Cuff09%5Cuff0c%5Cu76f4%5Cu5230%5Cu5b83%5Cu5230%5Cu8fbe%5Cu4e00%5Cu4e2a%5Cu5173%5Cu952e%5Cu7684%5Cu8282%5Cu70b9%5Cu3002%5Cn%5Cn%5Cn%5Cu725b%5Cu5976%5Cu7136%5Cu540e%5Cu7ecf%5Cu8fc7%5Cu4e00%5Cu4e2a%5Cu53cd%5Cu5411%5Cu7684%5Cu8fc7%5Cu7a0b%5Cuff0c%5Cu5728%5Cu4e0d%5Cu540c%5Cu7684%5Cu5173%5Cu8282%5Cu5206%5Cu88c2%5Cuff0c%5Cu76f4%5Cu5230%5Cu5b83%5Cu6d41%5Cu5165%5Cu725b%5Cu5976%5Cu7f50%5Cu88ab%5Cu62fe%5Cu8d77%5Cuff0c%5Cu5e76%5Cu9001%5Cu5f80%5Cu5e02%5Cu573a%5Cu3002%5Cn%5Cn%5Cn%5Cu519c%5Cu573a%5Cu4e3b%5Cu7ea6%5Cu7ff0%5Cu6ce8%5Cu610f%5Cu5230%5Cuff0c%5Cu725b%5Cu5976%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu5173%5Cu8282%5Cu5230%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu5173%5Cu8282%5Cu7684%5Cu65b9%5Cu5f0f%5Cu6700%5Cu591a%5Cu3002%5Cu6b64%5Cu5916%5Cuff0c%5Cu7531%5Cu4e8e%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu672c%5Cu8d28%5Cu4e0a%5Cu662f%5Cu4e00%5Cu4e2a%5Cu80fd%5Cu5e72%5Cu7684%5Cu4eba%5Cuff0c%5Cu4ed6%5Cu5df2%5Cu7ecf%5Cu786e%5Cu4fe1%5Cuff0c%5Cu725b%5Cu5976%5Cu4f1a%5Cu6d41%5Cu901a%5Cu8fc7%5Cu6bcf%5Cu4e2a%5Cu7ba1%5Cu9053%5Cuff1b%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu6ca1%5Cu6709%5Cu7ba1%5Cu9053%5Cu662f%5Cu4e0d%5Cu5fc5%5Cu8981%5Cu7684%5Cu3002%5Cn%5Cn%5Cn%5Cu5982%5Cu679c%5Cu6211%5Cu4eec%5Cu8ba4%5Cu4e3a%5Cu6324%5Cu5976%5Cu673a%5Cuff0c%5Cu8282%5Cu70b9%5Cuff0c%5Cu6216%5Cu725b%5Cu5976%5Cu7f50%5Cu90fd%5Cu770b%5Cu4f5c%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff0c%5Cu6709N%20%282%20%3C%3D%20N%20%3C%3D%20100%2C000%29%5Cu8282%5Cu70b9%5Cu603b%5Cu6570%5Cuff08N-1%5Cu4e2a%5Cu7ba1%5Cu9053%5Cu8fde%5Cu63a5%5Cu5b83%5Cu4eec%5Cuff09%5Cu3002%5Cn%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu63cf%5Cu8ff0%5Cu6bcf%5Cu4e2a%5Cu7ba1%5Cu8282%5Cu70b9%5Cu7684%5Cu6709%5Cu5e8f%5Cu5bf9%5Cuff0cA%5C%5C_i%5Cuff081%20%3C%3D%20A%5C%5C_i%20%3C%3D%20N%5Cuff09%5Cu548cB%5C%5C_i%5Cuff081%20%3C%3D%20B%5C%5C_i%20%3C%3D%20N%5Cuff1bA%5C%5C_i%20%3C%20B%5C%5C_i%5Cuff09%5Cu8868%5Cu793a%5Cu725b%5Cu5976%5Cu4eceA%5C%5C_i%5Cu6d41%5Cu5411B%5C%5C_i%5Cu3002%5Cu5982%5Cu679cA%5C%5C_i%5Cu5165%5Cu5ea6%5Cu4e3a0%5Cuff0c%5Cu5b83%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6324%5Cu5976%5Cu673a%5Cu3002%5Cu540c%5Cu6837%5Cuff0cB%5C%5C_i%5Cu51fa%5Cu5ea6%5Cu4e3a0%5Cuff0c%5Cu5b83%5Cu662f%5Cu4e00%5Cu4e2a%5Cu725b%5Cu5976%5Cu7f50%5Cu3002%5Cn%5Cn%5Cn%5Cu5de7%5Cu514b%5Cu529b%5Cu725b%5Cu5976%5Cu7684%5Cu9700%5Cu6c42%5Cu5df2%5Cu7ecf%5Cu5728%5Cu6700%5Cu8fd1%5Cu51e0%5Cu4e2a%5Cu6708%5Cu6025%5Cu5267%5Cu589e%5Cu52a0%5Cuff0c%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu60f3%5Cu5b89%5Cu88c5%5Cu4e00%5Cu4e2a%5Cu5de7%5Cu514b%5Cu529b%5Cu63d2%5Cu4ef6%5Cu5728%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu4e0a%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu4ed6%5Cu80fd%5Cu4e3a%5Cu987e%5Cu5ba2%5Cu521b%5Cu9020%5Cu7f8e%5Cu5473%5Cu7684%5Cu5de7%5Cu514b%5Cu529b%5Cu725b%5Cu5976%5Cu3002%5Cn%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu8282%5Cu4fed%5Cuff0c%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu53ea%5Cu4e70%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu5de7%5Cu514b%5Cu529b%5Cu63d2%5Cu4ef6%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4ed6%5Cu60f3%5Cu628a%5Cu5b83%5Cu5b89%5Cu5728%5Cu4e00%5Cu4e2a%5Cu725b%5Cu5976%5Cu90fd%5Cu7ecf%5Cu8fc7%5Cu7684%5Cu8282%5Cu70b9%5Cu4e0a%5Cu3002%5Cu4ed6%5Cu77e5%5Cu9053%5Cu8fd9%5Cu6837%5Cu7684%5Cu8282%5Cu70b9%5Cu5b58%5Cu5728%5Cu3002%5Cn%5Cn%5Cn%5Cu5e2e%5Cu52a9%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu627e%5Cu5230%5Cu6240%5Cu6709%5Cu53ef%5Cu80fd%5Cu7684%5Cu5730%5Cu65b9%5Cuff0c%5Cu4ed6%5Cu5c06%5Cu5728%5Cu90a3%5Cu513f%5Cu5b89%5Cu88c5%5Cu5de7%5Cu514b%5Cu529b%5Cu7684%5Cu63d2%5Cu4ef6%5Cu3002%5Cuff08%5Cu6ce8%5Cuff1a%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu5de7%5Cu514b%5Cu529b%5Cu63d2%5Cu4ef6%5Cu4e0d%5Cu80fd%5Cu5b89%5Cu88c5%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6324%5Cu5976%5Cu673a%5Cu4e0a%5Cu3002%5Cuff09%5Cn%5Cn%5Cn%60%60%60cpp%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%201%20----%2B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20v%5Cn%20%20%20%20%20%20%20%20%20%20%202%20--%3E%204%20--%3E%206%20------------------%3E%207%20--%3E%208%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%203%20--%3E%205%20----%2B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B%20--%3E%209%5Cn%5Cn%60%60%60%5Cn%5Cu5de7%5Cu514b%5Cu529b%5Cu63d2%5Cu4ef6%5Cu53ef%5Cu4ee5%5Cu5b89%5Cu88c5%5Cu57286%5Cu62167%5Cu4e0a%5Cuff0c%5Cu6240%5Cu6709%5Cu725b%5Cu5976%5Cu6d41%5Cu7ecf%5Cu8fd9%5Cu4e9b%5Cu8282%5Cu70b9%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..N%3A%20Line%20i%2B1%20contains%20two%20space-separated%20integers%20that%20describe%20a%20pipe%27s%20connectivity%3A%20A%5C%5C_i%20and%20B%5C%5C_i%5Cn%5Cn%5Cu7b2c1%5Cu884c%5Cuff1a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1aN%5Cn%5Cn%5Cn2%5Cu5230N%5Cu884c%5Cuff1a%5Cu5305%5Cu542b%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu7684%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu63cf%5Cu8ff0%5Cu7ba1%5Cu9053%5Cu7684%5Cu8fde%5Cu63a5%5Cuff1aA%5C%5C_i%5Cu548cB%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..%3F%3F%3A%20Integers%2C%20one%20per%20line%20and%20in%20ascending%20order%2C%20each%20denoting%20a%20possible%20joint%20at%20which%20to%20install%20the%20chocolate%20inserter.%5Cn%5Cn%5Cu7b2c1%5Cu884c%5Cu5230%5Cuff1f%5Cuff1f%5Cu884c%5Cuff1a%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5347%5Cu5e8f%5Cu6392%5Cu5217%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8868%5Cu793a%5Cu53ef%5Cu4ee5%5Cu5b89%5Cu88c5%5Cu5de7%5Cu514b%5Cu529b%5Cu63d2%5Cu4ef6%5Cu7684%5Cu8282%5Cu70b9%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%229%20%5Cn1%204%20%5Cn3%205%20%5Cn2%204%20%5Cn5%206%20%5Cn6%207%20%5Cn7%208%20%5Cn4%206%20%5Cn7%209%20%5Cn%22%2C%226%20%5Cn7%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%40sgygd2004%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A487%2C%22totalAccepted%22%3A179%2C%22pid%22%3A%22P2999%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu5de7%5Cu514b%5Cu529b%5Cu725b%5Cu5976Chocolate%20Milk%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A10939%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2128%2C%22name%22%3A%22P2999%20%5BUSACO10NOV%5D%5Cu5de7%5Cu514b%5Cu529b%5Cu725b%5Cu5976Chocolate%20Milk%22%2C%22slug%22%3A%22P2999%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1594%22%2C%22title%22%3A%22%5Cu62a4%5Cu536b%5Cu961f%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2995%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu725b%5Cu7684%5Cu7167%5Cu7247Cow%20Photographs%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2996%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu62dc%5Cu8bbf%5Cu5976%5Cu725bVisiting%20Cows%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4544%22%2C%22title%22%3A%22%5BUSACO10NOV%5D%5Cu8d2d%5Cu4e70%5Cu9972%5Cu6599Buying%20Feed%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5594%22%2C%22title%22%3A%22%5Cu3010XR-4%5Cu3011%5Cu6a21%5Cu62df%5Cu8d5b%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10NOV%5D%5Cu5de7%5Cu514b%5Cu529b%5Cu725b%5Cu5976Chocolate%20Milk%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10NOV]巧克力牛奶Chocolate Milk</h1>
+<h2>题目描述</h2>
+<div>Farmer John's milk production and shipping system is an intricate one! He uses milking machines for his many cows to harvest the milk that then flows into pipes.
+Each of these pipes connects a milking machine to a joint, where it might be joined by exactly one more pipe (the milk flowing through both pipes merges). The milk then flows through additional pipes (which all start and end at joints) until it reaches the long central pipe connecting to the distribution room.
+The milk then goes through a reverse process of splitting at various joints until it is flows into milk tanks that are picked up and taken to market.
+Farmer John notices that there is at most one way for milk to travel from one joint to any other joint. Furthermore, since Farmer John is an efficient man by nature, he has made sure that milk will flow through each and every pipe; in other words, no pipe is unneeded.
+If we think of a milking machine, joint, or milk tank as a node, there are N (2 <= N <= 100,000) nodes in total (and N-1 pipes
+connecting them). The input describes each pipe as an ordered pair of nodes, A\_i (1 <= A\_i <= N) and B\_i (1 <= B\_i <= N; A\_i < B\_i) indicating milk flows from node A\_i to node B\_i. If there is no pipe coming in to A\_i, it is a milking machine. Likewise, if no pipe goes out from B\_i, it is a tank.
+The demand of chocolate milk has skyrocketed in recent months, and Farmer John wants to install a chocolate inserter at one of the joints so he can create delicious chocolate milk for customers.
+Being thrifty, Farmer John has only bought one chocolate inserter, so he wants to place it at a joint through which all the milk passes. He knows that such a joint exists.
+Help Farmer John find all the possible places he can install the chocolate inserter. (Note that Farmer John cannot install the chocolate inserter at the same location as a milking machine.)
+As an example, consider a milking setup like this one:
+```cpp
+1 ----+
+|
+v
+2 --> 4 --> 6 ------------------> 7 --> 8
+^ |
+| |
+3 --> 5 ----+ + --> 9
+```
+Visual inspection shows that the chocolate inserter can be installed at either joint 6 or 7, as all milk flows through those joints.
+农民约翰的牛奶生产和运输系统是极其复杂的！他用挤奶机为他的许多奶牛收获牛奶，然后流入管道。
+每一个管道连接挤奶机到一个节点，在那里它可能会加入一个管道（牛奶流过两个管道合并）。然后，牛奶流通过额外的管道（所有的开始点和结束点在其它节点上的），直到它到达一个关键的节点。
+牛奶然后经过一个反向的过程，在不同的关节分裂，直到它流入牛奶罐被拾起，并送往市场。
+农场主约翰注意到，牛奶从一个关节到另一个关节的方式最多。此外，由于农民约翰本质上是一个能干的人，他已经确信，牛奶会流通过每个管道；换句话说，没有管道是不必要的。
+如果我们认为挤奶机，节点，或牛奶罐都看作一个节点，有N (2 <= N <= 100,000)节点总数（N-1个管道连接它们）。
+输入描述每个管节点的有序对，A\_i（1 <= A\_i <= N）和B\_i（1 <= B\_i <= N；A\_i < B\_i）表示牛奶从A\_i流向B\_i。如果A\_i入度为0，它是一个挤奶机。同样，B\_i出度为0，它是一个牛奶罐。
+巧克力牛奶的需求已经在最近几个月急剧增加，农民约翰想安装一个巧克力插件在一个节点上，保证他能为顾客创造美味的巧克力牛奶。
+为了节俭，农民约翰只买了一个巧克力插件，所以他想把它安在一个牛奶都经过的节点上。他知道这样的节点存在。
+帮助农民约翰找到所有可能的地方，他将在那儿安装巧克力的插件。（注：农民约翰巧克力插件不能安装在一个挤奶机上。）
+```cpp
+1 ----+
+|
+v
+2 --> 4 --> 6 ------------------> 7 --> 8
+^ |
+| |
+3 --> 5 ----+ + --> 9
+```
+巧克力插件可以安装在6或7上，所有牛奶流经这些节点。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: N
+\* Lines 2..N: Line i+1 contains two space-separated integers that describe a pipe's connectivity: A\_i and B\_i
+第1行：一个整数：N
+2到N行：包含空格分隔的两个整数描述管道的连接：A\_i和B\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..??: Integers, one per line and in ascending order, each denoting a possible joint at which to install the chocolate inserter.
+第1行到？？行：每行一个整数，升序排列，每个表示可以安装巧克力插件的节点。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>9 
+1 4 
+3 5 
+2 4 
+5 6 
+6 7 
+7 8 
+4 6 
+7 9 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6 
+7 
+</code></pre>
+<h2>说明</h2>
+<div>感谢@sgygd2004 提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

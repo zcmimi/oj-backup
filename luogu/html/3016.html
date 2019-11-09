@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO11FEB]三角形The Triangle - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376285:weixIppGoSk1MW+oGsWwbP82o/z8BW9/IeHXwOaLQis=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22For%20her%20spectacular%20milk%20output%20for%20the%20previous%20month%2C%20Farmer%20John%20has%20awarded%20Bessie%20a%20prize%20--%20with%20a%20twist.%20%20He%20has%20given%20her%20a%20triangular%20grid%20with%20N%20%281%20%3C%3D%20N%20%3C%3D%20700%29%20rows%20%28whose%20lengths%20vary%20from%201%20through%20N%2C%20of%20course%29.%20Row%20i%20of%20the%20the%20grid%20has%20i%20values%20labeled%20v%5C%5C_ij%20%28-1%2C000%2C000%2C000%20%3C%3D%20v%5C%5C_ij%20%3C%3D%201%2C000%2C000%2C000%29%20where%20j%20is%20in%20the%20range%201..i.%5Cn%5CnBessie%20chooses%20a%20sub-triangle%20whose%20side%20length%20is%20at%20least%20K%20%281%20%3C%3D%20K%20%3C%3D%2020%3B%201%20%3C%3D%20K%20%3C%3D%20N%29%20within%20the%20triangular%20grid.%20The%20sub-triangle%20is%20another%20triangular%20grid%20which%20might%20be%20oriented%20the%20same%20as%20the%20original%20triangle%20or%20might%20be%20%27upside%20down%27%20with%20its%20shorter%20rows%20on%20the%20bottom%20instead%20of%20the%20top.%5Cn%5CnAfter%20she%20chooses%20her%20sub-triangle%2C%20Farmer%20John%20will%20take%20the%20average%20of%20all%20the%20numbers%20in%20the%20sub-triangle%2C%20discarding%20the%20digits%20to%20the%20right%20of%20the%20decimal%20point%2C%20and%20give%20her%20that%20many%20gold%20coins%20%28or%20take%20that%20many%20gold%20coins%20from%20her%20if%20the%20number%20is%20negative%29.%20Naturally%2C%20Bessie%20would%20like%20to%20maximize%20her%20prize%20%28or%20minimize%20her%20loss%29.%20Help%20her%20solve%20this%20problem.%5Cn%5CnBy%20way%20of%20example%2C%20Bessie%20is%20given%20this%20triangular%20grid%20with%20N%20%3D%203%20rows%20and%20must%20choose%20a%20sub-triangle%20with%20a%20side%20length%20of%20at%20least%20K%20%3D%202.%20A%20graphical%20representation%20of%20the%20triangle%20is%20shown%20below%3A%5Cn%5Cn%60%60%60cpp%5Cn%20%20%20%20%5C%2F%20%5C%5C%5Cn%20%20%20%5C%2F%205%20%5C%5C%5Cn%20%20%5C%2F-8%20%204%5C%5C%5Cn%20%5C%2F2%20-3%20%206%5C%5C%5Cn%20---------%5Cn%60%60%60%5CnShe%20could%20choose%20any%20of%20five%20valid%20sub-triangles%20%28one%20of%20which%20is%20the%20entire%20original%20triangle%29%3A%5Cn%5Cn%60%60%60cpp%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%2F%5C%5C%5Cn%20%20%20%20%5C%2F%20%5C%5C%20%20%20%20%20%20%20%20%20%5C%2F%20%5C%5C%20%20%20%20%20%20%20%20%5C%2F%20%5C%5C%20%20%20%20%20%20%20%20%20%5C%2F%20%5C%5C%20%20%20%20%20%20%20%20%5C%2F5%20%5C%5C%20%20%20%20%20%20%20%5Cn%20%20%20%5C%2F%205%20%5C%5C%20%20%20%20%20%20%20%5C%2F%20%5C%5C5%5C%5C%20%20%20%20%20%20%5C%2F%205%20%5C%5C%20%20%20%20%20%20%20%5C%2F%205%5C%2F%5C%5C%20%20%20%20%20%20%5C%2F----%5C%5C%20%20%20%20%5Cn%20%20%5C%2F-8%20%204%5C%5C%20%20%20%20%20%5C%2F-8%20%5C%5C4%5C%5C%20%20%20%20%5C%2F-8%20%204%5C%5C%20%20%20%20%20%5C%2F-8%5C%2F%204%5C%5C%20%20%20%20%5C%2F%5C%5C-8%204%5C%2F%5C%5C%20%5Cn%20%5C%2F2%20-3%20%206%5C%5C%20%20%20%5C%2F%202%20-3%5C%5C6%5C%5C%20%20%5C%2F-------%5C%5C%20%20%20%5C%2F%202%5C%2F-3%206%5C%5C%20%20%5C%2F%202%5C%5C-3%5C%2F6%20%5C%5C%20%5Cn%20---------%20%20%20---------%20%20-2%20%20-3%20%206%20%20%20---------%20%20----------%20%20%5Cn%20%20entire%20%20%20%20%20%20lower%20%20%20%20%20%20%20%20top%20%20%20%20%20%20%20%20%20%20lower%20%20%20%20%20upside%5Cn%20triangle%20%20%20%20%20left%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20right%20%20%20%20%20%20down%5Cn%60%60%60%5CnThe%20one%20that%20is%20lined%20below%20is%20the%20one%20with%20the%20highest%20average%3A%5Cn%5Cn%60%60%60cpp%5Cn%20%20%20%20%5C%2F%20%5C%5C%5Cn%20%20%20%5C%2F%205%5C%2F%5C%5C%5Cn%20%20%5C%2F-8%5C%2F%204%5C%5C%5Cn%20%5C%2F%202%5C%2F-3%206%5C%5C%5Cn%20---------%5Cn%60%60%60%5CnThe%20average%20of%20this%20sub-triangle%20is%20%284%2B6-3%29%5C%2F3%2C%20which%20is%20about%5Cn%5Cn2.3333...%3B%20without%20the%20fraction%2C%20the%20answer%20is%202.%20%5Cn%5CnHelp%20Bessie%20calculate%20the%20maximum%20amount%20of%20coins%20which%20she%20could%20receive.%5Cn%5CnTIME%20LIMIT%3A%202%20seconds%5Cn%5CnMEMORY%20LIMIT%3A%2032%20MB%5Cn%5Cn%5Cu6709%5Cu4e00%5Cu4e2an%281%3C%3Dn%3C%3D700%29%5Cu884c%5Cu7684%5Cu7b49%5Cu8170%5Cu4e09%5Cu89d2%5Cu5f62%5Cuff0c%5Cu91cc%5Cu9762%5Cu6709%5Cu5f88%5Cu591a%5Cu6570%28-1%2C000%2C000%2C000%20%3C%3D%20%5Cu6570%20%3C%3D%201%2C000%2C000%2C000%29%5Cuff0c%5Cu73b0%5Cu5728%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu8fb9%5Cu957f%5Cu81f3%5Cu5c11%5Cu4e3ak%281%3C%3Dk%3C%3D20%2C1%3C%3Dk%3C%3Dn%29%5Cuff0c%5Cu81f3%5Cu591a%5Cu4e3a2k%5Cu7684%5Cu76f8%5Cu4f3c%5Cu7b49%5Cu8170%5Cu4e09%5Cu89d2%5Cu5f62%5Cuff0c%5Cu5e76%5Cu4e14%5Cu53ef%5Cu4ee5%5Cu5012%5Cu7740%5Cu9009%5Cuff0c%5Cu6bd4%5Cu5982%5Cu6837%5Cu4f8b%5Cu53ef%5Cu4ee5%5Cu6709%5Cu8fd9%5Cu4e9b%5Cu9009%5Cu62e9%5Cu65b9%5Cu6cd5%5Cuff1a%5Cn%5Cn%5Cn%5Cu6837%5Cu4f8b%5Cuff1a%5Cn%5Cn%60%60%60cpp%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%2F%5C%5C%5Cn%20%20%20%20%5C%2F%20%5C%5C%20%20%20%20%20%20%20%20%20%5C%2F%20%5C%5C%20%20%20%20%20%20%20%20%5C%2F%20%5C%5C%20%20%20%20%20%20%20%20%20%5C%2F%20%5C%5C%20%20%20%20%20%20%20%20%5C%2F5%20%5C%5C%20%20%20%20%20%20%20%5Cn%20%20%20%5C%2F%205%20%5C%5C%20%20%20%20%20%20%20%5C%2F%20%5C%5C5%5C%5C%20%20%20%20%20%20%5C%2F%205%20%5C%5C%20%20%20%20%20%20%20%5C%2F%205%5C%2F%5C%5C%20%20%20%20%20%20%5C%2F----%5C%5C%20%20%20%20%5Cn%20%20%5C%2F-8%20%204%5C%5C%20%20%20%20%20%5C%2F-8%20%5C%5C4%5C%5C%20%20%20%20%5C%2F-8%20%204%5C%5C%20%20%20%20%20%5C%2F-8%5C%2F%204%5C%5C%20%20%20%20%5C%2F%5C%5C-8%204%5C%2F%5C%5C%20%5Cn%20%5C%2F2%20-3%20%206%5C%5C%20%20%20%5C%2F%202%20-3%5C%5C6%5C%5C%20%20%5C%2F-------%5C%5C%20%20%20%5C%2F%202%5C%2F-3%206%5C%5C%20%20%5C%2F%202%5C%5C-3%5C%2F6%20%5C%5C%20%5Cn%20---------%20%20%20---------%20%20-2%20%20-3%20%206%20%20%20---------%20%20----------%20%20%5Cn%20%20entire%20%20%20%20%20%20lower%20%20%20%20%20%20%20%20top%20%20%20%20%20%20%20%20%20%20lower%20%20%20%20%20upside%5Cn%20triangle%20%20%20%20%20left%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20right%20%20%20%20%20%20down%5Cn%60%60%60%5Cn%5Cu6700%5Cu540e%5Cu95ee%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5f97%5Cu5230%5Cu7684%5Cu6700%5Cu5927%5Cu5e73%5Cu5747%5Cu503c%5Cu4e3a%5Cu591a%5Cu5c11%5Cuff08%5Cu5e73%5Cu5747%5Cu503c%5Cuff1a%5Cu9009%5Cu51fa%5Cu7684%5Cu4e09%5Cu89d2%5Cu5f62%5Cu7684%5Cu7d2f%5Cu52a0%5Cu548cdiv%5Cu9009%5Cu51fa%5Cu4e2a%5Cu6570%5Cuff09%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20K%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20will%20contain%20i%20space-separated%20integers%3A%20v%5C%5C_ij%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20maximum%20number%20of%20coins%20that%20Bessie%20can%20receive%20%28or%2C%20if%20negative%2C%20the%20best%20she%20can%20do%20for%20her%20loss%29.%5Cn%22%2C%22samples%22%3A%5B%5B%223%202%20%5Cn5%20%5Cn-8%204%20%5Cn2%20-3%206%20%5Cn%22%2C%222%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu611f%5Cu8c22%20zzkksunboy%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B28%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A174%2C%22totalAccepted%22%3A35%2C%22pid%22%3A%22P3016%22%2C%22title%22%3A%22%5BUSACO11FEB%5D%5Cu4e09%5Cu89d2%5Cu5f62The%20Triangle%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A5054%2C%22title%22%3A%22%5Cu5173%5Cu4e8e%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2144%2C%22name%22%3A%22P3016%20%5BUSACO11FEB%5D%5Cu4e09%5Cu89d2%5Cu5f62The%20Triangle%22%2C%22slug%22%3A%22P3016%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1638%22%2C%22title%22%3A%22%5Cu901b%5Cu753b%5Cu5c55%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2419%22%2C%22title%22%3A%22%5BUSACO08JAN%5D%5Cu725b%5Cu5927%5Cu8d5bCow%20Contest%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2872%22%2C%22title%22%3A%22%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2926%22%2C%22title%22%3A%22%5BUSACO08DEC%5D%5Cu62cd%5Cu5934Patting%20Heads%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2932%22%2C%22title%22%3A%22%5BUSACO09JAN%5D%5Cu5730%5Cu9707%5Cu9020%5Cu6210%5Cu7684%5Cu7834%5Cu574fEarthquake%20Damage%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO11FEB%5D%5Cu4e09%5Cu89d2%5Cu5f62The%20Triangle%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO11FEB]三角形The Triangle</h1>
+<h2>题目描述</h2>
+<div>For her spectacular milk output for the previous month, Farmer John has awarded Bessie a prize -- with a twist. He has given her a triangular grid with N (1 <= N <= 700) rows (whose lengths vary from 1 through N, of course). Row i of the the grid has i values labeled v\_ij (-1,000,000,000 <= v\_ij <= 1,000,000,000) where j is in the range 1..i.
+Bessie chooses a sub-triangle whose side length is at least K (1 <= K <= 20; 1 <= K <= N) within the triangular grid. The sub-triangle is another triangular grid which might be oriented the same as the original triangle or might be 'upside down' with its shorter rows on the bottom instead of the top.
+After she chooses her sub-triangle, Farmer John will take the average of all the numbers in the sub-triangle, discarding the digits to the right of the decimal point, and give her that many gold coins (or take that many gold coins from her if the number is negative). Naturally, Bessie would like to maximize her prize (or minimize her loss). Help her solve this problem.
+By way of example, Bessie is given this triangular grid with N = 3 rows and must choose a sub-triangle with a side length of at least K = 2. A graphical representation of the triangle is shown below:
+```cpp
+/ \
+/ 5 \
+/-8 4\
+/2 -3 6\
+---------
+```
+She could choose any of five valid sub-triangles (one of which is the entire original triangle):
+```cpp
+/\
+/ \ / \ / \ / \ /5 \
+/ 5 \ / \5\ / 5 \ / 5/\ /----\
+/-8 4\ /-8 \4\ /-8 4\ /-8/ 4\ /\-8 4/\
+/2 -3 6\ / 2 -3\6\ /-------\ / 2/-3 6\ / 2\-3/6 \
+--------- --------- -2 -3 6 --------- ----------
+entire lower top lower upside
+triangle left right down
+```
+The one that is lined below is the one with the highest average:
+```cpp
+/ \
+/ 5/\
+/-8/ 4\
+/ 2/-3 6\
+---------
+```
+The average of this sub-triangle is (4+6-3)/3, which is about
+2.3333...; without the fraction, the answer is 2.
+Help Bessie calculate the maximum amount of coins which she could receive.
+TIME LIMIT: 2 seconds
+MEMORY LIMIT: 32 MB
+有一个n(1<=n<=700)行的等腰三角形，里面有很多数(-1,000,000,000 <= 数 <= 1,000,000,000)，现在可以选择边长至少为k(1<=k<=20,1<=k<=n)，至多为2k的相似等腰三角形，并且可以倒着选，比如样例可以有这些选择方法：
+样例：
+```cpp
+/\
+/ \ / \ / \ / \ /5 \
+/ 5 \ / \5\ / 5 \ / 5/\ /----\
+/-8 4\ /-8 \4\ /-8 4\ /-8/ 4\ /\-8 4/\
+/2 -3 6\ / 2 -3\6\ /-------\ / 2/-3 6\ / 2\-3/6 \
+--------- --------- -2 -3 6 --------- ----------
+entire lower top lower upside
+triangle left right down
+```
+最后问你可以得到的最大平均值为多少（平均值：选出的三角形的累加和div选出个数）
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and K
+\* Lines 2..N+1: Line i+1 will contain i space-separated integers: v\_ij
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The maximum number of coins that Bessie can receive (or, if negative, the best she can do for her loss).
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 2 
+5 
+-8 4 
+2 -3 6 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+<h2>说明</h2>
+<div>感谢 zzkksunboy 提供翻译。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[CTSC2018]字典树 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381602:/g0QsNY3vo8IJHBeWVn5e+NMPm+PIiOUFxaQP7SzLTU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Access%20Globe%20%5Cu6709%5Cu82e5%5Cu5e72%5Cu4e2a%2A%2A%5Cu9012%5Cu589e%2A%2A%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%5Cu3002%5Cu4ed6%5Cu628a%5Cu8fd9%5Cu4e9b%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu7684%5Cu5341%5Cu8fdb%5Cu5236%5Cu8868%5Cu793a%5Cuff08%5Cu65e0%5Cu524d%5Cu5bfc%5Cu96f6%5Cuff09%5Cu4f9d%5Cu6b21%5Cu5199%5Cu4e86%5Cu4e0b%5Cu6765%5Cuff0c%5Cu76f8%5Cu90bb%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu4e4b%5Cu95f4%5Cu7528%5Cu9017%5Cu53f7%20%2C%20%5Cu9694%5Cu5f00%5Cu3002Access%20Globe%20%5Cu628a%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu89c6%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu7531%20%240%5C%5Csim%209%24%20%5Cu7684%5Cu6570%5Cu5b57%5Cu548c%5Cu9017%5Cu53f7%20%2C%20%5Cu7ec4%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu7136%5Cu540e%5Cu7528%5Cu4e00%5Cu68f5%20Trie%20%5Cu6811%5Cu5b58%5Cu50a8%5Cu8fd9%5Cu4e9b%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu4f60%5Cu5e76%5Cu4e0d%5Cu9700%5Cu8981%5Cu77e5%5Cu9053%20Trie%20%5Cu6811%5Cu7a76%5Cu7adf%5Cu662f%5Cu4ec0%5Cu4e48%5Cuff0c%5Cu4f60%5Cu53ea%5Cu9700%5Cu8981%5Cu77e5%5Cu9053%5Cuff0cAccess%20Globe%20%5Cu5f97%5Cu5230%5Cu7684%20Trie%20%5Cu662f%5Cu4e00%5Cu68f5%5Cu4ee5%20%240%24%20%5Cu53f7%5Cu8282%5Cu70b9%5Cu4e3a%5Cu6839%5Cu7684%5Cu6709%5Cu6839%5Cu6811%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu4e0a%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4ece%5Cu6839%5Cu5230%5Cu6bcf%5Cu4e2a%5Cu53f6%5Cu8282%5Cu70b9%5Cu7684%5Cu8def%5Cu5f84%5Cu4e0a%5Cu7684%5Cu8fb9%5Cu4e0a%5Cu7684%5Cu5b57%5Cu7b26%5Cu987a%5Cu6b21%5Cu62fc%5Cu63a5%5Cu6784%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu662f%5Cu4e00%5Cu4e2a%5Cu4ed6%5Cu5199%5Cu4e0b%5Cu7684%5Cu4e00%5Cu4e2a%5Cu9012%5Cu589e%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%5Cu3002%5Cn%5Cn%5Cu53ef%5Cu7231%5Cu7684%5Cu5c0f%20Tommy%20%5Cu51b3%5Cu5b9a%5Cu7be1%5Cu6539%5Cu8fd9%5Cu68f5%20Trie%20%5Cu6811%5Cu3002%5Cu4ed6%5Cu5148%5Cu5c06%20Trie%20%5Cu4e0a%5Cu7684%5Cu4e00%5Cu4e9b%5Cu8fb9%5Cu4e0a%5Cu7684%5Cu5b57%5Cu7b26%5Cu5220%5Cu53bb%5Cuff0c%5Cu7136%5Cu540e%5Cu586b%5Cu4e0a%5Cu53e6%5Cu4e00%5Cu4e9b%5Cu5b57%5Cu7b26%5Cu3002%5Cu4e3a%5Cu4e86%5Cu4e0d%5Cu88ab%5Cu53d1%5Cu73b0%5Cuff0cTommy%20%5Cu5fc5%5Cu987b%5Cu4fdd%5Cu8bc1%5Cu4fee%5Cu6539%5Cu540e%5Cu7684%20Trie%20%5Cu4ecd%5Cu7136%5Cu6ee1%5Cu8db3%5Cu4e0a%5Cu8ff0%5Cu6027%20%5Cu8d28%5Cuff0c%5Cu5373%5Cu4ece%5Cu6839%5Cu5230%5Cu6bcf%5Cu4e2a%5Cu53f6%5Cu8282%5Cu70b9%5Cu7684%5Cu8def%5Cu5f84%5Cu4e0a%5Cu7684%5Cu8fb9%5Cu4e0a%5Cu7684%5Cu5b57%5Cu7b26%5Cu987a%5Cu6b21%5Cu62fc%5Cu63a5%5Cu6784%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu662f%5Cu4e00%5Cu4e2a%5Cu9012%5Cu589e%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%5Cuff0c%5Cu4e14%5Cu6bcf%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu65e0%5Cu524d%5Cu5bfc%5Cu96f6%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728%20Tommy%20%5Cu5df2%5Cu7ecf%5Cu5220%5Cu53bb%5Cu4e86%5Cu4e00%5Cu4e9b%5Cu8fb9%5Cu4e0a%5Cu7684%5Cu5b57%5Cu7b26%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu5e2e%5Cu4ed6%5Cu5b8c%5Cu6210%5Cu201c%5Cu586b%5Cu4e0a%5Cu5b57%5Cu7b26%5Cu201d%5Cu7684%5Cu64cd%5Cu4f5c%5Cu3002%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu89e3%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu89e3%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu5305%5Cu542b%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu6574%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24T%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu636e%5Cu7ec4%5Cu6570%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24n%24%20%5Cu7684%5Cu3001%5Cu4ec5%5Cu5305%5Cu542b%20%240%24%20%5Cu5230%20%249%24%5Cu3001%2C%20%5Cu548c%20%60%3F%60%20%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu8fde%5Cu63a5%5Cu8282%5Cu70b9%20%24i%24%20%5Cu7684%5Cu7236%5Cu4eb2%5Cu548c%5Cu8282%5Cu70b9%20%24i%24%20%5Cu7684%5Cu8fb9%5Cu4e0a%5Cu7684%5Cu5b57%5Cu7b26%5Cuff0c%60%3F%60%20%5Cu8868%5Cu793a%5Cu8fd9%5Cu6761%5Cu8fb9%5Cu4e0a%5Cu7684%5Cu5b57%5Cu7b26%5Cu5df2%5Cu7ecf%5Cu88ab%5Cu5220%5Cu53bb%5Cuff1b%20%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%20%24n%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu8282%5Cu70b9%20%24i%24%20%5Cu7684%5Cu7236%5Cu4eb2%5Cu8282%5Cu70b9%20%24f_i%24%5Cuff0c%5Cu4fdd%5Cu8bc1%20%240%20%5C%5Cle%20f_i%20%3C%20i%24%5Cu3002%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%20%24T%24%20%5Cu884c%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24n%24%20%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8868%5Cu793a%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu586b%5Cu5199%5Cu95ee%5Cu53f7%5Cu7684%5Cu65b9%5Cu5f0f%5Cu4e2d%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5b57%5Cu7b26%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu8282%5Cu70b9%20%24i%24%20%5Cu7684%5Cu5b57%5Cu7b26%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4e0d%5Cu5b58%5Cu5728%5Cu4efb%5Cu4f55%5Cu5408%5Cu6cd5%5Cu7684%5Cu586b%5Cu5199%5Cu65b9%5Cu5f0f%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%20%60failed%60%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%221%5Cn2%2C%3F3%2C2%3F71%3F4420%3F2641%3F%5Cn0%201%202%203%204%205%206%207%208%206%2010%207%204%204%2014%203%202%201%201%200%22%2C%222%2C13%2C207104420026411%5Cn%22%5D%5D%2C%22hint%22%3A%22%23%23%23%20%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%5Cn%5CnTommy%20%5Cu586b%5Cu5199%5Cu7684%20Trie%20%5Cu5982%5Cu4e0b%5Cu56fe%5Cuff0c%5Cu7ea2%5Cu8272%5Cu7684%5Cu8282%5Cu70b9%5Cu4e3a%5Cu6240%5Cu6709%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9%5Cuff0c%5Cu6ce8%5Cu610f%5Cuff0c%5Cu6839%5Cu8282%5Cu70b9%5Cu5728%5Cu5de6%5Cu4e0b%5Cu65b9%5Cu3002%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F19267.png%29%5Cn%5Cn%23%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cn%5Cn%5Cu5bf9%5Cu4e8e%20%2420%5C%5C%25%24%20%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%24T%20%5C%5Cle%2010%24%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%20%24n%20%5C%5Cle%2080%24%20%5Cuff0c%60%3F%60%20%5Cu4e2a%5Cu6570%5Cu4e0d%5Cu8d85%5Cu8fc7%20%248%24%5Cuff1b%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu53e6%5Cu5916%20%2410%5C%5C%25%24%20%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%24T%20%5C%5Cle%2020%24%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%20%24n%20%5C%5Cle%2080%24%5Cuff0c%24f_i%3Di-1%24%5Cuff1b%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu53e6%5Cu5916%20%2420%5C%5C%25%24%20%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%24f_i%3Di-1%24%5Cuff1b%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu53e6%5Cu5916%20%2410%5C%5C%25%24%20%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%24n%20%5C%5Cle%2080%24%5Cuff1b%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu6570%5Cu636e%5Cuff0c%24T%20%5C%5Cle%20100%24%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%20%24n%20%5C%5Cle%20200%24%5Cu3002%22%2C%22provider%22%3A%7B%22uid%22%3A50167%2C%22name%22%3A%22Imagine%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B35%2C52%2C108%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A20%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22P4603%22%2C%22title%22%3A%22%5BCTSC2018%5D%5Cu5b57%5Cu5178%5Cu6811%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BCTSC2018%5D%5Cu5b57%5Cu5178%5Cu6811%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[CTSC2018]字典树</h1>
+<h2>题目描述</h2>
+<div>Access Globe 有若干个**递增**的正整数序列。他把这些正整数序列中的每个正整数的十进制表示（无前导零）依次写了下来，相邻两个整数之间用逗号 , 隔开。Access Globe 把这个序列视为一个由 $0\sim 9$ 的数字和逗号 , 组成的字符串，然后用一棵 Trie 树存储这些字符串。你并不需要知道 Trie 树究竟是什么，你只需要知道，Access Globe 得到的 Trie 是一棵以 $0$ 号节点为根的有根树，每条边上都有一个字符，并且从根到每个叶节点的路径上的边上的字符顺次拼接构成的字符串是一个他写下的一个递增的正整数序列。
+可爱的小 Tommy 决定篡改这棵 Trie 树。他先将 Trie 上的一些边上的字符删去，然后填上另一些字符。为了不被发现，Tommy 必须保证修改后的 Trie 仍然满足上述性 质，即从根到每个叶节点的路径上的边上的字符顺次拼接构成的字符串是一个递增的正整数序列，且每个正整数无前导零。
+现在 Tommy 已经删去了一些边上的字符，请你帮他完成“填上字符”的操作。如果有多解，请输出字典序最小的解。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>输入文件包含多组数据，整个文件的第一行是一个整数 $T$，表示数据组数。对于每一组数据：
+第一行包含一个长度为 $n$ 的、仅包含 $0$ 到 $9$、, 和 `?` 的字符串，第 $i$ 个整数表示连接节点 $i$ 的父亲和节点 $i$ 的边上的字符，`?` 表示这条边上的字符已经被删去； 第二行包含 $n$ 个整数，第 $i$ 个整数表示节点 $i$ 的父亲节点 $f_i$，保证 $0 \le f_i < i$。</div>
+<h3>输出格式</h3>
+<br />
+<div>输出 $T$ 行。对于每组数据，输出一个长度为 $n$ 的字符串，表示字典序最小的填写问号的方式中每个点的字符，第 $i$ 个整数表示节点 $i$ 的字符。
+如果不存在任何合法的填写方式，请输出 `failed`。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+2,?3,2?71?4420?2641?
+0 1 2 3 4 5 6 7 8 6 10 7 4 4 14 3 2 1 1 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2,13,207104420026411
+</code></pre>
+<h2>说明</h2>
+<div>### 样例解释
+Tommy 填写的 Trie 如下图，红色的节点为所有叶子节点，注意，根节点在左下方。
+![](https://cdn.luogu.com.cn/upload/pic/19267.png)
+### 数据范围
+对于 $20\%$ 的数据，$T \le 10$，对于每组数据 $n \le 80$ ，`?` 个数不超过 $8$；
+对于另外 $10\%$ 的数据，$T \le 20$，对于每组数据 $n \le 80$，$f_i=i-1$；
+对于另外 $20\%$ 的数据，$f_i=i-1$；
+对于另外 $10\%$ 的数据，$n \le 80$；
+对于所有数据，$T \le 100$，对于每组数据 $n \le 200$。</div>
+</article>
+</div>
+</div>
+</body>
+</html>

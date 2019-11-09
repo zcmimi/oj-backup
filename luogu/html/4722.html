@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>【模板】最大流 加强版 / 预流推进 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381732:YtSuCcoHzqsviCi6EziKu5QwVyiMPELeLdSBNL67coA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu7ed9%5Cu5b9a%20%24n%24%20%5Cu4e2a%5Cu70b9%5Cuff0c%24m%24%20%5Cu6761%5Cu6709%5Cu5411%5Cu8fb9%5Cuff0c%5Cu7ed9%5Cu5b9a%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu7684%5Cu5bb9%5Cu91cf%5Cuff0c%5Cu6c42%5Cu4ece%5Cu70b9%20%24s%24%20%5Cu5230%5Cu70b9%20%24t%24%20%5Cu7684%5Cu6700%5Cu5927%5Cu6d41%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu56db%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%24%5Cu3001%24m%24%5Cu3001%24s%24%5Cu3001%24t%24%5Cuff0c%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu70b9%5Cu7684%5Cu4e2a%5Cu6570%5Cu3001%5Cu6709%5Cu5411%5Cu8fb9%5Cu7684%5Cu4e2a%5Cu6570%5Cu3001%5Cu6e90%5Cu70b9%5Cu5e8f%5Cu53f7%5Cu3001%5Cu6c47%5Cu70b9%5Cu5e8f%5Cu53f7%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24m%24%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24u_i%24%5Cu3001%24v_i%24%5Cu3001%24c_i%24%5Cuff0c%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2c%24i%24%5Cu6761%5Cu6709%5Cu5411%5Cu8fb9%5Cu4ece%24u_i%24%5Cu51fa%5Cu53d1%5Cuff0c%5Cu5230%5Cu8fbe%24v_i%24%5Cuff0c%5Cu5bb9%5Cu91cf%5Cu4e3a%24c_i%24%22%2C%22outputFormat%22%3A%22%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%24s%24%5Cu5230%24t%24%5Cu7684%5Cu6700%5Cu5927%5Cu6d41%22%2C%22samples%22%3A%5B%5B%227%2014%201%207%5Cn1%202%205%5Cn1%203%206%5Cn1%204%205%5Cn2%203%202%5Cn2%205%203%5Cn3%202%202%5Cn3%204%203%5Cn3%205%203%5Cn3%206%207%5Cn4%206%205%5Cn5%206%201%5Cn6%205%201%5Cn5%207%208%5Cn6%207%207%5Cn%22%2C%2214%22%5D%2C%5B%2210%2016%201%202%5Cn1%203%202%5Cn1%204%202%5Cn5%202%202%5Cn6%202%202%5Cn3%205%201%5Cn3%206%201%5Cn4%205%201%5Cn4%206%201%5Cn1%207%202147483647%5Cn9%202%202147483647%5Cn7%208%202147483647%5Cn10%209%202147483647%5Cn8%205%202%5Cn8%206%202%5Cn3%2010%202%5Cn4%2010%202%5Cn%22%2C%228%22%5D%5D%2C%22hint%22%3A%22%241%5C%5Cleqslant%20n%20%5C%5Cleqslant%201200%2C%201%5C%5Cleqslant%20m%20%5C%5Cleqslant%20120000%2C%201%5C%5Cleqslant%20c%20%5C%5Cleqslant%202%5E%7B31%7D-1%24%5Cu3002%5Cn%5Cn%5Cu4fdd%5Cu8bc1%5Cu7b54%5Cu6848%5Cu4e0d%5Cu8d85%5Cu8fc7%242%5E%7B31%7D-1%24%5Cu3002%5Cn%5Cn%5Cu5e38%5Cu7528%5Cu7f51%5Cu7edc%5Cu6d41%5Cu7b97%5Cu6cd5%5Cu7684%5Cu590d%5Cu6742%5Cu5ea6%5Cu4e3a%20%24O%28n%5E2%20m%29%24%5Cuff0c%5Cu8bf7%5Cu5c3d%5Cu91cf%5Cu4f18%5Cu5316%5Cu7b97%5Cu6cd5%5Cu3002%5Cn%5Cn%5Cu6570%5Cu636e%5Cu63d0%5Cu4f9b%5Cu8005%5Cuff1a%40negiizhao%5Cn%5Cn%5Cuff08%5Cu5982%5Cu679c%5Cu6709%5Cu4eba%5Cu7528dinic%5Cu7b97%5Cu6cd5%5Cu8fc7%5Cu6389%5Cu4e86%5Cu6b64%5Cu9898%5Cuff0c%5Cu8bf7%5Cu79c1%5Cu4fe1%5Cu4e0a%5Cu4f20%5Cu8005%5Cuff09%22%2C%22provider%22%3A%7B%22uid%22%3A3346%2C%22name%22%3A%22oscar%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%2C1500%2C1500%2C1500%2C1500%2C1500%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B79%2C108%2C148%2C194%2C288%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A6112%2C%22totalAccepted%22%3A788%2C%22pid%22%3A%22P4722%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5927%5Cu6d41%20%5Cu52a0%5Cu5f3a%5Cu7248%20%5C%2F%20%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A162054%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu6211%5Cu7528%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb5S%5Cuff0c%5Cu5927%5Cu4f6c%5Cu4eec500MS%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A26804%2C%22name%22%3A%22P4722%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5927%5Cu6d41%20%5Cu52a0%5Cu5f3a%5Cu7248%20%5C%2F%20%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb%22%2C%22slug%22%3A%22P4722%22%7D%7D%2C%7B%22id%22%3A122728%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cu6c42%5Cu52a9qaq%22%2C%22forum%22%3A%7B%22id%22%3A26804%2C%22name%22%3A%22P4722%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5927%5Cu6d41%20%5Cu52a0%5Cu5f3a%5Cu7248%20%5C%2F%20%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb%22%2C%22slug%22%3A%22P4722%22%7D%7D%2C%7B%22id%22%3A110560%2C%22title%22%3A%22%5Cu539f%5Cu8c05%5Cu6211%5Cu4ea4%5Cu4e86%5Cu4e24%5Cu9762qwq%22%2C%22forum%22%3A%7B%22id%22%3A26804%2C%22name%22%3A%22P4722%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5927%5Cu6d41%20%5Cu52a0%5Cu5f3a%5Cu7248%20%5C%2F%20%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb%22%2C%22slug%22%3A%22P4722%22%7D%7D%2C%7B%22id%22%3A94590%2C%22title%22%3A%22%5Cu8fd9%5Cu9898......%5Cu662f%5Cu4e13%5Cu95e8%5Cu628aISAP%5Cu5361%5Cu6210%5Cu72d7%5Cu5417%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A26804%2C%22name%22%3A%22P4722%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5927%5Cu6d41%20%5Cu52a0%5Cu5f3a%5Cu7248%20%5C%2F%20%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb%22%2C%22slug%22%3A%22P4722%22%7D%7D%2C%7B%22id%22%3A87427%2C%22title%22%3A%22%5Cu849f%5Cu84bb52Pts%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A26804%2C%22name%22%3A%22P4722%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5927%5Cu6d41%20%5Cu52a0%5Cu5f3a%5Cu7248%20%5C%2F%20%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb%22%2C%22slug%22%3A%22P4722%22%7D%7D%2C%7B%22id%22%3A87203%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A26804%2C%22name%22%3A%22P4722%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5927%5Cu6d41%20%5Cu52a0%5Cu5f3a%5Cu7248%20%5C%2F%20%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb%22%2C%22slug%22%3A%22P4722%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1251%22%2C%22title%22%3A%22%5Cu9910%5Cu5dfe%5Cu8ba1%5Cu5212%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2740%22%2C%22title%22%3A%22%5BUSACO4.2%5D%5Cu8349%5Cu5730%5Cu6392%5Cu6c34Drainage%20Ditches%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3376%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7f51%5Cu7edc%5Cu6700%5Cu5927%5Cu6d41%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3381%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5c0f%5Cu8d39%5Cu7528%5Cu6700%5Cu5927%5Cu6d41%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3701%22%2C%22title%22%3A%22%5Cu300c%5Cu4f2a%5Cu6a21%5Cu677f%5Cu300d%5Cu4e3b%5Cu5e2d%5Cu6811%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5927%5Cu6d41%20%5Cu52a0%5Cu5f3a%5Cu7248%20%5C%2F%20%5Cu9884%5Cu6d41%5Cu63a8%5Cu8fdb%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>【模板】最大流 加强版 / 预流推进</h1>
+<h2>题目描述</h2>
+<div>给定 $n$ 个点，$m$ 条有向边，给定每条边的容量，求从点 $s$ 到点 $t$ 的最大流。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行包含四个正整数$n$、$m$、$s$、$t$，用空格分隔，分别表示点的个数、有向边的个数、源点序号、汇点序号。
+接下来$m$行每行包含三个正整数$u_i$、$v_i$、$c_i$，用空格分隔，表示第$i$条有向边从$u_i$出发，到达$v_i$，容量为$c_i$</div>
+<h3>输出格式</h3>
+<br />
+<div>一个整数，表示$s$到$t$的最大流</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 14 1 7
+1 2 5
+1 3 6
+1 4 5
+2 3 2
+2 5 3
+3 2 2
+3 4 3
+3 5 3
+3 6 7
+4 6 5
+5 6 1
+6 5 1
+5 7 8
+6 7 7
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>14</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>10 16 1 2
+1 3 2
+1 4 2
+5 2 2
+6 2 2
+3 5 1
+3 6 1
+4 5 1
+4 6 1
+1 7 2147483647
+9 2 2147483647
+7 8 2147483647
+10 9 2147483647
+8 5 2
+8 6 2
+3 10 2
+4 10 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>8</code></pre>
+<h2>说明</h2>
+<div>$1\leqslant n \leqslant 1200, 1\leqslant m \leqslant 120000, 1\leqslant c \leqslant 2^{31}-1$。
+保证答案不超过$2^{31}-1$。
+常用网络流算法的复杂度为 $O(n^2 m)$，请尽量优化算法。
+数据提供者：@negiizhao
+（如果有人用dinic算法过掉了此题，请私信上传者）</div>
+</article>
+</div>
+</div>
+</body>
+</html>

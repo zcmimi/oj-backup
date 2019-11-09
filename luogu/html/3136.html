@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO16JAN]割草场Mowing the Field - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376453:eHw0NWx3zhS9at2X2C/RT9KaZxd7L9yrjjgeV0IMh6g=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu5f81%5Cu6c42%5Cu7ffb%5Cu8bd1%5Cu3002%5Cu5982%5Cu679c%5Cu4f60%5Cu80fd%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cu6216%5Cu8005%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%5Cuff0c%5Cu8bf7%5Cu76f4%5Cu63a5%5Cu53d1%5Cu8ba8%5Cu8bba%5Cuff0c%5Cu611f%5Cu8c22%5Cu4f60%5Cu7684%5Cu8d21%5Cu732e%5Cu3002%5Cn%22%2C%22description%22%3A%22Farmer%20John%20is%20quite%20reliable%20in%20all%20aspects%20of%20managing%20his%20farm%2C%20except%20one%3A%20he%20is%20terrible%20at%20mowing%20the%20grass%20in%20a%20timely%20fashion.%20%20%20He%20only%20manages%20to%20move%20the%20mowing%20machine%20once%20per%20day%2C%20in%20fact.%20On%20day%201%2C%20he%20starts%20at%20position%20%24%28x_1%2C%20y_1%29%24%20and%20on%20day%20%24d%24%20he%20mows%20along%20a%20straight%20segment%20to%20the%20position%20%24%28x_d%2C%20y_d%29%24%2C%20moving%20either%20horizontally%20or%20vertically%20on%20the%202D%20map%20of%20his%20farm%3B%20that%20is%2C%20either%20%20%24x_d%20%3D%20x_%7Bd-1%7D%24%2C%20or%20%24y_d%20%3D%20y_%7Bd-1%7D%24.%20%20FJ%20alternates%20between%20horizontal%20and%20vertical%20moves%20on%20successive%20days.%5Cn%5Cn%5CnSo%20slow%20is%20FJ%27s%20progress%20that%20some%20of%20the%20grass%20he%20mows%20might%20grow%20back%20before%20he%20is%20finished%20with%20all%20his%20mowing.%20Any%20section%20of%20grass%20that%20is%20cut%20in%20day%20%24d%24%20will%20reappear%20on%20day%20%24d%20%2B%20T%24%2C%20so%20if%20FJ%27s%20mowing%20path%20crosses%20a%20path%20he%20cut%20at%20least%20%24T%24%20days%20earlier%2C%20he%20will%20end%20up%20cutting%20grass%20at%20the%20same%20point%20again.%20%20In%20an%20effort%20to%20try%20and%20reform%20his%20poor%20mowing%20strategy%2C%20FJ%20would%20like%20to%20count%20the%20number%20of%20times%20this%20happens.%5Cn%5Cn%5CnPlease%20count%20the%20number%20of%20times%20FJ%27s%20mowing%20path%20crosses%20over%20an%20earlier%20segment%20on%20which%20grass%20has%20already%20grown%20back.%20%20You%20should%20only%20count%20%5C%22perpendicular%5C%22%20crossings%2C%20defined%20as%20a%20point%20in%20common%20between%20a%20horizontal%20and%20a%20vertical%20segment%20that%20is%20an%20endpoint%20of%20neither.%5Cn%5Cn%5Cu4e34%5Cu65f6%5Cu7ffb%5Cu8bd1%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu5728%5Cu7ba1%5Cu7406%5Cu4ed6%5Cu7684%5Cu519c%5Cu573a%5Cu7684%5Cu5404%5Cu4e2a%5Cu65b9%5Cu9762%5Cu662f%5Cu76f8%5Cu5f53%5Cu53ef%5Cu9760%5Cu7684%5Cuff0c%5Cu9664%5Cu4e86%5Cu53ca%5Cu65f6%5Cu5730%5Cu4fee%5Cu526a%5Cu8349%5Cu3002%5Cu4ed6%5Cu8bbe%5Cu6cd5%5Cu6bcf%5Cu5929%5Cu53ea%5Cu79fb%5Cu52a8%5Cu4e00%5Cu6b21%5Cu5272%5Cu8349%5Cu673a%5Cu3002%5Cu67d01%5Cu5929%5Cuff0c%5Cu4ed6%5Cu5f00%5Cu59cb%5Cu5728%5Cu4f4d%5Cu7f6e%5Cu548c%5Cu4e00%5Cu5929%5Cu4ed6%5Cu5272%5Cu6cbf%5Cu76f4%5Cu7ebf%5Cu6bb5%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu4ed6%5Cu53ef%5Cu4ee5%5Cu5728%5Cu4ed6%5Cu519c%5Cu573a%5Cu7684%5Cu4e8c%5Cu7ef4%5Cu5730%5Cu56fe%5Cu6c34%5Cu5e73%5Cu6216%5Cu5782%5Cu76f4%5Cu79fb%5Cu52a8%5Cu3002FJ%5Cu7684%5Cu6c34%5Cu5e73%5Cu548c%5Cu5782%5Cu76f4%5Cu79fb%5Cu52a8%5Cu4e4b%5Cu95f4%5Cu4ea4%5Cu66ff%5Cu8fde%5Cu7eed%5Cu51e0%5Cu5929%5Cu3002%5Cn%5Cn%5Cn%5Cu6240%5Cu4ee5%5Cu8d8a%5Cu6765%5Cu8d8a%5Cu6162%5Cu662fFJ%5Cu7684%5Cu8fdb%5Cu6b65%5Cuff0c%5Cu4ed6%5Cu53ef%5Cu80fd%5Cu5728%5Cu4e00%5Cu4e9b%5Cu8349%5Cu957f%5Cu56de%5Cu6765%5Cu4e4b%5Cu524d%5Cu5c31%5Cu5272%5Cu5b8c%5Cu4e86%5Cu6240%5Cu6709%5Cu7684%5Cu8349%5Cu3002%5Cu8349%5Cu7684%5Cu4efb%5Cu4f55%5Cu90e8%5Cu5206%5Cuff08%5Cu70b9%5Cuff09%5Cu5728%5Cu4e00%5Cu5929%5Cu5185%5Cu5c06%5Cu91cd%5Cu65b0%5Cu957f%5Cu51fa%5Cu6765%5Cuff0c%5Cu6240%5Cu4ee5%5Cu5982%5Cu679cFJ%5Cu7684%5Cu5272%5Cu8349%5Cu8def%5Cu5f84%5Cu7a7f%5Cu8fc7%5Cu4e00%5Cu6761%5Cu4ed6%5Cu5728%5Cu51e0%5Cu5929%5Cu524d%5Cu5272%5Cu8fc7%5Cu4e86%5Cuff0c%5Cu4ed6%5Cu5c06%5Cu4e0d%5Cu4f1a%5Cu5728%5Cu540c%5Cu4e00%5Cu70b9%5Cu518d%5Cu5272%5Cu8349%5Cu3002%5Cu5728%5Cu52aa%5Cu529b%5Cu5c1d%5Cu8bd5%5Cu548c%5Cu6539%5Cu9769%5Cu4ed6%5Cu53ef%5Cu601c%5Cu7684%5Cu4fee%5Cu526a%5Cu7b56%5Cu7565%5Cuff0cFJ%5Cu60f3%5Cu77e5%5Cu9053%5Cu9700%5Cu8981%5Cu7684%5Cu6b21%5Cu6570%5Cu3002%5Cn%5Cn%5Cn%5Cu8bf7%5Cu7b97%5Cu4e00%5Cu4e0bFJ%5Cu7684%5Cu5272%5Cu8349%5Cu8def%5Cu5f84%5Cuff0c%5Cu4f7f%5Cu8349%5Cu4e0d%5Cu4f1a%5Cu518d%5Cu957f%5Cu51fa%5Cu6765%5Cu3002%5Cu4f60%5Cu53ea%5Cu80fd%5Cu8ba1%5Cu7b97%5Cu201c%5Cu5782%5Cu76f4%5Cu201d%5Cu4ea4%5Cu53c9%5Cu70b9%5Cuff0c%5Cu5b9a%5Cu4e49%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6c34%5Cu5e73%5Cu548c%5Cu4e00%5Cu4e2a%5Cu5782%5Cu76f4%5Cu6bb5%5Cu4e4b%5Cu95f4%5Cu7684%5Cu5171%5Cu540c%5Cu70b9%20%5Cu3002%5Cn%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cuff08%5Cuff09%5Cn%5Cn%5Cn%5Cu4e0b%5Cu4e00%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu6bcf%5Cu5929%5Cu5272%5Cu8349%5Cu673a%5Cu5728%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu3002%5Cn%5Cn%5Cn%5Cu8fd9%5Cu4e9b%5Cu884c%5Cu4e2d%5Cu5305%5Cu542b%5Cu6574%5Cu6570%5Cu548c%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cuff08%5Cu6700%5Cu591a1000000000%5Cu4e2a%5Cuff09%5Cu3002%5Cn%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cn%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu6709%5Cu51e0%5Cu4e2a%5Cu5272%5Cu4e86%5Cu4e0d%5Cu6b621%5Cu6b21%5Cu7684%5Cu70b9%5Cu3002%5Cn%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cn%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%23%201%5Cuff1a%5Cn%5Cn%5Cn7%204%200%2010%2010%2010%2010%205%203%205%203%2012%206%2012%206%203%20%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%23%201%5Cuff1a%5Cn%5Cn%5Cn1%20%5Cu8bf4%5Cu660e%20%5Cu5728%5Cu8fd9%5Cu91cc%5Cuff0cFJ%5Cu8de8%5Cu8d8a7%5Cu5929%5Cu7684%5Cu4e00%5Cu6bb5%5Cu8349%5Cu88ab%5Cu4ed6%5Cu526a%5Cu4e862%5Cu5929%5Cuff0c%5Cu8ba1%5Cu6570%5Cu3002%5Cn%5Cn%5Cn%5Cu5176%5Cu4ed6%5Cu4ea4%5Cu53c9%5Cu53e3%5Cu4e0d%5Cu8ba1%5Cu6570%5Cu3002%5Cn%5Cn%5Cn%5Cu6ce8%5Cuff1a%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu5df2%5Cu7ecf%5Cu6269%5Cu5927%5Cu4e86%5Cu8303%5Cu56f4%5Cuff1a%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu67095%5Cu79d2%5Cuff0810%5Cu4e2apython%5Cu548cjava%5Cuff09%5Cuff0c512%20MB%5Cu7684%5Cu5185%5Cu5b58%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20%24N%24%20%28%242%20%5C%5Cleq%20N%20%5C%5Cleq%20100%2C000%24%29%20and%20%24T%24%5Cn%5Cn%28%241%20%5C%5Cleq%20T%20%5C%5Cleq%20N%24%2C%20%24T%24%20even%29.%5Cn%5Cn%5CnThe%20next%20%24N%24%20lines%20describe%20the%20position%20of%20the%20mower%20on%20days%20%241%20%5C%5Cldots%20N%24.%20%20The%5Cn%5Cn%24i%24th%20of%20these%20lines%20contains%20integers%20%24x_i%24%20and%20%24y_i%24%20%28nonnegative%20integers%5Cn%5Cneach%20at%20most%201%2C000%2C000%2C000%29.%5Cn%22%2C%22outputFormat%22%3A%22Please%20output%20a%20count%20of%20the%20number%20of%20crossing%20points%20described%20above%2C%20where%20FJ%5Cn%5Cnre-cuts%20a%20point%20of%20grass%20that%20had%20grown%20back%20after%20being%20cut%20earlier.%5Cn%22%2C%22samples%22%3A%5B%5B%227%204%5Cn0%2010%5Cn10%2010%5Cn10%205%5Cn3%205%5Cn3%2012%5Cn6%2012%5Cn6%203%22%2C%221%22%5D%5D%2C%22hint%22%3A%22Here%2C%20FJ%20crosses%20on%20day%207%20a%20segment%20of%20grass%20he%20cut%20on%20day%202%2C%20which%20counts.%20The%5Cn%5Cn%5Cnother%20intersections%20do%20not%20count.%5Cn%5CnNote%3A%20This%20problem%20has%20expanded%20limits%3A%205%20seconds%20per%20test%20case%20%2810%20for%20Python%20and%20Java%29%2C%20and%20512%20MB%20of%20memory.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%2C5000%2C5000%2C5000%2C5000%2C5000%2C5000%2C5000%2C5000%2C5000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B33%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A63%2C%22totalAccepted%22%3A19%2C%22pid%22%3A%22P3136%22%2C%22title%22%3A%22%5BUSACO16JAN%5D%5Cu5272%5Cu8349%5Cu573aMowing%20the%20Field%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A70700%2C%22title%22%3A%22%5Cu53cd%5Cu5e94%5Cu4e00%5Cu4e0b%5Cu6284%5Cu9898%5Cu89e3%5Cu53ca%5Cu6076%5Cu610f%5Cu8bc4%5Cu5206%22%2C%22forum%22%3A%7B%22id%22%3A2252%2C%22name%22%3A%22P3136%20%5BUSACO16JAN%5D%5Cu5272%5Cu8349%5Cu573aMowing%20the%20Field%22%2C%22slug%22%3A%22P3136%22%7D%7D%2C%7B%22id%22%3A59355%2C%22title%22%3A%22%5Cu8fd9%5Cu662f%5Cu9ec4%5Cu9898%5Cuff1f%5Cuff1f%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2252%2C%22name%22%3A%22P3136%20%5BUSACO16JAN%5D%5Cu5272%5Cu8349%5Cu573aMowing%20the%20Field%22%2C%22slug%22%3A%22P3136%22%7D%7D%2C%7B%22id%22%3A51757%2C%22title%22%3A%22%5Cu89e3%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A2252%2C%22name%22%3A%22P3136%20%5BUSACO16JAN%5D%5Cu5272%5Cu8349%5Cu573aMowing%20the%20Field%22%2C%22slug%22%3A%22P3136%22%7D%7D%2C%7B%22id%22%3A51744%2C%22title%22%3A%22%5Cu771f%2A%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2252%2C%22name%22%3A%22P3136%20%5BUSACO16JAN%5D%5Cu5272%5Cu8349%5Cu573aMowing%20the%20Field%22%2C%22slug%22%3A%22P3136%22%7D%7D%2C%7B%22id%22%3A8055%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu5185%5Cu5b58%5Cu662f%5Cu4e0d%5Cu662f%5Cu5f00%5Cu5c0f%5Cu4e86%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2252%2C%22name%22%3A%22P3136%20%5BUSACO16JAN%5D%5Cu5272%5Cu8349%5Cu573aMowing%20the%20Field%22%2C%22slug%22%3A%22P3136%22%7D%7D%2C%7B%22id%22%3A7130%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2252%2C%22name%22%3A%22P3136%20%5BUSACO16JAN%5D%5Cu5272%5Cu8349%5Cu573aMowing%20the%20Field%22%2C%22slug%22%3A%22P3136%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1027%22%2C%22title%22%3A%22Car%5Cu7684%5Cu65c5%5Cu884c%5Cu8def%5Cu7ebf%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3138%22%2C%22title%22%3A%22%5BUSACO16FEB%5D%5Cu8d1f%5Cu8f7d%5Cu5e73%5Cu8861Load%20Balancing_Silver%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3140%22%2C%22title%22%3A%22%5BUSACO16FEB%5D%5Cu518d%5Cu63a2%5Cu5706%5Cu5f62%5Cu8c37%5Cu4ed3Circular%20Barn%20R%5Cu2026%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3588%22%2C%22title%22%3A%22%5BPOI2015%5DPUS%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4818%22%2C%22title%22%3A%22%5BUSACO15DEC%5DBessie%27s%20Dream%20%5Cu8d1d%5Cu897f%5Cu7684%5Cu68a6%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO16JAN%5D%5Cu5272%5Cu8349%5Cu573aMowing%20the%20Field%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO16JAN]割草场Mowing the Field</h1>
+<h2>题目背景</h2>
+<div>征求翻译。如果你能提供翻译或者题意简述，请直接发讨论，感谢你的贡献。
+</div>
+<h2>题目描述</h2>
+<div>Farmer John is quite reliable in all aspects of managing his farm, except one: he is terrible at mowing the grass in a timely fashion. He only manages to move the mowing machine once per day, in fact. On day 1, he starts at position $(x_1, y_1)$ and on day $d$ he mows along a straight segment to the position $(x_d, y_d)$, moving either horizontally or vertically on the 2D map of his farm; that is, either $x_d = x_{d-1}$, or $y_d = y_{d-1}$. FJ alternates between horizontal and vertical moves on successive days.
+So slow is FJ's progress that some of the grass he mows might grow back before he is finished with all his mowing. Any section of grass that is cut in day $d$ will reappear on day $d + T$, so if FJ's mowing path crosses a path he cut at least $T$ days earlier, he will end up cutting grass at the same point again. In an effort to try and reform his poor mowing strategy, FJ would like to count the number of times this happens.
+Please count the number of times FJ's mowing path crosses over an earlier segment on which grass has already grown back. You should only count "perpendicular" crossings, defined as a point in common between a horizontal and a vertical segment that is an endpoint of neither.
+临时翻译
+农民约翰在管理他的农场的各个方面是相当可靠的，除了及时地修剪草。他设法每天只移动一次割草机。某1天，他开始在位置和一天他割沿直线段的位置，他可以在他农场的二维地图水平或垂直移动。FJ的水平和垂直移动之间交替连续几天。
+所以越来越慢是FJ的进步，他可能在一些草长回来之前就割完了所有的草。草的任何部分（点）在一天内将重新长出来，所以如果FJ的割草路径穿过一条他在几天前割过了，他将不会在同一点再割草。在努力尝试和改革他可怜的修剪策略，FJ想知道需要的次数。
+请算一下FJ的割草路径，使草不会再长出来。你只能计算“垂直”交叉点，定义为一个点在一个水平和一个垂直段之间的共同点 。
+输入输出格式
+输入格式：
+输入的第一行包含（）
+下一行描述了每天割草机在的位置。
+这些行中包含整数和非负整数（最多1000000000个）。
+输出格式：
+请输出有几个割了不止1次的点。
+输入输出样例
+输入样例# 1：
+7 4 0 10 10 10 10 5 3 5 3 12 6 12 6 3 输出样例# 1：
+1 说明 在这里，FJ跨越7天的一段草被他剪了2天，计数。
+其他交叉口不计数。
+注：这个问题已经扩大了范围：每个测试点有5秒（10个python和java），512 MB的内存。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains $N$ ($2 \leq N \leq 100,000$) and $T$
+($1 \leq T \leq N$, $T$ even).
+The next $N$ lines describe the position of the mower on days $1 \ldots N$. The
+$i$th of these lines contains integers $x_i$ and $y_i$ (nonnegative integers
+each at most 1,000,000,000).
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Please output a count of the number of crossing points described above, where FJ
+re-cuts a point of grass that had grown back after being cut earlier.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 4
+0 10
+10 10
+10 5
+3 5
+3 12
+6 12
+6 3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1</code></pre>
+<h2>说明</h2>
+<div>Here, FJ crosses on day 7 a segment of grass he cut on day 2, which counts. The
+other intersections do not count.
+Note: This problem has expanded limits: 5 seconds per test case (10 for Python and Java), and 512 MB of memory.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO16JAN]熄灯Lights Out_Gold - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376452:MiJHO6zWWTNAD7Z8AyLnbg0EBk6/wEgfGow4zp2rqtQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu5f81%5Cu6c42%5Cu7ffb%5Cu8bd1%5Cu3002%5Cu5982%5Cu679c%5Cu4f60%5Cu80fd%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cu6216%5Cu8005%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%5Cuff0c%5Cu8bf7%5Cu76f4%5Cu63a5%5Cu53d1%5Cu8ba8%5Cu8bba%5Cuff0c%5Cu611f%5Cu8c22%5Cu4f60%5Cu7684%5Cu8d21%5Cu732e%5Cu3002%5Cn%22%2C%22description%22%3A%22Farmer%20John%20has%20installed%20a%20fancy%20new%20milking%20machine%20in%20his%20barn%2C%20but%20it%20draws%20so%20much%20power%20that%20it%20occasionally%20causes%20the%20power%20to%20go%20out%21%20This%20happens%20so%20often%20that%20Bessie%20has%20memorized%20a%20map%20of%20the%20barn%2C%20making%20it%20easier%20for%20her%20to%20find%20the%20exit%20of%20the%20barn%20in%20the%20dark.%20She%20is%20curious%20though%20about%20the%20impact%20of%20power%20loss%20on%20her%20ability%20to%20exit%20the%20barn%20quickly.%20For%20example%2C%20she%20wonders%20how%20much%20farther%20she%20might%20need%20to%20walk%20find%20the%20exit%20in%20the%20dark.%5Cn%5Cn%5CnThe%20barn%20is%20described%20by%20a%20simple%20%28non%20self-intersecting%29%20polygon%20with%20integer%20%20vertices%20%24%28x_1%2C%20y_1%29%20%5C%5Cldots%20%28x_n%2C%20y_n%29%24%20listed%20in%20clockwise%20order.%20%20Its%20edges%20alternate%20between%20horizontal%20%28parallel%20to%20the%20x-axis%29%20and%20vertical%20%28parallel%20to%20the%20y-axis%29%3B%20the%20first%20edge%20can%20be%20of%20either%20type.%20The%20exit%20is%20located%20at%5Cn%5Cn%24%28x_1%2C%20y_1%29%24.%20%20Bessie%20starts%20inside%20the%20barn%20located%20at%20some%20vertex%20%20%24%28x_i%2C%20y_i%29%24%20for%20%24i%20%3E%201%24.%20%20She%20can%20walk%20only%20around%20the%20perimeter%20of%20the%20barn%2C%20either%20clockwise%20or%20counterclockwise%2C%20Her%20goal%20is%20to%20travel%20a%20minimum%20distance%20to%20reach%20the%20exit.%20This%20is%20relatively%20easy%20to%20do%20with%20the%20lights%20on%2C%20of%20course%2C%20since%20she%20will%20travel%20either%20%20clockwise%20or%20counterclockwise%20from%20her%20current%20location%20to%20the%20%20exit%20--%20whichever%20direction%20is%20shorter.%5Cn%5Cn%5CnOne%20day%2C%20the%20lights%20go%20out%2C%20causing%20Bessie%20to%20panic%20and%20forget%20which%20vertex%20she%20is%20standing%20at.%20%20Fortunately%2C%20she%20still%20remembers%20the%20exact%20map%20of%20the%20barn%2C%20so%20she%20can%20possibly%20figure%20out%20her%20position%20by%20walking%20around%20and%20using%20her%20sense%20of%20touch.%20%20Whenever%20she%20is%20standing%20at%20a%20vertex%20%28including%20at%20her%20initial%20vertex%29%2C%20she%20can%20feel%20the%20exact%20interior%20angle%20at%20that%20vertex%2C%20and%20she%20can%20tell%20if%20that%20vertex%20is%20the%20exit.%20%20When%20she%20walks%20along%20an%20edge%20of%20the%20barn%2C%20she%20can%20determine%20the%20exact%20length%20of%20the%20edge%20after%20walking%20along%20the%20entire%20edge.%20%20Bessie%20decides%20on%20the%20following%20strategy%3A%20she%20will%20move%20clockwise%20around%20the%20perimeter%20of%20the%20barn%20until%20she%20has%20felt%20enough%20angles%20and%20edges%20to%20deduce%20the%20vertex%20at%20which%20she%20is%20currently%20located.%20%20At%20that%20point%2C%20she%20can%20easily%20figure%20out%20how%20to%20get%20to%20the%20exit%20by%20traveling%20a%20minimum%20amount%20of%20remaining%20distance%2C%20either%20by%20continuing%20to%20move%20clockwise%20or%20by%20switching%20direction%20and%20moving%20counter-clockwise.%5Cn%5Cn%5CnPlease%20help%20Bessie%20determine%20the%20largest%20amount%20by%20which%20her%20travel%20distance%20will%20increase%20in%20the%20worst%20case%20%28over%20all%20possibilities%20for%20her%20starting%20vertex%29%20for%20travel%20in%20the%20dark%20versus%20in%20a%20lit%20barn.%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20%24N%24%20%28%244%20%5C%5Cleq%20N%20%5C%5Cleq%20200%24%29.%20%20Each%20of%20the%5Cn%5Cnnext%20%24N%24%20lines%20contains%20two%20integers%2C%20describing%20the%20points%20%24%28x_i%2C%20y_i%29%24%20in%5Cn%5Cnclockwise%20order%20around%20the%20barn.%20%20These%20integers%20are%20in%20the%20range%5Cn%5Cn%24-100%2C000%20%5C%5Cldots%20100%2C000%24.%5Cn%22%2C%22outputFormat%22%3A%22Output%20the%20largest%20amount%20that%20Bessie%27s%20travel%20distance%20will%20increase%20in%20the%5Cn%5Cnworst%20case%20starting%20position%20using%20the%20strategy%20in%20the%20problem%20statement.%5Cn%22%2C%22samples%22%3A%5B%5B%224%5Cn0%200%5Cn0%2010%5Cn1%2010%5Cn1%200%22%2C%222%22%5D%5D%2C%22hint%22%3A%22In%20this%20example%2C%20Bessie%20can%20feel%20that%20she%20is%20initially%20standing%20at%20a%2090-degree%5Cn%5Cnangle%2C%20but%20she%20cannot%20tell%20if%20she%20is%20initially%20standing%20at%20vertex%202%2C%203%2C%20or%204.%5Cn%5CnAfter%20taking%20a%20step%20along%20one%20edge%20in%20the%20clockwise%20direction%2C%20Bessie%20either%5Cn%5Cnreaches%20the%20exit%20or%20can%20uniquely%20determine%20her%20location%20based%20on%20the%20length%20of%5Cn%5Cnthis%20edge.%20%20The%20distances%20she%20obtains%20are%3A%5Cn%5CnIf%20starting%20at%20vertex%202%3A%20she%20travels%2012%20units%20in%20the%20dark%20%281%20unit%20to%20reach%5Cn%5Cnvertex%203%2C%20then%2011%20units%20to%20continue%20to%20the%20exit%29.%20%20She%20only%20needs%20to%20travel%2010%5Cn%5Cnunits%20in%20a%20lit%20barn.%20%20This%20is%20an%20extra%20distance%20of%202%20for%20this%20vertex.%5Cn%5CnIf%20starting%20at%20vertex%203%3A%20she%20travels%2011%20units%20in%20both%20cases.%5Cn%5CnIf%20starting%20at%20vertex%204%3A%20she%20travels%201%20unit%20in%20both%20cases.%5Cn%5CnThe%20worst-case%20difference%20over%20all%20starting%20points%20is%20therefore%2012%20-%2010%20%3D%202.%20%20That%5Cn%5Cnis%2C%20Bessie%20can%20guarantee%20that%20using%20her%20strategy%2C%20no%20matter%20where%20she%20starts%2C%5Cn%5Cnshe%20will%20travel%20at%20most%202%20extra%20units%20of%20distance%20farther%20in%20the%20dark%20than%20in%20the%20light.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B33%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A38%2C%22totalAccepted%22%3A18%2C%22pid%22%3A%22P3134%22%2C%22title%22%3A%22%5BUSACO16JAN%5D%5Cu7184%5Cu706fLights%20Out_Gold%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A140806%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2250%2C%22name%22%3A%22P3134%20%5BUSACO16JAN%5D%5Cu7184%5Cu706fLights%20Out_Gold%22%2C%22slug%22%3A%22P3134%22%7D%7D%2C%7B%22id%22%3A123531%2C%22title%22%3A%22%5Cu5927%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A2250%2C%22name%22%3A%22P3134%20%5BUSACO16JAN%5D%5Cu7184%5Cu706fLights%20Out_Gold%22%2C%22slug%22%3A%22P3134%22%7D%7D%2C%7B%22id%22%3A110733%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2250%2C%22name%22%3A%22P3134%20%5BUSACO16JAN%5D%5Cu7184%5Cu706fLights%20Out_Gold%22%2C%22slug%22%3A%22P3134%22%7D%7D%2C%7B%22id%22%3A91753%2C%22title%22%3A%22%5Cu666e%5Cu53ca-%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2250%2C%22name%22%3A%22P3134%20%5BUSACO16JAN%5D%5Cu7184%5Cu706fLights%20Out_Gold%22%2C%22slug%22%3A%22P3134%22%7D%7D%2C%7B%22id%22%3A84030%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A2250%2C%22name%22%3A%22P3134%20%5BUSACO16JAN%5D%5Cu7184%5Cu706fLights%20Out_Gold%22%2C%22slug%22%3A%22P3134%22%7D%7D%2C%7B%22id%22%3A14490%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2250%2C%22name%22%3A%22P3134%20%5BUSACO16JAN%5D%5Cu7184%5Cu706fLights%20Out_Gold%22%2C%22slug%22%3A%22P3134%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO16JAN%5D%5Cu7184%5Cu706fLights%20Out_Gold%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO16JAN]熄灯Lights Out_Gold</h1>
+<h2>题目背景</h2>
+<div>征求翻译。如果你能提供翻译或者题意简述，请直接发讨论，感谢你的贡献。
+</div>
+<h2>题目描述</h2>
+<div>Farmer John has installed a fancy new milking machine in his barn, but it draws so much power that it occasionally causes the power to go out! This happens so often that Bessie has memorized a map of the barn, making it easier for her to find the exit of the barn in the dark. She is curious though about the impact of power loss on her ability to exit the barn quickly. For example, she wonders how much farther she might need to walk find the exit in the dark.
+The barn is described by a simple (non self-intersecting) polygon with integer vertices $(x_1, y_1) \ldots (x_n, y_n)$ listed in clockwise order. Its edges alternate between horizontal (parallel to the x-axis) and vertical (parallel to the y-axis); the first edge can be of either type. The exit is located at
+$(x_1, y_1)$. Bessie starts inside the barn located at some vertex $(x_i, y_i)$ for $i > 1$. She can walk only around the perimeter of the barn, either clockwise or counterclockwise, Her goal is to travel a minimum distance to reach the exit. This is relatively easy to do with the lights on, of course, since she will travel either clockwise or counterclockwise from her current location to the exit -- whichever direction is shorter.
+One day, the lights go out, causing Bessie to panic and forget which vertex she is standing at. Fortunately, she still remembers the exact map of the barn, so she can possibly figure out her position by walking around and using her sense of touch. Whenever she is standing at a vertex (including at her initial vertex), she can feel the exact interior angle at that vertex, and she can tell if that vertex is the exit. When she walks along an edge of the barn, she can determine the exact length of the edge after walking along the entire edge. Bessie decides on the following strategy: she will move clockwise around the perimeter of the barn until she has felt enough angles and edges to deduce the vertex at which she is currently located. At that point, she can easily figure out how to get to the exit by traveling a minimum amount of remaining distance, either by continuing to move clockwise or by switching direction and moving counter-clockwise.
+Please help Bessie determine the largest amount by which her travel distance will increase in the worst case (over all possibilities for her starting vertex) for travel in the dark versus in a lit barn.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains $N$ ($4 \leq N \leq 200$). Each of the
+next $N$ lines contains two integers, describing the points $(x_i, y_i)$ in
+clockwise order around the barn. These integers are in the range
+$-100,000 \ldots 100,000$.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the largest amount that Bessie's travel distance will increase in the
+worst case starting position using the strategy in the problem statement.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+0 0
+0 10
+1 10
+1 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2</code></pre>
+<h2>说明</h2>
+<div>In this example, Bessie can feel that she is initially standing at a 90-degree
+angle, but she cannot tell if she is initially standing at vertex 2, 3, or 4.
+After taking a step along one edge in the clockwise direction, Bessie either
+reaches the exit or can uniquely determine her location based on the length of
+this edge. The distances she obtains are:
+If starting at vertex 2: she travels 12 units in the dark (1 unit to reach
+vertex 3, then 11 units to continue to the exit). She only needs to travel 10
+units in a lit barn. This is an extra distance of 2 for this vertex.
+If starting at vertex 3: she travels 11 units in both cases.
+If starting at vertex 4: she travels 1 unit in both cases.
+The worst-case difference over all starting points is therefore 12 - 10 = 2. That
+is, Bessie can guarantee that using her strategy, no matter where she starts,
+she will travel at most 2 extra units of distance farther in the dark than in the light.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

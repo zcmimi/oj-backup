@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO11JAN]交通灯Traffic Lights - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376280:+uuv/f4WKjBBLIFbJOgkCF3oq8LmUnFSAI101apvzSs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu5f81%5Cu6c42%5Cu7ffb%5Cu8bd1%5Cu3002%5Cu5982%5Cu679c%5Cu4f60%5Cu80fd%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cu6216%5Cu8005%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%5Cuff0c%5Cu8bf7%5Cu76f4%5Cu63a5%5Cu53d1%5Cu8ba8%5Cu8bba%5Cuff0c%5Cu611f%5Cu8c22%5Cu4f60%5Cu7684%5Cu8d21%5Cu732e%5Cu3002%5Cn%22%2C%22description%22%3A%22Kenosha%2C%20the%20city%20nearest%20Farmer%20John%2C%20has%20M%20%281%20%3C%3D%20M%20%3C%3D%2014%2C000%29%20roads%20conveniently%20numbered%201..M%20that%20connect%20N%20%282%20%3C%3D%20N%20%3C%3D%20300%29%20junctions%20which%20are%20conveniently%20numbered%201..N.%20No%20two%20roads%20connect%20the%20same%20pair%20of%20junctions.%20No%20road%20connects%20a%20junction%20to%20itself.%20The%20integer%20travel%20time%20T%5C%5C_ij%20%281%20%3C%3D%20T%5C%5C_ij%20%3C%3D%20100%29%20between%20junctions%20i%20and%20j%20is%20the%20same%20for%20both%20directions%20%28i.e.%2C%20T%5C%5C_ij%20%3D%20T%5C%5C_ji%29.%5Cn%5CnEach%20junction%20has%20a%20single%20traffic%20light%20with%20two%20colors%3A%20blue%20or%20purple.%20The%20color%20of%20each%20light%20alternates%20periodically%3A%20blue%20for%20certain%20duration%20and%20then%20purple%20for%20another%20duration.%20%20Traffic%20is%20permitted%20to%20commence%20travel%20down%20the%20road%20between%20any%20two%20junctions%2C%20if%20and%20only%20if%20the%20lights%20at%20both%20junctions%20are%20the%20same%20color%20at%20the%20moment%20of%20departing%20from%20one%20junction%20for%20the%20other.%20%20The%20lights%20do%20not%20necessarily%20have%20to%20be%20the%20same%20on%20the%20whole%20trip%20down%20the%20road.%5Cn%5CnIf%20a%20vehicle%20arrives%20at%20a%20junction%20just%20at%20the%20moment%20the%20lights%20switch%20it%20must%20consider%20the%20new%20colors%20of%20lights.%20Vehicles%20are%20allowed%20to%20wait%20at%20the%20junctions.%20You%20are%20given%20the%20city%20map%20which%20shows%3A%5Cn%5Cn%60%60%60cpp%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Init%20%20Remg%20%20Blue%20%20%20Purple%5Cn%20%20%20%20%20%20%204%20%20%20%20%20%20%2076%20%20%20%20%20%20%20%20%20Junction%20%20Color%20Time%20%20Cycle%20%20Cycle%5Cn%3E%3E%5B1B%5D%3D%3D%3D%5B2P%5D%3D%3D%3D%3D%3D%3D%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20B%20%20%20%202%20%20%20%20%2016%20%20%20%20%20%2099%5Cn%20%20%20%20%7C%20%20%20%5C%2F%20%20%20%20%20%20%20%20%20%20%5C%5C%20%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20P%20%20%20%206%20%20%20%20%2032%20%20%20%20%20%2013%5Cn%20%2040%7C%20%20%5C%2F75%20%20%20%20%20%20%20%20%20%20%5C%5C%20%20%20%20%20%20%20%203%20%20%20%20%20%20%20%20P%20%20%20%202%20%20%20%20%2087%20%20%20%20%20%20%204%5Cn%20%20%20%20%7C%20%5C%2F%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%5C%20%20%20%20%20%20%204%20%20%20%20%20%20%20%20P%20%20%2038%20%20%20%20%2096%20%20%20%20%20%2049%5Cn%20%20%5B3P%5D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%5B4P%5D%3E%3E%5Cn%20%20%20%20%20%20%20%20%20%20%2077%5Cn%60%60%60%5Cn%60%60%60cpp%5Cn%2A%20The%20travel%20times%20T_ij%20for%20all%20roads%20%5Cn%2A%20The%20durations%20of%20the%20two%20colors%20at%20junction%20i.%20%28DB_i%20%281%20%3C%3D%20DB_i%20%3C%3D%20100%29%20for%20the%20blue%20light%20and%20DP_i%20%281%20%3C%3D%20DP_i%20%3C%3D%20100%29%20for%20the%20purple%20light%29%20%5Cn%2A%20The%20initial%20color%20C_i%20of%20the%20light%20at%20junction%20i%20%28a%20letter%20%27B%27%20or%20%27P%27%20with%20the%20obvious%20meaning%29%20and%20the%20remaining%20time%20R_i%20%281%20%3C%3D%20R_i%20%3C%3D%20100%29%20for%20this%20color%20to%20change%20%5CnFind%20the%20minimum%20time%20one%20needs%20to%20get%20from%20a%20given%20source%20S%20%281%20%3C%3D%20S%20%3C%3D%20N%29%20to%20a%20given%20destination%20D%20%281%20%3C%3D%20D%20%3C%3D%20N%3B%20D%20%21%3D%20S%29.%20%5CnConsider%20the%20map%20below%20with%20four%20junctions%20and%20five%20roads.%20FJ%20wants%20to%20travel%20from%20junction%201%20to%20junction%204.%20The%20first%20light%20is%20blue%3B%20the%20rest%20are%20purple.%20%5Cn%60%60%60%5CnThe%20minimum%20time%20is%20127%20utilizing%20the%20path%201-2-4.%5CnInitially%2C%20the%20light%20at%20junction%201%20is%20blue.%20Since%20the%20light%20at%20junction%202%20is%20purple%2C%20vehicle%20waits%20at%20junction%201%20for%202%20seconds%20then%20travels%204%20seconds%20to%20junction%202.%5Cn%5CnAt%20time%206%2C%20the%20light%20at%20junction%202%20switches%20to%20blue%20whereas%20the%20light%20at%20junction%204%20has%2032%20more%20seconds%20to%20switch%20to%20blue.%20However%2C%20after%2032%20seconds%2C%20the%20light%20at%20junction%202%20switches%20to%20purple%20and%20the%20light%20at%20junction%204%20switches%20to%20blue%20at%20the%20same%20time.%20So%20the%20vehicle%20needs%20to%20wait%2013%20seconds%20more%20for%20junction%202%20to%20switch%20to%20blue%20then%20the%20lights%20have%20the%20same%20color%20and%20vehicle%20travels%2076%20seconds%20to%20the%20destination%20junction%204.%5Cn%5CnThe%20total%20time%20is%202%2B4%2B32%2B13%2B76%3D127%20seconds.%20%5Cn%5CnBelow%20is%20a%20more%20graphical%20presentation%20of%20this%20travel%20plan%3A%5Cn%5Cn%60%60%60cpp%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%201%20%20%20%201%20%20%20%201%20%20%20%201%20%20%20%201%20%20%20%201%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%201%20%20%20%201%20%20%20%202%20%20%20%202%20%20%20%203%20%20%20%203%20%20%20%204%20%20%20%204%20%20%20%205%20%20%20%205%20%20%20%206%20%20%20%206%20%20%20%207%20%20%20%207%20%20%20%208%20%20%20%208%20%20%20%209%20%20%20%209%20%20%20%200%20%20%20%200%20%20%20%201%20%20%20%201%20%20%20%202%20%20%20%202%5Cn%20%20%200....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5..%5Cn%20%20%20--------------------------------------------------------------------------------------------------------------------------------%5CnJ1%20BBBPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBBBBBBBBBBBBBBBBPPPPPPPPPP%5CnJ2%20PPPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBPPPPPPPPPPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBPPPPPPPPPPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB%5CnJ3%20PPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB%5CnJ4%20PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB%5CnFJ%201..%3E%3E%3E2............................................%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E%3E4%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20S%20and%20D%5Cn%5Cn%5C%5C%2A%20Line%202%3A%20Two%20space-separated%20integers%3A%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%203..N%2B2%3A%20Line%20i%2B2%20line%20describes%20junction%20i%20with%20a%20character%20and%20three%20integers%20%28all%20separated%20by%20a%20single%20space%29%3A%20C%5C%5C_i%2C%20R%5C%5C_i%2C%20DB%5C%5C_i%2C%20and%20DP%5C%5C_i%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B3..N%2BM%2B2%3A%20Line%20N%2B2%2Bk%20describes%20road%20k%20with%20three%20integers%3A%20i%2C%20j%2C%20and%20T%5C%5C_ij%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20One%20integer%3A%20the%20time%20taken%20by%20a%20minimum-time%20path%20from%20the%20source%20junction%20to%20the%20destination%20junction.%20If%20there%20is%20no%20path%2C%20output%200.%5Cn%22%2C%22samples%22%3A%5B%5B%221%204%20%5Cn4%205%20%5CnB%202%2016%2099%20%5CnP%206%2032%2013%20%5CnP%202%2087%204%20%5CnP%2038%2096%2049%20%5Cn1%202%204%20%5Cn1%203%2040%20%5Cn2%203%2075%20%5Cn2%204%2076%20%5Cn3%204%2077%20%5Cn%22%2C%22127%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%23%23%20%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%2A%2A%5Cn%5Cn%5Cu548cFJ%5Cu9760%5Cu7684%5Cu6700%5Cu8fd1%5Cu7684%5Cu57ce%5Cu5e02Kenosha%5Cu5e02%5Cu6709%20%24M%24%5Cu6761%5Cu9053%5Cu8def%5Cu3002%28%5Cu7f16%5Cu53f7%5Cu4e3a%241-M%24%29%20%5Cu8fde%5Cu63a5%5Cu7740%24N%24%5Cu4e2a%5Cu8def%5Cu53e3%20%28%5Cu7f16%5Cu53f7%5Cu4e3a%241-N%24%29%20%5Cu3002%5Cu4fdd%5Cu8bc1%5Cu6ca1%5Cu6709%5Cu91cd%5Cu8fb9%5Cu548c%5Cu81ea%5Cu73af%5Cu3002%20%5Cn%5Cn%5Cu4ece%5Cu70b9%24i%24%5Cu5230%5Cu70b9%24j%24%5Cu9700%5Cu8981%5Cu7684%5Cu65f6%5Cu95f4%5Cu662f%24T_%7Bij%7D%24%5Cuff0c%20%5Cu4e14%5Cu4fdd%5Cu8bc1%24T_%7Bij%7D%24%20%3D%20%24T_%7Bji%7D%24%5Cn%5Cn%5Cu6bcf%5Cu4e2a%5Cu8def%5Cu53e3%5Cu6709%5Cu4e00%5Cu4e2a%5Cu4ea4%5Cu901a%5Cu706f%5Cuff0c%5Cu6709%5Cu4e24%5Cu79cd%5Cu989c%5Cu8272%5Cuff1a%5Cu84dd%5Cu8272%5Cu548c%5Cu7d2b%5Cu8272%5Cu3002%5Cu4e24%5Cu4e2a%5Cu989c%5Cu8272%5Cu5468%5Cu671f%5Cu6027%5Cu7684%5Cu4ea4%5Cu66ff%5Cu3002%5Cu84dd%5Cu8272%5Cu6301%5Cu7eed%5Cu4e00%5Cu5b9a%5Cu65f6%5Cu95f4%5Cuff0c%5Cu7136%5Cu540e%5Cu7d2b%5Cu8272%5Cu6301%5Cu7eed%5Cu4e00%5Cu5b9a%5Cu65f6%5Cu95f4%5Cu3002%5Cn%5Cu60f3%5Cu8981%5Cu4ece%24i%24%5Cu5230%24j%24%5Cu53ea%5Cu6709%5Cu5728%24i%24%5Cu548c%24j%24%5Cu7684%5Cu4fe1%5Cu53f7%5Cu706f%5Cu989c%5Cu8272%5Cu76f8%5Cu540c%5Cu7684%5Cu65f6%5Cu5019%5Cu624d%5Cu53ef%5Cu4ee5%5Cu8d70%28%5Cu4eceT1%5Cu79bb%5Cu5f00i%5Cu8d70%5Cu5411j%5Cuff0c%5Cu53ea%5Cu9700T1%5Cu65f6%5Cu523bi%5Cu4e0ej%5Cu7684%5Cu989c%5Cu8272%5Cu76f8%5Cu540c%5Cu5373%5Cu53ef%5Cuff0c%5Cu65e0%5Cu5176%5Cu4ed6%5Cu4efb%5Cu4f55%5Cu7ea6%5Cu675f%5Cu3002%29%5Cn%5Cn%5Cu5982%5Cu679c%5Cu5728%5Cu53d8%5Cu5e7b%5Cu706f%5Cu7684%5Cu90a3%5Cu4e00%5Cu79d2%5Cu5230%24j%24%5Cuff0c%5Cu8003%5Cu8651%5Cu7684%5Cu662f%5Cu53d8%5Cu5e7b%5Cu540e%5Cu7684%5Cu989c%5Cu8272%5Cu3002%5Cn%5Cu7ed9%5Cu4f60%5Cu6240%5Cu6709%5Cu7b2c%24i%24%5Cu4e2a%5Cu8def%5Cu53e3%5Cu7684%5Cu84dd%5Cu8272%5Cu706f%5Cu6301%5Cu7eed%5Cu65f6%5Cu95f4%24DB_i%24%5Cu548c%5Cu7d2b%5Cu8272%5Cu706f%5Cu6301%5Cu7eed%5Cu65f6%5Cu95f4%24DP_i%24%5Cn%5Cu548c%5Cu6bcf%5Cu4e2a%5Cu8def%5Cu53e3%5Cu521a%5Cu5f00%5Cu59cb%5Cu706f%5Cu7684%5Cu989c%5Cu8272%24C_i%24%2C%5Cu5269%5Cu4f59%5Cu6301%5Cu7eed%5Cu65f6%5Cu95f4%24R_i%24%5Cn%5Cu6c42%5Cu4e00%5Cu4e2a%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu539f%5Cu70b9%24S%24%5Cu5230%5Cu7ed9%5Cu5b9a%5Cu76ee%5Cu6807%5Cu70b9%24D%24%5Cu7684%5Cu6700%5Cu5c0f%5Cu65f6%5Cu95f4%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%23%23%23%20%20%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%20%2A%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20S%5Cu548cD%5Cn%20%2A%20%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20N%5Cu548cM%5Cn%20%2A%20%5Cu7b2c%5Cu4e09%5Cu81f3N%2B2%5Cu884c%5Cu3002%5Cu7b2ci%2B2%5Cu884c%5Cu63cf%5Cu8ff0%5Cu70b9i%5Cu7684%5Cu4fe1%5Cu53f7%5Cu706f%5Cu60c5%5Cu51b5%20%24C_i%24%2C%20%20%20%24R_i%24%2C%20%20%24DB_i%24%2C%20%20%20%24DP_i%24%5Cn%20%2A%20%5Cu7b2c%5Cu4e09%5Cu9053N%2BM%2B2%5Cu884c%5Cuff1a%5Cu7b2cN%2B2%2Bk%5Cu884c%5Cu63cf%5Cu8ff0%5Cu7b2ck%5Cu6761%5Cu9053%5Cu8def%20%3A%20%24i%24%2C%20%24j%24%2C%20%24T_%7Bij%7D%24%5Cn%23%23%23%20%20%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%20%2A%20%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu4ee3%5Cu8868%5Cu4eceS%5Cu5230D%5Cu6700%5Cu5c11%5Cu6d88%5Cu8017%5Cu7684%5Cu65f6%5Cu95f4%5Cuff0c%20%5Cu5982%5Cu679cS%5Cu3001D%5Cu4e0d%5Cu8fde%5Cu901a%5Cuff0c%5Cu8f93%5Cu51fa0%5Cn%5Cn%5Cu611f%5Cu8c22%40ToBiChi%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B28%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A54%2C%22totalAccepted%22%3A18%2C%22pid%22%3A%22P3011%22%2C%22title%22%3A%22%5BUSACO11JAN%5D%5Cu4ea4%5Cu901a%5Cu706fTraffic%20Lights%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A76070%2C%22title%22%3A%22%5Cu6b64%5Cu9898%5Cu5df2%5Cu91c7%5Cu7eb3%5Cu7684%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu5c0f%5Cu9519%22%2C%22forum%22%3A%7B%22id%22%3A2139%2C%22name%22%3A%22P3011%20%5BUSACO11JAN%5D%5Cu4ea4%5Cu901a%5Cu706fTraffic%20Lights%22%2C%22slug%22%3A%22P3011%22%7D%7D%2C%7B%22id%22%3A45485%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2139%2C%22name%22%3A%22P3011%20%5BUSACO11JAN%5D%5Cu4ea4%5Cu901a%5Cu706fTraffic%20Lights%22%2C%22slug%22%3A%22P3011%22%7D%7D%2C%7B%22id%22%3A17111%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu63cf%5Cu8ff0%22%2C%22forum%22%3A%7B%22id%22%3A2139%2C%22name%22%3A%22P3011%20%5BUSACO11JAN%5D%5Cu4ea4%5Cu901a%5Cu706fTraffic%20Lights%22%2C%22slug%22%3A%22P3011%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1715%22%2C%22title%22%3A%22%5BUSACO16DEC%5DLots%20of%20Triangles%5Cu597d%5Cu591a%5Cu4e09%5Cu89d2%5Cu5f62%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2155%22%2C%22title%22%3A%22%5BSDOI2008%5D%5Cu6c99%5Cu62c9%5Cu516c%5Cu4e3b%5Cu7684%5Cu56f0%5Cu60d1%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2891%22%2C%22title%22%3A%22%5BUSACO07OPEN%5D%5Cu5403%5Cu996dDining%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4083%22%2C%22title%22%3A%22%5BUSACO17DEC%5DA%20Pie%20for%20a%20Pie%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4446%22%2C%22title%22%3A%22%5BAHOI2018%5Cu521d%5Cu4e2d%5Cu7ec4%5D%5Cu6839%5Cu5f0f%5Cu5316%5Cu7b80%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO11JAN%5D%5Cu4ea4%5Cu901a%5Cu706fTraffic%20Lights%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO11JAN]交通灯Traffic Lights</h1>
+<h2>题意翻译</h2>
+<div>## **题目描述**
+和FJ靠的最近的城市Kenosha市有 $M$条道路。(编号为$1-M$) 连接着$N$个路口 (编号为$1-N$) 。保证没有重边和自环。
+从点$i$到点$j$需要的时间是$T_{ij}$， 且保证$T_{ij}$ = $T_{ji}$
+每个路口有一个交通灯，有两种颜色：蓝色和紫色。两个颜色周期性的交替。蓝色持续一定时间，然后紫色持续一定时间。
+想要从$i$到$j$只有在$i$和$j$的信号灯颜色相同的时候才可以走(从T1离开i走向j，只需T1时刻i与j的颜色相同即可，无其他任何约束。)
+如果在变幻灯的那一秒到$j$，考虑的是变幻后的颜色。
+给你所有第$i$个路口的蓝色灯持续时间$DB_i$和紫色灯持续时间$DP_i$
+和每个路口刚开始灯的颜色$C_i$,剩余持续时间$R_i$
+求一个给定的原点$S$到给定目标点$D$的最小时间。
+## 输入输出格式
+### 输入格式
+* 第一行两个整数 S和D
+* 第二行两个整数 N和M
+* 第三至N+2行。第i+2行描述点i的信号灯情况 $C_i$, $R_i$, $DB_i$, $DP_i$
+* 第三道N+M+2行：第N+2+k行描述第k条道路 : $i$, $j$, $T_{ij}$
+### 输出格式
+* 一个整数代表从S到D最少消耗的时间， 如果S、D不连通，输出0
+感谢@ToBiChi 提供翻译</div>
+<h2>题目背景</h2>
+<div>征求翻译。如果你能提供翻译或者题意简述，请直接发讨论，感谢你的贡献。
+</div>
+<h2>题目描述</h2>
+<div>Kenosha, the city nearest Farmer John, has M (1 <= M <= 14,000) roads conveniently numbered 1..M that connect N (2 <= N <= 300) junctions which are conveniently numbered 1..N. No two roads connect the same pair of junctions. No road connects a junction to itself. The integer travel time T\_ij (1 <= T\_ij <= 100) between junctions i and j is the same for both directions (i.e., T\_ij = T\_ji).
+Each junction has a single traffic light with two colors: blue or purple. The color of each light alternates periodically: blue for certain duration and then purple for another duration. Traffic is permitted to commence travel down the road between any two junctions, if and only if the lights at both junctions are the same color at the moment of departing from one junction for the other. The lights do not necessarily have to be the same on the whole trip down the road.
+If a vehicle arrives at a junction just at the moment the lights switch it must consider the new colors of lights. Vehicles are allowed to wait at the junctions. You are given the city map which shows:
+```cpp
+Init Remg Blue Purple
+4 76 Junction Color Time Cycle Cycle
+>>[1B]===[2P]====== 1 B 2 16 99
+| / \ 2 P 6 32 13
+40| /75 \ 3 P 2 87 4
+| / \ 4 P 38 96 49
+[3P]===============[4P]>>
+77
+```
+```cpp
+* The travel times T_ij for all roads
+* The durations of the two colors at junction i. (DB_i (1 <= DB_i <= 100) for the blue light and DP_i (1 <= DP_i <= 100) for the purple light)
+* The initial color C_i of the light at junction i (a letter 'B' or 'P' with the obvious meaning) and the remaining time R_i (1 <= R_i <= 100) for this color to change
+Find the minimum time one needs to get from a given source S (1 <= S <= N) to a given destination D (1 <= D <= N; D != S).
+Consider the map below with four junctions and five roads. FJ wants to travel from junction 1 to junction 4. The first light is blue; the rest are purple.
+```
+The minimum time is 127 utilizing the path 1-2-4.
+Initially, the light at junction 1 is blue. Since the light at junction 2 is purple, vehicle waits at junction 1 for 2 seconds then travels 4 seconds to junction 2.
+At time 6, the light at junction 2 switches to blue whereas the light at junction 4 has 32 more seconds to switch to blue. However, after 32 seconds, the light at junction 2 switches to purple and the light at junction 4 switches to blue at the same time. So the vehicle needs to wait 13 seconds more for junction 2 to switch to blue then the lights have the same color and vehicle travels 76 seconds to the destination junction 4.
+The total time is 2+4+32+13+76=127 seconds.
+Below is a more graphical presentation of this travel plan:
+```cpp
+1 1 1 1 1 1
+1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 0 0 1 1 2 2
+0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5....0....5..
+--------------------------------------------------------------------------------------------------------------------------------
+J1 BBBPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBBBBBBBBBBBBBBBBPPPPPPPPPP
+J2 PPPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBPPPPPPPPPPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBPPPPPPPPPPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+J3 PPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+J4 PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+FJ 1..>>>2............................................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>4
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: S and D
+\* Line 2: Two space-separated integers: N and M
+\* Lines 3..N+2: Line i+2 line describes junction i with a character and three integers (all separated by a single space): C\_i, R\_i, DB\_i, and DP\_i
+\* Lines N+3..N+M+2: Line N+2+k describes road k with three integers: i, j, and T\_ij
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: One integer: the time taken by a minimum-time path from the source junction to the destination junction. If there is no path, output 0.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 4 
+4 5 
+B 2 16 99 
+P 6 32 13 
+P 2 87 4 
+P 38 96 49 
+1 2 4 
+1 3 40 
+2 3 75 
+2 4 76 
+3 4 77 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>127 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

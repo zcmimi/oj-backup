@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>【模板】类欧几里得算法 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382274:iXemFWExYDauMQ0Nk8h3z6ASY55nee7d/c10nHarHig=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu7ed9%5Cu5b9a%20%24n%2C%5C%5C%2Ca%2C%5C%5C%2Cb%2C%5C%5C%2Cc%24%20%5Cuff0c%5Cu5206%5Cu522b%5Cu6c42%20%24%5C%5Csum%5C%5Climits_%7Bi%3D0%7D%5E%7Bn%7D%5C%5Clfloor%20%5C%5Cfrac%7Bai%2Bb%7D%7Bc%7D%20%5C%5Crfloor%5C%5C%2C%2C%5C%5C%20%20%5C%5Csum%5C%5Climits_%7Bi%3D0%7D%5E%7Bn%7D%7B%5C%5Clfloor%20%5C%5Cfrac%7Bai%2Bb%7D%7Bc%7D%20%5C%5Crfloor%7D%5E2%5C%5C%2C%2C%5C%5C%20%20%5C%5Csum%5C%5Climits_%7Bi%3D0%7D%5E%7Bn%7Di%5C%5Clfloor%20%5C%5Cfrac%7Bai%2Bb%7D%7Bc%7D%20%5C%5Crfloor%24%20%5Cuff0c%5Cu7b54%5Cu6848%5Cu5bf9%20%24998244353%24%20%5Cu53d6%5Cu6a21%5Cu3002%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu7ed9%5Cu51fa%5Cu6570%5Cu636e%5Cu7ec4%5Cu6570%20%24t%24%20%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24t%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu6709%5Cu56db%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5206%5Cu522b%5Cu4e3a%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu7684%20%24n%2C%5C%5C%20a%2C%5C%5C%20b%2C%5C%5C%20c%24%20%5Cu3002%22%2C%22outputFormat%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu4e3a%5Cu4e09%5Cu4e2a%5Cu7b54%5Cu6848%5Cu5bf9%20%24998244353%24%20%5Cu53d6%5Cu6a21%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%22%2C%22samples%22%3A%5B%5B%222%5Cn2%201%200%202%5Cn4%203%209%206%22%2C%221%201%202%5Cn11%2027%2027%22%5D%5D%2C%22hint%22%3A%22%5Cu672c%5Cu9898%5Cu91c7%5Cu7528%20%24%5C%5Cmathrm%7BSpecial%7D%5C%5C%20%5C%5Cmathrm%7BJudge%7D%24%5Cu3002%5Cn%5Cn%5Cu7b54%5Cu5bf9%5Cu6240%5Cu6709%5Cu7b2c%5Cu4e00%5Cu95ee%5Cu53ef%5Cu4ee5%5Cu83b7%5Cu5f97%5Cu6d4b%5Cu8bd5%5Cu70b9%20%2440%5C%5C%25%24%20%5Cu7684%5Cu5206%5Cu6570%5Cuff0c%5Cu7b54%5Cu5bf9%5Cu6240%5Cu6709%5Cu7b2c%5Cu4e8c%5Cu95ee%5Cu3001%5Cu7b2c%5Cu4e09%5Cu95ee%5Cu53ef%5Cu4ee5%5Cu5206%5Cu522b%5Cu83b7%5Cu5f97%5Cu53e6%5Cu5916%20%2430%5C%5C%25%24%20%5Cu7684%5Cu5206%5Cu6570%5Cu3002%5Cn%5Cn%7C%7C%7C%5Cn%7C%3A-%3A%7C%3A-%3A%7C%3A-%3A%7C%5Cn%7C%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu7f16%5Cu53f7%7C%5Cu7279%5Cu6b8a%5Cu6027%5Cu8d28%7C%5Cn%7C%241%24%7C%24n%2C%5C%5C%2Ca%2C%5C%5C%2Cb%2C%5C%5C%2Cc%5C%5Cleqslant10%24%7C%5Cn%7C%242%20%5C%5Csim%203%24%7C%24n%2C%5C%5C%2Ca%2C%5C%5C%2Cb%2C%5C%5C%2Cc%5C%5Cleqslant1000%24%7C%5Cn%7C%244%24%7C%24n%2C%5C%5C%2Ca%2C%5C%5C%2Cb%2C%5C%5C%2Cc%5C%5Cleqslant10%5E6%24%7C%5Cn%7C%245%24%7C%24t%3D1%24%7C%5Cn%7C%246%20%5C%5Csim%2010%24%7C%5Cu65e0%7C%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cuff0c%5Cu6709%20%241%20%5C%5Cleqslant%20t%20%5C%5Cleqslant%2010%5E5%2C%5C%5C%200%20%5C%5Cleqslant%20n%2C%5C%5C%2Ca%2C%5C%5C%2Cb%2C%5C%5C%2Cc%20%5C%5Cleqslant%2010%5E9%2C%5C%5C%20c%20%5C%5Cneq%200%24%20%5Cu3002%22%2C%22provider%22%3A%7B%22uid%22%3A26673%2C%22name%22%3A%22Sooke%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Red%22%2C%22ccfLevel%22%3A10%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B107%2C108%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A863%2C%22totalAccepted%22%3A229%2C%22pid%22%3A%22P5170%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7c7b%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu7b97%5Cu6cd5%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A110456%2C%22title%22%3A%22%5Cu7c7b%5Cuff0c%5Cu6b27%5Cu7c7b%5Cu6b27%5Cu7c7b~%22%2C%22forum%22%3A%7B%22id%22%3A33387%2C%22name%22%3A%22P5170%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7c7b%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5170%22%7D%7D%2C%7B%22id%22%3A110353%2C%22title%22%3A%22%5Cu6709%5Cu6ca1%5Cu6709%5Cu4eba%5Cu4f20%5Cu4e00%5Cu4e2a%5Cu5b8c%5Cu5168%5Cu7248%5Cu672c%5Cu7684%5Cu7c7b%5Cu6b27%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A33387%2C%22name%22%3A%22P5170%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7c7b%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5170%22%7D%7D%2C%7B%22id%22%3A99666%2C%22title%22%3A%22%5Cu8bf7%5Cu6c42%5Cu7ba1%5Cu7406%5Cu5458%5Cu5f00%5Cu5927%5Cu65f6%5Cu9650%22%2C%22forum%22%3A%7B%22id%22%3A33387%2C%22name%22%3A%22P5170%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7c7b%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5170%22%7D%7D%2C%7B%22id%22%3A99495%2C%22title%22%3A%22TLE%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A33387%2C%22name%22%3A%22P5170%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7c7b%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5170%22%7D%7D%2C%7B%22id%22%3A95977%2C%22title%22%3A%22%5Cu6709%5Cu6ca1%5Cu6709%5Cu4eba%5Cu56e0%5Cu4e3a%5Cu8fd9%5Cu4e00%5Cu9898%5Cu624d%5Cu5f00%5Cu59cb%5Cu5b66%5Cu7c7b%5Cu6b27%5Cu7684%22%2C%22forum%22%3A%7B%22id%22%3A33387%2C%22name%22%3A%22P5170%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7c7b%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5170%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4720%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6269%5Cu5c55%5Cu5362%5Cu5361%5Cu65af%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5172%22%2C%22title%22%3A%22Sum%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5171%22%2C%22title%22%3A%22Earthquake%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5179%22%2C%22title%22%3A%22Fraction%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1203B%22%2C%22title%22%3A%22Equal%20Rectangles%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7c7b%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu7b97%5Cu6cd5%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>【模板】类欧几里得算法</h1>
+<h2>题目描述</h2>
+<div>给定 $n,\,a,\,b,\,c$ ，分别求 $\sum\limits_{i=0}^{n}\lfloor \frac{ai+b}{c} \rfloor\,,\ \sum\limits_{i=0}^{n}{\lfloor \frac{ai+b}{c} \rfloor}^2\,,\ \sum\limits_{i=0}^{n}i\lfloor \frac{ai+b}{c} \rfloor$ ，答案对 $998244353$ 取模。多组数据。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行给出数据组数 $t$ 。
+接下来 $t$ 行，每行有四个整数，分别为每组数据的 $n,\ a,\ b,\ c$ 。</div>
+<h3>输出格式</h3>
+<br />
+<div>对于每组数据，输出一行三个整数，为三个答案对 $998244353$ 取模的结果。</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+2 1 0 2
+4 3 9 6</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 1 2
+11 27 27</code></pre>
+<h2>说明</h2>
+<div>本题采用 $\mathrm{Special}\ \mathrm{Judge}$。
+答对所有第一问可以获得测试点 $40\%$ 的分数，答对所有第二问、第三问可以分别获得另外 $30\%$ 的分数。
+|||
+|:-:|:-:|:-:|
+|测试点编号|特殊性质|
+|$1$|$n,\,a,\,b,\,c\leqslant10$|
+|$2 \sim 3$|$n,\,a,\,b,\,c\leqslant1000$|
+|$4$|$n,\,a,\,b,\,c\leqslant10^6$|
+|$5$|$t=1$|
+|$6 \sim 10$|无|
+对于所有测试点，有 $1 \leqslant t \leqslant 10^5,\ 0 \leqslant n,\,a,\,b,\,c \leqslant 10^9,\ c \neq 0$ 。</div>
+</article>
+</div>
+</div>
+</body>
+</html>

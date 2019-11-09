@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO09OPEN]牛线Cow Line - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376191:ocFmmYP5xzQ5vQjQVF+YdmamawCu0RWW9MT8EghhlvA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20N%20cows%20%28conveniently%20numbered%201..N%29%20are%20forming%20a%20line.%20The%20line%20begins%20with%20no%20cows%20and%20then%2C%20as%20time%20progresses%2C%20one%20by%20one%2C%20the%20cows%20join%20the%20line%20on%20the%20left%20or%20right%20side.%20Every%20once%20in%20a%20while%2C%20some%20number%20of%20cows%20on%20the%20left%20or%20right%20side%20of%20the%20line%20all%20leave%20the%20line%20to%20go%20graze%20in%20their%20favorite%20pasture.%5Cn%5CnFJ%20has%20trouble%20keeping%20track%20of%20all%20the%20cows%20in%20the%20line.%20Please%20help%20him.%5Cn%5CnThe%20cows%20enter%20the%20line%20in%20numerical%20order%201..N%2C%20and%20once%20a%20cow%20leaves%20the%20line%20she%20never%20re-enters%20it.%20Your%20program%20will%20be%20given%20S%20%281%20%3C%3D%20S%20%3C%3D%20100%2C000%29%20input%20specifications%3B%20each%20appears%20on%20a%20single%20line%20and%20is%20one%20of%20two%20types%3A%5Cn%5Cn%5C%5C%2A%20A%20cow%20enters%20the%20line%20%28a%20parameter%20indicates%20whether%20on%20the%20left%20or%20right%29.%5Cn%5Cn%5C%5C%2A%20K%20cows%20leave%20the%20line%20from%20the%20left%20or%20right%20side%20%28supplied%20parameters%20define%20both%20the%20number%20of%20cows%20and%20which%20side%29.%5Cn%5CnInput%20lines%20never%20request%20an%20operation%20that%20can%20not%20be%20performed.%5Cn%5CnAfter%20all%20the%20input%20lines%20have%20been%20processed%2C%20your%20program%20should%20print%20the%20cows%20in%20the%20line%20in%20order%20from%20left%20to%20right.%20The%20final%20line%20is%20guaranteed%20to%20be%20non-empty%20at%20the%20end%20of%20the%20input%5Cn%5Cnspecifications.%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu7684N%5Cu53ea%5Cu5976%5Cu725b%5Cuff08%5Cu7f16%5Cu4e3a1%5Cu5230N%5Cu53f7%5Cuff09%5Cu6b63%5Cu5728%5Cu76f4%5Cu7ebf%5Cu4e0a%5Cu6392%5Cu961f%5Cuff0e%5Cu76f4%5Cu7ebf%5Cu4e0a%5Cu5f00%5Cu59cb%5Cu7684%5Cu65f6%5Cu5019%5Cu4e00%5Cu53ea%5Cu725b%5Cu4e5f%5Cu6ca1%5Cu6709%5Cuff0e%5Cu63a5%5Cu4e0b%5Cu6765%5Cu53d1%5Cu751f%5Cu4e86S%281%5Cu2264S%5Cu2264100000%29%5Cu6b21%5Cu4e8b%5Cu4ef6%5Cuff0c%5Cu4e00%5Cu6b21%5Cu4e8b%5Cu4ef6%5Cu53ef%5Cu80fd%5Cu662f%5Cu4ee5%5Cu4e0b%5Cu56db%5Cu79cd%5Cu60c5%5Cu51b5%5Cu4e4b%5Cu4e00%5Cuff1a%5Cn%5Cn%5Cn%5Cuff0e%5Cu4e00%5Cu53ea%5Cu5976%5Cu725b%5Cu52a0%5Cu5165%5Cu961f%5Cu4f0d%5Cu7684%5Cu5de6%5Cu8fb9%5Cuff08%5Cu8f93%5Cu5165%5Cu201cAL%5Cu201d%5Cuff09%5Cuff0e%5Cn%5Cn%5Cn%5Cuff0e%5Cu4e00%5Cu53ea%5Cu5976%5Cu725b%5Cu52a0%5Cu5165%5Cu961f%5Cu4f0d%5Cu7684%5Cu53f3%5Cu8fb9%5Cuff08%5Cu8f93%5Cu5165%5Cu201cAR%5Cu201d%5Cuff09%5Cuff0e%5Cn%5Cn%5Cn%5Cu00b7K%5Cu53ea%5Cu961f%5Cu4f0d%5Cu5de6%5Cu8fb9%5Cu5976%5Cu725b%5Cu79bb%5Cu5f00%5Cuff08%5Cu8f93%5Cu5165%5Cu201cDLK%5Cu201d%5Cuff09%5Cuff0e%5Cn%5Cn%5Cn%5Cu00b7K%5Cu53ea%5Cu961f%5Cu4f0d%5Cu53f3%5Cu8fb9%5Cu5976%5Cu725b%5Cu79bb%5Cu5f00%5Cuff08%5Cu8f93%5Cu5165%5Cu201cDRK%5Cu201d%5Cuff09%5Cuff0e%5Cn%5Cn%5Cn%5Cu8bf7%5Cu6c42%5Cu51fa%5Cu6700%5Cu540e%5Cu7684%5Cu961f%5Cu4f0d%5Cu662f%5Cu4ec0%5Cu4e48%5Cu6837%5Cuff0e%5Cn%5Cn%5Cn%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1%5Cu79bb%5Cu5f00%5Cu7684%5Cu5976%5Cu725b%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc7%5Cu961f%5Cu4f0d%5Cu91cc%5Cu7684%5Cu5976%5Cu725b%5Cu6570%5Cuff0c%5Cu6700%5Cu540e%5Cu7684%5Cu961f%5Cu4f0d%5Cu4e0d%5Cu7a7a%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20S%5Cn%5Cn%5C%5C%2A%20Lines%202..S%2B1%3A%20Line%20i%2B1%20contains%20specification%20i%20in%20one%20of%20four%20formats%3A%5Cn%5Cn%5C%5C%2A%20A%20L%20--%20a%20cow%20arrives%20on%20the%20Left%20of%20the%20line%5Cn%5Cn%5C%5C%2A%20A%20R%20--%20a%20cow%20arrives%20on%20the%20Right%20of%20the%20line%5Cn%5Cn%5C%5C%2A%20D%20L%20K%20--%20K%20cows%20depart%20the%20Left%20side%20of%20the%20line%5Cn%5Cn%5C%5C%2A%20D%20R%20K%20--%20K%20cows%20depart%20the%20Right%20side%20of%20the%20line%5Cn%5Cn%5Cu7b2c1%5Cu884c%5Cu8f93%5Cu5165S%5Cuff0c%5Cu4e4b%5Cu540eS%5Cu884c%5Cu6bcf%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu6b21%5Cu4e8b%5Cu4ef6%5Cuff0c%5Cu683c%5Cu5f0f%5Cu5982%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu6240%5Cu793a%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..%3F%3F%3A%20Print%20the%20numbers%20of%20the%20cows%20in%20the%20line%20in%20order%20from%20left%20to%20right%2C%20one%20number%20per%20line.%5Cn%5Cn%5Cu7531%5Cu5de6%5Cu5230%5Cu53f3%5Cu8f93%5Cu51fa%5Cu961f%5Cu4f0d%5Cu6700%5Cu540e%5Cu7684%5Cu60c5%5Cu51b5%5Cuff0e%5Cn%22%2C%22samples%22%3A%5B%5B%2210%20%5CnA%20L%20%5CnA%20L%20%5CnA%20R%20%5CnA%20L%20%5CnD%20R%202%20%5CnA%20R%20%5CnA%20R%20%5CnD%20L%201%20%5CnA%20L%20%5CnA%20R%20%5Cn%22%2C%227%20%5Cn2%20%5Cn5%20%5Cn6%20%5Cn8%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Input%20%20%20%20Resulting%20Cow%20Line%5Cn%5CnA%20L%20%20%20%20%20%201%5Cn%5CnA%20L%20%20%20%20%20%202%201%5Cn%5CnA%20R%20%20%20%20%20%202%201%203%5Cn%5CnA%20L%20%20%20%20%20%204%202%201%203%5Cn%5CnD%20R%202%20%20%20%204%202%5Cn%5CnA%20R%20%20%20%20%20%204%202%205%5Cn%5CnA%20R%20%20%20%20%20%204%202%205%206%5Cn%5CnD%20L%201%20%20%20%202%205%206%5Cn%5CnA%20L%20%20%20%20%20%207%202%205%206%5Cn%5CnA%20R%20%20%20%20%20%207%202%205%206%208%5Cn%5Cn%5Cu611f%5Cu8c22%40%20ws%5C%5C_fuweidong%20%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B1%2C12%2C26%2C46%2C56%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1810%2C%22totalAccepted%22%3A1146%2C%22pid%22%3A%22P2952%22%2C%22title%22%3A%22%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A117914%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2081%2C%22name%22%3A%22P2952%20%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22slug%22%3A%22P2952%22%7D%7D%2C%7B%22id%22%3A111045%2C%22title%22%3A%22%5Cu6c42%5Cu6551%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2081%2C%22name%22%3A%22P2952%20%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22slug%22%3A%22P2952%22%7D%7D%2C%7B%22id%22%3A66116%2C%22title%22%3A%22%5Cu6c34%5Cu9898%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu4f1aTLE%22%2C%22forum%22%3A%7B%22id%22%3A2081%2C%22name%22%3A%22P2952%20%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22slug%22%3A%22P2952%22%7D%7D%2C%7B%22id%22%3A66084%2C%22title%22%3A%2260%5Cu5206%5Cuff0c4%5Cu4e2aTLE%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2081%2C%22name%22%3A%22P2952%20%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22slug%22%3A%22P2952%22%7D%7D%2C%7B%22id%22%3A29095%2C%22title%22%3A%22%5Cu6807%5Cu9898%5Cu53ef%5Cu4ee5%5Cu6539%5Cu4e3adeque%5Cu6a21%5Cu677f%22%2C%22forum%22%3A%7B%22id%22%3A2081%2C%22name%22%3A%22P2952%20%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22slug%22%3A%22P2952%22%7D%7D%2C%7B%22id%22%3A10721%2C%22title%22%3A%22%5Cu8bf7%5Cu95ee%5Cu8fd9%5Cu9898%5Cu5230%5Cu5e95%5Cu662f%5Cu4ec0%5Cu4e48%5Cu610f%5Cu601d%5Cuff1f%5Cu6c42%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2081%2C%22name%22%3A%22P2952%20%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22slug%22%3A%22P2952%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1440%22%2C%22title%22%3A%22%5Cu6c42m%5Cu533a%5Cu95f4%5Cu5185%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1747%22%2C%22title%22%3A%22%5Cu597d%5Cu5947%5Cu602a%5Cu7684%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1886%22%2C%22title%22%3A%22%5Cu6ed1%5Cu52a8%5Cu7a97%5Cu53e3%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2032%22%2C%22title%22%3A%22%5Cu626b%5Cu63cf%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2947%22%2C%22title%22%3A%22%5BUSACO09MAR%5D%5Cu5411%5Cu53f3%5Cu770b%5Cu9f50Look%20Up%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO09OPEN%5D%5Cu725b%5Cu7ebfCow%20Line%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO09OPEN]牛线Cow Line</h1>
+<h2>题目描述</h2>
+<div>Farmer John's N cows (conveniently numbered 1..N) are forming a line. The line begins with no cows and then, as time progresses, one by one, the cows join the line on the left or right side. Every once in a while, some number of cows on the left or right side of the line all leave the line to go graze in their favorite pasture.
+FJ has trouble keeping track of all the cows in the line. Please help him.
+The cows enter the line in numerical order 1..N, and once a cow leaves the line she never re-enters it. Your program will be given S (1 <= S <= 100,000) input specifications; each appears on a single line and is one of two types:
+\* A cow enters the line (a parameter indicates whether on the left or right).
+\* K cows leave the line from the left or right side (supplied parameters define both the number of cows and which side).
+Input lines never request an operation that can not be performed.
+After all the input lines have been processed, your program should print the cows in the line in order from left to right. The final line is guaranteed to be non-empty at the end of the input
+specifications.
+约翰的N只奶牛（编为1到N号）正在直线上排队．直线上开始的时候一只牛也没有．接下来发生了S(1≤S≤100000)次事件，一次事件可能是以下四种情况之一：
+．一只奶牛加入队伍的左边（输入“AL”）．
+．一只奶牛加入队伍的右边（输入“AR”）．
+·K只队伍左边奶牛离开（输入“DLK”）．
+·K只队伍右边奶牛离开（输入“DRK”）．
+请求出最后的队伍是什么样．
+数据保证离开的奶牛不会超过队伍里的奶牛数，最后的队伍不空
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: S
+\* Lines 2..S+1: Line i+1 contains specification i in one of four formats:
+\* A L -- a cow arrives on the Left of the line
+\* A R -- a cow arrives on the Right of the line
+\* D L K -- K cows depart the Left side of the line
+\* D R K -- K cows depart the Right side of the line
+第1行输入S，之后S行每行描述一次事件，格式如题目描述所示
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..??: Print the numbers of the cows in the line in order from left to right, one number per line.
+由左到右输出队伍最后的情况．
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 
+A L 
+A L 
+A R 
+A L 
+D R 2 
+A R 
+A R 
+D L 1 
+A L 
+A R 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>7 
+2 
+5 
+6 
+8 
+</code></pre>
+<h2>说明</h2>
+<div>Input Resulting Cow Line
+A L 1
+A L 2 1
+A R 2 1 3
+A L 4 2 1 3
+D R 2 4 2
+A R 4 2 5
+A R 4 2 5 6
+D L 1 2 5 6
+A L 7 2 5 6
+A R 7 2 5 6 8
+感谢@ ws\_fuweidong 提供翻译。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

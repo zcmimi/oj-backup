@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08NOV]奶牛混合起来Mixed Up Cows - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376137:fMjsO0AaH+DopeJHiZ+yVMHz6dSrMw5PfKhVy3JozFQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Each%20of%20Farmer%20John%27s%20N%20%284%20%3C%3D%20N%20%3C%3D%2016%29%20cows%20has%20a%20unique%20serial%20number%20S%5C%5C_i%20%281%20%3C%3D%20S%5C%5C_i%20%3C%3D%2025%2C000%29.%20The%20cows%20are%20so%20proud%20of%20it%20that%20each%20one%20now%20wears%20her%20number%20in%20a%20gangsta%20manner%20engraved%20in%20large%20letters%20on%20a%20gold%20plate%20hung%20around%20her%20ample%20bovine%20neck.%5Cn%5CnGangsta%20cows%20are%20rebellious%20and%20line%20up%20to%20be%20milked%20in%20an%20order%20called%20%27Mixed%20Up%27.%20A%20cow%20order%20is%20%27Mixed%20Up%27%20if%20the%20sequence%20of%20serial%20numbers%20formed%20by%20their%20milking%20line%20is%20such%20that%20the%20serial%20numbers%20of%20every%20pair%20of%20consecutive%20cows%20in%20line%20differs%20by%20more%20than%20K%20%281%20%3C%3D%20K%20%3C%3D%203400%29.%20For%20example%2C%20if%20N%20%3D%206%20and%20K%20%3D%201%20then%201%2C%203%2C%205%2C%202%2C%206%2C%204%20is%20a%20%27Mixed%20Up%27%20lineup%20but%201%2C%203%2C%206%2C%205%2C%202%2C%204%20is%20not%20%28since%20the%20consecutive%20numbers%205%20and%206%20differ%20by%201%29.%5Cn%5CnHow%20many%20different%20ways%20can%20N%20cows%20be%20Mixed%20Up%3F%5Cn%5CnFor%20your%20first%2010%20submissions%2C%20you%20will%20be%20provided%20with%20the%20results%20of%20running%20your%20program%20on%20a%20part%20of%20the%20actual%20test%20data.%5Cn%5CnPOINTS%3A%20200%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu5bb6%5Cu6709N%5Cu5934%5Cu5976%5Cu725b%5Cuff0c%5Cu7b2ci%5Cu5934%5Cu5976%5Cu725b%5Cu7684%5Cu7f16%5Cu53f7%5Cu662fSi%5Cuff0c%5Cu6bcf%5Cu5934%5Cu5976%5Cu725b%5Cu7684%5Cu7f16%5Cu53f7%5Cu90fd%5Cu662f%5Cu552f%5Cu4e00%5Cu7684%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu5976%5Cu725b%5Cu6700%5Cu8fd1%20%5Cu5728%5Cu95f9%5Cu813e%5Cu6c14%5Cuff0c%5Cu4e3a%5Cu8868%5Cu8fbe%5Cu4e0d%5Cu6ee1%5Cu7684%5Cu60c5%5Cu7eea%5Cuff0c%5Cu5979%5Cu4eec%5Cu5728%5Cu6324%5Cu5976%5Cu7684%5Cu65f6%5Cu5019%5Cu4e00%5Cu5b9a%5Cu8981%5Cu6392%5Cu6210%5Cu6df7%5Cu4e71%5Cu7684%5Cu961f%5Cu4f0d%5Cu3002%5Cu5728%5Cu4e00%5Cu53ea%5Cu6df7%5Cu4e71%5Cu7684%5Cu961f%20%5Cu4f0d%5Cu4e2d%5Cuff0c%5Cu76f8%5Cu90bb%5Cu5976%5Cu725b%5Cu7684%5Cu7f16%5Cu53f7%5Cu4e4b%5Cu5dee%5Cu5747%5Cu8d85%5Cu8fc7K%5Cu3002%5Cu6bd4%5Cu5982%5Cu5f53K%20%3D%201%5Cu65f6%5Cuff0c1%2C%203%2C%205%2C%202%2C%206%2C%204%5Cu5c31%5Cu662f%5Cu4e00%5Cu652f%5Cu6df7%5Cu4e71%5Cu7684%5Cu961f%5Cu4f0d%5Cuff0c%20%5Cu800c1%2C%203%2C%206%2C%205%2C%202%2C%204%5Cu4e0d%5Cu662f%5Cuff0c%5Cu56e0%5Cu4e3a6%5Cu548c5%5Cu53ea%5Cu5dee1%5Cu3002%5Cu8bf7%5Cu6570%5Cu4e00%5Cu6570%5Cuff0c%5Cu6709%5Cu591a%5Cu5c11%5Cu79cd%5Cu961f%5Cu5f62%5Cu662f%5Cu6df7%5Cu4e71%5Cu7684%5Cu5462%5Cuff1f%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20K%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20a%20single%20integer%20that%20is%20the%20serial%20number%20of%20cow%20i%3A%20S%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20that%20is%20the%20number%20of%20ways%20that%20N%20cows%20can%20be%20%27Mixed%20Up%27.%20The%20answer%20is%20guaranteed%20to%20fit%20in%20a%2064%20bit%20integer.%5Cn%22%2C%22samples%22%3A%5B%5B%224%201%20%5Cn3%20%5Cn4%20%5Cn2%20%5Cn1%20%5Cn%22%2C%222%20%5Cn%22%5D%5D%2C%22hint%22%3A%22The%202%20possible%20Mixed%20Up%20arrangements%20are%3A%5Cn%5Cn3%201%204%202%5Cn%5Cn2%204%201%203%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C25%2C46%2C151%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A3309%2C%22totalAccepted%22%3A1506%2C%22pid%22%3A%22P2915%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A80215%2C%22title%22%3A%22%5Cu66b4%5Cu529b70%5Cuff0c%5Cu4e0d%5Cu80fd%5Cu518d%5Cu9ad8%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A2044%2C%22name%22%3A%22P2915%20%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22slug%22%3A%22P2915%22%7D%7D%2C%7B%22id%22%3A73237%2C%22title%22%3A%22%5Cu7384%5Cu5b66%5Cu8f93%5Cu51fa%5Cu6ce8%5Cu610f%5Cu4e0b%22%2C%22forum%22%3A%7B%22id%22%3A2044%2C%22name%22%3A%22P2915%20%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22slug%22%3A%22P2915%22%7D%7D%2C%7B%22id%22%3A69384%2C%22title%22%3A%22%5Cu672c%5Cu673aAC%5Cu63d0%5Cu4ea4RE%22%2C%22forum%22%3A%7B%22id%22%3A2044%2C%22name%22%3A%22P2915%20%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22slug%22%3A%22P2915%22%7D%7D%2C%7B%22id%22%3A58327%2C%22title%22%3A%22long%20long%20%5Cu5751%5Cu6b7b%5Cu4eba%22%2C%22forum%22%3A%7B%22id%22%3A2044%2C%22name%22%3A%22P2915%20%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22slug%22%3A%22P2915%22%7D%7D%2C%7B%22id%22%3A57429%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu8fd9%5Cu6837%5Cu521d%5Cu59cb%5Cu5316%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2044%2C%22name%22%3A%22P2915%20%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22slug%22%3A%22P2915%22%7D%7D%2C%7B%22id%22%3A25848%2C%22title%22%3A%22%5Cu521a%5Cu5b66%5Cu4e60%5Cu72b6%5Cu538bDP%5Cu7684%5Cu540c%5Cu5b66%5Cu6ce8%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A2044%2C%22name%22%3A%22P2915%20%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22slug%22%3A%22P2915%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1879%22%2C%22title%22%3A%22%5BUSACO06NOV%5D%5Cu7389%5Cu7c73%5Cu7530Corn%20Fields%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1896%22%2C%22title%22%3A%22%5BSCOI2005%5D%5Cu4e92%5Cu4e0d%5Cu4fb5%5Cu72af%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3052%22%2C%22title%22%3A%22%5BUSACO12MAR%5D%5Cu6469%5Cu5929%5Cu5927%5Cu697c%5Cu91cc%5Cu7684%5Cu5976%5Cu725bCows%20in%20a%20Skyscraper%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3092%22%2C%22title%22%3A%22%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4163%22%2C%22title%22%3A%22%5BSCOI2007%5D%5Cu6392%5Cu5217%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08NOV]奶牛混合起来Mixed Up Cows</h1>
+<h2>题目描述</h2>
+<div>Each of Farmer John's N (4 <= N <= 16) cows has a unique serial number S\_i (1 <= S\_i <= 25,000). The cows are so proud of it that each one now wears her number in a gangsta manner engraved in large letters on a gold plate hung around her ample bovine neck.
+Gangsta cows are rebellious and line up to be milked in an order called 'Mixed Up'. A cow order is 'Mixed Up' if the sequence of serial numbers formed by their milking line is such that the serial numbers of every pair of consecutive cows in line differs by more than K (1 <= K <= 3400). For example, if N = 6 and K = 1 then 1, 3, 5, 2, 6, 4 is a 'Mixed Up' lineup but 1, 3, 6, 5, 2, 4 is not (since the consecutive numbers 5 and 6 differ by 1).
+How many different ways can N cows be Mixed Up?
+For your first 10 submissions, you will be provided with the results of running your program on a part of the actual test data.
+POINTS: 200
+约翰家有N头奶牛，第i头奶牛的编号是Si，每头奶牛的编号都是唯一的。这些奶牛最近 在闹脾气，为表达不满的情绪，她们在挤奶的时候一定要排成混乱的队伍。在一只混乱的队 伍中，相邻奶牛的编号之差均超过K。比如当K = 1时，1, 3, 5, 2, 6, 4就是一支混乱的队伍， 而1, 3, 6, 5, 2, 4不是，因为6和5只差1。请数一数，有多少种队形是混乱的呢？
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and K
+\* Lines 2..N+1: Line i+1 contains a single integer that is the serial number of cow i: S\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer that is the number of ways that N cows can be 'Mixed Up'. The answer is guaranteed to fit in a 64 bit integer.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 1 
+3 
+4 
+2 
+1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+<h2>说明</h2>
+<div>The 2 possible Mixed Up arrangements are:
+3 1 4 2
+2 4 1 3
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

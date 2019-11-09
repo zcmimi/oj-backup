@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>【模板】文艺平衡树（Splay） - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376835:lnXtWOS9BLbsIsbA1RzmkBoE29Gae0NmUaf/nGS5ZQM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu8fd9%5Cu662f%5Cu4e00%5Cu9053%5Cu7ecf%5Cu5178%5Cu7684Splay%5Cu6a21%5Cu677f%5Cu9898%5Cu2014%5Cu2014%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cu3002%5Cn%22%2C%22description%22%3A%22%5Cu60a8%5Cu9700%5Cu8981%5Cu5199%5Cu4e00%5Cu79cd%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cuff08%5Cu53ef%5Cu53c2%5Cu8003%5Cu9898%5Cu76ee%5Cu6807%5Cu9898%5Cuff09%5Cuff0c%5Cu6765%5Cu7ef4%5Cu62a4%5Cu4e00%5Cu4e2a%5Cu6709%5Cu5e8f%5Cu6570%5Cu5217%5Cuff0c%5Cu5176%5Cu4e2d%5Cu9700%5Cu8981%5Cu63d0%5Cu4f9b%5Cu4ee5%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu7ffb%5Cu8f6c%5Cu4e00%5Cu4e2a%5Cu533a%5Cu95f4%5Cuff0c%5Cu4f8b%5Cu5982%5Cu539f%5Cu6709%5Cu5e8f%5Cu5e8f%5Cu5217%5Cu662f5%204%203%202%201%5Cuff0c%5Cu7ffb%5Cu8f6c%5Cu533a%5Cu95f4%5Cu662f%5B2%2C4%5D%5Cu7684%5Cu8bdd%5Cuff0c%5Cu7ed3%5Cu679c%5Cu662f5%202%203%204%201%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3an%2Cm%20n%5Cu8868%5Cu793a%5Cu521d%5Cu59cb%5Cu5e8f%5Cu5217%5Cu6709n%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu4f9d%5Cu6b21%5Cu662f%24%20%281%2C2%2C%20%5C%5Ccdots%20n-1%2Cn%29%24%20%20m%5Cu8868%5Cu793a%5Cu7ffb%5Cu8f6c%5Cu64cd%5Cu4f5c%5Cu6b21%5Cu6570%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765m%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%20%24%5Bl%2Cr%5D%24%20%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1%20%24%201%20%5C%5Cleq%20l%20%5C%5Cleq%20r%20%5C%5Cleq%20n%20%24%5Cn%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884cn%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff0c%5Cu8868%5Cu793a%5Cu539f%5Cu59cb%5Cu5e8f%5Cu5217%5Cu7ecf%5Cu8fc7m%5Cu6b21%5Cu53d8%5Cu6362%5Cu540e%5Cu7684%5Cu7ed3%5Cu679c%5Cn%22%2C%22samples%22%3A%5B%5B%225%203%5Cn1%203%5Cn1%203%5Cn1%204%22%2C%224%203%202%201%205%22%5D%5D%2C%22hint%22%3A%22%24%20n%2C%20m%20%5C%5Cleq%20100000%20%24%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A1492%2C%22name%22%3A%22HansBug%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B50%2C108%2C221%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A16039%2C%22totalAccepted%22%3A9403%2C%22pid%22%3A%22P3391%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A160607%2C%22title%22%3A%22%5Cu5f81%5Cu6c42%5Cu5361%5Cu5e38%5Cu5de8%5Cu4f6c%5Cu5e2e%5Cu5361%5Cu6839%5Cu53f7%5Cu7b97%5Cu6cd5%22%2C%22forum%22%3A%7B%22id%22%3A2506%2C%22name%22%3A%22P3391%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22slug%22%3A%22P3391%22%7D%7D%2C%7B%22id%22%3A153476%2C%22title%22%3A%22%5Cu7ed9%5Cu5b66Splay%5Cu840c%5Cu65b0%5Cu7684%5Cu4e00%5Cu70b9%5Cu5efa%5Cu8bae%22%2C%22forum%22%3A%7B%22id%22%3A2506%2C%22name%22%3A%22P3391%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22slug%22%3A%22P3391%22%7D%7D%2C%7B%22id%22%3A150728%2C%22title%22%3A%22AC%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2506%2C%22name%22%3A%22P3391%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22slug%22%3A%22P3391%22%7D%7D%2C%7B%22id%22%3A148935%2C%22title%22%3A%22%5Cu6551%5Cu547d%5Cu554a%5Cuff0c%5Cu51fa%5Cu4eba%5Cu547d%5Cu4e86%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2506%2C%22name%22%3A%22P3391%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22slug%22%3A%22P3391%22%7D%7D%2C%7B%22id%22%3A146535%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2506%2C%22name%22%3A%22P3391%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22slug%22%3A%22P3391%22%7D%7D%2C%7B%22id%22%3A145036%2C%22title%22%3A%22%5Cu7384%5Cu5b66%5Cu9519%5Cu8bef%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2506%2C%22name%22%3A%22P3391%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22slug%22%3A%22P3391%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1486%22%2C%22title%22%3A%22%5BNOI2004%5D%5Cu90c1%5Cu95f7%5Cu7684%5Cu51fa%5Cu7eb3%5Cu5458%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2042%22%2C%22title%22%3A%22%5BNOI2005%5D%5Cu7ef4%5Cu62a4%5Cu6570%5Cu5217%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2596%22%2C%22title%22%3A%22%5BZJOI2006%5D%5Cu4e66%5Cu67b6%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3369%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu666e%5Cu901a%5Cu5e73%5Cu8861%5Cu6811%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3690%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Link%20Cut%20Tree%20%5Cuff08%5Cu52a8%5Cu6001%5Cu6811%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>【模板】文艺平衡树（Splay）</h1>
+<h2>题目背景</h2>
+<div>这是一道经典的Splay模板题——文艺平衡树。
+</div>
+<h2>题目描述</h2>
+<div>您需要写一种数据结构（可参考题目标题），来维护一个有序数列，其中需要提供以下操作：翻转一个区间，例如原有序序列是5 4 3 2 1，翻转区间是[2,4]的话，结果是5 2 3 4 1
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行为n,m n表示初始序列有n个数，这个序列依次是$ (1,2, \cdots n-1,n)$ m表示翻转操作次数
+接下来m行每行两个数 $[l,r]$ 数据保证 $ 1 \leq l \leq r \leq n $
+</div>
+<h3>输出格式</h3>
+<br />
+<div>输出一行n个数字，表示原始序列经过m次变换后的结果
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3
+1 3
+1 3
+1 4</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4 3 2 1 5</code></pre>
+<h2>说明</h2>
+<div>$ n, m \leq 100000 $
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

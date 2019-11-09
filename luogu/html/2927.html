@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08DEC]拼图游戏Jigsaw Puzzles - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376155:yKQ/PE6g2UdOyGmzTCIqrEz6nf5H9B9ZVI0j+BPZGQw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20cows%20have%20taken%20up%20alphabetical%20jigsaw%20puzzles.%20In%20these%20puzzles%20with%20R%20%281%20%3C%3D%20R%20%3C%3D%2010%29%20rows%20and%20C%20%281%20%3C%3D%20C%20%3C%3D%2010%29%20columns%2C%20the%20edges%20are%20not%20funny-shaped%20cardboard%20shapes%20but%20rather%20are%20letters.%5Cn%5CnEach%20piece%20has%20a%20serial%20number%20and%204%20letters%20%28or%20borders%29%20that%20must%20be%20aligned%20as%20in%20a%20regular%20jigsaw%20puzzle.%20The%20pseudo-letter%20%270%27%20%28the%20digit%200%29%20will%20represent%20a%20border%20%28and%20a%20piece%20can%20have%20several%20borders%20if%20it%20is%20a%20corner%20piece%20or%20even%20the%20top%20of%20column%20in%20a%2C%20e.g.%2C%204x1%20puzzle%29.%20%20Below%20is%20a%20set%20of%20six%20pieces%20%28the%20borders%20are%20marked%20with%20lines%20instead%20of%20%270%27s%29%20assembled%20in%20one%20way%20%28of%20many%29%20that%20completes%20the%20puzzle%3A%5Cn%5Cn%2B---%2B%20%20%2B---%2B%20%20%2B---%2B%5Cn%5Cn%7C%201%20c%20%20c%203%20d%20%20d%205%20%7C%20%5Cn%2B-d-%2B%20%20%2B%20a%20%2B%20%20%2B-e-%2B%5Cn%5Cn%2B-d-%2B%20%20%2B-a-%2B%20%20%2B-e-%2B%5Cn%5Cn%7C%202%20b%20%20b%204%20b%20%20b%206%20%7C%20%5Cn%2B---%2B%20%20%2B---%2B%20%20%2B---%2B%5Cn%5CnNote%20that%20each%20edge%20letter%20of%20each%20piece%20matches%20the%20border%20letter%20of%20the%20piece%20adjacent%20to%20it%3B%20the%20borders%20appear%20properly%20on%20the%20top%2C%20bottom%2C%20and%20sides.%5Cn%5CnPieces%20are%20represented%20by%20a%20serial%20number%20and%20a%20clockwise%20list%20of%20their%20four%20edges%20%28where%20edges%20are%20the%20letters%20a..z%20and%200%29.%20Pieces%20might%20require%20rotation%20when%20placed%20in%20the%20puzzle.%5Cn%5CnGiven%20a%20set%20of%20pieces%2C%20find%20at%20least%20one%20way%20to%20assemble%20them%20into%20a%20puzzle.%20Test%20data%20for%20puzzles%20with%20larger%20R%20and%20C%20are%20easier%20to%20solve%20because%20they%20have%20a%20more%20varied%20set%20of%20edge%20letters.%5Cn%5Cn%5Cu5976%5Cu725b%5Cu4eec%5Cu5728%5Cu73a9%5Cu6309%5Cu5b57%5Cu6bcd%5Cu8868%5Cu987a%5Cu5e8f%5Cu6392%5Cu5217%5Cu7684%5Cu62fc%5Cu56fe%5Cu8c1c%5Cu9898.%5Cu6bcf%5Cu9053%5Cu8c1c%5Cu9898%5Cu6709R%281%5Cu2264R%5Cu226410%29%5Cu5217C%281%5Cu2264C%5Cu226410%29%5Cu884c%5Cu7684%5Cu62fc%5Cu56fe%5Cu5757%2C%5Cu5b83%5Cu4eec%5Cu8fb9%5Cu7f18%5Cu662f%5Cu7531%5Cu5b57%5Cu6bcd%5Cu6216%5Cu5c01%5Cu95ed%5Cu8fb9%5Cu754c%5Cu7ec4%5Cu6210%2C%5Cu5b8c%5Cu6210%5Cu540e%5Cu7684%5Cu6574%5Cu526f%5Cu62fc%5Cu56fe%5Cu5916%5Cu56f4%5Cu662f%5Cu8fb9%5Cu754c%5Cu7ebf%2C%5Cu4e2d%5Cu95f4%5Cu7684%5Cu8fb9%5Cu754c%5Cu662f%5Cu5b57%5Cu6bcd.%5Cn%5Cn%5Cu6bcf%5Cu5757%5Cu62fc%5Cu56fe%5Cu5757%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu53f7%5Cu548c4%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu6216%5Cu8005%5Cu6570%5Cu5b57%5Cu8868%5Cu793a%5Cu8fb9%5Cu754c%5Cu7ebf%28%5Cu987a%5Cu5e8f%5Cu4e3a%5Cu4e0a%5Cu53f3%5Cu4e0b%5Cu5de6%29%2C%5Cu5728%5Cu8f93%5Cu5165%5Cu4e2d%2C%5Cu6570%5Cu5b57%5Cu5145%5Cu5f53%5Cu8fb9%5Cu754c%5Cu7ebf.%5Cn%5Cn%5Cu62fc%5Cu56fe%5Cu53ef%5Cu4ee5%5Cu6362%5Cu4f4d%5Cu548c%5Cu65cb%5Cu8f6c%2C%5Cu5b8c%5Cu6210%5Cu540e%5Cu7684%5Cu62fc%5Cu56fe%5Cu5728%5Cu8fb9%5Cu7f18%5Cu7684%5Cu5757%5Cu4e0a%5Cu9760%5Cu8fd1%5Cu5916%5Cu56f4%5Cu7684%5Cu662f%5Cu8fb9%5Cu754c%5Cu7ebf%2C%5Cu62fc%5Cu56fe%5Cu5b8c%5Cu6210%5Cu540e%2C%5Cu4e00%5Cu5757%5Cu62fc%5Cu56fe%5Cu82e5%5Cu4e0e%5Cu53e6%5Cu4e00%5Cu5757%5Cu76f8%5Cu90bb%2C%5Cu5b83%5Cu4eec%5Cu7684%5Cu8fb9%5Cu754c%5Cu5b57%5Cu6bcd%5Cu5fc5%5Cu987b%5Cu76f8%5Cu540c%2C%5Cu4ee5%5Cu4e0b%5Cu662f%5Cu4e00%5Cu7cfb%5Cu5217%5Cu5df2%5Cu7ecf%5Cu6210%5Cu529f%5Cu5b8c%5Cu6210%5Cu7684%5Cu62fc%5Cu56fe%5Cu8c1c%5Cu9898%5Cu51716%5Cu5757.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20R%20and%20C%5Cn%5Cn%5C%5C%2A%20Lines%202..R%5C%5C%2AC%2B1%3A%20Each%20line%20contains%20five%20space-separated%20entities%3A%20an%20integer%20serial%20number%20and%20four%20edge%20identifiers%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..R%5C%5C%2AC%3A%20Line%20R%5C%5C%2A%28i-1%29%2Bj%20describes%20the%20puzzle%20piece%20placed%20a%20row%20i%2C%20column%20j%20with%20an%20integer%20and%20five%20space-separated%20entities%3A%20the%20serial%20number%20of%20the%20puzzle%20piece%20and%20the%20four%20piece%20edge%20identifiers%20in%20the%20order%20top%2C%20right%2C%20bottom%2C%20left.%5Cn%22%2C%22samples%22%3A%5B%5B%222%203%20%5Cr%5Cn1%20c%20d%200%200%20%5Cr%5Cn2%200%20d%20b%200%20%5Cr%5Cn3%20c%200%20d%20a%20%5Cr%5Cn4%20b%20a%20b%200%20%5Cr%5Cn5%20d%200%200%20e%20%5Cr%5Cn6%200%200%20b%20e%20%5Cr%5Cn%22%2C%221%200%20c%20d%200%20%5Cr%5Cn3%200%20d%20a%20c%20%5Cr%5Cn5%200%200%20e%20d%20%5Cr%5Cn2%20d%20b%200%200%20%5Cr%5Cn4%20a%20b%200%20b%20%5Cr%5Cn6%20e%200%200%20b%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22Describes%20the%20input%20puzzle%20although%20with%20some%20of%20the%20pieces%20rotated%20compared%20to%20the%20sample%20solution.%5Cn%5Cn%5CnAs%20shown%20in%20the%20diagram%20in%20the%20task%20text.%20Other%20solutions%20%28like%20reflections%29%20are%20possible%3B%20a%20grading%20program%20will%20check%20your%20answer.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C46%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A33%2C%22totalAccepted%22%3A22%2C%22pid%22%3A%22P2927%22%2C%22title%22%3A%22%5BUSACO08DEC%5D%5Cu62fc%5Cu56fe%5Cu6e38%5Cu620fJigsaw%20Puzzles%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A6132%2C%22title%22%3A%22%5Cu7ba1%5Cu7406%5Cu5458%5Cu574f%5Cu574f%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A2056%2C%22name%22%3A%22P2927%20%5BUSACO08DEC%5D%5Cu62fc%5Cu56fe%5Cu6e38%5Cu620fJigsaw%20Puzzles%22%2C%22slug%22%3A%22P2927%22%7D%7D%2C%7B%22id%22%3A5633%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu6570%5Cu636e%5Cu6709%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A2056%2C%22name%22%3A%22P2927%20%5BUSACO08DEC%5D%5Cu62fc%5Cu56fe%5Cu6e38%5Cu620fJigsaw%20Puzzles%22%2C%22slug%22%3A%22P2927%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08DEC%5D%5Cu62fc%5Cu56fe%5Cu6e38%5Cu620fJigsaw%20Puzzles%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08DEC]拼图游戏Jigsaw Puzzles</h1>
+<h2>题目描述</h2>
+<div>The cows have taken up alphabetical jigsaw puzzles. In these puzzles with R (1 <= R <= 10) rows and C (1 <= C <= 10) columns, the edges are not funny-shaped cardboard shapes but rather are letters.
+Each piece has a serial number and 4 letters (or borders) that must be aligned as in a regular jigsaw puzzle. The pseudo-letter '0' (the digit 0) will represent a border (and a piece can have several borders if it is a corner piece or even the top of column in a, e.g., 4x1 puzzle). Below is a set of six pieces (the borders are marked with lines instead of '0's) assembled in one way (of many) that completes the puzzle:
++---+ +---+ +---+
+| 1 c c 3 d d 5 |
++-d-+ + a + +-e-+
++-d-+ +-a-+ +-e-+
+| 2 b b 4 b b 6 |
++---+ +---+ +---+
+Note that each edge letter of each piece matches the border letter of the piece adjacent to it; the borders appear properly on the top, bottom, and sides.
+Pieces are represented by a serial number and a clockwise list of their four edges (where edges are the letters a..z and 0). Pieces might require rotation when placed in the puzzle.
+Given a set of pieces, find at least one way to assemble them into a puzzle. Test data for puzzles with larger R and C are easier to solve because they have a more varied set of edge letters.
+奶牛们在玩按字母表顺序排列的拼图谜题.每道谜题有R(1≤R≤10)列C(1≤C≤10)行的拼图块,它们边缘是由字母或封闭边界组成,完成后的整副拼图外围是边界线,中间的边界是字母.
+每块拼图块都有一个序列号和4个字母或者数字表示边界线(顺序为上右下左),在输入中,数字充当边界线.
+拼图可以换位和旋转,完成后的拼图在边缘的块上靠近外围的是边界线,拼图完成后,一块拼图若与另一块相邻,它们的边界字母必须相同,以下是一系列已经成功完成的拼图谜题共6块.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: R and C
+\* Lines 2..R\*C+1: Each line contains five space-separated entities: an integer serial number and four edge identifiers
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..R\*C: Line R\*(i-1)+j describes the puzzle piece placed a row i, column j with an integer and five space-separated entities: the serial number of the puzzle piece and the four piece edge identifiers in the order top, right, bottom, left.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 3 
+1 c d 0 0 
+2 0 d b 0 
+3 c 0 d a 
+4 b a b 0 
+5 d 0 0 e 
+6 0 0 b e 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 0 c d 0 
+3 0 d a c 
+5 0 0 e d 
+2 d b 0 0 
+4 a b 0 b 
+6 e 0 0 b 
+</code></pre>
+<h2>说明</h2>
+<div>Describes the input puzzle although with some of the pieces rotated compared to the sample solution.
+As shown in the diagram in the task text. Other solutions (like reflections) are possible; a grading program will check your answer.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

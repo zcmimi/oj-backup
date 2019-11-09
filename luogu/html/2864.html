@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO06JAN]树林The Grove - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376067:Y7OrWlvPkPw09YoFA2NWco3+XKtRNQu5KwaPkasCnEE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20pasture%20contains%20a%20small%2C%20contiguous%20grove%20of%20trees%20that%20has%20no%20%27holes%27%20in%20the%20middle%20of%20the%20it.%20%20Bessie%20wonders%3A%20how%20far%20is%20it%20to%20walk%20around%20that%20grove%20and%20get%20back%20to%20my%20starting%20position%3F%20She%27s%20just%20sure%20there%20is%20a%20way%20to%20do%20it%20by%20going%20from%20her%20start%20location%20to%20successive%20locations%20by%20walking%20horizontally%2C%20vertically%2C%20or%20diagonally%20and%20counting%20each%20move%20as%20a%20single%20step.%20Just%20looking%20at%20it%2C%20she%20doesn%27t%20think%20you%20could%20pass%20%27through%27%20the%20grove%20on%20a%20tricky%20diagonal.%20Your%20job%20is%20to%20calculate%20the%20minimum%20number%20of%20steps%20she%20must%20take.%5Cn%5Cn%5CnHappily%2C%20Bessie%20lives%20on%20a%20simple%20world%20where%20the%20pasture%20is%20represented%20by%20a%20grid%20with%20R%20rows%20and%20C%20columns%20%281%20%3C%3D%20R%20%3C%3D%2050%2C%201%20%3C%3D%20C%20%3C%3D%2050%29.%20Here%27s%20a%20typical%20example%20where%20%27.%27%20is%20pasture%20%28which%20Bessie%20may%20traverse%29%2C%20%27X%27%20is%20the%20grove%20of%20trees%2C%20%27%5C%5C%2A%27%20represents%20Bessie%27s%20start%20and%20end%20position%2C%20and%20%27%2B%27%20marks%20one%20shortest%20path%20she%20can%20walk%20to%20circumnavigate%20the%20grove%20%28i.e.%2C%20the%20answer%29%3A%5Cn%5Cn%60%60%60cpp%5Cn...%2B...%5Cn..%2BX%2B..%5Cn.%2BXXX%2B.%5Cn..%2BXXX%2B%5Cn..%2BX..%2B%5Cn...%2B%2B%2B%2A%5Cn%60%60%60%5CnThe%20path%20shown%20is%20not%20the%20only%20possible%20shortest%20path%3B%20Bessie%20might%20have%20taken%20a%20diagonal%20step%20from%20her%20start%20position%20and%20achieved%20a%20similar%20length%20solution.%20Bessie%20is%20happy%20that%20she%27s%20starting%20%27outside%27%20the%20grove%20instead%20of%20in%20a%20sort%20of%20%27harbor%27%20that%20could%20complicate%20finding%20the%20best%20path.%5Cn%5Cn%5Cu7267%5Cu573a%5Cu91cc%5Cu6709%5Cu4e00%5Cu7247%5Cu6811%5Cu6797%5Cuff0c%5Cu6797%5Cu5b50%5Cu91cc%5Cu6ca1%5Cu6709%5Cu5751.%5Cn%5Cn%5Cu8d1d%5Cu831c%5Cu5f88%5Cu60f3%5Cu77e5%5Cu9053%5Cuff0c%5Cu6700%5Cu5c11%5Cu9700%5Cu8981%5Cu591a%5Cu5c11%5Cu6b65%5Cu80fd%5Cu56f4%5Cu7ed5%5Cu6811%5Cu6797%5Cu8d70%5Cu4e00%5Cu5708%5Cuff0c%5Cu6700%5Cu540e%5Cu56de%5Cu5230%5Cu8d77%5Cu70b9.%5Cu5979%5Cu80fd%5Cu4e0a%5Cu4e0b%5Cu5de6%5Cu53f3%5Cu8d70%5Cuff0c%5Cu4e5f%5Cu80fd%20%5Cu8d70%5Cu5bf9%5Cu89d2%5Cu7ebf%5Cu683c%5Cu5b50.%5Cn%5Cn%5Cu7267%5Cu573a%5Cu88ab%5Cu5206%5Cu6210R%5Cu884cC%5Cu5217%281%20%3C%3D%20R%20%3D%3C%2050%5Cuff0c1%20%3C%20%3DC%3C%3D%2050%29.%5Cu4e0b%5Cu9762%5Cu662f%5Cu4e00%5Cu5f20%5Cu6837%5Cu4f8b%5Cu7684%5Cu5730%5Cu56fe%5Cuff0c%5Cu5176%5Cu4e2d%5Cu8868%5Cu793a%5Cu8d1d%5Cu831c%20%5Cu53ef%5Cu4ee5%5Cu8d70%5Cu7684%5Cu7a7a%5Cu5730%5Cuff0c%5Cu201cX%5Cu201d%5Cu8868%5Cu793a%5Cu6811%5Cu6797%5Cuff0c%5Cu8868%5Cu793a%5Cu8d77%5Cu70b9.%5Cu800c%5Cu8d1d%5Cu831c%5Cu8d70%5Cu7684%5Cu6700%5Cu8fd1%5Cu7684%5Cu8def%5Cu5df2%5Cu7ecf%5Cu7279%5Cu522b%5Cu5730%5Cu7528%5Cu201c%20%2B%20%5Cu201d%5Cu8868%5Cu793a%20%5Cu51fa%5Cu6765.%5Cn%5Cn%5Cu9898%5Cu76ee%5Cu4fdd%5Cu8bc1%5Cuff0c%5Cu6700%5Cu77ed%5Cu7684%5Cu8def%5Cu5f84%5Cu4e00%5Cu5b9a%5Cu53ef%5Cu4ee5%5Cu627e%5Cu5230.%5Cn%22%2C%22inputFormat%22%3A%22Line%201%3A%20Two%20space-separated%20integers%3A%20R%20and%20C%5Cn%5Cn%5Cn%5Cn%5CnLines%202..R%2B1%3A%20Line%20i%2B1%20describes%20row%20i%20with%20C%20characters%20%28with%20no%20spaces%20between%20them%29.%5Cn%22%2C%22outputFormat%22%3A%22Line%201%3A%20The%20single%20line%20contains%20a%20single%20integer%20which%20is%20the%20smallest%20number%20of%20steps%20required%20to%20circumnavigate%20the%20grove.%5Cn%22%2C%22samples%22%3A%5B%5B%226%207%5Cn.......%5Cn...X...%5Cn..XXX..%5Cn...XXX.%5Cn...X...%5Cn......%2A%22%2C%2213%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B23%2C46%2C126%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A387%2C%22totalAccepted%22%3A152%2C%22pid%22%3A%22P2864%22%2C%22title%22%3A%22%5BUSACO06JAN%5D%5Cu6811%5Cu6797The%20Grove%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A121909%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu4f6c%5Cu6307%5Cu51fa%5Cu4ee3%5Cu7801%5Cu9519%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A1994%2C%22name%22%3A%22P2864%20%5BUSACO06JAN%5D%5Cu6811%5Cu6797The%20Grove%22%2C%22slug%22%3A%22P2864%22%7D%7D%2C%7B%22id%22%3A102496%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu51f8%5Cu5305%5Cu600e%5Cu4e48%5Cu505a%5Cuff0c%5Cu840c%5Cu65b0%5Cu6c42%5Cu6551%22%2C%22forum%22%3A%7B%22id%22%3A1994%2C%22name%22%3A%22P2864%20%5BUSACO06JAN%5D%5Cu6811%5Cu6797The%20Grove%22%2C%22slug%22%3A%22P2864%22%7D%7D%2C%7B%22id%22%3A18144%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu9898%5Cu610f%5Cu4e0d%5Cu5f53%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A1994%2C%22name%22%3A%22P2864%20%5BUSACO06JAN%5D%5Cu6811%5Cu6797The%20Grove%22%2C%22slug%22%3A%22P2864%22%7D%7D%2C%7B%22id%22%3A11505%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu6ca1%5Cu6709%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%22%2C%22forum%22%3A%7B%22id%22%3A1994%2C%22name%22%3A%22P2864%20%5BUSACO06JAN%5D%5Cu6811%5Cu6797The%20Grove%22%2C%22slug%22%3A%22P2864%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1585%22%2C%22title%22%3A%22%5Cu9b54%5Cu6cd5%5Cu9635%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3322%22%2C%22title%22%3A%22%5BSDOI2015%5D%5Cu6392%5Cu5e8f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3391%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6587%5Cu827a%5Cu5e73%5Cu8861%5Cu6811%5Cuff08Splay%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF914D%22%2C%22title%22%3A%22Bash%20and%20a%20Tough%20Math%20Puzzle%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF525E%22%2C%22title%22%3A%22Anya%20and%20Cubes%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO06JAN%5D%5Cu6811%5Cu6797The%20Grove%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO06JAN]树林The Grove</h1>
+<h2>题目描述</h2>
+<div>The pasture contains a small, contiguous grove of trees that has no 'holes' in the middle of the it. Bessie wonders: how far is it to walk around that grove and get back to my starting position? She's just sure there is a way to do it by going from her start location to successive locations by walking horizontally, vertically, or diagonally and counting each move as a single step. Just looking at it, she doesn't think you could pass 'through' the grove on a tricky diagonal. Your job is to calculate the minimum number of steps she must take.
+Happily, Bessie lives on a simple world where the pasture is represented by a grid with R rows and C columns (1 <= R <= 50, 1 <= C <= 50). Here's a typical example where '.' is pasture (which Bessie may traverse), 'X' is the grove of trees, '\*' represents Bessie's start and end position, and '+' marks one shortest path she can walk to circumnavigate the grove (i.e., the answer):
+```cpp
+...+...
+..+X+..
+.+XXX+.
+..+XXX+
+..+X..+
+...+++*
+```
+The path shown is not the only possible shortest path; Bessie might have taken a diagonal step from her start position and achieved a similar length solution. Bessie is happy that she's starting 'outside' the grove instead of in a sort of 'harbor' that could complicate finding the best path.
+牧场里有一片树林，林子里没有坑.
+贝茜很想知道，最少需要多少步能围绕树林走一圈，最后回到起点.她能上下左右走，也能 走对角线格子.
+牧场被分成R行C列(1 <= R =< 50，1 < =C<= 50).下面是一张样例的地图，其中表示贝茜 可以走的空地，“X”表示树林，表示起点.而贝茜走的最近的路已经特别地用“ + ”表示 出来.
+题目保证，最短的路径一定可以找到.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Line 1: Two space-separated integers: R and C
+Lines 2..R+1: Line i+1 describes row i with C characters (with no spaces between them).
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Line 1: The single line contains a single integer which is the smallest number of steps required to circumnavigate the grove.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 7
+.......
+...X...
+..XXX..
+...XXX.
+...X...
+......*</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>13</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

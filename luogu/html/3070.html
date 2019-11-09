@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13JAN]岛游记Island Travels - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376362:GVPstxnW/fIP1nJMBYcwkmYqsso4DEO8uiCbjXabxqQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20has%20taken%20the%20cows%20to%20a%20vacation%20out%20on%20the%20ocean%21%20The%20cows%20are%20living%20on%20N%20%281%20%3C%3D%20N%20%3C%3D%2015%29%20islands%2C%20which%20are%20located%20on%20an%20R%20x%20C%20grid%20%281%20%3C%3D%20R%2C%20C%20%3C%3D%2050%29.%20An%20island%20is%20a%20maximal%20connected%20group%20of%20squares%20on%20the%20grid%20that%20are%20marked%20as%20%27X%27%2C%20where%20two%20%27X%27s%20are%20connected%20if%20they%20share%20a%20side.%20%28Thus%2C%20two%20%27X%27s%20sharing%20a%20corner%20are%20not%20necessarily%20connected.%29%5Cn%5CnBessie%2C%20however%2C%20is%20arriving%20late%2C%20so%20she%20is%20coming%20in%20with%20FJ%20by%20helicopter.%20Thus%2C%20she%20can%20first%20land%20on%20any%20of%20the%20islands%20she%20chooses.%20She%20wants%20to%20visit%20all%20the%20cows%20at%20least%20once%2C%20so%20she%20will%20travel%20between%20islands%20until%20she%20has%20visited%20all%20N%20of%20the%20islands%20at%20least%20once.%5Cn%5CnFJ%27s%20helicopter%20doesn%27t%20have%20much%20fuel%20left%2C%20so%20he%20doesn%27t%20want%20to%20use%20it%20until%20the%20cows%20decide%20to%20go%20home.%20Fortunately%2C%20some%20of%20the%20squares%20in%20the%20grid%20are%20shallow%20water%2C%20which%20is%20denoted%20by%20%27S%27.%20Bessie%20can%20swim%20through%20these%20squares%20in%20the%20four%20cardinal%20directions%20%28north%2C%20east%2C%20south%2C%20west%29%20in%20order%20to%20travel%20between%20the%20islands.%20She%20can%20also%20travel%20%28in%20the%20four%20cardinal%20directions%29%20between%20an%20island%20and%20shallow%20water%2C%20and%20vice%20versa.%5Cn%5CnFind%20the%20minimum%20distance%20Bessie%20will%20have%20to%20swim%20in%20order%20to%20visit%20all%20of%20the%20islands.%20%28The%20distance%20Bessie%20will%20have%20to%20swim%20is%20the%20number%20of%20distinct%20times%20she%20is%20on%20a%20square%20marked%20%27S%27.%29%20After%20looking%20at%20a%20map%20of%20the%20area%2C%20Bessie%20knows%20this%20will%20be%20possible.%5Cn%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu5f20r%5C%5C%2Ac%5Cu7684%5Cu5730%5Cu56fe%5Cuff0c%5Cu6709%5Cu2019S%5Cu2019%2C%5Cu2019X%5Cu2019%2C%5Cu2019.%5Cu2019%5Cu4e09%5Cu79cd%5Cu5730%5Cu5f62%5Cuff0c%5Cu6240%5Cu6709%5Cu5224%5Cu5b9a%5Cu76f8%5Cu90bb%5Cu4e0e%5Cu884c%5Cu8d70%5Cu90fd%5Cu662f%5Cu56db%5Cu8fde%5Cu901a%5Cu7684%5Cu3002%5Cu6211%5Cu4eec%5Cu8bbe%5Cu2019X%5Cu2019%5Cu4e3a%5Cu9646%5Cu5730%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu2019X%5Cu2019%5Cu8fde%5Cu901a%5Cu5757%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu5c9b%5Cu5c7f%5Cuff0c%5Cu2019S%5Cu2019%5Cu4e3a%5Cu6d45%5Cu6c34%5Cuff0c%5Cu2019.%5Cu2019%5Cu4e3a%5Cu6df1%5Cu6c34%5Cu3002%5Cu521a%5Cu5f00%5Cu59cb%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu964d%5Cu843d%5Cu5728%5Cu4efb%5Cu4e00%5Cu4e00%5Cu5757%5Cu9646%5Cu5730%5Cu4e0a%5Cuff0c%5Cu5728%5Cu9646%5Cu5730%5Cu4e0a%5Cu53ef%5Cu4ee5%5Cu884c%5Cu8d70%5Cuff0c%5Cu5728%5Cu6d45%5Cu6c34%5Cu91cc%5Cu53ef%5Cu4ee5%5Cu6e38%5Cu6cf3%5Cu3002%5Cu5e76%5Cu4e14%5Cu9646%5Cu5730%5Cu548c%5Cu6d45%5Cu6c34%5Cu4e4b%5Cu95f4%5Cu53ef%5Cu4ee5%5Cu76f8%5Cu4e92%5Cu901a%5Cu884c%5Cu3002%5Cu4f46%5Cu65e0%5Cu8bba%5Cu5982%5Cu4f55%5Cu90fd%5Cu4e0d%5Cu80fd%5Cu8d70%5Cu5230%5Cu6df1%5Cu6c34%5Cu3002%5Cu4f60%5Cu73b0%5Cu5728%5Cu8981%5Cu6c42%5Cu901a%5Cu8fc7%5Cu884c%5Cu8d70%5Cu548c%5Cu6e38%5Cu6cf3%5Cu4f7f%5Cu5f97%5Cu4f60%5Cu628a%5Cu6240%5Cu6709%5Cu7684%5Cu5c9b%5Cu5c7f%5Cu90fd%5Cu7ecf%5Cu8fc7%5Cu4e00%5Cu8fb9%5Cu3002Q%5Cuff1a%5Cu4f60%5Cu6700%5Cu5c11%5Cu8981%5Cu7ecf%5Cu8fc7%5Cu51e0%5Cu4e2a%5Cu6d45%5Cu6c34%5Cu533a%5Cuff1f%5Cu4fdd%5Cu8bc1%5Cu6709%5Cu89e3%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20R%20and%20C.%5Cn%5Cn%5C%5C%2A%20Lines%202..R%2B1%3A%20Line%20i%2B1%20contains%20C%20characters%20giving%20row%20i%20of%20the%20grid.%20Deep%20water%20squares%20are%20marked%20as%20%27.%27%2C%20island%20squares%20are%20marked%20as%20%27X%27%2C%20and%20shallow%20water%20squares%20are%20marked%20as%20%27S%27.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20representing%20the%20minimum%20distance%20Bessie%20has%20to%20swim%20to%20visit%20all%20islands.%5Cn%22%2C%22samples%22%3A%5B%5B%225%204%20%5Cr%5CnXX.S%20%5Cr%5Cn.S..%20%5Cr%5CnSXSS%20%5Cr%5CnS.SX%20%5Cr%5Cn..SX%20%5Cr%5Cn%22%2C%223%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%20three%20islands%20with%20shallow%20water%20paths%20connecting%20some%20of%20them.%5Cn%5Cn%5CnBessie%20can%20travel%20from%20the%20island%20in%20the%20top%20left%20to%20the%20one%20in%20the%20middle%2C%20swimming%201%20unit%2C%20and%20then%20travel%20from%20the%20middle%20island%20to%20the%20one%20in%20the%20bottom%20right%2C%20swimming%202%20units%2C%20for%20a%20total%20of%203%20units.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C30%2C46%2C126%2C151%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A534%2C%22totalAccepted%22%3A192%2C%22pid%22%3A%22P3070%22%2C%22title%22%3A%22%5BUSACO13JAN%5D%5Cu5c9b%5Cu6e38%5Cu8bb0Island%20Travels%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A138036%2C%22title%22%3A%22%5Cu4e00%5Cu4e2a%5Cu6d45%5Cu6c34%5Cu533a%5Cu5c31%5Cu662f%5Cu4e00%5Cu4e2aS%5Cu5417%22%2C%22forum%22%3A%7B%22id%22%3A2187%2C%22name%22%3A%22P3070%20%5BUSACO13JAN%5D%5Cu5c9b%5Cu6e38%5Cu8bb0Island%20Travels%22%2C%22slug%22%3A%22P3070%22%7D%7D%2C%7B%22id%22%3A4374%2C%22title%22%3A%22%5Cu9884%5Cu5904%5Cu7406%2B%5Cu72b6%5Cu6001%5Cu538b%5Cu7f29dp%22%2C%22forum%22%3A%7B%22id%22%3A2187%2C%22name%22%3A%22P3070%20%5BUSACO13JAN%5D%5Cu5c9b%5Cu6e38%5Cu8bb0Island%20Travels%22%2C%22slug%22%3A%22P3070%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1654%22%2C%22title%22%3A%22OSU%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3052%22%2C%22title%22%3A%22%5BUSACO12MAR%5D%5Cu6469%5Cu5929%5Cu5927%5Cu697c%5Cu91cc%5Cu7684%5Cu5976%5Cu725bCows%20in%20a%20Skyscraper%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3092%22%2C%22title%22%3A%22%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3565%22%2C%22title%22%3A%22%5BPOI2014%5DHOT-Hotels%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4877%22%2C%22title%22%3A%22%5BUSACO14FEB%5D%20Cow%20Decathlon%20%5Cu725b%5Cu7684%5Cu5341%5Cu9879%5Cu5168%5Cu80fd%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13JAN%5D%5Cu5c9b%5Cu6e38%5Cu8bb0Island%20Travels%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13JAN]岛游记Island Travels</h1>
+<h2>题目描述</h2>
+<div>Farmer John has taken the cows to a vacation out on the ocean! The cows are living on N (1 <= N <= 15) islands, which are located on an R x C grid (1 <= R, C <= 50). An island is a maximal connected group of squares on the grid that are marked as 'X', where two 'X's are connected if they share a side. (Thus, two 'X's sharing a corner are not necessarily connected.)
+Bessie, however, is arriving late, so she is coming in with FJ by helicopter. Thus, she can first land on any of the islands she chooses. She wants to visit all the cows at least once, so she will travel between islands until she has visited all N of the islands at least once.
+FJ's helicopter doesn't have much fuel left, so he doesn't want to use it until the cows decide to go home. Fortunately, some of the squares in the grid are shallow water, which is denoted by 'S'. Bessie can swim through these squares in the four cardinal directions (north, east, south, west) in order to travel between the islands. She can also travel (in the four cardinal directions) between an island and shallow water, and vice versa.
+Find the minimum distance Bessie will have to swim in order to visit all of the islands. (The distance Bessie will have to swim is the number of distinct times she is on a square marked 'S'.) After looking at a map of the area, Bessie knows this will be possible.
+给你一张r\*c的地图，有’S’,’X’,’.’三种地形，所有判定相邻与行走都是四连通的。我们设’X’为陆地，一个’X’连通块为一个岛屿，’S’为浅水，’.’为深水。刚开始你可以降落在任一一块陆地上，在陆地上可以行走，在浅水里可以游泳。并且陆地和浅水之间可以相互通行。但无论如何都不能走到深水。你现在要求通过行走和游泳使得你把所有的岛屿都经过一边。Q：你最少要经过几个浅水区？保证有解。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: R and C.
+\* Lines 2..R+1: Line i+1 contains C characters giving row i of the grid. Deep water squares are marked as '.', island squares are marked as 'X', and shallow water squares are marked as 'S'.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer representing the minimum distance Bessie has to swim to visit all islands.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 4 
+XX.S 
+.S.. 
+SXSS 
+S.SX 
+..SX 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+</code></pre>
+<h2>说明</h2>
+<div>There are three islands with shallow water paths connecting some of them.
+Bessie can travel from the island in the top left to the one in the middle, swimming 1 unit, and then travel from the middle island to the one in the bottom right, swimming 2 units, for a total of 3 units.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

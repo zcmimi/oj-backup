@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO07FEB]白银莲花池Lilypad Pond - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573374175:RwyofmUVxkEDzNBHnpuYR3IX4o28eWdZeYPH0R2TQ54=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22FJ%20has%20installed%20a%20beautiful%20pond%20for%20his%20cows%27%20aesthetic%20enjoyment%20and%20exercise.%5Cn%5CnThe%20rectangular%20pond%20has%20been%20partitioned%20into%20square%20cells%20of%20M%20rows%20and%20N%20columns%20%281%20%5Cu2264%20M%20%5Cu2264%2030%3B%201%20%5Cu2264%20N%20%5Cu2264%2030%29.%20Some%20of%20the%20cells%20have%20astonishingly%20sturdy%20lilypads%3B%20others%20have%20rocks%3B%20the%20remainder%20are%20just%20beautiful%2C%20cool%2C%20blue%20water.%5Cn%5CnBessie%20is%20practicing%20her%20ballet%20moves%20by%20jumping%20from%20one%20lilypad%20to%20another%20and%20is%20currently%20located%20at%20one%20of%20the%20lilypads.%20She%20wants%20to%20travel%20to%20another%20lilypad%20in%20the%20pond%20by%20jumping%20from%20one%20lilypad%20to%20another.%5Cn%5CnSurprising%20only%20to%20the%20uninitiated%2C%20Bessie%27s%20jumps%20between%20lilypads%20always%20appear%20as%20a%20chess-knight%27s%20move%3A%20one%20move%20in%20one%20direction%20and%20then%20two%20more%20in%20the%20orthogonal%20direction%20%28or%20perhaps%20two%20in%20one%20direction%20and%20then%20one%20in%20the%20orthogonal%20direction%29.%5Cn%5CnFarmer%20John%20is%20observing%20Bessie%27s%20ballet%20drill%20and%20realizes%20that%20sometimes%20she%20might%20not%20be%20able%20to%20jump%20to%20her%20destination%20lilypad%20because%20intermediary%20lilypads%20are%20missing.%5Cn%5CnEver%20thrifty%2C%20he%20wants%20to%20place%20additional%20lilypads%20so%20she%20can%20complete%20her%20quest%20%28perhaps%20quickly%2C%20perhaps%20by%20using%20a%20large%20number%20of%20intermediate%20lilypads%29.%20Of%20course%2C%20lilypads%20cannot%20be%20placed%20where%20rocks%20already%20intrude%20on%20a%20cell.%5Cn%5CnHelp%20Farmer%20John%20determine%20the%20minimum%20number%20of%20additional%20lilypads%20he%20has%20to%20place%2C%20and%20in%20how%20many%20ways%20he%20can%20place%20that%20minimum%20number.%5Cn%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu8ba9%5Cu5976%5Cu725b%5Cu4eec%5Cu5a31%5Cu4e50%5Cu548c%5Cu953b%5Cu70bc%5Cuff0c%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu5efa%5Cu9020%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu7f8e%5Cu4e3d%5Cu7684%5Cu6c60%5Cu5858%5Cu3002%5Cu8fd9%5Cu4e2a%5Cu957f%5Cu65b9%5Cu5f62%5Cu7684%5Cu6c60%5Cu5b50%5Cu88ab%5Cu5206%5Cu6210%5Cu4e86M%5Cu884cN%5Cu5217%5Cu4e2a%5Cu65b9%5Cu683c%5Cuff081%5Cu2264M%2CN%5Cu226430%5Cuff09%5Cu3002%5Cu4e00%5Cu4e9b%5Cu683c%5Cu5b50%5Cu662f%5Cu575a%5Cu56fa%5Cu5f97%5Cu4ee4%5Cu4eba%5Cu60ca%5Cu8bb6%5Cu7684%5Cu83b2%5Cu82b1%5Cuff0c%5Cu8fd8%5Cu6709%5Cu4e00%5Cu4e9b%5Cu683c%5Cu5b50%5Cu662f%5Cu5ca9%5Cu77f3%5Cuff0c%5Cu5176%5Cu4f59%5Cu7684%5Cu53ea%5Cu662f%5Cu7f8e%5Cu4e3d%5Cu3001%5Cu7eaf%5Cu51c0%5Cu3001%5Cu6e5b%5Cu84dd%5Cu7684%5Cu6c34%5Cu3002%5Cn%5Cn%5Cu8d1d%5Cu897f%5Cu6b63%5Cu5728%5Cu7ec3%5Cu4e60%5Cu82ad%5Cu857e%5Cu821e%5Cuff0c%5Cu5979%5Cu7ad9%5Cu5728%5Cu4e00%5Cu6735%5Cu83b2%5Cu82b1%5Cu4e0a%5Cuff0c%5Cu60f3%5Cu8df3%5Cu5230%5Cu53e6%5Cu4e00%5Cu6735%5Cu83b2%5Cu82b1%5Cu4e0a%5Cu53bb%5Cuff0c%5Cu5979%5Cu53ea%5Cu80fd%5Cu4ece%5Cu4e00%5Cu6735%5Cu83b2%5Cu82b1%5Cu8df3%5Cu5230%5Cu53e6%5Cu4e00%5Cu6735%5Cu83b2%5Cu82b1%5Cu4e0a%5Cuff0c%5Cu65e2%5Cu4e0d%5Cu80fd%5Cu8df3%5Cu5230%5Cu6c34%5Cu91cc%5Cuff0c%5Cu4e5f%5Cu4e0d%5Cu80fd%5Cu8df3%5Cu5230%5Cu5ca9%5Cu77f3%5Cu4e0a%5Cu3002%5Cn%5Cn%5Cu8d1d%5Cu897f%5Cu7684%5Cu821e%5Cu6b65%5Cu5f88%5Cu50cf%5Cu8c61%5Cu68cb%5Cu4e2d%5Cu7684%5Cu9a6c%5Cu6b65%5Cuff1a%5Cu6bcf%5Cu6b21%5Cu603b%5Cu662f%5Cu5148%5Cu6a2a%5Cu5411%5Cu79fb%5Cu52a8%5Cu4e00%5Cu683c%5Cuff0c%5Cu518d%5Cu7eb5%5Cu5411%5Cu79fb%5Cu52a8%5Cu4e24%5Cu683c%5Cuff0c%5Cu6216%5Cu5148%5Cu7eb5%5Cu5411%5Cu79fb%5Cu52a8%5Cu4e24%5Cu683c%5Cuff0c%5Cu518d%5Cu6a2a%5Cu5411%5Cu79fb%5Cu52a8%5Cu4e00%5Cu683c%5Cu3002%5Cu6700%5Cu591a%5Cu65f6%5Cuff0c%5Cu8d1d%5Cu897f%5Cu4f1a%5Cu6709%5Cu516b%5Cu4e2a%5Cu79fb%5Cu52a8%5Cu65b9%5Cu5411%5Cu53ef%5Cu4f9b%5Cu9009%5Cu62e9%5Cu3002%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu4e00%5Cu76f4%5Cu5728%5Cu89c2%5Cu770b%5Cu8d1d%5Cu897f%5Cu7684%5Cu82ad%5Cu857e%5Cu7ec3%5Cu4e60%5Cuff0c%5Cu53d1%5Cu73b0%5Cu5979%5Cu6709%5Cu65f6%5Cu5019%5Cu4e0d%5Cu80fd%5Cu8df3%5Cu5230%5Cu7ec8%5Cu70b9%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu4e2d%5Cu95f4%5Cu7f3a%5Cu4e86%5Cu4e00%5Cu4e9b%5Cu8377%5Cu53f6%5Cu3002%5Cu4e8e%5Cu662f%5Cu4ed6%5Cu60f3%5Cu8981%5Cu6dfb%5Cu52a0%5Cu51e0%5Cu6735%5Cu83b2%5Cu82b1%5Cu6765%5Cu5e2e%5Cu52a9%5Cu8d1d%5Cu897f%5Cu5b8c%5Cu6210%5Cu4efb%5Cu52a1%5Cu3002%5Cu4e00%5Cu8d2f%5Cu8282%5Cu4fed%5Cu7684%5Cu7ea6%5Cu7ff0%5Cu53ea%5Cu60f3%5Cu6dfb%5Cu52a0%5Cu6700%5Cu5c11%5Cu6570%5Cu91cf%5Cu7684%5Cu83b2%5Cu82b1%5Cu3002%5Cu5f53%5Cu7136%5Cuff0c%5Cu83b2%5Cu82b1%5Cu4e0d%5Cu80fd%5Cu653e%5Cu5728%5Cu77f3%5Cu5934%5Cu4e0a%5Cu3002%5Cn%5Cn%5Cu8bf7%5Cu5e2e%5Cu52a9%5Cu7ea6%5Cu7ff0%5Cu786e%5Cu5b9a%5Cu5fc5%5Cu987b%5Cu8981%5Cu6dfb%5Cu52a0%5Cu7684%5Cu83b2%5Cu82b1%5Cu7684%5Cu6700%5Cu5c11%5Cu6570%5Cu91cf%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu6709%5Cu591a%5Cu5c11%5Cu79cd%5Cu653e%5Cu7f6e%5Cu8fd9%5Cu4e9b%5Cu83b2%5Cu82b1%5Cu7684%5Cu65b9%5Cu6cd5%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu3010%5Cu8f93%5Cu5165%5Cu3011%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e24%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%5Cuff1aM%5Cu548cN%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5230M%2B1%5Cu884c%5Cuff1a%5Cu7b2ci%2B1%5Cu884c%5Cu6709N%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%5Cuff0c%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu6c60%5Cu5858%5Cu7b2ci%5Cu884c%5Cu7684%5Cu72b6%5Cu6001%5Cuff1a%5Cn%5Cn0%5Cu4e3a%5Cu6c34%5Cuff0c1%5Cu4e3a%5Cu83b2%5Cu82b1%5Cuff0c2%5Cu4e3a%5Cu5ca9%5Cu77f3%5Cuff0c3%5Cu4e3a%5Cu8d1d%5Cu897f%5Cu6240%5Cu5728%5Cu7684%5Cu8d77%5Cu70b9%5Cuff0c4%5Cu4e3a%5Cu8d1d%5Cu897f%5Cu60f3%5Cu53bb%5Cu7684%5Cu7ec8%5Cu70b9%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu3010%5Cu8f93%5Cu51fa%5Cu3011%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu9700%5Cu8981%5Cu589e%5Cu52a0%5Cu7684%5Cu6700%5Cu5c11%5Cu83b2%5Cu82b1%5Cu6570%5Cuff1b%5Cu5982%5Cu679c%5Cu65e0%5Cu89e3%5Cuff0c%5Cu8f93%5Cu51fa-1%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cuff1a%5Cu653e%5Cu7f6e%5Cu8fd9%5Cu4e9b%5Cu83b2%5Cu82b1%5Cu7684%5Cu65b9%5Cu6848%5Cu6570%5Cu91cf%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu5b57%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc7%5Cu4e00%5Cu4e2a64%5Cu4f4d%5Cu7684%5Cu6709%5Cu7b26%5Cu53f7%5Cu6574%5Cu6570%5Cuff0c%5Cn%5Cn%5Cu5982%5Cu679c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f-1%5Cuff0c%5Cu4e0d%5Cu8981%5Cu8f93%5Cu51fa%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%224%205%5Cn1%200%200%200%200%5Cn3%200%200%200%200%5Cn0%200%202%200%200%5Cn0%200%200%204%200%5Cn%22%2C%222%5Cn3%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu3010%5Cu6837%5Cu4f8b%5Cu8bf4%5Cu660e%5Cu3011%5Cn%5Cn%5Cu6c60%5Cu5858%5Cu5206%5Cu6210%5Cu56db%5Cu884c%5Cu4e94%5Cu5217%5Cuff0c%5Cu8d1d%5Cu897f%5Cu7684%5Cu8d77%5Cu70b9%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu7b2c%5Cu4e00%5Cu5217%5Cuff0c%5Cu60f3%5Cu53bb%5Cu7684%5Cu7ec8%5Cu70b9%5Cu5728%5Cu7b2c%5Cu56db%5Cu884c%5Cu7b2c%5Cu56db%5Cu5217%5Cuff0c%5Cu6c60%5Cn%5Cn%5Cu5858%5Cu91cc%5Cu4e00%5Cu5171%5Cu6709%5Cu4e09%5Cu6735%5Cu83b2%5Cu82b1%5Cu548c%5Cu4e00%5Cu5757%5Cu77f3%5Cu5934%5Cu3002%5Cn%5Cn%5Cu6700%5Cu5c11%5Cu9700%5Cu8981%5Cu4e24%5Cu6735%5Cu83b2%5Cu82b1%5Cuff0c%5Cu6709%5Cu4e09%5Cu79cd%5Cu65b9%5Cu5f0f%5Cu53ef%5Cu4ee5%5Cu653e%5Cu7f6e%5Cuff0c%5Cn%5Cn%5Cu98756%5Cn%5Cu5982%5Cu4e0bX%5Cu6240%5Cu793a%5Cuff1a%5Cn%5Cn10000%2010X00%2010X00%5Cn%5Cn30X00%2030000%203000X%5Cn%5Cn00200%200X200%2000200%5Cn%5Cn0X040%2000040%2000040%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B6%2C24%2C46%2C126%2C160%2C164%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2728%2C%22totalAccepted%22%3A558%2C%22pid%22%3A%22P1606%22%2C%22title%22%3A%22%5BUSACO07FEB%5D%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60Lilypad%20Pond%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A165181%2C%22title%22%3A%22%5Cu6c42%5Cu52a9QwQ%22%2C%22forum%22%3A%7B%22id%22%3A637%2C%22name%22%3A%22P1606%20%5BUSACO07FEB%5D%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60Lilypad%20Pond%22%2C%22slug%22%3A%22P1606%22%7D%7D%2C%7B%22id%22%3A163716%2C%22title%22%3A%22%5Cu521a%5Cu88c5%5Cu7535%5Cu8111%5Cu7684%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%5Cu5927%5Cu4f6c%5C%2F%28%5Cu3112o%5Cu3112%29%5C%2F~~%22%2C%22forum%22%3A%7B%22id%22%3A637%2C%22name%22%3A%22P1606%20%5BUSACO07FEB%5D%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60Lilypad%20Pond%22%2C%22slug%22%3A%22P1606%22%7D%7D%2C%7B%22id%22%3A153175%2C%22title%22%3A%2287%5Cu5206%5Cu67e5%5Cu4e86%5Cu4e24%5Cu4e2a%5Cu5c0f%5Cu65f6%5Cuff0c%5Cu63d0%5Cu9192%5Cu540e%5Cu6765%5Cu4eba%22%2C%22forum%22%3A%7B%22id%22%3A637%2C%22name%22%3A%22P1606%20%5BUSACO07FEB%5D%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60Lilypad%20Pond%22%2C%22slug%22%3A%22P1606%22%7D%7D%2C%7B%22id%22%3A150420%2C%22title%22%3A%22%5Cu8fd9%5Cu77f3%5Cu5934%5Cu6709%5Cu5565%5Cu7528%22%2C%22forum%22%3A%7B%22id%22%3A637%2C%22name%22%3A%22P1606%20%5BUSACO07FEB%5D%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60Lilypad%20Pond%22%2C%22slug%22%3A%22P1606%22%7D%7D%2C%7B%22id%22%3A141769%2C%22title%22%3A%22%5Cu6211%5Cu4e5f68%5Cu5206%5Cuff0c%5Cu6c42%5Cu52a9%5Cu5927%5Cu4f6cqaq%22%2C%22forum%22%3A%7B%22id%22%3A637%2C%22name%22%3A%22P1606%20%5BUSACO07FEB%5D%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60Lilypad%20Pond%22%2C%22slug%22%3A%22P1606%22%7D%7D%2C%7B%22id%22%3A116935%2C%22title%22%3A%22%5Cu521a%5Cu5b66OI%5Cu7684%5Cu849f%5Cu84bb%5Cu6c42%5Cu52a9%20%20%20%22%2C%22forum%22%3A%7B%22id%22%3A637%2C%22name%22%3A%22P1606%20%5BUSACO07FEB%5D%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60Lilypad%20Pond%22%2C%22slug%22%3A%22P1606%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1608%22%2C%22title%22%3A%22%5Cu8def%5Cu5f84%5Cu7edf%5Cu8ba1%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2411%22%2C%22title%22%3A%22%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60%20%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2403%22%2C%22title%22%3A%22%5BSDOI2010%5D%5Cu6240%5Cu9a7c%5Cu95e8%5Cu738b%5Cu7684%5Cu5b9d%5Cu85cf%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2483%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011k%5Cu77ed%5Cu8def%5Cuff08%5BSDOI2010%5D%5Cu9b54%5Cu6cd5%5Cu732a%5Cu5b66%5Cu9662%5Cuff09%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3888%22%2C%22title%22%3A%22%5BGDOI2014%5D%5Cu62ef%5Cu6551%5Cu83ab%5Cu8389%5Cu65af%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO07FEB%5D%5Cu767d%5Cu94f6%5Cu83b2%5Cu82b1%5Cu6c60Lilypad%20Pond%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO07FEB]白银莲花池Lilypad Pond</h1>
+<h2>题目描述</h2>
+<div>FJ has installed a beautiful pond for his cows' aesthetic enjoyment and exercise.
+The rectangular pond has been partitioned into square cells of M rows and N columns (1 ≤ M ≤ 30; 1 ≤ N ≤ 30). Some of the cells have astonishingly sturdy lilypads; others have rocks; the remainder are just beautiful, cool, blue water.
+Bessie is practicing her ballet moves by jumping from one lilypad to another and is currently located at one of the lilypads. She wants to travel to another lilypad in the pond by jumping from one lilypad to another.
+Surprising only to the uninitiated, Bessie's jumps between lilypads always appear as a chess-knight's move: one move in one direction and then two more in the orthogonal direction (or perhaps two in one direction and then one in the orthogonal direction).
+Farmer John is observing Bessie's ballet drill and realizes that sometimes she might not be able to jump to her destination lilypad because intermediary lilypads are missing.
+Ever thrifty, he wants to place additional lilypads so she can complete her quest (perhaps quickly, perhaps by using a large number of intermediate lilypads). Of course, lilypads cannot be placed where rocks already intrude on a cell.
+Help Farmer John determine the minimum number of additional lilypads he has to place, and in how many ways he can place that minimum number.
+为了让奶牛们娱乐和锻炼，农夫约翰建造了一个美丽的池塘。这个长方形的池子被分成了M行N列个方格（1≤M,N≤30）。一些格子是坚固得令人惊讶的莲花，还有一些格子是岩石，其余的只是美丽、纯净、湛蓝的水。
+贝西正在练习芭蕾舞，她站在一朵莲花上，想跳到另一朵莲花上去，她只能从一朵莲花跳到另一朵莲花上，既不能跳到水里，也不能跳到岩石上。
+贝西的舞步很像象棋中的马步：每次总是先横向移动一格，再纵向移动两格，或先纵向移动两格，再横向移动一格。最多时，贝西会有八个移动方向可供选择。
+约翰一直在观看贝西的芭蕾练习，发现她有时候不能跳到终点，因为中间缺了一些荷叶。于是他想要添加几朵莲花来帮助贝西完成任务。一贯节俭的约翰只想添加最少数量的莲花。当然，莲花不能放在石头上。
+请帮助约翰确定必须要添加的莲花的最少数量，以及有多少种放置这些莲花的方法。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>【输入】
+第一行：两个用空格分开的整数：M和N
+第二行到M+1行：第i+1行有N个用空格分开的整数，描述了池塘第i行的状态：
+0为水，1为莲花，2为岩石，3为贝西所在的起点，4为贝西想去的终点。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>【输出】
+第一行：一个整数，需要增加的最少莲花数；如果无解，输出-1。
+第二行：放置这些莲花的方案数量，保证这个数字不会超过一个64位的有符号整数，
+如果第一行是-1，不要输出第二行。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+1 0 0 0 0
+3 0 0 0 0
+0 0 2 0 0
+0 0 0 4 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+3
+</code></pre>
+<h2>说明</h2>
+<div>【样例说明】
+池塘分成四行五列，贝西的起点在第二行第一列，想去的终点在第四行第四列，池
+塘里一共有三朵莲花和一块石头。
+最少需要两朵莲花，有三种方式可以放置，
+页6
+如下X所示：
+10000 10X00 10X00
+30X00 30000 3000X
+00200 0X200 00200
+0X040 00040 00040
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

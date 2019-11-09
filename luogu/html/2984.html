@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10FEB]给巧克力Chocolate Giving - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376241:D5B3LG96V9MmR25biUW0saEih3fAaX+36cPH84RYBuI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20distributing%20chocolates%20at%20the%20barn%20for%20Valentine%27s%20day%2C%20and%20B%20%281%20%3C%3D%20B%20%3C%3D%2025%2C000%29%20of%20his%20bulls%20have%20a%20special%20cow%20in%20mind%20to%20receive%20a%20chocolate%20gift.%5Cn%5CnEach%20of%20the%20bulls%20and%20cows%20is%20grazing%20alone%20in%20one%20of%20the%20farm%27s%20N%20%282%5C%5C%2AB%20%3C%3D%20N%20%3C%3D%2050%2C000%29%20pastures%20conveniently%20numbered%201..N%20and%20connected%20by%20M%20%28N-1%20%3C%3D%20M%20%3C%3D%20100%2C000%29%20bidirectional%20cowpaths%20of%20various%20lengths.%20Some%20pastures%20might%20be%20directly%20connected%20by%20more%20than%20one%20cowpath.%20Cowpath%20i%20connects%20pastures%20R%5C%5C_i%20and%20S%5C%5C_i%20%281%20%3C%3D%20R%5C%5C_i%20%3C%3D%20N%3B%201%20%3C%3D%20S%5C%5C_i%20%3C%3D%20N%29%20and%20has%20length%20L%5C%5C_i%20%281%20%3C%3D%20L%5C%5C_i%20%3C%3D%202%2C000%29.%5Cn%5CnBull%20i%20resides%20in%20pasture%20P%5C%5C_i%20%281%20%3C%3D%20P%5C%5C_i%20%3C%3D%20N%29%20and%20wishes%20to%20give%20a%20chocolate%20to%20the%20cow%20in%20pasture%20Q%5C%5C_i%20%281%20%3C%3D%20Q%5C%5C_i%20%3C%3D%20N%29.%5Cn%5CnHelp%20the%20bulls%20find%20the%20shortest%20path%20from%20their%20current%20pasture%20to%20the%20barn%20%28which%20is%20located%20at%20pasture%201%29%20and%20then%20onward%20to%20the%20pasture%20where%20their%20special%20cow%20is%20grazing.%20The%20barn%20connects%2C%20one%20way%20or%20another%20%28potentially%20via%20other%20cowpaths%20and%20pastures%29%20to%20every%20pasture.%5Cn%5CnAs%20an%20example%2C%20consider%20a%20farm%20with%206%20pastures%2C%206%20paths%2C%20and%203%20bulls%20%28in%20pastures%202%2C%203%2C%20and%205%29%20who%20wish%20to%20bestow%20chocolates%20on%20their%20love-objects%3A%5Cn%5Cn%60%60%60cpp%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2A1%20%20%3C--%20Bull%20wants%20chocolates%20for%20pasture%201%20cow%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%5B4%5D--3--%5B5%5D%20%20%3C--%20%5B5%5D%20is%20the%20pasture%20ID%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%5C%2F%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%20%20%5C%2F%20%20%20%7C%5Cn%20%20%20%20%20%20%20%20%20%204%20%20%20%202%20%20%20%20%20%20%20%20%20%20%3C--%202%20is%20the%20cowpath%20length%5Cn%20%20%20%20%20%20%20%20%20%5C%2F%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20between%20%5B3%5D%20and%20%5B4%5D%5Cn%20%20%20%20%20%20%5B1%5D--1--%5B3%5D%2A6%5Cn%20%20%20%20%20%5C%2F%20%20%20%5C%5C%20%20%20%20%5C%2F%5Cn%20%20%20%209%20%20%20%20%203%20%202%5Cn%20%20%20%5C%2F%20%20%20%20%20%20%20%5C%5C%5C%2F%5Cn%20%5B6%5D%20%20%20%20%20%20%5B2%5D%2A4%5Cn%60%60%60%5Cn%5C%5C%2A%20The%20Bull%20in%20pasture%202%20can%20travel%20distance%203%20%28two%20different%20ways%29%20to%20get%20to%20the%20barn%20then%20travel%20distance%202%2B1%20to%20pastures%20%5B3%5D%20and%20%5B4%5D%20to%20gift%20his%20chocolate.%20That%27s%206%20altogether.%5Cn%5Cn%5C%5C%2A%20The%20Bull%20in%20pasture%205%20can%20travel%20to%20pasture%204%20%28distance%203%29%2C%20then%20pastures%203%20and%201%20%28total%3A%203%20%2B%202%20%2B%201%20%3D%206%29%20to%20bestow%20his%20chocolate%20offer.%5Cn%5Cn%5C%5C%2A%20The%20Bull%20in%20pasture%203%20can%20travel%20distance%201%20to%20pasture%201%20and%20then%20take%20his%20chocolate%209%20more%20to%20pasture%206%2C%20a%20total%20distance%20of%2010.%5Cn%5CnFarmer%20John%5Cu6709B%5Cu5934%5Cu5976%5Cu725b%281%3C%3DB%3C%3D25000%29%5Cuff0c%5Cu6709N%282%5C%5C%2AB%3C%3DN%3C%3D50000%29%5Cu4e2a%5Cu519c%5Cu573a%5Cuff0c%5Cu7f16%5Cu53f71-N%5Cuff0c%5Cu6709M%28N-1%3C%3DM%3C%3D100000%29%5Cu6761%5Cu53cc%5Cu5411%5Cu8fb9%5Cuff0c%5Cu7b2ci%5Cu6761%5Cu8fb9%5Cu8fde%5Cu63a5%5Cu519c%5Cu573aR%5C%5C_i%5Cu548cS%5C%5C_i%281%3C%3DR%5C%5C_i%3C%3DN%3B1%3C%3DS%5C%5C_i%3C%3DN%29%5Cuff0c%5Cu8be5%5Cu8fb9%5Cu7684%5Cu957f%5Cu5ea6%5Cu662fL%5C%5C_i%281%3C%3DL%5C%5C_i%3C%3D2000%29%5Cu3002%5Cu5c45%5Cu4f4f%5Cu5728%5Cu519c%5Cu573aP%5C%5C_i%5Cu7684%5Cu5976%5Cu725bA%281%3C%3DP%5C%5C_i%3C%3DN%29%5Cuff0c%5Cu5b83%5Cu60f3%5Cu9001%5Cu4e00%5Cu4efd%5Cu65b0%5Cu5e74%5Cu793c%5Cu7269%5Cu7ed9%5Cu5c45%5Cu4f4f%5Cu5728%5Cu519c%5Cu573aQ%5C%5C_i%281%3C%3DQ%5C%5C_i%3C%3DN%29%5Cu7684%5Cu5976%5Cu725bB%5Cuff0c%5Cu4f46%5Cu662f%5Cu5976%5Cu725bA%5Cu5fc5%5Cu987b%5Cu5148%5Cu5230FJ%28%5Cu5c45%5Cu4f4f%5Cu5728%5Cu7f16%5Cu53f71%5Cu7684%5Cu519c%5Cu573a%29%5Cu90a3%5Cu91cc%5Cu53d6%5Cu793c%5Cu7269%5Cuff0c%5Cu7136%5Cu540e%5Cu518d%5Cu9001%5Cu7ed9%5Cu5976%5Cu725bB%5Cu3002%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cuff1a%5Cu5976%5Cu725bA%5Cu81f3%5Cu5c11%5Cu9700%5Cu8981%5Cu8d70%5Cu591a%5Cu8fdc%5Cu7684%5Cu8def%5Cu7a0b%5Cuff1f%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Three%20space%20separated%20integers%3A%20N%2C%20M%2C%20and%20B%5Cn%5Cn%5C%5C%2A%20Lines%202..M%2B1%3A%20Line%20i%2B1%20describes%20cowpath%20i%20with%20three%5Cn%5Cnspace-separated%20integers%3A%20R%5C%5C_i%2C%20S%5C%5C_i%2C%20and%20L%5C%5C_i%5Cn%5Cn%5C%5C%2A%20Lines%20M%2B2..M%2BB%2B1%3A%20Line%20M%2Bi%2B1%20contains%20two%20space%20separated%20integers%3A%20P%5C%5C_i%20and%20Q%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..B%3A%20Line%20i%20should%20contain%20a%20single%20integer%2C%20the%20smallest%20distance%20that%20the%20bull%20in%20pasture%20P%5C%5C_i%20must%20travel%20to%20get%20chocolates%20from%20the%20barn%20and%20then%20award%20them%20to%20the%20cow%20of%20his%20dreams%20in%20pasture%20Q%5C%5C_i%5Cn%22%2C%22samples%22%3A%5B%5B%226%207%203%20%5Cn1%202%203%20%5Cn5%204%203%20%5Cn3%201%201%20%5Cn6%201%209%20%5Cn3%204%202%20%5Cn1%204%204%20%5Cn3%202%202%20%5Cn2%204%20%5Cn5%201%20%5Cn3%206%20%5Cn%22%2C%226%20%5Cn6%20%5Cn10%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e09%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570N%2CM%5Cu548cB%5Cu3002%5Cn%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu5230M%2B1%5Cu884c%5Cuff1a%5Cu7b2ci%2B1%5Cu884c%5Cu7528R%5C%5C_i%5Cuff0cS%5C%5C_i%5Cu548cL%5C%5C_i%5Cu4e09%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%5Cu63cf%5Cu8ff0%5Cu53cc%5Cu5411%5Cu8fb9i%5Cu3002%5Cn%5Cn%5Cn%5Cu7b2cM%2B2%5Cu5230M%2BB%2B1%5Cu884c%5Cuff1a%5Cu7b2cM%2Bi%2B1%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570P%5C%5C_i%5Cu548cQ%5C%5C_i%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu5230B%5Cu884c%5Cuff1a%5Cu7b2ci%5Cu884c%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5c45%5Cu4f4f%5Cu5728%5Cu519c%5Cu573aP%5C%5C_i%5Cu7684%5Cu516c%5Cu725b%5Cu4eceFJ%5Cu90a3%5Cu91cc%5Cu53d6%5Cu5f97%5Cu60c5%5Cu4eba%5Cu8282%5Cu5de7%5Cu514b%5Cu529b%5Cu540e%5Cu9001%5Cu7ed9%5Cu4ed6%5Cu5c45%5Cu4f4f%5Cu5728%5Cu519c%5Cu573aQ%5C%5C_i%5Cu7684%5Cu68a6%5Cu4e2d%5Cu60c5%5Cu725b%5Cu81f3%5Cu5c11%5Cu9700%5Cu8981%5Cu8d70%5Cu7684%5Cu8ddd%5Cu79bb%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B7%2C27%2C46%2C160%2C164%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2670%2C%22totalAccepted%22%3A1031%2C%22pid%22%3A%22P2984%22%2C%22title%22%3A%22%5BUSACO10FEB%5D%5Cu7ed9%5Cu5de7%5Cu514b%5Cu529bChocolate%20Giving%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A127430%2C%22title%22%3A%22dijkstra%20%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu70b9wa%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2113%2C%22name%22%3A%22P2984%20%5BUSACO10FEB%5D%5Cu7ed9%5Cu5de7%5Cu514b%5Cu529bChocolate%20Giving%22%2C%22slug%22%3A%22P2984%22%7D%7D%2C%7B%22id%22%3A123664%2C%22title%22%3A%22%5Cu8f93%5Cu51fa%5Cu6781%5Cu5927%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A2113%2C%22name%22%3A%22P2984%20%5BUSACO10FEB%5D%5Cu7ed9%5Cu5de7%5Cu514b%5Cu529bChocolate%20Giving%22%2C%22slug%22%3A%22P2984%22%7D%7D%2C%7B%22id%22%3A86352%2C%22title%22%3A%22%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu70b9%5Cuff1f%5Cuff1fWA%22%2C%22forum%22%3A%7B%22id%22%3A2113%2C%22name%22%3A%22P2984%20%5BUSACO10FEB%5D%5Cu7ed9%5Cu5de7%5Cu514b%5Cu529bChocolate%20Giving%22%2C%22slug%22%3A%22P2984%22%7D%7D%2C%7B%22id%22%3A65152%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu5f00%5Cu4e86%5Cu6c27%5Cu6c14%20WA%20%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu4e0d%5Cu5f00%5Cu53ef%5Cu4ee5%20AC%20%5Cu554a%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2113%2C%22name%22%3A%22P2984%20%5BUSACO10FEB%5D%5Cu7ed9%5Cu5de7%5Cu514b%5Cu529bChocolate%20Giving%22%2C%22slug%22%3A%22P2984%22%7D%7D%2C%7B%22id%22%3A62084%2C%22title%22%3A%22%5Cu4e00%5Cu4e2a%5Cu597d%5Cu73a9%5Cu7684%5Cu5730%5Cu65b9%22%2C%22forum%22%3A%7B%22id%22%3A2113%2C%22name%22%3A%22P2984%20%5BUSACO10FEB%5D%5Cu7ed9%5Cu5de7%5Cu514b%5Cu529bChocolate%20Giving%22%2C%22slug%22%3A%22P2984%22%7D%7D%2C%7B%22id%22%3A54689%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff01%5Cu4e09%5Cu4e2a%5Cu86cb%22%2C%22forum%22%3A%7B%22id%22%3A2113%2C%22name%22%3A%22P2984%20%5BUSACO10FEB%5D%5Cu7ed9%5Cu5de7%5Cu514b%5Cu529bChocolate%20Giving%22%2C%22slug%22%3A%22P2984%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1144%22%2C%22title%22%3A%22%5Cu6700%5Cu77ed%5Cu8def%5Cu8ba1%5Cu6570%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1396%22%2C%22title%22%3A%22%5Cu8425%5Cu6551%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1629%22%2C%22title%22%3A%22%5Cu90ae%5Cu9012%5Cu5458%5Cu9001%5Cu4fe1%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1821%22%2C%22title%22%3A%22%5BUSACO07FEB%5D%5Cu94f6%5Cu725b%5Cu6d3e%5Cu5bf9Silver%20Cow%20Party%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2951%22%2C%22title%22%3A%22%5BUSACO09OPEN%5D%5Cu6349%5Cu8ff7%5Cu85cfHide%20and%20Seek%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10FEB%5D%5Cu7ed9%5Cu5de7%5Cu514b%5Cu529bChocolate%20Giving%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10FEB]给巧克力Chocolate Giving</h1>
+<h2>题目描述</h2>
+<div>Farmer John is distributing chocolates at the barn for Valentine's day, and B (1 <= B <= 25,000) of his bulls have a special cow in mind to receive a chocolate gift.
+Each of the bulls and cows is grazing alone in one of the farm's N (2\*B <= N <= 50,000) pastures conveniently numbered 1..N and connected by M (N-1 <= M <= 100,000) bidirectional cowpaths of various lengths. Some pastures might be directly connected by more than one cowpath. Cowpath i connects pastures R\_i and S\_i (1 <= R\_i <= N; 1 <= S\_i <= N) and has length L\_i (1 <= L\_i <= 2,000).
+Bull i resides in pasture P\_i (1 <= P\_i <= N) and wishes to give a chocolate to the cow in pasture Q\_i (1 <= Q\_i <= N).
+Help the bulls find the shortest path from their current pasture to the barn (which is located at pasture 1) and then onward to the pasture where their special cow is grazing. The barn connects, one way or another (potentially via other cowpaths and pastures) to every pasture.
+As an example, consider a farm with 6 pastures, 6 paths, and 3 bulls (in pastures 2, 3, and 5) who wish to bestow chocolates on their love-objects:
+```cpp
+*1 <-- Bull wants chocolates for pasture 1 cow
+[4]--3--[5] <-- [5] is the pasture ID
+/ |
+/ |
+4 2 <-- 2 is the cowpath length
+/ | between [3] and [4]
+[1]--1--[3]*6
+/ \ /
+9 3 2
+/ \/
+[6] [2]*4
+```
+\* The Bull in pasture 2 can travel distance 3 (two different ways) to get to the barn then travel distance 2+1 to pastures [3] and [4] to gift his chocolate. That's 6 altogether.
+\* The Bull in pasture 5 can travel to pasture 4 (distance 3), then pastures 3 and 1 (total: 3 + 2 + 1 = 6) to bestow his chocolate offer.
+\* The Bull in pasture 3 can travel distance 1 to pasture 1 and then take his chocolate 9 more to pasture 6, a total distance of 10.
+Farmer John有B头奶牛(1<=B<=25000)，有N(2\*B<=N<=50000)个农场，编号1-N，有M(N-1<=M<=100000)条双向边，第i条边连接农场R\_i和S\_i(1<=R\_i<=N;1<=S\_i<=N)，该边的长度是L\_i(1<=L\_i<=2000)。居住在农场P\_i的奶牛A(1<=P\_i<=N)，它想送一份新年礼物给居住在农场Q\_i(1<=Q\_i<=N)的奶牛B，但是奶牛A必须先到FJ(居住在编号1的农场)那里取礼物，然后再送给奶牛B。你的任务是：奶牛A至少需要走多远的路程？
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Three space separated integers: N, M, and B
+\* Lines 2..M+1: Line i+1 describes cowpath i with three
+space-separated integers: R\_i, S\_i, and L\_i
+\* Lines M+2..M+B+1: Line M+i+1 contains two space separated integers: P\_i and Q\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..B: Line i should contain a single integer, the smallest distance that the bull in pasture P\_i must travel to get chocolates from the barn and then award them to the cow of his dreams in pasture Q\_i
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 7 3 
+1 2 3 
+5 4 3 
+3 1 1 
+6 1 9 
+3 4 2 
+1 4 4 
+3 2 2 
+2 4 
+5 1 
+3 6 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6 
+6 
+10 
+</code></pre>
+<h2>说明</h2>
+<div>输入格式：
+第一行：三个用空格隔开的整数N,M和B。
+第二到M+1行：第i+1行用R\_i，S\_i和L\_i三个用空格隔开的整数描述双向边i。
+第M+2到M+B+1行：第M+i+1行包含两个用空格隔开的整数P\_i和Q\_i。
+输出格式：
+第一到B行：第i行包括一个整数，居住在农场P\_i的公牛从FJ那里取得情人节巧克力后送给他居住在农场Q\_i的梦中情牛至少需要走的距离。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

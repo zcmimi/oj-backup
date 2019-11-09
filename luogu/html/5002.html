@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>专心OI - 找祖先 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382072:vugmC2WFKB7phdVEGFbnv2bd00O4/I5/iYA2emlsMX0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%23%20%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu70b915pts%5Cn%5CnImakf%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5c0f%5Cu849f%5Cu84bb%5Cuff0c%5Cu4ed6%5Cu6700%5Cu8fd1%5Cu521a%5Cu5b66%5Cu4e86LCA%5Cuff0c%5Cu4ed6%5Cu5728%5Cu624b%5Cu673aAPP%5Cu91cc%5Cu770b%5Cu5230%5Cu4e00%5Cu4e2a%5Cu6e38%5Cu620f%5Cu4e5f%5Cu53eb%5Cu505aLCA%5Cu5c31%5Cu4e0b%5Cu8f7d%5Cu4e86%5Cu4e0b%5Cu6765%5Cu3002%22%2C%22description%22%3A%22%5Cu8fd9%5Cu4e2a%5Cu6e38%5Cu620f%5Cu4f1a%5Cu7ed9%5Cu51fa%5Cu4f60%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu8fd9%5Cu68f5%5Cu6811%5Cu6709%24N%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff0c%5Cu6839%5Cu7ed3%5Cu70b9%5Cu662f%24R%24%5Cuff0c%5Cu7cfb%5Cu7edf%5Cu4f1a%5Cu9009%5Cu4e2d%24M%24%5Cu4e2a%5Cu70b9%24P_1%2CP_2...P_M%24%5Cuff0c%5Cu8981Imakf%5Cu56de%5Cu7b54%5Cu6709%5Cu591a%5Cu5c11%5Cu7ec4%5Cu70b9%5Cu5bf9%24%28u_i%2Cv_i%29%24%5Cu7684%5Cu6700%5Cu8fd1%5Cu516c%5Cu5171%5Cu7956%5Cu5148%5Cu662f%24P_i%24%5Cu3002Imakf%5Cu662f%5Cu4e2a%5Cu5c0f%5Cu849f%5Cu84bb%5Cuff0c%5Cu4ed6%5Cu5c31%5Cu7b97%5Cu5b66%5Cu4e86LCA%5Cu4e5f%5Cu505a%5Cu4e0d%5Cu51fa%5Cuff0c%5Cu4e8e%5Cu662f%5Cu53ea%5Cu597d%5Cu6c42%5Cu52a9%5Cu60a8%5Cu4e86%5Cu3002%5Cn%5CnImakf%5Cu6bd5%5Cu7adf%5Cu5b66%5Cu8fc7%5Cu4e00%5Cu70b9OI%2C%5Cu6240%5Cu4ee5%5Cu4ed6%5Cu5141%5Cu8bb8%5Cu60a8%5Cu628a%5Cu7b54%5Cu6848%5Cu6a21%20%24%2810%5E9%2B7%29%24%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%20%24N%20%2C%20R%20%2C%20M%24%5Cn%5Cn%5Cu6b64%5Cu540e%24N-1%24%5Cu884c%20%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%24a%2Cb%24%20%5Cu8868%5Cu793a%24a%2Cb%24%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cn%5Cn%5Cu6b64%5Cu540e%241%24%5Cu884c%20%24M%24%5Cu4e2a%5Cu6570%20%5Cu8868%5Cu793a%24P_i%24%22%2C%22outputFormat%22%3A%22%24M%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7b2c%24i%24%5Cu884c%5Cu7684%5Cu6570%5Cu8868%5Cu793a%5Cu6709%5Cu591a%5Cu5c11%5Cu7ec4%5Cu70b9%5Cu5bf9%24%28u_i%2Cv_i%29%24%5Cu7684%5Cu6700%5Cu8fd1%5Cu516c%5Cu5171%5Cu7956%5Cu5148%5Cu662f%24P_i%24%22%2C%22samples%22%3A%5B%5B%227%201%203%5Cn1%202%5Cn1%203%5Cn2%204%5Cn2%205%5Cn3%206%5Cn3%207%5Cn1%202%204%22%2C%2231%5Cn7%5Cn1%22%5D%5D%2C%22hint%22%3A%22%5Cu6837%5Cu4f8b1%5Cn%5Cn%20%5Cu5bf9%5Cu4e8e%5Cu8be2%5Cu95ee1%20%24~%281%2C1%29%5Cn%281%2C2%29%5Cn%281%2C3%29%5Cn%281%2C4%29%5Cn%281%2C5%29%5Cn%281%2C6%29%5Cn%281%2C7%29%5Cn%282%2C1%29%5Cn%282%2C3%29%5Cn%282%2C6%29%5Cn%282%2C7%29%5Cn%283%2C1%29%5Cn%283%2C2%29%5Cn%283%2C4%29%5Cn%283%2C5%29%5Cn%284%2C1%29%5Cn%284%2C3%29%24%5Cn%5Cn%24%5Cn%284%2C6%29%5Cn%284%2C7%29%5Cn%285%2C1%29%5Cn%285%2C3%29%5Cn%285%2C6%29%5Cn%285%2C7%29%5Cn%286%2C1%29%5Cn%286%2C2%29%5Cn%286%2C4%29%5Cn%286%2C5%29%5Cn%287%2C1%29%5Cn%287%2C2%29%5Cn%287%2C4%29%5Cn%287%2C5%29%24%5Cu517131%5Cu7ec4%5Cn%5Cn%5Cu8be2%5Cu95ee2%20%24%282%2C2%29%5Cn%282%2C4%29%5Cn%282%2C5%29%5Cn%284%2C2%29%5Cn%284%2C5%29%5Cn%285%2C2%29%5Cn%285%2C4%29%24%5Cu51717%5Cu7ec4%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu8be2%5Cu95ee3%20%24%284%2C4%29%24%5Cu51711%5Cu7ec4%5Cn%5Cn%24N%5C%5Cleq10000%2CM%5C%5Cleq50000%24%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F37971.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A47863%2C%22name%22%3A%22Imakf%22%2C%22slogan%22%3A%22%5Cu6709%5Cu4eba%5Cu6559%5Cu6211%5Cu73a9iw%5Cu5417%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Red%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B4%2C111%2C211%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2764%2C%22totalAccepted%22%3A837%2C%22pid%22%3A%22P5002%22%2C%22title%22%3A%22%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A152164%2C%22title%22%3A%22%5Cu6211%5Cu6ca1%25%5Cu5c31%5Cu8fc7%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A31646%2C%22name%22%3A%22P5002%20%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22slug%22%3A%22P5002%22%7D%7D%2C%7B%22id%22%3A152142%2C%22title%22%3A%22%5Cu6570%5Cu636e%5Cu8fc7%5Cu6c34%22%2C%22forum%22%3A%7B%22id%22%3A31646%2C%22name%22%3A%22P5002%20%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22slug%22%3A%22P5002%22%7D%7D%2C%7B%22id%22%3A115859%2C%22title%22%3A%2280%5Cu5206TLE%5Cu6c42%5Cu52a9QAQ%22%2C%22forum%22%3A%7B%22id%22%3A31646%2C%22name%22%3A%22P5002%20%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22slug%22%3A%22P5002%22%7D%7D%2C%7B%22id%22%3A103686%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu521a%5Cu5b66OI%5Cuff0cWA%5Cu56db%5Cu4e2a%5Cu70b9%5Cu6c42%5Cu52a9%5Cu5927%5Cu4f6c%22%2C%22forum%22%3A%7B%22id%22%3A31646%2C%22name%22%3A%22P5002%20%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22slug%22%3A%22P5002%22%7D%7D%2C%7B%22id%22%3A101237%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu91ccM%3EN%22%2C%22forum%22%3A%7B%22id%22%3A31646%2C%22name%22%3A%22P5002%20%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22slug%22%3A%22P5002%22%7D%7D%2C%7B%22id%22%3A95155%2C%22title%22%3A%22wa%5Cu56db%5Cu4e2a%5Cu6c42%5Cu89e3%22%2C%22forum%22%3A%7B%22id%22%3A31646%2C%22name%22%3A%22P5002%20%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22slug%22%3A%22P5002%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3128%22%2C%22title%22%3A%22%5BUSACO15DEC%5D%5Cu6700%5Cu5927%5Cu6d41Max%20Flow%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3398%22%2C%22title%22%3A%22%5Cu4ed3%5Cu9f20%5Cu627esugar%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5003%22%2C%22title%22%3A%22%5Cu8df3%5Cu821e%5Cu7684%5Cu7ebf%20-%20%5Cu4e71%5Cu62d0%5Cu5f2f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4281%22%2C%22title%22%3A%22%5BAHOI2008%5D%5Cu7d27%5Cu6025%5Cu96c6%5Cu5408%20%5C%2F%20%5Cu805a%5Cu4f1a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5004%22%2C%22title%22%3A%22%5Cu4e13%5Cu5fc3OI%20-%20%5Cu8df3%5Cu623f%5Cu5b50%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>专心OI - 找祖先</h1>
+<h2>题目背景</h2>
+<div># 最后一个点15pts
+Imakf是一个小蒟蒻，他最近刚学了LCA，他在手机APP里看到一个游戏也叫做LCA就下载了下来。</div>
+<h2>题目描述</h2>
+<div>这个游戏会给出你一棵树，这棵树有$N$个节点，根结点是$R$，系统会选中$M$个点$P_1,P_2...P_M$，要Imakf回答有多少组点对$(u_i,v_i)$的最近公共祖先是$P_i$。Imakf是个小蒟蒻，他就算学了LCA也做不出，于是只好求助您了。
+Imakf毕竟学过一点OI,所以他允许您把答案模 $(10^9+7)$</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行 $N , R , M$
+此后$N-1$行 每行两个数$a,b$ 表示$a,b$之间有一条边
+此后$1$行 $M$个数 表示$P_i$</div>
+<h3>输出格式</h3>
+<br />
+<div>$M$行，每行一个数，第$i$行的数表示有多少组点对$(u_i,v_i)$的最近公共祖先是$P_i$</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 1 3
+1 2
+1 3
+2 4
+2 5
+3 6
+3 7
+1 2 4</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>31
+7
+1</code></pre>
+<h2>说明</h2>
+<div>样例1
+对于询问1 $~(1,1)
+(1,2)
+(1,3)
+(1,4)
+(1,5)
+(1,6)
+(1,7)
+(2,1)
+(2,3)
+(2,6)
+(2,7)
+(3,1)
+(3,2)
+(3,4)
+(3,5)
+(4,1)
+(4,3)$
+$
+(4,6)
+(4,7)
+(5,1)
+(5,3)
+(5,6)
+(5,7)
+(6,1)
+(6,2)
+(6,4)
+(6,5)
+(7,1)
+(7,2)
+(7,4)
+(7,5)$共31组
+询问2 $(2,2)
+(2,4)
+(2,5)
+(4,2)
+(4,5)
+(5,2)
+(5,4)$共7组
+对于询问3 $(4,4)$共1组
+$N\leq10000,M\leq50000$
+![](https://cdn.luogu.com.cn/upload/pic/37971.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

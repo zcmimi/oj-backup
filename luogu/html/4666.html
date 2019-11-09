@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[BalticOI 2011 Day1]Growing Trees - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381672:/N8zDSq6dBV6VCUC3EvsCKADrKZDk5jUcewXBY7mXnc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22For%20fertilizing%20the%20trees%20he%20has%20several%20bottles%20of%20MegaBoostFertilizer%2C%20which%2C%20when%20treated%20on%20trees%2C%20causes%20them%20to%20grow%20one%20centimeter%20up%20instantly.%20Every%20bottle%20has%20a%20limited%20capacity%20%24c_i%24%5Cu200b%5Cu200b%20%2C%20which%20determines%20the%20number%20of%20trees%20it%20can%20be%20applied%20to.%20Moreover%2C%20for%20each%20bottle%20there%20is%20a%20minimal%20height%20%24h_i%24%20of%20trees%2C%20which%20can%20be%20treated%20with%20it.%20Since%20Egon%20wants%20to%20have%20all%20his%20trees%20as%20big%20as%20possible%2C%20he%20always%20applies%20the%20fertilizer%20to%20the%20%24c_i%24%5Cu200b%5Cu200b%20smallest%20trees%20chosen%20from%20the%20trees%20that%20are%20at%20least%20%24h_i%24%5Cu200b%5Cu200b%20centimeters%20high.%5Cn%5CnWhen%20Egon%20computes%20statistics%20about%20trees%20he%20has%20to%20determine%20the%20number%20of%20trees%20whose%20height%20is%20in%20some%20given%20interval.%20Egon%20is%20quite%20busy%20working%20in%20the%20garden%2C%20so%20he%20asked%20you%20to%20write%20a%20program%2C%20that%20given%20the%20list%20of%20his%20tasks%2C%20computes%20the%20statistics%20for%20him.%20%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20standard%20input%20contains%20two%20integers%20%24N%24%20and%20%24M%24%20denoting%20the%20number%20of%20trees%20in%20Egon%5Cu2019s%20garden%20and%20the%20number%20of%20his%20tasks.%20The%20second%20line%20contains%20a%20sequence%20of%20%24N%24%20integers%20fromthe%20range%20%24%5B1%2CN%5D%24%20describing%20the%20initial%20heights%20of%20the%20trees%20in%20centimeters.%20The%20following%20%24M%24%20lines%20describe%20the%20tasks%20in%20chronological%20order.%20Each%20of%20those%20lines%20begins%20with%20a%20character%20%24t_i%24%20%24%28t_i%3DF%20%5C%5C%20or%20%5C%5C%20C%29%24%2C%20which%20describes%20the%20type%20of%20the%20task.%5Cn%5CnIf%20%24t_i%3DF%24%20then%20two%20integers%20%24c_i%24%5Cu200b%5Cu200b%20and%20%24h_i%24%20follow.%20Such%20a%20line%20means%20that%20Egon%20applies%20a%20bottle%20of%20MegaBoostFertilizer%20to%20the%20%24c_i%24%20smallest%20trees%20among%20those%20trees%20that%20are%20at%20least%20%24h_i%24%5Cu200b%5Cu200b%20centimeters%20high.%20When%20there%20are%20less%20than%20%24c_i%24%5Cu200b%5Cu200b%20trees%20of%20sufficient%20height%2C%20he%20applies%20the%20fertilizer%20to%20all%20such%20trees%20and%20discards%20the%20bottle%20with%20some%20fertilizer%20remaining.%5Cn%5CnIf%20%24t_i%3DC%24%20then%20two%20integers%20%24%5C%5Cmin_i%24%5Cu200b%5Cu200b%20and%20%24%5C%5Cmax_i%24%5Cu200b%5Cu200b%20follow.%20They%20denote%20that%20Egon%20has%20to%20compute%20the%20number%20of%20trees%20whose%20height%20%24H%24%20is%20between%20%24%5C%5Cmin_i%24%20and%20%24%5C%5Cmax_i%24%5Cu200b%5Cu200b%20centimeters%20%24%28%5C%5Cmin_i%20%5C%5Cle%20H%20%5C%5Cle%20%5C%5Cmax_i%29%24.%20%22%2C%22outputFormat%22%3A%22For%20every%20task%20of%20type%20C%2C%20output%20one%20line%20containing%20the%20number%20of%20apple%20trees%20that%20have%20the%20required%20height.%20The%20order%20of%20the%20results%20should%20conform%20to%20the%20order%20of%20type%20C%20tasks%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%225%207%5Cn1%203%202%205%202%5CnF%202%201%5CnC%203%206%5CnF%202%203%5CnC%206%208%5CnF%202%201%5CnF%202%202%5CnC%203%205%22%2C%223%5Cn0%5Cn5%22%5D%5D%2C%22hint%22%3A%22%241%20%5C%5Cle%20N%2CM%20%5C%5Cle%2010%5E5%2C1%20%5C%5Cle%20c%20%5C%5Cle%20N%2C0%20%5C%5Cle%20h%20%5C%5Cle%2010%5E9%2C1%20%5C%5Cle%20min%20%5C%5Cle%20max%20%5C%5Cle%2010%5E9%24%5Cu3002%22%2C%22provider%22%3A%7B%22uid%22%3A41051%2C%22name%22%3A%22%5Cu548c%5Cu6cc9%5Cu6b63%5Cu5b97%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24N%24%20%5Cu7684%5Cu6570%5Cu7ec4%20%24a%24%5Cuff0c%5Cu6570%5Cu7ec4%5Cu4e2d%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu7684%5Cu53d6%5Cu503c%5Cu8303%5Cu56f4%5Cu5747%5Cu4e3a%20%24%5B1%2CN%5D%24%5Cuff08%5Cu6ca1%5Cu8bf4%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu540c%5Cuff09%5Cu3002%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu6709%20%24M%24%20%5Cu7ec4%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu64cd%5Cu4f5c%5Cu5206%5Cu4e3a%5Cu4e24%5Cu79cd%5Cuff1a%5Cn1.%20%24%5C%5Ctexttt%7BF%7D%5C%5C%3A%5C%5C%3Ac%5C%5C%3A%5C%5C%3Ah%24%20%20%5Cn%5Cu5c06%5Cu6ee1%5Cu8db3%20%24a%5Bi%5D%20%5C%5Cge%20h%24%20%5Cu7684%5Cu6240%5Cu6709%20%24a%5Bi%5D%24%20%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%20%24c%24%20%5Cu4e2a%5Cu6570%5Cu90fd%20%24%2B1%24%5Cuff1b%5Cn2.%20%24%5C%5Ctexttt%7BC%7D%5C%5C%3A%5C%5C%3Amax%5C%5C%3A%5C%5C%3Amin%24%20%20%5Cn%5Cu8f93%5Cu51fa%5Cu6ee1%5Cu8db3%20%24min%20%5C%5Cle%20a%5Bi%5D%20%5C%5Cle%20max%24%20%5Cu7684%20%24a%5Bi%5D%24%20%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24N%24%20%5Cu548c%20%24M%24%5Cu3002%20%20%20%20%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6709%20%24N%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu7ec4%20%24a%24%5Cu3002%20%20%5Cn%5Cu5728%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684%20%24M%24%20%5Cu884c%5Cu4e2d%5Cuff0c%5Cu6bcf%5Cu884c%5Cu6709%5Cu4e00%5Cu7ec4%5Cu64cd%5Cu4f5c%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%20%24%5C%5Ctexttt%7BC%7D%5C%5C%3A%5C%5C%3Amax%5C%5C%3A%5C%5C%3Amin%24%20%5Cu64cd%5Cu4f5c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6ee1%5Cu8db3%20%24min%20%5C%5Cle%20a%5Bi%5D%20%5C%5Cle%20max%24%20%5Cu7684%20%24a%5Bi%5D%24%20%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%60%60%60%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24N%24%20%5Cu7684%5Cu6570%5Cu7ec4%20%24a%24%5Cuff0c%5Cu6570%5Cu7ec4%5Cu4e2d%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu7684%5Cu53d6%5Cu503c%5Cu8303%5Cu56f4%5Cu5747%5Cu4e3a%20%24%5B1%2CN%5D%24%5Cuff08%5Cu6ca1%5Cu8bf4%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu540c%5Cuff09%5Cu3002%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu6709%20%24M%24%20%5Cu7ec4%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu64cd%5Cu4f5c%5Cu5206%5Cu4e3a%5Cu4e24%5Cu79cd%5Cuff1a%5Cn1.%20%24%5C%5Ctexttt%7BF%7D%5C%5C%3A%5C%5C%3Ac%5C%5C%3A%5C%5C%3Ah%24%20%20%5Cn%5Cu5c06%5Cu6ee1%5Cu8db3%20%24a%5Bi%5D%20%5C%5Cge%20h%24%20%5Cu7684%5Cu6240%5Cu6709%20%24a%5Bi%5D%24%20%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%20%24c%24%20%5Cu4e2a%5Cu6570%5Cu90fd%20%24%2B1%24%5Cuff1b%5Cn2.%20%24%5C%5Ctexttt%7BC%7D%5C%5C%3A%5C%5C%3Amax%5C%5C%3A%5C%5C%3Amin%24%20%20%5Cn%5Cu8f93%5Cu51fa%5Cu6ee1%5Cu8db3%20%24min%20%5C%5Cle%20a%5Bi%5D%20%5C%5Cle%20max%24%20%5Cu7684%20%24a%5Bi%5D%24%20%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24N%24%20%5Cu548c%20%24M%24%5Cu3002%20%20%20%20%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6709%20%24N%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu7ec4%20%24a%24%5Cu3002%20%20%5Cn%5Cu5728%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684%20%24M%24%20%5Cu884c%5Cu4e2d%5Cuff0c%5Cu6bcf%5Cu884c%5Cu6709%5Cu4e00%5Cu7ec4%5Cu64cd%5Cu4f5c%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%20%24%5C%5Ctexttt%7BC%7D%5C%5C%3A%5C%5C%3Amax%5C%5C%3A%5C%5C%3Amin%24%20%5Cu64cd%5Cu4f5c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6ee1%5Cu8db3%20%24min%20%5C%5Cle%20a%5Bi%5D%20%5C%5Cle%20max%24%20%5Cu7684%20%24a%5Bi%5D%24%20%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%5Cu7ffb%5Cu8bd1%5Cu63d0%5Cu4f9b%5Cu8005%5Cuff1aPlanet6174%22%2C%22tags%22%3A%5B28%2C319%2C334%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22P4666%22%2C%22title%22%3A%22%5BBalticOI%202011%20Day1%5DGrowing%20Trees%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A46812%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A26425%2C%22name%22%3A%22P4666%20%5BBalticOI%202011%20Day1%5DGrowing%20Trees%22%2C%22slug%22%3A%22P4666%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BBalticOI%202011%20Day1%5DGrowing%20Trees%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[BalticOI 2011 Day1]Growing Trees</h1>
+<h2>题意翻译</h2>
+<div>给出一个长度为 $N$ 的数组 $a$，数组中每个数的取值范围均为 $[1,N]$（没说互不相同）。
+接下来有 $M$ 组操作，操作分为两种：
+1. $\texttt{F}\:\:c\:\:h$
+将满足 $a[i] \ge h$ 的所有 $a[i]$ 中最小的 $c$ 个数都 $+1$；
+2. $\texttt{C}\:\:max\:\:min$
+输出满足 $min \le a[i] \le max$ 的 $a[i]$ 的个数。
+### 输入格式
+第一行有两个整数 $N$ 和 $M$。
+第二行有 $N$ 个整数，表示数组 $a$。
+在接下来的 $M$ 行中，每行有一组操作。
+### 输出格式
+对于每组 $\texttt{C}\:\:max\:\:min$ 操作输出一行，每行一个整数，表示满足 $min \le a[i] \le max$ 的 $a[i]$ 的个数。
+```
+给出一个长度为 $N$ 的数组 $a$，数组中每个数的取值范围均为 $[1,N]$（没说互不相同）。
+接下来有 $M$ 组操作，操作分为两种：
+1. $\texttt{F}\:\:c\:\:h$
+将满足 $a[i] \ge h$ 的所有 $a[i]$ 中最小的 $c$ 个数都 $+1$；
+2. $\texttt{C}\:\:max\:\:min$
+输出满足 $min \le a[i] \le max$ 的 $a[i]$ 的个数。
+### 输入格式
+第一行有两个整数 $N$ 和 $M$。
+第二行有 $N$ 个整数，表示数组 $a$。
+在接下来的 $M$ 行中，每行有一组操作。
+### 输出格式
+对于每组 $\texttt{C}\:\:max\:\:min$ 操作输出一行，每行一个整数，表示满足 $min \le a[i] \le max$ 的 $a[i]$ 的个数。
+翻译提供者：Planet6174</div>
+<h2>题目描述</h2>
+<div>For fertilizing the trees he has several bottles of MegaBoostFertilizer, which, when treated on trees, causes them to grow one centimeter up instantly. Every bottle has a limited capacity $c_i$​​ , which determines the number of trees it can be applied to. Moreover, for each bottle there is a minimal height $h_i$ of trees, which can be treated with it. Since Egon wants to have all his trees as big as possible, he always applies the fertilizer to the $c_i$​​ smallest trees chosen from the trees that are at least $h_i$​​ centimeters high.
+When Egon computes statistics about trees he has to determine the number of trees whose height is in some given interval. Egon is quite busy working in the garden, so he asked you to write a program, that given the list of his tasks, computes the statistics for him. </div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the standard input contains two integers $N$ and $M$ denoting the number of trees in Egon’s garden and the number of his tasks. The second line contains a sequence of $N$ integers fromthe range $[1,N]$ describing the initial heights of the trees in centimeters. The following $M$ lines describe the tasks in chronological order. Each of those lines begins with a character $t_i$ $(t_i=F \ or \ C)$, which describes the type of the task.
+If $t_i=F$ then two integers $c_i$​​ and $h_i$ follow. Such a line means that Egon applies a bottle of MegaBoostFertilizer to the $c_i$ smallest trees among those trees that are at least $h_i$​​ centimeters high. When there are less than $c_i$​​ trees of sufficient height, he applies the fertilizer to all such trees and discards the bottle with some fertilizer remaining.
+If $t_i=C$ then two integers $\min_i$​​ and $\max_i$​​ follow. They denote that Egon has to compute the number of trees whose height $H$ is between $\min_i$ and $\max_i$​​ centimeters $(\min_i \le H \le \max_i)$. </div>
+<h3>输出格式</h3>
+<br />
+<div>For every task of type C, output one line containing the number of apple trees that have the required height. The order of the results should conform to the order of type C tasks in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 7
+1 3 2 5 2
+F 2 1
+C 3 6
+F 2 3
+C 6 8
+F 2 1
+F 2 2
+C 3 5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+0
+5</code></pre>
+<h2>说明</h2>
+<div>$1 \le N,M \le 10^5,1 \le c \le N,0 \le h \le 10^9,1 \le min \le max \le 10^9$。</div>
+</article>
+</div>
+</div>
+</body>
+</html>

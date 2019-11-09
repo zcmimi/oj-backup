@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>【模板】线性递推+BM算法 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382672:9BCpV7PNvEfWY2U974AInrSwjylq7gNI8R7Kz5+DG+k=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu524d%5Cu7f6e%5Cu6280%5Cu80fd%5Cuff1a%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%2B%24BM%24%5Cu7b97%5Cu6cd5%5Cuff08%5Cu6216%5Cu8bb8%5Cu8981%5Cu6700%5Cu4f18%5Cu590d%5Cu6742%5Cu5ea6%5Cuff09%5Cuff1b%5Cn%5Cn%5Cu540c%5Cu65f6%5Cuff0c%5Cu8bf7%5Cu6ce8%5Cu610f%5Cu4f18%5Cu5316%5Cu4f60%5Cu7684%5Cu7a7a%5Cu95f4%5Cu3002%5Cu4fdd%5Cu8bc1%5Cu6700%5Cu77ed%5Cu9012%5Cu63a8%5Cu5f0f%2A%2A%5Cu552f%5Cu4e00%2A%2A%5Cu3002%5Cn%5Cn%5Cuff08ps%5Cuff1a%5Cu51fa%5Cu9898%5Cu4eba%5Cu4e3a%5Cu5f3a%5Cu884c%5Cu4e8c%5Cu5408%5Cu4e00%5Cu611f%5Cu5230%5Cu5f88%5Cu62b1%5Cu6b49%5Cuff0c%5Cu4f46%5Cu662f%5Cu5176%5Cu5b9e%5Cu4e5f%5Cu662f%5Cu53ef%5Cu4ee5%5Cu5b66%5Cu4e60%5Cu4e00%5Cu4e0b%24k%5E2logn%24%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%5Cu7684%5Cu2014%5Cu2014%5Cu4fdd%5Cu8bc1%5Cu5728%60-O2%60%5Cu6307%5Cu4ee4%5Cu4e0b%5Cu53ef%5Cu4ee5%5Cu8fc7%5Cuff09%22%2C%22description%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5217%24P%24%5Cu4ece%240%24%5Cu5f00%5Cu59cb%5Cu7684%5Cu524d%24n%24%5Cu9879%5Cuff0c%5Cu6c42%5Cu5e8f%5Cu5217%24P%24%5Cu5728%24%5C%5Cbmod~998244353%24%20%5Cu4e0b%5Cu7684%5Cu6700%5Cu77ed%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%5Cu5f0f%5Cuff0c%5Cu5e76%5Cu5728%24%5C%5Cbmod~998244353%24%20%5Cu4e0b%5Cu8f93%5Cu51fa%24P_m%24.%5Cn%5Cn%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5171%5Cu4e24%5Cu4e2a%5Cu6570%24n%2Cm%24%2C%5Cu8868%5Cu793a%5Cu5c06%5Cu4f1a%5Cu7ed9%5Cu51fa%5Cu5e8f%5Cu5217%24P%24%5Cu7684%5Cu524d%24n%24%5Cu9879%5Cuff0c%5Cu8981%5Cu6c42%24P_m%24%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%24n%24%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%24P_0%2CP_1%2CP_2%5C%5Ccdots%20P_%7Bn-1%7D%24%22%2C%22outputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu8be5%5Cu6700%5Cu77ed%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%5Cu5f0f%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8f93%5Cu51fa%24P_m%24%5Cu7684%5Cu503c%5Cu3002%22%2C%22samples%22%3A%5B%5B%224%2010%5Cn1%201%202%203%5Cn%22%2C%221%201%20%5Cn89%5Cn%22%5D%2C%5B%225%2010%5Cn3%207%2027%2095%20339%22%2C%223%202%5Cn691707%5Cn%22%5D%5D%2C%22hint%22%3A%22%24m%5C%5Cleq%2010%5E9%24%5Cn%5Cn%241%5C%5Cleq%20n%5C%5Cleq%2010000%24%5Cn%5Cn%5Cu4fdd%5Cu8bc1%5Cu9012%5Cu63a8%5Cu5f0f%5Cu6700%5Cu957f%5Cu4e0d%5Cu8d85%5Cu8fc7%245000%24.%5Cn%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A28313%2C%22name%22%3A%22_%5Cu768e%5Cu6708%5Cu534a%5Cu6d12%5Cu82b1%22%2C%22slogan%22%3A%22%5Cu4ece%5Cu4e00%5Cu7f15%5Cu5fae%5Cu5149%5Cu5f00%5Cu59cb%5Cuff0c%5Cu4e0d%5Cu65ad%5Cu53d8%5Cu5f97%5Cu66f4%5Cu5f3a%5Cu3002%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Red%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B273%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A183%2C%22totalAccepted%22%3A70%2C%22pid%22%3A%22P5487%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%2BBM%5Cu7b97%5Cu6cd5%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A132009%2C%22title%22%3A%22%5Cu6210%5Cu529f%5Cu62a2%5Cu5230%5Cu4e00%5Cu8840%22%2C%22forum%22%3A%7B%22id%22%3A38580%2C%22name%22%3A%22P5487%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%2BBM%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5487%22%7D%7D%2C%7B%22id%22%3A130287%2C%22title%22%3A%22%5Cu5efa%5Cu8bae%5Cu4e0d%5Cu8981%5Cu6a21%5Cu677f%5Cu5957%5Cu6a21%5Cu677f%22%2C%22forum%22%3A%7B%22id%22%3A38580%2C%22name%22%3A%22P5487%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%2BBM%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5487%22%7D%7D%2C%7B%22id%22%3A129052%2C%22title%22%3A%22%5Cu4e00%5Cu4e2a%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A38580%2C%22name%22%3A%22P5487%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%2BBM%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5487%22%7D%7D%2C%7B%22id%22%3A128952%2C%22title%22%3A%22%25%25%25%5Cu51fa%5Cu9898%5Cu4ebatql%22%2C%22forum%22%3A%7B%22id%22%3A38580%2C%22name%22%3A%22P5487%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%2BBM%5Cu7b97%5Cu6cd5%22%2C%22slug%22%3A%22P5487%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4245%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu4efb%5Cu610f%5Cu6a21%5Cu6570NTT%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4389%22%2C%22title%22%3A%22%5Cu4ed8%5Cu516c%5Cu4e3b%5Cu7684%5Cu80cc%5Cu5305%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4718%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Pollard-Rho%5Cu7b97%5Cu6cd5%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5158%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu591a%5Cu9879%5Cu5f0f%5Cu5feb%5Cu901f%5Cu63d2%5Cu503c%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1198B%22%2C%22title%22%3A%22Welfare%20State%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7ebf%5Cu6027%5Cu9012%5Cu63a8%2BBM%5Cu7b97%5Cu6cd5%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>【模板】线性递推+BM算法</h1>
+<h2>题目背景</h2>
+<div>前置技能：线性递推+$BM$算法（或许要最优复杂度）；
+同时，请注意优化你的空间。保证最短递推式**唯一**。
+（ps：出题人为强行二合一感到很抱歉，但是其实也是可以学习一下$k^2logn$线性递推的——保证在`-O2`指令下可以过）</div>
+<h2>题目描述</h2>
+<div>给出一个数列$P$从$0$开始的前$n$项，求序列$P$在$\bmod~998244353$ 下的最短线性递推式，并在$\bmod~998244353$ 下输出$P_m$.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行共两个数$n,m$,表示将会给出序列$P$的前$n$项，要求$P_m$
+第二行$n$个数，表示$P_0,P_1,P_2\cdots P_{n-1}$</div>
+<h3>输出格式</h3>
+<br />
+<div>第一行输出该最短线性递推式。
+第二行输出$P_m$的值。</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 10
+1 1 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 1 
+89
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 10
+3 7 27 95 339</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3 2
+691707
+</code></pre>
+<h2>说明</h2>
+<div>$m\leq 10^9$
+$1\leq n\leq 10000$
+保证递推式最长不超过$5000$.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

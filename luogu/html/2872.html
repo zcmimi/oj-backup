@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO07DEC]道路建设Building Roads - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376079:WHKCq5D07b04yMLyxs6/Emu2Uy+xjlTkSAD2NkyWHhE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20had%20just%20acquired%20several%20new%20farms%21%20He%20wants%20to%20connect%20the%20farms%20with%20roads%20so%20that%20he%20can%20travel%20from%20any%20farm%20to%20any%20other%20farm%20via%20a%20sequence%20of%20roads%3B%20roads%20already%20connect%20some%20of%20the%20farms.%5Cn%5CnEach%20of%20the%20N%20%281%20%5Cu2264%20N%20%5Cu2264%201%2C000%29%20farms%20%28conveniently%20numbered%201..N%29%20is%20represented%20by%20a%20position%20%28Xi%2C%20Yi%29%20on%20the%20plane%20%280%20%5Cu2264%20Xi%20%5Cu2264%201%2C000%2C000%3B%200%20%5Cu2264%20Yi%20%5Cu2264%201%2C000%2C000%29.%20Given%20the%20preexisting%20M%20roads%20%281%20%5Cu2264%20M%20%5Cu2264%201%2C000%29%20as%20pairs%20of%20connected%20farms%2C%20help%20Farmer%20John%20determine%20the%20smallest%20length%20of%20additional%20roads%20he%20must%20build%20to%20connect%20all%20his%20farms.%5Cn%5CnFarmer%20John%5Cu6700%5Cu8fd1%5Cu5f97%5Cu5230%5Cu4e86%5Cu4e00%5Cu4e9b%5Cu65b0%5Cu7684%5Cu519c%5Cu573a%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu65b0%5Cu4fee%5Cu4e00%5Cu4e9b%5Cu9053%5Cu8def%5Cu4f7f%5Cu5f97%5Cu4ed6%5Cu7684%5Cu6240%5Cu6709%5Cu519c%5Cu573a%5Cu53ef%5Cu4ee5%5Cu7ecf%5Cu8fc7%5Cu539f%5Cu6709%5Cu7684%5Cu6216%5Cu662f%5Cu65b0%5Cu4fee%5Cu7684%5Cu9053%5Cu8def%5Cu4e92%5Cu8fbe%5Cuff08%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu4ece%5Cu4efb%5Cu4e00%5Cu4e2a%5Cu519c%5Cu573a%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu7ecf%5Cu8fc7%5Cu4e00%5Cu4e9b%5Cu9996%5Cu5c3e%5Cu76f8%5Cu8fde%5Cu9053%5Cu8def%5Cu5230%5Cu8fbe%5Cu5269%5Cu4e0b%5Cu7684%5Cu6240%5Cu6709%5Cu519c%5Cu573a%5Cuff09%5Cu3002%5Cu6709%5Cu4e9b%5Cu519c%5Cu573a%5Cu4e4b%5Cu95f4%5Cu539f%5Cu672c%5Cu5c31%5Cu6709%5Cu9053%5Cu8def%5Cu76f8%5Cu8fde%5Cu3002%20%5Cu6240%5Cu6709N%281%20%3C%3D%20N%20%3C%3D%201%2C000%29%5Cu4e2a%5Cu519c%5Cu573a%5Cuff08%5Cu75281..N%5Cu987a%5Cu6b21%5Cu7f16%5Cu53f7%5Cuff09%5Cu5728%5Cu5730%5Cu56fe%5Cu4e0a%5Cu90fd%5Cu8868%5Cu793a%5Cu4e3a%5Cu5750%5Cu6807%5Cu4e3a%28X%5C%5C_i%2C%20Y%5C%5C_i%29%5Cu7684%5Cu70b9%280%20%3C%3D%20X%5C%5C_i%20%3C%3D%201%2C000%2C000%5Cuff1b0%20%3C%3D%20Y%5C%5C_i%20%3C%3D%201%2C000%2C000%29%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu519c%5Cu573a%5Cu95f4%5Cu9053%5Cu8def%5Cu7684%5Cu957f%5Cu5ea6%5Cu81ea%5Cu7136%5Cu5c31%5Cu662f%5Cu4ee3%5Cu8868%5Cu5b83%5Cu4eec%5Cu7684%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8ddd%5Cu79bb%5Cu3002%5Cu73b0%5Cu5728Farmer%20John%5Cu4e5f%5Cu544a%5Cu8bc9%5Cu4e86%5Cu4f60%5Cu519c%5Cu573a%5Cu95f4%5Cu539f%5Cu6709%5Cu7684M%281%20%3C%3D%20M%20%3C%3D%201%2C000%29%5Cu6761%5Cu8def%5Cu5206%5Cu522b%5Cu8fde%5Cu63a5%5Cu4e86%5Cu54ea%5Cu4e24%5Cu4e2a%5Cu519c%5Cu573a%5Cuff0c%5Cu4ed6%5Cu5e0c%5Cu671b%5Cu4f60%5Cu8ba1%5Cu7b97%5Cu4e00%5Cu4e0b%5Cuff0c%5Cu4e3a%5Cu4e86%5Cu4f7f%5Cu5f97%5Cu6240%5Cu6709%5Cu519c%5Cu573a%5Cu8fde%5Cu901a%5Cuff0c%5Cu4ed6%5Cu6240%5Cu9700%5Cu5efa%5Cu9020%5Cu9053%5Cu8def%5Cu7684%5Cu6700%5Cu5c0f%5Cu603b%5Cu957f%5Cu662f%5Cu591a%5Cu5c11%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Two%20space-separated%20integers%3A%20Xi%20and%20Yi%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B2..N%2BM%2B2%3A%20Two%20space-separated%20integers%3A%20i%20and%20j%2C%20indicating%20that%20there%20is%20already%20a%20road%20connecting%20the%20farm%20i%20and%20farm%20j.%5Cn%5Cn%2B%20%5Cu7b2c1%5Cu884c%3A%202%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%5Cuff1aN%20%5Cu548c%20M%5Cn%5Cn%2B%20%5Cu7b2c2..N%2B1%5Cu884c%3A%20%5Cu7b2ci%2B1%5Cu884c%5Cu4e3a2%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%5Cuff1aX%5C%5C_i%5Cu3001Y%5C%5C_i%5Cn%5Cn%2B%20%5Cu7b2cN%2B2..N%2BM%2B2%5Cu884c%3A%20%5Cu6bcf%5Cu884c%5Cu75282%5Cu4e2a%5Cu4ee5%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570i%5Cu3001j%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu4e00%5Cu6761%5Cu5df2%5Cu6709%5Cu7684%5Cu9053%5Cu8def%5Cuff0c%20%5Cu8fd9%5Cu6761%5Cu9053%5Cu8def%5Cu8fde%5Cu63a5%5Cu4e86%5Cu519c%5Cu573ai%5Cu548c%5Cu519c%5Cu573aj%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Smallest%20length%20of%20additional%20roads%20required%20to%20connect%20all%20farms%2C%20printed%20without%20rounding%20to%20two%20decimal%20places.%20Be%20sure%20to%20calculate%20distances%20as%2064-bit%20floating%20point%20numbers.%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu4f7f%5Cu6240%5Cu6709%5Cu519c%5Cu573a%5Cu8fde%5Cu901a%5Cu6240%5Cu9700%5Cu5efa%5Cu8bbe%5Cu9053%5Cu8def%5Cu7684%5Cu6700%5Cu5c0f%5Cu603b%5Cu957f%5Cuff0c%5Cu4fdd%5Cu75592%5Cu4f4d%5Cu5c0f%5Cu6570%5Cuff0c%5Cu4e0d%5Cu5fc5%5Cu505a%20%5Cu4efb%5Cu4f55%5Cu989d%5Cu5916%5Cu7684%5Cu53d6%5Cu6574%5Cu64cd%5Cu4f5c%5Cu3002%5Cu4e3a%5Cu4e86%5Cu907f%5Cu514d%5Cu7cbe%5Cu5ea6%5Cu8bef%5Cu5dee%5Cuff0c%5Cu8ba1%5Cu7b97%5Cu519c%5Cu573a%5Cu95f4%5Cu8ddd%5Cu79bb%5Cu53ca%5Cu7b54%5Cu6848%5Cu65f6%20%5Cu8bf7%5Cu4f7f%5Cu752864%5Cu4f4d%5Cu5b9e%5Cu578b%5Cu53d8%5Cu91cf%5Cn%22%2C%22samples%22%3A%5B%5B%224%201%5Cn1%201%5Cn3%201%5Cn2%203%5Cn4%203%5Cn1%204%22%2C%224.00%22%5D%5D%2C%22hint%22%3A%22%5Cu9898%5Cu76ee%5Cu7b80%5Cu8ff0%5Cuff1a%5Cu7ed9%5Cu51fan%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%2C%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e9b%5Cu70b9%5Cu5df2%5Cu7ecf%5Cu8fde%5Cu901a%2C%5Cu73b0%5Cu5728%5Cu8981%5Cu628a%5Cu6240%5Cu6709%5Cu70b9%5Cu8fde%5Cu901a%2C%5Cu6c42%5Cu4fee%5Cu8def%5Cu7684%5Cu6700%5Cu5c0f%5Cu957f%5Cu5ea6.%5Cn%5Cn%5Cu611f%5Cu8c22%40%5Cu777f%5Cu5c7f%5Cu9752%5Cu886b%5Cu4e36%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B24%2C46%2C166%2C167%2C168%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A4855%2C%22totalAccepted%22%3A1538%2C%22pid%22%3A%22P2872%22%2C%22title%22%3A%22%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A150148%2C%22title%22%3A%22%5Cu54ea%5Cu91cc%5Cu9519%5Cu60f9QAQ%5Cu00b7%22%2C%22forum%22%3A%7B%22id%22%3A2002%2C%22name%22%3A%22P2872%20%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22slug%22%3A%22P2872%22%7D%7D%2C%7B%22id%22%3A135364%2C%22title%22%3A%22%5Cu6c42%5Cu6551%5Cu5927%5Cu4f6c%22%2C%22forum%22%3A%7B%22id%22%3A2002%2C%22name%22%3A%22P2872%20%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22slug%22%3A%22P2872%22%7D%7D%2C%7B%22id%22%3A131088%2C%22title%22%3A%2220%5Cu5206%5Cuff0cWA%5Cu6c42%5Cu52a9QwQ%22%2C%22forum%22%3A%7B%22id%22%3A2002%2C%22name%22%3A%22P2872%20%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22slug%22%3A%22P2872%22%7D%7D%2C%7B%22id%22%3A129502%2C%22title%22%3A%22%5Cu5927%5Cu6570%5Cu636e%5Cu9519%5Cu4e86%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2002%2C%22name%22%3A%22P2872%20%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22slug%22%3A%22P2872%22%7D%7D%2C%7B%22id%22%3A120324%2C%22title%22%3A%22%5Cu6c42%5Cu52a9dalao%5Cuff0c%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu53ea%5Cu670950%5Cu5206%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2002%2C%22name%22%3A%22P2872%20%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22slug%22%3A%22P2872%22%7D%7D%2C%7B%22id%22%3A108110%2C%22title%22%3A%22%5Cu8fd9%5Cu4e2a%5Cu9898%5Cu7684%5Cu5751%5Cu4eba%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu6211%5Cu8bf4%5Cu4e00%5Cu4e0b%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A2002%2C%22name%22%3A%22P2872%20%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22slug%22%3A%22P2872%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1195%22%2C%22title%22%3A%22%5Cu53e3%5Cu888b%5Cu7684%5Cu5929%5Cu7a7a%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2212%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu6d47%5Cu5730Watering%20the%20Fields%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2330%22%2C%22title%22%3A%22%5BSCOI2005%5D%5Cu7e41%5Cu5fd9%5Cu7684%5Cu90fd%5Cu5e02%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2504%22%2C%22title%22%3A%22%5BHAOI2006%5D%5Cu806a%5Cu660e%5Cu7684%5Cu7334%5Cu5b50%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2916%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5b89%5Cu6170%5Cu5976%5Cu725bCheering%20up%20the%20Cow%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO07DEC]道路建设Building Roads</h1>
+<h2>题目描述</h2>
+<div>Farmer John had just acquired several new farms! He wants to connect the farms with roads so that he can travel from any farm to any other farm via a sequence of roads; roads already connect some of the farms.
+Each of the N (1 ≤ N ≤ 1,000) farms (conveniently numbered 1..N) is represented by a position (Xi, Yi) on the plane (0 ≤ Xi ≤ 1,000,000; 0 ≤ Yi ≤ 1,000,000). Given the preexisting M roads (1 ≤ M ≤ 1,000) as pairs of connected farms, help Farmer John determine the smallest length of additional roads he must build to connect all his farms.
+Farmer John最近得到了一些新的农场，他想新修一些道路使得他的所有农场可以经过原有的或是新修的道路互达（也就是说，从任一个农场都可以经过一些首尾相连道路到达剩下的所有农场）。有些农场之间原本就有道路相连。 所有N(1 <= N <= 1,000)个农场（用1..N顺次编号）在地图上都表示为坐标为(X\_i, Y\_i)的点(0 <= X\_i <= 1,000,000；0 <= Y\_i <= 1,000,000)，两个农场间道路的长度自然就是代表它们的点之间的距离。现在Farmer John也告诉了你农场间原有的M(1 <= M <= 1,000)条路分别连接了哪两个农场，他希望你计算一下，为了使得所有农场连通，他所需建造道路的最小总长是多少。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and M
+\* Lines 2..N+1: Two space-separated integers: Xi and Yi
+\* Lines N+2..N+M+2: Two space-separated integers: i and j, indicating that there is already a road connecting the farm i and farm j.
++ 第1行: 2个用空格隔开的整数：N 和 M
++ 第2..N+1行: 第i+1行为2个用空格隔开的整数：X\_i、Y\_i
++ 第N+2..N+M+2行: 每行用2个以空格隔开的整数i、j描述了一条已有的道路， 这条道路连接了农场i和农场j
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: Smallest length of additional roads required to connect all farms, printed without rounding to two decimal places. Be sure to calculate distances as 64-bit floating point numbers.
+输出使所有农场连通所需建设道路的最小总长，保留2位小数，不必做 任何额外的取整操作。为了避免精度误差，计算农场间距离及答案时 请使用64位实型变量
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 1
+1 1
+3 1
+2 3
+4 3
+1 4</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4.00</code></pre>
+<h2>说明</h2>
+<div>题目简述：给出n个点的坐标,其中一些点已经连通,现在要把所有点连通,求修路的最小长度.
+感谢@睿屿青衫丶 提供翻译
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

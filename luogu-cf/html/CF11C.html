@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>How Many Squares? - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573389921:YEZ9JcGVjh/11epqDnZZLMvQ6RkiSx3gcf9gcx47Qho=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%200-1%20rectangular%20matrix.%20What%20is%20the%20number%20of%20squares%20in%20it%3F%20A%20square%20is%20a%20solid%20square%20frame%20%28border%29%20with%20linewidth%20equal%20to%201.%20A%20square%20should%20be%20at%20least%20%24%202%5Cu00d72%20%24%20.%20We%20are%20only%20interested%20in%20two%20types%20of%20squares%3A%5Cn%5Cn1.%20squares%20with%20each%20side%20parallel%20to%20a%20side%20of%20the%20matrix%3B%5Cn2.%20squares%20with%20each%20side%20parallel%20to%20a%20diagonal%20of%20the%20matrix.%5Cn%5CnFor%20example%20the%20following%20matrix%20contains%20only%20one%20square%20of%20the%20first%20type%3A%20%5Cn%5Cn%60%60%60%5Cn0000000%5Cn0111100%20%5Cn0100100%5Cn0100100%20%5Cn0111100%5Cn%60%60%60%5Cn%5CnThe%20following%20matrix%20contains%20only%20one%20square%20of%20the%20second%20type%3A%5Cn%5Cn%60%60%60%5Cn0000000%5Cn0010000%5Cn0101000%5Cn0010000%5Cn0000000%5Cn%60%60%60%5Cn%5CnRegardless%20of%20type%2C%20a%20square%20must%20contain%20at%20least%20one%201%20and%20can%27t%20touch%20%28by%20side%20or%20corner%29%20any%20foreign%201.%20Of%20course%2C%20the%20lengths%20of%20the%20sides%20of%20each%20square%20should%20be%20equal.%5Cn%5CnHow%20many%20squares%20are%20in%20the%20given%20matrix%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20t%20%24%20%28%20%24%201%3C%3Dt%3C%3D10000%20%24%20%29%2C%20where%20%24%20t%20%24%20is%20the%20number%20of%20test%20cases%20in%20the%20input.%20Then%20test%20cases%20follow.%20Each%20case%20starts%20with%20a%20line%20containing%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%3C%3Dn%2Cm%3C%3D250%20%24%20%29%2C%20where%20%24%20n%20%24%20is%20the%20number%20of%20rows%20and%20%24%20m%20%24%20is%20the%20number%20of%20columns.%20The%20following%20%24%20n%20%24%20lines%20contain%20%24%20m%20%24%20characters%20each%20%280%20or%201%29.%5Cn%5CnThe%20total%20number%20of%20characters%20in%20all%20test%20cases%20doesn%27t%20exceed%20%24%2010%5E%7B6%7D%20%24%20for%20any%20input%20file.%22%2C%22outputFormat%22%3A%22You%20should%20output%20exactly%20%24%20t%20%24%20lines%2C%20with%20the%20answer%20to%20the%20%24%20i%20%24%20-th%20test%20case%20on%20the%20%24%20i%20%24%20-th%20line.%22%2C%22samples%22%3A%5B%5B%222%5Cn8%208%5Cn00010001%5Cn00101000%5Cn01000100%5Cn10000010%5Cn01000100%5Cn00101000%5Cn11010011%5Cn11000011%5Cn10%2010%5Cn1111111000%5Cn1000001000%5Cn1011001000%5Cn1011001010%5Cn1000001101%5Cn1001001010%5Cn1010101000%5Cn1001001000%5Cn1000001000%5Cn1111111000%5Cn%22%2C%221%5Cn2%5Cn%22%5D%2C%5B%221%5Cn12%2011%5Cn11111111111%5Cn10000000001%5Cn10111111101%5Cn10100000101%5Cn10101100101%5Cn10101100101%5Cn10100000101%5Cn10100000101%5Cn10111111101%5Cn10000000001%5Cn11111111111%5Cn00000000000%5Cn%22%2C%223%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B64000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F11%5C%2FC%22%2C%22id%22%3A%2211C%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu4f60%5Cu6709%5Cu4e00%5Cu4e2a01%5Cu77e9%5Cu9635%5Cu3002%5Cu91cc%5Cu9762%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu6b63%5Cu65b9%5Cu5f62%5Cuff1f%5Cu5176%5Cu4e2d%5Cu6b63%5Cu65b9%5Cu5f62%5Cu7684%5Cu8fb9%5Cu75281%5Cu8868%5Cu793a%5Cu3002%5Cu6211%5Cu4eec%5Cu73b0%5Cu5728%5Cu53ea%5Cu5bf9%5Cu8fd9%5Cu4e9b%5Cu6b63%5Cu65b9%5Cu5f62%5Cu611f%5Cu5174%5Cu8da3%5Cuff1a%5Cn%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu79cd%5Cuff1a%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu4e0e%5Cu77e9%5Cu9635%5Cu7684%5Cu8fb9%5Cu5e73%5Cu884c%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cuff1b%5Cn%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu79cd%5Cuff1a%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu4e0e%5Cu77e9%5Cu9635%5Cu7684%5Cu5bf9%5Cu89d2%5Cu7ebf%5Cu5e73%5Cu884c%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu3002%5Cn%5Cn%5Cn%5Cu4f8b%5Cu5982%5Cu4e0b%5Cu9762%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu6709%5Cu4e14%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu65b9%5Cu5f62%5Cuff08%5Cu7b2c%5Cu4e00%5Cu79cd%5Cuff09%3A%5Cn%5Cn%60%60%60cpp%5Cn0000000%5Cn0111100%20%5Cn0100100%5Cn0100100%20%5Cn0111100%5Cn%60%60%60%5Cn%5Cu4e0b%5Cu9762%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu6709%5Cu4e14%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu65b9%5Cu5f62%5Cuff08%5Cu7b2c%5Cu4e8c%5Cu79cd%5Cuff09%3A%5Cn%5Cn%60%60%60cpp%5Cn0000000%5Cn0010000%5Cn0101000%5Cn0010000%5Cn0000000%5Cn%60%60%60%5Cn%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu65b9%5Cu5f62%5Cu5fc5%5Cu987b%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a0%5Cu800c%5Cu4e14%5Cu8fb9%5Cu548c%5Cu89d2%5Cu4e0d%5Cu80fd%5Cu63a5%5Cu89e6%5Cu522b%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu3002%5Cu5f53%5Cu7136%5Cuff0c%5Cu8fd9%5Cu662f%5Cu4e00%5Cu4e2a%2A%2A%5Cu6b63%5Cu65b9%5Cu5f62%2A%2A%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu7684%5Cu957f%5Cu5ea6%5Cu5e94%5Cu8be5%5Cu76f8%5Cu7b49%5Cu3002%5Cn%5Cn%5Cn%5Cu77e9%5Cu9635%5Cu91cc%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu6b63%5Cu65b9%5Cu5f62%5Cuff1f%5Cn%5Cn%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cn%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570t%281%3C%3Dt%3C%3D10000%29%5Cuff0c%5Cu8868%5Cu793a%5Cu8fd9%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7684%5Cu7ec4%5Cu6570%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu662f%5Cu6bcf%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu3002%5Cu6bcf%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%5Cu548cm%20%282%3C%3Dn%2Cm%3C%3D250%29%5Cuff0cn%5Cu662f%5Cu884c%5Cu6570m%5Cu662f%5Cu5217%5Cu6570%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765n%5Cu884c%5Cu6bcf%5Cu884cm%20%5Cu4e2a%5Cu5b57%5Cu7b26%280%5Cu62161%29%5Cu3002%5Cn%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu5b57%5Cu7b26%5Cu603b%5Cu6570%5Cu4e0d%5Cu8d85%5Cu8fc7%2410%5E%7B6%7D%24%5Cu3002%5Cn%5Cn%5Cn%5Cu5bf9%5Cu4efb%5Cu4f55%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu90fd%5Cu9002%5Cu7528%5Cu3002%5Cn%5Cn%5Cn%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu6b63%5Cu597dt%5Cu884c%5Cuff0c%5Cu5bf9%5Cu5e94%5Cu6bcf%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7684%5Cu7b54%5Cu6848%5Cu3002%5Cn%5Cn%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cn%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%231%5Cuff1a%5Cn%5Cn%60%60%60cpp%5Cn2%5Cn8%208%5Cn00010001%5Cn00101000%5Cn01000100%5Cn10000010%5Cn01000100%5Cn00101000%5Cn11010011%5Cn11000011%5Cn10%2010%5Cn1111111000%5Cn1000001000%5Cn1011001000%5Cn1011001010%5Cn1000001101%5Cn1001001010%5Cn1010101000%5Cn1001001000%5Cn1000001000%5Cn1111111000%5Cn%60%60%60%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%231%5Cuff1a%5Cn%5Cn%60%60%60cpp%5Cn1%5Cn2%5Cn%60%60%60%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%232%5Cuff1a%5Cn%5Cn%60%60%60cpp%5Cn1%5Cn12%2011%5Cn11111111111%5Cn10000000001%5Cn10111111101%5Cn10100000101%5Cn10101100101%5Cn10101100101%5Cn10100000101%5Cn10100000101%5Cn10111111101%5Cn10000000001%5Cn11111111111%5Cn00000000000%5Cn%60%60%60%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%232%5Cuff1a%5Cn%5Cn%60%60%60cpp%5Cn3%5Cn%60%60%60%5Cn%5Cu611f%5Cu8c22%40rose_%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A13%2C%22totalAccepted%22%3A9%2C%22pid%22%3A%22CF11C%22%2C%22title%22%3A%22How%20Many%20Squares%3F%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32254%2C%22title%22%3A%22%5Cu3010%5Cu7ffb%5Cu8bd1%5Cu3011%22%2C%22forum%22%3A%7B%22id%22%3A12663%2C%22name%22%3A%22CF11C%20How%20Many%20Squares%3F%22%2C%22slug%22%3A%22CF11C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22How%20Many%20Squares%3F%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>How Many Squares?</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+你有一个01矩阵。里面有多少个正方形？其中正方形的边用1表示。我们现在只对这些正方形感兴趣：
+第一种：每条边与矩阵的边平行的正方形；
+第二种：每条边与矩阵的对角线平行的正方形。
+例如下面的正方形有且只有一个正方形（第一种）:
+```cpp
+0000000
+0111100
+0100100
+0100100
+0111100
+```
+下面的正方形有且只有一个正方形（第二种）:
+```cpp
+0000000
+0010000
+0101000
+0010000
+0000000
+```
+一个正方形必须包含一个0而且边和角不能接触别的正方形。当然，这是一个**正方形**，每条边的长度应该相等。
+矩阵里有多少个正方形？
+# 输入输出格式
+# 输入格式：
+第一行是一个整数t(1<=t<=10000)，表示这个测试点测试数据的组数。接下来是每组测试数据。每组测试数据的第一行有两个整数n和m (2<=n,m<=250)，n是行数m是列数。接下来n行每行m 个字符(0或1)。
+每组测试数据字符总数不超过$10^{6}$。
+对任何测试点都适用。
+# 输出格式：
+输出正好t行，对应每组测试数据的答案。
+# 输入输出样例
+## 输入样例#1：
+```cpp
+2
+8 8
+00010001
+00101000
+01000100
+10000010
+01000100
+00101000
+11010011
+11000011
+10 10
+1111111000
+1000001000
+1011001000
+1011001010
+1000001101
+1001001010
+1010101000
+1001001000
+1000001000
+1111111000
+```
+## 输出样例#1：
+```cpp
+1
+2
+```
+## 输入样例#2：
+```cpp
+1
+12 11
+11111111111
+10000000001
+10111111101
+10100000101
+10101100101
+10101100101
+10100000101
+10100000101
+10111111101
+10000000001
+11111111111
+00000000000
+```
+## 输出样例#2：
+```cpp
+3
+```
+感谢@rose_ 提供的翻译
+</div>
+<h2>题目描述</h2>
+<div>You are given a 0-1 rectangular matrix. What is the number of squares in it? A square is a solid square frame (border) with linewidth equal to 1. A square should be at least $ 2×2 $ . We are only interested in two types of squares:
+1. squares with each side parallel to a side of the matrix;
+2. squares with each side parallel to a diagonal of the matrix.
+For example the following matrix contains only one square of the first type:
+```
+0000000
+0111100
+0100100
+0100100
+0111100
+```
+The following matrix contains only one square of the second type:
+```
+0000000
+0010000
+0101000
+0010000
+0000000
+```
+Regardless of type, a square must contain at least one 1 and can't touch (by side or corner) any foreign 1. Of course, the lengths of the sides of each square should be equal.
+How many squares are in the given matrix?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ t $ ( $ 1<=t<=10000 $ ), where $ t $ is the number of test cases in the input. Then test cases follow. Each case starts with a line containing integers $ n $ and $ m $ ( $ 2<=n,m<=250 $ ), where $ n $ is the number of rows and $ m $ is the number of columns. The following $ n $ lines contain $ m $ characters each (0 or 1).
+The total number of characters in all test cases doesn't exceed $ 10^{6} $ for any input file.</div>
+<h3>输出格式</h3>
+<br />
+<div>You should output exactly $ t $ lines, with the answer to the $ i $ -th test case on the $ i $ -th line.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+8 8
+00010001
+00101000
+01000100
+10000010
+01000100
+00101000
+11010011
+11000011
+10 10
+1111111000
+1000001000
+1011001000
+1011001010
+1000001101
+1001001010
+1010101000
+1001001000
+1000001000
+1111111000
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1
+12 11
+11111111111
+10000000001
+10111111101
+10100000101
+10101100101
+10101100101
+10100000101
+10100000101
+10111111101
+10000000001
+11111111111
+00000000000
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

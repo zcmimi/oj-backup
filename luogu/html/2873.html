@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO07DEC]泥水坑Mud Puddles - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376081:Oya3Zrm16Ncafm0x655oZ/oRGqlSYlIlUZ0Gt9tlvZU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20leaving%20his%20house%20promptly%20at%206%20AM%20for%20his%20daily%20milking%20of%20Bessie.%20However%2C%20the%20previous%20evening%20saw%20a%20heavy%20rain%2C%20and%20the%20fields%20are%20quite%20muddy.%20FJ%20starts%20at%20the%20point%20%280%2C%200%29%20in%20the%20coordinate%20plane%20and%20heads%20toward%20Bessie%20who%20is%20located%20at%20%28X%2C%20Y%29%20%28-500%20%5Cu2264%20X%20%5Cu2264%20500%3B%20-500%20%5Cu2264%20Y%20%5Cu2264%20500%29.%20He%20can%20see%20all%20N%20%281%20%5Cu2264%20N%20%5Cu2264%2010%2C000%29%20puddles%20of%20mud%2C%20located%20at%20points%20%28Ai%2C%20Bi%29%20%28-500%20%5Cu2264%20Ai%20%5Cu2264%20500%3B%20-500%20%5Cu2264%20Bi%20%5Cu2264%20500%29%20on%20the%20field.%20Each%20puddle%20occupies%20only%20the%20point%20it%20is%20on.%5Cn%5CnHaving%20just%20bought%20new%20boots%2C%20Farmer%20John%20absolutely%20does%20not%20want%20to%20dirty%20them%20by%20stepping%20in%20a%20puddle%2C%20but%20he%20also%20wants%20to%20get%20to%20Bessie%20as%20quickly%20as%20possible.%20He%27s%20already%20late%20because%20he%20had%20to%20count%20all%20the%20puddles.%20If%20Farmer%20John%20can%20only%20travel%20parallel%20to%20the%20axes%20and%20turn%20at%20points%20with%20integer%20coordinates%2C%20what%20is%20the%20shortest%20distance%20he%20must%20travel%20to%20reach%20Bessie%20and%20keep%20his%20boots%20clean%3F%20There%20will%20always%20be%20a%20path%20without%20mud%20that%20Farmer%20John%20can%20take%20to%20reach%20Bessie.%5Cn%5Cn%5Cu6e05%5Cu65e96%5Cuff1a00%5Cuff0cFarmer%20John%5Cu5c31%5Cu79bb%5Cu5f00%5Cu4e86%5Cu4ed6%5Cu7684%5Cu5c4b%5Cu5b50%5Cuff0c%5Cu5f00%5Cu59cb%5Cu4e86%5Cu4ed6%5Cu7684%5Cu4f8b%5Cu884c%5Cu5de5%5Cu4f5c%5Cuff1a%5Cu4e3a%5Cu8d1d%5Cu831c%5Cu6324%5Cu5976%5Cu3002%5Cu524d%5Cu4e00%5Cu5929%5Cu665a%5Cu4e0a%5Cuff0c%5Cu6574%5Cu4e2a%5Cu519c%5Cu573a%5Cu521a%5Cu7ecf%5Cu53d7%5Cu8fc7%5Cu4e00%5Cu573a%5Cu74e2%5Cu6cfc%5Cu5927%5Cu96e8%5Cu7684%5Cu6d17%5Cu793c%5Cuff0c%5Cu4e8e%5Cu662f%5Cu4e0d%5Cu96be%5Cu60f3%5Cu89c1%5Cuff0cFJ%20%5Cu73b0%5Cu5728%5Cu9762%5Cu5bf9%5Cu7684%5Cu662f%5Cu4e00%5Cu5927%5Cu7247%5Cu6ce5%5Cu6cde%5Cu7684%5Cu571f%5Cu5730%5Cu3002FJ%5Cu7684%5Cu5c4b%5Cu5b50%5Cu5728%5Cu5e73%5Cu9762%5Cu5750%5Cu6807%280%2C%200%29%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu8d1d%5Cu831c%5Cu6240%5Cu5728%5Cu7684%5Cu725b%5Cu68da%5Cu5219%5Cu4f4d%5Cu4e8e%5Cu5750%5Cu6807%28X%2CY%29%20%28-500%20%3C%3D%20X%20%3C%3D%20500%3B%20-500%20%3C%3D%20Y%20%3C%3D%20500%29%5Cu5904%5Cu3002%5Cu5f53%5Cu7136%5Cu54af%5Cuff0c%20FJ%5Cu4e5f%5Cu770b%5Cu5230%5Cu4e86%5Cu5730%5Cu4e0a%5Cu7684%5Cu6240%5Cu6709N%281%20%3C%3D%20N%20%3C%3D%2010%2C000%29%5Cu4e2a%5Cu6ce5%5Cu5858%5Cuff0c%5Cu7b2ci%5Cu4e2a%5Cu6ce5%5Cu5858%5Cu7684%5Cu5750%5Cu6807%5Cu4e3a%20%28A%5C%5C_i%2C%20B%5C%5C_i%29%20%28-500%20%3C%3D%20A%5C%5C_i%20%3C%3D%20500%5Cuff1b-500%20%3C%3D%20B%5C%5C_i%20%3C%3D%20500%29%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu6ce5%5Cu5858%5Cu90fd%5Cu53ea%5Cu5360%5Cu636e%5Cu4e86%5Cu5b83%5Cu6240%5Cu5728%5Cu7684%5Cu90a3%5Cu4e2a%5Cu683c%5Cu5b50%5Cu3002%20Farmer%20John%5Cu81ea%5Cu7136%5Cu4e0d%5Cu613f%5Cu610f%5Cu5f04%5Cu810f%5Cu4ed6%5Cu65b0%5Cu4e70%5Cu7684%5Cu9774%5Cu5b50%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu540c%5Cu65f6%5Cu60f3%5Cu5c3d%5Cu5feb%5Cu5230%5Cu8fbe%5Cu8d1d%5Cu831c%5Cu6240%5Cu5728%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu3002%5Cu4e3a%5Cu4e86%5Cu6570%5Cu90a3%5Cu4e9b%5Cu8ba8%5Cu538c%5Cu7684%5Cu6ce5%5Cu5858%5Cuff0c%5Cu4ed6%5Cu5df2%5Cu7ecf%5Cu803d%5Cu6401%5Cu4e86%5Cu4e00%5Cu4e9b%5Cu65f6%5Cu95f4%5Cu4e86%5Cu3002%5Cu5982%5Cu679cFarmer%20John%20%5Cu53ea%5Cu80fd%5Cu5e73%5Cu884c%5Cu4e8e%5Cu5750%5Cu6807%5Cu8f74%5Cu79fb%5Cu52a8%5Cuff0c%5Cu5e76%5Cu4e14%5Cu53ea%5Cu5728x%5Cu3001y%5Cu5747%5Cu4e3a%5Cu6574%5Cu6570%5Cu7684%5Cu5750%5Cu6807%5Cu5904%5Cu8f6c%5Cu5f2f%5Cuff0c%5Cu90a3%5Cu4e48%5Cu4ed6%5Cu4ece%5Cu5c4b%5Cu5b50%5Cu95e8%5Cu53e3%5Cu51fa%5Cu53d1%5Cuff0c%5Cu6700%5Cu5c11%5Cu8981%5Cu8d70%5Cu591a%5Cu5c11%5Cu8def%5Cu624d%5Cu80fd%5Cu5230%5Cu8d1d%5Cu831c%5Cu6240%5Cu5728%5Cu7684%5Cu725b%5Cu68da%5Cu5462%5Cuff1f%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu8ba4%5Cu4e3a%5Cu4eceFJ%5Cu7684%5Cu5c4b%5Cu5b50%5Cu5230%5Cu725b%5Cu68da%5Cu603b%5Cu662f%5Cu5b58%5Cu5728%5Cu81f3%5Cu5c11%5Cu4e00%5Cu6761%5Cu4e0d%5Cu7ecf%5Cu8fc7%5Cu4efb%5Cu4f55%5Cu6ce5%5Cu5858%5Cu7684%5Cu8def%5Cu5f84%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Three%20space-separate%20integers%3A%20X%2C%20Y%2C%20and%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20two%20space-separated%20integers%3A%20Ai%20and%20Bi%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20minimum%20distance%20that%20Farmer%20John%20has%20to%20travel%20to%20reach%20Bessie%20without%20stepping%20in%20mud.%5Cn%22%2C%22samples%22%3A%5B%5B%221%202%207%5Cr%5Cn0%202%5Cr%5Cn-1%203%5Cr%5Cn3%201%5Cr%5Cn1%201%5Cr%5Cn4%202%5Cr%5Cn-1%201%5Cr%5Cn2%202%22%2C%2211%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B24%2C46%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A728%2C%22totalAccepted%22%3A384%2C%22pid%22%3A%22P2873%22%2C%22title%22%3A%22%5BUSACO07DEC%5D%5Cu6ce5%5Cu6c34%5Cu5751Mud%20Puddles%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A110534%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu4f6c%5Cu67e5%5Cu9519%5Cuff0c%5Cu5168%5Cu90e8RE%22%2C%22forum%22%3A%7B%22id%22%3A2003%2C%22name%22%3A%22P2873%20%5BUSACO07DEC%5D%5Cu6ce5%5Cu6c34%5Cu5751Mud%20Puddles%22%2C%22slug%22%3A%22P2873%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1204%22%2C%22title%22%3A%22%5BUSACO1.2%5D%5Cu6324%5Cu725b%5Cu5976Milking%20Cows%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2725%22%2C%22title%22%3A%22%5Cu90ae%5Cu7968%20Stamps%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2871%22%2C%22title%22%3A%22%5BUSACO07DEC%5D%5Cu624b%5Cu94feCharm%20Bracelet%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2872%22%2C%22title%22%3A%22%5BUSACO07DEC%5D%5Cu9053%5Cu8def%5Cu5efa%5Cu8bbeBuilding%20Roads%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2884%22%2C%22title%22%3A%22%5BUSACO07MAR%5D%5Cu6bcf%5Cu6708%5Cu7684%5Cu8d39%5Cu7528Monthly%20Expense%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO07DEC%5D%5Cu6ce5%5Cu6c34%5Cu5751Mud%20Puddles%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO07DEC]泥水坑Mud Puddles</h1>
+<h2>题目描述</h2>
+<div>Farmer John is leaving his house promptly at 6 AM for his daily milking of Bessie. However, the previous evening saw a heavy rain, and the fields are quite muddy. FJ starts at the point (0, 0) in the coordinate plane and heads toward Bessie who is located at (X, Y) (-500 ≤ X ≤ 500; -500 ≤ Y ≤ 500). He can see all N (1 ≤ N ≤ 10,000) puddles of mud, located at points (Ai, Bi) (-500 ≤ Ai ≤ 500; -500 ≤ Bi ≤ 500) on the field. Each puddle occupies only the point it is on.
+Having just bought new boots, Farmer John absolutely does not want to dirty them by stepping in a puddle, but he also wants to get to Bessie as quickly as possible. He's already late because he had to count all the puddles. If Farmer John can only travel parallel to the axes and turn at points with integer coordinates, what is the shortest distance he must travel to reach Bessie and keep his boots clean? There will always be a path without mud that Farmer John can take to reach Bessie.
+清早6：00，Farmer John就离开了他的屋子，开始了他的例行工作：为贝茜挤奶。前一天晚上，整个农场刚经受过一场瓢泼大雨的洗礼，于是不难想见，FJ 现在面对的是一大片泥泞的土地。FJ的屋子在平面坐标(0, 0)的位置，贝茜所在的牛棚则位于坐标(X,Y) (-500 <= X <= 500; -500 <= Y <= 500)处。当然咯， FJ也看到了地上的所有N(1 <= N <= 10,000)个泥塘，第i个泥塘的坐标为 (A\_i, B\_i) (-500 <= A\_i <= 500；-500 <= B\_i <= 500)。每个泥塘都只占据了它所在的那个格子。 Farmer John自然不愿意弄脏他新买的靴子，但他同时想尽快到达贝茜所在的位置。为了数那些讨厌的泥塘，他已经耽搁了一些时间了。如果Farmer John 只能平行于坐标轴移动，并且只在x、y均为整数的坐标处转弯，那么他从屋子门口出发，最少要走多少路才能到贝茜所在的牛棚呢？你可以认为从FJ的屋子到牛棚总是存在至少一条不经过任何泥塘的路径。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Three space-separate integers: X, Y, and N.
+\* Lines 2..N+1: Line i+1 contains two space-separated integers: Ai and Bi
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The minimum distance that Farmer John has to travel to reach Bessie without stepping in mud.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 2 7
+0 2
+-1 3
+3 1
+1 1
+4 2
+-1 1
+2 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>11</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO4.1]篱笆回路Fence Loops - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573375898:QOKEttrOz0nFlbocz94XMeohUEqkuCyzqkxTsAeZF94=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu519c%5Cu592b%5Cu5e03%5Cu6717%5Cu7684%5Cu7267%5Cu573a%5Cu4e0a%5Cu7684%5Cu7bf1%5Cu7b06%5Cu5df2%5Cu7ecf%5Cu5931%5Cu53bb%5Cu63a7%5Cu5236%5Cu4e86%5Cu3002%5Cu5b83%5Cu4eec%5Cu5206%5Cu6210%5Cu4e861~200%5Cu82f1%5Cu5c3a%5Cu957f%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu3002%5Cu53ea%5Cu6709%5Cu5728%5Cu7ebf%5Cu6bb5%5Cu7684%5Cu7aef%5Cu70b9%5Cu5904%5Cu624d%5Cu80fd%5Cu8fde%5Cu63a5%5Cu4e24%5Cu4e2a%5Cu7ebf%5Cu6bb5%5Cuff0c%5Cu6709%5Cu65f6%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu4e00%5Cu4e2a%5Cu7aef%5Cu70b9%5Cu4e0a%5Cu4f1a%5Cu6709%5Cu4e24%5Cu4e2a%5Cu4ee5%5Cu4e0a%5Cu7684%5Cu7bf1%5Cu7b06%5Cu3002%5Cu7ed3%5Cu679c%5Cu7bf1%5Cu7b06%5Cu5f62%5Cu6210%5Cu4e86%5Cu4e00%5Cu5f20%5Cu7f51%5Cu5206%5Cu5272%5Cu4e86%5Cu5e03%5Cu6717%5Cu7684%5Cu7267%5Cu573a%5Cu3002%5Cu5e03%5Cu6717%5Cu60f3%5Cu5c06%5Cu7267%5Cu573a%5Cu6062%5Cu590d%5Cu539f%5Cu6837%5Cuff0c%5Cu51fa%5Cu4e8e%5Cu8fd9%5Cu4e2a%5Cu8003%5Cu8651%5Cuff0c%5Cu4ed6%5Cu9996%5Cu5148%5Cu5f97%5Cu77e5%5Cu9053%5Cu7267%5Cu573a%5Cu4e0a%5Cu54ea%5Cu4e00%5Cu5757%5Cu533a%5Cu57df%5Cu7684%5Cu5468%5Cu957f%5Cu6700%5Cu5c0f%5Cu3002%20%5Cu5e03%5Cu6717%5Cu5c06%5Cu4ed6%5Cu7684%5Cu6bcf%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu4ece1%5Cu5230N%5Cu8fdb%5Cu884c%5Cu4e86%5Cu6807%5Cu53f7%5Cuff08N%3D%5Cu7ebf%5Cu6bb5%5Cu7684%5Cu603b%5Cu6570%5Cuff09%5Cu3002%5Cu4ed6%5Cu77e5%5Cu9053%5Cu6bcf%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu6709%5Cu5982%5Cu4e0b%5Cu5c5e%5Cu6027%5Cuff1a%5Cn%5Cn%5Cu8be5%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu957f%5Cu5ea6%5Cn%5Cn%5Cu8be5%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu4e00%5Cu7aef%5Cu6240%5Cu8fde%5Cu63a5%5Cu7684%5Cu53e6%5Cu4e00%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu6807%5Cu53f7%5Cn%5Cn%5Cu8be5%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu53e6%5Cu4e00%5Cu7aef%5Cu6240%5Cu8fde%5Cu63a5%5Cu7684%5Cu53e6%5Cu4e00%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu6807%5Cu53f7%5Cn%5Cn%5Cu5e78%5Cu8fd0%5Cu7684%5Cu662f%5Cuff0c%5Cu6ca1%5Cu6709%5Cu7bf1%5Cu7b06%5Cu8fde%5Cu63a5%5Cu5b83%5Cu81ea%5Cu8eab%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu7ec4%5Cu6709%5Cu5173%5Cu7bf1%5Cu7b06%5Cu5982%5Cu4f55%5Cu5206%5Cu5272%5Cu7267%5Cu573a%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu6765%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu6240%5Cu6709%5Cu5206%5Cu5272%5Cu51fa%5Cu7684%5Cu533a%5Cu57df%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%5Cu5468%5Cu957f%5Cu3002%5Cn%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu6807%5Cu53f71~10%5Cu7684%5Cu7bf1%5Cu7b06%5Cu7531%5Cu4e0b%5Cu56fe%5Cu7684%5Cu5f62%5Cu5f0f%5Cu7ec4%5Cu6210%5Cuff08%5Cu4e0b%5Cu9762%5Cu7684%5Cu6570%5Cu5b57%5Cu662f%5Cu7bf1%5Cu7b06%5Cu7684%5Cu6807%5Cu53f7%5Cuff09%5Cuff1a%5Cn%5Cn%60%60%60cpp%5Cn%20%20%20%20%20%20%20%20%20%20%201%5Cn%20%20%20%2B---------------%2B%5Cn%20%20%20%7C%5C%5C%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%2F%7C%5Cn%20%202%7C%20%5C%5C7%20%20%20%20%20%20%20%20%20%20%5C%2F%20%7C%5Cn%20%20%20%7C%20%20%5C%5C%20%20%20%20%20%20%20%20%20%5C%2F%20%20%7C%5Cn%20%20%20%2B---%2B%20%20%20%20%20%20%20%5C%2F%20%20%20%7C6%5Cn%20%20%20%7C%208%20%20%5C%5C%20%20%20%20%20%5C%2F10%20%20%7C%5Cn%20%203%7C%20%20%20%20%20%5C%5C9%20%20%5C%2F%20%20%20%20%20%7C%5Cn%20%20%20%7C%20%20%20%20%20%20%5C%5C%20%5C%2F%20%20%20%20%20%20%7C%5Cn%20%20%20%2B-------%2B-------%2B%5Cn%20%20%20%20%20%20%204%20%20%20%20%20%20%205%5Cn%60%60%60%20%20%20%20%5Cn%5Cu4e0a%5Cu56fe%5Cu4e2d%5Cu5468%5Cu957f%5Cu6700%5Cu5c0f%5Cu7684%5Cu533a%5Cu57df%5Cu662f%5Cu75312%5Cuff0c7%5Cuff0c8%5Cu53f7%5Cu7bf1%5Cu7b06%5Cu5f62%5Cu6210%5Cu7684%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c1%5Cu884c%3A%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%29%5Cn%5Cn%5Cu7b2c2%5Cu884c%5Cu5230%5Cu7b2c3%5C%5C%2AN%2B1%5Cu884c%3A%20%5Cu6bcf%5Cu4e09%5Cu884c%5Cu4e3a%5Cu4e00%5Cu7ec4%5Cuff0c%5Cu5171N%5Cu7ec4%5Cu4fe1%5Cu606f%3A%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu4fe1%5Cu606f%5Cu7684%5Cu7b2c1%5Cu884c%5Cu67094%5Cu4e2a%5Cu6574%5Cu6570%3A%20s%2C%20%5Cu8fd9%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu6807%5Cu53f7%281%20%3C%3D%20s%20%3C%3D%20N%29%3B%20Ls%2C%20%5Cu8fd9%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu957f%5Cu5ea6%20%281%20%3C%3D%20Ls%20%3C%3D%20255%29%3B%20N1s%20%281%20%3C%3D%20N1s%20%3C%3D%208%29%20%5Cu4e0e%5Cu672c%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu4e00%5Cu7aef%20%5Cu6240%5Cu76f8%5Cu90bb%5Cu7684%5Cu7bf1%5Cu7b06%5Cu7684%5Cu6570%5Cu91cf%3B%20N2s%5Cu4e0e%5Cu672c%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu53e6%5Cu4e00%5Cu7aef%5Cu6240%5Cu76f8%5Cu90bb%5Cu7684%5Cu7bf1%5Cu7b06%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%20%281%20%3C%3D%20N2s%20%3C%3D%208%29.%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu4fe1%5Cu606f%5Cu7684%5Cu7684%5Cu7b2c2%5Cu884c%5Cu6709%20N1s%5Cu4e2a%5Cu6574%5Cu6570%2C%20%5Cu5206%5Cu522b%5Cu63cf%5Cu8ff0%5Cu4e0e%5Cu672c%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu4e00%5Cu7aef%5Cu6240%5Cu76f8%5Cu90bb%5Cu7684%5Cu7bf1%5Cu7b06%5Cu7684%5Cu6807%5Cu53f7%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu4fe1%5Cu606f%5Cu7684%5Cu7684%5Cu7b2c3%5Cu884c%5Cu6709N2s%5Cu4e2a%5Cu6574%5Cu6570%2C%20%5Cu5206%5Cu522b%5Cu63cf%5Cu8ff0%5Cu4e0e%5Cu672c%5Cu6bb5%5Cu7bf1%5Cu7b06%5Cu7684%5Cu53e6%5Cu4e00%5Cu7aef%5Cu6240%5Cu76f8%5Cu90bb%5Cu7684%5Cu7bf1%5Cu7b06%5Cu7684%5Cu6807%5Cu53f7%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu7684%5Cu5185%5Cu5bb9%5Cu4e3a%5Cu5355%5Cu72ec%5Cu7684%5Cu4e00%5Cu884c%5Cuff0c%5Cu7528%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu6765%5Cu8868%5Cu793a%5Cu6700%5Cu5c0f%5Cu7684%5Cu5468%5Cu957f%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%2210%5Cn1%2016%202%202%5Cn2%207%5Cn10%206%5Cn2%203%202%202%5Cn1%207%5Cn8%203%5Cn3%203%202%201%5Cn8%202%5Cn4%5Cn4%208%201%203%5Cn3%5Cn9%2010%205%5Cn5%208%203%201%5Cn9%2010%204%5Cn6%5Cn6%206%201%202%20%5Cn5%20%5Cn1%2010%5Cn7%205%202%202%20%5Cn1%202%5Cn8%209%5Cn8%204%202%202%5Cn2%203%5Cn7%209%5Cn9%205%202%203%5Cn7%208%5Cn4%205%2010%5Cn10%2010%202%203%5Cn1%206%5Cn4%209%205%22%2C%2212%22%5D%5D%2C%22hint%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5Cu6765%5Cu81eaNOCOW%5Cu3002%5Cn%5CnUSACO%20Training%20Section%204.1%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B4%2C6%2C46%2C148%2C288%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1062%2C%22totalAccepted%22%3A523%2C%22pid%22%3A%22P2738%22%2C%22title%22%3A%22%5BUSACO4.1%5D%5Cu7bf1%5Cu7b06%5Cu56de%5Cu8defFence%20Loops%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A148357%2C%22title%22%3A%22...%22%2C%22forum%22%3A%7B%22id%22%3A1841%2C%22name%22%3A%22P2738%20%5BUSACO4.1%5D%5Cu7bf1%5Cu7b06%5Cu56de%5Cu8defFence%20Loops%22%2C%22slug%22%3A%22P2738%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1894%22%2C%22title%22%3A%22%5BUSACO4.2%5D%5Cu5b8c%5Cu7f8e%5Cu7684%5Cu725b%5Cu680fThe%20Perfect%20Stall%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2687%22%2C%22title%22%3A%22%5BUSACO4.3%5D%5Cu9022%5Cu4f4e%5Cu5438%5Cu7eb3Buy%20Low%2C%20Buy%20Lower%20%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2740%22%2C%22title%22%3A%22%5BUSACO4.2%5D%5Cu8349%5Cu5730%5Cu6392%5Cu6c34Drainage%20Ditches%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2751%22%2C%22title%22%3A%22%5BUSACO4.2%5D%5Cu5de5%5Cu5e8f%5Cu5b89%5Cu6392Job%20Processing%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2752%22%2C%22title%22%3A%22%5BUSACO4.3%5D%5Cu8857%5Cu9053%5Cu8d5b%5Cu8dd1Street%20Race%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO4.1%5D%5Cu7bf1%5Cu7b06%5Cu56de%5Cu8defFence%20Loops%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO4.1]篱笆回路Fence Loops</h1>
+<h2>题目描述</h2>
+<div>农夫布朗的牧场上的篱笆已经失去控制了。它们分成了1~200英尺长的线段。只有在线段的端点处才能连接两个线段，有时给定的一个端点上会有两个以上的篱笆。结果篱笆形成了一张网分割了布朗的牧场。布朗想将牧场恢复原样，出于这个考虑，他首先得知道牧场上哪一块区域的周长最小。 布朗将他的每段篱笆从1到N进行了标号（N=线段的总数）。他知道每段篱笆有如下属性：
+该段篱笆的长度
+该段篱笆的一端所连接的另一段篱笆的标号
+该段篱笆的另一端所连接的另一段篱笆的标号
+幸运的是，没有篱笆连接它自身。对于一组有关篱笆如何分割牧场的数据，写一个程序来计算出所有分割出的区域中最小的周长。
+例如，标号1~10的篱笆由下图的形式组成（下面的数字是篱笆的标号）：
+```cpp
+1
++---------------+
+|\ /|
+2| \7 / |
+| \ / |
++---+ / |6
+| 8 \ /10 |
+3| \9 / |
+| \ / |
++-------+-------+
+4 5
+```
+上图中周长最小的区域是由2，7，8号篱笆形成的。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第1行: N (1 <= N <= 100)
+第2行到第3\*N+1行: 每三行为一组，共N组信息:
+每组信息的第1行有4个整数: s, 这段篱笆的标号(1 <= s <= N); Ls, 这段篱笆的长度 (1 <= Ls <= 255); N1s (1 <= N1s <= 8) 与本段篱笆的一端 所相邻的篱笆的数量; N2s与本段篱笆的另一端所相邻的篱笆的数量。 (1 <= N2s <= 8).
+每组信息的的第2行有 N1s个整数, 分别描述与本段篱笆的一端所相邻的篱笆的标号。
+每组信息的的第3行有N2s个整数, 分别描述与本段篱笆的另一端所相邻的篱笆的标号。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>输出的内容为单独的一行，用一个整数来表示最小的周长。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10
+1 16 2 2
+2 7
+10 6
+2 3 2 2
+1 7
+8 3
+3 3 2 1
+8 2
+4
+4 8 1 3
+3
+9 10 5
+5 8 3 1
+9 10 4
+6
+6 6 1 2 
+5 
+1 10
+7 5 2 2 
+1 2
+8 9
+8 4 2 2
+2 3
+7 9
+9 5 2 3
+7 8
+4 5 10
+10 10 2 3
+1 6
+4 9 5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12</code></pre>
+<h2>说明</h2>
+<div>题目翻译来自NOCOW。
+USACO Training Section 4.1
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

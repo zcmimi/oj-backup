@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[JLOI2009]二叉树问题 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573380796:tc/52OBhCeSoy+CsX2BquWPEYxcd2dFdNWysGUBap8s=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu5982%5Cu4e0b%5Cu56fe%5Cu6240%5Cu793a%5Cu7684%5Cu4e00%5Cu68f5%5Cu4e8c%5Cu53c9%5Cu6811%5Cu7684%5Cu6df1%5Cu5ea6%5Cu3001%5Cu5bbd%5Cu5ea6%5Cu53ca%5Cu7ed3%5Cu70b9%5Cu95f4%5Cu8ddd%5Cu79bb%5Cu5206%5Cu522b%5Cu4e3a%5Cuff1a%5Cn%5Cn%5Cu6df1%5Cu5ea6%5Cuff1a4%20%20%20%20%20%20%20%20%20%5Cu5bbd%5Cu5ea6%5Cuff1a4%5Cuff08%5Cu540c%5Cu4e00%5Cu5c42%5Cu6700%5Cu591a%5Cu7ed3%5Cu70b9%5Cu4e2a%5Cu6570%5Cuff09%5Cn%5Cn%5Cu7ed3%5Cu70b9%5Cu95f4%5Cu8ddd%5Cu79bb%5Cuff1a%20%20%20%20%20%5Cu2467%5Cu2192%5Cu2465%5Cu4e3a8%20%20%283%5Cu00d72%2B2%3D8%29%5Cn%5Cn%5Cu2465%5Cu2192%5Cu2466%5Cu4e3a3%20%5Cuff081%5Cu00d72%2B1%3D3%5Cuff09%5Cn%5Cn%5Cu6ce8%5Cuff1a%5Cu7ed3%5Cu70b9%5Cu95f4%5Cu8ddd%5Cu79bb%5Cu7684%5Cu5b9a%5Cu4e49%5Cuff1a%5Cu7531%5Cu7ed3%5Cu70b9%5Cu5411%5Cu6839%5Cu65b9%5Cu5411%5Cuff08%5Cu4e0a%5Cu884c%5Cu65b9%5Cu5411%5Cuff09%5Cu65f6%5Cu7684%5Cu8fb9%5Cu6570%5Cu00d72%5Cuff0c%5Cn%5Cn%5Cu4e0e%5Cu7531%5Cu6839%5Cu5411%5Cu53f6%5Cu7ed3%5Cu70b9%5Cu65b9%5Cu5411%5Cuff08%5Cu4e0b%5Cu884c%5Cu65b9%5Cu5411%5Cuff09%5Cu65f6%5Cu7684%5Cu8fb9%5Cu6570%5Cu4e4b%5Cu548c%5Cu3002%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F6843.png%29%5Cn%22%2C%22inputFormat%22%3A%22%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%281%5Cu2264n%5Cu2264100%29%5Cuff0c%5Cu8868%5Cu793a%5Cu4e8c%5Cu53c9%5Cu6811%5Cu7ed3%5Cu70b9%5Cu4e2a%5Cu6570%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684n-1%5Cu884c%5Cuff0c%5Cu8868%5Cu793a%5Cu4ece%5Cu7ed3%5Cu70b9x%5Cu5230%5Cu7ed3%5Cu70b9y%5Cuff08%5Cu7ea6%5Cu5b9a%5Cu6839%5Cu7ed3%5Cu70b9%5Cu4e3a1%5Cuff09%5Cuff0c%5Cu6700%5Cu540e%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570u%5Cu3001v%5Cuff0c%5Cu8868%5Cu793a%5Cu6c42%5Cu4ece%5Cu7ed3%5Cu70b9u%5Cu5230%5Cu7ed3%5Cu70b9v%5Cu7684%5Cu8ddd%5Cu79bb%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu4e09%5Cu4e2a%5Cu6570%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu5360%5Cu4e00%5Cu884c%5Cuff0c%5Cu4f9d%5Cu6b21%5Cu8868%5Cu793a%5Cu7ed9%5Cu5b9a%5Cu4e8c%5Cu53c9%5Cu6811%5Cu7684%5Cu6df1%5Cu5ea6%5Cu3001%5Cu5bbd%5Cu5ea6%5Cu53ca%5Cu7ed3%5Cu70b9u%5Cu5230%5Cu7ed3%5Cu70b9v%5Cu95f4%5Cu8ddd%5Cu79bb%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%2210%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cn1%202%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cn1%203%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5Cn2%204%5Cn2%205%5Cn3%206%5Cn3%207%5Cn5%208%5Cn5%209%5Cn6%2010%5Cn8%206%5Cn%22%2C%224%5Cn4%5Cn8%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A35776%2C%22name%22%3A%22Hoshizawa%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B4%2C26%2C48%2C98%2C127%2C209%2C211%2C228%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A3262%2C%22totalAccepted%22%3A1299%2C%22pid%22%3A%22P3884%22%2C%22title%22%3A%22%5BJLOI2009%5D%5Cu4e8c%5Cu53c9%5Cu6811%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A165571%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%20%5Cu9505%5Cu4e86%5Cu7b2c%5Cu56db%5Cu70b9%5Cu548c%5Cu7b2c%5Cu4e94%5Cu70b9%22%2C%22forum%22%3A%7B%22id%22%3A5470%2C%22name%22%3A%22P3884%20%5BJLOI2009%5D%5Cu4e8c%5Cu53c9%5Cu6811%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P3884%22%7D%7D%2C%7B%22id%22%3A158467%2C%22title%22%3A%22%5Cu5927%5Cu4f6c%5Cu6c42%5Cu52a9%5Cuff0c%5Cu53ea%5Cu670980%5Cu5206%22%2C%22forum%22%3A%7B%22id%22%3A5470%2C%22name%22%3A%22P3884%20%5BJLOI2009%5D%5Cu4e8c%5Cu53c9%5Cu6811%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P3884%22%7D%7D%2C%7B%22id%22%3A150326%2C%22title%22%3A%2230%5Cu5206%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A5470%2C%22name%22%3A%22P3884%20%5BJLOI2009%5D%5Cu4e8c%5Cu53c9%5Cu6811%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P3884%22%7D%7D%2C%7B%22id%22%3A135469%2C%22title%22%3A%22%5Cu500d%5Cu589eLCA%5Cuff0cWA%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu70b9%5Cu548c%5Cu7b2c%5Cu516d%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A5470%2C%22name%22%3A%22P3884%20%5BJLOI2009%5D%5Cu4e8c%5Cu53c9%5Cu6811%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P3884%22%7D%7D%2C%7B%22id%22%3A126545%2C%22title%22%3A%22%5Cu6ca1%5Cu6709%5Cu4eba40pts%5Cu5417%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A5470%2C%22name%22%3A%22P3884%20%5BJLOI2009%5D%5Cu4e8c%5Cu53c9%5Cu6811%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P3884%22%7D%7D%2C%7B%22id%22%3A121083%2C%22title%22%3A%2280%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A5470%2C%22name%22%3A%22P3884%20%5BJLOI2009%5D%5Cu4e8c%5Cu53c9%5Cu6811%5Cu95ee%5Cu9898%22%2C%22slug%22%3A%22P3884%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1351%22%2C%22title%22%3A%22%5Cu8054%5Cu5408%5Cu6743%5Cu503c%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2420%22%2C%22title%22%3A%22%5Cu8ba9%5Cu6211%5Cu4eec%5Cu5f02%5Cu6216%5Cu5427%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3379%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu8fd1%5Cu516c%5Cu5171%5Cu7956%5Cu5148%5Cuff08LCA%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2937%22%2C%22title%22%3A%22%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3398%22%2C%22title%22%3A%22%5Cu4ed3%5Cu9f20%5Cu627esugar%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BJLOI2009%5D%5Cu4e8c%5Cu53c9%5Cu6811%5Cu95ee%5Cu9898%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[JLOI2009]二叉树问题</h1>
+<h2>题目描述</h2>
+<div>如下图所示的一棵二叉树的深度、宽度及结点间距离分别为：
+深度：4 宽度：4（同一层最多结点个数）
+结点间距离： ⑧→⑥为8 (3×2+2=8)
+⑥→⑦为3 （1×2+1=3）
+注：结点间距离的定义：由结点向根方向（上行方向）时的边数×2，
+与由根向叶结点方向（下行方向）时的边数之和。
+![](https://cdn.luogu.com.cn/upload/pic/6843.png)
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>输入文件第一行为一个整数n(1≤n≤100)，表示二叉树结点个数。接下来的n-1行，表示从结点x到结点y（约定根结点为1），最后一行两个整数u、v，表示求从结点u到结点v的距离。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>三个数，每个数占一行，依次表示给定二叉树的深度、宽度及结点u到结点v间距离。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10                                
+1 2                            
+1 3                            
+2 4
+2 5
+3 6
+3 7
+5 8
+5 9
+6 10
+8 6
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+4
+8</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10DEC]恐吓信Threatening Letter - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376268:LTJx0owDq9p28ZMpw2ZdhChZk05ftms1GBSWFi0dtxU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22FJ%20has%20had%20a%20terrible%20fight%20with%20his%20neighbor%20and%20wants%20to%20send%20him%20a%20nasty%20letter%2C%20but%20wants%20to%20remain%20anonymous.%20As%20so%20many%20before%20him%20have%20done%2C%20he%20plans%20to%20cut%20out%20printed%20letters%20and%20paste%20them%20onto%20a%20sheet%20of%20paper.%20He%20has%20an%20infinite%20number%20of%20the%20most%20recent%20issue%20of%20the%20Moo%20York%20Times%20that%20has%20N%20%281%20%3C%3D%20N%20%3C%3D%2050%2C000%29%20uppercase%20letters%20laid%20out%20in%20a%20long%20string%20%28though%20read%20in%20as%20a%20series%20of%20shorter%20strings%29.%20Likewise%2C%20he%20has%20a%20message%20he%27d%20like%20to%20compose%20that%20is%20a%20single%20long%20string%20of%20letters%20but%20that%20is%20read%20in%20as%20a%20set%20of%20shorter%20strings.%5Cn%5CnBeing%20lazy%2C%20he%20wants%20to%20make%20the%20smallest%20possible%20number%20of%20cuts.%20FJ%20has%20a%20really%20great%20set%20of%20scissors%20that%20enables%20him%20to%20remove%20any%20single-line%20snippet%20from%20the%20Moo%20York%20Times%20with%20one%20cut.%20He%20notices%20that%20he%20can%20cut%20entire%20words%20or%20phrases%20with%20a%20single%20cut%2C%20thus%20reducing%20his%20total%20number%20of%20cuts.%5Cn%5CnWhat%20is%20the%20minimum%20amount%20of%20cuts%20he%20has%20to%20make%20to%20construct%20his%20letter%20of%20M%20%281%20%3C%3D%20M%20%3C%3D%2050%2C000%29%20letters%3F%5Cn%5CnIt%20is%20guaranteed%20that%20it%20is%20possible%20for%20FJ%20to%20complete%20his%20task.%5Cn%5CnConsider%20a%2038%20letter%20Moo%20York%20Times%3A%5Cn%5Cn%60%60%60cpp%5CnTHEQUICKBROWNFOXDO%20%5CnGJUMPSOVERTHELAZYDOG%20%5Cnfrom%20which%20FJ%20wants%20to%20construct%20a%209%20letter%20message%3A%20%5CnFOXDOG%20%5CnDOG%20%5Cn%60%60%60%5CnThese%20input%20lines%20represent%20a%20pair%20of%20strings%3A%5CnTHEQUICKBROWNFOXDOGJUMPSOVERTHELAZYDOG%20%5Cn%5CnFOXDOGDOG%20%5Cn%5CnSince%20%27FOXDOG%27%20exists%20in%20the%20newspaper%2C%20FJ%20can%20cut%20this%20piece%20out%20and%20then%20get%20the%20last%20%27DOG%27%20by%20cutting%20out%20either%20instance%20of%20the%20word%20%27DOG%27.%20%5Cn%5CnThus%2C%20he%20requires%20but%20two%20cuts.%5Cn%5CnFJ%5Cu521a%5Cu521a%5Cu548c%5Cu90bb%5Cu5c45%5Cu53d1%5Cu751f%5Cu4e86%5Cu4e00%5Cu573a%5Cu53ef%5Cu6015%5Cu7684%5Cu4e89%5Cu5435%5Cuff0c%5Cu4ed6%5Cu54bd%5Cu4e0d%5Cu4e0b%5Cu8fd9%5Cu53e3%5Cu6c14%5Cuff0c%5Cu51b3%5Cu5b9a%5Cu4f5a%5Cu540d%5Cu53d1%5Cu7ed9%5Cu4ed6%5Cu7684%5Cu90bb%5Cu5c45%20%5Cu4e00%5Cu5c01%5Cu810f%5Cu8bdd%5Cu8fde%5Cu7bc7%5Cu7684%5Cu4fe1%5Cu3002%5Cu4ed6%5Cu6709%5Cu65e0%5Cu9650%5Cu5f20%5Cu5b8c%5Cu5168%5Cu76f8%5Cu540c%5Cu7684%5Cu5df2%5Cu7ecf%5Cu6253%5Cu5370%5Cu597d%5Cu7684%5Cu4fe1%5Cu4ef6%5Cuff0c%5Cu90fd%5Cu5305%5Cu542b%20N%5Cu4e2a%5Cu5b57%5Cu6bcd%281%20%3C%3D%20N%20%3C%3D%2050%2C000%29%5Cu3002%5Cu4ed6%5Cu60f3%5Cu526a%5Cu51fa%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e9b%5Cu5e76%5Cu4e14%5Cu7c98%5Cu5e16%5Cu6210%5Cu4e00%5Cu4e2a%5Cu5f88%5Cu957f%5Cu7684%5Cu5b57%5Cu6bcd%5Cu4e32%5Cu3002%20FJ%5Cu592a%5Cu61d2%5Cu4e86%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu7528%5Cu6700%5Cu5c11%5Cu7684%5Cu6b21%5Cu6570%5Cu88c1%5Cu526a%5Cu4fe1%5Cu4ef6%5Cu3002%5Cu4ed6%5Cu6709%5Cu4e00%5Cu628a%5Cu4e3e%5Cu4e16%5Cu65e0%5Cu53cc%5Cu7684%5Cu526a%5Cu5200%5Cuff0c%5Cu4ed6%5Cu53ef%5Cu4ee5%5Cu4ece%20%5Cu4e00%5Cu5c01%5Cu4fe1%5Cu4e2d%5Cu53ea%5Cu526a%5Cu4e00%5Cu5200%5Cu526a%5Cu51fa%5Cu8fde%5Cu7eed%5Cu4e00%5Cu6bb5%5Cu3002%5Cu540c%5Cu6837%5Cuff0c%5Cu526a%5Cu4e00%5Cu5200%5Cu53ef%5Cu4ee5%5Cu5f97%5Cu5230%5Cu6574%5Cu4e2a%5Cu5b8c%5Cu6574%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%20%5Cu4ed6%5Cu60f3%5Cu77e5%5Cu9053%5Cu4ed6%5Cu6700%5Cu5c11%5Cu9700%5Cu8981%5Cu526a%5Cu591a%5Cu5c11%5Cu5200%5Cu4ece%5Cu800c%5Cu83b7%5Cu5f97%5Cu8fd9%5Cu5c01M%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu7684%5Cu957f%5Cu4fe1%5Cuff1f%20%5Cu4fdd%5Cu8bc1%5Cu8fd9%5Cu603b%5Cu662f%5Cu53ef%5Cu80fd%5Cu7684%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..%3F%3A%20N%20letters%20laid%20out%20on%20several%20input%20lines%3B%20this%20is%20the%20text%20of%20the%20one%20copy%20of%20the%20Moo%20York%20Times.%20Each%20line%20will%20have%20no%20more%20than%2080%20characters.%5Cn%5Cn%5C%5C%2A%20Lines%20%3F..%3F%3A%20M%20letters%20that%20are%20the%20text%20of%20FJ%27s%20letter.%20Each%20line%20will%20have%20no%20more%20than%2080%20characters.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20minimum%20number%20of%20cuts%20FJ%20has%20to%20make%20to%20create%20his%20message%5Cn%22%2C%22samples%22%3A%5B%5B%2238%209%20%5Cr%5CnTHEQUICKBROWNFOXDO%20%5Cr%5CnGJUMPSOVERTHELAZYDOG%20%5Cr%5CnFOXDOG%20%5Cr%5CnDOG%20%5Cr%5Cn%22%2C%222%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B7%2C27%2C46%2C113%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A78%2C%22totalAccepted%22%3A39%2C%22pid%22%3A%22P3002%22%2C%22title%22%3A%22%5BUSACO10DEC%5D%5Cu6050%5Cu5413%5Cu4fe1Threatening%20Letter%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2178%22%2C%22title%22%3A%22%5BNOI2015%5D%5Cu54c1%5Cu9152%5Cu5927%5Cu4f1a%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3181%22%2C%22title%22%3A%22%5BHAOI2016%5D%5Cu627e%5Cu76f8%5Cu540c%5Cu5b57%5Cu7b26%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3804%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu540e%5Cu7f00%5Cu81ea%5Cu52a8%5Cu673a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4172%22%2C%22title%22%3A%22%5BWC2006%5D%5Cu6c34%5Cu7ba1%5Cu5c40%5Cu957f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP1811%22%2C%22title%22%3A%22LCS%20-%20Longest%20Common%20Substring%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10DEC%5D%5Cu6050%5Cu5413%5Cu4fe1Threatening%20Letter%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10DEC]恐吓信Threatening Letter</h1>
+<h2>题目描述</h2>
+<div>FJ has had a terrible fight with his neighbor and wants to send him a nasty letter, but wants to remain anonymous. As so many before him have done, he plans to cut out printed letters and paste them onto a sheet of paper. He has an infinite number of the most recent issue of the Moo York Times that has N (1 <= N <= 50,000) uppercase letters laid out in a long string (though read in as a series of shorter strings). Likewise, he has a message he'd like to compose that is a single long string of letters but that is read in as a set of shorter strings.
+Being lazy, he wants to make the smallest possible number of cuts. FJ has a really great set of scissors that enables him to remove any single-line snippet from the Moo York Times with one cut. He notices that he can cut entire words or phrases with a single cut, thus reducing his total number of cuts.
+What is the minimum amount of cuts he has to make to construct his letter of M (1 <= M <= 50,000) letters?
+It is guaranteed that it is possible for FJ to complete his task.
+Consider a 38 letter Moo York Times:
+```cpp
+THEQUICKBROWNFOXDO
+GJUMPSOVERTHELAZYDOG
+from which FJ wants to construct a 9 letter message:
+FOXDOG
+DOG
+```
+These input lines represent a pair of strings:
+THEQUICKBROWNFOXDOGJUMPSOVERTHELAZYDOG
+FOXDOGDOG
+Since 'FOXDOG' exists in the newspaper, FJ can cut this piece out and then get the last 'DOG' by cutting out either instance of the word 'DOG'.
+Thus, he requires but two cuts.
+FJ刚刚和邻居发生了一场可怕的争吵，他咽不下这口气，决定佚名发给他的邻居 一封脏话连篇的信。他有无限张完全相同的已经打印好的信件，都包含 N个字母(1 <= N <= 50,000)。他想剪出其中一些并且粘帖成一个很长的字母串。 FJ太懒了，他想用最少的次数裁剪信件。他有一把举世无双的剪刀，他可以从 一封信中只剪一刀剪出连续一段。同样，剪一刀可以得到整个完整的字符串。 他想知道他最少需要剪多少刀从而获得这封M个字母的长信？ 保证这总是可能的。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and M
+\* Lines 2..?: N letters laid out on several input lines; this is the text of the one copy of the Moo York Times. Each line will have no more than 80 characters.
+\* Lines ?..?: M letters that are the text of FJ's letter. Each line will have no more than 80 characters.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The minimum number of cuts FJ has to make to create his message
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>38 9 
+THEQUICKBROWNFOXDO 
+GJUMPSOVERTHELAZYDOG 
+FOXDOG 
+DOG 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

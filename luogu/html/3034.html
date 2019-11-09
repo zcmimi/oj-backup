@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO11DEC]牛摄影Cow Photography - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376313:ovIEzTPbEHp/7WHSYmTHk0kArAvtJ28QiOUa1lZeYh0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20cows%20are%20in%20a%20particularly%20mischievous%20mood%20today%21%20%20All%20Farmer%20John%20wants%20to%20do%20is%20take%20a%20photograph%20of%20the%20cows%20standing%20in%20a%20line%2C%20but%20they%20keep%20moving%20right%20before%20he%20has%20a%20chance%20to%20snap%20the%20picture.%5Cn%5CnSpecifically%2C%20each%20of%20FJ%27s%20N%20%281%20%3C%3D%20N%20%3C%3D%2020%2C000%29%20cows%20has%20a%20unique%20integer%20ID%20number.%20%20FJ%20wants%20to%20take%20a%20picture%20of%20the%20cows%20standing%20in%20a%20line%20in%20a%20very%20specific%20ordering%2C%20represented%20by%20the%20contents%20of%20an%20array%20A%5B1...N%5D%2C%20where%20A%5Bj%5D%20gives%20the%20ID%20number%20of%20the%20jth%20cow%20in%20the%20ordering.%20%20He%20arranges%20the%20cows%20in%20this%20order%2C%20but%20just%20before%20he%20can%20press%20the%20button%20on%20his%20camera%20to%20snap%20the%20picture%2C%20a%20group%20of%20zero%20or%20more%20cows%20%28not%20necessarily%20a%20contiguous%20group%29%20moves%20to%20a%20set%20of%20new%20positions%20in%20the%20lineup.%20%20More%20precisely%2C%20a%20group%20of%20zero%20or%20more%20cows%20steps%20away%20from%20the%20line%2C%20with%20the%20remaining%20cows%20shifting%20over%20to%20close%20the%20resulting%20gaps%20in%20the%20lineup.%20%20The%20cows%20who%20stepped%20away%20then%20re-insert%20themselves%20at%20different%20positions%20in%20the%20lineup%20%28not%20necessarily%20at%20the%20locations%20they%20originally%20occupied%29.%20%20Frustrated%20but%20not%20deterred%2C%20FJ%20again%20arranges%20his%20cows%20according%20to%20the%20ordering%20in%20A%2C%20but%20again%2C%20right%20before%20he%20can%20snap%20a%20picture%2C%20a%20different%20group%20of%20zero%20or%20more%20cows%20moves%20to%20a%20set%20of%20new%20positions%20in%20the%20lineup.%5Cn%5CnThe%20process%20above%20repeats%20for%20a%20total%20of%20five%20photographs%20before%20FJ%20gives%20up.%20%20Given%20the%20contents%20of%20each%20photograph%2C%20see%20if%20you%20can%20reconstruct%20the%20original%20intended%20ordering%20A.%20%20Each%20photograph%20shows%20an%20ordering%20of%20the%20cows%20that%20differs%20from%20A%20in%20that%20some%20group%20of%20zero%20or%20more%20cows%20has%20moved.%20However%2C%20a%20cow%20only%20moves%20in%20at%20most%20one%20photograph%3A%20if%20a%20cow%20is%20part%20of%20the%20group%20that%20moves%20in%20one%20photograph%2C%20she%20will%20not%20actively%20move%20in%20any%20of%20the%20other%20four%20photographs%20%28although%20she%20could%20end%20up%20at%20a%20different%20index%20as%20a%20consequence%20of%20other%20cows%20around%20her%20moving%2C%20of%20course%29.%5Cn%5CnFarmer%20John%5Cu5c45%5Cu7136%5Cu62cd%5Cu4e86%5Cu4e94%5Cu5f20%5Cu7167%5Cu7247%5Cuff0c%5Cu6bcf%5Cu5f20%5Cu8868%5Cu793a%5Cu521d%5Cu59cb%5Cu5316%5Cu725b%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu79fb%5Cu52a8%5Cu540e%5Cu7684%5Cu72b6%5Cu6001%5Cu3002%5Cu7136%5Cu540e%5Cu6c42%5Cu51faFJ%5Cu8fd9%5Cu4e94%5Cu5934%5Cu725b%5Cu521d%5Cu59cb%5Cu5316%5Cu7684%5Cu6837%5Cu5b50%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20number%20of%20cows%2C%20N%20%281%20%3C%3D%20N%20%3C%3D%2020%2C000%29.%20%5Cn%5Cn%5C%5C%2A%20Lines%202..5N%2B1%3A%20The%20next%205N%20lines%20describe%20five%20orderings%2C%20each%20one%20a%20block%20of%20N%20contiguous%20lines.%20%20Each%20line%20contains%20the%20ID%20of%20a%20cow%2C%20an%20integer%20in%20the%20range%200...1%2C000%2C000%2C000.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..N%3A%20The%20intended%20ordering%20A%2C%20one%20ID%20per%20line.%20%5Cn%5Cn%22%2C%22samples%22%3A%5B%5B%225%20%5Cn10%20%5Cn20%20%5Cn30%20%5Cn40%20%5Cn50%20%5Cn20%20%5Cn10%20%5Cn30%20%5Cn40%20%5Cn50%20%5Cn30%20%5Cn10%20%5Cn20%20%5Cn40%20%5Cn50%20%5Cn40%20%5Cn10%20%5Cn20%20%5Cn30%20%5Cn50%20%5Cn50%20%5Cn10%20%5Cn20%20%5Cn30%20%5Cn40%20%5Cn%22%2C%2210%20%5Cn20%20%5Cn30%20%5Cn40%20%5Cn50%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%205%20cows%2C%20with%20IDs%2010%2C%2020%2C%2030%2C%2040%2C%20and%2050.%20%20In%20each%20of%20the%205%20photos%2C%20a%20different%20cow%20moves%20to%20the%20front%20of%20the%20line%20%28at%20most%20one%20cow%20moves%20in%20each%20photo%20here%2C%20but%20it%20is%20possible%20in%20other%20inputs%20that%20multiple%20cows%20could%20move%20in%20a%20particular%20photo%29.%5Cn%5Cn%5CnThe%20correct%20original%20ordering%20A%5B1..5%5D%20is%2010%2C%2020%2C%2030%2C%2040%2C%2050.%5Cn%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B28%2C46%2C113%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A377%2C%22totalAccepted%22%3A129%2C%22pid%22%3A%22P3034%22%2C%22title%22%3A%22%5BUSACO11DEC%5D%5Cu725b%5Cu6444%5Cu5f71Cow%20Photography%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A71076%2C%22title%22%3A%22%5Cu6bd2%5Cu7624%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A1974%2C%22name%22%3A%22P3034%20%5BUSACO11DEC%5D%5Cu725b%5Cu6444%5Cu5f71Cow%20Photography%22%2C%22slug%22%3A%22P3034%22%7D%7D%2C%7B%22id%22%3A53281%2C%22title%22%3A%22%5Cu8fd9%5Cu4e2a%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A1974%2C%22name%22%3A%22P3034%20%5BUSACO11DEC%5D%5Cu725b%5Cu6444%5Cu5f71Cow%20Photography%22%2C%22slug%22%3A%22P3034%22%7D%7D%2C%7B%22id%22%3A6285%2C%22title%22%3A%222333333333%22%2C%22forum%22%3A%7B%22id%22%3A1974%2C%22name%22%3A%22P3034%20%5BUSACO11DEC%5D%5Cu725b%5Cu6444%5Cu5f71Cow%20Photography%22%2C%22slug%22%3A%22P3034%22%7D%7D%2C%7B%22id%22%3A4864%2C%22title%22%3A%22%5Cu6b64%5Cu9898%5Cu76ee%5Cu6570%5Cu636e%5Cu6709%5Cu95ee%5Cu9898%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A1974%2C%22name%22%3A%22P3034%20%5BUSACO11DEC%5D%5Cu725b%5Cu6444%5Cu5f71Cow%20Photography%22%2C%22slug%22%3A%22P3034%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2176%22%2C%22title%22%3A%22%5BUSACO14FEB%5D%5Cu8def%5Cu969cRoadblock%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2967%22%2C%22title%22%3A%22%5BUSACO09DEC%5D%5Cu89c6%5Cu9891%5Cu6e38%5Cu620f%5Cu7684%5Cu9ebb%5Cu70e6Video%20Game%20Troubles%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3035%22%2C%22title%22%3A%22%5BUSACO11DEC%5D%5Cu4f1e%5Cu5934Umbrellas%20for%20Cows%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3037%22%2C%22title%22%3A%22%5BUSACO11DEC%5D%5Cu7b80%5Cu5316%5Cu7684%5Cu519c%5Cu573aSimplifying%20the%20Farm%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4376%22%2C%22title%22%3A%22%5BUSACO18OPEN%5DMilking%20Order%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO11DEC%5D%5Cu725b%5Cu6444%5Cu5f71Cow%20Photography%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO11DEC]牛摄影Cow Photography</h1>
+<h2>题目描述</h2>
+<div>The cows are in a particularly mischievous mood today! All Farmer John wants to do is take a photograph of the cows standing in a line, but they keep moving right before he has a chance to snap the picture.
+Specifically, each of FJ's N (1 <= N <= 20,000) cows has a unique integer ID number. FJ wants to take a picture of the cows standing in a line in a very specific ordering, represented by the contents of an array A[1...N], where A[j] gives the ID number of the jth cow in the ordering. He arranges the cows in this order, but just before he can press the button on his camera to snap the picture, a group of zero or more cows (not necessarily a contiguous group) moves to a set of new positions in the lineup. More precisely, a group of zero or more cows steps away from the line, with the remaining cows shifting over to close the resulting gaps in the lineup. The cows who stepped away then re-insert themselves at different positions in the lineup (not necessarily at the locations they originally occupied). Frustrated but not deterred, FJ again arranges his cows according to the ordering in A, but again, right before he can snap a picture, a different group of zero or more cows moves to a set of new positions in the lineup.
+The process above repeats for a total of five photographs before FJ gives up. Given the contents of each photograph, see if you can reconstruct the original intended ordering A. Each photograph shows an ordering of the cows that differs from A in that some group of zero or more cows has moved. However, a cow only moves in at most one photograph: if a cow is part of the group that moves in one photograph, she will not actively move in any of the other four photographs (although she could end up at a different index as a consequence of other cows around her moving, of course).
+Farmer John居然拍了五张照片，每张表示初始化牛位置的移动后的状态。然后求出FJ这五头牛初始化的样子。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The number of cows, N (1 <= N <= 20,000).
+\* Lines 2..5N+1: The next 5N lines describe five orderings, each one a block of N contiguous lines. Each line contains the ID of a cow, an integer in the range 0...1,000,000,000.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..N: The intended ordering A, one ID per line.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 
+10 
+20 
+30 
+40 
+50 
+20 
+10 
+30 
+40 
+50 
+30 
+10 
+20 
+40 
+50 
+40 
+10 
+20 
+30 
+50 
+50 
+10 
+20 
+30 
+40 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10 
+20 
+30 
+40 
+50 
+</code></pre>
+<h2>说明</h2>
+<div>There are 5 cows, with IDs 10, 20, 30, 40, and 50. In each of the 5 photos, a different cow moves to the front of the line (at most one cow moves in each photo here, but it is possible in other inputs that multiple cows could move in a particular photo).
+The correct original ordering A[1..5] is 10, 20, 30, 40, 50.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10JAN]奶酪塔Cheese Towers - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376232:lsIxwv/67wPAvrUoMRYWlz7BjQ/wLFChPbPXJCoykrw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20wants%20to%20save%20some%20blocks%20of%20his%20cows%27%20delicious%20Wisconsin%20cheese%20varieties%20in%20his%20cellar%20for%20the%20coming%20winter.%20He%20has%20room%20for%20one%20tower%20of%20cheese%20in%20his%20cellar%2C%20and%20that%20tower%27s%20height%20can%20be%20at%20most%20T%20%281%20%3C%3D%20T%20%3C%3D%201%2C000%29.%20The%20cows%20have%20provided%20him%20with%20a%20virtually%20unlimited%20number%20of%20blocks%20of%20each%20kind%20of%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%29%20different%20types%20of%20cheese%20%28conveniently%20numbered%201..N%29.%20He%27d%20like%20to%20store%20%28subject%20to%20the%20constraints%20of%20height%29%20the%20most%5Cn%5Cnvaluable%20set%20of%20blocks%20he%20possibly%20can.%20The%20cows%20will%20sell%20the%20rest%20to%20support%20the%20orphan%20calves%20association.%5Cn%5CnEach%20block%20of%20the%20i-th%20type%20of%20cheese%20has%20some%20value%20V%5C%5C_i%20%281%20%3C%3D%20V%5C%5C_i%20%3C%3D%201%2C000%2C000%29%20and%20some%20height%20H%5C%5C_i%20%285%20%3C%3D%20H%5C%5C_i%20%3C%3D%20T%29%2C%20which%20is%20always%20a%20multiple%20of%205.%5Cn%5CnCheese%20compresses.%20A%20block%20of%20cheese%20that%20has%20height%20greater%20than%20or%20equal%20to%20K%20%281%20%3C%3D%20K%20%3C%3D%20T%29%20is%20considered%20%27large%27%20and%20will%20crush%20any%20and%20all%20of%20the%20cheese%20blocks%20%28even%20other%20large%20ones%29%20located%20below%20it%20in%20the%20tower.%20A%20crushed%20block%20of%20cheese%20doesn%27t%20lose%20any%20value%2C%20but%20its%20height%20reduces%20to%20just%204%5C%2F5%20of%20its%20old%20height.%20Because%20the%20height%20of%20a%20block%20of%20cheese%20is%20always%20a%20multiple%20of%205%2C%20the%20height%20of%20a%20crushed%20block%20of%20cheese%20will%20always%20be%20an%20integer.%20A%20block%20of%20cheese%20is%20either%20crushed%20or%20not%20crushed%3B%20having%20multiple%20large%20blocks%20above%20it%20does%20not%20crush%20it%20more.%20Only%20tall%20blocks%20of%20cheese%20crush%20other%20blocks%3B%20aggregate%20height%20of%20a%20tower%20does%20not%20affect%20whether%20a%20block%20is%20crushed%20or%20not.%5Cn%5CnWhat%20is%20the%20total%20value%20of%20the%20best%20cheese%20tower%20FJ%20can%20construct%3F%5Cn%5CnConsider%2C%20for%20example%2C%20a%20cheese%20tower%20whose%20maximum%20height%20can%20be%2053%20to%20be%20build%20from%20three%20types%20of%20cheese%20blocks.%20Large%20blocks%20are%20those%20that%20are%20greater%20than%20or%20equal%20to%2025.%20Below%20is%20a%20chart%20of%20the%20values%20and%20heights%20of%20the%20various%20cheese%20blocks%20he%20stacks%3A%5Cn%5CnType%20%20%20%20Value%20%20%20%20%20%20Height%20%5Cn%5Cn1%20%20%20%20%20%20100%20%20%20%20%20%20%20%20%2025%5Cn%5Cn2%20%20%20%20%20%20%2020%20%20%20%20%20%20%20%20%20%205%5Cn%5Cn3%20%20%20%20%20%20%2040%20%20%20%20%20%20%20%20%2010%5Cn%5CnFJ%20constructs%20the%20following%20tower%3A%20%5Cn%5CnType%20Height%20Value%20%5Cn%5Cntop%20-%3E%20%5B1%5D%20%20%2025%20%20%20%20100%5Cn%5Cn%60%60%60cpp%5Cn%5B2%5D%20%20%20%204%20%20%20%20%2020%20%20%20%3C-%20crushed%20by%20%5B1%5D%20above%20%5Cn%5B3%5D%20%20%20%208%20%20%20%20%2040%20%20%20%3C-%20crushed%20by%20%5B1%5D%20above%20%5Cn%5B3%5D%20%20%20%208%20%20%20%20%2040%20%20%20%3C-%20crushed%20by%20%5B1%5D%20above%20%5Cnbottom%20-%3E%20%5B3%5D%20%20%20%208%20%20%20%20%2040%20%20%20%3C-%20crushed%20by%20%5B1%5D%20above%20%5Cn%60%60%60%5CnThe%20topmost%20cheese%20block%20is%20so%20large%20that%20the%20blocks%20below%20it%20are%20crushed.%20The%20total%20height%20is%3A%5Cn%60%60%60cpp%5Cn25%20%2B%204%20%2B%208%20%2B%208%20%2B%208%20%3D%2053%20%5CnThe%20total%20height%20does%20not%20exceed%2053%20and%20thus%20is%20%27legal%27.%20The%20total%20value%20is%3A%20%5Cn100%20%2B%2020%20%2B%2040%20%2B%2040%20%2B%2040%20%3D%20240.%20%5CnThis%20is%20the%20best%20tower%20for%20this%20particular%20set%20of%20cheese%20blocks.%20%5Cn%5Cu8981%5Cu5efa%5Cu4e00%5Cu4e2a%5Cu5976%5Cu916a%5Cu5854%5Cuff0c%5Cu9ad8%5Cu5ea6%5Cu6700%5Cu5927%5Cu4e3aT%5Cu3002%5Cu4ed6%5Cu6709N%5Cu5757%5Cu5976%5Cu916a%5Cu3002%5Cu7b2ci%5Cu5757%5Cu9ad8%5Cu5ea6%5Cu4e3aHi%5Cuff08%5Cu4e00%5Cu5b9a%5Cu662f5%5Cu7684%5Cu500d%5Cu6570%5Cuff09%5Cuff0c%5Cu4ef7%5Cu503c%5Cu4e3aVi%5Cu3002%5Cu4e00%5Cu5757%5Cu9ad8%5Cu5ea6%3E%3DK%5Cu7684%5Cu5976%5Cu916a%5Cu88ab%5Cu79f0%5Cu4e3a%5Cu5927%5Cu5976%5Cu916a%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu5976%5Cu916a%5Cu5982%5Cu679c%5Cu5728%5Cu5b83%5Cu4e0a%5Cu65b9%5Cu6709%5Cu5927%5Cu5976%5Cu916a%5Cuff08%5Cu591a%5Cu5757%5Cu53ea%5Cu7b97%5Cu4e00%5Cu6b21%5Cuff09%5Cuff0c%5Cu5b83%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu5c31%5Cu4f1a%5Cu53d8%5Cu6210%5Cu539f%5Cu6765%5Cu76844%5C%2F5.%5Cu3002%20%5Cu5f88%5Cu663e%5Cu7136John%5Cu60f3%5Cu8ba9%5Cu4ed6%5Cu7684%5Cu5976%5Cu916a%5Cu4ed6%5Cu4ef7%5Cu503c%5Cu548c%5Cu6700%5Cu5927%5Cu3002%5Cu6c42%5Cu8fd9%5Cu4e2a%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Three%20space-separated%20integers%3A%20N%2C%20T%2C%20and%20K%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20two%20space%20separated%20integers%3A%20V%5C%5C_i%20and%20H%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20value%20of%20the%20best%20tower%20FJ%20can%20build%5Cn%22%2C%22samples%22%3A%5B%5B%223%2053%2025%20%5Cn100%2025%20%5Cn20%205%20%5Cn40%2010%20%5Cn%22%2C%22240%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%2A%2A%5Cn%5CnFJ%5Cu8981%5Cu5efa%5Cu4e00%5Cu4e2a%5Cu5976%5Cu916a%5Cu5854%5Cuff0c%5Cu9ad8%5Cu5ea6%5Cu6700%5Cu5927%5Cu4e3aT%5Cu3002%5Cu4ed6%5Cu6709N%5Cu79cd%5Cu5976%5Cu916a%5Cu3002%5Cu7b2ci%5Cu79cd%5Cu5976%5Cu916a%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu4e3aHi%5Cuff08%5Cu4e00%5Cu5b9a%5Cu662f5%5Cu7684%5Cu500d%5Cu6570%5Cuff09%5Cuff0c%5Cu4ef7%5Cu503c%5Cu4e3aVi%5Cu3002%5Cu4e00%5Cu5757%5Cu9ad8%5Cu5ea6Hi%3E%3DK%5Cu7684%5Cu5976%5Cu916a%5Cu88ab%5Cu79f0%5Cu4e3a%5Cu5927%5Cu5976%5Cu916a%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu5976%5Cu916a%5Cu5982%5Cu679c%5Cu5728%5Cu5b83%5Cu4e0a%5Cu65b9%5Cu6709%5Cu5927%5Cu5976%5Cu916a%5Cuff08%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu5757%5Cu5c31%5Cu53ea%5Cu7b97%5Cu4e00%5Cu6b21%5Cuff09%5Cuff0c%5Cu5b83%5Cu7684%5Cu9ad8%5Cu5ea6Hi%5Cu5c31%5Cu4f1a%5Cu53d8%5Cu6210%5Cu539f%5Cu6765%5Cu76844%5C%2F5.%5Cu3002FJ%5Cu60f3%5Cu8ba9%5Cu4ed6%5Cu7684%5Cu5976%5Cu916a%5Cu5854%5Cu4ef7%5Cu503c%5Cu548c%5Cu6700%5Cu5927%5Cu3002%5Cu8bf7%5Cu4f60%5Cu6c42%5Cu51fa%5Cu8fd9%5Cu4e2a%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cn%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e09%5Cu4e2a%5Cu6570N%2CT%2CK%5Cuff0c%5Cu610f%5Cu4e49%5Cu5982%5Cu4e0a%5Cu6240%5Cu8ff0%5Cu3002%5Cn%5Cu63a5%5Cu4e0b%5Cu6765n%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570V_i%2Ch_i%5Cuff08%5Cu6ce8%5Cu610f%5Cu987a%5Cu5e8f%5Cuff09%5Cn%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cn%5Cn%5Cu5976%5Cu916a%5Cu5854%5Cu7684%5Cu6700%5Cu5927%5Cu4ef7%5Cu503c%22%2C%22tags%22%3A%5B3%2C27%2C46%2C111%2C139%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1613%2C%22totalAccepted%22%3A669%2C%22pid%22%3A%22P2979%22%2C%22title%22%3A%22%5BUSACO10JAN%5D%5Cu5976%5Cu916a%5Cu5854Cheese%20Towers%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A147853%2C%22title%22%3A%22%5Cu4e00%5Cu53e5%5Cu70b9%5Cu9192%5Cu68a6%5Cu4e2d%5Cu4eba%5Cu5450~%22%2C%22forum%22%3A%7B%22id%22%3A2108%2C%22name%22%3A%22P2979%20%5BUSACO10JAN%5D%5Cu5976%5Cu916a%5Cu5854Cheese%20Towers%22%2C%22slug%22%3A%22P2979%22%7D%7D%2C%7B%22id%22%3A56250%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cuff08%5Cu52a0%5Cu5f3a%5Cu7248%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A2108%2C%22name%22%3A%22P2979%20%5BUSACO10JAN%5D%5Cu5976%5Cu916a%5Cu5854Cheese%20Towers%22%2C%22slug%22%3A%22P2979%22%7D%7D%2C%7B%22id%22%3A53777%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu5176%5Cu5b9e%5Cu662f%5Cu6709%5Cu95ee%5Cu9898%5Cu7684%22%2C%22forum%22%3A%7B%22id%22%3A2108%2C%22name%22%3A%22P2979%20%5BUSACO10JAN%5D%5Cu5976%5Cu916a%5Cu5854Cheese%20Towers%22%2C%22slug%22%3A%22P2979%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1776%22%2C%22title%22%3A%22%5Cu5b9d%5Cu7269%5Cu7b5b%5Cu9009_NOI%5Cu5bfc%5Cu520a2010%5Cu63d0%5Cu9ad8%5Cuff0802%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2732%22%2C%22title%22%3A%22%5Cu5546%5Cu5e97%5Cu8d2d%5Cu7269%20Shopping%20Offers%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2827%22%2C%22title%22%3A%22%5Cu86af%5Cu8693%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2854%22%2C%22title%22%3A%22%5BUSACO06DEC%5D%5Cu725b%5Cu7684%5Cu8fc7%5Cu5c71%5Cu8f66Cow%20Roller%20Coaster%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3507%22%2C%22title%22%3A%22%5BPOI2010%5DGRA-The%20Minima%20Game%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10JAN%5D%5Cu5976%5Cu916a%5Cu5854Cheese%20Towers%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10JAN]奶酪塔Cheese Towers</h1>
+<h2>题意翻译</h2>
+<div>**题目描述**
+FJ要建一个奶酪塔，高度最大为T。他有N种奶酪。第i种奶酪的高度为Hi（一定是5的倍数），价值为Vi。一块高度Hi>=K的奶酪被称为大奶酪，一个奶酪如果在它上方有大奶酪（如果有多块就只算一次），它的高度Hi就会变成原来的4/5.。FJ想让他的奶酪塔价值和最大。请你求出这个最大值。
+**输入格式：**
+第一行三个数N,T,K，意义如上所述。
+接下来n行，每行两个数V_i,h_i（注意顺序）
+**输出格式：**
+奶酪塔的最大价值</div>
+<h2>题目描述</h2>
+<div>Farmer John wants to save some blocks of his cows' delicious Wisconsin cheese varieties in his cellar for the coming winter. He has room for one tower of cheese in his cellar, and that tower's height can be at most T (1 <= T <= 1,000). The cows have provided him with a virtually unlimited number of blocks of each kind of N (1 <= N <= 100) different types of cheese (conveniently numbered 1..N). He'd like to store (subject to the constraints of height) the most
+valuable set of blocks he possibly can. The cows will sell the rest to support the orphan calves association.
+Each block of the i-th type of cheese has some value V\_i (1 <= V\_i <= 1,000,000) and some height H\_i (5 <= H\_i <= T), which is always a multiple of 5.
+Cheese compresses. A block of cheese that has height greater than or equal to K (1 <= K <= T) is considered 'large' and will crush any and all of the cheese blocks (even other large ones) located below it in the tower. A crushed block of cheese doesn't lose any value, but its height reduces to just 4/5 of its old height. Because the height of a block of cheese is always a multiple of 5, the height of a crushed block of cheese will always be an integer. A block of cheese is either crushed or not crushed; having multiple large blocks above it does not crush it more. Only tall blocks of cheese crush other blocks; aggregate height of a tower does not affect whether a block is crushed or not.
+What is the total value of the best cheese tower FJ can construct?
+Consider, for example, a cheese tower whose maximum height can be 53 to be build from three types of cheese blocks. Large blocks are those that are greater than or equal to 25. Below is a chart of the values and heights of the various cheese blocks he stacks:
+Type Value Height
+1 100 25
+2 20 5
+3 40 10
+FJ constructs the following tower:
+Type Height Value
+top -> [1] 25 100
+```cpp
+[2] 4 20 <- crushed by [1] above
+[3] 8 40 <- crushed by [1] above
+[3] 8 40 <- crushed by [1] above
+bottom -> [3] 8 40 <- crushed by [1] above
+```
+The topmost cheese block is so large that the blocks below it are crushed. The total height is:
+```cpp
+25 + 4 + 8 + 8 + 8 = 53
+The total height does not exceed 53 and thus is 'legal'. The total value is:
+100 + 20 + 40 + 40 + 40 = 240.
+This is the best tower for this particular set of cheese blocks.
+要建一个奶酪塔，高度最大为T。他有N块奶酪。第i块高度为Hi（一定是5的倍数），价值为Vi。一块高度>=K的奶酪被称为大奶酪，一个奶酪如果在它上方有大奶酪（多块只算一次），它的高度就会变成原来的4/5.。 很显然John想让他的奶酪他价值和最大。求这个最大值。
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Three space-separated integers: N, T, and K
+\* Lines 2..N+1: Line i+1 contains two space separated integers: V\_i and H\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The value of the best tower FJ can build
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 53 25 
+100 25 
+20 5 
+40 10 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>240 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

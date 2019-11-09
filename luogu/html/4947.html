@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PION后缀自动机 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382004:mPOBtGbceBBFG2SFW7/SFOjWjY5+cbaKUvd5a7cbHZg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22NOIP2018%5Cu539f%5Cu521b%5Cu6a21%5Cu62df%5Cu9898T6%5Cn%5CnNOIP2018%5Cu539f%5Cu521b%5Cu6a21%5Cu62df%5Cu8d5bDAY2%20T3%5Cn%5CnNOIP%20DAY1%20T3%2B%20or%20DAY2%20T3%20%5Cu96be%5Cu5ea6%5Cn%5Cn%5Cu9274%5Cu4e8e%20NOIP2017%20DAY2%20T3%20%5Cu7684%5Cu96be%5Cu5ea6%5Cuff0c%5Cu5c31%5Cu6709%5Cu4e86%5Cu8fd9%5Cu9053%5Cu9898%5Cu3002%2A%2A%5Cu7136%5Cu800c%5Cu8fd9%5Cu9053%5Cu9898%5Cu8003%5Cu5bdf%5Cu7684%5Cu77e5%5Cu8bc6%5Cu5e76%5Cu4e0d%5Cu662f%5Cu540e%5Cu7f00%5Cu81ea%5Cu52a8%5Cu673a%2A%2A%22%2C%22description%22%3A%22%5Cu5c0fP%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6280%5Cu672f%5Cu9ad8%5Cu8d85%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu5458%5Cuff0c%5Cu4ed6%5Cu5f00%5Cu53d1%5Cu4e86%5Cu4e00%5Cu5957%5Cu81ea%5Cu5df1%5Cu7684%5Cu64cd%5Cu4f5c%5Cu7cfb%5Cu7edf%5Cuff0c%5Cu79f0%5Cu4e3aPION%5Cu7cfb%5Cu7edf%5Cuff0c%5Cu8be5%5Cu7cfb%5Cu7edf%5Cu4e0eWindows%5Cu548cLinux%5Cu6709%5Cu5f88%5Cu5927%5Cu4e0d%5Cu540c%5Cuff0c%5Cu76ee%5Cu524d%5Cu4ed6%5Cu6b63%5Cu5728%5Cu6d4b%5Cu8bd5%5Cu8be5%5Cu7cfb%5Cu7edf%5Cu3002%5Cn%5CnPION%5Cu7cfb%5Cu7edf%5Cu4e0eWindows%5Cu7cfb%5Cu7edf%5Cu6700%5Cu5927%5Cu7684%5Cu4e0d%5Cu540c%5Cu5728%5Cu4e8e%5Cu6587%5Cu4ef6%5Cu7684%5Cu50a8%5Cu5b58%5Cu4e0e%5Cu64cd%5Cu4f5c%5Cuff0cPOIN%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cu6ca1%5Cu6709%5Cu7236%5Cu5b50%5Cu4e4b%5Cu5206%5Cu3002%5Cu6211%5Cu4eec%5Cu77e5%5Cu9053%5Cuff0c%5Cu5728Windows%5Cu7cfb%5Cu7edf%5Cu4e2d%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu5728%5Cu6587%5Cu4ef6%5Cu5939%5Cu91cc%5Cu65b0%5Cu5efa%5Cu5b50%5Cu6587%5Cu4ef6%5Cu5939%5Cu3002%5Cu4f46%5Cu662f%5Cuff0cPION%5Cu7cfb%5Cu7edf%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e0d%5Cu5206%5Cu7236%5Cu5b50%5Cu5173%5Cu7cfb%5Cuff0c%2A%2A%5Cu4f46%5Cu662f%5Cu90e8%5Cu5206%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e4b%5Cu95f4%5Cu53ef%5Cu4ee5%5Cu4e92%5Cu76f8%5Cu76f4%5Cu63a5%5Cu8bbf%5Cu95ee%5Cuff0c%5Cu6211%5Cu4eec%5Cu79f0%5Cu8fd9%5Cu79cd%5Cu5173%5Cu7cfb%5Cu4e3a%5Cu4e92%5Cu8bbf%5Cu5173%5Cu7cfb%5Cuff0c%5Cu800c%5Cu4e14%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu6709%24n%24%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu7684%5Cu7cfb%5Cu7edf%5Cu6765%5Cu8bf4%5Cuff0c%5Cu8fd9%5Cu79cd%5Cu4e92%5Cu8bbf%5Cu5173%5Cu7cfb%5Cu6709%24n-1%24%5Cu4e2a%5Cuff0c%5Cu4e14%5Cu4fdd%5Cu8bc1%5Cu6240%5Cu6709%5Cu6587%5Cu4ef6%5Cu5939%5Cu5747%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu4e92%5Cu8bbf%5Cu5173%5Cu7cfb%5Cu800c%5Cu4e92%5Cu76f8%5Cu8bbf%5Cu95ee%5Cu3002%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff1a%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu628aWindows%5Cu4e2d%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cu7684%5Cu96c6%5Cu5408%5Cu770b%5Cu4f5c%5Cu4e00%5Cu68f5%5Cu6709%5Cu6839%5Cu6811%5Cuff0c%5Cu800c%5Cu628aPION%5Cu7cfb%5Cu7edf%5Cu4e2d%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cu96c6%5Cu5408%5Cu770b%5Cu4f5c%5Cu4e3a%5Cu65e0%5Cu6839%5Cu6811%5Cu3002%2A%2A%5Cn%5Cn%5Cu5728PION%5Cu7cfb%5Cu7edf%5Cu4e2d%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu50a8%5Cu5b58%5Cu6587%5Cu4ef6%5Cuff0c%5Cu548cWindows%5Cu4e00%5Cu6837%5Cuff0c%5Cu6587%5Cu4ef6%5Cu540d%5Cu5305%5Cu542b%5Cu540e%5Cu7f00%5Cu540d%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu5c0fP%5Cu6b63%5Cu5728%5Cu6784%5Cu601d%5Cu4e00%5Cu79cd%5Cu53ef%5Cu4ee5%5Cu5bf9%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e2d%5Cu6587%5Cu4ef6%5Cu540e%5Cu7f00%5Cu8fdb%5Cu884c%5Cu65b9%5Cu4fbf%5Cu64cd%5Cu4f5c%5Cu7684%5Cu4ea4%5Cu4e92%5Cu5f0f%5Cu7a0b%5Cu5e8fdmc%5Cuff0c%5Cu4ed6%5Cu4e5f%5Cu5c06%5Cu5176%5Cu79f0%5Cu4e3a%2A%2APION%5Cu540e%5Cu7f00%5Cu81ea%5Cu52a8%5Cu673a%2A%2A%5Cu3002%5Cu7531%5Cu4e8e%5Cu4ed6%5Cu592a%5Cu5fd9%5Cu4e86%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4ed6%5Cu5e0c%5Cu671b%5Cu4f60%5Cu5e2e%5Cu4ed6%5Cu5b9e%5Cu73b0%2A%2A%5Cu90e8%5Cu5206%5Cu529f%5Cu80fd%2A%2A%5Cu3002%5Cn%5Cn%5Cu4ed6%5Cu5e0c%5Cu671b%5Cu4f60%5Cu5e2e%5Cu4ed6%5Cu5b9e%5Cu73b0%5Cu4e09%5Cu4e2a%5Cu529f%5Cu80fd%5Cuff1a%5Cn%5Cn1.%5Cu8ba1%5Cu7b97%5Cu4e24%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8ddd%5Cu79bb%5Cu3002%5Cu6211%5Cu4eec%5Cu5b9a%5Cu4e49%5Cuff1a%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8ddd%5Cu79bb%5Cu4e3a%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu901a%5Cu8fc7%5Cu4e92%5Cu8bbf%5Cu8fbe%5Cu5230%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu6700%5Cu5c11%5Cu4e92%5Cu8bbf%5Cu6b21%5Cu6570%5Cu3002%5Cu6bd4%5Cu5982%5Cuff1a%5Cu540c%5Cu4e00%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu8ddd%5Cu79bb%5Cu4e3a0%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu6709%5Cu4e92%5Cu8bbf%5Cu5173%5Cu7cfb%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cu8ddd%5Cu79bb%5Cu4e3a1%5Cu3002%5Cn%5Cn2.%5Cu8ba1%5Cu7b97%5Cu4e24%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu8def%5Cu5f84%5Cu4e4b%5Cu95f4%5Cuff08%5Cu5305%5Cu542b%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cuff09%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e2d%5Cu7684%5Cu6587%5Cu4ef6%5Cu7684%5Cu540e%5Cu7f00%5Cu540d%5Cu4e3aA%5Cu7684%5Cu6587%5Cu4ef6%5Cu6570%5Cu91cf%5Cuff0c%2A%2A%5Cu5176%5Cu4e2dA%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5c0f%5Cu5199%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu63d0%5Cu793a%5Cuff1a%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu628aPION%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8def%5Cu5f84%5Cu7406%5Cu89e3%5Cu4e3a%5Cu6811%5Cu4e2d%5Cu4e24%5Cu8282%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8def%5Cu5f84%5Cu3002%2A%2A%5Cn%5Cn3.%5Cu5220%5Cu9664%5Cu4e24%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu8def%5Cu5f84%5Cu4e4b%5Cu95f4%5Cuff08%5Cu5305%5Cu542b%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cuff09%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cu4e2d%5Cu7684%5Cu6587%5Cu4ef6%5Cu7684%5Cu540e%5Cu7f00%5Cu540d%5Cu4e3aA%5Cu7684%5Cu6587%5Cu4ef6%5Cuff0c%5Cu5e76%5Cu7edf%5Cu8ba1%5Cu88ab%5Cu5220%5Cu9664%5Cu6587%5Cu4ef6%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cn%5Cu7531%5Cu4e8edmc%5Cu662f%5Cu4e00%5Cu4e2a%5Cu4ea4%5Cu4e92%5Cu7cfb%5Cu7edf%5Cuff0c%5Cu6240%5Cu4ee5%5Cu6211%5Cu4eec%5Cu7528tab%5Cu8bed%5Cu8a00%5Cu63cf%5Cu8ff0%5Cu8fd9%5Cu4e09%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn%5Cn%60%60%60%5Cnquery%20%5C%2Fp%20u%20v%5Cn%60%60%60%5Cn%5Cn%5Cu8868%5Cu793a%5Cu64cd%5Cu4f5c%5Cu4e00%5Cuff0c%5Cu5176%5Cu4e2d%20u%2Cv%20%5Cu8868%5Cu793a%5Cu4e24%5Cu6587%5Cu4ef6%5Cu5939%5Cu7684%5Cu7f16%5Cu53f7%5Cn%5Cn%60%60%60%5Cnquery%20%5C%2Fe%20u%20v%20%2A.A%5Cn%60%60%60%5Cn%5Cn%5Cu8868%5Cu793a%5Cu64cd%5Cu4f5c%5Cu4e8c%5Cuff0c%5Cu5176%5Cu4e2d%20u%2Cv%20%5Cu8868%5Cu793a%5Cu4e24%5Cu6587%5Cu4ef6%5Cu5939%5Cu7684%5Cu7f16%5Cu53f7%5Cuff0c%24%27%2A%27%24%20%5Cu4e3a%5Cu901a%5Cu914d%5Cu7b26%5Cuff0c%24%27.%27%24%5Cu7528%5Cu4e8e%5Cu5206%5Cu9694%5Cu6587%5Cu4ef6%5Cu540d%5Cu4e0e%5Cu540e%5Cu7f00%5Cuff0c%2A%2AA%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5c0f%5Cu5199%5Cu5b57%5Cu7b26%5Cu4e32%2A%2A%5Cu3002%5Cn%5Cn%60%60%60%5Cndel%20%5C%2Fe%20u%20v%20%2A.A%5Cn%60%60%60%5Cn%5Cn%5Cu8868%5Cu793a%5Cu64cd%5Cu4f5c%5Cu4e09%5Cuff0c%20%24u%2Cv%2C%20%2A.A%24%20%5Cu610f%5Cu4e49%5Cu4e0e%5Cu64cd%5Cu4f5c%5Cu4e8c%5Cu76f8%5Cu540c%5Cu3002%5Cn%5Cn%2A%2A%5Cu5982%5Cu679c%5Cu6ca1%5Cu6709%5Cu770b%5Cu61c2%5Cu9898%5Cu76ee%5Cu8bf7%5Cu7ed3%5Cu5408%5Cu6837%5Cu4f8b%5Cu53ca%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%5Cu6765%5Cu7406%5Cu89e3%5Cu3002%2A%2A%5Cn%5Cn%5Cu6700%5Cu540e%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu56f0%5Cu96be%5Cu7684%5Cu4efb%5Cu52a1%5Cu5c31%5Cu4ea4%5Cu7ed9%5Cu4f60%5Cu4e86%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%5Cuff0c%24n%2Cm%24%5Cuff0c%24n%24%5Cu8868%5Cu793a%5Cu6587%5Cu4ef6%5Cu5939%5Cu7684%5Cu6570%5Cu91cf%5Cuff08%5Cu6587%5Cu4ef6%5Cu5939%5Cu7f16%5Cu53f7%5Cu5728%24%5B1%2Cn%5D%24%5Cuff09%5Cuff0c%24m%24%5Cu8868%5Cu793a%5Cu64cd%5Cu4f5c%5Cu7684%5Cu6570%5Cu91cf%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24n-1%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%20%24u%2Cv%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6587%5Cu4ef6%5Cu5939%20%24u%2Cv%24%20%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e92%5Cu8bbf%5Cu5173%5Cu7cfb%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24n%24%20%5Cu884c%5Cuff0c%5Cu7b2c%24i%24%5Cu884c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu4e3a%20%24k%24%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2c%24i%24%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu5939%5Cu6709%24k%24%5Cu4e2a%5Cu6587%5Cu4ef6%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e3a%24k%24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8868%5Cu793a%5Cu6bcf%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu7684%5Cu540e%5Cu7f00%5Cu540d%5Cn%5Cn%5Cu518d%5Cu63a5%5Cu4e0b%5Cu6765%24m%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e32%5Cu6307%5Cu4ee4%5Cuff0c%5Cu683c%5Cu5f0f%5Cu89c1%5Cu4e0a%5Cu6587%22%2C%22outputFormat%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6307%5Cu4ee4%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8f93%5Cu51fa%5Cu6570%5Cu7684%5Cu610f%5Cu4e49%5Cu89c1%5Cu4e0a%5Cu6587%22%2C%22samples%22%3A%5B%5B%225%205%5Cn1%202%5Cn2%204%5Cn2%205%5Cn1%203%5Cn2%20cpp%20c%5Cn3%20pas%20txt%20txt%5Cn2%20vbs%20bat%5Cn3%20vbs%20cpp%20pas%5Cn4%20cpp%20c%20pas%20txt%5Cnquery%20%5C%2Fe%201%205%20%2A.txt%5Cnquery%20%5C%2Fp%201%204%5Cndel%20%5C%2Fe%202%202%20%2A.txt%5Cnquery%20%5C%2Fe%201%205%20%2A.txt%5Cnquery%20%5C%2Fe%204%203%20%2A.vbs%22%2C%223%5Cn2%5Cn2%5Cn1%5Cn2%22%5D%2C%5B%2212%207%5Cn1%202%5Cn1%203%5Cn1%204%5Cn2%205%5Cn2%206%5Cn3%207%5Cn7%2012%5Cn8%204%5Cn8%209%5Cn10%209%5Cn11%209%5Cn0%5Cn2%20c%20c%5Cn3%20zz%20c%20c%5Cn0%5Cn1%20gif%5Cn2%20png%20bmp%5Cn3%20avl%20avl%20mpshi%5Cn0%5Cn4%20cpp%20c%20pas%20js%5Cn5%20a%20b%20c%20d%20e%5Cn0%5Cn3%20a%20b%20c%5Cnquery%20%5C%2Fp%2011%2012%5Cnquery%20%5C%2Fe%201%202%20%2A.gif%5Cnquery%20%5C%2Fe%206%2010%20%2A.c%5Cndel%20%5C%2Fe%202%209%20%2A.c%5Cndel%20%5C%2Fe%203%2012%20%2A.c%5Cnquery%20%5C%2Fe%205%206%20%2A.gif%5Cnquery%20%5C%2Fe%206%201%20%2A.c%22%2C%227%5Cn0%5Cn4%5Cn3%5Cn3%5Cn1%5Cn0%22%5D%5D%2C%22hint%22%3A%22%2A%2A%5Cu6837%5Cu4f8b%5Cu4e00%5Cu89e3%5Cu91ca%5Cuff1a%2A%2A%5Cn%5Cn%21%5BT6%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F34166.png%29%5Cn%5Cn%5Cu5982%5Cu56fe%5Cu4e3a%5Cu6837%5Cu4f8b%5Cu4e00%5Cu5927%5Cu81f4%5Cu7ed3%5Cu6784%5Cuff0c%5Cu6a59%5Cu8272%5Cu65b9%5Cu6846%5Cu4e3a%5Cu6587%5Cu4ef6%5Cu5939%5Cuff0c%5Cu7070%5Cu8272%5Cu6587%5Cu5b57%5Cu8868%5Cu793a%5Cu6587%5Cu4ef6%5Cu540e%5Cu7f00%5Cu540d%5Cuff0c%5Cu7ea2%5Cu8272%5Cu7ebf%5Cu6761%5Cu8868%5Cu793a%5Cu6587%5Cu4ef6%5Cu4e92%5Cu8bbf%5Cu5173%5Cu7cfb%5Cu3002%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu6587%5Cu4ef6%5Cu59391%5Cu52305%5Cu4e4b%5Cu95f4txt%5Cu6587%5Cu4ef6%5Cu67093%5Cu4e2a%5Cu6240%5Cu4ee5%5Cu8f93%5Cu51fa3%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu6587%5Cu4ef6%5Cu59391%5Cu4e0e4%5Cu8ddd%5Cu79bb%5Cu4e3a2%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu5220%5Cu9664%5Cu7684%5Cu4e3a%5Cu6587%5Cu4ef6%5Cu59392%5Cu7684%5Cu6587%5Cu4ef6%5Cuff0ctxt%5Cu6587%5Cu4ef6%5Cu6709%5Cu4e24%5Cu4e2a%5Cuff0c%5Cu6240%5Cu4ee5%5Cu8f93%5Cu51fa2%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu7531%5Cu4e8e%5Cu6587%5Cu4ef6%5Cu59392%5Cu7684txt%5Cu6587%5Cu4ef6%5Cu88ab%5Cu5220%5Cu9664%5Cu4e86%5Cuff0c%5Cu6240%5Cu4ee51%5Cu52305%5Cu4e4b%5Cu95f4txt%5Cu6587%5Cu4ef6%5Cu53ea%5Cu67091%5Cu4e2a%20%20%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu4e94%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu6587%5Cu4ef6%5Cu59393%5Cu52304%5Cu4e4b%5Cu95f4vbs%5Cu6587%5Cu4ef6%5Cu67092%5Cu4e2a%5Cu6240%5Cu4ee5%5Cu8f93%5Cu51fa2%5Cn%5Cn%2A%2A%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cuff1a%2A%2A%5Cn%5Cn30%25%5Cu6570%5Cu636e%5Cu6ee1%5Cu8db3%5Cuff1a%24n%2Cm%3C%3D100%2Ck%3C%3D3%24%5Cn%5Cn50%25%5Cu6570%5Cu636e%5Cu6ee1%5Cu8db3%5Cuff1a%24n%2Cm%3C%3D5000%2Ck%3C%3D10%24%5Cn%5Cn70%25%5Cu6570%5Cu636e%5Cu6ee1%5Cu8db3%5Cuff1a%24n%2Cm%3C%3D2%20%5C%5Ctimes%2010%5E4%2Ck%3C%3D50%24%5Cn%5Cn90%25%5Cu6570%5Cu636e%5Cu6ee1%5Cu8db3%5Cuff1a%24n%2Cm%3C%3D5%20%5C%5Ctimes%2010%5E4%24%5Cn%5Cn100%25%5Cu6570%5Cu636e%5Cu6ee1%5Cu8db3%5Cuff1a%24n%2Cm%3C%3D10%5E5%24%5Cuff0c%5Cu6587%5Cu4ef6%5Cu603b%5Cu6570%5Cu5c0f%5Cu4e8e%245%20%5C%5Ctimes%2010%5E5%24%5Cuff0c%5Cu6587%5Cu4ef6%5Cu540e%5Cu7f00%5Cu540d%5Cu4e3a%5Cu5c0f%5Cu5199%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e14%5Cu4e0d%5Cu8d85%5Cu8fc76%5Cu4e2a%5Cu5b57%5Cu7b26%5Cn%5Cn%5Cu5176%5Cu4ed6%5Cu8bf4%5Cu660e%5Cuff1a%5Cn%5Cn1.%5Cu7ea650%25%5Cu7684%5Cu6570%5Cu636e%5Cu4e3a%5Cu5b8c%5Cu5168%5Cu968f%5Cu673a%5Cu751f%5Cu6210%5Cn%5Cn2.%5Cu6570%5Cu636e%5Cu5f31%5Cu5316%5Cu7248%5Cuff1a%5BPION%5Cu540e%5Cu7f00%5Cu81ea%5Cu52a8%5Cu673a%5Cuff08%5Cu6570%5Cu636e%5Cu5f31%5Cu5316%5Cu7248%5Cuff09%5D%28https%3A%5C%2F%5C%2Fwww.luogu.org%5C%2Fproblemnew%5C%2Fshow%5C%2FU41487%29%22%2C%22provider%22%3A%7B%22uid%22%3A85423%2C%22name%22%3A%22Voldermod%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B2%2C45%2C228%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A115%2C%22totalAccepted%22%3A14%2C%22pid%22%3A%22P4947%22%2C%22title%22%3A%22PION%5Cu540e%5Cu7f00%5Cu81ea%5Cu52a8%5Cu673a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2408%22%2C%22title%22%3A%22%5Cu4e0d%5Cu540c%5Cu5b50%5Cu4e32%5Cu4e2a%5Cu6570%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2578%22%2C%22title%22%3A%22%5BZJOI2005%5D%5Cu4e5d%5Cu6570%5Cu7801%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4246%22%2C%22title%22%3A%22%5BSHOI2008%5D%5Cu5835%5Cu585e%5Cu7684%5Cu4ea4%5Cu901a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4932%22%2C%22title%22%3A%22%5Cu6d4f%5Cu89c8%5Cu5668%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5279%22%2C%22title%22%3A%22%5BZJOI2019%5D%5Cu9ebb%5Cu5c06%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PION%5Cu540e%5Cu7f00%5Cu81ea%5Cu52a8%5Cu673a%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PION后缀自动机</h1>
+<h2>题目背景</h2>
+<div>NOIP2018原创模拟题T6
+NOIP2018原创模拟赛DAY2 T3
+NOIP DAY1 T3+ or DAY2 T3 难度
+鉴于 NOIP2017 DAY2 T3 的难度，就有了这道题。**然而这道题考察的知识并不是后缀自动机**</div>
+<h2>题目描述</h2>
+<div>小P是一个技术高超的程序员，他开发了一套自己的操作系统，称为PION系统，该系统与Windows和Linux有很大不同，目前他正在测试该系统。
+PION系统与Windows系统最大的不同在于文件的储存与操作，POIN的文件夹没有父子之分。我们知道，在Windows系统中，可以在文件夹里新建子文件夹。但是，PION系统文件夹不分父子关系，**但是部分文件夹之间可以互相直接访问，我们称这种关系为互访关系，而且，对于一个有$n$个文件夹的系统来说，这种互访关系有$n-1$个，且保证所有文件夹均可以通过互访关系而互相访问。也就是说：我们可以把Windows中的文件夹的集合看作一棵有根树，而把PION系统中的文件夹集合看作为无根树。**
+在PION系统中，每个文件夹都可以储存文件，和Windows一样，文件名包含后缀名。
+现在小P正在构思一种可以对文件夹中文件后缀进行方便操作的交互式程序dmc，他也将其称为**PION后缀自动机**。由于他太忙了，所以他希望你帮他实现**部分功能**。
+他希望你帮他实现三个功能：
+1.计算两个文件夹之间的距离。我们定义：文件夹之间的距离为其中一个文件夹通过互访达到另一个文件夹最少互访次数。比如：同一个文件夹距离为0，两个有互访关系的文件夹距离为1。
+2.计算两个文件夹路径之间（包含这两个文件夹）的文件夹中的文件的后缀名为A的文件数量，**其中A是一个小写字符串。提示：我们可以把PION文件夹之间的路径理解为树中两节点之间的路径。**
+3.删除两个文件夹路径之间（包含这两个文件夹）的文件夹中的文件的后缀名为A的文件，并统计被删除文件的数量。
+由于dmc是一个交互系统，所以我们用tab语言描述这三个操作：
+```
+query /p u v
+```
+表示操作一，其中 u,v 表示两文件夹的编号
+```
+query /e u v *.A
+```
+表示操作二，其中 u,v 表示两文件夹的编号，$'*'$ 为通配符，$'.'$用于分隔文件名与后缀，**A是一个小写字符串**。
+```
+del /e u v *.A
+```
+表示操作三， $u,v, *.A$ 意义与操作二相同。
+**如果没有看懂题目请结合样例及样例解释来理解。**
+最后，这个困难的任务就交给你了。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行两个数，$n,m$，$n$表示文件夹的数量（文件夹编号在$[1,n]$），$m$表示操作的数量
+接下来 $n-1$ 行，每行两个数 $u,v$，表示文件夹 $u,v$ 之间有互访关系
+接下来 $n$ 行，第$i$行第一个数为 $k$，表示第$i$个文件夹有$k$个文件，接下来为$k$个字符串，表示每个文件的后缀名
+再接下来$m$行，每行一串指令，格式见上文</div>
+<h3>输出格式</h3>
+<br />
+<div>对于每个指令，输出一个数，输出数的意义见上文</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 5
+1 2
+2 4
+2 5
+1 3
+2 cpp c
+3 pas txt txt
+2 vbs bat
+3 vbs cpp pas
+4 cpp c pas txt
+query /e 1 5 *.txt
+query /p 1 4
+del /e 2 2 *.txt
+query /e 1 5 *.txt
+query /e 4 3 *.vbs</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+2
+2
+1
+2</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>12 7
+1 2
+1 3
+1 4
+2 5
+2 6
+3 7
+7 12
+8 4
+8 9
+10 9
+11 9
+0
+2 c c
+3 zz c c
+0
+1 gif
+2 png bmp
+3 avl avl mpshi
+0
+4 cpp c pas js
+5 a b c d e
+0
+3 a b c
+query /p 11 12
+query /e 1 2 *.gif
+query /e 6 10 *.c
+del /e 2 9 *.c
+del /e 3 12 *.c
+query /e 5 6 *.gif
+query /e 6 1 *.c</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>7
+0
+4
+3
+3
+1
+0</code></pre>
+<h2>说明</h2>
+<div>**样例一解释：**
+![T6](https://cdn.luogu.com.cn/upload/pic/34166.png)
+如图为样例一大致结构，橙色方框为文件夹，灰色文字表示文件后缀名，红色线条表示文件互访关系。
+对于第一个操作：文件夹1到5之间txt文件有3个所以输出3
+对于第二个操作：文件夹1与4距离为2
+对于第三个操作：删除的为文件夹2的文件，txt文件有两个，所以输出2
+对于第四个操作：由于文件夹2的txt文件被删除了，所以1到5之间txt文件只有1个
+对于第五个操作：文件夹3到4之间vbs文件有2个所以输出2
+**数据范围：**
+30%数据满足：$n,m<=100,k<=3$
+50%数据满足：$n,m<=5000,k<=10$
+70%数据满足：$n,m<=2 \times 10^4,k<=50$
+90%数据满足：$n,m<=5 \times 10^4$
+100%数据满足：$n,m<=10^5$，文件总数小于$5 \times 10^5$，文件后缀名为小写字符串且不超过6个字符
+其他说明：
+1.约50%的数据为完全随机生成
+2.数据弱化版：[PION后缀自动机（数据弱化版）](https://www.luogu.org/problemnew/show/U41487)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

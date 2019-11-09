@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[CERC2017]Donut Drone - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381750:qC7GKSz+nnThYk1T98Yyvzy6gTkXsjymt9iva2Vqi2Q=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20building%20a%20simulation%20in%20which%20a%20drone%20explores%20a%20volatile%20torus-shaped%20planet.%20Technically%2Cthe%20drone%20is%20moving%20across%20a%20toroidal%20grid%20%5Cu2014%20a%20rectangular%20grid%20that%20wraps%20around%20circularly%20in%20both%20dimensions.%20The%20grid%20consists%20of%20cells%20organized%20into%20%24r%24%20rows%20numbered%20%241%24%20through%20%24r%24%20top%20to%20bottom%20and%20%24c%24%5Cncolumns%20numbered%20%241%24%20through%20%24c%24%20left%20to%20right.%20Each%20grid%20cell%20has%20a%20certain%20elevation%20%5Cu2014%20a%20positive%20integer.%5Cn%5Cn%21%5BPZ6NxP.png%5D%28https%3A%5C%2F%5C%2Fs1.ax1x.com%5C%2F2018%5C%2F07%5C%2F06%5C%2FPZ6NxP.png%29%5Cn%5CnThe%20drone%20is%20initially%20located%20in%20the%20cell%20in%20the%20first%20row%20and%20first%20column.%20In%20each%20step%20the%20drone%20considers%20three%20cells%3A%20the%20cell%20directly%20to%20the%20right%2C%20the%20cell%20diagonally%20right-down%20and%20the%20cell%20diagonally%20right-up%20%28wrapping%20around%20if%20necessary%29.%20The%20drone%20flies%20to%20the%20cell%20with%20the%20largest%20elevation%20of%20the%20three.%5Cn%5CnTwo%20types%20of%20events%20may%20happen%20during%20the%20simulation%3A%5Cn%20%20%20-%20%5Cu201c%60%60move%20k%60%60%5Cu201d%20%5Cu2014%20The%20drone%20makes%20%24k%24%20steps.%5Cn%20%20%20-%20%5Cu201c%60%60change%20a%20b%20e%60%60%5Cu201d%20%5Cu2014%20The%20elevation%20of%20the%20cell%20in%20row%20%24a%24%20column%20%24b%24%20changes%20to%20%24e%24.%5Cn%5CnFind%20the%20drone%5Cu2019s%20position%20immediately%20after%20each%20%60%60move%60%60%20event.%20You%20may%20assume%20that%20at%20each%20point%20in%20time%2C%20no%20sequence%20of%20three%20circularly%20consecutive%20cells%20in%20the%20same%20column%20will%20have%20the%20same%20elevation.%5CnHence%2C%20each%20drone%20step%20is%20well%20defined.%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24r%24%20and%20%24c%283%20%5C%5Cle%20r%2Cc%20%5C%5Cle%202%20000%29%24%20%5Cu2014%20the%20number%20of%20rows%20and%20the%20number%20of%20columns%20of%20the%20toroidal%20grid.%20The%20%24i-th%24%20of%20the%20following%20%24r%24%20lines%20contains%20a%20sequence%20of%20%24c%24%20integers%20%24e_%7Bi%2C1%7D%2Ce_%7Bi%2C2%7D%2C...%2Ce_%7Bi%2Cc%7D%281%20%5C%5Cle%20e_%7Bi%2Cj%7D%20%5C%5Cle%2010%5E9%29%24%20%5Cu2014%20the%20initial%20elevations%20of%20cells%20in%20row%20%24i%24.%5Cn%5CnThe%20following%20line%20contains%20an%20integer%20%24m%281%20%5C%5Cle%20m%20%5C%5Cle%205%20000%29%24%20%5Cu2014%20the%20number%20of%20events.%20The%20%24j-th%24%20of%20the%20following%20%24m%24%20lines%20contains%20the%20%24j-th%24%20event%20and%20is%20either%20of%20the%20form%20%5Cu201c%60%60move%20k%60%60%5Cu201d%20where%20%24k%24%20is%20an%20integer%20such%20that%20%241%20%5C%5Cle%20k%20%5C%5Cle%2010%5E9%24%20or%20%5Cu201c%60%60change%20a%20b%20e%60%60%5Cu201d%20where%20%24a%2Cb%24%20and%20%24e%24%20are%20integers%20such%20that%20%241%20%5C%5Cle%20a%20%5C%5Cle%20r%2C%201%20%5C%5Cle%20b%20%5C%5Cle%20c%24%20and%20%241%20%5C%5Cle%20e%20%5C%5Cle%2010%5E9%24.%5Cn%22%2C%22outputFormat%22%3A%22Output%20%24w%24%20lines%20where%20%24w%24%20is%20the%20number%20of%20%60%60move%60%60%20events%20in%20the%20input%20%5Cu2014%20the%20%24j-th%24%20line%20should%20contain%20the%20drone%5Cu2019s%20position%20%28row%20and%20column%20numbers%29%20after%20the%20%24j-th%24%20%60%60move%60%60%20event%20in%20the%20input.%5Cn%22%2C%22samples%22%3A%5B%5B%224%204%5Cn1%202%209%203%5Cn3%205%204%208%5Cn4%203%202%207%5Cn5%208%201%206%5Cn4%5Cnmove%201%5Cnmove%201%5Cnchange%201%204%20100%5Cnmove%201%5Cn%22%2C%224%202%5Cn1%203%5Cn1%204%5Cn%22%5D%2C%5B%223%204%5Cn10%2020%2030%2040%5Cn50%2060%2070%2080%5Cn90%2093%2095%2099%5Cn3%5Cnmove%204%5Cnchange%202%201%20100%5Cnmove%204%5Cn%22%2C%223%201%5Cn2%201%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A41051%2C%22name%22%3A%22%5Cu548c%5Cu6cc9%5Cu6b63%5Cu5b97%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B8000%2C8000%2C8000%2C8000%2C8000%2C8000%2C8000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B34%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A23%2C%22totalAccepted%22%3A11%2C%22pid%22%3A%22P4739%22%2C%22title%22%3A%22%5BCERC2017%5DDonut%20Drone%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BCERC2017%5DDonut%20Drone%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[CERC2017]Donut Drone</h1>
+<h2>题目描述</h2>
+<div>You are building a simulation in which a drone explores a volatile torus-shaped planet. Technically,the drone is moving across a toroidal grid — a rectangular grid that wraps around circularly in both dimensions. The grid consists of cells organized into $r$ rows numbered $1$ through $r$ top to bottom and $c$
+columns numbered $1$ through $c$ left to right. Each grid cell has a certain elevation — a positive integer.
+![PZ6NxP.png](https://s1.ax1x.com/2018/07/06/PZ6NxP.png)
+The drone is initially located in the cell in the first row and first column. In each step the drone considers three cells: the cell directly to the right, the cell diagonally right-down and the cell diagonally right-up (wrapping around if necessary). The drone flies to the cell with the largest elevation of the three.
+Two types of events may happen during the simulation:
+- “``move k``” — The drone makes $k$ steps.
+- “``change a b e``” — The elevation of the cell in row $a$ column $b$ changes to $e$.
+Find the drone’s position immediately after each ``move`` event. You may assume that at each point in time, no sequence of three circularly consecutive cells in the same column will have the same elevation.
+Hence, each drone step is well defined.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $r$ and $c(3 \le r,c \le 2 000)$ — the number of rows and the number of columns of the toroidal grid. The $i-th$ of the following $r$ lines contains a sequence of $c$ integers $e_{i,1},e_{i,2},...,e_{i,c}(1 \le e_{i,j} \le 10^9)$ — the initial elevations of cells in row $i$.
+The following line contains an integer $m(1 \le m \le 5 000)$ — the number of events. The $j-th$ of the following $m$ lines contains the $j-th$ event and is either of the form “``move k``” where $k$ is an integer such that $1 \le k \le 10^9$ or “``change a b e``” where $a,b$ and $e$ are integers such that $1 \le a \le r, 1 \le b \le c$ and $1 \le e \le 10^9$.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $w$ lines where $w$ is the number of ``move`` events in the input — the $j-th$ line should contain the drone’s position (row and column numbers) after the $j-th$ ``move`` event in the input.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 4
+1 2 9 3
+3 5 4 8
+4 3 2 7
+5 8 1 6
+4
+move 1
+move 1
+change 1 4 100
+move 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4 2
+1 3
+1 4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 4
+10 20 30 40
+50 60 70 80
+90 93 95 99
+3
+move 4
+change 2 1 100
+move 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3 1
+2 1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

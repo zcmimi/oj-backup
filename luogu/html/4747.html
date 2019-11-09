@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[CERC2017]Intrinsic Interval - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381760:tcKXgHdkjIN5+1/BehdsjymwNeVXElxja/t0gYSlRwE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Given%20a%20permutation%20%24%5C%5Cpi%24%20of%20integers%20%241%24%20through%20%24n%24%2C%20an%20interval%20in%20%24%5C%5Cpi%24%20is%20a%20consecutive%20subsequence%20consisting%20of%20consecutive%20numbers.%20More%20precisely%2C%20for%20indices%20%24a%24%20and%20%24b%24%20where%20%241%20%5C%5Cle%20a%20%5C%5Cle%20b%20%5C%5Cle%20n%24%2C%20the%20subsequence%20%24%5C%5Cpi%5Eb_a%20%3D%20%28%5C%5Cpi_a%2C%20%5C%5Cpi_%7Ba%2B1%7D%2C%20.%20.%20.%20%2C%5C%5Cpi_b%29%24%20is%20an%20interval%20if%20sorting%20it%20would%20yield%20a%20sequence%20of%20consecutive%20integers.%5Cn%5CnFor%20example%2C%20in%20permutation%20%24%5C%5Cpi%20%3D%20%283%2C%201%2C%207%2C%205%2C%206%2C%204%2C%202%29%24%2C%20the%20subsequence%20%24%5C%5Cpi%5E6_3%24%20is%20an%20interval%20%28it%20contains%20the%20numbers%20%244%24%20through%20%247%24%29%20while%20%24%5C%5Cpi%5E3_1%24%20is%20not.%5Cn%5CnFor%20a%20subsequence%20%24%5C%5Cpi%5Ey_x%24%20its%20intrinsic%20interval%20is%20any%20interval%20%24%5C%5Cpi%5Eb_a%24%20that%20contains%20the%20given%20subsequence%20%24%28a%20%5C%5Cle%20x%20%5C%5Cle%20y%20%5C%5Cle%20b%29%24%20and%20that%20is%2C%20additionally%2C%20as%20short%20as%20possible.%20Of%20course%2C%20the%20length%20of%20an%20interval%20is%20defined%20as%20the%20number%20of%20elements%20it%20contains.%5Cn%5CnGiven%20a%20permutation%20%24%5C%5Cpi%24%20and%20%24m%24%20of%20its%20subsequences%2C%20find%20some%20intrinsic%20interval%20for%20each%20subsequence.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24n%281%20%5C%5Cle%20n%20%5C%5Cle%20100%20000%29%24%20%5Cu2014%20the%20size%20of%20the%20permutation%20%24%5C%5Cpi%24.%20The%20following%20line%20contains%20%24n%24%20different%20integers%20%24%5C%5Cpi_1%2C%20%5C%5Cpi_2%2C%20.%20.%20.%20%2C%20%5C%5Cpi_n%20%281%20%5C%5Cle%20%5C%5Cpi_j%20%5C%5Cle%20n%29%24%20%5Cu2014%20the%20permutation%20itself.%5Cn%5CnThe%20following%20line%20contains%20an%20integer%20%24m%281%20%5C%5Cle%20m%20%5C%5Cle%20100%20000%29%24%20%5Cu2014%20the%20number%20of%20subsequences.%20The%20%24j-th%24%20of%20the%20following%20%24m%24%20lines%20contains%20integers%20%24x_j%24%20and%20%24y_j%281%20%5C%5Cle%20x_j%20%5C%5Cle%20y_j%20%5C%5Cle%20n%29%24%20%5Cu2014%20the%20endpoints%20of%20the%20%24j-th%24%20subsequence.%5Cn%22%2C%22outputFormat%22%3A%22Output%20%24m%24%20lines.%20The%20%24j-th%24%20line%20should%20contain%20two%20integers%20%24a_j%24%20and%20%24b_j%24%20where%20%241%20%5C%5Cle%20a_j%20%5C%5Cle%20b_j%20%5C%5Cle%20n%24%20%5Cu2014%20the%20endpoints%20of%20some%20intrinsic%20interval%20of%20the%20%24j-th%24%20subsequence%20%24%5C%5Cpi%5E%7By_j%7D_%7Bx_j%7D%24.%22%2C%22samples%22%3A%5B%5B%227%5Cn3%201%207%205%206%204%202%5Cn3%5Cn3%206%5Cn7%207%5Cn1%203%5Cn%22%2C%223%206%5Cn7%207%20%5Cn1%207%22%5D%2C%5B%2210%5Cn2%201%204%203%205%206%207%2010%208%209%5Cn5%5Cn2%203%5Cn3%207%5Cn4%207%5Cn4%208%5Cn7%208%5Cn%22%2C%221%204%5Cn3%207%5Cn3%207%5Cn3%2010%5Cn7%2010%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A41051%2C%22name%22%3A%22%5Cu548c%5Cu6cc9%5Cu6b63%5Cu5b97%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%2C3000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6b63%5Cu6574%5Cu6570%20%241%2C2%2C3%20%5C%5Ccdots%20n%24%20%5Cu7684%5Cu4e00%5Cu4e2a%5Cu6392%5Cu5217%20%24%5C%5Cpi%24%5Cuff0c%5Cu82e5%5Cu5b83%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu4e32%20%24%5C%5Cpi%5Ba..b%5D%24%20%5Cu6392%5Cu5e8f%5Cu540e%5Cu662f%5Cu8fde%5Cu7eed%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu5219%5Cu79f0%20%24%5C%5Cpi%5Ba..b%5D%24%20%5Cu662f%5Cu4e00%5Cu4e2a%5Cu201c%5Cu533a%5Cu95f4%5Cu201d%5Cu3002%5Cu4f8b%5Cu5982%5Cu5bf9%5Cu6392%5Cu5217%20%24pi%3D%7B3%2C1%2C7%2C5%2C6%2C4%2C2%7D%24%5Cuff0c%5Cu5b50%5Cu4e32%20%24%5C%5Cpi%5B3..6%5D%24%20%5Cu662f%5Cu4e00%5Cu4e2a%5Cu201c%5Cu533a%5Cu95f4%5Cu201d%5Cuff08%5Cu56e0%5Cu4e3a%5Cu5b83%5Cu5305%5Cu542b%20%244%2C5%2C6%2C7%24%5Cuff09%5Cuff0c%24%5C%5Cpi%5B1..3%5D%24%20%5Cu5219%5Cu4e0d%5Cu662f%5Cu3002%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu4e32%5Cu7684%5Cu201c%5Cu672c%5Cu5f81%5Cu533a%5Cu95f4%5Cu201d%5Cu662f%5Cu5305%5Cu542b%5Cu8be5%5Cu5b50%5Cu4e32%5Cu7684%5Cu6700%5Cu77ed%5Cu533a%5Cu95f4%5Cu3002%5Cu201c%5Cu5305%5Cu542b%5Cu201d%5Cu662f%5Cu6307%5Cuff1a%5Cu82e5%20%24%5C%5Cpi%5Bx..y%5D%24%20%5Cu7684%5Cu672c%5Cu5f81%5Cu533a%5Cu95f4%5Cu662f%20%24%5C%5Cpi%5Ba..b%5D%24%5Cuff0c%5Cu5219%20%24a%20%5C%5Cle%20x%20%5C%5Cle%20y%20%5C%5Cle%20b%24%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu6392%5Cu5217%20%24%5C%5Cpi%24%20%5Cu53ca%5Cu5176%20%24m%24%20%5Cu4e2a%5Cu5b50%5Cu4e32%5Cuff0c%5Cu6c42%5Cu6bcf%5Cu4e2a%5Cu5b50%5Cu4e32%5Cu7684%5Cu201c%5Cu672c%5Cu5f81%5Cu533a%5Cu95f4%5Cu201d%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24n%281%20%5C%5Cle%20n%20%5C%5Cle%20100000%29%24%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%20%24n%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu4ee3%5Cu8868%5Cu6392%5Cu5217%20%24%5C%5Cpi%24%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e09%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24m%281%20%5C%5Cle%20m%20%5C%5Cle%20100000%29%24%5Cu3002%5Cn%5Cn%5Cu6b64%5Cu540e%20%24m%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24x%2Cy%281%20%5C%5Cle%20x%20%5C%5Cle%20y%20%5C%5Cle%20n%29%24%5Cuff0c%5Cu4ee3%5Cu8868%5Cu5b50%5Cu4e32%20%24%5C%5Cpi%5Bx..y%5D%24%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu8f93%5Cu51fa%20%24m%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24a%2Cb%281%20%5C%5Cle%20a%20%5C%5Cle%20b%20%5C%5Cle%20n%29%24%5Cuff0c%5Cu4ee3%5Cu8868%5Cu5b50%5Cu4e32%5Cu5bf9%5Cu5e94%5Cu7684%5Cu672c%5Cu5f81%5Cu533a%5Cu95f4%20%24%5C%5Cpi%5Ba..b%5D%24%5Cu3002%5Cn%5Cn%22%2C%22tags%22%3A%5B34%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A582%2C%22totalAccepted%22%3A170%2C%22pid%22%3A%22P4747%22%2C%22title%22%3A%22%5BCERC2017%5DIntrinsic%20Interval%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A135757%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu7684%5Cu6790%5Cu5408%5Cu6811%5Cu505a%5Cu6cd5%5Cu662f%5Cu4ec0%5Cu4e48%22%2C%22forum%22%3A%7B%22id%22%3A27199%2C%22name%22%3A%22P4747%20%5BCERC2017%5DIntrinsic%20Interval%22%2C%22slug%22%3A%22P4747%22%7D%7D%2C%7B%22id%22%3A105561%2C%22title%22%3A%22%5Cu4e00%5Cu4e2a%5Cu6709%5Cu5173C%2B%2B%5Cu7279%5Cu6027%5Cu7684%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A27199%2C%22name%22%3A%22P4747%20%5BCERC2017%5DIntrinsic%20Interval%22%2C%22slug%22%3A%22P4747%22%7D%7D%2C%7B%22id%22%3A56993%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cuff08%5Cu4e5f%5Cu4e0d%5Cu662f%5Cu5f88%5Cu597d%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A27199%2C%22name%22%3A%22P4747%20%5BCERC2017%5DIntrinsic%20Interval%22%2C%22slug%22%3A%22P4747%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2657%22%2C%22title%22%3A%22%5BSCOI2009%5Dwindy%5Cu6570%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4317%22%2C%22title%22%3A%22%5Cu82b1%5Cu795e%5Cu7684%5Cu6570%5Cu8bba%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1213C%22%2C%22title%22%3A%22Book%20Reading%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1215F%22%2C%22title%22%3A%22Radio%20Stations%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1228A%22%2C%22title%22%3A%22Distinct%20Digits%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BCERC2017%5DIntrinsic%20Interval%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[CERC2017]Intrinsic Interval</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述
+对于正整数 $1,2,3 \cdots n$ 的一个排列 $\pi$，若它的一个子串 $\pi[a..b]$ 排序后是连续正整数，则称 $\pi[a..b]$ 是一个“区间”。例如对排列 $pi={3,1,7,5,6,4,2}$，子串 $\pi[3..6]$ 是一个“区间”（因为它包含 $4,5,6,7$），$\pi[1..3]$ 则不是。
+一个子串的“本征区间”是包含该子串的最短区间。“包含”是指：若 $\pi[x..y]$ 的本征区间是 $\pi[a..b]$，则 $a \le x \le y \le b$。
+给定一个排列 $\pi$ 及其 $m$ 个子串，求每个子串的“本征区间”。
+### 输入格式
+第一行一个整数 $n(1 \le n \le 100000)$。
+第二行 $n$ 个整数，代表排列 $\pi$。
+第三行一个整数 $m(1 \le m \le 100000)$。
+此后 $m$ 行，每行两个整数 $x,y(1 \le x \le y \le n)$，代表子串 $\pi[x..y]$。
+### 输出格式
+输出 $m$ 行，每行两个整数 $a,b(1 \le a \le b \le n)$，代表子串对应的本征区间 $\pi[a..b]$。
+</div>
+<h2>题目描述</h2>
+<div>Given a permutation $\pi$ of integers $1$ through $n$, an interval in $\pi$ is a consecutive subsequence consisting of consecutive numbers. More precisely, for indices $a$ and $b$ where $1 \le a \le b \le n$, the subsequence $\pi^b_a = (\pi_a, \pi_{a+1}, . . . ,\pi_b)$ is an interval if sorting it would yield a sequence of consecutive integers.
+For example, in permutation $\pi = (3, 1, 7, 5, 6, 4, 2)$, the subsequence $\pi^6_3$ is an interval (it contains the numbers $4$ through $7$) while $\pi^3_1$ is not.
+For a subsequence $\pi^y_x$ its intrinsic interval is any interval $\pi^b_a$ that contains the given subsequence $(a \le x \le y \le b)$ and that is, additionally, as short as possible. Of course, the length of an interval is defined as the number of elements it contains.
+Given a permutation $\pi$ and $m$ of its subsequences, find some intrinsic interval for each subsequence.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $n(1 \le n \le 100 000)$ — the size of the permutation $\pi$. The following line contains $n$ different integers $\pi_1, \pi_2, . . . , \pi_n (1 \le \pi_j \le n)$ — the permutation itself.
+The following line contains an integer $m(1 \le m \le 100 000)$ — the number of subsequences. The $j-th$ of the following $m$ lines contains integers $x_j$ and $y_j(1 \le x_j \le y_j \le n)$ — the endpoints of the $j-th$ subsequence.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $m$ lines. The $j-th$ line should contain two integers $a_j$ and $b_j$ where $1 \le a_j \le b_j \le n$ — the endpoints of some intrinsic interval of the $j-th$ subsequence $\pi^{y_j}_{x_j}$.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7
+3 1 7 5 6 4 2
+3
+3 6
+7 7
+1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 6
+7 7 
+1 7</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>10
+2 1 4 3 5 6 7 10 8 9
+5
+2 3
+3 7
+4 7
+4 8
+7 8
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1 4
+3 7
+3 7
+3 10
+7 10
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[BalticOI 2016 day1]Spiral - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381685:fpHsGeVSqe9LouLGPTyLdFSHtIWt8yqD6w296dnuAcY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22A%20grid%20of%20size%20%24%282n%2B1%29%5C%5Ctimes%282n%2B1%29%24%20has%20been%20constructed%20as%20follows.%20Number%20%241%24%20has%20been%20placed%20in%20the%20center%20square%2C%20number%20%242%24%20has%20been%20placed%20to%20the%20right%20of%20it%2C%20and%20the%20following%20numbers%20have%20been%20placed%20along%20the%20spiral%20counterclockwise.%5Cn%5CnYour%20task%20is%20to%20calculate%20answers%20for%20%24q%24%20queries%20where%20the%20sum%20of%20numbers%20in%20an%20rectangular%20region%20in%20the%20grid%20is%20requested%20%28modulo%20%2410%5E9%2B7%24%29.%20For%20example%2C%20in%20the%20following%20grid%20%24n%3D2%24%20and%20the%20sum%20of%20numbers%20in%20the%20gray%20region%20is%20%2474%24%20%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F20871.png%29%22%2C%22inputFormat%22%3A%22The%20first%20input%20line%20contains%20two%20integers%20%24n%24%20and%20%24q%24%20%3A%20the%20size%20of%20the%20grid%20and%20the%20number%20of%20queries.%5Cn%5CnAfter%20this%2C%20there%20are%20%24q%24%20lines%2C%20each%20containing%20four%20integers%20%24x_1%2C%20y_1%2C%20x_2%24%20%20and%20%24y_2%24%20%28%24-n%5C%5Cleq%20x_1%5C%5Cleq%20x_2%5C%5Cleq%20n%2C%20-n%5C%5Cleq%20y_1%5C%5Cleq%20y_2%5C%5Cleq%20n%24%29.%20This%20means%20that%20you%20should%20calculate%20the%20sum%20of%20numbers%20in%20a%20rectangular%20region%20with%20corners%20%24%28x_1%2Cy_1%29%24%20and%20%24%28x_2%2Cy_2%29%24.%22%2C%22outputFormat%22%3A%22You%20should%20output%20the%20answer%20for%20each%20query%20%28modulo%20%2410%5E9%2B7%24%29.%5Cn%22%2C%22samples%22%3A%5B%5B%222%203%5Cn0%20-2%201%201%5Cn-1%200%201%200%5Cn1%202%201%202%5Cn%22%2C%2274%5Cn9%5Cn14%5Cn%22%5D%5D%2C%22hint%22%3A%22%23%23%20Subtasks%5Cn%5CnIn%20all%20subtasks%20%241%5C%5Cleq%20q%5C%5Cleq100%24.%5Cn%5Cn%23%23%23%20Subtask%201%20~~%2812%20points%29~~%5Cn%5Cn-%20%241%5C%5Cleq%20n%5C%5Cleq1000%24%5Cn%5Cn%23%23%23%20Subtask%202%20~~%2815%20points%29~~%5Cn%5Cn-%20%241%5C%5Cleq%20n%5C%5Cleq10%5E9%24%5Cn%5Cn-%20%24x_1%3Dx_2%24%20and%20%24y_1%3Dy_2%24%5Cn%5Cn%23%23%23%20Subtask%203%20~~%2817%20points%29~~%5Cn%5Cn-%20%241%5C%5Cleq%20n%5C%5Cleq10%5E5%24%5Cn%5Cn%23%23%23%20Subtask%204%20~~%2831%20points%29~~%5Cn%5Cn-%20%241%5C%5Cleq%20n%5C%5Cleq10%5E9%24%5Cn%5Cn-%20%24x_1%3Dy_1%3D1%24%5Cn%5Cn%23%23%23%20Subtask%205%20~~%2825%20points%29~~%5Cn%5Cn-%20%241%5C%5Cleq%20n%5C%5Cleq10%5E9%24%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A82152%2C%22name%22%3A%22khong%22%2C%22slogan%22%3A%22%5Cu83dc%5Cu9e21ACMer%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Orange%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%2C1500%2C1500%2C1500%2C1500%5D%2C%22memory%22%3A%5B256000%2C256000%2C256000%2C256000%2C256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5BBalticOI%202016%20Day1%5D%5Cu87ba%5Cu65cb%5Cn%5Cn%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu77e9%5Cu9635%5Cu7684%5Cu5927%5Cu5c0f%5Cu4e3a%20%24%282n%2B1%29%5C%5Ctimes%20%282n%2B1%29%24%5Cuff0c%5Cu6211%5Cu4eec%5Cu4eec%5Cu901a%5Cu8fc7%5Cu4e0b%5Cu8ff0%5Cu65b9%5Cu6cd5%5Cu586b%5Cu6570%5Cuff1a%5Cu6570%5Cu5b57%20%241%24%20%5Cu5728%5Cu4e2d%5Cu5fc3%5Cuff0c%5Cu6570%5Cu5b57%20%242%24%20%5Cu5728%5Cu5176%5Cu53f3%5Cuff0c%5Cu5176%5Cu4ed6%5Cu6570%5Cu5b57%5Cu4f9d%5Cu6b21%5Cu6309%5Cu7167%5Cu9006%5Cu65f6%5Cu9488%5Cu87ba%5Cu65cb%5Cu6446%5Cu653e%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu5bf9%5Cu4e8e%20%24q%24%20%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu7ed9%5Cu5b9a%5Cu5b50%5Cu77e9%5Cu9635%5Cu6240%5Cu6709%5Cu6570%5Cu5b57%5Cu7684%5Cu548c%5Cu5bf9%20%24%2810%5E9%2B7%29%24%20%5Cu53d6%5Cu4f59%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%5Cu6bd4%5Cu5982%5Cu4ee5%5Cu4e0b%20%24n%3D2%24%20%5Cu7684%5Cu77e9%5Cu9635%5Cuff0c%5Cu7070%5Cu8272%5Cu533a%5Cu57df%5Cu7684%5Cu6570%5Cu5b57%5Cu4e4b%5Cu548c%5Cu4e3a%20%2474%24%5Cuff1a%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fi.loli.net%5C%2F2018%5C%2F08%5C%2F11%5C%2F5b6e3ead24175.png%29%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%20%5Cu548c%20%24q%24%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu77e9%5Cu9635%5Cu7684%5Cu5927%5Cu5c0f%5Cu548c%5Cu8be2%5Cu95ee%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24q%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu56db%5Cu4e2a%5Cu6574%5Cu6570%20%24x_1%2Cy_1%2Cx_2%24%20%5Cu548c%20%24y_2%24%20%24%28-n%20%5C%5Cleq%20x_1%20%5C%5Cleq%20x_2%20%5C%5Cleq%20n%2C%24%20%24-n%20%5C%5Cleq%20y_1%20%5C%5Cleq%20y_2%20%5C%5Cleq%20n%29%24%5Cu3002%5Cu8fd9%5Cu8868%5Cu793a%5Cu4f60%5Cu9700%5Cu8981%5Cu8ba1%5Cu7b97%5Cu4e00%5Cu4e2a%5Cu5bf9%5Cu89d2%5Cu4e3a%20%24%28x_1%2Cy_1%29%24%20%5Cu548c%20%24%28x_2%2Cy_2%29%24%20%5Cu7684%5Cu5b50%5Cu77e9%5Cu9635%5Cu7684%5Cu6570%5Cu5b57%5Cu4e4b%5Cu548c%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu8868%5Cu793a%5Cu7b54%5Cu6848%5Cuff08%5Cu5bf9%20%2410%5E9%2B7%24%20%5Cu53d6%5Cu4f59%5Cuff09%5Cu3002%5Cn%5Cn%5Cu7531%20%40I_love_him52%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B33%2C334%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22P4676%22%2C%22title%22%3A%22%5BBalticOI%202016%20day1%5DSpiral%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A47039%2C%22title%22%3A%22%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A26459%2C%22name%22%3A%22P4676%20%5BBalticOI%202016%20day1%5DSpiral%22%2C%22slug%22%3A%22P4676%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BBalticOI%202016%20day1%5DSpiral%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[BalticOI 2016 day1]Spiral</h1>
+<h2>题意翻译</h2>
+<div>[BalticOI 2016 Day1]螺旋
+## 题目描述
+一个矩阵的大小为 $(2n+1)\times (2n+1)$，我们们通过下述方法填数：数字 $1$ 在中心，数字 $2$ 在其右，其他数字依次按照逆时针螺旋摆放。
+你的任务是对于 $q$ 个询问，计算出一个给定子矩阵所有数字的和对 $(10^9+7)$ 取余的结果。比如以下 $n=2$ 的矩阵，灰色区域的数字之和为 $74$：
+![](https://i.loli.net/2018/08/11/5b6e3ead24175.png)
+## 输入格式
+第一行，两个整数 $n$ 和 $q$，分别表示矩阵的大小和询问的个数。
+接下来 $q$ 行，每行四个整数 $x_1,y_1,x_2$ 和 $y_2$ $(-n \leq x_1 \leq x_2 \leq n,$ $-n \leq y_1 \leq y_2 \leq n)$。这表示你需要计算一个对角为 $(x_1,y_1)$ 和 $(x_2,y_2)$ 的子矩阵的数字之和。
+## 输出格式
+对于每个询问，输出一行表示答案（对 $10^9+7$ 取余）。
+由 @I_love_him52 提供翻译</div>
+<h2>题目描述</h2>
+<div>A grid of size $(2n+1)\times(2n+1)$ has been constructed as follows. Number $1$ has been placed in the center square, number $2$ has been placed to the right of it, and the following numbers have been placed along the spiral counterclockwise.
+Your task is to calculate answers for $q$ queries where the sum of numbers in an rectangular region in the grid is requested (modulo $10^9+7$). For example, in the following grid $n=2$ and the sum of numbers in the gray region is $74$ :
+![](https://cdn.luogu.com.cn/upload/pic/20871.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first input line contains two integers $n$ and $q$ : the size of the grid and the number of queries.
+After this, there are $q$ lines, each containing four integers $x_1, y_1, x_2$ and $y_2$ ($-n\leq x_1\leq x_2\leq n, -n\leq y_1\leq y_2\leq n$). This means that you should calculate the sum of numbers in a rectangular region with corners $(x_1,y_1)$ and $(x_2,y_2)$.</div>
+<h3>输出格式</h3>
+<br />
+<div>You should output the answer for each query (modulo $10^9+7$).
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 3
+0 -2 1 1
+-1 0 1 0
+1 2 1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>74
+9
+14
+</code></pre>
+<h2>说明</h2>
+<div>## Subtasks
+In all subtasks $1\leq q\leq100$.
+### Subtask 1 ~~(12 points)~~
+- $1\leq n\leq1000$
+### Subtask 2 ~~(15 points)~~
+- $1\leq n\leq10^9$
+- $x_1=x_2$ and $y_1=y_2$
+### Subtask 3 ~~(17 points)~~
+- $1\leq n\leq10^5$
+### Subtask 4 ~~(31 points)~~
+- $1\leq n\leq10^9$
+- $x_1=y_1=1$
+### Subtask 5 ~~(25 points)~~
+- $1\leq n\leq10^9$
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

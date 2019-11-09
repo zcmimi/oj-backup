@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[BalticOI 2011 Day2]Polygon - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381679:2+03hPMZoUu22U38crdadVdcbCB83HlgRPIPIZ3nN2k=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22A%20simple%20polygon%20with%20%24N%24%20vertices%20is%20drawn%20on%20an%20infinite%20rectangular%20grid.%20For%20such%20a%20polygon%2C%20only%20neighboring%20edges%20touch%20at%20their%20common%20vertex%3B%20no%20other%20of%20its%20edges%20intersect%20or%20touch.%20All%20vertices%20of%20the%20polygon%20lie%20on%20grid%20points%2C%20i.e.%2C%20vertices%20have%20integer%20coordinates.%5Cn%5CnYour%20task%20is%20to%20find%20the%20total%20length%20of%20grid%20line%20segments%20which%20lie%20strictly%20inside%20the%20given%20polygon%20%28these%20line%20segments%20are%20highlighted%20in%20the%20drawings%20below%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20a%20single%20integer%20%24N%24%2C%20the%20number%20of%20vertices%20of%20the%20polygon.%20Each%20of%20the%20following%20%24N%24%20lines%20contains%20two%20integers%20%24x%24%20and%20%24y%24%2C%20the%20coordinates%20of%20one%20vertex.%20The%20vertices%20are%20given%20either%20in%20clockwise%20or%20counterclockwise%20order.%20All%20vertices%20are%20distinct%2C%20but%20more%20than%20two%20consecutive%20vertices%20may%20lie%20on%20a%20line.%22%2C%22outputFormat%22%3A%22The%20only%20line%20of%20output%20must%20contain%20a%20decimal%20number%3A%20the%20total%20length%20of%20grid%20line%20segments%20which%20lie%20strictly%20inside%20the%20given%20polygon.%22%2C%22samples%22%3A%5B%5B%223%5Cn5%201%5Cn2%204%5Cn1%201%22%2C%2210.0%22%5D%2C%5B%225%5Cn0%200%5Cn-2%202%5Cn-2%20-1%5Cn2%20-2%5Cn2%200%22%2C%2212.5%22%5D%5D%2C%22hint%22%3A%22%2A%2ASample%20Explanation%201%2A%2A%5Cn%5CnThe%20length%20of%20horizontal%20lines%20is%20%24%5C%5Cfrac%7B4%7D%7B3%7D%20%2B%20%5C%5Cfrac%7B8%7D%7B3%7D%20%3D%204%24.%20The%20length%20of%20vertical%20lines%20is%20%243%20%2B%202%20%2B%201%20%3D%206%24.%20The%20total%20length%20is%20%244%20%2B%206%20%3D%2010%24.%5Cn%5Cn%2A%2ASample%20Explanation%202%2A%2A%5Cn%5CnThe%20length%20of%20horizontal%20lines%20is%20%241%2B2%2B4%20%3D%207%24.%20The%20length%20of%20vertical%20lines%20is%20%24%5C%5Cfrac%7B9%7D%7B4%7D%2B%5C%5Cfrac%7B3%7D%7B2%7D%2B%5C%5Cfrac%7B7%7D%7B4%7D%20%3D%205.5%24.%20The%20total%20length%20is%20%247%20%2B%205.5%20%3D%2012.5%24.%5Cn%5Cn%2A%2A%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%2A%2A%5Cn%5Cn%5Cu5bf9%5Cu4e8e%20%2450%5C%5C%25%24%20%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%5Cu591a%5Cu8fb9%5Cu5f62%5Cu6240%5Cu6709%5Cu7684%5Cu8fb9%5Cu5747%5Cu5728%5Cu7f51%5Cu683c%5Cu7ebf%5Cu4e0a%5Cu3002%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu6570%5Cu636e%5Cuff0c%243%20%5C%5Cle%20N%20%5C%5Cle%2010%5E5%2C-5%20%5C%5Ctimes%2010%5E8%20%5C%5Cle%20x%2Cy%20%5C%5Cle%205%20%5C%5Ctimes%2010%5E8%24%5Cu3002%22%2C%22provider%22%3A%7B%22uid%22%3A41051%2C%22name%22%3A%22%5Cu548c%5Cu6cc9%5Cu6b63%5Cu5b97%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu5728%5Cu5e73%5Cu9762%5Cu76f4%5Cu89d2%5Cu7f51%5Cu683c%5Cu56fe%5Cu4e2d%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7b80%5Cu5355%5Cu591a%5Cu8fb9%5Cu5f62%5Cuff0c%5Cu5b83%5Cu6709%20%24N%24%20%5Cu4e2a%5Cu9876%5Cu70b9%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu9876%5Cu70b9%5Cu90fd%5Cu5728%5Cu683c%5Cu70b9%5Cu4e0a%5Cuff08%5Cu683c%5Cu70b9%3D%5Cu6574%5Cu70b9%5Cuff09%5Cu3002%20%20%5Cn%5Cu8bd5%5Cu6c42%5Cuff1a%5Cu4e25%5Cu683c%5Cu5728%5Cu591a%5Cu8fb9%5Cu5f62%5Cu5185%5Cu90e8%5Cu7684%5Cu7f51%5Cu683c%5Cu7ebf%5Cu6709%5Cu591a%5Cu957f%5Cu3002%5Cu5728%5Cu300c%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%5Cu300d%5Cu4e2d%5Cuff0c%20%5Cu4e25%5Cu683c%5Cu5728%5Cu591a%5Cu8fb9%5Cu5f62%5Cu5185%5Cu90e8%5Cu7684%5Cu7f51%5Cu683c%5Cu7ebf%5Cu5c06%5Cu4f1a%5Cu52a0%5Cu7c97%5Cu663e%5Cu793a%5Cu3002%20%20%5Cn%5Cu8bf7%5Cu6ce8%5Cu610f%5Cu7cbe%5Cu5ea6%5Cu3002%5Cu8bbe%5Cu4f60%5Cu7684%5Cu7b54%5Cu6848%5Cu4e3a%20%24L%24%5Cuff0c%5Cu6807%5Cu51c6%5Cu7b54%5Cu6848%5Cu4e3a%20%24R%24%5Cuff0c%5Cu5219%5Cu53ea%5Cu9700%5Cu6ee1%5Cu8db3%20%24%7CL%20-%20R%7C%20%5C%5Cle%20R%20%5C%5Ctimes%2010%5E%7B-6%7D%24%20%5Cu548c%20%24%7CL%20-%20R%7C%20%3C%3D%2010%5E%7B-6%7D%24%20%5Cu4e24%5Cu4e2a%5Cu6761%5Cu4ef6%5Cu4e2d%5Cu7684%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu5373%5Cu53ef%5Cu5f97%5Cu5206%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24N%24%5Cu3002%20%20%5Cn%5Cu5728%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684%20%24N%24%20%5Cu884c%5Cu4e2d%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24x%24%20%5Cu548c%20%24y%24%5Cuff0c%5Cu8868%5Cu793a%5Cu4e00%5Cu4e2a%5Cu9876%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%5Cn%5Cu8f93%5Cu51fa%5Cu4ec5%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu4e25%5Cu683c%5Cu5728%5Cu591a%5Cu8fb9%5Cu5f62%5Cu5185%5Cu90e8%5Cu7684%5Cu7f51%5Cu683c%5Cu7ebf%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cn%5Cn%23%23%23%23%20%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%201%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fpic%5C%2F42607.png%29%5Cn%5Cn%5Cu7b26%5Cu5408%5Cu8981%5Cu6c42%5Cu7684%5Cu6a2a%5Cu7ebf%5Cu4e4b%5Cu957f%5Cu4e3a%20%24%5C%5Cfrac%7B4%7D%7B3%7D%20%2B%20%5C%5Cfrac%7B8%7D%7B3%7D%20%3D4%24%5Cuff0c%5Cu7ad6%5Cu7ebf%5Cu4e4b%5Cu957f%5Cu4e3a%20%243%2B2%2B1%3D6%24%5Cu3002%5Cu603b%5Cu957f%20%244%2B6%3D10%24%5Cu3002%5Cn%5Cn%23%23%23%23%20%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%202%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fpic%5C%2F42608.png%29%5Cn%5Cn%5Cu7b26%5Cu5408%5Cu8981%5Cu6c42%5Cu7684%5Cu6a2a%5Cu7ebf%5Cu4e4b%5Cu957f%5Cu4e3a%20%241%2B2%2B4%3D7%24%5Cuff0c%5Cu7ad6%5Cu7ebf%5Cu4e4b%5Cu957f%5Cu4e3a%20%24%5C%5Cfrac%7B9%7D%7B4%7D%2B%5C%5Cfrac%7B3%7D%7B2%7D%2B%5C%5Cfrac%7B7%7D%7B4%7D%3D5.5%24%5Cu3002%5Cu603b%5Cu957f%20%247%2B5.5%3D12.5%24%5Cu3002%5Cn%5Cn%5Cu7ffb%5Cu8bd1%5Cu63d0%5Cu4f9b%5Cu8005%5Cuff1aPlanet6174%22%2C%22tags%22%3A%5B28%2C319%2C334%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A88%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22P4671%22%2C%22title%22%3A%22%5BBalticOI%202011%20Day2%5DPolygon%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A107262%2C%22title%22%3A%22%5Cu6b64%5Cu9898%5Cu5e94%5Cu6dfb%5Cu52a0SP%22%2C%22forum%22%3A%7B%22id%22%3A26430%2C%22name%22%3A%22P4671%20%5BBalticOI%202011%20Day2%5DPolygon%22%2C%22slug%22%3A%22P4671%22%7D%7D%2C%7B%22id%22%3A107123%2C%22title%22%3A%22%5Cu6570%5Cu636e%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A26430%2C%22name%22%3A%22P4671%20%5BBalticOI%202011%20Day2%5DPolygon%22%2C%22slug%22%3A%22P4671%22%7D%7D%2C%7B%22id%22%3A54624%2C%22title%22%3A%22%5Cu4fee%5Cu4e00%5Cu4e0b%5Cu56fe%5Cu7247%22%2C%22forum%22%3A%7B%22id%22%3A26430%2C%22name%22%3A%22P4671%20%5BBalticOI%202011%20Day2%5DPolygon%22%2C%22slug%22%3A%22P4671%22%7D%7D%2C%7B%22id%22%3A46813%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A26430%2C%22name%22%3A%22P4671%20%5BBalticOI%202011%20Day2%5DPolygon%22%2C%22slug%22%3A%22P4671%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BBalticOI%202011%20Day2%5DPolygon%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[BalticOI 2011 Day2]Polygon</h1>
+<h2>题意翻译</h2>
+<div>在平面直角网格图中有一个简单多边形，它有 $N$ 个顶点，每个顶点都在格点上（格点=整点）。
+试求：严格在多边形内部的网格线有多长。在「样例解释」中， 严格在多边形内部的网格线将会加粗显示。
+请注意精度。设你的答案为 $L$，标准答案为 $R$，则只需满足 $|L - R| \le R \times 10^{-6}$ 和 $|L - R| <= 10^{-6}$ 两个条件中的其中一个即可得分。
+### 样例输入
+第一行有一个整数 $N$。
+在接下来的 $N$ 行中，每行两个整数 $x$ 和 $y$，表示一个顶点的坐标。
+### 样例输出
+输出仅一行，一个数，表示严格在多边形内部的网格线的长度。
+#### 样例解释 1
+![](https://cdn.luogu.org/upload/pic/42607.png)
+符合要求的横线之长为 $\frac{4}{3} + \frac{8}{3} =4$，竖线之长为 $3+2+1=6$。总长 $4+6=10$。
+#### 样例解释 2
+![](https://cdn.luogu.org/upload/pic/42608.png)
+符合要求的横线之长为 $1+2+4=7$，竖线之长为 $\frac{9}{4}+\frac{3}{2}+\frac{7}{4}=5.5$。总长 $7+5.5=12.5$。
+翻译提供者：Planet6174</div>
+<h2>题目描述</h2>
+<div>A simple polygon with $N$ vertices is drawn on an infinite rectangular grid. For such a polygon, only neighboring edges touch at their common vertex; no other of its edges intersect or touch. All vertices of the polygon lie on grid points, i.e., vertices have integer coordinates.
+Your task is to find the total length of grid line segments which lie strictly inside the given polygon (these line segments are highlighted in the drawings below).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains a single integer $N$, the number of vertices of the polygon. Each of the following $N$ lines contains two integers $x$ and $y$, the coordinates of one vertex. The vertices are given either in clockwise or counterclockwise order. All vertices are distinct, but more than two consecutive vertices may lie on a line.</div>
+<h3>输出格式</h3>
+<br />
+<div>The only line of output must contain a decimal number: the total length of grid line segments which lie strictly inside the given polygon.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+5 1
+2 4
+1 1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10.0</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+0 0
+-2 2
+-2 -1
+2 -2
+2 0</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>12.5</code></pre>
+<h2>说明</h2>
+<div>**Sample Explanation 1**
+The length of horizontal lines is $\frac{4}{3} + \frac{8}{3} = 4$. The length of vertical lines is $3 + 2 + 1 = 6$. The total length is $4 + 6 = 10$.
+**Sample Explanation 2**
+The length of horizontal lines is $1+2+4 = 7$. The length of vertical lines is $\frac{9}{4}+\frac{3}{2}+\frac{7}{4} = 5.5$. The total length is $7 + 5.5 = 12.5$.
+**数据范围**
+对于 $50\%$ 的数据，多边形所有的边均在网格线上。
+对于所有数据，$3 \le N \le 10^5,-5 \times 10^8 \le x,y \le 5 \times 10^8$。</div>
+</article>
+</div>
+</div>
+</body>
+</html>

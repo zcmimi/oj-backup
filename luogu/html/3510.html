@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[POI2010]JED-Ones - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376982:TQwqpSchvJZzWAn8VU0T8PQDoWM/sQ9DmZvBlTVmdlc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Let%20%24x%24%20be%20a%20sequence%20of%20zeros%20and%20ones.%5Cn%5CnAn%20utterly%20forlorn%20one%20%28UFO%29%20in%20%24x%24%20is%20the%20extreme%20%28either%20first%20or%20last%29%20one%20%20%20%20that%20additionally%20does%20not%20neighbour%20with%20any%20other%20one.%5Cn%5CnFor%20instance%2C%20the%20sequence%2010001010%20has%20two%20UFOs%2C%20%20%20%20while%20the%20sequence%201101011000%20has%20no%20UFO%2C%20%20%20%20and%20the%20sequence%201000%20has%20only%20one%20UFO.%5Cn%5CnLet%20us%20denote%20the%20total%20number%20of%20UFOs%20in%20the%20binary%20representations%20of%20the%20numbers%20%20%20%20from%201%20to%20%24n%24%20with%20%24sks%28n%29%24.%5Cn%5CnFor%20example%2C%20%20%20%20%24sks%285%29%3D5%24%2C%20%24sks%2864%29%3D59%24%2C%20%24sks%28128%29%3D122%24%2C%20%24sks%28256%29%3D249%24.%5Cn%5CnWe%20will%20be%20working%20with%20very%20large%20numbers.%5Cn%5Cn%60%60%60plain%5CnTherefore%2C%20we%20shall%20represent%20them%20in%20a%20succinct%20way.%5Cn%60%60%60%5CnSuppose%20%24x%24%20is%20a%20positive%20integer%20and%20%24x_2%24%20is%20its%20binary%20representation%20%20%20%20%28starting%20with%201%29.%20Then%20the%20succinct%20representation%20of%20%24x%24%20is%20the%20sequence%20%20%20%20%24REP%28x%29%24%20consisting%20of%20positive%20integers%20denoting%20the%20lengths%20of%20successive%20%20%20%20blocks%20of%20the%20same%20digits.%5Cn%5CnFor%20example%3A%5Cn%5Cn%24REP%28460%5C%5C%20288%29%3DREP%281110000011000000000_2%29%3D%283%2C5%2C2%2C9%29%24%20%24REP%28408%29%3DREP%28110011000_2%29%3D%282%2C2%2C2%2C3%29%24%20%20%5Cn%5CnYour%20task%20is%20to%20write%20a%20program%20that%20finds%20the%20sequence%20%24REP%28sks%28n%29%29%24%20given%20%24REP%28n%29%24.%5Cn%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20standard%20input%20holds%20one%20integer%20%24k%24%20%20%28%241%5C%5Cle%20k%5C%5Cle%201%5C%5C%20000%5C%5C%20000%24%29%20denoting%20the%20length%20of%20the%20succinct%20representation%20%20%20%20%20%20of%20a%20positive%20integer%20%24n%24.%5Cn%5CnThe%20second%20line%20of%20the%20standard%20input%20holds%20%24k%24%20integers%20%24x_1%2Cx_2%2C%5C%5Ccdots%2Cx_k%24%20%20%28%240%3Cx_i%5C%5Cle%201%5C%5C%20000%5C%5C%20000%5C%5C%20000%24%29%2C%20separated%20by%20single%20spaces.%5Cn%5CnThe%20sequence%20%24x_1%2Cx_2%2C%5C%5Ccdots%2Cx_k%24%20forms%20the%20succinct%20representation%20of%20the%20number%20%24n%24.%5Cn%5CnYou%20may%20assume%20that%20%24x_1%2Bx_2%2B%5C%5Ccdots%2Bx_k%5C%5Cle%201%5C%5C%20000%5C%5C%20000%5C%5C%20000%24%2C%20i.e.%2C%20%240%3Cn%3C2%5E%7B1%5C%5C%20000%5C%5C%20000%5C%5C%20000%7D%24.%5Cn%22%2C%22outputFormat%22%3A%22Your%20program%20is%20to%20print%20out%20two%20lines%20to%20the%20standard%20output.%5Cn%5CnThe%20first%20one%20should%20contain%20a%20single%20positive%20integer%20%24l%24.%5Cn%5CnThe%20second%20line%20should%20hold%20%24l%24%20positive%20integers%20%24y_1%2Cy_2%2C%5C%5Ccdots%2Cy_l%24%2C%20%20%20%20%20%20separated%20by%20single%20spaces.%5Cn%5CnThe%20sequence%20%24y_1%2Cy_2%2C%5C%5Ccdots%2Cy_l%24%20is%20to%20form%20the%20succinct%20representation%20of%20%24sks%28n%29%24.%5Cn%22%2C%22samples%22%3A%5B%5B%226%5Cn1%201%201%201%201%201%22%2C%225%5Cn1%201%202%201%201%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu8bbex%5Cu662f%5Cu4e00%5Cu4e2a%5Cu7531%2001%20%5Cu7ec4%5Cu6210%5Cu7684%5Cu5e8f%5Cu5217%5Cu3002%5Cu4e00%5Cu4e2a%20UFO%20%5Cu6307%5Cu7684%5Cu662f%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7b2c%5Cu4e00%5Cu4e2a%201%20%5Cu6216%5Cu8005%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%201%20%5Cu4e14%5Cu4e0d%5Cu548c%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%201%20%5Cu76f8%5Cu90bb%5Cu3002%5Cu4f8b%5Cu5982%2010001010%20%5Cu6709%5Cu4e24%5Cu4e2a%20UFO%5Cuff0c1101011000%20%5Cu6ca1%5Cu6709%20UFO%5Cuff0c1000%20%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%20UFO%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8bbe1%5Cu5230n%5Cu7684%5Cu6570%5Cu7684%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu8868%5Cu793a%5Cu4e2d%20UFO%20%5Cu7684%5Cu603b%5Cu6570%5Cu4e3asks%28n%29%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0csks%285%29%3D5%2C%20sks%2864%29%3D59%2C%20sks%28128%29%3D122%2C%20sks%28256%29%3D249.%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu9700%5Cu8981%5Cu5904%5Cu7406%5Cu975e%5Cu5e38%5Cu5927%5Cu7684%5Cu6570%5Cu5b57%5Cu3002%5Cu56e0%5Cu6b64%20n%20%5Cu4f1a%5Cu7528%5Cu538b%5Cu7f29%5Cu7684%5Cu5f62%5Cu5f0f%5Cu8868%5Cu793a%5Cu3002%5Cu8bbe%20x%20%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20_%21%5BeHOlD0.png%5D%28https%3A%5C%2F%5C%2Fs2.ax1x.com%5C%2F2019%5C%2F08%5C%2F09%5C%2FeHOlD0.png%29_%20%20%5Cu662f%5Cu5176%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu8868%5Cu793a%5Cuff08%5Cu6700%5Cu9ad8%5Cu4f4d%5Cu4e3a%201%5Cuff09%5Cuff0c%5Cu5219%5Cu8be5%5Cu6570%5Cu7684%5Cu538b%5Cu7f29%5Cu5f62%5Cu5f0fREP%28x%29%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cuff0c%5Cu8868%5Cu793a%5Cu8fde%5Cu7eed%5Cu76f8%5Cu540c%5Cu6570%5Cu4f4d%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cu4f8b%5Cu5982%5Cuff1a%5Cr%5Cn%21%5BeHOfKI.png%5D%28https%3A%5C%2F%5C%2Fs2.ax1x.com%5C%2F2019%5C%2F08%5C%2F09%5C%2FeHOfKI.png%29%5Cr%5Cn%5Cu5df2%5Cu77e5REP%28n%29%5Cuff0c%5Cu6c42REP%28sks%28n%29%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570k%5Cuff0c%5Cu8868%5Cu793a%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%5Cu7684%5Cu538b%5Cu7f29%5Cu5f62%5Cu5f0f%5Cu3002%20%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%5Cu6709k%5Cu4e2a%5Cu6574%5Cu6570%21%5BeHXEs1.png%5D%28https%3A%5C%2F%5C%2Fs2.ax1x.com%5C%2F2019%5C%2F08%5C%2F09%5C%2FeHXEs1.png%29%5Cuff0c%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cuff0c%5Cu8868%5Cu793an%5Cu7684%5Cu538b%5Cu7f29%5Cu5f62%5Cu5f0f%5Cu5e8f%5Cu5217%5Cu3002%5Cu4fdd%5Cu8bc1%21%5BeHXeZ6.png%5D%28https%3A%5C%2F%5C%2Fs2.ax1x.com%5C%2F2019%5C%2F08%5C%2F09%5C%2FeHXeZ6.png%29%5Ct%20%5Cu22641%20000%20000%20000%5Cuff0c%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf40%3Cn%3C%21%5BeHXMJe.png%5D%28https%3A%5C%2F%5C%2Fs2.ax1x.com%5C%2F2019%5C%2F08%5C%2F09%5C%2FeHXMJe.png%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%3A%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e24%5Cu884c%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20l%20%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6709%20l%20%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%21%5BeHX0zj.png%5D%28https%3A%5C%2F%5C%2Fs2.ax1x.com%5C%2F2019%5C%2F08%5C%2F09%5C%2FeHX0zj.png%29%5Cuff0c%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cuff0c%5Cu8868%5Cu793asks%28n%29%5Cu7684%5Cu538b%5Cu7f29%5Cu5f62%5Cu5f0f%5Cu3002%5Cr%5Cn%22%2C%22tags%22%3A%5B27%2C56%2C57%2C235%2C284%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22P3510%22%2C%22title%22%3A%22%5BPOI2010%5DJED-Ones%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A20235%2C%22title%22%3A%22markdown%5Cu4e71%5Cu5165%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2712%2C%22name%22%3A%22P3510%20%5BPOI2010%5DJED-Ones%22%2C%22slug%22%3A%22P3510%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BPOI2010%5DJED-Ones%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[POI2010]JED-Ones</h1>
+<h2>题意翻译</h2>
+<div>设x是一个由 01 组成的序列。一个 UFO 指的是序列中第一个 1 或者最后一个 1 且不和任何一个 1 相邻。例如 10001010 有两个 UFO，1101011000 没有 UFO，1000 只有一个 UFO。
+设1到n的数的二进制表示中 UFO 的总数为sks(n)。例如，sks(5)=5, sks(64)=59, sks(128)=122, sks(256)=249.
+我们需要处理非常大的数字。因此 n 会用压缩的形式表示。设 x 是一个正整数 _![eHOlD0.png](https://s2.ax1x.com/2019/08/09/eHOlD0.png)_ 是其二进制表示（最高位为 1），则该数的压缩形式REP(x)为一个序列，表示连续相同数位的数量。例如：
+![eHOfKI.png](https://s2.ax1x.com/2019/08/09/eHOfKI.png)
+已知REP(n)，求REP(sks(n))。
+## 输入格式:
+第一行有一个整数k，表示一个正整数n的压缩形式。 接下来一行有k个整数![eHXEs1.png](https://s2.ax1x.com/2019/08/09/eHXEs1.png)，用空格分隔，表示n的压缩形式序列。保证![eHXeZ6.png](https://s2.ax1x.com/2019/08/09/eHXeZ6.png) ≤1 000 000 000，也就是说0<n<![eHXMJe.png](https://s2.ax1x.com/2019/08/09/eHXMJe.png)。 ## 输出格式: 输出两行，第一行有一个正整数 l ，第二行有 l 个正整数![eHX0zj.png](https://s2.ax1x.com/2019/08/09/eHX0zj.png)，用空格分隔，表示sks(n)的压缩形式。 </div>
+<h2>题目描述</h2>
+<div>Let $x$ be a sequence of zeros and ones.
+An utterly forlorn one (UFO) in $x$ is the extreme (either first or last) one that additionally does not neighbour with any other one.
+For instance, the sequence 10001010 has two UFOs, while the sequence 1101011000 has no UFO, and the sequence 1000 has only one UFO.
+Let us denote the total number of UFOs in the binary representations of the numbers from 1 to $n$ with $sks(n)$.
+For example, $sks(5)=5$, $sks(64)=59$, $sks(128)=122$, $sks(256)=249$.
+We will be working with very large numbers.
+```plain
+Therefore, we shall represent them in a succinct way.
+```
+Suppose $x$ is a positive integer and $x_2$ is its binary representation (starting with 1). Then the succinct representation of $x$ is the sequence $REP(x)$ consisting of positive integers denoting the lengths of successive blocks of the same digits.
+For example:
+$REP(460\ 288)=REP(1110000011000000000_2)=(3,5,2,9)$ $REP(408)=REP(110011000_2)=(2,2,2,3)$
+Your task is to write a program that finds the sequence $REP(sks(n))$ given $REP(n)$.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the standard input holds one integer $k$ ($1\le k\le 1\ 000\ 000$) denoting the length of the succinct representation of a positive integer $n$.
+The second line of the standard input holds $k$ integers $x_1,x_2,\cdots,x_k$ ($0<x_i\le 1\ 000\ 000\ 000$), separated by single spaces. The sequence $x_1,x_2,\cdots,x_k$ forms the succinct representation of the number $n$. You may assume that $x_1+x_2+\cdots+x_k\le 1\ 000\ 000\ 000$, i.e., $0<n<2^{1\ 000\ 000\ 000}$. </div>
+<h3>输出格式</h3>
+<br />
+<div>Your program is to print out two lines to the standard output.
+The first one should contain a single positive integer $l$.
+The second line should hold $l$ positive integers $y_1,y_2,\cdots,y_l$, separated by single spaces.
+The sequence $y_1,y_2,\cdots,y_l$ is to form the succinct representation of $sks(n)$.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+1 1 1 1 1 1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+1 1 2 1 1</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

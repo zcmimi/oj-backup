@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO11JAN]瓶颈Bottleneck - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376274:/OaWQL5JvC+2VYdIqlLSgd7Rm9ucZgumPmeWk6ugAVk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20gathering%20the%20cows.%20His%20farm%20contains%20a%20network%20of%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20fields%20conveniently%20numbered%201..N%20and%20connected%20by%20N-1%20unidirectional%20paths%20that%20eventually%20lead%20to%20field%201.%20The%20fields%20and%20paths%20form%20a%20tree.%5Cn%5CnEach%20field%20i%20%3E%201%20has%20a%20single%20one-way%2C%20exiting%20path%20to%20field%20P%5C%5C_i%2C%20and%20currently%20contains%20C%5C%5C_i%20cows%20%281%20%3C%3D%20C%5C%5C_i%20%3C%3D%201%2C000%2C000%2C000%29.%20In%20each%20time%20unit%2C%20no%20more%20than%20M%5C%5C_i%20%280%20%3C%3D%20M%5C%5C_i%20%3C%3D%201%2C000%2C000%2C000%29%20cows%20can%20travel%20from%20field%20i%20to%20field%20P%5C%5C_i%20%281%20%3C%3D%20P%5C%5C_i%20%3C%3D%20N%29%20%28i.e.%2C%20only%20M%5C%5C_i%20cows%20can%20traverse%20the%20path%29.%5Cn%5CnFarmer%20John%20wants%20all%20the%20cows%20to%20congregate%20in%20field%201%20%28which%20has%20no%20limit%20on%20the%20number%20of%20cows%20it%20may%20have%29.%20Rules%20are%20as%20follows%3A%5Cn%5Cn%5C%5C%2A%20Time%20is%20considered%20in%20discrete%20units.%5Cn%5Cn%5C%5C%2A%20Any%20given%20cow%20might%20traverse%20multiple%20paths%20in%20the%20same%20time%20unit.%20However%2C%20no%20more%20than%20M%5C%5C_i%20total%20cows%20can%20leave%20field%20i%20%28i.e.%2C%20traverse%20its%20exit%20path%29%20in%20the%20same%20time%20unit.%5Cn%5Cn%5C%5C%2A%20Cows%20never%20move%20%5C%5C%2Aaway%5C%5C%2A%20from%20field%20%231.%5Cn%5CnIn%20other%20words%2C%20every%20time%20step%2C%20each%20cow%20has%20the%20choice%20either%20to%5Cn%5Cna%29%20stay%20in%20its%20current%20field%5Cn%5Cnb%29%20move%20through%20one%20or%20more%20fields%20toward%20field%20%231%2C%20as%20long%20as%20the%20bottleneck%20constraints%20for%20each%20path%20are%20not%20violated%5Cn%5CnFarmer%20John%20wants%20to%20know%20how%20many%20cows%20can%20arrive%20in%20field%201%20by%20certain%20times.%20In%20particular%2C%20he%20has%20a%20list%20of%20K%20%281%20%3C%3D%20K%20%3C%3D%2010%2C000%29%20times%20T%5C%5C_i%20%281%20%3C%3D%20T%5C%5C_i%20%3C%3D%201%2C000%2C000%2C000%29%2C%20and%20he%20wants%20to%20know%2C%20for%20each%20T%5C%5C_i%20in%20the%20list%2C%20the%20maximum%20number%20of%20cows%20that%20can%20arrive%20at%20field%201%20by%20T%5C%5C_i%20if%20scheduled%20to%20optimize%20this%20quantity.%5Cn%5CnConsider%20an%20example%20where%20the%20tree%20is%20a%20straight%20line%2C%20and%20the%20T%5C%5C_i%20list%20contains%20only%20T%5C%5C_1%3D5%2C%20and%20cows%20are%20distibuted%20as%20shown%3A%5Cn%5Cn%60%60%60cpp%5CnLocn%3A%20%20%20%20%20%201---2---3---4%20%20%20%20%20%20%3C--%20Pasture%20ID%20numbers%20%5CnC_i%3A%20%20%20%20%20%20%200%20%20%201%20%20%2012%20%2012%20%20%20%20%20%3C--%20Current%20number%20of%20cows%20%5CnM_i%3A%20%20%20%20%20%20%20%20%20%20%205%20%20%208%20%20%203%20%20%20%20%20%20%3C--%20Limits%20on%20path%20traversal%3B%20field%201%20has%20no%20limit%20since%20it%20has%20no%20exit%20%5CnThe%20solution%20is%20as%20follows%3B%20the%20goal%20is%20to%20move%20cows%20to%20field%201%3A%20%5Cn%60%60%60%5CnTree%3A%20%20%20%20%20%201---2---3---4%5Cn%60%60%60cpp%5Cnt%3D0%20%20%20%20%20%20%20%200%20%20%201%20%20%2012%20%2012%20%20%20%20%20%3C--%20Initial%20state%20%5Cnt%3D1%20%20%20%20%20%20%20%205%20%20%204%20%20%207%20%20%209%20%20%20%20%20%20%3C--%20field%201%20has%20cows%20from%20field%202%20and%203%20t%3D2%20%20%20%20%20%20%20%2010%20%207%20%20%202%20%20%206%20%5Cnt%3D3%20%20%20%20%20%20%20%2015%20%207%20%20%200%20%20%203%20%5Cnt%3D4%20%20%20%20%20%20%20%2020%20%205%20%20%200%20%20%200%20%5Cnt%3D5%20%20%20%20%20%20%20%2025%20%200%20%20%200%20%20%200%20%5CnThus%2C%20the%20answer%20is%2025%3A%20all%2025%20cows%20can%20arrive%20at%20field%201%20by%20time%20t%3D5.%20%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20K%5Cn%5Cn%5C%5C%2A%20Lines%202..N%3A%20Line%20i%20%28not%20i%2B1%29%20describes%20field%20i%20with%20three%20%5Cn%5Cnspace-separated%20integers%3A%20P%5C%5C_i%2C%20C%5C%5C_i%2C%20and%20M%5C%5C_i%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B1..N%2BK%3A%20Line%20N%2Bi%20contains%20a%20single%20integer%3A%20T%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..K%3A%20Line%20i%20contains%20a%20single%20integer%20that%20is%20the%20maximum%20number%20of%20cows%20that%20can%20arrive%20at%20field%201%20by%20time%20T%5C%5C_i.%5Cn%22%2C%22samples%22%3A%5B%5B%224%201%20%5Cn1%201%205%20%5Cn2%2012%207%20%5Cn3%2012%203%20%5Cn5%20%5Cn%22%2C%2225%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22WC%5Cu6b63%5Cu5728%5Cu53ec%5Cu96c6%5Cu5976%5Cu725b%2C%5Cu4ed6%5Cu7684%5Cu519c%5Cu573a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5305%5Cu542b%20%2A%2A%2AN%2A%2A%2A%20%5Cu5757%5Cu519c%5Cu7530%5Cu7684%5Cu7f51%5Cu7edc%5Cuff0c%5Cu7f16%5Cu53f7%5Cu4e3a%20%2A%2A1%20--%20N%2A%2A%20%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu519c%5Cu573a%5Cu91cc%5Cu6709%20%24C_i%24%20%5Cu5934%5Cu725b%5Cu3002%5Cu519c%5Cu573a%5Cu88ab%20%2A%2AN-1%2A%2A%20%20%5Cu6761%20%2A%2A%5Cu5355%5Cu5411%2A%2A%20%5Cu8fb9%5Cu94fe%5Cu63a5%2C%5Cuff08%5Cu6bcf%5Cu4e2a%5Cu519c%5Cu573a%5Cu6709%5Cu901a%5Cu5411%24P_i%24%5Cu7684%5Cu8def%5Cuff09%20%5Cu4fdd%5Cu8bc1%5Cu4ece%5Cu4efb%5Cu4f55%5Cu70b9%5Cu53ef%5Cu4ee5%5Cu5230%5Cu8fbe1%5Cu53f7%5Cu70b9%5Cu3002WC%5Cu60f3%5Cu8ba9%5Cu6240%5Cu6709%5Cu5976%5Cu725b%5Cu96c6%5Cu4e2d%5Cu52301%5Cu53f7%5Cu519c%5Cu573a%5Cu3002%20%5Cn%5Cn%2A%2A%5Cu65f6%5Cu95f4%5Cu662f%5Cu79bb%5Cu6563%5Cu7684%2A%2A%20%5Cu5976%5Cu725b%5Cu53ef%5Cu4ee5%5Cu57281%5Cu5355%5Cu4f4d%5Cu65f6%5Cu95f4%5Cu91cc%5Cu8d70%5Cu8fc7%5Cu4efb%5Cu610f%5Cu591a%5Cu6761%5Cu9053%5Cu8def%5Cuff0c%5Cu4f46%5Cu662f%5Cu6bcf%5Cu6761%5Cu8def%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5bb9%5Cu7eb3%5Cu4e0a%5Cu9650%20%2A%24M_i%24%2A%20%20%5Cu5e76%5Cu4e14%5Cu5976%5Cu725b%5Cu4e0d%5Cu4f1a%5Cu79bb%5Cu5f001%5Cu53f7%5Cu519c%5Cu573a%28%5Cu519c%5Cu573a%5Cu6ca1%5Cu6709%5Cu5bb9%5Cu91cf%5Cu4e0a%5Cu9650%29%20%5Cn%5Cn%23%23%23%20%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu65f6%5Cu95f4%5Cuff0c%5Cu5976%5Cu725b%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu5982%5Cu4e0b%5Cu51e0%5Cu79cd%5Cu884c%5Cu52a8%20%5Cn1.%20%5Cu7559%5Cu5728%5Cu5f53%5Cu524d%5Cu7684%5Cu519c%5Cu573a%5Cn2.%20%5Cu7ecf%5Cu8fc7%5Cu51e0%5Cu6761%5Cu9053%5Cu8def%5Cuff0c%5Cu54111%5Cu53f7%5Cu519c%5Cu573a%5Cu79fb%5Cu52a8%5Cuff08%5Cu9700%5Cu8981%5Cu6ee1%5Cu8db3%24M_i%24%5Cuff09%5Cn%5CnWC%5Cu60f3%5Cu8981%5Cu77e5%5Cu9053%5Cu6709%5Cu591a%5Cu5c11%5Cu725b%5Cu53ef%5Cu4ee5%5Cu5728%5Cu67d0%5Cu4e2a%5Cu7279%5Cu5b9a%5Cu7684%5Cu65f6%5Cu523b%5Cu5230%5Cu8fbe1%5Cu53f7%5Cu519c%5Cu573a%5Cuff0c%5Cn%5Cu4ed6%5Cu6709%5Cu4e00%5Cu5f20%5Cu5217%5Cu7740%20%2A%2A%2AK%2A%2A%2A%20%5Cu4e2a%5Cu65f6%5Cu95f4%5Cuff08%5Cu5206%5Cu522b%5Cu4e3a%24T_i%24%29%5Cu7684%5Cu5355%5Cu5b50%5Cn%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu77e5%5Cu9053%5Cu5728%5Cu6bcf%5Cu4e2a%24T_i%24%2C%20%5Cu91c7%5Cu7528%5Cu6700%5Cu4f18%5Cu7b56%5Cu7565%5Cu5728%24T_i%24%5Cu7ed3%5Cu675f%5Cu6700%5Cu591a%5Cu80fd%5Cu6709%5Cu591a%5Cu5c11%5Cu725b%5Cu52301%5Cu53f7%5Cu519c%5Cu573a%5Cn%5Cn%23%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu5982%5Cu4e0b%5Cuff1a%5Cn%241%20%5C%5Cle%20N%20%5C%5Cle%20%2010%5E5%24%5Cn%5Cn%241%20%5C%5Cle%20C_i%20%5C%5Cle%20%2010%5E9%24%5Cn%5Cn%241%20%5C%5Cle%20M_i%20%5C%5Cle%2010%5E9%24%5Cn%5Cn%241%20%5C%5Cle%20P_i%20%5C%5Cle%20N%24%5Cn%5Cn%241%20%5C%5Cle%20K%20%5C%5Cle%2010%5E4%24%5Cn%5Cn%241%20%5C%5Cle%20T_i%20%5C%5Cle%2010%5E9%24%5Cn%5Cn%5Cn%23%23%20%2A%2A%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Cn%2A%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%20%5Cn%20%20%20%20%2A%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20N%20%5Cu548c%20K%5Cn%20%20%20%20%5Cn%20%20%20%20%2A%5Cu7b2c2%5Cu2014N%5Cu884c%5Cuff0c%5Cu7b2ci%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu5757%5Cu519c%5Cu573a%5Cu53ca%5Cu5b83%5Cu7684%5Cu8def%20%24P_i%20%5C%5C%3BC_i%5C%5C%3BM_i%24%5Cn%5Cn%20%20%20%20%2A%5Cu7b2cN%2B1%20-%20N%2BK%5Cu884c%5Cuff0c%20%5Cu7b2cN%2Bi%20%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24T_i%24%5Cn%2A%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%20%20%20%20%5Cn%20%20%20%20%2A%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu7b54%5Cu6848%5Cu5bf9%5Cu5e94%24T_i%24%5Cn%5Cn%5Cu611f%5Cu8c22%40ToBiChi%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B28%2C42%2C46%2C160%2C228%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A90%2C%22totalAccepted%22%3A32%2C%22pid%22%3A%22P3006%22%2C%22title%22%3A%22%5BUSACO11JAN%5D%5Cu74f6%5Cu9888Bottleneck%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A147014%2C%22title%22%3A%22%5Cu6240%5Cu4ee5%5Cu8fd9%5Cu9053%5Cu9898%5Cu5230%5Cu5e95%5Cu53ef%5Cu4e0d%5Cu53ef%5Cu4ee5%5Cu6811%5Cu5256%5Cu554a%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2134%2C%22name%22%3A%22P3006%20%5BUSACO11JAN%5D%5Cu74f6%5Cu9888Bottleneck%22%2C%22slug%22%3A%22P3006%22%7D%7D%2C%7B%22id%22%3A45299%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2134%2C%22name%22%3A%22P3006%20%5BUSACO11JAN%5D%5Cu74f6%5Cu9888Bottleneck%22%2C%22slug%22%3A%22P3006%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1848%22%2C%22title%22%3A%22%5BUSACO12OPEN%5D%5Cu4e66%5Cu67b6Bookshelf%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2178%22%2C%22title%22%3A%22%5BNOI2015%5D%5Cu54c1%5Cu9152%5Cu5927%5Cu4f1a%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3065%22%2C%22title%22%3A%22%5BUSACO12DEC%5D%5Cu7b2c%5Cu4e00%21First%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3327%22%2C%22title%22%3A%22%5BSDOI2015%5D%5Cu7ea6%5Cu6570%5Cu4e2a%5Cu6570%5Cu548c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3833%22%2C%22title%22%3A%22%5BSHOI2012%5D%5Cu9b54%5Cu6cd5%5Cu6811%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO11JAN%5D%5Cu74f6%5Cu9888Bottleneck%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO11JAN]瓶颈Bottleneck</h1>
+<h2>题意翻译</h2>
+<div>WC正在召集奶牛,他的农场有一个包含 ***N*** 块农田的网络，编号为 **1 -- N** ，每个农场里有 $C_i$ 头牛。农场被 **N-1** 条 **单向** 边链接,（每个农场有通向$P_i$的路） 保证从任何点可以到达1号点。WC想让所有奶牛集中到1号农场。
+**时间是离散的** 奶牛可以在1单位时间里走过任意多条道路，但是每条路有一个容纳上限 *$M_i$* 并且奶牛不会离开1号农场(农场没有容量上限)
+### 每一个单位时间，奶牛可以选择如下几种行动
+1. 留在当前的农场
+2. 经过几条道路，向1号农场移动（需要满足$M_i$）
+WC想要知道有多少牛可以在某个特定的时刻到达1号农场，
+他有一张列着 ***K*** 个时间（分别为$T_i$)的单子
+，他想知道在每个$T_i$, 采用最优策略在$T_i$结束最多能有多少牛到1号农场
+### 数据范围如下：
+$1 \le N \le 10^5$
+$1 \le C_i \le 10^9$
+$1 \le M_i \le 10^9$
+$1 \le P_i \le N$
+$1 \le K \le 10^4$
+$1 \le T_i \le 10^9$
+## **输入输出格式**
+* 输入格式
+*第一行：两个整数 N 和 K
+*第2—N行，第i行描述一块农场及它的路 $P_i \;C_i\;M_i$
+*第N+1 - N+K行， 第N+i 一个整数 $T_i$
+* 输出格式
+*每行一个答案对应$T_i$
+感谢@ToBiChi 提供翻译</div>
+<h2>题目描述</h2>
+<div>Farmer John is gathering the cows. His farm contains a network of N (1 <= N <= 100,000) fields conveniently numbered 1..N and connected by N-1 unidirectional paths that eventually lead to field 1. The fields and paths form a tree.
+Each field i > 1 has a single one-way, exiting path to field P\_i, and currently contains C\_i cows (1 <= C\_i <= 1,000,000,000). In each time unit, no more than M\_i (0 <= M\_i <= 1,000,000,000) cows can travel from field i to field P\_i (1 <= P\_i <= N) (i.e., only M\_i cows can traverse the path).
+Farmer John wants all the cows to congregate in field 1 (which has no limit on the number of cows it may have). Rules are as follows:
+\* Time is considered in discrete units.
+\* Any given cow might traverse multiple paths in the same time unit. However, no more than M\_i total cows can leave field i (i.e., traverse its exit path) in the same time unit.
+\* Cows never move \*away\* from field #1.
+In other words, every time step, each cow has the choice either to
+a) stay in its current field
+b) move through one or more fields toward field #1, as long as the bottleneck constraints for each path are not violated
+Farmer John wants to know how many cows can arrive in field 1 by certain times. In particular, he has a list of K (1 <= K <= 10,000) times T\_i (1 <= T\_i <= 1,000,000,000), and he wants to know, for each T\_i in the list, the maximum number of cows that can arrive at field 1 by T\_i if scheduled to optimize this quantity.
+Consider an example where the tree is a straight line, and the T\_i list contains only T\_1=5, and cows are distibuted as shown:
+```cpp
+Locn: 1---2---3---4 <-- Pasture ID numbers
+C_i: 0 1 12 12 <-- Current number of cows
+M_i: 5 8 3 <-- Limits on path traversal; field 1 has no limit since it has no exit
+The solution is as follows; the goal is to move cows to field 1:
+```
+Tree: 1---2---3---4
+```cpp
+t=0 0 1 12 12 <-- Initial state
+t=1 5 4 7 9 <-- field 1 has cows from field 2 and 3 t=2 10 7 2 6
+t=3 15 7 0 3
+t=4 20 5 0 0
+t=5 25 0 0 0
+Thus, the answer is 25: all 25 cows can arrive at field 1 by time t=5.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and K
+\* Lines 2..N: Line i (not i+1) describes field i with three
+space-separated integers: P\_i, C\_i, and M\_i
+\* Lines N+1..N+K: Line N+i contains a single integer: T\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..K: Line i contains a single integer that is the maximum number of cows that can arrive at field 1 by time T\_i.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 1 
+1 1 5 
+2 12 7 
+3 12 3 
+5 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>25 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO14MAR]懒惰的牛The Lazy Cow_Sliver - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573375054:WCxnKPbp0jx5RDqMdhwVU5+snh0BUzSmM5EGQ/oO0G8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22It%27s%20a%20hot%20summer%20day%2C%20and%20Bessie%20the%20cow%20is%20feeling%20quite%20lazy.%20%20She%20wants%5Cn%5Cnto%20locate%20herself%20at%20a%20position%20in%20her%20field%20so%20that%20she%20can%20reach%20as%20much%5Cn%5Cndelicious%20grass%20as%20possible%20within%20only%20a%20short%20distance.%5Cn%5Cn%5CnThe%20field%20Bessie%20inhabits%20is%20described%20by%20an%20N%20by%20N%20grid%20of%20square%20cells%5Cn%5Cn%281%20%3C%3D%20N%20%3C%3D%20400%29.%20%20The%20cell%20in%20row%20r%20and%20column%20c%20%281%20%3C%3D%20r%2Cc%20%3C%3D%20N%29%20contains%5Cn%5CnG%28r%2Cc%29%20units%20of%20grass%20%280%20%3C%3D%20G%28r%2Cc%29%20%3C%3D%201000%29.%20%20From%20her%20initial%20square%20in%5Cn%5Cnthe%20grid%2C%20Bessie%20is%20only%20willing%20to%20take%20up%20to%20K%20steps%20%280%20%3C%3D%20K%20%3C%3D%202%5C%5C%2AN%29.%5Cn%5CnEach%20step%20she%20takes%20moves%20her%20to%20a%20cell%20that%20is%20directly%20north%2C%20south%2C%5Cn%5Cneast%2C%20or%20west%20of%20her%20current%20location.%5Cn%5Cn%5CnFor%20example%2C%20suppose%20the%20grid%20is%20as%20follows%2C%20where%20%28B%29%20describes%20Bessie%27s%5Cn%5Cn%60%60%60cpp%5Cn50%20%20%20%205%20%20%20%20%2025%2A%20%20%206%20%20%20%20%2017%20%20%20%20%5Cn14%20%20%20%203%2A%20%20%20%202%2A%20%20%20%207%2A%20%20%20%2021%20%20%20%20%5Cn99%2A%20%20%2010%2A%20%20%201%2A%28B%29%202%2A%20%20%20%2080%2A%20%20%20%20%5Cn8%20%20%20%20%207%2A%20%20%20%205%2A%20%20%20%2023%2A%20%20%2011%20%20%20%5Cn10%20%20%20%200%20%20%20%20%2078%2A%20%20%201%20%20%20%20%209%20%20%20%20%20%20%20%20%5Cn%60%60%60%5Cn%5Cninitial%20position%20%28here%2C%20in%20row%203%2C%20column%203%29%3A%5Cn%5CnIf%20K%3D2%2C%20then%20Bessie%20can%20only%20reach%20the%20locations%20marked%20with%20%5C%5C%2As.%5Cn%5CnPlease%20help%20Bessie%20determine%20the%20maximum%20amount%20of%20grass%20she%20can%20reach%2C%20if%5Cn%5Cnshe%20chooses%20the%20best%20possible%20initial%20location%20in%20the%20grid.%5Cn%5Cn%5Cu5976%5Cu725b%5Cu8d1d%5Cu897f%5Cu975e%5Cu5e38%5Cu61d2%5Cu60f0%5Cuff0c%5Cu5979%5Cu5e0c%5Cu671b%5Cu5728%5Cu5979%5Cu7684%5Cu5730%5Cu76d8%5Cu5185%5Cu627e%5Cu5230%5Cu4e00%5Cu70b9%5Cu6700%5Cu4f73%5Cu4f4d%5Cu7f6e%5Cu5c45%5Cu4f4f%5Cuff0c%5Cu4ee5%5Cu4fbf%5Cu5728%5Cu6709%5Cu9650%5Cu7684%5Cu6b65%5Cu6570%5Cu5185%5Cu53ef%5Cu4ee5%5Cu5403%5Cu5230%5Cu5c3d%5Cu91cf%5Cu591a%5Cu7684%5Cu9752%5Cu8349%5Cu3002%5Cn%5Cn%5Cn%5Cu5979%5Cu7684%5Cu5730%5Cu76d8%5Cu662f%5Cu4e00%5Cu4e2aN%5Cu884cN%5Cu5217%281%20%3C%3D%20N%20%3C%3D%20400%29%5Cu7684%5Cu77e9%5Cu9635%5Cuff0c%5Cu7b2cr%5Cu884cc%5Cu5217%5Cu5305%5Cu542bG%28r%2Cc%29%5Cu5355%5Cu4f4d%5Cu7684%5Cu9752%5Cu8349%280%20%3C%3D%20G%28r%2Cc%29%20%3C%3D%201000%29%5Cu3002%5Cu4ece%5Cu5979%5Cu7684%5Cu5c45%5Cu4f4f%5Cu70b9%5Cuff0c%5Cu5979%5Cu6700%5Cu591a%5Cu613f%5Cu610f%5Cu8d70K%5Cu6b65%280%20%3C%3D%20K%20%3C%3D%202%5C%5C%2AN%29%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu6b65%5Cu5979%5Cu53ef%5Cu4ee5%5Cu627e%5Cu5230%5Cu4e0a%5Cu3001%5Cu4e0b%5Cu3001%5Cu5de6%5Cu3001%5Cu53f3%5Cu76f4%5Cu63a5%5Cu76f8%5Cu90bb%5Cu7684%5Cu67d0%5Cu4e2a%5Cu683c%5Cu5b50%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20integers%20N%20and%20K.%5Cn%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Line%20r%2B1%20contains%20N%20integers%20describing%20row%20r%20of%20the%5Cn%5Cngrid.%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20maximum%20amount%20of%20grass%20Bessie%20can%20reach%2C%20if%20she%20chooses%5Cn%5Cnthe%20best%20possible%20initial%20location%20%28the%20location%20from%20which%5Cn%5Cnshe%20can%20reach%20the%20most%20grass%29.%5Cn%22%2C%22samples%22%3A%5B%5B%225%202%5Cn50%205%2025%206%2017%5Cn14%203%202%207%2021%5Cn99%2010%201%202%2080%5Cn8%207%205%2023%2011%5Cn10%200%2078%201%209%5Cn%22%2C%22342%22%5D%5D%2C%22hint%22%3A%22OUTPUT%20DETAILS%3A%5Cn%5Cn%5CnIn%20the%20example%20above%2C%20Bessie%20can%20reach%20342%20total%20units%20of%20grass%20if%20she%5Cn%5Cnlocates%20herself%20in%20the%20middle%20of%20the%20grid.%5Cn%5Cn%5CnSource%3A%20USACO%202014%20March%20Contest%2C%20Silver%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B31%2C46%2C166%2C167%2C254%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A690%2C%22totalAccepted%22%3A308%2C%22pid%22%3A%22P2213%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu61d2%5Cu60f0%5Cu7684%5Cu725bThe%20Lazy%20Cow_Sliver%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A76491%2C%22title%22%3A%22%5Cu8fd9%5Cu4e2a%5Cu9898%5Cu7528n%5E2%5Cu7684%5Cu505a%5Cu6cd5%5Cu7684%5Cu7f16%5Cu7a0b%5Cu590d%5Cu6742%5Cu5ea6%5Cu771f%5Cu7684%5Cu4e0d%5Cu662f%5Cu63d0%5Cu9ad8%2B%22%2C%22forum%22%3A%7B%22id%22%3A1303%2C%22name%22%3A%22P2213%20%5BUSACO14MAR%5D%5Cu61d2%5Cu60f0%5Cu7684%5Cu725bThe%20Lazy%20Cow_Sliver%22%2C%22slug%22%3A%22P2213%22%7D%7D%2C%7B%22id%22%3A19683%2C%22title%22%3A%22%5Cu6837%5Cu4f8b%5Cu770b%5Cu4e0d%5Cu61c2%5Cu3002%5Cu3002%5Cu6c42%5Cu6559%5Cu795e%5Cu7287%22%2C%22forum%22%3A%7B%22id%22%3A1303%2C%22name%22%3A%22P2213%20%5BUSACO14MAR%5D%5Cu61d2%5Cu60f0%5Cu7684%5Cu725bThe%20Lazy%20Cow_Sliver%22%2C%22slug%22%3A%22P2213%22%7D%7D%2C%7B%22id%22%3A7964%2C%22title%22%3A%22%5Cu795e%5Cu5947%5Cu7684%5Cu7a7a%5Cu95f4%5Cu8d85%5Cu9650%22%2C%22forum%22%3A%7B%22id%22%3A1303%2C%22name%22%3A%22P2213%20%5BUSACO14MAR%5D%5Cu61d2%5Cu60f0%5Cu7684%5Cu725bThe%20Lazy%20Cow_Sliver%22%2C%22slug%22%3A%22P2213%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2115%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu7834%5Cu574fSabotage%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2214%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu54de%5Cu54de%5Cu54deMooo%20Moo%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2220%22%2C%22title%22%3A%22%5BHAOI2012%5D%5Cu5bb9%5Cu6613%5Cu9898%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2255%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu8bb0%5Cu5f55%5Cu5965%5Cu6797%5Cu6bd4%5Cu514bRecording%20the%20M%5Cu2026%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4876%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%20The%20Lazy%20Cow_Gold%20%5Cu61d2%5Cu60f0%5Cu7684%5Cu725b%28%5Cu91d1%29%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO14MAR%5D%5Cu61d2%5Cu60f0%5Cu7684%5Cu725bThe%20Lazy%20Cow_Sliver%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO14MAR]懒惰的牛The Lazy Cow_Sliver</h1>
+<h2>题目描述</h2>
+<div>It's a hot summer day, and Bessie the cow is feeling quite lazy. She wants
+to locate herself at a position in her field so that she can reach as much
+delicious grass as possible within only a short distance.
+The field Bessie inhabits is described by an N by N grid of square cells
+(1 <= N <= 400). The cell in row r and column c (1 <= r,c <= N) contains
+G(r,c) units of grass (0 <= G(r,c) <= 1000). From her initial square in
+the grid, Bessie is only willing to take up to K steps (0 <= K <= 2\*N).
+Each step she takes moves her to a cell that is directly north, south,
+east, or west of her current location.
+For example, suppose the grid is as follows, where (B) describes Bessie's
+```cpp
+50 5 25* 6 17
+14 3* 2* 7* 21
+99* 10* 1*(B) 2* 80*
+8 7* 5* 23* 11
+10 0 78* 1 9
+```
+initial position (here, in row 3, column 3):
+If K=2, then Bessie can only reach the locations marked with \*s.
+Please help Bessie determine the maximum amount of grass she can reach, if
+she chooses the best possible initial location in the grid.
+奶牛贝西非常懒惰，她希望在她的地盘内找到一点最佳位置居住，以便在有限的步数内可以吃到尽量多的青草。
+她的地盘是一个N行N列(1 <= N <= 400)的矩阵，第r行c列包含G(r,c)单位的青草(0 <= G(r,c) <= 1000)。从她的居住点，她最多愿意走K步(0 <= K <= 2\*N)，每一步她可以找到上、下、左、右直接相邻的某个格子。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The integers N and K.
+\* Lines 2..1+N: Line r+1 contains N integers describing row r of the
+grid.</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The maximum amount of grass Bessie can reach, if she chooses
+the best possible initial location (the location from which
+she can reach the most grass).
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 2
+50 5 25 6 17
+14 3 2 7 21
+99 10 1 2 80
+8 7 5 23 11
+10 0 78 1 9
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>342</code></pre>
+<h2>说明</h2>
+<div>OUTPUT DETAILS:
+In the example above, Bessie can reach 342 total units of grass if she
+locates herself in the middle of the grid.
+Source: USACO 2014 March Contest, Silver
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

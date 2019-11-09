@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO15DEC]高低卡(白金)High Card Low Card (Platinum) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376445:N2RUHWPUezG4Zo58BmC21aIrNMtOqtOxkph1mzBlP7g=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bessie%20the%20cow%20is%20a%20hu%20e%20fan%20of%20card%20games%2C%20which%20is%20quite%20surprising%2C%20given%20her%20lack%20of%20opposable%20thumbs.%20%20Unfortunately%2C%20none%20of%20the%20other%20cows%20in%20the%20herd%20are%20good%20opponents.%20%20They%20are%20so%20bad%2C%20in%20fact%2C%20that%20they%20always%20play%20in%20a%20completely%20predictable%20fashion%21%20%20Nonetheless%2C%20it%20can%20still%20be%20a%20challenge%20for%20Bessie%20to%20figure%20out%20how%20to%20win.%5Cn%5Cn%5CnBessie%20and%20her%20friend%20Elsie%20are%20currently%20playing%20a%20simple%20card%20game%20where%20they%20take%20a%20deck%20of%20%242N%24%20cards%2C%20conveniently%20numbered%20%241%20%5C%5Cldots%202N%24%2C%20and%20divide%20them%20into%20%24N%24%20cards%20for%20Bessie%20and%20%24N%24%20cards%20for%20Elsie.%20%20%20The%20two%20then%20play%20%24N%24%20rounds%2C%20where%20in%20each%20round%20Bessie%20and%20Elsie%20both%20play%20a%20single%20card.%20%20Initially%2C%20the%20player%20who%20plays%20the%20highest%20card%20earns%20a%20point.%20%20However%2C%20at%20one%20point%20%20during%20the%20game%2C%20Bessie%20can%20decide%20to%20switch%20the%20rules%20so%20that%20for%20the%20rest%20of%20the%20game%2C%20the%20player%20who%20plays%20the%20lowest%20card%20wins%20a%20point.%20%20Bessie%20can%20choose%20not%20to%20use%20this%20option%2C%20leaving%20the%20entire%20game%20in%20%5C%22high%20card%20wins%5C%22%20mode%2C%20or%20she%20can%20even%20invoke%20the%20option%20right%20away%2C%20making%20the%20entire%20game%20follow%20the%20%5C%22low%20card%20wins%5C%22%20rule.%5Cn%5Cn%5CnGiven%20that%20Bessie%20can%20predict%20the%20order%20in%20which%20Elsie%20will%20play%20her%20cards%2C%20please%20determine%20the%20maximum%20number%20of%20points%20Bessie%20can%20win.%5Cn%5Cn%5Cu8d1d%5Cu897f%5Cu5f88%5Cu559c%5Cu6b22%5Cu73a9%5Cu4e00%5Cu79cd%5Cu7eb8%5Cu724c%5Cu6e38%5Cu620f%5Cu3002%5Cn%5Cn%5Cu8d1d%5Cu897f%5Cu548c%5Cu5979%5Cu7684%5Cu670b%5Cu53cb%5Cu827e%5Cu5c14%5Cu897f%5Cu6b63%5Cu5728%5Cu73a9%5Cu8fd9%5Cu4e2a%5Cu7b80%5Cu5355%5Cu7684%5Cu7eb8%5Cu724c%5Cu6e38%5Cu620f%5Cu3002%5Cu6e38%5Cu620f%5Cu67092N%5Cu5f20%5Cu724c%5Cuff0c%5Cu724c%5Cu4e0a%5Cu7684%5Cu6570%5Cu5b57%5Cu662f1%5Cu52302N%5Cu3002%5Cu628a%5Cu8fd9%5Cu4e9b%5Cu724c%5Cu5206%5Cu6210%5Cu4e24%5Cu4efd%5Cuff0c%5Cu8d1d%5Cu897f%5Cu6709N%5Cu5f20%5Cuff0c%5Cu827e%5Cu5c14%5Cu897f%5Cu6709%5Cu53e6%5Cu5916N%5Cu5f20%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu5979%5Cu4eec%5Cu8fdb%5Cu884cN%5Cu8f6e%5Cu51fa%5Cu724c%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu5404%5Cu51fa%5Cu4e00%5Cu5f20%5Cu724c%5Cu3002%5Cu4e00%5Cu5f00%5Cu59cb%5Cuff0c%5Cu8c01%5Cu51fa%5Cu7684%5Cu724c%5Cu4e0a%5Cu7684%5Cu6570%5Cu5b57%5Cu5927%5Cuff0c%5Cu8c01%5Cu5c31%5Cu83b7%5Cu5f97%5Cu8fd9%5Cu4e00%5Cu8f6e%5Cu7684%5Cu80dc%5Cu5229%5Cu3002%5Cu8d1d%5Cu897f%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7279%5Cu6b8a%5Cu6743%5Cu5229%5Cuff0c%5Cu5979%5Cu53ef%5Cu4ee5%5Cu5728%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu65f6%5Cu523b%5Cu628a%5Cu539f%5Cu672c%5Cu6570%5Cu5b57%5Cu5927%5Cu7684%5Cu83b7%5Cu80dc%5Cu7684%5Cu89c4%5Cu5219%5Cu6539%5Cu6210%5Cu6570%5Cu5b57%5Cu5c0f%5Cu7684%5Cu83b7%5Cu80dc%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu6539%5Cu53d8%5Cu5c06%5Cu4f1a%5Cu4e00%5Cu76f4%5Cu6301%5Cu7eed%5Cu5230%5Cu6e38%5Cu620f%5Cu7ed3%5Cu675f%5Cu3002%5Cu7279%5Cu522b%5Cu7684%5Cuff0c%5Cu8d1d%5Cu897f%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu7b2c%5Cu4e00%5Cu8f6e%5Cu5f00%5Cu59cb%5Cu5c31%5Cu4f7f%5Cu7528%5Cu5c0f%5Cu724c%5Cu83b7%5Cu80dc%5Cu7684%5Cu89c4%5Cu5219%5Cuff0c%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu76f4%5Cu5230%5Cu6700%5Cu540e%5Cu4e00%5Cu8f6e%5Cu90fd%5Cu8fd8%5Cu6742%5Cu4f7f%5Cu7528%5Cu5927%5Cu724c%5Cu83b7%5Cu80dc%5Cu7684%5Cu89c4%5Cu5219%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728%5Cuff0c%5Cu8d1d%5Cu897f%5Cu5df2%5Cu7ecf%5Cu77e5%5Cu9053%5Cu4e86%5Cu827e%5Cu5c14%5Cu897f%5Cu51fa%5Cu724c%5Cu7684%5Cu987a%5Cu5e8f%5Cuff0c%5Cu5979%5Cu60f3%5Cu77e5%5Cu9053%5Cu5979%5Cu6700%5Cu591a%5Cu80fd%5Cu591f%5Cu8d62%5Cu591a%5Cu5c11%5Cu8f6e%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20the%20value%20of%20N%20%28%242%20%5C%5Cleq%20N%20%5C%5Cleq%2050%2C000%24%29.%5Cn%5Cn%5CnThe%20next%20N%20lines%20contain%20the%20cards%20that%20Elsie%20will%20play%20in%20each%20of%20the%5Cn%5Cnsuccessive%20rounds%20of%20the%20game.%20%20Note%20that%20it%20is%20easy%20to%20determine%20Bessie%27s%20cards%5Cn%5Cnfrom%20this%20information.%5Cn%22%2C%22outputFormat%22%3A%22Output%20a%20single%20line%20giving%20the%20maximum%20number%20of%20points%20Bessie%20can%20score.%5Cn%22%2C%22samples%22%3A%5B%5B%224%5Cn1%5Cn8%5Cn4%5Cn3%22%2C%223%22%5D%5D%2C%22hint%22%3A%22Here%2C%20Bessie%20must%20have%20cards%202%2C%205%2C%20and%206%2C%20and%207%20in%20her%20hand%2C%20and%20she%20can%20use%5Cn%5Cnthese%20to%20win%20at%20most%203%20points.%20%20For%20example%2C%20she%20can%20defeat%20the%201%20card%20and%20then%5Cn%5Cnswitch%20the%20rules%20to%20%5C%22low%20card%20wins%5C%22%2C%20after%20which%20she%20can%20win%20two%20more%20rounds.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B7%2C32%2C46%2C111%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A621%2C%22totalAccepted%22%3A284%2C%22pid%22%3A%22P3129%22%2C%22title%22%3A%22%5BUSACO15DEC%5D%5Cu9ad8%5Cu4f4e%5Cu5361%28%5Cu767d%5Cu91d1%29High%20Card%20Low%20Card%20%28Platinum%29%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A69359%2C%22title%22%3A%22%5Cu8fa3%5Cu9e21%5Cu6570%5Cu636e%5Cu5361%5Cu8bfb%5Cu5165%5Cu4f18%5Cu5316%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2245%2C%22name%22%3A%22P3129%20%5BUSACO15DEC%5D%5Cu9ad8%5Cu4f4e%5Cu5361%28%5Cu767d%5Cu91d1%29High%20Card%20Low%20Card%20%28Platinum%29%22%2C%22slug%22%3A%22P3129%22%7D%7D%2C%7B%22id%22%3A31102%2C%22title%22%3A%22rank1%20%5Cu7684%5Cu5e76%5Cu67e5%5Cu96c6%5Cu5230%5Cu5e95%5Cu662f%5Cu5565%5Cu601d%5Cu8def%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A2245%2C%22name%22%3A%22P3129%20%5BUSACO15DEC%5D%5Cu9ad8%5Cu4f4e%5Cu5361%28%5Cu767d%5Cu91d1%29High%20Card%20Low%20Card%20%28Platinum%29%22%2C%22slug%22%3A%22P3129%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3154%22%2C%22title%22%3A%22%5BCQOI2009%5D%5Cu5faa%5Cu73af%5Cu8d5b%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3168%22%2C%22title%22%3A%22%5BCQOI2015%5D%5Cu4efb%5Cu52a1%5Cu67e5%5Cu8be2%5Cu7cfb%5Cu7edf%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3195%22%2C%22title%22%3A%22%5BHNOI2008%5D%5Cu73a9%5Cu5177%5Cu88c5%5Cu7bb1TOY%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4816%22%2C%22title%22%3A%22%5BUSACO15DEC%5D%5Cu9ad8%5Cu4f4e%5Cu5361%28%5Cu91d1%29High%20Card%20Low%20Card%20%28Gold%29%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4818%22%2C%22title%22%3A%22%5BUSACO15DEC%5DBessie%27s%20Dream%20%5Cu8d1d%5Cu897f%5Cu7684%5Cu68a6%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO15DEC%5D%5Cu9ad8%5Cu4f4e%5Cu5361%28%5Cu767d%5Cu91d1%29High%20Card%20Low%20Card%20%28Platinum%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO15DEC]高低卡(白金)High Card Low Card (Platinum)</h1>
+<h2>题目描述</h2>
+<div>Bessie the cow is a hu e fan of card games, which is quite surprising, given her lack of opposable thumbs. Unfortunately, none of the other cows in the herd are good opponents. They are so bad, in fact, that they always play in a completely predictable fashion! Nonetheless, it can still be a challenge for Bessie to figure out how to win.
+Bessie and her friend Elsie are currently playing a simple card game where they take a deck of $2N$ cards, conveniently numbered $1 \ldots 2N$, and divide them into $N$ cards for Bessie and $N$ cards for Elsie. The two then play $N$ rounds, where in each round Bessie and Elsie both play a single card. Initially, the player who plays the highest card earns a point. However, at one point during the game, Bessie can decide to switch the rules so that for the rest of the game, the player who plays the lowest card wins a point. Bessie can choose not to use this option, leaving the entire game in "high card wins" mode, or she can even invoke the option right away, making the entire game follow the "low card wins" rule.
+Given that Bessie can predict the order in which Elsie will play her cards, please determine the maximum number of points Bessie can win.
+贝西很喜欢玩一种纸牌游戏。
+贝西和她的朋友艾尔西正在玩这个简单的纸牌游戏。游戏有2N张牌，牌上的数字是1到2N。把这些牌分成两份，贝西有N张，艾尔西有另外N张。接下来她们进行N轮出牌，每次各出一张牌。一开始，谁出的牌上的数字大，谁就获得这一轮的胜利。贝西有一个特殊权利，她可以在任意一个时刻把原本数字大的获胜的规则改成数字小的获胜，这个改变将会一直持续到游戏结束。特别的，贝西可以从第一轮开始就使用小牌获胜的规则，也可以直到最后一轮都还杂使用大牌获胜的规则。
+现在，贝西已经知道了艾尔西出牌的顺序，她想知道她最多能够赢多少轮。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains the value of N ($2 \leq N \leq 50,000$).
+The next N lines contain the cards that Elsie will play in each of the
+successive rounds of the game. Note that it is easy to determine Bessie's cards
+from this information.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Output a single line giving the maximum number of points Bessie can score.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1
+8
+4
+3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3</code></pre>
+<h2>说明</h2>
+<div>Here, Bessie must have cards 2, 5, and 6, and 7 in her hand, and she can use
+these to win at most 3 points. For example, she can defeat the 1 card and then
+switch the rules to "low card wins", after which she can win two more rounds.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

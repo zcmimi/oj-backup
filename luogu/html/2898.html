@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08JAN]haybale猜测Haybale Guessing - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376117:KcMzacR9neterpK8bGa/CnFrDV+P3CsvYNcBO6MyK9g=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20cows%2C%20who%20always%20have%20an%20inferiority%20complex%20about%20their%20intelligence%2C%20have%20a%20new%20guessing%20game%20to%20sharpen%20their%20brains.%5Cn%5CnA%20designated%20%27Hay%20Cow%27%20hides%20behind%20the%20barn%20and%20creates%20N%20%281%20%5Cu2264%20N%20%5Cu2264%201%2C000%2C000%29%20uniquely-sized%20stacks%20%28conveniently%20numbered%201..N%29%20of%20hay%20bales%2C%20each%20with%201..1%2C000%2C000%2C000%20bales%20of%20hay.%5Cn%5CnThe%20other%20cows%20then%20ask%20the%20Hay%20Cow%20a%20series%20of%20Q%20%281%20%5Cu2264%20Q%20%5Cu2264%2025%2C000%29%20questions%20about%20the%20the%20stacks%2C%20all%20having%20the%20same%20form%3A%5Cn%5CnWhat%20is%20the%20smallest%20number%20of%20bales%20of%20any%20stack%20in%20the%20range%20of%20stack%20numbers%20Ql..Qh%20%281%20%5Cu2264%20Ql%20%5Cu2264%20N%3B%20Ql%20%5Cu2264%20Qh%20%5Cu2264%20N%29%3FThe%20Hay%20Cow%20answers%20each%20of%20these%20queries%20with%20a%20single%20integer%20A%20whose%20truthfulness%20is%20not%20guaranteed.%5Cn%5CnHelp%20the%20other%20cows%20determine%20if%20the%20answers%20given%20by%20the%20Hay%20Cow%20are%20self-consistent%20or%20if%20certain%20answers%20contradict%20others.%5Cn%5Cn%5Cu7ed9%5Cu4e00%5Cu6bb5%5Cu957f%5Cu5ea6%5Cu4e3an%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu4e0a%5Cu7684%5Cu6570%5Cu90fd%5Cu4e0d%5Cu540c%5Cu7684%5Cu5e8f%5Cu5217a%5B1..n%5D%5Cu548cq%5Cu548c%5Cu95ee%5Cu7b54%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu95ee%5Cu7b54%5Cu662f%28x%2C%20y%2C%20r%29%5Cu4ee3%5Cu8868RMQ%28a%2C%20x%2C%20y%29%20%3D%20r%2C%20%5Cu8981%5Cu4f60%5Cu7ed9%5Cu51fa%5Cu6700%5Cu65e9%5Cu7684%5Cu6709%5Cu77db%5Cu76fe%5Cu7684%5Cu90a3%5Cu4e2a%5Cu95ee%5Cu7b54%5Cu7684%5Cu7f16%5Cu53f7%5Cu3002%5Cuff08%5Cu6b64%5Cu5904%20RMQ%20%5Cu6307%5Cu6700%5Cu5c0f%5Cu503c%5Cuff09%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20Q%5Cn%5Cn%5C%5C%2A%20Lines%202..Q%2B1%3A%20Each%20line%20contains%20three%20space-separated%20integers%20that%20represent%20a%20single%20query%20and%20its%20reply%3A%20Ql%2C%20Qh%2C%20and%20A%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Print%20the%20single%20integer%200%20if%20there%20are%20no%20inconsistencies%20among%20the%20replies%20%28i.e.%2C%20if%20there%20exists%20a%20valid%20realization%20of%20the%20hay%20stacks%20that%20agrees%20with%20all%20Q%20queries%29.%20Otherwise%2C%20print%20the%20index%20from%201..Q%20of%20the%20earliest%20query%20whose%20answer%20is%20inconsistent%20with%20the%20answers%20to%20the%20queries%20before%20it.%5Cn%22%2C%22samples%22%3A%5B%5B%2220%204%5Cn1%2010%207%5Cn5%2019%207%5Cn3%2012%208%5Cn11%2015%2012%5Cn%22%2C%223%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C42%2C45%2C46%2C47%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1086%2C%22totalAccepted%22%3A296%2C%22pid%22%3A%22P2898%22%2C%22title%22%3A%22%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A160628%2C%22title%22%3A%22%5Cu5982%5Cu679c%5Cu52a0%5Cu5f3a%5Cu6570%5Cu636e%5Cu4e86%5Cu5e94%5Cu8be5%5Cu600e%5Cu4e48%5Cu5199%5Cu989dQAQ%22%2C%22forum%22%3A%7B%22id%22%3A2028%2C%22name%22%3A%22P2898%20%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22slug%22%3A%22P2898%22%7D%7D%2C%7B%22id%22%3A128658%2C%22title%22%3A%22%5Cu5efa%5Cu8bae%5Cu52a0%5Cu5f3a%5Cu6570%5Cu636e%22%2C%22forum%22%3A%7B%22id%22%3A2028%2C%22name%22%3A%22P2898%20%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22slug%22%3A%22P2898%22%7D%7D%2C%7B%22id%22%3A128330%2C%22title%22%3A%22%5Cu6df1%5Cu591c%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2028%2C%22name%22%3A%22P2898%20%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22slug%22%3A%22P2898%22%7D%7D%2C%7B%22id%22%3A117454%2C%22title%22%3A%22%5Cu79bb%5Cu6563%5Cu4f1aWA%22%2C%22forum%22%3A%7B%22id%22%3A2028%2C%22name%22%3A%22P2898%20%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22slug%22%3A%22P2898%22%7D%7D%2C%7B%22id%22%3A111228%2C%22title%22%3A%22P2898%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2028%2C%22name%22%3A%22P2898%20%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22slug%22%3A%22P2898%22%7D%7D%2C%7B%22id%22%3A97553%2C%22title%22%3A%22%5Cu56db%5Cu70b9WA%5Cu7684%5Cu6ce8%5Cu610f%5Cu4e0b%22%2C%22forum%22%3A%7B%22id%22%3A2028%2C%22name%22%3A%22P2898%20%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22slug%22%3A%22P2898%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2473%22%2C%22title%22%3A%22%5BSCOI2008%5D%5Cu5956%5Cu52b1%5Cu5173%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2573%22%2C%22title%22%3A%22%5BSCOI2012%5D%5Cu6ed1%5Cu96ea%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3960%22%2C%22title%22%3A%22%5Cu5217%5Cu961f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4026%22%2C%22title%22%3A%22%5BSHOI2008%5D%5Cu5faa%5Cu73af%5Cu7684%5Cu503a%5Cu52a1%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5157%22%2C%22title%22%3A%22%5BUSACO18DEC%5DThe%20Cow%20Gathering%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08JAN%5Dhaybale%5Cu731c%5Cu6d4bHaybale%20Guessing%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08JAN]haybale猜测Haybale Guessing</h1>
+<h2>题目描述</h2>
+<div>The cows, who always have an inferiority complex about their intelligence, have a new guessing game to sharpen their brains.
+A designated 'Hay Cow' hides behind the barn and creates N (1 ≤ N ≤ 1,000,000) uniquely-sized stacks (conveniently numbered 1..N) of hay bales, each with 1..1,000,000,000 bales of hay.
+The other cows then ask the Hay Cow a series of Q (1 ≤ Q ≤ 25,000) questions about the the stacks, all having the same form:
+What is the smallest number of bales of any stack in the range of stack numbers Ql..Qh (1 ≤ Ql ≤ N; Ql ≤ Qh ≤ N)?The Hay Cow answers each of these queries with a single integer A whose truthfulness is not guaranteed.
+Help the other cows determine if the answers given by the Hay Cow are self-consistent or if certain answers contradict others.
+给一段长度为n，每个位置上的数都不同的序列a[1..n]和q和问答，每个问答是(x, y, r)代表RMQ(a, x, y) = r, 要你给出最早的有矛盾的那个问答的编号。（此处 RMQ 指最小值）
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and Q
+\* Lines 2..Q+1: Each line contains three space-separated integers that represent a single query and its reply: Ql, Qh, and A
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: Print the single integer 0 if there are no inconsistencies among the replies (i.e., if there exists a valid realization of the hay stacks that agrees with all Q queries). Otherwise, print the index from 1..Q of the earliest query whose answer is inconsistent with the answers to the queries before it.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>20 4
+1 10 7
+5 19 7
+3 12 8
+11 15 12
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

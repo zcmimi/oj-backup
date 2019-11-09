@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08OCT]牧场散步Pasture Walking - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376134:wHBQzeugXhjKP9gcUwk5Mk1qPMdGWgrxhQxjA1cdqOc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20N%20cows%20%282%20%3C%3D%20N%20%3C%3D%201%2C000%29%20conveniently%20numbered%201..N%20are%20grazing%20among%20the%20N%20pastures%20also%20conveniently%20numbered%201..N.%20Most%20conveniently%20of%20all%2C%20cow%20i%20is%20grazing%20in%20pasture%20i.%5Cn%5CnSome%20pairs%20of%20pastures%20are%20connected%20by%20one%20of%20N-1%20bidirectional%20walkways%20that%20the%20cows%20can%20traverse.%20Walkway%20i%20connects%20pastures%20A%5C%5C_i%20and%20B%5C%5C_i%20%281%20%3C%3D%20A%5C%5C_i%20%3C%3D%20N%3B%201%20%3C%3D%20B%5C%5C_i%20%3C%3D%20N%29%20and%20has%20a%20length%20of%20L%5C%5C_i%20%281%20%3C%3D%20L%5C%5C_i%20%3C%3D%2010%2C000%29.%5Cn%5CnThe%20walkways%20are%20set%20up%20in%20such%20a%20way%20that%20between%20any%20two%20distinct%20pastures%2C%20there%20is%20exactly%20one%20path%20of%20walkways%20that%20travels%20between%20them.%20Thus%2C%20the%20walkways%20form%20a%20tree.%5Cn%5CnThe%20cows%20are%20very%20social%20and%20wish%20to%20visit%20each%20other%20often.%20Ever%20in%20a%20hurry%2C%20they%20want%20you%20to%20help%20them%20schedule%20their%20visits%20by%20computing%20the%20lengths%20of%20the%20paths%20between%201%20%3C%3D%20L%5C%5C_i%20%3C%3D%2010%2C000%20pairs%20of%20pastures%20%28each%20pair%20given%20as%20a%20query%20p1%2Cp2%20%281%20%3C%3D%20p1%20%3C%3D%20N%3B%201%20%3C%3D%20p2%20%3C%3D%20N%29.%5Cn%5CnPOINTS%3A%20200%5Cn%5Cn%5Cu6709N%282%3C%3DN%3C%3D1000%29%5Cu5934%5Cu5976%5Cu725b%5Cuff0c%5Cu7f16%5Cu53f7%5Cu4e3a1%5Cu5230W%5Cuff0c%5Cu5b83%5Cu4eec%5Cu6b63%5Cu5728%5Cu540c%5Cu6837%5Cu7f16%5Cu53f7%5Cu4e3a1%5Cu5230N%5Cu7684%5Cu7267%5Cu573a%5Cu4e0a%5Cu884c%5Cu8d70.%5Cu4e3a%5Cu4e86%5Cu65b9%20%5Cu4fbf%5Cuff0c%5Cu6211%5Cu4eec%5Cu5047%5Cu8bbe%5Cu7f16%5Cu53f7%5Cu4e3ai%5Cu7684%5Cu725b%5Cu6070%5Cu597d%5Cu5728%5Cu7b2ci%5Cu53f7%5Cu7267%5Cu573a%5Cu4e0a.%5Cn%5Cn%5Cu6709%5Cu4e00%5Cu4e9b%5Cu7267%5Cu573a%5Cu95f4%5Cu6bcf%5Cu4e24%5Cu4e2a%5Cu7267%5Cu573a%5Cu7528%5Cu4e00%5Cu6761%5Cu53cc%5Cu5411%5Cu9053%5Cu8def%5Cu76f8%5Cu8fde%5Cuff0c%5Cu9053%5Cu8def%5Cu603b%5Cu5171%5Cu6709N%20-%201%5Cu6761%5Cuff0c%5Cu5976%5Cu725b%5Cu53ef%5Cu4ee5%5Cu5728%5Cu8fd9%5Cu4e9b%5Cu9053%5Cu8def%20%5Cu4e0a%5Cu884c%5Cu8d70.%5Cu7b2ci%5Cu6761%5Cu9053%5Cu8def%5Cu628a%5Cu7b2cAi%5Cu4e2a%5Cu7267%5Cu573a%5Cu548c%5Cu7b2cBi%5Cu4e2a%5Cu7267%5Cu573a%5Cu8fde%5Cu4e86%5Cu8d77%5Cu6765%281%20%3C%3D%20A%5C%5C_i%20%3C%3D%20N%3B%201%20%3C%3D%20B%5C%5C_i%20%3C%3D%20N%29%5Cuff0c%5Cu800c%5Cu5b83%5Cu7684%5Cu957f%5Cu5ea6%20%5Cu662f%201%20%3C%3D%20L%5C%5C_i%20%3C%3D%2010%2C000.%5Cu5728%5Cu4efb%5Cu610f%5Cu4e24%5Cu4e2a%5Cu7267%5Cu573a%5Cu95f4%5Cuff0c%5Cu6709%5Cu4e14%5Cu4ec5%5Cu6709%5Cu4e00%5Cu6761%5Cu7531%5Cu82e5%5Cu5e72%5Cu9053%5Cu8def%5Cu7ec4%5Cu6210%5Cu7684%5Cu8def%5Cu5f84%5Cu76f8%5Cu8fde.%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu6240%5Cu6709%5Cu7684%5Cu9053%5Cu8def%5Cu6784%5Cu6210%5Cu4e86%5Cu4e00%5Cu68f5%5Cu6811.%5Cn%5Cn%5Cu5976%5Cu725b%5Cu4eec%5Cu5341%5Cu5206%5Cu5e0c%5Cu671b%5Cu7ecf%5Cu5e38%5Cu4e92%5Cu76f8%5Cu89c1%5Cu9762.%5Cu5b83%5Cu4eec%5Cu5341%5Cu5206%5Cu7740%5Cu6025%5Cuff0c%5Cu6240%5Cu4ee5%5Cu5e0c%5Cu671b%5Cu4f60%5Cu5e2e%5Cu52a9%5Cu5b83%5Cu4eec%5Cu8ba1%5Cu5212%5Cu5b83%5Cu4eec%5Cu7684%5Cu884c%5Cu7a0b%5Cuff0c%5Cu4f60%5Cu53ea%20%5Cu9700%5Cu8981%5Cu8ba1%5Cu7b97%5Cu51faQ%281%20%3C%20Q%20%3C%201000%29%5Cu5bf9%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8def%5Cu5f84%5Cu957f%5Cu5ea6%5Cu2022%5Cu6bcf%5Cu5bf9%5Cu70b9%5Cu4ee5%5Cu4e00%5Cu4e2a%5Cu8be2%5Cu95eep1%2Cp2%20%281%20%3C%3D%20p1%20%3C%3D%20N%3B%201%20%3C%3D%20p2%20%3C%3D%20N%29.%20%5Cu7684%5Cu5f62%5Cu5f0f%5Cu7ed9%5Cu51fa.%5Cn%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20Q%5Cn%5Cn%5C%5C%2A%20Lines%202..N%3A%20Line%20i%2B1%20contains%20three%20space-separated%20integers%3A%20A%5C%5C_i%2C%20B%5C%5C_i%2C%20and%20L%5C%5C_i%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B1..N%2BQ%3A%20Each%20line%20contains%20two%20space-separated%20integers%20representing%20two%20distinct%20pastures%20between%20which%20the%20cows%20wish%20to%20travel%3A%20p1%20and%20p2%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Lines%201..Q%3A%20Line%20i%20contains%20the%20length%20of%20the%20path%20between%20the%20two%20pastures%20in%20query%20i.%5Cn%22%2C%22samples%22%3A%5B%5B%224%202%20%5Cr%5Cn2%201%202%20%5Cr%5Cn4%203%202%20%5Cr%5Cn1%204%203%20%5Cr%5Cn1%202%20%5Cr%5Cn3%202%20%5Cr%5Cn%22%2C%222%20%5Cr%5Cn7%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22Query%201%3A%20The%20walkway%20between%20pastures%201%20and%202%20has%20length%202.%5Cn%5CnQuery%202%3A%20Travel%20through%20the%20walkway%20between%20pastures%203%20and%204%2C%20then%20the%20one%20between%204%20and%201%2C%20and%20finally%20the%20one%20between%201%20and%202%2C%20for%20a%20total%20length%20of%207.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C46%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1640%2C%22totalAccepted%22%3A846%2C%22pid%22%3A%22P2912%22%2C%22title%22%3A%22%5BUSACO08OCT%5D%5Cu7267%5Cu573a%5Cu6563%5Cu6b65Pasture%20Walking%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A55298%2C%22title%22%3A%22%5Cu3010%5Cu7ffb%5Cu8bd1%5Cu3011%20%5Cu539f%5Cu7ffb%5Cu8bd1%5Cu6ca1%5Cu6709%5Cu7ffb%5Cu8bd1%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%20%5Cu4e14%5Cu8868%5Cu8ff0%5Cu4e0d%5Cu6e05%5Cu6709%5Cu9519%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A2041%2C%22name%22%3A%22P2912%20%5BUSACO08OCT%5D%5Cu7267%5Cu573a%5Cu6563%5Cu6b65Pasture%20Walking%22%2C%22slug%22%3A%22P2912%22%7D%7D%2C%7B%22id%22%3A52369%2C%22title%22%3A%22%5Cu7f16%5Cu53f7%5Cu4e3a1%5Cu5230N%22%2C%22forum%22%3A%7B%22id%22%3A2041%2C%22name%22%3A%22P2912%20%5BUSACO08OCT%5D%5Cu7267%5Cu573a%5Cu6563%5Cu6b65Pasture%20Walking%22%2C%22slug%22%3A%22P2912%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1967%22%2C%22title%22%3A%22%5Cu8d27%5Cu8f66%5Cu8fd0%5Cu8f93%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3379%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu8fd1%5Cu516c%5Cu5171%5Cu7956%5Cu5148%5Cuff08LCA%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3128%22%2C%22title%22%3A%22%5BUSACO15DEC%5D%5Cu6700%5Cu5927%5Cu6d41Max%20Flow%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3398%22%2C%22title%22%3A%22%5Cu4ed3%5Cu9f20%5Cu627esugar%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4281%22%2C%22title%22%3A%22%5BAHOI2008%5D%5Cu7d27%5Cu6025%5Cu96c6%5Cu5408%20%5C%2F%20%5Cu805a%5Cu4f1a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08OCT%5D%5Cu7267%5Cu573a%5Cu6563%5Cu6b65Pasture%20Walking%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08OCT]牧场散步Pasture Walking</h1>
+<h2>题目描述</h2>
+<div>The N cows (2 <= N <= 1,000) conveniently numbered 1..N are grazing among the N pastures also conveniently numbered 1..N. Most conveniently of all, cow i is grazing in pasture i.
+Some pairs of pastures are connected by one of N-1 bidirectional walkways that the cows can traverse. Walkway i connects pastures A\_i and B\_i (1 <= A\_i <= N; 1 <= B\_i <= N) and has a length of L\_i (1 <= L\_i <= 10,000).
+The walkways are set up in such a way that between any two distinct pastures, there is exactly one path of walkways that travels between them. Thus, the walkways form a tree.
+The cows are very social and wish to visit each other often. Ever in a hurry, they want you to help them schedule their visits by computing the lengths of the paths between 1 <= L\_i <= 10,000 pairs of pastures (each pair given as a query p1,p2 (1 <= p1 <= N; 1 <= p2 <= N).
+POINTS: 200
+有N(2<=N<=1000)头奶牛，编号为1到W，它们正在同样编号为1到N的牧场上行走.为了方 便，我们假设编号为i的牛恰好在第i号牧场上.
+有一些牧场间每两个牧场用一条双向道路相连，道路总共有N - 1条，奶牛可以在这些道路 上行走.第i条道路把第Ai个牧场和第Bi个牧场连了起来(1 <= A\_i <= N; 1 <= B\_i <= N)，而它的长度 是 1 <= L\_i <= 10,000.在任意两个牧场间，有且仅有一条由若干道路组成的路径相连.也就是说，所有的道路构成了一棵树.
+奶牛们十分希望经常互相见面.它们十分着急，所以希望你帮助它们计划它们的行程，你只 需要计算出Q(1 < Q < 1000)对点之间的路径长度•每对点以一个询问p1,p2 (1 <= p1 <= N; 1 <= p2 <= N). 的形式给出.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and Q
+\* Lines 2..N: Line i+1 contains three space-separated integers: A\_i, B\_i, and L\_i
+\* Lines N+1..N+Q: Each line contains two space-separated integers representing two distinct pastures between which the cows wish to travel: p1 and p2
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Lines 1..Q: Line i contains the length of the path between the two pastures in query i.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 2 
+2 1 2 
+4 3 2 
+1 4 3 
+1 2 
+3 2 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+7 
+</code></pre>
+<h2>说明</h2>
+<div>Query 1: The walkway between pastures 1 and 2 has length 2.
+Query 2: Travel through the walkway between pastures 3 and 4, then the one between 4 and 1, and finally the one between 1 and 2, for a total length of 7.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

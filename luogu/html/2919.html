@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08NOV]守护农场Guarding the Farm - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376142:583GjV4Tb+FAjsVMwOxS5/W9gwWjm36MYxLV7b1rgyU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20farm%20has%20many%20hills%20upon%20which%20Farmer%20John%20would%20like%20to%20place%20guards%20to%20ensure%20the%20safety%20of%20his%20valuable%20milk-cows.%5Cn%5CnHe%20wonders%20how%20many%20guards%20he%20will%20need%20if%20he%20wishes%20to%20put%20one%20on%20top%20of%20each%20hill.%20He%20has%20a%20map%20supplied%20as%20a%20matrix%20of%20integers%3B%20the%20matrix%20has%20N%20%281%20%3C%20N%20%3C%3D%20700%29%20rows%20and%20M%20%281%20%3C%20M%20%3C%3D%20700%29%20columns.%20Each%20member%20of%20the%20matrix%20is%20an%20altitude%20H%5C%5C_ij%20%280%20%3C%3D%20H%5C%5C_ij%20%3C%3D%2010%2C000%29.%20Help%20him%20determine%20the%20number%20of%20hilltops%20on%20the%20map.%5Cn%5CnA%20hilltop%20is%20one%20or%20more%20adjacent%20matrix%20elements%20of%20the%20same%20value%20surrounded%20exclusively%20by%20either%20the%20edge%20of%20the%20map%20or%20elements%20with%20a%20lower%20%28smaller%29%20altitude.%20Two%20different%20elements%20are%20adjacent%20if%20the%20magnitude%20of%20difference%20in%20their%20X%20coordinates%20is%20no%20greater%20than%201%20and%20the%20magnitude%20of%20differences%20in%20their%20Y%20coordinates%20is%20also%20no%20greater%20than%201.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20describes%20row%20i%20of%20the%20matrix%20with%20M%5Cn%5Cnspace-separated%20integers%3A%20H%5C%5C_ij%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20that%20specifies%20the%20number%20of%20hilltops%5Cn%22%2C%22samples%22%3A%5B%5B%228%207%20%5Cn4%203%202%202%201%200%201%20%5Cn3%203%203%202%201%200%201%20%5Cn2%202%202%202%201%200%200%20%5Cn2%201%201%201%201%200%200%20%5Cn1%201%200%200%200%201%200%20%5Cn0%200%200%201%201%201%200%20%5Cn0%201%202%202%201%201%200%20%5Cn0%201%201%201%202%201%200%20%5Cn%22%2C%223%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%20three%20peaks%3A%20The%20one%20with%20height%204%20on%20the%20left%20top%2C%20one%20of%20the%20points%20with%20height%202%20at%20the%20bottom%20part%2C%20and%20one%20of%20the%20points%20with%20height%201%20on%20the%20right%20top%20corner.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu519c%5Cu592bJohn%5Cu7684%5Cu519c%5Cu573a%5Cu91cc%5Cu6709%5Cu5f88%5Cu591a%5Cu5c0f%5Cu5c71%5Cu4e18%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu8981%5Cu5728%5Cu90a3%5Cu91cc%5Cu5e03%5Cu7f6e%5Cu4e00%5Cu4e9b%5Cu4fdd%5Cu9556%5Cu53bb%5Cu4fdd%5Cu536b%5Cu4ed6%5Cu7684%5Cu90a3%5Cu4e9b%5Cu76f8%5Cu5f53%5Cu503c%5Cu94b1%5Cu7684%5Cu5976%5Cu725b%5Cu4eec%5Cu3002%5Cn%5Cn%5Cu4ed6%5Cu60f3%5Cu77e5%5Cu9053%5Cu5982%5Cu679c%5Cu5728%5Cu4e00%5Cu5ea7%5Cu5c0f%5Cu5c71%5Cu4e18%5Cu4e0a%5Cu5e03%5Cu7f6e%5Cu4e00%5Cu540d%5Cu4fdd%5Cu9556%5Cu7684%5Cu8bdd%5Cuff0c%5Cu4ed6%5Cu6700%5Cu5c11%5Cu603b%5Cu5171%5Cu9700%5Cu8981%5Cu62db%5Cu8058%5Cu591a%5Cu5c11%5Cu540d%5Cu4fdd%5Cu9556%5Cu3002%5Cu4ed6%5Cu73b0%5Cu5728%5Cu624b%5Cu5934%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7528%5Cu6570%5Cu5b57%5Cu77e9%5Cu9635%5Cu6765%5Cu8868%5Cu793a%5Cu5730%5Cu5f62%5Cu7684%5Cu5730%5Cu56fe%5Cu3002%5Cu8fd9%5Cu4e2a%5Cu77e9%5Cu9635%5Cu6709N%5Cu884c%5Cuff081%5Cuff1cN%5Cu2264700%29%5Cu548cM%5Cu5217%28%201%5Cuff1cM%5Cu2264%20700%29%20%5Cu3002%5Cu77e9%5Cu9635%5Cu4e2d%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu5143%5Cu7d20%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu503cH_ij%5Cuff080%5Cu2264H_ij%5Cu226410000%5Cuff09%5Cu6765%5Cu8868%5Cu793a%5Cu8be5%5Cu5730%5Cu533a%5Cu7684%5Cu6d77%5Cu62d4%5Cu9ad8%5Cu5ea6%5Cu3002%5Cn%5Cn%5Cu5c0f%5Cu5c71%5Cu4e18%5Cu7684%5Cu5b9a%5Cu4e49%5Cu662f%5Cuff1a%5Cu82e5%5Cu5730%5Cu56fe%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu6240%5Cu90bb%5Cu63a5%5Cu7684%5Cu6240%5Cu6709%5Cu5143%5Cu7d20%5Cu90fd%5Cu6bd4%5Cu8fd9%5Cu4e2a%5Cu5143%5Cu7d20%5Cu9ad8%5Cu5ea6%5Cu8981%5Cu5c0f%5Cuff08%5Cu6216%5Cu5b83%5Cu90bb%5Cu63a5%5Cu7684%5Cu662f%5Cu5730%5Cu56fe%5Cu7684%5Cu8fb9%5Cu754c%5Cuff09%5Cuff0c%5Cu5219%5Cu8be5%5Cu5143%5Cu7d20%5Cu548c%5Cu5176%5Cu5468%5Cu56f4%5Cu6240%5Cu6709%5Cu6309%5Cu7167%5Cu8fd9%5Cu6837%5Cu987a%5Cu5e8f%5Cu6392%5Cu5217%5Cu7684%5Cu5143%5Cu7d20%5Cu7684%5Cu96c6%5Cu5408%5Cu79f0%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu5c0f%5Cu5c71%5Cu4e18%5Cu3002%5Cu8fd9%5Cu91cc%5Cu90bb%5Cu63a5%5Cu7684%5Cu610f%5Cu4e49%5Cu662f%5Cuff1a%5Cu82e5%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu6a2a%5Cu7eb5%5Cu5750%5Cu6807%5Cu4e0e%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu6a2a%5Cu7eb5%5Cu5750%5Cu6807%5Cu76f8%5Cu5dee%5Cu4e0d%5Cu8d85%5Cu8fc71%5Cuff0c%5Cu5219%5Cu79f0%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu5143%5Cu7d20%5Cu90bb%5Cu63a5%5Cuff0c%5Cu6bd4%5Cu5982%5Cu67d0%5Cu4e2a%5Cu975e%5Cu8fb9%5Cu754c%5Cu70b9%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu67098%5Cu4e2a%5Cu76f8%5Cu90bb%5Cu70b9%5Cuff1a%5Cu4e0a%5Cu3001%5Cu4e0b%5Cu3001%5Cu5de6%5Cu3001%5Cu53f3%5Cu3001%5Cu5de6%5Cu4e0a%5Cu3001%5Cu53f3%5Cu4e0a%5Cu3001%5Cu5de6%5Cu4e0b%5Cu3001%5Cu53f3%5Cu4e0b%5Cu3002%5Cn%5Cn%5Cu8bf7%5Cu4f60%5Cu5e2e%5Cu52a9%5Cu4ed6%5Cu7edf%5Cu8ba1%5Cu51fa%5Cu5730%5Cu56fe%5Cu4e0a%5Cu6700%5Cu5c11%5Cu4e14%5Cu5c3d%5Cu91cf%5Cu9ad8%5Cu7684%5Cu5c0f%5Cu5c71%5Cu4e18%5Cu6570%5Cu91cf%5Cu3002%22%2C%22tags%22%3A%5B4%2C25%2C46%2C127%2C266%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1760%2C%22totalAccepted%22%3A634%2C%22pid%22%3A%22P2919%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A155433%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu795e%5Cu5e2e%5Cu5fd9%5Cu770b%5Cu770b%5Cu54ea%5Cu91cc%5Cu9519%5Cu4e86%5Cuff0c%5Cu8c22%5Cu8c22%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2048%2C%22name%22%3A%22P2919%20%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22slug%22%3A%22P2919%22%7D%7D%2C%7B%22id%22%3A138945%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu4f6c%5Cu89e3%5Cu91ca%5Cu9898%5Cu76ee%5Cu610f%5Cu601d%22%2C%22forum%22%3A%7B%22id%22%3A2048%2C%22name%22%3A%22P2919%20%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22slug%22%3A%22P2919%22%7D%7D%2C%7B%22id%22%3A138831%2C%22title%22%3A%22%5Cu54ea%5Cu4f4d%5Cu5927%5Cu4f6c%5Cu80fd%5Cu5e2e%5Cu5fd9%5Cu89e3%5Cu91ca%5Cu4e00%5Cu4e0b%5Cu9898%5Cu76ee%5Cu7684%5Cu610f%5Cu601d%5Cu554a%5Cuff0c%5Cu6709%5Cu70b9%5Cu770b%5Cu4e0d%5Cu61c2%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A2048%2C%22name%22%3A%22P2919%20%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22slug%22%3A%22P2919%22%7D%7D%2C%7B%22id%22%3A113048%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu6559%22%2C%22forum%22%3A%7B%22id%22%3A2048%2C%22name%22%3A%22P2919%20%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22slug%22%3A%22P2919%22%7D%7D%2C%7B%22id%22%3A65042%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5Cu9519%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A2048%2C%22name%22%3A%22P2919%20%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22slug%22%3A%22P2919%22%7D%7D%2C%7B%22id%22%3A48254%2C%22title%22%3A%22%5Cu6570%5Cu636e%5Cu8fc7%5Cu5927%5Cu65e0%5Cu6cd5%5Cu4e0b%5Cu8f7d%22%2C%22forum%22%3A%7B%22id%22%3A2048%2C%22name%22%3A%22P2919%20%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22slug%22%3A%22P2919%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1280%22%2C%22title%22%3A%22%5Cu5c3c%5Cu514b%5Cu7684%5Cu4efb%5Cu52a1%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1330%22%2C%22title%22%3A%22%5Cu5c01%5Cu9501%5Cu9633%5Cu5149%5Cu5927%5Cu5b66%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1451%22%2C%22title%22%3A%22%5Cu6c42%5Cu7ec6%5Cu80de%5Cu6570%5Cu91cf%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1514%22%2C%22title%22%3A%22%5Cu5f15%5Cu6c34%5Cu5165%5Cu57ce%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2920%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu65f6%5Cu95f4%5Cu7ba1%5Cu7406Time%20Management%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08NOV]守护农场Guarding the Farm</h1>
+<h2>题意翻译</h2>
+<div>农夫John的农场里有很多小山丘，他想要在那里布置一些保镖去保卫他的那些相当值钱的奶牛们。
+他想知道如果在一座小山丘上布置一名保镖的话，他最少总共需要招聘多少名保镖。他现在手头有一个用数字矩阵来表示地形的地图。这个矩阵有N行（1＜N≤700)和M列( 1＜M≤ 700) 。矩阵中的每个元素都有一个值H_ij（0≤H_ij≤10000）来表示该地区的海拔高度。
+小山丘的定义是：若地图中一个元素所邻接的所有元素都比这个元素高度要小（或它邻接的是地图的边界），则该元素和其周围所有按照这样顺序排列的元素的集合称为一个小山丘。这里邻接的意义是：若一个位置的横纵坐标与另一个位置的横纵坐标相差不超过1，则称这两个元素邻接，比如某个非边界点的位置有8个相邻点：上、下、左、右、左上、右上、左下、右下。
+请你帮助他统计出地图上最少且尽量高的小山丘数量。</div>
+<h2>题目描述</h2>
+<div>The farm has many hills upon which Farmer John would like to place guards to ensure the safety of his valuable milk-cows.
+He wonders how many guards he will need if he wishes to put one on top of each hill. He has a map supplied as a matrix of integers; the matrix has N (1 < N <= 700) rows and M (1 < M <= 700) columns. Each member of the matrix is an altitude H\_ij (0 <= H\_ij <= 10,000). Help him determine the number of hilltops on the map.
+A hilltop is one or more adjacent matrix elements of the same value surrounded exclusively by either the edge of the map or elements with a lower (smaller) altitude. Two different elements are adjacent if the magnitude of difference in their X coordinates is no greater than 1 and the magnitude of differences in their Y coordinates is also no greater than 1.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and M
+\* Lines 2..N+1: Line i+1 describes row i of the matrix with M
+space-separated integers: H\_ij
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer that specifies the number of hilltops
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8 7 
+4 3 2 2 1 0 1 
+3 3 3 2 1 0 1 
+2 2 2 2 1 0 0 
+2 1 1 1 1 0 0 
+1 1 0 0 0 1 0 
+0 0 0 1 1 1 0 
+0 1 2 2 1 1 0 
+0 1 1 1 2 1 0 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+</code></pre>
+<h2>说明</h2>
+<div>There are three peaks: The one with height 4 on the left top, one of the points with height 2 at the bottom part, and one of the points with height 1 on the right top corner.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

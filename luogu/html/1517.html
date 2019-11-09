@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>高精求小数幂 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573374050:He3YdRk3l5Gt4LzL+NJovt+huBpCEaujP1mDE7oQYXw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Problems%20involving%20the%20computation%20of%20exact%20values%20of%20very%20large%20magnitude%20and%20precision%20are%20common.%20For%20example%2C%20the%20computation%20of%20the%20national%20debt%20is%20a%20taxing%20experience%20for%20many%20computer%20systems.%5Cn%5CnThis%20problem%20requires%20that%20you%20write%20a%20program%20to%20compute%20the%20exact%20value%20of%20Rn%20where%20R%20is%20a%20real%20number%20%28%200.0%20%3C%20R%20%3C%3D%209999.9%29%20and%20n%20is%20an%20integer%20such%20that%200%20%3C%20n%20%3C%3D%20250.%5Cn%22%2C%22inputFormat%22%3A%22The%20input%20will%20consist%20of%20a%20set%20%28less%20than%2011%29%20of%20pairs%20of%20values%20for%20R%20and%20n.%20The%20R%20value%20will%20occupy%20columns%201%20through%206%2C%20and%20the%20n%20value%20will%20be%20in%20columns%208%20and%209.%5Cn%5Cn%20%20%20%5Cn%20%22%2C%22outputFormat%22%3A%22The%20output%20will%20consist%20of%20one%20line%20for%20each%20line%20of%20input%20giving%20the%20exact%20value%20of%20R%5En.%20Leading%20zeros%20should%20be%20suppressed%20in%20the%20output.%20Insignificant%20trailing%20zeros%20must%20not%20be%20printed.%20Don%27t%20print%20the%20decimal%20point%20if%20the%20result%20is%20an%20integer.%5Cn%22%2C%22samples%22%3A%5B%5B%2295.123%20%202%5Cn0.4321%20%205%5Cn5.1234%20%207%5Cn6.7592%20%203%5Cn98.999%20%205%5Cn1.0100%2010%5Cn%22%2C%229048.385129%5Cn.01506334182914325601%5Cn92663.3181348508776705891407804544%5Cn308.806114738688%5Cn9509420210.697891990494999%5Cn1.10462212541120451001%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu5404%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b92s%5Cn%5CnIf%20you%20don%27t%20know%20how%20to%20determine%20wheather%20encounted%20the%20end%20of%20input%3A%5Cn%5Cns%20is%20a%20string%20and%20n%20is%20an%20integer%5Cn%5CnC%2B%2B%5Cnwhile%28cin%3E%3Es%3E%3En%29%20%5Cn%5Cn%7B%20%5Cn...%5Cn%7D%20%5Cnc%5Cnwhile%28scanf%28%5C%22%25s%25d%5C%22%2Cs%2C%26n%29%3D%3D2%29%20%5C%2F%5C%2Fto%20see%20if%20the%20scanf%20read%20in%20as%20many%20items%20as%20you%20want%5Cn%5Cn%5Cn%7B%20%5Cn...%5Cn%7D%22%2C%22provider%22%3A%7B%22uid%22%3A29%2C%22name%22%3A%22yeszy%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%5Cu8ba1%5Cu7b97%5Cu91cf%5Cu975e%5Cu5e38%5Cu5927%5Cu3001%5Cu7cbe%5Cu5ea6%5Cu8981%5Cu6c42%5Cu975e%5Cu5e38%5Cu9ad8%5Cu7684%5Cu95ee%5Cu9898%5Cu662f%5Cu5f88%5Cu5e38%5Cu89c1%5Cu7684%5Cu3002%5Cu4e3e%5Cu4e2a%5Cu4f8b%5Cu5b50%5Cuff0c%5Cu8ba1%5Cu7b97%5Cu56fd%5Cu5bb6%5Cu503a%5Cu52a1%5Cu5c31%5Cu662f%5Cu8fd9%5Cu4e48%5Cu4e00%5Cu9879%5Cu5bf9%5Cu4e8e%5Cu8bb8%5Cu591a%5Cu8ba1%5Cu7b97%5Cu673a%5Cu7cfb%5Cu7edf%5Cu6765%5Cu8bf4%5Cu975e%5Cu5e38%5Cu7e41%5Cu91cd%5Cu7684%5Cu5de5%5Cu4f5c%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu6709%5Cu8fd9%5Cu4e48%5Cu4e00%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu8981%5Cu6c42%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu6765%5Cu8ba1%5Cu7b97R%5En%5Cu7684%5Cu7cbe%5Cu786e%5Cu503c%5Cuff0c%5Cu5176%5Cu4e2dR%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5b9e%5Cu6570%280.0%20%3C%20R%20%3C%3D%209999.9%29%5Cu800cn%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff080%20%3C%20n%20%3C%3D%20250%5Cuff09%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu5c06%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu5c0f%5Cu4e8e11%5Cu884c%5Cu7684%5Cu6587%5Cu4ef6%5Cuff0c%5Cu5176%5Cu4e2d%5Cu6bcf%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2aR%5Cu548c%5Cu4e00%5Cu4e2an%5Cuff0c%5Cu4e2d%5Cu95f4%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cuff08%5Cu6570%5Cu91cf%5Cu4e0d%5Cu5b9a%5Cu4f46%5Cu662f%5Cu4fdd%5Cu8bc1R%5Cu7684%5Cu7b2c%5Cu4e00%5Cu4f4d%5Cu5728%5Cu7b2c%5Cu4e00%5Cu5217%5Cu800cn%5Cu7684%5Cu672b%5Cu4f4d%5Cu5728%5Cu7b2c%5Cu4e5d%5Cu5217%5Cuff09%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu8f93%5Cu5165%5Cu9700%5Cu8981%5Cu6709%5Cu4e00%5Cu884c%5Cu7684%5Cu8f93%5Cu51fa%5Cuff0c%5Cu8868%5Cu793aR%5En%5Cu7684%5Cu7cbe%5Cu786e%5Cu503c%5Cu3002%5Cu6709%5Cu4e09%5Cu70b9%5Cu8981%5Cu6c42%5Cuff1a%5Cn%5Cn1%5Cu3001%5Cu8f93%5Cu51fa%5Cu4e0d%5Cu5141%5Cu8bb8%5Cu6709%5Cu524d%5Cu5bfc0%5Cn%5Cn2%5Cu3001%5Cu4e0d%5Cu5141%5Cu8bb8%5Cu65e0%5Cu610f%5Cu4e49%5Cu7684%5Cu5c3e%5Cu968f0%5Cuff08%5Cu59821.90%5Cu4e2d%5Cu76840%5Cu4e0d%5Cu80fd%5Cu8f93%5Cu51fa%5Cuff09%5Cn%5Cn3%5Cu3001%5Cu5982%5Cu679c%5Cu7ed3%5Cu679c%5Cu662f%5Cu6574%5Cu6570%5Cuff0c%5Cu4e0d%5Cu5e94%5Cu8be5%5Cu6253%5Cu5370%5Cu5c0f%5Cu6570%5Cu70b9%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4f60%5Cu4e0d%5Cu77e5%5Cu9053%5Cu5982%5Cu4f55%5Cu786e%5Cu5b9a%5Cu8f93%5Cu5165%5Cu7684%5Cu672b%5Cu5c3e%5Cu503c%3A%5Cn%5Cn%5Cu4ee5%5Cu4e0b%5Cu662f%5Cu4e00%5Cu4e9b%5Cu5e2e%5Cu52a9%5Cn%5Cnstring%20s%3B%20int%20n%3B%5Cn%5Cnc%2B%2B%5Cu7248while%28cin%20%3E%3E%20s%20%3E%3E%20n%29%20%7B%5Cu2026%5Cu8fd9%5Cu91cc%5Cu662f%5Cu4f60%5Cu7684%5Cu4ee3%5Cu7801%7D%5Cn%5Cnc%5Cu7248while%28scanf%28%5C%22%25s%25d%5C%22%5Cuff0cs%5Cuff0c%26n%29%3D%3D2%29%20%5C%2F%5C%2F%5Cu4ee5%5Cu67e5%5Cu770bscanf%5Cu662f%5Cu5426%5Cu6309%5Cu9700%5Cu8981%5Cu7684%5Cu6570%5Cu91cf%5Cu8bfb%5Cu53d6%5Cu3002%5Cn%5Cn%7B%5Cu2026%5Cu8fd9%5Cu91cc%5Cu662f%5Cu4f60%5Cu7684%5Cu4ee3%5Cu7801%7D%5Cn%5Cn%5Cu611f%5Cu8c22%20%40SLYZ_0120%20%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%5Cu3002%22%2C%22tags%22%3A%5B5%2C10%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1059%2C%22totalAccepted%22%3A299%2C%22pid%22%3A%22P1517%22%2C%22title%22%3A%22%5Cu9ad8%5Cu7cbe%5Cu6c42%5Cu5c0f%5Cu6570%5Cu5e42%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A95244%2C%22title%22%3A%22%5Cu6570%5Cu636e%5Cu6709%5Cu6bd2%5Cu5427%5Cuff1f%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A535%2C%22name%22%3A%22P1517%20%5Cu9ad8%5Cu7cbe%5Cu6c42%5Cu5c0f%5Cu6570%5Cu5e42%22%2C%22slug%22%3A%22P1517%22%7D%7D%2C%7B%22id%22%3A84855%2C%22title%22%3A%22%5Cu538b%5Cu4f4d%5Cu9ad8%5Cu7cbe%5Cu600e%5Cu4e48%5Cu5904%5Cu7406%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A535%2C%22name%22%3A%22P1517%20%5Cu9ad8%5Cu7cbe%5Cu6c42%5Cu5c0f%5Cu6570%5Cu5e42%22%2C%22slug%22%3A%22P1517%22%7D%7D%2C%7B%22id%22%3A73669%2C%22title%22%3A%22%5Cu6211%5Cu8fd9%5Cu4e2a%5Cu4ee3%5Cu7801%5Cu8fd9%5Cu4e48%5Cu4f18%5Cu5316%5Cu554a%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A535%2C%22name%22%3A%22P1517%20%5Cu9ad8%5Cu7cbe%5Cu6c42%5Cu5c0f%5Cu6570%5Cu5e42%22%2C%22slug%22%3A%22P1517%22%7D%7D%2C%7B%22id%22%3A62907%2C%22title%22%3A%22%5Cu65f6%5Cu9650%5Cu5230%5Cu5e95%5Cu662f1s%5Cu8fd8%5Cu662f2s%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A535%2C%22name%22%3A%22P1517%20%5Cu9ad8%5Cu7cbe%5Cu6c42%5Cu5c0f%5Cu6570%5Cu5e42%22%2C%22slug%22%3A%22P1517%22%7D%7D%2C%7B%22id%22%3A39402%2C%22title%22%3A%22%5Cu4e0d%5Cu77e5%5Cu9053%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu53ea%5Cu670950%5Cu5206QAQ%5Cu6c42%5Cu6559QAQ%22%2C%22forum%22%3A%7B%22id%22%3A535%2C%22name%22%3A%22P1517%20%5Cu9ad8%5Cu7cbe%5Cu6c42%5Cu5c0f%5Cu6570%5Cu5e42%22%2C%22slug%22%3A%22P1517%22%7D%7D%2C%7B%22id%22%3A35335%2C%22title%22%3A%22%5Cu4eba%5Cu5de5%5Cu6539%5Cu8fdb%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A535%2C%22name%22%3A%22P1517%20%5Cu9ad8%5Cu7cbe%5Cu6c42%5Cu5c0f%5Cu6570%5Cu5e42%22%2C%22slug%22%3A%22P1517%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1519%22%2C%22title%22%3A%22%5Cu7a7f%5Cu8d8a%5Cu6805%5Cu680f%20Overfencing%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1521%22%2C%22title%22%3A%22%5Cu6c42%5Cu9006%5Cu5e8f%5Cu5bf9%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1530%22%2C%22title%22%3A%22%5Cu5206%5Cu6570%5Cu5316%5Cu5c0f%5Cu6570%20Fractions%20to%20Decimals%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1932%22%2C%22title%22%3A%22A%2BB%20%20A-B%20%20A%2AB%20%20A%5C%2FB%20A%25B%20Problem%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2887%22%2C%22title%22%3A%22%5BUSACO07NOV%5D%5Cu9632%5Cu6652%5Cu971cSunscreen%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu9ad8%5Cu7cbe%5Cu6c42%5Cu5c0f%5Cu6570%5Cu5e42%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>高精求小数幂</h1>
+<h2>题意翻译</h2>
+<div>计算量非常大、精度要求非常高的问题是很常见的。举个例子，计算国家债务就是这么一项对于许多计算机系统来说非常繁重的工作。
+现在有这么一个任务要求编写一个程序来计算R^n的精确值，其中R是一个实数(0.0 < R <= 9999.9)而n是一个整数（0 < n <= 250）。
+输入将包含一个小于11行的文件，其中每一行包括一个R和一个n，中间用空格隔开（数量不定但是保证R的第一位在第一列而n的末位在第九列）
+对于每一个输入需要有一行的输出，表示R^n的精确值。有三点要求：
+1、输出不允许有前导0
+2、不允许无意义的尾随0（如1.90中的0不能输出）
+3、如果结果是整数，不应该打印小数点
+如果你不知道如何确定输入的末尾值:
+以下是一些帮助
+string s; int n;
+c++版while(cin >> s >> n) {…这里是你的代码}
+c版while(scanf("%s%d"，s，&n)==2) //以查看scanf是否按需要的数量读取。
+{…这里是你的代码}
+感谢 @SLYZ_0120 提供的翻译。</div>
+<h2>题目描述</h2>
+<div>Problems involving the computation of exact values of very large magnitude and precision are common. For example, the computation of the national debt is a taxing experience for many computer systems.
+This problem requires that you write a program to compute the exact value of Rn where R is a real number ( 0.0 < R <= 9999.9) and n is an integer such that 0 < n <= 250.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input will consist of a set (less than 11) of pairs of values for R and n. The R value will occupy columns 1 through 6, and the n value will be in columns 8 and 9.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>The output will consist of one line for each line of input giving the exact value of R^n. Leading zeros should be suppressed in the output. Insignificant trailing zeros must not be printed. Don't print the decimal point if the result is an integer.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>95.123  2
+0.4321  5
+5.1234  7
+6.7592  3
+98.999  5
+1.0100 10
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>9048.385129
+.01506334182914325601
+92663.3181348508776705891407804544
+308.806114738688
+9509420210.697891990494999
+1.10462212541120451001
+</code></pre>
+<h2>说明</h2>
+<div>各个测试点2s
+If you don't know how to determine wheather encounted the end of input:
+s is a string and n is an integer
+C++
+while(cin>>s>>n)
+{
+...
+}
+c
+while(scanf("%s%d",s,&n)==2) //to see if the scanf read in as many items as you want
+{
+...
+}</div>
+</article>
+</div>
+</div>
+</body>
+</html>

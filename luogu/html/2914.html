@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08OCT]断电Power Failure - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376136:Kpu5FVJuuOEXihvxgWqwOpcZwn/406oDJusJ3qDNiHA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22A%20vicious%20thunderstorm%20has%20destroyed%20some%20of%20the%20wires%20of%20the%20farm%27s%20electrical%20power%20grid%21%20Farmer%20John%20has%20a%20map%20of%20all%20N%20%282%20%3C%3D%20N%20%3C%3D%201%2C000%29%20of%20the%20powerpoles%2C%20which%20are%20conveniently%20numbered%201..N%20and%20located%20on%20integer%20plane%20coordinates%20x%5C%5C_i%2Cy%5C%5C_i%20%28-100%2C000%20%3C%3D%20x%5C%5C_i%20%3C%3D%20100000%3B%20-100%2C000%20%3C%3D%20y%5C%5C_i%20%3C%3D%20100%2C000%29.%5Cn%5CnSome%20W%20%281%20%3C%3D%20W%20%3C%3D%2010%2C000%29%20power%20wires%20connect%20pairs%20of%20power%20poles%20Pi%20and%20Pj%20%281%20%3C%3D%20Pi%20%3C%3D%20N%3B%201%20%3C%3D%20Pj%20%3C%3D%20N%29.%5Cn%5CnHe%20needs%20to%20get%20power%20from%20pole%201%20to%20pole%20N%20%28which%20means%20that%20some%20series%20of%20wires%20can%20traverse%20from%20pole%201%20to%20pole%20N%2C%20probably%20through%20some%20intermediate%20set%20of%20poles%29.%5Cn%5CnGiven%20the%20locations%20of%20the%20N%20poles%20and%20the%20list%20of%20remaining%20power%20wires%2C%20determine%20the%20minimum%20length%20of%20power%20wire%20required%20to%20restore%20the%20electrical%20connection%20so%20that%20electricity%20can%20flow%20from%20pole%201%20to%20pole%20N.%20%20No%20wire%20can%20be%20longer%20than%20some%20real%20number%20M%20%280.0%20%3C%20M%20%3C%3D%20200%2C000.0%29.%5Cn%5CnAs%20an%20example%2C%20below%20on%20the%20left%20is%20a%20map%20of%20the%209%20poles%20and%203%20wires%20after%20the%20storm.%20For%20this%20task%2C%20M%20%3D%202.0.%20The%20best%20set%20of%20wires%20to%20add%20would%20connect%20poles%204%20and%206%20and%20also%20poles%206%20and%209.%5Cn%5CnAfter%20the%20storm%20%20%20%20%20%20%20%20%20%20%20%20%20%20Optimally%20reconnected%5Cn%5Cn3%20%20.%20.%20.%207%209%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%20%203%20%20.%20.%20.%207%209%20.%20.%20.%20.%20.%5Cn%5Cn%5C%2F%5Cn2%20%20.%20.%205%206%20.%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%20%202%20%20.%20.%205%206%20.%20.%20.%20.%20.%20.%5Cn%5Cn%5C%2F%5Cn1%20%202-3-4%20.%208%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%20%201%20%202-3-4%20.%208%20.%20.%20.%20.%20.%5Cn%5Cn%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%5Cn0%20%201%20.%20.%20.%20.%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%20%200%20%201%20.%20.%20.%20.%20.%20.%20.%20.%20.%5Cn%5Cn0%201%202%203%204%205%206%207%208%209%20%20%20%20%20%20%20%20%20%20%20%20%200%201%202%203%204%205%206%207%208%209%5Cn%5CnThe%20total%20length%20is%20then%201.414213562%20%2B%201.414213562%20%3D%202.828427124%20.%5Cn%5CnPOINTS%3A%20350%5Cn%5Cn%5Cu4e00%5Cu573a%5Cu90aa%5Cu6076%5Cu7684%5Cu66b4%5Cu98ce%5Cu96e8%5Cu6bc1%5Cu574f%5Cu4e86%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu7684%5Cu8f93%5Cu7535%5Cu7f51%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e9b%5Cu7535%5Cu7ebf%5Cuff01%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu6709%5Cu4e00%5Cu5f20%5Cu5305%5Cu542b%5Cu4e86%5Cu6240%5Cu6709n%5Cuff082%3C%3Dn%3C%3D1000%5Cuff09%5Cu4e2a%5Cu7535%5Cu80fd%5Cu4e2d%5Cu8f6c%5Cu70b9%5Cu7684%5Cu5730%5Cu56fe%5Cuff0c%5Cu8fd9%5Cu4e9b%20%5Cu70b9%5Cu88ab%5Cu5f88%5Cu81ea%5Cu7136%5Cu800c%5Cu65b9%5Cu4fbf%5Cu7684%5Cu6807%5Cu8bc6%5Cu4e3a1..n%5Cuff0c%5Cu5e76%5Cu4e14%5Cu88ab%5Cu6574%5Cu6570%5Cu5750%5Cu6807x%5C%5C_i%5Cuff0cy%5C%5C_i%5Cuff08-100000%3C%3Dx%5C%5C_i%3C%3D100000%3B-100000%26%20lt%3B%3Dy%5C%5C_i%3C%3D100000%5Cuff09%5Cu5b9a%5Cu4f4d%5Cu4e8e%5Cu5750%5Cu6807%5Cu7cfb%5Cu3002%5Cn%5Cn%5Cu6709w%5Cuff081%3C%3Dw%3C%3D10000%5Cuff09%5Cu6761%5Cu7535%5Cu7ebf%5Cu4ecd%5Cu7136%5Cu4fdd%5Cu5b58%5Cu7740%5Cu6ca1%5Cu88ab%5Cu66b4%5Cu98ce%5Cu96e8%5Cu7834%5Cu574f%5Cuff0c%5Cu6bcf%5Cu6761%5Cu7535%5Cu7ebf%5Cu8fde%5Cu63a5%5Cu7740%5Cu4e24%5Cu4e2a%5Cu7535%5Cu80fd%5Cu4e2d%5Cu8f6c%5Cu70b9pi%2Cpj%5Cuff081%3C%3Dpi%3C%3Dn%3B1%3C%3Dpj%3C%3Dn%5Cuff09%5Cu3002%5Cn%5Cn%5Cu4ed6%5Cu5e0c%5Cu671b%5Cu4ece%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu7535%5Cu80fd%5Cu4e2d%5Cu8f6c%5Cu70b9%5Cu628a%5Cu7535%5Cu5bfc%5Cu5165%5Cu7b2cn%5Cu4e2a%5Cuff08%5Cu53ef%5Cu80fd%5Cu901a%5Cu8fc7%5Cu4e00%5Cu4e9b%5Cu4e2d%5Cu95f4%5Cu7684%5Cu7535%5Cu80fd%5Cu4e2d%5Cu8f6c%5Cu70b9%5Cuff0c%5Cu5e94%5Cu5f53%5Cu6709%5Cu4e00%5Cu7ec4%5Cu7535%5Cu7ebf%5Cu8fde%5Cu63a51%5Cu548cn%5Cuff09%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu51fan%5Cu4e2a%5Cu7535%5Cu80fd%5Cu4e2d%5Cu8f6c%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%5Cu548c%5Cu5e78%5Cu5b58%5Cu7684%5Cu7535%5Cu7ebf%5Cuff0c%5Cu8bf7%5Cu786e%5Cu5b9a%5Cu6700%5Cu5c11%5Cu9700%5Cu8981%5Cu67b6%5Cu8bbe%5Cu7684%5Cu7535%5Cu7ebf%5Cu603b%5Cu957f%5Cu5ea6%5Cuff0c%5Cu4f46%5Cu8bf7%5Cu6ce8%5Cu610f%5Cuff0c%5Cu67b6%5Cu8bbe%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu5355%5Cu6761%5Cu7535%5Cu7ebf%5Cu800c%5Cu8a00%5Cuff0c%5Cu5176%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu5e94%5Cu8d85%5Cu8fc7m%5Cuff080.0%3C%3Dm%3C%3D200000.0%5Cuff09%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu4f8b%5Cu5b50%5Cuff0c%5Cu5728%5Cu4e0b%5Cu9762%5Cuff0c%5Cu5de6%5Cu8fb9%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5305%5Cu542b9%5Cu4e2a%5Cu7535%5Cu80fd%5Cu4e2d%5Cu8f6c%5Cu7535%5Cu548c3%5Cu6761%5Cu5e78%5Cu5b58%5Cu7535%5Cu7ebf%5Cu7684%5Cu5730%5Cu56fe%5Cu3002%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu4e2d%5Cuff0c%5Cu89c4%5Cu5b9a%5Cu540d%5Cu3002m%3D2.0%5Cu3002%5Cu6700%5Cu4f73%5Cu7684%5Cu67b6%5Cu8bbe%5Cu65b9%5Cu6848%5Cu662f%5Cu8fde%5Cu63a56%5Cu548c4%5Cuff0c%5Cu4ee5%5Cu53ca6%5Cu548c9%5Cu3002%5Cn%5Cn%60%60%60cpp%5Cn%20%20%20After%20the%20storm%20%20%20%20%20%20%20%20%20%20%20%20%20%20Optimally%20reconnected%5Cn3%20%20.%20.%20.%207%209%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%20%203%20%20.%20.%20.%207%209%20.%20.%20.%20.%20.%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%2F%5Cn2%20%20.%20.%205%206%20.%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%20%202%20%20.%20.%205%206%20.%20.%20.%20.%20.%20.%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5C%2F%5Cn1%20%202-3-4%20.%208%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%20%201%20%202-3-4%20.%208%20.%20.%20.%20.%20.%5Cn%20%20%20%7C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%5Cn0%20%201%20.%20.%20.%20.%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%20%200%20%201%20.%20.%20.%20.%20.%20.%20.%20.%20.%5Cn%5Cn%20%20%200%201%202%203%204%205%206%207%208%209%20%20%20%20%20%20%20%20%20%20%20%20%200%201%202%203%204%205%206%207%208%209%5Cn%60%60%60%5Cn%5Cu8fd9%5Cu662f%5Cu7684%5Cu603b%5Cu957f%5Cu5ea6%5Cu662f%201.414213562%20%2B%201.414213562%20%3D%202.828427124%20.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20W%5Cn%5Cn%5C%5C%2A%20Line%202%3A%20A%20single%20real%20number%3A%20M%5Cn%5Cn%5C%5C%2A%20Lines%203..N%2B2%3A%20Each%20line%20contains%20two%20space-separated%20integers%3A%20x%5C%5C_i%20and%20y%5C%5C_i%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B3..N%2B2%2BW%3A%20Two%20space-separated%20integers%3A%20Pi%20and%20Pj%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20on%20a%20single%20line.%20%20If%20restoring%20connection%20is%20impossible%2C%20output%20-1.%20Otherwise%2C%20output%20a%20single%20integer%20that%20is%201000%20times%20the%20total%20minimum%20cost%20to%20restore%5Cn%5Cnelectricity.%20Do%20not%20perform%20any%20rounding%3B%20truncate%20the%20resulting%20product.%5Cn%22%2C%22samples%22%3A%5B%5B%229%203%20%5Cr%5Cn2.0%20%5Cr%5Cn0%200%20%5Cr%5Cn0%201%20%5Cr%5Cn1%201%20%5Cr%5Cn2%201%20%5Cr%5Cn2%202%20%5Cr%5Cn3%202%20%5Cr%5Cn3%203%20%5Cr%5Cn4%201%20%5Cr%5Cn4%203%20%5Cr%5Cn1%202%20%5Cr%5Cn2%203%20%5Cr%5Cn3%204%20%5Cr%5Cn%22%2C%222828%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22Just%20as%20in%20the%20diagram%20above.%5Cn%5Cn%5CnAs%20above.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C46%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A269%2C%22totalAccepted%22%3A84%2C%22pid%22%3A%22P2914%22%2C%22title%22%3A%22%5BUSACO08OCT%5D%5Cu65ad%5Cu7535Power%20Failure%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2512%22%2C%22title%22%3A%22%5BHAOI2008%5D%5Cu7cd6%5Cu679c%5Cu4f20%5Cu9012%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2883%22%2C%22title%22%3A%22%5BUSACO07MAR%5D%5Cu725b%5Cu4ea4%5Cu901aCow%20Traffic%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2915%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5976%5Cu725b%5Cu6df7%5Cu5408%5Cu8d77%5Cu6765Mixed%20Up%20Cows%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3800%22%2C%22title%22%3A%22Power%5Cu6536%5Cu96c6%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5094%22%2C%22title%22%3A%22%5BUSACO04OPEN%5DMooFest%20%5Cu72c2%5Cu6b22%5Cu8282%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08OCT%5D%5Cu65ad%5Cu7535Power%20Failure%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08OCT]断电Power Failure</h1>
+<h2>题目描述</h2>
+<div>A vicious thunderstorm has destroyed some of the wires of the farm's electrical power grid! Farmer John has a map of all N (2 <= N <= 1,000) of the powerpoles, which are conveniently numbered 1..N and located on integer plane coordinates x\_i,y\_i (-100,000 <= x\_i <= 100000; -100,000 <= y\_i <= 100,000).
+Some W (1 <= W <= 10,000) power wires connect pairs of power poles Pi and Pj (1 <= Pi <= N; 1 <= Pj <= N).
+He needs to get power from pole 1 to pole N (which means that some series of wires can traverse from pole 1 to pole N, probably through some intermediate set of poles).
+Given the locations of the N poles and the list of remaining power wires, determine the minimum length of power wire required to restore the electrical connection so that electricity can flow from pole 1 to pole N. No wire can be longer than some real number M (0.0 < M <= 200,000.0).
+As an example, below on the left is a map of the 9 poles and 3 wires after the storm. For this task, M = 2.0. The best set of wires to add would connect poles 4 and 6 and also poles 6 and 9.
+After the storm Optimally reconnected
+3 . . . 7 9 . . . . . 3 . . . 7 9 . . . . .
+/
+2 . . 5 6 . . . . . . 2 . . 5 6 . . . . . .
+/
+1 2-3-4 . 8 . . . . . 1 2-3-4 . 8 . . . . .
+| |
+0 1 . . . . . . . . . 0 1 . . . . . . . . .
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+The total length is then 1.414213562 + 1.414213562 = 2.828427124 .
+POINTS: 350
+一场邪恶的暴风雨毁坏了农夫约翰的输电网中的一些电线！农夫约翰有一张包含了所有n（2<=n<=1000）个电能中转点的地图，这些 点被很自然而方便的标识为1..n，并且被整数坐标x\_i，y\_i（-100000<=x\_i<=100000;-100000& lt;=y\_i<=100000）定位于坐标系。
+有w（1<=w<=10000）条电线仍然保存着没被暴风雨破坏，每条电线连接着两个电能中转点pi,pj（1<=pi<=n;1<=pj<=n）。
+他希望从第一个电能中转点把电导入第n个（可能通过一些中间的电能中转点，应当有一组电线连接1和n）。
+给出n个电能中转点的坐标和幸存的电线，请确定最少需要架设的电线总长度，但请注意，架设过程中，对于单条电线而言，其长度不应超过m（0.0<=m<=200000.0）
+给出一个例子，在下面，左边是一个包含9个电能中转电和3条幸存电线的地图。在这个任务中，规定名。m=2.0。最佳的架设方案是连接6和4，以及6和9。
+```cpp
+After the storm Optimally reconnected
+3 . . . 7 9 . . . . . 3 . . . 7 9 . . . . .
+/
+2 . . 5 6 . . . . . . 2 . . 5 6 . . . . . .
+/
+1 2-3-4 . 8 . . . . . 1 2-3-4 . 8 . . . . .
+| |
+0 1 . . . . . . . . . 0 1 . . . . . . . . .
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+```
+这是的总长度是 1.414213562 + 1.414213562 = 2.828427124 .
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and W
+\* Line 2: A single real number: M
+\* Lines 3..N+2: Each line contains two space-separated integers: x\_i and y\_i
+\* Lines N+3..N+2+W: Two space-separated integers: Pi and Pj
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer on a single line. If restoring connection is impossible, output -1. Otherwise, output a single integer that is 1000 times the total minimum cost to restore
+electricity. Do not perform any rounding; truncate the resulting product.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>9 3 
+2.0 
+0 0 
+0 1 
+1 1 
+2 1 
+2 2 
+3 2 
+3 3 
+4 1 
+4 3 
+1 2 
+2 3 
+3 4 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2828 
+</code></pre>
+<h2>说明</h2>
+<div>Just as in the diagram above.
+As above.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

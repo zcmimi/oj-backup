@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[ZJOI2011]最小割 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376743:Fyg/NhcnVJevG3fsAPpvqvYOFSixiDyKcaCxPHtrK0s=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu5c0f%5Cu767d%5Cu5728%5Cu56fe%5Cu8bba%5Cu8bfe%5Cu4e0a%5Cu5b66%5Cu5230%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu65b0%5Cu7684%5Cu6982%5Cu5ff5%5Cu2014%5Cu2014%5Cu6700%5Cu5c0f%5Cu5272%5Cuff0c%5Cu4e0b%5Cu8bfe%5Cu540e%5Cu5c0f%5Cu767d%5Cu5728%5Cu7b14%5Cu8bb0%5Cu672c%5Cu4e0a%5Cu5199%5Cu4e0b%5Cu4e86%5Cu5982%5Cu4e0b%5Cu8fd9%5Cu6bb5%5Cu8bdd%5Cuff1a%20%5Cu201d%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu56fe%5Cuff0c%5Cu67d0%5Cu4e2a%5Cu5bf9%5Cu56fe%5Cu4e2d%5Cu7ed3%5Cu70b9%5Cu7684%5Cu5212%5Cu5206%5Cu5c06%5Cu56fe%5Cu4e2d%5Cu6240%5Cu6709%5Cu7ed3%5Cu70b9%5Cu5206%5Cu6210%5Cu4e24%5Cu4e2a%5Cu90e8%5Cu5206%5Cuff0c%5Cu5982%5Cu679c%5Cu7ed3%5Cu70b9s%2Ct%5Cu4e0d%5Cu5728%5Cu540c%5Cu4e00%5Cu4e2a%5Cu90e8%5Cu5206%5Cu4e2d%5Cuff0c%5Cu5219%5Cu79f0%5Cu8fd9%5Cu4e2a%5Cu5212%5Cu5206%5Cu662f%5Cu5173%5Cu4e8es%2Ct%5Cu7684%5Cu5272%5Cu3002%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu5e26%5Cu6743%5Cu56fe%5Cu6765%5Cu8bf4%5Cuff0c%5Cu5c06%5Cu6240%5Cu6709%5Cu9876%5Cu70b9%5Cu5904%5Cu5728%5Cu4e0d%5Cu540c%5Cu90e8%5Cu5206%5Cu7684%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu76f8%5Cu52a0%5Cu6240%5Cu5f97%5Cu5230%5Cu7684%5Cu503c%5Cu5b9a%5Cu4e49%5Cu4e3a%5Cu8fd9%5Cu4e2a%5Cu5272%5Cu7684%5Cu5bb9%5Cu91cf%5Cuff0c%5Cu800cs%2Ct%5Cu7684%5Cu6700%5Cu5c0f%5Cu5272%5Cu6307%5Cu7684%5Cu662f%5Cu5728%5Cu5173%5Cu4e8es%2Ct%5Cu7684%5Cu5272%5Cu4e2d%5Cu5bb9%5Cu91cf%5Cu6700%5Cu5c0f%5Cu7684%5Cu5272%5Cu201c%5Cn%5Cn%5Cu73b0%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu5f20%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu5c0f%5Cu767d%5Cu6709%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu5f62%5Cu5982%5Cu201d%5Cu56fe%5Cu4e2d%5Cu6709%5Cu591a%5Cu5c11%5Cu5bf9%5Cu70b9%5Cu5b83%5Cu4eec%5Cu7684%5Cu6700%5Cu5c0f%5Cu5272%5Cu7684%5Cu5bb9%5Cu91cf%5Cu4e0d%5Cu8d85%5Cu8fc7x%5Cu5462%5Cu201c%5Cu7684%5Cu7591%5Cu95ee%5Cuff0c%5Cu5c0f%5Cu84dd%5Cu867d%5Cu7136%5Cu5f88%5Cu60f3%5Cu56de%5Cu7b54%5Cu8fd9%5Cu4e9b%5Cu95ee%5Cu9898%5Cuff0c%5Cu4f46%5Cu5c0f%5Cu84dd%5Cu6700%5Cu8fd1%5Cu5fd9%5Cu7740%5Cu6316%5Cu6728%5Cu5757%5Cuff0c%5Cu4e8e%5Cu662f%5Cu4f5c%5Cu4e3a%5Cu4ecd%5Cu7136%5Cu662f%5Cu5c0f%5Cu84dd%5Cu7684%5Cu597d%5Cu53cb%5Cuff0c%5Cu4f60%5Cu53c8%5Cu6709%5Cu4efb%5Cu52a1%5Cu4e86%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e14%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570T%5Cuff0c%5Cu8868%5Cu793a%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7684%5Cu7ec4%5Cu6570%5Cu3002%20%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cuff0c%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%2Cm%5Cuff0c%5Cu8868%5Cu793a%5Cu56fe%5Cu7684%5Cu70b9%5Cu6570%5Cu548c%5Cu8fb9%5Cu6570%5Cu3002%20%5Cu4e0b%5Cu9762m%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c3%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570u%2Cv%2Cc%281%3C%3Du%2Cv%3C%3Dn%2C0%3C%3Dc%3C%3D106%29%5Cuff0c%5Cu8868%5Cu793a%5Cu6709%5Cu4e00%5Cu6761%5Cu6743%5Cu4e3ac%5Cu7684%5Cu65e0%5Cu5411%5Cu8fb9%28u%2Cv%29%20%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570q%5Cuff0c%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%5Cu7684%5Cu4e2a%5Cu6570%20%5Cu4e0b%5Cu9762q%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570x%5Cuff0c%5Cu5176%5Cu542b%5Cu4e49%5Cu540c%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5e94%5Cu5305%5Cu62ecq%5Cu884c%5Cuff0c%5Cu7b2ci%5Cu884c%5Cu8868%5Cu793a%5Cu7b2ci%5Cu4e2a%5Cu95ee%5Cu9898%5Cu7684%5Cu7b54%5Cu6848%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu70b9%5Cu5bf9%28p%2Cq%29%5Cu548c%28q%2Cp%29%5Cuff0c%5Cu53ea%5Cu7edf%5Cu8ba1%5Cu4e00%5Cu6b21%5Cuff08%5Cu89c1%5Cu6837%5Cu4f8b%5Cuff09%5Cu3002%5Cu4e24%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu4e4b%5Cu95f4%5Cu7528%5Cu7a7a%5Cu884c%5Cu9694%5Cu5f00%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%221%5Cn5%200%5Cn1%5Cn0%22%2C%2210%22%5D%5D%2C%22hint%22%3A%22%5Cu3010%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu3011%5Cn%5Cn%5Cu5bf9%5Cu4e8e100%25%5Cu7684%5Cu6570%5Cu636e%20T%3C%3D10%2Cn%3C%3D150%2Cm%3C%3D3000%2Cq%3C%3D30%5Cuff0cx%5Cu572832%5Cu4f4d%5Cu6709%5Cu7b26%5Cu53f7%5Cu6574%5Cu6570%5Cu7c7b%5Cu578b%5Cu8303%5Cu56f4%5Cu5185%5Cu3002%5Cn%5Cn%5Cu56fe%5Cu4e2d%5Cu4e24%5Cu4e2a%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu53ef%5Cu80fd%5Cu6709%5Cu591a%5Cu6761%5Cu8fb9%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B28%2C79%2C88%2C112%2C198%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1614%2C%22totalAccepted%22%3A463%2C%22pid%22%3A%22P3329%22%2C%22title%22%3A%22%5BZJOI2011%5D%5Cu6700%5Cu5c0f%5Cu5272%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A116330%2C%22title%22%3A%22%5Cu4e24%5Cu7ec4%5Cu6570%5Cu636e%5Cu95f4%5Cu7528%5Cu7a7a%5Cu884c%5Cu9694%5Cu5f00%22%2C%22forum%22%3A%7B%22id%22%3A2443%2C%22name%22%3A%22P3329%20%5BZJOI2011%5D%5Cu6700%5Cu5c0f%5Cu5272%22%2C%22slug%22%3A%22P3329%22%7D%7D%2C%7B%22id%22%3A102029%2C%22title%22%3A%22%5Cu5168T%5Cuff1f%5Cuff1f%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2443%2C%22name%22%3A%22P3329%20%5BZJOI2011%5D%5Cu6700%5Cu5c0f%5Cu5272%22%2C%22slug%22%3A%22P3329%22%7D%7D%2C%7B%22id%22%3A95026%2C%22title%22%3A%22%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu5f00%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2443%2C%22name%22%3A%22P3329%20%5BZJOI2011%5D%5Cu6700%5Cu5c0f%5Cu5272%22%2C%22slug%22%3A%22P3329%22%7D%7D%2C%7B%22id%22%3A87921%2C%22title%22%3A%22%5Cu4e3a%5Cu5565%5Cu4f1aT%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A2443%2C%22name%22%3A%22P3329%20%5BZJOI2011%5D%5Cu6700%5Cu5c0f%5Cu5272%22%2C%22slug%22%3A%22P3329%22%7D%7D%2C%7B%22id%22%3A13142%2C%22title%22%3A%22%5Cu6837%5Cu4f8b%5Cu662f%5Cu4ec0%5Cu4e48%5Cu9b3c%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A2443%2C%22name%22%3A%22P3329%20%5BZJOI2011%5D%5Cu6700%5Cu5c0f%5Cu5272%22%2C%22slug%22%3A%22P3329%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2805%22%2C%22title%22%3A%22%5BNOI2009%5D%5Cu690d%5Cu7269%5Cu5927%5Cu6218%5Cu50f5%5Cu5c38%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF510E%22%2C%22title%22%3A%22Fox%20And%20Dinner%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22UVA11594%22%2C%22title%22%3A%22All%20Pairs%20Maximum%20Flow%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22P4123%22%2C%22title%22%3A%22%5BCQOI2016%5D%5Cu4e0d%5Cu540c%5Cu7684%5Cu6700%5Cu5c0f%5Cu5272%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4897%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6700%5Cu5c0f%5Cu5272%5Cu6811%5Cuff08Gomory-Hu%20Tree%5Cuff09%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BZJOI2011%5D%5Cu6700%5Cu5c0f%5Cu5272%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[ZJOI2011]最小割</h1>
+<h2>题目描述</h2>
+<div>小白在图论课上学到了一个新的概念——最小割，下课后小白在笔记本上写下了如下这段话： ”对于一个图，某个对图中结点的划分将图中所有结点分成两个部分，如果结点s,t不在同一个部分中，则称这个划分是关于s,t的割。
+对于带权图来说，将所有顶点处在不同部分的边的权值相加所得到的值定义为这个割的容量，而s,t的最小割指的是在关于s,t的割中容量最小的割“
+现给定一张无向图，小白有若干个形如”图中有多少对点它们的最小割的容量不超过x呢“的疑问，小蓝虽然很想回答这些问题，但小蓝最近忙着挖木块，于是作为仍然是小蓝的好友，你又有任务了。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>输入文件第一行有且只有一个正整数T，表示测试数据的组数。 对于每组测试数据， 第一行包含两个整数n,m，表示图的点数和边数。 下面m行，每行3个正整数u,v,c(1<=u,v<=n,0<=c<=106)，表示有一条权为c的无向边(u,v) 接下来一行，包含一个整数q，表示询问的个数 下面q行，每行一个整数x，其含义同题目描述。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>对于每组测试数据，输出应包括q行，第i行表示第i个问题的答案。对于点对(p,q)和(q,p)，只统计一次（见样例）。两组测试数据之间用空行隔开。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+5 0
+1
+0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10</code></pre>
+<h2>说明</h2>
+<div>【数据范围】
+对于100%的数据 T<=10,n<=150,m<=3000,q<=30，x在32位有符号整数类型范围内。
+图中两个点之间可能有多条边
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

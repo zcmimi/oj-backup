@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08NOV]光开关Light Switching - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376043:MNUZSshSvnp4Cmy1W8JfADZvlw/sotS/7o9XGuBwQp0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20tries%20to%20keep%20the%20cows%20sharp%20by%20letting%20them%20play%20with%20intellectual%20toys.%20One%20of%20the%20larger%20toys%20is%20the%20lights%20in%20the%20barn.%20Each%20of%20the%20N%20%282%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20cow%20stalls%20conveniently%20numbered%201..N%20has%20a%20colorful%20light%20above%20it.%5Cn%5CnAt%20the%20beginning%20of%20the%20evening%2C%20all%20the%20lights%20are%20off.%20The%20cows%20control%20the%20lights%20with%20a%20set%20of%20N%20pushbutton%20switches%20that%20toggle%20the%20lights%3B%20pushing%20switch%20i%20changes%20the%20state%20of%20light%20i%20from%20off%20to%20on%20or%20from%20on%20to%20off.%5Cn%5CnThe%20cows%20read%20and%20execute%20a%20list%20of%20M%20%281%20%3C%3D%20M%20%3C%3D%20100%2C000%29%20operations%20expressed%20as%20one%20of%20two%20integers%20%280%20%3C%3D%20operation%20%3C%3D%201%29.%5Cn%5CnThe%20first%20kind%20of%20operation%20%28denoted%20by%20a%200%20command%29%20includes%20two%20subsequent%20integers%20S%5C%5C_i%20and%20E%5C%5C_i%20%281%20%3C%3D%20S%5C%5C_i%20%3C%3D%20E%5C%5C_i%20%3C%3D%20N%29%20that%20indicate%20a%20starting%20switch%20and%20ending%20switch.%20They%20execute%20the%20operation%20by%20pushing%20each%20pushbutton%20from%20S%5C%5C_i%20through%20E%5C%5C_i%20inclusive%20exactly%20once.%5Cn%5CnThe%20second%20kind%20of%20operation%20%28denoted%20by%20a%201%20command%29%20asks%20the%20cows%20to%20count%20how%20many%20lights%20are%20on%20in%20the%20range%20given%20by%20two%20integers%20S%5C%5C_i%20and%20E%5C%5C_i%20%281%20%3C%3D%20S%5C%5C_i%20%3C%3D%20E%5C%5C_i%20%3C%3D%20N%29%20which%20specify%20the%20inclusive%20range%20in%20which%20the%20cows%20should%20count%20the%20number%20of%20lights%20that%20are%20on.%5Cn%5CnHelp%20FJ%20ensure%20the%20cows%20are%20getting%20the%20correct%20answer%20by%20processing%20the%20list%20and%20producing%20the%20proper%20counts.%5Cn%5Cn%5Cu706f%5Cu662f%5Cu7531%5Cu9ad8%5Cu79d1%5Cu6280%5Cu2014%5Cu2014%5Cu5916%5Cu661f%5Cu4eba%5Cu9f20%5Cu6807%5Cu64cd%5Cu63a7%5Cu7684%5Cu3002%5Cu4f60%5Cu53ea%5Cu8981%5Cu5de6%5Cu51fb%5Cu4e24%5Cu4e2a%5Cu706f%5Cu6240%5Cu8fde%5Cu7684%5Cu9f20%5Cu6807%5Cuff0c%5Cn%5Cn%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu706f%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu4e4b%5Cu95f4%5Cu7684%5Cu706f%5Cu90fd%5Cu4f1a%5Cu7531%5Cu6697%5Cu53d8%5Cu4eae%5Cuff0c%5Cu6216%5Cu7531%5Cu4eae%5Cu53d8%5Cu6697%5Cu3002%5Cu53f3%5Cu51fb%5Cu4e24%5Cu4e2a%5Cu706f%5Cu6240%5Cu8fde%5Cu7684%5Cu9f20%5Cn%5Cn%5Cu6807%5Cuff0c%5Cu4f60%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu77e5%5Cu9053%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu706f%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu4e4b%5Cu95f4%5Cu7684%5Cu706f%5Cu6709%5Cu591a%5Cu5c11%5Cu706f%5Cu662f%5Cu4eae%5Cu7684%5Cu3002%5Cu8d77%5Cu521d%5Cu6240%5Cu6709%5Cu706f%5Cu90fd%5Cu662f%5Cu6697%5Cu7684%5Cuff0c%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu5728LZ%5Cu4e4b%5Cu524d%5Cu7b97%5Cu51fa%5Cu706f%5Cu7684%5Cu4eae%5Cu706d%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c1%20%5Cu884c%3A%20%5Cu7528%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570N%20%5Cu548cM%5Cuff0cn%20%5Cu662f%5Cu706f%5Cu6570%5Cn%5Cn%5Cu7b2c2..M%2B1%20%5Cu884c%3A%20%5Cu6bcf%5Cu884c%5Cu8868%5Cu793a%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%2C%20%5Cu6709%5Cu4e09%5Cu4e2a%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%3A%20%5Cu6307%5Cu4ee4%5Cu53f7%2C%20S%5C%5C_i%20%5Cu548cE%5C%5C_i%5Cn%5Cn%5Cu7b2c1%20%5Cu79cd%5Cu6307%5Cu4ee4%28%5Cu75280%20%5Cu8868%5Cu793a%29%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57S%5C%5C_i%20%5Cu548cE%5C%5C_i%20%281%20%3C%3D%20S%5C%5C_i%20%3C%3D%20E%5C%5C_i%20%3C%3D%20N%29%2C%20%5Cu5b83%5Cu4eec%5Cu8868%5Cu793a%5Cu8d77%5Cn%5Cn%5Cu59cb%5Cu5f00%5Cu5173%5Cu548c%5Cu7ec8%5Cu6b62%5Cu5f00%5Cu5173.%20%5Cu8868%5Cu793a%5Cu5de6%5Cu51fb%5Cn%5Cn%5Cu7b2c2%20%5Cu79cd%5Cu6307%5Cu4ee4%28%5Cu75281%20%5Cu8868%5Cu793a%29%5Cu540c%5Cu6837%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57S%5C%5C_i%20%5Cu548cE%5C%5C_i%20%281%20%3C%3D%20S%5C%5C_i%20%3C%3D%20E%5C%5C_i%20%3C%3D%20N%29%2C%20%5Cu4e0d%5Cu8fc7%5Cu8fd9%5Cn%5Cn%5Cu79cd%5Cu6307%5Cu4ee4%5Cu662f%5Cu8be2%5Cu95ee%5Cu4eceS%5C%5C_i%20%5Cu5230E%5C%5C_i%20%5Cu4e4b%5Cu95f4%5Cu7684%5Cu706f%5Cu6709%5Cu591a%5Cu5c11%5Cu662f%5Cu4eae%5Cu7740%5Cu7684.%5Cn%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5B%224%205%5Cn0%201%202%5Cn0%202%204%5Cn1%202%203%5Cn0%202%204%5Cn1%201%204%22%2C%221%5Cn2%22%5D%5D%2C%22hint%22%3A%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F2448.png%29%20%5Cn%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%5D%2C%22memory%22%3A%5B16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%2C16000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C42%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2727%2C%22totalAccepted%22%3A1752%2C%22pid%22%3A%22P2846%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A95957%2C%22title%22%3A%22%5Cu849f%5Cu84bb10%5Cu5206%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A1949%2C%22name%22%3A%22P2846%20%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22slug%22%3A%22P2846%22%7D%7D%2C%7B%22id%22%3A88248%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu6559%5Cuff0c%5Cu4ee3%5Cu7801%5Cu5f88%5Cu597d%5Cu770b~%28%5Cu54ea%5Cu6765%20%5Cu7684%5Cu81ea%5Cu4fe1%22%2C%22forum%22%3A%7B%22id%22%3A1949%2C%22name%22%3A%22P2846%20%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22slug%22%3A%22P2846%22%7D%7D%2C%7B%22id%22%3A50074%2C%22title%22%3A%22%5Cu4e09%5Cu500d%5Cu7ecf%5Cu9a8c%5Cu7f8e%5Cu6ecb%5Cu6ecb%22%2C%22forum%22%3A%7B%22id%22%3A1949%2C%22name%22%3A%22P2846%20%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22slug%22%3A%22P2846%22%7D%7D%2C%7B%22id%22%3A47444%2C%22title%22%3A%22%5Cu770b%5Cu8fc7%5Cu6765%22%2C%22forum%22%3A%7B%22id%22%3A1949%2C%22name%22%3A%22P2846%20%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22slug%22%3A%22P2846%22%7D%7D%2C%7B%22id%22%3A44213%2C%22title%22%3A%22....%5Cu7384%5Cu5b66%22%2C%22forum%22%3A%7B%22id%22%3A1949%2C%22name%22%3A%22P2846%20%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22slug%22%3A%22P2846%22%7D%7D%2C%7B%22id%22%3A41878%2C%22title%22%3A%22%5Cu6765%5Cu81ea%5Cu849f%5Cu84bb%5Cu7684%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A1949%2C%22name%22%3A%22P2846%20%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22slug%22%3A%22P2846%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2023%22%2C%22title%22%3A%22%5BAHOI2009%5D%5Cu7ef4%5Cu62a4%5Cu5e8f%5Cu5217%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2184%22%2C%22title%22%3A%22%5Cu8d2a%5Cu5a6a%5Cu5927%5Cu9646%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2574%22%2C%22title%22%3A%22XOR%5Cu7684%5Cu827a%5Cu672f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3870%22%2C%22title%22%3A%22%5BTJOI2009%5D%5Cu5f00%5Cu5173%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP7259%22%2C%22title%22%3A%22LITE%20-%20Light%20Switching%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08NOV]光开关Light Switching</h1>
+<h2>题目描述</h2>
+<div>Farmer John tries to keep the cows sharp by letting them play with intellectual toys. One of the larger toys is the lights in the barn. Each of the N (2 <= N <= 100,000) cow stalls conveniently numbered 1..N has a colorful light above it.
+At the beginning of the evening, all the lights are off. The cows control the lights with a set of N pushbutton switches that toggle the lights; pushing switch i changes the state of light i from off to on or from on to off.
+The cows read and execute a list of M (1 <= M <= 100,000) operations expressed as one of two integers (0 <= operation <= 1).
+The first kind of operation (denoted by a 0 command) includes two subsequent integers S\_i and E\_i (1 <= S\_i <= E\_i <= N) that indicate a starting switch and ending switch. They execute the operation by pushing each pushbutton from S\_i through E\_i inclusive exactly once.
+The second kind of operation (denoted by a 1 command) asks the cows to count how many lights are on in the range given by two integers S\_i and E\_i (1 <= S\_i <= E\_i <= N) which specify the inclusive range in which the cows should count the number of lights that are on.
+Help FJ ensure the cows are getting the correct answer by processing the list and producing the proper counts.
+灯是由高科技——外星人鼠标操控的。你只要左击两个灯所连的鼠标，
+这两个灯，以及之间的灯都会由暗变亮，或由亮变暗。右击两个灯所连的鼠
+标，你就可以知道这两个灯，以及之间的灯有多少灯是亮的。起初所有灯都是暗的，你的任务是在LZ之前算出灯的亮灭。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第1 行: 用空格隔开的两个整数N 和M，n 是灯数
+第2..M+1 行: 每行表示一个操作, 有三个用空格分开的整数: 指令号, S\_i 和E\_i
+第1 种指令(用0 表示)包含两个数字S\_i 和E\_i (1 <= S\_i <= E\_i <= N), 它们表示起
+始开关和终止开关. 表示左击
+第2 种指令(用1 表示)同样包含两个数字S\_i 和E\_i (1 <= S\_i <= E\_i <= N), 不过这
+种指令是询问从S\_i 到E\_i 之间的灯有多少是亮着的.
+</div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+0 1 2
+0 2 4
+1 2 3
+0 2 4
+1 1 4</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+2</code></pre>
+<h2>说明</h2>
+<div> ![](https://cdn.luogu.com.cn/upload/pic/2448.png)
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

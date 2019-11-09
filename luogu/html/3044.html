@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12FEB]搬迁Relocation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376326:44EtG11MK2PiHggKo3la7E7NU/B7tRV3k2RoIASJjmA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20moving%21%20%20He%20is%20trying%20to%20find%20the%20best%20place%20to%20build%20a%20new%20farm%20so%20as%20to%20minimize%20the%20amount%20of%20travel%20he%20needs%20to%20do%20each%20day.%5Cn%5CnThe%20region%20to%20which%20FJ%20plans%20to%20move%20has%20N%20towns%20%281%20%3C%3D%20N%20%3C%3D%2010%2C000%29.%20%20There%20are%20M%20bi-directional%20roads%20%281%20%3C%3D%20M%20%3C%3D%2050%2C000%29%20connecting%20certain%20pairs%20of%20towns.%20%20All%20towns%20are%20reachable%20from%20each-other%20via%20some%20combination%20of%20roads.%20%20FJ%20needs%20your%20help%20selecting%20the%20best%20town%20as%20the%20home%20for%20his%20new%20farm.%5Cn%5CnThere%20are%20markets%20in%20K%20of%20the%20towns%20%281%20%3C%3D%20K%20%3C%3D%205%29%20that%20FJ%20wants%20to%20visit%20every%20day.%20%20In%20particular%2C%20every%20day%20he%20plans%20to%20leave%20his%20new%20farm%2C%20visit%20the%20K%20towns%20with%20markets%2C%20and%20then%20return%20to%20his%20farm.%20%20FJ%20can%20visit%20the%20markets%20in%20any%20order%20he%20wishes.%20%20When%20selecting%20a%20town%20in%20which%20to%20build%20his%20new%20farm%2C%20FJ%20wants%20to%20choose%20only%20from%20the%20N-K%20towns%20that%20do%20not%20have%20markets%2C%20since%20housing%20prices%20are%20lower%20in%20those%20towns.%5Cn%5CnPlease%20help%20FJ%20compute%20the%20minimum%20distance%20he%20will%20need%20to%20travel%20during%20his%20daily%20schedule%2C%20if%20he%20builds%20his%20farm%20in%20an%20optimal%20location%20and%20chooses%20his%20travel%20schedule%20to%20the%20markets%20as%20smartly%20as%20possible.%5Cn%5CnFJ%5Cu51b3%5Cu5b9a%5Cu642c%5Cu5bb6%5Cuff0c%5Cu91cd%5Cu65b0%5Cu5efa%5Cu8bbe%5Cu519c%5Cu573a%5Cuff0c%5Cu4ee5%5Cu4fbf%5Cu6700%5Cu5c0f%5Cu5316%5Cu4ed6%5Cu6bcf%5Cu5929%5Cu7684%5Cu884c%5Cu7a0b%5Cu3002%5Cn%5Cn%5CnFJ%5Cu642c%5Cu5f80%5Cu7684%5Cu533a%5Cu57df%5Cu6709N%281%20%3C%3D%20N%20%3C%3D%2010%2C000%29%5Cu4e2a%5Cu57ce%5Cu9547%5Cuff0c%5Cu5171%5Cu6709M%20%281%20%3C%3D%20M%20%3C%3D%2050%2C000%29%5Cu6761%5Cu53cc%5Cu5411%5Cu9053%5Cu8def%5Cu8fde%5Cu63a5%5Cu67d0%5Cu4e9b%5Cu57ce%5Cu9547%5Cuff0c%5Cu6240%5Cu6709%5Cu57ce%5Cu9547%5Cu90fd%5Cu80fd%5Cu627e%5Cu5230%5Cu4e92%5Cu901a%5Cu8def%5Cu7ebf%5Cu3002%5Cn%5Cn%5Cn%5Cu6709K%20%281%20%3C%3D%20K%20%3C%3D%205%29%5Cu4e2a%5Cu57ce%5Cu9547%5Cu5efa%5Cu6709%5Cu5e02%5Cu573a%5Cuff0cFJ%5Cu6bcf%5Cu5929%5Cu79bb%5Cu5f00%5Cu65b0%5Cu519c%5Cu573a%5Cu540e%5Cuff0c%5Cu90fd%5Cu8981%5Cu5149%5Cu987e%5Cu8fd9K%5Cu4e2a%5Cu57ce%5Cu9547%5Cuff0c%5Cu5e76%5Cu8fd4%5Cu56de%5Cu519c%5Cu573a%5Cu3002FJ%5Cu5e0c%5Cu671b%5Cu5efa%5Cu8bbe%5Cu519c%5Cu573a%5Cu7684%5Cu57ce%5Cu9547%5Cu4e0d%5Cu5305%5Cu542b%5Cu5e02%5Cu573a%5Cu3002%5Cn%5Cn%5Cn%5Cu8bf7%5Cu5e2e%5Cu52a9FJ%5Cu9009%5Cu62e9%5Cu6700%5Cu4f73%5Cu57ce%5Cu9547%5Cu5efa%5Cu8bbe%5Cu519c%5Cu573a%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu4ed6%5Cu6bcf%5Cu5929%5Cu7684%5Cu884c%5Cu7a0b%5Cu6700%5Cu5c0f%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Three%20space-separated%20integers%2C%20N%2C%20M%2C%20and%20K.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BK%3A%20Line%20i%2B1%20contains%20an%20integer%20in%20the%20range%201...N%20identifying%20the%20town%20containing%20the%20ith%20market.%20%20Each%20market%20is%20in%20a%20different%20town.%5Cn%5Cn%5C%5C%2A%20Lines%202%2BK..1%2BK%2BM%3A%20Each%20line%20contains%203%20space-separated%20integers%2C%20i%2C%20j%20%281%20%3C%3D%20i%2Cj%20%3C%3D%20N%29%2C%20and%20L%20%281%20%3C%3D%20L%20%3C%3D%201000%29%2C%20indicating%20the%20presence%20of%20a%20road%20of%20length%20L%20from%20town%20i%20to%20town%20j.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20minimum%20distance%20FJ%20needs%20to%20travel%20during%20his%20daily%20routine%2C%20if%20he%20builds%20his%20farm%20in%20an%20optimal%20location.%5Cn%22%2C%22samples%22%3A%5B%5B%225%206%203%20%5Cr%5Cn1%20%5Cr%5Cn2%20%5Cr%5Cn3%20%5Cr%5Cn1%202%201%20%5Cr%5Cn1%205%202%20%5Cr%5Cn3%202%203%20%5Cr%5Cn3%204%205%20%5Cr%5Cn4%202%207%20%5Cr%5Cn4%205%2010%20%5Cr%5Cn%22%2C%2212%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%205%20towns%2C%20with%20towns%201%2C%202%2C%20and%203%20having%20markets.%20%20There%20are%206%20roads.%5Cn%5Cn%5CnFJ%20builds%20his%20farm%20in%20town%205.%20%20His%20daily%20schedule%20takes%20him%20through%20towns%205-1-2-3-2-1-5%2C%20for%20a%20total%20distance%20of%2012.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A231%2C%22totalAccepted%22%3A100%2C%22pid%22%3A%22P3044%22%2C%22title%22%3A%22%5BUSACO12FEB%5D%5Cu642c%5Cu8fc1Relocation%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A75509%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu4f6c%5Cu67e5%5Cu9519%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A2163%2C%22name%22%3A%22P3044%20%5BUSACO12FEB%5D%5Cu642c%5Cu8fc1Relocation%22%2C%22slug%22%3A%22P3044%22%7D%7D%2C%7B%22id%22%3A34533%2C%22title%22%3A%22%5Cu53ef%5Cu80fd%5Cu6709%5Cu91cd%5Cu8fb9%5Cu5417%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2163%2C%22name%22%3A%22P3044%20%5BUSACO12FEB%5D%5Cu642c%5Cu8fc1Relocation%22%2C%22slug%22%3A%22P3044%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1613%22%2C%22title%22%3A%22%5Cu8dd1%5Cu8def%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2272%22%2C%22title%22%3A%22%5BZJOI2007%5D%5Cu6700%5Cu5927%5Cu534a%5Cu8fde%5Cu901a%5Cu5b50%5Cu56fe%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4180%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu4e25%5Cu683c%5Cu6b21%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%5BBJWC2010%5D%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP1043%22%2C%22title%22%3A%22GSS1%20-%20Can%20you%20answer%20these%20queries%20I%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22P4819%22%2C%22title%22%3A%22%5B%5Cu4e2d%5Cu5c71%5Cu5e02%5Cu9009%5D%5Cu6740%5Cu4eba%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12FEB%5D%5Cu642c%5Cu8fc1Relocation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12FEB]搬迁Relocation</h1>
+<h2>题目描述</h2>
+<div>Farmer John is moving! He is trying to find the best place to build a new farm so as to minimize the amount of travel he needs to do each day.
+The region to which FJ plans to move has N towns (1 <= N <= 10,000). There are M bi-directional roads (1 <= M <= 50,000) connecting certain pairs of towns. All towns are reachable from each-other via some combination of roads. FJ needs your help selecting the best town as the home for his new farm.
+There are markets in K of the towns (1 <= K <= 5) that FJ wants to visit every day. In particular, every day he plans to leave his new farm, visit the K towns with markets, and then return to his farm. FJ can visit the markets in any order he wishes. When selecting a town in which to build his new farm, FJ wants to choose only from the N-K towns that do not have markets, since housing prices are lower in those towns.
+Please help FJ compute the minimum distance he will need to travel during his daily schedule, if he builds his farm in an optimal location and chooses his travel schedule to the markets as smartly as possible.
+FJ决定搬家，重新建设农场，以便最小化他每天的行程。
+FJ搬往的区域有N(1 <= N <= 10,000)个城镇，共有M (1 <= M <= 50,000)条双向道路连接某些城镇，所有城镇都能找到互通路线。
+有K (1 <= K <= 5)个城镇建有市场，FJ每天离开新农场后，都要光顾这K个城镇，并返回农场。FJ希望建设农场的城镇不包含市场。
+请帮助FJ选择最佳城镇建设农场，使得他每天的行程最小。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Three space-separated integers, N, M, and K.
+\* Lines 2..1+K: Line i+1 contains an integer in the range 1...N identifying the town containing the ith market. Each market is in a different town.
+\* Lines 2+K..1+K+M: Each line contains 3 space-separated integers, i, j (1 <= i,j <= N), and L (1 <= L <= 1000), indicating the presence of a road of length L from town i to town j.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The minimum distance FJ needs to travel during his daily routine, if he builds his farm in an optimal location.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 6 3 
+1 
+2 
+3 
+1 2 1 
+1 5 2 
+3 2 3 
+3 4 5 
+4 2 7 
+4 5 10 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12 
+</code></pre>
+<h2>说明</h2>
+<div>There are 5 towns, with towns 1, 2, and 3 having markets. There are 6 roads.
+FJ builds his farm in town 5. His daily schedule takes him through towns 5-1-2-3-2-1-5, for a total distance of 12.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

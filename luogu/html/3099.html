@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO14JAN]牛冰壶Cow Curling - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376405:3NN5uCrDVrsM8hQsXzUpU7QDJbwG3OyFyItc3074yPQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Cow%20curling%20is%20a%20popular%20cold-weather%20sport%20played%20in%20the%20Moolympics.%5Cn%5CnLike%20regular%20curling%2C%20the%20sport%20involves%20two%20teams%2C%20each%20of%20which%20slides%20N%20heavy%20stones%20%283%20%3C%3D%20N%20%3C%3D%2050%2C000%29%20across%20a%20sheet%20of%20ice.%20%20At%20the%20end%20of%20the%20game%2C%20there%20are%202N%20stones%20on%20the%20ice%2C%20each%20located%20at%20a%20distinct%202D%20point.%5Cn%5CnScoring%20in%20the%20cow%20version%20of%20curling%20is%20a%20bit%20curious%2C%20however.%20%20A%20stone%20is%20said%20to%20be%20%5C%22captured%5C%22%20if%20it%20is%20contained%20inside%20a%20triangle%20whose%20corners%20are%20stones%20owned%20by%20the%20opponent%20%28a%20stone%20on%20the%20boundary%20of%20such%20a%20triangle%20also%20counts%20as%20being%20captured%29.%20%20The%20score%20for%20a%20team%20is%20the%20number%20of%20opponent%20stones%20that%20are%20captured.%5Cn%5CnPlease%20help%20compute%20the%20final%20score%20of%20a%20cow%20curling%20match%2C%20given%20the%20locations%20of%20all%202N%20stones.%5Cn%5Cn%5Cu6709%5Cu4e24%5Cu652f%5Cu961f%5Cu4f0d%5Cu5728%5Cu6bd4%5Cu8d5b%5Cuff0c%5Cu4e00%5Cu961f%5Cu53ef%5Cu4ee5%5Cu4e00%5Cu6b21%5Cu53d6%5Cu51fa3%5Cu4e2a%5Cu70b9%5Cu6765%5Cuff0c%5Cu6240%5Cu56f4%5Cu6210%5Cu7684%5Cu4e09%5Cu89d2%5Cu5f62%5Cu8986%5Cu76d6%5Cu7684%5Cu533a%5Cu57df%5Cu53ef%5Cu4ee5%5Cu201c%5Cu6355%5Cu83b7%5Cu201d%5Cu5bf9%5Cu65b9%5Cu7684%5Cu70b9%5Cuff0c%5Cu95ee%5Cu4e24%5Cu652f%5Cu961f%5Cu4f0d%5Cu5404%5Cu80fd%5Cu591f%5Cu6355%5Cu83b7%5Cu5bf9%5Cu65b9%5Cu591a%5Cu5c11%5Cu4e2a%5Cu70b9%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20integer%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Each%20line%20contains%202%20integers%20specifying%20the%20x%20and%20y%20coordinates%20of%20a%20stone%20for%20team%20A%20%28each%20coordinate%20lies%20in%20the%20range%20-40%2C000%20..%20%2B40%2C000%29.%5Cn%5Cn%5C%5C%2A%20Lines%202%2BN..1%2B2N%3A%20Each%20line%20contains%202%20integers%20specifying%20the%20x%20and%20y%20coordinates%20of%20a%20stone%20for%20team%20B%20%28each%20coordinate%20lies%20in%20the%20range%20-40%2C000%20..%20%2B40%2C000%29.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%2C%20giving%20the%20scores%20for%20teams%20A%20and%20B.%5Cn%22%2C%22samples%22%3A%5B%5B%224%20%5Cr%5Cn0%200%20%5Cr%5Cn0%202%20%5Cr%5Cn2%200%20%5Cr%5Cn2%202%20%5Cr%5Cn1%201%20%5Cr%5Cn1%2010%20%5Cr%5Cn-10%203%20%5Cr%5Cn10%203%20%5Cr%5Cn%22%2C%221%202%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22Each%20team%20owns%204%20stones.%20%20Team%20A%20has%20stones%20at%20%280%2C0%29%2C%20%280%2C2%29%2C%20%282%2C0%29%2C%20and%20%282%2C2%29%2C%20and%20team%20B%20has%20stones%20at%20%281%2C1%29%2C%20%281%2C10%29%2C%20%28-10%2C3%29%2C%20and%20%2810%2C3%29.%5Cn%5Cn%5CnTeam%20A%20captures%20their%20opponent%27s%20stone%20at%20%281%2C1%29.%20%20Team%20B%20captures%20their%20opponent%27s%20stones%20at%20%280%2C2%29%20and%20%282%2C2%29.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B7%2C31%2C46%2C113%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A54%2C%22totalAccepted%22%3A9%2C%22pid%22%3A%22P3099%22%2C%22title%22%3A%22%5BUSACO14JAN%5D%5Cu725b%5Cu51b0%5Cu58f6Cow%20Curling%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A109895%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu7684%5Cu7591%5Cu95ee%22%2C%22forum%22%3A%7B%22id%22%3A2216%2C%22name%22%3A%22P3099%20%5BUSACO14JAN%5D%5Cu725b%5Cu51b0%5Cu58f6Cow%20Curling%22%2C%22slug%22%3A%22P3099%22%7D%7D%2C%7B%22id%22%3A46862%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2216%2C%22name%22%3A%22P3099%20%5BUSACO14JAN%5D%5Cu725b%5Cu51b0%5Cu58f6Cow%20Curling%22%2C%22slug%22%3A%22P3099%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1340%22%2C%22title%22%3A%22%5Cu517d%5Cu5f84%5Cu7ba1%5Cu7406%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2237%22%2C%22title%22%3A%22%5BUSACO14FEB%5D%5Cu81ea%5Cu52a8%5Cu5b8c%5Cu6210Auto-complete%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3104%22%2C%22title%22%3A%22%5BUSACO14MAR%5D%5Cu6570%5Cu670b%5Cu53cbCounting%20Friends%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA10806%22%2C%22title%22%3A%22Dijkstra%2C%20Dijkstra.%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22P4775%22%2C%22title%22%3A%22%5BNOI2018%5D%5Cu60c5%5Cu62a5%5Cu4e2d%5Cu5fc3%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO14JAN%5D%5Cu725b%5Cu51b0%5Cu58f6Cow%20Curling%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO14JAN]牛冰壶Cow Curling</h1>
+<h2>题目描述</h2>
+<div>Cow curling is a popular cold-weather sport played in the Moolympics.
+Like regular curling, the sport involves two teams, each of which slides N heavy stones (3 <= N <= 50,000) across a sheet of ice. At the end of the game, there are 2N stones on the ice, each located at a distinct 2D point.
+Scoring in the cow version of curling is a bit curious, however. A stone is said to be "captured" if it is contained inside a triangle whose corners are stones owned by the opponent (a stone on the boundary of such a triangle also counts as being captured). The score for a team is the number of opponent stones that are captured.
+Please help compute the final score of a cow curling match, given the locations of all 2N stones.
+有两支队伍在比赛，一队可以一次取出3个点来，所围成的三角形覆盖的区域可以“捕获”对方的点，问两支队伍各能够捕获对方多少个点。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The integer N.
+\* Lines 2..1+N: Each line contains 2 integers specifying the x and y coordinates of a stone for team A (each coordinate lies in the range -40,000 .. +40,000).
+\* Lines 2+N..1+2N: Each line contains 2 integers specifying the x and y coordinates of a stone for team B (each coordinate lies in the range -40,000 .. +40,000).
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers, giving the scores for teams A and B.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 
+0 0 
+0 2 
+2 0 
+2 2 
+1 1 
+1 10 
+-10 3 
+10 3 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 2 
+</code></pre>
+<h2>说明</h2>
+<div>Each team owns 4 stones. Team A has stones at (0,0), (0,2), (2,0), and (2,2), and team B has stones at (1,1), (1,10), (-10,3), and (10,3).
+Team A captures their opponent's stone at (1,1). Team B captures their opponent's stones at (0,2) and (2,2).
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

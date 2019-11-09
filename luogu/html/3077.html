@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13FEB]路线设计Route Designing - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376372:PPM1+OA2rRmqnpvhPecra6WdTQJF3ScOr1R3Wuc053w=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22After%20escaping%20from%20the%20farm%2C%20Bessie%20has%20decided%20to%20start%20a%20travel%20agency%20along%20the%20Amoozon%20river.%20%20There%20are%20several%20tourist%20sites%20located%20on%20both%20sides%20of%20the%20river%2C%20each%20with%20an%20integer%20value%20indicating%20how%20interesting%20the%20tourist%20site%20is.%5Cn%5CnTourist%20sites%20are%20connected%20by%20routes%20that%20cross%20the%20river%20%28i.e.%2C%20there%20are%20no%20routes%20connecting%20a%20site%20with%20a%20site%20on%20the%20same%20side%20of%20the%20river%29.%20%20Bessie%20wants%20to%20design%20a%20tour%20for%20her%20customers%20and%20needs%20your%20help.%20%20A%20tour%20is%20a%20sequence%20of%20tourist%20sites%20with%20adjacent%20sites%20connected%20by%20a%20route.%20In%20order%20to%20best%20serve%20her%20customers%20she%20wants%20to%20find%20the%20route%20that%20maximizes%20the%20sum%20of%20the%20values%20associated%20with%20each%20visited%20site.%5Cn%5CnHowever%2C%20Bessie%20may%20be%20running%20several%20of%20these%20tours%20at%20the%20same%20time.%20%20Therefore%20it%27s%20important%20that%20no%20two%20routes%20on%20a%20tour%5Cn%5Cnintersect.%20%20Two%20routes%20%28a%20%3C-%3E%20x%29%20and%20%28b%20%3C-%3E%20y%29%20intersect%20if%20and%20only%20if%20%28a%20%3C%20b%20and%20y%20%3C%20x%29%20or%20%28b%20%3C%20a%20and%20x%20%3C%20y%29%20or%20%28a%20%3D%20b%20and%20x%20%3D%20y%29.%5Cn%5CnHelp%20Bessie%20find%20the%20best%20tour%20for%20her%20agency.%20%20Bessie%20may%20start%20and%20end%20at%20any%20site%20on%20either%20side%20of%20the%20Amoozon.%5Cn%5Cn%5Cu6cb3%5Cu5de6%5Cu5cb8%5Cu6709n%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu53f3%5Cu5cb8%5Cu6709m%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu5404%5Cu6709%5Cu6743%5Cu503c%5Cu3002%5Cu6709R%5Cu6761%5Cu8de8%5Cu6cb3%5Cu7684%5Cu6865%5Cuff0c%5Cu6c42%5Cu4e00%5Cu6761%5Cu4e0d%5Cu4ea4%5Cu53c9%5Cu7684%5Cu8def%5Cu5f84%5Cu4f7f%5Cu5f97%5Cu70b9%5Cu6743%5Cu548c%5Cu6700%5Cu5927%5Cu3002%5Cn%5Cn%28a%20%3C-%3E%20b%29%20%5Cu4e0e%20%28x%20%3C-%3E%20y%29%20%5Cu4ea4%5Cu53c9%5Cu6307%28a%20%3C%20b%20and%20y%20%3C%20x%29%20or%20%28b%20%3C%20a%20and%20x%20%3C%20y%29%20or%20%28a%20%3D%20b%20and%20x%20%3D%20y%29%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Three%20space%20separated%20integers%20N%20%281%20%3C%3D%20N%20%3C%3D%2040%2C000%29%2C%20M%20%281%20%3C%3D%20M%20%3C%3D%2040%2C000%29%2C%20and%20R%20%280%20%3C%3D%20R%20%3C%3D%20100%2C000%29%20indicating%5Cn%5Cnrespectively%20the%20number%20of%20sites%20on%20the%20left%20side%20of%20the%20river%2C%20the%20number%20of%20sites%20on%20the%20right%20side%20of%20the%20river%2C%20and%20the%20number%20of%20routes.%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20The%20%28i%2B1%29th%20line%20has%20a%20single%20integer%2C%20L%5C%5C_i%20%280%20%3C%3D%20L%5C%5C_i%20%3C%3D%2040%2C000%29%2C%20indicating%20the%20value%20of%20the%20ith%20tourist%20site%20on%20the%20left%20side%20of%20the%20river.%5Cn%5Cn%5C%5C%2A%20Lines%20N%2B2..N%2BM%2B1%3A%20The%20%28i%2BN%2B1%29th%20line%20has%20a%20single%20integer%2C%20R%5C%5C_i%20%280%20%3C%3D%20R%5C%5C_i%20%3C%3D%2040%2C000%29%2C%20indicating%20the%20value%20of%20the%20ith%20tourist%20site%20on%20the%20right%20side%20of%20the%20river.%5Cn%5Cn%5C%5C%2A%20Lines%20N%2BM%2B2..N%2BM%2BR%2B1%3A%20Each%20line%20contains%20two%20space%20separated%20integers%20I%20%281%20%3C%3D%20I%20%3C%3D%20N%29%20and%20J%20%281%20%3C%3D%20J%20%3C%3D%20M%29%20indicating%20there%20is%20a%20bidirectional%20route%20between%20site%20I%20on%20the%20left%20side%20of%20the%20river%20and%20site%20J%20on%20the%20right%20side%20of%20the%20river.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20indicating%20the%20maximum%20sum%20of%20values%20attainable%20on%20a%20tour.%5Cn%22%2C%22samples%22%3A%5B%5B%223%202%204%20%5Cr%5Cn1%20%5Cr%5Cn1%20%5Cr%5Cn5%20%5Cr%5Cn2%20%5Cr%5Cn2%20%5Cr%5Cn1%201%20%5Cr%5Cn2%201%20%5Cr%5Cn3%201%20%5Cr%5Cn2%202%20%5Cr%5Cn%22%2C%228%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%20three%20sites%20on%20the%20left%20side%20of%20the%20Amoozon%20with%20values%201%2C%201%2C%20and%205.%20%20There%20are%20two%20sites%20on%20the%20right%20side%20of%20the%20Amoozon%20with%20values%202%20and%202.%20%20There%20are%20four%20routes%20connecting%20sites%20on%20both%20sides%20of%20the%20river.%5Cn%5Cn%5CnThe%20optimal%20tour%20goes%20from%20site%201%20on%20the%20left%2C%20site%201%20on%20the%20right%2C%20and%20ends%20at%20site%203%20on%20the%20left.%20%20These%20respectively%20have%20values%201%2C%202%2C%20and%205%20giving%20a%20total%20value%20of%20the%20trip%20of%208.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B30%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A204%2C%22totalAccepted%22%3A75%2C%22pid%22%3A%22P3077%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu8def%5Cu7ebf%5Cu8bbe%5Cu8ba1Route%20Designing%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2891%22%2C%22title%22%3A%22%5BUSACO07OPEN%5D%5Cu5403%5Cu996dDining%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3075%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu5206%5Cu533a%5Cu7684%5Cu519c%5Cu573aPartitioning%20the%20Farm%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3076%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu51fa%5Cu79df%5Cu8f66Taxi%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3110%22%2C%22title%22%3A%22%5BUSACO14DEC%5D%5Cu9a6e%5Cu8fd0Piggy%20Back%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3452%22%2C%22title%22%3A%22%5BPOI2007%5DBIU-Offices%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13FEB%5D%5Cu8def%5Cu7ebf%5Cu8bbe%5Cu8ba1Route%20Designing%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13FEB]路线设计Route Designing</h1>
+<h2>题目描述</h2>
+<div>After escaping from the farm, Bessie has decided to start a travel agency along the Amoozon river. There are several tourist sites located on both sides of the river, each with an integer value indicating how interesting the tourist site is.
+Tourist sites are connected by routes that cross the river (i.e., there are no routes connecting a site with a site on the same side of the river). Bessie wants to design a tour for her customers and needs your help. A tour is a sequence of tourist sites with adjacent sites connected by a route. In order to best serve her customers she wants to find the route that maximizes the sum of the values associated with each visited site.
+However, Bessie may be running several of these tours at the same time. Therefore it's important that no two routes on a tour
+intersect. Two routes (a <-> x) and (b <-> y) intersect if and only if (a < b and y < x) or (b < a and x < y) or (a = b and x = y).
+Help Bessie find the best tour for her agency. Bessie may start and end at any site on either side of the Amoozon.
+河左岸有n个点，右岸有m个点，各有权值。有R条跨河的桥，求一条不交叉的路径使得点权和最大。
+(a <-> b) 与 (x <-> y) 交叉指(a < b and y < x) or (b < a and x < y) or (a = b and x = y)。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Three space separated integers N (1 <= N <= 40,000), M (1 <= M <= 40,000), and R (0 <= R <= 100,000) indicating
+respectively the number of sites on the left side of the river, the number of sites on the right side of the river, and the number of routes.
+\* Lines 2..N+1: The (i+1)th line has a single integer, L\_i (0 <= L\_i <= 40,000), indicating the value of the ith tourist site on the left side of the river.
+\* Lines N+2..N+M+1: The (i+N+1)th line has a single integer, R\_i (0 <= R\_i <= 40,000), indicating the value of the ith tourist site on the right side of the river.
+\* Lines N+M+2..N+M+R+1: Each line contains two space separated integers I (1 <= I <= N) and J (1 <= J <= M) indicating there is a bidirectional route between site I on the left side of the river and site J on the right side of the river.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer indicating the maximum sum of values attainable on a tour.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 2 4 
+1 
+1 
+5 
+2 
+2 
+1 1 
+2 1 
+3 1 
+2 2 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>8 
+</code></pre>
+<h2>说明</h2>
+<div>There are three sites on the left side of the Amoozon with values 1, 1, and 5. There are two sites on the right side of the Amoozon with values 2 and 2. There are four routes connecting sites on both sides of the river.
+The optimal tour goes from site 1 on the left, site 1 on the right, and ends at site 3 on the left. These respectively have values 1, 2, and 5 giving a total value of the trip of 8.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

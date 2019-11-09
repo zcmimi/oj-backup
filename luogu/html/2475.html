@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[SCOI2008]斜堆 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573375465:YyhiQBW9WNY2rXkYs1gsmKYUSHqeCoo87vfwYSa2Yx0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu56db%5Cu5ddd2008NOI%5Cu7701%5Cu9009%5Cn%22%2C%22description%22%3A%22%5Cu659c%5Cu5806%28skew%20heap%29%5Cu662f%5Cu4e00%5Cu79cd%5Cu5e38%5Cu7528%5Cu7684%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cu3002%5Cu5b83%5Cu4e5f%5Cu662f%5Cu4e8c%5Cu53c9%5Cu6811%5Cuff0c%5Cu4e14%5Cu6ee1%5Cu8db3%5Cu4e0e%5Cu4e8c%5Cu53c9%5Cu5806%5Cu76f8%5Cn%5Cn%5Cu540c%5Cu7684%5Cu5806%5Cu6027%5Cu8d28%5Cuff1a%5Cu6bcf%5Cu4e2a%5Cu975e%5Cu6839%5Cu7ed3%5Cu70b9%5Cu7684%5Cu503c%5Cu90fd%5Cu6bd4%5Cu5b83%5Cu7236%5Cu4eb2%5Cu5927%5Cu3002%5Cu56e0%5Cu6b64%5Cu5728%5Cu6574%5Cu68f5%5Cu659c%5Cu5806%5Cu4e2d%5Cuff0c%5Cu6839%5Cu7684%5Cu503c%5Cu6700%5Cu5c0f%5Cu3002%5Cn%5Cn%5Cu4f46%5Cu659c%5Cu5806%5Cu4e0d%5Cu5fc5%5Cu662f%5Cu5e73%5Cu8861%5Cu7684%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu7684%5Cu5de6%5Cu53f3%5Cu513f%5Cu5b50%5Cu7684%5Cu5927%5Cu5c0f%5Cu5173%5Cu7cfb%5Cu4e5f%5Cu6ca1%5Cu6709%5Cu4efb%5Cu4f55%5Cu89c4%5Cu5b9a%5Cu3002%5Cu5728%5Cu672c%5Cu9898%5Cn%5Cn%5Cu4e2d%5Cuff0c%5Cu659c%5Cu5806%5Cu4e2d%5Cu5404%5Cu4e2a%5Cu5143%5Cu7d20%5Cu7684%5Cu503c%5Cu5747%5Cu4e0d%5Cu76f8%5Cu540c%5Cu3002%5Cn%5Cn%5Cu5728%5Cu659c%5Cu5806%20H%20%5Cu4e2d%5Cu63d2%5Cu5165%5Cu65b0%5Cu5143%5Cu7d20X%20%5Cu7684%5Cu8fc7%5Cu7a0b%5Cu662f%5Cu9012%5Cu5f52%5Cu8fdb%5Cu884c%5Cu7684%5Cuff1a%5Cu5f53H%20%5Cu4e3a%5Cu7a7a%5Cu6216%5Cu8005X%20%5Cu5c0f%5Cu4e8eH%5Cn%5Cn%5Cu7684%5Cu6839%5Cu7ed3%5Cu70b9%5Cu65f6X%20%5Cu53d8%5Cu4e3a%5Cu65b0%5Cu7684%5Cu6811%5Cu6839%5Cuff0c%5Cu800c%5Cu539f%5Cu6765%5Cu7684%5Cu6811%5Cu6839%5Cuff08%5Cu5982%5Cu679c%5Cu6709%5Cu7684%5Cu8bdd%5Cuff09%5Cu53d8%5Cu4e3aX%20%5Cu7684%5Cu5de6%5Cu513f%5Cu5b50%5Cu3002%5Cn%5Cn%5Cu5f53X%20%5Cu5927%5Cu4e8eH%20%5Cu7684%5Cu6839%5Cu7ed3%5Cu70b9%5Cu65f6%5Cuff0cH%20%5Cu6839%5Cu7ed3%5Cu70b9%5Cu7684%5Cu4e24%5Cu68f5%5Cu5b50%5Cu6811%5Cu4ea4%5Cu6362%5Cuff0c%5Cu800cX%5Cuff08%5Cu9012%5Cu5f52%5Cuff09%5Cu63d2%5Cu5165%5Cu5230%5Cu4ea4%5Cu6362%5Cn%5Cn%5Cu540e%5Cu7684%5Cu5de6%5Cu5b50%5Cu6811%5Cu4e2d%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu68f5%5Cu659c%5Cu5806%5Cuff0c%5Cu5305%5Cu542b%5Cu503c%5Cu4e3a0~n%5Cu7684%5Cu7ed3%5Cu70b9%5Cu5404%5Cu4e00%5Cu6b21%5Cu3002%5Cu6c42%5Cu4e00%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu5e8f%5Cu5217%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu8be5%5Cu659c%5Cu5806%5Cn%5Cn%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu5728%5Cu7a7a%5Cu6811%5Cu4e2d%5Cu4f9d%5Cu6b21%5Cu63d2%5Cu5165%5Cu8fd9%5Cu4e9b%5Cu7ed3%5Cu70b9%5Cu5f97%5Cu5230%5Cu3002%5Cu5982%5Cu679c%5Cu7b54%5Cu6848%5Cu4e0d%5Cu60df%5Cu4e00%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cn%5Cn%5Cu89e3%5Cu3002%5Cu8f93%5Cu5165%5Cu4fdd%5Cu8bc1%5Cu6709%5Cu89e3%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%5Cu3002%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542bn%5Cu4e2a%5Cu6574%5Cu6570d1%2C%20d2%2C%20...%20%2C%20dn%5Cuff0c%20di%3C100%5Cu8868%5Cu793ai%5Cn%5Cn%5Cu662fdi%5Cu7684%5Cu5de6%5Cu513f%5Cu5b50%5Cuff0cdi%3E%3D100%20%5Cu8868%5Cu793ai%20%5Cu662fdi-100%20%5Cu7684%5Cu53f3%5Cu513f%5Cu5b50%5Cu3002%5Cu663e%5Cu71360%20%5Cu603b%5Cu662f%5Cu6839%5Cuff0c%5Cu6240%5Cu4ee5%5Cu8f93%5Cu5165%5Cu4e2d%5Cn%5Cn%5Cu4e0d%5Cu542bd0%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu4ec5%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu542bn%2B1%5Cu6574%5Cu6570%5Cuff0c%5Cu5373%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu63d2%5Cu5165%5Cu5e8f%5Cu5217%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%226%5Cr%5Cn100%200%20101%20102%201%202%22%2C%220%201%202%203%204%205%206%22%5D%2C%5B%226%5Cr%5Cn100%200%202%20102%204%20104%22%2C%224%206%205%202%200%201%203%22%5D%2C%5B%227%5Cr%5Cn0%20100%201%20102%202%203%205%22%2C%222%205%200%203%204%206%207%201%22%5D%5D%2C%22hint%22%3A%222%20%3C%3D%20n%20%3C%3D%2050%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%2C800%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C39%2C48%2C54%2C216%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A193%2C%22totalAccepted%22%3A148%2C%22pid%22%3A%22P2475%22%2C%22title%22%3A%22%5BSCOI2008%5D%5Cu659c%5Cu5806%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1552%22%2C%22title%22%3A%22%5BAPIO2012%5D%5Cu6d3e%5Cu9063%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1600%22%2C%22title%22%3A%22%5Cu5929%5Cu5929%5Cu7231%5Cu8dd1%5Cu6b65%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2476%22%2C%22title%22%3A%22%5BSCOI2008%5D%5Cu7740%5Cu8272%5Cu65b9%5Cu6848%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3261%22%2C%22title%22%3A%22%5BJLOI2015%5D%5Cu57ce%5Cu6c60%5Cu653b%5Cu5360%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4768%22%2C%22title%22%3A%22%5BNOI2018%5D%5Cu5f52%5Cu7a0b%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BSCOI2008%5D%5Cu659c%5Cu5806%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[SCOI2008]斜堆</h1>
+<h2>题目背景</h2>
+<div>四川2008NOI省选
+</div>
+<h2>题目描述</h2>
+<div>斜堆(skew heap)是一种常用的数据结构。它也是二叉树，且满足与二叉堆相
+同的堆性质：每个非根结点的值都比它父亲大。因此在整棵斜堆中，根的值最小。
+但斜堆不必是平衡的，每个结点的左右儿子的大小关系也没有任何规定。在本题
+中，斜堆中各个元素的值均不相同。
+在斜堆 H 中插入新元素X 的过程是递归进行的：当H 为空或者X 小于H
+的根结点时X 变为新的树根，而原来的树根（如果有的话）变为X 的左儿子。
+当X 大于H 的根结点时，H 根结点的两棵子树交换，而X（递归）插入到交换
+后的左子树中。
+给出一棵斜堆，包含值为0~n的结点各一次。求一个结点序列，使得该斜堆
+可以通过在空树中依次插入这些结点得到。如果答案不惟一，输出字典序最小的
+解。输入保证有解。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行包含一个整数n。第二行包含n个整数d1, d2, ... , dn， di<100表示i
+是di的左儿子，di>=100 表示i 是di-100 的右儿子。显然0 总是根，所以输入中
+不含d0。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>仅一行，包含n+1整数，即字典序最小的插入序列。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+100 0 101 102 1 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0 1 2 3 4 5 6</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6
+100 0 2 102 4 104</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4 6 5 2 0 1 3</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>7
+0 100 1 102 2 3 5</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>2 5 0 3 4 6 7 1</code></pre>
+<h2>说明</h2>
+<div>2 <= n <= 50
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

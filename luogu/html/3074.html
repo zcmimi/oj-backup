@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13FEB]牛奶调度Milk Scheduling - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376367:L32N36BEXYBSNxXvECSVLfYuarkBzZwHuv6PvUTlaTo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20N%20cows%20%281%20%3C%3D%20N%20%3C%3D%2010%2C000%29%20are%20conveniently%20numbered%201..N.%20Each%20cow%20i%20takes%20T%28i%29%20units%20of%20time%20to%20milk.%20%20Unfortunately%2C%20some%20cows%20must%20be%20milked%20before%20others%2C%20owing%20to%20the%20layout%20of%20FJ%27s%20barn.%20%20If%20cow%20A%20must%20be%20milked%20before%20cow%20B%2C%20then%20FJ%20needs%20to%20completely%20finish%20milking%20A%20before%20he%20can%20start%20milking%20B.%5Cn%5CnIn%20order%20to%20milk%20his%20cows%20as%20quickly%20as%20possible%2C%20FJ%20has%20hired%20a%20large%20number%20of%20farmhands%20to%20help%20with%20the%20task%20--%20enough%20to%20milk%20any%20number%20of%20cows%20at%20the%20same%20time.%20%20However%2C%20even%20though%20cows%20can%20be%20milked%20at%20the%20same%20time%2C%20there%20is%20a%20limit%20to%20how%20quickly%20the%20entire%20process%20can%20proceed%20due%20to%20the%20constraints%20requiring%20certain%20cows%20to%20be%20milked%20before%20others.%20%20Please%20help%20FJ%20compute%20the%20minimum%20total%20time%20the%20milking%20process%20must%20take.%5Cn%5Cn%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu6709N%5Cu5934%5Cu5976%5Cu725b%281%3C%3DN%3C%3D10%2C000%29%5Cuff0c%5Cu7f16%5Cu53f7%5Cu4e3a1...N%5Cu3002%5Cu6bcf%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu9700%5Cu8981T%28i%29%5Cu5355%5Cu4f4d%5Cu7684%5Cu65f6%5Cu95f4%5Cu6765%5Cu6324%5Cu5976%5Cu3002%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%5Cuff0c%5Cu7531%5Cu4e8eFJ%5Cu7684%5Cu4ed3%5Cu5e93%5Cu5e03%5Cu5c40%5Cuff0c%5Cu4e00%5Cu4e9b%5Cu5976%5Cu725b%5Cu8981%5Cu5728%5Cu522b%5Cu7684%5Cu725b%5Cu4e4b%5Cu524d%5Cu6324%5Cu5976%5Cu3002%5Cu6bd4%5Cu5982%5Cu8bf4%5Cuff0c%5Cu5982%5Cu679c%5Cu5976%5Cu725bA%5Cu5fc5%5Cu987b%5Cu5728%5Cu5976%5Cu725bB%5Cu524d%5Cu6324%5Cu5976%5Cuff0cFJ%5Cu5c31%5Cu9700%5Cu8981%5Cu5728%5Cu7ed9%5Cu5976%5Cu725bB%5Cu6324%5Cu5976%5Cu524d%5Cu7ed3%5Cu675f%5Cu7ed9%5Cu5976%5Cu725bA%5Cu7684%5Cu6324%5Cu5976%5Cu3002%5Cn%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu5c3d%5Cu91cf%5Cu5b8c%5Cu6210%5Cu6324%5Cu5976%5Cu4efb%5Cu52a1%5Cuff0cFJ%5Cu8058%5Cu8bf7%5Cu4e86%5Cu4e00%5Cu5927%5Cu6279%5Cu96c7%5Cu5de5%5Cu534f%5Cu52a9%5Cu4efb%5Cu52a1%5Cu2014%5Cu2014%5Cu540c%5Cu4e00%5Cu65f6%5Cu523b%5Cu8db3%5Cu591f%5Cu53bb%5Cu7ed9%5Cu4efb%5Cu610f%5Cu6570%5Cu91cf%5Cu7684%5Cu5976%5Cu725b%5Cu6324%5Cu5976%5Cu3002%5Cu7136%5Cu800c%5Cuff0c%5Cu5c3d%5Cu7ba1%5Cu5976%5Cu725b%5Cu53ef%5Cu4ee5%5Cu540c%5Cu65f6%5Cu6324%5Cu5976%5Cuff0c%5Cu4f46%5Cu4ecd%5Cu9700%5Cu8981%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0a%5Cu7684%5Cu6324%5Cu5976%5Cu5148%5Cu540e%5Cu987a%5Cu5e8f%5Cu3002%5Cu8bf7%5Cu5e2e%5Cu52a9FJ%5Cu8ba1%5Cu7b97%5Cu6324%5Cu5976%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cu7684%5Cu6700%5Cu5c0f%5Cu603b%5Cu65f6%5Cu95f4%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20%28the%20number%20of%20cows%29%20and%20M%20%28the%20number%20of%20milking%20constraints%3B%201%20%3C%3D%20M%20%3C%3D%2050%2C000%29.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Line%20i%2B1%20contains%20the%20value%20of%20T%28i%29%20%281%20%3C%3D%20T%28i%29%20%3C%3D%20100%2C000%29.%5Cn%5Cn%5C%5C%2A%20Lines%202%2BN..1%2BN%2BM%3A%20Each%20line%20contains%20two%20space-separated%20integers%20A%20and%20B%2C%20indicating%20that%20cow%20A%20must%20be%20fully%20milked%20before%20one%20can%20start%20milking%20cow%20B.%20%20These%20constraints%20will%20never%20form%20a%20cycle%2C%20so%20a%20solution%20is%20always%20possible.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20minimum%20amount%20of%20time%20required%20to%20milk%20all%20cows.%5Cn%22%2C%22samples%22%3A%5B%5B%223%201%20%5Cn10%20%5Cn5%20%5Cn6%20%5Cn3%202%20%5Cn%22%2C%2211%20%5Cn%22%5D%5D%2C%22hint%22%3A%22There%20are%203%20cows.%20%20The%20time%20required%20to%20milk%20each%20cow%20is%2010%2C%205%2C%20and%206%2C%20respectively.%20%20Cow%203%20must%20be%20fully%20milked%20before%20we%20can%20start%20milking%20cow%202.%5Cn%5Cn%5CnCows%201%20and%203%20can%20initially%20be%20milked%20at%20the%20same%20time.%20%20When%20cow%203%20is%20finished%20with%20milking%2C%20cow%202%20can%20then%20begin.%20%20All%20cows%20are%20finished%20milking%20after%2011%20units%20of%20time%20have%20elapsed.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B7%2C30%2C46%2C111%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A715%2C%22totalAccepted%22%3A272%2C%22pid%22%3A%22P3074%22%2C%22title%22%3A%22%5BUSACO13FEB%5D%5Cu725b%5Cu5976%5Cu8c03%5Cu5ea6Milk%20Scheduling%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A113764%2C%22title%22%3A%22%5Cu4e09%5Cu4e2a%5Cu70b9%5Cu8d85%5Cu65f6%22%2C%22forum%22%3A%7B%22id%22%3A2191%2C%22name%22%3A%22P3074%20%5BUSACO13FEB%5D%5Cu725b%5Cu5976%5Cu8c03%5Cu5ea6Milk%20Scheduling%22%2C%22slug%22%3A%22P3074%22%7D%7D%2C%7B%22id%22%3A74997%2C%22title%22%3A%22%5Cu56db%5Cu4e2a%5Cu70b9%5Cu8d85%5Cu65f6%22%2C%22forum%22%3A%7B%22id%22%3A2191%2C%22name%22%3A%22P3074%20%5BUSACO13FEB%5D%5Cu725b%5Cu5976%5Cu8c03%5Cu5ea6Milk%20Scheduling%22%2C%22slug%22%3A%22P3074%22%7D%7D%2C%7B%22id%22%3A47297%2C%22title%22%3A%22%5Cu6700%5Cu957f%5Cu8def%5Cu505a%5Cu6cd5%5Cu600e%5Cu4e48%5Cu5c31%5Cu4e0d%5Cu884c%5Cu4e86%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2191%2C%22name%22%3A%22P3074%20%5BUSACO13FEB%5D%5Cu725b%5Cu5976%5Cu8c03%5Cu5ea6Milk%20Scheduling%22%2C%22slug%22%3A%22P3074%22%7D%7D%2C%7B%22id%22%3A21302%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2191%2C%22name%22%3A%22P3074%20%5BUSACO13FEB%5D%5Cu725b%5Cu5976%5Cu8c03%5Cu5ea6Milk%20Scheduling%22%2C%22slug%22%3A%22P3074%22%7D%7D%2C%7B%22id%22%3A12312%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu795e%5Cu6559%5Cu4e0b%5Cu54ea%5Cu9519%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A2191%2C%22name%22%3A%22P3074%20%5BUSACO13FEB%5D%5Cu725b%5Cu5976%5Cu8c03%5Cu5ea6Milk%20Scheduling%22%2C%22slug%22%3A%22P3074%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1038%22%2C%22title%22%3A%22%5Cu795e%5Cu7ecf%5Cu7f51%5Cu7edc%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1561%22%2C%22title%22%3A%22%5BUSACO12JAN%5D%5Cu722c%5Cu5c71Mountain%20Climbing%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2878%22%2C%22title%22%3A%22%5BUSACO07JAN%5D%5Cu4fdd%5Cu62a4%5Cu82b1%5Cu6735Protecting%20the%20Flowers%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3093%22%2C%22title%22%3A%22%5BUSACO13DEC%5D%5Cu725b%5Cu5976%5Cu8c03%5Cu5ea6Milk%20Scheduling%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3111%22%2C%22title%22%3A%22%5BUSACO14DEC%5D%5Cu725b%5Cu6162%5Cu8dd1Cow%20Jog_Sliver%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13FEB%5D%5Cu725b%5Cu5976%5Cu8c03%5Cu5ea6Milk%20Scheduling%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13FEB]牛奶调度Milk Scheduling</h1>
+<h2>题目描述</h2>
+<div>Farmer John's N cows (1 <= N <= 10,000) are conveniently numbered 1..N. Each cow i takes T(i) units of time to milk. Unfortunately, some cows must be milked before others, owing to the layout of FJ's barn. If cow A must be milked before cow B, then FJ needs to completely finish milking A before he can start milking B.
+In order to milk his cows as quickly as possible, FJ has hired a large number of farmhands to help with the task -- enough to milk any number of cows at the same time. However, even though cows can be milked at the same time, there is a limit to how quickly the entire process can proceed due to the constraints requiring certain cows to be milked before others. Please help FJ compute the minimum total time the milking process must take.
+农民约翰有N头奶牛(1<=N<=10,000)，编号为1...N。每一头奶牛需要T(i)单位的时间来挤奶。不幸的是，由于FJ的仓库布局，一些奶牛要在别的牛之前挤奶。比如说，如果奶牛A必须在奶牛B前挤奶，FJ就需要在给奶牛B挤奶前结束给奶牛A的挤奶。
+为了尽量完成挤奶任务，FJ聘请了一大批雇工协助任务——同一时刻足够去给任意数量的奶牛挤奶。然而，尽管奶牛可以同时挤奶，但仍需要满足以上的挤奶先后顺序。请帮助FJ计算挤奶过程中的最小总时间。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N (the number of cows) and M (the number of milking constraints; 1 <= M <= 50,000).
+\* Lines 2..1+N: Line i+1 contains the value of T(i) (1 <= T(i) <= 100,000).
+\* Lines 2+N..1+N+M: Each line contains two space-separated integers A and B, indicating that cow A must be fully milked before one can start milking cow B. These constraints will never form a cycle, so a solution is always possible.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The minimum amount of time required to milk all cows.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1 
+10 
+5 
+6 
+3 2 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>11 
+</code></pre>
+<h2>说明</h2>
+<div>There are 3 cows. The time required to milk each cow is 10, 5, and 6, respectively. Cow 3 must be fully milked before we can start milking cow 2.
+Cows 1 and 3 can initially be milked at the same time. When cow 3 is finished with milking, cow 2 can then begin. All cows are finished milking after 11 units of time have elapsed.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

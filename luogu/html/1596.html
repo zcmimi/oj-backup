@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10OCT]湖计数Lake Counting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573374160:MbRrS0aH9b2joDsgTgLg6A5YyVRupYlPxXk8SJL1Tvc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Due%20to%20recent%20rains%2C%20water%20has%20pooled%20in%20various%20places%20in%20Farmer%20John%27s%20field%2C%20which%20is%20represented%20by%20a%20rectangle%20of%20N%20x%20M%20%281%20%3C%3D%20N%20%3C%3D%20100%3B%201%20%3C%3D%20M%20%3C%3D%20100%29%20squares.%20Each%20square%20contains%20either%20water%20%28%27W%27%29%20or%20dry%20land%20%28%27.%27%29.%20Farmer%20John%20would%20like%20to%20figure%20out%20how%20many%20ponds%20have%20formed%20in%20his%20field.%20A%20pond%20is%20a%20connected%20set%20of%20squares%20with%20water%20in%20them%2C%20where%20a%20square%20is%20considered%20adjacent%20to%20all%20eight%20of%20its%20neighbors.%20Given%20a%20diagram%20of%20Farmer%20John%27s%20field%2C%20determine%20how%20many%20ponds%20he%20has.%5Cn%5Cn%5Cn%5Cn%5Cu7531%5Cu4e8e%5Cu8fd1%5Cu671f%5Cu7684%5Cu964d%5Cu96e8%5Cuff0c%5Cu96e8%5Cu6c34%5Cu6c47%5Cu96c6%5Cu5728%5Cu519c%5Cu6c11%5Cu7ea6%5Cu7ff0%5Cu7684%5Cu7530%5Cu5730%5Cu4e0d%5Cu540c%5Cu7684%5Cu5730%5Cu65b9%5Cu3002%5Cu6211%5Cu4eec%5Cu7528%5Cu4e00%5Cu4e2aNxM%281%3C%3DN%3C%3D100%3B1%3C%3DM%3C%3D100%29%5Cu7f51%5Cu683c%5Cu56fe%5Cu8868%5Cu793a%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu7f51%5Cu683c%5Cu4e2d%5Cu6709%5Cu6c34%28%27W%27%29%20%5Cu6216%5Cu662f%5Cu65f1%5Cu5730%28%27.%27%29%5Cu3002%5Cu4e00%5Cu4e2a%5Cu7f51%5Cu683c%5Cu4e0e%5Cu5176%5Cu5468%5Cu56f4%5Cu7684%5Cu516b%5Cu4e2a%5Cu7f51%5Cu683c%5Cu76f8%5Cu8fde%5Cuff0c%5Cu800c%5Cu4e00%5Cu7ec4%5Cu76f8%5Cu8fde%5Cu7684%5Cu7f51%5Cu683c%5Cu89c6%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu6c34%5Cu5751%5Cu3002%5Cu7ea6%5Cu7ff0%5Cu60f3%5Cu5f04%5Cu6e05%5Cu695a%5Cu4ed6%5Cu7684%5Cu7530%5Cu5730%5Cu5df2%5Cu7ecf%5Cu5f62%5Cu6210%5Cu4e86%5Cu591a%5Cu5c11%5Cu6c34%5Cu5751%5Cu3002%5Cu7ed9%5Cu51fa%5Cu7ea6%5Cu7ff0%5Cu7530%5Cu5730%5Cu7684%5Cu793a%5Cu610f%5Cu56fe%5Cuff0c%5Cu786e%5Cu5b9a%5Cu5f53%5Cu4e2d%5Cu6709%5Cu591a%5Cu5c11%5Cu6c34%5Cu5751%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20M%20%5C%5C%2A%20Lines%202..N%2B1%3A%20M%20characters%20per%20line%20representing%20one%20row%20of%20Farmer%20John%27s%20field.%20Each%20character%20is%20either%20%27W%27%20or%20%27.%27.%20The%20characters%20do%20not%20have%20spaces%20between%20them.%5Cn%5Cn%5Cu7b2c1%5Cu884c%5Cuff1a%5Cu4e24%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%5Cuff1aN%20%5Cu548c%20M%20%5Cu7b2c2%5Cu884c%5Cu5230%5Cu7b2cN%2B1%5Cu884c%5Cuff1a%5Cu6bcf%5Cu884cM%5Cu4e2a%5Cu5b57%5Cu7b26%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu662f%27W%27%5Cu6216%27.%27%5Cuff0c%5Cu5b83%5Cu4eec%5Cu8868%5Cu793a%5Cu7f51%5Cu683c%5Cu56fe%5Cu4e2d%5Cu7684%5Cu4e00%5Cu6392%5Cu3002%5Cu5b57%5Cu7b26%5Cu4e4b%5Cu95f4%5Cu6ca1%5Cu6709%5Cu7a7a%5Cu683c%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22Line%201%3A%20The%20number%20of%20ponds%20in%20Farmer%20John%27s%20field.%5Cn%5Cn%5Cu4e00%5Cu884c%5Cuff1a%5Cu6c34%5Cu5751%5Cu7684%5Cu6570%5Cu91cf%5Cn%22%2C%22samples%22%3A%5B%5B%2210%2012%5CnW........WW.%5Cn.WWW.....WWW%5Cn....WW...WW.%5Cn.........WW.%5Cn.........W..%5Cn..W......W..%5Cn.W.W.....WW.%5CnW.W.W.....W.%5Cn.W.W......W.%5Cn..W.......W.%5Cn%22%2C%223%5Cn%22%5D%5D%2C%22hint%22%3A%22OUTPUT%20DETAILS%3A%20There%20are%20three%20ponds%3A%20one%20in%20the%20upper%20left%2C%20one%20in%20the%20lower%20left%2C%20and%20one%20along%20the%20right%20side.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B4%2C27%2C46%2C127%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A10370%2C%22totalAccepted%22%3A5487%2C%22pid%22%3A%22P1596%22%2C%22title%22%3A%22%5BUSACO10OCT%5D%5Cu6e56%5Cu8ba1%5Cu6570Lake%20Counting%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A147269%2C%22title%22%3A%22%5Cu6c42%5Cu52a9dalao%5Cuff0c%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu7f16%5Cu8bd1%5Cu9519%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A625%2C%22name%22%3A%22P1596%20%5BUSACO10OCT%5D%5Cu6e56%5Cu8ba1%5Cu6570Lake%20Counting%22%2C%22slug%22%3A%22P1596%22%7D%7D%2C%7B%22id%22%3A141089%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%5Cu662f31%22%2C%22forum%22%3A%7B%22id%22%3A625%2C%22name%22%3A%22P1596%20%5BUSACO10OCT%5D%5Cu6e56%5Cu8ba1%5Cu6570Lake%20Counting%22%2C%22slug%22%3A%22P1596%22%7D%7D%2C%7B%22id%22%3A136241%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu4f6c%5Cu627e%5Cu4e0b%5Cu9519%22%2C%22forum%22%3A%7B%22id%22%3A625%2C%22name%22%3A%22P1596%20%5BUSACO10OCT%5D%5Cu6e56%5Cu8ba1%5Cu6570Lake%20Counting%22%2C%22slug%22%3A%22P1596%22%7D%7D%2C%7B%22id%22%3A134525%2C%22title%22%3A%22%5Cu4e0d%5Cu7528%5Cu56de%5Cu6eaf%5Cuff0c%5Cu4e0d%5Cu7528%5Cu8bb0%5Cu5fc6%5Cu5316%5Cuff0c%5Cu4e0d%5Cu7528%5Cu526a%5Cu679d%5Cu597d%5Cu5e78%5Cu798f%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A625%2C%22name%22%3A%22P1596%20%5BUSACO10OCT%5D%5Cu6e56%5Cu8ba1%5Cu6570Lake%20Counting%22%2C%22slug%22%3A%22P1596%22%7D%7D%2C%7B%22id%22%3A130727%2C%22title%22%3A%22%5Cu6211%5Cu60f3%5Cu77e5%5Cu9053%5Cuff0c%5Cu9898%5Cu76ee%5Cu5230%5Cu5e95%5Cu662f%5Cu4ec0%5Cu4e48%5Cu610f%5Cu601d%5Cu554a%5Cuff01%5Cuff01%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A625%2C%22name%22%3A%22P1596%20%5BUSACO10OCT%5D%5Cu6e56%5Cu8ba1%5Cu6570Lake%20Counting%22%2C%22slug%22%3A%22P1596%22%7D%7D%2C%7B%22id%22%3A127740%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu5927%5Cu4f6c%5Cu6311%5Cu523a%5Cuff0c%238%5Cuff0c%239WA%22%2C%22forum%22%3A%7B%22id%22%3A625%2C%22name%22%3A%22P1596%20%5BUSACO10OCT%5D%5Cu6e56%5Cu8ba1%5Cu6570Lake%20Counting%22%2C%22slug%22%3A%22P1596%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1036%22%2C%22title%22%3A%22%5Cu9009%5Cu6570%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1162%22%2C%22title%22%3A%22%5Cu586b%5Cu6d82%5Cu989c%5Cu8272%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1219%22%2C%22title%22%3A%22%5Cu516b%5Cu7687%5Cu540e%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1451%22%2C%22title%22%3A%22%5Cu6c42%5Cu7ec6%5Cu80de%5Cu6570%5Cu91cf%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1506%22%2C%22title%22%3A%22%5Cu62ef%5Cu6551oibh%5Cu603b%5Cu90e8%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10OCT%5D%5Cu6e56%5Cu8ba1%5Cu6570Lake%20Counting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10OCT]湖计数Lake Counting</h1>
+<h2>题目描述</h2>
+<div>Due to recent rains, water has pooled in various places in Farmer John's field, which is represented by a rectangle of N x M (1 <= N <= 100; 1 <= M <= 100) squares. Each square contains either water ('W') or dry land ('.'). Farmer John would like to figure out how many ponds have formed in his field. A pond is a connected set of squares with water in them, where a square is considered adjacent to all eight of its neighbors. Given a diagram of Farmer John's field, determine how many ponds he has.
+由于近期的降雨，雨水汇集在农民约翰的田地不同的地方。我们用一个NxM(1<=N<=100;1<=M<=100)网格图表示。每个网格中有水('W') 或是旱地('.')。一个网格与其周围的八个网格相连，而一组相连的网格视为一个水坑。约翰想弄清楚他的田地已经形成了多少水坑。给出约翰田地的示意图，确定当中有多少水坑。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Line 1: Two space-separated integers: N and M \* Lines 2..N+1: M characters per line representing one row of Farmer John's field. Each character is either 'W' or '.'. The characters do not have spaces between them.
+第1行：两个空格隔开的整数：N 和 M 第2行到第N+1行：每行M个字符，每个字符是'W'或'.'，它们表示网格图中的一排。字符之间没有空格。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Line 1: The number of ponds in Farmer John's field.
+一行：水坑的数量
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 12
+W........WW.
+.WWW.....WWW
+....WW...WW.
+.........WW.
+.........W..
+..W......W..
+.W.W.....WW.
+W.W.W.....W.
+.W.W......W.
+..W.......W.
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h2>说明</h2>
+<div>OUTPUT DETAILS: There are three ponds: one in the upper left, one in the lower left, and one along the right side.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

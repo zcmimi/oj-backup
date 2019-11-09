@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>【模板】单源最短路径（标准版） - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381794:1NMxC+tVbLW0uhotl/Ej63XVomCEl4AxjOiC/bNzs7c=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%222018%20%5Cu5e74%207%20%5Cu6708%2019%20%5Cu65e5%5Cuff0c%5Cu67d0%5Cu4f4d%5Cu540c%5Cu5b66%5Cu5728%20%5BNOI%20Day%201%20T1%20%5Cu5f52%5Cu7a0b%5D%28https%3A%5C%2F%5C%2Fwww.luogu.org%5C%2Fproblemnew%5C%2Fshow%5C%2FP4768%29%20%5Cu4e00%5Cu9898%5Cu91cc%5Cu975e%5Cu5e38%5Cu719f%5Cu7ec3%5Cu5730%5Cu4f7f%5Cu7528%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu5e7f%5Cu4e3a%5Cu4eba%5Cu77e5%5Cu7684%5Cu7b97%5Cu6cd5%5Cu6c42%5Cu6700%5Cu77ed%5Cu8def%5Cu3002%5Cn%5Cn%5Cu7136%5Cu540e%5Cu5462%5Cuff1f%5Cn%5Cn%24100%20%5C%5Crightarrow%2060%24%5Cuff1b%5Cn%5Cn%24Ag%20%5C%5Crightarrow%20Cu%24%5Cuff1b%5Cn%5Cn%5Cu6700%5Cu7ec8%5Cuff0c%5Cu4ed6%5Cu56e0%5Cu6b64%5Cu6ca1%5Cu80fd%5Cu4e0e%5Cu7406%5Cu60f3%5Cu7684%5Cu5927%5Cu5b66%5Cu8fbe%5Cu6210%5Cu5951%5Cu7ea6%5Cu3002%5Cn%5Cn%5Cu5c0f%20F%20%5Cu8877%5Cu5fc3%5Cu795d%5Cu613f%5Cu5927%5Cu5bb6%5Cu4e0d%5Cu518d%5Cu91cd%5Cu8e48%5Cu8986%5Cu8f99%5Cu3002%22%2C%22description%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%20%24N%24%20%5Cu4e2a%5Cu70b9%5Cuff0c%24M%24%20%5Cu6761%5Cu6709%5Cu5411%5Cu8fb9%5Cu7684%5Cu5e26%5Cu975e%5Cu8d1f%5Cu6743%5Cu56fe%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu8ba1%5Cu7b97%5Cu4ece%20%24S%24%20%5Cu51fa%5Cu53d1%5Cuff0c%5Cu5230%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu7684%5Cu8ddd%5Cu79bb%5Cu3002%5Cn%5Cn%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1%5Cu4f60%5Cu80fd%5Cu4ece%20%24S%24%20%5Cu51fa%5Cu53d1%5Cu5230%5Cu4efb%5Cu610f%5Cu70b9%5Cu3002%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e09%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24N%2C%20M%2C%20S%24%5Cu3002%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8d77%20%24M%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e09%5Cu4e2a%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%20%24u_i%2C%20v_i%2C%20w_i%24%5Cuff0c%5Cu8868%5Cu793a%5Cu4ece%20%24u_i%24%20%5Cu5230%20%24v_i%24%20%5Cu6709%5Cu4e00%5Cu6761%5Cu6743%5Cu503c%5Cu4e3a%20%24w_i%24%20%5Cu7684%5Cu8fb9%5Cu3002%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%20%24N%24%20%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu7684%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%20%24S%24%20%5Cu5230%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu7684%5Cu8ddd%5Cu79bb%5Cu3002%22%2C%22samples%22%3A%5B%5B%224%206%201%5Cn1%202%202%5Cn2%203%202%5Cn2%204%201%5Cn1%203%205%5Cn3%204%203%5Cn1%204%204%22%2C%220%202%204%203%22%5D%5D%2C%22hint%22%3A%22%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%5Cu8bf7%5Cu53c2%5Cu8003%20%5B%5Cu6570%5Cu636e%5Cu968f%5Cu673a%5Cu7684%5Cu6a21%5Cu677f%5Cu9898%5D%28https%3A%5C%2F%5C%2Fwww.luogu.org%5C%2Fproblemnew%5C%2Fshow%5C%2FP3371%29%5Cu3002%5Cn%5Cn%241%20%5C%5Cleq%20N%20%5C%5Cleq%20100000%24%5Cuff1b%5Cn%5Cn%241%20%5C%5Cleq%20M%20%5C%5Cleq%20200000%24%5Cuff1b%5Cn%5Cn%24S%20%3D%201%24%5Cuff1b%5Cn%5Cn%241%20%5C%5Cleq%20u_i%2C%20v_i%5C%5Cleq%20N%24%5Cuff1b%5Cn%5Cn%240%20%5C%5Cleq%20w_i%20%5C%5Cleq%2010%20%5E%209%24%2C%5Cn%5Cn%240%20%5C%5Cleq%20%5C%5Csum%20w_i%20%5C%5Cleq%2010%20%5E%209%24%5Cu3002%5Cn%5Cn%5Cu672c%5Cu9898%5Cu6570%5Cu636e%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu6301%5Cu7eed%5Cu66f4%5Cu65b0%5Cuff0c%5Cu4f46%5Cu4e0d%5Cu4f1a%5Cu91cd%5Cu6d4b%5Cuff0c%5Cu671b%5Cu5468%5Cu77e5%5Cu3002%5Cn%5Cn2018.09.04%20%5Cu6570%5Cu636e%5Cu66f4%5Cu65b0%20from%20%40zzq%22%2C%22provider%22%3A%7B%22uid%22%3A12621%2C%22name%22%3A%22fstqwq%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A10%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B148%2C162%2C216%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A75104%2C%22totalAccepted%22%3A25210%2C%22pid%22%3A%22P4779%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A165350%2C%22title%22%3A%22%5Cu600e%5Cu4e48%5Cu4e5f%5Cu627e%5Cu4e0d%5Cu51fa%5Cu9519%5Cu6c42%5Cu6025%5Cu6551%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A27608%2C%22name%22%3A%22P4779%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22slug%22%3A%22P4779%22%7D%7D%2C%7B%22id%22%3A165228%2C%22title%22%3A%22Dijkstra%2BSTL%5Cu5806wa9%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu6551%5Cu6551%5Cu5b69%5Cu5b50%22%2C%22forum%22%3A%7B%22id%22%3A27608%2C%22name%22%3A%22P4779%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22slug%22%3A%22P4779%22%7D%7D%2C%7B%22id%22%3A164623%2C%22title%22%3A%22%5Cu521a%5Cu5b66%5Cu56fe%5Cu8bba%5Cuff0c%5Cu5168wa%5Cuff0c%5Cu6551%5Cu6551%5Cu5b69%5Cu5b50%5Cu5427%22%2C%22forum%22%3A%7B%22id%22%3A27608%2C%22name%22%3A%22P4779%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22slug%22%3A%22P4779%22%7D%7D%2C%7B%22id%22%3A163629%2C%22title%22%3A%22Dijkstra%5Cu5806%5Cu4f18%5Cu5316%5Cu5168wa%5Cuff0c%5Cu849f%5Cu84bb%5Cu6c42%5Cu6551QWQ%22%2C%22forum%22%3A%7B%22id%22%3A27608%2C%22name%22%3A%22P4779%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22slug%22%3A%22P4779%22%7D%7D%2C%7B%22id%22%3A162572%2C%22title%22%3A%22%5Cu6551%5Cu6551dij%22%2C%22forum%22%3A%7B%22id%22%3A27608%2C%22name%22%3A%22P4779%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22slug%22%3A%22P4779%22%7D%7D%2C%7B%22id%22%3A161445%2C%22title%22%3A%22%5Cu9707%5Cu60ca%5Cuff0c%5Cu7ebf%5Cu6bb5%5Cu6811dij%5Cu7adf%5Cu9700o2%5Cu624d%5Cu80fd%5Cu8fc7%22%2C%22forum%22%3A%7B%22id%22%3A27608%2C%22name%22%3A%22P4779%20%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22slug%22%3A%22P4779%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1144%22%2C%22title%22%3A%22%5Cu6700%5Cu77ed%5Cu8def%5Cu8ba1%5Cu6570%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1339%22%2C%22title%22%3A%22%5BUSACO09OCT%5D%5Cu70ed%5Cu6d6aHeat%20Wave%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2384%22%2C%22title%22%3A%22%5Cu6700%5Cu77ed%5Cu8def%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3385%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu8d1f%5Cu73af%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3371%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu5f31%5Cu5316%5Cu7248%5Cuff09%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5355%5Cu6e90%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cuff08%5Cu6807%5Cu51c6%5Cu7248%5Cuff09%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>【模板】单源最短路径（标准版）</h1>
+<h2>题目背景</h2>
+<div>2018 年 7 月 19 日，某位同学在 [NOI Day 1 T1 归程](https://www.luogu.org/problemnew/show/P4768) 一题里非常熟练地使用了一个广为人知的算法求最短路。
+然后呢？
+$100 \rightarrow 60$；
+$Ag \rightarrow Cu$；
+最终，他因此没能与理想的大学达成契约。
+小 F 衷心祝愿大家不再重蹈覆辙。</div>
+<h2>题目描述</h2>
+<div>给定一个 $N$ 个点，$M$ 条有向边的带非负权图，请你计算从 $S$ 出发，到每个点的距离。
+数据保证你能从 $S$ 出发到任意点。</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行为三个正整数 $N, M, S$。
+第二行起 $M$ 行，每行三个非负整数 $u_i, v_i, w_i$，表示从 $u_i$ 到 $v_i$ 有一条权值为 $w_i$ 的边。</div>
+<h3>输出格式</h3>
+<br />
+<div>输出一行 $N$ 个空格分隔的非负整数，表示 $S$ 到每个点的距离。</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 6 1
+1 2 2
+2 3 2
+2 4 1
+1 3 5
+3 4 3
+1 4 4</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0 2 4 3</code></pre>
+<h2>说明</h2>
+<div>样例解释请参考 [数据随机的模板题](https://www.luogu.org/problemnew/show/P3371)。
+$1 \leq N \leq 100000$；
+$1 \leq M \leq 200000$；
+$S = 1$；
+$1 \leq u_i, v_i\leq N$；
+$0 \leq w_i \leq 10 ^ 9$,
+$0 \leq \sum w_i \leq 10 ^ 9$。
+本题数据可能会持续更新，但不会重测，望周知。
+2018.09.04 数据更新 from @zzq</div>
+</article>
+</div>
+</div>
+</body>
+</html>

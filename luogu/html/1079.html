@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Vigenère 密码 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573373453:QUbT9c+YDrUx8BIeuf70+zOPrVgstSsVwLfXEBf+h+o=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%2216%20%5Cu4e16%5Cu7eaa%5Cu6cd5%5Cu56fd%5Cu5916%5Cu4ea4%5Cu5bb6%20%24Blaise%20de%20Vigen%5Cu00e8re%24%20%5Cu8bbe%5Cu8ba1%5Cu4e86%5Cu4e00%5Cu79cd%5Cu591a%5Cu8868%5Cu5bc6%5Cu7801%5Cu52a0%5Cu5bc6%5Cu7b97%5Cu6cd5%5Cu2015%5Cu2015%24Vigen%5Cu00e8re%24%20%5Cu5bc6%5Cu7801%5Cu3002%24Vigen%5Cu00e8re%24%20%5Cu5bc6%5Cu7801%5Cu7684%5Cu52a0%5Cu5bc6%5Cu89e3%5Cu5bc6%5Cu7b97%5Cu6cd5%5Cu7b80%5Cu5355%5Cu6613%5Cu7528%5Cuff0c%5Cu4e14%5Cu7834%5Cu8bd1%5Cu96be%5Cu5ea6%5Cu6bd4%5Cu8f83%5Cu9ad8%5Cuff0c%5Cu66fe%5Cu5728%5Cu7f8e%5Cu56fd%5Cu5357%5Cu5317%5Cu6218%5Cu4e89%5Cu4e2d%5Cu4e3a%5Cu5357%5Cu519b%5Cu6240%5Cu5e7f%5Cu6cdb%5Cu4f7f%5Cu7528%5Cu3002%5Cn%5Cn%20%5Cn%5Cu5728%5Cu5bc6%5Cu7801%5Cu5b66%5Cu4e2d%5Cuff0c%5Cu6211%5Cu4eec%5Cu79f0%5Cu9700%5Cu8981%5Cu52a0%5Cu5bc6%5Cu7684%5Cu4fe1%5Cu606f%5Cu4e3a%5Cu660e%5Cu6587%5Cuff0c%5Cu7528%20%24M%20%24%5Cu8868%5Cu793a%5Cuff1b%5Cu79f0%5Cu52a0%5Cu5bc6%5Cu540e%5Cu7684%5Cu4fe1%5Cu606f%5Cu4e3a%5Cu5bc6%5Cu6587%5Cuff0c%5Cu7528%24C%20%24%5Cu8868%5Cu793a%5Cuff1b%5Cu800c%5Cu5bc6%5Cu94a5%5Cu662f%5Cu4e00%5Cu79cd%5Cu53c2%5Cu6570%5Cuff0c%5Cu662f%5Cu5c06%5Cu660e%5Cu6587%5Cu8f6c%5Cu6362%5Cu4e3a%5Cu5bc6%5Cu6587%5Cu6216%5Cu5c06%5Cu5bc6%5Cu6587%5Cu8f6c%5Cu6362%5Cu4e3a%5Cu660e%5Cu6587%5Cu7684%5Cu7b97%5Cu6cd5%5Cu4e2d%5Cu8f93%5Cu5165%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%5Cu8bb0%5Cu4e3a%24%20k%24%5Cu3002%20%5Cu5728%20%24Vigen%5Cu00e8re%24%20%5Cu5bc6%5Cu7801%5Cu4e2d%5Cuff0c%5Cu5bc6%5Cu94a5%24%20k%20%24%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu4e32%5Cuff0c%24k%3Dk_1%2Ck_2%2C%5Cu2026%2Ck_n%24%5Cu3002%5Cu5f53%5Cu660e%5Cu6587%20%24M%3Dm_1%2Cm_2%2C%5Cu2026%2Cm_n%24%5Cu65f6%5Cuff0c%5Cu5f97%5Cu5230%5Cu7684%5Cu5bc6%5Cu6587%20%24C%3Dc_1%2Cc_2%2C%5Cu2026%2Cc_n%24%5Cuff0c%5Cu5176%5Cu4e2d%24%20c_i%24%3D%24m_i%24%5Cu00ae%24k_i%24%5Cuff0c%5Cu8fd0%5Cu7b97%5Cu00ae%5Cu7684%5Cu89c4%5Cu5219%5Cu5982%5Cu4e0b%5Cu8868%5Cu6240%5Cu793a%5Cuff1a%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F30.png%29%20%5Cn%5Cn%24Vigen%5Cu00e8re%24%20%5Cu52a0%5Cu5bc6%5Cu5728%5Cu64cd%5Cu4f5c%5Cu65f6%5Cu9700%5Cu8981%5Cu6ce8%5Cu610f%5Cuff1a%5Cn%5Cn1.%20%5Cu00ae%5Cu8fd0%5Cu7b97%5Cu5ffd%5Cu7565%5Cu53c2%5Cu4e0e%5Cu8fd0%5Cu7b97%5Cu7684%5Cu5b57%5Cu6bcd%5Cu7684%5Cu5927%5Cu5c0f%5Cu5199%5Cuff0c%5Cu5e76%5Cu4fdd%5Cu6301%5Cu5b57%5Cu6bcd%5Cu5728%5Cu660e%5Cu6587%24%20M%24%20%5Cu4e2d%5Cu7684%5Cu5927%5Cu5c0f%5Cu5199%5Cu5f62%5Cu5f0f%5Cuff1b%5Cn%5Cn2.%20%5Cu5f53%5Cu660e%5Cu6587%20%24M%24%20%5Cu7684%5Cu957f%5Cu5ea6%5Cu5927%5Cu4e8e%5Cu5bc6%5Cu94a5%20%24k%24%20%5Cu7684%5Cu957f%5Cu5ea6%5Cu65f6%5Cuff0c%5Cu5c06%5Cu5bc6%5Cu94a5%20%24k%20%24%5Cu91cd%5Cu590d%5Cu4f7f%5Cu7528%5Cu3002%5Cn%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu660e%5Cu6587%20%24M%3DHelloworld%24%5Cuff0c%5Cu5bc6%5Cu94a5%24%20k%3Dabc%24%20%5Cu65f6%5Cuff0c%5Cu5bc6%5Cu6587%20%24C%3DHfnlpyosnd%24%5Cu3002%5Cn%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F31.png%29%20%5Cn%5Cn%22%2C%22inputFormat%22%3A%22%5Cu5171%202%20%5Cu884c%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8868%5Cu793a%5Cu5bc6%5Cu94a5%24%20k%24%5Cuff0c%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc7%24%20100%24%5Cuff0c%5Cu5176%5Cu4e2d%5Cu4ec5%5Cu5305%5Cu542b%5Cu5927%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu3002%20%20%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8868%5Cu793a%5Cu7ecf%5Cu52a0%5Cu5bc6%5Cu540e%5Cu7684%5Cu5bc6%5Cu6587%5Cuff0c%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc7%24%201000%24%5Cuff0c%5Cu5176%5Cu4e2d%5Cu4ec5%5Cu5305%5Cu542b%5Cu5927%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8868%5Cu793a%5Cu8f93%5Cu5165%5Cu5bc6%5Cu94a5%5Cu548c%5Cu5bc6%5Cu6587%5Cu6240%5Cu5bf9%5Cu5e94%5Cu7684%5Cu660e%5Cu6587%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%22CompleteVictory%5CnYvqgpxaimmklongnzfwpvxmniytm%20%22%2C%22Wherethereisawillthereisaway%20%22%5D%5D%2C%22hint%22%3A%22%5Cu3010%5Cu6570%5Cu636e%5Cu8bf4%5Cu660e%5Cu3011%5Cn%5Cn%5Cu5bf9%5Cu4e8e%20100%25%5Cu7684%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu5165%5Cu7684%5Cu5bc6%5Cu94a5%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc7%20%24100%24%5Cuff0c%5Cu8f93%5Cu5165%5Cu7684%5Cu5bc6%5Cu6587%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc7%24%201000%24%5Cuff0c%5Cu4e14%5Cu90fd%5Cu4ec5%5Cu5305%5Cu542b%5Cu82f1%5Cu6587%5Cu5b57%5Cu6bcd%5Cu3002%5Cn%5Cn%5CnNOIP%202012%20%5Cu63d0%5Cu9ad8%5Cu7ec4%20%5Cu7b2c%5Cu4e00%5Cu5929%20%5Cu7b2c%5Cu4e00%5Cu9898%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A19%2C%22name%22%3A%22CCF_NOI%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B1%2C2%2C29%2C83%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A20208%2C%22totalAccepted%22%3A11050%2C%22pid%22%3A%22P1079%22%2C%22title%22%3A%22Vigen%5Cu00e8re%20%5Cu5bc6%5Cu7801%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A165513%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu52a9QWQ%22%2C%22forum%22%3A%7B%22id%22%3A85%2C%22name%22%3A%22P1079%20Vigen%5Cu00e8re%20%5Cu5bc6%5Cu7801%22%2C%22slug%22%3A%22P1079%22%7D%7D%2C%7B%22id%22%3A165512%2C%22title%22%3A%22%5Cu6211%5Cu6000%5Cu7591%5Cu6211%5Cu6253%5Cu7684%5Cu4e0d%5Cu662f%5Cu4ee3%5Cu7801%5Cuff0c%5Cu662fbug...qwq%22%2C%22forum%22%3A%7B%22id%22%3A85%2C%22name%22%3A%22P1079%20Vigen%5Cu00e8re%20%5Cu5bc6%5Cu7801%22%2C%22slug%22%3A%22P1079%22%7D%7D%2C%7B%22id%22%3A160304%2C%22title%22%3A%22%5Cu5168WA%5Cu7684%5Cu6ce8%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A85%2C%22name%22%3A%22P1079%20Vigen%5Cu00e8re%20%5Cu5bc6%5Cu7801%22%2C%22slug%22%3A%22P1079%22%7D%7D%2C%7B%22id%22%3A156270%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu4f6c%5Cu5e2e%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A85%2C%22name%22%3A%22P1079%20Vigen%5Cu00e8re%20%5Cu5bc6%5Cu7801%22%2C%22slug%22%3A%22P1079%22%7D%7D%2C%7B%22id%22%3A146553%2C%22title%22%3A%22%5Cu6837%5Cu4f8b%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A85%2C%22name%22%3A%22P1079%20Vigen%5Cu00e8re%20%5Cu5bc6%5Cu7801%22%2C%22slug%22%3A%22P1079%22%7D%7D%2C%7B%22id%22%3A132538%2C%22title%22%3A%22%5Cu6551%5Cu547d%5Cu554a%5Cu554a%5Cu554a%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A85%2C%22name%22%3A%22P1079%20Vigen%5Cu00e8re%20%5Cu5bc6%5Cu7801%22%2C%22slug%22%3A%22P1079%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1071%22%2C%22title%22%3A%22%5Cu6f5c%5Cu4f0f%5Cu8005%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1082%22%2C%22title%22%3A%22%5Cu540c%5Cu4f59%5Cu65b9%5Cu7a0b%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1965%22%2C%22title%22%3A%22%5Cu8f6c%5Cu5708%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1969%22%2C%22title%22%3A%22%5Cu79ef%5Cu6728%5Cu5927%5Cu8d5b%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2038%22%2C%22title%22%3A%22%5Cu65e0%5Cu7ebf%5Cu7f51%5Cu7edc%5Cu53d1%5Cu5c04%5Cu5668%5Cu9009%5Cu5740%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Vigen%5Cu00e8re%20%5Cu5bc6%5Cu7801%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573275971;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Vigenère 密码</h1>
+<h2>题目描述</h2>
+<div>16 世纪法国外交家 $Blaise de Vigenère$ 设计了一种多表密码加密算法――$Vigenère$ 密码。$Vigenère$ 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。
+在密码学中，我们称需要加密的信息为明文，用 $M $表示；称加密后的信息为密文，用$C $表示；而密钥是一种参数，是将明文转换为密文或将密文转换为明文的算法中输入的数据，记为$ k$。 在 $Vigenère$ 密码中，密钥$ k $是一个字母串，$k=k_1,k_2,…,k_n$。当明文 $M=m_1,m_2,…,m_n$时，得到的密文 $C=c_1,c_2,…,c_n$，其中$ c_i$=$m_i$®$k_i$，运算®的规则如下表所示：
+![](https://cdn.luogu.com.cn/upload/pic/30.png)
+$Vigenère$ 加密在操作时需要注意：
+1. ®运算忽略参与运算的字母的大小写，并保持字母在明文$ M$ 中的大小写形式；
+2. 当明文 $M$ 的长度大于密钥 $k$ 的长度时，将密钥 $k $重复使用。
+例如，明文 $M=Helloworld$，密钥$ k=abc$ 时，密文 $C=Hfnlpyosnd$。
+![](https://cdn.luogu.com.cn/upload/pic/31.png)
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>共 2 行。
+第一行为一个字符串，表示密钥$ k$，长度不超过$ 100$，其中仅包含大小写字母。
+第二行为一个字符串，表示经加密后的密文，长度不超过$ 1000$，其中仅包含大小写字母。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>一个字符串，表示输入密钥和密文所对应的明文。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>CompleteVictory
+Yvqgpxaimmklongnzfwpvxmniytm </code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Wherethereisawillthereisaway </code></pre>
+<h2>说明</h2>
+<div>【数据说明】
+对于 100%的数据，输入的密钥的长度不超过 $100$，输入的密文的长度不超过$ 1000$，且都仅包含英文字母。
+NOIP 2012 提高组 第一天 第一题
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

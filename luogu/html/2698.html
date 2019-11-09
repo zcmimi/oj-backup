@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12MAR]花盆Flowerpot - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573375841:E7NGmslgA9+bXjQ70chFvvu7BAxgAVWqYtTMB0WeOeo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20has%20been%20having%20trouble%20making%20his%20plants%20grow%2C%20and%20needs%20your%20help%20to%20water%20them%20properly.%20%20You%20are%20given%20the%20locations%20of%20N%20raindrops%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20in%20the%202D%20plane%2C%20where%20y%20represents%20vertical%20height%20of%20the%20drop%2C%20and%20x%20represents%20its%20location%20over%20a%201D%20number%20line%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F9174.png%29%20%5Cn%5CnEach%20drop%20falls%20downward%20%28towards%20the%20x%20axis%29%20at%20a%20rate%20of%201%20unit%20per%20second.%20%20You%20would%20like%20to%20place%20Farmer%20John%27s%20flowerpot%20of%20width%20W%20somewhere%20along%20the%20x%20axis%20so%20that%20the%20difference%20in%20time%20between%20the%20first%20raindrop%20to%20hit%20the%20flowerpot%20and%20the%20last%20raindrop%20to%20hit%20the%20flowerpot%20is%20at%20least%20some%20amount%20D%20%28so%20that%20the%20flowers%20in%20the%20pot%20receive%20plenty%20of%20water%29.%20%20A%20drop%20of%20water%20that%20lands%20just%20on%20the%20edge%20of%20the%20flowerpot%20counts%20as%20hitting%20the%20flowerpot.%20%5Cn%5CnGiven%20the%20value%20of%20D%20and%20the%20locations%20of%20the%20N%20raindrops%2C%20please%20compute%20the%20minimum%20possible%20value%20of%20W.%5Cn%5Cn%5Cu8001%5Cu677f%5Cu9700%5Cu8981%5Cu4f60%5Cu5e2e%5Cu5fd9%5Cu6d47%5Cu82b1%5Cu3002%5Cu7ed9%5Cu51faN%5Cu6ef4%5Cu6c34%5Cu7684%5Cu5750%5Cu6807%5Cuff0cy%5Cu8868%5Cu793a%5Cu6c34%5Cu6ef4%5Cu7684%5Cu9ad8%5Cu5ea6%5Cuff0cx%5Cu8868%5Cu793a%5Cu5b83%5Cu4e0b%5Cu843d%5Cu5230x%5Cu8f74%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu6ef4%5Cu6c34%5Cu4ee5%5Cu6bcf%5Cu79d21%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu957f%5Cu5ea6%5Cu7684%5Cu901f%5Cu5ea6%5Cu4e0b%5Cu843d%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu628a%5Cu82b1%5Cu76c6%5Cu653e%5Cu5728x%5Cu8f74%5Cu4e0a%5Cu7684%5Cu67d0%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu4ece%5Cu88ab%5Cu82b1%5Cu76c6%5Cu63a5%5Cu7740%5Cu7684%5Cu7b2c1%5Cu6ef4%5Cu6c34%5Cu5f00%5Cu59cb%5Cuff0c%5Cu5230%5Cu88ab%5Cu82b1%5Cu76c6%5Cu63a5%5Cu7740%5Cu7684%5Cu6700%5Cu540e1%5Cu6ef4%5Cu6c34%5Cu7ed3%5Cu675f%5Cuff0c%5Cu4e4b%5Cu95f4%5Cu7684%5Cu65f6%5Cu95f4%5Cu5dee%5Cu81f3%5Cu5c11%5Cu4e3aD%5Cu3002%5Cn%5Cn%5Cu6211%5Cu4eec%5Cu8ba4%5Cu4e3a%5Cuff0c%5Cu53ea%5Cu8981%5Cu6c34%5Cu6ef4%5Cu843d%5Cu5230x%5Cu8f74%5Cu4e0a%5Cuff0c%5Cu4e0e%5Cu82b1%5Cu76c6%5Cu7684%5Cu8fb9%5Cu6cbf%5Cu5bf9%5Cu9f50%5Cuff0c%5Cu5c31%5Cu8ba4%5Cu4e3a%5Cu88ab%5Cu63a5%5Cu4f4f%5Cu3002%5Cu7ed9%5Cu51faN%5Cu6ef4%5Cu6c34%5Cu7684%5Cu5750%5Cu6807%5Cu548cD%5Cu7684%5Cu5927%5Cu5c0f%5Cuff0c%5Cu8bf7%5Cu7b97%5Cu51fa%5Cu6700%5Cu5c0f%5Cu7684%5Cu82b1%5Cu76c6%5Cu7684%5Cu5bbd%5Cu5ea6W%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c2%5Cu4e2a%5Cu6574%5Cu6570%20N%20%5Cu548c%20D%5Cu3002%5Cn%5Cn%5Cu7b2c2..%20N%2B1%5Cu884c%5Cu6bcf%5Cu884c2%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6c34%5Cu6ef4%5Cu7684%5Cu5750%5Cu6807%28x%2Cy%29%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu4ec5%5Cu4e00%5Cu884c1%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu5c0f%5Cu7684%5Cu82b1%5Cu76c6%5Cu7684%5Cu5bbd%5Cu5ea6%5Cu3002%5Cu5982%5Cu679c%5Cu65e0%5Cu6cd5%5Cu6784%5Cu9020%5Cu51fa%5Cu8db3%5Cu591f%5Cu5bbd%5Cu7684%5Cu82b1%5Cu76c6%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu5728D%5Cu5355%5Cu4f4d%5Cu7684%5Cu65f6%5Cu95f4%5Cu63a5%5Cu4f4f%5Cu6ee1%5Cu8db3%5Cu8981%5Cu6c42%5Cu7684%5Cu6c34%5Cu6ef4%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa-1%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%224%205%5Cn6%203%5Cn2%204%5Cn4%2010%5Cn12%2015%22%2C%222%22%5D%5D%2C%22hint%22%3A%22%5Cu3010%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%5Cu3011%5Cn%5Cn%5Cu67094%5Cu6ef4%5Cu6c34%5Cuff0c%20%286%2C3%29%2C%20%282%2C4%29%2C%20%284%2C10%29%2C%20%2812%2C15%29.%5Cu6c34%5Cu6ef4%5Cu5fc5%5Cu987b%5Cu7528%5Cu81f3%5Cu5c115%5Cu79d2%5Cu65f6%5Cu95f4%5Cu843d%5Cu5165%5Cu82b1%5Cu76c6%5Cu3002%5Cu82b1%5Cu76c6%5Cu7684%5Cu5bbd%5Cu5ea6%5Cu4e3a2%5Cu662f%5Cu5fc5%5Cu987b%5Cu4e14%5Cu8db3%5Cu591f%5Cu7684%5Cu3002%5Cu628a%5Cu82b1%5Cu76c6%5Cu653e%5Cu5728x%3D4..6%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu5b83%5Cu53ef%5Cu4ee5%5Cu63a5%5Cu52301%5Cu548c3%5Cu6c34%5Cu6ef4%2C%20%5Cu4e4b%5Cu95f4%5Cu7684%5Cu65f6%5Cu95f4%5Cu5dee%5Cu4e3a10-3%20%3D%207%5Cu6ee1%5Cu8db3%5Cu6761%5Cu4ef6%5Cu3002%5Cn%5Cn%5Cu3010%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu3011%5Cn%5Cn40%25%5Cu7684%5Cu6570%5Cu636e%5Cuff1a1%20%5Cu2264%20N%20%5Cu2264%201000%5Cuff0c1%20%5Cu2264%20D%20%5Cu2264%202000%5Cuff1b%5Cn%5Cn100%25%5Cu7684%5Cu6570%5Cu636e%5Cuff1a1%20%5Cu2264%20N%20%5Cu2264%20100000%5Cuff0c1%20%5Cu2264%20D%20%5Cu2264%201000000%5Cuff0c0%5Cu2264x%2Cy%5Cu226410%5E6%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C45%2C46%2C56%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A4286%2C%22totalAccepted%22%3A1567%2C%22pid%22%3A%22P2698%22%2C%22title%22%3A%22%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A161840%2C%22title%22%3A%22%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cu53ef%5Cu4ee5%5Cu5361%5Cu6389%5Cu90e8%5Cu5206AC%5Cu4ee3%5Cu7801%22%2C%22forum%22%3A%7B%22id%22%3A1799%2C%22name%22%3A%22P2698%20%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22slug%22%3A%22P2698%22%7D%7D%2C%7B%22id%22%3A80733%2C%22title%22%3A%22%2410%24%5Cu5206%5Cu6c42%5Cu52a9%5Cuff0c%5Cu55b5%5Cu545c%5Cu545c%5Cu545c%22%2C%22forum%22%3A%7B%22id%22%3A1799%2C%22name%22%3A%22P2698%20%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22slug%22%3A%22P2698%22%7D%7D%2C%7B%22id%22%3A78241%2C%22title%22%3A%22%5Cu8fd9%5Cu9053%5Cu9898%5Cu6570%5Cu636e%5Cu6709%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A1799%2C%22name%22%3A%22P2698%20%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22slug%22%3A%22P2698%22%7D%7D%2C%7B%22id%22%3A76575%2C%22title%22%3A%22%5Cu9707%5Cu60ca%5Cuff01%5Cuff01zkw%5Cu6bd4%5Cu666e%5Cu901a%5Cu7ebf%5Cu6bb5%5Cu6811%5Cu6162%5Cu7684%5Cu771f%5Cu6b63%5Cu539f%5Cu56e0%5Cu7adf%5Cu7136%5Cu662f%5Cu3002%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A1799%2C%22name%22%3A%22P2698%20%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22slug%22%3A%22P2698%22%7D%7D%2C%7B%22id%22%3A74903%2C%22title%22%3A%22%5Cu8fd9%5Cu9898st%5Cu8868%5Cu4e3a%5Cu4f55%5Cu4e0dMle%22%2C%22forum%22%3A%7B%22id%22%3A1799%2C%22name%22%3A%22P2698%20%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22slug%22%3A%22P2698%22%7D%7D%2C%7B%22id%22%3A73637%2C%22title%22%3A%22%5Cu6c42%5Cu4ebahack%5Cu4e0b%5Cu6211%5Cu7684%5Cu505a%5Cu6cd5ww%5Cuff0c%5Cu4e0d%5Cu77e5%5Cu9053%5Cu54ea%5Cu91cc%5Cu9519%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A1799%2C%22name%22%3A%22P2698%20%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22slug%22%3A%22P2698%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2216%22%2C%22title%22%3A%22%5BHAOI2007%5D%5Cu7406%5Cu60f3%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2219%22%2C%22title%22%3A%22%5BHAOI2007%5D%5Cu4fee%5Cu7b51%5Cu7eff%5Cu5316%5Cu5e26%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2564%22%2C%22title%22%3A%22%5BSCOI2009%5D%5Cu751f%5Cu65e5%5Cu793c%5Cu7269%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2569%22%2C%22title%22%3A%22%5BSCOI2010%5D%5Cu80a1%5Cu7968%5Cu4ea4%5Cu6613%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3522%22%2C%22title%22%3A%22%5BPOI2011%5DTEM-Temperature%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12MAR]花盆Flowerpot</h1>
+<h2>题目描述</h2>
+<div>Farmer John has been having trouble making his plants grow, and needs your help to water them properly. You are given the locations of N raindrops (1 <= N <= 100,000) in the 2D plane, where y represents vertical height of the drop, and x represents its location over a 1D number line:
+![](https://cdn.luogu.com.cn/upload/pic/9174.png)
+Each drop falls downward (towards the x axis) at a rate of 1 unit per second. You would like to place Farmer John's flowerpot of width W somewhere along the x axis so that the difference in time between the first raindrop to hit the flowerpot and the last raindrop to hit the flowerpot is at least some amount D (so that the flowers in the pot receive plenty of water). A drop of water that lands just on the edge of the flowerpot counts as hitting the flowerpot.
+Given the value of D and the locations of the N raindrops, please compute the minimum possible value of W.
+老板需要你帮忙浇花。给出N滴水的坐标，y表示水滴的高度，x表示它下落到x轴的位置。
+每滴水以每秒1个单位长度的速度下落。你需要把花盆放在x轴上的某个位置，使得从被花盆接着的第1滴水开始，到被花盆接着的最后1滴水结束，之间的时间差至少为D。
+我们认为，只要水滴落到x轴上，与花盆的边沿对齐，就认为被接住。给出N滴水的坐标和D的大小，请算出最小的花盆的宽度W。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行2个整数 N 和 D。
+第2.. N+1行每行2个整数，表示水滴的坐标(x,y)。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>仅一行1个整数，表示最小的花盆的宽度。如果无法构造出足够宽的花盆，使得在D单位的时间接住满足要求的水滴，则输出-1。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+6 3
+2 4
+4 10
+12 15</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2</code></pre>
+<h2>说明</h2>
+<div>【样例解释】
+有4滴水， (6,3), (2,4), (4,10), (12,15).水滴必须用至少5秒时间落入花盆。花盆的宽度为2是必须且足够的。把花盆放在x=4..6的位置，它可以接到1和3水滴, 之间的时间差为10-3 = 7满足条件。
+【数据范围】
+40%的数据：1 ≤ N ≤ 1000，1 ≤ D ≤ 2000；
+100%的数据：1 ≤ N ≤ 100000，1 ≤ D ≤ 1000000，0≤x,y≤10^6。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO06FEB]奶牛零食Treats for the Cows - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376061:TVZsTJp7W6OhSwQP4cEeVFVIcBi0R2Pu8kjJD752NAs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22FJ%20has%20purchased%20N%20%281%20%3C%3D%20N%20%3C%3D%202000%29%20yummy%20treats%20for%20the%20cows%20who%20get%20money%20for%20giving%20vast%20amounts%20of%20milk.%20FJ%20sells%20one%20treat%20per%20day%20and%20wants%20to%20maximize%20the%20money%20he%20receives%20over%20a%20given%20period%20time.%5Cn%5Cn%5CnThe%20treats%20are%20interesting%20for%20many%20reasons%3AThe%20treats%20are%20numbered%201..N%20and%20stored%20sequentially%20in%20single%20file%20in%20a%20long%20box%20that%20is%20open%20at%20both%20ends.%20On%20any%20day%2C%20FJ%20can%20retrieve%20one%20treat%20from%20either%20end%20of%20his%20stash%20of%20treats.Like%20fine%20wines%20and%20delicious%20cheeses%2C%20the%20treats%20improve%20with%20age%20and%20command%20greater%20prices.The%20treats%20are%20not%20uniform%3A%20some%20are%20better%20and%20have%20higher%20intrinsic%20value.%20Treat%20i%20has%20value%20v%28i%29%20%281%20%3C%3D%20v%28i%29%20%3C%3D%201000%29.Cows%20pay%20more%20for%20treats%20that%20have%20aged%20longer%3A%20a%20cow%20will%20pay%20v%28i%29%5C%5C%2Aa%20for%20a%20treat%20of%20age%20a.Given%20the%20values%20v%28i%29%20of%20each%20of%20the%20treats%20lined%20up%20in%20order%20of%20the%20index%20i%20in%20their%20box%2C%20what%20is%20the%20greatest%20value%20FJ%20can%20receive%20for%20them%20if%20he%20orders%20their%20sale%20optimally%3F%5Cn%5Cn%5CnThe%20first%20treat%20is%20sold%20on%20day%201%20and%20has%20age%20a%3D1.%20Each%20subsequent%20day%20increases%20the%20age%20by%201.%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu7ecf%5Cu5e38%5Cu7ed9%5Cu4ea7%5Cu5976%5Cu91cf%5Cu9ad8%5Cu7684%5Cu5976%5Cu725b%5Cu53d1%5Cu7279%5Cu6b8a%5Cu6d25%5Cu8d34%5Cuff0c%5Cu4e8e%5Cu662f%5Cu5f88%5Cu5feb%5Cu5976%5Cu725b%5Cu4eec%5Cu62e5%5Cu6709%5Cu4e86%5Cu5927%5Cu7b14%5Cu4e0d%5Cu77e5%5Cu8be5%5Cu600e%5Cu4e48%5Cu82b1%5Cu7684%5Cu94b1%5Cuff0e%5Cu4e3a%5Cu6b64%5Cuff0c%5Cu7ea6%5Cu7ff0%5Cu8d2d%5Cu7f6e%5Cu4e86N%281%5Cu2264N%5Cu22642000%29%5Cu4efd%5Cu7f8e%5Cu5473%5Cu7684%5Cu96f6%5Cu98df%5Cu6765%5Cu5356%5Cu7ed9%5Cu5976%5Cu725b%5Cu4eec%5Cuff0e%5Cu6bcf%5Cu5929%5Cu7ea6%5Cu7ff0%5Cu552e%5Cu51fa%5Cu4e00%5Cu4efd%5Cu96f6%5Cu98df%5Cuff0e%5Cu5f53%5Cu7136%5Cu7ea6%5Cu7ff0%5Cu5e0c%5Cu671b%5Cu8fd9%5Cu4e9b%5Cu96f6%5Cu98df%5Cu5168%5Cu90e8%5Cu552e%5Cu51fa%5Cu540e%5Cu80fd%5Cu5f97%5Cu5230%5Cu6700%5Cu5927%5Cu7684%5Cu6536%5Cu76ca%5Cuff0e%5Cu8fd9%5Cu4e9b%5Cu96f6%5Cu98df%5Cu6709%5Cu4ee5%5Cu4e0b%5Cu8fd9%5Cu4e9b%5Cu6709%5Cu8da3%5Cu7684%5Cu7279%5Cu6027%5Cuff1a%5Cn%5Cn%5Cn%5Cu2022%5Cu96f6%5Cu98df%5Cu6309%5Cu71671%5Cuff0e%5Cuff0eN%5Cu7f16%5Cu53f7%5Cuff0c%5Cu5b83%5Cu4eec%5Cu88ab%5Cu6392%5Cu6210%5Cu4e00%5Cu5217%5Cu653e%5Cu5728%5Cu4e00%5Cu4e2a%5Cu5f88%5Cu957f%5Cu7684%5Cu76d2%5Cu5b50%5Cu91cc%5Cuff0e%5Cu76d2%5Cu5b50%5Cu7684%5Cu4e24%5Cu7aef%5Cu90fd%5Cu6709%5Cu5f00%5Cu53e3%5Cuff0c%5Cu7ea6%5Cu7ff0%5Cu6bcf%5Cn%5Cn%5Cu5929%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu76d2%5Cu5b50%5Cu7684%5Cu4efb%5Cu4e00%5Cu7aef%5Cu53d6%5Cu51fa%5Cu6700%5Cu5916%5Cu9762%5Cu7684%5Cu4e00%5Cu4e2a%5Cuff0e%5Cn%5Cn%5Cu2022%5Cu4e0e%5Cu7f8e%5Cu9152%5Cu4e0e%5Cu597d%5Cu5403%5Cu7684%5Cu5976%5Cu916a%5Cu76f8%5Cu4f3c%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu96f6%5Cu98df%5Cu50a8%5Cu5b58%5Cu5f97%5Cu8d8a%5Cu4e45%5Cu5c31%5Cu8d8a%5Cu597d%5Cu5403%5Cuff0e%5Cu5f53%5Cu7136%5Cuff0c%5Cu8fd9%5Cu6837%5Cu7ea6%5Cu7ff0%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu628a%5Cu5b83%5Cu4eec%5Cu5356%5Cu51fa%5Cu66f4%5Cu9ad8%5Cu7684%5Cu4ef7%5Cu94b1%5Cuff0e%5Cn%5Cn%5Cu2022%5Cu6bcf%5Cu4efd%5Cu96f6%5Cu98df%5Cu7684%5Cu521d%5Cu59cb%5Cu4ef7%5Cu503c%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu76f8%5Cu540c%5Cuff0e%5Cu7ea6%5Cu7ff0%5Cu8fdb%5Cu8d27%5Cu65f6%5Cuff0c%5Cu7b2ci%5Cu4efd%5Cu96f6%5Cu98df%5Cu7684%5Cu521d%5Cu59cb%5Cu4ef7%5Cu503c%5Cu4e3aVi%281%5Cu2264Vi%5Cu22641000%29%5Cuff0e%5Cn%5Cn%5Cu2022%5Cu7b2ci%5Cu4efd%5Cu96f6%5Cu98df%5Cu5982%5Cu679c%5Cu5728%5Cu88ab%5Cu4e70%5Cu8fdb%5Cu540e%5Cu7684%5Cu7b2ca%5Cu5929%5Cu51fa%5Cu552e%5Cuff0c%5Cu5219%5Cu5b83%5Cu7684%5Cu552e%5Cu4ef7%5Cu662fvi%5Cu00d7a%5Cuff0e%5Cn%5CnVi%5Cu7684%5Cu662f%5Cu4ece%5Cu76d2%5Cu5b50%5Cu9876%5Cu7aef%5Cu5f80%5Cu4e0b%5Cu7684%5Cu7b2ci%5Cu4efd%5Cu96f6%5Cu98df%5Cu7684%5Cu521d%5Cu59cb%5Cu4ef7%5Cu503c%5Cuff0e%5Cu7ea6%5Cu7ff0%5Cu544a%5Cu8bc9%5Cu4e86%5Cu4f60%5Cu6240%5Cu6709%5Cu96f6%5Cu98df%5Cu7684%5Cu521d%5Cu59cb%5Cu4ef7%5Cu503c%5Cuff0c%5Cu5e76%5Cu5e0c%5Cu671b%5Cu4f60%5Cu80fd%5Cu5e2e%5Cu4ed6%5Cu8ba1%5Cu7b97%5Cu4e00%5Cu4e0b%5Cuff0c%5Cu5728%5Cu8fd9%5Cu4e9b%5Cu96f6%5Cu98df%5Cu5168%5Cu88ab%5Cu5356%5Cu51fa%5Cu540e%5Cuff0c%5Cu4ed6%5Cu6700%5Cu591a%5Cu80fd%5Cu5f97%5Cu5230%5Cu591a%5Cu5c11%5Cu94b1%5Cuff0e%5Cn%22%2C%22inputFormat%22%3A%22Line%201%3A%20A%20single%20integer%2C%20N%5Cn%5CnLines%202..N%2B1%3A%20Line%20i%2B1%20contains%20the%20value%20of%20treat%20v%28i%29%5Cn%22%2C%22outputFormat%22%3A%22Line%201%3A%20The%20maximum%20revenue%20FJ%20can%20achieve%20by%20selling%20the%20treats%5Cn%22%2C%22samples%22%3A%5B%5B%225%5Cr%5Cn1%5Cr%5Cn3%5Cr%5Cn1%5Cr%5Cn5%5Cr%5Cn2%22%2C%2243%22%5D%5D%2C%22hint%22%3A%22Explanation%20of%20the%20sample%3A%5Cn%5Cn%5Cn%5Cn%5CnFive%20treats.%20On%20the%20first%20day%20FJ%20can%20sell%20either%20treat%20%231%20%28value%201%29%20or%20treat%20%235%20%28value%202%29.%5Cn%5Cn%5Cn%5Cn%5CnFJ%20sells%20the%20treats%20%28values%201%2C%203%2C%201%2C%205%2C%202%29%20in%20the%20following%20order%20of%20indices%3A%201%2C%205%2C%202%2C%203%2C%204%2C%20making%201x1%20%2B%202x2%20%2B%203x3%20%2B%204x1%20%2B%205x5%20%3D%2043.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C23%2C46%2C144%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A5046%2C%22totalAccepted%22%3A2719%2C%22pid%22%3A%22P2858%22%2C%22title%22%3A%22%5BUSACO06FEB%5D%5Cu5976%5Cu725b%5Cu96f6%5Cu98dfTreats%20for%20the%20Cows%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A161532%2C%22title%22%3A%22%5Cu521a%5Cu5b66csp%5Cu5565%5Cu4e5f%5Cu4e0d%5Cu4f1a%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A1988%2C%22name%22%3A%22P2858%20%5BUSACO06FEB%5D%5Cu5976%5Cu725b%5Cu96f6%5Cu98dfTreats%20for%20the%20Cows%22%2C%22slug%22%3A%22P2858%22%7D%7D%2C%7B%22id%22%3A160978%2C%22title%22%3A%22%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu70b9%5Cu83ab%5Cu540d%5Cu5176%5Cu5999RE%5Cuff0c%5Cu673a%5Cu4e0a%5Cu6d4b%5Cu8bd5%5Cu7ed3%5Cu679c%5Cu6b63%5Cu786e%22%2C%22forum%22%3A%7B%22id%22%3A1988%2C%22name%22%3A%22P2858%20%5BUSACO06FEB%5D%5Cu5976%5Cu725b%5Cu96f6%5Cu98dfTreats%20for%20the%20Cows%22%2C%22slug%22%3A%22P2858%22%7D%7D%2C%7B%22id%22%3A156283%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu662f%5Cu521a%5Cu5b66OI%22%2C%22forum%22%3A%7B%22id%22%3A1988%2C%22name%22%3A%22P2858%20%5BUSACO06FEB%5D%5Cu5976%5Cu725b%5Cu96f6%5Cu98dfTreats%20for%20the%20Cows%22%2C%22slug%22%3A%22P2858%22%7D%7D%2C%7B%22id%22%3A143411%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu52a9%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A1988%2C%22name%22%3A%22P2858%20%5BUSACO06FEB%5D%5Cu5976%5Cu725b%5Cu96f6%5Cu98dfTreats%20for%20the%20Cows%22%2C%22slug%22%3A%22P2858%22%7D%7D%2C%7B%22id%22%3A140614%2C%22title%22%3A%22%5Cu91cd%5Cu9898%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A1988%2C%22name%22%3A%22P2858%20%5BUSACO06FEB%5D%5Cu5976%5Cu725b%5Cu96f6%5Cu98dfTreats%20for%20the%20Cows%22%2C%22slug%22%3A%22P2858%22%7D%7D%2C%7B%22id%22%3A131274%2C%22title%22%3A%22%5Cu4e3a%5Cu5565%5Cu4e0d%5Cu5bf9%5Cuff0c%5Cu4fe9RE%5Cuff0c3AC%5Cuff0c6WA%5Cuff0c%5Cu6c42%5Cu6307%5Cu6559%22%2C%22forum%22%3A%7B%22id%22%3A1988%2C%22name%22%3A%22P2858%20%5BUSACO06FEB%5D%5Cu5976%5Cu725b%5Cu96f6%5Cu98dfTreats%20for%20the%20Cows%22%2C%22slug%22%3A%22P2858%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1063%22%2C%22title%22%3A%22%5Cu80fd%5Cu91cf%5Cu9879%5Cu94fe%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1880%22%2C%22title%22%3A%22%5BNOI1995%5D%5Cu77f3%5Cu5b50%5Cu5408%5Cu5e76%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3146%22%2C%22title%22%3A%22%5BUSACO16OPEN%5D248%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3205%22%2C%22title%22%3A%22%5BHNOI2010%5D%5Cu5408%5Cu5531%5Cu961f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4170%22%2C%22title%22%3A%22%5BCQOI2007%5D%5Cu6d82%5Cu8272%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO06FEB%5D%5Cu5976%5Cu725b%5Cu96f6%5Cu98dfTreats%20for%20the%20Cows%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO06FEB]奶牛零食Treats for the Cows</h1>
+<h2>题目描述</h2>
+<div>FJ has purchased N (1 <= N <= 2000) yummy treats for the cows who get money for giving vast amounts of milk. FJ sells one treat per day and wants to maximize the money he receives over a given period time.
+The treats are interesting for many reasons:The treats are numbered 1..N and stored sequentially in single file in a long box that is open at both ends. On any day, FJ can retrieve one treat from either end of his stash of treats.Like fine wines and delicious cheeses, the treats improve with age and command greater prices.The treats are not uniform: some are better and have higher intrinsic value. Treat i has value v(i) (1 <= v(i) <= 1000).Cows pay more for treats that have aged longer: a cow will pay v(i)\*a for a treat of age a.Given the values v(i) of each of the treats lined up in order of the index i in their box, what is the greatest value FJ can receive for them if he orders their sale optimally?
+The first treat is sold on day 1 and has age a=1. Each subsequent day increases the age by 1.
+约翰经常给产奶量高的奶牛发特殊津贴，于是很快奶牛们拥有了大笔不知该怎么花的钱．为此，约翰购置了N(1≤N≤2000)份美味的零食来卖给奶牛们．每天约翰售出一份零食．当然约翰希望这些零食全部售出后能得到最大的收益．这些零食有以下这些有趣的特性：
+•零食按照1．．N编号，它们被排成一列放在一个很长的盒子里．盒子的两端都有开口，约翰每
+天可以从盒子的任一端取出最外面的一个．
+•与美酒与好吃的奶酪相似，这些零食储存得越久就越好吃．当然，这样约翰就可以把它们卖出更高的价钱．
+•每份零食的初始价值不一定相同．约翰进货时，第i份零食的初始价值为Vi(1≤Vi≤1000)．
+•第i份零食如果在被买进后的第a天出售，则它的售价是vi×a．
+Vi的是从盒子顶端往下的第i份零食的初始价值．约翰告诉了你所有零食的初始价值，并希望你能帮他计算一下，在这些零食全被卖出后，他最多能得到多少钱．
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Line 1: A single integer, N
+Lines 2..N+1: Line i+1 contains the value of treat v(i)
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Line 1: The maximum revenue FJ can achieve by selling the treats
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+1
+3
+1
+5
+2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>43</code></pre>
+<h2>说明</h2>
+<div>Explanation of the sample:
+Five treats. On the first day FJ can sell either treat #1 (value 1) or treat #5 (value 2).
+FJ sells the treats (values 1, 3, 1, 5, 2) in the following order of indices: 1, 5, 2, 3, 4, making 1x1 + 2x2 + 3x3 + 4x1 + 5x5 = 43.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

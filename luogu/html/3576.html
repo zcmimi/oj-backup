@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[POI2014]MRO-Ant colony - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573377061:M1ZRsNAQRkA2q8BEgYv4s51KYbEoZ1YwRYvgF3DwB+M=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20ants%20are%20scavenging%20an%20abandoned%20ant%20hill%20in%20search%20of%20food.%5Cn%5CnThe%20ant%20hill%20has%20%24n%24%20chambers%20and%20%24n-1%24%20corridors%20connecting%20them.%5Cn%5CnWe%20know%20that%20each%20chamber%20can%20be%20reached%20via%20a%20unique%20path%20from%20every%20other%20chamber.%5Cn%5CnIn%20other%20words%2C%20the%20chambers%20and%20the%20corridors%20form%20a%20tree.%5Cn%5CnThere%20is%20an%20entrance%20to%20the%20ant%20hill%20in%20every%20chamber%20with%20only%20one%20corridor%20leading%20into%20%28or%20out%20of%29%20it.%5Cn%5CnAt%20each%20entry%2C%20there%20are%20%24g%24%20groups%20of%20%24m_1%2Cm_2%2C%5C%5Ccdots%2Cm_g%24%20ants%20respectively.%5Cn%5CnThese%20groups%20will%20enter%20the%20ant%20hill%20one%20after%20another%2C%20each%20successive%20group%20entering%20once%20there%20are%20no%20ants%20inside.%5Cn%5CnInside%20the%20hill%2C%20the%20ants%20explore%20it%20in%20the%20following%20way%3A%5Cn%5Cn-%20Upon%20entering%20a%20chamber%20with%20%24d%24%20outgoing%20corridors%20yet%20unexplored%20by%20the%20group%2Cthe%20group%20divides%20into%20%24d%24%20groups%20of%20equal%20size.%20%20Each%20newly%20created%20group%20follows%20one%20of%20the%20d%20corridors.If%20%24d%3D0%24%2C%20then%20the%20group%20exits%20the%20ant%20hill.%5Cn%5Cn-%20If%20the%20ants%20cannot%20divide%20into%20equal%20groups%2C%20then%20the%20stronger%20ants%20eat%20the%20weaker%20until%20a%20perfect%20division%20is%20possible.Note%20that%20such%20a%20division%20is%20always%20possible%20since%20eventually%20the%20number%20of%20ants%20drops%20down%20to%20zero.Nothing%20can%20stop%20the%20ants%20from%20allowing%20divisibility%20-%20in%20particular%2C%20an%20ant%20can%20eat%20itself%2C%20%20%20%20%20%20%20%20and%20the%20last%20one%20remaining%20will%20do%20so%20if%20the%20group%20is%20smaller%20than%20%24d%24.%5Cn%5CnThe%20following%20figure%20depicts%20%24m%24%20ants%20upon%20entering%20a%20chamber%20with%20three%20outgoing%20unexplored%20corridors%2C%20%20%20%20dividing%20themselves%20into%20three%20%28equal%29%20groups%20of%20%24%5C%5Cleft%20%5C%5Clfloor%20m%5C%2F3%20%5C%5Cright%20%5C%5Crfloor%24%20ants%20each.%5Cn%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F6972.png%29%20%5Cn%5CnA%20hungry%20anteater%20dug%20into%20one%20of%20the%20corridors%20and%20can%20now%20eat%20all%20the%20ants%20passing%20through%20it.%5Cn%5CnHowever%2C%20just%20like%20the%20ants%2C%20the%20anteater%20is%20very%20picky%20when%20it%20comes%20to%20numbers.%5Cn%5CnIt%20will%20devour%20a%20passing%20group%20if%20and%20only%20if%20it%20consists%20of%20exactly%20%24k%24%20ants.%5Cn%5CnWe%20want%20to%20know%20how%20many%20ants%20the%20anteater%20will%20eat.%5Cn%5Cn%5Cu7ed9%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9%5Cuff0c%5Cu90fd%5Cu6709g%5Cu7fa4%5Cu8682%5Cu8681%5Cu8981%5Cu4ece%5Cu5916%5Cu9762%5Cu8fdb%5Cu6765%5Cuff0c%5Cu6bcf%5Cu7fa4%5Cu8682%5Cu8681%5Cu5728%5Cu884c%5Cu8fdb%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cu53ea%5Cu8981%5Cu78b0%5Cu5230%5Cu5c94%5Cu8def%5Cuff0c%5Cu5c31%5Cu5c06%5Cu5e73%5Cu5747%5Cu5730%5Cu5206%5Cu6210%5Cu5c94%5Cu8def%5Cu53e3%5Cu6570-1%5Cu90a3%5Cu4e48%5Cu591a%5Cu4efd%5Cuff0c%5Cu7136%5Cu540e%5Cu5e73%5Cu5747%5Cu5730%5Cu8d70%5Cu5411%5Cu5269%5Cu4e0b%5Cu7684%5Cu90a3%5Cu4e9b%5Cu5c94%5Cu8def%5Cu53e3%5Cuff0c%5Cu4f59%5Cu4e0b%5Cu7684%5Cu8682%5Cu8681%5Cu81ea%5Cu52a8%5Cu6d88%5Cu5931%5Cuff0c%5Cu6811%5Cu4e0a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5173%5Cu952e%5Cu8fb9%5Cuff0c%5Cu5047%5Cu5982%5Cu6709%5Cu4e00%5Cu7fa4%5Cu8682%5Cu8681%5Cu901a%5Cu8fc7%5Cu4e86%5Cu8fd9%5Cu6761%5Cu8fb9%5Cu4e14%5Cu6570%5Cu91cf%5Cu6070%5Cu597d%5Cu4e3ak%5Cuff0c%5Cu8fd9k%5Cu53ea%5Cu8682%5Cu8681%5Cu5c31%5Cu88ab%5Cu5403%5Cu6389%5Cuff0c%5Cu95ee%5Cu4e00%5Cu5171%5Cu6709%5Cu591a%5Cu5c11%5Cu53ea%5Cu8682%5Cu8681%5Cu88ab%5Cu5403%5Cu6389%5Cn%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20standard%20input%20contains%20three%20integers%20%24n%24%2C%20%24g%24%2C%20%24k%24%28%242%5C%5Cle%20n%2Cg%5C%5Cle%201%5C%5C%20000%5C%5C%20000%24%2C%20%241%5C%5Cle%20k%5C%5Cle%2010%5E9%24%29%2C%20separated%20by%20single%20spaces.%5Cn%5CnThese%20specify%20the%20number%20of%20chambers%2C%20the%20number%20of%20ant%20groups%20and%20the%20number%20of%20ants%20%20%20%20the%20anteater%20devours%20at%20once.%20%20The%20chambers%20are%20numbered%20from%201%20to%20%24n%24.%5Cn%5CnThe%20second%20line%20contains%20%24g%24%20integers%20%24m_1%2Cm_2%2C%5C%5Ccdots%2Cm_g%24%20%28%241%5C%5Cle%20m_i%5C%5Cle%2010%5E9%24%29%2C%20%20%20%20separated%20by%20single%20spaces%2C%20where%20%24m_i%24%20gives%20the%20number%20of%20ants%20in%20the%20%24i%24-th%20group%20at%20every%20entrance%20to%20the%20ant%20hill.%20The%20%24n-1%24%20lines%20that%20follow%20describe%20the%20corridors%20within%20the%20ant%20hill%3Bthe%20%24i%24-th%20such%20line%20contains%20two%20integers%20%24a_i%24%2C%24b_i%24%20%28%241%5C%5Cle%20a_i%2Cb_i%5C%5Cle%20n%24%29%2C%20separated%20by%20a%20single%20space%2C%20that%20indicate%20that%20the%20chambers%20no.%20%24a_i%24%20and%20%24b_i%24%20are%20linked%20by%20a%20corridor.%20The%20anteater%20has%20dug%20into%20the%20corridor%20that%20appears%20first%20on%20input.%5Cn%22%2C%22outputFormat%22%3A%22Your%20program%20should%20print%20to%20the%20standard%20output%20a%20single%20line%20containing%20a%20single%20integer%3A%20the%20number%20of%20ants%20eaten%20by%20the%20anteater.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F6973.png%29%5Cn%22%2C%22samples%22%3A%5B%5B%227%205%203%5Cn3%204%201%209%2011%5Cn1%202%5Cn1%204%5Cn4%203%5Cn4%205%5Cn4%206%5Cn6%207%5Cn%22%2C%2221%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cu7ed9%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9%5Cuff0c%5Cu90fd%5Cu6709g%5Cu7fa4%5Cu8682%5Cu8681%5Cu8981%5Cu4ece%5Cu5916%5Cu9762%5Cu8fdb%5Cu6765%5Cuff0c%5Cu6bcf%5Cu7fa4%5Cu8682%5Cu8681%5Cu5728%5Cu884c%5Cu8fdb%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cu53ea%5Cu8981%5Cu78b0%5Cu5230%5Cu5c94%5Cu8def%5Cuff0c%5Cu5c31%5Cu5c06%5Cu5e73%5Cu5747%5Cu5730%5Cu5206%5Cu6210%5Cu5c94%5Cu8def%5Cu53e3%5Cu6570-1%5Cu90a3%5Cu4e48%5Cu591a%5Cu4efd%5Cuff0c%5Cu7136%5Cu540e%5Cu5e73%5Cu5747%5Cu5730%5Cu8d70%5Cu5411%5Cu5269%5Cu4e0b%5Cu7684%5Cu90a3%5Cu4e9b%5Cu5c94%5Cu8def%5Cu53e3%5Cuff0c%5Cu4f59%5Cu4e0b%5Cu7684%5Cu8682%5Cu8681%5Cu81ea%5Cu52a8%5Cu6d88%5Cu5931%5Cuff0c%5Cu6811%5Cu4e0a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5173%5Cu952e%5Cu8fb9%5Cuff0c%5Cu5047%5Cu5982%5Cu6709%5Cu4e00%5Cu7fa4%5Cu8682%5Cu8681%5Cu901a%5Cu8fc7%5Cu4e86%5Cu8fd9%5Cu6761%5Cu8fb9%5Cu4e14%5Cu6570%5Cu91cf%5Cu6070%5Cu597d%5Cu4e3ak%5Cuff0c%5Cu8fd9k%5Cu53ea%5Cu8682%5Cu8681%5Cu5c31%5Cu88ab%5Cu5403%5Cu6389%5Cuff0c%5Cu95ee%5Cu4e00%5Cu5171%5Cu6709%5Cu591a%5Cu5c11%5Cu53ea%5Cu8682%5Cu8681%5Cu88ab%5Cu5403%5Cu6389%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C31%2C45%2C57%2C152%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A359%2C%22totalAccepted%22%3A155%2C%22pid%22%3A%22P3576%22%2C%22title%22%3A%22%5BPOI2014%5DMRO-Ant%20colony%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A72535%2C%22title%22%3A%22%5Cu770b%5Cu4e0d%5Cu61c2%5Cu9898%5Cu7684%5Cu8fdb%5Cu6765%22%2C%22forum%22%3A%7B%22id%22%3A2645%2C%22name%22%3A%22P3576%20%5BPOI2014%5DMRO-Ant%20colony%22%2C%22slug%22%3A%22P3576%22%7D%7D%2C%7B%22id%22%3A34063%2C%22title%22%3A%22%5Cu6709%5Cu6ca1%5Cu6709%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%22%2C%22forum%22%3A%7B%22id%22%3A2645%2C%22name%22%3A%22P3576%20%5BPOI2014%5DMRO-Ant%20colony%22%2C%22slug%22%3A%22P3576%22%7D%7D%2C%7B%22id%22%3A22467%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%22%2C%22forum%22%3A%7B%22id%22%3A2645%2C%22name%22%3A%22P3576%20%5BPOI2014%5DMRO-Ant%20colony%22%2C%22slug%22%3A%22P3576%22%7D%7D%2C%7B%22id%22%3A21090%2C%22title%22%3A%22%5Cu9898%5Cu610f%5Cu4e0d%5Cu6e05%5Cu695a%5Cu554a%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A2645%2C%22name%22%3A%22P3576%20%5BPOI2014%5DMRO-Ant%20colony%22%2C%22slug%22%3A%22P3576%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3571%22%2C%22title%22%3A%22%5BPOI2014%5DSUP-Supercomputer%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3577%22%2C%22title%22%3A%22%5BPOI2014%5DTUR-Tourism%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF912E%22%2C%22title%22%3A%22Prime%20Gift%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22SP22343%22%2C%22title%22%3A%22NORMA2%20-%20Norma%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22CF949D%22%2C%22title%22%3A%22Curfew%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BPOI2014%5DMRO-Ant%20colony%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[POI2014]MRO-Ant colony</h1>
+<h2>题目描述</h2>
+<div>The ants are scavenging an abandoned ant hill in search of food.
+The ant hill has $n$ chambers and $n-1$ corridors connecting them.
+We know that each chamber can be reached via a unique path from every other chamber.
+In other words, the chambers and the corridors form a tree.
+There is an entrance to the ant hill in every chamber with only one corridor leading into (or out of) it.
+At each entry, there are $g$ groups of $m_1,m_2,\cdots,m_g$ ants respectively.
+These groups will enter the ant hill one after another, each successive group entering once there are no ants inside.
+Inside the hill, the ants explore it in the following way:
+- Upon entering a chamber with $d$ outgoing corridors yet unexplored by the group,the group divides into $d$ groups of equal size. Each newly created group follows one of the d corridors.If $d=0$, then the group exits the ant hill.
+- If the ants cannot divide into equal groups, then the stronger ants eat the weaker until a perfect division is possible.Note that such a division is always possible since eventually the number of ants drops down to zero.Nothing can stop the ants from allowing divisibility - in particular, an ant can eat itself, and the last one remaining will do so if the group is smaller than $d$.
+The following figure depicts $m$ ants upon entering a chamber with three outgoing unexplored corridors, dividing themselves into three (equal) groups of $\left \lfloor m/3 \right \rfloor$ ants each.
+![](https://cdn.luogu.com.cn/upload/pic/6972.png)
+A hungry anteater dug into one of the corridors and can now eat all the ants passing through it.
+However, just like the ants, the anteater is very picky when it comes to numbers.
+It will devour a passing group if and only if it consists of exactly $k$ ants.
+We want to know how many ants the anteater will eat.
+给一棵树，对于每个叶子节点，都有g群蚂蚁要从外面进来，每群蚂蚁在行进过程中只要碰到岔路，就将平均地分成岔路口数-1那么多份，然后平均地走向剩下的那些岔路口，余下的蚂蚁自动消失，树上有一个关键边，假如有一群蚂蚁通过了这条边且数量恰好为k，这k只蚂蚁就被吃掉，问一共有多少只蚂蚁被吃掉
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the standard input contains three integers $n$, $g$, $k$($2\le n,g\le 1\ 000\ 000$, $1\le k\le 10^9$), separated by single spaces.
+These specify the number of chambers, the number of ant groups and the number of ants the anteater devours at once. The chambers are numbered from 1 to $n$.
+The second line contains $g$ integers $m_1,m_2,\cdots,m_g$ ($1\le m_i\le 10^9$), separated by single spaces, where $m_i$ gives the number of ants in the $i$-th group at every entrance to the ant hill. The $n-1$ lines that follow describe the corridors within the ant hill;the $i$-th such line contains two integers $a_i$,$b_i$ ($1\le a_i,b_i\le n$), separated by a single space, that indicate that the chambers no. $a_i$ and $b_i$ are linked by a corridor. The anteater has dug into the corridor that appears first on input.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Your program should print to the standard output a single line containing a single integer: the number of ants eaten by the anteater.
+![](https://cdn.luogu.com.cn/upload/pic/6973.png)
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 5 3
+3 4 1 9 11
+1 2
+1 4
+4 3
+4 5
+4 6
+6 7
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>21
+</code></pre>
+<h2>说明</h2>
+<div>给一棵树，对于每个叶子节点，都有g群蚂蚁要从外面进来，每群蚂蚁在行进过程中只要碰到岔路，就将平均地分成岔路口数-1那么多份，然后平均地走向剩下的那些岔路口，余下的蚂蚁自动消失，树上有一个关键边，假如有一群蚂蚁通过了这条边且数量恰好为k，这k只蚂蚁就被吃掉，问一共有多少只蚂蚁被吃掉
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

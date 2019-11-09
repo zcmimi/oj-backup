@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO09JAN]激光电话Laserphones - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376166:OPajqvlKZFC57cMvZNkfstAFHeZHfSq4fUkugDn4Jrc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22The%20cows%20have%20a%20new%20laser-based%20system%20so%20they%20can%20have%20casual%20conversations%20while%20out%20in%20the%20pasture%20which%20is%20modeled%20as%20a%20W%20x%20H%20grid%20of%20points%20%281%20%3C%3D%20W%20%3C%3D%20100%3B%201%20%3C%3D%20H%20%3C%3D%20100%29.%5Cn%5CnThe%20system%20requires%20a%20sort%20of%20line-of-sight%20connectivity%20in%20order%20to%20sustain%20communication.%20The%20pasture%2C%20of%20course%2C%20has%20rocks%20and%20trees%20that%20disrupt%20the%20communication%20but%20the%20cows%20have%20purchased%20diagonal%20mirrors%20%28%27%5C%2F%27%20and%20%27%5C%5C%27%20below%29%20that%20deflect%20the%20laser%20beam%20through%20a%2090%20degree%20turn.%20Below%20is%20a%20map%20that%20illustrates%20the%5Cn%5Cnproblem.%5Cn%5CnH%20is%208%20and%20W%20is%207%20for%20this%20map.%20%20The%20two%20communicating%20cows%20are%20notated%20as%20%27C%27s%3B%20rocks%20and%20other%20blocking%20elements%20are%20notated%20as%20%27%5C%5C%2A%27s%3A%5Cn%5Cn%60%60%60cpp%5Cn7%20.%20.%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%207%20.%20.%20.%20.%20.%20.%20.%20%5Cn6%20.%20.%20.%20.%20.%20.%20C%20%20%20%20%20%20%20%20%206%20.%20.%20.%20.%20.%20%5C%2F-C%20%5Cn5%20.%20.%20.%20.%20.%20.%20%2A%20%20%20%20%20%20%20%20%205%20.%20.%20.%20.%20.%20%7C%20%2A%20%5Cn4%20%2A%20%2A%20%2A%20%2A%20%2A%20.%20%2A%20%20%20%20%20%20%20%20%204%20%2A%20%2A%20%2A%20%2A%20%2A%20%7C%20%2A%20%5Cn3%20.%20.%20.%20.%20%2A%20.%20.%20%20%20%20%20%20%20%20%203%20.%20.%20.%20.%20%2A%20%7C%20.%20%5Cn2%20.%20.%20.%20.%20%2A%20.%20.%20%20%20%20%20%20%20%20%202%20.%20.%20.%20.%20%2A%20%7C%20.%20%5Cn1%20.%20C%20.%20.%20%2A%20.%20.%20%20%20%20%20%20%20%20%201%20.%20C%20.%20.%20%2A%20%7C%20.%20%5Cn0%20.%20.%20.%20.%20.%20.%20.%20%20%20%20%20%20%20%20%200%20.%20%5C%5C-------%5C%2F%20.%20%5Cn0%201%202%203%204%205%206%20%20%20%20%20%20%20%20%20%20%200%201%202%203%204%205%206%20%5Cn%60%60%60%5CnDetermine%20the%20minimum%20number%20of%20mirrors%20M%20that%20must%20be%20installed%20to%20maintain%20laser%20communication%20between%20the%20two%20cows%2C%20a%20feat%20which%20is%20always%20possible%20in%20the%20given%20test%20data.%5Cn%5Cn%5Cu5976%5Cu725b%5Cu4eec%5Cu90fd%5Cu6539%5Cu7528%5Cu6fc0%5Cu5149%5Cu8fdb%5Cu884c%5Cu901a%5Cu8baf%5Cu4e86.%5Cn%5Cn%5Cu5728W%5C%5C%2AH%5Cu7684%5Cu7267%5Cu573a%5Cu4e0a%5Cuff0c%5Cu4e00%5Cu4e9b%5Cu5730%5Cu65b9%5Cu6709%5Cu6811%5Cu6728%5Cu548c%5Cu77f3%5Cu5934%5Cu906e%5Cu6321%5Cu6fc0%5Cu5149%5Cuff0c%5Cu6240%5Cu4ee5%5Cuff0c%5Cu5976%20%5Cu725b%5Cu6253%5Cu7b97%5Cu4f7f%5Cu7528%5Cu5bf9%5Cu89d2%5Cu955c%5Cu6765%5Cu8fdb%5Cu884c%5Cu6fc0%5Cu5149%5Cu901a%5Cu8baf.%5Cu4e24%5Cu53ea%5Cu5976%5Cu725b%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu662f%5Cu56fa%5Cu5b9a%5Cu7684%5Cuff0c%5Cu5bf9%5Cu89d2%5Cu955c%5Cu80fd%5Cu628a%5Cu5149%5Cu7ebf%5Cu65cb%5Cu8f6c90%5Cu5ea6.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space%20separated%20integers%3A%20W%20and%20H%5Cn%5Cn%5C%5C%2A%20Lines%202..H%2B1%3A%20The%20entire%20pasture.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20M%5Cn%22%2C%22samples%22%3A%5B%5B%227%208%20%5Cn.......%20%5Cn......C%20%5Cn......%2A%20%5Cn%2A%2A%2A%2A%2A.%2A%20%5Cn....%2A..%20%5Cn....%2A..%20%5Cn.C..%2A..%20%5Cn.......%20%5Cn%22%2C%223%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fpic%5C%2F9084.png%29%22%2C%22tags%22%3A%5B26%2C46%2C47%2C126%2C127%2C160%2C211%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1026%2C%22totalAccepted%22%3A392%2C%22pid%22%3A%22P2937%22%2C%22title%22%3A%22%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A77040%2C%22title%22%3A%22%5Cu6c42dalao%5Cu4eec%5Cu6765%5Cu627e%5Cu9519%20%20%2020%5Cu5206%22%2C%22forum%22%3A%7B%22id%22%3A2066%2C%22name%22%3A%22P2937%20%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22slug%22%3A%22P2937%22%7D%7D%2C%7B%22id%22%3A62346%2C%22title%22%3A%22%5Cu4e24%5Cu4e2a%5Cu70b9%5Cu8dd12400ms%22%2C%22forum%22%3A%7B%22id%22%3A2066%2C%22name%22%3A%22P2937%20%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22slug%22%3A%22P2937%22%7D%7D%2C%7B%22id%22%3A60783%2C%22title%22%3A%2290%5Cu5206%5Cu5927%5Cu4f6c%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A2066%2C%22name%22%3A%22P2937%20%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22slug%22%3A%22P2937%22%7D%7D%2C%7B%22id%22%3A52770%2C%22title%22%3A%22USACO%5Cu8fd9%5Cu4e48%5Cu76ae%5Cu7684%5Cu4e48%5Cu2026%5Cu2026%22%2C%22forum%22%3A%7B%22id%22%3A2066%2C%22name%22%3A%22P2937%20%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22slug%22%3A%22P2937%22%7D%7D%2C%7B%22id%22%3A52747%2C%22title%22%3A%2210%5Cu5206%5Cu6c42%5Cu5927%5Cu4f6c%5Cu5dee%5Cu9519qwq%22%2C%22forum%22%3A%7B%22id%22%3A2066%2C%22name%22%3A%22P2937%20%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22slug%22%3A%22P2937%22%7D%7D%2C%7B%22id%22%3A35810%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff0c10%5Cu5206%22%2C%22forum%22%3A%7B%22id%22%3A2066%2C%22name%22%3A%22P2937%20%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22slug%22%3A%22P2937%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1825%22%2C%22title%22%3A%22%5BUSACO11OPEN%5D%5Cu7389%5Cu7c73%5Cu7530%5Cu8ff7%5Cu5babCorn%20Maze%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2420%22%2C%22title%22%3A%22%5Cu8ba9%5Cu6211%5Cu4eec%5Cu5f02%5Cu6216%5Cu5427%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2919%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5b88%5Cu62a4%5Cu519c%5Cu573aGuarding%20the%20Farm%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3068%22%2C%22title%22%3A%22%5BUSACO13JAN%5D%5Cu6d3e%5Cu5bf9%5Cu9080%5Cu8bf7%5Cu51fdParty%20Invitations%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5002%22%2C%22title%22%3A%22%5Cu4e13%5Cu5fc3OI%20-%20%5Cu627e%5Cu7956%5Cu5148%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO09JAN%5D%5Cu6fc0%5Cu5149%5Cu7535%5Cu8bddLaserphones%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO09JAN]激光电话Laserphones</h1>
+<h2>题意翻译</h2>
+<div>![](https://cdn.luogu.org/upload/pic/9084.png)</div>
+<h2>题目描述</h2>
+<div>The cows have a new laser-based system so they can have casual conversations while out in the pasture which is modeled as a W x H grid of points (1 <= W <= 100; 1 <= H <= 100).
+The system requires a sort of line-of-sight connectivity in order to sustain communication. The pasture, of course, has rocks and trees that disrupt the communication but the cows have purchased diagonal mirrors ('/' and '\' below) that deflect the laser beam through a 90 degree turn. Below is a map that illustrates the
+problem.
+H is 8 and W is 7 for this map. The two communicating cows are notated as 'C's; rocks and other blocking elements are notated as '\*'s:
+```cpp
+7 . . . . . . . 7 . . . . . . .
+6 . . . . . . C 6 . . . . . /-C
+5 . . . . . . * 5 . . . . . | *
+4 * * * * * . * 4 * * * * * | *
+3 . . . . * . . 3 . . . . * | .
+2 . . . . * . . 2 . . . . * | .
+1 . C . . * . . 1 . C . . * | .
+0 . . . . . . . 0 . \-------/ .
+0 1 2 3 4 5 6 0 1 2 3 4 5 6
+```
+Determine the minimum number of mirrors M that must be installed to maintain laser communication between the two cows, a feat which is always possible in the given test data.
+奶牛们都改用激光进行通讯了.
+在W\*H的牧场上，一些地方有树木和石头遮挡激光，所以，奶 牛打算使用对角镜来进行激光通讯.两只奶牛的位置是固定的，对角镜能把光线旋转90度.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space separated integers: W and H
+\* Lines 2..H+1: The entire pasture.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer: M
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 8 
+....... 
+......C 
+......* 
+*****.* 
+....*.. 
+....*.. 
+.C..*.. 
+....... 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

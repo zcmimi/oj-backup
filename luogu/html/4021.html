@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[CTSC2012]最短路 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573380948:RDnEbuD7IOksXeiuRcVkaeRyOmam5nP7faidC2dXohA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%201%20%5Cu548c%5Cu8282%5Cu70b9%20N%20%5Cu8fde%5Cu901a%5Cu7684%5Cu6b63%5Cu6743%5Cu65e0%5Cu5411%5Cu56fe%20G%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu5220%5Cu9664%20%5Cu4e0d%5Cu8d85%5Cu8fc7%20K%20%5Cu6761%5Cu8fb9%20%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu8282%5Cu70b9%201%20%5Cu548c%5Cu8282%5Cu70b9%20N%20%5Cu4ecd%5Cu7136%5Cu8fde%5Cu901a%5Cu7684%5Cu540c%5Cu65f6%5Cuff0c%5Cu4e14%5Cu8fd9%5Cu4e24%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%20%5Cu6700%5Cu77ed%5Cu8def%20%5Cu5c3d%5Cu53ef%5Cu80fd%20%5Cu957f%20%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%23%23%23%20%5Cu672c%5Cu9898%5Cu4e3a%5Cu63d0%5Cu4ea4%5Cu7b54%5Cu6848%5Cu8bd5%5Cu9898%5Cuff0c%5B%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5D%28https%3A%5C%2F%5C%2Fpan.baidu.com%5C%2Fs%5C%2F1o7K2dCm%29shortest1.in~shortest10.in%5Cu8bf7%5Cu5728%5Cu94fe%5Cu63a5%5Cu4e2d%5Cu4e0b%5Cu8f7d%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%20shortest%5C%5C%2A.in%20%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20N%5Cuff0cM%20%5Cu548c%20K%5Cu3002%5Cu5176%5Cu4e2d%20N%20%5Cu8868%5Cu793a%5Cu8282%5Cu70b9%5Cu6570%5Cuff0cM%20%5Cu8868%5Cu793a%5Cu8fb9%5Cu6570%5Cuff0c%5Cu8282%5Cu70b9%5Cu7684%5Cu7f16%5Cu53f7%5Cu7531%201%20%5Cu81f3%20N%5Cuff0c%5Cu8fb9%5Cu7684%5Cu7f16%5Cu53f7%5Cu7531%201%20%5Cu81f3%20M%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%20M%20%5Cu884c%5Cuff0c%5Cn%5Cn%5Cu6bcf%5Cu884c%5Cu4e09%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20u%5Cuff0cv%20%5Cu548c%20w%5Cuff0c%5Cu8868%5Cu793a%5Cu6709%5Cu4e00%5Cu6761%5Cu8fde%5Cu63a5%5Cu8282%5Cu70b9%20u%20%5Cu548c%5Cu8282%5Cu70b9%20v%20%5Cu7684%5Cu8fb9%5Cuff0c%5Cu6743%5Cu503c%5Cu4e3a%20w%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu6587%5Cu4ef6%20shortest%5C%5C%2A.out%20%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%20T%20%28T%20%5Cu2264%20K%29%5Cuff0c%5Cu8868%5Cu793a%5Cu9700%5Cu8981%5Cu5220%5Cu6389%5Cu7684%5Cu8fb9%5Cu6570%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20T%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%201%20%5Cu5230%20M%20%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6574%5Cu6570%20x%5Cuff0c%5Cu8868%5Cu793a%5Cu5220%5Cu6389%5Cu8f93%5Cu5165%5Cu4e2d%5Cu7684%5Cu7b2c%20x%20%5Cu6761%5Cu8fb9%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu4fdd%5Cu8bc1%5Cu8fd9%20T%20%5Cu4e2a%5Cu6574%5Cu6570%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu540c%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%223%203%201%5Cn1%202%201%5Cn2%203%201%5Cn1%203%201%22%2C%221%5Cn3%22%5D%5D%2C%22hint%22%3A%22%5Cu3010%5Cu6837%5Cu4f8b%5Cu8bf4%5Cu660e%5Cu3011%5Cn%5Cn%5Cu6837%5Cu4f8b%5Cu4e2d%5Cu4ece%5Cu8282%5Cu70b9%201%20%5Cu5230%203%20%5Cu7684%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cu957f%5Cu5ea6%5Cu4e3a%201%5Cuff0c%5Cu5220%5Cu53bb%5Cu7b2c%5Cu4e09%5Cu6761%5Cu8fb9%5Cu4e4b%5Cu540e%5Cuff0c%5Cu6700%5Cu77ed%5Cu8def%5Cu5f84%5Cu957f%5Cu5ea6%5Cu4e3a%202%5Cu3002%5Cn%5Cn%5Cu3010%5Cu8bc4%5Cu5206%5Cu6807%5Cu51c6%5Cu3011%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cuff0c%5Cu8bbe%5Cu6709%5Cu8bc4%5Cu5206%5Cu56db%5Cu4e2a%5Cu53c2%5Cu6570%20s%201%20%2C%20s%202%20%2C%20s%203%20%2C%20s%204%20%5Cu3002%5Cu5047%5Cu8bbe%5Cu4f60%5Cu7684%5Cu65b9%5Cu6848%5Cu7684%5Cu6700%5Cu77ed%5Cu8def%5Cu4e3aans%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4f60%5Cu6ca1%5Cu6709%5Cu8f93%5Cu51fa%5Cuff0c%5Cu6216%5Cu8005%5Cu8f93%5Cu51fa%5Cu4e0d%5Cu5408%5Cu6cd5%5Cuff0c%5Cu6216%5Cu8005%5Cu6700%5Cu77ed%5Cu8def%5Cu4e0d%5Cu5b58%5Cu5728%5Cuff0c%5Cu5f97%200%20%5Cu5206%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%5Cu6700%5Cu77ed%5Cu8def%5Cu5b58%5Cu5728%5Cuff0c%5Cu5f97%201%20%5Cu5206%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%20ans%20%5Cu2265%20s%201%20%5Cuff0c%5Cu5f97%203%20%5Cu5206%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%20ans%20%5Cu2265%20s%202%20%5Cuff0c%5Cu5f97%205%20%5Cu5206%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%20ans%20%5Cu2265%20s%203%20%5Cuff0c%5Cu5f97%208%20%5Cu5206%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%20ans%20%3D%20s%204%20%5Cuff0c%5Cu5f97%2010%20%5Cu5206%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%20ans%20%3E%20s%204%20%5Cuff0c%5Cu5f97%2012%20%5Cu5206%5Cu3002%5Cn%5Cn%5Cu53d6%5Cu6ee1%5Cu8db3%5Cu6761%5Cu4ef6%5Cu7684%5Cu5206%5Cu6570%5Cu4e2d%5Cu7684%5Cu6700%5Cu9ad8%5Cu5f97%5Cu5206%5Cu4e3a%5Cu8be5%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu4f60%5Cu7684%5Cu5f97%5Cu5206%5Cu3002%5Cn%5Cn%5Cu3010%5Cu5982%5Cu4f55%5Cu6d4b%5Cu8bd5%5Cu4f60%5Cu7684%5Cu8f93%5Cu51fa%5Cu3011%5Cn%5Cn%5Cu9996%5Cu5148%5Cu5148%5Cu7f16%5Cu8bd1checker.cpp%5Cn%5Cn%5Cu5728%5Cu4f60%5Cu7684%5Cu76ee%5Cu5f55%5Cu4e0b%5Cu6709%5Cu4e00%5Cu4e2a%5Cu540d%5Cu4e3a%20checker%20%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu53ef%5Cu4ee5%5Cu7528%5Cu6765%5Cu68c0%5Cu67e5%5Cu4f60%5Cu7684%5Cu8f93%5Cu51fa%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5728%5Cu7ec8%5Cu7aef%5Cu4e2d%5Cu4f7f%5Cu7528%5Cu4ee5%5Cu4e0b%5Cu547d%5Cu4ee4%5Cu6765%5Cu68c0%5Cu67e5%5Cu4f60%5Cu7684%5Cu8f93%5Cu51fa%5Cuff1a%5Cn%5Cn.%5C%2Fchecker%20N%5Cn%5Cn%5Cu5176%5Cu4e2d%20N%20%5Cu4e3a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu7684%5Cu7f16%5Cu53f7%5Cuff0c%5Cu4f8b%5Cu5982%5Cuff0c%5Cu8981%5Cu6d4b%5Cu8bd5%5Cu7b2c%203%20%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu53ef%5Cu4ee5%5Cu4f7f%5Cu7528%5Cn%5Cn.%5C%2Fchecker%203%5Cn%5Cn%5Cu8be5%5Cu7a0b%5Cu5e8f%5Cu4f1a%5Cu68c0%5Cu6d4b%5Cu4f60%5Cu7684%5Cu8f93%5Cu51fa%5Cu65b9%5Cu6848%5Cu662f%5Cu5426%5Cu5408%5Cu6cd5%5Cu3002%5Cu5982%5Cu679c%5Cu65b9%5Cu6848%5Cu5408%5Cu6cd5%5Cuff0c%5Cu7a0b%5Cu5e8f%5Cu8fd8%5Cu4f1a%5Cu7ed9%5Cu51fa%5Cu8be5%5Cu65b9%5Cu6848%5Cu7684%5Cu6700%5Cu77ed%5Cu8def%5Cu7684%5Cu957f%5Cu5ea6%5Cu503c%5Cu3002%5Cn%5Cn%5Cu3010%5Cu7279%5Cu522b%5Cu63d0%5Cu793a%5Cu3011%5Cn%5Cn%5Cu8bf7%5Cu59a5%5Cu5584%5Cu4fdd%5Cu5b58%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5C%5C%2A.in%20%5Cu548c%5Cu4f60%5Cu7684%5Cu8f93%5Cu51fa%5C%5C%2A.out%5Cuff0c%5Cu53ca%5Cu65f6%5Cu5907%5Cu4efd%5Cuff0c%5Cu4ee5%5Cu514d%5Cu8bef%5Cu5220%5Cu3002%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20561%2C%22name%22%3A%22rill7747%22%2C%22slogan%22%3A%22yugao%20nb%21%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Red%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C52%2C104%2C107%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A52%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22P4021%22%2C%22title%22%3A%22%5BCTSC2012%5D%5Cu6700%5Cu77ed%5Cu8def%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A70990%2C%22title%22%3A%22%5Cu4e0b%5Cu53d1%5Cu7684%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu94fe%5Cu63a5%5Cu6302%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A7979%2C%22name%22%3A%22P4021%20%5BCTSC2012%5D%5Cu6700%5Cu77ed%5Cu8def%22%2C%22slug%22%3A%22P4021%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1708%22%2C%22title%22%3A%22%5Cu5929%5Cu7136%5Cu6c14%5Cu4e95%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2079%22%2C%22title%22%3A%22%5Cu70db%5Cu5149%5Cu665a%5Cu9910%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2299%22%2C%22title%22%3A%22Mzc%5Cu548c%5Cu4f53%5Cu59d4%5Cu7684%5Cu4e89%5Cu593a%5Cu6218%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2362%22%2C%22title%22%3A%22%5Cu56f4%5Cu680f%5Cu6728%5Cu6869%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BCTSC2012%5D%5Cu6700%5Cu77ed%5Cu8def%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[CTSC2012]最短路</h1>
+<h2>题目描述</h2>
+<div>给定一个节点 1 和节点 N 连通的正权无向图 G，请你删除 不超过 K 条边 ，使得节点 1 和节点 N 仍然连通的同时，且这两点之间的 最短路 尽可能 长 。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>### 本题为提交答案试题，[输入文件](https://pan.baidu.com/s/1o7K2dCm)shortest1.in~shortest10.in请在链接中下载。
+输入文件 shortest\*.in 的第一行包含三个正整数 N，M 和 K。其中 N 表示节点数，M 表示边数，节点的编号由 1 至 N，边的编号由 1 至 M。接下来 M 行，
+每行三个正整数 u，v 和 w，表示有一条连接节点 u 和节点 v 的边，权值为 w。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>输出文件 shortest\*.out 的第一行包含一个非负整数 T (T ≤ K)，表示需要删掉的边数。
+接下来 T 行，每行一个 1 到 M 之间的整数 x，表示删掉输入中的第 x 条边。你需要保证这 T 个整数互不相同。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3 1
+1 2 1
+2 3 1
+1 3 1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+3</code></pre>
+<h2>说明</h2>
+<div>【样例说明】
+样例中从节点 1 到 3 的最短路径长度为 1，删去第三条边之后，最短路径长度为 2。
+【评分标准】
+对于每个测试点，设有评分四个参数 s 1 , s 2 , s 3 , s 4 。假设你的方案的最短路为ans。
+如果你没有输出，或者输出不合法，或者最短路不存在，得 0 分。
+如果最短路存在，得 1 分。
+如果 ans ≥ s 1 ，得 3 分。
+如果 ans ≥ s 2 ，得 5 分。
+如果 ans ≥ s 3 ，得 8 分。
+如果 ans = s 4 ，得 10 分。
+如果 ans > s 4 ，得 12 分。
+取满足条件的分数中的最高得分为该测试点你的得分。
+【如何测试你的输出】
+首先先编译checker.cpp
+在你的目录下有一个名为 checker 的程序可以用来检查你的输出，你可以在终端中使用以下命令来检查你的输出：
+./checker N
+其中 N 为测试点的编号，例如，要测试第 3 个测试点可以使用
+./checker 3
+该程序会检测你的输出方案是否合法。如果方案合法，程序还会给出该方案的最短路的长度值。
+【特别提示】
+请妥善保存输入文件\*.in 和你的输出\*.out，及时备份，以免误删。
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

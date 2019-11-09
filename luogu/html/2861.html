@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO06JAN]确保现场Roping the Field - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376064:LF5HL9W/TQA/b8wpnIw4fVLunO98lnKnPAEbw7XWjyg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20quite%20the%20nature%20artist%3A%20he%20often%20constructs%20large%20works%20of%20art%20on%20his%20farm.%20Today%2C%20FJ%20wants%20to%20construct%20a%20giant%20%5C%22field%20web%5C%22.%20FJ%27s%20field%20is%20large%20convex%20polygon%20with%20fences%20along%20the%20boundary%20and%20fence%20posts%20at%20each%20of%20the%20N%20corners%20%281%20%3C%3D%20N%20%3C%3D%20150%29.%20To%20construct%20his%20field%20web%2C%20FJ%20wants%20to%20run%20as%20many%20ropes%20as%20possible%20in%20straight%20lines%20between%20pairs%20of%20non-adjacent%20fence%20posts%20such%20that%20no%20two%20ropes%20cross.%5Cn%5Cn%5Cn%5CnThere%20is%20one%20complication%3A%20FJ%27s%20field%20is%20not%20completely%20usable.%20Some%20evil%20aliens%20have%20created%20a%20total%20of%20G%20%280%20%3C%3D%20G%20%3C%3D%20100%29%20grain%20circles%20in%20the%20field%2C%20all%20of%20radius%20R%20%281%20%3C%3D%20R%20%3C%3D%20100%2C000%29.%20FJ%20is%20afraid%20to%20upset%20the%20aliens%2C%20and%20therefore%20doesn%27t%20want%20the%20ropes%20to%20pass%20through%2C%20or%20even%20touch%20the%20very%20edge%20of%20a%20grain%20circle.%20Note%20that%20although%20the%20centers%20of%20all%20the%20circles%20are%20contained%20within%20the%20field%2C%20a%20wide%20radius%20may%20make%20it%20extend%20outside%20of%20the%20field%2C%20and%20both%20fences%20and%20fence%20posts%20may%20be%20within%20a%20grain%20circle.%5Cn%5Cn%5CnGiven%20the%20locations%20of%20the%20fence%20posts%20and%20the%20centers%20of%20the%20circles%2C%20determine%20the%20maximum%20number%20of%20ropes%20that%20FJ%20can%20use%20to%20create%20his%20field%20web.%5Cn%5Cn%5CnFJ%27s%20fence%20pots%20and%20the%20circle%20centers%20all%20have%20integer%20coordinates%20X%20and%20Y%20each%20of%20which%20is%20in%20the%20range%200..1%2C000%2C000.%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu771f%5Cu662f%5Cu4e00%5Cu4e2a%5Cu81ea%5Cu7136%5Cu6d3e%5Cu827a%5Cu672f%5Cu5927%5Cu5e08%5Cuff0c%5Cu4ed6%5Cu5e38%5Cu5e38%5Cu5728%5Cu4ed6%5Cu7684%5Cu7530%5Cu5730%5Cu4e0a%5Cu521b%5Cu4f5c%5Cu4e00%5Cu4e9b%5Cu5de8%5Cu5927%5Cu7684%5Cu827a%5Cu672f%5Cu6770%5Cu4f5c.%5Cu4eca%5Cu5929%5Cuff0c%5Cu4ed6%5Cu60f3%20%5Cu5728%5Cu9ea6%5Cu7530%5Cu4e0a%5Cu521b%5Cu4f5c%5Cu4e00%5Cu5e45%5Cu7531%5Cu7ef3%5Cu7d22%5Cu6784%5Cu6210%5Cu7684%5Cu5de8%5Cu753b.%5Cu4ed6%5Cu7684%5Cu9ea6%5Cu7530%5Cu662f%5Cu4e00%5Cu4e2a%5Cu591a%5Cu8fb9%5Cu5f62%5Cuff0c%5Cu7531N%28l%3CN%3C%20150%29%5Cu4e2a%5Cu7bf1%5Cu7b06%5Cu7ca7%5Cu548c%5Cu4e4b%20%5Cu95f4%5Cu7684%5Cu7bf1%5Cu7b06%5Cu56f4%5Cu6210.%5Cu4e3a%5Cu4e86%5Cu521b%5Cu4f5c%5Cu4ed6%5Cu7684%5Cu5de8%5Cu753b%5Cuff0c%5Cu4ed6%5Cu6253%5Cu7b97%5Cu7528%5Cu5c3d%5Cu91cf%5Cu591a%5Cu7684%5Cu6570%5Cu91cf%5Cu7684%5Cu7ef3%5Cu7d22%5Cuff0c%5Cu7b14%5Cu76f4%5Cu5730%5Cu8fde%5Cu63a5%5Cu4e24%5Cu4e2a%5Cu4e0d%5Cu76f8%5Cu90bb%5Cu7684%5Cu7bf1%20%5Cu7b06%5Cu7ca7.%5Cu4f46%5Cu662f%5Cu4e3a%5Cu4e86%5Cu753b%5Cu4f5c%5Cu7684%5Cu4f18%5Cu7f8e%5Cuff0c%5Cu4efb%5Cu610f%5Cu4e24%5Cu6839%5Cu7ef3%5Cu7d22%5Cu4e0d%5Cu5f97%5Cu4ea4%5Cu53c9.%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu6709%5Cu4e00%5Cu4e2a%5Cu96be%5Cu5904%5Cuff1a%5Cu4e00%5Cu4e9b%5Cu90aa%5Cu6076%5Cu7684%5Cu5916%5Cu661f%5Cu4eba%5Cu5728%5Cu4ed6%5Cu7684%5Cu9ea6%5Cu7530%5Cu4e0a%5Cu6574%5Cu51fa%5Cu4e86100%29%5Cu4e2a%5Cu602a%5Cu5708.%5Cu8fd9%5Cu4e9b%5Cu602a%5Cu5708%20%5Cu90fd%5Cu6709%5Cu4e00%5Cu5b9a%5Cu7684%5Cu534a%5Cu5f84%5Cu4e11%281%3C%5Cu4e11%3C%20100000%29.%5Cu4ed6%5Cu4e0d%5Cu6562%5Cu60f9%5Cu5916%5Cu661f%5Cu4eba%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4e0d%5Cu60f3%5Cu6709%5Cu4efb%5Cu4f55%5Cu7ef3%5Cu7d22%5Cu901a%5Cu8fc7%5Cu8fd9%5Cu4e9b%5Cu602a%5Cu5708%5Cuff0c%5Cu5373%5Cu4f7f%20%5Cu78b0%5Cu5230%5Cu602a%5Cu5708%5Cu7684%5Cu8fb9%5Cu9645%5Cu4e5f%5Cu4e0d%5Cu884c.%5Cu8fd9%5Cu4e9b%5Cu602a%5Cu5708%5Cu7684%5Cu5706%5Cu5fc3%5Cu90fd%5Cu5728%5Cu9ea6%5Cu7530%5Cu4e4b%5Cu5185%5Cuff0c%5Cu4f46%5Cu4e00%5Cu4e9b%5Cu602a%5Cu5708%5Cu53ef%5Cu80fd%5Cu6709%5Cu90e8%5Cu5206%5Cu5728%5Cu9ea6%5Cu7530%5Cu4e4b%5Cu5916.%5Cu4e00%20%5Cu4e9b%5Cu7bf1%5Cu7b06%5Cu6216%5Cu8005%5Cu7bf1%5Cu7b06%5Cu7ca7%5Cu90fd%5Cu6709%5Cu53ef%5Cu80fd%5Cu5728%5Cu67d0%5Cu4e00%5Cu4e2a%5Cu602a%5Cu5708%5Cu91cc.%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu7bf1%5Cu7b06%5Cu7ca7%5Cu548c%5Cu602a%5Cu5708%5Cu7684%5Cu5750%5Cu6807%5Cuff0c%5Cu8ba1%5Cu7b97%5Cu6700%5Cu591a%5Cu7684%5Cu7ef3%5Cu7d22%5Cu6570.%5Cu6240%5Cu6709%5Cu7684%5Cu5750%5Cu6807%5Cu90fd%5Cu662f%5B0%5Cuff0c10%5E6%5D%5Cu5185%5Cu7684%5Cu6574%5Cu6570.%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu8bf4%5Cu660e%5Cn%5Cn%5Cu7b2c1%5Cu884c%5Cu8f93%5Cu5165%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%5Cu63a5%5Cu4e0b%5Cu6765N%5Cu884c%5Cu6bcf%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu7bf1%5Cu7b06%5Cu7ca7%5Cu7684%5Cu5750%5Cu6807.%5Cu63a5%5Cu4e0b%5Cu6765G%5Cu884c%5Cu6bcf%20%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu4e00%5Cu4e2a%5Cu602a%5Cu5708%5Cu7684%5Cu5706%5Cu5fc3%5Cu5750%5Cu6807.%5Cn%22%2C%22inputFormat%22%3A%22Line%201%3A%20Three%20space-separated%20integers%3A%20N%2C%20G%2C%20and%20R%5Cn%5Cn%5CnLines%202..N%2B1%3A%20Each%20line%20contains%20two%20space-separated%20integers%20that%20are%20the%20X%2CY%20position%20of%20a%20fence%20post%20on%20the%20boundary%20of%20FJ%27s%20field.%5Cn%5Cn%5CnLines%20N%2B2..N%2BG%2B1%3A%20Each%20line%20contains%20two%20space-separated%20integers%20that%20are%20the%20X%2CY%20position%20of%20a%20circle%27s%20center%20inside%20FJ%27s%20field.%5Cn%22%2C%22outputFormat%22%3A%22Line%201%3A%20A%20single%20integer%20that%20is%20the%20largest%20number%20of%20ropes%20FJ%20can%20use%20for%20his%20artistic%20creation.%5Cn%22%2C%22samples%22%3A%5B%5B%225%203%201%5Cr%5Cn6%2010%5Cr%5Cn10%207%5Cr%5Cn9%201%5Cr%5Cn2%200%5Cr%5Cn0%203%5Cr%5Cn2%202%5Cr%5Cn5%206%5Cr%5Cn8%203%22%2C%221%22%5D%5D%2C%22hint%22%3A%22Explanation%20of%20the%20sample%3A%5Cn%5Cn%5Cn%5Cn%5CnA%20pentagonal%20field%2C%20in%20which%20all%20possible%20ropes%20are%20blocked%20by%20three%20grain%20circles%2C%20except%20for%20the%20rope%20between%20fenceposts%202%20and%204.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B23%2C46%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A34%2C%22totalAccepted%22%3A14%2C%22pid%22%3A%22P2861%22%2C%22title%22%3A%22%5BUSACO06JAN%5D%5Cu786e%5Cu4fdd%5Cu73b0%5Cu573aRoping%20the%20Field%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO06JAN%5D%5Cu786e%5Cu4fdd%5Cu73b0%5Cu573aRoping%20the%20Field%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO06JAN]确保现场Roping the Field</h1>
+<h2>题目描述</h2>
+<div>Farmer John is quite the nature artist: he often constructs large works of art on his farm. Today, FJ wants to construct a giant "field web". FJ's field is large convex polygon with fences along the boundary and fence posts at each of the N corners (1 <= N <= 150). To construct his field web, FJ wants to run as many ropes as possible in straight lines between pairs of non-adjacent fence posts such that no two ropes cross.
+There is one complication: FJ's field is not completely usable. Some evil aliens have created a total of G (0 <= G <= 100) grain circles in the field, all of radius R (1 <= R <= 100,000). FJ is afraid to upset the aliens, and therefore doesn't want the ropes to pass through, or even touch the very edge of a grain circle. Note that although the centers of all the circles are contained within the field, a wide radius may make it extend outside of the field, and both fences and fence posts may be within a grain circle.
+Given the locations of the fence posts and the centers of the circles, determine the maximum number of ropes that FJ can use to create his field web.
+FJ's fence pots and the circle centers all have integer coordinates X and Y each of which is in the range 0..1,000,000.
+约翰真是一个自然派艺术大师，他常常在他的田地上创作一些巨大的艺术杰作.今天，他想 在麦田上创作一幅由绳索构成的巨画.他的麦田是一个多边形，由N(l<N< 150)个篱笆粧和之 间的篱笆围成.为了创作他的巨画，他打算用尽量多的数量的绳索，笔直地连接两个不相邻的篱 笆粧.但是为了画作的优美，任意两根绳索不得交叉. 约翰有一个难处：一些邪恶的外星人在他的麦田上整出了100)个怪圈.这些怪圈 都有一定的半径丑(1<丑< 100000).他不敢惹外星人，所以不想有任何绳索通过这些怪圈，即使 碰到怪圈的边际也不行.这些怪圈的圆心都在麦田之内，但一些怪圈可能有部分在麦田之外.一 些篱笆或者篱笆粧都有可能在某一个怪圈里. 给出篱笆粧和怪圈的坐标，计算最多的绳索数.所有的坐标都是[0，10^6]内的整数. 输入说明 第1行输入三个整数接下来N行每行输入两个整数表示篱笆粧的坐标.接下来G行每 行输入两个整数表示一个怪圈的圆心坐标. </div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Line 1: Three space-separated integers: N, G, and R
+Lines 2..N+1: Each line contains two space-separated integers that are the X,Y position of a fence post on the boundary of FJ's field.
+Lines N+2..N+G+1: Each line contains two space-separated integers that are the X,Y position of a circle's center inside FJ's field.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>Line 1: A single integer that is the largest number of ropes FJ can use for his artistic creation.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3 1
+6 10
+10 7
+9 1
+2 0
+0 3
+2 2
+5 6
+8 3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1</code></pre>
+<h2>说明</h2>
+<div>Explanation of the sample:
+A pentagonal field, in which all possible ropes are blocked by three grain circles, except for the rope between fenceposts 2 and 4.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

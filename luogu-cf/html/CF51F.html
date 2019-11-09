@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Caterpillar - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390339:3pR5uy4sdNtbFlp5FJ3s0Kjhz2vwitcjyX+hDMEJsc0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22An%20undirected%20graph%20is%20called%20a%20caterpillar%20if%20it%20is%20a%20connected%20graph%20without%20cycles%20and%20it%20has%20such%20a%20path%20%24%20p%20%24%20that%20any%20vertex%20is%20located%20at%20a%20distance%20of%20at%20most%201%20from%20the%20path%20%24%20p%20%24%20.%20The%20caterpillar%20can%20contain%20loops%20%28edges%20from%20a%20vertex%20to%20itself%29%20but%20cannot%20contain%20multiple%20%28parallel%29%20edges.%5Cn%5CnThe%20picture%20contains%20an%20example%20of%20a%20caterpillar%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF51F%5C%2Fc75bb54dfb4fc3a4d0709384b3d4f7a809015076.png%29You%20are%20given%20an%20undirected%20graph%20%24%20G%20%24%20.%20You%20are%20allowed%20to%20do%20a%20merging%20operations%2C%20each%20such%20operation%20merges%20two%20vertices%20into%20one%20vertex.%20For%20that%20two%20any%20vertices%20%24%20a%20%24%20and%20%24%20b%20%24%20%28%20%24%20a%5Cu2260b%20%24%20%29%20are%20chosen.%20These%20verteces%20are%20deleted%20together%20with%20their%20edges%20%28which%20are%20incident%20to%20at%20least%20one%20of%20the%20vertices%20%24%20a%20%24%20or%20%24%20b%20%24%20%29%20but%20a%20new%20vertex%20%24%20w%20%24%20is%20added%20together%20with%20edges%20%24%20%28x%2Cw%29%20%24%20for%20each%20edge%20%28%20%24%20a%2Cw%20%24%20%29%20and%5C%2For%20%28%20%24%20b%2Cw%20%24%20%29.%20If%20there%20was%20the%20edge%20%24%20%28a%2Cb%29%20%24%20it%20transforms%20to%20the%20loop%20%24%20%28w%2Cw%29%20%24%20.%20The%20resulting%20graph%20%28after%20the%20merging%20operation%29%20may%20contain%20multiple%20%28parallel%29%20edges%20between%20pairs%20of%20vertices%20and%20loops.%20Let%20us%20note%20that%20this%20operation%20decreases%20the%20number%20of%20vertices%20of%20graph%20by%201%20but%20leaves%20the%20number%20of%20edges%20in%20the%20graph%20unchanged.%5Cn%5CnThe%20merging%20operation%20can%20be%20informally%20described%20as%20a%20unity%20of%20two%20vertices%20of%20the%20graph%20into%20one%20with%20the%20natural%20transformation%20of%20the%20graph%20edges.%5Cn%5CnYou%20may%20apply%20this%20operation%20consecutively%20and%20make%20the%20given%20graph%20to%20be%20a%20caterpillar.%20Write%20a%20program%20that%20will%20print%20the%20minimal%20number%20of%20merging%20operations%20required%20to%20make%20the%20given%20graph%20a%20caterpillar.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20pair%20of%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%3C%3D2000%3B0%3C%3Dm%3C%3D10%5E%7B5%7D%20%24%20%29%2C%20where%20%24%20n%20%24%20represents%20the%20number%20of%20vertices%20in%20the%20graph%20and%20%24%20m%20%24%20is%20the%20number%20of%20edges%20in%20it.%20Then%20the%20following%20%24%20m%20%24%20lines%20contain%20edge%20descriptions%2C%20one%20edge%20description%20per%20line.%20Every%20line%20contains%20a%20pair%20of%20integers%20%24%20a_%7Bi%7D%2Cb_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%2Cb_%7Bi%7D%3C%3Dn%3Ba_%7Bi%7D%5Cu2260b_%7Bi%7D%20%24%20%29%2C%20%24%20a_%7Bi%7D%2Cb_%7Bi%7D%20%24%20which%20represent%20the%20indices%20of%20the%20vertices%20connected%20by%20the%20edge.%20The%20vertices%20are%20numbered%20from%201%20to%20%24%20n%20%24%20.%20In%20the%20given%20graph%20it%20will%20be%20no%20more%20than%20one%20edge%20between%20any%20pair%20of%20vertices.%20The%20given%20graph%20is%20not%20necessarily%20connected.%22%2C%22outputFormat%22%3A%22Print%20the%20minimal%20required%20number%20of%20operations.%22%2C%22samples%22%3A%5B%5B%224%204%5Cn1%202%5Cn2%203%5Cn3%204%5Cn4%202%5Cn%22%2C%222%5Cn%22%5D%2C%5B%226%203%5Cn1%202%5Cn3%204%5Cn5%206%5Cn%22%2C%222%5Cn%22%5D%2C%5B%227%206%5Cn1%202%5Cn2%203%5Cn1%204%5Cn4%205%5Cn1%206%5Cn6%207%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F51%5C%2FF%22%2C%22id%22%3A%2251F%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu6bdb%5Cu6bdb%5Cu866b%5Cu5b9a%5Cu4e49%5Cu4e3a%20%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu5411%5Cu8054%5Cu901a%5Cu65e0%5Cu73af%5Cu56fe%5Cu4e0a%20%5Cu5b58%5Cu5728%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%20%24p%24%20%5Cu4f7f%5Cu5f97%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu8ddd%5Cu79bb%20%24p%24%20%5Cu7684%5Cu8ddd%5Cu79bb%5Cu81f3%5Cu591a%5Cu4e3a%20%241%24%20%5Cu3002%5Cn%5Cu6bdb%5Cu6bdb%5Cu866b%5Cu53ef%5Cu4ee5%5Cu5305%5Cu542b%5Cu81ea%5Cu73af%20%5Cuff08%20%5Cu4e00%5Cu6761%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu9876%5Cu70b9%5Cu8fde%5Cu5411%5Cu81ea%5Cu5df1%5Cu7684%5Cu8fb9%20%5Cuff09%5Cuff0c%5Cu4f46%5Cu662f%5Cu4e0d%5Cu53ef%5Cu4ee5%5Cu5305%5Cu542b%5Cu91cd%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cu8fd9%5Cu4e2a%5Cu56fe%5Cu7247%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6bdb%5Cu6bdb%5Cu866b%5Cu7684%5Cu4f8b%5Cu5b50%5Cuff1a%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF51F%5C%2Fc75bb54dfb4fc3a4d0709384b3d4f7a809015076.png%29%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu4f60%5Cu6709%5Cu4e00%5Cu5f20%5Cu65e0%5Cu5411%5Cu56fe%20%24G%24%20%5Cu3002%5Cu4f60%5Cu88ab%5Cu5141%5Cu8bb8%5Cu505a%5Cu4e00%5Cu4e9b%5Cu5408%5Cu5e76%5Cu64cd%5Cu4f5c%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu5c06%5Cu4e24%5Cu4e2a%5Cu9876%5Cu70b9%5Cu5408%5Cu5e76%5Cu6210%5Cu4e00%5Cu4e2a%5Cu9876%5Cu70b9%20%5Cu3002%20%5Cu6bcf%5Cu6b21%5Cu9009%5Cu62e9%5Cu4efb%5Cu610f%5Cu4e24%5Cu4e2a%5Cu9876%5Cu70b9%20%24a%20%2Cb%20%28a%5Cu2260b%29%24%20%2C%20%5Cu8fd9%5Cu4e9b%5Cu9876%5Cu70b9%5Cu4ee5%5Cu53ca%5Cu5b83%5Cu4eec%5Cu7684%5Cu8fb9%20%5Cuff08%20%5Cu81f3%5Cu5c11%5Cu8fde%5Cu63a5%5Cu7740%20%24a%2Cb%24%20%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu7684%5Cu8fb9%20%5Cuff09%20%5Cu5c06%5Cu88ab%5Cu5220%5Cu9664%20%5Cuff0c%5Cu800c%5Cu540e%5Cu9876%5Cu70b9%20%24w%24%20%5Cu4f1a%5Cu88ab%5Cu52a0%5Cu5165%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu6761%5Cu8fb9%20%24%28x%2Ca%29%2C%28x%2Cb%29%24%20%5Cu90fd%5Cu4f1a%5Cu6709%5Cu65b0%5Cu8fb9%20%24%28%20x%2Cw%29%24%20%5Cu52a0%5Cu5165%20%5Cu3002%20%5Cu5982%5Cu679c%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%20%24%28a%2Cb%29%24%20%5Cu5b83%5Cu4f1a%5Cu88ab%5Cu8f6c%5Cu6362%5Cu6210%5Cu81ea%5Cu73af%20%24%28w%2Cw%29%24%20%5Cu3002%20%5Cu5f97%5Cu5230%5Cu7684%5Cu56fe%20%5Cuff08%20%5Cu64cd%5Cu4f5c%5Cu7ed3%5Cu675f%5Cu540e%20%5Cuff09%20%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu6709%5Cu91cd%5Cu8fb9%5Cu3002%5Cu6211%5Cu4eec%5Cu6ce8%5Cu610f%5Cu5230%5Cu8fd9%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cu51cf%5Cu5c11%5Cu4e86%20%241%24%20%5Cu4e2a%5Cu9876%5Cu70b9%20%5Cuff0c%5Cu5374%5Cu6ca1%5Cu6709%5Cu6539%5Cu53d8%5Cu8fb9%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cn%5Cu5408%5Cu5e76%5Cu64cd%5Cu4f5c%5Cu53ef%5Cu4ee5%5Cu7b80%5Cu5355%5Cu7684%5Cu63cf%5Cu8ff0%5Cu4e3a%20%5Cu5c06%5Cu56fe%5Cu4e2d%5Cu4e24%5Cu4e2a%5Cu9876%5Cu70b9%5Cu5408%5Cu5e76%5Cu4e3a%5Cu56fe%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu9876%5Cu70b9%5Cu5e76%5Cu7ee7%5Cu627f%5Cu539f%5Cu6765%5Cu6240%5Cu6709%5Cu7684%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu8fde%5Cu7eed%5Cu5730%5Cu4f7f%5Cu7528%5Cu5408%5Cu5e76%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu4ece%5Cu800c%5Cu5c06%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu56fe%5Cu8f6c%5Cu53d8%5Cu6210%5Cu4e00%5Cu4e2a%5Cu6bdb%5Cu6bdb%5Cu866b%5Cu3002%5Cn%5Cn%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu5c06%5Cu8981%5Cu8f93%5Cu51fa%5Cu8fd9%5Cu5f20%5Cu56fe%5Cu8f6c%5Cu53d8%5Cu6210%5Cu4e00%5Cu4e2a%5Cu6bdb%5Cu6bdb%5Cu866b%5Cu7684%5Cu6700%5Cu5c11%5Cu64cd%5Cu4f5c%5Cu6b21%5Cu6570%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24%20n%2Cm%20%281%3C%3Dn%3C%3D20000%2C1%3C%3Dm%3C%3D10%5E5%29%24%2C%20%24n%24%20%5Cu4ee3%5Cu8868%5Cu4e86%5Cu56fe%5Cu4e2d%5Cu9876%5Cu70b9%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu800c%20%24m%24%20%5Cu5219%5Cu4ee3%5Cu8868%5Cu4e86%5Cu8fb9%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24m%24%20%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu8fb9%5Cu7684%5Cu4fe1%5Cu606f%20%2C%20%5Cu6bcf%5Cu884c%5Cu4e00%5Cu6761%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e86%5Cu4e00%5Cu5bf9%5Cu6574%5Cu6570%20%20%24a_i%2Cb_i%281%3C%3Da_i%2Cb_i%3C%3Dn%2Ca_i%5Cu2260b_i%29%20%24%20%5Cuff0c%5Cu8868%5Cu793a%5Cn%5Cu70b9%5Cu95f4%5Cu7684%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cu9876%5Cu70b9%5Cu4ece%20%241%24%20%5Cu5230%20%24n%24%20%5Cu7f16%5Cu53f7%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu7684%5Cu56fe%5Cu4fdd%5Cu8bc1%5Cu4efb%5Cu610f%5Cu4e24%5Cu70b9%5Cu95f4%5Cu4e0d%5Cu4f1a%5Cu6709%5Cu591a%5Cu6761%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu7684%5Cu56fe%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu8054%5Cu901a%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu64cd%5Cu4f5c%5Cu6b21%5Cu6570%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A23%2C%22totalAccepted%22%3A12%2C%22pid%22%3A%22CF51F%22%2C%22title%22%3A%22Caterpillar%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A165218%2C%22title%22%3A%22%5Cu4fee%5Cu6b63%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12439%2C%22name%22%3A%22CF51F%20Caterpillar%22%2C%22slug%22%3A%22CF51F%22%7D%7D%2C%7B%22id%22%3A158459%2C%22title%22%3A%22%5Cu91cd%5Cu65b0%5Cu53d1%5Cu5e16%5Cuff0c%5Cu5173%5Cu4e8e%5Cu8fd9%5Cu9053%5Cu9898%5Cu7684%5Cu6bdb%5Cu6bdb%5Cu866b%22%2C%22forum%22%3A%7B%22id%22%3A12439%2C%22name%22%3A%22CF51F%20Caterpillar%22%2C%22slug%22%3A%22CF51F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Caterpillar%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Caterpillar</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+一个毛毛虫定义为 一个无向联通无环图上 存在一条路径 $p$ 使得任意一个节点距离 $p$ 的距离至多为 $1$ 。
+毛毛虫可以包含自环 （ 一条从一个顶点连向自己的边 ），但是不可以包含重边。
+这个图片是一个毛毛虫的例子：
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF51F/c75bb54dfb4fc3a4d0709384b3d4f7a809015076.png)
+现在你有一张无向图 $G$ 。你被允许做一些合并操作。
+每次操作将两个顶点合并成一个顶点 。 每次选择任意两个顶点 $a ,b (a≠b)$ , 这些顶点以及它们的边 （ 至少连接着 $a,b$ 中一个点的边 ） 将被删除 ，而后顶点 $w$ 会被加入，以及对于每条边 $(x,a),(x,b)$ 都会有新边 $( x,w)$ 加入 。 如果有一条边 $(a,b)$ 它会被转换成自环 $(w,w)$ 。 得到的图 （ 操作结束后 ） 可能会有重边。我们注意到这个操作减少了 $1$ 个顶点 ，却没有改变边的数量。
+合并操作可以简单的描述为 将图中两个顶点合并为图中的一个顶点并继承原来所有的边。
+你可以连续地使用合并操作，从而将给定的图转变成一个毛毛虫。
+编写一个程序，这个程序将要输出这张图转变成一个毛毛虫的最少操作次数。
+## 输入格式
+第一行包含两个正整数 $ n,m (1<=n<=20000,1<=m<=10^5)$, $n$ 代表了图中顶点的数量，而 $m$ 则代表了边的数量。
+接下来 $m$ 行描述了边的信息 , 每行一条。
+每行包含了一对整数 $a_i,b_i(1<=a_i,b_i<=n,a_i≠b_i) $ ，表示
+点间的边。
+顶点从 $1$ 到 $n$ 编号。
+给出的图保证任意两点间不会有多条边。
+给出的图不一定联通。
+## 输出格式
+输出操作次数的最小值。</div>
+<h2>题目描述</h2>
+<div>An undirected graph is called a caterpillar if it is a connected graph without cycles and it has such a path $ p $ that any vertex is located at a distance of at most 1 from the path $ p $ . The caterpillar can contain loops (edges from a vertex to itself) but cannot contain multiple (parallel) edges.
+The picture contains an example of a caterpillar:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF51F/c75bb54dfb4fc3a4d0709384b3d4f7a809015076.png)You are given an undirected graph $ G $ . You are allowed to do a merging operations, each such operation merges two vertices into one vertex. For that two any vertices $ a $ and $ b $ ( $ a≠b $ ) are chosen. These verteces are deleted together with their edges (which are incident to at least one of the vertices $ a $ or $ b $ ) but a new vertex $ w $ is added together with edges $ (x,w) $ for each edge ( $ a,w $ ) and/or ( $ b,w $ ). If there was the edge $ (a,b) $ it transforms to the loop $ (w,w) $ . The resulting graph (after the merging operation) may contain multiple (parallel) edges between pairs of vertices and loops. Let us note that this operation decreases the number of vertices of graph by 1 but leaves the number of edges in the graph unchanged.
+The merging operation can be informally described as a unity of two vertices of the graph into one with the natural transformation of the graph edges.
+You may apply this operation consecutively and make the given graph to be a caterpillar. Write a program that will print the minimal number of merging operations required to make the given graph a caterpillar.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a pair of integers $ n $ , $ m $ ( $ 1<=n<=2000;0<=m<=10^{5} $ ), where $ n $ represents the number of vertices in the graph and $ m $ is the number of edges in it. Then the following $ m $ lines contain edge descriptions, one edge description per line. Every line contains a pair of integers $ a_{i},b_{i} $ ( $ 1<=a_{i},b_{i}<=n;a_{i}≠b_{i} $ ), $ a_{i},b_{i} $ which represent the indices of the vertices connected by the edge. The vertices are numbered from 1 to $ n $ . In the given graph it will be no more than one edge between any pair of vertices. The given graph is not necessarily connected.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the minimal required number of operations.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 4
+1 2
+2 3
+3 4
+4 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6 3
+1 2
+3 4
+5 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>7 6
+1 2
+2 3
+1 4
+4 5
+1 6
+6 7
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

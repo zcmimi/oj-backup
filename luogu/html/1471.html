@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>方差 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573373987:egtjf9CCS3n5v30MGD652QwSmjkl0F0xWdekSCFPv/U=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%5Cu6eda%5Cu7c97%5Cu4e86%5Cu7684HansBug%5Cu5728%5Cu6536%5Cu62fe%5Cu65e7%5Cu6570%5Cu5b66%5Cu4e66%5Cuff0c%5Cu7136%5Cu800c%5Cu4ed6%5Cu53d1%5Cu73b0%5Cu4e86%5Cu4ec0%5Cu4e48%5Cu5947%5Cu5999%5Cu7684%5Cu4e1c%5Cu897f%5Cu3002%5Cn%22%2C%22description%22%3A%22%5Cu849f%5Cu84bbHansBug%5Cu5728%5Cu4e00%5Cu672c%5Cu6570%5Cu5b66%5Cu4e66%5Cu91cc%5Cu9762%5Cu53d1%5Cu73b0%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu795e%5Cu5947%5Cu7684%5Cu6570%5Cu5217%5Cuff0c%5Cu5305%5Cu542bN%5Cu4e2a%5Cu5b9e%5Cu6570%5Cu3002%5Cu4ed6%5Cu60f3%5Cu7b97%5Cu7b97%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu5217%5Cu7684%5Cu5e73%5Cu5747%5Cu6570%5Cu548c%5Cu65b9%5Cu5dee%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570N%5Cu3001M%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu6570%5Cu5217%5Cu4e2d%5Cu5b9e%5Cu6570%5Cu7684%5Cu4e2a%5Cu6570%5Cu548c%5Cu64cd%5Cu4f5c%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542bN%5Cu4e2a%5Cu5b9e%5Cu6570%5Cuff0c%5Cu5176%5Cu4e2d%5Cu7b2ci%5Cu4e2a%5Cu5b9e%5Cu6570%5Cu8868%5Cu793a%5Cu6570%5Cu5217%5Cu7684%5Cu7b2ci%5Cu9879%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765M%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e3a%5Cu4e00%5Cu6761%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu683c%5Cu5f0f%5Cu4e3a%5Cu4ee5%5Cu4e0b%5Cu4e24%5Cu79cd%5Cu4e4b%5Cu4e00%5Cuff1a%5Cn%5Cn%5Cu64cd%5Cu4f5c1%5Cuff1a1%20x%20y%20k%20%5Cuff0c%5Cu8868%5Cu793a%5Cu5c06%5Cu7b2cx%5Cu5230%5Cu7b2cy%5Cu9879%5Cu6bcf%5Cu9879%5Cu52a0%5Cu4e0ak%5Cuff0ck%5Cu4e3a%5Cu4e00%5Cu5b9e%5Cu6570%5Cu3002%5Cn%5Cn%5Cu64cd%5Cu4f5c2%5Cuff1a2%20x%20y%20%5Cuff0c%5Cu8868%5Cu793a%5Cu6c42%5Cu51fa%5Cu7b2cx%5Cu5230%5Cu7b2cy%5Cu9879%5Cu8fd9%5Cu4e00%5Cu5b50%5Cu6570%5Cu5217%5Cu7684%5Cu5e73%5Cu5747%5Cu6570%5Cu3002%5Cn%5Cn%5Cu64cd%5Cu4f5c3%5Cuff1a3%20x%20y%20%5Cuff0c%5Cu8868%5Cu793a%5Cu6c42%5Cu51fa%5Cu7b2cx%5Cu5230%5Cu7b2cy%5Cu9879%5Cu8fd9%5Cu4e00%5Cu5b50%5Cu6570%5Cu5217%5Cu7684%5Cu65b9%5Cu5dee%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu5305%5Cu542b%5Cu82e5%5Cu5e72%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu5b9e%5Cu6570%5Cuff0c%5Cu5373%5Cu4f9d%5Cu6b21%5Cu4e3a%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c2%5Cu6216%5Cu64cd%5Cu4f5c3%5Cu6240%5Cu5f97%5Cu7684%5Cu7ed3%5Cu679c%5Cuff08%5Cu6240%5Cu6709%5Cu7ed3%5Cu679c%5Cu56db%5Cu820d%5Cu4e94%5Cu5165%5Cu4fdd%5Cu75594%5Cu4f4d%5Cu5c0f%5Cu6570%5Cuff09%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%225%205%5Cn1%205%204%202%203%5Cn2%201%204%5Cn3%201%205%5Cn1%201%201%201%5Cn1%202%202%20-1%5Cn3%201%205%5Cn%22%2C%223.0000%5Cn2.0000%5Cn0.8000%5Cn%22%5D%5D%2C%22hint%22%3A%22%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F2264.png%29%20%5Cn%5Cn%5Cu6837%5Cu4f8b%5Cu8bf4%5Cu660e%5Cuff1a%5Cn%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F2265.png%29%20%5Cn%5Cn%5Cu6570%5Cu636e%5Cu89c4%5Cu6a21%5Cuff1a%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fpic%5C%2F2266.png%29%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A1492%2C%22name%22%3A%22HansBug%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B5%2C42%2C53%2C81%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A4198%2C%22totalAccepted%22%3A1286%2C%22pid%22%3A%22P1471%22%2C%22title%22%3A%22%5Cu65b9%5Cu5dee%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A163343%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A489%2C%22name%22%3A%22P1471%20%5Cu65b9%5Cu5dee%22%2C%22slug%22%3A%22P1471%22%7D%7D%2C%7B%22id%22%3A161686%2C%22title%22%3A%22%5Cu5982%5Cu679c%5Cu4f60%5Cu5199%5Cu4e86%5Cu5feb%5Cu8bfb%5Cuff0c%5Cu5e76%5Cu4e14%5Cu53c8WA%5Cu53c8RE%22%2C%22forum%22%3A%7B%22id%22%3A489%2C%22name%22%3A%22P1471%20%5Cu65b9%5Cu5dee%22%2C%22slug%22%3A%22P1471%22%7D%7D%2C%7B%22id%22%3A154439%2C%22title%22%3A%22%5Cu4e00%5Cu5b9a%5Cu8bb0%5Cu5f97%5Cu8981%5Cu7528double%22%2C%22forum%22%3A%7B%22id%22%3A489%2C%22name%22%3A%22P1471%20%5Cu65b9%5Cu5dee%22%2C%22slug%22%3A%22P1471%22%7D%7D%2C%7B%22id%22%3A148845%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu8bc9%5Cu8bf4%5Cu4e00%5Cu4e0b%5Cu81ea%5Cu5df1%5Cu60b2%5Cu60e8%5Cu7684%5Cu7ecf%5Cu5386%22%2C%22forum%22%3A%7B%22id%22%3A489%2C%22name%22%3A%22P1471%20%5Cu65b9%5Cu5dee%22%2C%22slug%22%3A%22P1471%22%7D%7D%2C%7B%22id%22%3A146426%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu5361%5Cu7cbe%5Cu5ea6%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A489%2C%22name%22%3A%22P1471%20%5Cu65b9%5Cu5dee%22%2C%22slug%22%3A%22P1471%22%7D%7D%2C%7B%22id%22%3A141238%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A489%2C%22name%22%3A%22P1471%20%5Cu65b9%5Cu5dee%22%2C%22slug%22%3A%22P1471%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1438%22%2C%22title%22%3A%22%5Cu65e0%5Cu804a%5Cu7684%5Cu6570%5Cu5217%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1558%22%2C%22title%22%3A%22%5Cu8272%5Cu677f%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2184%22%2C%22title%22%3A%22%5Cu8d2a%5Cu5a6a%5Cu5927%5Cu9646%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5142%22%2C%22title%22%3A%22%5Cu533a%5Cu95f4%5Cu65b9%5Cu5dee%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4145%22%2C%22title%22%3A%22%5Cu4e0a%5Cu5e1d%5Cu9020%5Cu9898%5Cu7684%5Cu4e03%5Cu5206%5Cu949f2%20%5C%2F%20%5Cu82b1%5Cu795e%5Cu6e38%5Cu5386%5Cu5404%5Cu56fd%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu65b9%5Cu5dee%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>方差</h1>
+<h2>题目背景</h2>
+<div>滚粗了的HansBug在收拾旧数学书，然而他发现了什么奇妙的东西。
+</div>
+<h2>题目描述</h2>
+<div>蒟蒻HansBug在一本数学书里面发现了一个神奇的数列，包含N个实数。他想算算这个数列的平均数和方差。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行包含两个正整数N、M，分别表示数列中实数的个数和操作的个数。
+第二行包含N个实数，其中第i个实数表示数列的第i项。
+接下来M行，每行为一条操作，格式为以下两种之一：
+操作1：1 x y k ，表示将第x到第y项每项加上k，k为一实数。
+操作2：2 x y ，表示求出第x到第y项这一子数列的平均数。
+操作3：3 x y ，表示求出第x到第y项这一子数列的方差。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>输出包含若干行，每行为一个实数，即依次为每一次操作2或操作3所得的结果（所有结果四舍五入保留4位小数）。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 5
+1 5 4 2 3
+2 1 4
+3 1 5
+1 1 1 1
+1 2 2 -1
+3 1 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3.0000
+2.0000
+0.8000
+</code></pre>
+<h2>说明</h2>
+<div>
+![](https://cdn.luogu.com.cn/upload/pic/2264.png)
+样例说明：
+![](https://cdn.luogu.com.cn/upload/pic/2265.png)
+数据规模：
+![](https://cdn.luogu.com.cn/upload/pic/2266.png)
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

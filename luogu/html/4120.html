@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[WC2012]最小生成树 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381049:ZIa1awF8oNaecF7ZTWmq668buqCc16suN1uWlHzN2dU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu65e0%5Cu5411%5Cu5e26%5Cu6743%5Cu8fde%5Cu901a%5Cu56fe%24G%24%5Cuff0c%5Cu6211%5Cu4eec%5Cu5e0c%5Cu671b%5Cu901a%5Cu8fc7%5Cu4fee%5Cu6539%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cuff0c%5Cu4f7f%5Cu5b83%5Cu7684%5Cu6700%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%5Cu552f%5Cu4e00%5Cuff0c%5Cu5df2%5Cu77e5%5Cu51cf%5Cu5c0f%5Cuff0c%5Cu589e%5Cu52a0%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu7684%5Cu5355%5Cu4f4d%5Cu4ee3%5Cu4ef7%5Cu5206%5Cu522b%5Cu4e3a%20%24a%24%20%5Cu548c%20%24b%24%5Cuff0c%5Cu4e14%5Cu4fee%5Cu6539%5Cu540e%5Cu7684%5Cu6743%5Cu503c%5Cu5fc5%5Cu987b%5Cu4e3a%5Cu975e%5Cu8d1f%5Cu6574%5Cu6570%5Cu3002%5Cn%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5bf9%5Cu67d0%5Cu4e2a%5Cu56fe%24G%24%5Cuff0c%5Cu5982%5Cu679c%5Cu5c06%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu51cf%20%243%24%5Cuff0c%5Cu53e6%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu4ec5%5Cu503c%5Cu52a0%20%242%24%20%5Cu4e4b%5Cu540e%5Cuff0c%5Cu5b83%5Cu7684%5Cu6700%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%5Cu552f%5Cu4e00%5Cuff0c%5Cu5219%5Cu6b64%5Cu65f6%5Cu7684%5Cu4ee3%5Cu4ef7%5Cu4e4b%5Cu548c%5Cu662f%20%243a%24%5Cuff0b%242b%24%5Cu3002%5Cu8bd5%5Cu8ba1%5Cu7b97%5Cu4ee3%5Cu4ef7%5Cu4e4b%5Cu548c%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5Cu4ece%5Cu6587%5Cu4ef6mst.in%5Cu4e2d%5Cu8bfb%5Cu5165%5Cu6570%5Cu636e%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu5b57%5Cu7b26%5Cu4e32%5Cu201c%24mst%24%5Cu201d%20%5Cu548c%5Cu6570%5Cu636e%5Cu7f16%5Cu53f7%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%20%244%24%20%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24n%24%2C%24m%24%2C%24a%24%2C%24b%24%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu56fe%20%24G%24%20%5Cu9876%5Cu70b9%5Cu7684%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8fb9%5Cu7684%5Cu6761%5Cu6570%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu5bf9%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu51cf%5Cu5c0f%20%241%24%5Cuff0c%5Cu589e%5Cu52a0%20%241%24%20%5Cu7684%5Cu4ee3%5Cu4ef7%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24m%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%20%243%24%20%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24x%24%2C%24y%24%2C%24w%24%5Cuff0c%5Cu8868%5Cu793a%5Cu9876%5Cu70b9%20%24x%24%20%5Cu548c%5Cu9876%5Cu70b9%20%24y%24%20%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu521d%5Cu59cb%5Cu6743%5Cu503c%5Cu4e3a%20%24w%24%20%5Cu7684%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cu9876%5Cu70b9%5Cu7531%20%241%24%20%5Cu81f3%20%24n%24%20%5Cu7f16%5Cu53f7%5Cu3002%5Cn%22%2C%22outputFormat%22%3A%22%5Cu8f93%5Cu51fa%5Cu5230%5Cu6587%5Cu4ef6mst.out%5Cu4e2d%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu6587%5Cu4ef6%5Cu4ec5%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu5c0f%5Cu4ee3%5Cu4ef7%5Cuff0c%5Cu65e0%5Cu9700%5Cu4fee%5Cu6539%5Cu5219%5Cu8f93%5Cu51fa%20%240%24%5Cu3002%5Cn%22%2C%22samples%22%3A%5B%5B%22mst%200%5Cn4%205%202%203%5Cn1%202%201%5Cn1%203%201%5Cn2%203%201%5Cn2%204%202%5Cn3%204%202%22%2C%225%22%5D%5D%2C%22hint%22%3A%22%5Cu3010%5Cu6837%5Cu4f8b%5Cu8bf4%5Cu660e%5Cu3011%5Cn%5Cn%5Cu5c06%5Cu8fb9%24%282%2C4%29%24%5Cu7684%5Cu6743%5Cu503c%5Cu51cf%20%241%24%5Cuff0c%5Cu8fb9%24%282%2C3%29%24%5Cu7684%5Cu6743%5Cu503c%5Cu52a0%20%241%24%20%5Cu4e4b%5Cu540e%5Cuff0c%5Cu56fe%20%24G%24%20%5Cu7684%5Cu6700%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%5Cu552f%5Cu4e00%5Cuff0c%5Cu4e14%5Cu6b64%5Cu65f6%5Cu7684%5Cu4ee3%5Cu4ef7%5Cu4e4b%5Cu548c%5Cu4e3a%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%5Cn%5Cn%5Cu3010%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu3011%5Cn%5Cn%21%5BQQ20180115212959.png%5D%28https%3A%5C%2F%5C%2Fwww.z4a.net%5C%2Fimages%5C%2F2018%5C%2F01%5C%2F15%5C%2FQQ20180115212959.png%29%5Cn%5Cn%5B%5Cu6d4b%5Cu8bd5%5Cu70b9%246%24~%2410%24%5Cu4e0b%5Cu8f7d%5D%28https%3A%5C%2F%5C%2Fpan.baidu.com%5C%2Fs%5C%2F1bqiS6w3%29%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A50167%2C%22name%22%3A%22Imagine%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%2C4000%5D%2C%22memory%22%3A%5B256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%2C256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C52%2C166%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A842%2C%22totalAccepted%22%3A6%2C%22pid%22%3A%22P4120%22%2C%22title%22%3A%22%5BWC2012%5D%5Cu6700%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3724%22%2C%22title%22%3A%22%5BAH2017%5C%2FHNOI2017%5D%5Cu5927%5Cu4f6c%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2701%22%2C%22title%22%3A%22%5BUSACO5.3%5D%5Cu5de8%5Cu5927%5Cu7684%5Cu725b%5Cu68daBig%20Barn%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4011%22%2C%22title%22%3A%22%5Cu5b64%5Cu5c9b%5Cu8425%5Cu6551%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4112%22%2C%22title%22%3A%22%5BHEOI2015%5D%5Cu6700%5Cu77ed%5Cu4e0d%5Cu516c%5Cu5171%5Cu5b50%5Cu4e32%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4555%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu6700%5Cu957f%5Cu53cc%5Cu56de%5Cu6587%5Cu4e32%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BWC2012%5D%5Cu6700%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[WC2012]最小生成树</h1>
+<h2>题目描述</h2>
+<div>给定无向带权连通图$G$，我们希望通过修改边的权值，使它的最小生成树唯一，已知减小，增加一条边的权值的单位代价分别为 $a$ 和 $b$，且修改后的权值必须为非负整数。
+例如，对某个图$G$，如果将一条边的权值减 $3$，另一条边的仅值加 $2$ 之后，它的最小生成树唯一，则此时的代价之和是 $3a$＋$2b$。试计算代价之和的最小值。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>从文件mst.in中读入数据。
+第一行包含字符串“$mst$” 和数据编号。
+第二行包含 $4$ 个正整数 $n$,$m$,$a$,$b$，分别表示图 $G$ 顶点的个数，边的条数，以及对一条边的权值减小 $1$，增加 $1$ 的代价。
+接下来 $m$ 行，每行 $3$ 个正整数 $x$,$y$,$w$，表示顶点 $x$ 和顶点 $y$ 之间有一条初始权值为 $w$ 的边。
+顶点由 $1$ 至 $n$ 编号。
+</div>
+<h3>输出格式</h3>
+<br />
+<div>输出到文件mst.out中。
+输出文件仅一行，包含一个整数，表示最小代价，无需修改则输出 $0$。
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>mst 0
+4 5 2 3
+1 2 1
+1 3 1
+2 3 1
+2 4 2
+3 4 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5</code></pre>
+<h2>说明</h2>
+<div>【样例说明】
+将边$(2,4)$的权值减 $1$，边$(2,3)$的权值加 $1$ 之后，图 $G$ 的最小生成树唯一，且此时的代价之和为最小值。
+【数据范围】
+![QQ20180115212959.png](https://www.z4a.net/images/2018/01/15/QQ20180115212959.png)
+[测试点$6$~$10$下载](https://pan.baidu.com/s/1bqiS6w3)
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

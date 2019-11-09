@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO11JAN]分金Dividing the Gold - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376279:XnaDG12lUbHrrppkm0eiCTuEKkzxmoKSFJ2D+VSMXg4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bessie%20and%20Canmuu%20found%20a%20sack%20of%20N%20%281%20%3C%3D%20N%20%3C%3D%20250%29%20gold%20coins%20that%20they%20wish%20to%20divide%20as%20evenly%20as%20possible.%20Coin%20i%20has%20value%20v%5C%5C_i%20%281%20%3C%3D%20V%5C%5C_i%20%3C%3D%202%2C000%29.%20The%20cows%20would%20like%20to%20split%20the%20pile%20as%20evenly%20as%20they%20can%2C%20but%20that%20is%20not%20always%20possible.%20What%20is%20the%20smallest%20difference%20between%20the%20values%20of%20the%20two%20piles%3F%5Cn%5CnIn%20addition%2C%20the%20Bessie%20and%20Canmuu%20have%20found%20that%20there%20might%20be%20multiple%20ways%20to%20split%20the%20piles%20with%20that%20minimum%20difference.%20They%20would%20also%20like%20to%20know%20the%20number%20of%20ways%20to%20split%20the%20coins%20as%20fairly%20as%20possible.%20If%20it%20isn%27t%20possible%20to%20split%20the%20piles%20evenly%2C%20Bessie%20will%20get%20the%20higher-valued%20pile.%5Cn%5CnBy%20way%20of%20example%2C%20consider%20a%20sack%20of%20five%20coins%20of%20values%3A%202%2C%201%2C%208%2C%204%2C%20and%2016.%20Bessie%20and%20Canmuu%20split%20the%20coins%20into%20two%20piles%2C%20one%20pile%20with%20one%20coin%20worth%2016%2C%20and%20the%20other%20pile%20with%20the%20remaining%20coins%20worth%201%2B2%2B4%2B8%3D15.%20Therefore%20the%20difference%20is%2016-15%20%3D%201.%20%20This%20is%20the%20only%20way%20for%20them%20to%20split%20the%20coins%20this%20way%2C%20so%20the%20number%20of%20ways%20to%20split%20it%20evenly%20is%20just%201.%5Cn%5CnNote%20that%20same-valued%20coins%20can%20be%20switched%20among%20the%20piles%20to%20increase%20the%20number%20of%20ways%20to%20perform%20an%20optimal%20split.%20Thus%2C%20the%20set%20of%20coins%20%7B1%2C%201%2C%201%2C%201%7D%20has%20six%20different%20ways%20to%20split%20into%20two%20optimal%20partitions%2C%20each%20with%20two%20coins.%5Cn%5Cn%5Cu8d1d%5Cu831c%5Cu548cCanmuu%5Cu53d1%5Cu73b0%5Cu4e00%5Cu9ebb%5Cu888b%5Cu7684N%5Cuff081%20%3C%3D%20N%5Cu7684%3C%3D%20250%5Cuff09%5Cu91d1%5Cu5e01%20%5Cu4ed6%5Cu4eec%5Cu5e0c%5Cu671b%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5e73%5Cu5747%5Cu5212%5Cu5206%5Cu3002%5Cu6211%5Cu662f%5Cu6709%5Cu4ef7%5Cu7684%5Cu786c%5Cu5e01%20v%5C%5C_i%5Cuff081%20%3C%3D%20V%5C%5C_i%20%3C%3D%202%2C000%5Cuff09%5Cu3002%5Cu5976%5Cu725b%5Cu60f3%5Cu5206%5Cu88c2%5Cu6869%5Cu4f5c%5Cu4e3a%20%5Cu56e0%5Cu4e3a%5Cu5b83%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu5747%5Cu5300%5Cuff0c%5Cu4f46%5Cu8fd9%5Cu662f%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu7684%5Cu3002%5Cu4ec0%5Cu4e48%5Cu662f%20%5Cu4e4b%5Cu95f4%5Cu7684%5Cu5dee%5Cu5f02%5Cu6700%5Cu5c0f%5Cu4e24%5Cu5806%5Cu7684%5Cu4ef7%5Cu503c%5Cuff1f%20%5Cu6b64%5Cu5916%5Cuff0c%5Cu8d1d%5Cu831c%5Cu548cCanmuu%5Cu53d1%5Cu73b0%5Cuff0c%5Cu6709%5Cu53ef%5Cu80fd%20%5Cu5206%5Cu88c2%5Cu4e0e%5Cu591a%5Cu79cd%5Cu65b9%5Cu5f0f%5Cuff0c%5Cu6700%5Cu4f4e%5Cu7684%5Cu533a%5Cu522b%5Cu6869%5Cu3002%5Cu4ed6%5Cu4eec%20%5Cu8fd8%5Cu60f3%5Cu77e5%5Cu9053%5Cu5982%5Cu4f55%5Cu5206%5Cu88c2%5Cu786c%5Cu5e01%5Cu4e3a%5Cu6570%5Cu5b57%20%5Cu516c%5Cu6b63%5Cu5730%5Cu53cd%5Cu6620%5Cu4e86%5Cu53ef%5Cu80fd%5Cu3002%5Cu5982%5Cu679c%5Cu5b83%5Cu662f%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu5206%5Cu88c2%5Cu6869%5Cu5747%5Cu5300%5Cuff0c%5Cu8d1d%5Cu897f%20%5Cu5c06%5Cu83b7%5Cu5f97%5Cu4ef7%5Cu503c%5Cu8f83%5Cu9ad8%5Cu7684%5Cu6869%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20a%20single%20integer%3A%20V%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20that%20is%20the%20smallest%20difference%20of%20two%20partitions.%5Cn%5Cn%5C%5C%2A%20Line%202%3A%20A%20single%20integer%20that%20is%20the%20number%20of%20ways%20to%20split%20the%20coins%20with%20the%20minimum%20difference%20printed%20in%20line%201.%20Since%20this%20number%20can%20get%20quite%20large%2C%20print%20the%20remainder%20when%20divided%20by%201%2C000%2C000.%5Cn%22%2C%22samples%22%3A%5B%5B%225%20%5Cn2%20%5Cn1%20%5Cn8%20%5Cn4%20%5Cn16%20%5Cn%22%2C%221%20%5Cn1%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22translation%22%3A%22Bessie%20%5Cu548c%20Canmuu%20%5Cu53d1%5Cu73b0%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu6709%20%2A%2A%2AN%2A%2A%2A%20%5Cu4e2a%5Cu91d1%5Cu5e01%5Cu7684%5Cu888b%5Cu5b50%281%20%3C%3D%20N%20%3C%3D%20250%29%20%5Cu3002%5Cu7b2ci%5Cu4e2a%5Cu91d1%5Cu5e01%5Cu6709%5Cu4e00%5Cu4e2a%5Cu4ef7%5Cu503c%20%2A%2A%2AVi%2A%2A%2A%5Cn%281%20%3C%3D%20Vi%20%3C%3D%202000%29%5Cu4ed6%5Cu4eec%5Cu5e0c%5Cu671b%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu7684%5Cu628a%5Cu8fd9%5Cu5806%5Cu91d1%5Cu5e01%5Cu5e73%5Cu5747%5Cu5206%5Cu914d%5Cuff0c%5Cu4f46%5Cu6709%5Cu65f6%5Cu8fd9%5Cu662f%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu7684%5Cu3002%5Cu627e%5Cu51fa%5Cu4f7f%5Cu4e24%5Cu5806%5Cu4ef7%5Cu503c%5Cu5dee%5Cu6700%5Cu5c0f%5Cu7684%5Cu5206%5Cu914d%5Cu65b9%5Cu6848%5Cu3002%5Cu5982%5Cu679c%5Cu4e0d%5Cu80fd%5Cu5b8c%5Cu5168%5Cu5e73%5Cu5747%5Cu5206%5Cu5f00%5Cuff0cBessie%5Cu4f1a%5Cu83b7%5Cu5f97%5Cu8f83%5Cu9ad8%5Cu4ef7%5Cu503c%5Cu90a3%5Cu4e00%5Cu5806%5Cu3002%5Cn%5Cn%5Cu4e3e%5Cu4f8b%5Cu6765%5Cu8bf4%20%5Cuff1a%20%5Cu6709%5Cu4e00%5Cu888b5%5Cu4e2a%5Cu91d1%5Cu5e01%5Cu3002%5Cu4ef7%5Cu503c%5Cu5206%5Cu522b%5Cu662f%202%2C1%2C8%2C4%2C16%5Cu3002%5CnBessie%20%5Cu548cCanmuu%5Cu628a%5Cu91d1%5Cu5e01%5Cu5206%5Cu6210%5Cu4e24%5Cu5806%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu5806%5Cu662f%5Cu4ef7%5Cu503c16%5Cu7684%5Cu91d1%5Cu5e01%5Cuff0c%5Cu53e6%5Cu4e00%5Cu5806%5Cu662f%5Cu5269%5Cu4e0b%5Cu76841%2B2%2B4%2B8%20%3D%2015%20%5Cu4e2a%5Cu91d1%5Cu5e01%5Cuff0c%5Cu56e0%5Cu6b64%5Cuff0c%5Cu5dee%5Cu662f1%5Cuff0c%5Cu8fd9%5Cu662f%5Cu6700%5Cu4f18%5Cu5206%5Cu914d%5Cu65b9%5Cu6848%5Cu4e0b%5Cu7684%5Cu552f%5Cu4e00%5Cu5206%5Cu6cd5%5Cuff08%5Cu5373%5Cu5dee%5Cu6700%5Cu5c0f%5Cu7684%5Cu552f%5Cu4e00%5Cu5206%5Cu6cd5%5Cuff09%5Cuff0c%5Cu6240%5Cu4ee5%5Cu65b9%5Cu6848%5Cu6570%5Cu4e3a1%5Cu3002%5Cn%5Cn%5Cn%5Cu8bf7%5Cu4f60%5Cu627e%5Cu51fa%20%2A%2A%5Cu6700%5Cu5c0f%5Cu7684%5Cu5dee%5Cu503c%2A%2A%20%5Cu4ee5%5Cu53ca%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu5dee%5Cu503c%5Cu4e0b%5Cu5206%5Cu914d%5Cu7684%2A%2A%5Cu65b9%5Cu6848%5Cu6570%5Cu3002%2A%2A%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu7b2c%5Cu4e00%5Cu884c%20N%5Cn%5Cn%5Cu4e4b%5Cu540e%5Cu6bcf%5Cu4e00%5Cu884c%5Cu6709%5Cu4e00%5Cu4e2aVi%5Cu4ee3%5Cu8868%5Cu7b2ci%5Cu4e2a%5Cu91d1%5Cu5e01%5Cu7684%5Cu4ef7%5Cu503c%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu6700%5Cu5c0f%5Cu5dee%5Cu503c%5Cuff0c%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu662f%5Cu5206%5Cu914d%5Cu65b9%5Cu6848%5Cu6570%20%2C%5Cu7531%5Cu4e8e%5Cu65b9%5Cu6848%5Cu6570%5Cu53ef%5Cu80fd%5Cu5f88%5Cu5927%5Cuff0c%5Cu8f93%5Cu51fa%2A%2A%2Aans%20mod%201e6%2A%2A%2A%5Cu7684%5Cu7b54%5Cu6848%5Cn%5Cn%5Cu611f%5Cu8c22%40ToBiChi%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B28%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A441%2C%22totalAccepted%22%3A136%2C%22pid%22%3A%22P3010%22%2C%22title%22%3A%22%5BUSACO11JAN%5D%5Cu5206%5Cu91d1Dividing%20the%20Gold%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A109714%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A2138%2C%22name%22%3A%22P3010%20%5BUSACO11JAN%5D%5Cu5206%5Cu91d1Dividing%20the%20Gold%22%2C%22slug%22%3A%22P3010%22%7D%7D%2C%7B%22id%22%3A44804%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2138%2C%22name%22%3A%22P3010%20%5BUSACO11JAN%5D%5Cu5206%5Cu91d1Dividing%20the%20Gold%22%2C%22slug%22%3A%22P3010%22%7D%7D%2C%7B%22id%22%3A43703%2C%22title%22%3A%22%5Cu5f3a%5Cu70c8%5Cu8981%5Cu6c42%5Cu6539%5Cu4e00%5Cu4e0b%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A2138%2C%22name%22%3A%22P3010%20%5BUSACO11JAN%5D%5Cu5206%5Cu91d1Dividing%20the%20Gold%22%2C%22slug%22%3A%22P3010%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1894%22%2C%22title%22%3A%22%5BUSACO4.2%5D%5Cu5b8c%5Cu7f8e%5Cu7684%5Cu725b%5Cu680fThe%20Perfect%20Stall%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2376%22%2C%22title%22%3A%22%5BUSACO09OCT%5D%5Cu6d25%5Cu8d34Allowance%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2888%22%2C%22title%22%3A%22%5BUSACO07NOV%5D%5Cu725b%5Cu680fCow%20Hurdles%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3133%22%2C%22title%22%3A%22%5BUSACO16JAN%5D%5Cu65e0%5Cu7ebf%5Cu7535%5Cu8054%5Cu7cfbRadio%20Contact%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5199%22%2C%22title%22%3A%22%5BUSACO19JAN%5DMountain%20View%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO11JAN%5D%5Cu5206%5Cu91d1Dividing%20the%20Gold%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO11JAN]分金Dividing the Gold</h1>
+<h2>题意翻译</h2>
+<div>Bessie 和 Canmuu 发现了一个有 ***N*** 个金币的袋子(1 <= N <= 250) 。第i个金币有一个价值 ***Vi***
+(1 <= Vi <= 2000)他们希望尽可能的把这堆金币平均分配，但有时这是不可能的。找出使两堆价值差最小的分配方案。如果不能完全平均分开，Bessie会获得较高价值那一堆。
+举例来说 ： 有一袋5个金币。价值分别是 2,1,8,4,16。
+Bessie 和Canmuu把金币分成两堆，第一堆是价值16的金币，另一堆是剩下的1+2+4+8 = 15 个金币，因此，差是1，这是最优分配方案下的唯一分法（即差最小的唯一分法），所以方案数为1。
+请你找出 **最小的差值** 以及在这个差值下分配的**方案数。**
+输入第一行 N
+之后每一行有一个Vi代表第i个金币的价值
+输出第一行是最小差值，
+第二行是分配方案数 ,由于方案数可能很大，输出***ans mod 1e6***的答案
+感谢@ToBiChi 提供翻译</div>
+<h2>题目描述</h2>
+<div>Bessie and Canmuu found a sack of N (1 <= N <= 250) gold coins that they wish to divide as evenly as possible. Coin i has value v\_i (1 <= V\_i <= 2,000). The cows would like to split the pile as evenly as they can, but that is not always possible. What is the smallest difference between the values of the two piles?
+In addition, the Bessie and Canmuu have found that there might be multiple ways to split the piles with that minimum difference. They would also like to know the number of ways to split the coins as fairly as possible. If it isn't possible to split the piles evenly, Bessie will get the higher-valued pile.
+By way of example, consider a sack of five coins of values: 2, 1, 8, 4, and 16. Bessie and Canmuu split the coins into two piles, one pile with one coin worth 16, and the other pile with the remaining coins worth 1+2+4+8=15. Therefore the difference is 16-15 = 1. This is the only way for them to split the coins this way, so the number of ways to split it evenly is just 1.
+Note that same-valued coins can be switched among the piles to increase the number of ways to perform an optimal split. Thus, the set of coins {1, 1, 1, 1} has six different ways to split into two optimal partitions, each with two coins.
+贝茜和Canmuu发现一麻袋的N（1 <= N的<= 250）金币 他们希望尽可能平均划分。我是有价的硬币 v\_i（1 <= V\_i <= 2,000）。奶牛想分裂桩作为 因为它们可以均匀，但这是不可能的。什么是 之间的差异最小两堆的价值？ 此外，贝茜和Canmuu发现，有可能 分裂与多种方式，最低的区别桩。他们 还想知道如何分裂硬币为数字 公正地反映了可能。如果它是不可能分裂桩均匀，贝西 将获得价值较高的桩。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: N
+\* Lines 2..N+1: Line i+1 contains a single integer: V\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer that is the smallest difference of two partitions.
+\* Line 2: A single integer that is the number of ways to split the coins with the minimum difference printed in line 1. Since this number can get quite large, print the remainder when divided by 1,000,000.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 
+2 
+1 
+8 
+4 
+16 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 
+1 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

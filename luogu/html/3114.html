@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO15JAN]踩踏Stampede - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376424:28C6Hc0N2loUc5r1hTkUhNm1EdjIBJn3/7X/1fSeNfg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20N%20cows%20%281%20%3C%3D%20N%20%3C%3D%2050%2C000%29%20appear%20to%20be%20stampeding%20along%20the%20road%20at%20the%20front%20of%20FJ%27s%20farm%2C%20but%20they%20are%20actually%20just%20running%20in%20a%20foot%20race%20to%20see%20which%20cow%20is%20the%20fastest.%5Cn%5CnViewed%20from%20above%2C%20each%20cow%20is%20represented%20by%20a%20unit-length%20horizontal%20line%20segment%2C%20specified%20by%20the%20coordinates%20of%20its%20left%20corner%20point%20at%20time%20t%3D0.%20%20For%20example%2C%20%28-3%2C6%29%20would%20specify%20a%20cow%20who%20at%20time%20t%3D0%20is%20represented%20by%20the%20segment%20from%20%28-3%2C6%29%20to%20%28-2%2C6%29.%20%20Each%20cow%20is%20moving%20to%20the%20right%20%28in%20the%20%2Bx%20direction%29%20at%20a%20certain%20rate%2C%20specified%20by%20the%20integer%20amount%20of%20time%20it%20takes%20her%20to%20move%201%20unit%20to%20the%20right.%5Cn%5CnFJ%20is%20not%20particularly%20thrilled%20that%20his%20cows%20are%20outside%20running%20instead%20of%20in%20the%20barn%20producing%20milk.%20%20He%20plans%20to%20admonish%20them%20with%20a%20stern%20lecture%20after%20the%20race%20ends.%20%20In%20order%20to%20determine%20which%20of%20his%20cows%20are%20participating%20in%20the%20race%2C%20FJ%20situates%20himself%20at%20%280%2C0%29%20and%20looks%20along%20a%20ray%20extending%20in%20the%20%2By%20direction.%20%20As%20the%20race%20unfolds%2C%20FJ%20sees%20a%20cow%20if%20she%20is%20ever%20the%20first%20cow%20visible%20along%20this%20ray.%20%20That%20is%2C%20a%20cow%20might%20not%20be%20visible%20if%20another%20cow%20is%20%5C%22in%20front%5C%22%20of%20her%20during%20the%20entire%20time%20she%20crosses%20FJ%27s%20line%20of%20sight.%5Cn%5CnPlease%20compute%20the%20number%20of%20cows%20FJ%20can%20see%20during%20the%20entire%20race.%5Cn%5CnDJ%5Cu7ad9%5Cu5728%5Cu539f%5Cu70b9%5Cu4e0a%5Cu5411y%5Cu8f74%5Cu6b63%5Cu534a%5Cu8f74%5Cu770b%5Cuff0c%5Cu7136%5Cu540e%5Cu6709%5Cu4e00%5Cu7fa4%5Cu5976%5Cu725b%5Cu4ece%5Cu4ed6%5Cu773c%5Cu524d%5Cu98de%5Cu8fc7%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu5976%5Cu725b%5Cu521d%5Cu59cb%5Cu90fd%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu8c61%5Cu9650%5Cuff0c%5Cu5c3e%5Cu5df4%5Cu5728%28Xi%2CYi%29%5Cuff0c%5Cu5934%5Cu5728%28Xi%2B1%2CYi%29%5Cuff0c%5Cu6bcfCi%5Cu79d2%5Cu5411%5Cu53f3%5Cu8d70%5Cu4e00%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu3002%20DJ%5Cu80fd%5Cu770b%5Cu89c1%5Cu4e00%5Cu5339%5Cu5976%5Cu725b%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5b83%5Cu8eab%5Cu4f53%5Cu4efb%5Cu610f%5Cu67d0%5Cu90e8%5Cu4f4dx%5Cu5750%5Cu6807%5Cu4e3a0%5Cu65f6%5Cuff0c%5Cu6ca1%5Cu6709%5Cu5176%5Cu5b83y%5Cu5750%5Cu6807%5Cu5c0f%5Cu4e8e%5Cu6b64%5Cu5976%5Cu725b%5Cu7684%5Cu5976%5Cu725b%5Cu8eab%5Cu4f53%5Cu67d0%5Cu90e8%5Cu4f4dx%5Cu5750%5Cu6807%5Cu4e3a0%5Cu3002%20%5Cu95eeDJ%5Cu80fd%5Cu770b%5Cu89c1%5Cu591a%5Cu5c11%5Cu5976%5Cu725b%5Cuff1f%5Cn%22%2C%22inputFormat%22%3A%22INPUT%3A%20%28file%20stampede.in%29%20%5Cn%5CnThe%20first%20line%20of%20the%20input%20contains%20N.%20%20Each%20of%20the%20following%20N%20lines%20describes%20a%20cow%20with%20three%20integers%20x%20y%20r%2C%20corresponding%20to%20a%20cow%20whose%20left%20endpoint%20is%20at%20%28x%2Cy%29%20at%20time%20t%3D0%2C%20moving%20to%20the%20right%20at%20a%20continuous%20speed%20of%201%20unit%20of%20distance%20every%20r%20units%20of%20time.%20%20The%20value%20of%20x%20is%20in%20the%20range%20-1000..-1%2C%20the%20value%20of%20y%20is%20in%20the%20range%201..1%2C000%2C000%20%28and%20distinct%20for%20every%20cow%2C%20to%20prevent%20any%20possible%20collisions%29%2C%20and%20the%20value%20of%20r%20is%20in%20the%20range%201..1%2C000%2C000.%20%5Cn%5Cn%22%2C%22outputFormat%22%3A%22OUTPUT%3A%20%28file%20stampede.out%29%20%5Cn%5CnA%20single%20integer%2C%20specifying%20the%20number%20of%20cows%20FJ%20can%20see%20during%20the%5Cn%5Cnentire%20race%20%28from%20t%3D0%20onward%29.%20%5Cn%5Cn%22%2C%22samples%22%3A%5B%5B%223%20%5Cr%5Cn-2%201%203%20%5Cr%5Cn-3%202%203%20%5Cr%5Cn-5%20100%201%20%5Cr%5Cn%22%2C%222%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22SOLUTION%20NOTES%3A%5Cn%5CnFJ%20can%20see%20cows%201%20and%202%20but%20not%20cow%203.%5Cn%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B32%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A324%2C%22totalAccepted%22%3A97%2C%22pid%22%3A%22P3114%22%2C%22title%22%3A%22%5BUSACO15JAN%5D%5Cu8e29%5Cu8e0fStampede%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3115%22%2C%22title%22%3A%22%5BUSACO15JAN%5D%5Cu725b%5Cu8def%5Cu7ebfCow%20Routing%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3116%22%2C%22title%22%3A%22%5BUSACO15JAN%5D%5Cu7ea6%5Cu4f1a%5Cu65f6%5Cu95f4Meeting%20Time%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3118%22%2C%22title%22%3A%22%5BUSACO15JAN%5D%5Cu7535%5Cu5f71%5Cu79fb%5Cu52a8Moovie%20Mooving%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF708C%22%2C%22title%22%3A%22Centroids%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4196%22%2C%22title%22%3A%22%5BCQOI2006%5D%5Cu51f8%5Cu591a%5Cu8fb9%5Cu5f62%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO15JAN%5D%5Cu8e29%5Cu8e0fStampede%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO15JAN]踩踏Stampede</h1>
+<h2>题目描述</h2>
+<div>Farmer John's N cows (1 <= N <= 50,000) appear to be stampeding along the road at the front of FJ's farm, but they are actually just running in a foot race to see which cow is the fastest.
+Viewed from above, each cow is represented by a unit-length horizontal line segment, specified by the coordinates of its left corner point at time t=0. For example, (-3,6) would specify a cow who at time t=0 is represented by the segment from (-3,6) to (-2,6). Each cow is moving to the right (in the +x direction) at a certain rate, specified by the integer amount of time it takes her to move 1 unit to the right.
+FJ is not particularly thrilled that his cows are outside running instead of in the barn producing milk. He plans to admonish them with a stern lecture after the race ends. In order to determine which of his cows are participating in the race, FJ situates himself at (0,0) and looks along a ray extending in the +y direction. As the race unfolds, FJ sees a cow if she is ever the first cow visible along this ray. That is, a cow might not be visible if another cow is "in front" of her during the entire time she crosses FJ's line of sight.
+Please compute the number of cows FJ can see during the entire race.
+DJ站在原点上向y轴正半轴看，然后有一群奶牛从他眼前飞过。这些奶牛初始都在第二象限，尾巴在(Xi,Yi)，头在(Xi+1,Yi)，每Ci秒向右走一个单位。 DJ能看见一匹奶牛当且仅当它身体任意某部位x坐标为0时，没有其它y坐标小于此奶牛的奶牛身体某部位x坐标为0。 问DJ能看见多少奶牛？
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>INPUT: (file stampede.in)
+The first line of the input contains N. Each of the following N lines describes a cow with three integers x y r, corresponding to a cow whose left endpoint is at (x,y) at time t=0, moving to the right at a continuous speed of 1 unit of distance every r units of time. The value of x is in the range -1000..-1, the value of y is in the range 1..1,000,000 (and distinct for every cow, to prevent any possible collisions), and the value of r is in the range 1..1,000,000.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>OUTPUT: (file stampede.out)
+A single integer, specifying the number of cows FJ can see during the
+entire race (from t=0 onward).
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 
+-2 1 3 
+-3 2 3 
+-5 100 1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 
+</code></pre>
+<h2>说明</h2>
+<div>SOLUTION NOTES:
+FJ can see cows 1 and 2 but not cow 3.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

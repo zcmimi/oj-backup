@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10MAR]仓配置Barn Allocation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573374659:GcuYCIxU6RBAQ1VsZ9/ars4ch+Bpy/tBikpMxzfgxCA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20recently%20opened%20up%20a%20new%20barn%20and%20is%20now%20accepting%20stall%20allocation%20requests%20from%20the%20cows%20since%20some%20of%20the%20stalls%20have%20a%20better%20view%20of%20the%20pastures.%5Cn%5CnThe%20barn%20comprises%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20stalls%20conveniently%20numbered%201..N%3B%20stall%20i%20has%20capacity%20C%5C%5C_i%20cows%20%281%20%3C%3D%20C%5C%5C_i%20%3C%3D%20100%2C000%29.%20Cow%20i%20may%20request%20a%20contiguous%20interval%20of%20stalls%20%28A%5C%5C_i%2C%20B%5C%5C_i%29%20in%20which%20to%20roam%20%281%20%3C%3D%20A%5C%5C_i%20%3C%3D%20N%3B%20A%5C%5C_i%20%3C%3D%20B%5C%5C_i%20%3C%3D%20N%29%2C%20i.e.%2C%20the%20cow%20would%20like%20to%20wander%20among%20all%20the%20stalls%20in%20the%20range%20A%5C%5C_i..B%5C%5C_i%20%28and%20the%20stalls%20must%20always%20have%20the%20capacity%20for%20her%20to%20wander%29.%5Cn%5CnGiven%20M%20%281%20%3C%3D%20M%20%3C%3D%20100%2C000%29%20stall%20requests%2C%20determine%20the%20maximum%20number%20of%20them%20that%20can%20be%20satisfied%20without%20exceeding%20stall%5Cn%5Cncapacities.%5Cn%5Cn%20%5Cn%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu6700%5Cu8fd1%5Cu5f00%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu65b0%5Cu7684%5Cu7272%5Cu53e3%5Cu68da%5Cu5c4b%5Cuff0c%5Cu5e76%5Cu4e14%5Cu73b0%5Cu5728%5Cu63a5%5Cu53d7%5Cu6765%5Cu81ea%5Cu5976%5Cu725b%5Cu7684%5Cu5206%5Cu914d%5Cu755c%5Cu680f%5Cu8bf7%5Cu6c42%5Cu56e0%5Cu4e3a%5Cu5176%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e9b%5Cu755c%5Cu680f%5Cu6709%5Cu66f4%5Cu597d%5Cu98ce%5Cu666f%5Cu3002%5Cn%5Cn%5Cu755c%5Cu680f%5Cu5305%5Cu62ecN%5Cu4e2a%5Cu755c%5Cu680f%281%20%5Cu2264%20N%20%5Cu2264%20100%2C000%29%5Cuff0c%5Cu65b9%5Cu4fbf%5Cu8d77%5Cu89c1%5Cuff0c%5Cu6211%5Cu4eec%5Cu628a%5Cu5b83%5Cu4eec%5Cu7f16%5Cu53f7%5Cu4e3a1..N%5Cuff0c%5Cu755c%5Cu680fi%5Cu80fd%5Cu5bb9%5Cu7eb3Ci%5Cu53ea%5Cu725b%281%20%5Cu2264%20Ci%20%5Cu2264%20100%2C000%29%5Cuff0c%5Cu7b2ci%5Cu53ea%5Cu725b%5Cu9700%5Cu8981%5Cu8fde%5Cu7eed%5Cu7f16%5Cu53f7%5Cu755c%5Cu680f%5Cuff08%5Cu4eceAi%5Cu5230Bi%5Cuff09%5Cu6765%5Cu6f2b%5Cu6b65%5Cu5176%5Cu4e2d%5Cuff0c%5Cn%5Cn%281%20%5Cu2264%20Ai%20%5Cu2264%20N%3B%20Ai%20%5Cu2264%20Bi%20%5Cu2264%20N%29%5Cuff0c%5Cu6362%5Cu8a00%5Cu4e4b%5Cuff0c%5Cu8fd9%5Cu53ea%5Cu725b%5Cu60f3%5Cu8981%5Cu5728%5Cu7f16%5Cu53f7%5Cu8303%5Cu56f4%5Cu4e3aAi..Bi%5Cu7684%5Cu755c%5Cu680f%5Cu6f2b%5Cu6b65%5Cuff08%5Cu6240%5Cu6709%5Cu5b83%5Cu60f3%5Cu8981%5Cu755c%5Cu680f%5Cu5fc5%5Cu987b%5Cu5b9e%5Cu65bd%5Cu4e3a%5Cu5b83%5Cu7a7a%5Cu51fa%5Cu4f4d%5Cu7f6e%5Cu6765%5Cu4f9b%5Cu5b83%5Cu6563%5Cu6b65%5Cuff09%5Cn%5Cn%5Cu7ed9%5Cu51faM%5Cu4e2a%5Cu755c%5Cu680f%5Cu5206%5Cu914d%5Cu8bf7%5Cu6c42%5Cuff081%20%5Cu2264%20M%20%5Cu2264%20100%2C000%5Cuff09%5Cuff0c%5Cu56de%5Cu7b54%5Cu6700%5Cu591a%5Cu80fd%5Cu6ee1%5Cu8db3%5Cu591a%5Cu5c11%5Cu53ea%5Cu725b%5Cu7684%5Cu8981%5Cu6c42%5Cuff08%5Cu4e0d%5Cu589e%5Cu52a0%5Cu53e6%5Cu5916%5Cu755c%5Cu680f%5Cuff09%5Cn%5Cn%5Cu8003%5Cu8651%5Cu4ee5%5Cu4e0b%5Cu4f8b%5Cu5b50%5Cuff1a%5Cn%5Cn%60%60%60cpp%5Cn%5Cu755c%5Cu680f%5Cu53f7%3A%20%20%20%201%20%20%202%20%20%203%20%20%204%20%20%205%5Cn%20%20%20%20%20%20%20%20%20%20%20%2B---%2B---%2B---%2B---%2B---%2B%5Cn%5Cu5bb9%5Cu7eb3%5Cu7a7a%5Cu95f4%3A%20%20%7C%201%20%7C%203%20%7C%202%20%7C%201%20%7C%203%20%7C%20%20%5Cn%20%20%20%20%20%20%20%20%20%20%20%2B---%2B---%2B---%2B---%2B---%2B%5CnCow%201%20%20%20%20%20%20%20XXXXXXXXXXX%20%20%20%20%20%20%20%20%20%20%20%20%20%281%2C%203%29%5CnCow%202%20%20%20%20%20%20%20%20%20%20%20XXXXXXXXXXXXXXX%20%20%20%20%20%282%2C%205%29%5CnCow%203%20%20%20%20%20%20%20%20%20%20%20XXXXXXX%20%20%20%20%20%20%20%20%20%20%20%20%20%282%2C%203%29%5CnCow%204%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20XXXXXXX%20%20%20%20%20%284%2C%205%29%5Cn%60%60%60%5Cn%5Cu7ea6%5Cu7ff0%5Cu663e%5Cu7136%5Cu4e0d%5Cu80fd%5Cu6ee1%5Cu8db3%5Cu6240%5Cu6709%5Cu7684%5Cu725b%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu755c%5Cu680f3%5Cuff0c4%5Cu8bf7%5Cu6c42%5Cu592a%5Cu591a%5Cu4e86%5Cn%5Cn%5Cu7ecf%5Cu8fc7%5Cu8bd5%5Cu9a8c%5Cuff0c%5Cu6211%5Cu4eec%5Cu53d1%5Cu73b0%5Cuff0c%5Cu6211%5Cu4eec%5Cu80fd%5Cu6ee1%5Cu8db3%5Cu725b1%5Cuff0c3%5Cuff0c4%5Cu9700%5Cu8981%5Cuff0c%5Cu6240%5Cu4ee5%5Cu8fd9%5Cu7ec4%5Cu6570%5Cu636e%5Cu7b54%5Cu6848%5Cu4e3a3%5Cn%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e24%5Cu4e2a%5Cu4ee5%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cuff1aN%2CM%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5230%5Cu7b2cN%2B1%5Cu884c%5Cuff1a%5Cu7b2ci%2B1%5Cu884c%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1aCi%5Cn%5Cn%5Cu7b2cN%2B2%5Cu5230%5Cu7b2cN%2BM%2B1%5Cu884c%5Cuff1a%5Cu7b2ci%2BN%2B1%20%5Cu5305%5Cu62ec%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570Ai%5Cu3001Bi%5Cn%22%2C%22outputFormat%22%3A%22%5Cu4ec5%5Cu4e00%5Cu884c%5Cuff1a%5Cu80fd%5Cu6ee1%5Cu8db3%5Cu7684%5Cu6700%5Cu5927%5Cu9700%5Cu8981%5Cn%22%2C%22samples%22%3A%5B%5B%225%204%5Cn1%5Cn3%5Cn2%5Cn1%5Cn3%5Cn1%203%5Cn2%205%5Cn2%203%5Cn4%205%22%2C%223%22%5D%5D%2C%22hint%22%3A%22Source%3A%20USACO%202010%20March%20Gold%5Cn%5CnTranslator%3A%20%40chrome01%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B7%2C27%2C42%2C46%2C113%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A904%2C%22totalAccepted%22%3A381%2C%22pid%22%3A%22P1937%22%2C%22title%22%3A%22%5BUSACO10MAR%5D%5Cu4ed3%5Cu914d%5Cu7f6eBarn%20Allocation%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A77663%2C%22title%22%3A%22%5Cu8fd9%5Cu4e24%5Cu8005%5Cu6709%5Cu533a%5Cu522b%5Cu5417%22%2C%22forum%22%3A%7B%22id%22%3A1010%2C%22name%22%3A%22P1937%20%5BUSACO10MAR%5D%5Cu4ed3%5Cu914d%5Cu7f6eBarn%20Allocation%22%2C%22slug%22%3A%22P1937%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1948%22%2C%22title%22%3A%22%5BUSACO08JAN%5D%5Cu7535%5Cu8bdd%5Cu7ebfTelephone%20Lines%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2061%22%2C%22title%22%3A%22%5BUSACO07OPEN%5D%5Cu57ce%5Cu5e02%5Cu7684%5Cu5730%5Cu5e73%5Cu7ebfCity%20Horizon%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3384%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6811%5Cu94fe%5Cu5256%5Cu5206%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2846%22%2C%22title%22%3A%22%5BUSACO08NOV%5D%5Cu5149%5Cu5f00%5Cu5173Light%20Switching%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3097%22%2C%22title%22%3A%22%5BUSACO13DEC%5D%5Cu6700%5Cu4f18%5Cu6324%5Cu5976Optimal%20Milking%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10MAR%5D%5Cu4ed3%5Cu914d%5Cu7f6eBarn%20Allocation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10MAR]仓配置Barn Allocation</h1>
+<h2>题目描述</h2>
+<div>Farmer John recently opened up a new barn and is now accepting stall allocation requests from the cows since some of the stalls have a better view of the pastures.
+The barn comprises N (1 <= N <= 100,000) stalls conveniently numbered 1..N; stall i has capacity C\_i cows (1 <= C\_i <= 100,000). Cow i may request a contiguous interval of stalls (A\_i, B\_i) in which to roam (1 <= A\_i <= N; A\_i <= B\_i <= N), i.e., the cow would like to wander among all the stalls in the range A\_i..B\_i (and the stalls must always have the capacity for her to wander).
+Given M (1 <= M <= 100,000) stall requests, determine the maximum number of them that can be satisfied without exceeding stall
+capacities.
+农夫约翰最近开了一个新的牲口棚屋，并且现在接受来自奶牛的分配畜栏请求因为其中的一些畜栏有更好风景。
+畜栏包括N个畜栏(1 ≤ N ≤ 100,000)，方便起见，我们把它们编号为1..N，畜栏i能容纳Ci只牛(1 ≤ Ci ≤ 100,000)，第i只牛需要连续编号畜栏（从Ai到Bi）来漫步其中，
+(1 ≤ Ai ≤ N; Ai ≤ Bi ≤ N)，换言之，这只牛想要在编号范围为Ai..Bi的畜栏漫步（所有它想要畜栏必须实施为它空出位置来供它散步）
+给出M个畜栏分配请求（1 ≤ M ≤ 100,000），回答最多能满足多少只牛的要求（不增加另外畜栏）
+考虑以下例子：
+```cpp
+畜栏号: 1 2 3 4 5
++---+---+---+---+---+
+容纳空间: | 1 | 3 | 2 | 1 | 3 |
++---+---+---+---+---+
+Cow 1 XXXXXXXXXXX (1, 3)
+Cow 2 XXXXXXXXXXXXXXX (2, 5)
+Cow 3 XXXXXXX (2, 3)
+Cow 4 XXXXXXX (4, 5)
+```
+约翰显然不能满足所有的牛，因为畜栏3，4请求太多了
+经过试验，我们发现，我们能满足牛1，3，4需要，所以这组数据答案为3
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行包括两个以空格隔开的正整数：N,M
+第二行到第N+1行：第i+1行包括一个整数：Ci
+第N+2到第N+M+1行：第i+N+1 包括两个整数Ai、Bi
+</div>
+<h3>输出格式</h3>
+<br />
+<div>仅一行：能满足的最大需要
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 4
+1
+3
+2
+1
+3
+1 3
+2 5
+2 3
+4 5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3</code></pre>
+<h2>说明</h2>
+<div>Source: USACO 2010 March Gold
+Translator: @chrome01
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

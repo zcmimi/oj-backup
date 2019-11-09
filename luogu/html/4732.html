@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[BalticOI 2015]Editor - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573381740:Y0LjGjjt1D2seefTvoKtkkURUahBNiiou0+Z8IWGJ7M=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Byteasar%20is%20a%20programmer%20who%20works%20on%20a%20revolutionary%20text%20editor.%20In%20the%20editor%20there%20are%20two%20types%20of%20operations%3A%20one%20type%20allows%20to%20edit%20text%20in%20the%20editor%2C%20and%20the%20other%20type%20allows%20to%20undo%20previously%20performed%20operations.%20One%20of%20the%20innovative%20features%20of%20this%20editor%20is%20a%20multilevel%20undo%20operation.%20It%20works%20as%20follows.%5Cn%5CnWe%20say%20that%20a%20text%20editing%20operation%20is%20an%20operation%20of%20level%20%240%24.%20An%20undo%20operation%20of%20level%20%24i%28for%20%5C%5C%20i%20%3D%201%2C2%2C...%29%24%20undoes%20the%20last%20operation%20of%20level%20at%20most%20%24i-1%24%20which%20is%20not%20undone.%20For%20instance%2C%20an%20undo%20operation%20of%20level%20%241%24%20can%20undo%20only%20editing%20operations%2C%20and%20an%20undo%20operation%20of%20level%20%242%24%20can%20undo%20editing%20operations%20as%20well%20as%20undo%20operations%20of%20level%20%241%24%20%28but%20no%20undo%20operations%20of%20greater%20levels%29.%5Cn%5CnMore%20formally%2C%20each%20of%20the%20already%20performed%20operations%20can%20be%20in%20two%20states%3A%20active%20or%20undone.%20Let%20%24X%24%20be%20one%20of%20the%20operations.%20Just%20after%20performing%20the%20operation%20%24X%24%2C%20it%20is%20in%20the%20state%20active.%20If%20%24X%24%20is%20an%20undo%20operation%20of%20level%20%24i%24%2C%20we%20find%20the%20most%20recent%20operation%20in%20state%20active%20of%20level%20at%20most%20%24i-1%24%20%28denote%20it%20by%20%24X_1%24%29%20and%20change%20the%20state%20of%20the%20operation%20X1%20to%20undone.%20If%20X1%20is%20also%20an%20undo%20operation%2C%20we%20must%20change%20to%20active%20the%20state%20of%20the%20operation%20which%20%24X_1%24%20had%20undone%20%28say%20%24X_2%24%29.%20We%20continue%20in%20the%20same%20manner%3A%20whenever%5Cnthe%20state%20of%20an%20undo%20operation%20%24X_j%24%20which%20had%20previously%20undone%20some%20operation%20%24X_%7Bj%2B1%7D%24%20changes%2C%20we%20must%20also%20change%20the%20state%20of%20the%20operation%20%24X_%7Bj%2B1%7D%24%28which%2C%20of%20course%2C%20may%20result%20in%20changing%20states%20of%20further%20operations%29.%5Cn%5CnThe%20whole%20chain%20of%20state%20modifications%20finishes%20when%20an%20editing%20operation%20is%20reached.%5Cn%5CnFor%20simplicity%2C%20the%20current%20contents%20of%20text%20in%20the%20editor%20will%20be%20specified%20by%20a%20single%20integer%20s%2C%20called%20the%20editor%20state%20%28equal%20to%20%240%24%20at%20the%20beginning%29.%20Each%20editing%20operation%20specifies%20the%20editor%20state%20that%20it%20produces.%5Cn%5CnThe%20editor%20state%20depends%20on%20the%20last%20editing%20operation%20in%20the%20state%20active.%20Help%20Byteasar%20and%20write%20a%20program%20which%20keeps%20track%20of%20the%20editor%20state.%5Cn%5CnLet%20us%20see%20this%20in%20action%3A%20the%20following%20table%20shows%20some%20operations%20performed%20by%20Byteasar%20and%20the%20editor%20state%20after%20performing%20each%20of%20them.%20The%20symbol%20%24E_s%24%20denotes%20an%20editing%20operation%20which%20changes%20the%20editor%20state%20to%20%24s%24%2C%20whereas%20the%20symbol%20%24U_i%24%20denotes%20an%20undo%20operation%20of%20level%20%24i%24.%5Cn%5Cn%21%5B0%5D%28https%3A%5C%2F%5C%2Fs1.ax1x.com%5C%2F2018%5C%2F07%5C%2F05%5C%2FPV0kdI.png%29%5Cn%5CnFirst%2C%20Byteasar%20performed%20three%20editing%20operations.%20The%20editor%20state%20changed%20from%20%240%24%20to%20%241%24%2C%20then%20to%20%242%24%2C%20and%20finally%20to%20%245%24.%20Next%2C%20he%20performed%20two%20undo%20operations%20of%20level%20%241%24%2C%20which%20undid%20the%20operations%20%24E_5%24%20and%20%24E_2%24%28changing%5Cntheir%20state%20to%20undone%29.%20Thus%20the%20editor%20state%20was%20restored%20to%20%241%24.%20The%20following%20undo%20operation%20of%20level%20%243%24%20undid%20the%20last%20operation%20%24U_1%24%28changing%20its%20state%20to%20undone%29%2C%20consequently%20restoring%20the%20operation%20%24E_2%24%28changing%20its%20state%5Cnback%20to%20active%29.%20As%20a%20result%20the%20editor%20state%20changed%20once%20again%20to%20%242%24.%20Operation%20%24U_2%24%20undid%20the%20operation%20%24E_4%24%2Coperation%20%24U_1%24%20once%20again%20undid%20the%20restored%20operation%20%24E_2%24%2C%20the%20last%20operation%20%24U_1%24%20undid%20the%20operation%20%24E_1%24%2C%20and%20the%20final%20operation%20is%20%24E_1%24.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20positive%20integer%20%24n%24%2C%20specifying%20the%20number%20of%20operations%20performed%20by%20Byteasar.%20The%20next%20%24n%24%20lines%20contain%20descriptions%20of%20operations%2C%20one%20per%20line%2C%20each%20being%20an%20integer%20%24a_i%28-n%20%5C%5Cle%20a_i%20%5C%5Cle%20n%2C%20a_i%20%5Cu2260%200%29%24.%20If%20%24a_i%3E%200%24%2C%20then%20it%20specifies%20an%20editing%20operation%20which%20modifies%20the%20editor%20state%20to%20%24a_i%24.%20If%20%24a_i%3C%200%24%2Cthen%20it%20specifies%20an%20undo%20operation%20of%20level%20%24-a_i%24.%20You%20can%20assume%20that%20for%20every%20undo%20operation%20there%20will%20be%20some%20operation%20in%20the%20state%20active%20of%20smaller%20level%20to%20undo.%22%2C%22outputFormat%22%3A%22Your%20program%20should%20output%20%24n%24%20lines.%20The%20%24i-th%24%20line%20should%20contain%20one%20integer%20specifying%20the%20editor%20state%20after%20performing%20the%20first%20%24i%24%20operations%20from%20the%20input.%22%2C%22samples%22%3A%5B%5B%2211%5Cn1%5Cn2%5Cn5%5Cn-1%5Cn-1%5Cn-3%5Cn4%5Cn-2%5Cn-1%5Cn-1%5Cn1%22%2C%221%5Cn2%5Cn5%5Cn2%5Cn1%5Cn2%5Cn4%5Cn2%5Cn1%5Cn0%5Cn1%22%5D%5D%2C%22hint%22%3A%22%5Cu4ee5%5Cu4e0b%5Cu5b50%5Cu4efb%5Cu52a1%5Cu548c%5Cu8bc4%5Cu6d4b%5Cu65e0%5Cu5173%5Cuff0c%5Cu4ec5%5Cu4f9b%5Cu53c2%5Cu8003%5Cu3002%5Cn%5Cn%21%5B0%5D%28https%3A%5C%2F%5C%2Fs1.ax1x.com%5C%2F2018%5C%2F07%5C%2F05%5C%2FPV0nSS.png%29%5Cn%5Cn%5Cuff08%5Cu4f46%5Cu662f%5Cu6211%5Cu5f00%5Cu4e0d%5Cu4e86%204%20%5Cu4e2a%20Subtask%5Cuff0c%5Cu6240%5Cu4ee5%5Cu5c31%5Cu653e%5Cu5728%5Cu4e00%5Cu8d77%5Cu6d4b%5Cu4e86%5Cuff09%22%2C%22provider%22%3A%7B%22uid%22%3A41051%2C%22name%22%3A%22%5Cu548c%5Cu6cc9%5Cu6b63%5Cu5b97%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Blue%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%2C2000%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B32%2C107%2C319%2C334%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A4%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22P4732%22%2C%22title%22%3A%22%5BBalticOI%202015%5DEditor%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BBalticOI%202015%5DEditor%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[BalticOI 2015]Editor</h1>
+<h2>题目描述</h2>
+<div>Byteasar is a programmer who works on a revolutionary text editor. In the editor there are two types of operations: one type allows to edit text in the editor, and the other type allows to undo previously performed operations. One of the innovative features of this editor is a multilevel undo operation. It works as follows.
+We say that a text editing operation is an operation of level $0$. An undo operation of level $i(for \ i = 1,2,...)$ undoes the last operation of level at most $i-1$ which is not undone. For instance, an undo operation of level $1$ can undo only editing operations, and an undo operation of level $2$ can undo editing operations as well as undo operations of level $1$ (but no undo operations of greater levels).
+More formally, each of the already performed operations can be in two states: active or undone. Let $X$ be one of the operations. Just after performing the operation $X$, it is in the state active. If $X$ is an undo operation of level $i$, we find the most recent operation in state active of level at most $i-1$ (denote it by $X_1$) and change the state of the operation X1 to undone. If X1 is also an undo operation, we must change to active the state of the operation which $X_1$ had undone (say $X_2$). We continue in the same manner: whenever
+the state of an undo operation $X_j$ which had previously undone some operation $X_{j+1}$ changes, we must also change the state of the operation $X_{j+1}$(which, of course, may result in changing states of further operations).
+The whole chain of state modifications finishes when an editing operation is reached.
+For simplicity, the current contents of text in the editor will be specified by a single integer s, called the editor state (equal to $0$ at the beginning). Each editing operation specifies the editor state that it produces.
+The editor state depends on the last editing operation in the state active. Help Byteasar and write a program which keeps track of the editor state.
+Let us see this in action: the following table shows some operations performed by Byteasar and the editor state after performing each of them. The symbol $E_s$ denotes an editing operation which changes the editor state to $s$, whereas the symbol $U_i$ denotes an undo operation of level $i$.
+![0](https://s1.ax1x.com/2018/07/05/PV0kdI.png)
+First, Byteasar performed three editing operations. The editor state changed from $0$ to $1$, then to $2$, and finally to $5$. Next, he performed two undo operations of level $1$, which undid the operations $E_5$ and $E_2$(changing
+their state to undone). Thus the editor state was restored to $1$. The following undo operation of level $3$ undid the last operation $U_1$(changing its state to undone), consequently restoring the operation $E_2$(changing its state
+back to active). As a result the editor state changed once again to $2$. Operation $U_2$ undid the operation $E_4$,operation $U_1$ once again undid the restored operation $E_2$, the last operation $U_1$ undid the operation $E_1$, and the final operation is $E_1$.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a positive integer $n$, specifying the number of operations performed by Byteasar. The next $n$ lines contain descriptions of operations, one per line, each being an integer $a_i(-n \le a_i \le n, a_i ≠ 0)$. If $a_i> 0$, then it specifies an editing operation which modifies the editor state to $a_i$. If $a_i< 0$,then it specifies an undo operation of level $-a_i$. You can assume that for every undo operation there will be some operation in the state active of smaller level to undo.</div>
+<h3>输出格式</h3>
+<br />
+<div>Your program should output $n$ lines. The $i-th$ line should contain one integer specifying the editor state after performing the first $i$ operations from the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>11
+1
+2
+5
+-1
+-1
+-3
+4
+-2
+-1
+-1
+1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+2
+5
+2
+1
+2
+4
+2
+1
+0
+1</code></pre>
+<h2>说明</h2>
+<div>以下子任务和评测无关，仅供参考。
+![0](https://s1.ax1x.com/2018/07/05/PV0nSS.png)
+（但是我开不了 4 个 Subtask，所以就放在一起测了）</div>
+</article>
+</div>
+</div>
+</body>
+</html>

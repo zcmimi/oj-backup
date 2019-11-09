@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO12NOV]同时平衡线Concurrently Balanced Strings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376350:beUu9Kv9H5YF4O+uhtwM1QPAcoGVwO388vO93vmpc0E=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%27s%20cows%20are%20all%20of%20a%20very%20peculiar%20breed%20known%20for%20its%20distinctive%20appearance%20--%20each%20cow%20is%20marked%20with%20a%20giant%20spot%20on%20its%20hide%20in%20the%20shape%20of%20a%20parenthesis%20%28depending%20on%20the%20direction%20the%20cow%20is%20facing%2C%20this%20could%20look%20like%20either%20a%20left%20or%20a%20right%20parenthesis%29.%5Cn%5CnOne%20morning%2C%20Farmer%20John%20arranges%20his%20cows%20into%20K%20lines%20each%20of%20N%20cows%20%281%20%3C%3D%20K%20%3C%3D%2010%2C%201%20%3C%3D%20N%20%3C%3D%2050%2C000%29.%20%20The%20cows%20are%20facing%20rather%20arbitrary%20directions%2C%20so%20this%20lineup%20can%20be%20described%20by%20K%20length-N%20strings%20of%20parentheses%20S%5C%5C_1%2C...%2C%20S%5C%5C_k.%20%20Farmer%20John%20notes%20with%20great%20excitement%20that%20some%20ranges%20of%20his%20cows%20are%20%5C%22concurrently%20balanced%5C%22%2C%20where%20a%20range%20i...j%20of%20cows%20is%20concurrently%20balanced%20only%20if%20each%20of%20the%20strings%20S%5C%5C_1%2C...%2C%20S%5C%5C_k%20is%20balanced%20in%20that%20range%20%28we%20define%20what%20it%20means%20for%20a%20single%20string%20of%20parentheses%20to%20be%20balanced%20below%29.%20For%20instance%2C%20if%20K%20%3D%203%2C%20and%20we%20have%5Cn%5CnS%5C%5C_1%20%3D%20%29%28%29%28%28%28%29%29%29%29%28%28%29%29%20%5Cn%5CnS%5C%5C_2%20%3D%20%28%29%28%28%29%28%29%28%29%28%28%28%29%29%20%5Cn%5CnS%5C%5C_3%20%3D%20%29%29%29%28%28%29%28%29%29%29%28%28%29%29%20%5Cn%5Cn1111%5Cn01234567890123%5Cn%5CnThen%20the%20range%20%5B3...8%5D%20is%20concurrently%20balanced%20because%20S%5C%5C_1%5B3...8%5D%20%3D%20%28%28%28%29%29%29%2C%20S%5C%5C_2%5B3...8%5D%20%3D%20%28%29%28%29%28%29%2C%20and%20S%5C%5C_3%5B3...8%5D%20%3D%20%28%28%29%28%29%29.%20The%20ranges%20%5B10...13%5D%20and%20%5B11...12%5D%20are%20also%20concurrently%20balanced.%5Cn%5CnGiven%20K%20length-N%20strings%20of%20parentheses%2C%20help%20Farmer%20John%20count%20the%20number%20of%20pairs%20%28i%2Cj%29%20such%20that%20the%20range%20i...j%20is%20concurrently%20balanced.%5Cn%5CnThere%20are%20several%20ways%20to%20define%20what%20it%20means%20for%20a%20single%20string%20of%20parentheses%20to%20be%20%5C%22balanced%5C%22.%20%20Perhaps%20the%20simplest%20definition%20is%20that%20there%20must%20be%20the%20same%20total%20number%20of%20%28%27s%20and%20%29%27s%2C%20and%20for%20any%20prefix%20of%20the%20string%2C%20there%20must%20be%20at%20least%20as%20many%20%28%27s%20as%20%29%27s.%20%20For%20example%2C%20the%20following%20strings%20are%20all%20balanced%3A%5Cn%5Cn%28%29%20%5Cn%28%28%29%29%20%5Cn%28%29%28%28%29%28%29%29%20%5Cn%5Cnwhile%20these%20are%20not%3A%5Cn%5Cn%29%28%20%5Cn%28%29%29%28%20%5Cn%28%28%28%29%29%29%29%20%5Cn%5Cn%5Cu7ed9%5Cu51fak%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3an%5Cu7684%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%5Cuff0c%5Cu95ee%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu533a%5Cu95f4%5Cu5728k%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu5bf9%5Cu5e94%5Cu7684%5Cu5b50%5Cu4e32%5Cu5747%5Cu5e73%5Cu8861%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20integers%2C%20K%20and%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..K%2B1%3A%20Each%20line%20contains%20a%20length-N%20string%20of%20parentheses.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%2C%20the%20number%20of%20concurrently%20balanced%20ranges.%5Cn%22%2C%22samples%22%3A%5B%5B%223%2014%20%5Cr%5Cn%29%28%29%28%28%28%29%29%29%29%28%28%29%29%20%5Cr%5Cn%28%29%28%28%29%28%29%28%29%28%28%28%29%29%20%5Cr%5Cn%29%29%29%28%28%29%28%29%29%29%28%28%29%29%20%5Cr%5Cn%22%2C%223%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B29%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A96%2C%22totalAccepted%22%3A23%2C%22pid%22%3A%22P3059%22%2C%22title%22%3A%22%5BUSACO12NOV%5D%5Cu540c%5Cu65f6%5Cu5e73%5Cu8861%5Cu7ebfConcurrently%20Balanced%20Strings%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3036%22%2C%22title%22%3A%22%5BUSACO16DEC%5DLasers%20and%20Mirrors%5Cu6fc0%5Cu5149%5Cu548c%5Cu955c%5Cu5b50%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3060%22%2C%22title%22%3A%22%5BUSACO12NOV%5D%5Cu5e73%5Cu8861%5Cu6811Balanced%20Trees%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3242%22%2C%22title%22%3A%22%5BHNOI2015%5D%5Cu63a5%5Cu6c34%5Cu679c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3298%22%2C%22title%22%3A%22%5BSDOI2013%5D%5Cu6cc9%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4161%22%2C%22title%22%3A%22%5BSCOI2009%5D%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO12NOV%5D%5Cu540c%5Cu65f6%5Cu5e73%5Cu8861%5Cu7ebfConcurrently%20Balanced%20Strings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO12NOV]同时平衡线Concurrently Balanced Strings</h1>
+<h2>题目描述</h2>
+<div>Farmer John's cows are all of a very peculiar breed known for its distinctive appearance -- each cow is marked with a giant spot on its hide in the shape of a parenthesis (depending on the direction the cow is facing, this could look like either a left or a right parenthesis).
+One morning, Farmer John arranges his cows into K lines each of N cows (1 <= K <= 10, 1 <= N <= 50,000). The cows are facing rather arbitrary directions, so this lineup can be described by K length-N strings of parentheses S\_1,..., S\_k. Farmer John notes with great excitement that some ranges of his cows are "concurrently balanced", where a range i...j of cows is concurrently balanced only if each of the strings S\_1,..., S\_k is balanced in that range (we define what it means for a single string of parentheses to be balanced below). For instance, if K = 3, and we have
+S\_1 = )()((())))(())
+S\_2 = ()(()()()((())
+S\_3 = )))(()()))(())
+1111
+01234567890123
+Then the range [3...8] is concurrently balanced because S\_1[3...8] = ((())), S\_2[3...8] = ()()(), and S\_3[3...8] = (()()). The ranges [10...13] and [11...12] are also concurrently balanced.
+Given K length-N strings of parentheses, help Farmer John count the number of pairs (i,j) such that the range i...j is concurrently balanced.
+There are several ways to define what it means for a single string of parentheses to be "balanced". Perhaps the simplest definition is that there must be the same total number of ('s and )'s, and for any prefix of the string, there must be at least as many ('s as )'s. For example, the following strings are all balanced:
+()
+(())
+()(()())
+while these are not:
+)(
+())(
+((())))
+给出k个长度为n的括号序列，问有多少个区间在k个序列中对应的子串均平衡。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two integers, K and N.
+\* Lines 2..K+1: Each line contains a length-N string of parentheses.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer, the number of concurrently balanced ranges.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 14 
+)()((())))(()) 
+()(()()()((()) 
+)))(()()))(()) 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

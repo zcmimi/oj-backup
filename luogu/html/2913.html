@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO08OCT]车轮旋转Wheel Rotation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376136:LwNEt7YxkEIH9JztD5VA/OGhqu3Ew/5i6zU6hVXb8cM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20has%20an%20old-time%20thresher%20%28wheat%20harvester%29%20that%20requires%20belts%20to%20be%20installed%20on%20various%20gears%20to%20turn%20the%20parts.%20The%20engine%20drives%20pulley%201%20in%20a%20clockwise%20direction%20which%20attaches%20via%20a%20belt%20to%20pulley%202.%20Pulley%202%20attaches%20via%20a%20belt%20to%20pulley%203%20and%20so%20on%20through%20a%20total%20of%20N%20%282%20%3C%3D%20N%20%3C%3D%201%2C000%29%20pulleys%20%28and%20N-1%20belts%29.%5Cn%5CnThe%20diagram%20above%20depicts%20the%20two%20ways%20a%20belt%20can%20be%20installed%20between%20two%20gears.%20In%20this%20illustration%2C%20pulley%201%27s%20belt%20directly%20drives%20pulley%202%20%28a%20%27straight%27%20connection%29%20and%20thus%20they%20will%20rotate%20in%20the%20same%20direction.%20Pulley%203%20drives%20pulley%204%20via%20a%20%27crossed%20belt%27%20that%20reverses%20the%20direction%20of%20the%20rotation.%5Cn%5CnGiven%20a%20list%20of%20the%20belt%20types%20that%20connect%20the%20pulleys%20along%20with%20the%20fact%20that%20pulley%201%20is%20driven%20in%20a%20clockwise%20direction%20by%20the%20engine%2C%20determine%20the%20drive%20direction%20of%20pulley%20N.%20Each%20belt%20is%20described%20by%20three%20integers%3A%5Cn%5Cn%60%60%60cpp%5Cn%2A%20S_i%20--%20the%20driving%20%28source%29%20pulley%20%5Cn%2A%20D_i%20--%20the%20driven%20%28destination%29%20pulley%20%5Cn%2A%20C_i%20--%20the%20connection%20type%20%280%3Dstraight%2C%201%3Dcrossed%29%20%5CnUnfortunately%2C%20FJ%20lists%20the%20belts%20in%20random%20order.%20%5CnBy%20way%20of%20example%2C%20consider%20the%20illustration%20below.%20N%20%3D%204%2C%20and%20pulley%201%20is%20driven%20clockwise%20by%20the%20thresher%20engine.%20Straight%20%5Cnbelts%20drive%20pulley%202%20and%20then%20pulley%203%2C%20so%20they%20rotate%20clockwise.%20The%20crosswise%20belt%20reverses%20the%20rotation%20direction%20so%20pulley%204%20%28pulley%20N%29%20rotates%20counterclockwise.%20%5Cn%60%60%60%5CnPOINTS%3A%2070%5Cn%5Cu7ea6%5Cu7ff0%5Cu6709%5Cu4e00%5Cu4e2a%5Cu8fc7%5Cu65f6%5Cu7684%5Cu6536%5Cu5272%5Cu673a%5Cuff0c%5Cu9700%5Cu8981%5Cu5728%5Cu5b83%5Cu7684%5Cu5404%5Cu79cd%5Cu6ed1%5Cu8f6e%5Cu4e0a%5Cu88c5%5Cu914d%5Cu76ae%5Cu5e26%5Cu624d%5Cu80fd%5Cu8ba9%5Cu6536%5Cu5272%5Cu673a%5Cu7684%5Cu5404%5Cu4e2a%5Cu90e8%5Cu5206%5Cu8fd0%5Cu4f5c%5Cu8d77%20%5Cu6765.%5Cu5f15%5Cu64ce%5Cu80fd%5Cu591f%5Cu9a71%5Cu52a8%5Cu6ed1%5Cu8f6e1%5Cu5411%5Cu987a%5Cu65f6%5Cu9488%5Cu65b9%5Cu5411%5Cu8f6c%5Cu52a8%5Cuff0c%5Cu6ed1%5Cu8f6e1%5Cu901a%5Cu8fc7%5Cu4e00%5Cu6761%5Cu76ae%5Cu5e26%5Cu53c8%5Cu8fde%5Cu63a5%5Cu5230%5Cu6ed1%5Cu8f6e2.%5Cu6ed1%5Cu8f6e2%5Cu53c8%5Cu901a%5Cu8fc7%5Cu4e00%20%5Cu6761%5Cu76ae%5Cu5e26%5Cu8fde%5Cu63a5%5Cu5230%5Cu6ed1%5Cu8f6e3%5Cuff0c%5Cu7b49%5Cu7b49%5Cuff0c%5Cu603b%5Cu5171%5Cu6709N%282%20%3C%3D%20N%20%3C%3D%201000%29%5Cu4e2a%5Cu6ed1%5Cu8f6e%5Cu548cN%20-%201%5Cu6761%5Cu76ae%5Cu5e26.%5Cn%5Cn%5Cu76ae%5Cu5e26%5Cu8fde%5Cu63a5%5Cu4e24%5Cu4e2a%5Cu6ed1%5Cu8f6e%5Cu6709%5Cu4e24%5Cu79cd%5Cu65b9%5Cu5f0f%5Cuff1a%5Cu76f4%5Cu63a5%5Cu8fde%5Cu63a5%5Cu548c%5Cu4ea4%5Cu53c9%5Cu8fde%5Cu63a5.%5Cu76f4%5Cu63a5%5Cu8fde%5Cu63a5%5Cu7684%5Cu4e24%5Cu4e2a%5Cu6ed1%5Cu8f6e%5Cu65cb%5Cu8f6c%5Cu65b9%5Cu5411%5Cu76f8%5Cu540c%5Cuff0c%20%5Cu5373%5Cu540c%5Cu4e3a%5Cu987a%5Cu65f6%5Cu9488%5Cu6216%5Cu540c%5Cu4e3a%5Cu9006%5Cu65f6%5Cu9488.%5Cu4ea4%5Cu53c9%5Cu8fde%5Cu63a5%5Cu7684%5Cu4e24%5Cu4e2a%5Cu6ed1%5Cu8f6e%5Cu65cb%5Cu8f6c%5Cu65b9%5Cu5411%5Cu76f8%5Cu53cd.%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5217%5Cu8868%5Cuff0c%5Cu91cc%5Cu9762%5Cu5217%5Cu51fa%5Cu6240%5Cu6709%5Cu76ae%5Cu5e26%5Cu7684%5Cu8fde%5Cu63a5%5Cu65b9%5Cu5f0f.%5Cu5df2%5Cu7ecf%5Cu77e5%5Cu9053%5Cu6ed1%5Cu8f6e1%5Cu88ab%5Cu5f15%5Cu64ce%5Cu9a71%5Cu52a8%5Cu7740%5Cu5411%5Cu987a%5Cu65f6%5Cu9488%5Cu65b9%20%5Cu5411%5Cu8f6c%5Cu52a8.%5Cu6bcf%5Cu4e00%5Cu6761%5Cu76ae%5Cu5e26%5Cu7531%5Cu4e0b%5Cu9762%5Cu4e09%5Cu4e2a%5Cu6570%5Cu5b9a%5Cu4e49%5Cuff1a%5Cn%5Cn%5Cu2022%5Cu9a71%5Cu52a8%5Cu6ed1%5Cu8f6eS%5Cuff0c%5Cu8f93%5Cu5165%5Cu9a71%5Cu52a8%5Cu529b%5Cu7684%5Cu6ed1%5Cu8f6e.%5Cn%5Cn%5Cu2022%5Cu88ab%5Cu9a71%5Cu52a8%5Cu6ed1%5Cu8f6eD%3B%5Cuff0c%5Cu88ab%5Cu9a71%5Cu4f7f%5Cu8f6c%5Cu52a8%5Cu7684%5Cu6ed1%5Cu8f6e.%5Cn%5Cn%5Cu2022%5Cu8fde%5Cu63a5%5Cu7c7b%5Cu578bC%5Cuff0c0%5Cu8868%5Cu793a%5Cu76f4%5Cu63a5%5Cu8fde%5Cu63a5%5Cuff0c1%5Cu8868%5Cu793a%5Cu4ea4%5Cu53c9%5Cu8fde%5Cu63a5.%5Cn%5Cn%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%5Cuff0c%5Cu7ea6%5Cu7ff0%5Cu7684%5Cu8fd9%5Cu4e2a%5Cu5217%5Cu8868%5Cu4e2d%5Cuff0c%5Cu76ae%5Cu5e26%5Cu7684%5Cu987a%5Cu5e8f%5Cu662f%5Cu6df7%5Cu4e71%5Cu7684.%5Cu6240%5Cu4ee5%5Cu8bf7%5Cu4f60%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu6765%5Cu6c42%5Cu51fa%5Cu6ed1%5Cu8f6eN%5Cu7684%20%5Cu8f6c%5Cu52a8%5Cu65b9%5Cu5411.%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..N%3A%20Each%20line%20describes%20a%20belt%20with%20three%20integers%3A%20S%5C%5C_i%2C%20D%5C%5C_i%2C%20and%20C%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%20that%20is%20the%20rotation%20direction%20for%20pulley%20N%20%280%3Dclockwise%2C%201%3Dcounterclockwise%29%5Cn%22%2C%22samples%22%3A%5B%5B%224%20%5Cr%5Cn2%203%200%20%5Cr%5Cn3%204%201%20%5Cr%5Cn1%202%200%20%5Cr%5Cn%22%2C%221%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22As%20in%20the%20example%20illustration.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B25%2C46%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A377%2C%22totalAccepted%22%3A255%2C%22pid%22%3A%22P2913%22%2C%22title%22%3A%22%5BUSACO08OCT%5D%5Cu8f66%5Cu8f6e%5Cu65cb%5Cu8f6cWheel%20Rotation%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1190%22%2C%22title%22%3A%22%5Cu63a5%5Cu6c34%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3669%22%2C%22title%22%3A%22%5BUSACO17OPEN%5DPaired%20Up%20%5Cu725b%5Cu725b%5Cu914d%5Cu5bf9%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2910%22%2C%22title%22%3A%22%5BUSACO08OPEN%5D%5Cu5bfb%5Cu5b9d%5Cu4e4b%5Cu8defClear%20And%20Present%20Danger%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2911%22%2C%22title%22%3A%22%5BUSACO08OCT%5D%5Cu725b%5Cu9aa8%5Cu5934Bovine%20Bones%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2925%22%2C%22title%22%3A%22%5BUSACO08DEC%5D%5Cu5e72%5Cu8349%5Cu51fa%5Cu552eHay%20For%20Sale%20%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO08OCT%5D%5Cu8f66%5Cu8f6e%5Cu65cb%5Cu8f6cWheel%20Rotation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO08OCT]车轮旋转Wheel Rotation</h1>
+<h2>题目描述</h2>
+<div>Farmer John has an old-time thresher (wheat harvester) that requires belts to be installed on various gears to turn the parts. The engine drives pulley 1 in a clockwise direction which attaches via a belt to pulley 2. Pulley 2 attaches via a belt to pulley 3 and so on through a total of N (2 <= N <= 1,000) pulleys (and N-1 belts).
+The diagram above depicts the two ways a belt can be installed between two gears. In this illustration, pulley 1's belt directly drives pulley 2 (a 'straight' connection) and thus they will rotate in the same direction. Pulley 3 drives pulley 4 via a 'crossed belt' that reverses the direction of the rotation.
+Given a list of the belt types that connect the pulleys along with the fact that pulley 1 is driven in a clockwise direction by the engine, determine the drive direction of pulley N. Each belt is described by three integers:
+```cpp
+* S_i -- the driving (source) pulley
+* D_i -- the driven (destination) pulley
+* C_i -- the connection type (0=straight, 1=crossed)
+Unfortunately, FJ lists the belts in random order.
+By way of example, consider the illustration below. N = 4, and pulley 1 is driven clockwise by the thresher engine. Straight
+belts drive pulley 2 and then pulley 3, so they rotate clockwise. The crosswise belt reverses the rotation direction so pulley 4 (pulley N) rotates counterclockwise.
+```
+POINTS: 70
+约翰有一个过时的收割机，需要在它的各种滑轮上装配皮带才能让收割机的各个部分运作起 来.引擎能够驱动滑轮1向顺时针方向转动，滑轮1通过一条皮带又连接到滑轮2.滑轮2又通过一 条皮带连接到滑轮3，等等，总共有N(2 <= N <= 1000)个滑轮和N - 1条皮带.
+皮带连接两个滑轮有两种方式：直接连接和交叉连接.直接连接的两个滑轮旋转方向相同， 即同为顺时针或同为逆时针.交叉连接的两个滑轮旋转方向相反.
+现在给出一个列表，里面列出所有皮带的连接方式.已经知道滑轮1被引擎驱动着向顺时针方 向转动.每一条皮带由下面三个数定义：
+•驱动滑轮S，输入驱动力的滑轮.
+•被驱动滑轮D;，被驱使转动的滑轮.
+•连接类型C，0表示直接连接，1表示交叉连接.
+不幸的是，约翰的这个列表中，皮带的顺序是混乱的.所以请你写一个程序来求出滑轮N的 转动方向.
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: N
+\* Lines 2..N: Each line describes a belt with three integers: S\_i, D\_i, and C\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single integer that is the rotation direction for pulley N (0=clockwise, 1=counterclockwise)
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 
+2 3 0 
+3 4 1 
+1 2 0 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 
+</code></pre>
+<h2>说明</h2>
+<div>As in the example illustration.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>

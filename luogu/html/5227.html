@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[AHOI2013]连通图 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573382352:y6XQ+oLdQ7mJirRrXO8DFT6AA0qs1fQ2q/6QREhIfUw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu5411%5Cu8fde%5Cu901a%5Cu56fe%5Cu548c%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu5c0f%5Cu96c6%5Cu5408%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5c0f%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%5Cu4e00%5Cu4e9b%5Cu8fb9%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu96c6%5Cu5408%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu786e%5Cu5b9a%5Cu5c06%5Cu96c6%5Cu5408%5Cu4e2d%5Cu7684%5Cu8fb9%5Cu5220%5Cu6389%5Cu540e%5Cu6539%5Cu56fe%5Cu662f%5Cu5426%5Cu4fdd%5Cu6301%5Cu8054%5Cu901a%5Cu3002%5Cu96c6%5Cu5408%5Cu95f4%5Cu7684%5Cu8be2%5Cu95ee%5Cu76f8%5Cu4e92%5Cu72ec%5Cu7acb%5Cn%5Cn%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu56fe%5Cu4e3a%5Cu8054%5Cu901a%5Cu7684%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5bf9%5Cu4e8e%5Cu4efb%5Cu610f%5Cu7684%5Cu4e24%5Cu4e2a%5Cu9876%5Cu70b9%5Cuff0c%5Cu90fd%5Cu5b58%5Cu5728%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cu8fde%5Cu63a5%5Cu5b83%5Cu4eec%22%2C%22inputFormat%22%3A%22%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24n%2Cm%24%5Cuff0c%5Cu4ee3%5Cu8868%5Cu65e0%5Cu5411%5Cu56fe%5Cu7684%5Cu70b9%5Cu6570%5Cu548c%5Cu8fb9%5Cu6570%5Cn%5Cn%5Cu4e0b%5Cu9762%20%24m%24%20%5Cu884c%5Cuff0c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24u%2Cv%24%5Cuff0c%5Cu4ee3%5Cu8868%5Cu8be5%5Cu8fb9%5Cu8fde%5Cu63a5%5Cu70b9%20%24u%2Cv%24%5Cu3002%5Cu7b2c%20%24i%20%2B%201%24%20%5Cu884c%5Cu7684%5Cu8fb9%5Cu7684%5Cu7f16%5Cu53f7%5Cu4e3a%20%24i%24%5Cu3002%5Cu4fdd%5Cu8bc1%5Cu4e0d%5Cu5b58%5Cu5728%5Cu91cd%5Cu8fb9%5Cu548c%5Cu81ea%5Cu73af%5Cn%5Cn%5Cu4e0b%5Cu9762%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24k%24%5Cuff0c%5Cu8868%5Cu793a%5Cu96c6%5Cu5408%5Cu4e2a%5Cu6570%5Cn%5Cn%5Cu4e0b%5Cu9762%20%24k%24%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu4e2a%5Cu96c6%5Cu5408%5Cuff0c%5Cu6bcf%5Cu884c%5Cu7684%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu4e3a%5Cu96c6%5Cu5408%5Cu4e2d%5Cu8fb9%5Cu7684%5Cu4e2a%5Cu6570%20%24c%24%5Cuff0c%5Cu540e%5Cu9762%20%24c%24%20%5Cu4e2a%5Cu6570%5Cu4ee3%5Cu8868%5Cu96c6%5Cu5408%5Cu5185%5Cu7684%5Cu8fb9%22%2C%22outputFormat%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu96c6%5Cu5408%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4ee3%5Cu8868%5Cu53bb%5Cu6389%5Cu8be5%5Cu96c6%5Cu5408%5Cu4e2d%5Cu7684%5Cu8fb9%5Cu540e%5Cu56fe%5Cu662f%5Cu5426%5Cu8054%5Cu901a%5Cuff0c%5Cu5982%5Cu679c%5Cu8054%5Cu901a%5Cu8f93%5Cu51fa%20%60%60Connected%60%60%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%20%60%60Disconnected%60%60%22%2C%22samples%22%3A%5B%5B%224%205%5Cn1%202%5Cn2%203%5Cn3%204%5Cn4%201%5Cn2%204%5Cn3%5Cn1%205%5Cn2%202%203%5Cn2%201%202%22%2C%22Connected%5CnDisconnected%5CnConnected%22%5D%5D%2C%22hint%22%3A%22%241~%5C%5Cleq~n%2Ck~%5C%5Cleq~10%5E5%24%5Cn%5Cn%241~%5C%5Cleq~m~%5C%5Cleq~2~%5C%5Ctimes~10%5E5%24%5Cn%5Cn%241~%5C%5Cleq~c~%5C%5Cleq~4%24%22%2C%22provider%22%3A%7B%22uid%22%3A65363%2C%22name%22%3A%22%5Cu4e00%5Cu6276%5Cu82cf%5Cu4e00%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Red%22%2C%22ccfLevel%22%3A4%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%2C1500%5D%2C%22memory%22%3A%5B512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%2C512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B30%2C48%2C92%2C108%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A273%2C%22totalAccepted%22%3A134%2C%22pid%22%3A%22P5227%22%2C%22title%22%3A%22%5BAHOI2013%5D%5Cu8fde%5Cu901a%5Cu56fe%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A149753%2C%22title%22%3A%22%5Cu5728%5Cuff1f%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu7b2c%5Cu4e00MAX_INT%5Cu5206%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A34429%2C%22name%22%3A%22P5227%20%5BAHOI2013%5D%5Cu8fde%5Cu901a%5Cu56fe%22%2C%22slug%22%3A%22P5227%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3214%22%2C%22title%22%3A%22%5BHNOI2011%5D%5Cu5361%5Cu519c%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3810%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu4e09%5Cu7ef4%5Cu504f%5Cu5e8f%5Cuff08%5Cu964c%5Cu4e0a%5Cu82b1%5Cu5f00%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4168%22%2C%22title%22%3A%22%5BViolet%5D%5Cu84b2%5Cu516c%5Cu82f1%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4390%22%2C%22title%22%3A%22%5BBOI2007%5DMokia%20%5Cu6469%5Cu57fa%5Cu4e9a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4585%22%2C%22title%22%3A%22%5BFJOI2015%5D%5Cu706b%5Cu661f%5Cu5546%5Cu5e97%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BAHOI2013%5D%5Cu8fde%5Cu901a%5Cu56fe%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[AHOI2013]连通图</h1>
+<h2>题目描述</h2>
+<div>给定一个无向连通图和若干个小集合，每个小集合包含一些边，对于每个集合，你需要确定将集合中的边删掉后改图是否保持联通。集合间的询问相互独立
+定义一个图为联通的当且仅当对于任意的两个顶点，都存在一条路径连接它们</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>第一行为两个整数 $n,m$，代表无向图的点数和边数
+下面 $m$ 行，包含两个整数 $u,v$，代表该边连接点 $u,v$。第 $i + 1$ 行的边的编号为 $i$。保证不存在重边和自环
+下面一行包含一个整数 $k$，表示集合个数
+下面 $k$ 行每行描述一个集合，每行的第一个数为集合中边的个数 $c$，后面 $c$ 个数代表集合内的边</div>
+<h3>输出格式</h3>
+<br />
+<div>对于每个集合，输出一行代表去掉该集合中的边后图是否联通，如果联通输出 ``Connected``，否则输出 ``Disconnected``</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+1 2
+2 3
+3 4
+4 1
+2 4
+3
+1 5
+2 2 3
+2 1 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Connected
+Disconnected
+Connected</code></pre>
+<h2>说明</h2>
+<div>$1~\leq~n,k~\leq~10^5$
+$1~\leq~m~\leq~2~\times~10^5$
+$1~\leq~c~\leq~4$</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10JAN]轮流Taking Turns - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376224:qTfGxplZHbomobsNEgWsmFJwu4d37yDSLiKUZMv2Lz4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20has%20invented%20a%20new%20way%20of%20feeding%20his%20cows.%20He%20lays%20out%20N%20%281%20%3C%3D%20N%20%3C%3D%20700%2C000%29%20hay%20bales%20conveniently%20numbered%201..N%20in%20a%20long%20line%20in%20the%20barn.%20Hay%20bale%20i%20has%20weight%20W%5C%5C_i%20%281%20%3C%3D%20W%5C%5C_i%20%3C%3D%5Cn%5Cn2%2C000%2C000%2C000%29.%20A%20sequence%20of%20six%20weights%20might%20look%20something%20like%3A%5Cn%5Cn17%205%209%2010%203%208%5Cn%5CnA%20pair%20of%20cows%20named%20Bessie%20and%20Dessie%20walks%20down%20this%20line%20after%20examining%20all%20the%20haybales%20to%20learn%20their%20weights.%20Bessie%20is%20the%20first%20chooser.%20They%20take%20turns%20picking%20haybales%20to%20eat%20as%20they%20walk%20%28once%20a%20haybale%20is%20skipped%2C%20they%20cannot%20return%20to%20it%29.%20For%20instance%2C%20if%20cows%20Bessie%20and%20Dessie%20go%20down%20the%20line%2C%20a%20possible%20scenario%20is%3A%5Cn%5Cn%5C%5C%2A%20Bessie%20picks%20the%20weight%2017%20haybale%5Cn%5Cn%5C%5C%2A%20Dessie%20skips%20the%20weight%205%20haybale%20and%20picks%20the%20weight%209%20haybale%20%5C%5C%2A%20Bessie%20picks%20the%20weight%2010%20haybale%5Cn%5Cn%5C%5C%2A%20Dessie%20skips%20the%20weight%203%20haybale%20and%20picks%20the%20weight%208%20haybale%5Cn%5CnDiagrammatically%3A%5Cn%5CnBessie%20%20%20%7C%20%20%20%20%20%20%7C%20%5Cn17%205%209%2010%203%208%5Cn%5CnDessie%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%5CnThis%20scenario%20only%20shows%20a%20single%20skipped%20bale%3B%20either%20cow%20can%20skip%20as%20many%20as%20she%20pleases%20when%20it%27s%20her%20turn.%5Cn%5CnEach%20cow%20wishes%20to%20maximize%20the%20total%20weight%20of%20hay%20she%20herself%20consumes%20%28and%20each%20knows%20that%20the%20other%20cow%20has%20this%20goal%29.%5Cn%5CnFurthermore%2C%20a%20cow%20will%20choose%20to%20eat%20the%20first%20bale%20of%20hay%20that%20maximimizes%20her%20total%20weight%20consumed.%5Cn%5CnGiven%20a%20sequence%20of%20hay%20weights%2C%20determine%20the%20amount%20of%20hay%20that%20a%20pair%20of%20cows%20will%20eat%20as%20they%20go%20down%20the%20line%20of%20hay.%5Cn%5Cn%5Cu4e24%5Cu5934%5Cu5976%5Cu725bBessi%5Cu548cDessie%5Cu8d70%5Cu8fc7%5Cu4e00%5Cu6761%5Cu8def%5Cu5403%5Cu8349%5Cuff0c%5Cu5171n%5Cuff08n%3C%3D700%2C000%5Cuff09%5Cu4e2a%5Cu683c%5Cu5b50%5Cuff0c%5Cu7b2ci%5Cu4e2a%5Cu683c%5Cu5b50%5Cu6709%5Cu91cd%5Cu91cf%5Cu4e3aW%5C%5C_i%5Cuff081%20%3C%3D%20W%5C%5C_i%20%3C%3D%202%2C000%2C000%2C000%5Cuff09%5Cu7684%5Cu8349%5Cuff0c%5Cu4e24%5Cu725b%5Cu8f6e%5Cu6d41%5Cu8d70%5Cuff0c%5Cu4e00%5Cu65e6%5Cu67d0%5Cu5934%5Cu725b%5Cu8d70%5Cu8fc7%5Cu4e86%5Cu4e00%5Cu683c%5Cuff0c%5Cu90a3%5Cu4e48%5Cu8fd9%5Cu683c%5Cu7684%5Cu8349%5Cu518d%5Cu4e5f%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu88ab%5Cu4efb%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu5403%5Cuff0c%5Cu6bcf%5Cu683c%5Cu7684%5Cu8349%5Cu53ea%5Cu80fd%5Cu88ab%5Cu5403%5Cu4e00%5Cu6b21%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4e24%5Cu5934%5Cu725b%5Cu53ea%5Cu80fd%5Cu5f80%5Cu540e%5Cu8d70%5Cu3002Bessi%5Cu5148%5Cu8d70%5Cuff0c%5Cu6bcf%5Cu5934%5Cu725b%5Cu6bcf%5Cu6b21%5Cu90fd%5Cu5f80%5Cu6700%5Cu7ec8%5Cu81ea%5Cu5df1%5Cu80fd%5Cu5403%5Cu5230%5Cu6700%5Cu591a%5Cu8349%5Cu7684%5Cu683c%5Cu5b50%5Cu8d70%5Cuff08%5Cu82e5%5Cu6709%5Cu591a%5Cu4e2a%5Cu683c%5Cu5b50%5Cu5219%5Cu9009%5Cu62e9%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu80fd%5Cu5403%5Cu5230%5Cu6700%5Cu591a%5Cu8349%5Cu7684%5Cu683c%5Cu5b50%5Cuff09%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu90fd%5Cu77e5%5Cu9053%5Cu5bf9%5Cu65b9%5Cu4e5f%5Cu60f3%5Cu5403%5Cu5230%5Cu6700%5Cu591a%5Cu7684%5Cu8349%5Cuff0c%5Cu95ee%5Cu6700%5Cu540eBessi%5Cu548cDessie%5Cu5404%5Cu5403%5Cu5230%5Cu7684%5Cu8349%5Cu7684%5Cu91cd%5Cu91cf%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%5Cuff08n%3C%3D700%2C000%5Cuff09%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu6709n%5Cu884c%5Cuff0c%5Cu7b2ci%2B1%5Cu884c%5Cu4e3aW%5C%5C_i%5Cuff081%20%3C%3D%20W%5C%5C_i%20%3C%3D%202%2C000%2C000%2C000%5Cuff09%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%5C%5C%2A%20Lines%202..N%2B1%3A%20Line%20i%2B1%20contains%20a%20single%20integer%3A%20W%5C%5C_i%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%2C%20the%20total%20weight%20of%20hay%20consumed%20by%20Bessie%20and%20Dessie%20respectively%5Cn%22%2C%22samples%22%3A%5B%5B%226%20%5Cr%5Cn17%20%5Cr%5Cn5%20%5Cr%5Cn9%20%5Cr%5Cn10%20%5Cr%5Cn3%20%5Cr%5Cn8%20%5Cr%5Cn%22%2C%2227%2017%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A158%2C%22totalAccepted%22%3A78%2C%22pid%22%3A%22P2975%22%2C%22title%22%3A%22%5BUSACO10JAN%5D%5Cu8f6e%5Cu6d41Taking%20Turns%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2976%22%2C%22title%22%3A%22%5BUSACO10JAN%5D%5Cu8239%5Cu8236%5Cu5468%5Cu56f4%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5c9b%5Cu5c7fShipping%20Around%20an%20Island%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2977%22%2C%22title%22%3A%22%5BUSACO10JAN%5D%5Cu725b%5Cu7684%5Cu7535%5Cu8bddCow%20Telephones%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3067%22%2C%22title%22%3A%22%5BUSACO12OPEN%5D%5Cu5e73%5Cu8861%5Cu7684%5Cu5976%5Cu725b%5Cu7fa4Balanced%20Cow%20S%5Cu2026%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4799%22%2C%22title%22%3A%22%5BCEOI2015%20Day2%5D%5Cu4e16%5Cu754c%5Cu51b0%5Cu7403%5Cu9526%5Cu6807%5Cu8d5b%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1207A%22%2C%22title%22%3A%22There%20Are%20Two%20Types%20Of%20Burgers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10JAN%5D%5Cu8f6e%5Cu6d41Taking%20Turns%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10JAN]轮流Taking Turns</h1>
+<h2>题目描述</h2>
+<div>Farmer John has invented a new way of feeding his cows. He lays out N (1 <= N <= 700,000) hay bales conveniently numbered 1..N in a long line in the barn. Hay bale i has weight W\_i (1 <= W\_i <=
+2,000,000,000). A sequence of six weights might look something like:
+17 5 9 10 3 8
+A pair of cows named Bessie and Dessie walks down this line after examining all the haybales to learn their weights. Bessie is the first chooser. They take turns picking haybales to eat as they walk (once a haybale is skipped, they cannot return to it). For instance, if cows Bessie and Dessie go down the line, a possible scenario is:
+\* Bessie picks the weight 17 haybale
+\* Dessie skips the weight 5 haybale and picks the weight 9 haybale \* Bessie picks the weight 10 haybale
+\* Dessie skips the weight 3 haybale and picks the weight 8 haybale
+Diagrammatically:
+Bessie | |
+17 5 9 10 3 8
+Dessie | |
+This scenario only shows a single skipped bale; either cow can skip as many as she pleases when it's her turn.
+Each cow wishes to maximize the total weight of hay she herself consumes (and each knows that the other cow has this goal).
+Furthermore, a cow will choose to eat the first bale of hay that maximimizes her total weight consumed.
+Given a sequence of hay weights, determine the amount of hay that a pair of cows will eat as they go down the line of hay.
+两头奶牛Bessi和Dessie走过一条路吃草，共n（n<=700,000）个格子，第i个格子有重量为W\_i（1 <= W\_i <= 2,000,000,000）的草，两牛轮流走，一旦某头牛走过了一格，那么这格的草再也不可能被任一头奶牛吃，每格的草只能被吃一次，所以两头牛只能往后走。Bessi先走，每头牛每次都往最终自己能吃到最多草的格子走（若有多个格子则选择第一个能吃到最多草的格子），他们都知道对方也想吃到最多的草，问最后Bessi和Dessie各吃到的草的重量。
+输入格式：
+第一行一个正整数n（n<=700,000），接下来有n行，第i+1行为W\_i（1 <= W\_i <= 2,000,000,000）。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: A single integer: N
+\* Lines 2..N+1: Line i+1 contains a single integer: W\_i
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers, the total weight of hay consumed by Bessie and Dessie respectively
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 
+17 
+5 
+9 
+10 
+3 
+8 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>27 17 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

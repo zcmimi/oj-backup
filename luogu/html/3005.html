@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO10DEC]槽的游戏The Trough Game - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376273:YigRp58ID68Lese1m3si8rirVoC7mMsuzNX3uJ8d6Ms=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20and%20Bessie%20are%20playing%20games%20again.%20This%20one%20has%20to%20do%20with%20troughs%20of%20water.%5Cn%5CnFarmer%20John%20has%20hidden%20N%20%281%20%3C%3D%20N%20%3C%3D%2020%29%20troughs%20behind%20the%20barn%2C%20and%20has%20filled%20some%20of%20them%20with%20food.%20Bessie%20has%20asked%20M%20%281%20%3C%3D%20M%20%3C%3D%20100%29%20questions%20of%20the%20form%2C%20%27How%20many%20troughs%20from%20this%20list%20%28which%20she%20recites%29%20are%20filled%3F%27.%5Cn%5CnBessie%20needs%20your%20help%20to%20deduce%20which%20troughs%20are%20actually%20filled.%5Cn%5CnConsider%20an%20example%20with%20four%20troughs%20where%20Bessie%20has%20asked%20these%20questions%20%28and%20received%20the%20indicated%20answers%29%3A%5Cn%5Cn1%29%20%27How%20many%20of%20these%20troughs%20are%20filled%3A%20trough%201%27%20--%3E%20%201%20trough%20is%20filled%5Cn%5Cn2%29%20%27How%20many%20of%20these%20troughs%20are%20filled%3A%20troughs%202%20and%203%27%20--%3E%20%201%20trough%20is%20filled%5Cn%5Cn3%29%20%27How%20many%20of%20these%20troughs%20are%20filled%3A%20troughs%201%20and%204%27%20--%3E%20%201%20trough%20is%20filled%5Cn%5Cn4%29%20%27How%20many%20of%20these%20troughs%20are%20filled%3A%20troughs%203%20and%204%27%20--%3E%20%201%20trough%20is%20filled%5Cn%5CnFrom%20question%201%2C%20we%20know%20trough%201%20is%20filled.%5Cn%5CnFrom%20question%203%2C%20we%20then%20know%20trough%204%20is%20empty.%20%5Cn%5CnFrom%20question%204%2C%20we%20then%20know%20that%20trough%203%20is%20filled.%20%5Cn%5CnFrom%20question%202%2C%20we%20then%20know%20that%20trough%202%20is%20empty.%20%5Cn%5Cn%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu548c%5Cu8d1d%5Cu897f%5Cu53c8%5Cu5728%5Cu73a9%5Cu6e38%5Cu620f%5Cu3002%5Cu8fd9%5Cu4e2a%5Cu6e38%5Cu620f%5Cu9700%5Cu8981%5Cu5f88%5Cu591a%5Cu4e2a%5Cu69fd%5Cu3002%5Cn%5Cn%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu5728%5Cu8c37%5Cu4ed3%5Cu91cc%5Cu85cf%5Cu8d77%5Cu6765%5Cu4e86N%5Cuff081%3C%3DN%3C%3D20%5Cuff09%5Cu4e2a%5Cu69fd%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4ed6%5Cu5df2%5Cu7ecf%5Cu628a%5Cu5176%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e9b%5Cu88c5%5Cu4e0a%5Cu4e86%5Cu98df%5Cu7269%5Cu3002%5Cu8d1d%5Cu897f%5Cu4ee5%5Cu201c%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu8868%5Cu91cc%5Cuff08%5Cu8868%5Cu7531%5Cu8d1d%5Cu897f%5Cu63d0%5Cu4f9b%5Cuff09%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu98df%5Cu7269%5Cuff1f%5Cu201d%5Cu7684%5Cu5f62%5Cu5f0f%5Cu95ee%5Cu4e86M%5Cuff081%3C%3DM%3C%3D100%5Cuff09%5Cu4e2a%5Cu95ee%5Cu9898%5Cu3002%5Cn%5Cn%5Cu73b0%5Cu5728%5Cuff0c%5Cu8d1d%5Cu897f%5Cu60f3%5Cu77e5%5Cu9053%5Cuff0c%5Cu54ea%5Cu51e0%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu98df%5Cu7269%5Cuff1f%5Cn%5Cn%5Cu8fd9%5Cu91cc%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6837%5Cu4f8b%5Cuff1a%5Cn%5Cn%5Cn%5Cuff081%5Cuff09%5Cu5728%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu98df%5Cu7269%5Cuff1f%5Cu2014%5Cu20141%5Cu4e2a%5Cn%5Cn%5Cuff082%5Cuff09%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu98df%5Cu7269%5Cuff1f%5Cu2014%5Cu20141%5Cu4e2a%5Cn%5Cn%5Cuff083%5Cuff09%5Cu5728%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu98df%5Cu7269%5Cuff1f%5Cu2014%5Cu20141%5Cu4e2a%5Cn%5Cn%5Cuff084%5Cuff09%5Cu5728%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu69fd%5Cu91cc%5Cu6709%5Cu98df%5Cu7269%5Cuff1f%5Cu2014%5Cu20141%5Cu4e2a%5Cn%5Cn%5Cn%5Cu4ece%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu95ee%5Cu9898%5Cu53ef%5Cu4ee5%5Cu77e5%5Cu9053%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu69fd%5Cu662f%5Cu6709%5Cu98df%5Cu7269%5Cu7684%5Cu3002%5Cn%5Cn%5Cu4ece%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu95ee%5Cu9898%5Cu53ef%5Cu4ee5%5Cu77e5%5Cu9053%5Cuff0c%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu69fd%5Cu662f%5Cu6ca1%5Cu6709%5Cu98df%5Cu7269%5Cu7684%5Cu3002%5Cn%5Cn%5Cu4ece%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu95ee%5Cu9898%5Cu53ef%5Cu4ee5%5Cu77e5%5Cu9053%5Cuff0c%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu69fd%5Cu662f%5Cu6709%5Cu98df%5Cu7269%5Cu7684%5Cu3002%5Cn%5Cn%5Cu4ece%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu95ee%5Cu9898%5Cu53ef%5Cu4ee5%5Cu77e5%5Cu9053%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu69fd%5Cu662f%5Cu6ca1%5Cu6709%5Cu98df%5Cu7269%5Cu7684%5Cu3002%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20space-separated%20integers%3A%20N%20and%20M%5Cn%5Cn%5C%5C%2A%20Lines%202..M%2B1%3A%20A%20subset%20of%20troughs%2C%20specified%20as%20a%20sequence%20of%20contiguous%20N%200%27s%20and%201%27s%2C%20followed%20by%20a%20single%20integer%20that%20is%20the%20number%20of%20troughs%20in%20the%20specified%20subset%20that%20are%20filled.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20A%20single%20line%20with%3A%5Cn%5Cn%5C%5C%2A%20The%20string%20%27IMPOSSIBLE%27%20if%20there%20is%20no%20possible%20set%20of%20filled%20troughs%20compatible%20with%20Farmer%20John%27s%20answers.%5Cn%5Cn%5C%5C%2A%20The%20string%20%27NOT%20UNIQUE%27%20if%20Bessie%20cannot%20determine%20from%20the%20given%20data%20exactly%20what%20troughs%20are%20filled.%5Cn%5Cn%5C%5C%2A%20Otherwise%2C%20a%20sequence%20of%20contiguous%20N%200%27s%20and%201%27s%20specifying%20which%20troughs%20are%20filled.%5Cn%22%2C%22samples%22%3A%5B%5B%224%204%20%5Cr%5Cn1000%201%20%5Cr%5Cn0110%201%20%5Cr%5Cn1001%201%20%5Cr%5Cn0011%201%20%5Cr%5Cn%22%2C%221010%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B27%2C46%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A264%2C%22totalAccepted%22%3A108%2C%22pid%22%3A%22P3005%22%2C%22title%22%3A%22%5BUSACO10DEC%5D%5Cu69fd%5Cu7684%5Cu6e38%5Cu620fThe%20Trough%20Game%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A81230%2C%22title%22%3A%22%5Cu9898%5Cu9762%5Cu3002%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A2133%2C%22name%22%3A%22P3005%20%5BUSACO10DEC%5D%5Cu69fd%5Cu7684%5Cu6e38%5Cu620fThe%20Trough%20Game%22%2C%22slug%22%3A%22P3005%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3000%22%2C%22title%22%3A%22%5BUSACO10DEC%5D%5Cu725b%5Cu7684%5Cu5065%5Cu7f8e%5Cu64cdCow%20Calisthenics%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3001%22%2C%22title%22%3A%22%5BUSACO10DEC%5D%5Cu5de8%5Cu65e0%5Cu9738Big%20Macs%20Around%20the%20w%5Cu2026%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3003%22%2C%22title%22%3A%22%5BUSACO10DEC%5D%5Cu82f9%5Cu679c%5Cu4ea4%5Cu8d27Apple%20Delivery%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3004%22%2C%22title%22%3A%22%5BUSACO10DEC%5D%5Cu5b9d%5Cu7bb1Treasure%20Chest%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3079%22%2C%22title%22%3A%22%5BUSACO13MAR%5D%5Cu519c%5Cu573a%5Cu7684%5Cu753bFarm%20Painting%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO10DEC%5D%5Cu69fd%5Cu7684%5Cu6e38%5Cu620fThe%20Trough%20Game%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO10DEC]槽的游戏The Trough Game</h1>
+<h2>题目描述</h2>
+<div>Farmer John and Bessie are playing games again. This one has to do with troughs of water.
+Farmer John has hidden N (1 <= N <= 20) troughs behind the barn, and has filled some of them with food. Bessie has asked M (1 <= M <= 100) questions of the form, 'How many troughs from this list (which she recites) are filled?'.
+Bessie needs your help to deduce which troughs are actually filled.
+Consider an example with four troughs where Bessie has asked these questions (and received the indicated answers):
+1) 'How many of these troughs are filled: trough 1' --> 1 trough is filled
+2) 'How many of these troughs are filled: troughs 2 and 3' --> 1 trough is filled
+3) 'How many of these troughs are filled: troughs 1 and 4' --> 1 trough is filled
+4) 'How many of these troughs are filled: troughs 3 and 4' --> 1 trough is filled
+From question 1, we know trough 1 is filled.
+From question 3, we then know trough 4 is empty.
+From question 4, we then know that trough 3 is filled.
+From question 2, we then know that trough 2 is empty.
+农夫约翰和贝西又在玩游戏。这个游戏需要很多个槽。
+农夫约翰在谷仓里藏起来了N（1<=N<=20）个槽，并且他已经把其中的一些装上了食物。贝西以“在这个表里（表由贝西提供）有多少个槽里有食物？”的形式问了M（1<=M<=100）个问题。
+现在，贝西想知道，哪几个槽里有食物？
+这里有一个样例：
+（1）在第一个槽里有多少个槽里有食物？——1个
+（2）在第二个和第三个槽里有多少个槽里有食物？——1个
+（3）在第一个和第四个槽里有多少个槽里有食物？——1个
+（4）在第三个和第四个槽里有多少个槽里有食物？——1个
+从第一个问题可以知道，第一个槽是有食物的。
+从第二个问题可以知道，第四个槽是没有食物的。
+从第三个问题可以知道，第三个槽是有食物的。
+从第四个问题可以知道，第二个槽是没有食物的。
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two space-separated integers: N and M
+\* Lines 2..M+1: A subset of troughs, specified as a sequence of contiguous N 0's and 1's, followed by a single integer that is the number of troughs in the specified subset that are filled.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: A single line with:
+\* The string 'IMPOSSIBLE' if there is no possible set of filled troughs compatible with Farmer John's answers.
+\* The string 'NOT UNIQUE' if Bessie cannot determine from the given data exactly what troughs are filled.
+\* Otherwise, a sequence of contiguous N 0's and 1's specifying which troughs are filled.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 4 
+1000 1 
+0110 1 
+1001 1 
+0011 1 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1010 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

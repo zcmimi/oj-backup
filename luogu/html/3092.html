@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[USACO13NOV]没有找零No Change - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573376390:zbxIGqwJfcQ5gFMY4LUTnLmUF1ij918KjDQCDWHEp/0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Farmer%20John%20is%20at%20the%20market%20to%20purchase%20supplies%20for%20his%20farm.%20%20He%20has%20in%20his%20pocket%20K%20coins%20%281%20%3C%3D%20K%20%3C%3D%2016%29%2C%20each%20with%20value%20in%20the%20range%201..100%2C000%2C000.%20%20FJ%20would%20like%20to%20make%20a%20sequence%20of%20N%20purchases%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%2C%20where%20the%20ith%20purchase%20costs%20c%28i%29%20units%20of%20money%20%281%20%3C%3D%20c%28i%29%20%3C%3D%2010%2C000%29.%20%20As%20he%20makes%20this%20sequence%20of%20purchases%2C%20he%20can%20periodically%20stop%20and%20pay%2C%20with%20a%20single%20coin%2C%20for%20all%20the%20purchases%20made%20since%20his%20last%20payment%20%28of%20course%2C%20the%20single%20coin%20he%20uses%20must%20be%20large%20enough%20to%20pay%20for%20all%20of%20these%29.%20%20Unfortunately%2C%20the%20vendors%20at%20the%20market%20are%20completely%20out%20of%20change%2C%20so%20whenever%20FJ%20uses%20a%20coin%20that%20is%20larger%20than%20the%20amount%20of%20money%20he%20owes%2C%20he%20sadly%20receives%20no%20changes%20in%20return%21%5Cn%5CnPlease%20compute%20the%20maximum%20amount%20of%20money%20FJ%20can%20end%20up%20with%20after%20making%20his%20N%20purchases%20in%20sequence.%20%20Output%20-1%20if%20it%20is%20impossible%20for%20FJ%20to%20make%20all%20of%20his%20purchases.%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu5230%5Cu5546%5Cu573a%5Cu8d2d%5Cu7269%5Cuff0c%5Cu4ed6%5Cu7684%5Cu94b1%5Cu5305%5Cu91cc%5Cu6709K%281%20%3C%3D%20K%20%3C%3D%2016%29%5Cu4e2a%5Cu786c%5Cu5e01%5Cuff0c%5Cu9762%5Cu503c%5Cu7684%5Cu8303%5Cu56f4%5Cu662f1..100%2C000%2C000%5Cu3002%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu60f3%5Cu6309%5Cu987a%5Cu5e8f%5Cu4e70%20N%5Cu4e2a%5Cu7269%5Cu54c1%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%5Cuff0c%5Cu7b2ci%5Cu4e2a%5Cu7269%5Cu54c1%5Cu9700%5Cu8981%5Cu82b1%5Cu8d39c%28i%29%5Cu5757%5Cu94b1%5Cuff0c%281%20%3C%3D%20c%28i%29%20%3C%3D%2010%2C000%29%5Cu3002%5Cn%5Cn%5Cu5728%5Cu4f9d%5Cu6b21%5Cu8fdb%5Cu884c%5Cu7684%5Cu8d2d%5Cu4e70N%5Cu4e2a%5Cu7269%5Cu54c1%5Cu7684%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cuff0c%5Cu7ea6%5Cu7ff0%5Cu53ef%5Cu4ee5%5Cu968f%5Cu65f6%5Cu505c%5Cu4e0b%5Cu6765%5Cu4ed8%5Cu6b3e%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu4ed8%5Cu6b3e%5Cu53ea%5Cu7528%5Cu4e00%5Cu4e2a%5Cu786c%5Cu5e01%5Cuff0c%5Cu652f%5Cu4ed8%5Cu8d2d%5Cu4e70%5Cu7684%5Cu5185%5Cu5bb9%5Cu662f%5Cu4ece%5Cu4e0a%5Cu4e00%5Cu6b21%5Cu652f%5Cu4ed8%5Cu540e%5Cu5f00%5Cu59cb%5Cu5230%5Cu73b0%5Cu5728%5Cu7684%5Cu8fd9%5Cu4e9b%5Cu6240%5Cu6709%5Cu7269%5Cu54c1%5Cuff08%5Cu524d%5Cu63d0%5Cu662f%5Cu8be5%5Cu786c%5Cu5e01%5Cu8db3%5Cu4ee5%5Cu652f%5Cu4ed8%5Cu8fd9%5Cu4e9b%5Cu7269%5Cu54c1%5Cu7684%5Cu8d39%5Cu7528%5Cuff09%5Cu3002%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%5Cuff0c%5Cu5546%5Cu573a%5Cu7684%5Cu6536%5Cu94f6%5Cu673a%5Cu574f%5Cu4e86%5Cuff0c%5Cu5982%5Cu679c%5Cu7ea6%5Cu7ff0%5Cu652f%5Cu4ed8%5Cu7684%5Cu786c%5Cu5e01%5Cu9762%5Cu503c%5Cu5927%5Cu4e8e%5Cu6240%5Cu9700%5Cu7684%5Cu8d39%5Cu7528%5Cuff0c%5Cu4ed6%5Cu4e0d%5Cu4f1a%5Cu5f97%5Cu5230%5Cu4efb%5Cu4f55%5Cu627e%5Cu96f6%5Cu3002%5Cn%5Cn%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu5728%5Cu8d2d%5Cu4e70%5Cu5b8cN%5Cu4e2a%5Cu7269%5Cu54c1%5Cu540e%5Cuff0c%5Cu7ea6%5Cu7ff0%5Cu6700%5Cu591a%5Cu5269%5Cu4e0b%5Cu591a%5Cu5c11%5Cu94b1%5Cu3002%5Cu5982%5Cu679c%5Cu65e0%5Cu6cd5%5Cu5b8c%5Cu6210%5Cu8d2d%5Cu4e70%5Cuff0c%5Cu8f93%5Cu51fa-1%5Cn%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20Two%20integers%2C%20K%20and%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BK%3A%20Each%20line%20contains%20the%20amount%20of%20money%20of%20one%20of%20FJ%27s%20coins.%5Cn%5Cn%5C%5C%2A%20Lines%202%2BK..1%2BN%2BK%3A%20These%20N%20lines%20contain%20the%20costs%20of%20FJ%27s%20intended%20purchases.%5Cn%22%2C%22outputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20maximum%20amount%20of%20money%20FJ%20can%20end%20up%20with%2C%20or%20-1%20if%20FJ%20cannot%20complete%20all%20of%20his%20purchases.%5Cn%22%2C%22samples%22%3A%5B%5B%223%206%20%5Cr%5Cn12%20%5Cr%5Cn15%20%5Cr%5Cn10%20%5Cr%5Cn6%20%5Cr%5Cn3%20%5Cr%5Cn3%20%5Cr%5Cn2%20%5Cr%5Cn3%20%5Cr%5Cn7%20%5Cr%5Cn%22%2C%2212%20%5Cr%5Cn%22%5D%5D%2C%22hint%22%3A%22FJ%20has%203%20coins%20of%20values%2012%2C%2015%2C%20and%2010.%20%20He%20must%20make%20purchases%20in%20sequence%20of%20value%206%2C%203%2C%203%2C%202%2C%203%2C%20and%207.%5Cn%5Cn%5CnFJ%20spends%20his%2010-unit%20coin%20on%20the%20first%20two%20purchases%2C%20then%20the%2015-unit%20coin%20on%20the%20remaining%20purchases.%20%20This%20leaves%20him%20with%20the%2012-unit%20coin.%5Cn%22%2C%22provider%22%3A%7B%22uid%22%3A20%2C%22name%22%3A%22FarmerJohn2%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3Anull%2C%22isAdmin%22%3Afalse%2C%22color%22%3A%22Gray%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%2C1000%5D%2C%22memory%22%3A%5B128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%2C128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22tags%22%3A%5B3%2C30%2C46%2C56%2C151%2C319%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1728%2C%22totalAccepted%22%3A653%2C%22pid%22%3A%22P3092%22%2C%22title%22%3A%22%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A162293%2C%22title%22%3A%22Hack%21%21%21%22%2C%22forum%22%3A%7B%22id%22%3A2209%2C%22name%22%3A%22P3092%20%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22slug%22%3A%22P3092%22%7D%7D%2C%7B%22id%22%3A158600%2C%22title%22%3A%22%5Cu6c42%5Cu5927%5Cu4f6c%5Cu6307%5Cu6559%5Cuff01%20%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu6709%5Cu5f88%5Cu591a%5Cu70b9%5Cu8f93%5Cu51fa-1%5Cuff1f%5Cuff08%5Cu4e0d%5Cu662f%5Cu5168%5Cu90e8%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A2209%2C%22name%22%3A%22P3092%20%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22slug%22%3A%22P3092%22%7D%7D%2C%7B%22id%22%3A132472%2C%22title%22%3A%22%5Cu7ebf%5Cu4e0b%5Cu81ea%5Cu5df1%5Cu6d4b%5Cu8fc7%5Cu4e86%5Cuff0c%5Cu6d1b%5Cu8c37RE%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2209%2C%22name%22%3A%22P3092%20%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22slug%22%3A%22P3092%22%7D%7D%2C%7B%22id%22%3A69518%2C%22title%22%3A%2270%5Cu5206%5Cu6c42%5Cu52a9%20%20WA%5Cu4e86%5Cu56db%5Cu4e2a%22%2C%22forum%22%3A%7B%22id%22%3A2209%2C%22name%22%3A%22P3092%20%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22slug%22%3A%22P3092%22%7D%7D%2C%7B%22id%22%3A31152%2C%22title%22%3A%22%5Cu8fd9%5Cu79cd%5Cu65b9%5Cu6cd5%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu9519%5Cu554aorz%5Cu6c42%5Cu5927%5Cu4f6c%22%2C%22forum%22%3A%7B%22id%22%3A2209%2C%22name%22%3A%22P3092%20%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22slug%22%3A%22P3092%22%7D%7D%2C%7B%22id%22%3A29131%2C%22title%22%3A%22%234%5Cuff0c%235%5Cu6709%5Cu4ec0%5Cu4e48%5Cu795e%5Cu5947%5Cu7684%5Cu6570%5Cu636e%5Cu4e48%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A2209%2C%22name%22%3A%22P3092%20%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22slug%22%3A%22P3092%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2157%22%2C%22title%22%3A%22%5BSDOI2009%5D%5Cu5b66%5Cu6821%5Cu98df%5Cu5802%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2704%22%2C%22title%22%3A%22%5BNOI2001%5D%5Cu70ae%5Cu5175%5Cu9635%5Cu5730%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2831%22%2C%22title%22%3A%22%5Cu6124%5Cu6012%5Cu7684%5Cu5c0f%5Cu9e1f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3694%22%2C%22title%22%3A%22%5Cu90a6%5Cu90a6%5Cu7684%5Cu5927%5Cu5408%5Cu5531%5Cu7ad9%5Cu961f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4329%22%2C%22title%22%3A%22%5BCOCI2006-2007%231%5D%20Bond%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5BUSACO13NOV%5D%5Cu6ca1%5Cu6709%5Cu627e%5Cu96f6No%20Change%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>[USACO13NOV]没有找零No Change</h1>
+<h2>题目描述</h2>
+<div>Farmer John is at the market to purchase supplies for his farm. He has in his pocket K coins (1 <= K <= 16), each with value in the range 1..100,000,000. FJ would like to make a sequence of N purchases (1 <= N <= 100,000), where the ith purchase costs c(i) units of money (1 <= c(i) <= 10,000). As he makes this sequence of purchases, he can periodically stop and pay, with a single coin, for all the purchases made since his last payment (of course, the single coin he uses must be large enough to pay for all of these). Unfortunately, the vendors at the market are completely out of change, so whenever FJ uses a coin that is larger than the amount of money he owes, he sadly receives no changes in return!
+Please compute the maximum amount of money FJ can end up with after making his N purchases in sequence. Output -1 if it is impossible for FJ to make all of his purchases.
+约翰到商场购物，他的钱包里有K(1 <= K <= 16)个硬币，面值的范围是1..100,000,000。
+约翰想按顺序买 N个物品(1 <= N <= 100,000)，第i个物品需要花费c(i)块钱，(1 <= c(i) <= 10,000)。
+在依次进行的购买N个物品的过程中，约翰可以随时停下来付款，每次付款只用一个硬币，支付购买的内容是从上一次支付后开始到现在的这些所有物品（前提是该硬币足以支付这些物品的费用）。不幸的是，商场的收银机坏了，如果约翰支付的硬币面值大于所需的费用，他不会得到任何找零。
+请计算出在购买完N个物品后，约翰最多剩下多少钱。如果无法完成购买，输出-1
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: Two integers, K and N.
+\* Lines 2..1+K: Each line contains the amount of money of one of FJ's coins.
+\* Lines 2+K..1+N+K: These N lines contain the costs of FJ's intended purchases.
+</div>
+<h3>输出格式</h3>
+<br />
+<div>\* Line 1: The maximum amount of money FJ can end up with, or -1 if FJ cannot complete all of his purchases.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 6 
+12 
+15 
+10 
+6 
+3 
+3 
+2 
+3 
+7 
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12 
+</code></pre>
+<h2>说明</h2>
+<div>FJ has 3 coins of values 12, 15, and 10. He must make purchases in sequence of value 6, 3, 3, 2, 3, and 7.
+FJ spends his 10-unit coin on the first two purchases, then the 15-unit coin on the remaining purchases. This leaves him with the 12-unit coin.
+</div>
+</article>
+</div>
+</div>
+</body>
+</html>
