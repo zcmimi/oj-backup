@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Walking Robot - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402367:VH8uQHxVvumy6qf02/OO9fDrEZCW2a7VUMpu9DLNf1I=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20is%20a%20robot%20staying%20at%20%24%20X%3D0%20%24%20on%20the%20%24%20Ox%20%24%20axis.%20He%20has%20to%20walk%20to%20%24%20X%3Dn%20%24%20.%20You%20are%20controlling%20this%20robot%20and%20controlling%20how%20he%20goes.%20The%20robot%20has%20a%20battery%20and%20an%20accumulator%20with%20a%20solar%20panel.%5Cn%5CnThe%20%24%20i%20%24%20-th%20segment%20of%20the%20path%20%28from%20%24%20X%3Di-1%20%24%20to%20%24%20X%3Di%20%24%20%29%20can%20be%20exposed%20to%20sunlight%20or%20not.%20The%20array%20%24%20s%20%24%20denotes%20which%20segments%20are%20exposed%20to%20sunlight%3A%20if%20segment%20%24%20i%20%24%20is%20exposed%2C%20then%20%24%20s_i%20%3D%201%20%24%20%2C%20otherwise%20%24%20s_i%20%3D%200%20%24%20.%5Cn%5CnThe%20robot%20has%20one%20battery%20of%20capacity%20%24%20b%20%24%20and%20one%20accumulator%20of%20capacity%20%24%20a%20%24%20.%20For%20each%20segment%2C%20you%20should%20choose%20which%20type%20of%20energy%20storage%20robot%20will%20use%20to%20go%20to%20the%20next%20point%20%28it%20can%20be%20either%20battery%20or%20accumulator%29.%20If%20the%20robot%20goes%20using%20the%20battery%2C%20the%20current%20charge%20of%20the%20battery%20is%20decreased%20by%20one%20%28the%20robot%20can%27t%20use%20the%20battery%20if%20its%20charge%20is%20zero%29.%20And%20if%20the%20robot%20goes%20using%20the%20accumulator%2C%20the%20current%20charge%20of%20the%20accumulator%20is%20decreased%20by%20one%20%28and%20the%20robot%20also%20can%27t%20use%20the%20accumulator%20if%20its%20charge%20is%20zero%29.%5Cn%5CnIf%20the%20current%20segment%20is%20exposed%20to%20sunlight%20and%20the%20robot%20goes%20through%20it%20using%20the%20battery%2C%20the%20charge%20of%20the%20accumulator%20increases%20by%20one%20%28of%20course%2C%20its%20charge%20can%27t%20become%20higher%20than%20it%27s%20maximum%20capacity%29.%5Cn%5CnIf%20accumulator%20is%20used%20to%20pass%20some%20segment%2C%20its%20charge%20decreases%20by%201%20no%20matter%20if%20the%20segment%20is%20exposed%20or%20not.%5Cn%5CnYou%20understand%20that%20it%20is%20not%20always%20possible%20to%20walk%20to%20%24%20X%3Dn%20%24%20.%20You%20want%20your%20robot%20to%20go%20as%20far%20as%20possible.%20Find%20the%20maximum%20number%20of%20segments%20of%20distance%20the%20robot%20can%20pass%20if%20you%20control%20him%20optimally.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20three%20integers%20%24%20n%2C%20b%2C%20a%20%24%20%28%20%24%201%20%5C%5Cle%20n%2C%20b%2C%20a%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20robot%27s%20destination%20point%2C%20the%20battery%20capacity%20and%20the%20accumulator%20capacity%2C%20respectively.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20n%20%24%20integers%20%24%20s_1%2C%20s_2%2C%20%5C%5Cdots%2C%20s_n%20%24%20%28%20%24%200%20%5C%5Cle%20s_i%20%5C%5Cle%201%20%24%20%29%2C%20where%20%24%20s_i%20%24%20is%20%24%201%20%24%20if%20the%20%24%20i%20%24%20-th%20segment%20of%20distance%20is%20exposed%20to%20sunlight%2C%20and%20%24%200%20%24%20otherwise.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20maximum%20number%20of%20segments%20the%20robot%20can%20pass%20if%20you%20control%20him%20optimally.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%202%201%5Cn0%201%200%201%200%5Cn%22%2C%22%5Cn5%5Cn%22%5D%2C%5B%22%5Cn6%202%201%5Cn1%200%200%201%200%201%5Cn%22%2C%22%5Cn3%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20the%20robot%20can%20go%20through%20the%20first%20segment%20using%20the%20accumulator%2C%20and%20charge%20levels%20become%20%24%20b%3D2%20%24%20and%20%24%20a%3D0%20%24%20.%20The%20second%20segment%20can%20be%20passed%20using%20the%20battery%2C%20and%20charge%20levels%20become%20%24%20b%3D1%20%24%20and%20%24%20a%3D1%20%24%20.%20The%20third%20segment%20can%20be%20passed%20using%20the%20accumulator%2C%20and%20charge%20levels%20become%20%24%20b%3D1%20%24%20and%20%24%20a%3D0%20%24%20.%20The%20fourth%20segment%20can%20be%20passed%20using%20the%20battery%2C%20and%20charge%20levels%20become%20%24%20b%3D0%20%24%20and%20%24%20a%3D1%20%24%20.%20And%20the%20fifth%20segment%20can%20be%20passed%20using%20the%20accumulator.%5Cn%5CnIn%20the%20second%20example%20the%20robot%20can%20go%20through%20the%20maximum%20number%20of%20segments%20using%20battery%20two%20times%20and%20accumulator%20one%20time%20in%20any%20order.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1154%5C%2FD%22%2C%22id%22%3A%221154D%22%7D%2C%22translation%22%3A%22%23%23%20Description%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6570%5Cu8f74%5Cu4e0a%5Cuff0c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu673a%5Cu5668%5Cu4eba%5Cu8981%5Cu4ece%20%24x%20%3D%200%24%20%5Cu5904%5Cu79fb%5Cu52a8%5Cu5230%20%24x%20%3D%20n%24%20%5Cu5904%5Cu3002%5Cu673a%5Cu5668%5Cu4eba%5Cu8eab%5Cu4e0a%5Cu6709%5Cu4e24%5Cu79cd%5Cu7535%5Cu6c60%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu79cd%5Cu662f%5Cu666e%5Cu901a%5Cu7535%5Cu6c60%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu79cd%5Cu662f%5Cu592a%5Cu9633%5Cu80fd%5Cu53ef%5Cu5145%5Cu7535%5Cu7535%5Cu6c60%5Cuff0c%5Cu666e%5Cu901a%5Cu7535%5Cu6c60%5Cu7684%5Cu5bb9%5Cu91cf%5Cu4e0a%5Cu9650%5Cu4e3a%20%24b%24%20%5Cu70b9%5Cu7535%5Cu91cf%5Cuff0c%5Cu592a%5Cu9633%5Cu80fd%5Cu7535%5Cu6c60%5Cu7684%5Cu5bb9%5Cu91cf%5Cu4e0a%5Cu9650%5Cu4e3a%20%24a%24%20%5Cu70b9%5Cu7535%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5b9a%5Cu4e49%5Cu6570%5Cu8f74%5Cu4e0a%5Cu7684%5Cu7b2c%20%24i%24%20%5Cu6bb5%5Cu7ebf%5Cu6bb5%5Cu4ee3%5Cu8868%5Cu5de6%5Cu7aef%5Cu70b9%5Cu4e3a%20%24x%20%3D%20i%20-%201%24%5Cuff0c%5Cu53f3%5Cu7aef%5Cu70b9%5Cu4e3a%20%24x%20%3D%20i%24%20%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8fd9%20%24n%24%20%5Cu6761%5Cu7ebf%5Cu6bb5%5Cu4e2d%5Cuff0c%5Cu6709%5Cu4e00%5Cu4e9b%5Cu7ebf%5Cu6bb5%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu592a%5Cu9633%5Cu7167%5Cu5c04%5Cu5230%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5f53%5Cu673a%5Cu5668%5Cu4eba%5Cu5411%5Cu53f3%5Cu79fb%5Cu52a8%5Cu4e00%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu65f6%5Cuff0c%5Cu5b83%5Cu4f1a%5Cu6d88%5Cu8017%5Cu4e00%5Cu70b9%5Cu7535%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5f53%5Cu673a%5Cu5668%5Cu4eba%5Cu8d70%5Cu5230%5Cu4e00%5Cu4e2a%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu592a%5Cu9633%5Cu7167%5Cu5c04%5Cu5230%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu4e0a%5Cu65f6%5Cuff0c%5Cu5982%5Cu679c%5Cu4ed6%5Cu662f%2A%2A%5Cu4f7f%5Cu7528%5Cu666e%5Cu901a%5Cu7535%5Cu6c60%2A%2A%5Cu8d70%5Cu5230%5Cu8fd9%5Cu6761%5Cu7ebf%5Cu6bb5%5Cu7684%5Cu5e76%5Cu4e14%2A%2A%5Cu592a%5Cu9633%5Cu80fd%5Cu7535%5Cu6c60%5Cu7684%5Cu7535%5Cu91cf%5Cu4e0d%5Cu6ee1%2A%2A%5Cuff0c%5Cu5219%5Cu53ef%5Cu4ee5%5Cu589e%5Cu52a0%5Cu4e00%5Cu70b9%5Cu7535%5Cu91cf%5Cu3002%5Cu8fd9%5Cu91cc%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu7279%5Cu6307%5Cu957f%5Cu5ea6%5Cu4e3a%20%241%24%20%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu3002%5Cu5373%5Cu5982%5Cu679c%5Cu5b83%5Cu4ece%5Cu4e00%5Cu6761%5Cu88ab%5Cu7167%5Cu5c04%5Cu5230%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu4e0a%5Cu8d70%5Cu5230%5Cu53e6%5Cu4e00%5Cu6761%5Cu88ab%5Cu7167%5Cu5c04%5Cu7684%5Cu7ebf%5Cu6bb5%5Cu4e0a%5Cuff0c%5Cu4f9d%5Cu7136%5Cu6709%5Cu53ef%5Cu80fd%5Cu589e%5Cu52a0%5Cu7535%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu673a%5Cu5668%5Cu4eba%5Cu603b%5Cu7535%5Cu91cf%5Cu4e3a%20%240%24%20%5Cu6216%5Cu5230%5Cu8fbe%5Cu7ec8%5Cu70b9%5Cu65f6%5Cu4f1a%5Cu505c%5Cu4e0b%5Cu3002%5Cu73b0%5Cu5728%5Cu8bf7%5Cu4f60%5Cu6c42%5Cu51fa%5Cu673a%5Cu5668%5Cu4eba%5Cu6700%5Cu8fdc%5Cu53ef%5Cu4ee5%5Cu8d70%5Cu591a%5Cu8fdc%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20Input%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%5Cu4ee3%5Cu8868%20%24n%2C~b%2C~a%24%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu9762%5Cu4e00%5Cu884c%20%24n%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu6574%5Cu6570%20%24s_i%24%20%5Cu63cf%5Cu8ff0%5Cu7b2c%20%24i%24%20%5Cu6761%5Cu7ebf%5Cu6bb5%5Cu662f%5Cu5426%5Cu88ab%5Cu9633%5Cu5149%5Cu7167%5Cu5c04%5Cuff0c%5Cu5982%5Cu679c%5Cu88ab%5Cu7167%5Cu5c04%5Cu5219%5Cu4e3a%20%241%24%5Cuff0c%5Cu5426%5Cu5219%5Cu4e3a%20%240%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20Output%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu4ee3%5Cu8868%5Cu7b54%5Cu6848%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20Limitation%5Cr%5Cn%5Cr%5Cn%241~%5C%5Cleq~n%2C~b%2C~a~%5C%5Cleq~2~%5C%5Ctimes~10%5E5%24%5Cr%5Cn%5Cr%5Cn%24%5C%5Cforall~i~%5C%5Cin~%5B1%2C~n%5D%2C~0~%5C%5Cleq~s_i~%5C%5Cleq~1%24%5Cr%5Cn%5Cr%5CnTranslated%20By%20%40%20%5Cu4e00%5Cu6276%5Cu82cf%5Cu4e00%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A179%2C%22totalAccepted%22%3A91%2C%22pid%22%3A%22CF1154D%22%2C%22title%22%3A%22Walking%20Robot%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1144F%22%2C%22title%22%3A%22Graph%20Without%20Long%20Directed%20Paths%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1144D%22%2C%22title%22%3A%22Equalize%20Them%20All%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1154G%22%2C%22title%22%3A%22Minimum%20Possible%20LCM%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1154F%22%2C%22title%22%3A%22Shovels%20Shop%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1154E%22%2C%22title%22%3A%22Two%20Teams%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Walking%20Robot%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Walking Robot</h1>
+<h2>题意翻译</h2>
+<div>## Description
+在一个数轴上，有一个机器人要从 $x = 0$ 处移动到 $x = n$ 处。机器人身上有两种电池，第一种是普通电池，第二种是太阳能可充电电池，普通电池的容量上限为 $b$ 点电量，太阳能电池的容量上限为 $a$ 点电量。
+定义数轴上的第 $i$ 段线段代表左端点为 $x = i - 1$，右端点为 $x = i$ 的线段。
+这 $n$ 条线段中，有一些线段可以被太阳照射到。
+当机器人向右移动一个单位时，它会消耗一点电量。
+当机器人走到一个可以被太阳照射到的线段上时，如果他是**使用普通电池**走到这条线段的并且**太阳能电池的电量不满**，则可以增加一点电量。这里的线段特指长度为 $1$ 的线段。即如果它从一条被照射到的线段上走到另一条被照射的线段上，依然有可能增加电量。
+机器人总电量为 $0$ 或到达终点时会停下。现在请你求出机器人最远可以走多远。
+## Input
+第一行三个整数代表 $n,~b,~a$
+下面一行 $n$ 个整数，第 $i$ 个整数 $s_i$ 描述第 $i$ 条线段是否被阳光照射，如果被照射则为 $1$，否则为 $0$。
+## Output
+一行一个整数，代表答案。
+## Limitation
+$1~\leq~n,~b,~a~\leq~2~\times~10^5$
+$\forall~i~\in~[1,~n],~0~\leq~s_i~\leq~1$
+Translated By @ 一扶苏一</div>
+<h2>题目描述</h2>
+<div>There is a robot staying at $ X=0 $ on the $ Ox $ axis. He has to walk to $ X=n $ . You are controlling this robot and controlling how he goes. The robot has a battery and an accumulator with a solar panel.
+The $ i $ -th segment of the path (from $ X=i-1 $ to $ X=i $ ) can be exposed to sunlight or not. The array $ s $ denotes which segments are exposed to sunlight: if segment $ i $ is exposed, then $ s_i = 1 $ , otherwise $ s_i = 0 $ .
+The robot has one battery of capacity $ b $ and one accumulator of capacity $ a $ . For each segment, you should choose which type of energy storage robot will use to go to the next point (it can be either battery or accumulator). If the robot goes using the battery, the current charge of the battery is decreased by one (the robot can't use the battery if its charge is zero). And if the robot goes using the accumulator, the current charge of the accumulator is decreased by one (and the robot also can't use the accumulator if its charge is zero).
+If the current segment is exposed to sunlight and the robot goes through it using the battery, the charge of the accumulator increases by one (of course, its charge can't become higher than it's maximum capacity).
+If accumulator is used to pass some segment, its charge decreases by 1 no matter if the segment is exposed or not.
+You understand that it is not always possible to walk to $ X=n $ . You want your robot to go as far as possible. Find the maximum number of segments of distance the robot can pass if you control him optimally.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains three integers $ n, b, a $ ( $ 1 \le n, b, a \le 2 \cdot 10^5 $ ) — the robot's destination point, the battery capacity and the accumulator capacity, respectively.
+The second line of the input contains $ n $ integers $ s_1, s_2, \dots, s_n $ ( $ 0 \le s_i \le 1 $ ), where $ s_i $ is $ 1 $ if the $ i $ -th segment of distance is exposed to sunlight, and $ 0 $ otherwise.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the maximum number of segments the robot can pass if you control him optimally.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5 2 1
+0 1 0 1 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+5
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+6 2 1
+1 0 0 1 0 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+3
+</code></pre>
+<h2>说明</h2>
+<div>In the first example the robot can go through the first segment using the accumulator, and charge levels become $ b=2 $ and $ a=0 $ . The second segment can be passed using the battery, and charge levels become $ b=1 $ and $ a=1 $ . The third segment can be passed using the accumulator, and charge levels become $ b=1 $ and $ a=0 $ . The fourth segment can be passed using the battery, and charge levels become $ b=0 $ and $ a=1 $ . And the fifth segment can be passed using the accumulator.
+In the second example the robot can go through the maximum number of segments using battery two times and accumulator one time in any order.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

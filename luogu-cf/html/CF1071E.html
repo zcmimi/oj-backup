@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Rain Protection - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401242:nWxh/QwNoapEKxgx7WxnbBuXsXmAyrRVAmq5rL18IbM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20lot%20of%20people%20dream%20of%20convertibles%20%28also%20often%20called%20cabriolets%29.%20Some%20of%20convertibles%2C%20however%2C%20don%27t%20have%20roof%20at%20all%2C%20and%20are%20vulnerable%20to%20rain.%20This%20is%20why%20Melon%20Ask%2C%20the%20famous%20inventor%2C%20decided%20to%20create%20a%20rain%20protection%20mechanism%20for%20convertibles.%5Cn%5CnThe%20workplace%20of%20the%20mechanism%20is%20a%20part%20of%20plane%20just%20above%20the%20driver.%20Its%20functional%20part%20consists%20of%20two%20rails%20with%20sliding%20endpoints%20of%20a%20piece%20of%20stretching%20rope.%20For%20the%20sake%20of%20simplicity%20we%20can%20consider%20this%20as%20a%20pair%20of%20parallel%20segments%20in%20a%20plane%20with%20the%20rope%20segment%2C%20whose%20endpoints%20we%20are%20free%20to%20choose%20as%20any%20points%20on%20these%20rails%20segments.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1071E%5C%2F9c67127661c7152b9b1c8d323fd90e330fb28ce6.png%29The%20algorithmic%20part%20of%20the%20mechanism%20detects%20each%20particular%20raindrop%20and%20predicts%20when%20and%20where%20it%20reaches%20the%20plane.%20At%20this%20exact%20moment%20the%20rope%20segment%20must%20contain%20the%20raindrop%20point%20%28so%20the%20rope%20adsorbs%20the%20raindrop%29.%5Cn%5CnYou%20are%20given%20the%20initial%20position%20of%20the%20rope%20endpoints%20and%20all%20information%20about%20raindrops.%20You%20are%20to%20choose%20the%20minimal%20possible%20speed%20%24%20v%20%24%20of%20the%20endpoints%20sliding%20%28both%20endpoints%20can%20slide%20in%20any%20direction%20along%20their%20segments%20independently%20of%20each%20other%29%20in%20such%20a%20way%20that%20it%20is%20possible%20to%20catch%20all%20raindrops%20moving%20both%20endpoints%20with%20speed%20not%20greater%20than%20%24%20v%20%24%20%2C%20or%20find%20out%20that%20it%27s%20impossible%20no%20matter%20how%20high%20the%20speed%20is.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20w%20%24%20and%20%24%20h%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2010%5E5%20%24%20%2C%20%24%201%5C%5Cle%20w%2C%20h%20%5C%5Cle%2010%5E3%20%24%20%29%2C%20meaning%20that%20there%20are%20%24%20n%20%24%20raindrops%2C%20and%20two%20rails%20are%20represented%20as%20segments%20connecting%20%24%20%280%2C%200%29%20%24%20and%20%24%20%28w%2C%200%29%20%24%20and%20connecting%20%24%20%280%2C%20h%29%20%24%20and%20%24%20%28w%2C%20h%29%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20two%20integers%20%24%20e_1%20%24%20and%20%24%20e_2%20%24%20%2C%20meaning%20that%20the%20initial%20%28that%20is%2C%20at%20the%20moment%20%24%20t%20%3D%200%20%24%20%29%20positions%20of%20the%20endpoints%20are%20%24%20%28e_1%2C%200%29%20%24%20and%20%24%20%28e_2%2C%20h%29%20%24%20%28%20%24%200%5C%5Cle%20e_1%2C%20e_2%5C%5Cle%20w%20%24%20%29.%5Cn%5CnThe%20%24%20i%20%24%20-th%20of%20the%20following%20%24%20n%20%24%20lines%20contains%20three%20integers%20%24%20t_i%20%24%20%2C%20%24%20x_i%20%24%20and%20%24%20y_i%20%24%20%28%20%24%201%5C%5Cle%20t_i%5C%5Cle%2010%5E5%20%24%20%2C%20%24%200%5C%5Cle%20x_i%20%5C%5Cle%20w%20%24%20%2C%20%24%200%20%3C%20y_i%20%3C%20h%20%24%20%29%20meaning%20that%20the%20%24%20i%20%24%20-th%20raindrop%20touches%20the%20plane%20at%20the%20point%20%24%20%28x_i%2C%20y_i%29%20%24%20at%20the%20time%20moment%20%24%20t_i%20%24%20.%20It%20is%20guaranteed%20that%20%24%20t_i%20%5C%5Cle%20t_%7Bi%2B1%7D%20%24%20for%20all%20valid%20%24%20i%20%24%20.%22%2C%22outputFormat%22%3A%22If%20it%20is%20impossible%20to%20catch%20all%20raindrops%2C%20print%20%24%20-1%20%24%20.%5Cn%5CnOtherwise%2C%20print%20the%20least%20possible%20maximum%20speed%20of%20the%20rope%20endpoints%20for%20which%20it%20is%20possible%20to%20catch%20them%20all.%20Your%20answer%20is%20considered%20correct%20if%20the%20absolute%20or%20relative%20error%20doesn%27t%20exceed%20%24%2010%5E%7B-4%7D%20%24%20.%5Cn%5CnFormally%2C%20let%20your%20answer%20be%20%24%20a%20%24%20%2C%20and%20the%20jury%27s%20answer%20be%20%24%20b%20%24%20.%20Your%20answer%20is%20considered%20correct%20if%20%24%20%5C%5Cfrac%7B%7Ca%20-%20b%7C%7D%7B%5C%5Cmax%7B%281%2C%20%7Cb%7C%29%7D%7D%20%5C%5Cle%2010%5E%7B-4%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%205%205%5Cn0%200%5Cn1%201%204%5Cn2%202%204%5Cn3%203%204%5Cn%22%2C%221.0000000019%5Cn%22%5D%2C%5B%222%205%205%5Cn0%200%5Cn2%204%201%5Cn3%201%204%5Cn%22%2C%222.1428571437%5Cn%22%5D%2C%5B%223%205%205%5Cn0%200%5Cn1%202%201%5Cn1%203%203%5Cn1%204%202%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22That%20is%20how%20one%20can%20act%20in%20the%20first%20sample%20test%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1071E%5C%2F29ec1cbbfb95f9f6ca69233bdc84ebf4774b2c40.png%29%5Cn%5CnHere%20is%20the%20same%20for%20the%20second%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1071E%5C%2Fe9759b10d4ae11bff7335e24a2308135eaa79ee3.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B7000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1071%5C%2FE%22%2C%22id%22%3A%221071E%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu9700%5Cu8981%5Cu79fb%5Cu52a8%5Cu4e00%5Cu6839%5Cu5f39%5Cu6027%5Cu7ef3%5Cu5438%5Cu6536%5Cu6240%5Cu6709%5Cu7684%5Cu96e8%5Cu6ef4%5Cuff0c%5Cu6c42%5Cu7aef%5Cu70b9%5Cu79fb%5Cu52a8%5Cu7684%5Cu6700%5Cu5c0f%5Cu901f%5Cu5ea6%5Cr%5Cn%5Cr%5Cn%5Cu5177%5Cu4f53%5Cu800c%5Cu8a00%5Cuff0c%5Cu5f39%5Cu6027%5Cu7ef3%5Cu7684%5Cu4e24%5Cu7aef%5Cu5728%24%280%2C0%29%28w%2C0%29%24%5Cu548c%24%280%2Ch%29%28w%2Ch%29%24%5Cu6ed1%5Cu52a8%5Cuff0c%5Cu521d%5Cu59cb%5Cu4f4d%5Cu7f6e%5Cu5728%24%28e_1%2C0%29%28e_2%2Ch%29%24%5Cr%5Cn%5Cr%5Cn%24n%24%5Cu4e2a%5Cu96e8%5Cu6ef4%5Cu4f1a%5Cu5728%24t_i%24%5Cu65f6%5Cu523b%5Cu4e0b%5Cu843d%5Cu5728%24%28x_i%2Cy_i%29%24%5Cuff0c%5Cu6c42%5Cu51fa%5Cu6700%5Cu5c0f%5Cu7684%24v%24%5Cu4f7f%5Cu5f97%5Cu4f60%5Cu79fb%5Cu52a8%5Cu7ef3%5Cu5b50%5Cu7aef%5Cu70b9%5Cu65f6%5Cuff0c%5Cu7aef%5Cu70b9%5Cu7684%5Cu901f%5Cu5ea6%5Cu59cb%5Cu7ec8%5Cu4e0d%5Cu8d85%5Cu8fc7%24v%24%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu4e0d%5Cu5b58%5Cu5728%5Cu8fd9%5Cu6837%5Cu7684%24v%24%5Cuff0c%5Cu8f93%5Cu51fa%24-1%24%5Cr%5Cn%5Cr%5Cn%5Cu8981%5Cu6c42%5Cu76f8%5Cu5bf9%5Cu8bef%5Cu5dee%5Cu6216%5Cu7edd%5Cu5bf9%5Cu8bef%5Cu5dee%5Cu4e0d%5Cu8d85%5Cu8fc7%2410%5E%7B-4%7D%24%5Cr%5Cn%5Cr%5Cnby%20xzyxzy%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A12%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF1071E%22%2C%22title%22%3A%22Rain%20Protection%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A93541%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu600e%5Cu4e48%5Cu624d%5Cu80fd%5Cu901a%5Cu8fc7%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A30986%2C%22name%22%3A%22CF1071E%20Rain%20Protection%22%2C%22slug%22%3A%22CF1071E%22%7D%7D%2C%7B%22id%22%3A93140%2C%22title%22%3A%22%5Cu5173%5Cu673a%5Cu4e4b%5Cu524d%5Cu7559%5Cu4e0b%5Cu4e24%5Cu4e2a%5Cu9898%5Cu89e3%5Cu94fe%5Cu63a5%22%2C%22forum%22%3A%7B%22id%22%3A30986%2C%22name%22%3A%22CF1071E%20Rain%20Protection%22%2C%22slug%22%3A%22CF1071E%22%7D%7D%2C%7B%22id%22%3A75298%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48%5Cu8fd9%5Cu6b21CF%5Cu5c31%5Cu722c%5Cu4e86E%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A30986%2C%22name%22%3A%22CF1071E%20Rain%20Protection%22%2C%22slug%22%3A%22CF1071E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Rain%20Protection%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Rain Protection</h1>
+<h2>题意翻译</h2>
+<div>你需要移动一根弹性绳吸收所有的雨滴，求端点移动的最小速度
+具体而言，弹性绳的两端在$(0,0)(w,0)$和$(0,h)(w,h)$滑动，初始位置在$(e_1,0)(e_2,h)$
+$n$个雨滴会在$t_i$时刻下落在$(x_i,y_i)$，求出最小的$v$使得你移动绳子端点时，端点的速度始终不超过$v$
+如果不存在这样的$v$，输出$-1$
+要求相对误差或绝对误差不超过$10^{-4}$
+by xzyxzy</div>
+<h2>题目描述</h2>
+<div>A lot of people dream of convertibles (also often called cabriolets). Some of convertibles, however, don't have roof at all, and are vulnerable to rain. This is why Melon Ask, the famous inventor, decided to create a rain protection mechanism for convertibles.
+The workplace of the mechanism is a part of plane just above the driver. Its functional part consists of two rails with sliding endpoints of a piece of stretching rope. For the sake of simplicity we can consider this as a pair of parallel segments in a plane with the rope segment, whose endpoints we are free to choose as any points on these rails segments.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1071E/9c67127661c7152b9b1c8d323fd90e330fb28ce6.png)The algorithmic part of the mechanism detects each particular raindrop and predicts when and where it reaches the plane. At this exact moment the rope segment must contain the raindrop point (so the rope adsorbs the raindrop).
+You are given the initial position of the rope endpoints and all information about raindrops. You are to choose the minimal possible speed $ v $ of the endpoints sliding (both endpoints can slide in any direction along their segments independently of each other) in such a way that it is possible to catch all raindrops moving both endpoints with speed not greater than $ v $ , or find out that it's impossible no matter how high the speed is.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ w $ and $ h $ ( $ 1 \le n \le 10^5 $ , $ 1\le w, h \le 10^3 $ ), meaning that there are $ n $ raindrops, and two rails are represented as segments connecting $ (0, 0) $ and $ (w, 0) $ and connecting $ (0, h) $ and $ (w, h) $ .
+The second line contains two integers $ e_1 $ and $ e_2 $ , meaning that the initial (that is, at the moment $ t = 0 $ ) positions of the endpoints are $ (e_1, 0) $ and $ (e_2, h) $ ( $ 0\le e_1, e_2\le w $ ).
+The $ i $ -th of the following $ n $ lines contains three integers $ t_i $ , $ x_i $ and $ y_i $ ( $ 1\le t_i\le 10^5 $ , $ 0\le x_i \le w $ , $ 0 < y_i < h $ ) meaning that the $ i $ -th raindrop touches the plane at the point $ (x_i, y_i) $ at the time moment $ t_i $ . It is guaranteed that $ t_i \le t_{i+1} $ for all valid $ i $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is impossible to catch all raindrops, print $ -1 $ .
+Otherwise, print the least possible maximum speed of the rope endpoints for which it is possible to catch them all. Your answer is considered correct if the absolute or relative error doesn't exceed $ 10^{-4} $ .
+Formally, let your answer be $ a $ , and the jury's answer be $ b $ . Your answer is considered correct if $ \frac{|a - b|}{\max{(1, |b|)}} \le 10^{-4} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 5 5
+0 0
+1 1 4
+2 2 4
+3 3 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1.0000000019
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2 5 5
+0 0
+2 4 1
+3 1 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2.1428571437
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 5 5
+0 0
+1 2 1
+1 3 3
+1 4 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>-1
+</code></pre>
+<h2>说明</h2>
+<div>That is how one can act in the first sample test:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1071E/29ec1cbbfb95f9f6ca69233bdc84ebf4774b2c40.png)
+Here is the same for the second:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1071E/e9759b10d4ae11bff7335e24a2308135eaa79ee3.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Diagonal Walking v.2 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400745:Oz2m5u8Z9o+4N4rq3Dog9hB+uhMACDG4ChZXXbRlfps=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Mikhail%20walks%20on%20a%20Cartesian%20plane.%20He%20starts%20at%20the%20point%20%24%20%280%2C%200%29%20%24%20%2C%20and%20in%20one%20move%20he%20can%20go%20to%20any%20of%20eight%20adjacent%20points.%20For%20example%2C%20if%20Mikhail%20is%20currently%20at%20the%20point%20%24%20%280%2C%200%29%20%24%20%2C%20he%20can%20go%20to%20any%20of%20the%20following%20points%20in%20one%20move%3A%5Cn%5Cn-%20%24%20%281%2C%200%29%20%24%20%3B%5Cn-%20%24%20%281%2C%201%29%20%24%20%3B%5Cn-%20%24%20%280%2C%201%29%20%24%20%3B%5Cn-%20%24%20%28-1%2C%201%29%20%24%20%3B%5Cn-%20%24%20%28-1%2C%200%29%20%24%20%3B%5Cn-%20%24%20%28-1%2C%20-1%29%20%24%20%3B%5Cn-%20%24%20%280%2C%20-1%29%20%24%20%3B%5Cn-%20%24%20%281%2C%20-1%29%20%24%20.%5Cn%5CnIf%20Mikhail%20goes%20from%20the%20point%20%24%20%28x1%2C%20y1%29%20%24%20to%20the%20point%20%24%20%28x2%2C%20y2%29%20%24%20in%20one%20move%2C%20and%20%24%20x1%20%5C%5Cne%20x2%20%24%20and%20%24%20y1%20%5C%5Cne%20y2%20%24%20%2C%20then%20such%20a%20move%20is%20called%20a%20diagonal%20move.%5Cn%5CnMikhail%20has%20%24%20q%20%24%20queries.%20For%20the%20%24%20i%20%24%20-th%20query%20Mikhail%27s%20target%20is%20to%20go%20to%20the%20point%20%24%20%28n_i%2C%20m_i%29%20%24%20from%20the%20point%20%24%20%280%2C%200%29%20%24%20in%20exactly%20%24%20k_i%20%24%20moves.%20Among%20all%20possible%20movements%20he%20want%20to%20choose%20one%20with%20the%20maximum%20number%20of%20diagonal%20moves.%20Your%20task%20is%20to%20find%20the%20maximum%20number%20of%20diagonal%20moves%20or%20find%20that%20it%20is%20impossible%20to%20go%20from%20the%20point%20%24%20%280%2C%200%29%20%24%20to%20the%20point%20%24%20%28n_i%2C%20m_i%29%20%24%20in%20%24%20k_i%20%24%20moves.%5Cn%5CnNote%20that%20Mikhail%20can%20visit%20any%20point%20any%20number%20of%20times%20%28even%20the%20destination%20point%21%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%2010%5E4%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries.%5Cn%5CnThen%20%24%20q%20%24%20lines%20follow.%20The%20%24%20i%20%24%20-th%20of%20these%20%24%20q%20%24%20lines%20contains%20three%20integers%20%24%20n_i%20%24%20%2C%20%24%20m_i%20%24%20and%20%24%20k_i%20%24%20%28%20%24%201%20%5C%5Cle%20n_i%2C%20m_i%2C%20k_i%20%5C%5Cle%2010%5E%7B18%7D%20%24%20%29%20%5Cu2014%20%24%20x%20%24%20-coordinate%20of%20the%20destination%20point%20of%20the%20query%2C%20%24%20y%20%24%20-coordinate%20of%20the%20destination%20point%20of%20the%20query%20and%20the%20number%20of%20moves%20in%20the%20query%2C%20correspondingly.%22%2C%22outputFormat%22%3A%22Print%20%24%20q%20%24%20integers.%20The%20%24%20i%20%24%20-th%20integer%20should%20be%20equal%20to%20-1%20if%20Mikhail%20cannot%20go%20from%20the%20point%20%24%20%280%2C%200%29%20%24%20to%20the%20point%20%24%20%28n_i%2C%20m_i%29%20%24%20in%20exactly%20%24%20k_i%20%24%20moves%20described%20above.%20Otherwise%20the%20%24%20i%20%24%20-th%20integer%20should%20be%20equal%20to%20the%20the%20maximum%20number%20of%20diagonal%20moves%20among%20all%20possible%20movements.%22%2C%22samples%22%3A%5B%5B%223%5Cn2%202%203%5Cn4%203%207%5Cn10%201%209%5Cn%22%2C%221%5Cn6%5Cn-1%5Cn%22%5D%5D%2C%22hint%22%3A%22One%20of%20the%20possible%20answers%20to%20the%20first%20test%20case%3A%20%24%20%280%2C%200%29%20%5C%5Cto%20%281%2C%200%29%20%5C%5Cto%20%281%2C%201%29%20%5C%5Cto%20%282%2C%202%29%20%24%20.%5Cn%5CnOne%20of%20the%20possible%20answers%20to%20the%20second%20test%20case%3A%20%24%20%280%2C%200%29%20%5C%5Cto%20%280%2C%201%29%20%5C%5Cto%20%281%2C%202%29%20%5C%5Cto%20%280%2C%203%29%20%5C%5Cto%20%281%2C%204%29%20%5C%5Cto%20%282%2C%203%29%20%5C%5Cto%20%283%2C%202%29%20%5C%5Cto%20%284%2C%203%29%20%24%20.%5Cn%5CnIn%20the%20third%20test%20case%20Mikhail%20cannot%20reach%20the%20point%20%24%20%2810%2C%201%29%20%24%20in%209%20moves.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1036%5C%2FB%22%2C%22id%22%3A%221036B%22%7D%2C%22translation%22%3A%22%5Cu5728%5Cu4e00%5Cu4e2a%5Cu7b1b%5Cu5361%5Cu5c14%5Cu5e73%5Cu9762%5Cu4e0a%28%5Cu5c31%5Cu662f%5Cu5e73%5Cu9762%5Cu76f4%5Cu89d2%5Cu5750%5Cu6807%5Cu7cfb%29%2C%20%5Cu4ece%5Cu70b9%280%2C%200%29%5Cu5f00%5Cu59cb%5Cu51fa%5Cu53d1%2C%20%5Cu6bcf%5Cu4e00%5Cu6b65%5Cu53ef%5Cu4ee5%5Cu5411%5Cu5468%5Cu56f4%5Cu7684%5Cu516b%5Cu4e2a%5Cu70b9%5Cu8d70.%20%5Cu4f8b%5Cu5982%2C%20%5Cu4ece%280%2C%200%29%2C%20%5Cu53ef%5Cu4ee5%5Cu8d70%5Cu5230%5Cu7684%5Cu70b9%5Cu662f%3A%5Cn%5Cn%281%2C%200%29%3B%5Cn%5Cn%281%2C%201%29%3B%5Cn%5Cn%280%2C%201%29%3B%5Cn%5Cn%28-1%2C%201%29%3B%5Cn%5Cn%28-1%2C%200%29%3B%5Cn%5Cn%28-1%2C%20-1%29%3B%5Cn%5Cn%280%2C%20-1%29%3B%5Cn%5Cn%281%2C%20-1%29.%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4e00%5Cu6b65%5Cu4ece%5Cu70b9%28x1%2C%20y1%29%5Cu8d70%5Cu5230%28x2%2C%20y2%29%2C%20%5Cu4e14x1%20%21%3D%20x2%20%26%26%20y1%20%21%3D%20y2%2C%20%5Cu5219%5Cu79f0%5Cu8fd9%5Cu4e00%5Cu6b65%5Cu4e3adiagonal%20move%28%5Cu659c%5Cu6b65%29.%5Cn%5Cn%5Cu73b0%5Cu5728%5Cu6709%20q%20%5Cu4e2a%5Cu8be2%5Cu95ee%2C%20%5Cu7b2c%20i%20%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu7684%5Cu76ee%5Cu6807%5Cu662f%5Cu8d70%5Cu6b63%5Cu597d%20ki%20%5Cu6b65%5Cu5230%5Cu8fbe%5Cu70b9%28ni%2C%20mi%29.%20%5Cu5728%5Cu6240%5Cu6709%5Cu53ef%5Cu80fd%5Cu7684%5Cu79fb%5Cu52a8%5Cu4e2d%5Cu5e0c%5Cu671b%5Cu80fd%5Cu8d70%5Cu659c%5Cu6b65%5Cu6700%5Cu591a%5Cu7684%5Cu4e00%5Cu79cd.%20%5Cu4f60%5Cu7684%5Cu76ee%5Cu6807%5Cu662f%5Cu627e%5Cu5230%5Cu6700%5Cu591a%5Cu7684%5Cu201c%5Cu659c%5Cu6b65%5Cu201d%5Cu6570%5Cu91cf%2C%20%5Cu6216%5Cu8005%5Cu662f%5Cu53d1%5Cu73b0%5Cu65e0%5Cu6cd5%5Cu7528%5Cu521a%5Cu597d%20ki%20%5Cu6b65%5Cu4ece%280%2C%200%29%5Cu8d70%5Cu5230%28ni%2C%20mi%29.%5Cn%5Cn%5Cu8bb0%5Cu4f4f%5Cu53ef%5Cu4ee5%5Cu8bbf%5Cu95ee%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu4efb%5Cu610f%5Cu6b21%5Cu6570.%5Cn%5Cn%5Cu8f93%5Cu5165%3A%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20q%20%281%20%3C%3D%20q%20%3C%3D%201e4%29%2C%20%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%5Cu4e2a%5Cu6570.%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20q%20%5Cu884c%2C%20%5Cu5728%5Cu8fd9%20q%20%5Cu884c%5Cu4e2d%5Cu7684%5Cu7b2c%20i%20%5Cu884c%5Cu6709%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%20ni%2C%20mi%2C%20ki%20%281%20%3C%3D%20ni%2C%20mi%2C%20ki%20%3C%3D%201e18%29%2C%20%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu76ee%5Cu6807%5Cu5750%5Cu6807%5Cu7684%20x%20%5Cu8f74%2C%20y%20%5Cu8f74%5Cu548c%5Cu8981%5Cu6c42%5Cu7684%5Cu6b65%5Cu6570.%5Cn%5Cn%5Cu8f93%5Cu51fa%3A%5Cn%5Cnq%20%5Cu4e2a%5Cu6574%5Cu6570%2C%20%5Cu5982%5Cu679c%5Cu7b2c%20i%20%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu65e0%5Cu89e3%2C%20%5Cu5219%5Cu8f93%5Cu51fa%20-1%20%2C%20%5Cu5426%5Cu5219%5Cu5c31%5Cu8f93%5Cu51fa%5Cu6700%5Cu5927%5Cu7684%5Cu201c%5Cu659c%5Cu6b65%5Cu201d%5Cu6b65%5Cu6570.%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A115%2C%22totalAccepted%22%3A64%2C%22pid%22%3A%22CF1036B%22%2C%22title%22%3A%22Diagonal%20Walking%20v.2%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A73086%2C%22title%22%3A%22%5Cu662f%5Cu6211%5Cu592a%5Cu84bb%5Cu4e86%5Cu3002%5Cu3002%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A29252%2C%22name%22%3A%22CF1036B%20Diagonal%20Walking%20v.2%22%2C%22slug%22%3A%22CF1036B%22%7D%7D%2C%7B%22id%22%3A63557%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29252%2C%22name%22%3A%22CF1036B%20Diagonal%20Walking%20v.2%22%2C%22slug%22%3A%22CF1036B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1347%22%2C%22title%22%3A%22%5Cu6392%5Cu5e8f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1941%22%2C%22title%22%3A%22%5Cu98de%5Cu626c%5Cu7684%5Cu5c0f%5Cu9e1f%20%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1036D%22%2C%22title%22%3A%22Vasya%20and%20Arrays%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1036C%22%2C%22title%22%3A%22Classy%20Numbers%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1036A%22%2C%22title%22%3A%22Function%20Height%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Diagonal%20Walking%20v.2%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Diagonal Walking v.2</h1>
+<h2>题意翻译</h2>
+<div>在一个笛卡尔平面上(就是平面直角坐标系), 从点(0, 0)开始出发, 每一步可以向周围的八个点走. 例如, 从(0, 0), 可以走到的点是:
+(1, 0);
+(1, 1);
+(0, 1);
+(-1, 1);
+(-1, 0);
+(-1, -1);
+(0, -1);
+(1, -1).
+如果一步从点(x1, y1)走到(x2, y2), 且x1 != x2 && y1 != y2, 则称这一步为diagonal move(斜步).
+现在有 q 个询问, 第 i 个询问的目标是走正好 ki 步到达点(ni, mi). 在所有可能的移动中希望能走斜步最多的一种. 你的目标是找到最多的“斜步”数量, 或者是发现无法用刚好 ki 步从(0, 0)走到(ni, mi).
+记住可以访问任意一个点任意次数.
+输入:
+第一行有一个整数 q (1 <= q <= 1e4), 表示询问个数.
+接下来 q 行, 在这 q 行中的第 i 行有三个整数 ni, mi, ki (1 <= ni, mi, ki <= 1e18), 分别表示目标坐标的 x 轴, y 轴和要求的步数.
+输出:
+q 个整数, 如果第 i 个询问无解, 则输出 -1 , 否则就输出最大的“斜步”步数.</div>
+<h2>题目描述</h2>
+<div>Mikhail walks on a Cartesian plane. He starts at the point $ (0, 0) $ , and in one move he can go to any of eight adjacent points. For example, if Mikhail is currently at the point $ (0, 0) $ , he can go to any of the following points in one move:
+- $ (1, 0) $ ;
+- $ (1, 1) $ ;
+- $ (0, 1) $ ;
+- $ (-1, 1) $ ;
+- $ (-1, 0) $ ;
+- $ (-1, -1) $ ;
+- $ (0, -1) $ ;
+- $ (1, -1) $ .
+If Mikhail goes from the point $ (x1, y1) $ to the point $ (x2, y2) $ in one move, and $ x1 \ne x2 $ and $ y1 \ne y2 $ , then such a move is called a diagonal move.
+Mikhail has $ q $ queries. For the $ i $ -th query Mikhail's target is to go to the point $ (n_i, m_i) $ from the point $ (0, 0) $ in exactly $ k_i $ moves. Among all possible movements he want to choose one with the maximum number of diagonal moves. Your task is to find the maximum number of diagonal moves or find that it is impossible to go from the point $ (0, 0) $ to the point $ (n_i, m_i) $ in $ k_i $ moves.
+Note that Mikhail can visit any point any number of times (even the destination point!).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ q $ ( $ 1 \le q \le 10^4 $ ) — the number of queries.
+Then $ q $ lines follow. The $ i $ -th of these $ q $ lines contains three integers $ n_i $ , $ m_i $ and $ k_i $ ( $ 1 \le n_i, m_i, k_i \le 10^{18} $ ) — $ x $ -coordinate of the destination point of the query, $ y $ -coordinate of the destination point of the query and the number of moves in the query, correspondingly.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ q $ integers. The $ i $ -th integer should be equal to -1 if Mikhail cannot go from the point $ (0, 0) $ to the point $ (n_i, m_i) $ in exactly $ k_i $ moves described above. Otherwise the $ i $ -th integer should be equal to the the maximum number of diagonal moves among all possible movements.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+2 2 3
+4 3 7
+10 1 9
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+6
+-1
+</code></pre>
+<h2>说明</h2>
+<div>One of the possible answers to the first test case: $ (0, 0) \to (1, 0) \to (1, 1) \to (2, 2) $ .
+One of the possible answers to the second test case: $ (0, 0) \to (0, 1) \to (1, 2) \to (0, 3) \to (1, 4) \to (2, 3) \to (3, 2) \to (4, 3) $ .
+In the third test case Mikhail cannot reach the point $ (10, 1) $ in 9 moves.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

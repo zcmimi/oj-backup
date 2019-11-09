@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>New Year and the Factorisation Collaboration - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401494:wvtR0Mj0tNxbXicksdUNuNnBLlgxiRrOHmKoAoD/SgA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Integer%20factorisation%20is%20hard.%20The%20RSA%20Factoring%20Challenge%20offered%20%24%20%24100%5C%5C%2C000%20%20for%20factoring%20RSA-%20%24%201024%20%24%20%2C%20a%20%24%201024%20%24%20-bit%20long%20product%20of%20two%20prime%20numbers.%20To%20this%20date%2C%20nobody%20was%20able%20to%20claim%20the%20prize.%20We%20want%20you%20to%20factorise%20a%20%24%201024%20%24%20-bit%20number.%5Cn%5CnSince%20your%20programming%20language%20of%20choice%20might%20not%20offer%20facilities%20for%20handling%20large%20integers%2C%20we%20will%20provide%20you%20with%20a%20very%20simple%20calculator.%5Cn%5CnTo%20use%20this%20calculator%2C%20you%20can%20print%20queries%20on%20the%20standard%20output%20and%20retrieve%20the%20results%20from%20the%20standard%20input.%20The%20operations%20are%20as%20follows%3A%5Cn%5Cn-%20%60%2B%20x%20y%60%20where%20%24%20x%20%24%20and%20%24%20y%20%24%20are%20integers%20between%20%24%200%20%24%20and%20%24%20n-1%20%24%20.%20Returns%20%24%20%28x%2By%29%20%5C%5Cbmod%20n%20%24%20.%5Cn-%20%60-%20x%20y%60%20where%20%24%20x%20%24%20and%20%24%20y%20%24%20are%20integers%20between%20%24%200%20%24%20and%20%24%20n-1%20%24%20.%20Returns%20%24%20%28x-y%29%20%5C%5Cbmod%20n%20%24%20.%5Cn-%20%60%2A%20x%20y%60%20where%20%24%20x%20%24%20and%20%24%20y%20%24%20are%20integers%20between%20%24%200%20%24%20and%20%24%20n-1%20%24%20.%20Returns%20%24%20%28x%20%5C%5Ccdot%20y%29%20%5C%5Cbmod%20n%20%24%20.%5Cn-%20%60%5C%2F%20x%20y%60%20where%20%24%20x%20%24%20and%20%24%20y%20%24%20are%20integers%20between%20%24%200%20%24%20and%20%24%20n-1%20%24%20and%20%24%20y%20%24%20is%20coprime%20with%20%24%20n%20%24%20.%20Returns%20%24%20%28x%20%5C%5Ccdot%20y%5E%7B-1%7D%29%20%5C%5Cbmod%20n%20%24%20where%20%24%20y%5E%7B-1%7D%20%24%20is%20multiplicative%20inverse%20of%20%24%20y%20%24%20modulo%20%24%20n%20%24%20.%20If%20%24%20y%20%24%20is%20not%20coprime%20with%20%24%20n%20%24%20%2C%20then%20%24%20-1%20%24%20is%20returned%20instead.%5Cn-%20%60sqrt%20x%60%20where%20%24%20x%20%24%20is%20integer%20between%20%24%200%20%24%20and%20%24%20n-1%20%24%20coprime%20with%20%24%20n%20%24%20.%20Returns%20%24%20y%20%24%20such%20that%20%24%20y%5E2%20%5C%5Cbmod%20n%20%3D%20x%20%24%20.%20If%20there%20are%20multiple%20such%20integers%2C%20only%20one%20of%20them%20is%20returned.%20If%20there%20are%20none%2C%20%24%20-1%20%24%20is%20returned%20instead.%5Cn-%20%60%5E%20x%20y%60%20where%20%24%20x%20%24%20and%20%24%20y%20%24%20are%20integers%20between%20%24%200%20%24%20and%20%24%20n-1%20%24%20.%20Returns%20%24%20%7Bx%5Ey%20%5C%5Cbmod%20n%7D%20%24%20.%5Cn%5CnFind%20the%20factorisation%20of%20%24%20n%20%24%20that%20is%20a%20product%20of%20between%20%24%202%20%24%20and%20%24%2010%20%24%20distinct%20prime%20numbers%2C%20all%20of%20form%20%24%204x%20%2B%203%20%24%20for%20some%20integer%20%24%20x%20%24%20.%5Cn%5CnBecause%20of%20technical%20issues%2C%20we%20restrict%20number%20of%20requests%20to%20%24%20100%20%24%20.%22%2C%22inputFormat%22%3A%22The%20only%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%2021%20%5C%5Cleq%20n%20%5C%5Cleq%202%5E%7B1024%7D%20%24%20%29.%20It%20is%20guaranteed%20that%20%24%20n%20%24%20is%20a%20product%20of%20between%20%24%202%20%24%20and%20%24%2010%20%24%20distinct%20prime%20numbers%2C%20all%20of%20form%20%24%204x%20%2B%203%20%24%20for%20some%20integer%20%24%20x%20%24%20.%22%2C%22outputFormat%22%3A%22You%20can%20print%20as%20many%20queries%20as%20you%20wish%2C%20adhering%20to%20the%20time%20limit%20%28see%20the%20Interaction%20section%20for%20more%20details%29.%5Cn%5CnWhen%20you%20think%20you%20know%20the%20answer%2C%20output%20a%20single%20line%20of%20form%20%21%20k%20p%5C%5C_1%20p%5C%5C_2%20...%20p%5C%5C_k%2C%20where%20%24%20k%20%24%20is%20the%20number%20of%20prime%20factors%20of%20%24%20n%20%24%20%2C%20and%20%24%20p_i%20%24%20are%20the%20distinct%20prime%20factors.%20You%20may%20print%20the%20factors%20in%20any%20order.%5Cn%5CnHacks%20input%5Cn%5CnFor%20hacks%2C%20use%20the%20following%20format%3A.%5Cn%5CnThe%20first%20should%20contain%20%24%20k%20%24%20%28%20%24%202%20%5C%5Cleq%20k%20%5C%5Cleq%2010%20%24%20%29%20%5Cu2014%20the%20number%20of%20prime%20factors%20of%20%24%20n%20%24%20.%5Cn%5CnThe%20second%20should%20contain%20%24%20k%20%24%20space%20separated%20integers%20%24%20p_1%2C%20p_2%2C%20%5C%5Cdots%2C%20p_k%20%24%20%28%20%24%2021%20%5C%5Cleq%20n%20%5C%5Cleq%202%5E%7B1024%7D%20%24%20%29%20%5Cu2014%20the%20prime%20factors%20of%20%24%20n%20%24%20.%20All%20prime%20factors%20have%20to%20be%20of%20form%20%24%204x%20%2B%203%20%24%20for%20some%20integer%20%24%20x%20%24%20.%20They%20all%20have%20to%20be%20distinct.%5Cn%5CnInteraction%5Cn%5CnAfter%20printing%20a%20query%20do%20not%20forget%20to%20output%20end%20of%20line%20and%20flush%20the%20output.%20Otherwise%20you%20will%20get%20Idleness%20limit%20exceeded.%20To%20do%20this%2C%20use%3A%5Cn%5Cn-%20fflush%28stdout%29%20or%20cout.flush%28%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20see%20documentation%20for%20other%20languages.%5Cn%5CnThe%20number%20of%20queries%20is%20not%20limited.%20However%2C%20your%20program%20must%20%28as%20always%29%20fit%20in%20the%20time%20limit.%20The%20run%20time%20of%20the%20interactor%20is%20also%20counted%20towards%20the%20time%20limit.%20The%20maximum%20runtime%20of%20each%20query%20is%20given%20below.%5Cn%5Cn-%20%60%2B%20x%20y%60%20%5Cu2014%20up%20to%20%24%201%20%24%20ms.%5Cn-%20%60-%20x%20y%60%20%5Cu2014%20up%20to%20%24%201%20%24%20ms.%5Cn-%20%60%2A%20x%20y%60%20%5Cu2014%20up%20to%20%24%201%20%24%20ms.%5Cn-%20%60%5C%2F%20x%20y%60%20%5Cu2014%20up%20to%20%24%20350%20%24%20ms.%5Cn-%20%60sqrt%20x%60%20%5Cu2014%20up%20to%20%24%2080%20%24%20ms.%5Cn-%20%60%5E%20x%20y%60%20%5Cu2014%20up%20to%20%24%20350%20%24%20ms.%5Cn%5CnNote%20that%20the%20sample%20input%20contains%20extra%20empty%20lines%20so%20that%20it%20easier%20to%20read.%20The%20real%20input%20will%20not%20contain%20any%20empty%20lines%20and%20you%20do%20not%20need%20to%20output%20extra%20empty%20lines.%22%2C%22samples%22%3A%5B%5B%2221%5Cn%5Cn7%5Cn%5Cn17%5Cn%5Cn15%5Cn%5Cn17%5Cn%5Cn11%5Cn%5Cn-1%5Cn%5Cn15%5Cn%5Cn%22%2C%22%2B%2012%2016%5Cn%5Cn-%206%2010%5Cn%5Cn%2A%208%2015%5Cn%5Cn%5C%2F%205%204%5Cn%5Cnsqrt%2016%5Cn%5Cnsqrt%205%5Cn%5Cn%5E%206%2012%5Cn%5Cn%21%202%203%207%22%5D%5D%2C%22hint%22%3A%22We%20start%20by%20reading%20the%20first%20line%20containing%20the%20integer%20%24%20n%20%3D%2021%20%24%20.%20Then%2C%20we%20ask%20for%3A%5Cn%5Cn1.%20%24%20%2812%20%2B%2016%29%20%5C%5Cbmod%2021%20%3D%2028%20%5C%5Cbmod%2021%20%3D%207%20%24%20.%5Cn2.%20%24%20%286%20-%2010%29%20%5C%5Cbmod%2021%20%3D%20-4%20%5C%5Cbmod%2021%20%3D%2017%20%24%20.%5Cn3.%20%24%20%288%20%5C%5Ccdot%2015%29%20%5C%5Cbmod%2021%20%3D%20120%20%5C%5Cbmod%2021%20%3D%2015%20%24%20.%5Cn4.%20%24%20%285%20%5C%5Ccdot%204%5E%7B-1%7D%29%20%5C%5Cbmod%2021%20%3D%20%285%20%5C%5Ccdot%2016%29%20%5C%5Cbmod%2021%20%3D%2080%20%5C%5Cbmod%2021%20%3D%2017%20%24%20.%5Cn5.%20Square%20root%20of%20%24%2016%20%24%20.%20The%20answer%20is%20%24%2011%20%24%20%2C%20as%20%24%20%2811%20%5C%5Ccdot%2011%29%20%5C%5Cbmod%2021%20%3D%20121%20%5C%5Cbmod%2021%20%3D%2016%20%24%20.%20Note%20that%20the%20answer%20may%20as%20well%20be%20%24%2010%20%24%20.%5Cn6.%20Square%20root%20of%20%24%205%20%24%20.%20There%20is%20no%20%24%20x%20%24%20such%20that%20%24%20x%5E2%20%5C%5Cbmod%2021%20%3D%205%20%24%20%2C%20so%20the%20output%20is%20%24%20-1%20%24%20.%5Cn7.%20%24%20%286%5E%7B12%7D%29%20%5C%5Cbmod%2021%20%3D%202176782336%20%5C%5Cbmod%2021%20%3D%2015%20%24%20.%5Cn%5CnWe%20conclude%20that%20our%20calculator%20is%20working%2C%20stop%20fooling%20around%20and%20realise%20that%20%24%2021%20%3D%203%20%5C%5Ccdot%207%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B6000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1091%5C%2FG%22%2C%22id%22%3A%221091G%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A3%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF1091G%22%2C%22title%22%3A%22New%20Year%20and%20the%20Factorisation%20Collaboration%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A93492%2C%22title%22%3A%22Latex%5Cu70b8%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A33327%2C%22name%22%3A%22CF1091G%20New%20Year%20and%20the%20Factorisation%20Collaboration%22%2C%22slug%22%3A%22CF1091G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22New%20Year%20and%20the%20Factorisation%20Collaboration%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>New Year and the Factorisation Collaboration</h1>
+<h2>题目描述</h2>
+<div>Integer factorisation is hard. The RSA Factoring Challenge offered $ $100\,000 for factoring RSA- $ 1024 $ , a $ 1024 $ -bit long product of two prime numbers. To this date, nobody was able to claim the prize. We want you to factorise a $ 1024 $ -bit number.
+Since your programming language of choice might not offer facilities for handling large integers, we will provide you with a very simple calculator.
+To use this calculator, you can print queries on the standard output and retrieve the results from the standard input. The operations are as follows:
+- `+ x y` where $ x $ and $ y $ are integers between $ 0 $ and $ n-1 $ . Returns $ (x+y) \bmod n $ .
+- `- x y` where $ x $ and $ y $ are integers between $ 0 $ and $ n-1 $ . Returns $ (x-y) \bmod n $ .
+- `* x y` where $ x $ and $ y $ are integers between $ 0 $ and $ n-1 $ . Returns $ (x \cdot y) \bmod n $ .
+- `/ x y` where $ x $ and $ y $ are integers between $ 0 $ and $ n-1 $ and $ y $ is coprime with $ n $ . Returns $ (x \cdot y^{-1}) \bmod n $ where $ y^{-1} $ is multiplicative inverse of $ y $ modulo $ n $ . If $ y $ is not coprime with $ n $ , then $ -1 $ is returned instead.
+- `sqrt x` where $ x $ is integer between $ 0 $ and $ n-1 $ coprime with $ n $ . Returns $ y $ such that $ y^2 \bmod n = x $ . If there are multiple such integers, only one of them is returned. If there are none, $ -1 $ is returned instead.
+- `^ x y` where $ x $ and $ y $ are integers between $ 0 $ and $ n-1 $ . Returns $ {x^y \bmod n} $ .
+Find the factorisation of $ n $ that is a product of between $ 2 $ and $ 10 $ distinct prime numbers, all of form $ 4x + 3 $ for some integer $ x $ .
+Because of technical issues, we restrict number of requests to $ 100 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line contains a single integer $ n $ ( $ 21 \leq n \leq 2^{1024} $ ). It is guaranteed that $ n $ is a product of between $ 2 $ and $ 10 $ distinct prime numbers, all of form $ 4x + 3 $ for some integer $ x $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>You can print as many queries as you wish, adhering to the time limit (see the Interaction section for more details).
+When you think you know the answer, output a single line of form ! k p\_1 p\_2 ... p\_k, where $ k $ is the number of prime factors of $ n $ , and $ p_i $ are the distinct prime factors. You may print the factors in any order.
+Hacks input
+For hacks, use the following format:.
+The first should contain $ k $ ( $ 2 \leq k \leq 10 $ ) — the number of prime factors of $ n $ .
+The second should contain $ k $ space separated integers $ p_1, p_2, \dots, p_k $ ( $ 21 \leq n \leq 2^{1024} $ ) — the prime factors of $ n $ . All prime factors have to be of form $ 4x + 3 $ for some integer $ x $ . They all have to be distinct.
+Interaction
+After printing a query do not forget to output end of line and flush the output. Otherwise you will get Idleness limit exceeded. To do this, use:
+- fflush(stdout) or cout.flush() in C++;
+- System.out.flush() in Java;
+- flush(output) in Pascal;
+- stdout.flush() in Python;
+- see documentation for other languages.
+The number of queries is not limited. However, your program must (as always) fit in the time limit. The run time of the interactor is also counted towards the time limit. The maximum runtime of each query is given below.
+- `+ x y` — up to $ 1 $ ms.
+- `- x y` — up to $ 1 $ ms.
+- `* x y` — up to $ 1 $ ms.
+- `/ x y` — up to $ 350 $ ms.
+- `sqrt x` — up to $ 80 $ ms.
+- `^ x y` — up to $ 350 $ ms.
+Note that the sample input contains extra empty lines so that it easier to read. The real input will not contain any empty lines and you do not need to output extra empty lines.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>21
+
+7
+
+17
+
+15
+
+17
+
+11
+
+-1
+
+15
+
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>+ 12 16
+
+- 6 10
+
+* 8 15
+
+/ 5 4
+
+sqrt 16
+
+sqrt 5
+
+^ 6 12
+
+! 2 3 7</code></pre>
+<h2>说明</h2>
+<div>We start by reading the first line containing the integer $ n = 21 $ . Then, we ask for:
+1. $ (12 + 16) \bmod 21 = 28 \bmod 21 = 7 $ .
+2. $ (6 - 10) \bmod 21 = -4 \bmod 21 = 17 $ .
+3. $ (8 \cdot 15) \bmod 21 = 120 \bmod 21 = 15 $ .
+4. $ (5 \cdot 4^{-1}) \bmod 21 = (5 \cdot 16) \bmod 21 = 80 \bmod 21 = 17 $ .
+5. Square root of $ 16 $ . The answer is $ 11 $ , as $ (11 \cdot 11) \bmod 21 = 121 \bmod 21 = 16 $ . Note that the answer may as well be $ 10 $ .
+6. Square root of $ 5 $ . There is no $ x $ such that $ x^2 \bmod 21 = 5 $ , so the output is $ -1 $ .
+7. $ (6^{12}) \bmod 21 = 2176782336 \bmod 21 = 15 $ .
+We conclude that our calculator is working, stop fooling around and realise that $ 21 = 3 \cdot 7 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

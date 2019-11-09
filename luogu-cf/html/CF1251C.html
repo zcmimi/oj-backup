@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minimize The Integer - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403792:21sMrU9sm5POnT/8vX4uPRHCyb/BsZAceBIpkRqhb9g=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20huge%20integer%20%24%20a%20%24%20consisting%20of%20%24%20n%20%24%20digits%20%28%20%24%20n%20%24%20is%20between%20%24%201%20%24%20and%20%24%203%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20inclusive%29.%20It%20may%20contain%20leading%20zeros.%5Cn%5CnYou%20can%20swap%20two%20digits%20on%20adjacent%20%28neighboring%29%20positions%20if%20the%20swapping%20digits%20are%20of%20different%20parity%20%28that%20is%2C%20they%20have%20different%20remainders%20when%20divided%20by%20%24%202%20%24%20%29.%5Cn%5CnFor%20example%2C%20if%20%24%20a%20%3D%20032867235%20%24%20you%20can%20get%20the%20following%20integers%20in%20a%20single%20operation%3A%5Cn%5Cn-%20%24%20302867235%20%24%20if%20you%20swap%20the%20first%20and%20the%20second%20digits%3B%5Cn-%20%24%20023867235%20%24%20if%20you%20swap%20the%20second%20and%20the%20third%20digits%3B%5Cn-%20%24%20032876235%20%24%20if%20you%20swap%20the%20fifth%20and%20the%20sixth%20digits%3B%5Cn-%20%24%20032862735%20%24%20if%20you%20swap%20the%20sixth%20and%20the%20seventh%20digits%3B%5Cn-%20%24%20032867325%20%24%20if%20you%20swap%20the%20seventh%20and%20the%20eighth%20digits.%5Cn%5CnNote%2C%20that%20you%20can%27t%20swap%20digits%20on%20positions%20%24%202%20%24%20and%20%24%204%20%24%20because%20the%20positions%20are%20not%20adjacent.%20Also%2C%20you%20can%27t%20swap%20digits%20on%20positions%20%24%203%20%24%20and%20%24%204%20%24%20because%20the%20digits%20have%20the%20same%20parity.%5Cn%5CnYou%20can%20perform%20any%20number%20%28possibly%2C%20zero%29%20of%20such%20operations.%5Cn%5CnFind%20the%20minimum%20integer%20you%20can%20obtain.%5Cn%5CnNote%20that%20the%20resulting%20integer%20also%20may%20contain%20leading%20zeros.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20t%20%24%20%28%20%24%201%20%5C%5Cle%20t%20%5C%5Cle%2010%5E4%20%24%20%29%20%5Cu2014%20the%20number%20of%20test%20cases%20in%20the%20input.%5Cn%5CnThe%20only%20line%20of%20each%20test%20case%20contains%20the%20integer%20%24%20a%20%24%20%2C%20its%20length%20%24%20n%20%24%20is%20between%20%24%201%20%24%20and%20%24%203%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20inclusive.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20sum%20of%20all%20values%20%24%20n%20%24%20does%20not%20exceed%20%24%203%20%5C%5Ccdot%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20print%20line%20%5Cu2014%20the%20minimum%20integer%20you%20can%20obtain.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn0709%5Cn1337%5Cn246432%5Cn%22%2C%22%5Cn0079%5Cn1337%5Cn234642%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20test%20case%2C%20you%20can%20perform%20the%20following%20sequence%20of%20operations%20%28the%20pair%20of%20swapped%20digits%20is%20highlighted%29%3A%20%24%200%20%5C%5Cunderline%7B%5C%5Ctextbf%7B70%7D%7D%209%20%5C%5Crightarrow%200079%20%24%20.%5Cn%5CnIn%20the%20second%20test%20case%2C%20the%20initial%20integer%20is%20optimal.%5Cn%5CnIn%20the%20third%20test%20case%20you%20can%20perform%20the%20following%20sequence%20of%20operations%3A%20%24%20246%20%5C%5Cunderline%7B%5C%5Ctextbf%7B43%7D%7D%202%20%5C%5Crightarrow%2024%20%5C%5Cunderline%7B%5C%5Ctextbf%7B63%7D%7D42%20%5C%5Crightarrow%202%20%5C%5Cunderline%7B%5C%5Ctextbf%7B43%7D%7D%20642%20%5C%5Crightarrow%20234642%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1251%5C%2FC%22%2C%22id%22%3A%221251C%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5927%5Cu6574%5Cu6570%24a%24%5Cuff0c%5Cu5b83%5Cu7531%24n%24%5Cu4f4d%5Cu6570%5Cu5b57%5Cu7ec4%5Cu6210%5Cuff08%24n%24%5Cu5728%241%24%5Cu5230%243%20%5C%5Ctimes%2010%20%5E%205%24%5Cu4e4b%5Cu95f4%5Cuff09%5Cu3002%5Cu5b83%5Cu6709%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu5305%5Cu542b%5Cu524d%5Cu5bfc%5Cu96f6%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu4ea4%5Cu6362%5Cu76f8%5Cu90bb%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff0c%5Cu5982%5Cu679c%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57%5Cu5947%5Cu5076%5Cu6027%5Cu4e0d%5Cu540c%5Cuff08%5Cu6362%5Cu8a00%5Cu4e4b%5Cuff0c%5Cu5b83%5Cu4eec%5Cu88ab%5Cu4e8c%5Cu9664%5Cu7684%5Cu4f59%5Cu6570%5Cu4e0d%5Cu540c%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e3e%5Cu4f8b%5Cu6765%5Cu8bf4%5Cuff1a%5Cu5982%5Cu679c%24a%20%3D%20032867235%24%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu5f97%5Cu5230%5Cu4e0b%5Cu9762%5Cu7684%5Cu6574%5Cu6570%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%24302867235%24%20%5Cu5982%5Cu679c%5Cu4f60%5Cu4ea4%5Cu6362%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu6570%5Cu5b57%5Cr%5Cn-%20%24023867235%24%20%5Cu5982%5Cu679c%5Cu4f60%5Cu4ea4%5Cu6362%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu6570%5Cu5b57%5Cr%5Cn-%20%24032876235%24%20%5Cu5982%5Cu679c%5Cu4f60%5Cu4ea4%5Cu6362%5Cu7b2c%5Cu4e94%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu516d%5Cu4e2a%5Cu6570%5Cu5b57%5Cr%5Cn-%20%24032862735%24%20%5Cu5982%5Cu679c%5Cu4f60%5Cu4ea4%5Cu6362%5Cu7b2c%5Cu516d%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu4e03%5Cu4e2a%5Cu6570%5Cu5b57%5Cr%5Cn-%20%24032867325%24%20%5Cu5982%5Cu679c%5Cu4f60%5Cu4ea4%5Cu6362%5Cu7b2c%5Cu4e03%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu516b%5Cu4e2a%5Cu6570%5Cu5b57%5Cr%5Cn%5Cr%5Cn%5Cu6ce8%5Cu610f%5Cuff1a%5Cu4f60%5Cu4e0d%5Cu80fd%5Cu66f4%5Cu6362%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu4ed6%5Cu4eec%5Cu4e0d%5Cu76f8%5Cu90bb%5Cu3002%5Cu4f60%5Cu4e5f%5Cu4e0d%5Cu80fd%5Cu66f4%5Cu6362%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu548c%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu6570%5Cu5b57%5Cu56e0%5Cu4e3a%5Cu4ed6%5Cu4eec%5Cu7684%5Cu5947%5Cu5076%5Cu6027%5Cu76f8%5Cu540c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu505a%5Cu4efb%5Cu610f%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff08%5Cu5f53%5Cu7136%5Cu4e5f%5Cu53ef%5Cu80fd%5Cu4e0d%5Cu505a%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8bf7%5Cu4f60%5Cu627e%5Cu5230%5Cu901a%5Cu8fc7%5Cu8fd9%5Cu79cd%5Cu64cd%5Cu4f5c%5Cu53ef%5Cu4ee5%5Cu5f97%5Cu5230%5Cu7684%5Cu6700%5Cu5c0f%5Cu6574%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6ce8%5Cu610f%5Cu7b54%5Cu6848%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu6709%5Cu524d%5Cu5bfc%5Cu96f6%5Cu3002%5Cr%5Cn%5Cr%5Cn------%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu7b80%5Cu6d01%5Cu9898%5Cu9762%5Cuff1a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5927%5Cu6574%5Cu6570%24a%24%5Cuff0c%5Cu5b83%5Cu7531%24n%24%5Cu4f4d%5Cu6570%5Cu5b57%5Cuff0c%5Cu4e5f%5Cu53ef%5Cu80fd%5Cu6709%5Cu524d%5Cu5bfc%5Cu96f6%5Cu3002%5Cu73b0%5Cu5728%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu79cd%5Cu64cd%5Cu4f5c%5Cu89c4%5Cu5219%5Cuff1a%5Cu5982%5Cu679c%5Cu76f8%5Cu90bb%5Cu7684%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57%5Cu7684%5Cu5947%5Cu5076%5Cu6027%5Cu4e0d%5Cu540c%5Cuff0c%5Cu90a3%5Cu4e48%5Cu4f60%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu4ea4%5Cu6362%5Cu5b83%5Cu4eec%5Cu3002%5Cu73b0%5Cu5728%5Cu53ef%5Cu4ee5%5Cu505a%5Cu4efb%5Cu610f%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff08%5Cu53ef%5Cu80fd%5Cu4e00%5Cu6b21%5Cu90fd%5Cu4e0d%5Cu505a%5Cuff09%5Cuff0c%5Cu6c42%5Cu51fa%5Cu901a%5Cu8fc7%5Cu8fd9%5Cu4e9b%5Cu64cd%5Cu4f5c%5Cu53ef%5Cu4ee5%5Cu83b7%5Cu5f97%5Cu7684%5Cu6700%5Cu5c0f%5Cu6574%5Cu6570%5Cu662f%5Cu591a%5Cu5c11%5Cu3002%5Cuff08%5Cu7b54%5Cu6848%5Cu53ef%5Cu4ee5%5Cu5305%5Cu542b%5Cu524d%5Cu5bfc%5Cu96f6%5Cuff09%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A111%2C%22totalAccepted%22%3A78%2C%22pid%22%3A%22CF1251C%22%2C%22title%22%3A%22Minimize%20The%20Integer%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1249A%22%2C%22title%22%3A%22Yet%20Another%20Dividing%20into%20Teams%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1251E2%22%2C%22title%22%3A%22Voting%20%28Hard%20Version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1251E1%22%2C%22title%22%3A%22Voting%20%28Easy%20Version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1251D%22%2C%22title%22%3A%22Salary%20Changing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1251B%22%2C%22title%22%3A%22Binary%20Palindromes%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minimize%20The%20Integer%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minimize The Integer</h1>
+<h2>题意翻译</h2>
+<div>给你一个大整数$a$，它由$n$位数字组成（$n$在$1$到$3 \times 10 ^ 5$之间）。它有可能会包含前导零。
+你可以交换相邻位置的两个数字，如果这两个数字奇偶性不同（换言之，它们被二除的余数不同）。
+举例来说：如果$a = 032867235$，你可以通过一次操作得到下面的整数：
+- $302867235$ 如果你交换第一个和第二个数字
+- $023867235$ 如果你交换第二个和第三个数字
+- $032876235$ 如果你交换第五个和第六个数字
+- $032862735$ 如果你交换第六个和第七个数字
+- $032867325$ 如果你交换第七个和第八个数字
+注意：你不能更换第二个和第四个数字，因为他们不相邻。你也不能更换第三个和第四个数字因为他们的奇偶性相同。
+你可以做任意次操作（当然也可能不做）。
+请你找到通过这种操作可以得到的最小整数。
+注意答案也可以有前导零。
+------
+**简洁题面：**
+给你一个大整数$a$，它由$n$位数字，也可能有前导零。现在给你一种操作规则：如果相邻的两个数字的奇偶性不同，那么你就可以交换它们。现在可以做任意次操作（可能一次都不做），求出通过这些操作可以获得的最小整数是多少。（答案可以包含前导零）</div>
+<h2>题目描述</h2>
+<div>You are given a huge integer $ a $ consisting of $ n $ digits ( $ n $ is between $ 1 $ and $ 3 \cdot 10^5 $ , inclusive). It may contain leading zeros.
+You can swap two digits on adjacent (neighboring) positions if the swapping digits are of different parity (that is, they have different remainders when divided by $ 2 $ ).
+For example, if $ a = 032867235 $ you can get the following integers in a single operation:
+- $ 302867235 $ if you swap the first and the second digits;
+- $ 023867235 $ if you swap the second and the third digits;
+- $ 032876235 $ if you swap the fifth and the sixth digits;
+- $ 032862735 $ if you swap the sixth and the seventh digits;
+- $ 032867325 $ if you swap the seventh and the eighth digits.
+Note, that you can't swap digits on positions $ 2 $ and $ 4 $ because the positions are not adjacent. Also, you can't swap digits on positions $ 3 $ and $ 4 $ because the digits have the same parity.
+You can perform any number (possibly, zero) of such operations.
+Find the minimum integer you can obtain.
+Note that the resulting integer also may contain leading zeros.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ t $ ( $ 1 \le t \le 10^4 $ ) — the number of test cases in the input.
+The only line of each test case contains the integer $ a $ , its length $ n $ is between $ 1 $ and $ 3 \cdot 10^5 $ , inclusive.
+It is guaranteed that the sum of all values $ n $ does not exceed $ 3 \cdot 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case print line — the minimum integer you can obtain.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+0709
+1337
+246432
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+0079
+1337
+234642
+</code></pre>
+<h2>说明</h2>
+<div>In the first test case, you can perform the following sequence of operations (the pair of swapped digits is highlighted): $ 0 \underline{\textbf{70}} 9 \rightarrow 0079 $ .
+In the second test case, the initial integer is optimal.
+In the third test case you can perform the following sequence of operations: $ 246 \underline{\textbf{43}} 2 \rightarrow 24 \underline{\textbf{63}}42 \rightarrow 2 \underline{\textbf{43}} 642 \rightarrow 234642 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

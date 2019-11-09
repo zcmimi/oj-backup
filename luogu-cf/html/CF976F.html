@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minimal k-covering - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399952:o/2ZG8eD6uZ14/dtU/oPdtEZckQEV6IGH4/j0CQCSgY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20bipartite%20graph%20%24%20G%3D%28U%2CV%2CE%29%20%24%20%2C%20%24%20U%20%24%20is%20the%20set%20of%20vertices%20of%20the%20first%20part%2C%20%24%20V%20%24%20is%20the%20set%20of%20vertices%20of%20the%20second%20part%20and%20%24%20E%20%24%20is%20the%20set%20of%20edges.%20There%20might%20be%20multiple%20edges.%5Cn%5CnLet%27s%20call%20some%20subset%20of%20its%20edges%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF976F%5C%2F30cca9ec3414b2cdaa4736468f021199a0e40953.png%29%20%24%20k%20%24%20-covering%20iff%20the%20graph%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF976F%5C%2Fd49bf4cc25f3533c586c660e8b21a303cdd43d12.png%29%20has%20each%20of%20its%20vertices%20incident%20to%20at%20least%20%24%20k%20%24%20edges.%20Minimal%20%24%20k%20%24%20-covering%20is%20such%20a%20%24%20k%20%24%20-covering%20that%20the%20size%20of%20the%20subset%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF976F%5C%2F30cca9ec3414b2cdaa4736468f021199a0e40953.png%29%20is%20minimal%20possible.%5Cn%5CnYour%20task%20is%20to%20find%20minimal%20%24%20k%20%24%20-covering%20for%20each%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF976F%5C%2F06fc521a2ce350cb8a0dd7acf79829b13f12656e.png%29%2C%20where%20%24%20minDegree%20%24%20is%20the%20minimal%20degree%20of%20any%20vertex%20in%20graph%20%24%20G%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n_%7B1%7D%20%24%20%2C%20%24%20n_%7B2%7D%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn_%7B1%7D%2Cn_%7B2%7D%3C%3D2000%20%24%20%2C%20%24%200%3C%3Dm%3C%3D2000%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20first%20part%2C%20the%20number%20of%20vertices%20in%20the%20second%20part%20and%20the%20number%20of%20edges%2C%20respectively.%5Cn%5CnThe%20%24%20i%20%24%20-th%20of%20the%20next%20%24%20m%20%24%20lines%20contain%20two%20integers%20%24%20u_%7Bi%7D%20%24%20and%20%24%20v_%7Bi%7D%20%24%20%28%20%24%201%3C%3Du_%7Bi%7D%3C%3Dn_%7B1%7D%2C1%3C%3Dv_%7Bi%7D%3C%3Dn_%7B2%7D%20%24%20%29%20%5Cu2014%20the%20description%20of%20the%20%24%20i%20%24%20-th%20edge%2C%20%24%20u_%7Bi%7D%20%24%20is%20the%20index%20of%20the%20vertex%20in%20the%20first%20part%20and%20%24%20v_%7Bi%7D%20%24%20is%20the%20index%20of%20the%20vertex%20in%20the%20second%20part.%22%2C%22outputFormat%22%3A%22For%20each%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF976F%5C%2F06fc521a2ce350cb8a0dd7acf79829b13f12656e.png%29%20print%20the%20subset%20of%20edges%20%28minimal%20%24%20k%20%24%20-covering%29%20in%20separate%20line.%5Cn%5CnThe%20first%20integer%20%24%20cnt_%7Bk%7D%20%24%20of%20the%20%24%20k%20%24%20-th%20line%20is%20the%20number%20of%20edges%20in%20minimal%20%24%20k%20%24%20-covering%20of%20the%20graph.%20Then%20%24%20cnt_%7Bk%7D%20%24%20integers%20follow%20%5Cu2014%20original%20indices%20of%20the%20edges%20which%20belong%20to%20the%20minimal%20%24%20k%20%24%20-covering%2C%20these%20indices%20should%20be%20pairwise%20distinct.%20Edges%20are%20numbered%20%24%201%20%24%20through%20%24%20m%20%24%20in%20order%20they%20are%20given%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%223%203%207%5Cn1%202%5Cn2%203%5Cn1%203%5Cn3%202%5Cn3%203%5Cn2%201%5Cn2%201%5Cn%22%2C%220%20%5Cn3%203%207%204%20%5Cn6%201%203%206%207%204%205%20%5Cn%22%5D%2C%5B%221%201%205%5Cn1%201%5Cn1%201%5Cn1%201%5Cn1%201%5Cn1%201%5Cn%22%2C%220%20%5Cn1%205%20%5Cn2%204%205%20%5Cn3%203%204%205%20%5Cn4%202%203%204%205%20%5Cn5%201%202%203%204%205%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F976%5C%2FF%22%2C%22id%22%3A%22976F%22%7D%2C%22translation%22%3A%22%23%23%23%23%23%20%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cn%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu5f20%5Cu4e8c%5Cu5206%5Cu56fe%20%20%24G%20%3D%20%28U%2C%20V%2C%20E%29%24%20%5Cuff0c%20%24U%24%20%20%5Cu662f%5Cu56fe%5Cu7684%20%20%24X%24%20%20%5Cu90e8%5Cuff0c%20%24V%24%20%20%5Cu662f%5Cu56fe%5Cu7684%20%20%24Y%24%20%20%5Cu90e8%5Cuff0c%20%24E%24%20%20%5Cu662f%5Cu8fb9%5Cu96c6%5Cuff0c%5Cu53ef%5Cu80fd%5Cu6709%5Cu91cd%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cu6211%5Cu4eec%5Cu79f0%20%20%24E%24%20%20%5Cu7684%5Cu67d0%5Cu4e2a%5Cu5b50%5Cu96c6%20%20%24%5C%5Coverline%20E%24%20%20%5Cu662f%20%2Ak-%5Cu8986%5Cu76d6%2A%20%20%5Cu7684%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu56fe%20%20%24%5C%5Coverline%20G%20%3D%20%28U%2C%20V%2C%20%5C%5Coverline%20E%29%24%20%20%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu9876%5Cu70b9%5Cu81f3%5Cu5c11%5Cu8fde%5Cu63a5%5Cu4e86%20%20%24k%24%20%20%5Cu6761%5Cu8fb9%5Cuff1b%5Cu82e5%20%20%24%5C%5Coverline%20E%24%20%20%5Cu662f%20k-%5Cu8986%5Cu76d6%20%5Cu7684%5Cu4e14%5Cu4e0d%5Cu5b58%5Cu5728%5Cu5143%5Cu7d20%5Cu4e2a%5Cu6570%5Cu6bd4%5Cu5b83%5Cu66f4%5Cu5c0f%5Cu7684%5Cu8fb9%5Cu96c6%5Cu4e5f%5Cu662f%20k-%5Cu8986%5Cu76d6%20%5Cu7684%5Cuff0c%5Cu5219%5Cu79f0%20%20%24%5C%5Coverline%20E%24%20%20%5Cu662f%5Cu4e00%5Cu4e2a%20%2A%5Cu6700%5Cu5c0fk-%5Cu8986%5Cu76d6%2A%20%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%20%20%24k%20%5C%5Cin%20%5B0%2C%20minDegree%5D%24%20%5Cuff0c%5Cu6c42%5Cu51fa%20%5Cu6700%5Cu5c0fk-%5Cu8986%5Cu76d6%5Cuff0c%5Cu5176%5Cu4e2d%20%20%24minDegree%24%20%20%5Cu662f%5Cu56fe%20%20%24G%24%20%20%5Cu7684%5Cu6240%5Cu6709%5Cu70b9%5Cu5ea6%5Cu6570%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%5Cn%5Cn%23%23%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%20%20%24n_1%24%20%5Cuff0c%20%24n_2%24%20%20%5Cu548c%20%20%24m%24%20%5Cuff08%20%241%20%5C%5Cle%20n_1%2C%20n_2%20%5C%5Cle%202000%24%20%5Cuff0c%20%240%20%5C%5Cle%20m%20%5C%5Cle%202000%24%20%5Cuff09%5Cuff0c%5Cu5206%5Cu522b%5Cu4ee3%5Cu8868%20%20%24U%24%20%20%5Cu7684%5Cu70b9%5Cu6570%5Cuff0c%20%24V%24%20%20%5Cu7684%5Cu70b9%5Cu6570%5Cu548c%5Cu8fb9%5Cu6570%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%20%24m%24%20%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%20%24u_i%24%20%20%5Cu548c%20%20%24v_i%24%20%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2c%20%20%24i%24%20%20%5Cu6761%5Cu8fb9%5Cu5728%20%20%24U%24%20%20%5Cu4e2d%5Cu7684%5Cu7aef%5Cu70b9%5Cu4e3a%20%20%24u_i%24%20%5Cuff0c%5Cu5728%20%20%24V%24%20%20%5Cu4e2d%5Cu7684%5Cu7aef%5Cu70b9%5Cu4e3a%20%20%24v_i%24%20%5Cu3002%5Cn%5Cn%23%23%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu5305%5Cu542b%20%20%24minDegree%20%2B%201%24%20%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu9996%5Cu5148%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%20%24cnt_k%24%20%5Cuff0c%5Cu8868%5Cu793a%20%5Cu6700%5Cu5c0fk-%5Cu8986%5Cu76d6%20%5Cu7684%5Cu8fb9%5Cu96c6%5Cu5927%5Cu5c0f%5Cuff0c%5Cu7d27%5Cu63a5%5Cu7740%5Cu8f93%5Cu51fa%20%20%24cnt_k%24%20%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu5c5e%5Cu4e8e%20%5Cu6700%5Cu5c0fk-%5Cu8986%5Cu76d6%20%5Cu7684%5Cu8fb9%5Cu7684%5Cu6807%5Cu53f7%5Cu3002%5Cu8fb9%5Cu6309%5Cu8f93%5Cu5165%5Cu987a%5Cu5e8f%5Cu4ece%20%20%241%24%20%20%5Cu5f00%5Cu59cb%5Cu6807%5Cu53f7%5Cu3002%5Cu8f93%5Cu51fa%5Cu65f6%5Cu4e0d%5Cu5fc5%5Cu6309%5Cu6807%5Cu53f7%5Cu4ece%5Cu5c0f%5Cu5230%5Cu5927%5Cu8f93%5Cu51fa%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40OrangeLee%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A25%2C%22totalAccepted%22%3A10%2C%22pid%22%3A%22CF976F%22%2C%22title%22%3A%22Minimal%20k-covering%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A41605%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A25541%2C%22name%22%3A%22CF976F%20Minimal%20k-covering%22%2C%22slug%22%3A%22CF976F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minimal%20k-covering%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minimal k-covering</h1>
+<h2>题意翻译</h2>
+<div>##### 题目大意
+给你一张二分图 $G = (U, V, E)$ ， $U$ 是图的 $X$ 部， $V$ 是图的 $Y$ 部， $E$ 是边集，可能有重边。
+我们称 $E$ 的某个子集 $\overline E$ 是 *k-覆盖* 的，当且仅当图 $\overline G = (U, V, \overline E)$ 的每个顶点至少连接了 $k$ 条边；若 $\overline E$ 是 k-覆盖 的且不存在元素个数比它更小的边集也是 k-覆盖 的，则称 $\overline E$ 是一个 *最小k-覆盖* 。
+你的任务是对于所有 $k \in [0, minDegree]$ ，求出 最小k-覆盖，其中 $minDegree$ 是图 $G$ 的所有点度数的最小值。
+###### 输入格式
+第一行输入三个整数 $n_1$ ， $n_2$ 和 $m$ （ $1 \le n_1, n_2 \le 2000$ ， $0 \le m \le 2000$ ），分别代表 $U$ 的点数， $V$ 的点数和边数。
+接下来 $m$ 行每行两个整数 $u_i$ 和 $v_i$ ，表示第 $i$ 条边在 $U$ 中的端点为 $u_i$ ，在 $V$ 中的端点为 $v_i$ 。
+###### 输出格式
+输出包含 $minDegree + 1$ 行，每行首先输出一个整数 $cnt_k$ ，表示 最小k-覆盖 的边集大小，紧接着输出 $cnt_k$ 个整数，表示属于 最小k-覆盖 的边的标号。边按输入顺序从 $1$ 开始标号。输出时不必按标号从小到大输出。
+感谢@OrangeLee 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You are given a bipartite graph $ G=(U,V,E) $ , $ U $ is the set of vertices of the first part, $ V $ is the set of vertices of the second part and $ E $ is the set of edges. There might be multiple edges.
+Let's call some subset of its edges ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF976F/30cca9ec3414b2cdaa4736468f021199a0e40953.png) $ k $ -covering iff the graph ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF976F/d49bf4cc25f3533c586c660e8b21a303cdd43d12.png) has each of its vertices incident to at least $ k $ edges. Minimal $ k $ -covering is such a $ k $ -covering that the size of the subset ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF976F/30cca9ec3414b2cdaa4736468f021199a0e40953.png) is minimal possible.
+Your task is to find minimal $ k $ -covering for each ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF976F/06fc521a2ce350cb8a0dd7acf79829b13f12656e.png), where $ minDegree $ is the minimal degree of any vertex in graph $ G $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n_{1} $ , $ n_{2} $ and $ m $ ( $ 1<=n_{1},n_{2}<=2000 $ , $ 0<=m<=2000 $ ) — the number of vertices in the first part, the number of vertices in the second part and the number of edges, respectively.
+The $ i $ -th of the next $ m $ lines contain two integers $ u_{i} $ and $ v_{i} $ ( $ 1<=u_{i}<=n_{1},1<=v_{i}<=n_{2} $ ) — the description of the $ i $ -th edge, $ u_{i} $ is the index of the vertex in the first part and $ v_{i} $ is the index of the vertex in the second part.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF976F/06fc521a2ce350cb8a0dd7acf79829b13f12656e.png) print the subset of edges (minimal $ k $ -covering) in separate line.
+The first integer $ cnt_{k} $ of the $ k $ -th line is the number of edges in minimal $ k $ -covering of the graph. Then $ cnt_{k} $ integers follow — original indices of the edges which belong to the minimal $ k $ -covering, these indices should be pairwise distinct. Edges are numbered $ 1 $ through $ m $ in order they are given in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3 7
+1 2
+2 3
+1 3
+3 2
+3 3
+2 1
+2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0 
+3 3 7 4 
+6 1 3 6 7 4 5 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1 1 5
+1 1
+1 1
+1 1
+1 1
+1 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0 
+1 5 
+2 4 5 
+3 3 4 5 
+4 2 3 4 5 
+5 1 2 3 4 5 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

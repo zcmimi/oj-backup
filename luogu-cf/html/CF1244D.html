@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Paint the Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403627:mitMD0KgF7OPGBTGnakrdKVbi4Miv+eXv1xSGxiB2Nw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20tree%20consisting%20of%20%24%20n%20%24%20vertices.%20A%20tree%20is%20an%20undirected%20connected%20acyclic%20graph.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1244D%5C%2F0b019d9da08990633b2a6779b2699db8afb883d7.png%29Example%20of%20a%20tree.You%20have%20to%20paint%20each%20vertex%20into%20one%20of%20three%20colors.%20For%20each%20vertex%2C%20you%20know%20the%20cost%20of%20painting%20it%20in%20every%20color.%5Cn%5CnYou%20have%20to%20paint%20the%20vertices%20so%20that%20any%20path%20consisting%20of%20exactly%20three%20distinct%20vertices%20does%20not%20contain%20any%20vertices%20with%20equal%20colors.%20In%20other%20words%2C%20let%27s%20consider%20all%20triples%20%24%20%28x%2C%20y%2C%20z%29%20%24%20such%20that%20%24%20x%20%5C%5Cneq%20y%2C%20y%20%5C%5Cneq%20z%2C%20x%20%5C%5Cneq%20z%20%24%20%2C%20%24%20x%20%24%20is%20connected%20by%20an%20edge%20with%20%24%20y%20%24%20%2C%20and%20%24%20y%20%24%20is%20connected%20by%20an%20edge%20with%20%24%20z%20%24%20.%20The%20colours%20of%20%24%20x%20%24%20%2C%20%24%20y%20%24%20and%20%24%20z%20%24%20should%20be%20pairwise%20distinct.%20Let%27s%20call%20a%20painting%20which%20meets%20this%20condition%20good.%5Cn%5CnYou%20have%20to%20calculate%20the%20minimum%20cost%20of%20a%20good%20painting%20and%20find%20one%20of%20the%20optimal%20paintings.%20If%20there%20is%20no%20good%20painting%2C%20report%20about%20it.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%24%20%283%20%5C%5Cle%20n%20%5C%5Cle%20100%5C%5C%2C000%29%20%24%20%5Cu2014%20the%20number%20of%20vertices.%5Cn%5CnThe%20second%20line%20contains%20a%20sequence%20of%20integers%20%24%20c_%7B1%2C%201%7D%2C%20c_%7B1%2C%202%7D%2C%20%5C%5Cdots%2C%20c_%7B1%2C%20n%7D%20%24%20%24%20%281%20%5C%5Cle%20c_%7B1%2C%20i%7D%20%5C%5Cle%2010%5E%7B9%7D%29%20%24%20%2C%20where%20%24%20c_%7B1%2C%20i%7D%20%24%20is%20the%20cost%20of%20painting%20the%20%24%20i%20%24%20-th%20vertex%20into%20the%20first%20color.%5Cn%5CnThe%20third%20line%20contains%20a%20sequence%20of%20integers%20%24%20c_%7B2%2C%201%7D%2C%20c_%7B2%2C%202%7D%2C%20%5C%5Cdots%2C%20c_%7B2%2C%20n%7D%20%24%20%24%20%281%20%5C%5Cle%20c_%7B2%2C%20i%7D%20%5C%5Cle%2010%5E%7B9%7D%29%20%24%20%2C%20where%20%24%20c_%7B2%2C%20i%7D%20%24%20is%20the%20cost%20of%20painting%20the%20%24%20i%20%24%20-th%20vertex%20into%20the%20second%20color.%5Cn%5CnThe%20fourth%20line%20contains%20a%20sequence%20of%20integers%20%24%20c_%7B3%2C%201%7D%2C%20c_%7B3%2C%202%7D%2C%20%5C%5Cdots%2C%20c_%7B3%2C%20n%7D%20%24%20%24%20%281%20%5C%5Cle%20c_%7B3%2C%20i%7D%20%5C%5Cle%2010%5E%7B9%7D%29%20%24%20%2C%20where%20%24%20c_%7B3%2C%20i%7D%20%24%20is%20the%20cost%20of%20painting%20the%20%24%20i%20%24%20-th%20vertex%20into%20the%20third%20color.%5Cn%5CnThen%20%24%20%28n%20-%201%29%20%24%20lines%20follow%2C%20each%20containing%20two%20integers%20%24%20u_j%20%24%20and%20%24%20v_j%20%24%20%24%20%281%20%5C%5Cle%20u_j%2C%20v_j%20%5C%5Cle%20n%2C%20u_j%20%5C%5Cneq%20v_j%29%20%24%20%5Cu2014%20the%20numbers%20of%20vertices%20connected%20by%20the%20%24%20j%20%24%20-th%20undirected%20edge.%20It%20is%20guaranteed%20that%20these%20edges%20denote%20a%20tree.%22%2C%22outputFormat%22%3A%22If%20there%20is%20no%20good%20painting%2C%20print%20%24%20-1%20%24%20.%5Cn%5CnOtherwise%2C%20print%20the%20minimum%20cost%20of%20a%20good%20painting%20in%20the%20first%20line.%20In%20the%20second%20line%20print%20%24%20n%20%24%20integers%20%24%20b_1%2C%20b_2%2C%20%5C%5Cdots%2C%20b_n%20%24%20%24%20%281%20%5C%5Cle%20b_i%20%5C%5Cle%203%29%20%24%20%2C%20where%20the%20%24%20i%20%24%20-th%20integer%20should%20denote%20the%20color%20of%20the%20%24%20i%20%24%20-th%20vertex.%20If%20there%20are%20multiple%20good%20paintings%20with%20minimum%20cost%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn3%202%203%5Cn4%203%202%5Cn3%201%203%5Cn1%202%5Cn2%203%5Cn%22%2C%22%5Cn6%5Cn1%203%202%20%5Cn%22%5D%2C%5B%22%5Cn5%5Cn3%204%202%201%202%5Cn4%202%201%205%204%5Cn5%203%202%201%201%5Cn1%202%5Cn3%202%5Cn4%203%5Cn5%203%5Cn%22%2C%22%5Cn-1%5Cn%22%5D%2C%5B%22%5Cn5%5Cn3%204%202%201%202%5Cn4%202%201%205%204%5Cn5%203%202%201%201%5Cn1%202%5Cn3%202%5Cn4%203%5Cn5%204%5Cn%22%2C%22%5Cn9%5Cn1%203%202%201%203%20%5Cn%22%5D%5D%2C%22hint%22%3A%22All%20vertices%20should%20be%20painted%20in%20different%20colors%20in%20the%20first%20example.%20The%20optimal%20way%20to%20do%20it%20is%20to%20paint%20the%20first%20vertex%20into%20color%20%24%201%20%24%20%2C%20the%20second%20vertex%20%5Cu2014%20into%20color%20%24%203%20%24%20%2C%20and%20the%20third%20vertex%20%5Cu2014%20into%20color%20%24%202%20%24%20.%20The%20cost%20of%20this%20painting%20is%20%24%203%20%2B%202%20%2B%201%20%3D%206%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1244%5C%2FD%22%2C%22id%22%3A%221244D%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu67093%5Cu79cd%5Cu989c%5Cu8272%5Cuff0c%5Cu7b2c%24i%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cu67d3%5Cu6210%5Cu7b2c%24j%24%5Cu79cd%5Cu989c%5Cu8272%5Cu7684%5Cu4ee3%5Cu4ef7%5Cu662f%24c_%7Bj%2Ci%7D%24%5Cuff0c%5Cu73b0%5Cu5728%5Cu8981%5Cu4f60%5Cu6c42%5Cu51fa%5Cu4e00%5Cu79cd%5Cu67d3%5Cu8272%5Cu65b9%5Cu6848%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu603b%5Cu4ee3%5Cu4ef7%5Cu6700%5Cu5c0f%5Cuff0c%5Cu4e14%5Cu5bf9%5Cu4e8e%5Cu4efb%5Cu610f%5Cu4e09%5Cu4e2a%5Cu76f8%5Cu90bb%5Cu7684%5Cu8282%5Cu70b9%5Cuff0c%5Cu989c%5Cu8272%5Cu4e0d%5Cu80fd%5Cu76f8%5Cu540c%5Cu3002%5Cu8f93%5Cu51fa%5Cu6700%5Cu5c0f%5Cu4ee3%5Cu4ef7%5Cu4e0e%5Cu5176%5Cu4e2d%5Cu4e00%5Cu79cd%5Cu65b9%5Cu6848%5Cu3002%5Cu65e0%5Cu89e3%5Cu8f93%5Cu51fa%24-1%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%243%5C%5Cle%20n%5C%5Cle%2010%5E5%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A165%2C%22totalAccepted%22%3A97%2C%22pid%22%3A%22CF1244D%22%2C%22title%22%3A%22Paint%20the%20Tree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1244F%22%2C%22title%22%3A%22Chips%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1244E%22%2C%22title%22%3A%22Minimizing%20Difference%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1244C%22%2C%22title%22%3A%22The%20Football%20Season%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1244B%22%2C%22title%22%3A%22Rooms%20and%20Staircases%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1244A%22%2C%22title%22%3A%22Pens%20and%20Pencils%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Paint%20the%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Paint the Tree</h1>
+<h2>题意翻译</h2>
+<div>有一棵树，有3种颜色，第$i$个节点染成第$j$种颜色的代价是$c_{j,i}$，现在要你求出一种染色方案，使得总代价最小，且对于任意三个相邻的节点，颜色不能相同。输出最小代价与其中一种方案。无解输出$-1$。
+$3\le n\le 10^5$</div>
+<h2>题目描述</h2>
+<div>You are given a tree consisting of $ n $ vertices. A tree is an undirected connected acyclic graph.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1244D/0b019d9da08990633b2a6779b2699db8afb883d7.png)Example of a tree.You have to paint each vertex into one of three colors. For each vertex, you know the cost of painting it in every color.
+You have to paint the vertices so that any path consisting of exactly three distinct vertices does not contain any vertices with equal colors. In other words, let's consider all triples $ (x, y, z) $ such that $ x \neq y, y \neq z, x \neq z $ , $ x $ is connected by an edge with $ y $ , and $ y $ is connected by an edge with $ z $ . The colours of $ x $ , $ y $ and $ z $ should be pairwise distinct. Let's call a painting which meets this condition good.
+You have to calculate the minimum cost of a good painting and find one of the optimal paintings. If there is no good painting, report about it.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ $ (3 \le n \le 100\,000) $ — the number of vertices.
+The second line contains a sequence of integers $ c_{1, 1}, c_{1, 2}, \dots, c_{1, n} $ $ (1 \le c_{1, i} \le 10^{9}) $ , where $ c_{1, i} $ is the cost of painting the $ i $ -th vertex into the first color.
+The third line contains a sequence of integers $ c_{2, 1}, c_{2, 2}, \dots, c_{2, n} $ $ (1 \le c_{2, i} \le 10^{9}) $ , where $ c_{2, i} $ is the cost of painting the $ i $ -th vertex into the second color.
+The fourth line contains a sequence of integers $ c_{3, 1}, c_{3, 2}, \dots, c_{3, n} $ $ (1 \le c_{3, i} \le 10^{9}) $ , where $ c_{3, i} $ is the cost of painting the $ i $ -th vertex into the third color.
+Then $ (n - 1) $ lines follow, each containing two integers $ u_j $ and $ v_j $ $ (1 \le u_j, v_j \le n, u_j \neq v_j) $ — the numbers of vertices connected by the $ j $ -th undirected edge. It is guaranteed that these edges denote a tree.</div>
+<h3>输出格式</h3>
+<br />
+<div>If there is no good painting, print $ -1 $ .
+Otherwise, print the minimum cost of a good painting in the first line. In the second line print $ n $ integers $ b_1, b_2, \dots, b_n $ $ (1 \le b_i \le 3) $ , where the $ i $ -th integer should denote the color of the $ i $ -th vertex. If there are multiple good paintings with minimum cost, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+3 2 3
+4 3 2
+3 1 3
+1 2
+2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+6
+1 3 2 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5
+3 4 2 1 2
+4 2 1 5 4
+5 3 2 1 1
+1 2
+3 2
+4 3
+5 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+-1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+5
+3 4 2 1 2
+4 2 1 5 4
+5 3 2 1 1
+1 2
+3 2
+4 3
+5 4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+9
+1 3 2 1 3 
+</code></pre>
+<h2>说明</h2>
+<div>All vertices should be painted in different colors in the first example. The optimal way to do it is to paint the first vertex into color $ 1 $ , the second vertex — into color $ 3 $ , and the third vertex — into color $ 2 $ . The cost of this painting is $ 3 + 2 + 1 = 6 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

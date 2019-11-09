@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Subsequences (easy version) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402739:xXvjcc642JjmPX1n+b6Xa2gR0bv7qpFbraPCn616tOI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20only%20difference%20between%20the%20easy%20and%20the%20hard%20versions%20is%20constraints.%5Cn%5CnA%20subsequence%20is%20a%20string%20that%20can%20be%20derived%20from%20another%20string%20by%20deleting%20some%20or%20no%20symbols%20without%20changing%20the%20order%20of%20the%20remaining%20symbols.%20Characters%20to%20be%20deleted%20are%20not%20required%20to%20go%20successively%2C%20there%20can%20be%20any%20gaps%20between%20them.%20For%20example%2C%20for%20the%20string%20%5C%22abaca%5C%22%20the%20following%20strings%20are%20subsequences%3A%20%5C%22abaca%5C%22%2C%20%5C%22aba%5C%22%2C%20%5C%22aaa%5C%22%2C%20%5C%22a%5C%22%20and%20%5C%22%5C%22%20%28empty%20string%29.%20But%20the%20following%20strings%20are%20not%20subsequences%3A%20%5C%22aabaca%5C%22%2C%20%5C%22cb%5C%22%20and%20%5C%22bcaa%5C%22.%5Cn%5CnYou%20are%20given%20a%20string%20%24%20s%20%24%20consisting%20of%20%24%20n%20%24%20lowercase%20Latin%20letters.%5Cn%5CnIn%20one%20move%20you%20can%20take%20any%20subsequence%20%24%20t%20%24%20of%20the%20given%20string%20and%20add%20it%20to%20the%20set%20%24%20S%20%24%20.%20The%20set%20%24%20S%20%24%20can%27t%20contain%20duplicates.%20This%20move%20costs%20%24%20n%20-%20%7Ct%7C%20%24%20%2C%20where%20%24%20%7Ct%7C%20%24%20is%20the%20length%20of%20the%20added%20subsequence%20%28i.e.%20the%20price%20equals%20to%20the%20number%20of%20the%20deleted%20characters%29.%5Cn%5CnYour%20task%20is%20to%20find%20out%20the%20minimum%20possible%20total%20cost%20to%20obtain%20a%20set%20%24%20S%20%24%20of%20size%20%24%20k%20%24%20or%20report%20that%20it%20is%20impossible%20to%20do%20so.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cle%20n%2C%20k%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20string%20and%20the%20size%20of%20the%20set%2C%20correspondingly.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20a%20string%20%24%20s%20%24%20consisting%20of%20%24%20n%20%24%20lowercase%20Latin%20letters.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20if%20it%20is%20impossible%20to%20obtain%20the%20set%20%24%20S%20%24%20of%20size%20%24%20k%20%24%20%2C%20print%20-1.%20Otherwise%2C%20print%20the%20minimum%20possible%20total%20cost%20to%20do%20it.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%205%5Cnasdf%5Cn%22%2C%22%5Cn4%5Cn%22%5D%2C%5B%22%5Cn5%206%5Cnaaaaa%5Cn%22%2C%22%5Cn15%5Cn%22%5D%2C%5B%22%5Cn5%207%5Cnaaaaa%5Cn%22%2C%22%5Cn-1%5Cn%22%5D%2C%5B%22%5Cn10%20100%5Cnajihiushda%5Cn%22%2C%22%5Cn233%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20we%20can%20generate%20%24%20S%20%24%20%3D%20%7B%20%5C%22asdf%5C%22%2C%20%5C%22asd%5C%22%2C%20%5C%22adf%5C%22%2C%20%5C%22asf%5C%22%2C%20%5C%22sdf%5C%22%20%7D.%20The%20cost%20of%20the%20first%20element%20in%20%24%20S%20%24%20is%20%24%200%20%24%20and%20the%20cost%20of%20the%20others%20is%20%24%201%20%24%20.%20So%20the%20total%20cost%20of%20%24%20S%20%24%20is%20%24%204%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1183%5C%2FE%22%2C%22id%22%3A%221183E%22%7D%2C%22translation%22%3A%22%5Cu672c%5Cu9898%5Cu548cH%5Cu9898%5Cu552f%5Cu4e00%5Cu7684%5Cu4e0d%5Cu540c%5Cu70b9%5Cu662f%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu6709%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu5b83%5Cu7684%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cu3002%5Cu5b50%5Cu5e8f%5Cu5217%5Cu5b9a%5Cu4e49%5Cu4e3a%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu8fd9%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu5220%5Cu53bb%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu5f97%5Cu5230%5Cu3002%5Cu7279%5Cu522b%5Cu7684%5Cuff0c%5Cu7a7a%5Cu4e32%5Cu4e5f%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24m%24%5Cu7684%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff0c%5Cu9009%5Cu51fa%5Cu5b83%5Cu7684%5Cu82b1%5Cu8d39%5Cu662f%24n-m%24%5Cuff0c%5Cu4e5f%5Cu5c31%5Cu662f%5Cu4f60%5Cu9700%5Cu8981%5Cu5220%5Cu6389%5Cu7684%5Cu5b57%5Cu7b26%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu9009%5Cu51fa%5Cu6765%24k%24%5Cu4e2a%2A%2A%5Cu672c%5Cu8d28%5Cu4e0d%5Cu540c%2A%2A%5Cu7684%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu603b%5Cu82b1%5Cu8d39%5Cu6700%5Cu5c0f%5Cu3002%5Cu8f93%5Cu51fa%5Cu8fd9%5Cu4e2a%5Cu6700%5Cu5c0f%5Cu82b1%5Cu8d39%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu9009%5Cu4e0d%5Cu51fa%24k%24%5Cu4e2a%5Cuff0c%5Cu8f93%5Cu51fa%24-1%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%24%5C%5Ctext%7B%5Cu2014%5Cu2014by%20wucstdio%7D%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A89%2C%22totalAccepted%22%3A62%2C%22pid%22%3A%22CF1183E%22%2C%22title%22%3A%22Subsequences%20%28easy%20version%29%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1176E%22%2C%22title%22%3A%22Cover%20it%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1176D%22%2C%22title%22%3A%22Recover%20it%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1183H%22%2C%22title%22%3A%22Subsequences%20%28hard%20version%29%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1183G%22%2C%22title%22%3A%22Candy%20Box%20%28hard%20version%29%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1183F%22%2C%22title%22%3A%22Topforces%20Strikes%20Back%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Subsequences%20%28easy%20version%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Subsequences (easy version)</h1>
+<h2>题意翻译</h2>
+<div>本题和H题唯一的不同点是数据范围。
+你有一个长度为$n$的字符串。你可以选择它的任意一个子序列。子序列定义为可以将这个字符串删去若干个字符得到。特别的，空串也是一个子序列。
+对于一个长度为$m$的子序列，选出它的花费是$n-m$，也就是你需要删掉的字符数量。
+你的任务是选出来$k$个**本质不同**的子序列，使得总花费最小。输出这个最小花费。
+如果选不出$k$个，输出$-1$。
+$\text{——by wucstdio}$</div>
+<h2>题目描述</h2>
+<div>The only difference between the easy and the hard versions is constraints.
+A subsequence is a string that can be derived from another string by deleting some or no symbols without changing the order of the remaining symbols. Characters to be deleted are not required to go successively, there can be any gaps between them. For example, for the string "abaca" the following strings are subsequences: "abaca", "aba", "aaa", "a" and "" (empty string). But the following strings are not subsequences: "aabaca", "cb" and "bcaa".
+You are given a string $ s $ consisting of $ n $ lowercase Latin letters.
+In one move you can take any subsequence $ t $ of the given string and add it to the set $ S $ . The set $ S $ can't contain duplicates. This move costs $ n - |t| $ , where $ |t| $ is the length of the added subsequence (i.e. the price equals to the number of the deleted characters).
+Your task is to find out the minimum possible total cost to obtain a set $ S $ of size $ k $ or report that it is impossible to do so.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ k $ ( $ 1 \le n, k \le 100 $ ) — the length of the string and the size of the set, correspondingly.
+The second line of the input contains a string $ s $ consisting of $ n $ lowercase Latin letters.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — if it is impossible to obtain the set $ S $ of size $ k $ , print -1. Otherwise, print the minimum possible total cost to do it.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4 5
+asdf
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5 6
+aaaaa
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+15
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+5 7
+aaaaa
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+-1
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+10 100
+ajihiushda
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+233
+</code></pre>
+<h2>说明</h2>
+<div>In the first example we can generate $ S $ = { "asdf", "asd", "adf", "asf", "sdf" }. The cost of the first element in $ S $ is $ 0 $ and the cost of the others is $ 1 $ . So the total cost of $ S $ is $ 4 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

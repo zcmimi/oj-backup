@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dynamic Diameter - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402879:2OhTexKd4pmmxBwvPmsEvSVpO/h9Ynwx9ulmsRdSBu8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20weighted%20undirected%20tree%20on%20%24%20n%20%24%20vertices%20and%20a%20list%20of%20%24%20q%20%24%20updates.%20Each%20update%20changes%20the%20weight%20of%20one%20edge.%20The%20task%20is%20to%20output%20the%20diameter%20of%20the%20tree%20after%20each%20update.%5Cn%5Cn%28The%20distance%20between%20two%20vertices%20is%20the%20sum%20of%20the%20weights%20on%20the%20unique%20simple%20path%20that%20connects%20them.%20The%20diameter%20is%20the%20largest%20of%20all%20those%20distances.%29%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20space-separated%20integers%20%24%20n%20%24%20%2C%20%24%20q%20%24%20and%20%24%20w%20%24%20%28%20%24%202%20%5C%5Cleq%20n%20%5C%5Cleq%20100%2C000%2C%201%20%5C%5Cleq%20q%20%5C%5Cleq%20100%2C000%20%24%20%2C%20%24%201%20%5C%5Cleq%20w%20%5C%5Cleq%2020%2C000%2C000%2C000%2C000%20%24%20%29%20%5Cu2013%20the%20number%20of%20vertices%20in%20the%20tree%2C%20the%20number%20of%20updates%20and%20the%20limit%20on%20the%20weights%20of%20edges.%20The%20vertices%20are%20numbered%20%24%201%20%24%20through%20%24%20n%20%24%20.%5Cn%5CnNext%2C%20%24%20n-1%20%24%20lines%20describing%20the%20initial%20tree%20follow.%20The%20%24%20i%20%24%20-th%20of%20these%20lines%20contains%20three%20space-separated%20integers%20%24%20a_i%20%24%20%2C%20%24%20b_i%20%24%20%2C%20%24%20c_i%20%24%20%28%20%24%201%20%5C%5Cleq%20a_i%2C%20b_i%20%5C%5Cleq%20n%20%24%20%2C%20%24%200%20%5C%5Cleq%20c_i%20%3C%20w%20%24%20%29%20meaning%20that%20initially%2C%20there%20is%20an%20edge%20between%20vertices%20%24%20a_i%20%24%20and%20%24%20b_i%20%24%20with%20weight%20%24%20c_i%20%24%20.%20It%20is%20guaranteed%20that%20these%20%24%20n-1%20%24%20lines%20describe%20a%20tree.%5Cn%5CnFinally%2C%20%24%20q%20%24%20lines%20describing%20queries%20follow.%20The%20%24%20j%20%24%20-th%20of%20these%20lines%20contains%20two%20space-separated%20integers%20%24%20d_j%20%24%20%2C%20%24%20e_j%20%24%20%28%20%24%200%20%5C%5Cleq%20d_j%20%3C%20n%20-%201%2C%200%20%5C%5Cleq%20e_j%20%3C%20w%20%24%20%29.%20These%20two%20integers%20are%20then%20transformed%20according%20to%20the%20following%20scheme%3A%5Cn%5Cn-%20%24%20d%27_j%20%3D%20%28d_j%20%2B%20last%29%20%5C%5Cbmod%20%28n%20-%201%29%20%24%5Cn-%20%24%20e%27_j%20%3D%20%28e_j%20%2B%20last%29%20%5C%5Cbmod%20w%20%24%5Cn%5Cn%20where%20%24%20last%20%24%20is%20the%20result%20of%20the%20last%20query%20%28initially%20%24%20last%3D0%20%24%20%29.%20Tuple%20%24%20%28d%27_j%2C%20e%27_j%29%20%24%20represents%20a%20query%20which%20takes%20the%20%24%20d%27_j%2B1%20%24%20-th%20edge%20from%20the%20input%20and%20sets%20its%20weight%20to%20%24%20e%27_j%20%24%20.%22%2C%22outputFormat%22%3A%22Output%20%24%20q%20%24%20lines.%20For%20each%20%24%20i%20%24%20%2C%20line%20%24%20i%20%24%20should%20contain%20the%20diameter%20of%20the%20tree%20after%20the%20%24%20i%20%24%20-th%20update.%5Cn%5CnScoring%5Cn%5CnSubtask%201%20%2811%20points%29%3A%20%24%20n%2Cq%20%5C%5Cleq%20100%20%24%20and%20%24%20w%20%5C%5Cleq%2010%2C000%20%24%5Cn%5CnSubtask%202%20%2813%20points%29%3A%20%24%20n%2Cq%20%5C%5Cleq%205%2C000%20%24%20and%20%24%20w%20%5C%5Cleq%2010%2C000%20%24%5Cn%5CnSubtask%203%20%287%20points%29%3A%20%24%20w%20%5C%5Cleq%2010%2C000%20%24%20and%20the%20edges%20of%20the%20tree%20are%20exactly%20all%20valid%20edges%20of%20the%20form%20%24%20%5C%5C%7B1%2C%20i%5C%5C%7D%20%24%20%28Hence%2C%20the%20tree%20is%20a%20star%20centered%20at%20vertex%201.%29%5Cn%5CnSubtask%204%20%2818%20points%29%3A%20%24%20w%20%5C%5Cleq%2010%2C000%20%24%20%2C%20and%20the%20edges%20of%20the%20tree%20are%20exactly%20all%20valid%20edges%20of%20the%20forms%20%24%20%5C%5C%7Bi%2C%202i%5C%5C%7D%20%24%20and%20%24%20%5C%5C%7Bi%2C%202i%2B1%5C%5C%7D%20%24%20%28Hence%2C%20if%20we%20were%20to%20root%20the%20tree%20at%20vertex%201%2C%20it%20would%20be%20a%20balanced%20binary%20tree.%29%5Cn%5CnSubtask%205%20%2824%20points%29%3A%20it%20is%20guaranteed%20that%20after%20each%20update%20a%20longest%20simple%20path%20goes%20through%20vertex%20%24%201%20%24%5Cn%5CnSubtask%206%20%2827%20points%29%3A%20no%20additional%20constraints%22%2C%22samples%22%3A%5B%5B%22%5Cn4%203%202000%5Cn1%202%20100%5Cn2%203%201000%5Cn2%204%201000%5Cn2%201030%5Cn1%201020%5Cn1%20890%5Cn%22%2C%22%5Cn2030%5Cn2080%5Cn2050%5Cn%22%5D%2C%5B%22%5Cn10%2010%2010000%5Cn1%209%201241%5Cn5%206%201630%5Cn10%205%201630%5Cn2%206%20853%5Cn10%201%20511%5Cn5%203%20760%5Cn8%203%201076%5Cn4%2010%201483%5Cn7%2010%2040%5Cn8%202051%5Cn5%206294%5Cn5%204168%5Cn7%201861%5Cn0%205244%5Cn6%205156%5Cn3%203001%5Cn8%205267%5Cn5%203102%5Cn8%203623%5Cn%22%2C%22%5Cn6164%5Cn7812%5Cn8385%5Cn6737%5Cn6738%5Cn7205%5Cn6641%5Cn7062%5Cn6581%5Cn5155%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20sample%20is%20depicted%20in%20the%20figure%20below.%20The%20left-most%20picture%20shows%20the%20initial%20state%20of%20the%20graph.%20Each%20following%20picture%20depicts%20the%20situation%20after%20an%20update.%20The%20weight%20of%20the%20updated%20edge%20is%20painted%20green%2C%20and%20the%20diameter%20is%20red.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1192B%5C%2F8ecc077d551a69d669b4ff7ac3d01dc8e9bcc20b.png%29%5Cn%5CnThe%20first%20query%20changes%20the%20weight%20of%20the%20%24%203%20%24%20rd%20edge%2C%20i.e.%20%24%20%5C%5C%7B2%2C%204%5C%5C%7D%20%24%20%2C%20to%20%24%201030%20%24%20.%20The%20largest%20distance%20between%20any%20pair%20of%20vertices%20is%20%24%202030%20%24%20%5Cu2013%20the%20distance%20between%20%24%203%20%24%20and%20%24%204%20%24%20.%5Cn%5CnAs%20the%20answer%20is%20%24%202030%20%24%20%2C%20the%20second%20query%20is%20%24%20%24%24%24d%27_2%20%3D%20%281%20%2B%202030%29%20%5C%5Cbmod%203%20%3D%200%20%24%20%24%20%20%20%24%20%24%20e%27_2%20%3D%20%281020%20%2B%202030%29%20%5C%5Cbmod%202000%20%3D%201050%20%24%20%24%20%20Hence%20the%20weight%20of%20the%20edge%20%20%24%20%5C%5C%5C%5C%7B1%2C%202%5C%5C%5C%5C%7D%20%24%20%20is%20changed%20to%20%20%24%201050%20%24%20.%20This%20causes%20the%20pair%20%20%24%20%5C%5C%5C%5C%7B1%2C%204%5C%5C%5C%5C%7D%20%24%20%20to%20be%20the%20pair%20with%20the%20greatest%20distance%2C%20namely%20%20%24%202080%20%24%20.%3C%5C%2Fp%3E%3Cp%3EThe%20third%20query%20is%20decoded%20as%20%20%24%20%24%20d%27_3%20%3D%20%281%20%2B%202080%29%20%5C%5Cbmod%203%20%3D%202%20%24%20%24%20%20%20%24%20%24%20e%27_3%20%3D%20%28890%20%2B%202080%29%20%5C%5Cbmod%202000%20%3D%20970%20%24%20%24%20%20As%20the%20weight%20of%20the%20edge%20%20%24%20%5C%5C%5C%5C%7B2%2C%204%5C%5C%5C%5C%7D%20%24%20%20decreases%20to%20%20%24%20970%20%24%20%2C%20the%20most%20distant%20pair%20is%20suddenly%20%20%24%20%5C%5C%5C%5C%7B1%2C%203%5C%5C%5C%5C%7D%20%24%20%20with%20%20%24%202050%24%24%24.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B6000%5D%2C%22memory%22%3A%5B1024000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1192%5C%2FB%22%2C%22id%22%3A%221192B%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu6709%5Cu4e00%5Cu4e2an%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5e26%5Cu6743%5Cu65e0%5Cu5411%5Cu6811%5Cuff0cq%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu4fee%5Cu6539%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cuff0c%5Cu8981%5Cu6c42%5Cu5728%5Cu6bcf%5Cu6b21%5Cu4fee%5Cu6539%5Cu540e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu6811%5Cu7684%5Cu76f4%5Cu5f84%5Cu5927%5Cu5c0f%5Cuff0c%5Cu5f3a%5Cu5236%5Cu5728%5Cu7ebf%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c3%5Cu4e2a%5Cu7531%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu7684%5Cu6574%5Cu6570n%5Cuff0cq%5Cuff0cw%2C%5Cuff082%3C%3Dn%3C%3D1e5%2C1%3C%3Dq%3C%3D1e5%2C1%3C%3Dw%3C%3D2e13%5Cuff09%5Cuff0c%5Cu4ee3%5Cu8868%5Cu6709n%5Cu4e2a%5Cu70b9%5Cuff0cq%5Cu6b21%5Cu4fee%5Cu6539%5Cuff0c%5Cu64cd%5Cu4f5c%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu7684%5Cu6700%5Cu5927%5Cu6743%5Cu503c%5Cu4e3aw-1%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e4b%5Cu540en-1%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c3%5Cu4e2a%5Cu6574%5Cu6570a%5Cuff0cb%5Cuff0cc%5Cuff081%3C%3Da%2Cb%3C%3Dn%2C0%3C%3Dc%3Cw%5Cuff09%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu521d%5Cu6811%5Cu4e2d%5Cu6709%5Cu4e00%5Cu6761%5Cu8fde%5Cu63a5a%5Cu548cb%5Cuff0c%5Cu6743%5Cu503c%5Cu4e3ac%5Cu7684%5Cu8fb9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e4b%5Cu540eq%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c2%5Cu4e2a%5Cu6574%5Cu6570d%5Cuff0ce%5Cuff080%3C%3Dd%3Cn-1%2C0%3C%3De%3Cw%5Cuff09%2C%5Cu4f60%5Cu9700%5Cu8981%5Cu901a%5Cu8fc7%5Cu4e00%5Cu5b9a%5Cu7684%5Cu65b9%5Cu6cd5%5Cu5bf9%5Cu6570%5Cu636e%5Cu8fdb%5Cu884c%5Cu89e3%5Cu5bc6%5Cuff1a%5Cr%5Cn-%20D%3D%28d%2Blas%29%20mod%20%28n-1%29%5Cr%5Cn-%20E%3D%28e%2Blas%29%20mod%20w%5Cr%5Cn%5Cu5176%5Cu4e2dlas%5Cu4e3a%5Cu4e0a%5Cu4e00%5Cu6b21%5Cu8f93%5Cu51fa%5Cu7684%5Cu7ed3%5Cu679c%5Cuff08%5Cu521d%5Cu59cblas%3D0%5Cuff09%5Cuff0c%5Cu8868%5Cu793a%5Cu5c06%5Cu7b2cD%2B1%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu6539%5Cu4e3aE%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu8f93%5Cu51faq%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu8fd9%5Cu6b21%5Cu4fee%5Cu6539%5Cu540e%5Cu6811%5Cu7684%5Cu76f4%5Cu5f84%5Cu3002%5Cr%5Cn%23%23%20%5Cu8bc4%5Cu5206%5Cu6807%5Cu51c6%5Cr%5Cn%5Cu5b50%5Cu4efb%5Cu52a11%5Cuff0811%5Cu5206%5Cuff09n%2Cq%3C%3D100%2Cw%3C%3D10000%5Cr%5Cn%5Cr%5Cn%5Cu5b50%5Cu4efb%5Cu52a12%5Cuff0813%5Cu5206%5Cuff09n%2Cq%3C%3D5000%2Cw%3C%3D10000%5Cr%5Cn%5Cr%5Cn%5Cu5b50%5Cu4efb%5Cu52a13%5Cuff087%5Cu5206%5Cuff09w%3C%3D10000%2C%5Cu6811%5Cu4e3a%5Cu4ee51%5Cu53f7%5Cu5e97%5Cu4e3a%5Cu4e2d%5Cu5fc3%5Cu7684%5Cu83ca%5Cu82b1%5Cu56fe%5Cr%5Cn%5Cr%5Cn%5Cu5b50%5Cu4efb%5Cu52a14%5Cuff0818%5Cu5206%5Cuff09w%3C%3D10000%2C%5Cu6811%5Cu4e3a%5Cu4ee51%5Cu53f7%5Cu5e97%5Cu4e3a%5Cu6839%5Cu7684%5Cu5e73%5Cu8861%5Cu4e8c%5Cu53c9%5Cu6811%5Cr%5Cn%5Cr%5Cn%5Cu5b50%5Cu4efb%5Cu52a15%5Cuff0824%5Cu5206%5Cuff09%5Cu4efb%5Cu610f%5Cu65f6%5Cu523b%5Cu5b58%5Cu5728%5Cu4e00%5Cu6761%5Cu6811%5Cu7684%5Cu76f4%5Cu5f84%5Cu7ecf%5Cu8fc71%5Cu53f7%5Cu70b9%5Cr%5Cn%5Cr%5Cn%5Cu5b50%5Cu4efb%5Cu52a16%5Cuff0827%5Cu5206%5Cuff09%5Cu65e0%5Cu7279%5Cu6b8a%5Cu7ea6%5Cu5b9a%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A44%2C%22totalAccepted%22%3A25%2C%22pid%22%3A%22CF1192B%22%2C%22title%22%3A%22Dynamic%20Diameter%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Dynamic%20Diameter%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Dynamic Diameter</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+有一个n个点的带权无向树，q次操作，每次修改一条边的权值，要求在每次修改后，输出树的直径大小，强制在线。
+## 输入格式
+第一行，3个由空格分隔的整数n，q，w,（2<=n<=1e5,1<=q<=1e5,1<=w<=2e13），代表有n个点，q次修改，操作过程中每条边的最大权值为w-1。
+之后n-1行，每行3个整数a，b，c（1<=a,b<=n,0<=c<w），表示最初树中有一条连接a和b，权值为c的边。 之后q行，每行2个整数d，e（0<=d<n-1,0<=e<w）,你需要通过一定的方法对数据进行解密： - D=(d+las) mod (n-1) - E=(e+las) mod w 其中las为上一次输出的结果（初始las=0），表示将第D+1条边的权值改为E。 ## 输出格式 输出q行，每行一个整数，表示这次修改后树的直径。 ## 评分标准 子任务1（11分）n,q<=100,w<=10000 子任务2（13分）n,q<=5000,w<=10000 子任务3（7分）w<=10000,树为以1号店为中心的菊花图 子任务4（18分）w<=10000,树为以1号店为根的平衡二叉树 子任务5（24分）任意时刻存在一条树的直径经过1号点 子任务6（27分）无特殊约定</div>
+<h2>题目描述</h2>
+<div>You are given a weighted undirected tree on $ n $ vertices and a list of $ q $ updates. Each update changes the weight of one edge. The task is to output the diameter of the tree after each update.
+(The distance between two vertices is the sum of the weights on the unique simple path that connects them. The diameter is the largest of all those distances.)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three space-separated integers $ n $ , $ q $ and $ w $ ( $ 2 \leq n \leq 100,000, 1 \leq q \leq 100,000 $ , $ 1 \leq w \leq 20,000,000,000,000 $ ) – the number of vertices in the tree, the number of updates and the limit on the weights of edges. The vertices are numbered $ 1 $ through $ n $ .
+Next, $ n-1 $ lines describing the initial tree follow. The $ i $ -th of these lines contains three space-separated integers $ a_i $ , $ b_i $ , $ c_i $ ( $ 1 \leq a_i, b_i \leq n $ , $ 0 \leq c_i < w $ ) meaning that initially, there is an edge between vertices $ a_i $ and $ b_i $ with weight $ c_i $ . It is guaranteed that these $ n-1 $ lines describe a tree.
+Finally, $ q $ lines describing queries follow. The $ j $ -th of these lines contains two space-separated integers $ d_j $ , $ e_j $ ( $ 0 \leq d_j < n - 1, 0 \leq e_j < w $ ). These two integers are then transformed according to the following scheme:
+- $ d'_j = (d_j + last) \bmod (n - 1) $
+- $ e'_j = (e_j + last) \bmod w $
+where $ last $ is the result of the last query (initially $ last=0 $ ). Tuple $ (d'_j, e'_j) $ represents a query which takes the $ d'_j+1 $ -th edge from the input and sets its weight to $ e'_j $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $ q $ lines. For each $ i $ , line $ i $ should contain the diameter of the tree after the $ i $ -th update.
+Scoring
+Subtask 1 (11 points): $ n,q \leq 100 $ and $ w \leq 10,000 $
+Subtask 2 (13 points): $ n,q \leq 5,000 $ and $ w \leq 10,000 $
+Subtask 3 (7 points): $ w \leq 10,000 $ and the edges of the tree are exactly all valid edges of the form $ \{1, i\} $ (Hence, the tree is a star centered at vertex 1.)
+Subtask 4 (18 points): $ w \leq 10,000 $ , and the edges of the tree are exactly all valid edges of the forms $ \{i, 2i\} $ and $ \{i, 2i+1\} $ (Hence, if we were to root the tree at vertex 1, it would be a balanced binary tree.)
+Subtask 5 (24 points): it is guaranteed that after each update a longest simple path goes through vertex $ 1 $
+Subtask 6 (27 points): no additional constraints</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4 3 2000
+1 2 100
+2 3 1000
+2 4 1000
+2 1030
+1 1020
+1 890
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2030
+2080
+2050
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+10 10 10000
+1 9 1241
+5 6 1630
+10 5 1630
+2 6 853
+10 1 511
+5 3 760
+8 3 1076
+4 10 1483
+7 10 40
+8 2051
+5 6294
+5 4168
+7 1861
+0 5244
+6 5156
+3 3001
+8 5267
+5 3102
+8 3623
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+6164
+7812
+8385
+6737
+6738
+7205
+6641
+7062
+6581
+5155
+</code></pre>
+<h2>说明</h2>
+<div>The first sample is depicted in the figure below. The left-most picture shows the initial state of the graph. Each following picture depicts the situation after an update. The weight of the updated edge is painted green, and the diameter is red.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1192B/8ecc077d551a69d669b4ff7ac3d01dc8e9bcc20b.png)
+The first query changes the weight of the $ 3 $ rd edge, i.e. $ \{2, 4\} $ , to $ 1030 $ . The largest distance between any pair of vertices is $ 2030 $ – the distance between $ 3 $ and $ 4 $ .
+As the answer is $ 2030 $ , the second query is $ $$$d'_2 = (1 + 2030) \bmod 3 = 0 $ $ $ $ e'_2 = (1020 + 2030) \bmod 2000 = 1050 $ $ Hence the weight of the edge $ \\{1, 2\\} $ is changed to $ 1050 $ . This causes the pair $ \\{1, 4\\} $ to be the pair with the greatest distance, namely $ 2080 $ .</p><p>The third query is decoded as $ $ d'_3 = (1 + 2080) \bmod 3 = 2 $ $ $ $ e'_3 = (890 + 2080) \bmod 2000 = 970 $ $ As the weight of the edge $ \\{2, 4\\} $ decreases to $ 970 $ , the most distant pair is suddenly $ \\{1, 3\\} $ with $ 2050$$$.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

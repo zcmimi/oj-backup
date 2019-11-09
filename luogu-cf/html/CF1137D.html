@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cooperative Game - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402079:73xA2ZkqSE5H5uCA4FMkI26aQkNbe0RyGBGbgbEB19Q=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22This%20is%20an%20interactive%20problem.%5Cn%5CnMisha%20likes%20to%20play%20cooperative%20games%20with%20incomplete%20information.%20Today%20he%20suggested%20ten%20his%20friends%20to%20play%20a%20cooperative%20game%20%5C%22Lake%5C%22.%5Cn%5CnMisha%20has%20already%20come%20up%20with%20a%20field%20for%20the%20upcoming%20game.%20The%20field%20for%20this%20game%20is%20a%20directed%20graph%20consisting%20of%20two%20parts.%20The%20first%20part%20is%20a%20road%20along%20the%20coast%20of%20the%20lake%20which%20is%20a%20cycle%20of%20%24%20c%20%24%20vertices.%20The%20second%20part%20is%20a%20path%20from%20home%20to%20the%20lake%20which%20is%20a%20chain%20of%20%24%20t%20%24%20vertices%2C%20and%20there%20is%20an%20edge%20from%20the%20last%20vertex%20of%20this%20chain%20to%20the%20vertex%20of%20the%20road%20along%20the%20coast%20which%20has%20the%20most%20beautiful%20view%20of%20the%20lake%2C%20also%20known%20as%20the%20finish%20vertex.%20Misha%20decided%20to%20keep%20the%20field%20secret%2C%20so%20nobody%20knows%20neither%20%24%20t%20%24%20nor%20%24%20c%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1137D%5C%2F34a9ab7816c73b7f2368756224775ddf156360e3.png%29Note%20that%20each%20vertex%20of%20the%20field%20has%20exactly%20one%20outgoing%20edge%20and%20all%20the%20vertices%20except%20the%20home%20vertex%20and%20the%20finish%20vertex%20have%20exactly%20one%20ingoing%20edge.%20The%20home%20vertex%20has%20no%20incoming%20edges%2C%20the%20finish%20vertex%20has%20two%20incoming%20edges.%5Cn%5CnAt%20the%20beginning%20of%20the%20game%20pieces%20of%20all%20the%20ten%20players%2C%20indexed%20with%20consecutive%20integers%20from%20%24%200%20%24%20to%20%24%209%20%24%20%2C%20are%20at%20the%20home%20vertex.%20After%20that%20on%20each%20turn%20some%20of%20the%20players%20can%20ask%20Misha%20to%20simultaneously%20move%20their%20pieces%20along%20the%20corresponding%20edges.%20Misha%20will%20not%20answer%20more%20than%20%24%20q%20%24%20such%20queries.%20After%20each%20move%20Misha%20will%20tell%20players%20whose%20pieces%20are%20at%20the%20same%20vertices%20and%20whose%20pieces%20are%20at%20different%20vertices.%5Cn%5CnThe%20goal%20of%20the%20game%20is%20to%20move%20all%20the%20pieces%20to%20the%20finish%20vertex.%20Misha%27s%20friends%20have%20no%20idea%20how%20to%20win%20in%20such%20a%20game%20without%20knowledge%20of%20%24%20c%20%24%20%2C%20%24%20t%20%24%20and%20%24%20q%20%24%20%2C%20but%20luckily%20they%20are%20your%20friends.%20Help%20them%3A%20coordinate%20their%20actions%20to%20win%20the%20game.%5Cn%5CnMisha%20has%20drawn%20such%20a%20field%20that%20%24%201%20%5C%5Cle%20t%2C%20c%20%24%20%2C%20%24%20%28t%2Bc%29%20%5C%5Cleq%201000%20%24%20and%20%24%20q%20%3D%203%20%5C%5Ccdot%20%28t%2Bc%29%20%24%20.%22%2C%22inputFormat%22%3A%22There%20is%20no%20input%20%5Cu2014%20go%20to%20the%20interaction%20part%20straight%20away.%22%2C%22outputFormat%22%3A%22After%20all%20friends%20gather%20at%20the%20finish%20vertex%2C%20print%20%5C%22done%5C%22%20and%20terminate%20your%20program.%5Cn%5CnInteraction%5Cn%5CnTo%20give%20a%20command%20to%20move%20the%20friends%2C%20print%20%5C%22next%5C%22%20and%20then%20space-separated%20indices%20of%20the%20friends%20you%20want%20to%20move.%20For%20example%2C%20to%20give%20the%20command%20to%20move%20the%20friends%20with%20indices%20%24%200%20%24%20%2C%20%24%202%20%24%20%2C%20%24%205%20%24%20and%20%24%209%20%24%20print%20%5C%22next%200%202%205%209%5C%22.%20At%20each%20turn%2C%20you%20must%20move%20at%20least%20one%20of%20your%20friends.%5Cn%5CnAs%20an%20answer%2C%20first%20read%20an%20integer%20%24%20k%20%24%20%2C%20and%20then%20%24%2010%20%24%20digits%20divided%20into%20%24%20k%20%24%20space-separated%20groups.%20The%20friends%20that%20correspond%20to%20the%20indices%20in%20the%20same%20group%20are%20in%20the%20same%20vertex.%20The%20friends%20that%20correspond%20to%20indices%20in%20different%20groups%20are%20in%20different%20vertices.%20The%20indices%20in%20each%20group%20follow%20in%20ascending%20order.%5Cn%5CnFor%20example%2C%20the%20answer%20%5C%222%2005%2012346789%5C%22%20means%20that%20the%20friends%20with%20indices%20%24%200%20%24%20and%20%24%205%20%24%20are%20in%20one%20vertex%2C%20and%20all%20other%20friends%20are%20in%20the%20same%20but%20different%20vertex.%20The%20answer%20%5C%224%2001%20567%20234%2089%5C%22%20means%20that%20Misha%27s%20friends%20are%20in%20four%20different%20vertices%3A%20the%20friends%20with%20indices%20%24%200%20%24%20and%20%24%201%20%24%20are%20in%20the%20first%2C%20the%20friends%20with%20indices%20%24%205%20%24%20%2C%20%24%206%20%24%20and%20%24%207%20%24%20are%20in%20the%20second%2C%20the%20friends%20with%20indices%20%24%202%20%24%20%2C%20%24%203%20%24%20and%20%24%204%20%24%20are%20in%20the%20third%2C%20and%20the%20friends%20with%20indices%20%24%208%20%24%20and%20%24%209%20%24%20are%20in%20the%20fourth.%5Cn%5CnAfter%20printing%20a%20query%20do%20not%20forget%20to%20output%20end%20of%20line%20and%20flush%20the%20output.%20Otherwise%20you%20will%20get%20Idleness%20limit%20exceeded.%20To%20do%20this%2C%20use%3A%5Cn%5Cn-%20fflush%28stdout%29%20or%20cout.flush%28%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20see%20documentation%20for%20other%20languages.%5Cn%5CnAnswer%20%5C%22stop%5C%22%20instead%20of%20a%20valid%20one%20means%20that%20you%20made%20an%20invalid%20query.%20Exit%20immediately%20after%20receiving%20%5C%22stop%5C%22%20and%20you%20will%20see%20Wrong%20answer%20verdict.%20Otherwise%20you%20can%20get%20an%20arbitrary%20verdict%20because%20your%20solution%20will%20continue%20to%20read%20from%20a%20closed%20stream.%5Cn%5CnHacks%5Cn%5CnIn%20order%20to%20hack%2C%20print%20two%20integers%20%24%20t%20%24%20and%20%24%20c%20%24%20in%20a%20single%20line%20%28%20%24%201%20%5C%5Cle%20t%2C%20c%20%24%20%2C%20%24%20%28t%2Bc%29%20%5C%5Cleq%201000%20%24%20%29.%22%2C%22samples%22%3A%5B%5B%22%5Cn2%2005%2012346789%5Cn%5Cn3%20246789%20135%200%5Cn%5Cn3%20246789%200%20135%5Cn%5Cn3%20246789%200%20135%5Cn%5Cn2%20135%200246789%5Cn%5Cn1%200123456789%5Cn%22%2C%22%5Cnnext%200%205%5Cn%5Cnnext%200%201%203%5Cn%5Cnnext%202%203%200%201%204%205%206%207%208%209%5Cn%5Cnnext%209%208%207%206%205%204%203%202%201%200%5Cn%5Cnnext%200%201%203%205%5Cn%5Cnnext%201%203%205%5Cn%5Cndone%22%5D%5D%2C%22hint%22%3A%22In%20the%20sample%20input%20and%20output%20values%20are%20aligned%20only%20for%20simplicity%20of%20interpreting%20them%20chronologically.%20In%20real%20interaction%20no%20%5C%22extra%5C%22%20line%20breaks%20should%20appear.%5Cn%5CnIn%20the%20example%2C%20the%20friends%20move%20as%20follows%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1137D%5C%2F49a5c12b9834889c7b07dbaecbdc8d9c67955b2f.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1137%5C%2FD%22%2C%22id%22%3A%221137D%22%7D%2C%22translation%22%3A%22-%20%5Cu8fd9%5Cu662f%5Cu4e00%5Cu9053%5Cu4ea4%5Cu4e92%5Cu9898%5Cu3002%5Cr%5Cn%5Cr%5Cn-%20%5Cu4e00%5Cu4e2a%5Cu6709%5Cu5411%5Cu56fe%5Cuff0c%5Cu7531%5Cu4e00%5Cu6761%5Cu8fb9%5Cu6570%5Cu4e3a%20%24t%24%20%5Cu7684%5Cu94fe%5Cu548c%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24c%24%20%5Cu7684%5Cu73af%5Cu7ec4%5Cu6210%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu6709%5Cu4e14%5Cu4ec5%5Cu6709%5Cu4e00%5Cu6761%5Cu51fa%5Cu8fb9%5Cuff0c%5Cu5982%5Cu56fe%5Cu3002%5Cu4f60%5Cu4e0d%5Cu77e5%5Cu9053%20%24t%24%20%5Cu548c%20%24c%24%20%5Cu7684%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn-%20%5Cu5728%5Cu94fe%5Cu7684%5Cu5f00%5Cu5934%5Cuff08%5Cu56fe%5Cu4e2d%5Cu623f%5Cu5b50%5Cu5904%5Cuff09%5Cu6709%20%2410%24%20%5Cu679a%5Cu68cb%5Cu5b50%5Cu3002%5Cu4f60%5Cu6bcf%5Cu6b21%5Cu53ef%5Cu4ee5%5Cu9009%5Cu5b9a%5Cu4e00%5Cu4e9b%5Cu68cb%5Cu5b50%5Cuff0c%5Cu628a%5Cu8fd9%5Cu4e9b%5Cu68cb%5Cu5b50%5Cu5411%5Cu5b83%5Cu4eec%5Cu6240%5Cu5728%5Cu70b9%5Cu7684%5Cu51fa%5Cu8fb9%5Cu79fb%5Cu52a8%5Cu4e00%5Cu6b65%5Cu3002%5Cu79fb%5Cu52a8%5Cu4e4b%5Cu540e%5Cuff0c%5Cu4f60%5Cu4f1a%5Cu5f97%5Cu5230%5Cu6240%5Cu6709%20%2410%24%20%5Cu679a%5Cu68cb%5Cu5b50%5Cu4e2d%5Cuff0c%5Cu54ea%5Cu4e9b%5Cu68cb%5Cu5b50%5Cu5904%5Cu4e8e%5Cu540c%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu4e0a%5Cuff0c%5Cu54ea%5Cu4e9b%5Cu68cb%5Cu5b50%5Cu4e0d%5Cu5728%5Cu540c%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu4e0a%5Cu3002%5Cr%5Cn%5Cr%5Cn-%20%5Cu4f60%5Cu9700%5Cu8981%5Cu5728%20%243%28t%2Bc%29%24%20%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu4e4b%5Cu540e%5Cuff0c%5Cu628a%5Cu6240%5Cu6709%20%2410%24%20%5Cu679a%5Cu68cb%5Cu5b50%5Cu79fb%5Cu52a8%5Cu5230%5Cu94fe%5Cu548c%5Cu73af%5Cu7684%5Cu4ea4%5Cu70b9%5Cu5904%5Cuff08%5Cu56fe%5Cu4e2d%5Cu7684%5Cu65d7%5Cu5b50%5Cu5904%5Cuff09%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A80%2C%22totalAccepted%22%3A58%2C%22pid%22%3A%22CF1137D%22%2C%22title%22%3A%22Cooperative%20Game%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1109D%22%2C%22title%22%3A%22Sasha%20and%20Interesting%20Fact%20from%20Graph%20Theory%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1137F%22%2C%22title%22%3A%22Matches%20Are%20Not%20a%20Child%27s%20Play%20%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1137E%22%2C%22title%22%3A%22Train%20Car%20Selection%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1137C%22%2C%22title%22%3A%22Museums%20Tour%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1137B%22%2C%22title%22%3A%22Camp%20Schedule%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Cooperative%20Game%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Cooperative Game</h1>
+<h2>题意翻译</h2>
+<div>- 这是一道交互题。
+- 一个有向图，由一条边数为 $t$ 的链和一个长度为 $c$ 的环组成，每个点有且仅有一条出边，如图。你不知道 $t$ 和 $c$ 的值。
+- 在链的开头（图中房子处）有 $10$ 枚棋子。你每次可以选定一些棋子，把这些棋子向它们所在点的出边移动一步。移动之后，你会得到所有 $10$ 枚棋子中，哪些棋子处于同一个点上，哪些棋子不在同一个点上。
+- 你需要在 $3(t+c)$ 次操作之后，把所有 $10$ 枚棋子移动到链和环的交点处（图中的旗子处）</div>
+<h2>题目描述</h2>
+<div>This is an interactive problem.
+Misha likes to play cooperative games with incomplete information. Today he suggested ten his friends to play a cooperative game "Lake".
+Misha has already come up with a field for the upcoming game. The field for this game is a directed graph consisting of two parts. The first part is a road along the coast of the lake which is a cycle of $ c $ vertices. The second part is a path from home to the lake which is a chain of $ t $ vertices, and there is an edge from the last vertex of this chain to the vertex of the road along the coast which has the most beautiful view of the lake, also known as the finish vertex. Misha decided to keep the field secret, so nobody knows neither $ t $ nor $ c $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1137D/34a9ab7816c73b7f2368756224775ddf156360e3.png)Note that each vertex of the field has exactly one outgoing edge and all the vertices except the home vertex and the finish vertex have exactly one ingoing edge. The home vertex has no incoming edges, the finish vertex has two incoming edges.
+At the beginning of the game pieces of all the ten players, indexed with consecutive integers from $ 0 $ to $ 9 $ , are at the home vertex. After that on each turn some of the players can ask Misha to simultaneously move their pieces along the corresponding edges. Misha will not answer more than $ q $ such queries. After each move Misha will tell players whose pieces are at the same vertices and whose pieces are at different vertices.
+The goal of the game is to move all the pieces to the finish vertex. Misha's friends have no idea how to win in such a game without knowledge of $ c $ , $ t $ and $ q $ , but luckily they are your friends. Help them: coordinate their actions to win the game.
+Misha has drawn such a field that $ 1 \le t, c $ , $ (t+c) \leq 1000 $ and $ q = 3 \cdot (t+c) $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>There is no input — go to the interaction part straight away.</div>
+<h3>输出格式</h3>
+<br />
+<div>After all friends gather at the finish vertex, print "done" and terminate your program.
+Interaction
+To give a command to move the friends, print "next" and then space-separated indices of the friends you want to move. For example, to give the command to move the friends with indices $ 0 $ , $ 2 $ , $ 5 $ and $ 9 $ print "next 0 2 5 9". At each turn, you must move at least one of your friends.
+As an answer, first read an integer $ k $ , and then $ 10 $ digits divided into $ k $ space-separated groups. The friends that correspond to the indices in the same group are in the same vertex. The friends that correspond to indices in different groups are in different vertices. The indices in each group follow in ascending order.
+For example, the answer "2 05 12346789" means that the friends with indices $ 0 $ and $ 5 $ are in one vertex, and all other friends are in the same but different vertex. The answer "4 01 567 234 89" means that Misha's friends are in four different vertices: the friends with indices $ 0 $ and $ 1 $ are in the first, the friends with indices $ 5 $ , $ 6 $ and $ 7 $ are in the second, the friends with indices $ 2 $ , $ 3 $ and $ 4 $ are in the third, and the friends with indices $ 8 $ and $ 9 $ are in the fourth.
+After printing a query do not forget to output end of line and flush the output. Otherwise you will get Idleness limit exceeded. To do this, use:
+- fflush(stdout) or cout.flush() in C++;
+- System.out.flush() in Java;
+- flush(output) in Pascal;
+- stdout.flush() in Python;
+- see documentation for other languages.
+Answer "stop" instead of a valid one means that you made an invalid query. Exit immediately after receiving "stop" and you will see Wrong answer verdict. Otherwise you can get an arbitrary verdict because your solution will continue to read from a closed stream.
+Hacks
+In order to hack, print two integers $ t $ and $ c $ in a single line ( $ 1 \le t, c $ , $ (t+c) \leq 1000 $ ).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+2 05 12346789
+
+3 246789 135 0
+
+3 246789 0 135
+
+3 246789 0 135
+
+2 135 0246789
+
+1 0123456789
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+next 0 5
+
+next 0 1 3
+
+next 2 3 0 1 4 5 6 7 8 9
+
+next 9 8 7 6 5 4 3 2 1 0
+
+next 0 1 3 5
+
+next 1 3 5
+
+done</code></pre>
+<h2>说明</h2>
+<div>In the sample input and output values are aligned only for simplicity of interpreting them chronologically. In real interaction no "extra" line breaks should appear.
+In the example, the friends move as follows:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1137D/49a5c12b9834889c7b07dbaecbdc8d9c67955b2f.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

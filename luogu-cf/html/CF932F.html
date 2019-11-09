@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Escape Through Leaf - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399554:hvXqsXz+rgQ7jepZ2l82DwV5QRSrbnS2o0GHfjs0BRA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20tree%20with%20%24%20n%20%24%20nodes%20%28numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%29%20rooted%20at%20node%20%24%201%20%24%20.%20Also%2C%20each%20node%20has%20two%20values%20associated%20with%20it.%20The%20values%20for%20%24%20i%20%24%20-th%20node%20are%20%24%20a_%7Bi%7D%20%24%20and%20%24%20b_%7Bi%7D%20%24%20.%5Cn%5CnYou%20can%20jump%20from%20a%20node%20to%20any%20node%20in%20its%20subtree.%20The%20cost%20of%20one%20jump%20from%20node%20%24%20x%20%24%20to%20node%20%24%20y%20%24%20is%20the%20product%20of%20%24%20a_%7Bx%7D%20%24%20and%20%24%20b_%7By%7D%20%24%20.%20The%20total%20cost%20of%20a%20path%20formed%20by%20one%20or%20more%20jumps%20is%20sum%20of%20costs%20of%20individual%20jumps.%20For%20every%20node%2C%20calculate%20the%20minimum%20total%20cost%20to%20reach%20any%20leaf%20from%20that%20node.%20Pay%20attention%2C%20that%20root%20can%20never%20be%20leaf%2C%20even%20if%20it%20has%20degree%20%24%201%20%24%20.%5Cn%5CnNote%20that%20you%20cannot%20jump%20from%20a%20node%20to%20itself.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20nodes%20in%20the%20tree.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%28-10%5E%7B5%7D%3C%3Da_%7Bi%7D%3C%3D10%5E%7B5%7D%29%20%24%20.%5Cn%5CnThe%20third%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%24%20b_%7B1%7D%2Cb_%7B2%7D%2C...%2Cb_%7Bn%7D%28-10%5E%7B5%7D%3C%3Db_%7Bi%7D%3C%3D10%5E%7B5%7D%29%20%24%20.%5Cn%5CnNext%20%24%20n-1%20%24%20lines%20contains%20two%20space-separated%20integers%20%24%20u_%7Bi%7D%20%24%20and%20%24%20v_%7Bi%7D%20%24%20%28%20%24%201%3C%3Du_%7Bi%7D%2Cv_%7Bi%7D%3C%3Dn%20%24%20%29%20describing%20edge%20between%20nodes%20%24%20u_%7Bi%7D%20%24%20and%20%24%20v_%7Bi%7D%20%24%20in%20the%20tree.%22%2C%22outputFormat%22%3A%22Output%20%24%20n%20%24%20space-separated%20integers%2C%20%24%20i%20%24%20-th%20of%20which%20denotes%20the%20minimum%20cost%20of%20a%20path%20from%20node%20%24%20i%20%24%20to%20reach%20any%20leaf.%22%2C%22samples%22%3A%5B%5B%223%5Cn2%2010%20-1%5Cn7%20-7%205%5Cn2%203%5Cn2%201%5Cn%22%2C%2210%2050%200%20%22%5D%2C%5B%224%5Cn5%20-10%205%207%5Cn-8%20-80%20-3%20-10%5Cn2%201%5Cn2%204%5Cn1%203%5Cn%22%2C%22-300%20100%200%200%20%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20node%20%24%203%20%24%20is%20already%20a%20leaf%2C%20so%20the%20cost%20is%20%24%200%20%24%20.%20For%20node%20%24%202%20%24%20%2C%20jump%20to%20node%20%24%203%20%24%20with%20cost%20%24%20a_%7B2%7D%5Cu00d7b_%7B3%7D%3D50%20%24%20.%20For%20node%20%24%201%20%24%20%2C%20jump%20directly%20to%20node%20%24%203%20%24%20with%20cost%20%24%20a_%7B1%7D%5Cu00d7b_%7B3%7D%3D10%20%24%20.%5Cn%5CnIn%20the%20second%20example%2C%20node%20%24%203%20%24%20and%20node%20%24%204%20%24%20are%20leaves%2C%20so%20the%20cost%20is%20%24%200%20%24%20.%20For%20node%20%24%202%20%24%20%2C%20jump%20to%20node%20%24%204%20%24%20with%20cost%20%24%20a_%7B2%7D%5Cu00d7b_%7B4%7D%3D100%20%24%20.%20For%20node%20%24%201%20%24%20%2C%20jump%20to%20node%20%24%202%20%24%20with%20cost%20%24%20a_%7B1%7D%5Cu00d7b_%7B2%7D%3D-400%20%24%20followed%20by%20a%20jump%20from%20%24%202%20%24%20to%20%24%204%20%24%20with%20cost%20%24%20a_%7B2%7D%5Cu00d7b_%7B4%7D%3D100%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F932%5C%2FF%22%2C%22id%22%3A%22932F%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu9897n%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu6811%28%5Cu8282%5Cu70b9%5Cu4ece1%5Cu5230n%5Cu4f9d%5Cu6b21%5Cu7f16%5Cu53f7%29.%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6743%5Cu503c%2C%5Cu7b2ci%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu6743%5Cu503c%5Cu4e3a%24a_i%2Cb_i%24.%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu8df3%5Cu5230%5Cu5b83%5Cu7684%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu8282%5Cu70b9%5Cu4e0a.%5Cu4ece%5Cu8282%5Cu70b9%24x%24%5Cu8df3%5Cu5230%5Cu8282%5Cu70b9%24y%24%5Cu4e00%5Cu6b21%5Cu7684%5Cu82b1%5Cu8d39%5Cu4e3a%24a_x%5C%5Ctimes%20b_y%24.%5Cu8df3%5Cu8dc3%5Cu591a%5Cu6b21%5Cu8d70%5Cu8fc7%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cu7684%5Cu603b%5Cu8d39%5Cu7528%5Cu4e3a%5Cu6bcf%5Cu6b21%5Cu8df3%5Cu8dc3%5Cu7684%5Cu8d39%5Cu7528%5Cu4e4b%5Cu548c.%5Cu8bf7%5Cu5206%5Cu522b%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu5230%5Cu8fbe%5Cu6811%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9%5Cu7684%5Cu8d39%5Cu7528%5Cu4e2d%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c.%5Cr%5Cn%5Cr%5Cn%5Cu6ce8%5Cu610f%3A%5Cu5c31%5Cu7b97%5Cu6811%5Cu7684%5Cu6df1%5Cu5ea6%5Cu4e3a1%2C%5Cu6839%5Cu8282%5Cu70b9%5Cu4e5f%5Cu4e0d%5Cu7b97%5Cu505a%5Cu53f6%5Cu5b50%5Cu8282%5Cu70b9.%5Cu53e6%5Cu5916%2C%5Cu4e0d%5Cu80fd%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu8df3%5Cu5230%5Cu5b83%5Cu81ea%5Cu5df1.%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%282%3C%3Dn%3C%3D10%5E5%29%24%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6709n%5Cu4e2a%5Cu6574%5Cu6570%24a_1%2Ca_2%2C...%2Ca_n%28-10%5E5%3C%3Da_i%3C%3D10%5E5%29%24%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e09%5Cu884c%5Cu6709n%5Cu4e2a%5Cu6574%5Cu6570%24b_1%2Cb_2%2C...%2Cb_n%28-10%5E5%3C%3Db_i%3C%3D10%5E5%29%24%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684%24n-1%24%5Cu884c%5Cu6bcf%5Cu884c%5Cu67092%5Cu4e2a%5Cu6574%5Cu6570%24u_i%2Cv_i%24%2C%20%5Cu8868%5Cu793a%5Cu8282%5Cu70b9%24u_i%2Cv_i%24%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9.%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%3A%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%24n%24%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%2C%5Cu7b2c%24i%24%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu7b2c%24i%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cu5230%5Cu6bcf%5Cu4e2a%5Cu53f6%5Cu8282%5Cu70b9%5Cu82b1%5Cu8d39%5Cu4e2d%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c.%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A95%2C%22totalAccepted%22%3A38%2C%22pid%22%3A%22CF932F%22%2C%22title%22%3A%22Escape%20Through%20Leaf%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A124944%2C%22title%22%3A%22%5Cu5173%5Cu4e8e%5Cu8fd9%5Cu9898%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A23015%2C%22name%22%3A%22CF932F%20Escape%20Through%20Leaf%22%2C%22slug%22%3A%22CF932F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3690%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Link%20Cut%20Tree%20%5Cuff08%5Cu52a8%5Cu6001%5Cu6811%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4097%22%2C%22title%22%3A%22%5BHEOI2013%5DSegment%20%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1202E%22%2C%22title%22%3A%22You%20Are%20Given%20Some%20Strings...%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1200E%22%2C%22title%22%3A%22Compress%20Words%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1204A%22%2C%22title%22%3A%22BowWow%20and%20the%20Timetable%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Escape%20Through%20Leaf%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Escape Through Leaf</h1>
+<h2>题意翻译</h2>
+<div>有一颗n个节点的树(节点从1到n依次编号).每个节点有两个权值,第i个节点的权值为$a_i,b_i$.
+你可以从一个节点跳到它的任意一个子节点上.从节点$x$跳到节点$y$一次的花费为$a_x\times b_y$.跳跃多次走过一条路径的总费用为每次跳跃的费用之和.请分别计算出每个节点到达树的每个叶子节点的费用中的最小值.
+注意:就算树的深度为1,根节点也不算做叶子节点.另外,不能从一个节点跳到它自己.
+输入格式:
+第一行为一个整数$n(2<=n<=10^5)$
+第二行有n个整数$a_1,a_2,...,a_n(-10^5<=a_i<=10^5)$
+第三行有n个整数$b_1,b_2,...,b_n(-10^5<=b_i<=10^5)$
+接下来的$n-1$行每行有2个整数$u_i,v_i$, 表示节点$u_i,v_i$间有一条边.
+输出格式:
+输出$n$个空格隔开的整数,第$i$个整数表示第$i$个节点到每个叶节点花费中的最小值.</div>
+<h2>题目描述</h2>
+<div>You are given a tree with $ n $ nodes (numbered from $ 1 $ to $ n $ ) rooted at node $ 1 $ . Also, each node has two values associated with it. The values for $ i $ -th node are $ a_{i} $ and $ b_{i} $ .
+You can jump from a node to any node in its subtree. The cost of one jump from node $ x $ to node $ y $ is the product of $ a_{x} $ and $ b_{y} $ . The total cost of a path formed by one or more jumps is sum of costs of individual jumps. For every node, calculate the minimum total cost to reach any leaf from that node. Pay attention, that root can never be leaf, even if it has degree $ 1 $ .
+Note that you cannot jump from a node to itself.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains an integer $ n $ ( $ 2<=n<=10^{5} $ ) — the number of nodes in the tree.
+The second line contains $ n $ space-separated integers $ a_{1},a_{2},...,a_{n}(-10^{5}<=a_{i}<=10^{5}) $ .
+The third line contains $ n $ space-separated integers $ b_{1},b_{2},...,b_{n}(-10^{5}<=b_{i}<=10^{5}) $ .
+Next $ n-1 $ lines contains two space-separated integers $ u_{i} $ and $ v_{i} $ ( $ 1<=u_{i},v_{i}<=n $ ) describing edge between nodes $ u_{i} $ and $ v_{i} $ in the tree.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $ n $ space-separated integers, $ i $ -th of which denotes the minimum cost of a path from node $ i $ to reach any leaf.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+2 10 -1
+7 -7 5
+2 3
+2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10 50 0 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+5 -10 5 7
+-8 -80 -3 -10
+2 1
+2 4
+1 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-300 100 0 0 </code></pre>
+<h2>说明</h2>
+<div>In the first example, node $ 3 $ is already a leaf, so the cost is $ 0 $ . For node $ 2 $ , jump to node $ 3 $ with cost $ a_{2}×b_{3}=50 $ . For node $ 1 $ , jump directly to node $ 3 $ with cost $ a_{1}×b_{3}=10 $ .
+In the second example, node $ 3 $ and node $ 4 $ are leaves, so the cost is $ 0 $ . For node $ 2 $ , jump to node $ 4 $ with cost $ a_{2}×b_{4}=100 $ . For node $ 1 $ , jump to node $ 2 $ with cost $ a_{1}×b_{2}=-400 $ followed by a jump from $ 2 $ to $ 4 $ with cost $ a_{2}×b_{4}=100 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

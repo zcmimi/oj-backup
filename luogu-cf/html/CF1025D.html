@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Recovering BST - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400577:tUaBWzzOw/jovKpnEhZSWOWymZpAmzy3uJPU/iom/QA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Dima%20the%20hamster%20enjoys%20nibbling%20different%20things%3A%20cages%2C%20sticks%2C%20bad%20problemsetters%20and%20even%20trees%21%5Cn%5CnRecently%20he%20found%20a%20binary%20search%20tree%20and%20instinctively%20nibbled%20all%20of%20its%20edges%2C%20hence%20messing%20up%20the%20vertices.%20Dima%20knows%20that%20if%20Andrew%2C%20who%20has%20been%20thoroughly%20assembling%20the%20tree%20for%20a%20long%20time%2C%20comes%20home%20and%20sees%20his%20creation%20demolished%2C%20he%27ll%20get%20extremely%20upset.%5Cn%5CnTo%20not%20let%20that%20happen%2C%20Dima%20has%20to%20recover%20the%20binary%20search%20tree.%20Luckily%2C%20he%20noticed%20that%20any%20two%20vertices%20connected%20by%20a%20direct%20edge%20had%20their%20greatest%20common%20divisor%20value%20exceed%20%24%201%20%24%20.%5Cn%5CnHelp%20Dima%20construct%20such%20a%20binary%20search%20tree%20or%20determine%20that%20it%27s%20impossible.%20The%20definition%20and%20properties%20of%20a%20binary%20search%20tree%20can%20be%20found%20%5Bhere.%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FBinary_search_tree%29%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20number%20of%20vertices%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%20700%20%24%20%29.%5Cn%5CnThe%20second%20line%20features%20%24%20n%20%24%20distinct%20integers%20%24%20a_i%20%24%20%28%20%24%202%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20the%20values%20of%20vertices%20in%20ascending%20order.%22%2C%22outputFormat%22%3A%22If%20it%20is%20possible%20to%20reassemble%20the%20binary%20search%20tree%2C%20such%20that%20the%20greatest%20common%20divisor%20of%20any%20two%20vertices%20connected%20by%20the%20edge%20is%20greater%20than%20%24%201%20%24%20%2C%20print%20%5C%22Yes%5C%22%20%28quotes%20for%20clarity%29.%5Cn%5CnOtherwise%2C%20print%20%5C%22No%5C%22%20%28quotes%20for%20clarity%29.%22%2C%22samples%22%3A%5B%5B%226%5Cn3%206%209%2018%2036%20108%5Cn%22%2C%22Yes%5Cn%22%5D%2C%5B%222%5Cn7%2017%5Cn%22%2C%22No%5Cn%22%5D%2C%5B%229%5Cn4%208%2010%2012%2015%2018%2033%2044%2081%5Cn%22%2C%22Yes%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20picture%20below%20illustrates%20one%20of%20the%20possible%20trees%20for%20the%20first%20example.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1025D%5C%2Fa6281ebfc3addc046e3a216e978640a7d00d938f.png%29The%20picture%20below%20illustrates%20one%20of%20the%20possible%20trees%20for%20the%20third%20example.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1025D%5C%2F422d22e6560dde35033dafdd73125c60e4d294d8.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1025%5C%2FD%22%2C%22id%22%3A%221025D%22%7D%2C%22translation%22%3A%22%5C%5C%24%5C%5C%24%20%5Cr%5Cn%5Cu4ed3%5Cu9f20%20%24%5C%5Ctextsf%7BDima%7D%24%20%5Cu628a%5Cu4e00%5Cu9897%2A%2A%5Cu4e8c%5Cu53c9%5Cu6392%5Cu5e8f%5Cu6811%2A%2A%5Cu7684%5Cu6240%5Cu6709%5Cu8fb9%5Cu90fd%5Cu5403%5Cu6389%5Cu4e86%5Cuff01%5Cuff01%5Cu4e0d%5Cu4ec5%5Cu5982%5Cu6b64%5Cuff0c%5Cu8fd9%5Cu68f5%5Cu6811%5Cu7684%5Cu6240%5Cu6709%5Cu9876%5Cu70b9%5Cu90fd%5Cu88ab%5Cu8fd9%5Cu53ea%5Cu73c2%5Cu7231%5Cu7684%5Cu4ed3%5Cu9f20%5Cu641e%5Cu4e71%5Cu4e86%5Cu3002%5Cr%5Cn%5Cu4e0d%5Cu8fc7%5Cu4ed6%5Cu8fd8%5Cu662f%5Cu77e5%5Cu9053%5Cu8fd9%5Cu68f5%5Cu6811%5Cu7684%5Cu4e00%5Cu4e9b%5Cu6027%5Cu8d28%5Cu2026%5Cu2026%5Cu90a3%5Cu5c31%5Cu662f%5Cu4efb%5Cu610f%5Cu4e24%5Cu4e2a%5Cu76f4%5Cu63a5%5Cu76f8%5Cu8fde%5Cu7684%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6743%5Cu503c%5Cu6700%5Cu5927%5Cu516c%5Cu7ea6%5Cu6570%5Cu4e0d%5Cu662f%20%241%24%20%5Cu3002%5Cu4e3a%5Cu4e86%5Cu4e0d%5Cu8ba9%5Cu6253%5Cu9020%5Cu8fd9%5Cu68f5%5Cu6811%5Cu7684%20%24%5C%5Ctextsf%7BAndrew%7D%24%20%5Cu751f%5Cu6c14%5Cuff0c%5Cu8fd8%5Cu8bf7%5Cu4f60%5Cu5e2e%5Cu5e2e%20%24%5C%5Ctextsf%7BDima%7D%24%20%5Cuff1a%5Cu82e5%5Cu53ef%5Cu4ee5%2A%2A%5Cu6309%5Cu4e0a%5Cu8ff0%5Cu6027%5Cu8d28%2A%2A%5Cu4fee%5Cu590d%5Cu8fd9%5Cu9897%5Cu4e8c%5Cu53c9%5Cu6392%5Cu5e8f%5Cu6811%5Cuff0c%5Cu8f93%5Cu51fa%60Yes%60%5Cuff1b%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%60No%60%5Cu3002%5Cr%5Cn%5Cu6811%5Cu4e0a%5Cu70b9%5Cu6570%20%242%20%5C%5Cleq%20n%20%5C%5Cleq%20700%24%20%5Cuff1b%5Cu70b9%5Cu6743%20%242%20%5C%5Cleq%20a_i%20%5C%5Cleq%2010%5E9%24%5Cr%5Cn%22%2C%22tags%22%3A%5B4%2C318%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A303%2C%22totalAccepted%22%3A131%2C%22pid%22%3A%22CF1025D%22%2C%22title%22%3A%22Recovering%20BST%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2336%22%2C%22title%22%3A%22%5BSCOI2012%5D%5Cu55b5%5Cu661f%5Cu7403%5Cu4e0a%5Cu7684%5Cu70b9%5Cu540d%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3804%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu540e%5Cu7f00%5Cu81ea%5Cu52a8%5Cu673a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF650D%22%2C%22title%22%3A%22Zip-line%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1025F%22%2C%22title%22%3A%22Disjoint%20Triangles%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1025B%22%2C%22title%22%3A%22Weakened%20Common%20Divisor%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Recovering%20BST%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Recovering BST</h1>
+<h2>题意翻译</h2>
+<div>\$\$
+仓鼠 $\textsf{Dima}$ 把一颗**二叉排序树**的所有边都吃掉了！！不仅如此，这棵树的所有顶点都被这只珂爱的仓鼠搞乱了。
+不过他还是知道这棵树的一些性质……那就是任意两个直接相连的点之间的权值最大公约数不是 $1$ 。为了不让打造这棵树的 $\textsf{Andrew}$ 生气，还请你帮帮 $\textsf{Dima}$ ：若可以**按上述性质**修复这颗二叉排序树，输出`Yes`；否则输出`No`。
+树上点数 $2 \leq n \leq 700$ ；点权 $2 \leq a_i \leq 10^9$
+</div>
+<h2>题目描述</h2>
+<div>Dima the hamster enjoys nibbling different things: cages, sticks, bad problemsetters and even trees!
+Recently he found a binary search tree and instinctively nibbled all of its edges, hence messing up the vertices. Dima knows that if Andrew, who has been thoroughly assembling the tree for a long time, comes home and sees his creation demolished, he'll get extremely upset.
+To not let that happen, Dima has to recover the binary search tree. Luckily, he noticed that any two vertices connected by a direct edge had their greatest common divisor value exceed $ 1 $ .
+Help Dima construct such a binary search tree or determine that it's impossible. The definition and properties of a binary search tree can be found [here.](https://en.wikipedia.org/wiki/Binary_search_tree)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the number of vertices $ n $ ( $ 2 \le n \le 700 $ ).
+The second line features $ n $ distinct integers $ a_i $ ( $ 2 \le a_i \le 10^9 $ ) — the values of vertices in ascending order.</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is possible to reassemble the binary search tree, such that the greatest common divisor of any two vertices connected by the edge is greater than $ 1 $ , print "Yes" (quotes for clarity).
+Otherwise, print "No" (quotes for clarity).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+3 6 9 18 36 108
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Yes
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+7 17
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>No
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>9
+4 8 10 12 15 18 33 44 81
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>Yes
+</code></pre>
+<h2>说明</h2>
+<div>The picture below illustrates one of the possible trees for the first example.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1025D/a6281ebfc3addc046e3a216e978640a7d00d938f.png)The picture below illustrates one of the possible trees for the third example.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1025D/422d22e6560dde35033dafdd73125c60e4d294d8.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

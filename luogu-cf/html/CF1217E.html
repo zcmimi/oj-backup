@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sum Queries? - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403382:tJxWe0cNPoT0ssUEIyLE9qlXcixCQOS4YKsZ2g65Jmk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20define%20a%20balanced%20multiset%20the%20following%20way.%20Write%20down%20the%20sum%20of%20all%20elements%20of%20the%20multiset%20in%20its%20decimal%20representation.%20For%20each%20position%20of%20that%20number%20check%20if%20the%20multiset%20includes%20at%20least%20one%20element%20such%20that%20the%20digit%20of%20the%20element%20and%20the%20digit%20of%20the%20sum%20at%20that%20position%20are%20the%20same.%20If%20that%20holds%20for%20every%20position%2C%20then%20the%20multiset%20is%20balanced.%20Otherwise%20it%27s%20unbalanced.%5Cn%5CnFor%20example%2C%20multiset%20%24%20%5C%5C%7B20%2C%20300%2C%2010001%5C%5C%7D%20%24%20is%20balanced%20and%20multiset%20%24%20%5C%5C%7B20%2C%20310%2C%2010001%5C%5C%7D%20%24%20is%20unbalanced%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1217E%5C%2F56b7327b3ee698ddeb4def2b2c48cdc5a70d6769.png%29The%20red%20digits%20mark%20the%20elements%20and%20the%20positions%20for%20which%20these%20elements%20have%20the%20same%20digit%20as%20the%20sum.%20The%20sum%20of%20the%20first%20multiset%20is%20%24%2010321%20%24%20%2C%20every%20position%20has%20the%20digit%20required.%20The%20sum%20of%20the%20second%20multiset%20is%20%24%2010331%20%24%20and%20the%20second-to-last%20digit%20doesn%27t%20appear%20in%20any%20number%2C%20thus%20making%20the%20multiset%20unbalanced.%5Cn%5CnYou%20are%20given%20an%20array%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%2C%20consisting%20of%20%24%20n%20%24%20integers.%5Cn%5CnYou%20are%20asked%20to%20perform%20some%20queries%20on%20it.%20The%20queries%20can%20be%20of%20two%20types%3A%5Cn%5Cn-%20%24%201~i~x%20%24%20%5Cu2014%20replace%20%24%20a_i%20%24%20with%20the%20value%20%24%20x%20%24%20%3B%5Cn-%20%24%202~l~r%20%24%20%5Cu2014%20find%20the%20unbalanced%20subset%20of%20the%20multiset%20of%20the%20numbers%20%24%20a_l%2C%20a_%7Bl%20%2B%201%7D%2C%20%5C%5Cdots%2C%20a_r%20%24%20with%20the%20minimum%20sum%2C%20or%20report%20that%20no%20unbalanced%20subset%20exists.%5Cn%5CnNote%20that%20the%20empty%20multiset%20is%20balanced.%5Cn%5CnFor%20each%20query%20of%20the%20second%20type%20print%20the%20lowest%20sum%20of%20the%20unbalanced%20subset.%20Print%20-1%20if%20no%20unbalanced%20subset%20exists.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cle%20n%2C%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20array%20and%20the%20number%20of%20queries%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%3C%2010%5E9%20%24%20%29.%5Cn%5CnEach%20of%20the%20following%20%24%20m%20%24%20lines%20contains%20a%20query%20of%20one%20of%20two%20types%3A%5Cn%5Cn-%20%24%201~i~x%20%24%20%28%20%24%201%20%5C%5Cle%20i%20%5C%5Cle%20n%20%24%20%2C%20%24%201%20%5C%5Cle%20x%20%3C%2010%5E9%20%24%20%29%20%5Cu2014%20replace%20%24%20a_i%20%24%20with%20the%20value%20%24%20x%20%24%20%3B%5Cn-%20%24%202~l~r%20%24%20%28%20%24%201%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20find%20the%20unbalanced%20subset%20of%20the%20multiset%20of%20the%20numbers%20%24%20a_l%2C%20a_%7Bl%20%2B%201%7D%2C%20%5C%5Cdots%2C%20a_r%20%24%20with%20the%20lowest%20sum%2C%20or%20report%20that%20no%20unbalanced%20subset%20exists.%5Cn%5CnIt%20is%20guaranteed%20that%20there%20is%20at%20least%20one%20query%20of%20the%20second%20type.%22%2C%22outputFormat%22%3A%22For%20each%20query%20of%20the%20second%20type%20print%20the%20lowest%20sum%20of%20the%20unbalanced%20subset.%20Print%20-1%20if%20no%20unbalanced%20subset%20exists.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%205%5Cn300%2010001%2020%2020%5Cn2%201%203%5Cn1%201%20310%5Cn2%201%203%5Cn2%203%203%5Cn2%203%204%5Cn%22%2C%22%5Cn-1%5Cn330%5Cn-1%5Cn40%5Cn%22%5D%5D%2C%22hint%22%3A%22All%20the%20subsets%20of%20multiset%20%24%20%5C%5C%7B20%2C%20300%2C%2010001%5C%5C%7D%20%24%20are%20balanced%2C%20thus%20the%20answer%20is%20-1.%5Cn%5CnThe%20possible%20unbalanced%20subsets%20in%20the%20third%20query%20are%20%24%20%5C%5C%7B20%2C%20310%5C%5C%7D%20%24%20and%20%24%20%5C%5C%7B20%2C%20310%2C%2010001%5C%5C%7D%20%24%20.%20The%20lowest%20sum%20one%20is%20%24%20%5C%5C%7B20%2C%20310%5C%5C%7D%20%24%20.%20Note%20that%20you%20are%20asked%20to%20choose%20a%20subset%2C%20not%20a%20subsegment%2C%20thus%20the%20chosen%20elements%20might%20not%20be%20adjancent%20in%20the%20array.%5Cn%5CnThe%20fourth%20query%20includes%20only%20the%20empty%20subset%20and%20subset%20%24%20%5C%5C%7B20%5C%5C%7D%20%24%20.%20Both%20of%20them%20are%20balanced.%5Cn%5CnThe%20last%20query%20includes%20the%20empty%20subset%20and%20the%20subsets%20%24%20%5C%5C%7B20%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B20%5C%5C%7D%20%24%20and%20%24%20%5C%5C%7B20%2C%2020%5C%5C%7D%20%24%20.%20Only%20%24%20%5C%5C%7B20%2C%2020%5C%5C%7D%20%24%20is%20unbalanced%2C%20its%20sum%20is%20%24%2040%20%24%20.%20Note%20that%20you%20are%20asked%20to%20choose%20a%20multiset%2C%20thus%20it%20might%20include%20equal%20elements.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1217%5C%2FE%22%2C%22id%22%3A%221217E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A83%2C%22totalAccepted%22%3A36%2C%22pid%22%3A%22CF1217E%22%2C%22title%22%3A%22Sum%20Queries%3F%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A143380%2C%22title%22%3A%22TLE%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A40345%2C%22name%22%3A%22CF1217E%20Sum%20Queries%3F%22%2C%22slug%22%3A%22CF1217E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1207F%22%2C%22title%22%3A%22Remainder%20Problem%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1213A%22%2C%22title%22%3A%22Chips%20Moving%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1214E%22%2C%22title%22%3A%22Petya%20and%20Construction%20Set%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1214A%22%2C%22title%22%3A%22Optimal%20Currency%20Exchange%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1215E%22%2C%22title%22%3A%22Marbles%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Sum%20Queries%3F%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Sum Queries?</h1>
+<h2>题目描述</h2>
+<div>Let's define a balanced multiset the following way. Write down the sum of all elements of the multiset in its decimal representation. For each position of that number check if the multiset includes at least one element such that the digit of the element and the digit of the sum at that position are the same. If that holds for every position, then the multiset is balanced. Otherwise it's unbalanced.
+For example, multiset $ \{20, 300, 10001\} $ is balanced and multiset $ \{20, 310, 10001\} $ is unbalanced:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1217E/56b7327b3ee698ddeb4def2b2c48cdc5a70d6769.png)The red digits mark the elements and the positions for which these elements have the same digit as the sum. The sum of the first multiset is $ 10321 $ , every position has the digit required. The sum of the second multiset is $ 10331 $ and the second-to-last digit doesn't appear in any number, thus making the multiset unbalanced.
+You are given an array $ a_1, a_2, \dots, a_n $ , consisting of $ n $ integers.
+You are asked to perform some queries on it. The queries can be of two types:
+- $ 1~i~x $ — replace $ a_i $ with the value $ x $ ;
+- $ 2~l~r $ — find the unbalanced subset of the multiset of the numbers $ a_l, a_{l + 1}, \dots, a_r $ with the minimum sum, or report that no unbalanced subset exists.
+Note that the empty multiset is balanced.
+For each query of the second type print the lowest sum of the unbalanced subset. Print -1 if no unbalanced subset exists.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 1 \le n, m \le 2 \cdot 10^5 $ ) — the number of elements in the array and the number of queries, respectively.
+The second line contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i < 10^9 $ ).
+Each of the following $ m $ lines contains a query of one of two types:
+- $ 1~i~x $ ( $ 1 \le i \le n $ , $ 1 \le x < 10^9 $ ) — replace $ a_i $ with the value $ x $ ;
+- $ 2~l~r $ ( $ 1 \le l \le r \le n $ ) — find the unbalanced subset of the multiset of the numbers $ a_l, a_{l + 1}, \dots, a_r $ with the lowest sum, or report that no unbalanced subset exists.
+It is guaranteed that there is at least one query of the second type.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query of the second type print the lowest sum of the unbalanced subset. Print -1 if no unbalanced subset exists.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4 5
+300 10001 20 20
+2 1 3
+1 1 310
+2 1 3
+2 3 3
+2 3 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+-1
+330
+-1
+40
+</code></pre>
+<h2>说明</h2>
+<div>All the subsets of multiset $ \{20, 300, 10001\} $ are balanced, thus the answer is -1.
+The possible unbalanced subsets in the third query are $ \{20, 310\} $ and $ \{20, 310, 10001\} $ . The lowest sum one is $ \{20, 310\} $ . Note that you are asked to choose a subset, not a subsegment, thus the chosen elements might not be adjancent in the array.
+The fourth query includes only the empty subset and subset $ \{20\} $ . Both of them are balanced.
+The last query includes the empty subset and the subsets $ \{20\} $ , $ \{20\} $ and $ \{20, 20\} $ . Only $ \{20, 20\} $ is unbalanced, its sum is $ 40 $ . Note that you are asked to choose a multiset, thus it might include equal elements.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

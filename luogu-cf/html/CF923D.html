@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Picking Strings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399455:D539dd8vg6q6fxBQEiFq8kn3OzQVSWW6ScaEugpLv08=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Alice%20has%20a%20string%20consisting%20of%20characters%20%27A%27%2C%20%27B%27%20and%20%27C%27.%20Bob%20can%20use%20the%20following%20transitions%20on%20any%20substring%20of%20our%20string%20in%20any%20order%20any%20number%20of%20times%3A%5Cn%5Cn-%20A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF923D%5C%2F5a518872d8942914aef6c33d251688a64a8d6d74.png%29BC%5Cn-%20B%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF923D%5C%2F5a518872d8942914aef6c33d251688a64a8d6d74.png%29AC%5Cn-%20C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF923D%5C%2F5a518872d8942914aef6c33d251688a64a8d6d74.png%29AB%5Cn-%20AAA%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF923D%5C%2F5a518872d8942914aef6c33d251688a64a8d6d74.png%29%20empty%20string%5Cn%5CnNote%20that%20a%20substring%20is%20one%20or%20more%20consecutive%20characters.%20For%20given%20queries%2C%20determine%20whether%20it%20is%20possible%20to%20obtain%20the%20target%20string%20from%20source.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20string%20%24%20S%20%24%20%28%20%24%201%3C%3D%7CS%7C%3C%3D10%5E%7B5%7D%20%24%20%29.%20The%20second%20line%20contains%20a%20string%20%24%20T%20%24%20%28%20%24%201%3C%3D%7CT%7C%3C%3D10%5E%7B5%7D%20%24%20%29%2C%20each%20of%20these%20strings%20consists%20only%20of%20uppercase%20English%20letters%20%27A%27%2C%20%27B%27%20and%20%27C%27.%5Cn%5CnThe%20third%20line%20contains%20the%20number%20of%20queries%20%24%20Q%20%24%20%28%20%24%201%3C%3DQ%3C%3D10%5E%7B5%7D%20%24%20%29.%5Cn%5CnThe%20following%20%24%20Q%20%24%20lines%20describe%20queries.%20The%20%24%20i%20%24%20-th%20of%20these%20lines%20contains%20four%20space%20separated%20integers%20%24%20a_%7Bi%7D%20%24%20%2C%20%24%20b_%7Bi%7D%20%24%20%2C%20%24%20c_%7Bi%7D%20%24%20%2C%20%24%20d_%7Bi%7D%20%24%20.%20These%20represent%20the%20%24%20i%20%24%20-th%20query%3A%20is%20it%20possible%20to%20create%20%24%20T%5Bc_%7Bi%7D..d_%7Bi%7D%5D%20%24%20from%20%24%20S%5Ba_%7Bi%7D..b_%7Bi%7D%5D%20%24%20by%20applying%20the%20above%20transitions%20finite%20amount%20of%20times%3F%5Cn%5CnHere%2C%20%24%20U%5Bx..y%5D%20%24%20is%20a%20substring%20of%20%24%20U%20%24%20that%20begins%20at%20index%20%24%20x%20%24%20%28indexed%20from%201%29%20and%20ends%20at%20index%20%24%20y%20%24%20.%20In%20particular%2C%20%24%20U%5B1..%7CU%7C%5D%20%24%20is%20the%20whole%20string%20%24%20U%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20%24%201%3C%3Da%3C%3Db%3C%3D%7CS%7C%20%24%20and%20%24%201%3C%3Dc%3C%3Dd%3C%3D%7CT%7C%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20a%20string%20of%20%24%20Q%20%24%20characters%2C%20where%20the%20%24%20i%20%24%20-th%20character%20is%20%271%27%20if%20the%20answer%20to%20the%20%24%20i%20%24%20-th%20query%20is%20positive%2C%20and%20%270%27%20otherwise.%22%2C%22samples%22%3A%5B%5B%22AABCCBAAB%5CnABCB%5Cn5%5Cn1%203%201%202%5Cn2%202%202%204%5Cn7%209%201%201%5Cn3%204%202%203%5Cn4%205%201%203%5Cn%22%2C%2210011%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20query%20we%20can%20achieve%20the%20result%2C%20for%20instance%2C%20by%20using%20transitions%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF923D%5C%2Fbc389404fee8abb9f1186ea5ef11a96a445486ca.png%29.%5Cn%5CnThe%20third%20query%20asks%20for%20changing%20AAB%20to%20A%20%5Cu2014%20but%20in%20this%20case%20we%20are%20not%20able%20to%20get%20rid%20of%20the%20character%20%27B%27.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F923%5C%2FD%22%2C%22id%22%3A%22923D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e24%5Cu4e2a%5Cu7531%24A%24%2C%24B%24%2C%24C%24%5Cu7ec4%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%24S%24%5Cu548c%24T%24%5Cuff0c%5Cu5b58%5Cu5728%5Cu56db%5Cu79cd%5Cu5bf9%5Cu5b57%5Cu7b26%5Cu4e32%5Cu5b50%5Cu4e32%5Cuff08%5Cu8fde%5Cu7eed%5Cuff09%5Cu7684%5Cu53d8%5Cu6362%5Cu6cd5%5Cu5219%5Cuff1a%5Cr%5Cn1.%20%20%24f_1%28A%29%3DBC%24%5Cr%5Cn2.%20%24f_2%28B%29%3DAC%24%5Cr%5Cn3.%20%24f_3%28C%29%3DAB%24%5Cr%5Cn4.%20%24f_4%28AAA%29%3D%5C%5Cvarnothing%24%5Cuff08%5Cu7a7a%5Cu4e32%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu6709%24n%24%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu7531%24a%2Cb%2Cc%2Cd%24%5Cu7ec4%5Cu6210%5Cuff0c%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%5Cu662f%5Cu5426%5Cu80fd%5Cu591f%5Cu901a%5Cu8fc7%5Cu82e5%5Cu5e72%5Cu6b21%5Cu53d8%5Cu6362%5Cu5c06%5Cu5b50%5Cu533a%5Cu95f4%5Cu4e3a%24%5Ba%2Cb%5D%24%5Cu7684%24S%24%5Cu4e32%5Cu53d8%5Cu6362%5Cu4e3a%5Cu5b50%5Cu533a%5Cu95f4%5Cu4e3a%24%5Bc%2Cd%5D%24%5Cu7684%24T%24%5Cu4e32%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A7%2C%22pid%22%3A%22CF923D%22%2C%22title%22%3A%22Picking%20Strings%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Picking%20Strings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Picking Strings</h1>
+<h2>题意翻译</h2>
+<div>给定两个由$A$,$B$,$C$组成的字符串$S$和$T$，存在四种对字符串子串（连续）的变换法则：
+1. $f_1(A)=BC$
+2. $f_2(B)=AC$
+3. $f_3(C)=AB$
+4. $f_4(AAA)=\varnothing$（空串）
+现在有$n$个询问，每个询问由$a,b,c,d$组成，表示询问是否能够通过若干次变换将子区间为$[a,b]$的$S$串变换为子区间为$[c,d]$的$T$串。</div>
+<h2>题目描述</h2>
+<div>Alice has a string consisting of characters 'A', 'B' and 'C'. Bob can use the following transitions on any substring of our string in any order any number of times:
+- A ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF923D/5a518872d8942914aef6c33d251688a64a8d6d74.png)BC
+- B ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF923D/5a518872d8942914aef6c33d251688a64a8d6d74.png)AC
+- C ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF923D/5a518872d8942914aef6c33d251688a64a8d6d74.png)AB
+- AAA ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF923D/5a518872d8942914aef6c33d251688a64a8d6d74.png) empty string
+Note that a substring is one or more consecutive characters. For given queries, determine whether it is possible to obtain the target string from source.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a string $ S $ ( $ 1<=|S|<=10^{5} $ ). The second line contains a string $ T $ ( $ 1<=|T|<=10^{5} $ ), each of these strings consists only of uppercase English letters 'A', 'B' and 'C'.
+The third line contains the number of queries $ Q $ ( $ 1<=Q<=10^{5} $ ).
+The following $ Q $ lines describe queries. The $ i $ -th of these lines contains four space separated integers $ a_{i} $ , $ b_{i} $ , $ c_{i} $ , $ d_{i} $ . These represent the $ i $ -th query: is it possible to create $ T[c_{i}..d_{i}] $ from $ S[a_{i}..b_{i}] $ by applying the above transitions finite amount of times?
+Here, $ U[x..y] $ is a substring of $ U $ that begins at index $ x $ (indexed from 1) and ends at index $ y $ . In particular, $ U[1..|U|] $ is the whole string $ U $ .
+It is guaranteed that $ 1<=a<=b<=|S| $ and $ 1<=c<=d<=|T| $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a string of $ Q $ characters, where the $ i $ -th character is '1' if the answer to the $ i $ -th query is positive, and '0' otherwise.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>AABCCBAAB
+ABCB
+5
+1 3 1 2
+2 2 2 4
+7 9 1 1
+3 4 2 3
+4 5 1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10011
+</code></pre>
+<h2>说明</h2>
+<div>In the first query we can achieve the result, for instance, by using transitions ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF923D/bc389404fee8abb9f1186ea5ef11a96a445486ca.png).
+The third query asks for changing AAB to A — but in this case we are not able to get rid of the character 'B'.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

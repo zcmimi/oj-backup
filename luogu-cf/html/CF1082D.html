@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Maximum Diameter Graph - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401368:RjaAqBTNa9RL3KpIybws16GHhC7Xq4bLhgzxcUJZ4wc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Graph%20constructive%20problems%20are%20back%21%20This%20time%20the%20graph%20you%20are%20asked%20to%20build%20should%20match%20the%20following%20properties.%5Cn%5CnThe%20graph%20is%20connected%20if%20and%20only%20if%20there%20exists%20a%20path%20between%20every%20pair%20of%20vertices.%5Cn%5CnThe%20diameter%20%28aka%20%5C%22longest%20shortest%20path%5C%22%29%20of%20a%20connected%20undirected%20graph%20is%20the%20maximum%20number%20of%20edges%20in%20the%20shortest%20path%20between%20any%20pair%20of%20its%20vertices.%5Cn%5CnThe%20degree%20of%20a%20vertex%20is%20the%20number%20of%20edges%20incident%20to%20it.%5Cn%5CnGiven%20a%20sequence%20of%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20construct%20a%20connected%20undirected%20graph%20of%20%24%20n%20%24%20vertices%20such%20that%3A%5Cn%5Cn-%20the%20graph%20contains%20no%20self-loops%20and%20no%20multiple%20edges%3B%5Cn-%20the%20degree%20%24%20d_i%20%24%20of%20the%20%24%20i%20%24%20-th%20vertex%20doesn%27t%20exceed%20%24%20a_i%20%24%20%28i.e.%20%24%20d_i%20%5C%5Cle%20a_i%20%24%20%29%3B%5Cn-%20the%20diameter%20of%20the%20graph%20is%20maximum%20possible.%5Cn%5CnOutput%20the%20resulting%20graph%20or%20report%20that%20no%20solution%20exists.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%203%20%5C%5Cle%20n%20%5C%5Cle%20500%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20graph.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%20n%20-%201%20%24%20%29%20%5Cu2014%20the%20upper%20limits%20to%20vertex%20degrees.%22%2C%22outputFormat%22%3A%22Print%20%5C%22NO%5C%22%20if%20no%20graph%20can%20be%20constructed%20under%20the%20given%20conditions.%5Cn%5CnOtherwise%20print%20%5C%22YES%5C%22%20and%20the%20diameter%20of%20the%20resulting%20graph%20in%20the%20first%20line.%5Cn%5CnThe%20second%20line%20should%20contain%20a%20single%20integer%20%24%20m%20%24%20%5Cu2014%20the%20number%20of%20edges%20in%20the%20resulting%20graph.%5Cn%5CnThe%20%24%20i%20%24%20-th%20of%20the%20next%20%24%20m%20%24%20lines%20should%20contain%20two%20integers%20%24%20v_i%2C%20u_i%20%24%20%28%20%24%201%20%5C%5Cle%20v_i%2C%20u_i%20%5C%5Cle%20n%20%24%20%2C%20%24%20v_i%20%5C%5Cneq%20u_i%20%24%20%29%20%5Cu2014%20the%20description%20of%20the%20%24%20i%20%24%20-th%20edge.%20The%20graph%20should%20contain%20no%20multiple%20edges%20%5Cu2014%20for%20each%20pair%20%24%20%28x%2C%20y%29%20%24%20you%20output%2C%20you%20should%20output%20no%20more%20pairs%20%24%20%28x%2C%20y%29%20%24%20or%20%24%20%28y%2C%20x%29%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%5Cn2%202%202%5Cn%22%2C%22YES%202%5Cn2%5Cn1%202%5Cn2%203%5Cn%22%5D%2C%5B%225%5Cn1%204%201%201%201%5Cn%22%2C%22YES%202%5Cn4%5Cn1%202%5Cn3%202%5Cn4%202%5Cn5%202%5Cn%22%5D%2C%5B%223%5Cn1%201%201%5Cn%22%2C%22NO%5Cn%22%5D%5D%2C%22hint%22%3A%22Here%20are%20the%20graphs%20for%20the%20first%20two%20example%20cases.%20Both%20have%20diameter%20of%20%24%202%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1082D%5C%2F1b7fb105b3cde080c9710b0afa613b7d3cfaed06.png%29%20%24%20d_1%20%3D%201%20%5C%5Cle%20a_1%20%3D%202%20%24%20%20%24%20d_2%20%3D%202%20%5C%5Cle%20a_2%20%3D%202%20%24%5Cn%5Cn%20%24%20d_3%20%3D%201%20%5C%5Cle%20a_3%20%3D%202%20%24%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1082D%5C%2Fa291014788668d36fcaf7a8e87cdf44a6c2682df.png%29%20%24%20d_1%20%3D%201%20%5C%5Cle%20a_1%20%3D%201%20%24%20%20%24%20d_2%20%3D%204%20%5C%5Cle%20a_2%20%3D%204%20%24%5Cn%5Cn%20%24%20d_3%20%3D%201%20%5C%5Cle%20a_3%20%3D%201%20%24%5Cn%5Cn%20%24%20d_4%20%3D%201%20%5C%5Cle%20a_4%20%3D%201%20%24%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1082%5C%2FD%22%2C%22id%22%3A%221082D%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%2A%2A%5Cn%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5217%20%24a_1%2Ca_2%2C...%2Ca_n%24%20%5Cuff0c%5Cu6784%5Cu9020%5Cu4e00%5Cu4e2a%20%24n%24%20%5Cu4e2a%5Cu70b9%5Cu7684%5Cu65e0%5Cu5411%5Cu8fde%5Cu901a%5Cu56fe%5Cuff0c%5Cu6ee1%5Cu8db3%5Cuff1a%5Cn%5Cn1.%20%5Cu6ca1%5Cu6709%5Cu91cd%5Cu8fb9%5Cu548c%5Cu81ea%5Cu73af%5Cu3002%5Cn2.%20%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5ea6%5Cu6570%20%24%5C%5Cleq%20a_i%24%20.%5Cn3.%20%5Cu6784%5Cu5efa%5Cu7684%5Cu56fe%5Cu7684%5Cu76f4%5Cu5f84%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu957f%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A95%2C%22totalAccepted%22%3A51%2C%22pid%22%3A%22CF1082D%22%2C%22title%22%3A%22Maximum%20Diameter%20Graph%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF609E%22%2C%22title%22%3A%22Minimum%20spanning%20tree%20for%20each%20edge%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4174%22%2C%22title%22%3A%22%5BNOI2006%5D%5Cu6700%5Cu5927%5Cu83b7%5Cu5229%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1082G%22%2C%22title%22%3A%22Petya%20and%20Graph%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1082E%22%2C%22title%22%3A%22Increasing%20Frequency%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1082C%22%2C%22title%22%3A%22Multi-Subject%20Competition%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Maximum%20Diameter%20Graph%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Maximum Diameter Graph</h1>
+<h2>题意翻译</h2>
+<div>**题意简述**
+给你一个数列 $a_1,a_2,...,a_n$ ，构造一个 $n$ 个点的无向连通图，满足：
+1. 没有重边和自环。
+2. 第 $i$ 个点的度数 $\leq a_i$ .
+3. 构建的图的直径尽可能长。</div>
+<h2>题目描述</h2>
+<div>Graph constructive problems are back! This time the graph you are asked to build should match the following properties.
+The graph is connected if and only if there exists a path between every pair of vertices.
+The diameter (aka "longest shortest path") of a connected undirected graph is the maximum number of edges in the shortest path between any pair of its vertices.
+The degree of a vertex is the number of edges incident to it.
+Given a sequence of $ n $ integers $ a_1, a_2, \dots, a_n $ construct a connected undirected graph of $ n $ vertices such that:
+- the graph contains no self-loops and no multiple edges;
+- the degree $ d_i $ of the $ i $ -th vertex doesn't exceed $ a_i $ (i.e. $ d_i \le a_i $ );
+- the diameter of the graph is maximum possible.
+Output the resulting graph or report that no solution exists.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 3 \le n \le 500 $ ) — the number of vertices in the graph.
+The second line contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le n - 1 $ ) — the upper limits to vertex degrees.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print "NO" if no graph can be constructed under the given conditions.
+Otherwise print "YES" and the diameter of the resulting graph in the first line.
+The second line should contain a single integer $ m $ — the number of edges in the resulting graph.
+The $ i $ -th of the next $ m $ lines should contain two integers $ v_i, u_i $ ( $ 1 \le v_i, u_i \le n $ , $ v_i \neq u_i $ ) — the description of the $ i $ -th edge. The graph should contain no multiple edges — for each pair $ (x, y) $ you output, you should output no more pairs $ (x, y) $ or $ (y, x) $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+2 2 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES 2
+2
+1 2
+2 3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+1 4 1 1 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>YES 2
+4
+1 2
+3 2
+4 2
+5 2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+1 1 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>NO
+</code></pre>
+<h2>说明</h2>
+<div>Here are the graphs for the first two example cases. Both have diameter of $ 2 $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1082D/1b7fb105b3cde080c9710b0afa613b7d3cfaed06.png) $ d_1 = 1 \le a_1 = 2 $ $ d_2 = 2 \le a_2 = 2 $
+$ d_3 = 1 \le a_3 = 2 $
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1082D/a291014788668d36fcaf7a8e87cdf44a6c2682df.png) $ d_1 = 1 \le a_1 = 1 $ $ d_2 = 4 \le a_2 = 4 $
+$ d_3 = 1 \le a_3 = 1 $
+$ d_4 = 1 \le a_4 = 1 $</div>
+</article>
+</div>
+</div>
+</body>
+</html>

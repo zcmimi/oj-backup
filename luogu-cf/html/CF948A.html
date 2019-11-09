@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Protect Sheep - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399679:UOlGWF0TBywZBQyspIhGFrbtbQVcE9vsdv9ZH2VKg+k=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Bob%20is%20a%20farmer.%20He%20has%20a%20large%20pasture%20with%20many%20sheep.%20Recently%2C%20he%20has%20lost%20some%20of%20them%20due%20to%20wolf%20attacks.%20He%20thus%20decided%20to%20place%20some%20shepherd%20dogs%20in%20such%20a%20way%20that%20all%20his%20sheep%20are%20protected.%5Cn%5CnThe%20pasture%20is%20a%20rectangle%20consisting%20of%20%24%20R%5Cu00d7C%20%24%20cells.%20Each%20cell%20is%20either%20empty%2C%20contains%20a%20sheep%2C%20a%20wolf%20or%20a%20dog.%20Sheep%20and%20dogs%20always%20stay%20in%20place%2C%20but%20wolves%20can%20roam%20freely%20around%20the%20pasture%2C%20by%20repeatedly%20moving%20to%20the%20left%2C%20right%2C%20up%20or%20down%20to%20a%20neighboring%20cell.%20When%20a%20wolf%20enters%20a%20cell%20with%20a%20sheep%2C%20it%20consumes%20it.%20However%2C%20no%20wolf%20can%20enter%20a%20cell%20with%20a%20dog.%5Cn%5CnInitially%20there%20are%20no%20dogs.%20Place%20dogs%20onto%20the%20pasture%20in%20such%20a%20way%20that%20no%20wolf%20can%20reach%20any%20sheep%2C%20or%20determine%20that%20it%20is%20impossible.%20Note%20that%20since%20you%20have%20many%20dogs%2C%20you%20do%20not%20need%20to%20minimize%20their%20number.%22%2C%22inputFormat%22%3A%22First%20line%20contains%20two%20integers%20%24%20R%20%24%20%28%20%24%201%3C%3DR%3C%3D500%20%24%20%29%20and%20%24%20C%20%24%20%28%20%24%201%3C%3DC%3C%3D500%20%24%20%29%2C%20denoting%20the%20number%20of%20rows%20and%20the%20numbers%20of%20columns%20respectively.%5Cn%5CnEach%20of%20the%20following%20%24%20R%20%24%20lines%20is%20a%20string%20consisting%20of%20exactly%20%24%20C%20%24%20characters%2C%20representing%20one%20row%20of%20the%20pasture.%20Here%2C%20%27S%27%20means%20a%20sheep%2C%20%27W%27%20a%20wolf%20and%20%27.%27%20an%20empty%20cell.%22%2C%22outputFormat%22%3A%22If%20it%20is%20impossible%20to%20protect%20all%20sheep%2C%20output%20a%20single%20line%20with%20the%20word%20%5C%22No%5C%22.%5Cn%5CnOtherwise%2C%20output%20a%20line%20with%20the%20word%20%5C%22Yes%5C%22.%20Then%20print%20%24%20R%20%24%20lines%2C%20representing%20the%20pasture%20after%20placing%20dogs.%20Again%2C%20%27S%27%20means%20a%20sheep%2C%20%27W%27%20a%20wolf%2C%20%27D%27%20is%20a%20dog%20and%20%27.%27%20an%20empty%20space.%20You%20are%20not%20allowed%20to%20move%2C%20remove%20or%20add%20a%20sheep%20or%20a%20wolf.%5Cn%5CnIf%20there%20are%20multiple%20solutions%2C%20you%20may%20print%20any%20of%20them.%20You%20don%27t%20have%20to%20minimize%20the%20number%20of%20dogs.%22%2C%22samples%22%3A%5B%5B%226%206%5Cn..S...%5Cn..S.W.%5Cn.S....%5Cn..W...%5Cn...W..%5Cn......%5Cn%22%2C%22Yes%5Cn..SD..%5Cn..SDW.%5Cn.SD...%5Cn.DW...%5CnDD.W..%5Cn......%5Cn%22%5D%2C%5B%221%202%5CnSW%5Cn%22%2C%22No%5Cn%22%5D%2C%5B%225%205%5Cn.S...%5Cn...S.%5CnS....%5Cn...S.%5Cn.S...%5Cn%22%2C%22Yes%5Cn.S...%5Cn...S.%5CnS.D..%5Cn...S.%5Cn.S...%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20we%20can%20split%20the%20pasture%20into%20two%20halves%2C%20one%20containing%20wolves%20and%20one%20containing%20sheep.%20Note%20that%20the%20sheep%20at%20%282%2C1%29%20is%20safe%2C%20as%20wolves%20cannot%20move%20diagonally.%5Cn%5CnIn%20the%20second%20example%2C%20there%20are%20no%20empty%20spots%20to%20put%20dogs%20that%20would%20guard%20the%20lone%20sheep.%5Cn%5CnIn%20the%20third%20example%2C%20there%20are%20no%20wolves%2C%20so%20the%20task%20is%20very%20easy.%20We%20put%20a%20dog%20in%20the%20center%20to%20observe%20the%20peacefulness%20of%20the%20meadow%2C%20but%20the%20solution%20would%20be%20correct%20even%20without%20him.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F948%5C%2FA%22%2C%22id%22%3A%22948A%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu80cc%5Cu666f%5Cuff1a%5Cuff08%5Cu6709%5Cu5c11%5Cu8bb8%5Cu7b80%5Cu5316%5Cu548c%5Cu4fee%5Cu6539%5Cuff0c%5Cu4f46%5Cu4f9d%5Cu7136%5Cu7b26%5Cu5408%5Cu9898%5Cu610f%5Cuff09%5Cn%5CnBob%5Cu662f%5Cu4e2a%5Cu519c%5Cu592b%5Cuff0c%5Cu4ed6%5Cu6709%5Cu4e00%5Cu4e2a%24R%2AC%24%20%5Cu7684%5Cu8349%5Cu5730%5Cu3002%5Cn%5Cn%5Cu8349%5Cu5730%5Cu4e0a%5Cu6709%5Cu8bb8%5Cu591a%5Cu7f8a%5Cuff0c%5Cu540c%5Cu65f6%5Cu4e5f%5Cu6709%5Cu8bb8%5Cu591a%5Cu72fc%5Cu3002%5Cn%5Cn%5Cu7f8a%5Cu4e0d%5Cu4f1a%5Cu52a8%5Cuff0c%5Cu4f46%5Cu662f%5Cu72fc%5Cu4f1a%5Cu5411%5Cu4e0a%5Cu4e0b%5Cu5de6%5Cu53f3%5Cu56db%5Cu4e2a%5Cu65b9%5Cu5411%5Cu52a8%5Cu3002%5Cn%5Cn%5Cu6240%5Cu4ee5Bob%5Cu6253%5Cu7b97%5Cu5728%5Cu8349%5Cu5730%5Cu4e0a%5Cu653e%5Cu4e0a%5Cu72d7%5Cuff0c%5Cu4f7f%5Cu72fc%5Cu548c%5Cu7f8a%5Cu5b8c%5Cu5168%5Cu9694%5Cu5f00%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu5c31%5Cu662f%5Cu8f93%5Cu51fa%5Cu4e00%5Cu79cd%5Cu53ef%5Cu884c%5Cu65b9%5Cu6848%5Cuff0c%5Cn%5Cu653e%5Cu7684%5Cu72d7%5Cu7684%5Cu6570%5Cu91cf%5Cu4e0d%5Cu5fc5%5Cu6700%5Cu5c11%5Cu3002%5Cn%5Ct%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%24R%24%20%24%281%3C%3DR%3C%3D500%29%24%20%5Cu548c%24C%24%20%24%281%3C%3DC%3C%3D500%29%24%20%5Cn%5Ct%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24R%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3aC%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu6765%5Cu8868%5Cu793a%5Cu8fd9%5Cu7247%5Cu8349%5Cu5730%5Cu4e0a%5Cu7684%5Cu4e1c%5Cu897f%5Cu3002%5Cn%5Cn%5Cu5176%5Cu4e2d%27.%27%5Cu662f%5Cu7a7a%5Cu5730%5Cuff0c%27W%27%5Cu662f%5Cu72fc%5Cuff0c%27S%27%5Cu662f%5Cu7f8a%5Cu3002%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%24Yes%24%5Cu6216%24No%24%5Cuff0c%5Cu8868%5Cu793a%5Cu662f%5Cu5426%5Cu53ef%5Cu884c%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%5Cu53ef%5Cu884c%24Yes%24%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu8f93%5Cu51fa%24R%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24C%24%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cn%5Cu6765%5Cu8868%5Cu793a%5Cu653e%5Cu5b8c%5Cu72d7%5Cu4e4b%5Cu540e%5Cu7684%5Cu60c5%5Cu51b5%5Cu3002%5Cn%5Cu72d7%5Cu53ea%5Cu80fd%5Cu653e%5Cu5230%5Cu7a7a%5Cu5730%5Cu4e0a%5Cuff0c%5Cu7528%27D%27%5Cu8868%5Cu793a%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40cn%5Cuff1a%5Cu82cf%5Cu537f%5Cu5ff5%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A465%2C%22totalAccepted%22%3A204%2C%22pid%22%3A%22CF948A%22%2C%22title%22%3A%22Protect%20Sheep%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A48644%2C%22title%22%3A%22%5Cu9898%5Cu610f%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A24374%2C%22name%22%3A%22CF948A%20Protect%20Sheep%22%2C%22slug%22%3A%22CF948A%22%7D%7D%2C%7B%22id%22%3A36931%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A24374%2C%22name%22%3A%22CF948A%20Protect%20Sheep%22%2C%22slug%22%3A%22CF948A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF864A%22%2C%22title%22%3A%22Fair%20Game%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF4A%22%2C%22title%22%3A%22Watermelon%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF939B%22%2C%22title%22%3A%22Hamster%20Farm%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF937A%22%2C%22title%22%3A%22Olympiad%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF961A%22%2C%22title%22%3A%22Tetris%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Protect%20Sheep%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Protect Sheep</h1>
+<h2>题意翻译</h2>
+<div>## 题目背景：（有少许简化和修改，但依然符合题意）
+Bob是个农夫，他有一个$R*C$ 的草地。
+草地上有许多羊，同时也有许多狼。
+羊不会动，但是狼会向上下左右四个方向动。
+所以Bob打算在草地上放上狗，使狼和羊完全隔开。
+你的任务就是输出一种可行方案，
+放的狗的数量不必最少。
+## 输入格式：
+第一行两个数$R$ $(1<=R<=500)$ 和$C$ $(1<=C<=500)$
+接下来$R$ 行，每行一个长度为C的字符串。来表示这片草地上的东西。
+其中'.'是空地，'W'是狼，'S'是羊。
+## 输出格式：
+第一行输出$Yes$或$No$，表示是否可行。
+如果可行$Yes$
+接下来输出$R$行，每行一个长度为$C$的字符串。
+来表示放完狗之后的情况。
+狗只能放到空地上，用'D'表示。
+感谢@cn：苏卿念 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Bob is a farmer. He has a large pasture with many sheep. Recently, he has lost some of them due to wolf attacks. He thus decided to place some shepherd dogs in such a way that all his sheep are protected.
+The pasture is a rectangle consisting of $ R×C $ cells. Each cell is either empty, contains a sheep, a wolf or a dog. Sheep and dogs always stay in place, but wolves can roam freely around the pasture, by repeatedly moving to the left, right, up or down to a neighboring cell. When a wolf enters a cell with a sheep, it consumes it. However, no wolf can enter a cell with a dog.
+Initially there are no dogs. Place dogs onto the pasture in such a way that no wolf can reach any sheep, or determine that it is impossible. Note that since you have many dogs, you do not need to minimize their number.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line contains two integers $ R $ ( $ 1<=R<=500 $ ) and $ C $ ( $ 1<=C<=500 $ ), denoting the number of rows and the numbers of columns respectively.
+Each of the following $ R $ lines is a string consisting of exactly $ C $ characters, representing one row of the pasture. Here, 'S' means a sheep, 'W' a wolf and '.' an empty cell.</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is impossible to protect all sheep, output a single line with the word "No".
+Otherwise, output a line with the word "Yes". Then print $ R $ lines, representing the pasture after placing dogs. Again, 'S' means a sheep, 'W' a wolf, 'D' is a dog and '.' an empty space. You are not allowed to move, remove or add a sheep or a wolf.
+If there are multiple solutions, you may print any of them. You don't have to minimize the number of dogs.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 6
+..S...
+..S.W.
+.S....
+..W...
+...W..
+......
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Yes
+..SD..
+..SDW.
+.SD...
+.DW...
+DD.W..
+......
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1 2
+SW
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>No
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 5
+.S...
+...S.
+S....
+...S.
+.S...
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>Yes
+.S...
+...S.
+S.D..
+...S.
+.S...
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, we can split the pasture into two halves, one containing wolves and one containing sheep. Note that the sheep at (2,1) is safe, as wolves cannot move diagonally.
+In the second example, there are no empty spots to put dogs that would guard the lone sheep.
+In the third example, there are no wolves, so the task is very easy. We put a dog in the center to observe the peacefulness of the meadow, but the solution would be correct even without him.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

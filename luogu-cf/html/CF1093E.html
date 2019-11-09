@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Intersection of Permutations - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401529:PhzFuMWjL8sk2sv4YKbHMWlffADUzjgVxNFIfioQ9kA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20two%20permutations%20%24%20a%20%24%20and%20%24%20b%20%24%20%2C%20both%20consisting%20of%20%24%20n%20%24%20elements.%20Permutation%20of%20%24%20n%20%24%20elements%20is%20such%20a%20integer%20sequence%20that%20each%20value%20from%20%24%201%20%24%20to%20%24%20n%20%24%20appears%20exactly%20once%20in%20it.%5Cn%5CnYou%20are%20asked%20to%20perform%20two%20types%20of%20queries%20with%20them%3A%5Cn%5Cn-%20%24%201~l_a~r_a~l_b~r_b%20%24%20%5Cu2014%20calculate%20the%20number%20of%20values%20which%20appear%20in%20both%20segment%20%24%20%5Bl_a%3B%20r_a%5D%20%24%20of%20positions%20in%20permutation%20%24%20a%20%24%20and%20segment%20%24%20%5Bl_b%3B%20r_b%5D%20%24%20of%20positions%20in%20permutation%20%24%20b%20%24%20%3B%5Cn-%20%24%202~x~y%20%24%20%5Cu2014%20swap%20values%20on%20positions%20%24%20x%20%24%20and%20%24%20y%20%24%20in%20permutation%20%24%20b%20%24%20.%5Cn%5CnPrint%20the%20answer%20for%20each%20query%20of%20the%20first%20type.%5Cn%5CnIt%20is%20guaranteed%20that%20there%20will%20be%20at%20least%20one%20query%20of%20the%20first%20type%20in%20the%20input.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%201%20%5C%5Cle%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20both%20permutations%20and%20the%20number%20of%20queries.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20permutation%20%24%20a%20%24%20.%20It%20is%20guaranteed%20that%20each%20value%20from%20%24%201%20%24%20to%20%24%20n%20%24%20appears%20in%20%24%20a%20%24%20exactly%20once.%5Cn%5CnThe%20third%20line%20contains%20%24%20n%20%24%20integers%20%24%20b_1%2C%20b_2%2C%20%5C%5Cdots%2C%20b_n%20%24%20%28%20%24%201%20%5C%5Cle%20b_i%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20permutation%20%24%20b%20%24%20.%20It%20is%20guaranteed%20that%20each%20value%20from%20%24%201%20%24%20to%20%24%20n%20%24%20appears%20in%20%24%20b%20%24%20exactly%20once.%5Cn%5CnEach%20of%20the%20next%20%24%20m%20%24%20lines%20contains%20the%20description%20of%20a%20certain%20query.%20These%20are%20either%3A%5Cn%5Cn-%20%24%201~l_a~r_a~l_b~r_b%20%24%20%28%20%24%201%20%5C%5Cle%20l_a%20%5C%5Cle%20r_a%20%5C%5Cle%20n%20%24%20%2C%20%24%201%20%5C%5Cle%20l_b%20%5C%5Cle%20r_b%20%5C%5Cle%20n%20%24%20%29%3B%5Cn-%20%24%202~x~y%20%24%20%28%20%24%201%20%5C%5Cle%20x%2C%20y%20%5C%5Cle%20n%20%24%20%2C%20%24%20x%20%5C%5Cne%20y%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20the%20answers%20for%20the%20queries%20of%20the%20first%20type%2C%20each%20answer%20in%20the%20new%20line%20%5Cu2014%20the%20number%20of%20values%20which%20appear%20in%20both%20segment%20%24%20%5Bl_a%3B%20r_a%5D%20%24%20of%20positions%20in%20permutation%20%24%20a%20%24%20and%20segment%20%24%20%5Bl_b%3B%20r_b%5D%20%24%20of%20positions%20in%20permutation%20%24%20b%20%24%20.%22%2C%22samples%22%3A%5B%5B%226%207%5Cn5%201%204%202%203%206%5Cn2%205%203%201%204%206%5Cn1%201%202%204%205%5Cn2%202%204%5Cn1%201%202%204%205%5Cn1%202%203%203%205%5Cn1%201%206%201%202%5Cn2%204%201%5Cn1%204%204%201%203%5Cn%22%2C%221%5Cn1%5Cn1%5Cn2%5Cn0%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20query%20of%20the%20first%20example.%20Values%20on%20positions%20%24%20%5B1%3B%202%5D%20%24%20of%20%24%20a%20%24%20are%20%24%20%5B5%2C%201%5D%20%24%20and%20values%20on%20positions%20%24%20%5B4%3B%205%5D%20%24%20of%20%24%20b%20%24%20are%20%24%20%5B1%2C%204%5D%20%24%20.%20Only%20value%20%24%201%20%24%20appears%20in%20both%20segments.%5Cn%5CnAfter%20the%20first%20swap%20%28the%20second%20query%29%20permutation%20%24%20b%20%24%20becomes%20%24%20%5B2%2C%201%2C%203%2C%205%2C%204%2C%206%5D%20%24%20.%5Cn%5CnAfter%20the%20second%20swap%20%28the%20sixth%20query%29%20permutation%20%24%20b%20%24%20becomes%20%24%20%5B5%2C%201%2C%203%2C%202%2C%204%2C%206%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B6000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1093%5C%2FE%22%2C%22id%22%3A%221093E%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu7ed9%5Cu5b9a%5Cu6574%5Cu6570%20%24n%24%20%5Cu548c%5Cu4e24%5Cu4e2a%20%241%2C%5C%5Cdots%2Cn%24%20%5Cu7684%5Cu6392%5Cu5217%20%24a%2Cb%24%5Cu3002%5Cn%5Cn%24m%24%20%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu64cd%5Cu4f5c%5Cu6709%5Cu4e24%5Cu79cd%5Cuff1a%5Cn%20%20-%20%241%5C%5C%20l_a%5C%5C%20r_a%5C%5C%20l_b%5C%5C%20r_b%24%5Cuff0c%5Cu8bbe%20%24a%24%20%5Cu7684%20%24%5Bl_a%3Br_a%5D%24%20%5Cu533a%5Cu95f4%5Cu5185%5Cu7684%5Cu5143%5Cu7d20%5Cu96c6%5Cu5408%5Cu4e3a%20%24S_a%24%5Cuff0c%5Cu8bbe%20%24b%24%20%5Cu7684%20%24%5Bl_b%3Br_b%5D%24%20%5Cu533a%5Cu95f4%5Cu5185%5Cu7684%5Cu5143%5Cu7d20%5Cu96c6%5Cu5408%5Cu4e3a%20%24S_b%24%5Cuff0c%5Cu6c42%20%24%5C%5Clvert%20S_a%20%5C%5Cbigcap%20S_b%20%5C%5Crvert%24%5Cu3002%5Cn%20%20-%20%242%5C%5C%20x%5C%5C%20y%24%5Cuff0c%5Cu4ea4%5Cu6362%20%24b%24%20%5Cu7684%5Cu7b2c%20%24x%24%20%5Cu4f4d%5Cu4e0e%5Cu7b2c%20%24y%24%20%5Cu4f4d%5Cu3002%5Cn%5Cn%241%20%5C%5Cle%20n%2Cm%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%24%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24n%2Cm%24%5Cu3002%20%20%5Cn%5Cu4ee5%5Cu4e0b%5Cu4e24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%20%24n%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%20%24a%2Cb%24%5Cu3002%20%20%5Cn%5Cu4ee5%5Cu4e0b%20%24m%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cu3002%5Cn%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%20%241%24%20%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu8f93%5Cu51fa%5Cu7b54%5Cu6848%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A240%2C%22totalAccepted%22%3A78%2C%22pid%22%3A%22CF1093E%22%2C%22title%22%3A%22Intersection%20of%20Permutations%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A94233%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu5927%5Cu50bb%5Cu903c%5Cuff01%5Cuff01%5Cuff01%5Cu5343%5Cu4e07%5Cu4e0d%5Cu8981%5Cu7528bitset%5Cuff0c%5Cu6211%5Cu540c%5Cu5b66%5Cu5361%5Cu4e86%5Cu4e00%5Cu5929%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A32975%2C%22name%22%3A%22CF1093E%20Intersection%20of%20Permutations%22%2C%22slug%22%3A%22CF1093E%22%7D%7D%2C%7B%22id%22%3A89948%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu9519%5Cu4e86%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A32975%2C%22name%22%3A%22CF1093E%20Intersection%20of%20Permutations%22%2C%22slug%22%3A%22CF1093E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P5110%22%2C%22title%22%3A%22%5Cu5757%5Cu901f%5Cu9012%5Cu63a8%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1093G%22%2C%22title%22%3A%22Multidimensional%20Queries%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1093F%22%2C%22title%22%3A%22Vasya%20and%20Array%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1093D%22%2C%22title%22%3A%22Beautiful%20Graph%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207D%22%2C%22title%22%3A%22Number%20Of%20Permutations%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Intersection%20of%20Permutations%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Intersection of Permutations</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+给定整数 $n$ 和两个 $1,\dots,n$ 的排列 $a,b$。
+$m$ 个操作，操作有两种：
+- $1\ l_a\ r_a\ l_b\ r_b$，设 $a$ 的 $[l_a;r_a]$ 区间内的元素集合为 $S_a$，设 $b$ 的 $[l_b;r_b]$ 区间内的元素集合为 $S_b$，求 $\lvert S_a \bigcap S_b \rvert$。
+- $2\ x\ y$，交换 $b$ 的第 $x$ 位与第 $y$ 位。
+$1 \le n,m \le 2 \cdot 10^5$
+## 输入输出格式
+**输入格式：**
+第一行，两个整数 $n,m$。
+以下两行，每行 $n$ 个整数，分别表示 $a,b$。
+以下 $m$ 行，每行一个操作。
+**输出格式：**
+对于每个 $1$ 操作，输出答案。</div>
+<h2>题目描述</h2>
+<div>You are given two permutations $ a $ and $ b $ , both consisting of $ n $ elements. Permutation of $ n $ elements is such a integer sequence that each value from $ 1 $ to $ n $ appears exactly once in it.
+You are asked to perform two types of queries with them:
+- $ 1~l_a~r_a~l_b~r_b $ — calculate the number of values which appear in both segment $ [l_a; r_a] $ of positions in permutation $ a $ and segment $ [l_b; r_b] $ of positions in permutation $ b $ ;
+- $ 2~x~y $ — swap values on positions $ x $ and $ y $ in permutation $ b $ .
+Print the answer for each query of the first type.
+It is guaranteed that there will be at least one query of the first type in the input.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 2 \le n \le 2 \cdot 10^5 $ , $ 1 \le m \le 2 \cdot 10^5 $ ) — the number of elements in both permutations and the number of queries.
+The second line contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le n $ ) — permutation $ a $ . It is guaranteed that each value from $ 1 $ to $ n $ appears in $ a $ exactly once.
+The third line contains $ n $ integers $ b_1, b_2, \dots, b_n $ ( $ 1 \le b_i \le n $ ) — permutation $ b $ . It is guaranteed that each value from $ 1 $ to $ n $ appears in $ b $ exactly once.
+Each of the next $ m $ lines contains the description of a certain query. These are either:
+- $ 1~l_a~r_a~l_b~r_b $ ( $ 1 \le l_a \le r_a \le n $ , $ 1 \le l_b \le r_b \le n $ );
+- $ 2~x~y $ ( $ 1 \le x, y \le n $ , $ x \ne y $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the answers for the queries of the first type, each answer in the new line — the number of values which appear in both segment $ [l_a; r_a] $ of positions in permutation $ a $ and segment $ [l_b; r_b] $ of positions in permutation $ b $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 7
+5 1 4 2 3 6
+2 5 3 1 4 6
+1 1 2 4 5
+2 2 4
+1 1 2 4 5
+1 2 3 3 5
+1 1 6 1 2
+2 4 1
+1 4 4 1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+1
+1
+2
+0
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first query of the first example. Values on positions $ [1; 2] $ of $ a $ are $ [5, 1] $ and values on positions $ [4; 5] $ of $ b $ are $ [1, 4] $ . Only value $ 1 $ appears in both segments.
+After the first swap (the second query) permutation $ b $ becomes $ [2, 1, 3, 5, 4, 6] $ .
+After the second swap (the sixth query) permutation $ b $ becomes $ [5, 1, 3, 2, 4, 6] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

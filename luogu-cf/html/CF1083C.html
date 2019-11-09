@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Max Mex - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401384:Cox2B1e97a4UqqnB2WhpzX67P7bpKD8McHyLJ58G/TU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Once%20Grisha%20found%20a%20tree%20%28connected%20graph%20without%20cycles%29%20with%20a%20root%20in%20node%20%24%201%20%24%20.%5Cn%5CnBut%20this%20tree%20was%20not%20just%20a%20tree.%20A%20permutation%20%24%20p%20%24%20of%20integers%20from%20%24%200%20%24%20to%20%24%20n%20-%201%20%24%20is%20written%20in%20nodes%2C%20a%20number%20%24%20p_i%20%24%20is%20written%20in%20node%20%24%20i%20%24%20.%5Cn%5CnAs%20Grisha%20likes%20to%20invent%20some%20strange%20and%20interesting%20problems%20for%20himself%2C%20but%20not%20always%20can%20solve%20them%2C%20you%20need%20to%20help%20him%20deal%20with%20two%20types%20of%20queries%20on%20this%20tree.%5Cn%5CnLet%27s%20define%20a%20function%20%24%20MEX%28S%29%20%24%20%2C%20where%20%24%20S%20%24%20is%20a%20set%20of%20non-negative%20integers%2C%20as%20a%20smallest%20non-negative%20integer%20that%20is%20not%20included%20in%20this%20set.%5Cn%5CnLet%20%24%20l%20%24%20be%20a%20simple%20path%20in%20this%20tree.%20So%20let%27s%20define%20indices%20of%20nodes%20which%20lie%20on%20%24%20l%20%24%20as%20%24%20u_1%20%24%20%2C%20%24%20u_2%20%24%20%2C%20%24%20%5C%5Cldots%20%24%20%2C%20%24%20u_k%20%24%20.%5Cn%5CnDefine%20%24%20V%28l%29%20%24%20as%20a%20set%20%7B%20%24%20p_%7Bu_1%7D%20%24%20%2C%20%24%20p_%7Bu_2%7D%20%24%20%2C%20%24%20%5C%5Cldots%20%24%20%2C%20%24%20p_%7Bu_k%7D%20%24%20%7D.%5Cn%5CnThen%20queries%20are%3A%5Cn%5Cn1.%20For%20two%20nodes%20%24%20i%20%24%20and%20%24%20j%20%24%20%2C%20swap%20%24%20p_i%20%24%20and%20%24%20p_j%20%24%20.%5Cn2.%20Find%20the%20maximum%20value%20of%20%24%20MEX%28V%28l%29%29%20%24%20in%20all%20possible%20%24%20l%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cleq%20n%20%5C%5Cleq%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20nodes%20of%20a%20tree.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%5Cu2014%20%24%20p_1%20%24%20%2C%20%24%20p_2%20%24%20%2C%20%24%20%5C%5Cldots%20%24%20%2C%20%24%20p_n%20%24%20%28%20%24%200%5C%5Cleq%20p_i%20%3C%20n%20%24%20%29%20%5Cu2014%20the%20permutation%20%24%20p%20%24%20%2C%20it%27s%20guaranteed%20that%20all%20numbers%20are%20different%20.%5Cn%5CnThe%20third%20line%20contains%20%24%20n%20-%201%20%24%20integers%20%5Cu2014%20%24%20d_2%20%24%20%2C%20%24%20d_3%20%24%20%2C%20%24%20%5C%5Cldots%20%24%20%2C%20%24%20d_n%20%24%20%28%20%24%201%20%5C%5Cleq%20d_i%20%3C%20i%20%24%20%29%2C%20where%20%24%20d_i%20%24%20is%20a%20direct%20ancestor%20of%20node%20%24%20i%20%24%20in%20a%20tree.%5Cn%5CnThe%20fourth%20line%20contains%20a%20single%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cleq%20q%20%5C%5Cleq%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries.%5Cn%5CnThe%20following%20%24%20q%20%24%20lines%20contain%20the%20description%20of%20queries%3A%5Cn%5CnAt%20the%20beginning%20of%20each%20of%20next%20%24%20q%20%24%20lines%2C%20there%20is%20a%20single%20integer%20%24%20t%20%24%20%28%20%24%201%20%24%20or%20%24%202%20%24%20%29%20%5Cu2014%20the%20type%20of%20a%20query%3A%5Cn%5Cn1.%20If%20%24%20t%20%3D%201%20%24%20%2C%20the%20line%20also%20contains%20two%20integers%20%24%20i%20%24%20and%20%24%20j%20%24%20%28%20%24%201%20%5C%5Cleq%20i%2C%20j%20%5C%5Cleq%20n%20%24%20%29%20%5Cu2014%20the%20indices%20of%20nodes%2C%20where%20values%20of%20the%20permutation%20should%20be%20swapped.%5Cn2.%20If%20%24%20t%20%3D%202%20%24%20%2C%20you%20need%20to%20find%20the%20maximum%20value%20of%20%24%20MEX%28V%28l%29%29%20%24%20in%20all%20possible%20%24%20l%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20type%202%20query%20print%20a%20single%20integer%20%5Cu2014%20the%20answer%20for%20this%20query.%22%2C%22samples%22%3A%5B%5B%22%5Cn6%5Cn2%205%200%203%201%204%5Cn1%201%203%203%203%5Cn3%5Cn2%5Cn1%206%203%5Cn2%5Cn%22%2C%22%5Cn3%5Cn2%5Cn%22%5D%2C%5B%22%5Cn6%5Cn5%202%201%204%203%200%5Cn1%201%201%203%203%5Cn9%5Cn2%5Cn1%205%203%5Cn2%5Cn1%206%201%5Cn2%5Cn1%204%202%5Cn2%5Cn1%201%206%5Cn2%5Cn%22%2C%22%5Cn3%5Cn2%5Cn4%5Cn4%5Cn2%5Cn%22%5D%5D%2C%22hint%22%3A%22Number%20written%20in%20brackets%20is%20a%20permutation%20value%20of%20a%20node.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1083C%5C%2Fee001f2941a74485fa338c5683d0a7b9e6c8a87f.png%29%20In%20the%20first%20example%2C%20for%20the%20first%20query%2C%20optimal%20path%20is%20a%20path%20from%20node%20%24%201%20%24%20to%20node%20%24%205%20%24%20.%20For%20it%2C%20set%20of%20values%20is%20%24%20%5C%5C%7B0%2C%201%2C%202%5C%5C%7D%20%24%20and%20%24%20MEX%20%24%20is%20%24%203%20%24%20.%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1083C%5C%2Fa97ad343dd7d844125d1fc7cb7e5c59a598975f8.png%29%20For%20the%20third%20query%2C%20optimal%20path%20is%20a%20path%20from%20node%20%24%205%20%24%20to%20node%20%24%206%20%24%20.%20For%20it%2C%20set%20of%20values%20is%20%24%20%5C%5C%7B0%2C%201%2C%204%5C%5C%7D%20%24%20and%20%24%20MEX%20%24%20is%20%24%202%20%24%20.%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1083C%5C%2F14b2534701770528716075e286813cf69ea8fa73.png%29%20In%20the%20second%20example%2C%20for%20the%20first%20query%2C%20optimal%20path%20is%20a%20path%20from%20node%20%24%202%20%24%20to%20node%20%24%206%20%24%20.%20For%20it%2C%20set%20of%20values%20is%20%24%20%5C%5C%7B0%2C%201%2C%202%2C%205%5C%5C%7D%20%24%20and%20%24%20MEX%20%24%20is%20%24%203%20%24%20.%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1083C%5C%2F7d192d4175cd95e93fe02508dce0199090e46016.png%29%20For%20the%20third%20query%2C%20optimal%20path%20is%20a%20path%20from%20node%20%24%205%20%24%20to%20node%20%24%206%20%24%20.%20For%20it%2C%20set%20of%20values%20is%20%24%20%5C%5C%7B0%2C%201%2C%203%5C%5C%7D%20%24%20and%20%24%20MEX%20%24%20is%20%24%202%20%24%20.%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1083C%5C%2F50ab27acea9feed5a4efb779b2f53af3eecd0804.png%29%20For%20the%20fifth%20query%2C%20optimal%20path%20is%20a%20path%20from%20node%20%24%205%20%24%20to%20node%20%24%202%20%24%20.%20For%20it%2C%20set%20of%20values%20is%20%24%20%5C%5C%7B0%2C%201%2C%202%2C%203%5C%5C%7D%20%24%20and%20%24%20MEX%20%24%20is%20%24%204%20%24%20.%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1083C%5C%2Fa6c30611a7b3214e1977864c9cb1f77350bde41b.png%29%20For%20the%20seventh%20query%2C%20optimal%20path%20is%20a%20path%20from%20node%20%24%205%20%24%20to%20node%20%24%204%20%24%20.%20For%20it%2C%20set%20of%20values%20is%20%24%20%5C%5C%7B0%2C%201%2C%202%2C%203%5C%5C%7D%20%24%20and%20%24%20MEX%20%24%20is%20%24%204%20%24%20.%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1083C%5C%2Fdeda5efb4637745ff35eb20d670feb37c9954d9c.png%29%20For%20the%20ninth%20query%2C%20optimal%20path%20is%20a%20path%20from%20node%20%24%206%20%24%20to%20node%20%24%205%20%24%20.%20For%20it%2C%20set%20of%20values%20is%20%24%20%5C%5C%7B0%2C%201%2C%203%5C%5C%7D%20%24%20and%20%24%20MEX%20%24%20is%20%24%202%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1083%5C%2FC%22%2C%22id%22%3A%221083C%22%7D%2C%22translation%22%3A%22%23%23%20Description%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu68f5%5Cu6709%20%24n%24%20%5Cu4e2a%5Cu70b9%5Cu7684%5Cu6811%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu6709%5Cu70b9%5Cu6743%5Cu3002%5Cu6240%5Cu6709%5Cu7684%5Cu70b9%5Cu6743%5Cu6784%5Cu6210%5Cu4e86%5Cu4e00%5Cu4e2a%20%240~%5C%5Csim~n%20-%201%24%20%5Cu7684%5Cu6392%5Cu5217%5Cu3002%5Cu6709%20%24q%24%20%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu64cd%5Cu4f5c%20%241%24%20%5Cu4e3a%5Cu4ea4%5Cu6362%5Cu4e24%5Cu4e2a%5Cu70b9%5Cu7684%5Cu70b9%5Cu6743%5Cuff0c%5Cu64cd%5Cu4f5c%20%242%24%20%5Cu4e3a%5Cu67e5%5Cu8be2%20%24Mex%28l%29%24%20%5Cu503c%5Cu6700%5Cu5927%5Cu7684%20%24Mex%28l%29%24%20%5Cu503c%5Cuff0c%5Cu5176%5Cu4e2d%20%24l%24%20%5Cu662f%5Cu6811%5Cu4e0a%5Cu7684%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cu3002%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%20%24l%24%20%5Cu7684%20%24Mex%24%20%5Cu503c%20%24Mex%28l%29%24%20%5Cu4e3a%5Cu8fd9%5Cu6761%5Cu8def%5Cu5f84%5Cu4e0a%5Cu6700%5Cu5c0f%5Cu7684%5Cu6ca1%5Cu6709%5Cu51fa%5Cu73b0%5Cu8fc7%5Cu7684%5Cu81ea%5Cu7136%5Cu6570%5Cr%5Cn%5Cr%5Cn%23%23%20Input%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%20%5Cu4ee3%5Cu8868%5Cu70b9%5Cu6570%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu9762%5Cu4e00%5Cu884c%5Cu662f%20%24n%24%20%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff0c%5Cu4ee3%5Cu8868%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu7684%5Cu70b9%5Cu6743%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu662f%5Cu4e00%5Cu4e2a%20%240~%5C%5Csim%20n%20-%201%24%20%5Cu7684%5Cu6392%5Cu5217%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu9762%5Cu4e00%5Cu884c%5Cu6709%20%24n%20-%201%24%20%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu6570%5Cu5b57%5Cu4ee3%5Cu8868%5Cu94a6%5Cu5b9a%20%241%24%20%5Cu4e3a%5Cu6839%5Cu65f6%5Cu7b2c%20%24i%20%2B%201%24%20%5Cu4e2a%5Cu70b9%5Cu7684%5Cu7236%5Cu8282%5Cu70b9%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu9762%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24q%24%5Cuff0c%5Cu4ee3%5Cu8868%5Cu64cd%5Cu4f5c%5Cu4e2a%5Cu6570%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu9762%20%24q%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu7ec4%5Cu64cd%5Cu4f5c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu8be5%5Cu884c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cu4e3a%20%241%24%5Cuff0c%5Cu5219%5Cu540e%5Cu9762%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57%20%24x%2Cy%24%5Cuff0c%5Cu4ee3%5Cu8868%5Cu4ea4%5Cu6362%20%24x%2Cy%24%20%5Cu7684%5Cu70b9%5Cu6743%5Cr%5Cn%5Cr%5Cn%5Cu5426%5Cu5219%5Cu8be5%5Cu884c%5Cu6709%5Cu4e14%5Cu4ec5%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%20%242%24%5Cuff0c%5Cu4ee3%5Cu8868%5Cu4e00%5Cu6b21%5Cu67e5%5Cu8be2%5Cr%5Cn%5Cr%5Cn%23%23%20Output%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu6bcf%5Cu6b21%5Cu67e5%5Cu8be2%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu4f5c%5Cu4e3a%5Cu7b54%5Cu6848%5Cr%5Cn%5Cr%5Cn%23%23%20Hint%5Cr%5Cn%5Cr%5Cn%242~%5C%5Cleq~n~%5C%5Cleq~2~%5C%5Ctimes~10%5E5~%2C~1~%5C%5Cleq~q~%5C%5Cleq~2~%5C%5Ctimes~10%5E5%24%5Cr%5Cn%5Cr%5CnTranslated%20by%20%40%5Cu4e00%5Cu6276%5Cu82cf%5Cu4e00%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A108%2C%22totalAccepted%22%3A52%2C%22pid%22%3A%22CF1083C%22%2C%22title%22%3A%22Max%20Mex%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A93606%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A33477%2C%22name%22%3A%22CF1083C%20Max%20Mex%22%2C%22slug%22%3A%22CF1083C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF526D%22%2C%22title%22%3A%22Om%20Nom%20and%20Necklace%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF932E%22%2C%22title%22%3A%22Team%20Work%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF993D%22%2C%22title%22%3A%22Compute%20Power%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1083B%22%2C%22title%22%3A%22The%20Fair%20Nut%20and%20Strings%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1202E%22%2C%22title%22%3A%22You%20Are%20Given%20Some%20Strings...%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Max%20Mex%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Max Mex</h1>
+<h2>题意翻译</h2>
+<div>## Description
+给定一棵有 $n$ 个点的树，每个节点有点权。所有的点权构成了一个 $0~\sim~n - 1$ 的排列。有 $q$ 次操作，每次操作 $1$ 为交换两个点的点权，操作 $2$ 为查询 $Mex(l)$ 值最大的 $Mex(l)$ 值，其中 $l$ 是树上的一条路径。定义一条路径 $l$ 的 $Mex$ 值 $Mex(l)$ 为这条路径上最小的没有出现过的自然数
+## Input
+第一行是一个整数 $n$ 代表点数
+下面一行是 $n$ 个数字，代表每个点的点权，保证是一个 $0~\sim n - 1$ 的排列
+下面一行有 $n - 1$ 个数字，第 $i$ 个数字代表钦定 $1$ 为根时第 $i + 1$ 个点的父节点
+下面一行是一个整数 $q$，代表操作个数
+下面 $q$ 行，每行一组操作。
+如果该行第一个数字为 $1$，则后面有两个数字 $x,y$，代表交换 $x,y$ 的点权
+否则该行有且仅有一个数字 $2$，代表一次查询
+## Output
+对每次查询输出一行一个整数作为答案
+## Hint
+$2~\leq~n~\leq~2~\times~10^5~,~1~\leq~q~\leq~2~\times~10^5$
+Translated by @一扶苏一</div>
+<h2>题目描述</h2>
+<div>Once Grisha found a tree (connected graph without cycles) with a root in node $ 1 $ .
+But this tree was not just a tree. A permutation $ p $ of integers from $ 0 $ to $ n - 1 $ is written in nodes, a number $ p_i $ is written in node $ i $ .
+As Grisha likes to invent some strange and interesting problems for himself, but not always can solve them, you need to help him deal with two types of queries on this tree.
+Let's define a function $ MEX(S) $ , where $ S $ is a set of non-negative integers, as a smallest non-negative integer that is not included in this set.
+Let $ l $ be a simple path in this tree. So let's define indices of nodes which lie on $ l $ as $ u_1 $ , $ u_2 $ , $ \ldots $ , $ u_k $ .
+Define $ V(l) $ as a set { $ p_{u_1} $ , $ p_{u_2} $ , $ \ldots $ , $ p_{u_k} $ }.
+Then queries are:
+1. For two nodes $ i $ and $ j $ , swap $ p_i $ and $ p_j $ .
+2. Find the maximum value of $ MEX(V(l)) $ in all possible $ l $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 2 \leq n \leq 2 \cdot 10^5 $ ) — the number of nodes of a tree.
+The second line contains $ n $ integers — $ p_1 $ , $ p_2 $ , $ \ldots $ , $ p_n $ ( $ 0\leq p_i < n $ ) — the permutation $ p $ , it's guaranteed that all numbers are different .
+The third line contains $ n - 1 $ integers — $ d_2 $ , $ d_3 $ , $ \ldots $ , $ d_n $ ( $ 1 \leq d_i < i $ ), where $ d_i $ is a direct ancestor of node $ i $ in a tree.
+The fourth line contains a single integer $ q $ ( $ 1 \leq q \leq 2 \cdot 10^5 $ ) — the number of queries.
+The following $ q $ lines contain the description of queries:
+At the beginning of each of next $ q $ lines, there is a single integer $ t $ ( $ 1 $ or $ 2 $ ) — the type of a query:
+1. If $ t = 1 $ , the line also contains two integers $ i $ and $ j $ ( $ 1 \leq i, j \leq n $ ) — the indices of nodes, where values of the permutation should be swapped.
+2. If $ t = 2 $ , you need to find the maximum value of $ MEX(V(l)) $ in all possible $ l $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each type 2 query print a single integer — the answer for this query.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+6
+2 5 0 3 1 4
+1 1 3 3 3
+3
+2
+1 6 3
+2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+6
+5 2 1 4 3 0
+1 1 1 3 3
+9
+2
+1 5 3
+2
+1 6 1
+2
+1 4 2
+2
+1 1 6
+2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+3
+2
+4
+4
+2
+</code></pre>
+<h2>说明</h2>
+<div>Number written in brackets is a permutation value of a node.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1083C/ee001f2941a74485fa338c5683d0a7b9e6c8a87f.png) In the first example, for the first query, optimal path is a path from node $ 1 $ to node $ 5 $ . For it, set of values is $ \{0, 1, 2\} $ and $ MEX $ is $ 3 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1083C/a97ad343dd7d844125d1fc7cb7e5c59a598975f8.png) For the third query, optimal path is a path from node $ 5 $ to node $ 6 $ . For it, set of values is $ \{0, 1, 4\} $ and $ MEX $ is $ 2 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1083C/14b2534701770528716075e286813cf69ea8fa73.png) In the second example, for the first query, optimal path is a path from node $ 2 $ to node $ 6 $ . For it, set of values is $ \{0, 1, 2, 5\} $ and $ MEX $ is $ 3 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1083C/7d192d4175cd95e93fe02508dce0199090e46016.png) For the third query, optimal path is a path from node $ 5 $ to node $ 6 $ . For it, set of values is $ \{0, 1, 3\} $ and $ MEX $ is $ 2 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1083C/50ab27acea9feed5a4efb779b2f53af3eecd0804.png) For the fifth query, optimal path is a path from node $ 5 $ to node $ 2 $ . For it, set of values is $ \{0, 1, 2, 3\} $ and $ MEX $ is $ 4 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1083C/a6c30611a7b3214e1977864c9cb1f77350bde41b.png) For the seventh query, optimal path is a path from node $ 5 $ to node $ 4 $ . For it, set of values is $ \{0, 1, 2, 3\} $ and $ MEX $ is $ 4 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1083C/deda5efb4637745ff35eb20d670feb37c9954d9c.png) For the ninth query, optimal path is a path from node $ 6 $ to node $ 5 $ . For it, set of values is $ \{0, 1, 3\} $ and $ MEX $ is $ 2 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tanya and Candies - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401909:NUqP0VsMqAxtSBVcfAy54ht7cONKGVj3Neu0t1ECbkA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Tanya%20has%20%24%20n%20%24%20candies%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20The%20%24%20i%20%24%20-th%20candy%20has%20the%20weight%20%24%20a_i%20%24%20.%5Cn%5CnShe%20plans%20to%20eat%20exactly%20%24%20n-1%20%24%20candies%20and%20give%20the%20remaining%20candy%20to%20her%20dad.%20Tanya%20eats%20candies%20in%20order%20of%20increasing%20their%20numbers%2C%20exactly%20one%20candy%20per%20day.%5Cn%5CnYour%20task%20is%20to%20find%20the%20number%20of%20such%20candies%20%24%20i%20%24%20%28let%27s%20call%20these%20candies%20good%29%20that%20if%20dad%20gets%20the%20%24%20i%20%24%20-th%20candy%20then%20the%20sum%20of%20weights%20of%20candies%20Tanya%20eats%20in%20even%20days%20will%20be%20equal%20to%20the%20sum%20of%20weights%20of%20candies%20Tanya%20eats%20in%20odd%20days.%20Note%20that%20at%20first%2C%20she%20will%20give%20the%20candy%2C%20after%20it%20she%20will%20eat%20the%20remaining%20candies%20one%20by%20one.%5Cn%5CnFor%20example%2C%20%24%20n%3D4%20%24%20and%20weights%20are%20%24%20%5B1%2C%204%2C%203%2C%203%5D%20%24%20.%20Consider%20all%20possible%20cases%20to%20give%20a%20candy%20to%20dad%3A%5Cn%5Cn-%20Tanya%20gives%20the%20%24%201%20%24%20-st%20candy%20to%20dad%20%28%20%24%20a_1%3D1%20%24%20%29%2C%20the%20remaining%20candies%20are%20%24%20%5B4%2C%203%2C%203%5D%20%24%20.%20She%20will%20eat%20%24%20a_2%3D4%20%24%20in%20the%20first%20day%2C%20%24%20a_3%3D3%20%24%20in%20the%20second%20day%2C%20%24%20a_4%3D3%20%24%20in%20the%20third%20day.%20So%20in%20odd%20days%20she%20will%20eat%20%24%204%2B3%3D7%20%24%20and%20in%20even%20days%20she%20will%20eat%20%24%203%20%24%20.%20Since%20%24%207%20%5C%5Cne%203%20%24%20this%20case%20shouldn%27t%20be%20counted%20to%20the%20answer%20%28this%20candy%20isn%27t%20good%29.%5Cn-%20Tanya%20gives%20the%20%24%202%20%24%20-nd%20candy%20to%20dad%20%28%20%24%20a_2%3D4%20%24%20%29%2C%20the%20remaining%20candies%20are%20%24%20%5B1%2C%203%2C%203%5D%20%24%20.%20She%20will%20eat%20%24%20a_1%3D1%20%24%20in%20the%20first%20day%2C%20%24%20a_3%3D3%20%24%20in%20the%20second%20day%2C%20%24%20a_4%3D3%20%24%20in%20the%20third%20day.%20So%20in%20odd%20days%20she%20will%20eat%20%24%201%2B3%3D4%20%24%20and%20in%20even%20days%20she%20will%20eat%20%24%203%20%24%20.%20Since%20%24%204%20%5C%5Cne%203%20%24%20this%20case%20shouldn%27t%20be%20counted%20to%20the%20answer%20%28this%20candy%20isn%27t%20good%29.%5Cn-%20Tanya%20gives%20the%20%24%203%20%24%20-rd%20candy%20to%20dad%20%28%20%24%20a_3%3D3%20%24%20%29%2C%20the%20remaining%20candies%20are%20%24%20%5B1%2C%204%2C%203%5D%20%24%20.%20She%20will%20eat%20%24%20a_1%3D1%20%24%20in%20the%20first%20day%2C%20%24%20a_2%3D4%20%24%20in%20the%20second%20day%2C%20%24%20a_4%3D3%20%24%20in%20the%20third%20day.%20So%20in%20odd%20days%20she%20will%20eat%20%24%201%2B3%3D4%20%24%20and%20in%20even%20days%20she%20will%20eat%20%24%204%20%24%20.%20Since%20%24%204%20%3D%204%20%24%20this%20case%20should%20be%20counted%20to%20the%20answer%20%28this%20candy%20is%20good%29.%5Cn-%20Tanya%20gives%20the%20%24%204%20%24%20-th%20candy%20to%20dad%20%28%20%24%20a_4%3D3%20%24%20%29%2C%20the%20remaining%20candies%20are%20%24%20%5B1%2C%204%2C%203%5D%20%24%20.%20She%20will%20eat%20%24%20a_1%3D1%20%24%20in%20the%20first%20day%2C%20%24%20a_2%3D4%20%24%20in%20the%20second%20day%2C%20%24%20a_3%3D3%20%24%20in%20the%20third%20day.%20So%20in%20odd%20days%20she%20will%20eat%20%24%201%2B3%3D4%20%24%20and%20in%20even%20days%20she%20will%20eat%20%24%204%20%24%20.%20Since%20%24%204%20%3D%204%20%24%20this%20case%20should%20be%20counted%20to%20the%20answer%20%28this%20candy%20is%20good%29.%5Cn%5CnIn%20total%20there%20%24%202%20%24%20cases%20which%20should%20counted%20%28these%20candies%20are%20good%29%2C%20so%20the%20answer%20is%20%24%202%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20candies.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E4%20%24%20%29%2C%20where%20%24%20a_i%20%24%20is%20the%20weight%20of%20the%20%24%20i%20%24%20-th%20candy.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20number%20of%20such%20candies%20%24%20i%20%24%20%28good%20candies%29%20that%20if%20dad%20gets%20the%20%24%20i%20%24%20-th%20candy%20then%20the%20sum%20of%20weights%20of%20candies%20Tanya%20eats%20in%20even%20days%20will%20be%20equal%20to%20the%20sum%20of%20weights%20of%20candies%20Tanya%20eats%20in%20odd%20days.%22%2C%22samples%22%3A%5B%5B%22%5Cn7%5Cn5%205%204%205%205%205%206%5Cn%22%2C%22%5Cn2%5Cn%22%5D%2C%5B%22%5Cn8%5Cn4%208%208%207%208%204%204%205%5Cn%22%2C%22%5Cn2%5Cn%22%5D%2C%5B%22%5Cn9%5Cn2%203%204%202%202%203%202%202%204%5Cn%22%2C%22%5Cn3%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20indices%20of%20good%20candies%20are%20%24%20%5B1%2C%202%5D%20%24%20.%5Cn%5CnIn%20the%20second%20example%20indices%20of%20good%20candies%20are%20%24%20%5B2%2C%203%5D%20%24%20.%5Cn%5CnIn%20the%20third%20example%20indices%20of%20good%20candies%20are%20%24%20%5B4%2C%205%2C%209%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1118%5C%2FB%22%2C%22id%22%3A%221118B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A34%2C%22totalAccepted%22%3A26%2C%22pid%22%3A%22CF1118B%22%2C%22title%22%3A%22Tanya%20and%20Candies%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Tanya%20and%20Candies%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Tanya and Candies</h1>
+<h2>题目描述</h2>
+<div>Tanya has $ n $ candies numbered from $ 1 $ to $ n $ . The $ i $ -th candy has the weight $ a_i $ .
+She plans to eat exactly $ n-1 $ candies and give the remaining candy to her dad. Tanya eats candies in order of increasing their numbers, exactly one candy per day.
+Your task is to find the number of such candies $ i $ (let's call these candies good) that if dad gets the $ i $ -th candy then the sum of weights of candies Tanya eats in even days will be equal to the sum of weights of candies Tanya eats in odd days. Note that at first, she will give the candy, after it she will eat the remaining candies one by one.
+For example, $ n=4 $ and weights are $ [1, 4, 3, 3] $ . Consider all possible cases to give a candy to dad:
+- Tanya gives the $ 1 $ -st candy to dad ( $ a_1=1 $ ), the remaining candies are $ [4, 3, 3] $ . She will eat $ a_2=4 $ in the first day, $ a_3=3 $ in the second day, $ a_4=3 $ in the third day. So in odd days she will eat $ 4+3=7 $ and in even days she will eat $ 3 $ . Since $ 7 \ne 3 $ this case shouldn't be counted to the answer (this candy isn't good).
+- Tanya gives the $ 2 $ -nd candy to dad ( $ a_2=4 $ ), the remaining candies are $ [1, 3, 3] $ . She will eat $ a_1=1 $ in the first day, $ a_3=3 $ in the second day, $ a_4=3 $ in the third day. So in odd days she will eat $ 1+3=4 $ and in even days she will eat $ 3 $ . Since $ 4 \ne 3 $ this case shouldn't be counted to the answer (this candy isn't good).
+- Tanya gives the $ 3 $ -rd candy to dad ( $ a_3=3 $ ), the remaining candies are $ [1, 4, 3] $ . She will eat $ a_1=1 $ in the first day, $ a_2=4 $ in the second day, $ a_4=3 $ in the third day. So in odd days she will eat $ 1+3=4 $ and in even days she will eat $ 4 $ . Since $ 4 = 4 $ this case should be counted to the answer (this candy is good).
+- Tanya gives the $ 4 $ -th candy to dad ( $ a_4=3 $ ), the remaining candies are $ [1, 4, 3] $ . She will eat $ a_1=1 $ in the first day, $ a_2=4 $ in the second day, $ a_3=3 $ in the third day. So in odd days she will eat $ 1+3=4 $ and in even days she will eat $ 4 $ . Since $ 4 = 4 $ this case should be counted to the answer (this candy is good).
+In total there $ 2 $ cases which should counted (these candies are good), so the answer is $ 2 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ n $ ( $ 1 \le n \le 2 \cdot 10^5 $ ) — the number of candies.
+The second line of the input contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le 10^4 $ ), where $ a_i $ is the weight of the $ i $ -th candy.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the number of such candies $ i $ (good candies) that if dad gets the $ i $ -th candy then the sum of weights of candies Tanya eats in even days will be equal to the sum of weights of candies Tanya eats in odd days.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+7
+5 5 4 5 5 5 6
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+8
+4 8 8 7 8 4 4 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+9
+2 3 4 2 2 3 2 2 4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+3
+</code></pre>
+<h2>说明</h2>
+<div>In the first example indices of good candies are $ [1, 2] $ .
+In the second example indices of good candies are $ [2, 3] $ .
+In the third example indices of good candies are $ [4, 5, 9] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

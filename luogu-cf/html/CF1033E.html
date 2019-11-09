@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Hidden Bipartite Graph - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400722:179KyQ7P2EZoioLP1BtSNbAQ1EBQllsJmpn+VF0MhS8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Bob%20has%20a%20simple%20undirected%20connected%20graph%20%28without%20self-loops%20and%20multiple%20edges%29.%20He%20wants%20to%20learn%20whether%20his%20graph%20is%20bipartite%20%28that%20is%2C%20you%20can%20paint%20all%20vertices%20of%20the%20graph%20into%20two%20colors%20so%20that%20there%20is%20no%20edge%20connecting%20two%20vertices%20of%20the%20same%20color%29%20or%20not.%20As%20he%20is%20not%20very%20good%20at%20programming%2C%20he%20asked%20Alice%20for%20help.%20He%20does%20not%20want%20to%20disclose%20his%20graph%20to%20Alice%2C%20but%20he%20agreed%20that%20Alice%20can%20ask%20him%20some%20questions%20about%20the%20graph.%5Cn%5CnThe%20only%20question%20that%20Alice%20can%20ask%20is%20the%20following%3A%20she%20sends%20%24%20s%20%24%20%5Cu2014%20a%20subset%20of%20vertices%20of%20the%20original%20graph.%20Bob%20answers%20with%20the%20number%20of%20edges%20that%20have%20both%20endpoints%20in%20%24%20s%20%24%20.%20Since%20he%20doesn%27t%20want%20Alice%20to%20learn%20too%20much%20about%20the%20graph%2C%20he%20allows%20her%20to%20ask%20no%20more%20than%20%24%2020000%20%24%20questions.%20Furthermore%2C%20he%20suspects%20that%20Alice%20might%20introduce%20false%20messages%20to%20their%20communication%20channel%2C%20so%20when%20Alice%20finally%20tells%20him%20whether%20the%20graph%20is%20bipartite%20or%20not%2C%20she%20also%20needs%20to%20provide%20a%20proof%20%5Cu2014%20either%20the%20partitions%20themselves%20or%20a%20cycle%20of%20odd%20length.%5Cn%5CnYour%20task%20is%20to%20help%20Alice%20to%20construct%20the%20queries%2C%20find%20whether%20the%20graph%20is%20bipartite.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%20600%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20Bob%27s%20graph.%22%2C%22outputFormat%22%3A%22First%2C%20read%20an%20integer%20%24%20n%20%24%20%28%20%24%201%5C%5Cleq%20n%5C%5Cleq%20600%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20Bob%27s%20graph.%5Cn%5CnTo%20make%20a%20query%2C%20print%20two%20lines.%20First%20of%20which%20should%20be%20in%20the%20format%20%5C%22%3F%20k%5C%22%20%28%20%24%201%20%5C%5Cleq%20k%20%5C%5Cleq%20n%20%24%20%29%2C%20where%20%24%20k%20%24%20is%20the%20size%20of%20the%20set%20to%20be%20queried.%20The%20second%20line%20should%20contain%20%24%20k%20%24%20space%20separated%20distinct%20integers%20%24%20s_1%2C%20s_2%2C%20%5C%5Cdots%2C%20s_k%20%24%20%28%20%24%201%20%5C%5Cleq%20s_i%20%5C%5Cleq%20n%20%24%20%29%20%5Cu2014%20the%20vertices%20of%20the%20queried%20set.%5Cn%5CnAfter%20each%20query%20read%20a%20single%20integer%20%24%20m%20%24%20%28%20%24%200%20%5C%5Cleq%20m%20%5C%5Cleq%20%5C%5Cfrac%7Bn%28n-1%29%7D%7B2%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20edges%20between%20the%20vertices%20of%20the%20set%20%24%20%5C%5C%7Bs_i%5C%5C%7D%20%24%20.%5Cn%5CnYou%20are%20not%20allowed%20to%20ask%20more%20than%20%24%2020000%20%24%20queries.%5Cn%5CnIf%20%24%20m%20%3D%20-1%20%24%20%2C%20it%20means%20that%20you%20asked%20more%20queries%20than%20allowed%2C%20or%20asked%20an%20invalid%20query.%20Your%20program%20should%20immediately%20terminate%20%28for%20example%2C%20by%20calling%20exit%280%29%29.%20You%20will%20receive%20Wrong%20Answer%3B%20it%20means%20that%20you%20asked%20more%20queries%20than%20allowed%2C%20or%20asked%20an%20invalid%20query.%20If%20you%20ignore%20this%2C%20you%20can%20get%20other%20verdicts%20since%20your%20program%20will%20continue%20to%20read%20from%20a%20closed%20stream.%5Cn%5CnAfter%20printing%20a%20query%20do%20not%20forget%20to%20print%20end%20of%20line%20and%20flush%20the%20output.%20Otherwise%2C%20you%20will%20get%20Idleness%20limit%20exceeded.%20To%20do%20this%2C%20use%3A%5Cn%5Cn-%20fflush%28stdout%29%20or%20cout.flush%28%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20see%20documentation%20for%20other%20languages.%5Cn%5CnWhen%20you%20know%20the%20answer%2C%20you%20need%20to%20print%20it.%5Cn%5CnThe%20format%20of%20the%20answer%20depends%20on%20whether%20the%20graph%20is%20bipartite%20or%20not.%5Cn%5CnIf%20the%20graph%20is%20bipartite%2C%20print%20two%20lines.%20The%20first%20should%20contain%20the%20letter%20%5C%22Y%5C%22%20%28short%20for%20%5C%22YES%5C%22%29%20followed%20by%20a%20space%2C%20and%20then%20a%20single%20integer%20%24%20s%20%24%20%28%20%24%200%20%5C%5Cleq%20s%20%5C%5Cleq%20n%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20one%20of%20the%20partitions.%20Second%20line%20should%20contain%20%24%20s%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_s%20%24%20%5Cu2014%20vertices%20belonging%20to%20the%20first%20partition.%20All%20%24%20a_i%20%24%20must%20be%20distinct%2C%20and%20all%20edges%20in%20the%20main%20graph%20must%20have%20exactly%20one%20endpoint%20in%20the%20set%20%24%20%5C%5C%7Ba_i%5C%5C%7D%20%24%20.%5Cn%5CnIf%20the%20graph%20is%20not%20bipartite%2C%20print%20two%20lines.%20The%20first%20should%20contain%20the%20letter%20%5C%22N%5C%22%20%28short%20for%20%5C%22NO%5C%22%29%20followed%20by%20a%20space%2C%20and%20then%20a%20single%20integer%20%24%20l%20%24%20%28%20%24%203%20%5C%5Cleq%20l%20%5C%5Cleq%20n%20%24%20%29%20%5Cu2014%20the%20length%20of%20one%20simple%20cycle%20of%20odd%20length.%20Second%20line%20should%20contain%20%24%20l%20%24%20integers%20%24%20c_1%2C%20c_2%2C%20%5C%5Cdots%2C%20c_l%20%24%20%5Cu2014%20the%20vertices%20along%20the%20cycle.%20It%20must%20hold%20that%20for%20all%20%24%201%20%5C%5Cleq%20i%20%5C%5Cleq%20l%20%24%20%2C%20there%20is%20an%20edge%20%24%20%5C%5C%7Bc_i%2C%20c_%7B%28i%20%5C%5Cmod%20l%29%2B1%7D%5C%5C%7D%20%24%20in%20the%20main%20graph%2C%20and%20all%20%24%20c_i%20%24%20are%20distinct.%5Cn%5CnIf%20there%20are%20multiple%20possible%20answers%2C%20you%20may%20print%20any%20of%20them.%5Cn%5CnHacks%20format%20For%20hacks%2C%20use%20the%20following%20format%3A%5Cn%5CnThe%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m~%281%20%5C%5Cleq%20n%20%5C%5Cleq%20600%2C%200%20%5C%5Cleq%20m%20%5C%5Cleq%20%5C%5Cfrac%7Bn%28n-1%29%7D%7B2%7D%29%20%24%20%5Cu2014%20the%20number%20of%20vertices%20and%20edges%20of%20the%20graph%2C%20respectively.%5Cn%5CnEach%20of%20the%20next%20%24%20m%20%24%20lines%20contains%20two%20integers%20%24%20u_i%20%24%20and%20%24%20v_i~%281%20%5C%5Cleq%20u_i%2C%20v_i%20%5C%5Cleq%20n%29%20%24%20mean%20that%20there%20is%20an%20edge%20between%20%24%20u_i%20%24%20and%20%24%20v_i%20%24%20.%20There%20must%20not%20be%20any%20multiple%20edges%2C%20no%20loops%2C%20and%20the%20graph%20must%20be%20connected.%5Cn%5CnFor%20example%2C%20you%20need%20to%20use%20this%20test%20to%20get%20the%20first%20sample%3A%5Cn%5Cn%60%3Cbr%3E%3C%5C%2Fbr%3E4%204%3Cbr%3E%3C%5C%2Fbr%3E4%201%3Cbr%3E%3C%5C%2Fbr%3E1%203%3Cbr%3E%3C%5C%2Fbr%3E3%202%3Cbr%3E%3C%5C%2Fbr%3E2%204%3Cbr%3E%3C%5C%2Fbr%3E%60%22%2C%22samples%22%3A%5B%5B%224%5Cn4%5Cn0%5Cn1%5Cn1%5Cn1%5Cn0%22%2C%22%3F%204%20%5Cn1%202%203%204%5Cn%3F%202%5Cn1%202%5Cn%3F%202%5Cn1%203%5Cn%3F%202%5Cn1%204%5Cn%3F%202%5Cn2%204%5Cn%3F%202%5Cn3%204%5CnY%202%5Cn1%202%22%5D%2C%5B%224%5Cn4%5Cn3%22%2C%22%3F%204%5Cn1%204%202%203%5Cn%3F%203%5Cn1%202%204%5CnN%203%5Cn2%201%204%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20case%2C%20Alice%20learns%20that%20there%20are%20%24%204%20%24%20edges%20in%20the%20whole%20graph.%20Over%20the%20course%20of%20the%20next%20three%20queries%2C%20she%20learns%20that%20vertex%20%24%201%20%24%20has%20two%20neighbors%3A%20%24%203%20%24%20and%20%24%204%20%24%20.%20She%20then%20learns%20that%20while%20vertex%20%24%202%20%24%20is%20adjacent%20to%20%24%204%20%24%20%2C%20the%20vertex%20%24%203%20%24%20isn%27t%20adjacent%20to%20%24%204%20%24%20.%20There%20is%20only%20one%20option%20for%20the%20remaining%20edge%2C%20and%20that%20is%20%24%20%282%2C%203%29%20%24%20.%20This%20means%20that%20the%20graph%20is%20a%20cycle%20on%20four%20vertices%2C%20with%20%24%20%281%2C%202%29%20%24%20being%20one%20partition%20and%20%24%20%283%2C%204%29%20%24%20being%20the%20second.%20Here%2C%20it%20would%20be%20also%20valid%20to%20output%20%5C%223%204%5C%22%20on%20the%20second%20line.%5Cn%5CnIn%20the%20second%20case%2C%20we%20also%20have%20a%20graph%20on%20four%20vertices%20and%20four%20edges.%20In%20the%20second%20query%2C%20Alice%20learns%20that%20there%20are%20three%20edges%20among%20vertices%20%24%20%281%2C%202%2C%204%29%20%24%20.%20The%20only%20way%20this%20could%20possibly%20happen%20is%20that%20those%20form%20a%20triangle.%20As%20the%20triangle%20is%20not%20bipartite%2C%20Alice%20can%20report%20it%20as%20a%20proof.%20Notice%20that%20she%20does%20not%20learn%20where%20the%20fourth%20edge%20is%2C%20but%20she%20is%20able%20to%20answer%20Bob%20correctly%20anyway.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1033%5C%2FE%22%2C%22id%22%3A%221033E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF1033E%22%2C%22title%22%3A%22Hidden%20Bipartite%20Graph%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Hidden%20Bipartite%20Graph%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Hidden Bipartite Graph</h1>
+<h2>题目描述</h2>
+<div>Bob has a simple undirected connected graph (without self-loops and multiple edges). He wants to learn whether his graph is bipartite (that is, you can paint all vertices of the graph into two colors so that there is no edge connecting two vertices of the same color) or not. As he is not very good at programming, he asked Alice for help. He does not want to disclose his graph to Alice, but he agreed that Alice can ask him some questions about the graph.
+The only question that Alice can ask is the following: she sends $ s $ — a subset of vertices of the original graph. Bob answers with the number of edges that have both endpoints in $ s $ . Since he doesn't want Alice to learn too much about the graph, he allows her to ask no more than $ 20000 $ questions. Furthermore, he suspects that Alice might introduce false messages to their communication channel, so when Alice finally tells him whether the graph is bipartite or not, she also needs to provide a proof — either the partitions themselves or a cycle of odd length.
+Your task is to help Alice to construct the queries, find whether the graph is bipartite.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1 \leq n \leq 600 $ ) — the number of vertices in Bob's graph.</div>
+<h3>输出格式</h3>
+<br />
+<div>First, read an integer $ n $ ( $ 1\leq n\leq 600 $ ) — the number of vertices in Bob's graph.
+To make a query, print two lines. First of which should be in the format "? k" ( $ 1 \leq k \leq n $ ), where $ k $ is the size of the set to be queried. The second line should contain $ k $ space separated distinct integers $ s_1, s_2, \dots, s_k $ ( $ 1 \leq s_i \leq n $ ) — the vertices of the queried set.
+After each query read a single integer $ m $ ( $ 0 \leq m \leq \frac{n(n-1)}{2} $ ) — the number of edges between the vertices of the set $ \{s_i\} $ .
+You are not allowed to ask more than $ 20000 $ queries.
+If $ m = -1 $ , it means that you asked more queries than allowed, or asked an invalid query. Your program should immediately terminate (for example, by calling exit(0)). You will receive Wrong Answer; it means that you asked more queries than allowed, or asked an invalid query. If you ignore this, you can get other verdicts since your program will continue to read from a closed stream.
+After printing a query do not forget to print end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+- fflush(stdout) or cout.flush() in C++;
+- System.out.flush() in Java;
+- flush(output) in Pascal;
+- stdout.flush() in Python;
+- see documentation for other languages.
+When you know the answer, you need to print it.
+The format of the answer depends on whether the graph is bipartite or not.
+If the graph is bipartite, print two lines. The first should contain the letter "Y" (short for "YES") followed by a space, and then a single integer $ s $ ( $ 0 \leq s \leq n $ ) — the number of vertices in one of the partitions. Second line should contain $ s $ integers $ a_1, a_2, \dots, a_s $ — vertices belonging to the first partition. All $ a_i $ must be distinct, and all edges in the main graph must have exactly one endpoint in the set $ \{a_i\} $ .
+If the graph is not bipartite, print two lines. The first should contain the letter "N" (short for "NO") followed by a space, and then a single integer $ l $ ( $ 3 \leq l \leq n $ ) — the length of one simple cycle of odd length. Second line should contain $ l $ integers $ c_1, c_2, \dots, c_l $ — the vertices along the cycle. It must hold that for all $ 1 \leq i \leq l $ , there is an edge $ \{c_i, c_{(i \mod l)+1}\} $ in the main graph, and all $ c_i $ are distinct.
+If there are multiple possible answers, you may print any of them.
+Hacks format For hacks, use the following format:
+The first line contains two integers $ n $ and $ m~(1 \leq n \leq 600, 0 \leq m \leq \frac{n(n-1)}{2}) $ — the number of vertices and edges of the graph, respectively.
+Each of the next $ m $ lines contains two integers $ u_i $ and $ v_i~(1 \leq u_i, v_i \leq n) $ mean that there is an edge between $ u_i $ and $ v_i $ . There must not be any multiple edges, no loops, and the graph must be connected.
+For example, you need to use this test to get the first sample:
+`<br></br>4 4<br></br>4 1<br></br>1 3<br></br>3 2<br></br>2 4<br></br>`</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+4
+0
+1
+1
+1
+0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>? 4 
+1 2 3 4
+? 2
+1 2
+? 2
+1 3
+? 2
+1 4
+? 2
+2 4
+? 2
+3 4
+Y 2
+1 2</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+4
+3</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>? 4
+1 4 2 3
+? 3
+1 2 4
+N 3
+2 1 4</code></pre>
+<h2>说明</h2>
+<div>In the first case, Alice learns that there are $ 4 $ edges in the whole graph. Over the course of the next three queries, she learns that vertex $ 1 $ has two neighbors: $ 3 $ and $ 4 $ . She then learns that while vertex $ 2 $ is adjacent to $ 4 $ , the vertex $ 3 $ isn't adjacent to $ 4 $ . There is only one option for the remaining edge, and that is $ (2, 3) $ . This means that the graph is a cycle on four vertices, with $ (1, 2) $ being one partition and $ (3, 4) $ being the second. Here, it would be also valid to output "3 4" on the second line.
+In the second case, we also have a graph on four vertices and four edges. In the second query, Alice learns that there are three edges among vertices $ (1, 2, 4) $ . The only way this could possibly happen is that those form a triangle. As the triangle is not bipartite, Alice can report it as a proof. Notice that she does not learn where the fourth edge is, but she is able to answer Bob correctly anyway.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

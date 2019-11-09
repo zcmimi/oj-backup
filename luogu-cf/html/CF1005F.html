@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Berland and the Shortest Paths - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400359:CvAMbAbhW+0ugKFm+UrGJoXt+tFG9nFm5/zpFqaG3mQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20%24%20n%20%24%20cities%20in%20Berland.%20Some%20pairs%20of%20cities%20are%20connected%20by%20roads.%20All%20roads%20are%20bidirectional.%20Each%20road%20connects%20two%20different%20cities.%20There%20is%20at%20most%20one%20road%20between%20a%20pair%20of%20cities.%20The%20cities%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%5Cn%5CnIt%20is%20known%20that%2C%20from%20the%20capital%20%28the%20city%20with%20the%20number%20%24%201%20%24%20%29%2C%20you%20can%20reach%20any%20other%20city%20by%20moving%20along%20the%20roads.%5Cn%5CnThe%20President%20of%20Berland%20plans%20to%20improve%20the%20country%27s%20road%20network.%20The%20budget%20is%20enough%20to%20repair%20exactly%20%24%20n-1%20%24%20roads.%20The%20President%20plans%20to%20choose%20a%20set%20of%20%24%20n-1%20%24%20roads%20such%20that%3A%5Cn%5Cn-%20it%20is%20possible%20to%20travel%20from%20the%20capital%20to%20any%20other%20city%20along%20the%20%24%20n-1%20%24%20chosen%20roads%2C%5Cn-%20if%20%24%20d_i%20%24%20is%20the%20number%20of%20roads%20needed%20to%20travel%20from%20the%20capital%20to%20city%20%24%20i%20%24%20%2C%20moving%20only%20along%20the%20%24%20n-1%20%24%20chosen%20roads%2C%20then%20%24%20d_1%20%2B%20d_2%20%2B%20%5C%5Cdots%20%2B%20d_n%20%24%20is%20minimized%20%28i.e.%20as%20minimal%20as%20possible%29.%5Cn%5CnIn%20other%20words%2C%20the%20set%20of%20%24%20n-1%20%24%20roads%20should%20preserve%20the%20connectivity%20of%20the%20country%2C%20and%20the%20sum%20of%20distances%20from%20city%20%24%201%20%24%20to%20all%20cities%20should%20be%20minimized%20%28where%20you%20can%20only%20use%20the%20%24%20n-1%20%24%20chosen%20roads%29.%5Cn%5CnThe%20president%20instructed%20the%20ministry%20to%20prepare%20%24%20k%20%24%20possible%20options%20to%20choose%20%24%20n-1%20%24%20roads%20so%20that%20both%20conditions%20above%20are%20met.%5Cn%5CnWrite%20a%20program%20that%20will%20find%20%24%20k%20%24%20possible%20ways%20to%20choose%20roads%20for%20repair.%20If%20there%20are%20fewer%20than%20%24%20k%20%24%20ways%2C%20then%20the%20program%20should%20output%20all%20possible%20valid%20ways%20to%20choose%20roads.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20k%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%202%5C%5Ccdot10%5E5%2C%20n-1%20%5C%5Cle%20m%20%5C%5Cle%202%5C%5Ccdot10%5E5%2C%201%20%5C%5Cle%20k%20%5C%5Cle%202%5C%5Ccdot10%5E5%20%24%20%29%2C%20where%20%24%20n%20%24%20is%20the%20number%20of%20cities%20in%20the%20country%2C%20%24%20m%20%24%20is%20the%20number%20of%20roads%20and%20%24%20k%20%24%20is%20the%20number%20of%20options%20to%20choose%20a%20set%20of%20roads%20for%20repair.%20It%20is%20guaranteed%20that%20%24%20m%20%5C%5Ccdot%20k%20%5C%5Cle%2010%5E6%20%24%20.%5Cn%5CnThe%20following%20%24%20m%20%24%20lines%20describe%20the%20roads%2C%20one%20road%20per%20line.%20Each%20line%20contains%20two%20integers%20%24%20a_i%20%24%20%2C%20%24%20b_i%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%2C%20b_i%20%5C%5Cle%20n%20%24%20%2C%20%24%20a_i%20%5C%5Cne%20b_i%20%24%20%29%20%5Cu2014%20the%20numbers%20of%20the%20cities%20that%20the%20%24%20i%20%24%20-th%20road%20connects.%20There%20is%20at%20most%20one%20road%20between%20a%20pair%20of%20cities.%20The%20given%20set%20of%20roads%20is%20such%20that%20you%20can%20reach%20any%20city%20from%20the%20capital.%22%2C%22outputFormat%22%3A%22Print%20%24%20t%20%24%20%28%20%24%201%20%5C%5Cle%20t%20%5C%5Cle%20k%20%24%20%29%20%5Cu2014%20the%20number%20of%20ways%20to%20choose%20a%20set%20of%20roads%20for%20repair.%20Recall%20that%20you%20need%20to%20find%20%24%20k%20%24%20different%20options%3B%20if%20there%20are%20fewer%20than%20%24%20k%20%24%20of%20them%2C%20then%20you%20need%20to%20find%20all%20possible%20different%20valid%20options.%5Cn%5CnIn%20the%20following%20%24%20t%20%24%20lines%2C%20print%20the%20options%2C%20one%20per%20line.%20Print%20an%20option%20as%20a%20string%20of%20%24%20m%20%24%20characters%20where%20the%20%24%20j%20%24%20-th%20character%20is%20equal%20to%20%271%27%20if%20the%20%24%20j%20%24%20-th%20road%20is%20included%20in%20the%20option%2C%20and%20is%20equal%20to%20%270%27%20if%20the%20road%20is%20not%20included.%20The%20roads%20should%20be%20numbered%20according%20to%20their%20order%20in%20the%20input.%20The%20options%20can%20be%20printed%20in%20any%20order.%20All%20the%20%24%20t%20%24%20lines%20should%20be%20different.%5Cn%5CnSince%20it%20is%20guaranteed%20that%20%24%20m%20%5C%5Ccdot%20k%20%5C%5Cle%2010%5E6%20%24%20%2C%20the%20total%20length%20of%20all%20the%20%24%20t%20%24%20lines%20will%20not%20exceed%20%24%2010%5E6%20%24%20.%5Cn%5CnIf%20there%20are%20several%20answers%2C%20output%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%224%204%203%5Cn1%202%5Cn2%203%5Cn1%204%5Cn4%203%5Cn%22%2C%222%5Cn1110%5Cn1011%5Cn%22%5D%2C%5B%224%206%203%5Cn1%202%5Cn2%203%5Cn1%204%5Cn4%203%5Cn2%204%5Cn1%203%5Cn%22%2C%221%5Cn101001%5Cn%22%5D%2C%5B%225%206%202%5Cn1%202%5Cn1%203%5Cn2%204%5Cn2%205%5Cn3%204%5Cn3%205%5Cn%22%2C%222%5Cn111100%5Cn110110%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1005%5C%2FF%22%2C%22id%22%3A%221005F%22%7D%2C%22tags%22%3A%5B160%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A76%2C%22totalAccepted%22%3A52%2C%22pid%22%3A%22CF1005F%22%2C%22title%22%3A%22Berland%20and%20the%20Shortest%20Paths%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A53389%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A27094%2C%22name%22%3A%22CF1005F%20Berland%20and%20the%20Shortest%20Paths%22%2C%22slug%22%3A%22CF1005F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3810%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu4e09%5Cu7ef4%5Cu504f%5Cu5e8f%5Cuff08%5Cu964c%5Cu4e0a%5Cu82b1%5Cu5f00%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF418D%22%2C%22title%22%3A%22Big%20Problems%20for%20Organizers%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22SP2666%22%2C%22title%22%3A%22QTREE4%20-%20Query%20on%20a%20tree%20IV%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22P4665%22%2C%22title%22%3A%22%5BBalticOI%202015%5DNetwork%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1076D%22%2C%22title%22%3A%22Edge%20Deletion%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Berland%20and%20the%20Shortest%20Paths%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Berland and the Shortest Paths</h1>
+<h2>题目描述</h2>
+<div>There are $ n $ cities in Berland. Some pairs of cities are connected by roads. All roads are bidirectional. Each road connects two different cities. There is at most one road between a pair of cities. The cities are numbered from $ 1 $ to $ n $ .
+It is known that, from the capital (the city with the number $ 1 $ ), you can reach any other city by moving along the roads.
+The President of Berland plans to improve the country's road network. The budget is enough to repair exactly $ n-1 $ roads. The President plans to choose a set of $ n-1 $ roads such that:
+- it is possible to travel from the capital to any other city along the $ n-1 $ chosen roads,
+- if $ d_i $ is the number of roads needed to travel from the capital to city $ i $ , moving only along the $ n-1 $ chosen roads, then $ d_1 + d_2 + \dots + d_n $ is minimized (i.e. as minimal as possible).
+In other words, the set of $ n-1 $ roads should preserve the connectivity of the country, and the sum of distances from city $ 1 $ to all cities should be minimized (where you can only use the $ n-1 $ chosen roads).
+The president instructed the ministry to prepare $ k $ possible options to choose $ n-1 $ roads so that both conditions above are met.
+Write a program that will find $ k $ possible ways to choose roads for repair. If there are fewer than $ k $ ways, then the program should output all possible valid ways to choose roads.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains integers $ n $ , $ m $ and $ k $ ( $ 2 \le n \le 2\cdot10^5, n-1 \le m \le 2\cdot10^5, 1 \le k \le 2\cdot10^5 $ ), where $ n $ is the number of cities in the country, $ m $ is the number of roads and $ k $ is the number of options to choose a set of roads for repair. It is guaranteed that $ m \cdot k \le 10^6 $ .
+The following $ m $ lines describe the roads, one road per line. Each line contains two integers $ a_i $ , $ b_i $ ( $ 1 \le a_i, b_i \le n $ , $ a_i \ne b_i $ ) — the numbers of the cities that the $ i $ -th road connects. There is at most one road between a pair of cities. The given set of roads is such that you can reach any city from the capital.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ t $ ( $ 1 \le t \le k $ ) — the number of ways to choose a set of roads for repair. Recall that you need to find $ k $ different options; if there are fewer than $ k $ of them, then you need to find all possible different valid options.
+In the following $ t $ lines, print the options, one per line. Print an option as a string of $ m $ characters where the $ j $ -th character is equal to '1' if the $ j $ -th road is included in the option, and is equal to '0' if the road is not included. The roads should be numbered according to their order in the input. The options can be printed in any order. All the $ t $ lines should be different.
+Since it is guaranteed that $ m \cdot k \le 10^6 $ , the total length of all the $ t $ lines will not exceed $ 10^6 $ .
+If there are several answers, output any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 4 3
+1 2
+2 3
+1 4
+4 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+1110
+1011
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 6 3
+1 2
+2 3
+1 4
+4 3
+2 4
+1 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+101001
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 6 2
+1 2
+1 3
+2 4
+2 5
+3 4
+3 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>2
+111100
+110110
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

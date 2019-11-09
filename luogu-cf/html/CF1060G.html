@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Balls and Pockets - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401094:LFmZiiCsM3H7D6Xknmb+imd7IGpitAOYGnw33QpwIXI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20is%20a%20strip%20with%20an%20infinite%20number%20of%20cells.%20Cells%20are%20numbered%20starting%20with%20%24%200%20%24%20.%20Initially%20the%20cell%20%24%20i%20%24%20contains%20a%20ball%20with%20the%20number%20%24%20i%20%24%20.%5Cn%5CnThere%20are%20%24%20n%20%24%20pockets%20located%20at%20cells%20%24%20a_1%2C%20%5C%5Cldots%2C%20a_n%20%24%20.%20Each%20cell%20contains%20at%20most%20one%20pocket.%5Cn%5CnFiltering%20is%20the%20following%20sequence%20of%20operations%3A%5Cn%5Cn-%20All%20pockets%20at%20cells%20%24%20a_1%2C%20%5C%5Cldots%2C%20a_n%20%24%20open%20simultaneously%2C%20which%20makes%20balls%20currently%20located%20at%20those%20cells%20disappear.%20After%20the%20balls%20disappear%2C%20the%20pockets%20close%20again.%5Cn-%20For%20each%20cell%20%24%20i%20%24%20from%20%24%200%20%24%20to%20%24%20%5C%5Cinfty%20%24%20%2C%20if%20the%20cell%20%24%20i%20%24%20contains%20a%20ball%2C%20we%20move%20that%20ball%20to%20the%20free%20cell%20%24%20j%20%24%20with%20the%20lowest%20number.%20If%20there%20is%20no%20free%20cell%20%24%20j%20%3C%20i%20%24%20%2C%20the%20ball%20stays%20at%20the%20cell%20%24%20i%20%24%20.%5Cn%5CnNote%20that%20after%20each%20filtering%20operation%20each%20cell%20will%20still%20contain%20exactly%20one%20ball.%5Cn%5CnFor%20example%2C%20let%20the%20cells%20%24%201%20%24%20%2C%20%24%203%20%24%20and%20%24%204%20%24%20contain%20pockets.%20The%20initial%20configuration%20of%20balls%20is%20shown%20below%20%28underscores%20display%20the%20cells%20with%20pockets%29%3A%5Cn%5Cn%200%201%202%203%204%205%206%207%208%209%20...%20After%20opening%20and%20closing%20the%20pockets%2C%20balls%201%2C%203%20and%204%20disappear%3A%5Cn%5Cn%200%20%20%202%20%20%20%20%205%206%207%208%209%20...%20After%20moving%20all%20the%20balls%20to%20the%20left%2C%20the%20configuration%20looks%20like%20this%3A%5Cn%5Cn%200%202%205%206%207%208%209%2010%2011%2012%20...%20Another%20filtering%20repetition%20results%20in%20the%20following%3A%5Cn%5Cn%200%205%208%209%2010%2011%2012%2013%2014%2015%20...%20You%20have%20to%20answer%20%24%20m%20%24%20questions.%20The%20%24%20i%20%24%20-th%20of%20these%20questions%20is%20%5C%22what%20is%20the%20number%20of%20the%20ball%20located%20at%20the%20cell%20%24%20x_i%20%24%20after%20%24%20k_i%20%24%20repetitions%20of%20the%20filtering%20operation%3F%5C%22%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%5Cu2014%20the%20number%20of%20pockets%20and%20questions%20respectively%20%28%20%24%201%20%5C%5Cleq%20n%2C%20m%20%5C%5Cleq%2010%5E5%20%24%20%29.%5Cn%5CnThe%20following%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20%5C%5Cldots%2C%20a_n%20%24%20%5Cu2014%20the%20numbers%20of%20cells%20containing%20pockets%20%28%20%24%200%20%5C%5Cleq%20a_1%20%3C%20%5C%5Cldots%20%3C%20a_n%20%5C%5Cleq%2010%5E9%20%24%20%29.%5Cn%5CnThe%20following%20%24%20m%20%24%20lines%20describe%20questions.%20The%20%24%20i%20%24%20-th%20of%20these%20lines%20contains%20two%20integers%20%24%20x_i%20%24%20and%20%24%20k_i%20%24%20%28%20%24%200%20%5C%5Cleq%20x_i%2C%20k_i%20%5C%5Cleq%2010%5E9%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20%24%20m%20%24%20numbers%20%5Cu2014%20answers%20to%20the%20questions%2C%20in%20the%20same%20order%20as%20given%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%223%2015%5Cn1%203%204%5Cn0%200%5Cn1%200%5Cn2%200%5Cn3%200%5Cn4%200%5Cn0%201%5Cn1%201%5Cn2%201%5Cn3%201%5Cn4%201%5Cn0%202%5Cn1%202%5Cn2%202%5Cn3%202%5Cn4%202%5Cn%22%2C%220%5Cn1%5Cn2%5Cn3%5Cn4%5Cn0%5Cn2%5Cn5%5Cn6%5Cn7%5Cn0%5Cn5%5Cn8%5Cn9%5Cn10%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1060%5C%2FG%22%2C%22id%22%3A%221060G%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF1060G%22%2C%22title%22%3A%22Balls%20and%20Pockets%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A70139%2C%22title%22%3A%22%5Cu90a3%5Cu4f4dA%5Cu4e86%5Cu8fd9%5Cu9898%5Cu7684%5Cu5927%5Cu4f6c%5Cu53ef%5Cu771f%5Cu795e%5Cu4ed9hhh%22%2C%22forum%22%3A%7B%22id%22%3A30278%2C%22name%22%3A%22CF1060G%20Balls%20and%20Pockets%22%2C%22slug%22%3A%22CF1060G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Balls%20and%20Pockets%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Balls and Pockets</h1>
+<h2>题目描述</h2>
+<div>There is a strip with an infinite number of cells. Cells are numbered starting with $ 0 $ . Initially the cell $ i $ contains a ball with the number $ i $ .
+There are $ n $ pockets located at cells $ a_1, \ldots, a_n $ . Each cell contains at most one pocket.
+Filtering is the following sequence of operations:
+- All pockets at cells $ a_1, \ldots, a_n $ open simultaneously, which makes balls currently located at those cells disappear. After the balls disappear, the pockets close again.
+- For each cell $ i $ from $ 0 $ to $ \infty $ , if the cell $ i $ contains a ball, we move that ball to the free cell $ j $ with the lowest number. If there is no free cell $ j < i $ , the ball stays at the cell $ i $ .
+Note that after each filtering operation each cell will still contain exactly one ball.
+For example, let the cells $ 1 $ , $ 3 $ and $ 4 $ contain pockets. The initial configuration of balls is shown below (underscores display the cells with pockets):
+0 1 2 3 4 5 6 7 8 9 ... After opening and closing the pockets, balls 1, 3 and 4 disappear:
+0 2 5 6 7 8 9 ... After moving all the balls to the left, the configuration looks like this:
+0 2 5 6 7 8 9 10 11 12 ... Another filtering repetition results in the following:
+0 5 8 9 10 11 12 13 14 15 ... You have to answer $ m $ questions. The $ i $ -th of these questions is "what is the number of the ball located at the cell $ x_i $ after $ k_i $ repetitions of the filtering operation?"</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ — the number of pockets and questions respectively ( $ 1 \leq n, m \leq 10^5 $ ).
+The following line contains $ n $ integers $ a_1, \ldots, a_n $ — the numbers of cells containing pockets ( $ 0 \leq a_1 < \ldots < a_n \leq 10^9 $ ).
+The following $ m $ lines describe questions. The $ i $ -th of these lines contains two integers $ x_i $ and $ k_i $ ( $ 0 \leq x_i, k_i \leq 10^9 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ m $ numbers — answers to the questions, in the same order as given in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 15
+1 3 4
+0 0
+1 0
+2 0
+3 0
+4 0
+0 1
+1 1
+2 1
+3 1
+4 1
+0 2
+1 2
+2 2
+3 2
+4 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0
+1
+2
+3
+4
+0
+2
+5
+6
+7
+0
+5
+8
+9
+10
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

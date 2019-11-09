@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Scissors and Tape - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402897:QnaUdn1Sqwdb6Yfc9I81zmPpk4Vy57aoEclfijxakCw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20piece%20of%20paper%20in%20the%20shape%20of%20a%20simple%20polygon%20%24%20S%20%24%20.%20Your%20task%20is%20to%20turn%20it%20into%20a%20simple%20polygon%20%24%20T%20%24%20that%20has%20the%20same%20area%20as%20%24%20S%20%24%20.%5Cn%5CnYou%20can%20use%20two%20tools%3A%20scissors%20and%20tape.%20Scissors%20can%20be%20used%20to%20cut%20any%20polygon%20into%20smaller%20polygonal%20pieces.%20Tape%20can%20be%20used%20to%20combine%20smaller%20pieces%20into%20larger%20polygons.%20You%20can%20use%20each%20tool%20multiple%20times%2C%20in%20any%20order.%5Cn%5CnThe%20polygons%20given%20in%20the%20input%20have%20integer%20coordinates%2C%20but%20you%20are%20allowed%20to%20produce%20shapes%20with%20non-integer%20coordinates%20in%20your%20output.%5Cn%5CnA%20formal%20definition%20of%20the%20task%20follows.%5Cn%5CnA%20shape%20%24%20Q%3D%28Q_0%2C%5C%5Cdots%2CQ_%7Bn-1%7D%29%20%24%20is%20a%20sequence%20of%20three%20or%20more%20points%20in%20the%20plane%20such%20that%3A%5Cn%5Cn-%20The%20closed%20polyline%20%24%20Q_0Q_1Q_2%5C%5Cdots%20Q_%7Bn-1%7DQ_0%20%24%20never%20touches%20or%20intersects%20itself%2C%20and%20therefore%20it%20forms%20the%20boundary%20of%20a%20simple%20polygon.%5Cn-%20The%20polyline%20goes%20around%20the%20boundary%20of%20the%20polygon%20in%20the%20counter-clockwise%20direction.%5Cn%5CnThe%20polygon%20whose%20boundary%20is%20the%20shape%20%24%20Q%20%24%20will%20be%20denoted%20%24%20P%28Q%29%20%24%20.%5Cn%5CnTwo%20shapes%20are%20called%20equivalent%20if%20one%20can%20be%20translated%20and%5C%2For%20rotated%20to%20become%20identical%20with%20the%20other.%5Cn%5CnNote%20that%20mirroring%20a%20shape%20is%20not%20allowed.%20Also%20note%20that%20the%20order%20of%20points%20matters%3A%20the%20shape%20%24%20%28Q_1%2C%5C%5Cdots%2CQ_%7Bn-1%7D%2CQ_0%29%20%24%20is%20not%20necessarily%20equivalent%20to%20the%20shape%20%24%20%28Q_0%2C%5C%5Cdots%2CQ_%7Bn-1%7D%29%20%24%20.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1193C%5C%2Fd1a28008acc119f82258132ac985cc64eceafa00.png%29%5Cn%5CnIn%20the%20figure%20on%20the%20left%3A%20Shapes%20%24%20U%20%24%20and%20%24%20V%20%24%20are%20equivalent.%20Shape%20%24%20W%20%24%20is%20not%20equivalent%20with%20them%20because%20the%20points%20of%20%24%20W%20%24%20are%20given%20in%20a%20different%20order.%20Regardless%20of%20the%20order%20of%20points%2C%20the%20fourth%20shape%20is%20not%20equivalent%20with%20the%20previous%20ones%20either%20as%20flipping%20a%20shape%20is%20not%20allowed.%5Cn%5CnIn%20both%20input%20and%20output%2C%20a%20shape%20with%20%24%20n%20%24%20points%20is%20represented%20as%20a%20single%20line%20that%20contains%20%24%202n%2B1%20%24%20space-separated%20numbers%3A%20the%20number%20%24%20n%20%24%20followed%20by%20the%20coordinates%20of%20the%20points%3A%20%24%20Q_%7B0%2Cx%7D%20%24%20%2C%20%24%20Q_%7B0%2Cy%7D%20%24%20%2C%20%24%20Q_%7B1%2Cx%7D%20%24%20%2C%20...%5Cn%5CnShapes%20have%20identification%20numbers%20%28IDs%29.%20The%20given%20shape%20%24%20S%20%24%20has%20ID%200%2C%20the%20shapes%20you%20produce%20in%20your%20solutions%20are%20given%20IDs%201%2C%202%2C%203%2C%20...%2C%20in%20the%20order%20in%20which%20they%20are%20produced.%5Cn%5CnShapes%20%24%20B_1%2C%5C%5Cdots%2CB_k%20%24%20form%20a%20subdivision%20of%20shape%20%24%20A%20%24%20if%3A%5Cn%5Cn-%20The%20union%20of%20all%20%24%20P%28B_i%29%20%24%20is%20exactly%20%24%20P%28A%29%20%24%20.%5Cn-%20For%20each%20%24%20i%5C%5Cneq%20j%20%24%20%2C%20the%20area%20of%20the%20intersection%20of%20%24%20P%28B_i%29%20%24%20and%20%24%20P%28B_j%29%20%24%20is%20zero.%5Cn%5CnThe%20scissors%20operation%20destroys%20one%20existing%20shape%20%24%20A%20%24%20and%20produces%20one%20or%20more%20shapes%20%24%20B_1%2C%5C%5Cdots%2CB_k%20%24%20that%20form%20a%20subdivision%20of%20%24%20A%20%24%20.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1193C%5C%2F9a5c1ef81b9fb8ea7295637e5ff1693815f1581b.png%29%5Cn%5CnIn%20the%20figure%3A%20Shape%20%24%20A%20%24%20%28square%29%20subdivided%20into%20shapes%20%24%20B_1%20%24%20%2C%20%24%20B_2%20%24%20%2C%20%24%20B_3%20%24%20%28the%20three%20triangles%29.%20One%20valid%20way%20to%20describe%20one%20of%20the%20%24%20B_i%20%24%20is%20%5C%223%203%201%206%201%205.1%204%5C%22.%5Cn%5CnThe%20tape%20operation%20destroys%20one%20or%20more%20existing%20shapes%20%24%20A_1%2C%5C%5Cdots%2CA_k%20%24%20and%20produces%20one%20new%20shape%20%24%20B%20%24%20.%20In%20order%20to%20perform%20this%20operation%2C%20you%20must%20first%20specify%20shapes%20%24%20C_1%2C%5C%5Cdots%2CC_k%20%24%20and%20only%20then%20the%20final%20shape%20%24%20B%20%24%20.%20These%20shapes%20must%20satisfy%20the%20following%3A%5Cn%5Cn-%20For%20each%20%24%20i%20%24%20%2C%20the%20shape%20%24%20C_i%20%24%20is%20equivalent%20to%20the%20shape%20%24%20A_i%20%24%20.%5Cn-%20The%20shapes%20%24%20C_1%2C%5C%5Cdots%2CC_k%20%24%20form%20a%20subdivision%20of%20the%20shape%20%24%20B%20%24%20.%5Cn%5CnInformally%2C%20you%20choose%20the%20shape%20%24%20B%20%24%20and%20show%20how%20to%20move%20each%20of%20the%20existing%20%24%20A_i%20%24%20to%20its%20correct%20location%20%24%20C_i%20%24%20within%20%24%20B%20%24%20.%20Note%20that%20only%20the%20shape%20%24%20B%20%24%20gets%20a%20new%20ID%2C%20the%20shapes%20%24%20C_i%20%24%20do%20not.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20source%20shape%20%24%20S%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20the%20target%20shape%20%24%20T%20%24%20.%5Cn%5CnEach%20shape%20has%20between%203%20and%2010%20points%2C%20inclusive.%20Both%20shapes%20are%20given%20in%20the%20format%20specified%20above.%5Cn%5CnAll%20coordinates%20in%20the%20input%20are%20integers%20between%20%24%20-10%5E6%20%24%20and%20%24%2010%5E6%20%24%20%2C%20inclusive.%5Cn%5CnIn%20each%20shape%2C%20no%20three%20points%20form%20an%20angle%20smaller%20than%203%20degrees.%20%28This%20includes%20non-consecutive%20points%20and%20implies%20that%20no%20three%20points%20are%20collinear.%29%5Cn%5CnThe%20polygons%20%24%20P%28S%29%20%24%20and%20%24%20P%28T%29%20%24%20have%20the%20same%20area.%22%2C%22outputFormat%22%3A%22Whenever%20you%20use%20the%20scissors%20operation%2C%20output%20a%20block%20of%20lines%20of%20the%20form%3A%5Cn%5Cn%60%60%60%5Cn%3Cpre%20class%3D%5C%22verbatim%5C%22%3E%3Cbr%3E%3C%5C%2Fbr%3Escissors%3Cbr%3E%3C%5C%2Fbr%3Eid%28A%29%20k%3Cbr%3E%3C%5C%2Fbr%3EB_1%3Cbr%3E%3C%5C%2Fbr%3EB_2%3Cbr%3E%3C%5C%2Fbr%3E...%3Cbr%3E%3C%5C%2Fbr%3EB_k%3Cbr%3E%3C%5C%2Fbr%3E%5Cn%60%60%60%5Cn%5Cnwhere%20%24%20id%28A%29%20%24%20is%20the%20ID%20of%20the%20shape%20you%20want%20to%20destroy%2C%20%24%20k%20%24%20is%20the%20number%20of%20new%20shapes%20you%20want%20to%20produce%2C%20and%20%24%20B_1%2C%5C%5Cdots%2CB_k%20%24%20are%20those%20shapes.%5Cn%5CnWhenever%20you%20use%20the%20tape%20operation%2C%20output%20a%20block%20of%20lines%20of%20the%20form%3A%5Cn%5Cn%60%60%60%5Cn%3Cpre%20class%3D%5C%22verbatim%5C%22%3E%3Cbr%3E%3C%5C%2Fbr%3Etape%3Cbr%3E%3C%5C%2Fbr%3Ek%20id%28A_1%29%20...%20id%28A_k%29%3Cbr%3E%3C%5C%2Fbr%3EC_1%3Cbr%3E%3C%5C%2Fbr%3EC_2%3Cbr%3E%3C%5C%2Fbr%3E...%3Cbr%3E%3C%5C%2Fbr%3EC_k%3Cbr%3E%3C%5C%2Fbr%3EB%3Cbr%3E%3C%5C%2Fbr%3E%5Cn%60%60%60%5Cn%5Cnwhere%20%24%20k%20%24%20is%20the%20number%20of%20shapes%20you%20want%20to%20tape%20together%2C%20%24%20id%28A_1%29%2C%5C%5Cdots%2Cid%28A_k%29%20%24%20are%20their%20IDs%2C%20%24%20C_1%2C%5C%5Cdots%2CC_k%20%24%20are%20equivalent%20shapes%20showing%20their%20position%20within%20%24%20B%20%24%20%2C%20and%20%24%20B%20%24%20is%20the%20final%20shape%20obtained%20by%20taping%20them%20together.%5Cn%5CnIt%20is%20recommended%20to%20output%20coordinates%20of%20points%20to%20at%20least%2010%20decimal%20places.%5Cn%5CnThe%20output%20must%20satisfy%20the%20following%3A%5Cn%5Cn-%20All%20coordinates%20of%20points%20in%20the%20output%20must%20be%20between%20%24%20-10%5E7%20%24%20and%20%24%2010%5E7%20%24%20%2C%20inclusive.%5Cn-%20Each%20shape%20in%20the%20output%20must%20have%20at%20most%20%24%20100%20%24%20points.%5Cn-%20In%20each%20operation%20the%20number%20%24%20k%20%24%20of%20shapes%20must%20be%20between%20%24%201%20%24%20and%20%24%20100%20%24%20%2C%20inclusive.%5Cn-%20The%20number%20of%20operations%20must%20not%20exceed%20%24%202000%20%24%20.%5Cn-%20The%20total%20number%20of%20points%20in%20all%20shapes%20in%20the%20output%20must%20not%20exceed%20%24%2020000%20%24%20.%5Cn-%20In%20the%20end%2C%20there%20must%20be%20exactly%20one%20shape%20%28that%20hasn%27t%20been%20destroyed%29%2C%20and%20that%20shape%20must%20be%20equivalent%20to%20%24%20T%20%24%20.%5Cn-%20All%20operations%20must%20be%20valid%20according%20to%20the%20checker.%20Solutions%20with%20small%20rounding%20errors%20will%20be%20accepted.%20%28Internally%2C%20all%20comparisons%20check%20for%20absolute%20or%20relative%20error%20up%20to%20%24%2010%5E%7B-3%7D%20%24%20when%20verifying%20each%20condition.%29%5Cn%5CnScoring%5Cn%5CnA%20shape%20is%20called%20a%20nice%20rectangle%20if%20it%20has%20the%20form%20%24%20%28%280%2C0%29%2C~%20%28x%2C0%29%2C~%20%28x%2Cy%29%2C~%20%280%2Cy%29%29%20%24%20for%20some%20positive%20integers%20%24%20x%20%24%20and%20%24%20y%20%24%20.%5Cn%5CnA%20shape%20is%20called%20a%20nice%20square%20if%20additionally%20%24%20x%3Dy%20%24%20.%5Cn%5CnA%20shape%20%24%20A%20%24%20is%20called%20strictly%20convex%20if%20all%20inner%20angles%20of%20the%20polygon%20%24%20P%28A%29%20%24%20are%20smaller%20than%20180%20degrees.%5Cn%5CnSubtask%201%20%285%20points%29%3A%20%24%20S%20%24%20and%20%24%20T%20%24%20are%20nice%20rectangles.%20All%20coordinates%20of%20all%20points%20are%20integers%20between%200%20and%2010%2C%20inclusive%5Cn%5CnSubtask%202%20%2813%20points%29%3A%20%24%20S%20%24%20is%20a%20nice%20rectangle%20with%20%24%20x%3Ey%20%24%20%2C%20and%20%24%20T%20%24%20is%20a%20nice%20square%5Cn%5CnSubtask%203%20%2812%20points%29%3A%20%24%20S%20%24%20and%20%24%20T%20%24%20are%20nice%20rectangles%5Cn%5CnSubtask%204%20%2814%20points%29%3A%20%24%20S%20%24%20is%20a%20triangle%20and%20%24%20T%20%24%20is%20a%20nice%20square%5Cn%5CnSubtask%205%20%2810%20points%29%3A%20%24%20S%20%24%20and%20%24%20T%20%24%20are%20triangles%5Cn%5CnSubtask%206%20%2816%20points%29%3A%20%24%20S%20%24%20is%20a%20strictly%20convex%20polygon%20and%20%24%20T%20%24%20is%20a%20nice%20rectangle%5Cn%5CnSubtask%207%20%2811%20points%29%3A%20%24%20T%20%24%20is%20a%20nice%20rectangle%5Cn%5CnSubtask%208%20%2819%20points%29%3A%20no%20additional%20constraints%22%2C%22samples%22%3A%5B%5B%22%5Cn6%200%200%206%200%206%204%205%204%205%209%200%209%5Cn4%200%200%207%200%207%207%200%207%5Cn%22%2C%22%5Cnscissors%5Cn0%205%5Cn3%200%200%203%200%203%204%5Cn3%203%204%200%204%200%200%5Cn3%203%200%206%200%206%204%5Cn3%206%204%203%204%203%200%5Cn4%200%204%205%204%205%209%200%209%5Cntape%5Cn5%201%202%205%203%204%5Cn3%200%203%200%200%204%200%5Cn3%204%200%207%200%207%204%5Cn4%200%203%204%200%207%204%203%207%5Cn3%207%204%207%207%203%207%5Cn3%203%207%200%207%200%203%5Cn4%200%200%207%200%207%207%200%207%22%5D%2C%5B%22%5Cn4%200%200%203%200%203%203%200%203%5Cn4%207%20-1%2010%20-1%2011%202%208%202%5Cn%22%2C%22%5Cnscissors%5Cn0%202%5Cn3%200%200%201%203%200%203%5Cn4%201%203%200%200%203%200%203%203%5Cntape%5Cn2%201%202%5Cn3%20110%20-1%20111%202%20110%202%5Cn4%20108%202%20107%20-1%20110%20-1%20110%202%5Cn4%20107%20-1%20110%20-1%20111%202%20108%202%5Cn%22%5D%2C%5B%22%5Cn4%200%200%209%200%209%201%200%201%5Cn4%200%200%203%200%203%203%200%203%5Cn%22%2C%22%5Cnscissors%5Cn0%202%5Cn4%201.470000000%200%209%200%209%201%201.470000000%201%5Cn4%200%200%201.470000000%200%201.470000000%201%200%201%5Cnscissors%5Cn1%202%5Cn4%201.470000000%200%206%200%206%201%201.470000000%201%5Cn4%209%200%209%201%206%201%206%200%5Cntape%5Cn2%204%203%5Cn4%203%202%203%201%206%201%206%202%5Cn4%206%201%201.470000000%201%201.470000000%200%206%200%5Cn6%201.470000000%200%206%200%206%202%203%202%203%201%201.470000000%201%5Cnscissors%5Cn5%204%5Cn4%201.470000000%200%203%200%203%201%201.470000000%201%5Cn4%203%200%204%200%204%202%203%202%5Cn4%204%202%204%200%205%200%205%202%5Cn4%205%200%206%200%206%202%205%202%5Cntape%5Cn5%202%206%207%208%209%5Cn4%200%200%201.470000000%200%201.470000000%201%200%201%5Cn4%201.470000000%200%203%200%203%201%201.470000000%201%5Cn4%200%202%200%201%202%201%202%202%5Cn4%200%202%202%202%202%203%200%203%5Cn4%203%203%202%203%202%201%203%201%5Cn4%200%200%203%200%203%203%200%203%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20figure%20below%20shows%20the%20first%20example%20output.%20On%20the%20left%20is%20the%20original%20figure%20after%20using%20the%20scissors%2C%20on%20the%20right%20are%20the%20corresponding%20%24%20C_i%20%24%20when%20we%20tape%20those%20pieces%20back%20together.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1193C%5C%2F1cfd5d63b59a38540d2255e652439003f7ac098a.png%29%5Cn%5CnIn%20the%20second%20example%20output%2C%20note%20that%20it%20is%20sufficient%20if%20the%20final%20shape%20is%20equivalent%20to%20the%20target%20one%2C%20they%20do%20not%20have%20to%20be%20identical.%5Cn%5CnThe%20figure%20below%20shows%20three%20stages%20of%20the%20third%20example%20output.%20First%2C%20we%20cut%20the%20input%20rectangle%20into%20two%20smaller%20rectangles%2C%20then%20we%20cut%20the%20bigger%20of%20those%20two%20rectangles%20into%20two%20more.%20State%20after%20these%20cuts%20is%20shown%20in%20the%20top%20left%20part%20of%20the%20figure.%5Cn%5CnContinuing%2C%20we%20tape%20the%20two%20new%20rectangles%20together%20to%20form%20a%20six-sided%20polygon%2C%20and%20then%20we%20cut%20that%20polygon%20into%20three%202-by-1%20rectangles%20and%20one%20smaller%20rectangle.%20This%20is%20shown%20in%20the%20bottom%20left%20part%20of%20the%20figure.%5Cn%5CnFinally%2C%20we%20take%20the%20rectangle%20we%20still%20have%20from%20the%20first%20step%20and%20the%20four%20new%20rectangles%20and%20we%20assemble%20them%20into%20the%20desired%203-by-3%20square.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1193C%5C%2F828f37496fc51eb48852d68afe2e8b0390958b6c.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1024000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1193%5C%2FC%22%2C%22id%22%3A%221193C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF1193C%22%2C%22title%22%3A%22Scissors%20and%20Tape%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Scissors%20and%20Tape%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Scissors and Tape</h1>
+<h2>题目描述</h2>
+<div>You are given a piece of paper in the shape of a simple polygon $ S $ . Your task is to turn it into a simple polygon $ T $ that has the same area as $ S $ .
+You can use two tools: scissors and tape. Scissors can be used to cut any polygon into smaller polygonal pieces. Tape can be used to combine smaller pieces into larger polygons. You can use each tool multiple times, in any order.
+The polygons given in the input have integer coordinates, but you are allowed to produce shapes with non-integer coordinates in your output.
+A formal definition of the task follows.
+A shape $ Q=(Q_0,\dots,Q_{n-1}) $ is a sequence of three or more points in the plane such that:
+- The closed polyline $ Q_0Q_1Q_2\dots Q_{n-1}Q_0 $ never touches or intersects itself, and therefore it forms the boundary of a simple polygon.
+- The polyline goes around the boundary of the polygon in the counter-clockwise direction.
+The polygon whose boundary is the shape $ Q $ will be denoted $ P(Q) $ .
+Two shapes are called equivalent if one can be translated and/or rotated to become identical with the other.
+Note that mirroring a shape is not allowed. Also note that the order of points matters: the shape $ (Q_1,\dots,Q_{n-1},Q_0) $ is not necessarily equivalent to the shape $ (Q_0,\dots,Q_{n-1}) $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1193C/d1a28008acc119f82258132ac985cc64eceafa00.png)
+In the figure on the left: Shapes $ U $ and $ V $ are equivalent. Shape $ W $ is not equivalent with them because the points of $ W $ are given in a different order. Regardless of the order of points, the fourth shape is not equivalent with the previous ones either as flipping a shape is not allowed.
+In both input and output, a shape with $ n $ points is represented as a single line that contains $ 2n+1 $ space-separated numbers: the number $ n $ followed by the coordinates of the points: $ Q_{0,x} $ , $ Q_{0,y} $ , $ Q_{1,x} $ , ...
+Shapes have identification numbers (IDs). The given shape $ S $ has ID 0, the shapes you produce in your solutions are given IDs 1, 2, 3, ..., in the order in which they are produced.
+Shapes $ B_1,\dots,B_k $ form a subdivision of shape $ A $ if:
+- The union of all $ P(B_i) $ is exactly $ P(A) $ .
+- For each $ i\neq j $ , the area of the intersection of $ P(B_i) $ and $ P(B_j) $ is zero.
+The scissors operation destroys one existing shape $ A $ and produces one or more shapes $ B_1,\dots,B_k $ that form a subdivision of $ A $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1193C/9a5c1ef81b9fb8ea7295637e5ff1693815f1581b.png)
+In the figure: Shape $ A $ (square) subdivided into shapes $ B_1 $ , $ B_2 $ , $ B_3 $ (the three triangles). One valid way to describe one of the $ B_i $ is "3 3 1 6 1 5.1 4".
+The tape operation destroys one or more existing shapes $ A_1,\dots,A_k $ and produces one new shape $ B $ . In order to perform this operation, you must first specify shapes $ C_1,\dots,C_k $ and only then the final shape $ B $ . These shapes must satisfy the following:
+- For each $ i $ , the shape $ C_i $ is equivalent to the shape $ A_i $ .
+- The shapes $ C_1,\dots,C_k $ form a subdivision of the shape $ B $ .
+Informally, you choose the shape $ B $ and show how to move each of the existing $ A_i $ to its correct location $ C_i $ within $ B $ . Note that only the shape $ B $ gets a new ID, the shapes $ C_i $ do not.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the source shape $ S $ .
+The second line contains the target shape $ T $ .
+Each shape has between 3 and 10 points, inclusive. Both shapes are given in the format specified above.
+All coordinates in the input are integers between $ -10^6 $ and $ 10^6 $ , inclusive.
+In each shape, no three points form an angle smaller than 3 degrees. (This includes non-consecutive points and implies that no three points are collinear.)
+The polygons $ P(S) $ and $ P(T) $ have the same area.</div>
+<h3>输出格式</h3>
+<br />
+<div>Whenever you use the scissors operation, output a block of lines of the form:
+```
+<pre class="verbatim"><br></br>scissors<br></br>id(A) k<br></br>B_1<br></br>B_2<br></br>...<br></br>B_k<br></br>
+```
+
+where $ id(A) $ is the ID of the shape you want to destroy, $ k $ is the number of new shapes you want to produce, and $ B_1,\dots,B_k $ are those shapes.
+
+Whenever you use the tape operation, output a block of lines of the form:
+
+```
+<pre class="verbatim"><br></br>tape<br></br>k id(A_1) ... id(A_k)<br></br>C_1<br></br>C_2<br></br>...<br></br>C_k<br></br>B<br></br>
+```
+
+where $ k $ is the number of shapes you want to tape together, $ id(A_1),\dots,id(A_k) $ are their IDs, $ C_1,\dots,C_k $ are equivalent shapes showing their position within $ B $ , and $ B $ is the final shape obtained by taping them together.
+
+It is recommended to output coordinates of points to at least 10 decimal places.
+
+The output must satisfy the following:
+
+- All coordinates of points in the output must be between $ -10^7 $ and $ 10^7 $ , inclusive.
+- Each shape in the output must have at most $ 100 $ points.
+- In each operation the number $ k $ of shapes must be between $ 1 $ and $ 100 $ , inclusive.
+- The number of operations must not exceed $ 2000 $ .
+- The total number of points in all shapes in the output must not exceed $ 20000 $ .
+- In the end, there must be exactly one shape (that hasn't been destroyed), and that shape must be equivalent to $ T $ .
+- All operations must be valid according to the checker. Solutions with small rounding errors will be accepted. (Internally, all comparisons check for absolute or relative error up to $ 10^{-3} $ when verifying each condition.)
+
+Scoring
+
+A shape is called a nice rectangle if it has the form $ ((0,0),~ (x,0),~ (x,y),~ (0,y)) $ for some positive integers $ x $ and $ y $ .
+
+A shape is called a nice square if additionally $ x=y $ .
+
+A shape $ A $ is called strictly convex if all inner angles of the polygon $ P(A) $ are smaller than 180 degrees.
+
+Subtask 1 (5 points): $ S $ and $ T $ are nice rectangles. All coordinates of all points are integers between 0 and 10, inclusive
+
+Subtask 2 (13 points): $ S $ is a nice rectangle with $ x>y $ , and $ T $ is a nice square
+
+Subtask 3 (12 points): $ S $ and $ T $ are nice rectangles
+
+Subtask 4 (14 points): $ S $ is a triangle and $ T $ is a nice square
+
+Subtask 5 (10 points): $ S $ and $ T $ are triangles
+
+Subtask 6 (16 points): $ S $ is a strictly convex polygon and $ T $ is a nice rectangle
+
+Subtask 7 (11 points): $ T $ is a nice rectangle
+
+Subtask 8 (19 points): no additional constraints</div>
+
+    <h2>输入输出样例</h2>
+                        <h3>输入样例 #1</h3>
+            <pre><code>
+6 0 0 6 0 6 4 5 4 5 9 0 9
+4 0 0 7 0 7 7 0 7
+</code></pre>
+            <h3>输出样例 #1</h3>
+            <pre><code>
+scissors
+0 5
+3 0 0 3 0 3 4
+3 3 4 0 4 0 0
+3 3 0 6 0 6 4
+3 6 4 3 4 3 0
+4 0 4 5 4 5 9 0 9
+tape
+5 1 2 5 3 4
+3 0 3 0 0 4 0
+3 4 0 7 0 7 4
+4 0 3 4 0 7 4 3 7
+3 7 4 7 7 3 7
+3 3 7 0 7 0 3
+4 0 0 7 0 7 7 0 7</code></pre>
+                    <h3>输入样例 #2</h3>
+            <pre><code>
+4 0 0 3 0 3 3 0 3
+4 7 -1 10 -1 11 2 8 2
+</code></pre>
+            <h3>输出样例 #2</h3>
+            <pre><code>
+scissors
+0 2
+3 0 0 1 3 0 3
+4 1 3 0 0 3 0 3 3
+tape
+2 1 2
+3 110 -1 111 2 110 2
+4 108 2 107 -1 110 -1 110 2
+4 107 -1 110 -1 111 2 108 2
+</code></pre>
+                    <h3>输入样例 #3</h3>
+            <pre><code>
+4 0 0 9 0 9 1 0 1
+4 0 0 3 0 3 3 0 3
+</code></pre>
+            <h3>输出样例 #3</h3>
+            <pre><code>
+scissors
+0 2
+4 1.470000000 0 9 0 9 1 1.470000000 1
+4 0 0 1.470000000 0 1.470000000 1 0 1
+scissors
+1 2
+4 1.470000000 0 6 0 6 1 1.470000000 1
+4 9 0 9 1 6 1 6 0
+tape
+2 4 3
+4 3 2 3 1 6 1 6 2
+4 6 1 1.470000000 1 1.470000000 0 6 0
+6 1.470000000 0 6 0 6 2 3 2 3 1 1.470000000 1
+scissors
+5 4
+4 1.470000000 0 3 0 3 1 1.470000000 1
+4 3 0 4 0 4 2 3 2
+4 4 2 4 0 5 0 5 2
+4 5 0 6 0 6 2 5 2
+tape
+5 2 6 7 8 9
+4 0 0 1.470000000 0 1.470000000 1 0 1
+4 1.470000000 0 3 0 3 1 1.470000000 1
+4 0 2 0 1 2 1 2 2
+4 0 2 2 2 2 3 0 3
+4 3 3 2 3 2 1 3 1
+4 0 0 3 0 3 3 0 3
+</code></pre>
+            
+            <h2>说明</h2>
+        <div>The figure below shows the first example output. On the left is the original figure after using the scissors, on the right are the corresponding $ C_i $ when we tape those pieces back together.
+
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1193C/1cfd5d63b59a38540d2255e652439003f7ac098a.png)
+
+In the second example output, note that it is sufficient if the final shape is equivalent to the target one, they do not have to be identical.
+
+The figure below shows three stages of the third example output. First, we cut the input rectangle into two smaller rectangles, then we cut the bigger of those two rectangles into two more. State after these cuts is shown in the top left part of the figure.
+
+Continuing, we tape the two new rectangles together to form a six-sided polygon, and then we cut that polygon into three 2-by-1 rectangles and one smaller rectangle. This is shown in the bottom left part of the figure.
+
+Finally, we take the rectangle we still have from the first step and the four new rectangles and we assemble them into the desired 3-by-3 square.
+
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1193C/828f37496fc51eb48852d68afe2e8b0390958b6c.png)</div>
+    </article>
+    </div>
+</div>
+<!-- <script src="//www.recaptcha.net/recaptcha/api.js?hl=zh-CN&render=explicit&onload=renderCaptcha" async defer></script> -->
+</body>
+</html>

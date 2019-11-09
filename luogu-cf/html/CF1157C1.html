@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Increasing Subsequence (easy version) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402408:mNhb+DO+vf28yqiQ2Bp0/8LK25Vu7whSesl69OzrScU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20only%20difference%20between%20problems%20C1%20and%20C2%20is%20that%20all%20values%20in%20input%20of%20problem%20C1%20are%20distinct%20%28this%20condition%20may%20be%20false%20for%20problem%20C2%29.%5Cn%5CnYou%20are%20given%20a%20sequence%20%24%20a%20%24%20consisting%20of%20%24%20n%20%24%20integers.%20All%20these%20integers%20are%20distinct%2C%20each%20value%20from%20%24%201%20%24%20to%20%24%20n%20%24%20appears%20in%20the%20sequence%20exactly%20once.%5Cn%5CnYou%20are%20making%20a%20sequence%20of%20moves.%20During%20each%20move%20you%20must%20take%20either%20the%20leftmost%20element%20of%20the%20sequence%20or%20the%20rightmost%20element%20of%20the%20sequence%2C%20write%20it%20down%20and%20remove%20it%20from%20the%20sequence.%20Your%20task%20is%20to%20write%20down%20a%20strictly%20increasing%20sequence%2C%20and%20among%20all%20such%20sequences%20you%20should%20take%20the%20longest%20%28the%20length%20of%20the%20sequence%20is%20the%20number%20of%20elements%20in%20it%29.%5Cn%5CnFor%20example%2C%20for%20the%20sequence%20%24%20%5B2%2C%201%2C%205%2C%204%2C%203%5D%20%24%20the%20answer%20is%20%24%204%20%24%20%28you%20take%20%24%202%20%24%20and%20the%20sequence%20becomes%20%24%20%5B1%2C%205%2C%204%2C%203%5D%20%24%20%2C%20then%20you%20take%20the%20rightmost%20element%20%24%203%20%24%20and%20the%20sequence%20becomes%20%24%20%5B1%2C%205%2C%204%5D%20%24%20%2C%20then%20you%20take%20%24%204%20%24%20and%20the%20sequence%20becomes%20%24%20%5B1%2C%205%5D%20%24%20and%20then%20you%20take%20%24%205%20%24%20and%20the%20sequence%20becomes%20%24%20%5B1%5D%20%24%20%2C%20the%20obtained%20increasing%20sequence%20is%20%24%20%5B2%2C%203%2C%204%2C%205%5D%20%24%20%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20%24%20a%20%24%20.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%20n%20%24%20%29%2C%20where%20%24%20a_i%20%24%20is%20the%20%24%20i%20%24%20-th%20element%20of%20%24%20a%20%24%20.%20All%20these%20integers%20are%20pairwise%20distinct.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20of%20the%20output%20print%20%24%20k%20%24%20%5Cu2014%20the%20maximum%20number%20of%20elements%20in%20a%20strictly%20increasing%20sequence%20you%20can%20obtain.%5Cn%5CnIn%20the%20second%20line%20print%20a%20string%20%24%20s%20%24%20of%20length%20%24%20k%20%24%20%2C%20where%20the%20%24%20j%20%24%20-th%20character%20of%20this%20string%20%24%20s_j%20%24%20should%20be%20%27L%27%20if%20you%20take%20the%20leftmost%20element%20during%20the%20%24%20j%20%24%20-th%20move%20and%20%27R%27%20otherwise.%20If%20there%20are%20multiple%20answers%2C%20you%20can%20print%20any.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%5Cn2%201%205%204%203%5Cn%22%2C%22%5Cn4%5CnLRRR%5Cn%22%5D%2C%5B%22%5Cn7%5Cn1%203%205%206%207%204%202%5Cn%22%2C%22%5Cn7%5CnLRLRLLL%5Cn%22%5D%2C%5B%22%5Cn3%5Cn1%202%203%5Cn%22%2C%22%5Cn3%5CnLLL%5Cn%22%5D%2C%5B%22%5Cn4%5Cn1%202%204%203%5Cn%22%2C%22%5Cn4%5CnLLRL%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20example%20is%20described%20in%20the%20problem%20statement.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1157%5C%2FC1%22%2C%22id%22%3A%221157C1%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20n%20%5Cu7684%5Cu5e8f%5Cu5217%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu53d6%5Cu51fa%5Cu5f53%5Cu524d%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu6700%5Cu5de6%5Cu6216%5Cu6700%5Cu53f3%5Cu7684%5Cu6570%5Cu5b57%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu53d6%5Cu51fa%5Cu7684%5Cu6570%5Cu90fd%5Cu8981%5Cu5927%5Cu4e8e%5Cu7b49%5Cu4e8e%5Cu4e0a%5Cu4e00%5Cu6b21%5Cu53d6%5Cu51fa%5Cu7684%5Cu6570%5Cuff0c%5Cu6c42%5Cu6700%5Cu591a%5Cu53d6%5Cu51fa%5Cu591a%5Cu5c11%5Cu6570%5Cu5b57%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20n%20%281%20%3C%3D%20n%20%3C%3D%202%2A10%5E5%29%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%20n%20%5Cu4e2a%5Cu4e0d%5Cu8d85%5Cu8fc7%20n%20%5Cu7684%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu539f%5Cu5e8f%5Cu5217%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu6700%5Cu591a%5Cu53d6%5Cu51fa%5Cu7684%5Cu6570%5Cu5b57%5Cu4e2a%5Cu6570%20k%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6309%5Cu987a%5Cu5e8f%5Cu8f93%5Cu51fa%20k%20%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu2018L%5Cu2019%5Cu6216%5Cu2018R%5Cu2019%5Cu8868%5Cu793a%5Cu6bcf%5Cu6b21%5Cu53d6%5Cu5de6%5Cu8fb9%5Cu6216%5Cu53f3%5Cu8fb9%5Cr%5Cn%5Cr%5Cn%5Cu591a%5Cu89e3%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu7ec4%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A113%2C%22totalAccepted%22%3A61%2C%22pid%22%3A%22CF1157C1%22%2C%22title%22%3A%22Increasing%20Subsequence%20%28easy%20version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2698%22%2C%22title%22%3A%22%5BUSACO12MAR%5D%5Cu82b1%5Cu76c6Flowerpot%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2824%22%2C%22title%22%3A%22%5BHEOI2016%5C%2FTJOI2016%5D%5Cu6392%5Cu5e8f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1175D%22%2C%22title%22%3A%22Array%20Splitting%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1157C2%22%2C%22title%22%3A%22Increasing%20Subsequence%20%28hard%20version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1213F%22%2C%22title%22%3A%22Unstable%20String%20Sort%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Increasing%20Subsequence%20%28easy%20version%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Increasing Subsequence (easy version)</h1>
+<h2>题意翻译</h2>
+<div>给你一个长度为 n 的序列，每次取出当前序列中最左或最右的数字，每次取出的数都要大于等于上一次取出的数，求最多取出多少数字。
+第一行一个整数 n (1 <= n <= 2*10^5)
+第二行 n 个不超过 n 的整数表示原序列
+第一行输出最多取出的数字个数 k
+第二行按顺序输出 k 个字符‘L’或‘R’表示每次取左边或右边
+多解输出任意一组</div>
+<h2>题目描述</h2>
+<div>The only difference between problems C1 and C2 is that all values in input of problem C1 are distinct (this condition may be false for problem C2).
+You are given a sequence $ a $ consisting of $ n $ integers. All these integers are distinct, each value from $ 1 $ to $ n $ appears in the sequence exactly once.
+You are making a sequence of moves. During each move you must take either the leftmost element of the sequence or the rightmost element of the sequence, write it down and remove it from the sequence. Your task is to write down a strictly increasing sequence, and among all such sequences you should take the longest (the length of the sequence is the number of elements in it).
+For example, for the sequence $ [2, 1, 5, 4, 3] $ the answer is $ 4 $ (you take $ 2 $ and the sequence becomes $ [1, 5, 4, 3] $ , then you take the rightmost element $ 3 $ and the sequence becomes $ [1, 5, 4] $ , then you take $ 4 $ and the sequence becomes $ [1, 5] $ and then you take $ 5 $ and the sequence becomes $ [1] $ , the obtained increasing sequence is $ [2, 3, 4, 5] $ ).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ n $ ( $ 1 \le n \le 2 \cdot 10^5 $ ) — the number of elements in $ a $ .
+The second line of the input contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le n $ ), where $ a_i $ is the $ i $ -th element of $ a $ . All these integers are pairwise distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line of the output print $ k $ — the maximum number of elements in a strictly increasing sequence you can obtain.
+In the second line print a string $ s $ of length $ k $ , where the $ j $ -th character of this string $ s_j $ should be 'L' if you take the leftmost element during the $ j $ -th move and 'R' otherwise. If there are multiple answers, you can print any.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5
+2 1 5 4 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+4
+LRRR
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+7
+1 3 5 6 7 4 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+7
+LRLRLLL
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+3
+1 2 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+3
+LLL
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+4
+1 2 4 3
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+4
+LLRL
+</code></pre>
+<h2>说明</h2>
+<div>The first example is described in the problem statement.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

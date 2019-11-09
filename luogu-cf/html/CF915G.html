@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Coprime Arrays - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399365:/Wo2/ZsDsrlyTL8pUFC4gOEwfvhgUMdFGsSVq4QfbFM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Let%27s%20call%20an%20array%20%24%20a%20%24%20of%20size%20%24%20n%20%24%20coprime%20iff%20%24%20gcd%28a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%29%3D1%20%24%20%2C%20where%20%24%20gcd%20%24%20is%20the%20greatest%20common%20divisor%20of%20the%20arguments.%5Cn%5CnYou%20are%20given%20two%20numbers%20%24%20n%20%24%20and%20%24%20k%20%24%20.%20For%20each%20%24%20i%20%24%20%28%20%24%201%3C%3Di%3C%3Dk%20%24%20%29%20you%20have%20to%20determine%20the%20number%20of%20coprime%20arrays%20%24%20a%20%24%20of%20size%20%24%20n%20%24%20such%20that%20for%20every%20%24%20j%20%24%20%28%20%24%201%3C%3Dj%3C%3Dn%20%24%20%29%20%24%201%3C%3Da_%7Bj%7D%3C%3Di%20%24%20.%20Since%20the%20answers%20can%20be%20very%20large%2C%20you%20have%20to%20calculate%20them%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%2Ck%3C%3D2%5Cu00b710%5E%7B6%7D%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20desired%20arrays%20and%20the%20maximum%20upper%20bound%20on%20elements%2C%20respectively.%22%2C%22outputFormat%22%3A%22Since%20printing%20%24%202%5Cu00b710%5E%7B6%7D%20%24%20numbers%20may%20take%20a%20lot%20of%20time%2C%20you%20have%20to%20output%20the%20answer%20in%20such%20a%20way%3A%5Cn%5CnLet%20%24%20b_%7Bi%7D%20%24%20be%20the%20number%20of%20coprime%20arrays%20with%20elements%20in%20range%20%24%20%5B1%2Ci%5D%20%24%20%2C%20taken%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%20You%20have%20to%20print%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF915G%5C%2F2fc53236b723e26b8283924063ed7dc9ecf86519.png%29%2C%20taken%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%20Here%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF915G%5C%2F4298d47c0191af3c0a3103f431751061bc7e2362.png%29%20denotes%20bitwise%20xor%20operation%20%28%5E%20in%20C%2B%2B%20or%20Java%2C%20xor%20in%20Pascal%29.%22%2C%22samples%22%3A%5B%5B%223%204%5Cn%22%2C%2282%5Cn%22%5D%2C%5B%222000000%208%5Cn%22%2C%22339310063%5Cn%22%5D%5D%2C%22hint%22%3A%22Explanation%20of%20the%20example%3A%5Cn%5CnSince%20the%20number%20of%20coprime%20arrays%20is%20large%2C%20we%20will%20list%20the%20arrays%20that%20are%20non-coprime%2C%20but%20contain%20only%20elements%20in%20range%20%24%20%5B1%2Ci%5D%20%24%20%3A%5Cn%5CnFor%20%24%20i%3D1%20%24%20%2C%20the%20only%20array%20is%20coprime.%20%24%20b_%7B1%7D%3D1%20%24%20.%5Cn%5CnFor%20%24%20i%3D2%20%24%20%2C%20array%20%24%20%5B2%2C2%2C2%5D%20%24%20is%20not%20coprime.%20%24%20b_%7B2%7D%3D7%20%24%20.%5Cn%5CnFor%20%24%20i%3D3%20%24%20%2C%20arrays%20%24%20%5B2%2C2%2C2%5D%20%24%20and%20%24%20%5B3%2C3%2C3%5D%20%24%20are%20not%20coprime.%20%24%20b_%7B3%7D%3D25%20%24%20.%5Cn%5CnFor%20%24%20i%3D4%20%24%20%2C%20arrays%20%24%20%5B2%2C2%2C2%5D%20%24%20%2C%20%24%20%5B3%2C3%2C3%5D%20%24%20%2C%20%24%20%5B2%2C2%2C4%5D%20%24%20%2C%20%24%20%5B2%2C4%2C2%5D%20%24%20%2C%20%24%20%5B2%2C4%2C4%5D%20%24%20%2C%20%24%20%5B4%2C2%2C2%5D%20%24%20%2C%20%24%20%5B4%2C2%2C4%5D%20%24%20%2C%20%24%20%5B4%2C4%2C2%5D%20%24%20and%20%24%20%5B4%2C4%2C4%5D%20%24%20are%20not%20coprime.%20%24%20b_%7B4%7D%3D55%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F915%5C%2FG%22%2C%22id%22%3A%22915G%22%7D%2C%22translation%22%3A%22%23%23%23%23%20%5Cu6807%5Cu9898%5Cuff1a%5Cu4e92%5Cu8d28%5Cu6570%5Cu7ec4%5Cn%5Cn%23%23%23%23%20%5Cu9898%5Cu610f%5Cuff1a%5Cn%5Cn%5Cu6211%5Cu4eec%5Cu79f0%5Cu4e00%5Cu4e2a%5Cu5927%5Cu5c0f%5Cu4e3a%20%24n%24%20%5Cu7684%5Cu6570%5Cu7ec4%20%24a%24%20%5Cu4e92%5Cu8d28%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%20%24gcd%28a_1%2Ca_2%2C%5C%5Ccdots%2Ca_n%29%3D1%24%5Cuff0c%24gcd%24%20%5Cu662f%5Cu6700%5Cu5927%5Cu516c%5Cu7ea6%5Cu6570%5Cu7684%5Cu610f%5Cu601d%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu5b9a%20%24n%2Ck%24%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%20%24i%24%20%24%281%5C%5Cle%20i%5C%5Cle%20k%29%24%5Cuff0c%5Cu4f60%5Cu90fd%5Cu9700%5Cu8981%5Cu786e%5Cu5b9a%5Cu8fd9%5Cu6837%5Cu7684%5Cu6570%5Cu7ec4%5Cu7684%5Cu4e2a%5Cu6570%5Cu2014%5Cu2014%5Cu957f%5Cu5ea6%5Cu4e3a%20%24n%24%20%5Cu7684%5Cu6570%5Cu7ec4%20%24a%24%20%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu5bf9%5Cu6bcf%5Cu4e2a%20%24j%24%20%24%281%5C%5Cle%20j%5C%5Cle%20n%29%24%5Cuff0c%5Cu90fd%5Cu6709%20%241%5C%5Cle%20a_j%5C%5Cle%20k%24%20%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%5Cu7b54%5Cu6848%5Cu53ef%5Cu80fd%5Cu975e%5Cu5e38%5Cu5927%5Cuff0c%5Cu8bf7%5Cu5bf9%20%2410%5E9%2B7%24%20%5Cu53d6%5Cu6a21%5Cu3002%5Cn%5Cn%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu6570%20%24n%2Ck%24%20%24%281%5C%5Cle%20n%2Ck%5C%5Cle%202%5C%5Ccdot10%5E6%29%24%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu6570%5Cu7ec4%5Cu7684%5Cu5927%5Cu5c0f%5Cu548c%5Cu6570%5Cu7ec4%5Cu5143%5Cu7d20%5Cu5927%5Cu5c0f%5Cu7684%5Cu4e0a%5Cu9650%5Cu3002%5Cn%5Cn%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu4e3a%5Cu4e86%5Cu964d%5Cu4f4e%5Cu8f93%5Cu51fa%5Cu7684%5Cu65f6%5Cu95f4%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu5bf9%5Cu8f93%5Cu51fa%5Cu8fdb%5Cu884c%5Cu5982%5Cu4e0b%5Cu5904%5Cu7406%5Cuff1a%5Cn%5Cn%5Cu628a%20%24i%24%20%5Cu7684%5Cu7b54%5Cu6848%5Cuff08%5Cu5bf9%20%2410%5E9%2B7%24%20%5Cu53d6%5Cu6a21%5Cu540e%5Cuff09%5Cu8bb0%5Cu4f5c%20%24b_i%24%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu8f93%5Cu51fa%20%24%5C%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20%28b_i%5C%5Coplus%20i%29%24%5Cuff0c%5Cu518d%5Cu5bf9%20%2410%5E9%2B7%24%20%5Cu53d6%5Cu6a21%5Cu3002%5Cn%5Cn%5Cu8fd9%5Cu91cc%20%24%5C%5Coplus%24%20%5Cu8868%5Cu793a%5Cu6309%5Cu4f4d%5Cu5f02%5Cu6216%5Cuff0c%5Cu5728%20c%2B%2B%20%5Cu548c%20Java%20%5Cu4e2d%5Cu5199%5Cu4f5c%20%60%60%60%5E%60%60%60%5Cuff0c%5Cu5728%20Pascal%20%5Cu4e2d%5Cu5199%5Cu4f5c%20%60%60%60xor%60%60%60%5Cu3002%5Cn%5Cn%23%23%23%23%20%5Cu8bf4%5Cu660e%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6837%5Cu4f8b%5Cu7684%5Cu8bf4%5Cu660e%5Cuff1a%5Cn%5Cn%5Cu56e0%5Cu4e3a%5Cu4e92%5Cu8d28%5Cu6570%5Cu7ec4%5Cu7684%5Cu6570%5Cu91cf%5Cu6bd4%5Cu8f83%5Cu591a%5Cuff0c%5Cu6211%5Cu4eec%5Cu53ea%5Cu5217%5Cu51fa%5Cu4e0d%5Cu4e92%5Cu8d28%5Cu7684%5Cuff1a%5Cn%5Cn%5Cu5f53%20%24i%3D1%24%20%5Cu65f6%5Cuff0c%5Cu552f%5Cu4e00%5Cu7684%5Cu6570%5Cu7ec4%5Cu5c31%5Cu662f%5Cu4e92%5Cu8d28%5Cu7684%5Cuff0c%24b_1%3D1%24%5Cu3002%5Cn%5Cn%5Cu5f53%20%24i%3D2%24%20%5Cu65f6%5Cuff0c%5Cu6570%5Cu7ec4%20%24%5B2%2C2%2C2%5D%24%20%5Cu4e0d%5Cu662f%5Cu4e92%5Cu8d28%5Cu7684%5Cuff0c%24b_2%3D7%24%5Cu3002%5Cn%5Cn%5Cu5f53%20%24i%3D3%24%20%5Cu65f6%5Cuff0c%5Cu6570%5Cu7ec4%20%24%5B2%2C2%2C2%5D%2C%5B3%2C3%2C3%5D%24%20%5Cu4e0d%5Cu662f%5Cu4e92%5Cu8d28%5Cu7684%5Cuff0c%24b_3%3D25%24%5Cu3002%5Cn%5Cn%5Cu5f53%20%24i%3D4%24%20%5Cu65f6%5Cuff0c%5Cu6570%5Cu7ec4%20%24%5B2%2C2%2C2%5D%2C%5B3%2C3%2C3%5D%2C%5B2%2C2%2C4%5D%2C%5B2%2C4%2C2%5D%2C%5B2%2C4%2C4%5D%2C%5B4%2C2%2C2%5D%2C%5B4%2C2%2C4%5D%2C%5B4%2C4%2C2%5D%2C%5B4%2C4%2C4%5D%24%20%5Cu4e0d%5Cu662f%5Cu4e92%5Cu8d28%5Cu7684%5Cuff0c%24b_4%3D55%24%5Cu3002%5Cn%5CnTranslated%20by%20%5Cu5c0f%5Cu7c89%5Cu5154%20%22%2C%22tags%22%3A%5B5%2C254%2C330%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A62%2C%22totalAccepted%22%3A40%2C%22pid%22%3A%22CF915G%22%2C%22title%22%3A%22Coprime%20Arrays%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32173%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5Cuff1a%22%2C%22forum%22%3A%7B%22id%22%3A8877%2C%22name%22%3A%22CF915G%20Coprime%20Arrays%22%2C%22slug%22%3A%22CF915G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4211%22%2C%22title%22%3A%22%5BLNOI2014%5DLCA%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP5973%22%2C%22title%22%3A%22SELTEAM%20-%20Selecting%20Teams%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22CF961G%22%2C%22title%22%3A%22Partitions%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P5170%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7c7b%5Cu6b27%5Cu51e0%5Cu91cc%5Cu5f97%5Cu7b97%5Cu6cd5%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5333%22%2C%22title%22%3A%22%5BJSOI2019%5D%5Cu795e%5Cu7ecf%5Cu7f51%5Cu7edc%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Coprime%20Arrays%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Coprime Arrays</h1>
+<h2>题意翻译</h2>
+<div>#### 标题：互质数组
+#### 题意：
+我们称一个大小为 $n$ 的数组 $a$ 互质，当且仅当 $gcd(a_1,a_2,\cdots,a_n)=1$，$gcd$ 是最大公约数的意思。
+给定 $n,k$，对于每个 $i$ $(1\le i\le k)$，你都需要确定这样的数组的个数——长度为 $n$ 的数组 $a$ ，满足对每个 $j$ $(1\le j\le n)$，都有 $1\le a_j\le k$ 的个数。
+答案可能非常大，请对 $10^9+7$ 取模。
+#### 输入格式：
+只有一行，两个数 $n,k$ $(1\le n,k\le 2\cdot10^6)$，分别表示数组的大小和数组元素大小的上限。
+#### 输出格式：
+为了降低输出的时间，你需要对输出进行如下处理：
+把 $i$ 的答案（对 $10^9+7$ 取模后）记作 $b_i$。你需要输出 $\sum_{i=1}^{n} (b_i\oplus i)$，再对 $10^9+7$ 取模。
+这里 $\oplus$ 表示按位异或，在 c++ 和 Java 中写作 ```^```，在 Pascal 中写作 ```xor```。
+#### 说明：
+第一个样例的说明：
+因为互质数组的数量比较多，我们只列出不互质的：
+当 $i=1$ 时，唯一的数组就是互质的，$b_1=1$。
+当 $i=2$ 时，数组 $[2,2,2]$ 不是互质的，$b_2=7$。
+当 $i=3$ 时，数组 $[2,2,2],[3,3,3]$ 不是互质的，$b_3=25$。
+当 $i=4$ 时，数组 $[2,2,2],[3,3,3],[2,2,4],[2,4,2],[2,4,4],[4,2,2],[4,2,4],[4,4,2],[4,4,4]$ 不是互质的，$b_4=55$。
+Translated by 小粉兔 </div>
+<h2>题目描述</h2>
+<div>Let's call an array $ a $ of size $ n $ coprime iff $ gcd(a_{1},a_{2},...,a_{n})=1 $ , where $ gcd $ is the greatest common divisor of the arguments.
+You are given two numbers $ n $ and $ k $ . For each $ i $ ( $ 1<=i<=k $ ) you have to determine the number of coprime arrays $ a $ of size $ n $ such that for every $ j $ ( $ 1<=j<=n $ ) $ 1<=a_{j}<=i $ . Since the answers can be very large, you have to calculate them modulo $ 10^{9}+7 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 1<=n,k<=2·10^{6} $ ) — the size of the desired arrays and the maximum upper bound on elements, respectively.</div>
+<h3>输出格式</h3>
+<br />
+<div>Since printing $ 2·10^{6} $ numbers may take a lot of time, you have to output the answer in such a way:
+Let $ b_{i} $ be the number of coprime arrays with elements in range $ [1,i] $ , taken modulo $ 10^{9}+7 $ . You have to print ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF915G/2fc53236b723e26b8283924063ed7dc9ecf86519.png), taken modulo $ 10^{9}+7 $ . Here ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF915G/4298d47c0191af3c0a3103f431751061bc7e2362.png) denotes bitwise xor operation (^ in C++ or Java, xor in Pascal).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>82
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2000000 8
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>339310063
+</code></pre>
+<h2>说明</h2>
+<div>Explanation of the example:
+Since the number of coprime arrays is large, we will list the arrays that are non-coprime, but contain only elements in range $ [1,i] $ :
+For $ i=1 $ , the only array is coprime. $ b_{1}=1 $ .
+For $ i=2 $ , array $ [2,2,2] $ is not coprime. $ b_{2}=7 $ .
+For $ i=3 $ , arrays $ [2,2,2] $ and $ [3,3,3] $ are not coprime. $ b_{3}=25 $ .
+For $ i=4 $ , arrays $ [2,2,2] $ , $ [3,3,3] $ , $ [2,2,4] $ , $ [2,4,2] $ , $ [2,4,4] $ , $ [4,2,2] $ , $ [4,2,4] $ , $ [4,4,2] $ and $ [4,4,4] $ are not coprime. $ b_{4}=55 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

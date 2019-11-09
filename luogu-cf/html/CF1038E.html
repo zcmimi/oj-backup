@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Maximum Matching - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400831:bhhQgKR2gKARfObh2V+OJ1GmJdiQengDtjglNts1oDw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20%24%20n%20%24%20blocks%2C%20each%20of%20them%20is%20of%20the%20form%20%5C%5C%5Bcolor%20%24%20_1%20%24%20%7Cvalue%7Ccolor%20%24%20_2%20%24%20%5C%5C%5D%2C%20where%20the%20block%20can%20also%20be%20flipped%20to%20get%20%5C%5C%5Bcolor%20%24%20_2%20%24%20%7Cvalue%7Ccolor%20%24%20_1%20%24%20%5C%5C%5D.%5Cn%5CnA%20sequence%20of%20blocks%20is%20called%20valid%20if%20the%20touching%20endpoints%20of%20neighboring%20blocks%20have%20the%20same%20color.%20For%20example%2C%20the%20sequence%20of%20three%20blocks%20A%2C%20B%20and%20C%20is%20valid%20if%20the%20left%20color%20of%20the%20B%20is%20the%20same%20as%20the%20right%20color%20of%20the%20A%20and%20the%20right%20color%20of%20the%20B%20is%20the%20same%20as%20the%20left%20color%20of%20C.%5Cn%5CnThe%20value%20of%20the%20sequence%20is%20defined%20as%20the%20sum%20of%20the%20values%20of%20the%20blocks%20in%20this%20sequence.%5Cn%5CnFind%20the%20maximum%20possible%20value%20of%20the%20valid%20sequence%20that%20can%20be%20constructed%20from%20the%20subset%20of%20the%20given%20blocks.%20The%20blocks%20from%20the%20subset%20can%20be%20reordered%20and%20flipped%20if%20necessary.%20Each%20block%20can%20be%20used%20at%20most%20once%20in%20the%20sequence.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20number%20of%20given%20blocks.%5Cn%5CnEach%20of%20the%20following%20%24%20n%20%24%20lines%20describes%20corresponding%20block%20and%20consists%20of%20%24%20%5C%5Cmathrm%7Bcolor%7D_%7B1%2Ci%7D%20%24%20%2C%20%24%20%5C%5Cmathrm%7Bvalue%7D_i%20%24%20and%20%24%20%5C%5Cmathrm%7Bcolor%7D_%7B2%2Ci%7D%20%24%20%28%20%24%201%20%5C%5Cle%20%5C%5Cmathrm%7Bcolor%7D_%7B1%2Ci%7D%2C%20%5C%5Cmathrm%7Bcolor%7D_%7B2%2Ci%7D%20%5C%5Cle%204%20%24%20%2C%20%24%201%20%5C%5Cle%20%5C%5Cmathrm%7Bvalue%7D_i%20%5C%5Cle%20100%5C%5C%2C000%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20exactly%20one%20integer%20%5Cu2014%20the%20maximum%20total%20value%20of%20the%20subset%20of%20blocks%2C%20which%20makes%20a%20valid%20sequence.%22%2C%22samples%22%3A%5B%5B%226%5Cn2%201%204%5Cn1%202%204%5Cn3%204%204%5Cn2%208%203%5Cn3%2016%203%5Cn1%2032%202%5Cn%22%2C%2263%22%5D%2C%5B%227%5Cn1%20100000%201%5Cn1%20100000%202%5Cn1%20100000%202%5Cn4%2050000%203%5Cn3%2050000%204%5Cn4%2050000%204%5Cn3%2050000%203%5Cn%22%2C%22300000%22%5D%2C%5B%224%5Cn1%201000%201%5Cn2%20500%202%5Cn3%20250%203%5Cn4%20125%204%5Cn%22%2C%221000%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20it%20is%20possible%20to%20form%20a%20valid%20sequence%20from%20all%20blocks.%5Cn%5CnOne%20of%20the%20valid%20sequences%20is%20the%20following%3A%5Cn%5Cn%5C%5C%5B4%7C2%7C1%5C%5C%5D%20%5C%5C%5B1%7C32%7C2%5C%5C%5D%20%5C%5C%5B2%7C8%7C3%5C%5C%5D%20%5C%5C%5B3%7C16%7C3%5C%5C%5D%20%5C%5C%5B3%7C4%7C4%5C%5C%5D%20%5C%5C%5B4%7C1%7C2%5C%5C%5D%5Cn%5CnThe%20first%20block%20from%20the%20input%20%28%5C%5C%5B2%7C1%7C4%5C%5C%5D%20%24%20%5C%5Cto%20%24%20%5C%5C%5B4%7C1%7C2%5C%5C%5D%29%20and%20second%20%28%5C%5C%5B1%7C2%7C4%5C%5C%5D%20%24%20%5C%5Cto%20%24%20%5C%5C%5B4%7C2%7C1%5C%5C%5D%29%20are%20flipped.%5Cn%5CnIn%20the%20second%20example%2C%20the%20optimal%20answers%20can%20be%20formed%20from%20the%20first%20three%20blocks%20as%20in%20the%20following%20%28the%20second%20or%20the%20third%20block%20from%20the%20input%20is%20flipped%29%3A%5Cn%5Cn%5C%5C%5B2%7C100000%7C1%5C%5C%5D%20%5C%5C%5B1%7C100000%7C1%5C%5C%5D%20%5C%5C%5B1%7C100000%7C2%5C%5C%5D%5Cn%5CnIn%20the%20third%20example%2C%20it%20is%20not%20possible%20to%20form%20a%20valid%20sequence%20of%20two%20or%20more%20blocks%2C%20so%20the%20answer%20is%20a%20sequence%20consisting%20only%20of%20the%20first%20block%20since%20it%20is%20the%20block%20with%20the%20largest%20value.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1038%5C%2FE%22%2C%22id%22%3A%221038E%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cuff1a%5Cn%5Cu7ed9%5Cu4f60%24n%24%5Cu4e2a%5Cu8272%5Cu5757%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8272%5Cu5757%5Cu4e24%5Cu7aef%5Cu5206%5Cu522b%5Cu6709%5Cu4e00%5Cu79cd%5Cu989c%5Cu8272%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6bcf%5Cu4e2a%5Cu8272%5Cu5757%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6743%5Cu503c%5Cn%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu4e00%5Cu4e2a%5Cu8272%5Cu5757%5Cu7ffb%5Cu8f6c%5Cuff0c%5Cu4f8b%5Cu5982%24%5Bcol1%5C%5Cmid%20val%5C%5Cmid%20col2%5D-%3E%5Bcol2%5C%5Cmid%20val%5C%5Cmid%20col1%5D%24%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4e24%5Cu4e2a%5Cu8272%5Cu5757%5Cu63a5%5Cu89e6%5Cu7684%5Cu4e24%5Cu7aef%5Cu989c%5Cu8272%5Cu76f8%5Cu540c%5Cuff0c%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu79f0%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu8272%5Cu5757%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu53ef%5Cu80fd%5Cu7531%5Cu591a%5Cu4e2a%5Cu8272%5Cu5757%5Cu6784%5Cu6210%5Cuff0c%5Cu5e8f%5Cu5217%5Cu7684%5Cu503c%5Cu4e3a%5Cu6784%5Cu6210ta%5Cu7684%5Cu8272%5Cu5757%5Cu503c%5Cu7684%5Cu548c%5Cuff0c%5Cu6c42%5Cu6240%5Cu6709%5Cu60c5%5Cu51b5%5Cu4e0b%5Cu6240%5Cu6709%5Cu5e8f%5Cu5217%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24%5Cn%5Cn%5Cu4ee5%5Cu4e0b%24n%24%5Cu884c%5Cu6bcf%5Cu884c3%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%24col1%2Cval%2Ccol2%24%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu5927%5Cu503c%5Cn%5Cn%60%60%60%5Cn%23%23%23%20%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cuff1a%5Cn%5Cu7ed9%5Cu4f60%24n%24%5Cu4e2a%5Cu8272%5Cu5757%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8272%5Cu5757%5Cu4e24%5Cu7aef%5Cu5206%5Cu522b%5Cu6709%5Cu4e00%5Cu79cd%5Cu989c%5Cu8272%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6bcf%5Cu4e2a%5Cu8272%5Cu5757%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6743%5Cu503c%5Cn%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu4e00%5Cu4e2a%5Cu8272%5Cu5757%5Cu7ffb%5Cu8f6c%5Cuff0c%5Cu4f8b%5Cu5982%24%5Bcol1%5C%5Cmid%20val%5C%5Cmid%20col2%5D-%3E%5Bcol2%5C%5Cmid%20val%5C%5Cmid%20col1%5D%24%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4e24%5Cu4e2a%5Cu8272%5Cu5757%5Cu63a5%5Cu89e6%5Cu7684%5Cu4e24%5Cu7aef%5Cu989c%5Cu8272%5Cu76f8%5Cu540c%5Cuff0c%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu79f0%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu8272%5Cu5757%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu53ef%5Cu80fd%5Cu7531%5Cu591a%5Cu4e2a%5Cu8272%5Cu5757%5Cu6784%5Cu6210%5Cuff0c%5Cu5e8f%5Cu5217%5Cu7684%5Cu503c%5Cu4e3a%5Cu6784%5Cu6210ta%5Cu7684%5Cu8272%5Cu5757%5Cu503c%5Cu7684%5Cu548c%5Cuff0c%5Cu6c42%5Cu6240%5Cu6709%5Cu60c5%5Cu51b5%5Cu4e0b%5Cu6240%5Cu6709%5Cu5e8f%5Cu5217%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24%5Cn%5Cn%5Cu4ee5%5Cu4e0b%24n%24%5Cu884c%5Cu6bcf%5Cu884c3%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%24col1%2Cval%2Ccol2%24%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu5927%5Cu503c%5Cn%60%60%60%22%2C%22tags%22%3A%5B111%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A216%2C%22totalAccepted%22%3A66%2C%22pid%22%3A%22CF1038E%22%2C%22title%22%3A%22Maximum%20Matching%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A71456%2C%22title%22%3A%22%5Cu8981A%5Cu51fa%5Cu9898%5Cu4eba%5Cu7684%5Cu70b9%5Cu4e2a%5Cu5230%22%2C%22forum%22%3A%7B%22id%22%3A29227%2C%22name%22%3A%22CF1038E%20Maximum%20Matching%22%2C%22slug%22%3A%22CF1038E%22%7D%7D%2C%7B%22id%22%3A62778%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29227%2C%22name%22%3A%22CF1038E%20Maximum%20Matching%22%2C%22slug%22%3A%22CF1038E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3760%22%2C%22title%22%3A%22%5BTJOI2017%5D%5Cu5f02%5Cu6216%5Cu548c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF875F%22%2C%22title%22%3A%22Royal%20Questions%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF101D%22%2C%22title%22%3A%22Castle%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22SP11469%22%2C%22title%22%3A%22SUBSET%20-%20Balanced%20Cow%20Subsets%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22P4727%22%2C%22title%22%3A%22%5BHNOI2009%5D%5Cu56fe%5Cu7684%5Cu540c%5Cu6784%5Cu8bb0%5Cu6570%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Maximum%20Matching%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Maximum Matching</h1>
+<h2>题意翻译</h2>
+<div>### 题目大意：
+给你$n$个色块，每个色块两端分别有一种颜色，并且每个色块都有一个权值
+你可以将一个色块翻转，例如$[col1\mid val\mid col2]->[col2\mid val\mid col1]$
+如果两个色块接触的两端颜色相同，就可以称这两个色块为一个序列，一个序列可能由多个色块构成，序列的值为构成ta的色块值的和，求所有情况下所有序列的最大值
+### 输入格式：
+第一行一个整数$n$
+以下$n$行每行3个整数，表示$col1,val,col2$
+### 输出格式：
+一个整数，表示最大值
+```
+### 题目大意：
+给你$n$个色块，每个色块两端分别有一种颜色，并且每个色块都有一个权值
+你可以将一个色块翻转，例如$[col1\mid val\mid col2]->[col2\mid val\mid col1]$
+如果两个色块接触的两端颜色相同，就可以称这两个色块为一个序列，一个序列可能由多个色块构成，序列的值为构成ta的色块值的和，求所有情况下所有序列的最大值
+### 输入格式：
+第一行一个整数$n$
+以下$n$行每行3个整数，表示$col1,val,col2$
+### 输出格式：
+一个整数，表示最大值
+```</div>
+<h2>题目描述</h2>
+<div>You are given $ n $ blocks, each of them is of the form \[color $ _1 $ |value|color $ _2 $ \], where the block can also be flipped to get \[color $ _2 $ |value|color $ _1 $ \].
+A sequence of blocks is called valid if the touching endpoints of neighboring blocks have the same color. For example, the sequence of three blocks A, B and C is valid if the left color of the B is the same as the right color of the A and the right color of the B is the same as the left color of C.
+The value of the sequence is defined as the sum of the values of the blocks in this sequence.
+Find the maximum possible value of the valid sequence that can be constructed from the subset of the given blocks. The blocks from the subset can be reordered and flipped if necessary. Each block can be used at most once in the sequence.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains a single integer $ n $ ( $ 1 \le n \le 100 $ ) — the number of given blocks.
+Each of the following $ n $ lines describes corresponding block and consists of $ \mathrm{color}_{1,i} $ , $ \mathrm{value}_i $ and $ \mathrm{color}_{2,i} $ ( $ 1 \le \mathrm{color}_{1,i}, \mathrm{color}_{2,i} \le 4 $ , $ 1 \le \mathrm{value}_i \le 100\,000 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print exactly one integer — the maximum total value of the subset of blocks, which makes a valid sequence.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+2 1 4
+1 2 4
+3 4 4
+2 8 3
+3 16 3
+1 32 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>63</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7
+1 100000 1
+1 100000 2
+1 100000 2
+4 50000 3
+3 50000 4
+4 50000 4
+3 50000 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>300000</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+1 1000 1
+2 500 2
+3 250 3
+4 125 4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1000</code></pre>
+<h2>说明</h2>
+<div>In the first example, it is possible to form a valid sequence from all blocks.
+One of the valid sequences is the following:
+\[4|2|1\] \[1|32|2\] \[2|8|3\] \[3|16|3\] \[3|4|4\] \[4|1|2\]
+The first block from the input (\[2|1|4\] $ \to $ \[4|1|2\]) and second (\[1|2|4\] $ \to $ \[4|2|1\]) are flipped.
+In the second example, the optimal answers can be formed from the first three blocks as in the following (the second or the third block from the input is flipped):
+\[2|100000|1\] \[1|100000|1\] \[1|100000|2\]
+In the third example, it is not possible to form a valid sequence of two or more blocks, so the answer is a sequence consisting only of the first block since it is the block with the largest value.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

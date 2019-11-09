@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Knightmare (easy) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403019:vi0D3kBi2KH3giVgQ+aZ5BHwfNKgi8Jv8gSGJOps4K0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22This%20problem%20only%20differs%20from%20the%20next%20problem%20in%20constraints.%5Cn%5CnThis%20is%20an%20interactive%20problem.%5Cn%5CnAlice%20and%20Bob%20are%20playing%20a%20game%20on%20the%20chessboard%20of%20size%20%24%20n%20%5C%5Ctimes%20m%20%24%20where%20%24%20n%20%24%20and%20%24%20m%20%24%20are%20even.%20The%20rows%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20and%20the%20columns%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20m%20%24%20.%20There%20are%20two%20knights%20on%20the%20chessboard.%20A%20white%20one%20initially%20is%20on%20the%20position%20%24%20%28x_1%2C%20y_1%29%20%24%20%2C%20while%20the%20black%20one%20is%20on%20the%20position%20%24%20%28x_2%2C%20y_2%29%20%24%20.%20Alice%20will%20choose%20one%20of%20the%20knights%20to%20play%20with%2C%20and%20Bob%20will%20use%20the%20other%20one.%5Cn%5CnThe%20Alice%20and%20Bob%20will%20play%20in%20turns%20and%20whoever%20controls%20the%20white%20knight%20starts%20the%20game.%20During%20a%20turn%2C%20the%20player%20must%20move%20their%20knight%20adhering%20the%20chess%20rules.%20That%20is%2C%20if%20the%20knight%20is%20currently%20on%20the%20position%20%24%20%28x%2C%20y%29%20%24%20%2C%20it%20can%20be%20moved%20to%20any%20of%20those%20positions%20%28as%20long%20as%20they%20are%20inside%20the%20chessboard%29%3A%5Cn%5Cn%20%24%20%28x%2B1%2C%20y%2B2%29%20%24%20%2C%20%24%20%28x%2B1%2C%20y-2%29%20%24%20%2C%20%24%20%28x-1%2C%20y%2B2%29%20%24%20%2C%20%24%20%28x-1%2C%20y-2%29%20%24%20%2C%20%24%20%28x%2B2%2C%20y%2B1%29%20%24%20%2C%20%24%20%28x%2B2%2C%20y-1%29%20%24%20%2C%20%24%20%28x-2%2C%20y%2B1%29%20%24%20%2C%20%24%20%28x-2%2C%20y-1%29%20%24%20.%5Cn%5CnWe%20all%20know%20that%20knights%20are%20strongest%20in%20the%20middle%20of%20the%20board.%20Both%20knight%20have%20a%20single%20position%20they%20want%20to%20reach%3A%5Cn%5Cn-%20the%20owner%20of%20the%20white%20knight%20wins%20if%20it%20captures%20the%20black%20knight%20or%20if%20the%20white%20knight%20is%20at%20%24%20%28n%5C%2F2%2C%20m%5C%2F2%29%20%24%20and%20this%20position%20is%20not%20under%20attack%20of%20the%20black%20knight%20at%20this%20moment%3B%5Cn-%20The%20owner%20of%20the%20black%20knight%20wins%20if%20it%20captures%20the%20white%20knight%20or%20if%20the%20black%20knight%20is%20at%20%24%20%28n%5C%2F2%2B1%2C%20m%5C%2F2%29%20%24%20and%20this%20position%20is%20not%20under%20attack%20of%20the%20white%20knight%20at%20this%20moment.%5Cn%5CnFormally%2C%20the%20player%20who%20captures%20the%20other%20knight%20wins.%20The%20player%20who%20is%20at%20its%20target%20square%20%28%20%24%20%28n%5C%2F2%2C%20m%5C%2F2%29%20%24%20for%20white%2C%20%24%20%28n%5C%2F2%2B1%2C%20m%5C%2F2%29%20%24%20for%20black%29%20and%20this%20position%20is%20not%20under%20opponent%27s%20attack%2C%20also%20wins.%5Cn%5CnA%20position%20is%20under%20attack%20of%20a%20knight%20if%20it%20can%20move%20into%20this%20position.%20Capturing%20a%20knight%20means%20that%20a%20player%20moves%20their%20knight%20to%20the%20cell%20where%20the%20opponent%27s%20knight%20is.%5Cn%5CnIf%20Alice%20made%20%24%20350%20%24%20moves%20and%20nobody%20won%2C%20the%20game%20is%20a%20draw.%5Cn%5CnAlice%20is%20unsure%20in%20her%20chess%20skills%2C%20so%20she%20asks%20you%20for%20a%20help.%20Choose%20a%20knight%20and%20win%20the%20game%20for%20her.%20It%20can%20be%20shown%2C%20that%20Alice%20always%20has%20a%20winning%20strategy.%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22The%20interaction%20starts%20with%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%206%20%5C%5Cle%20n%2Cm%20%5C%5Cle%2040%20%24%20%2C%20%24%20n%20%24%20and%20%24%20m%20%24%20are%20even%29%20%5Cu2014%20the%20dimensions%20of%20the%20chessboard.%5Cn%5CnThe%20second%20line%20contains%20four%20integers%20%24%20x_1%2C%20y_1%2C%20x_2%2C%20y_2%20%24%20%28%20%24%201%20%5C%5Cle%20x_1%2C%20x_2%20%5C%5Cle%20n%20%24%20%2C%20%24%201%20%5C%5Cle%20y_1%2C%20y_2%20%5C%5Cle%20m%20%24%20%29%20%5Cu2014%20the%20positions%20of%20the%20white%20and%20the%20black%20knight.%20It%20is%20guaranteed%20that%20the%20two%20knights%20have%20different%20starting%20positions.%20It%20is%20also%20guaranteed%20that%20none%20of%20the%20knights%20are%20in%20their%20own%20target%20square%20in%20the%20beginning%20of%20the%20game%20%28however%2C%20they%20can%20be%20on%20the%20opponent%27s%20target%20position%29.%5Cn%5CnYour%20program%20should%20reply%20with%20either%20%5C%22WHITE%5C%22%20or%20%5C%22BLACK%5C%22%2C%20depending%20on%20the%20knight%20you%20want%20to%20play%20with.%20In%20case%20you%20select%20the%20white%20knight%2C%20you%20start%20the%20game.%5Cn%5CnDuring%20every%20your%20turn%2C%20you%20need%20to%20print%20two%20integers%3A%20%24%20x%20%24%20and%20%24%20y%20%24%20%2C%20the%20position%20to%20move%20the%20knight.%20If%20you%20won%20the%20game%20by%20this%20turn%2C%20you%20must%20terminate%20your%20program%20immediately.%5Cn%5CnAfter%20every%20turn%20of%20the%20opponent%2C%20you%20will%20receive%20two%20integers%3A%20%24%20x%20%24%20and%20%24%20y%20%24%20%2C%20the%20position%20where%20Bob%20moved%20his%20knight.%5Cn%5CnIf%20your%20last%20move%20was%20illegal%20or%20you%20lost%20the%20game%20after%20jury%27s%20turn%2C%20or%20you%20made%20%24%20350%20%24%20moves%2C%20and%20haven%27t%20won%2C%20you%20will%20receive%20%5C%22-1%20-1%5C%22.%20In%20such%20cases%2C%20you%20should%20terminate%20your%20program%20and%20then%20you%20will%20get%20a%20Wrong%20Answer%20verdict.%5Cn%5CnAfter%20printing%20anything%2C%20do%20not%20forget%20to%20output%20the%20end%20of%20line%20and%20flush%20the%20output.%20Otherwise%2C%20you%20might%20get%20Idleness%20limit%20exceeded.%20To%20do%20this%2C%20use%3A%5Cn%5Cn-%20fflush%28stdout%29%20or%20cout.flush%28%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20see%20documentation%20for%20other%20languages.%5Cn%5CnHacks%20are%20disabled%20for%20this%20problem.%5Cn%5CnJury%27s%20program%20is%20adaptive%3A%20the%20moves%20of%20jury%20may%20depend%20on%20the%20moves%20made%20by%20your%20program.%22%2C%22samples%22%3A%5B%5B%22%5Cn8%208%5Cn2%203%201%208%5Cn%22%2C%22%5CnWHITE%5Cn4%204%5Cn%22%5D%2C%5B%22%5Cn6%206%5Cn4%204%202%202%5Cn6%203%22%2C%22%5CnBLACK%5Cn4%203%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20the%20white%20knight%20can%20reach%20it%27s%20target%20square%20in%20one%20move.%5Cn%5CnIn%20the%20second%20example%20black%20knight%20wins%2C%20no%20matter%20what%20white%20knight%20moves.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1201%5C%2FE1%22%2C%22id%22%3A%221201E1%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu8fd9%5Cu662f%5Cu4e00%5Cu9053%5Cu4ea4%5Cu4e92%5Cu9898%5Cu3002%2A%2A%5Cr%5CnAlice%20%5Cu548c%20Bob%20%5Cu5728%5Cu4e00%5Cu4e2a%20n%5Cu00d7m%20%5Cu7684%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu73a9%5Cu4e00%5Cu79cd%5Cu6e38%5Cu620f%5Cuff08%2A%2An%5Cuff0cm%20%5Cu5747%5Cu4e3a%5Cu5076%5Cu6570%2A%2A%5Cuff09%5Cu3002%5Cu68cb%5Cu76d8%5Cu7684%5Cu6bcf%5Cu4e00%5Cu884c%5Cu548c%5Cu6bcf%5Cu4e00%5Cu5217%5Cu5206%5Cu522b%5Cu7528%5Cu6570%5Cu5b57%201%20%5Cu5230%20n%20%5Cu548c%201%20%5Cu5230%20m%20%5Cu6807%5Cu8bb0%5Cu3002%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu6709%5Cu4e24%5Cu4e2a%5Cu9a6c%5Cu3002%5Cu767d%5Cu9a6c%5Cu6700%5Cu521d%5Cu5728%5Cuff08%2A%2Ax1%2C%20y1%2A%2A%5Cuff09%5Cu4e0a%5Cuff0c%5Cu9ed1%5Cu9a6c%5Cu6700%5Cu521d%5Cu5728%5Cuff08%2A%2Ax2%2C%20y2%2A%2A%5Cuff09%5Cu4e0a%5Cu3002%20Alice%20%5Cu5148%5Cu9009%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu9a6c%5Cuff0c%20Bob%20%5Cu5219%5Cu4f1a%5Cu9009%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu8fdb%5Cu884c%5Cu6e38%5Cu620f%5Cu3002%5Cr%5CnAlice%20%5Cu548c%20Bob%20%5Cu4f1a%5Cu8f6e%5Cu6d41%5Cu4e0b%5Cu68cb%5Cuff0c%20%5Cu767d%5Cu65b9%5Cu5148%5Cu4e0b%5Cu3002%5Cu5728%5Cu4e00%5Cu4e2a%5Cu56de%5Cu5408%5Cu4e2d%5Cuff0c%20%5Cu73a9%5Cu5bb6%5Cu5fc5%5Cu987b%5Cu6309%5Cu56fd%5Cu9645%5Cu8c61%5Cu68cb%5Cu89c4%5Cu5219%5Cu4e0b%5Cu68cb%5Cu3002%5Cr%5Cn%5Cuff08%5Cu610f%5Cu601d%5Cu5c31%5Cu662f%5Cu5047%5Cu5982%5Cu4e00%5Cu4e2a%5Cu9a6c%5Cu5728%28x%2C%20y%29%20%5Cu4e0a%5Cuff0c%20%5Cu5219%5Cu5b83%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu79fb%5Cu52a8%5Cu5230%5Cu4e0b%5Cu5217%5Cu4f4d%5Cu7f6e%5Cuff1a%5Cuff09%5Cr%5Cn-%20%28x%2B1%2Cy%2B2%29%5Cr%5Cn-%20%28x%2B1%2C%20y-2%29%5Cr%5Cn-%20%28x-1%2C%20y%2B2%29%5Cr%5Cn-%20%28x-1%2C%20y-2%29%5Cr%5Cn-%20%28x%2B2%2C%20y%2B1%29%5Cr%5Cn-%20%28x%2B2%2C%20y-1%29%5Cr%5Cn-%20%28x-2%2C%20y%2B1%29%5Cr%5Cn-%20%28x%5Cu22122%2Cy%5Cu22121%29%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu90fd%5Cu77e5%5Cu9053%5Cu9a6c%5Cu5728%5Cu68cb%5Cu76d8%5Cu4e2d%5Cu592e%5Cu6700%5Cu6709%5Cu4f18%5Cu52bf%5Cu3002%5Cu4e24%5Cu4e2a%5Cu9a6c%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5b83%5Cu4eec%5Cu8981%5Cu5230%5Cu8fbe%5Cu7684%5Cu5730%5Cu65b9%5Cu3002%5Cr%5Cn-%20%5Cu6267%20_%5Cu767d%5Cu9a6c_%20%5Cu7684%5Cu73a9%5Cu5bb6%5Cu5982%5Cu679c%5Cu767d%5Cu9a6c%5Cu5403%5Cu6389%5Cu9ed1%5Cu9a6c%20_%5Cu6216%5Cu8005_%20%5Cu767d%5Cu9a6c%5Cu5230%5Cu8fbe%5Cu4e86%20%2A%2A%28n%5C%2F2%2C%20m%5C%2F2%29%2A%2A%20%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff08%5Cu5e76%5Cu4e14%5Cu8fd9%5Cu4e2a%5Cu4f4d%5Cu7f6e%20_%5Cu4e0d%5Cu53d7_%20%5Cu5f53%5Cu524d%5Cu7684%5Cu9ed1%5Cu9a6c%5Cu653b%5Cu51fb%5Cuff09%5Cu5c31%5Cu8d62%5Cu4e86%5Cuff1b%5Cr%5Cn-%20%5Cu6267%20_%5Cu9ed1%5Cu9a6c_%20%5Cu7684%5Cu73a9%5Cu5bb6%5Cu5982%5Cu679c%5Cu9ed1%5Cu9a6c%5Cu5403%5Cu6389%5Cu767d%5Cu9a6c%20_%5Cu6216%5Cu8005_%20%5Cu9ed1%5Cu9a6c%5Cu5230%5Cu8fbe%5Cu4e86%20%2A%2A%28n%5C%2F2%2B1%2C%20m%5C%2F2%29%2A%2A%20%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff08%5Cu5e76%5Cu4e14%5Cu8fd9%5Cu4e2a%5Cu4f4d%5Cu7f6e%20_%5Cu4e0d%5Cu53d7_%20%5Cu5f53%5Cu524d%5Cu7684%5Cu767d%5Cu9a6c%5Cu653b%5Cu51fb%5Cuff09%5Cu5c31%5Cu8d62%5Cu4e86.%5Cr%5Cn%5Cr%5Cn%5Cu6b63%5Cu5f0f%5Cu4e00%5Cu70b9%5Cu8bf4%5Cuff0c%20%5Cu4e00%5Cu4e2a%5Cu73a9%5Cu5bb6%5Cuff08%5Cu7684%5Cu9a6c%5Cuff09%5Cu53ea%5Cu8981%5Cu628a%5Cu5bf9%5Cu65b9%5Cu7684%5Cu9a6c%5Cu5403%5Cu6389%5Cu5c31%5Cu8d62%5Cu4e86%5Cu3002%20%5Cu8fd9%5Cu4e2a%5Cu73a9%5Cu5bb6%5Cu7684%5Cu9a6c%5Cu5904%5Cu5728%5Cu5176%5Cu76ee%5Cu6807%5Cu4f4d%5Cu7f6e%5Cuff08%5Cu4e0a%5Cu6587%5Cu4e2d%5Cu52a0%5Cu7c97%5Cu7684%5Cu4e24%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cuff09%5Cu5e76%5Cu4e14%5Cu4e0d%5Cu53d7%5Cu5bf9%5Cu65b9%5Cu9a6c%5Cu653b%5Cu51fb%5Cu4e5f%5Cu5c31%5Cu8d62%5Cu4e86%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%20Alice%20%5Cu8d70%5Cu4e86%20350%20%5Cu6b65%5Cu8fd8%5Cu662f%5Cu51b3%5Cu4e0d%5Cu51fa%5Cu80dc%5Cu8d1f%5Cuff0c%20%5Cu6e38%5Cu620f%5Cu5c06%5Cu6253%5Cu6210%5Cu5e73%5Cu5c40%5Cu3002%5Cr%5Cn%5Cr%5CnAlice%20%5Cu8fd8%5Cu4e0d%5Cu77e5%5Cu9053%5Cu5979%5Cu7684%5Cu8c61%5Cu68cb%5Cu6c34%5Cu5e73%5Cu600e%5Cu6837%5Cuff0c%20%5Cu6240%5Cu4ee5%5Cu5979%5Cu6765%5Cu627e%5Cu4f60%5Cu5e2e%5Cu5fd9%5Cu3002%5Cu9009%5Cu4e00%5Cu4e2a%5Cu9a6c%5Cuff08%5Cu767d%5Cu9a6c%5Cu6216%5Cu9ed1%5Cu9a6c%5Cuff09%5Cuff0c%20%5Cu5e2e%5Cu5979%5Cu8d62%5Cu5f97%5Cu6e38%5Cu620f%5Cu3002%5Cr%5Cn%2A%2A%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1%20Alice%20%5Cu603b%5Cu4f1a%5Cu8d62%5Cu3002%2A%2A%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5C%2F%5Cu8f93%5Cu51fa%5Cr%5Cn%5Cuff08%5Cu8bf7%5Cu6ce8%5Cu610f%5Cuff1a%5Cu672c%5Cu9898%5Cu4e3a%2A%2A%5Cu4ea4%5Cu4e92%5Cu9898%2A%2A%5Cu3002%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8bfb%5Cu5165%20n%20%5Cu548c%20m%5Cu3002%5Cuff086%20%3C%3D%20n%2Cm%20%3C%3D%2040%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8bfb%5Cu5165%5Cu56db%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20x1%2C%20y1%2C%20x2%2C%20y2%20%281%20%3C%3D%20x1%2C%20x2%20%3C%3D%20n%2C%201%20%3C%3D%20y1%2C%20y2%20%3C%3D%20m%29.%5Cr%5Cn%5Cr%5Cn%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1%5Cu4e24%5Cu4e2a%5Cu9a6c%5Cu7684%5Cu521d%5Cu59cb%5Cu4f4d%5Cu7f6e%5Cu4e0d%5Cu540c%5Cuff0c%5Cu4e14%5Cu4e00%5Cu5f00%5Cu59cb%5Cu4e24%5Cu4e2a%5Cu9a6c%5Cu90fd%5Cu4e0d%5Cu5728%5Cu5b83%5Cu4eec%5Cu81ea%5Cu5df1%5Cu7684%5Cu76ee%5Cu6807%5Cu4f4d%5Cu7f6e%5Cuff08%5Cu4e0d%5Cu8fc7%5Cu5b83%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu5728%5Cu5bf9%5Cu624b%5Cu7684%5Cu76ee%5Cu6807%5Cu4f4d%5Cu7f6e%5Cu4e0a%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu5e94%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%20%60WHITE%60%20%5Cu6216%5Cu8005%20%60BLACK%60%5Cu4ee5%5Cu8bf4%5Cu660e%5Cu4f60%5Cu51b3%5Cu5b9a%5Cu9009%5Cu54ea%5Cu4e00%5Cu65b9%5Cu7684%5Cu9a6c%5Cu3002%5Cuff08%5Cu518d%5Cu6b21%5Cu6ce8%5Cu610f%5Cuff1a%5Cu767d%5Cu65b9%5Cu5148%5Cu4e0b%5Cu3002%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu4e00%5Cu56de%5Cu5408%5Cu4e2d%5Cuff0c%5Cu4f60%5Cu90fd%5Cu5e94%5Cu8f93%5Cu51fa%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20x%20%5Cu548c%20y%2C%20%5Cu8868%5Cu793a%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu9a6c%5Cu6bcf%5Cu6b21%5Cu79fb%5Cu52a8%5Cu5230%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu3002%5Cu5982%5Cu679c%5Cu4f60%5Cu5728%5Cu672c%5Cu8f6e%5Cu5c31%5Cu8d62%5Cu4e86%5Cuff0c%5Cu4f60%5Cu5e94%5Cu8be5%5Cu9a6c%5Cu4e0a%5Cu7ec8%5Cu6b62%5Cu7a0b%5Cu5e8f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu5bf9%5Cu624b%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu79fb%5Cu52a8%5Cu540e%5Cuff0c%20%5Cu4f60%5Cu4f1a%5Cu6536%5Cu5230%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20x%20%5Cu548c%20y%5Cuff0c%20%5Cu8868%5Cu793a%20Bob%20%5Cu7684%5Cu9a6c%5Cu6bcf%5Cu6b21%5Cu79fb%5Cu52a8%5Cu5230%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu4f60%5Cu4f5c%5Cu51fa%5Cu4e86%5Cu4e00%5Cu6b21%5Cu975e%5Cu6cd5%5Cu79fb%5Cu52a8%5Cu6216%5Cu8005%5Cu88c1%5Cu5224%5Cu5224%5Cu5b9a%5Cu4f60%5Cu8f93%5Cu4e86%5Cuff0c%20%5Cu4ea6%5Cu6216%5Cu662f%5Cu4f60%5Cu8d70%5Cu4e86350%5Cu6b65%5Cu4f46%5Cu8fd8%5Cu6ca1%5Cu8d62%5Cuff0c%20%5Cu4f60%5Cu4f1a%5Cu6536%5Cu5230%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57%20%60-1%20-1%60.%20%5Cu8fd9%5Cu65f6%5Cuff0c%20%5Cu4f60%5Cu5e94%5Cu8be5%5Cu7ec8%5Cu6b62%5Cu7a0b%5Cu5e8f%5Cuff0c%20%5Cu7136%5Cu540e%5Cu4f60%5Cu5c31WA%5Cu4e86%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu6253%5Cu5370%5Cu4e00%5Cu884c%5Cu7ed3%5Cu679c%5Cuff0c%20%2A%2A%5Cu8bb0%5Cu5f97%5Cu8f93%5Cu51faEOL%5Cu7136%5Cu540e%5Cu5237%5Cu65b0%5Cu7f13%5Cu51b2%5Cu533a%5Cu3002%2A%2A%5Cr%5Cn%5Cu4e0b%5Cu9762%5Cu662f%5Cu4e00%5Cu4e9b%5Cu793a%5Cu4f8b%5Cuff1a%5Cr%5Cn%5Cr%5Cn%60%60%60%5Cr%5Cn%5C%2F%5C%2F%20C%2B%2B%5Cr%5Cnfflush%28stdout%29%3B%20%5C%2F%5C%2F%20%231%5Cr%5Cncout.flush%28%29%3B%20%5C%2F%5C%2F%20%232%5Cr%5Cn%5C%2F%5C%2F%20Java%5Cr%5CnSystem.out.flush%28%29%3B%5Cr%5Cn%5C%2F%5C%2F%20Pascal%5Cr%5Cnflush%28output%29%3B%5Cr%5Cn%23%20Python%5Cr%5Cnstdout.flush%28%29%5Cr%5Cn%5C%2F%5C%2F%20%5Cu5176%5Cu4ed6%5Cu8bed%5Cu8a00%5Cu81ea%5Cu5df1%5Cu770b%5Cu6587%5Cu6863%5Cr%5Cn%60%60%60%5Cr%5Cn%5Cuff08%5Cu8fd9%5Cu4e2a%5Cu9898%5Cu4e0d%5Cu5141%5Cu8bb8Hack.%20%5Cu88c1%5Cu5224%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu662f%5Cu81ea%5Cu9002%5Cu5e94%5Cu7684%5Cuff1b%5Cu88c1%5Cu5224%5Cu7684%5Cu8d70%5Cu6cd5%5Cu53ef%5Cu80fd%5Cu968f%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu7684%5Cu8d70%5Cu6cd5%5Cu7684%5Cu53d8%5Cu5316%5Cu800c%5Cu53d8%5Cu5316%5Cu3002%5Cuff09%5Cr%5Cn%23%23%20%5Cu6837%5Cu4f8b%5Cu8bf4%5Cu660e%5Cr%5Cn%5Cu6837%5Cu4f8b1%5Cu4e2d%5Cuff0c%5Cu767d%5Cu9a6c%5Cu53ef%5Cu4ee5%5Cu5728%5Cu4e00%5Cu6b65%5Cu4e4b%5Cu5185%5Cu5230%5Cu8fbe%5Cu76ee%5Cu6807%5Cu4f4d%5Cu7f6e%5Cu3002%5Cr%5Cn%5Cu6837%5Cu4f8b2%5Cu4e2d%5Cuff0c%5Cu4e0d%5Cu7ba1%5Cu767d%5Cu9a6c%5Cu600e%5Cu4e48%5Cu8d70%5Cuff0c%5Cu9ed1%5Cu9a6c%5Cu603b%5Cu4f1a%5Cu8d62%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF1201E1%22%2C%22title%22%3A%22Knightmare%20%28easy%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A133156%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A39098%2C%22name%22%3A%22CF1201E1%20Knightmare%20%28easy%29%22%2C%22slug%22%3A%22CF1201E1%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Knightmare%20%28easy%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Knightmare (easy)</h1>
+<h2>题意翻译</h2>
+<div>**这是一道交互题。**
+Alice 和 Bob 在一个 n×m 的棋盘上玩一种游戏（**n，m 均为偶数**）。棋盘的每一行和每一列分别用数字 1 到 n 和 1 到 m 标记。棋盘上有两个马。白马最初在（**x1, y1**）上，黑马最初在（**x2, y2**）上。 Alice 先选其中一个马， Bob 则会选另一个进行游戏。
+Alice 和 Bob 会轮流下棋， 白方先下。在一个回合中， 玩家必须按国际象棋规则下棋。
+（意思就是假如一个马在(x, y) 上， 则它可以被移动到下列位置：）
+- (x+1,y+2)
+- (x+1, y-2)
+- (x-1, y+2)
+- (x-1, y-2)
+- (x+2, y+1)
+- (x+2, y-1)
+- (x-2, y+1)
+- (x−2,y−1)
+我们都知道马在棋盘中央最有优势。两个马都有一个它们要到达的地方。
+- 执 _白马_ 的玩家如果白马吃掉黑马 _或者_ 白马到达了 **(n/2, m/2)** 的位置（并且这个位置 _不受_ 当前的黑马攻击）就赢了；
+- 执 _黑马_ 的玩家如果黑马吃掉白马 _或者_ 黑马到达了 **(n/2+1, m/2)** 的位置（并且这个位置 _不受_ 当前的白马攻击）就赢了.
+正式一点说， 一个玩家（的马）只要把对方的马吃掉就赢了。 这个玩家的马处在其目标位置（上文中加粗的两个位置）并且不受对方马攻击也就赢了。
+如果 Alice 走了 350 步还是决不出胜负， 游戏将打成平局。
+Alice 还不知道她的象棋水平怎样， 所以她来找你帮忙。选一个马（白马或黑马）， 帮她赢得游戏。
+**数据保证 Alice 总会赢。**
+## 输入/输出
+（请注意：本题为**交互题**。）
+第一行读入 n 和 m。（6 <= n,m <= 40）
+第二行读入四个正整数 x1, y1, x2, y2 (1 <= x1, x2 <= n, 1 <= y1, y2 <= m).
+数据保证两个马的初始位置不同，且一开始两个马都不在它们自己的目标位置（不过它们可以在对手的目标位置上）。
+你的程序应输出一行 `WHITE` 或者 `BLACK`以说明你决定选哪一方的马。（再次注意：白方先下。）
+每一回合中，你都应输出两个正整数 x 和 y, 表示
+你的马每次移动到的位置。如果你在本轮就赢了，你应该马上终止程序。
+在对手每一次移动后， 你会收到两个正整数 x 和 y， 表示 Bob 的马每次移动到的位置。
+如果你作出了一次非法移动或者裁判判定你输了， 亦或是你走了350步但还没赢， 你会收到两个数字 `-1 -1`. 这时， 你应该终止程序， 然后你就WA了。
+每打印一行结果， **记得输出EOL然后刷新缓冲区。**
+下面是一些示例：
+```
+// C++
+fflush(stdout); // #1
+cout.flush(); // #2
+// Java
+System.out.flush();
+// Pascal
+flush(output);
+# Python
+stdout.flush()
+// 其他语言自己看文档
+```
+（这个题不允许Hack. 裁判的程序是自适应的；裁判的走法可能随你的程序的走法的变化而变化。）
+## 样例说明
+样例1中，白马可以在一步之内到达目标位置。
+样例2中，不管白马怎么走，黑马总会赢。</div>
+<h2>题目描述</h2>
+<div>This problem only differs from the next problem in constraints.
+This is an interactive problem.
+Alice and Bob are playing a game on the chessboard of size $ n \times m $ where $ n $ and $ m $ are even. The rows are numbered from $ 1 $ to $ n $ and the columns are numbered from $ 1 $ to $ m $ . There are two knights on the chessboard. A white one initially is on the position $ (x_1, y_1) $ , while the black one is on the position $ (x_2, y_2) $ . Alice will choose one of the knights to play with, and Bob will use the other one.
+The Alice and Bob will play in turns and whoever controls the white knight starts the game. During a turn, the player must move their knight adhering the chess rules. That is, if the knight is currently on the position $ (x, y) $ , it can be moved to any of those positions (as long as they are inside the chessboard):
+$ (x+1, y+2) $ , $ (x+1, y-2) $ , $ (x-1, y+2) $ , $ (x-1, y-2) $ , $ (x+2, y+1) $ , $ (x+2, y-1) $ , $ (x-2, y+1) $ , $ (x-2, y-1) $ .
+We all know that knights are strongest in the middle of the board. Both knight have a single position they want to reach:
+- the owner of the white knight wins if it captures the black knight or if the white knight is at $ (n/2, m/2) $ and this position is not under attack of the black knight at this moment;
+- The owner of the black knight wins if it captures the white knight or if the black knight is at $ (n/2+1, m/2) $ and this position is not under attack of the white knight at this moment.
+Formally, the player who captures the other knight wins. The player who is at its target square ( $ (n/2, m/2) $ for white, $ (n/2+1, m/2) $ for black) and this position is not under opponent's attack, also wins.
+A position is under attack of a knight if it can move into this position. Capturing a knight means that a player moves their knight to the cell where the opponent's knight is.
+If Alice made $ 350 $ moves and nobody won, the game is a draw.
+Alice is unsure in her chess skills, so she asks you for a help. Choose a knight and win the game for her. It can be shown, that Alice always has a winning strategy.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div>The interaction starts with two integers $ n $ and $ m $ ( $ 6 \le n,m \le 40 $ , $ n $ and $ m $ are even) — the dimensions of the chessboard.
+The second line contains four integers $ x_1, y_1, x_2, y_2 $ ( $ 1 \le x_1, x_2 \le n $ , $ 1 \le y_1, y_2 \le m $ ) — the positions of the white and the black knight. It is guaranteed that the two knights have different starting positions. It is also guaranteed that none of the knights are in their own target square in the beginning of the game (however, they can be on the opponent's target position).
+Your program should reply with either "WHITE" or "BLACK", depending on the knight you want to play with. In case you select the white knight, you start the game.
+During every your turn, you need to print two integers: $ x $ and $ y $ , the position to move the knight. If you won the game by this turn, you must terminate your program immediately.
+After every turn of the opponent, you will receive two integers: $ x $ and $ y $ , the position where Bob moved his knight.
+If your last move was illegal or you lost the game after jury's turn, or you made $ 350 $ moves, and haven't won, you will receive "-1 -1". In such cases, you should terminate your program and then you will get a Wrong Answer verdict.
+After printing anything, do not forget to output the end of line and flush the output. Otherwise, you might get Idleness limit exceeded. To do this, use:
+- fflush(stdout) or cout.flush() in C++;
+- System.out.flush() in Java;
+- flush(output) in Pascal;
+- stdout.flush() in Python;
+- see documentation for other languages.
+Hacks are disabled for this problem.
+Jury's program is adaptive: the moves of jury may depend on the moves made by your program.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+8 8
+2 3 1 8
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+WHITE
+4 4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+6 6
+4 4 2 2
+6 3</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+BLACK
+4 3
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, the white knight can reach it's target square in one move.
+In the second example black knight wins, no matter what white knight moves.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

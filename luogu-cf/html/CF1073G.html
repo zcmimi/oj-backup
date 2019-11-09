@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Yet Another LCP Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401262:OpyToMJFSMQAC1vBYsswCTKjaz0XgVri4PHgblvHLWU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%20%24%20%5C%5Ctext%7BLCP%7D%28s%2C%20t%29%20%24%20be%20the%20length%20of%20the%20longest%20common%20prefix%20of%20strings%20%24%20s%20%24%20and%20%24%20t%20%24%20.%20Also%20let%20%24%20s%5Bx%20%5C%5Cdots%20y%5D%20%24%20be%20the%20substring%20of%20%24%20s%20%24%20from%20index%20%24%20x%20%24%20to%20index%20%24%20y%20%24%20%28inclusive%29.%20For%20example%2C%20if%20%24%20s%20%3D%20%20%24%20%5C%22abcde%5C%22%2C%20then%20%24%20s%5B1%20%5C%5Cdots%203%5D%20%3D%20%24%20%5C%22abc%5C%22%2C%20%24%20s%5B2%20%5C%5Cdots%205%5D%20%3D%20%24%20%5C%22bcde%5C%22.%5Cn%5CnYou%20are%20given%20a%20string%20%24%20s%20%24%20of%20length%20%24%20n%20%24%20and%20%24%20q%20%24%20queries.%20Each%20query%20is%20a%20pair%20of%20integer%20sets%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_k%20%24%20and%20%24%20b_1%2C%20b_2%2C%20%5C%5Cdots%2C%20b_l%20%24%20.%20Calculate%20%24%20%5C%5Csum%5C%5Climits_%7Bi%20%3D%201%7D%5E%7Bi%20%3D%20k%7D%20%5C%5Csum%5C%5Climits_%7Bj%20%3D%201%7D%5E%7Bj%20%3D%20l%7D%7B%5C%5Ctext%7BLCP%7D%28s%5Ba_i%20%5C%5Cdots%20n%5D%2C%20s%5Bb_j%20%5C%5Cdots%20n%5D%29%7D%20%24%20for%20each%20query.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20n%2C%20q%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20length%20of%20string%20%24%20s%20%24%20and%20the%20number%20of%20queries%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20a%20string%20%24%20s%20%24%20consisting%20of%20lowercase%20Latin%20letters%20%28%20%24%20%7Cs%7C%20%3D%20n%20%24%20%29.%5Cn%5CnNext%20%24%203q%20%24%20lines%20contains%20descriptions%20of%20queries%20%5Cu2014%20three%20lines%20per%20query.%20The%20first%20line%20of%20each%20query%20contains%20two%20integers%20%24%20k_i%20%24%20and%20%24%20l_i%20%24%20%28%20%24%201%20%5C%5Cle%20k_i%2C%20l_i%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20sizes%20of%20sets%20%24%20a%20%24%20and%20%24%20b%20%24%20respectively.%5Cn%5CnThe%20second%20line%20of%20each%20query%20contains%20%24%20k_i%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%20a_%7Bk_i%7D%20%24%20%28%20%24%201%20%5C%5Cle%20a_1%20%3C%20a_2%20%3C%20%5C%5Cdots%20%3C%20a_%7Bk_i%7D%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20set%20%24%20a%20%24%20.%5Cn%5CnThe%20third%20line%20of%20each%20query%20contains%20%24%20l_i%20%24%20integers%20%24%20b_1%2C%20b_2%2C%20%5C%5Cdots%20b_%7Bl_i%7D%20%24%20%28%20%24%201%20%5C%5Cle%20b_1%20%3C%20b_2%20%3C%20%5C%5Cdots%20%3C%20b_%7Bl_i%7D%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20set%20%24%20b%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20%24%20%5C%5Csum%5C%5Climits_%7Bi%20%3D%201%7D%5E%7Bi%20%3D%20q%7D%7Bk_i%7D%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20and%20%24%20%5C%5Csum%5C%5Climits_%7Bi%20%3D%201%7D%5E%7Bi%20%3D%20q%7D%7Bl_i%7D%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20%24%20q%20%24%20integers%20%5Cu2014%20answers%20for%20the%20queries%20in%20the%20same%20order%20queries%20are%20given%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%227%204%5Cnabacaba%5Cn2%202%5Cn1%202%5Cn1%202%5Cn3%201%5Cn1%202%203%5Cn7%5Cn1%207%5Cn1%5Cn1%202%203%204%205%206%207%5Cn2%202%5Cn1%205%5Cn1%205%5Cn%22%2C%2213%5Cn2%5Cn12%5Cn16%5Cn%22%5D%5D%2C%22hint%22%3A%22Description%20of%20queries%3A%5Cn%5Cn1.%20In%20the%20first%20query%20%24%20s%5B1%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Babacaba%7D%20%24%20and%20%24%20s%5B2%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Bbacaba%7D%20%24%20are%20considered.%20The%20answer%20for%20the%20query%20is%20%24%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Babacaba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Bbacaba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Bbacaba%7D%2C%20%5C%5Ctext%7Babacaba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Bbacaba%7D%2C%20%5C%5Ctext%7Bbacaba%7D%29%20%3D%207%20%2B%200%20%2B%200%20%2B%206%20%3D%2013%20%24%20.%5Cn2.%20In%20the%20second%20query%20%24%20s%5B1%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Babacaba%7D%20%24%20%2C%20%24%20s%5B2%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Bbacaba%7D%20%24%20%2C%20%24%20s%5B3%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Bacaba%7D%20%24%20and%20%24%20s%5B7%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Ba%7D%20%24%20are%20considered.%20The%20answer%20for%20the%20query%20is%20%24%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Ba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Bbacaba%7D%2C%20%5C%5Ctext%7Ba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Bacaba%7D%2C%20%5C%5Ctext%7Ba%7D%29%20%3D%201%20%2B%200%20%2B%201%20%3D%202%20%24%20.%5Cn3.%20In%20the%20third%20query%20%24%20s%5B1%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Babacaba%7D%20%24%20are%20compared%20with%20all%20suffixes.%20The%20answer%20is%20the%20sum%20of%20non-zero%20values%3A%20%24%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Babacaba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Bacaba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Baba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Ba%7D%29%20%3D%207%20%2B%201%20%2B%203%20%2B%201%20%3D%2012%20%24%20.%5Cn4.%20In%20the%20fourth%20query%20%24%20s%5B1%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Babacaba%7D%20%24%20and%20%24%20s%5B5%20%5C%5Cdots%207%5D%20%3D%20%5C%5Ctext%7Baba%7D%20%24%20are%20considered.%20The%20answer%20for%20the%20query%20is%20%24%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Babacaba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Babacaba%7D%2C%20%5C%5Ctext%7Baba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Baba%7D%2C%20%5C%5Ctext%7Babacaba%7D%29%20%2B%20%5C%5Ctext%7BLCP%7D%28%5C%5Ctext%7Baba%7D%2C%20%5C%5Ctext%7Baba%7D%29%20%3D%207%20%2B%203%20%2B%203%20%2B%203%20%3D%2016%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1073%5C%2FG%22%2C%22id%22%3A%221073G%22%7D%2C%22translation%22%3A%22%5Cu8bb0%24lcp%28i%2Cj%29%24%5Cu8868%5Cu793ai%5Cu8fd9%5Cu4e2a%5Cu540e%5Cu7f00%5Cu548cj%5Cu8fd9%5Cu4e2a%5Cu540e%5Cu7f00%5Cu7684%5Cu6700%5Cu957f%5Cu516c%5Cu5171%5Cu524d%5Cu7f00%5Cu957f%5Cu5ea6%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu8be2%5Cu95ee%5Cu7684%5Cu65f6%5Cu5019%5Cu7ed9%5Cu51fa%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu96c6%5Cu5408A%5Cu548cB%2C%5Cu6c42%5Cr%5Cn%5Cr%5Cn%24%5C%5Csum_%7Bi%20%5C%5Cin%20A%2Cj%20%5C%5Cin%20B%7Dlcp%28i%2Cj%29%24%5Cr%5Cn%5Cu7684%5Cu503c%22%2C%22tags%22%3A%5B2%2C249%2C266%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A140%2C%22totalAccepted%22%3A61%2C%22pid%22%3A%22CF1073G%22%2C%22title%22%3A%22Yet%20Another%20LCP%20Problem%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF873F%22%2C%22title%22%3A%22Forbidden%20Indices%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4559%22%2C%22title%22%3A%22%5BJSOI2018%5D%5Cu5217%5Cu961f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1037H%22%2C%22title%22%3A%22Security%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1099F%22%2C%22title%22%3A%22Cookies%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1100F%22%2C%22title%22%3A%22Ivan%20and%20Burgers%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Yet%20Another%20LCP%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Yet Another LCP Problem</h1>
+<h2>题意翻译</h2>
+<div>记$lcp(i,j)$表示i这个后缀和j这个后缀的最长公共前缀长度
+给定一个字符串，每次询问的时候给出两个正整数集合A和B,求
+$\sum_{i \in A,j \in B}lcp(i,j)$
+的值</div>
+<h2>题目描述</h2>
+<div>Let $ \text{LCP}(s, t) $ be the length of the longest common prefix of strings $ s $ and $ t $ . Also let $ s[x \dots y] $ be the substring of $ s $ from index $ x $ to index $ y $ (inclusive). For example, if $ s = $ "abcde", then $ s[1 \dots 3] = $ "abc", $ s[2 \dots 5] = $ "bcde".
+You are given a string $ s $ of length $ n $ and $ q $ queries. Each query is a pair of integer sets $ a_1, a_2, \dots, a_k $ and $ b_1, b_2, \dots, b_l $ . Calculate $ \sum\limits_{i = 1}^{i = k} \sum\limits_{j = 1}^{j = l}{\text{LCP}(s[a_i \dots n], s[b_j \dots n])} $ for each query.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ q $ ( $ 1 \le n, q \le 2 \cdot 10^5 $ ) — the length of string $ s $ and the number of queries, respectively.
+The second line contains a string $ s $ consisting of lowercase Latin letters ( $ |s| = n $ ).
+Next $ 3q $ lines contains descriptions of queries — three lines per query. The first line of each query contains two integers $ k_i $ and $ l_i $ ( $ 1 \le k_i, l_i \le n $ ) — sizes of sets $ a $ and $ b $ respectively.
+The second line of each query contains $ k_i $ integers $ a_1, a_2, \dots a_{k_i} $ ( $ 1 \le a_1 < a_2 < \dots < a_{k_i} \le n $ ) — set $ a $ .
+The third line of each query contains $ l_i $ integers $ b_1, b_2, \dots b_{l_i} $ ( $ 1 \le b_1 < b_2 < \dots < b_{l_i} \le n $ ) — set $ b $ .
+It is guaranteed that $ \sum\limits_{i = 1}^{i = q}{k_i} \le 2 \cdot 10^5 $ and $ \sum\limits_{i = 1}^{i = q}{l_i} \le 2 \cdot 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ q $ integers — answers for the queries in the same order queries are given in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 4
+abacaba
+2 2
+1 2
+1 2
+3 1
+1 2 3
+7
+1 7
+1
+1 2 3 4 5 6 7
+2 2
+1 5
+1 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>13
+2
+12
+16
+</code></pre>
+<h2>说明</h2>
+<div>Description of queries:
+1. In the first query $ s[1 \dots 7] = \text{abacaba} $ and $ s[2 \dots 7] = \text{bacaba} $ are considered. The answer for the query is $ \text{LCP}(\text{abacaba}, \text{abacaba}) + \text{LCP}(\text{abacaba}, \text{bacaba}) + \text{LCP}(\text{bacaba}, \text{abacaba}) + \text{LCP}(\text{bacaba}, \text{bacaba}) = 7 + 0 + 0 + 6 = 13 $ .
+2. In the second query $ s[1 \dots 7] = \text{abacaba} $ , $ s[2 \dots 7] = \text{bacaba} $ , $ s[3 \dots 7] = \text{acaba} $ and $ s[7 \dots 7] = \text{a} $ are considered. The answer for the query is $ \text{LCP}(\text{abacaba}, \text{a}) + \text{LCP}(\text{bacaba}, \text{a}) + \text{LCP}(\text{acaba}, \text{a}) = 1 + 0 + 1 = 2 $ .
+3. In the third query $ s[1 \dots 7] = \text{abacaba} $ are compared with all suffixes. The answer is the sum of non-zero values: $ \text{LCP}(\text{abacaba}, \text{abacaba}) + \text{LCP}(\text{abacaba}, \text{acaba}) + \text{LCP}(\text{abacaba}, \text{aba}) + \text{LCP}(\text{abacaba}, \text{a}) = 7 + 1 + 3 + 1 = 12 $ .
+4. In the fourth query $ s[1 \dots 7] = \text{abacaba} $ and $ s[5 \dots 7] = \text{aba} $ are considered. The answer for the query is $ \text{LCP}(\text{abacaba}, \text{abacaba}) + \text{LCP}(\text{abacaba}, \text{aba}) + \text{LCP}(\text{aba}, \text{abacaba}) + \text{LCP}(\text{aba}, \text{aba}) = 7 + 3 + 3 + 3 = 16 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

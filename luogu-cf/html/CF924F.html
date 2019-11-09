@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minimal Subset Difference - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399475:HlDDbo73R8hiwENcbErhrbQThvGwEOW4pWvFgIA7x5A=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22We%20call%20a%20positive%20integer%20%24%20x%20%24%20a%20%24%20k%20%24%20-beautiful%20integer%20if%20and%20only%20if%20it%20is%20possible%20to%20split%20the%20multiset%20of%20its%20digits%20in%20the%20decimal%20representation%20into%20two%20subsets%20such%20that%20the%20difference%20between%20the%20sum%20of%20digits%20in%20one%20subset%20and%20the%20sum%20of%20digits%20in%20the%20other%20subset%20is%20less%20than%20or%20equal%20to%20%24%20k%20%24%20.%20Each%20digit%20should%20belong%20to%20exactly%20one%20subset%20after%20the%20split.%5Cn%5CnThere%20are%20%24%20n%20%24%20queries%20for%20you.%20Each%20query%20is%20described%20with%20three%20integers%20%24%20l%20%24%20%2C%20%24%20r%20%24%20and%20%24%20k%20%24%20%2C%20which%20mean%20that%20you%20are%20asked%20how%20many%20integers%20%24%20x%20%24%20between%20%24%20l%20%24%20and%20%24%20r%20%24%20%28inclusive%29%20are%20%24%20k%20%24%20-beautiful.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D5%5Cu00b710%5E%7B4%7D%20%24%20%29%2C%20indicating%20the%20number%20of%20queries.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20%24%20lines%20describes%20a%20query%2C%20containing%20three%20integers%20%24%20l%20%24%20%2C%20%24%20r%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dl%3C%3Dr%3C%3D10%5E%7B18%7D%20%24%20%2C%20%24%200%3C%3Dk%3C%3D9%20%24%20%29.%22%2C%22outputFormat%22%3A%22For%20each%20query%20print%20a%20single%20number%20%5Cu2014%20the%20answer%20to%20the%20query.%22%2C%22samples%22%3A%5B%5B%2210%5Cn1%20100%200%5Cn1%20100%201%5Cn1%20100%202%5Cn1%20100%203%5Cn1%20100%204%5Cn1%20100%205%5Cn1%20100%206%5Cn1%20100%207%5Cn1%20100%208%5Cn1%20100%209%5Cn%22%2C%229%5Cn28%5Cn44%5Cn58%5Cn70%5Cn80%5Cn88%5Cn94%5Cn98%5Cn100%5Cn%22%5D%2C%5B%2210%5Cn1%201000%200%5Cn1%201000%201%5Cn1%201000%202%5Cn1%201000%203%5Cn1%201000%204%5Cn1%201000%205%5Cn1%201000%206%5Cn1%201000%207%5Cn1%201000%208%5Cn1%201000%209%5Cn%22%2C%22135%5Cn380%5Cn573%5Cn721%5Cn830%5Cn906%5Cn955%5Cn983%5Cn996%5Cn1000%5Cn%22%5D%5D%2C%22hint%22%3A%22If%20%24%201%3C%3Dx%3C%3D9%20%24%20%2C%20integer%20%24%20x%20%24%20is%20%24%20k%20%24%20-beautiful%20if%20and%20only%20if%20%24%20x%3C%3Dk%20%24%20.%5Cn%5CnIf%20%24%2010%3C%3Dx%3C%3D99%20%24%20%2C%20integer%20%24%20x%3D10a%2Bb%20%24%20is%20%24%20k%20%24%20-beautiful%20if%20and%20only%20if%20%24%20%7Ca-b%7C%3C%3Dk%20%24%20%2C%20where%20%24%20a%20%24%20and%20%24%20b%20%24%20are%20integers%20between%20%24%200%20%24%20and%20%24%209%20%24%20%2C%20inclusive.%5Cn%5Cn%20%24%20100%20%24%20is%20%24%20k%20%24%20-beautiful%20if%20and%20only%20if%20%24%20k%3E%3D1%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F924%5C%2FF%22%2C%22id%22%3A%22924F%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF924F%22%2C%22title%22%3A%22Minimal%20Subset%20Difference%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minimal%20Subset%20Difference%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minimal Subset Difference</h1>
+<h2>题目描述</h2>
+<div>We call a positive integer $ x $ a $ k $ -beautiful integer if and only if it is possible to split the multiset of its digits in the decimal representation into two subsets such that the difference between the sum of digits in one subset and the sum of digits in the other subset is less than or equal to $ k $ . Each digit should belong to exactly one subset after the split.
+There are $ n $ queries for you. Each query is described with three integers $ l $ , $ r $ and $ k $ , which mean that you are asked how many integers $ x $ between $ l $ and $ r $ (inclusive) are $ k $ -beautiful.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1<=n<=5·10^{4} $ ), indicating the number of queries.
+Each of the next $ n $ lines describes a query, containing three integers $ l $ , $ r $ and $ k $ ( $ 1<=l<=r<=10^{18} $ , $ 0<=k<=9 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query print a single number — the answer to the query.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10
+1 100 0
+1 100 1
+1 100 2
+1 100 3
+1 100 4
+1 100 5
+1 100 6
+1 100 7
+1 100 8
+1 100 9
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>9
+28
+44
+58
+70
+80
+88
+94
+98
+100
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>10
+1 1000 0
+1 1000 1
+1 1000 2
+1 1000 3
+1 1000 4
+1 1000 5
+1 1000 6
+1 1000 7
+1 1000 8
+1 1000 9
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>135
+380
+573
+721
+830
+906
+955
+983
+996
+1000
+</code></pre>
+<h2>说明</h2>
+<div>If $ 1<=x<=9 $ , integer $ x $ is $ k $ -beautiful if and only if $ x<=k $ .
+If $ 10<=x<=99 $ , integer $ x=10a+b $ is $ k $ -beautiful if and only if $ |a-b|<=k $ , where $ a $ and $ b $ are integers between $ 0 $ and $ 9 $ , inclusive.
+$ 100 $ is $ k $ -beautiful if and only if $ k>=1 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

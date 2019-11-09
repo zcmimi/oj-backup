@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Same Sum Blocks (Easy) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402142:Kjawstp3ZkJDIl6jRhredyC/oPsrlQMztRehS0+6TcQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22This%20problem%20is%20given%20in%20two%20editions%2C%20which%20differ%20exclusively%20in%20the%20constraints%20on%20the%20number%20%24%20n%20%24%20.%5Cn%5CnYou%20are%20given%20an%20array%20of%20integers%20%24%20a%5B1%5D%2C%20a%5B2%5D%2C%20%5C%5Cdots%2C%20a%5Bn%5D.%20%24%20A%20block%20is%20a%20sequence%20of%20contiguous%20%28consecutive%29%20elements%20%24%20a%5Bl%5D%2C%20a%5Bl%2B1%5D%2C%20%5C%5Cdots%2C%20a%5Br%5D%20%24%20%28%20%24%201%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%20%24%20%29.%20Thus%2C%20a%20block%20is%20defined%20by%20a%20pair%20of%20indices%20%24%20%28l%2C%20r%29%20%24%20.%5Cn%5CnFind%20a%20set%20of%20blocks%20%24%20%28l_1%2C%20r_1%29%2C%20%28l_2%2C%20r_2%29%2C%20%5C%5Cdots%2C%20%28l_k%2C%20r_k%29%20%24%20such%20that%3A%5Cn%5Cn-%20They%20do%20not%20intersect%20%28i.e.%20they%20are%20disjoint%29.%20Formally%2C%20for%20each%20pair%20of%20blocks%20%24%20%28l_i%2C%20r_i%29%20%24%20and%20%24%20%28l_j%2C%20r_j%20%24%20%29%20where%20%24%20i%20%5C%5Cneq%20j%20%24%20either%20%24%20r_i%20%3C%20l_j%20%24%20or%20%24%20r_j%20%3C%20l_i%20%24%20.%5Cn-%20For%20each%20block%20the%20sum%20of%20its%20elements%20is%20the%20same.%20Formally%2C%20%24%20%24%24%24a%5Bl_1%5D%2Ba%5Bl_1%2B1%5D%2B%5C%5Cdots%2Ba%5Br_1%5D%3Da%5Bl_2%5D%2Ba%5Bl_2%2B1%5D%2B%5C%5Cdots%2Ba%5Br_2%5D%3D%20%24%20%24%20%20%20%24%20%24%20%5C%5Cdots%20%3D%20%24%20%24%20%20%20%24%20%24%20a%5Bl_k%5D%2Ba%5Bl_k%2B1%5D%2B%5C%5Cdots%2Ba%5Br_k%5D.%20%24%20%24%20%20%3C%5C%2Fli%3E%3Cli%3E%20The%20number%20of%20the%20blocks%20in%20the%20set%20is%20maximum.%20Formally%2C%20there%20does%20not%20exist%20a%20set%20of%20blocks%20%20%24%20%28l%5C%5C_1%27%2C%20r%5C%5C_1%27%29%2C%20%28l%5C%5C_2%27%2C%20r%5C%5C_2%27%29%2C%20%5C%5C%5C%5Cdots%2C%20%28l%5C%5C_%7Bk%27%7D%27%2C%20r%5C%5C_%7Bk%27%7D%27%29%20%24%20%20satisfying%20the%20above%20two%20requirements%20with%20%20%24%20k%27%20%3E%20k%24%24%24.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1141F1%5C%2Fa32038d691a8fef036434bed64856f1bff592dde.png%29The%20picture%20corresponds%20to%20the%20first%20example.%20Blue%20boxes%20illustrate%20blocks.Write%20a%20program%20to%20find%20such%20a%20set%20of%20blocks.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2050%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20given%20array.%20The%20second%20line%20contains%20the%20sequence%20of%20elements%20%24%20a%5B1%5D%2C%20a%5B2%5D%2C%20%5C%5Cdots%2C%20a%5Bn%5D%20%24%20%28%20%24%20-10%5E5%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E5%20%24%20%29.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20the%20integer%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cle%20k%20%5C%5Cle%20n%20%24%20%29.%20The%20following%20%24%20k%20%24%20lines%20should%20contain%20blocks%2C%20one%20per%20line.%20In%20each%20line%20print%20a%20pair%20of%20indices%20%24%20l_i%2C%20r_i%20%24%20%28%20%24%201%20%5C%5Cle%20l_i%20%5C%5Cle%20r_i%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20the%20bounds%20of%20the%20%24%20i%20%24%20-th%20block.%20You%20can%20print%20blocks%20in%20any%20order.%20If%20there%20are%20multiple%20answers%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn7%5Cn4%201%202%202%201%205%203%5Cn%22%2C%22%5Cn3%5Cn7%207%5Cn2%203%5Cn4%205%5Cn%22%5D%2C%5B%22%5Cn11%5Cn-5%20-4%20-3%20-2%20-1%200%201%202%203%204%205%5Cn%22%2C%22%5Cn2%5Cn3%204%5Cn1%201%5Cn%22%5D%2C%5B%22%5Cn4%5Cn1%201%201%201%5Cn%22%2C%22%5Cn4%5Cn4%204%5Cn1%201%5Cn2%202%5Cn3%203%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1141%5C%2FF1%22%2C%22id%22%3A%221141F1%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217a1%2Ca2%2Ca3....an%5Cu3002%5Cu5b9a%5Cu4e49%5Cuff08li%5Cuff0cri%5Cuff09%3Da%5Bli%5D%20%2B%20a%5Bli%20%2B1%5D%20%2B%20a%5Bli%20%2B2%5D%20%2B%20...%2Ba%5Bri%20%5D%5Cr%5Cn%5Cr%5Cn%5Cu627e%5Cu5230%5Cu6700%5Cu5927%5Cu7684k%5Cu4f7f%5Cu5f97%5Cuff08l1%2Cr1%5Cuff09%3D%5Cuff08l2%2Cr2%5Cuff09%3D...%3D%5Cuff08lk%2Crk%5Cuff09%5Cr%5Cn%5Cu4e14%5Cu533a%5Cu95f4%5Bl1%2Cr1%5D%2C%5Bl2%2Cr2%5D...%5Blk%2Crk%5D%20%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu4ea4%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF1141F1%22%2C%22title%22%3A%22Same%20Sum%20Blocks%20%28Easy%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Same%20Sum%20Blocks%20%28Easy%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Same Sum Blocks (Easy)</h1>
+<h2>题意翻译</h2>
+<div>有一个序列a1,a2,a3....an。定义（li，ri）=a[li] + a[li +1] + a[li +2] + ...+a[ri ]
+找到最大的k使得（l1,r1）=（l2,r2）=...=（lk,rk）
+且区间[l1,r1],[l2,r2]...[lk,rk] 互不相交</div>
+<h2>题目描述</h2>
+<div>This problem is given in two editions, which differ exclusively in the constraints on the number $ n $ .
+You are given an array of integers $ a[1], a[2], \dots, a[n]. $ A block is a sequence of contiguous (consecutive) elements $ a[l], a[l+1], \dots, a[r] $ ( $ 1 \le l \le r \le n $ ). Thus, a block is defined by a pair of indices $ (l, r) $ .
+Find a set of blocks $ (l_1, r_1), (l_2, r_2), \dots, (l_k, r_k) $ such that:
+- They do not intersect (i.e. they are disjoint). Formally, for each pair of blocks $ (l_i, r_i) $ and $ (l_j, r_j $ ) where $ i \neq j $ either $ r_i < l_j $ or $ r_j < l_i $ .
+- For each block the sum of its elements is the same. Formally, $ $$$a[l_1]+a[l_1+1]+\dots+a[r_1]=a[l_2]+a[l_2+1]+\dots+a[r_2]= $ $ $ $ \dots = $ $ $ $ a[l_k]+a[l_k+1]+\dots+a[r_k]. $ $ </li><li> The number of the blocks in the set is maximum. Formally, there does not exist a set of blocks $ (l\_1', r\_1'), (l\_2', r\_2'), \\dots, (l\_{k'}', r\_{k'}') $ satisfying the above two requirements with $ k' > k$$$.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1141F1/a32038d691a8fef036434bed64856f1bff592dde.png)The picture corresponds to the first example. Blue boxes illustrate blocks.Write a program to find such a set of blocks.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 1 \le n \le 50 $ ) — the length of the given array. The second line contains the sequence of elements $ a[1], a[2], \dots, a[n] $ ( $ -10^5 \le a_i \le 10^5 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print the integer $ k $ ( $ 1 \le k \le n $ ). The following $ k $ lines should contain blocks, one per line. In each line print a pair of indices $ l_i, r_i $ ( $ 1 \le l_i \le r_i \le n $ ) — the bounds of the $ i $ -th block. You can print blocks in any order. If there are multiple answers, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+7
+4 1 2 2 1 5 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+7 7
+2 3
+4 5
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+11
+-5 -4 -3 -2 -1 0 1 2 3 4 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+2
+3 4
+1 1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+4
+1 1 1 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+4
+4 4
+1 1
+2 2
+3 3
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

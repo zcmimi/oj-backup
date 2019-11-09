@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Marbles - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403362:3fcYll1Xq+o6XsStdXvIU7ctxVBk/HmGbca4d+nZ+ZE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Monocarp%20has%20arranged%20%24%20n%20%24%20colored%20marbles%20in%20a%20row.%20The%20color%20of%20the%20%24%20i%20%24%20-th%20marble%20is%20%24%20a_i%20%24%20.%20Monocarp%20likes%20ordered%20things%2C%20so%20he%20wants%20to%20rearrange%20marbles%20in%20such%20a%20way%20that%20all%20marbles%20of%20the%20same%20color%20form%20a%20contiguos%20segment%20%28and%20there%20is%20only%20one%20such%20segment%20for%20each%20color%29.%5Cn%5CnIn%20other%20words%2C%20Monocarp%20wants%20to%20rearrange%20marbles%20so%20that%2C%20for%20every%20color%20%24%20j%20%24%20%2C%20if%20the%20leftmost%20marble%20of%20color%20%24%20j%20%24%20is%20%24%20l%20%24%20-th%20in%20the%20row%2C%20and%20the%20rightmost%20marble%20of%20this%20color%20has%20position%20%24%20r%20%24%20in%20the%20row%2C%20then%20every%20marble%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20has%20color%20%24%20j%20%24%20.%5Cn%5CnTo%20achieve%20his%20goal%2C%20Monocarp%20can%20do%20the%20following%20operation%20any%20number%20of%20times%3A%20choose%20two%20neighbouring%20marbles%2C%20and%20swap%20them.%5Cn%5CnYou%20have%20to%20calculate%20the%20minimum%20number%20of%20operations%20Monocarp%20has%20to%20perform%20to%20rearrange%20the%20marbles.%20Note%20that%20the%20order%20of%20segments%20of%20marbles%20having%20equal%20color%20does%20not%20matter%2C%20it%20is%20only%20required%20that%2C%20for%20every%20color%2C%20all%20the%20marbles%20of%20this%20color%20form%20exactly%20one%20contiguous%20segment.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%24%20%282%20%5C%5Cle%20n%20%5C%5Cle%204%20%5C%5Ccdot%2010%5E5%29%20%24%20%5Cu2014%20the%20number%20of%20marbles.%5Cn%5CnThe%20second%20line%20contains%20an%20integer%20sequence%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%24%20%281%20%5C%5Cle%20a_i%20%5C%5Cle%2020%29%20%24%20%2C%20where%20%24%20a_i%20%24%20is%20the%20color%20of%20the%20%24%20i%20%24%20-th%20marble.%22%2C%22outputFormat%22%3A%22Print%20the%20minimum%20number%20of%20operations%20Monocarp%20has%20to%20perform%20to%20achieve%20his%20goal.%22%2C%22samples%22%3A%5B%5B%22%5Cn7%5Cn3%204%202%203%204%202%202%5Cn%22%2C%22%5Cn3%5Cn%22%5D%2C%5B%22%5Cn5%5Cn20%201%2014%2010%202%5Cn%22%2C%22%5Cn0%5Cn%22%5D%2C%5B%22%5Cn13%5Cn5%205%204%204%203%205%207%206%205%204%204%206%205%5Cn%22%2C%22%5Cn21%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20three%20operations%20are%20enough.%20Firstly%2C%20Monocarp%20should%20swap%20the%20third%20and%20the%20fourth%20marbles%2C%20so%20the%20sequence%20of%20colors%20is%20%24%20%5B3%2C%204%2C%203%2C%202%2C%204%2C%202%2C%202%5D%20%24%20.%20Then%20Monocarp%20should%20swap%20the%20second%20and%20the%20third%20marbles%2C%20so%20the%20sequence%20is%20%24%20%5B3%2C%203%2C%204%2C%202%2C%204%2C%202%2C%202%5D%20%24%20.%20And%20finally%2C%20Monocarp%20should%20swap%20the%20fourth%20and%20the%20fifth%20marbles%2C%20so%20the%20sequence%20is%20%24%20%5B3%2C%203%2C%204%2C%204%2C%202%2C%202%2C%202%5D%20%24%20.%5Cn%5CnIn%20the%20second%20example%20there%27s%20no%20need%20to%20perform%20any%20operations.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1215%5C%2FE%22%2C%22id%22%3A%221215E%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cr%5Cn%5Cr%5Cn%5Cu6709%20n%20%24%20%28n%20%5C%5Cle%204%20%2A%2010%5E5%29%20%24%20%5Cu4e2a%5Cu73e0%5Cu5b50%20%5Cuff0c%20%5Cu7b2c%24i%24%5Cu4e2a%5Cu73e0%5Cu5b50%5Cu989c%5Cu8272%5Cu662f%24%20c_i%20%28c_i%20%5C%5Cle%2020%29%24%20%2C%20%5Cu6bcf%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu628a%2A%2A%5Cu76f8%5Cu90bb%2A%2A%5Cu7684%5Cu4e24%5Cu4e2a%5Cu73e0%5Cu5b50%5Cu4ea4%5Cu6362%5Cu3002%5Cu73b0%5Cu5728%5Cu8981%5Cu628a%5Cu76f8%5Cu540c%5Cu989c%5Cu8272%5Cu7684%5Cu73e0%5Cu5b50%5Cu6392%5Cu5217%5Cu5728%5Cu76f8%5Cu8fde%5Cu7684%5Cu4e00%5Cu6bb5%5Cuff0c%5Cu95ee%5Cu81f3%5Cu5c11%5Cu8981%5Cu591a%5Cu5c11%5Cu6b21%5Cu64cd%5Cu4f5c%20%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a%5Cu4e00%5Cu4e2a%5Cu6570n%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cuff1an%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu73e0%5Cu5b50%5Cu7684%5Cu989c%5Cu8272%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff1a%5Cu81f3%5Cu5c11%5Cu4ea4%5Cu6362%5Cu7684%5Cu6b21%5Cu6570%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A182%2C%22totalAccepted%22%3A123%2C%22pid%22%3A%22CF1215E%22%2C%22title%22%3A%22Marbles%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A145202%2C%22title%22%3A%22%5Cu611f%5Cu89c9%5Cu8fd9%5Cu9898%5Cu548c3694%5Cu597d%5Cu50cf%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A40670%2C%22name%22%3A%22CF1215E%20Marbles%22%2C%22slug%22%3A%22CF1215E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1040%22%2C%22title%22%3A%22%5Cu52a0%5Cu5206%5Cu4e8c%5Cu53c9%5Cu6811%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2602%22%2C%22title%22%3A%22%5BZJOI2010%5D%5Cu6570%5Cu5b57%5Cu8ba1%5Cu6570%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1209D%22%2C%22title%22%3A%22Cow%20and%20Snacks%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1215F%22%2C%22title%22%3A%22Radio%20Stations%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1215D%22%2C%22title%22%3A%22Ticket%20Game%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Marbles%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Marbles</h1>
+<h2>题意翻译</h2>
+<div>## 题目大意
+有 n $ (n \le 4 * 10^5) $ 个珠子 ， 第$i$个珠子颜色是$ c_i (c_i \le 20)$ , 每次操作把**相邻**的两个珠子交换。现在要把相同颜色的珠子排列在相连的一段，问至少要多少次操作 。
+## 输入格式
+第一行：一个数n
+第二行：n个数，表示珠子的颜色
+## 输出格式
+一行：至少交换的次数</div>
+<h2>题目描述</h2>
+<div>Monocarp has arranged $ n $ colored marbles in a row. The color of the $ i $ -th marble is $ a_i $ . Monocarp likes ordered things, so he wants to rearrange marbles in such a way that all marbles of the same color form a contiguos segment (and there is only one such segment for each color).
+In other words, Monocarp wants to rearrange marbles so that, for every color $ j $ , if the leftmost marble of color $ j $ is $ l $ -th in the row, and the rightmost marble of this color has position $ r $ in the row, then every marble from $ l $ to $ r $ has color $ j $ .
+To achieve his goal, Monocarp can do the following operation any number of times: choose two neighbouring marbles, and swap them.
+You have to calculate the minimum number of operations Monocarp has to perform to rearrange the marbles. Note that the order of segments of marbles having equal color does not matter, it is only required that, for every color, all the marbles of this color form exactly one contiguous segment.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ $ (2 \le n \le 4 \cdot 10^5) $ — the number of marbles.
+The second line contains an integer sequence $ a_1, a_2, \dots, a_n $ $ (1 \le a_i \le 20) $ , where $ a_i $ is the color of the $ i $ -th marble.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the minimum number of operations Monocarp has to perform to achieve his goal.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+7
+3 4 2 3 4 2 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5
+20 1 14 10 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+13
+5 5 4 4 3 5 7 6 5 4 4 6 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+21
+</code></pre>
+<h2>说明</h2>
+<div>In the first example three operations are enough. Firstly, Monocarp should swap the third and the fourth marbles, so the sequence of colors is $ [3, 4, 3, 2, 4, 2, 2] $ . Then Monocarp should swap the second and the third marbles, so the sequence is $ [3, 3, 4, 2, 4, 2, 2] $ . And finally, Monocarp should swap the fourth and the fifth marbles, so the sequence is $ [3, 3, 4, 4, 2, 2, 2] $ .
+In the second example there's no need to perform any operations.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

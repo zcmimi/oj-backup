@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Ramesses and Corner Inversion - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401945:MF7ze1QPOKd7Y4Eu3nyXE/yp4PnNwbJ5kaL1tixeGDg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Ramesses%20came%20to%20university%20to%20algorithms%20practice%2C%20and%20his%20professor%2C%20who%20is%20a%20fairly%20known%20programmer%2C%20gave%20him%20the%20following%20task.%5Cn%5CnYou%20are%20given%20two%20matrices%20%24%20A%20%24%20and%20%24%20B%20%24%20of%20size%20%24%20n%20%5C%5Ctimes%20m%20%24%20%2C%20each%20of%20which%20consists%20of%20%24%200%20%24%20and%20%24%201%20%24%20only.%20You%20can%20apply%20the%20following%20operation%20to%20the%20matrix%20%24%20A%20%24%20arbitrary%20number%20of%20times%3A%20take%20any%20submatrix%20of%20the%20matrix%20%24%20A%20%24%20that%20has%20at%20least%20two%20rows%20and%20two%20columns%2C%20and%20invert%20the%20values%20in%20its%20corners%20%28i.e.%20all%20corners%20of%20the%20submatrix%20that%20contain%20%24%200%20%24%20%2C%20will%20be%20replaced%20by%20%24%201%20%24%20%2C%20and%20all%20corners%20of%20the%20submatrix%20that%20contain%20%24%201%20%24%20%2C%20will%20be%20replaced%20by%20%24%200%20%24%20%29.%20You%20have%20to%20answer%20whether%20you%20can%20obtain%20the%20matrix%20%24%20B%20%24%20from%20the%20matrix%20%24%20A%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1119C%5C%2F07e01026afbc60b96857b7392bf73ad937a6aa47.png%29An%20example%20of%20the%20operation.%20The%20chosen%20submatrix%20is%20shown%20in%20blue%20and%20yellow%2C%20its%20corners%20are%20shown%20in%20yellow.Ramesses%20don%27t%20want%20to%20perform%20these%20operations%20by%20himself%2C%20so%20he%20asks%20you%20to%20answer%20this%20question.%5Cn%5CnA%20submatrix%20of%20matrix%20%24%20M%20%24%20is%20a%20matrix%20which%20consist%20of%20all%20elements%20which%20come%20from%20one%20of%20the%20rows%20with%20indices%20%24%20x_1%2C%20x_1%2B1%2C%20%5C%5Cldots%2C%20x_2%20%24%20of%20matrix%20%24%20M%20%24%20and%20one%20of%20the%20columns%20with%20indices%20%24%20y_1%2C%20y_1%2B1%2C%20%5C%5Cldots%2C%20y_2%20%24%20of%20matrix%20%24%20M%20%24%20%2C%20where%20%24%20x_1%2C%20x_2%2C%20y_1%2C%20y_2%20%24%20are%20the%20edge%20rows%20and%20columns%20of%20the%20submatrix.%20In%20other%20words%2C%20a%20submatrix%20is%20a%20set%20of%20elements%20of%20source%20matrix%20which%20form%20a%20solid%20rectangle%20%28i.e.%20without%20holes%29%20with%20sides%20parallel%20to%20the%20sides%20of%20the%20original%20matrix.%20The%20corners%20of%20the%20submatrix%20are%20cells%20%24%20%28x_1%2C%20y_1%29%20%24%20%2C%20%24%20%28x_1%2C%20y_2%29%20%24%20%2C%20%24%20%28x_2%2C%20y_1%29%20%24%20%2C%20%24%20%28x_2%2C%20y_2%29%20%24%20%2C%20where%20the%20cell%20%24%20%28i%2Cj%29%20%24%20denotes%20the%20cell%20on%20the%20intersection%20of%20the%20%24%20i%20%24%20-th%20row%20and%20the%20%24%20j%20%24%20-th%20column.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cleq%20n%2C%20m%20%5C%5Cleq%20500%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20and%20the%20number%20of%20columns%20in%20matrices%20%24%20A%20%24%20and%20%24%20B%20%24%20.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20%24%20lines%20contain%20%24%20m%20%24%20integers%3A%20the%20%24%20j%20%24%20-th%20integer%20in%20the%20%24%20i%20%24%20-th%20line%20is%20the%20%24%20j%20%24%20-th%20element%20of%20the%20%24%20i%20%24%20-th%20row%20of%20the%20matrix%20%24%20A%20%24%20%28%20%24%200%20%5C%5Cleq%20A_%7Bij%7D%20%5C%5Cleq%201%20%24%20%29.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20%24%20lines%20contain%20%24%20m%20%24%20integers%3A%20the%20%24%20j%20%24%20-th%20integer%20in%20the%20%24%20i%20%24%20-th%20line%20is%20the%20%24%20j%20%24%20-th%20element%20of%20the%20%24%20i%20%24%20-th%20row%20of%20the%20matrix%20%24%20B%20%24%20%28%20%24%200%20%5C%5Cleq%20B_%7Bij%7D%20%5C%5Cleq%201%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20%5C%22Yes%5C%22%20%28without%20quotes%29%20if%20it%20is%20possible%20to%20transform%20the%20matrix%20%24%20A%20%24%20to%20the%20matrix%20%24%20B%20%24%20using%20the%20operations%20described%20above%2C%20and%20%5C%22No%5C%22%20%28without%20quotes%29%2C%20if%20it%20is%20not%20possible.%20You%20can%20print%20each%20letter%20in%20any%20case%20%28upper%20or%20lower%29.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%203%5Cn0%201%200%5Cn0%201%200%5Cn1%200%200%5Cn1%200%200%5Cn1%200%200%5Cn1%200%200%5Cn%22%2C%22%5CnYes%5Cn%22%5D%2C%5B%22%5Cn6%207%5Cn0%200%201%201%200%200%201%5Cn0%201%200%200%201%200%201%5Cn0%200%200%201%200%200%201%5Cn1%200%201%200%201%200%200%5Cn0%201%200%200%201%200%201%5Cn0%201%200%201%200%200%201%5Cn1%201%200%201%200%201%201%5Cn0%201%201%200%201%200%200%5Cn1%201%200%201%200%200%201%5Cn1%200%201%200%200%201%200%5Cn0%201%201%200%201%200%200%5Cn0%201%201%201%201%200%201%5Cn%22%2C%22%5CnYes%5Cn%22%5D%2C%5B%22%5Cn3%204%5Cn0%201%200%201%5Cn1%200%201%200%5Cn0%201%200%201%5Cn1%201%201%201%5Cn1%201%201%201%5Cn1%201%201%201%5Cn%22%2C%22%5CnNo%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20examples%20are%20explained%20below.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1119C%5C%2Fe8b2b05f1d91acad1dd27cd7e9d641b53a14a9dc.png%29Example%201.%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1119C%5C%2Fa67a1a76d04df99ed90143acfb49e6763fb445d5.png%29Example%202.%20%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1119C%5C%2F8179b88f909d57a1d5601735cc5b6ce16cfe2cb8.png%29Example%203.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1119%5C%2FC%22%2C%22id%22%3A%221119C%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e24%5Cu4e2a%5Cu5927%5Cu5c0f%5Cu4e3a%24n%20%5C%5Ctimes%20m%24%5Cu7684%20%2401%24%20%5Cu77e9%5Cu9635%24A%24%5Cu3001%24B%24%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu91c7%5Cu53d6%5Cu4ee5%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu5728%5Cu77e9%5Cu9635%24A%24%5Cu4e2d%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu957f%5Cu3001%5Cu5bbd%5Cu5747%5Cu4e0d%5Cu5c0f%5Cu4e8e%242%24%5Cu7684%5Cu77e9%5Cu5f62%5Cuff0c%5Cu5c06%5Cu77e9%5Cu5f62%5Cu7684%5Cu56db%5Cu4e2a%5Cu7aef%5Cu70b9%5Cu4e0a%5Cu7684%5Cu6570%5Cu53d6%5Cu53cd%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu56de%5Cu7b54%5Cu5bf9%5Cu4e8e%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu4e24%5Cu4e2a%5Cu77e9%5Cu9635%5Cuff0c%5Cu80fd%5Cu5426%5Cu901a%5Cu8fc7%5Cu4ee5%5Cu4e0a%5Cu64cd%5Cu4f5c%5Cu4f7f%5Cu5f97%5Cu77e9%5Cu9635%24A%24%5Cu548c%5Cu77e9%5Cu9635%24B%24%5Cu5b8c%5Cu5168%5Cu76f8%5Cu540c%5Cu3002%5Cu5982%5Cu679c%5Cu53ef%5Cu4ee5%5Cuff0c%5Cu8f93%5Cu51fa%5Cu201cYes%5Cu201d%5Cuff1b%5Cu5426%5Cu5219%5Cuff0c%5Cu8f93%5Cu51fa%5Cu201cNo%5Cu201d%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A125%2C%22totalAccepted%22%3A101%2C%22pid%22%3A%22CF1119C%22%2C%22title%22%3A%22Ramesses%20and%20Corner%20Inversion%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF475D%22%2C%22title%22%3A%22CGCDSSQ%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4643%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu963f%5Cu72f8%5Cu548c%5Cu6843%5Cu5b50%5Cu7684%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1119E%22%2C%22title%22%3A%22Pavel%20and%20Triangles%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1119D%22%2C%22title%22%3A%22Frets%20On%20Fire%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1119B%22%2C%22title%22%3A%22Alyona%20and%20a%20Narrow%20Fridge%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Ramesses%20and%20Corner%20Inversion%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Ramesses and Corner Inversion</h1>
+<h2>题意翻译</h2>
+<div>给定两个大小为$n \times m$的 $01$ 矩阵$A$、$B$。你可以采取以下操作：在矩阵$A$中选择一个长、宽均不小于$2$的矩形，将矩形的四个端点上的数取反。你需要回答对于给定的两个矩阵，能否通过以上操作使得矩阵$A$和矩阵$B$完全相同。如果可以，输出“Yes”；否则，输出“No”。</div>
+<h2>题目描述</h2>
+<div>Ramesses came to university to algorithms practice, and his professor, who is a fairly known programmer, gave him the following task.
+You are given two matrices $ A $ and $ B $ of size $ n \times m $ , each of which consists of $ 0 $ and $ 1 $ only. You can apply the following operation to the matrix $ A $ arbitrary number of times: take any submatrix of the matrix $ A $ that has at least two rows and two columns, and invert the values in its corners (i.e. all corners of the submatrix that contain $ 0 $ , will be replaced by $ 1 $ , and all corners of the submatrix that contain $ 1 $ , will be replaced by $ 0 $ ). You have to answer whether you can obtain the matrix $ B $ from the matrix $ A $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1119C/07e01026afbc60b96857b7392bf73ad937a6aa47.png)An example of the operation. The chosen submatrix is shown in blue and yellow, its corners are shown in yellow.Ramesses don't want to perform these operations by himself, so he asks you to answer this question.
+A submatrix of matrix $ M $ is a matrix which consist of all elements which come from one of the rows with indices $ x_1, x_1+1, \ldots, x_2 $ of matrix $ M $ and one of the columns with indices $ y_1, y_1+1, \ldots, y_2 $ of matrix $ M $ , where $ x_1, x_2, y_1, y_2 $ are the edge rows and columns of the submatrix. In other words, a submatrix is a set of elements of source matrix which form a solid rectangle (i.e. without holes) with sides parallel to the sides of the original matrix. The corners of the submatrix are cells $ (x_1, y_1) $ , $ (x_1, y_2) $ , $ (x_2, y_1) $ , $ (x_2, y_2) $ , where the cell $ (i,j) $ denotes the cell on the intersection of the $ i $ -th row and the $ j $ -th column.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 1 \leq n, m \leq 500 $ ) — the number of rows and the number of columns in matrices $ A $ and $ B $ .
+Each of the next $ n $ lines contain $ m $ integers: the $ j $ -th integer in the $ i $ -th line is the $ j $ -th element of the $ i $ -th row of the matrix $ A $ ( $ 0 \leq A_{ij} \leq 1 $ ).
+Each of the next $ n $ lines contain $ m $ integers: the $ j $ -th integer in the $ i $ -th line is the $ j $ -th element of the $ i $ -th row of the matrix $ B $ ( $ 0 \leq B_{ij} \leq 1 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print "Yes" (without quotes) if it is possible to transform the matrix $ A $ to the matrix $ B $ using the operations described above, and "No" (without quotes), if it is not possible. You can print each letter in any case (upper or lower).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3 3
+0 1 0
+0 1 0
+1 0 0
+1 0 0
+1 0 0
+1 0 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+Yes
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+6 7
+0 0 1 1 0 0 1
+0 1 0 0 1 0 1
+0 0 0 1 0 0 1
+1 0 1 0 1 0 0
+0 1 0 0 1 0 1
+0 1 0 1 0 0 1
+1 1 0 1 0 1 1
+0 1 1 0 1 0 0
+1 1 0 1 0 0 1
+1 0 1 0 0 1 0
+0 1 1 0 1 0 0
+0 1 1 1 1 0 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+Yes
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+3 4
+0 1 0 1
+1 0 1 0
+0 1 0 1
+1 1 1 1
+1 1 1 1
+1 1 1 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+No
+</code></pre>
+<h2>说明</h2>
+<div>The examples are explained below.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1119C/e8b2b05f1d91acad1dd27cd7e9d641b53a14a9dc.png)Example 1. ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1119C/a67a1a76d04df99ed90143acfb49e6763fb445d5.png)Example 2. ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1119C/8179b88f909d57a1d5601735cc5b6ce16cfe2cb8.png)Example 3.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

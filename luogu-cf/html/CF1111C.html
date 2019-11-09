@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Creative Snap - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401859:lgPGNl4LRvvmXBRgoT6VjORyzyEGfZg5e+NgqsnErr8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Thanos%20wants%20to%20destroy%20the%20avengers%20base%2C%20but%20he%20needs%20to%20destroy%20the%20avengers%20along%20with%20their%20base.%5Cn%5CnLet%20we%20represent%20their%20base%20with%20an%20array%2C%20where%20each%20position%20can%20be%20occupied%20by%20many%20avengers%2C%20but%20one%20avenger%20can%20occupy%20only%20one%20position.%20Length%20of%20their%20base%20is%20a%20perfect%20power%20of%20%24%202%20%24%20.%20Thanos%20wants%20to%20destroy%20the%20base%20using%20minimum%20power.%20He%20starts%20with%20the%20whole%20base%20and%20in%20one%20step%20he%20can%20do%20either%20of%20following%3A%5Cn%5Cn-%20if%20the%20current%20length%20is%20at%20least%20%24%202%20%24%20%2C%20divide%20the%20base%20into%20%24%202%20%24%20equal%20halves%20and%20destroy%20them%20separately%2C%20or%5Cn-%20burn%20the%20current%20base.%20If%20it%20contains%20no%20avenger%20in%20it%2C%20it%20takes%20%24%20A%20%24%20amount%20of%20power%2C%20otherwise%20it%20takes%20his%20%24%20B%20%5C%5Ccdot%20n_a%20%5C%5Ccdot%20l%20%24%20amount%20of%20power%2C%20where%20%24%20n_a%20%24%20is%20the%20number%20of%20avengers%20and%20%24%20l%20%24%20is%20the%20length%20of%20the%20current%20base.%5Cn%5Cn%20Output%20the%20minimum%20power%20needed%20by%20Thanos%20to%20destroy%20the%20avengers%27%20base.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20four%20integers%20%24%20n%20%24%20%2C%20%24%20k%20%24%20%2C%20%24%20A%20%24%20and%20%24%20B%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%2030%20%24%20%2C%20%24%201%20%5C%5Cleq%20k%20%5C%5Cleq%2010%5E5%20%24%20%2C%20%24%201%20%5C%5Cleq%20A%2CB%20%5C%5Cleq%2010%5E4%20%24%20%29%2C%20where%20%24%202%5En%20%24%20is%20the%20length%20of%20the%20base%2C%20%24%20k%20%24%20is%20the%20number%20of%20avengers%20and%20%24%20A%20%24%20and%20%24%20B%20%24%20are%20the%20constants%20explained%20in%20the%20question.%5Cn%5CnThe%20second%20line%20contains%20%24%20k%20%24%20integers%20%24%20a_%7B1%7D%2C%20a_%7B2%7D%2C%20a_%7B3%7D%2C%20%5C%5Cldots%2C%20a_%7Bk%7D%20%24%20%28%20%24%201%20%5C%5Cleq%20a_%7Bi%7D%20%5C%5Cleq%202%5En%20%24%20%29%2C%20where%20%24%20a_%7Bi%7D%20%24%20represents%20the%20position%20of%20avenger%20in%20the%20base.%22%2C%22outputFormat%22%3A%22Output%20one%20integer%20%5Cu2014%20the%20minimum%20power%20needed%20to%20destroy%20the%20avengers%20base.%22%2C%22samples%22%3A%5B%5B%22%5Cn2%202%201%202%5Cn1%203%5Cn%22%2C%22%5Cn6%5Cn%22%5D%2C%5B%22%5Cn3%202%201%202%5Cn1%207%5Cn%22%2C%22%5Cn8%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20example.%5Cn%5CnOne%20option%20for%20Thanos%20is%20to%20burn%20the%20whole%20base%20%24%201-4%20%24%20with%20power%20%24%202%20%5C%5Ccdot%202%20%5C%5Ccdot%204%20%3D%2016%20%24%20.%5Cn%5CnOtherwise%20he%20can%20divide%20the%20base%20into%20two%20parts%20%24%201-2%20%24%20and%20%24%203-4%20%24%20.%5Cn%5CnFor%20base%20%24%201-2%20%24%20%2C%20he%20can%20either%20burn%20it%20with%20power%20%24%202%20%5C%5Ccdot%201%20%5C%5Ccdot%202%20%3D%204%20%24%20or%20divide%20it%20into%20%24%202%20%24%20parts%20%24%201-1%20%24%20and%20%24%202-2%20%24%20.%5Cn%5CnFor%20base%20%24%201-1%20%24%20%2C%20he%20can%20burn%20it%20with%20power%20%24%202%20%5C%5Ccdot%201%20%5C%5Ccdot%201%20%3D%202%20%24%20.%20For%20%24%202-2%20%24%20%2C%20he%20can%20destroy%20it%20with%20power%20%24%201%20%24%20%2C%20as%20there%20are%20no%20avengers.%20So%2C%20the%20total%20power%20for%20destroying%20%24%201-2%20%24%20is%20%24%202%20%2B%201%20%3D%203%20%24%20%2C%20which%20is%20less%20than%20%24%204%20%24%20.%5Cn%5CnSimilarly%2C%20he%20needs%20%24%203%20%24%20power%20to%20destroy%20%24%203-4%20%24%20.%20The%20total%20minimum%20power%20needed%20is%20%24%206%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1111%5C%2FC%22%2C%22id%22%3A%221111C%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu706d%5Cu9738%5Cu8981%5Cu6467%5Cu6bc1%5Cu590d%5Cu4ec7%5Cu8005%5Cu4eec%5Cu7684%5Cu57fa%5Cu5730%5Cuff01%20%20%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu590d%5Cu4ec7%5Cu8005%5Cu7684%5Cu57fa%5Cu5730%5Cu770b%5Cu6210%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu90fd%5Cu6709%5Cu53ef%5Cu80fd%5Cu6709%5Cu591a%5Cu4e2a%5Cu590d%5Cu4ec7%5Cu8005%5Cuff1b%5Cu4f46%5Cu662f%5Cu6bcf%5Cu4e2a%5Cu590d%5Cu4ec7%5Cu8005%5Cu53ea%5Cu80fd%5Cu5360%5Cu636e%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu3002%20%20%5Cr%5Cn%5Cu4ed6%5Cu4eec%5Cu57fa%5Cu5730%5Cu7684%5Cu957f%5Cu5ea6%5Cu521a%5Cu597d%5Cu662f%242%24%5Cu7684%5Cu6574%5Cu6570%5Cu5e42%5Cuff0c%5Cu706d%5Cu9738%5Cu60f3%5Cu8981%5Cu7528%5Cu6700%5Cu5c11%5Cu7684%5Cu80fd%5Cu91cf%5Cu6467%5Cu6bc1%5Cu5b83%5Cu4eec%5Cu3002%5Cu4ed6%5Cu5728%5Cu6467%5Cu6bc1%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cuff1a%20%20%5Cr%5Cn-%20%5Cu5982%5Cu679c%5Cu8fd9%5Cu6bb5%5Cu57fa%5Cu5730%5Cu957f%5Cu5ea6%24%5C%5Cge%202%24%5Cuff0c%5Cu4ed6%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu5176%5Cu5206%5Cu4e3a%5Cu76f8%5Cu7b49%5Cu957f%5Cu5ea6%5Cu7684%5Cu4e24%5Cu534a%5Cu3002%20%20%5Cr%5Cn-%20%5Cu70e7%5Cu6389%5Cu8fd9%5Cu6bb5%5Cu57fa%5Cu5730%5Cu3002%5Cu5982%5Cu679c%5Cu8fd9%5Cu6bb5%5Cu57fa%5Cu5730%5Cu4e2d%5Cu6ca1%5Cu6709%5Cu590d%5Cu4ec7%5Cu8005%5Cuff0c%5Cu4ed6%5Cu9700%5Cu8981%5Cu6d88%5Cu8017%24A%24%5Cu7684%5Cu80fd%5Cu91cf%5Cuff1b%5Cu5982%5Cu679c%5Cu6709%5Cuff0c%5Cu5219%5Cu9700%5Cu8981%5Cu6d88%5Cu8017%24B%2Ax%2Al%24%5Cu7684%5Cu80fd%5Cu91cf%5Cu3002%5Cu5176%5Cu4e2d%24l%24%5Cu662f%5Cu8fd9%5Cu6bb5%5Cu57fa%5Cu5730%5Cu957f%5Cu5ea6%5Cuff0c%24x%24%5Cu662f%5Cu8fd9%5Cu6bb5%5Cu4e2d%5Cu7684%5Cu590d%5Cu4ec7%5Cu8005%5Cu6570%5Cu91cf%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu4ed6%5Cu6467%5Cu6bc1%5Cu5168%5Cu90e8%5Cu57fa%5Cu5730%5Cu9700%5Cu8981%5Cu7684%5Cu6700%5Cu5c11%5Cu80fd%5Cu91cf%5Cu3002%20%20%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%20%20%20%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%20%20%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu56db%5Cu4e2a%5Cu6574%5Cu6570%24n%2Ck%2CA%2CB%24%5Cuff1b%242%5En%24%5Cu4e3a%5Cu57fa%5Cu5730%5Cu957f%5Cu5ea6%5Cuff0c%24k%24%5Cu662f%5Cu603b%5Cu5171%5Cu7684%5Cu590d%5Cu4ec7%5Cu8005%5Cu6570%5Cu91cf%5Cuff0c%24A%2CB%24%5Cu7684%5Cu610f%5Cu4e49%5Cu5982%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu3002%20%20%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%24k%24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%24a_i%24%5Cu8868%5Cu793a%5Cu7b2c%24i%24%5Cu4e2a%5Cu590d%5Cu4ec7%5Cu8005%5Cu6240%5Cu5728%5Cu7684%5Cu4f4d%5Cu7f6e%20%20%20%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%20%20%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6467%5Cu6bc1%5Cu57fa%5Cu5730%5Cu6240%5Cu9700%5Cu8981%5Cu7684%5Cu6700%5Cu5c11%5Cu80fd%5Cu91cf%5Cu3002%20%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%20%20%5Cr%5Cn%23%23%23%20%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%20%20%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6837%5Cu4f8b1%5Cuff0c%5Cu76f4%5Cu63a5%5Cu70e7%5Cu533a%5Cu95f4%24%5B1%2C4%5D%24%5Cu9700%5Cu8981%5Cu80fd%5Cu91cf%5Cu4e3a%244%2A2%2A2%3D16%24%5Cu3002%20%20%5Cr%5Cn%5Cu4f46%5Cu662f%5Cuff0c%5Cu5982%5Cu679c%5Cu5c06%5Cu5176%5Cu5206%5Cu4e3a%244%24%5Cu6bb5%5Cuff0c%5Cu5206%5Cu522b%5Cu70e7%5Cu6389%5Cuff0c%5Cu6240%5Cu9700%5Cu80fd%5Cu91cf%5Cu53ea%5Cu6709%242%2B1%2B2%2B1%3D6%24%5Cu3002%20%20%5Cr%5Cn%5Cu53ef%5Cu4ee5%5Cu8bc1%5Cu660e%5Cu6ca1%5Cu6709%5Cu66f4%5Cu4f18%5Cu7684%5Cu65b9%5Cu6848%5Cuff0c%5Cu6240%5Cu4ee5%5Cu8f93%5Cu51fa%606%60%5Cu3002%20%5Cr%5Cn%23%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%20%20%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu5168%5Cu90e8%5Cu6570%5Cu636e%5Cuff1a%20%20%5Cr%5Cn%241%5C%5Cle%20n%20%5C%5Cle%2030%24%20%20%5Cr%5Cn%241%5C%5Cle%20k%20%5C%5Cle%2010%5E5%24%20%20%5Cr%5Cn%241%5C%5Cle%20A%2CB%20%5C%5Cle%2010%5E4%24%20%20%5Cr%5Cn%241%5C%5Cle%20a_i%20%5C%5Cle%202%5En%24%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A226%2C%22totalAccepted%22%3A104%2C%22pid%22%3A%22CF1111C%22%2C%22title%22%3A%22Creative%20Snap%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1111E%22%2C%22title%22%3A%22Tree%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1111D%22%2C%22title%22%3A%22Destroy%20the%20Colony%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1111B%22%2C%22title%22%3A%22Average%20Superhero%20Gang%20Power%20%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1110E%22%2C%22title%22%3A%22Magic%20Stones%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1110C%22%2C%22title%22%3A%22Meaningless%20Operations%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Creative%20Snap%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Creative Snap</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+灭霸要摧毁复仇者们的基地！
+我们可以将复仇者的基地看成一个序列，每个位置都有可能有多个复仇者；但是每个复仇者只能占据一个位置。
+他们基地的长度刚好是$2$的整数幂，灭霸想要用最少的能量摧毁它们。他在摧毁过程中，可以选择：
+- 如果这段基地长度$\ge 2$，他可以将其分为相等长度的两半。
+- 烧掉这段基地。如果这段基地中没有复仇者，他需要消耗$A$的能量；如果有，则需要消耗$B*x*l$的能量。其中$l$是这段基地长度，$x$是这段中的复仇者数量。
+输出一个整数，表示他摧毁全部基地需要的最少能量。
+## 输入输出格式
+### 输入格式
+第一行四个整数$n,k,A,B$；$2^n$为基地长度，$k$是总共的复仇者数量，$A,B$的意义如题目描述。
+接下来一行$k$个整数，$a_i$表示第$i$个复仇者所在的位置
+### 输出格式
+一个整数，表示摧毁基地所需要的最少能量。
+## 说明
+### 样例解释
+对于样例1，直接烧区间$[1,4]$需要能量为$4*2*2=16$。
+但是，如果将其分为$4$段，分别烧掉，所需能量只有$2+1+2+1=6$。
+可以证明没有更优的方案，所以输出`6`。
+### 数据范围
+对于全部数据：
+$1\le n \le 30$
+$1\le k \le 10^5$
+$1\le A,B \le 10^4$
+$1\le a_i \le 2^n$
+</div>
+<h2>题目描述</h2>
+<div>Thanos wants to destroy the avengers base, but he needs to destroy the avengers along with their base.
+Let we represent their base with an array, where each position can be occupied by many avengers, but one avenger can occupy only one position. Length of their base is a perfect power of $ 2 $ . Thanos wants to destroy the base using minimum power. He starts with the whole base and in one step he can do either of following:
+- if the current length is at least $ 2 $ , divide the base into $ 2 $ equal halves and destroy them separately, or
+- burn the current base. If it contains no avenger in it, it takes $ A $ amount of power, otherwise it takes his $ B \cdot n_a \cdot l $ amount of power, where $ n_a $ is the number of avengers and $ l $ is the length of the current base.
+Output the minimum power needed by Thanos to destroy the avengers' base.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains four integers $ n $ , $ k $ , $ A $ and $ B $ ( $ 1 \leq n \leq 30 $ , $ 1 \leq k \leq 10^5 $ , $ 1 \leq A,B \leq 10^4 $ ), where $ 2^n $ is the length of the base, $ k $ is the number of avengers and $ A $ and $ B $ are the constants explained in the question.
+The second line contains $ k $ integers $ a_{1}, a_{2}, a_{3}, \ldots, a_{k} $ ( $ 1 \leq a_{i} \leq 2^n $ ), where $ a_{i} $ represents the position of avenger in the base.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one integer — the minimum power needed to destroy the avengers base.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+2 2 1 2
+1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3 2 1 2
+1 7
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+8
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first example.
+One option for Thanos is to burn the whole base $ 1-4 $ with power $ 2 \cdot 2 \cdot 4 = 16 $ .
+Otherwise he can divide the base into two parts $ 1-2 $ and $ 3-4 $ .
+For base $ 1-2 $ , he can either burn it with power $ 2 \cdot 1 \cdot 2 = 4 $ or divide it into $ 2 $ parts $ 1-1 $ and $ 2-2 $ .
+For base $ 1-1 $ , he can burn it with power $ 2 \cdot 1 \cdot 1 = 2 $ . For $ 2-2 $ , he can destroy it with power $ 1 $ , as there are no avengers. So, the total power for destroying $ 1-2 $ is $ 2 + 1 = 3 $ , which is less than $ 4 $ .
+Similarly, he needs $ 3 $ power to destroy $ 3-4 $ . The total minimum power needed is $ 6 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Full Binary Tree Queries - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399826:L8VBC4pq+YGPNoFwznFmaf+B6HI0/OqzJEWX+1jHlfs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20have%20a%20full%20binary%20tree%20having%20infinite%20levels.%5Cn%5CnEach%20node%20has%20an%20initial%20value.%20If%20a%20node%20has%20value%20%24%20x%20%24%20%2C%20then%20its%20left%20child%20has%20value%20%24%202%5Cu00b7x%20%24%20and%20its%20right%20child%20has%20value%20%24%202%5Cu00b7x%2B1%20%24%20.%5Cn%5CnThe%20value%20of%20the%20root%20is%20%24%201%20%24%20.%5Cn%5CnYou%20need%20to%20answer%20%24%20Q%20%24%20queries.%5Cn%5CnThere%20are%20%24%203%20%24%20types%20of%20queries%3A%5Cn%5Cn1.%20Cyclically%20shift%20the%20values%20of%20all%20nodes%20on%20the%20same%20level%20as%20node%20with%20value%20%24%20X%20%24%20by%20%24%20K%20%24%20units.%20%28The%20values%5C%2Fnodes%20of%20any%20other%20level%20are%20not%20affected%29.%5Cn2.%20Cyclically%20shift%20the%20nodes%20on%20the%20same%20level%20as%20node%20with%20value%20%24%20X%20%24%20by%20%24%20K%20%24%20units.%20%28The%20subtrees%20of%20these%20nodes%20will%20move%20along%20with%20them%29.%5Cn3.%20Print%20the%20value%20of%20every%20node%20encountered%20on%20the%20simple%20path%20from%20the%20node%20with%20value%20%24%20X%20%24%20to%20the%20root.%5Cn%5CnPositive%20%24%20K%20%24%20implies%20right%20cyclic%20shift%20and%20negative%20%24%20K%20%24%20implies%20left%20cyclic%20shift.%5Cn%5CnIt%20is%20guaranteed%20that%20atleast%20one%20type%20%24%203%20%24%20query%20is%20present.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20Q%20%24%20%28%20%24%201%3C%3DQ%3C%3D10%5E%7B5%7D%20%24%20%29.%5Cn%5CnThen%20%24%20Q%20%24%20queries%20follow%2C%20one%20per%20line%3A%5Cn%5Cn-%20Queries%20of%20type%20%24%201%20%24%20and%20%24%202%20%24%20have%20the%20following%20format%3A%20%24%20T%20%24%20%24%20X%20%24%20%24%20K%20%24%20%28%20%24%201%3C%3DT%3C%3D2%20%24%20%3B%20%24%201%3C%3DX%3C%3D10%5E%7B18%7D%20%24%20%3B%20%24%200%3C%3D%7CK%7C%3C%3D10%5E%7B18%7D%20%24%20%29%2C%20where%20%24%20T%20%24%20is%20type%20of%20the%20query.%5Cn-%20Queries%20of%20type%20%24%203%20%24%20have%20the%20following%20format%3A%20%24%203%20%24%20%24%20X%20%24%20%28%20%24%201%3C%3DX%3C%3D10%5E%7B18%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22For%20each%20query%20of%20type%20%24%203%20%24%20%2C%20print%20the%20values%20of%20all%20nodes%20encountered%20in%20descending%20order.%22%2C%22samples%22%3A%5B%5B%225%5Cn3%2012%5Cn1%202%201%5Cn3%2012%5Cn2%204%20-1%5Cn3%208%5Cn%22%2C%2212%206%203%201%20%5Cn12%206%202%201%20%5Cn8%204%202%201%20%5Cn%22%5D%2C%5B%225%5Cn3%2014%5Cn1%205%20-3%5Cn3%2014%5Cn1%203%201%5Cn3%2014%5Cn%22%2C%2214%207%203%201%20%5Cn14%206%203%201%20%5Cn14%206%202%201%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Following%20are%20the%20images%20of%20the%20first%20%24%204%20%24%20levels%20of%20the%20tree%20in%20the%20first%20test%20case%3A%5Cn%5CnOriginal%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF960D%5C%2F3753965d34e08b83256fa92db7096f66de1db941.png%29%20After%20query%201%202%201%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF960D%5C%2Fd6350f6795afab08bec95128db23af58d71e24a4.png%29%20After%20query%202%204%20-1%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF960D%5C%2F1c7af7fd089110021fd920d50be3656fe800bbdb.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F960%5C%2FD%22%2C%22id%22%3A%22960D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A14%2C%22totalAccepted%22%3A13%2C%22pid%22%3A%22CF960D%22%2C%22title%22%3A%22Full%20Binary%20Tree%20Queries%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Full%20Binary%20Tree%20Queries%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Full Binary Tree Queries</h1>
+<h2>题目描述</h2>
+<div>You have a full binary tree having infinite levels.
+Each node has an initial value. If a node has value $ x $ , then its left child has value $ 2·x $ and its right child has value $ 2·x+1 $ .
+The value of the root is $ 1 $ .
+You need to answer $ Q $ queries.
+There are $ 3 $ types of queries:
+1. Cyclically shift the values of all nodes on the same level as node with value $ X $ by $ K $ units. (The values/nodes of any other level are not affected).
+2. Cyclically shift the nodes on the same level as node with value $ X $ by $ K $ units. (The subtrees of these nodes will move along with them).
+3. Print the value of every node encountered on the simple path from the node with value $ X $ to the root.
+Positive $ K $ implies right cyclic shift and negative $ K $ implies left cyclic shift.
+It is guaranteed that atleast one type $ 3 $ query is present.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ Q $ ( $ 1<=Q<=10^{5} $ ).
+Then $ Q $ queries follow, one per line:
+- Queries of type $ 1 $ and $ 2 $ have the following format: $ T $ $ X $ $ K $ ( $ 1<=T<=2 $ ; $ 1<=X<=10^{18} $ ; $ 0<=|K|<=10^{18} $ ), where $ T $ is type of the query.
+- Queries of type $ 3 $ have the following format: $ 3 $ $ X $ ( $ 1<=X<=10^{18} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query of type $ 3 $ , print the values of all nodes encountered in descending order.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+3 12
+1 2 1
+3 12
+2 4 -1
+3 8
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12 6 3 1 
+12 6 2 1 
+8 4 2 1 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+3 14
+1 5 -3
+3 14
+1 3 1
+3 14
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>14 7 3 1 
+14 6 3 1 
+14 6 2 1 
+</code></pre>
+<h2>说明</h2>
+<div>Following are the images of the first $ 4 $ levels of the tree in the first test case:
+Original:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF960D/3753965d34e08b83256fa92db7096f66de1db941.png) After query 1 2 1:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF960D/d6350f6795afab08bec95128db23af58d71e24a4.png) After query 2 4 -1:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF960D/1c7af7fd089110021fd920d50be3656fe800bbdb.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

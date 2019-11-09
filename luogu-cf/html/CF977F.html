@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Consecutive Subsequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399965:v+rjsNWepNL22ZqhS6dg8WX21TelOScoYtR70niIYGE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20an%20integer%20array%20of%20length%20%24%20n%20%24%20.%5Cn%5CnYou%20have%20to%20choose%20some%20subsequence%20of%20this%20array%20of%20maximum%20length%20such%20that%20this%20subsequence%20forms%20a%20increasing%20sequence%20of%20consecutive%20integers.%20In%20other%20words%20the%20required%20sequence%20should%20be%20equal%20to%20%24%20%5Bx%2C%20x%20%2B%201%2C%20%5C%5Cdots%2C%20x%20%2B%20k%20-%201%5D%20%24%20for%20some%20value%20%24%20x%20%24%20and%20length%20%24%20k%20%24%20.%5Cn%5CnSubsequence%20of%20an%20array%20can%20be%20obtained%20by%20erasing%20some%20%28possibly%20zero%29%20elements%20from%20the%20array.%20You%20can%20erase%20any%20elements%2C%20not%20necessarily%20going%20successively.%20The%20remaining%20elements%20preserve%20their%20order.%20For%20example%2C%20for%20the%20array%20%24%20%5B5%2C%203%2C%201%2C%202%2C%204%5D%20%24%20the%20following%20arrays%20are%20subsequences%3A%20%24%20%5B3%5D%20%24%20%2C%20%24%20%5B5%2C%203%2C%201%2C%202%2C%204%5D%20%24%20%2C%20%24%20%5B5%2C%201%2C%204%5D%20%24%20%2C%20but%20the%20array%20%24%20%5B1%2C%203%5D%20%24%20is%20not.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20containing%20integer%20number%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20array.%20The%20second%20line%20of%20the%20input%20containing%20%24%20n%20%24%20integer%20numbers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20the%20array%20itself.%22%2C%22outputFormat%22%3A%22On%20the%20first%20line%20print%20%24%20k%20%24%20%5Cu2014%20the%20maximum%20length%20of%20the%20subsequence%20of%20the%20given%20array%20that%20forms%20an%20increasing%20sequence%20of%20consecutive%20integers.%5Cn%5CnOn%20the%20second%20line%20print%20the%20sequence%20of%20the%20indices%20of%20the%20any%20maximum%20length%20subsequence%20of%20the%20given%20array%20that%20forms%20an%20increasing%20sequence%20of%20consecutive%20integers.%22%2C%22samples%22%3A%5B%5B%227%5Cn3%203%204%207%205%206%208%5Cn%22%2C%224%5Cn2%203%205%206%20%5Cn%22%5D%2C%5B%226%5Cn1%203%205%202%204%206%5Cn%22%2C%222%5Cn1%204%20%5Cn%22%5D%2C%5B%224%5Cn10%209%208%207%5Cn%22%2C%221%5Cn1%20%5Cn%22%5D%2C%5B%229%5Cn6%207%208%203%204%205%209%2010%2011%5Cn%22%2C%226%5Cn1%202%203%207%208%209%20%5Cn%22%5D%5D%2C%22hint%22%3A%22All%20valid%20answers%20for%20the%20first%20example%20%28as%20sequences%20of%20indices%29%3A%5Cn%5Cn-%20%24%20%5B1%2C%203%2C%205%2C%206%5D%20%24%5Cn-%20%24%20%5B2%2C%203%2C%205%2C%206%5D%20%24%5Cn%5CnAll%20valid%20answers%20for%20the%20second%20example%3A%5Cn%5Cn-%20%24%20%5B1%2C%204%5D%20%24%5Cn-%20%24%20%5B2%2C%205%5D%20%24%5Cn-%20%24%20%5B3%2C%206%5D%20%24%5Cn%5CnAll%20valid%20answers%20for%20the%20third%20example%3A%5Cn%5Cn-%20%24%20%5B1%5D%20%24%5Cn-%20%24%20%5B2%5D%20%24%5Cn-%20%24%20%5B3%5D%20%24%5Cn-%20%24%20%5B4%5D%20%24%5Cn%5CnAll%20valid%20answers%20for%20the%20fourth%20example%3A%5Cn%5Cn-%20%24%20%5B1%2C%202%2C%203%2C%207%2C%208%2C%209%5D%20%24%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F977%5C%2FF%22%2C%22id%22%3A%22977F%22%7D%2C%22translation%22%3A%22%5B%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5D%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3an%5Cu7684%5Cu6574%5Cu6570%5Cu6570%5Cu7ec4%5Cu3002%5Cr%5Cn%5Cu4f60%5Cu5fc5%5Cu987b%5Cu9009%5Cu62e9%5Cu8fd9%5Cu4e2a%5Cu6700%5Cu5927%5Cu957f%5Cu5ea6%5Cu6570%5Cu7ec4%5Cu7684%5Cu67d0%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cu8fd9%5Cu6837%5Cu8fd9%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cu5c31%5Cu5f62%5Cu6210%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu9012%5Cu589e%5Cu7684%5Cu8fde%5Cu7eed%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%5Cu3002%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu67d0%5Cu4e2a%5Cu503cx%5Cu548c%5Cu957f%5Cu5ea6k%5Cuff0c%5Cu6240%5Cu9700%5Cu7684%5Cu5e8f%5Cu5217%5Cu5e94%5Cu8be5%5Cu7b49%5Cu4e8e%5Bx%2Cx%2B1%5Cuff0c...%2C%20x%2Bk%20-%201%5D%5Cu3002%5Cr%5Cn%5Cu6570%5Cu7ec4%5Cu7684%5Cu5b50%5Cu5e8f%5Cu5217%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu64e6%5Cu9664%5Cu6570%5Cu7ec4%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e9b%28%5Cu53ef%5Cu80fd%5Cu4e3a%5Cu96f6%29%5Cu5143%5Cu7d20%5Cu6765%5Cu83b7%5Cu5f97%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu64e6%5Cu6389%5Cu4efb%5Cu4f55%5Cu5143%5Cu7d20%5Cuff0c%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu662f%5Cu8fde%5Cu7eed%5Cu7684%5Cu3002%5Cu5176%5Cu4f59%5Cu5143%5Cu7d20%5Cu4fdd%5Cu6301%5Cu5b83%5Cu4eec%5Cu7684%5Cu987a%5Cu5e8f%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6570%5Cu7ec4%5B5%2C3%2C1%2C2%2C4%5D%5Cuff0c%5Cu4ee5%5Cu4e0b%5Cu6570%5Cu7ec4%5Cu662f%5Cu5b50%5Cu5e8f%5Cu5217%3A%5B3%5D%5Cuff0c%5B5%2C3%2C1%2C2%2C4%5D%5Cuff0c%5B5%2C1%2C4%5D%5Cuff0c%5Cu4f46%5Cu662f%5Cu6570%5Cu7ec4%5B1%2C3%5D%5Cu4e0d%5Cu662f%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A155%2C%22totalAccepted%22%3A68%2C%22pid%22%3A%22CF977F%22%2C%22title%22%3A%22Consecutive%20Subsequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3807%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu5362%5Cu5361%5Cu65af%5Cu5b9a%5Cu7406%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF933A%22%2C%22title%22%3A%22A%20Twisty%20Movement%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF980E%22%2C%22title%22%3A%22The%20Number%20Games%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF977E%22%2C%22title%22%3A%22Cyclic%20Components%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF988F%22%2C%22title%22%3A%22Rain%20and%20Umbrellas%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Consecutive%20Subsequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Consecutive Subsequence</h1>
+<h2>题意翻译</h2>
+<div>[题目描述]
+给定一个长度为n的整数数组。
+你必须选择这个最大长度数组的某个子序列这样这个子序列就形成了一个递增的连续整数序列。换句话说，对于某个值x和长度k，所需的序列应该等于[x,x+1，..., x+k - 1]。
+数组的子序列可以通过擦除数组中的一些(可能为零)元素来获得。你可以擦掉任何元素，不一定是连续的。其余元素保持它们的顺序。例如，对于数组[5,3,1,2,4]，以下数组是子序列:[3]，[5,3,1,2,4]，[5,1,4]，但是数组[1,3]不是。</div>
+<h2>题目描述</h2>
+<div>You are given an integer array of length $ n $ .
+You have to choose some subsequence of this array of maximum length such that this subsequence forms a increasing sequence of consecutive integers. In other words the required sequence should be equal to $ [x, x + 1, \dots, x + k - 1] $ for some value $ x $ and length $ k $ .
+Subsequence of an array can be obtained by erasing some (possibly zero) elements from the array. You can erase any elements, not necessarily going successively. The remaining elements preserve their order. For example, for the array $ [5, 3, 1, 2, 4] $ the following arrays are subsequences: $ [3] $ , $ [5, 3, 1, 2, 4] $ , $ [5, 1, 4] $ , but the array $ [1, 3] $ is not.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input containing integer number $ n $ ( $ 1 \le n \le 2 \cdot 10^5 $ ) — the length of the array. The second line of the input containing $ n $ integer numbers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le 10^9 $ ) — the array itself.</div>
+<h3>输出格式</h3>
+<br />
+<div>On the first line print $ k $ — the maximum length of the subsequence of the given array that forms an increasing sequence of consecutive integers.
+On the second line print the sequence of the indices of the any maximum length subsequence of the given array that forms an increasing sequence of consecutive integers.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7
+3 3 4 7 5 6 8
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+2 3 5 6 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6
+1 3 5 2 4 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+1 4 
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+10 9 8 7
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+1 
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>9
+6 7 8 3 4 5 9 10 11
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>6
+1 2 3 7 8 9 
+</code></pre>
+<h2>说明</h2>
+<div>All valid answers for the first example (as sequences of indices):
+- $ [1, 3, 5, 6] $
+- $ [2, 3, 5, 6] $
+All valid answers for the second example:
+- $ [1, 4] $
+- $ [2, 5] $
+- $ [3, 6] $
+All valid answers for the third example:
+- $ [1] $
+- $ [2] $
+- $ [3] $
+- $ [4] $
+All valid answers for the fourth example:
+- $ [1, 2, 3, 7, 8, 9] $</div>
+</article>
+</div>
+</div>
+</body>
+</html>

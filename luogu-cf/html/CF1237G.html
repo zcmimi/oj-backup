@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Balanced Distribution - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403551:F8UGBjFNRhrhT1rcfafX66jtCUfi41u98br8n1PfXLw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20%24%20n%20%24%20friends%20living%20on%20a%20circular%20street.%20The%20friends%20and%20their%20houses%20are%20numbered%20clockwise%20from%20%24%200%20%24%20to%20%24%20n-1%20%24%20.%5Cn%5CnInitially%20person%20%24%20i%20%24%20has%20%24%20a_i%20%24%20stones.%20The%20friends%20want%20to%20make%20the%20distribution%20of%20stones%20among%20them%20perfectly%20balanced%3A%20everyone%20should%20possess%20the%20same%20number%20of%20stones.%5Cn%5CnThe%20only%20way%20to%20change%20the%20distribution%20of%20stones%20is%20by%20conducting%20meetings.%20During%20a%20meeting%2C%20people%20from%20exactly%20%24%20k%20%24%20consecutive%20houses%20%28remember%20that%20the%20street%20is%20circular%29%20gather%20at%20the%20same%20place%20and%20bring%20all%20their%20stones%20with%20them.%20All%20brought%20stones%20may%20be%20redistributed%20among%20people%20attending%20the%20meeting%20arbitrarily.%20The%20total%20number%20of%20stones%20they%20possess%20before%20the%20meeting%20and%20after%20the%20meeting%20must%20stay%20the%20same.%20After%20the%20meeting%2C%20everyone%20returns%20to%20their%20home.%5Cn%5CnFind%20a%20way%20to%20make%20the%20distribution%20of%20stones%20perfectly%20balanced%20conducting%20as%20few%20meetings%20as%20possible.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%202%20%5C%5Cle%20k%20%3C%20n%20%5C%5Cle%2010%5E5%20%24%20%29%2C%20denoting%20the%20number%20of%20friends%20and%20the%20size%20of%20each%20meeting.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_0%2C%20a_1%2C%20%5C%5Cldots%2C%20a_%7Bn-1%7D%20%24%20%28%20%24%200%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E4%20%24%20%29%2C%20denoting%20the%20number%20of%20stones%20people%20initially%20have.%5Cn%5CnThe%20sum%20of%20all%20%24%20a_i%20%24%20is%20divisible%20by%20%24%20n%20%24%20.%22%2C%22outputFormat%22%3A%22Output%20the%20minimum%20number%20of%20meetings%20%24%20m%20%24%20%28%20%24%20m%20%5C%5Cge%200%20%24%20%29%2C%20followed%20by%20%24%20m%20%24%20descriptions%20of%20meetings%20in%20chronological%20order.%5Cn%5CnThe%20%24%20i%20%24%20-th%20description%20must%20consist%20of%20an%20integer%20%24%20s_i%20%24%20%28%20%24%200%20%5C%5Cle%20s_i%20%3C%20n%20%24%20%29%2C%20followed%20by%20%24%20k%20%24%20non-negative%20integers%20%24%20b_%7Bi%2C%200%7D%2C%20b_%7Bi%2C%201%7D%2C%20%5C%5Cldots%2C%20b_%7Bi%2C%20k-1%7D%20%24%20%28%20%24%20b_%7Bi%2C%20j%7D%20%5C%5Cge%200%20%24%20%29.%20Such%20a%20description%20denotes%20a%20meeting%20of%20people%20%24%20s_i%2C%20%28s_i%20%2B%201%29%20%5C%5Cbmod%20n%2C%20%5C%5Cldots%2C%20%28s_i%20%2B%20k%20-%201%29%20%5C%5Cbmod%20n%20%24%20%2C%20and%20%24%20b_%7Bi%2Cj%7D%20%24%20denotes%20the%20number%20of%20stones%20person%20%24%20%28s_i%20%2B%20j%29%20%5C%5Cbmod%20n%20%24%20must%20have%20after%20the%20%24%20i%20%24%20-th%20meeting.%20The%20sum%20of%20%24%20b_%7Bi%2C%20j%7D%20%24%20must%20match%20the%20total%20number%20of%20stones%20owned%20by%20these%20people%20before%20the%20%24%20i%20%24%20-th%20meeting.%5Cn%5CnWe%20can%20show%20that%20a%20solution%20exists%20for%20any%20valid%20input%2C%20and%20any%20correct%20output%20contains%20at%20most%20%24%2010%5E7%20%24%20non-whitespace%20characters.%22%2C%22samples%22%3A%5B%5B%22%5Cn6%203%5Cn2%206%201%2010%203%202%5Cn%22%2C%22%5Cn3%5Cn2%207%203%204%5Cn5%204%204%202%5Cn1%204%204%204%5Cn%22%5D%2C%5B%22%5Cn11%204%5Cn1%200%201%200%200%204%204%202%204%203%203%5Cn%22%2C%22%5Cn3%5Cn3%202%202%202%202%5Cn8%202%202%202%205%5Cn10%202%202%202%202%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20the%20distribution%20of%20stones%20changes%20as%20follows%3A%5Cn%5Cn-%20after%20the%20first%20meeting%3A%20%24%202%20%24%20%24%206%20%24%20%24%20%5C%5Cmathbf%7B7%7D%20%24%20%24%20%5C%5Cmathbf%7B3%7D%20%24%20%24%20%5C%5Cmathbf%7B4%7D%20%24%20%24%202%20%24%20%3B%5Cn-%20after%20the%20second%20meeting%3A%20%24%20%5C%5Cmathbf%7B4%7D%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%207%20%24%20%24%203%20%24%20%24%204%20%24%20%24%20%5C%5Cmathbf%7B4%7D%20%24%20%3B%5Cn-%20after%20the%20third%20meeting%3A%20%24%204%20%24%20%24%20%5C%5Cmathbf%7B4%7D%20%24%20%24%20%5C%5Cmathbf%7B4%7D%20%24%20%24%20%5C%5Cmathbf%7B4%7D%20%24%20%24%204%20%24%20%24%204%20%24%20.%5Cn%5CnIn%20the%20second%20example%2C%20the%20distribution%20of%20stones%20changes%20as%20follows%3A%5Cn%5Cn-%20after%20the%20first%20meeting%3A%20%24%201%20%24%20%24%200%20%24%20%24%201%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%202%20%24%20%24%204%20%24%20%24%203%20%24%20%24%203%20%24%20%3B%5Cn-%20after%20the%20second%20meeting%3A%20%24%20%5C%5Cmathbf%7B5%7D%20%24%20%24%200%20%24%20%24%201%20%24%20%24%202%20%24%20%24%202%20%24%20%24%202%20%24%20%24%202%20%24%20%24%202%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%3B%5Cn-%20after%20the%20third%20meeting%3A%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20%24%202%20%24%20%24%202%20%24%20%24%202%20%24%20%24%202%20%24%20%24%202%20%24%20%24%202%20%24%20%24%202%20%24%20%24%20%5C%5Cmathbf%7B2%7D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1237%5C%2FG%22%2C%22id%22%3A%221237G%22%7D%2C%22translation%22%3A%22%5Cu6709%24n%24%5Cu4e2a%5Cu670b%5Cu53cb%5Cu4f4f%5Cu5728%5Cu4e00%5Cu6761%5Cu73af%5Cu5f62%5Cu7684%5Cu8857%5Cu9053%5Cu4e0a%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu548c%5Cu4ed6%5Cu4eec%5Cu7684%5Cu623f%5Cu5b50%5Cu6309%5Cu987a%5Cu65f6%5Cu9488%5Cu6807%5Cu53f7%5Cu4e3a%240%24%5Cu5230%24n-1%24%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu5f00%5Cu59cb%5Cu7b2c%24i%24%5Cu4e2a%5Cu4eba%5Cu6709%24a_i%24%5Cu5757%5Cu77f3%5Cu5934%5Cu3002%5Cu4ed6%5Cu4eec%5Cu60f3%5Cu8ba9%5Cu4ed6%5Cu4eec%5Cu4e4b%5Cu95f4%5Cu77f3%5Cu5934%5Cu5206%5Cu914d%5Cu5f97%5Cu5b8c%5Cu7f8e%5Cu5747%5Cu8861%5Cuff1a%5Cu6bcf%5Cu4e2a%5Cu4eba%5Cu90fd%5Cu5e94%5Cu62e5%5Cu6709%5Cu76f8%5Cu540c%5Cu6570%5Cu91cf%5Cu7684%5Cu77f3%5Cu5934%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6539%5Cu53d8%5Cu77f3%5Cu5934%5Cu5206%5Cu5e03%5Cu7684%5Cu552f%5Cu4e00%5Cu9014%5Cu5f84%5Cu662f%5Cu4e3e%5Cu884c%5Cu4f1a%5Cu8bae%5Cu3002%5Cu5728%5Cu4e00%5Cu6b21%5Cu4f1a%5Cu8bae%5Cu4e2d%5Cuff0c%5Cu8fde%5Cu7eed%24k%24%5Cu4e2a%5Cu623f%5Cu5b50%5Cu7684%5Cu4eba%5Cuff08%5Cu8bb0%5Cu4f4f%5Cu8fd9%5Cu6761%5Cu8857%5Cu9053%5Cu662f%5Cu73af%5Cu5f62%5Cu7684%5Cuff09%5Cu805a%5Cu96c6%5Cu5728%5Cu540c%5Cu4e00%5Cu4e2a%5Cu5730%5Cu65b9%5Cu5e76%5Cu5e26%5Cu4e0a%5Cu4ed6%5Cu4eec%5Cu7684%5Cu77f3%5Cu5934%5Cu3002%5Cu6240%5Cu6709%5Cu5e26%5Cu6765%5Cu7684%5Cu77f3%5Cu5934%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu5728%5Cu53c2%5Cu4e0e%5Cu4f1a%5Cu8bae%5Cu7684%5Cu4eba%5Cu4e2d%5Cu4efb%5Cu610f%5Cu91cd%5Cu65b0%5Cu5206%5Cu914d%5Cu3002%5Cu4f1a%5Cu8bae%5Cu7ed3%5Cu675f%5Cu540e%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu4eba%5Cu56de%5Cu5230%5Cu81ea%5Cu5df1%5Cu7684%5Cu623f%5Cu5b50%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu627e%5Cu5230%5Cu4e00%5Cu79cd%5Cu65b9%5Cu6848%5Cu4f7f%5Cu5f97%5Cu628a%5Cu77f3%5Cu5934%5Cu5206%5Cu914d%5Cu5f97%5Cu5b8c%5Cu7f8e%5Cu5747%5Cu8861%5Cu4e14%5Cu4e3e%5Cu884c%5Cu5c3d%5Cu91cf%5Cu5c11%5Cu7684%5Cu4f1a%5Cu8bae%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e3e%5Cu884c%5Cu4f1a%5Cu8bae%5Cu7684%5Cu6b21%5Cu6570%5Cu53ca%5Cu6bcf%5Cu6b21%5Cu4f1a%5Cu8bae%5Cu7684%5Cu63cf%5Cu8ff0%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF1237G%22%2C%22title%22%3A%22Balanced%20Distribution%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Balanced%20Distribution%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Balanced Distribution</h1>
+<h2>题意翻译</h2>
+<div>有$n$个朋友住在一条环形的街道上，他们和他们的房子按顺时针标号为$0$到$n-1$
+一开始第$i$个人有$a_i$块石头。他们想让他们之间石头分配得完美均衡：每个人都应拥有相同数量的石头。
+改变石头分布的唯一途径是举行会议。在一次会议中，连续$k$个房子的人（记住这条街道是环形的）聚集在同一个地方并带上他们的石头。所有带来的石头可能会在参与会议的人中任意重新分配。会议结束后，每个人回到自己的房子。
+找到一种方案使得把石头分配得完美均衡且举行尽量少的会议。
+输出举行会议的次数及每次会议的描述。</div>
+<h2>题目描述</h2>
+<div>There are $ n $ friends living on a circular street. The friends and their houses are numbered clockwise from $ 0 $ to $ n-1 $ .
+Initially person $ i $ has $ a_i $ stones. The friends want to make the distribution of stones among them perfectly balanced: everyone should possess the same number of stones.
+The only way to change the distribution of stones is by conducting meetings. During a meeting, people from exactly $ k $ consecutive houses (remember that the street is circular) gather at the same place and bring all their stones with them. All brought stones may be redistributed among people attending the meeting arbitrarily. The total number of stones they possess before the meeting and after the meeting must stay the same. After the meeting, everyone returns to their home.
+Find a way to make the distribution of stones perfectly balanced conducting as few meetings as possible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 2 \le k < n \le 10^5 $ ), denoting the number of friends and the size of each meeting.
+The second line contains $ n $ integers $ a_0, a_1, \ldots, a_{n-1} $ ( $ 0 \le a_i \le 10^4 $ ), denoting the number of stones people initially have.
+The sum of all $ a_i $ is divisible by $ n $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the minimum number of meetings $ m $ ( $ m \ge 0 $ ), followed by $ m $ descriptions of meetings in chronological order.
+The $ i $ -th description must consist of an integer $ s_i $ ( $ 0 \le s_i < n $ ), followed by $ k $ non-negative integers $ b_{i, 0}, b_{i, 1}, \ldots, b_{i, k-1} $ ( $ b_{i, j} \ge 0 $ ). Such a description denotes a meeting of people $ s_i, (s_i + 1) \bmod n, \ldots, (s_i + k - 1) \bmod n $ , and $ b_{i,j} $ denotes the number of stones person $ (s_i + j) \bmod n $ must have after the $ i $ -th meeting. The sum of $ b_{i, j} $ must match the total number of stones owned by these people before the $ i $ -th meeting.
+We can show that a solution exists for any valid input, and any correct output contains at most $ 10^7 $ non-whitespace characters.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+6 3
+2 6 1 10 3 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+2 7 3 4
+5 4 4 2
+1 4 4 4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+11 4
+1 0 1 0 0 4 4 2 4 3 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+3
+3 2 2 2 2
+8 2 2 2 5
+10 2 2 2 2
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, the distribution of stones changes as follows:
+- after the first meeting: $ 2 $ $ 6 $ $ \mathbf{7} $ $ \mathbf{3} $ $ \mathbf{4} $ $ 2 $ ;
+- after the second meeting: $ \mathbf{4} $ $ \mathbf{2} $ $ 7 $ $ 3 $ $ 4 $ $ \mathbf{4} $ ;
+- after the third meeting: $ 4 $ $ \mathbf{4} $ $ \mathbf{4} $ $ \mathbf{4} $ $ 4 $ $ 4 $ .
+In the second example, the distribution of stones changes as follows:
+- after the first meeting: $ 1 $ $ 0 $ $ 1 $ $ \mathbf{2} $ $ \mathbf{2} $ $ \mathbf{2} $ $ \mathbf{2} $ $ 2 $ $ 4 $ $ 3 $ $ 3 $ ;
+- after the second meeting: $ \mathbf{5} $ $ 0 $ $ 1 $ $ 2 $ $ 2 $ $ 2 $ $ 2 $ $ 2 $ $ \mathbf{2} $ $ \mathbf{2} $ $ \mathbf{2} $ ;
+- after the third meeting: $ \mathbf{2} $ $ \mathbf{2} $ $ \mathbf{2} $ $ 2 $ $ 2 $ $ 2 $ $ 2 $ $ 2 $ $ 2 $ $ 2 $ $ \mathbf{2} $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

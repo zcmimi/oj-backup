@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Partitions - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399853:6Zga3nJsEIAVj9Iiir8sfOrMpKGJ1B15hhaXTM6PLSQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20set%20of%20%24%20n%20%24%20elements%20indexed%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20The%20weight%20of%20%24%20i%20%24%20-th%20element%20is%20%24%20w_%7Bi%7D%20%24%20.%20The%20weight%20of%20some%20subset%20of%20a%20given%20set%20is%20denoted%20as%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF961G%5C%2Ffbf0c843290b6183affbaf7ada0d6cecd6d2fbbd.png%29.%20The%20weight%20of%20some%20partition%20%24%20R%20%24%20of%20a%20given%20set%20into%20%24%20k%20%24%20subsets%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF961G%5C%2F0aeb77393cfc4b9aa3d9c64303202277f9c1f051.png%29%20%28recall%20that%20a%20partition%20of%20a%20given%20set%20is%20a%20set%20of%20its%20subsets%20such%20that%20every%20element%20of%20the%20given%20set%20belongs%20to%20exactly%20one%20subset%20in%20partition%29.%5Cn%5CnCalculate%20the%20sum%20of%20weights%20of%20all%20partitions%20of%20a%20given%20set%20into%20exactly%20%24%20k%20%24%20non-empty%20subsets%2C%20and%20print%20it%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%20Two%20partitions%20are%20considered%20different%20iff%20there%20exist%20two%20elements%20%24%20x%20%24%20and%20%24%20y%20%24%20such%20that%20they%20belong%20to%20the%20same%20set%20in%20one%20of%20the%20partitions%2C%20and%20to%20different%20sets%20in%20another%20partition.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%3C%3Dn%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20and%20the%20number%20of%20subsets%20in%20each%20partition%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20w_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dw_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%5Cu2014%20weights%20of%20elements%20of%20the%20set.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20sum%20of%20weights%20of%20all%20partitions%20of%20a%20given%20set%20into%20%24%20k%20%24%20non-empty%20subsets%2C%20taken%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%22%2C%22samples%22%3A%5B%5B%224%202%5Cn2%203%202%203%5Cn%22%2C%22160%5Cn%22%5D%2C%5B%225%202%5Cn1%202%203%204%205%5Cn%22%2C%22645%5Cn%22%5D%5D%2C%22hint%22%3A%22Possible%20partitions%20in%20the%20first%20sample%3A%5Cn%5Cn1.%20%24%20%7B%7B1%2C2%2C3%7D%2C%7B4%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D3%5Cu00b7%28w_%7B1%7D%2Bw_%7B2%7D%2Bw_%7B3%7D%29%2B1%5Cu00b7w_%7B4%7D%3D24%20%24%20%3B%5Cn2.%20%24%20%7B%7B1%2C2%2C4%7D%2C%7B3%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D26%20%24%20%3B%5Cn3.%20%24%20%7B%7B1%2C3%2C4%7D%2C%7B2%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D24%20%24%20%3B%5Cn4.%20%24%20%7B%7B1%2C2%7D%2C%7B3%2C4%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D2%5Cu00b7%28w_%7B1%7D%2Bw_%7B2%7D%29%2B2%5Cu00b7%28w_%7B3%7D%2Bw_%7B4%7D%29%3D20%20%24%20%3B%5Cn5.%20%24%20%7B%7B1%2C3%7D%2C%7B2%2C4%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D20%20%24%20%3B%5Cn6.%20%24%20%7B%7B1%2C4%7D%2C%7B2%2C3%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D20%20%24%20%3B%5Cn7.%20%24%20%7B%7B1%7D%2C%7B2%2C3%2C4%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D26%20%24%20%3B%5Cn%5CnPossible%20partitions%20in%20the%20second%20sample%3A%5Cn%5Cn1.%20%24%20%7B%7B1%2C2%2C3%2C4%7D%2C%7B5%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D45%20%24%20%3B%5Cn2.%20%24%20%7B%7B1%2C2%2C3%2C5%7D%2C%7B4%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D48%20%24%20%3B%5Cn3.%20%24%20%7B%7B1%2C2%2C4%2C5%7D%2C%7B3%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D51%20%24%20%3B%5Cn4.%20%24%20%7B%7B1%2C3%2C4%2C5%7D%2C%7B2%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D54%20%24%20%3B%5Cn5.%20%24%20%7B%7B2%2C3%2C4%2C5%7D%2C%7B1%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D57%20%24%20%3B%5Cn6.%20%24%20%7B%7B1%2C2%2C3%7D%2C%7B4%2C5%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D36%20%24%20%3B%5Cn7.%20%24%20%7B%7B1%2C2%2C4%7D%2C%7B3%2C5%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D37%20%24%20%3B%5Cn8.%20%24%20%7B%7B1%2C2%2C5%7D%2C%7B3%2C4%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D38%20%24%20%3B%5Cn9.%20%24%20%7B%7B1%2C3%2C4%7D%2C%7B2%2C5%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D38%20%24%20%3B%5Cn10.%20%24%20%7B%7B1%2C3%2C5%7D%2C%7B2%2C4%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D39%20%24%20%3B%5Cn11.%20%24%20%7B%7B1%2C4%2C5%7D%2C%7B2%2C3%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D40%20%24%20%3B%5Cn12.%20%24%20%7B%7B2%2C3%2C4%7D%2C%7B1%2C5%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D39%20%24%20%3B%5Cn13.%20%24%20%7B%7B2%2C3%2C5%7D%2C%7B1%2C4%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D40%20%24%20%3B%5Cn14.%20%24%20%7B%7B2%2C4%2C5%7D%2C%7B1%2C3%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D41%20%24%20%3B%5Cn15.%20%24%20%7B%7B3%2C4%2C5%7D%2C%7B1%2C2%7D%7D%20%24%20%2C%20%24%20W%28R%29%3D42%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F961%5C%2FG%22%2C%22id%22%3A%22961G%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%24n%24%20%5Cu4e2a%5Cu7269%5Cu54c1%24%2C%24%20%5Cu6bcf%5Cu4e2a%5Cu7269%5Cu54c1%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6743%5Cu503c%24w_i%24%20%5Cn%5Cn%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu96c6%5Cu5408%24S%24%20%5Cu7684%5Cu6743%5Cu503c%24W%28S%29%3D%7CS%7C%5C%5Csum%5C%5Climits_%7Bx%5C%5Cin%20S%7Dw_x%24%20%5Cn%5Cn%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu5212%5Cu5206%5Cu7684%5Cu6743%5Cu503c%5Cu4e3a%24W%27%28R%29%3D%5C%5Csum%5C%5Climits_%7BS%5C%5Csubseteq%20R%7DW%28S%29%24%20%5Cn%5Cn%5Cu6c42%5Cu5c06%24n%24%20%5Cu4e2a%5Cu7269%5Cu54c1%5Cu5212%5Cu5206%5Cu6210%24k%24%20%5Cu4e2a%5Cu96c6%5Cu5408%5Cu7684%5Cu6240%5Cu6709%5Cu65b9%5Cu6848%5Cu7684%5Cu6743%5Cu503c%5Cu548c%5Cn%5Cn%24n%2Ck%5C%5Cle2%5C%5Ctimes10%5E5%2Cw_i%5C%5Cle10%5E9%24%20%5Cn%5Cn%5Cu611f%5Cu8c22%40Kelin%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A186%2C%22totalAccepted%22%3A96%2C%22pid%22%3A%22CF961G%22%2C%22title%22%3A%22Partitions%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A114940%2C%22title%22%3A%22%5Cu65e0%5Cu9650UKE...%22%2C%22forum%22%3A%7B%22id%22%3A24874%2C%22name%22%3A%22CF961G%20Partitions%22%2C%22slug%22%3A%22CF961G%22%7D%7D%2C%7B%22id%22%3A104757%2C%22title%22%3A%22%5Cu9898%5Cu9762%5Cu4e66%5Cu5199%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A24874%2C%22name%22%3A%22CF961G%20Partitions%22%2C%22slug%22%3A%22CF961G%22%7D%7D%2C%7B%22id%22%3A39202%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A24874%2C%22name%22%3A%22CF961G%20Partitions%22%2C%22slug%22%3A%22CF961G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1407%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu7a33%5Cu5b9a%5Cu5a5a%5Cu59fb%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4091%22%2C%22title%22%3A%22%5BHEOI2016%5C%2FTJOI2016%5D%5Cu6c42%5Cu548c%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF932E%22%2C%22title%22%3A%22Team%20Work%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4827%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%20Crash%20%5Cu7684%5Cu6587%5Cu660e%5Cu4e16%5Cu754c%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1237D%22%2C%22title%22%3A%22Balanced%20Playlist%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Partitions%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Partitions</h1>
+<h2>题意翻译</h2>
+<div>给出$n$ 个物品$,$ 每个物品有一个权值$w_i$
+定义一个集合$S$ 的权值$W(S)=|S|\sum\limits_{x\in S}w_x$
+定义一个划分的权值为$W'(R)=\sum\limits_{S\subseteq R}W(S)$
+求将$n$ 个物品划分成$k$ 个集合的所有方案的权值和
+$n,k\le2\times10^5,w_i\le10^9$
+感谢@Kelin 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You are given a set of $ n $ elements indexed from $ 1 $ to $ n $ . The weight of $ i $ -th element is $ w_{i} $ . The weight of some subset of a given set is denoted as ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF961G/fbf0c843290b6183affbaf7ada0d6cecd6d2fbbd.png). The weight of some partition $ R $ of a given set into $ k $ subsets is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF961G/0aeb77393cfc4b9aa3d9c64303202277f9c1f051.png) (recall that a partition of a given set is a set of its subsets such that every element of the given set belongs to exactly one subset in partition).
+Calculate the sum of weights of all partitions of a given set into exactly $ k $ non-empty subsets, and print it modulo $ 10^{9}+7 $ . Two partitions are considered different iff there exist two elements $ x $ and $ y $ such that they belong to the same set in one of the partitions, and to different sets in another partition.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 1<=k<=n<=2·10^{5} $ ) — the number of elements and the number of subsets in each partition, respectively.
+The second line contains $ n $ integers $ w_{i} $ ( $ 1<=w_{i}<=10^{9} $ )— weights of elements of the set.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the sum of weights of all partitions of a given set into $ k $ non-empty subsets, taken modulo $ 10^{9}+7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 2
+2 3 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>160
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 2
+1 2 3 4 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>645
+</code></pre>
+<h2>说明</h2>
+<div>Possible partitions in the first sample:
+1. $ {{1,2,3},{4}} $ , $ W(R)=3·(w_{1}+w_{2}+w_{3})+1·w_{4}=24 $ ;
+2. $ {{1,2,4},{3}} $ , $ W(R)=26 $ ;
+3. $ {{1,3,4},{2}} $ , $ W(R)=24 $ ;
+4. $ {{1,2},{3,4}} $ , $ W(R)=2·(w_{1}+w_{2})+2·(w_{3}+w_{4})=20 $ ;
+5. $ {{1,3},{2,4}} $ , $ W(R)=20 $ ;
+6. $ {{1,4},{2,3}} $ , $ W(R)=20 $ ;
+7. $ {{1},{2,3,4}} $ , $ W(R)=26 $ ;
+Possible partitions in the second sample:
+1. $ {{1,2,3,4},{5}} $ , $ W(R)=45 $ ;
+2. $ {{1,2,3,5},{4}} $ , $ W(R)=48 $ ;
+3. $ {{1,2,4,5},{3}} $ , $ W(R)=51 $ ;
+4. $ {{1,3,4,5},{2}} $ , $ W(R)=54 $ ;
+5. $ {{2,3,4,5},{1}} $ , $ W(R)=57 $ ;
+6. $ {{1,2,3},{4,5}} $ , $ W(R)=36 $ ;
+7. $ {{1,2,4},{3,5}} $ , $ W(R)=37 $ ;
+8. $ {{1,2,5},{3,4}} $ , $ W(R)=38 $ ;
+9. $ {{1,3,4},{2,5}} $ , $ W(R)=38 $ ;
+10. $ {{1,3,5},{2,4}} $ , $ W(R)=39 $ ;
+11. $ {{1,4,5},{2,3}} $ , $ W(R)=40 $ ;
+12. $ {{2,3,4},{1,5}} $ , $ W(R)=39 $ ;
+13. $ {{2,3,5},{1,4}} $ , $ W(R)=40 $ ;
+14. $ {{2,4,5},{1,3}} $ , $ W(R)=41 $ ;
+15. $ {{3,4,5},{1,2}} $ , $ W(R)=42 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

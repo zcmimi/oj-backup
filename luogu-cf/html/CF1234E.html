@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Special Permutations - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403519:DVTQN1d44UY+wBy3JphqaVYfYKlI9n48hTi64S8Esm8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20define%20%24%20p_i%28n%29%20%24%20as%20the%20following%20permutation%3A%20%24%20%5Bi%2C%201%2C%202%2C%20%5C%5Cdots%2C%20i%20-%201%2C%20i%20%2B%201%2C%20%5C%5Cdots%2C%20n%5D%20%24%20.%20This%20means%20that%20the%20%24%20i%20%24%20-th%20permutation%20is%20almost%20identity%20%28i.e.%20which%20maps%20every%20element%20to%20itself%29%20permutation%20but%20the%20element%20%24%20i%20%24%20is%20on%20the%20first%20position.%20Examples%3A%5Cn%5Cn-%20%24%20p_1%284%29%20%3D%20%5B1%2C%202%2C%203%2C%204%5D%20%24%20%3B%5Cn-%20%24%20p_2%284%29%20%3D%20%5B2%2C%201%2C%203%2C%204%5D%20%24%20%3B%5Cn-%20%24%20p_3%284%29%20%3D%20%5B3%2C%201%2C%202%2C%204%5D%20%24%20%3B%5Cn-%20%24%20p_4%284%29%20%3D%20%5B4%2C%201%2C%202%2C%203%5D%20%24%20.%5Cn%5CnYou%20are%20given%20an%20array%20%24%20x_1%2C%20x_2%2C%20%5C%5Cdots%2C%20x_m%20%24%20%28%20%24%201%20%5C%5Cle%20x_i%20%5C%5Cle%20n%20%24%20%29.%5Cn%5CnLet%20%24%20pos%28p%2C%20val%29%20%24%20be%20the%20position%20of%20the%20element%20%24%20val%20%24%20in%20%24%20p%20%24%20.%20So%2C%20%24%20pos%28p_1%284%29%2C%203%29%20%3D%203%2C%20pos%28p_2%284%29%2C%202%29%20%3D%201%2C%20pos%28p_4%284%29%2C%204%29%20%3D%201%20%24%20.%5Cn%5CnLet%27s%20define%20a%20function%20%24%20f%28p%29%20%3D%20%5C%5Csum%5C%5Climits_%7Bi%3D1%7D%5E%7Bm%20-%201%7D%20%7Cpos%28p%2C%20x_i%29%20-%20pos%28p%2C%20x_%7Bi%20%2B%201%7D%29%7C%20%24%20%2C%20where%20%24%20%7Cval%7C%20%24%20is%20the%20absolute%20value%20of%20%24%20val%20%24%20.%20This%20function%20means%20the%20sum%20of%20distances%20between%20adjacent%20elements%20of%20%24%20x%20%24%20in%20%24%20p%20%24%20.%5Cn%5CnYour%20task%20is%20to%20calculate%20%24%20f%28p_1%28n%29%29%2C%20f%28p_2%28n%29%29%2C%20%5C%5Cdots%2C%20f%28p_n%28n%29%29%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%20%5C%5Cle%20n%2C%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20each%20permutation%20and%20the%20number%20of%20elements%20in%20%24%20x%20%24%20.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20m%20%24%20integers%20%28%20%24%20m%20%24%20%2C%20not%20%24%20n%20%24%20%29%20%24%20x_1%2C%20x_2%2C%20%5C%5Cdots%2C%20x_m%20%24%20%28%20%24%201%20%5C%5Cle%20x_i%20%5C%5Cle%20n%20%24%20%29%2C%20where%20%24%20x_i%20%24%20is%20the%20%24%20i%20%24%20-th%20element%20of%20%24%20x%20%24%20.%20Elements%20of%20%24%20x%20%24%20can%20repeat%20and%20appear%20in%20arbitrary%20order.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20integers%3A%20%24%20f%28p_1%28n%29%29%2C%20f%28p_2%28n%29%29%2C%20%5C%5Cdots%2C%20f%28p_n%28n%29%29%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%204%5Cn1%202%203%204%5Cn%22%2C%22%5Cn3%204%206%205%20%5Cn%22%5D%2C%5B%22%5Cn5%205%5Cn2%201%205%203%205%5Cn%22%2C%22%5Cn9%208%2012%206%208%20%5Cn%22%5D%2C%5B%22%5Cn2%2010%5Cn1%202%201%201%202%202%202%202%202%202%5Cn%22%2C%22%5Cn3%203%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20first%20example%3A%5Cn%5Cn%20%24%20x%20%3D%20%5B1%2C%202%2C%203%2C%204%5D%20%24%20%2C%20so%5Cn%5Cn-%20for%20the%20permutation%20%24%20p_1%284%29%20%3D%20%5B1%2C%202%2C%203%2C%204%5D%20%24%20the%20answer%20is%20%24%20%7C1%20-%202%7C%20%2B%20%7C2%20-%203%7C%20%2B%20%7C3%20-%204%7C%20%3D%203%20%24%20%3B%5Cn-%20for%20the%20permutation%20%24%20p_2%284%29%20%3D%20%5B2%2C%201%2C%203%2C%204%5D%20%24%20the%20answer%20is%20%24%20%7C2%20-%201%7C%20%2B%20%7C1%20-%203%7C%20%2B%20%7C3%20-%204%7C%20%3D%204%20%24%20%3B%5Cn-%20for%20the%20permutation%20%24%20p_3%284%29%20%3D%20%5B3%2C%201%2C%202%2C%204%5D%20%24%20the%20answer%20is%20%24%20%7C2%20-%203%7C%20%2B%20%7C3%20-%201%7C%20%2B%20%7C1%20-%204%7C%20%3D%206%20%24%20%3B%5Cn-%20for%20the%20permutation%20%24%20p_4%284%29%20%3D%20%5B4%2C%201%2C%202%2C%203%5D%20%24%20the%20answer%20is%20%24%20%7C2%20-%203%7C%20%2B%20%7C3%20-%204%7C%20%2B%20%7C4%20-%201%7C%20%3D%205%20%24%20.%5Cn%5CnConsider%20the%20second%20example%3A%5Cn%5Cn%20%24%20x%20%3D%20%5B2%2C%201%2C%205%2C%203%2C%205%5D%20%24%20%2C%20so%5Cn%5Cn-%20for%20the%20permutation%20%24%20p_1%285%29%20%3D%20%5B1%2C%202%2C%203%2C%204%2C%205%5D%20%24%20the%20answer%20is%20%24%20%7C2%20-%201%7C%20%2B%20%7C1%20-%205%7C%20%2B%20%7C5%20-%203%7C%20%2B%20%7C3%20-%205%7C%20%3D%209%20%24%20%3B%5Cn-%20for%20the%20permutation%20%24%20p_2%285%29%20%3D%20%5B2%2C%201%2C%203%2C%204%2C%205%5D%20%24%20the%20answer%20is%20%24%20%7C1%20-%202%7C%20%2B%20%7C2%20-%205%7C%20%2B%20%7C5%20-%203%7C%20%2B%20%7C3%20-%205%7C%20%3D%208%20%24%20%3B%5Cn-%20for%20the%20permutation%20%24%20p_3%285%29%20%3D%20%5B3%2C%201%2C%202%2C%204%2C%205%5D%20%24%20the%20answer%20is%20%24%20%7C3%20-%202%7C%20%2B%20%7C2%20-%205%7C%20%2B%20%7C5%20-%201%7C%20%2B%20%7C1%20-%205%7C%20%3D%2012%20%24%20%3B%5Cn-%20for%20the%20permutation%20%24%20p_4%285%29%20%3D%20%5B4%2C%201%2C%202%2C%203%2C%205%5D%20%24%20the%20answer%20is%20%24%20%7C3%20-%202%7C%20%2B%20%7C2%20-%205%7C%20%2B%20%7C5%20-%204%7C%20%2B%20%7C4%20-%205%7C%20%3D%206%20%24%20%3B%5Cn-%20for%20the%20permutation%20%24%20p_5%285%29%20%3D%20%5B5%2C%201%2C%202%2C%203%2C%204%5D%20%24%20the%20answer%20is%20%24%20%7C3%20-%202%7C%20%2B%20%7C2%20-%201%7C%20%2B%20%7C1%20-%204%7C%20%2B%20%7C4%20-%201%7C%20%3D%208%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1234%5C%2FE%22%2C%22id%22%3A%221234E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24m%24%5Cu7684%5Cu5e8f%5Cu5217%24x%24%5Cr%5Cn%5Cr%5Cn%5Cu8bb0%5Cuff1a%5Cr%5Cn%5Cr%5Cn%3E%5Cu6392%5Cu5217%24p_i%28n%29%3D%5Bi%2C1%2C2%2C...%2Ci-1%2Ci%2B1%2C...%2Cn%5D%24%5Cr%5Cn%3E%24pos%28p%2Cx%29%24%5Cu8868%5Cu793a%24x%24%5Cu5728%5Cu6392%5Cu5217%24p%24%5Cu4e2d%5Cu7684%5Cu7b2c%5Cu51e0%5Cu4f4d%5Cr%5Cn%3E%24f%28p%29%3D%5C%5Csum_%7Bi%3D1%7D%5E%7Bm-1%7D%7Cpos%28p%2Cx_i%29-pos%28p%2Cx_%7Bi%2B1%7D%29%7C%24%5Cr%5Cn%5Cr%5Cn%5Cu6c42%24f%28p_1%28n%29%29%2Cf%28p_2%28n%29%29%2C...%2Cf%28p_n%28n%29%29%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%242%5C%5Cle%20n%2Cm%5C%5Cle2%5C%5Ctimes10%5E5%2C1%5C%5Cle%20x_i%5C%5Cle%20n%24%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A66%2C%22totalAccepted%22%3A42%2C%22pid%22%3A%22CF1234E%22%2C%22title%22%3A%22Special%20Permutations%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1230A%22%2C%22title%22%3A%22Dawid%20and%20Bags%20of%20Candies%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1228C%22%2C%22title%22%3A%22Primes%20and%20Multiplication%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1234F%22%2C%22title%22%3A%22Yet%20Another%20Substring%20Reverse%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1234D%22%2C%22title%22%3A%22Distinct%20Characters%20Queries%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1234C%22%2C%22title%22%3A%22Pipes%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Special%20Permutations%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Special Permutations</h1>
+<h2>题意翻译</h2>
+<div>给定一个长度为$m$的序列$x$
+记：
+>排列$p_i(n)=[i,1,2,...,i-1,i+1,...,n]$
+>$pos(p,x)$表示$x$在排列$p$中的第几位
+>$f(p)=\sum_{i=1}^{m-1}|pos(p,x_i)-pos(p,x_{i+1})|$
+求$f(p_1(n)),f(p_2(n)),...,f(p_n(n))$。
+$2\le n,m\le2\times10^5,1\le x_i\le n$
+</div>
+<h2>题目描述</h2>
+<div>Let's define $ p_i(n) $ as the following permutation: $ [i, 1, 2, \dots, i - 1, i + 1, \dots, n] $ . This means that the $ i $ -th permutation is almost identity (i.e. which maps every element to itself) permutation but the element $ i $ is on the first position. Examples:
+- $ p_1(4) = [1, 2, 3, 4] $ ;
+- $ p_2(4) = [2, 1, 3, 4] $ ;
+- $ p_3(4) = [3, 1, 2, 4] $ ;
+- $ p_4(4) = [4, 1, 2, 3] $ .
+You are given an array $ x_1, x_2, \dots, x_m $ ( $ 1 \le x_i \le n $ ).
+Let $ pos(p, val) $ be the position of the element $ val $ in $ p $ . So, $ pos(p_1(4), 3) = 3, pos(p_2(4), 2) = 1, pos(p_4(4), 4) = 1 $ .
+Let's define a function $ f(p) = \sum\limits_{i=1}^{m - 1} |pos(p, x_i) - pos(p, x_{i + 1})| $ , where $ |val| $ is the absolute value of $ val $ . This function means the sum of distances between adjacent elements of $ x $ in $ p $ .
+Your task is to calculate $ f(p_1(n)), f(p_2(n)), \dots, f(p_n(n)) $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ m $ ( $ 2 \le n, m \le 2 \cdot 10^5 $ ) — the number of elements in each permutation and the number of elements in $ x $ .
+The second line of the input contains $ m $ integers ( $ m $ , not $ n $ ) $ x_1, x_2, \dots, x_m $ ( $ 1 \le x_i \le n $ ), where $ x_i $ is the $ i $ -th element of $ x $ . Elements of $ x $ can repeat and appear in arbitrary order.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ integers: $ f(p_1(n)), f(p_2(n)), \dots, f(p_n(n)) $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4 4
+1 2 3 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3 4 6 5 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5 5
+2 1 5 3 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+9 8 12 6 8 
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+2 10
+1 2 1 1 2 2 2 2 2 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+3 3 
+</code></pre>
+<h2>说明</h2>
+<div>Consider the first example:
+$ x = [1, 2, 3, 4] $ , so
+- for the permutation $ p_1(4) = [1, 2, 3, 4] $ the answer is $ |1 - 2| + |2 - 3| + |3 - 4| = 3 $ ;
+- for the permutation $ p_2(4) = [2, 1, 3, 4] $ the answer is $ |2 - 1| + |1 - 3| + |3 - 4| = 4 $ ;
+- for the permutation $ p_3(4) = [3, 1, 2, 4] $ the answer is $ |2 - 3| + |3 - 1| + |1 - 4| = 6 $ ;
+- for the permutation $ p_4(4) = [4, 1, 2, 3] $ the answer is $ |2 - 3| + |3 - 4| + |4 - 1| = 5 $ .
+Consider the second example:
+$ x = [2, 1, 5, 3, 5] $ , so
+- for the permutation $ p_1(5) = [1, 2, 3, 4, 5] $ the answer is $ |2 - 1| + |1 - 5| + |5 - 3| + |3 - 5| = 9 $ ;
+- for the permutation $ p_2(5) = [2, 1, 3, 4, 5] $ the answer is $ |1 - 2| + |2 - 5| + |5 - 3| + |3 - 5| = 8 $ ;
+- for the permutation $ p_3(5) = [3, 1, 2, 4, 5] $ the answer is $ |3 - 2| + |2 - 5| + |5 - 1| + |1 - 5| = 12 $ ;
+- for the permutation $ p_4(5) = [4, 1, 2, 3, 5] $ the answer is $ |3 - 2| + |2 - 5| + |5 - 4| + |4 - 5| = 6 $ ;
+- for the permutation $ p_5(5) = [5, 1, 2, 3, 4] $ the answer is $ |3 - 2| + |2 - 1| + |1 - 4| + |4 - 1| = 8 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

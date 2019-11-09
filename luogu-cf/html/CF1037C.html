@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Equalize - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400762:RVv5ducEKoYRgG8MGIBshg3kwEuS/nut5MS4qacRKpM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20two%20binary%20strings%20%24%20a%20%24%20and%20%24%20b%20%24%20of%20the%20same%20length.%20You%20can%20perform%20the%20following%20two%20operations%20on%20the%20string%20%24%20a%20%24%20%3A%5Cn%5Cn-%20Swap%20any%20two%20bits%20at%20indices%20%24%20i%20%24%20and%20%24%20j%20%24%20respectively%20%28%20%24%201%20%5C%5Cle%20i%2C%20j%20%5C%5Cle%20n%20%24%20%29%2C%20the%20cost%20of%20this%20operation%20is%20%24%20%7Ci%20-%20j%7C%20%24%20%2C%20that%20is%2C%20the%20absolute%20difference%20between%20%24%20i%20%24%20and%20%24%20j%20%24%20.%5Cn-%20Select%20any%20arbitrary%20index%20%24%20i%20%24%20%28%20%24%201%20%5C%5Cle%20i%20%5C%5Cle%20n%20%24%20%29%20and%20flip%20%28change%20%24%200%20%24%20to%20%24%201%20%24%20or%20%24%201%20%24%20to%20%24%200%20%24%20%29%20the%20bit%20at%20this%20index.%20The%20cost%20of%20this%20operation%20is%20%24%201%20%24%20.%5Cn%5CnFind%20the%20minimum%20cost%20to%20make%20the%20string%20%24%20a%20%24%20equal%20to%20%24%20b%20%24%20.%20It%20is%20not%20allowed%20to%20modify%20string%20%24%20b%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2010%5E6%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20strings%20%24%20a%20%24%20and%20%24%20b%20%24%20.%5Cn%5CnThe%20second%20and%20third%20lines%20contain%20strings%20%24%20a%20%24%20and%20%24%20b%20%24%20respectively.%5Cn%5CnBoth%20strings%20%24%20a%20%24%20and%20%24%20b%20%24%20have%20length%20%24%20n%20%24%20and%20contain%20only%20%270%27%20and%20%271%27.%22%2C%22outputFormat%22%3A%22Output%20the%20minimum%20cost%20to%20make%20the%20string%20%24%20a%20%24%20equal%20to%20%24%20b%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%5Cn100%5Cn001%5Cn%22%2C%222%5Cn%22%5D%2C%5B%224%5Cn0101%5Cn0011%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20one%20of%20the%20optimal%20solutions%20is%20to%20flip%20index%20%24%201%20%24%20and%20index%20%24%203%20%24%20%2C%20the%20string%20%24%20a%20%24%20changes%20in%20the%20following%20way%3A%20%5C%22100%5C%22%20%24%20%5C%5Cto%20%24%20%5C%22000%5C%22%20%24%20%5C%5Cto%20%24%20%5C%22001%5C%22.%20The%20cost%20is%20%24%201%20%2B%201%20%3D%202%20%24%20.%5Cn%5CnThe%20other%20optimal%20solution%20is%20to%20swap%20bits%20and%20indices%20%24%201%20%24%20and%20%24%203%20%24%20%2C%20the%20string%20%24%20a%20%24%20changes%20then%20%5C%22100%5C%22%20%24%20%5C%5Cto%20%24%20%5C%22001%5C%22%2C%20the%20cost%20is%20also%20%24%20%7C1%20-%203%7C%20%3D%202%20%24%20.%5Cn%5CnIn%20the%20second%20example%2C%20the%20optimal%20solution%20is%20to%20swap%20bits%20at%20indices%20%24%202%20%24%20and%20%24%203%20%24%20%2C%20the%20string%20%24%20a%20%24%20changes%20as%20%5C%220101%5C%22%20%24%20%5C%5Cto%20%24%20%5C%220011%5C%22.%20The%20cost%20is%20%24%20%7C2%20-%203%7C%20%3D%201%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1037%5C%2FC%22%2C%22id%22%3A%221037C%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e24%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%2401%24%5Cu5e8f%5Cu5217%24a%2Cb%24%5Cn%5Cn%5Cu6bcf%5Cu6b21%5Cu53ef%5Cu4ee5%5Cu6267%5Cu884c%5Cu5982%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn%5Cn1.%20%5Cu5728%24a%24%5Cu4e2d%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu7f6e%24p%24%5Cuff0c%5Cu5c06%24a_p%24%5Cu53d8%5Cu4e3a%241-a_p%24%5Cuff0c%5Cu4ee3%5Cu4ef7%5Cu662f%241%24%5Cn%5Cn2.%20%5Cu5728%24a%24%5Cu4e2d%5Cu9009%5Cu62e9%5Cu4e24%5Cu4e2a%5Cu4f4d%5Cu7f6e%24p%2Cq%24%5Cuff0c%5Cu5c06%24a_p%24%5Cu548c%24a_q%24%5Cu4e92%5Cu6362%5Cuff0c%5Cu4ee3%5Cu4ef7%5Cu662f%24%5C%5Cmid%20p-q%20%5C%5Cmid%24%5Cn%5Cn%5Cu8981%5Cu6c42%5Cu5c06%24a%24%5Cu53d8%5Cu6210%24b%24%5Cuff0c%5Cu6700%5Cu5c0f%5Cu5316%5Cu4ee3%5Cu4ef7%5Cn%5Cn%241%20%5C%5Cle%20n%20%5C%5Cle%2010%5E6%24%5Cn%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A135%2C%22totalAccepted%22%3A73%2C%22pid%22%3A%22CF1037C%22%2C%22title%22%3A%22Equalize%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A62278%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29161%2C%22name%22%3A%22CF1037C%20Equalize%22%2C%22slug%22%3A%22CF1037C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF802A%22%2C%22title%22%3A%22Heidi%20and%20Library%20%28easy%29%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1029C%22%2C%22title%22%3A%22Maximal%20Intersection%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1037E%22%2C%22title%22%3A%22Trips%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1037D%22%2C%22title%22%3A%22Valid%20BFS%3F%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1037B%22%2C%22title%22%3A%22Reach%20Median%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Equalize%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Equalize</h1>
+<h2>题意翻译</h2>
+<div>给定两个长度为$n$的$01$序列$a,b$
+每次可以执行如下操作：
+1. 在$a$中选择一个位置$p$，将$a_p$变为$1-a_p$，代价是$1$
+2. 在$a$中选择两个位置$p,q$，将$a_p$和$a_q$互换，代价是$\mid p-q \mid$
+要求将$a$变成$b$，最小化代价
+$1 \le n \le 10^6$
+</div>
+<h2>题目描述</h2>
+<div>You are given two binary strings $ a $ and $ b $ of the same length. You can perform the following two operations on the string $ a $ :
+- Swap any two bits at indices $ i $ and $ j $ respectively ( $ 1 \le i, j \le n $ ), the cost of this operation is $ |i - j| $ , that is, the absolute difference between $ i $ and $ j $ .
+- Select any arbitrary index $ i $ ( $ 1 \le i \le n $ ) and flip (change $ 0 $ to $ 1 $ or $ 1 $ to $ 0 $ ) the bit at this index. The cost of this operation is $ 1 $ .
+Find the minimum cost to make the string $ a $ equal to $ b $ . It is not allowed to modify string $ b $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1 \le n \le 10^6 $ ) — the length of the strings $ a $ and $ b $ .
+The second and third lines contain strings $ a $ and $ b $ respectively.
+Both strings $ a $ and $ b $ have length $ n $ and contain only '0' and '1'.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the minimum cost to make the string $ a $ equal to $ b $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+100
+001
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+0101
+0011
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, one of the optimal solutions is to flip index $ 1 $ and index $ 3 $ , the string $ a $ changes in the following way: "100" $ \to $ "000" $ \to $ "001". The cost is $ 1 + 1 = 2 $ .
+The other optimal solution is to swap bits and indices $ 1 $ and $ 3 $ , the string $ a $ changes then "100" $ \to $ "001", the cost is also $ |1 - 3| = 2 $ .
+In the second example, the optimal solution is to swap bits at indices $ 2 $ and $ 3 $ , the string $ a $ changes as "0101" $ \to $ "0011". The cost is $ |2 - 3| = 1 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

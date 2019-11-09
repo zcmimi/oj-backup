@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Knights - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403418:f+qHBHzUJ0y44W/v62nABivR7q7WKSQtveo2j7Il9jc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20chess%20board%20with%20%24%20n%20%24%20rows%20and%20%24%20n%20%24%20columns.%20Initially%20all%20cells%20of%20the%20board%20are%20empty%2C%20and%20you%20have%20to%20put%20a%20white%20or%20a%20black%20knight%20into%20each%20cell%20of%20the%20board.%5Cn%5CnA%20knight%20is%20a%20chess%20piece%20that%20can%20attack%20a%20piece%20in%20cell%20%28%20%24%20x_2%20%24%20%2C%20%24%20y_2%20%24%20%29%20from%20the%20cell%20%28%20%24%20x_1%20%24%20%2C%20%24%20y_1%20%24%20%29%20if%20one%20of%20the%20following%20conditions%20is%20met%3A%5Cn%5Cn-%20%24%20%7Cx_1%20-%20x_2%7C%20%3D%202%20%24%20and%20%24%20%7Cy_1%20-%20y_2%7C%20%3D%201%20%24%20%2C%20or%5Cn-%20%24%20%7Cx_1%20-%20x_2%7C%20%3D%201%20%24%20and%20%24%20%7Cy_1%20-%20y_2%7C%20%3D%202%20%24%20.%5Cn%5CnHere%20are%20some%20examples%20of%20which%20cells%20knight%20can%20attack.%20In%20each%20of%20the%20following%20pictures%2C%20if%20the%20knight%20is%20currently%20in%20the%20blue%20cell%2C%20it%20can%20attack%20all%20red%20cells%20%28and%20only%20them%29.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1221B%5C%2F52d6b0891a161fbd4258da7a11dd1ce54ed8afcb.png%29A%20duel%20of%20knights%20is%20a%20pair%20of%20knights%20of%20different%20colors%20such%20that%20these%20knights%20attack%20each%20other.%20You%20have%20to%20put%20a%20knight%20%28a%20white%20one%20or%20a%20black%20one%29%20into%20each%20cell%20in%20such%20a%20way%20that%20the%20number%20of%20duels%20is%20maximum%20possible.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%203%20%5C%5Cle%20n%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20number%20of%20rows%20%28and%20columns%29%20in%20the%20board.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20lines%20with%20%24%20n%20%24%20characters%20in%20each%20line.%20The%20%24%20j%20%24%20-th%20character%20in%20the%20%24%20i%20%24%20-th%20line%20should%20be%20W%2C%20if%20the%20cell%20%28%20%24%20i%20%24%20%2C%20%24%20j%20%24%20%29%20contains%20a%20white%20knight%2C%20or%20B%2C%20if%20it%20contains%20a%20black%20knight.%20The%20number%20of%20duels%20should%20be%20maximum%20possible.%20If%20there%20are%20multiple%20optimal%20answers%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn%22%2C%22%5CnWBW%5CnBBB%5CnWBW%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20there%20are%20%24%208%20%24%20duels%3A%5Cn%5Cn1.%20the%20white%20knight%20in%20%28%20%24%201%20%24%20%2C%20%24%201%20%24%20%29%20attacks%20the%20black%20knight%20in%20%28%20%24%203%20%24%20%2C%20%24%202%20%24%20%29%3B%5Cn2.%20the%20white%20knight%20in%20%28%20%24%201%20%24%20%2C%20%24%201%20%24%20%29%20attacks%20the%20black%20knight%20in%20%28%20%24%202%20%24%20%2C%20%24%203%20%24%20%29%3B%5Cn3.%20the%20white%20knight%20in%20%28%20%24%201%20%24%20%2C%20%24%203%20%24%20%29%20attacks%20the%20black%20knight%20in%20%28%20%24%203%20%24%20%2C%20%24%202%20%24%20%29%3B%5Cn4.%20the%20white%20knight%20in%20%28%20%24%201%20%24%20%2C%20%24%203%20%24%20%29%20attacks%20the%20black%20knight%20in%20%28%20%24%202%20%24%20%2C%20%24%201%20%24%20%29%3B%5Cn5.%20the%20white%20knight%20in%20%28%20%24%203%20%24%20%2C%20%24%201%20%24%20%29%20attacks%20the%20black%20knight%20in%20%28%20%24%201%20%24%20%2C%20%24%202%20%24%20%29%3B%5Cn6.%20the%20white%20knight%20in%20%28%20%24%203%20%24%20%2C%20%24%201%20%24%20%29%20attacks%20the%20black%20knight%20in%20%28%20%24%202%20%24%20%2C%20%24%203%20%24%20%29%3B%5Cn7.%20the%20white%20knight%20in%20%28%20%24%203%20%24%20%2C%20%24%203%20%24%20%29%20attacks%20the%20black%20knight%20in%20%28%20%24%201%20%24%20%2C%20%24%202%20%24%20%29%3B%5Cn8.%20the%20white%20knight%20in%20%28%20%24%203%20%24%20%2C%20%24%203%20%24%20%29%20attacks%20the%20black%20knight%20in%20%28%20%24%202%20%24%20%2C%20%24%201%20%24%20%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1221%5C%2FB%22%2C%22id%22%3A%221221B%22%7D%2C%22translation%22%3A%22%5Cu5728%5Cu4e00%5Cu4e2a%24n%5C%5Ctimes%20n%24%5Cu7684%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu653e%5Cu7f6e%5Cu9ed1%5Cu9a6c%5Cu548c%5Cu767d%5Cu9a6c%5Cuff0c%5Cu8bf7%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu653e%5Cu7f6e%5Cu65b9%5Cu5f0f%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu9ed1%5Cu9a6c%5Cu548c%5Cu767d%5Cu9a6c%5Cu4e4b%5Cu95f4%5Cu7684%5Cu51b2%5Cu7a81%5Cu6570%5Cu6700%5Cu591a%5Cuff08%5Cu5373%5Cu53ef%5Cu4ee5%5Cu4e92%5Cu76f8%5Cu653b%5Cu51fb%5Cuff09%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A88%2C%22totalAccepted%22%3A68%2C%22pid%22%3A%22CF1221B%22%2C%22title%22%3A%22Knights%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1221D%22%2C%22title%22%3A%22Make%20The%20Fence%20Great%20Again%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1221C%22%2C%22title%22%3A%22Perfect%20Team%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1221A%22%2C%22title%22%3A%222048%20Game%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1230B%22%2C%22title%22%3A%22Ania%20and%20Minimizing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1230A%22%2C%22title%22%3A%22Dawid%20and%20Bags%20of%20Candies%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Knights%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Knights</h1>
+<h2>题意翻译</h2>
+<div>在一个$n\times n$的棋盘上放置黑马和白马，请给出一个放置方式，使得黑马和白马之间的冲突数最多（即可以互相攻击）</div>
+<h2>题目描述</h2>
+<div>You are given a chess board with $ n $ rows and $ n $ columns. Initially all cells of the board are empty, and you have to put a white or a black knight into each cell of the board.
+A knight is a chess piece that can attack a piece in cell ( $ x_2 $ , $ y_2 $ ) from the cell ( $ x_1 $ , $ y_1 $ ) if one of the following conditions is met:
+- $ |x_1 - x_2| = 2 $ and $ |y_1 - y_2| = 1 $ , or
+- $ |x_1 - x_2| = 1 $ and $ |y_1 - y_2| = 2 $ .
+Here are some examples of which cells knight can attack. In each of the following pictures, if the knight is currently in the blue cell, it can attack all red cells (and only them).
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1221B/52d6b0891a161fbd4258da7a11dd1ce54ed8afcb.png)A duel of knights is a pair of knights of different colors such that these knights attack each other. You have to put a knight (a white one or a black one) into each cell in such a way that the number of duels is maximum possible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ ( $ 3 \le n \le 100 $ ) — the number of rows (and columns) in the board.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ lines with $ n $ characters in each line. The $ j $ -th character in the $ i $ -th line should be W, if the cell ( $ i $ , $ j $ ) contains a white knight, or B, if it contains a black knight. The number of duels should be maximum possible. If there are multiple optimal answers, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+WBW
+BBB
+WBW
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, there are $ 8 $ duels:
+1. the white knight in ( $ 1 $ , $ 1 $ ) attacks the black knight in ( $ 3 $ , $ 2 $ );
+2. the white knight in ( $ 1 $ , $ 1 $ ) attacks the black knight in ( $ 2 $ , $ 3 $ );
+3. the white knight in ( $ 1 $ , $ 3 $ ) attacks the black knight in ( $ 3 $ , $ 2 $ );
+4. the white knight in ( $ 1 $ , $ 3 $ ) attacks the black knight in ( $ 2 $ , $ 1 $ );
+5. the white knight in ( $ 3 $ , $ 1 $ ) attacks the black knight in ( $ 1 $ , $ 2 $ );
+6. the white knight in ( $ 3 $ , $ 1 $ ) attacks the black knight in ( $ 2 $ , $ 3 $ );
+7. the white knight in ( $ 3 $ , $ 3 $ ) attacks the black knight in ( $ 1 $ , $ 2 $ );
+8. the white knight in ( $ 3 $ , $ 3 $ ) attacks the black knight in ( $ 2 $ , $ 1 $ ).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

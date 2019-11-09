@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Region Separation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400733:mgd71XBdeSPvA/R4ker5vT4v8NOhlGK/XNgDoy8lhKU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20%24%20n%20%24%20cities%20in%20the%20Kingdom%20of%20Autumn%2C%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20People%20can%20travel%20between%20any%20two%20cities%20using%20%24%20n-1%20%24%20two-directional%20roads.%5Cn%5CnThis%20year%2C%20the%20government%20decides%20to%20separate%20the%20kingdom.%20There%20will%20be%20regions%20of%20different%20levels.%20The%20whole%20kingdom%20will%20be%20the%20region%20of%20level%20%24%201%20%24%20.%20Each%20region%20of%20%24%20i%20%24%20-th%20level%20should%20be%20separated%20into%20several%20%28at%20least%20two%29%20regions%20of%20%24%20i%2B1%20%24%20-th%20level%2C%20unless%20%24%20i%20%24%20-th%20level%20is%20the%20last%20level.%20Each%20city%20should%20belong%20to%20exactly%20one%20region%20of%20each%20level%20and%20for%20any%20two%20cities%20in%20the%20same%20region%2C%20it%20should%20be%20possible%20to%20travel%20between%20them%20passing%20the%20cities%20in%20the%20same%20region%20only.%5Cn%5CnAccording%20to%20research%2C%20for%20each%20city%20%24%20i%20%24%20%2C%20there%20is%20a%20value%20%24%20a_i%20%24%20%2C%20which%20describes%20the%20importance%20of%20this%20city.%20All%20regions%20of%20the%20same%20level%20should%20have%20an%20equal%20sum%20of%20city%20importances.%5Cn%5CnYour%20task%20is%20to%20find%20how%20many%20plans%20there%20are%20to%20determine%20the%20separation%20of%20the%20regions%20that%20all%20the%20conditions%20are%20satisfied.%20Two%20plans%20are%20considered%20different%20if%20and%20only%20if%20their%20numbers%20of%20levels%20are%20different%20or%20there%20exist%20two%20cities%20in%20the%20same%20region%20of%20one%20level%20in%20one%20plan%20but%20in%20different%20regions%20of%20this%20level%20in%20the%20other%20plan.%20Since%20the%20answer%20may%20be%20very%20large%2C%20output%20it%20modulo%20%24%2010%5E9%2B7%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E6%20%24%20%29%20%5Cu2014%20the%20number%20of%20the%20cities.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%2C%20the%20%24%20i%20%24%20-th%20of%20which%20is%20%24%20a_i%20%24%20%28%20%24%201%20%5C%5Cleq%20a_i%20%5C%5Cleq%2010%5E9%20%24%20%29%20%5Cu2014%20the%20value%20of%20each%20city.%5Cn%5CnThe%20third%20line%20contains%20%24%20n-1%20%24%20integers%2C%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_%7Bn-1%7D%20%24%20%3B%20%24%20p_i%20%24%20%28%20%24%20p_i%20%5C%5Cleq%20i%20%24%20%29%20describes%20a%20road%20between%20cities%20%24%20p_i%20%24%20and%20%24%20i%2B1%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20number%20of%20different%20plans%20modulo%20%24%2010%5E9%2B7%20%24%20.%22%2C%22samples%22%3A%5B%5B%224%5Cn1%201%201%201%5Cn1%202%203%5Cn%22%2C%224%22%5D%2C%5B%224%5Cn1%201%201%201%5Cn1%202%202%5Cn%22%2C%222%22%5D%2C%5B%224%5Cn1%202%201%202%5Cn1%201%203%5Cn%22%2C%223%22%5D%5D%2C%22hint%22%3A%22For%20the%20first%20example%2C%20there%20are%20%24%204%20%24%20different%20plans%3A%5Cn%5CnPlan%20%24%201%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20.%5Cn%5CnPlan%20%24%202%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20%2C%20Level-%20%24%202%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B3%2C4%5C%5C%7D%20%24%20.%5Cn%5CnPlan%20%24%203%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20%2C%20Level-%20%24%202%20%24%20%3A%20%24%20%5C%5C%7B1%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B2%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B3%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B4%5C%5C%7D%20%24%20.%5Cn%5CnPlan%20%24%204%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20%2C%20Level-%20%24%202%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B3%2C4%5C%5C%7D%20%24%20%2C%20Level-%20%24%203%20%24%20%3A%20%24%20%5C%5C%7B1%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B2%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B3%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B4%5C%5C%7D%20%24%20.%5Cn%5CnFor%20the%20second%20example%2C%20there%20are%20%24%202%20%24%20different%20plans%3A%5Cn%5CnPlan%20%24%201%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20.%5Cn%5CnPlan%20%24%202%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20%2C%20Level-%20%24%202%20%24%20%3A%20%24%20%5C%5C%7B1%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B2%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B3%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B4%5C%5C%7D%20%24%20.%5Cn%5CnFor%20the%20third%20example%2C%20there%20are%20%24%203%20%24%20different%20plans%3A%5Cn%5CnPlan%20%24%201%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20.%5Cn%5CnPlan%20%24%202%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20%2C%20Level-%20%24%202%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B3%2C4%5C%5C%7D%20%24%20.%5Cn%5CnPlan%20%24%203%20%24%20%3A%20Level-%20%24%201%20%24%20%3A%20%24%20%5C%5C%7B1%2C2%2C3%2C4%5C%5C%7D%20%24%20%2C%20Level-%20%24%202%20%24%20%3A%20%24%20%5C%5C%7B1%2C3%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B2%5C%5C%7D%20%24%20%2C%20%24%20%5C%5C%7B4%5C%5C%7D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1034%5C%2FC%22%2C%22id%22%3A%221034C%22%7D%2C%22translation%22%3A%22%5Cu4e00%5Cu68f5%20%24n%24%20%5Cu4e2a%5Cu70b9%5Cu7684%5Cu6811%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu6709%5Cu6743%5Cu503c%5Cu3002%5Cu4f60%5Cu60f3%5Cu780d%5Cu6811%5Cu3002%20%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu780d%5Cu4efb%5Cu610f%5Cu6b21%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu4f60%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e9b%5Cu8fb9%5Cu65ad%5Cu5f00%5Cuff0c%5Cu9700%5Cu8981%5Cu6ee1%5Cu8db3%5Cu780d%5Cu5b8c%5Cu540e%5Cu6bcf%5Cu4e2a%5Cu8fde%5Cu901a%5Cu5757%5Cu7684%5Cu6743%5Cu503c%5Cu548c%5Cu662f%5Cu76f8%5Cu7b49%5Cu7684%5Cu3002%5Cu6c42%5Cu6709%5Cu591a%5Cu5c11%5Cu79cd%5Cu780d%5Cu6811%5Cu65b9%5Cu6848%5Cu3002%20%24n%3C%3D%2010%5E6%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A44%2C%22totalAccepted%22%3A23%2C%22pid%22%3A%22CF1034C%22%2C%22title%22%3A%22Region%20Separation%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Region%20Separation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Region Separation</h1>
+<h2>题意翻译</h2>
+<div>一棵 $n$ 个点的树，每个点有权值。你想砍树。 你可以砍任意次，每次你选择一些边断开，需要满足砍完后每个连通块的权值和是相等的。求有多少种砍树方案。 $n<= 10^6$</div>
+<h2>题目描述</h2>
+<div>There are $ n $ cities in the Kingdom of Autumn, numbered from $ 1 $ to $ n $ . People can travel between any two cities using $ n-1 $ two-directional roads.
+This year, the government decides to separate the kingdom. There will be regions of different levels. The whole kingdom will be the region of level $ 1 $ . Each region of $ i $ -th level should be separated into several (at least two) regions of $ i+1 $ -th level, unless $ i $ -th level is the last level. Each city should belong to exactly one region of each level and for any two cities in the same region, it should be possible to travel between them passing the cities in the same region only.
+According to research, for each city $ i $ , there is a value $ a_i $ , which describes the importance of this city. All regions of the same level should have an equal sum of city importances.
+Your task is to find how many plans there are to determine the separation of the regions that all the conditions are satisfied. Two plans are considered different if and only if their numbers of levels are different or there exist two cities in the same region of one level in one plan but in different regions of this level in the other plan. Since the answer may be very large, output it modulo $ 10^9+7 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ ( $ 1 \leq n \leq 10^6 $ ) — the number of the cities.
+The second line contains $ n $ integers, the $ i $ -th of which is $ a_i $ ( $ 1 \leq a_i \leq 10^9 $ ) — the value of each city.
+The third line contains $ n-1 $ integers, $ p_1, p_2, \ldots, p_{n-1} $ ; $ p_i $ ( $ p_i \leq i $ ) describes a road between cities $ p_i $ and $ i+1 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the number of different plans modulo $ 10^9+7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1 1 1 1
+1 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+1 1 1 1
+1 2 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+1 2 1 2
+1 1 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3</code></pre>
+<h2>说明</h2>
+<div>For the first example, there are $ 4 $ different plans:
+Plan $ 1 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ .
+Plan $ 2 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ , Level- $ 2 $ : $ \{1,2\} $ , $ \{3,4\} $ .
+Plan $ 3 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ , Level- $ 2 $ : $ \{1\} $ , $ \{2\} $ , $ \{3\} $ , $ \{4\} $ .
+Plan $ 4 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ , Level- $ 2 $ : $ \{1,2\} $ , $ \{3,4\} $ , Level- $ 3 $ : $ \{1\} $ , $ \{2\} $ , $ \{3\} $ , $ \{4\} $ .
+For the second example, there are $ 2 $ different plans:
+Plan $ 1 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ .
+Plan $ 2 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ , Level- $ 2 $ : $ \{1\} $ , $ \{2\} $ , $ \{3\} $ , $ \{4\} $ .
+For the third example, there are $ 3 $ different plans:
+Plan $ 1 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ .
+Plan $ 2 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ , Level- $ 2 $ : $ \{1,2\} $ , $ \{3,4\} $ .
+Plan $ 3 $ : Level- $ 1 $ : $ \{1,2,3,4\} $ , Level- $ 2 $ : $ \{1,3\} $ , $ \{2\} $ , $ \{4\} $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

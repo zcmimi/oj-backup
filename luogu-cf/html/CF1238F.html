@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>The Maximum Subtree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403573:qQoGsDibTLYHZOKTOLY5Sjolvc4BAlPEdziHL572r2k=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Assume%20that%20you%20have%20%24%20k%20%24%20one-dimensional%20segments%20%24%20s_1%2C%20s_2%2C%20%5C%5Cdots%20s_k%20%24%20%28each%20segment%20is%20denoted%20by%20two%20integers%20%5Cu2014%20its%20endpoints%29.%20Then%20you%20can%20build%20the%20following%20graph%20on%20these%20segments.%20The%20graph%20consists%20of%20%24%20k%20%24%20vertexes%2C%20and%20there%20is%20an%20edge%20between%20the%20%24%20i%20%24%20-th%20and%20the%20%24%20j%20%24%20-th%20vertexes%20%28%20%24%20i%20%5C%5Cneq%20j%20%24%20%29%20if%20and%20only%20if%20the%20segments%20%24%20s_i%20%24%20and%20%24%20s_j%20%24%20intersect%20%28there%20exists%20at%20least%20one%20point%20that%20belongs%20to%20both%20of%20them%29.%5Cn%5CnFor%20example%2C%20if%20%24%20s_1%20%3D%20%5B1%2C%206%5D%2C%20s_2%20%3D%20%5B8%2C%2020%5D%2C%20s_3%20%3D%20%5B4%2C%2010%5D%2C%20s_4%20%3D%20%5B2%2C%2013%5D%2C%20s_5%20%3D%20%5B17%2C%2018%5D%20%24%20%2C%20then%20the%20resulting%20graph%20is%20the%20following%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1238F%5C%2F5ccebeabf5d6a202b692741f0fad2573638b500c.png%29A%20tree%20of%20size%20%24%20m%20%24%20is%20good%20if%20it%20is%20possible%20to%20choose%20%24%20m%20%24%20one-dimensional%20segments%20so%20that%20the%20graph%20built%20on%20these%20segments%20coincides%20with%20this%20tree.%5Cn%5CnYou%20are%20given%20a%20tree%2C%20you%20have%20to%20find%20its%20good%20subtree%20with%20maximum%20possible%20size.%20Recall%20that%20a%20subtree%20is%20a%20connected%20subgraph%20of%20a%20tree.%5Cn%5CnNote%20that%20you%20have%20to%20answer%20%24%20q%20%24%20independent%20queries.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%2015%20%5C%5Ccdot%2010%5E4%20%24%20%29%20%5Cu2014%20the%20number%20of%20the%20queries.%5Cn%5CnThe%20first%20line%20of%20each%20query%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%203%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20tree.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20-%201%20%24%20lines%20contains%20two%20integers%20%24%20x%20%24%20and%20%24%20y%20%24%20%28%20%24%201%20%5C%5Cle%20x%2C%20y%20%5C%5Cle%20n%20%24%20%29%20denoting%20an%20edge%20between%20vertices%20%24%20x%20%24%20and%20%24%20y%20%24%20.%20It%20is%20guaranteed%20that%20the%20given%20graph%20is%20a%20tree.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20sum%20of%20all%20%24%20n%20%24%20does%20not%20exceed%20%24%203%20%5C%5Ccdot%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20query%20print%20one%20integer%20%5Cu2014%20the%20maximum%20size%20of%20a%20good%20subtree%20of%20the%20given%20tree.%22%2C%22samples%22%3A%5B%5B%22%5Cn1%5Cn10%5Cn1%202%5Cn1%203%5Cn1%204%5Cn2%205%5Cn2%206%5Cn3%207%5Cn3%208%5Cn4%209%5Cn4%2010%5Cn%22%2C%22%5Cn8%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20query%20there%20is%20a%20good%20subtree%20of%20size%20%24%208%20%24%20.%20The%20vertices%20belonging%20to%20this%20subtree%20are%20%24%20%7B9%2C%204%2C%2010%2C%202%2C%205%2C%201%2C%206%2C%203%7D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1238%5C%2FF%22%2C%22id%22%3A%221238F%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%2A%2A%5Cr%5Cn%5Cr%5Cn%24%5C%5Crm%20Soulist%24%5Cu7ed9%5Cu4e86%5Cu60a8%20%24n%24%20%5Cu6761%5Cu7ebf%5Cu6bb5%5Cuff0c%5Cu6bcf%5Cu6761%5Cu7ebf%5Cu6bb5%5Cu7528%5Cu4e24%5Cu4e2a%5Cu7aef%5Cu70b9%5Cu6765%5Cu63cf%5Cu8ff0%20%24%5B~l_i%2Cr_i~%5D~%24%20%5Cuff0c%5Cu6839%5Cu636e%5Cu8fd9%5Cu4e9b%5Cu7ebf%5Cu6bb5%5Cu53ef%5Cu4ee5%5Cu6784%5Cu5efa%5Cu4e00%5Cu5f20%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu5176%5Cu4e2d%5Cu8282%5Cu70b9%20%24i%24%20%5Cu4e0e%5Cu8282%5Cu70b9%20%24i%2B1%24%20%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu7ebf%5Cu6bb5%20%24i%24%20%5Cu4e0e%5Cu7ebf%5Cu6bb5%20%24i%20%2B1%24%20%5Cu76f8%5Cu4ea4%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu5927%5Cu5c0f%5Cu4e3a%24m%24%5Cu7684%5Cu6811%5Cu662f%5C%22%5Cu597d%5C%22%5Cu7684%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu60a8%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu7ed9%5Cu5b9a%5Cu7684%20%24n%24%20%5Cu6761%5Cu7ebf%5Cu6bb5%5Cu4e2d%5Cu9009%5Cu51fa%20%24m%24%20%5Cu6761%5Cu4f7f%5Cu5f97%5Cu8fd9%20%24m%24%20%5Cu6761%5Cu7ebf%5Cu6bb5%5Cu6240%5Cu6784%5Cu6210%5Cu7684%5Cu56fe%5Cu4e0e%5Cu6b64%5Cu6811%5Cu540c%5Cu6784%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu60a8%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu5e0c%5Cu671b%5Cu60a8%5Cu6c42%5Cu51fa%5Cu5176%5Cu6700%5Cu5927%5Cu7684%5C%22%5Cu597d%5C%22%5Cu7684%5Cu5b50%5Cu6811%5Cr%5Cn%5Cr%5Cn%5Cu60a8%5Cu9700%5Cu8981%5Cu56de%5Cu7b54%24q%24%5Cu7ec4%5Cu8be2%5Cu95ee%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu8868%5Cu793a%24q%281%5C%5Cle%20q%5C%5Cle%201.5%2A10%5E5%29%24%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24q%24%5Cu7ec4%5Cu8be2%5Cu95ee%5Cuff0c%5Cu6bcf%5Cu7ec4%5Cu683c%5Cu5f0f%5Cu5982%5Cu4e0b%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%281%5C%5Cle%20n%5C%5Cle%203%20%2A%2010%5E5%29%24%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24n-1%24%5Cu884c%5Cu6bcf%5Cu884c%5Cu63cf%5Cu8ff0%5Cu6b64%5Cu6811%5Cu7684%5Cu4e00%5Cu6761%5Cu8fb9%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%24%5C%5Csum%20n%20%5C%5Cle%203%20%2A%2010%5E5%24%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu8f93%5Cu51fa%5Cu6700%5Cu5927%5Cu7684%5C%22%5Cu597d%5C%22%5Cu5b50%5Cu6811%5Cu7684%5Cu5927%5Cu5c0f%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A155%2C%22totalAccepted%22%3A62%2C%22pid%22%3A%22CF1238F%22%2C%22title%22%3A%22The%20Maximum%20Subtree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A163397%2C%22title%22%3A%22%5Cu8fd9%5Cu91cc%5Cu95ee%5Cu4e00%5Cu4e2a%5Cu5173%5Cu4e8e%5Cu65f6%5Cu95f4%5Cu590d%5Cu6742%5Cu5ea6%5Cu7684%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A41532%2C%22name%22%3A%22CF1238F%20The%20Maximum%20Subtree%22%2C%22slug%22%3A%22CF1238F%22%7D%7D%2C%7B%22id%22%3A153753%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A41532%2C%22name%22%3A%22CF1238F%20The%20Maximum%20Subtree%22%2C%22slug%22%3A%22CF1238F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3174%22%2C%22title%22%3A%22%5BHAOI2009%5D%5Cu6bdb%5Cu6bdb%5Cu866b%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1060E%22%2C%22title%22%3A%22Sergey%20and%20Subway%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1188A1%22%2C%22title%22%3A%22Add%20on%20a%20Tree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P5589%22%2C%22title%22%3A%22%5Cu5c0f%5Cu732a%5Cu4f69%5Cu5947%5Cu73a9%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1238E%22%2C%22title%22%3A%22Keyboard%20Purchase%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22The%20Maximum%20Subtree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>The Maximum Subtree</h1>
+<h2>题意翻译</h2>
+<div>**题目描述**
+$\rm Soulist$给了您 $n$ 条线段，每条线段用两个端点来描述 $[~l_i,r_i~]~$ ，根据这些线段可以构建一张无向图，其中节点 $i$ 与节点 $i+1$ 有一条边当且仅当线段 $i$ 与线段 $i +1$ 相交
+一个大小为$m$的树是"好"的，当且仅当您可以从给定的 $n$ 条线段中选出 $m$ 条使得这 $m$ 条线段所构成的图与此树同构
+现在给定您一棵树，希望您求出其最大的"好"的子树
+您需要回答$q$组询问
+**输入格式**
+第一行一个正整数表示$q(1\le q\le 1.5*10^5)$
+接下来$q$组询问，每组格式如下：
+第一行输出一个正整数$n(1\le n\le 3 * 10^5)$
+接下来$n-1$行每行描述此树的一条边
+保证$\sum n \le 3 * 10^5$
+**输出格式**
+对于每组数据输出最大的"好"子树的大小
+</div>
+<h2>题目描述</h2>
+<div>Assume that you have $ k $ one-dimensional segments $ s_1, s_2, \dots s_k $ (each segment is denoted by two integers — its endpoints). Then you can build the following graph on these segments. The graph consists of $ k $ vertexes, and there is an edge between the $ i $ -th and the $ j $ -th vertexes ( $ i \neq j $ ) if and only if the segments $ s_i $ and $ s_j $ intersect (there exists at least one point that belongs to both of them).
+For example, if $ s_1 = [1, 6], s_2 = [8, 20], s_3 = [4, 10], s_4 = [2, 13], s_5 = [17, 18] $ , then the resulting graph is the following:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1238F/5ccebeabf5d6a202b692741f0fad2573638b500c.png)A tree of size $ m $ is good if it is possible to choose $ m $ one-dimensional segments so that the graph built on these segments coincides with this tree.
+You are given a tree, you have to find its good subtree with maximum possible size. Recall that a subtree is a connected subgraph of a tree.
+Note that you have to answer $ q $ independent queries.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ q $ ( $ 1 \le q \le 15 \cdot 10^4 $ ) — the number of the queries.
+The first line of each query contains one integer $ n $ ( $ 2 \le n \le 3 \cdot 10^5 $ ) — the number of vertices in the tree.
+Each of the next $ n - 1 $ lines contains two integers $ x $ and $ y $ ( $ 1 \le x, y \le n $ ) denoting an edge between vertices $ x $ and $ y $ . It is guaranteed that the given graph is a tree.
+It is guaranteed that the sum of all $ n $ does not exceed $ 3 \cdot 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query print one integer — the maximum size of a good subtree of the given tree.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+1
+10
+1 2
+1 3
+1 4
+2 5
+2 6
+3 7
+3 8
+4 9
+4 10
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+8
+</code></pre>
+<h2>说明</h2>
+<div>In the first query there is a good subtree of size $ 8 $ . The vertices belonging to this subtree are $ {9, 4, 10, 2, 5, 1, 6, 3} $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

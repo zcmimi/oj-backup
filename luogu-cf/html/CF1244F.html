@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Chips - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403630:svd4t1wBDZbwnz2iBaySSjzYW4slNV3vVhlc8ADy27c=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20%24%20n%20%24%20chips%20arranged%20in%20a%20circle%2C%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%5Cn%5CnInitially%20each%20chip%20has%20black%20or%20white%20color.%20Then%20%24%20k%20%24%20iterations%20occur.%20During%20each%20iteration%20the%20chips%20change%20their%20colors%20according%20to%20the%20following%20rules.%20For%20each%20chip%20%24%20i%20%24%20%2C%20three%20chips%20are%20considered%3A%20chip%20%24%20i%20%24%20itself%20and%20two%20its%20neighbours.%20If%20the%20number%20of%20white%20chips%20among%20these%20three%20is%20greater%20than%20the%20number%20of%20black%20chips%20among%20these%20three%20chips%2C%20then%20the%20chip%20%24%20i%20%24%20becomes%20white.%20Otherwise%2C%20the%20chip%20%24%20i%20%24%20becomes%20black.%5Cn%5CnNote%20that%20for%20each%20%24%20i%20%24%20from%20%24%202%20%24%20to%20%24%20%28n%20-%201%29%20%24%20two%20neighbouring%20chips%20have%20numbers%20%24%20%28i%20-%201%29%20%24%20and%20%24%20%28i%20%2B%201%29%20%24%20.%20The%20neighbours%20for%20the%20chip%20%24%20i%20%3D%201%20%24%20are%20%24%20n%20%24%20and%20%24%202%20%24%20.%20The%20neighbours%20of%20%24%20i%20%3D%20n%20%24%20are%20%24%20%28n%20-%201%29%20%24%20and%20%24%201%20%24%20.%5Cn%5CnThe%20following%20picture%20describes%20one%20iteration%20with%20%24%20n%20%3D%206%20%24%20.%20The%20chips%20%24%201%20%24%20%2C%20%24%203%20%24%20and%20%24%204%20%24%20are%20initially%20black%2C%20and%20the%20chips%20%24%202%20%24%20%2C%20%24%205%20%24%20and%20%24%206%20%24%20are%20white.%20After%20the%20iteration%20%24%202%20%24%20%2C%20%24%203%20%24%20and%20%24%204%20%24%20become%20black%2C%20and%20%24%201%20%24%20%2C%20%24%205%20%24%20and%20%24%206%20%24%20become%20white.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1244F%5C%2F954a54cba9c62be21723582b0f9fdfba14d8bb72.png%29Your%20task%20is%20to%20determine%20the%20color%20of%20each%20chip%20after%20%24%20k%20%24%20iterations.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%24%20%283%20%5C%5Cle%20n%20%5C%5Cle%20200%5C%5C%2C000%2C%201%20%5C%5Cle%20k%20%5C%5Cle%2010%5E%7B9%7D%29%20%24%20%5Cu2014%20the%20number%20of%20chips%20and%20the%20number%20of%20iterations%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20a%20string%20consisting%20of%20%24%20n%20%24%20characters%20%5C%22W%5C%22%20and%20%5C%22B%5C%22.%20If%20the%20%24%20i%20%24%20-th%20character%20is%20%5C%22W%5C%22%2C%20then%20the%20%24%20i%20%24%20-th%20chip%20is%20white%20initially.%20If%20the%20%24%20i%20%24%20-th%20character%20is%20%5C%22B%5C%22%2C%20then%20the%20%24%20i%20%24%20-th%20chip%20is%20black%20initially.%22%2C%22outputFormat%22%3A%22Print%20a%20string%20consisting%20of%20%24%20n%20%24%20characters%20%5C%22W%5C%22%20and%20%5C%22B%5C%22.%20If%20after%20%24%20k%20%24%20iterations%20the%20%24%20i%20%24%20-th%20chip%20is%20white%2C%20then%20the%20%24%20i%20%24%20-th%20character%20should%20be%20%5C%22W%5C%22.%20Otherwise%20the%20%24%20i%20%24%20-th%20character%20should%20be%20%5C%22B%5C%22.%22%2C%22samples%22%3A%5B%5B%22%5Cn6%201%5CnBWBBWW%5Cn%22%2C%22%5CnWBBBWW%5Cn%22%5D%2C%5B%22%5Cn7%203%5CnWBWBWBW%5Cn%22%2C%22%5CnWWWWWWW%5Cn%22%5D%2C%5B%22%5Cn6%204%5CnBWBWBW%5Cn%22%2C%22%5CnBWBWBW%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20example%20is%20described%20in%20the%20statement.%5Cn%5CnThe%20second%20example%3A%20%5C%22WBWBWBW%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22WWBWBWW%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22WWWBWWW%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22WWWWWWW%5C%22.%20So%20all%20chips%20become%20white.%5Cn%5CnThe%20third%20example%3A%20%5C%22BWBWBW%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22WBWBWB%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22BWBWBW%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22WBWBWB%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22BWBWBW%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1244%5C%2FF%22%2C%22id%22%3A%221244F%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu6709%24n%24%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu6392%5Cu6210%5Cu73af%5Cu72b6%5Cuff0c%5Cu6807%5Cu53f7%5Cu4e3a%241..n%24%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu5f00%5Cu59cb%5Cu6bcf%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu90fd%5Cu662f%5Cu9ed1%5Cu8272%5Cu6216%5Cu767d%5Cu8272%5Cu7684%5Cu3002%5Cu968f%5Cu540e%5Cu6709%24k%24%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu3002%5Cu64cd%5Cu4f5c%5Cu65f6%5Cuff0c%5Cu68cb%5Cu5b50%5Cu53d8%5Cu6362%5Cu7684%5Cu89c4%5Cu5219%5Cu5982%5Cu4e0b%5Cuff1a%5Cu6211%5Cu4eec%5Cu8003%5Cu8651%5Cu4e00%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu672c%5Cu8eab%5Cu4ee5%5Cu53ca%5Cu4e0e%5Cu5176%5Cu76f8%5Cu90bb%5Cu7684%5Cu4e24%5Cu4e2a%5Cu68cb%5Cu5b50%5Cuff08%5Cu51713%5Cu4e2a%5Cuff09%5Cuff0c%5Cu5982%5Cu679c%5Cu5176%5Cu4e2d%5Cu767d%5Cu5b50%5Cu5360%5Cu591a%5Cu6570%5Cuff0c%5Cu90a3%5Cu4e48%5Cu8fd9%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu5c31%5Cu53d8%5Cu6210%5Cu767d%5Cu5b50%5Cuff0c%5Cu5426%5Cu5219%5Cu8fd9%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu5c31%5Cu53d8%5Cu6210%5Cu9ed1%5Cu5b50%5Cu3002%5Cu6ce8%5Cu610f%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu68cb%5Cu5b50%5Cuff0c%5Cu5728%5Cu786e%5Cu5b9a%5Cu8981%5Cu53d8%5Cu6210%5Cu4ec0%5Cu4e48%5Cu989c%5Cu8272%5Cu4e4b%5Cu540e%5Cuff0c%5Cu5e76%5Cu4e0d%5Cu4f1a%5Cu7acb%5Cu5373%5Cu6539%5Cu53d8%5Cu989c%5Cu8272%5Cuff0c%5Cu800c%5Cu662f%5Cu7b49%5Cu5230%5Cu6240%5Cu6709%5Cu68cb%5Cu5b50%5Cu786e%5Cu5b9a%5Cu53d8%5Cu6210%5Cu4ec0%5Cu4e48%5Cu989c%5Cu8272%5Cu540e%5Cuff0c%5Cu6240%5Cu6709%5Cu68cb%5Cu5b50%5Cu624d%5Cu540c%5Cu65f6%5Cu53d8%5Cu6362%5Cu989c%5Cu8272%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu68cb%5Cu5b50%24i%24%5Cuff0c%5Cu4e0e%5Cu5176%5Cu76f8%5Cu90bb%5Cu7684%5Cu68cb%5Cu5b50%5Cu662f%24i-1%24%5Cu548c%24i%2B1%24%5Cu3002%5Cu7279%5Cu522b%5Cu5730%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu68cb%5Cu5b50%241%24%5Cuff0c%5Cu4e0e%5Cu5176%5Cu76f8%5Cu90bb%5Cu7684%5Cu68cb%5Cu5b50%5Cu662f%242%24%5Cu548c%24n%24%5Cuff1b%5Cu5bf9%5Cu4e8e%5Cu68cb%5Cu5b50%24n%24%5Cuff0c%5Cu4e0e%5Cu5176%5Cu76f8%5Cu90bb%5Cu7684%5Cu68cb%5Cu5b50%5Cu662f%241%24%5Cu548c%24n-1%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu56fe%5Cu662f%5Cu5728%24n%3D6%24%5Cu65f6%5Cu8fdb%5Cu884c%5Cu7684%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu3002%5Cr%5Cn%5Cr%5Cn%21%5B%5Cu56fe%5Cu50cf%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1244F%5C%2F954a54cba9c62be21723582b0f9fdfba14d8bb72.png%29%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%24n%24%5Cu548c%5Cu521d%5Cu59cb%5Cu65f6%5Cu6bcf%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu7684%5Cu989c%5Cu8272%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu6c42%5Cu51fa%5Cu5728%24k%24%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu540e%5Cu6bcf%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu7684%5Cu989c%5Cu8272%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24n%5C%5C%20%283%20%5C%5Cleq%20n%20%5C%5Cleq%202%5C%5Ccdot%2010%5E5%29%24%5Cu548c%24k%5C%5C%20%281%20%5C%5Cleq%20k%20%5C%5Cleq%2010%5E9%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu68cb%5Cu5b50%5Cu603b%5Cu6570%5Cu4e0e%5Cu64cd%5Cu4f5c%5Cu6b21%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cuff0c%5Cu4ec5%5Cu7531%5Cu5b57%5Cu7b26%24B%24%5Cu548c%24W%24%5Cu6784%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu5982%5Cu679c%5Cu7b2c%24i%24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu662f%24B%24%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2c%24i%24%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu4f4d%5Cu9ed1%5Cu8272%5Cuff0c%5Cu5426%5Cu5219%5Cu4e3a%5Cu767d%5Cu8272%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cuff0c%5Cu4ec5%5Cu7531%5Cu5b57%5Cu7b26%24B%24%5Cu548c%24W%24%5Cu6784%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu63cf%5Cu8ff0%5Cu64cd%5Cu4f5c%5Cu5b8c%5Cu6210%5Cu540e%5Cu6bcf%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu7684%5Cu989c%5Cu8272%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6ce8%5Cu610f%5Cu8f93%5Cu51fa%5Cu7684%5Cu987a%5Cu5e8f%5Cu8981%5Cu548c%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu4e2d%5Cu7684%5Cu5bf9%5Cu5e94%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu6837%5Cu4f8b%5Cu89e3%5Cu91ca%5Cr%5Cn%5Cr%5Cn1.%20%5Cu5c31%5Cu662f%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu4e2d%5Cu4e3e%5Cu7684%5Cu90a3%5Cu4e2a%5Cu4f8b%5Cu5b50%5Cr%5Cn%5Cr%5Cn2.%20%5C%22WBWBWBW%5C%22%20%24%5C%5Crightarrow%24%20%5C%22WWBWBWW%5C%22%20%24%5C%5Crightarrow%24%20%5C%22WWWBWWW%5C%22%20%24%5C%5Crightarrow%24%20%5C%22WWWWWWW%5C%22%5Cr%5Cn%5Cr%5Cn3.%20%5C%22BWBWBW%5C%22%20%24%5C%5Crightarrow%24%20%5C%22WBWBWB%5C%22%20%24%5C%5Crightarrow%24%20%5C%22BWBWBW%5C%22%20%24%5C%5Crightarrow%24%20%5C%22WBWBWB%5C%22%20%24%5C%5Crightarrow%24%20%5C%22BWBWBW%5C%22%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A70%2C%22totalAccepted%22%3A45%2C%22pid%22%3A%22CF1244F%22%2C%22title%22%3A%22Chips%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1244G%22%2C%22title%22%3A%22Running%20in%20Pairs%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1244E%22%2C%22title%22%3A%22Minimizing%20Difference%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1237B%22%2C%22title%22%3A%22Balanced%20Tunnel%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1237A%22%2C%22title%22%3A%22Balanced%20Rating%20Changes%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1248A%22%2C%22title%22%3A%22Integer%20Points%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Chips%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Chips</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述
+有$n$个棋子排成环状，标号为$1..n$
+一开始每个棋子都是黑色或白色的。随后有$k$次操作。操作时，棋子变换的规则如下：我们考虑一个棋子本身以及与其相邻的两个棋子（共3个），如果其中白子占多数，那么这个棋子就变成白子，否则这个棋子就变成黑子。注意，对于每个棋子，在确定要变成什么颜色之后，并不会立即改变颜色，而是等到所有棋子确定变成什么颜色后，所有棋子才同时变换颜色。
+对于一个棋子$i$，与其相邻的棋子是$i-1$和$i+1$。特别地，对于棋子$1$，与其相邻的棋子是$2$和$n$；对于棋子$n$，与其相邻的棋子是$1$和$n-1$。
+如图是在$n=6$时进行的一次操作。
+![图像](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1244F/954a54cba9c62be21723582b0f9fdfba14d8bb72.png)
+给你$n$和初始时每个棋子的颜色，你需要求出在$k$次操作后每个棋子的颜色。
+### 输入格式
+第一行两个整数$n\ (3 \leq n \leq 2\cdot 10^5)$和$k\ (1 \leq k \leq 10^9)$，表示棋子总数与操作次数。
+第二行是一个长度为$n$的，仅由字符$B$和$W$构成的字符串。如果第$i$个字符是$B$，表示第$i$个棋子位黑色，否则为白色。
+### 输出格式
+一行，长度为$n$的，仅由字符$B$和$W$构成的字符串，描述操作完成后每个棋子的颜色。
+注意输出的顺序要和输入数据中的对应。
+### 样例解释
+1. 就是题目描述中举的那个例子
+2. "WBWBWBW" $\rightarrow$ "WWBWBWW" $\rightarrow$ "WWWBWWW" $\rightarrow$ "WWWWWWW"
+3. "BWBWBW" $\rightarrow$ "WBWBWB" $\rightarrow$ "BWBWBW" $\rightarrow$ "WBWBWB" $\rightarrow$ "BWBWBW"
+</div>
+<h2>题目描述</h2>
+<div>There are $ n $ chips arranged in a circle, numbered from $ 1 $ to $ n $ .
+Initially each chip has black or white color. Then $ k $ iterations occur. During each iteration the chips change their colors according to the following rules. For each chip $ i $ , three chips are considered: chip $ i $ itself and two its neighbours. If the number of white chips among these three is greater than the number of black chips among these three chips, then the chip $ i $ becomes white. Otherwise, the chip $ i $ becomes black.
+Note that for each $ i $ from $ 2 $ to $ (n - 1) $ two neighbouring chips have numbers $ (i - 1) $ and $ (i + 1) $ . The neighbours for the chip $ i = 1 $ are $ n $ and $ 2 $ . The neighbours of $ i = n $ are $ (n - 1) $ and $ 1 $ .
+The following picture describes one iteration with $ n = 6 $ . The chips $ 1 $ , $ 3 $ and $ 4 $ are initially black, and the chips $ 2 $ , $ 5 $ and $ 6 $ are white. After the iteration $ 2 $ , $ 3 $ and $ 4 $ become black, and $ 1 $ , $ 5 $ and $ 6 $ become white.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1244F/954a54cba9c62be21723582b0f9fdfba14d8bb72.png)Your task is to determine the color of each chip after $ k $ iterations.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ $ (3 \le n \le 200\,000, 1 \le k \le 10^{9}) $ — the number of chips and the number of iterations, respectively.
+The second line contains a string consisting of $ n $ characters "W" and "B". If the $ i $ -th character is "W", then the $ i $ -th chip is white initially. If the $ i $ -th character is "B", then the $ i $ -th chip is black initially.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a string consisting of $ n $ characters "W" and "B". If after $ k $ iterations the $ i $ -th chip is white, then the $ i $ -th character should be "W". Otherwise the $ i $ -th character should be "B".</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+6 1
+BWBBWW
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+WBBBWW
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+7 3
+WBWBWBW
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+WWWWWWW
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+6 4
+BWBWBW
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+BWBWBW
+</code></pre>
+<h2>说明</h2>
+<div>The first example is described in the statement.
+The second example: "WBWBWBW" $ \rightarrow $ "WWBWBWW" $ \rightarrow $ "WWWBWWW" $ \rightarrow $ "WWWWWWW". So all chips become white.
+The third example: "BWBWBW" $ \rightarrow $ "WBWBWB" $ \rightarrow $ "BWBWBW" $ \rightarrow $ "WBWBWB" $ \rightarrow $ "BWBWBW".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

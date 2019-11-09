@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Wrong Answer - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401993:qgJ7FT7lpXbgaJUoBFpoCq/rw9HIi5cngWNe1lz9YEM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Consider%20the%20following%20problem%3A%20given%20an%20array%20%24%20a%20%24%20containing%20%24%20n%20%24%20integers%20%28indexed%20from%20%24%200%20%24%20to%20%24%20n-1%20%24%20%29%2C%20find%20%24%20%5C%5Cmax%5C%5Climits_%7B0%20%5C%5Cleq%20l%20%5C%5Cleq%20r%20%5C%5Cleq%20n-1%7D%20%5C%5Csum%5C%5Climits_%7Bl%20%5C%5Cleq%20i%20%5C%5Cleq%20r%7D%20%28r-l%2B1%29%20%5C%5Ccdot%20a_i%20%24%20.%20In%20this%20problem%2C%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%202%5C%5C%2C000%20%24%20and%20%24%20%7Ca_i%7C%20%5C%5Cleq%2010%5E6%20%24%20.%5Cn%5CnIn%20an%20attempt%20to%20solve%20the%20problem%20described%2C%20Alice%20quickly%20came%20up%20with%20a%20blazing-fast%20greedy%20algorithm%20and%20coded%20it.%20Her%20implementation%20in%20pseudocode%20is%20as%20follows%3A%5Cn%5Cn%60%60%60%5Cn%3Cbr%3E%3C%5C%2Fbr%3E%3Cspan%20class%3D%5C%22tex-font-style-bf%5C%22%3Efunction%3C%5C%2Fspan%3E%20find_answer%28n%2C%20a%29%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%23%20Assumes%20n%20is%20an%20integer%20between%201%20and%202000%2C%20inclusive%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%23%20Assumes%20a%20is%20a%20list%20containing%20n%20integers%3A%20a%5B0%5D%2C%20a%5B1%5D%2C%20...%2C%20a%5Bn-1%5D%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20res%20%3D%200%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20cur%20%3D%200%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20k%20%3D%20-1%3Cbr%3E%3C%5C%2Fbr%3E%3Cspan%20class%3D%5C%22tex-font-style-bf%5C%22%3Efor%3C%5C%2Fspan%3E%20i%20%3D%200%20%3Cspan%20class%3D%5C%22tex-font-style-bf%5C%22%3Eto%3C%5C%2Fspan%3E%20i%20%3D%20n-1%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20cur%20%3D%20cur%20%2B%20a%5Bi%5D%3Cbr%3E%3C%5C%2Fbr%3E%3Cspan%20class%3D%5C%22tex-font-style-bf%5C%22%3Eif%3C%5C%2Fspan%3E%20cur%20%3C%200%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20%20%20%20%20cur%20%3D%200%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20%20%20%20%20k%20%3D%20i%3Cbr%3E%3C%5C%2Fbr%3E%20%20%20%20%20%20%20%20res%20%3D%20max%28res%2C%20%28i-k%29%2Acur%29%3Cbr%3E%3C%5C%2Fbr%3E%3Cspan%20class%3D%5C%22tex-font-style-bf%5C%22%3Ereturn%3C%5C%2Fspan%3E%20res%3Cbr%3E%3C%5C%2Fbr%3E%3Cbr%3E%3C%5C%2Fbr%3E%5Cn%60%60%60%5Cn%5CnAlso%2C%20as%20you%20can%20see%2C%20Alice%27s%20idea%20is%20not%20entirely%20correct.%20For%20example%2C%20suppose%20%24%20n%20%3D%204%20%24%20and%20%24%20a%20%3D%20%5B6%2C%20-8%2C%207%2C%20-42%5D%20%24%20.%20Then%2C%20find%5C%5C_answer%28n%2C%20a%29%20would%20return%20%24%207%20%24%20%2C%20but%20the%20correct%20answer%20is%20%24%203%20%5C%5Ccdot%20%286-8%2B7%29%20%3D%2015%20%24%20.%5Cn%5CnYou%20told%20Alice%20that%20her%20solution%20is%20incorrect%2C%20but%20she%20did%20not%20believe%20what%20you%20said.%5Cn%5CnGiven%20an%20integer%20%24%20k%20%24%20%2C%20you%20are%20to%20find%20any%20sequence%20%24%20a%20%24%20of%20%24%20n%20%24%20integers%20such%20that%20the%20correct%20answer%20and%20the%20answer%20produced%20by%20Alice%27s%20algorithm%20differ%20by%20exactly%20%24%20k%20%24%20.%20Note%20that%20although%20the%20choice%20of%20%24%20n%20%24%20and%20the%20content%20of%20the%20sequence%20is%20yours%2C%20you%20must%20still%20follow%20the%20constraints%20earlier%20given%3A%20that%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%202%5C%5C%2C000%20%24%20and%20that%20the%20absolute%20value%20of%20each%20element%20does%20not%20exceed%20%24%2010%5E6%20%24%20.%20If%20there%20is%20no%20such%20sequence%2C%20determine%20so.%22%2C%22inputFormat%22%3A%22The%20first%20and%20only%20line%20contains%20one%20integer%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cleq%20k%20%5C%5Cleq%2010%5E9%20%24%20%29.%22%2C%22outputFormat%22%3A%22If%20there%20is%20no%20sought%20sequence%2C%20print%20%5C%22-1%5C%22.%5Cn%5CnOtherwise%2C%20in%20the%20first%20line%2C%20print%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%202%5C%5C%2C000%20%24%20%29%2C%20denoting%20the%20number%20of%20elements%20in%20the%20sequence.%5Cn%5CnThen%2C%20in%20the%20second%20line%2C%20print%20%24%20n%20%24%20space-separated%20integers%3A%20%24%20a_0%2C%20a_1%2C%20%5C%5Cldots%2C%20a_%7Bn-1%7D%20%24%20%28%20%24%20%7Ca_i%7C%20%5C%5Cleq%2010%5E6%20%24%20%29.%22%2C%22samples%22%3A%5B%5B%22%5Cn8%5Cn%22%2C%22%5Cn4%5Cn6%20-8%207%20-42%5Cn%22%5D%2C%5B%22%5Cn612%5Cn%22%2C%22%5Cn7%5Cn30%20-12%20-99%20123%20-2%20245%20-300%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20sample%20corresponds%20to%20the%20example%20given%20in%20the%20problem%20statement.%5Cn%5CnIn%20the%20second%20sample%2C%20one%20answer%20is%20%24%20n%20%3D%207%20%24%20with%20%24%20a%20%3D%20%5B30%2C%20-12%2C%20-99%2C%20123%2C%20-2%2C%20245%2C%20-300%5D%20%24%20%2C%20in%20which%20case%20find%5C%5C_answer%28n%2C%20a%29%20returns%20%24%201098%20%24%20%2C%20while%20the%20correct%20answer%20is%20%24%201710%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1129%5C%2FB%22%2C%22id%22%3A%221129B%22%7D%2C%22translation%22%3A%22Alice%5Cu505a%5Cu5230%5Cu4e86%5Cu8fd9%5Cu6837%5Cu4e00%5Cu9053%5Cu9898%5Cuff1a%5Cr%5Cn%5Cr%5Cn%3E%20%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%24a%24%5Cuff0c%5Cu6709%24n%24%5Cu4e2a%5Cu5143%5Cu7d20%5Cuff0c%5Cu7f16%5Cu53f7%5Cu4ece%240%24%5Cu5230%24n-1%24%5Cu3002%5Cu6c42%24%5C%5Cmax%5C%5Climits_%7B0%20%5C%5Cleq%20l%20%5C%5Cleq%20r%20%5C%5Cleq%20n-1%7D%20%5C%5Csum%5C%5Climits_%7Bl%20%5C%5Cleq%20i%20%5C%5Cleq%20r%7D%20%28r-l%2B1%29%20%5C%5Ccdot%20a_i%24%5Cu3002%5Cr%5Cn%3E%5Cr%5Cn%3E%20%24%7Ca_i%7C%20%5C%5Cleq%2010%5E6%2Cn%20%5C%5Cleq%202000%24%5Cr%5Cn%5Cr%5CnAlice%5Cu89c9%5Cu5f97%5Cu8fd9%5Cu9898%5Cu592a%5Cu6c34%5Cu4e86%5Cuff0c%5Cu5f88%5Cu5feb%5Cu5c31%5Cu7ed9%5Cu51fa%5Cu4e86%5Cu89e3%5Cu6cd5%5Cuff1a%5Cr%5Cn%5Cr%5Cn%60%60%60%5Cr%5Cnfunction%20find_answer%28n%2C%20a%29%5Cr%5Cn%20%20%20%20%23%20Assumes%20n%20is%20an%20integer%20between%201%20and%202000%2C%20inclusive%5Cr%5Cn%20%20%20%20%23%20Assumes%20a%20is%20a%20list%20containing%20n%20integers%3A%20a%5B0%5D%2C%20a%5B1%5D%2C%20...%2C%20a%5Bn-1%5D%5Cr%5Cn%20%20%20%20res%20%3D%200%5Cr%5Cn%20%20%20%20cur%20%3D%200%5Cr%5Cn%20%20%20%20k%20%3D%20-1%5Cr%5Cn%20%20%20%20for%20i%20%3D%200%20to%20i%20%3D%20n-1%5Cr%5Cn%20%20%20%20%20%20%20%20cur%20%3D%20cur%20%2B%20a%5Bi%5D%5Cr%5Cn%20%20%20%20%20%20%20%20if%20cur%20%3C%200%5Cr%5Cn%20%20%20%20%20%20%20%20%20%20%20%20cur%20%3D%200%5Cr%5Cn%20%20%20%20%20%20%20%20%20%20%20%20k%20%3D%20i%5Cr%5Cn%20%20%20%20%20%20%20%20res%20%3D%20max%28res%2C%20%28i-k%29%2Acur%29%5Cr%5Cn%20%20%20%20return%20res%5Cr%5Cn%60%60%60%5Cr%5Cn%5Cr%5Cn%5Cu806a%5Cu660e%5Cu7684%5Cu4f60%5Cu4e00%5Cu5b9a%5Cu53d1%5Cu73b0%5Cu4e86%5Cuff0cAlice%5Cu7684%5Cu89e3%5Cu6cd5%5Cu662f%5Cu9519%5Cu8bef%5Cu7684%5Cu3002%5Cu4f8b%5Cu5982%5Cu5bf9%5Cu4e8e%5Cu5e8f%5Cu5217%24a%20%3D%20%5B6%2C%20-8%2C%207%2C%20-42%5D%24%5Cuff0cAlice%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu5f97%5Cu51fa%5Cu7684%5Cu7ed3%5Cu679c%5Cu662f%247%24%5Cuff0c%5Cu800c%5Cu6b63%5Cu786e%5Cu7b54%5Cu6848%5Cu5e94%5Cu8be5%5Cu662f%243%20%5C%5Ccdot%20%286-8%2B7%29%20%3D%2015%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e8e%5Cu662f%5Cu4f60%5Cu51b3%5Cu5b9aHACK%5Cu6389Alice%5Cu7684%5Cu89e3%5Cu6cd5%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8bf7%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu6b63%5Cu786e%5Cu7b54%5Cu6848-Alice%5Cu7684%5Cu7b54%5Cu6848%3D%24k%24%5Cuff0c%5Cu4f60%5Cu7684%5Cu6570%5Cu636e%5Cu5fc5%5Cu987b%5Cu6ee1%5Cu8db3%24n%20%5C%5Cleq%202000%2C%7Ca_i%7C%20%5C%5Cleq%2010%5E6%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%24k%20%5C%5Cleq%2010%5E9%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A75%2C%22totalAccepted%22%3A46%2C%22pid%22%3A%22CF1129B%22%2C%22title%22%3A%22Wrong%20Answer%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1131F%22%2C%22title%22%3A%22Asya%20And%20Kittens%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1131D%22%2C%22title%22%3A%22Gourmet%20choice%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1129C%22%2C%22title%22%3A%22Morse%20Code%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1114F%22%2C%22title%22%3A%22Please%2C%20another%20Queries%20on%20Array%3F%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1239A%22%2C%22title%22%3A%22Ivan%20the%20Fool%20and%20the%20Probability%20Theory%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Wrong%20Answer%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Wrong Answer</h1>
+<h2>题意翻译</h2>
+<div>Alice做到了这样一道题：
+> 给定一个序列$a$，有$n$个元素，编号从$0$到$n-1$。求$\max\limits_{0 \leq l \leq r \leq n-1} \sum\limits_{l \leq i \leq r} (r-l+1) \cdot a_i$。
+>
+> $|a_i| \leq 10^6,n \leq 2000$
+Alice觉得这题太水了，很快就给出了解法：
+```
+function find_answer(n, a)
+# Assumes n is an integer between 1 and 2000, inclusive
+# Assumes a is a list containing n integers: a[0], a[1], ..., a[n-1]
+res = 0
+cur = 0
+k = -1
+for i = 0 to i = n-1
+cur = cur + a[i]
+if cur < 0
+cur = 0
+k = i
+res = max(res, (i-k)*cur)
+return res
+```
+聪明的你一定发现了，Alice的解法是错误的。例如对于序列$a = [6, -8, 7, -42]$，Alice的程序得出的结果是$7$，而正确答案应该是$3 \cdot (6-8+7) = 15$。
+于是你决定HACK掉Alice的解法。
+请给出一组数据，使得正确答案-Alice的答案=$k$，你的数据必须满足$n \leq 2000,|a_i| \leq 10^6$。
+$k \leq 10^9$</div>
+<h2>题目描述</h2>
+<div>Consider the following problem: given an array $ a $ containing $ n $ integers (indexed from $ 0 $ to $ n-1 $ ), find $ \max\limits_{0 \leq l \leq r \leq n-1} \sum\limits_{l \leq i \leq r} (r-l+1) \cdot a_i $ . In this problem, $ 1 \leq n \leq 2\,000 $ and $ |a_i| \leq 10^6 $ .
+In an attempt to solve the problem described, Alice quickly came up with a blazing-fast greedy algorithm and coded it. Her implementation in pseudocode is as follows:
+```
+<br></br><span class="tex-font-style-bf">function</span> find_answer(n, a)<br></br> # Assumes n is an integer between 1 and 2000, inclusive<br></br> # Assumes a is a list containing n integers: a[0], a[1], ..., a[n-1]<br></br> res = 0<br></br> cur = 0<br></br> k = -1<br></br><span class="tex-font-style-bf">for</span> i = 0 <span class="tex-font-style-bf">to</span> i = n-1<br></br> cur = cur + a[i]<br></br><span class="tex-font-style-bf">if</span> cur < 0<br></br> cur = 0<br></br> k = i<br></br> res = max(res, (i-k)*cur)<br></br><span class="tex-font-style-bf">return</span> res<br></br><br></br>
+```
+Also, as you can see, Alice's idea is not entirely correct. For example, suppose $ n = 4 $ and $ a = [6, -8, 7, -42] $ . Then, find\_answer(n, a) would return $ 7 $ , but the correct answer is $ 3 \cdot (6-8+7) = 15 $ .
+You told Alice that her solution is incorrect, but she did not believe what you said.
+Given an integer $ k $ , you are to find any sequence $ a $ of $ n $ integers such that the correct answer and the answer produced by Alice's algorithm differ by exactly $ k $ . Note that although the choice of $ n $ and the content of the sequence is yours, you must still follow the constraints earlier given: that $ 1 \leq n \leq 2\,000 $ and that the absolute value of each element does not exceed $ 10^6 $ . If there is no such sequence, determine so.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first and only line contains one integer $ k $ ( $ 1 \leq k \leq 10^9 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>If there is no sought sequence, print "-1".
+Otherwise, in the first line, print one integer $ n $ ( $ 1 \leq n \leq 2\,000 $ ), denoting the number of elements in the sequence.
+Then, in the second line, print $ n $ space-separated integers: $ a_0, a_1, \ldots, a_{n-1} $ ( $ |a_i| \leq 10^6 $ ).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+8
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+4
+6 -8 7 -42
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+612
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+7
+30 -12 -99 123 -2 245 -300
+</code></pre>
+<h2>说明</h2>
+<div>The first sample corresponds to the example given in the problem statement.
+In the second sample, one answer is $ n = 7 $ with $ a = [30, -12, -99, 123, -2, 245, -300] $ , in which case find\_answer(n, a) returns $ 1098 $ , while the correct answer is $ 1710 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Game with String - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399524:hVXrE0gAkEWUCoki783nCTKF6a0C+uzbi0tWyx6+o6U=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Vasya%20and%20Kolya%20play%20a%20game%20with%20a%20string%2C%20using%20the%20following%20rules.%20Initially%2C%20Kolya%20creates%20a%20string%20%24%20s%20%24%20%2C%20consisting%20of%20small%20English%20letters%2C%20and%20uniformly%20at%20random%20chooses%20an%20integer%20%24%20k%20%24%20from%20a%20segment%20%24%20%5B0%2Clen%28s%29-1%5D%20%24%20.%20He%20tells%20Vasya%20this%20string%20%24%20s%20%24%20%2C%20and%20then%20shifts%20it%20%24%20k%20%24%20letters%20to%20the%20left%2C%20i.%20e.%20creates%20a%20new%20string%20%24%20t%3Ds_%7Bk%2B1%7Ds_%7Bk%2B2%7D...%5C%5C%20s_%7Bn%7Ds_%7B1%7Ds_%7B2%7D...%5C%5C%20s_%7Bk%7D%20%24%20.%20Vasya%20does%20not%20know%20the%20integer%20%24%20k%20%24%20nor%20the%20string%20%24%20t%20%24%20%2C%20but%20he%20wants%20to%20guess%20the%20integer%20%24%20k%20%24%20.%20To%20do%20this%2C%20he%20asks%20Kolya%20to%20tell%20him%20the%20first%20letter%20of%20the%20new%20string%2C%20and%20then%2C%20after%20he%20sees%20it%2C%20open%20one%20more%20letter%20on%20some%20position%2C%20which%20Vasya%20can%20choose.%5Cn%5CnVasya%20understands%2C%20that%20he%20can%27t%20guarantee%20that%20he%20will%20win%2C%20but%20he%20wants%20to%20know%20the%20probability%20of%20winning%2C%20if%20he%20plays%20optimally.%20He%20wants%20you%20to%20compute%20this%20probability.%5Cn%5CnNote%20that%20Vasya%20wants%20to%20know%20the%20value%20of%20%24%20k%20%24%20uniquely%2C%20it%20means%2C%20that%20if%20there%20are%20at%20least%20two%20cyclic%20shifts%20of%20%24%20s%20%24%20that%20fit%20the%20information%20Vasya%20knowns%2C%20Vasya%20loses.%20Of%20course%2C%20at%20any%20moment%20of%20the%20game%20Vasya%20wants%20to%20maximize%20the%20probability%20of%20his%20win.%22%2C%22inputFormat%22%3A%22The%20only%20string%20contains%20the%20string%20%24%20s%20%24%20of%20length%20%24%20l%20%24%20%24%20%283%3C%3Dl%3C%3D5000%29%20%24%20%2C%20consisting%20of%20small%20English%20letters%20only.%22%2C%22outputFormat%22%3A%22Print%20the%20only%20number%20%5Cu2014%20the%20answer%20for%20the%20problem.%20You%20answer%20is%20considered%20correct%2C%20if%20its%20absolute%20or%20relative%20error%20does%20not%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%5Cn%5CnFormally%2C%20let%20your%20answer%20be%20%24%20a%20%24%20%2C%20and%20the%20jury%27s%20answer%20be%20%24%20b%20%24%20.%20Your%20answer%20is%20considered%20correct%20if%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF930B%5C%2Fff5435bf79eb188c9b35e530805de6ccf12620f2.png%29%22%2C%22samples%22%3A%5B%5B%22technocup%5Cn%22%2C%221.000000000000000%5Cn%22%5D%2C%5B%22tictictactac%5Cn%22%2C%220.333333333333333%5Cn%22%5D%2C%5B%22bbaabaabbb%5Cn%22%2C%220.100000000000000%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20Vasya%20can%20always%20open%20the%20second%20letter%20after%20opening%20the%20first%20letter%2C%20and%20the%20cyclic%20shift%20is%20always%20determined%20uniquely.%5Cn%5CnIn%20the%20second%20example%20if%20the%20first%20opened%20letter%20of%20%24%20t%20%24%20is%20%5C%22t%5C%22%20or%20%5C%22c%5C%22%2C%20then%20Vasya%20can%27t%20guess%20the%20shift%20by%20opening%20only%20one%20other%20letter.%20On%20the%20other%20hand%2C%20if%20the%20first%20letter%20is%20%5C%22i%5C%22%20or%20%5C%22a%5C%22%2C%20then%20he%20can%20open%20the%20fourth%20letter%20and%20determine%20the%20shift%20uniquely.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F930%5C%2FB%22%2C%22id%22%3A%22930B%22%7D%2C%22translation%22%3A%22Vasya%5Cu548cKolya%5Cu6839%5Cu636e%5Cu4ee5%5Cu4e0b%5Cu89c4%5Cu5219%5Cu7528%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu73a9%5Cu6e38%5Cu620f%5Cu3002Kolya%5Cu521b%5Cu5efa%5Cu4e00%5Cu4e2a%5Cu7531%5Cu5c0f%5Cu5199%5Cu82f1%5Cu6587%5Cu5b57%5Cu6bcd%5Cu6784%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%20s%20%5Cuff0c%5Cu5e76%5Cu5728%20%5B0%2Clen%28s%29%20-%201%5D%20%5Cu8303%5Cu56f4%5Cu5185%5Cu4efb%5Cu9009%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20k%20%5Cu3002%5Cu4ed6%5Cu628a%5Cu8fd9%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu5185%5Cu5bb9%5Cu544a%5Cu8bc9Kolya%5Cuff0c%5Cu7136%5Cu540e%5Cu628a%5Cu4ece%5Cu5de6%5Cu6570%5Cu8d77%5Cu7684%20k%20%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu653e%5Cu5230%5Cu53f3%5Cu8fb9%5Cu53bb%5Cu3002%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu521b%5Cu5efa%5Cu4e00%5Cu4e2a%5Cu65b0%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%20t%20%3D%20sk%2B1%20sk%2B2...sn%20s1%20s2...sk-1%20sk%5Cu3002Vasya%5Cu65e2%5Cu4e0d%5Cu77e5%5Cu9053%20k%20%5Cu7684%5Cu5927%5Cu5c0f%5Cu53c8%5Cu4e0d%5Cu77e5%5Cu9053%5Cu5b57%5Cu7b26%5Cu4e32%20t%20%5Cu7684%5Cu5177%5Cu4f53%5Cu5185%5Cu5bb9%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu60f3%5Cu731c%5Cu4e00%5Cu731c%20k%20%5Cu662f%5Cu591a%5Cu5c11%5Cu3002%5Cu4e3a%5Cu4e86%5Cu731c%5Cu5bf9%5Cuff0c%5Cu4ed6%5Cu8bf7%5Cu6c42Kolya%5Cu544a%5Cu8bc9%5Cu4ed6%5Cu65b0%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu9996%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu7136%5Cu540e%5Cu518d%5Cu544a%5Cu8bc9%5Cu4ed6%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu800c%5Cu8fd9%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu7531Vasya%5Cu81ea%5Cu5df1%5Cu51b3%5Cu5b9a%5Cu3002%5Cn%5CnVasya%5Cu660e%5Cu767d%5Cu4ed6%5Cu4e0d%5Cu80fd%5Cu4fdd%5Cu8bc1%5Cu81ea%5Cu5df1%5Cu4e00%5Cu5b9a%5Cu80fd%5Cu731c%5Cu5bf9%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu60f3%5Cu8981%5Cu77e5%5Cu9053%5Cu5982%5Cu679c%5Cu4ed6%5Cu4ee5%5Cu6700%5Cu4f18%5Cu89e3%5Cu6cd5%5Cu8fdb%5Cu884c%5Cu6c42%5Cu89e3%5Cuff0c%5Cu90a3%5Cu4e48%5Cu4ed6%5Cu83b7%5Cu80dc%5Cu7684%5Cu6982%5Cu7387%5Cu6709%5Cu591a%5Cu5927%5Cu3002%5Cn%5Cn%5Cu8bf7%5Cu6ce8%5Cu610f%5Cuff0cVasya%5Cu60f3%5Cu4fdd%5Cu8bc1%5Cu901a%5Cu8fc7%5Cu4ed6%5Cu6240%5Cu5f97%5Cu5230%5Cu7684%5Cu4fe1%5Cu606f%5Cu6765%5Cu5f97%5Cu5230%5Cu552f%5Cu4e00%5Cu7684%20k%20%5Cu503c%5Cuff0c%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu5982%5Cu679c%5Cu6709%5Cu81f3%5Cu5c11%5Cu4e24%5Cu4e2a%5Cu7b26%5Cu5408Vasya%5Cu5df2%5Cu77e5%5Cu4fe1%5Cu606f%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%20t%20%5Cuff0c%5Cu90a3%5Cu4e48Vasya%5Cu5c31%5Cu8f93%5Cu4e86%28%5Cu4f8b%5Cuff1aVasya%5Cu77e5%5Cu9053%5Cu7b2c1%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu662f%20a%20%5Cuff0c%5Cu7b2c2%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu662f%20b%20%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5982%5Cu679c%5Cu5728%5Cu66f4%5Cu6539%5Cu540e%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e2d%5Cu81f3%5Cu5c11%5Cu6709%5Cu4e24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu9996%5Cu5b57%5Cu6bcd%5Cu90fd%5Cu4e3a%20a%20%5Cuff0c%5Cu6b21%5Cu5b57%5Cu6bcd%5Cu90fd%5Cu4e3a%20b%20%5Cuff0c%5Cu90a3%5Cu4e48Vasya%5Cu5c31%5Cu8f93%5Cu4e86%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu7b26%5Cu5408%5Cu4ed6%5Cu6240%5Cu77e5%5Cu4fe1%5Cu606f%5Cu7684%5Cuff0c%5Cu66f4%5Cu6539%5Cu540e%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu81f3%5Cu5c11%5Cu6709%5Cu4e24%5Cu4e2a%5Cuff0c%5Cu5176%5Cu5bf9%5Cu5e94%5Cu7684%20k%20%5Cu503c%5Cu4e5f%5Cu81f3%5Cu5c11%5Cu6709%5Cu4e24%5Cu4e2a%5Cu3002%5Cu4e0d%5Cu8003%5Cu8651%5Cu5728%5Cu591a%5Cu4e2a%5Cu53ef%5Cu80fd%5Cu7684%20k%20%5Cu503c%5Cu53d6%5Cu503c%5Cu4e2d%5Cu8499%5Cu5bf9%5Cu7684%5Cu6982%5Cu7387%5Cu3002%29%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu957f%5Cu5ea6%5Cu4e3a%20l%20%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%20s%20%283%20%3C%3D%20l%20%3C%3D%205000%29%5Cu3002s%20%5Cu4e2d%5Cu4ec5%5Cu5305%5Cu542b%5Cu5c0f%5Cu5199%5Cu82f1%5Cu6587%5Cu5b57%5Cu6bcd%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6570%5Cu8868%5Cu793a%5Cu83b7%5Cu80dc%5Cu6982%5Cu7387%5Cu3002%5Cu5982%5Cu679c%5Cu4f60%5Cu7684%5Cu7b54%5Cu6848%5Cu4e0e%5Cu6807%5Cu51c6%5Cu7b54%5Cu6848%5Cu76f8%5Cu5dee%5Cu5c0f%5Cu4e8e10%5E%28-6%29%5Cu5c31%5Cu5224%5Cu5b9a%5Cu4f60%5Cu7684%5Cu7b54%5Cu6848%5Cu662f%5Cu6b63%5Cu786e%5Cu7684%5Cu3002%5Cn%5Cn%5Cu8bf4%5Cu660e%5Cuff1a%5Cn%5Cn%5Cu5728%5Cu6837%5Cu4f8b%5Cu4e00%5Cu4e2d%5Cu65e0%5Cu8bba%20k%20%5Cu662f%5Cu591a%5Cu5c11%5Cuff0cVasya%5Cu603b%5Cu53ef%5Cu4ee5%5Cu5728%5Cu5f97%5Cu77e5%5Cu9996%5Cu5b57%5Cu6bcd%5Cu548c%5Cu7b2c2%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu7684%5Cu60c5%5Cu51b5%5Cu4e0b%5Cu731c%5Cu5bf9%20k%20%5Cu503c%5Cuff0c%5Cu5e76%5Cu4e14%20k%20%5Cu503c%5Cu7684%5Cu53d6%5Cu503c%5Cu603b%5Cu662f%5Cu552f%5Cu4e00%5Cu7684%5Cu3002%5Cn%5Cn%5Cu5728%5Cu6837%5Cu4f8b%5Cu4e8c%5Cu4e2d%5Cuff0c%5Cu5982%5Cu679c%5Cu66f4%5Cu6539%5Cu540e%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu9996%5Cu5b57%5Cu6bcd%5Cu4e3a%5C%22t%5C%22%5Cu6216%5Cu8005%5C%22c%5C%22%5Cuff0c%5Cu90a3%5Cu4e48Vasya%5Cu5e76%5Cu4e0d%5Cu80fd%5Cu901a%5Cu8fc7%5Cu5f97%5Cu77e5%5Cu5176%5Cu4ed6%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu6765%5Cu5f97%5Cu5230%20k%20%5Cu7684%5Cu552f%5Cu4e00%5Cu53d6%5Cu503c%5Cu3002%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu5982%5Cu679c%5Cu66f4%5Cu6539%5Cu540e%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu9996%5Cu5b57%5Cu6bcd%5Cu4e3a%5C%22i%5C%22%5Cu6216%5Cu8005%5C%22a%5C%22%5Cuff0c%5Cu90a3%5Cu4e48%5Cu4ed6%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu5f97%5Cu77e5%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu5b57%5Cu6bcd%5Cu6765%5Cu5f97%5Cu5230%20k%20%5Cu7684%5Cu552f%5Cu4e00%5Cu53d6%5Cu503c%5Cu3002%5Cn%5CnTranslated%20by%20%40radish%5Cu5e03%5Cu56e3%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A16%2C%22totalAccepted%22%3A11%2C%22pid%22%3A%22CF930B%22%2C%22title%22%3A%22Game%20with%20String%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Game%20with%20String%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Game with String</h1>
+<h2>题意翻译</h2>
+<div>Vasya和Kolya根据以下规则用一个字符串玩游戏。Kolya创建一个由小写英文字母构成的字符串 s ，并在 [0,len(s) - 1] 范围内任选一个整数 k 。他把这个字符串的内容告诉Kolya，然后把从左数起的 k 个字母放到右边去。换句话说，创建一个新的字符串 t = sk+1 sk+2...sn s1 s2...sk-1 sk。Vasya既不知道 k 的大小又不知道字符串 t 的具体内容，但他想猜一猜 k 是多少。为了猜对，他请求Kolya告诉他新字符串的首字母，然后再告诉他任意一个位置的字母，而这个字母的位置由Vasya自己决定。
+Vasya明白他不能保证自己一定能猜对，但他想要知道如果他以最优解法进行求解，那么他获胜的概率有多大。
+请注意，Vasya想保证通过他所得到的信息来得到唯一的 k 值，换句话说，如果有至少两个符合Vasya已知信息的字符串 t ，那么Vasya就输了(例：Vasya知道第1个字母是 a ，第2个字母是 b ，那么如果在更改后的字符串中至少有两个字符串首字母都为 a ，次字母都为 b ，那么Vasya就输了，因为符合他所知信息的，更改后的字符串至少有两个，其对应的 k 值也至少有两个。不考虑在多个可能的 k 值取值中蒙对的概率。)。
+输入格式：
+输入长度为 l 的字符串 s (3 <= l <= 5000)。s 中仅包含小写英文字母。
+输出格式：
+输出一个数表示获胜概率。如果你的答案与标准答案相差小于10^(-6)就判定你的答案是正确的。
+说明：
+在样例一中无论 k 是多少，Vasya总可以在得知首字母和第2个字母的情况下猜对 k 值，并且 k 值的取值总是唯一的。
+在样例二中，如果更改后的字符串首字母为"t"或者"c"，那么Vasya并不能通过得知其他位置的任意一个字母来得到 k 的唯一取值。换句话说，如果更改后的字符串首字母为"i"或者"a"，那么他就可以通过得知第四个位置的字母来得到 k 的唯一取值。
+Translated by @radish布団 </div>
+<h2>题目描述</h2>
+<div>Vasya and Kolya play a game with a string, using the following rules. Initially, Kolya creates a string $ s $ , consisting of small English letters, and uniformly at random chooses an integer $ k $ from a segment $ [0,len(s)-1] $ . He tells Vasya this string $ s $ , and then shifts it $ k $ letters to the left, i. e. creates a new string $ t=s_{k+1}s_{k+2}...\ s_{n}s_{1}s_{2}...\ s_{k} $ . Vasya does not know the integer $ k $ nor the string $ t $ , but he wants to guess the integer $ k $ . To do this, he asks Kolya to tell him the first letter of the new string, and then, after he sees it, open one more letter on some position, which Vasya can choose.
+Vasya understands, that he can't guarantee that he will win, but he wants to know the probability of winning, if he plays optimally. He wants you to compute this probability.
+Note that Vasya wants to know the value of $ k $ uniquely, it means, that if there are at least two cyclic shifts of $ s $ that fit the information Vasya knowns, Vasya loses. Of course, at any moment of the game Vasya wants to maximize the probability of his win.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only string contains the string $ s $ of length $ l $ $ (3<=l<=5000) $ , consisting of small English letters only.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the only number — the answer for the problem. You answer is considered correct, if its absolute or relative error does not exceed $ 10^{-6} $ .
+Formally, let your answer be $ a $ , and the jury's answer be $ b $ . Your answer is considered correct if ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF930B/ff5435bf79eb188c9b35e530805de6ccf12620f2.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>technocup
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1.000000000000000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>tictictactac
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0.333333333333333
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>bbaabaabbb
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0.100000000000000
+</code></pre>
+<h2>说明</h2>
+<div>In the first example Vasya can always open the second letter after opening the first letter, and the cyclic shift is always determined uniquely.
+In the second example if the first opened letter of $ t $ is "t" or "c", then Vasya can't guess the shift by opening only one other letter. On the other hand, if the first letter is "i" or "a", then he can open the fourth letter and determine the shift uniquely.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

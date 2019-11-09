@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Maximal Intersection - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400630:gpSynuYEFCvt/pCno8Zt30IyfRCB/rd9HoMz4cDtk9Y=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20%24%20n%20%24%20segments%20on%20a%20number%20line%3B%20each%20endpoint%20of%20every%20segment%20has%20integer%20coordinates.%20Some%20segments%20can%20degenerate%20to%20points.%20Segments%20can%20intersect%20with%20each%20other%2C%20be%20nested%20in%20each%20other%20or%20even%20coincide.%5Cn%5CnThe%20intersection%20of%20a%20sequence%20of%20segments%20is%20such%20a%20maximal%20set%20of%20points%20%28not%20necesserily%20having%20integer%20coordinates%29%20that%20each%20point%20lies%20within%20every%20segment%20from%20the%20sequence.%20If%20the%20resulting%20set%20isn%27t%20empty%2C%20then%20it%20always%20forms%20some%20continuous%20segment.%20The%20length%20of%20the%20intersection%20is%20the%20length%20of%20the%20resulting%20segment%20or%20%24%200%20%24%20in%20case%20the%20intersection%20is%20an%20empty%20set.%5Cn%5CnFor%20example%2C%20the%20intersection%20of%20segments%20%24%20%5B1%3B5%5D%20%24%20and%20%24%20%5B3%3B10%5D%20%24%20is%20%24%20%5B3%3B5%5D%20%24%20%28length%20%24%202%20%24%20%29%2C%20the%20intersection%20of%20segments%20%24%20%5B1%3B5%5D%20%24%20and%20%24%20%5B5%3B7%5D%20%24%20is%20%24%20%5B5%3B5%5D%20%24%20%28length%20%24%200%20%24%20%29%20and%20the%20intersection%20of%20segments%20%24%20%5B1%3B5%5D%20%24%20and%20%24%20%5B6%3B6%5D%20%24%20is%20an%20empty%20set%20%28length%20%24%200%20%24%20%29.%5Cn%5CnYour%20task%20is%20to%20remove%20exactly%20one%20segment%20from%20the%20given%20sequence%20in%20such%20a%20way%20that%20the%20intersection%20of%20the%20remaining%20%24%20%28n%20-%201%29%20%24%20segments%20has%20the%20maximal%20possible%20length.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%203%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20segments%20in%20the%20sequence.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20%24%20lines%20contains%20two%20integers%20%24%20l_i%20%24%20and%20%24%20r_i%20%24%20%28%20%24%200%20%5C%5Cle%20l_i%20%5C%5Cle%20r_i%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20the%20description%20of%20the%20%24%20i%20%24%20-th%20segment.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20maximal%20possible%20length%20of%20the%20intersection%20of%20%24%20%28n%20-%201%29%20%24%20remaining%20segments%20after%20you%20remove%20exactly%20one%20segment%20from%20the%20sequence.%22%2C%22samples%22%3A%5B%5B%224%5Cn1%203%5Cn2%206%5Cn0%204%5Cn3%203%5Cn%22%2C%221%5Cn%22%5D%2C%5B%225%5Cn2%206%5Cn1%203%5Cn0%204%5Cn1%2020%5Cn0%204%5Cn%22%2C%222%5Cn%22%5D%2C%5B%223%5Cn4%205%5Cn1%202%5Cn9%2020%5Cn%22%2C%220%5Cn%22%5D%2C%5B%222%5Cn3%2010%5Cn1%205%5Cn%22%2C%227%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20you%20should%20remove%20the%20segment%20%24%20%5B3%3B3%5D%20%24%20%2C%20the%20intersection%20will%20become%20%24%20%5B2%3B3%5D%20%24%20%28length%20%24%201%20%24%20%29.%20Removing%20any%20other%20segment%20will%20result%20in%20the%20intersection%20%24%20%5B3%3B3%5D%20%24%20%28length%20%24%200%20%24%20%29.%5Cn%5CnIn%20the%20second%20example%20you%20should%20remove%20the%20segment%20%24%20%5B1%3B3%5D%20%24%20or%20segment%20%24%20%5B2%3B6%5D%20%24%20%2C%20the%20intersection%20will%20become%20%24%20%5B2%3B4%5D%20%24%20%28length%20%24%202%20%24%20%29%20or%20%24%20%5B1%3B3%5D%20%24%20%28length%20%24%202%20%24%20%29%2C%20respectively.%20Removing%20any%20other%20segment%20will%20result%20in%20the%20intersection%20%24%20%5B2%3B3%5D%20%24%20%28length%20%24%201%20%24%20%29.%5Cn%5CnIn%20the%20third%20example%20the%20intersection%20will%20become%20an%20empty%20set%20no%20matter%20the%20segment%20you%20remove.%5Cn%5CnIn%20the%20fourth%20example%20you%20will%20get%20the%20intersection%20%24%20%5B3%3B10%5D%20%24%20%28length%20%24%207%20%24%20%29%20if%20you%20remove%20the%20segment%20%24%20%5B1%3B5%5D%20%24%20or%20the%20intersection%20%24%20%5B1%3B5%5D%20%24%20%28length%20%24%204%20%24%20%29%20if%20you%20remove%20the%20segment%20%24%20%5B3%3B10%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1029%5C%2FC%22%2C%22id%22%3A%221029C%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cu7ed9%5Cu5b9an%5Cu4e2a%5Cu95ed%5Cu533a%5Cu95f4%2C%5Cu73b0%5Cu5728%5Cu8981%5Cu6c42%5Cu4ece%5Cu8fd9%5Cu4e9b%5Cu95ed%5Cu533a%5Cu95f4%5Cu4e2d%5Cu5220%5Cu9664%5Cu4e00%5Cu4e2a%5Cu533a%5Cu95f4%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu5269%5Cu4e0b%5Cu7684%5Cuff08n-1%5Cuff09%5Cu4e2a%5Cu533a%5Cu95f4%5Cu7684%5Cu4ea4%5Cu96c6%5Cu7684%5Cu957f%5Cu5ea6%5Cu6700%5Cu5927%5Cuff0c%5Cu6c42%5Cu8fd9%5Cu4e2a%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cn%5Cn%5Cuff08p.s.%5Cuff1a%5Cu82e5%5Cu8fd9%5Cu4e2a%5Cu533a%5Cu95f4%5Cu4e3a%5Cu7a7a%5Cu96c6%5Cu6216%5Cu5b83%5Cu7684%5Cu5de6%5Cu7aef%5Cu70b9%5Cu4e0e%5Cu53f3%5Cu7aef%5Cu70b9%5Cu91cd%5Cu5408%5Cuff0c%5Cu5219%5Cu957f%5Cu5ea6%5Cu4e3a0%5Cuff1b%5Cu5426%5Cu5219%5Cu5176%5Cu957f%5Cu5ea6%5Cu4e3a%5Cu53f3%5Cu7aef%5Cu70b9%5Cu5728%5Cu6570%5Cu8f74%5Cu4e0a%5Cu8868%5Cu793a%5Cu7684%5Cu6570-%5Cu5de6%5Cu7aef%5Cu70b9%5Cu5728%5Cu6570%5Cu8f74%5Cu4e0a%5Cu8868%5Cu793a%5Cu7684%5Cu6570%5Cuff09%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%5Cuff082%3C%3Dn%3C%3D3e5%5Cuff09%5Cu3002%5Cn%5Cn%5Cu540e%5Cu9762%5Cu7684n%5Cu884c%5Cu4e2d%5Cu6bcf%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu81ea%5Cu7136%5Cu6570l%5Cu3001r%5Cuff0c%5Cu8868%5Cu793a%5Cu4e00%5Cu4e2a%5Cu95ed%5Cu533a%5Cu95f4%5Bl%2Cr%5D%5Cuff080%3C%3Dl%3C%3Dr%3C%3D1e9%5Cuff09%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu8fd9%5Cu4e2a%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cn%5CnTranslated%20by%20%40lhy930%20%22%2C%22tags%22%3A%5B7%2C111%2C148%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A158%2C%22totalAccepted%22%3A112%2C%22pid%22%3A%22CF1029C%22%2C%22title%22%3A%22Maximal%20Intersection%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A59947%2C%22title%22%3A%22%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%22%2C%22forum%22%3A%7B%22id%22%3A28891%2C%22name%22%3A%22CF1029C%20Maximal%20Intersection%22%2C%22slug%22%3A%22CF1029C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1029F%22%2C%22title%22%3A%22Multicolored%20Markers%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1029E%22%2C%22title%22%3A%22Tree%20with%20Small%20Distances%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1029D%22%2C%22title%22%3A%22Concatenated%20Multiples%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1029B%22%2C%22title%22%3A%22Creating%20the%20Contest%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1029A%22%2C%22title%22%3A%22Many%20Equal%20Substrings%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Maximal%20Intersection%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Maximal Intersection</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+给定n个闭区间,现在要求从这些闭区间中删除一个区间，使得剩下的（n-1）个区间的交集的长度最大，求这个最大值。
+（p.s.：若这个区间为空集或它的左端点与右端点重合，则长度为0；否则其长度为右端点在数轴上表示的数-左端点在数轴上表示的数）
+输入格式
+第一行输入一个正整数n（2<=n<=3e5）。
+后面的n行中每行输入两个自然数l、r，表示一个闭区间[l,r]（0<=l<=r<=1e9）。
+输出格式
+输出一个数，表示这个最大值。
+Translated by @lhy930 </div>
+<h2>题目描述</h2>
+<div>You are given $ n $ segments on a number line; each endpoint of every segment has integer coordinates. Some segments can degenerate to points. Segments can intersect with each other, be nested in each other or even coincide.
+The intersection of a sequence of segments is such a maximal set of points (not necesserily having integer coordinates) that each point lies within every segment from the sequence. If the resulting set isn't empty, then it always forms some continuous segment. The length of the intersection is the length of the resulting segment or $ 0 $ in case the intersection is an empty set.
+For example, the intersection of segments $ [1;5] $ and $ [3;10] $ is $ [3;5] $ (length $ 2 $ ), the intersection of segments $ [1;5] $ and $ [5;7] $ is $ [5;5] $ (length $ 0 $ ) and the intersection of segments $ [1;5] $ and $ [6;6] $ is an empty set (length $ 0 $ ).
+Your task is to remove exactly one segment from the given sequence in such a way that the intersection of the remaining $ (n - 1) $ segments has the maximal possible length.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 2 \le n \le 3 \cdot 10^5 $ ) — the number of segments in the sequence.
+Each of the next $ n $ lines contains two integers $ l_i $ and $ r_i $ ( $ 0 \le l_i \le r_i \le 10^9 $ ) — the description of the $ i $ -th segment.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the maximal possible length of the intersection of $ (n - 1) $ remaining segments after you remove exactly one segment from the sequence.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1 3
+2 6
+0 4
+3 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+2 6
+1 3
+0 4
+1 20
+0 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+4 5
+1 2
+9 20
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>2
+3 10
+1 5
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>7
+</code></pre>
+<h2>说明</h2>
+<div>In the first example you should remove the segment $ [3;3] $ , the intersection will become $ [2;3] $ (length $ 1 $ ). Removing any other segment will result in the intersection $ [3;3] $ (length $ 0 $ ).
+In the second example you should remove the segment $ [1;3] $ or segment $ [2;6] $ , the intersection will become $ [2;4] $ (length $ 2 $ ) or $ [1;3] $ (length $ 2 $ ), respectively. Removing any other segment will result in the intersection $ [2;3] $ (length $ 1 $ ).
+In the third example the intersection will become an empty set no matter the segment you remove.
+In the fourth example you will get the intersection $ [3;10] $ (length $ 7 $ ) if you remove the segment $ [1;5] $ or the intersection $ [1;5] $ (length $ 4 $ ) if you remove the segment $ [3;10] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

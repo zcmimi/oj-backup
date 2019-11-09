@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Low Budget Inception - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402512:y3pyai4wusHJwzt9KZAphxVtHHFavBBgQXnvY25VPfE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22So%20we%20got%20bored%20and%20decided%20to%20take%20our%20own%20guess%20at%20how%20would%20%5C%22Inception%5C%22%20production%20go%20if%20the%20budget%20for%20the%20film%20had%20been%20terribly%20low.%5Cn%5CnThe%20first%20scene%20we%20remembered%20was%20the%20one%20that%20features%20the%20whole%20city%20bending%20onto%20itself%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1167G%5C%2F0b53676cfab9882985977cc71fbf9dc06f9ec6d6.png%29It%20feels%20like%20it%20will%20require%20high%20CGI%20expenses%2C%20doesn%27t%20it%3F%20Luckily%2C%20we%20came%20up%20with%20a%20similar-looking%20scene%20which%20was%20a%20tiny%20bit%20cheaper%20to%20make.%5Cn%5CnFirstly%2C%20forget%20about%203D%2C%20that%27s%20hard%20and%20expensive%21%20The%20city%20is%20now%20represented%20as%20a%20number%20line%20%28infinite%20to%20make%20it%20easier%2C%20of%20course%29.%5Cn%5CnSecondly%2C%20the%20city%20doesn%27t%20have%20to%20look%20natural%20at%20all.%20There%20are%20%24%20n%20%24%20buildings%20on%20the%20line.%20Each%20building%20is%20a%20square%20%24%201%20%5C%5Ctimes%201%20%24%20.%20Buildings%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20in%20ascending%20order%20of%20their%20positions.%20Lower%20corners%20of%20building%20%24%20i%20%24%20are%20at%20integer%20points%20%24%20a_i%20%24%20and%20%24%20a_i%20%2B%201%20%24%20of%20the%20number%20line.%20Also%20the%20distance%20between%20any%20two%20neighbouring%20buildings%20%24%20i%20%24%20and%20%24%20i%20%2B%201%20%24%20doesn%27t%20exceed%20%24%20d%20%24%20%28really%2C%20this%20condition%20is%20here%20just%20to%20make%20the%20city%20look%20not%20that%20sparse%29.%20Distance%20between%20some%20neighbouring%20buildings%20%24%20i%20%24%20and%20%24%20i%20%2B%201%20%24%20is%20calculated%20from%20the%20lower%20right%20corner%20of%20building%20%24%20i%20%24%20to%20the%20lower%20left%20corner%20of%20building%20%24%20i%20%2B%201%20%24%20.%5Cn%5CnFinally%2C%20curvature%20of%20the%20bend%20is%20also%20really%20hard%20to%20simulate%21%20Let%20the%20bend%20at%20some%20integer%20coordinate%20%24%20x%20%24%20be%20performed%20with%20the%20following%20algorithm.%20Take%20the%20ray%20from%20%24%20x%20%24%20to%20%24%20%2B%5C%5Cinfty%20%24%20and%20all%20the%20buildings%20which%20are%20on%20this%20ray%20and%20start%20turning%20the%20ray%20and%20the%20buildings%20counter-clockwise%20around%20point%20%24%20x%20%24%20.%20At%20some%20angle%20some%20building%20will%20touch%20either%20another%20building%20or%20a%20part%20of%20the%20line.%20You%20have%20to%20stop%20bending%20there%20%28implementing%20buildings%20crushing%20is%20also%20not%20worth%20its%20money%29.%5Cn%5CnLet%27s%20call%20the%20angle%20between%20two%20rays%20in%20the%20final%20state%20the%20terminal%20angle%20%24%20%5C%5Calpha_x%20%24%20.%5Cn%5CnThe%20only%20thing%20left%20is%20to%20decide%20what%20integer%20point%20%24%20x%20%24%20is%20the%20best%20to%20start%20bending%20around.%20Fortunately%2C%20we%27ve%20already%20chosen%20%24%20m%20%24%20candidates%20to%20perform%20the%20bending.%5Cn%5CnSo%2C%20can%20you%20please%20help%20us%20to%20calculate%20terminal%20angle%20%24%20%5C%5Calpha_x%20%24%20for%20each%20bend%20%24%20x%20%24%20from%20our%20list%20of%20candidates%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integer%20numbers%20%24%20n%20%24%20and%20%24%20d%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%200%20%5C%5Cle%20d%20%5C%5Cle%207000%20%24%20%29%20%5Cu2014%20the%20number%20of%20buildings%20and%20the%20maximum%20distance%20between%20any%20pair%20of%20neighbouring%20buildings%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%20a_1%20%3D%200%20%24%20%2C%20%24%200%20%3C%20a_%7Bi%20%2B%201%7D%20-%20a_i%20%5C%5Cle%20d%20%2B%201%20%24%20%29%20%5Cu2014%20coordinates%20of%20left%20corners%20of%20corresponding%20buildings%20in%20ascending%20order.%5Cn%5CnThe%20third%20line%20contains%20single%20integer%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cle%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20candidates.%5Cn%5CnThe%20fourth%20line%20contains%20%24%20m%20%24%20integers%20%24%20x_1%2C%20x_2%2C%20%5C%5Cdots%2C%20x_m%20%24%20%28%20%24%200%20%5C%5Cle%20x_i%20%5C%5Cle%20a_n%20%2B%201%20%24%20%2C%20%24%20x_i%20%3C%20x_%7Bi%20%2B%201%7D%20%24%20%29%20%5Cu2014%20the%20coordinates%20of%20bends%20you%20need%20to%20calculate%20terminal%20angles%20for%20in%20ascending%20order.%22%2C%22outputFormat%22%3A%22Print%20%24%20m%20%24%20numbers.%20For%20each%20bend%20%24%20x_i%20%24%20print%20terminal%20angle%20%24%20%5C%5Calpha_%7Bx_i%7D%20%24%20%28in%20radians%29.%5Cn%5CnYour%20answer%20is%20considered%20correct%20if%20its%20absolute%20error%20does%20not%20exceed%20%24%2010%5E%7B-9%7D%20%24%20.%5Cn%5CnFormally%2C%20let%20your%20answer%20be%20%24%20a%20%24%20%2C%20and%20the%20jury%27s%20answer%20be%20%24%20b%20%24%20.%20Your%20answer%20is%20accepted%20if%20and%20only%20if%20%24%20%7Ca%20-%20b%7C%20%5C%5Cle%2010%5E%7B-9%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%205%5Cn0%205%207%5Cn9%5Cn0%201%202%203%204%205%206%207%208%5Cn%22%2C%22%5Cn1.570796326794897%5Cn1.570796326794897%5Cn0.785398163397448%5Cn0.927295218001612%5Cn0.785398163397448%5Cn1.570796326794897%5Cn1.570796326794897%5Cn1.570796326794897%5Cn1.570796326794897%5Cn%22%5D%2C%5B%22%5Cn2%207%5Cn0%204%5Cn3%5Cn1%203%204%5Cn%22%2C%22%5Cn1.570796326794897%5Cn0.927295218001612%5Cn1.570796326794897%5Cn%22%5D%2C%5B%22%5Cn5%200%5Cn0%201%202%203%204%5Cn6%5Cn0%201%202%203%204%205%5Cn%22%2C%22%5Cn1.570796326794897%5Cn3.141592653589793%5Cn3.141592653589793%5Cn3.141592653589793%5Cn3.141592653589793%5Cn1.570796326794897%5Cn%22%5D%5D%2C%22hint%22%3A%22Here%20you%20can%20see%20the%20picture%20of%20the%20city%20for%20the%20first%20example%20and%20the%20bend%20at%20position%20%24%202%20%24%20for%20it.%20The%20angle%20you%20need%20to%20measure%20is%20marked%20blue.%20You%20can%20see%20that%20it%27s%20equal%20to%20%24%20%5C%5Cfrac%20%5C%5Cpi%204%20%24%20.%5Cn%5CnYou%20can%20see%20that%20no%20pair%20of%20neighbouring%20buildings%20have%20distance%20more%20than%20%24%204%20%24%20between%20them.%20%24%20d%20%3D%204%20%24%20would%20also%20suffice%20for%20that%20test.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1167G%5C%2F2ff078fc26032edaeec4f4d3bd3552ea814bf3aa.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1167%5C%2FG%22%2C%22id%22%3A%221167G%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu6e10%5Cu611f%5Cu65e0%5Cu8da3%5Cuff0c%5Cu5e76%5Cu6253%5Cu7b97%5Cu731c%5Cu6d4b%5Cu5728%5Cu8d85%5Cu4f4e%5Cu9884%5Cu7b97%5Cu4e0b%5Cuff0c%5Cu5f71%5Cu7247%5Cu4f1a%5Cu5982%5Cu4f55%5Cu8fdb%5Cu884c%5Cu300c%5Cu5f00%5Cu5934%5Cu300d%5Cu7684%5Cu5236%5Cu4f5c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu4ecd%5Cu8bb0%5Cu5f97%5Cu7684%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu573a%5Cu666f%5Cu4e2d%5Cuff0c%5Cu6574%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu90fd%5Cu626d%5Cu66f2%5Cu4e86%5Cuff1a%20%20%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1167G%5C%2F0b53676cfab9882985977cc71fbf9dc06f9ec6d6.png%29%20%20%5Cr%5Cn%5Cu5b83%5Cu6216%5Cu8bb8%5Cu9700%5Cu8981%5Cu5f88%5Cu9ad8%5Cu7684%20CGI%20%5Cu8d39%5Cu7528%5Cuff0c%5Cu4f46%5Cu5e78%5Cu8fd0%5Cu5730%5Cuff0c%5Cu6211%5Cu4eec%5Cu6709%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu7c7b%5Cu4f3c%5Cu7684%5Cu5ec9%5Cu4ef7%5Cu65b9%5Cu6848%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu9996%5Cu5148%5Cuff0c%5Cu5fd8%5Cu5374%5Cu4e00%5Cu5207%5Cu7684%203D%5Cuff0c%5Cu90a3%5Cu4e9b%5Cu53ea%5Cu662f%5Cu571f%5Cu8c6a%5Cu7684%5Cu73a9%5Cu5177%5Cuff01%20%20%5Cr%5Cn%5Cu73b0%5Cu5728%5Cuff0c%5Cu57ce%5Cu5e02%5Cu4ee5%5Cu4e00%5Cu6761%5Cu6570%5Cu8f74%5Cu8868%5Cu793a%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cuff0c%5Cu8fd9%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu6ca1%5Cu6709%5Cu5fc5%5Cu8981%5Cu7b26%5Cu5408%5Cu5e38%5Cu7406%5Cu3002%20%20%5Cr%5Cn%5Cu6570%5Cu8f74%5Cu4e0a%5Cu6709%20%24n%24%20%5Cu4e2a%5Cu5efa%5Cu7b51%5Cu7269%5Cuff0c%5Cu5efa%5Cu7b51%5Cu7269%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu89c6%5Cu4f5c%20%241%20%5C%5Ctimes%201%24%20%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu3002%20%20%5Cr%5Cn%2A%2A%5Cu5efa%5Cu7b51%5Cu7269%5Cu6309%5Cu5176%5Cu4f4d%5Cu7f6e%5Cu7684%5Cu5347%5Cu5e8f%5Cuff0c%5Cu4f9d%5Cu6b21%5Cu7f16%5Cu53f7%5Cu4e3a%20%241%2C%5C%5Cdots%2Cn%24%5Cu3002%2A%2A%20%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu5efa%5Cu7b51%5Cu7269%5Cu7684%5Cu5de6%5Cu4e0b%5Cu89d2%5Cu548c%5Cu53f3%5Cu4e0b%5Cu89d2%5Cu5206%5Cu522b%5Cu4f4d%5Cu4e8e%20%24a_i%24%20%5Cu548c%20%24a_i%20%2B%201%24%20%5Cu5904%5Cu3002%20%20%5Cr%5Cn%5Cu5e76%5Cu4e14%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu76f8%5Cu90bb%5Cu5efa%5Cu7b51%5Cu7269%5Cu7684%5Cu8ddd%5Cu79bb%5Cu4e0d%5Cu8d85%5Cu8fc7%20%24d%24%5Cuff08%5Cu5355%5Cu7eaf%5Cu4e3a%5Cu4e86%5Cu8ba9%5Cu57ce%5Cu5e02%5Cu770b%5Cu4e0a%5Cu53bb%5Cu4e0d%5Cu90a3%5Cu4e48%5Cu7a00%5Cu758f%5Cuff09%5Cu3002%20%20%5Cr%5Cn%5Cu5176%5Cu4e2d%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu548c%5Cu7b2c%20%24i%20%2B%201%24%20%5Cu4e2a%5Cu5efa%5Cu7b51%5Cu7269%5Cu7684%5Cu8ddd%5Cu79bb%5Cu4e3a%5Cu524d%5Cu8005%5Cu7684%5Cu53f3%5Cu4e0b%5Cu89d2%5Cu548c%5Cu540e%5Cu8005%5Cu7684%5Cu5de6%5Cu4e0b%5Cu89d2%5Cu7684%5Cu8ddd%5Cu79bb%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu540e%5Cuff0c%5Cu66f2%5Cu7387%5Cu4e5f%5Cu975e%5Cu5e38%5Cu96be%5Cu4ee5%5Cu590d%5Cu73b0%5Cu3002%20%20%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu4f7f%5Cu7528%5Cu5982%5Cu4e0b%5Cu7b97%5Cu6cd5%5Cu6765%5Cu5904%5Cu7406%5Cu6574%5Cu70b9%20%24x%24%20%5Cu5904%5Cu7684%5Cu5f2f%5Cu66f2%5Cuff1a%20%20%5Cr%5Cn%5Cu4ee4%5Cu4e00%5Cu6761%5Cu4ece%20%24x%24%20%5Cu5411%20%24%2B%5C%5Cinfty%24%20%5Cu5ef6%5Cu4f38%5Cu7684%5Cu5c04%5Cu7ebf%5Cu53ca%5Cu5176%5Cu7ecf%5Cu8fc7%5Cu7684%5Cu6240%5Cu6709%5Cu5efa%5Cu7b51%5Cu7269%5Cu7ed5%5Cu70b9%20%24x%24%20%5Cu5f00%5Cu59cb%5Cu9006%5Cu65f6%5Cu9488%5Cu8f6c%5Cu52a8%5Cu3002%5Cu76f4%5Cu5230%5Cu67d0%5Cu4e2a%5Cu89d2%5Cu5ea6%5Cuff0c%5Cu4e00%5Cu4e9b%5Cu5efa%5Cu7b51%5Cu7269%5Cu5c06%5Cu4f1a%5Cu89e6%5Cu53ca%5Cu5176%5Cu4ed6%5Cu5efa%5Cu7b51%5Cu7269%5Cu6216%5Cu8005%5Cu6570%5Cu8f74%5Cu7684%5Cu4e00%5Cu90e8%5Cu5206%5Cu3002%20%20%5Cr%5Cn%5Cu8fd9%5Cu4e2a%5Cu89d2%5Cu5ea6%5Cu5c31%5Cu662f%5Cu5f2f%5Cu66f2%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%20%20%5Cr%5Cn%5Cuff08%5Cu5efa%5Cu7b51%5Cu7269%5Cu88ab%5Cu7834%5Cu574f%5Cu4e5f%5Cu4e0d%5Cu4f1a%5Cu82b1%5Cu8d39%5Cu989d%5Cu5916%5Cu7ecf%5Cu8d39%5Cuff09%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu6700%5Cu7ec8%5Cu72b6%5Cu6001%5Cu4e0b%5Cuff0c%5Cu6211%5Cu4eec%5Cu79f0%5Cu4e24%5Cu6761%5Cu5c04%5Cu7ebf%5Cu4e4b%5Cu95f4%5Cu7684%5Cu89d2%5Cu5ea6%5Cu4e3a%5Cu6700%5Cu7ec8%5Cu89d2%5Cu5ea6%20%24%5C%5Calpha_x%24%5Cu3002%2A%2A%20%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu540e%5Cu7684%5Cu95ee%5Cu9898%5Cu5728%5Cu4e8e%5Cu5bfb%5Cu627e%5Cu6700%5Cu4f73%5Cu7684%20%24x%24%20%5Cu5e76%5Cu8fdb%5Cu884c%5Cu5f2f%5Cu66f2%5Cu3002%5Cu5e78%5Cu8fd0%5Cu7684%5Cu662f%5Cuff0c%5Cu6211%5Cu4eec%5Cu5df2%5Cu7ecf%5Cu6709%5Cu4e86%20%24m%24%20%5Cu4e2a%5Cu5019%5Cu9009%5Cu70b9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e8e%5Cu662f%5Cuff0c%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu5e2e%5Cu52a9%5Cu6211%5Cu4eec%5Cu5bf9%5Cu4e8e%5Cu5019%5Cu9009%5Cu70b9%5Cu4e2d%5Cu7684%5Cu6240%5Cu6709%20%24x%24%5Cuff0c%5Cu8ba1%5Cu7b97%5Cu6240%5Cu6709%5Cu7684%5Cu6700%5Cu7ec8%5Cu89d2%5Cu5ea6%20%24%5C%5Calpha_x%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24n%2Cd%5C%5C%3B%281%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%2C0%20%5C%5Cle%20d%20%5C%5Cle%207000%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu5efa%5Cu7b51%5Cu7269%5Cu7684%5Cu4e2a%5Cu6570%5Cu548c%5Cu76f8%5Cu90bb%5Cu5efa%5Cu7b51%5Cu7269%5Cu7684%5Cu6700%5Cu5927%5Cu8ddd%5Cu79bb%5Cu3002%20%20%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cuff0c%24n%24%20%5Cu4e2a%5Cu6574%5Cu6570%20%24a_1%2C%5C%5Cdots%2Ca_n%5C%5C%3B%28a_1%20%3D%200%2C0%20%3C%20a_%7Bi%20%2B%201%7D%20-%20a_i%20%5C%5Cle%20d%20%2B%201%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu5efa%5Cu7b51%5Cu7269%5Cu7684%5Cu5750%5Cu6807%5Cu3002%20%20%5Cr%5Cn%5Cu7b2c%5Cu4e09%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24m%5C%5C%3B%281%20%5C%5Cle%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu5019%5Cu9009%5Cu70b9%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%20%20%5Cr%5Cn%5Cu7b2c%5Cu56db%5Cu884c%5Cuff0c%24m%24%20%5Cu4e2a%5Cu6574%5Cu6570%20%24x_1%2C%5C%5Cdots%2Cx_m%5C%5C%3B%280%20%5C%5Cle%20x_i%20%5C%5Cle%20a_n%20%2B%201%2Cx_i%20%3C%20x_%7Bi%20%2B%201%7D%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu5019%5Cu9009%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%20%24x_i%24%5Cuff0c%5Cu8f93%5Cu51fa%20%24%5C%5Calpha_%7Bx_i%7D%24%5Cuff08%5Cu4ee5%5Cu5f27%5Cu5ea6%5Cu8868%5Cu793a%5Cuff09%5Cu3002%20%20%5Cr%5Cn%5Cu8bef%5Cu5dee%5Cu4e0d%5Cu8d85%5Cu8fc7%20%2410%5E%7B-9%7D%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5728%5Cu6b64%5Cu770b%5Cu89c1%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6837%5Cu4f8b%5Cu4e2d%5Cu7684%5Cu57ce%5Cu5e02%5Cu548c%20%242%24%20%5Cu5904%5Cu7684%5Cu5f2f%5Cu66f2%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu6d4b%5Cu91cf%5Cu7684%5Cu89d2%5Cu5ea6%5Cu5df2%5Cu7ecf%5Cu88ab%5Cu6807%5Cu8bb0%5Cu4e3a%5Cu84dd%5Cu8272%5Cu3002%5Cu5b83%5Cu7b49%5Cu4e8e%20%24%5C%5Cfrac%20%5C%5Cpi%204%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6ca1%5Cu6709%5Cu4efb%5Cu4f55%5Cu4e00%5Cu5bf9%5Cu5efa%5Cu7b51%5Cu7269%5Cu7684%5Cu8ddd%5Cu79bb%5Cu8d85%5Cu8fc7%20%244%24%5Cuff0c%5Cu6240%5Cu4ee5%5Cu5f53%20%24d%20%3D%204%24%20%5Cu65f6%5Cu4e5f%5Cu5408%5Cu6cd5%5Cu3002%5Cr%5Cn%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1167G%5C%2F2ff078fc26032edaeec4f4d3bd3552ea814bf3aa.png%29%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF1167G%22%2C%22title%22%3A%22Low%20Budget%20Inception%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Low%20Budget%20Inception%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Low Budget Inception</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+我们渐感无趣，并打算猜测在超低预算下，影片会如何进行「开头」的制作。
+我们仍记得的第一个场景中，整个城市都扭曲了：
+![](https://cdn.luogu.org/upload/vjudge_pic/CF1167G/0b53676cfab9882985977cc71fbf9dc06f9ec6d6.png)
+它或许需要很高的 CGI 费用，但幸运地，我们有另一个类似的廉价方案。
+首先，忘却一切的 3D，那些只是土豪的玩具！
+现在，城市以一条数轴表示。
+第二，这个城市没有必要符合常理。
+数轴上有 $n$ 个建筑物，建筑物都可以视作 $1 \times 1$ 的正方形。
+**建筑物按其位置的升序，依次编号为 $1,\dots,n$。**
+第 $i$ 个建筑物的左下角和右下角分别位于 $a_i$ 和 $a_i + 1$ 处。
+并且，保证相邻建筑物的距离不超过 $d$（单纯为了让城市看上去不那么稀疏）。
+其中第 $i$ 个和第 $i + 1$ 个建筑物的距离为前者的右下角和后者的左下角的距离。
+最后，曲率也非常难以复现。
+我们使用如下算法来处理整点 $x$ 处的弯曲：
+令一条从 $x$ 向 $+\infty$ 延伸的射线及其经过的所有建筑物绕点 $x$ 开始逆时针转动。直到某个角度，一些建筑物将会触及其他建筑物或者数轴的一部分。
+这个角度就是弯曲的结果。
+（建筑物被破坏也不会花费额外经费）
+**最终状态下，我们称两条射线之间的角度为最终角度 $\alpha_x$。**
+最后的问题在于寻找最佳的 $x$ 并进行弯曲。幸运的是，我们已经有了 $m$ 个候选点。
+于是，你的任务是帮助我们对于候选点中的所有 $x$，计算所有的最终角度 $\alpha_x$。
+## 输入输出格式
+**输入格式：**
+第一行，两个整数 $n,d\;(1 \le n \le 2 \cdot 10^5,0 \le d \le 7000)$，表示建筑物的个数和相邻建筑物的最大距离。
+第二行，$n$ 个整数 $a_1,\dots,a_n\;(a_1 = 0,0 < a_{i + 1} - a_i \le d + 1)$，表示建筑物的坐标。
+第三行，一个整数 $m\;(1 \le m \le 2 \cdot 10^5)$，表示候选点的个数。
+第四行，$m$ 个整数 $x_1,\dots,x_m\;(0 \le x_i \le a_n + 1,x_i < x_{i + 1})$，表示候选点的坐标。
+**输出格式：**
+对于每个 $x_i$，输出 $\alpha_{x_i}$（以弧度表示）。
+误差不超过 $10^{-9}$。
+## 说明
+你可以在此看见第一个样例中的城市和 $2$ 处的弯曲。你需要测量的角度已经被标记为蓝色。它等于 $\frac \pi 4$。
+没有任何一对建筑物的距离超过 $4$，所以当 $d = 4$ 时也合法。
+![](https://cdn.luogu.org/upload/vjudge_pic/CF1167G/2ff078fc26032edaeec4f4d3bd3552ea814bf3aa.png)</div>
+<h2>题目描述</h2>
+<div>So we got bored and decided to take our own guess at how would "Inception" production go if the budget for the film had been terribly low.
+The first scene we remembered was the one that features the whole city bending onto itself:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1167G/0b53676cfab9882985977cc71fbf9dc06f9ec6d6.png)It feels like it will require high CGI expenses, doesn't it? Luckily, we came up with a similar-looking scene which was a tiny bit cheaper to make.
+Firstly, forget about 3D, that's hard and expensive! The city is now represented as a number line (infinite to make it easier, of course).
+Secondly, the city doesn't have to look natural at all. There are $ n $ buildings on the line. Each building is a square $ 1 \times 1 $ . Buildings are numbered from $ 1 $ to $ n $ in ascending order of their positions. Lower corners of building $ i $ are at integer points $ a_i $ and $ a_i + 1 $ of the number line. Also the distance between any two neighbouring buildings $ i $ and $ i + 1 $ doesn't exceed $ d $ (really, this condition is here just to make the city look not that sparse). Distance between some neighbouring buildings $ i $ and $ i + 1 $ is calculated from the lower right corner of building $ i $ to the lower left corner of building $ i + 1 $ .
+Finally, curvature of the bend is also really hard to simulate! Let the bend at some integer coordinate $ x $ be performed with the following algorithm. Take the ray from $ x $ to $ +\infty $ and all the buildings which are on this ray and start turning the ray and the buildings counter-clockwise around point $ x $ . At some angle some building will touch either another building or a part of the line. You have to stop bending there (implementing buildings crushing is also not worth its money).
+Let's call the angle between two rays in the final state the terminal angle $ \alpha_x $ .
+The only thing left is to decide what integer point $ x $ is the best to start bending around. Fortunately, we've already chosen $ m $ candidates to perform the bending.
+So, can you please help us to calculate terminal angle $ \alpha_x $ for each bend $ x $ from our list of candidates?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integer numbers $ n $ and $ d $ ( $ 1 \le n \le 2 \cdot 10^5 $ , $ 0 \le d \le 7000 $ ) — the number of buildings and the maximum distance between any pair of neighbouring buildings, respectively.
+The second line contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ a_1 = 0 $ , $ 0 < a_{i + 1} - a_i \le d + 1 $ ) — coordinates of left corners of corresponding buildings in ascending order.
+The third line contains single integer $ m $ ( $ 1 \le m \le 2 \cdot 10^5 $ ) — the number of candidates.
+The fourth line contains $ m $ integers $ x_1, x_2, \dots, x_m $ ( $ 0 \le x_i \le a_n + 1 $ , $ x_i < x_{i + 1} $ ) — the coordinates of bends you need to calculate terminal angles for in ascending order.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ m $ numbers. For each bend $ x_i $ print terminal angle $ \alpha_{x_i} $ (in radians).
+Your answer is considered correct if its absolute error does not exceed $ 10^{-9} $ .
+Formally, let your answer be $ a $ , and the jury's answer be $ b $ . Your answer is accepted if and only if $ |a - b| \le 10^{-9} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3 5
+0 5 7
+9
+0 1 2 3 4 5 6 7 8
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+1.570796326794897
+1.570796326794897
+0.785398163397448
+0.927295218001612
+0.785398163397448
+1.570796326794897
+1.570796326794897
+1.570796326794897
+1.570796326794897
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+2 7
+0 4
+3
+1 3 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+1.570796326794897
+0.927295218001612
+1.570796326794897
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+5 0
+0 1 2 3 4
+6
+0 1 2 3 4 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+1.570796326794897
+3.141592653589793
+3.141592653589793
+3.141592653589793
+3.141592653589793
+1.570796326794897
+</code></pre>
+<h2>说明</h2>
+<div>Here you can see the picture of the city for the first example and the bend at position $ 2 $ for it. The angle you need to measure is marked blue. You can see that it's equal to $ \frac \pi 4 $ .
+You can see that no pair of neighbouring buildings have distance more than $ 4 $ between them. $ d = 4 $ would also suffice for that test.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1167G/2ff078fc26032edaeec4f4d3bd3552ea814bf3aa.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

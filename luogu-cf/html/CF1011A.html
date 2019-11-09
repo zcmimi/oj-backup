@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Stages - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400433:C6adSODC+L5gZ1JkNsASQE09MQw+rBKJMXVvvBrpsi8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Natasha%20is%20going%20to%20fly%20to%20Mars.%20She%20needs%20to%20build%20a%20rocket%2C%20which%20consists%20of%20several%20stages%20in%20some%20order.%20Each%20of%20the%20stages%20is%20defined%20by%20a%20lowercase%20Latin%20letter.%20This%20way%2C%20the%20rocket%20can%20be%20described%20by%20the%20string%20%5Cu2014%20concatenation%20of%20letters%2C%20which%20correspond%20to%20the%20stages.%5Cn%5CnThere%20are%20%24%20n%20%24%20stages%20available.%20The%20rocket%20must%20contain%20exactly%20%24%20k%20%24%20of%20them.%20Stages%20in%20the%20rocket%20should%20be%20ordered%20by%20their%20weight.%20So%2C%20after%20the%20stage%20with%20some%20letter%20can%20go%20only%20stage%20with%20a%20letter%2C%20which%20is%20at%20least%20two%20positions%20after%20in%20the%20alphabet%20%28skipping%20one%20letter%20in%20between%2C%20or%20even%20more%29.%20For%20example%2C%20after%20letter%20%27c%27%20can%27t%20go%20letters%20%27a%27%2C%20%27b%27%2C%20%27c%27%20and%20%27d%27%2C%20but%20can%20go%20letters%20%27e%27%2C%20%27f%27%2C%20...%2C%20%27z%27.%5Cn%5CnFor%20the%20rocket%20to%20fly%20as%20far%20as%20possible%2C%20its%20weight%20should%20be%20minimal.%20The%20weight%20of%20the%20rocket%20is%20equal%20to%20the%20sum%20of%20the%20weights%20of%20its%20stages.%20The%20weight%20of%20the%20stage%20is%20the%20number%20of%20its%20letter%20in%20the%20alphabet.%20For%20example%2C%20the%20stage%20%27a%20%27weighs%20one%20ton%2C%27%20b%20%27weighs%20two%20tons%2C%20and%27%20z%27%20%5Cu2014%20%24%2026%20%24%20tons.%5Cn%5CnBuild%20the%20rocket%20with%20the%20minimal%20weight%20or%20determine%2C%20that%20it%20is%20impossible%20to%20build%20a%20rocket%20at%20all.%20Each%20stage%20can%20be%20used%20at%20most%20once.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20two%20integers%20%5Cu2014%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cle%20k%20%5C%5Cle%20n%20%5C%5Cle%2050%20%24%20%29%20%5Cu2013%20the%20number%20of%20available%20stages%20and%20the%20number%20of%20stages%20to%20use%20in%20the%20rocket.%5Cn%5CnThe%20second%20line%20contains%20string%20%24%20s%20%24%20%2C%20which%20consists%20of%20exactly%20%24%20n%20%24%20lowercase%20Latin%20letters.%20Each%20letter%20defines%20a%20new%20stage%2C%20which%20can%20be%20used%20to%20build%20the%20rocket.%20Each%20stage%20can%20be%20used%20at%20most%20once.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20minimal%20total%20weight%20of%20the%20rocket%20or%20-1%2C%20if%20it%20is%20impossible%20to%20build%20the%20rocket%20at%20all.%22%2C%22samples%22%3A%5B%5B%225%203%5Cnxyabd%5Cn%22%2C%2229%22%5D%2C%5B%227%204%5Cnproblem%5Cn%22%2C%2234%22%5D%2C%5B%222%202%5Cnab%5Cn%22%2C%22-1%22%5D%2C%5B%2212%201%5Cnabaabbaaabbb%5Cn%22%2C%221%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20the%20following%20rockets%20satisfy%20the%20condition%3A%5Cn%5Cn-%20%5C%22adx%5C%22%20%28weight%20is%20%24%201%2B4%2B24%3D29%20%24%20%29%3B%5Cn-%20%5C%22ady%5C%22%20%28weight%20is%20%24%201%2B4%2B25%3D30%20%24%20%29%3B%5Cn-%20%5C%22bdx%5C%22%20%28weight%20is%20%24%202%2B4%2B24%3D30%20%24%20%29%3B%5Cn-%20%5C%22bdy%5C%22%20%28weight%20is%20%24%202%2B4%2B25%3D31%20%24%20%29.%5Cn%5CnRocket%20%5C%22adx%5C%22%20has%20the%20minimal%20weight%2C%20so%20the%20answer%20is%20%24%2029%20%24%20.%5Cn%5CnIn%20the%20second%20example%2C%20target%20rocket%20is%20%5C%22belo%5C%22.%20Its%20weight%20is%20%24%202%2B5%2B12%2B15%3D34%20%24%20.%5Cn%5CnIn%20the%20third%20example%2C%20%24%20n%3Dk%3D2%20%24%20%2C%20so%20the%20rocket%20must%20have%20both%20stages%3A%20%27a%27%20and%20%27b%27.%20This%20rocket%20doesn%27t%20satisfy%20the%20condition%2C%20because%20these%20letters%20are%20adjacent%20in%20the%20alphabet.%20Answer%20is%20-1.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1011%5C%2FA%22%2C%22id%22%3A%221011A%22%7D%2C%22translation%22%3A%22%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%24s%24%5Cu7684%5Cu4ef7%5Cu503c%5Cu4e3a%24%24%5C%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28s%5Bi%5D-%27a%27%2B1%29%24%24%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%24s%24%5Cu662f%5Cu4f18%5Cu79c0%5Cu7684%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%24%24%5C%5Cforall%20x%20%5C%5Cin%20%5B1%2Cn-1%5D%20%20%20%28s%5Bx%5D-%27a%27%29%3C%28s%5Bx%2B1%5D-%27a%27-1%29%24%24%5Cu73b0%5Cu5728%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu5b57%5Cu7b26%5Cu4e32%24t%24%5Cuff0c%5Cu6c42%5Cu5728%5Cu4ece%24t%24%5Cu4e2d%5Cu9009%24k%24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu6240%5Cu80fd%5Cu7ec4%5Cu6210%5Cu7684%5Cu6240%5Cu6709%5Cu4f18%5Cu79c0%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e2d%5Cu4ef7%5Cu503c%5Cu6700%5Cu4f4e%5Cu7684%5Cu7684%5Cu4ef7%5Cu503c%5Cuff0c%5Cu5982%5Cu679c%5Cu4e0d%5Cu80fd%5Cu6784%5Cu9020%5Cu51fa%5Cu4f18%5Cu79c0%5Cu7684%5Cu5e8f%5Cu5217%5Cuff0c%5Cu8f93%5Cu51fa%24-1%24%5Cu3002%5Cr%5Cn%23%23%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%23%23%23%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%24n%24%5Cu548c%24k%281%5C%5Cle%20k%20%5C%5Cle%20n%20%5C%5Cle%2050%29%24%5Cuff1b%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%24t%24%5Cuff0c%5Cu4fdd%5Cu8bc1%24t%24%5Cu53ea%5Cu7531%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu7ec4%5Cu6210%5Cu3002%5Cr%5Cn%23%23%23%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5373%5Cu6700%5Cu4f4e%5Cu4ef7%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A91%2C%22totalAccepted%22%3A62%2C%22pid%22%3A%22CF1011A%22%2C%22title%22%3A%22Stages%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1011B%22%2C%22title%22%3A%22Planning%20The%20Expedition%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1010A%22%2C%22title%22%3A%22Fly%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1013A%22%2C%22title%22%3A%22Piles%20With%20Stones%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1015A%22%2C%22title%22%3A%22Points%20in%20Segments%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1020A%22%2C%22title%22%3A%22New%20Building%20for%20SIS%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Stages%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Stages</h1>
+<h2>题意翻译</h2>
+<div>定义一个长度为$n$的字符串$s$的价值为$$\sum_{i=1}^{n}(s[i]-'a'+1)$$定义一个长度为$n$的字符串$s$是优秀的，当且仅当$$\forall x \in [1,n-1] (s[x]-'a')<(s[x+1]-'a'-1)$$现在给出一个长度为$n$字符串$t$，求在从$t$中选$k$个字符所能组成的所有优秀的字符串中价值最低的的价值，如果不能构造出优秀的序列，输出$-1$。
+##输入输出格式
+###输入格式
+第一行两个整数，$n$和$k(1\le k \le n \le 50)$；
+第二行一个字符串$t$，保证$t$只由小写字母组成。
+###输出格式
+一个整数，即最低价值。</div>
+<h2>题目描述</h2>
+<div>Natasha is going to fly to Mars. She needs to build a rocket, which consists of several stages in some order. Each of the stages is defined by a lowercase Latin letter. This way, the rocket can be described by the string — concatenation of letters, which correspond to the stages.
+There are $ n $ stages available. The rocket must contain exactly $ k $ of them. Stages in the rocket should be ordered by their weight. So, after the stage with some letter can go only stage with a letter, which is at least two positions after in the alphabet (skipping one letter in between, or even more). For example, after letter 'c' can't go letters 'a', 'b', 'c' and 'd', but can go letters 'e', 'f', ..., 'z'.
+For the rocket to fly as far as possible, its weight should be minimal. The weight of the rocket is equal to the sum of the weights of its stages. The weight of the stage is the number of its letter in the alphabet. For example, the stage 'a 'weighs one ton,' b 'weighs two tons, and' z' — $ 26 $ tons.
+Build the rocket with the minimal weight or determine, that it is impossible to build a rocket at all. Each stage can be used at most once.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains two integers — $ n $ and $ k $ ( $ 1 \le k \le n \le 50 $ ) – the number of available stages and the number of stages to use in the rocket.
+The second line contains string $ s $ , which consists of exactly $ n $ lowercase Latin letters. Each letter defines a new stage, which can be used to build the rocket. Each stage can be used at most once.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the minimal total weight of the rocket or -1, if it is impossible to build the rocket at all.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3
+xyabd
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>29</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7 4
+problem
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>34</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2 2
+ab
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>-1</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>12 1
+abaabbaaabbb
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>1</code></pre>
+<h2>说明</h2>
+<div>In the first example, the following rockets satisfy the condition:
+- "adx" (weight is $ 1+4+24=29 $ );
+- "ady" (weight is $ 1+4+25=30 $ );
+- "bdx" (weight is $ 2+4+24=30 $ );
+- "bdy" (weight is $ 2+4+25=31 $ ).
+Rocket "adx" has the minimal weight, so the answer is $ 29 $ .
+In the second example, target rocket is "belo". Its weight is $ 2+5+12+15=34 $ .
+In the third example, $ n=k=2 $ , so the rocket must have both stages: 'a' and 'b'. This rocket doesn't satisfy the condition, because these letters are adjacent in the alphabet. Answer is -1.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

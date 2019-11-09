@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>k-substrings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399848:dicenrcFQpCnUj4rM24oF/iW9dgzb2OXgCGwD0CATnI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20string%20%24%20s%20%24%20consisting%20of%20%24%20n%20%24%20lowercase%20Latin%20letters.%5Cn%5CnLet%27s%20denote%20%24%20k%20%24%20-substring%20of%20%24%20s%20%24%20as%20a%20string%20%24%20subs_%7Bk%7D%3Ds_%7Bk%7Ds_%7Bk%2B1%7D..s_%7Bn%2B1-k%7D%20%24%20.%20Obviously%2C%20%24%20subs_%7B1%7D%3Ds%20%24%20%2C%20and%20there%20are%20exactly%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF961F%5C%2Fa53370bfcdd8093b84a167b7bb5ebbbbde89cfc8.png%29%20such%20substrings.%5Cn%5CnLet%27s%20call%20some%20string%20%24%20t%20%24%20an%20odd%20proper%20suprefix%20of%20a%20string%20%24%20T%20%24%20iff%20the%20following%20conditions%20are%20met%3A%5Cn%5Cn-%20%24%20%7CT%7C%3E%7Ct%7C%20%24%20%3B%5Cn-%20%24%20%7Ct%7C%20%24%20is%20an%20odd%20number%3B%5Cn-%20%24%20t%20%24%20is%20simultaneously%20a%20prefix%20and%20a%20suffix%20of%20%24%20T%20%24%20.%5Cn%5CnFor%20evey%20%24%20k%20%24%20-substring%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF961F%5C%2F0db45c1fd47a0828e7ef646cf910ebdb4ed26cf3.png%29%29%20of%20%24%20s%20%24%20you%20have%20to%20calculate%20the%20maximum%20length%20of%20its%20odd%20proper%20suprefix.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%24%20%282%3C%3Dn%3C%3D10%5E%7B6%7D%29%20%24%20%5Cu2014%20the%20length%20%24%20s%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20the%20string%20%24%20s%20%24%20consisting%20of%20%24%20n%20%24%20lowercase%20Latin%20letters.%22%2C%22outputFormat%22%3A%22Print%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF961F%5C%2Fa53370bfcdd8093b84a167b7bb5ebbbbde89cfc8.png%29%20integers.%20%24%20i%20%24%20-th%20of%20them%20should%20be%20equal%20to%20maximum%20length%20of%20an%20odd%20proper%20suprefix%20of%20%24%20i%20%24%20-substring%20of%20%24%20s%20%24%20%28or%20%24%20-1%20%24%20%2C%20if%20there%20is%20no%20such%20string%20that%20is%20an%20odd%20proper%20suprefix%20of%20%24%20i%20%24%20-substring%29.%22%2C%22samples%22%3A%5B%5B%2215%5Cnbcabcabcabcabca%5Cn%22%2C%229%207%205%203%201%20-1%20-1%20-1%5Cn%22%5D%2C%5B%2224%5Cnabaaabaaaabaaabaaaabaaab%5Cn%22%2C%2215%2013%2011%209%207%205%203%201%201%20-1%20-1%201%5Cn%22%5D%2C%5B%2219%5Cncabcabbcabcabbcabca%5Cn%22%2C%225%203%201%20-1%20-1%201%201%20-1%20-1%20-1%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20answer%20for%20first%20sample%20test%20is%20folowing%3A%5Cn%5Cn-%201-substring%3A%20bcabcabcabcabca%5Cn-%202-substring%3A%20cabcabcabcabc%5Cn-%203-substring%3A%20abcabcabcab%5Cn-%204-substring%3A%20bcabcabca%5Cn-%205-substring%3A%20cabcabc%5Cn-%206-substring%3A%20abcab%5Cn-%207-substring%3A%20bca%5Cn-%208-substring%3A%20c%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F961%5C%2FF%22%2C%22id%22%3A%22961F%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A51%2C%22totalAccepted%22%3A31%2C%22pid%22%3A%22CF961F%22%2C%22title%22%3A%22k-substrings%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A47803%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1qwq%22%2C%22forum%22%3A%7B%22id%22%3A24875%2C%22name%22%3A%22CF961F%20k-substrings%22%2C%22slug%22%3A%22CF961F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2774%22%2C%22title%22%3A%22%5Cu65b9%5Cu683c%5Cu53d6%5Cu6570%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF438E%22%2C%22title%22%3A%22The%20Child%20and%20Binary%20Tree%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF960E%22%2C%22title%22%3A%22Alternating%20Tree%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF985F%22%2C%22title%22%3A%22Isomorphic%20Strings%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1139E%22%2C%22title%22%3A%22Maximize%20Mex%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22k-substrings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>k-substrings</h1>
+<h2>题目描述</h2>
+<div>You are given a string $ s $ consisting of $ n $ lowercase Latin letters.
+Let's denote $ k $ -substring of $ s $ as a string $ subs_{k}=s_{k}s_{k+1}..s_{n+1-k} $ . Obviously, $ subs_{1}=s $ , and there are exactly ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF961F/a53370bfcdd8093b84a167b7bb5ebbbbde89cfc8.png) such substrings.
+Let's call some string $ t $ an odd proper suprefix of a string $ T $ iff the following conditions are met:
+- $ |T|>|t| $ ;
+- $ |t| $ is an odd number;
+- $ t $ is simultaneously a prefix and a suffix of $ T $ .
+For evey $ k $ -substring (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF961F/0db45c1fd47a0828e7ef646cf910ebdb4ed26cf3.png)) of $ s $ you have to calculate the maximum length of its odd proper suprefix.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ $ (2<=n<=10^{6}) $ — the length $ s $ .
+The second line contains the string $ s $ consisting of $ n $ lowercase Latin letters.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF961F/a53370bfcdd8093b84a167b7bb5ebbbbde89cfc8.png) integers. $ i $ -th of them should be equal to maximum length of an odd proper suprefix of $ i $ -substring of $ s $ (or $ -1 $ , if there is no such string that is an odd proper suprefix of $ i $ -substring).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>15
+bcabcabcabcabca
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>9 7 5 3 1 -1 -1 -1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>24
+abaaabaaaabaaabaaaabaaab
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>15 13 11 9 7 5 3 1 1 -1 -1 1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>19
+cabcabbcabcabbcabca
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>5 3 1 -1 -1 1 1 -1 -1 -1
+</code></pre>
+<h2>说明</h2>
+<div>The answer for first sample test is folowing:
+- 1-substring: bcabcabcabcabca
+- 2-substring: cabcabcabcabc
+- 3-substring: abcabcabcab
+- 4-substring: bcabcabca
+- 5-substring: cabcabc
+- 6-substring: abcab
+- 7-substring: bca
+- 8-substring: c</div>
+</article>
+</div>
+</div>
+</body>
+</html>

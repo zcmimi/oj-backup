@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Three Pieces - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401151:j/K+PmKsEvXcy87StoBQA5nTvNOvxapvYbbhq3fxFN8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20stumbled%20upon%20a%20new%20kind%20of%20chess%20puzzles.%20The%20chessboard%20you%20are%20given%20is%20not%20necesserily%20%24%208%20%5C%5Ctimes%208%20%24%20%2C%20but%20it%20still%20is%20%24%20N%20%5C%5Ctimes%20N%20%24%20.%20Each%20square%20has%20some%20number%20written%20on%20it%2C%20all%20the%20numbers%20are%20from%20%24%201%20%24%20to%20%24%20N%5E2%20%24%20and%20all%20the%20numbers%20are%20pairwise%20distinct.%20The%20%24%20j%20%24%20-th%20square%20in%20the%20%24%20i%20%24%20-th%20row%20has%20a%20number%20%24%20A_%7Bij%7D%20%24%20written%20on%20it.%5Cn%5CnIn%20your%20chess%20set%20you%20have%20only%20three%20pieces%3A%20a%20knight%2C%20a%20bishop%20and%20a%20rook.%20At%20first%2C%20you%20put%20one%20of%20them%20on%20the%20square%20with%20the%20number%20%24%201%20%24%20%28you%20can%20choose%20which%20one%29.%20Then%20you%20want%20to%20reach%20square%20%24%202%20%24%20%28possibly%20passing%20through%20some%20other%20squares%20in%20process%29%2C%20then%20square%20%24%203%20%24%20and%20so%20on%20until%20you%20reach%20square%20%24%20N%5E2%20%24%20.%20In%20one%20step%20you%20are%20allowed%20to%20either%20make%20a%20valid%20move%20with%20the%20current%20piece%20or%20replace%20it%20with%20some%20other%20piece.%20Each%20square%20can%20be%20visited%20arbitrary%20number%20of%20times.%5Cn%5CnA%20knight%20can%20move%20to%20a%20square%20that%20is%20two%20squares%20away%20horizontally%20and%20one%20square%20vertically%2C%20or%20two%20squares%20vertically%20and%20one%20square%20horizontally.%20A%20bishop%20moves%20diagonally.%20A%20rook%20moves%20horizontally%20or%20vertically.%20The%20move%20should%20be%20performed%20to%20a%20different%20square%20from%20the%20one%20a%20piece%20is%20currently%20standing%20on.%5Cn%5CnYou%20want%20to%20minimize%20the%20number%20of%20steps%20of%20the%20whole%20traversal.%20Among%20all%20the%20paths%20to%20have%20the%20same%20number%20of%20steps%20you%20want%20to%20choose%20the%20one%20with%20the%20lowest%20number%20of%20piece%20replacements.%5Cn%5CnWhat%20is%20the%20path%20you%20should%20take%20to%20satisfy%20all%20conditions%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20N%20%24%20%28%20%24%203%20%5C%5Cle%20N%20%5C%5Cle%2010%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20chessboard.%5Cn%5CnEach%20of%20the%20next%20%24%20N%20%24%20lines%20contains%20%24%20N%20%24%20integers%20%24%20A_%7Bi1%7D%2C%20A_%7Bi2%7D%2C%20%5C%5Cdots%2C%20A_%7BiN%7D%20%24%20%28%20%24%201%20%5C%5Cle%20A_%7Bij%7D%20%5C%5Cle%20N%5E2%20%24%20%29%20%5Cu2014%20the%20numbers%20written%20on%20the%20squares%20of%20the%20%24%20i%20%24%20-th%20row%20of%20the%20board.%5Cn%5CnIt%20is%20guaranteed%20that%20all%20%24%20A_%7Bij%7D%20%24%20are%20pairwise%20distinct.%22%2C%22outputFormat%22%3A%22The%20only%20line%20should%20contain%20two%20integers%20%5Cu2014%20the%20number%20of%20steps%20in%20the%20best%20answer%20and%20the%20number%20of%20replacement%20moves%20in%20it.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%209%203%5Cn8%206%207%5Cn4%202%205%5Cn%22%2C%2212%201%5Cn%22%5D%5D%2C%22hint%22%3A%22Here%20are%20the%20steps%20for%20the%20first%20example%20%28the%20starting%20piece%20is%20a%20knight%29%3A%5Cn%5Cn1.%20Move%20to%20%24%20%283%2C%202%29%20%24%5Cn2.%20Move%20to%20%24%20%281%2C%203%29%20%24%5Cn3.%20Move%20to%20%24%20%283%2C%202%29%20%24%5Cn4.%20Replace%20the%20knight%20with%20a%20rook%5Cn5.%20Move%20to%20%24%20%283%2C%201%29%20%24%5Cn6.%20Move%20to%20%24%20%283%2C%203%29%20%24%5Cn7.%20Move%20to%20%24%20%283%2C%202%29%20%24%5Cn8.%20Move%20to%20%24%20%282%2C%202%29%20%24%5Cn9.%20Move%20to%20%24%20%282%2C%203%29%20%24%5Cn10.%20Move%20to%20%24%20%282%2C%201%29%20%24%5Cn11.%20Move%20to%20%24%20%281%2C%201%29%20%24%5Cn12.%20Move%20to%20%24%20%281%2C%202%29%20%24%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1065%5C%2FD%22%2C%22id%22%3A%221065D%22%7D%2C%22translation%22%3A%22%5Cu4e00%5Cu4e2a%24N%2AN%24%5Cu7684%5Cu68cb%5Cu76d8%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu53f7%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu6240%5Cu6709%5Cu5e8f%5Cu53f7%5Cu6784%5Cu6210%5Cu4e00%5Cu4e2a%241%20-%20%28N%2AN%29%24%5Cu7684%5Cu6392%5Cu5217%5Cu3002%5Cu4f60%5Cu8981%5Cu64cd%5Cu63a7%5Cu4e00%5Cu4e2a%5Cu68cb%5Cu5b50%5Cu6309%5Cu5e8f%5Cu53f7%5Cu7684%5Cu987a%5Cu5e8f%5Cu8d70%5Cu5b8c%5Cu6574%5Cu4e2a%5Cu68cb%5Cu76d8%5Cuff0c%5Cu5373%5Cu4ece1%5Cu8d70%5Cu52302%5Cu2026%5Cu2026%5Cu4e00%5Cu76f4%5Cu8d70%5Cu5230%5Cu5e8f%5Cu53f7%5Cu4e3aN%2AN%5Cu7684%5Cu8282%5Cu70b9%5Cu3002%5Cu4e3a%5Cu4e86%5Cu8fbe%5Cu6210%5Cu5176%5Cu4e2d%5Cu4e00%5Cu6b21%5Cu79fb%5Cu52a8%5Cuff0c%5Cu4f60%5Cu53ef%5Cu80fd%5Cu8981%5Cu8d70%5Cu8bb8%5Cu591a%5Cu6b65%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu6709%5Cu4e09%5Cu79cd%5Cu68cb%5Cu5b50%5Cuff0c%5Cu8f66%5Cu3001%5Cu9a6c%5Cu548c%5Cu8c61%5Cuff08%5Cu884c%5Cu8d70%5Cu89c4%5Cu5219%5Cu53c2%5Cu7167%5Cu56fd%5Cu9645%5Cu8c61%5Cu68cb%5Cuff09%5Cu3002%5Cu6bcf%5Cu8d70%5Cu4e00%5Cu6b65%5Cu8017%5Cu8d391%5Cu5355%5Cu4f4d%5Cu65f6%5Cu95f4%5Cu3002%5Cu4f60%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu5728%5Cu4efb%5Cu610f%5Cu65f6%5Cu523b%5Cu8017%5Cu8d391%5Cu5355%5Cu4f4d%5Cu65f6%5Cu95f4%5Cu66f4%5Cu6362%5Cu68cb%5Cu5b50%5Cu7684%5Cu79cd%5Cu7c7b%5Cuff08%5Cu68cb%5Cu5b50%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu4e0d%5Cu53d8%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6c42%5Cu6d88%5Cu8017%5Cu7684%5Cu6700%5Cu77ed%5Cu65f6%5Cu95f4%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu5728%5Cu786e%5Cu4fdd%5Cu65f6%5Cu95f4%5Cu6700%5Cu77ed%5Cu7684%5Cu60c5%5Cu51b5%5Cu4e0b%5Cuff0c%5Cu68cb%5Cu5b50%5Cu66f4%5Cu6362%5Cu6b21%5Cu6570%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B4%2C151%2C160%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A144%2C%22totalAccepted%22%3A67%2C%22pid%22%3A%22CF1065D%22%2C%22title%22%3A%22Three%20Pieces%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22SP3724%22%2C%22title%22%3A%22RAINBOW%20-%20Rainbow%20Ride%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22P4512%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu591a%5Cu9879%5Cu5f0f%5Cu9664%5Cu6cd5%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1015F%22%2C%22title%22%3A%22Bracket%20Substring%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1045D%22%2C%22title%22%3A%22Interstellar%20battle%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1065F%22%2C%22title%22%3A%22Up%20and%20Down%20the%20Tree%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Three%20Pieces%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Three Pieces</h1>
+<h2>题意翻译</h2>
+<div>一个$N*N$的棋盘，每个棋盘上有一个序号，保证所有序号构成一个$1 - (N*N)$的排列。你要操控一个棋子按序号的顺序走完整个棋盘，即从1走到2……一直走到序号为N*N的节点。为了达成其中一次移动，你可能要走许多步。
+你有三种棋子，车、马和象（行走规则参照国际象棋）。每走一步耗费1单位时间。你也可以在任意时刻耗费1单位时间更换棋子的种类（棋子的位置不变）。
+求消耗的最短时间，以及在确保时间最短的情况下，棋子更换次数的最小值。</div>
+<h2>题目描述</h2>
+<div>You stumbled upon a new kind of chess puzzles. The chessboard you are given is not necesserily $ 8 \times 8 $ , but it still is $ N \times N $ . Each square has some number written on it, all the numbers are from $ 1 $ to $ N^2 $ and all the numbers are pairwise distinct. The $ j $ -th square in the $ i $ -th row has a number $ A_{ij} $ written on it.
+In your chess set you have only three pieces: a knight, a bishop and a rook. At first, you put one of them on the square with the number $ 1 $ (you can choose which one). Then you want to reach square $ 2 $ (possibly passing through some other squares in process), then square $ 3 $ and so on until you reach square $ N^2 $ . In one step you are allowed to either make a valid move with the current piece or replace it with some other piece. Each square can be visited arbitrary number of times.
+A knight can move to a square that is two squares away horizontally and one square vertically, or two squares vertically and one square horizontally. A bishop moves diagonally. A rook moves horizontally or vertically. The move should be performed to a different square from the one a piece is currently standing on.
+You want to minimize the number of steps of the whole traversal. Among all the paths to have the same number of steps you want to choose the one with the lowest number of piece replacements.
+What is the path you should take to satisfy all conditions?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ N $ ( $ 3 \le N \le 10 $ ) — the size of the chessboard.
+Each of the next $ N $ lines contains $ N $ integers $ A_{i1}, A_{i2}, \dots, A_{iN} $ ( $ 1 \le A_{ij} \le N^2 $ ) — the numbers written on the squares of the $ i $ -th row of the board.
+It is guaranteed that all $ A_{ij} $ are pairwise distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>The only line should contain two integers — the number of steps in the best answer and the number of replacement moves in it.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 9 3
+8 6 7
+4 2 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12 1
+</code></pre>
+<h2>说明</h2>
+<div>Here are the steps for the first example (the starting piece is a knight):
+1. Move to $ (3, 2) $
+2. Move to $ (1, 3) $
+3. Move to $ (3, 2) $
+4. Replace the knight with a rook
+5. Move to $ (3, 1) $
+6. Move to $ (3, 3) $
+7. Move to $ (3, 2) $
+8. Move to $ (2, 2) $
+9. Move to $ (2, 3) $
+10. Move to $ (2, 1) $
+11. Move to $ (1, 1) $
+12. Move to $ (1, 2) $</div>
+</article>
+</div>
+</div>
+</body>
+</html>

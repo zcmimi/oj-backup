@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Number Circle - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402849:PPoJFkRhExnp9qTIJmyn4IlurH93dwDBNq7Kw5ruUzo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20%24%20n%20%24%20numbers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20.%20Is%20it%20possible%20to%20arrange%20them%20in%20a%20circle%20in%20such%20a%20way%20that%20every%20number%20is%20strictly%20less%20than%20the%20sum%20of%20its%20neighbors%3F%5Cn%5CnFor%20example%2C%20for%20the%20array%20%24%20%5B1%2C%204%2C%205%2C%206%2C%207%2C%208%5D%20%24%20%2C%20the%20arrangement%20on%20the%20left%20is%20valid%2C%20while%20arrangement%20on%20the%20right%20is%20not%2C%20as%20%24%205%5C%5Cge%204%20%2B%201%20%24%20and%20%24%208%3E%201%20%2B%206%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1189B%5C%2F68eb6130a6cefad8260448b1347c6d6d41d81495.png%29%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%203%5C%5Cle%20n%20%5C%5Cle%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20numbers.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cleq%20a_i%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20the%20numbers.%20The%20given%20numbers%20are%20not%20necessarily%20distinct%20%28i.e.%20duplicates%20are%20allowed%29.%22%2C%22outputFormat%22%3A%22If%20there%20is%20no%20solution%2C%20output%20%5C%22NO%5C%22%20in%20the%20first%20line.%5Cn%5CnIf%20there%20is%20a%20solution%2C%20output%20%5C%22YES%5C%22%20in%20the%20first%20line.%20In%20the%20second%20line%20output%20%24%20n%20%24%20numbers%20%5Cu2014%20elements%20of%20the%20array%20in%20the%20order%20they%20will%20stay%20in%20the%20circle.%20The%20first%20and%20the%20last%20element%20you%20output%20are%20considered%20neighbors%20in%20the%20circle.%20If%20there%20are%20multiple%20solutions%2C%20output%20any%20of%20them.%20You%20can%20print%20the%20circle%20starting%20with%20any%20element.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn2%204%203%5Cn%22%2C%22%5CnYES%5Cn4%202%203%20%22%5D%2C%5B%22%5Cn5%5Cn1%202%203%204%204%5Cn%22%2C%22%5CnYES%5Cn4%204%202%201%203%22%5D%2C%5B%22%5Cn3%5Cn13%208%205%5Cn%22%2C%22%5CnNO%22%5D%2C%5B%22%5Cn4%5Cn1%2010%20100%201000%5Cn%22%2C%22%5CnNO%22%5D%5D%2C%22hint%22%3A%22One%20of%20the%20possible%20arrangements%20is%20shown%20in%20the%20first%20example%3A%5Cn%5Cn%20%24%204%3C%202%20%2B%203%20%24%20%3B%5Cn%5Cn%20%24%202%20%3C%204%20%2B%203%20%24%20%3B%5Cn%5Cn%20%24%203%3C%204%20%2B%202%20%24%20.%5Cn%5CnOne%20of%20the%20possible%20arrangements%20is%20shown%20in%20the%20second%20example.%5Cn%5CnNo%20matter%20how%20we%20arrange%20%24%2013%2C%208%2C%205%20%24%20in%20a%20circle%20in%20the%20third%20example%2C%20%24%2013%20%24%20will%20have%20%24%208%20%24%20and%20%24%205%20%24%20as%20neighbors%2C%20but%20%24%2013%5C%5Cge%208%20%2B%205%20%24%20.%5Cn%5CnThere%20is%20no%20solution%20in%20the%20fourth%20example.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1189%5C%2FB%22%2C%22id%22%3A%221189B%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%20%24n%24%20%5Cu4e2a%5Cu6570%20%24s_1%2Cs_2%2C%5C%5Cdots%2Cs_n%24%20%5Cu3002%20%20%5Cr%5Cn%5Cu4f60%5Cu8981%5Cu5c06%5Cu5b83%5Cu4eec%5Cu6392%5Cu5217%5Cu6210%5Cu4e00%5Cu4e2a%5Cu73af%5Cu5f62%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu8be5%5Cu73af%5Cu6bcf%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu4e0a%5Cu7684%5Cu6570%5Cu90fd%2A%2A%5Cu4e25%5Cu683c%5Cu5c0f%5Cu4e8e%2A%2A%5Cu5b83%5Cu4e24%5Cu4e2a%5Cu201c%5Cu90bb%5Cu5c45%5Cu201d%5Cu7684%5Cu548c%5Cu3002%20%20%5Cr%5Cn%5Cu5982%5Cu679c%5Cu6709%5Cu8fd9%5Cu79cd%5Cu65b9%5Cu6848%5Cuff0c%5Cu5728%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%60YES%60%5Cuff0c%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu79cd%5Cu65b9%5Cu6848%5Cuff1b%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%60NO%60%5Cu5373%5Cu53ef%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu628a%5Cu4f60%5Cu8f93%5Cu51fa%5Cu7684%5Cu6570%5Cu5217%5Cu8bb0%5Cu4f5c%20%24x%24%20%5Cuff0c%24%5C%5Crm%20SPJ%24%20%5Cu5c06%5Cu4f1a%5Cu8ba4%5Cu4e3a%20%24x_i%24%20%5Cu7684%5Cu201c%5Cu90bb%5Cu5c45%5Cu201d%5Cu662f%20%24x_%7Bi-1%7D%24%20%5Cu548c%20%24x_%7Bi%2B1%7D%24%5Cuff1b%5Cu7279%5Cu6b8a%5Cu5730%5Cuff0c%24x_1%24%20%5Cu7684%5Cu201c%5Cu90bb%5Cu5c45%5Cu201d%5Cu662f%20%24x_2%24%20%5Cu548c%20%24x_n%24%20%2C%24x_n%24%20%5Cu7684%5Cu90bb%5Cu5c45%5Cu662f%20%24x_1%24%20%5Cu548c%20%24x_%7Bn-1%7D%24%20%5Cu3002%20%20%5Cr%5Cn%5Cu5f88%5Cu663e%5Cu7136%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu73af%5Cu7684%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu5f00%5Cu59cb%5Cu8f93%5Cu51fa%5Cuff0c%5Cu8fd9%5Cu53ea%5Cu4f1a%5Cu9020%5Cu6210%5Cu73af%5Cu7684%5Cu65cb%5Cu8f6c%5Cuff0c%5Cu4e0d%5Cu4f1a%5Cu5f71%5Cu54cd%5Cu7ed3%5Cu679c%5Cu3002%5Cr%5Cn%5Cr%5Cn%241%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E5%24%20%20%5Cr%5Cn%24%5C%5Cforall%20i%5C%5Cin%20%5B1%2Cn%5D%5C%5Ccap%20%5C%5Cmathbb%20Z%2C1%20%5C%5Cleq%20s_i%20%5C%5Cleq%2010%5E9%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A145%2C%22totalAccepted%22%3A106%2C%22pid%22%3A%22CF1189B%22%2C%22title%22%3A%22Number%20Circle%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4777%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu6269%5Cu5c55%5Cu4e2d%5Cu56fd%5Cu5269%5Cu4f59%5Cu5b9a%5Cu7406%5Cuff08EXCRT%5Cuff09%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1175C%22%2C%22title%22%3A%22Electrification%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1189C%22%2C%22title%22%3A%22Candies%21%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1189A%22%2C%22title%22%3A%22Keanu%20Reeves%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1188B%22%2C%22title%22%3A%22Count%20Pairs%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Number%20Circle%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Number Circle</h1>
+<h2>题意翻译</h2>
+<div>给你 $n$ 个数 $s_1,s_2,\dots,s_n$ 。
+你要将它们排列成一个环形，使得该环每个位置上的数都**严格小于**它两个“邻居”的和。
+如果有这种方案，在第一行输出`YES`，在第二行输出任意一种方案；否则输出`NO`即可。
+如果把你输出的数列记作 $x$ ，$\rm SPJ$ 将会认为 $x_i$ 的“邻居”是 $x_{i-1}$ 和 $x_{i+1}$；特殊地，$x_1$ 的“邻居”是 $x_2$ 和 $x_n$ ,$x_n$ 的邻居是 $x_1$ 和 $x_{n-1}$ 。
+很显然，你可以从环的任意一个位置开始输出，这只会造成环的旋转，不会影响结果。
+$1 \leq n \leq 10^5$
+$\forall i\in [1,n]\cap \mathbb Z,1 \leq s_i \leq 10^9$</div>
+<h2>题目描述</h2>
+<div>You are given $ n $ numbers $ a_1, a_2, \ldots, a_n $ . Is it possible to arrange them in a circle in such a way that every number is strictly less than the sum of its neighbors?
+For example, for the array $ [1, 4, 5, 6, 7, 8] $ , the arrangement on the left is valid, while arrangement on the right is not, as $ 5\ge 4 + 1 $ and $ 8> 1 + 6 $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1189B/68eb6130a6cefad8260448b1347c6d6d41d81495.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 3\le n \le 10^5 $ ) — the number of numbers.
+The second line contains $ n $ integers $ a_1, a_2, \ldots, a_n $ ( $ 1 \leq a_i \le 10^9 $ ) — the numbers. The given numbers are not necessarily distinct (i.e. duplicates are allowed).</div>
+<h3>输出格式</h3>
+<br />
+<div>If there is no solution, output "NO" in the first line.
+If there is a solution, output "YES" in the first line. In the second line output $ n $ numbers — elements of the array in the order they will stay in the circle. The first and the last element you output are considered neighbors in the circle. If there are multiple solutions, output any of them. You can print the circle starting with any element.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+2 4 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+YES
+4 2 3 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5
+1 2 3 4 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+YES
+4 4 2 1 3</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+3
+13 8 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+NO</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+4
+1 10 100 1000
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+NO</code></pre>
+<h2>说明</h2>
+<div>One of the possible arrangements is shown in the first example:
+$ 4< 2 + 3 $ ;
+$ 2 < 4 + 3 $ ;
+$ 3< 4 + 2 $ .
+One of the possible arrangements is shown in the second example.
+No matter how we arrange $ 13, 8, 5 $ in a circle in the third example, $ 13 $ will have $ 8 $ and $ 5 $ as neighbors, but $ 13\ge 8 + 5 $ .
+There is no solution in the fourth example.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

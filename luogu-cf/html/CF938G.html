@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Shortest Path Queries - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399619:hQ3NH5uS3zT+A0X/IaAH/FsP/lzVKJU59rbUw0Pw7us=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20an%20undirected%20connected%20graph%20with%20weighted%20edges.%20The%20length%20of%20some%20path%20between%20two%20vertices%20is%20the%20bitwise%20xor%20of%20weights%20of%20all%20edges%20belonging%20to%20this%20path%20%28if%20some%20edge%20is%20traversed%20more%20than%20once%2C%20then%20it%20is%20included%20in%20bitwise%20xor%20the%20same%20number%20of%20times%29.%5Cn%5CnThere%20are%20three%20types%20of%20queries%20you%20have%20to%20process%3A%5Cn%5Cn-%20%24%201%20%24%20%24%20x%20%24%20%24%20y%20%24%20%24%20d%20%24%20%5Cu2014%20add%20an%20edge%20connecting%20vertex%20%24%20x%20%24%20to%20vertex%20%24%20y%20%24%20with%20weight%20%24%20d%20%24%20.%20It%20is%20guaranteed%20that%20there%20is%20no%20edge%20connecting%20%24%20x%20%24%20to%20%24%20y%20%24%20before%20this%20query%3B%5Cn-%20%24%202%20%24%20%24%20x%20%24%20%24%20y%20%24%20%5Cu2014%20remove%20an%20edge%20connecting%20vertex%20%24%20x%20%24%20to%20vertex%20%24%20y%20%24%20.%20It%20is%20guaranteed%20that%20there%20was%20such%20edge%20in%20the%20graph%2C%20and%20the%20graph%20stays%20connected%20after%20this%20query%3B%5Cn-%20%24%203%20%24%20%24%20x%20%24%20%24%20y%20%24%20%5Cu2014%20calculate%20the%20length%20of%20the%20shortest%20path%20%28possibly%20non-simple%29%20from%20vertex%20%24%20x%20%24%20to%20vertex%20%24%20y%20%24%20.%5Cn%5CnPrint%20the%20answers%20for%20all%20queries%20of%20type%20%24%203%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20numbers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D200000%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20and%20the%20number%20of%20edges%20in%20the%20graph%2C%20respectively.%5Cn%5CnThen%20%24%20m%20%24%20lines%20follow%20denoting%20the%20edges%20of%20the%20graph.%20Each%20line%20contains%20three%20integers%20%24%20x%20%24%20%2C%20%24%20y%20%24%20and%20%24%20d%20%24%20%28%20%24%201%3C%3Dx%3Cy%3C%3Dn%20%24%20%2C%20%24%200%3C%3Dd%3C%3D2%5E%7B30%7D-1%20%24%20%29.%20Each%20pair%20%24%20%28x%2Cy%29%20%24%20is%20listed%20at%20most%20once.%20The%20initial%20graph%20is%20connected.%5Cn%5CnThen%20one%20line%20follows%2C%20containing%20an%20integer%20%24%20q%20%24%20%28%20%24%201%3C%3Dq%3C%3D200000%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries%20you%20have%20to%20process.%5Cn%5CnThen%20%24%20q%20%24%20lines%20follow%2C%20denoting%20queries%20in%20the%20following%20form%3A%5Cn%5Cn-%20%24%201%20%24%20%24%20x%20%24%20%24%20y%20%24%20%24%20d%20%24%20%28%20%24%201%3C%3Dx%3Cy%3C%3Dn%20%24%20%2C%20%24%200%3C%3Dd%3C%3D2%5E%7B30%7D-1%20%24%20%29%20%5Cu2014%20add%20an%20edge%20connecting%20vertex%20%24%20x%20%24%20to%20vertex%20%24%20y%20%24%20with%20weight%20%24%20d%20%24%20.%20It%20is%20guaranteed%20that%20there%20is%20no%20edge%20connecting%20%24%20x%20%24%20to%20%24%20y%20%24%20before%20this%20query%3B%5Cn-%20%24%202%20%24%20%24%20x%20%24%20%24%20y%20%24%20%28%20%24%201%3C%3Dx%3Cy%3C%3Dn%20%24%20%29%20%5Cu2014%20remove%20an%20edge%20connecting%20vertex%20%24%20x%20%24%20to%20vertex%20%24%20y%20%24%20.%20It%20is%20guaranteed%20that%20there%20was%20such%20edge%20in%20the%20graph%2C%20and%20the%20graph%20stays%20connected%20after%20this%20query%3B%5Cn-%20%24%203%20%24%20%24%20x%20%24%20%24%20y%20%24%20%28%20%24%201%3C%3Dx%3Cy%3C%3Dn%20%24%20%29%20%5Cu2014%20calculate%20the%20length%20of%20the%20shortest%20path%20%28possibly%20non-simple%29%20from%20vertex%20%24%20x%20%24%20to%20vertex%20%24%20y%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20at%20least%20one%20query%20has%20type%20%24%203%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20the%20answers%20for%20all%20queries%20of%20type%20%24%203%20%24%20in%20the%20order%20they%20appear%20in%20input.%22%2C%22samples%22%3A%5B%5B%225%205%5Cn1%202%203%5Cn2%203%204%5Cn3%204%205%5Cn4%205%206%5Cn1%205%201%5Cn5%5Cn3%201%205%5Cn1%201%203%201%5Cn3%201%205%5Cn2%201%205%5Cn3%201%205%5Cn%22%2C%221%5Cn1%5Cn2%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3500%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F938%5C%2FG%22%2C%22id%22%3A%22938G%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu8fde%5Cu901a%5Cu5e26%5Cu6743%5Cu65e0%5Cu5411%5Cu56fe%2C%5Cu8fb9%5Cu6709%5Cu8fb9%5Cu6743%2C%5Cu8981%5Cu6c42%5Cu652f%5Cu6301%24q%24%20%5Cu4e2a%5Cu64cd%5Cu4f5c%3A%5Cn%5Cn%241%24%20%20%24x%24%20%20%24y%24%20%20%24d%24%20%5Cu5728%5Cu539f%5Cu56fe%5Cu4e2d%5Cu52a0%5Cu5165%5Cu4e00%5Cu6761%24x%24%20%5Cu5230%24y%24%20%5Cu6743%5Cu503c%5Cu4e3a%24b%24%20%5Cu7684%5Cu8fb9%20%5Cn%5Cn%242%24%20%20%24x%24%20%20%24y%24%20%5Cu628a%5Cu56fe%5Cu4e2d%24x%24%20%5Cu5230%24y%24%20%5Cu7684%5Cu8fb9%5Cu5220%5Cu6389%5Cn%5Cn%243%24%20%20%24x%24%20%20%24y%24%20%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%24x%24%20%5Cu5230%24y%24%20%5Cu7684%5Cu5f02%5Cu6216%5Cu6700%5Cu77ed%5Cu8def%20%5Cn%5Cn%5Cu4fdd%5Cu8bc1%5Cu4efb%5Cu610f%5Cu64cd%5Cu4f5c%5Cu540e%5Cu539f%5Cu56fe%5Cu8fde%5Cu901a%5Cu65e0%5Cu91cd%5Cu8fb9%5Cu81ea%5Cu73af%5Cu4e14%5Cu64cd%5Cu4f5c%5Cu5747%5Cu5408%5Cu6cd5%20%5Cn%5Cn%24n%2Cm%2Cq%5C%5Cle200000%24%20%5Cn%5Cn%5Cu611f%5Cu8c22%40Kelin%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A293%2C%22totalAccepted%22%3A89%2C%22pid%22%3A%22CF938G%22%2C%22title%22%3A%22Shortest%20Path%20Queries%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A36235%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A22994%2C%22name%22%3A%22CF938G%20Shortest%20Path%20Queries%22%2C%22slug%22%3A%22CF938G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4097%22%2C%22title%22%3A%22%5BHEOI2013%5DSegment%20%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF739E%22%2C%22title%22%3A%22Gosha%20is%20hunting%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF576E%22%2C%22title%22%3A%22Painting%20Edges%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4546%22%2C%22title%22%3A%22%5BTHUWC2017%5D%5Cu5728%5Cu7f8e%5Cu5999%5Cu7684%5Cu6570%5Cu5b66%5Cu738b%5Cu56fd%5Cu4e2d%5Cu7545%5Cu6e38%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4632%22%2C%22title%22%3A%22%5BAPIO2018%5D%20New%20Home%20%5Cu65b0%5Cu5bb6%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Shortest%20Path%20Queries%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Shortest Path Queries</h1>
+<h2>题意翻译</h2>
+<div>给出一个连通带权无向图,边有边权,要求支持$q$ 个操作:
+$1$ $x$ $y$ $d$ 在原图中加入一条$x$ 到$y$ 权值为$b$ 的边
+$2$ $x$ $y$ 把图中$x$ 到$y$ 的边删掉
+$3$ $x$ $y$ 表示询问$x$ 到$y$ 的异或最短路
+保证任意操作后原图连通无重边自环且操作均合法
+$n,m,q\le200000$
+感谢@Kelin 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You are given an undirected connected graph with weighted edges. The length of some path between two vertices is the bitwise xor of weights of all edges belonging to this path (if some edge is traversed more than once, then it is included in bitwise xor the same number of times).
+There are three types of queries you have to process:
+- $ 1 $ $ x $ $ y $ $ d $ — add an edge connecting vertex $ x $ to vertex $ y $ with weight $ d $ . It is guaranteed that there is no edge connecting $ x $ to $ y $ before this query;
+- $ 2 $ $ x $ $ y $ — remove an edge connecting vertex $ x $ to vertex $ y $ . It is guaranteed that there was such edge in the graph, and the graph stays connected after this query;
+- $ 3 $ $ x $ $ y $ — calculate the length of the shortest path (possibly non-simple) from vertex $ x $ to vertex $ y $ .
+Print the answers for all queries of type $ 3 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two numbers $ n $ and $ m $ ( $ 1<=n,m<=200000 $ ) — the number of vertices and the number of edges in the graph, respectively.
+Then $ m $ lines follow denoting the edges of the graph. Each line contains three integers $ x $ , $ y $ and $ d $ ( $ 1<=x<y<=n $ , $ 0<=d<=2^{30}-1 $ ). Each pair $ (x,y) $ is listed at most once. The initial graph is connected. Then one line follows, containing an integer $ q $ ( $ 1<=q<=200000 $ ) — the number of queries you have to process. Then $ q $ lines follow, denoting queries in the following form: - $ 1 $ $ x $ $ y $ $ d $ ( $ 1<=x<y<=n $ , $ 0<=d<=2^{30}-1 $ ) — add an edge connecting vertex $ x $ to vertex $ y $ with weight $ d $ . It is guaranteed that there is no edge connecting $ x $ to $ y $ before this query; - $ 2 $ $ x $ $ y $ ( $ 1<=x<y<=n $ ) — remove an edge connecting vertex $ x $ to vertex $ y $ . It is guaranteed that there was such edge in the graph, and the graph stays connected after this query; - $ 3 $ $ x $ $ y $ ( $ 1<=x<y<=n $ ) — calculate the length of the shortest path (possibly non-simple) from vertex $ x $ to vertex $ y $ . It is guaranteed that at least one query has type $ 3 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the answers for all queries of type $ 3 $ in the order they appear in input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 5
+1 2 3
+2 3 4
+3 4 5
+4 5 6
+1 5 1
+5
+3 1 5
+1 1 3 1
+3 1 5
+2 1 5
+3 1 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+1
+2
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

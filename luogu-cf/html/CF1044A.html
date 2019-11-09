@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>The Tower is Going Home - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400925:wFHCKP0oWYIaxcsTVlEbP9xutPjJ4YKZFBySiOjKggM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22On%20a%20chessboard%20with%20a%20width%20of%20%24%2010%5E9%20%24%20and%20a%20height%20of%20%24%2010%5E9%20%24%20%2C%20the%20rows%20are%20numbered%20from%20bottom%20to%20top%20from%20%24%201%20%24%20to%20%24%2010%5E9%20%24%20%2C%20and%20the%20columns%20are%20numbered%20from%20left%20to%20right%20from%20%24%201%20%24%20to%20%24%2010%5E9%20%24%20.%20Therefore%2C%20for%20each%20cell%20of%20the%20chessboard%20you%20can%20assign%20the%20coordinates%20%24%20%28x%2Cy%29%20%24%20%2C%20where%20%24%20x%20%24%20is%20the%20column%20number%20and%20%24%20y%20%24%20is%20the%20row%20number.%5Cn%5CnEvery%20day%20there%20are%20fights%20between%20black%20and%20white%20pieces%20on%20this%20board.%20Today%2C%20the%20black%20ones%20won%2C%20but%20at%20what%20price%3F%20Only%20the%20rook%20survived%2C%20and%20it%20was%20driven%20into%20the%20lower%20left%20corner%20%5Cu2014%20a%20cell%20with%20coordinates%20%24%20%281%2C1%29%20%24%20.%20But%20it%20is%20still%20happy%2C%20because%20the%20victory%20has%20been%20won%20and%20it%27s%20time%20to%20celebrate%20it%21%20In%20order%20to%20do%20this%2C%20the%20rook%20needs%20to%20go%20home%2C%20namely%20%5Cu2014%20on%20the%20upper%20side%20of%20the%20field%20%28that%20is%2C%20in%20any%20cell%20that%20is%20in%20the%20row%20with%20number%20%24%2010%5E9%20%24%20%29.%5Cn%5CnEverything%20would%20have%20been%20fine%2C%20but%20the%20treacherous%20white%20figures%20put%20spells%20on%20some%20places%20of%20the%20field%20before%20the%20end%20of%20the%20game.%20There%20are%20two%20types%20of%20spells%3A%5Cn%5Cn-%20Vertical.%20Each%20of%20these%20is%20defined%20by%20one%20number%20%24%20x%20%24%20.%20Such%20spells%20create%20an%20infinite%20blocking%20line%20between%20the%20columns%20%24%20x%20%24%20and%20%24%20x%2B1%20%24%20.%5Cn-%20Horizontal.%20Each%20of%20these%20is%20defined%20by%20three%20numbers%20%24%20x_1%20%24%20%2C%20%24%20x_2%20%24%20%2C%20%24%20y%20%24%20.%20Such%20spells%20create%20a%20blocking%20segment%20that%20passes%20through%20the%20top%20side%20of%20the%20cells%2C%20which%20are%20in%20the%20row%20%24%20y%20%24%20and%20in%20columns%20from%20%24%20x_1%20%24%20to%20%24%20x_2%20%24%20inclusive.%20The%20peculiarity%20of%20these%20spells%20is%20that%20it%20is%20impossible%20for%20a%20certain%20pair%20of%20such%20spells%20to%20have%20a%20common%20point.%20Note%20that%20horizontal%20spells%20can%20have%20common%20points%20with%20vertical%20spells.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1044A%5C%2F4d99e8dcb502f146f754f5a6e1fe990cd7a19a89.png%29%20An%20example%20of%20a%20chessboard.Let%27s%20recall%20that%20the%20rook%20is%20a%20chess%20piece%20that%20in%20one%20move%20can%20move%20to%20any%20point%20that%20is%20in%20the%20same%20row%20or%20column%20with%20its%20initial%20position.%20In%20our%20task%2C%20the%20rook%20can%20move%20from%20the%20cell%20%24%20%28r_0%2Cc_0%29%20%24%20into%20the%20cell%20%24%20%28r_1%2Cc_1%29%20%24%20only%20under%20the%20condition%20that%20%24%20r_1%20%3D%20r_0%20%24%20or%20%24%20c_1%20%3D%20c_0%20%24%20and%20there%20is%20no%20blocking%20lines%20or%20blocking%20segments%20between%20these%20cells%20%28For%20better%20understanding%2C%20look%20at%20the%20samples%29.%5Cn%5CnFortunately%2C%20the%20rook%20can%20remove%20spells%2C%20but%20for%20this%20it%20has%20to%20put%20tremendous%20efforts%2C%20therefore%2C%20it%20wants%20to%20remove%20the%20minimum%20possible%20number%20of%20spells%20in%20such%20way%2C%20that%20after%20this%20it%20can%20return%20home.%20Find%20this%20number%21%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%200%20%5C%5Cle%20n%2Cm%20%5C%5Cle%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertical%20and%20horizontal%20spells.%5Cn%5CnEach%20of%20the%20following%20%24%20n%20%24%20lines%20contains%20one%20integer%20%24%20x%20%24%20%28%20%24%201%20%5C%5Cle%20x%20%3C%2010%5E9%20%24%20%29%20%5Cu2014%20the%20description%20of%20the%20vertical%20spell.%20It%20will%20create%20a%20blocking%20line%20between%20the%20columns%20of%20%24%20x%20%24%20and%20%24%20x%2B1%20%24%20.%5Cn%5CnEach%20of%20the%20following%20%24%20m%20%24%20lines%20contains%20three%20integers%20%24%20x_1%20%24%20%2C%20%24%20x_2%20%24%20and%20%24%20y%20%24%20%28%20%24%201%20%5C%5Cle%20x_%7B1%7D%20%5C%5Cle%20x_%7B2%7D%20%5C%5Cle%2010%5E9%20%24%20%2C%20%24%201%20%5C%5Cle%20y%20%3C%2010%5E9%20%24%20%29%20%5Cu2014%20the%20numbers%20that%20describe%20the%20horizontal%20spell.%20It%20will%20create%20a%20blocking%20segment%20that%20passes%20through%20the%20top%20sides%20of%20the%20cells%20that%20are%20in%20the%20row%20with%20the%20number%20%24%20y%20%24%20%2C%20in%20columns%20from%20%24%20x_1%20%24%20to%20%24%20x_2%20%24%20inclusive.%5Cn%5CnIt%20is%20guaranteed%20that%20all%20spells%20are%20different%2C%20as%20well%20as%20the%20fact%20that%20for%20each%20pair%20of%20horizontal%20spells%20it%20is%20true%20that%20the%20segments%20that%20describe%20them%20do%20not%20have%20common%20points.%22%2C%22outputFormat%22%3A%22In%20a%20single%20line%20print%20one%20integer%20%5Cu2014%20the%20minimum%20number%20of%20spells%20the%20rook%20needs%20to%20remove%20so%20it%20can%20get%20from%20the%20cell%20%24%20%281%2C1%29%20%24%20to%20at%20least%20one%20cell%20in%20the%20row%20with%20the%20number%20%24%2010%5E9%20%24%22%2C%22samples%22%3A%5B%5B%222%203%5Cn6%5Cn8%5Cn1%205%206%5Cn1%209%204%5Cn2%204%202%5Cn%22%2C%221%22%5D%2C%5B%221%203%5Cn4%5Cn1%205%203%5Cn1%209%204%5Cn4%206%206%5Cn%22%2C%221%22%5D%2C%5B%220%202%5Cn1%201000000000%204%5Cn1%201000000000%202%5Cn%22%2C%222%22%5D%2C%5B%220%200%5Cn%22%2C%220%22%5D%2C%5B%222%203%5Cn4%5Cn6%5Cn1%204%203%5Cn1%205%202%5Cn1%206%205%5Cn%22%2C%222%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20in%20order%20for%20the%20rook%20return%20home%2C%20it%20is%20enough%20to%20remove%20the%20second%20horizontal%20spell.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1044A%5C%2F9992fec5adf078b64d855d970d260a491b71be69.png%29Illustration%20for%20the%20first%20sample.%20On%20the%20left%20it%20shows%20how%20the%20field%20looked%20at%20the%20beginning.%20On%20the%20right%20it%20shows%20how%20the%20field%20looked%20after%20the%20deletion%20of%20the%20second%20horizontal%20spell.%20It%20also%20shows%20the%20path%2C%20on%20which%20the%20rook%20would%20be%20going%20home.In%20the%20second%20sample%2C%20in%20order%20for%20the%20rook%20to%20return%20home%2C%20it%20is%20enough%20to%20remove%20the%20only%20vertical%20spell.%20If%20we%20tried%20to%20remove%20just%20one%20of%20the%20horizontal%20spells%2C%20it%20would%20not%20allow%20the%20rook%20to%20get%20home%2C%20because%20it%20would%20be%20blocked%20from%20above%20by%20one%20of%20the%20remaining%20horizontal%20spells%20%28either%20first%20one%20or%20second%20one%29%2C%20and%20to%20the%20right%20it%20would%20be%20blocked%20by%20a%20vertical%20spell.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1044A%5C%2F55c35aa981684ef1bef35aec7b2c7bc122d79cca.png%29Illustration%20for%20the%20second%20sample.%20On%20the%20left%20it%20shows%20how%20the%20field%20looked%20at%20the%20beginning.%20On%20the%20right%20it%20shows%20how%20it%20looked%20after%20the%20deletion%20of%20the%20vertical%20spell.%20It%20also%20shows%20the%20path%2C%20on%20which%20the%20rook%20would%20be%20going%20home.In%20the%20third%20sample%2C%20we%20have%20two%20horizontal%20spells%20that%20go%20through%20the%20whole%20field.%20These%20spells%20can%20not%20be%20bypassed%2C%20so%20we%20need%20to%20remove%20both%20of%20them.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1044A%5C%2F4798caa5246fd4cee2f0cac48238b0b3e5e86d50.png%29Illustration%20for%20the%20third%20sample.%20On%20the%20left%20it%20shows%20how%20the%20field%20looked%20at%20the%20beginning.%20On%20the%20right%20it%20shows%20how%20the%20field%20looked%20after%20the%20deletion%20of%20the%20horizontal%20spells.%20It%20also%20shows%20the%20path%2C%20on%20which%20the%20rook%20would%20be%20going%20home.In%20the%20fourth%20sample%2C%20we%20have%20no%20spells%2C%20which%20means%20that%20we%20do%20not%20need%20to%20remove%20anything.%5Cn%5CnIn%20the%20fifth%20example%2C%20we%20can%20remove%20the%20first%20vertical%20and%20third%20horizontal%20spells.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1044A%5C%2F7e60e0d3bee2b2095c31f53125c2acbd54e1dc82.png%29Illustration%20for%20the%20fifth%20sample.%20On%20the%20left%20it%20shows%20how%20the%20field%20looked%20at%20the%20beginning.%20On%20the%20right%20it%20shows%20how%20it%20looked%20after%20the%20deletions.%20It%20also%20shows%20the%20path%2C%20on%20which%20the%20rook%20would%20be%20going%20home.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1044%5C%2FA%22%2C%22id%22%3A%221044A%22%7D%2C%22translation%22%3A%22%2B%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cuff1a%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%2Cm%5Cuff0c%5Cu4ee3%5Cu8868%5Cu6709n%5Cu4e2a%5Cu7ad6%5Cu7740%5Cu7684%5Cu5899%5Cuff0c%5Cu5176%5Cu4e0bn%5Cu884c%5Cu4ee3%5Cu8868%5Cu7ad6%5Cu7740%5Cu7684%5Cu9b54%5Cu6cd5%5Cu5899%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0cm%5Cu4ee3%5Cu8868%5Cu6709m%5Cu4e2a%5Cu6a2a%5Cu7740%5Cu7684%5Cu9b54%5Cu6cd5%5Cu5899%5Cuff0cn%5Cu884c%5Cu884c%5Cu7684m%5Cu884c%5Cu6bcf%5Cu884c%5Cu6709%5Cu4e09%5Cu4e2a%5Cu6570x1%2Cx2%2Cy%5Cuff0c%5Cu4ee3%5Cu8868%5Cu5728%5Cuff08x1%2Cy%5Cuff09%5Cu5230%20%28x2%2Cy%5Cuff09%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu9053%5Cu6a2a%5Cu7740%5Cu7684%5Cu9b54%5Cu6cd5%5Cu5899%5Cuff0c%5Cu95ee%5Cu4ece%5Cuff081%2C1%5Cuff09%5Cu51fa%5Cu53d1%5Cu5230%5Cu8fbe%5Cuff08x%2C1e9%5Cuff09%5Cu81f3%5Cu5c11%5Cu8981%5Cu6d88%5Cu9664%5Cu591a%5Cu5c11%5Cu9053%5Cu9b54%5Cu6cd5%5Cu5899%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A30%2C%22totalAccepted%22%3A11%2C%22pid%22%3A%22CF1044A%22%2C%22title%22%3A%22The%20Tower%20is%20Going%20Home%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22The%20Tower%20is%20Going%20Home%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>The Tower is Going Home</h1>
+<h2>题意翻译</h2>
+<div>+题目大意：第一行输入两个整数n,m，代表有n个竖着的墙，其下n行代表竖着的魔法墙的位置，m代表有m个横着的魔法墙，n行行的m行每行有三个数x1,x2,y，代表在（x1,y）到 (x2,y）之间有一道横着的魔法墙，问从（1,1）出发到达（x,1e9）至少要消除多少道魔法墙。</div>
+<h2>题目描述</h2>
+<div>On a chessboard with a width of $ 10^9 $ and a height of $ 10^9 $ , the rows are numbered from bottom to top from $ 1 $ to $ 10^9 $ , and the columns are numbered from left to right from $ 1 $ to $ 10^9 $ . Therefore, for each cell of the chessboard you can assign the coordinates $ (x,y) $ , where $ x $ is the column number and $ y $ is the row number.
+Every day there are fights between black and white pieces on this board. Today, the black ones won, but at what price? Only the rook survived, and it was driven into the lower left corner — a cell with coordinates $ (1,1) $ . But it is still happy, because the victory has been won and it's time to celebrate it! In order to do this, the rook needs to go home, namely — on the upper side of the field (that is, in any cell that is in the row with number $ 10^9 $ ).
+Everything would have been fine, but the treacherous white figures put spells on some places of the field before the end of the game. There are two types of spells:
+- Vertical. Each of these is defined by one number $ x $ . Such spells create an infinite blocking line between the columns $ x $ and $ x+1 $ .
+- Horizontal. Each of these is defined by three numbers $ x_1 $ , $ x_2 $ , $ y $ . Such spells create a blocking segment that passes through the top side of the cells, which are in the row $ y $ and in columns from $ x_1 $ to $ x_2 $ inclusive. The peculiarity of these spells is that it is impossible for a certain pair of such spells to have a common point. Note that horizontal spells can have common points with vertical spells.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1044A/4d99e8dcb502f146f754f5a6e1fe990cd7a19a89.png) An example of a chessboard.Let's recall that the rook is a chess piece that in one move can move to any point that is in the same row or column with its initial position. In our task, the rook can move from the cell $ (r_0,c_0) $ into the cell $ (r_1,c_1) $ only under the condition that $ r_1 = r_0 $ or $ c_1 = c_0 $ and there is no blocking lines or blocking segments between these cells (For better understanding, look at the samples).
+Fortunately, the rook can remove spells, but for this it has to put tremendous efforts, therefore, it wants to remove the minimum possible number of spells in such way, that after this it can return home. Find this number!</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 0 \le n,m \le 10^5 $ ) — the number of vertical and horizontal spells.
+Each of the following $ n $ lines contains one integer $ x $ ( $ 1 \le x < 10^9 $ ) — the description of the vertical spell. It will create a blocking line between the columns of $ x $ and $ x+1 $ .
+Each of the following $ m $ lines contains three integers $ x_1 $ , $ x_2 $ and $ y $ ( $ 1 \le x_{1} \le x_{2} \le 10^9 $ , $ 1 \le y < 10^9 $ ) — the numbers that describe the horizontal spell. It will create a blocking segment that passes through the top sides of the cells that are in the row with the number $ y $ , in columns from $ x_1 $ to $ x_2 $ inclusive.
+It is guaranteed that all spells are different, as well as the fact that for each pair of horizontal spells it is true that the segments that describe them do not have common points.</div>
+<h3>输出格式</h3>
+<br />
+<div>In a single line print one integer — the minimum number of spells the rook needs to remove so it can get from the cell $ (1,1) $ to at least one cell in the row with the number $ 10^9 $</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 3
+6
+8
+1 5 6
+1 9 4
+2 4 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1 3
+4
+1 5 3
+1 9 4
+4 6 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>0 2
+1 1000000000 4
+1 1000000000 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>2</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>0 0
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>0</code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>2 3
+4
+6
+1 4 3
+1 5 2
+1 6 5
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>2</code></pre>
+<h2>说明</h2>
+<div>In the first sample, in order for the rook return home, it is enough to remove the second horizontal spell.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1044A/9992fec5adf078b64d855d970d260a491b71be69.png)Illustration for the first sample. On the left it shows how the field looked at the beginning. On the right it shows how the field looked after the deletion of the second horizontal spell. It also shows the path, on which the rook would be going home.In the second sample, in order for the rook to return home, it is enough to remove the only vertical spell. If we tried to remove just one of the horizontal spells, it would not allow the rook to get home, because it would be blocked from above by one of the remaining horizontal spells (either first one or second one), and to the right it would be blocked by a vertical spell.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1044A/55c35aa981684ef1bef35aec7b2c7bc122d79cca.png)Illustration for the second sample. On the left it shows how the field looked at the beginning. On the right it shows how it looked after the deletion of the vertical spell. It also shows the path, on which the rook would be going home.In the third sample, we have two horizontal spells that go through the whole field. These spells can not be bypassed, so we need to remove both of them.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1044A/4798caa5246fd4cee2f0cac48238b0b3e5e86d50.png)Illustration for the third sample. On the left it shows how the field looked at the beginning. On the right it shows how the field looked after the deletion of the horizontal spells. It also shows the path, on which the rook would be going home.In the fourth sample, we have no spells, which means that we do not need to remove anything.
+In the fifth example, we can remove the first vertical and third horizontal spells.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1044A/7e60e0d3bee2b2095c31f53125c2acbd54e1dc82.png)Illustration for the fifth sample. On the left it shows how the field looked at the beginning. On the right it shows how it looked after the deletions. It also shows the path, on which the rook would be going home.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

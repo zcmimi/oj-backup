@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Brutality - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401775:akLrLE3cUrvC0Y58ugIwCbTytUUqQbErGQjI4gpGGA8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20playing%20a%20new%20famous%20fighting%20game%3A%20Kortal%20Mombat%20XII.%20You%20have%20to%20perform%20a%20brutality%20on%20your%20opponent%27s%20character.%5Cn%5CnYou%20are%20playing%20the%20game%20on%20the%20new%20generation%20console%20so%20your%20gamepad%20have%20%24%2026%20%24%20buttons.%20Each%20button%20has%20a%20single%20lowercase%20Latin%20letter%20from%20%27a%27%20to%20%27z%27%20written%20on%20it.%20All%20the%20letters%20on%20buttons%20are%20pairwise%20distinct.%5Cn%5CnYou%20are%20given%20a%20sequence%20of%20hits%2C%20the%20%24%20i%20%24%20-th%20hit%20deals%20%24%20a_i%20%24%20units%20of%20damage%20to%20the%20opponent%27s%20character.%20To%20perform%20the%20%24%20i%20%24%20-th%20hit%20you%20have%20to%20press%20the%20button%20%24%20s_i%20%24%20on%20your%20gamepad.%20Hits%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%5Cn%5CnYou%20know%20that%20if%20you%20press%20some%20button%20more%20than%20%24%20k%20%24%20times%20in%20a%20row%20then%20it%27ll%20break.%20You%20cherish%20your%20gamepad%20and%20don%27t%20want%20to%20break%20any%20of%20its%20buttons.%5Cn%5CnTo%20perform%20a%20brutality%20you%20have%20to%20land%20some%20of%20the%20hits%20of%20the%20given%20sequence.%20You%20are%20allowed%20to%20skip%20any%20of%20them%2C%20however%20changing%20the%20initial%20order%20of%20the%20sequence%20is%20prohibited.%20The%20total%20damage%20dealt%20is%20the%20sum%20of%20%24%20a_i%20%24%20over%20all%20%24%20i%20%24%20for%20the%20hits%20which%20weren%27t%20skipped.%5Cn%5CnNote%20that%20if%20you%20skip%20the%20hit%20then%20the%20counter%20of%20consecutive%20presses%20the%20button%20won%27t%20reset.%5Cn%5CnYour%20task%20is%20to%20skip%20some%20hits%20to%20deal%20the%20maximum%20possible%20total%20damage%20to%20the%20opponent%27s%20character%20and%20not%20break%20your%20gamepad%20buttons.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cle%20k%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20hits%20and%20the%20maximum%20number%20of%20times%20you%20can%20push%20the%20same%20button%20in%20a%20row.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E9%20%24%20%29%2C%20where%20%24%20a_i%20%24%20is%20the%20damage%20of%20the%20%24%20i%20%24%20-th%20hit.%5Cn%5CnThe%20third%20line%20of%20the%20input%20contains%20the%20string%20%24%20s%20%24%20consisting%20of%20exactly%20%24%20n%20%24%20lowercase%20Latin%20letters%20%5Cu2014%20the%20sequence%20of%20hits%20%28each%20character%20is%20the%20letter%20on%20the%20button%20you%20need%20to%20press%20to%20perform%20the%20corresponding%20hit%29.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%24%20dmg%20%24%20%5Cu2014%20the%20maximum%20possible%20damage%20to%20the%20opponent%27s%20character%20you%20can%20deal%20without%20breaking%20your%20gamepad%20buttons.%22%2C%22samples%22%3A%5B%5B%22%5Cn7%203%5Cn1%205%2016%2018%207%202%2010%5Cnbaaaaca%5Cn%22%2C%22%5Cn54%5Cn%22%5D%2C%5B%22%5Cn5%205%5Cn2%204%201%203%201000%5Cnaaaaa%5Cn%22%2C%22%5Cn1010%5Cn%22%5D%2C%5B%22%5Cn5%204%5Cn2%204%201%203%201000%5Cnaaaaa%5Cn%22%2C%22%5Cn1009%5Cn%22%5D%2C%5B%22%5Cn8%201%5Cn10%2015%202%201%204%208%2015%2016%5Cnqqwweerr%5Cn%22%2C%22%5Cn41%5Cn%22%5D%2C%5B%22%5Cn6%203%5Cn14%2018%209%2019%202%2015%5Cncccccc%5Cn%22%2C%22%5Cn52%5Cn%22%5D%2C%5B%22%5Cn2%201%5Cn10%2010%5Cnqq%5Cn%22%2C%22%5Cn10%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20you%20can%20choose%20hits%20with%20numbers%20%24%20%5B1%2C%203%2C%204%2C%205%2C%206%2C%207%5D%20%24%20with%20the%20total%20damage%20%24%201%20%2B%2016%20%2B%2018%20%2B%207%20%2B%202%20%2B%2010%20%3D%2054%20%24%20.%5Cn%5CnIn%20the%20second%20example%20you%20can%20choose%20all%20hits%20so%20the%20total%20damage%20is%20%24%202%20%2B%204%20%2B%201%20%2B%203%20%2B%201000%20%3D%201010%20%24%20.%5Cn%5CnIn%20the%20third%20example%20you%20can%20choose%20all%20hits%20expect%20the%20third%20one%20so%20the%20total%20damage%20is%20%24%202%20%2B%204%20%2B%203%20%2B%201000%20%3D%201009%20%24%20.%5Cn%5CnIn%20the%20fourth%20example%20you%20can%20choose%20hits%20with%20numbers%20%24%20%5B2%2C%203%2C%206%2C%208%5D%20%24%20.%20Only%20this%20way%20you%20can%20reach%20the%20maximum%20total%20damage%20%24%2015%20%2B%202%20%2B%208%20%2B%2016%20%3D%2041%20%24%20.%5Cn%5CnIn%20the%20fifth%20example%20you%20can%20choose%20only%20hits%20with%20numbers%20%24%20%5B2%2C%204%2C%206%5D%20%24%20with%20the%20total%20damage%20%24%2018%20%2B%2019%20%2B%2015%20%3D%2052%20%24%20.%5Cn%5CnIn%20the%20sixth%20example%20you%20can%20change%20either%20first%20hit%20or%20the%20second%20hit%20%28it%20does%20not%20matter%29%20with%20the%20total%20damage%20%24%2010%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1107%5C%2FC%22%2C%22id%22%3A%221107C%22%7D%2C%22translation%22%3A%22Translated%20by%20Mr.K%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu5728%5Cu73a9%5Cu4e00%5Cu4e2a%5Cu53ebKortal%20Mombat%20XII%5Cu7684%5Cu6e38%5Cu620f%5Cuff0c%5Cu4f60%5Cu7528%5Cu7535%5Cu8111%5Cu952e%5Cu76d8%5Cu73a9%5Cu8fd9%5Cu4e2a%5Cu6e38%5Cu620f%5Cuff08%5Cu752826%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu952e%20a-z%5Cuff09%5Cu3002%5Cu8fd9%5Cu4e2a%5Cu6e38%5Cu620f%5Cu4e2d%5Cu6709%5Cu4e00%5Cu4e32%5Cu653b%5Cu51fb%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu653b%5Cu51fb%5Cu64cd%5Cu4f5c%5Cu6765%5Cu8bf4%5Cuff0c%5Cu4ed6%5Cu7684%5Cu4f24%5Cu5bb3%5Cu662f%20_a_%20i%20%5Cu800c%5Cu5b8c%5Cu6210%5Cu8fd9%5Cu6b21%5Cu653b%5Cu51fb%5Cu64cd%5Cu4f5c%5Cu9700%5Cu8981%5Cu6309%5Cu5b57%5Cu6bcd%20_s_%20i%20%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f46%5Cu662f%5Cu4f60%5Cu4e70%5Cu7684%5Cu952e%5Cu76d8%5Cu8d28%5Cu91cf%5Cu4e0d%5Cu597d%5Cuff0c%5Cu540c%5Cu6837%5Cu7684%5Cu4e00%5Cu4e2a%5Cu952e%5Cuff0c%5Cu6bcf%5Cu8fde%5Cu7eed%5Cu6309%20_k_%20%20%20%20%5Cu6b21%5Cuff08%5Cu6309%5Cu5176%5Cu4ed6%5Cu952e%5Cu65f6%5Cu6570%5Cu91cf%5Cu6e05%5Cu96f6%5Cuff09%5Cu5c31%5Cu4f1a%5Cu7206%5Cu70b8%5Cuff0c%5Cu4f60%5Cu4e0d%5Cu60f3%5Cu8ba9%5Cu4f60%5Cu7684%5Cu7535%5Cu8111%5Cu7206%5Cu70b8%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4f60%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu529e%5Cu6cd5%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu00b7%20%5Cu8df3%5Cu8fc7%5Cu67d0%5Cu4e9b%5Cu653b%5Cu51fb%5Cu64cd%5Cu4f5c%5Cu4f7f%5Cu7535%5Cu8111%5Cu4e0d%5Cu4f1a%5Cu7206%5Cu70b8%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu60f3%5Cu77e5%5Cu9053%5Cuff0c%5Cu6240%5Cu6709%5Cu5bf9%5Cu4e8e%5Cu7b2c%20_i_%20%5Cu4e2a%5Cu653b%5Cu51fb%5Cu64cd%5Cu4f5c%5Cu6ca1%5Cu88ab%5Cu8df3%5Cu8fc7%5Cu65f6%20_a_%20i%20%5Cu7684%5Cu548c%5Cu6700%5Cu5927%5Cu662f%5Cu591a%5Cu5c11%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff1a_n_%20%2C%20_k_%20%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cuff1a_n_%20%5Cu4e2a%5Cu6570%5Cuff0c_a_%20i%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e09%5Cu884c%5Cuff1a_s_%20%5Cuff08_s_%20i%20%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff09%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu5927%5Cu7684%5Cu4f24%5Cu5bb3%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu8303%5Cu56f4%2A%2A%5Cr%5Cn%5Cr%5Cn1%3C%3D_n_%20%2C%20_k_%20%3C%3D200000%5Cr%5Cn%5Cr%5Cn1%3C%3D_a_%20i%20%3C%3D1000000000%5Cr%5Cn%5Cr%5Cn%2A%2A~~%5Cu611f%5Cu8c22%5Cu53f7%5Cu5bb6%5Cu519b~~%2A%2A%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A83%2C%22totalAccepted%22%3A61%2C%22pid%22%3A%22CF1107C%22%2C%22title%22%3A%22Brutality%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1107E%22%2C%22title%22%3A%22Vasya%20and%20Binary%20String%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1107D%22%2C%22title%22%3A%22Compression%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1107B%22%2C%22title%22%3A%22Digital%20root%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1106C%22%2C%22title%22%3A%22Lunar%20New%20Year%20and%20Number%20Division%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1106A%22%2C%22title%22%3A%22Lunar%20New%20Year%20and%20Cross%20Counting%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Brutality%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Brutality</h1>
+<h2>题意翻译</h2>
+<div>Translated by Mr.K
+你在玩一个叫Kortal Mombat XII的游戏，你用电脑键盘玩这个游戏（用26个字母键 a-z）。这个游戏中有一串攻击操作，对于每个攻击操作来说，他的伤害是 _a_ i 而完成这次攻击操作需要按字母 _s_ i 。
+但是你买的键盘质量不好，同样的一个键，每连续按 _k_ 次（按其他键时数量清零）就会爆炸，你不想让你的电脑爆炸，所以你只有一个办法：
+· 跳过某些攻击操作使电脑不会爆炸
+你想知道，所有对于第 _i_ 个攻击操作没被跳过时 _a_ i 的和最大是多少。
+**输入输出格式**
+**输入**
+第一行：_n_ , _k_
+第二行：_n_ 个数，_a_ i
+第三行：_s_ （_s_ i 的字符串）
+**输出**
+最大的伤害
+**输入范围**
+1<=_n_ , _k_ <=200000
+1<=_a_ i <=1000000000
+**~~感谢号家军~~**</div>
+<h2>题目描述</h2>
+<div>You are playing a new famous fighting game: Kortal Mombat XII. You have to perform a brutality on your opponent's character.
+You are playing the game on the new generation console so your gamepad have $ 26 $ buttons. Each button has a single lowercase Latin letter from 'a' to 'z' written on it. All the letters on buttons are pairwise distinct.
+You are given a sequence of hits, the $ i $ -th hit deals $ a_i $ units of damage to the opponent's character. To perform the $ i $ -th hit you have to press the button $ s_i $ on your gamepad. Hits are numbered from $ 1 $ to $ n $ .
+You know that if you press some button more than $ k $ times in a row then it'll break. You cherish your gamepad and don't want to break any of its buttons.
+To perform a brutality you have to land some of the hits of the given sequence. You are allowed to skip any of them, however changing the initial order of the sequence is prohibited. The total damage dealt is the sum of $ a_i $ over all $ i $ for the hits which weren't skipped.
+Note that if you skip the hit then the counter of consecutive presses the button won't reset.
+Your task is to skip some hits to deal the maximum possible total damage to the opponent's character and not break your gamepad buttons.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ k $ ( $ 1 \le k \le n \le 2 \cdot 10^5 $ ) — the number of hits and the maximum number of times you can push the same button in a row.
+The second line of the input contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le 10^9 $ ), where $ a_i $ is the damage of the $ i $ -th hit.
+The third line of the input contains the string $ s $ consisting of exactly $ n $ lowercase Latin letters — the sequence of hits (each character is the letter on the button you need to press to perform the corresponding hit).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer $ dmg $ — the maximum possible damage to the opponent's character you can deal without breaking your gamepad buttons.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+7 3
+1 5 16 18 7 2 10
+baaaaca
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+54
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5 5
+2 4 1 3 1000
+aaaaa
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+1010
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+5 4
+2 4 1 3 1000
+aaaaa
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+1009
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+8 1
+10 15 2 1 4 8 15 16
+qqwweerr
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+41
+</code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>
+6 3
+14 18 9 19 2 15
+cccccc
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>
+52
+</code></pre>
+<h3>输入样例 #6</h3>
+<pre><code>
+2 1
+10 10
+qq
+</code></pre>
+<h3>输出样例 #6</h3>
+<pre><code>
+10
+</code></pre>
+<h2>说明</h2>
+<div>In the first example you can choose hits with numbers $ [1, 3, 4, 5, 6, 7] $ with the total damage $ 1 + 16 + 18 + 7 + 2 + 10 = 54 $ .
+In the second example you can choose all hits so the total damage is $ 2 + 4 + 1 + 3 + 1000 = 1010 $ .
+In the third example you can choose all hits expect the third one so the total damage is $ 2 + 4 + 3 + 1000 = 1009 $ .
+In the fourth example you can choose hits with numbers $ [2, 3, 6, 8] $ . Only this way you can reach the maximum total damage $ 15 + 2 + 8 + 16 = 41 $ .
+In the fifth example you can choose only hits with numbers $ [2, 4, 6] $ with the total damage $ 18 + 19 + 15 = 52 $ .
+In the sixth example you can change either first hit or the second hit (it does not matter) with the total damage $ 10 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

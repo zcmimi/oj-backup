@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>p-binary - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403457:6nEXIyEfFzOCIHcqTyH8hOLdndntEvprmpLmzG9Js5w=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Vasya%20will%20fancy%20any%20number%20as%20long%20as%20it%20is%20an%20integer%20power%20of%20two.%20Petya%2C%20on%20the%20other%20hand%2C%20is%20very%20conservative%20and%20only%20likes%20a%20single%20integer%20%24%20p%20%24%20%28which%20may%20be%20positive%2C%20negative%2C%20or%20zero%29.%20To%20combine%20their%20tastes%2C%20they%20invented%20%20%24%20p%20%24%20-binary%20numbers%20of%20the%20form%20%24%202%5Ex%20%2B%20p%20%24%20%2C%20where%20%24%20x%20%24%20is%20a%20non-negative%20integer.%5Cn%5CnFor%20example%2C%20some%20%24%20-9%20%24%20-binary%20%28%5C%22minus%20nine%5C%22%20binary%29%20numbers%20are%3A%20%24%20-8%20%24%20%28minus%20eight%29%2C%20%24%207%20%24%20and%20%24%201015%20%24%20%28%20%24%20-8%3D2%5E0-9%20%24%20%2C%20%24%207%3D2%5E4-9%20%24%20%2C%20%24%201015%3D2%5E%7B10%7D-9%20%24%20%29.%5Cn%5CnThe%20boys%20now%20use%20%24%20p%20%24%20-binary%20numbers%20to%20represent%20everything.%20They%20now%20face%20a%20problem%3A%20given%20a%20positive%20integer%20%24%20n%20%24%20%2C%20what%27s%20the%20smallest%20number%20of%20%24%20p%20%24%20-binary%20numbers%20%28not%20necessarily%20distinct%29%20they%20need%20to%20represent%20%24%20n%20%24%20as%20their%20sum%3F%20It%20may%20be%20possible%20that%20representation%20is%20impossible%20altogether.%20Help%20them%20solve%20this%20problem.%5Cn%5CnFor%20example%2C%20if%20%24%20p%3D0%20%24%20we%20can%20represent%20%24%207%20%24%20as%20%24%202%5E0%20%2B%202%5E1%20%2B%202%5E2%20%24%20.%5Cn%5CnAnd%20if%20%24%20p%3D-9%20%24%20we%20can%20represent%20%24%207%20%24%20as%20one%20number%20%24%20%282%5E4-9%29%20%24%20.%5Cn%5CnNote%20that%20negative%20%24%20p%20%24%20-binary%20numbers%20are%20allowed%20to%20be%20in%20the%20sum%20%28see%20the%20Notes%20section%20for%20an%20example%29.%22%2C%22inputFormat%22%3A%22The%20only%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20p%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E9%20%24%20%2C%20%24%20-1000%20%5C%5Cleq%20p%20%5C%5Cleq%201000%20%24%20%29.%22%2C%22outputFormat%22%3A%22If%20it%20is%20impossible%20to%20represent%20%24%20n%20%24%20as%20the%20sum%20of%20any%20number%20of%20%24%20p%20%24%20-binary%20numbers%2C%20print%20a%20single%20integer%20%24%20-1%20%24%20.%20Otherwise%2C%20print%20the%20smallest%20possible%20number%20of%20summands.%22%2C%22samples%22%3A%5B%5B%22%5Cn24%200%5Cn%22%2C%22%5Cn2%5Cn%22%5D%2C%5B%22%5Cn24%201%5Cn%22%2C%22%5Cn3%5Cn%22%5D%2C%5B%22%5Cn24%20-1%5Cn%22%2C%22%5Cn4%5Cn%22%5D%2C%5B%22%5Cn4%20-7%5Cn%22%2C%22%5Cn2%5Cn%22%5D%2C%5B%22%5Cn1%201%5Cn%22%2C%22%5Cn-1%5Cn%22%5D%5D%2C%22hint%22%3A%22%20%24%200%20%24%20-binary%20numbers%20are%20just%20regular%20binary%20powers%2C%20thus%20in%20the%20first%20sample%20case%20we%20can%20represent%20%24%2024%20%3D%20%282%5E4%20%2B%200%29%20%2B%20%282%5E3%20%2B%200%29%20%24%20.%5Cn%5CnIn%20the%20second%20sample%20case%2C%20we%20can%20represent%20%24%2024%20%3D%20%282%5E4%20%2B%201%29%20%2B%20%282%5E2%20%2B%201%29%20%2B%20%282%5E0%20%2B%201%29%20%24%20.%5Cn%5CnIn%20the%20third%20sample%20case%2C%20we%20can%20represent%20%24%2024%20%3D%20%282%5E4%20-%201%29%20%2B%20%282%5E2%20-%201%29%20%2B%20%282%5E2%20-%201%29%20%2B%20%282%5E2%20-%201%29%20%24%20.%20Note%20that%20repeated%20summands%20are%20allowed.%5Cn%5CnIn%20the%20fourth%20sample%20case%2C%20we%20can%20represent%20%24%204%20%3D%20%282%5E4%20-%207%29%20%2B%20%282%5E1%20-%207%29%20%24%20.%20Note%20that%20the%20second%20summand%20is%20negative%2C%20which%20is%20allowed.%5Cn%5CnIn%20the%20fifth%20sample%20case%2C%20no%20representation%20is%20possible.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1225%5C%2FC%22%2C%22id%22%3A%221225C%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu6574%5Cu6570%20%24n%2Cp%24%5Cuff0c%5Cu6c42%5Cu6700%5Cu5c0f%5Cu7684%20%24x%24%20%5Cu4f7f%5Cu5f97%5Cu5176%5Cu6ee1%5Cu8db3%5Cr%5Cn%5Cr%5Cn%24%24%5C%5Csum_%7B1%7D%5E%7Bx%7D%20%282%5Ek%2Bp%29%3Dn%24%24%5Cr%5Cn%5Cr%5Cn%5Cu5176%5Cu4e2d%20%24k%24%20%5Cu53ef%5Cu4ee5%5Cu662f%5Cu4efb%5Cu610f%5Cu81ea%5Cu7136%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%24n%2Cp%281%5C%5Cleq%20n%20%5C%5Cleq%2010%5E9%2C-1000%5C%5Cleq%20p%20%5C%5Cleq%201000%29%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu627e%5Cu4e0d%5Cu5230%5Cu8fd9%5Cu6837%5Cu7684%20%24x%24%20%5Cu8bf7%5Cu8f93%5Cu51fa%20%24-1%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%20%24x%24%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A167%2C%22totalAccepted%22%3A99%2C%22pid%22%3A%22CF1225C%22%2C%22title%22%3A%22p-binary%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1225E%22%2C%22title%22%3A%22Rock%20Is%20Push%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1225D%22%2C%22title%22%3A%22Power%20Products%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1225B2%22%2C%22title%22%3A%22TV%20Subscriptions%20%28Hard%20Version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1225B1%22%2C%22title%22%3A%22TV%20Subscriptions%20%28Easy%20Version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1225A%22%2C%22title%22%3A%22Forgetting%20Things%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22p-binary%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>p-binary</h1>
+<h2>题意翻译</h2>
+<div>### 题意简述
+给定整数 $n,p$，求最小的 $x$ 使得其满足
+$$\sum_{1}^{x} (2^k+p)=n$$
+其中 $k$ 可以是任意自然数。
+### 输入格式
+一行，$n,p(1\leq n \leq 10^9,-1000\leq p \leq 1000)$。
+### 输出格式
+如果找不到这样的 $x$ 请输出 $-1$。
+否则输出 $x$。</div>
+<h2>题目描述</h2>
+<div>Vasya will fancy any number as long as it is an integer power of two. Petya, on the other hand, is very conservative and only likes a single integer $ p $ (which may be positive, negative, or zero). To combine their tastes, they invented $ p $ -binary numbers of the form $ 2^x + p $ , where $ x $ is a non-negative integer.
+For example, some $ -9 $ -binary ("minus nine" binary) numbers are: $ -8 $ (minus eight), $ 7 $ and $ 1015 $ ( $ -8=2^0-9 $ , $ 7=2^4-9 $ , $ 1015=2^{10}-9 $ ).
+The boys now use $ p $ -binary numbers to represent everything. They now face a problem: given a positive integer $ n $ , what's the smallest number of $ p $ -binary numbers (not necessarily distinct) they need to represent $ n $ as their sum? It may be possible that representation is impossible altogether. Help them solve this problem.
+For example, if $ p=0 $ we can represent $ 7 $ as $ 2^0 + 2^1 + 2^2 $ .
+And if $ p=-9 $ we can represent $ 7 $ as one number $ (2^4-9) $ .
+Note that negative $ p $ -binary numbers are allowed to be in the sum (see the Notes section for an example).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line contains two integers $ n $ and $ p $ ( $ 1 \leq n \leq 10^9 $ , $ -1000 \leq p \leq 1000 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is impossible to represent $ n $ as the sum of any number of $ p $ -binary numbers, print a single integer $ -1 $ . Otherwise, print the smallest possible number of summands.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+24 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+24 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+24 -1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+4
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+4 -7
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+2
+</code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>
+1 1
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>
+-1
+</code></pre>
+<h2>说明</h2>
+<div> $ 0 $ -binary numbers are just regular binary powers, thus in the first sample case we can represent $ 24 = (2^4 + 0) + (2^3 + 0) $ .
+In the second sample case, we can represent $ 24 = (2^4 + 1) + (2^2 + 1) + (2^0 + 1) $ .
+In the third sample case, we can represent $ 24 = (2^4 - 1) + (2^2 - 1) + (2^2 - 1) + (2^2 - 1) $ . Note that repeated summands are allowed.
+In the fourth sample case, we can represent $ 4 = (2^4 - 7) + (2^1 - 7) $ . Note that the second summand is negative, which is allowed.
+In the fifth sample case, no representation is possible.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

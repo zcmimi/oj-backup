@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tree Painting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402828:tA6PioCw/kVz7ocu8z9KqLV4VGsDPlFYCqgfEd2Icd8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20tree%20%28an%20undirected%20connected%20acyclic%20graph%29%20consisting%20of%20%24%20n%20%24%20vertices.%20You%20are%20playing%20a%20game%20on%20this%20tree.%5Cn%5CnInitially%20all%20vertices%20are%20white.%20On%20the%20first%20turn%20of%20the%20game%20you%20choose%20one%20vertex%20and%20paint%20it%20black.%20Then%20on%20each%20turn%20you%20choose%20a%20white%20vertex%20adjacent%20%28connected%20by%20an%20edge%29%20to%20any%20black%20vertex%20and%20paint%20it%20black.%5Cn%5CnEach%20time%20when%20you%20choose%20a%20vertex%20%28even%20during%20the%20first%20turn%29%2C%20you%20gain%20the%20number%20of%20points%20equal%20to%20the%20size%20of%20the%20connected%20component%20consisting%20only%20of%20white%20vertices%20that%20contains%20the%20chosen%20vertex.%20The%20game%20ends%20when%20all%20vertices%20are%20painted%20black.%5Cn%5CnLet%27s%20see%20the%20following%20example%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1187E%5C%2F80d1bdfd9c05e38560143dd180baa827e846ec90.png%29%5Cn%5CnVertices%20%24%201%20%24%20and%20%24%204%20%24%20are%20painted%20black%20already.%20If%20you%20choose%20the%20vertex%20%24%202%20%24%20%2C%20you%20will%20gain%20%24%204%20%24%20points%20for%20the%20connected%20component%20consisting%20of%20vertices%20%24%202%2C%203%2C%205%20%24%20and%20%24%206%20%24%20.%20If%20you%20choose%20the%20vertex%20%24%209%20%24%20%2C%20you%20will%20gain%20%24%203%20%24%20points%20for%20the%20connected%20component%20consisting%20of%20vertices%20%24%207%2C%208%20%24%20and%20%24%209%20%24%20.%5Cn%5CnYour%20task%20is%20to%20maximize%20the%20number%20of%20points%20you%20gain.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20tree%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20-%201%20%24%20lines%20describes%20an%20edge%20of%20the%20tree.%20Edge%20%24%20i%20%24%20is%20denoted%20by%20two%20integers%20%24%20u_i%20%24%20and%20%24%20v_i%20%24%20%2C%20the%20indices%20of%20vertices%20it%20connects%20%28%20%24%201%20%5C%5Cle%20u_i%2C%20v_i%20%5C%5Cle%20n%20%24%20%2C%20%24%20u_i%20%5C%5Cne%20v_i%20%24%20%29.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20given%20edges%20form%20a%20tree.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20maximum%20number%20of%20points%20you%20gain%20if%20you%20will%20play%20optimally.%22%2C%22samples%22%3A%5B%5B%22%5Cn9%5Cn1%202%5Cn2%203%5Cn2%205%5Cn2%206%5Cn1%204%5Cn4%209%5Cn9%207%5Cn9%208%5Cn%22%2C%22%5Cn36%5Cn%22%5D%2C%5B%22%5Cn5%5Cn1%202%5Cn1%203%5Cn2%204%5Cn2%205%5Cn%22%2C%22%5Cn14%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20example%20tree%20is%20shown%20in%20the%20problem%20statement.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1187%5C%2FE%22%2C%22id%22%3A%221187E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu68f5n%5Cu4e2a%5Cu70b9%5Cu7684%5Cu6811%20%5Cu521d%5Cu59cb%5Cu5168%5Cu662f%5Cu767d%5Cu70b9%5Cr%5Cn%5Cr%5Cn%5Cu8981%5Cu6c42%5Cu4f60%5Cu505an%5Cu6b65%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu9009%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu4e0e%5Cu4e00%5Cu4e2a%5Cu9ed1%5Cu70b9%5Cu76f8%5Cu9694%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu767d%5Cu70b9%5Cuff0c%5Cu5c06%5Cu5b83%5Cu67d3%5Cu6210%5Cu9ed1%5Cu70b9%5Cuff0c%5Cu7136%5Cu540e%5Cu83b7%5Cu5f97%5Cu8be5%5Cu767d%5Cu70b9%5Cu88ab%5Cu67d3%5Cu8272%5Cu524d%5Cu6240%5Cu5728%5Cu7684%5Cu767d%5Cu8272%5Cu8054%5Cu901a%5Cu5757%5Cu5927%5Cu5c0f%5Cu7684%5Cu6743%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu53ef%5Cu4ee5%5Cu4efb%5Cu610f%5Cu9009%5Cu70b9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6c42%5Cu53ef%5Cu83b7%5Cu5f97%5Cu7684%5Cu6700%5Cu5927%5Cu6743%5Cu503c%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A204%2C%22totalAccepted%22%3A137%2C%22pid%22%3A%22CF1187E%22%2C%22title%22%3A%22Tree%20Painting%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3647%22%2C%22title%22%3A%22%5BAPIO2014%5D%5Cu8fde%5Cu73e0%5Cu7ebf%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4556%22%2C%22title%22%3A%22%5BVani%5Cu6709%5Cu7ea6%5Cu4f1a%5D%5Cu96e8%5Cu5929%5Cu7684%5Cu5c3e%5Cu5df4%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1092F%22%2C%22title%22%3A%22Tree%20with%20Maximum%20Cost%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1187D%22%2C%22title%22%3A%22Subarray%20Sorting%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1187C%22%2C%22title%22%3A%22Vasya%20And%20Array%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Tree%20Painting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Tree Painting</h1>
+<h2>题意翻译</h2>
+<div>给定一棵n个点的树 初始全是白点
+要求你做n步操作，每一次选定一个与一个黑点相隔一条边的白点，将它染成黑点，然后获得该白点被染色前所在的白色联通块大小的权值。
+第一次操作可以任意选点。
+求可获得的最大权值</div>
+<h2>题目描述</h2>
+<div>You are given a tree (an undirected connected acyclic graph) consisting of $ n $ vertices. You are playing a game on this tree.
+Initially all vertices are white. On the first turn of the game you choose one vertex and paint it black. Then on each turn you choose a white vertex adjacent (connected by an edge) to any black vertex and paint it black.
+Each time when you choose a vertex (even during the first turn), you gain the number of points equal to the size of the connected component consisting only of white vertices that contains the chosen vertex. The game ends when all vertices are painted black.
+Let's see the following example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1187E/80d1bdfd9c05e38560143dd180baa827e846ec90.png)
+Vertices $ 1 $ and $ 4 $ are painted black already. If you choose the vertex $ 2 $ , you will gain $ 4 $ points for the connected component consisting of vertices $ 2, 3, 5 $ and $ 6 $ . If you choose the vertex $ 9 $ , you will gain $ 3 $ points for the connected component consisting of vertices $ 7, 8 $ and $ 9 $ .
+Your task is to maximize the number of points you gain.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $ n $ — the number of vertices in the tree ( $ 2 \le n \le 2 \cdot 10^5 $ ).
+Each of the next $ n - 1 $ lines describes an edge of the tree. Edge $ i $ is denoted by two integers $ u_i $ and $ v_i $ , the indices of vertices it connects ( $ 1 \le u_i, v_i \le n $ , $ u_i \ne v_i $ ).
+It is guaranteed that the given edges form a tree.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the maximum number of points you gain if you will play optimally.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+9
+1 2
+2 3
+2 5
+2 6
+1 4
+4 9
+9 7
+9 8
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+36
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5
+1 2
+1 3
+2 4
+2 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+14
+</code></pre>
+<h2>说明</h2>
+<div>The first example tree is shown in the problem statement.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sasha and a Very Easy Test - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401826:RBsgnsaXG/YRF4ofiVWUrXSLjfZRDm1nu5Sr9AfQiWw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Egor%20likes%20math%2C%20and%20not%20so%20long%20ago%20he%20got%20the%20highest%20degree%20of%20recognition%20in%20the%20math%20community%20%5Cu2014%20Egor%20became%20a%20red%20mathematician.%20In%20this%20regard%2C%20Sasha%20decided%20to%20congratulate%20Egor%20and%20give%20him%20a%20math%20test%20as%20a%20present.%20This%20test%20contains%20an%20array%20%24%20a%20%24%20of%20integers%20of%20length%20%24%20n%20%24%20and%20exactly%20%24%20q%20%24%20queries.%20Queries%20were%20of%20three%20types%3A%5Cn%5Cn1.%20%5C%221%20l%20r%20x%5C%22%20%5Cu2014%20multiply%20each%20number%20on%20the%20range%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20by%20%24%20x%20%24%20.%5Cn2.%20%5C%222%20p%20x%5C%22%20%5Cu2014%20divide%20the%20number%20at%20the%20position%20%24%20p%20%24%20by%20%24%20x%20%24%20%28divisibility%20guaranteed%29.%5Cn3.%20%5C%223%20l%20r%5C%22%20%5Cu2014%20find%20the%20sum%20of%20all%20elements%20on%20the%20range%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20.%5Cn%5CnThe%20sum%20can%20be%20big%2C%20so%20Sasha%20asked%20Egor%20to%20calculate%20the%20sum%20modulo%20some%20integer%20%24%20mod%20%24%20.%5Cn%5CnBut%20since%20Egor%20is%20a%20red%20mathematician%2C%20he%20doesn%27t%20have%20enough%20time%20to%20solve%20such%20easy%20tasks%2C%20at%20the%20same%20time%20he%20doesn%27t%20want%20to%20anger%20Sasha%2C%20that%27s%20why%20he%20asked%20you%20to%20help%20and%20to%20find%20answers%20for%20all%20queries%20of%20the%20%24%203%20%24%20-rd%20type.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20mod%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2010%5E5%20%24%20%2C%20%24%202%20%5C%5Cle%20mod%20%5C%5Cle%2010%5E9%20%2B%209%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20array%20and%20the%20number%20%24%20mod%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E5%20%24%20%29%20%5Cu2014%20the%20array%20itself.%5Cn%5CnThe%20third%20line%20contains%20one%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries.%5Cn%5CnNext%20%24%20q%20%24%20lines%20satisfy%20one%20of%20the%20following%20formats%3A%5Cn%5Cn-%201%20l%20r%20x%20%28%20%24%201%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%20%24%20%2C%20%24%201%20%5C%5Cle%20x%20%5C%5Cle%2010%5E5%20%24%20%29%2C%20means%20that%20you%20must%20multiply%20each%20number%20on%20the%20range%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20by%20%24%20x%20%24%20.%5Cn-%202%20p%20x%20%28%20%24%201%20%5C%5Cle%20p%20%5C%5Cle%20n%20%24%20%2C%20%24%201%20%5C%5Cle%20x%20%5C%5Cle%2010%5E5%20%24%20%29%2C%20means%20that%20you%20must%20divide%20number%20at%20the%20position%20%24%20p%20%24%20by%20%24%20x%20%24%20%28divisibility%20guaranteed%29.%5Cn-%203%20l%20r%20%28%20%24%201%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%20%24%20%29%2C%20means%20that%20you%20must%20find%20the%20sum%20of%20elements%20on%20the%20range%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20there%20is%20at%20least%20one%20query%20of%20the%20%24%203%20%24%20-rd%20type.%22%2C%22outputFormat%22%3A%22For%20each%20query%20of%20the%20%24%203%20%24%20-rd%20type%20print%20the%20answer%20on%20a%20new%20line%20modulo%20%24%20mod%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%20100%5Cn4%201%202%203%205%5Cn5%5Cn3%201%205%5Cn1%202%203%206%5Cn3%201%202%5Cn1%201%205%201%5Cn3%202%204%5Cn%22%2C%22%5Cn15%5Cn10%5Cn21%5Cn%22%5D%2C%5B%22%5Cn5%202%5Cn4%201%202%203%205%5Cn7%5Cn3%201%205%5Cn1%202%203%206%5Cn3%201%202%5Cn1%201%205%201%5Cn3%202%204%5Cn2%203%204%5Cn3%203%204%5Cn%22%2C%22%5Cn1%5Cn0%5Cn1%5Cn0%5Cn%22%5D%2C%5B%22%5Cn5%202100%5Cn1%202%203%204%205%5Cn10%5Cn1%201%203%2012%5Cn1%201%205%2010%5Cn2%205%2050%5Cn3%202%204%5Cn1%204%204%2028%5Cn2%204%207%5Cn3%201%202%5Cn3%203%204%5Cn2%203%203%5Cn3%201%205%5Cn%22%2C%22%5Cn640%5Cn360%5Cn520%5Cn641%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20example%3A%5Cn%5CnInital%20array%20is%20%24%20%5B4%2C%201%2C%202%2C%203%2C%205%5D%20%24%5Cn%5Cn-%20In%20the%20first%20query%2C%20you%20must%20calculate%20the%20sum%20of%20the%20whole%20array%2C%20it%27s%20equal%20to%20%24%20%284%20%2B%201%20%2B%202%20%2B%203%20%2B%205%29%20%5C%5Cbmod%20100%20%3D%2015%20%5C%5Cbmod%20100%20%3D%2015%20%24%5Cn-%20In%20the%20second%20query%2C%20you%20must%20multiply%20each%20number%20on%20the%20range%20from%20%24%202%20%24%20to%20%24%203%20%24%20by%20%24%206%20%24%20.%20The%20resulting%20array%20will%20be%20%24%20%5B4%2C%206%2C%2012%2C%203%2C%205%5D%20%24%5Cn-%20In%20the%20third%20query%2C%20you%20must%20calculate%20the%20sum%20on%20the%20range%20from%20%24%201%20%24%20to%20%24%202%20%24%20%2C%20it%27s%20equal%20to%20%24%20%284%20%2B%206%29%20%5C%5Cbmod%20100%20%3D%2010%20%5C%5Cbmod%20100%20%3D%2010%20%24%5Cn-%20In%20the%20fourth%20query%2C%20you%20must%20multiply%20each%20number%20on%20the%20range%20from%20%24%201%20%24%20to%20%24%205%20%24%20by%20%24%201%20%24%20.%20Multiplication%20by%20%24%201%20%24%20doesn%27t%20affect%20the%20array.%5Cn-%20In%20the%20fifth%20query%2C%20you%20must%20calculate%20the%20sum%20on%20the%20range%20from%20%24%202%20%24%20to%20%24%204%20%24%20%2C%20it%27s%20equal%20to%20%24%20%286%20%2B%2012%20%2B%203%29%20%5C%5Cbmod%20100%20%3D%2021%20%5C%5Cbmod%20100%20%3D%2021%20%24%5Cn%5CnThe%20second%20example%3A%5Cn%5CnInital%20array%20is%20%24%20%5B4%2C%201%2C%202%2C%203%2C%205%5D%20%24%5Cn%5Cn-%20In%20the%20first%20query%2C%20you%20must%20calculate%20the%20sum%20of%20the%20whole%20array%2C%20it%27s%20equal%20to%20%24%20%284%20%2B%201%20%2B%202%20%2B%203%20%2B%205%29%20%5C%5Cbmod%202%20%3D%2015%20%5C%5Cbmod%202%20%3D%201%20%24%5Cn-%20In%20the%20second%20query%2C%20you%20must%20multiply%20each%20number%20on%20the%20range%20from%20%24%202%20%24%20to%20%24%203%20%24%20by%20%24%206%20%24%20.%20The%20resulting%20array%20will%20be%20%24%20%5B4%2C%206%2C%2012%2C%203%2C%205%5D%20%24%5Cn-%20In%20the%20third%20query%2C%20you%20must%20calculate%20the%20sum%20on%20the%20range%20from%20%24%201%20%24%20to%20%24%202%20%24%20%2C%20it%27s%20equal%20to%20%24%20%284%20%2B%206%29%20%5C%5Cbmod%202%20%3D%2010%20%5C%5Cbmod%202%20%3D%200%20%24%5Cn-%20In%20the%20fourth%20query%2C%20you%20must%20multiply%20each%20number%20on%20the%20range%20from%20%24%201%20%24%20to%20%24%205%20%24%20by%20%24%201%20%24%20.%20Multiplication%20by%20%24%201%20%24%20doesn%27t%20affect%20the%20array.%5Cn-%20In%20the%20fifth%20query%2C%20you%20must%20calculate%20the%20sum%20on%20the%20range%20from%20%24%202%20%24%20to%20%24%204%20%24%20%2C%20it%27s%20equal%20to%20%24%20%286%20%2B%2012%20%2B%203%29%20%5C%5Cbmod%202%20%3D%2021%20%5C%5Cbmod%202%20%3D%201%20%24%5Cn-%20In%20the%20sixth%20query%2C%20you%20must%20divide%20number%20at%20the%20position%20%24%203%20%24%20by%20%24%204%20%24%20.%20%24%20%5C%5Cfrac%7B12%7D%7B4%7D%3D3%20%24%20%2C%20so%20the%20array%20will%20be%20%24%20%5B4%2C%206%2C%203%2C%203%2C%205%5D%20%24%20.%5Cn-%20In%20the%20seventh%2C%20query%20you%20must%20calculate%20the%20sum%20on%20the%20range%20form%20%24%203%20%24%20to%20%24%204%20%24%20%2C%20it%27s%20equal%20to%20%24%20%283%20%2B%203%29%20%5C%5Cbmod%202%20%3D%206%20%5C%5Cbmod%202%20%3D%200%20%24%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1109%5C%2FE%22%2C%22id%22%3A%221109E%22%7D%2C%22translation%22%3A%22%5Cu7ef4%5Cu62a4%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5e8f%5Cu5217%5Cuff0c%24q%24%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu64cd%5Cu4f5c%5Cu79cd%5Cu7c7b%5Cu5982%5Cu4e0b%5Cuff1a%5Cr%5Cn%5Cr%5Cn%601%20l%20r%20x%60%20%5Cu533a%5Cu95f4%24%5Bl%2Cr%5D%24%5Cu4e58%24x%24%5Cr%5Cn%5Cr%5Cn%602%20p%20x%60%20%5Cu4f4d%5Cu7f6e%24p%24%5Cu5355%5Cu70b9%5Cu9664%5Cu4ee5%24x%24%5Cuff08%5Cu4fdd%5Cu8bc1%5Cu80fd%5Cu6574%5Cu9664%5Cuff09%5Cr%5Cn%5Cr%5Cn%603%20l%20r%60%20%5Cu533a%5Cu95f4%24%5Bl%2Cr%5D%24%5Cu6c42%5Cu548c%5Cuff0c%5Cu5bf9%24mod%24%5Cu53d6%5Cu6a21%5Cr%5Cn%5Cr%5Cn%242%5C%5Cle%20mod%5C%5Cle%2010%5E9%2B9%24%5Cuff0c%241%5C%5Cle%20l%5C%5Cle%20r%5C%5Cle%20n%24%5Cuff0c%241%5C%5Cle%20p%5C%5Cle%20n%24%5Cuff0c%5Cu5176%5Cu4ed6%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu5747%5Cu4e0d%5Cu8d85%5Cu8fc7%2410%5E5%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A36%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF1109E%22%2C%22title%22%3A%22Sasha%20and%20a%20Very%20Easy%20Test%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Sasha%20and%20a%20Very%20Easy%20Test%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Sasha and a Very Easy Test</h1>
+<h2>题意翻译</h2>
+<div>维护一个长度为$n$的序列，$q$次操作。
+操作种类如下：
+`1 l r x` 区间$[l,r]$乘$x$
+`2 p x` 位置$p$单点除以$x$（保证能整除）
+`3 l r` 区间$[l,r]$求和，对$mod$取模
+$2\le mod\le 10^9+9$，$1\le l\le r\le n$，$1\le p\le n$，其他输入数据均不超过$10^5$</div>
+<h2>题目描述</h2>
+<div>Egor likes math, and not so long ago he got the highest degree of recognition in the math community — Egor became a red mathematician. In this regard, Sasha decided to congratulate Egor and give him a math test as a present. This test contains an array $ a $ of integers of length $ n $ and exactly $ q $ queries. Queries were of three types:
+1. "1 l r x" — multiply each number on the range from $ l $ to $ r $ by $ x $ .
+2. "2 p x" — divide the number at the position $ p $ by $ x $ (divisibility guaranteed).
+3. "3 l r" — find the sum of all elements on the range from $ l $ to $ r $ .
+The sum can be big, so Sasha asked Egor to calculate the sum modulo some integer $ mod $ .
+But since Egor is a red mathematician, he doesn't have enough time to solve such easy tasks, at the same time he doesn't want to anger Sasha, that's why he asked you to help and to find answers for all queries of the $ 3 $ -rd type.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ mod $ ( $ 1 \le n \le 10^5 $ , $ 2 \le mod \le 10^9 + 9 $ ) — the size of the array and the number $ mod $ .
+The second line contains $ n $ integers $ a_1, a_2, \ldots, a_n $ ( $ 1 \le a_i \le 10^5 $ ) — the array itself.
+The third line contains one integer $ q $ ( $ 1 \le q \le 10^5 $ ) — the number of queries.
+Next $ q $ lines satisfy one of the following formats:
+- 1 l r x ( $ 1 \le l \le r \le n $ , $ 1 \le x \le 10^5 $ ), means that you must multiply each number on the range from $ l $ to $ r $ by $ x $ .
+- 2 p x ( $ 1 \le p \le n $ , $ 1 \le x \le 10^5 $ ), means that you must divide number at the position $ p $ by $ x $ (divisibility guaranteed).
+- 3 l r ( $ 1 \le l \le r \le n $ ), means that you must find the sum of elements on the range from $ l $ to $ r $ .
+It is guaranteed that there is at least one query of the $ 3 $ -rd type.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query of the $ 3 $ -rd type print the answer on a new line modulo $ mod $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5 100
+4 1 2 3 5
+5
+3 1 5
+1 2 3 6
+3 1 2
+1 1 5 1
+3 2 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+15
+10
+21
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5 2
+4 1 2 3 5
+7
+3 1 5
+1 2 3 6
+3 1 2
+1 1 5 1
+3 2 4
+2 3 4
+3 3 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+1
+0
+1
+0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+5 2100
+1 2 3 4 5
+10
+1 1 3 12
+1 1 5 10
+2 5 50
+3 2 4
+1 4 4 28
+2 4 7
+3 1 2
+3 3 4
+2 3 3
+3 1 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+640
+360
+520
+641
+</code></pre>
+<h2>说明</h2>
+<div>The first example:
+Inital array is $ [4, 1, 2, 3, 5] $
+- In the first query, you must calculate the sum of the whole array, it's equal to $ (4 + 1 + 2 + 3 + 5) \bmod 100 = 15 \bmod 100 = 15 $
+- In the second query, you must multiply each number on the range from $ 2 $ to $ 3 $ by $ 6 $ . The resulting array will be $ [4, 6, 12, 3, 5] $
+- In the third query, you must calculate the sum on the range from $ 1 $ to $ 2 $ , it's equal to $ (4 + 6) \bmod 100 = 10 \bmod 100 = 10 $
+- In the fourth query, you must multiply each number on the range from $ 1 $ to $ 5 $ by $ 1 $ . Multiplication by $ 1 $ doesn't affect the array.
+- In the fifth query, you must calculate the sum on the range from $ 2 $ to $ 4 $ , it's equal to $ (6 + 12 + 3) \bmod 100 = 21 \bmod 100 = 21 $
+The second example:
+Inital array is $ [4, 1, 2, 3, 5] $
+- In the first query, you must calculate the sum of the whole array, it's equal to $ (4 + 1 + 2 + 3 + 5) \bmod 2 = 15 \bmod 2 = 1 $
+- In the second query, you must multiply each number on the range from $ 2 $ to $ 3 $ by $ 6 $ . The resulting array will be $ [4, 6, 12, 3, 5] $
+- In the third query, you must calculate the sum on the range from $ 1 $ to $ 2 $ , it's equal to $ (4 + 6) \bmod 2 = 10 \bmod 2 = 0 $
+- In the fourth query, you must multiply each number on the range from $ 1 $ to $ 5 $ by $ 1 $ . Multiplication by $ 1 $ doesn't affect the array.
+- In the fifth query, you must calculate the sum on the range from $ 2 $ to $ 4 $ , it's equal to $ (6 + 12 + 3) \bmod 2 = 21 \bmod 2 = 1 $
+- In the sixth query, you must divide number at the position $ 3 $ by $ 4 $ . $ \frac{12}{4}=3 $ , so the array will be $ [4, 6, 3, 3, 5] $ .
+- In the seventh, query you must calculate the sum on the range form $ 3 $ to $ 4 $ , it's equal to $ (3 + 3) \bmod 2 = 6 \bmod 2 = 0 $</div>
+</article>
+</div>
+</div>
+</body>
+</html>

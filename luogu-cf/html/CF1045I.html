@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Palindrome Pairs - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400965:ewax5+emkmm/5zuJobaqTBcjbYoQqH/vDiZg/tmAUzM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22After%20learning%20a%20lot%20about%20space%20exploration%2C%20a%20little%20girl%20named%20Ana%20wants%20to%20change%20the%20subject.%5Cn%5CnAna%20is%20a%20girl%20who%20loves%20palindromes%20%28string%20that%20can%20be%20read%20the%20same%20backwards%20as%20forward%29.%20She%20has%20learned%20how%20to%20check%20for%20a%20given%20string%20whether%20it%27s%20a%20palindrome%20or%20not%2C%20but%20soon%20she%20grew%20tired%20of%20this%20problem%2C%20so%20she%20came%20up%20with%20a%20more%20interesting%20one%20and%20she%20needs%20your%20help%20to%20solve%20it%3A%5Cn%5CnYou%20are%20given%20an%20array%20of%20strings%20which%20consist%20of%20only%20small%20letters%20of%20the%20alphabet.%20Your%20task%20is%20to%20find%20how%20many%20palindrome%20pairs%20are%20there%20in%20the%20array.%20A%20palindrome%20pair%20is%20a%20pair%20of%20strings%20such%20that%20the%20following%20condition%20holds%3A%20at%20least%20one%20permutation%20of%20the%20concatenation%20of%20the%20two%20strings%20is%20a%20palindrome.%20In%20other%20words%2C%20if%20you%20have%20two%20strings%2C%20let%27s%20say%20%5C%22aab%5C%22%20and%20%5C%22abcac%5C%22%2C%20and%20you%20concatenate%20them%20into%20%5C%22aababcac%5C%22%2C%20we%20have%20to%20check%20if%20there%20exists%20a%20permutation%20of%20this%20new%20string%20such%20that%20it%20is%20a%20palindrome%20%28in%20this%20case%20there%20exists%20the%20permutation%20%5C%22aabccbaa%5C%22%29.%5Cn%5CnTwo%20pairs%20are%20considered%20different%20if%20the%20strings%20are%20located%20on%20different%20indices.%20The%20pair%20of%20strings%20with%20indices%20%24%20%28i%2Cj%29%20%24%20is%20considered%20the%20same%20as%20the%20pair%20%24%20%28j%2Ci%29%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20positive%20integer%20%24%20N%20%24%20%28%20%24%201%20%5C%5Cle%20N%20%5C%5Cle%20100%5C%5C%2C000%20%24%20%29%2C%20representing%20the%20length%20of%20the%20input%20array.%5Cn%5CnEacg%20of%20the%20next%20%24%20N%20%24%20lines%20contains%20a%20string%20%28consisting%20of%20lowercase%20English%20letters%20from%20%27a%27%20to%20%27z%27%29%20%5Cu2014%20an%20element%20of%20the%20input%20array.%5Cn%5CnThe%20total%20number%20of%20characters%20in%20the%20input%20array%20will%20be%20less%20than%20%24%201%5C%5C%2C000%5C%5C%2C000%20%24%20.%22%2C%22outputFormat%22%3A%22Output%20one%20number%2C%20representing%20how%20many%20palindrome%20pairs%20there%20are%20in%20the%20array.%22%2C%22samples%22%3A%5B%5B%223%5Cnaa%5Cnbb%5Cncd%5Cn%22%2C%221%5Cn%22%5D%2C%5B%226%5Cnaab%5Cnabcac%5Cndffe%5Cned%5Cnaa%5Cnaade%5Cn%22%2C%226%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20example%3A%5Cn%5Cn1.%20aa%20%24%20%2B%20%24%20bb%20%24%20%5C%5Cto%20%24%20abba.%5Cn%5CnThe%20second%20example%3A%5Cn%5Cn1.%20aab%20%24%20%2B%20%24%20abcac%20%24%20%3D%20%24%20aababcac%20%24%20%5C%5Cto%20%24%20aabccbaa%5Cn2.%20aab%20%24%20%2B%20%24%20aa%20%24%20%3D%20%24%20aabaa%5Cn3.%20abcac%20%24%20%2B%20%24%20aa%20%24%20%3D%20%24%20abcacaa%20%24%20%5C%5Cto%20%24%20aacbcaa%5Cn4.%20dffe%20%24%20%2B%20%24%20ed%20%24%20%3D%20%24%20dffeed%20%24%20%5C%5Cto%20%24%20fdeedf%5Cn5.%20dffe%20%24%20%2B%20%24%20aade%20%24%20%3D%20%24%20dffeaade%20%24%20%5C%5Cto%20%24%20adfaafde%5Cn6.%20ed%20%24%20%2B%20%24%20aade%20%24%20%3D%20%24%20edaade%20%24%20%5C%5Cto%20%24%20aeddea%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1045%5C%2FI%22%2C%22id%22%3A%221045I%22%7D%2C%22translation%22%3A%22%5Cu6211%5Cu4eec%5Cu5e0c%5Cu671b%5Cu627e%5Cu5230%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu6027%5Cu8d28%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu5bf9%24%28i%2Cj%29%24%5Cuff1a%24s_%7Bi%7D%2Bs_%7Bj%7D%24%5Cu7684%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu6392%5Cu5217%5Cu662f%5Cu56de%5Cu6587%5Cu7684%5Cuff08%5Cu5982%5Cuff0c%5C%22aab%5C%22%5Cu548c%5C%22abcac%5C%22%5Cu7684%5Cu548c%5C%22aababcac%5C%22%5Cu53ef%5Cu4ee5%5Cu6392%5Cu5217%5Cu4e3a%5C%22aabccbaa%5C%22%5Cuff0c%5Cu56e0%5Cu6b64%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu4e32%5Cu7b26%5Cu5408%5Cu8981%5Cu6c42%5Cuff09%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%24N%24%5Cu4e2a%5Cu5c0f%5Cu5199%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8f93%5Cu51fa%5Cu6ee1%5Cu8db3%5Cu8981%5Cu6c42%5Cu7684%5Cu5bf9%5Cu6570%5Cu3002%2A%2A%5Cu6211%5Cu4eec%5Cu8ba4%5Cu4e3a%24%28i%2Cj%29%24%5Cu548c%24%28j%2Ci%29%24%5Cu662f%5Cu540c%5Cu4e00%5Cu5bf9%5Cu3002%2A%2A%22%2C%22tags%22%3A%5B2%2C111%2C244%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A81%2C%22totalAccepted%22%3A45%2C%22pid%22%3A%22CF1045I%22%2C%22title%22%3A%22Palindrome%20Pairs%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A66483%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29812%2C%22name%22%3A%22CF1045I%20Palindrome%20Pairs%22%2C%22slug%22%3A%22CF1045I%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2499%22%2C%22title%22%3A%22%5BSDOI2012%5D%5Cu8c61%5Cu68cb%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF776D%22%2C%22title%22%3A%22The%20Door%20Problem%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1046F%22%2C%22title%22%3A%22Splitting%20money%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1046C%22%2C%22title%22%3A%22Space%20Formula%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1045D%22%2C%22title%22%3A%22Interstellar%20battle%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Palindrome%20Pairs%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Palindrome Pairs</h1>
+<h2>题意翻译</h2>
+<div>我们希望找到满足以下性质的字符串对$(i,j)$：$s_{i}+s_{j}$的其中一个排列是回文的（如，"aab"和"abcac"的和"aababcac"可以排列为"aabccbaa"，因此这两个串符合要求）。
+输入$N$个小写字符串，输出满足要求的对数。**我们认为$(i,j)$和$(j,i)$是同一对。**</div>
+<h2>题目描述</h2>
+<div>After learning a lot about space exploration, a little girl named Ana wants to change the subject.
+Ana is a girl who loves palindromes (string that can be read the same backwards as forward). She has learned how to check for a given string whether it's a palindrome or not, but soon she grew tired of this problem, so she came up with a more interesting one and she needs your help to solve it:
+You are given an array of strings which consist of only small letters of the alphabet. Your task is to find how many palindrome pairs are there in the array. A palindrome pair is a pair of strings such that the following condition holds: at least one permutation of the concatenation of the two strings is a palindrome. In other words, if you have two strings, let's say "aab" and "abcac", and you concatenate them into "aababcac", we have to check if there exists a permutation of this new string such that it is a palindrome (in this case there exists the permutation "aabccbaa").
+Two pairs are considered different if the strings are located on different indices. The pair of strings with indices $ (i,j) $ is considered the same as the pair $ (j,i) $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a positive integer $ N $ ( $ 1 \le N \le 100\,000 $ ), representing the length of the input array.
+Eacg of the next $ N $ lines contains a string (consisting of lowercase English letters from 'a' to 'z') — an element of the input array.
+The total number of characters in the input array will be less than $ 1\,000\,000 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one number, representing how many palindrome pairs there are in the array.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+aa
+bb
+cd
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6
+aab
+abcac
+dffe
+ed
+aa
+aade
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>6
+</code></pre>
+<h2>说明</h2>
+<div>The first example:
+1. aa $ + $ bb $ \to $ abba.
+The second example:
+1. aab $ + $ abcac $ = $ aababcac $ \to $ aabccbaa
+2. aab $ + $ aa $ = $ aabaa
+3. abcac $ + $ aa $ = $ abcacaa $ \to $ aacbcaa
+4. dffe $ + $ ed $ = $ dffeed $ \to $ fdeedf
+5. dffe $ + $ aade $ = $ dffeaade $ \to $ adfaafde
+6. ed $ + $ aade $ = $ edaade $ \to $ aeddea</div>
+</article>
+</div>
+</div>
+</body>
+</html>

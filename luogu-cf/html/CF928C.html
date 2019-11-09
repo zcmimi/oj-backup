@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dependency management - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399518:x5F3e6RPD5FGsF9z4mhKqL8+OztadAviYN2yOOOxDVo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Polycarp%20is%20currently%20developing%20a%20project%20in%20Vaja%20language%20and%20using%20a%20popular%20dependency%20management%20system%20called%20Vamen.%20From%20Vamen%27s%20point%20of%20view%20both%20Vaja%20project%20and%20libraries%20are%20treated%20projects%20for%20simplicity.%5Cn%5CnA%20project%20in%20Vaja%20has%20its%20own%20uniqie%20non-empty%20name%20consisting%20of%20lowercase%20latin%20letters%20with%20length%20not%20exceeding%20%24%2010%20%24%20and%20version%20%5Cu2014%20positive%20integer%20from%20%24%201%20%24%20to%20%24%2010%5E%7B6%7D%20%24%20.%20Each%20project%20%28keep%20in%20mind%20that%20it%20is%20determined%20by%20both%20its%20name%20and%20version%29%20might%20depend%20on%20other%20projects.%20For%20sure%2C%20there%20are%20no%20cyclic%20dependencies.%5Cn%5CnYou%27re%20given%20a%20list%20of%20project%20descriptions.%20The%20first%20of%20the%20given%20projects%20is%20the%20one%20being%20developed%20by%20Polycarp%20at%20this%20moment.%20Help%20Polycarp%20determine%20all%20projects%20that%20his%20project%20depends%20on%20%28directly%20or%20via%20a%20certain%20chain%29.%5Cn%5CnIt%27s%20possible%20that%20Polycarp%27s%20project%20depends%20on%20two%20different%20versions%20of%20some%20project.%20In%20this%20case%20collision%20resolving%20is%20applied%2C%20i.e.%20for%20each%20such%20project%20the%20system%20chooses%20the%20version%20that%20minimizes%20the%20distance%20from%20it%20to%20Polycarp%27s%20project.%20If%20there%20are%20several%20options%2C%20the%20newer%20%28with%20the%20maximum%20version%29%20is%20preferred.%20This%20version%20is%20considered%20actual%3B%20other%20versions%20and%20their%20dependencies%20are%20ignored.%5Cn%5CnMore%20formal%2C%20choose%20such%20a%20set%20of%20projects%20of%20minimum%20possible%20size%20that%20the%20following%20conditions%20hold%3A%5Cn%5Cn-%20Polycarp%27s%20project%20is%20chosen%3B%5Cn-%20Polycarp%27s%20project%20depends%20%28directly%20or%20indirectly%29%20on%20all%20other%20projects%20in%20the%20set%3B%5Cn-%20no%20two%20projects%20share%20the%20name%3B%5Cn-%20for%20each%20project%20%24%20x%20%24%20that%20some%20other%20project%20in%20the%20set%20depends%20on%20we%20have%20either%20%24%20x%20%24%20or%20some%20%24%20y%20%24%20with%20other%20version%20and%20shorter%20chain%20to%20Polycarp%27s%20project%20chosen.%20In%20case%20of%20ties%20the%20newer%20one%20is%20chosen.%5Cn%5CnOutput%20all%20Polycarp%27s%20project%27s%20dependencies%20%28Polycarp%27s%20project%20itself%20should%27t%20be%20printed%29%20in%20lexicographical%20order.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20only%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20projects%20in%20Vaja.%5Cn%5CnThe%20following%20lines%20contain%20the%20project%20descriptions.%20Each%20project%20is%20described%20by%20a%20line%20consisting%20of%20its%20name%20and%20version%20separated%20by%20space.%20The%20next%20line%20gives%20the%20number%20of%20direct%20dependencies%20%28from%20%24%200%20%24%20to%20%24%20n-1%20%24%20%29%20and%20the%20dependencies%20themselves%20%28one%20in%20a%20line%29%20in%20arbitrary%20order.%20Each%20dependency%20is%20specified%20by%20its%20name%20and%20version.%20The%20projects%20are%20also%20given%20in%20arbitrary%20order%2C%20but%20the%20first%20of%20them%20is%20always%20Polycarp%27s.%20Project%20descriptions%20are%20separated%20by%20one%20empty%20line.%20Refer%20to%20samples%20for%20better%20understanding.%5Cn%5CnIt%27s%20guaranteed%20that%20there%20are%20no%20cyclic%20dependencies.%22%2C%22outputFormat%22%3A%22Output%20all%20Polycarp%27s%20project%27s%20dependencies%20in%20lexicographical%20order.%22%2C%22samples%22%3A%5B%5B%224%5Cna%203%5Cn2%5Cnb%201%5Cnc%201%5Cn%5Cu00a0%5Cnb%202%5Cn0%5Cn%5Cu00a0%5Cnb%201%5Cn1%5Cnb%202%5Cn%5Cu00a0%5Cnc%201%5Cn1%5Cnb%202%5Cn%22%2C%222%5Cnb%201%5Cnc%201%5Cn%22%5D%2C%5B%229%5Cncodehorses%205%5Cn3%5Cnwebfrmk%206%5Cnmashadb%201%5Cnmashadb%202%5Cn%5Cu00a0%5Cncommons%202%5Cn0%5Cn%5Cu00a0%5Cnmashadb%203%5Cn0%5Cn%5Cu00a0%5Cnwebfrmk%206%5Cn2%5Cnmashadb%203%5Cncommons%202%5Cn%5Cu00a0%5Cnextra%204%5Cn1%5Cnextra%203%5Cn%5Cu00a0%5Cnextra%203%5Cn0%5Cn%5Cu00a0%5Cnextra%201%5Cn0%5Cn%5Cu00a0%5Cnmashadb%201%5Cn1%5Cnextra%203%5Cn%5Cu00a0%5Cnmashadb%202%5Cn1%5Cnextra%201%5Cn%22%2C%224%5Cncommons%202%5Cnextra%201%5Cnmashadb%202%5Cnwebfrmk%206%5Cn%22%5D%2C%5B%223%5Cnabc%201%5Cn2%5Cnabc%203%5Cncba%202%5Cn%5Cnabc%203%5Cn0%5Cn%5Cncba%202%5Cn0%5Cn%22%2C%221%5Cncba%202%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20sample%20is%20given%20in%20the%20pic%20below.%20Arrow%20from%20%24%20A%20%24%20to%20%24%20B%20%24%20means%20that%20%24%20B%20%24%20directly%20depends%20on%20%24%20A%20%24%20.%20Projects%20that%20Polycarp%27s%20project%20%5Cu00aba%5Cu00bb%20%28version%20%24%203%20%24%20%29%20depends%20on%20are%20painted%20black.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF928C%5C%2Fa371859be3b1d6095a64048886da3d40b8a64a5c.png%29The%20second%20sample%20is%20again%20given%20in%20the%20pic%20below.%20Arrow%20from%20%24%20A%20%24%20to%20%24%20B%20%24%20means%20that%20%24%20B%20%24%20directly%20depends%20on%20%24%20A%20%24%20.%20Projects%20that%20Polycarp%27s%20project%20%5Cu00abcodehorses%5Cu00bb%20%28version%20%24%205%20%24%20%29%20depends%20on%20are%20paint%20it%20black.%20Note%20that%20%5Cu00abextra%201%5Cu00bb%20is%20chosen%20instead%20of%20%5Cu00abextra%203%5Cu00bb%20since%20%5Cu00abmashadb%201%5Cu00bb%20and%20all%20of%20its%20dependencies%20are%20ignored%20due%20to%20%5Cu00abmashadb%202%5Cu00bb.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF928C%5C%2F978730e491ec608e1064d6e22362aa73a87095d0.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F928%5C%2FC%22%2C%22id%22%3A%22928C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF928C%22%2C%22title%22%3A%22Dependency%20management%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Dependency%20management%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Dependency management</h1>
+<h2>题目描述</h2>
+<div>Polycarp is currently developing a project in Vaja language and using a popular dependency management system called Vamen. From Vamen's point of view both Vaja project and libraries are treated projects for simplicity.
+A project in Vaja has its own uniqie non-empty name consisting of lowercase latin letters with length not exceeding $ 10 $ and version — positive integer from $ 1 $ to $ 10^{6} $ . Each project (keep in mind that it is determined by both its name and version) might depend on other projects. For sure, there are no cyclic dependencies.
+You're given a list of project descriptions. The first of the given projects is the one being developed by Polycarp at this moment. Help Polycarp determine all projects that his project depends on (directly or via a certain chain).
+It's possible that Polycarp's project depends on two different versions of some project. In this case collision resolving is applied, i.e. for each such project the system chooses the version that minimizes the distance from it to Polycarp's project. If there are several options, the newer (with the maximum version) is preferred. This version is considered actual; other versions and their dependencies are ignored.
+More formal, choose such a set of projects of minimum possible size that the following conditions hold:
+- Polycarp's project is chosen;
+- Polycarp's project depends (directly or indirectly) on all other projects in the set;
+- no two projects share the name;
+- for each project $ x $ that some other project in the set depends on we have either $ x $ or some $ y $ with other version and shorter chain to Polycarp's project chosen. In case of ties the newer one is chosen.
+Output all Polycarp's project's dependencies (Polycarp's project itself should't be printed) in lexicographical order.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an only integer $ n $ ( $ 1<=n<=1000 $ ) — the number of projects in Vaja.
+The following lines contain the project descriptions. Each project is described by a line consisting of its name and version separated by space. The next line gives the number of direct dependencies (from $ 0 $ to $ n-1 $ ) and the dependencies themselves (one in a line) in arbitrary order. Each dependency is specified by its name and version. The projects are also given in arbitrary order, but the first of them is always Polycarp's. Project descriptions are separated by one empty line. Refer to samples for better understanding.
+It's guaranteed that there are no cyclic dependencies.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output all Polycarp's project's dependencies in lexicographical order.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+a 3
+2
+b 1
+c 1
+ 
+b 2
+0
+ 
+b 1
+1
+b 2
+ 
+c 1
+1
+b 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+b 1
+c 1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>9
+codehorses 5
+3
+webfrmk 6
+mashadb 1
+mashadb 2
+ 
+commons 2
+0
+ 
+mashadb 3
+0
+ 
+webfrmk 6
+2
+mashadb 3
+commons 2
+ 
+extra 4
+1
+extra 3
+ 
+extra 3
+0
+ 
+extra 1
+0
+ 
+mashadb 1
+1
+extra 3
+ 
+mashadb 2
+1
+extra 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4
+commons 2
+extra 1
+mashadb 2
+webfrmk 6
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+abc 1
+2
+abc 3
+cba 2
+
+abc 3
+0
+
+cba 2
+0
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+cba 2
+</code></pre>
+<h2>说明</h2>
+<div>The first sample is given in the pic below. Arrow from $ A $ to $ B $ means that $ B $ directly depends on $ A $ . Projects that Polycarp's project «a» (version $ 3 $ ) depends on are painted black.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF928C/a371859be3b1d6095a64048886da3d40b8a64a5c.png)The second sample is again given in the pic below. Arrow from $ A $ to $ B $ means that $ B $ directly depends on $ A $ . Projects that Polycarp's project «codehorses» (version $ 5 $ ) depends on are paint it black. Note that «extra 1» is chosen instead of «extra 3» since «mashadb 1» and all of its dependencies are ignored due to «mashadb 2».
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF928C/978730e491ec608e1064d6e22362aa73a87095d0.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

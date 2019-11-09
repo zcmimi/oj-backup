@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Gas Pipeline - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403110:2Lg3CS0hSrQZQ1f45iv5ZkEa7j6MumIhNKzMHjuB3GY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20responsible%20for%20installing%20a%20gas%20pipeline%20along%20a%20road.%20Let%27s%20consider%20the%20road%20%28for%20simplicity%29%20as%20a%20segment%20%24%20%5B0%2C%20n%5D%20%24%20on%20%24%20OX%20%24%20axis.%20The%20road%20can%20have%20several%20crossroads%2C%20but%20for%20simplicity%2C%20we%27ll%20denote%20each%20crossroad%20as%20an%20interval%20%24%20%28x%2C%20x%20%2B%201%29%20%24%20with%20integer%20%24%20x%20%24%20.%20So%20we%20can%20represent%20the%20road%20as%20a%20binary%20string%20consisting%20of%20%24%20n%20%24%20characters%2C%20where%20character%200%20means%20that%20current%20interval%20doesn%27t%20contain%20a%20crossroad%2C%20and%201%20means%20that%20there%20is%20a%20crossroad.%5Cn%5CnUsually%2C%20we%20can%20install%20the%20pipeline%20along%20the%20road%20on%20height%20of%20%24%201%20%24%20unit%20with%20supporting%20pillars%20in%20each%20integer%20point%20%28so%2C%20if%20we%20are%20responsible%20for%20%24%20%5B0%2C%20n%5D%20%24%20road%2C%20we%20must%20install%20%24%20n%20%2B%201%20%24%20pillars%29.%20But%20on%20crossroads%20we%20should%20lift%20the%20pipeline%20up%20to%20the%20height%20%24%202%20%24%20%2C%20so%20the%20pipeline%20won%27t%20obstruct%20the%20way%20for%20cars.%5Cn%5CnWe%20can%20do%20so%20inserting%20several%20zig-zag-like%20lines.%20Each%20zig-zag%20can%20be%20represented%20as%20a%20segment%20%24%20%5Bx%2C%20x%20%2B%201%5D%20%24%20with%20integer%20%24%20x%20%24%20consisting%20of%20three%20parts%3A%20%24%200.5%20%24%20units%20of%20horizontal%20pipe%20%2B%20%24%201%20%24%20unit%20of%20vertical%20pipe%20%2B%20%24%200.5%20%24%20of%20horizontal.%20Note%20that%20if%20pipeline%20is%20currently%20on%20height%20%24%202%20%24%20%2C%20the%20pillars%20that%20support%20it%20should%20also%20have%20length%20equal%20to%20%24%202%20%24%20units.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1207C%5C%2Ff1dfe38b83de03ccc78e9e23fedbdc3223f970d0.png%29Each%20unit%20of%20gas%20pipeline%20costs%20us%20%24%20a%20%24%20bourles%2C%20and%20each%20unit%20of%20pillar%20%5Cu2014%20%24%20b%20%24%20bourles.%20So%2C%20it%27s%20not%20always%20optimal%20to%20make%20the%20whole%20pipeline%20on%20the%20height%20%24%202%20%24%20.%20Find%20the%20shape%20of%20the%20pipeline%20with%20minimum%20possible%20cost%20and%20calculate%20that%20cost.%5Cn%5CnNote%20that%20you%20must%20start%20and%20finish%20the%20pipeline%20on%20height%20%24%201%20%24%20and%2C%20also%2C%20it%27s%20guaranteed%20that%20the%20first%20and%20last%20characters%20of%20the%20input%20string%20are%20equal%20to%200.%22%2C%22inputFormat%22%3A%22The%20fist%20line%20contains%20one%20integer%20%24%20T%20%24%20%28%20%24%201%20%5C%5Cle%20T%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries.%20Next%20%24%202%20%5C%5Ccdot%20T%20%24%20lines%20contain%20independent%20queries%20%5Cu2014%20one%20query%20per%20two%20lines.%5Cn%5CnThe%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20a%20%24%20%2C%20%24%20b%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%201%20%5C%5Cle%20a%20%5C%5Cle%2010%5E8%20%24%20%2C%20%24%201%20%5C%5Cle%20b%20%5C%5Cle%2010%5E8%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20road%2C%20the%20cost%20of%20one%20unit%20of%20the%20pipeline%20and%20the%20cost%20of%20one%20unit%20of%20the%20pillar%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20binary%20string%20%24%20s%20%24%20%28%20%24%20%7Cs%7C%20%3D%20n%20%24%20%2C%20%24%20s_i%20%5C%5Cin%20%5C%5C%7B0%2C%201%5C%5C%7D%20%24%20%2C%20%24%20s_1%20%3D%20s_n%20%3D%200%20%24%20%29%20%5Cu2014%20the%20description%20of%20the%20road.%5Cn%5CnIt%27s%20guaranteed%20that%20the%20total%20length%20of%20all%20strings%20%24%20s%20%24%20doesn%27t%20exceed%20%24%202%20%5C%5Ccdot%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20%24%20T%20%24%20integers%20%5Cu2014%20one%20per%20query.%20For%20each%20query%20print%20the%20minimum%20possible%20cost%20of%20the%20constructed%20pipeline.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%5Cn8%202%205%5Cn00110010%5Cn8%201%201%5Cn00110010%5Cn9%20100000000%20100000000%5Cn010101010%5Cn2%205%201%5Cn00%5Cn%22%2C%22%5Cn94%5Cn25%5Cn2900000000%5Cn13%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20optimal%20pipeline%20for%20the%20first%20query%20is%20shown%20at%20the%20picture%20above.%5Cn%5CnThe%20optimal%20pipeline%20for%20the%20second%20query%20is%20pictured%20below%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1207C%5C%2F2782d7e4c7012251045217f9f050b1e333f47c33.png%29The%20optimal%20%28and%20the%20only%20possible%29%20pipeline%20for%20the%20third%20query%20is%20shown%20below%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1207C%5C%2F7e72ed8fa647ff66b04ca0425394c874c1b110fe.png%29The%20optimal%20pipeline%20for%20the%20fourth%20query%20is%20shown%20below%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1207C%5C%2F248de9c02a0298296e2131b26213178e9c6ad6ba.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1207%5C%2FC%22%2C%22id%22%3A%221207C%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu9700%5Cu8981%5Cu5728%5Cu57ce%5Cu5e02%5Cu91cc%5Cu4fee%5Cu5efa%5Cu7ba1%5Cu9053%5Cu548c%5Cu652f%5Cu67f1%5Cuff0c%5Cu7ba1%5Cu9053%5Cu548c%5Cu652f%5Cu67f1%5Cu7684%5Cu5355%5Cu4f4d%5Cu957f%5Cu5ea6%5Cu7684%5Cu4ef7%5Cu683c%5Cu5206%5Cu522b%5Cu4e3a%24a%2Cb%24%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%2401%24%5Cu5e8f%5Cu5217%5Cuff0c%5Cu5176%5Cu4e2d%241%24%5Cu8868%5Cu793a%5Cu8fd9%5Cu91cc%5Cu9700%5Cu8981%5Cu901a%5Cu8f66%5Cuff0c%240%24%5Cu8868%5Cu793a%5Cu8fd9%5Cu91cc%5Cu4e0d%5Cu9700%5Cu8981%5Cu901a%5Cu8f66%5Cuff0c%5Cu9ad8%5Cu5ea6%5Cu4e3a%242%24%5Cu7684%5Cu5730%5Cu65b9%5Cu624d%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8f66%28%5Cu4fdd%5Cu8bc1%5Cu5e8f%5Cu5217%5Cu7684%5Cu5934%5Cu5c3e%5Cu4e0d%5Cu9700%5Cu8981%5Cu901a%5Cu8f66%29%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu56fe%5Cuff0c%5Cu7ea2%5Cu8272%5Cu8868%5Cu793a%5Cu7ba1%5Cu9053%5Cuff0c%5Cu9ed1%5Cu8272%5Cu8868%5Cu793a%5Cu652f%5Cu67f1%5Cuff0c%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu5728%5Cu4e00%5Cu6bb5%5Cu5355%5Cu4f4d%5Cu533a%5Cu95f4%5Cu5efa%5Cu7acb%5Cu4e00%5Cu6761S%5Cu5f62%5Cu7ebf%5Cu6761%5Cuff0c%5Cu6bcf%5Cu4e2aS%5Cu5f62%5Cu53ef%5Cu4ee5%5Cu8868%5Cu793a%5Cu4e3a%5Cu8be5%5Cu6bb5%5Cu7531%5Cu4e09%5Cu90e8%5Cu5206%5Cu7ec4%5Cu6210%5Cuff1a%240.5%24%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu7684%5Cu6c34%5Cu5e73%5Cu7ba1%5Cu9053%2B%241%24%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu7684%5Cu5782%5Cu76f4%5Cu7ba1%5Cu9053%2B%240.5%24%5Cu4e2a%5Cu5355%5Cu4f4d%5Cu7684%5Cu6c34%5Cu5e73%5Cu7ba1%5Cu9053%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu4e00%5Cu6bb5%5Cu7684%5Cu5355%5Cu4f4d%5Cu533a%5Cu95f4%5Cu5de6%5Cu53f3%5Cu90fd%5Cu6709%5Cu652f%5Cu67f1%5Cu652f%5Cu6491%5Cuff0c%5Cu652f%5Cu67f1%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu7b49%5Cu4e8e%5Cu7ba1%5Cu9053%5Cu7aef%5Cu70b9%5Cu7684%5Cu9ad8%5Cu5ea6%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu4fdd%5Cu8bc1%5Cu6240%5Cu6709%5Cu901a%5Cu8f66%5Cu7684%5Cu5730%5Cu65b9%5Cu9ad8%5Cu5ea6%5Cu4e3a%242%24%5Cu7684%5Cu540c%5Cu65f6%5Cuff0c%5Cu5efa%5Cu7ba1%5Cu9053%5Cu548c%5Cu652f%5Cu67f1%5Cu7684%5Cu8d39%5Cu7528%5Cu603b%5Cu548c%5Cu6700%5Cu5c0f%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A188%2C%22totalAccepted%22%3A136%2C%22pid%22%3A%22CF1207C%22%2C%22title%22%3A%22Gas%20Pipeline%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1207F%22%2C%22title%22%3A%22Remainder%20Problem%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207E%22%2C%22title%22%3A%22XOR%20Guessing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207D%22%2C%22title%22%3A%22Number%20Of%20Permutations%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1221D%22%2C%22title%22%3A%22Make%20The%20Fence%20Great%20Again%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1239A%22%2C%22title%22%3A%22Ivan%20the%20Fool%20and%20the%20Probability%20Theory%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Gas%20Pipeline%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Gas Pipeline</h1>
+<h2>题意翻译</h2>
+<div>你需要在城市里修建管道和支柱，管道和支柱的单位长度的价格分别为$a,b$
+给你一个长度为$n$的$01$序列，其中$1$表示这里需要通车，$0$表示这里不需要通车，高度为$2$的地方才可以通车(保证序列的头尾不需要通车)
+如图，红色表示管道，黑色表示支柱，我们可以在一段单位区间建立一条S形线条，每个S形可以表示为该段由三部分组成：$0.5$个单位的水平管道+$1$个单位的垂直管道+$0.5$个单位的水平管道
+每一段的单位区间左右都有支柱支撑，支柱的高度等于管道端点的高度
+你需要保证所有通车的地方高度为$2$的同时，建管道和支柱的费用总和最小</div>
+<h2>题目描述</h2>
+<div>You are responsible for installing a gas pipeline along a road. Let's consider the road (for simplicity) as a segment $ [0, n] $ on $ OX $ axis. The road can have several crossroads, but for simplicity, we'll denote each crossroad as an interval $ (x, x + 1) $ with integer $ x $ . So we can represent the road as a binary string consisting of $ n $ characters, where character 0 means that current interval doesn't contain a crossroad, and 1 means that there is a crossroad.
+Usually, we can install the pipeline along the road on height of $ 1 $ unit with supporting pillars in each integer point (so, if we are responsible for $ [0, n] $ road, we must install $ n + 1 $ pillars). But on crossroads we should lift the pipeline up to the height $ 2 $ , so the pipeline won't obstruct the way for cars.
+We can do so inserting several zig-zag-like lines. Each zig-zag can be represented as a segment $ [x, x + 1] $ with integer $ x $ consisting of three parts: $ 0.5 $ units of horizontal pipe + $ 1 $ unit of vertical pipe + $ 0.5 $ of horizontal. Note that if pipeline is currently on height $ 2 $ , the pillars that support it should also have length equal to $ 2 $ units.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1207C/f1dfe38b83de03ccc78e9e23fedbdc3223f970d0.png)Each unit of gas pipeline costs us $ a $ bourles, and each unit of pillar — $ b $ bourles. So, it's not always optimal to make the whole pipeline on the height $ 2 $ . Find the shape of the pipeline with minimum possible cost and calculate that cost.
+Note that you must start and finish the pipeline on height $ 1 $ and, also, it's guaranteed that the first and last characters of the input string are equal to 0.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The fist line contains one integer $ T $ ( $ 1 \le T \le 100 $ ) — the number of queries. Next $ 2 \cdot T $ lines contain independent queries — one query per two lines.
+The first line contains three integers $ n $ , $ a $ , $ b $ ( $ 2 \le n \le 2 \cdot 10^5 $ , $ 1 \le a \le 10^8 $ , $ 1 \le b \le 10^8 $ ) — the length of the road, the cost of one unit of the pipeline and the cost of one unit of the pillar, respectively.
+The second line contains binary string $ s $ ( $ |s| = n $ , $ s_i \in \{0, 1\} $ , $ s_1 = s_n = 0 $ ) — the description of the road.
+It's guaranteed that the total length of all strings $ s $ doesn't exceed $ 2 \cdot 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ T $ integers — one per query. For each query print the minimum possible cost of the constructed pipeline.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4
+8 2 5
+00110010
+8 1 1
+00110010
+9 100000000 100000000
+010101010
+2 5 1
+00
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+94
+25
+2900000000
+13
+</code></pre>
+<h2>说明</h2>
+<div>The optimal pipeline for the first query is shown at the picture above.
+The optimal pipeline for the second query is pictured below:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1207C/2782d7e4c7012251045217f9f050b1e333f47c33.png)The optimal (and the only possible) pipeline for the third query is shown below:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1207C/7e72ed8fa647ff66b04ca0425394c874c1b110fe.png)The optimal pipeline for the fourth query is shown below:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1207C/248de9c02a0298296e2131b26213178e9c6ad6ba.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

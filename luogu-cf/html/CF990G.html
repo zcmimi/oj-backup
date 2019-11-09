@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GCD Counting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400159:czt+a0/Lt3AE1rvhLDy+UOwJve1haYW2hoTqPu1ICVU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20tree%20consisting%20of%20%24%20n%20%24%20vertices.%20A%20number%20is%20written%20on%20each%20vertex%3B%20the%20number%20on%20vertex%20%24%20i%20%24%20is%20equal%20to%20%24%20a_i%20%24%20.%5Cn%5CnLet%27s%20denote%20the%20function%20%24%20g%28x%2C%20y%29%20%24%20as%20the%20greatest%20common%20divisor%20of%20the%20numbers%20written%20on%20the%20vertices%20belonging%20to%20the%20simple%20path%20from%20vertex%20%24%20x%20%24%20to%20vertex%20%24%20y%20%24%20%28including%20these%20two%20vertices%29.%5Cn%5CnFor%20every%20integer%20from%20%24%201%20%24%20to%20%24%202%20%5C%5Ccdot%2010%5E5%20%24%20you%20have%20to%20count%20the%20number%20of%20pairs%20%24%20%28x%2C%20y%29%20%24%20%24%20%281%20%5C%5Cle%20x%20%5C%5Cle%20y%20%5C%5Cle%20n%29%20%24%20such%20that%20%24%20g%28x%2C%20y%29%20%24%20is%20equal%20to%20this%20number.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%5Cu2014%20the%20number%20of%20vertices%20%24%20%281%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%29%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%20%24%20%2C%20%24%20a_2%20%24%20%2C%20...%2C%20%24%20a_n%20%24%20%24%20%281%20%5C%5Cle%20a_i%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%29%20%24%20%5Cu2014%20the%20numbers%20written%20on%20vertices.%5Cn%5CnThen%20%24%20n%20-%201%20%24%20lines%20follow%2C%20each%20containing%20two%20integers%20%24%20x%20%24%20and%20%24%20y%20%24%20%24%20%281%20%5C%5Cle%20x%2C%20y%20%5C%5Cle%20n%2C%20x%20%5C%5Cne%20y%29%20%24%20denoting%20an%20edge%20connecting%20vertex%20%24%20x%20%24%20with%20vertex%20%24%20y%20%24%20.%20It%20is%20guaranteed%20that%20these%20edges%20form%20a%20tree.%22%2C%22outputFormat%22%3A%22For%20every%20integer%20%24%20i%20%24%20from%20%24%201%20%24%20to%20%24%202%20%5C%5Ccdot%2010%5E5%20%24%20do%20the%20following%3A%20if%20there%20is%20no%20pair%20%24%20%28x%2C%20y%29%20%24%20such%20that%20%24%20x%20%5C%5Cle%20y%20%24%20and%20%24%20g%28x%2C%20y%29%20%3D%20i%20%24%20%2C%20don%27t%20output%20anything.%20Otherwise%20output%20two%20integers%3A%20%24%20i%20%24%20and%20the%20number%20of%20aforementioned%20pairs.%20You%20have%20to%20consider%20the%20values%20of%20%24%20i%20%24%20in%20ascending%20order.%5Cn%5CnSee%20the%20examples%20for%20better%20understanding.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%202%203%5Cn1%202%5Cn2%203%5Cn%22%2C%221%204%5Cn2%201%5Cn3%201%5Cn%22%5D%2C%5B%226%5Cn1%202%204%208%2016%2032%5Cn1%206%5Cn6%203%5Cn3%204%5Cn4%202%5Cn6%205%5Cn%22%2C%221%206%5Cn2%205%5Cn4%206%5Cn8%201%5Cn16%202%5Cn32%201%5Cn%22%5D%2C%5B%224%5Cn9%2016%20144%206%5Cn1%203%5Cn2%203%5Cn4%203%5Cn%22%2C%221%201%5Cn2%201%5Cn3%201%5Cn6%202%5Cn9%202%5Cn16%202%5Cn144%201%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F990%5C%2FG%22%2C%22id%22%3A%22990G%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu68f5n%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu6811%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu4e0a%5Cu6709%5Cu70b9%5Cu6743ai%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6c42%5Cu6700%5Cu957f%5Cu7684%5Cu6811%5Cu4e0a%5Cu8def%5Cu5f84%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu6761%5Cu4ef6%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu8def%5Cu5f84%5Cu4e0a%5Cu7ecf%5Cu8fc7%5Cu8282%5Cu70b9%5Cuff08%5Cu5305%5Cu62ec%5Cu4e24%5Cu4e2a%5Cu7aef%5Cu70b9%5Cuff09%5Cu70b9%5Cu6743%5Cu7684gcd%5Cu548c%5Cu4e0d%5Cu7b49%5Cu4e8e1%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cr%5Cn%5Cr%5Cnn%20%3C%3D%202%20%2A%2010%5E5%5Cr%5Cn%5Cr%5Cn1%20%3C%3D%20a_i%20%3C%3D%202%20%2A%2010%5E5%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A168%2C%22totalAccepted%22%3A63%2C%22pid%22%3A%22CF990G%22%2C%22title%22%3A%22GCD%20Counting%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A99431%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A26489%2C%22name%22%3A%22CF990G%20GCD%20Counting%22%2C%22slug%22%3A%22CF990G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4233%22%2C%22title%22%3A%22%5Cu5c04%5Cu547d%5Cu4e38%5Cu6587%5Cu7684%5Cu7b14%5Cu8bb0%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF932E%22%2C%22title%22%3A%22Team%20Work%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4705%22%2C%22title%22%3A%22%5Cu73a9%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1101D%22%2C%22title%22%3A%22GCD%20Counting%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1204E%22%2C%22title%22%3A%22Natasha%2C%20Sasha%20and%20the%20Prefix%20Sums%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GCD%20Counting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GCD Counting</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+给出一棵n个节点的树，每个节点上有点权ai。
+求最长的树上路径，满足条件：
+路径上经过节点（包括两个端点）点权的gcd和不等于1。
+数据范围
+n <= 2 * 10^5
+1 <= a_i <= 2 * 10^5</div>
+<h2>题目描述</h2>
+<div>You are given a tree consisting of $ n $ vertices. A number is written on each vertex; the number on vertex $ i $ is equal to $ a_i $ .
+Let's denote the function $ g(x, y) $ as the greatest common divisor of the numbers written on the vertices belonging to the simple path from vertex $ x $ to vertex $ y $ (including these two vertices).
+For every integer from $ 1 $ to $ 2 \cdot 10^5 $ you have to count the number of pairs $ (x, y) $ $ (1 \le x \le y \le n) $ such that $ g(x, y) $ is equal to this number.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ — the number of vertices $ (1 \le n \le 2 \cdot 10^5) $ .
+The second line contains $ n $ integers $ a_1 $ , $ a_2 $ , ..., $ a_n $ $ (1 \le a_i \le 2 \cdot 10^5) $ — the numbers written on vertices.
+Then $ n - 1 $ lines follow, each containing two integers $ x $ and $ y $ $ (1 \le x, y \le n, x \ne y) $ denoting an edge connecting vertex $ x $ with vertex $ y $ . It is guaranteed that these edges form a tree.</div>
+<h3>输出格式</h3>
+<br />
+<div>For every integer $ i $ from $ 1 $ to $ 2 \cdot 10^5 $ do the following: if there is no pair $ (x, y) $ such that $ x \le y $ and $ g(x, y) = i $ , don't output anything. Otherwise output two integers: $ i $ and the number of aforementioned pairs. You have to consider the values of $ i $ in ascending order.
+See the examples for better understanding.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 2 3
+1 2
+2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 4
+2 1
+3 1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6
+1 2 4 8 16 32
+1 6
+6 3
+3 4
+4 2
+6 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1 6
+2 5
+4 6
+8 1
+16 2
+32 1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4
+9 16 144 6
+1 3
+2 3
+4 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1 1
+2 1
+3 1
+6 2
+9 2
+16 2
+144 1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

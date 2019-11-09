@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Football - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403599:Wd19fXj0IvHNDiJnYnYlSEFxFTm1Y2RIpVJZE5xN3Us=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20%24%20n%20%24%20football%20teams%20in%20the%20world.%5Cn%5CnThe%20Main%20Football%20Organization%20%28MFO%29%20wants%20to%20host%20at%20most%20%24%20m%20%24%20games.%20MFO%20wants%20the%20%24%20i%20%24%20-th%20game%20to%20be%20played%20between%20the%20teams%20%24%20a_i%20%24%20and%20%24%20b_i%20%24%20in%20one%20of%20the%20%24%20k%20%24%20stadiums.%5Cn%5CnLet%20%24%20s_%7Bij%7D%20%24%20be%20the%20numbers%20of%20games%20the%20%24%20i%20%24%20-th%20team%20played%20in%20the%20%24%20j%20%24%20-th%20stadium.%20MFO%20does%20not%20want%20a%20team%20to%20have%20much%20more%20games%20in%20one%20stadium%20than%20in%20the%20others.%20Therefore%2C%20for%20each%20team%20%24%20i%20%24%20%2C%20the%20absolute%20difference%20between%20the%20maximum%20and%20minimum%20among%20%24%20s_%7Bi1%7D%2C%20s_%7Bi2%7D%2C%20%5C%5Cldots%2C%20s_%7Bik%7D%20%24%20should%20not%20exceed%20%24%202%20%24%20.%5Cn%5CnEach%20team%20has%20%24%20w_i%20%24%20%5Cu2014%20the%20amount%20of%20money%20MFO%20will%20earn%20for%20each%20game%20of%20the%20%24%20i%20%24%20-th%20team.%20If%20the%20%24%20i%20%24%20-th%20team%20plays%20%24%20l%20%24%20games%2C%20MFO%20will%20earn%20%24%20w_i%20%5C%5Ccdot%20l%20%24%20.%5Cn%5CnMFO%20needs%20to%20find%20what%20games%20in%20what%20stadiums%20they%20need%20to%20host%20in%20order%20to%20earn%20as%20much%20money%20as%20possible%2C%20not%20violating%20the%20rule%20they%20set.%5Cn%5CnHowever%2C%20this%20problem%20is%20too%20complicated%20for%20MFO.%20Therefore%2C%20they%20are%20asking%20you%20to%20help%20them.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20%2C%20%24%20k%20%24%20%28%20%24%203%20%5C%5Cleq%20n%20%5C%5Cleq%20100%20%24%20%2C%20%24%200%20%5C%5Cleq%20m%20%5C%5Cleq%201%5C%5C%2C000%20%24%20%2C%20%24%201%20%5C%5Cleq%20k%20%5C%5Cleq%201%5C%5C%2C000%20%24%20%29%20%5Cu2014%20the%20number%20of%20teams%2C%20the%20number%20of%20games%2C%20and%20the%20number%20of%20stadiums.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20w_1%2C%20w_2%2C%20%5C%5Cldots%2C%20w_n%20%24%20%28%20%24%201%20%5C%5Cleq%20w_i%20%5C%5Cleq%201%5C%5C%2C000%20%24%20%29%20%5Cu2014%20the%20amount%20of%20money%20MFO%20will%20earn%20for%20each%20game%20of%20the%20%24%20i%20%24%20-th%20game.%5Cn%5CnEach%20of%20the%20following%20%24%20m%20%24%20lines%20contains%20two%20integers%20%24%20a_i%20%24%20and%20%24%20b_i%20%24%20%28%20%24%201%20%5C%5Cleq%20a_i%2C%20b_i%20%5C%5Cleq%20n%20%24%20%2C%20%24%20a_i%20%5C%5Cneq%20b_i%20%24%20%29%20%5Cu2014%20the%20teams%20that%20can%20play%20the%20%24%20i%20%24%20-th%20game.%20It%20is%20guaranteed%20that%20each%20pair%20of%20teams%20can%20play%20at%20most%20one%20game.%22%2C%22outputFormat%22%3A%22For%20each%20game%20in%20the%20same%20order%2C%20print%20%24%20t_i%20%24%20%28%20%24%201%20%5C%5Cleq%20t_i%20%5C%5Cleq%20k%20%24%20%29%20%5Cu2014%20the%20number%20of%20the%20stadium%2C%20in%20which%20%24%20a_i%20%24%20and%20%24%20b_i%20%24%20will%20play%20the%20game.%20If%20the%20%24%20i%20%24%20-th%20game%20should%20not%20be%20played%2C%20%24%20t_i%20%24%20should%20be%20equal%20to%20%24%200%20%24%20.%5Cn%5CnIf%20there%20are%20multiple%20answers%2C%20print%20any.%22%2C%22samples%22%3A%5B%5B%22%5Cn7%2011%203%5Cn4%207%208%2010%2010%209%203%5Cn6%202%5Cn6%201%5Cn7%206%5Cn4%203%5Cn4%206%5Cn3%201%5Cn5%203%5Cn7%205%5Cn7%203%5Cn4%202%5Cn1%204%5Cn%22%2C%22%5Cn3%5Cn2%5Cn1%5Cn1%5Cn3%5Cn1%5Cn2%5Cn1%5Cn2%5Cn3%5Cn2%5Cn%22%5D%5D%2C%22hint%22%3A%22One%20of%20possible%20solutions%20to%20the%20example%20is%20shown%20below%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1240F%5C%2F76a6f34bde62a8cd1c0ba3685b149ea73e08fdf3.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1240%5C%2FF%22%2C%22id%22%3A%221240F%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu4e16%5Cu754c%5Cu4e0a%5Cu6709%20%24n%24%20%5Cu4e2a%5Cu7403%5Cu961f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8db3%5Cu7403%5Cu4e3b%5Cu5e2d%5Cu59d4%5Cu5458%5Cu4f1a%5Cuff08MFO%5Cuff09%5Cu60f3%5Cu4e3b%5Cu6301%5Cu6700%5Cu591a%20%24m%24%20%5Cu573a%5Cu8db3%5Cu7403%5Cu8d5b%5Cuff0cMFO%20%5Cu5e0c%5Cu671b%5Cu7b2c%20%24i%24%20%5Cu573a%5Cu6bd4%5Cu8d5b%5Cu5728%5Cu7403%5Cu961f%20%24a_i%24%20%5Cu548c%20%24b_i%24%20%5Cu4e4b%5Cu95f4%5Cu4e3e%5Cu529e%5Cuff0c%5Cu4e3e%5Cu529e%5Cu573a%5Cu5730%5Cu4e3a%20%24k%24%20%5Cu4e2a%5Cu4f53%5Cu80b2%5Cu573a%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu547d%5Cu540d%20%24s_%7Bi%2Cj%7D%24%20%5Cu4e3a%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu961f%5Cu4f0d%5Cu5728%5Cu7b2c%20%24j%24%20%5Cu4e2a%5Cu4f53%5Cu80b2%5Cu573a%5Cu6253%5Cu7684%5Cu6bd4%5Cu8d5b%5Cu7684%5Cu6570%5Cu91cf%5Cu3002MFO%20%5Cu4e0d%5Cu5e0c%5Cu671b%5Cu4e00%5Cu4e2a%5Cu961f%5Cu4f0d%5Cu5728%5Cu4e00%5Cu4e2a%5Cu4f53%5Cu80b2%5Cu573a%5Cu6253%5Cu7684%5Cu6bd4%5Cu8d5b%5Cu8fdc%5Cu591a%5Cu4e8e%5Cu5728%5Cu5176%5Cu4ed6%5Cu4f53%5Cu80b2%5Cu573a%5Cu6253%5Cu7684%5Cu6bd4%5Cu8d5b%5Cu3002%5Cu6240%5Cu4ee5%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu961f%5Cu4f0d%20%24i%24%20%5Cuff0c%5Cu5176%20%24s_%7Bi%2C1%7D%2Cs_%7Bi%2C2%7D%2C%5Cu2026%5Cu2026%2Cs_%7Bi%2Ck%7D%24%20%5Cu4e2d%5Cuff0c%5Cu6700%5Cu5927%5Cu503c%5Cu548c%5Cu6700%5Cu5c0f%5Cu503c%5Cu7684%5Cu5dee%5Cu7684%5Cu7edd%5Cu5bf9%5Cu503c%5Cu4e0d%5Cu5e94%5Cu8be5%5Cu8d85%5Cu8fc7%20%242%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu4e2a%5Cu961f%5Cu4f0d%5Cu6709%5Cu4e00%5Cu4e2a%20%24w_i%24%20%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu961f%5Cu4f0d%5Cu6bcf%5Cu6253%5Cu4e00%5Cu573a%5Cu6bd4%5Cu8d5b%20MFO%20%5Cu8d5a%5Cu53d6%5Cu7684%5Cu6536%5Cu76ca%5Cu3002%5Cu5982%5Cu679c%5Cu961f%5Cu4f0d%20%24i%24%20%5Cu6253%5Cu4e86%20%24l%24%20%5Cu573a%5Cu6bd4%5Cu8d5b%5Cuff0c%5Cu90a3%5Cu4e48%20MFO%20%5Cu5c06%5Cu4f1a%5Cu83b7%5Cu5f97%20%24w_i%2Al%24%20%5Cu7684%5Cu94b1%5Cu3002%5Cr%5Cn%5Cr%5CnMFO%20%5Cu9700%5Cu8981%5Cu77e5%5Cu9053%5Cu4ed6%5Cu4eec%5Cu5e94%5Cu8be5%5Cu5728%5Cu54ea%5Cu4e2a%5Cu4f53%5Cu80b2%5Cu573a%5Cu4e3e%5Cu529e%5Cu54ea%5Cu4e00%5Cu573a%5Cu6bd4%5Cu8d5b%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu5728%5Cu4e0d%5Cu8fdd%5Cu53cd%5Cu4ed6%5Cu4eec%5Cu8bbe%5Cu5b9a%5Cu7684%5Cu89c4%5Cu5219%5Cu7684%5Cu524d%5Cu63d0%5Cu4e0b%5Cuff0c%5Cu8d5a%5Cu53d6%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu591a%5Cu7684%5Cu94b1%5Cr%5Cn%5Cr%5Cn%5Cu7136%5Cu800c%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu5bf9%5Cu4e8e%20MFO%20%5Cu6765%5Cu8bf4%5Cu592a%5Cu590d%5Cu6742%5Cu4e86%5Cuff0c%5Cu56e0%5Cu6b64%5Cu9700%5Cu8981%5Cu4f60%5Cu7684%5Cu5e2e%5Cu52a9%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%20%24n%2Cm%2Ck%5C%5C%20%5C%5C%20%283%5Cu2264n%5Cu2264100%2C%200%5Cu2264m%5Cu22641000%2C%201%5Cu2264k%5Cu22641000%29%24.%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%20%24n%24%20%5Cu4e2a%5Cu6574%5Cu6570%20%24w_1%2Cw_2%2C%5Cu2026%5Cu2026%2Cw_n%5C%5C%20%5C%5C%20%281%5Cu2264w_i%5Cu22641000%29%24%20%5Cuff0c%5Cu610f%5Cu4e49%5Cu89c1%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24m%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24a_i%24%20%5Cu548c%20%24b_i%5C%5C%20%5C%5C%20%281%5Cu2264a_i%2Cb_i%5Cu2264n%2C%5C%5C%20a_i%5C%5Cneq%20b_i%29%24%20%5Cuff0c%5Cu610f%5Cu4e49%5Cu89c1%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu573a%5Cu6bd4%5Cu8d5b%5Cuff0c%5Cu8f93%5Cu51fa%20%24t_i%5C%5C%20%281%5Cu2264t_i%5Cu2264k%29%20%24%5Cuff0c%5Cu8868%5Cu793a%5Cu8fd9%5Cu573a%5Cu6bd4%5Cu8d5b%5Cu5728%5Cu7b2c%20%24t_i%24%20%5Cu4e2a%5Cu4f53%5Cu80b2%5Cu573a%5Cu4e3e%5Cu884c%5Cuff0c%5Cu5982%5Cu679c%5Cu7b2c%20%24i%24%20%5Cu573a%5Cu6bd4%5Cu8d5b%5Cu4e0d%5Cu5e94%5Cu8be5%5Cu88ab%5Cu4e3e%5Cu529e%5Cuff0c%5Cu5219%20%24t_i%3D0%24.%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A3%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF1240F%22%2C%22title%22%3A%22Football%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Football%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Football</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述
+世界上有 $n$ 个球队。
+足球主席委员会（MFO）想主持最多 $m$ 场足球赛，MFO 希望第 $i$ 场比赛在球队 $a_i$ 和 $b_i$ 之间举办，举办场地为 $k$ 个体育场中的一个。
+命名 $s_{i,j}$ 为第 $i$ 个队伍在第 $j$ 个体育场打的比赛的数量。MFO 不希望一个队伍在一个体育场打的比赛远多于在其他体育场打的比赛。所以，对于每一个队伍 $i$ ，其 $s_{i,1},s_{i,2},……,s_{i,k}$ 中，最大值和最小值的差的绝对值不应该超过 $2$。
+每个队伍有一个 $w_i$ ，表示第 $i$ 个队伍每打一场比赛 MFO 赚取的收益。如果队伍 $i$ 打了 $l$ 场比赛，那么 MFO 将会获得 $w_i*l$ 的钱。
+MFO 需要知道他们应该在哪个体育场举办哪一场比赛，使得在不违反他们设定的规则的前提下，赚取尽可能多的钱
+然而这个问题对于 MFO 来说太复杂了，因此需要你的帮助。
+### 输入格式
+第一行包含三个整数 $n,m,k\ \ (3≤n≤100, 0≤m≤1000, 1≤k≤1000)$.
+第二行包含 $n$ 个整数 $w_1,w_2,……,w_n\ \ (1≤w_i≤1000)$ ，意义见题目描述。
+接下来 $m$ 行，每行包含两个整数 $a_i$ 和 $b_i\ \ (1≤a_i,b_i≤n,\ a_i\neq b_i)$ ，意义见题目描述。
+### 输出格式
+对于每场比赛，输出 $t_i\ (1≤t_i≤k) $，表示这场比赛在第 $t_i$ 个体育场举行，如果第 $i$ 场比赛不应该被举办，则 $t_i=0$.</div>
+<h2>题目描述</h2>
+<div>There are $ n $ football teams in the world.
+The Main Football Organization (MFO) wants to host at most $ m $ games. MFO wants the $ i $ -th game to be played between the teams $ a_i $ and $ b_i $ in one of the $ k $ stadiums.
+Let $ s_{ij} $ be the numbers of games the $ i $ -th team played in the $ j $ -th stadium. MFO does not want a team to have much more games in one stadium than in the others. Therefore, for each team $ i $ , the absolute difference between the maximum and minimum among $ s_{i1}, s_{i2}, \ldots, s_{ik} $ should not exceed $ 2 $ .
+Each team has $ w_i $ — the amount of money MFO will earn for each game of the $ i $ -th team. If the $ i $ -th team plays $ l $ games, MFO will earn $ w_i \cdot l $ .
+MFO needs to find what games in what stadiums they need to host in order to earn as much money as possible, not violating the rule they set.
+However, this problem is too complicated for MFO. Therefore, they are asking you to help them.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ , $ k $ ( $ 3 \leq n \leq 100 $ , $ 0 \leq m \leq 1\,000 $ , $ 1 \leq k \leq 1\,000 $ ) — the number of teams, the number of games, and the number of stadiums.
+The second line contains $ n $ integers $ w_1, w_2, \ldots, w_n $ ( $ 1 \leq w_i \leq 1\,000 $ ) — the amount of money MFO will earn for each game of the $ i $ -th game.
+Each of the following $ m $ lines contains two integers $ a_i $ and $ b_i $ ( $ 1 \leq a_i, b_i \leq n $ , $ a_i \neq b_i $ ) — the teams that can play the $ i $ -th game. It is guaranteed that each pair of teams can play at most one game.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each game in the same order, print $ t_i $ ( $ 1 \leq t_i \leq k $ ) — the number of the stadium, in which $ a_i $ and $ b_i $ will play the game. If the $ i $ -th game should not be played, $ t_i $ should be equal to $ 0 $ .
+If there are multiple answers, print any.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+7 11 3
+4 7 8 10 10 9 3
+6 2
+6 1
+7 6
+4 3
+4 6
+3 1
+5 3
+7 5
+7 3
+4 2
+1 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+2
+1
+1
+3
+1
+2
+1
+2
+3
+2
+</code></pre>
+<h2>说明</h2>
+<div>One of possible solutions to the example is shown below:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1240F/76a6f34bde62a8cd1c0ba3685b149ea73e08fdf3.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

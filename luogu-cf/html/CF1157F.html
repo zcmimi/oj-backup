@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Maximum Balanced Circle - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402418:jQTF0xkLzMGKL4JMqkub2V3hNz6rOgsmn8OJSZCyikk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20%24%20n%20%24%20people%20in%20a%20row.%20The%20height%20of%20the%20%24%20i%20%24%20-th%20person%20is%20%24%20a_i%20%24%20.%20You%20can%20choose%20any%20subset%20of%20these%20people%20and%20try%20to%20arrange%20them%20into%20a%20balanced%20circle.%5Cn%5CnA%20balanced%20circle%20is%20such%20an%20order%20of%20people%20that%20the%20difference%20between%20heights%20of%20any%20adjacent%20people%20is%20no%20more%20than%20%24%201%20%24%20.%20For%20example%2C%20let%20heights%20of%20chosen%20people%20be%20%24%20%5Ba_%7Bi_1%7D%2C%20a_%7Bi_2%7D%2C%20%5C%5Cdots%2C%20a_%7Bi_k%7D%5D%20%24%20%2C%20where%20%24%20k%20%24%20is%20the%20number%20of%20people%20you%20choose.%20Then%20the%20condition%20%24%20%7Ca_%7Bi_j%7D%20-%20a_%7Bi_%7Bj%20%2B%201%7D%7D%7C%20%5C%5Cle%201%20%24%20should%20be%20satisfied%20for%20all%20%24%20j%20%24%20from%20%24%201%20%24%20to%20%24%20k-1%20%24%20and%20the%20condition%20%24%20%7Ca_%7Bi_1%7D%20-%20a_%7Bi_k%7D%7C%20%5C%5Cle%201%20%24%20should%20be%20also%20satisfied.%20%24%20%7Cx%7C%20%24%20means%20the%20absolute%20value%20of%20%24%20x%20%24%20.%20It%20is%20obvious%20that%20the%20circle%20consisting%20of%20one%20person%20is%20balanced.%5Cn%5CnYour%20task%20is%20to%20choose%20the%20maximum%20number%20of%20people%20and%20construct%20a%20balanced%20circle%20consisting%20of%20all%20chosen%20people.%20It%20is%20obvious%20that%20the%20circle%20consisting%20of%20one%20person%20is%20balanced%20so%20the%20answer%20always%20exists.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20people.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%2C%20where%20%24%20a_i%20%24%20is%20the%20height%20of%20the%20%24%20i%20%24%20-th%20person.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20of%20the%20output%20print%20%24%20k%20%24%20%5Cu2014%20the%20number%20of%20people%20in%20the%20maximum%20balanced%20circle.%5Cn%5CnIn%20the%20second%20line%20print%20%24%20k%20%24%20integers%20%24%20res_1%2C%20res_2%2C%20%5C%5Cdots%2C%20res_k%20%24%20%2C%20where%20%24%20res_j%20%24%20is%20the%20height%20of%20the%20%24%20j%20%24%20-th%20person%20in%20the%20maximum%20balanced%20circle.%20The%20condition%20%24%20%7Cres_%7Bj%7D%20-%20res_%7Bj%20%2B%201%7D%7C%20%5C%5Cle%201%20%24%20should%20be%20satisfied%20for%20all%20%24%20j%20%24%20from%20%24%201%20%24%20to%20%24%20k-1%20%24%20and%20the%20condition%20%24%20%7Cres_%7B1%7D%20-%20res_%7Bk%7D%7C%20%5C%5Cle%201%20%24%20should%20be%20also%20satisfied.%22%2C%22samples%22%3A%5B%5B%22%5Cn7%5Cn4%203%205%201%202%202%201%5Cn%22%2C%22%5Cn5%5Cn2%201%201%202%203%5Cn%22%5D%2C%5B%22%5Cn5%5Cn3%207%205%201%205%5Cn%22%2C%22%5Cn2%5Cn5%205%20%5Cn%22%5D%2C%5B%22%5Cn3%5Cn5%201%204%5Cn%22%2C%22%5Cn2%5Cn4%205%20%5Cn%22%5D%2C%5B%22%5Cn7%5Cn2%202%203%202%201%202%202%5Cn%22%2C%22%5Cn7%5Cn1%202%202%202%202%203%202%20%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1157%5C%2FF%22%2C%22id%22%3A%221157F%22%7D%2C%22translation%22%3A%22%5Cu8f93%5Cu5165k%5Cu4e2a%5Cu6570%2C%5Cu6784%5Cu9020%5Cu4e00%5Cu4e2a%5Cu6700%5Cu5927%28%5Cu5927%5Cu5c0f%5Cu4e3an%29%5Cu7684%5Cu73af%5Cuff0c%5Cu73af%5Cu4e0a%5Cu4efb%5Cu610fabs%28a%5B%28i%2B1%29%25n%5D-a%5Bi%5D%29%3C%3D1%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A42%2C%22totalAccepted%22%3A24%2C%22pid%22%3A%22CF1157F%22%2C%22title%22%3A%22Maximum%20Balanced%20Circle%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Maximum%20Balanced%20Circle%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Maximum Balanced Circle</h1>
+<h2>题意翻译</h2>
+<div>输入k个数,构造一个最大(大小为n)的环，环上任意abs(a[(i+1)%n]-a[i])<=1。</div>
+<h2>题目描述</h2>
+<div>There are $ n $ people in a row. The height of the $ i $ -th person is $ a_i $ . You can choose any subset of these people and try to arrange them into a balanced circle.
+A balanced circle is such an order of people that the difference between heights of any adjacent people is no more than $ 1 $ . For example, let heights of chosen people be $ [a_{i_1}, a_{i_2}, \dots, a_{i_k}] $ , where $ k $ is the number of people you choose. Then the condition $ |a_{i_j} - a_{i_{j + 1}}| \le 1 $ should be satisfied for all $ j $ from $ 1 $ to $ k-1 $ and the condition $ |a_{i_1} - a_{i_k}| \le 1 $ should be also satisfied. $ |x| $ means the absolute value of $ x $ . It is obvious that the circle consisting of one person is balanced.
+Your task is to choose the maximum number of people and construct a balanced circle consisting of all chosen people. It is obvious that the circle consisting of one person is balanced so the answer always exists.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ n $ ( $ 1 \le n \le 2 \cdot 10^5 $ ) — the number of people.
+The second line of the input contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le 2 \cdot 10^5 $ ), where $ a_i $ is the height of the $ i $ -th person.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line of the output print $ k $ — the number of people in the maximum balanced circle.
+In the second line print $ k $ integers $ res_1, res_2, \dots, res_k $ , where $ res_j $ is the height of the $ j $ -th person in the maximum balanced circle. The condition $ |res_{j} - res_{j + 1}| \le 1 $ should be satisfied for all $ j $ from $ 1 $ to $ k-1 $ and the condition $ |res_{1} - res_{k}| \le 1 $ should be also satisfied.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+7
+4 3 5 1 2 2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+5
+2 1 1 2 3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+5
+3 7 5 1 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+2
+5 5 
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+3
+5 1 4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+2
+4 5 
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+7
+2 2 3 2 1 2 2
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+7
+1 2 2 2 2 3 2 
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

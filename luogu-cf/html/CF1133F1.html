@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Spanning Tree with Maximum Degree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402055:jN65VCS8iW6Bd46V1fds7zmCtxBSrhpvpHgXYz+/MNc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20an%20undirected%20unweighted%20connected%20graph%20consisting%20of%20%24%20n%20%24%20vertices%20and%20%24%20m%20%24%20edges.%20It%20is%20guaranteed%20that%20there%20are%20no%20self-loops%20or%20multiple%20edges%20in%20the%20given%20graph.%5Cn%5CnYour%20task%20is%20to%20find%20any%20spanning%20tree%20of%20this%20graph%20such%20that%20the%20maximum%20degree%20over%20all%20vertices%20is%20maximum%20possible.%20Recall%20that%20the%20degree%20of%20a%20vertex%20is%20the%20number%20of%20edges%20incident%20to%20it.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%20n%20-%201%20%5C%5Cle%20m%20%5C%5Cle%20min%282%20%5C%5Ccdot%2010%5E5%2C%20%5C%5Cfrac%7Bn%28n-1%29%7D%7B2%7D%29%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20and%20edges%2C%20respectively.%5Cn%5CnThe%20following%20%24%20m%20%24%20lines%20denote%20edges%3A%20edge%20%24%20i%20%24%20is%20represented%20by%20a%20pair%20of%20integers%20%24%20v_i%20%24%20%2C%20%24%20u_i%20%24%20%28%20%24%201%20%5C%5Cle%20v_i%2C%20u_i%20%5C%5Cle%20n%20%24%20%2C%20%24%20u_i%20%5C%5Cne%20v_i%20%24%20%29%2C%20which%20are%20the%20indices%20of%20vertices%20connected%20by%20the%20edge.%20There%20are%20no%20loops%20or%20multiple%20edges%20in%20the%20given%20graph%2C%20i.%20e.%20for%20each%20pair%20%28%20%24%20v_i%2C%20u_i%20%24%20%29%20there%20are%20no%20other%20pairs%20%28%20%24%20v_i%2C%20u_i%20%24%20%29%20or%20%28%20%24%20u_i%2C%20v_i%20%24%20%29%20in%20the%20list%20of%20edges%2C%20and%20for%20each%20pair%20%24%20%28v_i%2C%20u_i%29%20%24%20the%20condition%20%24%20v_i%20%5C%5Cne%20u_i%20%24%20is%20satisfied.%22%2C%22outputFormat%22%3A%22Print%20%24%20n-1%20%24%20lines%20describing%20the%20edges%20of%20a%20spanning%20tree%20such%20that%20the%20maximum%20degree%20over%20all%20vertices%20is%20maximum%20possible.%20Make%20sure%20that%20the%20edges%20of%20the%20printed%20spanning%20tree%20form%20some%20subset%20of%20the%20input%20edges%20%28order%20doesn%27t%20matter%20and%20edge%20%24%20%28v%2C%20u%29%20%24%20is%20considered%20the%20same%20as%20the%20edge%20%24%20%28u%2C%20v%29%20%24%20%29.%5Cn%5CnIf%20there%20are%20multiple%20possible%20answers%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%205%5Cn1%202%5Cn2%203%5Cn3%205%5Cn4%203%5Cn1%205%5Cn%22%2C%22%5Cn3%205%5Cn2%201%5Cn3%202%5Cn3%204%5Cn%22%5D%2C%5B%22%5Cn4%206%5Cn1%202%5Cn1%203%5Cn1%204%5Cn2%203%5Cn2%204%5Cn3%204%5Cn%22%2C%22%5Cn4%201%5Cn1%202%5Cn1%203%5Cn%22%5D%2C%5B%22%5Cn8%209%5Cn1%202%5Cn2%203%5Cn2%205%5Cn1%206%5Cn3%204%5Cn6%205%5Cn4%205%5Cn2%207%5Cn5%208%5Cn%22%2C%22%5Cn3%202%5Cn2%205%5Cn8%205%5Cn6%201%5Cn2%207%5Cn1%202%5Cn3%204%5Cn%22%5D%5D%2C%22hint%22%3A%22Picture%20corresponding%20to%20the%20first%20example%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1133F1%5C%2F679cb38fe66138eb41c68a27752c7ba6f50631eb.png%29%5Cn%5CnIn%20this%20example%20the%20number%20of%20edges%20of%20spanning%20tree%20incident%20to%20the%20vertex%20%24%203%20%24%20is%20%24%203%20%24%20.%20It%20is%20the%20maximum%20degree%20over%20all%20vertices%20of%20the%20spanning%20tree.%20It%20is%20easy%20to%20see%20that%20we%20cannot%20obtain%20a%20better%20answer.%5Cn%5CnPicture%20corresponding%20to%20the%20second%20example%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1133F1%5C%2F3901be7d0b3c499456efcd32ad4bf53709c399cf.png%29%5Cn%5CnIn%20this%20example%20the%20number%20of%20edges%20of%20spanning%20tree%20incident%20to%20the%20vertex%20%24%201%20%24%20is%20%24%203%20%24%20.%20It%20is%20the%20maximum%20degree%20over%20all%20vertices%20of%20the%20spanning%20tree.%20It%20is%20easy%20to%20see%20that%20we%20cannot%20obtain%20a%20better%20answer.%5Cn%5CnPicture%20corresponding%20to%20the%20third%20example%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1133F1%5C%2F4fb66d4828c313ca8131754e22e661e238cfd944.png%29%5Cn%5CnIn%20this%20example%20the%20number%20of%20edges%20of%20spanning%20tree%20incident%20to%20the%20vertex%20%24%202%20%24%20is%20%24%204%20%24%20.%20It%20is%20the%20maximum%20degree%20over%20all%20vertices%20of%20the%20spanning%20tree.%20It%20is%20easy%20to%20see%20that%20we%20cannot%20obtain%20a%20better%20answer.%20But%20because%20this%20example%20is%20symmetric%2C%20we%20can%20choose%20almost%20the%20same%20spanning%20tree%20but%20with%20vertex%20%24%205%20%24%20instead%20of%20%24%202%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1133%5C%2FF1%22%2C%22id%22%3A%221133F1%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu7531n%5Cu4e2a%5Cu9876%5Cu70b9%5Cu548cm%5Cu6761%5Cu8fb9%5Cu7ec4%5Cu6210%5Cu7684%5Cu65e0%5Cu5411%5Cu65e0%5Cu6743%5Cu8fde%5Cu901a%5Cu56fe%5Cu3002%5Cu5b83%5Cu4fdd%5Cu8bc1%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu56fe%5Cu4e2d%5Cu6ca1%5Cu6709%5Cu81ea%5Cu73af%5Cu6216%5Cu91cd%5Cu8fb9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu627e%5Cu5230%5Cu8fd9%5Cu4e2a%5Cu56fe%5Cu7684%5Cu4e00%5Cu68f5%5Cu751f%5Cu6210%5Cu6811%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu6811%5Cu4e0a%5Cu9876%5Cu70b9%5Cu7684%5Cu6700%5Cu5927%5Cu5ea6%5Cu6570%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5730%5Cu5927%5Cu3002%5Cu56de%5Cu5fc6%5Cu4e00%5Cu4e0b%5Cuff0c%5Cu9876%5Cu70b9%5Cu7684%5Cu5ea6%5Cu6570%5Cu662f%5Cu4e0e%5Cu4e4b%5Cu5173%5Cu8054%5Cu7684%5Cu8fb9%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A21%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF1133F1%22%2C%22title%22%3A%22Spanning%20Tree%20with%20Maximum%20Degree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Spanning%20Tree%20with%20Maximum%20Degree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Spanning Tree with Maximum Degree</h1>
+<h2>题意翻译</h2>
+<div>给出了一个由n个顶点和m条边组成的无向无权连通图。它保证在给定的图中没有自环或重边。
+你的任务是找到这个图的一棵生成树，使得树上顶点的最大度数尽可能地大。回忆一下，顶点的度数是与之关联的边的数量。</div>
+<h2>题目描述</h2>
+<div>You are given an undirected unweighted connected graph consisting of $ n $ vertices and $ m $ edges. It is guaranteed that there are no self-loops or multiple edges in the given graph.
+Your task is to find any spanning tree of this graph such that the maximum degree over all vertices is maximum possible. Recall that the degree of a vertex is the number of edges incident to it.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 2 \le n \le 2 \cdot 10^5 $ , $ n - 1 \le m \le min(2 \cdot 10^5, \frac{n(n-1)}{2}) $ ) — the number of vertices and edges, respectively.
+The following $ m $ lines denote edges: edge $ i $ is represented by a pair of integers $ v_i $ , $ u_i $ ( $ 1 \le v_i, u_i \le n $ , $ u_i \ne v_i $ ), which are the indices of vertices connected by the edge. There are no loops or multiple edges in the given graph, i. e. for each pair ( $ v_i, u_i $ ) there are no other pairs ( $ v_i, u_i $ ) or ( $ u_i, v_i $ ) in the list of edges, and for each pair $ (v_i, u_i) $ the condition $ v_i \ne u_i $ is satisfied.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n-1 $ lines describing the edges of a spanning tree such that the maximum degree over all vertices is maximum possible. Make sure that the edges of the printed spanning tree form some subset of the input edges (order doesn't matter and edge $ (v, u) $ is considered the same as the edge $ (u, v) $ ).
+If there are multiple possible answers, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5 5
+1 2
+2 3
+3 5
+4 3
+1 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3 5
+2 1
+3 2
+3 4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+4 6
+1 2
+1 3
+1 4
+2 3
+2 4
+3 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+4 1
+1 2
+1 3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+8 9
+1 2
+2 3
+2 5
+1 6
+3 4
+6 5
+4 5
+2 7
+5 8
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+3 2
+2 5
+8 5
+6 1
+2 7
+1 2
+3 4
+</code></pre>
+<h2>说明</h2>
+<div>Picture corresponding to the first example: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1133F1/679cb38fe66138eb41c68a27752c7ba6f50631eb.png)
+In this example the number of edges of spanning tree incident to the vertex $ 3 $ is $ 3 $ . It is the maximum degree over all vertices of the spanning tree. It is easy to see that we cannot obtain a better answer.
+Picture corresponding to the second example: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1133F1/3901be7d0b3c499456efcd32ad4bf53709c399cf.png)
+In this example the number of edges of spanning tree incident to the vertex $ 1 $ is $ 3 $ . It is the maximum degree over all vertices of the spanning tree. It is easy to see that we cannot obtain a better answer.
+Picture corresponding to the third example: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1133F1/4fb66d4828c313ca8131754e22e661e238cfd944.png)
+In this example the number of edges of spanning tree incident to the vertex $ 2 $ is $ 4 $ . It is the maximum degree over all vertices of the spanning tree. It is easy to see that we cannot obtain a better answer. But because this example is symmetric, we can choose almost the same spanning tree but with vertex $ 5 $ instead of $ 2 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

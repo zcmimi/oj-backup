@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bracket Sequences Concatenation Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400153:+kwS8U/A1AeO4bVI8c2s9AOpccNDjO8eCnGcEmOfLhA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22A%20bracket%20sequence%20is%20a%20string%20containing%20only%20characters%20%5C%22%28%5C%22%20and%20%5C%22%29%5C%22.%5Cn%5CnA%20regular%20bracket%20sequence%20is%20a%20bracket%20sequence%20that%20can%20be%20transformed%20into%20a%20correct%20arithmetic%20expression%20by%20inserting%20characters%20%5C%221%5C%22%20and%20%5C%22%2B%5C%22%20between%20the%20original%20characters%20of%20the%20sequence.%20For%20example%2C%20bracket%20sequences%20%5C%22%28%29%28%29%5C%22%2C%20%5C%22%28%28%29%29%5C%22%20are%20regular%20%28the%20resulting%20expressions%20are%3A%20%5C%22%281%29%2B%281%29%5C%22%2C%20%5C%22%28%281%2B1%29%2B1%29%5C%22%29%2C%20and%20%5C%22%29%28%5C%22%20and%20%5C%22%28%5C%22%20are%20not.%5Cn%5CnYou%20are%20given%20%24%20n%20%24%20bracket%20sequences%20%24%20s_1%2C%20s_2%2C%20%5C%5Cdots%20%2C%20s_n%20%24%20.%20Calculate%20the%20number%20of%20pairs%20%24%20i%2C%20j%20%5C%5C%2C%20%281%20%5C%5Cle%20i%2C%20j%20%5C%5Cle%20n%29%20%24%20such%20that%20the%20bracket%20sequence%20%24%20s_i%20%2B%20s_j%20%24%20is%20a%20regular%20bracket%20sequence.%20Operation%20%24%20%2B%20%24%20means%20concatenation%20i.e.%20%5C%22%28%29%28%5C%22%20%2B%20%5C%22%29%28%29%5C%22%20%3D%20%5C%22%28%29%28%29%28%29%5C%22.%5Cn%5CnIf%20%24%20s_i%20%2B%20s_j%20%24%20and%20%24%20s_j%20%2B%20s_i%20%24%20are%20regular%20bracket%20sequences%20and%20%24%20i%20%5C%5Cne%20j%20%24%20%2C%20then%20both%20pairs%20%24%20%28i%2C%20j%29%20%24%20and%20%24%20%28j%2C%20i%29%20%24%20must%20be%20counted%20in%20the%20answer.%20Also%2C%20if%20%24%20s_i%20%2B%20s_i%20%24%20is%20a%20regular%20bracket%20sequence%2C%20the%20pair%20%24%20%28i%2C%20i%29%20%24%20must%20be%20counted%20in%20the%20answer.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%5C%5C%2C%20%281%20%5C%5Cle%20n%20%5C%5Cle%203%20%5C%5Ccdot%2010%5E5%29%20%24%20%5Cu2014%20the%20number%20of%20bracket%20sequences.%20The%20following%20%24%20n%20%24%20lines%20contain%20bracket%20sequences%20%5Cu2014%20non-empty%20strings%20consisting%20only%20of%20characters%20%5C%22%28%5C%22%20and%20%5C%22%29%5C%22.%20The%20sum%20of%20lengths%20of%20all%20bracket%20sequences%20does%20not%20exceed%20%24%203%20%5C%5Ccdot%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22In%20the%20single%20line%20print%20a%20single%20integer%20%5Cu2014%20the%20number%20of%20pairs%20%24%20i%2C%20j%20%5C%5C%2C%20%281%20%5C%5Cle%20i%2C%20j%20%5C%5Cle%20n%29%20%24%20such%20that%20the%20bracket%20sequence%20%24%20s_i%20%2B%20s_j%20%24%20is%20a%20regular%20bracket%20sequence.%22%2C%22samples%22%3A%5B%5B%223%5Cn%29%5Cn%28%29%5Cn%28%5Cn%22%2C%222%5Cn%22%5D%2C%5B%222%5Cn%28%29%5Cn%28%29%5Cn%22%2C%224%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20suitable%20pairs%20are%20%24%20%283%2C%201%29%20%24%20and%20%24%20%282%2C%202%29%20%24%20.%5Cn%5CnIn%20the%20second%20example%2C%20any%20pair%20is%20suitable%2C%20namely%20%24%20%281%2C%201%29%2C%20%281%2C%202%29%2C%20%282%2C%201%29%2C%20%282%2C%202%29%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F990%5C%2FC%22%2C%22id%22%3A%22990C%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fan%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu53ea%5Cu5305%5Cu542b%27%28%27%5Cu548c%27%29%27%5Cuff0c%5Cu6c42%5Cu4ece%5Cu4e2d%5Cu53d62%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu94fe%5Cu63a5%5Cu540e%5Cu5f62%5Cu6210%5Cu6b63%5Cu786e%5Cu7684%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%5Cu7684%5Cu65b9%5Cu6848%5Cu6570%5Cuff08%5Cu6bcf%5Cu4e2a%5Cu4e32%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu91cd%5Cu590d%5Cu4f7f%5Cu7528%5Cuff09%5Cuff08%5Cu50cf%27%28%29%28%29%27%5Cu548c%27%28%28%29%29%27%5Cu8fd9%5Cu6837%5Cu7684%5Cu90fd%5Cu662f%5Cu5408%5Cu6cd5%5Cu7684%5Cuff0c%5Cu50cf%27%29%28%27%5Cu548c%27%28%27%5Cu8fd9%5Cu6837%5Cu7684%5Cu662f%5Cu4e0d%5Cu5408%5Cu6cd5%5Cu7684%5Cuff09%5Cn%5Cn%5Cu8f93%5Cu5165%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5230%5Cu7b2cn%2B1%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cuff1a%5Cn%5Cn%5Cu65b9%5Cu6848%5Cu6570%5Cn%5Cn%5Cu611f%5Cu8c22%40zhaotiensn%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A106%2C%22totalAccepted%22%3A57%2C%22pid%22%3A%22CF990C%22%2C%22title%22%3A%22Bracket%20Sequences%20Concatenation%20Problem%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A45399%2C%22title%22%3A%22%5Cu5c1d%5Cu8bd5%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A26493%2C%22name%22%3A%22CF990C%20Bracket%20Sequences%20Concatenation%20Problem%22%2C%22slug%22%3A%22CF990C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF990E%22%2C%22title%22%3A%22Post%20Lamps%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF990D%22%2C%22title%22%3A%22Graph%20And%20Its%20Complement%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF990B%22%2C%22title%22%3A%22Micro-World%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF989C%22%2C%22title%22%3A%22A%20Mist%20of%20Florescence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4939%22%2C%22title%22%3A%22Agent2%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Bracket%20Sequences%20Concatenation%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Bracket Sequences Concatenation Problem</h1>
+<h2>题意翻译</h2>
+<div>给出n个字符串，保证只包含'('和')'，求从中取2个字符串链接后形成正确的括号序列的方案数（每个串都可以重复使用）（像'()()'和'(())'这样的都是合法的，像')('和'('这样的是不合法的）
+输入：
+第一行一个整数n
+第二行到第n+1行每行一个字符串
+输出：
+方案数
+感谢@zhaotiensn 提供翻译</div>
+<h2>题目描述</h2>
+<div>A bracket sequence is a string containing only characters "(" and ")".
+A regular bracket sequence is a bracket sequence that can be transformed into a correct arithmetic expression by inserting characters "1" and "+" between the original characters of the sequence. For example, bracket sequences "()()", "(())" are regular (the resulting expressions are: "(1)+(1)", "((1+1)+1)"), and ")(" and "(" are not.
+You are given $ n $ bracket sequences $ s_1, s_2, \dots , s_n $ . Calculate the number of pairs $ i, j \, (1 \le i, j \le n) $ such that the bracket sequence $ s_i + s_j $ is a regular bracket sequence. Operation $ + $ means concatenation i.e. "()(" + ")()" = "()()()".
+If $ s_i + s_j $ and $ s_j + s_i $ are regular bracket sequences and $ i \ne j $ , then both pairs $ (i, j) $ and $ (j, i) $ must be counted in the answer. Also, if $ s_i + s_i $ is a regular bracket sequence, the pair $ (i, i) $ must be counted in the answer.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n \, (1 \le n \le 3 \cdot 10^5) $ — the number of bracket sequences. The following $ n $ lines contain bracket sequences — non-empty strings consisting only of characters "(" and ")". The sum of lengths of all bracket sequences does not exceed $ 3 \cdot 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>In the single line print a single integer — the number of pairs $ i, j \, (1 \le i, j \le n) $ such that the bracket sequence $ s_i + s_j $ is a regular bracket sequence.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+)
+()
+(
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+()
+()
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, suitable pairs are $ (3, 1) $ and $ (2, 2) $ .
+In the second example, any pair is suitable, namely $ (1, 1), (1, 2), (2, 1), (2, 2) $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Up and Down the Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401160:UOnTzE7tCrgpf2u+i2C+wZxawEBApr+0vW3GPHeL/Rk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20%3Ca%3Etree%3C%5C%2Fa%3E%20with%20%24%20n%20%24%20vertices%3B%20its%20root%20is%20vertex%20%24%201%20%24%20.%20Also%20there%20is%20a%20token%2C%20initially%20placed%20in%20the%20root.%20You%20can%20move%20the%20token%20to%20other%20vertices.%20Let%27s%20assume%20current%20vertex%20of%20token%20is%20%24%20v%20%24%20%2C%20then%20you%20make%20any%20of%20the%20following%20two%20possible%20moves%3A%5Cn%5Cn-%20move%20down%20to%20any%20leaf%20in%20subtree%20of%20%24%20v%20%24%20%3B%5Cn-%20if%20vertex%20%24%20v%20%24%20is%20a%20leaf%2C%20then%20move%20up%20to%20the%20parent%20no%20more%20than%20%24%20k%20%24%20times.%20In%20other%20words%2C%20if%20%24%20h%28v%29%20%24%20is%20the%20depth%20of%20vertex%20%24%20v%20%24%20%28the%20depth%20of%20the%20root%20is%20%24%200%20%24%20%29%2C%20then%20you%20can%20move%20to%20vertex%20%24%20to%20%24%20such%20that%20%24%20to%20%24%20is%20an%20ancestor%20of%20%24%20v%20%24%20and%20%24%20h%28v%29%20-%20k%20%5C%5Cle%20h%28to%29%20%24%20.%5Cn%5CnConsider%20that%20root%20is%20not%20a%20leaf%20%28even%20if%20its%20degree%20is%20%24%201%20%24%20%29.%20Calculate%20the%20maximum%20number%20of%20different%20leaves%20you%20can%20visit%20during%20one%20sequence%20of%20moves.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cle%20k%20%3C%20n%20%5C%5Cle%2010%5E6%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20tree%20and%20the%20restriction%20on%20moving%20up%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20-%201%20%24%20integers%20%24%20p_2%2C%20p_3%2C%20%5C%5Cdots%2C%20p_n%20%24%20%2C%20where%20%24%20p_i%20%24%20is%20the%20parent%20of%20vertex%20%24%20i%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20input%20represents%20a%20valid%20tree%2C%20rooted%20at%20%24%201%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20maximum%20possible%20number%20of%20different%20leaves%20you%20can%20visit.%22%2C%22samples%22%3A%5B%5B%227%201%5Cn1%201%203%203%204%204%5Cn%22%2C%224%5Cn%22%5D%2C%5B%228%202%5Cn1%201%202%203%204%205%205%5Cn%22%2C%222%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20graph%20from%20the%20first%20example%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1065F%5C%2F4492bbb0d034205ea39166c1307fdf5f1ba770f6.png%29One%20of%20the%20optimal%20ways%20is%20the%20next%20one%3A%20%24%201%20%5C%5Crightarrow%202%20%5C%5Crightarrow%201%20%5C%5Crightarrow%205%20%5C%5Crightarrow%203%20%5C%5Crightarrow%207%20%5C%5Crightarrow%204%20%5C%5Crightarrow%206%20%24%20.%5Cn%5CnThe%20graph%20from%20the%20second%20example%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1065F%5C%2Fe11448008e64eca6a39a266818c29c10e5e679a8.png%29One%20of%20the%20optimal%20ways%20is%20the%20next%20one%3A%20%24%201%20%5C%5Crightarrow%207%20%5C%5Crightarrow%205%20%5C%5Crightarrow%208%20%24%20.%20Note%20that%20there%20is%20no%20way%20to%20move%20from%20%24%206%20%24%20to%20%24%207%20%24%20or%20%24%208%20%24%20and%20vice%20versa.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1065%5C%2FF%22%2C%22id%22%3A%221065F%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu6709%5Cu4e00%5Cu68f5%5Cu5e26%5Cu6709n%5Cu4e2a%5Cu7ed3%5Cu70b9%5Cu7684%5Cu6811%5Cuff0c%5Cu6839%5Cu662f%5Cu7ed3%5Cu70b91%5Cu3002%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6807%5Cu8bb0%5Cuff0c%5Cu6700%5Cu521d%5Cu5728%5Cu6839%5Cu7ed3%5Cu70b9%5Cu5904%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu6807%5Cu8bb0%5Cu79fb%5Cu52a8%5Cu5230%5Cu5176%5Cu4ed6%5Cu7ed3%5Cu70b9%5Cu5904%5Cu3002%5Cu5047%5Cu8bbe%5Cu6807%5Cu8bb0%5Cu5f53%5Cu524d%5Cu6240%5Cu5728%5Cu7ed3%5Cu70b9%5Cu4e3av%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu505a%5Cu51fa%5Cu4ee5%5Cu4e0b%5Cu4e24%5Cu79cd%5Cu64cd%5Cu4f5c%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu5c06%5Cu6807%5Cu8bb0%5Cu79fb%5Cu52a8%5Cu5230v%5Cu5b50%5Cu6811%5Cu7684%5Cu4efb%5Cu4e00%5Cu53f6%5Cu5b50%5Cu5904%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu662f%5Cu7ed3%5Cu70b9v%5Cu4e3a%5Cu53f6%5Cu5b50%5Cuff0c%5Cu5219%5Cu5c06%5Cu6807%5Cu8bb0%5Cu5411%5Cu6839%5Cu79fb%5Cu52a8%5Cu4e0d%5Cu8d85%5Cu8fc7%20k%20%5Cu6b21%5Cu3002%5Cu6362%5Cu53e5%5Cu8bdd%5Cu8bf4%5Cuff0c%5Cu5982%5Cu679c%20h%28v%29%20%5Cu4e3a%5Cu7ed3%5Cu70b9%20v%20%5Cu7684%5Cu6df1%5Cu5ea6%20%28%5Cu6839%5Cu7684%5Cu6df1%5Cu5ea6%5Cu4e3a0%5Cuff09%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5c06%5Cu5176%5Cu79fb%5Cu52a8%5Cu5230%5Cu9876%5Cu70b9%20to%20%5Cuff08%20to%20%5Cu4e3a%20v%20%5Cu7956%5Cu5148%5Cuff09%20%5Cu5e76%5Cu4e14%20h%28v%29%5Cu2212k%5Cu2264h%28to%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6839%5Cu4e0d%5Cu662f%5Cu53f6%5Cu5b50%5Cuff08%5Cu5373%5Cu4f7f%5Cu5b83%5Cu7684%5Cu5ea6%5Cu6570%5Cu662f%201%5Cuff09%5Cu3002%5Cu8ba1%5Cu7b97%5Cu6700%5Cu591a%5Cu80fd%5Cu8bbf%5Cu95ee%5Cu591a%5Cu5c11%5Cu53f6%5Cu5b50%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20n%20%5Cu548c%20k%20%281%3Ck%3Cn%5Cu226410%5E6%29%20---%20%5Cu6811%5Cu4e2d%5Cu7684%5Cu9876%5Cu70b9%5Cu6570%5Cu548c%5Cu5411%5Cu4e0a%5Cu79fb%5Cu52a8%5Cu7684%5Cu9650%5Cu5236%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%20n-1%5Cu4e2a%5Cu6574%5Cu6570%20%5Cu7b2ci%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu7ed3%5Cu70b9i%2B1%5Cu7684%5Cu7236%5Cu4eb2%20%5Cu8f93%5Cu5165%5Cu4fdd%5Cu8bc1%5Cu6811%5Cu5408%5Cu6cd5%5Cuff0c%5Cu6839%5Cu4e3a1%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu53ef%5Cu4ee5%5Cu8bbf%5Cu95ee%5Cu7684%5Cu6700%5Cu5927%5Cu53f6%5Cu5b50%5Cu6570%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A104%2C%22totalAccepted%22%3A56%2C%22pid%22%3A%22CF1065F%22%2C%22title%22%3A%22Up%20and%20Down%20the%20Tree%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A76120%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A30588%2C%22name%22%3A%22CF1065F%20Up%20and%20Down%20the%20Tree%22%2C%22slug%22%3A%22CF1065F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1117%22%2C%22title%22%3A%22%5BNOI2016%5D%5Cu4f18%5Cu79c0%5Cu7684%5Cu62c6%5Cu5206%20%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3706%22%2C%22title%22%3A%22%5BSDOI2017%5D%5Cu786c%5Cu5e01%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3642%22%2C%22title%22%3A%22%5BAPIO2016%5D%5Cu70df%5Cu706b%5Cu8868%5Cu6f14%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1060E%22%2C%22title%22%3A%22Sergey%20and%20Subway%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1256F%22%2C%22title%22%3A%22Equalizing%20Two%20Strings%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Up%20and%20Down%20the%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Up and Down the Tree</h1>
+<h2>题意翻译</h2>
+<div>你有一棵带有n个结点的树，根是结点1。有一个标记，最初在根结点处。你可以将标记移动到其他结点处。假设标记当前所在结点为v，你可以做出以下两种操作：
+将标记移动到v子树的任一叶子处。
+如果是结点v为叶子，则将标记向根移动不超过 k 次。换句话说，如果 h(v) 为结点 v 的深度 (根的深度为0），你可以将其移动到顶点 to （ to 为 v 祖先） 并且 h(v)−k≤h(to)。
+根不是叶子（即使它的度数是 1）。计算最多能访问多少叶子。
+输入格式：
+第一行包含两个整数 n 和 k (1<k<n≤10^6) --- 树中的顶点数和向上移动的限制。 第二行包含 n-1个整数 第i个整数表示结点i+1的父亲 输入保证树合法，根为1。 输出格式： 输出一个整数，表示可以访问的最大叶子数。</div>
+<h2>题目描述</h2>
+<div>You are given a <a>tree</a> with $ n $ vertices; its root is vertex $ 1 $ . Also there is a token, initially placed in the root. You can move the token to other vertices. Let's assume current vertex of token is $ v $ , then you make any of the following two possible moves:
+- move down to any leaf in subtree of $ v $ ;
+- if vertex $ v $ is a leaf, then move up to the parent no more than $ k $ times. In other words, if $ h(v) $ is the depth of vertex $ v $ (the depth of the root is $ 0 $ ), then you can move to vertex $ to $ such that $ to $ is an ancestor of $ v $ and $ h(v) - k \le h(to) $ .
+Consider that root is not a leaf (even if its degree is $ 1 $ ). Calculate the maximum number of different leaves you can visit during one sequence of moves.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 1 \le k < n \le 10^6 $ ) — the number of vertices in the tree and the restriction on moving up, respectively.
+The second line contains $ n - 1 $ integers $ p_2, p_3, \dots, p_n $ , where $ p_i $ is the parent of vertex $ i $ .
+It is guaranteed that the input represents a valid tree, rooted at $ 1 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the maximum possible number of different leaves you can visit.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 1
+1 1 3 3 4 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>8 2
+1 1 2 3 4 5 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h2>说明</h2>
+<div>The graph from the first example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1065F/4492bbb0d034205ea39166c1307fdf5f1ba770f6.png)One of the optimal ways is the next one: $ 1 \rightarrow 2 \rightarrow 1 \rightarrow 5 \rightarrow 3 \rightarrow 7 \rightarrow 4 \rightarrow 6 $ .
+The graph from the second example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1065F/e11448008e64eca6a39a266818c29c10e5e679a8.png)One of the optimal ways is the next one: $ 1 \rightarrow 7 \rightarrow 5 \rightarrow 8 $ . Note that there is no way to move from $ 6 $ to $ 7 $ or $ 8 $ and vice versa.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

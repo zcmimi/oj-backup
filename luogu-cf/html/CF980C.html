@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Posterized - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400010:GFaIpMosg5ou9FalCdURWEndaz8WyNMRrshdGVVzv+8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Professor%20Ibrahim%20has%20prepared%20the%20final%20homework%20for%20his%20algorithm%5Cu2019s%20class.%20He%20asked%20his%20students%20to%20implement%20the%20Posterization%20Image%20Filter.%5Cn%5CnTheir%20algorithm%20will%20be%20tested%20on%20an%20array%20of%20integers%2C%20where%20the%20%24%20i%20%24%20-th%20integer%20represents%20the%20color%20of%20the%20%24%20i%20%24%20-th%20pixel%20in%20the%20image.%20The%20image%20is%20in%20black%20and%20white%2C%20therefore%20the%20color%20of%20each%20pixel%20will%20be%20an%20integer%20between%200%20and%20255%20%28inclusive%29.%5Cn%5CnTo%20implement%20the%20filter%2C%20students%20are%20required%20to%20divide%20the%20black%20and%20white%20color%20range%20%5C%5C%5B0%2C%20255%5C%5C%5D%20into%20groups%20of%20consecutive%20colors%2C%20and%20select%20one%20color%20in%20each%20group%20to%20be%20the%20group%5Cu2019s%20key.%20In%20order%20to%20preserve%20image%20details%2C%20the%20size%20of%20a%20group%20must%20not%20be%20greater%20than%20%24%20k%20%24%20%2C%20and%20each%20color%20should%20belong%20to%20exactly%20one%20group.%5Cn%5CnFinally%2C%20the%20students%20will%20replace%20the%20color%20of%20each%20pixel%20in%20the%20array%20with%20that%20color%5Cu2019s%20assigned%20group%20key.%5Cn%5CnTo%20better%20understand%20the%20effect%2C%20here%20is%20an%20image%20of%20a%20basking%20turtle%20where%20the%20Posterization%20Filter%20was%20applied%20with%20increasing%20%24%20k%20%24%20to%20the%20right.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF980C%5C%2Fa5e04b9b80b48f601f9e0b203cd8ee3718afd0e4.png%29To%20make%20the%20process%20of%20checking%20the%20final%20answer%20easier%2C%20Professor%20Ibrahim%20wants%20students%20to%20divide%20the%20groups%20and%20assign%20the%20keys%20in%20a%20way%20that%20produces%20the%20lexicographically%20smallest%20possible%20array.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E5%20%24%20%2C%20%24%201%20%5C%5Cleq%20k%20%5C%5Cleq%20256%20%24%20%29%2C%20the%20number%20of%20pixels%20in%20the%20image%2C%20and%20the%20maximum%20size%20of%20a%20group%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20p_1%2C%20p_2%2C%20%5C%5Cdots%2C%20p_n%20%24%20%28%20%24%200%20%5C%5Cleq%20p_i%20%5C%5Cleq%20255%20%24%20%29%2C%20where%20%24%20p_i%20%24%20is%20the%20color%20of%20the%20%24%20i%20%24%20-th%20pixel.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20space-separated%20integers%3B%20the%20lexicographically%20smallest%20possible%20array%20that%20represents%20the%20image%20after%20applying%20the%20Posterization%20filter.%22%2C%22samples%22%3A%5B%5B%224%203%5Cn2%2014%203%204%5Cn%22%2C%220%2012%203%203%5Cn%22%5D%2C%5B%225%202%5Cn0%202%201%20255%20254%5Cn%22%2C%220%201%201%20254%20254%5Cn%22%5D%5D%2C%22hint%22%3A%22One%20possible%20way%20to%20group%20colors%20and%20assign%20keys%20for%20the%20first%20sample%3A%5Cn%5CnColor%20%24%202%20%24%20belongs%20to%20the%20group%20%24%20%5B0%2C2%5D%20%24%20%2C%20with%20group%20key%20%24%200%20%24%20.%5Cn%5CnColor%20%24%2014%20%24%20belongs%20to%20the%20group%20%24%20%5B12%2C14%5D%20%24%20%2C%20with%20group%20key%20%24%2012%20%24%20.%5Cn%5CnColors%20%24%203%20%24%20and%20%24%204%20%24%20belong%20to%20group%20%24%20%5B3%2C%205%5D%20%24%20%2C%20with%20group%20key%20%24%203%20%24%20.%5Cn%5CnOther%20groups%20won%27t%20affect%20the%20result%20so%20they%20are%20not%20listed%20here.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F980%5C%2FC%22%2C%22id%22%3A%22980C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A20%2C%22totalAccepted%22%3A11%2C%22pid%22%3A%22CF980C%22%2C%22title%22%3A%22Posterized%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Posterized%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Posterized</h1>
+<h2>题目描述</h2>
+<div>Professor Ibrahim has prepared the final homework for his algorithm’s class. He asked his students to implement the Posterization Image Filter.
+Their algorithm will be tested on an array of integers, where the $ i $ -th integer represents the color of the $ i $ -th pixel in the image. The image is in black and white, therefore the color of each pixel will be an integer between 0 and 255 (inclusive).
+To implement the filter, students are required to divide the black and white color range \[0, 255\] into groups of consecutive colors, and select one color in each group to be the group’s key. In order to preserve image details, the size of a group must not be greater than $ k $ , and each color should belong to exactly one group.
+Finally, the students will replace the color of each pixel in the array with that color’s assigned group key.
+To better understand the effect, here is an image of a basking turtle where the Posterization Filter was applied with increasing $ k $ to the right.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF980C/a5e04b9b80b48f601f9e0b203cd8ee3718afd0e4.png)To make the process of checking the final answer easier, Professor Ibrahim wants students to divide the groups and assign the keys in a way that produces the lexicographically smallest possible array.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains two integers $ n $ and $ k $ ( $ 1 \leq n \leq 10^5 $ , $ 1 \leq k \leq 256 $ ), the number of pixels in the image, and the maximum size of a group, respectively.
+The second line contains $ n $ integers $ p_1, p_2, \dots, p_n $ ( $ 0 \leq p_i \leq 255 $ ), where $ p_i $ is the color of the $ i $ -th pixel.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ space-separated integers; the lexicographically smallest possible array that represents the image after applying the Posterization filter.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 3
+2 14 3 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0 12 3 3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 2
+0 2 1 255 254
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0 1 1 254 254
+</code></pre>
+<h2>说明</h2>
+<div>One possible way to group colors and assign keys for the first sample:
+Color $ 2 $ belongs to the group $ [0,2] $ , with group key $ 0 $ .
+Color $ 14 $ belongs to the group $ [12,14] $ , with group key $ 12 $ .
+Colors $ 3 $ and $ 4 $ belong to group $ [3, 5] $ , with group key $ 3 $ .
+Other groups won't affect the result so they are not listed here.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

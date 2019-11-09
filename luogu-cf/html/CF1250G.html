@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Discarding Game - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403761:L1YLQQn9GzJXSXcPA0JEb9w/NNHvGmITgAaq7adJvJk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Eulampius%20has%20created%20a%20game%20with%20the%20following%20rules%3A%5Cn%5Cn-%20there%20are%20two%20players%20in%20the%20game%3A%20a%20human%20and%20a%20computer%3B%5Cn-%20the%20game%20lasts%20for%20no%20more%20than%20%24%20n%20%24%20rounds.%20Initially%20both%20players%20have%20%24%200%20%24%20points.%20In%20the%20%24%20j%20%24%20-th%20round%20the%20human%20gains%20%24%20a_j%20%24%20points%2C%20and%20the%20computer%20gains%20%24%20b_j%20%24%20points.%20The%20points%20are%20gained%20simultaneously%3B%5Cn-%20the%20game%20ends%20when%20one%20of%20the%20players%20gets%20%24%20k%20%24%20or%20more%20points.%20This%20player%20loses%20the%20game.%20If%20both%20players%20get%20%24%20k%20%24%20or%20more%20points%20simultaneously%2C%20both%20lose%3B%5Cn-%20if%20both%20players%20have%20less%20than%20%24%20k%20%24%20points%20after%20%24%20n%20%24%20rounds%2C%20the%20game%20ends%20in%20a%20tie%3B%5Cn-%20after%20each%20round%20the%20human%20can%20push%20the%20%5C%22Reset%5C%22%20button.%20If%20the%20human%20had%20%24%20x%20%24%20points%2C%20and%20the%20computer%20had%20%24%20y%20%24%20points%20before%20the%20button%20is%20pushed%20%28of%20course%2C%20%24%20x%20%3C%20k%20%24%20and%20%24%20y%20%3C%20k%20%24%20%29%2C%20then%20after%20the%20button%20is%20pushed%20the%20human%20will%20have%20%24%20x%27%20%3D%20max%280%2C%20%5C%5C%2C%20x%20-%20y%29%20%24%20points%2C%20and%20the%20computer%20will%20have%20%24%20y%27%20%3D%20max%280%2C%20%5C%5C%2C%20y%20-%20x%29%20%24%20points.%20E.%20g.%20the%20push%20of%20%5C%22Reset%5C%22%20button%20transforms%20the%20state%20%24%20%28x%3D3%2C%20%5C%5C%2C%20y%3D5%29%20%24%20into%20the%20state%20%24%20%28x%27%3D0%2C%20%5C%5C%2C%20y%27%3D2%29%20%24%20%2C%20and%20the%20state%20%24%20%28x%3D8%2C%20%5C%5C%2C%20y%3D2%29%20%24%20into%20the%20state%20%24%20%28x%27%3D6%2C%20%5C%5C%2C%20y%27%3D0%29%20%24%20.%5Cn%5CnEulampius%20asked%20his%20friend%20Polycarpus%20to%20test%20the%20game.%20Polycarpus%20has%20quickly%20revealed%20that%20amounts%20of%20points%20gained%20by%20the%20human%20and%20the%20computer%20in%20each%20of%20%24%20n%20%24%20rounds%20are%20generated%20before%20the%20game%20and%20stored%20in%20a%20file.%20In%20other%20words%2C%20the%20pushes%20of%20the%20%5C%22Reset%5C%22%20button%20do%20not%20influence%20the%20values%20%24%20a_j%20%24%20and%20%24%20b_j%20%24%20%2C%20so%20sequences%20%24%20a%20%24%20and%20%24%20b%20%24%20are%20fixed%20and%20known%20in%20advance.%5Cn%5CnPolycarpus%20wants%20to%20make%20a%20plan%20for%20the%20game.%20He%20would%20like%20to%20win%20the%20game%20pushing%20the%20%5C%22Reset%5C%22%20button%20as%20few%20times%20as%20possible.%20Your%20task%20is%20to%20determine%20this%20minimal%20number%20of%20pushes%20or%20determine%20that%20Polycarpus%20cannot%20win.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20t%20%24%20%28%20%24%201%20%5C%5Cle%20t%20%5C%5Cle%2010000%20%24%20%29%20%5Cu2014%20the%20number%20of%20test%20cases.%20Then%20the%20test%20cases%20follow.%5Cn%5CnThe%20first%20line%20of%20each%20test%20case%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%202%20%5C%5Cle%20k%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20the%20maximum%20possible%20number%20of%20rounds%20in%20the%20game%20and%20the%20number%20of%20points%2C%20after%20reaching%20which%20a%20player%20loses%2C%20respectively.%5Cn%5CnThe%20second%20line%20of%20each%20test%20case%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_j%20%3C%20k%29%20%24%20%2C%20where%20%24%20a_j%20%24%20is%20the%20amount%20of%20points%20the%20human%20gains%20in%20the%20%24%20j%20%24%20-th%20round.%5Cn%5CnThe%20third%20line%20of%20each%20test%20case%20contains%20%24%20n%20%24%20integers%20%24%20b_1%2C%20b_2%2C%20%5C%5Cdots%2C%20b_n%20%24%20%28%20%24%201%20%5C%5Cle%20b_j%20%3C%20k%20%24%20%29%2C%20where%20%24%20b_j%20%24%20is%20the%20amount%20of%20points%20the%20computer%20gains%20in%20the%20%24%20j%20%24%20-th%20round.%5Cn%5CnThe%20sum%20of%20%24%20n%20%24%20over%20all%20test%20cases%20in%20the%20input%20does%20not%20exceed%20%24%202%20%5C%5Ccdot%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20the%20answers%20for%20all%20test%20cases%20in%20the%20order%20they%20appear%20in%20the%20input.%5Cn%5CnIf%20Polycarpus%20cannot%20win%20the%20game%2C%20then%20simply%20print%20one%20line%20%5C%22-1%5C%22%20%28without%20quotes%29.%20In%20this%20case%2C%20you%20should%20not%20output%20anything%20else%20for%20that%20test%20case.%20Otherwise%2C%20the%20first%20line%20of%20the%20test%20case%20answer%20should%20contain%20one%20integer%20%24%20d%20%24%20%5Cu2014%20the%20minimum%20possible%20number%20of%20%5C%22Reset%5C%22%20button%20pushes%2C%20required%20to%20win%20the%20game.%20The%20next%20line%20should%20contain%20%24%20d%20%24%20distinct%20integers%20%24%20r_1%2C%20r_2%2C%20%5C%5Cdots%2C%20r_d%20%24%20%28%20%24%201%20%5C%5Cle%20r_i%20%3C%20n%20%24%20%29%20%5Cu2014%20the%20numbers%20of%20rounds%2C%20at%20the%20end%20of%20which%20Polycarpus%20has%20to%20press%20the%20%5C%22Reset%5C%22%20button%2C%20in%20arbitrary%20order.%20If%20%24%20d%3D0%20%24%20then%20either%20leave%20the%20second%20line%20of%20the%20test%20case%20answer%20empty%2C%20or%20do%20not%20print%20the%20second%20line%20at%20all.%5Cn%5CnIf%20there%20are%20several%20possible%20solutions%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn4%2017%5Cn1%203%205%207%5Cn3%205%207%209%5Cn11%2017%5Cn5%202%208%202%204%206%201%202%207%202%205%5Cn4%206%203%203%205%201%207%204%202%205%203%5Cn6%2017%5Cn6%201%202%207%202%205%5Cn1%207%204%202%205%203%5Cn%22%2C%22%5Cn0%5Cn%5Cn2%5Cn2%204%5Cn-1%22%5D%5D%2C%22hint%22%3A%22In%20the%20second%20test%20case%2C%20if%20the%20human%20pushes%20the%20%5C%22Reset%5C%22%20button%20after%20the%20second%20and%20the%20fourth%20rounds%2C%20the%20game%20goes%20as%20follows%3A%5Cn%5Cn1.%20after%20the%20first%20round%20the%20human%20has%20%24%205%20%24%20points%2C%20the%20computer%20%5Cu2014%20%24%204%20%24%20points%3B%5Cn2.%20after%20the%20second%20round%20the%20human%20has%20%24%207%20%24%20points%2C%20the%20computer%20%5Cu2014%20%24%2010%20%24%20points%3B%5Cn3.%20the%20human%20pushes%20the%20%5C%22Reset%5C%22%20button%20and%20now%20he%20has%20%24%200%20%24%20points%20and%20the%20computer%20%5Cu2014%20%24%203%20%24%20points%3B%5Cn4.%20after%20the%20third%20round%20the%20human%20has%20%24%208%20%24%20points%2C%20the%20computer%20%5Cu2014%20%24%206%20%24%20points%3B%5Cn5.%20after%20the%20fourth%20round%20the%20human%20has%20%24%2010%20%24%20points%2C%20the%20computer%20%5Cu2014%20%24%209%20%24%20points%3B%5Cn6.%20the%20human%20pushes%20%5C%22Reset%5C%22%20button%20again%2C%20after%20it%20he%20has%20%24%201%20%24%20point%2C%20the%20computer%20%5Cu2014%20%24%200%20%24%20points%3B%5Cn7.%20after%20the%20fifth%20round%20the%20human%20has%20%24%205%20%24%20points%2C%20the%20computer%20%5Cu2014%20%24%205%20%24%20points%3B%5Cn8.%20after%20the%20sixth%20round%20the%20human%20has%20%24%2011%20%24%20points%2C%20the%20computer%20%5Cu2014%20%24%206%20%24%20points%3B%5Cn9.%20after%20the%20seventh%20round%20the%20human%20has%20%24%2012%20%24%20points%2C%20the%20computer%20%5Cu2014%20%24%2013%20%24%20points%3B%5Cn10.%20after%20the%20eighth%20round%20the%20human%20has%20%24%2014%20%24%20points%2C%20the%20computer%20%5Cu2014%20%24%2017%20%24%20points%3B%5Cn11.%20the%20human%20wins%2C%20as%20the%20computer%20has%20%24%20k%20%24%20or%20more%20points%20and%20the%20human%20%5Cu2014%20strictly%20less%20than%20%24%20k%20%24%20points.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1250%5C%2FG%22%2C%22id%22%3A%221250G%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A4%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF1250G%22%2C%22title%22%3A%22Discarding%20Game%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Discarding%20Game%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Discarding Game</h1>
+<h2>题目描述</h2>
+<div>Eulampius has created a game with the following rules:
+- there are two players in the game: a human and a computer;
+- the game lasts for no more than $ n $ rounds. Initially both players have $ 0 $ points. In the $ j $ -th round the human gains $ a_j $ points, and the computer gains $ b_j $ points. The points are gained simultaneously;
+- the game ends when one of the players gets $ k $ or more points. This player loses the game. If both players get $ k $ or more points simultaneously, both lose;
+- if both players have less than $ k $ points after $ n $ rounds, the game ends in a tie;
+- after each round the human can push the "Reset" button. If the human had $ x $ points, and the computer had $ y $ points before the button is pushed (of course, $ x < k $ and $ y < k $ ), then after the button is pushed the human will have $ x' = max(0, \, x - y) $ points, and the computer will have $ y' = max(0, \, y - x) $ points. E. g. the push of "Reset" button transforms the state $ (x=3, \, y=5) $ into the state $ (x'=0, \, y'=2) $ , and the state $ (x=8, \, y=2) $ into the state $ (x'=6, \, y'=0) $ .
+Eulampius asked his friend Polycarpus to test the game. Polycarpus has quickly revealed that amounts of points gained by the human and the computer in each of $ n $ rounds are generated before the game and stored in a file. In other words, the pushes of the "Reset" button do not influence the values $ a_j $ and $ b_j $ , so sequences $ a $ and $ b $ are fixed and known in advance.
+Polycarpus wants to make a plan for the game. He would like to win the game pushing the "Reset" button as few times as possible. Your task is to determine this minimal number of pushes or determine that Polycarpus cannot win.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ t $ ( $ 1 \le t \le 10000 $ ) — the number of test cases. Then the test cases follow.
+The first line of each test case contains two integers $ n $ and $ k $ ( $ 1 \le n \le 2 \cdot 10^5 $ , $ 2 \le k \le 10^9 $ ) — the maximum possible number of rounds in the game and the number of points, after reaching which a player loses, respectively.
+The second line of each test case contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_j < k) $ , where $ a_j $ is the amount of points the human gains in the $ j $ -th round.
+The third line of each test case contains $ n $ integers $ b_1, b_2, \dots, b_n $ ( $ 1 \le b_j < k $ ), where $ b_j $ is the amount of points the computer gains in the $ j $ -th round.
+The sum of $ n $ over all test cases in the input does not exceed $ 2 \cdot 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the answers for all test cases in the order they appear in the input.
+If Polycarpus cannot win the game, then simply print one line "-1" (without quotes). In this case, you should not output anything else for that test case. Otherwise, the first line of the test case answer should contain one integer $ d $ — the minimum possible number of "Reset" button pushes, required to win the game. The next line should contain $ d $ distinct integers $ r_1, r_2, \dots, r_d $ ( $ 1 \le r_i < n $ ) — the numbers of rounds, at the end of which Polycarpus has to press the "Reset" button, in arbitrary order. If $ d=0 $ then either leave the second line of the test case answer empty, or do not print the second line at all.
+If there are several possible solutions, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+4 17
+1 3 5 7
+3 5 7 9
+11 17
+5 2 8 2 4 6 1 2 7 2 5
+4 6 3 3 5 1 7 4 2 5 3
+6 17
+6 1 2 7 2 5
+1 7 4 2 5 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+0
+
+2
+2 4
+-1</code></pre>
+<h2>说明</h2>
+<div>In the second test case, if the human pushes the "Reset" button after the second and the fourth rounds, the game goes as follows:
+1. after the first round the human has $ 5 $ points, the computer — $ 4 $ points;
+2. after the second round the human has $ 7 $ points, the computer — $ 10 $ points;
+3. the human pushes the "Reset" button and now he has $ 0 $ points and the computer — $ 3 $ points;
+4. after the third round the human has $ 8 $ points, the computer — $ 6 $ points;
+5. after the fourth round the human has $ 10 $ points, the computer — $ 9 $ points;
+6. the human pushes "Reset" button again, after it he has $ 1 $ point, the computer — $ 0 $ points;
+7. after the fifth round the human has $ 5 $ points, the computer — $ 5 $ points;
+8. after the sixth round the human has $ 11 $ points, the computer — $ 6 $ points;
+9. after the seventh round the human has $ 12 $ points, the computer — $ 13 $ points;
+10. after the eighth round the human has $ 14 $ points, the computer — $ 17 $ points;
+11. the human wins, as the computer has $ k $ or more points and the human — strictly less than $ k $ points.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

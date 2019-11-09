@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Amusement Park - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402886:l7W4D3OyaekYaRCK0vZncwsaplekjB8Puo2vFLxVL1M=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20have%20been%20hired%20to%20supervise%20the%20project%20of%20a%20new%20amusement%20park.%20The%20park%20will%20have%20a%20special%20gimmick%3A%20directed%20slides%20that%20can%20get%20customers%20from%20one%20attraction%20to%20another%20quickly%20and%20in%20an%20entertaining%20way.%5Cn%5CnThe%20park%20owner%20has%20given%20you%20the%20current%20project%3A%20a%20list%20of%20planned%20attractions%20and%20a%20list%20of%20slides%20that%20should%20be%20built%20between%20them.%20However%2C%20him%20being%20a%20businessman%2C%20he%20casually%20envisioned%20the%20impossible%3A%20among%20other%20things%2C%20he%20projected%20a%20slide%20coming%20from%20the%20Haunted%20Castle%20to%20the%20Roller%20Coaster%2C%20another%20from%20the%20Roller%20Coaster%20to%20the%20Drop%20Tower%2C%20and%20a%20third%20from%20the%20Drop%20Tower%20to%20the%20Haunted%20Castle.%20As%20the%20slides%20can%20only%20go%20downhill%2C%20it%20is%20evident%20why%20this%20is%20a%20problem.%20You%20don%27t%20have%20the%20luxury%20of%20ignoring%20the%20laws%20of%20physics%20when%20building%20the%20park%2C%20so%20you%20have%20to%20request%20changes%20in%20the%20project.%20Maybe%20he%20would%20accept%20reversing%20the%20slide%20between%20the%20Drop%20Tower%20and%20the%20Haunted%20Castle%3F%5Cn%5CnFormally%3A%5Cn%5Cn-%20The%20project%20is%20a%20list%20of%20attractions%20and%20a%20list%20of%20directed%20slides.%20Each%20slide%20starts%20at%20one%20attraction%20and%20ends%20at%20another%20attraction.%5Cn-%20A%20proposal%20is%20obtained%20from%20the%20project%20by%20reversing%20the%20directions%20of%20some%20slides%20%28possibly%20none%20or%20all%20of%20them%29.%5Cn-%20A%20proposal%20is%20legal%20if%20there%20is%20a%20way%20to%20assign%20an%20elevation%20to%20each%20attraction%20in%20such%20a%20way%20that%20every%20slide%20goes%20downhill.%5Cn-%20The%20cost%20of%20a%20proposal%20is%20the%20number%20of%20slides%20whose%20directions%20were%20reversed.%5Cn%5CnFor%20a%20given%20project%2C%20find%20and%20report%20the%20sum%20of%20costs%20all%20legal%20proposals.%20Since%20this%20number%20may%20be%20large%2C%20output%20it%20modulo%20%24%20998%2C244%2C353%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20space-separated%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%2018%20%24%20%2C%20%24%200%20%5C%5Cleq%20m%20%5C%5Cleq%20n%28n-1%29%5C%2F2%20%24%20%29%20%5Cu2013%20the%20number%20of%20attractions%20and%20the%20number%20of%20slides%2C%20respectively.%20The%20attractions%20are%20numbered%20%24%201%20%24%20through%20%24%20n%20%24%20.%5Cn%5CnThen%2C%20%24%20m%20%24%20lines%20follow.%20The%20%24%20i%20%24%20-th%20of%20these%20lines%20contains%20two%20space-separated%20integers%20%24%20a_i%20%24%20%2C%20%24%20b_i%20%24%20%28%20%24%201%20%5C%5Cleq%20a_i%2C%20b_i%20%5C%5Cleq%20n%20%24%20%29%20denoting%20a%20slide%20from%20%24%20a_i%20%24%20to%20%24%20b_i%20%24%20.%5Cn%5CnYou%20may%20assume%20that%3A%5Cn%5Cn-%20There%20are%20no%20self-loops.%20%28For%20each%20%24%20i%20%24%20%3A%20%24%20a_i%20%5C%5Cneq%20b_i%20%24%20.%29%5Cn-%20No%20slide%20appears%20twice.%20%28For%20all%20%24%20i%20%5C%5Cneq%20j%20%24%20%3A%20%24%20a_i%20%5C%5Cneq%20a_j%20%24%20or%20%24%20b_i%20%5C%5Cneq%20b_j%20%24%20.%29%5Cn-%20No%20pair%20of%20attractions%20is%20connected%20in%20both%20directions.%20%28The%20unordered%20pairs%20%24%20%5C%5C%7Ba_i%2C%20b_i%5C%5C%7D%20%24%20are%20distinct.%29%22%2C%22outputFormat%22%3A%22Output%20one%20line%20with%20a%20single%20integer%2C%20the%20sum%20of%20costs%20of%20all%20legal%20proposals%20modulo%20%24%20998%2C244%2C353%20%24%20.%5Cn%5CnScoring%5Cn%5CnSubtask%201%20%287%20points%29%3A%20%24%20n%20%5C%5Cleq%203%20%24%5Cn%5CnSubtask%202%20%2812%20points%29%3A%20%24%20n%20%5C%5Cleq%206%20%24%5Cn%5CnSubtask%203%20%2823%20points%29%3A%20%24%20n%20%5C%5Cleq%2010%20%24%5Cn%5CnSubtask%204%20%2821%20points%29%3A%20%24%20n%20%5C%5Cleq%2015%20%24%5Cn%5CnSubtask%205%20%2837%20points%29%3A%20no%20additional%20constraints%22%2C%22samples%22%3A%5B%5B%22%5Cn2%201%5Cn1%202%5Cn%22%2C%22%5Cn1%5Cn%22%5D%2C%5B%22%5Cn3%203%5Cn1%202%5Cn2%203%5Cn1%203%5Cn%22%2C%22%5Cn9%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20there%20are%20two%20proposals%3A%5Cn%5Cn-%20The%20slide%20direction%20is%20not%20flipped.%20This%20proposal%20has%20cost%20%24%200%20%24%20.%5Cn-%20The%20slide%20direction%20is%20flipped.%20This%20proposal%20has%20cost%20%24%201%20%24%20.%5Cn%5Cn%20As%20both%20proposals%20are%20valid%2C%20the%20answer%20is%20%24%200%20%2B%201%20%3D%201%20%24%20.In%20the%20second%20example%2C%20there%20are%20eight%20proposals%20with%20the%20slide%20directions%20as%20follows%3A%5Cn%5Cn-%20%24%201%20%5C%5Crightarrow%202%20%24%20%2C%20%24%202%20%5C%5Crightarrow%203%20%24%20%2C%20%24%201%20%5C%5Crightarrow%203%20%24%20%28cost%20%24%200%20%24%20%29%5Cn-%20%24%201%20%5C%5Crightarrow%202%20%24%20%2C%20%24%202%20%5C%5Crightarrow%203%20%24%20%2C%20%24%203%20%5C%5Crightarrow%201%20%24%20%28cost%20%24%201%20%24%20%29%5Cn-%20%24%201%20%5C%5Crightarrow%202%20%24%20%2C%20%24%203%20%5C%5Crightarrow%202%20%24%20%2C%20%24%201%20%5C%5Crightarrow%203%20%24%20%28cost%20%24%201%20%24%20%29%5Cn-%20%24%201%20%5C%5Crightarrow%202%20%24%20%2C%20%24%203%20%5C%5Crightarrow%202%20%24%20%2C%20%24%203%20%5C%5Crightarrow%201%20%24%20%28cost%20%24%202%20%24%20%29%5Cn-%20%24%202%20%5C%5Crightarrow%201%20%24%20%2C%20%24%202%20%5C%5Crightarrow%203%20%24%20%2C%20%24%201%20%5C%5Crightarrow%203%20%24%20%28cost%20%24%201%20%24%20%29%5Cn-%20%24%202%20%5C%5Crightarrow%201%20%24%20%2C%20%24%202%20%5C%5Crightarrow%203%20%24%20%2C%20%24%203%20%5C%5Crightarrow%201%20%24%20%28cost%20%24%202%20%24%20%29%5Cn-%20%24%202%20%5C%5Crightarrow%201%20%24%20%2C%20%24%203%20%5C%5Crightarrow%202%20%24%20%2C%20%24%201%20%5C%5Crightarrow%203%20%24%20%28cost%20%24%202%20%24%20%29%5Cn-%20%24%202%20%5C%5Crightarrow%201%20%24%20%2C%20%24%203%20%5C%5Crightarrow%202%20%24%20%2C%20%24%203%20%5C%5Crightarrow%201%20%24%20%28cost%20%24%203%20%24%20%29%5Cn%5CnThe%20second%20proposal%20is%20not%20legal%2C%20as%20there%20is%20a%20slide%20sequence%20%24%201%20%5C%5Crightarrow%202%20%5C%5Crightarrow%203%20%5C%5Crightarrow%201%20%24%20.%20This%20means%20that%20the%20attraction%20%24%201%20%24%20has%20to%20be%20strictly%20higher%20than%20ifself%2C%20which%20is%20clearly%20impossible.%20Similarly%2C%20the%20seventh%20proposal%20is%20not%20legal.%20The%20answer%20is%20thus%20%24%200%20%2B%201%20%2B%202%20%2B%201%20%2B%202%20%2B%203%20%3D%209%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B1024000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1193%5C%2FA%22%2C%22id%22%3A%221193A%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF1193A%22%2C%22title%22%3A%22Amusement%20Park%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Amusement%20Park%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Amusement Park</h1>
+<h2>题目描述</h2>
+<div>You have been hired to supervise the project of a new amusement park. The park will have a special gimmick: directed slides that can get customers from one attraction to another quickly and in an entertaining way.
+The park owner has given you the current project: a list of planned attractions and a list of slides that should be built between them. However, him being a businessman, he casually envisioned the impossible: among other things, he projected a slide coming from the Haunted Castle to the Roller Coaster, another from the Roller Coaster to the Drop Tower, and a third from the Drop Tower to the Haunted Castle. As the slides can only go downhill, it is evident why this is a problem. You don't have the luxury of ignoring the laws of physics when building the park, so you have to request changes in the project. Maybe he would accept reversing the slide between the Drop Tower and the Haunted Castle?
+Formally:
+- The project is a list of attractions and a list of directed slides. Each slide starts at one attraction and ends at another attraction.
+- A proposal is obtained from the project by reversing the directions of some slides (possibly none or all of them).
+- A proposal is legal if there is a way to assign an elevation to each attraction in such a way that every slide goes downhill.
+- The cost of a proposal is the number of slides whose directions were reversed.
+For a given project, find and report the sum of costs all legal proposals. Since this number may be large, output it modulo $ 998,244,353 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two space-separated integers $ n $ , $ m $ ( $ 1 \leq n \leq 18 $ , $ 0 \leq m \leq n(n-1)/2 $ ) – the number of attractions and the number of slides, respectively. The attractions are numbered $ 1 $ through $ n $ .
+Then, $ m $ lines follow. The $ i $ -th of these lines contains two space-separated integers $ a_i $ , $ b_i $ ( $ 1 \leq a_i, b_i \leq n $ ) denoting a slide from $ a_i $ to $ b_i $ .
+You may assume that:
+- There are no self-loops. (For each $ i $ : $ a_i \neq b_i $ .)
+- No slide appears twice. (For all $ i \neq j $ : $ a_i \neq a_j $ or $ b_i \neq b_j $ .)
+- No pair of attractions is connected in both directions. (The unordered pairs $ \{a_i, b_i\} $ are distinct.)</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one line with a single integer, the sum of costs of all legal proposals modulo $ 998,244,353 $ .
+Scoring
+Subtask 1 (7 points): $ n \leq 3 $
+Subtask 2 (12 points): $ n \leq 6 $
+Subtask 3 (23 points): $ n \leq 10 $
+Subtask 4 (21 points): $ n \leq 15 $
+Subtask 5 (37 points): no additional constraints</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+2 1
+1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3 3
+1 2
+2 3
+1 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+9
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, there are two proposals:
+- The slide direction is not flipped. This proposal has cost $ 0 $ .
+- The slide direction is flipped. This proposal has cost $ 1 $ .
+As both proposals are valid, the answer is $ 0 + 1 = 1 $ .In the second example, there are eight proposals with the slide directions as follows:
+- $ 1 \rightarrow 2 $ , $ 2 \rightarrow 3 $ , $ 1 \rightarrow 3 $ (cost $ 0 $ )
+- $ 1 \rightarrow 2 $ , $ 2 \rightarrow 3 $ , $ 3 \rightarrow 1 $ (cost $ 1 $ )
+- $ 1 \rightarrow 2 $ , $ 3 \rightarrow 2 $ , $ 1 \rightarrow 3 $ (cost $ 1 $ )
+- $ 1 \rightarrow 2 $ , $ 3 \rightarrow 2 $ , $ 3 \rightarrow 1 $ (cost $ 2 $ )
+- $ 2 \rightarrow 1 $ , $ 2 \rightarrow 3 $ , $ 1 \rightarrow 3 $ (cost $ 1 $ )
+- $ 2 \rightarrow 1 $ , $ 2 \rightarrow 3 $ , $ 3 \rightarrow 1 $ (cost $ 2 $ )
+- $ 2 \rightarrow 1 $ , $ 3 \rightarrow 2 $ , $ 1 \rightarrow 3 $ (cost $ 2 $ )
+- $ 2 \rightarrow 1 $ , $ 3 \rightarrow 2 $ , $ 3 \rightarrow 1 $ (cost $ 3 $ )
+The second proposal is not legal, as there is a slide sequence $ 1 \rightarrow 2 \rightarrow 3 \rightarrow 1 $ . This means that the attraction $ 1 $ has to be strictly higher than ifself, which is clearly impossible. Similarly, the seventh proposal is not legal. The answer is thus $ 0 + 1 + 2 + 1 + 2 + 3 = 9 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

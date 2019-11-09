@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Remove Duplicates - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399967:8W1rjeRmG9/xj7d9nZPi9Vgt2ZJQrhYm1PjU9liqorM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Petya%20has%20an%20array%20%24%20a%20%24%20consisting%20of%20%24%20n%20%24%20integers.%20He%20wants%20to%20remove%20duplicate%20%28equal%29%20elements.%5Cn%5CnPetya%20wants%20to%20leave%20only%20the%20rightmost%20entry%20%28occurrence%29%20for%20each%20element%20of%20the%20array.%20The%20relative%20order%20of%20the%20remaining%20unique%20elements%20should%20not%20be%20changed.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2050%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20Petya%27s%20array.%5Cn%5CnThe%20following%20line%20contains%20a%20sequence%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%201%5C%5C%2C000%20%24%20%29%20%5Cu2014%20the%20Petya%27s%20array.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20integer%20%24%20x%20%24%20%5Cu2014%20the%20number%20of%20elements%20which%20will%20be%20left%20in%20Petya%27s%20array%20after%20he%20removed%20the%20duplicates.%5Cn%5CnIn%20the%20second%20line%20print%20%24%20x%20%24%20integers%20separated%20with%20a%20space%20%5Cu2014%20Petya%27s%20array%20after%20he%20removed%20the%20duplicates.%20For%20each%20unique%20element%20only%20the%20rightmost%20entry%20should%20be%20left.%22%2C%22samples%22%3A%5B%5B%226%5Cn1%205%205%201%206%201%5Cn%22%2C%223%5Cn5%206%201%20%5Cn%22%5D%2C%5B%225%5Cn2%204%202%204%204%5Cn%22%2C%222%5Cn2%204%20%5Cn%22%5D%2C%5B%225%5Cn6%206%206%206%206%5Cn%22%2C%221%5Cn6%20%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20you%20should%20remove%20two%20integers%20%24%201%20%24%20%2C%20which%20are%20in%20the%20positions%20%24%201%20%24%20and%20%24%204%20%24%20.%20Also%20you%20should%20remove%20the%20integer%20%24%205%20%24%20%2C%20which%20is%20in%20the%20position%20%24%202%20%24%20.%5Cn%5CnIn%20the%20second%20example%20you%20should%20remove%20integer%20%24%202%20%24%20%2C%20which%20is%20in%20the%20position%20%24%201%20%24%20%2C%20and%20two%20integers%20%24%204%20%24%20%2C%20which%20are%20in%20the%20positions%20%24%202%20%24%20and%20%24%204%20%24%20.%5Cn%5CnIn%20the%20third%20example%20you%20should%20remove%20four%20integers%20%24%206%20%24%20%2C%20which%20are%20in%20the%20positions%20%24%201%20%24%20%2C%20%24%202%20%24%20%2C%20%24%203%20%24%20and%20%24%204%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F978%5C%2FA%22%2C%22id%22%3A%22978A%22%7D%2C%22translation%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu6570%5Cu7ec4%5Cuff0c%5Cu505a%5Cu4ee5%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu5143%5Cu7d20%5Cuff0c%5Cu53ea%5Cu4fdd%5Cu7559%5Cu8be5%5Cu5143%5Cu7d20%5Cu5728%5Cu8be5%5Cu6570%5Cu7ec4%5Cu4e2d%5Cu6700%5Cu53f3%5Cu8fb9%5Cu7684%5Cu4e00%5Cu4e2a%5Cuff0c%5Cu5220%5Cu53bb%5Cu5176%5Cu4f59%5Cu76f8%5Cu540c%5Cu5143%5Cu7d20%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8bfb%5Cu5165%5Cu4e00%5Cu4e2an%5Cuff081%3C%3Dn%3C%3D1000%5Cuff09%2C%5Cn%5Cu8868%5Cu793a%5Cu6570%5Cu5217%5Cu4e2d%5Cu6709n%5Cu4e2a%5Cu5143%5Cu7d20%5Cu3002%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4f9d%5Cu6b21%5Cu8bfb%5Cu5165%5Cu8fd9n%5Cu4e2a%5Cu5143%5Cu7d20%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu5171%5Cu4e24%5Cu884c%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu4e0d%5Cu540c%5Cu7684%5Cu5143%5Cu7d20%5Cu7684%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8f93%5Cu51fa%5Cu5220%5Cu53bb%5Cu76f8%5Cu540c%5Cu5143%5Cu7d20%5Cu540e%5Cu7684%5Cu6570%5Cu7ec4%5Cu3002%5Cn%5Cn%5Cu7531%20%40lucky0218%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A473%2C%22totalAccepted%22%3A261%2C%22pid%22%3A%22CF978A%22%2C%22title%22%3A%22Remove%20Duplicates%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A42767%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A25848%2C%22name%22%3A%22CF978A%20Remove%20Duplicates%22%2C%22slug%22%3A%22CF978A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF431A%22%2C%22title%22%3A%22Black%20Square%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF980A%22%2C%22title%22%3A%22Links%20and%20Pearls%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF978C%22%2C%22title%22%3A%22Letters%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF978B%22%2C%22title%22%3A%22File%20Name%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1162A%22%2C%22title%22%3A%22Zoning%20Restrictions%20Again%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Remove%20Duplicates%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Remove Duplicates</h1>
+<h2>题意翻译</h2>
+<div>对于一个数组，做以下操作：
+对于每个元素，只保留该元素在该数组中最右边的一个，删去其余相同元素。
+第一行读入一个n（1<=n<=1000）,
+表示数列中有n个元素。
+第二行依次读入这n个元素。
+输出共两行，第一行输出不同的元素的个数，第二行输出删去相同元素后的数组。
+由 @lucky0218 提供翻译</div>
+<h2>题目描述</h2>
+<div>Petya has an array $ a $ consisting of $ n $ integers. He wants to remove duplicate (equal) elements.
+Petya wants to leave only the rightmost entry (occurrence) for each element of the array. The relative order of the remaining unique elements should not be changed.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1 \le n \le 50 $ ) — the number of elements in Petya's array.
+The following line contains a sequence $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le 1\,000 $ ) — the Petya's array.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print integer $ x $ — the number of elements which will be left in Petya's array after he removed the duplicates.
+In the second line print $ x $ integers separated with a space — Petya's array after he removed the duplicates. For each unique element only the rightmost entry should be left.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+1 5 5 1 6 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+5 6 1 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+2 4 2 4 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+2 4 
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5
+6 6 6 6 6
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+6 
+</code></pre>
+<h2>说明</h2>
+<div>In the first example you should remove two integers $ 1 $ , which are in the positions $ 1 $ and $ 4 $ . Also you should remove the integer $ 5 $ , which is in the position $ 2 $ .
+In the second example you should remove integer $ 2 $ , which is in the position $ 1 $ , and two integers $ 4 $ , which are in the positions $ 2 $ and $ 4 $ .
+In the third example you should remove four integers $ 6 $ , which are in the positions $ 1 $ , $ 2 $ , $ 3 $ and $ 4 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

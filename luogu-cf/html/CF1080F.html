@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Katya and Segments Sets - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401338:pvc9IaVqBdvBOXZzs2n5D499IoFp/FgRCuQJYhmzH9Y=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22It%20is%20a%20very%20important%20day%20for%20Katya.%20She%20has%20a%20test%20in%20a%20programming%20class.%20As%20always%2C%20she%20was%20given%20an%20interesting%20problem%20that%20she%20solved%20very%20fast.%20Can%20you%20solve%20that%20problem%3F%5Cn%5CnYou%20are%20given%20%24%20n%20%24%20ordered%20segments%20sets.%20Each%20segment%20can%20be%20represented%20as%20a%20pair%20of%20two%20integers%20%24%20%5Bl%2C%20r%5D%20%24%20where%20%24%20l%5C%5Cleq%20r%20%24%20.%20Each%20set%20can%20contain%20an%20arbitrary%20number%20of%20segments%20%28even%20%24%200%20%24%20%29.%20It%20is%20possible%20that%20some%20segments%20are%20equal.%5Cn%5CnYou%20are%20also%20given%20%24%20m%20%24%20queries%2C%20each%20of%20them%20can%20be%20represented%20as%20four%20numbers%3A%20%24%20a%2C%20b%2C%20x%2C%20y%20%24%20.%20For%20each%20segment%2C%20find%20out%20whether%20it%20is%20true%20that%20each%20set%20%24%20p%20%24%20%28%20%24%20a%5C%5Cleq%20p%5C%5Cleq%20b%20%24%20%29%20contains%20at%20least%20one%20segment%20%24%20%5Bl%2C%20r%5D%20%24%20that%20lies%20entirely%20on%20the%20segment%20%24%20%5Bx%2C%20y%5D%20%24%20%2C%20that%20is%20%24%20x%5C%5Cleq%20l%5C%5Cleq%20r%5C%5Cleq%20y%20%24%20.%5Cn%5CnFind%20out%20the%20answer%20to%20each%20query.%5Cn%5CnNote%20that%20you%20need%20to%20solve%20this%20problem%20online.%20That%20is%2C%20you%20will%20get%20a%20new%20query%20only%20after%20you%20print%20the%20answer%20for%20the%20previous%20query.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20%2C%20and%20%24%20k%20%24%20%24%20%281%5C%5Cleq%20n%2Cm%5C%5Cleq%2010%5E5%2C%201%5C%5Cleq%20k%5C%5Cleq%203%5C%5Ccdot10%5E5%29%20%24%20%5Cu2014%20the%20number%20of%20sets%2C%20queries%2C%20and%20segments%20respectively.%5Cn%5CnEach%20of%20the%20next%20%24%20k%20%24%20lines%20contains%20three%20integers%20%24%20l%20%24%20%2C%20%24%20r%20%24%20%2C%20and%20%24%20p%20%24%20%24%20%281%5C%5Cleq%20l%5C%5Cleq%20r%5C%5Cleq%2010%5E9%2C%201%5C%5Cleq%20p%5C%5Cleq%20n%29%20%24%20%5Cu2014%20the%20limits%20of%20the%20segment%20and%20the%20index%20of%20a%20set%2C%20to%20which%20this%20segment%20belongs.%5Cn%5CnEach%20of%20the%20next%20%24%20m%20%24%20lines%20contains%20four%20integers%20%24%20a%2C%20b%2C%20x%2C%20y%20%24%20%24%20%281%5C%5Cleq%20a%5C%5Cleq%20b%5C%5Cleq%20n%2C%201%5C%5Cleq%20x%5C%5Cleq%20y%5C%5Cleq%2010%5E9%29%20%24%20%5Cu2014%20the%20description%20of%20the%20query.%22%2C%22outputFormat%22%3A%22For%20each%20query%2C%20print%20%5C%22yes%5C%22%20or%20%5C%22no%5C%22%20in%20a%20new%20line.%5Cn%5CnInteraction%5Cn%5CnAfter%20printing%20a%20query%2C%20do%20not%20forget%20to%20output%20end%20of%20line%20and%20flush%20the%20output.%20Otherwise%2C%20you%20will%20get%20Idleness%20limit%20exceeded.%20To%20do%20this%2C%20use%3A%5Cn%5Cn-%20fflush%28stdout%29%20or%20cout.flush%28%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20see%20documentation%20for%20other%20languages.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%205%209%5Cn3%206%203%5Cn1%203%201%5Cn2%204%202%5Cn1%202%203%5Cn4%206%205%5Cn2%205%203%5Cn7%209%204%5Cn2%203%201%5Cn4%2010%204%5Cn1%202%202%203%5Cn1%202%202%204%5Cn1%203%201%205%5Cn2%203%203%206%5Cn2%204%202%209%5Cn%22%2C%22%5Cnno%5Cnyes%5Cnyes%5Cnno%5Cnyes%5Cn%22%5D%5D%2C%22hint%22%3A%22For%20the%20first%20query%2C%20the%20answer%20is%20negative%20since%20the%20second%20set%20does%20not%20contain%20a%20segment%20that%20lies%20on%20the%20segment%20%24%20%5B2%2C%203%5D%20%24%20.%5Cn%5CnIn%20the%20second%20query%2C%20the%20first%20set%20contains%20%24%20%5B2%2C%203%5D%20%24%20%2C%20and%20the%20second%20set%20contains%20%24%20%5B2%2C%204%5D%20%24%20.%5Cn%5CnIn%20the%20third%20query%2C%20the%20first%20set%20contains%20%24%20%5B2%2C%203%5D%20%24%20%2C%20the%20second%20set%20contains%20%24%20%5B2%2C%204%5D%20%24%20%2C%20and%20the%20third%20set%20contains%20%24%20%5B2%2C%205%5D%20%24%20.%5Cn%5CnIn%20the%20fourth%20query%2C%20the%20second%20set%20does%20not%20contain%20a%20segment%20that%20lies%20on%20the%20segment%20%24%20%5B3%2C%206%5D%20%24%20.%5Cn%5CnIn%20the%20fifth%20query%2C%20the%20second%20set%20contains%20%24%20%5B2%2C%204%5D%20%24%20%2C%20the%20third%20set%20contains%20%24%20%5B2%2C%205%5D%20%24%20%2C%20and%20the%20fourth%20contains%20%24%20%5B7%2C%209%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3500%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1080%5C%2FF%22%2C%22id%22%3A%221080F%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu7ed9%5Cu4f60n%5Cu4e2a%5Cu96c6%5Cu5408%5Cuff0c%5Cu96c6%5Cu5408%5Cu4e2d%5Cu7684%5Cu5143%5Cu7d20%5Cu662f%5Cu7ebf%5Cu6bb5%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu7ebf%5Cu6bb5%5Cu7528%5Cu5de6%5Cu53f3%5Cu7aef%5Cu70b9%24%5Bl%2Cr%5D%2Cl%5C%5Cle%20r%24%5Cu63cf%5Cu8ff0%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu96c6%5Cu5408%5Cu53ef%5Cu4ee5%5Cu5305%5Cu542b%5Cu4efb%5Cu610f%5Cu4e2a%5Cu7ebf%5Cu6bb5%5Cuff08%5Cu5305%5Cu62ec0%5Cu4e2a%5Cuff09%5Cuff0c%5Cu5141%5Cu8bb8%5Cu5b58%5Cu5728%5Cu76f8%5Cu540c%5Cu7684%5Cu7ebf%5Cu6bb5%5Cr%5Cn%5Cr%5Cn%5Cu6709m%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu5f62%5Cu5982%24a%2Cb%2Cx%2Cy%24%5Cuff0c%5Cu95ee%5Cu5bf9%5Cu4e8e%5Cu7f16%5Cu53f7%5Cu5728%24%5Ba%2Cb%5D%24%5Cu4e4b%5Cu95f4%5Cu7684%5Cu96c6%5Cu5408%5Cuff0c%5Cu662f%5Cu4e0d%5Cu662f%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu90fd%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6ee1%5Cu8db3%24x%5C%5Cle%20l%5C%5Cle%20r%5C%5Cle%20y%24%5Cu7684%5Cu7ebf%5Cu6bb5%5Cuff0c%5Cu662f%5Cu5219%5Cu8f93%5Cu51fa%5C%22yes%5C%22%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%5C%22no%5C%22%5Cr%5Cn%5Cr%5Cn%5Cu5f3a%5Cu5236%5Cu5728%5Cu7ebf%5Cuff0c%5Cu5904%5Cu7406%5Cu5b8c%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu540e%5Cu7acb%5Cu523b%5Cu8f93%5Cu51fa%5Cu7ed3%5Cu679c%5Cuff0c%5Cu7136%5Cu540e%5Cu624d%5Cu80fd%5Cu8bfb%5Cu5165%5Cu4e0b%5Cu4e00%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff08%5Cu5177%5Cu4f53%5Cu89c1%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff09%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b3%5Cu4e2a%5Cu6574%5Cu6570%24n%2Cm%2Ck%281%5C%5Cle%20n%2Cm%5C%5Cle%2010%5E5%2C1%5C%5Cle%20k%5C%5Cle%203%5Cu00d710%5E5%29%24%5Cu5206%5Cu522b%5Cu662f%5Cu96c6%5Cu5408%5Cu6570%5Cu3001%5Cu8be2%5Cu95ee%5Cu6570%5Cu3001%5Cu7ebf%5Cu6bb5%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24k%24%5Cu884c%5Cu6bcf%5Cu884c3%5Cu4e2a%5Cu6574%5Cu6570%24l%2Cr%2Cp%281%5C%5Cle%20l%5C%5Cle%20r%5C%5Cle%2010%5E9%2C1%5C%5Cle%20p%5C%5Cle%20n%29%24%5Cu8868%5Cu793a%5Cu4e00%5Cu6761%5Cu7ebf%5Cu6bb5%5Cuff0c%24l%2Crl%2Crl%2Cr%24%5Cu4e3a%5Cu5de6%5Cu53f3%5Cu7aef%5Cu70b9%5Cuff0c%24p%24%5Cu4e3a%5Cu5b83%5Cu6240%5Cu5c5e%5Cu7684%5Cu96c6%5Cu5408%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24m%24%5Cu884c%5Cu6bcf%5Cu884c%5Cu56db%5Cu4e2a%5Cu6574%5Cu6570%24a%2Cb%2Cx%2Cy%281%5C%5Cle%20a%5C%5Cle%20b%5C%5Cle%20n%2C1%5C%5Cle%20x%5C%5Cle%20y%5C%5Cle%2010%5E9%29%24%5Cu8868%5Cu793a%5Cu4e00%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%24a%2Cb%2Cx%2Cy%24%5Cu7684%5Cu542b%5Cu4e49%5Cu5982%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu6240%5Cu793a%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu8f93%5Cu51fa%5C%22yes%5C%22%5Cu6216%5C%22no%5C%22%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu5360%5Cu4e00%5Cu884c%5Cr%5Cn%5Cu6bcf%5Cu6b21%5Cu8f93%5Cu51fa%5Cu540e%5Cu9700%5Cu8981%5Cu5237%5Cu65b0%5Cu8f93%5Cu51fa%5Cu7f13%5Cu5b58%5Cuff0c%5Cu5426%5Cu5219%5Cu4f1aTLE%5Cr%5Cn%5Cr%5Cn%5Cu65b9%5Cu6cd5%5Cu5982%5Cu4e0b%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20C%2B%2B%3A%20fflush%28stdout%29%5Cu6216cout.flush%28%29%5Cr%5Cn-%20Java%5Cuff1aSystem.out.flush%28%29%5Cr%5Cn-%20Pascal%5Cuff1aflush%28output%29%5Cr%5Cn-%20Python%5Cuff1astdout.flush%28%29%5Cr%5Cn-%20%5Cu5176%5Cu4ed6%5Cu7684%5Cu81ea%5Cu5df1%5Cu67e5%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu7b54%5Cu6848%5Cu662fno%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu96c6%5Cu5408%5Cu4e0d%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu5728%24%5B2%2C3%5D%24%5Cu4e4b%5Cu95f4%5Cu7684%5Cu7ebf%5Cu6bb5%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%24%5B2%2C3%5D%24%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%24%5B2%2C4%5D%24%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%24%5B2%2C3%5D%24%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%24%5B2%2C4%5D%24%5Cuff0c%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%24%5B2%2C5%5D%24%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu96c6%5Cu5408%5Cu4e0d%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu5728%24%5B3%5Cuff0c6%5D%24%5Cu4e4b%5Cu95f4%5Cu7684%5Cu7ebf%5Cu6bb5%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu7b2c%5Cu4e94%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%24%5B2%2C4%5D%24%5Cuff0c%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%24%5B2%2C5%5D%24%5Cuff0c%5Cu7b2c%5Cu56db%5Cu4e2a%5Cu96c6%5Cu5408%5Cu5305%5Cu542b%24%5B7%2C9%5D%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A179%2C%22totalAccepted%22%3A66%2C%22pid%22%3A%22CF1080F%22%2C%22title%22%3A%22Katya%20and%20Segments%20Sets%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A86182%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A32312%2C%22name%22%3A%22CF1080F%20Katya%20and%20Segments%20Sets%22%2C%22slug%22%3A%22CF1080F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2839%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5Dmiddle%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3600%22%2C%22title%22%3A%22%5Cu968f%5Cu673a%5Cu6570%5Cu751f%5Cu6210%5Cu5668%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4735%22%2C%22title%22%3A%22%5Cu6700%5Cu5927%5Cu5f02%5Cu6216%5Cu548c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1073G%22%2C%22title%22%3A%22Yet%20Another%20LCP%20Problem%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1080C%22%2C%22title%22%3A%22Masha%20and%20two%20friends%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Katya%20and%20Segments%20Sets%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Katya and Segments Sets</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+给你n个集合，集合中的元素是线段，每个线段用左右端点$[l,r],l\le r$描述。每个集合可以包含任意个线段（包括0个），允许存在相同的线段
+有m个询问，每个询问形如$a,b,x,y$，问对于编号在$[a,b]$之间的集合，是不是每一个都包含一个满足$x\le l\le r\le y$的线段，是则输出"yes"，否则输出"no"
+强制在线，处理完每个询问后立刻输出结果，然后才能读入下一个询问（具体见输出格式）
+## 输入输出格式
+### 输入格式：
+第一行包含3个整数$n,m,k(1\le n,m\le 10^5,1\le k\le 3×10^5)$分别是集合数、询问数、线段个数。
+接下来$k$行每行3个整数$l,r,p(1\le l\le r\le 10^9,1\le p\le n)$表示一条线段，$l,rl,rl,r$为左右端点，$p$为它所属的集合
+接下来$m$行每行四个整数$a,b,x,y(1\le a\le b\le n,1\le x\le y\le 10^9)$表示一个询问，$a,b,x,y$的含义如题目描述所示
+### 输出格式：
+对每个询问输出"yes"或"no"，每个询问占一行
+每次输出后需要刷新输出缓存，否则会TLE
+方法如下：
+- C++: fflush(stdout)或cout.flush()
+- Java：System.out.flush()
+- Pascal：flush(output)
+- Python：stdout.flush()
+- 其他的自己查
+## 说明
+第一个询问答案是no，因为第二个集合不包含一个在$[2,3]$之间的线段
+对于第二个询问，第一个集合包含$[2,3]$，第二个集合包含$[2,4]$
+对于第三个询问，第一个集合包含$[2,3]$，第二个集合包含$[2,4]$，第三个集合包含$[2,5]$
+对于第四个询问，第二个集合不包含一个在$[3，6]$之间的线段
+对于第五个询问，第二个集合包含$[2,4]$，第三个集合包含$[2,5]$，第四个集合包含$[7,9]$</div>
+<h2>题目描述</h2>
+<div>It is a very important day for Katya. She has a test in a programming class. As always, she was given an interesting problem that she solved very fast. Can you solve that problem?
+You are given $ n $ ordered segments sets. Each segment can be represented as a pair of two integers $ [l, r] $ where $ l\leq r $ . Each set can contain an arbitrary number of segments (even $ 0 $ ). It is possible that some segments are equal.
+You are also given $ m $ queries, each of them can be represented as four numbers: $ a, b, x, y $ . For each segment, find out whether it is true that each set $ p $ ( $ a\leq p\leq b $ ) contains at least one segment $ [l, r] $ that lies entirely on the segment $ [x, y] $ , that is $ x\leq l\leq r\leq y $ .
+Find out the answer to each query.
+Note that you need to solve this problem online. That is, you will get a new query only after you print the answer for the previous query.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ , and $ k $ $ (1\leq n,m\leq 10^5, 1\leq k\leq 3\cdot10^5) $ — the number of sets, queries, and segments respectively.
+Each of the next $ k $ lines contains three integers $ l $ , $ r $ , and $ p $ $ (1\leq l\leq r\leq 10^9, 1\leq p\leq n) $ — the limits of the segment and the index of a set, to which this segment belongs.
+Each of the next $ m $ lines contains four integers $ a, b, x, y $ $ (1\leq a\leq b\leq n, 1\leq x\leq y\leq 10^9) $ — the description of the query.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query, print "yes" or "no" in a new line.
+Interaction
+After printing a query, do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+- fflush(stdout) or cout.flush() in C++;
+- System.out.flush() in Java;
+- flush(output) in Pascal;
+- stdout.flush() in Python;
+- see documentation for other languages.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5 5 9
+3 6 3
+1 3 1
+2 4 2
+1 2 3
+4 6 5
+2 5 3
+7 9 4
+2 3 1
+4 10 4
+1 2 2 3
+1 2 2 4
+1 3 1 5
+2 3 3 6
+2 4 2 9
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+no
+yes
+yes
+no
+yes
+</code></pre>
+<h2>说明</h2>
+<div>For the first query, the answer is negative since the second set does not contain a segment that lies on the segment $ [2, 3] $ .
+In the second query, the first set contains $ [2, 3] $ , and the second set contains $ [2, 4] $ .
+In the third query, the first set contains $ [2, 3] $ , the second set contains $ [2, 4] $ , and the third set contains $ [2, 5] $ .
+In the fourth query, the second set does not contain a segment that lies on the segment $ [3, 6] $ .
+In the fifth query, the second set contains $ [2, 4] $ , the third set contains $ [2, 5] $ , and the fourth contains $ [7, 9] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

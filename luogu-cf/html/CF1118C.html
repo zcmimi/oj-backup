@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Palindromic Matrix - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401911:klKGrhOsLH3IICFK4dgWh/108KR0VlKTjFhDgk9MH9k=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20call%20some%20square%20matrix%20with%20integer%20values%20in%20its%20cells%20palindromic%20if%20it%20doesn%27t%20change%20after%20the%20order%20of%20rows%20is%20reversed%20and%20it%20doesn%27t%20change%20after%20the%20order%20of%20columns%20is%20reversed.%5Cn%5CnFor%20example%2C%20the%20following%20matrices%20are%20palindromic%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1118C%5C%2F1dd62ecf9cdea049a4333ac1caa6ce864c1d5fc5.png%29The%20following%20matrices%20are%20not%20palindromic%20because%20they%20change%20after%20the%20order%20of%20rows%20is%20reversed%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1118C%5C%2F2143b8b786a0f045139a90d99c3f905c3e226fac.png%29The%20following%20matrices%20are%20not%20palindromic%20because%20they%20change%20after%20the%20order%20of%20columns%20is%20reversed%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1118C%5C%2Ffe33a9bda586416fffd510345806131041ef4caa.png%29You%20are%20given%20%24%20n%5E2%20%24%20integers.%20Put%20them%20into%20a%20matrix%20of%20%24%20n%20%24%20rows%20and%20%24%20n%20%24%20columns%20so%20that%20each%20number%20is%20used%20exactly%20once%2C%20each%20cell%20contains%20exactly%20one%20number%20and%20the%20resulting%20matrix%20is%20palindromic.%20If%20there%20are%20multiple%20answers%2C%20print%20any.%20If%20there%20is%20no%20solution%2C%20print%20%5C%22NO%5C%22.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2020%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%5E2%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_%7Bn%5E2%7D%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%201000%20%24%20%29%20%5Cu2014%20the%20numbers%20to%20put%20into%20a%20matrix%20of%20%24%20n%20%24%20rows%20and%20%24%20n%20%24%20columns.%22%2C%22outputFormat%22%3A%22If%20it%20is%20possible%20to%20put%20all%20of%20the%20%24%20n%5E2%20%24%20numbers%20into%20a%20matrix%20of%20%24%20n%20%24%20rows%20and%20%24%20n%20%24%20columns%20so%20that%20each%20number%20is%20used%20exactly%20once%2C%20each%20cell%20contains%20exactly%20one%20number%20and%20the%20resulting%20matrix%20is%20palindromic%2C%20then%20print%20%5C%22YES%5C%22.%20Then%20print%20%24%20n%20%24%20lines%20with%20%24%20n%20%24%20space-separated%20numbers%20%5Cu2014%20the%20resulting%20matrix.%5Cn%5CnIf%20it%27s%20impossible%20to%20construct%20any%20matrix%2C%20then%20print%20%5C%22NO%5C%22.%5Cn%5CnYou%20can%20print%20each%20letter%20in%20any%20case%20%28upper%20or%20lower%29.%20For%20example%2C%20%5C%22YeS%5C%22%2C%20%5C%22no%5C%22%20and%20%5C%22yES%5C%22%20are%20all%20acceptable.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%5Cn1%208%208%201%202%202%202%202%202%202%202%202%201%208%208%201%5Cn%22%2C%22%5CnYES%5Cn1%202%202%201%5Cn8%202%202%208%5Cn8%202%202%208%5Cn1%202%202%201%5Cn%22%5D%2C%5B%22%5Cn3%5Cn1%201%201%201%201%203%203%203%203%5Cn%22%2C%22%5CnYES%5Cn1%203%201%5Cn3%201%203%5Cn1%203%201%5Cn%22%5D%2C%5B%22%5Cn4%5Cn1%202%201%209%208%204%203%208%208%203%204%208%209%202%201%201%5Cn%22%2C%22%5CnNO%5Cn%22%5D%2C%5B%22%5Cn1%5Cn10%5Cn%22%2C%22%5CnYES%5Cn10%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Note%20that%20there%20exist%20multiple%20answers%20for%20the%20first%20two%20examples.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1118%5C%2FC%22%2C%22id%22%3A%221118C%22%7D%2C%22translation%22%3A%22%5Cu4e00%5Cu4e2a%5Cu77e9%5Cu9635%5Cu5982%5Cu679c%5Cu884c%5Cu7684%5Cu987a%5Cu5e8f%5Cu98a0%5Cu5012%5Cu540e%5Cu4e0d%5Cu6539%5Cu53d8%5Cuff0c%5Cu5217%5Cu7684%5Cu987a%5Cu5e8f%5Cu98a0%5Cu5012%5Cu540e%5Cu4e5f%5Cu4e0d%5Cu6539%5Cu53d8%5Cuff0c%5Cu6211%5Cu4eec%5Cu5c31%5Cu79f0%5Cu5176%5Cu5355%5Cu5143%5Cu683c%5Cu4e2d%5Cu6709%5Cu6574%5Cu6570%5Cu503c%5Cu7684%5Cu5e73%5Cu65b9%5Cu77e9%5Cu9635%5Cu4e3a%5Cu56de%5Cu6587%5Cu77e9%5Cu9635%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2an%2An%5Cu7684%5Cu77e9%5Cu9635%5Cuff0c%5Cu5982%5Cu679c%5Cu662f%5Cu56de%5Cu6587%5Cu77e9%5Cu9635%5Cuff0c%5Cu5219%5Cu8f93%5Cu51faYES%5Cu548c%5Cu6240%5Cu6709%5Cu7b54%5Cu6848%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51faNO%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A41%2C%22totalAccepted%22%3A31%2C%22pid%22%3A%22CF1118C%22%2C%22title%22%3A%22Palindromic%20Matrix%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Palindromic%20Matrix%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Palindromic Matrix</h1>
+<h2>题意翻译</h2>
+<div>一个矩阵如果行的顺序颠倒后不改变，列的顺序颠倒后也不改变，我们就称其单元格中有整数值的平方矩阵为回文矩阵。
+现在给你一个n*n的矩阵，如果是回文矩阵，则输出YES和所有答案，否则输出NO。</div>
+<h2>题目描述</h2>
+<div>Let's call some square matrix with integer values in its cells palindromic if it doesn't change after the order of rows is reversed and it doesn't change after the order of columns is reversed.
+For example, the following matrices are palindromic:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1118C/1dd62ecf9cdea049a4333ac1caa6ce864c1d5fc5.png)The following matrices are not palindromic because they change after the order of rows is reversed:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1118C/2143b8b786a0f045139a90d99c3f905c3e226fac.png)The following matrices are not palindromic because they change after the order of columns is reversed:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1118C/fe33a9bda586416fffd510345806131041ef4caa.png)You are given $ n^2 $ integers. Put them into a matrix of $ n $ rows and $ n $ columns so that each number is used exactly once, each cell contains exactly one number and the resulting matrix is palindromic. If there are multiple answers, print any. If there is no solution, print "NO".</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ ( $ 1 \le n \le 20 $ ).
+The second line contains $ n^2 $ integers $ a_1, a_2, \dots, a_{n^2} $ ( $ 1 \le a_i \le 1000 $ ) — the numbers to put into a matrix of $ n $ rows and $ n $ columns.</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is possible to put all of the $ n^2 $ numbers into a matrix of $ n $ rows and $ n $ columns so that each number is used exactly once, each cell contains exactly one number and the resulting matrix is palindromic, then print "YES". Then print $ n $ lines with $ n $ space-separated numbers — the resulting matrix.
+If it's impossible to construct any matrix, then print "NO".
+You can print each letter in any case (upper or lower). For example, "YeS", "no" and "yES" are all acceptable.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4
+1 8 8 1 2 2 2 2 2 2 2 2 1 8 8 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+YES
+1 2 2 1
+8 2 2 8
+8 2 2 8
+1 2 2 1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3
+1 1 1 1 1 3 3 3 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+YES
+1 3 1
+3 1 3
+1 3 1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+4
+1 2 1 9 8 4 3 8 8 3 4 8 9 2 1 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+NO
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+1
+10
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+YES
+10 
+</code></pre>
+<h2>说明</h2>
+<div>Note that there exist multiple answers for the first two examples.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

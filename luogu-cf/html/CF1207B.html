@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Square Filling - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403107:MYpHhsUXoWtDLcO6rx1PavZLI/zrQcSbIRot+NPbFrk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20two%20matrices%20%24%20A%20%24%20and%20%24%20B%20%24%20.%20Each%20matrix%20contains%20exactly%20%24%20n%20%24%20rows%20and%20%24%20m%20%24%20columns.%20Each%20element%20of%20%24%20A%20%24%20is%20either%20%24%200%20%24%20or%20%24%201%20%24%20%3B%20each%20element%20of%20%24%20B%20%24%20is%20initially%20%24%200%20%24%20.%5Cn%5CnYou%20may%20perform%20some%20operations%20with%20matrix%20%24%20B%20%24%20.%20During%20each%20operation%2C%20you%20choose%20any%20submatrix%20of%20%24%20B%20%24%20having%20size%20%24%202%20%5C%5Ctimes%202%20%24%20%2C%20and%20replace%20every%20element%20in%20the%20chosen%20submatrix%20with%20%24%201%20%24%20.%20In%20other%20words%2C%20you%20choose%20two%20integers%20%24%20x%20%24%20and%20%24%20y%20%24%20such%20that%20%24%201%20%5C%5Cle%20x%20%3C%20n%20%24%20and%20%24%201%20%5C%5Cle%20y%20%3C%20m%20%24%20%2C%20and%20then%20set%20%24%20B_%7Bx%2C%20y%7D%20%24%20%2C%20%24%20B_%7Bx%2C%20y%20%2B%201%7D%20%24%20%2C%20%24%20B_%7Bx%20%2B%201%2C%20y%7D%20%24%20and%20%24%20B_%7Bx%20%2B%201%2C%20y%20%2B%201%7D%20%24%20to%20%24%201%20%24%20.%5Cn%5CnYour%20goal%20is%20to%20make%20matrix%20%24%20B%20%24%20equal%20to%20matrix%20%24%20A%20%24%20.%20Two%20matrices%20%24%20A%20%24%20and%20%24%20B%20%24%20are%20equal%20if%20and%20only%20if%20every%20element%20of%20matrix%20%24%20A%20%24%20is%20equal%20to%20the%20corresponding%20element%20of%20matrix%20%24%20B%20%24%20.%5Cn%5CnIs%20it%20possible%20to%20make%20these%20matrices%20equal%3F%20If%20it%20is%2C%20you%20have%20to%20come%20up%20with%20a%20sequence%20of%20operations%20that%20makes%20%24%20B%20%24%20equal%20to%20%24%20A%20%24%20.%20Note%20that%20you%20don%27t%20have%20to%20minimize%20the%20number%20of%20operations.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%20%5C%5Cle%20n%2C%20m%20%5C%5Cle%2050%20%24%20%29.%5Cn%5CnThen%20%24%20n%20%24%20lines%20follow%2C%20each%20containing%20%24%20m%20%24%20integers.%20The%20%24%20j%20%24%20-th%20integer%20in%20the%20%24%20i%20%24%20-th%20line%20is%20%24%20A_%7Bi%2C%20j%7D%20%24%20.%20Each%20integer%20is%20either%20%24%200%20%24%20or%20%24%201%20%24%20.%22%2C%22outputFormat%22%3A%22If%20it%20is%20impossible%20to%20make%20%24%20B%20%24%20equal%20to%20%24%20A%20%24%20%2C%20print%20one%20integer%20%24%20-1%20%24%20.%5Cn%5CnOtherwise%2C%20print%20any%20sequence%20of%20operations%20that%20transforms%20%24%20B%20%24%20into%20%24%20A%20%24%20in%20the%20following%20format%3A%20the%20first%20line%20should%20contain%20one%20integer%20%24%20k%20%24%20%5Cu2014%20the%20number%20of%20operations%2C%20and%20then%20%24%20k%20%24%20lines%20should%20follow%2C%20each%20line%20containing%20two%20integers%20%24%20x%20%24%20and%20%24%20y%20%24%20for%20the%20corresponding%20operation%20%28set%20%24%20B_%7Bx%2C%20y%7D%20%24%20%2C%20%24%20B_%7Bx%2C%20y%20%2B%201%7D%20%24%20%2C%20%24%20B_%7Bx%20%2B%201%2C%20y%7D%20%24%20and%20%24%20B_%7Bx%20%2B%201%2C%20y%20%2B%201%7D%20%24%20to%20%24%201%20%24%20%29.%20The%20condition%20%24%200%20%5C%5Cle%20k%20%5C%5Cle%202500%20%24%20should%20hold.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%203%5Cn1%201%201%5Cn1%201%201%5Cn0%201%201%5Cn%22%2C%22%5Cn3%5Cn1%201%5Cn1%202%5Cn2%202%5Cn%22%5D%2C%5B%22%5Cn3%203%5Cn1%200%201%5Cn1%200%201%5Cn0%200%200%5Cn%22%2C%22%5Cn-1%5Cn%22%5D%2C%5B%22%5Cn3%202%5Cn0%200%5Cn0%200%5Cn0%200%5Cn%22%2C%22%5Cn0%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20sequence%20of%20operations%20in%20the%20first%20example%3A%5Cn%5Cn%20%24%20%5C%5Cbegin%7Bmatrix%7D%200%20%26%200%20%26%200%20%26%20%26%201%20%26%201%20%26%200%20%26%20%26%201%20%26%201%20%26%201%20%26%20%26%201%20%26%201%20%26%201%20%5C%5C%5C%5C%200%20%26%200%20%26%200%20%26%20%5C%5Crightarrow%20%26%201%20%26%201%20%26%200%20%26%20%5C%5Crightarrow%20%26%201%20%26%201%20%26%201%20%26%20%5C%5Crightarrow%20%26%201%20%26%201%20%26%201%20%5C%5C%5C%5C%200%20%26%200%20%26%200%20%26%20%26%200%20%26%200%20%26%200%20%26%20%26%200%20%26%200%20%26%200%20%26%20%26%200%20%26%201%20%26%201%20%5C%5Cend%7Bmatrix%7D%20%24%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1207%5C%2FB%22%2C%22id%22%3A%221207B%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu5168%5Cu96f6%5Cu7684%24n%5Cu00d7m%24%5Cu77e9%5Cu9635%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu53ef%5Cu4ee5%5Cu9009%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu70b9%24%28x%2Cy%29%7C1%5Cu2264x%3Cn%2C1%5Cu2264y%3Cm%24%5Cuff0c%5Cu628a%24%28x%2Cy%29%28x%2B1%2Cy%29%28x%2Cy%2B1%29%28x%2B1%2Cy%2B1%29%24%5Cu5747%5Cu6539%5Cu6210%241%24%5Cuff0c%5Cu6c42%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cu5e8f%5Cu5217%5Cu628a%5Cu8fd9%5Cu4e2a%5Cu5168%5Cu96f6%5Cu77e9%5Cu9635%5Cu8f6c%5Cu5316%5Cu4e3a%5Cu76ee%5Cu6807%5Cu77e9%5Cu9635%5Cuff0c%5Cu4f60%5Cu4e0d%5Cu5fc5%5Cu6700%5Cu5c0f%5Cu5316%5Cu6b65%5Cu9aa4%20%20%20%20%20%20%20%20%20%20%5Cr%5Cn%242%5Cu2264n%2Cm%5Cu226450%24%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4f60%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6570%5Cu91cf%5Cu6700%5Cu591a%5Cu4e3a%242500%24%20%20%20%20%20%20%20%20%20%5Cr%5Cn%5Cu8f93%5Cu5165%24n%2Cm%24%5Cu548c%5Cu8be5%5Cu76ee%5Cu6807%5Cu77e9%5Cu9635%5Cuff0c%5Cu82e5%5Cu4e0d%5Cu5b58%5Cu5728%5Cu5408%5Cu6cd5%5Cu65b9%5Cu6848%5Cuff0c%5Cu8f93%5Cu51fa%24-1%24%20%20%20%20%5Cr%5Cn%5Cu5426%5Cu5219%5Cu5148%5Cu8f93%5Cu51fa%5Cu64cd%5Cu4f5c%5Cu6570%5Cu91cf%5Cuff0c%5Cu7136%5Cu540e%5Cu6bcf%5Cu884c%5Cu8f93%5Cu51fa%24%28x_i%2Cy_i%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu672c%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu9009%5Cu4e2d%24%28x%2Cy%29%24%20%20%20%20%20%20%20%20%20%20%20%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A159%2C%22totalAccepted%22%3A121%2C%22pid%22%3A%22CF1207B%22%2C%22title%22%3A%22Square%20Filling%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P5514%22%2C%22title%22%3A%22%5BMtOI2019%5D%5Cu6c38%5Cu591c%5Cu7684%5Cu62a5%5Cu5e94%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1207E%22%2C%22title%22%3A%22XOR%20Guessing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207D%22%2C%22title%22%3A%22Number%20Of%20Permutations%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207C%22%2C%22title%22%3A%22Gas%20Pipeline%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207A%22%2C%22title%22%3A%22There%20Are%20Two%20Types%20Of%20Burgers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Square%20Filling%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Square Filling</h1>
+<h2>题意翻译</h2>
+<div>给定一个全零的$n×m$矩阵，每次可以选定一个点$(x,y)|1≤x<n,1≤y<m$，把$(x,y)(x+1,y)(x,y+1)(x+1,y+1)$均改成$1$，求一个操作序列把这个全零矩阵转化为目标矩阵，你不必最小化步骤 $2≤n,m≤50$，所以你的操作数量最多为$2500$ 输入$n,m$和该目标矩阵，若不存在合法方案，输出$-1$ 否则先输出操作数量，然后每行输出$(x_i,y_i)$，表示本次操作选中$(x,y)$ </div>
+<h2>题目描述</h2>
+<div>You are given two matrices $ A $ and $ B $ . Each matrix contains exactly $ n $ rows and $ m $ columns. Each element of $ A $ is either $ 0 $ or $ 1 $ ; each element of $ B $ is initially $ 0 $ .
+You may perform some operations with matrix $ B $ . During each operation, you choose any submatrix of $ B $ having size $ 2 \times 2 $ , and replace every element in the chosen submatrix with $ 1 $ . In other words, you choose two integers $ x $ and $ y $ such that $ 1 \le x < n $ and $ 1 \le y < m $ , and then set $ B_{x, y} $ , $ B_{x, y + 1} $ , $ B_{x + 1, y} $ and $ B_{x + 1, y + 1} $ to $ 1 $ .
+Your goal is to make matrix $ B $ equal to matrix $ A $ . Two matrices $ A $ and $ B $ are equal if and only if every element of matrix $ A $ is equal to the corresponding element of matrix $ B $ .
+Is it possible to make these matrices equal? If it is, you have to come up with a sequence of operations that makes $ B $ equal to $ A $ . Note that you don't have to minimize the number of operations.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 2 \le n, m \le 50 $ ).
+Then $ n $ lines follow, each containing $ m $ integers. The $ j $ -th integer in the $ i $ -th line is $ A_{i, j} $ . Each integer is either $ 0 $ or $ 1 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is impossible to make $ B $ equal to $ A $ , print one integer $ -1 $ .
+Otherwise, print any sequence of operations that transforms $ B $ into $ A $ in the following format: the first line should contain one integer $ k $ — the number of operations, and then $ k $ lines should follow, each line containing two integers $ x $ and $ y $ for the corresponding operation (set $ B_{x, y} $ , $ B_{x, y + 1} $ , $ B_{x + 1, y} $ and $ B_{x + 1, y + 1} $ to $ 1 $ ). The condition $ 0 \le k \le 2500 $ should hold.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3 3
+1 1 1
+1 1 1
+0 1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+1 1
+1 2
+2 2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3 3
+1 0 1
+1 0 1
+0 0 0
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+-1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+3 2
+0 0
+0 0
+0 0
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+0
+</code></pre>
+<h2>说明</h2>
+<div>The sequence of operations in the first example:
+$ \begin{matrix} 0 & 0 & 0 & & 1 & 1 & 0 & & 1 & 1 & 1 & & 1 & 1 & 1 \\ 0 & 0 & 0 & \rightarrow & 1 & 1 & 0 & \rightarrow & 1 & 1 & 1 & \rightarrow & 1 & 1 & 1 \\ 0 & 0 & 0 & & 0 & 0 & 0 & & 0 & 0 & 0 & & 0 & 1 & 1 \end{matrix} $</div>
+</article>
+</div>
+</div>
+</body>
+</html>

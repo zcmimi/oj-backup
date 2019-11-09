@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Pick Heroes - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401042:d8Yk6BJzHcCD5AAdy04T+3k46U8trZmtfBPfFSkh7rc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Don%27t%20you%20tell%20me%20what%20you%20think%20that%20I%20can%20be%5Cn%5Cn%5Cn%5CnIf%20you%20say%20that%20Arkady%20is%20a%20bit%20old-fashioned%20playing%20checkers%2C%20you%20won%27t%20be%20right.%20There%20is%20also%20a%20modern%20computer%20game%20Arkady%20and%20his%20friends%20are%20keen%20on.%20We%20won%27t%20discuss%20its%20rules%2C%20the%20only%20feature%20important%20to%20this%20problem%20is%20that%20each%20player%20has%20to%20pick%20a%20distinct%20hero%20in%20the%20beginning%20of%20the%20game.%5Cn%5CnThere%20are%20%24%202%20%24%20teams%20each%20having%20%24%20n%20%24%20players%20and%20%24%202n%20%24%20heroes%20to%20distribute%20between%20the%20teams.%20The%20teams%20take%20turns%20picking%20heroes%3A%20at%20first%2C%20the%20first%20team%20chooses%20a%20hero%20in%20its%20team%2C%20after%20that%20the%20second%20team%20chooses%20a%20hero%20and%20so%20on.%20Note%20that%20after%20a%20hero%20is%20chosen%20it%20becomes%20unavailable%20to%20both%20teams.%5Cn%5CnThe%20friends%20estimate%20the%20power%20of%20the%20%24%20i%20%24%20-th%20of%20the%20heroes%20as%20%24%20p_i%20%24%20.%20Each%20team%20wants%20to%20maximize%20the%20total%20power%20of%20its%20heroes.%20However%2C%20there%20is%20one%20exception%3A%20there%20are%20%24%20m%20%24%20pairs%20of%20heroes%20that%20are%20especially%20strong%20against%20each%20other%2C%20so%20when%20any%20team%20chooses%20a%20hero%20from%20such%20a%20pair%2C%20the%20other%20team%20must%20choose%20the%20other%20one%20on%20its%20turn.%20Each%20hero%20is%20in%20at%20most%20one%20such%20pair.%5Cn%5CnThis%20is%20an%20interactive%20problem.%20You%20are%20to%20write%20a%20program%20that%20will%20optimally%20choose%20the%20heroes%20for%20one%20team%2C%20while%20the%20jury%27s%20program%20will%20play%20for%20the%20other%20team.%20Note%20that%20the%20jury%27s%20program%20may%20behave%20inefficiently%2C%20in%20this%20case%20you%20have%20to%20take%20the%20opportunity%20and%20still%20maximize%20the%20total%20power%20of%20your%20team.%20Formally%2C%20if%20you%20ever%20have%20chance%20to%20reach%20the%20total%20power%20of%20%24%20q%20%24%20or%20greater%20regardless%20of%20jury%27s%20program%20choices%2C%20you%20must%20get%20%24%20q%20%24%20or%20greater%20to%20pass%20a%20test.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2010%5E3%20%24%20%2C%20%24%200%20%5C%5Cle%20m%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20the%20number%20of%20players%20in%20one%20team%20and%20the%20number%20of%20special%20pairs%20of%20heroes.%5Cn%5CnThe%20second%20line%20contains%20%24%202n%20%24%20integers%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_%7B2n%7D%20%24%20%28%20%24%201%20%5C%5Cle%20p_i%20%5C%5Cle%2010%5E3%20%24%20%29%20%5Cu2014%20the%20powers%20of%20the%20heroes.%5Cn%5CnEach%20of%20the%20next%20%24%20m%20%24%20lines%20contains%20two%20integer%20%24%20a%20%24%20and%20%24%20b%20%24%20%28%20%24%201%20%5C%5Cle%20a%2C%20b%20%5C%5Cle%202n%20%24%20%2C%20%24%20a%20%5C%5Cne%20b%20%24%20%29%20%5Cu2014%20a%20pair%20of%20heroes%20that%20are%20especially%20strong%20against%20each%20other.%20It%20is%20guaranteed%20that%20each%20hero%20appears%20at%20most%20once%20in%20this%20list.%5Cn%5CnThe%20next%20line%20contains%20a%20single%20integer%20%24%20t%20%24%20%28%20%24%201%20%5C%5Cle%20t%20%5C%5Cle%202%20%24%20%29%20%5Cu2014%20the%20team%20you%20are%20to%20play%20for.%20If%20%24%20t%20%3D%201%20%24%20%2C%20the%20first%20turn%20is%20yours%2C%20otherwise%20you%20have%20the%20second%20turn.%5Cn%5CnHacks%5Cn%5CnIn%20order%20to%20hack%2C%20use%20the%20format%20described%20above%20with%20one%20additional%20line.%20In%20this%20line%20output%20%24%202n%20%24%20distinct%20integers%20from%20%24%201%20%24%20to%20%24%202n%20%24%20%5Cu2014%20the%20priority%20order%20for%20the%20jury%27s%20team.%20The%20jury%27s%20team%20will%20on%20each%20turn%20select%20the%20first%20possible%20hero%20from%20this%20list.%20Here%20possible%20means%20that%20it%20is%20not%20yet%20taken%20and%20does%20not%20contradict%20the%20rules%20about%20special%20pair%20of%20heroes.%22%2C%22outputFormat%22%3A%22When%20it%20is%20your%20turn%2C%20print%20a%20single%20integer%20%24%20x%20%24%20%28%20%24%201%20%5C%5Cle%20x%20%5C%5Cle%202n%20%24%20%29%20%5Cu2014%20the%20index%20of%20the%20hero%20chosen%20by%20you.%20Note%20that%20you%20can%27t%20choose%20a%20hero%20previously%20chosen%20by%20either%20you%20of%20the%20other%20player%2C%20and%20you%20must%20follow%20the%20rules%20about%20special%20pairs%20of%20heroes.%5Cn%5CnWhen%20it%20is%20the%20other%20team%27s%20turn%2C%20read%20a%20line%20containing%20a%20single%20integer%20%24%20x%20%24%20%28%20%24%201%20%5C%5Cle%20x%20%5C%5Cle%202n%20%24%20%29%20%5Cu2014%20the%20index%20of%20the%20hero%20chosen%20by%20the%20other%20team.%20It%20is%20guaranteed%20that%20this%20index%20is%20not%20chosen%20before%20and%20that%20the%20other%20team%20also%20follows%20the%20rules%20about%20special%20pairs%20of%20heroes.%5Cn%5CnAfter%20the%20last%20turn%20you%20should%20terminate%20without%20printing%20anything.%5Cn%5CnAfter%20printing%20your%20choice%20do%20not%20forget%20to%20output%20end%20of%20line%20and%20flush%20the%20output.%20Otherwise%20you%20will%20get%20Idleness%20limit%20exceeded.%20To%20do%20this%2C%20use%3A%5Cn%5Cn-%20fflush%28stdout%29%20or%20cout.flush%28%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20see%20documentation%20for%20other%20languages.%5Cn%5CnJury%27s%20answer%20%24%20-1%20%24%20instead%20of%20a%20valid%20choice%20means%20that%20you%20made%20an%20invalid%20turn.%20Exit%20immediately%20after%20receiving%20%24%20-1%20%24%20and%20you%20will%20see%20Wrong%20answer%20verdict.%20Otherwise%20you%20can%20get%20an%20arbitrary%20verdict%20because%20your%20solution%20will%20continue%20to%20read%20from%20a%20closed%20stream.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%201%5Cn1%202%203%204%205%206%5Cn2%206%5Cn1%5Cn%5Cn2%5Cn%5Cn4%5Cn%5Cn1%5Cn%22%2C%22%5Cn%5Cn%5Cn%5Cn%5Cn6%5Cn%5Cn5%5Cn%5Cn3%5Cn%22%5D%2C%5B%22%5Cn3%201%5Cn1%202%203%204%205%206%5Cn1%205%5Cn2%5Cn6%5Cn%5Cn1%5Cn%5Cn3%5Cn%22%2C%22%5Cn%5Cn%5Cn%5Cn%5Cn%5Cn5%5Cn%5Cn4%5Cn%5Cn2%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20the%20first%20turn%20is%20yours.%20In%20example%2C%20you%20choose%20%24%206%20%24%20%2C%20the%20other%20team%20is%20forced%20to%20reply%20with%20%24%202%20%24%20.%20You%20choose%20%24%205%20%24%20%2C%20the%20other%20team%20chooses%20%24%204%20%24%20.%20Finally%2C%20you%20choose%20%24%203%20%24%20and%20the%20other%20team%20choose%20%24%201%20%24%20.%5Cn%5CnIn%20the%20second%20example%20you%20have%20the%20second%20turn.%20The%20other%20team%20chooses%20%24%206%20%24%20%2C%20you%20choose%20%24%205%20%24%20%2C%20forcing%20the%20other%20team%20to%20choose%20%24%201%20%24%20.%20Now%20you%20choose%20%24%204%20%24%20%2C%20the%20other%20team%20chooses%20%24%203%20%24%20and%20you%20choose%20%24%202%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1056%5C%2FC%22%2C%22id%22%3A%221056C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A24%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF1056C%22%2C%22title%22%3A%22Pick%20Heroes%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Pick%20Heroes%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Pick Heroes</h1>
+<h2>题目描述</h2>
+<div>Don't you tell me what you think that I can be
+If you say that Arkady is a bit old-fashioned playing checkers, you won't be right. There is also a modern computer game Arkady and his friends are keen on. We won't discuss its rules, the only feature important to this problem is that each player has to pick a distinct hero in the beginning of the game.
+There are $ 2 $ teams each having $ n $ players and $ 2n $ heroes to distribute between the teams. The teams take turns picking heroes: at first, the first team chooses a hero in its team, after that the second team chooses a hero and so on. Note that after a hero is chosen it becomes unavailable to both teams.
+The friends estimate the power of the $ i $ -th of the heroes as $ p_i $ . Each team wants to maximize the total power of its heroes. However, there is one exception: there are $ m $ pairs of heroes that are especially strong against each other, so when any team chooses a hero from such a pair, the other team must choose the other one on its turn. Each hero is in at most one such pair.
+This is an interactive problem. You are to write a program that will optimally choose the heroes for one team, while the jury's program will play for the other team. Note that the jury's program may behave inefficiently, in this case you have to take the opportunity and still maximize the total power of your team. Formally, if you ever have chance to reach the total power of $ q $ or greater regardless of jury's program choices, you must get $ q $ or greater to pass a test.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 1 \le n \le 10^3 $ , $ 0 \le m \le n $ ) — the number of players in one team and the number of special pairs of heroes.
+The second line contains $ 2n $ integers $ p_1, p_2, \ldots, p_{2n} $ ( $ 1 \le p_i \le 10^3 $ ) — the powers of the heroes.
+Each of the next $ m $ lines contains two integer $ a $ and $ b $ ( $ 1 \le a, b \le 2n $ , $ a \ne b $ ) — a pair of heroes that are especially strong against each other. It is guaranteed that each hero appears at most once in this list.
+The next line contains a single integer $ t $ ( $ 1 \le t \le 2 $ ) — the team you are to play for. If $ t = 1 $ , the first turn is yours, otherwise you have the second turn.
+Hacks
+In order to hack, use the format described above with one additional line. In this line output $ 2n $ distinct integers from $ 1 $ to $ 2n $ — the priority order for the jury's team. The jury's team will on each turn select the first possible hero from this list. Here possible means that it is not yet taken and does not contradict the rules about special pair of heroes.</div>
+<h3>输出格式</h3>
+<br />
+<div>When it is your turn, print a single integer $ x $ ( $ 1 \le x \le 2n $ ) — the index of the hero chosen by you. Note that you can't choose a hero previously chosen by either you of the other player, and you must follow the rules about special pairs of heroes.
+When it is the other team's turn, read a line containing a single integer $ x $ ( $ 1 \le x \le 2n $ ) — the index of the hero chosen by the other team. It is guaranteed that this index is not chosen before and that the other team also follows the rules about special pairs of heroes.
+After the last turn you should terminate without printing anything.
+After printing your choice do not forget to output end of line and flush the output. Otherwise you will get Idleness limit exceeded. To do this, use:
+- fflush(stdout) or cout.flush() in C++;
+- System.out.flush() in Java;
+- flush(output) in Pascal;
+- stdout.flush() in Python;
+- see documentation for other languages.
+Jury's answer $ -1 $ instead of a valid choice means that you made an invalid turn. Exit immediately after receiving $ -1 $ and you will see Wrong answer verdict. Otherwise you can get an arbitrary verdict because your solution will continue to read from a closed stream.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3 1
+1 2 3 4 5 6
+2 6
+1
+
+2
+
+4
+
+1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+
+
+
+
+6
+
+5
+
+3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3 1
+1 2 3 4 5 6
+1 5
+2
+6
+
+1
+
+3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+
+
+
+
+
+5
+
+4
+
+2
+</code></pre>
+<h2>说明</h2>
+<div>In the first example the first turn is yours. In example, you choose $ 6 $ , the other team is forced to reply with $ 2 $ . You choose $ 5 $ , the other team chooses $ 4 $ . Finally, you choose $ 3 $ and the other team choose $ 1 $ .
+In the second example you have the second turn. The other team chooses $ 6 $ , you choose $ 5 $ , forcing the other team to choose $ 1 $ . Now you choose $ 4 $ , the other team chooses $ 3 $ and you choose $ 2 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

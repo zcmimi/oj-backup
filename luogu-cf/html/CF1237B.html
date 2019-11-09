@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Balanced Tunnel - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403540:2bbX/HCUiLZoqdT0YRns2TlXAZ0ORPylTBUhUkYoTV0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Consider%20a%20tunnel%20on%20a%20one-way%20road.%20During%20a%20particular%20day%2C%20%24%20n%20%24%20cars%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20entered%20and%20exited%20the%20tunnel%20exactly%20once.%20All%20the%20cars%20passed%20through%20the%20tunnel%20at%20constant%20speeds.%5Cn%5CnA%20traffic%20enforcement%20camera%20is%20mounted%20at%20the%20tunnel%20entrance.%20Another%20traffic%20enforcement%20camera%20is%20mounted%20at%20the%20tunnel%20exit.%20Perfectly%20balanced.%5Cn%5CnThanks%20to%20the%20cameras%2C%20the%20order%20in%20which%20the%20cars%20entered%20and%20exited%20the%20tunnel%20is%20known.%20No%20two%20cars%20entered%20or%20exited%20at%20the%20same%20time.%5Cn%5CnTraffic%20regulations%20prohibit%20overtaking%20inside%20the%20tunnel.%20If%20car%20%24%20i%20%24%20overtakes%20any%20other%20car%20%24%20j%20%24%20inside%20the%20tunnel%2C%20car%20%24%20i%20%24%20must%20be%20fined.%20However%2C%20each%20car%20can%20be%20fined%20at%20most%20once.%5Cn%5CnFormally%2C%20let%27s%20say%20that%20car%20%24%20i%20%24%20definitely%20overtook%20car%20%24%20j%20%24%20if%20car%20%24%20i%20%24%20entered%20the%20tunnel%20later%20than%20car%20%24%20j%20%24%20and%20exited%20the%20tunnel%20earlier%20than%20car%20%24%20j%20%24%20.%20Then%2C%20car%20%24%20i%20%24%20must%20be%20fined%20if%20and%20only%20if%20it%20definitely%20overtook%20at%20least%20one%20other%20car.%5Cn%5CnFind%20the%20number%20of%20cars%20that%20must%20be%20fined.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%2010%5E5%20%24%20%29%2C%20denoting%20the%20number%20of%20cars.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%20n%20%24%20%29%2C%20denoting%20the%20ids%20of%20cars%20in%20order%20of%20entering%20the%20tunnel.%20All%20%24%20a_i%20%24%20are%20pairwise%20distinct.%5Cn%5CnThe%20third%20line%20contains%20%24%20n%20%24%20integers%20%24%20b_1%2C%20b_2%2C%20%5C%5Cldots%2C%20b_n%20%24%20%28%20%24%201%20%5C%5Cle%20b_i%20%5C%5Cle%20n%20%24%20%29%2C%20denoting%20the%20ids%20of%20cars%20in%20order%20of%20exiting%20the%20tunnel.%20All%20%24%20b_i%20%24%20are%20pairwise%20distinct.%22%2C%22outputFormat%22%3A%22Output%20the%20number%20of%20cars%20to%20be%20fined.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%5Cn3%205%202%201%204%5Cn4%203%202%205%201%5Cn%22%2C%22%5Cn2%5Cn%22%5D%2C%5B%22%5Cn7%5Cn5%202%203%206%207%201%204%5Cn2%203%206%207%201%204%205%5Cn%22%2C%22%5Cn6%5Cn%22%5D%2C%5B%22%5Cn2%5Cn1%202%5Cn1%202%5Cn%22%2C%22%5Cn0%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20example%20is%20depicted%20below%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1237B%5C%2F7d2f6b4d3eea560d8fb835871b9aa0fd74a81766.png%29%5Cn%5CnCar%20%24%202%20%24%20definitely%20overtook%20car%20%24%205%20%24%20%2C%20while%20car%20%24%204%20%24%20definitely%20overtook%20cars%20%24%201%20%24%20%2C%20%24%202%20%24%20%2C%20%24%203%20%24%20and%20%24%205%20%24%20.%20Cars%20%24%202%20%24%20and%20%24%204%20%24%20must%20be%20fined.%5Cn%5CnIn%20the%20second%20example%20car%20%24%205%20%24%20was%20definitely%20overtaken%20by%20all%20other%20cars.%5Cn%5CnIn%20the%20third%20example%20no%20car%20must%20be%20fined.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1237%5C%2FB%22%2C%22id%22%3A%221237B%22%7D%2C%22translation%22%3A%22%5Cu60f3%5Cu8c61%5Cu4e00%5Cu4e0b%5Cu6211%5Cu4eec%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5355%5Cu5411%5Cu7684%5Cu96a7%5Cu9053%5Cu3002%5Cu5728%5Cu67d0%5Cu4e00%5Cu5929%5Cu5f53%5Cu4e2d%5Cuff0c%5Cu6709%24n%24%5Cu8f86%5Cu8f66%5Cuff08%5Cu7f16%5Cu53f7%5Cu5206%5Cu522b%5Cu4e3a%241%20%5C%5Csim%20n%24%5Cuff09%5Cu8fdb%5Cu51fa%5Cu96a7%5Cu9053%5Cu6070%5Cu597d%5Cu4e00%5Cu6b21%5Cu3002%5Cu5728%5Cu901a%5Cu8fc7%5Cu96a7%5Cu9053%5Cu7684%5Cu65f6%5Cu5019%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu8f86%5Cu8f66%5Cu90fd%5Cu8981%5Cu6309%5Cu7167%5Cu6052%5Cu5b9a%5Cu7684%5Cu901f%5Cu5ea6%5Cu884c%5Cu9a76%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu96a7%5Cu9053%5Cu5165%5Cu53e3%5Cu548c%5Cu51fa%5Cu53e3%5Cu5206%5Cu522b%5Cu6709%5Cu4e00%5Cu4e2a%5Cu4ea4%5Cu901a%5Cu6267%5Cu6cd5%5Cu6444%5Cu50cf%5Cu673a%5Cu3002%2A%2A%5Cu5b8c%5Cu7f8e%5Cu5e73%5Cu8861%5Cuff01%5Cuff01%5Cuff01%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7531%5Cu4e8e%5Cu8fd9%5Cu4e24%5Cu53f0%5Cu6444%5Cu50cf%5Cu673a%5Cu7684%5Cu5b58%5Cu5728%5Cuff0c%5Cu6211%5Cu4eec%5Cu77e5%5Cu9053%5Cu8fd9%24n%24%5Cu8f86%5Cu8f66%5Cu8fdb%5Cu5165%5Cu96a7%5Cu9053%5Cu7684%5Cu987a%5Cu5e8f%5Cu548c%5Cu79bb%5Cu5f00%5Cu96a7%5Cu9053%5Cu7684%5Cu987a%5Cu5e8f%5Cuff0c%5Cu800c%5Cu4e14%5Cu6ca1%5Cu6709%5Cu4e24%5Cu8f86%5Cu8f66%5Cu4f1a%5Cu540c%5Cu65f6%5Cu8fdb%5Cu5165%5Cu6216%5Cu8005%5Cu540c%5Cu65f6%5Cu79bb%5Cu5f00%5Cu96a7%5Cu9053%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4ea4%5Cu901a%5Cu6cd5%5Cu4e2d%5Cu7981%5Cu6b62%5Cu5728%5Cu96a7%5Cu9053%5Cu8d85%5Cu8f66%5Cuff0c%5Cu5982%5Cu679c%5Cu6c7d%5Cu8f66%24i%24%5Cu5728%5Cu96a7%5Cu9053%5Cu4e2d%5Cu8d85%5Cu8fc7%5Cu4e86%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%5Cu6c7d%5Cu8f66%24j%24%5Cuff0c%5Cu90a3%5Cu4e48%5Cu6c7d%5Cu8f66%24i%24%5Cu5c31%5Cu8981%5Cu53d7%5Cu5230%5Cu7f5a%5Cu6b3e%5Cu3002%5Cu4f46%5Cu662f%5Cu6bcf%5Cu4e00%5Cu8f86%5Cu8f66%5Cu6700%5Cu591a%5Cu53ea%5Cu4f1a%5Cu53d7%5Cu5230%5Cu4e00%5Cu6b21%5Cu7f5a%5Cu6b3e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6240%5Cu4ee5%5Cu6211%5Cu4eec%5Cu4f1a%5Cu53d1%5Cu73b0%5Cuff0c%5Cu5982%5Cu679c%5Cu6c7d%5Cu8f66%24i%24%5Cu6bd4%5Cu6c7d%5Cu8f66%24j%24%5Cu665a%5Cu8fdb%5Cu5165%5Cu96a7%5Cu9053%5Cuff0c%5Cu4f46%5Cu662f%5Cu5374%5Cu6bd4%5Cu6c7d%5Cu8f66%24j%24%5Cu65e9%5Cu79bb%5Cu5f00%5Cu96a7%5Cu9053%5Cuff0c%5Cu6c7d%5Cu8f66%24i%24%5Cu4e00%5Cu5b9a%5Cu662f%5Cu5728%5Cu96a7%5Cu9053%5Cu5f53%5Cu4e2d%5Cu8d85%5Cu8fc7%5Cu4e86%5Cu6c7d%5Cu8f66%24j%24%5Cu3002%5Cu540c%5Cu65f6%5Cuff0c%5Cu6211%5Cu4eec%5Cu53ea%5Cu4f1a%5Cu5bf9%5Cu7684%5Cu786e%5Cu5728%5Cu96a7%5Cu9053%5Cu4e2d%5Cu8d85%5Cu8fc7%5Cu5176%5Cu4ed6%5Cu6c7d%5Cu8f66%5Cuff08%24%5C%5Cge1%24%5Cu6b21%5Cuff09%5Cu7684%5Cu6c7d%5Cu8f66%5Cu8fdb%5Cu884c%5Cu7f5a%5Cu6b3e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu6211%5Cu4eec%5Cu60f3%5Cu8981%5Cu77e5%5Cu9053%5Cu4e00%5Cu5171%5Cu9700%5Cu8981%5Cu5bf9%5Cu51e0%5Cu8f86%5Cu6c7d%5Cu8f66%5Cu8fdb%5Cu884c%5Cu7f5a%5Cu6b3e%5Cu3002%5Cr%5Cn%5Cr%5Cn------%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu7b80%5Cu6d01%5Cu9898%5Cu9762%5Cuff1a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu5148%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%24n%24%5Cuff0c%5Cu4e4b%5Cu540e%5Cu7ed9%5Cu4f60%24n%24%5Cu4e2a%5Cu6570%5Cu6784%5Cu6210%5Cu5e8f%5Cu5217%24a%24%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu7684%5Cu987a%5Cu5e8f%5Cu662f%5Cu56fa%5Cu5b9a%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu518d%5Cu7ed9%5Cu51fa%24n%24%5Cu4e2a%5Cu6570%5Cu6784%5Cu6210%5Cu5e8f%5Cu5217%24b%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu5bf9%24i%2C%20j%24%5Cuff0c%5Cu5982%5Cu679c%5Cu5728%5Cu5e8f%5Cu5217%24a%24%5Cu4e2d%24j%24%5Cu5728%24i%24%5Cu4e4b%5Cu524d%5Cuff0c%5Cu4f46%5Cu662f%5Cu5728%5Cu5e8f%5Cu5217%24b%24%5Cu4e2d%24i%24%5Cu5374%5Cu5728%24j%24%5Cu4e4b%5Cu524d%5Cuff0c%24i%24%5Cu5c31%5Cu8981%5Cu88ab%5Cu6807%5Cu8bb0%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f46%5Cu662f%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6570%24i%24%5Cuff0c%5Cu4ed6%5Cu6700%5Cu591a%5Cu4f1a%5Cu88ab%5Cu6807%5Cu8bb0%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu8bf7%5Cu4f60%5Cu6c42%5Cu51fa%5Cu4e00%5Cu5171%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu6570%5Cu9700%5Cu8981%5Cu88ab%5Cu6807%5Cu8bb0%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A52%2C%22totalAccepted%22%3A51%2C%22pid%22%3A%22CF1237B%22%2C%22title%22%3A%22Balanced%20Tunnel%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1237D%22%2C%22title%22%3A%22Balanced%20Playlist%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1237C2%22%2C%22title%22%3A%22Balanced%20Removals%20%28Harder%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1237C1%22%2C%22title%22%3A%22Balanced%20Removals%20%28Easier%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1237A%22%2C%22title%22%3A%22Balanced%20Rating%20Changes%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1236A%22%2C%22title%22%3A%22Stones%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Balanced%20Tunnel%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Balanced Tunnel</h1>
+<h2>题意翻译</h2>
+<div>想象一下我们有一个单向的隧道。在某一天当中，有$n$辆车（编号分别为$1 \sim n$）进出隧道恰好一次。在通过隧道的时候，每一辆车都要按照恒定的速度行驶。
+在隧道入口和出口分别有一个交通执法摄像机。**完美平衡！！！**
+由于这两台摄像机的存在，我们知道这$n$辆车进入隧道的顺序和离开隧道的顺序，而且没有两辆车会同时进入或者同时离开隧道。
+交通法中禁止在隧道超车，如果汽车$i$在隧道中超过了任何一个汽车$j$，那么汽车$i$就要受到罚款。但是每一辆车最多只会受到一次罚款。
+所以我们会发现，如果汽车$i$比汽车$j$晚进入隧道，但是却比汽车$j$早离开隧道，汽车$i$一定是在隧道当中超过了汽车$j$。同时，我们只会对的确在隧道中超过其他汽车（$\ge1$次）的汽车进行罚款。
+现在我们想要知道一共需要对几辆汽车进行罚款。
+------
+**简洁题面：**
+先给你一个$n$，之后给你$n$个数构成序列$a$，他们的顺序是固定的。
+再给出$n$个数构成序列$b$。
+对于一对$i, j$，如果在序列$a$中$j$在$i$之前，但是在序列$b$中$i$却在$j$之前，$i$就要被标记。
+但是对于每一个数$i$，他最多会被标记。
+现在请你求出一共有多少个数需要被标记。</div>
+<h2>题目描述</h2>
+<div>Consider a tunnel on a one-way road. During a particular day, $ n $ cars numbered from $ 1 $ to $ n $ entered and exited the tunnel exactly once. All the cars passed through the tunnel at constant speeds.
+A traffic enforcement camera is mounted at the tunnel entrance. Another traffic enforcement camera is mounted at the tunnel exit. Perfectly balanced.
+Thanks to the cameras, the order in which the cars entered and exited the tunnel is known. No two cars entered or exited at the same time.
+Traffic regulations prohibit overtaking inside the tunnel. If car $ i $ overtakes any other car $ j $ inside the tunnel, car $ i $ must be fined. However, each car can be fined at most once.
+Formally, let's say that car $ i $ definitely overtook car $ j $ if car $ i $ entered the tunnel later than car $ j $ and exited the tunnel earlier than car $ j $ . Then, car $ i $ must be fined if and only if it definitely overtook at least one other car.
+Find the number of cars that must be fined.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 2 \le n \le 10^5 $ ), denoting the number of cars.
+The second line contains $ n $ integers $ a_1, a_2, \ldots, a_n $ ( $ 1 \le a_i \le n $ ), denoting the ids of cars in order of entering the tunnel. All $ a_i $ are pairwise distinct.
+The third line contains $ n $ integers $ b_1, b_2, \ldots, b_n $ ( $ 1 \le b_i \le n $ ), denoting the ids of cars in order of exiting the tunnel. All $ b_i $ are pairwise distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the number of cars to be fined.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5
+3 5 2 1 4
+4 3 2 5 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+7
+5 2 3 6 7 1 4
+2 3 6 7 1 4 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+6
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+2
+1 2
+1 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+0
+</code></pre>
+<h2>说明</h2>
+<div>The first example is depicted below:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1237B/7d2f6b4d3eea560d8fb835871b9aa0fd74a81766.png)
+Car $ 2 $ definitely overtook car $ 5 $ , while car $ 4 $ definitely overtook cars $ 1 $ , $ 2 $ , $ 3 $ and $ 5 $ . Cars $ 2 $ and $ 4 $ must be fined.
+In the second example car $ 5 $ was definitely overtaken by all other cars.
+In the third example no car must be fined.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

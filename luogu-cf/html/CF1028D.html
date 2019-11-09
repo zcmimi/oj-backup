@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Order book - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400612:+XILjG9g0TH27b8XIeuGa6fxT/FlcY+DYGaRli32xC0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20consider%20a%20simplified%20version%20of%20order%20book%20of%20some%20stock.%20The%20order%20book%20is%20a%20list%20of%20orders%20%28offers%29%20from%20people%20that%20want%20to%20buy%20or%20sell%20one%20unit%20of%20the%20stock%2C%20each%20order%20is%20described%20by%20direction%20%28BUY%20or%20SELL%29%20and%20price.%5Cn%5CnAt%20every%20moment%20of%20time%2C%20every%20SELL%20offer%20has%20higher%20price%20than%20every%20BUY%20offer.%5Cn%5CnIn%20this%20problem%20no%20two%20ever%20existed%20orders%20will%20have%20the%20same%20price.%5Cn%5CnThe%20lowest-price%20SELL%20order%20and%20the%20highest-price%20BUY%20order%20are%20called%20the%20best%20offers%2C%20marked%20with%20black%20frames%20on%20the%20picture%20below.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1028D%5C%2F413fddcebb561deb1348fbeb910f4e1fa1dc550e.png%29The%20presented%20order%20book%20says%20that%20someone%20wants%20to%20sell%20the%20product%20at%20price%20%24%2012%20%24%20and%20it%27s%20the%20best%20SELL%20offer%20because%20the%20other%20two%20have%20higher%20prices.%20The%20best%20BUY%20offer%20has%20price%20%24%2010%20%24%20.There%20are%20two%20possible%20actions%20in%20this%20orderbook%3A%5Cn%5Cn1.%20Somebody%20adds%20a%20new%20order%20of%20some%20direction%20with%20some%20price.%5Cn2.%20Somebody%20accepts%20the%20best%20possible%20SELL%20or%20BUY%20offer%20%28makes%20a%20deal%29.%20It%27s%20impossible%20to%20accept%20not%20the%20best%20SELL%20or%20BUY%20offer%20%28to%20make%20a%20deal%20at%20worse%20price%29.%20After%20someone%20accepts%20the%20offer%2C%20it%20is%20removed%20from%20the%20orderbook%20forever.%5Cn%5CnIt%20is%20allowed%20to%20add%20new%20BUY%20order%20only%20with%20prices%20less%20than%20the%20best%20SELL%20offer%20%28if%20you%20want%20to%20buy%20stock%20for%20higher%20price%2C%20then%20instead%20of%20adding%20an%20order%20you%20should%20accept%20the%20best%20SELL%20offer%29.%20Similarly%2C%20one%20couldn%27t%20add%20a%20new%20SELL%20order%20with%20price%20less%20or%20equal%20to%20the%20best%20BUY%20offer.%20For%20example%2C%20you%20can%27t%20add%20a%20new%20offer%20%5C%22SELL%20%24%2020%20%24%20%5C%22%20if%20there%20is%20already%20an%20offer%20%5C%22BUY%20%24%2020%20%24%20%5C%22%20or%20%5C%22BUY%20%24%2025%20%24%20%5C%22%20%5Cu2014%20in%20this%20case%20you%20just%20accept%20the%20best%20BUY%20offer.%5Cn%5CnYou%20have%20a%20damaged%20order%20book%20log%20%28in%20the%20beginning%20the%20are%20no%20orders%20in%20book%29.%20Every%20action%20has%20one%20of%20the%20two%20types%3A%5Cn%5Cn1.%20%5C%22ADD%20%24%20p%20%24%20%5C%22%20denotes%20adding%20a%20new%20order%20with%20price%20%24%20p%20%24%20and%20unknown%20direction.%20The%20order%20must%20not%20contradict%20with%20orders%20still%20not%20removed%20from%20the%20order%20book.%5Cn2.%20%5C%22ACCEPT%20%24%20p%20%24%20%5C%22%20denotes%20accepting%20an%20existing%20best%20offer%20with%20price%20%24%20p%20%24%20and%20unknown%20direction.%5Cn%5CnThe%20directions%20of%20all%20actions%20are%20lost.%20Information%20from%20the%20log%20isn%27t%20always%20enough%20to%20determine%20these%20directions.%20Count%20the%20number%20of%20ways%20to%20correctly%20restore%20all%20ADD%20action%20directions%20so%20that%20all%20the%20described%20conditions%20are%20satisfied%20at%20any%20moment.%20Since%20the%20answer%20could%20be%20large%2C%20output%20it%20modulo%20%24%2010%5E9%20%2B%207%20%24%20.%20If%20it%20is%20impossible%20to%20correctly%20restore%20directions%2C%20then%20output%20%24%200%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%20363%5C%5C%2C304%20%24%20%29%20%5Cu2014%20the%20number%20of%20actions%20in%20the%20log.%5Cn%5CnEach%20of%20the%20next%20%24%20n%20%24%20lines%20contains%20a%20string%20%5C%22ACCEPT%5C%22%20or%20%5C%22ADD%5C%22%20and%20an%20integer%20%24%20p%20%24%20%28%20%24%201%20%5C%5Cle%20p%20%5C%5Cle%20308%5C%5C%2C983%5C%5C%2C066%20%24%20%29%2C%20describing%20an%20action%20type%20and%20price.%5Cn%5CnAll%20ADD%20actions%20have%20different%20prices.%20For%20ACCEPT%20action%20it%20is%20guaranteed%20that%20the%20order%20with%20the%20same%20price%20has%20already%20been%20added%20but%20has%20not%20been%20accepted%20yet.%22%2C%22outputFormat%22%3A%22Output%20the%20number%20of%20ways%20to%20restore%20directions%20of%20ADD%20actions%20modulo%20%24%2010%5E9%20%2B%207%20%24%20.%22%2C%22samples%22%3A%5B%5B%226%5CnADD%201%5CnACCEPT%201%5CnADD%202%5CnACCEPT%202%5CnADD%203%5CnACCEPT%203%5Cn%22%2C%228%5Cn%22%5D%2C%5B%224%5CnADD%201%5CnADD%202%5CnADD%203%5CnACCEPT%202%5Cn%22%2C%222%5Cn%22%5D%2C%5B%227%5CnADD%201%5CnADD%202%5CnADD%203%5CnADD%204%5CnADD%205%5CnACCEPT%203%5CnACCEPT%205%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20each%20of%20orders%20may%20be%20BUY%20or%20SELL.%5Cn%5CnIn%20the%20second%20example%20the%20order%20with%20price%20%24%201%20%24%20has%20to%20be%20BUY%20order%2C%20the%20order%20with%20the%20price%20%24%203%20%24%20has%20to%20be%20SELL%20order.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1028%5C%2FD%22%2C%22id%22%3A%221028D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A16%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF1028D%22%2C%22title%22%3A%22Order%20book%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Order%20book%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Order book</h1>
+<h2>题目描述</h2>
+<div>Let's consider a simplified version of order book of some stock. The order book is a list of orders (offers) from people that want to buy or sell one unit of the stock, each order is described by direction (BUY or SELL) and price.
+At every moment of time, every SELL offer has higher price than every BUY offer.
+In this problem no two ever existed orders will have the same price.
+The lowest-price SELL order and the highest-price BUY order are called the best offers, marked with black frames on the picture below.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1028D/413fddcebb561deb1348fbeb910f4e1fa1dc550e.png)The presented order book says that someone wants to sell the product at price $ 12 $ and it's the best SELL offer because the other two have higher prices. The best BUY offer has price $ 10 $ .There are two possible actions in this orderbook:
+1. Somebody adds a new order of some direction with some price.
+2. Somebody accepts the best possible SELL or BUY offer (makes a deal). It's impossible to accept not the best SELL or BUY offer (to make a deal at worse price). After someone accepts the offer, it is removed from the orderbook forever.
+It is allowed to add new BUY order only with prices less than the best SELL offer (if you want to buy stock for higher price, then instead of adding an order you should accept the best SELL offer). Similarly, one couldn't add a new SELL order with price less or equal to the best BUY offer. For example, you can't add a new offer "SELL $ 20 $ " if there is already an offer "BUY $ 20 $ " or "BUY $ 25 $ " — in this case you just accept the best BUY offer.
+You have a damaged order book log (in the beginning the are no orders in book). Every action has one of the two types:
+1. "ADD $ p $ " denotes adding a new order with price $ p $ and unknown direction. The order must not contradict with orders still not removed from the order book.
+2. "ACCEPT $ p $ " denotes accepting an existing best offer with price $ p $ and unknown direction.
+The directions of all actions are lost. Information from the log isn't always enough to determine these directions. Count the number of ways to correctly restore all ADD action directions so that all the described conditions are satisfied at any moment. Since the answer could be large, output it modulo $ 10^9 + 7 $ . If it is impossible to correctly restore directions, then output $ 0 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $ n $ ( $ 1 \le n \le 363\,304 $ ) — the number of actions in the log.
+Each of the next $ n $ lines contains a string "ACCEPT" or "ADD" and an integer $ p $ ( $ 1 \le p \le 308\,983\,066 $ ), describing an action type and price.
+All ADD actions have different prices. For ACCEPT action it is guaranteed that the order with the same price has already been added but has not been accepted yet.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the number of ways to restore directions of ADD actions modulo $ 10^9 + 7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+ADD 1
+ACCEPT 1
+ADD 2
+ACCEPT 2
+ADD 3
+ACCEPT 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>8
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+ADD 1
+ADD 2
+ADD 3
+ACCEPT 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>7
+ADD 1
+ADD 2
+ADD 3
+ADD 4
+ADD 5
+ACCEPT 3
+ACCEPT 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+</code></pre>
+<h2>说明</h2>
+<div>In the first example each of orders may be BUY or SELL.
+In the second example the order with price $ 1 $ has to be BUY order, the order with the price $ 3 $ has to be SELL order.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

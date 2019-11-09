@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Permutation recovery - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402433:gz9rfNqvpMVDv0QQcZ9TRDndE9aSJnv+j/914qNPbkE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Vasya%20has%20written%20some%20permutation%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20of%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%2C%20so%20for%20all%20%24%201%20%5C%5Cleq%20i%20%5C%5Cleq%20n%20%24%20it%20is%20true%20that%20%24%201%20%5C%5Cleq%20p_i%20%5C%5Cleq%20n%20%24%20and%20all%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20are%20different.%20After%20that%20he%20wrote%20%24%20n%20%24%20numbers%20%24%20next_1%2C%20next_2%2C%20%5C%5Cldots%2C%20next_n%20%24%20.%20The%20number%20%24%20next_i%20%24%20is%20equal%20to%20the%20minimal%20index%20%24%20i%20%3C%20j%20%5C%5Cleq%20n%20%24%20%2C%20such%20that%20%24%20p_j%20%3E%20p_i%20%24%20.%20If%20there%20is%20no%20such%20%24%20j%20%24%20let%27s%20let%27s%20define%20as%20%24%20next_i%20%3D%20n%20%2B%201%20%24%20.%5Cn%5CnIn%20the%20evening%20Vasya%20went%20home%20from%20school%20and%20due%20to%20rain%2C%20his%20notebook%20got%20wet.%20Now%20it%20is%20impossible%20to%20read%20some%20written%20numbers.%20Permutation%20and%20some%20values%20%24%20next_i%20%24%20are%20completely%20lost%21%20If%20for%20some%20%24%20i%20%24%20the%20value%20%24%20next_i%20%24%20is%20lost%2C%20let%27s%20say%20that%20%24%20next_i%20%3D%20-1%20%24%20.%5Cn%5CnYou%20are%20given%20numbers%20%24%20next_1%2C%20next_2%2C%20%5C%5Cldots%2C%20next_n%20%24%20%28maybe%20some%20of%20them%20are%20equal%20to%20%24%20-1%20%24%20%29.%20Help%20Vasya%20to%20find%20such%20permutation%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20of%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%2C%20that%20he%20can%20write%20it%20to%20the%20notebook%20and%20all%20numbers%20%24%20next_i%20%24%20%2C%20which%20are%20not%20equal%20to%20%24%20-1%20%24%20%2C%20will%20be%20correct.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20t%20%24%20%5Cu2014%20the%20number%20of%20test%20cases%20%28%20%24%201%20%5C%5Cleq%20t%20%5C%5Cleq%20100%5C%5C%2C000%20%24%20%29.%5Cn%5CnNext%20%24%202%20%5C%5Ccdot%20t%20%24%20lines%20contains%20the%20description%20of%20test%20cases%2Ctwo%20lines%20for%20each.%20The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%5Cu2014%20the%20length%20of%20the%20permutation%2C%20written%20by%20Vasya%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%20500%5C%5C%2C000%20%24%20%29.%20The%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20next_1%2C%20next_2%2C%20%5C%5Cldots%2C%20next_n%20%24%20%2C%20separated%20by%20spaces%20%28%20%24%20next_i%20%3D%20-1%20%24%20or%20%24%20i%20%3C%20next_i%20%5C%5Cleq%20n%20%2B%201%20%24%20%29.%5Cn%5CnIt%20is%20guaranteed%2C%20that%20the%20sum%20of%20%24%20n%20%24%20in%20all%20test%20cases%20doesn%27t%20exceed%20%24%20500%5C%5C%2C000%20%24%20.%5Cn%5CnIn%20hacks%20you%20can%20only%20use%20one%20test%20case%2C%20so%20%24%20T%20%3D%201%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20%24%20T%20%24%20lines%2C%20in%20%24%20i%20%24%20-th%20of%20them%20answer%20to%20the%20%24%20i%20%24%20-th%20test%20case.%5Cn%5CnIf%20there%20is%20no%20such%20permutations%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20of%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%2C%20that%20Vasya%20could%20write%2C%20print%20the%20only%20number%20%24%20-1%20%24%20.%5Cn%5CnIn%20the%20other%20case%20print%20%24%20n%20%24%20different%20integers%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20%2C%20separated%20by%20spaces%20%28%20%24%201%20%5C%5Cleq%20p_i%20%5C%5Cleq%20n%20%24%20%29.%20All%20defined%20values%20of%20%24%20next_i%20%24%20which%20are%20not%20equal%20to%20%24%20-1%20%24%20should%20be%20computed%20correctly%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20using%20defenition%20given%20in%20the%20statement%20of%20the%20problem.%20If%20there%20exists%20more%20than%20one%20solution%20you%20can%20find%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn6%5Cn3%5Cn2%203%204%5Cn2%5Cn3%203%5Cn3%5Cn-1%20-1%20-1%5Cn3%5Cn3%204%20-1%5Cn1%5Cn2%5Cn4%5Cn4%20-1%204%205%5Cn%22%2C%22%5Cn1%202%203%5Cn2%201%5Cn2%201%203%5Cn-1%5Cn1%5Cn3%202%201%204%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20test%20case%20for%20permutation%20%24%20p%20%3D%20%5B1%2C%202%2C%203%5D%20%24%20Vasya%20should%20write%20%24%20next%20%3D%20%5B2%2C%203%2C%204%5D%20%24%20%2C%20because%20each%20number%20in%20permutation%20is%20less%20than%20next.%20It%27s%20easy%20to%20see%2C%20that%20it%20is%20the%20only%20satisfying%20permutation.%5Cn%5CnIn%20the%20third%20test%20case%2C%20any%20permutation%20can%20be%20the%20answer%20because%20all%20numbers%20%24%20next_i%20%24%20are%20lost.%5Cn%5CnIn%20the%20fourth%20test%20case%2C%20there%20is%20no%20satisfying%20permutation%2C%20so%20the%20answer%20is%20%24%20-1%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1158%5C%2FC%22%2C%22id%22%3A%221158C%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu6392%5Cu5217%24p%24%2C%20%5Cu4ee4%24nxt_i%24%5Cu4e3a%24p_i%24%5Cu53f3%5Cu4fa7%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu5927%5Cu4e8e%24p_i%24%5Cu7684%5Cu6570%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu82e5%5Cu4e0d%5Cu5b58%5Cu5728%5Cu5219%24nxt_i%3Dn%2B1%24%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu6574%5Cu4e2a%24p%24%5Cu548c%24nxt%24%5Cu7684%5Cu4e00%5Cu90e8%5Cu5206%5Cu4e22%5Cu5931%5Cu4e86%5Cuff0c%5Cu8bf7%5Cu6839%5Cu636e%5Cu5269%5Cu4f59%5Cu7684%24nxt%24%5Cuff0c%5Cu6784%5Cu9020%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu7b26%5Cu5408%5Cu60c5%5Cu51b5%5Cu7684%24p%24%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu89e3%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A97%2C%22totalAccepted%22%3A46%2C%22pid%22%3A%22CF1158C%22%2C%22title%22%3A%22Permutation%20recovery%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1139D%22%2C%22title%22%3A%22Steps%20to%20One%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1159B%22%2C%22title%22%3A%22Expansion%20coefficient%20of%20the%20array%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1158B%22%2C%22title%22%3A%22The%20minimal%20unique%20substring%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1158A%22%2C%22title%22%3A%22The%20Party%20and%20Sweets%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1166E%22%2C%22title%22%3A%22The%20LCMs%20Must%20be%20Large%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Permutation%20recovery%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Permutation recovery</h1>
+<h2>题意翻译</h2>
+<div>有排列$p$, 令$nxt_i$为$p_i$右侧第一个大于$p_i$的数的位置，若不存在则$nxt_i=n+1$
+现在整个$p$和$nxt$的一部分丢失了，请根据剩余的$nxt$，构造出一个符合情况的$p$，输出任意一解。</div>
+<h2>题目描述</h2>
+<div>Vasya has written some permutation $ p_1, p_2, \ldots, p_n $ of integers from $ 1 $ to $ n $ , so for all $ 1 \leq i \leq n $ it is true that $ 1 \leq p_i \leq n $ and all $ p_1, p_2, \ldots, p_n $ are different. After that he wrote $ n $ numbers $ next_1, next_2, \ldots, next_n $ . The number $ next_i $ is equal to the minimal index $ i < j \leq n $ , such that $ p_j > p_i $ . If there is no such $ j $ let's let's define as $ next_i = n + 1 $ .
+In the evening Vasya went home from school and due to rain, his notebook got wet. Now it is impossible to read some written numbers. Permutation and some values $ next_i $ are completely lost! If for some $ i $ the value $ next_i $ is lost, let's say that $ next_i = -1 $ .
+You are given numbers $ next_1, next_2, \ldots, next_n $ (maybe some of them are equal to $ -1 $ ). Help Vasya to find such permutation $ p_1, p_2, \ldots, p_n $ of integers from $ 1 $ to $ n $ , that he can write it to the notebook and all numbers $ next_i $ , which are not equal to $ -1 $ , will be correct.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ t $ — the number of test cases ( $ 1 \leq t \leq 100\,000 $ ).
+Next $ 2 \cdot t $ lines contains the description of test cases,two lines for each. The first line contains one integer $ n $ — the length of the permutation, written by Vasya ( $ 1 \leq n \leq 500\,000 $ ). The second line contains $ n $ integers $ next_1, next_2, \ldots, next_n $ , separated by spaces ( $ next_i = -1 $ or $ i < next_i \leq n + 1 $ ).
+It is guaranteed, that the sum of $ n $ in all test cases doesn't exceed $ 500\,000 $ .
+In hacks you can only use one test case, so $ T = 1 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ T $ lines, in $ i $ -th of them answer to the $ i $ -th test case.
+If there is no such permutations $ p_1, p_2, \ldots, p_n $ of integers from $ 1 $ to $ n $ , that Vasya could write, print the only number $ -1 $ .
+In the other case print $ n $ different integers $ p_1, p_2, \ldots, p_n $ , separated by spaces ( $ 1 \leq p_i \leq n $ ). All defined values of $ next_i $ which are not equal to $ -1 $ should be computed correctly $ p_1, p_2, \ldots, p_n $ using defenition given in the statement of the problem. If there exists more than one solution you can find any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+6
+3
+2 3 4
+2
+3 3
+3
+-1 -1 -1
+3
+3 4 -1
+1
+2
+4
+4 -1 4 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+1 2 3
+2 1
+2 1 3
+-1
+1
+3 2 1 4
+</code></pre>
+<h2>说明</h2>
+<div>In the first test case for permutation $ p = [1, 2, 3] $ Vasya should write $ next = [2, 3, 4] $ , because each number in permutation is less than next. It's easy to see, that it is the only satisfying permutation.
+In the third test case, any permutation can be the answer because all numbers $ next_i $ are lost.
+In the fourth test case, there is no satisfying permutation, so the answer is $ -1 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

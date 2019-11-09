@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Middle-Out - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403504:7iG8AivWziAYhYz3hfPXtA19szumO94KiZv/Ubc6ycY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20problem%20was%20inspired%20by%20Pied%20Piper%20story.%20After%20a%20challenge%20from%20Hooli%27s%20compression%20competitor%20Nucleus%2C%20Richard%20pulled%20an%20all-nighter%20to%20invent%20a%20new%20approach%20to%20compression%3A%20middle-out.%5Cn%5CnYou%20are%20given%20two%20strings%20%24%20s%20%24%20and%20%24%20t%20%24%20of%20the%20same%20length%20%24%20n%20%24%20.%20Their%20characters%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20from%20left%20to%20right%20%28i.e.%20from%20the%20beginning%20to%20the%20end%29.%5Cn%5CnIn%20a%20single%20move%20you%20can%20do%20the%20following%20sequence%20of%20actions%3A%5Cn%5Cn-%20choose%20any%20valid%20index%20%24%20i%20%24%20%28%20%24%201%20%5C%5Cle%20i%20%5C%5Cle%20n%20%24%20%29%2C%5Cn-%20move%20the%20%24%20i%20%24%20-th%20character%20of%20%24%20s%20%24%20from%20its%20position%20to%20the%20beginning%20of%20the%20string%20or%20move%20the%20%24%20i%20%24%20-th%20character%20of%20%24%20s%20%24%20from%20its%20position%20to%20the%20end%20of%20the%20string.%5Cn%5CnNote%2C%20that%20the%20moves%20don%27t%20change%20the%20length%20of%20the%20string%20%24%20s%20%24%20.%20You%20can%20apply%20a%20move%20only%20to%20the%20string%20%24%20s%20%24%20.%5Cn%5CnFor%20example%2C%20if%20%24%20s%3D%20%24%20%5C%22test%5C%22%20in%20one%20move%20you%20can%20obtain%3A%5Cn%5Cn-%20if%20%24%20i%3D1%20%24%20and%20you%20move%20to%20the%20beginning%2C%20then%20the%20result%20is%20%5C%22test%5C%22%20%28the%20string%20doesn%27t%20change%29%2C%5Cn-%20if%20%24%20i%3D2%20%24%20and%20you%20move%20to%20the%20beginning%2C%20then%20the%20result%20is%20%5C%22etst%5C%22%2C%5Cn-%20if%20%24%20i%3D3%20%24%20and%20you%20move%20to%20the%20beginning%2C%20then%20the%20result%20is%20%5C%22stet%5C%22%2C%5Cn-%20if%20%24%20i%3D4%20%24%20and%20you%20move%20to%20the%20beginning%2C%20then%20the%20result%20is%20%5C%22ttes%5C%22%2C%5Cn-%20if%20%24%20i%3D1%20%24%20and%20you%20move%20to%20the%20end%2C%20then%20the%20result%20is%20%5C%22estt%5C%22%2C%5Cn-%20if%20%24%20i%3D2%20%24%20and%20you%20move%20to%20the%20end%2C%20then%20the%20result%20is%20%5C%22tste%5C%22%2C%5Cn-%20if%20%24%20i%3D3%20%24%20and%20you%20move%20to%20the%20end%2C%20then%20the%20result%20is%20%5C%22tets%5C%22%2C%5Cn-%20if%20%24%20i%3D4%20%24%20and%20you%20move%20to%20the%20end%2C%20then%20the%20result%20is%20%5C%22test%5C%22%20%28the%20string%20doesn%27t%20change%29.%5Cn%5CnYou%20want%20to%20make%20the%20string%20%24%20s%20%24%20equal%20to%20the%20string%20%24%20t%20%24%20.%20What%20is%20the%20minimum%20number%20of%20moves%20you%20need%3F%20If%20it%20is%20impossible%20to%20transform%20%24%20s%20%24%20to%20%24%20t%20%24%20%2C%20print%20-1.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20number%20of%20independent%20test%20cases%20in%20the%20input.%5Cn%5CnEach%20test%20case%20is%20given%20in%20three%20lines.%20The%20first%20line%20of%20a%20test%20case%20contains%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20strings%20%24%20s%20%24%20and%20%24%20t%20%24%20.%20The%20second%20line%20contains%20%24%20s%20%24%20%2C%20the%20third%20line%20contains%20%24%20t%20%24%20.%20Both%20strings%20%24%20s%20%24%20and%20%24%20t%20%24%20have%20length%20%24%20n%20%24%20and%20contain%20only%20lowercase%20Latin%20letters.%5Cn%5CnThere%20are%20no%20constraints%20on%20the%20sum%20of%20%24%20n%20%24%20in%20the%20test%20%28i.e.%20the%20input%20with%20%24%20q%3D100%20%24%20and%20all%20%24%20n%3D100%20%24%20is%20allowed%29.%22%2C%22outputFormat%22%3A%22For%20every%20test%20print%20minimum%20possible%20number%20of%20moves%2C%20which%20are%20needed%20to%20transform%20%24%20s%20%24%20into%20%24%20t%20%24%20%2C%20or%20-1%2C%20if%20it%20is%20impossible%20to%20do.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn9%5Cniredppipe%5Cnpiedpiper%5Cn4%5Cnestt%5Cntest%5Cn4%5Cntste%5Cntest%5Cn%22%2C%22%5Cn2%5Cn1%5Cn2%5Cn%22%5D%2C%5B%22%5Cn4%5Cn1%5Cna%5Cnz%5Cn5%5Cnadhas%5Cndasha%5Cn5%5Cnaashd%5Cndasha%5Cn5%5Cnaahsd%5Cndasha%5Cn%22%2C%22%5Cn-1%5Cn2%5Cn2%5Cn3%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20the%20moves%20in%20one%20of%20the%20optimal%20answers%20are%3A%5Cn%5Cn-%20for%20the%20first%20test%20case%20%24%20s%3D%20%24%20%5C%22iredppipe%5C%22%2C%20%24%20t%3D%20%24%20%5C%22piedpiper%5C%22%3A%20%5C%22iredppipe%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22iedppiper%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22piedpiper%5C%22%3B%5Cn-%20for%20the%20second%20test%20case%20%24%20s%3D%20%24%20%5C%22estt%5C%22%2C%20%24%20t%3D%20%24%20%5C%22test%5C%22%3A%20%5C%22estt%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22test%5C%22%3B%5Cn-%20for%20the%20third%20test%20case%20%24%20s%3D%20%24%20%5C%22tste%5C%22%2C%20%24%20t%3D%20%24%20%5C%22test%5C%22%3A%20%5C%22tste%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22etst%5C%22%20%24%20%5C%5Crightarrow%20%24%20%5C%22test%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1231%5C%2FE%22%2C%22id%22%3A%221231E%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32S%5Cu3001T%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu53ef%5Cu4ee5%5Cu5c06S%5Cu4e2d%5Cu7b2ci%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu79fb%5Cu5230%5Cu5f00%5Cu5934%5Cu6216%5Cu7ed3%5Cu5c3e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu82e5%5Cu60f3%5Cu8981S%3DT%5Cuff0c%5Cu5219%5Cu9700%5Cu8981%5Cu7684%5Cu6700%5Cu5c11%5Cu64cd%5Cu4f5c%5Cu6b21%5Cu6570%5Cu662f%5Cu591a%5Cu5c11%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A20%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF1231E%22%2C%22title%22%3A%22Middle-Out%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Middle-Out%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Middle-Out</h1>
+<h2>题意翻译</h2>
+<div>有两个字符串S、T。
+每次操作可以将S中第i个字符移到开头或结尾。
+若想要S=T，则需要的最少操作次数是多少</div>
+<h2>题目描述</h2>
+<div>The problem was inspired by Pied Piper story. After a challenge from Hooli's compression competitor Nucleus, Richard pulled an all-nighter to invent a new approach to compression: middle-out.
+You are given two strings $ s $ and $ t $ of the same length $ n $ . Their characters are numbered from $ 1 $ to $ n $ from left to right (i.e. from the beginning to the end).
+In a single move you can do the following sequence of actions:
+- choose any valid index $ i $ ( $ 1 \le i \le n $ ),
+- move the $ i $ -th character of $ s $ from its position to the beginning of the string or move the $ i $ -th character of $ s $ from its position to the end of the string.
+Note, that the moves don't change the length of the string $ s $ . You can apply a move only to the string $ s $ .
+For example, if $ s= $ "test" in one move you can obtain:
+- if $ i=1 $ and you move to the beginning, then the result is "test" (the string doesn't change),
+- if $ i=2 $ and you move to the beginning, then the result is "etst",
+- if $ i=3 $ and you move to the beginning, then the result is "stet",
+- if $ i=4 $ and you move to the beginning, then the result is "ttes",
+- if $ i=1 $ and you move to the end, then the result is "estt",
+- if $ i=2 $ and you move to the end, then the result is "tste",
+- if $ i=3 $ and you move to the end, then the result is "tets",
+- if $ i=4 $ and you move to the end, then the result is "test" (the string doesn't change).
+You want to make the string $ s $ equal to the string $ t $ . What is the minimum number of moves you need? If it is impossible to transform $ s $ to $ t $ , print -1.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ q $ ( $ 1 \le q \le 100 $ ) — the number of independent test cases in the input.
+Each test case is given in three lines. The first line of a test case contains $ n $ ( $ 1 \le n \le 100 $ ) — the length of the strings $ s $ and $ t $ . The second line contains $ s $ , the third line contains $ t $ . Both strings $ s $ and $ t $ have length $ n $ and contain only lowercase Latin letters.
+There are no constraints on the sum of $ n $ in the test (i.e. the input with $ q=100 $ and all $ n=100 $ is allowed).</div>
+<h3>输出格式</h3>
+<br />
+<div>For every test print minimum possible number of moves, which are needed to transform $ s $ into $ t $ , or -1, if it is impossible to do.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+9
+iredppipe
+piedpiper
+4
+estt
+test
+4
+tste
+test
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+1
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+4
+1
+a
+z
+5
+adhas
+dasha
+5
+aashd
+dasha
+5
+aahsd
+dasha
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+-1
+2
+2
+3
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, the moves in one of the optimal answers are:
+- for the first test case $ s= $ "iredppipe", $ t= $ "piedpiper": "iredppipe" $ \rightarrow $ "iedppiper" $ \rightarrow $ "piedpiper";
+- for the second test case $ s= $ "estt", $ t= $ "test": "estt" $ \rightarrow $ "test";
+- for the third test case $ s= $ "tste", $ t= $ "test": "tste" $ \rightarrow $ "etst" $ \rightarrow $ "test".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

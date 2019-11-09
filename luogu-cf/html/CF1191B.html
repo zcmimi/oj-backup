@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tokitsukaze and Mahjong - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402874:WEPZTbdhydD4NEihLy5lz9G1RMXGv+plrdwUU2zeNnU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Tokitsukaze%20is%20playing%20a%20game%20derivated%20from%20Japanese%20mahjong.%20In%20this%20game%2C%20she%20has%20three%20tiles%20in%20her%20hand.%20Each%20tile%20she%20owns%20is%20a%20suited%20tile%2C%20which%20means%20it%20has%20a%20suit%20%28manzu%2C%20pinzu%20or%20souzu%29%20and%20a%20number%20%28a%20digit%20ranged%20from%20%24%201%20%24%20to%20%24%209%20%24%20%29.%20In%20this%20problem%2C%20we%20use%20one%20digit%20and%20one%20lowercase%20letter%2C%20which%20is%20the%20first%20character%20of%20the%20suit%2C%20to%20represent%20a%20suited%20tile.%20All%20possible%20suited%20tiles%20are%20represented%20as%201m%2C%202m%2C%20%24%20%5C%5Cldots%20%24%20%2C%209m%2C%201p%2C%202p%2C%20%24%20%5C%5Cldots%20%24%20%2C%209p%2C%201s%2C%202s%2C%20%24%20%5C%5Cldots%20%24%20%2C%209s.%5Cn%5CnIn%20order%20to%20win%20the%20game%2C%20she%20must%20have%20at%20least%20one%20mentsu%20%28described%20below%29%20in%20her%20hand%2C%20so%20sometimes%20she%20should%20draw%20extra%20suited%20tiles.%20After%20drawing%20a%20tile%2C%20the%20number%20of%20her%20tiles%20increases%20by%20one.%20She%20can%20draw%20any%20tiles%20she%20wants%2C%20including%20those%20already%20in%20her%20hand.%5Cn%5CnDo%20you%20know%20the%20minimum%20number%20of%20extra%20suited%20tiles%20she%20needs%20to%20draw%20so%20that%20she%20can%20win%3F%5Cn%5CnHere%20are%20some%20useful%20definitions%20in%20this%20game%3A%5Cn%5Cn-%20A%20mentsu%2C%20also%20known%20as%20meld%2C%20is%20formed%20by%20a%20koutsu%20or%20a%20shuntsu%3B%5Cn-%20A%20koutsu%2C%20also%20known%20as%20triplet%2C%20is%20made%20of%20three%20identical%20tiles%2C%20such%20as%20%5C%5C%5B1m%2C%201m%2C%201m%5C%5C%5D%2C%20however%2C%20%5C%5C%5B1m%2C%201p%2C%201s%5C%5C%5D%20or%20%5C%5C%5B1m%2C%204m%2C%207m%5C%5C%5D%20is%20NOT%20a%20koutsu%3B%5Cn-%20A%20shuntsu%2C%20also%20known%20as%20sequence%2C%20is%20made%20of%20three%20sequential%20numbered%20tiles%20in%20the%20same%20suit%2C%20such%20as%20%5C%5C%5B1m%2C%202m%2C%203m%5C%5C%5D%20and%20%5C%5C%5B5s%2C%207s%2C%206s%5C%5C%5D%2C%20however%2C%20%5C%5C%5B9m%2C%201m%2C%202m%5C%5C%5D%20or%20%5C%5C%5B1m%2C%202p%2C%203s%5C%5C%5D%20is%20NOT%20a%20shuntsu.%5Cn%5CnSome%20examples%3A%5Cn%5Cn-%20%5C%5C%5B2m%2C%203p%2C%202s%2C%204m%2C%201s%2C%202s%2C%204s%5C%5C%5D%20%5Cu2014%20it%20contains%20no%20koutsu%20or%20shuntsu%2C%20so%20it%20includes%20no%20mentsu%3B%5Cn-%20%5C%5C%5B4s%2C%203m%2C%203p%2C%204s%2C%205p%2C%204s%2C%205p%5C%5C%5D%20%5Cu2014%20it%20contains%20a%20koutsu%2C%20%5C%5C%5B4s%2C%204s%2C%204s%5C%5C%5D%2C%20but%20no%20shuntsu%2C%20so%20it%20includes%20a%20mentsu%3B%5Cn-%20%5C%5C%5B5p%2C%205s%2C%209m%2C%204p%2C%201s%2C%207p%2C%207m%2C%206p%5C%5C%5D%20%5Cu2014%20it%20contains%20no%20koutsu%20but%20a%20shuntsu%2C%20%5C%5C%5B5p%2C%204p%2C%206p%5C%5C%5D%20or%20%5C%5C%5B5p%2C%207p%2C%206p%5C%5C%5D%2C%20so%20it%20includes%20a%20mentsu.%5Cn%5CnNote%20that%20the%20order%20of%20tiles%20is%20unnecessary%20and%20you%20can%20assume%20the%20number%20of%20each%20type%20of%20suited%20tiles%20she%20can%20draw%20is%20infinite.%22%2C%22inputFormat%22%3A%22The%20only%20line%20contains%20three%20strings%20%5Cu2014%20the%20tiles%20in%20Tokitsukaze%27s%20hand.%20For%20each%20string%2C%20the%20first%20character%20is%20a%20digit%20ranged%20from%20%24%201%20%24%20to%20%24%209%20%24%20and%20the%20second%20character%20is%20m%2C%20p%20or%20s.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20minimum%20number%20of%20extra%20suited%20tiles%20she%20needs%20to%20draw.%22%2C%22samples%22%3A%5B%5B%22%5Cn1s%202s%203s%5Cn%22%2C%22%5Cn0%5Cn%22%5D%2C%5B%22%5Cn9m%209m%209m%5Cn%22%2C%22%5Cn0%5Cn%22%5D%2C%5B%22%5Cn3p%209m%202p%5Cn%22%2C%22%5Cn1%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20Tokitsukaze%20already%20has%20a%20shuntsu.%5Cn%5CnIn%20the%20second%20example%2C%20Tokitsukaze%20already%20has%20a%20koutsu.%5Cn%5CnIn%20the%20third%20example%2C%20Tokitsukaze%20can%20get%20a%20shuntsu%20by%20drawing%20one%20suited%20tile%20%5Cu2014%201p%20or%204p.%20The%20resulting%20tiles%20will%20be%20%5C%5C%5B3p%2C%209m%2C%202p%2C%201p%5C%5C%5D%20or%20%5C%5C%5B3p%2C%209m%2C%202p%2C%204p%5C%5C%5D.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1191%5C%2FB%22%2C%22id%22%3A%221191B%22%7D%2C%22translation%22%3A%22XXX%5Cu67093%5Cu5757%5Cu9ebb%5Cu5c06%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu9ebb%5Cu5c06%5Cu4e0a%5Cu6709%5Cu4e00%5Cu4e2a2%5Cu4f4d%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu75311~9%5Cu7684%5Cu4e00%5Cu4f4d%5Cu6570%5Cu5b57%5Cu548cm%5C%5Cs%5C%5Cp%5Cu7ec4%5Cu6210%5Cuff0c%5Cu73b0%5Cu5728%5Cu6709%5Cu4e24%5Cu79cd%5Cu51fa%5Cu724c%5Cu65b9%5Cu5f0f%5Cuff1a%5Cr%5Cn1.%203%5Cu4e2a%5Cu4e00%5Cu6bdb%5Cu4e00%5Cu6837%5Cu7684%5Cu9ebb%5Cu5c06%5Cr%5Cn%5Cr%5Cn1.%20%5Cu7b2c2%5Cu4f4d%5Cu76f8%5Cu540c%5Cuff0c%5Cu524d%5Cu9762%5Cu662f%5Cu8fde%5Cu53f7%5Cu7684%5Cuff08%5Cu6bd4%5Cu59821p%5Cuff0c2p%5Cuff0c3p%5Cu5c31%5Cu53ef%5Cu4ee5%5Cr%5Cn%5Cr%5Cn%5Cu4f46%5Cu662fXXX%5Cu4e0d%5Cu662f%5Cu4e2a%5Cu9075%5Cu5b88%5Cu89c4%5Cu5219%5Cu7684%5Cu4eba%5Cuff0cTA%5Cu53ef%5Cu4ee5%5Cu628a%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu9ebb%5Cu5c06%5Cu6362%5Cu6210%5Cu53e6%5Cu4e00%5Cu79cd%5Cu9ebb%5Cu5c06%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu6362%5Cu591a%5Cu6b21%5Cuff0c%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu4e0d%5Cu6362%5Cuff0c%5Cu95ee%5Cuff01XXX%5Cu81f3%5Cu5c11%5Cu8981%5Cu6362%5Cu591a%5Cu5c11%5Cu6b21%5Cu624d%5Cu80fd%5Cu4e00%5Cu6b21%5Cu51fa%5Cu5b8c3%5Cu4e2a%5Cu9ebb%5Cu5c06%5Cuff1f%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A127%2C%22totalAccepted%22%3A76%2C%22pid%22%3A%22CF1191B%22%2C%22title%22%3A%22Tokitsukaze%20and%20Mahjong%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P5461%22%2C%22title%22%3A%22%5Cu8d66%5Cu514d%5Cu6218%5Cu4fd8%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1191A%22%2C%22title%22%3A%22Tokitsukaze%20and%20Enhancement%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1190B%22%2C%22title%22%3A%22Tokitsukaze%2C%20CSL%20and%20Stone%20Game%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1190A%22%2C%22title%22%3A%22Tokitsukaze%20and%20Discard%20Items%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1194A%22%2C%22title%22%3A%22Remove%20a%20Progression%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Tokitsukaze%20and%20Mahjong%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Tokitsukaze and Mahjong</h1>
+<h2>题意翻译</h2>
+<div>XXX有3块麻将，每个麻将上有一个2位的字符串，由1~9的一位数字和m\s\p组成，现在有两种出牌方式：
+1. 3个一毛一样的麻将
+1. 第2位相同，前面是连号的（比如1p，2p，3p就可以
+但是XXX不是个遵守规则的人，TA可以把任意一个麻将换成另一种麻将，可以换多次，也可以不换，问！XXX至少要换多少次才能一次出完3个麻将？</div>
+<h2>题目描述</h2>
+<div>Tokitsukaze is playing a game derivated from Japanese mahjong. In this game, she has three tiles in her hand. Each tile she owns is a suited tile, which means it has a suit (manzu, pinzu or souzu) and a number (a digit ranged from $ 1 $ to $ 9 $ ). In this problem, we use one digit and one lowercase letter, which is the first character of the suit, to represent a suited tile. All possible suited tiles are represented as 1m, 2m, $ \ldots $ , 9m, 1p, 2p, $ \ldots $ , 9p, 1s, 2s, $ \ldots $ , 9s.
+In order to win the game, she must have at least one mentsu (described below) in her hand, so sometimes she should draw extra suited tiles. After drawing a tile, the number of her tiles increases by one. She can draw any tiles she wants, including those already in her hand.
+Do you know the minimum number of extra suited tiles she needs to draw so that she can win?
+Here are some useful definitions in this game:
+- A mentsu, also known as meld, is formed by a koutsu or a shuntsu;
+- A koutsu, also known as triplet, is made of three identical tiles, such as \[1m, 1m, 1m\], however, \[1m, 1p, 1s\] or \[1m, 4m, 7m\] is NOT a koutsu;
+- A shuntsu, also known as sequence, is made of three sequential numbered tiles in the same suit, such as \[1m, 2m, 3m\] and \[5s, 7s, 6s\], however, \[9m, 1m, 2m\] or \[1m, 2p, 3s\] is NOT a shuntsu.
+Some examples:
+- \[2m, 3p, 2s, 4m, 1s, 2s, 4s\] — it contains no koutsu or shuntsu, so it includes no mentsu;
+- \[4s, 3m, 3p, 4s, 5p, 4s, 5p\] — it contains a koutsu, \[4s, 4s, 4s\], but no shuntsu, so it includes a mentsu;
+- \[5p, 5s, 9m, 4p, 1s, 7p, 7m, 6p\] — it contains no koutsu but a shuntsu, \[5p, 4p, 6p\] or \[5p, 7p, 6p\], so it includes a mentsu.
+Note that the order of tiles is unnecessary and you can assume the number of each type of suited tiles she can draw is infinite.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line contains three strings — the tiles in Tokitsukaze's hand. For each string, the first character is a digit ranged from $ 1 $ to $ 9 $ and the second character is m, p or s.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the minimum number of extra suited tiles she needs to draw.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+1s 2s 3s
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+0
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+9m 9m 9m
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+3p 9m 2p
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+1
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, Tokitsukaze already has a shuntsu.
+In the second example, Tokitsukaze already has a koutsu.
+In the third example, Tokitsukaze can get a shuntsu by drawing one suited tile — 1p or 4p. The resulting tiles will be \[3p, 9m, 2p, 1p\] or \[3p, 9m, 2p, 4p\].</div>
+</article>
+</div>
+</div>
+</body>
+</html>

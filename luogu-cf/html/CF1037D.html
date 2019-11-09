@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Valid BFS? - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400764:CqR+Saj62hwWwW4SeUqFqswyXfo8vF3UY6gq7ABLPuQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20%5BBFS%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FBreadth-first_search%29%20algorithm%20is%20defined%20as%20follows.%5Cn%5Cn1.%20Consider%20an%20undirected%20graph%20with%20vertices%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20Initialize%20%24%20q%20%24%20as%20a%20new%20%5Bqueue%5D%28http%3A%5C%2F%5C%2Fgg.gg%5C%2Fqueue_en%29%20containing%20only%20vertex%20%24%201%20%24%20%2C%20mark%20the%20vertex%20%24%201%20%24%20as%20used.%5Cn2.%20Extract%20a%20vertex%20%24%20v%20%24%20from%20the%20head%20of%20the%20queue%20%24%20q%20%24%20.%5Cn3.%20Print%20the%20index%20of%20vertex%20%24%20v%20%24%20.%5Cn4.%20Iterate%20in%20arbitrary%20order%20through%20all%20such%20vertices%20%24%20u%20%24%20that%20%24%20u%20%24%20is%20a%20neighbor%20of%20%24%20v%20%24%20and%20is%20not%20marked%20yet%20as%20used.%20Mark%20the%20vertex%20%24%20u%20%24%20as%20used%20and%20insert%20it%20into%20the%20tail%20of%20the%20queue%20%24%20q%20%24%20.%5Cn5.%20If%20the%20queue%20is%20not%20empty%2C%20continue%20from%20step%202.%5Cn6.%20Otherwise%20finish.%5Cn%5CnSince%20the%20order%20of%20choosing%20neighbors%20of%20each%20vertex%20can%20vary%2C%20it%20turns%20out%20that%20there%20may%20be%20multiple%20sequences%20which%20BFS%20can%20print.%5Cn%5CnIn%20this%20problem%20you%20need%20to%20check%20whether%20a%20given%20sequence%20corresponds%20to%20some%20valid%20BFS%20traversal%20of%20the%20given%20tree%20starting%20from%20vertex%20%24%201%20%24%20.%20The%20%5Btree%5D%28http%3A%5C%2F%5C%2Fgg.gg%5C%2Ftree_en%29%20is%20an%20undirected%20graph%2C%20such%20that%20there%20is%20exactly%20one%20simple%20path%20between%20any%20two%20vertices.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20which%20denotes%20the%20number%20of%20nodes%20in%20the%20tree.%5Cn%5CnThe%20following%20%24%20n%20-%201%20%24%20lines%20describe%20the%20edges%20of%20the%20tree.%20Each%20of%20them%20contains%20two%20integers%20%24%20x%20%24%20and%20%24%20y%20%24%20%28%20%24%201%20%5C%5Cle%20x%2C%20y%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20the%20endpoints%20of%20the%20corresponding%20edge%20of%20the%20tree.%20It%20is%20guaranteed%20that%20the%20given%20graph%20is%20a%20tree.%5Cn%5CnThe%20last%20line%20contains%20%24%20n%20%24%20distinct%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20the%20sequence%20to%20check.%22%2C%22outputFormat%22%3A%22Print%20%5C%22Yes%5C%22%20%28quotes%20for%20clarity%29%20if%20the%20sequence%20corresponds%20to%20some%20valid%20BFS%20traversal%20of%20the%20given%20tree%20and%20%5C%22No%5C%22%20%28quotes%20for%20clarity%29%20otherwise.%5Cn%5CnYou%20can%20print%20each%20letter%20in%20any%20case%20%28upper%20or%20lower%29.%22%2C%22samples%22%3A%5B%5B%224%5Cn1%202%5Cn1%203%5Cn2%204%5Cn1%202%203%204%5Cn%22%2C%22Yes%22%5D%2C%5B%224%5Cn1%202%5Cn1%203%5Cn2%204%5Cn1%202%204%203%5Cn%22%2C%22No%22%5D%5D%2C%22hint%22%3A%22Both%20sample%20tests%20have%20the%20same%20tree%20in%20them.%5Cn%5CnIn%20this%20tree%2C%20there%20are%20two%20valid%20BFS%20orderings%3A%5Cn%5Cn-%20%24%201%2C%202%2C%203%2C%204%20%24%20%2C%5Cn-%20%24%201%2C%203%2C%202%2C%204%20%24%20.%5Cn%5CnThe%20ordering%20%24%201%2C%202%2C%204%2C%203%20%24%20doesn%27t%20correspond%20to%20any%20valid%20BFS%20order.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1037%5C%2FD%22%2C%22id%22%3A%221037D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%24n%281%5C%5Cleq%20n%20%5C%5Cleq%202%5C%5Ccdot10%5E5%29%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu6811%5Cu7684%24n-1%24%5Cu6761%5Cu8fb9%5Cu548c%5Cu8fd9%5Cu68f5%5Cu6811%5Cu7684%5Cu4e00%5Cu4e2a%24BFS%24%5Cu5e8f%24a_1%2Ca_2%2C%5C%5Cdots%2Ca_n%24%2C%5Cu5224%5Cu65ad%5Cu8fd9%5Cu4e2a%24BFS%24%5Cu5e8f%5Cu662f%5Cu5426%5Cu662f%5Cu4e00%5Cu4e2a%5Cu4ece%5Cu8282%5Cu70b9%241%24%5Cu5f00%5Cu59cb%5Cu7684%5Cu5408%5Cu6cd5%24BFS%24%5Cu5e8f%2C%5Cu82e5%5Cu5408%5Cu6cd5%5Cu5219%5Cu8f93%5Cu51fa%24Yes%24%2C%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%24No%24%5Cn%5Cn%29%22%2C%22tags%22%3A%5B113%2C126%2C288%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A502%2C%22totalAccepted%22%3A211%2C%22pid%22%3A%22CF1037D%22%2C%22title%22%3A%22Valid%20BFS%3F%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A100301%2C%22title%22%3A%22%5Cu65b0%5Cu4eba%5Cu6c42%5Cu52a9%5Cuff0c%5Cu672c%5Cu673aAC%5Cuff0c%5Cu63d0%5Cu4ea4UKE%5Cuff0c%5Cu5728%5Cu7ebf%5Cu7b49%5Cuff08%5Cu771fUKE%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A29160%2C%22name%22%3A%22CF1037D%20Valid%20BFS%3F%22%2C%22slug%22%3A%22CF1037D%22%7D%7D%2C%7B%22id%22%3A62357%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29160%2C%22name%22%3A%22CF1037D%20Valid%20BFS%3F%22%2C%22slug%22%3A%22CF1037D%22%7D%7D%2C%7B%22id%22%3A62279%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29160%2C%22name%22%3A%22CF1037D%20Valid%20BFS%3F%22%2C%22slug%22%3A%22CF1037D%22%7D%7D%2C%7B%22id%22%3A62274%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29160%2C%22name%22%3A%22CF1037D%20Valid%20BFS%3F%22%2C%22slug%22%3A%22CF1037D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF894E%22%2C%22title%22%3A%22Ralph%20and%20Mushrooms%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF859E%22%2C%22title%22%3A%22Desk%20Disorder%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF241E%22%2C%22title%22%3A%22Flights%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1037E%22%2C%22title%22%3A%22Trips%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1042F%22%2C%22title%22%3A%22Leaf%20Sets%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Valid%20BFS%3F%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Valid BFS?</h1>
+<h2>题意翻译</h2>
+<div>给定一个$n(1\leq n \leq 2\cdot10^5)$个节点的树的$n-1$条边和这棵树的一个$BFS$序$a_1,a_2,\dots,a_n$,判断这个$BFS$序是否是一个从节点$1$开始的合法$BFS$序,若合法则输出$Yes$,否则输出$No$
+)</div>
+<h2>题目描述</h2>
+<div>The [BFS](https://en.wikipedia.org/wiki/Breadth-first_search) algorithm is defined as follows.
+1. Consider an undirected graph with vertices numbered from $ 1 $ to $ n $ . Initialize $ q $ as a new [queue](http://gg.gg/queue_en) containing only vertex $ 1 $ , mark the vertex $ 1 $ as used.
+2. Extract a vertex $ v $ from the head of the queue $ q $ .
+3. Print the index of vertex $ v $ .
+4. Iterate in arbitrary order through all such vertices $ u $ that $ u $ is a neighbor of $ v $ and is not marked yet as used. Mark the vertex $ u $ as used and insert it into the tail of the queue $ q $ .
+5. If the queue is not empty, continue from step 2.
+6. Otherwise finish.
+Since the order of choosing neighbors of each vertex can vary, it turns out that there may be multiple sequences which BFS can print.
+In this problem you need to check whether a given sequence corresponds to some valid BFS traversal of the given tree starting from vertex $ 1 $ . The [tree](http://gg.gg/tree_en) is an undirected graph, such that there is exactly one simple path between any two vertices.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1 \le n \le 2 \cdot 10^5 $ ) which denotes the number of nodes in the tree.
+The following $ n - 1 $ lines describe the edges of the tree. Each of them contains two integers $ x $ and $ y $ ( $ 1 \le x, y \le n $ ) — the endpoints of the corresponding edge of the tree. It is guaranteed that the given graph is a tree.
+The last line contains $ n $ distinct integers $ a_1, a_2, \ldots, a_n $ ( $ 1 \le a_i \le n $ ) — the sequence to check.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print "Yes" (quotes for clarity) if the sequence corresponds to some valid BFS traversal of the given tree and "No" (quotes for clarity) otherwise.
+You can print each letter in any case (upper or lower).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1 2
+1 3
+2 4
+1 2 3 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Yes</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+1 2
+1 3
+2 4
+1 2 4 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>No</code></pre>
+<h2>说明</h2>
+<div>Both sample tests have the same tree in them.
+In this tree, there are two valid BFS orderings:
+- $ 1, 2, 3, 4 $ ,
+- $ 1, 3, 2, 4 $ .
+The ordering $ 1, 2, 4, 3 $ doesn't correspond to any valid BFS order.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

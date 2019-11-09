@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Ж-function - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401636:J+F9kinjD3mauWViddxNP+rW+mzGLLJwJFwk8NE3UQU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20length%20of%20the%20longest%20common%20prefix%20of%20two%20strings%20%24%20s%3Ds_1%20s_2%20%5C%5Cldots%20s_n%20%24%20and%20%24%20t%20%3D%20t_1%20t_2%20%5C%5Cldots%20t_m%20%24%20is%20defined%20as%20the%20maximum%20%24%20k%20%5C%5Cle%20%5C%5Cmin%28n%2C%20m%29%20%24%20such%20that%20%24%20s_1%20s_2%20%5C%5Cldots%20s_k%20%24%20equals%20%24%20t_1%20t_2%20%5C%5Cldots%20t_k%20%24%20.%20Let%27s%20denote%20the%20longest%20common%20prefix%20of%20two%20strings%20%24%20s%20%24%20and%20%24%20t%20%24%20as%20%24%20lcp%28s%2Ct%29%20%24%20.%5Cn%5CnZ-function%20of%20a%20string%20%24%20s_1%20s_2%20%5C%5Cdots%20s_n%20%24%20is%20a%20sequence%20of%20integers%20%24%20z_1%2C%20z_2%2C%20%5C%5Cldots%2C%20z_n%20%24%20%2C%20where%20%24%20z_i%20%3D%20lcp%28s_1%20s_2%20%5C%5Cldots%20s_n%2C%5C%5C%20%5C%5C%20s_i%20s_%7Bi%2B1%7D%20%5C%5Cdots%20s_n%29%20%24%20.%20%5Cu0416-function%20of%20a%20string%20%24%20s%20%24%20is%20defined%20as%20%24%20z_1%20%2B%20z_2%20%2B%20%5C%5Cldots%20%2B%20z_n%20%24%20.%5Cn%5CnYou%27re%20given%20a%20string%20%24%20s%3Ds_1%20s_2%20%5C%5Cldots%20s_n%20%24%20and%20%24%20q%20%24%20queries.%20Each%20query%20is%20described%20by%20two%20integers%20%24%20l_i%20%24%20and%20%24%20r_i%20%24%20%2C%20where%20%24%201%20%5C%5Cle%20l_i%20%5C%5Cle%20r_i%20%5C%5Cle%20n%20%24%20.%20The%20answer%20for%20the%20query%20is%20defined%20as%20%5Cu0416-function%20of%20the%20string%20%24%20s_%7Bl_i%7D%20s_%7Bl_i%20%2B1%7D%20%5C%5Cldots%20s_%7Br_i%7D%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20string%20%24%20s%20%24%20%2C%20consisting%20of%20lowercase%20English%20letters%20%28%20%24%201%20%5C%5Cleq%20%7Cs%7C%20%5C%5Cleq%20200%5C%5C%2C000%20%24%20%29.%20The%20second%20line%20contains%20one%20integer%20%24%20q%20%24%20%5Cu2014%20the%20number%20of%20queries%20%28%20%24%201%20%5C%5Cleq%20q%20%5C%5Cleq%20200%5C%5C%2C000%20%24%20%29.%20Each%20of%20the%20following%20%24%20q%20%24%20lines%20contains%20two%20integers%20%24%20l_i%20%24%20and%20%24%20r_i%20%24%20%2C%20describing%20the%20query%20%28%20%24%201%20%5C%5Cleq%20l_i%20%5C%5Cleq%20r_i%20%5C%5Cleq%20%7Cs%7C%20%24%20%29.%22%2C%22outputFormat%22%3A%22For%20every%20query%20output%20one%20integer%3A%20the%20value%20of%20%5Cu0416-function%20of%20the%20corresponding%20substring.%22%2C%22samples%22%3A%5B%5B%22%5Cnabbd%5Cn4%5Cn2%203%5Cn1%203%5Cn3%203%5Cn1%204%5Cn%22%2C%22%5Cn3%5Cn3%5Cn1%5Cn4%5Cn%22%5D%2C%5B%22%5Cnbbaaa%5Cn5%5Cn2%204%5Cn1%205%5Cn1%205%5Cn3%203%5Cn1%202%5Cn%22%2C%22%5Cn3%5Cn6%5Cn6%5Cn1%5Cn3%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20case%20there%20are%20four%20queries%3A%5Cn%5Cn-%20the%20first%20query%20corresponds%20to%20the%20substring%20bb%2C%20and%20its%20%5Cu0416-function%20equals%20%24%202%20%2B%201%20%3D%203%20%24%20%3B%5Cn-%20the%20second%20query%20corresponds%20to%20the%20substring%20abb%2C%20and%20its%20%5Cu0416-function%20equals%20%24%203%20%2B%200%20%2B%200%20%3D%203%20%24%20%3B%5Cn-%20the%20third%20query%20corresponds%20to%20the%20substring%20b%2C%20and%20its%20%5Cu0416-function%20equals%20%24%201%20%24%20.%5Cn-%20the%20fourth%20query%20corresponds%20to%20the%20substring%20abdd%2C%20and%20its%20%5Cu0416-function%20equals%20%24%204%20%2B%200%20%2B%200%20%2B%200%3D%204%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B6000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1098%5C%2FF%22%2C%22id%22%3A%221098F%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32s%5Cuff0c%5Cu5b9a%5Cu4e49%5Cu51fd%5Cu6570f%28l%2Cr%29%5Cu4e3as%5Bl%2Cr%5D%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu540e%5Cu7f00%5Cu4e0es%5Bl%2Cr%5D%5Cu7684lcp%5Cu4e4b%5Cu548c%5Cu3002%5Cu73b0%5Cu5728%5Cu8be2%5Cu95eeq%5Cu6b21%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu7ed9%5Cu51fal%2Cr%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51faf%28l%2Cr%29%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF1098F%22%2C%22title%22%3A%22%5Cu0416-function%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu0416-function%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Ж-function</h1>
+<h2>题意翻译</h2>
+<div>给出一个字符串s，定义函数f(l,r)为s[l,r]的每个后缀与s[l,r]的lcp之和。现在询问q次，每次给出l,r，请输出f(l,r)</div>
+<h2>题目描述</h2>
+<div>The length of the longest common prefix of two strings $ s=s_1 s_2 \ldots s_n $ and $ t = t_1 t_2 \ldots t_m $ is defined as the maximum $ k \le \min(n, m) $ such that $ s_1 s_2 \ldots s_k $ equals $ t_1 t_2 \ldots t_k $ . Let's denote the longest common prefix of two strings $ s $ and $ t $ as $ lcp(s,t) $ .
+Z-function of a string $ s_1 s_2 \dots s_n $ is a sequence of integers $ z_1, z_2, \ldots, z_n $ , where $ z_i = lcp(s_1 s_2 \ldots s_n,\ \ s_i s_{i+1} \dots s_n) $ . Ж-function of a string $ s $ is defined as $ z_1 + z_2 + \ldots + z_n $ .
+You're given a string $ s=s_1 s_2 \ldots s_n $ and $ q $ queries. Each query is described by two integers $ l_i $ and $ r_i $ , where $ 1 \le l_i \le r_i \le n $ . The answer for the query is defined as Ж-function of the string $ s_{l_i} s_{l_i +1} \ldots s_{r_i} $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the string $ s $ , consisting of lowercase English letters ( $ 1 \leq |s| \leq 200\,000 $ ). The second line contains one integer $ q $ — the number of queries ( $ 1 \leq q \leq 200\,000 $ ). Each of the following $ q $ lines contains two integers $ l_i $ and $ r_i $ , describing the query ( $ 1 \leq l_i \leq r_i \leq |s| $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>For every query output one integer: the value of Ж-function of the corresponding substring.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+abbd
+4
+2 3
+1 3
+3 3
+1 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+3
+1
+4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+bbaaa
+5
+2 4
+1 5
+1 5
+3 3
+1 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+3
+6
+6
+1
+3
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample case there are four queries:
+- the first query corresponds to the substring bb, and its Ж-function equals $ 2 + 1 = 3 $ ;
+- the second query corresponds to the substring abb, and its Ж-function equals $ 3 + 0 + 0 = 3 $ ;
+- the third query corresponds to the substring b, and its Ж-function equals $ 1 $ .
+- the fourth query corresponds to the substring abdd, and its Ж-function equals $ 4 + 0 + 0 + 0= 4 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

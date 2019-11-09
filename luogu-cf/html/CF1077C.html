@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Good Array - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401294:M+/blPldtaK12QFpt4wULTQXxPEHMSS+fGg6gGK6PJc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20call%20an%20array%20good%20if%20there%20is%20an%20element%20in%20the%20array%20that%20equals%20to%20the%20sum%20of%20all%20other%20elements.%20For%20example%2C%20the%20array%20%24%20a%3D%5B1%2C%203%2C%203%2C%207%5D%20%24%20is%20good%20because%20there%20is%20the%20element%20%24%20a_4%3D7%20%24%20which%20equals%20to%20the%20sum%20%24%201%20%2B%203%20%2B%203%20%24%20.%5Cn%5CnYou%20are%20given%20an%20array%20%24%20a%20%24%20consisting%20of%20%24%20n%20%24%20integers.%20Your%20task%20is%20to%20print%20all%20indices%20%24%20j%20%24%20of%20this%20array%20such%20that%20after%20removing%20the%20%24%20j%20%24%20-th%20element%20from%20the%20array%20it%20will%20be%20good%20%28let%27s%20call%20such%20indices%20nice%29.%5Cn%5CnFor%20example%2C%20if%20%24%20a%3D%5B8%2C%203%2C%205%2C%202%5D%20%24%20%2C%20the%20nice%20indices%20are%20%24%201%20%24%20and%20%24%204%20%24%20%3A%5Cn%5Cn-%20if%20you%20remove%20%24%20a_1%20%24%20%2C%20the%20array%20will%20look%20like%20%24%20%5B3%2C%205%2C%202%5D%20%24%20and%20it%20is%20good%3B%5Cn-%20if%20you%20remove%20%24%20a_4%20%24%20%2C%20the%20array%20will%20look%20like%20%24%20%5B8%2C%203%2C%205%5D%20%24%20and%20it%20is%20good.%5Cn%5CnYou%20have%20to%20consider%20all%20removals%20independently%2C%20i.%20e.%20remove%20the%20element%2C%20check%20if%20the%20resulting%20array%20is%20good%2C%20and%20return%20the%20element%20into%20the%20array.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20array%20%24%20a%20%24%20.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E6%20%24%20%29%20%5Cu2014%20elements%20of%20the%20array%20%24%20a%20%24%20.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20one%20integer%20%24%20k%20%24%20%5Cu2014%20the%20number%20of%20indices%20%24%20j%20%24%20of%20the%20array%20%24%20a%20%24%20such%20that%20after%20removing%20the%20%24%20j%20%24%20-th%20element%20from%20the%20array%20it%20will%20be%20good%20%28i.e.%20print%20the%20number%20of%20the%20nice%20indices%29.%5Cn%5CnIn%20the%20second%20line%20print%20%24%20k%20%24%20distinct%20integers%20%24%20j_1%2C%20j_2%2C%20%5C%5Cdots%2C%20j_k%20%24%20in%20any%20order%20%5Cu2014%20nice%20indices%20of%20the%20array%20%24%20a%20%24%20.%5Cn%5CnIf%20there%20are%20no%20such%20indices%20in%20the%20array%20%24%20a%20%24%20%2C%20just%20print%20%24%200%20%24%20in%20the%20first%20line%20and%20leave%20the%20second%20line%20empty%20or%20do%20not%20print%20it%20at%20all.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%5Cn2%205%201%202%202%5Cn%22%2C%22%5Cn3%5Cn4%201%205%22%5D%2C%5B%22%5Cn4%5Cn8%203%205%202%5Cn%22%2C%22%5Cn2%5Cn1%204%20%5Cn%22%5D%2C%5B%22%5Cn5%5Cn2%201%202%204%203%5Cn%22%2C%22%5Cn0%5Cn%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20you%20can%20remove%20any%20element%20with%20the%20value%20%24%202%20%24%20so%20the%20array%20will%20look%20like%20%24%20%5B5%2C%201%2C%202%2C%202%5D%20%24%20.%20The%20sum%20of%20this%20array%20is%20%24%2010%20%24%20and%20there%20is%20an%20element%20equals%20to%20the%20sum%20of%20remaining%20elements%20%28%20%24%205%20%3D%201%20%2B%202%20%2B%202%20%24%20%29.%5Cn%5CnIn%20the%20second%20example%20you%20can%20remove%20%24%208%20%24%20so%20the%20array%20will%20look%20like%20%24%20%5B3%2C%205%2C%202%5D%20%24%20.%20The%20sum%20of%20this%20array%20is%20%24%2010%20%24%20and%20there%20is%20an%20element%20equals%20to%20the%20sum%20of%20remaining%20elements%20%28%20%24%205%20%3D%203%20%2B%202%20%24%20%29.%20You%20can%20also%20remove%20%24%202%20%24%20so%20the%20array%20will%20look%20like%20%24%20%5B8%2C%203%2C%205%5D%20%24%20.%20The%20sum%20of%20this%20array%20is%20%24%2016%20%24%20and%20there%20is%20an%20element%20equals%20to%20the%20sum%20of%20remaining%20elements%20%28%20%24%208%20%3D%203%20%2B%205%20%24%20%29.%5Cn%5CnIn%20the%20third%20example%20you%20cannot%20make%20the%20given%20array%20good%20by%20removing%20exactly%20one%20element.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1077%5C%2FC%22%2C%22id%22%3A%221077C%22%7D%2C%22translation%22%3A%22%23%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu662f%5Cu597d%5Cu7684%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6570%5Cu662f%5Cu5176%5Cu5b83%5Cu6240%5Cu6709%5Cu6570%5Cu7684%5Cu548c%5Cuff0c%5Cu6bd4%5Cu5982%24a%3D%5B1%2C3%2C3%2C7%5D%24%5Cu4e2d%247%3D1%2B3%2B3%24%5Cuff0c%5Cu6240%5Cu4ee5%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu662f%5Cu597d%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5e8f%5Cu5217%24a%24%5Cuff0c%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu8f93%5Cu51fa%5Cu6240%5Cu6709%5Cu7684%24j%24%5Cu4f7f%5Cu5f97%5Cu53bb%5Cu6389%24a_j%24%5Cu540e%5Cu7684%5Cu5e8f%5Cu5217%5Cu662f%5Cu597d%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e3e%5Cu4f8b%5Cuff0c%24a%3D%5B8%2C3%2C5%2C2%5D%24%5Cuff0c%5Cu7b54%5Cu6848%5Cu662f%241%24%5Cu548c%244%24%5Cr%5Cn%5Cr%5Cn-%20%5Cu5982%5Cu679c%5Cu4f60%5Cu53bb%5Cu6389%24a_1%24%5Cuff0c%5Cu5269%5Cu4e0b%24%5B3%2C5%2C2%5D%24%5Cuff0c%5Cu662f%5Cu597d%5Cu7684%5Cr%5Cn-%20%5Cu5982%5Cu679c%5Cu4f60%5Cu53bb%5Cu6389%24a_4%24%5Cuff0c%5Cu5269%5Cu4e0b%24%5B8%2C3%2C5%5D%24%5Cuff0c%5Cu662f%5Cu597d%5Cu7684%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu9700%5Cu8981%2A%2A%5Cu72ec%5Cu7acb%5Cu5730%2A%2A%5Cu68c0%5Cu67e5%5Cu6240%5Cu6709%5Cu9879%5Cu3002%5Cu6bd4%5Cu65b9%5Cu8bf4%5Cu4f60%5Cu53bb%5Cu6389%5Cu8fd9%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7136%5Cu540e%5Cu68c0%5Cu67e5%5Cu5269%5Cu4e0b%5Cu7684%5Cu5e8f%5Cu5217%5Cu662f%5Cu5426%5Cu662f%5Cu597d%5Cu7684%5Cuff0c%5Cu7136%5Cu540e%5Cu518d%5Cu653e%5Cu56de%5Cu53bb%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%281%5C%5Cle%20n%5C%5Cle%202%5C%5Ctimes%2010%5E5%29%24%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%24n%24%5Cu4e2a%5Cu6574%5Cu6570%24a_1%2C%20a_2%2C%20...%2C%20a_n%281%5C%5Cle%20a_i%5C%5Cle%2010%5E6%29%24%5Cr%5Cn%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24k%24%5Cuff0c%5Cu8868%5Cu793a%5Cu7b54%5Cu6848%5Cu7684%5Cu4e2a%5Cu6570%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%24k%24%5Cu4e2a%5Cu6574%5Cu6570%24j_1%2C%20j_2%2C%20...%2C%20j_k%24%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu4ee5%5Cu4efb%5Cu610f%5Cu987a%5Cu5e8f%5Cu8f93%5Cu51fa%5Cuff0c%5Cu8868%5Cu793a%5Cu7b54%5Cu6848%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu6ca1%5Cu6709%24j%24%5Cu6ee1%5Cu8db3%5Cu8981%5Cu6c42%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%240%24%5Cuff0c%5Cu7136%5Cu540e%5Cu8ba9%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3a%5Cu7a7a%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A227%2C%22totalAccepted%22%3A89%2C%22pid%22%3A%22CF1077C%22%2C%22title%22%3A%22Good%20Array%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A91391%2C%22title%22%3A%22%5Cu54ea%5Cu4f4d%5Cu5927%5Cu4f6c%5Cu5e2e%5Cu6211%5Cu770b%5Cu4e00%5Cu4e0b%5Cu95ee%5Cu4ec0%5Cu4e48RE%22%2C%22forum%22%3A%7B%22id%22%3A32040%2C%22name%22%3A%22CF1077C%20Good%20Array%22%2C%22slug%22%3A%22CF1077C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4868%22%2C%22title%22%3A%22Preprefix%20sum%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1063C%22%2C%22title%22%3A%22Dwarves%2C%20Hats%20and%20Extrasensory%20Abilities%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1077E%22%2C%22title%22%3A%22Thematic%20Contests%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1077D%22%2C%22title%22%3A%22Cutting%20Out%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1077B%22%2C%22title%22%3A%22Disturbed%20People%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Good%20Array%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Good Array</h1>
+<h2>题意翻译</h2>
+<div>#### 题目描述
+一个序列是好的当且仅当有一个数是其它所有数的和，比如$a=[1,3,3,7]$中$7=1+3+3$，所以这个序列是好的。
+给你长度为$n$的序列$a$，你的任务是输出所有的$j$使得去掉$a_j$后的序列是好的。
+举例，$a=[8,3,5,2]$，答案是$1$和$4$
+- 如果你去掉$a_1$，剩下$[3,5,2]$，是好的
+- 如果你去掉$a_4$，剩下$[8,3,5]$，是好的
+你需要**独立地**检查所有项。比方说你去掉这个数，然后检查剩下的序列是否是好的，然后再放回去。
+#### 输入格式
+第一行一个整数$n(1\le n\le 2\times 10^5)$
+第二行$n$个整数$a_1, a_2, ..., a_n(1\le a_i\le 10^6)$
+#### 输出格式
+第一行输出一个整数$k$，表示答案的个数
+接下来一行$k$个整数$j_1, j_2, ..., j_k$，可以以任意顺序输出，表示答案
+如果没有$j$满足要求，第一行输出$0$，然后让第二行为空。</div>
+<h2>题目描述</h2>
+<div>Let's call an array good if there is an element in the array that equals to the sum of all other elements. For example, the array $ a=[1, 3, 3, 7] $ is good because there is the element $ a_4=7 $ which equals to the sum $ 1 + 3 + 3 $ .
+You are given an array $ a $ consisting of $ n $ integers. Your task is to print all indices $ j $ of this array such that after removing the $ j $ -th element from the array it will be good (let's call such indices nice).
+For example, if $ a=[8, 3, 5, 2] $ , the nice indices are $ 1 $ and $ 4 $ :
+- if you remove $ a_1 $ , the array will look like $ [3, 5, 2] $ and it is good;
+- if you remove $ a_4 $ , the array will look like $ [8, 3, 5] $ and it is good.
+You have to consider all removals independently, i. e. remove the element, check if the resulting array is good, and return the element into the array.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ n $ ( $ 2 \le n \le 2 \cdot 10^5 $ ) — the number of elements in the array $ a $ .
+The second line of the input contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le 10^6 $ ) — elements of the array $ a $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print one integer $ k $ — the number of indices $ j $ of the array $ a $ such that after removing the $ j $ -th element from the array it will be good (i.e. print the number of the nice indices).
+In the second line print $ k $ distinct integers $ j_1, j_2, \dots, j_k $ in any order — nice indices of the array $ a $ .
+If there are no such indices in the array $ a $ , just print $ 0 $ in the first line and leave the second line empty or do not print it at all.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5
+2 5 1 2 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3
+4 1 5</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+4
+8 3 5 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+2
+1 4 
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+5
+2 1 2 4 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+0
+
+</code></pre>
+<h2>说明</h2>
+<div>In the first example you can remove any element with the value $ 2 $ so the array will look like $ [5, 1, 2, 2] $ . The sum of this array is $ 10 $ and there is an element equals to the sum of remaining elements ( $ 5 = 1 + 2 + 2 $ ).
+In the second example you can remove $ 8 $ so the array will look like $ [3, 5, 2] $ . The sum of this array is $ 10 $ and there is an element equals to the sum of remaining elements ( $ 5 = 3 + 2 $ ). You can also remove $ 2 $ so the array will look like $ [8, 3, 5] $ . The sum of this array is $ 16 $ and there is an element equals to the sum of remaining elements ( $ 8 = 3 + 5 $ ).
+In the third example you cannot make the given array good by removing exactly one element.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

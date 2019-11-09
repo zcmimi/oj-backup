@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Construct a tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401625:jpFrzTqYVzK1XKNkTKfYwc9L0xsgVN3GTRb7J/4AyuQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Misha%20walked%20through%20the%20snowy%20forest%20and%20he%20was%20so%20fascinated%20by%20the%20trees%20to%20decide%20to%20draw%20his%20own%20tree%21%5Cn%5CnMisha%20would%20like%20to%20construct%20a%20rooted%20tree%20with%20%24%20n%20%24%20vertices%2C%20indexed%20from%201%20to%20%24%20n%20%24%20%2C%20where%20the%20root%20has%20index%201.%20Every%20other%20vertex%20has%20a%20parent%20%24%20p_i%20%24%20%2C%20and%20%24%20i%20%24%20is%20called%20a%20child%20of%20vertex%20%24%20p_i%20%24%20.%20Vertex%20%24%20u%20%24%20belongs%20to%20the%20subtree%20of%20vertex%20%24%20v%20%24%20iff%20%24%20v%20%24%20is%20reachable%20from%20%24%20u%20%24%20while%20iterating%20over%20the%20parents%20%28%20%24%20u%20%24%20%2C%20%24%20p_%7Bu%7D%20%24%20%2C%20%24%20p_%7Bp_%7Bu%7D%7D%20%24%20%2C%20...%29.%20Clearly%2C%20%24%20v%20%24%20belongs%20to%20its%20own%20subtree%2C%20and%20the%20number%20of%20vertices%20in%20the%20subtree%20is%20called%20the%20size%20of%20the%20subtree.%20Misha%20is%20only%20interested%20in%20trees%20where%20every%20vertex%20belongs%20to%20the%20subtree%20of%20vertex%20%24%201%20%24%20.%5Cn%5CnBelow%20there%20is%20a%20tree%20with%20%24%206%20%24%20vertices.%20The%20subtree%20of%20vertex%20%24%202%20%24%20contains%20vertices%20%24%202%20%24%20%2C%20%24%203%20%24%20%2C%20%24%204%20%24%20%2C%20%24%205%20%24%20.%20Hence%20the%20size%20of%20its%20subtree%20is%20%24%204%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1098C%5C%2Fc0bc9c82cdcd20b087d88b1afdb2ab79756ebad2.png%29The%20branching%20coefficient%20of%20the%20tree%20is%20defined%20as%20the%20maximum%20number%20of%20children%20in%20any%20vertex.%20For%20example%2C%20for%20the%20tree%20above%20the%20branching%20coefficient%20equals%20%24%202%20%24%20.%20Your%20task%20is%20to%20construct%20a%20tree%20with%20%24%20n%20%24%20vertices%20such%20that%20the%20sum%20of%20the%20subtree%20sizes%20for%20all%20vertices%20equals%20%24%20s%20%24%20%2C%20and%20the%20branching%20coefficient%20is%20minimum%20possible.%22%2C%22inputFormat%22%3A%22The%20only%20input%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20s%20%24%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20tree%20and%20the%20desired%20sum%20of%20the%20subtree%20sizes%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%2010%5E5%20%24%20%3B%20%24%201%20%5C%5Cle%20s%20%5C%5Cle%2010%5E%7B10%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22If%20the%20required%20tree%20does%20not%20exist%2C%20output%20%5Cu00abNo%5Cu00bb.%20Otherwise%20output%20%5Cu00abYes%5Cu00bb%20on%20the%20first%20line%2C%20and%20in%20the%20next%20one%20output%20integers%20%24%20p_2%20%24%20%2C%20%24%20p_3%20%24%20%2C%20...%2C%20%24%20p_n%20%24%20%2C%20where%20%24%20p_i%20%24%20denotes%20the%20parent%20of%20vertex%20%24%20i%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%205%5Cn%22%2C%22%5CnYes%5Cn1%201%20%5Cn%22%5D%2C%5B%22%5Cn4%2042%5Cn%22%2C%22%5CnNo%5Cn%22%5D%2C%5B%22%5Cn6%2015%5Cn%22%2C%22%5CnYes%5Cn1%202%203%201%205%20%5Cn%22%5D%5D%2C%22hint%22%3A%22Below%20one%20can%20find%20one%20of%20the%20possible%20solutions%20for%20the%20first%20sample%20case.%20The%20sum%20of%20subtree%20sizes%20equals%20%24%203%20%2B%201%20%2B%201%20%3D%205%20%24%20%2C%20and%20the%20branching%20coefficient%20equals%20%24%202%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1098C%5C%2Fee98c5c7cbd89b2c919d59781e8421d44b49e284.png%29Below%20one%20can%20find%20one%20of%20the%20possible%20solutions%20for%20the%20third%20sample%20case.%20The%20sum%20of%20subtree%20sizes%20equals%20%24%206%20%2B%203%20%2B%202%20%2B%201%20%2B%202%20%2B%201%20%3D%2015%20%24%20%2C%20and%20the%20branching%20coefficient%20equals%20%24%202%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1098C%5C%2Fc9978c0d5d53b71095c0212966f1b4c387ec4ee6.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1098%5C%2FC%22%2C%22id%22%3A%221098C%22%7D%2C%22translation%22%3A%22%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu6211%5Cu4eec%5Cu5b9a%5Cu4e49%5Cu201c%5Cu5206%5Cu652f%5Cu7cfb%5Cu6570%5Cu201d%5Cu4e3a%5Cu5b50%5Cu8282%5Cu70b9%5Cu6700%5Cu591a%5Cu7684%5Cu8282%5Cu70b9%5Cu7684%5Cu5b50%5Cu7ed3%5Cu70b9%5Cu4e2a%5Cu6570%5Cu3002%5Cu73b0%5Cu7ed9%5Cu51fa%5Cu7ed3%5Cu70b9%5Cu4e2a%5Cu6570%24n%24%5Cu3001%5Cu6240%5Cu6709%5Cu8282%5Cu70b9%5Cu7684%5Cu5b50%5Cu6811%5Cu5927%5Cu5c0f%5Cu4e4b%5Cu548c%24s%24%5Cuff0c%5Cu540c%5Cu65f6%5Cu89c4%5Cu5b9a%5Cu7b26%5Cu5408%5Cu6761%5Cu4ef6%5Cu7684%5Cu6811%5Cu7684%5Cu6839%5Cu8282%5Cu70b9%5Cu5fc5%5Cu987b%5Cu662f%241%24%5Cu3002%5Cu8bf7%5Cu4f60%5Cu5224%5Cu65ad%5Cu662f%5Cu5426%5Cu5b58%5Cu5728%5Cu4e00%5Cu68f5%5Cu7b26%5Cu5408%5Cu6761%5Cu4ef6%5Cu7684%5Cu6811%5Cu3002%5Cu5982%5Cu679c%5Cu5b58%5Cu5728%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu8f93%5Cu51fa%5Cu201c%5Cu5206%5Cu652f%5Cu7cfb%5Cu6570%5Cu201d%5Cu6700%5Cu5c0f%5Cu7684%5Cu7b26%5Cu5408%5Cu6761%5Cu4ef6%5Cu7684%5Cu6811%5Cu3002%5Cu8f93%5Cu51fa%5Cu65b9%5Cu5f0f%5Cu662f%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu5206%5Cu522b%5Cu8f93%5Cu51fa%5Cu7f16%5Cu53f7%5Cu4e3a%242%24%5Cu7684%5Cu8282%5Cu70b9%5Cuff5e%5Cu7f16%5Cu53f7%5Cu4e3a%24n%24%5Cu7684%5Cu8282%5Cu70b9%5Cu7684%5Cu7236%5Cu8282%5Cu70b9%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A30%2C%22totalAccepted%22%3A18%2C%22pid%22%3A%22CF1098C%22%2C%22title%22%3A%22Construct%20a%20tree%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Construct%20a%20tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Construct a tree</h1>
+<h2>题意翻译</h2>
+<div>对于一棵树，我们定义“分支系数”为子节点最多的节点的子结点个数。现给出结点个数$n$、所有节点的子树大小之和$s$，同时规定符合条件的树的根节点必须是$1$。请你判断是否存在一棵符合条件的树。如果存在，请你输出“分支系数”最小的符合条件的树。输出方式是，你需要分别输出编号为$2$的节点～编号为$n$的节点的父节点。</div>
+<h2>题目描述</h2>
+<div>Misha walked through the snowy forest and he was so fascinated by the trees to decide to draw his own tree!
+Misha would like to construct a rooted tree with $ n $ vertices, indexed from 1 to $ n $ , where the root has index 1. Every other vertex has a parent $ p_i $ , and $ i $ is called a child of vertex $ p_i $ . Vertex $ u $ belongs to the subtree of vertex $ v $ iff $ v $ is reachable from $ u $ while iterating over the parents ( $ u $ , $ p_{u} $ , $ p_{p_{u}} $ , ...). Clearly, $ v $ belongs to its own subtree, and the number of vertices in the subtree is called the size of the subtree. Misha is only interested in trees where every vertex belongs to the subtree of vertex $ 1 $ .
+Below there is a tree with $ 6 $ vertices. The subtree of vertex $ 2 $ contains vertices $ 2 $ , $ 3 $ , $ 4 $ , $ 5 $ . Hence the size of its subtree is $ 4 $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1098C/c0bc9c82cdcd20b087d88b1afdb2ab79756ebad2.png)The branching coefficient of the tree is defined as the maximum number of children in any vertex. For example, for the tree above the branching coefficient equals $ 2 $ . Your task is to construct a tree with $ n $ vertices such that the sum of the subtree sizes for all vertices equals $ s $ , and the branching coefficient is minimum possible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only input line contains two integers $ n $ and $ s $ — the number of vertices in the tree and the desired sum of the subtree sizes ( $ 2 \le n \le 10^5 $ ; $ 1 \le s \le 10^{10} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>If the required tree does not exist, output «No». Otherwise output «Yes» on the first line, and in the next one output integers $ p_2 $ , $ p_3 $ , ..., $ p_n $ , where $ p_i $ denotes the parent of vertex $ i $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+Yes
+1 1 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+4 42
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+No
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+6 15
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+Yes
+1 2 3 1 5 
+</code></pre>
+<h2>说明</h2>
+<div>Below one can find one of the possible solutions for the first sample case. The sum of subtree sizes equals $ 3 + 1 + 1 = 5 $ , and the branching coefficient equals $ 2 $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1098C/ee98c5c7cbd89b2c919d59781e8421d44b49e284.png)Below one can find one of the possible solutions for the third sample case. The sum of subtree sizes equals $ 6 + 3 + 2 + 1 + 2 + 1 = 15 $ , and the branching coefficient equals $ 2 $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1098C/c9978c0d5d53b71095c0212966f1b4c387ec4ee6.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

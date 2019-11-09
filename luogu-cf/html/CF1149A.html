@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Prefix Sum Primes - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402288:vBpuoaKcZCXJ0M021D6R2V8ul2bZ/fKm+QgFkF4pEhk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22We%27re%20giving%20away%20nice%20huge%20bags%20containing%20number%20tiles%21%20A%20bag%20we%20want%20to%20present%20to%20you%20contains%20%24%20n%20%24%20tiles.%20Each%20of%20them%20has%20a%20single%20number%20written%20on%20it%20%5Cu2014%20either%20%24%201%20%24%20or%20%24%202%20%24%20.%5Cn%5CnHowever%2C%20there%20is%20one%20condition%20you%20must%20fulfill%20in%20order%20to%20receive%20the%20prize.%20You%20will%20need%20to%20put%20all%20the%20tiles%20from%20the%20bag%20in%20a%20sequence%2C%20in%20any%20order%20you%20wish.%20We%20will%20then%20compute%20the%20sums%20of%20all%20prefixes%20in%20the%20sequence%2C%20and%20then%20count%20how%20many%20of%20these%20sums%20are%20prime%20numbers.%20If%20you%20want%20to%20keep%20the%20prize%2C%20you%20will%20need%20to%20maximize%20the%20number%20of%20primes%20you%20get.%5Cn%5CnCan%20you%20win%20the%20prize%3F%20Hurry%20up%2C%20the%20bags%20are%20waiting%21%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%20200%5C%5C%2C000%20%24%20%29%20%5Cu2014%20the%20number%20of%20number%20tiles%20in%20the%20bag.%20The%20following%20line%20contains%20%24%20n%20%24%20space-separated%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%20a_i%20%5C%5Cin%20%5C%5C%7B1%2C%202%5C%5C%7D%20%24%20%29%20%5Cu2014%20the%20values%20written%20on%20the%20tiles.%22%2C%22outputFormat%22%3A%22Output%20a%20permutation%20%24%20b_1%2C%20b_2%2C%20%5C%5Cdots%2C%20b_n%20%24%20of%20the%20input%20sequence%20%24%20%28a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%29%20%24%20maximizing%20the%20number%20of%20the%20prefix%20sums%20being%20prime%20numbers.%20If%20there%20are%20multiple%20optimal%20permutations%2C%20output%20any.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%5Cn1%202%201%202%201%5Cn%22%2C%22%5Cn1%201%201%202%202%5Cn%22%5D%2C%5B%22%5Cn9%5Cn1%201%202%201%201%201%202%201%201%5Cn%22%2C%22%5Cn1%201%201%202%201%201%201%202%201%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20solution%20produces%20the%20prefix%20sums%20%24%201%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B2%7D%7D%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B3%7D%7D%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B5%7D%7D%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B7%7D%7D%20%24%20%28four%20primes%20constructed%29%2C%20while%20the%20prefix%20sums%20in%20the%20second%20solution%20are%20%24%201%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B2%7D%7D%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B3%7D%7D%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B5%7D%7D%2C%206%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B7%7D%7D%2C%208%2C%2010%2C%20%5C%5Cmathbf%7B%5C%5Ccolor%7Bblue%7D%7B11%7D%7D%20%24%20%28five%20primes%29.%20Primes%20are%20marked%20bold%20and%20blue.%20In%20each%20of%20these%20cases%2C%20the%20number%20of%20produced%20primes%20is%20maximum%20possible.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1149%5C%2FA%22%2C%22id%22%3A%221149A%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3an%5Cuff0c%5Cu53ea%5Cu542b%5Cu6570%5Cu5b571%5Cu548c2%5Cu7684%5Cu5e8f%5Cu5217%5Cu3002%5Cu8bf7%5Cu9002%5Cu5f53%5Cu4fee%5Cu6539%5Cu5e8f%5Cu5217%5Cu5143%5Cu7d20%5Cu7684%5Cu987a%5Cu5e8f%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu5e8f%5Cu5217%5Cu7684%5Cu524d%5Cu7f00%5Cu548c%5Cuff08%5Cu5171%5Cu6709n%5Cu4e2a%5Cuff09%5Cu4e2d%5Cu7d20%5Cu6570%5Cu7684%5Cu4e2a%5Cu6570%5Cu6700%5Cu591a%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A106%2C%22totalAccepted%22%3A63%2C%22pid%22%3A%22CF1149A%22%2C%22title%22%3A%22Prefix%20Sum%20Primes%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1143B%22%2C%22title%22%3A%22Nirvana%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1149C%22%2C%22title%22%3A%22Tree%20Generator%5Cu2122%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1149B%22%2C%22title%22%3A%22Three%20Religions%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1156C%22%2C%22title%22%3A%22Match%20Points%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1158A%22%2C%22title%22%3A%22The%20Party%20and%20Sweets%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Prefix%20Sum%20Primes%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Prefix Sum Primes</h1>
+<h2>题意翻译</h2>
+<div>给定一个长度为n，只含数字1和2的序列。请适当修改序列元素的顺序，使得序列的前缀和（共有n个）中素数的个数最多。</div>
+<h2>题目描述</h2>
+<div>We're giving away nice huge bags containing number tiles! A bag we want to present to you contains $ n $ tiles. Each of them has a single number written on it — either $ 1 $ or $ 2 $ .
+However, there is one condition you must fulfill in order to receive the prize. You will need to put all the tiles from the bag in a sequence, in any order you wish. We will then compute the sums of all prefixes in the sequence, and then count how many of these sums are prime numbers. If you want to keep the prize, you will need to maximize the number of primes you get.
+Can you win the prize? Hurry up, the bags are waiting!</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ n $ ( $ 1 \leq n \leq 200\,000 $ ) — the number of number tiles in the bag. The following line contains $ n $ space-separated integers $ a_1, a_2, \dots, a_n $ ( $ a_i \in \{1, 2\} $ ) — the values written on the tiles.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output a permutation $ b_1, b_2, \dots, b_n $ of the input sequence $ (a_1, a_2, \dots, a_n) $ maximizing the number of the prefix sums being prime numbers. If there are multiple optimal permutations, output any.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5
+1 2 1 2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+1 1 1 2 2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+9
+1 1 2 1 1 1 2 1 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+1 1 1 2 1 1 1 2 1
+</code></pre>
+<h2>说明</h2>
+<div>The first solution produces the prefix sums $ 1, \mathbf{\color{blue}{2}}, \mathbf{\color{blue}{3}}, \mathbf{\color{blue}{5}}, \mathbf{\color{blue}{7}} $ (four primes constructed), while the prefix sums in the second solution are $ 1, \mathbf{\color{blue}{2}}, \mathbf{\color{blue}{3}}, \mathbf{\color{blue}{5}}, 6, \mathbf{\color{blue}{7}}, 8, 10, \mathbf{\color{blue}{11}} $ (five primes). Primes are marked bold and blue. In each of these cases, the number of produced primes is maximum possible.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

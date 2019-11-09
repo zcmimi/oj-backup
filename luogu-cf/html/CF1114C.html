@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Trailing Loves (or L&#039;oeufs?) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401876:3zwVgghyDwHXKHqhMiLnlk4HDOBJsZbHS9qqHLy5IDQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20The%20number%20%5C%22zero%5C%22%20is%20called%20%5C%22love%5C%22%20%28or%20%5C%22l%27oeuf%5C%22%20to%20be%20precise%2C%20literally%20means%20%5C%22egg%5C%22%20in%20French%29%2C%20for%20example%20when%20denoting%20the%20zero%20score%20in%20a%20game%20of%20tennis.%20%5Cn%5Cn%5Cn%5CnAki%20is%20fond%20of%20numbers%2C%20especially%20those%20with%20trailing%20zeros.%20For%20example%2C%20the%20number%20%24%209200%20%24%20has%20two%20trailing%20zeros.%20Aki%20thinks%20the%20more%20trailing%20zero%20digits%20a%20number%20has%2C%20the%20prettier%20it%20is.%5Cn%5CnHowever%2C%20Aki%20believes%2C%20that%20the%20number%20of%20trailing%20zeros%20of%20a%20number%20is%20not%20static%2C%20but%20depends%20on%20the%20base%20%28radix%29%20it%20is%20represented%20in.%20Thus%2C%20he%20considers%20a%20few%20scenarios%20with%20some%20numbers%20and%20bases.%20And%20now%2C%20since%20the%20numbers%20he%20used%20become%20quite%20bizarre%2C%20he%20asks%20you%20to%20help%20him%20to%20calculate%20the%20beauty%20of%20these%20numbers.%5Cn%5CnGiven%20two%20integers%20%24%20n%20%24%20and%20%24%20b%20%24%20%28in%20decimal%20notation%29%2C%20your%20task%20is%20to%20calculate%20the%20number%20of%20trailing%20zero%20digits%20in%20the%20%24%20b%20%24%20-ary%20%28in%20the%20base%5C%2Fradix%20of%20%24%20b%20%24%20%29%20representation%20of%20%24%20n%5C%5C%2C%21%20%24%20%28%5Bfactorial%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FFactorial%29%20of%20%24%20n%20%24%20%29.%22%2C%22inputFormat%22%3A%22The%20only%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20b%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2010%5E%7B18%7D%20%24%20%2C%20%24%202%20%5C%5Cle%20b%20%5C%5Cle%2010%5E%7B12%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20an%20only%20integer%20%5Cu2014%20the%20number%20of%20trailing%20zero%20digits%20in%20the%20%24%20b%20%24%20-ary%20representation%20of%20%24%20n%21%20%24%22%2C%22samples%22%3A%5B%5B%226%209%5Cn%22%2C%221%5Cn%22%5D%2C%5B%2238%2011%5Cn%22%2C%223%5Cn%22%5D%2C%5B%225%202%5Cn%22%2C%223%5Cn%22%5D%2C%5B%225%2010%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20%24%206%21_%7B%2810%29%7D%20%3D%20720_%7B%2810%29%7D%20%3D%20880_%7B%289%29%7D%20%24%20.%5Cn%5CnIn%20the%20third%20and%20fourth%20example%2C%20%24%205%21_%7B%2810%29%7D%20%3D%20120_%7B%2810%29%7D%20%3D%201111000_%7B%282%29%7D%20%24%20.%5Cn%5CnThe%20representation%20of%20the%20number%20%24%20x%20%24%20in%20the%20%24%20b%20%24%20-ary%20base%20is%20%24%20d_1%2C%20d_2%2C%20%5C%5Cldots%2C%20d_k%20%24%20if%20%24%20x%20%3D%20d_1%20b%5E%7Bk%20-%201%7D%20%2B%20d_2%20b%5E%7Bk%20-%202%7D%20%2B%20%5C%5Cldots%20%2B%20d_k%20b%5E0%20%24%20%2C%20where%20%24%20d_i%20%24%20are%20integers%20and%20%24%200%20%5C%5Cle%20d_i%20%5C%5Cle%20b%20-%201%20%24%20.%20For%20example%2C%20the%20number%20%24%20720%20%24%20from%20the%20first%20example%20is%20represented%20as%20%24%20880_%7B%289%29%7D%20%24%20since%20%24%20720%20%3D%208%20%5C%5Ccdot%209%5E2%20%2B%208%20%5C%5Ccdot%209%20%2B%200%20%5C%5Ccdot%201%20%24%20.%5Cn%5CnYou%20can%20read%20more%20about%20bases%20%5Bhere%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FRadix%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1114%5C%2FC%22%2C%22id%22%3A%221114C%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%24n~%28n%20%5C%5Cleq%201e18%29%24%5Cuff0c%5Cu6c42%24n%21%24%5Cu5728%24b~%28b%20%5C%5Cleq%201e12%29%24%5Cu8fdb%5Cu5236%5Cu4e0b%5Cuff0c%5Cu672b%5Cu5c3e%240%24%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5176%5Cu4e2d%24n%21%3D%5C%5Cprod%20%5C%5Climits_%7Bi%3D1%7D%5E%7Bn%7Di%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A169%2C%22totalAccepted%22%3A77%2C%22pid%22%3A%22CF1114C%22%2C%22title%22%3A%22Trailing%20Loves%20%28or%20L%27oeufs%3F%29%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1114F%22%2C%22title%22%3A%22Please%2C%20another%20Queries%20on%20Array%3F%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1114E%22%2C%22title%22%3A%22Arithmetic%20Progression%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1114D%22%2C%22title%22%3A%22Flood%20Fill%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1114B%22%2C%22title%22%3A%22Yet%20Another%20Array%20Partitioning%20Task%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1176D%22%2C%22title%22%3A%22Recover%20it%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Trailing%20Loves%20%28or%20L%27oeufs%3F%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Trailing Loves (or L&#039;oeufs?)</h1>
+<h2>题意翻译</h2>
+<div>给定一个$n~(n \leq 1e18)$，求$n!$在$b~(b \leq 1e12)$进制下，末尾$0$的个数。
+其中$n!=\prod \limits_{i=1}^{n}i$</div>
+<h2>题目描述</h2>
+<div> The number "zero" is called "love" (or "l'oeuf" to be precise, literally means "egg" in French), for example when denoting the zero score in a game of tennis.
+Aki is fond of numbers, especially those with trailing zeros. For example, the number $ 9200 $ has two trailing zeros. Aki thinks the more trailing zero digits a number has, the prettier it is.
+However, Aki believes, that the number of trailing zeros of a number is not static, but depends on the base (radix) it is represented in. Thus, he considers a few scenarios with some numbers and bases. And now, since the numbers he used become quite bizarre, he asks you to help him to calculate the beauty of these numbers.
+Given two integers $ n $ and $ b $ (in decimal notation), your task is to calculate the number of trailing zero digits in the $ b $ -ary (in the base/radix of $ b $ ) representation of $ n\,! $ ([factorial](https://en.wikipedia.org/wiki/Factorial) of $ n $ ).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line of the input contains two integers $ n $ and $ b $ ( $ 1 \le n \le 10^{18} $ , $ 2 \le b \le 10^{12} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print an only integer — the number of trailing zero digits in the $ b $ -ary representation of $ n! $</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6 9
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>38 11
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>5 10
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, $ 6!_{(10)} = 720_{(10)} = 880_{(9)} $ .
+In the third and fourth example, $ 5!_{(10)} = 120_{(10)} = 1111000_{(2)} $ .
+The representation of the number $ x $ in the $ b $ -ary base is $ d_1, d_2, \ldots, d_k $ if $ x = d_1 b^{k - 1} + d_2 b^{k - 2} + \ldots + d_k b^0 $ , where $ d_i $ are integers and $ 0 \le d_i \le b - 1 $ . For example, the number $ 720 $ from the first example is represented as $ 880_{(9)} $ since $ 720 = 8 \cdot 9^2 + 8 \cdot 9 + 0 \cdot 1 $ .
+You can read more about bases [here](https://en.wikipedia.org/wiki/Radix).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

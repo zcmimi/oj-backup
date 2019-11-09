@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>New Year and the Permutation Concatenation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401468:bZ3SSBPSkAcV2otMKtedng12cnMrvgr1CA9IArse1R4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%20%24%20n%20%24%20be%20an%20integer.%20Consider%20all%20permutations%20on%20integers%20%24%201%20%24%20to%20%24%20n%20%24%20in%20lexicographic%20order%2C%20and%20concatenate%20them%20into%20one%20big%20sequence%20%24%20p%20%24%20.%20For%20example%2C%20if%20%24%20n%20%3D%203%20%24%20%2C%20then%20%24%20p%20%3D%20%5B1%2C%202%2C%203%2C%201%2C%203%2C%202%2C%202%2C%201%2C%203%2C%202%2C%203%2C%201%2C%203%2C%201%2C%202%2C%203%2C%202%2C%201%5D%20%24%20.%20The%20length%20of%20this%20sequence%20will%20be%20%24%20n%20%5C%5Ccdot%20n%21%20%24%20.%5Cn%5CnLet%20%24%201%20%5C%5Cleq%20i%20%5C%5Cleq%20j%20%5C%5Cleq%20n%20%5C%5Ccdot%20n%21%20%24%20be%20a%20pair%20of%20indices.%20We%20call%20the%20sequence%20%24%20%28p_i%2C%20p_%7Bi%2B1%7D%2C%20%5C%5Cdots%2C%20p_%7Bj-1%7D%2C%20p_j%29%20%24%20a%20subarray%20of%20%24%20p%20%24%20.%20Its%20length%20is%20defined%20as%20the%20number%20of%20its%20elements%2C%20i.e.%2C%20%24%20j%20-%20i%20%2B%201%20%24%20.%20Its%20sum%20is%20the%20sum%20of%20all%20its%20elements%2C%20i.e.%2C%20%24%20%5C%5Csum_%7Bk%3Di%7D%5Ej%20p_k%20%24%20.%5Cn%5CnYou%20are%20given%20%24%20n%20%24%20.%20Find%20the%20number%20of%20subarrays%20of%20%24%20p%20%24%20of%20length%20%24%20n%20%24%20having%20sum%20%24%20%5C%5Cfrac%7Bn%28n%2B1%29%7D%7B2%7D%20%24%20.%20Since%20this%20number%20may%20be%20large%2C%20output%20it%20modulo%20%24%20998244353%20%24%20%28a%20prime%20number%29.%22%2C%22inputFormat%22%3A%22The%20only%20line%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E6%20%24%20%29%2C%20as%20described%20in%20the%20problem%20statement.%22%2C%22outputFormat%22%3A%22Output%20a%20single%20integer%20%5Cu2014%20the%20number%20of%20subarrays%20of%20length%20%24%20n%20%24%20having%20sum%20%24%20%5C%5Cfrac%7Bn%28n%2B1%29%7D%7B2%7D%20%24%20%2C%20modulo%20%24%20998244353%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn%22%2C%22%5Cn9%5Cn%22%5D%2C%5B%22%5Cn4%5Cn%22%2C%22%5Cn56%5Cn%22%5D%2C%5B%22%5Cn10%5Cn%22%2C%22%5Cn30052700%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20there%20are%20%24%2016%20%24%20subarrays%20of%20length%20%24%203%20%24%20.%20In%20order%20of%20appearance%2C%20they%20are%3A%5Cn%5Cn%20%24%20%5B1%2C%202%2C%203%5D%20%24%20%2C%20%24%20%5B2%2C%203%2C%201%5D%20%24%20%2C%20%24%20%5B3%2C%201%2C%203%5D%20%24%20%2C%20%24%20%5B1%2C%203%2C%202%5D%20%24%20%2C%20%24%20%5B3%2C%202%2C%202%5D%20%24%20%2C%20%24%20%5B2%2C%202%2C%201%5D%20%24%20%2C%20%24%20%5B2%2C%201%2C%203%5D%20%24%20%2C%20%24%20%5B1%2C%203%2C%202%5D%20%24%20%2C%20%24%20%5B3%2C%202%2C%203%5D%20%24%20%2C%20%24%20%5B2%2C%203%2C%201%5D%20%24%20%2C%20%24%20%5B3%2C%201%2C%203%5D%20%24%20%2C%20%24%20%5B1%2C%203%2C%201%5D%20%24%20%2C%20%24%20%5B3%2C%201%2C%202%5D%20%24%20%2C%20%24%20%5B1%2C%202%2C%203%5D%20%24%20%2C%20%24%20%5B2%2C%203%2C%202%5D%20%24%20%2C%20%24%20%5B3%2C%202%2C%201%5D%20%24%20.%5Cn%5CnTheir%20sums%20are%20%24%206%20%24%20%2C%20%24%206%20%24%20%2C%20%24%207%20%24%20%2C%20%24%206%20%24%20%2C%20%24%207%20%24%20%2C%20%24%205%20%24%20%2C%20%24%206%20%24%20%2C%20%24%206%20%24%20%2C%20%24%208%20%24%20%2C%20%24%206%20%24%20%2C%20%24%207%20%24%20%2C%20%24%205%20%24%20%2C%20%24%206%20%24%20%2C%20%24%206%20%24%20%2C%20%24%207%20%24%20%2C%20%24%206%20%24%20.%20As%20%24%20%5C%5Cfrac%7Bn%28n%2B1%29%7D%7B2%7D%20%3D%206%20%24%20%2C%20the%20answer%20is%20%24%209%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1091%5C%2FD%22%2C%22id%22%3A%221091D%22%7D%2C%22translation%22%3A%22%5Cu8bbe%24n%24%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu3002%5Cu628a%5Cu6240%5Cu6709%241%24%5Cu5230%24n%24%5Cu7684%5Cu6392%5Cu5217%5Cu6309%5Cu5b57%5Cu5178%5Cu5e8f%5Cu8fde%5Cu63a5%5Cu8d77%5Cu6765%5Cuff0c%5Cu4f7f%5Cu4e4b%5Cu53d8%5Cu6210%5Cu4e00%5Cu4e2a%5Cu66f4%5Cu957f%5Cu7684%5Cu5e8f%5Cu5217%24p%24%5Cu3002%5Cu6bd4%5Cu5982%5Cuff0c%24n%3D3%24%5Cu65f6%5Cuff0c%5Cu5e8f%5Cu5217%24p%24%5Cu4e3a%24%5B1%2C2%2C3%2C1%2C3%2C2%2C2%2C1%2C3%2C2%2C3%2C1%2C3%2C1%2C2%2C3%2C2%2C1%5D%24%5Cu3002%5Cu663e%5Cu7136%5Cuff0c%24p%24%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu00b7%24n%21%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu628a%5Cu4efb%5Cu610f%5Cu6ee1%5Cu8db3%241%5C%5Cleq%20i%20%5C%5Cleq%20j%20%5C%5Cleq%20n%24%5Cu00b7%24n%21%24%20%5Cu7684%5Cu5e8f%5Cu5217%5Cr%5Cn%24%28p_i%2Cp_%7Bi%2B1%7D%2C...%2Cp_%7Bj-1%7D%2Cp_j%29%24%5Cu79f0%5Cu4e3a%24p%24%5Cu7684%5Cu5b50%5Cu5217%5Cuff0c%5Cu5176%5Cu957f%5Cu5ea6%5Cu5b9a%5Cu4e49%5Cu4e3a%24j-i%2B1%24%5Cuff0c%5Cu5176%5Cu548c%5Cu5b9a%5Cu4e49%5Cu4e3a%5Cu6240%5Cu6709%5Cu5143%5Cu7d20%5Cu7684%5Cu603b%5Cu548c%5Cuff0c%5Cu5373%20%24%5C%5Csum_%7Bk%3Di%7D%5Ej%20p_k%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu6574%5Cu6570%24n%24%5Cuff0c%5Cu6c42%5Cu51fa%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu3001%5Cu548c%5Cu4e3a%24n%28n%2B1%29%5C%2F2%24%5Cu7684%24p%24%5Cu7684%5Cu5b50%5Cu5217%5Cuff0c%5Cu7b54%5Cu6848%5Cu5bf9%5Cu7d20%5Cu6570%24998244353%24%5Cu53d6%5Cu6a21%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A151%2C%22totalAccepted%22%3A111%2C%22pid%22%3A%22CF1091D%22%2C%22title%22%3A%22New%20Year%20and%20the%20Permutation%20Concatenation%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P5174%22%2C%22title%22%3A%22%5Cu5706%5Cu70b9%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1091F%22%2C%22title%22%3A%22New%20Year%20and%20the%20Mallard%20Expedition%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1091E%22%2C%22title%22%3A%22New%20Year%20and%20the%20Acquaintance%20Estimation%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1091C%22%2C%22title%22%3A%22New%20Year%20and%20the%20Sphere%20Transmission%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1091B%22%2C%22title%22%3A%22New%20Year%20and%20the%20Treasure%20Geolocation%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22New%20Year%20and%20the%20Permutation%20Concatenation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>New Year and the Permutation Concatenation</h1>
+<h2>题意翻译</h2>
+<div>设$n$为一个整数。把所有$1$到$n$的排列按字典序连接起来，使之变成一个更长的序列$p$。比如，$n=3$时，序列$p$为$[1,2,3,1,3,2,2,1,3,2,3,1,3,1,2,3,2,1]$。显然，$p$的长度为$n$·$n!$。
+把任意满足$1\leq i \leq j \leq n$·$n!$ 的序列
+$(p_i,p_{i+1},...,p_{j-1},p_j)$称为$p$的子列，其长度定义为$j-i+1$，其和定义为所有元素的总和，即 $\sum_{k=i}^j p_k$。
+给定整数$n$，求出有多少个长度为$n$、和为$n(n+1)/2$的$p$的子列，答案对素数$998244353$取模。</div>
+<h2>题目描述</h2>
+<div>Let $ n $ be an integer. Consider all permutations on integers $ 1 $ to $ n $ in lexicographic order, and concatenate them into one big sequence $ p $ . For example, if $ n = 3 $ , then $ p = [1, 2, 3, 1, 3, 2, 2, 1, 3, 2, 3, 1, 3, 1, 2, 3, 2, 1] $ . The length of this sequence will be $ n \cdot n! $ .
+Let $ 1 \leq i \leq j \leq n \cdot n! $ be a pair of indices. We call the sequence $ (p_i, p_{i+1}, \dots, p_{j-1}, p_j) $ a subarray of $ p $ . Its length is defined as the number of its elements, i.e., $ j - i + 1 $ . Its sum is the sum of all its elements, i.e., $ \sum_{k=i}^j p_k $ .
+You are given $ n $ . Find the number of subarrays of $ p $ of length $ n $ having sum $ \frac{n(n+1)}{2} $ . Since this number may be large, output it modulo $ 998244353 $ (a prime number).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line contains one integer $ n $ ( $ 1 \leq n \leq 10^6 $ ), as described in the problem statement.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output a single integer — the number of subarrays of length $ n $ having sum $ \frac{n(n+1)}{2} $ , modulo $ 998244353 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+9
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+56
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+10
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+30052700
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, there are $ 16 $ subarrays of length $ 3 $ . In order of appearance, they are:
+$ [1, 2, 3] $ , $ [2, 3, 1] $ , $ [3, 1, 3] $ , $ [1, 3, 2] $ , $ [3, 2, 2] $ , $ [2, 2, 1] $ , $ [2, 1, 3] $ , $ [1, 3, 2] $ , $ [3, 2, 3] $ , $ [2, 3, 1] $ , $ [3, 1, 3] $ , $ [1, 3, 1] $ , $ [3, 1, 2] $ , $ [1, 2, 3] $ , $ [2, 3, 2] $ , $ [3, 2, 1] $ .
+Their sums are $ 6 $ , $ 6 $ , $ 7 $ , $ 6 $ , $ 7 $ , $ 5 $ , $ 6 $ , $ 6 $ , $ 8 $ , $ 6 $ , $ 7 $ , $ 5 $ , $ 6 $ , $ 6 $ , $ 7 $ , $ 6 $ . As $ \frac{n(n+1)}{2} = 6 $ , the answer is $ 9 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

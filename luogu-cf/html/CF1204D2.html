@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Kirk and a Binary String (hard version) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403081:N8joEi7BhgSSLA0RbEDXkpa7CwT2Fvkmn5aJKPOIGc0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20only%20difference%20between%20easy%20and%20hard%20versions%20is%20the%20length%20of%20the%20string.%20You%20can%20hack%20this%20problem%20if%20you%20solve%20it.%20But%20you%20can%20hack%20the%20previous%20problem%20only%20if%20you%20solve%20both%20problems.%5Cn%5CnKirk%20has%20a%20binary%20string%20%24%20s%20%24%20%28a%20string%20which%20consists%20of%20zeroes%20and%20ones%29%20of%20length%20%24%20n%20%24%20and%20he%20is%20asking%20you%20to%20find%20a%20binary%20string%20%24%20t%20%24%20of%20the%20same%20length%20which%20satisfies%20the%20following%20conditions%3A%5Cn%5Cn-%20For%20any%20%24%20l%20%24%20and%20%24%20r%20%24%20%28%20%24%201%20%5C%5Cleq%20l%20%5C%5Cleq%20r%20%5C%5Cleq%20n%20%24%20%29%20the%20length%20of%20the%20longest%20non-decreasing%20subsequence%20of%20the%20substring%20%24%20s_%7Bl%7Ds_%7Bl%2B1%7D%20%5C%5Cldots%20s_%7Br%7D%20%24%20is%20equal%20to%20the%20length%20of%20the%20longest%20non-decreasing%20subsequence%20of%20the%20substring%20%24%20t_%7Bl%7Dt_%7Bl%2B1%7D%20%5C%5Cldots%20t_%7Br%7D%20%24%20%3B%5Cn-%20The%20number%20of%20zeroes%20in%20%24%20t%20%24%20is%20the%20maximum%20possible.%5Cn%5CnA%20non-decreasing%20subsequence%20of%20a%20string%20%24%20p%20%24%20is%20a%20sequence%20of%20indices%20%24%20i_1%2C%20i_2%2C%20%5C%5Cldots%2C%20i_k%20%24%20such%20that%20%24%20i_1%20%3C%20i_2%20%3C%20%5C%5Cldots%20%3C%20i_k%20%24%20and%20%24%20p_%7Bi_1%7D%20%5C%5Cleq%20p_%7Bi_2%7D%20%5C%5Cleq%20%5C%5Cldots%20%5C%5Cleq%20p_%7Bi_k%7D%20%24%20.%20The%20length%20of%20the%20subsequence%20is%20%24%20k%20%24%20.%5Cn%5CnIf%20there%20are%20multiple%20substrings%20which%20satisfy%20the%20conditions%2C%20output%20any.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20binary%20string%20of%20length%20not%20more%20than%20%24%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22Output%20a%20binary%20string%20which%20satisfied%20the%20above%20conditions.%20If%20there%20are%20many%20such%20strings%2C%20output%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn110%5Cn%22%2C%22%5Cn010%5Cn%22%5D%2C%5B%22%5Cn010%5Cn%22%2C%22%5Cn010%5Cn%22%5D%2C%5B%22%5Cn0001111%5Cn%22%2C%22%5Cn0000000%5Cn%22%5D%2C%5B%22%5Cn0111001100111011101000%5Cn%22%2C%22%5Cn0011001100001011101000%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%3A%5Cn%5Cn-%20For%20the%20substrings%20of%20the%20length%20%24%201%20%24%20the%20length%20of%20the%20longest%20non-decreasing%20subsequnce%20is%20%24%201%20%24%20%3B%5Cn-%20For%20%24%20l%20%3D%201%2C%20r%20%3D%202%20%24%20the%20longest%20non-decreasing%20subsequnce%20of%20the%20substring%20%24%20s_%7B1%7Ds_%7B2%7D%20%24%20is%20%24%2011%20%24%20and%20the%20longest%20non-decreasing%20subsequnce%20of%20the%20substring%20%24%20t_%7B1%7Dt_%7B2%7D%20%24%20is%20%24%2001%20%24%20%3B%5Cn-%20For%20%24%20l%20%3D%201%2C%20r%20%3D%203%20%24%20the%20longest%20non-decreasing%20subsequnce%20of%20the%20substring%20%24%20s_%7B1%7Ds_%7B3%7D%20%24%20is%20%24%2011%20%24%20and%20the%20longest%20non-decreasing%20subsequnce%20of%20the%20substring%20%24%20t_%7B1%7Dt_%7B3%7D%20%24%20is%20%24%2000%20%24%20%3B%5Cn-%20For%20%24%20l%20%3D%202%2C%20r%20%3D%203%20%24%20the%20longest%20non-decreasing%20subsequnce%20of%20the%20substring%20%24%20s_%7B2%7Ds_%7B3%7D%20%24%20is%20%24%201%20%24%20and%20the%20longest%20non-decreasing%20subsequnce%20of%20the%20substring%20%24%20t_%7B2%7Dt_%7B3%7D%20%24%20is%20%24%201%20%24%20%3B%5Cn%5CnThe%20second%20example%20is%20similar%20to%20the%20first%20one.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1204%5C%2FD2%22%2C%22id%22%3A%221204D2%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu5b57%5Cu7b26%5Cu4e32%24s%24%5Cuff0c%5Cu8ba9%5Cu4f60%5Cu6c42%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu65b0%5Cu7684%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu5b57%5Cu7b26%5Cu4e32%24t%24%5Cuff0c%5Cu4f7f%5Cu5176%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu6761%5Cu4ef6%5Cuff1a%5Cr%5Cn%5Cr%5Cn1.%20%5Cu65b0%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%240%24%5Cu7684%5Cu4e2a%5Cu6570%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu591a%5Cu3002%5Cr%5Cn1.%20%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%24l%2Cr%281%5Cu2264l%5Cu2264r%5Cu2264n%29%24%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu6700%5Cu957f%5Cu4e0d%5Cu4e0b%5Cu964d%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7b49%5Cu957f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu5b57%5Cu7b26%5Cu4e32%24s%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu6761%5Cu4ef6%5Cu7684%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu5b57%5Cu7b26%5Cu4e32%24t%24%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A62%2C%22totalAccepted%22%3A61%2C%22pid%22%3A%22CF1204D2%22%2C%22title%22%3A%22Kirk%20and%20a%20Binary%20String%20%28hard%20version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1204E%22%2C%22title%22%3A%22Natasha%2C%20Sasha%20and%20the%20Prefix%20Sums%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1204D1%22%2C%22title%22%3A%22Kirk%20and%20a%20Binary%20String%20%28easy%20version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1204C%22%2C%22title%22%3A%22Anna%2C%20Svyatoslav%20and%20Maps%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1204B%22%2C%22title%22%3A%22Mislove%20Has%20Lost%20an%20Array%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1204A%22%2C%22title%22%3A%22BowWow%20and%20the%20Timetable%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Kirk%20and%20a%20Binary%20String%20%28hard%20version%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Kirk and a Binary String (hard version)</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+给你一个二进制字符串$s$，让你求出一个新的二进制字符串$t$，使其满足以下条件：
+1. 新字符串的$0$的个数尽可能多。
+1. 对于每个$l,r(1≤l≤r≤n)$，两个字符串的最长不下降子序列等长。
+输入格式
+一行，一个二进制字符串$s$。
+输出格式
+一行，满足条件的二进制字符串$t$。</div>
+<h2>题目描述</h2>
+<div>The only difference between easy and hard versions is the length of the string. You can hack this problem if you solve it. But you can hack the previous problem only if you solve both problems.
+Kirk has a binary string $ s $ (a string which consists of zeroes and ones) of length $ n $ and he is asking you to find a binary string $ t $ of the same length which satisfies the following conditions:
+- For any $ l $ and $ r $ ( $ 1 \leq l \leq r \leq n $ ) the length of the longest non-decreasing subsequence of the substring $ s_{l}s_{l+1} \ldots s_{r} $ is equal to the length of the longest non-decreasing subsequence of the substring $ t_{l}t_{l+1} \ldots t_{r} $ ;
+- The number of zeroes in $ t $ is the maximum possible.
+A non-decreasing subsequence of a string $ p $ is a sequence of indices $ i_1, i_2, \ldots, i_k $ such that $ i_1 < i_2 < \ldots < i_k $ and $ p_{i_1} \leq p_{i_2} \leq \ldots \leq p_{i_k} $ . The length of the subsequence is $ k $ .
+If there are multiple substrings which satisfy the conditions, output any.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a binary string of length not more than $ 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Output a binary string which satisfied the above conditions. If there are many such strings, output any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+110
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+010
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+010
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+010
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+0001111
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+0000000
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+0111001100111011101000
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+0011001100001011101000
+</code></pre>
+<h2>说明</h2>
+<div>In the first example:
+- For the substrings of the length $ 1 $ the length of the longest non-decreasing subsequnce is $ 1 $ ;
+- For $ l = 1, r = 2 $ the longest non-decreasing subsequnce of the substring $ s_{1}s_{2} $ is $ 11 $ and the longest non-decreasing subsequnce of the substring $ t_{1}t_{2} $ is $ 01 $ ;
+- For $ l = 1, r = 3 $ the longest non-decreasing subsequnce of the substring $ s_{1}s_{3} $ is $ 11 $ and the longest non-decreasing subsequnce of the substring $ t_{1}t_{3} $ is $ 00 $ ;
+- For $ l = 2, r = 3 $ the longest non-decreasing subsequnce of the substring $ s_{2}s_{3} $ is $ 1 $ and the longest non-decreasing subsequnce of the substring $ t_{2}t_{3} $ is $ 1 $ ;
+The second example is similar to the first one.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

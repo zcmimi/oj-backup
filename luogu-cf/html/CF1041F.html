@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Ray in the tube - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400882:AH2KqsAw0gitRc1ktV2coepB6cpSLaXXM9AzSgMdTDc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20tube%20which%20is%20reflective%20inside%20represented%20as%20two%20non-coinciding%2C%20but%20parallel%20to%20%24%20Ox%20%24%20lines.%20Each%20line%20has%20some%20special%20integer%20points%20%5Cu2014%20positions%20of%20sensors%20on%20sides%20of%20the%20tube.%5Cn%5CnYou%20are%20going%20to%20emit%20a%20laser%20ray%20in%20the%20tube.%20To%20do%20so%2C%20you%20have%20to%20choose%20two%20integer%20points%20%24%20A%20%24%20and%20%24%20B%20%24%20on%20the%20first%20and%20the%20second%20line%20respectively%20%28coordinates%20can%20be%20negative%29%3A%20the%20point%20%24%20A%20%24%20is%20responsible%20for%20the%20position%20of%20the%20laser%2C%20and%20the%20point%20%24%20B%20%24%20%5Cu2014%20for%20the%20direction%20of%20the%20laser%20ray.%20The%20laser%20ray%20is%20a%20ray%20starting%20at%20%24%20A%20%24%20and%20directed%20at%20%24%20B%20%24%20which%20will%20reflect%20from%20the%20sides%20of%20the%20tube%20%28it%20doesn%27t%20matter%20if%20there%20are%20any%20sensors%20at%20a%20reflection%20point%20or%20not%29.%20A%20sensor%20will%20only%20register%20the%20ray%20if%20the%20ray%20hits%20exactly%20at%20the%20position%20of%20the%20sensor.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1041F%5C%2F62b366e37f4630b9fe518e490990934bb6a401ce.png%29Examples%20of%20laser%20rays.%20Note%20that%20image%20contains%20two%20examples.%20The%20%24%203%20%24%20sensors%20%28denoted%20by%20black%20bold%20points%20on%20the%20tube%20sides%29%20will%20register%20the%20blue%20ray%20but%20only%20%24%202%20%24%20will%20register%20the%20red.Calculate%20the%20maximum%20number%20of%20sensors%20which%20can%20register%20your%20ray%20if%20you%20choose%20points%20%24%20A%20%24%20and%20%24%20B%20%24%20on%20the%20first%20and%20the%20second%20lines%20respectively.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20y_1%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2010%5E5%20%24%20%2C%20%24%200%20%5C%5Cle%20y_1%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20number%20of%20sensors%20on%20the%20first%20line%20and%20its%20%24%20y%20%24%20coordinate.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20%28%20%24%200%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20%24%20x%20%24%20coordinates%20of%20the%20sensors%20on%20the%20first%20line%20in%20the%20ascending%20order.%5Cn%5CnThe%20third%20line%20contains%20two%20integers%20%24%20m%20%24%20and%20%24%20y_2%20%24%20%28%20%24%201%20%5C%5Cle%20m%20%5C%5Cle%2010%5E5%20%24%20%2C%20%24%20y_1%20%3C%20y_2%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20number%20of%20sensors%20on%20the%20second%20line%20and%20its%20%24%20y%20%24%20coordinate.%5Cn%5CnThe%20fourth%20line%20contains%20%24%20m%20%24%20integers%20%24%20b_1%2C%20b_2%2C%20%5C%5Cldots%2C%20b_m%20%24%20%28%20%24%200%20%5C%5Cle%20b_i%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20%24%20x%20%24%20coordinates%20of%20the%20sensors%20on%20the%20second%20line%20in%20the%20ascending%20order.%22%2C%22outputFormat%22%3A%22Print%20the%20only%20integer%20%5Cu2014%20the%20maximum%20number%20of%20sensors%20which%20can%20register%20the%20ray.%22%2C%22samples%22%3A%5B%5B%223%201%5Cn1%205%206%5Cn1%203%5Cn3%5Cn%22%2C%223%5Cn%22%5D%5D%2C%22hint%22%3A%22One%20of%20the%20solutions%20illustrated%20on%20the%20image%20by%20pair%20%24%20A_2%20%24%20and%20%24%20B_2%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1041%5C%2FF%22%2C%22id%22%3A%221041F%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cuff1a%5Cn%5Cu4e0b%5Cu8fb9%5Cu754c%5Cu6709%24n%24%5Cu4e2a%5Cu7ed9%5Cu5b9a%5Cu70b9%5Cuff0c%5Cu4e0a%5Cu8fb9%5Cu754c%5Cu6709%24m%24%5Cu4e2a%5Cu7ed9%5Cu5b9a%5Cu70b9%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu53d1%5Cu51fa%5Cu4e00%5Cu6761%5Cu6fc0%5Cu5149%5Cuff0c%5Cu6fc0%5Cu5149%5Cu78b0%5Cu5230%5Cu8fb9%5Cu754c%5Cu4f1a%5Cu53cd%5Cu5c04%5Cn%5Cn%5Cu6fc0%5Cu5149%5Cu5230%5Cu8fbe%5Cu8fb9%5Cu754c%5Cu5fc5%5Cu987b%5Cu6253%5Cu5230%5Cu6574%5Cu6570%5Cu70b9%5Cuff0c%5Cu95ee%5Cu6700%5Cu591a%5Cu53ef%5Cu4ee5%5Cu6253%5Cu5230%5Cu51e0%5Cu4e2a%5Cu7ed9%5Cu5b9a%5Cu70b9%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24n%2Cy_1%24%5Cuff0c%5Cu8868%5Cu793a%5Cu4e0b%5Cu8fb9%5Cu754c%5Cu7ed9%5Cu5b9a%5Cu70b9%5Cu7684%5Cu4e2a%5Cu6570%5Cu548c%5Cu4e0b%5Cu8fb9%5Cu754c%5Cu7684%5Cu7eb5%5Cu5750%5Cu6807%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%24n%24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu7ed9%5Cu5b9a%5Cu70b9%5Cu7684%5Cu6a2a%5Cu5750%5Cu6807%5Cn%5Cn%5Cu7b2c%5Cu4e09%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24m%2Cy_2%24%5Cuff0c%5Cu8868%5Cu793a%5Cu4e0a%5Cu8fb9%5Cu754c%5Cu7ed9%5Cu5b9a%5Cu70b9%5Cu7684%5Cu4e2a%5Cu6570%5Cu548c%5Cu4e0a%5Cu8fb9%5Cu754c%5Cu7684%5Cu7eb5%5Cu5750%5Cu6807%5Cn%5Cn%5Cu7b2c%5Cu56db%5Cu884c%24m%24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu7ed9%5Cu5b9a%5Cu70b9%5Cu7684%5Cu6a2a%5Cu5750%5Cu6807%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu591a%5Cu80fd%5Cu6253%5Cu5230%5Cu591a%5Cu5c11%5Cu70b9%5Cn%22%2C%22tags%22%3A%5B1%2C111%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A96%2C%22totalAccepted%22%3A58%2C%22pid%22%3A%22CF1041F%22%2C%22title%22%3A%22Ray%20in%20the%20tube%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A65280%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A29610%2C%22name%22%3A%22CF1041F%20Ray%20in%20the%20tube%22%2C%22slug%22%3A%22CF1041F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2633%22%2C%22title%22%3A%22Count%20on%20a%20tree%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3267%22%2C%22title%22%3A%22%5BJLOI2016%5C%2FSHOI2016%5D%5Cu4fa6%5Cu5bdf%5Cu5b88%5Cu536b%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4183%22%2C%22title%22%3A%22%5BUSACO18JAN%5DCow%20at%20Large%20P%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1041E%22%2C%22title%22%3A%22Tree%20Reconstruction%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1042A%22%2C%22title%22%3A%22Benches%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Ray%20in%20the%20tube%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Ray in the tube</h1>
+<h2>题意翻译</h2>
+<div>### 题目大意：
+下边界有$n$个给定点，上边界有$m$个给定点，可以从任意一个点发出一条激光，激光碰到边界会反射
+激光到达边界必须打到整数点，问最多可以打到几个给定点
+### 输入格式：
+第一行两个整数$n,y_1$，表示下边界给定点的个数和下边界的纵坐标
+第二行$n$个整数，表示给定点的横坐标
+第三行两个整数$m,y_2$，表示上边界给定点的个数和上边界的纵坐标
+第四行$m$个整数，表示给定点的横坐标
+### 输出格式：
+一个整数，表示最多能打到多少点
+</div>
+<h2>题目描述</h2>
+<div>You are given a tube which is reflective inside represented as two non-coinciding, but parallel to $ Ox $ lines. Each line has some special integer points — positions of sensors on sides of the tube.
+You are going to emit a laser ray in the tube. To do so, you have to choose two integer points $ A $ and $ B $ on the first and the second line respectively (coordinates can be negative): the point $ A $ is responsible for the position of the laser, and the point $ B $ — for the direction of the laser ray. The laser ray is a ray starting at $ A $ and directed at $ B $ which will reflect from the sides of the tube (it doesn't matter if there are any sensors at a reflection point or not). A sensor will only register the ray if the ray hits exactly at the position of the sensor.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1041F/62b366e37f4630b9fe518e490990934bb6a401ce.png)Examples of laser rays. Note that image contains two examples. The $ 3 $ sensors (denoted by black bold points on the tube sides) will register the blue ray but only $ 2 $ will register the red.Calculate the maximum number of sensors which can register your ray if you choose points $ A $ and $ B $ on the first and the second lines respectively.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ y_1 $ ( $ 1 \le n \le 10^5 $ , $ 0 \le y_1 \le 10^9 $ ) — number of sensors on the first line and its $ y $ coordinate.
+The second line contains $ n $ integers $ a_1, a_2, \ldots, a_n $ ( $ 0 \le a_i \le 10^9 $ ) — $ x $ coordinates of the sensors on the first line in the ascending order.
+The third line contains two integers $ m $ and $ y_2 $ ( $ 1 \le m \le 10^5 $ , $ y_1 < y_2 \le 10^9 $ ) — number of sensors on the second line and its $ y $ coordinate.
+The fourth line contains $ m $ integers $ b_1, b_2, \ldots, b_m $ ( $ 0 \le b_i \le 10^9 $ ) — $ x $ coordinates of the sensors on the second line in the ascending order.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the only integer — the maximum number of sensors which can register the ray.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+1 5 6
+1 3
+3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h2>说明</h2>
+<div>One of the solutions illustrated on the image by pair $ A_2 $ and $ B_2 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

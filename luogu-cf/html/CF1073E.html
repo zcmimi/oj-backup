@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Segment Sum - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401256:8VN35I4pqk0d9KqKni3jtC7PbSHsMa+6Tg9OhR6gSN0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20two%20integers%20%24%20l%20%24%20and%20%24%20r%20%24%20%28%20%24%20l%20%5C%5Cle%20r%20%24%20%29.%20Your%20task%20is%20to%20calculate%20the%20sum%20of%20numbers%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20%28including%20%24%20l%20%24%20and%20%24%20r%20%24%20%29%20such%20that%20each%20number%20contains%20at%20most%20%24%20k%20%24%20different%20digits%2C%20and%20print%20this%20sum%20modulo%20%24%20998244353%20%24%20.%5Cn%5CnFor%20example%2C%20if%20%24%20k%20%3D%201%20%24%20then%20you%20have%20to%20calculate%20all%20numbers%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20such%20that%20each%20number%20is%20formed%20using%20only%20one%20digit.%20For%20%24%20l%20%3D%2010%2C%20r%20%3D%2050%20%24%20the%20answer%20is%20%24%2011%20%2B%2022%20%2B%2033%20%2B%2044%20%3D%20110%20%24%20.%22%2C%22inputFormat%22%3A%22The%20only%20line%20of%20the%20input%20contains%20three%20integers%20%24%20l%20%24%20%2C%20%24%20r%20%24%20and%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cle%20l%20%5C%5Cle%20r%20%3C%2010%5E%7B18%7D%2C%201%20%5C%5Cle%20k%20%5C%5Cle%2010%20%24%20%29%20%5Cu2014%20the%20borders%20of%20the%20segment%20and%20the%20maximum%20number%20of%20different%20digits.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20sum%20of%20numbers%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20such%20that%20each%20number%20contains%20at%20most%20%24%20k%20%24%20different%20digits%2C%20modulo%20%24%20998244353%20%24%20.%22%2C%22samples%22%3A%5B%5B%2210%2050%202%5Cn%22%2C%221230%5Cn%22%5D%2C%5B%221%202345%2010%5Cn%22%2C%222750685%5Cn%22%5D%2C%5B%22101%20154%202%5Cn%22%2C%222189%5Cn%22%5D%5D%2C%22hint%22%3A%22For%20the%20first%20example%20the%20answer%20is%20just%20the%20sum%20of%20numbers%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20which%20equals%20to%20%24%20%5C%5Cfrac%7B50%20%5C%5Ccdot%2051%7D%7B2%7D%20-%20%5C%5Cfrac%7B9%20%5C%5Ccdot%2010%7D%7B2%7D%20%3D%201230%20%24%20.%20This%20example%20also%20explained%20in%20the%20problem%20statement%20but%20for%20%24%20k%20%3D%201%20%24%20.%5Cn%5CnFor%20the%20second%20example%20the%20answer%20is%20just%20the%20sum%20of%20numbers%20from%20%24%20l%20%24%20to%20%24%20r%20%24%20which%20equals%20to%20%24%20%5C%5Cfrac%7B2345%20%5C%5Ccdot%202346%7D%7B2%7D%20%3D%202750685%20%24%20.%5Cn%5CnFor%20the%20third%20example%20the%20answer%20is%20%24%20101%20%2B%20110%20%2B%20111%20%2B%20112%20%2B%20113%20%2B%20114%20%2B%20115%20%2B%20116%20%2B%20117%20%2B%20118%20%2B%20119%20%2B%20121%20%2B%20122%20%2B%20131%20%2B%20133%20%2B%20141%20%2B%20144%20%2B%20151%20%3D%202189%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1073%5C%2FE%22%2C%22id%22%3A%221073E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9aK%2CL%2CR%5Cuff0c%5Cu6c42L~R%5Cu4e4b%5Cu95f4%5Cu6700%5Cu591a%5Cu4e0d%5Cu5305%5Cu542b%5Cu8d85%5Cu8fc7K%5Cu4e2a%5Cu6570%5Cu7801%5Cu7684%5Cu6570%5Cu7684%5Cu548c%5Cu3002%5Cr%5Cn%5Cr%5CnK%3C%3D10%5Cuff0cL%2CR%3C%3D1e18%22%2C%22tags%22%3A%5B3%2C141%2C151%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A87%2C%22totalAccepted%22%3A50%2C%22pid%22%3A%22CF1073E%22%2C%22title%22%3A%22Segment%20Sum%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A78323%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%5Cuff0c%5Cu8fd9%5Cu9898dp%5Cu65b9%5Cu7a0b%5Cu548b%5Cu8bbe%5Cu8ba1%5Cu554a%28%5Cu4ee3%5Cu7801%5Cu9519%5Cu7684%29%22%2C%22forum%22%3A%7B%22id%22%3A31147%2C%22name%22%3A%22CF1073E%20Segment%20Sum%22%2C%22slug%22%3A%22CF1073E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2787%22%2C%22title%22%3A%22%5Cu8bed%5Cu65871%5Cuff08chin1%5Cuff09-%20%5Cu7406%5Cu7406%5Cu601d%5Cu7ef4%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA11594%22%2C%22title%22%3A%22All%20Pairs%20Maximum%20Flow%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22P4491%22%2C%22title%22%3A%22%5BHAOI2018%5D%5Cu67d3%5Cu8272%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1073F%22%2C%22title%22%3A%22Choosing%20Two%20Paths%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1073D%22%2C%22title%22%3A%22Berland%20Fair%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Segment%20Sum%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Segment Sum</h1>
+<h2>题意翻译</h2>
+<div>给定K,L,R，求L~R之间最多不包含超过K个数码的数的和。
+K<=10，L,R<=1e18</div>
+<h2>题目描述</h2>
+<div>You are given two integers $ l $ and $ r $ ( $ l \le r $ ). Your task is to calculate the sum of numbers from $ l $ to $ r $ (including $ l $ and $ r $ ) such that each number contains at most $ k $ different digits, and print this sum modulo $ 998244353 $ .
+For example, if $ k = 1 $ then you have to calculate all numbers from $ l $ to $ r $ such that each number is formed using only one digit. For $ l = 10, r = 50 $ the answer is $ 11 + 22 + 33 + 44 = 110 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line of the input contains three integers $ l $ , $ r $ and $ k $ ( $ 1 \le l \le r < 10^{18}, 1 \le k \le 10 $ ) — the borders of the segment and the maximum number of different digits.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the sum of numbers from $ l $ to $ r $ such that each number contains at most $ k $ different digits, modulo $ 998244353 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 50 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1230
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1 2345 10
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2750685
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>101 154 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>2189
+</code></pre>
+<h2>说明</h2>
+<div>For the first example the answer is just the sum of numbers from $ l $ to $ r $ which equals to $ \frac{50 \cdot 51}{2} - \frac{9 \cdot 10}{2} = 1230 $ . This example also explained in the problem statement but for $ k = 1 $ .
+For the second example the answer is just the sum of numbers from $ l $ to $ r $ which equals to $ \frac{2345 \cdot 2346}{2} = 2750685 $ .
+For the third example the answer is $ 101 + 110 + 111 + 112 + 113 + 114 + 115 + 116 + 117 + 118 + 119 + 121 + 122 + 131 + 133 + 141 + 144 + 151 = 2189 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

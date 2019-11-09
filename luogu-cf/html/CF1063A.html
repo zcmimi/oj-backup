@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Oh Those Palindromes - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401132:P9d7f7gbuf7LaOaWSE2gymW3Xj5G+3nPrRnLbwPMzLY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20non-empty%20string%20is%20called%20palindrome%2C%20if%20it%20reads%20the%20same%20from%20the%20left%20to%20the%20right%20and%20from%20the%20right%20to%20the%20left.%20For%20example%2C%20%5C%22abcba%5C%22%2C%20%5C%22a%5C%22%2C%20and%20%5C%22abba%5C%22%20are%20palindromes%2C%20while%20%5C%22abab%5C%22%20and%20%5C%22xy%5C%22%20are%20not.%5Cn%5CnA%20string%20is%20called%20a%20substring%20of%20another%20string%2C%20if%20it%20can%20be%20obtained%20from%20that%20string%20by%20dropping%20some%20%28possibly%20zero%29%20number%20of%20characters%20from%20the%20beginning%20and%20from%20the%20end%20of%20it.%20For%20example%2C%20%5C%22abc%5C%22%2C%20%5C%22ab%5C%22%2C%20and%20%5C%22c%5C%22%20are%20substrings%20of%20the%20string%20%5C%22abc%5C%22%2C%20while%20%5C%22ac%5C%22%20and%20%5C%22d%5C%22%20are%20not.%5Cn%5CnLet%27s%20define%20a%20palindromic%20count%20of%20the%20string%20as%20the%20number%20of%20its%20substrings%20that%20are%20palindromes.%20For%20example%2C%20the%20palindromic%20count%20of%20the%20string%20%5C%22aaa%5C%22%20is%20%24%206%20%24%20because%20all%20its%20substrings%20are%20palindromes%2C%20and%20the%20palindromic%20count%20of%20the%20string%20%5C%22abc%5C%22%20is%20%24%203%20%24%20because%20only%20its%20substrings%20of%20length%20%24%201%20%24%20are%20palindromes.%5Cn%5CnYou%20are%20given%20a%20string%20%24%20s%20%24%20.%20You%20can%20arbitrarily%20rearrange%20its%20characters.%20You%20goal%20is%20to%20obtain%20a%20string%20with%20the%20maximum%20possible%20value%20of%20palindromic%20count.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%20100%5C%5C%2C000%20%24%20%29%20%5Cu2014%20the%20length%20of%20string%20%24%20s%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20string%20%24%20s%20%24%20that%20consists%20of%20exactly%20%24%20n%20%24%20lowercase%20characters%20of%20Latin%20alphabet.%22%2C%22outputFormat%22%3A%22Print%20string%20%24%20t%20%24%20%2C%20which%20consists%20of%20the%20same%20set%20of%20characters%20%28and%20each%20characters%20appears%20exactly%20the%20same%20number%20of%20times%29%20as%20string%20%24%20s%20%24%20.%20Moreover%2C%20%24%20t%20%24%20should%20have%20the%20maximum%20possible%20value%20of%20palindromic%20count%20among%20all%20such%20strings%20strings.%5Cn%5CnIf%20there%20are%20multiple%20such%20strings%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%225%5Cnoolol%5Cn%22%2C%22ololo%5Cn%22%5D%2C%5B%2216%5Cngagadbcgghhchbdf%5Cn%22%2C%22abccbaghghghgdfd%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20string%20%5C%22ololo%5C%22%20has%20%24%209%20%24%20palindromic%20substrings%3A%20%5C%22o%5C%22%2C%20%5C%22l%5C%22%2C%20%5C%22o%5C%22%2C%20%5C%22l%5C%22%2C%20%5C%22o%5C%22%2C%20%5C%22olo%5C%22%2C%20%5C%22lol%5C%22%2C%20%5C%22olo%5C%22%2C%20%5C%22ololo%5C%22.%20Note%2C%20that%20even%20though%20some%20substrings%20coincide%2C%20they%20are%20counted%20as%20many%20times%20as%20they%20appear%20in%20the%20resulting%20string.%5Cn%5CnIn%20the%20second%20example%2C%20the%20palindromic%20count%20of%20string%20%5C%22abccbaghghghgdfd%5C%22%20is%20%24%2029%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1063%5C%2FA%22%2C%22id%22%3A%221063A%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu975e%5Cu7a7a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu53eb%5Cu505a%5Cu56de%5Cu6587%5Cu4e32%5Cu3002%5Cu5982%5Cu679c%5Cu5b83%5Cu4ece%5Cu5de6%5Cu5230%5Cu53f3%5Cuff0c%5Cu4ece%5Cu53f3%5Cu5230%5Cu5de6%5Cu8bfb%5Cu76f8%5Cu540c%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5b83%5Cu5c31%5Cu662f%5Cu56de%5Cu6587%5Cu4e32%5Cu3002%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu201cABCBA%5Cu201d%2C%5Cu201cA%5Cu201d%5Cu548c%5Cu201cABBA%5Cu201d%5Cu90fd%5Cu662f%5Cu56de%5Cu6587%5Cu4e32%5Cuff0c%5Cu800c%5Cu201cABAB%5Cu201d%5Cu548c%5Cu201cXY%5Cu201d%5Cu5219%5Cu4e0d%5Cu662f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu4ece%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu5f00%5Cu5934%5Cu548c%5Cu7ed3%5Cu5c3e%5Cu5220%5Cu9664%5Cu4e00%5Cu4e9b%5Cuff08%5Cu53ef%5Cu80fd%5Cu4e3a%5Cu96f6%5Cuff09%5Cu5b57%5Cu7b26%5Cu6765%5Cu4ece%5Cu8be5%5Cu5b57%5Cu7b26%5Cu4e32%5Cu83b7%5Cu5f97%5Cu65b0%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cr%5Cn%5Cu5219%5Cu65b0%5Cu5b57%5Cu7b26%5Cu4e32%5Cu53eb%5Cu505a%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu5b50%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu201cABC%5Cu201d%5Cu3001%5Cu201cAB%5Cu201d%5Cu548c%5Cu201cC%5Cu201d%5Cu662f%5Cu5b57%5Cu7b26%5Cu4e32%5Cu201cABC%5Cu201d%5Cu7684%5Cu5b50%5Cu4e32%5Cuff0c%5Cu800c%5Cu201cAC%5Cu201d%5Cu548c%5Cu201cD%5Cu201d%5Cu4e0d%5Cu662f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu628a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu201c%5Cu56de%5Cu6587%5Cu8ba1%5Cu6570%5Cu201d%5Cu5b9a%5Cu4e49%5Cu4e3a%5Cu56de%5Cu6587%5Cu7684%5Cu5b50%5Cu4e32%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5b57%5Cu7b26%5Cu4e32%5Cu201caaa%5Cu201d%5Cu7684%5Cu56de%5Cu6587%5Cu8ba1%5Cu6570%5Cu662f6%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu5b83%5Cu7684%5Cu6240%5Cu6709%5Cu5b50%5Cu5b57%5Cu7b26%5Cu4e32%5Cu90fd%5Cu662f%5Cu56de%5Cu6587%5Cuff0c%5Cr%5Cn%5Cu800c%5Cu5b57%5Cu7b26%5Cu4e32%5Cu201cabc%5Cu201d%5Cu7684%5Cu56de%5Cu6587%5Cu8ba1%5Cu6570%5Cu662f3%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu53ea%5Cu6709%5Cu957f%5Cu5ea6%5Cu4e3a1%5Cu7684%5Cu5b50%5Cu5b57%5Cu7b26%5Cu4e32%5Cu662f%5Cu56de%5Cu6587%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32S%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu4efb%5Cu610f%5Cu5730%5Cu91cd%5Cu65b0%5Cu6392%5Cu5217%5Cu5b83%5Cu7684%5Cu5b57%5Cu7b26%5Cuff0c%5Cu6c42%5Cu5b83%5Cu7684%5Cu56de%5Cu6587%5Cu8ba1%5Cu6570%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu6574%5Cu6570n%5Cuff081%5Cu2264n%5Cu2264100000%5Cuff09%5Cu8868%5Cu793a%5Cu5b57%5Cu7b26%5Cu4e32s%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%5Cu5b57%5Cu7b26%5Cu4e32S%5Cuff0c%5Cu5b83%5Cu7531n%5Cu4e2a%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu7ec4%5Cu6210%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu5b57%5Cu7b26%5Cu4e32t%5Cuff0c%5Cuff08%5Cu5b83%5Cu662f%5Cu5b57%5Cu7b26%5Cu4e32s%5Cu7684%5Cu4e00%5Cu79cd%5Cu6392%5Cu5217%5Cuff09%5Cr%5Cn%5Cu6b64%5Cu5916%5Cuff0ct%5Cu5e94%5Cu8be5%5Cu5177%5Cu6709%5Cu6700%5Cu5927%5Cu56de%5Cu6587%5Cu8ba1%5Cu6570%5Cu7684%5Cu53ef%5Cu80fd%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu4e2a%5Cu8fd9%5Cu6837%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5b83%5Cu4eec%5Cu4e2d%5Cu7684%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cuff1a%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%231%5Cuff1a%5Cr%5Cn%60%60%60%5Cr%5Cn5%5Cr%5Cnoolol%5Cr%5Cn%60%60%60%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%231%5Cuff1a%5Cr%5Cn%60%60%60%5Cr%5Cnololo%5Cr%5Cn%60%60%60%5Cr%5Cn%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%232%5Cuff1a%5Cr%5Cn%60%60%60%5Cr%5Cn16%5Cr%5Cngagadbcgghhchbdf%5Cr%5Cn%60%60%60%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%232%5Cuff1a%5Cr%5Cn%60%60%60%5Cr%5Cn16%5Cr%5Cngagadbcgghhchbdf%5Cr%5Cn%60%60%60%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%5Cuff1a%5Cr%5Cn%5Cu5728%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu4f8b%5Cu5b50%5Cu4e2d%5Cuff0c%5Cu5b57%5Cu7b26%5Cu4e32%5Cu201cololo%5Cu201d%5Cu67099%5Cu4e2a9%5Cu56de%5Cu6587%5Cu5b50%5Cu4e32%5Cuff1a%5Cr%5Cn%5C%22o%5C%22%2C%5C%22l%5C%22%2C%5C%22o%5C%22%2C%5C%22l%5C%22%2C%5C%22o%5C%22%2C%5C%22olo%5C%22%2C%5C%22lol%5C%22%2C%5C%22olo%5C%22%2C%5C%22oloo%5C%22%5Cr%5Cn%5Cr%5Cn%5Cu6ce8%5Cu610f%5Cuff0c%5Cu5373%5Cu4f7f%5Cu67d0%5Cu4e9b%5Cu5b50%5Cu4e32%5Cu91cd%5Cu5408%5Cuff0c%5Cu5b83%5Cu4eec%5Cu4e5f%5Cu4f1a%5Cu5728%5Cu751f%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e2d%5Cu8ba1%5Cu5165%5Cu591a%5Cu6b21%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu4f8b%5Cu5b50%5Cu4e2d%5Cuff0c%5Cu5b57%5Cu7b26%5Cu4e32%5Cu201cabccbaghghghgdfd%5Cu201d%5Cu7684%5Cu56de%5Cu6587%5Cu8ba1%5Cu6570%5Cu4e3a29%5Cu3002%5Cr%5Cn%22%2C%22tags%22%3A%5B2%2C266%2C318%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A243%2C%22totalAccepted%22%3A203%2C%22pid%22%3A%22CF1063A%22%2C%22title%22%3A%22Oh%20Those%20Palindromes%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF171C%22%2C%22title%22%3A%22A%20Piece%20of%20Cake%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1064B%22%2C%22title%22%3A%22Equations%20of%20Mathematical%20Magic%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1064A%22%2C%22title%22%3A%22Make%20a%20triangle%21%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1063C%22%2C%22title%22%3A%22Dwarves%2C%20Hats%20and%20Extrasensory%20Abilities%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1063B%22%2C%22title%22%3A%22Labyrinth%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Oh%20Those%20Palindromes%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Oh Those Palindromes</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+一个非空字符串叫做回文串。如果它从左到右，从右到左读相同，那么它就是回文串。
+例如，“ABCBA”,“A”和“ABBA”都是回文串，而“ABAB”和“XY”则不是。
+如果可以通过从字符串的开头和结尾删除一些（可能为零）字符来从该字符串获得新字符串，
+则新字符串叫做另一个字符串的子字符串。
+例如，“ABC”、“AB”和“C”是字符串“ABC”的子串，而“AC”和“D”不是。
+我们把字符串的“回文计数”定义为回文的子串个数。
+例如，字符串“aaa”的回文计数是6，因为它的所有子字符串都是回文，
+而字符串“abc”的回文计数是3，因为只有长度为1的子字符串是回文。
+给你一个字符串S。你可以任意地重新排列它的字符，求它的回文计数最大值。
+## 输入输出格式
+### 输入格式：
+第一行包含整数n（1≤n≤100000）表示字符串s的长度。
+第二行包含字符串S，它由n个小写字母组成。
+### 输出格式：
+输出字符串t，（它是字符串s的一种排列）
+此外，t应该具有最大回文计数的可能值。
+如果有多个这样的字符串，输出它们中的任何一个。
+## 输入输出样例：
+#### 输入样例#1：
+```
+5
+oolol
+```
+#### 输出样例#1：
+```
+ololo
+```
+#### 输入样例#2：
+```
+16
+gagadbcgghhchbdf
+```
+#### 输出样例#2：
+```
+16
+gagadbcgghhchbdf
+```
+## 说明：
+在第一个例子中，字符串“ololo”有9个9回文子串：
+"o","l","o","l","o","olo","lol","olo","oloo"
+注意，即使某些子串重合，它们也会在生成的字符串中计入多次。
+在第二个例子中，字符串“abccbaghghghgdfd”的回文计数为29。
+</div>
+<h2>题目描述</h2>
+<div>A non-empty string is called palindrome, if it reads the same from the left to the right and from the right to the left. For example, "abcba", "a", and "abba" are palindromes, while "abab" and "xy" are not.
+A string is called a substring of another string, if it can be obtained from that string by dropping some (possibly zero) number of characters from the beginning and from the end of it. For example, "abc", "ab", and "c" are substrings of the string "abc", while "ac" and "d" are not.
+Let's define a palindromic count of the string as the number of its substrings that are palindromes. For example, the palindromic count of the string "aaa" is $ 6 $ because all its substrings are palindromes, and the palindromic count of the string "abc" is $ 3 $ because only its substrings of length $ 1 $ are palindromes.
+You are given a string $ s $ . You can arbitrarily rearrange its characters. You goal is to obtain a string with the maximum possible value of palindromic count.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $ n $ ( $ 1 \le n \le 100\,000 $ ) — the length of string $ s $ .
+The second line contains string $ s $ that consists of exactly $ n $ lowercase characters of Latin alphabet.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print string $ t $ , which consists of the same set of characters (and each characters appears exactly the same number of times) as string $ s $ . Moreover, $ t $ should have the maximum possible value of palindromic count among all such strings strings.
+If there are multiple such strings, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+oolol
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>ololo
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>16
+gagadbcgghhchbdf
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>abccbaghghghgdfd
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, string "ololo" has $ 9 $ palindromic substrings: "o", "l", "o", "l", "o", "olo", "lol", "olo", "ololo". Note, that even though some substrings coincide, they are counted as many times as they appear in the resulting string.
+In the second example, the palindromic count of string "abccbaghghghgdfd" is $ 29 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Linear Congruential Generator - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400652:7VcbhltJiOSu3F4R2oI7HLIvk2jzU82Q7dw7tKDlx3c=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20tuple%20generator%20%24%20f%5E%7B%28k%29%7D%20%3D%20%28f_1%5E%7B%28k%29%7D%2C%20f_2%5E%7B%28k%29%7D%2C%20%5C%5Cdots%2C%20f_n%5E%7B%28k%29%7D%29%20%24%20%2C%20where%20%24%20f_i%5E%7B%28k%29%7D%20%3D%20%28a_i%20%5C%5Ccdot%20f_i%5E%7B%28k%20-%201%29%7D%20%2B%20b_i%29%20%5C%5Cbmod%20p_i%20%24%20and%20%24%20f%5E%7B%280%29%7D%20%3D%20%28x_1%2C%20x_2%2C%20%5C%5Cdots%2C%20x_n%29%20%24%20.%20Here%20%24%20x%20%5C%5Cbmod%20y%20%24%20denotes%20the%20remainder%20of%20%24%20x%20%24%20when%20divided%20by%20%24%20y%20%24%20.%20All%20%24%20p_i%20%24%20are%20primes.%5Cn%5CnOne%20can%20see%20that%20with%20fixed%20sequences%20%24%20x_i%20%24%20%2C%20%24%20y_i%20%24%20%2C%20%24%20a_i%20%24%20the%20tuples%20%24%20f%5E%7B%28k%29%7D%20%24%20starting%20from%20some%20index%20will%20repeat%20tuples%20with%20smaller%20indices.%20Calculate%20the%20maximum%20number%20of%20different%20tuples%20%28from%20all%20%24%20f%5E%7B%28k%29%7D%20%24%20for%20%24%20k%20%5C%5Cge%200%20%24%20%29%20that%20can%20be%20produced%20by%20this%20generator%2C%20if%20%24%20x_i%20%24%20%2C%20%24%20a_i%20%24%20%2C%20%24%20b_i%20%24%20are%20integers%20in%20the%20range%20%24%20%5B0%2C%20p_i%20-%201%5D%20%24%20and%20can%20be%20chosen%20arbitrary.%20The%20answer%20can%20be%20large%2C%20so%20print%20the%20remainder%20it%20gives%20when%20divided%20by%20%24%2010%5E9%20%2B%207%20%24%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20tuple.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20space%20separated%20prime%20numbers%20%5Cu2014%20the%20modules%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20%28%20%24%202%20%5C%5Cle%20p_i%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E6%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20maximum%20number%20of%20different%20tuples%20modulo%20%24%2010%5E9%20%2B%207%20%24%20.%22%2C%22samples%22%3A%5B%5B%224%5Cn2%203%205%207%5Cn%22%2C%22210%5Cn%22%5D%2C%5B%223%5Cn5%203%203%5Cn%22%2C%2230%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20we%20can%20choose%20next%20parameters%3A%20%24%20a%20%3D%20%5B1%2C%201%2C%201%2C%201%5D%20%24%20%2C%20%24%20b%20%3D%20%5B1%2C%201%2C%201%2C%201%5D%20%24%20%2C%20%24%20x%20%3D%20%5B0%2C%200%2C%200%2C%200%5D%20%24%20%2C%20then%20%24%20f_i%5E%7B%28k%29%7D%20%3D%20k%20%5C%5Cbmod%20p_i%20%24%20.%5Cn%5CnIn%20the%20second%20example%20we%20can%20choose%20next%20parameters%3A%20%24%20a%20%3D%20%5B1%2C%201%2C%202%5D%20%24%20%2C%20%24%20b%20%3D%20%5B1%2C%201%2C%200%5D%20%24%20%2C%20%24%20x%20%3D%20%5B0%2C%200%2C%201%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1030%5C%2FG%22%2C%22id%22%3A%221030G%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A12%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF1030G%22%2C%22title%22%3A%22Linear%20Congruential%20Generator%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Linear%20Congruential%20Generator%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Linear Congruential Generator</h1>
+<h2>题目描述</h2>
+<div>You are given a tuple generator $ f^{(k)} = (f_1^{(k)}, f_2^{(k)}, \dots, f_n^{(k)}) $ , where $ f_i^{(k)} = (a_i \cdot f_i^{(k - 1)} + b_i) \bmod p_i $ and $ f^{(0)} = (x_1, x_2, \dots, x_n) $ . Here $ x \bmod y $ denotes the remainder of $ x $ when divided by $ y $ . All $ p_i $ are primes.
+One can see that with fixed sequences $ x_i $ , $ y_i $ , $ a_i $ the tuples $ f^{(k)} $ starting from some index will repeat tuples with smaller indices. Calculate the maximum number of different tuples (from all $ f^{(k)} $ for $ k \ge 0 $ ) that can be produced by this generator, if $ x_i $ , $ a_i $ , $ b_i $ are integers in the range $ [0, p_i - 1] $ and can be chosen arbitrary. The answer can be large, so print the remainder it gives when divided by $ 10^9 + 7 $</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ ( $ 1 \le n \le 2 \cdot 10^5 $ ) — the number of elements in the tuple.
+The second line contains $ n $ space separated prime numbers — the modules $ p_1, p_2, \ldots, p_n $ ( $ 2 \le p_i \le 2 \cdot 10^6 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the maximum number of different tuples modulo $ 10^9 + 7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+2 3 5 7
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>210
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+5 3 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>30
+</code></pre>
+<h2>说明</h2>
+<div>In the first example we can choose next parameters: $ a = [1, 1, 1, 1] $ , $ b = [1, 1, 1, 1] $ , $ x = [0, 0, 0, 0] $ , then $ f_i^{(k)} = k \bmod p_i $ .
+In the second example we can choose next parameters: $ a = [1, 1, 2] $ , $ b = [1, 1, 0] $ , $ x = [0, 0, 1] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

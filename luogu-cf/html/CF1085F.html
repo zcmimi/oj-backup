@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Rock-Paper-Scissors Champion - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401419:yVTSjRhN0SbXJr2XNbUOhUiCelbIAz3B5g1ygbTlWfY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20%24%20n%20%24%20players%20are%20going%20to%20play%20a%20rock-paper-scissors%20tournament.%20As%20you%20probably%20know%2C%20in%20a%20one-on-one%20match%20of%20rock-paper-scissors%2C%20two%20players%20choose%20their%20shapes%20independently.%20The%20outcome%20is%20then%20determined%20depending%20on%20the%20chosen%20shapes%3A%20%5C%22paper%5C%22%20beats%20%5C%22rock%5C%22%2C%20%5C%22rock%5C%22%20beats%20%5C%22scissors%5C%22%2C%20%5C%22scissors%5C%22%20beat%20%5C%22paper%5C%22%2C%20and%20two%20equal%20shapes%20result%20in%20a%20draw.%5Cn%5CnAt%20the%20start%20of%20the%20tournament%20all%20players%20will%20stand%20in%20a%20row%2C%20with%20their%20numbers%20increasing%20from%20%24%201%20%24%20for%20the%20leftmost%20player%2C%20to%20%24%20n%20%24%20for%20the%20rightmost%20player.%20Each%20player%20has%20a%20pre-chosen%20shape%20that%20they%20will%20use%20in%20every%20game%20throughout%20the%20tournament.%20Here%27s%20how%20the%20tournament%20is%20conducted%3A%5Cn%5Cn-%20If%20there%20is%20only%20one%20player%20left%2C%20he%20is%20declared%20the%20champion.%5Cn-%20Otherwise%2C%20two%20adjacent%20players%20in%20the%20row%20are%20chosen%20arbitrarily%2C%20and%20they%20play%20the%20next%20match.%20The%20losing%20player%20is%20eliminated%20from%20the%20tournament%20and%20leaves%20his%20place%20in%20the%20row%20%28with%20his%20former%20neighbours%20becoming%20adjacent%29.%20If%20the%20game%20is%20a%20draw%2C%20the%20losing%20player%20is%20determined%20by%20a%20coin%20toss.%5Cn%5CnThe%20organizers%20are%20informed%20about%20all%20players%27%20favoured%20shapes.%20They%20wish%20to%20find%20out%20the%20total%20number%20of%20players%20who%20have%20a%20chance%20of%20becoming%20the%20tournament%20champion%20%28that%20is%2C%20there%20is%20a%20suitable%20way%20to%20choose%20the%20order%20of%20the%20games%20and%20manipulate%20the%20coin%20tosses%29.%20However%2C%20some%20players%20are%20still%20optimizing%20their%20strategy%2C%20and%20can%20inform%20the%20organizers%20about%20their%20new%20shapes.%20Can%20you%20find%20the%20number%20of%20possible%20champions%20after%20each%20such%20request%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20q%20%24%20%5Cu2014%20the%20number%20of%20players%20and%20requests%20respectively%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%200%20%5C%5Cleq%20q%20%5C%5Cleq%202%20%5C%5Ccdot%2010%5E5%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20a%20string%20of%20%24%20n%20%24%20characters.%20The%20%24%20i%20%24%20-th%20of%20these%20characters%20is%20%5C%22R%5C%22%2C%20%5C%22P%5C%22%2C%20or%20%5C%22S%5C%22%20if%20the%20player%20%24%20i%20%24%20was%20going%20to%20play%20%5C%22rock%5C%22%2C%20%5C%22paper%5C%22%2C%20or%20%5C%22scissors%5C%22%20before%20all%20requests%20respectively.%5Cn%5CnThe%20following%20%24%20q%20%24%20lines%20describe%20the%20requests.%20The%20%24%20j%20%24%20-th%20of%20these%20lines%20contain%20an%20integer%20%24%20p_j%20%24%20and%20a%20character%20%24%20c_j%20%24%20meaning%20that%20the%20player%20%24%20p_j%20%24%20is%20going%20to%20use%20the%20shape%20described%20by%20the%20character%20%24%20c_j%20%24%20from%20this%20moment%20%28%20%24%201%20%5C%5Cleq%20p_j%20%5C%5Cleq%20n%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20%24%20q%20%2B%201%20%24%20integers%20%24%20r_0%2C%20%5C%5Cldots%2C%20r_q%20%24%20%2C%20where%20%24%20r_k%20%24%20is%20the%20number%20of%20possible%20champions%20after%20processing%20%24%20k%20%24%20requests.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%205%5CnRPS%5Cn1%20S%5Cn2%20R%5Cn3%20P%5Cn1%20P%5Cn2%20P%5Cn%22%2C%22%5Cn2%5Cn2%5Cn1%5Cn2%5Cn2%5Cn3%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1085%5C%2FF%22%2C%22id%22%3A%221085F%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF1085F%22%2C%22title%22%3A%22Rock-Paper-Scissors%20Champion%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Rock-Paper-Scissors%20Champion%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Rock-Paper-Scissors Champion</h1>
+<h2>题目描述</h2>
+<div> $ n $ players are going to play a rock-paper-scissors tournament. As you probably know, in a one-on-one match of rock-paper-scissors, two players choose their shapes independently. The outcome is then determined depending on the chosen shapes: "paper" beats "rock", "rock" beats "scissors", "scissors" beat "paper", and two equal shapes result in a draw.
+At the start of the tournament all players will stand in a row, with their numbers increasing from $ 1 $ for the leftmost player, to $ n $ for the rightmost player. Each player has a pre-chosen shape that they will use in every game throughout the tournament. Here's how the tournament is conducted:
+- If there is only one player left, he is declared the champion.
+- Otherwise, two adjacent players in the row are chosen arbitrarily, and they play the next match. The losing player is eliminated from the tournament and leaves his place in the row (with his former neighbours becoming adjacent). If the game is a draw, the losing player is determined by a coin toss.
+The organizers are informed about all players' favoured shapes. They wish to find out the total number of players who have a chance of becoming the tournament champion (that is, there is a suitable way to choose the order of the games and manipulate the coin tosses). However, some players are still optimizing their strategy, and can inform the organizers about their new shapes. Can you find the number of possible champions after each such request?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ q $ — the number of players and requests respectively ( $ 1 \leq n \leq 2 \cdot 10^5 $ , $ 0 \leq q \leq 2 \cdot 10^5 $ ).
+The second line contains a string of $ n $ characters. The $ i $ -th of these characters is "R", "P", or "S" if the player $ i $ was going to play "rock", "paper", or "scissors" before all requests respectively.
+The following $ q $ lines describe the requests. The $ j $ -th of these lines contain an integer $ p_j $ and a character $ c_j $ meaning that the player $ p_j $ is going to use the shape described by the character $ c_j $ from this moment ( $ 1 \leq p_j \leq n $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ q + 1 $ integers $ r_0, \ldots, r_q $ , where $ r_k $ is the number of possible champions after processing $ k $ requests.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3 5
+RPS
+1 S
+2 R
+3 P
+1 P
+2 P
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+2
+1
+2
+2
+3
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

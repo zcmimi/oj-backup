@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Magical Permutation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402463:OxU7gSoflCzHaCY5Tj61Hup9/YtC/2vpHKlXhAnP8Gw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Kuro%20has%20just%20learned%20about%20permutations%20and%20he%20is%20really%20excited%20to%20create%20a%20new%20permutation%20type.%20He%20has%20chosen%20%24%20n%20%24%20distinct%20positive%20integers%20and%20put%20all%20of%20them%20in%20a%20set%20%24%20S%20%24%20.%20Now%20he%20defines%20a%20magical%20permutation%20to%20be%3A%5Cn%5Cn-%20A%20permutation%20of%20integers%20from%20%24%200%20%24%20to%20%24%202%5Ex%20-%201%20%24%20%2C%20where%20%24%20x%20%24%20is%20a%20non-negative%20integer.%5Cn-%20The%20%5Bbitwise%20xor%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FBitwise_operation%23XOR%29%20of%20any%20two%20consecutive%20elements%20in%20the%20permutation%20is%20an%20element%20in%20%24%20S%20%24%20.%5Cn%5CnSince%20Kuro%20is%20really%20excited%20about%20magical%20permutations%2C%20he%20wants%20to%20create%20the%20longest%20magical%20permutation%20possible.%20In%20other%20words%2C%20he%20wants%20to%20find%20the%20largest%20non-negative%20integer%20%24%20x%20%24%20such%20that%20there%20is%20a%20magical%20permutation%20of%20integers%20from%20%24%200%20%24%20to%20%24%202%5Ex%20-%201%20%24%20.%20Since%20he%20is%20a%20newbie%20in%20the%20subject%2C%20he%20wants%20you%20to%20help%20him%20find%20this%20value%20of%20%24%20x%20%24%20and%20also%20the%20magical%20permutation%20for%20that%20%24%20x%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20set%20%24%20S%20%24%20.%5Cn%5CnThe%20next%20line%20contains%20%24%20n%20%24%20distinct%20integers%20%24%20S_1%2C%20S_2%2C%20%5C%5Cldots%2C%20S_n%20%24%20%28%20%24%201%20%5C%5Cleq%20S_i%20%5C%5Cleq%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20elements%20in%20the%20set%20%24%20S%20%24%20.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20the%20largest%20non-negative%20integer%20%24%20x%20%24%20%2C%20such%20that%20there%20is%20a%20magical%20permutation%20of%20integers%20from%20%24%200%20%24%20to%20%24%202%5Ex%20-%201%20%24%20.%5Cn%5CnThen%20print%20%24%202%5Ex%20%24%20integers%20describing%20a%20magical%20permutation%20of%20integers%20from%20%24%200%20%24%20to%20%24%202%5Ex%20-%201%20%24%20.%20If%20there%20are%20multiple%20such%20magical%20permutations%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn1%202%203%5Cn%22%2C%22%5Cn2%5Cn0%201%203%202%20%22%5D%2C%5B%22%5Cn2%5Cn2%203%5Cn%22%2C%22%5Cn2%5Cn0%202%201%203%20%22%5D%2C%5B%22%5Cn4%5Cn1%202%203%204%5Cn%22%2C%22%5Cn3%5Cn0%201%203%202%206%207%205%204%20%22%5D%2C%5B%22%5Cn2%5Cn2%204%5Cn%22%2C%22%5Cn0%5Cn0%20%22%5D%2C%5B%22%5Cn1%5Cn20%5Cn%22%2C%22%5Cn0%5Cn0%20%22%5D%2C%5B%22%5Cn1%5Cn1%5Cn%22%2C%22%5Cn1%5Cn0%201%20%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20%24%200%2C%201%2C%203%2C%202%20%24%20is%20a%20magical%20permutation%20since%3A%5Cn%5Cn-%20%24%200%20%5C%5Coplus%201%20%3D%201%20%5C%5Cin%20S%20%24%5Cn-%20%24%201%20%5C%5Coplus%203%20%3D%202%20%5C%5Cin%20S%20%24%5Cn-%20%24%203%20%5C%5Coplus%202%20%3D%201%20%5C%5Cin%20S%20%24%5Cn%5CnWhere%20%24%20%5C%5Coplus%20%24%20denotes%20%5Bbitwise%20xor%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FBitwise_operation%23XOR%29%20operation.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1163%5C%2FE%22%2C%22id%22%3A%221163E%22%7D%2C%22translation%22%3A%22Kuro%5Cu9009%5Cu62e9%5Cu4e86%24n%24%5Cu4e2a%5Cu4e0d%5Cu540c%5Cu7684%5Cu6570%5Cu4f5c%5Cu4e3a%5Cu96c6%5Cu5408%24S%24%5Cu3002%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu79cd%5Cu6392%5Cu5217%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu6761%5Cu4ef6%5Cuff1a%5Cr%5Cn%5Cr%5Cn1%5Cu3001%5Cu6392%5Cu5217%5Cu4e2d%5Cu7684%5Cu6570%24p%5C%5Cin%5B0%2C2%5Ex-1%5D%24%3B%5Cr%5Cn%5Cr%5Cn2%5Cu3001%5Cu6392%5Cu5217%5Cu4e2d%5Cu4efb%5Cu610f%5Cu4e24%5Cu4e2a%5Cu76f8%5Cu90bb%5Cu7684%5Cu5143%5Cu7d20%5Cu7684%5Cu5f02%5Cu6216%5Cu503c%5Cu4e3a%5Cu96c6%5Cu5408%24S%24%5Cu7684%5Cu4e00%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728Kuro%5Cu544a%5Cu8bc9%5Cu4f60%5Cu96c6%5Cu5408%24S%24%5Cu4e2d%5Cu7684%5Cu6570%5Cuff0c%5Cu60f3%5Cu8bf7%5Cu4f60%5Cu6784%5Cu9020%5Cu4e00%5Cu4e2a%5Cu6ee1%5Cu8db3%5Cu6761%5Cu4ef6%5Cu7684%5Cu6392%5Cu5217%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu3010%5Cu8f93%5Cu5165%5Cu3011%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%24n%24%5Cu4e2a%5Cu6574%5Cu6570%24S_i%24%5Cu8868%5Cu793a%5Cu96c6%5Cu5408%24S%24%5Cu7684%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu3010%5Cu8f93%5Cu51fa%5Cu3011%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24x%24%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%242%5Ex%24%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu4f60%5Cu6784%5Cu9020%5Cu7684%5Cu6392%5Cu5217%5Cu3002%5Cu82e5%5Cu6709%5Cu591a%5Cu79cd%5Cu6392%5Cu5217%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu79cd%5Cu5373%5Cu53ef%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A43%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF1163E%22%2C%22title%22%3A%22Magical%20Permutation%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A157573%2C%22title%22%3A%22%5Cu6784%5Cu9020%5Cu7684%5Cu6392%5Cu5217%5Cu9700%5Cu8981%5Cu6700%5Cu957f%5Cu5427%5Cu3002%22%2C%22forum%22%3A%7B%22id%22%3A36296%2C%22name%22%3A%22CF1163E%20Magical%20Permutation%22%2C%22slug%22%3A%22CF1163E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Magical%20Permutation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Magical Permutation</h1>
+<h2>题意翻译</h2>
+<div>Kuro选择了$n$个不同的数作为集合$S$。定义一种排列，满足以下条件：
+1、排列中的数$p\in[0,2^x-1]$;
+2、排列中任意两个相邻的元素的异或值为集合$S$的一个数。
+现在Kuro告诉你集合$S$中的数，想请你构造一个满足条件的排列。
+【输入】
+第一行一个整数$n$，接下来一行$n$个整数$S_i$表示集合$S$的数。
+【输出】
+第一行一个整数$x$，接下来一行$2^x$个数，表示你构造的排列。若有多种排列，输出任意一种即可。</div>
+<h2>题目描述</h2>
+<div>Kuro has just learned about permutations and he is really excited to create a new permutation type. He has chosen $ n $ distinct positive integers and put all of them in a set $ S $ . Now he defines a magical permutation to be:
+- A permutation of integers from $ 0 $ to $ 2^x - 1 $ , where $ x $ is a non-negative integer.
+- The [bitwise xor](https://en.wikipedia.org/wiki/Bitwise_operation#XOR) of any two consecutive elements in the permutation is an element in $ S $ .
+Since Kuro is really excited about magical permutations, he wants to create the longest magical permutation possible. In other words, he wants to find the largest non-negative integer $ x $ such that there is a magical permutation of integers from $ 0 $ to $ 2^x - 1 $ . Since he is a newbie in the subject, he wants you to help him find this value of $ x $ and also the magical permutation for that $ x $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the integer $ n $ ( $ 1 \leq n \leq 2 \cdot 10^5 $ ) — the number of elements in the set $ S $ .
+The next line contains $ n $ distinct integers $ S_1, S_2, \ldots, S_n $ ( $ 1 \leq S_i \leq 2 \cdot 10^5 $ ) — the elements in the set $ S $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print the largest non-negative integer $ x $ , such that there is a magical permutation of integers from $ 0 $ to $ 2^x - 1 $ .
+Then print $ 2^x $ integers describing a magical permutation of integers from $ 0 $ to $ 2^x - 1 $ . If there are multiple such magical permutations, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+1 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+0 1 3 2 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+2
+2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+2
+0 2 1 3 </code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+4
+1 2 3 4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+3
+0 1 3 2 6 7 5 4 </code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>
+2
+2 4
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>
+0
+0 </code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>
+1
+20
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>
+0
+0 </code></pre>
+<h3>输入样例 #6</h3>
+<pre><code>
+1
+1
+</code></pre>
+<h3>输出样例 #6</h3>
+<pre><code>
+1
+0 1 </code></pre>
+<h2>说明</h2>
+<div>In the first example, $ 0, 1, 3, 2 $ is a magical permutation since:
+- $ 0 \oplus 1 = 1 \in S $
+- $ 1 \oplus 3 = 2 \in S $
+- $ 3 \oplus 2 = 1 \in S $
+Where $ \oplus $ denotes [bitwise xor](https://en.wikipedia.org/wiki/Bitwise_operation#XOR) operation.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

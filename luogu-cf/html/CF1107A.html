@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Digits Sequence Dividing - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401769:fk+6M9QlKBHUv/NypcQJDRVPhmWReJt+PiMqHx4oX0E=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20sequence%20%24%20s%20%24%20consisting%20of%20%24%20n%20%24%20digits%20from%20%24%201%20%24%20to%20%24%209%20%24%20.%5Cn%5CnYou%20have%20to%20divide%20it%20into%20at%20least%20two%20segments%20%28segment%20%5Cu2014%20is%20a%20consecutive%20sequence%20of%20elements%29%20%28in%20other%20words%2C%20you%20have%20to%20place%20separators%20between%20some%20digits%20of%20the%20sequence%29%20in%20such%20a%20way%20that%20each%20element%20belongs%20to%20exactly%20one%20segment%20and%20if%20the%20resulting%20division%20will%20be%20represented%20as%20an%20integer%20numbers%20sequence%20then%20each%20next%20element%20of%20this%20sequence%20will%20be%20strictly%20greater%20than%20the%20previous%20one.%5Cn%5CnMore%20formally%3A%20if%20the%20resulting%20division%20of%20the%20sequence%20is%20%24%20t_1%2C%20t_2%2C%20%5C%5Cdots%2C%20t_k%20%24%20%2C%20where%20%24%20k%20%24%20is%20the%20number%20of%20element%20in%20a%20division%2C%20then%20for%20each%20%24%20i%20%24%20from%20%24%201%20%24%20to%20%24%20k-1%20%24%20the%20condition%20%24%20t_%7Bi%7D%20%3C%20t_%7Bi%20%2B%201%7D%20%24%20%28using%20numerical%20comparing%2C%20it%20means%20that%20the%20integer%20representations%20of%20strings%20are%20compared%29%20should%20be%20satisfied.%5Cn%5CnFor%20example%2C%20if%20%24%20s%3D654%20%24%20then%20you%20can%20divide%20it%20into%20parts%20%24%20%5B6%2C%2054%5D%20%24%20and%20it%20will%20be%20suitable%20division.%20But%20if%20you%20will%20divide%20it%20into%20parts%20%24%20%5B65%2C%204%5D%20%24%20then%20it%20will%20be%20bad%20division%20because%20%24%2065%20%3E%204%20%24%20.%20If%20%24%20s%3D123%20%24%20then%20you%20can%20divide%20it%20into%20parts%20%24%20%5B1%2C%2023%5D%20%24%20%2C%20%24%20%5B1%2C%202%2C%203%5D%20%24%20but%20not%20into%20parts%20%24%20%5B12%2C%203%5D%20%24%20.%5Cn%5CnYour%20task%20is%20to%20find%20any%20suitable%20division%20for%20each%20of%20the%20%24%20q%20%24%20independent%20queries.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%20300%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries.%5Cn%5CnThe%20first%20line%20of%20the%20%24%20i%20%24%20-th%20query%20contains%20one%20integer%20number%20%24%20n_i%20%24%20%28%20%24%202%20%5C%5Cle%20n_i%20%5C%5Cle%20300%20%24%20%29%20%5Cu2014%20the%20number%20of%20digits%20in%20the%20%24%20i%20%24%20-th%20query.%5Cn%5CnThe%20second%20line%20of%20the%20%24%20i%20%24%20-th%20query%20contains%20one%20string%20%24%20s_i%20%24%20of%20length%20%24%20n_i%20%24%20consisting%20only%20of%20digits%20from%20%24%201%20%24%20to%20%24%209%20%24%20.%22%2C%22outputFormat%22%3A%22If%20the%20sequence%20of%20digits%20in%20the%20%24%20i%20%24%20-th%20query%20cannot%20be%20divided%20into%20at%20least%20two%20parts%20in%20a%20way%20described%20in%20the%20problem%20statement%2C%20print%20the%20single%20line%20%5C%22NO%5C%22%20for%20this%20query.%5Cn%5CnOtherwise%20in%20the%20first%20line%20of%20the%20answer%20to%20this%20query%20print%20%5C%22YES%5C%22%2C%20on%20the%20second%20line%20print%20%24%20k_i%20%24%20%5Cu2014%20the%20number%20of%20parts%20in%20your%20division%20of%20the%20%24%20i%20%24%20-th%20query%20sequence%20and%20in%20the%20third%20line%20print%20%24%20k_i%20%24%20strings%20%24%20t_%7Bi%2C%201%7D%2C%20t_%7Bi%2C%202%7D%2C%20%5C%5Cdots%2C%20t_%7Bi%2C%20k_i%7D%20%24%20%5Cu2014%20your%20division.%20Parts%20should%20be%20printed%20in%20order%20of%20the%20initial%20string%20digits.%20It%20means%20that%20if%20you%20write%20the%20parts%20one%20after%20another%20without%20changing%20their%20order%20then%20you%27ll%20get%20the%20string%20%24%20s_i%20%24%20.%5Cn%5CnSee%20examples%20for%20better%20understanding.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%5Cn6%5Cn654321%5Cn4%5Cn1337%5Cn2%5Cn33%5Cn4%5Cn2122%5Cn%22%2C%22%5CnYES%5Cn3%5Cn6%2054%20321%5CnYES%5Cn3%5Cn1%203%2037%5CnNO%5CnYES%5Cn2%5Cn21%2022%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1107%5C%2FA%22%2C%22id%22%3A%221107A%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7531%24n%24%5Cu4e2a%5Cu7531%240%24%5Cu5230%249%24%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6570%5Cu7ec4%5Cu6210%5Cu7684%5Cu5e8f%5Cu5217%24s%24%20%20%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu5fc5%5Cu987b%5Cu6700%5Cu5c11%5Cu628a%5Cu5b83%5Cu5206%5Cu6210%5Cu4e24%5Cu6bb5%2C%5Cu4f7f%5Cu5f97%5Cu6bcf%5Cu4e00%5Cu6bb5%5Cu7ec4%5Cu6210%5Cu7684%5Cu6570%5Cu5b57%5Cu90fd%5Cu6bd4%5Cu524d%5Cu4e00%5Cu6bb5%5Cu7ec4%5Cu6210%5Cu7684%5Cu6570%5Cu5b57%5Cu5927%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%24q%24%5Cuff0c%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%5Cu7684%5Cu7ec4%5Cu6570%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu6709%24q%24%5Cu7ec4%5Cu8be2%5Cu95ee%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu8be2%5Cu95ee%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3a%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%24s%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu53ef%5Cu4ee5%5Cuff0c%5Cu8f93%5Cu51fa%24YES%24%2C%5Cu5e76%5Cu4e14%5Cu8f93%5Cu51fa%5Cu4f60%5Cu7684%5Cu5206%5Cu5272%5Cu65b9%5Cu6848%5Cuff0c%5Cu5426%5Cu5219%5Cuff0c%5Cu8f93%5Cu51fa%24NO%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A98%2C%22totalAccepted%22%3A64%2C%22pid%22%3A%22CF1107A%22%2C%22title%22%3A%22Digits%20Sequence%20Dividing%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1101A%22%2C%22title%22%3A%22Minimum%20Integer%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1108A%22%2C%22title%22%3A%22Two%20distinct%20points%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1107C%22%2C%22title%22%3A%22Brutality%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1107B%22%2C%22title%22%3A%22Digital%20root%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1106A%22%2C%22title%22%3A%22Lunar%20New%20Year%20and%20Cross%20Counting%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Digits%20Sequence%20Dividing%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Digits Sequence Dividing</h1>
+<h2>题意翻译</h2>
+<div>你有一个由$n$个由$0$到$9$之间的数组成的序列$s$
+你必须最少把它分成两段,使得每一段组成的数字都比前一段组成的数字大。
+输入第一行一个$q$，表示询问的组数。
+接下来有$q$组询问，每一组询问第一行是一个整数$n$，第二行为这个序列$s$。
+如果可以，输出$YES$,并且输出你的分割方案，否则，输出$NO$</div>
+<h2>题目描述</h2>
+<div>You are given a sequence $ s $ consisting of $ n $ digits from $ 1 $ to $ 9 $ .
+You have to divide it into at least two segments (segment — is a consecutive sequence of elements) (in other words, you have to place separators between some digits of the sequence) in such a way that each element belongs to exactly one segment and if the resulting division will be represented as an integer numbers sequence then each next element of this sequence will be strictly greater than the previous one.
+More formally: if the resulting division of the sequence is $ t_1, t_2, \dots, t_k $ , where $ k $ is the number of element in a division, then for each $ i $ from $ 1 $ to $ k-1 $ the condition $ t_{i} < t_{i + 1} $ (using numerical comparing, it means that the integer representations of strings are compared) should be satisfied.
+For example, if $ s=654 $ then you can divide it into parts $ [6, 54] $ and it will be suitable division. But if you will divide it into parts $ [65, 4] $ then it will be bad division because $ 65 > 4 $ . If $ s=123 $ then you can divide it into parts $ [1, 23] $ , $ [1, 2, 3] $ but not into parts $ [12, 3] $ .
+Your task is to find any suitable division for each of the $ q $ independent queries.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ q $ ( $ 1 \le q \le 300 $ ) — the number of queries.
+The first line of the $ i $ -th query contains one integer number $ n_i $ ( $ 2 \le n_i \le 300 $ ) — the number of digits in the $ i $ -th query.
+The second line of the $ i $ -th query contains one string $ s_i $ of length $ n_i $ consisting only of digits from $ 1 $ to $ 9 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>If the sequence of digits in the $ i $ -th query cannot be divided into at least two parts in a way described in the problem statement, print the single line "NO" for this query.
+Otherwise in the first line of the answer to this query print "YES", on the second line print $ k_i $ — the number of parts in your division of the $ i $ -th query sequence and in the third line print $ k_i $ strings $ t_{i, 1}, t_{i, 2}, \dots, t_{i, k_i} $ — your division. Parts should be printed in order of the initial string digits. It means that if you write the parts one after another without changing their order then you'll get the string $ s_i $ .
+See examples for better understanding.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4
+6
+654321
+4
+1337
+2
+33
+4
+2122
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+YES
+3
+6 54 321
+YES
+3
+1 3 37
+NO
+YES
+2
+21 22
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sushi for Two - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402091:D12v7fyeCPyjR95FyJPBelTM52wFuNOc7FJCDwYXP9A=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Arkady%20invited%20Anna%20for%20a%20dinner%20to%20a%20sushi%20restaurant.%20The%20restaurant%20is%20a%20bit%20unusual%3A%20it%20offers%20%24%20n%20%24%20pieces%20of%20sushi%20aligned%20in%20a%20row%2C%20and%20a%20customer%20has%20to%20choose%20a%20continuous%20subsegment%20of%20these%20sushi%20to%20buy.%5Cn%5CnThe%20pieces%20of%20sushi%20are%20of%20two%20types%3A%20either%20with%20tuna%20or%20with%20eel.%20Let%27s%20denote%20the%20type%20of%20the%20%24%20i%20%24%20-th%20from%20the%20left%20sushi%20as%20%24%20t_i%20%24%20%2C%20where%20%24%20t_i%20%3D%201%20%24%20means%20it%20is%20with%20tuna%2C%20and%20%24%20t_i%20%3D%202%20%24%20means%20it%20is%20with%20eel.%5Cn%5CnArkady%20does%20not%20like%20tuna%2C%20Anna%20does%20not%20like%20eel.%20Arkady%20wants%20to%20choose%20such%20a%20continuous%20subsegment%20of%20sushi%20that%20it%20has%20equal%20number%20of%20sushi%20of%20each%20type%20and%20each%20half%20of%20the%20subsegment%20has%20only%20sushi%20of%20one%20type.%20For%20example%2C%20subsegment%20%24%20%5B2%2C%202%2C%202%2C%201%2C%201%2C%201%5D%20%24%20is%20valid%2C%20but%20subsegment%20%24%20%5B1%2C%202%2C%201%2C%202%2C%201%2C%202%5D%20%24%20is%20not%2C%20because%20both%20halves%20contain%20both%20types%20of%20sushi.%5Cn%5CnFind%20the%20length%20of%20the%20longest%20continuous%20subsegment%20of%20sushi%20Arkady%20can%20buy.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%20100%5C%5C%2C000%20%24%20%29%20%5Cu2014%20the%20number%20of%20pieces%20of%20sushi.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20t_1%20%24%20%2C%20%24%20t_2%20%24%20%2C%20...%2C%20%24%20t_n%20%24%20%28%20%24%20t_i%20%3D%201%20%24%20%2C%20denoting%20a%20sushi%20with%20tuna%20or%20%24%20t_i%20%3D%202%20%24%20%2C%20denoting%20a%20sushi%20with%20eel%29%2C%20representing%20the%20types%20of%20sushi%20from%20left%20to%20right.%5Cn%5CnIt%20is%20guaranteed%20that%20there%20is%20at%20least%20one%20piece%20of%20sushi%20of%20each%20type.%20Note%20that%20it%20means%20that%20there%20is%20at%20least%20one%20valid%20continuous%20segment.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20maximum%20length%20of%20a%20valid%20continuous%20segment.%22%2C%22samples%22%3A%5B%5B%22%5Cn7%5Cn2%202%202%201%201%202%202%5Cn%22%2C%22%5Cn4%5Cn%22%5D%2C%5B%22%5Cn6%5Cn1%202%201%202%201%202%5Cn%22%2C%22%5Cn2%5Cn%22%5D%2C%5B%22%5Cn9%5Cn2%202%201%201%201%202%202%202%202%5Cn%22%2C%22%5Cn6%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20Arkady%20can%20choose%20the%20subsegment%20%24%20%5B2%2C%202%2C%201%2C%201%5D%20%24%20or%20the%20subsegment%20%24%20%5B1%2C%201%2C%202%2C%202%5D%20%24%20with%20length%20%24%204%20%24%20.%5Cn%5CnIn%20the%20second%20example%20there%20is%20no%20way%20but%20to%20choose%20one%20of%20the%20subsegments%20%24%20%5B2%2C%201%5D%20%24%20or%20%24%20%5B1%2C%202%5D%20%24%20with%20length%20%24%202%20%24%20.%5Cn%5CnIn%20the%20third%20example%20Arkady%27s%20best%20choice%20is%20the%20subsegment%20%24%20%5B1%2C%201%2C%201%2C%202%2C%202%2C%202%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1138%5C%2FA%22%2C%22id%22%3A%221138A%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu9898%5Cu610f%5Cuff1a%2A%2A%20%5Cu7ed9%5Cu4e00%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5e8f%5Cu5217%24%5C%5C%7Bt%5C%5C%7D%24%5Cuff0c%5Cu5e76%5Cu4fdd%5Cu8bc1%24t_i%3D1%24%5Cu6216%242%24.%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu5b50%5Cu4e32%5Cu5408%5Cu6cd5%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cuff1a%5Cuff08%5Cu8bbe%5Cu5176%5Cu957f%5Cu5ea6%5Cu4e3a%24k%24%5Cuff0c%24k%24%5Cu5076%5Cu6570%5Cuff09%5Cr%5Cn%5Cr%5Cn%24%5B1%2C%5C%5Cfrac%7Bk%7D%7B2%7D%5D%24%5Cu90e8%5Cu5206%5Cu7684%5Cu5b50%5Cu4e32%5Cu53ea%5Cu5305%5Cu542b%5Cu4e00%5Cu79cd%5Cu6570%5Cuff0c%24%5B%5C%5Cfrac%7Bk%7D%7B2%7D%2B1%2Ck%5D%24%5Cu90e8%5Cu5206%5Cu7684%5Cu5b50%5Cu4e32%5Cu53ea%5Cu5305%5Cu542b%5Cu4e00%5Cu79cd%5Cu6570%5Cuff0c%5Cu800c%5Cu4e14%5Cu4e24%5Cu90e8%5Cu5206%5Cu6570%5Cu4e0d%5Cu540c%5Cu3002%5Cu4f8b%5Cu5982%24%5B2%2C2%2C2%2C1%2C1%2C1%5D%24%5Cu662f%5Cu5408%5Cu6cd5%5Cu7684%5Cuff0c%24%5B1%2C2%2C1%2C2%2C1%2C2%5D%24%5Cu4e0d%5Cu5408%5Cu6cd5%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8bf7%5Cu5bfb%5Cu627e%5Cu4e00%5Cu6700%5Cu957f%5Cu7684%5Cu5408%5Cu6cd5%5Cu5b50%5Cu4e32%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cuff1a%2A%2A%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu6574%5Cu6570%242%5C%5Cle%20n%5C%5Cle%20100000%24%2C%5Cu7b2c%5Cu4e8c%5Cu884c%24n%24%5Cu4e2a%5Cu6574%5Cu6570%5Cu63cf%5Cu8ff0%5Cu5e8f%5Cu5217%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cuff1a%2A%2A%20%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu6700%5Cu957f%5Cu5408%5Cu6cd5%5Cu5b50%5Cu4e32%5Cu957f%5Cu5ea6%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu6837%5Cu4f8b1%5Cu89e3%5Cu91ca%5Cuff1a%2A%2A%20%24%5B2%2C2%2C1%2C1%5D%24%5Cu548c%24%5B1%2C1%2C2%2C2%5D%24%5Cu90fd%5Cu662f%5Cu5408%5Cu6cd5%5Cu7684%5Cu6700%5Cu957f%5Cu5b50%5Cu4e32%5Cu3002%5Cu6545ans%3D4.%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A74%2C%22totalAccepted%22%3A60%2C%22pid%22%3A%22CF1138A%22%2C%22title%22%3A%22Sushi%20for%20Two%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1133C%22%2C%22title%22%3A%22Balanced%20Team%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1133B%22%2C%22title%22%3A%22Preparation%20for%20International%20Women%27s%20Day%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1133A%22%2C%22title%22%3A%22Middle%20of%20the%20Contest%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1138B%22%2C%22title%22%3A%22Circus%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1137A%22%2C%22title%22%3A%22Skyscrapers%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Sushi%20for%20Two%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Sushi for Two</h1>
+<h2>题意翻译</h2>
+<div>**题意：** 给一长度为$n$的序列$\{t\}$，并保证$t_i=1$或$2$.
+一子串合法当且仅当：（设其长度为$k$，$k$偶数）
+$[1,\frac{k}{2}]$部分的子串只包含一种数，$[\frac{k}{2}+1,k]$部分的子串只包含一种数，而且两部分数不同。例如$[2,2,2,1,1,1]$是合法的，$[1,2,1,2,1,2]$不合法。
+请寻找一最长的合法子串。
+**输入：** 第一行一整数$2\le n\le 100000$,第二行$n$个整数描述序列。
+**输出：** 一个整数表示最长合法子串长度。
+**样例1解释：** $[2,2,1,1]$和$[1,1,2,2]$都是合法的最长子串。故ans=4.</div>
+<h2>题目描述</h2>
+<div>Arkady invited Anna for a dinner to a sushi restaurant. The restaurant is a bit unusual: it offers $ n $ pieces of sushi aligned in a row, and a customer has to choose a continuous subsegment of these sushi to buy.
+The pieces of sushi are of two types: either with tuna or with eel. Let's denote the type of the $ i $ -th from the left sushi as $ t_i $ , where $ t_i = 1 $ means it is with tuna, and $ t_i = 2 $ means it is with eel.
+Arkady does not like tuna, Anna does not like eel. Arkady wants to choose such a continuous subsegment of sushi that it has equal number of sushi of each type and each half of the subsegment has only sushi of one type. For example, subsegment $ [2, 2, 2, 1, 1, 1] $ is valid, but subsegment $ [1, 2, 1, 2, 1, 2] $ is not, because both halves contain both types of sushi.
+Find the length of the longest continuous subsegment of sushi Arkady can buy.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 2 \le n \le 100\,000 $ ) — the number of pieces of sushi.
+The second line contains $ n $ integers $ t_1 $ , $ t_2 $ , ..., $ t_n $ ( $ t_i = 1 $ , denoting a sushi with tuna or $ t_i = 2 $ , denoting a sushi with eel), representing the types of sushi from left to right.
+It is guaranteed that there is at least one piece of sushi of each type. Note that it means that there is at least one valid continuous segment.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the maximum length of a valid continuous segment.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+7
+2 2 2 1 1 2 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+6
+1 2 1 2 1 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+9
+2 2 1 1 1 2 2 2 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+6
+</code></pre>
+<h2>说明</h2>
+<div>In the first example Arkady can choose the subsegment $ [2, 2, 1, 1] $ or the subsegment $ [1, 1, 2, 2] $ with length $ 4 $ .
+In the second example there is no way but to choose one of the subsegments $ [2, 1] $ or $ [1, 2] $ with length $ 2 $ .
+In the third example Arkady's best choice is the subsegment $ [1, 1, 1, 2, 2, 2] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

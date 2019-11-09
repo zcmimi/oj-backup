@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minimum Triangulation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402120:KzZbTDVOQAXc7Iqpg+zhL6+u2/t51uacmCvK4GFUHVg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20regular%20polygon%20with%20%24%20n%20%24%20vertices%20labeled%20from%20%24%201%20%24%20to%20%24%20n%20%24%20in%20counter-clockwise%20order.%20The%20triangulation%20of%20a%20given%20polygon%20is%20a%20set%20of%20triangles%20such%20that%20each%20vertex%20of%20each%20triangle%20is%20a%20vertex%20of%20the%20initial%20polygon%2C%20there%20is%20no%20pair%20of%20triangles%20such%20that%20their%20intersection%20has%20non-zero%20area%2C%20and%20the%20total%20area%20of%20all%20triangles%20is%20equal%20to%20the%20area%20of%20the%20given%20polygon.%20The%20weight%20of%20a%20triangulation%20is%20the%20sum%20of%20weigths%20of%20triangles%20it%20consists%20of%2C%20where%20the%20weight%20of%20a%20triagle%20is%20denoted%20as%20the%20product%20of%20labels%20of%20its%20vertices.%5Cn%5CnCalculate%20the%20minimum%20weight%20among%20all%20triangulations%20of%20the%20polygon.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20single%20integer%20%24%20n%20%24%20%28%20%24%203%20%5C%5Cle%20n%20%5C%5Cle%20500%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20regular%20polygon.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20minimum%20weight%20among%20all%20triangulations%20of%20the%20given%20polygon.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn%22%2C%22%5Cn6%5Cn%22%5D%2C%5B%22%5Cn4%5Cn%22%2C%22%5Cn18%5Cn%22%5D%5D%2C%22hint%22%3A%22According%20to%20Wiki%3A%20polygon%20triangulation%20is%20the%20decomposition%20of%20a%20polygonal%20area%20%28simple%20polygon%29%20%24%20P%20%24%20into%20a%20set%20of%20triangles%2C%20i.%20e.%2C%20finding%20a%20set%20of%20triangles%20with%20pairwise%20non-intersecting%20interiors%20whose%20union%20is%20%24%20P%20%24%20.%5Cn%5CnIn%20the%20first%20example%20the%20polygon%20is%20a%20triangle%2C%20so%20we%20don%27t%20need%20to%20cut%20it%20further%2C%20so%20the%20answer%20is%20%24%201%20%5C%5Ccdot%202%20%5C%5Ccdot%203%20%3D%206%20%24%20.%5Cn%5CnIn%20the%20second%20example%20the%20polygon%20is%20a%20rectangle%2C%20so%20it%20should%20be%20divided%20into%20two%20triangles.%20It%27s%20optimal%20to%20cut%20it%20using%20diagonal%20%24%201-3%20%24%20so%20answer%20is%20%24%201%20%5C%5Ccdot%202%20%5C%5Ccdot%203%20%2B%201%20%5C%5Ccdot%203%20%5C%5Ccdot%204%20%3D%206%20%2B%2012%20%3D%2018%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1140%5C%2FD%22%2C%22id%22%3A%221140D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu9876%5Cu70b9%5Cu6807%5Cu53f7%5Cu4e3a%241%24~%24n%24%5Cuff08%24n%3C%3D500%24%5Cuff09%5Cu7684%5Cu6b63%5Cu591a%5Cu8fb9%5Cu5f62%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu4e09%5Cu89d2%5Cu5f62%5Cu5212%5Cu5206%5Cu7684%5Cu6743%5Cu503c%5Cu662f%5Cu4e09%5Cu89d2%5Cu5f62%5Cu4e09%5Cu4e2a%5Cu9876%5Cu70b9%5Cu7684%5Cu7f16%5Cu53f7%5Cu4e58%5Cu79ef%5Cu4e4b%5Cu548c%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6700%5Cu5c0f%5Cu7684%5Cu6743%5Cu503c%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A92%2C%22totalAccepted%22%3A69%2C%22pid%22%3A%22CF1140D%22%2C%22title%22%3A%22Minimum%20Triangulation%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1013%22%2C%22title%22%3A%22%5Cu8fdb%5Cu5236%5Cu4f4d%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1136C%22%2C%22title%22%3A%22Nastya%20Is%20Transposing%20Matrices%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1140E%22%2C%22title%22%3A%22Palindrome-less%20Arrays%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1140C%22%2C%22title%22%3A%22Playlist%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1155C%22%2C%22title%22%3A%22Alarm%20Clocks%20Everywhere%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minimum%20Triangulation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minimum Triangulation</h1>
+<h2>题意翻译</h2>
+<div>给出一个顶点标号为$1$~$n$（$n<=500$）的正多边形，一个三角形划分的权值是三角形三个顶点的编号乘积之和
+输出一个最小的权值</div>
+<h2>题目描述</h2>
+<div>You are given a regular polygon with $ n $ vertices labeled from $ 1 $ to $ n $ in counter-clockwise order. The triangulation of a given polygon is a set of triangles such that each vertex of each triangle is a vertex of the initial polygon, there is no pair of triangles such that their intersection has non-zero area, and the total area of all triangles is equal to the area of the given polygon. The weight of a triangulation is the sum of weigths of triangles it consists of, where the weight of a triagle is denoted as the product of labels of its vertices.
+Calculate the minimum weight among all triangulations of the polygon.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains single integer $ n $ ( $ 3 \le n \le 500 $ ) — the number of vertices in the regular polygon.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the minimum weight among all triangulations of the given polygon.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+18
+</code></pre>
+<h2>说明</h2>
+<div>According to Wiki: polygon triangulation is the decomposition of a polygonal area (simple polygon) $ P $ into a set of triangles, i. e., finding a set of triangles with pairwise non-intersecting interiors whose union is $ P $ .
+In the first example the polygon is a triangle, so we don't need to cut it further, so the answer is $ 1 \cdot 2 \cdot 3 = 6 $ .
+In the second example the polygon is a rectangle, so it should be divided into two triangles. It's optimal to cut it using diagonal $ 1-3 $ so answer is $ 1 \cdot 2 \cdot 3 + 1 \cdot 3 \cdot 4 = 6 + 12 = 18 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

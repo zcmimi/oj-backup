@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Palindromic Magic - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401362:xN/0vTlKAkmhc+1YEVIiYwt8aM6BB06OrbwAeoZa08E=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22After%20learning%20some%20fancy%20algorithms%20about%20palindromes%2C%20Chouti%20found%20palindromes%20very%20interesting%2C%20so%20he%20wants%20to%20challenge%20you%20with%20this%20problem.%5Cn%5CnChouti%20has%20got%20two%20strings%20%24%20A%20%24%20and%20%24%20B%20%24%20.%20Since%20he%20likes%20%5Bpalindromes%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FPalindrome%29%2C%20he%20would%20like%20to%20pick%20%24%20a%20%24%20as%20some%20non-empty%20palindromic%20substring%20of%20%24%20A%20%24%20and%20%24%20b%20%24%20as%20some%20non-empty%20palindromic%20substring%20of%20%24%20B%20%24%20.%20Concatenating%20them%2C%20he%20will%20get%20string%20%24%20ab%20%24%20.%5Cn%5CnChouti%20thinks%20strings%20he%20could%20get%20this%20way%20are%20interesting%2C%20so%20he%20wants%20to%20know%20how%20many%20different%20strings%20he%20can%20get.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20string%20%24%20A%20%24%20%28%20%24%201%20%5C%5Cle%20%7CA%7C%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20a%20single%20string%20%24%20B%20%24%20%28%20%24%201%20%5C%5Cle%20%7CB%7C%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29.%5Cn%5CnStrings%20%24%20A%20%24%20and%20%24%20B%20%24%20contain%20only%20lowercase%20English%20letters.%22%2C%22outputFormat%22%3A%22The%20first%20and%20only%20line%20should%20contain%20a%20single%20integer%20%5Cu2014%20the%20number%20of%20possible%20strings.%22%2C%22samples%22%3A%5B%5B%22aa%5Cnaba%5Cn%22%2C%226%5Cn%22%5D%2C%5B%22aaba%5Cnabaa%5Cn%22%2C%2215%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20attainable%20strings%20are%5Cn%5Cn-%20%5C%22a%5C%22%20%2B%20%5C%22a%5C%22%20%3D%20%5C%22aa%5C%22%2C%5Cn-%20%5C%22aa%5C%22%20%2B%20%5C%22a%5C%22%20%3D%20%5C%22aaa%5C%22%2C%5Cn-%20%5C%22aa%5C%22%20%2B%20%5C%22aba%5C%22%20%3D%20%5C%22aaaba%5C%22%2C%5Cn-%20%5C%22aa%5C%22%20%2B%20%5C%22b%5C%22%20%3D%20%5C%22aab%5C%22%2C%5Cn-%20%5C%22a%5C%22%20%2B%20%5C%22aba%5C%22%20%3D%20%5C%22aaba%5C%22%2C%5Cn-%20%5C%22a%5C%22%20%2B%20%5C%22b%5C%22%20%3D%20%5C%22ab%5C%22.%5Cn%5CnIn%20the%20second%20example%2C%20attainable%20strings%20are%20%5C%22aa%5C%22%2C%20%5C%22aaa%5C%22%2C%20%5C%22aaaa%5C%22%2C%20%5C%22aaaba%5C%22%2C%20%5C%22aab%5C%22%2C%20%5C%22aaba%5C%22%2C%20%5C%22ab%5C%22%2C%20%5C%22abaa%5C%22%2C%20%5C%22abaaa%5C%22%2C%20%5C%22abaaba%5C%22%2C%20%5C%22abab%5C%22%2C%20%5C%22ba%5C%22%2C%20%5C%22baa%5C%22%2C%20%5C%22baba%5C%22%2C%20%5C%22bb%5C%22.%5Cn%5CnNotice%20that%20though%20%5C%22a%5C%22%2B%5C%22aa%5C%22%3D%5C%22aa%5C%22%2B%5C%22a%5C%22%3D%5C%22aaa%5C%22%2C%20%5C%22aaa%5C%22%20will%20only%20be%20counted%20once.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2500%5D%2C%22memory%22%3A%5B1024000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1081%5C%2FH%22%2C%22id%22%3A%221081H%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF1081H%22%2C%22title%22%3A%22Palindromic%20Magic%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Palindromic%20Magic%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Palindromic Magic</h1>
+<h2>题目描述</h2>
+<div>After learning some fancy algorithms about palindromes, Chouti found palindromes very interesting, so he wants to challenge you with this problem.
+Chouti has got two strings $ A $ and $ B $ . Since he likes [palindromes](https://en.wikipedia.org/wiki/Palindrome), he would like to pick $ a $ as some non-empty palindromic substring of $ A $ and $ b $ as some non-empty palindromic substring of $ B $ . Concatenating them, he will get string $ ab $ .
+Chouti thinks strings he could get this way are interesting, so he wants to know how many different strings he can get.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single string $ A $ ( $ 1 \le |A| \le 2 \cdot 10^5 $ ).
+The second line contains a single string $ B $ ( $ 1 \le |B| \le 2 \cdot 10^5 $ ).
+Strings $ A $ and $ B $ contain only lowercase English letters.</div>
+<h3>输出格式</h3>
+<br />
+<div>The first and only line should contain a single integer — the number of possible strings.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>aa
+aba
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>aaba
+abaa
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>15
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, attainable strings are
+- "a" + "a" = "aa",
+- "aa" + "a" = "aaa",
+- "aa" + "aba" = "aaaba",
+- "aa" + "b" = "aab",
+- "a" + "aba" = "aaba",
+- "a" + "b" = "ab".
+In the second example, attainable strings are "aa", "aaa", "aaaa", "aaaba", "aab", "aaba", "ab", "abaa", "abaaa", "abaaba", "abab", "ba", "baa", "baba", "bb".
+Notice that though "a"+"aa"="aa"+"a"="aaa", "aaa" will only be counted once.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

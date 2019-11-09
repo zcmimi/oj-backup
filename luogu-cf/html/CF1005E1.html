@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Median on Segments (Permutations Edition) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400352:a+IFh6VcyN3Qoi08Ezx3jkh30FZH8aS1rrh04+/6tyo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20permutation%20%24%20p_1%2C%20p_2%2C%20%5C%5Cdots%2C%20p_n%20%24%20.%20A%20permutation%20of%20length%20%24%20n%20%24%20is%20a%20sequence%20such%20that%20each%20integer%20between%20%24%201%20%24%20and%20%24%20n%20%24%20occurs%20exactly%20once%20in%20the%20sequence.%5Cn%5CnFind%20the%20number%20of%20pairs%20of%20indices%20%24%20%28l%2C%20r%29%20%24%20%28%20%24%201%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%20%24%20%29%20such%20that%20the%20value%20of%20the%20median%20of%20%24%20p_l%2C%20p_%7Bl%2B1%7D%2C%20%5C%5Cdots%2C%20p_r%20%24%20is%20exactly%20the%20given%20number%20%24%20m%20%24%20.%5Cn%5CnThe%20median%20of%20a%20sequence%20is%20the%20value%20of%20the%20element%20which%20is%20in%20the%20middle%20of%20the%20sequence%20after%20sorting%20it%20in%20non-decreasing%20order.%20If%20the%20length%20of%20the%20sequence%20is%20even%2C%20the%20left%20of%20two%20middle%20elements%20is%20used.%5Cn%5CnFor%20example%2C%20if%20%24%20a%3D%5B4%2C%202%2C%207%2C%205%5D%20%24%20then%20its%20median%20is%20%24%204%20%24%20since%20after%20sorting%20the%20sequence%2C%20it%20will%20look%20like%20%24%20%5B2%2C%204%2C%205%2C%207%5D%20%24%20and%20the%20left%20of%20two%20middle%20elements%20is%20equal%20to%20%24%204%20%24%20.%20The%20median%20of%20%24%20%5B7%2C%201%2C%202%2C%209%2C%206%5D%20%24%20equals%20%24%206%20%24%20since%20after%20sorting%2C%20the%20value%20%24%206%20%24%20will%20be%20in%20the%20middle%20of%20the%20sequence.%5Cn%5CnWrite%20a%20program%20to%20find%20the%20number%20of%20pairs%20of%20indices%20%24%20%28l%2C%20r%29%20%24%20%28%20%24%201%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%20%24%20%29%20such%20that%20the%20value%20of%20the%20median%20of%20%24%20p_l%2C%20p_%7Bl%2B1%7D%2C%20%5C%5Cdots%2C%20p_r%20%24%20is%20exactly%20the%20given%20number%20%24%20m%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%5C%5Ccdot10%5E5%20%24%20%2C%20%24%201%20%5C%5Cle%20m%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20given%20sequence%20and%20the%20required%20value%20of%20the%20median.%5Cn%5CnThe%20second%20line%20contains%20a%20permutation%20%24%20p_1%2C%20p_2%2C%20%5C%5Cdots%2C%20p_n%20%24%20%28%20%24%201%20%5C%5Cle%20p_i%20%5C%5Cle%20n%20%24%20%29.%20Each%20integer%20between%20%24%201%20%24%20and%20%24%20n%20%24%20occurs%20in%20%24%20p%20%24%20exactly%20once.%22%2C%22outputFormat%22%3A%22Print%20the%20required%20number.%22%2C%22samples%22%3A%5B%5B%225%204%5Cn2%204%205%203%201%5Cn%22%2C%224%5Cn%22%5D%2C%5B%225%205%5Cn1%202%203%204%205%5Cn%22%2C%221%5Cn%22%5D%2C%5B%2215%208%5Cn1%2015%202%2014%203%2013%204%208%2012%205%2011%206%2010%207%209%5Cn%22%2C%2248%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20the%20suitable%20pairs%20of%20indices%20are%3A%20%24%20%281%2C%203%29%20%24%20%2C%20%24%20%282%2C%202%29%20%24%20%2C%20%24%20%282%2C%203%29%20%24%20and%20%24%20%282%2C%204%29%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1005%5C%2FE1%22%2C%22id%22%3A%221005E1%22%7D%2C%22translation%22%3A%22%23%23%23%23%20%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a1~n%5Cu7684%5Cu6392%5Cu5217%24%281%3C%3Dn%3C%3D2%2A10%5E5%29%24%5Cuff0c%5Cu6c42%5Cu4e2d%5Cu4f4d%5Cu6570%5Cu4e3am%5Cu7684%5Cu5b57%5Cu6bb5%5Cu4e2a%5Cu6570%5Cuff08%5Cu5b50%5Cu6bb5%5Cu957f%5Cu5ea6%5Cu4e3a%5Cu5076%5Cu6570%5Cu65f6%5Cuff0c%5Cu53bb%5Cu5176%5Cu7b2ck%5C%2F2%5Cu9879%5Cuff0ck%5Cu4e3a%5Cu5b50%5Cu6bb5%5Cu957f%5Cu5ea6%5Cuff09%5Cr%5Cn%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0cn%5Cuff0cm%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3an%5Cu7684%5Cu6392%5Cu5217%5Cr%5Cn%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu6ee1%5Cu8db3%5Cu8981%5Cu6c42%5Cu7684%5Cu65b9%5Cu6848%5Cu6570%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF1005E1%22%2C%22title%22%3A%22Median%20on%20Segments%20%28Permutations%20Edition%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Median%20on%20Segments%20%28Permutations%20Edition%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Median on Segments (Permutations Edition)</h1>
+<h2>题意翻译</h2>
+<div>#### 题目翻译
+给定1~n的排列$(1<=n<=2*10^5)$，求中位数为m的字段个数（子段长度为偶数时，去其第k/2项，k为子段长度）
+#### 输入格式
+第一行两个整数，n，m
+第二行为n的排列
+#### 输出格式
+输出满足要求的方案数</div>
+<h2>题目描述</h2>
+<div>You are given a permutation $ p_1, p_2, \dots, p_n $ . A permutation of length $ n $ is a sequence such that each integer between $ 1 $ and $ n $ occurs exactly once in the sequence.
+Find the number of pairs of indices $ (l, r) $ ( $ 1 \le l \le r \le n $ ) such that the value of the median of $ p_l, p_{l+1}, \dots, p_r $ is exactly the given number $ m $ .
+The median of a sequence is the value of the element which is in the middle of the sequence after sorting it in non-decreasing order. If the length of the sequence is even, the left of two middle elements is used.
+For example, if $ a=[4, 2, 7, 5] $ then its median is $ 4 $ since after sorting the sequence, it will look like $ [2, 4, 5, 7] $ and the left of two middle elements is equal to $ 4 $ . The median of $ [7, 1, 2, 9, 6] $ equals $ 6 $ since after sorting, the value $ 6 $ will be in the middle of the sequence.
+Write a program to find the number of pairs of indices $ (l, r) $ ( $ 1 \le l \le r \le n $ ) such that the value of the median of $ p_l, p_{l+1}, \dots, p_r $ is exactly the given number $ m $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integers $ n $ and $ m $ ( $ 1 \le n \le 2\cdot10^5 $ , $ 1 \le m \le n $ ) — the length of the given sequence and the required value of the median.
+The second line contains a permutation $ p_1, p_2, \dots, p_n $ ( $ 1 \le p_i \le n $ ). Each integer between $ 1 $ and $ n $ occurs in $ p $ exactly once.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the required number.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 4
+2 4 5 3 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 5
+1 2 3 4 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>15 8
+1 15 2 14 3 13 4 8 12 5 11 6 10 7 9
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>48
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, the suitable pairs of indices are: $ (1, 3) $ , $ (2, 2) $ , $ (2, 3) $ and $ (2, 4) $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

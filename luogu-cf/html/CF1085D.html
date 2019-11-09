@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minimum Diameter Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401416:ix3whdOJHj/wpD8gfqz4jt0oBQl3H4pC+QmXbZffaMo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20tree%20%28an%20undirected%20connected%20graph%20without%20cycles%29%20and%20an%20integer%20%24%20s%20%24%20.%5Cn%5CnVanya%20wants%20to%20put%20weights%20on%20all%20edges%20of%20the%20tree%20so%20that%20all%20weights%20are%20non-negative%20real%20numbers%20and%20their%20sum%20is%20%24%20s%20%24%20.%20At%20the%20same%20time%2C%20he%20wants%20to%20make%20the%20diameter%20of%20the%20tree%20as%20small%20as%20possible.%5Cn%5CnLet%27s%20define%20the%20diameter%20of%20a%20weighed%20tree%20as%20the%20maximum%20sum%20of%20the%20weights%20of%20the%20edges%20lying%20on%20the%20path%20between%20two%20some%20vertices%20of%20the%20tree.%20In%20other%20words%2C%20the%20diameter%20of%20a%20weighed%20tree%20is%20the%20length%20of%20the%20longest%20simple%20path%20in%20the%20tree%2C%20where%20length%20of%20a%20path%20is%20equal%20to%20the%20sum%20of%20weights%20over%20all%20edges%20in%20the%20path.%5Cn%5CnFind%20the%20minimum%20possible%20diameter%20that%20Vanya%20can%20get.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integer%20numbers%20%24%20n%20%24%20and%20%24%20s%20%24%20%28%20%24%202%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E5%20%24%20%2C%20%24%201%20%5C%5Cleq%20s%20%5C%5Cleq%2010%5E9%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20tree%20and%20the%20sum%20of%20edge%20weights.%5Cn%5CnEach%20of%20the%20following%20%24%20n%5Cu22121%20%24%20lines%20contains%20two%20space-separated%20integer%20numbers%20%24%20a_i%20%24%20and%20%24%20b_i%20%24%20%28%20%24%201%20%5C%5Cleq%20a_i%2C%20b_i%20%5C%5Cleq%20n%20%24%20%2C%20%24%20a_i%20%5C%5Cneq%20b_i%20%24%20%29%20%5Cu2014%20the%20indexes%20of%20vertices%20connected%20by%20an%20edge.%20The%20edges%20are%20undirected.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20given%20edges%20form%20a%20tree.%22%2C%22outputFormat%22%3A%22Print%20the%20minimum%20diameter%20of%20the%20tree%20that%20Vanya%20can%20get%20by%20placing%20some%20non-negative%20real%20weights%20on%20its%20edges%20with%20the%20sum%20equal%20to%20%24%20s%20%24%20.%5Cn%5CnYour%20answer%20will%20be%20considered%20correct%20if%20its%20absolute%20or%20relative%20error%20does%20not%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%5Cn%5CnFormally%2C%20let%20your%20answer%20be%20%24%20a%20%24%20%2C%20and%20the%20jury%27s%20answer%20be%20%24%20b%20%24%20.%20Your%20answer%20is%20considered%20correct%20if%20%24%20%5C%5Cfrac%20%7B%7Ca-b%7C%7D%20%7Bmax%281%2C%20b%29%7D%20%5C%5Cleq%2010%5E%7B-6%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%203%5Cn1%202%5Cn1%203%5Cn1%204%5Cn%22%2C%22%5Cn2.000000000000000000%22%5D%2C%5B%22%5Cn6%201%5Cn2%201%5Cn2%203%5Cn2%205%5Cn5%204%5Cn5%206%5Cn%22%2C%22%5Cn0.500000000000000000%22%5D%2C%5B%22%5Cn5%205%5Cn1%202%5Cn2%203%5Cn3%204%5Cn3%205%5Cn%22%2C%22%5Cn3.333333333333333333%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20it%20is%20necessary%20to%20put%20weights%20like%20this%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1085D%5C%2Fc1a70d116ee899735bc4ecf7ff6c6bf75b292051.png%29It%20is%20easy%20to%20see%20that%20the%20diameter%20of%20this%20tree%20is%20%24%202%20%24%20.%20It%20can%20be%20proved%20that%20it%20is%20the%20minimum%20possible%20diameter.%5Cn%5CnIn%20the%20second%20example%20it%20is%20necessary%20to%20put%20weights%20like%20this%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1085D%5C%2F7a6a70a648e37d9e55f1bb9aed6b2be7637ee566.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1085%5C%2FD%22%2C%22id%22%3A%221085D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu68f5N%5Cu4e2a%5Cu70b9%5Cu7684%5Cu6811%5Cuff0c%5Cu548c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570s%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu8ba9%5Cu4f60%5Cu5728%5Cu8fd9%5Cu68f5%5Cu6811%5Cu4e0a%5Cu7ed9N-1%5Cu6761%5Cu8fb9%5Cu5206%5Cu914d%5Cu8fb9%5Cu6743%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu8fd9%5Cu68f5%5Cu6811%5Cu7684%5Cu76f4%5Cu5f84%5Cu6700%5Cu5c0f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu6700%5Cu5c0f%5Cu7684%5Cu76f4%5Cu5f84%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc12%3C%3Dn%3C%3D100000%2C1%3C%3Ds%3C%3D10%5E9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu7b54%5Cu6848%5Cu662f%5Cu6b63%5Cu786e%5Cu7684%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu4e0e%5Cu6807%5Cu51c6%5Cu7b54%5Cu6848%5Cu7684%5Cu7edd%5Cu5bf9%5Cu8bef%5Cu5dee%5Cu6216%5Cu76f8%5Cu5bf9%5Cu8bef%5Cu5dee%5Cu4e0d%5Cu8d85%5Cu8fc710%5E-6%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A80%2C%22totalAccepted%22%3A62%2C%22pid%22%3A%22CF1085D%22%2C%22title%22%3A%22Minimum%20Diameter%20Tree%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1073F%22%2C%22title%22%3A%22Choosing%20Two%20Paths%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1092E%22%2C%22title%22%3A%22Minimal%20Diameter%20Forest%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1085C%22%2C%22title%22%3A%22Connect%20Three%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1103D%22%2C%22title%22%3A%22Professional%20layer%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1174A%22%2C%22title%22%3A%22Ehab%20Fails%20to%20Be%20Thanos%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minimum%20Diameter%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minimum Diameter Tree</h1>
+<h2>题意翻译</h2>
+<div>给你一棵N个点的树，和一个正整数s。
+现在让你在这棵树上给N-1条边分配边权，使得这棵树的直径最小。
+输出最小的直径。
+保证2<=n<=100000,1<=s<=10^9。
+你的答案是正确的当且仅当与标准答案的绝对误差或相对误差不超过10^-6。</div>
+<h2>题目描述</h2>
+<div>You are given a tree (an undirected connected graph without cycles) and an integer $ s $ .
+Vanya wants to put weights on all edges of the tree so that all weights are non-negative real numbers and their sum is $ s $ . At the same time, he wants to make the diameter of the tree as small as possible.
+Let's define the diameter of a weighed tree as the maximum sum of the weights of the edges lying on the path between two some vertices of the tree. In other words, the diameter of a weighed tree is the length of the longest simple path in the tree, where length of a path is equal to the sum of weights over all edges in the path.
+Find the minimum possible diameter that Vanya can get.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integer numbers $ n $ and $ s $ ( $ 2 \leq n \leq 10^5 $ , $ 1 \leq s \leq 10^9 $ ) — the number of vertices in the tree and the sum of edge weights.
+Each of the following $ n−1 $ lines contains two space-separated integer numbers $ a_i $ and $ b_i $ ( $ 1 \leq a_i, b_i \leq n $ , $ a_i \neq b_i $ ) — the indexes of vertices connected by an edge. The edges are undirected.
+It is guaranteed that the given edges form a tree.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the minimum diameter of the tree that Vanya can get by placing some non-negative real weights on its edges with the sum equal to $ s $ .
+Your answer will be considered correct if its absolute or relative error does not exceed $ 10^{-6} $ .
+Formally, let your answer be $ a $ , and the jury's answer be $ b $ . Your answer is considered correct if $ \frac {|a-b|} {max(1, b)} \leq 10^{-6} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4 3
+1 2
+1 3
+1 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2.000000000000000000</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+6 1
+2 1
+2 3
+2 5
+5 4
+5 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+0.500000000000000000</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+5 5
+1 2
+2 3
+3 4
+3 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+3.333333333333333333</code></pre>
+<h2>说明</h2>
+<div>In the first example it is necessary to put weights like this:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1085D/c1a70d116ee899735bc4ecf7ff6c6bf75b292051.png)It is easy to see that the diameter of this tree is $ 2 $ . It can be proved that it is the minimum possible diameter.
+In the second example it is necessary to put weights like this:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1085D/7a6a70a648e37d9e55f1bb9aed6b2be7637ee566.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

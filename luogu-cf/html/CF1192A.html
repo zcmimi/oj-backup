@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Building Skyscrapers - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402876:SOHM2Txt91VghDy75N+zi12SgwsApNQDPyrB1beTjCo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22We%20are%20going%20to%20build%20a%20new%20city%3A%20the%20Metropolis.%20The%20city%20is%20going%20to%20be%20built%20on%20an%20infinite%20square%20grid.%20The%20finished%20city%20will%20consist%20of%20%24%20n%20%24%20skyscrapers%2C%20each%20occupying%20a%20different%20cell%20of%20the%20grid.%20At%20any%20moment%20during%20the%20construction%2C%20the%20cells%20that%20currently%20do%20not%20contain%20a%20skyscraper%20are%20called%20empty.%5Cn%5CnYou%20are%20given%20the%20planned%20coordinates%20of%20the%20%24%20n%20%24%20skyscrapers.%20Your%20task%20is%20to%20find%20an%20order%20in%20which%20they%20can%20be%20built%20while%20satisfying%20the%20rules%20listed%20below.%5Cn%5Cn-%20The%20building%20crew%20has%20only%20one%20crane%2C%20so%20the%20Metropolis%20has%20to%20be%20constructed%20one%20skyscraper%20at%20a%20time.%5Cn-%20The%20first%20skyscraper%20can%20be%20built%20anywhere%20on%20the%20grid.%5Cn-%20Each%20subsequent%20skyscraper%20has%20to%20share%20a%20side%20or%20a%20corner%20with%20at%20least%20one%20of%20the%20previously%20built%20skyscrapers%20%28so%20that%20it%27s%20easier%20to%20align%20the%20new%20skyscraper%20to%20the%20grid%20properly%29.%5Cn-%20When%20building%20a%20skyscraper%2C%20there%20has%20to%20be%20a%20way%20to%20deliver%20material%20to%20the%20construction%20site%20from%20the%20outside%20of%20Metropolis%20by%20only%20moving%20it%20through%20empty%20cells%20that%20share%20a%20side.%20In%20other%20words%2C%20there%20should%20be%20a%20path%20of%20side-adjacent%20empty%20cells%20that%20connects%20the%20cell%20that%20will%20contain%20the%20skyscraper%20to%20some%20cell%20%24%20%28r%2Cc%29%20%24%20with%20%24%20%7Cr%7C%3E10%5E9%20%24%20and%5C%2For%20%24%20%7Cc%7C%3E10%5E9%20%24%20.%5Cn%5CnIf%20a%20solution%20exists%2C%20let%27s%20denote%20the%20numbers%20of%20skyscrapers%20in%20the%20order%20in%20which%20they%20should%20be%20built%20by%20%24%20s_1%2C%20%5C%5Cdots%2C%20s_n%20%24%20.%20There%20are%20two%20types%20of%20subtasks%3A%5Cn%5CnType%201%3A%20You%20may%20produce%20any%20valid%20order.%5Cn%5CnType%202%3A%20You%20must%20find%20the%20order%20that%20maximizes%20%24%20s_n%20%24%20.%20Among%20those%2C%20you%20must%20find%20the%20one%20that%20maximizes%20%24%20s_%7Bn-1%7D%20%24%20.%20And%20so%20on.%20In%20other%20words%2C%20you%20must%20find%20the%20valid%20order%20of%20building%20for%20which%20the%20sequence%20%24%20%28s_n%2Cs_%7Bn-1%7D%2C%5C%5Cdots%2Cs_1%29%20%24%20is%20lexicographically%20largest.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%20150%2C000%20%24%20%29%20%5Cu2013%20the%20number%20of%20skyscrapers.%5Cn%5CnThe%20second%20line%20contains%20a%20single%20integer%20%24%20t%20%24%20%28%20%24%201%20%5C%5Cle%20t%20%5C%5Cle%202%20%24%20%29%20describing%20the%20type%20of%20the%20subtask%20as%20defined%20above.%5Cn%5CnThen%2C%20%24%20n%20%24%20lines%20follow.%20The%20%24%20i%20%24%20-th%20of%20these%20lines%20contains%20two%20space-separated%20integers%20%24%20r_i%20%24%20and%20%24%20c_i%20%24%20%28%20%24%20%7Cr_i%7C%2C%20%7Cc_i%7C%20%5C%5Cle%2010%5E9%20%24%20%29%20denoting%20the%20coordinates%20of%20the%20cell%20containing%20skyscraper%20%24%20i%20%24%20.%5Cn%5Cn%28The%20skyscrapers%20are%20not%20numbered%20in%20any%20particular%20order.%20The%20only%20reason%20why%20they%20have%20numbers%20is%20that%20they%20are%20used%20in%20the%20output%20format.%29%5Cn%5CnIt%20is%20guaranteed%20that%20no%20two%20skyscrapers%20coincide.%22%2C%22outputFormat%22%3A%22If%20it%20is%20impossible%20to%20build%20the%20skyscrapers%20according%20to%20the%20given%20rules%2C%20print%20a%20single%20line%20containing%20the%20string%20%5C%22NO%5C%22.%5Cn%5CnOtherwise%2C%20print%20%24%20n%2B1%20%24%20lines.%20The%20first%20of%20these%20lines%20should%20contain%20the%20string%20%5C%22YES%5C%22.%20For%20each%20%24%20i%20%24%20%2C%20the%20%24%20i%20%24%20-th%20of%20the%20remaining%20%24%20n%20%24%20lines%20should%20contain%20a%20single%20integer%20%24%20s_i%20%24%20.%5Cn%5CnIn%20subtasks%20with%20%24%20t%20%3D%201%20%24%20%2C%20if%20there%20are%20multiple%20valid%20orders%2C%20you%20may%20output%20any%20one%20of%20them.%5Cn%5CnScoring%5Cn%5CnSubtask%201%20%288%20points%29%3A%20%24%20t%20%3D%201%20%24%20and%20%24%20n%20%5C%5Cle%2010%20%24%5Cn%5CnSubtask%202%20%2814%20points%29%3A%20%24%20t%20%3D%201%20%24%20and%20%24%20n%20%5C%5Cle%20200%20%24%5Cn%5CnSubtask%203%20%2812%20points%29%3A%20%24%20t%20%3D%201%20%24%20and%20%24%20n%20%5C%5Cle%202%2C000%20%24%5Cn%5CnSubtask%204%20%2817%20points%29%3A%20%24%20t%20%3D%202%20%24%20and%20%24%20n%20%5C%5Cle%202%2C000%20%24%5Cn%5CnSubtask%205%20%2820%20points%29%3A%20%24%20t%20%3D%201%20%24%5Cn%5CnSubtask%206%20%2810%20points%29%3A%20%24%20t%20%3D%202%20%24%20%2C%20%24%20n%20%5C%5Cle%2070%2C000%20%24%20and%20%24%20%7Cr_i%7C%2C%20%7Cc_i%7C%20%5C%5Cle%20900%20%24%20for%20each%20%24%20i%20%24%5Cn%5CnSubtask%207%20%2819%20points%29%3A%20%24%20t%20%3D%202%20%24%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn2%5Cn0%200%5Cn0%201%5Cn0%202%5Cn%22%2C%22%5CnYES%5Cn1%5Cn2%5Cn3%5Cn%22%5D%2C%5B%22%5Cn3%5Cn1%5Cn0%200%5Cn1%201%5Cn2%202%5Cn%22%2C%22%5CnYES%5Cn2%5Cn3%5Cn1%5Cn%22%5D%2C%5B%22%5Cn2%5Cn1%5Cn0%200%5Cn0%202%5Cn%22%2C%22%5CnNO%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20there%20are%20three%20skyscrapers%20in%20a%20row.%20All%20of%20them%20can%20always%20be%20reached%20from%20outside%20the%20Metropolis%2C%20and%20there%20are%20four%20build%20orders%20which%20preserve%20connectivity%3A%5Cn%5Cn-%201%2C%202%2C%203%5Cn-%202%2C%201%2C%203%5Cn-%202%2C%203%2C%201%5Cn-%203%2C%202%2C%201%5Cn%5CnSince%20%24%20t%20%3D%202%20%24%20%2C%20we%20must%20choose%20the%20first%20option.%5Cn%5CnIn%20the%20second%20example%2C%20the%20only%20difference%20from%20the%20first%20example%20is%20that%20skyscraper%202%20shares%20only%20corners%20with%20skyscrapers%201%20and%203%2C%20the%20same%20set%20of%20orders%20as%20in%20the%20first%20sample%20is%20valid.%20Since%20%24%20t%20%3D%201%20%24%20%2C%20each%20of%20these%20answers%20is%20correct.%5Cn%5CnIn%20the%20third%20example%2C%20the%20Metropolis%20is%20disconnected.%20We%20obviously%20can%27t%20build%20that.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3500%5D%2C%22memory%22%3A%5B1024000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1192%5C%2FA%22%2C%22id%22%3A%221192A%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu8981%5Cu5efa%5Cu9020%5Cu4e00%5Cu4e2a%5Cu65b0%5Cu7684%5Cu57ce%5Cu5e02%5Cuff1aMetropolis%5Cu3002%5Cu5b83%5Cu8981%5Cu5efa%5Cu5728%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu9650%5Cu5927%5Cu7684%5Cu5e73%5Cu9762%5Cu76f4%5Cu89d2%5Cu5750%5Cu6807%5Cu7cfb%5Cu4e2d%5Cu3002%5Cu5efa%5Cu597d%5Cu7684%5Cu57ce%5Cu5e02%5Cu4e2d%5Cu5e94%5Cu8be5%5Cu6709%20%24n%24%20%5Cu5ea7%5Cu6469%5Cu5929%5Cu5927%5Cu697c%5Cuff0c%5Cu5e76%5Cu4e14%5Cu5b83%5Cu4eec%5Cu6240%5Cu5360%5Cu7684%5Cuff08%5Cu5e73%5Cu9762%5Cu76f4%5Cu89d2%5Cu5750%5Cu6807%5Cu7cfb%5Cu4e2d%5Cu7684%5Cu6700%5Cu5c0f%5Cuff09%5Cu7f51%5Cu683c%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu540c%5Cu3002%5Cu5728%5Cu5efa%5Cu9020%5Cu7684%5Cu4efb%5Cu4f55%5Cu65f6%5Cu95f4%5Cu5185%5Cuff0c%5Cu6211%5Cu4eec%5Cu5b9a%5Cu4e49%5Cu5176%5Cu4e0a%5Cu6ca1%5Cu6709%5Cu6469%5Cu5929%5Cu5927%5Cu697c%5Cu7684%5Cu7f51%5Cu683c%2A%2A%5Cu4e3a%5Cu7a7a%2A%2A%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu8fd9%20%24n%24%20%5Cu5ea7%5Cu6469%5Cu5929%5Cu5927%5Cu697c%5Cu7684%5Cu5750%5Cu6807%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu627e%5Cu51fa%2A%2A%5Cu540c%5Cu65f6%5Cu6ee1%5Cu8db3%5Cu4e0b%5Cu5217%5Cu6761%5Cu4ef6%2A%2A%5Cu7684%5Cu5efa%5Cu9020%5Cu65b9%5Cu6cd5%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%5Cu5de5%5Cu7a0b%5Cu961f%5Cu53ea%5Cu6709%5Cu4e00%5Cu53f0%5Cu8d77%5Cu91cd%5Cu673a%5Cuff0c%5Cu6240%5Cu4ee5%5Cu540c%5Cu4e00%5Cu65f6%5Cu523b%2A%2A%5Cu6700%5Cu591a%5Cu53ea%5Cu80fd%5Cu5efa%5Cu9020%5Cu4e00%5Cu680b%5Cu697c%2A%2A%5Cu3002%5Cr%5Cn%5Cr%5Cn-%20%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu4efb%5Cu610f%5Cu6307%5Cu5b9a%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu5efa%5Cu9020%5Cu7684%5Cu697c%5Cu3002%5Cr%5Cn%5Cr%5Cn-%20%5Cu540e%5Cu5efa%5Cu7684%5Cu697c%5Cu5fc5%5Cu987b%5Cu4e0e%5Cu4e4b%5Cu524d%5Cu5efa%5Cu7684%5Cu697c%2A%2A%5Cu5171%5Cu4e00%5Cu4e2a%5Cu8fb9%5Cu6216%5Cu89d2%2A%2A%5Cu3002%5Cr%5Cn%5Cr%5Cn-%20%5Cu6574%5Cu4e2a%5Cu5efa%5Cu9020%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cuff0c%5Cu5fc5%5Cu987b%5Cu6709%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cu4ece%5Cu57ce%5Cu5916%5Cu901a%5Cu5411%5Cu6b63%5Cu5728%5Cu5efa%5Cu9020%5Cu7684%5Cu697c%5Cu3002%5Cu8def%5Cu5f84%5Cu53ea%5Cu80fd%5Cu7ecf%5Cu8fc7%2A%2A%5Cu7a7a%5Cu7f51%5Cu683c%2A%2A%5Cuff0c%5Cu4e14%5Cu53ea%5Cu80fd%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu7f51%5Cu683c%5Cu8fde%5Cu5411%2A%2A%5Cu8fb9%5Cu76f8%5Cu90bb%2A%2A%5Cu7684%5Cu7f51%5Cu683c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu6709%5Cu89e3%5Cuff0c%5Cu4ee4%5Cu5efa%5Cu9020%5Cu987a%5Cu5e8f%5Cu4e3a%20%24s_1%2C...%2Cs_n%24%5Cuff0c%5Cu5176%5Cu4e2d%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu4e3a%5Cu5bf9%5Cu5e94%5Cu7684%5Cu5927%5Cu697c%2A%2A%5Cu7f16%5Cu53f7%2A%2A%5Cu3002%5Cu5171%5Cu6709%5Cu4e24%5Cu79cd%5Cu7c7b%5Cu522b%5Cu7684%5Cu4efb%5Cu52a1%5Cuff1a%5Cr%5Cn%5Cr%5Cn1.%20%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu8f93%5Cu51fa%5Cu4efb%5Cu4f55%5Cu89e3%5Cu3002%5Cr%5Cn2.%20%5Cu8f93%5Cu51fa%5Cu4ee4%20%24s_n%2C...%2Cs_1%24%20%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5927%5Cu7684%5Cu89e3%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24n%5C%5Cin%5B1%2C1.5%5C%5Ctimes10%5E5%5D%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6469%5Cu5929%5Cu5927%5Cu697c%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24t%5C%5Cin%5B1%2C2%5D%24%5Cuff0c%20%5Cu8868%5Cu793a%5Cu4efb%5Cu52a1%5Cu7c7b%5Cu522b%5Cu3002%5Cu8fd9%5Cu91cc%5Cu7684%20%241%24%20%5Cu548c%20%242%24%20%5Cu5206%5Cu522b%5Cu5bf9%5Cu5e94%5Cu7740%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu4e2d%5Cu7684%5Cu4e24%5Cu79cd%5Cu4efb%5Cu52a1%5Cu7c7b%5Cu522b%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24n%24%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24r_i%2Cc_i%5C%5Cin%5B-10%5E9%2C10%5E9%5D%24%5Cuff0c%5Cu5206%5Cu522b%5Cu4e3a%2A%2A%5Cu7f16%5Cu53f7%5Cu4e3a%20%24i%24%20%2A%2A%5Cu7684%5Cu6469%5Cu5929%5Cu5927%5Cu697c%5Cu6240%5Cu5728%5Cu7f51%5Cu683c%5Cu7684%5Cu6a2a%5Cu5750%5Cu6807%5Cu548c%5Cu7eb5%5Cu5750%5Cu6807%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu65e0%5Cu89e3%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu4e24%5Cu79cd%5Cu4efb%5Cu52a1%5Cu90fd%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%60NO%60%5Cuff1b%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu6709%5Cu89e3%5Cuff0c%5Cu5148%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%60YES%60%5Cuff0c%5Cu7136%5Cu540e%5Cu8f93%5Cu51fa%20%24n%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu884c%5Cu4ec5%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24s_i%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8bf7%5Cu6ce8%5Cu610f%5Cu4e0d%5Cu540c%5Cu4efb%5Cu52a1%5Cu7c7b%5Cu522b%5Cu4e2d%20%24s_i%24%20%5Cu7684%5Cu610f%5Cu4e49%5Cu3002%2A%2A%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu5b50%5Cu4efb%5Cu52a1%5Cr%5Cn%5Cr%5Cn%7C%20%5Cu7f16%5Cu53f7%20%7C%20%5Cu7279%5Cu6b8a%5Cu6761%5Cu4ef6%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20%5Cu5206%5Cu503c%20%7C%5Cr%5Cn%7C%20----%20%7C%20-------------------------------------%20%7C%20----%20%7C%5Cr%5Cn%7C%201%20%20%20%20%7C%20%24t%3D1%2Cn%5C%5Cle10%24%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%208%20%20%20%20%7C%5Cr%5Cn%7C%202%20%20%20%20%7C%20%24t%3D1%2Cn%5C%5Cle200%24%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%2014%20%20%20%7C%5Cr%5Cn%7C%203%20%20%20%20%7C%20%24t%3D1%2Cn%5C%5Cle2000%24%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%2012%20%20%20%7C%5Cr%5Cn%7C%204%20%20%20%20%7C%20%24t%3D2%2Cn%5C%5Cle2000%24%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%2017%20%20%20%7C%5Cr%5Cn%7C%205%20%20%20%20%7C%20%24t%3D1%24%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%2020%20%20%20%7C%5Cr%5Cn%7C%206%20%20%20%20%7C%20%24t%3D2%2Cn%5C%5Cle70000%2C-900%5C%5Cle%20r_i%2Cc_i%5C%5Cle900%24%20%7C%2010%20%20%20%7C%5Cr%5Cn%7C%207%20%20%20%20%7C%20%24t%3D2%24%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%2019%20%20%20%7C%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF1192A%22%2C%22title%22%3A%22Building%20Skyscrapers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Building%20Skyscrapers%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Building Skyscrapers</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+我们要建造一个新的城市：Metropolis。它要建在一个无限大的平面直角坐标系中。建好的城市中应该有 $n$ 座摩天大楼，并且它们所占的（平面直角坐标系中的最小）网格互不相同。在建造的任何时间内，我们定义其上没有摩天大楼的网格**为空**。
+给定这 $n$ 座摩天大楼的坐标，请你找出**同时满足下列条件**的建造方法：
+- 工程队只有一台起重机，所以同一时刻**最多只能建造一栋楼**。
+- 你可以任意指定第一个建造的楼。
+- 后建的楼必须与之前建的楼**共一个边或角**。
+- 整个建造过程中，必须有一条路径从城外通向正在建造的楼。路径只能经过**空网格**，且只能从一个网格连向**边相邻**的网格。
+如果有解，令建造顺序为 $s_1,...,s_n$，其中每一个元素为对应的大楼**编号**。共有两种类别的任务：
+1. 你可以输出任何解。
+2. 输出令 $s_n,...,s_1$ 这个序列字典序最大的解。
+## 输入格式
+第一行一个正整数 $n\in[1,1.5\times10^5]$，表示摩天大楼数量。
+第二行一个整数 $t\in[1,2]$， 表示任务类别。这里的 $1$ 和 $2$ 分别对应着题目描述中的两种任务类别。
+接下来 $n$ 行每行两个整数 $r_i,c_i\in[-10^9,10^9]$，分别为**编号为 $i$ **的摩天大楼所在网格的横坐标和纵坐标。
+## 输出格式
+如果无解，对于两种任务都输出一行`NO`；
+如果有解，先输出一行`YES`，然后输出 $n$ 行，每一行仅一个整数 $s_i$。
+**请注意不同任务类别中 $s_i$ 的意义。**
+## 子任务
+| 编号 | 特殊条件 | 分值 |
+| ---- | ------------------------------------- | ---- |
+| 1 | $t=1,n\le10$ | 8 |
+| 2 | $t=1,n\le200$ | 14 |
+| 3 | $t=1,n\le2000$ | 12 |
+| 4 | $t=2,n\le2000$ | 17 |
+| 5 | $t=1$ | 20 |
+| 6 | $t=2,n\le70000,-900\le r_i,c_i\le900$ | 10 |
+| 7 | $t=2$ | 19 |</div>
+<h2>题目描述</h2>
+<div>We are going to build a new city: the Metropolis. The city is going to be built on an infinite square grid. The finished city will consist of $ n $ skyscrapers, each occupying a different cell of the grid. At any moment during the construction, the cells that currently do not contain a skyscraper are called empty.
+You are given the planned coordinates of the $ n $ skyscrapers. Your task is to find an order in which they can be built while satisfying the rules listed below.
+- The building crew has only one crane, so the Metropolis has to be constructed one skyscraper at a time.
+- The first skyscraper can be built anywhere on the grid.
+- Each subsequent skyscraper has to share a side or a corner with at least one of the previously built skyscrapers (so that it's easier to align the new skyscraper to the grid properly).
+- When building a skyscraper, there has to be a way to deliver material to the construction site from the outside of Metropolis by only moving it through empty cells that share a side. In other words, there should be a path of side-adjacent empty cells that connects the cell that will contain the skyscraper to some cell $ (r,c) $ with $ |r|>10^9 $ and/or $ |c|>10^9 $ .
+If a solution exists, let's denote the numbers of skyscrapers in the order in which they should be built by $ s_1, \dots, s_n $ . There are two types of subtasks:
+Type 1: You may produce any valid order.
+Type 2: You must find the order that maximizes $ s_n $ . Among those, you must find the one that maximizes $ s_{n-1} $ . And so on. In other words, you must find the valid order of building for which the sequence $ (s_n,s_{n-1},\dots,s_1) $ is lexicographically largest.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1 \le n \le 150,000 $ ) – the number of skyscrapers.
+The second line contains a single integer $ t $ ( $ 1 \le t \le 2 $ ) describing the type of the subtask as defined above.
+Then, $ n $ lines follow. The $ i $ -th of these lines contains two space-separated integers $ r_i $ and $ c_i $ ( $ |r_i|, |c_i| \le 10^9 $ ) denoting the coordinates of the cell containing skyscraper $ i $ .
+(The skyscrapers are not numbered in any particular order. The only reason why they have numbers is that they are used in the output format.)
+It is guaranteed that no two skyscrapers coincide.</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is impossible to build the skyscrapers according to the given rules, print a single line containing the string "NO".
+Otherwise, print $ n+1 $ lines. The first of these lines should contain the string "YES". For each $ i $ , the $ i $ -th of the remaining $ n $ lines should contain a single integer $ s_i $ .
+In subtasks with $ t = 1 $ , if there are multiple valid orders, you may output any one of them.
+Scoring
+Subtask 1 (8 points): $ t = 1 $ and $ n \le 10 $
+Subtask 2 (14 points): $ t = 1 $ and $ n \le 200 $
+Subtask 3 (12 points): $ t = 1 $ and $ n \le 2,000 $
+Subtask 4 (17 points): $ t = 2 $ and $ n \le 2,000 $
+Subtask 5 (20 points): $ t = 1 $
+Subtask 6 (10 points): $ t = 2 $ , $ n \le 70,000 $ and $ |r_i|, |c_i| \le 900 $ for each $ i $
+Subtask 7 (19 points): $ t = 2 $</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+2
+0 0
+0 1
+0 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+YES
+1
+2
+3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3
+1
+0 0
+1 1
+2 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+YES
+2
+3
+1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+2
+1
+0 0
+0 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+NO
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, there are three skyscrapers in a row. All of them can always be reached from outside the Metropolis, and there are four build orders which preserve connectivity:
+- 1, 2, 3
+- 2, 1, 3
+- 2, 3, 1
+- 3, 2, 1
+Since $ t = 2 $ , we must choose the first option.
+In the second example, the only difference from the first example is that skyscraper 2 shares only corners with skyscrapers 1 and 3, the same set of orders as in the first sample is valid. Since $ t = 1 $ , each of these answers is correct.
+In the third example, the Metropolis is disconnected. We obviously can't build that.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

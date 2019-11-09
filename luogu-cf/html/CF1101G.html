@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>(Zero XOR Subset)-less - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401690:8yygoOglZsyCXelmHWPH+3WYCGYCLKvsCF/Puo9fcTs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20an%20array%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20of%20integer%20numbers.%5Cn%5CnYour%20task%20is%20to%20divide%20the%20array%20into%20the%20maximum%20number%20of%20segments%20in%20such%20a%20way%20that%3A%5Cn%5Cn-%20each%20element%20is%20contained%20in%20exactly%20one%20segment%3B%5Cn-%20each%20segment%20contains%20at%20least%20one%20element%3B%5Cn-%20there%20doesn%27t%20exist%20a%20non-empty%20subset%20of%20segments%20such%20that%20bitwise%20XOR%20of%20the%20numbers%20from%20them%20is%20equal%20to%20%24%200%20%24%20.%5Cn%5CnPrint%20the%20maximum%20number%20of%20segments%20the%20array%20can%20be%20divided%20into.%20Print%20-1%20if%20no%20suitable%20division%20exists.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20array.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%200%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E9%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20the%20maximum%20number%20of%20segments%20the%20array%20can%20be%20divided%20into%20while%20following%20the%20given%20constraints.%20Print%20-1%20if%20no%20suitable%20division%20exists.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%5Cn5%205%207%202%5Cn%22%2C%22%5Cn2%5Cn%22%5D%2C%5B%22%5Cn3%5Cn1%202%203%5Cn%22%2C%22%5Cn-1%5Cn%22%5D%2C%5B%22%5Cn3%5Cn3%201%2010%5Cn%22%2C%22%5Cn3%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20%24%202%20%24%20is%20the%20maximum%20number.%20If%20you%20divide%20the%20array%20into%20%24%20%5C%5C%7B%5B5%5D%2C%20%5B5%2C%207%2C%202%5D%5C%5C%7D%20%24%20%2C%20the%20XOR%20value%20of%20the%20subset%20of%20only%20the%20second%20segment%20is%20%24%205%20%5C%5Coplus%207%20%5C%5Coplus%202%20%3D%200%20%24%20.%20%24%20%5C%5C%7B%5B5%2C%205%5D%2C%20%5B7%2C%202%5D%5C%5C%7D%20%24%20has%20the%20value%20of%20the%20subset%20of%20only%20the%20first%20segment%20being%20%24%205%20%5C%5Coplus%205%20%3D%200%20%24%20.%20However%2C%20%24%20%5C%5C%7B%5B5%2C%205%2C%207%5D%2C%20%5B2%5D%5C%5C%7D%20%24%20will%20lead%20to%20subsets%20%24%20%5C%5C%7B%5B5%2C%205%2C%207%5D%5C%5C%7D%20%24%20of%20XOR%20%24%207%20%24%20%2C%20%24%20%5C%5C%7B%5B2%5D%5C%5C%7D%20%24%20of%20XOR%20%24%202%20%24%20and%20%24%20%5C%5C%7B%5B5%2C%205%2C%207%5D%2C%20%5B2%5D%5C%5C%7D%20%24%20of%20XOR%20%24%205%20%5C%5Coplus%205%20%5C%5Coplus%207%20%5C%5Coplus%202%20%3D%205%20%24%20.%5Cn%5CnLet%27s%20take%20a%20look%20at%20some%20division%20on%20%24%203%20%24%20segments%20%5Cu2014%20%24%20%5C%5C%7B%5B5%5D%2C%20%5B5%2C%207%5D%2C%20%5B2%5D%5C%5C%7D%20%24%20.%20It%20will%20produce%20subsets%3A%5Cn%5Cn-%20%24%20%5C%5C%7B%5B5%5D%5C%5C%7D%20%24%20%2C%20XOR%20%24%205%20%24%20%3B%5Cn-%20%24%20%5C%5C%7B%5B5%2C%207%5D%5C%5C%7D%20%24%20%2C%20XOR%20%24%202%20%24%20%3B%5Cn-%20%24%20%5C%5C%7B%5B5%5D%2C%20%5B5%2C%207%5D%5C%5C%7D%20%24%20%2C%20XOR%20%24%207%20%24%20%3B%5Cn-%20%24%20%5C%5C%7B%5B2%5D%5C%5C%7D%20%24%20%2C%20XOR%20%24%202%20%24%20%3B%5Cn-%20%24%20%5C%5C%7B%5B5%5D%2C%20%5B2%5D%5C%5C%7D%20%24%20%2C%20XOR%20%24%207%20%24%20%3B%5Cn-%20%24%20%5C%5C%7B%5B5%2C%207%5D%2C%20%5B2%5D%5C%5C%7D%20%24%20%2C%20XOR%20%24%200%20%24%20%3B%5Cn-%20%24%20%5C%5C%7B%5B5%5D%2C%20%5B5%2C%207%5D%2C%20%5B2%5D%5C%5C%7D%20%24%20%2C%20XOR%20%24%205%20%24%20%3B%5Cn%5CnAs%20you%20can%20see%2C%20subset%20%24%20%5C%5C%7B%5B5%2C%207%5D%2C%20%5B2%5D%5C%5C%7D%20%24%20has%20its%20XOR%20equal%20to%20%24%200%20%24%20%2C%20which%20is%20unacceptable.%20You%20can%20check%20that%20for%20other%20divisions%20of%20size%20%24%203%20%24%20or%20%24%204%20%24%20%2C%20non-empty%20subset%20with%20%24%200%20%24%20XOR%20always%20exists.%5Cn%5CnThe%20second%20example%20has%20no%20suitable%20divisions.%5Cn%5CnThe%20third%20example%20array%20can%20be%20divided%20into%20%24%20%5C%5C%7B%5B3%5D%2C%20%5B1%5D%2C%20%5B10%5D%5C%5C%7D%20%24%20.%20No%20subset%20of%20these%20segments%20has%20its%20XOR%20equal%20to%20%24%200%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1101%5C%2FG%22%2C%22id%22%3A%221101G%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%24%5C%5C%7Ba_i%5C%5C%7D%24%5Cuff0c%5Cu8bd5%5Cu5c06%5Cu5176%5Cu5212%5Cu5206%5Cu4e3a%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu591a%5Cu7684%5Cu975e%5Cu7a7a%5Cu5b50%5Cu6bb5%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu51fa%5Cu73b0%5Cu4e14%5Cu4ec5%5Cu51fa%5Cu73b0%5Cu5728%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu6bb5%5Cu4e2d%5Cuff0c%5Cu4e14%5Cu5728%5Cu8fd9%5Cu4e9b%5Cu5b50%5Cu6bb5%5Cu4e2d%5Cu4efb%5Cu53d6%5Cu82e5%5Cu5e72%5Cu5b50%5Cu6bb5%5Cuff0c%5Cu5b83%5Cu4eec%5Cu5305%5Cu542b%5Cu7684%5Cu6240%5Cu6709%5Cu6570%5Cu7684%5Cu5f02%5Cu6216%5Cu548c%5Cu4e0d%5Cu80fd%5Cu4e3a%240%24%5Cuff0e%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%281%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E5%29%24%5Cu8868%5Cu793a%5Cu5e8f%5Cu5217%5Cu957f%5Cu5ea6%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%24n%24%5Cu4e2a%5Cu6574%5Cu6570%24a_i%280%20%5C%5Cleq%20a_i%20%5C%5Cleq%2010%5E9%29%24%5Cu63cf%5Cu8ff0%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu5982%5Cu679c%5Cu4e0d%5Cu5b58%5Cu5728%5Cu65b9%5Cu6848%5Cu8f93%5Cu51fa%60-1%60%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%5Cu6240%5Cu6709%5Cu5408%5Cu6cd5%5Cu7684%5Cu5212%5Cu5206%5Cu65b9%5Cu6848%5Cu4e2d%5Cu6700%5Cu5927%5Cu7684%5Cu5212%5Cu5206%5Cu6570%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A72%2C%22totalAccepted%22%3A49%2C%22pid%22%3A%22CF1101G%22%2C%22title%22%3A%22%28Zero%20XOR%20Subset%29-less%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A94116%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A33652%2C%22name%22%3A%22CF1101G%20%28Zero%20XOR%20Subset%29-less%22%2C%22slug%22%3A%22CF1101G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1829%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5DCrash%5Cu7684%5Cu6570%5Cu5b57%5Cu8868%5Cu683c%20%5C%2F%20JZPTAB%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP34096%22%2C%22title%22%3A%22DIVCNTK%20-%20Counting%20Divisors%20%28general%29%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22P4365%22%2C%22title%22%3A%22%5B%5Cu4e5d%5Cu7701%5Cu8054%5Cu80032018%5D%5Cu79d8%5Cu5bc6%5Cu88ad%5Cu51fbcoat%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1101F%22%2C%22title%22%3A%22Trucks%20and%20Cities%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1101D%22%2C%22title%22%3A%22GCD%20Counting%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%28Zero%20XOR%20Subset%29-less%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>(Zero XOR Subset)-less</h1>
+<h2>题意翻译</h2>
+<div>题意简述
+给出一个序列$\{a_i\}$，试将其划分为尽可能多的非空子段，满足每一个元素出现且仅出现在其中一个子段中，且在这些子段中任取若干子段，它们包含的所有数的异或和不能为$0$．
+输入格式
+第一行一个整数$n(1 \leq n \leq 10^5)$表示序列长度
+接下来一行$n$个整数$a_i(0 \leq a_i \leq 10^9)$描述这个序列
+输出格式
+一行，如果不存在方案输出`-1`，否则输出所有合法的划分方案中最大的划分数</div>
+<h2>题目描述</h2>
+<div>You are given an array $ a_1, a_2, \dots, a_n $ of integer numbers.
+Your task is to divide the array into the maximum number of segments in such a way that:
+- each element is contained in exactly one segment;
+- each segment contains at least one element;
+- there doesn't exist a non-empty subset of segments such that bitwise XOR of the numbers from them is equal to $ 0 $ .
+Print the maximum number of segments the array can be divided into. Print -1 if no suitable division exists.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1 \le n \le 2 \cdot 10^5 $ ) — the size of the array.
+The second line contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 0 \le a_i \le 10^9 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the maximum number of segments the array can be divided into while following the given constraints. Print -1 if no suitable division exists.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4
+5 5 7 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3
+1 2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+-1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+3
+3 1 10
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+3
+</code></pre>
+<h2>说明</h2>
+<div>In the first example $ 2 $ is the maximum number. If you divide the array into $ \{[5], [5, 7, 2]\} $ , the XOR value of the subset of only the second segment is $ 5 \oplus 7 \oplus 2 = 0 $ . $ \{[5, 5], [7, 2]\} $ has the value of the subset of only the first segment being $ 5 \oplus 5 = 0 $ . However, $ \{[5, 5, 7], [2]\} $ will lead to subsets $ \{[5, 5, 7]\} $ of XOR $ 7 $ , $ \{[2]\} $ of XOR $ 2 $ and $ \{[5, 5, 7], [2]\} $ of XOR $ 5 \oplus 5 \oplus 7 \oplus 2 = 5 $ .
+Let's take a look at some division on $ 3 $ segments — $ \{[5], [5, 7], [2]\} $ . It will produce subsets:
+- $ \{[5]\} $ , XOR $ 5 $ ;
+- $ \{[5, 7]\} $ , XOR $ 2 $ ;
+- $ \{[5], [5, 7]\} $ , XOR $ 7 $ ;
+- $ \{[2]\} $ , XOR $ 2 $ ;
+- $ \{[5], [2]\} $ , XOR $ 7 $ ;
+- $ \{[5, 7], [2]\} $ , XOR $ 0 $ ;
+- $ \{[5], [5, 7], [2]\} $ , XOR $ 5 $ ;
+As you can see, subset $ \{[5, 7], [2]\} $ has its XOR equal to $ 0 $ , which is unacceptable. You can check that for other divisions of size $ 3 $ or $ 4 $ , non-empty subset with $ 0 $ XOR always exists.
+The second example has no suitable divisions.
+The third example array can be divided into $ \{[3], [1], [10]\} $ . No subset of these segments has its XOR equal to $ 0 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

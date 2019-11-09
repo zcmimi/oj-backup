@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cyclic Components - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399963:JnRTrrGcHIJaKpxDyJcKQUdJCkMhX162p4U2UZAVwcE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20an%20undirected%20graph%20consisting%20of%20%24%20n%20%24%20vertices%20and%20%24%20m%20%24%20edges.%20Your%20task%20is%20to%20find%20the%20number%20of%20connected%20components%20which%20are%20cycles.%5Cn%5CnHere%20are%20some%20definitions%20of%20graph%20theory.%5Cn%5CnAn%20undirected%20graph%20consists%20of%20two%20sets%3A%20set%20of%20nodes%20%28called%20vertices%29%20and%20set%20of%20edges.%20Each%20edge%20connects%20a%20pair%20of%20vertices.%20All%20edges%20are%20bidirectional%20%28i.e.%20if%20a%20vertex%20%24%20a%20%24%20is%20connected%20with%20a%20vertex%20%24%20b%20%24%20%2C%20a%20vertex%20%24%20b%20%24%20is%20also%20connected%20with%20a%20vertex%20%24%20a%20%24%20%29.%20An%20edge%20can%27t%20connect%20vertex%20with%20itself%2C%20there%20is%20at%20most%20one%20edge%20between%20a%20pair%20of%20vertices.%5Cn%5CnTwo%20vertices%20%24%20u%20%24%20and%20%24%20v%20%24%20belong%20to%20the%20same%20connected%20component%20if%20and%20only%20if%20there%20is%20at%20least%20one%20path%20along%20edges%20connecting%20%24%20u%20%24%20and%20%24%20v%20%24%20.%5Cn%5CnA%20connected%20component%20is%20a%20cycle%20if%20and%20only%20if%20its%20vertices%20can%20be%20reordered%20in%20such%20a%20way%20that%3A%5Cn%5Cn-%20the%20first%20vertex%20is%20connected%20with%20the%20second%20vertex%20by%20an%20edge%2C%5Cn-%20the%20second%20vertex%20is%20connected%20with%20the%20third%20vertex%20by%20an%20edge%2C%5Cn-%20...%5Cn-%20the%20last%20vertex%20is%20connected%20with%20the%20first%20vertex%20by%20an%20edge%2C%5Cn-%20all%20the%20described%20edges%20of%20a%20cycle%20are%20distinct.%5Cn%5CnA%20cycle%20doesn%27t%20contain%20any%20other%20edges%20except%20described%20above.%20By%20definition%20any%20cycle%20contains%20three%20or%20more%20vertices.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF977E%5C%2F4eb49ec2d535d241bf8aedac2221e1f54d715822.png%29There%20are%20%24%206%20%24%20connected%20components%2C%20%24%202%20%24%20of%20them%20are%20cycles%3A%20%24%20%5B7%2C%2010%2C%2016%5D%20%24%20and%20%24%20%5B5%2C%2011%2C%209%2C%2015%5D%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integer%20numbers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%200%20%5C%5Cle%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20number%20of%20vertices%20and%20edges.%5Cn%5CnThe%20following%20%24%20m%20%24%20lines%20contains%20edges%3A%20edge%20%24%20i%20%24%20is%20given%20as%20a%20pair%20of%20vertices%20%24%20v_i%20%24%20%2C%20%24%20u_i%20%24%20%28%20%24%201%20%5C%5Cle%20v_i%2C%20u_i%20%5C%5Cle%20n%20%24%20%2C%20%24%20u_i%20%5C%5Cne%20v_i%20%24%20%29.%20There%20is%20no%20multiple%20edges%20in%20the%20given%20graph%2C%20i.e.%20for%20each%20pair%20%28%20%24%20v_i%2C%20u_i%20%24%20%29%20there%20no%20other%20pairs%20%28%20%24%20v_i%2C%20u_i%20%24%20%29%20and%20%28%20%24%20u_i%2C%20v_i%20%24%20%29%20in%20the%20list%20of%20edges.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20number%20of%20connected%20components%20which%20are%20also%20cycles.%22%2C%22samples%22%3A%5B%5B%225%204%5Cn1%202%5Cn3%204%5Cn5%204%5Cn3%205%5Cn%22%2C%221%5Cn%22%5D%2C%5B%2217%2015%5Cn1%208%5Cn1%2012%5Cn5%2011%5Cn11%209%5Cn9%2015%5Cn15%205%5Cn4%2013%5Cn3%2013%5Cn4%203%5Cn10%2016%5Cn7%2010%5Cn16%207%5Cn14%203%5Cn14%204%5Cn17%206%5Cn%22%2C%222%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20only%20component%20%24%20%5B3%2C%204%2C%205%5D%20%24%20is%20also%20a%20cycle.%5Cn%5CnThe%20illustration%20above%20corresponds%20to%20the%20second%20example.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F977%5C%2FE%22%2C%22id%22%3A%22977E%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu5f20%20%24n%24%20%5Cu4e2a%5Cu70b9%5Cuff0c%24m%24%20%5Cu6761%5Cu8fb9%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cu3002%5Cu4fdd%5Cu8bc1%5Cu65e0%5Cu91cd%5Cu8fb9%5Cu3001%5Cu65e0%5Cu81ea%5Cu73af%5Cu3002%5Cu5728%5Cu8be5%5Cu56fe%5Cu7684%5Cu6240%5Cu6709%5Cu8fde%5Cu901a%5Cu5757%5Cu4e2d%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu627e%5Cu51fa%5Cu73af%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu65e0%5Cu5411%5Cu56fe%5Cu7684%5Cu73af%5Cu7684%5Cu5b9a%5Cu4e49%5Cu5982%5Cu4e0b%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu539f%5Cu65e0%5Cu5411%5Cu56fe%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu56fe%5Cu88ab%5Cu5b9a%5Cu4e49%5Cu4e3a%5Cu73af%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5b83%5Cu7684%5Cu70b9%5Cu96c6%5Cu91cd%5Cu65b0%5Cu6392%5Cu5e8f%5Cu540e%5Cu53ef%5Cu4ee5%5Cu6ee1%5Cu8db3%5Cu5982%5Cu4e0b%5Cu6761%5Cu4ef6%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu4e0e%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu70b9%5Cu901a%5Cu8fc7%5Cu4e00%5Cu6761%5Cu8fb9%5Cu76f8%5Cu8fde%5Cu63a5%5Cuff1b%5Cr%5Cn-%20%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu70b9%5Cu4e0e%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu70b9%5Cu901a%5Cu8fc7%5Cu4e00%5Cu6761%5Cu8fb9%5Cu76f8%5Cu8fde%5Cu63a5%5Cuff1b%5Cr%5Cn-%20%5Cu2026%5Cu2026%5Cr%5Cn-%20%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu4e0e%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu901a%5Cu8fc7%5Cu4e00%5Cu6761%5Cu8fb9%5Cu76f8%5Cu8fde%5Cu63a5%5Cu3002%5Cr%5Cn-%20%5Cu6240%5Cu6709%5Cu7684%5Cu8fb9%5Cu90fd%5Cu5e94%5Cu5f53%5Cu662f%5Cu4e0d%5Cu540c%5Cu7684%5Cu3002%5Cr%5Cn-%20%5Cu5176%5Cu8fb9%5Cu96c6%5Cu4e0d%5Cu5e94%5Cu5f53%5Cu5305%5Cu542b%5Cu9664%5Cu4e86%5Cu4ee5%5Cu4e0a%5Cu6240%5Cu8ff0%5Cu7684%5Cu8fb9%5Cu4ee5%5Cu5916%5Cu7684%5Cu4efb%5Cu4f55%5Cu8fb9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8fd9%5Cu6837%5Cuff0c%5Cu6211%5Cu4eec%5Cu5c31%5Cu79f0%5Cu8fd9%5Cu4e2a%5Cu5b50%5Cu56fe%5Cuff08%5Cu70b9%20%2B%20%5Cu8fb9%5Cuff09%5Cu4e3a%5Cu73af%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6839%5Cu636e%5Cu5b9a%5Cu4e49%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu73af%5Cu81f3%5Cu5c11%5Cu9700%5Cu8981%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu4e14%5Cu8fb9%5Cu6570%5Cu4e0e%5Cu70b9%5Cu6570%5Cu5e94%5Cu5f53%5Cu662f%5Cu76f8%5Cu540c%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF977E%5C%2F4eb49ec2d535d241bf8aedac2221e1f54d715822.png%29%5Cr%5Cn%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cu5bf9%5Cu4e8e%5Cu4e0a%5Cu56fe%5Cuff0c%5Cu5171%5Cu6709%20%246%24%20%5Cu4e2a%5Cu8054%5Cu901a%5Cu5757%5Cuff0c%5Cu4f46%5Cu53ea%5Cu6709%20%24%5B7%2C10%2C16%5D%24%20%5Cu548c%20%24%5B5%2C11%2C9%2C15%5D%24%20%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu8054%5Cu901a%5Cu5757%5Cu662f%5Cu73af%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%20%5Cu548c%20%24m%24%20%24%281%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%2C%200%20%5C%5Cle%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%29%24%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu56fe%5Cu7684%5Cu70b9%5Cu6570%5Cu548c%5Cu65e0%5Cu5411%5Cu8fb9%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24m%24%20%5Cu884c%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24v_i%2C%20u_i%24%20%24%281%20%5C%5Cle%20v_i%2C%20u_i%20%5C%5Cle%20n%2C%20u_i%20%5C%5Cnot%20%3D%20v_i%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2c%20%24i%24%20%5Cu6761%5Cu8fb9%5Cu8fde%5Cu63a5%5Cu7740%20%24v_i%24%20%5Cu4e0e%20%24u_i%24%20%5Cu4e24%5Cu70b9%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu73af%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6837%5Cu4f8b%5Cu4e2d%5Cuff0c%5Cu53ea%5Cu6709%20%24%5B3%2C%204%2C%205%5D%24%20%5Cu8fd9%5Cu4e2a%5Cu8054%5Cu901a%5Cu5757%5Cu662f%5Cu4e00%5Cu4e2a%5Cu73af%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu6837%5Cu4f8b%5Cu5c31%5Cu5bf9%5Cu5e94%5Cu7740%5Cu9898%5Cu76ee%5Cu89e3%5Cu91ca%5Cu4e2d%5Cu7684%5Cu56fe%5Cu7247%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A129%2C%22totalAccepted%22%3A45%2C%22pid%22%3A%22CF977E%22%2C%22title%22%3A%22Cyclic%20Components%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A113076%2C%22title%22%3A%22WA%20on%20test%2018%22%2C%22forum%22%3A%7B%22id%22%3A25782%2C%22name%22%3A%22CF977E%20Cyclic%20Components%22%2C%22slug%22%3A%22CF977E%22%7D%7D%2C%7B%22id%22%3A58753%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A25782%2C%22name%22%3A%22CF977E%20Cyclic%20Components%22%2C%22slug%22%3A%22CF977E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2339%22%2C%22title%22%3A%22%5Cu63d0%5Cu4ea4%5Cu4f5c%5Cu4e1ausaco%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3205%22%2C%22title%22%3A%22%5BHNOI2010%5D%5Cu5408%5Cu5531%5Cu961f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3612%22%2C%22title%22%3A%22%5BUSACO17JAN%5DSecret%20Cow%20Code%5Cu79d8%5Cu5bc6%5Cu5976%5Cu725b%5Cu7801%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4144%22%2C%22title%22%3A%22%5Cu5927%5Cu6cb3%5Cu7684%5Cu5e8f%5Cu5217%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF977F%22%2C%22title%22%3A%22Consecutive%20Subsequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Cyclic%20Components%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Cyclic Components</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+给定一张 $n$ 个点，$m$ 条边的无向图。保证无重边、无自环。在该图的所有连通块中，你需要找出环的个数。
+无向图的环的定义如下：
+原无向图中的一个子图被定义为环，当且仅当它的点集重新排序后可以满足如下条件：
+- 第一个点与第二个点通过一条边相连接；
+- 第二个点与第三个点通过一条边相连接；
+- ……
+- 最后一个点与第一个点通过一条边相连接。
+- 所有的边都应当是不同的。
+- 其边集不应当包含除了以上所述的边以外的任何边。
+这样，我们就称这个子图（点 + 边）为环。
+根据定义，一个环至少需要包含三个点，且边数与点数应当是相同的。
+![](https://cdn.luogu.org/upload/vjudge_pic/CF977E/4eb49ec2d535d241bf8aedac2221e1f54d715822.png)
+例如对于上图，共有 $6$ 个联通块，但只有 $[7,10,16]$ 和 $[5,11,9,15]$ 这两个联通块是环。
+## 输入输出格式
+**输入格式：**
+第一行两个整数 $n$ 和 $m$ $(1 \le n \le 2 \cdot 10^5, 0 \le m \le 2 \cdot 10^5)$，分别表示图的点数和无向边数。
+接下来 $m$ 行，第 $i$ 行包含两个整数 $v_i, u_i$ $(1 \le v_i, u_i \le n, u_i \not = v_i)$，表示第 $i$ 条边连接着 $v_i$ 与 $u_i$ 两点。
+**输出格式：**
+输出一行一个整数，表示环的个数。
+## 说明
+在第一个样例中，只有 $[3, 4, 5]$ 这个联通块是一个环。
+第二个样例就对应着题目解释中的图片。</div>
+<h2>题目描述</h2>
+<div>You are given an undirected graph consisting of $ n $ vertices and $ m $ edges. Your task is to find the number of connected components which are cycles.
+Here are some definitions of graph theory.
+An undirected graph consists of two sets: set of nodes (called vertices) and set of edges. Each edge connects a pair of vertices. All edges are bidirectional (i.e. if a vertex $ a $ is connected with a vertex $ b $ , a vertex $ b $ is also connected with a vertex $ a $ ). An edge can't connect vertex with itself, there is at most one edge between a pair of vertices.
+Two vertices $ u $ and $ v $ belong to the same connected component if and only if there is at least one path along edges connecting $ u $ and $ v $ .
+A connected component is a cycle if and only if its vertices can be reordered in such a way that:
+- the first vertex is connected with the second vertex by an edge,
+- the second vertex is connected with the third vertex by an edge,
+- ...
+- the last vertex is connected with the first vertex by an edge,
+- all the described edges of a cycle are distinct.
+A cycle doesn't contain any other edges except described above. By definition any cycle contains three or more vertices.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF977E/4eb49ec2d535d241bf8aedac2221e1f54d715822.png)There are $ 6 $ connected components, $ 2 $ of them are cycles: $ [7, 10, 16] $ and $ [5, 11, 9, 15] $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integer numbers $ n $ and $ m $ ( $ 1 \le n \le 2 \cdot 10^5 $ , $ 0 \le m \le 2 \cdot 10^5 $ ) — number of vertices and edges.
+The following $ m $ lines contains edges: edge $ i $ is given as a pair of vertices $ v_i $ , $ u_i $ ( $ 1 \le v_i, u_i \le n $ , $ u_i \ne v_i $ ). There is no multiple edges in the given graph, i.e. for each pair ( $ v_i, u_i $ ) there no other pairs ( $ v_i, u_i $ ) and ( $ u_i, v_i $ ) in the list of edges.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the number of connected components which are also cycles.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 4
+1 2
+3 4
+5 4
+3 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>17 15
+1 8
+1 12
+5 11
+11 9
+9 15
+15 5
+4 13
+3 13
+4 3
+10 16
+7 10
+16 7
+14 3
+14 4
+17 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+</code></pre>
+<h2>说明</h2>
+<div>In the first example only component $ [3, 4, 5] $ is also a cycle.
+The illustration above corresponds to the second example.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

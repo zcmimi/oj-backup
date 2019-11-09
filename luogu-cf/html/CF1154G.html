@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minimum Possible LCM - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402372:H5KVVGX+DMRoUZnfmeJAfib3wTNjWm9LWtP/PfnDFUc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20an%20array%20%24%20a%20%24%20consisting%20of%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20.%5Cn%5CnYour%20problem%20is%20to%20find%20such%20pair%20of%20indices%20%24%20i%2C%20j%20%24%20%28%20%24%201%20%5C%5Cle%20i%20%3C%20j%20%5C%5Cle%20n%20%24%20%29%20that%20%24%20lcm%28a_i%2C%20a_j%29%20%24%20is%20minimum%20possible.%5Cn%5Cn%20%24%20lcm%28x%2C%20y%29%20%24%20is%20the%20least%20common%20multiple%20of%20%24%20x%20%24%20and%20%24%20y%20%24%20%28minimum%20positive%20number%20such%20that%20both%20%24%20x%20%24%20and%20%24%20y%20%24%20are%20divisors%20of%20this%20number%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%2010%5E6%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20%24%20a%20%24%20.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E7%20%24%20%29%2C%20where%20%24%20a_i%20%24%20is%20the%20%24%20i%20%24%20-th%20element%20of%20%24%20a%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20two%20integers%20%24%20i%20%24%20and%20%24%20j%20%24%20%28%20%24%201%20%5C%5Cle%20i%20%3C%20j%20%5C%5Cle%20n%20%24%20%29%20such%20that%20the%20value%20of%20%24%20lcm%28a_i%2C%20a_j%29%20%24%20is%20minimum%20among%20all%20valid%20pairs%20%24%20i%2C%20j%20%24%20.%20If%20there%20are%20multiple%20answers%2C%20you%20can%20print%20any.%22%2C%22samples%22%3A%5B%5B%225%5Cn2%204%208%203%206%5Cn%22%2C%221%202%5Cn%22%5D%2C%5B%225%5Cn5%202%2011%203%207%5Cn%22%2C%222%204%5Cn%22%5D%2C%5B%226%5Cn2%205%2010%201%2010%202%5Cn%22%2C%221%204%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B1024000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1154%5C%2FG%22%2C%22id%22%3A%221154G%22%7D%2C%22translation%22%3A%22%23%23%20Description%5Cn%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24n%24%20%5Cu7684%5Cu5e8f%5Cu5217%20%24a%24%5Cuff0c%5Cu627e%5Cu51fa%5Cu4e24%5Cu4e2a%5Cu6570%5Cuff0c%5Cu6700%5Cu5c0f%5Cu5316%5Cu4ed6%5Cu4eec%5Cu7684%5Cu6700%5Cu5c0f%5Cu516c%5Cu500d%5Cu6570%5Cn%5Cn%23%23%20Input%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%5Cn%5Cn%5Cu4e0b%5Cu9762%5Cu4e00%5Cu884c%20%24n%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cu63cf%5Cu8ff0%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cn%5Cn%23%23%20Output%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu4ee3%5Cu8868%5Cu8fd9%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5728%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu3002%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu89e3%5Cu5219%5Cu4efb%5Cu610f%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5373%5Cu53ef%5Cu3002%5Cn%5Cn%23%23%20Limitation%5Cn%5Cn%242~%5C%5Cleq~n~%5C%5Cleq~10%5E6%24%5Cn%5Cn%241~%5C%5Cleq~a_i~%5C%5Cleq~10%5E7%24%5Cn%5CnTranslated%20By%20%40%20%5Cu4e00%5Cu6276%5Cu82cf%5Cu4e00%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A237%2C%22totalAccepted%22%3A92%2C%22pid%22%3A%22CF1154G%22%2C%22title%22%3A%22Minimum%20Possible%20LCM%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1144G%22%2C%22title%22%3A%22Two%20Merged%20Sequences%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1144E%22%2C%22title%22%3A%22Median%20String%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1144D%22%2C%22title%22%3A%22Equalize%20Them%20All%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1154F%22%2C%22title%22%3A%22Shovels%20Shop%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1149A%22%2C%22title%22%3A%22Prefix%20Sum%20Primes%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minimum%20Possible%20LCM%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minimum Possible LCM</h1>
+<h2>题意翻译</h2>
+<div>## Description
+给定一个长度为 $n$ 的序列 $a$，找出两个数，最小化他们的最小公倍数
+## Input
+第一行是一个整数 $n$
+下面一行 $n$ 个整数描述这个序列
+## Output
+输出一行两个整数代表这两个数在序列中的位置。如果有多解则任意输出一个即可。
+## Limitation
+$2~\leq~n~\leq~10^6$
+$1~\leq~a_i~\leq~10^7$
+Translated By @ 一扶苏一</div>
+<h2>题目描述</h2>
+<div>You are given an array $ a $ consisting of $ n $ integers $ a_1, a_2, \dots, a_n $ .
+Your problem is to find such pair of indices $ i, j $ ( $ 1 \le i < j \le n $ ) that $ lcm(a_i, a_j) $ is minimum possible.
+$ lcm(x, y) $ is the least common multiple of $ x $ and $ y $ (minimum positive number such that both $ x $ and $ y $ are divisors of this number).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ n $ ( $ 2 \le n \le 10^6 $ ) — the number of elements in $ a $ .
+The second line of the input contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le 10^7 $ ), where $ a_i $ is the $ i $ -th element of $ a $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print two integers $ i $ and $ j $ ( $ 1 \le i < j \le n $ ) such that the value of $ lcm(a_i, a_j) $ is minimum among all valid pairs $ i, j $ . If there are multiple answers, you can print any.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+2 4 8 3 6
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+5 2 11 3 7
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 4
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>6
+2 5 10 1 10 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1 4
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

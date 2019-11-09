@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Rest In The Shades - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400500:bQ8r0iarxorygNLjeid+zI+say+UleJNTEsh11c29xA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20is%20a%20light%20source%20on%20the%20plane.%20This%20source%20is%20so%20small%20that%20it%20can%20be%20represented%20as%20point.%20The%20light%20source%20is%20moving%20from%20point%20%24%20%28a%2C%20s_y%29%20%24%20to%20the%20%24%20%28b%2C%20s_y%29%20%24%20%24%20%28s_y%20%3C%200%29%20%24%20with%20speed%20equal%20to%20%24%201%20%24%20unit%20per%20second.%20The%20trajectory%20of%20this%20light%20source%20is%20a%20straight%20segment%20connecting%20these%20two%20points.%5Cn%5CnThere%20is%20also%20a%20fence%20on%20%24%20OX%20%24%20axis%20represented%20as%20%24%20n%20%24%20segments%20%24%20%28l_i%2C%20r_i%29%20%24%20%28so%20the%20actual%20coordinates%20of%20endpoints%20of%20each%20segment%20are%20%24%20%28l_i%2C%200%29%20%24%20and%20%24%20%28r_i%2C%200%29%20%24%20%29.%20The%20point%20%24%20%28x%2C%20y%29%20%24%20is%20in%20the%20shade%20if%20segment%20connecting%20%24%20%28x%2Cy%29%20%24%20and%20the%20current%20position%20of%20the%20light%20source%20intersects%20or%20touches%20with%20any%20segment%20of%20the%20fence.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1016E%5C%2Ffd4974e9d648709ca073b5e00e397a0a67168944.png%29You%20are%20given%20%24%20q%20%24%20points.%20For%20each%20point%20calculate%20total%20time%20of%20this%20point%20being%20in%20the%20shade%2C%20while%20the%20light%20source%20is%20moving%20from%20%24%20%28a%2C%20s_y%29%20%24%20to%20the%20%24%20%28b%2C%20s_y%29%20%24%20.%22%2C%22inputFormat%22%3A%22First%20line%20contains%20three%20space%20separated%20integers%20%24%20s_y%20%24%20%2C%20%24%20a%20%24%20and%20%24%20b%20%24%20%28%20%24%20-10%5E9%20%5C%5Cle%20s_y%20%3C%200%20%24%20%2C%20%24%201%20%5C%5Cle%20a%20%3C%20b%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20corresponding%20coordinates%20of%20the%20light%20source.%5Cn%5CnSecond%20line%20contains%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20number%20of%20segments%20in%20the%20fence.%5Cn%5CnNext%20%24%20n%20%24%20lines%20contain%20two%20integers%20per%20line%3A%20%24%20l_i%20%24%20and%20%24%20r_i%20%24%20%28%20%24%201%20%5C%5Cle%20l_i%20%3C%20r_i%20%5C%5Cle%2010%5E9%20%24%20%2C%20%24%20r_%7Bi%20-%201%7D%20%3C%20l_i%20%24%20%29%20%5Cu2014%20segments%20in%20the%20fence%20in%20increasing%20order.%20Segments%20don%27t%20intersect%20or%20touch%20each%20other.%5Cn%5CnNext%20line%20contains%20single%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20number%20of%20points%20to%20check.%5Cn%5CnNext%20%24%20q%20%24%20lines%20contain%20two%20integers%20per%20line%3A%20%24%20x_i%20%24%20and%20%24%20y_i%20%24%20%28%20%24%201%20%5C%5Cle%20x_i%2C%20y_i%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20points%20to%20process.%22%2C%22outputFormat%22%3A%22Print%20%24%20q%20%24%20lines.%20The%20%24%20i%20%24%20-th%20line%20should%20contain%20one%20real%20number%20%5Cu2014%20total%20time%20of%20the%20%24%20i%20%24%20-th%20point%20being%20in%20the%20shade%2C%20while%20the%20light%20source%20is%20moving%20from%20%24%20%28a%2C%20s_y%29%20%24%20to%20the%20%24%20%28b%2C%20s_y%29%20%24%20.%20The%20answer%20is%20considered%20as%20correct%20if%20its%20absolute%20of%20relative%20error%20doesn%27t%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%22-3%201%206%5Cn2%5Cn2%204%5Cn6%207%5Cn5%5Cn3%201%5Cn1%203%5Cn6%201%5Cn6%204%5Cn7%206%5Cn%22%2C%225.000000000000000%5Cn3.000000000000000%5Cn0.000000000000000%5Cn1.500000000000000%5Cn2.000000000000000%5Cn%22%5D%5D%2C%22hint%22%3A%22-%20The%201-st%20point%20is%20always%20in%20the%20shade%3B%5Cn-%20the%202-nd%20point%20is%20in%20the%20shade%20while%20light%20source%20is%20moving%20from%20%24%20%283%2C%20-3%29%20%24%20to%20%24%20%286%2C%20-3%29%20%24%20%3B%5Cn-%20the%203-rd%20point%20is%20in%20the%20shade%20while%20light%20source%20is%20at%20point%20%24%20%286%2C%20-3%29%20%24%20.%5Cn-%20the%204-th%20point%20is%20in%20the%20shade%20while%20light%20source%20is%20moving%20from%20%24%20%281%2C%20-3%29%20%24%20to%20%24%20%282.5%2C%20-3%29%20%24%20and%20at%20point%20%24%20%286%2C%20-3%29%20%24%20%3B%5Cn-%20the%205-th%20point%20is%20in%20the%20shade%20while%20light%20source%20is%20moving%20from%20%24%20%281%2C%20-3%29%20%24%20to%20%24%20%282.5%2C%20-3%29%20%24%20and%20from%20%24%20%285.5%2C%20-3%29%20%24%20to%20%24%20%286%2C%20-3%29%20%24%20%3B%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1016%5C%2FE%22%2C%22id%22%3A%221016E%22%7D%2C%22translation%22%3A%22%5Cu5728%5Cu7b2c%5Cu56db%5Cu8c61%5Cu9650%5Cu6709%5Cu4e00%5Cu4e2a%5Cu4ece%20%24A%24%20%5Cu6cbf%5Cu7ebf%5Cu6bb5%20%24AB%24%20%5Cu8fd0%5Cu52a8%5Cu5230%20%24B%24%20%5Cu7684%5Cu5149%5Cu6e90%5Cuff0c%5Cu901f%5Cu5ea6%5Cu4e3a%20%241%24%20%5Cu4e2a%5Cu5355%5Cu4f4d%5C%2F%5Cu79d2%5Cuff0c%5Cu5728%20%24x%24%20%5Cu8f74%5Cu6b63%5Cu534a%5Cu8f74%5Cu4e0a%5Cu6709%20%24n%24%20%5Cu6761%5Cu4e92%5Cu4e0d%5Cu91cd%5Cu53e0%5Cu7684%5Cu7ebf%5Cu6bb5%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu7ebf%5Cu6bb5%5Cu4f1a%5Cu906e%5Cu6321%5Cu4f4f%5Cu5149%5Cu7ebf%5Cuff0c%5Cu5728%5Cu52a8%5Cu70b9%5Cu7684%5Cu8fd0%5Cu52a8%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cu5982%5Cu56fe%5Cu6240%5Cu793a%5Cu4ea7%5Cu751f%5Cu9634%5Cu5f71%5Cuff0c%5Cu7ed9%5Cu4f60%20%24q%24%20%5Cu4e2a%5Cu7b2c%5Cu4e00%5Cu8c61%5Cu9650%5Cu5185%5Cu7684%5Cu70b9%5Cuff0c%5Cu8be2%5Cu95ee%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu5728%5Cu9634%5Cu5f71%5Cu5185%5Cu7684%5Cu65f6%5Cu95f4%5Cu4e3a%5Cu591a%5Cu5c11%5Cu79d2%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%241%24%5Cu884c%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%24s_y%24%5Cuff0c%24a%24%5Cuff0c%24b%24%5Cuff0c%5Cu4ee3%5Cu8868%24A%24%5Cu70b9%5Cu5750%5Cu6807%5Cu4e3a%24%28a%2Cs_y%29%24%5Cuff0c%24B%24%5Cu70b9%5Cu5750%5Cu6807%5Cu4e3a%24%28b%2Cs_y%29%24%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%20%242%24%20%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%5Cuff0c%5Cu4ee3%5Cu8868%5Cu7ebf%5Cu6bb5%5Cu7684%5Cu6761%5Cu6570%5Cr%5Cn%5Cr%5Cn%5Cu540e%20%24n%24%20%5Cu884c%5Cu6bcf%5Cu884c%20%242%24%20%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24l_i%2Cr_i%24%20%5Cu4ee3%5Cu8868%5Cu4e00%5Cu6761%5Cu7ebf%5Cu6bb5%5Cu7684%5Cu5de6%5Cu7aef%5Cu70b9%5Cu548c%5Cu53f3%5Cu7aef%5Cu70b9%5Cr%5Cn%5Cr%5Cn%5Cu518d%5Cu4e0b%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24q%24%20%5Cu4ee3%5Cu8868%5Cu8be2%5Cu95ee%5Cu7684%5Cu70b9%5Cu7684%5Cu4e2a%5Cu6570%5Cr%5Cn%5Cr%5Cn%5Cu540e%20%24q%24%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24x_i%2Cy_i%24%20%5Cu4ee3%5Cu8868%5Cu4e00%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu7684%5Cu70b9%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%24q%24%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu5b9e%5Cu6570%5Cu4ee3%5Cu8868%5Cu4e00%5Cu6b21%5Cu8be2%5Cu95ee%5Cu7684%5Cu7ed3%5Cu679c%5Cuff0c%5Cu4e0e%5Cu7b54%5Cu6848%5Cu7edd%5Cu5bf9%5C%2F%5Cu76f8%5Cu5bf9%5Cu8bef%5Cu5dee%5Cu5728%20%2410%5E%7B-6%7D%24%20%5Cu5185%5Cu7b97%5Cu5bf9%5Cr%5Cn%5Cr%5Cn%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu89c1%5Cu82f1%5Cu6587%5Cu9898%5Cu9762%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A77%2C%22totalAccepted%22%3A42%2C%22pid%22%3A%22CF1016E%22%2C%22title%22%3A%22Rest%20In%20The%20Shades%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A53782%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A28058%2C%22name%22%3A%22CF1016E%20Rest%20In%20The%20Shades%22%2C%22slug%22%3A%22CF1016E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF739E%22%2C%22title%22%3A%22Gosha%20is%20hunting%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF992E%22%2C%22title%22%3A%22Nastya%20and%20King-Shamans%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4718%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Pollard-Rho%5Cu7b97%5Cu6cd5%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1019E%22%2C%22title%22%3A%22Raining%20season%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1110G%22%2C%22title%22%3A%22Tree-Tac-Toe%20%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Rest%20In%20The%20Shades%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Rest In The Shades</h1>
+<h2>题意翻译</h2>
+<div>在第四象限有一个从 $A$ 沿线段 $AB$ 运动到 $B$ 的光源，速度为 $1$ 个单位/秒，在 $x$ 轴正半轴上有 $n$ 条互不重叠的线段，这些线段会遮挡住光线，在动点的运动过程中如图所示产生阴影，给你 $q$ 个第一象限内的点，询问每个点在阴影内的时间为多少秒。
+### 输入格式
+第$1$行三个整数，$s_y$，$a$，$b$，代表$A$点坐标为$(a,s_y)$，$B$点坐标为$(b,s_y)$
+第 $2$ 行一个整数 $n$，代表线段的条数
+后 $n$ 行每行 $2$ 个正整数 $l_i,r_i$ 代表一条线段的左端点和右端点
+再下一行一个正整数 $q$ 代表询问的点的个数
+后 $q$ 行每行两个正整数 $x_i,y_i$ 代表一个询问的点
+### 输出格式
+$q$ 行每行一个实数代表一次询问的结果，与答案绝对/相对误差在 $10^{-6}$ 内算对
+数据范围见英文题面</div>
+<h2>题目描述</h2>
+<div>There is a light source on the plane. This source is so small that it can be represented as point. The light source is moving from point $ (a, s_y) $ to the $ (b, s_y) $ $ (s_y < 0) $ with speed equal to $ 1 $ unit per second. The trajectory of this light source is a straight segment connecting these two points.
+There is also a fence on $ OX $ axis represented as $ n $ segments $ (l_i, r_i) $ (so the actual coordinates of endpoints of each segment are $ (l_i, 0) $ and $ (r_i, 0) $ ). The point $ (x, y) $ is in the shade if segment connecting $ (x,y) $ and the current position of the light source intersects or touches with any segment of the fence.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1016E/fd4974e9d648709ca073b5e00e397a0a67168944.png)You are given $ q $ points. For each point calculate total time of this point being in the shade, while the light source is moving from $ (a, s_y) $ to the $ (b, s_y) $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line contains three space separated integers $ s_y $ , $ a $ and $ b $ ( $ -10^9 \le s_y < 0 $ , $ 1 \le a < b \le 10^9 $ ) — corresponding coordinates of the light source.
+Second line contains single integer $ n $ ( $ 1 \le n \le 2 \cdot 10^5 $ ) — number of segments in the fence.
+Next $ n $ lines contain two integers per line: $ l_i $ and $ r_i $ ( $ 1 \le l_i < r_i \le 10^9 $ , $ r_{i - 1} < l_i $ ) — segments in the fence in increasing order. Segments don't intersect or touch each other.
+Next line contains single integer $ q $ ( $ 1 \le q \le 2 \cdot 10^5 $ ) — number of points to check.
+Next $ q $ lines contain two integers per line: $ x_i $ and $ y_i $ ( $ 1 \le x_i, y_i \le 10^9 $ ) — points to process.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ q $ lines. The $ i $ -th line should contain one real number — total time of the $ i $ -th point being in the shade, while the light source is moving from $ (a, s_y) $ to the $ (b, s_y) $ . The answer is considered as correct if its absolute of relative error doesn't exceed $ 10^{-6} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>-3 1 6
+2
+2 4
+6 7
+5
+3 1
+1 3
+6 1
+6 4
+7 6
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5.000000000000000
+3.000000000000000
+0.000000000000000
+1.500000000000000
+2.000000000000000
+</code></pre>
+<h2>说明</h2>
+<div>- The 1-st point is always in the shade;
+- the 2-nd point is in the shade while light source is moving from $ (3, -3) $ to $ (6, -3) $ ;
+- the 3-rd point is in the shade while light source is at point $ (6, -3) $ .
+- the 4-th point is in the shade while light source is moving from $ (1, -3) $ to $ (2.5, -3) $ and at point $ (6, -3) $ ;
+- the 5-th point is in the shade while light source is moving from $ (1, -3) $ to $ (2.5, -3) $ and from $ (5.5, -3) $ to $ (6, -3) $ ;</div>
+</article>
+</div>
+</div>
+</body>
+</html>

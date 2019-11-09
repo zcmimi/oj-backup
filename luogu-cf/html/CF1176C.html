@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Lose it! - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402618:/BnfulmvVpjg7BIHu9xDNTtI+CwPrtshj+c7Si3SMAM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20an%20array%20%24%20a%20%24%20consisting%20of%20%24%20n%20%24%20integers.%20Each%20%24%20a_i%20%24%20is%20one%20of%20the%20six%20following%20numbers%3A%20%24%204%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%20%24%20.%5Cn%5CnYour%20task%20is%20to%20remove%20the%20minimum%20number%20of%20elements%20to%20make%20this%20array%20good.%5Cn%5CnAn%20array%20of%20length%20%24%20k%20%24%20is%20called%20good%20if%20%24%20k%20%24%20is%20divisible%20by%20%24%206%20%24%20and%20it%20is%20possible%20to%20split%20it%20into%20%24%20%5C%5Cfrac%7Bk%7D%7B6%7D%20%24%20subsequences%20%24%204%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%20%24%20.%5Cn%5CnExamples%20of%20good%20arrays%3A%5Cn%5Cn-%20%24%20%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%5D%20%24%20%28the%20whole%20array%20is%20a%20required%20sequence%29%3B%5Cn-%20%24%20%5B4%2C%208%2C%204%2C%2015%2C%2016%2C%208%2C%2023%2C%2015%2C%2016%2C%2042%2C%2023%2C%2042%5D%20%24%20%28the%20first%20sequence%20is%20formed%20from%20first%2C%20second%2C%20fourth%2C%20fifth%2C%20seventh%20and%20tenth%20elements%20and%20the%20second%20one%20is%20formed%20from%20remaining%20elements%29%3B%5Cn-%20%24%20%5B%5D%20%24%20%28the%20empty%20array%20is%20good%29.%5Cn%5CnExamples%20of%20bad%20arrays%3A%5Cn%5Cn-%20%24%20%5B4%2C%208%2C%2015%2C%2016%2C%2042%2C%2023%5D%20%24%20%28the%20order%20of%20elements%20should%20be%20exactly%20%24%204%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%20%24%20%29%3B%5Cn-%20%24%20%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%2C%204%5D%20%24%20%28the%20length%20of%20the%20array%20is%20not%20divisible%20by%20%24%206%20%24%20%29%3B%5Cn-%20%24%20%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%2C%204%2C%208%2C%2015%2C%2016%2C%2023%2C%2023%5D%20%24%20%28the%20first%20sequence%20can%20be%20formed%20from%20first%20six%20elements%20but%20the%20remaining%20array%20cannot%20form%20the%20required%20sequence%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%205%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20%24%20a%20%24%20.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28each%20%24%20a_i%20%24%20is%20one%20of%20the%20following%20numbers%3A%20%24%204%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%20%24%20%29%2C%20where%20%24%20a_i%20%24%20is%20the%20%24%20i%20%24%20-th%20element%20of%20%24%20a%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20minimum%20number%20of%20elements%20you%20have%20to%20remove%20to%20obtain%20a%20good%20array.%22%2C%22samples%22%3A%5B%5B%22%5Cn5%5Cn4%208%2015%2016%2023%5Cn%22%2C%22%5Cn5%5Cn%22%5D%2C%5B%22%5Cn12%5Cn4%208%204%2015%2016%208%2023%2015%2016%2042%2023%2042%5Cn%22%2C%22%5Cn0%5Cn%22%5D%2C%5B%22%5Cn15%5Cn4%208%204%208%2015%2016%208%2016%2023%2015%2016%204%2042%2023%2042%5Cn%22%2C%22%5Cn3%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1176%5C%2FC%22%2C%22id%22%3A%221176C%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu6709%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5e8f%5Cu5217%24a%24%5Cuff0c%5Cu5176%5Cu4e2d%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu90fd%5Cu662f%5Cu4e0b%5Cu52176%5Cu79cd%5Cu6570%5Cu5b57%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cuff1a%244%2C8%2C15%2C16%2C23%2C42%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu5220%5Cu6389%5Cu6700%5Cu5c11%5Cu7684%5Cu5143%5Cu7d20%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu53d8%5Cu6210%5Cu597d%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu79f0%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24k%24%5Cu7684%5Cu5e8f%5Cu5217%5Cu662f%5Cu597d%5Cu7684%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%24k%24%5Cu80fd%5Cu88ab%246%24%5Cu6574%5Cu9664%5Cu5e76%5Cu4e14%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu80fd%5Cu5212%5Cu5206%5Cu6210%24%5C%5Cdfrac%20k6%24%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cu90fd%5Cu662f%24%5C%5C%7B4%2C8%2C15%2C16%2C23%2C42%5C%5C%7D%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu9762%5Cu51e0%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu662f%5Cu597d%5Cu7684%5Cu5e8f%5Cu5217%5Cuff1a%5Cr%5Cn%5Cr%5Cn%24%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%5D%24%5Cuff08%5Cu6574%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu4f5c%5Cu4e3a%5Cu8981%5Cu6c42%5Cu7684%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff09%5Cuff1b%5Cr%5Cn%5Cr%5Cn%24%5B4%2C%208%2C%204%2C%2015%2C%2016%2C%208%2C%2023%2C%2015%2C%2016%2C%2042%2C%2023%2C%2042%5D%24%5Cuff08%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7531%5Cu7b2c%5Cu4e00%5Cuff0c%5Cu4e8c%5Cuff0c%5Cu56db%5Cuff0c%5Cu4e94%5Cuff0c%5Cu4e03%5Cuff0c%5Cu5341%5Cu4e2a%5Cu5143%5Cu7d20%5Cu6784%5Cu6210%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7531%5Cu5269%5Cu4e0b%5Cu7684%5Cu5143%5Cu7d20%5Cu6784%5Cu6210%5Cuff09%5Cuff1b%5Cr%5Cn%5Cr%5Cn%24%5B%5D%24%5Cuff08%5Cu7a7a%5Cu5e8f%5Cu5217%5Cu662f%5Cu597d%5Cu7684%5Cuff09.%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu9762%5Cu51e0%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu662f%5Cu4e0d%5Cu597d%5Cu7684%5Cu5e8f%5Cu5217%5Cuff1a%5Cr%5Cn%5Cr%5Cn%24%5B4%2C%208%2C%2015%2C%2016%2C%2042%2C%2023%5D%24%5Cr%5Cn%5Cr%5Cn%24%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%2C%204%5D%24%5Cr%5Cn%5Cr%5Cn%24%5B4%2C%208%2C%2015%2C%2016%2C%2023%2C%2042%2C%204%2C%208%2C%2015%2C%2016%2C%2023%2C%2023%5D%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A138%2C%22totalAccepted%22%3A77%2C%22pid%22%3A%22CF1176C%22%2C%22title%22%3A%22Lose%20it%21%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22AT31%22%2C%22title%22%3A%22%5Cu30d7%5Cu30ed%5Cu30b0%5Cu30e9%5Cu30df%5Cu30f3%5Cu30b0%5Cu30b3%5Cu30f3%5Cu30c6%5Cu30b9%5Cu30c8%5Cu30c1%5Cu30e3%5Cu30ec%5Cu30f3%5Cu30b8%5Cu30d6%5Cu30c3%5Cu30af%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22AT%22%7D%2C%7B%22pid%22%3A%22CF1176E%22%2C%22title%22%3A%22Cover%20it%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1176D%22%2C%22title%22%3A%22Recover%20it%21%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1176B%22%2C%22title%22%3A%22Merge%20it%21%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P5436%22%2C%22title%22%3A%22%5Cu3010XR-2%5Cu3011%5Cu7f18%5Cu5206%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Lose%20it%21%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Lose it!</h1>
+<h2>题意翻译</h2>
+<div>你有一个长度为$n$的序列$a$，其中每一个元素都是下列6种数字中的一个：$4,8,15,16,23,42$。
+你的任务是删掉最少的元素，使得这个序列变成好的。
+我们称一个长度为$k$的序列是好的，当且仅当$k$能被$6$整除并且这个序列能划分成$\dfrac k6$个子序列，使得每一个子序列都是$\{4,8,15,16,23,42\}$。
+下面几个序列是好的序列：
+$[4, 8, 15, 16, 23, 42]$（整个序列作为要求的子序列）；
+$[4, 8, 4, 15, 16, 8, 23, 15, 16, 42, 23, 42]$（第一个子序列由第一，二，四，五，七，十个元素构成，第二个子序列由剩下的元素构成）；
+$[]$（空序列是好的）.
+下面几个序列是不好的序列：
+$[4, 8, 15, 16, 42, 23]$
+$[4, 8, 15, 16, 23, 42, 4]$
+$[4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 23]$</div>
+<h2>题目描述</h2>
+<div>You are given an array $ a $ consisting of $ n $ integers. Each $ a_i $ is one of the six following numbers: $ 4, 8, 15, 16, 23, 42 $ .
+Your task is to remove the minimum number of elements to make this array good.
+An array of length $ k $ is called good if $ k $ is divisible by $ 6 $ and it is possible to split it into $ \frac{k}{6} $ subsequences $ 4, 8, 15, 16, 23, 42 $ .
+Examples of good arrays:
+- $ [4, 8, 15, 16, 23, 42] $ (the whole array is a required sequence);
+- $ [4, 8, 4, 15, 16, 8, 23, 15, 16, 42, 23, 42] $ (the first sequence is formed from first, second, fourth, fifth, seventh and tenth elements and the second one is formed from remaining elements);
+- $ [] $ (the empty array is good).
+Examples of bad arrays:
+- $ [4, 8, 15, 16, 42, 23] $ (the order of elements should be exactly $ 4, 8, 15, 16, 23, 42 $ );
+- $ [4, 8, 15, 16, 23, 42, 4] $ (the length of the array is not divisible by $ 6 $ );
+- $ [4, 8, 15, 16, 23, 42, 4, 8, 15, 16, 23, 23] $ (the first sequence can be formed from first six elements but the remaining array cannot form the required sequence).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ n $ ( $ 1 \le n \le 5 \cdot 10^5 $ ) — the number of elements in $ a $ .
+The second line of the input contains $ n $ integers $ a_1, a_2, \dots, a_n $ (each $ a_i $ is one of the following numbers: $ 4, 8, 15, 16, 23, 42 $ ), where $ a_i $ is the $ i $ -th element of $ a $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the minimum number of elements you have to remove to obtain a good array.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+5
+4 8 15 16 23
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+5
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+12
+4 8 4 15 16 8 23 15 16 42 23 42
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+15
+4 8 4 8 15 16 8 16 23 15 16 4 42 23 42
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+3
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

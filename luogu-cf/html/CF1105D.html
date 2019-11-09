@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Kilani and the Game - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401735:PbYjD1Fve4jRRO2Ck3Yk8rcOq60AuN8O/rZzob3NJnY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Kilani%20is%20playing%20a%20game%20with%20his%20friends.%20This%20game%20can%20be%20represented%20as%20a%20grid%20of%20size%20%24%20n%20%5C%5Ctimes%20m%20%24%20%2C%20where%20each%20cell%20is%20either%20empty%20or%20blocked%2C%20and%20every%20player%20has%20one%20or%20more%20castles%20in%20some%20cells%20%28there%20are%20no%20two%20castles%20in%20one%20cell%29.%5Cn%5CnThe%20game%20is%20played%20in%20rounds.%20In%20each%20round%20players%20expand%20turn%20by%20turn%3A%20firstly%2C%20the%20first%20player%20expands%2C%20then%20the%20second%20player%20expands%20and%20so%20on.%20The%20expansion%20happens%20as%20follows%3A%20for%20each%20castle%20the%20player%20owns%20now%2C%20he%20tries%20to%20expand%20into%20the%20empty%20cells%20nearby.%20The%20player%20%24%20i%20%24%20can%20expand%20from%20a%20cell%20with%20his%20castle%20to%20the%20empty%20cell%20if%20it%27s%20possible%20to%20reach%20it%20in%20at%20most%20%24%20s_i%20%24%20%28where%20%24%20s_i%20%24%20is%20player%27s%20expansion%20speed%29%20moves%20to%20the%20left%2C%20up%2C%20right%20or%20down%20without%20going%20through%20blocked%20cells%20or%20cells%20occupied%20by%20some%20other%20player%27s%20castle.%20The%20player%20examines%20the%20set%20of%20cells%20he%20can%20expand%20to%20and%20builds%20a%20castle%20in%20each%20of%20them%20at%20once.%20The%20turned%20is%20passed%20to%20the%20next%20player%20after%20that.%5Cn%5CnThe%20game%20ends%20when%20no%20player%20can%20make%20a%20move.%20You%20are%20given%20the%20game%20field%20and%20speed%20of%20the%20expansion%20for%20each%20player.%20Kilani%20wants%20to%20know%20for%20each%20player%20how%20many%20cells%20he%20will%20control%20%28have%20a%20castle%20their%29%20after%20the%20game%20ends.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20p%20%24%20%28%20%24%201%20%5C%5Cle%20n%2C%20m%20%5C%5Cle%201000%20%24%20%2C%20%24%201%20%5C%5Cle%20p%20%5C%5Cle%209%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20grid%20and%20the%20number%20of%20players.%5Cn%5CnThe%20second%20line%20contains%20%24%20p%20%24%20integers%20%24%20s_i%20%24%20%28%20%24%201%20%5C%5Cle%20s%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20the%20speed%20of%20the%20expansion%20for%20every%20player.%5Cn%5CnThe%20following%20%24%20n%20%24%20lines%20describe%20the%20game%20grid.%20Each%20of%20them%20consists%20of%20%24%20m%20%24%20symbols%2C%20where%20%27.%27%20denotes%20an%20empty%20cell%2C%20%27%5C%5C%23%27%20denotes%20a%20blocked%20cell%20and%20digit%20%24%20x%20%24%20%28%20%24%201%20%5C%5Cle%20x%20%5C%5Cle%20p%20%24%20%29%20denotes%20the%20castle%20owned%20by%20player%20%24%20x%20%24%20.%5Cn%5CnIt%20is%20guaranteed%2C%20that%20each%20player%20has%20at%20least%20one%20castle%20on%20the%20grid.%22%2C%22outputFormat%22%3A%22Print%20%24%20p%20%24%20integers%20%5Cu2014%20the%20number%20of%20cells%20controlled%20by%20each%20player%20after%20the%20game%20ends.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%203%202%5Cn1%201%5Cn1..%5Cn...%5Cn..2%5Cn%22%2C%22%5Cn6%203%20%5Cn%22%5D%2C%5B%22%5Cn3%204%204%5Cn1%201%201%201%5Cn....%5Cn%23...%5Cn1234%5Cn%22%2C%22%5Cn1%204%203%203%20%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20picture%20below%20show%20the%20game%20before%20it%20started%2C%20the%20game%20after%20the%20first%20round%20and%20game%20after%20the%20second%20round%20in%20the%20first%20example%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1105D%5C%2Ff319fcf8ae2c7e81c13be67f0686992b1b32ad55.png%29In%20the%20second%20example%2C%20the%20first%20player%20is%20%5C%22blocked%5C%22%20so%20he%20will%20not%20capture%20new%20cells%20for%20the%20entire%20game.%20All%20other%20player%20will%20expand%20up%20during%20the%20first%20two%20rounds%20and%20in%20the%20third%20round%20only%20the%20second%20player%20will%20move%20to%20the%20left.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1105%5C%2FD%22%2C%22id%22%3A%221105D%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu4e2an%5Cu884cm%5Cu5217%5Cu7684%5Cu68cb%5Cu76d8%5Cu548ck%5Cu4e2a%5Cu73a9%5Cu5bb6%5Cuff0c%5Cu73a9%5Cu5bb6%5Cu4ece1%5Cu5230k%5Cu7f16%5Cu53f7%5Cu3002%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu6bcf%5Cu4e00%5Cu683c%5Cu6709%5Cu53ef%5Cu80fd%5Cu662f%5Cu7a7a%5Cu683c%5Cuff08%5Cu7528%27.%27%5Cu8868%5Cu793a%5Cuff09%5Cu3001%5Cu5899%5Cuff08%5Cu7528%27%23%27%5Cu8868%5Cu793a%5Cuff09%5Cu6216%5Cu8005%5Cu67d0%5Cu4e2a%5Cu73a9%5Cu5bb6%5Cu7684%5Cu57ce%5Cu5821%5Cuff08%5Cu7528%5Cu8be5%5Cu73a9%5Cu5bb6%5Cu7684%5Cu7f16%5Cu53f7%5Cu8868%5Cu793a%5Cuff09%5Cu3002%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu683c%5Cu5b50%5Cu53ef%5Cu4ee5%5Cu5230%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu4e0e%5Cu5b83%5Cu6709%5Cu516c%5Cu5171%5Cu8fb9%5Cu7684%5Cu683c%5Cu5b50%5Cu3002%5Cr%5Cn%5Cu73a9%5Cu5bb6i%5Cu5728%5Cu4e00%5Cu6b65%5Cu64cd%5Cu4f5c%5Cu5185%5Cu53ef%5Cu4ee5%5Cu8fd9%5Cu6837%5Cu505a%5Cuff1a%5Cr%5Cn%5Cr%5Cn1.%5Cu627e%5Cu5230%5Cu6240%5Cu6709%5Cu4e0e%5Cu81ea%5Cu5df1%5Cu7684%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu57ce%5Cu5821%5Cu4e2d%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu5927%5Cu4e8ea%5Bi%5D%5Cu8def%5Cu7ebf%5Cu7684%5Cu7a7a%5Cu683c%5Cuff08%5Cu8be5%5Cu8def%5Cu7ebf%5Cu4e0a%5Cu53ea%5Cu80fd%5Cu6709%5Cu7a7a%5Cu683c%5Cu548c%5Cu81ea%5Cu5df1%5Cu7684%5Cu57ce%5Cu5821%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn2.%5Cu628a%5Cu6240%5Cu6709%5Cu8fd9%5Cu6837%5Cu7684%5Cu683c%5Cu5b50%5Cu90fd%5Cu5efa%5Cu6210%5Cu81ea%5Cu5df1%5Cu7684%5Cu57ce%5Cu5821%5Cu3002%5Cr%5Cn%5Cu4ece%5Cu73a9%5Cu5bb61%5Cu5f00%5Cu59cb%5Cuff0c%5Cu5927%5Cu5bb6%5Cu8f6e%5Cu6d41%5Cu64cd%5Cu4f5c%5Cu3002%5Cu5f53%5Cu4efb%5Cu4f55%5Cu4eba%5Cu90fd%5Cu65e0%5Cu6cd5%5Cu6267%5Cu884c%5Cu64cd%5Cu4f5c%5Cu65f6%5Cuff0c%5Cu6e38%5Cu620f%5Cu7ed3%5Cu675f%5Cu3002%5Cr%5Cn%5Cu95ee%5Cuff1a%5Cu5f53%5Cu6e38%5Cu620f%5Cu7ed3%5Cu675f%5Cu65f6%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu73a9%5Cu5bb6%5Cu5206%5Cu522b%5Cu6709%5Cu51e0%5Cu5ea7%5Cu57ce%5Cu5821%5Cuff1f%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165n%2Cm%2Ck%2C%5Cu5206%5Cu522b%5Cu4e3a%5Cuff1a%5Cu68cb%5Cu76d8%5Cu884c%5Cu6570%5Cuff0c%5Cu68cb%5Cu76d8%5Cu5217%5Cu6570%5Cu548c%5Cu73a9%5Cu5bb6%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8f93%5Cu5165k%5Cu4e2a%5Cu6570%5Cuff0c%5Cu5206%5Cu522b%5Cu4e3a%5Cu7b2c1~k%5Cu4e2a%5Cu73a9%5Cu5bb6%5Cu5bf9%5Cu5e94%5Cu7684a%5Bi%5D%5Cu503c%5Cu3002%5Cr%5Cn%5Cu4e0b%5Cu9762n%5Cu884c%5Cuff0c%5Cu8f93%5Cu5165%5Cu68cb%5Cu76d8%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fak%5Cu4e2a%5Cu6570%5Cuff0c%5Cu5206%5Cu522b%5Cu4e3ak%5Cu4e2a%5Cu73a9%5Cu5bb6%5Cu5728%5Cu6e38%5Cu620f%5Cu7ed3%5Cu675f%5Cu65f6%5Cu62e5%5Cu6709%5Cu7684%5Cu57ce%5Cu5821%5Cu6570%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A296%2C%22totalAccepted%22%3A107%2C%22pid%22%3A%22CF1105D%22%2C%22title%22%3A%22Kilani%20and%20the%20Game%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A95226%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A33820%2C%22name%22%3A%22CF1105D%20Kilani%20and%20the%20Game%22%2C%22slug%22%3A%22CF1105D%22%7D%7D%2C%7B%22id%22%3A95157%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cu5927%5Cu4f6cwa%20on%20test%2015%22%2C%22forum%22%3A%7B%22id%22%3A33820%2C%22name%22%3A%22CF1105D%20Kilani%20and%20the%20Game%22%2C%22slug%22%3A%22CF1105D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF76A%22%2C%22title%22%3A%22Gift%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1073C%22%2C%22title%22%3A%22Vasya%20and%20Robot%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1100F%22%2C%22title%22%3A%22Ivan%20and%20Burgers%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1105E%22%2C%22title%22%3A%22Helping%20Hiasat%20%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1105C%22%2C%22title%22%3A%22Ayoub%20and%20Lost%20Array%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Kilani%20and%20the%20Game%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Kilani and the Game</h1>
+<h2>题意翻译</h2>
+<div>有一个n行m列的棋盘和k个玩家，玩家从1到k编号。棋盘上每一格有可能是空格（用'.'表示）、墙（用'#'表示）或者某个玩家的城堡（用该玩家的编号表示）。从一个格子可以到任意一个与它有公共边的格子。
+玩家i在一步操作内可以这样做：
+1.找到所有与自己的任意一个城堡中间有一条长度不大于a[i]路线的空格（该路线上只能有空格和自己的城堡）。
+2.把所有这样的格子都建成自己的城堡。
+从玩家1开始，大家轮流操作。当任何人都无法执行操作时，游戏结束。
+问：当游戏结束时，每个玩家分别有几座城堡？
+输入格式:
+第一行输入n,m,k,分别为：棋盘行数，棋盘列数和玩家个数。
+第二行输入k个数，分别为第1~k个玩家对应的a[i]值。
+下面n行，输入棋盘。
+输出格式：
+输出k个数，分别为k个玩家在游戏结束时拥有的城堡数。</div>
+<h2>题目描述</h2>
+<div>Kilani is playing a game with his friends. This game can be represented as a grid of size $ n \times m $ , where each cell is either empty or blocked, and every player has one or more castles in some cells (there are no two castles in one cell).
+The game is played in rounds. In each round players expand turn by turn: firstly, the first player expands, then the second player expands and so on. The expansion happens as follows: for each castle the player owns now, he tries to expand into the empty cells nearby. The player $ i $ can expand from a cell with his castle to the empty cell if it's possible to reach it in at most $ s_i $ (where $ s_i $ is player's expansion speed) moves to the left, up, right or down without going through blocked cells or cells occupied by some other player's castle. The player examines the set of cells he can expand to and builds a castle in each of them at once. The turned is passed to the next player after that.
+The game ends when no player can make a move. You are given the game field and speed of the expansion for each player. Kilani wants to know for each player how many cells he will control (have a castle their) after the game ends.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ and $ p $ ( $ 1 \le n, m \le 1000 $ , $ 1 \le p \le 9 $ ) — the size of the grid and the number of players.
+The second line contains $ p $ integers $ s_i $ ( $ 1 \le s \le 10^9 $ ) — the speed of the expansion for every player.
+The following $ n $ lines describe the game grid. Each of them consists of $ m $ symbols, where '.' denotes an empty cell, '\#' denotes a blocked cell and digit $ x $ ( $ 1 \le x \le p $ ) denotes the castle owned by player $ x $ .
+It is guaranteed, that each player has at least one castle on the grid.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ p $ integers — the number of cells controlled by each player after the game ends.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3 3 2
+1 1
+1..
+...
+..2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+6 3 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3 4 4
+1 1 1 1
+....
+#...
+1234
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+1 4 3 3 
+</code></pre>
+<h2>说明</h2>
+<div>The picture below show the game before it started, the game after the first round and game after the second round in the first example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1105D/f319fcf8ae2c7e81c13be67f0686992b1b32ad55.png)In the second example, the first player is "blocked" so he will not capture new cells for the entire game. All other player will expand up during the first two rounds and in the third round only the second player will move to the left.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

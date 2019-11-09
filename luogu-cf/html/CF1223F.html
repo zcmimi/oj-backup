@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Stack Exterminable Arrays - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403447:wRUdgSey3UNS/UZiAc04YT/geev1spWarPCKbIcZt+8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20look%20at%20the%20following%20process%3A%20initially%20you%20have%20an%20empty%20stack%20and%20an%20array%20%24%20s%20%24%20of%20the%20length%20%24%20l%20%24%20.%20You%20are%20trying%20to%20push%20array%20elements%20to%20the%20stack%20in%20the%20order%20%24%20s_1%2C%20s_2%2C%20s_3%2C%20%5C%5Cdots%20s_%7Bl%7D%20%24%20.%20Moreover%2C%20if%20the%20stack%20is%20empty%20or%20the%20element%20at%20the%20top%20of%20this%20stack%20is%20not%20equal%20to%20the%20current%20element%2C%20then%20you%20just%20push%20the%20current%20element%20to%20the%20top%20of%20the%20stack.%20Otherwise%2C%20you%20don%27t%20push%20the%20current%20element%20to%20the%20stack%20and%2C%20moreover%2C%20pop%20the%20top%20element%20of%20the%20stack.%5Cn%5CnIf%20after%20this%20process%20the%20stack%20remains%20empty%2C%20the%20array%20%24%20s%20%24%20is%20considered%20stack%20exterminable.%5Cn%5CnThere%20are%20samples%20of%20stack%20exterminable%20arrays%3A%5Cn%5Cn-%20%24%20%5B1%2C%201%5D%20%24%20%3B%5Cn-%20%24%20%5B2%2C%201%2C%201%2C%202%5D%20%24%20%3B%5Cn-%20%24%20%5B1%2C%201%2C%202%2C%202%5D%20%24%20%3B%5Cn-%20%24%20%5B1%2C%203%2C%203%2C%201%2C%202%2C%202%5D%20%24%20%3B%5Cn-%20%24%20%5B3%2C%201%2C%203%2C%203%2C%201%2C%203%5D%20%24%20%3B%5Cn-%20%24%20%5B3%2C%203%2C%203%2C%203%2C%203%2C%203%5D%20%24%20%3B%5Cn-%20%24%20%5B5%2C%201%2C%202%2C%202%2C%201%2C%204%2C%204%2C%205%5D%20%24%20%3B%5Cn%5CnLet%27s%20consider%20the%20changing%20of%20stack%20more%20details%20if%20%24%20s%20%3D%20%5B5%2C%201%2C%202%2C%202%2C%201%2C%204%2C%204%2C%205%5D%20%24%20%28the%20top%20of%20stack%20is%20highlighted%29.%5Cn%5Cn1.%20after%20pushing%20%24%20s_1%20%3D%205%20%24%20the%20stack%20turn%20into%20%24%20%5B%5C%5Ctextbf%7B5%7D%5D%20%24%20%3B%5Cn2.%20after%20pushing%20%24%20s_2%20%3D%201%20%24%20the%20stack%20turn%20into%20%24%20%5B5%2C%20%5C%5Ctextbf%7B1%7D%5D%20%24%20%3B%5Cn3.%20after%20pushing%20%24%20s_3%20%3D%202%20%24%20the%20stack%20turn%20into%20%24%20%5B5%2C%201%2C%20%5C%5Ctextbf%7B2%7D%5D%20%24%20%3B%5Cn4.%20after%20pushing%20%24%20s_4%20%3D%202%20%24%20the%20stack%20turn%20into%20%24%20%5B5%2C%20%5C%5Ctextbf%7B1%7D%5D%20%24%20%3B%5Cn5.%20after%20pushing%20%24%20s_5%20%3D%201%20%24%20the%20stack%20turn%20into%20%24%20%5B%5C%5Ctextbf%7B5%7D%5D%20%24%20%3B%5Cn6.%20after%20pushing%20%24%20s_6%20%3D%204%20%24%20the%20stack%20turn%20into%20%24%20%5B5%2C%20%5C%5Ctextbf%7B4%7D%5D%20%24%20%3B%5Cn7.%20after%20pushing%20%24%20s_7%20%3D%204%20%24%20the%20stack%20turn%20into%20%24%20%5B%5C%5Ctextbf%7B5%7D%5D%20%24%20%3B%5Cn8.%20after%20pushing%20%24%20s_8%20%3D%205%20%24%20the%20stack%20is%20empty.%5Cn%5CnYou%20are%20given%20an%20array%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20.%20You%20have%20to%20calculate%20the%20number%20of%20its%20subarrays%20which%20are%20stack%20exterminable.%5Cn%5CnNote%2C%20that%20you%20have%20to%20answer%20%24%20q%20%24%20independent%20queries.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%203%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries.%5Cn%5CnThe%20first%20line%20of%20each%20query%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%203%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20length%20of%20array%20%24%20a%20%24%20.%5Cn%5CnThe%20second%20line%20of%20each%20query%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20the%20elements.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20sum%20of%20all%20%24%20n%20%24%20over%20all%20queries%20does%20not%20exceed%20%24%203%20%5C%5Ccdot%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20print%20one%20integer%20in%20single%20line%20%5Cu2014%20the%20number%20of%20stack%20exterminable%20subarrays%20of%20the%20array%20%24%20a%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn5%5Cn2%201%201%202%202%5Cn6%5Cn1%202%201%201%203%202%5Cn9%5Cn3%201%202%202%201%206%206%203%203%5Cn%22%2C%22%5Cn4%5Cn1%5Cn8%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20query%20there%20are%20four%20stack%20exterminable%20subarrays%3A%20%24%20a_%7B1%20%5C%5Cldots%204%7D%20%3D%20%5B2%2C%201%2C%201%2C%202%5D%2C%20a_%7B2%20%5C%5Cldots%203%7D%20%3D%20%5B1%2C%201%5D%2C%20a_%7B2%20%5C%5Cldots%205%7D%20%3D%20%5B1%2C%201%2C%202%2C%202%5D%2C%20a_%7B4%20%5C%5Cldots%205%7D%20%3D%20%5B2%2C%202%5D%20%24%20.%5Cn%5CnIn%20the%20second%20query%2C%20only%20one%20subarray%20is%20exterminable%20subarray%20%5Cu2014%20%24%20a_%7B3%20%5C%5Cldots%204%7D%20%24%20.%5Cn%5CnIn%20the%20third%20query%2C%20there%20are%20eight%20stack%20exterminable%20subarrays%3A%20%24%20a_%7B1%20%5C%5Cldots%208%7D%2C%20a_%7B2%20%5C%5Cldots%205%7D%2C%20a_%7B2%20%5C%5Cldots%207%7D%2C%20a_%7B2%20%5C%5Cldots%209%7D%2C%20a_%7B3%20%5C%5Cldots%204%7D%2C%20a_%7B6%20%5C%5Cldots%207%7D%2C%20a_%7B6%20%5C%5Cldots%209%7D%2C%20a_%7B8%20%5C%5Cldots%209%7D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1223%5C%2FF%22%2C%22id%22%3A%221223F%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu8fdb%5Cu884c%5Cu6808%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu4ece%5Cu5de6%5Cu5230%5Cu53f3%5Cu5165%5Cu6808%5Cuff0c%5Cu82e5%5Cu5f53%5Cu524d%5Cu5165%5Cu6808%5Cu5143%5Cu7d20%5Cu7b49%5Cu4e8e%5Cu6808%5Cu9876%5Cu5143%5Cu7d20%5Cu5219%5Cu6808%5Cu9876%5Cu5143%5Cu7d20%5Cu51fa%5Cu6808%5Cuff0c%5Cu5426%5Cu5219%5Cu5f53%5Cu524d%5Cu5143%5Cu7d20%5Cu5165%5Cu6808%5Cu3002%5Cu82e5%5Cu8fdb%5Cu884c%5Cu5b8c%5Cu64cd%5Cu4f5c%5Cu540e%5Cu6808%5Cu4e3a%5Cu7a7a%5Cuff0c%5Cu8fd9%5Cu8bf4%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu662f%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu6d88%5Cu9664%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5e8f%5Cu5217%24a%24%5Cuff0c%5Cu95ee%24a%24%5Cu6709%5Cu591a%5Cu5c11%5Cu5b50%5Cu4e32%5Cu662f%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu6d88%5Cu9664%5Cu7684%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A14%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF1223F%22%2C%22title%22%3A%22Stack%20Exterminable%20Arrays%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Stack%20Exterminable%20Arrays%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Stack Exterminable Arrays</h1>
+<h2>题意翻译</h2>
+<div>给一个序列进行栈操作，从左到右入栈，若当前入栈元素等于栈顶元素则栈顶元素出栈，否则当前元素入栈。若进行完操作后栈为空，这说这个序列是可以被消除的。
+给你一个长度为$n$的序列$a$，问$a$有多少子串是可以被消除的。</div>
+<h2>题目描述</h2>
+<div>Let's look at the following process: initially you have an empty stack and an array $ s $ of the length $ l $ . You are trying to push array elements to the stack in the order $ s_1, s_2, s_3, \dots s_{l} $ . Moreover, if the stack is empty or the element at the top of this stack is not equal to the current element, then you just push the current element to the top of the stack. Otherwise, you don't push the current element to the stack and, moreover, pop the top element of the stack.
+If after this process the stack remains empty, the array $ s $ is considered stack exterminable.
+There are samples of stack exterminable arrays:
+- $ [1, 1] $ ;
+- $ [2, 1, 1, 2] $ ;
+- $ [1, 1, 2, 2] $ ;
+- $ [1, 3, 3, 1, 2, 2] $ ;
+- $ [3, 1, 3, 3, 1, 3] $ ;
+- $ [3, 3, 3, 3, 3, 3] $ ;
+- $ [5, 1, 2, 2, 1, 4, 4, 5] $ ;
+Let's consider the changing of stack more details if $ s = [5, 1, 2, 2, 1, 4, 4, 5] $ (the top of stack is highlighted).
+1. after pushing $ s_1 = 5 $ the stack turn into $ [\textbf{5}] $ ;
+2. after pushing $ s_2 = 1 $ the stack turn into $ [5, \textbf{1}] $ ;
+3. after pushing $ s_3 = 2 $ the stack turn into $ [5, 1, \textbf{2}] $ ;
+4. after pushing $ s_4 = 2 $ the stack turn into $ [5, \textbf{1}] $ ;
+5. after pushing $ s_5 = 1 $ the stack turn into $ [\textbf{5}] $ ;
+6. after pushing $ s_6 = 4 $ the stack turn into $ [5, \textbf{4}] $ ;
+7. after pushing $ s_7 = 4 $ the stack turn into $ [\textbf{5}] $ ;
+8. after pushing $ s_8 = 5 $ the stack is empty.
+You are given an array $ a_1, a_2, \ldots, a_n $ . You have to calculate the number of its subarrays which are stack exterminable.
+Note, that you have to answer $ q $ independent queries.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ q $ ( $ 1 \le q \le 3 \cdot 10^5 $ ) — the number of queries.
+The first line of each query contains one integer $ n $ ( $ 1 \le n \le 3 \cdot 10^5 $ ) — the length of array $ a $ .
+The second line of each query contains $ n $ integers $ a_1, a_2, \ldots, a_n $ ( $ 1 \le a_i \le n $ ) — the elements.
+It is guaranteed that the sum of all $ n $ over all queries does not exceed $ 3 \cdot 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case print one integer in single line — the number of stack exterminable subarrays of the array $ a $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+5
+2 1 1 2 2
+6
+1 2 1 1 3 2
+9
+3 1 2 2 1 6 6 3 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+4
+1
+8
+</code></pre>
+<h2>说明</h2>
+<div>In the first query there are four stack exterminable subarrays: $ a_{1 \ldots 4} = [2, 1, 1, 2], a_{2 \ldots 3} = [1, 1], a_{2 \ldots 5} = [1, 1, 2, 2], a_{4 \ldots 5} = [2, 2] $ .
+In the second query, only one subarray is exterminable subarray — $ a_{3 \ldots 4} $ .
+In the third query, there are eight stack exterminable subarrays: $ a_{1 \ldots 8}, a_{2 \ldots 5}, a_{2 \ldots 7}, a_{2 \ldots 9}, a_{3 \ldots 4}, a_{6 \ldots 7}, a_{6 \ldots 9}, a_{8 \ldots 9} $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

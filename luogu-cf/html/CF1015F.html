@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bracket Substring - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400485:MhE9AxU93O5tZthe60HcVULqSTttsX7MGsFcVM2LGbo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20bracket%20sequence%20%24%20s%20%24%20%28not%20necessarily%20a%20regular%20one%29.%20A%20bracket%20sequence%20is%20a%20string%20containing%20only%20characters%20%27%28%27%20and%20%27%29%27.%5Cn%5CnA%20regular%20bracket%20sequence%20is%20a%20bracket%20sequence%20that%20can%20be%20transformed%20into%20a%20correct%20arithmetic%20expression%20by%20inserting%20characters%20%271%27%20and%20%27%2B%27%20between%20the%20original%20characters%20of%20the%20sequence.%20For%20example%2C%20bracket%20sequences%20%5C%22%28%29%28%29%5C%22%20and%20%5C%22%28%28%29%29%5C%22%20are%20regular%20%28the%20resulting%20expressions%20are%3A%20%5C%22%281%29%2B%281%29%5C%22%20and%20%5C%22%28%281%2B1%29%2B1%29%5C%22%29%2C%20and%20%5C%22%29%28%5C%22%2C%20%5C%22%28%5C%22%20and%20%5C%22%29%5C%22%20are%20not.%5Cn%5CnYour%20problem%20is%20to%20calculate%20the%20number%20of%20regular%20bracket%20sequences%20of%20length%20%24%202n%20%24%20containing%20the%20given%20bracket%20sequence%20%24%20s%20%24%20as%20a%20substring%20%28consecutive%20sequence%20of%20characters%29%20modulo%20%24%2010%5E9%2B7%20%24%20%28%20%24%201000000007%20%24%20%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%20100%20%24%20%29%20%5Cu2014%20the%20half-length%20of%20the%20resulting%20regular%20bracket%20sequences%20%28the%20resulting%20sequences%20must%20have%20length%20equal%20to%20%24%202n%20%24%20%29.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20one%20string%20%24%20s%20%24%20%28%20%24%201%20%5C%5Cle%20%7Cs%7C%20%5C%5Cle%20200%20%24%20%29%20%5Cu2014%20the%20string%20%24%20s%20%24%20that%20should%20be%20a%20substring%20in%20each%20of%20the%20resulting%20regular%20bracket%20sequences%20%28%20%24%20%7Cs%7C%20%24%20is%20the%20length%20of%20%24%20s%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20only%20one%20integer%20%5Cu2014%20the%20number%20of%20regular%20bracket%20sequences%20containing%20the%20given%20bracket%20sequence%20%24%20s%20%24%20as%20a%20substring.%20Since%20this%20number%20can%20be%20huge%2C%20print%20it%20modulo%20%24%2010%5E9%2B7%20%24%20%28%20%24%201000000007%20%24%20%29.%22%2C%22samples%22%3A%5B%5B%225%5Cn%28%29%29%29%28%29%5Cn%22%2C%225%5Cn%22%5D%2C%5B%223%5Cn%28%28%29%5Cn%22%2C%224%5Cn%22%5D%2C%5B%222%5Cn%28%28%28%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22All%20regular%20bracket%20sequences%20satisfying%20the%20conditions%20above%20for%20the%20first%20example%3A%5Cn%5Cn-%20%5C%22%28%28%28%28%29%29%29%28%29%29%5C%22%3B%5Cn-%20%5C%22%28%28%28%29%28%29%29%29%28%29%5C%22%3B%5Cn-%20%5C%22%28%28%28%29%29%29%28%29%28%29%5C%22%3B%5Cn-%20%5C%22%28%28%29%28%28%29%29%29%28%29%5C%22%3B%5Cn-%20%5C%22%28%29%28%28%28%29%29%29%28%29%5C%22.%5Cn%5CnAll%20regular%20bracket%20sequences%20satisfying%20the%20conditions%20above%20for%20the%20second%20example%3A%5Cn%5Cn-%20%5C%22%28%28%28%29%29%29%5C%22%3B%5Cn-%20%5C%22%28%28%29%28%29%29%5C%22%3B%5Cn-%20%5C%22%28%28%29%29%28%29%5C%22%3B%5Cn-%20%5C%22%28%29%28%28%29%29%5C%22.%5Cn%5CnAnd%20there%20is%20no%20regular%20bracket%20sequences%20of%20length%20%24%204%20%24%20containing%20%5C%22%28%28%28%5C%22%20as%20a%20substring%20in%20the%20third%20example.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1015%5C%2FF%22%2C%22id%22%3A%221015F%22%7D%2C%22translation%22%3A%22%5Cu3000%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%20%20%24s%24%20%5Cuff08%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu662f%5Cu5e38%5Cu89c4%5Cu5e8f%5Cu5217%5Cuff09%5Cu3002%20%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%5Cu662f%5Cu4ec5%5Cu5305%5Cu542b%5Cu5b57%5Cu7b26%27%5Cuff08%27%5Cu548c%27%5Cuff09%27%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu3000%5Cu5e38%5Cu89c4%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%5Cu662f%5Cu4e00%5Cu79cd%5Cu7279%5Cu6b8a%5Cu7684%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%5Cuff0c%5Cu5b83%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu5728%5Cu5e8f%5Cu5217%5Cu7684%5Cu539f%5Cu59cb%5Cu5b57%5Cu7b26%5Cu4e4b%5Cu95f4%5Cu63d2%5Cu5165%5Cu5b57%5Cu7b26%5Cu201c1%5Cu201d%5Cu548c%5Cu201c%2B%5Cu201d%5Cu6765%5Cu8f6c%5Cu6362%5Cu4e3a%5Cu6b63%5Cu786e%5Cu7684%5Cu7b97%5Cu672f%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu3002%20%5Cu4f8b%5Cu5982%5Cuff0c%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%5Cu201c%5Cuff08%5Cuff09%5Cuff08%5Cuff09%5Cu201d%5Cu548c%5Cu201c%5Cuff08%5Cuff08%5Cuff09%5Cuff09%5Cu201d%5Cu662f%5Cu5e38%5Cu89c4%5Cu7684%5Cuff08%5Cu7ed3%5Cu679c%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu4e3a%5Cuff1a%5Cu201c%5Cuff081%5Cuff09%2B%5Cuff081%5Cuff09%5Cu201d%5Cu548c%5Cu201c%5Cuff08%5Cuff081%20%2B%201%5Cuff09%2B1%5Cuff09%5Cu201d%5Cuff09%5Cuff0c%5Cu4ee5%5Cu53ca%20%5Cu201c%5Cuff09%5Cuff08%5Cu201d%5Cuff0c%5Cu201c%5Cuff08%5Cu201d%5Cu548c%5Cu201c%5Cuff09%5Cu201d%5Cu4e0d%5Cu662f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu3000%5Cu4f60%5Cu7684%5Cu95ee%5Cu9898%5Cu662f%5Cu8ba1%5Cu7b97%5Cu957f%5Cu5ea6%5Cu4e3a%20%20%242n%24%20%20%5Cu7684%5Cu5e38%5Cu89c4%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu800c%5Cu4e14%5Cu5fc5%5Cu987b%5Cu6ee1%5Cu8db3%5Cu7ed9%5Cu5b9a%5Cu62ec%5Cu53f7%5Cu5e8f%5Cu5217%20%20%24s%24%20%20%5Cu662f%5Cu5b83%5Cu7684%5Cu5b50%5Cu4e32%5Cuff08%5Cu8fde%5Cu7eed%5Cu5b57%5Cu7b26%5Cu5e8f%5Cu5217%5Cuff09%5Cu3002%5Cu8f93%5Cu51fa%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu91cf%5Cu6a21%5Cu3000%20%2410%20%5E%209%20%2B%207%24%20%5Cuff081000000007%5Cuff09%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%22%2C%22tags%22%3A%5B2%2C12%2C111%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A64%2C%22totalAccepted%22%3A27%2C%22pid%22%3A%22CF1015F%22%2C%22title%22%3A%22Bracket%20Substring%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A53202%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A27948%2C%22name%22%3A%22CF1015F%20Bracket%20Substring%22%2C%22slug%22%3A%22CF1015F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2482%22%2C%22title%22%3A%22%5BSDOI2010%5D%5Cu732a%5Cu56fd%5Cu6740%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2485%22%2C%22title%22%3A%22%5BSDOI2011%5D%5Cu8ba1%5Cu7b97%5Cu5668%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2605%22%2C%22title%22%3A%22%5BZJOI2010%5D%5Cu57fa%5Cu7ad9%5Cu9009%5Cu5740%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5056%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu63d2%5Cu5934dp%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1188C%22%2C%22title%22%3A%22Array%20Beauty%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Bracket%20Substring%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Bracket Substring</h1>
+<h2>题意翻译</h2>
+<div>　给你一个括号序列 $s$ （不一定是常规序列）。 括号序列是仅包含字符'（'和'）'的字符串。
+　常规括号序列是一种特殊的括号序列，它可以通过在序列的原始字符之间插入字符“1”和“+”来转换为正确的算术表达式。 例如，括号序列“（）（）”和“（（））”是常规的（结果表达式为：“（1）+（1）”和“（（1 + 1）+1）”），以及 “）（”，“（”和“）”不是。
+　你的问题是计算长度为 $2n$ 的常规括号序列的数量，而且必须满足给定括号序列 $s$ 是它的子串（连续字符序列）。输出这个数量模　 $10 ^ 9 + 7$ （1000000007）的结果。</div>
+<h2>题目描述</h2>
+<div>You are given a bracket sequence $ s $ (not necessarily a regular one). A bracket sequence is a string containing only characters '(' and ')'.
+A regular bracket sequence is a bracket sequence that can be transformed into a correct arithmetic expression by inserting characters '1' and '+' between the original characters of the sequence. For example, bracket sequences "()()" and "(())" are regular (the resulting expressions are: "(1)+(1)" and "((1+1)+1)"), and ")(", "(" and ")" are not.
+Your problem is to calculate the number of regular bracket sequences of length $ 2n $ containing the given bracket sequence $ s $ as a substring (consecutive sequence of characters) modulo $ 10^9+7 $ ( $ 1000000007 $ ).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains one integer $ n $ ( $ 1 \le n \le 100 $ ) — the half-length of the resulting regular bracket sequences (the resulting sequences must have length equal to $ 2n $ ).
+The second line of the input contains one string $ s $ ( $ 1 \le |s| \le 200 $ ) — the string $ s $ that should be a substring in each of the resulting regular bracket sequences ( $ |s| $ is the length of $ s $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print only one integer — the number of regular bracket sequences containing the given bracket sequence $ s $ as a substring. Since this number can be huge, print it modulo $ 10^9+7 $ ( $ 1000000007 $ ).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+()))()
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3
+(()
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2
+(((
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+</code></pre>
+<h2>说明</h2>
+<div>All regular bracket sequences satisfying the conditions above for the first example:
+- "(((()))())";
+- "((()()))()";
+- "((()))()()";
+- "(()(()))()";
+- "()((()))()".
+All regular bracket sequences satisfying the conditions above for the second example:
+- "((()))";
+- "(()())";
+- "(())()";
+- "()(())".
+And there is no regular bracket sequences of length $ 4 $ containing "(((" as a substring in the third example.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

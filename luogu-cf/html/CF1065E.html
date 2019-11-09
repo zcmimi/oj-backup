@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Side Transmutations - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401157:9gpM9eOKT48xJBf0cob+YZsbmo5OFMJN98/3fYHM/A8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Consider%20some%20set%20of%20distinct%20characters%20%24%20A%20%24%20and%20some%20string%20%24%20S%20%24%20%2C%20consisting%20of%20exactly%20%24%20n%20%24%20characters%2C%20where%20each%20character%20is%20present%20in%20%24%20A%20%24%20.%5Cn%5CnYou%20are%20given%20an%20array%20of%20%24%20m%20%24%20integers%20%24%20b%20%24%20%28%20%24%20b_1%20%3C%20b_2%20%3C%20%5C%5Cdots%20%3C%20b_m%20%24%20%29.%5Cn%5CnYou%20are%20allowed%20to%20perform%20the%20following%20move%20on%20the%20string%20%24%20S%20%24%20%3A%5Cn%5Cn1.%20Choose%20some%20valid%20%24%20i%20%24%20and%20set%20%24%20k%20%3D%20b_i%20%24%20%3B%5Cn2.%20Take%20the%20first%20%24%20k%20%24%20characters%20of%20%24%20S%20%3D%20Pr_k%20%24%20%3B%5Cn3.%20Take%20the%20last%20%24%20k%20%24%20characters%20of%20%24%20S%20%3D%20Su_k%20%24%20%3B%5Cn4.%20Substitute%20the%20first%20%24%20k%20%24%20characters%20of%20%24%20S%20%24%20with%20the%20reversed%20%24%20Su_k%20%24%20%3B%5Cn5.%20Substitute%20the%20last%20%24%20k%20%24%20characters%20of%20%24%20S%20%24%20with%20the%20reversed%20%24%20Pr_k%20%24%20.%5Cn%5CnFor%20example%2C%20let%27s%20take%20a%20look%20at%20%24%20S%20%3D%20%24%20%5C%22abcdefghi%5C%22%20and%20%24%20k%20%3D%202%20%24%20.%20%24%20Pr_2%20%3D%20%24%20%5C%22ab%5C%22%2C%20%24%20Su_2%20%3D%20%24%20%5C%22hi%5C%22.%20Reversed%20%24%20Pr_2%20%3D%20%24%20%5C%22ba%5C%22%2C%20%24%20Su_2%20%3D%20%24%20%5C%22ih%5C%22.%20Thus%2C%20the%20resulting%20%24%20S%20%24%20is%20%5C%22ihcdefgba%5C%22.%5Cn%5CnThe%20move%20can%20be%20performed%20arbitrary%20number%20of%20times%20%28possibly%20zero%29.%20Any%20%24%20i%20%24%20can%20be%20selected%20multiple%20times%20over%20these%20moves.%5Cn%5CnLet%27s%20call%20some%20strings%20%24%20S%20%24%20and%20%24%20T%20%24%20equal%20if%20and%20only%20if%20there%20exists%20such%20a%20sequence%20of%20moves%20to%20transmute%20string%20%24%20S%20%24%20to%20string%20%24%20T%20%24%20.%20For%20the%20above%20example%20strings%20%5C%22abcdefghi%5C%22%20and%20%5C%22ihcdefgba%5C%22%20are%20equal.%20Also%20note%20that%20this%20implies%20%24%20S%20%3D%20S%20%24%20.%5Cn%5CnThe%20task%20is%20simple.%20Count%20the%20number%20of%20distinct%20strings.%5Cn%5CnThe%20answer%20can%20be%20huge%20enough%2C%20so%20calculate%20it%20modulo%20%24%20998244353%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20%7CA%7C%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%2010%5E9%20%24%20%2C%20%24%201%20%5C%5Cle%20m%20%5C%5Cle%20min%28%5C%5Cfrac%20n%202%2C%202%20%5C%5Ccdot%2010%5E5%29%20%24%20%2C%20%24%201%20%5C%5Cle%20%7CA%7C%20%5C%5Cle%2010%5E9%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20strings%2C%20the%20size%20of%20the%20array%20%24%20b%20%24%20and%20the%20size%20of%20the%20set%20%24%20A%20%24%20%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20m%20%24%20integers%20%24%20b_1%2C%20b_2%2C%20%5C%5Cdots%2C%20b_m%20%24%20%28%20%24%201%20%5C%5Cle%20b_i%20%5C%5Cle%20%5C%5Cfrac%20n%202%20%24%20%2C%20%24%20b_1%20%3C%20b_2%20%3C%20%5C%5Cdots%20%3C%20b_m%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20number%20of%20distinct%20strings%20of%20length%20%24%20n%20%24%20with%20characters%20from%20set%20%24%20A%20%24%20modulo%20%24%20998244353%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%201%202%5Cn1%5Cn%22%2C%226%5Cn%22%5D%2C%5B%229%202%2026%5Cn2%203%5Cn%22%2C%22150352234%5Cn%22%5D%2C%5B%2212%203%201%5Cn2%205%206%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22Here%20are%20all%20the%20distinct%20strings%20for%20the%20first%20example.%20The%20chosen%20letters%20%27a%27%20and%20%27b%27%20are%20there%20just%20to%20show%20that%20the%20characters%20in%20%24%20A%20%24%20are%20different.%5Cn%5Cn1.%20%5C%22aaa%5C%22%5Cn2.%20%5C%22aab%5C%22%20%3D%20%5C%22baa%5C%22%5Cn3.%20%5C%22aba%5C%22%5Cn4.%20%5C%22abb%5C%22%20%3D%20%5C%22bba%5C%22%5Cn5.%20%5C%22bab%5C%22%5Cn6.%20%5C%22bbb%5C%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1065%5C%2FE%22%2C%22id%22%3A%221065E%22%7D%2C%22translation%22%3A%22%5Cu8003%5Cu8651%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu96c6%5Cu5408%24A%24%5Cuff08%24A%24%5Cu4e2d%5Cu5143%5Cu7d20%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu540c%5Cuff09%5Cu548c%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%24S%24%5Cuff0c%5Cu5176%5Cu4e2d%24S%24%5Cu4e2d%5Cu7684%5Cu5b57%5Cu7b26%5Cu90fd%5Cu5c5e%5Cu4e8e%5Cu96c6%5Cu5408%24A%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5305%5Cu542b%20%24m%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cu7684%5Cu5e8f%5Cu5217%20%24b%24%20%20%28%24b_1%3Cb_2%3C%5C%5Cdots%3Cb_m%24%29%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5bf9%5Cu5b57%5Cu7b26%5Cu4e32%20%24S%24%20%5Cu4f5c%5Cu4ee5%5Cu4e0b%5Cu7684%5Cu64cd%5Cu4f5c%5Cuff1a%5Cr%5Cn%5Cr%5Cn1.%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu5408%5Cu6cd5%5Cu7684%20%24i%24%20%2C%5Cu5e76%5Cu4e14%5Cu4ee4%20%24k%3Db_i%24%20%3B%5Cr%5Cn%5Cr%5Cn2.%5Cu53d6%5Cu51fa%20%24S%24%20%5Cu4e2d%5Cu524d%20%24k%24%20%5Cu4e2a%5Cu5b57%5Cu7b26%20%24Pr_k%24%20%3B%5Cr%5Cn%5Cr%5Cn3.%5Cu53d6%5Cu51fa%20%24S%24%20%5Cu4e2d%5Cu540e%20%24k%24%20%5Cu4e2a%5Cu5b57%5Cu7b26%24Su_k%24%20%3B%5Cr%5Cn%5Cr%5Cn4.%5Cu5c06%20%24S%24%20%5Cu4e2d%5Cu524d%20%24k%24%20%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu66ff%5Cu6362%5Cu6210%5Cu7ffb%5Cu8f6c%5Cu540e%5Cu7684%20%24Su_k%24%20%3B%5Cr%5Cn%5Cr%5Cn5.%5Cu5c06%20%24S%24%20%5Cu4e2d%5Cu540e%20%24k%24%20%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu66ff%5Cu6362%5Cu6210%5Cu7ffb%5Cu8f6c%5Cu540e%5Cu7684%20%24Pr_k%24%20%3B%5Cr%5Cn%5Cr%5Cn%5Cu4e3e%5Cu4e2a%5Cu4f8b%5Cu5b50%5Cuff0c%5Cu6211%5Cu4eec%5Cu4ee4%20%24S%3D%24%20%5C%22abcdefghi%5C%22%5Cuff0c%24k%3D2%24%20%5Cu3002%5Cu8fd9%5Cu65f6%24Pr_2%3D%24%20%5C%22ab%5C%22%5Cuff0c%24Su_2%3D%24%20%5C%22hi%5C%22%5Cuff0c%5Cu7ffb%5Cu8f6c%5Cu540e%5Cu6709%20%24Pr_2%3D%24%20%5C%22ba%5C%22%5Cuff0c%24Su_2%3D%24%20%5C%22ih%5C%22%5Cuff0c%5Cu90a3%5Cu4e48%5Cu6700%5Cu7ec8%5Cu5f97%5Cu5230%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%20%24S%24%20%5Cu5c31%5Cu662f%20%5C%22ihcdefgba%5C%22%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8fd9%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu6267%5Cu884c%5Cu8bb8%5Cu591a%5Cu6b21%5Cuff08%5Cu53ef%5Cu80fd%5Cu662f%5Cu96f6%5Cu6b21%5Cuff09%5Cuff0c%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%20%24i%24%20%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu4f7f%5Cu7528%5Cu591a%5Cu6b21%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu5c06%5Cu5b57%5Cu7b26%5Cu4e32%20%24S%24%20%5Cu548c%20%24T%24%20%5Cu79f0%5Cu4e3a%5Cu76f8%5Cu7b49%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5b58%5Cu5728%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cu5e8f%5Cu5217%5Cuff0c%5Cu5c06%5Cu5b57%5Cu7b26%5Cu4e32%20%24S%24%20%5Cu53d8%5Cu6210%20%24T%24%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu4e0a%5Cu9762%5Cu7684%5Cu4f8b%5Cu5b50%5Cu6765%5Cu8bf4%5Cuff0c%5C%22abcdefghi%5C%22%20%5Cu548c%20%5C%22ihcdefgba%5C%22%20%5Cu662f%5Cu76f8%5Cu7b49%5Cu7684%5Cu3002%5Cu6ce8%5Cu610f%5Cu5230%20%24S%24%20%5Cu548c%5Cu5b83%5Cu81ea%5Cu5df1%5Cu4e5f%5Cu662f%5Cu76f8%5Cu7b49%5Cu7684%5Cu3002%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu5f88%5Cu7b80%5Cu5355%5Cuff0c%5Cu6570%5Cu51fa%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu540c%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cu6700%5Cu7ec8%5Cu7684%5Cu7b54%5Cu6848%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu975e%5Cu5e38%5Cu5927%5Cuff0c%5Cu56e0%5Cu6b64%5Cu4f60%5Cu53ea%5Cu9700%5Cu8981%5Cu8f93%5Cu51fa%5Cu7b54%5Cu6848%20%24mod%24%20%24998244353%24%20%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570%20%24n%24%5Cuff0c%24m%24%20%5Cu548c%20%24%7CA%7C%24%5Cuff08%242%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E9%24%5Cuff0c%241%20%5C%5Cleq%20m%20%5C%5Cleq%20min%28%5C%5Cfrac%7Bn%7D%7B2%7D%2C2%20%2A%2010%5E5%29%24%5Cuff0c%241%5C%5Cleq%20%7CA%7C%5C%5Cleq%2010%5E9%24%5Cuff09%5Cuff0c%5Cu5206%5Cu522b%5Cu662f%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu957f%5Cu5ea6%5Cuff0c%5Cu5e8f%5Cu5217%20%24b%24%20%5Cu7684%5Cu5927%5Cu5c0f%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu5b57%5Cu7b26%5Cu96c6%20%24A%24%20%5Cu7684%5Cu5927%5Cu5c0f%5Cu3002%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu62ec%20%24m%24%20%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1a%20%24b_1%2Cb_2%2C%5C%5Cdots%2Cb_m%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5373%5Cu7b54%5Cu6848%20%24mod%24%20%24998244353%24%20%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%22%2C%22tags%22%3A%5B2%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A23%2C%22totalAccepted%22%3A13%2C%22pid%22%3A%22CF1065E%22%2C%22title%22%3A%22Side%20Transmutations%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Side%20Transmutations%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Side Transmutations</h1>
+<h2>题意翻译</h2>
+<div>考虑一个字符集合$A$（$A$中元素互不相同）和一个长度为$n$的字符串$S$，其中$S$中的字符都属于集合$A$。
+给你一个包含 $m$ 个整数的序列 $b$ ($b_1<b_2<\dots<b_m$)。你可以对字符串 $S$ 作以下的操作： 1.选择一个合法的 $i$ ,并且令 $k=b_i$ ; 2.取出 $S$ 中前 $k$ 个字符 $Pr_k$ ; 3.取出 $S$ 中后 $k$ 个字符$Su_k$ ; 4.将 $S$ 中前 $k$ 个字符替换成翻转后的 $Su_k$ ; 5.将 $S$ 中后 $k$ 个字符替换成翻转后的 $Pr_k$ ; 举个例子，我们令 $S=$ "abcdefghi"，$k=2$ 。这时$Pr_2=$ "ab"，$Su_2=$ "hi"，翻转后有 $Pr_2=$ "ba"，$Su_2=$ "ih"，那么最终得到的字符串 $S$ 就是 "ihcdefgba"。 这个操作可以被执行许多次（可能是零次），任何一个 $i$ 也可以被使用多次。 我们将字符串 $S$ 和 $T$ 称为相等的字符串，当且仅当存在一个操作序列，将字符串 $S$ 变成 $T$。对于上面的例子来说，"abcdefghi" 和 "ihcdefgba" 是相等的。注意到 $S$ 和它自己也是相等的。 你的任务很简单，数出互不相同的字符串的个数。 最终的答案可能会非常大，因此你只需要输出答案 $mod$ $998244353$ 的结果。 输入格式： 第一行包括三个整数 $n$，$m$ 和 $|A|$（$2 \leq n \leq 10^9$，$1 \leq m \leq min(\frac{n}{2},2 * 10^5)$，$1\leq |A|\leq 10^9$），分别是字符串的长度，序列 $b$ 的大小，以及字符集 $A$ 的大小。 第二行包括 $m$ 个整数： $b_1,b_2,\dots,b_m$。 输出格式： 输出一个整数，即答案 $mod$ $998244353$ 的结果。</div>
+<h2>题目描述</h2>
+<div>Consider some set of distinct characters $ A $ and some string $ S $ , consisting of exactly $ n $ characters, where each character is present in $ A $ .
+You are given an array of $ m $ integers $ b $ ( $ b_1 < b_2 < \dots < b_m $ ).
+You are allowed to perform the following move on the string $ S $ :
+1. Choose some valid $ i $ and set $ k = b_i $ ;
+2. Take the first $ k $ characters of $ S = Pr_k $ ;
+3. Take the last $ k $ characters of $ S = Su_k $ ;
+4. Substitute the first $ k $ characters of $ S $ with the reversed $ Su_k $ ;
+5. Substitute the last $ k $ characters of $ S $ with the reversed $ Pr_k $ .
+For example, let's take a look at $ S = $ "abcdefghi" and $ k = 2 $ . $ Pr_2 = $ "ab", $ Su_2 = $ "hi". Reversed $ Pr_2 = $ "ba", $ Su_2 = $ "ih". Thus, the resulting $ S $ is "ihcdefgba".
+The move can be performed arbitrary number of times (possibly zero). Any $ i $ can be selected multiple times over these moves.
+Let's call some strings $ S $ and $ T $ equal if and only if there exists such a sequence of moves to transmute string $ S $ to string $ T $ . For the above example strings "abcdefghi" and "ihcdefgba" are equal. Also note that this implies $ S = S $ .
+The task is simple. Count the number of distinct strings.
+The answer can be huge enough, so calculate it modulo $ 998244353 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ and $ |A| $ ( $ 2 \le n \le 10^9 $ , $ 1 \le m \le min(\frac n 2, 2 \cdot 10^5) $ , $ 1 \le |A| \le 10^9 $ ) — the length of the strings, the size of the array $ b $ and the size of the set $ A $ , respectively.
+The second line contains $ m $ integers $ b_1, b_2, \dots, b_m $ ( $ 1 \le b_i \le \frac n 2 $ , $ b_1 < b_2 < \dots < b_m $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the number of distinct strings of length $ n $ with characters from set $ A $ modulo $ 998244353 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1 2
+1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>9 2 26
+2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>150352234
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>12 3 1
+2 5 6
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>Here are all the distinct strings for the first example. The chosen letters 'a' and 'b' are there just to show that the characters in $ A $ are different.
+1. "aaa"
+2. "aab" = "baa"
+3. "aba"
+4. "abb" = "bba"
+5. "bab"
+6. "bbb"</div>
+</article>
+</div>
+</div>
+</body>
+</html>

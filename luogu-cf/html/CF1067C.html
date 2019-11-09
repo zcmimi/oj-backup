@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Knights - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401197:k+kQY+CQFC/+g1/sTeiK4c2qmGE7OSPkNAgBbEQjauc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Ivan%20places%20knights%20on%20infinite%20chessboard.%20Initially%20there%20are%20%24%20n%20%24%20knights.%20If%20there%20is%20free%20cell%20which%20is%20under%20attack%20of%20at%20least%20%24%204%20%24%20knights%20then%20he%20places%20new%20knight%20in%20this%20cell.%20Ivan%20repeats%20this%20until%20there%20are%20no%20such%20free%20cells.%20One%20can%20prove%20that%20this%20process%20is%20finite.%20One%20can%20also%20prove%20that%20position%20in%20the%20end%20does%20not%20depend%20on%20the%20order%20in%20which%20new%20knights%20are%20placed.%5Cn%5CnIvan%20asked%20you%20to%20find%20initial%20placement%20of%20exactly%20%24%20n%20%24%20knights%20such%20that%20in%20the%20end%20there%20will%20be%20at%20least%20%24%20%5C%5Clfloor%20%5C%5Cfrac%7Bn%5E%7B2%7D%7D%7B10%7D%20%5C%5Crfloor%20%24%20knights.%22%2C%22inputFormat%22%3A%22The%20only%20line%20of%20input%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2010%5E%7B3%7D%20%24%20%29%20%5Cu2014%20number%20of%20knights%20in%20the%20initial%20placement.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20lines.%20Each%20line%20should%20contain%20%24%202%20%24%20numbers%20%24%20x_%7Bi%7D%20%24%20and%20%24%20y_%7Bi%7D%20%24%20%28%20%24%20-10%5E%7B9%7D%20%5C%5Cle%20x_%7Bi%7D%2C%20%5C%5C%2C%5C%5C%2C%20y_%7Bi%7D%20%5C%5Cle%2010%5E%7B9%7D%20%24%20%29%20%5Cu2014%20coordinates%20of%20%24%20i%20%24%20-th%20knight.%20For%20all%20%24%20i%20%5C%5Cne%20j%20%24%20%2C%20%24%20%28x_%7Bi%7D%2C%20%5C%5C%2C%5C%5C%2C%20y_%7Bi%7D%29%20%5C%5Cne%20%28x_%7Bj%7D%2C%20%5C%5C%2C%5C%5C%2C%20y_%7Bj%7D%29%20%24%20should%20hold.%20In%20other%20words%2C%20all%20knights%20should%20be%20in%20different%20cells.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20solution%20exists.%22%2C%22samples%22%3A%5B%5B%224%5Cn%22%2C%221%201%5Cn3%201%5Cn1%205%5Cn4%204%5Cn%22%5D%2C%5B%227%5Cn%22%2C%222%201%5Cn1%202%5Cn4%201%5Cn5%202%5Cn2%206%5Cn5%207%5Cn6%206%5Cn%22%5D%5D%2C%22hint%22%3A%22Let%27s%20look%20at%20second%20example%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1067C%5C%2F1b1831e33b9c7fd1ae942c44032d9f6c6e603132.png%29%5Cn%5CnGreen%20zeroes%20are%20initial%20knights.%20Cell%20%24%20%283%2C%20%5C%5C%2C%5C%5C%2C%203%29%20%24%20is%20under%20attack%20of%20%24%204%20%24%20knights%20in%20cells%20%24%20%281%2C%20%5C%5C%2C%5C%5C%2C%202%29%20%24%20%2C%20%24%20%282%2C%20%5C%5C%2C%5C%5C%2C%201%29%20%24%20%2C%20%24%20%284%2C%20%5C%5C%2C%5C%5C%2C%201%29%20%24%20and%20%24%20%285%2C%20%5C%5C%2C%5C%5C%2C%202%29%20%24%20%2C%20therefore%20Ivan%20will%20place%20a%20knight%20in%20this%20cell.%20Cell%20%24%20%284%2C%20%5C%5C%2C%5C%5C%2C%205%29%20%24%20is%20initially%20attacked%20by%20only%20%24%203%20%24%20knights%20in%20cells%20%24%20%282%2C%20%5C%5C%2C%5C%5C%2C%206%29%20%24%20%2C%20%24%20%285%2C%20%5C%5C%2C%5C%5C%2C%207%29%20%24%20and%20%24%20%286%2C%20%5C%5C%2C%5C%5C%2C%206%29%20%24%20.%20But%20new%20knight%20in%20cell%20%24%20%283%2C%20%5C%5C%2C%5C%5C%2C%203%29%20%24%20also%20attacks%20cell%20%24%20%284%2C%20%5C%5C%2C%5C%5C%2C%205%29%20%24%20%2C%20now%20it%20is%20attacked%20by%20%24%204%20%24%20knights%20and%20Ivan%20will%20place%20another%20knight%20in%20this%20cell.%20There%20are%20no%20more%20free%20cells%20which%20are%20attacked%20by%20%24%204%20%24%20or%20more%20knights%2C%20so%20the%20process%20stops.%20There%20are%20%24%209%20%24%20knights%20in%20the%20end%2C%20which%20is%20not%20less%20than%20%24%20%5C%5Clfloor%20%5C%5Cfrac%7B7%5E%7B2%7D%7D%7B10%7D%20%5C%5Crfloor%20%3D%204%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1067%5C%2FC%22%2C%22id%22%3A%221067C%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu6709%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu9650%5Cu5927%5Cu7684%5Cu7f51%5Cu683c%5Cuff0c%5Cu521d%5Cu59cb%5Cu6709%24n%24%5Cu4e2a%5Cu56fd%5Cu9645%5Cu8c61%5Cu68cb%5Cu9a6c%5Cuff0c%5Cu5982%5Cu679c%5Cu67d0%5Cu4e00%5Cu4e2a%5Cu683c%5Cu5b50%5Cu6ca1%5Cu6709%5Cu653e%5Cu9a6c%5Cu4e14%5Cu80fd%5Cu591f%5Cu88ab%5Cu81f3%5Cu5c11%244%24%5Cu4e2a%5Cu9a6c%5Cu7ecf%5Cu4e00%5Cu6b65%5Cu8d70%5Cu5230%5Cuff0c%5Cu90a3%5Cu4e48%5Cu90a3%5Cu4e00%5Cu4e2a%5Cu683c%5Cu5b50%5Cu4e5f%5Cu4f1a%5Cu653e%5Cu4e00%5Cu4e2a%5Cu9a6c%5Cu3002%5Cu53ef%5Cu4ee5%5Cu8bc1%5Cu660e%5Cu64cd%5Cu4f5c%5Cu6b21%5Cu6570%5Cu662f%5Cu6709%5Cu9650%5Cu7684%5Cuff0c%5Cu4e14%5Cu64cd%5Cu4f5c%5Cu5b8c%5Cu6210%5Cu540e%5Cu7684%5Cu68cb%5Cu76d8%5Cu4e0e%5Cu521d%5Cu59cb%5Cu7684%5Cu9a6c%5Cu7684%5Cu653e%5Cu7f6e%5Cu987a%5Cu5e8f%5Cu65e0%5Cu5173%5Cu3002%5Cu6c42%5Cu4e00%5Cu79cd%5Cu521d%5Cu59cb%24n%24%5Cu4e2a%5Cu9a6c%5Cu7684%5Cu653e%5Cu7f6e%5Cu65b9%5Cu6848%5Cu4f7f%5Cu5f97%5Cu4e0a%5Cu8ff0%5Cu64cd%5Cu4f5c%5Cu5b8c%5Cu6210%5Cu540e%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu81f3%5Cu5c11%5Cu6709%24%5C%5Clfloor%20%5C%5Cfrac%7Bn%5E2%7D%7B10%7D%20%5C%5Crfloor%24%5Cu4e2a%5Cu9a6c%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%281%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E3%29%24%5Cu8868%5Cu793a%5Cu521d%5Cu59cb%5Cu7684%5Cu9a6c%5Cu7684%5Cu6570%5Cu91cf%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu6570%5Cu636e%5Cr%5Cn%5Cr%5Cn%24n%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu5bf9%5Cu5e94%5Cu4e00%5Cu4e2a%5Cu653e%5Cu9a6c%5Cu7684%5Cu4f4d%5Cu7f6e%24%28x_i%2Cy_i%29%24%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5e94%5Cu8be5%5Cu6ee1%5Cu8db3%24%7Cx_i%7C%2C%7Cy_i%7C%20%5C%5Cleq%2010%5E9%24%5Cu4e14%5Cu5bf9%5Cu4e8e%5Cu4efb%5Cu610f%24i%20%5C%5Cneq%20j%20%2C%20%28x_i%2Cy_i%29%20%5C%5Cneq%20%28x_j%20%2C%20y_j%29%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A9%2C%22pid%22%3A%22CF1067C%22%2C%22title%22%3A%22Knights%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Knights%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Knights</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+有一个无限大的网格，初始有$n$个国际象棋马，如果某一个格子没有放马且能够被至少$4$个马经一步走到，那么那一个格子也会放一个马。可以证明操作次数是有限的，且操作完成后的棋盘与初始的马的放置顺序无关。求一种初始$n$个马的放置方案使得上述操作完成后棋盘上至少有$\lfloor \frac{n^2}{10} \rfloor$个马
+输入数据
+一行一个正整数$n(1 \leq n \leq 10^3)$表示初始的马的数量
+输出数据
+$n$行，每行对应一个放马的位置$(x_i,y_i)$，输出应该满足$|x_i|,|y_i| \leq 10^9$且对于任意$i \neq j , (x_i,y_i) \neq (x_j , y_j)$</div>
+<h2>题目描述</h2>
+<div>Ivan places knights on infinite chessboard. Initially there are $ n $ knights. If there is free cell which is under attack of at least $ 4 $ knights then he places new knight in this cell. Ivan repeats this until there are no such free cells. One can prove that this process is finite. One can also prove that position in the end does not depend on the order in which new knights are placed.
+Ivan asked you to find initial placement of exactly $ n $ knights such that in the end there will be at least $ \lfloor \frac{n^{2}}{10} \rfloor $ knights.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line of input contains one integer $ n $ ( $ 1 \le n \le 10^{3} $ ) — number of knights in the initial placement.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ lines. Each line should contain $ 2 $ numbers $ x_{i} $ and $ y_{i} $ ( $ -10^{9} \le x_{i}, \,\, y_{i} \le 10^{9} $ ) — coordinates of $ i $ -th knight. For all $ i \ne j $ , $ (x_{i}, \,\, y_{i}) \ne (x_{j}, \,\, y_{j}) $ should hold. In other words, all knights should be in different cells.
+It is guaranteed that the solution exists.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 1
+3 1
+1 5
+4 4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 1
+1 2
+4 1
+5 2
+2 6
+5 7
+6 6
+</code></pre>
+<h2>说明</h2>
+<div>Let's look at second example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1067C/1b1831e33b9c7fd1ae942c44032d9f6c6e603132.png)
+Green zeroes are initial knights. Cell $ (3, \,\, 3) $ is under attack of $ 4 $ knights in cells $ (1, \,\, 2) $ , $ (2, \,\, 1) $ , $ (4, \,\, 1) $ and $ (5, \,\, 2) $ , therefore Ivan will place a knight in this cell. Cell $ (4, \,\, 5) $ is initially attacked by only $ 3 $ knights in cells $ (2, \,\, 6) $ , $ (5, \,\, 7) $ and $ (6, \,\, 6) $ . But new knight in cell $ (3, \,\, 3) $ also attacks cell $ (4, \,\, 5) $ , now it is attacked by $ 4 $ knights and Ivan will place another knight in this cell. There are no more free cells which are attacked by $ 4 $ or more knights, so the process stops. There are $ 9 $ knights in the end, which is not less than $ \lfloor \frac{7^{2}}{10} \rfloor = 4 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

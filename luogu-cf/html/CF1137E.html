@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Train Car Selection - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402081:/wuEhxWODoJb3wSPgsvsjSzpN8pGDrLqln2rwr5ZgU0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Vasya%20likes%20to%20travel%20by%20train%2C%20but%20doesn%27t%20like%20when%20the%20car%20he%20travels%20in%20is%20located%20in%20the%20tail%20of%20the%20train.%5Cn%5CnVasya%20gets%20on%20the%20train%20at%20the%20station.%20The%20train%20consists%20of%20%24%20n%20%24%20cars%20indexed%20from%20%24%201%20%24%20to%20%24%20n%20%24%20counting%20from%20the%20locomotive%20%28head%20of%20the%20train%29.%20Three%20types%20of%20events%20occur%20while%20the%20train%20is%20moving%3A%5Cn%5Cn1.%20Some%20number%20of%20cars%20are%20added%20to%20the%20head%20of%20the%20train%3B%5Cn2.%20Some%20number%20of%20cars%20are%20added%20to%20the%20tail%20of%20the%20train%3B%5Cn3.%20Vasya%20recalculates%20the%20values%20of%20the%20convenience%20of%20the%20cars%20%28read%20more%20about%20it%20below%29.%5Cn%5CnAt%20each%20moment%20of%20time%20we%20will%20index%20the%20cars%20from%20the%20head%20of%20the%20train%2C%20starting%20from%20%24%201%20%24%20.%20Note%20that%20when%20adding%20new%20cars%20to%20the%20head%20of%20the%20train%2C%20the%20indexing%20of%20the%20old%20ones%20may%20shift.%5Cn%5CnTo%20choose%20which%20car%20to%20go%20in%2C%20Vasya%20will%20use%20the%20value%20%24%20A_i%20%24%20for%20each%20car%20%28where%20%24%20i%20%24%20is%20a%20car%20index%29%2C%20which%20is%20calculated%20as%20follows%3A%5Cn%5Cn-%20At%20the%20beginning%20of%20the%20trip%20%24%20A_i%3D0%20%24%20%2C%20as%20well%20as%20for%20the%20new%20cars%20at%20the%20time%20of%20their%20addition.%5Cn-%20During%20the%20next%20recalculation%20Vasya%20chooses%20some%20positive%20integers%20%24%20b%20%24%20and%20%24%20s%20%24%20and%20adds%20to%20all%20%24%20A_i%20%24%20value%20%24%20b%20%2B%20%28i%20-%201%29%20%5C%5Ccdot%20s%20%24%20.%5Cn%5CnVasya%20hasn%27t%20decided%20yet%20where%20he%20will%20get%20on%20the%20train%20and%20where%20will%20get%20off%20the%20train%2C%20so%20after%20each%20event%20of%20one%20of%20the%20three%20types%20he%20wants%20to%20know%20the%20least%20index%20of%20the%20car%2C%20such%20that%20its%20value%20%24%20A_i%20%24%20is%20minimal.%20Since%20there%20is%20a%20lot%20of%20cars%2C%20Vasya%20asked%20you%20to%20write%20a%20program%20that%20answers%20his%20question.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E9%20%24%20%2C%20%24%201%20%5C%5Cleq%20m%20%5C%5Cleq%20300%5C%5C%2C000%20%24%20%29%2C%20the%20number%20of%20cars%20in%20the%20train%20at%20the%20time%20of%20departure%20from%20the%20station%20and%20the%20number%20of%20stations%2C%20respectively.%5Cn%5CnNext%20%24%20m%20%24%20lines%20contain%20the%20descriptions%20of%20events.%20Each%20event%20is%20one%20of%20the%20following%20three%20types%3A%5Cn%5Cn-%20%5C%22%20%24%201%20%24%20%24%20k%20%24%20%5C%22%20%28%20%24%201%20%5C%5Cle%20k%20%5C%5Cle%2010%5E9%20%24%20%29%2C%20add%20%24%20k%20%24%20cars%20to%20the%20head%20of%20the%20train%5Cn-%20%5C%22%20%24%202%20%24%20%24%20k%20%24%20%5C%22%20%28%20%24%201%20%5C%5Cle%20k%20%5C%5Cle%2010%5E9%20%24%20%29%2C%20add%20%24%20k%20%24%20cars%20to%20the%20tail%20of%20the%20train%5Cn-%20%5C%22%20%24%203%20%24%20%24%20b%20%24%20%24%20s%20%24%20%5C%22%20%28%20%24%201%20%5C%5Cle%20b%2C%20s%20%5C%5Cle%2010%5E9%20%24%20%29%2C%20recalculate%20the%20convenience%20of%20all%20train%20cars.%5Cn%5CnIt%20is%20guaranteed%20that%20at%20any%20time%20the%20train%20length%20does%20not%20exceed%20%24%2010%5E9%20%24%20.%20Also%20it%27s%20guaranteed%20that%20the%20integers%20%24%20A_i%20%24%20will%20not%20grow%20too%20high.%20Formally%2C%20it%27s%20guaranteed%20that%20if%20we%20sum%20the%20largest%20addition%20over%20all%20events%20of%20the%20%24%203%20%24%20-rd%20type%20%28that%20is%2C%20%24%20b%20%2B%20%28n%20-%201%29%20%5C%5Ccdot%20s%20%24%20%2C%20where%20%24%20n%20%24%20is%20the%20number%20of%20cars%20at%20that%20moment%29%20then%20the%20acquired%20sum%20would%20be%20at%20most%20%24%2010%5E%7B18%7D%20%24%20.%22%2C%22outputFormat%22%3A%22After%20each%20of%20the%20%24%20m%20%24%20queries%20print%20two%20integers%3A%20%24%20j%20%24%20and%20%24%20A_j%20%24%20%5Cu2014%20the%20number%20of%20the%20car%20closest%20to%20the%20head%20of%20the%20train%2C%20such%20that%20its%20value%20%24%20A_j%20%24%20is%20minimal%2C%20and%20the%20value%20%24%20A_j%20%24%20itself.%22%2C%22samples%22%3A%5B%5B%22%5Cn1%208%5Cn1%201%5Cn3%201%201%5Cn3%201%201%5Cn2%201%5Cn2%201%5Cn3%201%201%5Cn2%201%5Cn3%201%205%5Cn%22%2C%22%5Cn1%200%5Cn1%201%5Cn1%202%5Cn3%200%5Cn3%200%5Cn1%203%5Cn5%200%5Cn1%204%5Cn%22%5D%5D%2C%22hint%22%3A%22-%20Initially%20the%20train%20consists%20of%20one%20car%20with%20%24%20A_1%20%3D%200%20%24%20%2C%20let%27s%20denote%20train%20as%20%24%20%5B0%5D%20%24%20for%20simplicity.%5Cn-%20After%20adding%20one%20car%20to%20the%20head%2C%20train%20is%20%24%20%5B0%2C%200%5D%20%24%20.%5Cn-%20After%20recalculation%20of%20values%20with%20parameters%20%24%20b%3D1%2C%20s%3D1%20%24%20%2C%20train%20is%20%24%20%5B1%2C%202%5D%20%24%20.%5Cn-%20After%20another%20recalculation%20of%20values%20with%20the%20parameters%20%24%20b%3D1%2C%20s%3D1%20%24%20%2C%20train%20is%20%24%20%5B2%2C%204%5D%20%24%20.%5Cn-%20After%20adding%20one%20car%20to%20the%20end%2C%20train%20is%20%24%20%5B2%2C%204%2C%200%5D%20%24%20.%5Cn-%20After%20another%20adding%20one%20car%20to%20the%20end%2C%20train%20is%20%24%20%5B2%2C%204%2C%200%2C%200%5D%20%24%20.%5Cn-%20After%20recalculation%20of%20values%20with%20parameters%20%24%20b%3D1%20%24%20%2C%20%24%20s%3D1%20%24%20%2C%20train%20is%20%24%20%5B3%2C%206%2C%203%2C%204%5D%20%24%20.%5Cn-%20After%20adding%20one%20car%20to%20the%20end%2C%20train%20is%20%24%20%5B3%2C%206%2C%203%2C%204%2C%200%5D%20%24%20.%5Cn-%20After%20recalculation%20of%20values%20with%20parameters%20%24%20b%3D1%20%24%20%2C%20%24%20s%3D5%20%24%20%2C%20train%20is%20%24%20%5B4%2C%2012%2C%2014%2C%2020%2C%2021%5D%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1137%5C%2FE%22%2C%22id%22%3A%221137E%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%24a_i%24%5Cuff0c%5Cu521d%5Cu59cb%5Cu6709%24n%24%5Cu4e2a%240%24%5Cu3002%24m%24%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu64cd%5Cu4f5c%5Cu6709%243%24%5Cu79cd%5Cuff1a%5Cr%5Cn%5Cr%5Cn%241%5C%5C%20k%281%20%5C%5Cleq%20k%20%5C%5Cleq%2010%5E9%29%24%5Cuff1a%5Cu5728%5Cu5e8f%5Cu5217%5Cu5f00%5Cu5934%5Cu52a0%5Cu5165%24k%24%5Cu4e2a%240%24%5Cr%5Cn%5Cr%5Cn%242%5C%5C%20k%281%20%5C%5Cleq%20k%20%5C%5Cleq%2010%5E9%29%24%5Cuff1a%5Cu5728%5Cu5e8f%5Cu5217%5Cu672b%5Cu5c3e%5Cu52a0%5Cu5165%24k%24%5Cu4e2a%240%24%5Cr%5Cn%5Cr%5Cn%243%5C%5C%20b%5C%5C%20s%281%20%5C%5Cleq%20b%20%2C%20s%20%5C%5Cleq%2010%5E9%29%24%5Cuff1a%5Cu5bf9%5Cu5e8f%5Cu5217%5Cu7684%5Cu6240%5Cu6709%5Cu5143%5Cu7d20%5Cu505a%5Cu52a0%5Cu6cd5%5Cuff0c%5Cu7ed9%5Cu5e8f%5Cu5217%5Cu7684%5Cu7b2c%24i%24%5Cu4e2a%5Cu5143%5Cu7d20%5Cu52a0%5Cu4e0a%24b%20%2B%20s%28i-1%29%24%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu5728%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu8fc7%5Cu540e%5Cu8f93%5Cu51fa%5Cu5f53%5Cu524d%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu503c%5Cu4f4d%5Cu7f6e%5Cu548c%5Cu5b83%5Cu7684%5Cu503c%5Cu3002%5Cu5982%5Cu679c%5Cu5b58%5Cu5728%5Cu591a%5Cu4e2a%5Cu6700%5Cu5c0f%5Cu503c%5Cu5219%5Cu53ea%5Cu8003%5Cu8651%5Cu4f4d%5Cu7f6e%5Cu6700%5Cu9760%5Cu524d%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%281%20%5C%5Cleq%20n%20%5C%5Cleq%2010%5E9%29%20%2C%20m%281%20%5C%5Cleq%20m%20%5C%5Cleq%20300000%29%24%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24m%24%5Cu884c%5Cu6bcf%5Cu884c%242%24%5Cu5230%243%24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu6700%5Cu5c0f%5Cu503c%5Cu4f4d%5Cu7f6e%5Cu548c%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A95%2C%22totalAccepted%22%3A35%2C%22pid%22%3A%22CF1137E%22%2C%22title%22%3A%22Train%20Car%20Selection%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P4980%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011Polya%5Cu5b9a%5Cu7406%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1137F%22%2C%22title%22%3A%22Matches%20Are%20Not%20a%20Child%27s%20Play%20%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1137D%22%2C%22title%22%3A%22Cooperative%20Game%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1137C%22%2C%22title%22%3A%22Museums%20Tour%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1203E%22%2C%22title%22%3A%22Boxers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Train%20Car%20Selection%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Train Car Selection</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述
+给出一个序列$a_i$，初始有$n$个$0$。$m$次操作，操作有$3$种：
+$1\ k(1 \leq k \leq 10^9)$：在序列开头加入$k$个$0$
+$2\ k(1 \leq k \leq 10^9)$：在序列末尾加入$k$个$0$
+$3\ b\ s(1 \leq b , s \leq 10^9)$：对序列的所有元素做加法，给序列的第$i$个元素加上$b + s(i-1)$
+你需要在每一次操作过后输出当前序列中最小值位置和它的值。如果存在多个最小值则只考虑位置最靠前的。
+### 输入格式
+第一行两个正整数$n(1 \leq n \leq 10^9) , m(1 \leq m \leq 300000)$
+接下来$m$行每行$2$到$3$个正整数描述一个操作
+### 输出格式
+对于每一次操作输出一行两个正整数分别表示最小值位置和最小值。</div>
+<h2>题目描述</h2>
+<div>Vasya likes to travel by train, but doesn't like when the car he travels in is located in the tail of the train.
+Vasya gets on the train at the station. The train consists of $ n $ cars indexed from $ 1 $ to $ n $ counting from the locomotive (head of the train). Three types of events occur while the train is moving:
+1. Some number of cars are added to the head of the train;
+2. Some number of cars are added to the tail of the train;
+3. Vasya recalculates the values of the convenience of the cars (read more about it below).
+At each moment of time we will index the cars from the head of the train, starting from $ 1 $ . Note that when adding new cars to the head of the train, the indexing of the old ones may shift.
+To choose which car to go in, Vasya will use the value $ A_i $ for each car (where $ i $ is a car index), which is calculated as follows:
+- At the beginning of the trip $ A_i=0 $ , as well as for the new cars at the time of their addition.
+- During the next recalculation Vasya chooses some positive integers $ b $ and $ s $ and adds to all $ A_i $ value $ b + (i - 1) \cdot s $ .
+Vasya hasn't decided yet where he will get on the train and where will get off the train, so after each event of one of the three types he wants to know the least index of the car, such that its value $ A_i $ is minimal. Since there is a lot of cars, Vasya asked you to write a program that answers his question.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 1 \leq n \leq 10^9 $ , $ 1 \leq m \leq 300\,000 $ ), the number of cars in the train at the time of departure from the station and the number of stations, respectively.
+Next $ m $ lines contain the descriptions of events. Each event is one of the following three types:
+- " $ 1 $ $ k $ " ( $ 1 \le k \le 10^9 $ ), add $ k $ cars to the head of the train
+- " $ 2 $ $ k $ " ( $ 1 \le k \le 10^9 $ ), add $ k $ cars to the tail of the train
+- " $ 3 $ $ b $ $ s $ " ( $ 1 \le b, s \le 10^9 $ ), recalculate the convenience of all train cars.
+It is guaranteed that at any time the train length does not exceed $ 10^9 $ . Also it's guaranteed that the integers $ A_i $ will not grow too high. Formally, it's guaranteed that if we sum the largest addition over all events of the $ 3 $ -rd type (that is, $ b + (n - 1) \cdot s $ , where $ n $ is the number of cars at that moment) then the acquired sum would be at most $ 10^{18} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>After each of the $ m $ queries print two integers: $ j $ and $ A_j $ — the number of the car closest to the head of the train, such that its value $ A_j $ is minimal, and the value $ A_j $ itself.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+1 8
+1 1
+3 1 1
+3 1 1
+2 1
+2 1
+3 1 1
+2 1
+3 1 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+1 0
+1 1
+1 2
+3 0
+3 0
+1 3
+5 0
+1 4
+</code></pre>
+<h2>说明</h2>
+<div>- Initially the train consists of one car with $ A_1 = 0 $ , let's denote train as $ [0] $ for simplicity.
+- After adding one car to the head, train is $ [0, 0] $ .
+- After recalculation of values with parameters $ b=1, s=1 $ , train is $ [1, 2] $ .
+- After another recalculation of values with the parameters $ b=1, s=1 $ , train is $ [2, 4] $ .
+- After adding one car to the end, train is $ [2, 4, 0] $ .
+- After another adding one car to the end, train is $ [2, 4, 0, 0] $ .
+- After recalculation of values with parameters $ b=1 $ , $ s=1 $ , train is $ [3, 6, 3, 4] $ .
+- After adding one car to the end, train is $ [3, 6, 3, 4, 0] $ .
+- After recalculation of values with parameters $ b=1 $ , $ s=5 $ , train is $ [4, 12, 14, 20, 21] $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

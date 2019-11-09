@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Graph Without Long Directed Paths - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402192:zFeDodvds6Ue8neV87IIhmVdzx8+GnnmqN5R8soJUpM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20connected%20undirected%20graph%20consisting%20of%20%24%20n%20%24%20vertices%20and%20%24%20m%20%24%20edges.%20There%20are%20no%20self-loops%20or%20multiple%20edges%20in%20the%20given%20graph.%5Cn%5CnYou%20have%20to%20direct%20its%20edges%20in%20such%20a%20way%20that%20the%20obtained%20directed%20graph%20does%20not%20contain%20any%20paths%20of%20length%20two%20or%20greater%20%28where%20the%20length%20of%20path%20is%20denoted%20as%20the%20number%20of%20traversed%20edges%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integer%20numbers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%20n%20-%201%20%5C%5Cle%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20and%20edges%2C%20respectively.%5Cn%5CnThe%20following%20%24%20m%20%24%20lines%20contain%20edges%3A%20edge%20%24%20i%20%24%20is%20given%20as%20a%20pair%20of%20vertices%20%24%20u_i%20%24%20%2C%20%24%20v_i%20%24%20%28%20%24%201%20%5C%5Cle%20u_i%2C%20v_i%20%5C%5Cle%20n%20%24%20%2C%20%24%20u_i%20%5C%5Cne%20v_i%20%24%20%29.%20There%20are%20no%20multiple%20edges%20in%20the%20given%20graph%2C%20i.%20e.%20for%20each%20pair%20%28%20%24%20u_i%2C%20v_i%20%24%20%29%20there%20are%20no%20other%20pairs%20%28%20%24%20u_i%2C%20v_i%20%24%20%29%20and%20%28%20%24%20v_i%2C%20u_i%20%24%20%29%20in%20the%20list%20of%20edges.%20It%20is%20also%20guaranteed%20that%20the%20given%20graph%20is%20connected%20%28there%20is%20a%20path%20between%20any%20pair%20of%20vertex%20in%20the%20given%20graph%29.%22%2C%22outputFormat%22%3A%22If%20it%20is%20impossible%20to%20direct%20edges%20of%20the%20given%20graph%20in%20such%20a%20way%20that%20the%20obtained%20directed%20graph%20does%20not%20contain%20paths%20of%20length%20at%20least%20two%2C%20print%20%5C%22NO%5C%22%20in%20the%20first%20line.%5Cn%5CnOtherwise%20print%20%5C%22YES%5C%22%20in%20the%20first%20line%2C%20and%20then%20print%20any%20suitable%20orientation%20of%20edges%3A%20a%20binary%20string%20%28the%20string%20consisting%20only%20of%20%270%27%20and%20%271%27%29%20of%20length%20%24%20m%20%24%20.%20The%20%24%20i%20%24%20-th%20element%20of%20this%20string%20should%20be%20%270%27%20if%20the%20%24%20i%20%24%20-th%20edge%20of%20the%20graph%20should%20be%20directed%20from%20%24%20u_i%20%24%20to%20%24%20v_i%20%24%20%2C%20and%20%271%27%20otherwise.%20Edges%20are%20numbered%20in%20the%20order%20they%20are%20given%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%22%5Cn6%205%5Cn1%205%5Cn2%201%5Cn1%204%5Cn3%201%5Cn6%201%5Cn%22%2C%22%5CnYES%5Cn10100%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20picture%20corresponding%20to%20the%20first%20example%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1144F%5C%2Ffc796670216638599d8ac1ff04285340e3fcfa12.png%29%5Cn%5CnAnd%20one%20of%20possible%20answers%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1144F%5C%2Fc977822c41ff79938ae076a798e7208fe7f3d987.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1144%5C%2FF%22%2C%22id%22%3A%221144F%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu628a%5Cu6240%5Cu6709%5Cu8fb9%5Cu6807%5Cu8bb0%5Cu65b9%5Cu5411%5Cuff0c%5Cu5e76%5Cu4f7f%5Cu6574%5Cu5f20%5Cu56fe%5Cu4e2d%5Cu6ca1%5Cu6709%5Cu8ddd%5Cu79bb%20%3E%3D2%20%5Cu7684%5Cu8def%5Cu5f84%5Cuff0c%5Cu95ee%5Cu4f60%5Cu662f%5Cu5426%5Cu5b58%5Cu5728%5Cu5e76%5Cu8f93%5Cu51fa%5Cu65b9%5Cu6848%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu201cYES%5Cu201d%5Cu6216%5Cu201cNO%5Cu201d%5Cuff0c%5Cu82e5%5Cu5b58%5Cu5728%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6309%5Cu7167%5Cu8bfb%5Cu5165%5Cu987a%5Cu5e8f%5Cu8f93%5Cu51fa%5Cu8fde%5Cu8fb9%5Cu65b9%5Cu5411%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A262%2C%22totalAccepted%22%3A116%2C%22pid%22%3A%22CF1144F%22%2C%22title%22%3A%22Graph%20Without%20Long%20Directed%20Paths%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3953%22%2C%22title%22%3A%22%5Cu901b%5Cu516c%5Cu56ed%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1144G%22%2C%22title%22%3A%22Two%20Merged%20Sequences%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1213G%22%2C%22title%22%3A%22Path%20Queries%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1214E%22%2C%22title%22%3A%22Petya%20and%20Construction%20Set%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1209D%22%2C%22title%22%3A%22Cow%20and%20Snacks%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Graph%20Without%20Long%20Directed%20Paths%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Graph Without Long Directed Paths</h1>
+<h2>题意翻译</h2>
+<div>给你一个无向图，把所有边标记方向，并使整张图中没有距离 >=2 的路径，问你是否存在并输出方案。
+第一行输出“YES”或“NO”，若存在，第二行按照读入顺序输出连边方向。</div>
+<h2>题目描述</h2>
+<div>You are given a connected undirected graph consisting of $ n $ vertices and $ m $ edges. There are no self-loops or multiple edges in the given graph.
+You have to direct its edges in such a way that the obtained directed graph does not contain any paths of length two or greater (where the length of path is denoted as the number of traversed edges).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integer numbers $ n $ and $ m $ ( $ 2 \le n \le 2 \cdot 10^5 $ , $ n - 1 \le m \le 2 \cdot 10^5 $ ) — the number of vertices and edges, respectively.
+The following $ m $ lines contain edges: edge $ i $ is given as a pair of vertices $ u_i $ , $ v_i $ ( $ 1 \le u_i, v_i \le n $ , $ u_i \ne v_i $ ). There are no multiple edges in the given graph, i. e. for each pair ( $ u_i, v_i $ ) there are no other pairs ( $ u_i, v_i $ ) and ( $ v_i, u_i $ ) in the list of edges. It is also guaranteed that the given graph is connected (there is a path between any pair of vertex in the given graph).</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is impossible to direct edges of the given graph in such a way that the obtained directed graph does not contain paths of length at least two, print "NO" in the first line.
+Otherwise print "YES" in the first line, and then print any suitable orientation of edges: a binary string (the string consisting only of '0' and '1') of length $ m $ . The $ i $ -th element of this string should be '0' if the $ i $ -th edge of the graph should be directed from $ u_i $ to $ v_i $ , and '1' otherwise. Edges are numbered in the order they are given in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+6 5
+1 5
+2 1
+1 4
+3 1
+6 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+YES
+10100
+</code></pre>
+<h2>说明</h2>
+<div>The picture corresponding to the first example: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1144F/fc796670216638599d8ac1ff04285340e3fcfa12.png)
+And one of possible answers: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1144F/c977822c41ff79938ae076a798e7208fe7f3d987.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

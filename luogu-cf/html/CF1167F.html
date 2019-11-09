@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Scalar Queries - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402511:UQoh9RHKzGlSjthvtzRyoedhF/G72u4oZ0vmnuizLpI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20an%20array%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20.%20All%20%24%20a_i%20%24%20are%20pairwise%20distinct.%5Cn%5CnLet%27s%20define%20function%20%24%20f%28l%2C%20r%29%20%24%20as%20follows%3A%5Cn%5Cn-%20let%27s%20define%20array%20%24%20b_1%2C%20b_2%2C%20%5C%5Cdots%2C%20b_%7Br%20-%20l%20%2B%201%7D%20%24%20%2C%20where%20%24%20b_i%20%3D%20a_%7Bl%20-%201%20%2B%20i%7D%20%24%20%3B%5Cn-%20sort%20array%20%24%20b%20%24%20in%20increasing%20order%3B%5Cn-%20result%20of%20the%20function%20%24%20f%28l%2C%20r%29%20%24%20is%20%24%20%5C%5Csum%5C%5Climits_%7Bi%20%3D%201%7D%5E%7Br%20-%20l%20%2B%201%7D%7Bb_i%20%5C%5Ccdot%20i%7D%20%24%20.%5Cn%5CnCalculate%20%24%20%5C%5Cleft%28%5C%5Csum%5C%5Climits_%7B1%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%7D%7Bf%28l%2C%20r%29%7D%5C%5Cright%29%20%5C%5Cmod%20%2810%5E9%2B7%29%20%24%20%2C%20i.e.%20total%20sum%20of%20%24%20f%20%24%20for%20all%20subsegments%20of%20%24%20a%20%24%20modulo%20%24%2010%5E9%2B7%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%205%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20length%20of%20array%20%24%20a%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E9%20%24%20%2C%20%24%20a_i%20%5C%5Cneq%20a_j%20%24%20for%20%24%20i%20%5C%5Cneq%20j%20%24%20%29%20%5Cu2014%20array%20%24%20a%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20total%20sum%20of%20%24%20f%20%24%20for%20all%20subsegments%20of%20%24%20a%20%24%20modulo%20%24%2010%5E9%2B7%20%24%22%2C%22samples%22%3A%5B%5B%22%5Cn4%5Cn5%202%204%207%5Cn%22%2C%22%5Cn167%5Cn%22%5D%2C%5B%22%5Cn3%5Cn123456789%20214365879%20987654321%5Cn%22%2C%22%5Cn582491518%5Cn%22%5D%5D%2C%22hint%22%3A%22Description%20of%20the%20first%20example%3A%5Cn%5Cn-%20%24%20f%281%2C%201%29%20%3D%205%20%5C%5Ccdot%201%20%3D%205%20%24%20%3B%5Cn-%20%24%20f%281%2C%202%29%20%3D%202%20%5C%5Ccdot%201%20%2B%205%20%5C%5Ccdot%202%20%3D%2012%20%24%20%3B%5Cn-%20%24%20f%281%2C%203%29%20%3D%202%20%5C%5Ccdot%201%20%2B%204%20%5C%5Ccdot%202%20%2B%205%20%5C%5Ccdot%203%20%3D%2025%20%24%20%3B%5Cn-%20%24%20f%281%2C%204%29%20%3D%202%20%5C%5Ccdot%201%20%2B%204%20%5C%5Ccdot%202%20%2B%205%20%5C%5Ccdot%203%20%2B%207%20%5C%5Ccdot%204%20%3D%2053%20%24%20%3B%5Cn-%20%24%20f%282%2C%202%29%20%3D%202%20%5C%5Ccdot%201%20%3D%202%20%24%20%3B%5Cn-%20%24%20f%282%2C%203%29%20%3D%202%20%5C%5Ccdot%201%20%2B%204%20%5C%5Ccdot%202%20%3D%2010%20%24%20%3B%5Cn-%20%24%20f%282%2C%204%29%20%3D%202%20%5C%5Ccdot%201%20%2B%204%20%5C%5Ccdot%202%20%2B%207%20%5C%5Ccdot%203%20%3D%2031%20%24%20%3B%5Cn-%20%24%20f%283%2C%203%29%20%3D%204%20%5C%5Ccdot%201%20%3D%204%20%24%20%3B%5Cn-%20%24%20f%283%2C%204%29%20%3D%204%20%5C%5Ccdot%201%20%2B%207%20%5C%5Ccdot%202%20%3D%2018%20%24%20%3B%5Cn-%20%24%20f%284%2C%204%29%20%3D%207%20%5C%5Ccdot%201%20%3D%207%20%24%20%3B%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1167%5C%2FF%22%2C%22id%22%3A%221167F%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6570%5Cu7ec4%24a_1%2Ca_2%2C...%2Ca_n%24%5Cuff0c%5Cu5176%5Cu4e2d%5Cu6240%5Cu6709%5Cu5143%5Cu7d20%5Cu4e24%5Cu4e24%5Cu4e0d%5Cu540c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5b9a%5Cu4e49%5Cu51fd%5Cu6570%24f%28l%2Cr%29%24%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%5Cu5b9a%5Cu4e49%5Cu6570%5Cu7ec4%24b_1%2Cb_2%2C...%2Cb_%7Br-l%2B1%7D%24%5Cuff0c%5Cu5176%5Cu4e2d%24b_i%3Da_%7Bl-1%2Bi%7D%24%5Cr%5Cn-%20%5Cu5c06%24b%24%5Cu6309%5Cu4ece%5Cu5c0f%5Cu5230%5Cu5927%5Cu6392%5Cu5e8f%5Cr%5Cn-%20%5Cu5219%5Cu6b64%5Cu65f6%5Cu51fd%5Cu6570%5Cu7684%5Cu503c%5Cu662f%24%5C%5Csum%5C%5Climits_%7Bi%3D1%7D%5E%7Br-l%2B1%7D%7Bb_i%7D%5C%5Ccdot%20i%24%5Cr%5Cn%5Cr%5Cn%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu6ee1%5Cu8db3%241%20%5C%5Cle%20l%20%5C%5Cle%20r%20%5C%5Cle%20n%24%5Cu7684%24l%24%5Cu548c%24r%24%5Cuff0c%24f%28l%2Cr%29%24%5Cu7684%5Cu548c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7531%5Cu4e8e%5Cu7ed3%5Cu679c%5Cu53ef%5Cu80fd%5Cu5f88%5Cu5927%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu5bf9%2410%5E9%2B7%24%5Cu53d6%5Cu6a21%5Cu7684%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24%5Cuff0c%5Cu5373%5Cu7ed9%5Cu5b9a%5Cu6570%5Cu7ec4%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%24n%24%5Cu4e2a%5Cu6574%5Cu6570%24a_1%2Ca_2%2C...%2Ca_n%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu7ec4%5Cu5143%5Cu7d20%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu7b54%5Cu6848%5Cu5bf9%2410%5E9%2B7%24%5Cu53d6%5Cu6a21%5Cu7684%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%5Cr%5Cn%5Cr%5Cn%241%20%5C%5Cle%20n%20%5C%5Cle%205%20%5C%5Ccdot%2010%5E5%24%2C%20%241%20%5C%5Cle%20a_i%20%5C%5Cle%2010%5E9%24%2C%20%5Cu6240%5Cu6709%24a_i%24%5Cu4e24%5Cu4e24%5Cu4e0d%5Cu540c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b1%5Cu89e3%5Cu91ca%5Cuff1a%5Cr%5Cn%5Cr%5Cn%24%20f%281%2C%201%29%20%3D%205%20%5C%5Ccdot%201%20%3D%205%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%281%2C%202%29%20%3D%202%20%5C%5Ccdot%201%20%2B%205%20%5C%5Ccdot%202%20%3D%2012%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%281%2C%203%29%20%3D%202%20%5C%5Ccdot%201%20%2B%204%20%5C%5Ccdot%202%20%2B%205%20%5C%5Ccdot%203%20%3D%2025%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%281%2C%204%29%20%3D%202%20%5C%5Ccdot%201%20%2B%204%20%5C%5Ccdot%202%20%2B%205%20%5C%5Ccdot%203%20%2B%207%20%5C%5Ccdot%204%20%3D%2053%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%282%2C%202%29%20%3D%202%20%5C%5Ccdot%201%20%3D%202%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%282%2C%203%29%20%3D%202%20%5C%5Ccdot%201%20%2B%204%20%5C%5Ccdot%202%20%3D%2010%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%282%2C%204%29%20%3D%202%20%5C%5Ccdot%201%20%2B%204%20%5C%5Ccdot%202%20%2B%207%20%5C%5Ccdot%203%20%3D%2031%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%283%2C%203%29%20%3D%204%20%5C%5Ccdot%201%20%3D%204%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%283%2C%204%29%20%3D%204%20%5C%5Ccdot%201%20%2B%207%20%5C%5Ccdot%202%20%3D%2018%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%24%20f%284%2C%204%29%20%3D%207%20%5C%5Ccdot%201%20%3D%207%20%24%20%3B%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A124%2C%22totalAccepted%22%3A58%2C%22pid%22%3A%22CF1167F%22%2C%22title%22%3A%22Scalar%20Queries%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P5290%22%2C%22title%22%3A%22%5B%5Cu5341%5Cu4e8c%5Cu7701%5Cu8054%5Cu80032019%5D%5Cu6625%5Cu8282%5Cu5341%5Cu4e8c%5Cu54cd%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P5333%22%2C%22title%22%3A%22%5BJSOI2019%5D%5Cu795e%5Cu7ecf%5Cu7f51%5Cu7edc%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1156E%22%2C%22title%22%3A%22Special%20Segments%20of%20Permutation%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P5395%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu7b2c%5Cu4e8c%5Cu7c7b%5Cu65af%5Cu7279%5Cu6797%5Cu6570%5Cu00b7%5Cu884c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1166E%22%2C%22title%22%3A%22The%20LCMs%20Must%20be%20Large%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Scalar%20Queries%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Scalar Queries</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+给出一个数组$a_1,a_2,...,a_n$，其中所有元素两两不同。
+定义函数$f(l,r)$：
+- 定义数组$b_1,b_2,...,b_{r-l+1}$，其中$b_i=a_{l-1+i}$
+- 将$b$按从小到大排序
+- 则此时函数的值是$\sum\limits_{i=1}^{r-l+1}{b_i}\cdot i$
+请计算对于所有满足$1 \le l \le r \le n$的$l$和$r$，$f(l,r)$的和。
+由于结果可能很大，请输出对$10^9+7$取模的值。
+## 输入输出格式
+### 输入格式：
+第一行包含一个整数$n$，即给定数组的长度。
+第二行包含$n$个整数$a_1,a_2,...,a_n$，表示数组元素。
+### 输出格式：
+输出一个整数，表示答案对$10^9+7$取模的值。
+## 说明
+$1 \le n \le 5 \cdot 10^5$, $1 \le a_i \le 10^9$, 所有$a_i$两两不同。
+样例1解释：
+$ f(1, 1) = 5 \cdot 1 = 5 $ ;
+$ f(1, 2) = 2 \cdot 1 + 5 \cdot 2 = 12 $ ;
+$ f(1, 3) = 2 \cdot 1 + 4 \cdot 2 + 5 \cdot 3 = 25 $ ;
+$ f(1, 4) = 2 \cdot 1 + 4 \cdot 2 + 5 \cdot 3 + 7 \cdot 4 = 53 $ ;
+$ f(2, 2) = 2 \cdot 1 = 2 $ ;
+$ f(2, 3) = 2 \cdot 1 + 4 \cdot 2 = 10 $ ;
+$ f(2, 4) = 2 \cdot 1 + 4 \cdot 2 + 7 \cdot 3 = 31 $ ;
+$ f(3, 3) = 4 \cdot 1 = 4 $ ;
+$ f(3, 4) = 4 \cdot 1 + 7 \cdot 2 = 18 $ ;
+$ f(4, 4) = 7 \cdot 1 = 7 $ ;
+</div>
+<h2>题目描述</h2>
+<div>You are given an array $ a_1, a_2, \dots, a_n $ . All $ a_i $ are pairwise distinct.
+Let's define function $ f(l, r) $ as follows:
+- let's define array $ b_1, b_2, \dots, b_{r - l + 1} $ , where $ b_i = a_{l - 1 + i} $ ;
+- sort array $ b $ in increasing order;
+- result of the function $ f(l, r) $ is $ \sum\limits_{i = 1}^{r - l + 1}{b_i \cdot i} $ .
+Calculate $ \left(\sum\limits_{1 \le l \le r \le n}{f(l, r)}\right) \mod (10^9+7) $ , i.e. total sum of $ f $ for all subsegments of $ a $ modulo $ 10^9+7 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ n $ ( $ 1 \le n \le 5 \cdot 10^5 $ ) — the length of array $ a $ .
+The second line contains $ n $ integers $ a_1, a_2, \dots, a_n $ ( $ 1 \le a_i \le 10^9 $ , $ a_i \neq a_j $ for $ i \neq j $ ) — array $ a $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the total sum of $ f $ for all subsegments of $ a $ modulo $ 10^9+7 $</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4
+5 2 4 7
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+167
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+3
+123456789 214365879 987654321
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+582491518
+</code></pre>
+<h2>说明</h2>
+<div>Description of the first example:
+- $ f(1, 1) = 5 \cdot 1 = 5 $ ;
+- $ f(1, 2) = 2 \cdot 1 + 5 \cdot 2 = 12 $ ;
+- $ f(1, 3) = 2 \cdot 1 + 4 \cdot 2 + 5 \cdot 3 = 25 $ ;
+- $ f(1, 4) = 2 \cdot 1 + 4 \cdot 2 + 5 \cdot 3 + 7 \cdot 4 = 53 $ ;
+- $ f(2, 2) = 2 \cdot 1 = 2 $ ;
+- $ f(2, 3) = 2 \cdot 1 + 4 \cdot 2 = 10 $ ;
+- $ f(2, 4) = 2 \cdot 1 + 4 \cdot 2 + 7 \cdot 3 = 31 $ ;
+- $ f(3, 3) = 4 \cdot 1 = 4 $ ;
+- $ f(3, 4) = 4 \cdot 1 + 7 \cdot 2 = 18 $ ;
+- $ f(4, 4) = 7 \cdot 1 = 7 $ ;</div>
+</article>
+</div>
+</div>
+</body>
+</html>

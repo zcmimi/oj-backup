@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Spanning Tree with One Fixed Degree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402057:yO9aCQyoUYc1KcAoTUakUTX1RR+QJT8zWs1uA3SkLWM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20an%20undirected%20unweighted%20connected%20graph%20consisting%20of%20%24%20n%20%24%20vertices%20and%20%24%20m%20%24%20edges.%20It%20is%20guaranteed%20that%20there%20are%20no%20self-loops%20or%20multiple%20edges%20in%20the%20given%20graph.%5Cn%5CnYour%20task%20is%20to%20find%20any%20spanning%20tree%20of%20this%20graph%20such%20that%20the%20degree%20of%20the%20first%20vertex%20%28vertex%20with%20label%20%24%201%20%24%20on%20it%29%20is%20equal%20to%20%24%20D%20%24%20%28or%20say%20that%20there%20are%20no%20such%20spanning%20trees%29.%20Recall%20that%20the%20degree%20of%20a%20vertex%20is%20the%20number%20of%20edges%20incident%20to%20it.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20D%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%2C%20%24%20n%20-%201%20%5C%5Cle%20m%20%5C%5Cle%20min%282%20%5C%5Ccdot%2010%5E5%2C%20%5C%5Cfrac%7Bn%28n-1%29%7D%7B2%7D%29%2C%201%20%5C%5Cle%20D%20%3C%20n%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%2C%20the%20number%20of%20edges%20and%20required%20degree%20of%20the%20first%20vertex%2C%20respectively.%5Cn%5CnThe%20following%20%24%20m%20%24%20lines%20denote%20edges%3A%20edge%20%24%20i%20%24%20is%20represented%20by%20a%20pair%20of%20integers%20%24%20v_i%20%24%20%2C%20%24%20u_i%20%24%20%28%20%24%201%20%5C%5Cle%20v_i%2C%20u_i%20%5C%5Cle%20n%20%24%20%2C%20%24%20u_i%20%5C%5Cne%20v_i%20%24%20%29%2C%20which%20are%20the%20indices%20of%20vertices%20connected%20by%20the%20edge.%20There%20are%20no%20loops%20or%20multiple%20edges%20in%20the%20given%20graph%2C%20i.%20e.%20for%20each%20pair%20%28%20%24%20v_i%2C%20u_i%20%24%20%29%20there%20are%20no%20other%20pairs%20%28%20%24%20v_i%2C%20u_i%20%24%20%29%20or%20%28%20%24%20u_i%2C%20v_i%20%24%20%29%20in%20the%20list%20of%20edges%2C%20and%20for%20each%20pair%20%24%20%28v_i%2C%20u_i%29%20%24%20the%20condition%20%24%20v_i%20%5C%5Cne%20u_i%20%24%20is%20satisfied.%22%2C%22outputFormat%22%3A%22If%20there%20is%20no%20spanning%20tree%20satisfying%20the%20condition%20from%20the%20problem%20statement%2C%20print%20%5C%22NO%5C%22%20in%20the%20first%20line.%5Cn%5CnOtherwise%20print%20%5C%22YES%5C%22%20in%20the%20first%20line%20and%20then%20print%20%24%20n-1%20%24%20lines%20describing%20the%20edges%20of%20a%20spanning%20tree%20such%20that%20the%20degree%20of%20the%20first%20vertex%20%28vertex%20with%20label%20%24%201%20%24%20on%20it%29%20is%20equal%20to%20%24%20D%20%24%20.%20Make%20sure%20that%20the%20edges%20of%20the%20printed%20spanning%20tree%20form%20some%20subset%20of%20the%20input%20edges%20%28order%20doesn%27t%20matter%20and%20edge%20%24%20%28v%2C%20u%29%20%24%20is%20considered%20the%20same%20as%20the%20edge%20%24%20%28u%2C%20v%29%20%24%20%29.%5Cn%5CnIf%20there%20are%20multiple%20possible%20answers%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%22%5Cn4%205%201%5Cn1%202%5Cn1%203%5Cn1%204%5Cn2%203%5Cn3%204%5Cn%22%2C%22%5CnYES%5Cn2%201%5Cn2%203%5Cn3%204%5Cn%22%5D%2C%5B%22%5Cn4%205%203%5Cn1%202%5Cn1%203%5Cn1%204%5Cn2%203%5Cn3%204%5Cn%22%2C%22%5CnYES%5Cn1%202%5Cn1%203%5Cn4%201%5Cn%22%5D%2C%5B%22%5Cn4%204%203%5Cn1%202%5Cn1%204%5Cn2%203%5Cn3%204%5Cn%22%2C%22%5CnNO%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20picture%20corresponding%20to%20the%20first%20and%20second%20examples%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1133F2%5C%2F517159ebac5fb796da2e35eb5deb42cb16b19928.png%29%5Cn%5CnThe%20picture%20corresponding%20to%20the%20third%20example%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1133F2%5C%2F5ec8b5eeba4dc997a4e457a85e595860b2a0bfe0.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1133%5C%2FF2%22%2C%22id%22%3A%221133F2%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A4%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF1133F2%22%2C%22title%22%3A%22Spanning%20Tree%20with%20One%20Fixed%20Degree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Spanning%20Tree%20with%20One%20Fixed%20Degree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Spanning Tree with One Fixed Degree</h1>
+<h2>题目描述</h2>
+<div>You are given an undirected unweighted connected graph consisting of $ n $ vertices and $ m $ edges. It is guaranteed that there are no self-loops or multiple edges in the given graph.
+Your task is to find any spanning tree of this graph such that the degree of the first vertex (vertex with label $ 1 $ on it) is equal to $ D $ (or say that there are no such spanning trees). Recall that the degree of a vertex is the number of edges incident to it.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ and $ D $ ( $ 2 \le n \le 2 \cdot 10^5 $ , $ n - 1 \le m \le min(2 \cdot 10^5, \frac{n(n-1)}{2}), 1 \le D < n $ ) — the number of vertices, the number of edges and required degree of the first vertex, respectively.
+The following $ m $ lines denote edges: edge $ i $ is represented by a pair of integers $ v_i $ , $ u_i $ ( $ 1 \le v_i, u_i \le n $ , $ u_i \ne v_i $ ), which are the indices of vertices connected by the edge. There are no loops or multiple edges in the given graph, i. e. for each pair ( $ v_i, u_i $ ) there are no other pairs ( $ v_i, u_i $ ) or ( $ u_i, v_i $ ) in the list of edges, and for each pair $ (v_i, u_i) $ the condition $ v_i \ne u_i $ is satisfied.</div>
+<h3>输出格式</h3>
+<br />
+<div>If there is no spanning tree satisfying the condition from the problem statement, print "NO" in the first line.
+Otherwise print "YES" in the first line and then print $ n-1 $ lines describing the edges of a spanning tree such that the degree of the first vertex (vertex with label $ 1 $ on it) is equal to $ D $ . Make sure that the edges of the printed spanning tree form some subset of the input edges (order doesn't matter and edge $ (v, u) $ is considered the same as the edge $ (u, v) $ ).
+If there are multiple possible answers, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+4 5 1
+1 2
+1 3
+1 4
+2 3
+3 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+YES
+2 1
+2 3
+3 4
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+4 5 3
+1 2
+1 3
+1 4
+2 3
+3 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+YES
+1 2
+1 3
+4 1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+4 4 3
+1 2
+1 4
+2 3
+3 4
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+NO
+</code></pre>
+<h2>说明</h2>
+<div>The picture corresponding to the first and second examples: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1133F2/517159ebac5fb796da2e35eb5deb42cb16b19928.png)
+The picture corresponding to the third example: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1133F2/5ec8b5eeba4dc997a4e457a85e595860b2a0bfe0.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

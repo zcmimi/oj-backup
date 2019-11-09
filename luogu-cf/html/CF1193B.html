@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Magic Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573402895:+iw7X2NhYPoBdOi0iBQe7ClYdvsdqeXr639NJ6dMuJU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22We%20have%20a%20magic%20tree%3A%20a%20rooted%20tree%20on%20%24%20n%20%24%20vertices.%20The%20vertices%20are%20numbered%20%24%201%20%24%20through%20%24%20n%20%24%20.%20Vertex%20%24%201%20%24%20is%20the%20root.%5Cn%5CnThe%20magic%20tree%20gives%20us%20magic%20fruit.%20The%20fruit%20only%20grows%20in%20vertices%20of%20the%20tree%20other%20than%20the%20root.%20Each%20vertex%20contains%20at%20most%20one%20piece%20of%20fruit.%5Cn%5CnIt%20is%20now%20day%200%20and%20no%20fruit%20is%20ripe%20yet.%20Each%20fruit%20will%20only%20be%20ripe%20for%20a%20single%20day.%20For%20each%20fruit%2C%20we%20are%20given%20the%20vertex%20%24%20v_j%20%24%20where%20it%20grows%2C%20the%20day%20%24%20d_j%20%24%20on%20which%20it%20will%20be%20ripe%2C%20and%20the%20amount%20%24%20w_j%20%24%20of%20magic%20juice%20we%20can%20extract%20from%20it%20if%20we%20harvest%20it%20when%20it%20is%20ripe.%5Cn%5CnThe%20fruits%20have%20to%20be%20harvested%20by%20cutting%20some%20branches%20of%20the%20tree.%20On%20each%20day%2C%20you%20may%20cut%20as%20many%20branches%20of%20the%20tree%20as%20you%20like.%20The%20parts%20of%20the%20tree%20you%20cut%20off%20will%20fall%20to%20the%20ground%20and%20you%20can%20collect%20all%20the%20ripe%20fruits%20they%20contain.%20All%20fruits%20that%20fall%20to%20the%20ground%20when%20they%20are%20not%20ripe%20are%20discarded%20and%20no%20magic%20juice%20is%20collected%20from%20them.%5Cn%5CnFormally%2C%20on%20each%20day%2C%20you%20may%20erase%20some%20edges%20of%20the%20tree.%20Whenever%20you%20do%20so%2C%20the%20tree%20will%20split%20into%20multiple%20connected%20components.%20You%20then%20erase%20all%20components%20that%20do%20not%20contain%20the%20root%20and%20you%20harvest%20all%20ripe%20fruits%20those%20components%20contained.%5Cn%5CnGiven%20is%20a%20description%20of%20the%20tree%20together%20with%20the%20locations%2C%20ripening%20days%20and%20juiciness%20of%20all%20%24%20m%20%24%20fruits.%20Calculate%20the%20maximum%20total%20amount%20of%20magic%20juice%20we%20can%20harvest%20from%20the%20tree.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20space-separated%20integers%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20n%20%5C%5Cle%20100%2C000%20%24%20%29%2C%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cle%20m%20%5C%5Cle%20n-1%20%24%20%29%20and%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cle%20k%20%5C%5Cle%20100%2C000%20%24%20%29%20%5Cu2013%20the%20number%20of%20vertices%2C%20the%20number%20of%20fruits%2C%20and%20the%20maximum%20day%20on%20which%20a%20fruit%20may%20become%20ripe.%5Cn%5CnThe%20following%20%24%20n-1%20%24%20lines%20contain%20the%20integers%20%24%20p_2%2C%20%5C%5Cdots%2C%20p_n%20%24%20%2C%20one%20per%20line.%20For%20each%20%24%20i%20%24%20%28from%20%24%202%20%24%20to%20%24%20n%20%24%20%2C%20inclusive%29%2C%20vertex%20%24%20p_i%20%24%20%28%20%24%201%20%5C%5Cleq%20p_i%20%5C%5Cle%20i-1%20%24%20%29%20is%20the%20parent%20of%20vertex%20%24%20i%20%24%20.%5Cn%5CnEach%20of%20the%20last%20%24%20m%20%24%20lines%20describes%20one%20fruit.%20The%20%24%20j%20%24%20-th%20of%20these%20lines%20has%20the%20form%20%5C%22%20%24%20v_j%5C%5C%20d_j%5C%5C%20w_j%20%24%20%5C%22%20%28%20%24%202%20%5C%5Cle%20v_j%20%5C%5Cle%20n%20%24%20%2C%20%24%201%20%5C%5Cle%20d_j%20%5C%5Cle%20k%20%24%20%2C%20%24%201%20%5C%5Cle%20w_j%20%5C%5Cle%2010%5E9%20%24%20%29.%5Cn%5CnIt%20is%20guaranteed%20that%20no%20vertex%20contains%20more%20than%20one%20fruit%20%28i.e.%2C%20the%20values%20%24%20v_j%20%24%20are%20distinct%29.%22%2C%22outputFormat%22%3A%22Output%20a%20single%20line%20with%20a%20single%20integer%2C%20the%20maximum%20amount%20of%20magic%20juice%20we%20can%20harvest%20from%20the%20tree.%5Cn%5CnScoring%5Cn%5CnSubtask%201%20%286%20points%29%3A%20%24%20n%2C%20k%20%5C%5Cleq%2020%20%24%20%2C%20and%20%24%20w_j%20%3D%201%20%24%20for%20all%20%24%20j%20%24%5Cn%5CnSubtask%202%20%283%20points%29%3A%20fruits%20only%20grow%20in%20the%20leaves%20of%20the%20tree%5Cn%5CnSubtask%203%20%2811%20points%29%3A%20%24%20p_i%20%3D%20i-1%20%24%20for%20each%20%24%20i%20%24%20%2C%20and%20%24%20w_j%20%3D%201%20%24%20for%20all%20%24%20j%20%24%5Cn%5CnSubtask%204%20%2812%20points%29%3A%20%24%20k%20%5C%5Cleq%202%20%24%5Cn%5CnSubtask%205%20%2816%20points%29%3A%20%24%20k%20%5C%5Cleq%2020%20%24%20%2C%20and%20%24%20w_j%20%3D%201%20%24%20for%20all%20%24%20j%20%24%5Cn%5CnSubtask%206%20%2813%20points%29%3A%20%24%20m%20%5C%5Cleq%201%2C000%20%24%5Cn%5CnSubtask%207%20%2822%20points%29%3A%20%24%20w_j%20%3D%201%20%24%20for%20all%20%24%20j%20%24%5Cn%5CnSubtask%208%20%2817%20points%29%3A%20no%20additional%20constraints%22%2C%22samples%22%3A%5B%5B%22%5Cn6%204%2010%5Cn1%5Cn2%5Cn1%5Cn4%5Cn4%5Cn3%204%205%5Cn4%207%202%5Cn5%204%201%5Cn6%209%203%5Cn%22%2C%22%5Cn9%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20example%20input%2C%20one%20optimal%20solution%20looks%20as%20follows%3A%5Cn%5Cn-%20On%20day%204%2C%20cut%20the%20edge%20between%20vertices%204%20and%205%20and%20harvest%20a%20ripe%20fruit%20with%201%20unit%20of%20magic%20juice.%20On%20the%20same%20day%2C%20cut%20the%20edge%20between%20vertices%201%20and%202%20and%20harvest%205%20units%20of%20magic%20juice%20from%20the%20ripe%20fruit%20in%20vertex%203.%5Cn-%20On%20day%207%2C%20do%20nothing.%20%28We%20could%20harvest%20the%20fruit%20in%20vertex%204%20that%20just%20became%20ripe%2C%20but%20doing%20so%20is%20not%20optimal.%29%5Cn-%20On%20day%209%2C%20cut%20the%20edge%20between%20vertices%201%20and%204.%20Discard%20the%20fruit%20in%20vertex%204%20that%20is%20no%20longer%20ripe%2C%20and%20harvest%203%20units%20of%20magic%20juice%20from%20the%20ripe%20fruit%20in%20vertex%206.%20%28Alternately%2C%20we%20could%20achieve%20the%20same%20effect%20by%20cutting%20the%20edge%20between%20vertices%204%20and%206.%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B1024000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1193%5C%2FB%22%2C%22id%22%3A%221193B%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu9897n%5Cu4e2a%5Cu9876%5Cu70b9%5Cu4e0a%5Cu7684%5Cu6709%5Cu6839%5Cu6811%5Cu3002%5Cu9876%5Cu70b9%5Cu7f16%5Cu53f7%5Cu4e3a1%5Cu5230n%5Cu3002%20%5Cu9876%5Cu70b91%5Cu662f%5Cu6839%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8fd9%5Cu4e2a%5Cu6811%5Cu7ed3%5Cu53ea%5Cu751f%5Cu957f%5Cu5728%5Cu6811%5Cu7684%5Cu9876%5Cu70b9%5Cu800c%5Cu4e0d%5Cu662f%5Cu6839%5Cu7684%5Cu679c%5Cu5b9e%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu9876%5Cu70b9%5Cu6700%5Cu591a%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu679c%5Cu5b9e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu662f%5Cu7b2c0%5Cu5929%5Cuff0c%5Cu8fd8%5Cu6ca1%5Cu6709%5Cu6c34%5Cu679c%5Cu6210%5Cu719f%5Cu3002%5Cu6bcf%5Cu79cd%5Cu6c34%5Cu679c%5Cu53ea%5Cu4f1a%5Cu5728%5Cu4e00%5Cu5929%5Cu5185%5Cu6210%5Cu719f%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu679c%5Cu5b9e%5Cuff0c%5Cu6211%5Cu4eec%5Cu7ed9%5Cu51fa%5Cu751f%5Cu957f%5Cu7684%5Cu9876%5Cu70b9%24v_j%24%5Cu6210%5Cu719f%5Cu7684%5Cu65e5%5Cu671f%24d_j%24%5Cu4ee5%5Cu53ca%5Cu5728%5Cu6210%5Cu719f%5Cu65f6%5Cu6536%5Cu83b7%5Cu5b83%5Cuff0c%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu63d0%5Cu53d6%5Cu9b54%5Cu6cd5%5Cu6c41%5Cu7684%5Cu91cf%24w_j%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5fc5%5Cu987b%5Cu901a%5Cu8fc7%5Cu5207%5Cu5272%5Cu6811%5Cu7684%5Cu4e00%5Cu4e9b%5Cu5206%5Cu679d%5Cu6765%5Cu6536%5Cu83b7%5Cu679c%5Cu5b9e%5Cu3002%20%5Cu5728%5Cu6bcf%5Cu4e00%5Cu5929%5Cuff0c%5Cu60a8%5Cu53ef%5Cu4ee5%5Cu6839%5Cu636e%5Cu9700%5Cu8981%5Cu5207%5Cu5272%5Cu6811%5Cu7684%5Cu591a%5Cu4e2a%5Cu5206%5Cu652f%5Cu3002%5Cu4f60%5Cu5207%5Cu6389%5Cu7684%5Cu6811%5Cu7684%5Cu90e8%5Cu5206%5Cu4f1a%5Cu6389%5Cu5230%5Cu5730%5Cu4e0a%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu6536%5Cu83b7%5Cu5b83%5Cu4eec%5Cu6240%5Cu542b%5Cu7684%5Cu6210%5Cu719f%5Cu7684%5Cu679c%5Cu5b9e%5Cu7684%5Cu9b54%5Cu6cd5%5Cu6c41%5Cu3002%20%5Cu6240%5Cu6709%5Cu672a%5Cu6210%5Cu719f%5Cu65f6%5Cu5012%5Cu5728%5Cu5730%5Cu4e0a%5Cu7684%5Cu6c34%5Cu679c%5Cu5c06%5Cu65e0%5Cu6cd5%5Cu6536%5Cu83b7%5Cu9b54%5Cu6cd5%5Cu6c41%5Cuff08%5Cu88ab%5Cu4e22%5Cu5f03%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu5929%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu64e6%5Cu9664%5Cu6811%5Cu7684%5Cu67d0%5Cu4e9b%5Cu8fb9%5Cu7f18%5Cu3002%20%5Cu6bcf%5Cu5f53%5Cu60a8%5Cu8fd9%5Cu6837%5Cu505a%5Cu65f6%5Cuff0c%5Cu6811%5Cu5c06%5Cu5206%5Cu88c2%5Cu6210%5Cu591a%5Cu4e2a%5Cu8fde%5Cu63a5%5Cu7684%5Cu90e8%5Cu5206%5Cu3002%20%5Cu7136%5Cu540e%5Cu5220%5Cu9664%5Cu6240%5Cu6709%5Cu4e0d%5Cu542b%5Cu6839%5Cu7684%5Cu90e8%5Cu5206%5Cuff0c%5Cu5e76%5Cu6536%5Cu83b7%5Cu6240%5Cu6709%5Cu5305%5Cu542b%5Cu6210%5Cu719f%5Cu679c%5Cu5b9e%5Cu7684%5Cu90e8%5Cu5206%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu51fa%5Cu6811%5Cu7684%5Cu63cf%5Cu8ff0%5Cu4ee5%5Cu53ca%5Cu6240%5Cu6709m%5Cu4e2a%5Cu679c%5Cu5b9e%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu6210%5Cu719f%5Cu65e5%5Cu548c%5Cu9b54%5Cu6cd5%5Cu6c41%5Cu91cf%5Cu3002%20%5Cu8ba1%5Cu7b97%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu6811%5Cu4e0a%5Cu6536%5Cu83b7%5Cu7684%5Cu9b54%5Cu6cd5%5Cu6c41%5Cu7684%5Cu6700%5Cu5927%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu5165%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu7684%5Cu6574%5Cu6570%5Cuff1a%5Cu9876%5Cu70b9%5Cu6570n%5Cuff08%242%5Cu2264n%5Cu2264100%2C000%24%5Cuff09%5Cuff0c%5Cu679c%5Cu5b9e%5Cu6570m%5Cuff08%241%5Cu2264m%5Cu2264n-1%24%5Cuff09%5Cu548c%5Cu679c%5Cu5b9e%5Cu6210%5Cu719f%5Cu6700%5Cu957f%5Cu65e5%5Cu671fk%5Cuff08%241%5Cu2264k%5Cu2264100%2C000%24%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu4ee5%5Cu4e0bn-1%5Cu884c%5Cu5305%5Cu542b%5Cu6574%5Cu6570%24p_2%24%2C%24...%24%2C%24p_n%24%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu3002%20%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2ai%5Cuff08%5Cu4ece2%5Cu5230n%28%5Cu5305%5Cu542b2%5Cu548cn%29%5Cuff09%5Cuff0c%5Cu9876%5Cu70b9%24p_i%24%5Cuff08%241%5Cu2264p_i%5Cu2264i-1%24%5Cuff09%5Cu662f%5Cu9876%5Cu70b9i%5Cu7684%5Cu7236%5Cu8282%5Cu70b9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu540em%5Cu884c%5Cu4e2d%5Cu7684%5Cu6bcf%5Cu4e00%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu79cd%5Cu679c%5Cu5b9e%5Cu3002%20%5Cu8fd9%5Cu4e9b%5Cu884c%5Cu4e2d%5Cu7684%5Cu7b2cj%5Cu4e2a%5Cu662f%5Cu201c%24v_j%24%20%24d_j%24%20%24w_j%24%5Cu201d%5Cu7684%5Cu5f62%5Cu5f0f%5Cuff08%242%5Cu2264v_j%5Cu2264n%24%5Cuff0c%241%5Cu2264d_j%5Cu2264k%24%5Cuff0c%241%5Cu2264w_j%5Cu226410%5E9%24%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu6ca1%5Cu6709%5Cu9876%5Cu70b9%5Cu5305%5Cu542b%5Cu591a%5Cu4e2a%5Cu679c%5Cu5b9e%5Cuff08%5Cu5373%24v_j%24%5Cu7684%5Cu503c%5Cu662f%5Cu4e0d%5Cu540c%5Cu7684%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu4ee3%5Cu8868%5Cu53ef%5Cu4ee5%5Cu63d0%5Cu53d6%5Cu51fa%5Cu9b54%5Cu6cd5%5Cu6c41%5Cu7684%5Cu6700%5Cu5927%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF1193B%22%2C%22title%22%3A%22Magic%20Tree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Magic%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Magic Tree</h1>
+<h2>题意翻译</h2>
+<div>有一颗n个顶点上的有根树。顶点编号为1到n。 顶点1是根。
+这个树结只生长在树的顶点而不是根的果实。每个顶点最多包含一个果实。
+现在是第0天，还没有水果成熟。每种水果只会在一天内成熟。对于每个果实，我们给出生长的顶点$v_j$成熟的日期$d_j$以及在成熟时收获它，我们可以提取魔法汁的量$w_j$。
+必须通过切割树的一些分枝来收获果实。 在每一天，您可以根据需要切割树的多个分支。你切掉的树的部分会掉到地上，你可以收获它们所含的成熟的果实的魔法汁。 所有未成熟时倒在地上的水果将无法收获魔法汁（被丢弃）
+每天都可以擦除树的某些边缘。 每当您这样做时，树将分裂成多个连接的部分。 然后删除所有不含根的部分，并收获所有包含成熟果实的部分。
+给出树的描述以及所有m个果实的位置，成熟日和魔法汁量。 计算我们可以从树上收获的魔法汁的最大量。
+#### 输入
+第一行包含三个空格分隔的整数：顶点数n（$2≤n≤100,000$），果实数m（$1≤m≤n-1$）和果实成熟最长日期k（$1≤k≤100,000$）
+以下n-1行包含整数$p_2$,$...$,$p_n$，每行一个。 对于每个i（从2到n(包含2和n)），顶点$p_i$（$1≤p_i≤i-1$）是顶点i的父节点。
+最后m行中的每一行描述一种果实。 这些行中的第j个是“$v_j$ $d_j$ $w_j$”的形式（$2≤v_j≤n$，$1≤d_j≤k$，$1≤w_j≤10^9$）。
+保证没有顶点包含多个果实（即$v_j$的值是不同的）。
+#### 输出
+一个整数，代表可以提取出魔法汁的最大量。
+</div>
+<h2>题目描述</h2>
+<div>We have a magic tree: a rooted tree on $ n $ vertices. The vertices are numbered $ 1 $ through $ n $ . Vertex $ 1 $ is the root.
+The magic tree gives us magic fruit. The fruit only grows in vertices of the tree other than the root. Each vertex contains at most one piece of fruit.
+It is now day 0 and no fruit is ripe yet. Each fruit will only be ripe for a single day. For each fruit, we are given the vertex $ v_j $ where it grows, the day $ d_j $ on which it will be ripe, and the amount $ w_j $ of magic juice we can extract from it if we harvest it when it is ripe.
+The fruits have to be harvested by cutting some branches of the tree. On each day, you may cut as many branches of the tree as you like. The parts of the tree you cut off will fall to the ground and you can collect all the ripe fruits they contain. All fruits that fall to the ground when they are not ripe are discarded and no magic juice is collected from them.
+Formally, on each day, you may erase some edges of the tree. Whenever you do so, the tree will split into multiple connected components. You then erase all components that do not contain the root and you harvest all ripe fruits those components contained.
+Given is a description of the tree together with the locations, ripening days and juiciness of all $ m $ fruits. Calculate the maximum total amount of magic juice we can harvest from the tree.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three space-separated integers $ n $ ( $ 2 \le n \le 100,000 $ ), $ m $ ( $ 1 \le m \le n-1 $ ) and $ k $ ( $ 1 \le k \le 100,000 $ ) – the number of vertices, the number of fruits, and the maximum day on which a fruit may become ripe.
+The following $ n-1 $ lines contain the integers $ p_2, \dots, p_n $ , one per line. For each $ i $ (from $ 2 $ to $ n $ , inclusive), vertex $ p_i $ ( $ 1 \leq p_i \le i-1 $ ) is the parent of vertex $ i $ .
+Each of the last $ m $ lines describes one fruit. The $ j $ -th of these lines has the form " $ v_j\ d_j\ w_j $ " ( $ 2 \le v_j \le n $ , $ 1 \le d_j \le k $ , $ 1 \le w_j \le 10^9 $ ).
+It is guaranteed that no vertex contains more than one fruit (i.e., the values $ v_j $ are distinct).</div>
+<h3>输出格式</h3>
+<br />
+<div>Output a single line with a single integer, the maximum amount of magic juice we can harvest from the tree.
+Scoring
+Subtask 1 (6 points): $ n, k \leq 20 $ , and $ w_j = 1 $ for all $ j $
+Subtask 2 (3 points): fruits only grow in the leaves of the tree
+Subtask 3 (11 points): $ p_i = i-1 $ for each $ i $ , and $ w_j = 1 $ for all $ j $
+Subtask 4 (12 points): $ k \leq 2 $
+Subtask 5 (16 points): $ k \leq 20 $ , and $ w_j = 1 $ for all $ j $
+Subtask 6 (13 points): $ m \leq 1,000 $
+Subtask 7 (22 points): $ w_j = 1 $ for all $ j $
+Subtask 8 (17 points): no additional constraints</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+6 4 10
+1
+2
+1
+4
+4
+3 4 5
+4 7 2
+5 4 1
+6 9 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+9
+</code></pre>
+<h2>说明</h2>
+<div>In the example input, one optimal solution looks as follows:
+- On day 4, cut the edge between vertices 4 and 5 and harvest a ripe fruit with 1 unit of magic juice. On the same day, cut the edge between vertices 1 and 2 and harvest 5 units of magic juice from the ripe fruit in vertex 3.
+- On day 7, do nothing. (We could harvest the fruit in vertex 4 that just became ripe, but doing so is not optimal.)
+- On day 9, cut the edge between vertices 1 and 4. Discard the fruit in vertex 4 that is no longer ripe, and harvest 3 units of magic juice from the ripe fruit in vertex 6. (Alternately, we could achieve the same effect by cutting the edge between vertices 4 and 6.)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

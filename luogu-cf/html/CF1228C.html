@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Primes and Multiplication - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403477:EvgUNBGcdeQKSLf4MSHBe5OtNXt/pmVqQQqm2oXA0zU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20introduce%20some%20definitions%20that%20will%20be%20needed%20later.%5Cn%5CnLet%20%24%20prime%28x%29%20%24%20be%20the%20set%20of%20prime%20divisors%20of%20%24%20x%20%24%20.%20For%20example%2C%20%24%20prime%28140%29%20%3D%20%5C%5C%7B%202%2C%205%2C%207%20%5C%5C%7D%20%24%20%2C%20%24%20prime%28169%29%20%3D%20%5C%5C%7B%2013%20%5C%5C%7D%20%24%20.%5Cn%5CnLet%20%24%20g%28x%2C%20p%29%20%24%20be%20the%20maximum%20possible%20integer%20%24%20p%5Ek%20%24%20where%20%24%20k%20%24%20is%20an%20integer%20such%20that%20%24%20x%20%24%20is%20divisible%20by%20%24%20p%5Ek%20%24%20.%20For%20example%3A%5Cn%5Cn-%20%24%20g%2845%2C%203%29%20%3D%209%20%24%20%28%20%24%2045%20%24%20is%20divisible%20by%20%24%203%5E2%3D9%20%24%20but%20not%20divisible%20by%20%24%203%5E3%3D27%20%24%20%29%2C%5Cn-%20%24%20g%2863%2C%207%29%20%3D%207%20%24%20%28%20%24%2063%20%24%20is%20divisible%20by%20%24%207%5E1%3D7%20%24%20but%20not%20divisible%20by%20%24%207%5E2%3D49%20%24%20%29.%5Cn%5CnLet%20%24%20f%28x%2C%20y%29%20%24%20be%20the%20product%20of%20%24%20g%28y%2C%20p%29%20%24%20for%20all%20%24%20p%20%24%20in%20%24%20prime%28x%29%20%24%20.%20For%20example%3A%5Cn%5Cn-%20%24%20f%2830%2C%2070%29%20%3D%20g%2870%2C%202%29%20%5C%5Ccdot%20g%2870%2C%203%29%20%5C%5Ccdot%20g%2870%2C%205%29%20%3D%202%5E1%20%5C%5Ccdot%203%5E0%20%5C%5Ccdot%205%5E1%20%3D%2010%20%24%20%2C%5Cn-%20%24%20f%28525%2C%2063%29%20%3D%20g%2863%2C%203%29%20%5C%5Ccdot%20g%2863%2C%205%29%20%5C%5Ccdot%20g%2863%2C%207%29%20%3D%203%5E2%20%5C%5Ccdot%205%5E0%20%5C%5Ccdot%207%5E1%20%3D%2063%20%24%20.%5Cn%5CnYou%20have%20integers%20%24%20x%20%24%20and%20%24%20n%20%24%20.%20Calculate%20%24%20f%28x%2C%201%29%20%5C%5Ccdot%20f%28x%2C%202%29%20%5C%5Ccdot%20%5C%5Cldots%20%5C%5Ccdot%20f%28x%2C%20n%29%20%5C%5Cbmod%7B%2810%5E%7B9%7D%20%2B%207%29%7D%20%24%20.%22%2C%22inputFormat%22%3A%22The%20only%20line%20contains%20integers%20%24%20x%20%24%20and%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cle%20x%20%5C%5Cle%2010%5E%7B9%7D%20%24%20%2C%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%2010%5E%7B18%7D%20%24%20%29%20%5Cu2014%20the%20numbers%20used%20in%20formula.%22%2C%22outputFormat%22%3A%22Print%20the%20answer.%22%2C%22samples%22%3A%5B%5B%22%5Cn10%202%5Cn%22%2C%22%5Cn2%5Cn%22%5D%2C%5B%22%5Cn20190929%201605%5Cn%22%2C%22%5Cn363165664%5Cn%22%5D%2C%5B%22%5Cn947%20987654321987654321%5Cn%22%2C%22%5Cn593574252%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20%24%20f%2810%2C%201%29%20%3D%20g%281%2C%202%29%20%5C%5Ccdot%20g%281%2C%205%29%20%3D%201%20%24%20%2C%20%24%20f%2810%2C%202%29%20%3D%20g%282%2C%202%29%20%5C%5Ccdot%20g%282%2C%205%29%20%3D%202%20%24%20.%5Cn%5CnIn%20the%20second%20example%2C%20actual%20value%20of%20formula%20is%20approximately%20%24%201.597%20%5C%5Ccdot%2010%5E%7B171%7D%20%24%20.%20Make%20sure%20you%20print%20the%20answer%20modulo%20%24%20%2810%5E%7B9%7D%20%2B%207%29%20%24%20.%5Cn%5CnIn%20the%20third%20example%2C%20be%20careful%20about%20overflow%20issue.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1228%5C%2FC%22%2C%22id%22%3A%221228C%22%7D%2C%22translation%22%3A%22%5Cu9996%5Cu5148%5Cu5148%5Cu4ecb%5Cu7ecd%5Cu4e00%5Cu4e9b%5Cu6d89%5Cu53ca%5Cu5230%5Cu7684%5Cu5b9a%5Cu4e49%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu5b9a%5Cu4e49%24prime%28x%29%24%5Cu8868%5Cu793ax%5Cu7684%5Cu8d28%5Cu56e0%5Cu5b50%5Cu96c6%5Cu5408%5Cu3002%5Cu4e3e%5Cu4f8b%5Cu6765%5Cu8bf4%5Cuff0c%24prime%28140%29%20%3D%20%5C%5C%7B2%2C%205%2C%207%5C%5C%7D%24%5Cuff0c%24prime%28169%29%20%3D%20%5C%5C%7B13%5C%5C%7D%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5b9a%5Cu4e49%24g%28x%2C%20p%29%24%5Cu8868%5Cu793a%5Cu5b58%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6700%5Cu5927%5Cu7684%24k%20%5C%5Cin%20N%5E%2A%24%5Cuff0c%5Cu4f7f%5Cu5f97x%5Cu53ef%5Cu4ee5%5Cu88ab%24p%5Ek%24%5Cu6574%5Cu9664%5Cuff08%5Cu5373%24p%5Ek%20%7C%20x%20%5C%5C%20%5C%5C%26%5C%5C%20p%5E%7Bk%2B1%7D%5C%5Cnmid%20x%24%5Cuff09%5Cuff0c%5Cu90a3%5Cu4e48%24g%28x%2C%20p%29%20%3D%20p%5Ek%24%5Cu3002%5Cu4e3e%5Cu4f8b%5Cu6765%5Cu8bf4%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%24g%2845%2C%203%29%20%3D%209%24%20%5Cuff08%2445%24%5Cu53ef%5Cu4ee5%5Cu88ab%243%5E2%20%3D%209%24%5Cu6574%5Cu9664%5Cu4f46%5Cu662f%5Cu4e0d%5Cu80fd%5Cu88ab%243%5E3%3D27%24%5Cu6574%5Cu9664%5Cuff09%5Cr%5Cn-%20%24g%2863%2C%207%29%20%3D%207%24%20%5Cuff0863%5Cu53ef%5Cu4ee5%5Cu88ab%247%5E1%20%3D%207%24%5Cu6574%5Cu9664%5Cu4f46%5Cu662f%5Cu4e0d%5Cu80fd%5Cu88ab%247%5E2%3D49%24%5Cu6574%5Cu9664%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu5b9a%5Cu4e49%24f%28x%2C%20y%29%24%5Cu8868%5Cu793a%5Cu6240%5Cu6709%24g%28y%2C%20p%29~~%28p%20%5C%5Cin%20prime%28x%29%29%24%5Cu7684%5Cu4e58%5Cu79ef%5Cuff0c%5Cu4e3e%5Cu4f8b%5Cu6765%5Cu8bf4%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%24f%2830%2C%2070%29%20%3D%20g%2870%2C2%29%5Cu00b7g%2870%2C3%29%5Cu00b7g%2870%2C%205%29%20%3D%202%5E1%5Cu00b73%5E0%5Cu00b75%5E1%20%3D%2010%24%5Cr%5Cn-%20%24f%28525%2C63%29%20%3D%20g%2863%2C3%29%5Cu00b7g%2863%2C5%29%5Cu00b7g%2863%2C7%29%20%3D%203%5E2%5Cu00b75%5E0%5Cu00b77%5E1%20%3D%2063%24%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu7ed9%5Cu51fa%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24x%24%5Cu548c%24n%24%5Cuff0c%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu51fa%24f%28x%2C1%29%5Cu00b7f%28x%2C2%29%5C%5Cdots%20f%28x%2Cn%29~mod~%2810%5E9%2B7%29%24%5Cu7684%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A173%2C%22totalAccepted%22%3A114%2C%22pid%22%3A%22CF1228C%22%2C%22title%22%3A%22Primes%20and%20Multiplication%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1114C%22%2C%22title%22%3A%22Trailing%20Loves%20%28or%20L%27oeufs%3F%29%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1228E%22%2C%22title%22%3A%22Another%20Filling%20the%20Grid%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1228D%22%2C%22title%22%3A%22Complete%20Tripartite%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1228B%22%2C%22title%22%3A%22Filling%20the%20Grid%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1228A%22%2C%22title%22%3A%22Distinct%20Digits%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Primes%20and%20Multiplication%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Primes and Multiplication</h1>
+<h2>题意翻译</h2>
+<div>首先先介绍一些涉及到的定义：
+定义$prime(x)$表示x的质因子集合。举例来说，$prime(140) = \{2, 5, 7\}$，$prime(169) = \{13\}$。
+定义$g(x, p)$表示存在一个最大的$k \in N^*$，使得x可以被$p^k$整除（即$p^k | x \ \&\ p^{k+1}\nmid x$），那么$g(x, p) = p^k$。举例来说：
+- $g(45, 3) = 9$ （$45$可以被$3^2 = 9$整除但是不能被$3^3=27$整除）
+- $g(63, 7) = 7$ （63可以被$7^1 = 7$整除但是不能被$7^2=49$整除）
+定义$f(x, y)$表示所有$g(y, p)~~(p \in prime(x))$的乘积，举例来说：
+- $f(30, 70) = g(70,2)·g(70,3)·g(70, 5) = 2^1·3^0·5^1 = 10$
+- $f(525,63) = g(63,3)·g(63,5)·g(63,7) = 3^2·5^0·7^1 = 63$
+现在给出两个整数$x$和$n$，请计算出$f(x,1)·f(x,2)\dots f(x,n)~mod~(10^9+7)$的值。
+</div>
+<h2>题目描述</h2>
+<div>Let's introduce some definitions that will be needed later.
+Let $ prime(x) $ be the set of prime divisors of $ x $ . For example, $ prime(140) = \{ 2, 5, 7 \} $ , $ prime(169) = \{ 13 \} $ .
+Let $ g(x, p) $ be the maximum possible integer $ p^k $ where $ k $ is an integer such that $ x $ is divisible by $ p^k $ . For example:
+- $ g(45, 3) = 9 $ ( $ 45 $ is divisible by $ 3^2=9 $ but not divisible by $ 3^3=27 $ ),
+- $ g(63, 7) = 7 $ ( $ 63 $ is divisible by $ 7^1=7 $ but not divisible by $ 7^2=49 $ ).
+Let $ f(x, y) $ be the product of $ g(y, p) $ for all $ p $ in $ prime(x) $ . For example:
+- $ f(30, 70) = g(70, 2) \cdot g(70, 3) \cdot g(70, 5) = 2^1 \cdot 3^0 \cdot 5^1 = 10 $ ,
+- $ f(525, 63) = g(63, 3) \cdot g(63, 5) \cdot g(63, 7) = 3^2 \cdot 5^0 \cdot 7^1 = 63 $ .
+You have integers $ x $ and $ n $ . Calculate $ f(x, 1) \cdot f(x, 2) \cdot \ldots \cdot f(x, n) \bmod{(10^{9} + 7)} $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The only line contains integers $ x $ and $ n $ ( $ 2 \le x \le 10^{9} $ , $ 1 \le n \le 10^{18} $ ) — the numbers used in formula.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the answer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+10 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+20190929 1605
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+363165664
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+947 987654321987654321
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+593574252
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, $ f(10, 1) = g(1, 2) \cdot g(1, 5) = 1 $ , $ f(10, 2) = g(2, 2) \cdot g(2, 5) = 2 $ .
+In the second example, actual value of formula is approximately $ 1.597 \cdot 10^{171} $ . Make sure you print the answer modulo $ (10^{9} + 7) $ .
+In the third example, be careful about overflow issue.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

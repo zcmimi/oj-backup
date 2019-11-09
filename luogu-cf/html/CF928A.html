@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Login Verification - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399514:014qgroy/7p6ogp6KahRN50gCJ0FY49XS/UqfaBiuKk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22When%20registering%20in%20a%20social%20network%2C%20users%20are%20allowed%20to%20create%20their%20own%20convenient%20login%20to%20make%20it%20easier%20to%20share%20contacts%2C%20print%20it%20on%20business%20cards%2C%20etc.%5Cn%5CnLogin%20is%20an%20arbitrary%20sequence%20of%20lower%20and%20uppercase%20latin%20letters%2C%20digits%20and%20underline%20symbols%20%28%5Cu00ab%5C%5C_%5Cu00bb%29.%20However%2C%20in%20order%20to%20decrease%20the%20number%20of%20frauds%20and%20user-inattention%20related%20issues%2C%20it%20is%20prohibited%20to%20register%20a%20login%20if%20it%20is%20similar%20with%20an%20already%20existing%20login.%20More%20precisely%2C%20two%20logins%20%24%20s%20%24%20and%20%24%20t%20%24%20are%20considered%20similar%20if%20we%20can%20transform%20%24%20s%20%24%20to%20%24%20t%20%24%20via%20a%20sequence%20of%20operations%20of%20the%20following%20types%3A%5Cn%5Cn-%20transform%20lowercase%20letters%20to%20uppercase%20and%20vice%20versa%3B%5Cn-%20change%20letter%20%5Cu00abO%5Cu00bb%20%28uppercase%20latin%20letter%29%20to%20digit%20%5Cu00ab0%5Cu00bb%20and%20vice%20versa%3B%5Cn-%20change%20digit%20%5Cu00ab1%5Cu00bb%20%28one%29%20to%20any%20letter%20among%20%5Cu00abl%5Cu00bb%20%28lowercase%20latin%20%5Cu00abL%5Cu00bb%29%2C%20%5Cu00abI%5Cu00bb%20%28uppercase%20latin%20%5Cu00abi%5Cu00bb%29%20and%20vice%20versa%2C%20or%20change%20one%20of%20these%20letters%20to%20other.%5Cn%5CnFor%20example%2C%20logins%20%5Cu00abCodeforces%5Cu00bb%20and%20%5Cu00abcodef0rces%5Cu00bb%20as%20well%20as%20%5Cu00abOO0OOO00O0OOO0O00OOO0OO%5C%5C_lol%5Cu00bb%20and%20%5Cu00abOO0OOO0O00OOO0O00OO0OOO%5C%5C_1oI%5Cu00bb%20are%20considered%20similar%20whereas%20%5Cu00abCodeforces%5Cu00bb%20and%20%5Cu00abCode%5C%5C_forces%5Cu00bb%20are%20not.%5Cn%5CnYou%27re%20given%20a%20list%20of%20existing%20logins%20with%20no%20two%20similar%20amonst%20and%20a%20newly%20created%20user%20login.%20Check%20whether%20this%20new%20login%20is%20similar%20with%20any%20of%20the%20existing%20ones.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20non-empty%20string%20%24%20s%20%24%20consisting%20of%20lower%20and%20uppercase%20latin%20letters%2C%20digits%20and%20underline%20symbols%20%28%5Cu00ab%5C%5C_%5Cu00bb%29%20with%20length%20not%20exceeding%20%24%2050%20%24%20%5Cu2014%20the%20login%20itself.%5Cn%5CnThe%20second%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20existing%20logins.%5Cn%5CnThe%20next%20%24%20n%20%24%20lines%20describe%20the%20existing%20logins%2C%20following%20the%20same%20constraints%20as%20the%20user%20login%20%28refer%20to%20the%20first%20line%20of%20the%20input%29.%20It%27s%20guaranteed%20that%20no%20two%20existing%20logins%20are%20similar.%22%2C%22outputFormat%22%3A%22Print%20%5Cu00abYes%5Cu00bb%20%28without%20quotes%29%2C%20if%20user%20can%20register%20via%20this%20login%2C%20i.e.%20none%20of%20the%20existing%20logins%20is%20similar%20with%20it.%5Cn%5CnOtherwise%20print%20%5Cu00abNo%5Cu00bb%20%28without%20quotes%29.%22%2C%22samples%22%3A%5B%5B%221_wat%5Cn2%5Cn2_wat%5Cnwat_1%5Cn%22%2C%22Yes%5Cn%22%5D%2C%5B%22000%5Cn3%5Cn00%5CnooA%5CnoOo%5Cn%22%2C%22No%5Cn%22%5D%2C%5B%22_i_%5Cn3%5Cn__i_%5Cn_1_%5CnI%5Cn%22%2C%22No%5Cn%22%5D%2C%5B%22La0%5Cn3%5Cn2a0%5CnLa1%5Cn1a0%5Cn%22%2C%22No%5Cn%22%5D%2C%5B%22abc%5Cn1%5CnaBc%5Cn%22%2C%22No%5Cn%22%5D%2C%5B%220Lil%5Cn2%5CnLIL0%5Cn0Ril%5Cn%22%2C%22Yes%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20second%20sample%20case%20the%20user%20wants%20to%20create%20a%20login%20consisting%20of%20three%20zeros.%20It%27s%20impossible%20due%20to%20collision%20with%20the%20third%20among%20the%20existing.%5Cn%5CnIn%20the%20third%20sample%20case%20the%20new%20login%20is%20similar%20with%20the%20second%20one.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F928%5C%2FA%22%2C%22id%22%3A%22928A%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff1a%2A%2A%5Cr%5Cn%5Cu767b%5Cu5f55%5Cu540d%5Cu662f%5Cu7531%5Cu5c0f%5Cu5199%5Cu548c%5Cu5927%5Cu5199%5Cu62c9%5Cu4e01%5Cu5b57%5Cu6bcd%5Cu3001%5Cu6570%5Cu5b57%5Cu548c%5Cu4e0b%5Cu5212%5Cu7ebf%5Cu7b26%5Cu53f7%5Cu201c_%5Cu201d%5Cu7ec4%5Cu6210%5Cu7684%5Cu4efb%5Cu610f%5Cu5e8f%5Cu5217%5Cu3002%5Cr%5Cn%5Cu5982%5Cu679c%5Cu767b%5Cu5f55%5Cu540d%5Cu4e0e%5Cu5df2%5Cu7ecf%5Cu5b58%5Cu5728%5Cu7684%5Cu767b%5Cu5f55%5Cu540d%5Cu7c7b%5Cu4f3c%5Cuff0c%5Cu5219%5Cu7981%5Cu6b62%5Cu6ce8%5Cu518c%5Cu3002%5Cr%5Cn%5Cu5982%5Cu679c%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu4ee5%5Cu4e0b%5Cu7c7b%5Cu578b%5Cu7684%5Cu64cd%5Cu4f5c%5Cu7ec4%5Cu6210%5Cu7684%5Cu5e8f%5Cu5217%5Cu5c06S%5Cu8f6c%5Cu5316%5Cu6210T%5Cuff0c%5Cu5219%5Cu8ba4%5Cu4e3aS%2CT%5Cu662f%5Cu7c7b%5Cu4f3c%5Cu7684%5Cu3002%5Cr%5Cn-%20%5Cu5c06%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu8f6c%5Cu6362%5Cu4e3a%5Cu5927%5Cu5199%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu5c06%5Cu5927%5Cu5199%5Cu5b57%5Cu6bcd%5Cu8f6c%5Cu6362%5Cu4e3a%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cr%5Cn-%20%5Cu5c06%5Cu5b57%5Cu6bcd%5Cu201cO%5Cu201d%5Cu66f4%5Cu6539%5Cu4e3a%5Cu6570%5Cu5b57%5Cu201c0%5Cu201d%2C%5Cu5c06%5Cu6570%5Cu5b57%5Cu201c0%5Cu201d%5Cu66f4%5Cu6539%5Cu4e3a%5Cu5b57%5Cu6bcd%5Cu201cO%5Cu201d%5Cr%5Cn-%20%5C%221%5C%22%5C%22l%5C%22%5C%22L%5C%22%5Cu76f8%5Cu4e92%5Cu8f6c%5Cu5316%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cr%5Cn%5Cu767b%5Cu5f55%5Cu540d%5Cu00abcodeforces%5Cu00bb%5Cu548c%5Cu00abcodefwrces%5Cu00bb%5Cuff0c%5Cr%5Cn%5Cu00aboo0oo00oo0oo0oo0oo_lol%5Cu00bb%5Cu548c%5Cu00aboo0oo0oo0oo0oo0oo0oo0oo0oo_1oo%5Cu00bb%5Cu662f%5Cu7c7b%5Cu4f3c%5Cu7684%5Cuff0c%5Cr%5Cn%5Cu800c%5Cu00abcodeforces%5Cu00bb%5Cu548c%5Cu00abcode_forces%5Cu00bb%5Cu5219%5Cu4e0d%5Cu662f%5Cu3002%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu767b%5Cu5f55%5Cu540d%5Cu7684%5Cu5217%5Cu8868%2C%5Cu5176%5Cu4e2d%5Cu6ca1%5Cu6709%5Cu4e24%5Cu4e2a%5Cu7c7b%5Cu4f3c%5Cu7684%5Cu767b%5Cu5f55%5Cu540d%5Cu3002%5Cr%5Cn%5Cu68c0%5Cu67e5%5Cu65b0%5Cu767b%5Cu5f55%5Cu540d%5Cu662f%5Cu5426%5Cu548c%5Cu5df2%5Cu6709%5Cu767b%5Cu5f55%5Cu540d%5Cu7c7b%5Cu4f3c%5Cu3002%5Cr%5Cn%5Cr%5Cn------------%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2a%5Cu975e%5Cu7a7a%5Cu5b57%5Cu7b26%5Cu4e32s%5Cuff08%5Cu65b0%5Cu767b%5Cu5f55%5Cu540d%5Cuff09%2C%5Cu7531%5Cu5c0f%5Cu5199%5Cu548c%5Cu5927%5Cu5199%5Cu62c9%5Cu4e01%5Cu5b57%5Cu6bcd%5Cu3001%5Cu6570%5Cu5b57%5Cu548c%5Cu4e0b%5Cu5212%5Cu7ebf%5Cu7b26%5Cu53f7_%5Cu7ec4%5Cu6210%5Cuff0c%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc750%5Cu3002%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff0c1%3C%3Dn%3C%3D1000%5Cu2014%5Cu2014%5Cu5df2%5Cu6709%5Cu767b%5Cu5f55%5Cu540d%5Cu7684%5Cu6570%5Cu76ee%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu6709n%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu5df2%5Cu6709%5Cu767b%5Cu5f55%5Cu540d%5Cu3002%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu6ca1%5Cu6709%5Cu4e24%5Cu4e2a%5Cu5df2%5Cu6709%5Cu7684%5Cu767b%5Cu5f55%5Cu662f%5Cu7c7b%5Cu4f3c%5Cu7684%5Cr%5Cn%5Cr%5Cn------------%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cr%5Cn%5Cu5982%5Cu679c%5Cu767b%5Cu5f55%5Cu540d%5Cu5408%5Cu6cd5%5Cuff08%5Cu4e0d%5Cu4e0e%5Cu5df2%5Cu6709%5Cu767b%5Cu5f55%5Cu540d%5Cu7c7b%5Cu4f3c%5Cuff09%5Cuff0c%5Cu8f93%5Cu51faYes%5Cu3002%5Cr%5Cn%5Cu5426%5Cu5219%5Cu8f93%5Cu51faNo%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A31%2C%22totalAccepted%22%3A12%2C%22pid%22%3A%22CF928A%22%2C%22title%22%3A%22Login%20Verification%22%2C%22difficulty%22%3A1%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A122007%2C%22title%22%3A%22unaccepted%5Cu6c42%5Cu52a9%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A24385%2C%22name%22%3A%22CF928A%20Login%20Verification%22%2C%22slug%22%3A%22CF928A%22%7D%7D%2C%7B%22id%22%3A90092%2C%22title%22%3A%22dyh%20id%20%21%22%2C%22forum%22%3A%7B%22id%22%3A24385%2C%22name%22%3A%22CF928A%20Login%20Verification%22%2C%22slug%22%3A%22CF928A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Login%20Verification%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Login Verification</h1>
+<h2>题意翻译</h2>
+<div>**题目描述：**
+登录名是由小写和大写拉丁字母、数字和下划线符号“_”组成的任意序列。
+如果登录名与已经存在的登录名类似，则禁止注册。
+如果我们可以通过以下类型的操作组成的序列将S转化成T，则认为S,T是类似的。
+- 将小写字母转换为大写字母，将大写字母转换为小写字母
+- 将字母“O”更改为数字“0”,将数字“0”更改为字母“O”
+- "1""l""L"相互转化
+例如，
+登录名«codeforces»和«codefwrces»，
+«oo0oo00oo0oo0oo0oo_lol»和«oo0oo0oo0oo0oo0oo0oo0oo0oo_1oo»是类似的，
+而«codeforces»和«code_forces»则不是。
+给你一个登录名的列表,其中没有两个类似的登录名。
+检查新登录名是否和已有登录名类似。
+------------
+**输入格式：**
+第一行包括一个非空字符串s（新登录名）,由小写和大写拉丁字母、数字和下划线符号_组成，长度不超过50。
+第二行是一个整数n，1<=n<=1000——已有登录名的数目
+接下来有n行，每行一个已有登录名。
+保证没有两个已有的登录是类似的
+------------
+**输出格式：**
+如果登录名合法（不与已有登录名类似），输出Yes。
+否则输出No</div>
+<h2>题目描述</h2>
+<div>When registering in a social network, users are allowed to create their own convenient login to make it easier to share contacts, print it on business cards, etc.
+Login is an arbitrary sequence of lower and uppercase latin letters, digits and underline symbols («\_»). However, in order to decrease the number of frauds and user-inattention related issues, it is prohibited to register a login if it is similar with an already existing login. More precisely, two logins $ s $ and $ t $ are considered similar if we can transform $ s $ to $ t $ via a sequence of operations of the following types:
+- transform lowercase letters to uppercase and vice versa;
+- change letter «O» (uppercase latin letter) to digit «0» and vice versa;
+- change digit «1» (one) to any letter among «l» (lowercase latin «L»), «I» (uppercase latin «i») and vice versa, or change one of these letters to other.
+For example, logins «Codeforces» and «codef0rces» as well as «OO0OOO00O0OOO0O00OOO0OO\_lol» and «OO0OOO0O00OOO0O00OO0OOO\_1oI» are considered similar whereas «Codeforces» and «Code\_forces» are not.
+You're given a list of existing logins with no two similar amonst and a newly created user login. Check whether this new login is similar with any of the existing ones.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a non-empty string $ s $ consisting of lower and uppercase latin letters, digits and underline symbols («\_») with length not exceeding $ 50 $ — the login itself.
+The second line contains a single integer $ n $ ( $ 1<=n<=1000 $ ) — the number of existing logins.
+The next $ n $ lines describe the existing logins, following the same constraints as the user login (refer to the first line of the input). It's guaranteed that no two existing logins are similar.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print «Yes» (without quotes), if user can register via this login, i.e. none of the existing logins is similar with it.
+Otherwise print «No» (without quotes).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1_wat
+2
+2_wat
+wat_1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Yes
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>000
+3
+00
+ooA
+oOo
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>No
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>_i_
+3
+__i_
+_1_
+I
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>No
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>La0
+3
+2a0
+La1
+1a0
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>No
+</code></pre>
+<h3>输入样例 #5</h3>
+<pre><code>abc
+1
+aBc
+</code></pre>
+<h3>输出样例 #5</h3>
+<pre><code>No
+</code></pre>
+<h3>输入样例 #6</h3>
+<pre><code>0Lil
+2
+LIL0
+0Ril
+</code></pre>
+<h3>输出样例 #6</h3>
+<pre><code>Yes
+</code></pre>
+<h2>说明</h2>
+<div>In the second sample case the user wants to create a login consisting of three zeros. It's impossible due to collision with the third among the existing.
+In the third sample case the new login is similar with the second one.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

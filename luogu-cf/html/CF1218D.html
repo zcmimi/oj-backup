@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Xor Spanning Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403391:/ZcAmjVg48R1vJiE8VX+QvXPcP+r4iTKo/YFDjP8BAE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20the%20galaxy%20far%20far%20away%20is%20the%20ancient%20interplanetary%20republic%20of%20Bubbleland%2C%20consisting%20of%20%24%20N%20%24%20planets.%20Between%20them%2C%20there%20are%20%24%20M%20%24%20bidirectional%20wormholes%2C%20each%20connecting%20a%20pair%20of%20planets.%20Bubbleland%20is%20a%20very%20centralized%20republic%2C%20having%20a%20capital%20planet%20Whiteplanet%2C%20from%20which%20any%20another%20planet%20can%20be%20reached%20using%20these%20wormholes.%20It%20is%20also%20guaranteed%20that%20no%20wormhole%20connects%20planet%20to%20itself%20and%20that%20no%20two%20different%20wormholes%20connect%20same%20pair%20of%20planets.%5Cn%5CnWe%20call%20a%20path%20that%20begins%20at%20one%20planet%2C%20visits%20other%20planets%20and%20each%20of%20them%20at%20most%20once%20and%20returns%20to%20starting%20point%20a%20tour.%20Interplanetary%20Safety%20Regulations%20guarantee%20that%20each%20planet%20belongs%20to%20at%20most%20one%20tour%20and%20that%20there%20are%20at%20most%20%24%2042%20%24%20tours.%5Cn%5CnAfter%20many%20eons%20of%20usage%2C%20wormholes%20need%20to%20be%20repaired%20and%20each%20wormhole%20has%20the%20cost%20%24%20W_%7Bi%7D%20%24%20which%20needs%20to%20be%20payed%20for%20reparation.%20Unfortunately%2C%20the%20Senate%20of%20Bubbleland%20is%20short%20on%20budget.%20Therefore%2C%20they%20have%20decided%20only%20to%20fix%20as%20many%20wormholes%20as%20they%20need%20in%20order%20to%20have%20all%20planets%20reachable%20from%20capital%20and%20to%20pay%20as%20little%20money%20as%20they%20have%20to%20for%20this%20repair.%20However%20the%20way%20in%20which%20the%20Senate%20calculates%20the%20cost%20is%20different.%20Cost%20of%20the%20set%20of%20reparations%20is%20binary%20xor%20of%20costs%20of%20each%20individual%20reparation%2C%20that%20is%20if%20reparations%20to%20be%20made%20have%20costs%20%24%20A_%7B1%7D%2CA_%7B2%7D%2C...%2CA_%7Bk%7D%20%24%20%2C%20the%20cost%20of%20entire%20set%20is%20%24%20A_%7B1%7D%20%5C%5Coplus%20A_%7B2%7D%20%5C%5Coplus%20...%20%5C%5Coplus%20A_%7Bk%7D%20%24%20.%5Cn%5CnNow%20the%20Senate%20would%20like%20to%20know%20how%20much%20money%20do%20they%20have%20to%20pay%20and%20also%20the%20number%20of%20different%20ways%20to%20achieve%20that%20cost%20modulo%20%24%201000000007%20%24%20.%22%2C%22inputFormat%22%3A%22First%20line%20of%20input%20contains%20two%20numbers%20%24%20N%20%281%20%5C%5Cleq%20N%20%5C%5Cleq%20100.000%29%20%24%20%2C%20the%20number%20of%20planets%20and%20%24%20M%20%281%20%5C%5Cleq%20M%20%5C%5Cleq%20100.041%29%20%24%20%2C%20the%20number%20of%20wormholes.%20Following%20%24%20M%20%24%20lines%20contain%20three%20numbers%20%24%20U%2C%20V%20%281%20%5C%5Cleq%20U%20%5C%5Cneq%20V%20%5C%5Cleq%20N%29%20%24%20and%20%24%20W%20%281%20%5C%5Cleq%20W%20%5C%5Cleq%20100.000%29%20%24%20%2C%20meaning%20that%20there%20exists%20a%20wormhole%20connecting%20planets%20%24%20U%20%24%20and%20%24%20V%20%24%20%2C%20with%20repair%20cost%20of%20%24%20W%20%24%20.%22%2C%22outputFormat%22%3A%22Output%20two%20numbers%2C%20the%20smallest%20possible%20cost%20of%20entire%20reparation%20and%20the%20number%20of%20different%20valid%20reparations%20with%20that%20cost%20modulo%20%24%201000000007%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn6%206%5Cn4%201%205%5Cn5%202%201%5Cn6%203%202%5Cn1%202%206%5Cn1%203%203%5Cn2%203%204%5Cn%22%2C%22%5Cn1%201%22%5D%5D%2C%22hint%22%3A%22We%20can%20repair%20wormholes%20%24%201%20%24%20%2C%20%24%202%20%24%20%2C%20%24%203%20%24%20%2C%20%24%205%20%24%20and%20%24%206%20%24%20%2C%20paying%20%24%205%20%5C%5Coplus%201%5C%5Coplus%202%20%5C%5Coplus%203%20%5C%5Coplus%204%3D1%20%24%20%2C%20one%20can%20check%20that%20this%20is%20the%20cheapest%20repair%20in%20which%20all%20of%20the%20planets%20are%20connected%20and%20the%20only%20valid%20repair%20with%20that%20cost.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B128000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1218%5C%2FD%22%2C%22id%22%3A%221218D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4e00%5Cu5f20%5Cu6709%24n%24%5Cu4e2a%5Cu70b9%5Cuff0c%24m%24%5Cu6761%5Cu8fb9%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cu3002%5Cu5728%5Cu56fe%5Cu4e2d%5Cu9009%5Cu53d6%5Cu4e00%5Cu4e9b%5Cu8fb9%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu53ea%5Cu7559%5Cu4e0b%5Cu8fd9%5Cu4e9b%5Cu8fb9%5Cu65f6%5Cuff0c%5Cu6574%5Cu5f20%5Cu56fe%5Cu4ecd%5Cu8054%5Cu901a%5Cuff0c%5Cu4e14%5Cu6240%5Cu6709%5Cu9009%5Cu53d6%5Cu7684%5Cu8fb9%5Cu7684%5Cu8fb9%5Cu6743%5Cu7684%5Cu5f02%5Cu6216%5Cu503c%5Cu6700%5Cu5c0f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu95ee%5Cr%5Cn%5Cr%5Cn1.%5Cu6700%5Cu5c0f%5Cu7684%5Cu5f02%5Cu6216%5Cu503c%5Cuff08%5Cu5bf9%241000000007%24%5Cu53d6%5Cu6a21%5Cuff09%5Cr%5Cn%5Cr%5Cn2.%5Cu8fbe%5Cu5230%5Cu6b64%5Cu6700%5Cu5c0f%5Cu503c%5Cu7684%5Cu8fb9%5Cu7684%5Cu9009%5Cu53d6%5Cu65b9%5Cu6848%5Cu6709%5Cu51e0%5Cu79cd%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A4%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF1218D%22%2C%22title%22%3A%22Xor%20Spanning%20Tree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A154678%2C%22title%22%3A%22%5Cu6ca1%5Cu60f3%5Cu5230%5Cu4e00%5Cu5e74%5Cu524d%5Cu7684%5Cu51fa%5Cu9898%5Cu601d%5Cu8def%5Cuff0c%5Cu73b0%5Cu5728%5Cu5df2%5Cu7ecf%5Cu88ab%5Cu51fa%5Cu51fa%5Cu6765%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A40700%2C%22name%22%3A%22CF1218D%20Xor%20Spanning%20Tree%22%2C%22slug%22%3A%22CF1218D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Xor%20Spanning%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Xor Spanning Tree</h1>
+<h2>题意翻译</h2>
+<div>给一张有$n$个点，$m$条边的无向图。在图中选取一些边，使得只留下这些边时，整张图仍联通，且所有选取的边的边权的异或值最小。
+问
+1.最小的异或值（对$1000000007$取模）
+2.达到此最小值的边的选取方案有几种。</div>
+<h2>题目描述</h2>
+<div>In the galaxy far far away is the ancient interplanetary republic of Bubbleland, consisting of $ N $ planets. Between them, there are $ M $ bidirectional wormholes, each connecting a pair of planets. Bubbleland is a very centralized republic, having a capital planet Whiteplanet, from which any another planet can be reached using these wormholes. It is also guaranteed that no wormhole connects planet to itself and that no two different wormholes connect same pair of planets.
+We call a path that begins at one planet, visits other planets and each of them at most once and returns to starting point a tour. Interplanetary Safety Regulations guarantee that each planet belongs to at most one tour and that there are at most $ 42 $ tours.
+After many eons of usage, wormholes need to be repaired and each wormhole has the cost $ W_{i} $ which needs to be payed for reparation. Unfortunately, the Senate of Bubbleland is short on budget. Therefore, they have decided only to fix as many wormholes as they need in order to have all planets reachable from capital and to pay as little money as they have to for this repair. However the way in which the Senate calculates the cost is different. Cost of the set of reparations is binary xor of costs of each individual reparation, that is if reparations to be made have costs $ A_{1},A_{2},...,A_{k} $ , the cost of entire set is $ A_{1} \oplus A_{2} \oplus ... \oplus A_{k} $ .
+Now the Senate would like to know how much money do they have to pay and also the number of different ways to achieve that cost modulo $ 1000000007 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line of input contains two numbers $ N (1 \leq N \leq 100.000) $ , the number of planets and $ M (1 \leq M \leq 100.041) $ , the number of wormholes. Following $ M $ lines contain three numbers $ U, V (1 \leq U \neq V \leq N) $ and $ W (1 \leq W \leq 100.000) $ , meaning that there exists a wormhole connecting planets $ U $ and $ V $ , with repair cost of $ W $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Output two numbers, the smallest possible cost of entire reparation and the number of different valid reparations with that cost modulo $ 1000000007 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+6 6
+4 1 5
+5 2 1
+6 3 2
+1 2 6
+1 3 3
+2 3 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+1 1</code></pre>
+<h2>说明</h2>
+<div>We can repair wormholes $ 1 $ , $ 2 $ , $ 3 $ , $ 5 $ and $ 6 $ , paying $ 5 \oplus 1\oplus 2 \oplus 3 \oplus 4=1 $ , one can check that this is the cheapest repair in which all of the planets are connected and the only valid repair with that cost.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

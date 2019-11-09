@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Good Subsegments - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400257:0os6yBZOqdAndUa38M+8k0SuX+UhHqJJV2mNyzdwdJ8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20permutation%20%24%20p%20%24%20of%20length%20%24%20n%20%24%20is%20a%20sequence%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20consisting%20of%20%24%20n%20%24%20distinct%20integers%2C%20each%20of%20which%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cleq%20p_i%20%5C%5Cleq%20n%20%24%20%29%20.%5Cn%5CnLet%27s%20call%20the%20subsegment%20%24%20%5Bl%2Cr%5D%20%24%20of%20the%20permutation%20good%20if%20all%20numbers%20from%20the%20minimum%20on%20it%20to%20the%20maximum%20on%20this%20subsegment%20occur%20among%20the%20numbers%20%24%20p_l%2C%20p_%7Bl%2B1%7D%2C%20%5C%5Cdots%2C%20p_r%20%24%20.%5Cn%5CnFor%20example%2C%20good%20segments%20of%20permutation%20%24%20%5B1%2C%203%2C%202%2C%205%2C%204%5D%20%24%20are%3A%5Cn%5Cn-%20%24%20%5B1%2C%201%5D%20%24%20%2C%5Cn-%20%24%20%5B1%2C%203%5D%20%24%20%2C%5Cn-%20%24%20%5B1%2C%205%5D%20%24%20%2C%5Cn-%20%24%20%5B2%2C%202%5D%20%24%20%2C%5Cn-%20%24%20%5B2%2C%203%5D%20%24%20%2C%5Cn-%20%24%20%5B2%2C%205%5D%20%24%20%2C%5Cn-%20%24%20%5B3%2C%203%5D%20%24%20%2C%5Cn-%20%24%20%5B4%2C%204%5D%20%24%20%2C%5Cn-%20%24%20%5B4%2C%205%5D%20%24%20%2C%5Cn-%20%24%20%5B5%2C%205%5D%20%24%20.%5Cn%5CnYou%20are%20given%20a%20permutation%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20.%5Cn%5CnYou%20need%20to%20answer%20%24%20q%20%24%20queries%20of%20the%20form%3A%20find%20the%20number%20of%20good%20subsegments%20of%20the%20given%20segment%20of%20permutation.%5Cn%5CnIn%20other%20words%2C%20to%20answer%20one%20query%2C%20you%20need%20to%20calculate%20the%20number%20of%20good%20subsegments%20%24%20%5Bx%20%5C%5Cdots%20y%5D%20%24%20for%20some%20given%20segment%20%24%20%5Bl%20%5C%5Cdots%20r%5D%20%24%20%2C%20such%20that%20%24%20l%20%5C%5Cleq%20x%20%5C%5Cleq%20y%20%5C%5Cleq%20r%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cleq%20n%20%5C%5Cleq%20120000%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20permutation.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20distinct%20integers%20%24%20p_1%2C%20p_2%2C%20%5C%5Cldots%2C%20p_n%20%24%20separated%20by%20spaces%20%28%20%24%201%20%5C%5Cleq%20p_i%20%5C%5Cleq%20n%20%24%20%29.%5Cn%5CnThe%20third%20line%20contains%20an%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cleq%20q%20%5C%5Cleq%20120000%20%24%20%29%20%5Cu2014%20number%20of%20queries.%5Cn%5CnThe%20following%20%24%20q%20%24%20lines%20describe%20queries%2C%20each%20line%20contains%20a%20pair%20of%20integers%20%24%20l%20%24%20%2C%20%24%20r%20%24%20separated%20by%20space%20%28%20%24%201%20%5C%5Cleq%20l%20%5C%5Cleq%20r%20%5C%5Cleq%20n%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20a%20%24%20q%20%24%20lines%2C%20%24%20i%20%24%20-th%20of%20them%20should%20contain%20a%20number%20of%20good%20subsegments%20of%20a%20segment%2C%20given%20in%20the%20%24%20i%20%24%20-th%20query.%22%2C%22samples%22%3A%5B%5B%225%5Cn1%203%202%205%204%5Cn15%5Cn1%201%5Cn1%202%5Cn1%203%5Cn1%204%5Cn1%205%5Cn2%202%5Cn2%203%5Cn2%204%5Cn2%205%5Cn3%203%5Cn3%204%5Cn3%205%5Cn4%204%5Cn4%205%5Cn5%205%5Cn%22%2C%221%5Cn2%5Cn5%5Cn6%5Cn10%5Cn1%5Cn3%5Cn4%5Cn7%5Cn1%5Cn2%5Cn4%5Cn1%5Cn3%5Cn1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B7000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F997%5C%2FE%22%2C%22id%22%3A%22997E%22%7D%2C%22tags%22%3A%5B42%2C113%2C287%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A110%2C%22totalAccepted%22%3A64%2C%22pid%22%3A%22CF997E%22%2C%22title%22%3A%22Good%20Subsegments%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3571%22%2C%22title%22%3A%22%5BPOI2014%5DSUP-Supercomputer%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1137F%22%2C%22title%22%3A%22Matches%20Are%20Not%20a%20Child%27s%20Play%20%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1203F2%22%2C%22title%22%3A%22Complete%20the%20Projects%20%28hard%20version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1203A%22%2C%22title%22%3A%22Circle%20of%20Students%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P5524%22%2C%22title%22%3A%22%5BYnoi2012%5DD1T1%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Good%20Subsegments%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Good Subsegments</h1>
+<h2>题目描述</h2>
+<div>A permutation $ p $ of length $ n $ is a sequence $ p_1, p_2, \ldots, p_n $ consisting of $ n $ distinct integers, each of which from $ 1 $ to $ n $ ( $ 1 \leq p_i \leq n $ ) .
+Let's call the subsegment $ [l,r] $ of the permutation good if all numbers from the minimum on it to the maximum on this subsegment occur among the numbers $ p_l, p_{l+1}, \dots, p_r $ .
+For example, good segments of permutation $ [1, 3, 2, 5, 4] $ are:
+- $ [1, 1] $ ,
+- $ [1, 3] $ ,
+- $ [1, 5] $ ,
+- $ [2, 2] $ ,
+- $ [2, 3] $ ,
+- $ [2, 5] $ ,
+- $ [3, 3] $ ,
+- $ [4, 4] $ ,
+- $ [4, 5] $ ,
+- $ [5, 5] $ .
+You are given a permutation $ p_1, p_2, \ldots, p_n $ .
+You need to answer $ q $ queries of the form: find the number of good subsegments of the given segment of permutation.
+In other words, to answer one query, you need to calculate the number of good subsegments $ [x \dots y] $ for some given segment $ [l \dots r] $ , such that $ l \leq x \leq y \leq r $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1 \leq n \leq 120000 $ ) — the number of elements in the permutation.
+The second line contains $ n $ distinct integers $ p_1, p_2, \ldots, p_n $ separated by spaces ( $ 1 \leq p_i \leq n $ ).
+The third line contains an integer $ q $ ( $ 1 \leq q \leq 120000 $ ) — number of queries.
+The following $ q $ lines describe queries, each line contains a pair of integers $ l $ , $ r $ separated by space ( $ 1 \leq l \leq r \leq n $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a $ q $ lines, $ i $ -th of them should contain a number of good subsegments of a segment, given in the $ i $ -th query.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+1 3 2 5 4
+15
+1 1
+1 2
+1 3
+1 4
+1 5
+2 2
+2 3
+2 4
+2 5
+3 3
+3 4
+3 5
+4 4
+4 5
+5 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+2
+5
+6
+10
+1
+3
+4
+7
+1
+2
+4
+1
+3
+1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

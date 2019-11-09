@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Perpetual Subtraction - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399462:cxv6mIRPT8JiNgDnXORJemQ2ulTpZ6ul57LFKntL7Uc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20is%20a%20number%20%24%20x%20%24%20initially%20written%20on%20a%20blackboard.%20You%20repeat%20the%20following%20action%20a%20fixed%20amount%20of%20times%3A%5Cn%5Cn1.%20take%20the%20number%20%24%20x%20%24%20currently%20written%20on%20a%20blackboard%20and%20erase%20it%5Cn2.%20select%20an%20integer%20uniformly%20at%20random%20from%20the%20range%20%24%20%5B0%2Cx%5D%20%24%20inclusive%2C%20and%20write%20it%20on%20the%20blackboard%5Cn%5CnDetermine%20the%20distribution%20of%20final%20number%20given%20the%20distribution%20of%20initial%20number%20and%20the%20number%20of%20steps.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%2C%20%24%20N%20%24%20%28%20%24%201%3C%3DN%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20maximum%20number%20written%20on%20the%20blackboard%20%5Cu2014%20and%20%24%20M%20%24%20%28%20%24%200%3C%3DM%3C%3D10%5E%7B18%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20steps%20to%20perform.%5Cn%5CnThe%20second%20line%20contains%20%24%20N%2B1%20%24%20integers%20%24%20P_%7B0%7D%2CP_%7B1%7D%2C...%2CP_%7BN%7D%20%24%20%28%20%24%200%3C%3DP_%7Bi%7D%26lt%3B998244353%20%24%20%29%2C%20where%20%24%20P_%7Bi%7D%20%24%20describes%20the%20probability%20that%20the%20starting%20number%20is%20%24%20i%20%24%20.%20We%20can%20express%20this%20probability%20as%20irreducible%20fraction%20%24%20P%5C%2FQ%20%24%20%2C%20then%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF923E%5C%2F78b3a8654b742b81f434340c46c8ad67c1db13e6.png%29.%20It%20is%20guaranteed%20that%20the%20sum%20of%20all%20%24%20P_%7Bi%7D%20%24%20s%20equals%20%24%201%20%24%20%28modulo%20%24%20998244353%20%24%20%29.%22%2C%22outputFormat%22%3A%22Output%20a%20single%20line%20of%20%24%20N%2B1%20%24%20integers%2C%20where%20%24%20R_%7Bi%7D%20%24%20is%20the%20probability%20that%20the%20final%20number%20after%20%24%20M%20%24%20steps%20is%20%24%20i%20%24%20.%20It%20can%20be%20proven%20that%20the%20probability%20may%20always%20be%20expressed%20as%20an%20irreducible%20fraction%20%24%20P%5C%2FQ%20%24%20.%20You%20are%20asked%20to%20output%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF923E%5C%2F95a42f726095d243076c95d92a6f5a7c8a8abc93.png%29.%22%2C%22samples%22%3A%5B%5B%222%201%5Cn0%200%201%5Cn%22%2C%22332748118%20332748118%20332748118%5Cn%22%5D%2C%5B%222%202%5Cn0%200%201%5Cn%22%2C%22942786334%20610038216%20443664157%5Cn%22%5D%2C%5B%229%20350%5Cn3%2031%20314%203141%2031415%20314159%203141592%2031415926%20314159265%20649178508%5Cn%22%2C%22822986014%2012998613%2084959018%20728107923%20939229297%20935516344%2027254497%20413831286%20583600448%20442738326%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20case%2C%20we%20start%20with%20number%202.%20After%20one%20step%2C%20it%20will%20be%200%2C%201%20or%202%20with%20probability%201%5C%2F3%20each.%5Cn%5CnIn%20the%20second%20case%2C%20the%20number%20will%20remain%202%20with%20probability%201%5C%2F9.%20With%20probability%201%5C%2F9%20it%20stays%202%20in%20the%20first%20round%20and%20changes%20to%201%20in%20the%20next%2C%20and%20with%20probability%201%5C%2F6%20changes%20to%201%20in%20the%20first%20round%20and%20stays%20in%20the%20second.%20In%20all%20other%20cases%20the%20final%20integer%20is%200.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F923%5C%2FE%22%2C%22id%22%3A%22923E%22%7D%2C%22translation%22%3A%22%5Cu521d%5Cu59cb%5Cu65f6%5Cuff0c%5Cu9ed1%5Cu677f%5Cu4e0a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%24%2C%5Cu521d%5Cu59cb%5Cu4e3a%24i%24%5Cu7684%5Cu6982%5Cu7387%5Cu662f%24p_i%24.%5Cu6bcf%5Cu4e00%5Cu8f6e%5Cu6267%5Cu884c%5Cu4ee5%5Cu4e0b%5Cu64cd%5Cu4f5c%3A%5Cr%5Cn%5Cr%5Cn1.%20%5Cu4ece%24%5B0%2Cn%5D%24%5Cu5185%5Cu968f%5Cu673a%5Cu9009%5Cu53d6%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24p%24%5Cr%5Cn%5Cr%5Cn2.%20%5Cu628a%24n%24%5Cu64e6%5Cu6389%5Cuff0c%5Cu66ff%5Cu6362%5Cu6210%24p%24%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%24M%24%2C%20%5Cu5bf9%5Cu6bcf%5Cu4e2a%24i%5C%5Cin%20%5B1%2Cn%5D%24%5Cu6c42%24M%24%5Cu8f6e%5Cu4e4b%5Cu540e%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu4e3a%24i%24%5Cu7684%5Cu6982%5Cu7387%5Cu3002%5Cr%5Cn%5Cr%5Cn%24i%5C%5Cle%20n%5C%5Cle%2010%5E5%2C%201%5C%5Cle%20M%5C%5Cle%2010%5E%7B18%7D%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A47%2C%22totalAccepted%22%3A32%2C%22pid%22%3A%22CF923E%22%2C%22title%22%3A%22Perpetual%20Subtraction%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A96304%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A24387%2C%22name%22%3A%22CF923E%20Perpetual%20Subtraction%22%2C%22slug%22%3A%22CF923E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Perpetual%20Subtraction%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Perpetual Subtraction</h1>
+<h2>题意翻译</h2>
+<div>初始时，黑板上有一个正整数$n$,初始为$i$的概率是$p_i$.每一轮执行以下操作:
+1. 从$[0,n]$内随机选取一个正整数$p$
+2. 把$n$擦掉，替换成$p$
+给定$M$, 对每个$i\in [1,n]$求$M$轮之后这个数为$i$的概率。
+$i\le n\le 10^5, 1\le M\le 10^{18}$</div>
+<h2>题目描述</h2>
+<div>There is a number $ x $ initially written on a blackboard. You repeat the following action a fixed amount of times:
+1. take the number $ x $ currently written on a blackboard and erase it
+2. select an integer uniformly at random from the range $ [0,x] $ inclusive, and write it on the blackboard
+Determine the distribution of final number given the distribution of initial number and the number of steps.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers, $ N $ ( $ 1<=N<=10^{5} $ ) — the maximum number written on the blackboard — and $ M $ ( $ 0<=M<=10^{18} $ ) — the number of steps to perform.
+The second line contains $ N+1 $ integers $ P_{0},P_{1},...,P_{N} $ ( $ 0<=P_{i}&lt;998244353 $ ), where $ P_{i} $ describes the probability that the starting number is $ i $ . We can express this probability as irreducible fraction $ P/Q $ , then ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF923E/78b3a8654b742b81f434340c46c8ad67c1db13e6.png). It is guaranteed that the sum of all $ P_{i} $ s equals $ 1 $ (modulo $ 998244353 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Output a single line of $ N+1 $ integers, where $ R_{i} $ is the probability that the final number after $ M $ steps is $ i $ . It can be proven that the probability may always be expressed as an irreducible fraction $ P/Q $ . You are asked to output ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF923E/95a42f726095d243076c95d92a6f5a7c8a8abc93.png).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 1
+0 0 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>332748118 332748118 332748118
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2 2
+0 0 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>942786334 610038216 443664157
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>9 350
+3 31 314 3141 31415 314159 3141592 31415926 314159265 649178508
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>822986014 12998613 84959018 728107923 939229297 935516344 27254497 413831286 583600448 442738326
+</code></pre>
+<h2>说明</h2>
+<div>In the first case, we start with number 2. After one step, it will be 0, 1 or 2 with probability 1/3 each.
+In the second case, the number will remain 2 with probability 1/9. With probability 1/9 it stays 2 in the first round and changes to 1 in the next, and with probability 1/6 changes to 1 in the first round and stays in the second. In all other cases the final integer is 0.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

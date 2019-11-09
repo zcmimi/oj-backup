@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Restore Permutation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403250:eJkLkiNnMVl0auNPTzL23LKJH7MGG5s6FZC89Fr+bx4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22An%20array%20of%20integers%20%24%20p_%7B1%7D%2Cp_%7B2%7D%2C%20%5C%5Cldots%2Cp_%7Bn%7D%20%24%20is%20called%20a%20permutation%20if%20it%20contains%20each%20number%20from%20%24%201%20%24%20to%20%24%20n%20%24%20exactly%20once.%20For%20example%2C%20the%20following%20arrays%20are%20permutations%3A%20%24%20%5B3%2C1%2C2%5D%2C%20%5B1%5D%2C%20%5B1%2C2%2C3%2C4%2C5%5D%20%24%20and%20%24%20%5B4%2C3%2C1%2C2%5D%20%24%20.%20The%20following%20arrays%20are%20not%20permutations%3A%20%24%20%5B2%5D%2C%20%5B1%2C1%5D%2C%20%5B2%2C3%2C4%5D%20%24%20.%5Cn%5CnThere%20is%20a%20hidden%20permutation%20of%20length%20%24%20n%20%24%20.%5Cn%5CnFor%20each%20index%20%24%20i%20%24%20%2C%20you%20are%20given%20%24%20s_%7Bi%7D%20%24%20%2C%20which%20equals%20to%20the%20sum%20of%20all%20%24%20p_%7Bj%7D%20%24%20such%20that%20%24%20j%20%3C%20i%20%24%20and%20%24%20p_%7Bj%7D%20%3C%20p_%7Bi%7D%20%24%20.%20In%20other%20words%2C%20%24%20s_i%20%24%20is%20the%20sum%20of%20elements%20before%20the%20%24%20i%20%24%20-th%20element%20that%20are%20smaller%20than%20the%20%24%20i%20%24%20-th%20element.%5Cn%5CnYour%20task%20is%20to%20restore%20the%20permutation.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20permutation.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20s_%7B1%7D%2C%20s_%7B2%7D%2C%20%5C%5Cldots%2C%20s_%7Bn%7D%20%24%20%28%20%24%200%20%5C%5Cle%20s_%7Bi%7D%20%5C%5Cle%20%5C%5Cfrac%7Bn%28n-1%29%7D%7B2%7D%20%24%20%29.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20array%20%24%20s%20%24%20corresponds%20to%20a%20valid%20permutation%20of%20length%20%24%20n%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20integers%20%24%20p_%7B1%7D%2C%20p_%7B2%7D%2C%20%5C%5Cldots%2C%20p_%7Bn%7D%20%24%20%5Cu2014%20the%20elements%20of%20the%20restored%20permutation.%20We%20can%20show%20that%20the%20answer%20is%20always%20unique.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn0%200%200%5Cn%22%2C%22%5Cn3%202%201%5Cn%22%5D%2C%5B%22%5Cn2%5Cn0%201%5Cn%22%2C%22%5Cn1%202%5Cn%22%5D%2C%5B%22%5Cn5%5Cn0%201%201%201%2010%5Cn%22%2C%22%5Cn1%204%203%202%205%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20for%20each%20%24%20i%20%24%20there%20is%20no%20index%20%24%20j%20%24%20satisfying%20both%20conditions%2C%20hence%20%24%20s_i%20%24%20are%20always%20%24%200%20%24%20.%5Cn%5CnIn%20the%20second%20example%20for%20%24%20i%20%3D%202%20%24%20it%20happens%20that%20%24%20j%20%3D%201%20%24%20satisfies%20the%20conditions%2C%20so%20%24%20s_2%20%3D%20p_1%20%24%20.%5Cn%5CnIn%20the%20third%20example%20for%20%24%20i%20%3D%202%2C%203%2C%204%20%24%20only%20%24%20j%20%3D%201%20%24%20satisfies%20the%20conditions%2C%20so%20%24%20s_2%20%3D%20s_3%20%3D%20s_4%20%3D%201%20%24%20.%20For%20%24%20i%20%3D%205%20%24%20all%20%24%20j%20%3D%201%2C%202%2C%203%2C%204%20%24%20are%20possible%2C%20so%20%24%20s_5%20%3D%20p_1%20%2B%20p_2%20%2B%20p_3%20%2B%20p_4%20%3D%2010%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1208%5C%2FD%22%2C%22id%22%3A%221208D%22%7D%2C%22translation%22%3A%22%5Cu73b0%5Cu5728%5Cu6709%5Cu4e00%5Cu4e2a%5Cu4ece%241%24%5Cu5230%24n%24%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5168%5Cu6392%5Cu5217%2C%5Cu4f46%5Cu662f%5Cu4f60%5Cu4e0d%5Cu77e5%5Cu9053%5Cu8fd9%5Cu4e2a%5Cu6392%5Cu5217%5Cu5230%5Cu5e95%5Cu662f%5Cu4ec0%5Cu4e48%2C%5Cu4f46%5Cu662f%5Cu4f60%5Cu6709%5Cu4e00%5Cu4e2a%24sum%5Bi%5D%24%2C%5Cu5176%5Cu4e2d%24sum%5Bi%5D%24%5Cu8868%5Cu793a%24%5C%5Csum_%7Bj%3D1%7D%5E%7Bi-1%7D%28a_j%3Ca_i%29%3Fa_j%3A0%24%2C%5Cu73b0%5Cu5728%5Cu7ed9%5Cu4f60%24sum%24%5Cu6570%5Cu7ec4%2C%5Cu8ba9%5Cu4f60%5Cu6c42%5Cu51fa%5Cu8fd9%5Cu4e2a%5Cu6392%5Cu5217%24a%24%20%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A245%2C%22totalAccepted%22%3A99%2C%22pid%22%3A%22CF1208D%22%2C%22title%22%3A%22Restore%20Permutation%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF1208F%22%2C%22title%22%3A%22Bits%20And%20Pieces%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1208E%22%2C%22title%22%3A%22Let%20Them%20Slide%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1208C%22%2C%22title%22%3A%22Magic%20Grid%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1208B%22%2C%22title%22%3A%22Uniqueness%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1213A%22%2C%22title%22%3A%22Chips%20Moving%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Restore%20Permutation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Restore Permutation</h1>
+<h2>题意翻译</h2>
+<div>现在有一个从$1$到$n$的一个全排列,但是你不知道这个排列到底是什么,但是你有一个$sum[i]$,其中$sum[i]$表示$\sum_{j=1}^{i-1}(a_j<a_i)?a_j:0$,现在给你$sum$数组,让你求出这个排列$a$ </div>
+<h2>题目描述</h2>
+<div>An array of integers $ p_{1},p_{2}, \ldots,p_{n} $ is called a permutation if it contains each number from $ 1 $ to $ n $ exactly once. For example, the following arrays are permutations: $ [3,1,2], [1], [1,2,3,4,5] $ and $ [4,3,1,2] $ . The following arrays are not permutations: $ [2], [1,1], [2,3,4] $ .
+There is a hidden permutation of length $ n $ .
+For each index $ i $ , you are given $ s_{i} $ , which equals to the sum of all $ p_{j} $ such that $ j < i $ and $ p_{j} < p_{i} $ . In other words, $ s_i $ is the sum of elements before the $ i $ -th element that are smaller than the $ i $ -th element.
+Your task is to restore the permutation.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1 \le n \le 2 \cdot 10^{5} $ ) — the size of the permutation.
+The second line contains $ n $ integers $ s_{1}, s_{2}, \ldots, s_{n} $ ( $ 0 \le s_{i} \le \frac{n(n-1)}{2} $ ).
+It is guaranteed that the array $ s $ corresponds to a valid permutation of length $ n $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ integers $ p_{1}, p_{2}, \ldots, p_{n} $ — the elements of the restored permutation. We can show that the answer is always unique.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+0 0 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+3 2 1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>
+2
+0 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>
+1 2
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>
+5
+0 1 1 1 10
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>
+1 4 3 2 5
+</code></pre>
+<h2>说明</h2>
+<div>In the first example for each $ i $ there is no index $ j $ satisfying both conditions, hence $ s_i $ are always $ 0 $ .
+In the second example for $ i = 2 $ it happens that $ j = 1 $ satisfies the conditions, so $ s_2 = p_1 $ .
+In the third example for $ i = 2, 3, 4 $ only $ j = 1 $ satisfies the conditions, so $ s_2 = s_3 = s_4 = 1 $ . For $ i = 5 $ all $ j = 1, 2, 3, 4 $ are possible, so $ s_5 = p_1 + p_2 + p_3 + p_4 = 10 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

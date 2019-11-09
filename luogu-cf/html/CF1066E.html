@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Binary Numbers AND Sum - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573401185:xaU8BzS3PeWDtvSp6QMrkzxsw8Lk6JW5awUwNuo4Rug=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20two%20huge%20binary%20integer%20numbers%20%24%20a%20%24%20and%20%24%20b%20%24%20of%20lengths%20%24%20n%20%24%20and%20%24%20m%20%24%20respectively.%20You%20will%20repeat%20the%20following%20process%3A%20if%20%24%20b%20%3E%200%20%24%20%2C%20then%20add%20to%20the%20answer%20the%20value%20%24%20a~%20%5C%5C%26~%20b%20%24%20and%20divide%20%24%20b%20%24%20by%20%24%202%20%24%20rounding%20down%20%28i.e.%20remove%20the%20last%20digit%20of%20%24%20b%20%24%20%29%2C%20and%20repeat%20the%20process%20again%2C%20otherwise%20stop%20the%20process.%5Cn%5CnThe%20value%20%24%20a~%20%5C%5C%26~%20b%20%24%20means%20bitwise%20AND%20of%20%24%20a%20%24%20and%20%24%20b%20%24%20.%20Your%20task%20is%20to%20calculate%20the%20answer%20modulo%20%24%20998244353%20%24%20.%5Cn%5CnNote%20that%20you%20should%20add%20the%20value%20%24%20a~%20%5C%5C%26~%20b%20%24%20to%20the%20answer%20in%20decimal%20notation%2C%20not%20in%20binary.%20So%20your%20task%20is%20to%20calculate%20the%20answer%20in%20decimal%20notation.%20For%20example%2C%20if%20%24%20a%20%3D%201010_2~%20%2810_%7B10%7D%29%20%24%20and%20%24%20b%20%3D%201000_2~%20%288_%7B10%7D%29%20%24%20%2C%20then%20the%20value%20%24%20a~%20%5C%5C%26~%20b%20%24%20will%20be%20equal%20to%20%24%208%20%24%20%2C%20not%20to%20%24%201000%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%20%5C%5Cle%20n%2C%20m%20%5C%5Cle%202%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20length%20of%20%24%20a%20%24%20and%20the%20length%20of%20%24%20b%20%24%20correspondingly.%5Cn%5CnThe%20second%20line%20of%20the%20input%20contains%20one%20huge%20integer%20%24%20a%20%24%20.%20It%20is%20guaranteed%20that%20this%20number%20consists%20of%20exactly%20%24%20n%20%24%20zeroes%20and%20ones%20and%20the%20first%20digit%20is%20always%20%24%201%20%24%20.%5Cn%5CnThe%20third%20line%20of%20the%20input%20contains%20one%20huge%20integer%20%24%20b%20%24%20.%20It%20is%20guaranteed%20that%20this%20number%20consists%20of%20exactly%20%24%20m%20%24%20zeroes%20and%20ones%20and%20the%20first%20digit%20is%20always%20%24%201%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20the%20answer%20to%20this%20problem%20in%20decimal%20notation%20modulo%20%24%20998244353%20%24%20.%22%2C%22samples%22%3A%5B%5B%224%204%5Cn1010%5Cn1101%5Cn%22%2C%2212%5Cn%22%5D%2C%5B%224%205%5Cn1001%5Cn10101%5Cn%22%2C%2211%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20algorithm%20for%20the%20first%20example%3A%5Cn%5Cn1.%20add%20to%20the%20answer%20%24%201010_2~%20%5C%5C%26~%201101_2%20%3D%201000_2%20%3D%208_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%20110%20%24%20%3B%5Cn2.%20add%20to%20the%20answer%20%24%201010_2~%20%5C%5C%26~%20110_2%20%3D%2010_2%20%3D%202_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%2011%20%24%20%3B%5Cn3.%20add%20to%20the%20answer%20%24%201010_2~%20%5C%5C%26~%2011_2%20%3D%2010_2%20%3D%202_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%201%20%24%20%3B%5Cn4.%20add%20to%20the%20answer%20%24%201010_2~%20%5C%5C%26~%201_2%20%3D%200_2%20%3D%200_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%200%20%24%20.%5Cn%5CnSo%20the%20answer%20is%20%24%208%20%2B%202%20%2B%202%20%2B%200%20%3D%2012%20%24%20.%5Cn%5CnThe%20algorithm%20for%20the%20second%20example%3A%5Cn%5Cn1.%20add%20to%20the%20answer%20%24%201001_2~%20%5C%5C%26~%2010101_2%20%3D%201_2%20%3D%201_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%201010%20%24%20%3B%5Cn2.%20add%20to%20the%20answer%20%24%201001_2~%20%5C%5C%26~%201010_2%20%3D%201000_2%20%3D%208_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%20101%20%24%20%3B%5Cn3.%20add%20to%20the%20answer%20%24%201001_2~%20%5C%5C%26~%20101_2%20%3D%201_2%20%3D%201_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%2010%20%24%20%3B%5Cn4.%20add%20to%20the%20answer%20%24%201001_2~%20%5C%5C%26~%2010_2%20%3D%200_2%20%3D%200_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%201%20%24%20%3B%5Cn5.%20add%20to%20the%20answer%20%24%201001_2~%20%5C%5C%26~%201_2%20%3D%201_2%20%3D%201_%7B10%7D%20%24%20and%20set%20%24%20b%20%3A%3D%200%20%24%20.%5Cn%5CnSo%20the%20answer%20is%20%24%201%20%2B%208%20%2B%201%20%2B%200%20%2B%201%20%3D%2011%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1066%5C%2FE%22%2C%22id%22%3A%221066E%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%5Cuff0c%5Cu7ed9%5Cu4f60%5Cu4e24%5Cu4e2a%5Cu4f4d%5Cu6570%5Cu4e3a%20%24n%24%20%5Cu548c%20%24m%24%20%5Cu7684%5Cu4e24%5Cu4e2a%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu6570%24a%24%2C%24b%24%5Cuff0c%5Cu73b0%5Cu5728%5Cuff0c%5Cu6211%5Cu4eec%5Cu8981%5Cu8fdb%5Cu884c%5Cu5982%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cr%5Cn%5Cr%5Cn%2A%20%5Cu8ba1%5Cu7b97%24a%24%26%24b%24%5Cr%5Cn%2A%20%5Cu7b54%5Cu6848%5Cu7d2f%5Cu52a0%5Cu4e0a%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cu7684%5Cu503c%5Cr%5Cn%2A%20%24b%24%5Cu53f3%5Cu79fb%5Cu4e00%5Cu4f4d%5Cuff0c%5Cu6700%5Cu540e%5Cu4e00%5Cu4f4d%5Cu76f4%5Cu63a5%5Cu820d%5Cu5f03%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5728%2C%5Cu8bf7%5Cu4f60%5Cu7b97%5Cu51fa%5Cu6700%5Cu7ec8%5Cu7684%5Cu7b54%5Cu6848%5Cuff0c%5Cu5e76%5Cu8f93%5Cu51fa%5Cuff0c%5Cu7b54%5Cu6848%5Cu5bf9998244353%5Cu53d6%5Cu6a21%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24n%24%2C%24m%24%2C%24%281%5Cu2264n%2Cm%5Cu22642%20%5C%5Ctimes%2010%5E5%29%24%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu6570%24a%24%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24m%24%5Cu7684%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu6570%24b%24%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu7b54%5Cu6848%22%2C%22tags%22%3A%5B1%2C244%2C254%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A124%2C%22totalAccepted%22%3A71%2C%22pid%22%3A%22CF1066E%22%2C%22title%22%3A%22Binary%20Numbers%20AND%20Sum%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A78547%2C%22title%22%3A%22%5Cu8fd9%5Cu4e48%5Cu6253%5Cu4e3a%5Cu5565%5Cu9519%5Cu4e86%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A30622%2C%22name%22%3A%22CF1066E%20Binary%20Numbers%20AND%20Sum%22%2C%22slug%22%3A%22CF1066E%22%7D%7D%2C%7B%22id%22%3A72247%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A30622%2C%22name%22%3A%22CF1066E%20Binary%20Numbers%20AND%20Sum%22%2C%22slug%22%3A%22CF1066E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1600%22%2C%22title%22%3A%22%5Cu5929%5Cu5929%5Cu7231%5Cu8dd1%5Cu6b65%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1051D%22%2C%22title%22%3A%22Bicolorings%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1059D%22%2C%22title%22%3A%22Nature%20Reserve%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1066F%22%2C%22title%22%3A%22Yet%20another%202D%20Walking%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1066D%22%2C%22title%22%3A%22Boxes%20Packing%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Binary%20Numbers%20AND%20Sum%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Binary Numbers AND Sum</h1>
+<h2>题意翻译</h2>
+<div>## 题目大意
+现在，给你两个位数为 $n$ 和 $m$ 的两个二进制数$a$,$b$，现在，我们要进行如下操作：
+* 计算$a$&$b$
+* 答案累加上一个操作的值
+* $b$右移一位，最后一位直接舍弃
+现在,请你算出最终的答案，并输出，答案对998244353取模
+## 输入输出格式：
+### 输入格式：
+第一行，两个整数$n$,$m$,$(1≤n,m≤2 \times 10^5)$
+第一行，一个长度为$n$的二进制数$a$
+第一行，一个长度为$m$的二进制数$b$
+### 输出格式：
+一行，一个数，表示答案</div>
+<h2>题目描述</h2>
+<div>You are given two huge binary integer numbers $ a $ and $ b $ of lengths $ n $ and $ m $ respectively. You will repeat the following process: if $ b > 0 $ , then add to the answer the value $ a~ \&~ b $ and divide $ b $ by $ 2 $ rounding down (i.e. remove the last digit of $ b $ ), and repeat the process again, otherwise stop the process.
+The value $ a~ \&~ b $ means bitwise AND of $ a $ and $ b $ . Your task is to calculate the answer modulo $ 998244353 $ .
+Note that you should add the value $ a~ \&~ b $ to the answer in decimal notation, not in binary. So your task is to calculate the answer in decimal notation. For example, if $ a = 1010_2~ (10_{10}) $ and $ b = 1000_2~ (8_{10}) $ , then the value $ a~ \&~ b $ will be equal to $ 8 $ , not to $ 1000 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ m $ ( $ 1 \le n, m \le 2 \cdot 10^5 $ ) — the length of $ a $ and the length of $ b $ correspondingly.
+The second line of the input contains one huge integer $ a $ . It is guaranteed that this number consists of exactly $ n $ zeroes and ones and the first digit is always $ 1 $ .
+The third line of the input contains one huge integer $ b $ . It is guaranteed that this number consists of exactly $ m $ zeroes and ones and the first digit is always $ 1 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the answer to this problem in decimal notation modulo $ 998244353 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 4
+1010
+1101
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 5
+1001
+10101
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>11
+</code></pre>
+<h2>说明</h2>
+<div>The algorithm for the first example:
+1. add to the answer $ 1010_2~ \&~ 1101_2 = 1000_2 = 8_{10} $ and set $ b := 110 $ ;
+2. add to the answer $ 1010_2~ \&~ 110_2 = 10_2 = 2_{10} $ and set $ b := 11 $ ;
+3. add to the answer $ 1010_2~ \&~ 11_2 = 10_2 = 2_{10} $ and set $ b := 1 $ ;
+4. add to the answer $ 1010_2~ \&~ 1_2 = 0_2 = 0_{10} $ and set $ b := 0 $ .
+So the answer is $ 8 + 2 + 2 + 0 = 12 $ .
+The algorithm for the second example:
+1. add to the answer $ 1001_2~ \&~ 10101_2 = 1_2 = 1_{10} $ and set $ b := 1010 $ ;
+2. add to the answer $ 1001_2~ \&~ 1010_2 = 1000_2 = 8_{10} $ and set $ b := 101 $ ;
+3. add to the answer $ 1001_2~ \&~ 101_2 = 1_2 = 1_{10} $ and set $ b := 10 $ ;
+4. add to the answer $ 1001_2~ \&~ 10_2 = 0_2 = 0_{10} $ and set $ b := 1 $ ;
+5. add to the answer $ 1001_2~ \&~ 1_2 = 1_2 = 1_{10} $ and set $ b := 0 $ .
+So the answer is $ 1 + 8 + 1 + 0 + 1 = 11 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

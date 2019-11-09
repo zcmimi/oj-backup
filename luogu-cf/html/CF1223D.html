@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sequence Sorting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403442:7BBHwsre4+XkcXZY28LriO3TCRjDG/kwFbzytLuzLiE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20sequence%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%2C%20a_n%20%24%20%2C%20consisting%20of%20integers.%5Cn%5CnYou%20can%20apply%20the%20following%20operation%20to%20this%20sequence%3A%20choose%20some%20integer%20%24%20x%20%24%20and%20move%20all%20elements%20equal%20to%20%24%20x%20%24%20either%20to%20the%20beginning%2C%20or%20to%20the%20end%20of%20%24%20a%20%24%20.%20Note%20that%20you%20have%20to%20move%20all%20these%20elements%20in%20one%20direction%20in%20one%20operation.%5Cn%5CnFor%20example%2C%20if%20%24%20a%20%3D%20%5B2%2C%201%2C%203%2C%201%2C%201%2C%203%2C%202%5D%20%24%20%2C%20you%20can%20get%20the%20following%20sequences%20in%20one%20operation%20%28for%20convenience%2C%20denote%20elements%20equal%20to%20%24%20x%20%24%20as%20%24%20x%20%24%20-elements%29%3A%5Cn%5Cn-%20%24%20%5B1%2C%201%2C%201%2C%202%2C%203%2C%203%2C%202%5D%20%24%20if%20you%20move%20all%20%24%201%20%24%20-elements%20to%20the%20beginning%3B%5Cn-%20%24%20%5B2%2C%203%2C%203%2C%202%2C%201%2C%201%2C%201%5D%20%24%20if%20you%20move%20all%20%24%201%20%24%20-elements%20to%20the%20end%3B%5Cn-%20%24%20%5B2%2C%202%2C%201%2C%203%2C%201%2C%201%2C%203%5D%20%24%20if%20you%20move%20all%20%24%202%20%24%20-elements%20to%20the%20beginning%3B%5Cn-%20%24%20%5B1%2C%203%2C%201%2C%201%2C%203%2C%202%2C%202%5D%20%24%20if%20you%20move%20all%20%24%202%20%24%20-elements%20to%20the%20end%3B%5Cn-%20%24%20%5B3%2C%203%2C%202%2C%201%2C%201%2C%201%2C%202%5D%20%24%20if%20you%20move%20all%20%24%203%20%24%20-elements%20to%20the%20beginning%3B%5Cn-%20%24%20%5B2%2C%201%2C%201%2C%201%2C%202%2C%203%2C%203%5D%20%24%20if%20you%20move%20all%20%24%203%20%24%20-elements%20to%20the%20end%3B%5Cn%5CnYou%20have%20to%20determine%20the%20minimum%20number%20of%20such%20operations%20so%20that%20the%20sequence%20%24%20a%20%24%20becomes%20sorted%20in%20non-descending%20order.%20Non-descending%20order%20means%20that%20for%20all%20%24%20i%20%24%20from%20%24%202%20%24%20to%20%24%20n%20%24%20%2C%20the%20condition%20%24%20a_%7Bi-1%7D%20%5C%5Cle%20a_i%20%24%20is%20satisfied.%5Cn%5CnNote%20that%20you%20have%20to%20answer%20%24%20q%20%24%20independent%20queries.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20one%20integer%20%24%20q%20%24%20%28%20%24%201%20%5C%5Cle%20q%20%5C%5Cle%203%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20the%20queries.%20Each%20query%20is%20represented%20by%20two%20consecutive%20lines.%5Cn%5CnThe%20first%20line%20of%20each%20query%20contains%20one%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%203%20%5C%5Ccdot%2010%5E5%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements.%5Cn%5CnThe%20second%20line%20of%20each%20query%20contains%20%24%20n%20%24%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cdots%20%2C%20a_n%20%24%20%28%20%24%201%20%5C%5Cle%20a_i%20%5C%5Cle%20n%20%24%20%29%20%5Cu2014%20the%20elements.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20sum%20of%20all%20%24%20n%20%24%20does%20not%20exceed%20%24%203%20%5C%5Ccdot%2010%5E5%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20query%20print%20one%20integer%20%5Cu2014%20the%20minimum%20number%20of%20operation%20for%20sorting%20sequence%20%24%20a%20%24%20in%20non-descending%20order.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn7%5Cn3%201%206%206%203%201%201%5Cn8%5Cn1%201%204%204%204%207%208%208%5Cn7%5Cn4%202%205%202%206%202%207%5Cn%22%2C%22%5Cn2%5Cn0%5Cn1%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20query%2C%20you%20can%20move%20all%20%24%201%20%24%20-elements%20to%20the%20beginning%20%28after%20that%20sequence%20turn%20into%20%24%20%5B1%2C%201%2C%201%2C%203%2C%206%2C%206%2C%203%5D%20%24%20%29%20and%20then%20move%20all%20%24%206%20%24%20-elements%20to%20the%20end.%5Cn%5CnIn%20the%20second%20query%2C%20the%20sequence%20is%20sorted%20initially%2C%20so%20the%20answer%20is%20zero.%5Cn%5CnIn%20the%20third%20query%2C%20you%20have%20to%20move%20all%20%24%202%20%24%20-elements%20to%20the%20beginning.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1223%5C%2FD%22%2C%22id%22%3A%221223D%22%7D%2C%22translation%22%3A%22%5Cu6709n%5Cu4e2a%5Cu6570%5Cu7684%5Cu5e8f%5Cu5217%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu4e00%5Cu79cd%5Cu6570%5Cuff0c%5Cu5c06%5Cu4ed6%5Cu4eec%5Cu5168%5Cu90e8%5Cu79fb%5Cu5230%5Cu5f00%5Cu5934%5Cu6216%5Cu7ed3%5Cu5c3e%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%201%2C5%2C2%2C1%2C3%2C2%20-%3E%201%2C1%2C5%2C2%2C3%2C2%5Cuff08%5Cu90091%5Cuff09%5Cr%5Cn-%201%2C5%2C2%2C1%2C3%2C2%20-%3E%205%2C2%2C3%2C2%2C1%2C1%5Cuff08%5Cu90091%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu95ee%5Cu6700%5Cu5c11%5Cu9700%5Cu8981%5Cu591a%5Cu5c11%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu624d%5Cu80fd%5Cu4f7f%5Cu5e8f%5Cu5217%5Cu53d8%5Cu4e3a%5Cu975e%5Cu9012%5Cu51cf%5Cu5e8f%5Cu5217%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A43%2C%22totalAccepted%22%3A29%2C%22pid%22%3A%22CF1223D%22%2C%22title%22%3A%22Sequence%20Sorting%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Sequence%20Sorting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Sequence Sorting</h1>
+<h2>题意翻译</h2>
+<div>有n个数的序列，每次操作可以选择一种数，将他们全部移到开头或结尾：
+- 1,5,2,1,3,2 -> 1,1,5,2,3,2（选1）
+- 1,5,2,1,3,2 -> 5,2,3,2,1,1（选1）
+问最少需要多少次操作，才能使序列变为非递减序列。</div>
+<h2>题目描述</h2>
+<div>You are given a sequence $ a_1, a_2, \dots, a_n $ , consisting of integers.
+You can apply the following operation to this sequence: choose some integer $ x $ and move all elements equal to $ x $ either to the beginning, or to the end of $ a $ . Note that you have to move all these elements in one direction in one operation.
+For example, if $ a = [2, 1, 3, 1, 1, 3, 2] $ , you can get the following sequences in one operation (for convenience, denote elements equal to $ x $ as $ x $ -elements):
+- $ [1, 1, 1, 2, 3, 3, 2] $ if you move all $ 1 $ -elements to the beginning;
+- $ [2, 3, 3, 2, 1, 1, 1] $ if you move all $ 1 $ -elements to the end;
+- $ [2, 2, 1, 3, 1, 1, 3] $ if you move all $ 2 $ -elements to the beginning;
+- $ [1, 3, 1, 1, 3, 2, 2] $ if you move all $ 2 $ -elements to the end;
+- $ [3, 3, 2, 1, 1, 1, 2] $ if you move all $ 3 $ -elements to the beginning;
+- $ [2, 1, 1, 1, 2, 3, 3] $ if you move all $ 3 $ -elements to the end;
+You have to determine the minimum number of such operations so that the sequence $ a $ becomes sorted in non-descending order. Non-descending order means that for all $ i $ from $ 2 $ to $ n $ , the condition $ a_{i-1} \le a_i $ is satisfied.
+Note that you have to answer $ q $ independent queries.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains one integer $ q $ ( $ 1 \le q \le 3 \cdot 10^5 $ ) — the number of the queries. Each query is represented by two consecutive lines.
+The first line of each query contains one integer $ n $ ( $ 1 \le n \le 3 \cdot 10^5 $ ) — the number of elements.
+The second line of each query contains $ n $ integers $ a_1, a_2, \dots , a_n $ ( $ 1 \le a_i \le n $ ) — the elements.
+It is guaranteed that the sum of all $ n $ does not exceed $ 3 \cdot 10^5 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query print one integer — the minimum number of operation for sorting sequence $ a $ in non-descending order.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+7
+3 1 6 6 3 1 1
+8
+1 1 4 4 4 7 8 8
+7
+4 2 5 2 6 2 7
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+2
+0
+1
+</code></pre>
+<h2>说明</h2>
+<div>In the first query, you can move all $ 1 $ -elements to the beginning (after that sequence turn into $ [1, 1, 1, 3, 6, 6, 3] $ ) and then move all $ 6 $ -elements to the end.
+In the second query, the sequence is sorted initially, so the answer is zero.
+In the third query, you have to move all $ 2 $ -elements to the beginning.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

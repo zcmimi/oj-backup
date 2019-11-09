@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Stack Sorting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399290:UD7D4CoBhnn5mQuJyOKfId3vcqf33LJ3l6M3p30qKE8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Let%27s%20suppose%20you%20have%20an%20array%20%24%20a%20%24%20%2C%20a%20stack%20%24%20s%20%24%20%28initially%20empty%29%20and%20an%20array%20%24%20b%20%24%20%28also%20initially%20empty%29.%5Cn%5CnYou%20may%20perform%20the%20following%20operations%20until%20both%20%24%20a%20%24%20and%20%24%20s%20%24%20are%20empty%3A%5Cn%5Cn-%20Take%20the%20first%20element%20of%20%24%20a%20%24%20%2C%20push%20it%20into%20%24%20s%20%24%20and%20remove%20it%20from%20%24%20a%20%24%20%28if%20%24%20a%20%24%20is%20not%20empty%29%3B%5Cn-%20Take%20the%20top%20element%20from%20%24%20s%20%24%20%2C%20append%20it%20to%20the%20end%20of%20array%20%24%20b%20%24%20and%20remove%20it%20from%20%24%20s%20%24%20%28if%20%24%20s%20%24%20is%20not%20empty%29.%5Cn%5CnYou%20can%20perform%20these%20operations%20in%20arbitrary%20order.%5Cn%5CnIf%20there%20exists%20a%20way%20to%20perform%20the%20operations%20such%20that%20array%20%24%20b%20%24%20is%20sorted%20in%20non-descending%20order%20in%20the%20end%2C%20then%20array%20%24%20a%20%24%20is%20called%20stack-sortable.%5Cn%5CnFor%20example%2C%20%24%20%5B3%2C1%2C2%5D%20%24%20is%20stack-sortable%2C%20because%20%24%20b%20%24%20will%20be%20sorted%20if%20we%20perform%20the%20following%20operations%3A%5Cn%5Cn1.%20Remove%20%24%203%20%24%20from%20%24%20a%20%24%20and%20push%20it%20into%20%24%20s%20%24%20%3B%5Cn2.%20Remove%20%24%201%20%24%20from%20%24%20a%20%24%20and%20push%20it%20into%20%24%20s%20%24%20%3B%5Cn3.%20Remove%20%24%201%20%24%20from%20%24%20s%20%24%20and%20append%20it%20to%20the%20end%20of%20%24%20b%20%24%20%3B%5Cn4.%20Remove%20%24%202%20%24%20from%20%24%20a%20%24%20and%20push%20it%20into%20%24%20s%20%24%20%3B%5Cn5.%20Remove%20%24%202%20%24%20from%20%24%20s%20%24%20and%20append%20it%20to%20the%20end%20of%20%24%20b%20%24%20%3B%5Cn6.%20Remove%20%24%203%20%24%20from%20%24%20s%20%24%20and%20append%20it%20to%20the%20end%20of%20%24%20b%20%24%20.%5Cn%5CnAfter%20all%20these%20operations%20%24%20b%3D%5B1%2C2%2C3%5D%20%24%20%2C%20so%20%24%20%5B3%2C1%2C2%5D%20%24%20is%20stack-sortable.%20%24%20%5B2%2C3%2C1%5D%20%24%20is%20not%20stack-sortable.%5Cn%5CnYou%20are%20given%20%24%20k%20%24%20first%20elements%20of%20some%20permutation%20%24%20p%20%24%20of%20size%20%24%20n%20%24%20%28recall%20that%20a%20permutation%20of%20size%20%24%20n%20%24%20is%20an%20array%20of%20size%20%24%20n%20%24%20where%20each%20integer%20from%20%24%201%20%24%20to%20%24%20n%20%24%20occurs%20exactly%20once%29.%20You%20have%20to%20restore%20the%20remaining%20%24%20n-k%20%24%20elements%20of%20this%20permutation%20so%20it%20is%20stack-sortable.%20If%20there%20are%20multiple%20answers%2C%20choose%20the%20answer%20such%20that%20%24%20p%20%24%20is%20lexicographically%20maximal%20%28an%20array%20%24%20q%20%24%20is%20lexicographically%20greater%20than%20an%20array%20%24%20p%20%24%20iff%20there%20exists%20some%20integer%20%24%20k%20%24%20such%20that%20for%20every%20%24%20i%3Ck%20%24%20%24%20q_%7Bi%7D%3Dp_%7Bi%7D%20%24%20%2C%20and%20%24%20q_%7Bk%7D%3Ep_%7Bk%7D%20%24%20%29.%20You%20may%20not%20swap%20or%20change%20any%20of%20first%20%24%20k%20%24%20elements%20of%20the%20permutation.%5Cn%5CnPrint%20the%20lexicographically%20maximal%20permutation%20%24%20p%20%24%20you%20can%20obtain.%5Cn%5CnIf%20there%20exists%20no%20answer%20then%20output%20-1.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%202%3C%3Dn%3C%3D200000%20%24%20%2C%20%24%201%3C%3Dk%3Cn%20%24%20%29%20%5Cu2014%20the%20size%20of%20a%20desired%20permutation%2C%20and%20the%20number%20of%20elements%20you%20are%20given%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20k%20%24%20integers%20%24%20p_%7B1%7D%20%24%20%2C%20%24%20p_%7B2%7D%20%24%20%2C%20...%2C%20%24%20p_%7Bk%7D%20%24%20%28%20%24%201%3C%3Dp_%7Bi%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20first%20%24%20k%20%24%20elements%20of%20%24%20p%20%24%20.%20These%20integers%20are%20pairwise%20distinct.%22%2C%22outputFormat%22%3A%22If%20it%20is%20possible%20to%20restore%20a%20stack-sortable%20permutation%20%24%20p%20%24%20of%20size%20%24%20n%20%24%20such%20that%20the%20first%20%24%20k%20%24%20elements%20of%20%24%20p%20%24%20are%20equal%20to%20elements%20given%20in%20the%20input%2C%20print%20lexicographically%20maximal%20such%20permutation.%5Cn%5CnOtherwise%20print%20-1.%22%2C%22samples%22%3A%5B%5B%225%203%5Cn3%202%201%5Cn%22%2C%223%202%201%205%204%20%22%5D%2C%5B%225%203%5Cn2%203%201%5Cn%22%2C%22-1%5Cn%22%5D%2C%5B%225%201%5Cn3%5Cn%22%2C%223%202%201%205%204%20%22%5D%2C%5B%225%202%5Cn3%204%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F911%5C%2FE%22%2C%22id%22%3A%22911E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu6392%5Cu5217%5Cu7684%5Cu4e00%5Cu90e8%5Cu5206%2C%5Cu8ba9%5Cu4f60%5Cu8865%5Cu5168%5Cu6574%5Cu4e2a%5Cu6392%5Cu5217%5Cu4f7f%5Cu5176%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5927%5Cu5e76%5Cu4e14%5Cu7ecf%5Cu8fc7%5Cu4e00%5Cu4e2a%5Cu6808%5Cu8c03%5Cu6574%5Cu987a%5Cu5e8f%5Cu4e4b%5Cu540e%5Cu80fd%5Cu591f%5Cu987a%5Cu5e8f%5Cu8f93%5Cu51fa%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A60%2C%22totalAccepted%22%3A27%2C%22pid%22%3A%22CF911E%22%2C%22title%22%3A%22Stack%20Sorting%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32032%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A8907%2C%22name%22%3A%22CF911E%20Stack%20Sorting%22%2C%22slug%22%3A%22CF911E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2178%22%2C%22title%22%3A%22%5BNOI2015%5D%5Cu54c1%5Cu9152%5Cu5927%5Cu4f1a%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF911G%22%2C%22title%22%3A%22Mass%20Change%20Queries%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF911F%22%2C%22title%22%3A%22Tree%20Destruction%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF609E%22%2C%22title%22%3A%22Minimum%20spanning%20tree%20for%20each%20edge%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4243%22%2C%22title%22%3A%22%5BJSOI2009%5D%5Cu7b49%5Cu5dee%5Cu6570%5Cu5217%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Stack%20Sorting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Stack Sorting</h1>
+<h2>题意翻译</h2>
+<div>给你一排列的一部分,让你补全整个排列使其字典序最大并且经过一个栈调整顺序之后能够顺序输出</div>
+<h2>题目描述</h2>
+<div>Let's suppose you have an array $ a $ , a stack $ s $ (initially empty) and an array $ b $ (also initially empty).
+You may perform the following operations until both $ a $ and $ s $ are empty:
+- Take the first element of $ a $ , push it into $ s $ and remove it from $ a $ (if $ a $ is not empty);
+- Take the top element from $ s $ , append it to the end of array $ b $ and remove it from $ s $ (if $ s $ is not empty).
+You can perform these operations in arbitrary order.
+If there exists a way to perform the operations such that array $ b $ is sorted in non-descending order in the end, then array $ a $ is called stack-sortable.
+For example, $ [3,1,2] $ is stack-sortable, because $ b $ will be sorted if we perform the following operations:
+1. Remove $ 3 $ from $ a $ and push it into $ s $ ;
+2. Remove $ 1 $ from $ a $ and push it into $ s $ ;
+3. Remove $ 1 $ from $ s $ and append it to the end of $ b $ ;
+4. Remove $ 2 $ from $ a $ and push it into $ s $ ;
+5. Remove $ 2 $ from $ s $ and append it to the end of $ b $ ;
+6. Remove $ 3 $ from $ s $ and append it to the end of $ b $ .
+After all these operations $ b=[1,2,3] $ , so $ [3,1,2] $ is stack-sortable. $ [2,3,1] $ is not stack-sortable.
+You are given $ k $ first elements of some permutation $ p $ of size $ n $ (recall that a permutation of size $ n $ is an array of size $ n $ where each integer from $ 1 $ to $ n $ occurs exactly once). You have to restore the remaining $ n-k $ elements of this permutation so it is stack-sortable. If there are multiple answers, choose the answer such that $ p $ is lexicographically maximal (an array $ q $ is lexicographically greater than an array $ p $ iff there exists some integer $ k $ such that for every $ i<k $ $ q_{i}=p_{i} $ , and $ q_{k}>p_{k} $ ). You may not swap or change any of first $ k $ elements of the permutation.
+Print the lexicographically maximal permutation $ p $ you can obtain.
+If there exists no answer then output -1.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 2<=n<=200000 $ , $ 1<=k<n $ ) — the size of a desired permutation, and the number of elements you are given, respectively. The second line contains $ k $ integers $ p_{1} $ , $ p_{2} $ , ..., $ p_{k} $ ( $ 1<=p_{i}<=n $ ) — the first $ k $ elements of $ p $ . These integers are pairwise distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is possible to restore a stack-sortable permutation $ p $ of size $ n $ such that the first $ k $ elements of $ p $ are equal to elements given in the input, print lexicographically maximal such permutation.
+Otherwise print -1.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3
+3 2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3 2 1 5 4 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 3
+2 3 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 1
+3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3 2 1 5 4 </code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>5 2
+3 4
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>-1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

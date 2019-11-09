@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Company Acquisitions - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573400585:R/v9BiznWzybdRa6JDqKdUPusmkwKaFTjPFJkEIdjko=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20%24%20n%20%24%20startups.%20Startups%20can%20be%20active%20or%20acquired.%20If%20a%20startup%20is%20acquired%2C%20then%20that%20means%20it%20has%20exactly%20one%20active%20startup%20that%20it%20is%20following.%20An%20active%20startup%20can%20have%20arbitrarily%20many%20acquired%20startups%20that%20are%20following%20it.%20An%20active%20startup%20cannot%20follow%20any%20other%20startup.%5Cn%5CnThe%20following%20steps%20happen%20until%20there%20is%20exactly%20one%20active%20startup.%20The%20following%20sequence%20of%20steps%20takes%20exactly%201%20day.%5Cn%5Cn1.%20Two%20distinct%20active%20startups%20%24%20A%20%24%20%2C%20%24%20B%20%24%20%2C%20are%20chosen%20uniformly%20at%20random.%5Cn2.%20A%20fair%20coin%20is%20flipped%2C%20and%20with%20equal%20probability%2C%20%24%20A%20%24%20acquires%20%24%20B%20%24%20or%20%24%20B%20%24%20acquires%20%24%20A%20%24%20%28i.e.%20if%20%24%20A%20%24%20acquires%20%24%20B%20%24%20%2C%20then%20that%20means%20%24%20B%20%24%20%27s%20state%20changes%20from%20active%20to%20acquired%2C%20and%20its%20starts%20following%20%24%20A%20%24%20%29.%5Cn3.%20When%20a%20startup%20changes%20from%20active%20to%20acquired%2C%20all%20of%20its%20previously%20acquired%20startups%20become%20active.%5Cn%5CnFor%20example%2C%20the%20following%20scenario%20can%20happen%3A%20Let%27s%20say%20%24%20A%20%24%20%2C%20%24%20B%20%24%20are%20active%20startups.%20%24%20C%20%24%20%2C%20%24%20D%20%24%20%2C%20%24%20E%20%24%20are%20acquired%20startups%20under%20%24%20A%20%24%20%2C%20and%20%24%20F%20%24%20%2C%20%24%20G%20%24%20are%20acquired%20startups%20under%20%24%20B%20%24%20%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1025G%5C%2Ffa8280e360894e36feb9d4c9356bb04775e5906c.png%29Active%20startups%20are%20shown%20in%20red.%5Cn%5CnIf%20%24%20A%20%24%20acquires%20%24%20B%20%24%20%2C%20then%20the%20state%20will%20be%20%24%20A%20%24%20%2C%20%24%20F%20%24%20%2C%20%24%20G%20%24%20are%20active%20startups.%20%24%20C%20%24%20%2C%20%24%20D%20%24%20%2C%20%24%20E%20%24%20%2C%20%24%20B%20%24%20are%20acquired%20startups%20under%20%24%20A%20%24%20.%20%24%20F%20%24%20and%20%24%20G%20%24%20have%20no%20acquired%20startups%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1025G%5C%2F430534ac9fdcd60794399ce9e5c11924f2bcd8ab.png%29If%20instead%2C%20%24%20B%20%24%20acquires%20%24%20A%20%24%20%2C%20then%20the%20state%20will%20be%20%24%20B%20%24%20%2C%20%24%20C%20%24%20%2C%20%24%20D%20%24%20%2C%20%24%20E%20%24%20are%20active%20startups.%20%24%20F%20%24%20%2C%20%24%20G%20%24%20%2C%20%24%20A%20%24%20are%20acquired%20startups%20under%20%24%20B%20%24%20.%20%24%20C%20%24%20%2C%20%24%20D%20%24%20%2C%20%24%20E%20%24%20have%20no%20acquired%20startups%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1025G%5C%2Fe54e1b083f85b6688991c56bd5b9edcfa76ab814.png%29You%20are%20given%20the%20initial%20state%20of%20the%20startups.%20For%20each%20startup%2C%20you%20are%20told%20if%20it%20is%20either%20acquired%20or%20active.%20If%20it%20is%20acquired%2C%20you%20are%20also%20given%20the%20index%20of%20the%20active%20startup%20that%20it%20is%20following.%5Cn%5CnYou%27re%20now%20wondering%2C%20what%20is%20the%20expected%20number%20of%20days%20needed%20for%20this%20process%20to%20finish%20with%20exactly%20one%20active%20startup%20at%20the%20end.%5Cn%5CnIt%20can%20be%20shown%20the%20expected%20number%20of%20days%20can%20be%20written%20as%20a%20rational%20number%20%24%20P%5C%2FQ%20%24%20%2C%20where%20%24%20P%20%24%20and%20%24%20Q%20%24%20are%20co-prime%20integers%2C%20and%20%24%20Q%20%5C%5Cnot%3D%200%20%5C%5Cpmod%7B10%5E9%2B7%7D%20%24%20.%20Return%20the%20value%20of%20%24%20P%20%5C%5Ccdot%20Q%5E%7B-1%7D%20%24%20modulo%20%24%2010%5E9%2B7%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%202%20%5C%5Cleq%20n%20%5C%5Cleq%20500%20%24%20%29%2C%20the%20number%20of%20startups.%5Cn%5CnThe%20next%20line%20will%20contain%20%24%20n%20%24%20space-separated%20integers%20%24%20a_1%2C%20a_2%2C%20%5C%5Cldots%2C%20a_n%20%24%20%28%20%24%20a_i%20%3D%20-1%20%24%20or%20%24%201%20%5C%5Cleq%20a_i%20%5C%5Cleq%20n%20%24%20%29.%20If%20%24%20a_i%20%3D%20-1%20%24%20%2C%20then%20that%20means%20startup%20%24%20i%20%24%20is%20active.%20Otherwise%2C%20if%20%24%201%20%5C%5Cleq%20a_i%20%5C%5Cleq%20n%20%24%20%2C%20then%20startup%20%24%20i%20%24%20is%20acquired%2C%20and%20it%20is%20currently%20following%20startup%20%24%20a_i%20%24%20.%20It%20is%20guaranteed%20if%20%24%20a_i%20%5C%5Cnot%3D%20-1%20%24%20%2C%20then%20%24%20a_%7Ba_i%7D%20%3D-1%20%24%20%28that%20is%2C%20all%20startups%20that%20are%20being%20followed%20are%20active%29.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%2C%20the%20expected%20number%20of%20days%20needed%20for%20the%20process%20to%20end%20with%20exactly%20one%20active%20startup%2C%20modulo%20%24%2010%5E9%2B7%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%5Cn-1%20-1%20-1%5Cn%22%2C%223%5Cn%22%5D%2C%5B%222%5Cn2%20-1%5Cn%22%2C%220%5Cn%22%5D%2C%5B%2240%5Cn3%203%20-1%20-1%204%204%20-1%20-1%20-1%20-1%20-1%2010%2010%2010%2010%2010%2010%204%2020%20-1%20-1%20-1%20-1%20-1%20-1%20-1%20-1%20-1%20-1%20-1%20-1%20-1%203%203%203%203%203%203%203%203%5Cn%22%2C%22755808950%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20there%20are%20three%20active%20startups%20labeled%20%24%201%20%24%20%2C%20%24%202%20%24%20and%20%24%203%20%24%20%2C%20and%20zero%20acquired%20startups.%20Here%27s%20an%20example%20of%20how%20one%20scenario%20can%20happen%5Cn%5Cn1.%20Startup%20%24%201%20%24%20acquires%20startup%20%24%202%20%24%20%28This%20state%20can%20be%20represented%20by%20the%20array%20%24%20%5B-1%2C%201%2C%20-1%5D%20%24%20%29%5Cn2.%20Startup%20%24%203%20%24%20acquires%20startup%20%24%201%20%24%20%28This%20state%20can%20be%20represented%20by%20the%20array%20%24%20%5B3%2C%20-1%2C%20-1%5D%20%24%20%29%5Cn3.%20Startup%20%24%202%20%24%20acquires%20startup%20%24%203%20%24%20%28This%20state%20can%20be%20represented%20by%20the%20array%20%24%20%5B-1%2C%20-1%2C%202%5D%20%24%20%29.%5Cn4.%20Startup%20%24%202%20%24%20acquires%20startup%20%24%201%20%24%20%28This%20state%20can%20be%20represented%20by%20the%20array%20%24%20%5B2%2C%20-1%2C%202%5D%20%24%20%29.%5Cn%5CnAt%20this%20point%2C%20there%20is%20only%20one%20active%20startup%2C%20and%20this%20sequence%20of%20steps%20took%20%24%204%20%24%20days.%20It%20can%20be%20shown%20the%20expected%20number%20of%20days%20is%20%24%203%20%24%20.%5Cn%5CnFor%20the%20second%20sample%2C%20there%20is%20only%20one%20active%20startup%2C%20so%20we%20need%20zero%20days.%5Cn%5CnFor%20the%20last%20sample%2C%20remember%20to%20take%20the%20answer%20modulo%20%24%2010%5E9%2B7%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1025%5C%2FG%22%2C%22id%22%3A%221025G%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu610f%5Cuff1a%5Cn%5Cu6709n%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu6709%5Cu4e24%5Cu79cd%5Cu72b6%5Cu6001%5Cuff1a%5Cu9009%5Cu4e2d%5Cu548c%5Cu672a%5Cu9009%5Cu4e2d%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu4e2a%5Cu9009%5Cu4e2d%5Cu7684%5Cu70b9%5Cu540e%5Cu9762%5Cu90fd%5Cu8ddf%5Cu7740%5Cu82e5%5Cu5e72%5Cu4e2a%5Cuff08%5Cu53ef%5Cu80fd%5Cu662f0%5Cu4e2a%5Cuff09%5Cu672a%5Cu9009%5Cu4e2d%5Cu7684%5Cu70b9%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu4e2a%5Cu672a%5Cu9009%5Cu4e2d%5Cu7684%5Cu70b9%5Cu90fd%5Cu4e00%5Cu5b9a%5Cu8ddf%5Cu5728%5Cu67d0%5Cu4e2a%5Cu9009%5Cu4e2d%5Cu7684%5Cu70b9%5Cu540e%5Cu9762%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu968f%5Cu673a%5Cu9009%5Cu62e9%5Cu4e24%5Cu4e2a%5Cu88ab%5Cu9009%5Cu4e2d%5Cu7684%5Cu70b9%5Cuff0c%5Cu968f%5Cu673a%5Cu5c06%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu53d8%5Cu6210%5Cu672a%5Cu9009%5Cu4e2d%5Cuff0c%5Cu4e14%5Cu8ddf%5Cu5728%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu540e%5Cu9762%5Cuff0c%5Cu540c%5Cu65f6%5Cu5c06%5Cu8ddf%5Cu5728%5Cu4ed6%5Cu540e%5Cu9762%5Cu7684%5Cu8282%5Cu70b9%5Cu5168%5Cu90e8%5Cu6539%5Cu4e3a%5Cu9009%5Cu4e2d%5Cu3002%5Cn%5Cn%5Cu6c42%5Cu8fd9%5Cu6837%5Cu64cd%5Cu4f5c%5Cu4e0b%5Cu53bb%5Cuff0c%5Cu76f4%5Cu5230%5Cu6700%5Cu540e%5Cu53ea%5Cu5269%5Cu4e00%5Cu4e2a%5Cu9009%5Cu4e2d%5Cu7684%5Cu70b9%5Cu7684%5Cu671f%5Cu671b%5Cu6b65%5Cu6570%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40Happynewyear%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A22%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF1025G%22%2C%22title%22%3A%22Company%20Acquisitions%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A63960%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A28726%2C%22name%22%3A%22CF1025G%20Company%20Acquisitions%22%2C%22slug%22%3A%22CF1025G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Company%20Acquisitions%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Company Acquisitions</h1>
+<h2>题意翻译</h2>
+<div>题意：
+有n个节点，每个节点有两种状态：选中和未选中。
+每个选中的点后面都跟着若干个（可能是0个）未选中的点。
+每个未选中的点都一定跟在某个选中的点后面。
+每次操作随机选择两个被选中的点，随机将其中一个变成未选中，且跟在另一个后面，同时将跟在他后面的节点全部改为选中。
+求这样操作下去，直到最后只剩一个选中的点的期望步数。
+感谢@Happynewyear 提供的翻译</div>
+<h2>题目描述</h2>
+<div>There are $ n $ startups. Startups can be active or acquired. If a startup is acquired, then that means it has exactly one active startup that it is following. An active startup can have arbitrarily many acquired startups that are following it. An active startup cannot follow any other startup.
+The following steps happen until there is exactly one active startup. The following sequence of steps takes exactly 1 day.
+1. Two distinct active startups $ A $ , $ B $ , are chosen uniformly at random.
+2. A fair coin is flipped, and with equal probability, $ A $ acquires $ B $ or $ B $ acquires $ A $ (i.e. if $ A $ acquires $ B $ , then that means $ B $ 's state changes from active to acquired, and its starts following $ A $ ).
+3. When a startup changes from active to acquired, all of its previously acquired startups become active.
+For example, the following scenario can happen: Let's say $ A $ , $ B $ are active startups. $ C $ , $ D $ , $ E $ are acquired startups under $ A $ , and $ F $ , $ G $ are acquired startups under $ B $ :
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1025G/fa8280e360894e36feb9d4c9356bb04775e5906c.png)Active startups are shown in red.
+If $ A $ acquires $ B $ , then the state will be $ A $ , $ F $ , $ G $ are active startups. $ C $ , $ D $ , $ E $ , $ B $ are acquired startups under $ A $ . $ F $ and $ G $ have no acquired startups:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1025G/430534ac9fdcd60794399ce9e5c11924f2bcd8ab.png)If instead, $ B $ acquires $ A $ , then the state will be $ B $ , $ C $ , $ D $ , $ E $ are active startups. $ F $ , $ G $ , $ A $ are acquired startups under $ B $ . $ C $ , $ D $ , $ E $ have no acquired startups:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1025G/e54e1b083f85b6688991c56bd5b9edcfa76ab814.png)You are given the initial state of the startups. For each startup, you are told if it is either acquired or active. If it is acquired, you are also given the index of the active startup that it is following.
+You're now wondering, what is the expected number of days needed for this process to finish with exactly one active startup at the end.
+It can be shown the expected number of days can be written as a rational number $ P/Q $ , where $ P $ and $ Q $ are co-prime integers, and $ Q \not= 0 \pmod{10^9+7} $ . Return the value of $ P \cdot Q^{-1} $ modulo $ 10^9+7 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 2 \leq n \leq 500 $ ), the number of startups.
+The next line will contain $ n $ space-separated integers $ a_1, a_2, \ldots, a_n $ ( $ a_i = -1 $ or $ 1 \leq a_i \leq n $ ). If $ a_i = -1 $ , then that means startup $ i $ is active. Otherwise, if $ 1 \leq a_i \leq n $ , then startup $ i $ is acquired, and it is currently following startup $ a_i $ . It is guaranteed if $ a_i \not= -1 $ , then $ a_{a_i} =-1 $ (that is, all startups that are being followed are active).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer, the expected number of days needed for the process to end with exactly one active startup, modulo $ 10^9+7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+-1 -1 -1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+2 -1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>40
+3 3 -1 -1 4 4 -1 -1 -1 -1 -1 10 10 10 10 10 10 4 20 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 3 3 3 3 3 3 3 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>755808950
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, there are three active startups labeled $ 1 $ , $ 2 $ and $ 3 $ , and zero acquired startups. Here's an example of how one scenario can happen
+1. Startup $ 1 $ acquires startup $ 2 $ (This state can be represented by the array $ [-1, 1, -1] $ )
+2. Startup $ 3 $ acquires startup $ 1 $ (This state can be represented by the array $ [3, -1, -1] $ )
+3. Startup $ 2 $ acquires startup $ 3 $ (This state can be represented by the array $ [-1, -1, 2] $ ).
+4. Startup $ 2 $ acquires startup $ 1 $ (This state can be represented by the array $ [2, -1, 2] $ ).
+At this point, there is only one active startup, and this sequence of steps took $ 4 $ days. It can be shown the expected number of days is $ 3 $ .
+For the second sample, there is only one active startup, so we need zero days.
+For the last sample, remember to take the answer modulo $ 10^9+7 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

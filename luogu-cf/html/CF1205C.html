@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Palindromic Paths - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573403092:CXbmzcgWaB2UtMC41siMpQ0Mtw5pYvy4EDU/BvIk/oY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22This%20is%20an%20interactive%20problem%5Cn%5CnYou%20are%20given%20a%20grid%20%24%20n%5C%5Ctimes%20n%20%24%20%2C%20where%20%24%20n%20%24%20is%20odd.%20Rows%20are%20enumerated%20from%20%24%201%20%24%20to%20%24%20n%20%24%20from%20up%20to%20down%2C%20columns%20are%20enumerated%20from%20%24%201%20%24%20to%20%24%20n%20%24%20from%20left%20to%20right.%20Cell%2C%20standing%20on%20the%20intersection%20of%20row%20%24%20x%20%24%20and%20column%20%24%20y%20%24%20%2C%20is%20denoted%20by%20%24%20%28x%2C%20y%29%20%24%20.%5Cn%5CnEvery%20cell%20contains%20%24%200%20%24%20or%20%24%201%20%24%20.%20It%20is%20known%20that%20the%20top-left%20cell%20contains%20%24%201%20%24%20%2C%20and%20the%20bottom-right%20cell%20contains%20%24%200%20%24%20.%5Cn%5CnWe%20want%20to%20know%20numbers%20in%20all%20cells%20of%20the%20grid.%20To%20do%20so%20we%20can%20ask%20the%20following%20questions%3A%5Cn%5Cn%5C%22%20%24%20%3F%20%24%20%24%20x_1%20%24%20%24%20y_1%20%24%20%24%20x_2%20%24%20%24%20y_2%20%24%20%5C%22%2C%20where%20%24%201%20%5C%5Cle%20x_1%20%5C%5Cle%20x_2%20%5C%5Cle%20n%20%24%20%2C%20%24%201%20%5C%5Cle%20y_1%20%5C%5Cle%20y_2%20%5C%5Cle%20n%20%24%20%2C%20and%20%24%20x_1%20%2B%20y_1%20%2B%202%20%5C%5Cle%20x_2%20%2B%20y_2%20%24%20.%20In%20other%20words%2C%20we%20output%20two%20different%20cells%20%24%20%28x_1%2C%20y_1%29%20%24%20%2C%20%24%20%28x_2%2C%20y_2%29%20%24%20of%20the%20grid%20such%20that%20we%20can%20get%20from%20the%20first%20to%20the%20second%20by%20moving%20only%20to%20the%20right%20and%20down%2C%20and%20they%20aren%27t%20adjacent.%5Cn%5CnAs%20a%20response%20to%20such%20question%20you%20will%20be%20told%20if%20there%20exists%20a%20path%20between%20%24%20%28x_1%2C%20y_1%29%20%24%20and%20%24%20%28x_2%2C%20y_2%29%20%24%20%2C%20going%20only%20to%20the%20right%20or%20down%2C%20numbers%20in%20cells%20of%20which%20form%20a%20palindrome.%5Cn%5CnFor%20example%2C%20paths%2C%20shown%20in%20green%2C%20are%20palindromic%2C%20so%20answer%20for%20%5C%22%20%24%20%3F%20%24%20%24%201%20%24%20%24%201%20%24%20%24%202%20%24%20%24%203%20%24%20%5C%22%20and%20%5C%22%20%24%20%3F%20%24%20%24%201%20%24%20%24%202%20%24%20%24%203%20%24%20%24%203%20%24%20%5C%22%20would%20be%20that%20there%20exists%20such%20path.%20However%2C%20there%20is%20no%20palindromic%20path%20between%20%24%20%281%2C%201%29%20%24%20and%20%24%20%283%2C%201%29%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF1205C%5C%2Fb6805c57783550cbf5043011ffee37b4f451b7b2.png%29Determine%20all%20cells%20of%20the%20grid%20by%20asking%20not%20more%20than%20%24%20n%5E2%20%24%20questions.%20It%20can%20be%20shown%20that%20the%20answer%20always%20exists.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20odd%20integer%20%28%20%24%203%20%5C%5Cle%20n%20%3C%2050%20%24%20%29%20%5Cu2014%20the%20side%20of%20the%20grid.%22%2C%22outputFormat%22%3A%22You%20begin%20the%20interaction%20by%20reading%20%24%20n%20%24%20.%5Cn%5CnTo%20ask%20a%20question%20about%20cells%20%24%20%28x_1%2C%20y_1%29%2C%20%28x_2%2C%20y_2%29%20%24%20%2C%20in%20a%20separate%20line%20output%20%5C%22%20%24%20%3F%20%24%20%24%20x_1%20%24%20%24%20y_1%20%24%20%24%20x_2%20%24%20%24%20y_2%20%24%20%5C%22.%5Cn%5CnNumbers%20in%20the%20query%20have%20to%20satisfy%20%24%201%20%5C%5Cle%20x_1%20%5C%5Cle%20x_2%20%5C%5Cle%20n%20%24%20%2C%20%24%201%20%5C%5Cle%20y_1%20%5C%5Cle%20y_2%20%5C%5Cle%20n%20%24%20%2C%20and%20%24%20x_1%20%2B%20y_1%20%2B%202%20%5C%5Cle%20x_2%20%2B%20y_2%20%24%20.%20Don%27t%20forget%20to%20%27flush%27%2C%20to%20get%20the%20answer.%5Cn%5CnIn%20response%2C%20you%20will%20receive%20%24%201%20%24%20%2C%20if%20there%20exists%20a%20path%20going%20from%20%24%20%28x_1%2C%20y_1%29%20%24%20to%20%24%20%28x_2%2C%20y_2%29%20%24%20only%20to%20the%20right%20or%20down%2C%20numbers%20in%20cells%20of%20which%20form%20a%20palindrome%2C%20and%20%24%200%20%24%20otherwise.%5Cn%5CnIn%20case%20your%20query%20is%20invalid%20or%20you%20asked%20more%20than%20%24%20n%5E2%20%24%20queries%2C%20program%20will%20print%20%24%20-1%20%24%20and%20will%20finish%20interaction.%20You%20will%20receive%20Wrong%20answer%20verdict.%20Make%20sure%20to%20exit%20immediately%20to%20avoid%20getting%20other%20verdicts.%5Cn%5CnWhen%20you%20determine%20numbers%20in%20all%20cells%2C%20output%20%5C%22%21%5C%22.%5Cn%5CnThen%20output%20%24%20n%20%24%20lines%2C%20the%20%24%20i%20%24%20-th%20of%20which%20is%20a%20string%20of%20length%20%24%20n%20%24%20%2C%20corresponding%20to%20numbers%20in%20the%20%24%20i%20%24%20-th%20row%20of%20the%20grid.%5Cn%5CnAfter%20printing%20a%20query%20do%20not%20forget%20to%20output%20end%20of%20line%20and%20flush%20the%20output.%20Otherwise%2C%20you%20will%20get%20Idleness%20limit%20exceeded.%20To%20do%20this%2C%20use%3A%5Cn%5Cn-%20fflush%28stdout%29%20or%20cout.flush%28%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20see%20documentation%20for%20other%20languages.%5Cn%5CnHack%20Format%5Cn%5CnTo%20hack%2C%20use%20the%20following%20format.%5Cn%5CnThe%20first%20line%20should%20contain%20a%20single%20odd%20integer%20%24%20n%20%24%20%28side%20of%20your%20grid%29.%5Cn%5CnThe%20%24%20i%20%24%20-th%20of%20%24%20n%20%24%20following%20lines%20should%20contain%20a%20string%20of%20length%20%24%20n%20%24%20corresponding%20to%20the%20%24%20i%20%24%20-th%20row%20of%20the%20grid.%20Top%20left%20element%20of%20the%20grid%20has%20to%20be%20equal%20to%20%24%201%20%24%20%2C%20bottom%20right%20has%20to%20be%20equal%20to%20%24%200%20%24%20.%22%2C%22samples%22%3A%5B%5B%22%5Cn3%5Cn0%5Cn1%5Cn0%5Cn1%5Cn1%5Cn1%5Cn1%22%2C%22%5Cn%3F%201%201%201%203%5Cn%3F%201%201%202%203%5Cn%3F%202%201%202%203%5Cn%3F%203%201%203%203%5Cn%3F%202%202%203%203%5Cn%3F%201%202%203%202%5Cn%3F%201%202%203%203%5Cn%21%5Cn100%5Cn001%5Cn000%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F1205%5C%2FC%22%2C%22id%22%3A%221205C%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu4e2a%24n%2An%24%5Cu7684%5Cu77e9%5Cu9635%5Cuff08n%5Cu4e3a%5Cu5947%5Cu6570%5Cuff09%5Cuff0c%5Cu77e9%5Cu9635%5Cu5de6%5Cu4e0a%5Cu89d2%5Cu4e3a1%5Cuff0c%5Cu53f3%5Cu4e0b%5Cu89d2%5Cu4e3a0%5Cuff0c%5Cu6240%5Cu6709%5Cu5143%5Cu7d20%5Cu5747%5Cu4e3a0%5Cu62161%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f7f%5Cu7528%5C%22%24%3F~x_1~y_1~x_2~y_2%24%5C%22%28%241%5C%5Cle%7B%7Dx_1%5C%5Cle%7B%7Dx_2%5C%5Cle%7B%7Dn%24%2C%241%5C%5Cle%7B%7Dy_1%5C%5Cle%7B%7Dy_2%5C%5Cle%7B%7Dn%24%2C%24x_1%2By_1%2B2%5C%5Cle%7B%7Dx_2%2By_2%24%29%5Cu8be2%5Cu95ee%5Cu4ece%28%24x_1%2Cy_1%24%29%5Cu5230%28%24x_2%2Cy_2%24%29%5Cu662f%5Cu5426%5Cu5b58%5Cu5728%5Cu4e00%5Cu6761%5Cu4ec5%5Cu5411%5Cu4e0b%5Cu6216%5Cu5411%5Cu53f3%5Cu8d70%5Cu7684%5Cu56de%5Cu6587%5Cu8def%5Cu5f84%5Cu3002%5Cu6700%5Cu591a%5Cu8be2%5Cu95ee%24n%5E2%24%5Cu6b21%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu65f6%5Cu9996%5Cu5148%5Cu8f93%5Cu51fa%27%21%27%2C%5Cu968f%5Cu540e%5Cu8f93%5Cu51fa%5Cu539f%5Cu77e9%5Cu9635%5Cu3002%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A55%2C%22totalAccepted%22%3A26%2C%22pid%22%3A%22CF1205C%22%2C%22title%22%3A%22Palindromic%20Paths%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2060%22%2C%22title%22%3A%22%5BHNOI2006%5D%5Cu9a6c%5Cu6b65%5Cu8ddd%5Cu79bb%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1198B%22%2C%22title%22%3A%22Welfare%20State%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1205B%22%2C%22title%22%3A%22Shortest%20Cycle%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1205A%22%2C%22title%22%3A%22Almost%20Equal%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207A%22%2C%22title%22%3A%22There%20Are%20Two%20Types%20Of%20Burgers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Palindromic%20Paths%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Palindromic Paths</h1>
+<h2>题意翻译</h2>
+<div>有一个$n*n$的矩阵（n为奇数），矩阵左上角为1，右下角为0，所有元素均为0或1。
+使用"$?~x_1~y_1~x_2~y_2$"($1\le{}x_1\le{}x_2\le{}n$,$1\le{}y_1\le{}y_2\le{}n$,$x_1+y_1+2\le{}x_2+y_2$)询问从($x_1,y_1$)到($x_2,y_2$)是否存在一条仅向下或向右走的回文路径。最多询问$n^2$次。
+输出时首先输出'!',随后输出原矩阵。
+</div>
+<h2>题目描述</h2>
+<div>This is an interactive problem
+You are given a grid $ n\times n $ , where $ n $ is odd. Rows are enumerated from $ 1 $ to $ n $ from up to down, columns are enumerated from $ 1 $ to $ n $ from left to right. Cell, standing on the intersection of row $ x $ and column $ y $ , is denoted by $ (x, y) $ .
+Every cell contains $ 0 $ or $ 1 $ . It is known that the top-left cell contains $ 1 $ , and the bottom-right cell contains $ 0 $ .
+We want to know numbers in all cells of the grid. To do so we can ask the following questions:
+" $ ? $ $ x_1 $ $ y_1 $ $ x_2 $ $ y_2 $ ", where $ 1 \le x_1 \le x_2 \le n $ , $ 1 \le y_1 \le y_2 \le n $ , and $ x_1 + y_1 + 2 \le x_2 + y_2 $ . In other words, we output two different cells $ (x_1, y_1) $ , $ (x_2, y_2) $ of the grid such that we can get from the first to the second by moving only to the right and down, and they aren't adjacent.
+As a response to such question you will be told if there exists a path between $ (x_1, y_1) $ and $ (x_2, y_2) $ , going only to the right or down, numbers in cells of which form a palindrome.
+For example, paths, shown in green, are palindromic, so answer for " $ ? $ $ 1 $ $ 1 $ $ 2 $ $ 3 $ " and " $ ? $ $ 1 $ $ 2 $ $ 3 $ $ 3 $ " would be that there exists such path. However, there is no palindromic path between $ (1, 1) $ and $ (3, 1) $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF1205C/b6805c57783550cbf5043011ffee37b4f451b7b2.png)Determine all cells of the grid by asking not more than $ n^2 $ questions. It can be shown that the answer always exists.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains odd integer ( $ 3 \le n < 50 $ ) — the side of the grid.</div>
+<h3>输出格式</h3>
+<br />
+<div>You begin the interaction by reading $ n $ .
+To ask a question about cells $ (x_1, y_1), (x_2, y_2) $ , in a separate line output " $ ? $ $ x_1 $ $ y_1 $ $ x_2 $ $ y_2 $ ".
+Numbers in the query have to satisfy $ 1 \le x_1 \le x_2 \le n $ , $ 1 \le y_1 \le y_2 \le n $ , and $ x_1 + y_1 + 2 \le x_2 + y_2 $ . Don't forget to 'flush', to get the answer.
+In response, you will receive $ 1 $ , if there exists a path going from $ (x_1, y_1) $ to $ (x_2, y_2) $ only to the right or down, numbers in cells of which form a palindrome, and $ 0 $ otherwise.
+In case your query is invalid or you asked more than $ n^2 $ queries, program will print $ -1 $ and will finish interaction. You will receive Wrong answer verdict. Make sure to exit immediately to avoid getting other verdicts.
+When you determine numbers in all cells, output "!".
+Then output $ n $ lines, the $ i $ -th of which is a string of length $ n $ , corresponding to numbers in the $ i $ -th row of the grid.
+After printing a query do not forget to output end of line and flush the output. Otherwise, you will get Idleness limit exceeded. To do this, use:
+- fflush(stdout) or cout.flush() in C++;
+- System.out.flush() in Java;
+- flush(output) in Pascal;
+- stdout.flush() in Python;
+- see documentation for other languages.
+Hack Format
+To hack, use the following format.
+The first line should contain a single odd integer $ n $ (side of your grid).
+The $ i $ -th of $ n $ following lines should contain a string of length $ n $ corresponding to the $ i $ -th row of the grid. Top left element of the grid has to be equal to $ 1 $ , bottom right has to be equal to $ 0 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>
+3
+0
+1
+0
+1
+1
+1
+1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>
+? 1 1 1 3
+? 1 1 2 3
+? 2 1 2 3
+? 3 1 3 3
+? 2 2 3 3
+? 1 2 3 2
+? 1 2 3 3
+!
+100
+001
+000</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>
