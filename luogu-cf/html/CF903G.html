@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Yet Another Maxflow Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399212:GxyloR+etbjm2mKNzkSd99P9mX+FuCyzskTkkb0RWNY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22In%20this%20problem%20you%20will%20have%20to%20deal%20with%20a%20very%20special%20network.%5Cn%5CnThe%20network%20consists%20of%20two%20parts%3A%20part%20%24%20A%20%24%20and%20part%20%24%20B%20%24%20.%20Each%20part%20consists%20of%20%24%20n%20%24%20vertices%3B%20%24%20i%20%24%20-th%20vertex%20of%20part%20%24%20A%20%24%20is%20denoted%20as%20%24%20A_%7Bi%7D%20%24%20%2C%20and%20%24%20i%20%24%20-th%20vertex%20of%20part%20%24%20B%20%24%20is%20denoted%20as%20%24%20B_%7Bi%7D%20%24%20.%5Cn%5CnFor%20each%20index%20%24%20i%20%24%20%28%20%24%201%3C%3Di%3Cn%20%24%20%29%20there%20is%20a%20directed%20edge%20from%20vertex%20%24%20A_%7Bi%7D%20%24%20to%20vertex%20%24%20A_%7Bi%2B1%7D%20%24%20%2C%20and%20from%20%24%20B_%7Bi%7D%20%24%20to%20%24%20B_%7Bi%2B1%7D%20%24%20%2C%20respectively.%20Capacities%20of%20these%20edges%20are%20given%20in%20the%20input.%20Also%20there%20might%20be%20several%20directed%20edges%20going%20from%20part%20%24%20A%20%24%20to%20part%20%24%20B%20%24%20%28but%20never%20from%20%24%20B%20%24%20to%20%24%20A%20%24%20%29.%5Cn%5CnYou%20have%20to%20calculate%20the%20%5Bmaximum%20flow%20value%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FMaximum_flow_problem%29%20from%20%24%20A_%7B1%7D%20%24%20to%20%24%20B_%7Bn%7D%20%24%20in%20this%20network.%20Capacities%20of%20edges%20connecting%20%24%20A_%7Bi%7D%20%24%20to%20%24%20A_%7Bi%2B1%7D%20%24%20might%20sometimes%20change%2C%20and%20you%20also%20have%20to%20maintain%20the%20maximum%20flow%20value%20after%20these%20changes.%20Apart%20from%20that%2C%20the%20network%20is%20fixed%20%28there%20are%20no%20changes%20in%20part%20%24%20B%20%24%20%2C%20no%20changes%20of%20edges%20going%20from%20%24%20A%20%24%20to%20%24%20B%20%24%20%2C%20and%20no%20edge%20insertions%20or%20deletions%29.%5Cn%5CnTake%20a%20look%20at%20the%20example%20and%20the%20notes%20to%20understand%20the%20structure%20of%20the%20network%20better.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integer%20numbers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20q%20%24%20%28%20%24%202%3C%3Dn%2Cm%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%2C%20%24%200%3C%3Dq%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20each%20part%2C%20the%20number%20of%20edges%20going%20from%20%24%20A%20%24%20to%20%24%20B%20%24%20and%20the%20number%20of%20changes%2C%20respectively.%5Cn%5CnThen%20%24%20n-1%20%24%20lines%20follow%2C%20%24%20i%20%24%20-th%20line%20contains%20two%20integers%20%24%20x_%7Bi%7D%20%24%20and%20%24%20y_%7Bi%7D%20%24%20denoting%20that%20the%20edge%20from%20%24%20A_%7Bi%7D%20%24%20to%20%24%20A_%7Bi%2B1%7D%20%24%20has%20capacity%20%24%20x_%7Bi%7D%20%24%20and%20the%20edge%20from%20%24%20B_%7Bi%7D%20%24%20to%20%24%20B_%7Bi%2B1%7D%20%24%20has%20capacity%20%24%20y_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dx_%7Bi%7D%2Cy_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29.%5Cn%5CnThen%20%24%20m%20%24%20lines%20follow%2C%20describing%20the%20edges%20from%20%24%20A%20%24%20to%20%24%20B%20%24%20.%20Each%20line%20contains%20three%20integers%20%24%20x%20%24%20%2C%20%24%20y%20%24%20and%20%24%20z%20%24%20denoting%20an%20edge%20from%20%24%20A_%7Bx%7D%20%24%20to%20%24%20B_%7By%7D%20%24%20with%20capacity%20%24%20z%20%24%20%28%20%24%201%3C%3Dx%2Cy%3C%3Dn%20%24%20%2C%20%24%201%3C%3Dz%3C%3D10%5E%7B9%7D%20%24%20%29.%20There%20might%20be%20multiple%20edges%20from%20%24%20A_%7Bx%7D%20%24%20to%20%24%20B_%7By%7D%20%24%20.%5Cn%5CnAnd%20then%20%24%20q%20%24%20lines%20follow%2C%20describing%20a%20sequence%20of%20changes%20to%20the%20network.%20%24%20i%20%24%20-th%20line%20contains%20two%20integers%20%24%20v_%7Bi%7D%20%24%20and%20%24%20w_%7Bi%7D%20%24%20%2C%20denoting%20that%20the%20capacity%20of%20the%20edge%20from%20%24%20A_%7Bvi%7D%20%24%20to%20%24%20A_%7Bvi%7D%2B1%20%24%20is%20set%20to%20%24%20w_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dv_%7Bi%7D%3Cn%20%24%20%2C%20%24%201%3C%3Dw_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22Firstly%2C%20print%20the%20maximum%20flow%20value%20in%20the%20original%20network.%20Then%20print%20%24%20q%20%24%20integers%2C%20%24%20i%20%24%20-th%20of%20them%20must%20be%20equal%20to%20the%20maximum%20flow%20value%20after%20%24%20i%20%24%20-th%20change.%22%2C%22samples%22%3A%5B%5B%224%203%202%5Cn1%202%5Cn3%204%5Cn5%206%5Cn2%202%207%5Cn1%204%208%5Cn4%203%209%5Cn1%20100%5Cn2%20100%5Cn%22%2C%229%5Cn14%5Cn14%5Cn%22%5D%5D%2C%22hint%22%3A%22This%20is%20the%20original%20network%20in%20the%20example%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF903G%5C%2Fdcc7a52e873b883e6fea740d5c4aff84e5c0da8d.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F903%5C%2FG%22%2C%22id%22%3A%22903G%22%7D%2C%22translation%22%3A%22%5Cn%5Cu4e00%5Cu5f20%5Cu56fe%5Cu5206%5Cu4e3a%5Cu4e24%5Cu90e8%5Cu5206%5Cuff0c%5Cu5de6%5Cu53f3%5Cu90fd%5Cu6709n%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff0c%5Cn%5CnAi-%3EAi%2B1%5Cu8fde%5Cu8fb9%5Cuff0cBi-%3EBi%2B1%5Cu8fde%5Cu8fb9%5Cuff0c%5Cu5bb9%5Cu91cf%5Cu7ed9%5Cu51fa%5Cn%5Cn%5Cu6709m%5Cu5bf9Ai-%3EBj%5Cu6709%5Cu8fb9%5Cuff0c%5Cu5bb9%5Cu91cf%5Cu7ed9%5Cu51fa%5Cn%5Cn%5Cu4e24%5Cu79cd%5Cu64cd%5Cu4f5c%5Cn%5Cn1.%5Cu4fee%5Cu6539%5Cu67d0%5Cu6761Ai-%3EAi%2B1%5Cu7684%5Cu8fb9%5Cu7684%5Cu5bb9%5Cu91cf%5Cn%5Cn2.%5Cu8be2%5Cu95ee%5Cu4eceA1%5Cu5230Bn%5Cu7684%5Cu6700%5Cu5927%5Cu6d41%5Cn%5Cn%242%5C%5Cleq%20n%2Cm%5C%5Cleq%202%5C%5Ctimes%2010%5E5%24%20%5Cu6d41%5Cu91cf%3C%3D10%5E9%5Cn%5Cn%5Cn%5Cu611f%5Cu8c22%40yybyyb%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B42%2C194%2C198%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A129%2C%22totalAccepted%22%3A45%2C%22pid%22%3A%22CF903G%22%2C%22title%22%3A%22Yet%20Another%20Maxflow%20Problem%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A93346%2C%22title%22%3A%22%5Cu80fd%5Cu7528long%20long%5Cu5c31%5Cu90fd%5Cu5f00%5Cu4e0a%5Cu5427%22%2C%22forum%22%3A%7B%22id%22%3A8960%2C%22name%22%3A%22CF903G%20Yet%20Another%20Maxflow%20Problem%22%2C%22slug%22%3A%22CF903G%22%7D%7D%2C%7B%22id%22%3A93343%2C%22title%22%3A%22%5Cu6ce8%5Cu610f%5Cuff1a%5Cu8fde%5Cu7684%5Cu8fb9%5Cu662f%5Cu5355%5Cu5411%5Cu8fb9....%22%2C%22forum%22%3A%7B%22id%22%3A8960%2C%22name%22%3A%22CF903G%20Yet%20Another%20Maxflow%20Problem%22%2C%22slug%22%3A%22CF903G%22%7D%7D%2C%7B%22id%22%3A48812%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A8960%2C%22name%22%3A%22CF903G%20Yet%20Another%20Maxflow%20Problem%22%2C%22slug%22%3A%22CF903G%22%7D%7D%2C%7B%22id%22%3A35492%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A8960%2C%22name%22%3A%22CF903G%20Yet%20Another%20Maxflow%20Problem%22%2C%22slug%22%3A%22CF903G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3505%22%2C%22title%22%3A%22%5BPOI2010%5DTEL-Teleportation%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF914E%22%2C%22title%22%3A%22Palindromes%20in%20a%20Tree%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF911G%22%2C%22title%22%3A%22Mass%20Change%20Queries%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF786B%22%2C%22title%22%3A%22Legacy%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF715C%22%2C%22title%22%3A%22Digit%20Tree%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Yet%20Another%20Maxflow%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Yet Another Maxflow Problem</h1>
+<h2>题意翻译</h2>
+<div>
+一张图分为两部分，左右都有n个节点，
+Ai->Ai+1连边，Bi->Bi+1连边，容量给出
+有m对Ai->Bj有边，容量给出
+两种操作
+1.修改某条Ai->Ai+1的边的容量
+2.询问从A1到Bn的最大流
+$2\leq n,m\leq 2\times 10^5$ 流量<=10^9
+感谢@yybyyb 提供的翻译</div>
+<h2>题目描述</h2>
+<div>In this problem you will have to deal with a very special network.
+The network consists of two parts: part $ A $ and part $ B $ . Each part consists of $ n $ vertices; $ i $ -th vertex of part $ A $ is denoted as $ A_{i} $ , and $ i $ -th vertex of part $ B $ is denoted as $ B_{i} $ .
+For each index $ i $ ( $ 1<=i<n $ ) there is a directed edge from vertex $ A_{i} $ to vertex $ A_{i+1} $ , and from $ B_{i} $ to $ B_{i+1} $ , respectively. Capacities of these edges are given in the input. Also there might be several directed edges going from part $ A $ to part $ B $ (but never from $ B $ to $ A $ ). You have to calculate the [maximum flow value](https://en.wikipedia.org/wiki/Maximum_flow_problem) from $ A_{1} $ to $ B_{n} $ in this network. Capacities of edges connecting $ A_{i} $ to $ A_{i+1} $ might sometimes change, and you also have to maintain the maximum flow value after these changes. Apart from that, the network is fixed (there are no changes in part $ B $ , no changes of edges going from $ A $ to $ B $ , and no edge insertions or deletions). Take a look at the example and the notes to understand the structure of the network better.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integer numbers $ n $ , $ m $ and $ q $ ( $ 2<=n,m<=2·10^{5} $ , $ 0<=q<=2·10^{5} $ ) — the number of vertices in each part, the number of edges going from $ A $ to $ B $ and the number of changes, respectively.
+Then $ n-1 $ lines follow, $ i $ -th line contains two integers $ x_{i} $ and $ y_{i} $ denoting that the edge from $ A_{i} $ to $ A_{i+1} $ has capacity $ x_{i} $ and the edge from $ B_{i} $ to $ B_{i+1} $ has capacity $ y_{i} $ ( $ 1<=x_{i},y_{i}<=10^{9} $ ).
+Then $ m $ lines follow, describing the edges from $ A $ to $ B $ . Each line contains three integers $ x $ , $ y $ and $ z $ denoting an edge from $ A_{x} $ to $ B_{y} $ with capacity $ z $ ( $ 1<=x,y<=n $ , $ 1<=z<=10^{9} $ ). There might be multiple edges from $ A_{x} $ to $ B_{y} $ .
+And then $ q $ lines follow, describing a sequence of changes to the network. $ i $ -th line contains two integers $ v_{i} $ and $ w_{i} $ , denoting that the capacity of the edge from $ A_{vi} $ to $ A_{vi}+1 $ is set to $ w_{i} $ ( $ 1<=v_{i}<n $ , $ 1<=w_{i}<=10^{9} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Firstly, print the maximum flow value in the original network. Then print $ q $ integers, $ i $ -th of them must be equal to the maximum flow value after $ i $ -th change.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 3 2
+1 2
+3 4
+5 6
+2 2 7
+1 4 8
+4 3 9
+1 100
+2 100
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>9
+14
+14
+</code></pre>
+<h2>说明</h2>
+<div>This is the original network in the example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF903G/dcc7a52e873b883e6fea740d5c4aff84e5c0da8d.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

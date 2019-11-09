@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Marco and GCD Sequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399101:jLs5+caaR40pKOctTG8h05oozolCJ3aPBcVJcxOdN7E=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20a%20dream%20Marco%20met%20an%20elderly%20man%20with%20a%20pair%20of%20black%20glasses.%20The%20man%20told%20him%20the%20key%20to%20immortality%20and%20then%20disappeared%20with%20the%20wind%20of%20time.%5Cn%5CnWhen%20he%20woke%20up%2C%20he%20only%20remembered%20that%20the%20key%20was%20a%20sequence%20of%20positive%20integers%20of%20some%20length%20%24%20n%20%24%20%2C%20but%20forgot%20the%20exact%20sequence.%20Let%20the%20elements%20of%20the%20sequence%20be%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20.%20He%20remembered%20that%20he%20calculated%20%24%20gcd%28a_%7Bi%7D%2Ca_%7Bi%2B1%7D%2C...%2Ca_%7Bj%7D%29%20%24%20for%20every%20%24%201%3C%3Di%3C%3Dj%3C%3Dn%20%24%20and%20put%20it%20into%20a%20set%20%24%20S%20%24%20.%20%24%20gcd%20%24%20here%20means%20the%20%5Bgreatest%20common%20divisor%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FGreatest_common_divisor%29.%5Cn%5CnNote%20that%20even%20if%20a%20number%20is%20put%20into%20the%20set%20%24%20S%20%24%20twice%20or%20more%2C%20it%20only%20appears%20once%20in%20the%20set.%5Cn%5CnNow%20Marco%20gives%20you%20the%20set%20%24%20S%20%24%20and%20asks%20you%20to%20help%20him%20figure%20out%20the%20initial%20sequence.%20If%20there%20are%20many%20solutions%2C%20print%20any%20of%20them.%20It%20is%20also%20possible%20that%20there%20are%20no%20sequences%20that%20produce%20the%20set%20%24%20S%20%24%20%2C%20in%20this%20case%20print%20-1.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20size%20of%20the%20set%20%24%20S%20%24%20.%5Cn%5CnThe%20second%20line%20contains%20%24%20m%20%24%20integers%20%24%20s_%7B1%7D%2Cs_%7B2%7D%2C...%2Cs_%7Bm%7D%20%24%20%28%20%24%201%3C%3Ds_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29%20%5Cu2014%20the%20elements%20of%20the%20set%20%24%20S%20%24%20.%20It%27s%20guaranteed%20that%20the%20elements%20of%20the%20set%20are%20given%20in%20strictly%20increasing%20order%2C%20that%20means%20%24%20s_%7B1%7D%26lt%3Bs_%7B2%7D%26lt%3B...%26lt%3Bs_%7Bm%7D%20%24%20.%22%2C%22outputFormat%22%3A%22If%20there%20is%20no%20solution%2C%20print%20a%20single%20line%20containing%20-1.%5Cn%5CnOtherwise%2C%20in%20the%20first%20line%20print%20a%20single%20integer%20%24%20n%20%24%20denoting%20the%20length%20of%20the%20sequence%2C%20%24%20n%20%24%20should%20not%20exceed%20%24%204000%20%24%20.%5Cn%5CnIn%20the%20second%20line%20print%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29%20%5Cu2014%20the%20sequence.%5Cn%5CnWe%20can%20show%20that%20if%20a%20solution%20exists%2C%20then%20there%20is%20a%20solution%20with%20%24%20n%20%24%20not%20exceeding%20%24%204000%20%24%20and%20%24%20a_%7Bi%7D%20%24%20not%20exceeding%20%24%2010%5E%7B6%7D%20%24%20.%5Cn%5CnIf%20there%20are%20multiple%20solutions%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%224%5Cn2%204%206%2012%5Cn%22%2C%223%5Cn4%206%2012%22%5D%2C%5B%222%5Cn2%203%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20%24%202%3Dgcd%284%2C6%29%20%24%20%2C%20the%20other%20elements%20from%20the%20set%20appear%20in%20the%20sequence%2C%20and%20we%20can%20show%20that%20there%20are%20no%20values%20different%20from%20%24%202%20%24%20%2C%20%24%204%20%24%20%2C%20%24%206%20%24%20and%20%24%2012%20%24%20among%20%24%20gcd%28a_%7Bi%7D%2Ca_%7Bi%2B1%7D%2C...%2Ca_%7Bj%7D%29%20%24%20for%20every%20%24%201%3C%3Di%3C%3Dj%3C%3Dn%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F894%5C%2FC%22%2C%22id%22%3A%22894C%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cr%5Cn%5Cr%5Cn%5Cu6709%5Cu4e00%5Cu5929%24Macro%24%5Cu505a%5Cu68a6%5Cu68a6%5Cu89c1%5Cu4e86%5Cu4e00%5Cu4f4d%5Cu6234%5Cu7740%5Cu9ed1%5Cu6846%5Cu773c%5Cu775b%5Cu7684%5Cu957f%5Cu8005%2C%5Cu90a3%5Cu4f4d%5Cu957f%5Cu8005%5Cu544a%5Cu8bc9%5Cu4ed6%5Cu957f%5Cu751f%5Cu4e0d%5Cu8001%5Cu7684%5Cu5bc6%5Cu5319%2C%20%24Macro%24%5Cu8fd8%5Cu60f3%5Cu7ee7%5Cu7eed%5Cu8ffd%5Cu95ee%2C%5Cu4f46%5Cu90a3%5Cu4f4d%5Cu957f%5Cu8005%5Cu53ea%5Cu8bf4%5Cu4e86%5Cu56db%5Cu4e2a%5Cu5b57%5C%22%5Cu65e0%5Cu53ef%5Cu5949%5Cu544a%5C%22.%5Cu968f%5Cu5373%5Cu4ed6%5Cu5c31%5Cu6d88%5Cu5931%5Cu5728%5Cu65f6%5Cu95f4%5Cu4e4b%5Cu98ce%5Cu4e2d%5Cr%5Cn%5Cr%5CnMacro%5Cu9192%5Cu6765%5Cu540e%5Cu53ea%5Cu8bb0%5Cu5f97%5Cu5bc6%5Cu5319%5Cu662f%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24N%24%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%24a_i%24%2C%5Cu4f46%5Cu662f%5Cu4ed6%5Cu4e8b%5Cu5148%5Cu95f7%5Cu58f0%5Cu53d1%5Cu5927%5Cu8d22%2C%5Cu8ba1%5Cu7b97%5Cu4e86%5Cu6240%5Cu6709%24gcd%28a_i%2Ca_%7Bi%2B1%7D...a_j%29%20%281%3C%3Di%3C%3Dj%3C%3Dn%29%24%5Cu5e76%5Cu4e14%5Cu628a%5Cu7ed3%5Cu679c%5Cu653e%5Cu5165%5Cu5355%5Cu91cd%5Cu96c6%5Cu5408%24S%24%5Cr%5Cn%5Cr%5Cn%5Cu6ce8%5Cu610f%5Cu5982%5Cu679c%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu88ab%5Cu591a%5Cu6b21%5Cu653e%5Cu5165%5Cu96c6%5Cu5408%2C%5Cu5b83%5Cu53ea%5Cu4f1a%5Cu51fa%5Cu73b0%5Cu4e00%5Cu6b21%5Cr%5Cn%5Cr%5Cn%5Cu56e0%5Cu4e3a%5Cu4f60%5Cu6bd4%24Macro%24%5Cu4e0d%5Cu77e5%5Cu9053%5Cu9ad8%5Cu5230%5Cu54ea%5Cu91cc%5Cu53bb%2C%5Cu73b0%5Cu5728%24Macro%24%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu96c6%5Cu5408%24S%24%5Cuff0c%5Cu8981%5Cu6c42%5Cu4f60%5Cu8fd8%5Cu539f%5Cu51fa%5Cu5bc6%5Cu5319%5Cu5e8f%5Cu5217%5Cu3002%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu79cd%5Cu89e3%2C%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu79cd.%5Cu5982%5Cu679c%5Cu8fd9%5Cu4e2a%5Cu96c6%5Cu5408%5Cu592a%24naive%24%2C%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu8fd8%5Cu539f%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cuff0c%5Cu90a3%5Cu4e48%5Cu8f93%5Cu51fa%5C%22-1%5C%22%28%5Cu6ca1%5Cu6709%5Cu5f15%5Cu53f7%29%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24M%281%3C%3DM%3C%3D1000%29%24%5Cu8868%5Cu793a%5Cu8fd9%5Cu4e2a%5Cu96c6%5Cu5408%5Cu7684%5Cu5927%5Cu5c0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6309%2A%2A%5Cu5347%5Cu5e8f%2A%2A%5Cu8f93%5Cu51fa%24M%24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24a_i%281%3C%3Da_i%3C%3D10%5E6%29%24%5Cu8868%5Cu793a%5Cu96c6%5Cu5408%5Cu4e2d%5Cu7684%5Cu5143%5Cu7d20%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu5982%5Cu679c%5Cu65e0%5Cu89e3%5Cu8f93%5Cu51fa%5C%22-1%5C%22%28%5Cu6ca1%5Cu6709%5Cu5f15%5Cu53f7%29%5Cr%5Cn%5Cr%5Cn%5Cu5426%5Cu5219%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu4e0d%5Cu8d85%5Cu8fc7%244000%24%5Cu7684%5Cu6574%5Cu6570%24N%24%5Cu8868%5Cu793a%5Cu5bc6%5Cu5319%5Cu5e8f%5Cu5217%5Cu957f%5Cu5ea6%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8f93%5Cu5165%24N%24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24a_i%20%281%3C%3Da_i%3C%3D10%5E6%29%24%5Cu8868%5Cu793a%5Cu5e8f%5Cu5217%5Cu5143%5Cu7d20%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu5982%5Cu679c%5Cu5b58%5Cu5728%5Cu89e3%2C%5Cu90a3%5Cu4e48%5Cu4e00%5Cu5b9a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu89e3%5Cu6ee1%5Cu8db3%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc7%244000%24%5Cu5e76%5Cu4e14%5Cu5e8f%5Cu5217%5Cu5143%5Cu7d20%24a_i%24%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc7%2410%5E6%24%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu8fd8%5Cu662f%5Cu6709%5Cu591a%5Cu79cd%5Cu89e3%2C%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu79cd%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF894C%22%2C%22title%22%3A%22Marco%20and%20GCD%20Sequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A67184%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5B%5Cu975e%5Cu673a%5Cu7ffb%5D%22%2C%22forum%22%3A%7B%22id%22%3A9005%2C%22name%22%3A%22CF894C%20Marco%20and%20GCD%20Sequence%22%2C%22slug%22%3A%22CF894C%22%7D%7D%2C%7B%22id%22%3A67149%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9005%2C%22name%22%3A%22CF894C%20Marco%20and%20GCD%20Sequence%22%2C%22slug%22%3A%22CF894C%22%7D%7D%2C%7B%22id%22%3A67146%2C%22title%22%3A%22%5Cu9898%5Cu9762%5Cu8fc7%5Cu4e8e%5Cu66b4%5Cu529b%22%2C%22forum%22%3A%7B%22id%22%3A9005%2C%22name%22%3A%22CF894C%20Marco%20and%20GCD%20Sequence%22%2C%22slug%22%3A%22CF894C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Marco%20and%20GCD%20Sequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Marco and GCD Sequence</h1>
+<h2>题意翻译</h2>
+<div>### 题目大意
+有一天$Macro$做梦梦见了一位戴着黑框眼睛的长者,那位长者告诉他长生不老的密匙, $Macro$还想继续追问,但那位长者只说了四个字"无可奉告".随即他就消失在时间之风中
+Macro醒来后只记得密匙是一个长度为$N$的正整数序列$a_i$,但是他事先闷声发大财,计算了所有$gcd(a_i,a_{i+1}...a_j) (1<=i<=j<=n)$并且把结果放入单重集合$S$
+注意如果一个元素被多次放入集合,它只会出现一次
+因为你比$Macro$不知道高到哪里去,现在$Macro$给你一个集合$S$，要求你还原出密匙序列。如果有多种解,输出任意一种.如果这个集合太$naive$,不可能还原出一个序列，那么输出"-1"(没有引号)
+### 输入格式
+第一行一个正整数$M(1<=M<=1000)$表示这个集合的大小
+第二行按**升序**输出$M$个正整数$a_i(1<=a_i<=10^6)$表示集合中的元素
+### 输出格式
+如果无解输出"-1"(没有引号)
+否则第一行输出一个不超过$4000$的整数$N$表示密匙序列长度
+第二行输入$N$个正整数$a_i (1<=a_i<=10^6)$表示序列元素
+保证如果存在解,那么一定有一个解满足长度不会超过$4000$并且序列元素$a_i$不会超过$10^6$
+如果还是有多种解,输出任意一种</div>
+<h2>题目描述</h2>
+<div>In a dream Marco met an elderly man with a pair of black glasses. The man told him the key to immortality and then disappeared with the wind of time.
+When he woke up, he only remembered that the key was a sequence of positive integers of some length $ n $ , but forgot the exact sequence. Let the elements of the sequence be $ a_{1},a_{2},...,a_{n} $ . He remembered that he calculated $ gcd(a_{i},a_{i+1},...,a_{j}) $ for every $ 1<=i<=j<=n $ and put it into a set $ S $ . $ gcd $ here means the [greatest common divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor).
+Note that even if a number is put into the set $ S $ twice or more, it only appears once in the set.
+Now Marco gives you the set $ S $ and asks you to help him figure out the initial sequence. If there are many solutions, print any of them. It is also possible that there are no sequences that produce the set $ S $ , in this case print -1.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ m $ ( $ 1<=m<=1000 $ ) — the size of the set $ S $ .
+The second line contains $ m $ integers $ s_{1},s_{2},...,s_{m} $ ( $ 1<=s_{i}<=10^{6} $ ) — the elements of the set $ S $ . It's guaranteed that the elements of the set are given in strictly increasing order, that means $ s_{1}&lt;s_{2}&lt;...&lt;s_{m} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>If there is no solution, print a single line containing -1.
+Otherwise, in the first line print a single integer $ n $ denoting the length of the sequence, $ n $ should not exceed $ 4000 $ .
+In the second line print $ n $ integers $ a_{1},a_{2},...,a_{n} $ ( $ 1<=a_{i}<=10^{6} $ ) — the sequence.
+We can show that if a solution exists, then there is a solution with $ n $ not exceeding $ 4000 $ and $ a_{i} $ not exceeding $ 10^{6} $ .
+If there are multiple solutions, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+2 4 6 12
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+4 6 12</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-1
+</code></pre>
+<h2>说明</h2>
+<div>In the first example $ 2=gcd(4,6) $ , the other elements from the set appear in the sequence, and we can show that there are no values different from $ 2 $ , $ 4 $ , $ 6 $ and $ 12 $ among $ gcd(a_{i},a_{i+1},...,a_{j}) $ for every $ 1<=i<=j<=n $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Berland Elections - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398566:ZDu1aDl5x5nUAz98RzyJcJHc2GKnPVDxqBZcoNFk22Q=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20elections%20to%20Berland%20parliament%20are%20happening%20today.%20Voting%20is%20in%20full%20swing%21%5Cn%5CnTotally%20there%20are%20%24%20n%20%24%20candidates%2C%20they%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20Based%20on%20election%20results%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%3C%3Dn%20%24%20%29%20top%20candidates%20will%20take%20seats%20in%20the%20parliament.%5Cn%5CnAfter%20the%20end%20of%20the%20voting%20the%20number%20of%20votes%20for%20each%20candidate%20is%20calculated.%20In%20the%20resulting%20table%20the%20candidates%20are%20ordered%20by%20the%20number%20of%20votes.%20In%20case%20of%20tie%20%28equal%20number%20of%20votes%29%20they%20are%20ordered%20by%20the%20time%20of%20the%20last%20vote%20given.%20The%20candidate%20with%20ealier%20last%20vote%20stands%20higher%20in%20the%20resulting%20table.%5Cn%5CnSo%20in%20the%20resulting%20table%20candidates%20are%20sorted%20by%20the%20number%20of%20votes%20%28more%20votes%20stand%20for%20the%20higher%20place%29%20and%20if%20two%20candidates%20have%20equal%20number%20of%20votes%20they%20are%20sorted%20by%20the%20time%20of%20last%20vote%20%28earlier%20last%20vote%20stands%20for%20the%20higher%20place%29.%5Cn%5CnThere%20is%20no%20way%20for%20a%20candidate%20with%20zero%20votes%20to%20take%20a%20seat%20in%20the%20parliament.%20So%20it%20is%20possible%20that%20less%20than%20%24%20k%20%24%20candidates%20will%20take%20a%20seat%20in%20the%20parliament.%5Cn%5CnIn%20Berland%20there%20are%20%24%20m%20%24%20citizens%20who%20can%20vote.%20Each%20of%20them%20will%20vote%20for%20some%20candidate.%20Each%20citizen%20will%20give%20a%20vote%20to%20exactly%20one%20of%20%24%20n%20%24%20candidates.%20There%20is%20no%20option%20%5C%22against%20everyone%5C%22%20on%20the%20elections.%20It%20is%20not%20accepted%20to%20spoil%20bulletins%20or%20not%20to%20go%20to%20elections.%20So%20each%20of%20%24%20m%20%24%20citizens%20will%20vote%20for%20exactly%20one%20of%20%24%20n%20%24%20candidates.%5Cn%5CnAt%20the%20moment%20%24%20a%20%24%20citizens%20have%20voted%20already%20%28%20%24%201%3C%3Da%3C%3Dm%20%24%20%29.%20This%20is%20an%20open%20election%2C%20so%20for%20each%20citizen%20it%20is%20known%20the%20candidate%20for%20which%20the%20citizen%20has%20voted.%20Formally%2C%20the%20%24%20j%20%24%20-th%20citizen%20voted%20for%20the%20candidate%20%24%20g_%7Bj%7D%20%24%20.%20The%20citizens%20who%20already%20voted%20are%20numbered%20in%20chronological%20order%3B%20i.e.%20the%20%24%20%28j%2B1%29%20%24%20-th%20citizen%20voted%20after%20the%20%24%20j%20%24%20-th.%5Cn%5CnThe%20remaining%20%24%20m-a%20%24%20citizens%20will%20vote%20before%20the%20end%20of%20elections%2C%20each%20of%20them%20will%20vote%20for%20one%20of%20%24%20n%20%24%20candidates.%5Cn%5CnYour%20task%20is%20to%20determine%20for%20each%20of%20%24%20n%20%24%20candidates%20one%20of%20the%20three%20possible%20outcomes%3A%5Cn%5Cn-%20a%20candidate%20will%20be%20elected%20to%20the%20parliament%20regardless%20of%20votes%20of%20the%20remaining%20%24%20m-a%20%24%20citizens%3B%5Cn-%20a%20candidate%20has%20chance%20to%20be%20elected%20to%20the%20parliament%20after%20all%20%24%20n%20%24%20citizens%20have%20voted%3B%5Cn-%20a%20candidate%20has%20no%20chances%20to%20be%20elected%20to%20the%20parliament%20regardless%20of%20votes%20of%20the%20remaining%20%24%20m-a%20%24%20citizens.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20four%20integers%20%24%20n%20%24%20%2C%20%24%20k%20%24%20%2C%20%24%20m%20%24%20and%20%24%20a%20%24%20%28%20%24%201%3C%3Dk%3C%3Dn%3C%3D100%20%24%20%2C%20%24%201%3C%3Dm%3C%3D100%20%24%20%2C%20%24%201%3C%3Da%3C%3Dm%20%24%20%29%20%5Cu2014%20the%20number%20of%20candidates%2C%20the%20number%20of%20seats%20in%20the%20parliament%2C%20the%20number%20of%20Berland%20citizens%20and%20the%20number%20of%20citizens%20who%20already%20have%20voted.%5Cn%5CnThe%20second%20line%20contains%20a%20sequence%20of%20%24%20a%20%24%20integers%20%24%20g_%7B1%7D%2Cg_%7B2%7D%2C...%2Cg_%7Ba%7D%20%24%20%28%20%24%201%3C%3Dg_%7Bj%7D%3C%3Dn%20%24%20%29%2C%20where%20%24%20g_%7Bj%7D%20%24%20is%20the%20candidate%20for%20which%20the%20%24%20j%20%24%20-th%20citizen%20has%20voted.%20Citizens%20who%20already%20voted%20are%20numbered%20in%20increasing%20order%20of%20voting%20times.%22%2C%22outputFormat%22%3A%22Print%20the%20sequence%20consisting%20of%20%24%20n%20%24%20integers%20%24%20r_%7B1%7D%2Cr_%7B2%7D%2C...%2Cr_%7Bn%7D%20%24%20where%3A%5Cn%5Cn-%20%24%20r_%7Bi%7D%3D1%20%24%20means%20that%20the%20%24%20i%20%24%20-th%20candidate%20is%20guaranteed%20to%20take%20seat%20in%20the%20parliament%20regardless%20of%20votes%20of%20the%20remaining%20%24%20m-a%20%24%20citizens%3B%5Cn-%20%24%20r_%7Bi%7D%3D2%20%24%20means%20that%20the%20%24%20i%20%24%20-th%20candidate%20has%20a%20chance%20to%20take%20a%20seat%20in%20the%20parliament%2C%20i.e.%20the%20remaining%20%24%20m-a%20%24%20citizens%20can%20vote%20in%20such%20a%20way%20that%20the%20candidate%20will%20take%20a%20seat%20in%20the%20parliament%3B%5Cn-%20%24%20r_%7Bi%7D%3D3%20%24%20means%20that%20the%20%24%20i%20%24%20-th%20candidate%20will%20not%20take%20a%20seat%20in%20the%20parliament%20regardless%20of%20votes%20of%20the%20remaining%20%24%20m-a%20%24%20citizens.%22%2C%22samples%22%3A%5B%5B%223%201%205%204%5Cn1%202%201%203%5Cn%22%2C%221%203%203%20%22%5D%2C%5B%223%201%205%203%5Cn1%203%201%5Cn%22%2C%222%203%202%20%22%5D%2C%5B%223%202%205%203%5Cn1%203%201%5Cn%22%2C%221%202%202%20%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F847%5C%2FF%22%2C%22id%22%3A%22847F%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF847F%22%2C%22title%22%3A%22Berland%20Elections%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Berland%20Elections%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Berland Elections</h1>
+<h2>题目描述</h2>
+<div>The elections to Berland parliament are happening today. Voting is in full swing!
+Totally there are $ n $ candidates, they are numbered from $ 1 $ to $ n $ . Based on election results $ k $ ( $ 1<=k<=n $ ) top candidates will take seats in the parliament.
+After the end of the voting the number of votes for each candidate is calculated. In the resulting table the candidates are ordered by the number of votes. In case of tie (equal number of votes) they are ordered by the time of the last vote given. The candidate with ealier last vote stands higher in the resulting table.
+So in the resulting table candidates are sorted by the number of votes (more votes stand for the higher place) and if two candidates have equal number of votes they are sorted by the time of last vote (earlier last vote stands for the higher place).
+There is no way for a candidate with zero votes to take a seat in the parliament. So it is possible that less than $ k $ candidates will take a seat in the parliament.
+In Berland there are $ m $ citizens who can vote. Each of them will vote for some candidate. Each citizen will give a vote to exactly one of $ n $ candidates. There is no option "against everyone" on the elections. It is not accepted to spoil bulletins or not to go to elections. So each of $ m $ citizens will vote for exactly one of $ n $ candidates.
+At the moment $ a $ citizens have voted already ( $ 1<=a<=m $ ). This is an open election, so for each citizen it is known the candidate for which the citizen has voted. Formally, the $ j $ -th citizen voted for the candidate $ g_{j} $ . The citizens who already voted are numbered in chronological order; i.e. the $ (j+1) $ -th citizen voted after the $ j $ -th.
+The remaining $ m-a $ citizens will vote before the end of elections, each of them will vote for one of $ n $ candidates.
+Your task is to determine for each of $ n $ candidates one of the three possible outcomes:
+- a candidate will be elected to the parliament regardless of votes of the remaining $ m-a $ citizens;
+- a candidate has chance to be elected to the parliament after all $ n $ citizens have voted;
+- a candidate has no chances to be elected to the parliament regardless of votes of the remaining $ m-a $ citizens.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains four integers $ n $ , $ k $ , $ m $ and $ a $ ( $ 1<=k<=n<=100 $ , $ 1<=m<=100 $ , $ 1<=a<=m $ ) — the number of candidates, the number of seats in the parliament, the number of Berland citizens and the number of citizens who already have voted.
+The second line contains a sequence of $ a $ integers $ g_{1},g_{2},...,g_{a} $ ( $ 1<=g_{j}<=n $ ), where $ g_{j} $ is the candidate for which the $ j $ -th citizen has voted. Citizens who already voted are numbered in increasing order of voting times.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the sequence consisting of $ n $ integers $ r_{1},r_{2},...,r_{n} $ where:
+- $ r_{i}=1 $ means that the $ i $ -th candidate is guaranteed to take seat in the parliament regardless of votes of the remaining $ m-a $ citizens;
+- $ r_{i}=2 $ means that the $ i $ -th candidate has a chance to take a seat in the parliament, i.e. the remaining $ m-a $ citizens can vote in such a way that the candidate will take a seat in the parliament;
+- $ r_{i}=3 $ means that the $ i $ -th candidate will not take a seat in the parliament regardless of votes of the remaining $ m-a $ citizens.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1 5 4
+1 2 1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 3 3 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 1 5 3
+1 3 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 3 2 </code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 2 5 3
+1 3 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1 2 2 </code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

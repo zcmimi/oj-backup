@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Segments Removal - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399171:xelRodyZBm0xD1Z1+H2VZp3FI6sppk8r/shuzsElRcA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Vasya%20has%20an%20array%20of%20integers%20of%20length%20%24%20n%20%24%20.%5Cn%5CnVasya%20performs%20the%20following%20operations%20on%20the%20array%3A%20on%20each%20step%20he%20finds%20the%20longest%20segment%20of%20consecutive%20equal%20integers%20%28the%20leftmost%2C%20if%20there%20are%20several%20such%20segments%29%20and%20removes%20it.%20For%20example%2C%20if%20Vasya%27s%20array%20is%20%24%20%5B13%2C13%2C7%2C7%2C7%2C2%2C2%2C2%5D%20%24%20%2C%20then%20after%20one%20operation%20it%20becomes%20%24%20%5B13%2C13%2C2%2C2%2C2%5D%20%24%20.%5Cn%5CnCompute%20the%20number%20of%20operations%20Vasya%20should%20make%20until%20the%20array%20becomes%20empty%2C%20i.e.%20Vasya%20removes%20all%20elements%20from%20it.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D200000%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20array.%5Cn%5CnThe%20second%20line%20contains%20a%20sequence%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20Vasya%27s%20array.%22%2C%22outputFormat%22%3A%22Print%20the%20number%20of%20operations%20Vasya%20should%20make%20to%20remove%20all%20elements%20from%20the%20array.%22%2C%22samples%22%3A%5B%5B%224%5Cn2%205%205%202%5Cn%22%2C%222%5Cn%22%5D%2C%5B%225%5Cn6%203%204%201%205%5Cn%22%2C%225%5Cn%22%5D%2C%5B%228%5Cn4%204%204%202%202%20100%20100%20100%5Cn%22%2C%223%5Cn%22%5D%2C%5B%226%5Cn10%2010%2050%2010%2050%2050%5Cn%22%2C%224%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20at%20first%20Vasya%20removes%20two%20fives%20at%20the%20second%20and%20third%20positions.%20The%20array%20becomes%20%24%20%5B2%2C2%5D%20%24%20.%20In%20the%20second%20operation%20Vasya%20removes%20two%20twos%20at%20the%20first%20and%20second%20positions.%20After%20that%20the%20array%20becomes%20empty.%5Cn%5CnIn%20the%20second%20example%20Vasya%20has%20to%20perform%20five%20operations%20to%20make%20the%20array%20empty.%20In%20each%20of%20them%20he%20removes%20the%20first%20element%20from%20the%20array.%5Cn%5CnIn%20the%20third%20example%20Vasya%20needs%20three%20operations.%20In%20the%20first%20operation%20he%20removes%20all%20integers%20%24%204%20%24%20%2C%20in%20the%20second%20%5Cu2014%20all%20integers%20%24%20100%20%24%20%2C%20in%20the%20third%20%5Cu2014%20all%20integers%20%24%202%20%24%20.%5Cn%5CnIn%20the%20fourth%20example%20in%20the%20first%20operation%20Vasya%20removes%20the%20first%20two%20integers%20%24%2010%20%24%20.%20After%20that%20the%20array%20becomes%20%24%20%5B50%2C10%2C50%2C50%5D%20%24%20.%20Then%20in%20the%20second%20operation%20Vasya%20removes%20the%20two%20rightmost%20integers%20%24%2050%20%24%20%2C%20so%20that%20the%20array%20becomes%20%24%20%5B50%2C10%5D%20%24%20.%20In%20the%20third%20operation%20he%20removes%20the%20remaining%20%24%2050%20%24%20%2C%20and%20the%20array%20becomes%20%24%20%5B10%5D%20%24%20after%20that.%20In%20the%20last%2C%20fourth%20operation%20he%20removes%20the%20only%20remaining%20%24%2010%20%24%20.%20The%20array%20is%20empty%20after%20that.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F899%5C%2FE%22%2C%22id%22%3A%22899E%22%7D%2C%22translation%22%3A%22%5Cu6bcf%5Cu6b21%5Cu5220%5Cu9664%5Cu957f%5Cu5ea6%5Cu6700%5Cu957f%5Cu7684%5Cu6700%5Cu5de6%5Cu9762%5Cu7684%5Cu4e00%5Cu6bb5%5Cu8fde%5Cu7eed%5Cu7684%5Cu6570%5Cu5b57%5Cu533a%5Cu95f4%5Cuff0c%5Cu6c42%5Cu5220%5Cu9664%5Cu6b21%5Cu6570%22%2C%22tags%22%3A%5B42%2C148%2C288%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A38%2C%22totalAccepted%22%3A19%2C%22pid%22%3A%22CF899E%22%2C%22title%22%3A%22Segments%20Removal%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32095%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A8980%2C%22name%22%3A%22CF899E%20Segments%20Removal%22%2C%22slug%22%3A%22CF899E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Segments%20Removal%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Segments Removal</h1>
+<h2>题意翻译</h2>
+<div>每次删除长度最长的最左面的一段连续的数字区间，求删除次数</div>
+<h2>题目描述</h2>
+<div>Vasya has an array of integers of length $ n $ .
+Vasya performs the following operations on the array: on each step he finds the longest segment of consecutive equal integers (the leftmost, if there are several such segments) and removes it. For example, if Vasya's array is $ [13,13,7,7,7,2,2,2] $ , then after one operation it becomes $ [13,13,2,2,2] $ .
+Compute the number of operations Vasya should make until the array becomes empty, i.e. Vasya removes all elements from it.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 1<=n<=200000 $ ) — the length of the array.
+The second line contains a sequence $ a_{1},a_{2},...,a_{n} $ ( $ 1<=a_{i}<=10^{9} $ ) — Vasya's array.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the number of operations Vasya should make to remove all elements from the array.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+2 5 5 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+6 3 4 1 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>5
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>8
+4 4 4 2 2 100 100 100
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>6
+10 10 50 10 50 50
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>4
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, at first Vasya removes two fives at the second and third positions. The array becomes $ [2,2] $ . In the second operation Vasya removes two twos at the first and second positions. After that the array becomes empty.
+In the second example Vasya has to perform five operations to make the array empty. In each of them he removes the first element from the array.
+In the third example Vasya needs three operations. In the first operation he removes all integers $ 4 $ , in the second — all integers $ 100 $ , in the third — all integers $ 2 $ .
+In the fourth example in the first operation Vasya removes the first two integers $ 10 $ . After that the array becomes $ [50,10,50,50] $ . Then in the second operation Vasya removes the two rightmost integers $ 50 $ , so that the array becomes $ [50,10] $ . In the third operation he removes the remaining $ 50 $ , and the array becomes $ [10] $ after that. In the last, fourth operation he removes the only remaining $ 10 $ . The array is empty after that.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

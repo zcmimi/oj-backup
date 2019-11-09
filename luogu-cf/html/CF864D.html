@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Make a Permutation! - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398809:BOLXAPCilgwW6iRkcbedBgrmQcmPvYkyndtzQONZhjs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Ivan%20has%20an%20array%20consisting%20of%20%24%20n%20%24%20elements.%20Each%20of%20the%20elements%20is%20an%20integer%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%5Cn%5CnRecently%20Ivan%20learned%20about%20permutations%20and%20their%20lexicographical%20order.%20Now%20he%20wants%20to%20change%20%28replace%29%20minimum%20number%20of%20elements%20in%20his%20array%20in%20such%20a%20way%20that%20his%20array%20becomes%20a%20permutation%20%28i.e.%20each%20of%20the%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20was%20encountered%20in%20his%20array%20exactly%20once%29.%20If%20there%20are%20multiple%20ways%20to%20do%20it%20he%20wants%20to%20find%20the%20lexicographically%20minimal%20permutation%20among%20them.%5Cn%5CnThus%20minimizing%20the%20number%20of%20changes%20has%20the%20first%20priority%2C%20lexicographical%20minimizing%20has%20the%20second%20priority.%5Cn%5CnIn%20order%20to%20determine%20which%20of%20the%20two%20permutations%20is%20lexicographically%20smaller%2C%20we%20compare%20their%20first%20elements.%20If%20they%20are%20equal%20%5Cu2014%20compare%20the%20second%2C%20and%20so%20on.%20If%20we%20have%20two%20permutations%20%24%20x%20%24%20and%20%24%20y%20%24%20%2C%20then%20%24%20x%20%24%20is%20lexicographically%20smaller%20if%20%24%20x_%7Bi%7D%3Cy_%7Bi%7D%20%24%20%2C%20where%20%24%20i%20%24%20is%20the%20first%20index%20in%20which%20the%20permutations%20%24%20x%20%24%20and%20%24%20y%20%24%20differ.%5Cn%5CnDetermine%20the%20array%20Ivan%20will%20obtain%20after%20performing%20all%20the%20changes.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20single%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D200000%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20Ivan%27s%20array.%5Cn%5CnThe%20second%20line%20contains%20a%20sequence%20of%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20description%20of%20Ivan%27s%20array.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20%24%20q%20%24%20%5Cu2014%20the%20minimum%20number%20of%20elements%20that%20need%20to%20be%20changed%20in%20Ivan%27s%20array%20in%20order%20to%20make%20his%20array%20a%20permutation.%20In%20the%20second%20line%2C%20print%20the%20lexicographically%20minimal%20permutation%20which%20can%20be%20obtained%20from%20array%20with%20%24%20q%20%24%20changes.%22%2C%22samples%22%3A%5B%5B%224%5Cn3%202%202%203%5Cn%22%2C%222%5Cn1%202%204%203%20%5Cn%22%5D%2C%5B%226%5Cn4%205%206%203%202%201%5Cn%22%2C%220%5Cn4%205%206%203%202%201%20%5Cn%22%5D%2C%5B%2210%5Cn6%208%204%206%207%201%206%203%204%205%5Cn%22%2C%223%5Cn2%208%204%206%207%201%209%203%2010%205%20%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20Ivan%20needs%20to%20replace%20number%20three%20in%20position%20%24%201%20%24%20with%20number%20one%2C%20and%20number%20two%20in%20position%20%24%203%20%24%20with%20number%20four.%20Then%20he%20will%20get%20a%20permutation%20%5C%5C%5B1%2C%202%2C%204%2C%203%5C%5C%5D%20with%20only%20two%20changed%20numbers%20%5Cu2014%20this%20permutation%20is%20lexicographically%20minimal%20among%20all%20suitable.%5Cn%5CnIn%20the%20second%20example%20Ivan%20does%20not%20need%20to%20change%20anything%20because%20his%20array%20already%20is%20a%20permutation.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F864%5C%2FD%22%2C%22id%22%3A%22864D%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu610f%3A%5Cn%20%20%20%20%5Cu7ed9%5Cu51fa%5Cu542b%5Cu6709n%5Cu4e2a%5Cu6570%5Cu7684%5Cu5e8f%5Cu5217%2C%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu7684%5Cu8303%5Cu56f4%5Cu662f1~n.%5Cu8bf7%5Cu4f60%5Cu6539%5Cu53d8%5Cu5176%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e9b%5Cu6570%5Cu4f7f%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu6210%5Cu4e3a%5Cu4e00%5Cu4e2a1~n%5Cu7684%5Cu5168%5Cu6392%5Cu5217%2C%5Cu82e5%5Cu6709%5Cu591a%5Cu79cd%5Cu53d8%5Cu5316%5Cu65b9%5Cu6848%2C%5Cu53d6%5Cu6539%5Cu53d8%5Cu6b21%5Cu6570%5Cu6700%5Cu5c11%5Cu4e14%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu65b9%5Cu6848.%5Cn%5Cu8f93%5Cu5165%3A%5Cn%20%20%20%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%282%3C%3Dn%3C%3D200000%29%5Cn%20%20%20%20%5Cu7b2c%5Cu4e8c%5Cu884cn%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu8fd9%5Cu4e2a%5Cu5e8f%5Cu5217%5Cn%5Cu8f93%5Cu51fa%3A%5Cn%20%20%20%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu6700%5Cu5c11%5Cu7684%5Cu6539%5Cu53d8%5Cu6b21%5Cu6570%5Cn%20%20%20%20%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6539%5Cu53d8%5Cu540e%5Cu7684%5Cu5168%5Cu6392%5Cu5217%20%5Cn%5Cn%5Cn%5Cu611f%5Cu8c22%40%5Cu51cc%5Cu5e7d%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A21%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF864D%22%2C%22title%22%3A%22Make%20a%20Permutation%21%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32541%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9112%2C%22name%22%3A%22CF864D%20Make%20a%20Permutation%21%22%2C%22slug%22%3A%22CF864D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Make%20a%20Permutation%21%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Make a Permutation!</h1>
+<h2>题意翻译</h2>
+<div>题意:
+给出含有n个数的序列,每个数的范围是1~n.请你改变其中的一些数使这个序列成为一个1~n的全排列,若有多种变化方案,取改变次数最少且字典序最小的方案.
+输入:
+第一行一个整数n(2<=n<=200000)
+第二行n个整数表示这个序列
+输出:
+第一行一个整数表示最少的改变次数
+第二行改变后的全排列
+感谢@凌幽 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Ivan has an array consisting of $ n $ elements. Each of the elements is an integer from $ 1 $ to $ n $ .
+Recently Ivan learned about permutations and their lexicographical order. Now he wants to change (replace) minimum number of elements in his array in such a way that his array becomes a permutation (i.e. each of the integers from $ 1 $ to $ n $ was encountered in his array exactly once). If there are multiple ways to do it he wants to find the lexicographically minimal permutation among them.
+Thus minimizing the number of changes has the first priority, lexicographical minimizing has the second priority.
+In order to determine which of the two permutations is lexicographically smaller, we compare their first elements. If they are equal — compare the second, and so on. If we have two permutations $ x $ and $ y $ , then $ x $ is lexicographically smaller if $ x_{i}<y_{i} $ , where $ i $ is the first index in which the permutations $ x $ and $ y $ differ. Determine the array Ivan will obtain after performing all the changes.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an single integer $ n $ ( $ 2<=n<=200000 $ ) — the number of elements in Ivan's array.
+The second line contains a sequence of integers $ a_{1},a_{2},...,a_{n} $ ( $ 1<=a_{i}<=n $ ) — the description of Ivan's array.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print $ q $ — the minimum number of elements that need to be changed in Ivan's array in order to make his array a permutation. In the second line, print the lexicographically minimal permutation which can be obtained from array with $ q $ changes.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+3 2 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+1 2 4 3 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6
+4 5 6 3 2 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0
+4 5 6 3 2 1 
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>10
+6 8 4 6 7 1 6 3 4 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>3
+2 8 4 6 7 1 9 3 10 5 
+</code></pre>
+<h2>说明</h2>
+<div>In the first example Ivan needs to replace number three in position $ 1 $ with number one, and number two in position $ 3 $ with number four. Then he will get a permutation \[1, 2, 4, 3\] with only two changed numbers — this permutation is lexicographically minimal among all suitable.
+In the second example Ivan does not need to change anything because his array already is a permutation.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

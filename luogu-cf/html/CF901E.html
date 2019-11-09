@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cyclic Cipher - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399196:arik1tFQEa4/TEB3odItJPMdtxEmzBKDYBFRG2zleAs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901E%5C%2F09d58666f469d1212864032a997630308f9a2d24.png%29Senor%20Vorpal%20Kickass%27o%20invented%20an%20innovative%20method%20to%20encrypt%20integer%20sequences%20of%20length%20%24%20n%20%24%20.%20To%20encrypt%20a%20sequence%2C%20one%20has%20to%20choose%20a%20secret%20sequence%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901E%5C%2F9d7f596ac3bfcb4de56caec3ed98f54b8c38886c.png%29%2C%20that%20acts%20as%20a%20key.%5Cn%5CnVorpal%20is%20very%20selective%2C%20so%20the%20key%20should%20be%20such%20a%20sequence%20%24%20b_%7Bi%7D%20%24%20%2C%20that%20its%20cyclic%20shifts%20are%20linearly%20independent%2C%20that%20is%2C%20there%20is%20no%20non-zero%20set%20of%20coefficients%20%24%20x_%7B0%7D%2Cx_%7B1%7D%2C...%2Cx_%7Bn-1%7D%20%24%20%2C%20such%20that%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901E%5C%2F14fc308524a42e2bfab7fa5bbb60c1743e7911b3.png%29%20for%20all%20%24%20k%20%24%20at%20the%20same%20time.%5Cn%5CnAfter%20that%20for%20a%20sequence%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901E%5C%2F5656a7a50865b0a2e60963f7abba52e4c4e82222.png%29%20you%20should%20build%20the%20following%20cipher%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901E%5C%2Fd8113c9899e75c215e4f30da73d960636a7306eb.png%29In%20other%20words%2C%20you%20are%20to%20compute%20the%20quadratic%20deviation%20between%20each%20cyclic%20shift%20of%20%24%20b_%7Bi%7D%20%24%20and%20the%20sequence%20%24%20a_%7Bi%7D%20%24%20.%20The%20resulting%20sequence%20is%20the%20Kickass%27s%20cipher.%20The%20cipher%20is%20in%20development%20right%20now%20and%20Vorpal%20wants%20to%20decipher%20a%20sequence%20after%20it%20has%20been%20encrypted.%20You%20are%20to%20solve%20this%20problem%20for%20him.%20You%20are%20given%20sequences%20%24%20c_%7Bi%7D%20%24%20and%20%24%20b_%7Bi%7D%20%24%20.%20You%20are%20to%20find%20all%20suitable%20sequences%20%24%20a_%7Bi%7D%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901E%5C%2Fa561449171a1bc59fbb05203f289e5e1c414774f.png%29%29.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20b_%7B0%7D%2Cb_%7B1%7D%2C...%2Cb_%7Bn-1%7D%20%24%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901E%5C%2F2a78fbaa6d9660a0c2b6472729af999a0faba958.png%29%29.%5Cn%5CnThe%20third%20line%20contains%20%24%20n%20%24%20integers%20%24%20c_%7B0%7D%2Cc_%7B1%7D%2C...%2Cc_%7Bn-1%7D%20%24%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901E%5C%2F51a6ffa808ccafa5d6d5accd5a8a674e36e0a223.png%29%29.%5Cn%5CnIt%20is%20guaranteed%20that%20all%20cyclic%20shifts%20of%20sequence%20%24%20b_%7Bi%7D%20%24%20are%20linearly%20independent.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20a%20single%20integer%20%24%20k%20%24%20%5Cu2014%20the%20number%20of%20sequences%20%24%20a_%7Bi%7D%20%24%20%2C%20such%20that%20after%20encrypting%20them%20with%20key%20%24%20b_%7Bi%7D%20%24%20you%20get%20the%20sequence%20%24%20c_%7Bi%7D%20%24%20.%5Cn%5CnAfter%20that%20in%20each%20of%20%24%20k%20%24%20next%20lines%20print%20%24%20n%20%24%20integers%20%24%20a_%7B0%7D%2Ca_%7B1%7D%2C...%2Ca_%7Bn-1%7D%20%24%20.%20Print%20the%20sequences%20in%20lexicographical%20order.%5Cn%5CnNote%20that%20%24%20k%20%24%20could%20be%20equal%20to%20%24%200%20%24%20.%22%2C%22samples%22%3A%5B%5B%221%5Cn1%5Cn0%5Cn%22%2C%221%5Cn1%5Cn%22%5D%2C%5B%221%5Cn100%5Cn81%5Cn%22%2C%222%5Cn91%5Cn109%5Cn%22%5D%2C%5B%223%5Cn1%201%203%5Cn165%20185%20197%5Cn%22%2C%222%5Cn-6%20-9%20-1%5Cn8%205%2013%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F901%5C%2FE%22%2C%22id%22%3A%22901E%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5CnSenor%20Vorpal%20Kickass%27o%20%5Cu53d1%5Cu660e%5Cu4e86%5Cu4e00%5Cu79cd%5Cu52a0%5Cu5bc6%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu6574%5Cu6570%5Cu5e8f%5Cu5217%5Cu7684%5Cu65b9%5Cu6cd5.%20%20%5Cr%5Cn%5Cu9996%5Cu5148%5Cu5176%5Cu4f1a%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu4f5c%5Cu4e3a%5Cu5bc6%5Cu94a5%5Cu7684%5Cu5e8f%5Cu5217%24b%24%2C%20%24b%24%5Cu5faa%5Cu73af%5Cu7ebf%5Cu6027%5Cu65e0%5Cu5173%2C%5Cu5373%24%5C%5Cnexists%20x_0%2C%20x_1%2C...%2Cx_%7Bn-1%7D%2Cs.t.%5C%5Cforall%20k%2C%5C%5Csum_%7Bi%3D0%7D%5E%7Bn-1%7Dx_ib_%7Bk-i%5C%5Cmod%20n%7D%3D0%24.%20%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%24a%24%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu5982%5Cu4e0b%5Cu65b9%5Cu5f0f%5Cu5f97%5Cu5230%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%24c%24%3A%5Cr%5Cn%24%24c_i%3D%5C%5Csum_%7Bk%3D0%7D%5E%7Bn-1%7D%28b_%7Bk-i%5C%5Cmod%20n%7D-a_k%29%5E2%24%24%5Cr%5Cn.%20%20%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu5e8f%5Cu5217%24b%24%5Cu548c%5Cu5e8f%5Cu5217%24c%24%2C%5Cu8981%5Cu6c42%5Cu8f93%5Cu51fa%5Cu6240%5Cu6709%5Cu6ee1%5Cu8db3%5Cu6761%5Cu4ef6%5Cu4ef6%5Cu7684%5Cu5e8f%5Cu5217%24a%24.%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24.%20%20%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e24%5Cu884c%5Cu5404%24n%24%5Cu4e2a%5Cu6574%5Cu6570%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu5e8f%5Cu5217%24b%24%5Cu548c%24c%24.%20%20%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24k%24%5Cu8868%5Cu793a%5Cu6ee1%5Cu8db3%5Cu6761%5Cu4ef6%5Cu7684%24a%24%5Cu5e8f%5Cu5217%5Cu7684%5Cu4e2a%5Cu6570.%20%20%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24k%24%5Cu884c%2C%5Cu6309%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6bcf%5Cu884c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu79cd%5Cu6ee1%5Cu8db3%5Cu6761%5Cu4ef6%5Cu7684%5Cu5e8f%5Cu5217%24a%24.%5Cr%5Cn%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cr%5Cn%241%5C%5Cleqslant%20n%5C%5Cleqslant%2010%5E5%2C0%5C%5Cleqslant%20b_i%5C%5Cleqslant10%5E3%2C0%5C%5Cleqslant%20c%5C%5Cleqslant%205%5C%5Ctimes%2010%5E6%24.%20%20%5Cr%5Cn%5Cu4fdd%5Cu8bc1%24b%24%5Cu5faa%5Cu73af%5Cu7ebf%5Cu6027%5Cu65e0%5Cu5173.%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF901E%22%2C%22title%22%3A%22Cyclic%20Cipher%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Cyclic%20Cipher%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Cyclic Cipher</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+Senor Vorpal Kickass'o 发明了一种加密长度为$n$的整数序列的方法.
+首先其会选择一个作为密钥的序列$b$, $b$循环线性无关,即$\nexists x_0, x_1,...,x_{n-1},s.t.\forall k,\sum_{i=0}^{n-1}x_ib_{k-i\mod n}=0$.
+对于一个序列$a$可以通过如下方式得到一个序列$c$:
+$$c_i=\sum_{k=0}^{n-1}(b_{k-i\mod n}-a_k)^2$$
+.
+现在给定序列$b$和序列$c$,要求输出所有满足条件件的序列$a$.
+## 输入格式
+第一行包含一个整数$n$.
+接下来两行各$n$个整数分别表示序列$b$和$c$.
+## 输出格式
+第一行输出一个整数$k$表示满足条件的$a$序列的个数.
+接下来$k$行,按字典序每行输出一种满足条件的序列$a$.
+## 数据范围
+$1\leqslant n\leqslant 10^5,0\leqslant b_i\leqslant10^3,0\leqslant c\leqslant 5\times 10^6$.
+保证$b$循环线性无关.</div>
+<h2>题目描述</h2>
+<div> ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901E/09d58666f469d1212864032a997630308f9a2d24.png)Senor Vorpal Kickass'o invented an innovative method to encrypt integer sequences of length $ n $ . To encrypt a sequence, one has to choose a secret sequence ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901E/9d7f596ac3bfcb4de56caec3ed98f54b8c38886c.png), that acts as a key.
+Vorpal is very selective, so the key should be such a sequence $ b_{i} $ , that its cyclic shifts are linearly independent, that is, there is no non-zero set of coefficients $ x_{0},x_{1},...,x_{n-1} $ , such that ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901E/14fc308524a42e2bfab7fa5bbb60c1743e7911b3.png) for all $ k $ at the same time.
+After that for a sequence ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901E/5656a7a50865b0a2e60963f7abba52e4c4e82222.png) you should build the following cipher:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901E/d8113c9899e75c215e4f30da73d960636a7306eb.png)In other words, you are to compute the quadratic deviation between each cyclic shift of $ b_{i} $ and the sequence $ a_{i} $ . The resulting sequence is the Kickass's cipher. The cipher is in development right now and Vorpal wants to decipher a sequence after it has been encrypted. You are to solve this problem for him. You are given sequences $ c_{i} $ and $ b_{i} $ . You are to find all suitable sequences $ a_{i} $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901E/a561449171a1bc59fbb05203f289e5e1c414774f.png)).
+The second line contains $ n $ integers $ b_{0},b_{1},...,b_{n-1} $ (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901E/2a78fbaa6d9660a0c2b6472729af999a0faba958.png)).
+The third line contains $ n $ integers $ c_{0},c_{1},...,c_{n-1} $ (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901E/51a6ffa808ccafa5d6d5accd5a8a674e36e0a223.png)).
+It is guaranteed that all cyclic shifts of sequence $ b_{i} $ are linearly independent.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print a single integer $ k $ — the number of sequences $ a_{i} $ , such that after encrypting them with key $ b_{i} $ you get the sequence $ c_{i} $ .
+After that in each of $ k $ next lines print $ n $ integers $ a_{0},a_{1},...,a_{n-1} $ . Print the sequences in lexicographical order.
+Note that $ k $ could be equal to $ 0 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+1
+0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1
+100
+81
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+91
+109
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+1 1 3
+165 185 197
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>2
+-6 -9 -1
+8 5 13
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

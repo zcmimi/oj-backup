@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Coloring a Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399200:ykulqwmwQfjCO1nbNPRrtyKTUXT4G/csYAgQe9qiiME=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20rooted%20tree%20with%20%24%20n%20%24%20vertices.%20The%20vertices%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%2C%20the%20root%20is%20the%20vertex%20number%20%24%201%20%24%20.%5Cn%5CnEach%20vertex%20has%20a%20color%2C%20let%27s%20denote%20the%20color%20of%20vertex%20%24%20v%20%24%20by%20%24%20c_%7Bv%7D%20%24%20.%20Initially%20%24%20c_%7Bv%7D%3D0%20%24%20.%5Cn%5CnYou%20have%20to%20color%20the%20tree%20into%20the%20given%20colors%20using%20the%20smallest%20possible%20number%20of%20steps.%20On%20each%20step%20you%20can%20choose%20a%20vertex%20%24%20v%20%24%20and%20a%20color%20%24%20x%20%24%20%2C%20and%20then%20color%20all%20vectices%20in%20the%20subtree%20of%20%24%20v%20%24%20%28including%20%24%20v%20%24%20itself%29%20in%20color%20%24%20x%20%24%20.%20In%20other%20words%2C%20for%20every%20vertex%20%24%20u%20%24%20%2C%20such%20that%20the%20path%20from%20root%20to%20%24%20u%20%24%20passes%20through%20%24%20v%20%24%20%2C%20set%20%24%20c_%7Bu%7D%3Dx%20%24%20.%5Cn%5CnIt%20is%20guaranteed%20that%20you%20have%20to%20color%20each%20vertex%20in%20a%20color%20different%20from%20%24%200%20%24%20.%5Cn%5CnYou%20can%20learn%20what%20a%20rooted%20tree%20is%20using%20the%20link%3A%20%3Ca%3Ehttps%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FTree%5C%5C_%28graph%5C%5C_theory%29%3C%5C%2Fa%3E.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D10%5E%7B4%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20tree.%5Cn%5CnThe%20second%20line%20contains%20%24%20n-1%20%24%20integers%20%24%20p_%7B2%7D%2Cp_%7B3%7D%2C...%2Cp_%7Bn%7D%20%24%20%28%20%24%201%3C%3Dp_%7Bi%7D%3Ci%20%24%20%29%2C%20where%20%24%20p_%7Bi%7D%20%24%20means%20that%20there%20is%20an%20edge%20between%20vertices%20%24%20i%20%24%20and%20%24%20p_%7Bi%7D%20%24%20.%5Cn%5CnThe%20third%20line%20contains%20%24%20n%20%24%20integers%20%24%20c_%7B1%7D%2Cc_%7B2%7D%2C...%2Cc_%7Bn%7D%20%24%20%28%20%24%201%3C%3Dc_%7Bi%7D%3C%3Dn%20%24%20%29%2C%20where%20%24%20c_%7Bi%7D%20%24%20is%20the%20color%20you%20should%20color%20the%20%24%20i%20%24%20-th%20vertex%20into.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20given%20graph%20is%20a%20tree.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%5Cu2014%20the%20minimum%20number%20of%20steps%20you%20have%20to%20perform%20to%20color%20the%20tree%20into%20given%20colors.%22%2C%22samples%22%3A%5B%5B%226%5Cn1%202%202%201%205%5Cn2%201%201%201%201%201%5Cn%22%2C%223%5Cn%22%5D%2C%5B%227%5Cn1%201%202%203%201%204%5Cn3%203%201%201%201%202%203%5Cn%22%2C%225%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20tree%20from%20the%20first%20sample%20is%20shown%20on%20the%20picture%20%28numbers%20are%20vetices%27%20indices%29%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2F9fd1d55fa8fc46341a8b892f02c91e5845a9cee1.png%29%5Cn%5CnOn%20first%20step%20we%20color%20all%20vertices%20in%20the%20subtree%20of%20vertex%20%24%201%20%24%20into%20color%20%24%202%20%24%20%28numbers%20are%20colors%29%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2Fe11b694106163670fb12fdde15a9f65a4e1cb530.png%29%5Cn%5CnOn%20seond%20step%20we%20color%20all%20vertices%20in%20the%20subtree%20of%20vertex%20%24%205%20%24%20into%20color%20%24%201%20%24%20%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2Fe36a2cbd1ae067ab6fd537cd6badf9d7433ee5c6.png%29%5Cn%5CnOn%20third%20step%20we%20color%20all%20vertices%20in%20the%20subtree%20of%20vertex%20%24%202%20%24%20into%20color%20%24%201%20%24%20%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2Fe700d0bc8664e90658b34cd2376df32d0611fede.png%29%5Cn%5CnThe%20tree%20from%20the%20second%20sample%20is%20shown%20on%20the%20picture%20%28numbers%20are%20vetices%27%20indices%29%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2F67ba592a2c43f57a4f90fbf32ea9b4099ae3ce16.png%29%5Cn%5CnOn%20first%20step%20we%20color%20all%20vertices%20in%20the%20subtree%20of%20vertex%20%24%201%20%24%20into%20color%20%24%203%20%24%20%28numbers%20are%20colors%29%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2Fa70897e485cd2f798f1fbdf16aad3be9100baa22.png%29%5Cn%5CnOn%20second%20step%20we%20color%20all%20vertices%20in%20the%20subtree%20of%20vertex%20%24%203%20%24%20into%20color%20%24%201%20%24%20%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2F00b2012fb6c63cf50c8cbb62275892a14d90331b.png%29%5Cn%5CnOn%20third%20step%20we%20color%20all%20vertices%20in%20the%20subtree%20of%20vertex%20%24%206%20%24%20into%20color%20%24%202%20%24%20%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2Fcbb680be6f7f4a3785c9124a3b69bfeceadc9ad8.png%29%5Cn%5CnOn%20fourth%20step%20we%20color%20all%20vertices%20in%20the%20subtree%20of%20vertex%20%24%204%20%24%20into%20color%20%24%201%20%24%20%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2F2dab5297c24ff5c2f70dfec33f37cb0e4b4866c7.png%29%5Cn%5CnOn%20fith%20step%20we%20color%20all%20vertices%20in%20the%20subtree%20of%20vertex%20%24%207%20%24%20into%20color%20%24%203%20%24%20%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF902B%5C%2F8a33180d0bd5c28d2385265618229c6952307c3c.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F902%5C%2FB%22%2C%22id%22%3A%22902B%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu9762%5Cuff1a%5Cn%5Cn%5Cu4e00%5Cu4e2a%5Cu6811%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu5b50%5Cu6811%5Cu67d3%5Cu6210%5Cu540c%5Cu4e00%5Cu4e2a%5Cu989c%5Cu8272%5Cuff0c%5Cu6c42%5Cu67d3%5Cu6210%5Cu76ee%5Cu6807%5Cu72b6%5Cu6001%5Cu7684%5Cu6700%5Cu5c0f%5Cu64cd%5Cu4f5c%5Cu6b21%5Cu6570%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884cn%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884cpi%5Cu8868%5Cu793ai%5Cu548cpi%5Cu4e4b%5Cu95f4%5Cu6709%5Cu8fb9%5Cuff0c%5Cu7b2c%5Cu4e09%5Cu884cci%5Cu8868%5Cu793ai%5Cu70b9%5Cu7684%5Cu76ee%5Cu6807%5Cu989c%5Cu8272%5Cu3002%22%2C%22tags%22%3A%5B270%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A37%2C%22totalAccepted%22%3A26%2C%22pid%22%3A%22CF902B%22%2C%22title%22%3A%22Coloring%20a%20Tree%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32025%2C%22title%22%3A%22%5Cu7b80%5Cu8981%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A8967%2C%22name%22%3A%22CF902B%20Coloring%20a%20Tree%22%2C%22slug%22%3A%22CF902B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Coloring%20a%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Coloring a Tree</h1>
+<h2>题意翻译</h2>
+<div>题面：
+一个树，每次可以选择一个子树染成同一个颜色，求染成目标状态的最小操作次数。
+输入：
+第一行n，第二行pi表示i和pi之间有边，第三行ci表示i点的目标颜色。</div>
+<h2>题目描述</h2>
+<div>You are given a rooted tree with $ n $ vertices. The vertices are numbered from $ 1 $ to $ n $ , the root is the vertex number $ 1 $ .
+Each vertex has a color, let's denote the color of vertex $ v $ by $ c_{v} $ . Initially $ c_{v}=0 $ .
+You have to color the tree into the given colors using the smallest possible number of steps. On each step you can choose a vertex $ v $ and a color $ x $ , and then color all vectices in the subtree of $ v $ (including $ v $ itself) in color $ x $ . In other words, for every vertex $ u $ , such that the path from root to $ u $ passes through $ v $ , set $ c_{u}=x $ .
+It is guaranteed that you have to color each vertex in a color different from $ 0 $ .
+You can learn what a rooted tree is using the link: <a>https://en.wikipedia.org/wiki/Tree\_(graph\_theory)</a>.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ n $ ( $ 2<=n<=10^{4} $ ) — the number of vertices in the tree.
+The second line contains $ n-1 $ integers $ p_{2},p_{3},...,p_{n} $ ( $ 1<=p_{i}<i $ ), where $ p_{i} $ means that there is an edge between vertices $ i $ and $ p_{i} $ . The third line contains $ n $ integers $ c_{1},c_{2},...,c_{n} $ ( $ 1<=c_{i}<=n $ ), where $ c_{i} $ is the color you should color the $ i $ -th vertex into. It is guaranteed that the given graph is a tree.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer — the minimum number of steps you have to perform to color the tree into given colors.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+1 2 2 1 5
+2 1 1 1 1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>7
+1 1 2 3 1 4
+3 3 1 1 1 2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>5
+</code></pre>
+<h2>说明</h2>
+<div>The tree from the first sample is shown on the picture (numbers are vetices' indices):
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/9fd1d55fa8fc46341a8b892f02c91e5845a9cee1.png)
+On first step we color all vertices in the subtree of vertex $ 1 $ into color $ 2 $ (numbers are colors):
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/e11b694106163670fb12fdde15a9f65a4e1cb530.png)
+On seond step we color all vertices in the subtree of vertex $ 5 $ into color $ 1 $ :
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/e36a2cbd1ae067ab6fd537cd6badf9d7433ee5c6.png)
+On third step we color all vertices in the subtree of vertex $ 2 $ into color $ 1 $ :
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/e700d0bc8664e90658b34cd2376df32d0611fede.png)
+The tree from the second sample is shown on the picture (numbers are vetices' indices):
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/67ba592a2c43f57a4f90fbf32ea9b4099ae3ce16.png)
+On first step we color all vertices in the subtree of vertex $ 1 $ into color $ 3 $ (numbers are colors):
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/a70897e485cd2f798f1fbdf16aad3be9100baa22.png)
+On second step we color all vertices in the subtree of vertex $ 3 $ into color $ 1 $ :
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/00b2012fb6c63cf50c8cbb62275892a14d90331b.png)
+On third step we color all vertices in the subtree of vertex $ 6 $ into color $ 2 $ :
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/cbb680be6f7f4a3785c9124a3b69bfeceadc9ad8.png)
+On fourth step we color all vertices in the subtree of vertex $ 4 $ into color $ 1 $ :
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/2dab5297c24ff5c2f70dfec33f37cb0e4b4866c7.png)
+On fith step we color all vertices in the subtree of vertex $ 7 $ into color $ 3 $ :
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF902B/8a33180d0bd5c28d2385265618229c6952307c3c.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

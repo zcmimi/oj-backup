@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Reverses - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399232:jccP68b2L42y0sfR5Bi79Qz+2YVlKLB7uxhUZKrmUB0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Hurricane%20came%20to%20Berland%20and%20to%20suburbs%20Stringsvill.%20You%20are%20going%20to%20it%20to%20check%20if%20it%27s%20all%20right%20with%20you%20favorite%20string.%20Hurrinace%20broke%20it%20a%20bit%20by%20reversing%20some%20of%20its%20non-intersecting%20substrings.%20You%20have%20a%20photo%20of%20this%20string%20before%20hurricane%20and%20you%20want%20to%20restore%20it%20to%20original%20state%20using%20reversing%20minimum%20possible%20number%20of%20its%20substrings%20and%20find%20out%20which%20substrings%20you%20should%20reverse.%5Cn%5CnYou%20are%20given%20a%20string%20%24%20s%20%24%20%5Cu2014%20original%20state%20of%20your%20string%20and%20string%20%24%20t%20%24%20%5Cu2014%20state%20of%20the%20string%20after%20hurricane.%20You%20should%20select%20%24%20k%20%24%20non-intersecting%20substrings%20of%20%24%20t%20%24%20in%20such%20a%20way%20that%20after%20reverse%20of%20these%20substrings%20string%20will%20be%20equal%20%24%20s%20%24%20and%20%24%20k%20%24%20is%20minimum%20possible.%22%2C%22inputFormat%22%3A%22First%20line%20of%20input%20contains%20string%20%24%20s%20%24%20and%20second%20line%20contains%20string%20%24%20t%20%24%20.%20Both%20strings%20have%20same%20length%20and%20consist%20of%20lowercase%20English%20letters.%20%24%201%3C%3D%7Cs%7C%3D%7Ct%7C%3C%3D5%5Cu00b710%5E%7B5%7D%20%24%22%2C%22outputFormat%22%3A%22In%20first%20line%20print%20%24%20k%20%24%20%5Cu2014%20minimum%20number%20of%20substrings%20you%20should%20reverse.%20Next%20output%20%24%20k%20%24%20lines.%20Each%20line%20should%20contain%20two%20integers%20%24%20l_%7Bi%7D%20%24%20%2C%20%24%20r_%7Bi%7D%20%24%20meaning%20that%20you%20should%20reverse%20substring%20from%20symbol%20number%20%24%20l_%7Bi%7D%20%24%20to%20symbol%20%24%20r_%7Bi%7D%20%24%20%28strings%20are%201-indexed%29.%20These%20substrings%20shouldn%27t%20intersect.%20If%20there%20are%20multiple%20answers%20print%20any.%20If%20it%27s%20impossible%20to%20restore%20string%20output%20-1.%22%2C%22samples%22%3A%5B%5B%22abcxxxdef%5Cncbaxxxfed%5Cn%22%2C%222%5Cn7%209%5Cn1%203%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F906%5C%2FE%22%2C%22id%22%3A%22906E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e24%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%20%24n%24%20%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%20%24s%24%20%5Cu548c%20%24t%24%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu7ffb%5Cu8f6c%20%24t%24%20%5Cu7684%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu4e0d%5Cu76f8%5Cu4ea4%5Cu7684%5Cu533a%5Cu95f4%5Cuff0c%5Cu8981%5Cu6c42%5Cu6700%5Cu7ec8%20%24s%24%20%5Cu548c%20%24t%24%20%5Cu76f8%5Cu540c%5Cu3002%5Cu95ee%5Cu4f60%5Cu6700%5Cu5c11%5Cu7ffb%5Cu8f6c%5Cu51e0%5Cu4e2a%5Cu533a%5Cu95f4%5Cuff0c%5Cu5e76%5Cu8f93%5Cu51fa%5Cu65b9%5Cu6848%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A20%2C%22totalAccepted%22%3A12%2C%22pid%22%3A%22CF906E%22%2C%22title%22%3A%22Reverses%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Reverses%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Reverses</h1>
+<h2>题意翻译</h2>
+<div>给你两个长度为 $n$ 的字符串 $s$ 和 $t$。你可以翻转 $t$ 的若干个不相交的区间，要求最终 $s$ 和 $t$ 相同。问你最少翻转几个区间，并输出方案。</div>
+<h2>题目描述</h2>
+<div>Hurricane came to Berland and to suburbs Stringsvill. You are going to it to check if it's all right with you favorite string. Hurrinace broke it a bit by reversing some of its non-intersecting substrings. You have a photo of this string before hurricane and you want to restore it to original state using reversing minimum possible number of its substrings and find out which substrings you should reverse.
+You are given a string $ s $ — original state of your string and string $ t $ — state of the string after hurricane. You should select $ k $ non-intersecting substrings of $ t $ in such a way that after reverse of these substrings string will be equal $ s $ and $ k $ is minimum possible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line of input contains string $ s $ and second line contains string $ t $ . Both strings have same length and consist of lowercase English letters. $ 1<=|s|=|t|<=5·10^{5} $</div>
+<h3>输出格式</h3>
+<br />
+<div>In first line print $ k $ — minimum number of substrings you should reverse. Next output $ k $ lines. Each line should contain two integers $ l_{i} $ , $ r_{i} $ meaning that you should reverse substring from symbol number $ l_{i} $ to symbol $ r_{i} $ (strings are 1-indexed). These substrings shouldn't intersect. If there are multiple answers print any. If it's impossible to restore string output -1.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>abcxxxdef
+cbaxxxfed
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+7 9
+1 3
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

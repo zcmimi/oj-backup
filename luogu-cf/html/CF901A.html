@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Hashing Trees - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399187:nq5eFcBm25al3NvyJPMjkIAh7k8LDW5B/uafKbtICtI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Sasha%20is%20taking%20part%20in%20a%20programming%20competition.%20In%20one%20of%20the%20problems%20she%20should%20check%20if%20some%20rooted%20trees%20are%20isomorphic%20or%20not.%20She%20has%20never%20seen%20this%20problem%20before%2C%20but%2C%20being%20an%20experienced%20participant%2C%20she%20guessed%20that%20she%20should%20match%20trees%20to%20some%20sequences%20and%20then%20compare%20these%20sequences%20instead%20of%20trees.%20Sasha%20wants%20to%20match%20each%20tree%20with%20a%20sequence%20%24%20a_%7B0%7D%2Ca_%7B1%7D%2C...%2Ca_%7Bh%7D%20%24%20%2C%20where%20%24%20h%20%24%20is%20the%20height%20of%20the%20tree%2C%20and%20%24%20a_%7Bi%7D%20%24%20equals%20to%20the%20number%20of%20vertices%20that%20are%20at%20distance%20of%20%24%20i%20%24%20edges%20from%20root.%5Cn%5CnUnfortunately%2C%20this%20time%20Sasha%27s%20intuition%20was%20wrong%2C%20and%20there%20could%20be%20several%20trees%20matching%20the%20same%20sequence.%20To%20show%20it%2C%20you%20need%20to%20write%20a%20program%20that%2C%20given%20the%20sequence%20%24%20a_%7Bi%7D%20%24%20%2C%20builds%20two%20non-isomorphic%20rooted%20trees%20that%20match%20that%20sequence%2C%20or%20determines%20that%20there%20is%20only%20one%20such%20tree.%5Cn%5CnTwo%20rooted%20trees%20are%20isomorphic%2C%20if%20you%20can%20reenumerate%20the%20vertices%20of%20the%20first%20one%20in%20such%20a%20way%2C%20that%20the%20index%20of%20the%20root%20becomes%20equal%20the%20index%20of%20the%20root%20of%20the%20second%20tree%2C%20and%20these%20two%20trees%20become%20equal.%5Cn%5CnThe%20height%20of%20a%20rooted%20tree%20is%20the%20maximum%20number%20of%20edges%20on%20a%20path%20from%20the%20root%20to%20any%20other%20vertex.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20a%20single%20integer%20%24%20h%20%24%20%28%20%24%202%3C%3Dh%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20height%20of%20the%20tree.%5Cn%5CnThe%20second%20line%20contains%20%24%20h%2B1%20%24%20integers%20%5Cu2014%20the%20sequence%20%24%20a_%7B0%7D%2Ca_%7B1%7D%2C...%2Ca_%7Bh%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D2%5Cu00b710%5E%7B5%7D%20%24%20%29.%20The%20sum%20of%20all%20%24%20a_%7Bi%7D%20%24%20does%20not%20exceed%20%24%202%5Cu00b710%5E%7B5%7D%20%24%20.%20It%20is%20guaranteed%20that%20there%20is%20at%20least%20one%20tree%20matching%20this%20sequence.%22%2C%22outputFormat%22%3A%22If%20there%20is%20only%20one%20tree%20matching%20this%20sequence%2C%20print%20%5C%22perfect%5C%22.%5Cn%5CnOtherwise%20print%20%5C%22ambiguous%5C%22%20in%20the%20first%20line.%20In%20the%20second%20and%20in%20the%20third%20line%20print%20descriptions%20of%20two%20trees%20in%20the%20following%20format%3A%20in%20one%20line%20print%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901A%5C%2Fc2b0b62882f2738558347273ee550f1c79a5de6d.png%29%20integers%2C%20the%20%24%20k%20%24%20-th%20of%20them%20should%20be%20the%20parent%20of%20vertex%20%24%20k%20%24%20or%20be%20equal%20to%20zero%2C%20if%20the%20%24%20k%20%24%20-th%20vertex%20is%20the%20root.%5Cn%5CnThese%20treese%20should%20be%20non-isomorphic%20and%20should%20match%20the%20given%20sequence.%22%2C%22samples%22%3A%5B%5B%222%5Cn1%201%201%5Cn%22%2C%22perfect%5Cn%22%5D%2C%5B%222%5Cn1%202%202%5Cn%22%2C%22ambiguous%5Cn0%201%201%203%203%5Cn0%201%201%203%202%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20only%20tree%20in%20the%20first%20example%20and%20the%20two%20printed%20trees%20from%20the%20second%20example%20are%20shown%20on%20the%20picture%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF901A%5C%2Fb36c39150954d88fe8a1ed6f96a05d8a24b743af.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F901%5C%2FA%22%2C%22id%22%3A%22901A%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A22%2C%22totalAccepted%22%3A13%2C%22pid%22%3A%22CF901A%22%2C%22title%22%3A%22Hashing%20Trees%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Hashing%20Trees%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Hashing Trees</h1>
+<h2>题目描述</h2>
+<div>Sasha is taking part in a programming competition. In one of the problems she should check if some rooted trees are isomorphic or not. She has never seen this problem before, but, being an experienced participant, she guessed that she should match trees to some sequences and then compare these sequences instead of trees. Sasha wants to match each tree with a sequence $ a_{0},a_{1},...,a_{h} $ , where $ h $ is the height of the tree, and $ a_{i} $ equals to the number of vertices that are at distance of $ i $ edges from root.
+Unfortunately, this time Sasha's intuition was wrong, and there could be several trees matching the same sequence. To show it, you need to write a program that, given the sequence $ a_{i} $ , builds two non-isomorphic rooted trees that match that sequence, or determines that there is only one such tree.
+Two rooted trees are isomorphic, if you can reenumerate the vertices of the first one in such a way, that the index of the root becomes equal the index of the root of the second tree, and these two trees become equal.
+The height of a rooted tree is the maximum number of edges on a path from the root to any other vertex.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains a single integer $ h $ ( $ 2<=h<=10^{5} $ ) — the height of the tree.
+The second line contains $ h+1 $ integers — the sequence $ a_{0},a_{1},...,a_{h} $ ( $ 1<=a_{i}<=2·10^{5} $ ). The sum of all $ a_{i} $ does not exceed $ 2·10^{5} $ . It is guaranteed that there is at least one tree matching this sequence.</div>
+<h3>输出格式</h3>
+<br />
+<div>If there is only one tree matching this sequence, print "perfect".
+Otherwise print "ambiguous" in the first line. In the second and in the third line print descriptions of two trees in the following format: in one line print ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901A/c2b0b62882f2738558347273ee550f1c79a5de6d.png) integers, the $ k $ -th of them should be the parent of vertex $ k $ or be equal to zero, if the $ k $ -th vertex is the root.
+These treese should be non-isomorphic and should match the given sequence.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+1 1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>perfect
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+1 2 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>ambiguous
+0 1 1 3 3
+0 1 1 3 2
+</code></pre>
+<h2>说明</h2>
+<div>The only tree in the first example and the two printed trees from the second example are shown on the picture:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF901A/b36c39150954d88fe8a1ed6f96a05d8a24b743af.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

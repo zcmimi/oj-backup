@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Divisiblity of Differences - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398915:m+ttwc/XrShAA0u+7QRXNlHwopt6HgsaQKJcwE+2iXs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20multiset%20of%20%24%20n%20%24%20integers.%20You%20should%20select%20exactly%20%24%20k%20%24%20of%20them%20in%20a%20such%20way%20that%20the%20difference%20between%20any%20two%20of%20them%20is%20divisible%20by%20%24%20m%20%24%20%2C%20or%20tell%20that%20it%20is%20impossible.%5Cn%5CnNumbers%20can%20be%20repeated%20in%20the%20original%20multiset%20and%20in%20the%20multiset%20of%20selected%20numbers%2C%20but%20number%20of%20occurrences%20of%20any%20number%20in%20multiset%20of%20selected%20numbers%20should%20not%20exceed%20the%20number%20of%20its%20occurrences%20in%20the%20original%20multiset.%22%2C%22inputFormat%22%3A%22First%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20k%20%24%20and%20%24%20m%20%24%20%28%20%24%202%3C%3Dk%3C%3Dn%3C%3D100000%20%24%20%2C%20%24%201%3C%3Dm%3C%3D100000%20%24%20%29%20%5Cu2014%20number%20of%20integers%20in%20the%20multiset%2C%20number%20of%20integers%20you%20should%20select%20and%20the%20required%20divisor%20of%20any%20pair%20of%20selected%20integers.%5Cn%5CnSecond%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%200%3C%3Da_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20numbers%20in%20the%20multiset.%22%2C%22outputFormat%22%3A%22If%20it%20is%20not%20possible%20to%20select%20%24%20k%20%24%20numbers%20in%20the%20desired%20way%2C%20output%20%5Cu00abNo%5Cu00bb%20%28without%20the%20quotes%29.%5Cn%5CnOtherwise%2C%20in%20the%20first%20line%20of%20output%20print%20%5Cu00abYes%5Cu00bb%20%28without%20the%20quotes%29.%20In%20the%20second%20line%20print%20%24%20k%20%24%20integers%20%24%20b_%7B1%7D%2Cb_%7B2%7D%2C...%2Cb_%7Bk%7D%20%24%20%5Cu2014%20the%20selected%20numbers.%20If%20there%20are%20multiple%20possible%20solutions%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%223%202%203%5Cn1%208%204%5Cn%22%2C%22Yes%5Cn1%204%20%22%5D%2C%5B%223%203%203%5Cn1%208%204%5Cn%22%2C%22No%22%5D%2C%5B%224%203%205%5Cn2%207%207%207%5Cn%22%2C%22Yes%5Cn2%207%207%20%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F876%5C%2FB%22%2C%22id%22%3A%22876B%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fan%5Cu4e2a%5Cu6574%5Cu6570%5Cu7684%5Cu96c6%5Cu5408%5Cu3002%5Cu4f60%5Cu5e94%5Cu8be5%5Cu51c6%5Cu786e%5Cu5730%5Cu9009%5Cu62e9%5Cu5b83%5Cu4eec%5Cu4e2d%5Cu7684k%5Cu4e2a%5Cu6570%5Cuff0c%5Cu4f7f%5Cu5b83%5Cu4eec%5Cu4e4b%5Cu95f4%5Cu7684%5Cu5dee%5Cu53ef%5Cu4ee5%5Cu88abm%5Cu9664%5Cuff0c%5Cu9664%5Cu975e%5Cu8fd9%5Cu662f%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu7684%5Cu3002%20%20%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e00%5Cu4e2an%5Cuff0c%5Cu4e00%5Cu4e2ak%5Cuff0c%5Cu4e00%5Cu4e2am%5Cuff1b%20%20%282%3C%3Dk%3C%3Dn%3C%3D100000%2C1%3C%3Dm%3C%3D100000%29%20%20%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3an%5Cu4e2a%5Cu6574%5Cu6570a1%2Ca2%2C...%2Can%20%28%200%3C%3Dai%3C%3D%2410%5E9%24%20%29%20%5Cn%5Cn%5Cu5982%5Cu679c%5Cu6ee1%5Cu8db3%5Cu8981%5Cu6c42%5Cuff0c%5Cu5728%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5C%22Yes%5C%22%5Cuff08%5Cu6ca1%5Cu6709%5Cu5f15%5Cu53f7%5Cuff09%5Cuff0c%5Cu5e76%5Cu4e14%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8f93%5Cu51fa%5Cu6240%5Cu9009%5Cu7684k%5Cu4e2a%5Cu6570%5Cu3002%5Cuff08%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu4e2a%5Cu53ef%5Cu80fd%5Cu7684%5Cu89e3%5Cu51b3%5Cu65b9%5Cu6848%5Cuff0c%5Cu6253%5Cu5370%5Cu5176%5Cu4e2d%5Cu7684%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%5Cu3002%5Cuff09%20%20%5Cn%5Cu5982%5Cu679c%5Cu4e0d%5Cu6ee1%5Cu8db3%5Cu8981%5Cu6c42%5Cuff0c%5Cu8f93%5Cu51fa%5C%22No%5C%22%5Cuff08%5Cu6ca1%5Cu6709%5Cu5f15%5Cu53f7%5Cuff09%5Cu3002%5Cn%5CnBy%20%40SocietyNiu%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A35%2C%22totalAccepted%22%3A22%2C%22pid%22%3A%22CF876B%22%2C%22title%22%3A%22Divisiblity%20of%20Differences%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A37859%2C%22title%22%3A%22BUG%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A9069%2C%22name%22%3A%22CF876B%20Divisiblity%20of%20Differences%22%2C%22slug%22%3A%22CF876B%22%7D%7D%2C%7B%22id%22%3A34993%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9069%2C%22name%22%3A%22CF876B%20Divisiblity%20of%20Differences%22%2C%22slug%22%3A%22CF876B%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Divisiblity%20of%20Differences%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Divisiblity of Differences</h1>
+<h2>题意翻译</h2>
+<div>给出n个整数的集合。你应该准确地选择它们中的k个数，使它们之间的差可以被m除，除非这是不可能的。
+输入第一行包括一个n，一个k，一个m； (2<=k<=n<=100000,1<=m<=100000) 第二行为n个整数a1,a2,...,an ( 0<=ai<=$10^9$ )
+如果满足要求，在第一行输出"Yes"（没有引号），并且在第二行输出所选的k个数。（如果有多个可能的解决方案，打印其中的任何一个。）
+如果不满足要求，输出"No"（没有引号）。
+By @SocietyNiu </div>
+<h2>题目描述</h2>
+<div>You are given a multiset of $ n $ integers. You should select exactly $ k $ of them in a such way that the difference between any two of them is divisible by $ m $ , or tell that it is impossible.
+Numbers can be repeated in the original multiset and in the multiset of selected numbers, but number of occurrences of any number in multiset of selected numbers should not exceed the number of its occurrences in the original multiset.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line contains three integers $ n $ , $ k $ and $ m $ ( $ 2<=k<=n<=100000 $ , $ 1<=m<=100000 $ ) — number of integers in the multiset, number of integers you should select and the required divisor of any pair of selected integers.
+Second line contains $ n $ integers $ a_{1},a_{2},...,a_{n} $ ( $ 0<=a_{i}<=10^{9} $ ) — the numbers in the multiset.</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is not possible to select $ k $ numbers in the desired way, output «No» (without the quotes).
+Otherwise, in the first line of output print «Yes» (without the quotes). In the second line print $ k $ integers $ b_{1},b_{2},...,b_{k} $ — the selected numbers. If there are multiple possible solutions, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 2 3
+1 8 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Yes
+1 4 </code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3 3
+1 8 4
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>No</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4 3 5
+2 7 7 7
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>Yes
+2 7 7 </code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

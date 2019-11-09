@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Guards In The Storehouse - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398532:3YABkKAkRgJAlOPZXTShR5DwWy65JAXpmULv7k/LX98=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Polycarp%20owns%20a%20shop%20in%20the%20capital%20of%20Berland.%20Recently%20the%20criminal%20activity%20in%20the%20capital%20increased%2C%20so%20Polycarp%20is%20thinking%20about%20establishing%20some%20better%20security%20in%20the%20storehouse%20of%20his%20shop.%5Cn%5CnThe%20storehouse%20can%20be%20represented%20as%20a%20matrix%20with%20%24%20n%20%24%20rows%20and%20%24%20m%20%24%20columns.%20Each%20element%20of%20the%20matrix%20is%20either%20.%20%28an%20empty%20space%29%20or%20x%20%28a%20wall%29.%5Cn%5CnPolycarp%20wants%20to%20hire%20some%20guards%20%28possibly%20zero%29%20to%20watch%20for%20the%20storehouse.%20Each%20guard%20will%20be%20in%20some%20cell%20of%20matrix%20and%20will%20protect%20every%20cell%20to%20the%20right%20of%20his%20own%20cell%20and%20every%20cell%20to%20the%20bottom%20of%20his%20own%20cell%2C%20until%20the%20nearest%20wall.%20More%20formally%2C%20if%20the%20guard%20is%20standing%20in%20the%20cell%20%24%20%28x_%7B0%7D%2Cy_%7B0%7D%29%20%24%20%2C%20then%20he%20protects%20cell%20%24%20%28x_%7B1%7D%2Cy_%7B1%7D%29%20%24%20if%20all%20these%20conditions%20are%20met%3A%5Cn%5Cn-%20%24%20%28x_%7B1%7D%2Cy_%7B1%7D%29%20%24%20is%20an%20empty%20cell%3B%5Cn-%20either%20%24%20x_%7B0%7D%3Dx_%7B1%7D%20%24%20and%20%24%20y_%7B0%7D%3C%3Dy_%7B1%7D%20%24%20%2C%20or%20%24%20x_%7B0%7D%3C%3Dx_%7B1%7D%20%24%20and%20%24%20y_%7B0%7D%3Dy_%7B1%7D%20%24%20%3B%5Cn-%20there%20are%20no%20walls%20between%20cells%20%24%20%28x_%7B0%7D%2Cy_%7B0%7D%29%20%24%20and%20%24%20%28x_%7B1%7D%2Cy_%7B1%7D%29%20%24%20.%20There%20can%20be%20a%20guard%20between%20these%20cells%2C%20guards%20can%20look%20through%20each%20other.%5Cn%5CnGuards%20can%20be%20placed%20only%20in%20empty%20cells%20%28and%20can%20protect%20only%20empty%20cells%29.%20The%20plan%20of%20placing%20the%20guards%20is%20some%20set%20of%20cells%20where%20guards%20will%20be%20placed%20%28of%20course%2C%20two%20plans%20are%20different%20if%20there%20exists%20at%20least%20one%20cell%20that%20is%20included%20in%20the%20first%20plan%2C%20but%20not%20included%20in%20the%20second%20plan%2C%20or%20vice%20versa%29.%20Polycarp%20calls%20a%20plan%20suitable%20if%20there%20is%20not%20more%20than%20one%20empty%20cell%20that%20is%20not%20protected.%5Cn%5CnPolycarp%20wants%20to%20know%20the%20number%20of%20suitable%20plans.%20Since%20it%20can%20be%20very%20large%2C%20you%20have%20to%20output%20it%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20numbers%20%24%20n%20%24%20and%20%24%20m%20%24%20%5Cu2014%20the%20length%20and%20the%20width%20of%20the%20storehouse%20%28%20%24%201%3C%3Dn%2Cm%3C%3D250%20%24%20%2C%20%24%201%3C%3Dnm%3C%3D250%20%24%20%29.%5Cn%5CnThen%20%24%20n%20%24%20lines%20follow%2C%20%24%20i%20%24%20th%20line%20contains%20a%20string%20consisting%20of%20%24%20m%20%24%20characters%20%5Cu2014%20%24%20i%20%24%20th%20row%20of%20the%20matrix%20representing%20the%20storehouse.%20Each%20character%20is%20either%20.%20or%20x.%22%2C%22outputFormat%22%3A%22Output%20the%20number%20of%20suitable%20plans%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%22%2C%22samples%22%3A%5B%5B%221%203%5Cn.x.%5Cn%22%2C%223%5Cn%22%5D%2C%5B%222%202%5Cnxx%5Cnxx%5Cn%22%2C%221%5Cn%22%5D%2C%5B%222%202%5Cn..%5Cn..%5Cn%22%2C%2210%5Cn%22%5D%2C%5B%223%201%5Cnx%5Cn.%5Cnx%5Cn%22%2C%222%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20you%20have%20to%20put%20at%20least%20one%20guard%2C%20so%20there%20are%20three%20possible%20arrangements%3A%20one%20guard%20in%20the%20cell%20%24%20%281%2C1%29%20%24%20%2C%20one%20guard%20in%20the%20cell%20%24%20%281%2C3%29%20%24%20%2C%20and%20two%20guards%20in%20both%20these%20cells.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F845%5C%2FF%22%2C%22id%22%3A%22845F%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A3%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF845F%22%2C%22title%22%3A%22Guards%20In%20The%20Storehouse%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Guards%20In%20The%20Storehouse%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Guards In The Storehouse</h1>
+<h2>题目描述</h2>
+<div>Polycarp owns a shop in the capital of Berland. Recently the criminal activity in the capital increased, so Polycarp is thinking about establishing some better security in the storehouse of his shop.
+The storehouse can be represented as a matrix with $ n $ rows and $ m $ columns. Each element of the matrix is either . (an empty space) or x (a wall).
+Polycarp wants to hire some guards (possibly zero) to watch for the storehouse. Each guard will be in some cell of matrix and will protect every cell to the right of his own cell and every cell to the bottom of his own cell, until the nearest wall. More formally, if the guard is standing in the cell $ (x_{0},y_{0}) $ , then he protects cell $ (x_{1},y_{1}) $ if all these conditions are met:
+- $ (x_{1},y_{1}) $ is an empty cell;
+- either $ x_{0}=x_{1} $ and $ y_{0}<=y_{1} $ , or $ x_{0}<=x_{1} $ and $ y_{0}=y_{1} $ ;
+- there are no walls between cells $ (x_{0},y_{0}) $ and $ (x_{1},y_{1}) $ . There can be a guard between these cells, guards can look through each other.
+Guards can be placed only in empty cells (and can protect only empty cells). The plan of placing the guards is some set of cells where guards will be placed (of course, two plans are different if there exists at least one cell that is included in the first plan, but not included in the second plan, or vice versa). Polycarp calls a plan suitable if there is not more than one empty cell that is not protected.
+Polycarp wants to know the number of suitable plans. Since it can be very large, you have to output it modulo $ 10^{9}+7 $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two numbers $ n $ and $ m $ — the length and the width of the storehouse ( $ 1<=n,m<=250 $ , $ 1<=nm<=250 $ ).
+Then $ n $ lines follow, $ i $ th line contains a string consisting of $ m $ characters — $ i $ th row of the matrix representing the storehouse. Each character is either . or x.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the number of suitable plans modulo $ 10^{9}+7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 3
+.x.
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2 2
+xx
+xx
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>2 2
+..
+..
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>10
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>3 1
+x
+.
+x
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>2
+</code></pre>
+<h2>说明</h2>
+<div>In the first example you have to put at least one guard, so there are three possible arrangements: one guard in the cell $ (1,1) $ , one guard in the cell $ (1,3) $ , and two guards in both these cells.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

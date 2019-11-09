@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Hex Dyslexia - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398821:iVfFJpuztXZhkk6EZwfp/2tl7DduKUn5rSz+VIkYeUM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Copying%20large%20hexadecimal%20%28base%2016%29%20strings%20by%20hand%20can%20be%20error%20prone%2C%20but%20that%20doesn%27t%20stop%20people%20from%20doing%20it.%20You%27ve%20discovered%20a%20bug%20in%20the%20code%20that%20was%20likely%20caused%20by%20someone%20making%20a%20mistake%20when%20copying%20such%20a%20string.%20You%20suspect%20that%20whoever%20copied%20the%20string%20did%20not%20change%20any%20of%20the%20digits%20in%20the%20string%2C%20nor%20the%20length%20of%20the%20string%2C%20but%20may%20have%20permuted%20the%20digits%20arbitrarily.%20For%20example%2C%20if%20the%20original%20string%20was%20%24%200abc%20%24%20they%20may%20have%20changed%20it%20to%20%24%20a0cb%20%24%20or%20%24%200bca%20%24%20%2C%20but%20not%20%24%20abc%20%24%20or%20%24%200abb%20%24%20.%5Cn%5CnUnfortunately%20you%20don%27t%20have%20access%20to%20the%20original%20string%20nor%20the%20copied%20string%2C%20but%20you%20do%20know%20the%20length%20of%20the%20strings%20and%20their%20numerical%20absolute%20difference.%20You%20will%20be%20given%20this%20difference%20as%20a%20hexadecimal%20string%20%24%20S%20%24%20%2C%20which%20has%20been%20zero-extended%20to%20be%20equal%20in%20length%20to%20the%20original%20and%20copied%20strings.%20Determine%20the%20smallest%20possible%20numerical%20value%20of%20the%20original%20string.%22%2C%22inputFormat%22%3A%22Input%20will%20contain%20a%20hexadecimal%20string%20%24%20S%20%24%20consisting%20only%20of%20digits%20%24%200%20%24%20to%20%24%209%20%24%20and%20lowercase%20English%20letters%20from%20%24%20a%20%24%20to%20%24%20f%20%24%20%2C%20with%20length%20at%20most%20%24%2014%20%24%20.%20At%20least%20one%20of%20the%20characters%20is%20non-zero.%22%2C%22outputFormat%22%3A%22If%20it%20is%20not%20possible%2C%20print%20%5C%22NO%5C%22%20%28without%20quotes%29.%5Cn%5CnOtherwise%2C%20print%20the%20lowercase%20hexadecimal%20string%20corresponding%20to%20the%20smallest%20possible%20numerical%20value%2C%20including%20any%20necessary%20leading%20zeros%20for%20the%20length%20to%20be%20correct.%22%2C%22samples%22%3A%5B%5B%22f1e%5Cn%22%2C%22NO%5Cn%22%5D%2C%5B%220f1e%5Cn%22%2C%2200f1%5Cn%22%5D%2C%5B%2212d2c%5Cn%22%2C%2200314%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20numerical%20value%20of%20a%20hexadecimal%20string%20is%20computed%20by%20multiplying%20each%20digit%20by%20successive%20powers%20of%20%24%2016%20%24%20%2C%20starting%20with%20the%20rightmost%20digit%2C%20which%20is%20multiplied%20by%20%24%2016%5E%7B0%7D%20%24%20.%20Hexadecimal%20digits%20representing%20values%20greater%20than%20%24%209%20%24%20are%20represented%20by%20letters%3A%20%24%20a%3D10%2Cb%3D11%2Cc%3D12%2Cd%3D13%2Ce%3D14%2Cf%3D15%20%24%20.%5Cn%5CnFor%20example%2C%20the%20numerical%20value%20of%20%24%200f1e%20%24%20is%20%24%200%5Cu00b716%5E%7B3%7D%2B15%5Cu00b716%5E%7B2%7D%2B1%5Cu00b716%5E%7B1%7D%2B14%5Cu00b716%5E%7B0%7D%3D3870%20%24%20%2C%20the%20numerical%20value%20of%20%24%2000f1%20%24%20is%20%24%200%5Cu00b716%5E%7B3%7D%2B0%5Cu00b716%5E%7B2%7D%2B15%5Cu00b716%5E%7B1%7D%2B1%5Cu00b716%5E%7B0%7D%3D241%20%24%20%2C%20and%20the%20numerical%20value%20of%20%24%20100f%20%24%20is%20%24%201%5Cu00b716%5E%7B3%7D%2B0%5Cu00b716%5E%7B2%7D%2B0%5Cu00b716%5E%7B1%7D%2B15%5Cu00b716%5E%7B0%7D%3D4111%20%24%20.%20Since%20%24%203870%2B241%3D4111%20%24%20and%20%24%2000f1%20%24%20is%20a%20permutation%20of%20%24%20100f%20%24%20%2C%20%24%2000f1%20%24%20is%20a%20valid%20answer%20to%20the%20second%20test%20case.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F865%5C%2FE%22%2C%22id%22%3A%22865E%22%7D%2C%22translation%22%3A%22%5Cu60a8%5Cu5728%5Cu4ee3%5Cu7801%5Cu4e2d%5Cu53d1%5Cu73b0%5Cu4e86%5Cu4e00%5Cu4e2abug%2C%5Cu5b83%5Cu53ef%5Cu80fd%5Cu662f%5Cu7531%5Cu590d%5Cu5236%5Cu8fd9%5Cu6837%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu65f6%5Cu51fa%5Cu9519%5Cu9020%5Cu6210%5Cu7684%5Cu3002%5Cu60a8%5Cu77e5%5Cu9053%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6ca1%5Cu6709%5Cu88ab%5Cu66f4%5Cu5176%5Cu4e2d%5Cu7684%5Cu4efb%5Cu4f55%5Cu6570%5Cu5b57%5Cu548c%5Cu5176%5Cu957f%5Cu5ea6%2C%5Cu4f46%5Cu662f%5Cu53ef%5Cu80fd%5Cu88ab%5Cu4efb%5Cu610f%5Cu6392%5Cu5217%5Cu4e86%5Cu6570%5Cu5b57%5Cu3002%5Cu4f8b%5Cu5982%2C%5Cu5982%5Cu679c%5Cu539f%5Cu59cb%5Cu5b57%5Cu7b26%5Cu4e32%5Cu662f0abc%2C%5Cu4ed6%5Cu4eec%5Cu53ef%5Cu80fd%5Cu5df2%5Cu7ecf%5Cu5c06%5Cu5176%5Cu66f4%5Cu6539%5Cu4e3aa0cb%5Cu62160bca%2C%5Cu4f46%5Cu6ca1%5Cu6709%5Cu66f4%5Cu6539%5Cu4e3aabc%5Cu62160abb%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu5341%5Cu516d%5Cu8fdb%5Cu5236%5Cu5b57%5Cu7b26%5Cu4e32S%28%5Cu53ea%5Cu75310%5Cu52309%5Cu7684%5Cu6570%5Cu5b57%5Cu548c%5Cu4ecea%5Cu5230f%5Cu7684%5Cu5c0f%5Cu5199%5Cu82f1%5Cu6587%5Cu5b57%5Cu6bcd%5Cu7ec4%5Cu6210%2C%5Cu957f%5Cu5ea6%5Cu6700%5Cu591a%5Cu4e3a14%5Cu3002%5Cu81f3%5Cu5c11%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu662f%5Cu975e%5Cu96f6%5Cu7684%5Cu3002%29%5Cr%5Cn%2C%5Cu4e3a%5Cu539f%5Cu59cb%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6570%5Cu503c%5Cu4e0e%5Cu66f4%5Cu6539%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6570%5Cu503c%5Cu7684%5Cu5dee%5Cu503c%2C%5Cu5b83%5Cu5df2%5Cu88ab%5Cu4ece%5Cu96f6%5Cu5f00%5Cu59cb%5Cu6269%5Cu5c55%2C%5Cu957f%5Cu5ea6%5Cu4e0e%5Cu539f%5Cu59cb%5Cu548c%5Cu590d%5Cu5236%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu76f8%5Cu540c%5Cu3002%5Cu786e%5Cu5b9a%5Cu539f%5Cu59cb%5Cu5b57%5Cu7b26%5Cu4e32%5Cu53ef%5Cu80fd%5Cu7684%5Cu6700%5Cu5c0f%5Cu6570%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu4e0d%5Cu53ef%5Cu80fd%2C%5Cu8f93%5Cu51fa%5Cu201cNO%5Cu201d%28%5Cu4e0d%5Cu5e26%5Cu5f15%5Cu53f7%29%5Cu3002%5Cu5426%5Cu5219%2C%5Cu8bf7%5Cu6253%5Cu5370%5Cu4e0e%5Cu53ef%5Cu80fd%5Cu7684%5Cu6700%5Cu5c0f%5Cu6570%5Cu503c%5Cu5bf9%5Cu5e94%5Cu7684%5Cu5c0f%5Cu5199%5Cu5341%5Cu516d%5Cu8fdb%5Cu5236%5Cu5b57%5Cu7b26%5Cu4e32%2C%5Cu5305%5Cu62ec%5Cu957f%5Cu5ea6%5Cu6b63%5Cu786e%5Cu6240%5Cu9700%5Cu7684%5Cu4efb%5Cu4f55%5Cu524d%5Cu5bfc%5Cu96f6%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF865E%22%2C%22title%22%3A%22Hex%20Dyslexia%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Hex%20Dyslexia%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Hex Dyslexia</h1>
+<h2>题意翻译</h2>
+<div>您在代码中发现了一个bug,它可能是由复制这样一个字符串时出错造成的。您知道字符串没有被更其中的任何数字和其长度,但是可能被任意排列了数字。例如,如果原始字符串是0abc,他们可能已经将其更改为a0cb或0bca,但没有更改为abc或0abb。
+输入一个十六进制字符串S(只由0到9的数字和从a到f的小写英文字母组成,长度最多为14。至少有一个字符是非零的。)
+,为原始字符串数值与更改字符串数值的差值,它已被从零开始扩展,长度与原始和复制的字符串相同。确定原始字符串可能的最小数值。
+如果不可能,输出“NO”(不带引号)。否则,请打印与可能的最小数值对应的小写十六进制字符串,包括长度正确所需的任何前导零。</div>
+<h2>题目描述</h2>
+<div>Copying large hexadecimal (base 16) strings by hand can be error prone, but that doesn't stop people from doing it. You've discovered a bug in the code that was likely caused by someone making a mistake when copying such a string. You suspect that whoever copied the string did not change any of the digits in the string, nor the length of the string, but may have permuted the digits arbitrarily. For example, if the original string was $ 0abc $ they may have changed it to $ a0cb $ or $ 0bca $ , but not $ abc $ or $ 0abb $ .
+Unfortunately you don't have access to the original string nor the copied string, but you do know the length of the strings and their numerical absolute difference. You will be given this difference as a hexadecimal string $ S $ , which has been zero-extended to be equal in length to the original and copied strings. Determine the smallest possible numerical value of the original string.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Input will contain a hexadecimal string $ S $ consisting only of digits $ 0 $ to $ 9 $ and lowercase English letters from $ a $ to $ f $ , with length at most $ 14 $ . At least one of the characters is non-zero.</div>
+<h3>输出格式</h3>
+<br />
+<div>If it is not possible, print "NO" (without quotes).
+Otherwise, print the lowercase hexadecimal string corresponding to the smallest possible numerical value, including any necessary leading zeros for the length to be correct.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>f1e
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>NO
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>0f1e
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>00f1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>12d2c
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>00314
+</code></pre>
+<h2>说明</h2>
+<div>The numerical value of a hexadecimal string is computed by multiplying each digit by successive powers of $ 16 $ , starting with the rightmost digit, which is multiplied by $ 16^{0} $ . Hexadecimal digits representing values greater than $ 9 $ are represented by letters: $ a=10,b=11,c=12,d=13,e=14,f=15 $ .
+For example, the numerical value of $ 0f1e $ is $ 0·16^{3}+15·16^{2}+1·16^{1}+14·16^{0}=3870 $ , the numerical value of $ 00f1 $ is $ 0·16^{3}+0·16^{2}+15·16^{1}+1·16^{0}=241 $ , and the numerical value of $ 100f $ is $ 1·16^{3}+0·16^{2}+0·16^{1}+15·16^{0}=4111 $ . Since $ 3870+241=4111 $ and $ 00f1 $ is a permutation of $ 100f $ , $ 00f1 $ is a valid answer to the second test case.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sorting the Coins - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398898:y4kjBxrSeT9WfuXEQAFYot5Jn+REe6oA9uwHdBHC1aQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Recently%2C%20Dima%20met%20with%20Sasha%20in%20a%20philatelic%20store%2C%20and%20since%20then%20they%20are%20collecting%20coins%20together.%20Their%20favorite%20occupation%20is%20to%20sort%20collections%20of%20coins.%20Sasha%20likes%20having%20things%20in%20order%2C%20that%20is%20why%20he%20wants%20his%20coins%20to%20be%20arranged%20in%20a%20row%20in%20such%20a%20way%20that%20firstly%20come%20coins%20out%20of%20circulation%2C%20and%20then%20come%20coins%20still%20in%20circulation.%5Cn%5CnFor%20arranging%20coins%20Dima%20uses%20the%20following%20algorithm.%20One%20step%20of%20his%20algorithm%20looks%20like%20the%20following%3A%5Cn%5Cn1.%20He%20looks%20through%20all%20the%20coins%20from%20left%20to%20right%3B%5Cn2.%20If%20he%20sees%20that%20the%20%24%20i%20%24%20-th%20coin%20is%20still%20in%20circulation%2C%20and%20%24%20%28i%2B1%29%20%24%20-th%20coin%20is%20already%20out%20of%20circulation%2C%20he%20exchanges%20these%20two%20coins%20and%20continues%20watching%20coins%20from%20%24%20%28i%2B1%29%20%24%20-th.%5Cn%5CnDima%20repeats%20the%20procedure%20above%20until%20it%20happens%20that%20no%20two%20coins%20were%20exchanged%20during%20this%20procedure.%20Dima%20calls%20hardness%20of%20ordering%20the%20number%20of%20steps%20required%20for%20him%20according%20to%20the%20algorithm%20above%20to%20sort%20the%20sequence%2C%20e.g.%20the%20number%20of%20times%20he%20looks%20through%20the%20coins%20from%20the%20very%20beginning.%20For%20example%2C%20for%20the%20ordered%20sequence%20hardness%20of%20ordering%20equals%20one.%5Cn%5CnToday%20Sasha%20invited%20Dima%20and%20proposed%20him%20a%20game.%20First%20he%20puts%20%24%20n%20%24%20coins%20in%20a%20row%2C%20all%20of%20them%20are%20out%20of%20circulation.%20Then%20Sasha%20chooses%20one%20of%20the%20coins%20out%20of%20circulation%20and%20replaces%20it%20with%20a%20coin%20in%20circulation%20for%20%24%20n%20%24%20times.%20During%20this%20process%20Sasha%20constantly%20asks%20Dima%20what%20is%20the%20hardness%20of%20ordering%20of%20the%20sequence.%5Cn%5CnThe%20task%20is%20more%20complicated%20because%20Dima%20should%20not%20touch%20the%20coins%20and%20he%20should%20determine%20hardness%20of%20ordering%20in%20his%20mind.%20Help%20Dima%20with%20this%20task.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D300000%20%24%20%29%20%5Cu2014%20number%20of%20coins%20that%20Sasha%20puts%20behind%20Dima.%5Cn%5CnSecond%20line%20contains%20%24%20n%20%24%20distinct%20integers%20%24%20p_%7B1%7D%2Cp_%7B2%7D%2C...%2Cp_%7Bn%7D%20%24%20%28%20%24%201%3C%3Dp_%7Bi%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20positions%20that%20Sasha%20puts%20coins%20in%20circulation%20to.%20At%20first%20Sasha%20replaces%20coin%20located%20at%20position%20%24%20p_%7B1%7D%20%24%20%2C%20then%20coin%20located%20at%20position%20%24%20p_%7B2%7D%20%24%20and%20so%20on.%20Coins%20are%20numbered%20from%20left%20to%20right.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%2B1%20%24%20numbers%20%24%20a_%7B0%7D%2Ca_%7B1%7D%2C...%2Ca_%7Bn%7D%20%24%20%2C%20where%20%24%20a_%7B0%7D%20%24%20is%20a%20hardness%20of%20ordering%20at%20the%20beginning%2C%20%24%20a_%7B1%7D%20%24%20is%20a%20hardness%20of%20ordering%20after%20the%20first%20replacement%20and%20so%20on.%22%2C%22samples%22%3A%5B%5B%224%5Cn1%203%204%202%5Cn%22%2C%221%202%203%202%201%5Cn%22%5D%2C%5B%228%5Cn6%208%203%204%207%202%201%205%5Cn%22%2C%221%202%202%203%204%203%204%205%201%5Cn%22%5D%5D%2C%22hint%22%3A%22Let%27s%20denote%20as%20O%20coin%20out%20of%20circulation%2C%20and%20as%20X%20%5Cu2014%20coin%20is%20circulation.%5Cn%5CnAt%20the%20first%20sample%2C%20initially%20in%20row%20there%20are%20coins%20that%20are%20not%20in%20circulation%2C%20so%20Dima%20will%20look%20through%20them%20from%20left%20to%20right%20and%20won%27t%20make%20any%20exchanges.%5Cn%5CnAfter%20replacement%20of%20the%20first%20coin%20with%20a%20coin%20in%20circulation%2C%20Dima%20will%20exchange%20this%20coin%20with%20next%20three%20times%20and%20after%20that%20he%20will%20finally%20look%20through%20the%20coins%20and%20finish%20the%20process.%5Cn%5CnXOOO%20%24%20%5Cu2192%20%24%20OOOX%5Cn%5CnAfter%20replacement%20of%20the%20third%20coin%2C%20Dima%27s%20actions%20look%20this%20way%3A%5Cn%5CnXOXO%20%24%20%5Cu2192%20%24%20OXOX%20%24%20%5Cu2192%20%24%20OOXX%5Cn%5CnAfter%20replacement%20of%20the%20fourth%20coin%2C%20Dima%27s%20actions%20look%20this%20way%3A%5Cn%5CnXOXX%20%24%20%5Cu2192%20%24%20OXXX%5Cn%5CnFinally%2C%20after%20replacement%20of%20the%20second%20coin%2C%20row%20becomes%20consisting%20of%20coins%20that%20are%20in%20circulation%20and%20Dima%20will%20look%20through%20coins%20from%20left%20to%20right%20without%20any%20exchanges.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F875%5C%2FB%22%2C%22id%22%3A%22875B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A29%2C%22totalAccepted%22%3A14%2C%22pid%22%3A%22CF875B%22%2C%22title%22%3A%22Sorting%20the%20Coins%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Sorting%20the%20Coins%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Sorting the Coins</h1>
+<h2>题目描述</h2>
+<div>Recently, Dima met with Sasha in a philatelic store, and since then they are collecting coins together. Their favorite occupation is to sort collections of coins. Sasha likes having things in order, that is why he wants his coins to be arranged in a row in such a way that firstly come coins out of circulation, and then come coins still in circulation.
+For arranging coins Dima uses the following algorithm. One step of his algorithm looks like the following:
+1. He looks through all the coins from left to right;
+2. If he sees that the $ i $ -th coin is still in circulation, and $ (i+1) $ -th coin is already out of circulation, he exchanges these two coins and continues watching coins from $ (i+1) $ -th.
+Dima repeats the procedure above until it happens that no two coins were exchanged during this procedure. Dima calls hardness of ordering the number of steps required for him according to the algorithm above to sort the sequence, e.g. the number of times he looks through the coins from the very beginning. For example, for the ordered sequence hardness of ordering equals one.
+Today Sasha invited Dima and proposed him a game. First he puts $ n $ coins in a row, all of them are out of circulation. Then Sasha chooses one of the coins out of circulation and replaces it with a coin in circulation for $ n $ times. During this process Sasha constantly asks Dima what is the hardness of ordering of the sequence.
+The task is more complicated because Dima should not touch the coins and he should determine hardness of ordering in his mind. Help Dima with this task.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains single integer $ n $ ( $ 1<=n<=300000 $ ) — number of coins that Sasha puts behind Dima.
+Second line contains $ n $ distinct integers $ p_{1},p_{2},...,p_{n} $ ( $ 1<=p_{i}<=n $ ) — positions that Sasha puts coins in circulation to. At first Sasha replaces coin located at position $ p_{1} $ , then coin located at position $ p_{2} $ and so on. Coins are numbered from left to right.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n+1 $ numbers $ a_{0},a_{1},...,a_{n} $ , where $ a_{0} $ is a hardness of ordering at the beginning, $ a_{1} $ is a hardness of ordering after the first replacement and so on.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1 3 4 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 2 3 2 1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>8
+6 8 3 4 7 2 1 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1 2 2 3 4 3 4 5 1
+</code></pre>
+<h2>说明</h2>
+<div>Let's denote as O coin out of circulation, and as X — coin is circulation.
+At the first sample, initially in row there are coins that are not in circulation, so Dima will look through them from left to right and won't make any exchanges.
+After replacement of the first coin with a coin in circulation, Dima will exchange this coin with next three times and after that he will finally look through the coins and finish the process.
+XOOO $ → $ OOOX
+After replacement of the third coin, Dima's actions look this way:
+XOXO $ → $ OXOX $ → $ OOXX
+After replacement of the fourth coin, Dima's actions look this way:
+XOXX $ → $ OXXX
+Finally, after replacement of the second coin, row becomes consisting of coins that are in circulation and Dima will look through coins from left to right without any exchanges.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

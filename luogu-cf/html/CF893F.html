@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Subtree Minimum Query - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573399090:HbmYWgd/pVp6iGgE7TfF5+iyiYCJ9r2orEHKcIuqYog=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20rooted%20tree%20consisting%20of%20%24%20n%20%24%20vertices.%20Each%20vertex%20has%20a%20number%20written%20on%20it%3B%20number%20%24%20a_%7Bi%7D%20%24%20is%20written%20on%20vertex%20%24%20i%20%24%20.%5Cn%5CnLet%27s%20denote%20%24%20d%28i%2Cj%29%20%24%20as%20the%20distance%20between%20vertices%20%24%20i%20%24%20and%20%24%20j%20%24%20in%20the%20tree%20%28that%20is%2C%20the%20number%20of%20edges%20in%20the%20shortest%20path%20from%20%24%20i%20%24%20to%20%24%20j%20%24%20%29.%20Also%20let%27s%20denote%20the%20%20%24%20k%20%24%20-blocked%20subtree%20of%20vertex%20%24%20x%20%24%20as%20the%20set%20of%20vertices%20%24%20y%20%24%20such%20that%20both%20these%20conditions%20are%20met%3A%5Cn%5Cn-%20%24%20x%20%24%20is%20an%20ancestor%20of%20%24%20y%20%24%20%28every%20vertex%20is%20an%20ancestor%20of%20itself%29%3B%5Cn-%20%24%20d%28x%2Cy%29%3C%3Dk%20%24%20.%5Cn%5CnYou%20are%20given%20%24%20m%20%24%20queries%20to%20the%20tree.%20%24%20i%20%24%20-th%20query%20is%20represented%20by%20two%20numbers%20%24%20x_%7Bi%7D%20%24%20and%20%24%20k_%7Bi%7D%20%24%20%2C%20and%20the%20answer%20to%20this%20query%20is%20the%20minimum%20value%20of%20%24%20a_%7Bj%7D%20%24%20among%20such%20vertices%20%24%20j%20%24%20such%20that%20%24%20j%20%24%20belongs%20to%20%24%20k_%7Bi%7D%20%24%20-blocked%20subtree%20of%20%24%20x_%7Bi%7D%20%24%20.%5Cn%5CnWrite%20a%20program%20that%20would%20process%20these%20queries%20quickly%21%5Cn%5CnNote%20that%20the%20queries%20are%20given%20in%20a%20modified%20way.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20r%20%24%20%28%20%24%201%3C%3Dr%3C%3Dn%3C%3D100000%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20tree%20and%20the%20index%20of%20the%20root%2C%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20numbers%20written%20on%20the%20vertices.%5Cn%5CnThen%20%24%20n-1%20%24%20lines%20follow%2C%20each%20containing%20two%20integers%20%24%20x%20%24%20and%20%24%20y%20%24%20%28%20%24%201%3C%3Dx%2Cy%3C%3Dn%20%24%20%29%20and%20representing%20an%20edge%20between%20vertices%20%24%20x%20%24%20and%20%24%20y%20%24%20.%20It%20is%20guaranteed%20that%20these%20edges%20form%20a%20tree.%5Cn%5CnNext%20line%20contains%20one%20integer%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3D10%5E%7B6%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries%20to%20process.%5Cn%5CnThen%20%24%20m%20%24%20lines%20follow%2C%20%24%20i%20%24%20-th%20line%20containing%20two%20numbers%20%24%20p_%7Bi%7D%20%24%20and%20%24%20q_%7Bi%7D%20%24%20%2C%20which%20can%20be%20used%20to%20restore%20%24%20i%20%24%20-th%20query%20%28%20%24%201%3C%3Dp_%7Bi%7D%2Cq_%7Bi%7D%3C%3Dn%20%24%20%29.%5Cn%5Cn%20%24%20i%20%24%20-th%20query%20can%20be%20restored%20as%20follows%3A%5Cn%5CnLet%20%24%20last%20%24%20be%20the%20answer%20for%20previous%20query%20%28or%20%24%200%20%24%20if%20%24%20i%3D1%20%24%20%29.%20Then%20%24%20x_%7Bi%7D%3D%28%28p_%7Bi%7D%2Blast%29modn%29%2B1%20%24%20%2C%20and%20%24%20k_%7Bi%7D%3D%28q_%7Bi%7D%2Blast%29modn%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20%24%20m%20%24%20integers.%20%24%20i%20%24%20-th%20of%20them%20has%20to%20be%20equal%20to%20the%20answer%20to%20%24%20i%20%24%20-th%20query.%22%2C%22samples%22%3A%5B%5B%225%202%5Cn1%203%202%203%205%5Cn2%203%5Cn5%201%5Cn3%204%5Cn4%201%5Cn2%5Cn1%202%5Cn2%203%5Cn%22%2C%222%5Cn5%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B6000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F893%5C%2FF%22%2C%22id%22%3A%22893F%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu9897%5Cu6709%5Cu6839%5Cu6811%5Cuff0c%5Cu70b9%5Cu6709%5Cu6743%5Cu503c%5Cuff0cm%5Cu6b21%5Cu8be2%5Cu95ee%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu95ee%5Cu4f60%5Cu67d0%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5b50%5Cu6811%5Cu4e2d%5Cu8ddd%5Cu79bb%5Cu5176%5Cu4e0d%5Cu8d85%5Cu8fc7k%5Cu7684%5Cu70b9%5Cu7684%5Cu6743%5Cu503c%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%5Cuff08%5Cu8fb9%5Cu6743%5Cu5747%5Cu4e3a1%5Cuff0c%5Cu70b9%5Cu6743%5Cu6709%5Cu53ef%5Cu80fd%5Cu91cd%5Cu590d%5Cuff0ck%5Cu503c%5Cu6bcf%5Cu6b21%5Cu8be2%5Cu95ee%5Cu6709%5Cu53ef%5Cu80fd%5Cu4e0d%5Cu540c%5Cuff0c%2A%2A%5Cu5f3a%5Cu5236%5Cu5728%5Cu7ebf%2A%2A%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu771f%5Cu5b9e%5Cu8be2%5Cu95ee%5Cu8ba1%5Cu7b97%5Cu65b9%5Cu6cd5%5Cuff1a%5Cr%5Cn%5Cr%5Cnx%3D%28x%5Cu2032%2Blans%29modn%2B1%3B%5Cr%5Cn%5Cr%5Cnk%3D%28k%5Cu2032%2Blans%29modn%3B%5Cr%5Cn%5Cr%5Cn%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cuff1a%5Cr%5Cnn%3C%3D100000%2Cai%3C%3D10%5E9%2Cm%3C%3D1000000%22%2C%22tags%22%3A%5B233%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A268%2C%22totalAccepted%22%3A103%2C%22pid%22%3A%22CF893F%22%2C%22title%22%3A%22Subtree%20Minimum%20Query%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A46112%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9008%2C%22name%22%3A%22CF893F%20Subtree%20Minimum%20Query%22%2C%22slug%22%3A%22CF893F%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2508%22%2C%22title%22%3A%22%5BHAOI2008%5D%5Cu5706%5Cu4e0a%5Cu7684%5Cu6574%5Cu70b9%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2824%22%2C%22title%22%3A%22%5BHEOI2016%5C%2FTJOI2016%5D%5Cu6392%5Cu5e8f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3224%22%2C%22title%22%3A%22%5BHNOI2012%5D%5Cu6c38%5Cu65e0%5Cu4e61%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF522D%22%2C%22title%22%3A%22Closest%20Equals%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22SP8791%22%2C%22title%22%3A%22DYNALCA%20-%20Dynamic%20LCA%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Subtree%20Minimum%20Query%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Subtree Minimum Query</h1>
+<h2>题意翻译</h2>
+<div>题目大意：
+给你一颗有根树，点有权值，m次询问，每次问你某个点的子树中距离其不超过k的点的权值的最小值。（边权均为1，点权有可能重复，k值每次询问有可能不同，**强制在线**）
+真实询问计算方法：
+x=(x′+lans)modn+1;
+k=(k′+lans)modn;
+数据范围：
+n<=100000,ai<=10^9,m<=1000000</div>
+<h2>题目描述</h2>
+<div>You are given a rooted tree consisting of $ n $ vertices. Each vertex has a number written on it; number $ a_{i} $ is written on vertex $ i $ .
+Let's denote $ d(i,j) $ as the distance between vertices $ i $ and $ j $ in the tree (that is, the number of edges in the shortest path from $ i $ to $ j $ ). Also let's denote the $ k $ -blocked subtree of vertex $ x $ as the set of vertices $ y $ such that both these conditions are met:
+- $ x $ is an ancestor of $ y $ (every vertex is an ancestor of itself);
+- $ d(x,y)<=k $ .
+You are given $ m $ queries to the tree. $ i $ -th query is represented by two numbers $ x_{i} $ and $ k_{i} $ , and the answer to this query is the minimum value of $ a_{j} $ among such vertices $ j $ such that $ j $ belongs to $ k_{i} $ -blocked subtree of $ x_{i} $ .
+Write a program that would process these queries quickly!
+Note that the queries are given in a modified way.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ r $ ( $ 1<=r<=n<=100000 $ ) — the number of vertices in the tree and the index of the root, respectively.
+The second line contains $ n $ integers $ a_{1},a_{2},...,a_{n} $ ( $ 1<=a_{i}<=10^{9} $ ) — the numbers written on the vertices.
+Then $ n-1 $ lines follow, each containing two integers $ x $ and $ y $ ( $ 1<=x,y<=n $ ) and representing an edge between vertices $ x $ and $ y $ . It is guaranteed that these edges form a tree.
+Next line contains one integer $ m $ ( $ 1<=m<=10^{6} $ ) — the number of queries to process.
+Then $ m $ lines follow, $ i $ -th line containing two numbers $ p_{i} $ and $ q_{i} $ , which can be used to restore $ i $ -th query ( $ 1<=p_{i},q_{i}<=n $ ).
+$ i $ -th query can be restored as follows:
+Let $ last $ be the answer for previous query (or $ 0 $ if $ i=1 $ ). Then $ x_{i}=((p_{i}+last)modn)+1 $ , and $ k_{i}=(q_{i}+last)modn $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ m $ integers. $ i $ -th of them has to be equal to the answer to $ i $ -th query.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 2
+1 3 2 3 5
+2 3
+5 1
+3 4
+4 1
+2
+1 2
+2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+5
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

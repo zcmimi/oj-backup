@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Interactive LowerBound - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398508:vOEtK0ylkjPh1GnPZujqVxdnkPtBXUUj1E4wAphE0pg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22This%20is%20an%20interactive%20problem.%5Cn%5CnYou%20are%20given%20a%20sorted%20in%20increasing%20order%20singly%20linked%20list.%20You%20should%20find%20the%20minimum%20integer%20in%20the%20list%20which%20is%20greater%20than%20or%20equal%20to%20%24%20x%20%24%20.%5Cn%5CnMore%20formally%2C%20there%20is%20a%20singly%20liked%20list%20built%20on%20an%20array%20of%20%24%20n%20%24%20elements.%20Element%20with%20index%20%24%20i%20%24%20contains%20two%20integers%3A%20%24%20value_%7Bi%7D%20%24%20is%20the%20integer%20value%20in%20this%20element%2C%20and%20%24%20next_%7Bi%7D%20%24%20that%20is%20the%20index%20of%20the%20next%20element%20of%20the%20singly%20linked%20list%20%28or%20-1%2C%20if%20the%20current%20element%20is%20the%20last%29.%20The%20list%20is%20sorted%2C%20i.e.%20if%20%24%20next_%7Bi%7D%5Cu2260-1%20%24%20%2C%20then%20%24%20value_%7Bnexti%7D%26gt%3Bvalue_%7Bi%7D%20%24%20.%5Cn%5CnYou%20are%20given%20the%20number%20of%20elements%20in%20the%20list%20%24%20n%20%24%20%2C%20the%20index%20of%20the%20first%20element%20%24%20start%20%24%20%2C%20and%20the%20integer%20%24%20x%20%24%20.%5Cn%5CnYou%20can%20make%20up%20to%20%24%202000%20%24%20queries%20of%20the%20following%20two%20types%3A%5Cn%5Cn-%20%3F%20i%20%28%20%24%201%3C%3Di%3C%3Dn%20%24%20%29%20%5Cu2014%20ask%20the%20values%20%24%20value_%7Bi%7D%20%24%20and%20%24%20next_%7Bi%7D%20%24%20%2C%5Cn-%20%21%20ans%20%5Cu2014%20give%20the%20answer%20for%20the%20problem%3A%20the%20minimum%20integer%2C%20greater%20than%20or%20equal%20to%20%24%20x%20%24%20%2C%20or%20%21%20-1%2C%20if%20there%20are%20no%20such%20integers.%20Your%20program%20should%20terminate%20after%20this%20query.%5Cn%5CnWrite%20a%20program%20that%20solves%20this%20problem.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20start%20%24%20%2C%20%24%20x%20%24%20%28%20%24%201%3C%3Dn%3C%3D50000%20%24%20%2C%20%24%201%3C%3Dstart%3C%3Dn%20%24%20%2C%20%24%200%3C%3Dx%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20list%2C%20the%20index%20of%20the%20first%20element%20and%20the%20integer%20%24%20x%20%24%20.%22%2C%22outputFormat%22%3A%22To%20print%20the%20answer%20for%20the%20problem%2C%20print%20%21%20ans%2C%20where%20ans%20is%20the%20minimum%20integer%20in%20the%20list%20greater%20than%20or%20equal%20to%20%24%20x%20%24%20%2C%20or%20-1%2C%20if%20there%20is%20no%20such%20integer.%5Cn%5CnInteraction%5Cn%5CnTo%20make%20a%20query%20of%20the%20first%20type%2C%20print%20%3F%20i%20%28%20%24%201%3C%3Di%3C%3Dn%20%24%20%29%2C%20where%20i%20is%20the%20index%20of%20element%20you%20want%20to%20know%20information%20about.%5Cn%5CnAfter%20each%20query%20of%20type%20%3F%20read%20two%20integers%20%24%20value_%7Bi%7D%20%24%20and%20%24%20next_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dvalue_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%2C%20%24%20-1%3C%3Dnext_%7Bi%7D%3C%3Dn%20%24%20%2C%20%24%20next_%7Bi%7D%5Cu22600%20%24%20%29.%5Cn%5CnIt%20is%20guaranteed%20that%20if%20%24%20next_%7Bi%7D%5Cu2260-1%20%24%20%2C%20then%20%24%20value_%7Bnexti%7D%26gt%3Bvalue_%7Bi%7D%20%24%20%2C%20and%20that%20the%20array%20values%20give%20a%20valid%20singly%20linked%20list%20with%20%24%20start%20%24%20being%20the%20first%20element.%5Cn%5CnNote%20that%20you%20can%27t%20ask%20more%20than%20%24%201999%20%24%20queries%20of%20the%20type%20%3F.%5Cn%5CnIf%20%24%20next_%7Bi%7D%3D-1%20%24%20and%20%24%20value_%7Bi%7D%3D-1%20%24%20%2C%20then%20it%20means%20that%20you%20asked%20more%20queries%20than%20allowed%2C%20or%20asked%20an%20invalid%20query.%20Your%20program%20should%20immediately%20terminate%20%28for%20example%2C%20by%20calling%20exit%280%29%29.%20You%20will%20receive%20%5C%22Wrong%20Answer%5C%22%2C%20it%20means%20that%20you%20asked%20more%20queries%20than%20allowed%2C%20or%20asked%20an%20invalid%20query.%20If%20you%20ignore%20this%2C%20you%20can%20get%20other%20verdicts%20since%20your%20program%20will%20continue%20to%20read%20from%20a%20closed%20stream.%5Cn%5CnYour%20solution%20will%20get%20%5C%22Idleness%20Limit%20Exceeded%5C%22%2C%20if%20you%20don%27t%20print%20anything%20or%20forget%20to%20flush%20the%20output%2C%20including%20the%20final%20answer.%5Cn%5CnTo%20flush%20you%20can%20use%20%28just%20after%20printing%20a%20query%20and%20line%20end%29%3A%5Cn%5Cn-%20fflush%28stdout%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20For%20other%20languages%20see%20documentation.%5Cn%5CnHacks%20format%5Cn%5CnFor%20hacks%2C%20use%20the%20following%20format%3A%5Cn%5CnIn%20the%20first%20line%20print%20three%20integers%20%24%20n%20%24%20%2C%20%24%20start%20%24%20%2C%20%24%20x%20%24%20%28%20%24%201%3C%3Dn%3C%3D50000%20%24%20%2C%20%24%201%3C%3Dstart%3C%3Dn%20%24%20%2C%20%24%200%3C%3Dx%3C%3D10%5E%7B9%7D%20%24%20%29.%5Cn%5CnIn%20the%20next%20%24%20n%20%24%20lines%20print%20the%20description%20of%20the%20elements%20of%20the%20list%3A%20in%20the%20%24%20i%20%24%20-th%20line%20print%20two%20integers%20%24%20value_%7Bi%7D%20%24%20and%20%24%20next_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dvalue_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%2C%20%24%20-1%3C%3Dnext_%7Bi%7D%3C%3Dn%20%24%20%2C%20%24%20next_%7Bi%7D%5Cu22600%20%24%20%29.%5Cn%5CnThe%20printed%20structure%20should%20be%20a%20valid%20singly%20linked%20list.%20In%20particular%2C%20it%20should%20be%20possible%20to%20reach%20all%20elements%20from%20%24%20start%20%24%20by%20following%20links%20%24%20next_%7Bi%7D%20%24%20%2C%20and%20the%20last%20element%20%24%20end%20%24%20should%20have%20-1%20in%20the%20%24%20next_%7Bend%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%225%203%2080%5Cn97%20-1%5Cn58%205%5Cn16%202%5Cn81%201%5Cn79%204%5Cn%22%2C%22%3F%201%5Cn%3F%202%5Cn%3F%203%5Cn%3F%204%5Cn%3F%205%5Cn%21%2081%22%5D%5D%2C%22hint%22%3A%22You%20can%20read%20more%20about%20singly%20linked%20list%20by%20the%20following%20link%3A%20%5Bhttps%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FLinked%5C%5C_list%23Singly%5C%5C_linked%5C%5C_list%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FLinked_list%23Singly_linked_list%29%5Cn%5CnThe%20illustration%20for%20the%20first%20sample%20case.%20Start%20and%20finish%20elements%20are%20marked%20dark.%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF843B%5C%2F71961769b81bfa3a3f8829eda26d6883c0c5db50.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F843%5C%2FB%22%2C%22id%22%3A%22843B%22%7D%2C%22translation%22%3A%22-%20%5Cu8fd9%5Cu662f%5Cu4e00%5Cu4e2a%5Cu4ea4%5Cu4e92%5Cu5f0f%5Cu95ee%5Cu9898%5Cu3002%5Cr%5Cn-%20%5Cu9898%5Cu76ee%5Cu5c06%5Cu4f1a%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu6309%5Cu9012%5Cu589e%5Cu987a%5Cu5e8f%5Cu6392%5Cu5e8f%5Cu7684%5Cu5355%5Cu9879%5Cu94fe%5Cu8868%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu627e%5Cu5230%5Cu5217%5Cu8868%5Cu4e2d%5Cu5927%5Cu4e8e%5Cu6216%5Cu7b49%5Cu4e8ex%5Cu7684%5Cu6700%5Cu5c0f%5Cu6574%5Cu6570%5Cu3002%5Cr%5Cn-%20%5Cu66f4%5Cu6b63%5Cu5f0f%5Cu70b9%5Cu8bf4%5Cuff0c%5Cu5728%5Cu4e00%5Cu4e2a%5Cu7531n%5Cu4e2a%5Cu5143%5Cu7d20%5Cu6784%5Cu6210%5Cu7684%5Cu6570%5Cu7ec4%5Cu4e2d%5Cu6784%5Cu6210%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu5355%5Cu9879%5Cu94fe%5Cu8868%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu7ec4%5Cu5143%5Cu7d20i%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0cvalue_%5Cu662f%5Cu5143%5Cu7d20%5Cu7684%5Cu6574%5Cu6570%5Cu503c%5Cuff0cnext_i%5Cu662f%5Cu5b83%5Cu6240%5Cu6307%5Cu5411%5Cu7684%5Cu5143%5Cu7d20%5Cuff08%2A%2A%5Cu5982%5Cu679c%5Cu5f53%5Cu524d%5Cu5143%5Cu7d20%5Cu6ca1%5Cu6709%5Cu540e%5Cu7ee7%5Cuff08%5Cu5373%5Cu5176%5Cu4e3a%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cuff09%5Cu5219%5Cu4e3a-1%2A%2A%5Cuff09%5Cu3002%5Cu901a%5Cu8fc7next_i%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu5bf9%5Cu6570%5Cu7ec4%5Cu8fdb%5Cu884c%5Cu6392%5Cu5e8f%5Cu3002%5Cr%5Cn-%20%5Cu73b0%5Cu5728%5Cu7ed9%5Cu4f60%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu7ec4%5Cu4e2d%5Cu7684%5Cu5143%5Cu7d20%5Cu6570%5Cu91cfn%5Cuff0c%5Cu6307%5Cu5411%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu7684start%5Cu548c%5Cu6574%5Cu6570x%5Cu3002%5Cr%5Cn-%20%5Cu4f60%5Cu8981%5Cu8fdb%5Cu884c%5Cu4e0d%5Cu8d85%5Cu8fc72000%5Cu7ec4%5Cu8bbf%5Cu95ee%5Cuff0c%5Cu5171%5Cu6709%5Cu4e24%5Cu79cd%5Cu8bbf%5Cu95ee%5Cu5f62%5Cu5f0f%5Cuff08%2A%2A%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cu4e2d%5Cu662f%5Cu4f60%5Cu7684%5Cu8be2%5Cu95ee%5Cuff0c%5Cu4f60%5Cu6bcf%5Cu8be2%5Cu95ee%5Cu4e00%5Cu6b21%5Cuff0c%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu5c31%5Cu4f1a%5Cu8bfb%5Cu53d6%5Cu4e24%5Cu4e2a%5Cu6570%2A%2A%29%5Cr%5Cn1.%20%5Cuff1fi%5Cuff081%3C%3Di%3C%3Dn%5Cuff09%5Cu8be2%5Cu95eevalue_i%5Cu548cnext_i%3B%5Cr%5Cn1.%20%20%5Cuff01%5Cu56de%5Cu7b54%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu6240%5Cu8bf4%5Cu7684%5Cu7b54%5Cu6848%5Cuff0c%5Cu5373%5Cu5927%5Cu4e8e%5Cu6216%5Cu7b49%5Cu4e8ex%5Cu6700%5Cu5c0f%5Cu6574%5Cu6570%5Cuff0c%2A%2A%2A%5Cu5982%5Cu679c%5Cu6ca1%5Cu6709%5Cu8fd9%5Cu6837%5Cu7684%5Cu6574%5Cu6570%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa%5Cuff01-1%2A%2A%2A%5Cuff0c%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu5e94%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu8f93%5Cu51fa%5Cu7ed3%5Cu675f%5Cu540e%5Cu7ec8%5Cu6b62%5Cu3002%5Cr%5Cn-%20%5Cu8bf7%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu6765%5Cu89e3%5Cu51b3%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu3002%22%2C%22tags%22%3A%5B103%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A40%2C%22totalAccepted%22%3A6%2C%22pid%22%3A%22CF843B%22%2C%22title%22%3A%22Interactive%20LowerBound%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1196%22%2C%22title%22%3A%22%5BNOI2002%5D%5Cu94f6%5Cu6cb3%5Cu82f1%5Cu96c4%5Cu4f20%5Cu8bf4%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4145%22%2C%22title%22%3A%22%5Cu4e0a%5Cu5e1d%5Cu9020%5Cu9898%5Cu7684%5Cu4e03%5Cu5206%5Cu949f2%20%5C%2F%20%5Cu82b1%5Cu795e%5Cu6e38%5Cu5386%5Cu5404%5Cu56fd%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF867A%22%2C%22title%22%3A%22Between%20the%20Offices%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF984B%22%2C%22title%22%3A%22Minesweeper%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1010B%22%2C%22title%22%3A%22Rocket%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Interactive%20LowerBound%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Interactive LowerBound</h1>
+<h2>题意翻译</h2>
+<div>- 这是一个交互式问题。
+- 题目将会给你一个按递增顺序排序的单项链表。你需要找到列表中大于或等于x的最小整数。
+- 更正式点说，在一个由n个元素构成的数组中构成了一个单项链表。每个数组元素i包含两个整数，value_是元素的整数值，next_i是它所指向的元素（**如果当前元素没有后继（即其为最后一个元素）则为-1**）。通过next_i就可以对数组进行排序。
+- 现在给你这个数组中的元素数量n，指向第一个元素的start和整数x。
+- 你要进行不超过2000组访问，共有两种访问形式（**输出样例中是你的询问，你每询问一次，你的程序就会读取两个数**)
+1. ？i（1<=i<=n）询问value_i和next_i;
+1. ！回答第二行所说的答案，即大于或等于x最小整数，***如果没有这样的整数，则输出！-1***，你的程序应在这个输出结束后终止。
+- 请编写一个程序来解决这个问题。</div>
+<h2>题目描述</h2>
+<div>This is an interactive problem.
+You are given a sorted in increasing order singly linked list. You should find the minimum integer in the list which is greater than or equal to $ x $ .
+More formally, there is a singly liked list built on an array of $ n $ elements. Element with index $ i $ contains two integers: $ value_{i} $ is the integer value in this element, and $ next_{i} $ that is the index of the next element of the singly linked list (or -1, if the current element is the last). The list is sorted, i.e. if $ next_{i}≠-1 $ , then $ value_{nexti}&gt;value_{i} $ .
+You are given the number of elements in the list $ n $ , the index of the first element $ start $ , and the integer $ x $ .
+You can make up to $ 2000 $ queries of the following two types:
+- ? i ( $ 1<=i<=n $ ) — ask the values $ value_{i} $ and $ next_{i} $ ,
+- ! ans — give the answer for the problem: the minimum integer, greater than or equal to $ x $ , or ! -1, if there are no such integers. Your program should terminate after this query.
+Write a program that solves this problem.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ start $ , $ x $ ( $ 1<=n<=50000 $ , $ 1<=start<=n $ , $ 0<=x<=10^{9} $ ) — the number of elements in the list, the index of the first element and the integer $ x $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>To print the answer for the problem, print ! ans, where ans is the minimum integer in the list greater than or equal to $ x $ , or -1, if there is no such integer.
+Interaction
+To make a query of the first type, print ? i ( $ 1<=i<=n $ ), where i is the index of element you want to know information about.
+After each query of type ? read two integers $ value_{i} $ and $ next_{i} $ ( $ 0<=value_{i}<=10^{9} $ , $ -1<=next_{i}<=n $ , $ next_{i}≠0 $ ).
+It is guaranteed that if $ next_{i}≠-1 $ , then $ value_{nexti}&gt;value_{i} $ , and that the array values give a valid singly linked list with $ start $ being the first element.
+Note that you can't ask more than $ 1999 $ queries of the type ?.
+If $ next_{i}=-1 $ and $ value_{i}=-1 $ , then it means that you asked more queries than allowed, or asked an invalid query. Your program should immediately terminate (for example, by calling exit(0)). You will receive "Wrong Answer", it means that you asked more queries than allowed, or asked an invalid query. If you ignore this, you can get other verdicts since your program will continue to read from a closed stream.
+Your solution will get "Idleness Limit Exceeded", if you don't print anything or forget to flush the output, including the final answer.
+To flush you can use (just after printing a query and line end):
+- fflush(stdout) in C++;
+- System.out.flush() in Java;
+- stdout.flush() in Python;
+- flush(output) in Pascal;
+- For other languages see documentation.
+Hacks format
+For hacks, use the following format:
+In the first line print three integers $ n $ , $ start $ , $ x $ ( $ 1<=n<=50000 $ , $ 1<=start<=n $ , $ 0<=x<=10^{9} $ ).
+In the next $ n $ lines print the description of the elements of the list: in the $ i $ -th line print two integers $ value_{i} $ and $ next_{i} $ ( $ 0<=value_{i}<=10^{9} $ , $ -1<=next_{i}<=n $ , $ next_{i}≠0 $ ).
+The printed structure should be a valid singly linked list. In particular, it should be possible to reach all elements from $ start $ by following links $ next_{i} $ , and the last element $ end $ should have -1 in the $ next_{end} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 3 80
+97 -1
+58 5
+16 2
+81 1
+79 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>? 1
+? 2
+? 3
+? 4
+? 5
+! 81</code></pre>
+<h2>说明</h2>
+<div>You can read more about singly linked list by the following link: [https://en.wikipedia.org/wiki/Linked\_list#Singly\_linked\_list](https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list)
+The illustration for the first sample case. Start and finish elements are marked dark. ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF843B/71961769b81bfa3a3f8829eda26d6883c0c5db50.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>
