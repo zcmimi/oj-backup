@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Interactive Bulls and Cows (Hard) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397470:iXMqBPYchGbUGrCmE9EUKzCkjwKrCcIUYyspdVz1kyg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20only%20difference%20from%20the%20previous%20problem%20is%20the%20constraint%20on%20the%20number%20of%20requests.%20In%20this%20problem%20your%20program%20should%20guess%20the%20answer%20doing%20at%20most%207%20requests.%5Cn%5CnThis%20problem%20is%20a%20little%20bit%20unusual.%20Here%20you%20are%20to%20implement%20an%20interaction%20with%20a%20testing%20system.%20That%20means%20that%20you%20can%20make%20queries%20and%20get%20responses%20in%20the%20online%20mode.%20Please%20be%20sure%20to%20use%20the%20stream%20flushing%20operation%20after%20each%20query%27s%20output%20in%20order%20not%20to%20leave%20part%20of%20your%20output%20in%20some%20buffer.%20For%20example%2C%20in%20C%2B%2B%20you%27ve%20got%20to%20use%20the%20fflush%28stdout%29%20function%2C%20in%20Java%20%5Cu2014%20call%20System.out.flush%28%29%2C%20and%20in%20Pascal%20%5Cu2014%20flush%28output%29.%5Cn%5CnBulls%20and%20Cows%20%28also%20known%20as%20Cows%20and%20Bulls%20or%20Pigs%20and%20Bulls%20or%20Bulls%20and%20Cleots%29%20is%20an%20old%20code-breaking%20paper%20and%20pencil%20game%20for%20two%20players%2C%20predating%20the%20similar%20commercially%20marketed%20board%20game%20Mastermind.%5Cn%5CnOn%20a%20sheet%20of%20paper%2C%20the%20first%20player%20thinks%20a%20secret%20string.%20This%20string%20consists%20only%20of%20digits%20and%20has%20the%20length%20%24%204%20%24%20.%20The%20digits%20in%20the%20string%20must%20be%20all%20different%2C%20no%20two%20or%20more%20equal%20digits%20are%20allowed.%5Cn%5CnThen%20the%20second%20player%20tries%20to%20guess%20his%20opponent%27s%20string.%20For%20every%20guess%20the%20first%20player%20gives%20the%20number%20of%20matches.%20If%20the%20matching%20digits%20are%20on%20their%20right%20positions%2C%20they%20are%20%5C%22bulls%5C%22%2C%20if%20on%20different%20positions%2C%20they%20are%20%5C%22cows%5C%22.%20Thus%20a%20response%20is%20a%20pair%20of%20numbers%20%5Cu2014%20the%20number%20of%20%5C%22bulls%5C%22%20and%20the%20number%20of%20%5C%22cows%5C%22.%20A%20try%20can%20contain%20equal%20digits.%5Cn%5CnMore%20formally%2C%20let%27s%20the%20secret%20string%20is%20%24%20s%20%24%20and%20the%20second%20player%20are%20trying%20to%20guess%20it%20with%20a%20string%20%24%20x%20%24%20.%20The%20number%20of%20%5C%22bulls%5C%22%20is%20a%20number%20of%20such%20positions%20%24%20i%20%24%20%28%20%24%201%3C%3Di%3C%3D4%20%24%20%29%20where%20%24%20s%5Bi%5D%3Dx%5Bi%5D%20%24%20.%20The%20number%20of%20%5C%22cows%5C%22%20is%20a%20number%20of%20such%20digits%20%24%20c%20%24%20that%20%24%20s%20%24%20contains%20%24%20c%20%24%20in%20the%20position%20%24%20i%20%24%20%28i.e.%20%24%20s%5Bi%5D%3Dc%20%24%20%29%2C%20%24%20x%20%24%20contains%20%24%20c%20%24%20%2C%20but%20%24%20x%5Bi%5D%5Cu2260c%20%24%20.%5Cn%5CnFor%20example%2C%20the%20secret%20string%20is%20%5C%220427%5C%22%2C%20the%20opponent%27s%20try%20is%20%5C%220724%5C%22%2C%20then%20the%20answer%20is%20%24%202%20%24%20bulls%20and%20%24%202%20%24%20cows%20%28the%20bulls%20are%20%5C%220%5C%22%20and%20%5C%222%5C%22%2C%20the%20cows%20are%20%5C%224%5C%22%20and%20%5C%227%5C%22%29.%20If%20the%20secret%20string%20is%20%5C%220123%5C%22%2C%20the%20opponent%27s%20try%20is%20%5C%220330%5C%22%2C%20then%20the%20answer%20is%20%24%201%20%24%20bull%20and%20%24%201%20%24%20cow.%5Cn%5CnIn%20this%20problem%20you%20are%20to%20guess%20the%20string%20%24%20s%20%24%20that%20the%20system%20has%20chosen.%20You%20only%20know%20that%20the%20chosen%20string%20consists%20of%20%24%204%20%24%20distinct%20digits.%5Cn%5CnYou%20can%20make%20queries%20to%20the%20testing%20system%2C%20each%20query%20is%20the%20output%20of%20a%20single%20%24%204%20%24%20-digit%20string.%20The%20answer%20to%20the%20query%20is%20the%20number%20of%20bulls%20and%20number%20of%20cows.%20If%20the%20system%27s%20response%20equals%20%5C%224%200%5C%22%2C%20that%20means%20the%20interaction%20with%20your%20problem%20is%20over%20and%20the%20program%20must%20terminate.%20That%20is%20possible%20for%20two%20reasons%20%5Cu2014%20the%20program%20either%20guessed%20the%20number%20%24%20x%20%24%20or%20made%20an%20invalid%20action%20%28for%20example%2C%20printed%20letters%20instead%20of%20digits%29.%5Cn%5CnYour%20program%20is%20allowed%20to%20do%20at%20most%20%24%207%20%24%20queries.%5Cn%5CnYou%20can%20hack%20solutions%20of%20other%20participants%20providing%20a%204-digit%20string%20containing%20distinct%20digits%20%5Cu2014%20the%20secret%20string.%22%2C%22inputFormat%22%3A%22To%20read%20answers%20to%20the%20queries%2C%20the%20program%20must%20use%20the%20standard%20input.%5Cn%5CnThe%20program%20will%20receive%20pairs%20of%20non-negative%20integers%20in%20the%20input%2C%20one%20pair%20per%20line.%20The%20first%20number%20in%20a%20pair%20is%20a%20number%20of%20bulls%20and%20the%20second%20one%20is%20a%20number%20of%20cows%20of%20the%20string%20%24%20s%20%24%20and%20the%20string%20%24%20x_%7Bi%7D%20%24%20printed%20by%20your%20program.%20If%20the%20system%20response%20equals%20%5C%224%200%5C%22%2C%20then%20your%20solution%20should%20terminate.%5Cn%5CnThe%20testing%20system%20will%20let%20your%20program%20read%20the%20%24%20i%20%24%20-th%20pair%20of%20integers%20from%20the%20input%20only%20after%20your%20program%20displays%20the%20corresponding%20system%20query%20in%20the%20output%3A%20prints%20value%20%24%20x_%7Bi%7D%20%24%20in%20a%20single%20line%20and%20executes%20operation%20flush.%22%2C%22outputFormat%22%3A%22The%20program%20must%20use%20the%20standard%20output%20to%20print%20queries.%5Cn%5CnYour%20program%20must%20output%20requests%20%5Cu2014%20%24%204%20%24%20-digit%20strings%20%24%20x_%7B1%7D%2Cx_%7B2%7D%2C...%20%24%20%2C%20one%20per%20line.%20After%20the%20output%20of%20each%20line%20the%20program%20must%20execute%20flush%20operation.%20The%20program%20should%20read%20the%20answer%20to%20the%20query%20from%20the%20standard%20input.%5Cn%5CnYour%20program%20is%20allowed%20to%20do%20at%20most%20%24%207%20%24%20queries.%22%2C%22samples%22%3A%5B%5B%220%201%5Cn2%200%5Cn1%201%5Cn0%204%5Cn2%201%5Cn4%200%5Cn%22%2C%228000%5Cn0179%5Cn3159%5Cn3210%5Cn0112%5Cn0123%22%5D%5D%2C%22hint%22%3A%22The%20secret%20string%20%24%20s%20%24%20in%20the%20example%20is%20%5C%220123%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F753%5C%2FC%22%2C%22id%22%3A%22753C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF753C%22%2C%22title%22%3A%22Interactive%20Bulls%20and%20Cows%20%28Hard%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Interactive%20Bulls%20and%20Cows%20%28Hard%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Interactive Bulls and Cows (Hard)</h1>
+<h2>题目描述</h2>
+<div>The only difference from the previous problem is the constraint on the number of requests. In this problem your program should guess the answer doing at most 7 requests.
+This problem is a little bit unusual. Here you are to implement an interaction with a testing system. That means that you can make queries and get responses in the online mode. Please be sure to use the stream flushing operation after each query's output in order not to leave part of your output in some buffer. For example, in C++ you've got to use the fflush(stdout) function, in Java — call System.out.flush(), and in Pascal — flush(output).
+Bulls and Cows (also known as Cows and Bulls or Pigs and Bulls or Bulls and Cleots) is an old code-breaking paper and pencil game for two players, predating the similar commercially marketed board game Mastermind.
+On a sheet of paper, the first player thinks a secret string. This string consists only of digits and has the length $ 4 $ . The digits in the string must be all different, no two or more equal digits are allowed.
+Then the second player tries to guess his opponent's string. For every guess the first player gives the number of matches. If the matching digits are on their right positions, they are "bulls", if on different positions, they are "cows". Thus a response is a pair of numbers — the number of "bulls" and the number of "cows". A try can contain equal digits.
+More formally, let's the secret string is $ s $ and the second player are trying to guess it with a string $ x $ . The number of "bulls" is a number of such positions $ i $ ( $ 1<=i<=4 $ ) where $ s[i]=x[i] $ . The number of "cows" is a number of such digits $ c $ that $ s $ contains $ c $ in the position $ i $ (i.e. $ s[i]=c $ ), $ x $ contains $ c $ , but $ x[i]≠c $ .
+For example, the secret string is "0427", the opponent's try is "0724", then the answer is $ 2 $ bulls and $ 2 $ cows (the bulls are "0" and "2", the cows are "4" and "7"). If the secret string is "0123", the opponent's try is "0330", then the answer is $ 1 $ bull and $ 1 $ cow.
+In this problem you are to guess the string $ s $ that the system has chosen. You only know that the chosen string consists of $ 4 $ distinct digits.
+You can make queries to the testing system, each query is the output of a single $ 4 $ -digit string. The answer to the query is the number of bulls and number of cows. If the system's response equals "4 0", that means the interaction with your problem is over and the program must terminate. That is possible for two reasons — the program either guessed the number $ x $ or made an invalid action (for example, printed letters instead of digits).
+Your program is allowed to do at most $ 7 $ queries.
+You can hack solutions of other participants providing a 4-digit string containing distinct digits — the secret string.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>To read answers to the queries, the program must use the standard input.
+The program will receive pairs of non-negative integers in the input, one pair per line. The first number in a pair is a number of bulls and the second one is a number of cows of the string $ s $ and the string $ x_{i} $ printed by your program. If the system response equals "4 0", then your solution should terminate.
+The testing system will let your program read the $ i $ -th pair of integers from the input only after your program displays the corresponding system query in the output: prints value $ x_{i} $ in a single line and executes operation flush.</div>
+<h3>输出格式</h3>
+<br />
+<div>The program must use the standard output to print queries.
+Your program must output requests — $ 4 $ -digit strings $ x_{1},x_{2},... $ , one per line. After the output of each line the program must execute flush operation. The program should read the answer to the query from the standard input.
+Your program is allowed to do at most $ 7 $ queries.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>0 1
+2 0
+1 1
+0 4
+2 1
+4 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>8000
+0179
+3159
+3210
+0112
+0123</code></pre>
+<h2>说明</h2>
+<div>The secret string $ s $ in the example is "0123".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

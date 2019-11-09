@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Arpa’s obvious problem and Mehrdad’s terrible solution - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397319:S2JasKTcBy8VUNr4a76/MlEhVYIppv92utzL4LIcW94=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20some%20beautiful%20girls%20in%20Arpa%5Cu2019s%20land%20as%20mentioned%20before.%5Cn%5CnOnce%20Arpa%20came%20up%20with%20an%20obvious%20problem%3A%5Cn%5CnGiven%20an%20array%20and%20a%20number%20%24%20x%20%24%20%2C%20count%20the%20number%20of%20pairs%20of%20indices%20%24%20i%2Cj%20%24%20%28%20%24%201%3C%3Di%26lt%3Bj%3C%3Dn%20%24%20%29%20such%20that%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF742B%5C%2F80e8812f6abd24888e930488b3c56b15fb2a49a1.png%29%2C%20where%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF742B%5C%2F4298d47c0191af3c0a3103f431751061bc7e2362.png%29%20is%20bitwise%20xor%20operation%20%28see%20notes%20for%20explanation%29.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF742B%5C%2F7cd1b5aedffc45f296d333e099a050047eae38ee.png%29Immediately%2C%20Mehrdad%20discovered%20a%20terrible%20solution%20that%20nobody%20trusted.%20Now%20Arpa%20needs%20your%20help%20to%20implement%20the%20solution%20to%20that%20problem.%22%2C%22inputFormat%22%3A%22First%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20x%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%2C0%3C%3Dx%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20elements%20in%20the%20array%20and%20the%20integer%20%24%20x%20%24%20.%5Cn%5CnSecond%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20elements%20of%20the%20array.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%3A%20the%20answer%20to%20the%20problem.%22%2C%22samples%22%3A%5B%5B%222%203%5Cn1%202%5Cn%22%2C%221%22%5D%2C%5B%226%201%5Cn5%201%202%203%204%201%5Cn%22%2C%222%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20there%20is%20only%20one%20pair%20of%20%24%20i%3D1%20%24%20and%20%24%20j%3D2%20%24%20.%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF742B%5C%2Fc63bc815847bae57aeba51b11f6ec2211cbd1efa.png%29%20so%20the%20answer%20is%20%24%201%20%24%20.%5Cn%5CnIn%20the%20second%20sample%20the%20only%20two%20pairs%20are%20%24%20i%3D3%20%24%20%2C%20%24%20j%3D4%20%24%20%28since%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF742B%5C%2F360a9ab048a3005f1d532cfb7c78e96ffd10455b.png%29%29%20and%20%24%20i%3D1%20%24%20%2C%20%24%20j%3D5%20%24%20%28since%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF742B%5C%2Fe00da54f194d914d5a9270c780a44af611f46740.png%29%29.%5Cn%5CnA%20bitwise%20xor%20takes%20two%20bit%20integers%20of%20equal%20length%20and%20performs%20the%20logical%20xor%20operation%20on%20each%20pair%20of%20corresponding%20bits.%20The%20result%20in%20each%20position%20is%20%24%201%20%24%20if%20only%20the%20first%20bit%20is%20%24%201%20%24%20or%20only%20the%20second%20bit%20is%20%24%201%20%24%20%2C%20but%20will%20be%20%24%200%20%24%20if%20both%20are%20%24%200%20%24%20or%20both%20are%20%24%201%20%24%20.%20You%20can%20read%20more%20about%20bitwise%20xor%20operation%20here%3A%20%5Bhttps%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FBitwise%5C%5C_operation%23XOR%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FBitwise_operation%23XOR%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F742%5C%2FB%22%2C%22id%22%3A%22742B%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e32%5Cu6570%5Cu7ec4a1..an%5Cuff0c%5Cu548c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57x%5Cuff0c%5Cu8be2%5Cu95ee%5Cu6709%5Cu591a%5Cu5c11%5Cu5bf9ai%2Caj%5Cu6ee1%5Cu8db3ai%5Eaj%3Dx%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A32%2C%22totalAccepted%22%3A7%2C%22pid%22%3A%22CF742B%22%2C%22title%22%3A%22Arpa%5Cu2019s%20obvious%20problem%20and%20Mehrdad%5Cu2019s%20terrible%20solution%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Arpa%5Cu2019s%20obvious%20problem%20and%20Mehrdad%5Cu2019s%20terrible%20solution%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Arpa’s obvious problem and Mehrdad’s terrible solution</h1>
+<h2>题意翻译</h2>
+<div>给出一串数组a1..an，和一个数字x，询问有多少对ai,aj满足ai^aj=x</div>
+<h2>题目描述</h2>
+<div>There are some beautiful girls in Arpa’s land as mentioned before.
+Once Arpa came up with an obvious problem:
+Given an array and a number $ x $ , count the number of pairs of indices $ i,j $ ( $ 1<=i&lt;j<=n $ ) such that ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF742B/80e8812f6abd24888e930488b3c56b15fb2a49a1.png), where ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF742B/4298d47c0191af3c0a3103f431751061bc7e2362.png) is bitwise xor operation (see notes for explanation).
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF742B/7cd1b5aedffc45f296d333e099a050047eae38ee.png)Immediately, Mehrdad discovered a terrible solution that nobody trusted. Now Arpa needs your help to implement the solution to that problem.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line contains two integers $ n $ and $ x $ ( $ 1<=n<=10^{5},0<=x<=10^{5} $ ) — the number of elements in the array and the integer $ x $ .
+Second line contains $ n $ integers $ a_{1},a_{2},...,a_{n} $ ( $ 1<=a_{i}<=10^{5} $ ) — the elements of the array.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer: the answer to the problem.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 3
+1 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>6 1
+5 1 2 3 4 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2</code></pre>
+<h2>说明</h2>
+<div>In the first sample there is only one pair of $ i=1 $ and $ j=2 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF742B/c63bc815847bae57aeba51b11f6ec2211cbd1efa.png) so the answer is $ 1 $ .
+In the second sample the only two pairs are $ i=3 $ , $ j=4 $ (since ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF742B/360a9ab048a3005f1d532cfb7c78e96ffd10455b.png)) and $ i=1 $ , $ j=5 $ (since ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF742B/e00da54f194d914d5a9270c780a44af611f46740.png)).
+A bitwise xor takes two bit integers of equal length and performs the logical xor operation on each pair of corresponding bits. The result in each position is $ 1 $ if only the first bit is $ 1 $ or only the second bit is $ 1 $ , but will be $ 0 $ if both are $ 0 $ or both are $ 1 $ . You can read more about bitwise xor operation here: [https://en.wikipedia.org/wiki/Bitwise\_operation#XOR](https://en.wikipedia.org/wiki/Bitwise_operation#XOR).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

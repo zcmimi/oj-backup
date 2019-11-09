@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dense Subsequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397109:M19hkKq6TCFzVo5GC4Di17fEIYQTI2Z4Vfdsk/aVypE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20string%20%24%20s%20%24%20%2C%20consisting%20of%20lowercase%20English%20letters%2C%20and%20the%20integer%20%24%20m%20%24%20.%5Cn%5CnOne%20should%20choose%20some%20symbols%20from%20the%20given%20string%20so%20that%20any%20contiguous%20subsegment%20of%20length%20%24%20m%20%24%20has%20at%20least%20one%20selected%20symbol.%20Note%20that%20here%20we%20choose%20positions%20of%20symbols%2C%20not%20the%20symbols%20themselves.%5Cn%5CnThen%20one%20uses%20the%20chosen%20symbols%20to%20form%20a%20new%20string.%20All%20symbols%20from%20the%20chosen%20position%20should%20be%20used%2C%20but%20we%20are%20allowed%20to%20rearrange%20them%20in%20any%20order.%5Cn%5CnFormally%2C%20we%20choose%20a%20subsequence%20of%20indices%20%24%201%3C%3Di_%7B1%7D%26lt%3Bi_%7B2%7D%26lt%3B...%26lt%3Bi_%7Bt%7D%3C%3D%7Cs%7C%20%24%20.%20The%20selected%20sequence%20must%20meet%20the%20following%20condition%3A%20for%20every%20%24%20j%20%24%20such%20that%20%24%201%3C%3Dj%3C%3D%7Cs%7C-m%2B1%20%24%20%2C%20there%20must%20be%20at%20least%20one%20selected%20index%20that%20belongs%20to%20the%20segment%20%24%20%5Bj%2C%5Cu00a0j%2Bm-1%5D%20%24%20%2C%20i.e.%20there%20should%20exist%20a%20%24%20k%20%24%20from%20%24%201%20%24%20to%20%24%20t%20%24%20%2C%20such%20that%20%24%20j%3C%3Di_%7Bk%7D%3C%3Dj%2Bm-1%20%24%20.%5Cn%5CnThen%20we%20take%20any%20permutation%20%24%20p%20%24%20of%20the%20selected%20indices%20and%20form%20a%20new%20string%20%24%20s_%7Bip1%7Ds_%7Bip2%7D...%5C%5C%20s_%7Bipt%7D%20%24%20.%5Cn%5CnFind%20the%20lexicographically%20smallest%20string%2C%20that%20can%20be%20obtained%20using%20this%20procedure.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3D100000%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20the%20string%20%24%20s%20%24%20consisting%20of%20lowercase%20English%20letters.%20It%20is%20guaranteed%20that%20this%20string%20is%20non-empty%20and%20its%20length%20doesn%27t%20exceed%20%24%20100000%20%24%20.%20It%20is%20also%20guaranteed%20that%20the%20number%20%24%20m%20%24%20doesn%27t%20exceed%20the%20length%20of%20the%20string%20%24%20s%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20the%20single%20line%20containing%20the%20lexicographically%20smallest%20string%2C%20that%20can%20be%20obtained%20using%20the%20procedure%20described%20above.%22%2C%22samples%22%3A%5B%5B%223%5Cncbabc%5Cn%22%2C%22a%5Cn%22%5D%2C%5B%222%5Cnabcab%5Cn%22%2C%22aab%5Cn%22%5D%2C%5B%223%5Cnbcabcbaccba%5Cn%22%2C%22aaabb%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20one%20can%20choose%20the%20subsequence%20%24%20%7B3%7D%20%24%20and%20form%20a%20string%20%5C%22a%5C%22.%5Cn%5CnIn%20the%20second%20sample%2C%20one%20can%20choose%20the%20subsequence%20%24%20%7B1%2C2%2C4%7D%20%24%20%28symbols%20on%20this%20positions%20are%20%27a%27%2C%20%27b%27%20and%20%27a%27%29%20and%20rearrange%20the%20chosen%20symbols%20to%20form%20a%20string%20%5C%22aab%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F724%5C%2FD%22%2C%22id%22%3A%22724D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF724D%22%2C%22title%22%3A%22Dense%20Subsequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Dense%20Subsequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Dense Subsequence</h1>
+<h2>题目描述</h2>
+<div>You are given a string $ s $ , consisting of lowercase English letters, and the integer $ m $ .
+One should choose some symbols from the given string so that any contiguous subsegment of length $ m $ has at least one selected symbol. Note that here we choose positions of symbols, not the symbols themselves.
+Then one uses the chosen symbols to form a new string. All symbols from the chosen position should be used, but we are allowed to rearrange them in any order.
+Formally, we choose a subsequence of indices $ 1<=i_{1}&lt;i_{2}&lt;...&lt;i_{t}<=|s| $ . The selected sequence must meet the following condition: for every $ j $ such that $ 1<=j<=|s|-m+1 $ , there must be at least one selected index that belongs to the segment $ [j, j+m-1] $ , i.e. there should exist a $ k $ from $ 1 $ to $ t $ , such that $ j<=i_{k}<=j+m-1 $ .
+Then we take any permutation $ p $ of the selected indices and form a new string $ s_{ip1}s_{ip2}...\ s_{ipt} $ .
+Find the lexicographically smallest string, that can be obtained using this procedure.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ m $ ( $ 1<=m<=100000 $ ).
+The second line contains the string $ s $ consisting of lowercase English letters. It is guaranteed that this string is non-empty and its length doesn't exceed $ 100000 $ . It is also guaranteed that the number $ m $ doesn't exceed the length of the string $ s $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the single line containing the lexicographically smallest string, that can be obtained using the procedure described above.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+cbabc
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>a
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+abcab
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>aab
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3
+bcabcbaccba
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>aaabb
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, one can choose the subsequence $ {3} $ and form a string "a".
+In the second sample, one can choose the subsequence $ {1,2,4} $ (symbols on this positions are 'a', 'b' and 'a') and rearrange the chosen symbols to form a string "aab".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Searching Rectangles - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396981:ZITUlXSzxSPxTk/H+DxR9yf6JWGLTFs/bA41ijO9wIY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Filya%20just%20learned%20new%20geometry%20object%20%5Cu2014%20rectangle.%20He%20is%20given%20a%20field%20consisting%20of%20%24%20n%5Cu00d7n%20%24%20unit%20cells.%20Rows%20are%20numbered%20from%20bottom%20to%20top%20with%20integer%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20Columns%20are%20numbered%20from%20left%20to%20right%20with%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20Cell%2C%20located%20at%20the%20intersection%20of%20the%20row%20%24%20r%20%24%20and%20column%20%24%20c%20%24%20is%20denoted%20as%20%24%20%28r%2Cc%29%20%24%20.%20Filya%20has%20painted%20two%20rectangles%2C%20such%20that%20their%20sides%20are%20parallel%20to%20coordinate%20axes%20and%20each%20cell%20lies%20fully%20inside%20or%20fully%20outside%20each%20of%20them.%20Moreover%2C%20no%20cell%20lies%20in%20both%20rectangles.%5Cn%5CnLater%2C%20hedgehog%20Filya%20became%20interested%20in%20the%20location%20of%20his%20rectangles%20but%20was%20unable%20to%20find%20the%20sheet%20of%20paper%20they%20were%20painted%20on.%20They%20were%20taken%20by%20Sonya%20and%20now%20she%20wants%20to%20play%20a%20little%20game%20with%20Filya.%20He%20tells%20her%20a%20query%20rectangle%20and%20she%20replies%20with%20the%20number%20of%20initial%20rectangles%20that%20lie%20fully%20inside%20the%20given%20query%20rectangle.%20The%20query%20rectangle%20should%20match%20the%20same%20conditions%20as%20initial%20rectangles.%20Rectangle%20lies%20fully%20inside%20the%20query%20if%20each%20o%20its%20cells%20lies%20inside%20the%20query.%5Cn%5CnFilya%20knows%20Sonya%20really%20well%2C%20so%20is%20sure%20that%20if%20he%20asks%20more%20than%20%24%20200%20%24%20questions%20she%20will%20stop%20to%20reply.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D2%5E%7B16%7D%20%24%20%29%20%5Cu2014%20size%20of%20the%20field.%5Cn%5CnFor%20each%20query%20an%20integer%20between%20%24%200%20%24%20and%20%24%202%20%24%20is%20returned%20%5Cu2014%20the%20number%20of%20initial%20rectangles%20that%20lie%20fully%20inside%20the%20query%20rectangle.%22%2C%22outputFormat%22%3A%22To%20make%20a%20query%20you%20have%20to%20print%20%5C%22%3F%20%24%20x_%7B1%7D%20%24%20%24%20y_%7B1%7D%20%24%20%24%20x_%7B2%7D%20%24%20%24%20y_%7B2%7D%20%24%20%5C%22%20%28without%20quotes%29%20%28%20%24%201%3C%3Dx_%7B1%7D%3C%3Dx_%7B2%7D%3C%3Dn%20%24%20%2C%20%24%201%3C%3Dy_%7B1%7D%3C%3Dy_%7B2%7D%3C%3Dn%20%24%20%29%2C%20where%20%24%20%28x_%7B1%7D%2Cy_%7B1%7D%29%20%24%20stands%20for%20the%20position%20of%20the%20bottom%20left%20cell%20of%20the%20query%20and%20%24%20%28x_%7B2%7D%2Cy_%7B2%7D%29%20%24%20stands%20for%20the%20up%20right%20cell%20of%20the%20query.%20You%20are%20allowed%20to%20ask%20no%20more%20than%20%24%20200%20%24%20queries.%20After%20each%20query%20you%20should%20perform%20%5C%22flush%5C%22%20operation%20and%20read%20the%20answer.%5Cn%5CnIn%20case%20you%20suppose%20you%27ve%20already%20determined%20the%20location%20of%20two%20rectangles%20%28or%20run%20out%20of%20queries%29%20you%20should%20print%20%5C%22%21%20%24%20x_%7B11%7D%20%24%20%24%20y_%7B11%7D%20%24%20%24%20x_%7B12%7D%20%24%20%24%20y_%7B12%7D%20%24%20%24%20x_%7B21%7D%20%24%20%24%20y_%7B21%7D%20%24%20%24%20x_%7B22%7D%20%24%20%24%20y_%7B22%7D%20%24%20%5C%22%20%28without%20quotes%29%2C%20where%20first%20four%20integers%20describe%20the%20bottom%20left%20and%20up%20right%20cells%20of%20the%20first%20rectangle%2C%20and%20following%20four%20describe%20the%20corresponding%20cells%20of%20the%20second%20rectangle.%20You%20can%20print%20the%20rectangles%20in%20an%20arbitrary%20order.%20After%20you%20have%20printed%20the%20answer%2C%20print%20the%20end%20of%20the%20line%20and%20perform%20%5C%22flush%5C%22.%20Your%20program%20should%20terminate%20immediately%20after%20it%20print%20the%20answer.%5Cn%5CnInteraction%5Cn%5CnTo%20flush%20you%20can%20use%20%28just%20after%20printing%20an%20integer%20and%20end-of-line%29%3A%5Cn%5Cn-%20fflush%28stdout%29%20in%20C%2B%2B%3B%5Cn-%20System.out.flush%28%29%20in%20Java%3B%5Cn-%20stdout.flush%28%29%20in%20Python%3B%5Cn-%20flush%28output%29%20in%20Pascal%3B%5Cn-%20See%20the%20documentation%20for%20other%20languages.%5Cn%5CnYou%20will%20get%20the%20Wrong%20Answer%20verdict%20if%20you%20ask%20more%20than%20%24%20200%20%24%20queries%2C%20or%20if%20you%20print%20an%20incorrect%20coordinates.%5Cn%5CnYou%20will%20get%20the%20Idleness%20Limit%20Exceeded%20verdict%20if%20you%20don%27t%20print%20anything%20%28but%20you%20should%29%20or%20if%20you%20forget%20about%20flushing%20the%20output%20%28more%20info%20below%29.%5Cn%5CnHacking.%5Cn%5CnThe%20first%20line%20should%20contain%20an%20integer%20%24%20n%20%24%20%28%20%24%202%3C%3Dn%3C%3D2%5E%7B16%7D%20%24%20%29.%5Cn%5CnThe%20second%20line%20should%20contain%20four%20integers%20%24%20x_%7B1%7D%20%24%20%2C%20%24%20y_%7B1%7D%20%24%20%2C%20%24%20x_%7B2%7D%20%24%20%2C%20%24%20y_%7B2%7D%20%24%20%28%20%24%201%3C%3Dx_%7B1%7D%3C%3Dx_%7B2%7D%3C%3Dn%20%24%20%2C%20%24%201%3C%3Dy_%7B1%7D%3C%3Dy_%7B2%7D%3C%3Dn%20%24%20%29%20%5Cu2014%20the%20description%20of%20the%20first%20rectangle.%5Cn%5CnThe%20third%20line%20contains%20the%20description%20of%20the%20second%20rectangle%20in%20the%20similar%20way.%22%2C%22samples%22%3A%5B%5B%225%5Cn2%5Cn1%5Cn0%5Cn1%5Cn1%5Cn1%5Cn0%5Cn1%5Cn%22%2C%22%3F%201%201%205%205%5Cn%3F%201%201%203%203%5Cn%3F%201%201%203%201%5Cn%3F%202%202%202%202%5Cn%3F%203%203%205%205%5Cn%3F%203%203%203%205%5Cn%3F%203%203%203%204%5Cn%3F%203%204%203%205%5Cn%21%202%202%202%202%203%204%203%205%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F713%5C%2FB%22%2C%22id%22%3A%22713B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF713B%22%2C%22title%22%3A%22Searching%20Rectangles%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Searching%20Rectangles%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Searching Rectangles</h1>
+<h2>题目描述</h2>
+<div>Filya just learned new geometry object — rectangle. He is given a field consisting of $ n×n $ unit cells. Rows are numbered from bottom to top with integer from $ 1 $ to $ n $ . Columns are numbered from left to right with integers from $ 1 $ to $ n $ . Cell, located at the intersection of the row $ r $ and column $ c $ is denoted as $ (r,c) $ . Filya has painted two rectangles, such that their sides are parallel to coordinate axes and each cell lies fully inside or fully outside each of them. Moreover, no cell lies in both rectangles.
+Later, hedgehog Filya became interested in the location of his rectangles but was unable to find the sheet of paper they were painted on. They were taken by Sonya and now she wants to play a little game with Filya. He tells her a query rectangle and she replies with the number of initial rectangles that lie fully inside the given query rectangle. The query rectangle should match the same conditions as initial rectangles. Rectangle lies fully inside the query if each o its cells lies inside the query.
+Filya knows Sonya really well, so is sure that if he asks more than $ 200 $ questions she will stop to reply.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains an integer $ n $ ( $ 2<=n<=2^{16} $ ) — size of the field.
+For each query an integer between $ 0 $ and $ 2 $ is returned — the number of initial rectangles that lie fully inside the query rectangle.</div>
+<h3>输出格式</h3>
+<br />
+<div>To make a query you have to print "? $ x_{1} $ $ y_{1} $ $ x_{2} $ $ y_{2} $ " (without quotes) ( $ 1<=x_{1}<=x_{2}<=n $ , $ 1<=y_{1}<=y_{2}<=n $ ), where $ (x_{1},y_{1}) $ stands for the position of the bottom left cell of the query and $ (x_{2},y_{2}) $ stands for the up right cell of the query. You are allowed to ask no more than $ 200 $ queries. After each query you should perform "flush" operation and read the answer.
+In case you suppose you've already determined the location of two rectangles (or run out of queries) you should print "! $ x_{11} $ $ y_{11} $ $ x_{12} $ $ y_{12} $ $ x_{21} $ $ y_{21} $ $ x_{22} $ $ y_{22} $ " (without quotes), where first four integers describe the bottom left and up right cells of the first rectangle, and following four describe the corresponding cells of the second rectangle. You can print the rectangles in an arbitrary order. After you have printed the answer, print the end of the line and perform "flush". Your program should terminate immediately after it print the answer.
+Interaction
+To flush you can use (just after printing an integer and end-of-line):
+- fflush(stdout) in C++;
+- System.out.flush() in Java;
+- stdout.flush() in Python;
+- flush(output) in Pascal;
+- See the documentation for other languages.
+You will get the Wrong Answer verdict if you ask more than $ 200 $ queries, or if you print an incorrect coordinates.
+You will get the Idleness Limit Exceeded verdict if you don't print anything (but you should) or if you forget about flushing the output (more info below).
+Hacking.
+The first line should contain an integer $ n $ ( $ 2<=n<=2^{16} $ ).
+The second line should contain four integers $ x_{1} $ , $ y_{1} $ , $ x_{2} $ , $ y_{2} $ ( $ 1<=x_{1}<=x_{2}<=n $ , $ 1<=y_{1}<=y_{2}<=n $ ) — the description of the first rectangle.
+The third line contains the description of the second rectangle in the similar way.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+2
+1
+0
+1
+1
+1
+0
+1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>? 1 1 5 5
+? 1 1 3 3
+? 1 1 3 1
+? 2 2 2 2
+? 3 3 5 5
+? 3 3 3 5
+? 3 3 3 4
+? 3 4 3 5
+! 2 2 2 2 3 4 3 5
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

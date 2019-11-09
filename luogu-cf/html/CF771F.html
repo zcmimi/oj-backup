@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Bear and Isomorphic Points - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397698:maW5xyPGP8R+l3GvNW7izFC7D5NwE8BiRNsdOu6kXBk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Bearland%20is%20a%20big%20square%20on%20the%20plane.%20It%20contains%20all%20points%20with%20coordinates%20not%20exceeding%20%24%2010%5E%7B6%7D%20%24%20by%20the%20absolute%20value.%5Cn%5CnThere%20are%20%24%20n%20%24%20houses%20in%20Bearland.%20The%20%24%20i%20%24%20-th%20of%20them%20is%20located%20at%20the%20point%20%24%20%28x_%7Bi%7D%2Cy_%7Bi%7D%29%20%24%20.%20The%20%24%20n%20%24%20points%20are%20distinct%2C%20but%20some%20subsets%20of%20them%20may%20be%20collinear.%5Cn%5CnBear%20Limak%20lives%20in%20the%20first%20house.%20He%20wants%20to%20destroy%20his%20house%20and%20build%20a%20new%20one%20somewhere%20in%20Bearland.%5Cn%5CnBears%20don%27t%20like%20big%20changes.%20For%20every%20three%20points%20%28houses%29%20%24%20p_%7Bi%7D%20%24%20%2C%20%24%20p_%7Bj%7D%20%24%20and%20%24%20p_%7Bk%7D%20%24%20%2C%20the%20sign%20of%20their%20cross%20product%20%24%20%28p_%7Bj%7D-p_%7Bi%7D%29%5Cu00d7%28p_%7Bk%7D-p_%7Bi%7D%29%20%24%20should%20be%20the%20same%20before%20and%20after%20the%20relocation.%20If%20it%20was%20negative%5C%2Fpositive%5C%2Fzero%2C%20it%20should%20still%20be%20negative%5C%2Fpositive%5C%2Fzero%20respectively.%20This%20condition%20should%20be%20satisfied%20for%20all%20triples%20of%20indices%20%24%20%28i%2Cj%2Ck%29%20%24%20%2C%20possibly%20equal%20to%20each%20other%20or%20different%20than%20%24%201%20%24%20.%20Additionally%2C%20Limak%20isn%27t%20allowed%20to%20build%20the%20house%20at%20the%20point%20where%20some%20other%20house%20already%20exists%20%28but%20it%20can%20be%20the%20point%20where%20his%20old%20house%20was%29.%5Cn%5CnIn%20the%20formula%20above%2C%20we%20define%20the%20difference%20and%20the%20cross%20product%20of%20points%20%24%20%28a_%7Bx%7D%2Ca_%7By%7D%29%20%24%20and%20%24%20%28b_%7Bx%7D%2Cb_%7By%7D%29%20%24%20as%3A%5Cn%5Cn%20%24%20%28a_%7Bx%7D%2Ca_%7By%7D%29-%28b_%7Bx%7D%2Cb_%7By%7D%29%3D%28a_%7Bx%7D-b_%7Bx%7D%2Ca_%7By%7D-b_%7By%7D%29%2C%20%24%20%20%20%24%20%28a_%7Bx%7D%2Ca_%7By%7D%29%5Cu00d7%28b_%7Bx%7D%2Cb_%7By%7D%29%3Da_%7Bx%7D%5Cu00b7b_%7By%7D-a_%7By%7D%5Cu00b7b_%7Bx%7D.%20%24%20Consider%20a%20set%20of%20possible%20new%20placements%20of%20Limak%27s%20house.%20Your%20task%20is%20to%20find%20the%20area%20of%20that%20set%20of%20points.%5Cn%5CnFormally%2C%20let%27s%20say%20that%20Limak%20chooses%20the%20new%20placement%20randomly%20%28each%20coordinate%20is%20chosen%20independently%20uniformly%20at%20random%20from%20the%20interval%20%24%20%5B-10%5E%7B6%7D%2C10%5E%7B6%7D%5D%20%24%20%29.%20Let%20%24%20p%20%24%20denote%20the%20probability%20of%20getting%20the%20allowed%20placement%20of%20new%20house.%20Let%20%24%20S%20%24%20denote%20the%20area%20of%20Bearland%20%28%20%24%20S%3D4%5Cu00b710%5E%7B12%7D%20%24%20%29.%20Your%20task%20is%20to%20find%20%24%20p%5Cu00b7S%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20an%20integer%20%24%20T%20%24%20%28%20%24%201%3C%3DT%3C%3D500%20%24%20%29%20%5Cu2014%20the%20number%20of%20test%20cases.%20The%20description%20of%20the%20test%20cases%20follows.%5Cn%5CnThe%20first%20line%20of%20the%20description%20of%20a%20test%20case%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%203%3C%3Dn%3C%3D200000%20%24%20%29%20%5Cu2014%20the%20number%20of%20houses.%5Cn%5CnThe%20%24%20i%20%24%20-th%20of%20the%20next%20%24%20n%20%24%20lines%20contains%20two%20integers%20%24%20x_%7Bi%7D%20%24%20and%20%24%20y_%7Bi%7D%20%24%20%28%20%24%20-10%5E%7B6%7D%3C%3Dx_%7Bi%7D%2Cy_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29%20%5Cu2014%20coordinates%20of%20the%20%24%20i%20%24%20-th%20house.%20No%20two%20houses%20are%20located%20at%20the%20same%20point%20in%20the%20same%20test%20case.%20Limak%20lives%20in%20the%20first%20house.%5Cn%5CnThe%20sum%20of%20%24%20n%20%24%20won%27t%20exceed%20%24%20200000%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20one%20real%20value%2C%20denoting%20the%20area%20of%20the%20set%20of%20points%20that%20are%20possible%20new%20placements%20of%20Limak%27s%20house.%5Cn%5CnYour%20answer%20will%20be%20considered%20correct%20if%20its%20absolute%20or%20relative%20error%20doesn%27t%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%20More%20precisely%2C%20let%20the%20jury%27s%20answer%20be%20%24%20b%20%24%20%2C%20and%20your%20answer%20be%20%24%20a%20%24%20.%20Then%20your%20answer%20will%20be%20accepted%20if%20and%20only%20if%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF771F%5C%2F72367bbd0f6e801440a3fd0f0493afeb00a874c1.png%29.%22%2C%22samples%22%3A%5B%5B%224%5Cn4%5Cn5%203%5Cn0%201%5Cn10%201%5Cn3%2051%5Cn3%5Cn-999123%20700000%5Cn-950000%20123456%5Cn-950000%20987654%5Cn3%5Cn2%203%5Cn10%20-1%5Cn-4%206%5Cn5%5Cn1%203%5Cn5%202%5Cn6%201%5Cn4%204%5Cn-3%203%5Cn%22%2C%22250.000000000000%5Cn100000000000.000000000000%5Cn0.000000000000%5Cn6.562500000000%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20sample%20test%2C%20there%20are%20%24%204%20%24%20test%20cases.%5Cn%5CnIn%20the%20first%20test%20case%2C%20there%20are%20four%20houses%20and%20Limak%27s%20one%20is%20in%20%24%20%285%2C3%29%20%24%20.%20The%20set%20of%20valid%20new%20placements%20form%20a%20triangle%20with%20vertices%20in%20points%20%24%20%280%2C1%29%20%24%20%2C%20%24%20%2810%2C1%29%20%24%20and%20%24%20%283%2C51%29%20%24%20%2C%20without%20its%20sides.%20The%20area%20of%20such%20a%20triangle%20is%20%24%20250%20%24%20.%5Cn%5CnIn%20the%20second%20test%20case%2C%20the%20set%20of%20valid%20new%20placements%20form%20a%20rectangle%20of%20width%20%24%2050000%20%24%20and%20height%20%24%202000000%20%24%20.%20Don%27t%20forget%20that%20the%20new%20placement%20must%20be%20inside%20the%20big%20square%20that%20represents%20Bearland.%5Cn%5CnIn%20the%20third%20test%20case%2C%20the%20three%20given%20points%20are%20collinear.%20Each%20cross%20product%20is%20equal%20to%20%24%200%20%24%20and%20it%20should%20be%20%24%200%20%24%20after%20the%20relocation%20as%20well.%20Hence%2C%20Limak%27s%20new%20house%20must%20lie%20on%20the%20line%20that%20goes%20through%20the%20given%20points.%20Since%20it%20must%20also%20be%20inside%20the%20big%20square%2C%20new%20possible%20placements%20are%20limited%20to%20some%20segment%20%28excluding%20the%20two%20points%20where%20the%20other%20houses%20are%29.%20The%20area%20of%20any%20segment%20is%20%24%200%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F771%5C%2FF%22%2C%22id%22%3A%22771F%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF771F%22%2C%22title%22%3A%22Bear%20and%20Isomorphic%20Points%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Bear%20and%20Isomorphic%20Points%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Bear and Isomorphic Points</h1>
+<h2>题目描述</h2>
+<div>Bearland is a big square on the plane. It contains all points with coordinates not exceeding $ 10^{6} $ by the absolute value.
+There are $ n $ houses in Bearland. The $ i $ -th of them is located at the point $ (x_{i},y_{i}) $ . The $ n $ points are distinct, but some subsets of them may be collinear.
+Bear Limak lives in the first house. He wants to destroy his house and build a new one somewhere in Bearland.
+Bears don't like big changes. For every three points (houses) $ p_{i} $ , $ p_{j} $ and $ p_{k} $ , the sign of their cross product $ (p_{j}-p_{i})×(p_{k}-p_{i}) $ should be the same before and after the relocation. If it was negative/positive/zero, it should still be negative/positive/zero respectively. This condition should be satisfied for all triples of indices $ (i,j,k) $ , possibly equal to each other or different than $ 1 $ . Additionally, Limak isn't allowed to build the house at the point where some other house already exists (but it can be the point where his old house was).
+In the formula above, we define the difference and the cross product of points $ (a_{x},a_{y}) $ and $ (b_{x},b_{y}) $ as:
+$ (a_{x},a_{y})-(b_{x},b_{y})=(a_{x}-b_{x},a_{y}-b_{y}), $ $ (a_{x},a_{y})×(b_{x},b_{y})=a_{x}·b_{y}-a_{y}·b_{x}. $ Consider a set of possible new placements of Limak's house. Your task is to find the area of that set of points.
+Formally, let's say that Limak chooses the new placement randomly (each coordinate is chosen independently uniformly at random from the interval $ [-10^{6},10^{6}] $ ). Let $ p $ denote the probability of getting the allowed placement of new house. Let $ S $ denote the area of Bearland ( $ S=4·10^{12} $ ). Your task is to find $ p·S $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains an integer $ T $ ( $ 1<=T<=500 $ ) — the number of test cases. The description of the test cases follows.
+The first line of the description of a test case contains an integer $ n $ ( $ 3<=n<=200000 $ ) — the number of houses.
+The $ i $ -th of the next $ n $ lines contains two integers $ x_{i} $ and $ y_{i} $ ( $ -10^{6}<=x_{i},y_{i}<=10^{6} $ ) — coordinates of the $ i $ -th house. No two houses are located at the same point in the same test case. Limak lives in the first house.
+The sum of $ n $ won't exceed $ 200000 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one real value, denoting the area of the set of points that are possible new placements of Limak's house.
+Your answer will be considered correct if its absolute or relative error doesn't exceed $ 10^{-6} $ . More precisely, let the jury's answer be $ b $ , and your answer be $ a $ . Then your answer will be accepted if and only if ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF771F/72367bbd0f6e801440a3fd0f0493afeb00a874c1.png).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+4
+5 3
+0 1
+10 1
+3 51
+3
+-999123 700000
+-950000 123456
+-950000 987654
+3
+2 3
+10 -1
+-4 6
+5
+1 3
+5 2
+6 1
+4 4
+-3 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>250.000000000000
+100000000000.000000000000
+0.000000000000
+6.562500000000
+</code></pre>
+<h2>说明</h2>
+<div>In the sample test, there are $ 4 $ test cases.
+In the first test case, there are four houses and Limak's one is in $ (5,3) $ . The set of valid new placements form a triangle with vertices in points $ (0,1) $ , $ (10,1) $ and $ (3,51) $ , without its sides. The area of such a triangle is $ 250 $ .
+In the second test case, the set of valid new placements form a rectangle of width $ 50000 $ and height $ 2000000 $ . Don't forget that the new placement must be inside the big square that represents Bearland.
+In the third test case, the three given points are collinear. Each cross product is equal to $ 0 $ and it should be $ 0 $ after the relocation as well. Hence, Limak's new house must lie on the line that goes through the given points. Since it must also be inside the big square, new possible placements are limited to some segment (excluding the two points where the other houses are). The area of any segment is $ 0 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

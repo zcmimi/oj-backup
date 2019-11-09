@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Mahmoud and a xor trip - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397627:Uvyx69WJYwKCIca4e8CsQlyGAyO8MhIsDWBw2l9k3I0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Mahmoud%20and%20Ehab%20live%20in%20a%20country%20with%20%24%20n%20%24%20cities%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20and%20connected%20by%20%24%20n-1%20%24%20undirected%20roads.%20It%27s%20guaranteed%20that%20you%20can%20reach%20any%20city%20from%20any%20other%20using%20these%20roads.%20Each%20city%20has%20a%20number%20%24%20a_%7Bi%7D%20%24%20attached%20to%20it.%5Cn%5CnWe%20define%20the%20distance%20from%20city%20%24%20x%20%24%20to%20city%20%24%20y%20%24%20as%20the%20xor%20of%20numbers%20attached%20to%20the%20cities%20on%20the%20path%20from%20%24%20x%20%24%20to%20%24%20y%20%24%20%28including%20both%20%24%20x%20%24%20and%20%24%20y%20%24%20%29.%20In%20other%20words%20if%20values%20attached%20to%20the%20cities%20on%20the%20path%20from%20%24%20x%20%24%20to%20%24%20y%20%24%20form%20an%20array%20%24%20p%20%24%20of%20length%20%24%20l%20%24%20then%20the%20distance%20between%20them%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF766E%5C%2Fe28c1b7e227a128d11b738e0dd966321ffdd5e65.png%29%2C%20where%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF766E%5C%2F4298d47c0191af3c0a3103f431751061bc7e2362.png%29%20is%20bitwise%20xor%20operation.%5Cn%5CnMahmoud%20and%20Ehab%20want%20to%20choose%20two%20cities%20and%20make%20a%20journey%20from%20one%20to%20another.%20The%20index%20of%20the%20start%20city%20is%20always%20less%20than%20or%20equal%20to%20the%20index%20of%20the%20finish%20city%20%28they%20may%20start%20and%20finish%20in%20the%20same%20city%20and%20in%20this%20case%20the%20distance%20equals%20the%20number%20attached%20to%20that%20city%29.%20They%20can%27t%20determine%20the%20two%20cities%20so%20they%20try%20every%20city%20as%20a%20start%20and%20every%20city%20with%20greater%20index%20as%20a%20finish.%20They%20want%20to%20know%20the%20total%20distance%20between%20all%20pairs%20of%20cities.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20cities%20in%20Mahmoud%20and%20Ehab%27s%20country.%5Cn%5CnThen%20the%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%200%3C%3Da_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29%20which%20represent%20the%20numbers%20attached%20to%20the%20cities.%20Integer%20%24%20a_%7Bi%7D%20%24%20is%20attached%20to%20the%20city%20%24%20i%20%24%20.%5Cn%5CnEach%20of%20the%20next%20%24%20n-1%20%24%20lines%20contains%20two%20integers%20%24%20u%20%24%20and%20%24%20v%20%24%20%28%20%24%201%3C%3Du%2Cv%3C%3Dn%20%24%20%2C%20%24%20u%5Cu2260v%20%24%20%29%2C%20denoting%20that%20there%20is%20an%20undirected%20road%20between%20cities%20%24%20u%20%24%20and%20%24%20v%20%24%20.%20It%27s%20guaranteed%20that%20you%20can%20reach%20any%20city%20from%20any%20other%20using%20these%20roads.%22%2C%22outputFormat%22%3A%22Output%20one%20number%20denoting%20the%20total%20distance%20between%20all%20pairs%20of%20cities.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%202%203%5Cn1%202%5Cn2%203%5Cn%22%2C%2210%5Cn%22%5D%2C%5B%225%5Cn1%202%203%204%205%5Cn1%202%5Cn2%203%5Cn3%204%5Cn3%205%5Cn%22%2C%2252%5Cn%22%5D%2C%5B%225%5Cn10%209%208%207%206%5Cn1%202%5Cn2%203%5Cn3%204%5Cn3%205%5Cn%22%2C%22131%5Cn%22%5D%5D%2C%22hint%22%3A%22A%20bitwise%20xor%20takes%20two%20bit%20integers%20of%20equal%20length%20and%20performs%20the%20logical%20xor%20operation%20on%20each%20pair%20of%20corresponding%20bits.%20The%20result%20in%20each%20position%20is%20%24%201%20%24%20if%20only%20the%20first%20bit%20is%20%24%201%20%24%20or%20only%20the%20second%20bit%20is%20%24%201%20%24%20%2C%20but%20will%20be%20%24%200%20%24%20if%20both%20are%20%24%200%20%24%20or%20both%20are%20%24%201%20%24%20.%20You%20can%20read%20more%20about%20bitwise%20xor%20operation%20here%3A%20%5Bhttps%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FBitwise%5C%5C_operation%23XOR%5D%28https%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FBitwise_operation%23XOR%29.%5Cn%5CnIn%20the%20first%20sample%20the%20available%20paths%20are%3A%5Cn%5Cn-%20city%20%24%201%20%24%20to%20itself%20with%20a%20distance%20of%20%24%201%20%24%20%2C%5Cn-%20city%20%24%202%20%24%20to%20itself%20with%20a%20distance%20of%20%24%202%20%24%20%2C%5Cn-%20city%20%24%203%20%24%20to%20itself%20with%20a%20distance%20of%20%24%203%20%24%20%2C%5Cn-%20city%20%24%201%20%24%20to%20city%20%24%202%20%24%20with%20a%20distance%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF766E%5C%2F1f43581f72fc5ce3c0b862a8034cb76a29952125.png%29%2C%5Cn-%20city%20%24%201%20%24%20to%20city%20%24%203%20%24%20with%20a%20distance%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF766E%5C%2F2d25f1b13f8bc3e6a3f63c847df4adbf20b39c7c.png%29%2C%5Cn-%20city%20%24%202%20%24%20to%20city%20%24%203%20%24%20with%20a%20distance%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF766E%5C%2F360a9ab048a3005f1d532cfb7c78e96ffd10455b.png%29.%5Cn%5Cn%20The%20total%20distance%20between%20all%20pairs%20of%20cities%20equals%20%24%201%2B2%2B3%2B3%2B0%2B1%3D10%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F766%5C%2FE%22%2C%22id%22%3A%22766E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF766E%22%2C%22title%22%3A%22Mahmoud%20and%20a%20xor%20trip%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Mahmoud%20and%20a%20xor%20trip%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Mahmoud and a xor trip</h1>
+<h2>题目描述</h2>
+<div>Mahmoud and Ehab live in a country with $ n $ cities numbered from $ 1 $ to $ n $ and connected by $ n-1 $ undirected roads. It's guaranteed that you can reach any city from any other using these roads. Each city has a number $ a_{i} $ attached to it.
+We define the distance from city $ x $ to city $ y $ as the xor of numbers attached to the cities on the path from $ x $ to $ y $ (including both $ x $ and $ y $ ). In other words if values attached to the cities on the path from $ x $ to $ y $ form an array $ p $ of length $ l $ then the distance between them is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF766E/e28c1b7e227a128d11b738e0dd966321ffdd5e65.png), where ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF766E/4298d47c0191af3c0a3103f431751061bc7e2362.png) is bitwise xor operation.
+Mahmoud and Ehab want to choose two cities and make a journey from one to another. The index of the start city is always less than or equal to the index of the finish city (they may start and finish in the same city and in this case the distance equals the number attached to that city). They can't determine the two cities so they try every city as a start and every city with greater index as a finish. They want to know the total distance between all pairs of cities.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer $ n $ ( $ 1<=n<=10^{5} $ ) — the number of cities in Mahmoud and Ehab's country.
+Then the second line contains $ n $ integers $ a_{1},a_{2},...,a_{n} $ ( $ 0<=a_{i}<=10^{6} $ ) which represent the numbers attached to the cities. Integer $ a_{i} $ is attached to the city $ i $ .
+Each of the next $ n-1 $ lines contains two integers $ u $ and $ v $ ( $ 1<=u,v<=n $ , $ u≠v $ ), denoting that there is an undirected road between cities $ u $ and $ v $ . It's guaranteed that you can reach any city from any other using these roads.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one number denoting the total distance between all pairs of cities.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 2 3
+1 2
+2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+1 2 3 4 5
+1 2
+2 3
+3 4
+3 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>52
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5
+10 9 8 7 6
+1 2
+2 3
+3 4
+3 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>131
+</code></pre>
+<h2>说明</h2>
+<div>A bitwise xor takes two bit integers of equal length and performs the logical xor operation on each pair of corresponding bits. The result in each position is $ 1 $ if only the first bit is $ 1 $ or only the second bit is $ 1 $ , but will be $ 0 $ if both are $ 0 $ or both are $ 1 $ . You can read more about bitwise xor operation here: [https://en.wikipedia.org/wiki/Bitwise\_operation#XOR](https://en.wikipedia.org/wiki/Bitwise_operation#XOR).
+In the first sample the available paths are:
+- city $ 1 $ to itself with a distance of $ 1 $ ,
+- city $ 2 $ to itself with a distance of $ 2 $ ,
+- city $ 3 $ to itself with a distance of $ 3 $ ,
+- city $ 1 $ to city $ 2 $ with a distance of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF766E/1f43581f72fc5ce3c0b862a8034cb76a29952125.png),
+- city $ 1 $ to city $ 3 $ with a distance of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF766E/2d25f1b13f8bc3e6a3f63c847df4adbf20b39c7c.png),
+- city $ 2 $ to city $ 3 $ with a distance of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF766E/360a9ab048a3005f1d532cfb7c78e96ffd10455b.png).
+The total distance between all pairs of cities equals $ 1+2+3+3+0+1=10 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

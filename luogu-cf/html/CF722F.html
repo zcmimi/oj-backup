@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cyclic Cipher - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397091:MS9HBPVgbLprNnY5D3iJTFg/7AvJrFvCYlt9OyfaTPI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20%24%20n%20%24%20sequences.%20Each%20sequence%20consists%20of%20positive%20integers%2C%20not%20exceeding%20%24%20m%20%24%20.%20All%20integers%20in%20one%20sequence%20are%20distinct%2C%20but%20the%20same%20integer%20may%20appear%20in%20multiple%20sequences.%20The%20length%20of%20the%20%24%20i%20%24%20-th%20sequence%20is%20%24%20k_%7Bi%7D%20%24%20.%5Cn%5CnEach%20second%20integers%20in%20each%20of%20the%20sequences%20are%20shifted%20by%20one%20to%20the%20left%2C%20i.e.%20integers%20at%20positions%20%24%20i%26gt%3B1%20%24%20go%20to%20positions%20%24%20i-1%20%24%20%2C%20while%20the%20first%20integers%20becomes%20the%20last.%5Cn%5CnEach%20second%20we%20take%20the%20first%20integer%20of%20each%20sequence%20and%20write%20it%20down%20to%20a%20new%20array.%20Then%2C%20for%20each%20value%20%24%20x%20%24%20from%20%24%201%20%24%20to%20%24%20m%20%24%20we%20compute%20the%20longest%20segment%20of%20the%20array%20consisting%20of%20element%20%24%20x%20%24%20only.%5Cn%5CnThe%20above%20operation%20is%20performed%20for%20%24%2010%5E%7B100%7D%20%24%20seconds.%20For%20each%20integer%20from%20%24%201%20%24%20to%20%24%20m%20%24%20find%20out%20the%20longest%20segment%20found%20at%20this%20time.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%2Cm%3C%3D100000%20%24%20%29%20%5Cu2014%20the%20number%20of%20sequences%20and%20the%20maximum%20integer%20that%20can%20appear%20in%20the%20sequences.%5Cn%5CnThen%20follow%20%24%20n%20%24%20lines%20providing%20the%20sequences.%20Each%20of%20them%20starts%20with%20an%20integer%20%24%20k_%7Bi%7D%20%24%20%28%20%24%201%3C%3Dk_%7Bi%7D%3C%3D40%20%24%20%29%20%5Cu2014%20the%20number%20of%20integers%20in%20the%20sequence%2C%20proceeded%20by%20%24%20k_%7Bi%7D%20%24%20positive%20integers%20%5Cu2014%20elements%20of%20the%20sequence.%20It%27s%20guaranteed%20that%20all%20integers%20in%20each%20sequence%20are%20pairwise%20distinct%20and%20do%20not%20exceed%20%24%20m%20%24%20.%5Cn%5CnThe%20total%20length%20of%20all%20sequences%20doesn%27t%20exceed%20%24%20200000%20%24%20.%22%2C%22outputFormat%22%3A%22Print%20%24%20m%20%24%20integers%2C%20the%20%24%20i%20%24%20-th%20of%20them%20should%20be%20equal%20to%20the%20length%20of%20the%20longest%20segment%20of%20the%20array%20with%20all%20its%20values%20equal%20to%20%24%20i%20%24%20during%20the%20first%20%24%2010%5E%7B100%7D%20%24%20seconds.%22%2C%22samples%22%3A%5B%5B%223%204%5Cn3%203%204%201%5Cn4%201%203%204%202%5Cn3%203%201%204%5Cn%22%2C%222%5Cn1%5Cn3%5Cn2%5Cn%22%5D%2C%5B%225%205%5Cn2%203%201%5Cn4%205%201%203%202%5Cn4%202%201%203%205%5Cn1%203%5Cn2%205%203%5Cn%22%2C%223%5Cn1%5Cn4%5Cn0%5Cn1%5Cn%22%5D%2C%5B%224%206%5Cn3%204%205%203%5Cn2%206%203%5Cn2%203%206%5Cn3%203%206%205%5Cn%22%2C%220%5Cn0%5Cn2%5Cn1%5Cn1%5Cn2%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F722%5C%2FF%22%2C%22id%22%3A%22722F%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%20%24n%24%20%5Cu4e2a%5Cu6570%5Cu5217%5Cuff0c%5Cu7b2c%20%24i%24%20%5Cu4e2a%5Cu6570%5Cu5217%5Cu5305%5Cu542b%20%24k_i%24%20%5Cu4e2a%5Cu4e0d%5Cu8d85%5Cu8fc7%20%24m%24%20%5Cu7684%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu540c%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%28%5Cu4ece%20%241%24%20%5Cu5f00%5Cu59cb%5Cu6807%5Cu53f7%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu4e00%5Cu79d2%5Cu5c06%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu5217%5Cu4e2d%5Cu7684%5Cu6570%5Cu5de6%5Cu79fb%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu7f6e%28%5Cu5373%5Cu5c06%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu7684%5Cu4e0b%5Cu6807%20%24-1%24%20%2C%20%5Cu4e0b%5Cu6807%20%241%24%20%5Cu7684%5Cu6570%5Cu4e0b%5Cu6807%5Cu53d8%5Cu4e3a%20%24k_i%24%29%2C%20%5Cu5e76%5Cu8bb0%5Cu5f55%5Cu7531%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu5217%5Cu7684%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu7ec4%5Cu6210%5Cu7684%5Cu5e8f%5Cu5217%5Cu3002%5Cr%5Cn%5Cr%5Cn%2410%5E%7B100%7D%24%20%5Cu79d2%5Cu8fc7%5Cu540e%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu7684%20%241%5C%5Cleqslant%20x%5C%5Cleqslant%20m%24%20%5Cuff0c%5Cu6c42%20%24x%24%20%5Cu5728%5Cu8bb0%5Cu5f55%5Cu4e0b%5Cu6765%5Cu7684%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu51fa%5Cu73b0%5Cu7684%5Cu6700%5Cu957f%5Cu7684%5Cu8fde%5Cu7eed%5Cu7684%5Cu4e00%5Cu6bb5%5Cu957f%5Cu5ea6%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A17%2C%22totalAccepted%22%3A6%2C%22pid%22%3A%22CF722F%22%2C%22title%22%3A%22Cyclic%20Cipher%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Cyclic%20Cipher%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Cyclic Cipher</h1>
+<h2>题意翻译</h2>
+<div>给定 $n$ 个数列，第 $i$ 个数列包含 $k_i$ 个不超过 $m$ 的互不相同的正整数(从 $1$ 开始标号)。
+每一秒将每个数列中的数左移一个位置(即将每个数的下标 $-1$ , 下标 $1$ 的数下标变为 $k_i$), 并记录由每个数列的第一个数组成的序列。
+$10^{100}$ 秒过后，对于所有的 $1\leqslant x\leqslant m$ ，求 $x$ 在记录下来的序列中出现的最长的连续的一段长度。</div>
+<h2>题目描述</h2>
+<div>You are given $ n $ sequences. Each sequence consists of positive integers, not exceeding $ m $ . All integers in one sequence are distinct, but the same integer may appear in multiple sequences. The length of the $ i $ -th sequence is $ k_{i} $ .
+Each second integers in each of the sequences are shifted by one to the left, i.e. integers at positions $ i&gt;1 $ go to positions $ i-1 $ , while the first integers becomes the last.
+Each second we take the first integer of each sequence and write it down to a new array. Then, for each value $ x $ from $ 1 $ to $ m $ we compute the longest segment of the array consisting of element $ x $ only.
+The above operation is performed for $ 10^{100} $ seconds. For each integer from $ 1 $ to $ m $ find out the longest segment found at this time.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ m $ ( $ 1<=n,m<=100000 $ ) — the number of sequences and the maximum integer that can appear in the sequences.
+Then follow $ n $ lines providing the sequences. Each of them starts with an integer $ k_{i} $ ( $ 1<=k_{i}<=40 $ ) — the number of integers in the sequence, proceeded by $ k_{i} $ positive integers — elements of the sequence. It's guaranteed that all integers in each sequence are pairwise distinct and do not exceed $ m $ .
+The total length of all sequences doesn't exceed $ 200000 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ m $ integers, the $ i $ -th of them should be equal to the length of the longest segment of the array with all its values equal to $ i $ during the first $ 10^{100} $ seconds.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 4
+3 3 4 1
+4 1 3 4 2
+3 3 1 4
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+1
+3
+2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 5
+2 3 1
+4 5 1 3 2
+4 2 1 3 5
+1 3
+2 5 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3
+1
+4
+0
+1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4 6
+3 4 5 3
+2 6 3
+2 3 6
+3 3 6 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>0
+0
+2
+1
+1
+2
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>String Game - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397781:RTbFE0XfnQ2xDuNcvZ8uF9QutKiPu2rAuA27Q1SXpfY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Little%20Nastya%20has%20a%20hobby%2C%20she%20likes%20to%20remove%20some%20letters%20from%20word%2C%20to%20obtain%20another%20word.%20But%20it%20turns%20out%20to%20be%20pretty%20hard%20for%20her%2C%20because%20she%20is%20too%20young.%20Therefore%2C%20her%20brother%20Sergey%20always%20helps%20her.%5Cn%5CnSergey%20gives%20Nastya%20the%20word%20%24%20t%20%24%20and%20wants%20to%20get%20the%20word%20%24%20p%20%24%20out%20of%20it.%20Nastya%20removes%20letters%20in%20a%20certain%20order%20%28one%20after%20another%2C%20in%20this%20order%20strictly%29%2C%20which%20is%20specified%20by%20permutation%20of%20letters%27%20indices%20of%20the%20word%20%24%20t%20%24%20%3A%20%24%20a_%7B1%7D...%5C%5C%20a_%7B%7Ct%7C%7D%20%24%20.%20We%20denote%20the%20length%20of%20word%20%24%20x%20%24%20as%20%24%20%7Cx%7C%20%24%20.%20Note%20that%20after%20removing%20one%20letter%2C%20the%20indices%20of%20other%20letters%20don%27t%20change.%20For%20example%2C%20if%20%24%20t%3D%20%24%20%5C%22nastya%5C%22%20and%20%24%20a%3D%5B4%2C1%2C5%2C3%2C2%2C6%5D%20%24%20then%20removals%20make%20the%20following%20sequence%20of%20words%20%5C%22nastya%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22nastya%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22nastya%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22nastya%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22nastya%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22nastya%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22nastya%5C%22.%5Cn%5CnSergey%20knows%20this%20permutation.%20His%20goal%20is%20to%20stop%20his%20sister%20at%20some%20point%20and%20continue%20removing%20by%20himself%20to%20get%20the%20word%20%24%20p%20%24%20.%20Since%20Nastya%20likes%20this%20activity%2C%20Sergey%20wants%20to%20stop%20her%20as%20late%20as%20possible.%20Your%20task%20is%20to%20determine%2C%20how%20many%20letters%20Nastya%20can%20remove%20before%20she%20will%20be%20stopped%20by%20Sergey.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20word%20%24%20p%20%24%20can%20be%20obtained%20by%20removing%20the%20letters%20from%20word%20%24%20t%20%24%20.%22%2C%22inputFormat%22%3A%22The%20first%20and%20second%20lines%20of%20the%20input%20contain%20the%20words%20%24%20t%20%24%20and%20%24%20p%20%24%20%2C%20respectively.%20Words%20are%20composed%20of%20lowercase%20letters%20of%20the%20Latin%20alphabet%20%28%20%24%201%3C%3D%7Cp%7C%26lt%3B%7Ct%7C%3C%3D200000%20%24%20%29.%20It%20is%20guaranteed%20that%20the%20word%20%24%20p%20%24%20can%20be%20obtained%20by%20removing%20the%20letters%20from%20word%20%24%20t%20%24%20.%5Cn%5CnNext%20line%20contains%20a%20permutation%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7B%7Ct%7C%7D%20%24%20of%20letter%20indices%20that%20specifies%20the%20order%20in%20which%20Nastya%20removes%20letters%20of%20%24%20t%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D%7Ct%7C%20%24%20%2C%20all%20%24%20a_%7Bi%7D%20%24%20are%20distinct%29.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20number%2C%20the%20maximum%20number%20of%20letters%20that%20Nastya%20can%20remove.%22%2C%22samples%22%3A%5B%5B%22ababcba%5Cnabb%5Cn5%203%204%201%207%206%202%5Cn%22%2C%223%22%5D%2C%5B%22bbbabb%5Cnbb%5Cn1%206%203%204%202%205%5Cn%22%2C%224%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20test%20sequence%20of%20removing%20made%20by%20Nastya%20looks%20like%20this%3A%5Cn%5Cn%5C%22ababcba%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22ababcba%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22ababcba%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF778A%5C%2F355fee5161a1808ee95ea5dc6d815d4071657131.png%29%20%5C%22ababcba%5C%22%5Cn%5CnNastya%20can%20not%20continue%2C%20because%20it%20is%20impossible%20to%20get%20word%20%5C%22abb%5C%22%20from%20word%20%5C%22ababcba%5C%22.%5Cn%5CnSo%2C%20Nastya%20will%20remove%20only%20three%20letters.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F778%5C%2FA%22%2C%22id%22%3A%22778A%22%7D%2C%22translation%22%3A%22%23%20Problem%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e24%5Cu4e2a%5Cu7531%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu6784%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32p%5Cu548ct%5Cuff0c%5Cu540c%5Cu65f6%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu7531%5Cu6570%5Cu5b571%2C2%2C3...%5Cu2223P%5Cu2223%5Cu7ec4%5Cu6210%5Cu7684%5Cu6392%5Cu5217%5Cu3002%5Cuff08%5Cu5176%5Cu4e2d%5Cu2223p%5Cu2223%5Cu8868%5Cu793a%5Cu5b57%5Cu7b26%5Cu4e32p%5Cu7684%5Cu957f%5Cu5ea6%5Cuff09%5Cu6309%5Cu8be5%5Cu6392%5Cu5217%5Cu987a%5Cu5e8f%5Cu4f9d%5Cu6b21%5Cu5220%5Cu9664%5Cu5b57%5Cu7b26%5Cu4e32p%5Cu76f8%5Cu5e94%5Cu4f4d%5Cu7f6e%5Cu4e0a%5Cu7684%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu5220%5Cu9664%5Cu8fc7%5Cu7a0b%5Cu4e2d%5Cuff0c%5Cu7ea6%5Cu5b9a%5Cu5404%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu4e0d%5Cu53d8%5Cu3002%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu6700%5Cu591a%5Cu53ef%5Cu4ee5%5Cu5220%5Cu9664%5Cu51e0%5Cu6b21%5Cuff0c%5Cu5b57%5Cu7b26%5Cu4e32p%5Cu4e2d%5Cu4ecd%5Cu7136%5Cu5305%5Cu542b%5Cu5b57%5Cu7b26%5Cu4e32t%5Cu3002%5Cuff08%5Cu5373%5Cu5b57%5Cu7b26%5Cu4e32t%5Cu4ecd%5Cu7136%5Cu662f%5Cu5b57%5Cu7b26%5Cu4e32p%5Cu7684%5Cu5b50%5Cu5e8f%5Cu5217%5Cuff09%5Cr%5Cn%5Cr%5Cn%23%23%23%23%23%20%5Cu6570%5Cu636e%5Cu4fdd%5Cu8bc1%5Cu6709%5Cu89e3%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20Input%20Data%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32p%5Cuff1b1%5Cu2264%5Cu2223p%5Cu2223%3C%5Cu2223t%5Cu2223%5Cu2264200%2C0001%20%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32t%5Cuff1b%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e09%5Cu884c%5Cuff0c%5Cu6570%5Cu5b571%5Cu5230%5Cu2223p%5Cu2223%5Cu7ec4%5Cu6210%5Cu7684%5Cu4e00%5Cu4e2a%5Cu6392%5Cu5217%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20Output%20Data%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu591a%5Cu5220%5Cu9664%5Cu7684%5Cu6b21%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20Input%20Sample%201%5Cr%5Cn%5Cr%5Cnababcba%5Cr%5Cn%5Cr%5Cnabb%5Cr%5Cn%5Cr%5Cn5%203%204%201%207%206%202%5Cr%5Cn%5Cr%5Cn%23%20Output%20Sample%201%5Cr%5Cn%5Cr%5Cn3%22%2C%22tags%22%3A%5B2%2C113%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A56%2C%22totalAccepted%22%3A28%2C%22pid%22%3A%22CF778A%22%2C%22title%22%3A%22String%20Game%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A44144%2C%22title%22%3A%22%5Cu9898%5Cu9762%5Cu51fa%5Cu9519%22%2C%22forum%22%3A%7B%22id%22%3A9477%2C%22name%22%3A%22CF778A%20String%20Game%22%2C%22slug%22%3A%22CF778A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1168%22%2C%22title%22%3A%22%5Cu4e2d%5Cu4f4d%5Cu6570%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1934%22%2C%22title%22%3A%22%5Cu5c01%5Cu5370%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF741B%22%2C%22title%22%3A%22Arpa%27s%20weak%20amphitheater%20and%20Mehrdad%27s%20valuable%20Hoses%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF917A%22%2C%22title%22%3A%22The%20Monster%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1230A%22%2C%22title%22%3A%22Dawid%20and%20Bags%20of%20Candies%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22String%20Game%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>String Game</h1>
+<h2>题意翻译</h2>
+<div># Problem
+给定两个由小写字母构成的字符串p和t，同时给定一个由数字1,2,3...∣P∣组成的排列。（其中∣p∣表示字符串p的长度）按该排列顺序依次删除字符串p相应位置上的字母，删除过程中，约定各个字符的位置不变。请计算最多可以删除几次，字符串p中仍然包含字符串t。（即字符串t仍然是字符串p的子序列）
+##### 数据保证有解。
+# Input Data
+第一行，一个字符串p；1≤∣p∣<∣t∣≤200,0001
+第二行，一个字符串t；
+第三行，数字1到∣p∣组成的一个排列。
+# Output Data
+一行，一个整数，表示最多删除的次数。
+# Input Sample 1
+ababcba
+abb
+5 3 4 1 7 6 2
+# Output Sample 1
+3</div>
+<h2>题目描述</h2>
+<div>Little Nastya has a hobby, she likes to remove some letters from word, to obtain another word. But it turns out to be pretty hard for her, because she is too young. Therefore, her brother Sergey always helps her.
+Sergey gives Nastya the word $ t $ and wants to get the word $ p $ out of it. Nastya removes letters in a certain order (one after another, in this order strictly), which is specified by permutation of letters' indices of the word $ t $ : $ a_{1}...\ a_{|t|} $ . We denote the length of word $ x $ as $ |x| $ . Note that after removing one letter, the indices of other letters don't change. For example, if $ t= $ "nastya" and $ a=[4,1,5,3,2,6] $ then removals make the following sequence of words "nastya" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "nastya" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "nastya" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "nastya" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "nastya" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "nastya" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "nastya".
+Sergey knows this permutation. His goal is to stop his sister at some point and continue removing by himself to get the word $ p $ . Since Nastya likes this activity, Sergey wants to stop her as late as possible. Your task is to determine, how many letters Nastya can remove before she will be stopped by Sergey.
+It is guaranteed that the word $ p $ can be obtained by removing the letters from word $ t $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first and second lines of the input contain the words $ t $ and $ p $ , respectively. Words are composed of lowercase letters of the Latin alphabet ( $ 1<=|p|&lt;|t|<=200000 $ ). It is guaranteed that the word $ p $ can be obtained by removing the letters from word $ t $ .
+Next line contains a permutation $ a_{1},a_{2},...,a_{|t|} $ of letter indices that specifies the order in which Nastya removes letters of $ t $ ( $ 1<=a_{i}<=|t| $ , all $ a_{i} $ are distinct).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer number, the maximum number of letters that Nastya can remove.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>ababcba
+abb
+5 3 4 1 7 6 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>bbbabb
+bb
+1 6 3 4 2 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>4</code></pre>
+<h2>说明</h2>
+<div>In the first sample test sequence of removing made by Nastya looks like this:
+"ababcba" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "ababcba" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "ababcba" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF778A/355fee5161a1808ee95ea5dc6d815d4071657131.png) "ababcba"
+Nastya can not continue, because it is impossible to get word "abb" from word "ababcba".
+So, Nastya will remove only three letters.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

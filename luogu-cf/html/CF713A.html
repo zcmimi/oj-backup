@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sonya and Queries - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396980:ZkgNc/GtYpv3VlSO3VRZbGQXai2M84snZWwE6kE6TCc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Today%20Sonya%20learned%20about%20long%20integers%20and%20invited%20all%20her%20friends%20to%20share%20the%20fun.%20Sonya%20has%20an%20initially%20empty%20multiset%20with%20integers.%20Friends%20give%20her%20%24%20t%20%24%20queries%2C%20each%20of%20one%20of%20the%20following%20type%3A%5Cn%5Cn1.%20%24%20%2B%20%24%20%24%20a_%7Bi%7D%20%24%20%5Cu2014%20add%20non-negative%20integer%20%24%20a_%7Bi%7D%20%24%20to%20the%20multiset.%20Note%2C%20that%20she%20has%20a%20multiset%2C%20thus%20there%20may%20be%20many%20occurrences%20of%20the%20same%20integer.%5Cn2.%20%24%20-%20%24%20%24%20a_%7Bi%7D%20%24%20%5Cu2014%20delete%20a%20single%20occurrence%20of%20non-negative%20integer%20%24%20a_%7Bi%7D%20%24%20from%20the%20multiset.%20It%27s%20guaranteed%2C%20that%20there%20is%20at%20least%20one%20%24%20a_%7Bi%7D%20%24%20in%20the%20multiset.%5Cn3.%20%24%20%3F%20%24%20%24%20s%20%24%20%5Cu2014%20count%20the%20number%20of%20integers%20in%20the%20multiset%20%28with%20repetitions%29%20that%20match%20some%20pattern%20%24%20s%20%24%20consisting%20of%20%24%200%20%24%20and%20%24%201%20%24%20.%20In%20the%20pattern%2C%20%24%200%20%24%20stands%20for%20the%20even%20digits%2C%20while%20%24%201%20%24%20stands%20for%20the%20odd.%20Integer%20%24%20x%20%24%20matches%20the%20pattern%20%24%20s%20%24%20%2C%20if%20the%20parity%20of%20the%20%24%20i%20%24%20-th%20from%20the%20right%20digit%20in%20decimal%20notation%20matches%20the%20%24%20i%20%24%20-th%20from%20the%20right%20digit%20of%20the%20pattern.%20If%20the%20pattern%20is%20shorter%20than%20this%20integer%2C%20it%27s%20supplemented%20with%20%24%200%20%24%20-s%20from%20the%20left.%20Similarly%2C%20if%20the%20integer%20is%20shorter%20than%20the%20pattern%20its%20decimal%20notation%20is%20supplemented%20with%20the%20%24%200%20%24%20-s%20from%20the%20left.%5Cn%5CnFor%20example%2C%20if%20the%20pattern%20is%20%24%20s%3D010%20%24%20%2C%20than%20integers%20%24%2092%20%24%20%2C%20%24%202212%20%24%20%2C%20%24%2050%20%24%20and%20%24%20414%20%24%20match%20the%20pattern%2C%20while%20integers%20%24%203%20%24%20%2C%20%24%20110%20%24%20%2C%20%24%2025%20%24%20and%20%24%201030%20%24%20do%20not.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20an%20integer%20%24%20t%20%24%20%28%20%24%201%3C%3Dt%3C%3D100000%20%24%20%29%20%5Cu2014%20the%20number%20of%20operation%20Sonya%20has%20to%20perform.%5Cn%5CnNext%20%24%20t%20%24%20lines%20provide%20the%20descriptions%20of%20the%20queries%20in%20order%20they%20appear%20in%20the%20input%20file.%20The%20%24%20i%20%24%20-th%20row%20starts%20with%20a%20character%20%24%20c_%7Bi%7D%20%24%20%5Cu2014%20the%20type%20of%20the%20corresponding%20operation.%20If%20%24%20c_%7Bi%7D%20%24%20is%20equal%20to%20%27%2B%27%20or%20%27-%27%20then%20it%27s%20followed%20by%20a%20space%20and%20an%20integer%20%24%20a_%7Bi%7D%20%24%20%28%20%24%200%3C%3Da_%7Bi%7D%3C10%5E%7B18%7D%20%24%20%29%20given%20without%20leading%20zeroes%20%28unless%20it%27s%200%29.%20If%20%24%20c_%7Bi%7D%20%24%20equals%20%27%3F%27%20then%20it%27s%20followed%20by%20a%20space%20and%20a%20sequence%20of%20zeroes%20and%20onse%2C%20giving%20the%20pattern%20of%20length%20no%20more%20than%20%24%2018%20%24%20.%5Cn%5CnIt%27s%20guaranteed%20that%20there%20will%20be%20at%20least%20one%20query%20of%20type%20%27%3F%27.%5Cn%5CnIt%27s%20guaranteed%20that%20any%20time%20some%20integer%20is%20removed%20from%20the%20multiset%2C%20there%20will%20be%20at%20least%20one%20occurrence%20of%20this%20integer%20in%20it.%22%2C%22outputFormat%22%3A%22For%20each%20query%20of%20the%20third%20type%20print%20the%20number%20of%20integers%20matching%20the%20given%20pattern.%20Each%20integer%20is%20counted%20as%20many%20times%2C%20as%20it%20appears%20in%20the%20multiset%20at%20this%20moment%20of%20time.%22%2C%22samples%22%3A%5B%5B%2212%5Cn%2B%201%5Cn%2B%20241%5Cn%3F%201%5Cn%2B%20361%5Cn-%20241%5Cn%3F%200101%5Cn%2B%20101%5Cn%3F%20101%5Cn-%20101%5Cn%3F%20101%5Cn%2B%204000%5Cn%3F%200%5Cn%22%2C%222%5Cn1%5Cn2%5Cn1%5Cn1%5Cn%22%5D%2C%5B%224%5Cn%2B%20200%5Cn%2B%20200%5Cn-%20200%5Cn%3F%200%5Cn%22%2C%221%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20integers%20matching%20the%20patterns%20from%20the%20queries%20of%20the%20third%20type.%20Queries%20are%20numbered%20in%20the%20order%20they%20appear%20in%20the%20input.%5Cn%5Cn1.%20%24%201%20%24%20and%20%24%20241%20%24%20.%5Cn2.%20%24%20361%20%24%20.%5Cn3.%20%24%20101%20%24%20and%20%24%20361%20%24%20.%5Cn4.%20%24%20361%20%24%20.%5Cn5.%20%24%204000%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F713%5C%2FA%22%2C%22id%22%3A%22713A%22%7D%2C%22translation%22%3A%22%5Cn%5Cn%5Cu9898%5Cu610f%3A%5Cn%5Cn%5Cu6709t%5Cu6b21%5Cu64cd%5Cu4f5c%2C%5Cu64cd%5Cu4f5c%5Cu5206%5Cu4e09%5Cu7c7b%3A%5Cn1.%5Cu5f62%5Cu5982%3C%2B%2Ca%3E%2C%5Cu5728multiset%5Cu4e2d%5Cu63d2%5Cu5165%5Cu4e00%5Cu4e2aa.%5Cn2.%5Cu5f62%5Cu5982%3C-%2Ca%3E%2C%5Cu5728multiset%5Cu4e2d%5Cu5220%5Cu9664%5Cu4e00%5Cu4e2aa.%5Cn3.%5Cu5f62%5Cu5982%3C%3F%2Ca%3E%2C%5Cu8be2%5Cu95eemultiset%5Cu4e2d%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu6570%5Cu7684%5Cu6bcf%5Cu4e00%5Cu4f4d%5Cu5947%5Cu5076%5Cu6027%5Cu90fd%5Cu4e0ea%5Cu76f8%5Cu540c%28%5Cu4f4d%5Cu6570%5Cu4e0d%5Cu8db3%5Cu4ee50%5Cu8865%5Cu9f50%29.%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2at.%5Cn%5Cu63a5%5Cu4e0b%5Cu6765t%5Cu884c%2C%5Cu6bcf%5Cu884c%5Cu4e00%5Cu79cd%5Cu64cd%5Cu4f5c.%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%3A%5Cn%5Cn%5Cu82e5%5Cu5e72%5Cu884c%2C%5Cu6309%5Cu987a%5Cu5e8f%5Cu8f93%5Cu51fa3%5Cu64cd%5Cu4f5c%5Cu7684%5Cu7ed3%5Cu679c.%5Cn%5Cn%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%3A%5Cn%5Cnt%3A%5B1%2C1e5%5D%5Cna%3A%5B0%2C1e18%5D%5Cn%5Cn%5Cu6ce8%5Cu610f%3A%5Cn%5Cnmultiset%5Cu4e0d%5Cu53bb%5Cu91cd.%5Cn%5Cu8bb0%5Cu5f97%5Cu5f00long%20long.%5Cn%5Cn%5Cu611f%5Cu8c22%40%5Cu5c18%5Cu67d3%5Cu68a6%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A14%2C%22totalAccepted%22%3A12%2C%22pid%22%3A%22CF713A%22%2C%22title%22%3A%22Sonya%20and%20Queries%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A33637%2C%22title%22%3A%22%5B%5Cu7ffb%5Cu8bd1%5DCF713A%22%2C%22forum%22%3A%7B%22id%22%3A9807%2C%22name%22%3A%22CF713A%20Sonya%20and%20Queries%22%2C%22slug%22%3A%22CF713A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Sonya%20and%20Queries%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Sonya and Queries</h1>
+<h2>题意翻译</h2>
+<div>
+题意:
+有t次操作,操作分三类:
+1.形如<+,a>,在multiset中插入一个a.
+2.形如<-,a>,在multiset中删除一个a.
+3.形如<?,a>,询问multiset中有多少个数的每一位奇偶性都与a相同(位数不足以0补齐).
+输入格式:
+第一行一个t.
+接下来t行,每行一种操作.
+输出格式:
+若干行,按顺序输出3操作的结果.
+数据范围:
+t:[1,1e5]
+a:[0,1e18]
+注意:
+multiset不去重.
+记得开long long.
+感谢@尘染梦 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Today Sonya learned about long integers and invited all her friends to share the fun. Sonya has an initially empty multiset with integers. Friends give her $ t $ queries, each of one of the following type:
+1. $ + $ $ a_{i} $ — add non-negative integer $ a_{i} $ to the multiset. Note, that she has a multiset, thus there may be many occurrences of the same integer.
+2. $ - $ $ a_{i} $ — delete a single occurrence of non-negative integer $ a_{i} $ from the multiset. It's guaranteed, that there is at least one $ a_{i} $ in the multiset.
+3. $ ? $ $ s $ — count the number of integers in the multiset (with repetitions) that match some pattern $ s $ consisting of $ 0 $ and $ 1 $ . In the pattern, $ 0 $ stands for the even digits, while $ 1 $ stands for the odd. Integer $ x $ matches the pattern $ s $ , if the parity of the $ i $ -th from the right digit in decimal notation matches the $ i $ -th from the right digit of the pattern. If the pattern is shorter than this integer, it's supplemented with $ 0 $ -s from the left. Similarly, if the integer is shorter than the pattern its decimal notation is supplemented with the $ 0 $ -s from the left.
+For example, if the pattern is $ s=010 $ , than integers $ 92 $ , $ 2212 $ , $ 50 $ and $ 414 $ match the pattern, while integers $ 3 $ , $ 110 $ , $ 25 $ and $ 1030 $ do not.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains an integer $ t $ ( $ 1<=t<=100000 $ ) — the number of operation Sonya has to perform.
+Next $ t $ lines provide the descriptions of the queries in order they appear in the input file. The $ i $ -th row starts with a character $ c_{i} $ — the type of the corresponding operation. If $ c_{i} $ is equal to '+' or '-' then it's followed by a space and an integer $ a_{i} $ ( $ 0<=a_{i}<10^{18} $ ) given without leading zeroes (unless it's 0). If $ c_{i} $ equals '?' then it's followed by a space and a sequence of zeroes and onse, giving the pattern of length no more than $ 18 $ .
+It's guaranteed that there will be at least one query of type '?'.
+It's guaranteed that any time some integer is removed from the multiset, there will be at least one occurrence of this integer in it.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query of the third type print the number of integers matching the given pattern. Each integer is counted as many times, as it appears in the multiset at this moment of time.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>12
++ 1
++ 241
+? 1
++ 361
+- 241
+? 0101
++ 101
+? 101
+- 101
+? 101
++ 4000
+? 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+1
+2
+1
+1
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
++ 200
++ 200
+- 200
+? 0
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h2>说明</h2>
+<div>Consider the integers matching the patterns from the queries of the third type. Queries are numbered in the order they appear in the input.
+1. $ 1 $ and $ 241 $ .
+2. $ 361 $ .
+3. $ 101 $ and $ 361 $ .
+4. $ 361 $ .
+5. $ 4000 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

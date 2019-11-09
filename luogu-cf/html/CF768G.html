@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>The Winds of Winter - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397656:YS1TqcvAd6A1cQQLFbJtiVCVXbf0DIalqy+k+wJDswk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Given%20a%20rooted%20tree%20with%20%24%20n%20%24%20nodes.%20The%20Night%20King%20removes%20exactly%20one%20node%20from%20the%20tree%20and%20all%20the%20edges%20associated%20with%20it.%20Doing%20this%20splits%20the%20tree%20and%20forms%20a%20forest.%20The%20node%20which%20is%20removed%20is%20not%20a%20part%20of%20the%20forest.%5Cn%5CnThe%20root%20of%20a%20tree%20in%20the%20forest%20is%20the%20node%20in%20that%20tree%20which%20does%20not%20have%20a%20parent.%20We%20define%20the%20strength%20of%20the%20forest%20as%20the%20size%20of%20largest%20tree%20in%20forest.%5Cn%5CnJon%20Snow%20wants%20to%20minimize%20the%20strength%20of%20the%20forest.%20To%20do%20this%20he%20can%20perform%20the%20following%20operation%20at%20most%20once.%5Cn%5CnHe%20removes%20the%20edge%20between%20a%20node%20and%20its%20parent%20and%20inserts%20a%20new%20edge%20between%20this%20node%20and%20any%20other%20node%20in%20forest%20such%20that%20the%20total%20number%20of%20trees%20in%20forest%20remain%20same.%5Cn%5CnFor%20each%20node%20%24%20v%20%24%20you%20need%20to%20find%20the%20minimum%20value%20of%20strength%20of%20the%20forest%20formed%20when%20node%20%24%20v%20%24%20is%20removed.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20vertices%20in%20the%20tree.%20Each%20of%20the%20next%20%24%20n%20%24%20lines%20contains%20a%20pair%20of%20vertex%20indices%20%24%20u_%7Bi%7D%20%24%20and%20%24%20v_%7Bi%7D%20%24%20%28%20%24%201%3C%3Du_%7Bi%7D%2Cv_%7Bi%7D%3C%3Dn%20%24%20%29%20where%20%24%20u_%7Bi%7D%20%24%20is%20the%20parent%20of%20%24%20v_%7Bi%7D%20%24%20.%20If%20%24%20u_%7Bi%7D%3D0%20%24%20then%20%24%20v_%7Bi%7D%20%24%20is%20the%20root.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20line%20each%20containing%20a%20single%20integer.%20The%20%24%20i%20%24%20-th%20of%20them%20should%20be%20equal%20to%20minimum%20value%20of%20strength%20of%20forest%20formed%20when%20%24%20i%20%24%20-th%20node%20is%20removed%20and%20Jon%20Snow%20performs%20the%20operation%20described%20above%20at%20most%20once.%22%2C%22samples%22%3A%5B%5B%2210%5Cn0%201%5Cn1%202%5Cn1%203%5Cn1%204%5Cn2%205%5Cn2%206%5Cn3%207%5Cn4%208%5Cn4%209%5Cn5%2010%5Cn%22%2C%223%5Cn4%5Cn5%5Cn5%5Cn5%5Cn9%5Cn9%5Cn9%5Cn9%5Cn9%5Cn%22%5D%2C%5B%222%5Cn2%201%5Cn0%202%5Cn%22%2C%221%5Cn1%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20tree%20for%20first%20test%20case%20is%20depicted%20below.%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF768G%5C%2F92e83d84eb7fd603b83b72b75cbb259bd68c6078.png%29%20When%20you%20remove%20the%20first%20node%2C%20the%20tree%20splits%20to%20form%20the%20following%20forest.%20The%20strength%20of%20this%20forest%20is%20%24%204%20%24%20.%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF768G%5C%2F579396fe74309f35769274fb1d696feecaa9b72f.png%29%20Jon%20Snow%20now%20changes%20the%20parent%20of%20vertex%20%24%2010%20%24%20from%20%24%205%20%24%20to%20%24%203%20%24%20.%20The%20strength%20of%20forest%20now%20becomes%20%24%203%20%24%20.%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF768G%5C%2F6a62e865869bd9e74df710a3e1a2ddb4d1a90d68.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F768%5C%2FG%22%2C%22id%22%3A%22768G%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4e00%5Cu4e2a%5Cu6709%5Cu6839%5Cu6811%5Cu3002%5Cu82e5%5Cu6211%5Cu4eec%5Cu5220%5Cu53bb%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu548c%5Cu6240%5Cu6709%5Cu4e0e%5Cu4ed6%5Cu76f8%5Cu8fde%5Cu7684%5Cu8fb9%5Cuff0c%5Cu5219%5Cu4f1a%5Cu5f97%5Cu5230%5Cu4e00%5Cu4e2a%5Cu68ee%5Cu6797%5Cu3002%5Cu4f60%5Cu5e0c%5Cu671b%5Cu8fd9%5Cu4e2a%5Cu68ee%5Cu6797%5Cu4e2d%5Cu8282%5Cu70b9%5Cu6700%5Cu591a%5Cu7684%5Cu6811%5Cu7684%5Cu8282%5Cu70b9%5Cu4e2a%5Cu6570%5Cu5c3d%5Cu91cf%5Cu5c11%5Cuff0c%5Cu4e8e%5Cu662f%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu8fdb%5Cu884c%5Cu81f3%5Cu591a%5Cu4e00%5Cu6b21%5Cu5982%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cu5220%5Cu9664%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu548c%5Cu5176%5Cu7236%5Cu4eb2%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8fb9%5Cuff0c%5Cu628a%5Cu8fd9%5Cu4e2a%5Cu8282%5Cu70b9%5Cu8fde%5Cu5230%5Cu67d0%5Cu4e2a%5Cu8282%5Cu70b9%5Cu4e0a%5Cu3002%5Cu8fd9%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cu4e0d%5Cu5f97%5Cu6539%5Cu53d8%5Cu68ee%5Cu6797%5Cu4e2d%5Cu6811%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5b83%5Cu4f5c%5Cu4e3a%5Cu5220%5Cu53bb%5Cu7684%5Cu8282%5Cu70b9%5Cu65f6%5Cuff0c%5Cu8fdb%5Cu884c%5Cu81f3%5Cu591a%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu540e%5Cu7684%5Cu6700%5Cu5927%5Cu6811%5Cu5927%5Cu5c0f%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cu4e2d%5Cuff0c%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu4e00%5Cu4e2a%5Cu7aef%5Cu70b9%5Cu662f0%5Cu8bf4%5Cu660e%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu7aef%5Cu70b9%5Cu662f%5Cu6839%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A35%2C%22totalAccepted%22%3A17%2C%22pid%22%3A%22CF768G%22%2C%22title%22%3A%22The%20Winds%20of%20Winter%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22The%20Winds%20of%20Winter%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>The Winds of Winter</h1>
+<h2>题意翻译</h2>
+<div>给一个有根树。若我们删去一个节点和所有与他相连的边，则会得到一个森林。你希望这个森林中节点最多的树的节点个数尽量少，于是你可以进行至多一次如下操作：删除一个节点和其父亲之间的边，把这个节点连到某个节点上。这个操作不得改变森林中树的个数。
+对于每个节点，输出它作为删去的节点时，进行至多一次操作后的最大树大小的最小值。
+输入格式中，一条边的一个端点是0说明另一个端点是根。</div>
+<h2>题目描述</h2>
+<div>Given a rooted tree with $ n $ nodes. The Night King removes exactly one node from the tree and all the edges associated with it. Doing this splits the tree and forms a forest. The node which is removed is not a part of the forest.
+The root of a tree in the forest is the node in that tree which does not have a parent. We define the strength of the forest as the size of largest tree in forest.
+Jon Snow wants to minimize the strength of the forest. To do this he can perform the following operation at most once.
+He removes the edge between a node and its parent and inserts a new edge between this node and any other node in forest such that the total number of trees in forest remain same.
+For each node $ v $ you need to find the minimum value of strength of the forest formed when node $ v $ is removed.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains an integer $ n $ ( $ 1<=n<=10^{5} $ ) — the number of vertices in the tree. Each of the next $ n $ lines contains a pair of vertex indices $ u_{i} $ and $ v_{i} $ ( $ 1<=u_{i},v_{i}<=n $ ) where $ u_{i} $ is the parent of $ v_{i} $ . If $ u_{i}=0 $ then $ v_{i} $ is the root.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ line each containing a single integer. The $ i $ -th of them should be equal to minimum value of strength of forest formed when $ i $ -th node is removed and Jon Snow performs the operation described above at most once.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10
+0 1
+1 2
+1 3
+1 4
+2 5
+2 6
+3 7
+4 8
+4 9
+5 10
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+4
+5
+5
+5
+9
+9
+9
+9
+9
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+2 1
+0 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+1
+</code></pre>
+<h2>说明</h2>
+<div>The tree for first test case is depicted below. ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF768G/92e83d84eb7fd603b83b72b75cbb259bd68c6078.png) When you remove the first node, the tree splits to form the following forest. The strength of this forest is $ 4 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF768G/579396fe74309f35769274fb1d696feecaa9b72f.png) Jon Snow now changes the parent of vertex $ 10 $ from $ 5 $ to $ 3 $ . The strength of forest now becomes $ 3 $ . ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF768G/6a62e865869bd9e74df710a3e1a2ddb4d1a90d68.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

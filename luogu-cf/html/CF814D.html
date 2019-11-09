@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>An overnight dance in discotheque - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398211:EUmAyaP+Vapl1QxxMNy7VTpYbVezUmerevxPp/bRtbI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20crowdedness%20of%20the%20discotheque%20would%20never%20stop%20our%20friends%20from%20having%20fun%2C%20but%20a%20bit%20more%20spaciousness%20won%27t%20hurt%2C%20will%20it%3F%5Cn%5CnThe%20discotheque%20can%20be%20seen%20as%20an%20infinite%20%24%20xy%20%24%20-plane%2C%20in%20which%20there%20are%20a%20total%20of%20%24%20n%20%24%20dancers.%20Once%20someone%20starts%20moving%20around%2C%20they%20will%20move%20only%20inside%20their%20own%20movement%20range%2C%20which%20is%20a%20circular%20area%20%24%20C_%7Bi%7D%20%24%20described%20by%20a%20center%20%24%20%28x_%7Bi%7D%2Cy_%7Bi%7D%29%20%24%20and%20a%20radius%20%24%20r_%7Bi%7D%20%24%20.%20No%20two%20ranges%27%20borders%20have%20more%20than%20one%20common%20point%2C%20that%20is%20for%20every%20pair%20%24%20%28i%2Cj%29%20%24%20%28%20%24%201%3C%3Di%26lt%3Bj%3C%3Dn%20%24%20%29%20either%20ranges%20%24%20C_%7Bi%7D%20%24%20and%20%24%20C_%7Bj%7D%20%24%20are%20disjoint%2C%20or%20one%20of%20them%20is%20a%20subset%20of%20the%20other.%20Note%20that%20it%27s%20possible%20that%20two%20ranges%27%20borders%20share%20a%20single%20common%20point%2C%20but%20no%20two%20dancers%20have%20exactly%20the%20same%20ranges.%5Cn%5CnTsukihi%2C%20being%20one%20of%20them%2C%20defines%20the%20spaciousness%20to%20be%20the%20area%20covered%20by%20an%20odd%20number%20of%20movement%20ranges%20of%20dancers%20who%20are%20moving.%20An%20example%20is%20shown%20below%2C%20with%20shaded%20regions%20representing%20the%20spaciousness%20if%20everyone%20moves%20at%20the%20same%20time.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF814D%5C%2F5a49565ef74e61d7b40ab12eaa412e67e7b6d97c.png%29But%20no%20one%20keeps%20moving%20for%20the%20whole%20night%20after%20all%2C%20so%20the%20whole%20night%27s%20time%20is%20divided%20into%20two%20halves%20%5Cu2014%20before%20midnight%20and%20after%20midnight.%20Every%20dancer%20moves%20around%20in%20one%20half%2C%20while%20sitting%20down%20with%20friends%20in%20the%20other.%20The%20spaciousness%20of%20two%20halves%20are%20calculated%20separately%20and%20their%20sum%20should%2C%20of%20course%2C%20be%20as%20large%20as%20possible.%20The%20following%20figure%20shows%20an%20optimal%20solution%20to%20the%20example%20above.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF814D%5C%2F8da25989c38168302d4efff7470ec1e71f4e2366.png%29By%20different%20plans%20of%20who%20dances%20in%20the%20first%20half%20and%20who%20does%20in%20the%20other%2C%20different%20sums%20of%20spaciousness%20over%20two%20halves%20are%20achieved.%20You%20are%20to%20find%20the%20largest%20achievable%20value%20of%20this%20sum.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20a%20positive%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D1000%20%24%20%29%20%5Cu2014%20the%20number%20of%20dancers.%5Cn%5CnThe%20following%20%24%20n%20%24%20lines%20each%20describes%20a%20dancer%3A%20the%20%24%20i%20%24%20-th%20line%20among%20them%20contains%20three%20space-separated%20integers%20%24%20x_%7Bi%7D%20%24%20%2C%20%24%20y_%7Bi%7D%20%24%20and%20%24%20r_%7Bi%7D%20%24%20%28%20%24%20-10%5E%7B6%7D%3C%3Dx_%7Bi%7D%2Cy_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%2C%20%24%201%3C%3Dr_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29%2C%20describing%20a%20circular%20movement%20range%20centered%20at%20%24%20%28x_%7Bi%7D%2Cy_%7Bi%7D%29%20%24%20with%20radius%20%24%20r_%7Bi%7D%20%24%20.%22%2C%22outputFormat%22%3A%22Output%20one%20decimal%20number%20%5Cu2014%20the%20largest%20achievable%20sum%20of%20spaciousness%20over%20two%20halves%20of%20the%20night.%5Cn%5CnThe%20output%20is%20considered%20correct%20if%20it%20has%20a%20relative%20or%20absolute%20error%20of%20at%20most%20%24%2010%5E%7B-9%7D%20%24%20.%20Formally%2C%20let%20your%20answer%20be%20%24%20a%20%24%20%2C%20and%20the%20jury%27s%20answer%20be%20%24%20b%20%24%20.%20Your%20answer%20is%20considered%20correct%20if%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF814D%5C%2F103fdd279ae1fcd52ca9e69b75914ca39dd93497.png%29.%22%2C%22samples%22%3A%5B%5B%225%5Cn2%201%206%5Cn0%204%201%5Cn2%20-1%203%5Cn1%20-2%201%5Cn4%20-1%201%5Cn%22%2C%22138.23007676%5Cn%22%5D%2C%5B%228%5Cn0%200%201%5Cn0%200%202%5Cn0%200%203%5Cn0%200%204%5Cn0%200%205%5Cn0%200%206%5Cn0%200%207%5Cn0%200%208%5Cn%22%2C%22289.02652413%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20first%20sample%20corresponds%20to%20the%20illustrations%20in%20the%20legend.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F814%5C%2FD%22%2C%22id%22%3A%22814D%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu7b80%5Cu4ecb%5Cuff1a%5Cr%5Cn%5Cu6709n%5Cu4e2a%5Cu5706%5Cuff0c%5Cu5c06%5Cu5176%5Cu5206%5Cu4e3a%5Cu4e24%5Cu7ec4%5Cuff0c%5Cu6bcf%5Cu7ec4%5Cu4e2d%5Cuff0c%5Cu53ea%5Cu6709%5Cu5947%5Cu6570%5Cu6b21%5Cu8986%5Cu76d6%5Cu7684%5Cu624d%5Cu4f1a%5Cu7b97%5Cu5165%5Cu9762%5Cu79ef%5Cuff0c%5Cu6c42%5Cu53ef%5Cu80fd%5Cu7684%5Cu6700%5Cu5927%5Cu9762%5Cu79ef%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A31%2C%22totalAccepted%22%3A17%2C%22pid%22%3A%22CF814D%22%2C%22title%22%3A%22An%20overnight%20dance%20in%20discotheque%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22An%20overnight%20dance%20in%20discotheque%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>An overnight dance in discotheque</h1>
+<h2>题意翻译</h2>
+<div>## 题目简介：
+有n个圆，将其分为两组，每组中，只有奇数次覆盖的才会算入面积，求可能的最大面积。</div>
+<h2>题目描述</h2>
+<div>The crowdedness of the discotheque would never stop our friends from having fun, but a bit more spaciousness won't hurt, will it?
+The discotheque can be seen as an infinite $ xy $ -plane, in which there are a total of $ n $ dancers. Once someone starts moving around, they will move only inside their own movement range, which is a circular area $ C_{i} $ described by a center $ (x_{i},y_{i}) $ and a radius $ r_{i} $ . No two ranges' borders have more than one common point, that is for every pair $ (i,j) $ ( $ 1<=i&lt;j<=n $ ) either ranges $ C_{i} $ and $ C_{j} $ are disjoint, or one of them is a subset of the other. Note that it's possible that two ranges' borders share a single common point, but no two dancers have exactly the same ranges.
+Tsukihi, being one of them, defines the spaciousness to be the area covered by an odd number of movement ranges of dancers who are moving. An example is shown below, with shaded regions representing the spaciousness if everyone moves at the same time.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF814D/5a49565ef74e61d7b40ab12eaa412e67e7b6d97c.png)But no one keeps moving for the whole night after all, so the whole night's time is divided into two halves — before midnight and after midnight. Every dancer moves around in one half, while sitting down with friends in the other. The spaciousness of two halves are calculated separately and their sum should, of course, be as large as possible. The following figure shows an optimal solution to the example above.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF814D/8da25989c38168302d4efff7470ec1e71f4e2366.png)By different plans of who dances in the first half and who does in the other, different sums of spaciousness over two halves are achieved. You are to find the largest achievable value of this sum.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains a positive integer $ n $ ( $ 1<=n<=1000 $ ) — the number of dancers.
+The following $ n $ lines each describes a dancer: the $ i $ -th line among them contains three space-separated integers $ x_{i} $ , $ y_{i} $ and $ r_{i} $ ( $ -10^{6}<=x_{i},y_{i}<=10^{6} $ , $ 1<=r_{i}<=10^{6} $ ), describing a circular movement range centered at $ (x_{i},y_{i}) $ with radius $ r_{i} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one decimal number — the largest achievable sum of spaciousness over two halves of the night.
+The output is considered correct if it has a relative or absolute error of at most $ 10^{-9} $ . Formally, let your answer be $ a $ , and the jury's answer be $ b $ . Your answer is considered correct if ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF814D/103fdd279ae1fcd52ca9e69b75914ca39dd93497.png).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+2 1 6
+0 4 1
+2 -1 3
+1 -2 1
+4 -1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>138.23007676
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>8
+0 0 1
+0 0 2
+0 0 3
+0 0 4
+0 0 5
+0 0 6
+0 0 7
+0 0 8
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>289.02652413
+</code></pre>
+<h2>说明</h2>
+<div>The first sample corresponds to the illustrations in the legend.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

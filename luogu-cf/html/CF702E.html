@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Analysis of Pathes in Functional Graph - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396850:U7Xsx5pNrZgrG16mbLNl28fWNv/HldeuXcUHgAww6hY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20functional%20graph.%20It%20is%20a%20directed%20graph%2C%20in%20which%20from%20each%20vertex%20goes%20exactly%20one%20arc.%20The%20vertices%20are%20numerated%20from%200%20to%20%24%20n-1%20%24%20.%5Cn%5CnGraph%20is%20given%20as%20the%20array%20%24%20f_%7B0%7D%2Cf_%7B1%7D%2C...%2Cf_%7Bn-1%7D%20%24%20%2C%20where%20%24%20f_%7Bi%7D%20%24%20%5Cu2014%20the%20number%20of%20vertex%20to%20which%20goes%20the%20only%20arc%20from%20the%20vertex%20%24%20i%20%24%20.%20Besides%20you%20are%20given%20array%20with%20weights%20of%20the%20arcs%20%24%20w_%7B0%7D%2Cw_%7B1%7D%2C...%2Cw_%7Bn-1%7D%20%24%20%2C%20where%20%24%20w_%7Bi%7D%20%24%20%5Cu2014%20the%20arc%20weight%20from%20%24%20i%20%24%20to%20%24%20f_%7Bi%7D%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF702E%5C%2F3cc14f84d85a536673d301b325eadbda33e38d15.png%29The%20graph%20from%20the%20first%20sample%20test.Also%20you%20are%20given%20the%20integer%20%24%20k%20%24%20%28the%20length%20of%20the%20path%29%20and%20you%20need%20to%20find%20for%20each%20vertex%20two%20numbers%20%24%20s_%7Bi%7D%20%24%20and%20%24%20m_%7Bi%7D%20%24%20%2C%20where%3A%5Cn%5Cn-%20%24%20s_%7Bi%7D%20%24%20%5Cu2014%20the%20sum%20of%20the%20weights%20of%20all%20arcs%20of%20the%20path%20with%20length%20equals%20to%20%24%20k%20%24%20which%20starts%20from%20the%20vertex%20%24%20i%20%24%20%3B%5Cn-%20%24%20m_%7Bi%7D%20%24%20%5Cu2014%20the%20minimal%20weight%20from%20all%20arcs%20on%20the%20path%20with%20length%20%24%20k%20%24%20which%20starts%20from%20the%20vertex%20%24%20i%20%24%20.%5Cn%5CnThe%20length%20of%20the%20path%20is%20the%20number%20of%20arcs%20on%20this%20path.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%2Ck%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%2C1%3C%3Dk%3C%3D10%5E%7B10%7D%20%24%20%29.%20The%20second%20line%20contains%20the%20sequence%20%24%20f_%7B0%7D%2Cf_%7B1%7D%2C...%2Cf_%7Bn-1%7D%20%24%20%28%20%24%200%3C%3Df_%7Bi%7D%26lt%3Bn%20%24%20%29%20and%20the%20third%20%5Cu2014%20the%20sequence%20%24%20w_%7B0%7D%2Cw_%7B1%7D%2C...%2Cw_%7Bn-1%7D%20%24%20%28%20%24%200%3C%3Dw_%7Bi%7D%3C%3D10%5E%7B8%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%20%24%20lines%2C%20the%20pair%20of%20integers%20%24%20s_%7Bi%7D%20%24%20%2C%20%24%20m_%7Bi%7D%20%24%20in%20each%20line.%22%2C%22samples%22%3A%5B%5B%227%203%5Cn1%202%203%204%203%202%206%5Cn6%203%201%204%202%202%203%5Cn%22%2C%2210%201%5Cn8%201%5Cn7%201%5Cn10%202%5Cn8%202%5Cn7%201%5Cn9%203%5Cn%22%5D%2C%5B%224%204%5Cn0%201%202%203%5Cn0%201%202%203%5Cn%22%2C%220%200%5Cn4%201%5Cn8%202%5Cn12%203%5Cn%22%5D%2C%5B%225%203%5Cn1%202%203%204%200%5Cn4%201%202%2014%203%5Cn%22%2C%227%201%5Cn17%201%5Cn19%202%5Cn21%203%5Cn8%201%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F702%5C%2FE%22%2C%22id%22%3A%22702E%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu3011%5Cn%5Cn%5Cu6709%5Cu4e00%5Cu4e2an%5Cu4e2a%5Cu70b9n%5Cu6761%5Cu8fb9%5Cu7684%5Cu5e26%5Cu6743%5Cu6709%5Cu5411%5Cu56fe%5Cuff08%5Cu70b9%5Cu7f16%5Cu53f70~n-1%5Cuff09%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu6709%5Cu4e14%5Cu4ec5%5Cu6709%5Cu4e00%5Cu6761%5Cu51fa%5Cu8fb9%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu70b9i%5Cu6c42%5Cu51fa%5Cu7531i%5Cu51fa%5Cu53d1%5Cu7ecf%5Cu8fc7k%5Cu6761%5Cu8fb9%5Cuff0c%5Cu8fd9k%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu6700%5Cu5c0f%5Cu503c%5Cu548c%5Cu6743%5Cu503c%5Cu548c%5Cu3002%5Cn%20%20%20%20%5Cn%5Cu3010%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cu3011%5Cn%5Ct%5Cn%20%20%20%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%5Cu548ck%5Cu3002%5Cn%5Ct%5Cu7b2c%5Cu4e8c%5Cu884cn%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu7b2ci%5Cu4e2a%5Cu6570%5Cu8868%5Cu793ai%5Cu7684%5Cu51fa%5Cu8fb9%5Cu6307%5Cu5411%5Cu7684%5Cu70b9%5Cu3002%5Cn%5Ct%5Cu7b2c%5Cu4e09%5Cu884cn%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu7b2ci%5Cu4e2a%5Cu6570%5Cu8868%5Cu793ai%5Cu7684%5Cu51fa%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu3002%5Cn%20%20%20%20%5Cn%5Cu3010%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cu3011%5Cn%5Cn%5Cu5171n%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu8868%5Cu793a%5Cu7531%5Cu70b9i%5Cu51fa%5Cu53d1%5Cu7ecf%5Cu8fc7k%5Cu6761%5Cu8fb9%5Cuff0c%5Cu8fd9k%5Cu6761%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cu548c%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu6570%5Cu5219%5Cu8868%5Cu793a%5Cu6743%5Cu503c%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B43%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A199%2C%22totalAccepted%22%3A82%2C%22pid%22%3A%22CF702E%22%2C%22title%22%3A%22Analysis%20of%20Pathes%20in%20Functional%20Graph%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A58640%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9854%2C%22name%22%3A%22CF702E%20Analysis%20of%20Pathes%20in%20Functional%20Graph%22%2C%22slug%22%3A%22CF702E%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1452%22%2C%22title%22%3A%22Beauty%20Contest%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF746G%22%2C%22title%22%3A%22New%20Roads%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF700B%22%2C%22title%22%3A%22Connecting%20Universities%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF685B%22%2C%22title%22%3A%22Kay%20and%20Snowflake%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1085D%22%2C%22title%22%3A%22Minimum%20Diameter%20Tree%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Analysis%20of%20Pathes%20in%20Functional%20Graph%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Analysis of Pathes in Functional Graph</h1>
+<h2>题意翻译</h2>
+<div>题目描述】
+有一个n个点n条边的带权有向图（点编号0~n-1），每个点有且仅有一条出边，对于每个点i求出由i出发经过k条边，这k条边的权值最小值和权值和。
+【输入格式】
+第一行两个正整数n和k。
+第二行n个正整数，第i个数表示i的出边指向的点。
+第三行n个正整数，第i个数表示i的出边的权值。
+【输出格式】
+共n行，每行两个数，第一个数表示由点i出发经过k条边，这k条边的权值和，第二个数则表示权值的最小值。</div>
+<h2>题目描述</h2>
+<div>You are given a functional graph. It is a directed graph, in which from each vertex goes exactly one arc. The vertices are numerated from 0 to $ n-1 $ .
+Graph is given as the array $ f_{0},f_{1},...,f_{n-1} $ , where $ f_{i} $ — the number of vertex to which goes the only arc from the vertex $ i $ . Besides you are given array with weights of the arcs $ w_{0},w_{1},...,w_{n-1} $ , where $ w_{i} $ — the arc weight from $ i $ to $ f_{i} $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF702E/3cc14f84d85a536673d301b325eadbda33e38d15.png)The graph from the first sample test.Also you are given the integer $ k $ (the length of the path) and you need to find for each vertex two numbers $ s_{i} $ and $ m_{i} $ , where:
+- $ s_{i} $ — the sum of the weights of all arcs of the path with length equals to $ k $ which starts from the vertex $ i $ ;
+- $ m_{i} $ — the minimal weight from all arcs on the path with length $ k $ which starts from the vertex $ i $ .
+The length of the path is the number of arcs on this path.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n,k $ ( $ 1<=n<=10^{5},1<=k<=10^{10} $ ). The second line contains the sequence $ f_{0},f_{1},...,f_{n-1} $ ( $ 0<=f_{i}&lt;n $ ) and the third — the sequence $ w_{0},w_{1},...,w_{n-1} $ ( $ 0<=w_{i}<=10^{8} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n $ lines, the pair of integers $ s_{i} $ , $ m_{i} $ in each line.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 3
+1 2 3 4 3 2 6
+6 3 1 4 2 2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10 1
+8 1
+7 1
+10 2
+8 2
+7 1
+9 3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 4
+0 1 2 3
+0 1 2 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0 0
+4 1
+8 2
+12 3
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 3
+1 2 3 4 0
+4 1 2 14 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>7 1
+17 1
+19 2
+21 3
+8 1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

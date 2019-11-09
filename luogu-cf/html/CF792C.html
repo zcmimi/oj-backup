@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Divide by Three - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397904:xQiJrnrIQobLPZSI4DmVFMx7RlhYOmjZeZOFZ1aXEY0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22A%20positive%20integer%20number%20%24%20n%20%24%20is%20written%20on%20a%20blackboard.%20It%20consists%20of%20not%20more%20than%20%24%2010%5E%7B5%7D%20%24%20digits.%20You%20have%20to%20transform%20it%20into%20a%20beautiful%20number%20by%20erasing%20some%20of%20the%20digits%2C%20and%20you%20want%20to%20erase%20as%20few%20digits%20as%20possible.%5Cn%5CnThe%20number%20is%20called%20beautiful%20if%20it%20consists%20of%20at%20least%20one%20digit%2C%20doesn%27t%20have%20leading%20zeroes%20and%20is%20a%20multiple%20of%20%24%203%20%24%20.%20For%20example%2C%200%2C%2099%2C%2010110%20are%20beautiful%20numbers%2C%20and%2000%2C%2003%2C%20122%20are%20not.%5Cn%5CnWrite%20a%20program%20which%20for%20the%20given%20%24%20n%20%24%20will%20find%20a%20beautiful%20number%20such%20that%20%24%20n%20%24%20can%20be%20transformed%20into%20this%20number%20by%20erasing%20as%20few%20digits%20as%20possible.%20You%20can%20erase%20an%20arbitraty%20set%20of%20digits.%20For%20example%2C%20they%20don%27t%20have%20to%20go%20one%20after%20another%20in%20the%20number%20%24%20n%20%24%20.%5Cn%5CnIf%20it%27s%20impossible%20to%20obtain%20a%20beautiful%20number%2C%20print%20-1.%20If%20there%20are%20multiple%20answers%2C%20print%20any%20of%20them.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20%24%20n%20%24%20%5Cu2014%20a%20positive%20integer%20number%20without%20leading%20zeroes%20%28%20%24%201%3C%3Dn%26lt%3B10%5E%7B100000%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22Print%20one%20number%20%5Cu2014%20any%20beautiful%20number%20obtained%20by%20erasing%20as%20few%20as%20possible%20digits.%20If%20there%20is%20no%20answer%2C%20print%20%24%20-1%20%24%20.%22%2C%22samples%22%3A%5B%5B%221033%5Cn%22%2C%2233%5Cn%22%5D%2C%5B%2210%5Cn%22%2C%220%5Cn%22%5D%2C%5B%2211%5Cn%22%2C%22-1%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20it%20is%20enough%20to%20erase%20only%20the%20first%20digit%20to%20obtain%20a%20multiple%20of%20%24%203%20%24%20.%20But%20if%20we%20erase%20the%20first%20digit%2C%20then%20we%20obtain%20a%20number%20with%20a%20leading%20zero.%20So%20the%20minimum%20number%20of%20digits%20to%20be%20erased%20is%20two.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F792%5C%2FC%22%2C%22id%22%3A%22792C%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%20%23%23%5Cn%5Cu5728%5Cu4e00%5Cu4e2a%5Cu9ed1%5Cu677f%5Cu4e0a%5Cu5199%5Cu7740%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20_n_%20%5Cu3002%5Cu5b83%5Cu6709%5Cu4e0d%5Cu8d85%5Cu8fc710%5E5%5Cu4f4d%5Cuff08~~%5Cu8bdd%5Cu8bf4%5Cu9ed1%5Cu677f%5Cu4e0a%5Cu662f%5Cu600e%5Cu4e48%5Cu5199%5Cu4e0b%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu7684~~%5Cuff09%20%5Cu3002%5Cu8001%5Cu5e08%5Cu7ed9%5Cu4f60%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu4efb%5Cu52a1%5Cuff0c%5Cu628a%5Cu5b83~~%5Cu9b54~~%5Cu6539%5Cu6210%5Cu4e00%5Cu4e2a%20_%5Cu7f8e%5Cu4e3d%5Cu6570_%20%5Cuff0c%5Cu800c%5Cu4e14%5Cu56e0%5Cu4e3a%5Cu4f60%5Cu5f88%5Cu61d2%5Cuff0c%5Cu4f60%5Cu975e%5Cu5e38%5Cu975e%5Cu5e38%5Cu7684%5Cu60f3%5Cu7528%5Cu6700%5Cu5c0f%5Cu7684%5Cu6b65%5Cu6570%5Cu628a%5Cu5b83%5Cu6539%5Cu6210%5Cu4e00%5Cu4e2a%20_%5Cu7f8e%5Cu4e3d%5Cu6570_%20%5Cu3002%5Cn%5Cn_%5Cu7f8e%5Cu4e3d%5Cu6570_%20%5Cuff0c%5Cu5c31%5Cu662f%5Cu4e00%5Cu4e2a%5Cu4e0d%5Cu542b%5Cu524d%5Cu5bfc0%5Cuff0c%5Cu662f3%5Cu7684%5Cu500d%5Cu6570%5Cu4e14%5Cu4f4d%5Cu6570%5Cu5927%5Cu4e8e%5Cu96f6%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cu3002%5Cu4e3e%5Cu4e2a~~%5Cu6817%5Cu5b50~~%5Cu4f8b%5Cu5b50%5Cuff0c0%5Cu300199%5Cu300110110%5Cu90fd%5Cu662f%20_%5Cu7f8e%5Cu4e3d%5Cu6570_%20%5Cuff0c%5Cu4f4600%5Cu300103%5Cu3001122%5Cu90fd%5Cu4e0d%5Cu662f%5Cu3002%5Cn%5Cn%5Cu4f60%5Cu51b3%5Cu5b9a%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu6765%5Cu5e2e%5Cu52a9%5Cu4f60%5Cu7684%5Cu8001%5Cu5e08%5Cu6765%5Cu5b8c%5Cu6210%5Cu8fd9%5Cu4e2a%5Cu65e0%5Cu804a%5Cu7684%5Cu4efb%5Cu52a1%5Cu3002%5Cu4f60%5Cu7684%5Cu8981%5Cu6c42%5Cu5c31%5Cu662f%5Cu7528%5Cu6700%5Cu5c0f%5Cu7684%5Cu6b65%5Cu6570%5Cu6765%5Cu5b8c%5Cu6210%5Cu8fd9%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu3002%5Cn%5Cn%5Cu5982%5Cu679c%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu901a%5Cu8fc7%5Cu5220%5Cu6570%5Cu6765%5Cu8fbe%5Cu5230%20_%5Cu7f8e%5Cu4e3d%5Cu6570_%20%5Cuff0c%5Cu8f93%5Cu51fa-1%5Cu3002%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu4e2a%5Cu6700%5Cu4f18%5Cu89e3%5Cu7b54%5Cu6848%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu5373%5Cu53ef%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6570n%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu6570%5Cu5c0f%5Cu4e8e100000%5Cu4f4d%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu8f93%5Cu51fa%5Cu5220%5Cu6570%5Cu540e%5Cu7684%5Cu7f8e%5Cu4e3d%5Cu6570%5Cu3002%5Cu5982%5Cu679c%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu5f97%5Cu5230%5Cu7f8e%5Cu4e3d%5Cu6570%5Cuff0c%5Cu8f93%5Cu51fa-1%5Cu5373%5Cu53ef%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40deadpool123%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A30%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22CF792C%22%2C%22title%22%3A%22Divide%20by%20Three%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A49804%2C%22title%22%3A%22CF792C%20%5Cu7f8e%5Cu4e3d%5Cu6570%20%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9431%2C%22name%22%3A%22CF792C%20Divide%20by%20Three%22%2C%22slug%22%3A%22CF792C%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Divide%20by%20Three%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Divide by Three</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述 ##
+在一个黑板上写着一个正整数 _n_ 。它有不超过10^5位（~~话说黑板上是怎么写下这个数的~~） 。老师给你了一个任务，把它~~魔~~改成一个 _美丽数_ ，而且因为你很懒，你非常非常的想用最小的步数把它改成一个 _美丽数_ 。
+_美丽数_ ，就是一个不含前导0，是3的倍数且位数大于零的正整数。举个~~栗子~~例子，0、99、10110都是 _美丽数_ ，但00、03、122都不是。
+你决定写一个程序来帮助你的老师来完成这个无聊的任务。你的要求就是用最小的步数来完成这个任务。
+如果不可能通过删数来达到 _美丽数_ ，输出-1。如果有多个最优解答案，输出任意一个即可。
+## 输入输出格式
+### 输入格式：
+第一行包含一个数n，一个位数小于100000位的正整数。
+### 输出格式：
+输出删数后的美丽数。如果不可能得到美丽数，输出-1即可。
+感谢@deadpool123 提供的翻译</div>
+<h2>题目描述</h2>
+<div>A positive integer number $ n $ is written on a blackboard. It consists of not more than $ 10^{5} $ digits. You have to transform it into a beautiful number by erasing some of the digits, and you want to erase as few digits as possible.
+The number is called beautiful if it consists of at least one digit, doesn't have leading zeroes and is a multiple of $ 3 $ . For example, 0, 99, 10110 are beautiful numbers, and 00, 03, 122 are not.
+Write a program which for the given $ n $ will find a beautiful number such that $ n $ can be transformed into this number by erasing as few digits as possible. You can erase an arbitraty set of digits. For example, they don't have to go one after another in the number $ n $ .
+If it's impossible to obtain a beautiful number, print -1. If there are multiple answers, print any of them.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains $ n $ — a positive integer number without leading zeroes ( $ 1<=n&lt;10^{100000} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one number — any beautiful number obtained by erasing as few as possible digits. If there is no answer, print $ -1 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1033
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>33
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>10
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>11
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>-1
+</code></pre>
+<h2>说明</h2>
+<div>In the first example it is enough to erase only the first digit to obtain a multiple of $ 3 $ . But if we erase the first digit, then we obtain a number with a leading zero. So the minimum number of digits to be erased is two.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

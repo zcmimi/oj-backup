@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Anton and Chess - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397246:hyTlg545iGbSIQK3frqP+Akwx46kYipY61Bx3F9um7Q=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Anton%20likes%20to%20play%20chess.%20Also%2C%20he%20likes%20to%20do%20programming.%20That%20is%20why%20he%20decided%20to%20write%20the%20program%20that%20plays%20chess.%20However%2C%20he%20finds%20the%20game%20on%20%24%208%20%24%20to%20%24%208%20%24%20board%20to%20too%20simple%2C%20he%20uses%20an%20infinite%20one%20instead.%5Cn%5CnThe%20first%20task%20he%20faced%20is%20to%20check%20whether%20the%20king%20is%20in%20check.%20Anton%20doesn%27t%20know%20how%20to%20implement%20this%20so%20he%20asks%20you%20to%20help.%5Cn%5CnConsider%20that%20an%20infinite%20chess%20board%20contains%20one%20white%20king%20and%20the%20number%20of%20black%20pieces.%20There%20are%20only%20rooks%2C%20bishops%20and%20queens%2C%20as%20the%20other%20pieces%20are%20not%20supported%20yet.%20The%20white%20king%20is%20said%20to%20be%20in%20check%20if%20at%20least%20one%20black%20piece%20can%20reach%20the%20cell%20with%20the%20king%20in%20one%20move.%5Cn%5CnHelp%20Anton%20and%20write%20the%20program%20that%20for%20the%20given%20position%20determines%20whether%20the%20white%20king%20is%20in%20check.%5Cn%5CnRemainder%2C%20on%20how%20do%20chess%20pieces%20move%3A%5Cn%5Cn-%20Bishop%20moves%20any%20number%20of%20cells%20diagonally%2C%20but%20it%20can%27t%20%5C%22leap%5C%22%20over%20the%20occupied%20cells.%5Cn-%20Rook%20moves%20any%20number%20of%20cells%20horizontally%20or%20vertically%2C%20but%20it%20also%20can%27t%20%5C%22leap%5C%22%20over%20the%20occupied%20cells.%5Cn-%20Queen%20is%20able%20to%20move%20any%20number%20of%20cells%20horizontally%2C%20vertically%20or%20diagonally%2C%20but%20it%20also%20can%27t%20%5C%22leap%5C%22.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D500000%20%24%20%29%20%5Cu2014%20the%20number%20of%20black%20pieces.%5Cn%5CnThe%20second%20line%20contains%20two%20integers%20%24%20x_%7B0%7D%20%24%20and%20%24%20y_%7B0%7D%20%24%20%28%20%24%20-10%5E%7B9%7D%3C%3Dx_%7B0%7D%2Cy_%7B0%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20coordinates%20of%20the%20white%20king.%5Cn%5CnThen%20follow%20%24%20n%20%24%20lines%2C%20each%20of%20them%20contains%20a%20character%20and%20two%20integers%20%24%20x_%7Bi%7D%20%24%20and%20%24%20y_%7Bi%7D%20%24%20%28%20%24%20-10%5E%7B9%7D%3C%3Dx_%7Bi%7D%2Cy_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20type%20of%20the%20%24%20i%20%24%20-th%20piece%20and%20its%20position.%20Character%20%27B%27%20stands%20for%20the%20bishop%2C%20%27R%27%20for%20the%20rook%20and%20%27Q%27%20for%20the%20queen.%20It%27s%20guaranteed%20that%20no%20two%20pieces%20occupy%20the%20same%20position.%22%2C%22outputFormat%22%3A%22The%20only%20line%20of%20the%20output%20should%20contains%20%5C%22YES%5C%22%20%28without%20quotes%29%20if%20the%20white%20king%20is%20in%20check%20and%20%5C%22NO%5C%22%20%28without%20quotes%29%20otherwise.%22%2C%22samples%22%3A%5B%5B%222%5Cn4%202%5CnR%201%201%5CnB%201%205%5Cn%22%2C%22YES%5Cn%22%5D%2C%5B%222%5Cn4%202%5CnR%203%203%5CnB%201%205%5Cn%22%2C%22NO%5Cn%22%5D%5D%2C%22hint%22%3A%22Picture%20for%20the%20first%20sample%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF734D%5C%2F3408090bb38d14bd7245478ef4aa728172888335.png%29%20White%20king%20is%20in%20check%2C%20because%20the%20black%20bishop%20can%20reach%20the%20cell%20with%20the%20white%20king%20in%20one%20move.%20The%20answer%20is%20%5C%22YES%5C%22.Picture%20for%20the%20second%20sample%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF734D%5C%2F86e2eb5f33f5f5d3c8862bec94e786d4b0082afe.png%29%20Here%20bishop%20can%27t%20reach%20the%20cell%20with%20the%20white%20king%2C%20because%20his%20path%20is%20blocked%20by%20the%20rook%2C%20and%20the%20bishop%20cant%20%5C%22leap%5C%22%20over%20it.%20Rook%20can%27t%20reach%20the%20white%20king%2C%20because%20it%20can%27t%20move%20diagonally.%20Hence%2C%20the%20king%20is%20not%20in%20check%20and%20the%20answer%20is%20%5C%22NO%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F734%5C%2FD%22%2C%22id%22%3A%22734D%22%7D%2C%22translation%22%3A%22%23%23%20%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%2A%2A%5Cr%5Cn%5Cr%5CnAnton%5Cu559c%5Cu6b22%5Cu4e0b%5Cu68cb%5Cu4e0e%5Cu7f16%5Cu7a0b%5Cuff0c%5Cu6240%5Cu4ee5%5Cu4ed6%5Cu51b3%5Cu5b9a%5Cu5199%5Cu4e00%5Cu4e2a%5Cu56fd%5Cu9645%5Cu8c61%5Cu68cb%5Cu6e38%5Cu620f%5Cu3002%5Cu7136%5Cu800c%5Cuff0c%5Cu4ed6%5Cu8ba4%5Cu4e3a8x8%5Cu7684%5Cu68cb%5Cu76d8%5Cu592a%5Cu7b80%5Cu5355%5Cu4e86%5Cuff0c%5Cu56e0%5Cu6b64%5Cu8fd9%5Cu4e2a%5Cu68cb%5Cu76d8%5Cu662f%5Cu65e0%5Cu9650%5Cu5927%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4ed6%5Cu7684%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu662f%5Cu68c0%5Cu67e5%5Cu5f53%5Cu524d%5Cu72b6%5Cu6001%5Cu4e0b%5Cu662f%5Cu5426%5Cu88ab%5Cu5c06%5Cu519b%5Cuff0c%5Cu4ed6%5Cu5e76%5Cu4e0d%5Cu77e5%5Cu9053%5Cu5982%5Cu4f55%5Cu5b9e%5Cu73b0%5Cu8fd9%5Cu70b9%5Cuff0c%5Cu56e0%5Cu6b64%5Cu5411%5Cu4f60%5Cu6c42%5Cu52a9%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu6709%5Cu4e00%5Cu4e2a%5Cu767d%5Cu8272%5Cu65b9%5Cu7684%5Cu738b%5Cu4e0en%5Cu4e2a%5Cu9ed1%5Cu8272%5Cu65b9%5Cu7684%5Cu68cb%5Cu5b50%5Cuff0c%5Cu5b83%5Cu4eec%5Cu4ec5%5Cu7531%5Cu8f66%5Cu3001%5Cu8c61%5Cu548c%5Cu540e%5Cu7ec4%5Cu6210%5Cu3002%5Cu5f53%5Cu81f3%5Cu5c11%5Cu4e00%5Cu4e2a%5Cu9ed1%5Cu8272%5Cu65b9%5Cu7684%5Cu68cb%5Cu5b50%5Cu53ef%5Cu4ee5%5Cu5728%5Cu4e00%5Cu6b65%5Cu5185%5Cu79fb%5Cu52a8%5Cu5230%5Cu767d%5Cu8272%5Cu65b9%5Cu738b%5Cu6240%5Cu5728%5Cu7684%5Cu683c%5Cu5b50%5Cu65f6%5Cu88ab%5Cu89c6%5Cu4e3a%5Cu5c06%5Cu519b%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5e2e%5Cu52a9Anton%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cuff0c%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu6240%5Cu6709%5Cu68cb%5Cu5b50%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu65f6%5Cu5224%5Cu5b9a%5Cu767d%5Cu8272%5Cu65b9%5Cu7684%5Cu738b%5Cu662f%5Cu5426%5Cu88ab%5Cu5c06%5Cu519b%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4ee5%5Cu4e0b%5Cu662f%5Cu5404%5Cu79cd%5Cu68cb%5Cu5b50%5Cu7684%5Cu79fb%5Cu52a8%5Cu65b9%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%5Cu8c61%5Cu53ef%5Cu4ee5%5Cu659c%5Cu7740%5Cu79fb%5Cu52a8%5Cuff0c%5Cu683c%5Cu5b50%5Cu4e0d%5Cu9650%5Cu3002%5Cr%5Cn-%20%5Cu8f66%5Cu53ef%5Cu4ee5%5Cu6c34%5Cu5e73%5Cu6216%5Cu5782%5Cu76f4%5Cu79fb%5Cu52a8%5Cuff0c%5Cu683c%5Cu5b50%5Cu4e0d%5Cu9650%5Cu3002%5Cr%5Cn-%20%5Cu540e%5Cu53ef%5Cu4ee5%5Cu6c34%5Cu5e73%5Cu3001%5Cu5782%5Cu76f4%5Cu6216%5Cu659c%5Cu7740%5Cu79fb%5Cu52a8%5Cuff0c%5Cu683c%5Cu5b50%5Cu4e0d%5Cu9650%5Cu3002%5Cr%5Cn-%20%5Cu6240%5Cu6709%5Cu7684%5Cu68cb%5Cu5b50%5Cu4e0d%5Cu80fd%5Cu8d8a%5Cu8fc7%5Cu5df2%5Cu7ecf%5Cu5360%5Cu7528%5Cu7684%5Cu683c%5Cu5b50%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%2A%2A%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%281%3C%3Dn%3C%3D500%20000%29%5Cuff0c%5Cu4ee3%5Cu8868%5Cu9ed1%5Cu8272%5Cu65b9%5Cu68cb%5Cu5b50%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570x0%5Cu548cy0%28-10%5E9%3C%3Dx0%2Cy0%3C%3D10%5E9%29%5Cuff0c%5Cu4ee3%5Cu8868%5Cu767d%5Cu8272%5Cu65b9%5Cu738b%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684n%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu548c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570xi%5Cu548cyi%28-10%5E9%3C%3Dxi%2Cyi%3C%3D10%5E9%29%5Cuff0c%5Cu5b57%5Cu7b26%27B%27%5Cu4ee3%5Cu8868%5Cu8c61%5Cuff0c%27R%27%5Cu4ee3%5Cu8868%5Cu8f66%5Cuff0c%27Q%27%5Cu4ee3%5Cu8868%5Cu540e%5Cuff0cxi%5Cu548cyi%5Cu4ee3%5Cu8868%5Cu5b83%5Cu4eec%5Cu5728%5Cu68cb%5Cu76d8%5Cu4e0a%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cu9898%5Cu76ee%5Cu786e%5Cu4fdd%5Cu6240%5Cu6709%5Cu7684%5Cu68cb%5Cu5b50%5Cu4e0d%5Cu4f1a%5Cu51fa%5Cu73b0%5Cu5728%5Cu540c%5Cu6837%5Cu7684%5Cu4f4d%5Cu7f6e%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu7531%5Cu4e00%5Cu884c%5Cu7ec4%5Cu6210%5Cuff1a%5Cu5982%5Cu679c%5Cu88ab%5Cu5c06%5Cu519b%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa%5C%22YES%5C%22%5Cuff08%5Cu4e0d%5Cu5e26%5Cu5f15%5Cu53f7%5Cuff09%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%5C%22NO%5C%22%5Cuff08%5Cu4e0d%5Cu5e26%5Cu5f15%5Cu53f7%5Cuff09%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A11%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF734D%22%2C%22title%22%3A%22Anton%20and%20Chess%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Anton%20and%20Chess%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Anton and Chess</h1>
+<h2>题意翻译</h2>
+<div>## **题目描述**
+Anton喜欢下棋与编程，所以他决定写一个国际象棋游戏。然而，他认为8x8的棋盘太简单了，因此这个棋盘是无限大的。
+他的第一个任务是检查当前状态下是否被将军，他并不知道如何实现这点，因此向你求助。
+棋盘上有一个白色方的王与n个黑色方的棋子，它们仅由车、象和后组成。当至少一个黑色方的棋子可以在一步内移动到白色方王所在的格子时被视为将军。
+帮助Anton写一个程序，在给定所有棋子的位置时判定白色方的王是否被将军。
+以下是各种棋子的移动方式：
+- 象可以斜着移动，格子不限。
+- 车可以水平或垂直移动，格子不限。
+- 后可以水平、垂直或斜着移动，格子不限。
+- 所有的棋子不能越过已经占用的格子。
+## **输入输出格式**
+### 输入格式：
+第一行包含一个整数n(1<=n<=500 000)，代表黑色方棋子的数量。
+第二行包含两个整数x0和y0(-10^9<=x0,y0<=10^9)，代表白色方王的坐标。
+接下来的n行，每行包含一个字符和两个整数xi和yi(-10^9<=xi,yi<=10^9)，字符'B'代表象，'R'代表车，'Q'代表后，xi和yi代表它们在棋盘上的坐标。题目确保所有的棋子不会出现在同样的位置。
+### 输出格式：
+输出由一行组成：如果被将军，则输出"YES"（不带引号），否则输出"NO"（不带引号）。</div>
+<h2>题目描述</h2>
+<div>Anton likes to play chess. Also, he likes to do programming. That is why he decided to write the program that plays chess. However, he finds the game on $ 8 $ to $ 8 $ board to too simple, he uses an infinite one instead.
+The first task he faced is to check whether the king is in check. Anton doesn't know how to implement this so he asks you to help.
+Consider that an infinite chess board contains one white king and the number of black pieces. There are only rooks, bishops and queens, as the other pieces are not supported yet. The white king is said to be in check if at least one black piece can reach the cell with the king in one move.
+Help Anton and write the program that for the given position determines whether the white king is in check.
+Remainder, on how do chess pieces move:
+- Bishop moves any number of cells diagonally, but it can't "leap" over the occupied cells.
+- Rook moves any number of cells horizontally or vertically, but it also can't "leap" over the occupied cells.
+- Queen is able to move any number of cells horizontally, vertically or diagonally, but it also can't "leap".</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ n $ ( $ 1<=n<=500000 $ ) — the number of black pieces.
+The second line contains two integers $ x_{0} $ and $ y_{0} $ ( $ -10^{9}<=x_{0},y_{0}<=10^{9} $ ) — coordinates of the white king.
+Then follow $ n $ lines, each of them contains a character and two integers $ x_{i} $ and $ y_{i} $ ( $ -10^{9}<=x_{i},y_{i}<=10^{9} $ ) — type of the $ i $ -th piece and its position. Character 'B' stands for the bishop, 'R' for the rook and 'Q' for the queen. It's guaranteed that no two pieces occupy the same position.</div>
+<h3>输出格式</h3>
+<br />
+<div>The only line of the output should contains "YES" (without quotes) if the white king is in check and "NO" (without quotes) otherwise.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+4 2
+R 1 1
+B 1 5
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2
+4 2
+R 3 3
+B 1 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>NO
+</code></pre>
+<h2>说明</h2>
+<div>Picture for the first sample:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF734D/3408090bb38d14bd7245478ef4aa728172888335.png) White king is in check, because the black bishop can reach the cell with the white king in one move. The answer is "YES".Picture for the second sample:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF734D/86e2eb5f33f5f5d3c8862bec94e786d4b0082afe.png) Here bishop can't reach the cell with the white king, because his path is blocked by the rook, and the bishop cant "leap" over it. Rook can't reach the white king, because it can't move diagonally. Hence, the king is not in check and the answer is "NO".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

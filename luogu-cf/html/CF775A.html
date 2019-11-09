@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>University Schedule - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397758:p067yDJQKE+Pe+0m120Udjwwfj9+m3RwK86fpXwMUsI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20this%20problem%20your%20task%20is%20to%20come%20up%20with%20a%20week%20schedule%20of%20classes%20in%20university%20for%20professors%20and%20student%20groups.%20Consider%20that%20there%20are%20%24%206%20%24%20educational%20days%20in%20week%20and%20maximum%20number%20of%20classes%20per%20educational%20day%20is%20%24%207%20%24%20%28classes%20numerated%20from%20%24%201%20%24%20to%20%24%207%20%24%20for%20each%20educational%20day%29.%5Cn%5CnIt%20is%20known%20that%20in%20university%20%24%20n%20%24%20students%20study%2C%20%24%20m%20%24%20professors%20work%20and%20there%20are%20%24%20a%20%24%20classrooms%20for%20conducting%20classes.%20Also%20you%20have%20two-dimensional%20array%20with%20%24%20n%5Cu00d7m%20%24%20size%20which%20contains%20the%20following%20information.%20The%20number%20which%20stays%20in%20%24%20i%20%24%20-th%20row%20and%20%24%20j%20%24%20-th%20column%20equals%20to%20the%20number%20of%20classes%20which%20professor%20%24%20j%20%24%20must%20conduct%20with%20the%20group%20%24%20i%20%24%20in%20a%20single%20week.%20The%20schedule%20which%20you%20output%20must%20satisfy%20to%20array%20described%20above.%5Cn%5CnThere%20are%20several%20other%20conditions%20for%20schedule.%20Single%20professor%20can%20not%20conduct%20more%20than%20one%20class.%20Similarly%2C%20single%20student%20group%20can%20not%20be%20on%20more%20than%20one%20class%20at%20the%20same%20time.%5Cn%5CnLet%20define%20a%20fatigue%20function%20for%20professors%20and%20student%20groups.%20Call%20this%20function%20%24%20f%20%24%20.%5Cn%5CnTo%20single%20professor%20fatigue%20calculated%20in%20the%20following%20way.%20Let%20look%20on%20classes%20which%20this%20professor%20must%20conduct%20in%20each%20of%20the%20%24%206%20%24%20-th%20educational%20days.%20Let%20%24%20x%20%24%20be%20the%20number%20of%20class%20which%20professor%20will%20firstly%20conduct%20in%20day%20%24%20i%20%24%20and%20let%20%24%20y%20%24%20%5Cu2014%20the%20last%20class%20for%20this%20professor.%20Then%20the%20value%20%24%20%282%2By-x%2B1%29%5Cu00b7%282%2By-x%2B1%29%20%24%20must%20be%20added%20to%20professor%27s%20fatigue.%20If%20professor%20has%20no%20classes%20in%20day%20%24%20i%20%24%20%2C%20nothing%20is%20added%20to%20professor%27s%20fatigue.%5Cn%5CnFor%20single%20student%20group%20fatigue%20is%20calculated%20similarly.%20Lets%20look%20at%20classes%20of%20this%20group%20in%20each%20of%20the%20%24%206%20%24%20educational%20days.%20Let%20%24%20x%20%24%20be%20the%20number%20of%20first%20class%20for%20this%20group%20on%20day%20%24%20i%20%24%20and%20let%20%24%20y%20%24%20%5Cu2014%20the%20last%20class%20for%20this%20group.%20Then%20the%20value%20%24%20%282%2By-x%2B1%29%5Cu00b7%282%2By-x%2B1%29%20%24%20must%20be%20added%20to%20this%20group%27s%20fatigue.%20If%20student%20group%20has%20no%20classes%20in%20day%20%24%20i%20%24%20%2C%20nothing%20is%20added%20to%20group%27s%20fatigue.%5Cn%5CnSo%20the%20value%20of%20function%20%24%20f%20%24%20equals%20to%20total%20%7Bfatigue%7D%20for%20all%20%24%20n%20%24%20student%20groups%20and%20for%20all%20%24%20m%20%24%20professors.%5Cn%5CnYour%20task%20is%20to%20come%20up%20with%20such%20a%20schedule%20which%20minimizes%20the%20value%20of%20function%20%24%20f%20%24%20.%5Cn%5CnJury%20prepared%20some%20solution%20of%20this%20problem.%20For%20each%20test%20you%20will%20get%20a%20certain%20number%20of%20points.%20It%20equals%20to%20result%20of%20division%20of%20the%20value%20of%20function%20%24%20f%20%24%20from%20the%20jury%20solution%20by%20the%20value%20of%20function%20%24%20f%20%24%20for%20schedule%20which%20your%20program%20output%20%28i.%20e.%20the%20smaller%20value%20of%20%7Bfatigue%7D%20function%20your%20program%20find%20the%20more%20points%20you%20will%20get%29%2C%20multiplied%20by%20%24%20100%20%24%20.%20In%20the%20other%20words%20if%20the%20value%20of%20%24%20f%20%24%20for%20jury%20solution%20equals%20to%20%24%20p%20%24%20and%20for%20your%20solution%20%5Cu2014%20to%20%24%20q%20%24%20%2C%20you%20will%20get%20%24%20100%5Cu00b7p%5C%2Fq%20%24%20points%20%28note%2C%20that%20the%20number%20of%20points%20is%20a%20real%20number%29.%20The%20points%20will%20be%20added%20together%20for%20all%20tests.%20The%20goal%20is%20to%20score%20as%20many%20points%20as%20possible.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20a%20%24%20%28%20%24%201%3C%3Dn%2Cm%2Ca%3C%3D60%20%24%20%29%20%5Cu2014%20the%20number%20of%20groups%2C%20the%20number%20of%20professors%20and%20the%20number%20of%20classrooms.%5Cn%5CnEach%20of%20the%20following%20%24%20n%20%24%20lines%20contains%20%24%20m%20%24%20integers%20from%20%24%200%20%24%20to%20%24%2024%20%24%20%5Cu2014%20%24%20j%20%24%20-th%20number%20in%20%24%20i%20%24%20-th%20line%20equals%20to%20the%20number%20of%20classes%20with%20the%20professor%20%24%20j%20%24%20must%20conduct%20with%20the%20%24%20i%20%24%20-th%20student%20group.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20number%20of%20classes%20in%20week%20for%20each%20professor%20and%20for%20each%20student%20group%20does%20not%20exceed%20%24%2024%20%24%20.%20Also%20guaranteed%20that%20the%20total%20number%20of%20classes%20in%20week%20does%20not%20exceed%20%24%2075%20%24%20%25%20from%20a%20maximum%20number%20of%20classes%20which%20can%20be%20conducted%20based%20on%20the%20number%20of%20classrooms.%20For%20all%20tests%20there%20is%20at%20least%20one%20schedule%20satisfying%20all%20described%20conditions.%22%2C%22outputFormat%22%3A%22In%20the%20first%20line%20print%20the%20minimized%20value%20of%20function%20%24%20f%20%24%20.%5Cn%5CnAfter%20that%20print%20blank%20line.%5Cn%5CnAfter%20that%20print%20the%20schedule%20for%20each%20student%20group%20in%20increasing%20order%20of%20group%20number.%20For%20each%20student%20group%20print%20%24%207%20%24%20lines.%20Each%20line%20must%20contains%20%24%206%20%24%20numbers.%20Let%20the%20number%20at%20%24%20i%20%24%20-th%20line%20and%20%24%20j%20%24%20-th%20column%20equals%20to%20%24%20x%20%24%20.%20If%20in%20%24%20j%20%24%20-th%20day%20current%20group%20has%20no%20class%20number%20%24%20i%20%24%20%2C%20%24%20x%20%24%20must%20be%20equals%20to%20zero.%20Otherwise%20%24%20x%20%24%20must%20be%20equals%20to%20the%20number%20of%20professor%20who%20will%20conduct%20the%20corresponding%20class%20with%20the%20corresponding%20student%20group.%5Cn%5CnThe%20number%20of%20classes%20which%20will%20be%20conducted%20simultaneously%20must%20not%20exceeds%20the%20number%20of%20classrooms%20%24%20a%20%24%20.%5Cn%5CnSeparate%20the%20description%20of%20the%20schedules%20for%20groups%20with%20a%20blank%20line.%22%2C%22samples%22%3A%5B%5B%223%203%201%5Cn1%200%200%5Cn0%201%200%5Cn0%200%201%5Cn%22%2C%2254%5Cn%5Cn1%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%5Cn0%200%200%200%200%200%20%5Cn2%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn3%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%22%5D%2C%5B%223%201%201%5Cn1%5Cn1%5Cn1%5Cn%22%2C%2252%5Cn%5Cn1%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%5Cn0%200%200%200%200%200%20%5Cn1%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn1%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%22%5D%2C%5B%225%207%2010%5Cn1%203%206%200%201%202%204%5Cn0%203%200%206%205%201%204%5Cn3%205%201%202%203%202%204%5Cn2%203%201%201%204%201%202%5Cn2%204%203%202%204%203%202%5Cn%22%2C%221512%5Cn%5Cn0%200%206%200%200%202%20%5Cn0%207%206%203%203%207%20%5Cn3%201%202%203%202%207%20%5Cn3%207%200%200%200%200%20%5Cn5%203%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%5Cn0%200%204%200%207%206%20%5Cn4%205%207%204%205%205%20%5Cn7%202%204%204%205%205%20%5Cn7%202%200%204%200%200%20%5Cn0%202%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%5Cn4%200%207%202%205%207%20%5Cn5%200%202%205%207%201%20%5Cn2%204%201%202%207%201%20%5Cn2%203%200%200%200%200%20%5Cn0%206%200%200%200%200%20%5Cn0%206%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%5Cn0%200%200%205%203%205%20%5Cn0%202%204%207%202%206%20%5Cn0%205%207%200%200%200%20%5Cn1%205%201%200%200%200%20%5Cn2%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%5Cn0%200%205%207%202%203%20%5Cn0%201%203%202%206%203%20%5Cn5%207%206%205%206%204%20%5Cn5%204%202%202%200%200%20%5Cn1%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn0%200%200%200%200%200%20%5Cn%22%5D%5D%2C%22hint%22%3A%22During%20the%20main%20part%20of%20the%20competition%20%28one%20week%29%20you%20solution%20will%20be%20judged%20on%20%24%20100%20%24%20preliminary%20tests.%20The%20first%20%24%2010%20%24%20preliminary%20tests%20are%20available%20for%20download%20by%20a%20link%20%3Chttp%3A%5C%2F%5C%2Fassets.codeforces.com%5C%2Ffiles%5C%2Fvk%5C%2Fvkcup-2017-wr2-materials-v1.tar.gz%3E.%5Cn%5CnAfter%20the%20end%20of%20the%20contest%20%28i.e.%2C%20a%20week%20after%20its%20start%29%20the%20last%20solution%20you%20sent%20%28having%20positive%20score%29%20will%20be%20chosen%20to%20be%20launched%20on%20the%20extended%20final%20tests.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B10000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F775%5C%2FA%22%2C%22id%22%3A%22775A%22%7D%2C%22translation%22%3A%22%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu4e2d%5Cu4f60%5Cu4f1a%5Cu770b%5Cu5230%5Cu4e00%5Cu5f20%5Cu5927%5Cu5b66%5Cu8bfe%5Cu7a0b%5Cu8868%5Cuff08%5Cu5305%5Cu62ec%5Cu6559%5Cu6388%5Cu548c%5Cu5b66%5Cu751f%5Cu7ec4%5Cuff09%5Cu3002%5Cu4e00%5Cu5468%5Cu67096%5Cu5929%5Cu4f1a%5Cu4e0a%5Cu8bfe%5Cuff0c%5Cu6bcf%5Cu5929%5Cu6700%5Cu591a%5Cu4e0a7%5Cu8282%5Cu8bfe%5Cuff08%5Cu4e00%5Cu5929%5Cu4e2d%5Cu7684%5Cu6bcf%5Cu4e00%5Cu8282%5Cu8bfe%5Cu4ece1~7%5Cu6807%5Cu53f7%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5df2%5Cu77e5%5Cu6b64%5Cu5927%5Cu5b66%5Cu5185%5Cu6709n%5Cu540d%5Cu5b66%5Cu751f%5Cuff08%5Cu8bd1%5Cu6ce8%5Cuff1a%5Cu662f%5Cu5b66%5Cu751f%5Cu7ec4%5Cu5417%5Cuff1f%5Cuff09%5Cuff0cm%5Cu540d%5Cu6559%5Cu6388%5Cuff0ca%5Cu4e2a%5Cu6559%5Cu5ba4%5Cu3002%5Cu4f60%5Cu4f1a%5Cu5f97%5Cu5230%5Cu4e00%5Cu4efd%5Cu4e8c%5Cu7ef4%5Cu7684%5Cu8868%5Cu683c%5Cuff08n%5Cu00d7m%5Cu5927%5Cu5c0f%5Cuff09%5Cuff0c%5Cu5185%5Cu5bb9%5Cu5e03%5Cu7f6e%5Cu5982%5Cu4e0b%5Cuff1a%5Cu7b2ci%5Cu884c%5Cu7b2cj%5Cu5217%5Cu7684%5Cu6570%5Cu503c%5Cu5c31%5Cu662f%5Cu7b2cj%5Cu53f7%5Cu6559%5Cu6388%5Cu5728%5Cu4e00%5Cu5468%5Cu5185%5Cu8981%5Cu7ed9%5Cu7b2ci%5Cu4e2a%5Cu5b66%5Cu751f%5Cu7ec4%5Cu4e0a%5Cu7684%5Cu8bfe%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu6240%5Cu8f93%5Cu51fa%5Cu7684%5Cu8bfe%5Cu7a0b%5Cu8868%5Cu5fc5%5Cu987b%5Cu8981%5Cu6ee1%5Cu8db3%5Cu4e0a%5Cu8ff0%5Cu5b89%5Cu6392%5Cu8981%5Cu6c42%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8fd9%5Cu91cc%5Cu8fd8%5Cu6709%5Cu4e00%5Cu4e9b%5Cu5176%5Cu4ed6%5Cu8bfe%5Cu7a0b%5Cu8868%5Cu5e94%5Cu6ee1%5Cu8db3%5Cu7684%5Cu6761%5Cu4ef6%5Cuff1a%5Cu540c%5Cu4e00%5Cu4e2a%5Cu6559%5Cu6388%5Cu540c%5Cu4e00%5Cu65f6%5Cu95f4%5Cu53ea%5Cu80fd%5Cu4e0a1%5Cu8282%5Cu8bfe%5Cuff0c%5Cu76f8%5Cu4f3c%5Cu7684%5Cuff0c%5Cu540c%5Cu4e00%5Cu4e2a%5Cu5b66%5Cu751f%5Cu7ec4%5Cu540c%5Cu4e00%5Cu65f6%5Cu95f4%5Cu4e5f%5Cu53ea%5Cu80fd%5Cu542c1%5Cu8282%5Cu8bfe%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu5b9a%5Cu4e49%5Cu4e00%5Cu4e2a%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570f%5Cuff08fatigue%20function%5Cuff09%5Cuff08%5Cu9002%5Cu7528%5Cu4e8e%5Cu6559%5Cu6388%5Cu548c%5Cu5b66%5Cu751f%5Cu7ec4%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu6559%5Cu6388%5Cu6765%5Cu8bf4%5Cuff0c%5Cu4ed6%5Cu7684%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570%5Cu5e94%5Cu901a%5Cu8fc7%5Cu5982%5Cu4e0b%5Cu65b9%5Cu5f0f%5Cu8ba1%5Cu7b97%5Cuff1a%5Cu57286%5Cu5929%5Cu5f53%5Cu4e2d%5Cu7684%5Cu7b2ci%5Cu5929%5Cuff0cx%5Cu4ee3%5Cu8868%5Cu90a3%5Cu5929%5Cu6559%5Cu6388%5Cu4e0a%5Cu7684%5Cu7b2c%5Cu4e00%5Cu8282%5Cu8bfe%5Cu7684%5Cu6807%5Cu53f7%5Cuff0cy%5Cu4ee3%5Cu8868%5Cu4ed6%5Cu4e0a%5Cu7684%5Cu6700%5Cu540e%5Cu4e00%5Cu8282%5Cu8bfe%5Cu7684%5Cu6807%5Cu53f7%5Cuff0c%5Cu5219%5Cu90a3%5Cu4e00%5Cu5929%5Cu6559%5Cu6388%5Cu7684%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570%5Cu589e%5Cu52a0%5Cu4e86%282%2By-x%2B1%29%5Cu00d7%282%2By-x%2B1%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5f53%5Cu7136%5Cu5982%5Cu679c%5Cu90a3%5Cu5929%5Cu6559%5Cu6388%5Cu6ca1%5Cu6709%5Cu8bfe%5Cuff0c%5Cu4ed6%5Cu7684%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570%5Cu4e0d%5Cu4f1a%5Cu53d8%5Cu5316%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu76f8%5Cu4f3c%5Cu7684%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu5b66%5Cu751f%5Cu7ec4%5Cu6765%5Cu8bf4%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu7684%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570%5Cu5e94%5Cu901a%5Cu8fc7%5Cu5982%5Cu4e0b%5Cu65b9%5Cu5f0f%5Cu8ba1%5Cu7b97%5Cuff1a%5Cu57286%5Cu5929%5Cu5f53%5Cu4e2d%5Cu7684%5Cu7b2ci%5Cu5929%5Cuff0cx%5Cu4ee3%5Cu8868%5Cu90a3%5Cu5929%5Cu5b66%5Cu751f%5Cu7ec4%5Cu542c%5Cu7684%5Cu7b2c%5Cu4e00%5Cu8282%5Cu8bfe%5Cu7684%5Cu6807%5Cu53f7%5Cuff0cy%5Cu4ee3%5Cu8868%5Cu4ed6%5Cu4eec%5Cu542c%5Cu7684%5Cu6700%5Cu540e%5Cu4e00%5Cu8282%5Cu8bfe%5Cu7684%5Cu6807%5Cu53f7%5Cuff0c%5Cu5219%5Cu90a3%5Cu4e00%5Cu5929%5Cu4ed6%5Cu4eec%5Cu7684%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570%5Cu589e%5Cu52a0%5Cu4e86%282%2By-x%2B1%29%5Cu00d7%282%2By-x%2B1%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5f53%5Cu7136%5Cu5982%5Cu679c%5Cu90a3%5Cu5929%5Cu5b66%5Cu751f%5Cu7ec4%5Cu6ca1%5Cu6709%5Cu8bfe%5Cuff0c%5Cu4ed6%5Cu4eec%5Cu7684%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570%5Cu4e0d%5Cu4f1a%5Cu53d8%5Cu5316%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6240%5Cu4ee5%5Cuff0cf%5Cu5c31%5Cu7b49%5Cu4e8en%5Cu4e2a%5Cu5b66%5Cu751f%5Cu4e0em%5Cu4e2a%5Cu6559%5Cu6388%5Cu5404%5Cu81ea%5Cu7684%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570%5Cu4e4b%5Cu548c%5Cr%5Cn%5Cu3002%5Cr%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu5c31%5Cu662f%5Cu5b89%5Cu6392%5Cu4e00%5Cu5f20%5Cu8bfe%5Cu7a0b%5Cu8868%5Cuff0c%5Cu4f7f%5Cu5f97f%5Cu7684%5Cu503c%5Cu6700%5Cu5c0f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8bc4%5Cu5224%5Cu5b89%5Cu6392%5Cu597d%5Cu4e86%5Cu8fd9%5Cu9053%5Cu9898%5Cu7684%5Cu4e00%5Cu4e9b%5Cu7b54%5Cu6848%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu4f60%5Cu4f1a%5Cu5f97%5Cu5230%5Cu4e00%5Cu5b9a%5Cu7684%5Cu5206%5Cu6570%5Cuff0c%5Cu7b49%5Cu540c%5Cu4e8e%5Cu8bc4%5Cu5224%5Cu7ed9%5Cu51fa%5Cu7684f%5Cu503c%5Cu4e0e%5Cu4f60%5Cu6c42%5Cu51fa%5Cu7684f%5Cu503c%5Cu4e4b%5Cu5546%5Cu4e58100%5Cu3002%5Cu4e3e%5Cu4f8b%5Cuff1a%5Cu8bc4%5Cu5224%5Cu7ed9%5Cu51fa%5Cu7684f%5Cu4e3ap%5Cu800c%5Cu4f60%5Cu7ed9%5Cu51fa%5Cu7684f%5Cu4e3aq%2C%5Cu5219%5Cu4f60%5Cu5f97%5Cu5230%5Cu7684%5Cu5206%5Cu6570%5Cu4e3a100%5Cu00d7p%5C%2Fq%20%5Cuff08%5Cu6ce8%5Cu610f%5Cuff1ap%5Cu3001q%5Cu5747%5Cu4e3a%5Cu771f%5Cu5b9e%5Cu7684%5Cu6570%5Cu5b57%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6b64%5Cu5206%5Cu6570%5Cu4f1a%5Cu52a0%5Cu5230%5Cu4f60%5Cu7684%5Cu603b%5Cu5206%5Cu4e2d%5Cuff0c%5Cu4f60%5Cu7684%5Cu76ee%5Cu6807%5Cu5c31%5Cu662f%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu62ff%5Cu5230%5Cu591a%5Cu7684%5Cu5206%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cuff1a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e09%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%2Cm%2Ca%28%201%3C%3Dn%2Cm%2Ca%3C%3D60%5Cuff09%5Cuff0c%5Cu542b%5Cu4e49%5Cu5df2%5Cu5728%5Cu4e0a%5Cu6587%5Cu8868%5Cu8ff0%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765n%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542bm%5Cu4e2a%5Cu75310%5Cu81f324%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu7b2ci%5Cu884c%5Cu7684%5Cu7b2cj%5Cu4e2a%5Cu6570%5Cu4ee3%5Cu8868%5Cu4e00%5Cu5468%5Cu4e4b%5Cu5185%5Cu7b2cj%5Cu4e2a%5Cu6559%5Cu6388%5Cu5fc5%5Cu987b%5Cu8981%5Cu7ed9%5Cu7b2ci%5Cu4e2a%5Cu5b66%5Cu751f%5Cu7ec4%5Cu4e0a%5Cu7684%5Cu8bfe%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6559%5Cu6388%5Cu548c%5Cu5b66%5Cu751f%5Cu7ec4%5Cu4e00%5Cu5468%5Cu8981%5Cu4e0a%5Cu7684%5Cu8bfe%5Cu4e0d%5Cu8d85%5Cu8fc724%5Cu8282%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu603b%5Cu8bfe%5Cu6570%5Cu4e0d%5Cu4f1a%5Cu591a%5Cu4e8e%5Cu7528a%5Cu4e2a%5Cu6559%5Cu5ba4%5Cu5728%5Cu4e00%5Cu5468%5Cu4e4b%5Cu5185%5Cu80fd%5Cu4e0a%5Cu7684%5Cu8bfe%5Cu7684%5Cu6700%5Cu591a%5Cu6570%5Cu91cf%5Cu768475%25%5Cuff08%5Cu8bd1%5Cu6ce8%5Cuff1a%5Cu5373%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu8ba4%5Cu4e3a%5Cu6bcf%5Cu4e00%5Cu8282%5Cu8bfe%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu4e0a%5Cu5230%5Cuff09%5Cu3002%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu8f93%5Cu5165%5Cu90fd%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0a%5Cu7279%5Cu5f81%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cuff1a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu75b2%5Cu52b3%5Cu51fd%5Cu6570f%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu662f%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu884c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu6839%5Cu636e%5Cu7ec4%5Cu53f7%5Cu4ece%5Cu5c0f%5Cu5230%5Cu5927%5Cu8f93%5Cu51fa%5Cu8bfe%5Cu7a0b%5Cu8868%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu8f93%5Cu51fa7%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c6%5Cu4e2a%5Cu6570%5Cu636e%5Cu3002%5Cu4ee4%5Cu7b2ci%5Cu884cj%5Cu5217%5Cu7684%5Cu6570%5Cu636e%5Cu4e3ax%5Cu3002%5Cu5982%5Cu679c%5Cu8fd9%5Cu4e00%5Cu7ec4%5Cu7b2cj%5Cu5929%5Cu6ca1%5Cu6709%5Cu7b2ci%5Cu8282%5Cu8bfe%5Cuff0cx%5Cu5fc5%5Cu987b%5Cu4e3a0%5Cu3002%5Cu5426%5Cu5219x%5Cu5c31%5Cu4e3a%5Cu8981%5Cu4e0a%5Cu8fd9%5Cu8282%5Cu8bfe%5Cu7684%5Cu6559%5Cu6388%5Cu7f16%5Cu53f7%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu540c%5Cu65f6%5Cu8fdb%5Cu884c%5Cu7684%5Cu8bfe%5Cu603b%5Cu6570%5Cu5fc5%5Cu987b%5Cu4e25%5Cu683c%5Cu63a7%5Cu5236%5Cu5728a%5Cu4ee5%5Cu5185%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7528%5Cu7a7a%5Cu884c%5Cu5206%5Cu5272%5Cu4e24%5Cu4e2a%5Cu8bfe%5Cu7a0b%5Cu8868%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF775A%22%2C%22title%22%3A%22University%20Schedule%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22University%20Schedule%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>University Schedule</h1>
+<h2>题意翻译</h2>
+<div>在这个问题中你会看到一张大学课程表（包括教授和学生组）。一周有6天会上课，每天最多上7节课（一天中的每一节课从1~7标号）。
+已知此大学内有n名学生（译注：是学生组吗？），m名教授，a个教室。你会得到一份二维的表格（n×m大小），内容布置如下：第i行第j列的数值就是第j号教授在一周内要给第i个学生组上的课的数量。
+你所输出的课程表必须要满足上述安排要求。
+这里还有一些其他课程表应满足的条件：同一个教授同一时间只能上1节课，相似的，同一个学生组同一时间也只能听1节课。
+现定义一个疲劳函数f（fatigue function）（适用于教授和学生组）。
+对于一个教授来说，他的疲劳函数应通过如下方式计算：在6天当中的第i天，x代表那天教授上的第一节课的标号，y代表他上的最后一节课的标号，则那一天教授的疲劳函数增加了(2+y-x+1)×(2+y-x+1)。
+当然如果那天教授没有课，他的疲劳函数不会变化。
+相似的，对于一个学生组来说，他们的疲劳函数应通过如下方式计算：在6天当中的第i天，x代表那天学生组听的第一节课的标号，y代表他们听的最后一节课的标号，则那一天他们的疲劳函数增加了(2+y-x+1)×(2+y-x+1)。
+当然如果那天学生组没有课，他们的疲劳函数不会变化。
+所以，f就等于n个学生与m个教授各自的疲劳函数之和
+。
+你的任务就是安排一张课程表，使得f的值最小。
+评判安排好了这道题的一些答案。对于每一个测试点你会得到一定的分数，等同于评判给出的f值与你求出的f值之商乘100。举例：评判给出的f为p而你给出的f为q,则你得到的分数为100×p/q （注意：p、q均为真实的数字）。
+此分数会加到你的总分中，你的目标就是尽可能拿到多的分数。
+**输入：**
+第一行为三个正整数n,m,a( 1<=n,m,a<=60），含义已在上文表述。
+接下来n行每行包含m个由0至24的正整数，第i行的第j个数代表一周之内第j个教授必须要给第i个学生组上的课数。
+保证每一个教授和学生组一周要上的课不超过24节，以及总课数不会多于用a个教室在一周之内能上的课的最多数量的75%（译注：即你可以认为每一节课都可以上到）。每一个输入都满足以上特征。
+**输出：**
+第一行输出疲劳函数f的最小值。
+接下来是一个空行。
+接下来根据组号从小到大输出课程表。对于每一组输出7行，每行6个数据。令第i行j列的数据为x。如果这一组第j天没有第i节课，x必须为0。否则x就为要上这节课的教授编号。
+同时进行的课总数必须严格控制在a以内。
+用空行分割两个课程表。</div>
+<h2>题目描述</h2>
+<div>In this problem your task is to come up with a week schedule of classes in university for professors and student groups. Consider that there are $ 6 $ educational days in week and maximum number of classes per educational day is $ 7 $ (classes numerated from $ 1 $ to $ 7 $ for each educational day).
+It is known that in university $ n $ students study, $ m $ professors work and there are $ a $ classrooms for conducting classes. Also you have two-dimensional array with $ n×m $ size which contains the following information. The number which stays in $ i $ -th row and $ j $ -th column equals to the number of classes which professor $ j $ must conduct with the group $ i $ in a single week. The schedule which you output must satisfy to array described above.
+There are several other conditions for schedule. Single professor can not conduct more than one class. Similarly, single student group can not be on more than one class at the same time.
+Let define a fatigue function for professors and student groups. Call this function $ f $ .
+To single professor fatigue calculated in the following way. Let look on classes which this professor must conduct in each of the $ 6 $ -th educational days. Let $ x $ be the number of class which professor will firstly conduct in day $ i $ and let $ y $ — the last class for this professor. Then the value $ (2+y-x+1)·(2+y-x+1) $ must be added to professor's fatigue. If professor has no classes in day $ i $ , nothing is added to professor's fatigue.
+For single student group fatigue is calculated similarly. Lets look at classes of this group in each of the $ 6 $ educational days. Let $ x $ be the number of first class for this group on day $ i $ and let $ y $ — the last class for this group. Then the value $ (2+y-x+1)·(2+y-x+1) $ must be added to this group's fatigue. If student group has no classes in day $ i $ , nothing is added to group's fatigue.
+So the value of function $ f $ equals to total {fatigue} for all $ n $ student groups and for all $ m $ professors.
+Your task is to come up with such a schedule which minimizes the value of function $ f $ .
+Jury prepared some solution of this problem. For each test you will get a certain number of points. It equals to result of division of the value of function $ f $ from the jury solution by the value of function $ f $ for schedule which your program output (i. e. the smaller value of {fatigue} function your program find the more points you will get), multiplied by $ 100 $ . In the other words if the value of $ f $ for jury solution equals to $ p $ and for your solution — to $ q $ , you will get $ 100·p/q $ points (note, that the number of points is a real number). The points will be added together for all tests. The goal is to score as many points as possible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers $ n $ , $ m $ and $ a $ ( $ 1<=n,m,a<=60 $ ) — the number of groups, the number of professors and the number of classrooms.
+Each of the following $ n $ lines contains $ m $ integers from $ 0 $ to $ 24 $ — $ j $ -th number in $ i $ -th line equals to the number of classes with the professor $ j $ must conduct with the $ i $ -th student group.
+It is guaranteed that the number of classes in week for each professor and for each student group does not exceed $ 24 $ . Also guaranteed that the total number of classes in week does not exceed $ 75 $ % from a maximum number of classes which can be conducted based on the number of classrooms. For all tests there is at least one schedule satisfying all described conditions.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the first line print the minimized value of function $ f $ .
+After that print blank line.
+After that print the schedule for each student group in increasing order of group number. For each student group print $ 7 $ lines. Each line must contains $ 6 $ numbers. Let the number at $ i $ -th line and $ j $ -th column equals to $ x $ . If in $ j $ -th day current group has no class number $ i $ , $ x $ must be equals to zero. Otherwise $ x $ must be equals to the number of professor who will conduct the corresponding class with the corresponding student group.
+The number of classes which will be conducted simultaneously must not exceeds the number of classrooms $ a $ .
+Separate the description of the schedules for groups with a blank line.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 3 1
+1 0 0
+0 1 0
+0 0 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>54
+
+1 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+
+0 0 0 0 0 0 
+2 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+3 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 1 1
+1
+1
+1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>52
+
+1 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+
+0 0 0 0 0 0 
+1 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+1 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>5 7 10
+1 3 6 0 1 2 4
+0 3 0 6 5 1 4
+3 5 1 2 3 2 4
+2 3 1 1 4 1 2
+2 4 3 2 4 3 2
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1512
+
+0 0 6 0 0 2 
+0 7 6 3 3 7 
+3 1 2 3 2 7 
+3 7 0 0 0 0 
+5 3 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+
+0 0 4 0 7 6 
+4 5 7 4 5 5 
+7 2 4 4 5 5 
+7 2 0 4 0 0 
+0 2 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+
+4 0 7 2 5 7 
+5 0 2 5 7 1 
+2 4 1 2 7 1 
+2 3 0 0 0 0 
+0 6 0 0 0 0 
+0 6 0 0 0 0 
+0 0 0 0 0 0 
+
+0 0 0 5 3 5 
+0 2 4 7 2 6 
+0 5 7 0 0 0 
+1 5 1 0 0 0 
+2 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+
+0 0 5 7 2 3 
+0 1 3 2 6 3 
+5 7 6 5 6 4 
+5 4 2 2 0 0 
+1 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+</code></pre>
+<h2>说明</h2>
+<div>During the main part of the competition (one week) you solution will be judged on $ 100 $ preliminary tests. The first $ 10 $ preliminary tests are available for download by a link <http://assets.codeforces.com/files/vk/vkcup-2017-wr2-materials-v1.tar.gz>.
+After the end of the contest (i.e., a week after its start) the last solution you sent (having positive score) will be chosen to be launched on the extended final tests.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Incorrect Flow - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396932:gywBdNzuSIQRv6x5eGeGpAIZZQpVUM682seIDE1Z+HM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22At%20the%20entrance%20examination%20for%20the%20magistracy%20of%20the%20MSU%20Cyber-Mechanics%20Department%20Sasha%20got%20the%20question%20about%20Ford-Fulkerson%20algorithm.%20He%20knew%20the%20topic%20perfectly%20as%20he%20worked%20with%20it%20many%20times%20on%20programming%20competition.%20As%20the%20task%20for%20the%20question%20he%20was%20given%20a%20network%20with%20partially%20build%20flow%20that%20he%20had%20to%20use%20in%20order%20to%20demonstrate%20the%20workflow%20of%20the%20algorithm.%20He%20quickly%20finished%20to%20write%20the%20text%20and%20took%20a%20look%20at%20the%20problem%20only%20to%20understand%20that%20the%20given%20network%20is%20incorrect%21%5Cn%5CnSuppose%20you%20are%20given%20a%20directed%20graph%20%24%20G%28V%2CE%29%20%24%20with%20two%20special%20nodes%20%24%20s%20%24%20and%20%24%20t%20%24%20called%20source%20and%20sink.%20We%20denote%20as%20%24%20n%20%24%20the%20number%20of%20nodes%20in%20the%20graph%2C%20i.e.%20%24%20n%3D%7CV%7C%20%24%20and%20%24%20m%20%24%20stands%20for%20the%20number%20of%20directed%20edges%20in%20the%20graph%2C%20i.e.%20%24%20m%3D%7CE%7C%20%24%20.%20For%20the%20purpose%20of%20this%20problem%20we%20always%20consider%20node%20%24%201%20%24%20to%20be%20the%20source%20and%20node%20%24%20n%20%24%20to%20be%20the%20sink.%20In%20addition%2C%20for%20each%20edge%20of%20the%20graph%20%24%20e%20%24%20we%20define%20the%20capacity%20function%20%24%20c%28e%29%20%24%20and%20flow%20function%20%24%20f%28e%29%20%24%20.%20Function%20%24%20f%28e%29%20%24%20represents%20the%20correct%20flow%20if%20the%20following%20conditions%20are%20satisfied%3A%5Cn%5Cn1.%20For%20each%20edge%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF708D%5C%2Fa585d8d95c9513db733035d06d3770f5949603f7.png%29%20the%20flow%20is%20non-negative%20and%20does%20not%20exceed%20capacity%20%24%20c%28e%29%20%24%20%2C%20i.e.%20%24%200%3C%3Df%28e%29%3C%3Dc%28e%29%20%24%20.%5Cn2.%20For%20each%20node%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF708D%5C%2F3fe63339e2f1d1727b2811405afd4d24d70f444c.png%29%2C%20that%20is%20not%20source%20or%20sink%20%28%20%24%20v%5Cu2260s%20%24%20and%20%24%20v%5Cu2260t%20%24%20%29%20the%20sum%20of%20flows%20of%20all%20edges%20going%20in%20%24%20v%20%24%20is%20equal%20to%20the%20sum%20of%20the%20flows%20among%20all%20edges%20going%20out%20from%20%24%20v%20%24%20.%20In%20other%20words%2C%20there%20is%20no%20flow%20stuck%20in%20%24%20v%20%24%20.%5Cn%5CnIt%20was%20clear%20that%20as%20the%20exam%20was%20prepared%20last%20night%20and%20there%20are%20plenty%20of%20mistakes%20in%20the%20tasks.%20Sasha%20asked%20one%20of%20the%20professors%20to%20fix%20the%20network%20or%20give%20the%20correct%20task%2C%20but%20the%20reply%20was%20that%20the%20magistrate%20student%20should%20be%20able%20to%20fix%20the%20network%20himself.%20As%20the%20professor%20doesn%27t%20want%20the%20task%20to%20become%20easier%2C%20he%20asks%20Sasha%20to%20fix%20the%20network%20in%20a%20such%20way%20that%20the%20total%20number%20of%20changes%20is%20minimum%20possible.%20Sasha%20is%20not%20allowed%20to%20remove%20edges%2C%20add%20new%20ones%20or%20reverse%20the%20direction%20of%20existing%20edges.%20The%20only%20thing%20he%20is%20able%20to%20do%20is%20to%20change%20capacity%20function%20%24%20c%28e%29%20%24%20and%20flow%20function%20%24%20f%28e%29%20%24%20.%20Moreover%2C%20all%20the%20values%20should%20remain%20non-negative%20integers.%20There%20is%20no%20requirement%20on%20the%20flow%20to%20be%20maximum%20in%20any%20sense.%5Cn%5CnFind%20the%20minimum%20possible%20total%20change%20of%20the%20functions%20%24%20f%28e%29%20%24%20and%20%24%20c%28e%29%20%24%20that%20Sasha%20has%20to%20make%20in%20order%20to%20make%20the%20flow%20correct.%20The%20total%20change%20is%20defined%20as%20the%20sum%20of%20absolute%20differences%2C%20i.e.%20if%20new%20functions%20are%20%24%20f%5E%7B%2A%7D%28e%29%20%24%20and%20%24%20c%5E%7B%2A%7D%28e%29%20%24%20%2C%20then%20the%20total%20change%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF708D%5C%2F58e27a22767c3ecfc23522dd629387e236285247.png%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%3C%3Dn%3C%3D100%20%24%20%2C%20%24%200%3C%3Dm%3C%3D100%20%24%20%29%20%5Cu2014%20the%20number%20of%20nodes%20and%20edges%20in%20the%20graph%20respectively.%20Each%20of%20the%20following%20%24%20m%20%24%20lines%20contains%20the%20description%20of%20the%20edges%2C%20consisting%20of%20four%20integers%20%24%20u_%7Bi%7D%20%24%20%2C%20%24%20v_%7Bi%7D%20%24%20%2C%20%24%20c_%7Bi%7D%20%24%20and%20%24%20f_%7Bi%7D%20%24%20%28%20%24%201%3C%3Du_%7Bi%7D%2Cv_%7Bi%7D%3C%3Dn%20%24%20%2C%20%24%20u_%7Bi%7D%5Cu2260v_%7Bi%7D%20%24%20%2C%20%24%200%3C%3Dc_%7Bi%7D%2Cf_%7Bi%7D%3C%3D1000000%20%24%20%29%20%5Cu2014%20index%20of%20the%20node%20the%20edges%20starts%20from%2C%20the%20index%20of%20the%20node%20the%20edge%20goes%20to%2C%20current%20capacity%20and%20flow%20value.%5Cn%5CnNode%20number%20%24%201%20%24%20is%20the%20source%2C%20and%20node%20number%20%24%20n%20%24%20is%20the%20sink.%20It%27s%20guaranteed%20that%20no%20edge%20goes%20to%20the%20source%2C%20and%20no%20edges%20starts%20in%20the%20sink.%5Cn%5CnGiven%20graph%20contains%20no%20self-loops%20but%20may%20contain%20multiple%20edges.%22%2C%22outputFormat%22%3A%22Print%20one%20integer%20%5Cu2014%20the%20minimum%20total%20sum%20of%20changes%20that%20Sasha%20has%20to%20do%20in%20order%20to%20get%20the%20correct%20flow%20description.%22%2C%22samples%22%3A%5B%5B%222%201%5Cn1%202%202%201%5Cn%22%2C%220%5Cn%22%5D%2C%5B%222%201%5Cn1%202%201%202%5Cn%22%2C%221%5Cn%22%5D%2C%5B%223%203%5Cn1%202%201%201%5Cn2%203%202%202%5Cn1%203%203%203%5Cn%22%2C%221%5Cn%22%5D%2C%5B%224%202%5Cn2%203%201%201%5Cn3%202%201%201%5Cn%22%2C%220%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20the%20flow%20is%20initially%20correct.%20Note%2C%20that%20the%20flow%20is%20not%20maximum%2C%20but%20this%20is%20not%20required.%5Cn%5CnIn%20the%20second%20sample%2C%20the%20flow%20value%20of%20the%20only%20edge%20is%20greater%20than%20its%20capacity.%20There%20are%20two%20ways%20to%20fix%20this%3A%20either%20increase%20the%20capacity%20up%20to%20%24%202%20%24%20or%20reduce%20the%20flow%20down%20to%20%24%201%20%24%20.%5Cn%5CnIn%20the%20third%20sample%2C%20there%20is%20only%20%24%201%20%24%20unit%20of%20flow%20coming%20to%20vertex%20%24%202%20%24%20%2C%20but%20there%20are%20%24%202%20%24%20units%20going%20out%20of%20it.%20One%20of%20the%20possible%20solutions%20is%20to%20reduce%20the%20value%20of%20the%20flow%20on%20the%20second%20edge%20by%20%24%201%20%24%20.%5Cn%5CnIn%20the%20fourth%20sample%2C%20there%20is%20isolated%20circulation%20of%20flow%2C%20but%20this%20description%20is%20correct%20by%20definition.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F708%5C%2FD%22%2C%22id%22%3A%22708D%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu5f20%24n%24%5Cu4e2a%5Cu70b9%5Cu7684%5Cu7f51%5Cu7edc%5Cu6d41%5Cu7684%5Cu56fe%5Cuff0c%5Cu6e90%5Cu70b9%5Cu4e3a%241%24%5Cuff0c%5Cu6c47%5Cu70b9%5Cu4e3a%24n%24%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu6709%5Cu56db%5Cu4e2a%5Cu53c2%5Cu6570%24u_i%2Cv_i%2Cc_i%2Cf_i%24%5Cuff0c%5Cu8868%5Cu793a%5Cu8fd9%5Cu6761%5Cu8fb9%5Cu7531%24u_i%24%5Cu8fde%5Cu5411%24v_i%24%5Cuff0c%5Cu5f53%5Cu524d%5Cu6d41%5Cu91cf%5Cu662f%24f_i%24%5Cuff0c%5Cu5bb9%5Cu91cf%5Cu662f%24c_i%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f46%5Cu662f%5Cu8fd9%5Cu4e2a%5Cu56fe%5Cu662f%5Cu9519%5Cu7684%5Cuff0c%5Cu6709%5Cu53ef%5Cu80fd%5Cu51fa%5Cu73b0%24f_i%3Ec_i%24%5Cu7684%5Cu60c5%5Cu51b5%5Cuff0c%5Cu8fd8%5Cu6709%5Cu53ef%5Cu80fd%5Cu6709%5Cu70b9%5Cu6d41%5Cu91cf%5Cu4e0d%5Cu5b88%5Cu6052%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu4fee%5Cu6539%5Cu8fd9%5Cu5f20%5Cu56fe%5Cu4f7f%5Cu5176%5Cu6ee1%5Cu8db3%5Cu6d41%5Cu91cf%5Cu5b88%5Cu6052%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu6240%5Cu6709%24f_i%5C%5Cleq%20c_i%24%5Cu3002%5Cu4fee%5Cu6539%5Cu7684%5Cu65b9%5Cu5f0f%5Cu662f%5Cu9009%5Cu62e9%5Cu4e00%5Cu6761%5Cu8fb9%5Cuff0c%5Cu5c06%5Cu5176%24f_i%24%5Cu6216%5Cu8005%24c_i%24%20%24%2B1%24%5Cu6216%24-1%24%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu6700%5Cu5c0f%5Cu5316%5Cu4f60%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6b65%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6d41%5Cu91cf%5Cu5b88%5Cu6052%5Cu7684%5Cu610f%5Cu601d%5Cu662f%5Cuff0c%24S%2CT%24%5Cu4ee5%5Cu5916%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu6d41%5Cu5165%5Cu7684%5Cu603b%5Cu6d41%5Cu91cf%5Cu7b49%5Cu4e8e%5Cu6d41%5Cu51fa%5Cu7684%5Cu603b%5Cu6d41%5Cu91cf%5Cuff0c%24S%24%5Cu70b9%5Cu6d41%5Cu51fa%5Cu7684%5Cu6d41%5Cu91cf%5Cu7b49%5Cu4e8e%24T%24%5Cu70b9%5Cu6d41%5Cu5165%5Cu7684%5Cu6d41%5Cu91cf%5Cu3002%5Cuff08%5Cu53c2%5Cu8003%5Cu6837%5Cu4f8b4%5Cuff09%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A31%2C%22totalAccepted%22%3A16%2C%22pid%22%3A%22CF708D%22%2C%22title%22%3A%22Incorrect%20Flow%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A101035%2C%22title%22%3A%22%5Cu6240%5Cu4ee5%5Cu8fd9%5Cu9898%5Cu600e%5Cu4e48%5Cu6210%5Cu4e86%5Cu7eff%5Cu724c%5Cu4e86%5Cu2026%5Cu2026%22%2C%22forum%22%3A%7B%22id%22%3A9827%2C%22name%22%3A%22CF708D%20Incorrect%20Flow%22%2C%22slug%22%3A%22CF708D%22%7D%7D%2C%7B%22id%22%3A39213%2C%22title%22%3A%22%5Cu8003%5Cu5230%5Cu4e86%5Cu8fd9%5Cu9053%5Cu9898%5Cuff0c%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu9b54%5Cu6539%5Cu8fc7%22%2C%22forum%22%3A%7B%22id%22%3A9827%2C%22name%22%3A%22CF708D%20Incorrect%20Flow%22%2C%22slug%22%3A%22CF708D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Incorrect%20Flow%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Incorrect Flow</h1>
+<h2>题意翻译</h2>
+<div>有一张$n$个点的网络流的图，源点为$1$，汇点为$n$，每条边有四个参数$u_i,v_i,c_i,f_i$，表示这条边由$u_i$连向$v_i$，当前流量是$f_i$，容量是$c_i$。
+但是这个图是错的，有可能出现$f_i>c_i$的情况，还有可能有点流量不守恒。
+你需要修改这张图使其满足流量守恒，以及所有$f_i\leq c_i$。修改的方式是选择一条边，将其$f_i$或者$c_i$ $+1$或$-1$。你需要最小化你的操作步数。
+流量守恒的意思是，$S,T$以外的每个点流入的总流量等于流出的总流量，$S$点流出的流量等于$T$点流入的流量。（参考样例4）
+</div>
+<h2>题目描述</h2>
+<div>At the entrance examination for the magistracy of the MSU Cyber-Mechanics Department Sasha got the question about Ford-Fulkerson algorithm. He knew the topic perfectly as he worked with it many times on programming competition. As the task for the question he was given a network with partially build flow that he had to use in order to demonstrate the workflow of the algorithm. He quickly finished to write the text and took a look at the problem only to understand that the given network is incorrect!
+Suppose you are given a directed graph $ G(V,E) $ with two special nodes $ s $ and $ t $ called source and sink. We denote as $ n $ the number of nodes in the graph, i.e. $ n=|V| $ and $ m $ stands for the number of directed edges in the graph, i.e. $ m=|E| $ . For the purpose of this problem we always consider node $ 1 $ to be the source and node $ n $ to be the sink. In addition, for each edge of the graph $ e $ we define the capacity function $ c(e) $ and flow function $ f(e) $ . Function $ f(e) $ represents the correct flow if the following conditions are satisfied:
+1. For each edge ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF708D/a585d8d95c9513db733035d06d3770f5949603f7.png) the flow is non-negative and does not exceed capacity $ c(e) $ , i.e. $ 0<=f(e)<=c(e) $ .
+2. For each node ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF708D/3fe63339e2f1d1727b2811405afd4d24d70f444c.png), that is not source or sink ( $ v≠s $ and $ v≠t $ ) the sum of flows of all edges going in $ v $ is equal to the sum of the flows among all edges going out from $ v $ . In other words, there is no flow stuck in $ v $ .
+It was clear that as the exam was prepared last night and there are plenty of mistakes in the tasks. Sasha asked one of the professors to fix the network or give the correct task, but the reply was that the magistrate student should be able to fix the network himself. As the professor doesn't want the task to become easier, he asks Sasha to fix the network in a such way that the total number of changes is minimum possible. Sasha is not allowed to remove edges, add new ones or reverse the direction of existing edges. The only thing he is able to do is to change capacity function $ c(e) $ and flow function $ f(e) $ . Moreover, all the values should remain non-negative integers. There is no requirement on the flow to be maximum in any sense.
+Find the minimum possible total change of the functions $ f(e) $ and $ c(e) $ that Sasha has to make in order to make the flow correct. The total change is defined as the sum of absolute differences, i.e. if new functions are $ f^{*}(e) $ and $ c^{*}(e) $ , then the total change is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF708D/58e27a22767c3ecfc23522dd629387e236285247.png).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ m $ ( $ 2<=n<=100 $ , $ 0<=m<=100 $ ) — the number of nodes and edges in the graph respectively. Each of the following $ m $ lines contains the description of the edges, consisting of four integers $ u_{i} $ , $ v_{i} $ , $ c_{i} $ and $ f_{i} $ ( $ 1<=u_{i},v_{i}<=n $ , $ u_{i}≠v_{i} $ , $ 0<=c_{i},f_{i}<=1000000 $ ) — index of the node the edges starts from, the index of the node the edge goes to, current capacity and flow value.
+Node number $ 1 $ is the source, and node number $ n $ is the sink. It's guaranteed that no edge goes to the source, and no edges starts in the sink.
+Given graph contains no self-loops but may contain multiple edges.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one integer — the minimum total sum of changes that Sasha has to do in order to get the correct flow description.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 1
+1 2 2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2 1
+1 2 1 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 3
+1 2 1 1
+2 3 2 2
+1 3 3 3
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>1
+</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>4 2
+2 3 1 1
+3 2 1 1
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>0
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, the flow is initially correct. Note, that the flow is not maximum, but this is not required.
+In the second sample, the flow value of the only edge is greater than its capacity. There are two ways to fix this: either increase the capacity up to $ 2 $ or reduce the flow down to $ 1 $ .
+In the third sample, there is only $ 1 $ unit of flow coming to vertex $ 2 $ , but there are $ 2 $ units going out of it. One of the possible solutions is to reduce the value of the flow on the second edge by $ 1 $ .
+In the fourth sample, there is isolated circulation of flow, but this description is correct by definition.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Text Document Analysis - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397094:3vdHdL2e0Y9+xEPCiNagJGqxfCjfUJZrnA9wwrQ7fCg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Modern%20text%20editors%20usually%20show%20some%20information%20regarding%20the%20document%20being%20edited.%20For%20example%2C%20the%20number%20of%20words%2C%20the%20number%20of%20pages%2C%20or%20the%20number%20of%20characters.%5Cn%5CnIn%20this%20problem%20you%20should%20implement%20the%20similar%20functionality.%5Cn%5CnYou%20are%20given%20a%20string%20which%20only%20consists%20of%3A%5Cn%5Cn-%20uppercase%20and%20lowercase%20English%20letters%2C%5Cn-%20underscore%20symbols%20%28they%20are%20used%20as%20separators%29%2C%5Cn-%20parentheses%20%28both%20opening%20and%20closing%29.%5Cn%5CnIt%20is%20guaranteed%20that%20each%20opening%20parenthesis%20has%20a%20succeeding%20closing%20parenthesis.%20Similarly%2C%20each%20closing%20parentheses%20has%20a%20preceding%20opening%20parentheses%20matching%20it.%20For%20each%20pair%20of%20matching%20parentheses%20there%20are%20no%20other%20parenthesis%20between%20them.%20In%20other%20words%2C%20each%20parenthesis%20in%20the%20string%20belongs%20to%20a%20matching%20%5C%22opening-closing%5C%22%20pair%2C%20and%20such%20pairs%20can%27t%20be%20nested.%5Cn%5CnFor%20example%2C%20the%20following%20string%20is%20valid%3A%20%5C%22%5C%5C_Hello%5C%5C_Vasya%28and%5C%5C_Petya%29%5C%5C_%5C%5C_bye%5C%5C_%28and%5C%5C_OK%29%5C%22.%5Cn%5CnWord%20is%20a%20maximal%20sequence%20of%20consecutive%20letters%2C%20i.e.%20such%20sequence%20that%20the%20first%20character%20to%20the%20left%20and%20the%20first%20character%20to%20the%20right%20of%20it%20is%20an%20underscore%2C%20a%20parenthesis%2C%20or%20it%20just%20does%20not%20exist.%20For%20example%2C%20the%20string%20above%20consists%20of%20seven%20words%3A%20%5C%22Hello%5C%22%2C%20%5C%22Vasya%5C%22%2C%20%5C%22and%5C%22%2C%20%5C%22Petya%5C%22%2C%20%5C%22bye%5C%22%2C%20%5C%22and%5C%22%20and%20%5C%22OK%5C%22.%20Write%20a%20program%20that%20finds%3A%5Cn%5Cn-%20the%20length%20of%20the%20longest%20word%20outside%20the%20parentheses%20%28print%200%2C%20if%20there%20is%20no%20word%20outside%20the%20parentheses%29%2C%5Cn-%20the%20number%20of%20words%20inside%20the%20parentheses%20%28print%200%2C%20if%20there%20is%20no%20word%20inside%20the%20parentheses%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D255%20%24%20%29%20%5Cu2014%20the%20length%20of%20the%20given%20string.%20The%20second%20line%20contains%20the%20string%20consisting%20of%20only%20lowercase%20and%20uppercase%20English%20letters%2C%20parentheses%20and%20underscore%20symbols.%22%2C%22outputFormat%22%3A%22Print%20two%20space-separated%20integers%3A%5Cn%5Cn-%20the%20length%20of%20the%20longest%20word%20outside%20the%20parentheses%20%28print%200%2C%20if%20there%20is%20no%20word%20outside%20the%20parentheses%29%2C%5Cn-%20the%20number%20of%20words%20inside%20the%20parentheses%20%28print%200%2C%20if%20there%20is%20no%20word%20inside%20the%20parentheses%29.%22%2C%22samples%22%3A%5B%5B%2237%5Cn_Hello_Vasya%28and_Petya%29__bye_%28and_OK%29%5Cn%22%2C%225%204%22%5D%2C%5B%2237%5Cn_a_%28_b___c%29__de_f%28g_%29__h__i%28j_k_l%29m__%5Cn%22%2C%222%206%22%5D%2C%5B%2227%5Cn%28LoooonG%29__shOrt__%28LoooonG%29%5Cn%22%2C%225%202%22%5D%2C%5B%225%5Cn%28___%29%5Cn%22%2C%220%200%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%2C%20the%20words%20%5C%22Hello%5C%22%2C%20%5C%22Vasya%5C%22%20and%20%5C%22bye%5C%22%20are%20outside%20any%20of%20the%20parentheses%2C%20and%20the%20words%20%5C%22and%5C%22%2C%20%5C%22Petya%5C%22%2C%20%5C%22and%5C%22%20and%20%5C%22OK%5C%22%20are%20inside.%20Note%2C%20that%20the%20word%20%5C%22and%5C%22%20is%20given%20twice%20and%20you%20should%20count%20it%20twice%20in%20the%20answer.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F723%5C%2FB%22%2C%22id%22%3A%22723B%22%7D%2C%22translation%22%3A%22%5Ct%5Cu6709%5Cu4e00%5Cu7bc7%5Cu7531%5Cu5927%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu4e0b%5Cu5212%5Cu7ebf%5Cu548c%5Cu5c0f%5Cu62ec%5Cu53f7%5Cu7ec4%5Cu6210%5Cu7684%5Cu6587%5Cu6863%5Cu3002%5Cu4fdd%5Cu8bc1%5Cu5de6%5Cu53f3%5Cu62ec%5Cu53f7%5Cu5b8c%5Cu6574%5Cu5339%5Cu914d%5Cuff0c%5Cu4e14%5Cu4e0d%5Cu4f1a%5Cu51fa%5Cu73b0%5Cu62ec%5Cu53f7%5Cu4e4b%5Cu95f4%5Cu76f8%5Cu4e92%5Cu5d4c%5Cu5957%5Cu3002%5Cu4e00%5Cu4e2a%5Cu5355%5Cu8bcd%5Cu662f%5Cu4e00%5Cu4e32%5Cu8fde%5Cu7eed%5Cu7684%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu4e0d%5Cu542b%5Cu4e0b%5Cu5212%5Cu7ebf%5Cu548c%5Cu62ec%5Cu53f7%5Cu3002%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu62ec%5Cu53f7%5Cu5916%5Cu7684%5Cu5355%5Cu8bcd%5Cu7684%5Cu6700%5Cu5927%5Cu957f%5Cu5ea6%5Cuff0c%5Cu62ec%5Cu53f7%5Cu5185%5Cu7684%5Cu5355%5Cu8bcd%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A11%2C%22totalAccepted%22%3A9%2C%22pid%22%3A%22CF723B%22%2C%22title%22%3A%22Text%20Document%20Analysis%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Text%20Document%20Analysis%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Text Document Analysis</h1>
+<h2>题意翻译</h2>
+<div> 有一篇由大小写字母，下划线和小括号组成的文档。保证左右括号完整匹配，且不会出现括号之间相互嵌套。一个单词是一串连续的字母，不含下划线和括号。请计算括号外的单词的最大长度，括号内的单词的数量。
+</div>
+<h2>题目描述</h2>
+<div>Modern text editors usually show some information regarding the document being edited. For example, the number of words, the number of pages, or the number of characters.
+In this problem you should implement the similar functionality.
+You are given a string which only consists of:
+- uppercase and lowercase English letters,
+- underscore symbols (they are used as separators),
+- parentheses (both opening and closing).
+It is guaranteed that each opening parenthesis has a succeeding closing parenthesis. Similarly, each closing parentheses has a preceding opening parentheses matching it. For each pair of matching parentheses there are no other parenthesis between them. In other words, each parenthesis in the string belongs to a matching "opening-closing" pair, and such pairs can't be nested.
+For example, the following string is valid: "\_Hello\_Vasya(and\_Petya)\_\_bye\_(and\_OK)".
+Word is a maximal sequence of consecutive letters, i.e. such sequence that the first character to the left and the first character to the right of it is an underscore, a parenthesis, or it just does not exist. For example, the string above consists of seven words: "Hello", "Vasya", "and", "Petya", "bye", "and" and "OK". Write a program that finds:
+- the length of the longest word outside the parentheses (print 0, if there is no word outside the parentheses),
+- the number of words inside the parentheses (print 0, if there is no word inside the parentheses).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer $ n $ ( $ 1<=n<=255 $ ) — the length of the given string. The second line contains the string consisting of only lowercase and uppercase English letters, parentheses and underscore symbols.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print two space-separated integers:
+- the length of the longest word outside the parentheses (print 0, if there is no word outside the parentheses),
+- the number of words inside the parentheses (print 0, if there is no word inside the parentheses).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>37
+_Hello_Vasya(and_Petya)__bye_(and_OK)
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5 4</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>37
+_a_(_b___c)__de_f(g_)__h__i(j_k_l)m__
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2 6</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>27
+(LoooonG)__shOrt__(LoooonG)
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>5 2</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>5
+(___)
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>0 0
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample, the words "Hello", "Vasya" and "bye" are outside any of the parentheses, and the words "and", "Petya", "and" and "OK" are inside. Note, that the word "and" is given twice and you should count it twice in the answer.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Xor-matic Number of the Graph - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397116:FZ1bSBpc4+2ZsVGnZbayavm3XABubU4YohtI7HWxmA8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20an%20undirected%20graph%2C%20constisting%20of%20%24%20n%20%24%20vertices%20and%20%24%20m%20%24%20edges.%20Each%20edge%20of%20the%20graph%20has%20some%20non-negative%20integer%20written%20on%20it.%5Cn%5CnLet%27s%20call%20a%20triple%20%24%20%28u%2Cv%2Cs%29%20%24%20interesting%2C%20if%20%24%201%3C%3Du%26lt%3Bv%3C%3Dn%20%24%20and%20there%20is%20a%20path%20%28possibly%20non-simple%2C%20i.e.%20it%20can%20visit%20the%20same%20vertices%20and%20edges%20multiple%20times%29%20between%20vertices%20%24%20u%20%24%20and%20%24%20v%20%24%20such%20that%20xor%20of%20all%20numbers%20written%20on%20the%20edges%20of%20this%20path%20is%20equal%20to%20%24%20s%20%24%20.%20When%20we%20compute%20the%20value%20s%20for%20some%20path%2C%20each%20edge%20is%20counted%20in%20xor%20as%20many%20times%2C%20as%20it%20appear%20on%20this%20path.%20It%27s%20not%20hard%20to%20prove%20that%20there%20are%20finite%20number%20of%20such%20triples.%5Cn%5CnCalculate%20the%20sum%20over%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20of%20the%20values%20of%20%24%20s%20%24%20over%20all%20interesting%20triples.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%201%3C%3Dn%3C%3D100000%20%24%20%2C%20%24%200%3C%3Dm%3C%3D200000%20%24%20%29%20%5Cu2014%20numbers%20of%20vertices%20and%20edges%20in%20the%20given%20graph.%5Cn%5CnThe%20follow%20%24%20m%20%24%20lines%20contain%20three%20integers%20%24%20u_%7Bi%7D%20%24%20%2C%20%24%20v_%7Bi%7D%20%24%20and%20%24%20t_%7Bi%7D%20%24%20%28%20%24%201%3C%3Du_%7Bi%7D%2Cv_%7Bi%7D%3C%3Dn%20%24%20%2C%20%24%200%3C%3Dt_%7Bi%7D%3C%3D10%5E%7B18%7D%20%24%20%2C%20%24%20u_%7Bi%7D%5Cu2260v_%7Bi%7D%20%24%20%29%20%5Cu2014%20vertices%20connected%20by%20the%20edge%20and%20integer%20written%20on%20it.%20It%20is%20guaranteed%20that%20graph%20doesn%27t%20contain%20self-loops%20and%20multiple%20edges.%22%2C%22outputFormat%22%3A%22Print%20the%20single%20integer%2C%20equal%20to%20the%20described%20sum%20over%20modulo%20%24%2010%5E%7B9%7D%2B7%20%24%20.%22%2C%22samples%22%3A%5B%5B%224%204%5Cn1%202%201%5Cn1%203%202%5Cn2%203%203%5Cn3%204%201%5Cn%22%2C%2212%5Cn%22%5D%2C%5B%224%204%5Cn1%202%201%5Cn2%203%202%5Cn3%204%204%5Cn4%201%208%5Cn%22%2C%2290%5Cn%22%5D%2C%5B%228%206%5Cn1%202%202%5Cn2%203%201%5Cn2%204%204%5Cn4%205%205%5Cn4%206%203%5Cn7%208%205%5Cn%22%2C%2262%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%20the%20are%20%24%206%20%24%20interesting%20triples%3A%5Cn%5Cn1.%20%24%20%281%2C2%2C1%29%20%24%5Cn2.%20%24%20%281%2C3%2C2%29%20%24%5Cn3.%20%24%20%281%2C4%2C3%29%20%24%5Cn4.%20%24%20%282%2C3%2C3%29%20%24%5Cn5.%20%24%20%282%2C4%2C2%29%20%24%5Cn6.%20%24%20%283%2C4%2C1%29%20%24%5Cn%5Cn%20The%20sum%20is%20equal%20to%20%24%201%2B2%2B3%2B3%2B2%2B1%3D12%20%24%20.In%20the%20second%20example%20the%20are%20%24%2012%20%24%20interesting%20triples%3A%5Cn%5Cn1.%20%24%20%281%2C2%2C1%29%20%24%5Cn2.%20%24%20%282%2C3%2C2%29%20%24%5Cn3.%20%24%20%281%2C3%2C3%29%20%24%5Cn4.%20%24%20%283%2C4%2C4%29%20%24%5Cn5.%20%24%20%282%2C4%2C6%29%20%24%5Cn6.%20%24%20%281%2C4%2C7%29%20%24%5Cn7.%20%24%20%281%2C4%2C8%29%20%24%5Cn8.%20%24%20%282%2C4%2C9%29%20%24%5Cn9.%20%24%20%283%2C4%2C11%29%20%24%5Cn10.%20%24%20%281%2C3%2C12%29%20%24%5Cn11.%20%24%20%282%2C3%2C13%29%20%24%5Cn12.%20%24%20%281%2C2%2C14%29%20%24%5Cn%5Cn%20The%20sum%20is%20equal%20to%20%24%201%2B2%2B3%2B4%2B6%2B7%2B8%2B9%2B11%2B12%2B13%2B14%3D90%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F724%5C%2FG%22%2C%22id%22%3A%22724G%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu6709n%5Cu4e2a%5Cu9876%5Cu70b9%5Cu548cm%5Cu6761%5Cu8fb9%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu4e0a%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu975e%5Cu8d1f%5Cu6743%5Cu503c%5Cu3002%5Cn%5Cn%5Cu6211%5Cu4eec%5Cu79f0%5Cu4e00%5Cu4e2a%5Cu4e09%5Cu5143%5Cu7ec4%20%20%24%28u%2Cv%2Cs%29%24%20%20%5Cu662f%5Cu6709%5Cu8da3%5Cu7684%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5bf9%5Cu4e8e%20%20%24u%2Cv%5C%5Cin%20%5B1%2Cn%5D%24%20%20%5Cuff0c%5Cu6709%5Cu4e00%5Cu6761%5Cu4ece%20%20%24u%24%20%20%5Cu5230%20%20%24v%24%20%20%5Cu7684%5Cu8def%5Cu5f84%28%5Cu53ef%5Cu4ee5%5Cu7ecf%5Cu8fc7%5Cu76f8%5Cu540c%5Cu7684%5Cu70b9%5Cu548c%5Cu8fb9%5Cu591a%5Cu6b21%29%5Cuff0c%5Cu5176%5Cu8def%5Cu5f84%5Cu4e0a%5Cu7684%5Cu6743%5Cu503c%5Cu5f02%5Cu6216%5Cu548c%5Cu4e3a%20%20%24s%24%20%20%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cuff0c%5Cu5982%5Cu679c%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7ecf%5Cu8fc7%5Cu4e86%5Cu591a%5Cu6b21%5Cuff0c%5Cu5219%5Cu8ba1%5Cu7b97%5Cu5f02%5Cu6216%5Cu548c%5Cu65f6%5Cu4e5f%5Cu5e94%5Cu8ba1%5Cu7b97%5Cu591a%5Cu6b21%5Cu3002%5Cu4e0d%5Cu96be%5Cu8bc1%5Cu660e%5Cuff0c%5Cu8fd9%5Cu6837%5Cu7684%5Cu4e09%5Cu5143%5Cu7ec4%5Cu662f%5Cu6709%5Cu9650%5Cu7684%5Cu3002%5Cn%5Cn%5Cu8ba1%5Cu7b97%5Cu6240%5Cu6709%5Cu6709%5Cu8da3%5Cu7684%5Cu4e09%5Cu5143%5Cu7ec4%5Cu4e2d%20%20%24s%24%20%20%5Cu7684%5Cu548c%5Cu5bf9%5Cu4e8e%20%20%2410%5E9%2B7%24%20%20%5Cu7684%5Cu6a21%5Cu6570%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%20%24n%2Cm%2C%28n%5C%5Cin%20%5B1%2C10%5E5%5D%2Cm%5C%5Cin%5B0%2C2%2A10%5E5%5D%24%20%20%5Cu2014%5Cu2014%5Cu56fe%5Cu4e2d%5Cu70b9%5Cu6570%5Cu4e0e%5Cu8fb9%5Cu6570%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684%20%20%24m%24%20%20%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu62ec3%5Cu4e2a%5Cu6574%5Cu6570%20%20%24u_i%2Cv_i%2Ct_i%28u_i%2Cv_i%5C%5Cin%20%5B1%2Cn%5D%2Ct_i%5C%5Cin%20%5B0%2C10%5E%7B18%7D%5D%2Cu_i%5C%5Cnot%20%3D%20v_i%29%24%20%20%5Cu2014%5Cu2014%5Cu8fb9%5Cu7684%5Cu4e24%5Cu7aef%5Cu70b9%5Cu5e8f%5Cu53f7%5Cu4e0e%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c%5Cn%5Cn%5Cu56fe%5Cu4e2d%5Cu65e0%5Cu81ea%5Cu73af%5Cu4e0e%5Cu91cd%5Cu8fb9%5Cn%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5373%5Cu9898%5Cu76ee%5Cu4e2d%5Cu7684%5Cu7b54%5Cu6848%5Cu5bf9%5Cu4e8e%20%20%2410%5E9%2B7%24%20%20%5Cu7684mod%5Cu503c%5Cn%5Cn%5Cu611f%5Cu8c22%40Dimitry_L%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B244%2C266%2C277%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A144%2C%22totalAccepted%22%3A63%2C%22pid%22%3A%22CF724G%22%2C%22title%22%3A%22Xor-matic%20Number%20of%20the%20Graph%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A98132%2C%22title%22%3A%22%28u%2Cv%2Cs%29%5Cu8981%5Cu6c421%20%3C%3D%20u%20%3C%20v%20%3C%3D%20n%22%2C%22forum%22%3A%7B%22id%22%3A9749%2C%22name%22%3A%22CF724G%20Xor-matic%20Number%20of%20the%20Graph%22%2C%22slug%22%3A%22CF724G%22%7D%7D%2C%7B%22id%22%3A43914%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9749%2C%22name%22%3A%22CF724G%20Xor-matic%20Number%20of%20the%20Graph%22%2C%22slug%22%3A%22CF724G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3733%22%2C%22title%22%3A%22%5BHAOI2017%5D%5Cu516b%5Cu7eb5%5Cu516b%5Cu6a2a%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3265%22%2C%22title%22%3A%22%5BJLOI2015%5D%5Cu88c5%5Cu5907%5Cu8d2d%5Cu4e70%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3292%22%2C%22title%22%3A%22%5BSCOI2016%5D%5Cu5e78%5Cu8fd0%5Cu6570%5Cu5b57%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4238%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu591a%5Cu9879%5Cu5f0f%5Cu6c42%5Cu9006%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4301%22%2C%22title%22%3A%22%5BCQOI2013%5D%5Cu65b0Nim%5Cu6e38%5Cu620f%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Xor-matic%20Number%20of%20the%20Graph%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Xor-matic Number of the Graph</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述
+给你一个无向图，有n个顶点和m条边，每条边上都有一个非负权值。
+我们称一个三元组 $(u,v,s)$ 是有趣的，当且仅当对于 $u,v\in [1,n]$ ，有一条从 $u$ 到 $v$ 的路径(可以经过相同的点和边多次)，其路径上的权值异或和为 $s$ 。对于一条路径，如果一条边经过了多次，则计算异或和时也应计算多次。不难证明，这样的三元组是有限的。
+计算所有有趣的三元组中 $s$ 的和对于 $10^9+7$ 的模数
+### 输入输出格式
+**输入格式：**
+第一行包括两个整数 $n,m,(n\in [1,10^5],m\in[0,2*10^5]$ ——图中点数与边数
+接下来的 $m$ 行每行包括3个整数 $u_i,v_i,t_i(u_i,v_i\in [1,n],t_i\in [0,10^{18}],u_i\not = v_i)$ ——边的两端点序号与边的权值
+图中无自环与重边
+**输出格式：**
+输出一个整数，即题目中的答案对于 $10^9+7$ 的mod值
+感谢@Dimitry_L 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You are given an undirected graph, constisting of $ n $ vertices and $ m $ edges. Each edge of the graph has some non-negative integer written on it.
+Let's call a triple $ (u,v,s) $ interesting, if $ 1<=u&lt;v<=n $ and there is a path (possibly non-simple, i.e. it can visit the same vertices and edges multiple times) between vertices $ u $ and $ v $ such that xor of all numbers written on the edges of this path is equal to $ s $ . When we compute the value s for some path, each edge is counted in xor as many times, as it appear on this path. It's not hard to prove that there are finite number of such triples.
+Calculate the sum over modulo $ 10^{9}+7 $ of the values of $ s $ over all interesting triples.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains two integers $ n $ and $ m $ ( $ 1<=n<=100000 $ , $ 0<=m<=200000 $ ) — numbers of vertices and edges in the given graph.
+The follow $ m $ lines contain three integers $ u_{i} $ , $ v_{i} $ and $ t_{i} $ ( $ 1<=u_{i},v_{i}<=n $ , $ 0<=t_{i}<=10^{18} $ , $ u_{i}≠v_{i} $ ) — vertices connected by the edge and integer written on it. It is guaranteed that graph doesn't contain self-loops and multiple edges.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the single integer, equal to the described sum over modulo $ 10^{9}+7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 4
+1 2 1
+1 3 2
+2 3 3
+3 4 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>12
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 4
+1 2 1
+2 3 2
+3 4 4
+4 1 8
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>90
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>8 6
+1 2 2
+2 3 1
+2 4 4
+4 5 5
+4 6 3
+7 8 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>62
+</code></pre>
+<h2>说明</h2>
+<div>In the first example the are $ 6 $ interesting triples:
+1. $ (1,2,1) $
+2. $ (1,3,2) $
+3. $ (1,4,3) $
+4. $ (2,3,3) $
+5. $ (2,4,2) $
+6. $ (3,4,1) $
+The sum is equal to $ 1+2+3+3+2+1=12 $ .In the second example the are $ 12 $ interesting triples:
+1. $ (1,2,1) $
+2. $ (2,3,2) $
+3. $ (1,3,3) $
+4. $ (3,4,4) $
+5. $ (2,4,6) $
+6. $ (1,4,7) $
+7. $ (1,4,8) $
+8. $ (2,4,9) $
+9. $ (3,4,11) $
+10. $ (1,3,12) $
+11. $ (2,3,13) $
+12. $ (1,2,14) $
+The sum is equal to $ 1+2+3+4+6+7+8+9+11+12+13+14=90 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

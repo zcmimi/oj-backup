@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>k-th divisor - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397562:/RMQjihnW2sqLTAGDUltwx8RE+QxrBOEUmWdm9afvTU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20.%20Find%20%24%20k%20%24%20-th%20smallest%20divisor%20of%20%24%20n%20%24%20%2C%20or%20report%20that%20it%20doesn%27t%20exist.%5Cn%5CnDivisor%20of%20%24%20n%20%24%20is%20any%20such%20natural%20number%2C%20that%20%24%20n%20%24%20can%20be%20divided%20by%20it%20without%20remainder.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B15%7D%20%24%20%2C%20%24%201%3C%3Dk%3C%3D10%5E%7B9%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22If%20%24%20n%20%24%20has%20less%20than%20%24%20k%20%24%20divisors%2C%20output%20-1.%5Cn%5CnOtherwise%2C%20output%20the%20%24%20k%20%24%20-th%20smallest%20divisor%20of%20%24%20n%20%24%20.%22%2C%22samples%22%3A%5B%5B%224%202%5Cn%22%2C%222%5Cn%22%5D%2C%5B%225%203%5Cn%22%2C%22-1%5Cn%22%5D%2C%5B%2212%205%5Cn%22%2C%226%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20example%2C%20number%20%24%204%20%24%20has%20three%20divisors%3A%20%24%201%20%24%20%2C%20%24%202%20%24%20and%20%24%204%20%24%20.%20The%20second%20one%20is%20%24%202%20%24%20.%5Cn%5CnIn%20the%20second%20example%2C%20number%20%24%205%20%24%20has%20only%20two%20divisors%3A%20%24%201%20%24%20and%20%24%205%20%24%20.%20The%20third%20divisor%20doesn%27t%20exist%2C%20so%20the%20answer%20is%20-1.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F762%5C%2FA%22%2C%22id%22%3A%22762A%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu4f60%5Cu88ab%5Cu7ed9%5Cu4e86%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24n%24%20%5Cu548c%24k%24%20%5Cu3002%5Cu627e%5Cu5230%24n%24%20%5Cu7684%5Cu7b2c%24k%24%20%5Cu5c0f%5Cu56e0%5Cu5b50%5Cuff0c%5Cu6216%5Cu8005%5Cu544a%5Cu77e5%5Cu5176%5Cu4e0d%5Cu5b58%5Cu5728%5Cu3002%5Cn%5Cn%5Cu4efb%5Cu610f%5Cu4e00%5Cu4e2a%5Cu53ef%5Cu4ee5%5Cu9664%24n%24%20%5Cu800c%5Cu6ca1%5Cu6709%5Cu4f59%5Cu6570%5Cu7684%5Cu81ea%5Cu7136%5Cu6570%5Cu90fd%5Cu662f%24n%24%20%5Cu7684%5Cu56e0%5Cu5b50%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24n%24%20%5Cu548c%24k%24%20%5Cuff08%241%5C%5Cleq%20n%5C%5Cleq%2010%5E%7B15%7D%24%20%5Cuff0c%241%5C%5Cleq%20k%5C%5Cleq%2010%5E9%24%20%5Cuff09%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu5982%5Cu679c%24n%24%20%5Cu4e0d%5Cu8db3%24k%24%20%5Cu4e2a%5Cu56e0%5Cu5b50%5Cu8f93%5Cu51fa-1%5Cu3002%5Cn%5Cn%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%24n%24%20%5Cu7684%5Cu7b2c%24k%24%20%5Cu5c0f%5Cu7684%5Cu56e0%5Cu5b50%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8bf4%5Cu660e%5Cn%5Cn%5Cu5728%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6837%5Cu4f8b%5Cu4e2d%5Cuff0c%5Cu6570%5Cu5b57%244%24%20%5Cu6709%5Cu4e09%5Cu4e2a%5Cu56e0%5Cu5b50%5Cuff1a%241%24%20%5Cuff0c%242%24%20%5Cu548c%244%24%20%5Cu3002%5Cu7b2c%5Cu4e8c%5Cu5c0f%5Cu7684%5Cu4e3a%242%24%20%5Cu3002%5Cn%5Cn%5Cu5728%5Cu7b2c%5Cu4e8c%5Cu4e2a%5Cu6837%5Cu4f8b%5Cu4e2d%5Cuff0c%5Cu6570%5Cu5b57%245%24%20%5Cu4ec5%5Cu6709%5Cu4e24%5Cu4e2a%5Cu56e0%5Cu5b50%241%24%20%5Cu548c%245%24%20%5Cu3002%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu56e0%5Cu5b50%5Cu662f%5Cu4e0d%5Cu5b58%5Cu5728%5Cu7684%5Cuff0c%5Cu56e0%5Cu6b64%5Cu7b54%5Cu6848%5Cu662f-1%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40Khassar%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B111%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A564%2C%22totalAccepted%22%3A112%2C%22pid%22%3A%22CF762A%22%2C%22title%22%3A%22k-th%20divisor%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A142763%2C%22title%22%3A%22%5Cu8bf7%5Cu95ee%5Cu7b2c9%5Cu4e2a%5Cu70b9%5Cu600e%5Cu4e48%5Cu5c31%5Cu8fc7%5Cu4e0d%5Cu53bb%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A9566%2C%22name%22%3A%22CF762A%20k-th%20divisor%22%2C%22slug%22%3A%22CF762A%22%7D%7D%2C%7B%22id%22%3A121770%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A9566%2C%22name%22%3A%22CF762A%20k-th%20divisor%22%2C%22slug%22%3A%22CF762A%22%7D%7D%2C%7B%22id%22%3A112039%2C%22title%22%3A%22%5Cu770b%5Cu8fd9%22%2C%22forum%22%3A%7B%22id%22%3A9566%2C%22name%22%3A%22CF762A%20k-th%20divisor%22%2C%22slug%22%3A%22CF762A%22%7D%7D%2C%7B%22id%22%3A99443%2C%22title%22%3A%22%5Cu662f%5Cu8d28%5Cu56e0%5Cu5b50%5Cu8fd8%5Cu662f%5Cu6240%5Cu6709%5Cu56e0%5Cu6570%5Cuff1f%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A9566%2C%22name%22%3A%22CF762A%20k-th%20divisor%22%2C%22slug%22%3A%22CF762A%22%7D%7D%2C%7B%22id%22%3A36693%2C%22title%22%3A%22%5Cu849f%5Cu7bdb%5Cu6c42%5Cu52a9%5Cuff0c%5Cu7b2c%5Cu4e94%5Cu4e2a%5Cu70b9%5Cu8fc7%5Cu4e0d%5Cu53bb%22%2C%22forum%22%3A%7B%22id%22%3A9566%2C%22name%22%3A%22CF762A%20k-th%20divisor%22%2C%22slug%22%3A%22CF762A%22%7D%7D%2C%7B%22id%22%3A34841%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A9566%2C%22name%22%3A%22CF762A%20k-th%20divisor%22%2C%22slug%22%3A%22CF762A%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1510%22%2C%22title%22%3A%22%5Cu7cbe%5Cu536b%5Cu586b%5Cu6d77%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF776B%22%2C%22title%22%3A%22Sherlock%20and%20his%20girlfriend%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF757B%22%2C%22title%22%3A%22Bash%27s%20Big%20Day%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF664A%22%2C%22title%22%3A%22Complicated%20GCD%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4549%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu88f4%5Cu8700%5Cu5b9a%5Cu7406%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22k-th%20divisor%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>k-th divisor</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+你被给了两个整数$n$ 和$k$ 。找到$n$ 的第$k$ 小因子，或者告知其不存在。
+任意一个可以除$n$ 而没有余数的自然数都是$n$ 的因子。
+### 输入格式：
+第一行包含两个整数$n$ 和$k$ （$1\leq n\leq 10^{15}$ ，$1\leq k\leq 10^9$ ）
+### 输出格式：
+如果$n$ 不足$k$ 个因子输出-1。
+否则输出$n$ 的第$k$ 小的因子。
+### 说明
+在第一个样例中，数字$4$ 有三个因子：$1$ ，$2$ 和$4$ 。第二小的为$2$ 。
+在第二个样例中，数字$5$ 仅有两个因子$1$ 和$5$ 。第三个因子是不存在的，因此答案是-1。
+感谢@Khassar 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You are given two integers $ n $ and $ k $ . Find $ k $ -th smallest divisor of $ n $ , or report that it doesn't exist.
+Divisor of $ n $ is any such natural number, that $ n $ can be divided by it without remainder.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 1<=n<=10^{15} $ , $ 1<=k<=10^{9} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>If $ n $ has less than $ k $ divisors, output -1.
+Otherwise, output the $ k $ -th smallest divisor of $ n $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5 3
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-1
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>12 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>6
+</code></pre>
+<h2>说明</h2>
+<div>In the first example, number $ 4 $ has three divisors: $ 1 $ , $ 2 $ and $ 4 $ . The second one is $ 2 $ .
+In the second example, number $ 5 $ has only two divisors: $ 1 $ and $ 5 $ . The third divisor doesn't exist, so the answer is -1.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

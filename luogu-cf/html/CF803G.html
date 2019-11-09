@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Periodic RMQ Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573398100:wxyEhdydS81LcEUYULJXipL8AUOuauEzplVQ4Jo1Xf4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20an%20array%20%24%20a%20%24%20consisting%20of%20positive%20integers%20and%20%24%20q%20%24%20queries%20to%20this%20array.%20There%20are%20two%20types%20of%20queries%3A%5Cn%5Cn-%20%24%201%20%24%20%24%20l%20%24%20%24%20r%20%24%20%24%20x%20%24%20%5Cu2014%20for%20each%20index%20%24%20i%20%24%20such%20that%20%24%20l%3C%3Di%3C%3Dr%20%24%20set%20%24%20a_%7Bi%7D%3Dx%20%24%20.%5Cn-%20%24%202%20%24%20%24%20l%20%24%20%24%20r%20%24%20%5Cu2014%20find%20the%20minimum%20among%20such%20%24%20a_%7Bi%7D%20%24%20that%20%24%20l%3C%3Di%3C%3Dr%20%24%20.%5Cn%5CnWe%20decided%20that%20this%20problem%20is%20too%20easy.%20So%20the%20array%20%24%20a%20%24%20is%20given%20in%20a%20compressed%20form%3A%20there%20is%20an%20array%20%24%20b%20%24%20consisting%20of%20%24%20n%20%24%20elements%20and%20a%20number%20%24%20k%20%24%20in%20the%20input%2C%20and%20before%20all%20queries%20%24%20a%20%24%20is%20equal%20to%20the%20concatenation%20of%20%24%20k%20%24%20arrays%20%24%20b%20%24%20%28so%20the%20size%20of%20%24%20a%20%24%20is%20%24%20n%5Cu00b7k%20%24%20%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%2C%20%24%201%3C%3Dk%3C%3D10%5E%7B4%7D%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%5Cu2014%20elements%20of%20the%20array%20%24%20b%20%24%20%28%20%24%201%3C%3Db_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29.%5Cn%5CnThe%20third%20line%20contains%20one%20integer%20%24%20q%20%24%20%28%20%24%201%3C%3Dq%3C%3D10%5E%7B5%7D%20%24%20%29.%5Cn%5CnThen%20%24%20q%20%24%20lines%20follow%2C%20each%20representing%20a%20query.%20Each%20query%20is%20given%20either%20as%20%24%201%20%24%20%24%20l%20%24%20%24%20r%20%24%20%24%20x%20%24%20%5Cu2014%20set%20all%20elements%20in%20the%20segment%20from%20%24%20l%20%24%20till%20%24%20r%20%24%20%28including%20borders%29%20to%20%24%20x%20%24%20%28%20%24%201%3C%3Dl%3C%3Dr%3C%3Dn%5Cu00b7k%20%24%20%2C%20%24%201%3C%3Dx%3C%3D10%5E%7B9%7D%20%24%20%29%20or%20as%20%24%202%20%24%20%24%20l%20%24%20%24%20r%20%24%20%5Cu2014%20find%20the%20minimum%20among%20all%20elements%20in%20the%20segment%20from%20%24%20l%20%24%20till%20%24%20r%20%24%20%28%20%24%201%3C%3Dl%3C%3Dr%3C%3Dn%5Cu00b7k%20%24%20%29.%22%2C%22outputFormat%22%3A%22For%20each%20query%20of%20type%20%24%202%20%24%20print%20the%20answer%20to%20this%20query%20%5Cu2014%20the%20minimum%20on%20the%20corresponding%20segment.%22%2C%22samples%22%3A%5B%5B%223%201%5Cn1%202%203%5Cn3%5Cn2%201%203%5Cn1%201%202%204%5Cn2%201%203%5Cn%22%2C%221%5Cn3%5Cn%22%5D%2C%5B%223%202%5Cn1%202%203%5Cn5%5Cn2%204%204%5Cn1%204%204%205%5Cn2%204%204%5Cn1%201%206%201%5Cn2%206%206%5Cn%22%2C%221%5Cn5%5Cn1%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F803%5C%2FG%22%2C%22id%22%3A%22803G%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%24a%24%20%5Cu8ba9%5Cu4f60%5Cu652f%5Cu6301%5Cn%5Cn%241%24%20%20%24l%24%20%20%24r%24%20%20%24x%24%20%5Cu533a%5Cu95f4%5Cu8d4b%5Cu503c%5Cn%5Cn%242%24%20%20%24l%24%20%20%24r%24%20%20%5Cu8be2%5Cu95ee%5Cu533a%5Cu95f4%5Cu6700%5Cu5c0f%5Cu503c%5Cn%5Cn%5Cu6211%5Cu4eec%5Cu89c9%5Cu5f97%5Cu8fd9%5Cu4e2a%5Cu95ee%5Cu9898%5Cu592a%5Cu6c34%5Cu4e86%2C%5Cu6240%5Cu4ee5%5Cu6211%5Cu4eec%5Cu4e0d%5Cu4f1a%5Cu7ed9%5Cu4f60%5Cu5e8f%5Cu5217%24a%24%20%20%5Cn%5Cn%5Cu800c%5Cu662f%5Cu7ed9%5Cu4f60%5Cu5e8f%5Cu5217%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%20%5Cu7684%5Cu5e8f%5Cu5217%24b%24%20%2C%5Cu628a%24b%24%20%5Cu590d%5Cu5236%5Cu7c98%5Cu8d34%24k%24%20%5Cu6b21%5Cu5c31%5Cu53ef%5Cu4ee5%5Cu5f97%5Cu5230%24a%24%20%20%5Cn%5Cn%24n%5C%5Cle10%5E5%2Ck%5C%5Cle10%5E4%2Cq%5C%5Cle10%5E5%2Cb_i%5C%5Cle10%5E9%24%20%20%5Cn%5Cn%241%5C%5Cle%20l%5C%5Cle%20r%5C%5Cle%20n%5C%5Ctimes%20k%24%20%20%5Cn%5Cn%5Cu611f%5Cu8c22%40Kelin%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A68%2C%22totalAccepted%22%3A19%2C%22pid%22%3A%22CF803G%22%2C%22title%22%3A%22Periodic%20RMQ%20Problem%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A36382%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A9372%2C%22name%22%3A%22CF803G%20Periodic%20RMQ%20Problem%22%2C%22slug%22%3A%22CF803G%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3402%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu53ef%5Cu6301%5Cu4e45%5Cu5316%5Cu5e76%5Cu67e5%5Cu96c6%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4175%22%2C%22title%22%3A%22%5BCTSC2008%5D%5Cu7f51%5Cu7edc%5Cu7ba1%5Cu7406%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF939F%22%2C%22title%22%3A%22Cutlet%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4451%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu6574%5Cu6570%5Cu7684lqp%5Cu62c6%5Cu5206%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1110F%22%2C%22title%22%3A%22Nearest%20Leaf%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Periodic%20RMQ%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Periodic RMQ Problem</h1>
+<h2>题意翻译</h2>
+<div>给你一个序列$a$ 让你支持
+$1$ $l$ $r$ $x$ 区间赋值
+$2$ $l$ $r$ 询问区间最小值
+我们觉得这个问题太水了,所以我们不会给你序列$a$
+而是给你序列一个长度为$n$ 的序列$b$ ,把$b$ 复制粘贴$k$ 次就可以得到$a$
+$n\le10^5,k\le10^4,q\le10^5,b_i\le10^9$
+$1\le l\le r\le n\times k$
+感谢@Kelin 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You are given an array $ a $ consisting of positive integers and $ q $ queries to this array. There are two types of queries:
+- $ 1 $ $ l $ $ r $ $ x $ — for each index $ i $ such that $ l<=i<=r $ set $ a_{i}=x $ .
+- $ 2 $ $ l $ $ r $ — find the minimum among such $ a_{i} $ that $ l<=i<=r $ .
+We decided that this problem is too easy. So the array $ a $ is given in a compressed form: there is an array $ b $ consisting of $ n $ elements and a number $ k $ in the input, and before all queries $ a $ is equal to the concatenation of $ k $ arrays $ b $ (so the size of $ a $ is $ n·k $ ).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 1<=n<=10^{5} $ , $ 1<=k<=10^{4} $ ).
+The second line contains $ n $ integers — elements of the array $ b $ ( $ 1<=b_{i}<=10^{9} $ ).
+The third line contains one integer $ q $ ( $ 1<=q<=10^{5} $ ).
+Then $ q $ lines follow, each representing a query. Each query is given either as $ 1 $ $ l $ $ r $ $ x $ — set all elements in the segment from $ l $ till $ r $ (including borders) to $ x $ ( $ 1<=l<=r<=n·k $ , $ 1<=x<=10^{9} $ ) or as $ 2 $ $ l $ $ r $ — find the minimum among all elements in the segment from $ l $ till $ r $ ( $ 1<=l<=r<=n·k $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query of type $ 2 $ print the answer to this query — the minimum on the corresponding segment.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+1 2 3
+3
+2 1 3
+1 1 2 4
+2 1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 2
+1 2 3
+5
+2 4 4
+1 4 4 5
+2 4 4
+1 1 6 1
+2 6 6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1
+5
+1
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

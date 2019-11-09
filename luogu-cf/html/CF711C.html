@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Coloring Trees - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573396956:t5etyIQC4I4lWlrw1mz01EobPlS72eV0S1bRM2x3foc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22ZS%20the%20Coder%20and%20Chris%20the%20Baboon%20has%20arrived%20at%20Udayland%21%20They%20walked%20in%20the%20park%20where%20%24%20n%20%24%20trees%20grow.%20They%20decided%20to%20be%20naughty%20and%20color%20the%20trees%20in%20the%20park.%20The%20trees%20are%20numbered%20with%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20from%20left%20to%20right.%5Cn%5CnInitially%2C%20tree%20%24%20i%20%24%20has%20color%20%24%20c_%7Bi%7D%20%24%20.%20ZS%20the%20Coder%20and%20Chris%20the%20Baboon%20recognizes%20only%20%24%20m%20%24%20different%20colors%2C%20so%20%24%200%3C%3Dc_%7Bi%7D%3C%3Dm%20%24%20%2C%20where%20%24%20c_%7Bi%7D%3D0%20%24%20means%20that%20tree%20%24%20i%20%24%20is%20uncolored.%5Cn%5CnZS%20the%20Coder%20and%20Chris%20the%20Baboon%20decides%20to%20color%20only%20the%20uncolored%20trees%2C%20i.e.%20the%20trees%20with%20%24%20c_%7Bi%7D%3D0%20%24%20.%20They%20can%20color%20each%20of%20them%20them%20in%20any%20of%20the%20%24%20m%20%24%20colors%20from%20%24%201%20%24%20to%20%24%20m%20%24%20.%20Coloring%20the%20%24%20i%20%24%20-th%20tree%20with%20color%20%24%20j%20%24%20requires%20exactly%20%24%20p_%7Bi%2Cj%7D%20%24%20litres%20of%20paint.%5Cn%5CnThe%20two%20friends%20define%20the%20beauty%20of%20a%20coloring%20of%20the%20trees%20as%20the%20minimum%20number%20of%20contiguous%20groups%20%28each%20group%20contains%20some%20subsegment%20of%20trees%29%20you%20can%20split%20all%20the%20%24%20n%20%24%20trees%20into%20so%20that%20each%20group%20contains%20trees%20of%20the%20same%20color.%20For%20example%2C%20if%20the%20colors%20of%20the%20trees%20from%20left%20to%20right%20are%20%24%202%2C1%2C1%2C1%2C3%2C2%2C2%2C3%2C1%2C3%20%24%20%2C%20the%20beauty%20of%20the%20coloring%20is%20%24%207%20%24%20%2C%20since%20we%20can%20partition%20the%20trees%20into%20%24%207%20%24%20contiguous%20groups%20of%20the%20same%20color%20%3A%20%24%20%7B2%7D%2C%7B1%2C1%2C1%7D%2C%7B3%7D%2C%7B2%2C2%7D%2C%7B3%7D%2C%7B1%7D%2C%7B3%7D%20%24%20.%5Cn%5CnZS%20the%20Coder%20and%20Chris%20the%20Baboon%20wants%20to%20color%20all%20uncolored%20trees%20so%20that%20the%20beauty%20of%20the%20coloring%20is%20exactly%20%24%20k%20%24%20.%20They%20need%20your%20help%20to%20determine%20the%20minimum%20amount%20of%20paint%20%28in%20litres%29%20needed%20to%20finish%20the%20job.%5Cn%5CnPlease%20note%20that%20the%20friends%20can%27t%20color%20the%20trees%20that%20are%20already%20colored.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20three%20integers%2C%20%24%20n%20%24%20%2C%20%24%20m%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dk%3C%3Dn%3C%3D100%20%24%20%2C%20%24%201%3C%3Dm%3C%3D100%20%24%20%29%20%5Cu2014%20the%20number%20of%20trees%2C%20number%20of%20colors%20and%20beauty%20of%20the%20resulting%20coloring%20respectively.%5Cn%5CnThe%20second%20line%20contains%20%24%20n%20%24%20integers%20%24%20c_%7B1%7D%2Cc_%7B2%7D%2C...%2Cc_%7Bn%7D%20%24%20%28%20%24%200%3C%3Dc_%7Bi%7D%3C%3Dm%20%24%20%29%2C%20the%20initial%20colors%20of%20the%20trees.%20%24%20c_%7Bi%7D%20%24%20equals%20to%20%24%200%20%24%20if%20the%20tree%20number%20%24%20i%20%24%20is%20uncolored%2C%20otherwise%20the%20%24%20i%20%24%20-th%20tree%20has%20color%20%24%20c_%7Bi%7D%20%24%20.%5Cn%5CnThen%20%24%20n%20%24%20lines%20follow.%20Each%20of%20them%20contains%20%24%20m%20%24%20integers.%20The%20%24%20j%20%24%20-th%20number%20on%20the%20%24%20i%20%24%20-th%20of%20them%20line%20denotes%20%24%20p_%7Bi%2Cj%7D%20%24%20%28%20%24%201%3C%3Dp_%7Bi%2Cj%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20amount%20of%20litres%20the%20friends%20need%20to%20color%20%24%20i%20%24%20-th%20tree%20with%20color%20%24%20j%20%24%20.%20%24%20p_%7Bi%2Cj%7D%20%24%20%27s%20are%20specified%20even%20for%20the%20initially%20colored%20trees%2C%20but%20such%20trees%20still%20can%27t%20be%20colored.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%2C%20the%20minimum%20amount%20of%20paint%20needed%20to%20color%20the%20trees.%20If%20there%20are%20no%20valid%20tree%20colorings%20of%20beauty%20%24%20k%20%24%20%2C%20print%20%24%20-1%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%202%202%5Cn0%200%200%5Cn1%202%5Cn3%204%5Cn5%206%5Cn%22%2C%2210%22%5D%2C%5B%223%202%202%5Cn2%201%202%5Cn1%203%5Cn2%204%5Cn3%205%5Cn%22%2C%22-1%22%5D%2C%5B%223%202%202%5Cn2%200%200%5Cn1%203%5Cn2%204%5Cn3%205%5Cn%22%2C%225%22%5D%2C%5B%223%202%203%5Cn2%201%202%5Cn1%203%5Cn2%204%5Cn3%205%5Cn%22%2C%220%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20case%2C%20coloring%20the%20trees%20with%20colors%20%24%202%2C1%2C1%20%24%20minimizes%20the%20amount%20of%20paint%20used%2C%20which%20equals%20to%20%24%202%2B3%2B5%3D10%20%24%20.%20Note%20that%20%24%201%2C1%2C1%20%24%20would%20not%20be%20valid%20because%20the%20beauty%20of%20such%20coloring%20equals%20to%20%24%201%20%24%20%28%20%24%20%7B1%2C1%2C1%7D%20%24%20is%20a%20way%20to%20group%20the%20trees%20into%20a%20single%20group%20of%20the%20same%20color%29.%5Cn%5CnIn%20the%20second%20sample%20case%2C%20all%20the%20trees%20are%20colored%2C%20but%20the%20beauty%20of%20the%20coloring%20is%20%24%203%20%24%20%2C%20so%20there%20is%20no%20valid%20coloring%2C%20and%20the%20answer%20is%20%24%20-1%20%24%20.%5Cn%5CnIn%20the%20last%20sample%20case%2C%20all%20the%20trees%20are%20colored%20and%20the%20beauty%20of%20the%20coloring%20matches%20%24%20k%20%24%20%2C%20so%20no%20paint%20is%20used%20and%20the%20answer%20is%20%24%200%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F711%5C%2FC%22%2C%22id%22%3A%22711C%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu610f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu6709%20%24n%24%20%5Cu68f5%5Cu6811%5Cuff0c%20%24m%24%20%5Cu79cd%5Cu989c%5Cu6599%5Cuff0c%5Cu8981%5Cu6c42%5Cu73b0%5Cu5728%5Cu8981%5Cu7ed9%5Cu8fd9%5Cu4e9b%5Cu6811%5Cu6d82%5Cu4e0a%5Cu989c%5Cu6599%5Cuff0c%5Cu6700%5Cu540e%5Cu6d82%5Cu6210%20%24k%24%20%5Cu6bb5%5Cuff08%5Cu8fde%5Cu7eed%5Cu989c%5Cu8272%5Cu76f8%5Cu540c%5Cu5212%5Cu4e3a%5Cu4e00%5Cu6bb5%5Cu5982%20%242%24%20%2C%5Cu2009%241%24%20%2C%20%241%24%20%2C%5Cu2009%241%24%20%2C%5Cu2009%243%24%20%2C%5Cu2009%242%24%20%2C%5Cu2009%242%24%20%2C%5Cu2009%243%24%20%2C%5Cu2009%241%24%20%2C%5Cu2009%243%24%20%5Cu662f%247%24%5Cu6bb5%5Cuff09%5Cuff0c%5Cu6709%5Cu4e9b%5Cu6811%5Cu5df2%5Cu7ecf%5Cu6d82%5Cu4e86%5Cuff0c%5Cu5219%5Cu4e0d%5Cu6d82%5Cu4e86%5Cu53ea%5Cu80fd%5Cu6d82%5Cu4e00%5Cu6b21%5Cuff0c%5Cu8f93%5Cu5165%24n%24%5Cu4e2a%5Cu6570%5Cuff08%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu4e3a%240%24~%24m%24%5Cuff09%5Cuff0c0%5Cu8868%5Cu793a%5Cu8fd8%5Cu6ca1%5Cu6709%5Cu6d82%5Cuff0c%241%24~%24m%24%5Cu8868%5Cu793a%5Cu5df2%5Cu7ecf%5Cu6d82%5Cu4e86%5Cu54ea%5Cu79cd%5Cu989c%5Cu6599%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu8f93%5Cu5165%20%24n%24%20%5Cu884c%20%24m%24%20%5Cu5217%5Cuff0c%5Cu8868%5Cu793a%5Cu6bcf%5Cu68f5%5Cu6811%5Cu6d82%5Cu6210%5Cu6bcf%5Cu79cd%5Cu989c%5Cu8272%5Cu6240%5Cu8981%5Cu7684%5Cu989c%5Cu6599%5Cu91cf%5Cu3002%5Cu73b0%5Cu5728%5Cu8981%5Cu628a%5Cu6240%5Cu6709%5Cu6811%5Cu90fd%5Cu6d82%5Cu4e0a%5Cu989c%5Cu6599%5Cu6d82%5Cu6210%20%24k%24%20%5Cu6bb5%5Cuff0c%5Cu6c42%5Cu6700%5Cu5c11%5Cu8981%5Cu7528%5Cu7684%5Cu989c%5Cu6599%5Cu91cf%5Cr%5Cn%5Cr%5Cn%5Cu7ffb%5Cu8bd1%20%24by%24%20%40Happynewyear%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A136%2C%22totalAccepted%22%3A57%2C%22pid%22%3A%22CF711C%22%2C%22title%22%3A%22Coloring%20Trees%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF835C%22%2C%22title%22%3A%22Star%20sky%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF385C%22%2C%22title%22%3A%22Bear%20and%20Prime%20Numbers%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1155D%22%2C%22title%22%3A%22Beautiful%20Array%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1207C%22%2C%22title%22%3A%22Gas%20Pipeline%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1215B%22%2C%22title%22%3A%22The%20Number%20of%20Products%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Coloring%20Trees%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Coloring Trees</h1>
+<h2>题意翻译</h2>
+<div>题意：
+有 $n$ 棵树， $m$ 种颜料，要求现在要给这些树涂上颜料，最后涂成 $k$ 段（连续颜色相同划为一段如 $2$ , $1$ , $1$ , $1$ , $3$ , $2$ , $2$ , $3$ , $1$ , $3$ 是$7$段），有些树已经涂了，则不涂了只能涂一次，输入$n$个数（每个数为$0$~$m$），0表示还没有涂，$1$~$m$表示已经涂了哪种颜料。接下来输入 $n$ 行 $m$ 列，表示每棵树涂成每种颜色所要的颜料量。现在要把所有树都涂上颜料涂成 $k$ 段，求最少要用的颜料量
+翻译 $by$ @Happynewyear</div>
+<h2>题目描述</h2>
+<div>ZS the Coder and Chris the Baboon has arrived at Udayland! They walked in the park where $ n $ trees grow. They decided to be naughty and color the trees in the park. The trees are numbered with integers from $ 1 $ to $ n $ from left to right.
+Initially, tree $ i $ has color $ c_{i} $ . ZS the Coder and Chris the Baboon recognizes only $ m $ different colors, so $ 0<=c_{i}<=m $ , where $ c_{i}=0 $ means that tree $ i $ is uncolored.
+ZS the Coder and Chris the Baboon decides to color only the uncolored trees, i.e. the trees with $ c_{i}=0 $ . They can color each of them them in any of the $ m $ colors from $ 1 $ to $ m $ . Coloring the $ i $ -th tree with color $ j $ requires exactly $ p_{i,j} $ litres of paint.
+The two friends define the beauty of a coloring of the trees as the minimum number of contiguous groups (each group contains some subsegment of trees) you can split all the $ n $ trees into so that each group contains trees of the same color. For example, if the colors of the trees from left to right are $ 2,1,1,1,3,2,2,3,1,3 $ , the beauty of the coloring is $ 7 $ , since we can partition the trees into $ 7 $ contiguous groups of the same color : $ {2},{1,1,1},{3},{2,2},{3},{1},{3} $ .
+ZS the Coder and Chris the Baboon wants to color all uncolored trees so that the beauty of the coloring is exactly $ k $ . They need your help to determine the minimum amount of paint (in litres) needed to finish the job.
+Please note that the friends can't color the trees that are already colored.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains three integers, $ n $ , $ m $ and $ k $ ( $ 1<=k<=n<=100 $ , $ 1<=m<=100 $ ) — the number of trees, number of colors and beauty of the resulting coloring respectively.
+The second line contains $ n $ integers $ c_{1},c_{2},...,c_{n} $ ( $ 0<=c_{i}<=m $ ), the initial colors of the trees. $ c_{i} $ equals to $ 0 $ if the tree number $ i $ is uncolored, otherwise the $ i $ -th tree has color $ c_{i} $ .
+Then $ n $ lines follow. Each of them contains $ m $ integers. The $ j $ -th number on the $ i $ -th of them line denotes $ p_{i,j} $ ( $ 1<=p_{i,j}<=10^{9} $ ) — the amount of litres the friends need to color $ i $ -th tree with color $ j $ . $ p_{i,j} $ 's are specified even for the initially colored trees, but such trees still can't be colored.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer, the minimum amount of paint needed to color the trees. If there are no valid tree colorings of beauty $ k $ , print $ -1 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 2 2
+0 0 0
+1 2
+3 4
+5 6
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 2 2
+2 1 2
+1 3
+2 4
+3 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-1</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 2 2
+2 0 0
+1 3
+2 4
+3 5
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>5</code></pre>
+<h3>输入样例 #4</h3>
+<pre><code>3 2 3
+2 1 2
+1 3
+2 4
+3 5
+</code></pre>
+<h3>输出样例 #4</h3>
+<pre><code>0</code></pre>
+<h2>说明</h2>
+<div>In the first sample case, coloring the trees with colors $ 2,1,1 $ minimizes the amount of paint used, which equals to $ 2+3+5=10 $ . Note that $ 1,1,1 $ would not be valid because the beauty of such coloring equals to $ 1 $ ( $ {1,1,1} $ is a way to group the trees into a single group of the same color).
+In the second sample case, all the trees are colored, but the beauty of the coloring is $ 3 $ , so there is no valid coloring, and the answer is $ -1 $ .
+In the last sample case, all the trees are colored and the beauty of the coloring matches $ k $ , so no paint is used and the answer is $ 0 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

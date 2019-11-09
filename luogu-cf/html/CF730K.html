@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Roads Orientation Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397188:XrZb35QTCqpdhOfL1Gjrroujk2KLNfDxvF1NDgTbuG8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Berland%20consists%20of%20%24%20n%20%24%20cities%20and%20%24%20m%20%24%20bidirectional%20roads%20connecting%20pairs%20of%20cities.%20There%20is%20no%20road%20connecting%20a%20city%20to%20itself%2C%20and%20between%20any%20pair%20of%20cities%20there%20is%20no%20more%20than%20one%20road.%20It%20is%20possible%20to%20reach%20any%20city%20from%20any%20other%20moving%20along%20roads.%5Cn%5CnCurrently%20Mr.%20President%20is%20in%20the%20city%20%24%20s%20%24%20and%20his%20destination%20is%20the%20city%20%24%20t%20%24%20.%20He%20plans%20to%20move%20along%20roads%20from%20%24%20s%20%24%20to%20%24%20t%20%24%20%28%20%24%20s%5Cu2260t%20%24%20%29.%5Cn%5CnThat%27s%20why%20Ministry%20of%20Fools%20and%20Roads%20has%20difficult%20days.%20The%20minister%20is%20afraid%20that%20Mr.%20President%20could%20get%20into%20a%20traffic%20jam%20or%20get%20lost.%20Who%20knows%20what%20else%20can%20happen%21%5Cn%5CnTo%20be%20sure%20that%20everything%20goes%20as%20planned%2C%20the%20minister%20decided%20to%20temporarily%20make%20all%20roads%20one-way.%20So%20each%20road%20will%20be%20oriented%20in%20one%20of%20two%20possible%20directions.%20The%20following%20conditions%20must%20be%20satisfied%3A%5Cn%5Cn-%20There%20should%20be%20no%20cycles%20along%20roads%20after%20orientation.%5Cn-%20The%20city%20%24%20s%20%24%20should%20be%20the%20only%20such%20city%20that%20all%20its%20roads%20are%20oriented%20out%20%28i.e.%20there%20are%20no%20ingoing%20roads%20to%20the%20city%20%24%20s%20%24%20and%20the%20city%20%24%20s%20%24%20is%20the%20only%20such%20city%29.%5Cn-%20The%20city%20%24%20t%20%24%20should%20be%20the%20only%20such%20city%20that%20all%20its%20roads%20are%20oriented%20in%20%28i.e.%20there%20are%20no%20outgoing%20roads%20from%20the%20city%20%24%20t%20%24%20and%20the%20city%20%24%20t%20%24%20is%20the%20only%20such%20city%29.%5Cn%5CnHelp%20the%20minister%20solve%20his%20problem.%20Write%20a%20program%20to%20find%20any%20such%20orientation%20of%20all%20roads%20or%20report%20that%20no%20solution%20exists.%22%2C%22inputFormat%22%3A%22Each%20test%20in%20this%20problem%20contains%20one%20or%20more%20test%20cases%20to%20solve.%20The%20first%20line%20of%20the%20input%20contains%20positive%20number%20%24%20T%20%24%20%5Cu2014%20the%20number%20of%20cases%20to%20solve.%5Cn%5CnEach%20case%20starts%20with%20a%20line%20containing%20four%20integers%20%24%20n%20%24%20%2C%20%24%20m%20%24%20%2C%20%24%20s%20%24%20and%20%24%20t%20%24%20%28%20%24%202%3C%3Dn%3C%3D4%5Cu00b710%5E%7B5%7D%20%24%20%2C%20%24%201%3C%3Dm%3C%3D10%5E%7B6%7D%20%24%20%2C%20%24%201%3C%3Ds%2Ct%3C%3Dn%20%24%20%2C%20%24%20s%5Cu2260t%20%24%20%29%20%5Cu2014%20the%20number%20of%20cities%2C%20the%20number%20of%20roads%20and%20indices%20of%20departure%20and%20destination%20cities.%20The%20cities%20are%20numbered%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%5Cn%5CnThe%20following%20%24%20m%20%24%20lines%20contain%20roads%2C%20one%20road%20per%20line.%20Each%20road%20is%20given%20as%20two%20integer%20numbers%20%24%20x_%7Bj%7D%20%24%20%2C%20%24%20y_%7Bj%7D%20%24%20%28%20%24%201%3C%3Dx_%7Bj%7D%2Cy_%7Bj%7D%3C%3Dn%20%24%20%2C%20%24%20x_%7Bj%7D%5Cu2260y_%7Bj%7D%20%24%20%29%2C%20which%20means%20that%20the%20%24%20j%20%24%20-th%20road%20connects%20cities%20%24%20x_%7Bj%7D%20%24%20and%20%24%20y_%7Bj%7D%20%24%20.%20There%20is%20at%20most%20one%20road%20between%20any%20pair%20of%20cities.%20It%20is%20possible%20to%20reach%20any%20city%20from%20any%20other%20moving%20along%20roads.%5Cn%5CnThe%20sum%20of%20values%20%24%20n%20%24%20over%20all%20cases%20in%20a%20test%20doesn%27t%20exceed%20%24%204%5Cu00b710%5E%7B5%7D%20%24%20.%20The%20sum%20of%20values%20%24%20m%20%24%20over%20all%20cases%20in%20a%20test%20doesn%27t%20exceed%20%24%2010%5E%7B6%7D%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20case%20print%20%5C%22Yes%5C%22%20if%20the%20answer%20exists.%20In%20the%20following%20%24%20m%20%24%20lines%20print%20roads%20in%20the%20required%20directions.%20You%20can%20print%20roads%20in%20arbitrary%20order.%20If%20there%20are%20multiple%20answers%2C%20print%20any%20of%20them.%5Cn%5CnPrint%20the%20only%20line%20%5C%22No%5C%22%20if%20there%20is%20no%20answer%20for%20a%20case.%22%2C%22samples%22%3A%5B%5B%222%5Cn4%204%201%202%5Cn1%202%5Cn2%203%5Cn3%204%5Cn4%201%5Cn3%202%201%203%5Cn3%201%5Cn2%203%5Cn%22%2C%22Yes%5Cn1%202%5Cn3%202%5Cn4%203%5Cn1%204%5CnNo%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B512000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F730%5C%2FK%22%2C%22id%22%3A%22730K%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF730K%22%2C%22title%22%3A%22Roads%20Orientation%20Problem%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Roads%20Orientation%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Roads Orientation Problem</h1>
+<h2>题目描述</h2>
+<div>Berland consists of $ n $ cities and $ m $ bidirectional roads connecting pairs of cities. There is no road connecting a city to itself, and between any pair of cities there is no more than one road. It is possible to reach any city from any other moving along roads.
+Currently Mr. President is in the city $ s $ and his destination is the city $ t $ . He plans to move along roads from $ s $ to $ t $ ( $ s≠t $ ).
+That's why Ministry of Fools and Roads has difficult days. The minister is afraid that Mr. President could get into a traffic jam or get lost. Who knows what else can happen!
+To be sure that everything goes as planned, the minister decided to temporarily make all roads one-way. So each road will be oriented in one of two possible directions. The following conditions must be satisfied:
+- There should be no cycles along roads after orientation.
+- The city $ s $ should be the only such city that all its roads are oriented out (i.e. there are no ingoing roads to the city $ s $ and the city $ s $ is the only such city).
+- The city $ t $ should be the only such city that all its roads are oriented in (i.e. there are no outgoing roads from the city $ t $ and the city $ t $ is the only such city).
+Help the minister solve his problem. Write a program to find any such orientation of all roads or report that no solution exists.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Each test in this problem contains one or more test cases to solve. The first line of the input contains positive number $ T $ — the number of cases to solve.
+Each case starts with a line containing four integers $ n $ , $ m $ , $ s $ and $ t $ ( $ 2<=n<=4·10^{5} $ , $ 1<=m<=10^{6} $ , $ 1<=s,t<=n $ , $ s≠t $ ) — the number of cities, the number of roads and indices of departure and destination cities. The cities are numbered from $ 1 $ to $ n $ .
+The following $ m $ lines contain roads, one road per line. Each road is given as two integer numbers $ x_{j} $ , $ y_{j} $ ( $ 1<=x_{j},y_{j}<=n $ , $ x_{j}≠y_{j} $ ), which means that the $ j $ -th road connects cities $ x_{j} $ and $ y_{j} $ . There is at most one road between any pair of cities. It is possible to reach any city from any other moving along roads.
+The sum of values $ n $ over all cases in a test doesn't exceed $ 4·10^{5} $ . The sum of values $ m $ over all cases in a test doesn't exceed $ 10^{6} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each case print "Yes" if the answer exists. In the following $ m $ lines print roads in the required directions. You can print roads in arbitrary order. If there are multiple answers, print any of them.
+Print the only line "No" if there is no answer for a case.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+4 4 1 2
+1 2
+2 3
+3 4
+4 1
+3 2 1 3
+3 1
+2 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Yes
+1 2
+3 2
+4 3
+1 4
+No
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Maximum path - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573397571:fyH9lnp00QrWaRdfj63w5VfLkMQCXWN3u+4m/tKO7to=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20rectangular%20table%20%24%203%5Cu00d7n%20%24%20.%20Each%20cell%20contains%20an%20integer.%20You%20can%20move%20from%20one%20cell%20to%20another%20if%20they%20share%20a%20side.%5Cn%5CnFind%20such%20path%20from%20the%20upper%20left%20cell%20to%20the%20bottom%20right%20cell%20of%20the%20table%20that%20doesn%27t%20visit%20any%20of%20the%20cells%20twice%2C%20and%20the%20sum%20of%20numbers%20written%20in%20the%20cells%20of%20this%20path%20is%20maximum%20possible.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20columns%20in%20the%20table.%5Cn%5CnNext%20three%20lines%20contain%20%24%20n%20%24%20integers%20each%20%5Cu2014%20the%20description%20of%20the%20table.%20The%20%24%20j%20%24%20-th%20number%20in%20the%20%24%20i%20%24%20-th%20line%20corresponds%20to%20the%20cell%20%24%20a_%7Bij%7D%20%24%20%28%20%24%20-10%5E%7B9%7D%3C%3Da_%7Bij%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20of%20the%20table.%22%2C%22outputFormat%22%3A%22Output%20the%20maximum%20sum%20of%20numbers%20on%20a%20path%20from%20the%20upper%20left%20cell%20to%20the%20bottom%20right%20cell%20of%20the%20table%2C%20that%20doesn%27t%20visit%20any%20of%20the%20cells%20twice.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%201%201%5Cn1%20-1%201%5Cn1%201%201%5Cn%22%2C%227%5Cn%22%5D%2C%5B%225%5Cn10%2010%2010%20-1%20-1%5Cn-1%2010%2010%2010%2010%5Cn-1%2010%2010%2010%2010%5Cn%22%2C%22110%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20path%20for%20the%20first%20example%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF762D%5C%2Fd4bf8868df92d7c24fa764038356cd07e2a09006.png%29The%20path%20for%20the%20second%20example%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF762D%5C%2F0b9906fb129c151689b202b0d1e93e29e845ce4c.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F762%5C%2FD%22%2C%22id%22%3A%22762D%22%7D%2C%22translation%22%3A%22%23%23%20%20%20%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%2A%2A%5Cr%5Cn%5Cu4f60%5Cu88ab%5Cu7ed9%5Cu4e86%5Cu4e00%5Cu4e2a3%2An%5Cu7684%5Cu77e9%5Cu5f62%5Cu8868%5Cu683c%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu5c0f%5Cu683c%5Cu542b%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu3002%5Cu5982%5Cu679c%5Cu4e24%5Cu4e2a%5Cu683c%5Cu5b50%5Cu6709%5Cu5171%5Cu4eab%5Cu7684%5Cu8fb9%5Cuff0c%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu683c%5Cu5b50%5Cu79fb%5Cu5230%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu683c%5Cu5b50%5Cu3002%5Cr%5Cn%5Cu627e%5Cu5230%5Cu5982%5Cu4e0b%5Cu4ece%5Cu5de6%5Cu4e0a%5Cu89d2%5Cu7684%5Cu683c%5Cu5b50%5Cu5230%5Cu53f3%5Cu4e0b%5Cu89d2%5Cu7684%5Cu683c%5Cu5b50%5Cu7684%5Cu8def%5Cu5f84%5Cuff0c%5Cu8fd9%5Cu6761%5Cu8def%5Cu5f84%5Cu4e0d%5Cu80fd%5Cu91cd%5Cu590d%5Cu53c2%5Cu89c2%5Cu540c%5Cu4e00%5Cu4e2a%5Cu683c%5Cu5b50%5Cuff0c%5Cu5e76%5Cu4e14%5Cu8def%5Cu5f84%5Cu4e2d%5Cu7684%5Cu683c%5Cu5b50%5Cu4e2d%5Cu7684%5Cu6570%5Cu5b57%5Cu7684%5Cu548c%5Cu5e94%5Cu8be5%5Cu662f%5Cu53ef%5Cu80fd%5Cu7684%5Cu6700%5Cu5927%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn------------%5Cr%5Cn%5Cr%5Cn%23%23%20%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%2A%2A%23%23%20%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff081%3C%3Dn%3C%3D10%5E5%5Cuff09%2C%5Cu4ee3%5Cu8868%5Cu77e9%5Cu5f62%5Cu8868%5Cu683c%5Cu7684%5Cu7eb5%5Cu5217%5Cu5217%5Cu6570%5Cu3002%5Cr%5Cn%5Cu4e0b%5Cu4e09%5Cu884c%5Cu6bcf%5Cu884c%5Cu6709n%5Cu4e2a%5Cu6570%5Cuff0c%5Cu662f%5Cu5bf9%5Cu8868%5Cu683c%5Cu5bf9%5Cu63cf%5Cu8ff0%5Cu3002%5Cu7b2ci%5Cu884c%5Cu7b2cj%5Cu4e2a%5Cu6570%5Cu5bf9%5Cu5e94%5Cu683c%5Cu5b50aij%28-10%5E9%3C%3Daij%3C%3D10%5E9%29%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4ece%5Cu8868%5Cu683c%5Cu7684%5Cu5de6%5Cu4e0a%5Cu683c%5Cu5230%5Cu53f3%5Cu4e0b%5Cu683c%5Cu7684%5Cu8def%5Cu5f84%5Cu4e0a%5Cu7684%5Cu6700%5Cu5927%5Cu6570%5Cu5b57%5Cu603b%5Cu548c%5Cuff0c%5Cu4e0d%5Cu4f1a%5Cu91cd%5Cu590d%5Cu8bbf%5Cu95ee%5Cu540c%5Cu4e00%5Cu4e2a%5Cu683c%5Cu5b50%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22CF762D%22%2C%22title%22%3A%22Maximum%20path%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Maximum%20path%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573306449;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Maximum path</h1>
+<h2>题意翻译</h2>
+<div>## **题目描述**
+你被给了一个3*n的矩形表格。每个小格含有一个整数。如果两个格子有共享的边，你可以从一个格子移到另一个格子。
+找到如下从左上角的格子到右下角的格子的路径，这条路径不能重复参观同一个格子，并且路径中的格子中的数字的和应该是可能的最大值。
+------------
+## **输入格式**##
+第一行包含一个整数n（1<=n<=10^5）,代表矩形表格的纵列列数。
+下三行每行有n个数，是对表格对描述。第i行第j个数对应格子aij(-10^9<=aij<=10^9)。
+## 输出格式
+输出从表格的左上格到右下格的路径上的最大数字总和，不会重复访问同一个格子</div>
+<h2>题目描述</h2>
+<div>You are given a rectangular table $ 3×n $ . Each cell contains an integer. You can move from one cell to another if they share a side.
+Find such path from the upper left cell to the bottom right cell of the table that doesn't visit any of the cells twice, and the sum of numbers written in the cells of this path is maximum possible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $ n $ ( $ 1<=n<=10^{5} $ ) — the number of columns in the table.
+Next three lines contain $ n $ integers each — the description of the table. The $ j $ -th number in the $ i $ -th line corresponds to the cell $ a_{ij} $ ( $ -10^{9}<=a_{ij}<=10^{9} $ ) of the table.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output the maximum sum of numbers on a path from the upper left cell to the bottom right cell of the table, that doesn't visit any of the cells twice.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 1 1
+1 -1 1
+1 1 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>7
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>5
+10 10 10 -1 -1
+-1 10 10 10 10
+-1 10 10 10 10
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>110
+</code></pre>
+<h2>说明</h2>
+<div>The path for the first example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF762D/d4bf8868df92d7c24fa764038356cd07e2a09006.png)The path for the second example:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF762D/0b9906fb129c151689b202b0d1e93e29e845ce4c.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>
