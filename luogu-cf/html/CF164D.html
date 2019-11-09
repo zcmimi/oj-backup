@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Minimum Diameter - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391332:Uf+ZGZ0/lXYqLFNN0iCaOOFHtigjz6MySZogZi4Qzyw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20%24%20n%20%24%20points%20on%20the%20plane.%20You%20need%20to%20delete%20exactly%20%24%20k%20%24%20of%20them%20%24%20%28k%26lt%3Bn%29%20%24%20so%20that%20the%20diameter%20of%20the%20set%20of%20the%20remaining%20%24%20n-k%20%24%20points%20were%20as%20small%20as%20possible.%20The%20diameter%20of%20a%20set%20of%20points%20is%20the%20maximum%20pairwise%20distance%20between%20the%20points%20of%20the%20set.%20The%20diameter%20of%20a%20one%20point%20set%20equals%20zero.%22%2C%22inputFormat%22%3A%22The%20first%20input%20line%20contains%20a%20pair%20of%20integers%20%24%20n%2Ck%20%24%20%28%20%24%202%3C%3Dn%3C%3D1000%20%24%20%2C%20%24%201%3C%3Dk%3C%3D30%20%24%20%2C%20%24%20k%26lt%3Bn%20%24%20%29%20%5Cu2014%20the%20numbers%20of%20points%20on%20the%20plane%20and%20the%20number%20of%20points%20to%20delete%2C%20correspondingly.%5Cn%5CnNext%20%24%20n%20%24%20lines%20describe%20the%20points%2C%20one%20per%20line.%20Each%20description%20consists%20of%20a%20pair%20of%20integers%20%24%20x_%7Bi%7D%2Cy_%7Bi%7D%20%24%20%28%20%24%200%3C%3Dx_%7Bi%7D%2Cy_%7Bi%7D%3C%3D32000%20%24%20%29%20%5Cu2014%20the%20coordinates%20of%20the%20%24%20i%20%24%20-th%20point.%20The%20given%20points%20can%20coincide.%22%2C%22outputFormat%22%3A%22Print%20%24%20k%20%24%20different%20space-separated%20integers%20from%20%24%201%20%24%20to%20%24%20n%20%24%20%5Cu2014%20the%20numbers%20of%20points%20to%20delete.%20The%20points%20are%20numbered%20in%20the%20order%2C%20in%20which%20they%20are%20given%20in%20the%20input%20from%20%24%201%20%24%20to%20%24%20n%20%24%20.%20You%20can%20print%20the%20numbers%20in%20any%20order.%20If%20there%20are%20multiple%20solutions%2C%20print%20any%20of%20them.%22%2C%22samples%22%3A%5B%5B%225%202%5Cn1%202%5Cn0%200%5Cn2%202%5Cn1%201%5Cn3%203%5Cn%22%2C%225%202%22%5D%2C%5B%224%201%5Cn0%200%5Cn0%200%5Cn1%201%5Cn1%201%5Cn%22%2C%223%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F164%5C%2FD%22%2C%22id%22%3A%22164D%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu4f60%5Cu5728%5Cu56fe%5Cu4e0a%5Cu6709N%5Cu4e2a%5Cu70b9%5Cu3002%5Cu4f60%5Cu9700%5Cu8981%5Cu5b8c%5Cu5168%5Cu5220%5Cu9664%5Cu5176%5Cu4e2d%5Cu7684k%5Cuff08k%3Cn%5Cuff09%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu4ee5%5Cu4fbf%5Cu4f7f%5Cu5269%5Cu4f59%5Cu7684n-k%5Cu4e2a%5Cu70b9%5Cu7684%5Cu76f4%5Cu5f84%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5c0f%5Cu3002%5Cu4e00%5Cu7ec4%5Cu70b9%5Cu7684%5Cu76f4%5Cu5f84%5Cu662f%5Cu8be5%5Cu7ec4%5Cu70b9%5Cu4e2d%5Cu6bcf%5Cu4e24%5Cu4e2a%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6700%5Cu5927%5Cu6210%5Cu5bf9%5Cu8ddd%5Cu79bb%5Cu3002%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu7684%5Cu76f4%5Cu5f84%5Cu7b49%5Cu4e8e%5Cu96f6%5Cu3002%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu5bf9%5Cu6574%5Cu6570n%2Ck%5Cuff082%3C%3Dn%3C%3D1000%2C1%3C%3Dk%3C%3D30%2Ck%3Cn%5Cuff09n%5Cu4ee3%5Cu8868%5Cu5e73%5Cu9762%5Cu4e0a%5Cu7684%5Cu70b9%5Cu7684%5Cu6570%5Cu76ee%5Cuff0ck%5Cu4ee3%5Cu8868%5Cu8981%5Cu5220%5Cu9664%5Cu7684%5Cu70b9%5Cu7684%5Cu6570%5Cu76ee%5Cu3002%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684n%5Cu884c%5Cu63cf%5Cu8ff0%5Cu70b9%5Cuff0c%5Cu6bcf%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu3002%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu5bf9%5Cu6574%5Cu6570x%5Cuff0cy%5Cuff080%3C%3Dx%5Cuff0cy%3C%3D32000%5Cuff09%5Cu8868%5Cu793a%5Cu7b2ci%5Cu70b9%5Cu7684%5Cu5750%5Cu6807%5Cu3002%5Cu53ef%5Cu80fd%5Cu6709%5Cu91cd%5Cu70b9%5Cu3002%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu8f93%5Cu51fak%5Cu4e2a%5Cu4ee5%5Cu7a7a%5Cu95f4%5Cu5206%5Cu9694%5Cu7684%5Cuff0c%5Cu8981%5Cu5220%5Cu9664%5Cu7684%5Cu70b9%5Cu7684%5Cu5e8f%5Cu53f7%5Cuff08%5Cu8f93%5Cu5165%5Cu4e2d%5Cu7684%5Cu70b9%5Cu662f%5Cu6309%5Cu4ece1%5Cu5230n%5Cu7684%5Cu987a%5Cu5e8f%5Cu7f16%5Cu53f7%5Cu7684%5Cuff09%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu6309%5Cu4efb%5Cu610f%5Cu987a%5Cu5e8f%5Cu8f93%5Cu51fa%5Cu3002%5Cu5982%5Cu679c%5Cu6709%5Cu591a%5Cu4e2a%5Cu89e3%5Cu51b3%5Cu65b9%5Cu6848%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4efb%5Cu610f%5Cu4e00%5Cu79cd%5Cu65b9%5Cu6848%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A3%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22CF164D%22%2C%22title%22%3A%22Minimum%20Diameter%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A68085%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11931%2C%22name%22%3A%22CF164D%20Minimum%20Diameter%22%2C%22slug%22%3A%22CF164D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Minimum%20Diameter%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Minimum Diameter</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+你在图上有N个点。你需要完全删除其中的k（k<n）个点，以便使剩余的n-k个点的直径尽可能小。一组点的直径是该组点中每两个点之间的最大成对距离。一个点的直径等于零。 # 输入输出格式 ### 输入格式 第一行包含一对整数n,k（2<=n<=1000,1<=k<=30,k<n）n代表平面上的点的数目，k代表要删除的点的数目。 接下来的n行描述点，每行描述一个点。每行包含一对整数x，y（0<=x，y<=32000）表示第i点的坐标。可能有重点。 ### 输出格式 输出k个以空间分隔的，要删除的点的序号（输入中的点是按从1到n的顺序编号的）。你可以按任意顺序输出。如果有多个解决方案，输出任意一种方案。</div>
+<h2>题目描述</h2>
+<div>You are given $ n $ points on the plane. You need to delete exactly $ k $ of them $ (k&lt;n) $ so that the diameter of the set of the remaining $ n-k $ points were as small as possible. The diameter of a set of points is the maximum pairwise distance between the points of the set. The diameter of a one point set equals zero.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first input line contains a pair of integers $ n,k $ ( $ 2<=n<=1000 $ , $ 1<=k<=30 $ , $ k&lt;n $ ) — the numbers of points on the plane and the number of points to delete, correspondingly.
+Next $ n $ lines describe the points, one per line. Each description consists of a pair of integers $ x_{i},y_{i} $ ( $ 0<=x_{i},y_{i}<=32000 $ ) — the coordinates of the $ i $ -th point. The given points can coincide.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ k $ different space-separated integers from $ 1 $ to $ n $ — the numbers of points to delete. The points are numbered in the order, in which they are given in the input from $ 1 $ to $ n $ . You can print the numbers in any order. If there are multiple solutions, print any of them.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 2
+1 2
+0 0
+2 2
+1 1
+3 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5 2</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 1
+0 0
+0 0
+1 1
+1 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

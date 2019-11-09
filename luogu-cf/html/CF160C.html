@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Find Pair - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391284:k8iPfauF+2PjoPxui4AwAXr42qdRuFQGIRalPnwkxwY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%27ve%20got%20another%20problem%20dealing%20with%20arrays.%20Let%27s%20consider%20an%20arbitrary%20sequence%20containing%20%24%20n%20%24%20%28not%20necessarily%20different%29%20integers%20%24%20a_%7B1%7D%20%24%20%2C%20%24%20a_%7B2%7D%20%24%20%2C%20...%2C%20%24%20a_%7Bn%7D%20%24%20.%20We%20are%20interested%20in%20all%20possible%20pairs%20of%20numbers%20%28%20%24%20a_%7Bi%7D%20%24%20%2C%20%24%20a_%7Bj%7D%20%24%20%29%2C%20%28%20%24%201%3C%3Di%2Cj%3C%3Dn%20%24%20%29.%20In%20other%20words%2C%20let%27s%20consider%20all%20%24%20n%5E%7B2%7D%20%24%20pairs%20of%20numbers%2C%20picked%20from%20the%20given%20array.%5Cn%5CnFor%20example%2C%20in%20sequence%20%24%20a%3D%7B3%2C1%2C5%7D%20%24%20are%20%24%209%20%24%20pairs%20of%20numbers%3A%20%24%20%283%2C3%29%2C%283%2C1%29%2C%283%2C5%29%2C%281%2C3%29%2C%281%2C1%29%2C%281%2C5%29%2C%285%2C3%29%2C%285%2C1%29%2C%285%2C5%29%20%24%20.%5Cn%5CnLet%27s%20sort%20all%20resulting%20pairs%20lexicographically%20by%20non-decreasing.%20Let%20us%20remind%20you%20that%20pair%20%28%20%24%20p_%7B1%7D%20%24%20%2C%20%24%20q_%7B1%7D%20%24%20%29%20is%20lexicographically%20less%20than%20pair%20%28%20%24%20p_%7B2%7D%20%24%20%2C%20%24%20q_%7B2%7D%20%24%20%29%20only%20if%20either%20%24%20p_%7B1%7D%20%24%20%3C%20%24%20p_%7B2%7D%20%24%20%2C%20or%20%24%20p_%7B1%7D%20%24%20%3D%20%24%20p_%7B2%7D%20%24%20and%20%24%20q_%7B1%7D%20%24%20%3C%20%24%20q_%7B2%7D%20%24%20.%5Cn%5CnThen%20the%20sequence%2C%20mentioned%20above%2C%20will%20be%20sorted%20like%20that%3A%20%24%20%281%2C1%29%2C%281%2C3%29%2C%281%2C5%29%2C%283%2C1%29%2C%283%2C3%29%2C%283%2C5%29%2C%285%2C1%29%2C%285%2C3%29%2C%285%2C5%29%20%24%5Cn%5CnLet%27s%20number%20all%20the%20pair%20in%20the%20sorted%20list%20from%20%24%201%20%24%20to%20%24%20n%5E%7B2%7D%20%24%20.%20Your%20task%20is%20formulated%20like%20this%3A%20you%20should%20find%20the%20%24%20k%20%24%20-th%20pair%20in%20the%20ordered%20list%20of%20all%20possible%20pairs%20of%20the%20array%20you%27ve%20been%20given.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20k%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%2C1%3C%3Dk%3C%3Dn%5E%7B2%7D%20%24%20%29.%20The%20second%20line%20contains%20the%20array%20containing%20%24%20n%20%24%20integers%20%24%20a_%7B1%7D%20%24%20%2C%20%24%20a_%7B2%7D%20%24%20%2C%20...%2C%20%24%20a_%7Bn%7D%20%24%20%28%20%24%20-10%5E%7B9%7D%3C%3Da_%7Bi%7D%3C%3D10%5E%7B9%7D%20%24%20%29.%20The%20numbers%20in%20the%20array%20can%20coincide.%20All%20numbers%20are%20separated%20with%20spaces.%5Cn%5CnPlease%20do%20not%20use%20the%20%25lld%20specificator%20to%20read%20or%20write%2064-bit%20integers%20in%20%5Cu0421%2B%2B.%20It%20is%20preferred%20to%20use%20cin%2C%20cout%2C%20streams%20or%20the%20%25I64d%20specificator%20instead.%22%2C%22outputFormat%22%3A%22In%20the%20single%20line%20print%20two%20numbers%20%5Cu2014%20the%20sought%20%24%20k%20%24%20-th%20pair.%22%2C%22samples%22%3A%5B%5B%222%204%5Cn2%201%5Cn%22%2C%222%202%5Cn%22%5D%2C%5B%223%202%5Cn3%201%205%5Cn%22%2C%221%203%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20the%20sorted%20sequence%20for%20the%20given%20array%20looks%20as%3A%20%24%20%281%2C1%29%2C%281%2C2%29%2C%282%2C1%29%2C%282%2C2%29%20%24%20.%20The%20%24%204%20%24%20-th%20of%20them%20is%20pair%20%24%20%282%2C2%29%20%24%20.%5Cn%5CnThe%20sorted%20sequence%20for%20the%20array%20from%20the%20second%20sample%20is%20given%20in%20the%20statement.%20The%20%24%202%20%24%20-nd%20pair%20there%20is%20%24%20%281%2C3%29%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F160%5C%2FC%22%2C%22id%22%3A%22160C%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu4f60%5Cu53c8%5Cu9047%5Cu5230%5Cu4e86%5Cu4e00%5Cu9053%5Cu5173%5Cu4e8e%5Cu6392%5Cu5217%5Cu7684%5Cu95ee%5Cu9898%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu9996%5Cu5148%5Cuff0c%5Cu8003%5Cu8651%5Cu4e00%5Cu4e2a%5Cu5305%5Cu542b%20_n_%20%5Cu4e2a%5Cu6574%5Cu6570%5Cu7684%5Cu6570%5Cu5217%20_a%5Cu2081_%20%2C%20_a%5Cu2082_%20...%20_a%5Cu2099_%20%28%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu540c%29%5Cu3002%5Cu4f60%5Cu53d1%5Cu73b0%5Cu7531%5Cu5176%5Cu4e2d%5Cu4efb%5Cu610f%5Cu4e24%5Cu9879%5Cu7ec4%5Cu6210%5Cu7684%5Cu6570%5Cu5bf9%20%28a%5Cu1d62%2C%20a%5Cu2c7c%29%281%20%3C%3D%20i%2C%20j%20%3C%3D%20n%29%5Cu5341%5Cu5206%5Cu6709%5Cu8da3%5Cuff0c%5Cu4e8e%5Cu662f%5Cu4f60%5Cu60f3%5Cu63a2%5Cu7a76%5Cu7ed9%5Cu5b9a%5Cu6570%5Cu5217%5Cu4e2d%5Cu6240%5Cu6709%20_n%5Cu00b2_%20%5Cu7ec4%5Cu6570%5Cu5bf9%5Cu7684%5Cu89c4%5Cu5f8b%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu6570%5Cu5217%7B3%2C%201%2C%205%7D%5Cu80fd%5Cu7ec4%5Cu6210%5Cu4e5d%5Cu7ec4%5Cu6570%5Cu5bf9%5Cuff1a%5Cr%5Cn%283%2C%203%29%2C%20%283%2C%201%29%2C%20%283%2C%205%29%2C%20%281%2C%203%29%2C%20%281%2C%201%29%2C%20%281%2C%205%29%2C%20%285%2C%203%29%2C%20%285%2C%201%29%2C%20%285%2C%205%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cuff0c%5Cu5c06%5Cu8fd9%5Cu4e9b%5Cu6570%5Cu5bf9%5Cu6309%5Cu7167%5Cu5b57%5Cu5178%5Cu5e8f%5Cu5347%5Cu5e8f%5Cu6392%5Cu5217%5Cu3002%5Cu6bd4%5Cu5982%5Cuff0c%5Cu4e24%5Cu7ec4%5Cu6570%5Cu5bf9%28_p%5Cu2081_%2C%20_p%5Cu2082_%29%5Cuff0c%28_q%5Cu2081_%2C%20_q%5Cu2082_%29%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%20_p%5Cu2081_%20%3C%20_p%5Cu2082_%5Cuff0c%5Cu6216%20_p%5Cu2081_%20%3D%20_p%5Cu2082_%20%5Cu4e14%20_q%5Cu2081_%20%3C%20_q%5Cu2082_%20%5Cu65f6%5Cuff0c%5Cu6211%5Cu4eec%5Cu8bf4%28_p%5Cu2081_%2C%20_p%5Cu2082_%29%5Cu7684%5Cu5b57%5Cu5178%5Cu5e8f%5Cu5c0f%5Cu4e8e%28_q%5Cu2081_%2C%20_q%5Cu2082_%29%5Cu7684%5Cu5b57%5Cu5178%5Cu5e8f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e8e%5Cu662f%5Cuff0c%5Cu4e0a%5Cu8ff0%5Cu6570%5Cu5217%5Cu7ec4%5Cu6210%5Cu7684%5Cu6570%5Cu5bf9%5Cu6392%5Cu5e8f%5Cu540e%5Cu5c06%5Cu6210%5Cu4e3a%5Cuff1a%5Cr%5Cn%281%2C%201%29%2C%20%281%2C%203%29%2C%20%281%2C%205%29%2C%20%283%2C%201%29%2C%20%283%2C%203%29%2C%20%283%2C%205%29%2C%20%285%2C%201%29%2C%20%285%2C%203%29%2C%20%285%2C%205%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5c06%5Cu6392%5Cu597d%5Cu5e8f%5Cu7684%5Cu6570%5Cu7ec4%5Cu6807%5Cu4e0a%5Cu6309%5Cu987a%5Cu5e8f%5Cu7f16%5Cu53f7%5Cu4e3a%201%20%5Cuff5e%20_n%5Cu00b2_%20%5Cu3002%5Cu73b0%5Cu5728%5Cuff0c%5Cu4f60%5Cu60f3%5Cu8981%5Cu77e5%5Cu9053%5Cu5176%5Cu4e2d%5Cu7b2c%20_k_%20%5Cu7ec4%5Cu6570%5Cu5bf9%5Cu662f%5Cu4ec0%5Cu4e48%5Cu3002%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu62ec%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20_n_%20%5Cu548c%20_k_%20%281%20%3C%3D%20_n_%20%3C%3D%2010%5Cu2075%5Cuff0c1%20%3C%3D%20_k_%20%3C%3D%20_n%5Cu00b2_%20%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu62ec%20_n_%20%5Cu4e2a%5Cu6574%5Cu6570%20_a%5Cu2081_%20%2C%20_a%5Cu2082_%20...%20_a%5Cu2099_%20%28-10%5Cu2079%20%3C%3D%20a%5Cu1d62%20%3C%3D%2010%5Cu2079%29%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu5217%5Cu7684%5Cu6bcf%5Cu4e00%5Cu9879%5Cuff0c%5Cu6570%5Cu503c%5Cu53ef%5Cu4ee5%5Cu91cd%5Cu590d%5Cu3002%5Cu6bcf%5Cu4e00%5Cu9879%5Cu4e4b%5Cu95f4%5Cu7531%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6ce8%5Cu610f%5Cuff0cC%2B%2B%5Cu4e2d%5Cu4e0d%5Cu5efa%5Cu8bae%5Cu4f7f%5Cu7528%5Cu683c%5Cu5f0f%5Cu63a7%5Cu5236%5Cu7b26%20%25lld%20%5Cu8bfb%5Cu519964%5Cu4f4d%5Cu957f%5Cu6574%5Cu578b%5Cu6570%5Cu636e%5Cuff0c%5Cu6700%5Cu597d%5Cu4f7f%5Cu7528%20cin%5Cuff0ccout%5Cuff0cstreams%20%5Cu6216%20%25I64d%20%5Cu683c%5Cu5f0f%5Cu63a7%5Cu5236%5Cu7b26%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu62ec%5Cu4e24%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff0c%5Cu8868%5Cu793a%5Cu6392%5Cu597d%5Cu5e8f%5Cu7684%20_n%5Cu00b2_%20%5Cu4e2a%5Cu6570%5Cu5bf9%5Cu7684%5Cu7b2c%20_k_%20%5Cu7ec4%5Cu3002%5Cr%5Cn%23%20%5Cu8bf4%5Cu660e%5Cr%5Cn%5Cu6837%5Cu4f8b%20%231%20%5Cu4e2d%5Cu6392%5Cu597d%5Cu5e8f%5Cu7684%5Cu6570%5Cu5bf9%5Cu4e3a%5Cuff1a%5Cr%5Cn%281%2C%201%29%2C%20%281%2C%202%29%2C%20%282%2C%201%29%2C%20%282%2C%202%29%5Cr%5Cn%5Cu6240%5Cu4ee5%5Cu7b2c4%5Cu9879%5Cu4e3a%282%2C%202%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b%20%232%20%5Cu4e2d%5Cu6392%5Cu597d%5Cu5e8f%5Cu7684%5Cu6570%5Cu5bf9%5Cu4e3a%5Cuff1a%5Cr%5Cn%281%2C%201%29%2C%20%281%2C%203%29%2C%20%281%2C%205%29%2C%20%283%2C%201%29%2C%20%283%2C%203%29%2C%20%283%2C%205%29%2C%20%285%2C%201%29%2C%20%285%2C%203%29%2C%20%285%2C%205%29%5Cr%5Cn%5Cu6240%5Cu4ee5%5Cu7b2c2%5Cu9879%5Cu4e3a%281%2C%203%29%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A56%2C%22totalAccepted%22%3A21%2C%22pid%22%3A%22CF160C%22%2C%22title%22%3A%22Find%20Pair%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2513%22%2C%22title%22%3A%22%5BHAOI2009%5D%5Cu9006%5Cu5e8f%5Cu5bf9%5Cu6570%5Cu5217%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4009%22%2C%22title%22%3A%22%5Cu6c7d%5Cu8f66%5Cu52a0%5Cu6cb9%5Cu884c%5Cu9a76%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF160D%22%2C%22title%22%3A%22Edges%20in%20MST%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4170%22%2C%22title%22%3A%22%5BCQOI2007%5D%5Cu6d82%5Cu8272%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1010C%22%2C%22title%22%3A%22Border%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Find%20Pair%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Find Pair</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+你又遇到了一道关于排列的问题。
+首先，考虑一个包含 _n_ 个整数的数列 _a₁_ , _a₂_ ... _aₙ_ (不一定互不相同)。你发现由其中任意两项组成的数对 (aᵢ, aⱼ)(1 <= i, j <= n)十分有趣，于是你想探究给定数列中所有 _n²_ 组数对的规律。
+例如，数列{3, 1, 5}能组成九组数对：
+(3, 3), (3, 1), (3, 5), (1, 3), (1, 1), (1, 5), (5, 3), (5, 1), (5, 5)。
+接下来，将这些数对按照字典序升序排列。比如，两组数对(_p₁_, _p₂_)，(_q₁_, _q₂_)，当且仅当 _p₁_ < _p₂_，或 _p₁_ = _p₂_ 且 _q₁_ < _q₂_ 时，我们说(_p₁_, _p₂_)的字典序小于(_q₁_, _q₂_)的字典序。
+于是，上述数列组成的数对排序后将成为：
+(1, 1), (1, 3), (1, 5), (3, 1), (3, 3), (3, 5), (5, 1), (5, 3), (5, 5)。
+将排好序的数组标上按顺序编号为 1 ～ _n²_ 。现在，你想要知道其中第 _k_ 组数对是什么。
+# 输入输出格式
+## 输入格式
+第一行包括两个整数 _n_ 和 _k_ (1 <= _n_ <= 10⁵，1 <= _k_ <= _n²_ )。
+第二行包括 _n_ 个整数 _a₁_ , _a₂_ ... _aₙ_ (-10⁹ <= aᵢ <= 10⁹)，表示数列的每一项，数值可以重复。每一项之间由一个空格隔开。
+注意，C++中不建议使用格式控制符 %lld 读写64位长整型数据，最好使用 cin，cout，streams 或 %I64d 格式控制符。
+## 输出格式
+只有一行，包括两个数字，表示排好序的 _n²_ 个数对的第 _k_ 组。
+# 说明
+样例 #1 中排好序的数对为：
+(1, 1), (1, 2), (2, 1), (2, 2)
+所以第4项为(2, 2)。
+样例 #2 中排好序的数对为：
+(1, 1), (1, 3), (1, 5), (3, 1), (3, 3), (3, 5), (5, 1), (5, 3), (5, 5)
+所以第2项为(1, 3)。</div>
+<h2>题目描述</h2>
+<div>You've got another problem dealing with arrays. Let's consider an arbitrary sequence containing $ n $ (not necessarily different) integers $ a_{1} $ , $ a_{2} $ , ..., $ a_{n} $ . We are interested in all possible pairs of numbers ( $ a_{i} $ , $ a_{j} $ ), ( $ 1<=i,j<=n $ ). In other words, let's consider all $ n^{2} $ pairs of numbers, picked from the given array.
+For example, in sequence $ a={3,1,5} $ are $ 9 $ pairs of numbers: $ (3,3),(3,1),(3,5),(1,3),(1,1),(1,5),(5,3),(5,1),(5,5) $ .
+Let's sort all resulting pairs lexicographically by non-decreasing. Let us remind you that pair ( $ p_{1} $ , $ q_{1} $ ) is lexicographically less than pair ( $ p_{2} $ , $ q_{2} $ ) only if either $ p_{1} $ < $ p_{2} $ , or $ p_{1} $ = $ p_{2} $ and $ q_{1} $ < $ q_{2} $ .
+Then the sequence, mentioned above, will be sorted like that: $ (1,1),(1,3),(1,5),(3,1),(3,3),(3,5),(5,1),(5,3),(5,5) $
+Let's number all the pair in the sorted list from $ 1 $ to $ n^{2} $ . Your task is formulated like this: you should find the $ k $ -th pair in the ordered list of all possible pairs of the array you've been given.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ k $ ( $ 1<=n<=10^{5},1<=k<=n^{2} $ ). The second line contains the array containing $ n $ integers $ a_{1} $ , $ a_{2} $ , ..., $ a_{n} $ ( $ -10^{9}<=a_{i}<=10^{9} $ ). The numbers in the array can coincide. All numbers are separated with spaces.
+Please do not use the %lld specificator to read or write 64-bit integers in С++. It is preferred to use cin, cout, streams or the %I64d specificator instead.</div>
+<h3>输出格式</h3>
+<br />
+<div>In the single line print two numbers — the sought $ k $ -th pair.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 4
+2 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 2
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 2
+3 1 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1 3
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample the sorted sequence for the given array looks as: $ (1,1),(1,2),(2,1),(2,2) $ . The $ 4 $ -th of them is pair $ (2,2) $ .
+The sorted sequence for the array from the second sample is given in the statement. The $ 2 $ -nd pair there is $ (1,3) $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

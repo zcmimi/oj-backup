@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cd and pwd commands - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391262:KHNR804MBXHIhjxRM8R9Mvo6qHxXprf1Zo+WLPgq5bA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Vasya%20is%20writing%20an%20operating%20system%20shell%2C%20and%20it%20should%20have%20commands%20for%20working%20with%20directories.%20To%20begin%20with%2C%20he%20decided%20to%20go%20with%20just%20two%20commands%3A%20cd%20%28change%20the%20current%20directory%29%20and%20pwd%20%28display%20the%20current%20directory%29.%5Cn%5CnDirectories%20in%20Vasya%27s%20operating%20system%20form%20a%20traditional%20hierarchical%20tree%20structure.%20There%20is%20a%20single%20root%20directory%2C%20denoted%20by%20the%20slash%20character%20%5C%22%5C%2F%5C%22.%20Every%20other%20directory%20has%20a%20name%20%5Cu2014%20a%20non-empty%20string%20consisting%20of%20lowercase%20Latin%20letters.%20Each%20directory%20%28except%20for%20the%20root%29%20has%20a%20parent%20directory%20%5Cu2014%20the%20one%20that%20contains%20the%20given%20directory.%20It%20is%20denoted%20as%20%5C%22..%5C%22.%5Cn%5CnThe%20command%20cd%20takes%20a%20single%20parameter%2C%20which%20is%20a%20path%20in%20the%20file%20system.%20The%20command%20changes%20the%20current%20directory%20to%20the%20directory%20specified%20by%20the%20path.%20The%20path%20consists%20of%20the%20names%20of%20directories%20separated%20by%20slashes.%20The%20name%20of%20the%20directory%20can%20be%20%5C%22..%5C%22%2C%20which%20means%20a%20step%20up%20to%20the%20parent%20directory.%20%5Cu00ab..%5Cu00bb%20can%20be%20used%20in%20any%20place%20of%20the%20path%2C%20maybe%20several%20times.%20If%20the%20path%20begins%20with%20a%20slash%2C%20it%20is%20considered%20to%20be%20an%20absolute%20path%2C%20that%20is%2C%20the%20directory%20changes%20to%20the%20specified%20one%2C%20starting%20from%20the%20root.%20If%20the%20parameter%20begins%20with%20a%20directory%20name%20%28or%20%5C%22..%5C%22%29%2C%20it%20is%20considered%20to%20be%20a%20relative%20path%2C%20that%20is%2C%20the%20directory%20changes%20to%20the%20specified%20directory%2C%20starting%20from%20the%20current%20one.%5Cn%5CnThe%20command%20pwd%20should%20display%20the%20absolute%20path%20to%20the%20current%20directory.%20This%20path%20must%20not%20contain%20%5C%22..%5C%22.%5Cn%5CnInitially%2C%20the%20current%20directory%20is%20the%20root.%20All%20directories%20mentioned%20explicitly%20or%20passed%20indirectly%20within%20any%20command%20cd%20are%20considered%20to%20exist.%20It%20is%20guaranteed%20that%20there%20is%20no%20attempt%20of%20transition%20to%20the%20parent%20directory%20of%20the%20root%20directory.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20data%20contains%20the%20single%20integer%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D50%20%24%20%29%20%5Cu2014%20the%20number%20of%20commands.%5Cn%5CnThen%20follow%20%24%20n%20%24%20lines%2C%20each%20contains%20one%20command.%20Each%20of%20these%20lines%20contains%20either%20command%20pwd%2C%20or%20command%20cd%2C%20followed%20by%20a%20space-separated%20non-empty%20parameter.%5Cn%5CnThe%20command%20parameter%20cd%20only%20contains%20lower%20case%20Latin%20letters%2C%20slashes%20and%20dots%2C%20two%20slashes%20cannot%20go%20consecutively%2C%20dots%20occur%20only%20as%20the%20name%20of%20a%20parent%20pseudo-directory.%20The%20command%20parameter%20cd%20does%20not%20end%20with%20a%20slash%2C%20except%20when%20it%20is%20the%20only%20symbol%20that%20points%20to%20the%20root%20directory.%20The%20command%20parameter%20has%20a%20length%20from%201%20to%20200%20characters%2C%20inclusive.%5Cn%5CnDirectories%20in%20the%20file%20system%20can%20have%20the%20same%20names.%22%2C%22outputFormat%22%3A%22For%20each%20command%20pwd%20you%20should%20print%20the%20full%20absolute%20path%20of%20the%20given%20directory%2C%20ending%20with%20a%20slash.%20It%20should%20start%20with%20a%20slash%20and%20contain%20the%20list%20of%20slash-separated%20directories%20in%20the%20order%20of%20being%20nested%20from%20the%20root%20to%20the%20current%20folder.%20It%20should%20contain%20no%20dots.%22%2C%22samples%22%3A%5B%5B%227%5Cnpwd%5Cncd%20%5C%2Fhome%5C%2Fvasya%5Cnpwd%5Cncd%20..%5Cnpwd%5Cncd%20vasya%5C%2F..%5C%2Fpetya%5Cnpwd%5Cn%22%2C%22%5C%2F%5Cn%5C%2Fhome%5C%2Fvasya%5C%2F%5Cn%5C%2Fhome%5C%2F%5Cn%5C%2Fhome%5C%2Fpetya%5C%2F%5Cn%22%5D%2C%5B%224%5Cncd%20%5C%2Fa%5C%2Fb%5Cnpwd%5Cncd%20..%5C%2Fa%5C%2Fb%5Cnpwd%5Cn%22%2C%22%5C%2Fa%5C%2Fb%5C%2F%5Cn%5C%2Fa%5C%2Fa%5C%2Fb%5C%2F%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F158%5C%2FC%22%2C%22id%22%3A%22158C%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu9700%5Cu8981%5Cu5b9e%5Cu73b0%5Cu7c7b%5Cu4f3c%20Unix%20%5C%2F%20Linux%20%5Cu4e0b%5Cu7684%20%60cd%60%20%5Cu548c%20%60pwd%60%20%5Cu547d%5Cu4ee4%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e00%5Cu5f00%5Cu59cb%5Cuff0c%5Cu7528%5Cu6237%5Cu5904%5Cu4e8e%5Cu6839%5Cu76ee%5Cu5f55%20%60%5C%2F%60%20%5Cu4e0b%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%20%60cd%60%20%5Cu547d%5Cu4ee4%5Cuff0c%5Cu5b83%5Cu7684%5Cu4f5c%5Cu7528%5Cu662f%5Cu8df3%5Cu8f6c%5Cu5230%5Cu67d0%5Cu4e2a%5Cu8def%5Cu5f84%5Cu3002%5Cu8def%5Cu5f84%5Cu6709%5Cu76f8%5Cu5bf9%5Cu8def%5Cu5f84%5Cu548c%5Cu7edd%5Cu5bf9%5Cu8def%5Cu5f84%5Cuff0c%5Cu76f8%5Cu5bf9%5Cu8def%5Cu5f84%5Cu4ee5%5Cu6587%5Cu4ef6%5Cu5939%5Cu540d%5Cu5f00%5Cu5934%5Cuff0c%5Cu8868%5Cu793a%5Cu5f53%5Cu524d%5Cu76ee%5Cu5f55%5Cu4e0b%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cuff0c%5Cu7edd%5Cu5bf9%5Cu8def%5Cu5f84%5Cu4ee5%20%60%5C%2F%60%20%5Cu5f00%5Cu5934%5Cuff0c%5Cu8868%5Cu793a%5Cu6839%5Cu76ee%5Cu5f55%5Cu4e0b%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cu3002%5Cu540c%5Cu65f6%5Cuff0c%60..%60%20%5Cu6587%5Cu4ef6%5Cu5939%5Cu8868%5Cu793a%5Cu4e0a%5Cu4e00%5Cu5c42%5Cu6587%5Cu4ef6%5Cu5939%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%20%60pwd%60%20%5Cu547d%5Cu4ee4%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu8f93%5Cu51fa%5Cu5f53%5Cu524d%5Cu6240%5Cu5728%5Cu7684%5Cu7edd%5Cu5bf9%5Cu8def%5Cu5f84%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu4e2d%5Cu6240%5Cu6709%5Cu7684%5Cu6587%5Cu4ef6%5Cu5939%5Cu90fd%5Cu5b58%5Cu5728%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A4%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF158C%22%2C%22title%22%3A%22Cd%20and%20pwd%20commands%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Cd%20and%20pwd%20commands%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Cd and pwd commands</h1>
+<h2>题意翻译</h2>
+<div>你需要实现类似 Unix / Linux 下的 `cd` 和 `pwd` 命令。
+一开始，用户处于根目录 `/` 下。
+对于 `cd` 命令，它的作用是跳转到某个路径。路径有相对路径和绝对路径，相对路径以文件夹名开头，表示当前目录下的文件夹，绝对路径以 `/` 开头，表示根目录下的文件夹。同时，`..` 文件夹表示上一层文件夹。
+对于 `pwd` 命令，你需要输出当前所在的绝对路径。
+保证输入数据中所有的文件夹都存在。</div>
+<h2>题目描述</h2>
+<div>Vasya is writing an operating system shell, and it should have commands for working with directories. To begin with, he decided to go with just two commands: cd (change the current directory) and pwd (display the current directory).
+Directories in Vasya's operating system form a traditional hierarchical tree structure. There is a single root directory, denoted by the slash character "/". Every other directory has a name — a non-empty string consisting of lowercase Latin letters. Each directory (except for the root) has a parent directory — the one that contains the given directory. It is denoted as "..".
+The command cd takes a single parameter, which is a path in the file system. The command changes the current directory to the directory specified by the path. The path consists of the names of directories separated by slashes. The name of the directory can be "..", which means a step up to the parent directory. «..» can be used in any place of the path, maybe several times. If the path begins with a slash, it is considered to be an absolute path, that is, the directory changes to the specified one, starting from the root. If the parameter begins with a directory name (or ".."), it is considered to be a relative path, that is, the directory changes to the specified directory, starting from the current one.
+The command pwd should display the absolute path to the current directory. This path must not contain "..".
+Initially, the current directory is the root. All directories mentioned explicitly or passed indirectly within any command cd are considered to exist. It is guaranteed that there is no attempt of transition to the parent directory of the root directory.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input data contains the single integer $ n $ ( $ 1<=n<=50 $ ) — the number of commands.
+Then follow $ n $ lines, each contains one command. Each of these lines contains either command pwd, or command cd, followed by a space-separated non-empty parameter.
+The command parameter cd only contains lower case Latin letters, slashes and dots, two slashes cannot go consecutively, dots occur only as the name of a parent pseudo-directory. The command parameter cd does not end with a slash, except when it is the only symbol that points to the root directory. The command parameter has a length from 1 to 200 characters, inclusive.
+Directories in the file system can have the same names.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each command pwd you should print the full absolute path of the given directory, ending with a slash. It should start with a slash and contain the list of slash-separated directories in the order of being nested from the root to the current folder. It should contain no dots.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7
+pwd
+cd /home/vasya
+pwd
+cd ..
+pwd
+cd vasya/../petya
+pwd
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>/
+/home/vasya/
+/home/
+/home/petya/
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4
+cd /a/b
+pwd
+cd ../a/b
+pwd
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>/a/b/
+/a/a/b/
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

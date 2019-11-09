@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BHTML+BCSS - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391390:xUpRiTOrgcCgNawlFSVJgYmgS2MpMgTBqBnzCK5KRis=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22This%20problem%20is%20about%20imaginary%20languages%20BHTML%20and%20BCSS%2C%20which%20slightly%20resemble%20HTML%20and%20CSS.%20Read%20the%20problem%20statement%20carefully%20as%20the%20resemblance%20is%20rather%20slight%20and%20the%20problem%20uses%20very%20simplified%20analogs.%5Cn%5CnYou%20are%20given%20a%20BHTML%20document%20that%20resembles%20HTML%20but%20is%20much%20simpler.%20It%20is%20recorded%20as%20a%20sequence%20of%20opening%20and%20closing%20tags.%20A%20tag%20that%20looks%20like%20%5C%22%3Ctagname%3E%5C%22%20is%20called%20an%20opening%20tag%20and%20a%20tag%20that%20looks%20like%20%5C%22%3C%5C%2Ftagname%3E%5C%22%20is%20called%20a%20closing%20tag.%20Besides%2C%20there%20are%20self-closing%20tags%20that%20are%20written%20as%20%5C%22%3Ctagname%5C%2F%3E%5C%22%20and%20in%20this%20problem%20they%20are%20fully%20equivalent%20to%20%5C%22%3Ctagname%3E%3C%5C%2Ftagname%3E%5C%22.%20All%20tagnames%20in%20this%20problem%20are%20strings%20consisting%20of%20lowercase%20Latin%20letters%20with%20length%20from%201%20to%2010%20characters.%20Tagnames%20of%20different%20tags%20may%20coincide.%5Cn%5CnThe%20document%20tags%20form%20a%20correct%20bracket%20sequence%2C%20that%20is%2C%20we%20can%20obtain%20an%20empty%20sequence%20from%20the%20given%20one%20using%20the%20following%20operations%3A%5Cn%5Cn-%20remove%20any%20self-closing%20tag%20%5C%22%3Ctagname%5C%2F%3E%5C%22%2C%5Cn-%20remove%20a%20pair%20of%20an%20opening%20and%20a%20closing%20tag%20that%20go%20consecutively%20%28in%20this%20order%29%20and%20have%20the%20same%20names.%20In%20other%20words%2C%20remove%20substring%20%5C%22%3Ctagname%3E%3C%5C%2Ftagname%3E%5C%22.%5Cn%5CnFor%20example%2C%20you%20may%20be%20given%20such%20document%3A%20%5C%22%3Cheader%3E%3Cp%3E%3Ca%5C%2F%3E%3Cb%3E%3C%5C%2Fb%3E%3C%5C%2Fp%3E%3C%5C%2Fheader%3E%3Cfooter%3E%3C%5C%2Ffooter%3E%5C%22%20but%20you%20may%20not%20be%20given%20documents%20%5C%22%3Ca%3E%5C%22%2C%20%5C%22%3Ca%3E%3C%5C%2Fb%3E%5C%22%2C%20%5C%22%3C%5C%2Fa%3E%3Ca%3E%5C%22%20or%20%5C%22%3Ca%3E%3Cb%3E%3C%5C%2Fa%3E%3C%5C%2Fb%3E%5C%22.%5Cn%5CnObviously%2C%20for%20any%20opening%20tag%20there%20is%20the%20only%20matching%20closing%20one%20%5Cu2014%20each%20such%20pair%20is%20called%20an%20element.%20A%20self-closing%20tag%20also%20is%20an%20element.%20Let%27s%20consider%20that%20one%20element%20is%20nested%20inside%20another%20one%2C%20if%20tags%20of%20the%20first%20element%20are%20between%20tags%20of%20the%20second%20one.%20An%20element%20is%20not%20nested%20to%20itself.%20For%20instance%2C%20in%20the%20example%20above%20element%20%5C%22b%5C%22%20is%20nested%20in%20%5C%22header%5C%22%20and%20in%20%5C%22p%5C%22%2C%20but%20it%20isn%27t%20nested%20in%20%5C%22a%5C%22%20and%20%5C%22footer%5C%22%2C%20also%20it%20isn%27t%20nested%20to%20itself%20%28%5C%22b%5C%22%29.%20Element%20%5C%22header%5C%22%20has%20three%20elements%20nested%20in%20it%2C%20and%20%5C%22footer%5C%22%20has%20zero.%5Cn%5CnWe%20need%20the%20BCSS%20rules%20to%20apply%20styles%20when%20displaying%20elements%20of%20the%20BHTML%20documents.%20Each%20rule%20is%20recorded%20as%20a%20subsequence%20of%20words%20%5C%22%20%24%20x_%7B1%7D%20%24%20%24%20x_%7B2%7D%20%24%20...%20%24%20x_%7Bn%7D%20%24%20%5C%22.%20This%20rule%20has%20effect%20over%20all%20such%20elements%20%24%20t%20%24%20%2C%20which%20satisfy%20both%20conditions%20from%20the%20list%3A%5Cn%5Cn-%20there%20is%20a%20sequence%20of%20nested%20elements%20with%20tagnames%20%5C%22%20%24%20x_%7B1%7D%20%24%20%5C%22%2C%20%5C%22%20%24%20x_%7B2%7D%20%24%20%5C%22%2C%20...%2C%20%5C%22%20%24%20x_%7Bn%7D%20%24%20%5C%22%20%28that%20is%2C%20the%20second%20element%20is%20nested%20in%20the%20first%20one%2C%20the%20third%20element%20is%20nested%20in%20the%20second%20one%20and%20so%20on%29%2C%5Cn-%20this%20sequence%20ends%20with%20element%20%24%20t%20%24%20%28i.e.%20tagname%20of%20element%20%24%20t%20%24%20equals%20%5C%22%20%24%20x_%7Bn%7D%20%24%20%5C%22%29.%5Cn%5CnFor%20example%2C%20element%20%5C%22b%5C%22%20meets%20the%20conditions%20of%20the%20rule%20%5C%22a%20b%5C%22%20if%20for%20element%20%5C%22b%5C%22%20exists%20element%20%5C%22a%5C%22%20in%20which%20it%20is%20nested.%20Element%20%5C%22c%5C%22%20meets%20the%20conditions%20of%20the%20rule%20%5C%22a%20b%20b%20c%5C%22%2C%20if%20three%20elements%20exist%3A%20%5C%22a%5C%22%2C%20%5C%22b%5C%22%2C%20%5C%22b%5C%22%2C%20and%20in%20the%20chain%20%5C%22a%5C%22-%5C%22b%5C%22-%5C%22b%5C%22-%5C%22c%5C%22%20each%20following%20element%20is%20nested%20in%20the%20previous%20one.%5Cn%5CnGiven%20a%20BHTML%20document%20and%20a%20set%20of%20BCSS%20rules%2C%20write%20a%20program%20that%20determines%20the%20number%20of%20elements%20that%20meet%20the%20conditions%20of%20each%20rule.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20BHTML-document.%20The%20document%20has%20length%20from%20%24%204%20%24%20to%20%24%2010%5E%7B6%7D%20%24%20characters.%20The%20document%20has%20a%20correct%20structure%2C%20doesn%27t%20contain%20spaces%20or%20any%20other%20unnecessary%20characters.%20Tagnames%20consist%20of%20lowercase%20Latin%20letters%2C%20their%20lengths%20are%20from%201%20to%2010%20characters.%5Cn%5CnThe%20second%20line%20contains%20an%20integer%20%24%20m%20%24%20%28%20%24%201%3C%3Dm%3C%3D200%20%24%20%29%20%5Cu2014%20the%20number%20of%20queries.%20Then%20%24%20m%20%24%20lines%20contain%20the%20queries%2C%20one%20per%20line.%20Each%20query%20is%20a%20sequence%20%24%20x_%7B1%7D%2Cx_%7B2%7D%2C...%2Cx_%7Bn%7D%20%24%20%2C%20where%20%24%20x_%7Bi%7D%20%24%20is%20the%20%24%20i%20%24%20-th%20element%20of%20the%20query%2C%20and%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D200%20%24%20%29%20is%20the%20number%20of%20elements%20in%20the%20query.%20The%20elements%20are%20separated%20by%20single%20spaces.%20Each%20query%20doesn%27t%20begin%20with%20and%20doesn%27t%20end%20with%20a%20space.%20Each%20query%20element%20is%20a%20sequence%20of%20lowercase%20Latin%20letters%20with%20length%20from%201%20to%2010.%22%2C%22outputFormat%22%3A%22Print%20%24%20m%20%24%20lines%2C%20the%20%24%20j%20%24%20-th%20line%20should%20contain%20the%20number%20of%20elements%20of%20the%20document%20that%20correspond%20to%20the%20%24%20j%20%24%20-th%20BCSS-rule.%20If%20there%20are%20no%20such%20elements%20at%20all%2C%20print%20on%20the%20line%200.%22%2C%22samples%22%3A%5B%5B%22%26lt%3Ba%26gt%3B%26lt%3Bb%26gt%3B%26lt%3Bb%26gt%3B%26lt%3B%5C%2Fb%26gt%3B%26lt%3B%5C%2Fb%26gt%3B%26lt%3B%5C%2Fa%26gt%3B%26lt%3Ba%26gt%3B%26lt%3Bb%26gt%3B%26lt%3B%5C%2Fb%26gt%3B%26lt%3Bb%26gt%3B%26lt%3Bv%5C%2F%26gt%3B%26lt%3B%5C%2Fb%26gt%3B%26lt%3B%5C%2Fa%26gt%3B%26lt%3Bb%26gt%3B%26lt%3B%5C%2Fb%26gt%3B%5Cn4%5Cna%5Cna%20b%20b%5Cna%20b%5Cnb%20a%5Cn%22%2C%222%5Cn1%5Cn4%5Cn0%5Cn%22%5D%2C%5B%22%26lt%3Bb%26gt%3B%26lt%3Baa%5C%2F%26gt%3B%26lt%3B%5C%2Fb%26gt%3B%26lt%3Baa%26gt%3B%26lt%3Bb%5C%2F%26gt%3B%26lt%3Bb%5C%2F%26gt%3B%26lt%3B%5C%2Faa%26gt%3B%5Cn5%5Cnaa%20b%5Cnb%5Cnaa%5Cnb%20aa%5Cna%5Cn%22%2C%222%5Cn3%5Cn2%5Cn1%5Cn0%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F172%5C%2FE%22%2C%22id%22%3A%22172E%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A3%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22CF172E%22%2C%22title%22%3A%22BHTML%2BBCSS%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22BHTML%2BBCSS%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>BHTML+BCSS</h1>
+<h2>题目描述</h2>
+<div>This problem is about imaginary languages BHTML and BCSS, which slightly resemble HTML and CSS. Read the problem statement carefully as the resemblance is rather slight and the problem uses very simplified analogs.
+You are given a BHTML document that resembles HTML but is much simpler. It is recorded as a sequence of opening and closing tags. A tag that looks like "<tagname>" is called an opening tag and a tag that looks like "</tagname>" is called a closing tag. Besides, there are self-closing tags that are written as "<tagname/>" and in this problem they are fully equivalent to "<tagname></tagname>". All tagnames in this problem are strings consisting of lowercase Latin letters with length from 1 to 10 characters. Tagnames of different tags may coincide.
+The document tags form a correct bracket sequence, that is, we can obtain an empty sequence from the given one using the following operations:
+- remove any self-closing tag "<tagname/>",
+- remove a pair of an opening and a closing tag that go consecutively (in this order) and have the same names. In other words, remove substring "<tagname></tagname>".
+For example, you may be given such document: "<header><p><a/><b></b></p></header><footer></footer>" but you may not be given documents "<a>", "<a></b>", "</a><a>" or "<a><b></a></b>".
+Obviously, for any opening tag there is the only matching closing one — each such pair is called an element. A self-closing tag also is an element. Let's consider that one element is nested inside another one, if tags of the first element are between tags of the second one. An element is not nested to itself. For instance, in the example above element "b" is nested in "header" and in "p", but it isn't nested in "a" and "footer", also it isn't nested to itself ("b"). Element "header" has three elements nested in it, and "footer" has zero.
+We need the BCSS rules to apply styles when displaying elements of the BHTML documents. Each rule is recorded as a subsequence of words " $ x_{1} $ $ x_{2} $ ... $ x_{n} $ ". This rule has effect over all such elements $ t $ , which satisfy both conditions from the list:
+- there is a sequence of nested elements with tagnames " $ x_{1} $ ", " $ x_{2} $ ", ..., " $ x_{n} $ " (that is, the second element is nested in the first one, the third element is nested in the second one and so on),
+- this sequence ends with element $ t $ (i.e. tagname of element $ t $ equals " $ x_{n} $ ").
+For example, element "b" meets the conditions of the rule "a b" if for element "b" exists element "a" in which it is nested. Element "c" meets the conditions of the rule "a b b c", if three elements exist: "a", "b", "b", and in the chain "a"-"b"-"b"-"c" each following element is nested in the previous one.
+Given a BHTML document and a set of BCSS rules, write a program that determines the number of elements that meet the conditions of each rule.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a BHTML-document. The document has length from $ 4 $ to $ 10^{6} $ characters. The document has a correct structure, doesn't contain spaces or any other unnecessary characters. Tagnames consist of lowercase Latin letters, their lengths are from 1 to 10 characters.
+The second line contains an integer $ m $ ( $ 1<=m<=200 $ ) — the number of queries. Then $ m $ lines contain the queries, one per line. Each query is a sequence $ x_{1},x_{2},...,x_{n} $ , where $ x_{i} $ is the $ i $ -th element of the query, and $ n $ ( $ 1<=n<=200 $ ) is the number of elements in the query. The elements are separated by single spaces. Each query doesn't begin with and doesn't end with a space. Each query element is a sequence of lowercase Latin letters with length from 1 to 10.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ m $ lines, the $ j $ -th line should contain the number of elements of the document that correspond to the $ j $ -th BCSS-rule. If there are no such elements at all, print on the line 0.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>&amp;lt;a&amp;gt;&amp;lt;b&amp;gt;&amp;lt;b&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;a&amp;gt;&amp;lt;b&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;b&amp;gt;&amp;lt;v/&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;b&amp;gt;&amp;lt;/b&amp;gt;
+4
+a
+a b b
+a b
+b a
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+1
+4
+0
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>&amp;lt;b&amp;gt;&amp;lt;aa/&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;aa&amp;gt;&amp;lt;b/&amp;gt;&amp;lt;b/&amp;gt;&amp;lt;/aa&amp;gt;
+5
+aa b
+b
+aa
+b aa
+a
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>2
+3
+2
+1
+0
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Conveyor - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391320:CL8YmP96lMbIi0//T/QkBGLLMcfKusvfVEaymHzNzuU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Anton%20came%20to%20a%20chocolate%20factory.%20There%20he%20found%20a%20working%20conveyor%20and%20decided%20to%20run%20on%20it%20from%20the%20beginning%20to%20the%20end.%5Cn%5CnThe%20conveyor%20is%20a%20looped%20belt%20with%20a%20total%20length%20of%20%24%202l%20%24%20meters%2C%20of%20which%20%24%20l%20%24%20meters%20are%20located%20on%20the%20surface%20and%20are%20arranged%20in%20a%20straight%20line.%20The%20part%20of%20the%20belt%20which%20turns%20at%20any%20moment%20%28the%20part%20which%20emerges%20from%20under%20the%20floor%20to%20the%20surface%20and%20returns%20from%20the%20surface%20under%20the%20floor%29%20is%20assumed%20to%20be%20negligibly%20short.%5Cn%5CnThe%20belt%20is%20moving%20uniformly%20at%20speed%20%24%20v_%7B1%7D%20%24%20meters%20per%20second.%20Anton%20will%20be%20moving%20on%20it%20in%20the%20same%20direction%20at%20the%20constant%20speed%20of%20%24%20v_%7B2%7D%20%24%20meters%20per%20second%2C%20so%20his%20speed%20relatively%20to%20the%20floor%20will%20be%20%24%20v_%7B1%7D%2Bv_%7B2%7D%20%24%20meters%20per%20second.%20Anton%20will%20neither%20stop%20nor%20change%20the%20speed%20or%20the%20direction%20of%20movement.%5Cn%5CnHere%20and%20there%20there%20are%20chocolates%20stuck%20to%20the%20belt%20%28%20%24%20n%20%24%20chocolates%29.%20They%20move%20together%20with%20the%20belt%2C%20and%20do%20not%20come%20off%20it.%20Anton%20is%20keen%20on%20the%20chocolates%2C%20but%20he%20is%20more%20keen%20to%20move%20forward.%20So%20he%20will%20pick%20up%20all%20the%20chocolates%20he%20will%20pass%20by%2C%20but%20nothing%20more.%20If%20a%20chocolate%20is%20at%20the%20beginning%20of%20the%20belt%20at%20the%20moment%20when%20Anton%20starts%20running%2C%20he%20will%20take%20it%2C%20and%20if%20a%20chocolate%20is%20at%20the%20end%20of%20the%20belt%20at%20the%20moment%20when%20Anton%20comes%20off%20the%20belt%2C%20he%20will%20leave%20it.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF163C%5C%2Fecea59876b6062e31fc2946453a849ab5fc36d2b.png%29%20The%20figure%20shows%20an%20example%20with%20two%20chocolates.%20One%20is%20located%20in%20the%20position%20%24%20a_%7B1%7D%3Dl-d%20%24%20%2C%20and%20is%20now%20on%20the%20top%20half%20of%20the%20belt%2C%20the%20second%20one%20is%20in%20the%20position%20%24%20a_%7B2%7D%3D2l-d%20%24%20%2C%20and%20is%20now%20on%20the%20bottom%20half%20of%20the%20belt.%20You%20are%20given%20the%20positions%20of%20the%20chocolates%20relative%20to%20the%20initial%20start%20position%20of%20the%20belt%20%24%200%3C%3Da_%7B1%7D%26lt%3Ba_%7B2%7D%26lt%3B...%26lt%3Ba_%7Bn%7D%26lt%3B2l%20%24%20.%20The%20positions%20on%20the%20belt%20from%20%24%200%20%24%20to%20%24%20l%20%24%20correspond%20to%20the%20top%2C%20and%20from%20%24%20l%20%24%20to%20%24%202l%20%24%20%5Cu2014%20to%20the%20the%20bottom%20half%20of%20the%20belt%20%28see%20example%29.%20All%20coordinates%20are%20given%20in%20meters.%5Cn%5CnAnton%20begins%20to%20run%20along%20the%20belt%20at%20a%20random%20moment%20of%20time.%20This%20means%20that%20all%20possible%20positions%20of%20the%20belt%20at%20the%20moment%20he%20starts%20running%20are%20equiprobable.%20For%20each%20%24%20i%20%24%20from%20%24%200%20%24%20to%20%24%20n%20%24%20calculate%20the%20probability%20that%20Anton%20will%20pick%20up%20exactly%20%24%20i%20%24%20chocolates.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20space-separated%20integers%20%24%20n%20%24%20%2C%20%24%20l%20%24%20%2C%20%24%20v_%7B1%7D%20%24%20and%20%24%20v_%7B2%7D%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%2C%20%24%201%3C%3Dl%2Cv_%7B1%7D%2Cv_%7B2%7D%3C%3D10%5E%7B9%7D%20%24%20%29%20%5Cu2014%20the%20number%20of%20the%20chocolates%2C%20the%20length%20of%20the%20conveyor%27s%20visible%20part%2C%20the%20conveyor%27s%20speed%20and%20Anton%27s%20speed.%5Cn%5CnThe%20second%20line%20contains%20a%20sequence%20of%20space-separated%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20%28%20%24%200%3C%3Da_%7B1%7D%26lt%3Ba_%7B2%7D%26lt%3B...%26lt%3Ba_%7Bn%7D%26lt%3B2l%20%24%20%29%20%5Cu2014%20the%20coordinates%20of%20the%20chocolates.%22%2C%22outputFormat%22%3A%22Print%20%24%20n%2B1%20%24%20numbers%20%28one%20per%20line%29%3A%20the%20probabilities%20that%20Anton%20picks%20up%20exactly%20%24%20i%20%24%20chocolates%2C%20for%20each%20%24%20i%20%24%20from%20%24%200%20%24%20%28the%20first%20line%29%20to%20%24%20n%20%24%20%28the%20last%20line%29.%20The%20answer%20will%20be%20considered%20correct%20if%20each%20number%20will%20have%20absolute%20or%20relative%20error%20of%20at%20most%20than%20%24%2010%5E%7B-9%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%221%201%201%201%5Cn0%5Cn%22%2C%220.75000000000000000000%5Cn0.25000000000000000000%5Cn%22%5D%2C%5B%222%203%201%202%5Cn2%205%5Cn%22%2C%220.33333333333333331000%5Cn0.66666666666666663000%5Cn0.00000000000000000000%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20test%20Anton%20can%20pick%20up%20a%20chocolate%20if%20by%20the%20moment%20he%20starts%20running%20its%20coordinate%20is%20less%20than%200.5%3B%20but%20if%20by%20the%20moment%20the%20boy%20starts%20running%20the%20chocolate%27s%20coordinate%20is%20greater%20than%20or%20equal%20to%200.5%2C%20then%20Anton%20won%27t%20be%20able%20to%20pick%20it%20up.%20As%20all%20positions%20of%20the%20belt%20are%20equiprobable%2C%20the%20probability%20of%20picking%20up%20the%20chocolate%20equals%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF163C%5C%2F602b88373d9608e204fc61410e9f816ff376a2b2.png%29%2C%20and%20the%20probability%20of%20not%20picking%20it%20up%20equals%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF163C%5C%2F70dca66c1e73c9ed2f574d47825bf5e09220d716.png%29.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F163%5C%2FC%22%2C%22id%22%3A%22163C%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF163C%22%2C%22title%22%3A%22Conveyor%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Conveyor%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Conveyor</h1>
+<h2>题目描述</h2>
+<div>Anton came to a chocolate factory. There he found a working conveyor and decided to run on it from the beginning to the end.
+The conveyor is a looped belt with a total length of $ 2l $ meters, of which $ l $ meters are located on the surface and are arranged in a straight line. The part of the belt which turns at any moment (the part which emerges from under the floor to the surface and returns from the surface under the floor) is assumed to be negligibly short.
+The belt is moving uniformly at speed $ v_{1} $ meters per second. Anton will be moving on it in the same direction at the constant speed of $ v_{2} $ meters per second, so his speed relatively to the floor will be $ v_{1}+v_{2} $ meters per second. Anton will neither stop nor change the speed or the direction of movement.
+Here and there there are chocolates stuck to the belt ( $ n $ chocolates). They move together with the belt, and do not come off it. Anton is keen on the chocolates, but he is more keen to move forward. So he will pick up all the chocolates he will pass by, but nothing more. If a chocolate is at the beginning of the belt at the moment when Anton starts running, he will take it, and if a chocolate is at the end of the belt at the moment when Anton comes off the belt, he will leave it.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF163C/ecea59876b6062e31fc2946453a849ab5fc36d2b.png) The figure shows an example with two chocolates. One is located in the position $ a_{1}=l-d $ , and is now on the top half of the belt, the second one is in the position $ a_{2}=2l-d $ , and is now on the bottom half of the belt. You are given the positions of the chocolates relative to the initial start position of the belt $ 0<=a_{1}&lt;a_{2}&lt;...&lt;a_{n}&lt;2l $ . The positions on the belt from $ 0 $ to $ l $ correspond to the top, and from $ l $ to $ 2l $ — to the the bottom half of the belt (see example). All coordinates are given in meters.
+Anton begins to run along the belt at a random moment of time. This means that all possible positions of the belt at the moment he starts running are equiprobable. For each $ i $ from $ 0 $ to $ n $ calculate the probability that Anton will pick up exactly $ i $ chocolates.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains space-separated integers $ n $ , $ l $ , $ v_{1} $ and $ v_{2} $ ( $ 1<=n<=10^{5} $ , $ 1<=l,v_{1},v_{2}<=10^{9} $ ) — the number of the chocolates, the length of the conveyor's visible part, the conveyor's speed and Anton's speed.
+The second line contains a sequence of space-separated integers $ a_{1},a_{2},...,a_{n} $ ( $ 0<=a_{1}&lt;a_{2}&lt;...&lt;a_{n}&lt;2l $ ) — the coordinates of the chocolates.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ n+1 $ numbers (one per line): the probabilities that Anton picks up exactly $ i $ chocolates, for each $ i $ from $ 0 $ (the first line) to $ n $ (the last line). The answer will be considered correct if each number will have absolute or relative error of at most than $ 10^{-9} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 1 1 1
+0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0.75000000000000000000
+0.25000000000000000000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>2 3 1 2
+2 5
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>0.33333333333333331000
+0.66666666666666663000
+0.00000000000000000000
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample test Anton can pick up a chocolate if by the moment he starts running its coordinate is less than 0.5; but if by the moment the boy starts running the chocolate's coordinate is greater than or equal to 0.5, then Anton won't be able to pick it up. As all positions of the belt are equiprobable, the probability of picking up the chocolate equals ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF163C/602b88373d9608e204fc61410e9f816ff376a2b2.png), and the probability of not picking it up equals ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF163C/70dca66c1e73c9ed2f574d47825bf5e09220d716.png).</div>
+</article>
+</div>
+</div>
+</body>
+</html>

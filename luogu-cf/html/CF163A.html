@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Substring and Subsequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391315:mzUWyFmiaJbaf4T+ocCa6zPqyqgffS34CT76QHFWyjI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22One%20day%20Polycarpus%20got%20hold%20of%20two%20non-empty%20strings%20%24%20s%20%24%20and%20%24%20t%20%24%20%2C%20consisting%20of%20lowercase%20Latin%20letters.%20Polycarpus%20is%20quite%20good%20with%20strings%2C%20so%20he%20immediately%20wondered%2C%20how%20many%20different%20pairs%20of%20%5C%22%20%24%20x%20%24%20%24%20y%20%24%20%5C%22%20are%20there%2C%20such%20that%20%24%20x%20%24%20is%20a%20substring%20of%20string%20%24%20s%20%24%20%2C%20%24%20y%20%24%20is%20a%20subsequence%20of%20string%20%24%20t%20%24%20%2C%20and%20the%20content%20of%20%24%20x%20%24%20and%20%24%20y%20%24%20is%20the%20same.%20Two%20pairs%20are%20considered%20different%2C%20if%20they%20contain%20different%20substrings%20of%20string%20%24%20s%20%24%20or%20different%20subsequences%20of%20string%20%24%20t%20%24%20.%20Read%20the%20whole%20statement%20to%20understand%20the%20definition%20of%20different%20substrings%20and%20subsequences.%5Cn%5CnThe%20length%20of%20string%20%24%20s%20%24%20is%20the%20number%20of%20characters%20in%20it.%20If%20we%20denote%20the%20length%20of%20the%20string%20%24%20s%20%24%20as%20%24%20%7Cs%7C%20%24%20%2C%20we%20can%20write%20the%20string%20as%20%24%20s%3Ds_%7B1%7Ds_%7B2%7D...%5C%5C%20s_%7B%7Cs%7C%7D%20%24%20.%5Cn%5CnA%20substring%20of%20%24%20s%20%24%20is%20a%20non-empty%20string%20%24%20x%3Ds%5Ba...%5C%5C%20b%5D%3Ds_%7Ba%7Ds_%7Ba%2B1%7D...%5C%5C%20s_%7Bb%7D%20%24%20%28%20%24%201%3C%3Da%3C%3Db%3C%3D%7Cs%7C%20%24%20%29.%20For%20example%2C%20%5C%22code%5C%22%20and%20%5C%22force%5C%22%20are%20substrings%20or%20%5C%22codeforces%5C%22%2C%20while%20%5C%22coders%5C%22%20is%20not.%20Two%20substrings%20%24%20s%5Ba...%5C%5C%20b%5D%20%24%20and%20%24%20s%5Bc...%5C%5C%20d%5D%20%24%20are%20considered%20to%20be%20different%20if%20%24%20a%5Cu2260c%20%24%20or%20%24%20b%5Cu2260d%20%24%20.%20For%20example%2C%20if%20%24%20s%20%24%20%3D%5C%22codeforces%5C%22%2C%20%24%20s%5B2...2%5D%20%24%20and%20%24%20s%5B6...6%5D%20%24%20are%20different%2C%20though%20their%20content%20is%20the%20same.%5Cn%5CnA%20subsequence%20of%20%24%20s%20%24%20is%20a%20non-empty%20string%20%24%20y%3Ds%5Bp_%7B1%7Dp_%7B2%7D...%5C%5C%20p_%7B%7Cy%7C%7D%5D%3Ds_%7Bp1%7Ds_%7Bp2%7D...%5C%5C%20s_%7Bp%7Cy%7C%7D%20%24%20%28%20%24%201%3C%3Dp_%7B1%7D%26lt%3Bp_%7B2%7D%26lt%3B...%26lt%3Bp_%7B%7Cy%7C%7D%3C%3D%7Cs%7C%20%24%20%29.%20For%20example%2C%20%5C%22coders%5C%22%20is%20a%20subsequence%20of%20%5C%22codeforces%5C%22.%20Two%20subsequences%20%24%20u%3Ds%5Bp_%7B1%7Dp_%7B2%7D...%5C%5C%20p_%7B%7Cu%7C%7D%5D%20%24%20and%20%24%20v%3Ds%5Bq_%7B1%7Dq_%7B2%7D...%5C%5C%20q_%7B%7Cv%7C%7D%5D%20%24%20are%20considered%20different%20if%20the%20sequences%20%24%20p%20%24%20and%20%24%20q%20%24%20are%20different.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20two%20lines.%20The%20first%20of%20them%20contains%20%24%20s%20%24%20%28%20%24%201%3C%3D%7Cs%7C%3C%3D5000%20%24%20%29%2C%20and%20the%20second%20one%20contains%20%24%20t%20%24%20%28%20%24%201%3C%3D%7Ct%7C%3C%3D5000%20%24%20%29.%20Both%20strings%20consist%20of%20lowercase%20Latin%20letters.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20number%20%5Cu2014%20the%20number%20of%20different%20pairs%20%5C%22%20%24%20x%20%24%20%24%20y%20%24%20%5C%22%20such%20that%20%24%20x%20%24%20is%20a%20substring%20of%20string%20%24%20s%20%24%20%2C%20%24%20y%20%24%20is%20a%20subsequence%20of%20string%20%24%20t%20%24%20%2C%20and%20the%20content%20of%20%24%20x%20%24%20and%20%24%20y%20%24%20is%20the%20same.%20As%20the%20answer%20can%20be%20rather%20large%2C%20print%20it%20modulo%20%24%201000000007%20%24%20%24%20%2810%5E%7B9%7D%2B7%29%20%24%20.%22%2C%22samples%22%3A%5B%5B%22aa%5Cnaa%5Cn%22%2C%225%5Cn%22%5D%2C%5B%22codeforces%5Cnforceofcode%5Cn%22%2C%2260%5Cn%22%5D%5D%2C%22hint%22%3A%22Let%27s%20write%20down%20all%20pairs%20%5C%22%20%24%20x%20%24%20%24%20y%20%24%20%5C%22%20that%20form%20the%20answer%20in%20the%20first%20sample%3A%20%5C%22%20%24%20s%5B1...1%5D%20%24%20%24%20t%5B1%5D%20%24%20%5C%22%2C%20%5C%22%20%24%20s%5B2...2%5D%20%24%20%24%20t%5B1%5D%20%24%20%5C%22%2C%20%5C%22%20%24%20s%5B1...1%5D%20%24%20%24%20t%5B2%5D%20%24%20%5C%22%2C%5C%22%20%24%20s%5B2...2%5D%20%24%20%24%20t%5B2%5D%20%24%20%5C%22%2C%20%5C%22%20%24%20s%5B1...2%5D%20%24%20%24%20t%5B1%5Cu00a02%5D%20%24%20%5C%22.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F163%5C%2FA%22%2C%22id%22%3A%22163A%22%7D%2C%22translation%22%3A%22%5Cu8f93%5Cu5165%5Cu5b57%5Cu7b26%5Cu4e32s%5Cuff0ct%5Cuff0c%5Cu8f93%5Cu51fa%5Cu6709%5Cu591a%5Cu5c11%5Cu5bf9%5Cu4e0d%5Cu540c%5Cu7684%5Cu201cx%20y%5Cu201d%5Cuff0c%5Cu4f7f%5Cu5f97x%5Cu662fs%5Cu7684%5Cu5b50%5Cu4e32%5Cuff0cy%5Cu662ft%5Cu7684%5Cu5b50%5Cu4e32%5Cuff0cx%5Cu548cy%5Cu7684%5Cu5185%5Cu5bb9%5Cu662f%5Cu76f8%5Cu540c%5Cu7684%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A82%2C%22totalAccepted%22%3A48%2C%22pid%22%3A%22CF163A%22%2C%22title%22%3A%22Substring%20and%20Subsequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1273%22%2C%22title%22%3A%22%5Cu6709%5Cu7ebf%5Cu7535%5Cu89c6%5Cu7f51%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2704%22%2C%22title%22%3A%22%5BNOI2001%5D%5Cu70ae%5Cu5175%5Cu9635%5Cu5730%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF571B%22%2C%22title%22%3A%22Minimization%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF366C%22%2C%22title%22%3A%22Dima%20and%20Salad%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF191A%22%2C%22title%22%3A%22Dynasty%20Puzzles%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Substring%20and%20Subsequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Substring and Subsequence</h1>
+<h2>题意翻译</h2>
+<div>输入字符串s，t，输出有多少对不同的“x y”，使得x是s的子串，y是t的子串，x和y的内容是相同的</div>
+<h2>题目描述</h2>
+<div>One day Polycarpus got hold of two non-empty strings $ s $ and $ t $ , consisting of lowercase Latin letters. Polycarpus is quite good with strings, so he immediately wondered, how many different pairs of " $ x $ $ y $ " are there, such that $ x $ is a substring of string $ s $ , $ y $ is a subsequence of string $ t $ , and the content of $ x $ and $ y $ is the same. Two pairs are considered different, if they contain different substrings of string $ s $ or different subsequences of string $ t $ . Read the whole statement to understand the definition of different substrings and subsequences.
+The length of string $ s $ is the number of characters in it. If we denote the length of the string $ s $ as $ |s| $ , we can write the string as $ s=s_{1}s_{2}...\ s_{|s|} $ .
+A substring of $ s $ is a non-empty string $ x=s[a...\ b]=s_{a}s_{a+1}...\ s_{b} $ ( $ 1<=a<=b<=|s| $ ). For example, "code" and "force" are substrings or "codeforces", while "coders" is not. Two substrings $ s[a...\ b] $ and $ s[c...\ d] $ are considered to be different if $ a≠c $ or $ b≠d $ . For example, if $ s $ ="codeforces", $ s[2...2] $ and $ s[6...6] $ are different, though their content is the same.
+A subsequence of $ s $ is a non-empty string $ y=s[p_{1}p_{2}...\ p_{|y|}]=s_{p1}s_{p2}...\ s_{p|y|} $ ( $ 1<=p_{1}&lt;p_{2}&lt;...&lt;p_{|y|}<=|s| $ ). For example, "coders" is a subsequence of "codeforces". Two subsequences $ u=s[p_{1}p_{2}...\ p_{|u|}] $ and $ v=s[q_{1}q_{2}...\ q_{|v|}] $ are considered different if the sequences $ p $ and $ q $ are different.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of two lines. The first of them contains $ s $ ( $ 1<=|s|<=5000 $ ), and the second one contains $ t $ ( $ 1<=|t|<=5000 $ ). Both strings consist of lowercase Latin letters.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single number — the number of different pairs " $ x $ $ y $ " such that $ x $ is a substring of string $ s $ , $ y $ is a subsequence of string $ t $ , and the content of $ x $ and $ y $ is the same. As the answer can be rather large, print it modulo $ 1000000007 $ $ (10^{9}+7) $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>aa
+aa
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>codeforces
+forceofcode
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>60
+</code></pre>
+<h2>说明</h2>
+<div>Let's write down all pairs " $ x $ $ y $ " that form the answer in the first sample: " $ s[1...1] $ $ t[1] $ ", " $ s[2...2] $ $ t[1] $ ", " $ s[1...1] $ $ t[2] $ "," $ s[2...2] $ $ t[2] $ ", " $ s[1...2] $ $ t[1 2] $ ".</div>
+</article>
+</div>
+</div>
+</body>
+</html>

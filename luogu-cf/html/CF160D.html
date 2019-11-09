@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Edges in MST - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573391287:tv0AhGmphvf1zQukl8JH0mNuV3mcwEuz3YnqGQfNviw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20connected%20weighted%20undirected%20graph%20without%20any%20loops%20and%20multiple%20edges.%5Cn%5CnLet%20us%20remind%20you%20that%20a%20graph%27s%20spanning%20tree%20is%20defined%20as%20an%20acyclic%20connected%20subgraph%20of%20the%20given%20graph%20that%20includes%20all%20of%20the%20graph%27s%20vertexes.%20The%20weight%20of%20a%20tree%20is%20defined%20as%20the%20sum%20of%20weights%20of%20the%20edges%20that%20the%20given%20tree%20contains.%20The%20minimum%20spanning%20tree%20%28MST%29%20of%20a%20graph%20is%20defined%20as%20the%20graph%27s%20spanning%20tree%20having%20the%20minimum%20possible%20weight.%20For%20any%20connected%20graph%20obviously%20exists%20the%20minimum%20spanning%20tree%2C%20but%20in%20the%20general%20case%2C%20a%20graph%27s%20minimum%20spanning%20tree%20is%20not%20unique.%5Cn%5CnYour%20task%20is%20to%20determine%20the%20following%20for%20each%20edge%20of%20the%20given%20graph%3A%20whether%20it%20is%20either%20included%20in%20any%20MST%2C%20or%20included%20at%20least%20in%20one%20MST%2C%20or%20not%20included%20in%20any%20MST.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%202%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%2C%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF160D%5C%2F1841eb9adb257200301ec3daad18abd00c456982.png%29%29%20%5Cu2014%20the%20number%20of%20the%20graph%27s%20vertexes%20and%20edges%2C%20correspondingly.%20Then%20follow%20%24%20m%20%24%20lines%2C%20each%20of%20them%20contains%20three%20integers%20%5Cu2014%20the%20description%20of%20the%20graph%27s%20edges%20as%20%5C%22%20%24%20a_%7Bi%7D%20%24%20%24%20b_%7Bi%7D%20%24%20%24%20w_%7Bi%7D%20%24%20%5C%22%20%28%20%24%201%3C%3Da_%7Bi%7D%2Cb_%7Bi%7D%3C%3Dn%2C1%3C%3Dw_%7Bi%7D%3C%3D10%5E%7B6%7D%2Ca_%7Bi%7D%5Cu2260b_%7Bi%7D%20%24%20%29%2C%20where%20%24%20a_%7Bi%7D%20%24%20and%20%24%20b_%7Bi%7D%20%24%20are%20the%20numbers%20of%20vertexes%20connected%20by%20the%20%24%20i%20%24%20-th%20edge%2C%20%24%20w_%7Bi%7D%20%24%20is%20the%20edge%27s%20weight.%20It%20is%20guaranteed%20that%20the%20graph%20is%20connected%20and%20doesn%27t%20contain%20loops%20or%20multiple%20edges.%22%2C%22outputFormat%22%3A%22Print%20%24%20m%20%24%20lines%20%5Cu2014%20the%20answers%20for%20all%20edges.%20If%20the%20%24%20i%20%24%20-th%20edge%20is%20included%20in%20any%20MST%2C%20print%20%5C%22any%5C%22%3B%20if%20the%20%24%20i%20%24%20-th%20edge%20is%20included%20at%20least%20in%20one%20MST%2C%20print%20%5C%22at%20least%20one%5C%22%3B%20if%20the%20%24%20i%20%24%20-th%20edge%20isn%27t%20included%20in%20any%20MST%2C%20print%20%5C%22none%5C%22.%20Print%20the%20answers%20for%20the%20edges%20in%20the%20order%20in%20which%20the%20edges%20are%20specified%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%224%205%5Cn1%202%20101%5Cn1%203%20100%5Cn2%203%202%5Cn2%204%202%5Cn3%204%201%5Cn%22%2C%22none%5Cnany%5Cnat%20least%20one%5Cnat%20least%20one%5Cnany%5Cn%22%5D%2C%5B%223%203%5Cn1%202%201%5Cn2%203%201%5Cn1%203%202%5Cn%22%2C%22any%5Cnany%5Cnnone%5Cn%22%5D%2C%5B%223%203%5Cn1%202%201%5Cn2%203%201%5Cn1%203%201%5Cn%22%2C%22at%20least%20one%5Cnat%20least%20one%5Cnat%20least%20one%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20second%20sample%20the%20MST%20is%20unique%20for%20the%20given%20graph%3A%20it%20contains%20two%20first%20edges.%5Cn%5CnIn%20the%20third%20sample%20any%20two%20edges%20form%20the%20MST%20for%20the%20given%20graph.%20That%20means%20that%20each%20edge%20is%20included%20at%20least%20in%20one%20MST.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F160%5C%2FD%22%2C%22id%22%3A%22160D%22%7D%2C%22translation%22%3A%22%5Cn%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%3A%5Cn%5Cn%5Cu7ed9%5Cu4e00%5Cu4e2a%5Cu5e26%5Cu6743%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%2C%5Cu4fdd%5Cu8bc1%5Cu6ca1%5Cu6709%5Cu81ea%5Cu73af%5Cu548c%5Cu91cd%5Cu8fb9.%20%5Cu7531%5Cu4e8e%5Cu6700%5Cu5c0f%5Cu751f%5Cu6210%5Cu6811%5Cu4e0d%5Cu552f%5Cu4e00%2C%5Cu56e0%5Cu6b64%5Cu4f60%5Cu9700%5Cu8981%5Cu786e%5Cu5b9a%5Cu6bcf%5Cu4e00%5Cu6761%5Cu8fb9%5Cu662f%5Cu4ee5%5Cu4e0b%5Cu4e09%5Cu79cd%5Cu60c5%5Cu51b5%5Cu54ea%5Cu4e00%5Cu4e2a%201.%5Cu4e00%5Cu5b9a%5Cu5728%5Cu6240%5Cu6709MST%5Cu4e0a%202.%5Cu53ef%5Cu80fd%5Cu5728%5Cu67d0%5Cu4e2aMST%5Cu4e0a%203.%5Cu4e00%5Cu5b9a%5Cu4e0d%5Cu53ef%5Cu80fd%5Cu5728%5Cu4efb%5Cu4f55MST%5Cu4e0a%5Cn%5Cu8f93%5Cu5165%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu7ed9%5Cu51fan%2Cm%5Cu8868%5Cu793a%5Cu70b9%5Cu6570%5Cu548c%5Cu8fb9%5Cu6570.%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cu89c1%5Cu539f%5Cu9898%5Cu9762%20%5Cu4e4b%5Cu540em%5Cu884c%2C%5Cu6bcf%5Cu884c%5Cu7ed9%5Cu51faai%2Cbi%2Cwi%20%5Cu8868%5Cu793a%5Cu4e00%5Cu4e2a%5Cu8fb9%5Cu7684%5Cu4e24%5Cu4e2a%5Cu7aef%5Cu70b9%5Cu548c%5Cu8fb9%5Cu7684%5Cu6743%5Cu503c.%5Cu4fdd%5Cu8bc1%5Cu6ca1%5Cu6709%5Cu81ea%5Cu73af%5Cu4e0e%5Cu91cd%5Cu8fb9.%5Cn%5Cu8f93%5Cu51fa%5Cn%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu8f93%5Cu51fam%5Cu884c%2C%5Cu6bcf%5Cu884c%5Cu4f9d%5Cu6b21%5Cu8868%5Cu793a%5Cu8f93%5Cu5165%5Cu7684%5Cu7b2c%5Cu51e0%5Cu6761%5Cu8fb9%2C%5Cu5982%5Cu679c%5Cu662f%5Cu60c5%5Cu51b51%2C%5Cu8f93%5Cu51fa%20%5C%22any%5C%22%28%5Cu4e0d%5Cu5305%5Cu542b%5Cu5f15%5Cu53f7%29%3B%5Cu5982%5Cu679c%5Cu662f%5Cu60c5%5Cu51b52%2C%5Cu8f93%5Cu51fa%20%5C%22at%20least%20one%5C%22%28%5Cu4e0d%5Cu5305%5Cu542b%5Cu5f15%5Cu53f7%29%3B%5Cu5982%5Cu679c%5Cu662f%5Cu60c5%5Cu51b53%2C%5Cu8f93%5Cu51fa%20%5C%22none%5C%22%28%5Cu4e0d%5Cu5305%5Cu542b%5Cu5f15%5Cu53f7%29.%5Cn%22%2C%22tags%22%3A%5B42%2C47%2C166%2C175%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A167%2C%22totalAccepted%22%3A59%2C%22pid%22%3A%22CF160D%22%2C%22title%22%3A%22Edges%20in%20MST%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A33700%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A11956%2C%22name%22%3A%22CF160D%20Edges%20in%20MST%22%2C%22slug%22%3A%22CF160D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3369%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu666e%5Cu901a%5Cu5e73%5Cu8861%5Cu6811%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3978%22%2C%22title%22%3A%22%5BTJOI2015%5D%5Cu6982%5Cu7387%5Cu8bba%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF311E%22%2C%22title%22%3A%22Biologist%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22SP10628%22%2C%22title%22%3A%22COT%20-%20Count%20on%20a%20tree%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22P5221%22%2C%22title%22%3A%22Product%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Edges%20in%20MST%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Edges in MST</h1>
+<h2>题意翻译</h2>
+<div>
+题目大意:
+给一个带权的无向图,保证没有自环和重边. 由于最小生成树不唯一,因此你需要确定每一条边是以下三种情况哪一个 1.一定在所有MST上 2.可能在某个MST上 3.一定不可能在任何MST上
+输入
+第一行给出n,m表示点数和边数. 数据范围见原题面 之后m行,每行给出ai,bi,wi 表示一个边的两个端点和边的权值.保证没有自环与重边.
+输出
+你需要输出m行,每行依次表示输入的第几条边,如果是情况1,输出 "any"(不包含引号);如果是情况2,输出 "at least one"(不包含引号);如果是情况3,输出 "none"(不包含引号).
+</div>
+<h2>题目描述</h2>
+<div>You are given a connected weighted undirected graph without any loops and multiple edges.
+Let us remind you that a graph's spanning tree is defined as an acyclic connected subgraph of the given graph that includes all of the graph's vertexes. The weight of a tree is defined as the sum of weights of the edges that the given tree contains. The minimum spanning tree (MST) of a graph is defined as the graph's spanning tree having the minimum possible weight. For any connected graph obviously exists the minimum spanning tree, but in the general case, a graph's minimum spanning tree is not unique.
+Your task is to determine the following for each edge of the given graph: whether it is either included in any MST, or included at least in one MST, or not included in any MST.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers $ n $ and $ m $ ( $ 2<=n<=10^{5} $ , ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF160D/1841eb9adb257200301ec3daad18abd00c456982.png)) — the number of the graph's vertexes and edges, correspondingly. Then follow $ m $ lines, each of them contains three integers — the description of the graph's edges as " $ a_{i} $ $ b_{i} $ $ w_{i} $ " ( $ 1<=a_{i},b_{i}<=n,1<=w_{i}<=10^{6},a_{i}≠b_{i} $ ), where $ a_{i} $ and $ b_{i} $ are the numbers of vertexes connected by the $ i $ -th edge, $ w_{i} $ is the edge's weight. It is guaranteed that the graph is connected and doesn't contain loops or multiple edges.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print $ m $ lines — the answers for all edges. If the $ i $ -th edge is included in any MST, print "any"; if the $ i $ -th edge is included at least in one MST, print "at least one"; if the $ i $ -th edge isn't included in any MST, print "none". Print the answers for the edges in the order in which the edges are specified in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 5
+1 2 101
+1 3 100
+2 3 2
+2 4 2
+3 4 1
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>none
+any
+at least one
+at least one
+any
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>3 3
+1 2 1
+2 3 1
+1 3 2
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>any
+any
+none
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>3 3
+1 2 1
+2 3 1
+1 3 1
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>at least one
+at least one
+at least one
+</code></pre>
+<h2>说明</h2>
+<div>In the second sample the MST is unique for the given graph: it contains two first edges.
+In the third sample any two edges form the MST for the given graph. That means that each edge is included at least in one MST.</div>
+</article>
+</div>
+</div>
+</body>
+</html>
