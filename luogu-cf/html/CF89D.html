@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Space mines - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390703:Nv9J2yRQBk7USQnqjDWnMRW/mg8PCq81WlCBVM2cb/8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Once%20upon%20a%20time%20in%20the%20galaxy%20of%20far%2C%20far%20away...%5Cn%5CnDarth%20Wader%20found%20out%20the%20location%20of%20a%20rebels%27%20base.%20Now%20he%20is%20going%20to%20destroy%20the%20base%20%28and%20the%20whole%20planet%20that%20the%20base%20is%20located%20at%29%2C%20using%20the%20Death%20Star.%5Cn%5CnWhen%20the%20rebels%20learnt%20that%20the%20Death%20Star%20was%20coming%2C%20they%20decided%20to%20use%20their%20new%20secret%20weapon%20%5Cu2014%20space%20mines.%20Let%27s%20describe%20a%20space%20mine%27s%20build.%5Cn%5CnEach%20space%20mine%20is%20shaped%20like%20a%20ball%20%28we%27ll%20call%20it%20the%20mine%20body%29%20of%20a%20certain%20radius%20%24%20r%20%24%20with%20the%20center%20in%20the%20point%20%24%20O%20%24%20.%20Several%20spikes%20protrude%20from%20the%20center.%20Each%20spike%20can%20be%20represented%20as%20a%20segment%2C%20connecting%20the%20center%20of%20the%20mine%20with%20some%20point%20%24%20P%20%24%20%2C%20such%20that%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF89D%5C%2F260097c7a43ccaae894b47162bab71c5ba9400fd.png%29%20%28transporting%20long-spiked%20mines%20is%20problematic%29%2C%20where%20%24%20%7COP%7C%20%24%20is%20the%20length%20of%20the%20segment%20connecting%20%24%20O%20%24%20and%20%24%20P%20%24%20.%20It%20is%20convenient%20to%20describe%20the%20point%20%24%20P%20%24%20by%20a%20vector%20%24%20p%20%24%20such%20that%20%24%20P%3DO%2Bp%20%24%20.%5Cn%5CnThe%20Death%20Star%20is%20shaped%20like%20a%20ball%20with%20the%20radius%20of%20%24%20R%20%24%20%28%20%24%20R%20%24%20exceeds%20any%20mine%27s%20radius%29.%20It%20moves%20at%20a%20constant%20speed%20along%20the%20%24%20v%20%24%20vector%20at%20the%20speed%20equal%20to%20%24%20%7Cv%7C%20%24%20.%20At%20the%20moment%20the%20rebels%20noticed%20the%20Star%20of%20Death%2C%20it%20was%20located%20in%20the%20point%20%24%20A%20%24%20.%5Cn%5CnThe%20rebels%20located%20%24%20n%20%24%20space%20mines%20along%20the%20Death%20Star%27s%20way.%20You%20may%20regard%20the%20mines%20as%20being%20idle.%20The%20Death%20Star%20does%20not%20know%20about%20the%20mines%27%20existence%20and%20cannot%20notice%20them%2C%20which%20is%20why%20it%20doesn%27t%20change%20the%20direction%20of%20its%20movement.%20As%20soon%20as%20the%20Star%20of%20Death%20touched%20the%20mine%20%28its%20body%20or%20one%20of%20the%20spikes%29%2C%20the%20mine%20bursts%20and%20destroys%20the%20Star%20of%20Death.%20A%20touching%20is%20the%20situation%20when%20there%20is%20a%20point%20in%20space%20which%20belongs%20both%20to%20the%20mine%20and%20to%20the%20Death%20Star.%20It%20is%20considered%20that%20Death%20Star%20will%20not%20be%20destroyed%20if%20it%20can%20move%20infinitely%20long%20time%20without%20touching%20the%20mines.%5Cn%5CnHelp%20the%20rebels%20determine%20whether%20they%20will%20succeed%20in%20destroying%20the%20Death%20Star%20using%20space%20mines%20or%20not.%20If%20they%20will%20succeed%2C%20determine%20the%20moment%20of%20time%20when%20it%20will%20happen%20%28starting%20from%20the%20moment%20the%20Death%20Star%20was%20noticed%29.%22%2C%22inputFormat%22%3A%22The%20first%20input%20data%20line%20contains%20%24%207%20%24%20integers%20%24%20A_%7Bx%7D%2CA_%7By%7D%2CA_%7Bz%7D%2Cv_%7Bx%7D%2Cv_%7By%7D%2Cv_%7Bz%7D%2CR%20%24%20.%20They%20are%20the%20Death%20Star%27s%20initial%20position%2C%20the%20direction%20of%20its%20movement%2C%20and%20its%20radius%20%28%20%24%20-10%3C%3Dv_%7Bx%7D%2Cv_%7By%7D%2Cv_%7Bz%7D%3C%3D10%20%24%20%2C%20%24%20%7Cv%7C%26gt%3B0%20%24%20%2C%20%24%200%26lt%3BR%3C%3D100%20%24%20%29.%5Cn%5CnThe%20second%20line%20contains%20an%20integer%20%24%20n%20%24%20%2C%20which%20is%20the%20number%20of%20mines%20%28%20%24%201%3C%3Dn%3C%3D100%20%24%20%29.%20Then%20follow%20%24%20n%20%24%20data%20blocks%2C%20the%20%24%20i%20%24%20-th%20of%20them%20describes%20the%20%24%20i%20%24%20-th%20mine.%5Cn%5CnThe%20first%20line%20of%20each%20block%20contains%20%24%205%20%24%20integers%20%24%20O_%7Bix%7D%2CO_%7Biy%7D%2CO_%7Biz%7D%2Cr_%7Bi%7D%2Cm_%7Bi%7D%20%24%20%2C%20which%20are%20the%20coordinates%20of%20the%20mine%20centre%2C%20the%20radius%20of%20its%20body%20and%20the%20number%20of%20spikes%20%28%20%24%200%26lt%3Br_%7Bi%7D%26lt%3B100%2C0%3C%3Dm_%7Bi%7D%3C%3D10%20%24%20%29.%20Then%20follow%20%24%20m_%7Bi%7D%20%24%20lines%2C%20describing%20the%20spikes%20of%20the%20%24%20i%20%24%20-th%20mine%2C%20where%20the%20%24%20j%20%24%20-th%20of%20them%20describes%20the%20%24%20i%20%24%20-th%20spike%20and%20contains%20%24%203%20%24%20integers%20%24%20p_%7Bijx%7D%2Cp_%7Bijy%7D%2Cp_%7Bijz%7D%20%24%20%5Cu2014%20the%20coordinates%20of%20the%20vector%20where%20the%20given%20spike%20is%20directed%20%28%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF89D%5C%2Fe15d6928125dbbd6d3db0eba4dcaa5f55ebb124f.png%29%29.%5Cn%5CnThe%20coordinates%20of%20the%20mines%27%20centers%20and%20the%20center%20of%20the%20Death%20Star%20are%20integers%2C%20their%20absolute%20value%20does%20not%20exceed%20%24%2010000%20%24%20.%20It%20is%20guaranteed%20that%20%24%20R%26gt%3Br_%7Bi%7D%20%24%20for%20any%20%24%201%3C%3Di%3C%3Dn%20%24%20.%20For%20any%20mines%20%24%20i%5Cu2260j%20%24%20the%20following%20inequality%20if%20fulfilled%3A%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF89D%5C%2Fc88573aa62fcdd898ca0b5d89890896a0c4700d4.png%29.%20Initially%20the%20Death%20Star%20and%20the%20mines%20do%20not%20have%20common%20points.%22%2C%22outputFormat%22%3A%22If%20the%20rebels%20will%20succeed%20in%20stopping%20the%20Death%20Star%20using%20space%20mines%2C%20print%20the%20time%20from%20the%20moment%20the%20Death%20Star%20was%20noticed%20to%20the%20blast.%5Cn%5CnIf%20the%20Death%20Star%20will%20not%20touch%20a%20mine%2C%20print%20%5C%22-1%5C%22%20%28without%20quotes%29.%5Cn%5CnFor%20the%20answer%20the%20absolute%20or%20relative%20error%20of%20%24%2010%5E%7B-6%7D%20%24%20is%20acceptable.%22%2C%22samples%22%3A%5B%5B%220%200%200%201%200%200%205%5Cn2%5Cn10%208%200%202%202%5Cn0%20-3%200%5Cn2%202%200%5Cn20%200%200%204%203%5Cn2%204%200%5Cn-4%203%200%5Cn1%20-5%200%5Cn%22%2C%2210.0000000000%22%5D%2C%5B%228%208%204%204%204%202%206%5Cn1%5Cn-2%20-2%20-1%203%200%5Cn%22%2C%22-1%22%5D%2C%5B%2230%2030%202%201%202%201%2020%5Cn3%5Cn0%200%2040%205%201%5Cn1%204%204%5Cn-10%20-40%20-5%207%200%5Cn100%20200%2095%208%201%5Cn-10%200%200%5Cn%22%2C%2274.6757620881%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F89%5C%2FD%22%2C%22id%22%3A%2289D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22CF89D%22%2C%22title%22%3A%22Space%20mines%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Space%20mines%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Space mines</h1>
+<h2>题目描述</h2>
+<div>Once upon a time in the galaxy of far, far away...
+Darth Wader found out the location of a rebels' base. Now he is going to destroy the base (and the whole planet that the base is located at), using the Death Star.
+When the rebels learnt that the Death Star was coming, they decided to use their new secret weapon — space mines. Let's describe a space mine's build.
+Each space mine is shaped like a ball (we'll call it the mine body) of a certain radius $ r $ with the center in the point $ O $ . Several spikes protrude from the center. Each spike can be represented as a segment, connecting the center of the mine with some point $ P $ , such that ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF89D/260097c7a43ccaae894b47162bab71c5ba9400fd.png) (transporting long-spiked mines is problematic), where $ |OP| $ is the length of the segment connecting $ O $ and $ P $ . It is convenient to describe the point $ P $ by a vector $ p $ such that $ P=O+p $ .
+The Death Star is shaped like a ball with the radius of $ R $ ( $ R $ exceeds any mine's radius). It moves at a constant speed along the $ v $ vector at the speed equal to $ |v| $ . At the moment the rebels noticed the Star of Death, it was located in the point $ A $ .
+The rebels located $ n $ space mines along the Death Star's way. You may regard the mines as being idle. The Death Star does not know about the mines' existence and cannot notice them, which is why it doesn't change the direction of its movement. As soon as the Star of Death touched the mine (its body or one of the spikes), the mine bursts and destroys the Star of Death. A touching is the situation when there is a point in space which belongs both to the mine and to the Death Star. It is considered that Death Star will not be destroyed if it can move infinitely long time without touching the mines.
+Help the rebels determine whether they will succeed in destroying the Death Star using space mines or not. If they will succeed, determine the moment of time when it will happen (starting from the moment the Death Star was noticed).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first input data line contains $ 7 $ integers $ A_{x},A_{y},A_{z},v_{x},v_{y},v_{z},R $ . They are the Death Star's initial position, the direction of its movement, and its radius ( $ -10<=v_{x},v_{y},v_{z}<=10 $ , $ |v|&gt;0 $ , $ 0&lt;R<=100 $ ).
+The second line contains an integer $ n $ , which is the number of mines ( $ 1<=n<=100 $ ). Then follow $ n $ data blocks, the $ i $ -th of them describes the $ i $ -th mine.
+The first line of each block contains $ 5 $ integers $ O_{ix},O_{iy},O_{iz},r_{i},m_{i} $ , which are the coordinates of the mine centre, the radius of its body and the number of spikes ( $ 0&lt;r_{i}&lt;100,0<=m_{i}<=10 $ ). Then follow $ m_{i} $ lines, describing the spikes of the $ i $ -th mine, where the $ j $ -th of them describes the $ i $ -th spike and contains $ 3 $ integers $ p_{ijx},p_{ijy},p_{ijz} $ — the coordinates of the vector where the given spike is directed (![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF89D/e15d6928125dbbd6d3db0eba4dcaa5f55ebb124f.png)).
+The coordinates of the mines' centers and the center of the Death Star are integers, their absolute value does not exceed $ 10000 $ . It is guaranteed that $ R&gt;r_{i} $ for any $ 1<=i<=n $ . For any mines $ i≠j $ the following inequality if fulfilled: ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF89D/c88573aa62fcdd898ca0b5d89890896a0c4700d4.png). Initially the Death Star and the mines do not have common points.</div>
+<h3>输出格式</h3>
+<br />
+<div>If the rebels will succeed in stopping the Death Star using space mines, print the time from the moment the Death Star was noticed to the blast.
+If the Death Star will not touch a mine, print "-1" (without quotes).
+For the answer the absolute or relative error of $ 10^{-6} $ is acceptable.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>0 0 0 1 0 0 5
+2
+10 8 0 2 2
+0 -3 0
+2 2 0
+20 0 0 4 3
+2 4 0
+-4 3 0
+1 -5 0
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>10.0000000000</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>8 8 4 4 4 2 6
+1
+-2 -2 -1 3 0
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>-1</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>30 30 2 1 2 1 20
+3
+0 0 40 5 1
+1 4 4
+-10 -40 -5 7 0
+100 200 95 8 1
+-10 0 0
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>74.6757620881</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

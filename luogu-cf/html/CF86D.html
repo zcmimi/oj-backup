@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Powerful array - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390684:2Mu23ZfNJRNUwRWjexgQ1JhcePXjxa+k9xtn2WYj+cQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22An%20array%20of%20positive%20integers%20%24%20a_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bn%7D%20%24%20is%20given.%20Let%20us%20consider%20its%20arbitrary%20subarray%20%24%20a_%7Bl%7D%2Ca_%7Bl%2B1%7D...%2Ca_%7Br%7D%20%24%20%2C%20where%20%24%201%3C%3Dl%3C%3Dr%3C%3Dn%20%24%20.%20For%20every%20positive%20integer%20%24%20s%20%24%20denote%20by%20%24%20K_%7Bs%7D%20%24%20the%20number%20of%20occurrences%20of%20%24%20s%20%24%20into%20the%20subarray.%20We%20call%20the%20power%20of%20the%20subarray%20the%20sum%20of%20products%20%24%20K_%7Bs%7D%5Cu00b7K_%7Bs%7D%5Cu00b7s%20%24%20for%20every%20positive%20integer%20%24%20s%20%24%20.%20The%20sum%20contains%20only%20finite%20number%20of%20nonzero%20summands%20as%20the%20number%20of%20different%20values%20in%20the%20array%20is%20indeed%20finite.%5Cn%5CnYou%20should%20calculate%20the%20power%20of%20%24%20t%20%24%20given%20subarrays.%22%2C%22inputFormat%22%3A%22First%20line%20contains%20two%20integers%20%24%20n%20%24%20and%20%24%20t%20%24%20%28%20%24%201%3C%3Dn%2Ct%3C%3D200000%20%24%20%29%20%5Cu2014%20the%20array%20length%20and%20the%20number%20of%20queries%20correspondingly.%5Cn%5CnSecond%20line%20contains%20%24%20n%20%24%20positive%20integers%20%24%20a_%7Bi%7D%20%24%20%28%20%24%201%3C%3Da_%7Bi%7D%3C%3D10%5E%7B6%7D%20%24%20%29%20%5Cu2014%20the%20elements%20of%20the%20array.%5Cn%5CnNext%20%24%20t%20%24%20lines%20contain%20two%20positive%20integers%20%24%20l%20%24%20%2C%20%24%20r%20%24%20%28%20%24%201%3C%3Dl%3C%3Dr%3C%3Dn%20%24%20%29%20each%20%5Cu2014%20the%20indices%20of%20the%20left%20and%20the%20right%20ends%20of%20the%20corresponding%20subarray.%22%2C%22outputFormat%22%3A%22Output%20%24%20t%20%24%20lines%2C%20the%20%24%20i%20%24%20-th%20line%20of%20the%20output%20should%20contain%20single%20positive%20integer%20%5Cu2014%20the%20power%20of%20the%20%24%20i%20%24%20-th%20query%20subarray.%5Cn%5CnPlease%2C%20do%20not%20use%20%25lld%20specificator%20to%20read%20or%20write%2064-bit%20integers%20in%20C%2B%2B.%20It%20is%20preferred%20to%20use%20cout%20stream%20%28also%20you%20may%20use%20%25I64d%29.%22%2C%22samples%22%3A%5B%5B%223%202%5Cn1%202%201%5Cn1%202%5Cn1%203%5Cn%22%2C%223%5Cn6%5Cn%22%5D%2C%5B%228%203%5Cn1%201%202%202%201%203%201%201%5Cn2%207%5Cn1%206%5Cn2%207%5Cn%22%2C%2220%5Cn20%5Cn20%5Cn%22%5D%5D%2C%22hint%22%3A%22Consider%20the%20following%20array%20%28see%20the%20second%20sample%29%20and%20its%20%5C%5C%5B2%2C%207%5C%5C%5D%20subarray%20%28elements%20of%20the%20subarray%20are%20colored%29%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF86D%5C%2F5e3c36b108711f9f95c3c3519472e9f583328f8b.png%29%20Then%20%24%20K_%7B1%7D%3D3%20%24%20%2C%20%24%20K_%7B2%7D%3D2%20%24%20%2C%20%24%20K_%7B3%7D%3D1%20%24%20%2C%20so%20the%20power%20is%20equal%20to%20%24%203%5E%7B2%7D%5Cu00b71%2B2%5E%7B2%7D%5Cu00b72%2B1%5E%7B2%7D%5Cu00b73%3D20%20%24%20.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F86%5C%2FD%22%2C%22id%22%3A%2286D%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu610f%5Cuff1a%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2an%5Cu4e2a%5Cu6570%5Cu7ec4%5Cu6210%5Cu7684%5Cu6570%5Cu5217a%5Cuff0c%5Cu6709t%5Cu6b21%5Cu8be2%5Cu95ee%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu8be2%5Cu95ee%5Cu4e3a%5Cu4e00%5Cu4e2a%5Bl%2Cr%5D%5Cu7684%5Cu533a%5Cu95f4%5Cuff0c%5Cu6c42%5Cu533a%5Cu95f4%5Cu5185%5Cu6bcf%5Cu79cd%5Cu6570%5Cu5b57%5Cu51fa%5Cu73b0%5Cu6b21%5Cu6570%5Cu7684%5Cu5e73%5Cu65b9%5Cu00d7%5Cu6570%5Cu5b57%5Cu7684%5Cu503c%20%5Cu7684%5Cu548c%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cuff1a%5Cu7b2c%5Cu4e00%5Cu884c2%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%2Ct%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884cn%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu5217%24a_1%24~%24a_n%24%5Cu7684%5Cu503c%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765t%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570l%2Cr%5Cuff0c%5Cu4e3a%5Cu4e00%5Cu6b21%5Cu8be2%5Cu95ee%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cuff1at%5Cu884c%5Cuff0c%5Cu5206%5Cu522b%5Cu4e3a%5Cu6bcf%5Cu6b21%5Cu8be2%5Cu95ee%5Cu7684%5Cu7b54%5Cu6848%5Cu3002%5Cn%5Cn%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cuff1a%241%20%5C%5Cleq%20n%2Ct%20%5C%5Cleq%202%2A10%5E5%2C1%20%5C%5Cleq%20a_i%20%5C%5Cleq%2010%5E6%2C1%20%5C%5Cleq%20l%2Cr%20%5C%5Cleq%20n%24%22%2C%22tags%22%3A%5B41%2C111%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A699%2C%22totalAccepted%22%3A236%2C%22pid%22%3A%22CF86D%22%2C%22title%22%3A%22Powerful%20array%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A123461%2C%22title%22%3A%22%5Cu6bd2%5Cu7624%5Cu6570%5Cu636e%22%2C%22forum%22%3A%7B%22id%22%3A12263%2C%22name%22%3A%22CF86D%20Powerful%20array%22%2C%22slug%22%3A%22CF86D%22%7D%7D%2C%7B%22id%22%3A92851%2C%22title%22%3A%22%20RemoteJudge%5Cu7684%5Cu9505%5Cu4ec0%5Cu4e48%5Cu65f6%5Cu5019%5Cu4fee%5Cu554a%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A12263%2C%22name%22%3A%22CF86D%20Powerful%20array%22%2C%22slug%22%3A%22CF86D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1494%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu5c0fZ%5Cu7684%5Cu889c%5Cu5b50%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1903%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu6570%5Cu989c%5Cu8272%20%5C%2F%20%5Cu7ef4%5Cu62a4%5Cu961f%5Cu5217%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF375D%22%2C%22title%22%3A%22Tree%20and%20Queries%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF220B%22%2C%22title%22%3A%22Little%20Elephant%20and%20Array%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22SP3267%22%2C%22title%22%3A%22DQUERY%20-%20D-query%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Powerful%20array%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Powerful array</h1>
+<h2>题意翻译</h2>
+<div>题意：给出一个n个数组成的数列a，有t次询问，每次询问为一个[l,r]的区间，求区间内每种数字出现次数的平方×数字的值 的和。
+输入：第一行2个正整数n,t。
+接下来一行n个正整数，表示数列$a_1$~$a_n$的值。
+接下来t行，每行两个正整数l,r，为一次询问。
+输出：t行，分别为每次询问的答案。
+数据范围：$1 \leq n,t \leq 2*10^5,1 \leq a_i \leq 10^6,1 \leq l,r \leq n$</div>
+<h2>题目描述</h2>
+<div>An array of positive integers $ a_{1},a_{2},...,a_{n} $ is given. Let us consider its arbitrary subarray $ a_{l},a_{l+1}...,a_{r} $ , where $ 1<=l<=r<=n $ . For every positive integer $ s $ denote by $ K_{s} $ the number of occurrences of $ s $ into the subarray. We call the power of the subarray the sum of products $ K_{s}·K_{s}·s $ for every positive integer $ s $ . The sum contains only finite number of nonzero summands as the number of different values in the array is indeed finite.
+You should calculate the power of $ t $ given subarrays.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line contains two integers $ n $ and $ t $ ( $ 1<=n,t<=200000 $ ) — the array length and the number of queries correspondingly.
+Second line contains $ n $ positive integers $ a_{i} $ ( $ 1<=a_{i}<=10^{6} $ ) — the elements of the array.
+Next $ t $ lines contain two positive integers $ l $ , $ r $ ( $ 1<=l<=r<=n $ ) each — the indices of the left and the right ends of the corresponding subarray.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output $ t $ lines, the $ i $ -th line of the output should contain single positive integer — the power of the $ i $ -th query subarray.
+Please, do not use %lld specificator to read or write 64-bit integers in C++. It is preferred to use cout stream (also you may use %I64d).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 2
+1 2 1
+1 2
+1 3
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+6
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>8 3
+1 1 2 2 1 3 1 1
+2 7
+1 6
+2 7
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>20
+20
+20
+</code></pre>
+<h2>说明</h2>
+<div>Consider the following array (see the second sample) and its \[2, 7\] subarray (elements of the subarray are colored):
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF86D/5e3c36b108711f9f95c3c3519472e9f583328f8b.png) Then $ K_{1}=3 $ , $ K_{2}=2 $ , $ K_{3}=1 $ , so the power is equal to $ 3^{2}·1+2^{2}·2+1^{2}·3=20 $ .</div>
+</article>
+</div>
+</div>
+</body>
+</html>

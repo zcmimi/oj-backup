@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Plus and xor - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390597:i8ZpK/wfdwdPyZcbuhPpRsNFOzB4uYD7nbyDJ4gC8SI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Bitwise%20exclusive%20OR%20%28or%20bitwise%20addition%20modulo%20two%29%20is%20a%20binary%20operation%20which%20is%20equivalent%20to%20applying%20logical%20exclusive%20OR%20to%20every%20pair%20of%20bits%20located%20on%20the%20same%20positions%20in%20binary%20notation%20of%20operands.%20In%20other%20words%2C%20a%20binary%20digit%20of%20the%20result%20is%20equal%20to%201%20if%20and%20only%20if%20bits%20on%20the%20respective%20positions%20in%20the%20operands%20are%20different.%5Cn%5CnFor%20example%2C%20if%20%24%20X%3D109_%7B10%7D%3D1101101_%7B2%7D%20%24%20%2C%20%24%20Y%3D41_%7B10%7D%3D101001_%7B2%7D%20%24%20%2C%20then%3A%5Cn%5Cn%20%24%20X%20%24%20xor%20%24%20Y%5Cu00a0%3D%5Cu00a068_%7B10%7D%5Cu00a0%3D%5Cu00a01000100_%7B2%7D%20%24%20.%20Write%20a%20program%2C%20which%20takes%20two%20non-negative%20integers%20%24%20A%20%24%20and%20%24%20B%20%24%20as%20an%20input%20and%20finds%20two%20non-negative%20integers%20%24%20X%20%24%20and%20%24%20Y%20%24%20%2C%20which%20satisfy%20the%20following%20conditions%3A%5Cn%5Cn-%20%24%20A%3DX%2BY%20%24%5Cn-%20%24%20B%5Cu00a0%3D%5Cu00a0X%20%24%20xor%20%24%20Y%20%24%20%2C%20where%20xor%20is%20bitwise%20exclusive%20or.%5Cn-%20%24%20X%20%24%20is%20the%20smallest%20number%20among%20all%20numbers%20for%20which%20the%20first%20two%20conditions%20are%20true.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integer%20number%20%24%20A%20%24%20and%20the%20second%20line%20contains%20integer%20number%20%24%20B%20%24%20%28%20%24%200%3C%3DA%2CB%3C%3D2%5E%7B64%7D-1%20%24%20%29.%22%2C%22outputFormat%22%3A%22The%20only%20output%20line%20should%20contain%20two%20integer%20non-negative%20numbers%20%24%20X%20%24%20and%20%24%20Y%20%24%20.%20Print%20the%20only%20number%20-1%20if%20there%20is%20no%20answer.%22%2C%22samples%22%3A%5B%5B%22142%5Cn76%5Cn%22%2C%2233%20109%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F76%5C%2FD%22%2C%22id%22%3A%2276D%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu51fa%5Cu4e24%5Cu6574%5Cu6570A%2CB%5Cuff0c%5Cu8981%5Cu6c42%5Cu627e%5Cu5230X%2CY%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu4e24%5Cu4e2a%5Cu4e2a%5Cu6761%5Cu4ef6%5Cuff1a%5Cr%5Cn%5Cr%5Cn1.A%3DX%2BY%5Cr%5Cn%5Cr%5Cn2.B%3DX%20xor%20Y%20%5Cu5176%5Cu4e2dxor%5Cu8868%5Cu793a%5Cu5f02%5Cu6216%5Cu8fd0%5Cu7b97%5Cr%5Cn%5Cr%5Cn%5Cu4e14%5Cu8981%5Cu6c42%20X%20%5Cu662f%5Cu6240%5Cu6709%5Cu6ee1%5Cu8db3%5Cu524d%5Cu4e24%5Cu4e2a%5Cu6761%5Cu4ef6%5Cu4e2d%5Cu6700%5Cu5c0f%5Cu7684%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu65e0%5Cu89e3%5Cuff0c%5Cu8f93%5Cu51fa-1%5Cr%5Cn%5Cr%5Cn%5Cu5426%5Cu5219%5Cuff0c%5Cu8f93%5Cu51fa%20X%2CY%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A30%2C%22totalAccepted%22%3A11%2C%22pid%22%3A%22CF76D%22%2C%22title%22%3A%22Plus%20and%20xor%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Plus%20and%20xor%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Plus and xor</h1>
+<h2>题意翻译</h2>
+<div>给出两整数A,B，要求找到X,Y满足以下两个个条件：
+1.A=X+Y
+2.B=X xor Y 其中xor表示异或运算
+且要求 X 是所有满足前两个条件中最小的
+如果无解，输出-1
+否则，输出 X,Y</div>
+<h2>题目描述</h2>
+<div>Bitwise exclusive OR (or bitwise addition modulo two) is a binary operation which is equivalent to applying logical exclusive OR to every pair of bits located on the same positions in binary notation of operands. In other words, a binary digit of the result is equal to 1 if and only if bits on the respective positions in the operands are different.
+For example, if $ X=109_{10}=1101101_{2} $ , $ Y=41_{10}=101001_{2} $ , then:
+$ X $ xor $ Y = 68_{10} = 1000100_{2} $ . Write a program, which takes two non-negative integers $ A $ and $ B $ as an input and finds two non-negative integers $ X $ and $ Y $ , which satisfy the following conditions:
+- $ A=X+Y $
+- $ B = X $ xor $ Y $ , where xor is bitwise exclusive or.
+- $ X $ is the smallest number among all numbers for which the first two conditions are true.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integer number $ A $ and the second line contains integer number $ B $ ( $ 0<=A,B<=2^{64}-1 $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>The only output line should contain two integer non-negative numbers $ X $ and $ Y $ . Print the only number -1 if there is no answer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>142
+76
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>33 109
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

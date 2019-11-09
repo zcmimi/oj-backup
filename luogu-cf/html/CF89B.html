@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Widget Library - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390699:vH7SDO6uVaLeYUg+5h92FHOBKfGaQLm72CwxGF7OsVQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Vasya%20writes%20his%20own%20library%20for%20building%20graphical%20user%20interface.%20Vasya%20called%20his%20creation%20VTK%20%28VasyaToolKit%29.%20One%20of%20the%20interesting%20aspects%20of%20this%20library%20is%20that%20widgets%20are%20packed%20in%20each%20other.%5Cn%5CnA%20widget%20is%20some%20element%20of%20graphical%20interface.%20Each%20widget%20has%20width%20and%20height%2C%20and%20occupies%20some%20rectangle%20on%20the%20screen.%20Any%20widget%20in%20Vasya%27s%20library%20is%20of%20type%20Widget.%20For%20simplicity%20we%20will%20identify%20the%20widget%20and%20its%20type.%5Cn%5CnTypes%20HBox%20and%20VBox%20are%20derivatives%20of%20type%20Widget%2C%20so%20they%20also%20are%20types%20Widget.%20Widgets%20HBox%20and%20VBox%20are%20special.%20They%20can%20store%20other%20widgets.%20Both%20those%20widgets%20can%20use%20the%20pack%28%29%20method%20to%20pack%20directly%20in%20itself%20some%20other%20widget.%20Widgets%20of%20types%20HBox%20and%20VBox%20can%20store%20several%20other%20widgets%2C%20even%20several%20equal%20widgets%20%5Cu2014%20they%20will%20simply%20appear%20several%20times.%20As%20a%20result%20of%20using%20the%20method%20pack%28%29%20only%20the%20link%20to%20the%20packed%20widget%20is%20saved%2C%20that%20is%20when%20the%20packed%20widget%20is%20changed%2C%20its%20image%20in%20the%20widget%2C%20into%20which%20it%20is%20packed%2C%20will%20also%20change.%5Cn%5CnWe%20shall%20assume%20that%20the%20widget%20%24%20a%20%24%20is%20packed%20in%20the%20widget%20%24%20b%20%24%20if%20there%20exists%20a%20chain%20of%20widgets%20%24%20a%3Dc_%7B1%7D%2Cc_%7B2%7D%2C...%2Cc_%7Bk%7D%3Db%20%24%20%2C%20%24%20k%3E%3D2%20%24%20%2C%20for%20which%20%24%20c_%7Bi%7D%20%24%20is%20packed%20directly%20to%20%24%20c_%7Bi%2B1%7D%20%24%20for%20any%20%24%201%3C%3Di%26lt%3Bk%20%24%20.%20In%20Vasya%27s%20library%20the%20situation%20when%20the%20widget%20%24%20a%20%24%20is%20packed%20in%20the%20widget%20%24%20a%20%24%20%28that%20is%2C%20in%20itself%29%20is%20not%20allowed.%20If%20you%20try%20to%20pack%20the%20widgets%20into%20each%20other%20in%20this%20manner%20immediately%20results%20in%20an%20error.%5Cn%5CnAlso%2C%20the%20widgets%20HBox%20and%20VBox%20have%20parameters%20border%20and%20spacing%2C%20which%20are%20determined%20by%20the%20methods%20set%5C%5C_border%28%29%20and%20set%5C%5C_spacing%28%29%20respectively.%20By%20default%20both%20of%20these%20options%20equal%20%24%200%20%24%20.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF89B%5C%2F57c67fae82d5d67a0c887efae4fefb5e3c38dfc1.png%29The%20picture%20above%20shows%20how%20the%20widgets%20are%20packed%20into%20HBox%20and%20VBox.%20At%20that%20HBox%20and%20VBox%20automatically%20change%20their%20size%20depending%20on%20the%20size%20of%20packed%20widgets.%20As%20for%20HBox%20and%20VBox%2C%20they%20only%20differ%20in%20that%20in%20HBox%20the%20widgets%20are%20packed%20horizontally%20and%20in%20VBox%20%5Cu2014%20vertically.%20The%20parameter%20spacing%20sets%20the%20distance%20between%20adjacent%20widgets%2C%20and%20border%20%5Cu2014%20a%20frame%20around%20all%20packed%20widgets%20of%20the%20desired%20width.%20Packed%20widgets%20are%20placed%20exactly%20in%20the%20order%20in%20which%20the%20pack%28%29%20method%20was%20called%20for%20them.%20If%20within%20HBox%20or%20VBox%20there%20are%20no%20packed%20widgets%2C%20their%20sizes%20are%20equal%20to%20%24%200%5Cu00d70%20%24%20%2C%20regardless%20of%20the%20options%20border%20and%20spacing.%5Cn%5CnThe%20construction%20of%20all%20the%20widgets%20is%20performed%20using%20a%20scripting%20language%20VasyaScript.%20The%20description%20of%20the%20language%20can%20be%20found%20in%20the%20input%20data.%5Cn%5CnFor%20the%20final%20verification%20of%20the%20code%20Vasya%20asks%20you%20to%20write%20a%20program%20that%20calculates%20the%20sizes%20of%20all%20the%20widgets%20on%20the%20source%20code%20in%20the%20language%20of%20VasyaScript.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%5Cu2014%20the%20number%20of%20instructions%20%28%20%24%201%3C%3Dn%3C%3D100%20%24%20%29.%20Next%20%24%20n%20%24%20lines%20contain%20instructions%20in%20the%20language%20VasyaScript%20%5Cu2014%20one%20instruction%20per%20line.%20There%20is%20a%20list%20of%20possible%20instructions%20below.%5Cn%5Cn-%20%5C%22Widget%20%5C%5C%5Bname%5C%5C%5D%28%5C%5C%5Bx%5C%5C%5D%2C%5C%5C%5By%5C%5C%5D%29%5C%22%20%5Cu2014%20create%20a%20new%20widget%20%5C%5C%5Bname%5C%5C%5D%20of%20the%20type%20Widget%20possessing%20the%20width%20of%20%5C%5C%5Bx%5C%5C%5D%20units%20and%20the%20height%20of%20%5C%5C%5By%5C%5C%5D%20units.%5Cn-%20%5C%22HBox%20%5C%5C%5Bname%5C%5C%5D%5C%22%20%5Cu2014%20create%20a%20new%20widget%20%5C%5C%5Bname%5C%5C%5D%20of%20the%20type%20HBox.%5Cn-%20%5C%22VBox%20%5C%5C%5Bname%5C%5C%5D%5C%22%20%5Cu2014%20create%20a%20new%20widget%20%5C%5C%5Bname%5C%5C%5D%20of%20the%20type%20VBox.%5Cn-%20%5C%22%5C%5C%5Bname1%5C%5C%5D.pack%28%5C%5C%5Bname2%5C%5C%5D%29%5C%22%20%5Cu2014%20pack%20the%20widget%20%5C%5C%5Bname2%5C%5C%5D%20in%20the%20widget%20%5C%5C%5Bname1%5C%5C%5D.%20At%20that%2C%20the%20widget%20%5C%5C%5Bname1%5C%5C%5D%20must%20be%20of%20type%20HBox%20or%20VBox.%5Cn-%20%5C%22%5C%5C%5Bname%5C%5C%5D.set%5C%5C_border%28%5C%5C%5Bx%5C%5C%5D%29%5C%22%20%5Cu2014%20set%20for%20a%20widget%20%5C%5C%5Bname%5C%5C%5D%20the%20border%20parameter%20to%20%5C%5C%5Bx%5C%5C%5D%20units.%20The%20widget%20%5C%5C%5Bname%5C%5C%5D%20must%20be%20of%20type%20HBox%20or%20VBox.%5Cn-%20%5C%22%5C%5C%5Bname%5C%5C%5D.set%5C%5C_spacing%28%5C%5C%5Bx%5C%5C%5D%29%5C%22%20%5Cu2014%20set%20for%20a%20widget%20%5C%5C%5Bname%5C%5C%5D%20the%20spacing%20parameter%20to%20%5C%5C%5Bx%5C%5C%5D%20units.%20The%20widget%20%5C%5C%5Bname%5C%5C%5D%20must%20be%20of%20type%20HBox%20or%20VBox.%5Cn%5CnAll%20instructions%20are%20written%20without%20spaces%20at%20the%20beginning%20and%20at%20the%20end%20of%20the%20string.%20The%20words%20inside%20the%20instruction%20are%20separated%20by%20exactly%20one%20space.%20There%20are%20no%20spaces%20directly%20before%20the%20numbers%20and%20directly%20after%20them.%5Cn%5CnThe%20case%20matters%2C%20for%20example%2C%20%5C%22wiDget%20x%5C%22%20is%20not%20a%20correct%20instruction.%20The%20case%20of%20the%20letters%20is%20correct%20in%20the%20input%20data.%5Cn%5CnAll%20names%20of%20the%20widgets%20consist%20of%20lowercase%20Latin%20letters%20and%20has%20the%20length%20from%20%24%201%20%24%20to%20%24%2010%20%24%20characters%20inclusive.%20The%20names%20of%20all%20widgets%20are%20pairwise%20different.%20All%20numbers%20in%20the%20script%20are%20integers%20from%20%24%200%20%24%20to%20%24%20100%20%24%20inclusive%5Cn%5CnIt%20is%20guaranteed%20that%20the%20above-given%20script%20is%20correct%2C%20that%20is%20that%20all%20the%20operations%20with%20the%20widgets%20take%20place%20after%20the%20widgets%20are%20created%20and%20no%20widget%20is%20packed%20in%20itself.%20It%20is%20guaranteed%20that%20the%20script%20creates%20at%20least%20one%20widget.%22%2C%22outputFormat%22%3A%22For%20each%20widget%20print%20on%20a%20single%20line%20its%20name%2C%20width%20and%20height%2C%20separated%20by%20spaces.%20The%20lines%20must%20be%20ordered%20lexicographically%20by%20a%20widget%27s%20name.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specificator%20to%20read%20or%20write%2064-bit%20integers%20in%20C%2B%2B.%20It%20is%20preferred%20to%20use%20cout%20stream%20%28also%20you%20may%20use%20%25I64d%20specificator%29%22%2C%22samples%22%3A%5B%5B%2212%5CnWidget%20me%2850%2C40%29%5CnVBox%20grandpa%5CnHBox%20father%5Cngrandpa.pack%28father%29%5Cnfather.pack%28me%29%5Cngrandpa.set_border%2810%29%5Cngrandpa.set_spacing%2820%29%5CnWidget%20brother%2830%2C60%29%5Cnfather.pack%28brother%29%5CnWidget%20friend%2820%2C60%29%5CnWidget%20uncle%28100%2C20%29%5Cngrandpa.pack%28uncle%29%5Cn%22%2C%22brother%2030%2060%5Cnfather%2080%2060%5Cnfriend%2020%2060%5Cngrandpa%20120%20120%5Cnme%2050%2040%5Cnuncle%20100%2020%5Cn%22%5D%2C%5B%2215%5CnWidget%20pack%2810%2C10%29%5CnHBox%20dummy%5CnHBox%20x%5CnVBox%20y%5Cny.pack%28dummy%29%5Cny.set_border%285%29%5Cny.set_spacing%2855%29%5Cndummy.set_border%2810%29%5Cndummy.set_spacing%2820%29%5Cnx.set_border%2810%29%5Cnx.set_spacing%2810%29%5Cnx.pack%28pack%29%5Cnx.pack%28dummy%29%5Cnx.pack%28pack%29%5Cnx.set_border%280%29%5Cn%22%2C%22dummy%200%200%5Cnpack%2010%2010%5Cnx%2040%2010%5Cny%2010%2010%5Cn%22%5D%5D%2C%22hint%22%3A%22In%20the%20first%20sample%20the%20widgets%20are%20arranged%20as%20follows%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF89B%5C%2F52b33204a63f625a613bc201710508e029338e01.png%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F89%5C%2FB%22%2C%22id%22%3A%2289B%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A8%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22CF89B%22%2C%22title%22%3A%22Widget%20Library%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Widget%20Library%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Widget Library</h1>
+<h2>题目描述</h2>
+<div>Vasya writes his own library for building graphical user interface. Vasya called his creation VTK (VasyaToolKit). One of the interesting aspects of this library is that widgets are packed in each other.
+A widget is some element of graphical interface. Each widget has width and height, and occupies some rectangle on the screen. Any widget in Vasya's library is of type Widget. For simplicity we will identify the widget and its type.
+Types HBox and VBox are derivatives of type Widget, so they also are types Widget. Widgets HBox and VBox are special. They can store other widgets. Both those widgets can use the pack() method to pack directly in itself some other widget. Widgets of types HBox and VBox can store several other widgets, even several equal widgets — they will simply appear several times. As a result of using the method pack() only the link to the packed widget is saved, that is when the packed widget is changed, its image in the widget, into which it is packed, will also change.
+We shall assume that the widget $ a $ is packed in the widget $ b $ if there exists a chain of widgets $ a=c_{1},c_{2},...,c_{k}=b $ , $ k>=2 $ , for which $ c_{i} $ is packed directly to $ c_{i+1} $ for any $ 1<=i&lt;k $ . In Vasya's library the situation when the widget $ a $ is packed in the widget $ a $ (that is, in itself) is not allowed. If you try to pack the widgets into each other in this manner immediately results in an error.
+Also, the widgets HBox and VBox have parameters border and spacing, which are determined by the methods set\_border() and set\_spacing() respectively. By default both of these options equal $ 0 $ .
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF89B/57c67fae82d5d67a0c887efae4fefb5e3c38dfc1.png)The picture above shows how the widgets are packed into HBox and VBox. At that HBox and VBox automatically change their size depending on the size of packed widgets. As for HBox and VBox, they only differ in that in HBox the widgets are packed horizontally and in VBox — vertically. The parameter spacing sets the distance between adjacent widgets, and border — a frame around all packed widgets of the desired width. Packed widgets are placed exactly in the order in which the pack() method was called for them. If within HBox or VBox there are no packed widgets, their sizes are equal to $ 0×0 $ , regardless of the options border and spacing.
+The construction of all the widgets is performed using a scripting language VasyaScript. The description of the language can be found in the input data.
+For the final verification of the code Vasya asks you to write a program that calculates the sizes of all the widgets on the source code in the language of VasyaScript.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer $ n $ — the number of instructions ( $ 1<=n<=100 $ ). Next $ n $ lines contain instructions in the language VasyaScript — one instruction per line. There is a list of possible instructions below.
+- "Widget \[name\](\[x\],\[y\])" — create a new widget \[name\] of the type Widget possessing the width of \[x\] units and the height of \[y\] units.
+- "HBox \[name\]" — create a new widget \[name\] of the type HBox.
+- "VBox \[name\]" — create a new widget \[name\] of the type VBox.
+- "\[name1\].pack(\[name2\])" — pack the widget \[name2\] in the widget \[name1\]. At that, the widget \[name1\] must be of type HBox or VBox.
+- "\[name\].set\_border(\[x\])" — set for a widget \[name\] the border parameter to \[x\] units. The widget \[name\] must be of type HBox or VBox.
+- "\[name\].set\_spacing(\[x\])" — set for a widget \[name\] the spacing parameter to \[x\] units. The widget \[name\] must be of type HBox or VBox.
+All instructions are written without spaces at the beginning and at the end of the string. The words inside the instruction are separated by exactly one space. There are no spaces directly before the numbers and directly after them.
+The case matters, for example, "wiDget x" is not a correct instruction. The case of the letters is correct in the input data.
+All names of the widgets consist of lowercase Latin letters and has the length from $ 1 $ to $ 10 $ characters inclusive. The names of all widgets are pairwise different. All numbers in the script are integers from $ 0 $ to $ 100 $ inclusive
+It is guaranteed that the above-given script is correct, that is that all the operations with the widgets take place after the widgets are created and no widget is packed in itself. It is guaranteed that the script creates at least one widget.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each widget print on a single line its name, width and height, separated by spaces. The lines must be ordered lexicographically by a widget's name.
+Please, do not use the %lld specificator to read or write 64-bit integers in C++. It is preferred to use cout stream (also you may use %I64d specificator)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>12
+Widget me(50,40)
+VBox grandpa
+HBox father
+grandpa.pack(father)
+father.pack(me)
+grandpa.set_border(10)
+grandpa.set_spacing(20)
+Widget brother(30,60)
+father.pack(brother)
+Widget friend(20,60)
+Widget uncle(100,20)
+grandpa.pack(uncle)
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>brother 30 60
+father 80 60
+friend 20 60
+grandpa 120 120
+me 50 40
+uncle 100 20
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>15
+Widget pack(10,10)
+HBox dummy
+HBox x
+VBox y
+y.pack(dummy)
+y.set_border(5)
+y.set_spacing(55)
+dummy.set_border(10)
+dummy.set_spacing(20)
+x.set_border(10)
+x.set_spacing(10)
+x.pack(pack)
+x.pack(dummy)
+x.pack(pack)
+x.set_border(0)
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>dummy 0 0
+pack 10 10
+x 40 10
+y 10 10
+</code></pre>
+<h2>说明</h2>
+<div>In the first sample the widgets are arranged as follows:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF89B/52b33204a63f625a613bc201710508e029338e01.png)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

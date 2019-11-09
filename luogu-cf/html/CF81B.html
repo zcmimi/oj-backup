@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sequence Formatting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390637:RlRT8O5ACtrmLJLC+pr4rvN0Ekp7wYrpYWl+eOjSiHg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Polycarp%20is%20very%20careful.%20He%20even%20types%20numeric%20sequences%20carefully%2C%20unlike%20his%20classmates.%20If%20he%20sees%20a%20sequence%20without%20a%20space%20after%20the%20comma%2C%20with%20two%20spaces%20in%20a%20row%2C%20or%20when%20something%20else%20does%20not%20look%20neat%2C%20he%20rushes%20to%20correct%20it.%20For%20example%2C%20number%20sequence%20written%20like%20%5C%221%2C2%20%2C3%2C...%2C%2010%5C%22%20will%20be%20corrected%20to%20%5C%221%2C%202%2C%203%2C%20...%2C%2010%5C%22.%5Cn%5CnIn%20this%20task%20you%20are%20given%20a%20string%20%24%20s%20%24%20%2C%20which%20is%20composed%20by%20a%20concatination%20of%20terms%2C%20each%20of%20which%20may%20be%3A%5Cn%5Cn-%20a%20positive%20integer%20of%20an%20arbitrary%20length%20%28leading%20zeroes%20are%20not%20allowed%29%2C%5Cn-%20a%20%5C%22comma%5C%22%20symbol%20%28%5C%22%2C%5C%22%29%2C%5Cn-%20a%20%5C%22space%5C%22%20symbol%20%28%5C%22%20%5C%22%29%2C%5Cn-%20%5C%22three%20dots%5C%22%20%28%5C%22...%5C%22%2C%20that%20is%2C%20exactly%20three%20points%20written%20one%20after%20another%2C%20also%20known%20as%20suspension%20points%29.%5Cn%5CnPolycarp%20wants%20to%20add%20and%20remove%20spaces%20in%20the%20string%20%24%20s%20%24%20to%20ensure%20the%20following%3A%5Cn%5Cn-%20each%20comma%20is%20followed%20by%20exactly%20one%20space%20%28if%20the%20comma%20is%20the%20last%20character%20in%20the%20string%2C%20this%20rule%20does%20not%20apply%20to%20it%29%2C%5Cn-%20each%20%5C%22three%20dots%5C%22%20term%20is%20preceded%20by%20exactly%20one%20space%20%28if%20the%20dots%20are%20at%20the%20beginning%20of%20the%20string%2C%20this%20rule%20does%20not%20apply%20to%20the%20term%29%2C%5Cn-%20if%20two%20consecutive%20numbers%20were%20separated%20by%20spaces%20only%20%28one%20or%20more%29%2C%20then%20exactly%20one%20of%20them%20should%20be%20left%2C%5Cn-%20there%20should%20not%20be%20other%20spaces.%5Cn%5CnAutomate%20Polycarp%27s%20work%20and%20write%20a%20program%20that%20will%20process%20the%20given%20string%20%24%20s%20%24%20.%22%2C%22inputFormat%22%3A%22The%20input%20data%20contains%20a%20single%20string%20%24%20s%20%24%20.%20Its%20length%20is%20from%201%20to%20255%20characters.%20The%20string%20%24%20s%20%24%20does%20not%20begin%20and%20end%20with%20a%20space.%20Its%20content%20matches%20the%20description%20given%20above.%22%2C%22outputFormat%22%3A%22Print%20the%20string%20%24%20s%20%24%20after%20it%20is%20processed.%20Your%20program%27s%20output%20should%20be%20exactly%20the%20same%20as%20the%20expected%20answer.%20It%20is%20permissible%20to%20end%20output%20line%20with%20a%20line-break%20character%2C%20and%20without%20it.%22%2C%22samples%22%3A%5B%5B%221%2C2%20%2C3%2C...%2C%20%20%20%20%2010%5Cn%22%2C%221%2C%202%2C%203%2C%20...%2C%2010%5Cn%22%5D%2C%5B%221%2C%2C%2C4...5......6%5Cn%22%2C%221%2C%20%2C%20%2C%204%20...5%20...%20...6%5Cn%22%5D%2C%5B%22...%2C1%2C2%2C3%2C...%5Cn%22%2C%22...%2C%201%2C%202%2C%203%2C%20...%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F81%5C%2FB%22%2C%22id%22%3A%2281B%22%7D%2C%22translation%22%3A%22Polycarp%20%5Cu662f%5Cu4e2a%5Cu975e%5Cu5e38%5Cu4e25%5Cu8c28%5Cu7684%5Cu4eba%5Cuff0c%5Cu4e0d%5Cu50cf%5Cu4ed6%5Cu7684%5Cu540c%5Cu73ed%5Cu540c%5Cu5b66%5Cu90a3%5Cu6837%5Cuff0c%5Cu4ed6%5Cu751a%5Cu81f3%5Cu4ed4%5Cu7ec6%5Cu5730%5Cu952e%5Cu5165%5Cu6570%5Cu5b57%5Cu5e8f%5Cu5217%5Cu3002%5Cr%5Cn%5Cu5982%5Cu679c%5Cu4ed6%5Cu770b%5Cu5230%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217%5Cu5728%5Cu9017%5Cu53f7%5Cu540e%5Cu9762%5Cu6ca1%5Cu6709%5Cu7a7a%5Cu683c%5Cuff0c%5Cu6216%5Cu662f%5Cu4e00%5Cu884c%5Cu6709%5Cu591a%5Cu4e2a%5Cu7a7a%5Cu683c%5Cuff0c%5Cu6216%5Cu8005%5Cu5f53%5Cu5176%5Cu4ed6%5Cu4e1c%5Cu897f%5Cu770b%5Cu8d77%5Cu6765%5Cu4e0d%5Cu4e25%5Cu8c28%5Cu65f6%5Cuff0c%5Cu4ed6%5Cu4f1a%5Cu7acb%5Cu523b%5Cu7ea0%5Cu6b63%5Cu5b83%5Cu3002%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5982%5Cu201c1%2C2%5Cuff0c3%5Cuff0c%5Cu2026%5Cuff0c10%5Cu201d%5Cu6240%5Cu5199%5Cu7684%5Cu6570%5Cu5b57%5Cu5e8f%5Cu5217%5Cu5c06%5Cu88ab%5Cu4fee%5Cu6b63%5Cu4e3a%5Cu201c1%2C%202%2C%203%5Cuff0c%5Cu2026%5Cuff0c10%5Cu201d%5Cu3002%5Cr%5Cn%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu4e2d%5Cuff0c%5Cu4f60%5Cu5f97%5Cu5230%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%20s%20%5Cuff0c%5Cr%5Cns%20%5Cu7531%5Cu672f%5Cu8bed%5Cu7684%5Cu8fde%5Cu8bcd%5Cu6784%5Cu6210%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu8bcd%5Cu53ef%5Cu4ee5%5Cu662f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Ct1.%5Cu4efb%5Cu610f%5Cu957f%5Cu5ea6%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cuff08%5Cu4e0d%5Cu5141%5Cu8bb8%5Cu524d%5Cu5bfc%5Cu96f6%5Cuff09%5Cuff0c%5Cr%5Cn%5Ct2.%20%5Cu9017%5Cu53f7%5Cu7b26%5Cu53f7%5Cuff08%5Cu201c%5Cuff0c%5Cu201d%5Cuff09%5Cuff0c%5Cr%5Cn%5Ct3.%20%5Cu7a7a%5Cu683c%5Cu7b26%5Cu53f7%5Cuff08%5Cu201c%20%5Cu201d%5Cuff09%5Cuff0c%5Cr%5Cn%5Ct4.%20%5Cu201c%5Cu4e09%5Cu70b9%5Cu201d%5Cuff08%5Cu201c%5Cu2026%5Cu201d%5Cuff09%5Cuff0c%5Cu5373%5Cu4e00%5Cu4e2a%5Cu63a5%5Cu4e00%5Cu4e2a%5Cu5730%5Cu5199%5Cu4e09%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu4e5f%5Cu79f0%5Cu4e3a%5Cu201c%5Cu6682%5Cu505c%5Cu70b9%5Cu201d%5Cu3002%5Cr%5CnPolycarp%5Cu60f3%5Cu6dfb%5Cu52a0%5Cu5e76%5Cu4e14%5Cu5220%5Cu9664%5Cu5b57%5Cu7b26%5Cu4e32s%5Cu4e2d%5Cu591a%5Cu4f59%5Cu7684%5Cu7a7a%5Cu683c%5Cu6765%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu8981%5Cu6c42%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Ct1.%5Cu6bcf%5Cu4e2a%5Cu9017%5Cu53f7%5Cu540e%5Cu9762%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cuff08%5Cu82e5%5Cu9017%5Cu53f7%5Cu662f%5Cu5b57%5Cu7b26%5Cu4e32%5Cu4e2d%5Cu7684%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cuff0c%5Cu5219%5Cu6b64%5Cu89c4%5Cu5219%5Cu4e0d%5Cu9002%5Cu7528%5Cu4e8e%5Cu5b83%5Cuff09%5Cuff1b%5Cr%5Cn%5Ct2.%5Cu6bcf%5Cu4e2a%5Cu201c%5Cu4e09%5Cu70b9%5Cu201d%5Cu524d%5Cu6b63%5Cu597d%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cuff08%5Cu82e5%5Cu4e09%5Cu70b9%5Cu5728%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7684%5Cu5f00%5Cu5934%5Cuff0c%5Cu5219%5Cu6b64%5Cu89c4%5Cu5219%5Cu4e0d%5Cu9002%5Cu7528%5Cu4e8e%5Cu5b83%5Cuff09%5Cuff1b%5Cr%5Cn%5Ct3.%5Cu5982%5Cu679c%5Cu4e24%5Cu4e2a%5Cu8fde%5Cu7eed%5Cu7684%5Cu6570%5Cu5b57%5Cu4ec5%5Cu7531%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5c31%5Cu5e94%5Cu8be5%5Cu53ea%5Cu5269%5Cu4e0b%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cuff0c%5Cu4e0d%5Cu5e94%5Cu8be5%5Cu6709%5Cu591a%5Cu4f59%5Cu7684%5Cu7a7a%5Cu683c%5Cu3002%5Cr%5Cn%5Cu73b0%5Cu5728%5Cu8bf7%5Cu4f60%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu5e2e%5Cu52a9Polycarp%5Cu5b8c%5Cu6210%5Cu5bf9%5Cu5b57%5Cu7b26%5Cu4e32s%5Cu7684%5Cu64cd%5Cu4f5c%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Ct%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32s%5Cuff0c%5Cu5b83%5Cu7531%5Cu6700%5Cu5c111%5Cu4e2a%5Cu5b57%5Cu7b26%5Cuff0c%5Cu6700%5Cu591a255%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu7ec4%5Cu6210%5Cu3002%5Cr%5Cn%5Cts%5Cu4e0d%5Cu4f1a%5Cu4ee5%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu5f00%5Cu59cb%5Cu6216%5Cu7ed3%5Cu675f%5Cu3002%5Cr%5Cn%5Ct%5Cu5b83%5Cu7684%5Cu5185%5Cu5bb9%5Cu4e0e%5Cu4e0a%5Cu9762%5Cu7ed9%5Cu51fa%5Cu7684%5Cu63cf%5Cu8ff0%5Cu76f8%5Cu5339%5Cu914d%5Cu3002%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Ct%5Cu5904%5Cu7406%5Cu540e%5Cu7684s%5Cu3002%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu7684%5Cu8f93%5Cu51fa%5Cu5e94%5Cu8be5%5Cu548c%5Cu9884%5Cu671f%5Cu7684%5Cu7b54%5Cu6848%5Cu5b8c%5Cu5168%5Cu4e00%5Cu6837%5Cu3002%5Cr%5Cn%5Ct%5Cu5141%5Cu8bb8%5Cu8f93%5Cu51fa%5Cu6362%5Cu884c%5Cu8f93%5Cu51fas%5Cuff0c%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu4e0d%5Cu6362%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A116%2C%22totalAccepted%22%3A30%2C%22pid%22%3A%22CF81B%22%2C%22title%22%3A%22Sequence%20Formatting%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1019%22%2C%22title%22%3A%22%5Cu5355%5Cu8bcd%5Cu63a5%5Cu9f99%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF156A%22%2C%22title%22%3A%22Message%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF82A%22%2C%22title%22%3A%22Double%20Cola%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF55B%22%2C%22title%22%3A%22Smallest%20number%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF940A%22%2C%22title%22%3A%22Points%20on%20the%20line%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Sequence%20Formatting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573295103;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Sequence Formatting</h1>
+<h2>题意翻译</h2>
+<div>Polycarp 是个非常严谨的人，不像他的同班同学那样，他甚至仔细地键入数字序列。
+如果他看到一个序列在逗号后面没有空格，或是一行有多个空格，或者当其他东西看起来不严谨时，他会立刻纠正它。
+例如，如“1,2，3，…，10”所写的数字序列将被修正为“1, 2, 3，…，10”。
+在这个任务中，你得到一个字符串 s ，
+s 由术语的连词构成，每一个词可以是：
+1.任意长度的正整数（不允许前导零），
+2. 逗号符号（“，”），
+3. 空格符号（“ ”），
+4. “三点”（“…”），即一个接一个地写三个点，也称为“暂停点”。
+Polycarp想添加并且删除字符串s中多余的空格来满足以下要求：
+1.每个逗号后面只有一个空格（若逗号是字符串中的最后一个字符，则此规则不适用于它）；
+2.每个“三点”前正好有一个空格（若三点在字符串的开头，则此规则不适用于它）；
+3.如果两个连续的数字仅由空格分隔，那么就应该只剩下一个空格，不应该有多余的空格。
+现在请你编写一个程序帮助Polycarp完成对字符串s的操作。
+输入输出格式
+输入格式：
+输入数据包含一个字符串s，它由最少1个字符，最多255个字符组成。
+s不会以一个空格开始或结束。
+它的内容与上面给出的描述相匹配。
+输出格式：
+处理后的s。你的程序的输出应该和预期的答案完全一样。
+允许输出换行输出s，也可以不换。</div>
+<h2>题目描述</h2>
+<div>Polycarp is very careful. He even types numeric sequences carefully, unlike his classmates. If he sees a sequence without a space after the comma, with two spaces in a row, or when something else does not look neat, he rushes to correct it. For example, number sequence written like "1,2 ,3,..., 10" will be corrected to "1, 2, 3, ..., 10".
+In this task you are given a string $ s $ , which is composed by a concatination of terms, each of which may be:
+- a positive integer of an arbitrary length (leading zeroes are not allowed),
+- a "comma" symbol (","),
+- a "space" symbol (" "),
+- "three dots" ("...", that is, exactly three points written one after another, also known as suspension points).
+Polycarp wants to add and remove spaces in the string $ s $ to ensure the following:
+- each comma is followed by exactly one space (if the comma is the last character in the string, this rule does not apply to it),
+- each "three dots" term is preceded by exactly one space (if the dots are at the beginning of the string, this rule does not apply to the term),
+- if two consecutive numbers were separated by spaces only (one or more), then exactly one of them should be left,
+- there should not be other spaces.
+Automate Polycarp's work and write a program that will process the given string $ s $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input data contains a single string $ s $ . Its length is from 1 to 255 characters. The string $ s $ does not begin and end with a space. Its content matches the description given above.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the string $ s $ after it is processed. Your program's output should be exactly the same as the expected answer. It is permissible to end output line with a line-break character, and without it.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1,2 ,3,...,     10
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1, 2, 3, ..., 10
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1,,,4...5......6
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>1, , , 4 ...5 ... ...6
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>...,1,2,3,...
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>..., 1, 2, 3, ...
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

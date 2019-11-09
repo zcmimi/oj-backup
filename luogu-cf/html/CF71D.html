@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Solitaire - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390537:+QqoHGUXdJ8o/7lXZbV/KZ0itXIYUyXxCeISG4eQZVA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Vasya%20has%20a%20pack%20of%20%24%2054%20%24%20cards%20%28%20%24%2052%20%24%20standard%20cards%20and%20%24%202%20%24%20distinct%20jokers%29.%20That%20is%20all%20he%20has%20at%20the%20moment.%20Not%20to%20die%20from%20boredom%2C%20Vasya%20plays%20Solitaire%20with%20them.%5Cn%5CnVasya%20lays%20out%20%24%20nm%20%24%20cards%20as%20a%20rectangle%20%24%20n%5Cu00d7m%20%24%20.%20If%20there%20are%20jokers%20among%20them%2C%20then%20Vasya%20should%20change%20them%20with%20some%20of%20the%20rest%20of%20%24%2054-nm%20%24%20cards%20%28which%20are%20not%20layed%20out%29%20so%20that%20there%20were%20no%20jokers%20left.%20Vasya%20can%20pick%20the%20cards%20to%20replace%20the%20jokers%20arbitrarily.%20Remember%2C%20that%20each%20card%20presents%20in%20pack%20exactly%20once%20%28i.%20e.%20in%20a%20single%20copy%29.%20Vasya%20tries%20to%20perform%20the%20replacements%20so%20that%20the%20solitaire%20was%20solved.%5Cn%5CnVasya%20thinks%20that%20the%20solitaire%20is%20solved%20if%20after%20the%20jokers%20are%20replaced%2C%20there%20exist%20two%20non-overlapping%20squares%20%24%203%5Cu00d73%20%24%20%2C%20inside%20each%20of%20which%20all%20the%20cards%20either%20have%20the%20same%20suit%2C%20or%20pairwise%20different%20ranks.%5Cn%5CnDetermine%20by%20the%20initial%20position%20whether%20the%20solitaire%20can%20be%20solved%20or%20not.%20If%20it%20can%20be%20solved%2C%20show%20the%20way%20in%20which%20it%20is%20possible.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20integers%20%24%20n%20%24%20and%20%24%20m%20%24%20%28%20%24%203%3C%3Dn%2Cm%3C%3D17%20%24%20%2C%20%24%20n%5Cu00d7m%3C%3D52%20%24%20%29.%20Next%20%24%20n%20%24%20lines%20contain%20%24%20m%20%24%20words%20each.%20Each%20word%20consists%20of%20two%20letters.%20The%20jokers%20are%20defined%20as%20%5C%22J1%5C%22%20and%20%5C%22J2%5C%22%20correspondingly.%20For%20the%20rest%20of%20the%20cards%2C%20the%20first%20letter%20stands%20for%20the%20rank%20and%20the%20second%20one%20%5Cu2014%20for%20the%20suit.%20The%20possible%20ranks%20are%3A%20%5C%222%5C%22%2C%20%5C%223%5C%22%2C%20%5C%224%5C%22%2C%20%5C%225%5C%22%2C%20%5C%226%5C%22%2C%20%5C%227%5C%22%2C%20%5C%228%5C%22%2C%20%5C%229%5C%22%2C%20%5C%22T%5C%22%2C%20%5C%22J%5C%22%2C%20%5C%22Q%5C%22%2C%20%5C%22K%5C%22%20and%20%5C%22A%5C%22.%20The%20possible%20suits%20are%3A%20%5C%22C%5C%22%2C%20%5C%22D%5C%22%2C%20%5C%22H%5C%22%20and%20%5C%22S%5C%22.%20All%20the%20cards%20are%20different.%22%2C%22outputFormat%22%3A%22If%20the%20Solitaire%20can%20be%20solved%2C%20print%20on%20the%20first%20line%20%5C%22Solution%20exists.%5C%22%20without%20the%20quotes.%20On%20the%20second%20line%20print%20in%20what%20way%20the%20jokers%20can%20be%20replaced.%20Three%20variants%20are%20possible%3A%5Cn%5Cn-%20%5C%22There%20are%20no%20jokers.%5C%22%2C%20if%20there%20are%20no%20jokers%20in%20the%20input%20data.%5Cn-%20%5C%22Replace%20J%20%24%20x%20%24%20with%20%24%20y%20%24%20.%5C%22%2C%20if%20there%20is%20one%20joker.%20%24%20x%20%24%20is%20its%20number%2C%20and%20%24%20y%20%24%20is%20the%20card%20it%20should%20be%20replaced%20with.%5Cn-%20%5C%22Replace%20J1%20with%20%24%20x%20%24%20and%20J2%20with%20%24%20y%20%24%20.%5C%22%2C%20if%20both%20jokers%20are%20present%20in%20the%20input%20data.%20%24%20x%20%24%20and%20%24%20y%20%24%20here%20represent%20distinct%20cards%20with%20which%20one%20should%20replace%20the%20first%20and%20the%20second%20jokers%20correspondingly.%5Cn%5CnOn%20the%20third%20line%20print%20the%20coordinates%20of%20the%20upper%20left%20corner%20of%20the%20first%20square%20%24%203%5Cu00d73%20%24%20in%20the%20format%20%5C%22Put%20the%20first%20square%20to%20%28%20%24%20r%20%24%20%2C%20%24%20c%20%24%20%29.%5C%22%2C%20where%20%24%20r%20%24%20and%20%24%20c%20%24%20are%20the%20row%20and%20the%20column%20correspondingly.%20In%20the%20same%20manner%20print%20on%20the%20fourth%20line%20the%20coordinates%20of%20the%20second%20square%20%24%203%5Cu00d73%20%24%20in%20the%20format%20%5C%22Put%20the%20second%20square%20to%20%28%20%24%20r%20%24%20%2C%20%24%20c%20%24%20%29.%5C%22.%5Cn%5CnIf%20there%20are%20several%20solutions%20to%20that%20problem%2C%20print%20any%20of%20them.%5Cn%5CnIf%20there%20are%20no%20solutions%2C%20print%20of%20the%20single%20line%20%5C%22No%20solution.%5C%22%20without%20the%20quotes.%5Cn%5CnSee%20the%20samples%20to%20understand%20the%20output%20format%20better.%22%2C%22samples%22%3A%5B%5B%224%206%5Cn2S%203S%204S%207S%208S%20AS%5Cn5H%206H%207H%205S%20TC%20AC%5Cn8H%209H%20TH%207C%208C%209C%5Cn2D%202C%203C%204C%205C%206C%5Cn%22%2C%22No%20solution.%22%5D%2C%5B%224%206%5Cn2S%203S%204S%207S%208S%20AS%5Cn5H%206H%207H%20J1%20TC%20AC%5Cn8H%209H%20TH%207C%208C%209C%5Cn2D%202C%203C%204C%205C%206C%5Cn%22%2C%22Solution%20exists.%5CnReplace%20J1%20with%202H.%5CnPut%20the%20first%20square%20to%20%281%2C%201%29.%5CnPut%20the%20second%20square%20to%20%282%2C%204%29.%5Cn%22%5D%2C%5B%224%206%5Cn2S%203S%204S%207S%208S%20AS%5Cn5H%206H%207H%20QC%20TC%20AC%5Cn8H%209H%20TH%207C%208C%209C%5Cn2D%202C%203C%204C%205C%206C%5Cn%22%2C%22Solution%20exists.%5CnThere%20are%20no%20jokers.%5CnPut%20the%20first%20square%20to%20%281%2C%201%29.%5CnPut%20the%20second%20square%20to%20%282%2C%204%29.%5Cn%22%5D%5D%2C%22hint%22%3A%22The%20pretests%20cover%20all%20the%20possible%20output%20formats.%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F71%5C%2FD%22%2C%22id%22%3A%2271D%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A60%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22CF71D%22%2C%22title%22%3A%22Solitaire%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF109A%22%2C%22title%22%3A%22Lucky%20Sum%20of%20Digits%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF59E%22%2C%22title%22%3A%22Shortest%20Path%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22AT3621%22%2C%22title%22%3A%22Small%20Multiple%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22AT%22%7D%2C%7B%22pid%22%3A%22CF1204C%22%2C%22title%22%3A%22Anna%2C%20Svyatoslav%20and%20Maps%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1204B%22%2C%22title%22%3A%22Mislove%20Has%20Lost%20an%20Array%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Solitaire%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Solitaire</h1>
+<h2>题目描述</h2>
+<div>Vasya has a pack of $ 54 $ cards ( $ 52 $ standard cards and $ 2 $ distinct jokers). That is all he has at the moment. Not to die from boredom, Vasya plays Solitaire with them.
+Vasya lays out $ nm $ cards as a rectangle $ n×m $ . If there are jokers among them, then Vasya should change them with some of the rest of $ 54-nm $ cards (which are not layed out) so that there were no jokers left. Vasya can pick the cards to replace the jokers arbitrarily. Remember, that each card presents in pack exactly once (i. e. in a single copy). Vasya tries to perform the replacements so that the solitaire was solved.
+Vasya thinks that the solitaire is solved if after the jokers are replaced, there exist two non-overlapping squares $ 3×3 $ , inside each of which all the cards either have the same suit, or pairwise different ranks.
+Determine by the initial position whether the solitaire can be solved or not. If it can be solved, show the way in which it is possible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains integers $ n $ and $ m $ ( $ 3<=n,m<=17 $ , $ n×m<=52 $ ). Next $ n $ lines contain $ m $ words each. Each word consists of two letters. The jokers are defined as "J1" and "J2" correspondingly. For the rest of the cards, the first letter stands for the rank and the second one — for the suit. The possible ranks are: "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K" and "A". The possible suits are: "C", "D", "H" and "S". All the cards are different.</div>
+<h3>输出格式</h3>
+<br />
+<div>If the Solitaire can be solved, print on the first line "Solution exists." without the quotes. On the second line print in what way the jokers can be replaced. Three variants are possible:
+- "There are no jokers.", if there are no jokers in the input data.
+- "Replace J $ x $ with $ y $ .", if there is one joker. $ x $ is its number, and $ y $ is the card it should be replaced with.
+- "Replace J1 with $ x $ and J2 with $ y $ .", if both jokers are present in the input data. $ x $ and $ y $ here represent distinct cards with which one should replace the first and the second jokers correspondingly.
+On the third line print the coordinates of the upper left corner of the first square $ 3×3 $ in the format "Put the first square to ( $ r $ , $ c $ ).", where $ r $ and $ c $ are the row and the column correspondingly. In the same manner print on the fourth line the coordinates of the second square $ 3×3 $ in the format "Put the second square to ( $ r $ , $ c $ ).".
+If there are several solutions to that problem, print any of them.
+If there are no solutions, print of the single line "No solution." without the quotes.
+See the samples to understand the output format better.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 6
+2S 3S 4S 7S 8S AS
+5H 6H 7H 5S TC AC
+8H 9H TH 7C 8C 9C
+2D 2C 3C 4C 5C 6C
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>No solution.</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>4 6
+2S 3S 4S 7S 8S AS
+5H 6H 7H J1 TC AC
+8H 9H TH 7C 8C 9C
+2D 2C 3C 4C 5C 6C
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>Solution exists.
+Replace J1 with 2H.
+Put the first square to (1, 1).
+Put the second square to (2, 4).
+</code></pre>
+<h3>输入样例 #3</h3>
+<pre><code>4 6
+2S 3S 4S 7S 8S AS
+5H 6H 7H QC TC AC
+8H 9H TH 7C 8C 9C
+2D 2C 3C 4C 5C 6C
+</code></pre>
+<h3>输出样例 #3</h3>
+<pre><code>Solution exists.
+There are no jokers.
+Put the first square to (1, 1).
+Put the second square to (2, 4).
+</code></pre>
+<h2>说明</h2>
+<div>The pretests cover all the possible output formats.</div>
+</article>
+</div>
+</div>
+</body>
+</html>

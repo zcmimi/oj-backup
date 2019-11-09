@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sum of Medians - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390675:/1oz+78u75j828Ge4QgmMY6F2O3AKW+84A+NS5qKqTs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20one%20well-known%20algorithm%20of%20finding%20the%20%24%20k%20%24%20-th%20order%20statistics%20we%20should%20divide%20all%20elements%20into%20groups%20of%20five%20consecutive%20elements%20and%20find%20the%20median%20of%20each%20five.%20A%20median%20is%20called%20the%20middle%20element%20of%20a%20sorted%20array%20%28it%27s%20the%20third%20largest%20element%20for%20a%20group%20of%20five%29.%20To%20increase%20the%20algorithm%27s%20performance%20speed%20on%20a%20modern%20video%20card%2C%20you%20should%20be%20able%20to%20find%20a%20sum%20of%20medians%20in%20each%20five%20of%20the%20array.%5Cn%5CnA%20sum%20of%20medians%20of%20a%20sorted%20%24%20k%20%24%20-element%20set%20%24%20S%3D%7Ba_%7B1%7D%2Ca_%7B2%7D%2C...%2Ca_%7Bk%7D%7D%20%24%20%2C%20where%20%24%20a_%7B1%7D%26lt%3Ba_%7B2%7D%26lt%3Ba_%7B3%7D%26lt%3B...%26lt%3Ba_%7Bk%7D%20%24%20%2C%20will%20be%20understood%20by%20as%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF85D%5C%2Fade3397df6e8978ddadfc100b4ccb88beefd1e3f.png%29The%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF85D%5C%2F99fd5677ca5c02520be7595d9b1eaf3e9972e601.png%29%20operator%20stands%20for%20taking%20the%20remainder%2C%20that%20is%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FCF85D%5C%2Fcb1d84ad58154eb7ea26b65d1ae0039570db9bb6.png%29%20stands%20for%20the%20remainder%20of%20dividing%20%24%20x%20%24%20by%20%24%20y%20%24%20.%5Cn%5CnTo%20organize%20exercise%20testing%20quickly%20calculating%20the%20sum%20of%20medians%20for%20a%20changing%20set%20was%20needed.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20number%20%24%20n%20%24%20%28%20%24%201%3C%3Dn%3C%3D10%5E%7B5%7D%20%24%20%29%2C%20the%20number%20of%20operations%20performed.%5Cn%5CnThen%20each%20of%20%24%20n%20%24%20lines%20contains%20the%20description%20of%20one%20of%20the%20three%20operations%3A%5Cn%5Cn-%20add%20%24%20x%20%24%20%20%5Cu2014%20add%20the%20element%20%24%20x%20%24%20to%20the%20set%3B%5Cn-%20del%20%24%20x%20%24%20%20%5Cu2014%20delete%20the%20element%20%24%20x%20%24%20from%20the%20set%3B%5Cn-%20sum%20%5Cu2014%20find%20the%20sum%20of%20medians%20of%20the%20set.%5Cn%5CnFor%20any%20add%20%24%20x%20%24%20%20operation%20it%20is%20true%20that%20the%20element%20%24%20x%20%24%20is%20not%20included%20in%20the%20set%20directly%20before%20the%20operation.%5Cn%5CnFor%20any%20del%20%24%20x%20%24%20%20operation%20it%20is%20true%20that%20the%20element%20%24%20x%20%24%20is%20included%20in%20the%20set%20directly%20before%20the%20operation.%5Cn%5CnAll%20the%20numbers%20in%20the%20input%20are%20positive%20integers%2C%20not%20exceeding%20%24%2010%5E%7B9%7D%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20operation%20sum%20print%20on%20the%20single%20line%20the%20sum%20of%20medians%20of%20the%20current%20set.%20If%20the%20set%20is%20empty%2C%20print%200.%5Cn%5CnPlease%2C%20do%20not%20use%20the%20%25lld%20specificator%20to%20read%20or%20write%2064-bit%20integers%20in%20C%2B%2B.%20It%20is%20preferred%20to%20use%20the%20cin%2C%20cout%20streams%20%28also%20you%20may%20use%20the%20%25I64d%20specificator%29.%22%2C%22samples%22%3A%5B%5B%226%5Cnadd%204%5Cnadd%205%5Cnadd%201%5Cnadd%202%5Cnadd%203%5Cnsum%5Cn%22%2C%223%5Cn%22%5D%2C%5B%2214%5Cnadd%201%5Cnadd%207%5Cnadd%202%5Cnadd%205%5Cnsum%5Cnadd%206%5Cnadd%208%5Cnadd%209%5Cnadd%203%5Cnadd%204%5Cnadd%2010%5Cnsum%5Cndel%201%5Cnsum%5Cn%22%2C%225%5Cn11%5Cn13%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F85%5C%2FD%22%2C%22id%22%3A%2285D%22%7D%2C%22translation%22%3A%22%60%60%60cpp%5Cn%5Cu4e00%5Cu4e2a%5Cu96c6%5Cu5408%5Cuff0c%5Cu521d%5Cu59cb%5Cu4e3a%5Cu7a7a%5Cu3002%5Cu73b0%5Cu6709%5Cu4e09%5Cu4e2a%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn1.add%5Cuff1a%5Cu5411%5Cu96c6%5Cu5408%5Cu91cc%5Cu52a0%5Cu5165%5Cu6570x%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu52a0%5Cu5165%5Cu524d%5Cu96c6%5Cu5408%5Cu4e2d%5Cu6ca1%5Cu6709%5Cu6570x%5Cuff1b%5Cn2.del%5Cuff1a%5Cu4ece%5Cu96c6%5Cu5408%5Cu4e2d%5Cu5220%5Cu9664%5Cu6570x%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu5220%5Cu9664%5Cu524d%5Cu96c6%5Cu5408%5Cu4e2d%5Cu6709x%5Cuff1b%5Cn3.sum%5Cuff1a%5Cu8be2%5Cu95ee%5Cu5c06%5Cu96c6%5Cu5408%5Cu91cc%5Cu7684%5Cu6570%5Cu4ece%5Cu5c0f%5Cu5230%5Cu5927%5Cu6392%5Cu5e8f%5Cu540e%5Cuff0c%5Cu6c42%5Cu4e0b%5Cu6807i%5Cu6a215%5Cu4f593%5Cu7684%5Cu6570%5Cu7684%5Cu548c%5Cu3002%5Cn%5Cu73b0%5Cu6709n%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu67e5%5Cu8be2%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu8f93%5Cu51fa%5Cu7b54%5Cu6848%5Cn%60%60%60%5Cn%5CnTranslated%20by%20%40maojinyang%22%2C%22tags%22%3A%5B42%2C111%2C113%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A279%2C%22totalAccepted%22%3A76%2C%22pid%22%3A%22CF85D%22%2C%22title%22%3A%22Sum%20of%20Medians%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A147937%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%5Cuff0c%5Cu7b2c%5Cu4e09%5Cu4e2a%5Cu70b9%5Cu83ab%5Cu540d%5Cu54c7%5Cu60f9%22%2C%22forum%22%3A%7B%22id%22%3A12268%2C%22name%22%3A%22CF85D%20Sum%20of%20Medians%22%2C%22slug%22%3A%22CF85D%22%7D%7D%2C%7B%22id%22%3A66154%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12268%2C%22name%22%3A%22CF85D%20Sum%20of%20Medians%22%2C%22slug%22%3A%22CF85D%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF718A%22%2C%22title%22%3A%22Efim%20and%20Strange%20Grade%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF482B%22%2C%22title%22%3A%22Interesting%20Array%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4254%22%2C%22title%22%3A%22%5BJSOI2008%5DBlue%20Mary%5Cu5f00%5Cu516c%5Cu53f8%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4451%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu6574%5Cu6570%5Cu7684lqp%5Cu62c6%5Cu5206%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1190D%22%2C%22title%22%3A%22Tokitsukaze%20and%20Strange%20Rectangle%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Sum%20of%20Medians%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573286098;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Sum of Medians</h1>
+<h2>题意翻译</h2>
+<div>```cpp
+一个集合，初始为空。现有三个操作：
+1.add：向集合里加入数x，保证加入前集合中没有数x；
+2.del：从集合中删除数x，保证删除前集合中有x；
+3.sum：询问将集合里的数从小到大排序后，求下标i模5余3的数的和。
+现有n次操作，对于每个查询操作，输出答案
+```
+Translated by @maojinyang</div>
+<h2>题目描述</h2>
+<div>In one well-known algorithm of finding the $ k $ -th order statistics we should divide all elements into groups of five consecutive elements and find the median of each five. A median is called the middle element of a sorted array (it's the third largest element for a group of five). To increase the algorithm's performance speed on a modern video card, you should be able to find a sum of medians in each five of the array.
+A sum of medians of a sorted $ k $ -element set $ S={a_{1},a_{2},...,a_{k}} $ , where $ a_{1}&lt;a_{2}&lt;a_{3}&lt;...&lt;a_{k} $ , will be understood by as
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF85D/ade3397df6e8978ddadfc100b4ccb88beefd1e3f.png)The ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF85D/99fd5677ca5c02520be7595d9b1eaf3e9972e601.png) operator stands for taking the remainder, that is ![](https://cdn.luogu.com.cn/upload/vjudge_pic/CF85D/cb1d84ad58154eb7ea26b65d1ae0039570db9bb6.png) stands for the remainder of dividing $ x $ by $ y $ .
+To organize exercise testing quickly calculating the sum of medians for a changing set was needed.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains number $ n $ ( $ 1<=n<=10^{5} $ ), the number of operations performed.
+Then each of $ n $ lines contains the description of one of the three operations:
+- add $ x $ — add the element $ x $ to the set;
+- del $ x $ — delete the element $ x $ from the set;
+- sum — find the sum of medians of the set.
+For any add $ x $ operation it is true that the element $ x $ is not included in the set directly before the operation.
+For any del $ x $ operation it is true that the element $ x $ is included in the set directly before the operation.
+All the numbers in the input are positive integers, not exceeding $ 10^{9} $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each operation sum print on the single line the sum of medians of the current set. If the set is empty, print 0.
+Please, do not use the %lld specificator to read or write 64-bit integers in C++. It is preferred to use the cin, cout streams (also you may use the %I64d specificator).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>6
+add 4
+add 5
+add 1
+add 2
+add 3
+sum
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>14
+add 1
+add 7
+add 2
+add 5
+sum
+add 6
+add 8
+add 9
+add 3
+add 4
+add 10
+sum
+del 1
+sum
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>5
+11
+13
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

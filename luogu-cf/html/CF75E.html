@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Ship&#039;s Shortest Path - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573390587:lx3hfVACWlmxmlpjGFGT4NYFIr30USPaTc8g1+64OZU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20have%20got%20a%20new%20job%2C%20and%20it%27s%20very%20interesting%2C%20you%20are%20a%20ship%20captain.%20Your%20first%20task%20is%20to%20move%20your%20ship%20from%20one%20point%20to%20another%20point%2C%20and%20for%20sure%20you%20want%20to%20move%20it%20at%20the%20minimum%20cost.%5Cn%5CnAnd%20it%27s%20well%20known%20that%20the%20shortest%20distance%20between%20any%202%20points%20is%20the%20length%20of%20the%20line%20segment%20between%20these%202%20points.%20But%20unfortunately%20there%20is%20an%20island%20in%20the%20sea%2C%20so%20sometimes%20you%20won%27t%20be%20able%20to%20move%20your%20ship%20in%20the%20line%20segment%20between%20the%202%20points.%5Cn%5CnYou%20can%20only%20move%20to%20safe%20points.%20A%20point%20is%20called%20safe%20if%20it%27s%20on%20the%20line%20segment%20between%20the%20start%20and%20end%20points%2C%20or%20if%20it%27s%20on%20the%20island%27s%20edge.%5Cn%5CnBut%20you%20are%20too%20lucky%2C%20you%20have%20got%20some%20clever%20and%20strong%20workers%20and%20they%20can%20help%20you%20in%20your%20trip%2C%20they%20can%20help%20you%20move%20the%20ship%20in%20the%20sea%20and%20they%20will%20take%201%20Egyptian%20pound%20for%20each%20moving%20unit%20in%20the%20sea%2C%20and%20they%20can%20carry%20the%20ship%20%28yes%2C%20they%20are%20very%20strong%29%20and%20walk%20on%20the%20island%20and%20they%20will%20take%202%20Egyptian%20pounds%20for%20each%20moving%20unit%20in%20the%20island.%20The%20money%20which%20you%20will%20give%20to%20them%20will%20be%20divided%20between%20all%20workers%2C%20so%20the%20number%20of%20workers%20does%20not%20matter%20here.%5Cn%5CnYou%20can%20move%20your%20ship%20on%20the%20island%20edge%2C%20and%20it%20will%20be%20considered%20moving%20in%20the%20sea.%5Cn%5CnNow%20you%20have%20a%20sea%20map%2C%20and%20you%20have%20to%20decide%20what%20is%20the%20minimum%20cost%20for%20your%20trip.%5Cn%5CnYour%20starting%20point%20is%20%28%20%24%20xStart%20%24%20%2C%20%24%20yStart%20%24%20%29%2C%20and%20the%20end%20point%20is%20%28%20%24%20xEnd%20%24%20%2C%20%24%20yEnd%20%24%20%29%2C%20both%20points%20will%20be%20different.%5Cn%5CnThe%20island%20will%20be%20a%20convex%20polygon%20and%20there%20will%20be%20no%20more%20than%202%20polygon%20points%20on%20the%20same%20line%2C%20also%20the%20starting%20and%20the%20end%20points%20won%27t%20be%20inside%20or%20on%20the%20boundary%20of%20the%20island.%20The%20points%20for%20the%20polygon%20will%20be%20given%20in%20the%20anti-clockwise%20order.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%204%20integers%2C%20%24%20xStart%20%24%20%2C%20%24%20yStart%20%24%20%2C%20%24%20xEnd%20%24%20and%20%24%20yEnd%20%24%20%28%20%24%20-100%3C%3DxStart%2CyStart%2CxEnd%2CyEnd%3C%3D100%20%24%20%29.%20The%20second%20line%20contains%20an%20integer%20%24%20n%20%24%20%2C%20which%20is%20the%20number%20of%20points%20in%20the%20polygon%20%28%20%24%203%3C%3Dn%3C%3D30%20%24%20%29%2C%20followed%20by%20a%20line%20containing%20%24%20n%20%24%20pairs%20of%20integers%20%24%20x%20%24%20and%20%24%20y%20%24%20%2C%20which%20are%20the%20coordinates%20of%20the%20points%20%28%20%24%20-100%3C%3Dx%2Cy%3C%3D100%20%24%20%29%2C%20the%20polygon%20points%20will%20be%20distinct.%22%2C%22outputFormat%22%3A%22Print%20one%20line%20which%20contains%20the%20minimum%20possible%20cost.%20The%20absolute%20or%20relative%20error%20in%20the%20answer%20should%20not%20exceed%20%24%2010%5E%7B-6%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%221%207%206%207%5Cn4%5Cn4%202%204%2012%203%2012%203%202%5Cn%22%2C%226.000000000%5Cn%22%5D%2C%5B%22-1%200%202%200%5Cn4%5Cn0%200%201%200%201%201%200%201%5Cn%22%2C%223.000000000%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B256000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22CodeForces%22%2C%22link%22%3A%22http%3A%5C%2F%5C%2Fcodeforces.com%5C%2Fproblemset%5C%2Fproblem%5C%2F75%5C%2FE%22%2C%22id%22%3A%2275E%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu5e45n%5Cu4e2a%5Cu70b9%5Cuff0cm%5Cu6761%5Cu8fb9%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu6709%5Cu6743%5Cu503cd%5Cuff0c%5Cu73b0%5Cu5728%5Cu6709q%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu6709%5Cu4e09%5Cu79cd%5Cu64cd%5Cu4f5c%5Cu3002%20%5Cr%5Cn1%5Cuff0c%5Cu7ed9%5Cu51fax%2Cy%2Cd%5Cuff0c%5Cu52a0%5Cu5165%5Cu8fde%5Cu63a5x%5Cuff0cy%5Cu7684%5Cu6743%5Cu503c%5Cu4e3ad%5Cu7684%5Cu8fb9%20%5Cr%5Cn2%5Cuff0c%5Cu7ed9%5Cu51fax%2Cy%5Cuff0c%5Cu5220%5Cu9664%5Cu8fd9%5Cu6761%5Cu8fb9%20%5Cr%5Cn3%5Cuff0c%5Cu7ed9%5Cu51fax%2Cy%5Cuff0c%5Cu95ee%5Cu4ecex%5Cu5230y%5Cu7684%5Cu8def%5Cu5f84%5Cu7684%5Cu6700%5Cu5c0f%5Cu5f02%5Cu6216%5Cu548c%5Cu3002%20%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu64cd%5Cu4f5c%5Cu5408%5Cu6cd5%5Cu4e14%5Cu4e00%5Cu76f4%5Cu4e3a%5Cu7b80%5Cu5355%5Cu8fde%5Cu901a%5Cu56fe%20%5Cr%5Cnn%2Cm%2Cq%3C%3D1e5%20%5Cr%5Cn%5Cu90e8%5Cu5206%5Cu5206%5Cuff1aq%3D1%2C%5Cu4e14%5Cu4e3a%5Cu64cd%5Cu4f5c3%5Cr%5Cn%5Cr%5Cn%5Cu672c%5Cu9898%5Cu7ffb%5Cu8bd1%5Cuff1alouhao088%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22CF75E%22%2C%22title%22%3A%22Ship%27s%20Shortest%20Path%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Ship%27s%20Shortest%20Path%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Ship&#039;s Shortest Path</h1>
+<h2>题意翻译</h2>
+<div>给你一幅n个点，m条边的无向图，每条边有权值d，现在有q次操作，有三种操作。
+1，给出x,y,d，加入连接x，y的权值为d的边
+2，给出x,y，删除这条边
+3，给出x,y，问从x到y的路径的最小异或和。
+保证操作合法且一直为简单连通图
+n,m,q<=1e5
+部分分：q=1,且为操作3
+本题翻译：louhao088</div>
+<h2>题目描述</h2>
+<div>You have got a new job, and it's very interesting, you are a ship captain. Your first task is to move your ship from one point to another point, and for sure you want to move it at the minimum cost.
+And it's well known that the shortest distance between any 2 points is the length of the line segment between these 2 points. But unfortunately there is an island in the sea, so sometimes you won't be able to move your ship in the line segment between the 2 points.
+You can only move to safe points. A point is called safe if it's on the line segment between the start and end points, or if it's on the island's edge.
+But you are too lucky, you have got some clever and strong workers and they can help you in your trip, they can help you move the ship in the sea and they will take 1 Egyptian pound for each moving unit in the sea, and they can carry the ship (yes, they are very strong) and walk on the island and they will take 2 Egyptian pounds for each moving unit in the island. The money which you will give to them will be divided between all workers, so the number of workers does not matter here.
+You can move your ship on the island edge, and it will be considered moving in the sea.
+Now you have a sea map, and you have to decide what is the minimum cost for your trip.
+Your starting point is ( $ xStart $ , $ yStart $ ), and the end point is ( $ xEnd $ , $ yEnd $ ), both points will be different.
+The island will be a convex polygon and there will be no more than 2 polygon points on the same line, also the starting and the end points won't be inside or on the boundary of the island. The points for the polygon will be given in the anti-clockwise order.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains 4 integers, $ xStart $ , $ yStart $ , $ xEnd $ and $ yEnd $ ( $ -100<=xStart,yStart,xEnd,yEnd<=100 $ ). The second line contains an integer $ n $ , which is the number of points in the polygon ( $ 3<=n<=30 $ ), followed by a line containing $ n $ pairs of integers $ x $ and $ y $ , which are the coordinates of the points ( $ -100<=x,y<=100 $ ), the polygon points will be distinct.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print one line which contains the minimum possible cost. The absolute or relative error in the answer should not exceed $ 10^{-6} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 7 6 7
+4
+4 2 4 12 3 12 3 2
+</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6.000000000
+</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>-1 0 2 0
+4
+0 0 1 0 1 1 0 1
+</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code>3.000000000
+</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>
