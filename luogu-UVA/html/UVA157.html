@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Route Finding - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573452891:P765zOeTUfXVSCagFqW8FgfYF2ifr2CwlAwhQY4Y46U=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D3%26page%3Dshow_problem%26problem%3D93%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F1%5C%2Fp157.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA157%5C%2F77cf77ec718af2b613ba60a39597ef7235f24247.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA157%5C%2Fc136d252554be59062e6a6aff607484881dc9905.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA157%5C%2F0424d2d17bc2dc80cc5a62a66f5d92395f61f061.png%29%22%2C%22samples%22%3A%5B%5B%224%5CnA%3Afgmpnxzabjd%3DDbf%5CnD%3Ab%3DAdac%3DCcf%5CnB%3Aacd%3DAzefg%3DCbh%5CnC%3Abac%5CnAgAa%5CnAbBh%5CnBhDf%5Cn%23%22%2C%225%3A%20Agfdjba%5Cn9%3A%20Abaz%3DBdefgh%5Cn10%3A%20Bhg%3DCbac%3DDcf%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F157%22%2C%22id%22%3A%22157%22%7D%2C%22translation%22%3A%22%23%23%23%23%23%23%20%5Cu8bb8%5Cu591a%5Cu57ce%5Cu5e02%5Cu63d0%5Cu4f9b%5Cu7efc%5Cu5408%5Cu516c%5Cu5171%5Cu4ea4%5Cu901a%5Cu7cfb%5Cu7edf%5Cu3002%5Cu6b64%5Cu7c7b%5Cu7cfb%5Cu7edf%5Cu901a%5Cu5e38%5Cu5c06%5Cu516c%5Cu4ea4%5Cu7ebf%5Cu8def%5Cu3001%5Cu90ca%5Cu533a%5Cu901a%5Cu52e4%5Cu5217%5Cu8f66%5Cu670d%5Cu52a1%5Cu548c%5Cu5730%5Cu94c1%5Cu6574%5Cu5408%5Cu5728%5Cu4e00%5Cu8d77%5Cu3002%5Cu6b64%5Cu7c7b%5Cu7cfb%5Cu7edf%5Cu4e0a%5Cu7684%5Cu7ebf%5Cu8def%5Cu53ef%5Cu4ee5%5Cu6839%5Cu636e%5Cu5176%5Cu6cbf%5Cu7ebf%5Cu7ad9%5Cu70b9%5Cu8fdb%5Cu884c%5Cu5206%5Cu7c7b%5Cu3002%5Cu6211%5Cu4eec%5Cu901a%5Cu5e38%5Cu5c06%5Cu5176%5Cu89c6%5Cu4e3a%5Cu666e%5Cu901a%5Cu7ebf%5Cuff08%5Cu8f66%5Cu8f86%5Cu4ece%5Cu8def%5Cu7ebf%5Cu7684%5Cu4e00%5Cu7aef%5Cu7a7f%5Cu68ad%5Cu5230%5Cu53e6%5Cu4e00%5Cu7aef%5Cu5e76%5Cu8fd4%5Cu56de%5Cuff09%5Cu3001%5Cu73af%5Cu7ebf%5Cuff08%5Cu5de6%5Cu53f3%5Cu201c%5Cu5206%5Cu652f%5Cu201d%5Cu7684%5Cu7aef%5Cu70b9%5Cu76f8%5Cu540c%5Cu4e14%5Cu8f66%5Cu8f86%5Cu5728%5Cu4e24%5Cu4e2a%5Cu65b9%5Cu5411%5Cu4e0a%5Cu73af%5Cu7ed5%5Cu7cfb%5Cu7edf%5Cuff09%5Cu548c%5Cu8fde%5Cu63a5%5Cu7ebf%5Cuff08%5Cu5176%5Cu6bcf%5Cu4e00%5Cu7aef%5Cu90fd%5Cu8fde%5Cu63a5%5Cu5230%5Cu53e6%5Cu4e00%5Cu6761%5Cu7ebf%5Cu8def%5Cuff09%5Cu3002%5Cu663e%5Cu7136%5Cuff0c%5Cu6240%5Cu6709%5Cu8fd9%5Cu4e9b%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu8ba4%5Cu4e3a%5Cu662f%5Cu975e%5Cu5e38%5Cu76f8%5Cu4f3c%5Cu7684%5Cuff0c%5Cu5e76%5Cu4e14%5Cu53ef%5Cu4ee5%5Cu5728%5Cu5b83%5Cu4eec%5Cu7684%5Cu8def%5Cu7ebf%5Cu4e0a%5Cu7684%5Cu4e0d%5Cu540c%5Cu70b9%5Cu76f8%5Cu4e92%5Cu8fde%5Cu63a5%5Cu3002%5Cu8bf7%5Cu6ce8%5Cu610f%5Cuff0c%5Cu8f66%5Cu8f86%5Cu53ef%5Cu4ee5%5Cu6cbf%5Cu6240%5Cu6709%5Cu8def%5Cu7ebf%5Cu53cc%5Cu5411%5Cu884c%5Cu9a76%5Cuff0c%5Cu5e76%5Cu4e14%5Cu53ea%5Cu80fd%5Cu5728%5Cu6362%5Cu4e58%5Cu7ad9%5Cu7684%5Cu8def%5Cu7ebf%5Cu4e4b%5Cu95f4%5Cu6362%5Cu4e58%5Cu3002%5Cr%5Cn%23%23%23%23%23%23%20%5Cu4e3a%5Cu4e86%5Cu7b80%5Cu5316%5Cu95ee%5Cu9898%5Cuff0c%5Cu6211%5Cu4eec%5Cu7ed9%5Cu6bcf%5Cu6761%5Cu7ebf%5Cu8def%5Cu90fd%5Cu6307%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu201cA%5Cu201d%5Cu5230%5Cu201cZ%5Cu201d%5Cu4e4b%5Cu95f4%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4e00%5Cu6761%5Cu7ebf%5Cu4e0a%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu8f66%5Cu7ad9%5Cu90fd%5Cu6307%5Cu5b9a%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu201ca%5Cu201d%5Cu5230%5Cu201cz%5Cu201d%5Cu4e4b%5Cu95f4%5Cu7684%5Cu5b57%5Cu6bcd%5Cu3002%5Cu6362%5Cu4e58%5Cu7ad9%5Cu5c06%5Cu6709%5Cu591a%5Cu4e2a%5Cu540d%5Cu79f0%5Cu3002%5Cu56e0%5Cu6b64%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu53ef%5Cu80fd%5Cu7684%5Cu4f8b%5Cu5b50%5Cu662f%5Cuff1a%5Cr%5Cn%23%23%23%23%23%23%5Cr%5Cn%23%23%23%23%23%23%5Cr%5Cn%23%23%23%23%23%23%20%5Cu8fd9%5Cu79cd%5Cu7cfb%5Cu7edf%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5e38%5Cu89c1%5Cu95ee%5Cu9898%5Cu662f%5Cu5728%5Cu4e24%5Cu4e2a%5Cu8f66%5Cu7ad9%5Cu4e4b%5Cu95f4%5Cu627e%5Cu5230%5Cu4e00%5Cu6761%5Cu8def%5Cu7ebf%5Cu3002%5Cu6211%5Cu4eec%5Cu5e0c%5Cu671b%5Cu627e%5Cu5230%5Cu201c%5Cu6700%5Cu4f73%5Cu201d%5Cu8def%5Cu7ebf%5Cuff0c%5Cu4e5f%5Cu5c31%5Cu662f%5Cu201c%5Cu7528%5Cu65f6%5Cu6700%5Cu77ed%5Cu201d%5Cu7684%5Cu8def%5Cu7ebf%5Cu3002%5Cr%5Cn%23%23%23%23%23%23%20%5Cu8bf7%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu80fd%5Cu8bfb%5Cu53d6%5Cu6b64%5Cu7c7b%5Cu7cfb%5Cu7edf%5Cu7684%5Cu8be6%5Cu7ec6%5Cu4fe1%5Cu606f%5Cuff0c%5Cu7136%5Cu540e%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu4e24%5Cu4e2a%5Cu7ad9%5Cu4e4b%5Cu95f4%5Cu627e%5Cu5230%5Cu6700%5Cu5feb%5Cu7684%5Cu8def%5Cu7ebf%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu3002%5Cu53ef%5Cu4ee5%5Cu5047%5Cu8bbe%5Cuff08%5Cu76f8%5Cu90bb%5Cuff09%5Cu7ad9%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%5Cu884c%5Cu7a0b%5Cu59cb%5Cu7ec8%5Cu9700%5Cu89811%5Cu4e2a%5Cu65f6%5Cu95f4%5Cu5355%5Cu4f4d%5Cuff0c%5Cu800c%5Cu5728%5Cu6362%5Cu4e58%5Cu7ad9%5Cu7684%5Cu7ebf%5Cu8def%5Cu4e4b%5Cu95f4%5Cu6362%5Cu4e58%5Cu9700%5Cu89813%5Cu4e2a%5Cu65f6%5Cu95f4%5Cu5355%5Cu4f4d%5Cu3002%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cr%5Cn%23%23%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu5c06%5Cu7531%5Cu4e24%5Cu90e8%5Cu5206%5Cu7ec4%5Cu6210%5Cu3002%5Cu7b2c%5Cu4e00%5Cu90e8%5Cu5206%5Cu5305%5Cu62ec%5Cu5bf9%5Cu7cfb%5Cu7edf%5Cu7684%5Cu63cf%5Cu8ff0%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu90e8%5Cu5206%5Cu5305%5Cu62ec%5Cu6210%5Cu5bf9%5Cu7684%5Cu7ad9%5Cu70b9%5Cu3002%5Cu7cfb%5Cu7edf%5Cu63cf%5Cu8ff0%5Cu5c06%5Cu4ee51%5Cu523026%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6570%5Cu5b57n%5Cu5f00%5Cu59cb%5Cuff0c%5Cu8868%5Cu793a%5Cu7cfb%5Cu7edf%5Cu4e2d%5Cu6709%5Cu591a%5Cu5c11%5Cu6761%5Cu7ebf%5Cu8def%5Cu3002%5Cu540e%5Cu9762%5Cu662fn%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu6761%5Cu7ebf%5Cu8def%5Cu3002%5Cu6bcf%5Cu4e00%5Cu884c%5Cu5c06%5Cu4f9d%5Cu6b21%5Cu4ee5%5Cu7ebf%5Cu8def%5Cu6807%5Cu8bc6%5Cu7b26%5Cu5f00%5Cu59cb%5Cuff0c%5Cu540e%5Cu8ddf%5Cu201c%5Cuff1a%5Cu201d%5Cu548c%5Cu8be5%5Cu7ebf%5Cu8def%5Cu6cbf%5Cu7ebf%5Cu7684%5Cu7ad9%5Cu70b9%5Cu3002%5Cu6362%5Cu4e58%5Cu7ad9%5Cu7528%5Cu201c%3D%5Cu201d%5Cu7b26%5Cu53f7%5Cu540e%5Cu9762%5Cu63a5%5Cu5b8c%5Cu6574%5Cu540d%5Cu79f0%5Cu7684%5Cu5f62%5Cu5f0f%5Cu8868%5Cu793a%5Cu3002%5Cu6240%5Cu6709%5Cu6362%5Cu4e58%5Cu7ad9%5Cu81f3%5Cu5c11%5Cu6807%5Cu8bc6%5Cu4e00%5Cu6b21%5Cuff0c%5Cu5982%5Cu679c%5Cu4e00%5Cu4e2a%5Cu6362%5Cu4e58%5Cu7ad9%5Cu6709%5Cu4e24%5Cu6761%5Cu4ee5%5Cu4e0a%5Cu7684%5Cu7ebf%5Cu8def%5Cu4ea4%5Cu6c47%5Cuff0c%5Cu5219%5Cu53ef%5Cu540c%5Cu65f6%5Cu6807%5Cu8bc6%5Cu90e8%5Cu5206%5Cu6216%5Cu5168%5Cu90e8%5Cu540d%5Cu79f0%5Cu3002%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu51fa%5Cu73b0%5Cu5982%5Cu2018...hc%3DBg%3DCc%3DAbd...%5Cu2019%5Cu8fd9%5Cu6837%5Cu7684%5Cu5e8f%5Cu5217%5Cu3002%5Cu5982%5Cu679c%5Cu7ebf%5Cu8def%5Cu662f%5Cu73af%5Cu7ebf%5Cuff0c%5Cu5219%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu7ad9%5Cu5c06%5Cu4e0e%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu7ad9%5Cu76f8%5Cu540c%5Cu3002%5Cu8fd9%5Cu662f%5Cu552f%5Cu4e00%5Cu4e00%5Cu79cd%5Cu91cd%5Cu590d%5Cu7ad9%5Cu70b9%5Cu5b57%5Cu6bcd%5Cu7684%5Cu60c5%5Cu51b5%5Cu3002%5Cr%5Cn%23%23%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7684%5Cu4e0b%5Cu4e00%5Cu90e8%5Cu5206%5Cu5c06%5Cu7531%5Cu4e00%5Cu7cfb%5Cu5217%5Cu884c%5Cu7ec4%5Cu6210%5Cuff0c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu7ad9%5Cu70b9%5Cu540d%5Cu3002%5Cu6587%5Cu4ef6%5Cu5c06%5Cu4ee5%5Cu53ea%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu2018%23%5Cu2019%5Cu7684%5Cu884c%5Cu7ed3%5Cu675f%5Cu3002%5Cr%5Cn%23%20%5Cu8f93%5Cu51fa%5Cr%5Cn%23%23%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu5c06%5Cu7531%5Cu4e00%5Cu7cfb%5Cu5217%5Cu8def%5Cu7ebf%5Cu7ec4%5Cu6210%5Cuff0c%5Cu6bcf%5Cu6761%5Cu5bf9%5Cu5e94%5Cu6bcf%5Cu5bf9%5Cu7ad9%5Cu70b9%5Cu3002%5Cu6bcf%5Cu6761%5Cu7ebf%5Cu8def%5Cu5c06%5Cu5305%5Cu62ec%5Cu8fde%5Cu63a5%5Cu4e24%5Cu4e2a%5Cu7ad9%5Cu70b9%5Cu7684%5Cu6700%5Cu5feb%5Cu8def%5Cu7ebf%5Cu7684%5Cu65f6%5Cu95f4%5Cuff0c%5Cu5728%5Cu5bbd%5Cu5ea6%5Cu4e3a3%5Cu7684%5Cu5b57%5Cu6bb5%5Cu4e2d%5Cu53f3%5Cu5bf9%5Cu9f50%5Cuff0c%5Cu7136%5Cu540e%5Cu662f%5Cu5192%5Cu53f7%5Cu548c%5Cu7a7a%5Cu683c%5Cuff0c%5Cu4ee5%5Cu53ca%5Cu4ee3%5Cu8868%5Cu6700%5Cu77ed%5Cu8def%5Cu7ebf%5Cu7684%5Cu7ad9%5Cu70b9%5Cu5e8f%5Cu5217%5Cu3002%5Cu8bf7%5Cu770b%5Cu4e0b%5Cu65b9%5Cu7684%5Cu793a%5Cu4f8b%5Cu3002%5Cu8bf7%5Cu6ce8%5Cu610f%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu4efb%5Cu4f55%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu4e24%5Cu4e2a%5Cu7ad9%5Cu70b9%5Cuff0c%5Cu603b%5Cu662f%5Cu53ea%5Cu6709%5Cu4e00%5Cu6761%5Cu6700%5Cu5feb%5Cu7684%5Cu8def%5Cu5f84%5Cuff0c%5Cu5e76%5Cu4e14%5Cu8be5%5Cu8def%5Cu5f84%5Cu5fc5%5Cu987b%5Cu5728%5Cu6307%5Cu5b9a%5Cu7684%5Cu7ad9%5Cu70b9%5Cu5f00%5Cu59cb%5Cu548c%5Cu7ed3%5Cu675f%5Cuff08%5Cu800c%5Cu4e0d%5Cu80fd%5Cu662f%5Cu7ad9%5Cu70b9%5Cu7684%5Cu540c%5Cu4e49%5Cu522b%5Cu540d%5Cuff0c%5Cu4f8b%5Cu5982%5Cu6362%5Cu4e58%5Cu7ad9%5Cuff09%5Cuff0c%5Cu56e0%5Cu6b64%5Cuff0c%5Cu8be5%5Cu8def%5Cu5f84%5Cu7684%5Cu65f6%5Cu95f4%5Cu5fc5%5Cu987b%5Cu5305%5Cu62ec%5Cu4efb%5Cu4f55%5Cu7ad9%5Cu5185%5Cu6362%5Cu4e58%5Cu7684%5Cu65f6%5Cu95f4%5Cu3002%5Cr%5Cn%23%23%23%23%23%23%20%5Cu6ce8%5Cu610f%5Cuff1a%5Cu4e0b%5Cu9762%5Cu7684%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cu53c2%5Cu7167%5Cu7684%5Cu662f%5Cu4e0a%5Cu9762%5Cu7ed9%5Cu51fa%5Cu7684%5Cu56fe%5Cu8868%5Cu3002%5Cr%5Cn%23%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cr%5Cn%60%60%60c%5Cr%5Cn4%5Cr%5CnA%3Afgmpnxzabjd%3DDbf%5Cr%5CnD%3Ab%3DAdac%3DCcf%5Cr%5CnB%3Aacd%3DAzefg%3DCbh%5Cr%5CnC%3Abac%5Cr%5CnAgAa%5Cr%5CnAbBh%5Cr%5CnBhDf%5Cr%5Cn%23%5Cr%5Cn%60%60%60%5Cr%5Cn%23%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%28%5Cu5176%5Cu4e2d%5Cu7684%3F%5Cu8868%5Cu793a%5Cu7a7a%5Cu683c%29%5Cr%5Cn%60%60%60c%5Cr%5Cn%3F%3F5%3A%20Agfdjba%5Cr%5Cn%3F%3F9%3A%20Abaz%3DBdefgh%5Cr%5Cn%3F10%3A%20Bhg%3DCbac%3DDcf%5Cr%5Cn%60%60%60%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22UVA157%22%2C%22title%22%3A%22Route%20Finding%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Route%20Finding%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Route Finding</h1>
+<h2>题意翻译</h2>
+<div>###### 许多城市提供综合公共交通系统。此类系统通常将公交线路、郊区通勤列车服务和地铁整合在一起。此类系统上的线路可以根据其沿线站点进行分类。我们通常将其视为普通线（车辆从路线的一端穿梭到另一端并返回）、环线（左右“分支”的端点相同且车辆在两个方向上环绕系统）和连接线（其每一端都连接到另一条线路）。显然，所有这些都可以被认为是非常相似的，并且可以在它们的路线上的不同点相互连接。请注意，车辆可以沿所有路线双向行驶，并且只能在换乘站的路线之间换乘。
+###### 为了简化问题，我们给每条线路都指定一个“A”到“Z”之间字母，并且一条线上的每个车站都指定另一个“a”到“z”之间的字母。换乘站将有多个名称。因此，一个可能的例子是：
+######
+######
+###### 这种系统中的一个常见问题是在两个车站之间找到一条路线。我们希望找到“最佳”路线，也就是“用时最短”的路线。
+###### 请编写一个能读取此类系统的详细信息，然后在给定的两个站之间找到最快的路线的程序。可以假设（相邻）站点之间的行程始终需要1个时间单位，而在换乘站的线路之间换乘需要3个时间单位。
+# 输入
+###### 输入将由两部分组成。第一部分包括对系统的描述，第二部分包括成对的站点。系统描述将以1到26之间的数字n开始，表示系统中有多少条线路。后面是n行，每行描述一条线路。每一行将依次以线路标识符开始，后跟“：”和该线路沿线的站点。换乘站用“=”符号后面接完整名称的形式表示。所有换乘站至少标识一次，如果一个换乘站有两条以上的线路交汇，则可同时标识部分或全部名称。也就是说，可能会出现如‘...hc=Bg=Cc=Abd...’这样的序列。如果线路是环线，则最后一个站将与第一个站相同。这是唯一一种重复站点字母的情况。
+###### 输入文件的下一部分将由一系列行组成，每行包含两个站点名。文件将以只包含一个‘#’的行结束。
+# 输出
+###### 输出将由一系列路线组成，每条对应每对站点。每条线路将包括连接两个站点的最快路线的时间，在宽度为3的字段中右对齐，然后是冒号和空格，以及代表最短路线的站点序列。请看下方的示例。请注意，对于任何给定的两个站点，总是只有一条最快的路径，并且该路径必须在指定的站点开始和结束（而不能是站点的同义别名，例如换乘站），因此，该路径的时间必须包括任何站内换乘的时间。
+###### 注意：下面的样例输入参照的是上面给出的图表。
+# 样例输入
+```c
+4
+A:fgmpnxzabjd=Dbf
+D:b=Adac=Ccf
+B:acd=Azefg=Cbh
+C:bac
+AgAa
+AbBh
+BhDf
+#
+```
+# 样例输出(其中的?表示空格)
+```c
+??5: Agfdjba
+??9: Abaz=Bdefgh
+?10: Bhg=Cbac=Dcf
+```
+</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&page=show_problem&problem=93
+[PDF](https://uva.onlinejudge.org/external/1/p157.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA157/77cf77ec718af2b613ba60a39597ef7235f24247.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA157/c136d252554be59062e6a6aff607484881dc9905.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA157/0424d2d17bc2dc80cc5a62a66f5d92395f61f061.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+A:fgmpnxzabjd=Dbf
+D:b=Adac=Ccf
+B:acd=Azefg=Cbh
+C:bac
+AgAa
+AbBh
+BhDf
+#</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5: Agfdjba
+9: Abaz=Bdefgh
+10: Bhg=Cbac=Dcf</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Anagram checker - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573452888:nUSWGZWnqSmfive3F58+WxFa1x2wJZoXi/N5/edhKQY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D3%26page%3Dshow_problem%26problem%3D84%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F1%5C%2Fp148.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA148%5C%2F355be72b202e7094c53060b7aa8c92d701703376.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA148%5C%2F205d583d583006be46c205e9c79d0f0bf0799486.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA148%5C%2Fe38c69cb401d3a9d264c38deae6b658796c433e8.png%29%22%2C%22samples%22%3A%5B%5B%22ABC%5CnAND%5CnDEF%5CnDXZ%5CnK%5CnKX%5CnLJSRT%5CnLT%5CnPT%5CnPTYYWQ%5CnY%5CnYWJSRQ%5CnZD%5CnZZXY%5Cn%23%5CnZZXY%20ABC%20DEF%5CnSXZYTWQP%20KLJ%20YRTD%5CnZZXY%20YWJSRQ%20PTYYWQ%20ZZXY%5Cn%23%22%2C%22SXZYTWQP%20KLJ%20YRTD%20%3D%20DXZ%20K%20LJSRT%20PTYYWQ%5CnSXZYTWQP%20KLJ%20YRTD%20%3D%20DXZ%20K%20LT%20PT%20Y%20YWJSRQ%5CnSXZYTWQP%20KLJ%20YRTD%20%3D%20KX%20LJSRT%20PTYYWQ%20ZD%5CnSXZYTWQP%20KLJ%20YRTD%20%3D%20KX%20LT%20PT%20Y%20YWJSRQ%20ZD%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F148%22%2C%22id%22%3A%22148%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu770b%5Cu770b%5Cu91cd%5Cu65b0%5Cu6392%5Cu5217%5Cu540d%5Cu5b57%5Cu7684%5Cu5b57%5Cu6bcd%5Cu662f%5Cu5426%5Cu4f1a%5Cu4ea7%5Cu751f%5Cu6709%5Cu8da3%5Cu7684%5Cu5b57%5Cu8c1c%5Cuff0c%5Cu901a%5Cu5e38%5Cu662f%5Cu5f88%5Cu6709%5Cu8da3%5Cu7684%5Cu3002%5Cu4f8b%5Cu5982%2C%5Cr%5Cn%5Cr%5Cn%5Cu201c%2A%2A%5Cu5a01%5Cu5ec9%5Cu00b7%5Cu838e%5Cu58eb%5Cu6bd4%5Cu4e9a%2A%2A%5Cu201d%5Cu7684%5Cu4fe1%5Cu4ef6%5Cu91cd%5Cu65b0%5Cu6392%5Cu5217%5Cuff0c%5Cu5f62%5Cu6210%5Cu4e86%5Cu201c%2A%2A%5Cu8bb2%5Cu4e00%5Cu6bb5%5Cu65f6%5Cu95f4%5Cu7684%5Cu73b0%5Cu5b9e%5Cu4e3b%5Cu4e49%2A%2A%5Cu201d%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cuff0c%5Cu5728%5Cu5b57%5Cu5178%5Cu548c%5Cu77ed%5Cu8bed%5Cu5217%5Cu8868%5Cu4e2d%5Cu9605%5Cu8bfb%5Cuff0c%5Cu5e76%5Cu4ece%5Cu4e2d%5Cu786e%5Cu5b9a%5Cu5355%5Cu8bcd%5Cr%5Cn%5Cr%5Cn%5Cu5b57%5Cu5178%5Cuff0c%5Cu5982%5Cu679c%5Cu6709%5Cu7684%5Cu8bdd%5Cuff0c%5Cu4f1a%5Cu5f62%5Cu6210%5Cu7ed9%5Cu5b9a%5Cu77ed%5Cu8bed%5Cu7684%5Cu5b57%5Cu8c1c%5Cu3002%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu5fc5%5Cu987b%5Cu627e%5Cu5230%5Cu6240%5Cu6709%5Cu7684%5Cu5355%5Cu8bcd%5Cu96c6%5Cu5408%5Cr%5Cn%5Cr%5Cn%5Cu7531%5Cu6bcf%5Cu4e2a%5Cu77ed%5Cu8bed%5Cu4e2d%5Cu7684%5Cu5b57%5Cu6bcd%5Cu7ec4%5Cu6210%5Cu7684%5Cu8bcd%5Cu5178%5Cu3002%5Cu4e0d%5Cu5305%5Cu62ec%5Cu96c6%5Cu5408%5Cu7ec4%5Cu6210%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu521d%5Cu7684%5Cu5355%5Cu8bcd%5Cu3002%5Cu5982%5Cu679c%5Cu6ca1%5Cu6709%5Cu5b57%5Cu8c1c%5Cuff0c%5Cu4e0d%5Cu8981%5Cu5199%5Cu4efb%5Cu4f55%5Cu4e1c%5Cu897f%5Cuff0c%5Cu751a%5Cu81f3%5Cu4e0d%5Cu8981%5Cu7a7a%5Cu884c%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu5c06%5Cu7531%5Cu4e24%5Cu90e8%5Cu5206%5Cu7ec4%5Cu6210%5Cu3002%5Cu7b2c%5Cu4e00%5Cu90e8%5Cu5206%5Cu662f%5Cu5b57%5Cu5178%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu90e8%5Cu5206%5Cu662f%5Cu8bcd%5Cu7ec4%5Cr%5Cn%5Cr%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu627e%5Cu5230%5Cu5b57%5Cu8c1c%5Cu3002%5Cu6587%5Cu4ef6%5Cu7684%5Cu6bcf%5Cu4e00%5Cu90e8%5Cu5206%5Cu90fd%5Cu5c06%5Cu4ee5%5Cu4e00%5Cu884c%24a%24%5Cu7ed3%5Cu675f%5Cr%5Cn%5Cr%5Cn%5Cu5355%5Cu4e00%5Cu7684%5Cu201c%23%5Cu201d%5Cu3002%5Cu5b57%5Cu5178%5Cu5c06%5Cu6309%5Cu5b57%5Cu6bcd%5Cu987a%5Cu5e8f%5Cu6392%5Cu5217%5Cuff0c%5Cu6700%5Cu591a%5Cu53ef%5Cu5305%5Cu542b%242000%24%5Cu4e2a%5Cu5355%5Cu8bcd%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5355%5Cu8bcd%5Cu4e00%5Cu4e2a%5Cr%5Cn%5Cr%5Cn%5Cu7ebf%5Cu3002%5Cu6574%5Cu4e2a%5Cu6587%5Cu4ef6%5Cu90fd%5Cu5c06%5Cu662f%5Cu5927%5Cu5199%5Cu7684%5Cuff0c%5Cu4efb%5Cu4f55%5Cu5b57%5Cu5178%5Cu5355%5Cu8bcd%5Cu6216%5Cu77ed%5Cu8bed%5Cu90fd%5Cu4e0d%5Cu8d85%5Cu8fc7%2420%24%5Cu4e2a%5Cu4fe1%5Cu4ef6%5Cu3002%5Cu4f60%5Cu4e0d%5Cu80fd%5Cu5047%5Cu5b9a%5Cu6240%5Cu4f7f%5Cu7528%5Cu7684%5Cu8bed%5Cu8a00%5Cu662f%5Cu82f1%5Cu8bed%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu5c06%5Cu7531%5Cu4e00%5Cu7cfb%5Cu5217%5Cu7684%5Cu884c%5Cu7ec4%5Cu6210%5Cu3002%5Cu6bcf%5Cu884c%5Cu5c06%5Cu7531%5Cu539f%5Cu77ed%5Cu8bed%5Cu3001%5Cu7a7a%5Cu683c%5Cu3001%5Cu7b49%5Cu53f7%5Cu7ec4%5Cu6210%5Cr%5Cn%5Cr%5Cn%5Cu7b26%5Cu53f7%24%28%3D%29%24%5Cuff0c%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cuff0c%5Cu548c%5Cu7ec4%5Cu6210%5Cu539f%5Cu77ed%5Cu8bed%5Cu6784%5Cu8bcd%5Cu6cd5%5Cu7684%5Cu5355%5Cu8bcd%5Cu5217%5Cu8868%5Cuff0c%5Cr%5Cn%5Cr%5Cn%5Cu6b63%5Cu597d%5Cu88ab%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu5b57%5Cu5fc5%5Cu987b%5Cu6309%5Cu5b57%5Cu6bcd%5Cu987a%5Cu5e8f%5Cu51fa%5Cu73b0%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22UVA148%22%2C%22title%22%3A%22Anagram%20checker%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A70125%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A18789%2C%22name%22%3A%22UVA148%20Anagram%20checker%22%2C%22slug%22%3A%22UVA148%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Anagram%20checker%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Anagram checker</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述：
+看看重新排列名字的字母是否会产生有趣的字谜，通常是很有趣的。例如,
+“**威廉·莎士比亚**”的信件重新排列，形成了“**讲一段时间的现实主义**”。
+编写一个程序，在字典和短语列表中阅读，并从中确定单词
+字典，如果有的话，会形成给定短语的字谜。你的程序必须找到所有的单词集合
+由每个短语中的字母组成的词典。不包括集合组成
+最初的单词。如果没有字谜，不要写任何东西，甚至不要空行。
+## 输入格式：
+输入将由两部分组成。第一部分是字典，第二部分是词组
+你需要找到字谜。文件的每一部分都将以一行$a$结束
+单一的“#”。字典将按字母顺序排列，最多可包含$2000$个单词，每个单词一个
+线。整个文件都将是大写的，任何字典单词或短语都不超过$20$个信件。你不能假定所使用的语言是英语。
+## 输出格式：
+输出将由一系列的行组成。每行将由原短语、空格、等号组成
+符号$(=)$，另一个空格，和组成原短语构词法的单词列表，
+正好被一个空格隔开。这些字必须按字母顺序出现。</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&page=show_problem&problem=84
+[PDF](https://uva.onlinejudge.org/external/1/p148.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA148/355be72b202e7094c53060b7aa8c92d701703376.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA148/205d583d583006be46c205e9c79d0f0bf0799486.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA148/e38c69cb401d3a9d264c38deae6b658796c433e8.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>ABC
+AND
+DEF
+DXZ
+K
+KX
+LJSRT
+LT
+PT
+PTYYWQ
+Y
+YWJSRQ
+ZD
+ZZXY
+#
+ZZXY ABC DEF
+SXZYTWQP KLJ YRTD
+ZZXY YWJSRQ PTYYWQ ZZXY
+#</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>SXZYTWQP KLJ YRTD = DXZ K LJSRT PTYYWQ
+SXZYTWQP KLJ YRTD = DXZ K LT PT Y YWJSRQ
+SXZYTWQP KLJ YRTD = KX LJSRT PTYYWQ ZD
+SXZYTWQP KLJ YRTD = KX LT PT Y YWJSRQ ZD</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

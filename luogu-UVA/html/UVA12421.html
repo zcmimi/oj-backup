@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>(Jiandan) Mua (I) - Lexical Analyzer - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573454294:hR0Y3wHeL831eZ0QFbUT8QZ6KbIOpXfaCuqCZN78Hrw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D279%26page%3Dshow_problem%26problem%3D3852%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F124%5C%2Fp12421.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12421%5C%2Fadc0dabd19b78c5f47c67a4548f7617723d616dc.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12421%5C%2F546a3852d1b1e76d173bd9d29b113e7ed93e2eb2.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12421%5C%2F71d7ce8723374cb0f0abfded096d726265226789.png%29%22%2C%22samples%22%3A%5B%5B%22print%28%5C%22Hello%5C%22..%5C%22%20%5C%22..%5C%22--%5C%5C%5C%22World%5C%5C%5C%22--%5C%22%29%5Cnx%3D-3%2B4%5Cnthis_1s_a_variable%20%3D%200xabcF-.012e-56%2B7.e8%2B9e%2B10--8%5Cnif%201%20then%5Cny%3Dx%5Cnend%5Cnprint%20%28y%29%22%2C%22%5BNAME%5D%20print%5Cn%5BSYMBOL%5D%20%28%5Cn%5BSTRING%5D%20%5C%22Hello%5C%22%5Cn%5BSYMBOL%5D%20..%5Cn%5BSTRING%5D%20%5C%22%20%5C%22%5Cn%5BSYMBOL%5D%20..%5Cn%5BSTRING%5D%20%5C%22--%5C%5C%5C%22World%5C%5C%5C%22--%5C%22%5Cn%5BSYMBOL%5D%20%29%5Cn%5BEOL%5D%5Cn%5BNAME%5D%20x%5Cn%5BSYMBOL%5D%20%3D%5Cn%5BSYMBOL%5D%20-%5Cn%5BNUMBER%5D%203%5Cn%5BSYMBOL%5D%20%2B%5Cn%5BNUMBER%5D%204%5Cn%5BEOL%5D%5Cn%5BNAME%5D%20this_1s_a_variable%5Cn%5BSYMBOL%5D%20%3D%5Cn%5BNUMBER%5D%200xabcF%5Cn%5BSYMBOL%5D%20-%5Cn%5BNUMBER%5D%20.012e-56%5Cn%5BSYMBOL%5D%20%2B%5Cn%5BNUMBER%5D%207.e8%5Cn%5BSYMBOL%5D%20%2B%5Cn%5BNUMBER%5D%209e%2B10%5Cn%5BEOL%5D%5Cn%5BRESERVED%5D%20if%5Cn%5BNUMBER%5D%201%5Cn%5BRESERVED%5D%20then%5Cn%5BEOL%5D%5Cn%5BNAME%5D%20y%5Cn%5BSYMBOL%5D%20%3D%5Cn%5BNAME%5D%20x%5Cn%5BEOL%5D%5Cn%5BRESERVED%5D%20end%5Cn%5BEOL%5D%5Cn%5BNAME%5D%20print%5Cn%5BSYMBOL%5D%20%28%5Cn%5BNAME%5D%20y%5Cn%5BSYMBOL%5D%20%29%5Cn%5BEOL%5D%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F12421%22%2C%22id%22%3A%2212421%22%7D%2C%22tags%22%3A%5B1%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A38%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22UVA12421%22%2C%22title%22%3A%22%28Jiandan%29%20Mua%20%28I%29%20-%20Lexical%20Analyzer%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A130420%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff0c%5Cu7384%5Cu5b66%5Cu4ee3%5Cu7801%5Cu5728%5Cu7ebfWA%22%2C%22forum%22%3A%7B%22id%22%3A23043%2C%22name%22%3A%22UVA12421%20%28Jiandan%29%20Mua%20%28I%29%20-%20Lexical%20Analyzer%22%2C%22slug%22%3A%22UVA12421%22%7D%7D%2C%7B%22id%22%3A112622%2C%22title%22%3A%22%5Cu5751%5Cu70b9%22%2C%22forum%22%3A%7B%22id%22%3A23043%2C%22name%22%3A%22UVA12421%20%28Jiandan%29%20Mua%20%28I%29%20-%20Lexical%20Analyzer%22%2C%22slug%22%3A%22UVA12421%22%7D%7D%2C%7B%22id%22%3A68050%2C%22title%22%3A%22%5Cu5e2e%5Cu67e5TLE%22%2C%22forum%22%3A%7B%22id%22%3A23043%2C%22name%22%3A%22UVA12421%20%28Jiandan%29%20Mua%20%28I%29%20-%20Lexical%20Analyzer%22%2C%22slug%22%3A%22UVA12421%22%7D%7D%2C%7B%22id%22%3A68047%2C%22title%22%3A%22%25%25%25tiger2005%22%2C%22forum%22%3A%7B%22id%22%3A23043%2C%22name%22%3A%22UVA12421%20%28Jiandan%29%20Mua%20%28I%29%20-%20Lexical%20Analyzer%22%2C%22slug%22%3A%22UVA12421%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%28Jiandan%29%20Mua%20%28I%29%20-%20Lexical%20Analyzer%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>(Jiandan) Mua (I) - Lexical Analyzer</h1>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=279&page=show_problem&problem=3852
+[PDF](https://uva.onlinejudge.org/external/124/p12421.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12421/adc0dabd19b78c5f47c67a4548f7617723d616dc.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12421/546a3852d1b1e76d173bd9d29b113e7ed93e2eb2.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12421/71d7ce8723374cb0f0abfded096d726265226789.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>print(&quot;Hello&quot;..&quot; &quot;..&quot;--\&quot;World\&quot;--&quot;)
+x=-3+4
+this_1s_a_variable = 0xabcF-.012e-56+7.e8+9e+10--8
+if 1 then
+y=x
+end
+print (y)</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>[NAME] print
+[SYMBOL] (
+[STRING] &quot;Hello&quot;
+[SYMBOL] ..
+[STRING] &quot; &quot;
+[SYMBOL] ..
+[STRING] &quot;--\&quot;World\&quot;--&quot;
+[SYMBOL] )
+[EOL]
+[NAME] x
+[SYMBOL] =
+[SYMBOL] -
+[NUMBER] 3
+[SYMBOL] +
+[NUMBER] 4
+[EOL]
+[NAME] this_1s_a_variable
+[SYMBOL] =
+[NUMBER] 0xabcF
+[SYMBOL] -
+[NUMBER] .012e-56
+[SYMBOL] +
+[NUMBER] 7.e8
+[SYMBOL] +
+[NUMBER] 9e+10
+[EOL]
+[RESERVED] if
+[NUMBER] 1
+[RESERVED] then
+[EOL]
+[NAME] y
+[SYMBOL] =
+[NAME] x
+[EOL]
+[RESERVED] end
+[EOL]
+[NAME] print
+[SYMBOL] (
+[NAME] y
+[SYMBOL] )
+[EOL]</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

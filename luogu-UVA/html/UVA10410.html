@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>树重建 Tree Reconstruction - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453560:yfxZrHj4cI5/tlJ8vE18LVlxAqyLE9FAeSXm3CVa3ow=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D16%26page%3Dshow_problem%26problem%3D1351%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F104%5C%2Fp10410.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10410%5C%2Fef129ac1b5ca5ee67dc5b5cb0247b5ce9b42f670.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10410%5C%2F9198f41e83d3838f926df82b7556055652a5806d.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10410%5C%2F12d6786ef824104164aba1943dd753bc4d45e383.png%29%22%2C%22samples%22%3A%5B%5B%228%5Cn4%203%205%201%202%208%207%206%5Cn4%203%201%207%202%206%205%208%22%2C%221%3A%207%5Cn2%3A%206%5Cn3%3A%201%202%5Cn4%3A%203%205%5Cn5%3A%208%5Cn6%3A%5Cn7%3A%5Cn8%3A%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F10410%22%2C%22id%22%3A%2210410%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu9897%5Cu6811%5Cu7684bfs%5Cu5e8f%5Cu548cdfs%5Cu5e8f%5Cuff0c%5Cu7ed3%5Cu70b9%5Cu7f16%5Cu53f7%5Cu5c0f%5Cu7684%5Cu4f18%5Cu5148%5Cu5386%5Cu904d%5Cuff0c%5Cu95ee%5Cu4f60%5Cu53ef%5Cu80fd%5Cu7684%5Cu4e00%5Cu79cd%5Cu6811%5Cu5f62%5Cn%5Cu8f93%5Cu51fa%5Cu5e94%5Cu7531n%5Cu884c%5Cu7ec4%5Cu6210%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu4e00%5Cu884c%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu4e00%5Cu884c%5Cu90fd%5Cu5e94%5Cu8be5%5Cu4ee5%5Cu8282%5Cu70b9%5Cu7f16%5Cu53f7%5Cu540e%5Cu9762%5Cu8ddf%5Cu7740%5Cu4e00%5Cu4e2a%5Cu5192%5Cu53f7%5Cuff0c%5Cu540e%5Cu8ddf%5Cu4e00%5Cu4e2a%28%5Cu5b69%29%5Cu5b50%5Cu8282%5Cu70b9%5Cu5217%5Cu8868%5Cuff0c%5Cu6309%5Cu5347%5Cu5e8f%5Cu6392%5Cu5217%5Cn%5CnTranslated%20by%20%40mzjmzj666%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A102%2C%22totalAccepted%22%3A35%2C%22pid%22%3A%22UVA10410%22%2C%22title%22%3A%22%5Cu6811%5Cu91cd%5Cu5efa%20Tree%20Reconstruction%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A41982%2C%22title%22%3A%22%5Cu6ce8%5Cu610f%5Cu6570%5Cu636e%22%2C%22forum%22%3A%7B%22id%22%3A20953%2C%22name%22%3A%22UVA10410%20%5Cu6811%5Cu91cd%5Cu5efa%20Tree%20Reconstruction%22%2C%22slug%22%3A%22UVA10410%22%7D%7D%2C%7B%22id%22%3A34525%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A20953%2C%22name%22%3A%22UVA10410%20%5Cu6811%5Cu91cd%5Cu5efa%20Tree%20Reconstruction%22%2C%22slug%22%3A%22UVA10410%22%7D%7D%2C%7B%22id%22%3A34486%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A20953%2C%22name%22%3A%22UVA10410%20%5Cu6811%5Cu91cd%5Cu5efa%20Tree%20Reconstruction%22%2C%22slug%22%3A%22UVA10410%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1608%22%2C%22title%22%3A%22%5Cu8def%5Cu5f84%5Cu7edf%5Cu8ba1%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3952%22%2C%22title%22%3A%22%5Cu65f6%5Cu95f4%5Cu590d%5Cu6742%5Cu5ea6%20%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA225%22%2C%22title%22%3A%22%5Cu9ec4%5Cu91d1%5Cu56fe%5Cu5f62%20Golygons%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA810%22%2C%22title%22%3A%22%5Cu7b5b%5Cu5b50%5Cu96be%5Cu9898%20A%20Dicey%20Problem%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA12118%22%2C%22title%22%3A%22%5Cu68c0%5Cu67e5%5Cu5458%5Cu7684%5Cu96be%5Cu9898%20Inspector%27s%20Dilemma%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu6811%5Cu91cd%5Cu5efa%20Tree%20Reconstruction%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>树重建 Tree Reconstruction</h1>
+<h2>题意翻译</h2>
+<div>给你一颗树的bfs序和dfs序，结点编号小的优先历遍，问你可能的一种树形
+输出应由n行组成，每个节点一行。
+每一行都应该以节点编号后面跟着一个冒号，后跟一个(孩)子节点列表，按升序排列
+Translated by @mzjmzj666 </div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=16&page=show_problem&problem=1351
+[PDF](https://uva.onlinejudge.org/external/104/p10410.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10410/ef129ac1b5ca5ee67dc5b5cb0247b5ce9b42f670.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10410/9198f41e83d3838f926df82b7556055652a5806d.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10410/12d6786ef824104164aba1943dd753bc4d45e383.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8
+4 3 5 1 2 8 7 6
+4 3 1 7 2 6 5 8</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1: 7
+2: 6
+3: 1 2
+4: 3 5
+5: 8
+6:
+7:
+8:</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

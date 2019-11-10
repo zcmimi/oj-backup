@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Claw Decomposition - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453884:rFCUO/ja2ULb9VQho81kQGN+OU5jHf0svTblYpEFpLg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D25%26page%3Dshow_problem%26problem%3D2391%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F113%5C%2Fp11396.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA11396%5C%2Fd0404f7e27b36ed0043ea7d4fcbae172532b44dc.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA11396%5C%2F6011538dba83f6a9b523a18c963da49d27308b1e.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA11396%5C%2F812631cffa3f2fdf637a849b000e04afc2eec415.png%29%22%2C%22samples%22%3A%5B%5B%224%5Cn1%202%5Cn1%203%5Cn1%204%5Cn2%203%5Cn2%204%5Cn3%204%5Cn0%200%5Cn6%5Cn1%202%5Cn1%203%5Cn1%206%5Cn2%203%5Cn2%205%5Cn3%204%5Cn4%205%5Cn4%206%5Cn5%206%5Cn0%200%5Cn0%22%2C%22NO%5CnNO%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F11396%22%2C%22id%22%3A%2211396%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cu7ed9%5Cu51fan%5Cuff08n%5Cu2264300%5Cuff09%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu7b80%5Cu5355%5Cu65e0%5Cu5411%5Cu56fe%28%5Cu65e0%5Cu81ea%5Cu73af%5Cu65e0%5Cu91cd%5Cu8fb9%29%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu70b9%5Cu7684%5Cu5ea6%5Cu4e3a3%5Cu3002%5Cu73b0%5Cu5728%5Cu4f60%5Cu9700%5Cu8981%5Cu5224%5Cu65ad%5Cu80fd%5Cu5426%5Cu5c06%5Cu5b83%5Cu5206%5Cu89e3%5Cu6210%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu722a%5Cuff08%5Cu5982%5Cu56fe%5Cu6240%5Cu793a%5Cuff09%5Cu3002%5Cu5728%5Cu4f60%5Cu7684%5Cu65b9%5Cu6848%5Cu4e2d%5Cuff0c%5Cu6bcf%5Cu6761%5Cu8fb9%5Cu5fc5%5Cu987b%5Cu6070%5Cu597d%5Cu5c5e%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu722a%5Cuff0c%5Cu4f46%5Cu540c%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu53ef%5Cu4ee5%5Cu51fa%5Cu73b0%5Cu5728%5Cu591a%5Cu4e2a%5Cu722a%5Cu91cc%5Cu3002%20%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cn%5Cu591a%5Cu7ec4%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%3A%20%5Cn%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu8fd9%5Cu4e2a%5Cu56fe%5Cu7684%5Cu70b9%5Cu6570n%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5f00%5Cu59cb%5Cu6bcf%5Cu884c2%5Cu4e2a%5Cu6574%5Cu6570a%2C%20b%281%20%3C%3D%20a%2C%20b%20%3C%3D%20n%29%5Cu4e3a%5Cu8be5%5Cu56fe%5Cu7684%5Cu8fb9%5Cuff0c%5Cu4ee5%5Cu201d0%200%5Cu201d%5Cu7ed3%5Cu675f%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu6570%5Cu636e%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu5982%5Cu679c%5Cu80fd%5Cu5206%5Cu89e3%5Cu5219%5Cu8f93%5Cu51fa%5Cu201dYES%5Cu201d%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%5Cu201dNO%5Cu201d%5Cu3002%5Cn%5Cn%5Cu7531%20%40hicc0305%20%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A94%2C%22totalAccepted%22%3A37%2C%22pid%22%3A%22UVA11396%22%2C%22title%22%3A%22Claw%20Decomposition%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A42057%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A21941%2C%22name%22%3A%22UVA11396%20Claw%20Decomposition%22%2C%22slug%22%3A%22UVA11396%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2266%22%2C%22title%22%3A%22%5Cu7231%5Cu7684%5Cu4f9b%5Cu517b%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA10269%22%2C%22title%22%3A%22Adventure%20of%20Super%20Mario%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA10765%22%2C%22title%22%3A%22Doves%20and%20bombs%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA10806%22%2C%22title%22%3A%22Dijkstra%2C%20Dijkstra.%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA11294%22%2C%22title%22%3A%22Wedding%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Claw%20Decomposition%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Claw Decomposition</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+给出n（n≤300）个节点的简单无向图(无自环无重边)，每个点的度为3。现在你需要判断能否将它分解成若干个爪（如图所示）。在你的方案中，每条边必须恰好属于一个爪，但同一个节点可以出现在多个爪里。
+输入数据
+多组输入数据:
+每组数据第一行为这个图的点数n，第二行开始每行2个整数a, b(1 <= a, b <= n)为该图的边，以”0 0”结束。
+输出数据
+对于每组数据，如果能分解则输出”YES”否则输出”NO”。
+由 @hicc0305 提供翻译</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=25&page=show_problem&problem=2391
+[PDF](https://uva.onlinejudge.org/external/113/p11396.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA11396/d0404f7e27b36ed0043ea7d4fcbae172532b44dc.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA11396/6011538dba83f6a9b523a18c963da49d27308b1e.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA11396/812631cffa3f2fdf637a849b000e04afc2eec415.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+1 2
+1 3
+1 4
+2 3
+2 4
+3 4
+0 0
+6
+1 2
+1 3
+1 6
+2 3
+2 5
+3 4
+4 5
+4 6
+5 6
+0 0
+0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>NO
+NO</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

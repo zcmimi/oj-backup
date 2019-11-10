@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dynamic len(set(a[L:R])) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573454267:J+5MbRg1ocWH32YO7WZLkT4Gd2vmvEsJyuwy9EQ3EQM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D278%26page%3Dshow_problem%26problem%3D3767%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F123%5C%2Fp12345.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12345%5C%2Fd6453828213a88840fb43145e72f3ed45e014968.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12345%5C%2Fcc14deb9313959a7724c1eec937af11c2329f9b5.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12345%5C%2F0856d4192d18df48eccca8520b50eb231fdb5666.png%29%22%2C%22samples%22%3A%5B%5B%227%204%5Cn1%202%201%203%202%201%204%5CnQ%201%206%5CnM%203%202%5CnQ%201%206%5CnQ%203%205%22%2C%223%5Cn2%5Cn1%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B10000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F12345%22%2C%22id%22%3A%2212345%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu6709%5Cu7f16%5Cu53f7%5Cu4ece0%5Cu5230n-1%5Cu7684n%5Cu4e2a%5Cu6570%2C%5Cu6211%5Cu4eec%5Cu6709%5Cu4e24%5Cu79cd%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn%5Cn1.%20Q%20L%20R%20%5Cu8be2%5Cu95ee%5Cu7f16%5Cu53f7L%5Cu5230%5Cu7f16%5Cu53f7R-1%5Cu7684%5Cu6570%5Cu4e2d%5Cu6709%5Cu591a%5Cu5c11%5Cu4e2a%5Cu4e0d%5Cu540c%5Cu7684%5Cu6570%5Cu5b57%5Cn2.%20M%20X%20Y%20%281%3C%3DY%3C%3D1%2C000%2C000%29%5Cu5c06%5Cu7f16%5Cu53f7%5Cu4e3aX%5Cu7684%5Cu6570%5Cu5b57%5Cu6539%5Cu4e3aY%5Cn%5Cn%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu5c31%5Cu662f%5Cu8981%5Cu5b8c%5Cu6210%5Cu4e00%5Cu7cfb%5Cu5217%5Cu64cd%5Cu4f5c%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%23%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570n%5Cu548cm%281%3C%3Dn%2Cm%3C%3D50%2C000%29%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8f93%5Cu5165n%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570a1%2Ca2%2Ca3...an%5Cuff0cai%5Cu8868%5Cu793a%5Cu7f16%5Cu53f7%5Cu4e3ai-1%5Cu7684%5Cu6570%5Cu5b57%5Cu5927%5Cu5c0f%5Cuff0c%5Cu4fdd%5Cu8bc11%3C%3Dai%3C%3D1%2C000%2C000%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765m%5Cu884c%5Cu6bcf%5Cu4e00%5Cu884c%5Cu5206%5Cu522b%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu64cd%5Cu4f5c%2C%5Cu64cd%5Cu4f5c%5Cu542b%5Cu4e49%5Cu89c1%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%3B%5Cn%5Cn%23%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2aQ%5Cu64cd%5Cu4f5c%5Cu7684%5Cu8be2%5Cu95ee%5Cu8f93%5Cu51fa%5Cu7ed3%5Cu679c%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu8f93%5Cu51fa%5Cu5360%5Cu4e00%5Cu884c%5Cn%5CnBy%20%40Rye_Catcher%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A183%2C%22totalAccepted%22%3A78%2C%22pid%22%3A%22UVA12345%22%2C%22title%22%3A%22Dynamic%20len%28set%28a%5BL%3AR%5D%29%29%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A35019%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A22886%2C%22name%22%3A%22UVA12345%20Dynamic%20len%28set%28a%5BL%3AR%5D%29%29%22%2C%22slug%22%3A%22UVA12345%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1903%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%5Cu6570%5Cu989c%5Cu8272%20%5C%2F%20%5Cu7ef4%5Cu62a4%5Cu961f%5Cu5217%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3978%22%2C%22title%22%3A%22%5BTJOI2015%5D%5Cu6982%5Cu7387%5Cu8bba%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4074%22%2C%22title%22%3A%22%5BWC2013%5D%5Cu7cd6%5Cu679c%5Cu516c%5Cu56ed%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA11990%22%2C%22title%22%3A%22%60%60Dynamic%27%27%20Inversion%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22P5268%22%2C%22title%22%3A%22%5BSNOI2017%5D%5Cu4e00%5Cu4e2a%5Cu7b80%5Cu5355%5Cu7684%5Cu8be2%5Cu95ee%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Dynamic%20len%28set%28a%5BL%3AR%5D%29%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Dynamic len(set(a[L:R]))</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+有编号从0到n-1的n个数,我们有两种操作：
+1. Q L R 询问编号L到编号R-1的数中有多少个不同的数字
+2. M X Y (1<=Y<=1,000,000)将编号为X的数字改为Y
+你的任务就是要完成一系列操作。
+## 输入输出格式
+#### 输入格式
+第一行输入两个正整数n和m(1<=n,m<=50,000)
+第二行输入n个正整数a1,a2,a3...an，ai表示编号为i-1的数字大小，保证1<=ai<=1,000,000
+接下来m行每一行分别输入一个操作,操作含义见题目描述;
+#### 输出格式
+对于每一个Q操作的询问输出结果，每一次输出占一行
+By @Rye_Catcher</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=278&page=show_problem&problem=3767
+[PDF](https://uva.onlinejudge.org/external/123/p12345.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12345/d6453828213a88840fb43145e72f3ed45e014968.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12345/cc14deb9313959a7724c1eec937af11c2329f9b5.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12345/0856d4192d18df48eccca8520b50eb231fdb5666.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 4
+1 2 1 3 2 1 4
+Q 1 6
+M 3 2
+Q 1 6
+Q 3 5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+2
+1</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

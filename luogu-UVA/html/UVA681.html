@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Convex Hull Finding - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453067:KM4PO+tJNxRi11+KQPIBawL3ltUlFucRGr8JGAafUKA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D8%26page%3Dshow_problem%26problem%3D622%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F6%5C%2Fp681.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA681%5C%2F4aa7a8eeb706b263ca91acbaadfb7aa437160df1.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA681%5C%2F0cfb4febd26012824553f71f2e61ee4204c9146e.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA681%5C%2F94ec618fd5cd3a8624d4e9cc85cd9ae689020d63.png%29%22%2C%22samples%22%3A%5B%5B%223%5Cn15%5Cn30%2030%5Cn50%2060%5Cn60%2020%5Cn70%2045%5Cn86%2039%5Cn112%2060%5Cn200%20113%5Cn250%2050%5Cn300%20200%5Cn130%20240%5Cn76%20150%5Cn47%2076%5Cn36%2040%5Cn33%2035%5Cn30%2030%5Cn-1%5Cn12%5Cn50%2060%5Cn60%2020%5Cn70%2045%5Cn100%2070%5Cn125%2090%5Cn200%20113%5Cn250%20140%5Cn180%20170%5Cn105%20140%5Cn79%20140%5Cn60%2085%5Cn50%2060%5Cn-1%5Cn6%5Cn60%2020%5Cn250%20140%5Cn180%20170%5Cn79%20140%5Cn50%2060%5Cn60%2020%5Cn3%5Cn8%5Cn60%2020%5Cn250%2050%5Cn300%20200%5Cn130%20240%5Cn76%20150%5Cn47%2076%5Cn30%2030%5Cn60%2020%5Cn-1%5Cn6%5Cn60%2020%5Cn250%20140%5Cn180%20170%5Cn79%20140%5Cn50%2060%5Cn60%2020%5Cn-1%5Cn6%5Cn60%2020%5Cn250%20140%5Cn180%20170%5Cn79%20140%5Cn50%2060%5Cn60%2020%22%2C%22%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F681%22%2C%22id%22%3A%22681%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22UVA681%22%2C%22title%22%3A%22Convex%20Hull%20Finding%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Convex%20Hull%20Finding%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Convex Hull Finding</h1>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=8&page=show_problem&problem=622
+[PDF](https://uva.onlinejudge.org/external/6/p681.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA681/4aa7a8eeb706b263ca91acbaadfb7aa437160df1.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA681/0cfb4febd26012824553f71f2e61ee4204c9146e.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA681/94ec618fd5cd3a8624d4e9cc85cd9ae689020d63.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+15
+30 30
+50 60
+60 20
+70 45
+86 39
+112 60
+200 113
+250 50
+300 200
+130 240
+76 150
+47 76
+36 40
+33 35
+30 30
+-1
+12
+50 60
+60 20
+70 45
+100 70
+125 90
+200 113
+250 140
+180 170
+105 140
+79 140
+60 85
+50 60
+-1
+6
+60 20
+250 140
+180 170
+79 140
+50 60
+60 20
+3
+8
+60 20
+250 50
+300 200
+130 240
+76 150
+47 76
+30 30
+60 20
+-1
+6
+60 20
+250 140
+180 170
+79 140
+50 60
+60 20
+-1
+6
+60 20
+250 140
+180 170
+79 140
+50 60
+60 20</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code></code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

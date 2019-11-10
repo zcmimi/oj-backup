@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Piece it together - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453337:i5SWkUYZshN8TTOLnaYxgBdERc4eYZ30q3OP2CrwaYY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5Cn%5CnTom%20has%20developed%20a%20special%20kind%20of%20puzzle%3A%20it%20involves%20a%20whole%20bunch%20of%20identical%20puzzle%20pieces.%20The%5Cnpieces%20have%20the%20shape%20of%20three%20adjoint%20squares%20in%20an%20L-shape.%20The%20corner%20square%20is%20black%2C%20the%20two%20adjacent%20squares%20are%20white.%5Cn%5Cn%5CnA%20puzzle%20pieceThe%20puzzler%20is%20given%20a%20pattern%20of%20black%20and%20white%20squares%20in%20a%20rectangular%20grid.%20The%20challenge%20is%20to%20create%20that%20pattern%20using%20these%20pieces.%20The%20pieces%5Cncan%20be%20rotated%2C%20but%20must%20not%20overlap.%5Cn%5Cn%5CnTom%20has%20already%20designed%20a%20few%20nice%20patterns%2C%20but%20he%20needs%20to%20find%20out%20if%20they%20can%20be%20constructed%20with%20the%20pieces%20at%20all.%20Rather%20than%20trying%20to%20test%20this%20for%20each%20pattern%20by%20hand%2C%20he%20wants%20to%20write%20a%20computer%20program%20to%20determine%20this%20for%20him.%20Can%20you%20help%20him%3F%5Cn%22%2C%22inputFormat%22%3A%22On%20the%20first%20line%20a%20positive%20integer%3A%20the%20number%20of%20test%20cases%2C%20at%20most%20100.%20After%20that%20per%20test%20case%3A%5Cn%5Cn%5Cn%5Cu2022%20one%20line%20with%20two%20integers%20n%20and%20m%20%281%20%5Cu2264%20n%2C%20m%20%5Cu2264%20500%29%3A%20the%20height%20and%20width%20of%20the%20grid%20containing%20the%20pattern%2C%20respectively.%5Cn%5Cn%5Cn%5Cu2022%20n%20lines%2C%20each%20containing%20m%20characters%2C%20denoting%20the%20grid.%20Each%20character%20is%20%5Cu2018B%5Cu2019%2C%20%5Cu2018W%5Cu2019%2C%20or%20%5Cu2018.%5Cu2019%2C%20indicating%20a%20black%2C%20white%20or%20empty%20square%20respectively.%5Cn%5CnThe%20grid%20contains%20at%20least%20one%20black%20or%20white%20square.%22%2C%22outputFormat%22%3A%22Per%20test%20case%3A%5Cn%5Cu2022%20one%20line%20with%20either%20%5Cu201cYES%5Cu201d%20or%20%5Cu201cNO%5Cu201d%2C%20indicating%20whether%20or%20not%20it%20is%20possible%20to%20construct%20the%20pattern%5Cnwith%20the%20puzzle%20pieces.%20You%20may%20assume%20that%20there%20is%20an%20infinite%20supply%20of%20pieces.%5Cn%22%2C%22samples%22%3A%5B%5B%22%60%60%60cpp%5Cn2%5Cn3%204%5CnBWW.%5CnWWBW%5Cn..WB%5Cn3%203%5CnW..%5CnBW.%5CnWBW%5Cn%60%60%60%22%2C%22%60%60%60cpp%5CnYES%5CnNO%5Cn%60%60%60%22%5D%5D%2C%22hint%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D448%26page%3Dshow_problem%26problem%3D4260%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F15%5C%2Fp1514.pdf%29%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B30000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F1514%22%2C%22id%22%3A%221514%22%7D%2C%22translation%22%3A%22%5Cu6c64%5Cu59c6%5Cu53d1%5Cu660e%5Cu4e86%5Cu4e00%5Cu79cd%5Cu7279%5Cu6b8a%5Cu7684%5Cu8c1c%5Cu9898%5Cuff1a%5Cu5b83%5Cu5305%5Cu542b%5Cu4e86%5Cu4e00%5Cu4e32%5Cu76f8%5Cu540c%5Cu7684%5Cu62fc%5Cu56fe%5Cu3002%5Cu8be5%5Cu7247%5Cu5177%5Cu6709L%5Cu5f62%5Cu7684%5Cu4e09%5Cu4e2a%5Cu4f34%5Cu968f%5Cu65b9%5Cu5f62%5Cu7684%5Cu5f62%5Cu72b6%5Cu3002%5Cu89d2%5Cu65b9%5Cu5757%5Cu662f%5Cu9ed1%5Cu8272%5Cu7684%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu76f8%5Cu90bb%5Cu7684%5Cu65b9%5Cu5757%5Cu662f%5Cu767d%5Cu8272%5Cu7684%5Cu3002%5Cn%5Cn%5Cu62fc%5Cu56fe%5Cu6e38%5Cu620f%5Cu4e2d%5Cuff0c%5Cu5728%5Cu77e9%5Cu5f62%5Cu7f51%5Cu683c%5Cu4e2d%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu9ed1%5Cu767d%5Cu65b9%5Cu683c%5Cu56fe%5Cu6848%5Cu3002%5Cu6311%5Cu6218%5Cu662f%5Cu4f7f%5Cu7528%5Cu8fd9%5Cu4e9b%5Cu7247%5Cu6bb5%5Cu6765%5Cu521b%5Cu5efa%5Cu6a21%5Cu5f0f%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu788e%5Cu7247%5Cu53ef%5Cu4ee5%5Cu65cb%5Cu8f6c%5Cuff0c%5Cu4f46%5Cu4e0d%5Cu80fd%5Cu91cd%5Cu53e0%5Cu3002%5Cn%5Cn%5Cu6c64%5Cu59c6%5Cu5df2%5Cu7ecf%5Cu8bbe%5Cu8ba1%5Cu4e86%5Cu4e00%5Cu4e9b%5Cu6f02%5Cu4eae%5Cu7684%5Cu56fe%5Cu6848%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu9700%5Cu8981%5Cu627e%5Cu51fa%5Cu5b83%5Cu4eec%5Cu662f%5Cu5426%5Cu53ef%5Cu4ee5%5Cu7528%5Cu8fd9%5Cu4e9b%5Cu788e%5Cu7247%5Cu6765%5Cu6784%5Cu9020%5Cu3002%5Cu4ed6%5Cu4e0d%5Cu60f3%5Cu7528%5Cu624b%5Cu5bf9%5Cu6bcf%5Cu79cd%5Cu6a21%5Cu5f0f%5Cu8fdb%5Cu884c%5Cu6d4b%5Cu8bd5%5Cuff0c%5Cu800c%5Cu662f%5Cu60f3%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu6765%5Cu786e%5Cu5b9a%5Cu8fd9%5Cu4e00%5Cu70b9%5Cu3002%5Cu4f60%5Cu80fd%5Cu5e2e%5Cu52a9%5Cu4ed6%5Cu5417%5Cuff1f%5Cn%5Cn%5Cn------------%5Cn%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff1a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cu6700%5Cu591a%5Cuff0c%5Cu6700%5Cu591a100%5Cu4e2a%5Cu3002%5Cu6b64%5Cu540e%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cuff1a%5Cn%5Cn%5Cu2022%5Cu524d%5Cu4e24%5Cu884c%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%5Cu548cm%5Cuff081%5Cu2264n%5Cuff0cm%5Cu2264500%5Cuff09%5Cuff1a%5Cu5206%5Cu522b%5Cu5305%5Cu542b%5Cu56fe%5Cu6848%5Cu7684%5Cu7f51%5Cu683c%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu548c%5Cu5bbd%5Cu5ea6%5Cu3002%5Cn%5Cn%5Cu2022%5Cu4e0b%5Cu9762n%5Cu884c%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5305%5Cu542bM%5Cu4e2a%5Cu5b57%5Cu7b26%5Cuff0c%5Cu8868%5Cu793a%5Cu7f51%5Cu683c%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu5206%5Cu522b%5Cu662f%5Cu201cB%5Cu201d%5Cu3001%5Cu201cW%5Cu201d%5Cu6216%5Cu201c..%5Cu201d%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu4e00%5Cu4e2a%5Cu9ed1%5Cu8272%5Cu3001%5Cu767d%5Cu8272%5Cu6216%5Cu7a7a%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu3002%5Cn%5Cn%5Cu7f51%5Cu683c%5Cu5305%5Cu542b%5Cu81f3%5Cu5c11%5Cu4e00%5Cu4e2a%5Cu9ed1%5Cu8272%5Cu6216%5Cu767d%5Cu8272%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cuff1a%5Cu4e00%5Cu884c%5Cu201cYES%5Cu201d%5Cu6216%5Cu201cNO%5Cu201d%5Cuff0c%5Cu8868%5Cu793a%5Cu662f%5Cu5426%5Cu80fd%5Cu591f%5Cu7528%5Cu62fc%5Cu56fe%5Cu5757%5Cu6784%5Cu9020%5Cu6a21%5Cu5f0f%5Cu3002%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu5047%5Cu8bbe%5Cu6709%5Cu65e0%5Cu9650%5Cu7684%5Cu788e%5Cu7247%5Cu4f9b%5Cu5e94%5Cu3002%5Cn%5Cn%5Cu7ffb%5Cu8bd1%5Cu63d0%5Cu4f9b%5Cu8005%40Happynewyear%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A35%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22UVA1514%22%2C%22title%22%3A%22Piece%20it%20together%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A149863%2C%22title%22%3A%22zhx%5Cu89c2%5Cu5149%5Cu56e2%22%2C%22forum%22%3A%7B%22id%22%3A20156%2C%22name%22%3A%22UVA1514%20Piece%20it%20together%22%2C%22slug%22%3A%22UVA1514%22%7D%7D%2C%7B%22id%22%3A64203%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cuff0c%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A20156%2C%22name%22%3A%22UVA1514%20Piece%20it%20together%22%2C%22slug%22%3A%22UVA1514%22%7D%7D%2C%7B%22id%22%3A64196%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A20156%2C%22name%22%3A%22UVA1514%20Piece%20it%20together%22%2C%22slug%22%3A%22UVA1514%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Piece%20it%20together%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Piece it together</h1>
+<h2>题意翻译</h2>
+<div>汤姆发明了一种特殊的谜题：它包含了一串相同的拼图。该片具有L形的三个伴随方形的形状。角方块是黑色的，两个相邻的方块是白色的。
+拼图游戏中，在矩形网格中给出一个黑白方格图案。挑战是使用这些片段来创建模式。这些碎片可以旋转，但不能重叠。
+汤姆已经设计了一些漂亮的图案，但他需要找出它们是否可以用这些碎片来构造。他不想用手对每种模式进行测试，而是想编写一个程序来确定这一点。你能帮助他吗？
+------------
+# 输入输出格式：
+## 输入格式：
+第一行是一个正整数：测试用例最多，最多100个。此后每个测试用例：
+•前两行有两个整数n和m（1≤n，m≤500）：分别包含图案的网格的高度和宽度。
+•下面n行，每个包含M个字符，表示网格。每个字符分别是“B”、“W”或“..”，分别表示一个黑色、白色或空的正方形。
+网格包含至少一个黑色或白色的正方形。
+## 输出格式：
+每个测试用例：一行“YES”或“NO”，表示是否能够用拼图块构造模式。你可以假设有无限的碎片供应。
+翻译提供者@Happynewyear</div>
+<h2>题目描述</h2>
+<div>
+Tom has developed a special kind of puzzle: it involves a whole bunch of identical puzzle pieces. The
+pieces have the shape of three adjoint squares in an L-shape. The corner square is black, the two adjacent squares are white.
+A puzzle pieceThe puzzler is given a pattern of black and white squares in a rectangular grid. The challenge is to create that pattern using these pieces. The pieces
+can be rotated, but must not overlap.
+Tom has already designed a few nice patterns, but he needs to find out if they can be constructed with the pieces at all. Rather than trying to test this for each pattern by hand, he wants to write a computer program to determine this for him. Can you help him?
+</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>On the first line a positive integer: the number of test cases, at most 100. After that per test case:
+• one line with two integers n and m (1 ≤ n, m ≤ 500): the height and width of the grid containing the pattern, respectively.
+• n lines, each containing m characters, denoting the grid. Each character is ‘B’, ‘W’, or ‘.’, indicating a black, white or empty square respectively.
+The grid contains at least one black or white square.</div>
+<h3>输出格式</h3>
+<br />
+<div>Per test case:
+• one line with either “YES” or “NO”, indicating whether or not it is possible to construct the pattern
+with the puzzle pieces. You may assume that there is an infinite supply of pieces.
+</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>```cpp
+2
+3 4
+BWW.
+WWBW
+..WB
+3 3
+W..
+BW.
+WBW
+```</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>```cpp
+YES
+NO
+```</code></pre>
+<h2>说明</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=448&page=show_problem&problem=4260
+[PDF](https://uva.onlinejudge.org/external/15/p1514.pdf)</div>
+</article>
+</div>
+</div>
+</body>
+</html>

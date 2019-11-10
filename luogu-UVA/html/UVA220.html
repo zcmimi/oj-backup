@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>黑白棋 Othello - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573452911:xs+6trUwDqVoTImJCLKZSnDqj9a3DgxbCNPHGPGwaSw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D4%26page%3Dshow_problem%26problem%3D156%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F2%5C%2Fp220.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA220%5C%2Fb5889bd30005c81049d37026006a6185dc84752c.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA220%5C%2Fd349f8cb6a5e4314ba810d0da8255e00540da760.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA220%5C%2F431f7b6cf63c09fd2ce5d3d30c367ddda8b525f6.png%29%22%2C%22samples%22%3A%5B%5B%222%5Cn--------%5Cn--------%5Cn--------%5Cn---WB---%5Cn---BW---%5Cn--------%5Cn--------%5Cn--------%5CnW%5CnL%5CnM35%5CnL%5CnQ%5CnWWWWB---%5CnWWWB----%5CnWWB-----%5CnWB------%5Cn--------%5Cn--------%5Cn--------%5Cn--------%5CnB%5CnL%5CnM25%5CnL%5CnQ%22%2C%22%283%2C5%29%20%284%2C6%29%20%285%2C3%29%20%286%2C4%29%5CnBlack%20-%201%20White%20-%204%5Cn%283%2C4%29%20%283%2C6%29%20%285%2C6%29%5Cn--------%5Cn--------%5Cn----W---%5Cn---WW---%5Cn---BW---%5Cn--------%5Cn--------%5Cn--------%5CnNo%20legal%20move.%5CnBlack%20-%203%20White%20-%2012%5Cn%283%2C5%29%5CnWWWWB---%5CnWWWWW---%5CnWWB-----%5CnWB------%5Cn--------%5Cn--------%5Cn--------%5Cn--------%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F220%22%2C%22id%22%3A%22220%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu6a21%5Cu62df%5Cu9ed1%5Cu767d%5Cu68cb%5Cu6e38%5Cu620f%5Cu7684%5Cu8fdb%5Cu7a0b%5Cu3002%5Cu9ed1%5Cu767d%5Cu68cb%5Cu7684%5Cu89c4%5Cu5219%5Cu4e3a%3A%5Cu9ed1%5Cu767d%5Cu53cc%5Cu65b9%5Cu8f6e%5Cu6d41%5Cu653e%5Cu68cb%5Cu5b50%2C%5Cu6bcf%5Cu6b21%5Cu5fc5%20%5Cu987b%5Cu8ba9%5Cu65b0%5Cu653e%5Cu7684%5Cu68cb%5Cu5b50%5Cu201c%5Cu5939%5Cu4f4f%5Cu201d%5Cu81f3%5Cu5c11%5Cu4e00%5Cu679a%5Cu5bf9%5Cu65b9%5Cu68cb%5Cu5b50%2C%5Cu7136%5Cu540e%5Cu628a%5Cu6240%5Cu6709%5Cu88ab%5Cu65b0%5Cu653e%5Cu68cb%5Cu5b50%5Cu201c%5Cu5939%5Cu4f4f%5Cu201d%5Cu7684%5Cu5bf9%5Cu65b9%5Cu68cb%5Cu5b50%20%5Cu66ff%5Cu6362%5Cu6210%5Cu5df1%5Cu65b9%5Cu68cb%5Cu5b50%5Cu3002%5Cu4e00%5Cu6bb5%5Cu8fde%5Cu7eed%28%5Cu6a2a%5Cu3001%5Cu7ad6%5Cu6216%5Cu8005%5Cu659c%5Cu5411%29%5Cu7684%5Cu540c%5Cu8272%5Cu68cb%5Cu5b50%5Cu88ab%5Cu201c%5Cu5939%5Cu4f4f%5Cu201d%5Cu7684%5Cu6761%5Cu4ef6%5Cu662f%5Cu4e24%5Cu7aef%5Cu90fd%5Cu662f%20%5Cu5bf9%5Cu65b9%5Cu68cb%5Cu5b50%28%5Cu4e0d%5Cu80fd%5Cu662f%5Cu7a7a%5Cu4f4d%29%5Cu3002%5Cu5982%5Cu56fe%5Cu6240%5Cu793a%2C%5Cu767d%5Cu68cb%5Cu67096%5Cu4e2a%5Cu5408%5Cu6cd5%5Cu64cd%5Cu4f5c%2C%5Cu5206%5Cu522b%5Cu4e3a%282%2C3%29%2C%283%2C3%29%2C%283%2C5%29%2C%286%2C2%29%2C%287%2C3%29%2C%287%2C4%29%5Cu3002%5Cu9009%5Cu62e9%5Cu5728%287%2C3%29%5Cu653e%5Cu767d%5Cu68cb%5Cu540e%5Cu53d8%5Cu6210%5Cu5982%5Cu56fe%5Cu6240%5Cu793a%5Cu6548%5Cu679c%28%5Cu6ce8%5Cu610f%5Cu6709%5Cu7ad6%5Cu5411%5Cu548c%5Cu659c%5Cu5411%5Cu7684%5Cu5171%5Cu4e24%5Cu679a%5Cu9ed1%5Cu68cb%5Cu53d8%5Cu767d%29%5Cu3002%5Cu6ce8%5Cu610f%284%2C6%29%5Cu7684%5Cu9ed1%5Cu8272%5Cu68cb%5Cu5b50%5Cu867d%5Cu7136%5Cu88ab%5Cu5939%5Cu4f4f%2C%5Cu4f46%5Cu4e0d%5Cu662f%5Cu88ab%5Cu65b0%5Cu653e%5Cu7684%5Cu68cb%5Cu5b50%5Cu5939%5Cu4f4f%2C%5Cu56e0%5Cu6b64%5Cu4e0d%5Cu53d8%5Cu767d%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a8%2A8%5Cu7684%5Cu68cb%5Cu76d8%5Cu4ee5%5Cu53ca%5Cu5f53%5Cu524d%5Cu4e0b%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu7684%5Cu6e38%5Cu620f%5Cu8005%5Cuff0c%5Cu5904%5Cu74063%5Cu79cd%5Cu6307%5Cu4ee4%5Cuff1a%5Cn%5CnL%5Cu6307%5Cu4ee4%5Cu6253%5Cu5370%5Cu6240%5Cu6709%5Cu5408%5Cu6cd5%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu4ece%5Cu5de6%5Cu5230%5Cu53f3%5Cu7684%5Cu987a%5Cu5e8f%5Cu6392%5Cu5217%5Cuff08%5Cu65e0%5Cu5408%5Cu6cd5%5Cu64cd%5Cu4f5c%5Cu65f6%5Cu8f93%5Cu51faNo%20legal%20move%5Cuff09%5Cu3002%5Cn%5CnMrc%5Cu6307%5Cu4ee4%5Cu653e%5Cu4e00%5Cu679a%5Cu68cb%5Cu5b50%5Cu5728%28r%2Cc%29%5Cu3002%5Cu5982%5Cu679c%5Cu5f53%5Cu524d%5Cu6e38%5Cu620f%5Cu8005%5Cu6ca1%5Cu6709%5Cu5408%5Cu6cd5%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu5219%5Cu662f%5Cu5148%5Cu5207%5Cu6362%5Cu6e38%5Cu620f%5Cu8005%5Cu518d%5Cu64cd%5Cu4f5c%5Cu3002%5Cu4fdd%5Cu8bc1%5Cu8f93%5Cu5165%5Cu5408%5Cu6cd5%5Cu3002%5Cu8f93%5Cu51fa%5Cu64cd%5Cu4f5c%5Cu540e%5Cu7684%5Cu9ed1%5Cu767d%5Cu68cb%5Cu5b50%5Cu603b%5Cu6570%5Cu3002%5Cn%5CnQ%5Cu6307%5Cu4ee4%5Cu9000%5Cu51fa%5Cu6e38%5Cu620f%5Cuff0c%5Cu5e76%5Cu6253%5Cu5370%5Cu5f53%5Cu524d%5Cu68cb%5Cu76d8%5Cuff08%5Cu540c%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff09%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40BFD_qt%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A184%2C%22totalAccepted%22%3A49%2C%22pid%22%3A%22UVA220%22%2C%22title%22%3A%22%5Cu9ed1%5Cu767d%5Cu68cb%20Othello%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A50691%2C%22title%22%3A%22translation%5Cu221a%22%2C%22forum%22%3A%7B%22id%22%3A18861%2C%22name%22%3A%22UVA220%20%5Cu9ed1%5Cu767d%5Cu68cb%20Othello%22%2C%22slug%22%3A%22UVA220%22%7D%7D%2C%7B%22id%22%3A40243%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A18861%2C%22name%22%3A%22UVA220%20%5Cu9ed1%5Cu767d%5Cu68cb%20Othello%22%2C%22slug%22%3A%22UVA220%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22UVA201%22%2C%22title%22%3A%22%5Cu6b63%5Cu65b9%5Cu5f62%20Squares%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA253%22%2C%22title%22%3A%22%5Cu9ab0%5Cu5b50%5Cu6d82%5Cu8272%20Cube%20painting%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA508%22%2C%22title%22%3A%22%5Cu6469%5Cu5c14%5Cu65af%5Cu5bc6%5Cu7801%20Morse%20Mismatches%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA1590%22%2C%22title%22%3A%22IP%5Cu7f51%5Cu7edc%20IP%20Networks%22%2C%22difficulty%22%3A2%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA10474%22%2C%22title%22%3A%22%5Cu5927%5Cu7406%5Cu77f3%5Cu5728%5Cu54ea%5Cu513f%20Where%20is%20the%20Marble%3F%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu9ed1%5Cu767d%5Cu68cb%20Othello%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>黑白棋 Othello</h1>
+<h2>题意翻译</h2>
+<div>你的任务是模拟黑白棋游戏的进程。黑白棋的规则为:黑白双方轮流放棋子,每次必 须让新放的棋子“夹住”至少一枚对方棋子,然后把所有被新放棋子“夹住”的对方棋子 替换成己方棋子。一段连续(横、竖或者斜向)的同色棋子被“夹住”的条件是两端都是 对方棋子(不能是空位)。如图所示,白棋有6个合法操作,分别为(2,3),(3,3),(3,5),(6,2),(7,3),(7,4)。选择在(7,3)放白棋后变成如图所示效果(注意有竖向和斜向的共两枚黑棋变白)。注意(4,6)的黑色棋子虽然被夹住,但不是被新放的棋子夹住,因此不变白。
+输入一个8*8的棋盘以及当前下一次操作的游戏者，处理3种指令：
+L指令打印所有合法操作，从左到右的顺序排列（无合法操作时输出No legal move）。
+Mrc指令放一枚棋子在(r,c)。如果当前游戏者没有合法操作，则是先切换游戏者再操作。保证输入合法。输出操作后的黑白棋子总数。
+Q指令退出游戏，并打印当前棋盘（同输入格式）。
+感谢@BFD_qt提供的翻译</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=4&page=show_problem&problem=156
+[PDF](https://uva.onlinejudge.org/external/2/p220.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA220/b5889bd30005c81049d37026006a6185dc84752c.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA220/d349f8cb6a5e4314ba810d0da8255e00540da760.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA220/431f7b6cf63c09fd2ce5d3d30c367ddda8b525f6.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+--------
+--------
+--------
+---WB---
+---BW---
+--------
+--------
+--------
+W
+L
+M35
+L
+Q
+WWWWB---
+WWWB----
+WWB-----
+WB------
+--------
+--------
+--------
+--------
+B
+L
+M25
+L
+Q</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>(3,5) (4,6) (5,3) (6,4)
+Black - 1 White - 4
+(3,4) (3,6) (5,6)
+--------
+--------
+----W---
+---WW---
+---BW---
+--------
+--------
+--------
+No legal move.
+Black - 3 White - 12
+(3,5)
+WWWWB---
+WWWWW---
+WWB-----
+WB------
+--------
+--------
+--------
+--------</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

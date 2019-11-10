@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>The Vigenère Cipher - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453125:+ROFmidX3LPJzsnzisLBH8ao4351vS/q+yfUKt8kPg8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D10%26page%3Dshow_problem%26problem%3D797%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F8%5C%2Fp856.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA856%5C%2F59861c0334365423b44cee3a51adf4001a5680fc.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA856%5C%2F829a97b70eb0017f2650d514c0e02f413993ea8b.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA856%5C%2F941993b6e8dc07e7297725b8be9def6caf8c3852.png%29%22%2C%22samples%22%3A%5B%5B%22PQRPQRPQR%5CnPQRPQRPQR%22%2C%22WHTWHTWHT%20-%26gt%3B%20sixsixsix%5CnWHTWHTVTC%20-%26gt%3B%20sixsixtwo%5CnWHTWHTACM%20-%26gt%3B%20sixsixone%5CnWHTVTCWHT%20-%26gt%3B%20sixtwosix%5CnWHTVTCVTC%20-%26gt%3B%20sixtwotwo%5CnWHTVTCACM%20-%26gt%3B%20sixtwoone%5CnWHTACMWHT%20-%26gt%3B%20sixonesix%5CnWHTACMVTC%20-%26gt%3B%20sixonetwo%5CnWHTACMACM%20-%26gt%3B%20sixoneone%5CnVTCWHTWHT%20-%26gt%3B%20twosixsix%5CnVTCWHTVTC%20-%26gt%3B%20twosixtwo%5CnVTCWHTACM%20-%26gt%3B%20twosixone%5CnVTCVTCWHT%20-%26gt%3B%20twotwosix%5CnVTCVTCVTC%20-%26gt%3B%20twotwotwo%5CnVTCVTCACM%20-%26gt%3B%20twotwoone%5CnVTCACMWHT%20-%26gt%3B%20twoonesix%5CnVTCACMVTC%20-%26gt%3B%20twoonetwo%5CnVTCACMACM%20-%26gt%3B%20twooneone%5CnACMWHTWHT%20-%26gt%3B%20onesixsix%5CnACMWHTVTC%20-%26gt%3B%20onesixtwo%5CnACMWHTACM%20-%26gt%3B%20onesixone%5CnACMVTCWHT%20-%26gt%3B%20onetwosix%5CnACMVTCVTC%20-%26gt%3B%20onetwotwo%5CnACMVTCACM%20-%26gt%3B%20onetwoone%5CnACMACMWHT%20-%26gt%3B%20oneonesix%5CnACMACMVTC%20-%26gt%3B%20oneonetwo%5CnACMACMACM%20-%26gt%3B%20oneoneone%5CnWHTWHTWHT%20-%26gt%3B%20sixsixsix%5CnWHTWHTVTC%20-%26gt%3B%20sixsixtwo%5CnWHTWHTACM%20-%26gt%3B%20sixsixone%5CnWHTVTCWHT%20-%26gt%3B%20sixtwosix%5CnWHTVTCVTC%20-%26gt%3B%20sixtwotwo%5CnWHTVTCACM%20-%26gt%3B%20sixtwoone%5CnWHTACMWHT%20-%26gt%3B%20sixonesix%5CnWHTACMVTC%20-%26gt%3B%20sixonetwo%5CnWHTACMACM%20-%26gt%3B%20sixoneone%5CnVTCWHTWHT%20-%26gt%3B%20twosixsix%5CnVTCWHTVTC%20-%26gt%3B%20twosixtwo%5CnVTCWHTACM%20-%26gt%3B%20twosixone%5CnVTCVTCWHT%20-%26gt%3B%20twotwosix%5CnVTCVTCVTC%20-%26gt%3B%20twotwotwo%5CnVTCVTCACM%20-%26gt%3B%20twotwoone%5CnVTCACMWHT%20-%26gt%3B%20twoonesix%5CnVTCACMVTC%20-%26gt%3B%20twoonetwo%5CnVTCACMACM%20-%26gt%3B%20twooneone%5CnACMWHTWHT%20-%26gt%3B%20onesixsix%5CnACMWHTVTC%20-%26gt%3B%20onesixtwo%5CnACMWHTACM%20-%26gt%3B%20onesixone%5CnACMVTCWHT%20-%26gt%3B%20onetwosix%5CnACMVTCVTC%20-%26gt%3B%20onetwotwo%5CnACMVTCACM%20-%26gt%3B%20onetwoone%5CnACMACMWHT%20-%26gt%3B%20oneonesix%5CnACMACMVTC%20-%26gt%3B%20oneonetwo%5CnACMACMACM%20-%26gt%3B%20oneoneone%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F856%22%2C%22id%22%3A%22856%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A3%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22UVA856%22%2C%22title%22%3A%22The%20Vigen%5Cu00e8re%20Cipher%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22The%20Vigen%5Cu00e8re%20Cipher%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>The Vigenère Cipher</h1>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=10&page=show_problem&problem=797
+[PDF](https://uva.onlinejudge.org/external/8/p856.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA856/59861c0334365423b44cee3a51adf4001a5680fc.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA856/829a97b70eb0017f2650d514c0e02f413993ea8b.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA856/941993b6e8dc07e7297725b8be9def6caf8c3852.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>PQRPQRPQR
+PQRPQRPQR</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>WHTWHTWHT -&amp;gt; sixsixsix
+WHTWHTVTC -&amp;gt; sixsixtwo
+WHTWHTACM -&amp;gt; sixsixone
+WHTVTCWHT -&amp;gt; sixtwosix
+WHTVTCVTC -&amp;gt; sixtwotwo
+WHTVTCACM -&amp;gt; sixtwoone
+WHTACMWHT -&amp;gt; sixonesix
+WHTACMVTC -&amp;gt; sixonetwo
+WHTACMACM -&amp;gt; sixoneone
+VTCWHTWHT -&amp;gt; twosixsix
+VTCWHTVTC -&amp;gt; twosixtwo
+VTCWHTACM -&amp;gt; twosixone
+VTCVTCWHT -&amp;gt; twotwosix
+VTCVTCVTC -&amp;gt; twotwotwo
+VTCVTCACM -&amp;gt; twotwoone
+VTCACMWHT -&amp;gt; twoonesix
+VTCACMVTC -&amp;gt; twoonetwo
+VTCACMACM -&amp;gt; twooneone
+ACMWHTWHT -&amp;gt; onesixsix
+ACMWHTVTC -&amp;gt; onesixtwo
+ACMWHTACM -&amp;gt; onesixone
+ACMVTCWHT -&amp;gt; onetwosix
+ACMVTCVTC -&amp;gt; onetwotwo
+ACMVTCACM -&amp;gt; onetwoone
+ACMACMWHT -&amp;gt; oneonesix
+ACMACMVTC -&amp;gt; oneonetwo
+ACMACMACM -&amp;gt; oneoneone
+WHTWHTWHT -&amp;gt; sixsixsix
+WHTWHTVTC -&amp;gt; sixsixtwo
+WHTWHTACM -&amp;gt; sixsixone
+WHTVTCWHT -&amp;gt; sixtwosix
+WHTVTCVTC -&amp;gt; sixtwotwo
+WHTVTCACM -&amp;gt; sixtwoone
+WHTACMWHT -&amp;gt; sixonesix
+WHTACMVTC -&amp;gt; sixonetwo
+WHTACMACM -&amp;gt; sixoneone
+VTCWHTWHT -&amp;gt; twosixsix
+VTCWHTVTC -&amp;gt; twosixtwo
+VTCWHTACM -&amp;gt; twosixone
+VTCVTCWHT -&amp;gt; twotwosix
+VTCVTCVTC -&amp;gt; twotwotwo
+VTCVTCACM -&amp;gt; twotwoone
+VTCACMWHT -&amp;gt; twoonesix
+VTCACMVTC -&amp;gt; twoonetwo
+VTCACMACM -&amp;gt; twooneone
+ACMWHTWHT -&amp;gt; onesixsix
+ACMWHTVTC -&amp;gt; onesixtwo
+ACMWHTACM -&amp;gt; onesixone
+ACMVTCWHT -&amp;gt; onetwosix
+ACMVTCVTC -&amp;gt; onetwotwo
+ACMVTCACM -&amp;gt; onetwoone
+ACMACMWHT -&amp;gt; oneonesix
+ACMACMVTC -&amp;gt; oneonetwo
+ACMACMACM -&amp;gt; oneoneone</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

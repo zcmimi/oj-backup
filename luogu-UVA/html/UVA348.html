@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Optimal Array Multiplication Sequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573452954:6gOwbnYSNX+DDAqsDcnckplVlhBrJSc6txiKNmAXIzE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D5%26page%3Dshow_problem%26problem%3D284%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F3%5C%2Fp348.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA348%5C%2F4f9c48e6a9b2f42e305a52b4cf4b787e747d5a81.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA348%5C%2Ffd3040aab5efdc43f66c0b79667cec7e7be23502.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA348%5C%2F75afad84a4aa951c4d6c4413d94663ef56c59cca.png%29%22%2C%22samples%22%3A%5B%5B%223%5Cn1%205%5Cn5%2020%5Cn20%201%5Cn3%5Cn5%2010%5Cn10%2020%5Cn20%2035%5Cn6%5Cn30%2035%5Cn35%2015%5Cn15%205%5Cn5%2010%5Cn10%2020%5Cn20%2025%5Cn0%22%2C%22Case%201%3A%20%28A1%20x%20%28A2%20x%20A3%29%29%5CnCase%202%3A%20%28%28A1%20x%20A2%29%20x%20A3%29%5CnCase%203%3A%20%28%28A1%20x%20%28A2%20x%20A3%29%29%20x%20%28%28A4%20x%20A5%29%20x%20A6%29%29%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F348%22%2C%22id%22%3A%22348%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu4e09%5Cu4e2a%5Cu77e9%5Cu9635%24A%2CB%2CC%24%5Cuff0c%5Cu82e5%24C%3DAB%24%5Cuff0c%5Cu5219C%5Cu7684%5Cu8ba1%5Cu7b97%5Cu65b9%5Cu5f0f%5Cu4e3a%24C_%7Bi%2Cj%7D%3D%5C%5Csum_k%20A_%7Bi%2Ck%7D%20%5C%5Ctimes%20B_%7Bk%2Cj%7D%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu53ef%5Cu89c1%5Cu82e5%5Cu8981%5Cu8ba1%5Cu7b97%5Cu4e24%5Cu4e2a%5Cu5927%5Cu5c0f%5Cu5206%5Cu522b%5Cu4e3a%24a%20%5C%5Ctimes%20b%24%5Cu548c%24b%20%5C%5Ctimes%20c%24%5Cu7684%5Cu77e9%5Cu9635%5Cu7684%5Cu4e58%5Cu79ef%5Cuff0c%5Cu9700%5Cu8981%24a%20%5C%5Ctimes%20b%20%5C%5Ctimes%20c%24%5Cu6b21%5Cu8ba1%5Cu7b97%5Cuff1b%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu4e24%5Cu4e2a%5Cu77e9%5Cu9635%24A%2CB%24%5Cuff0c%5Cu4e0d%5Cu6ee1%5Cu8db3%24A%20%5C%5Ctimes%20B%20%3D%20B%20%5C%5Ctimes%20A%24%5Cuff1b%5Cu5bf9%5Cu4e8e%5Cu4e09%5Cu4e2a%5Cu77e9%5Cu9635%24A%2CB%2CC%24%5Cuff0c%5Cu6ee1%5Cu8db3%24%28A%20%5C%5Ctimes%20B%29%20%5C%5Ctimes%20C%20%3D%20A%20%5C%5Ctimes%20%28B%20%5C%5Ctimes%20C%29%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu5b9a%24n%24%5Cu4e2a%5Cu77e9%5Cu9635%24A1%2CA2%2C%20%5C%5Cdots%20%2CAn%24%5Cu7684%5Cu884c%5Cu5217%5Cu6570%5Cuff0c%5Cu73b0%5Cu5728%5Cu8981%5Cu7b97%5Cu51fa%5Cu8fd9%5Cu4e9b%5Cu77e9%5Cu9635%5Cu7684%5Cu79ef%5Cuff0c%5Cu95ee%5Cu5982%5Cu4f55%5Cu5b89%5Cu6392%5Cu8fd0%5Cu7b97%5Cu987a%5Cu5e8f%5Cu53ef%5Cu4f7f%5Cu8fd0%5Cu7b97%5Cu6b21%5Cu6570%5Cu6700%5Cu5c11%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu672c%5Cu9898%5Cu5305%5Cu542b%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu9996%5Cu5148%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%280%20%5C%5Cle%20n%20%5C%5Cle%2010%29%24%5Cuff0c%5Cu7136%5Cu540e%5Cu6bcf%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6bcf%5Cu4e2a%5Cu77e9%5Cu9635%5Cu7684%5Cu884c%5Cu6570%5Cu548c%5Cu5217%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu9996%5Cu5148%5Cu8f93%5Cu51fa%5Cu201c%24Case%5C%5C%20k%3A%5C%5C%20%24%5Cu201d%5Cuff0c%5Cu5176%5Cu4e2d%24k%24%5Cu4e3a%5Cu5f53%5Cu524d%5Cu6570%5Cu636e%5Cu7684%5Cu7ec4%5Cu522b%5Cu7f16%5Cu53f7%5Cu3002%5Cu7136%5Cu540e%5Cu8f93%5Cu51fa%5Cu6700%5Cu4f18%5Cu8ba1%5Cu7b97%5Cu987a%5Cu5e8f%5Cuff0c%5Cu5176%5Cu4e2d%5Cu4e58%5Cu53f7%5Cu7528%5Cu201cx%5Cu201d%5Cu4ee3%5Cu8868%5Cuff0c%5Cu4e14%5Cu524d%5Cu540e%5Cu90fd%5Cu8981%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu3002%5Cu6bcf%5Cu4e00%5Cu6b21%5Cu4e58%5Cu6cd5%5Cu7684%5Cu5916%5Cu9762%5Cu90fd%5Cu8981%5Cu5957%5Cu4e00%5Cu5bf9%5Cu5c0f%5Cu62ec%5Cu53f7%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cu7b2c%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cu7684%5Cu6700%5Cu4f18%5Cu89e3%5Cu4e3a%5Cu5148%5Cu8ba1%5Cu7b97%24A2%20%5C%5Ctimes%20A3%24%5Cuff0c%5Cu518d%5Cu8ba1%5Cu7b97%24A1%20%5C%5Ctimes%20%28A2%20%5C%5Ctimes%20A3%29%24%5Cuff0c%5Cu5219%5Cu8981%5Cu8f93%5Cu51fa%5Cu201c%28A1%20x%20%28A2%20x%20A3%29%29%5Cu201d%5Cu3002%22%2C%22tags%22%3A%5B4%2C129%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A130%2C%22totalAccepted%22%3A27%2C%22pid%22%3A%22UVA348%22%2C%22title%22%3A%22Optimal%20Array%20Multiplication%20Sequence%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1941%22%2C%22title%22%3A%22%5Cu98de%5Cu626c%5Cu7684%5Cu5c0f%5Cu9e1f%20%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2486%22%2C%22title%22%3A%22%5BSDOI2011%5D%5Cu67d3%5Cu8272%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2831%22%2C%22title%22%3A%22%5Cu6124%5Cu6012%5Cu7684%5Cu5c0f%5Cu9e1f%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2986%22%2C%22title%22%3A%22%5BUSACO10MAR%5D%5Cu4f1f%5Cu5927%5Cu7684%5Cu5976%5Cu725b%5Cu805a%5Cu96c6Great%20Cow%20Gat%5Cu2026%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA10308%22%2C%22title%22%3A%22Roads%20in%20the%20North%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Optimal%20Array%20Multiplication%20Sequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Optimal Array Multiplication Sequence</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+对于三个矩阵$A,B,C$，若$C=AB$，则C的计算方式为$C_{i,j}=\sum_k A_{i,k} \times B_{k,j}$。
+可见若要计算两个大小分别为$a \times b$和$b \times c$的矩阵的乘积，需要$a \times b \times c$次计算；
+对于两个矩阵$A,B$，不满足$A \times B = B \times A$；对于三个矩阵$A,B,C$，满足$(A \times B) \times C = A \times (B \times C)$。
+给定$n$个矩阵$A1,A2, \dots ,An$的行列数，现在要算出这些矩阵的积，问如何安排运算顺序可使运算次数最少。
+本题包含多组数据。
+# 输入输出格式
+## 输入格式：
+对于每组数据，首先输入一个正整数$n(0 \le n \le 10)$，然后每行输入两个正整数，表示每个矩阵的行数和列数。
+## 输出格式：
+首先输出“$Case\ k:\ $”，其中$k$为当前数据的组别编号。然后输出最优计算顺序，其中乘号用“x”代表，且前后都要输出一个空格。每一次乘法的外面都要套一对小括号。
+例如第一组数据的最优解为先计算$A2 \times A3$，再计算$A1 \times (A2 \times A3)$，则要输出“(A1 x (A2 x A3))”。</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=5&page=show_problem&problem=284
+[PDF](https://uva.onlinejudge.org/external/3/p348.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA348/4f9c48e6a9b2f42e305a52b4cf4b787e747d5a81.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA348/fd3040aab5efdc43f66c0b79667cec7e7be23502.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA348/75afad84a4aa951c4d6c4413d94663ef56c59cca.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 5
+5 20
+20 1
+3
+5 10
+10 20
+20 35
+6
+30 35
+35 15
+15 5
+5 10
+10 20
+20 25
+0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case 1: (A1 x (A2 x A3))
+Case 2: ((A1 x A2) x A3)
+Case 3: ((A1 x (A2 x A3)) x ((A4 x A5) x A6))</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Fixed Partition Memory Management - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453173:/B4DjhdA6g/l+cokaM+tdTluM6Cc6Swdz5il2Llvufw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D245%26page%3Dshow_problem%26problem%3D3447%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F10%5C%2Fp1006.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA1006%5C%2Fdfbd9d3b8a0134fd94d525df48795a77c938ad11.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA1006%5C%2F43a96c06f2a09aa085601640b65f67461dcf0b01.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA1006%5C%2F05e79597d5ff27833ca31b4a7317138eb765945f.png%29%22%2C%22samples%22%3A%5B%5B%222%204%5Cn40%2060%5Cn1%2035%204%5Cn1%2020%203%5Cn1%2040%2010%5Cn1%2060%207%5Cn3%205%5Cn10%2020%2030%5Cn2%2010%2050%2012%2030%5Cn2%2010%20100%2020%2025%5Cn1%2025%2019%5Cn1%2019%2041%5Cn2%2010%2018%2030%2042%5Cn0%200%22%2C%22Case%201%5CnAverage%20turnaround%20time%20%3D%207.75%5CnProgram%201%20runs%20in%20region%201%20from%200%20to%204%5CnProgram%202%20runs%20in%20region%202%20from%200%20to%203%5CnProgram%203%20runs%20in%20region%201%20from%204%20to%2014%5CnProgram%204%20runs%20in%20region%202%20from%203%20to%2010%5Cn%5CnCase%202%5CnAverage%20turnaround%20time%20%3D%2035.40%5CnProgram%201%20runs%20in%20region%202%20from%2025%20to%2055%5CnProgram%202%20runs%20in%20region%202%20from%200%20to%2025%5CnProgram%203%20runs%20in%20region%203%20from%200%20to%2019%5CnProgram%204%20runs%20in%20region%203%20from%2019%20to%2060%5CnProgram%205%20runs%20in%20region%201%20from%200%20to%2018%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B9000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F1006%22%2C%22id%22%3A%221006%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu9898%5Cu610f%5Cu63cf%5Cu8ff0%2A%2A%5Cn%5Cn%5Cu6709%24m%24%5Cu4e2a%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%5Cuff0c%5Cu7ed9%5Cu5b9a%5Cu5b83%5Cu4eec%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu7684%5Cu5927%5Cu5c0f%5Cu3002%5Cn%5Cn%5Cu6709%24n%24%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu9700%5Cu8981%5Cu6267%5Cu884c%5Cuff0c%5Cu7ed9%5Cu51fa%5Cu5b83%5Cu4eec%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu5185%5Cu5b58%5Cu5927%5Cu5c0f%24s_i%24%5Cu4e0b%5Cu9700%5Cu8981%5Cu6267%5Cu884c%5Cu7684%5Cu65f6%5Cu95f4%24t_i%24%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu53ea%5Cu80fd%5Cu88ab%5Cu5206%5Cu914d%5Cu5230%5Cu4e00%5Cu4e2a%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%5Cu4e0b%5Cu3002%5Cu5728%5Cu540c%5Cu4e00%5Cu65f6%5Cu523b%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%5Cu4e0a%5Cu53ea%5Cu80fd%5Cu8fd0%5Cu884c%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cuff0c%5Cu4e0d%5Cu540c%5Cu7684%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%5Cu4e0a%5Cu7684%5Cu4e0d%5Cu540c%5Cu7a0b%5Cu5e8f%5Cu53ef%5Cu4ee5%5Cu540c%5Cu65f6%5Cu8fd0%5Cu884c%5Cu3002%5Cn%5Cn%5Cu65f6%5Cu95f4%5Cu4ece%240%24%5Cu5f00%5Cu59cb%5Cu7b97%5Cu8d77%5Cuff0c%5Cu8bf7%5Cu4f60%5Cu8ba1%5Cu7b97%5Cu4e00%5Cu79cd%5Cu5206%5Cu914d%5Cu65b9%5Cu6848%5Cuff0c%5Cu4f7f%5Cu5f97%5Cu6240%5Cu6709%5Cu7a0b%5Cu5e8f%5Cu7684%5Cu5e73%5Cu5747%5Cu7ed3%5Cu675f%5Cu8fd0%5Cu884c%5Cu65f6%5Cu95f4%5Cu6700%5Cu5c11%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5047%5Cu5982%5Cu7a0b%5Cu5e8f%241%2C2%2C3%24%5Cu90fd%5Cu88ab%5Cu5206%5Cu914d%5Cu5230%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%241%24%5Cu8fd0%5Cu884c%5Cuff0c%5Cu5e76%5Cu4e14%5Cu5b83%5Cu4eec%5Cu5728%5Cu533a%5Cu57df%241%24%5Cu8fd0%5Cu884c%5Cu6240%5Cu9700%5Cu8981%5Cu7684%5Cu65f6%5Cu95f4%5Cu5206%5Cu522b%5Cu4e3a%242%2C3%2C3%24%5Cuff1b%5Cu7a0b%5Cu5e8f%244%2C5%2C6%24%5Cu90fd%5Cu88ab%5Cu5206%5Cu914d%5Cu5230%5Cu533a%5Cu57df%242%24%5Cu8fd0%5Cu884c%5Cuff0c%5Cu5e76%5Cu4e14%5Cu5b83%5Cu4eec%5Cu5728%5Cu533a%5Cu57df%242%24%5Cu7684%5Cu8fd0%5Cu884c%5Cu65f6%5Cu95f4%5Cu5206%5Cu522b%5Cu4e3a%248%2C1%2C7%24%5Cu3002%5Cu90a3%5Cu4e48%5Cu8fd9%246%24%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu7684%5Cu7ed3%5Cu675f%5Cu8fd0%5Cu884c%5Cu65f6%5Cu95f4%5Cu5206%5Cu522b%5Cu662f%242%2C5%2C8%2C8%2C9%2C16%24%5Cu3002%5Cu5e73%5Cu5747%5Cu7ed3%5Cu675f%5Cu65f6%5Cu95f4%5Cu4e3a%24%282%2B5%2B8%2B8%2B9%2B16%29%5C%2F6%3D8.00%24%5Cu3002%5Cn%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%2A%2A%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu5305%5Cu542b%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24m%2Cn%24%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%5Cu7684%5Cu6570%5Cu91cf%5Cu548c%5Cu7a0b%5Cu5e8f%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cn%5Cu5176%5Cu4e0b%5Cu4e00%5Cu884c%5Cu6709%24m%24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6bcf%5Cu4e2a%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%5Cu7684%5Cu5927%5Cu5c0f%5Cu3002%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24n%24%5Cu884c%5Cuff0c%5Cu7b2c%24i%24%5Cu884c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cu4e3a%24k_i%24%5Cuff0c%5Cu5176%5Cu540e%5Cu6709%24k_i%24%5Cu4e2a%5Cu4e8c%5Cu5143%5Cu7ec4%24%28s_j%2Ct_j%29%24%5Cu3002%5Cn%5Cu4fdd%5Cu8bc1%5Cu8f93%5Cu5165%5Cu6309%5Cu7167%24s_j%24%5Cu9012%5Cu589e%5Cu7ed9%5Cu51fa%5Cu3002%5Cn%5Cu5982%5Cu679c%5Cu7a0b%5Cu5e8f%5Cu8fd0%5Cu884c%5Cu5728%5Cu4e00%5Cu4e2a%5Cu5927%5Cu5c0f%5Cu4e3a%24S%24%5Cu7684%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%5Cu4e0a%5Cuff0c%5Cu6ee1%5Cu8db3%24s_j%5C%5Cleq%20S%20%3C%20s_%7Bj%2B1%7D%281%5C%5Cleq%20j%20%3C%20k_i%29%24%5Cuff0c%5Cu5219%5Cu8fd9%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu9700%5Cu8981%5Cu8fd0%5Cu884c%5Cu7684%5Cu65f6%5Cu95f4%5Cu4e3a%24t_j%24%5Cu3002%5Cu82e5%24s_%7Bk_i%7D%20%5C%5Cleq%20S%24%5Cuff0c%5Cu5219%5Cu8fd9%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu9700%5Cu8981%5Cu8fd0%5Cu884c%5Cu7684%5Cu65f6%5Cu95f4%5Cu4e3a%24t_%7Bk_i%7D%24%5Cu3002%5Cu82e5%24S%3C%20s_1%24%5Cuff0c%5Cu5219%5Cu7a0b%5Cu5e8f%5Cu4e0d%5Cu80fd%5Cu8fd0%5Cu884c%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu5185%5Cu5b58%5Cu533a%5Cu57df%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu4ee5%24m%3Dn%3D0%24%5Cu7ed3%5Cu675f%5Cu3002%5Cn%5Cn%5Cu9664%5Cu7ed3%5Cu675f%5Cu6807%5Cu5fd7%5Cu5916%5Cuff0c%5Cu6ee1%5Cu8db3%241%20%5C%5Cleq%20n%20%5C%5Cleq%2050%2C1%20%5C%5Cleq%20m%20%5C%5Cleq%2010.%24%5Cn%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu6570%5Cu636e%5Cu7684%5Cu7ec4%5Cu53f7%5Cu3002%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu8f93%5Cu51fa%5Cu5e73%5Cu5747%5Cu7ed3%5Cu675f%5Cu65f6%5Cu95f4%2C%5Cu4fdd%5Cu7559%5Cu5230%5Cu5c0f%5Cu6570%5Cu70b9%5Cu540e%5Cu4e24%5Cu4f4d%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%20%24n%24%20%5Cu884c%5Cu8f93%5Cu51fa%5Cu6bcf%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu7684%5Cu5b89%5Cu6392%5Cu65b9%5Cu6848%5Cu3002%5Cu5177%5Cu4f53%5Cu683c%5Cu5f0f%5Cu89c1%2A%2A%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%2A%2A%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu4e24%5Cu7ec4%5Cu6570%5Cu636e%5Cu4e4b%5Cu95f4%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6362%5Cu884c%5Cu7b26%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A35%2C%22totalAccepted%22%3A11%2C%22pid%22%3A%22UVA1006%22%2C%22title%22%3A%22Fixed%20Partition%20Memory%20Management%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A143456%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A19647%2C%22name%22%3A%22UVA1006%20Fixed%20Partition%20Memory%20Management%22%2C%22slug%22%3A%22UVA1006%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Fixed%20Partition%20Memory%20Management%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Fixed Partition Memory Management</h1>
+<h2>题意翻译</h2>
+<div>**题意描述**
+有$m$个内存区域，给定它们每一个的大小。
+有$n$个程序需要执行，给出它们在给定的内存大小$s_i$下需要执行的时间$t_i$。
+每一个程序只能被分配到一个内存区域下。在同一时刻，每一个内存区域上只能运行一个程序，不同的内存区域上的不同程序可以同时运行。
+时间从$0$开始算起，请你计算一种分配方案，使得所有程序的平均结束运行时间最少。例如，假如程序$1,2,3$都被分配到内存区域$1$运行，并且它们在区域$1$运行所需要的时间分别为$2,3,3$；程序$4,5,6$都被分配到区域$2$运行，并且它们在区域$2$的运行时间分别为$8,1,7$。那么这$6$个程序的结束运行时间分别是$2,5,8,8,9,16$。平均结束时间为$(2+5+8+8+9+16)/6=8.00$。
+**输入格式**
+输入包含多组数据。
+每组数据的第一行为两个整数$m,n$，分别表示内存区域的数量和程序的数量。
+其下一行有$m$个整数，表示每个内存区域的大小。
+接下来$n$行，第$i$行第一个数字为$k_i$，其后有$k_i$个二元组$(s_j,t_j)$。
+保证输入按照$s_j$递增给出。
+如果程序运行在一个大小为$S$的内存区域上，满足$s_j\leq S < s_{j+1}(1\leq j < k_i)$，则这个程序需要运行的时间为$t_j$。若$s_{k_i} \leq S$，则这个程序需要运行的时间为$t_{k_i}$。若$S< s_1$，则程序不能运行在这个内存区域。
+输出以$m=n=0$结束。
+除结束标志外，满足$1 \leq n \leq 50,1 \leq m \leq 10.$
+**输出格式**
+对于每组数据，第一行输出数据的组号。第二行输出平均结束时间,保留到小数点后两位。接下来 $n$ 行输出每个程序的安排方案。具体格式见**输入输出样例**。
+每两组数据之间输出一个换行符。</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=245&page=show_problem&problem=3447
+[PDF](https://uva.onlinejudge.org/external/10/p1006.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA1006/dfbd9d3b8a0134fd94d525df48795a77c938ad11.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA1006/43a96c06f2a09aa085601640b65f67461dcf0b01.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA1006/05e79597d5ff27833ca31b4a7317138eb765945f.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 4
+40 60
+1 35 4
+1 20 3
+1 40 10
+1 60 7
+3 5
+10 20 30
+2 10 50 12 30
+2 10 100 20 25
+1 25 19
+1 19 41
+2 10 18 30 42
+0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case 1
+Average turnaround time = 7.75
+Program 1 runs in region 1 from 0 to 4
+Program 2 runs in region 2 from 0 to 3
+Program 3 runs in region 1 from 4 to 14
+Program 4 runs in region 2 from 3 to 10
+
+Case 2
+Average turnaround time = 35.40
+Program 1 runs in region 2 from 25 to 55
+Program 2 runs in region 2 from 0 to 25
+Program 3 runs in region 3 from 0 to 19
+Program 4 runs in region 3 from 19 to 60
+Program 5 runs in region 1 from 0 to 18</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

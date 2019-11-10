@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Smallest Bounding Rectangle - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453464:gK1f6rMi3Mmaf6voA/vlXDLje7/h1wcrBn9qgaz6YVg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D13%26page%3Dshow_problem%26problem%3D1114%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F101%5C%2Fp10173.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10173%5C%2F5f262209530924a2c049f70498a4181078ba14df.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10173%5C%2Fb7529fc1e4c170b2240475c20d52ce351290ed72.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10173%5C%2Fabfd56a1f71f8b0aa188f41287af34440261c141.png%29%22%2C%22samples%22%3A%5B%5B%223%5Cn-3.000%205.000%5Cn7.000%209.000%5Cn17.000%205.000%5Cn4%5Cn10.000%2010.000%5Cn10.000%2020.000%5Cn20.000%2020.000%5Cn20.000%2010.000%5Cn0%22%2C%2280.0000%5Cn100.0000%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F10173%22%2C%22id%22%3A%2210173%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9an%5Cuff08%5Cuff1e0%5Cuff09%5Cu4e8c%5Cu7ef4%5Cu70b9%5Cu7684%5Cu7b1b%5Cu5361%5Cu5c14%5Cu5750%5Cu6807%5Cuff0c%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cuff0c%5Cu8ba1%5Cu7b97%5Cu5176%5Cu6700%5Cu5c0f%5Cu8fb9%5Cu754c%5Cu77e9%5Cu5f62%5Cu7684%5Cu9762%5Cu79ef%5Cuff08%5Cu5305%5Cu542b%5Cu6240%5Cu6709%5Cu7ed9%5Cu5b9a%5Cu70b9%5Cu7684%5Cu6700%5Cu5c0f%5Cu77e9%5Cu5f62%5Cuff09%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu53ef%5Cu4ee5%5Cu5305%5Cu542b%5Cu591a%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cu4ece%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6570%5Cu7684%5Cu884c%5Cu5f00%5Cu59cb%5Cu3002%20%5Cu6574%5Cu6570N%5Cuff08%5Cuff1c1001%5Cuff09%5Cuff0c%5Cu8868%5Cu793a%5Cu8be5%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cu4e2d%5Cu7684%5Cu70b9%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu7684n%5Cu884c%5Cu5404%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu5b9e%5Cu6570%5Cuff0c%5Cu5206%5Cu522b%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu70b9%5Cu7684x%5Cu548cy%5Cu5750%5Cu6807%5Cu3002%5Cu8f93%5Cu5165%5Cu6700%5Cu540e%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu503c%5Cu4e3a0%5Cu7684%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cuff0c%5Cu8be5%5Cu503c%5Cu5fc5%5Cu987b%5Cu4e0d%5Cu88ab%5Cu5904%5Cu7406%5Cu3002%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu8f93%5Cu5165%5Cu4e2d%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cu90fd%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu542b%5Cu6700%5Cu5c0f%5Cu8fb9%5Cu754c%5Cu77e9%5Cu5f62%5Cu7684%5Cu9762%5Cu79ef%5Cuff0c%5Cu5c0f%5Cu6570%5Cu70b9%5Cu540e%5Cu56db%5Cu820d%5Cu4e94%5Cu5165%5Cu5230%5Cu7b2c%5Cu56db%5Cu4f4d%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40%5Cu5b87%5Cu5b99%5Cu7a7f%5Cu68ad%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A152%2C%22totalAccepted%22%3A35%2C%22pid%22%3A%22UVA10173%22%2C%22title%22%3A%22Smallest%20Bounding%20Rectangle%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A45518%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A20716%2C%22name%22%3A%22UVA10173%20Smallest%20Bounding%20Rectangle%22%2C%22slug%22%3A%22UVA10173%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3187%22%2C%22title%22%3A%22%5BHNOI2007%5D%5Cu6700%5Cu5c0f%5Cu77e9%5Cu5f62%5Cu8986%5Cu76d6%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4166%22%2C%22title%22%3A%22%5BSCOI2007%5D%5Cu6700%5Cu5927%5Cu571f%5Cu5730%5Cu9762%5Cu79ef%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4196%22%2C%22title%22%3A%22%5BCQOI2006%5D%5Cu51f8%5Cu591a%5Cu8fb9%5Cu5f62%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA10735%22%2C%22title%22%3A%22%5Cu6df7%5Cu5408%5Cu56fe%5Cu7684%5Cu6b27%5Cu62c9%5Cu56de%5Cu8def%20Euler%20Circuit%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22P4724%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011%5Cu4e09%5Cu7ef4%5Cu51f8%5Cu5305%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Smallest%20Bounding%20Rectangle%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Smallest Bounding Rectangle</h1>
+<h2>题意翻译</h2>
+<div>给定n（＞0）二维点的笛卡尔坐标，编写一个程序，计算其最小边界矩形的面积（包含所有给定点的最小矩形）。
+输入文件可以包含多个测试样例。每个测试样例从包含一个正数的行开始。 整数N（＜1001），表示该测试样例中的点的数量。接下来的n行各包含两个实数，分别给出一个点的x和y坐标。输入最后包含一个值为0的测试样例，该值必须不被处理。
+对于输入中的每个测试样例都输出一行，包含最小边界矩形的面积，小数点后四舍五入到第四位。
+感谢@宇宙穿梭 提供的翻译</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=13&page=show_problem&problem=1114
+[PDF](https://uva.onlinejudge.org/external/101/p10173.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10173/5f262209530924a2c049f70498a4181078ba14df.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10173/b7529fc1e4c170b2240475c20d52ce351290ed72.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10173/abfd56a1f71f8b0aa188f41287af34440261c141.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+-3.000 5.000
+7.000 9.000
+17.000 5.000
+4
+10.000 10.000
+10.000 20.000
+20.000 20.000
+20.000 10.000
+0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>80.0000
+100.0000</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

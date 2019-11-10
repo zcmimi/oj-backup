@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>统计有根树 Count - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453382:NWgvVhKlom+eGz4BX8vTnJz2X5nfwjkVVkyEvUyZTgU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D825%26page%3Dshow_problem%26problem%3D4520%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F16%5C%2Fp1645.pdf%29%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F1645%22%2C%22id%22%3A%221645%22%7D%2C%22translation%22%3A%22%23%20%5Cu7edf%5Cu8ba1%5Cu6709%5Cu6839%5Cu6811%5Cr%5Cn%23%23%20%5Cu6316%5Cu6398%5Cu53e4%5Cu4ee3%5Cu9057%5Cu5740%5Cr%5Cn%23%23%23%20%5Cu548c%5Cu8c10%5Cu5173%5Cu7cfb%5Cu7ed3%5Cu6784%5Cr%5Cn%5Cu5e95%5Cu683c%5Cu91cc%5Cu65af%5Cu6559%5Cu6388%5Cu662f%5Cu4e00%5Cu4e2a%5Cu8003%5Cu53e4%5Cu5c0f%5Cu7ec4%5Cu7684%5Cu7ec4%5Cu957f%5Cuff0c%5Cu76ee%5Cu524d%5Cu8d1f%5Cu8d23%5Cu4e00%5Cu4e2a%5Cu9057%5Cu5740%5Cu7684%5Cu6316%5Cu6398%5Cu53e4%5Cu4ee3%5Cu6587%5Cu7269%5Cu5de5%5Cu4f5c%5Cr%5Cn%5Cr%5Cn%5Cu8fd9%5Cu4e2a%5Cu9057%5Cu5740%5Cu5305%5Cu542b%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu6587%5Cu660e%5Cu66fe%5Cu7ecf%5Cu7e41%5Cu8363%5Cu7684%5Cu6751%5Cu5e84%5Cu7684%5Cu9057%5Cu8ff9%5Cu3002%5Cu4e00%5Cu5929%5Cu665a%5Cu4e0a%5Cuff0c%5Cu68c0%5Cu67e5%5Cu5199%5Cu4e0b%5Cu6765%5Cu7684%5Cu8bb0%5Cu5f55%5Cuff0c%5Cu4f60%5Cu53d1%5Cu73b0%5Cu4e86%5Cu4e00%5Cu4e9b%5Cu5bf9%5Cu4f60%5Cu6709%5Cu610f%5Cu4e49%5Cu7684%5Cu6587%5Cu5b57%5Cu3002%5Cu5176%5Cu5185%5Cu5bb9%5Cu5982%5Cu4e0b%5Cu2014%5Cu2014%20%20%5Cr%5Cn%5Cu201c%5Cu6211%5Cu4eec%5Cu7684%5Cu6751%5Cu5e84%5Cu662f%5Cu5149%5Cu8363%5Cu548c%5Cu548c%5Cu8c10%5Cu7684%5Cu3002%5Cu6211%5Cu4eec%5Cu7684%5Cu5173%5Cu7cfb%5Cu662f%5Cu8fd9%5Cu6837%5Cu6784%5Cu5efa%5Cu7684%3A%20%20%5Cr%5Cn1%5Cu3001%5Cu9664%5Cu4e86%5Cu6751%5Cu957f%5Cu4e4b%5Cu5916%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu4eba%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu76f4%5Cu63a5%5Cu7684%5Cu8001%5Cu677f%5Cuff0c%5Cu6ca1%5Cu6709%5Cu4eba%5Cu4f1a%5Cu662f%5Cr%5Cn%5Cu4ed6%5Cu81ea%5Cu5df1%5Cu7684%5Cu8001%5Cu677f%5Cuff0c%5Cu4ed6%5Cu81ea%5Cu5df1%5Cu7684%5Cu8001%5Cu677f%5Cuff0c%5Cu7b49%5Cu7b49%5Cu3002%20%20%5Cr%5Cn2%5Cu3001%5Cu6bcf%5Cu4e2a%5Cu4eba%5Cu90fd%5Cu5e0c%5Cu671b%5Cu6821%5Cu957f%5Cu88ab%5Cu8003%5Cu8651%5Cu5728%5Cu5185%5Cu3002%20%20%5Cr%5Cn3%5Cu3001%5Cu4f5c%5Cu4e3a%5Cu8001%5Cu677f%5Cu7684%5Cu4e0b%5Cu5c5e%5Cu3002%5Cu6211%5Cu4eec%5Cu79f0%5Cu4e4b%5Cu4e3a%5Cu5173%5Cu7cfb%5Cu914d%5Cu7f6e%5Cu3002%5Cu6751%5Cu957f%5Cu57280%5Cu7ea7%5Cuff0c%5Cu4e0b%5Cu5c5e%5Cu57281%5Cu7ea7%5Cuff0c%5Cu4e0b%5Cu5c5e%5Cu57282%5Cu7ea7%5Cuff0c%5Cu7b49%5Cu7b49%5Cuff0c%20%20%5Cr%5Cn4%5Cu3001%5Cu6211%5Cu4eec%5Cu7684%5Cu5173%5Cu7cfb%5Cu7ed3%5Cu6784%5Cu662f%5Cu548c%5Cu8c10%5Cu7684%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu540c%5Cu4e00%5Cu7ea7%5Cu522b%5Cu7684%5Cu6240%5Cu6709%5Cu4eba%5Cu90fd%5Cu6709%5Cu4e0b%5Cu5c5e%5Cu4eba%5Cu6570%5Cu76f8%5Cu540c%5Cu3002%5Cu56e0%5Cu6b64%5Cu6211%5Cu4eec%5Cu7684%5Cu5173%5Cu7cfb%5Cu662f%5Cu3002%5Cu2026%20%20%5Cr%5Cn%5Cu8bb0%5Cu5f55%5Cu5230%5Cu6b64%5Cu7ed3%5Cu675f%5Cu3002%5Cu63d0%5Cu683c%5Cu91cc%5Cu65af%5Cu6559%5Cu6388%5Cu73b0%5Cu5728%5Cu60f3%5Cu77e5%5Cu9053%5Cu6709%5Cu591a%5Cu5c11%5Cu79cd%5Cu4e0d%5Cu540c%5Cu7684%5Cu548c%5Cu8c10%5Cu5173%5Cu7cfb%5Cu7ed3%5Cu6784%5Cu53ef%5Cu4ee5%5Cu5b58%5Cu5728%5Cu3002%5Cu4ed6%5Cu53ea%5Cu5173%5Cu5fc3%5Cu914d%5Cu7f6e%5Cu7684%5Cu6574%5Cu4f53%5Cu5f62%5Cu72b6%5Cuff0c%5Cu6240%5Cu4ee5%5Cu6709%5Cu4e24%5Cu79cd%5Cu914d%5Cu7f6e%2C%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu6709n%5Cu4e2a%5Cu4eba%5Cu7684%5Cu53cc%5Cu5c04%5Cu5c06%5Cu4e00%5Cu4e2a%5Cu914d%5Cu7f6e%5Cu8f6c%5Cu6362%5Cu4e3a%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu3002%20%20%5Cr%5Cn%5Cu5f53n%3D2%5Cu548cn%3D4%5Cu65f6%5Cuff0c%5Cu8bf7%5Cu53c2%5Cu9605%5Cu4e0b%5Cu9762%5Cu7684%5Cu63d2%5Cu56fe%5Cu8fdb%5Cu884c%5Cu89e3%5Cu91ca%5Cu3002%20%20%20%5Cr%5Cn%5Cu7ed3%5Cu679c%5Cu53ef%5Cu80fd%5Cu975e%5Cu5e38%5Cu5927%5Cuff0c%5Cu56e0%5Cu6b64%5Cu60a8%5Cu5e94%5Cu8be5%5Cu5728%5Cu4e4b%5Cu524d%5Cu4f7f%5Cu7528%5Cu6a21%5Cu575710%5E9%2B7%5Cu8fdb%5Cu884c%5Cu6a21%5Cu5757%5Cu64cd%5Cu4f5c%20%20%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4f60%5Cu7684%5Cu7b54%5Cu6848%5Cu3002%20%20%20%5Cr%5Cn%20_%2A%2A%5Cu8f93%5Cu5165%2A%2A_%20%20%5Cr%5Cn%5Cu6709%5Cu51e0%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cu3002%20%20%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cuff0c%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff081%5Cu2264n%5Cu22641000%5Cuff09%5Cu3002%20%20%20%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu88abEOF%5Cu7ec8%5Cu6b62%5Cu3002%20%20%5Cr%5Cn%20_%2A%2A%5Cu8f93%5Cu51fa%2A%2A_%20%20%20%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu201ccase%20x%3Ay%5Cu201d%5Cuff0c%5Cu5176%5Cu4e2dx%5Cu662f%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cu7f16%5Cu53f7%5Cuff08%5Cu4ece1%5Cu5f00%5Cu59cb%5Cuff09%20%20%5Cr%5Cny%5Cu662f%5Cu7406%5Cu60f3%5Cu7684%5Cu7b54%5Cu6848%5Cu3002%20%5Cr%5Cn%5Cr%5Cn------------%5Cr%5Cn%2A%2A%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%2A%2A%20%20%5Cr%5Cn1%20%20%5Cr%5Cn2%20%20%5Cr%5Cn3%20%20%20%5Cr%5Cn40%20%20%20%5Cr%5Cn50%20%20%20%5Cr%5Cn600%20%20%20%5Cr%5Cn700%20%20%20%5Cr%5Cn%2A%2A%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%20%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b1%3A1%20%20%20%5Cr%5Cn%5Cu6837%5Cu4f8b2%3A1%20%20%20%5Cr%5Cn%5Cu6837%5Cu4f8b3%3A2%20%20%5Cr%5Cn%5Cu6837%5Cu4f8b4%3A924%20%20%20%5Cr%5Cn%5Cu6837%5Cu4f8b5%3A1998%20%20%20%5Cr%5Cn%5Cu6837%5Cu4f8b6%3A315478277%20%20%5Cr%5Cn%5Cu6837%5Cu4f8b7%3A825219749%5Cr%5Cn%22%2C%22tags%22%3A%5B12%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A33%2C%22totalAccepted%22%3A20%2C%22pid%22%3A%22UVA1645%22%2C%22title%22%3A%22%5Cu7edf%5Cu8ba1%5Cu6709%5Cu6839%5Cu6811%20Count%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A138006%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cu4e0d%5Cu53ef%5Cu770b%22%2C%22forum%22%3A%7B%22id%22%3A20287%2C%22name%22%3A%22UVA1645%20%5Cu7edf%5Cu8ba1%5Cu6709%5Cu6839%5Cu6811%20Count%22%2C%22slug%22%3A%22UVA1645%22%7D%7D%2C%7B%22id%22%3A45451%2C%22title%22%3A%22%5Cu9898%5Cu610f%5Cu6982%5Cu8ff0%22%2C%22forum%22%3A%7B%22id%22%3A20287%2C%22name%22%3A%22UVA1645%20%5Cu7edf%5Cu8ba1%5Cu6709%5Cu6839%5Cu6811%20Count%22%2C%22slug%22%3A%22UVA1645%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu7edf%5Cu8ba1%5Cu6709%5Cu6839%5Cu6811%20Count%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>统计有根树 Count</h1>
+<h2>题意翻译</h2>
+<div># 统计有根树
+## 挖掘古代遗址
+### 和谐关系结构
+底格里斯教授是一个考古小组的组长，目前负责一个遗址的挖掘古代文物工作
+这个遗址包含了一个文明曾经繁荣的村庄的遗迹。一天晚上，检查写下来的记录，你发现了一些对你有意义的文字。其内容如下——
+“我们的村庄是光荣和和谐的。我们的关系是这样构建的:
+1、除了村长之外，每个人都有一个直接的老板，没有人会是
+他自己的老板，他自己的老板，等等。
+2、每个人都希望校长被考虑在内。
+3、作为老板的下属。我们称之为关系配置。村长在0级，下属在1级，下属在2级，等等，
+4、我们的关系结构是和谐的，因为同一级别的所有人都有下属人数相同。因此我们的关系是。…
+记录到此结束。提格里斯教授现在想知道有多少种不同的和谐关系结构可以存在。他只关心配置的整体形状，所以有两种配置,且仅当有n个人的双射将一个配置转换为另一个。
+当n=2和n=4时，请参阅下面的插图进行解释。
+结果可能非常大，因此您应该在之前使用模块10^9+7进行模块操作
+输出你的答案。
+_**输入**_
+有几个测试样例。
+对于每个测试用例，只有一行包含一个整数n（1≤n≤1000）。
+输入被EOF终止。
+_**输出**_
+对于每个测试样例，输出一行“case x:y”，其中x是测试样例编号（从1开始）
+y是理想的答案。
+------------
+**样例输入**
+1
+2
+3
+40
+50
+600
+700
+**样例输出 **
+样例1:1
+样例2:1
+样例3:2
+样例4:924
+样例5:1998
+样例6:315478277
+样例7:825219749
+</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=825&page=show_problem&problem=4520
+[PDF](https://uva.onlinejudge.org/external/16/p1645.pdf)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

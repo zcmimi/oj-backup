@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>单向TSP Unidirectional TSP - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573452877:FidMQCQFp+FhwmuHlX4Qjz3UZzRv+9w+2fLHvh6LX4Y=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D3%26page%3Dshow_problem%26problem%3D52%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F1%5C%2Fp116.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA116%5C%2F8f55250e58c560c3ec06a86150f26e2b1e1f75c6.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA116%5C%2F801aba8894b1c630f564c73247a3de8b316ca7cf.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA116%5C%2Ff42899d4753927986e0c7f639bd537f5a3da0a4c.png%29%22%2C%22samples%22%3A%5B%5B%225%206%5Cn3%204%201%202%208%206%5Cn6%201%208%202%207%204%5Cn5%209%203%209%209%205%5Cn8%204%201%203%202%206%5Cn3%207%202%208%206%204%5Cn5%206%5Cn3%204%201%202%208%206%5Cn6%201%208%202%207%204%5Cn5%209%203%209%209%205%5Cn8%204%201%203%202%206%5Cn3%207%202%201%202%203%5Cn2%202%5Cn9%2010%209%2010%22%2C%221%202%203%204%204%205%5Cn16%5Cn1%202%201%205%204%205%5Cn11%5Cn1%201%5Cn19%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F116%22%2C%22id%22%3A%22116%22%7D%2C%22translation%22%3A%22%5Cn%5Cn%5Cu7ed9%5Cu4e00%5Cu4e2am%5Cu884cn%5Cu5217%5Cuff08m%5Cu226410%5Cuff0cn%5Cu2264100%5Cuff09%5Cu7684%5Cu6574%5Cu6570%5Cu77e9%5Cu9635%5Cuff0c%5Cu4ece%5Cu7b2c%5Cu4e00%5Cu5217%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu51fa%5Cu53d1%5Cu6bcf%5Cu6b21%5Cu5f80%5Cu53f3%5Cu3001%5Cu53f3%5Cu4e0a%5Cu3001%5Cu53f3%5Cu4e0b%5Cu8d70%5Cu4e00%5Cu683c%5Cuff0c%5Cu6700%5Cu7ec8%5Cu5230%5Cu8fbe%5Cu6700%5Cu540e%5Cu4e00%5Cu5217%5Cu3002%5Cu8981%5Cu6c42%5Cu7ecf%5Cu8fc7%5Cu7684%5Cu6574%5Cu6570%5Cu4e4b%5Cu548c%5Cu6700%5Cu5c0f%5Cu3002%5Cu6574%5Cu4e2a%5Cu77e9%5Cu9635%5Cu662f%5Cu73af%5Cu5f62%5Cu7684%5Cuff0c%5Cu5373%5Cu7b2c%5Cu4e00%5Cu884c%5Cu7684%5Cu4e0a%5Cu4e00%5Cu884c%5Cu662f%5Cu6700%5Cu540e%5Cu4e00%5Cu884c%5Cuff0c%5Cu6700%5Cu540e%5Cu4e00%5Cu884c%5Cu7684%5Cu4e0b%5Cu4e00%5Cu884c%5Cu662f%5Cu7b2c%5Cu4e00%5Cu884c%5Cu3002%5Cu8f93%5Cu51fa%5Cu8def%5Cu5f84%5Cu4e0a%5Cu6bcf%5Cu5217%5Cu7684%5Cu884c%5Cu53f7%5Cu3002%5Cu591a%5Cu89e3%5Cu65f6%5Cu8f93%5Cu51fa%5Cu5b57%5Cu5178%5Cu5e8f%5Cu6700%5Cu5c0f%5Cu7684%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu6709%5Cu82e5%5Cu5e72%5Cu7ec4%5Cu6570%5Cu636e%5Cuff1a%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu7684%5Cu7b2c1%5Cu884c%5Cuff1am%5Cu548cn%5Cuff0c%5Cu5206%5Cu522b%5Cu4e3a%5Cu884c%5Cu6570%5Cu548c%5Cu5217%5Cu6570%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu7684%5Cu7b2c2~m%2B1%5Cu884c%5Cuff1a%5Cu6bcf%5Cu884cn%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu5f00%5Cuff0c%5Cu4ee3%5Cu8868%5Cu6574%5Cu6570%5Cu77e9%5Cu9635%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cuff1a%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu6709%5Cu4e24%5Cu884c%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu6bcf%5Cu5217%5Cu7684%5Cu884c%5Cu53f7%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu662f%5Cu8def%5Cu5f84%5Cu7684%5Cu7ecf%5Cu8fc7%5Cu7684%5Cu6574%5Cu6570%5Cu4e4b%5Cu548c%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40lyonlu%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B3%2C113%2C160%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A852%2C%22totalAccepted%22%3A231%2C%22pid%22%3A%22UVA116%22%2C%22title%22%3A%22%5Cu5355%5Cu5411TSP%20Unidirectional%20TSP%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A161438%2C%22title%22%3A%22%5Cu4e3a%5Cu4ec0%5Cu4e48wa%5Cuff0cudebug%5Cu4e0a%5Cu6240%5Cu6709%5Cu6570%5Cu636e%5Cu90fd%5Cu8fc7%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A18757%2C%22name%22%3A%22UVA116%20%5Cu5355%5Cu5411TSP%20Unidirectional%20TSP%22%2C%22slug%22%3A%22UVA116%22%7D%7D%2C%7B%22id%22%3A131826%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A18757%2C%22name%22%3A%22UVA116%20%5Cu5355%5Cu5411TSP%20Unidirectional%20TSP%22%2C%22slug%22%3A%22UVA116%22%7D%7D%2C%7B%22id%22%3A122591%2C%22title%22%3A%22%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A18757%2C%22name%22%3A%22UVA116%20%5Cu5355%5Cu5411TSP%20Unidirectional%20TSP%22%2C%22slug%22%3A%22UVA116%22%7D%7D%2C%7B%22id%22%3A114387%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff01%5Cuff01%5Cu5728%5Cu7ebf%5Cu7b49%5Cuff01%5Cuff01%5Cu6025%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A18757%2C%22name%22%3A%22UVA116%20%5Cu5355%5Cu5411TSP%20Unidirectional%20TSP%22%2C%22slug%22%3A%22UVA116%22%7D%7D%2C%7B%22id%22%3A67370%2C%22title%22%3A%22%5Cu84dd%5Cu7684%5Cuff1f%22%2C%22forum%22%3A%7B%22id%22%3A18757%2C%22name%22%3A%22UVA116%20%5Cu5355%5Cu5411TSP%20Unidirectional%20TSP%22%2C%22slug%22%3A%22UVA116%22%7D%7D%2C%7B%22id%22%3A53534%2C%22title%22%3A%22%5Cu6b64%5Cu9898%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5751%5Cu70b9%22%2C%22forum%22%3A%7B%22id%22%3A18757%2C%22name%22%3A%22UVA116%20%5Cu5355%5Cu5411TSP%20Unidirectional%20TSP%22%2C%22slug%22%3A%22UVA116%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22UVA437%22%2C%22title%22%3A%22%5Cu5df4%5Cu6bd4%5Cu4f26%5Cu5854%20The%20Tower%20of%20Babylon%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA1347%22%2C%22title%22%3A%22%5Cu65c5%5Cu884c%20Tour%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA11400%22%2C%22title%22%3A%22%5Cu7167%5Cu660e%5Cu7cfb%5Cu7edf%5Cu8bbe%5Cu8ba1%20Lighting%20System%20Design%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA11584%22%2C%22title%22%3A%22%5Cu5212%5Cu5206%5Cu6210%5Cu56de%5Cu6587%5Cu4e32%20Partitioning%20by%20Palindromes%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA12563%22%2C%22title%22%3A%22%5Cu52b2%5Cu6b4c%5Cu91d1%5Cu66f2%20Jin%20Ge%20Jin%20Qu%20hao%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu5355%5Cu5411TSP%20Unidirectional%20TSP%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>单向TSP Unidirectional TSP</h1>
+<h2>题意翻译</h2>
+<div>
+给一个m行n列（m≤10，n≤100）的整数矩阵，从第一列任何一个位置出发每次往右、右上、右下走一格，最终到达最后一列。要求经过的整数之和最小。整个矩阵是环形的，即第一行的上一行是最后一行，最后一行的下一行是第一行。输出路径上每列的行号。多解时输出字典序最小的。
+输入有若干组数据：
+每组的第1行：m和n，分别为行数和列数。
+每组的第2~m+1行：每行n个数，用空格分开，代表整数矩阵。
+输出：
+每组有两行，第一行是每列的行号，第二行是路径的经过的整数之和。
+感谢@lyonlu 提供的翻译</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&page=show_problem&problem=52
+[PDF](https://uva.onlinejudge.org/external/1/p116.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA116/8f55250e58c560c3ec06a86150f26e2b1e1f75c6.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA116/801aba8894b1c630f564c73247a3de8b316ca7cf.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA116/f42899d4753927986e0c7f639bd537f5a3da0a4c.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 6
+3 4 1 2 8 6
+6 1 8 2 7 4
+5 9 3 9 9 5
+8 4 1 3 2 6
+3 7 2 8 6 4
+5 6
+3 4 1 2 8 6
+6 1 8 2 7 4
+5 9 3 9 9 5
+8 4 1 3 2 6
+3 7 2 1 2 3
+2 2
+9 10 9 10</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 2 3 4 4 5
+16
+1 2 1 5 4 5
+11
+1 1
+19</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

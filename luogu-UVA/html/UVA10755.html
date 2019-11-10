@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Garbage Heap - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453674:XQAlkpkHhcaw0Rvd2J5wMe7lR3UUVPe45A4Qm43kAvM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D19%26page%3Dshow_problem%26problem%3D1696%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F107%5C%2Fp10755.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10755%5C%2F6a77b0d5ad497dab04d84b562683ab2913559109.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10755%5C%2F9704fb82893663a1bfee841a3c350922fb2b05aa.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10755%5C%2F411897275a7cfa8968933b698a8e5ba7761d5db8.png%29%22%2C%22samples%22%3A%5B%5B%221%5Cn2%202%202%5Cn-1%202%200%20-3%20-2%20-1%201%205%22%2C%226%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F10755%22%2C%22id%22%3A%2210755%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cuff1a%5Cu5e9f%5Cu6599%5Cu5806%5Cn%5Cn%5Cu9898%5Cu9762%5Cuff1a%5Cu519c%5Cu592b%5Cu7ea6%5Cu7ff0%5Cu6709%5Cu4e00%5Cu4e2a%5Cu89c4%5Cu5219%5Cu7684%5Cu957f%5Cu65b9%5Cu4f53%5Cu5e9f%5Cu6599%5Cu5806%5Cuff0c%5Cu5b83%5Cu662f%5Cu7531%20AxBxC%20%5Cu4e2a%5Cu6709%5Cu4e00%5Cu5b9a%5Cu4ef7%5Cu503c%5Cu7684%5Cu5e9f%5Cu6599%5Cu5757%5Cu7ec4%5Cu6210%5Cu7684%5Cu3002%5Cu5728%5Cu8fd9%5Cu4e9b%5Cu5e9f%5Cu6599%5Cu5757%5Cu5f53%5Cu4e2d%5Cuff0c%5Cu6709%5Cu4e00%5Cu4e9b%5Cu5e9f%5Cu6599%5Cu662f%5Cu65e2%5Cu65e0%5Cu4ef7%5Cu503c%5Cu800c%5Cu4e14%5Cu5bf9%5Cu73af%5Cu5883%5Cu6709%5Cu5371%5Cu5bb3%5Cu3002%5Cn%5Cn%5Cu7ea6%5Cu7ff0%5Cu8ba4%5Cu4e3a%5Cu5728%5Cu8fd9%5Cu4e00%5Cu5806%5Cu5e9f%5Cu6599%5Cu4e2d%5Cu6709%5Cu592a%5Cu591a%5Cu6ca1%5Cu6709%5Cu7528%5Cu7684%5Cu5783%5Cu573e%5Cu5e9f%5Cu6599%5Cu4e86%5Cuff0c%5Cu4e8e%5Cu662f%5Cu4ed6%5Cu60f3%5Cu51cf%5Cu5c0f%5Cu5e9f%5Cu6599%5Cu5806%5Cu7684%5Cu5c3a%5Cu5bf8%5Cuff0c%5Cu6700%5Cu7ec8%5Cu7559%5Cu4e0b%5Cu4e00%5Cu4e2a%5Cu89c4%5Cu5219%5Cu800c%5Cu4e14%5Cu975e%5Cu7a7a%5Cu7684%5Cu5e73%5Cu884c%5Cu516d%5Cu9762%5Cu4f53%28%5Cu5b50%5Cu957f%5Cu65b9%5Cu4f53%29%5Cuff0c%5Cu7ea6%5Cu7ff0%5Cu5e0c%5Cu671b%5Cu8fd9%5Cu4e2a%5Cu7559%5Cu4e0b%5Cu7684%5Cu516d%5Cu9762%5Cu4f53%5Cu4e2d%5Cu6240%5Cu6709%5Cu5e9f%5Cu6599%5Cu4ef7%5Cu503c%5Cu4e4b%5Cu548c%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5730%5Cu5927%5Cu3002%5Cu7279%5Cu522b%5Cu5730%5Cuff0c%5Cu5982%5Cu679c%5Cu51cf%5Cu5c0f%5Cu5e9f%5Cu6599%5Cu5806%5Cu5c3a%5Cu5bf8%5Cu4e4b%5Cu540e%5Cu83b7%5Cu5f97%5Cu7684%5Cu5b50%5Cu5e9f%5Cu6599%5Cu5806%5Cu4ef7%5Cu503c%5Cu4e4b%5Cu548c%5Cu8fd8%5Cu4e0d%5Cu5982%5Cu539f%5Cu6765%5Cu7684%5Cu5927%5Cuff0c%5Cu90a3%5Cu4e48%5Cu7ea6%5Cu7ff0%5Cu5c31%5Cu4e0d%5Cu4f1a%5Cu7f29%5Cu5c0f%5Cu8fd9%5Cu4e2a%5Cu5e9f%5Cu6599%5Cu5806%5Cu7684%5Cu5c3a%5Cu5bf8%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4ec5%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff0c%5Cu4ee3%5Cu8868%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7ec4%5Cu6570%5Cuff0c%5Cu5c0f%5Cu4e8e15%5Cu3002%20%5Cu540e%5Cu9762%5Cu662f%5Cu5bf9%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cu7684%5Cu5177%5Cu4f53%5Cu63cf%5Cu8ff0%5Cn%5Cn%28%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu7684%29%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662f%5Cu4e09%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff1aA%2CB%5Cu548cC%5Cuff0c%5Cu5c0f%5Cu4e8e20.%20%5Cu4e0b%5Cu9762%20AxBxC%20%5Cu4e2a%5Cu6570%5Cu5b57%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu516d%5Cu9762%5Cu4f53%5Cuff0c%5Cu5b83%5Cu7684%5Cu63cf%5Cu8ff0%5Cu987a%5Cu5e8f%5Cu662f%5Cu8fd9%5Cu6837%5Cu7684%5Cuff1a%5Cn%5Cn%281%2C1%2C1%29%281%2C1%2C2%29...%281%2C1%2CC%29%5Cn%5Cn%281%2C2%2C1%29...%281%2C2%2CC%29%5Cn%5Cn....%5Cn%5Cn%281%2CB%2CC%29%5Cn%5Cn%282%2C1%2C1%29.....%282%2CB%2CC%29......%28A%2CB%2CC%29%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu7ea6%5Cu7ff0%5Cu53ef%5Cu4ee5%5Cu5f97%5Cu5230%5Cu7684%5Cu6700%5Cu5927%5Cu4ef7%5Cu503c%5Cu5b50%5Cu5e9f%5Cu6599%5Cu5806%5Cu7684%5Cu6240%5Cu6709%5Cu5e9f%5Cu6599%5Cu4ef7%5Cu503c%5Cu7684%5Cu548c%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40Mickey_snow%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A181%2C%22totalAccepted%22%3A46%2C%22pid%22%3A%22UVA10755%22%2C%22title%22%3A%22Garbage%20Heap%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A148944%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu65e0%5Cu9650WA%5Cu6c42%5Cu52a9~%22%2C%22forum%22%3A%7B%22id%22%3A21298%2C%22name%22%3A%22UVA10755%20Garbage%20Heap%22%2C%22slug%22%3A%22UVA10755%22%7D%7D%2C%7B%22id%22%3A43324%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A21298%2C%22name%22%3A%22UVA10755%20Garbage%20Heap%22%2C%22slug%22%3A%22UVA10755%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22CF850B%22%2C%22title%22%3A%22Arpa%20and%20a%20list%20of%20numbers%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22UVA1326%22%2C%22title%22%3A%22Jurassic%20Remains%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA10891%22%2C%22title%22%3A%22Game%20of%20Sum%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA11210%22%2C%22title%22%3A%22Chinese%20Mahjong%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA12124%22%2C%22title%22%3A%22Assemble%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Garbage%20Heap%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Garbage Heap</h1>
+<h2>题意翻译</h2>
+<div>题目：废料堆
+题面：农夫约翰有一个规则的长方体废料堆，它是由 AxBxC 个有一定价值的废料块组成的。在这些废料块当中，有一些废料是既无价值而且对环境有危害。
+约翰认为在这一堆废料中有太多没有用的垃圾废料了，于是他想减小废料堆的尺寸，最终留下一个规则而且非空的平行六面体(子长方体)，约翰希望这个留下的六面体中所有废料价值之和尽可能地大。特别地，如果减小废料堆尺寸之后获得的子废料堆价值之和还不如原来的大，那么约翰就不会缩小这个废料堆的尺寸。
+输入格式：
+第一行仅有一个数字，代表测试数据组数，小于15。 后面是对每一组数据的具体描述
+(每组数据的)第一行是三个数字：A,B和C，小于20. 下面 AxBxC 个数字描述了一个六面体，它的描述顺序是这样的：
+(1,1,1)(1,1,2)...(1,1,C)
+(1,2,1)...(1,2,C)
+....
+(1,B,C)
+(2,1,1).....(2,B,C)......(A,B,C)
+输出格式：
+对于每一组测试数据，输出约翰可以得到的最大价值子废料堆的所有废料价值的和。
+感谢@Mickey_snow 提供的翻译</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=19&page=show_problem&problem=1696
+[PDF](https://uva.onlinejudge.org/external/107/p10755.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10755/6a77b0d5ad497dab04d84b562683ab2913559109.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10755/9704fb82893663a1bfee841a3c350922fb2b05aa.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10755/411897275a7cfa8968933b698a8e5ba7761d5db8.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+2 2 2
+-1 2 0 -3 -2 -1 1 5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

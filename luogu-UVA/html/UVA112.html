@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tree Summing - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573452875:vC05b1MOmN2bfX4JCPiZcopuftUAJQGfqAS6SAEurrs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D3%26page%3Dshow_problem%26problem%3D48%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F1%5C%2Fp112.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA112%5C%2Fee9b47e479d70c22d369ddb505af41da0aebc120.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA112%5C%2Fed3ab11220fdaedeaca0d5d0762506623d0211e6.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA112%5C%2F7bc6b3b19fdaeb2394c8263c567feae640a649bc.png%29%22%2C%22samples%22%3A%5B%5B%2222%20%285%284%2811%287%28%29%28%29%29%282%28%29%28%29%29%29%28%29%29%20%288%2813%28%29%28%29%29%284%28%29%281%28%29%28%29%29%29%29%29%5Cn20%20%285%284%2811%287%28%29%28%29%29%282%28%29%28%29%29%29%28%29%29%20%288%2813%28%29%28%29%29%284%28%29%281%28%29%28%29%29%29%29%29%5Cn10%20%283%5Cn%282%20%284%20%28%29%20%28%29%20%29%5Cn%288%20%28%29%20%28%29%20%29%20%29%5Cn%281%20%286%20%28%29%20%28%29%20%29%5Cn%284%20%28%29%20%28%29%20%29%20%29%20%29%5Cn5%20%28%29%22%2C%22yes%5Cnno%5Cnyes%5Cnno%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F112%22%2C%22id%22%3A%22112%22%7D%2C%22translation%22%3A%22%20%20%20%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%20%20%20%20LISP%5Cu662f%5Cu6700%5Cu65e9%5Cu7684%5Cu9ad8%5Cu7ea7%5Cu7a0b%5Cu5e8f%5Cu8bbe%5Cu8ba1%5Cu8bed%5Cu8a00%5Cu4e2d%5Cu7684%5Cu4e00%5Cu79cd%5Cuff0c%5Cu548cFORTRAN%5Cu4e00%5Cu6837%5Cuff0c%5Cu4e5f%5Cu662f%5Cu76ee%5Cu524d%5Cu8fd8%5Cu5728%5Cu4f7f%5Cu7528%5Cu7684%5Cu6700%5Cu8001%5Cu7684%5Cu8bed%5Cu8a00%5Cu4e4b%5Cu4e00%5Cu3002LISP%5Cu4e2d%5Cu4f7f%5Cu7528%5Cu7684%5Cu57fa%5Cu672c%5Cu7684%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cu662f%5Cu5217%5Cu8868%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu7528%5Cu6765%5Cu8868%5Cu793a%5Cu5176%5Cu4ed6%5Cu91cd%5Cu8981%5Cu7684%5Cu6570%5Cu636e%5Cu7ed3%5Cu6784%5Cuff0c%5Cu6bd4%5Cu5982%5Cu6811%5Cu3002%5Cn%20%20%20%20%5Cu672c%5Cu95ee%5Cu9898%5Cu5224%5Cu65ad%5Cu7531LISP%5Cu7684S-%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu8868%5Cu793a%5Cu7684%5Cu4e8c%5Cu53c9%5Cu6811%5Cu662f%5Cu5426%5Cu5177%5Cu6709%5Cu67d0%5Cu9879%5Cu6027%5Cu8d28%5Cu3002%5Cn%20%20%20%20%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu68f5%5Cu6574%5Cu6570%5Cu7684%5Cu4e8c%5Cu53c9%5Cu6811%5Cuff0c%5Cu8bf7%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu5224%5Cu5b9a%5Cu662f%5Cu5426%5Cu5b58%5Cu5728%5Cu8fd9%5Cu6837%5Cu4e00%5Cu6761%5Cu4ece%5Cu6811%5Cu6839%5Cu5230%5Cu6811%5Cu53f6%5Cu7684%5Cu8def%5Cuff0c%5Cu8def%5Cu4e0a%5Cu7684%5Cu7ed3%5Cu70b9%5Cu7684%5Cu603b%5Cu548c%5Cu7b49%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu7279%5Cu5b9a%5Cu7684%5Cu6574%5Cu6570%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5728%5Cu4e0b%5Cu56fe%5Cu6240%5Cu793a%5Cu7684%5Cu6811%5Cu4e2d%5Cu67094%5Cu6761%5Cu4ece%5Cu6811%5Cu6839%5Cu5230%5Cu6811%5Cu53f6%5Cu7684%5Cu8def%5Cuff0c%5Cu8fd9%5Cu4e9b%5Cu8def%5Cu7684%5Cu603b%5Cu548c%5Cu662f27%2C%2022%2C%2026%5Cu548c18%5Cu3002%5Cn%20%20%20%20%5Cu5728%5Cu8f93%5Cu5165%5Cu4e2d%5Cu4e8c%5Cu53c9%5Cu6811%5Cu4ee5LISP%5Cu7684S-%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu8868%5Cu793a%5Cuff0c%5Cu5f62%5Cu5f0f%5Cu5982%5Cu4e0b%5Cu3002%5Cn%20%20%20%20empty%20tree%20%3A%3A%3D%20%28%29%5Cn%20%20%20%20tree%20%3A%3A%3D%20empty%20tree%20%28integer%20tree%20tree%29%5Cn%20%20%20%20%5Cu5728%5Cu4e0a%5Cu56fe%5Cu7ed9%5Cu51fa%5Cu7684%5Cu6811%5Cu7528%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu8868%5Cu793a%5Cu4e3a%285%20%284%20%2811%20%287%20%28%29%20%28%29%29%20%282%20%28%29%20%28%29%29%20%29%20%28%29%29%20%288%20%2813%20%28%29%20%28%29%29%20%284%20%28%29%20%281%20%28%29%20%28%29%29%20%29%20%29%20%29%5Cu3002%5Cn%20%20%20%20%5Cu5728%5Cu8fd9%5Cu4e00%5Cu516c%5Cu5f0f%5Cu4e2d%5Cu6811%5Cu7684%5Cu6240%5Cu6709%5Cu6811%5Cu53f6%5Cu8868%5Cu793a%5Cu5f62%5Cu5f0f%5Cu4e3a%28%5Cu6574%5Cu6570%20%28%29%20%28%29%20%29%20%5Cu3002%5Cn%20%20%20%20%5Cu56e0%5Cu4e3a%5Cu7a7a%5Cu6811%5Cuff08empty%20tree%5Cuff09%5Cu6ca1%5Cu6709%5Cu4ece%5Cu6811%5Cu6839%5Cu5230%5Cu6811%5Cu53f6%5Cu7684%5Cu8def%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu5728%5Cu4e00%5Cu68f5%5Cu7a7a%5Cu6811%5Cu4e2d%5Cu662f%5Cu5426%5Cu5b58%5Cu5728%5Cu4e00%5Cu6761%5Cu8def%5Cu603b%5Cu548c%5Cu7b49%5Cu4e8e%5Cu7279%5Cu5b9a%5Cu7684%5Cu6570%5Cu7684%5Cu67e5%5Cu8be2%5Cu56de%5Cu7b54%5Cu662f%5Cu8d1f%5Cu6570%5Cu3002%5Cn%20%20%20%20%5Cn%20%20%20%20%5Cn%20%20%20%20%5Cu8f93%5Cu5165%5Cn%20%20%20%20%5Cu8f93%5Cu5165%5Cu5305%5Cu542b%5Cu4e00%5Cu7cfb%5Cu5217%5Cu7684%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cu5f62%5Cu5f0f%5Cu4e3a%5Cu6574%5Cu6570%5C%2F%5Cu6811%5Cuff0c%5Cu7531%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu540e%5Cu9762%5Cu8ddf%5Cu4e00%5Cu4e2a%5Cu6216%5Cu591a%5Cu4e2a%5Cu7a7a%5Cu683c%5Cuff0c%5Cu7136%5Cu540e%5Cu662f%5Cu4e00%5Cu4e2a%5Cu4ee5%5Cu4e0a%5Cu8ff0%5Cu7684S-%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu5f62%5Cu5f0f%5Cu8868%5Cu793a%5Cu4e8c%5Cu53c9%5Cu6811%5Cu3002%5Cu6240%5Cu6709%5Cu4e8c%5Cu53c9%5Cu6811%5Cu7684S-%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu662f%5Cu6709%5Cu6548%5Cu7684%5Cuff0c%5Cu4f46%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu53ef%5Cu80fd%5Cu5360%5Cu636e%5Cu51e0%5Cu884c%5Cuff0c%5Cu4e5f%5Cu53ef%5Cu80fd%5Cu5305%5Cu542b%5Cu82e5%5Cu5e72%5Cu7a7a%5Cu683c%5Cu3002%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu4e2d%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6216%5Cu591a%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cuff0c%5Cu8f93%5Cu5165%5Cu4ee5%5Cu6587%5Cu4ef6%5Cu7ed3%5Cu675f%5Cu7b26%5Cu7ed3%5Cu675f%5Cu3002%5Cn%20%20%20%20%5Cn%20%20%20%20%5Cu8f93%5Cu51fa%5Cn%20%20%20%20%5Cu5bf9%5Cu8f93%5Cu5165%5Cu4e2d%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cuff08%5Cu6574%5Cu6570%5C%2F%5Cu6811%5Cuff09%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu3002%5Cu5bf9%5Cu6bcf%5Cu4e00%5Cu4e2aI%2CT%20%28I%5Cu662f%5Cu6574%5Cu6570%5Cuff0cT%5Cu662f%5Cu6811%29%5Cuff0c%5Cu5982%5Cu679c%5Cu5728T%5Cu4e2d%5Cu5b58%5Cu5728%5Cu4ece%5Cu6839%5Cu5230%5Cu53f6%5Cu7684%5Cu603b%5Cu548c%5Cu662fI%5Cu7684%5Cu8def%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa%5Cu5b57%5Cu7b26%5Cu4e32yes%5Cuff1b%5Cu5982%5Cu679c%5Cu6ca1%5Cu6709%5Cu4ece%5Cu6839%5Cu5230%5Cu53f6%5Cu7684%5Cu603b%5Cu548c%5Cu662fI%5Cu7684%5Cu8def%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa%5Cu5b57%5Cu7b26%5Cu4e32no%5Cu3002%5Cn%20%20%20%20%5Cn%20%20%20%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cn%5Cn%20%20%20%2022%20%285%284%2811%287%28%29%28%29%29%282%28%29%28%29%29%29%28%29%29%20%288%2813%28%29%28%29%29%284%28%29%281%28%29%28%29%29%29%29%29%5Cn%20%20%20%2020%20%285%284%2811%287%28%29%28%29%29%282%28%29%28%29%29%29%28%29%29%20%288%2813%28%29%28%29%29%284%28%29%281%28%29%28%29%29%29%29%29%5Cn%20%20%20%2010%20%283%20%5Cn%20%20%20%20%20%20%20%20%20%282%20%284%20%28%29%20%28%29%20%29%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%288%20%28%29%20%28%29%20%29%20%29%5Cn%20%20%20%20%20%20%20%20%20%281%20%286%20%28%29%20%28%29%20%29%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%284%20%28%29%20%28%29%20%29%20%29%20%29%5Cn%20%20%20%205%20%28%29%5Cn%5Cn%5Cn%20%20%20%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%5Cn%5Cn%20%20%20%20yes%5Cn%20%20%20%20no%5Cn%20%20%20%20yes%5Cn%20%20%20%20no%5Cn%22%2C%22tags%22%3A%5B54%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A29%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22UVA112%22%2C%22title%22%3A%22Tree%20Summing%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A52524%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A18753%2C%22name%22%3A%22UVA112%20Tree%20Summing%22%2C%22slug%22%3A%22UVA112%22%7D%7D%2C%7B%22id%22%3A35091%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A18753%2C%22name%22%3A%22UVA112%20Tree%20Summing%22%2C%22slug%22%3A%22UVA112%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22Tree%20Summing%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>Tree Summing</h1>
+<h2>题意翻译</h2>
+<div> 题目描述
+LISP是最早的高级程序设计语言中的一种，和FORTRAN一样，也是目前还在使用的最老的语言之一。LISP中使用的基本的数据结构是列表，可以用来表示其他重要的数据结构，比如树。
+本问题判断由LISP的S-表达式表示的二叉树是否具有某项性质。
+给出一棵整数的二叉树，请写一个程序判定是否存在这样一条从树根到树叶的路，路上的结点的总和等于一个特定的整数。例如，在下图所示的树中有4条从树根到树叶的路，这些路的总和是27, 22, 26和18。
+在输入中二叉树以LISP的S-表达式表示，形式如下。
+empty tree ::= ()
+tree ::= empty tree (integer tree tree)
+在上图给出的树用表达式表示为(5 (4 (11 (7 () ()) (2 () ()) ) ()) (8 (13 () ()) (4 () (1 () ()) ) ) )。
+在这一公式中树的所有树叶表示形式为(整数 () () ) 。
+因为空树（empty tree）没有从树根到树叶的路，对于在一棵空树中是否存在一条路总和等于特定的数的查询回答是负数。
+输入
+输入包含一系列的测试样例，每个测试用例形式为整数/树，由一个整数，后面跟一个或多个空格，然后是一个以上述的S-表达式形式表示二叉树。所有二叉树的S-表达式是有效的，但表达式可能占据几行，也可能包含若干空格。输入文件中有一个或多个测试用例，输入以文件结束符结束。
+输出
+对输入中每个测试用例（整数/树）输出一行。对每一个I,T (I是整数，T是树)，如果在T中存在从根到叶的总和是I的路，则输出字符串yes；如果没有从根到叶的总和是I的路，则输出字符串no。
+样例输入
+22 (5(4(11(7()())(2()()))()) (8(13()())(4()(1()()))))
+20 (5(4(11(7()())(2()()))()) (8(13()())(4()(1()()))))
+10 (3
+(2 (4 () () )
+(8 () () ) )
+(1 (6 () () )
+(4 () () ) ) )
+5 ()
+样例输出
+yes
+no
+yes
+no
+</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&page=show_problem&problem=48
+[PDF](https://uva.onlinejudge.org/external/1/p112.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA112/ee9b47e479d70c22d369ddb505af41da0aebc120.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA112/ed3ab11220fdaedeaca0d5d0762506623d0211e6.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA112/7bc6b3b19fdaeb2394c8263c567feae640a649bc.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>22 (5(4(11(7()())(2()()))()) (8(13()())(4()(1()()))))
+20 (5(4(11(7()())(2()()))()) (8(13()())(4()(1()()))))
+10 (3
+(2 (4 () () )
+(8 () () ) )
+(1 (6 () () )
+(4 () () ) ) )
+5 ()</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>yes
+no
+yes
+no</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

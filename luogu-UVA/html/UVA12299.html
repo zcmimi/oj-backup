@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>RMQ with Shifts - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573454217:zWzz9/mn22FhNT5uINd+WGd9hHEPk4trI3RUWQkjcqI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D244%26page%3Dshow_problem%26problem%3D3720%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F122%5C%2Fp12299.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12299%5C%2F37429cb2f857aaacd9179cd7577b0be862c9ee08.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12299%5C%2Fe43988da8ae356433fb021e3e8920b9ecef38f7a.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA12299%5C%2F618910b1db9e97e5cb9efc6ffe95d799ebeb4c27.png%29%22%2C%22samples%22%3A%5B%5B%227%205%5Cn6%202%204%208%205%201%204%5Cnquery%283%2C7%29%5Cnshift%282%2C4%2C5%2C7%29%5Cnquery%281%2C4%29%5Cnshift%281%2C2%29%5Cnquery%282%2C2%29%22%2C%221%5Cn4%5Cn6%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F12299%22%2C%22id%22%3A%2212299%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu9762%5Cn%5Cu5728%5Cu4f20%5Cu7edf%5Cu7684RMQ%5Cu95ee%5Cu9898%5Cu4e2d%5Cuff0c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu4e0d%5Cu53d8%5Cu7684%5Cu6570%5Cu7ec4%24A%24%5Cuff0c%5Cu7136%5Cu540e%5Cu9700%5Cu8981%5Cu5bf9%5Cu6bcf%5Cu4e2a%5Cu8be2%5Cu95ee%5Cu533a%5Cu95f4%24%5BL%2CR%5D%24%28L%3C%3DR%29%5Cuff0c%5Cu8f93%5Cu51fa%24min%28A%5Bi%5D%29%24%28L%3C%3Di%3C%3DR%29%5Cu3002%20%20%20%5Cn%5Cu5728%5Cu672c%5Cu9898%5Cu4e2d%5Cuff0c%24A%24%5Cu662f%5Cu53ef%5Cu53d8%5Cu7684%5Cuff1a%5Cu6211%5Cu4eec%5Cu8fd8%5Cu9700%5Cu8981%5Cu652f%5Cu6301%5Cu4e00%5Cu79cd%5Cu8be2%5Cu95ee%5Cu79fb%5Cu52a8%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu5373%24shift%28i_1%2Ci_2%20...%20i_k%29%24%5Cuff0c%5Cu8868%5Cu793a%5Cu628a%5Cu5143%5Cu7d20%24A%5Bi_1%5D%2CA%5Bi_2%5D%20...%20A%5Bi_k%5D%24%5Cu5faa%5Cu73af%5Cu79fb%5Cu52a8%24%281%5C%5Cle%20i_1%3Ci_2%3C...%3Ci_k%5C%5Cle%20n%2Ck%3E1%29%24%5Cuff08%5Cu5c31%5Cu662f%5Cu6bcf%5Cu4e2a%5Cu5143%5Cu7d20%5Cu79fb%5Cu52a8%5Cu5230%5Cu5b83%5Cu5de6%5Cu8fb9%5Cu90a3%5Cu4e2a%5Cu5143%5Cu7d20%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu79fb%5Cu52a8%5Cu5230%5Cu6700%5Cu540e%5Cu4e00%5Cu4e2a%5Cu5143%5Cu7d20%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff09%5Cu3002%20%20%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu51652%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff0cq%5Cuff0c%5Cu7b2c2%5Cu884cn%5Cu4e2a%5Cu4e0d%5Cu8d85%5Cu8fc7100000%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765q%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu683c%5Cu5f0f%5Cu7684%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc730%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu5408%5Cu6cd5%5Cu3002%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2aquery%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu8f93%5Cu51fa%5Cu8303%5Cu56f4%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A131%2C%22totalAccepted%22%3A44%2C%22pid%22%3A%22UVA12299%22%2C%22title%22%3A%22RMQ%20with%20Shifts%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A109193%2C%22title%22%3A%22%5Cu63d0%5Cu4ea4%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A22844%2C%22name%22%3A%22UVA12299%20RMQ%20with%20Shifts%22%2C%22slug%22%3A%22UVA12299%22%7D%7D%2C%7B%22id%22%3A91575%2C%22title%22%3A%22%5Cu8fd9%5Cu9898%5Cu7684shift%5Cu64cd%5Cu4f5c%5Cu662f%5Cu600e%5Cu4e48%5Cu8fdb%5Cu884c%5Cu7684%5Cu554a%22%2C%22forum%22%3A%7B%22id%22%3A22844%2C%22name%22%3A%22UVA12299%20RMQ%20with%20Shifts%22%2C%22slug%22%3A%22UVA12299%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1879%22%2C%22title%22%3A%22%5BUSACO06NOV%5D%5Cu7389%5Cu7c73%5Cu7530Corn%20Fields%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP2713%22%2C%22title%22%3A%22GSS4%20-%20Can%20you%20answer%20these%20queries%20IV%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22UVA11525%22%2C%22title%22%3A%22Permutation%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22P4281%22%2C%22title%22%3A%22%5BAHOI2008%5D%5Cu7d27%5Cu6025%5Cu96c6%5Cu5408%20%5C%2F%20%5Cu805a%5Cu4f1a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1203F1%22%2C%22title%22%3A%22Complete%20the%20Projects%20%28easy%20version%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22RMQ%20with%20Shifts%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>RMQ with Shifts</h1>
+<h2>题意翻译</h2>
+<div>## 题面
+在传统的RMQ问题中，有一个不变的数组$A$，然后需要对每个询问区间$[L,R]$(L<=R)，输出$min(A[i])$(L<=i<=R)。
+在本题中，$A$是可变的：我们还需要支持一种询问移动操作，即$shift(i_1,i_2 ... i_k)$，表示把元素$A[i_1],A[i_2] ... A[i_k]$循环移动$(1\le i_1<i_2<...<i_k\le n,k>1)$（就是每个元素移动到它左边那个元素的位置，第一个元素移动到最后一个元素的位置）。
+## 输入
+第一行输入2个整数n，q，第2行n个不超过100000的正整数，接下来q行每行一个字符串格式的操作，长度不超过30，保证合法。
+## 输出
+对于每个query操作，输出范围最小值。</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=244&page=show_problem&problem=3720
+[PDF](https://uva.onlinejudge.org/external/122/p12299.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12299/37429cb2f857aaacd9179cd7577b0be862c9ee08.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12299/e43988da8ae356433fb021e3e8920b9ecef38f7a.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12299/618910b1db9e97e5cb9efc6ffe95d799ebeb4c27.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 5
+6 2 4 8 5 1 4
+query(3,7)
+shift(2,4,5,7)
+query(1,4)
+shift(1,2)
+query(2,2)</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+4
+6</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

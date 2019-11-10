@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>混合图的欧拉回路 Euler Circuit - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453667:S5GnuJPxKnbltJZ7BZcMsgBhXuCyhl+I8YMMgx8WERk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D19%26page%3Dshow_problem%26problem%3D1676%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F107%5C%2Fp10735.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10735%5C%2Fbaac11a265d4643e23cb695e1fd24ede65b1d9e9.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10735%5C%2Ffbf6338f7db28242d9abbfd0db030c29606a6fb6.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA10735%5C%2F1d5ab4d8d0d1f7b749c59e382e5ca9764f2878d3.png%29%22%2C%22samples%22%3A%5B%5B%222%5Cn6%208%5Cn1%203%20U%5Cn1%204%20U%5Cn2%204%20U%5Cn2%205%20D%5Cn3%204%20D%5Cn4%205%20U%5Cn5%206%20D%5Cn5%206%20U%5Cn4%204%5Cn1%202%20D%5Cn1%204%20D%5Cn2%203%20U%5Cn3%204%20U%22%2C%221%203%204%202%205%206%205%204%201%5CnNo%20euler%20circuit%20exist%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F10735%22%2C%22id%22%3A%2210735%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24T%24%2C%5Cu8868%5Cu793a%5Cu6709%24T%24%5Cu7ec4%5Cu6570%5Cu636e%5Cu3002%5Cn%5Cn%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24%20V%2C%20E%24%5Cu8868%5Cu793a%5Cu70b9%5Cu7684%5Cu6700%5Cu5927%5Cu7f16%5Cu53f7%5Cuff0c%5Cu8fb9%5Cu7684%5Cu4e2a%5Cu6570%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20m%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%20%24u%2C%20v%24%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%20%24c%24%5Cuff0c%5Cu8868%5Cu793a%5Cu70b9u%20%5Cu5230%5Cu70b9%20v%20%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cuff0c%5Cu4e14%20%24c%3D%24%20%5Cu2018%24D%24%5Cu2019%20%5Cu8868%5Cu793a%5Cu4e3a%5Cu5355%5Cu5411%5Cu8fb9%5Cuff0c%24c%3D%20%24%5Cu2018%24U%24%5Cu2019%20%5Cu8868%5Cu793a%5Cu4e3a%5Cu53cc%5Cu5411%5Cu8fb9%5Cu3002%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu5b83%5Cu7684%5Cu6b27%5Cu62c9%5Cu8def%5Cu5f84%5Cu3002%5Cu82e5%5Cu6ca1%5Cu6709%5Cu6b27%5Cu62c9%5Cu8def%5Cu5f84%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu2018%24No%5C%5C%3Beuler%5C%5C%3Bcircuit%5C%5C%3Bexist%24%5Cu2019%28%5Cu4e0d%5Cu5305%5Cu62ec%5Cu5f15%5Cu53f7%5Cuff09%5Cn%5Cn%24Tips%3A%24%5Cu6bcf%5Cu6b21%5Cu8f93%5Cu51fa%5Cu8981%5Cu8f93%5Cu51fa%5Cu4e24%5Cu4e2a%5Cu6362%5Cu884c%5Cn%5Cn%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cuff1a%5Cn%5Ct%5Cn%20%20%20%241%5C%5Cleq%20V%5C%5Cleq%20100%24%20%5Cn%20%20%20%5Cn%20%20%20%241%5C%5Cleq%20E%5C%5Cleq%20500%24%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A163%2C%22totalAccepted%22%3A41%2C%22pid%22%3A%22UVA10735%22%2C%22title%22%3A%22%5Cu6df7%5Cu5408%5Cu56fe%5Cu7684%5Cu6b27%5Cu62c9%5Cu56de%5Cu8def%20Euler%20Circuit%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A162049%2C%22title%22%3A%22%5Cu65b0%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A21278%2C%22name%22%3A%22UVA10735%20%5Cu6df7%5Cu5408%5Cu56fe%5Cu7684%5Cu6b27%5Cu62c9%5Cu56de%5Cu8def%20Euler%20Circuit%22%2C%22slug%22%3A%22UVA10735%22%7D%7D%2C%7B%22id%22%3A151183%2C%22title%22%3A%22%5Cu592a%5Cu5751%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A21278%2C%22name%22%3A%22UVA10735%20%5Cu6df7%5Cu5408%5Cu56fe%5Cu7684%5Cu6b27%5Cu62c9%5Cu56de%5Cu8def%20Euler%20Circuit%22%2C%22slug%22%3A%22UVA10735%22%7D%7D%2C%7B%22id%22%3A37750%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A21278%2C%22name%22%3A%22UVA10735%20%5Cu6df7%5Cu5408%5Cu56fe%5Cu7684%5Cu6b27%5Cu62c9%5Cu56de%5Cu8def%20Euler%20Circuit%22%2C%22slug%22%3A%22UVA10735%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2073%22%2C%22title%22%3A%22%5Cu9001%5Cu82b1%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3281%22%2C%22title%22%3A%22%5BSCOI2013%5D%5Cu6570%5Cu6570%20%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA11624%22%2C%22title%22%3A%22Fire%21%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22P4298%22%2C%22title%22%3A%22%5BCTSC2008%5D%5Cu796d%5Cu7940%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1179C%22%2C%22title%22%3A%22Serge%20and%20Dining%20Room%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu6df7%5Cu5408%5Cu56fe%5Cu7684%5Cu6b27%5Cu62c9%5Cu56de%5Cu8def%20Euler%20Circuit%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>混合图的欧拉回路 Euler Circuit</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+第一行一个整数$T$,表示有$T$组数据。
+每一组数据第一行两个整数$ V, E$表示点的最大编号，边的个数。
+接下来 m 行，每行两个整数 $u, v$一个字符串 $c$，表示点u 到点 v 有一条边，且 $c=$ ‘$D$’ 表示为单向边，$c= $‘$U$’ 表示为双向边。
+对于每一组数据，输出它的欧拉路径。若没有欧拉路径请输出‘$No\;euler\;circuit\;exist$’(不包括引号）
+$Tips:$每次输出要输出两个换行
+## 数据范围：
+$1\leq V\leq 100$
+$1\leq E\leq 500$ </div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=19&page=show_problem&problem=1676
+[PDF](https://uva.onlinejudge.org/external/107/p10735.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10735/baac11a265d4643e23cb695e1fd24ede65b1d9e9.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10735/fbf6338f7db28242d9abbfd0db030c29606a6fb6.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA10735/1d5ab4d8d0d1f7b749c59e382e5ca9764f2878d3.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+6 8
+1 3 U
+1 4 U
+2 4 U
+2 5 D
+3 4 D
+4 5 U
+5 6 D
+5 6 U
+4 4
+1 2 D
+1 4 D
+2 3 U
+3 4 U</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 3 4 2 5 6 5 4 1
+No euler circuit exist</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

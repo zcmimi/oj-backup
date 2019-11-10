@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>最短飞行路径 Shortest Flight Path - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573453263:zWUbBYGoBHefMl5Mz2dF+EMkwoWEv17nqMoyttcCrKQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D247%26page%3Dshow_problem%26problem%3D3901%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F12%5C%2Fp1288.pdf%29%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B30000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F1288%22%2C%22id%22%3A%221288%22%7D%2C%22translation%22%3A%22%5Cu5546%5Cu4e1a%5Cu822a%5Cu73ed%5Cu5728%5Cu7edf%5Cu8ba1%5Cu5b66%5Cu610f%5Cu4e49%5Cu4e0a%5Cu5f88%5Cu5b89%5Cu5168%5Cuff08%5Cu8003%5Cu8651%5Cu5230%5Cu6b7b%5Cu4ea1%5Cu4eba%5Cu6570%5C%2F%28%5Cu4e58%5Cu5ba2%2A%5Cu516c%5Cu91cc%5Cu6570%29%5Cuff0c%5Cu53ea%5Cu6709%5Cu53bb%5Cu6708%5Cu7403%5Cu6bd4%5Cu5546%5Cu4e1a%5Cu822a%5Cu73ed%5Cu66f4%5Cu5b89%5Cu5168%5Cuff09%5Cuff0c%5Cu4f46%5Cu662f%5Cu5b89%5Cu5168%5Cu89c4%5Cu5b9a%5Cu548c%5Cu4e8b%5Cu6545%5Cu9884%5Cu9632%5Cu4ecd%5Cu7136%5Cu662f%5Cu6709%5Cu5176%5Cu539f%5Cu56e0%5Cu7684%5Cu3002%5Cu4e00%5Cu6761%5Cu8f83%5Cu65e9%5Cu7684%5Cu89c4%5Cu5b9a%5Cu662f%5Cu6240%5Cu8c13%5Cu7684%5Cu201c60%5Cu5206%5Cu949f%5Cu539f%5Cu5219%5Cu201d%5Cuff0c%5Cu8981%5Cu6c42%5Cu53cc%5Cu5f15%5Cu64ce%5Cu98de%5Cu673a%5Cu5728%5Cu98de%5Cu884c%5Cu5168%5Cu7a0b%5Cu4e2d%5Cu4efb%5Cu4f55%5Cu65f6%5Cu523b%5Cu79bb%5Cu6700%5Cu8fd1%5Cu7684%5Cu673a%5Cu573a%5Cu8ddd%5Cu79bb%5Cu4e0d%5Cu5f97%5Cu8d85%5Cu8fc760%5Cu5206%5Cu949f%5Cu8def%5Cu7a0b%5Cu3002%5Cu8fd8%5Cu6709%5Cu8bb8%5Cu591a%5Cu7c7b%5Cu4f3c%5Cu7684%5Cu539f%5Cu5219%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu4eec%5Cu5728%5Cu6838%5Cu5fc3%5Cu95ee%5Cu9898%5Cu4e0a%5Cu662f%5Cu4e00%5Cu81f4%5Cu7684%5Cuff1a%2A%2A%5Cu5728%5Cu822a%5Cu7ebf%5Cu4e0a%5Cu4efb%5Cu4f55%5Cu4e00%5Cu70b9%5Cuff0c%5Cu98de%5Cu673a%5Cu4e0e%5Cu6700%5Cu8fd1%5Cu7684%5Cu673a%5Cu573a%5Cu7684%5Cu8ddd%5Cu79bb%5Cu4e0d%5Cu5f97%5Cu8d85%5Cu8fc7%5Cu4e00%5Cu4e2a%5Cu7ed9%5Cu5b9a%5Cu503c%2A%2A%5Cu3002%5Cu5728%5Cu8fd9%5Cu4e9b%5Cu89c4%5Cu5b9a%5Cu7684%5Cu9650%5Cu5236%5Cu4e0b%5Cuff0c%5Cu98de%5Cu673a%5Cu5728%5Cu4e24%5Cu673a%5Cu573a%5Cu95f4%5Cu98de%5Cu884c%5Cu65f6%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu80fd%5Cu76f4%5Cu8fbe%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu8fd9%5Cu9053%5Cu9898%5Cu76ee%5Cu4e2d%5Cuff0c%5Cu6211%5Cu4eec%5Cu5c06%5Cu8ba1%5Cu7b97%5Cu8003%5Cu8651%5Cu4e86%5Cu201c%5Cu6700%5Cu8fdc%5Cu8ddd%5Cu79bb%5Cu89c4%5Cu5b9a%5Cu201d%5Cu60c5%5Cu51b5%5Cu4e0b%5Cu4e24%5Cu673a%5Cu573a%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6700%5Cu77ed%5Cu98de%5Cu884c%5Cu8def%5Cu7a0b%5Cu3002%5Cu4e0b%5Cu56fe%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu4e00%5Cu4e2a%5Cu6837%5Cu4f8b%5Cuff1a%5Cu4efb%5Cu4f55%5Cu822a%5Cu7ebf%5Cu90fd%5Cu4e0d%5Cu80fd%5Cu8d85%5Cu51fa%5Cu4e09%5Cu4e2a%5Cu5706%5Cu7684%5Cu5e76%5Cu96c6%5Cuff0c%5Cu56e0%5Cu6b64%5Cu4ece2%5Cu673a%5Cu573a%5Cu98de%5Cu5f803%5Cu673a%5Cu573a%5Cu7684%5Cu98de%5Cu673a%5Cu5fc5%5Cu987b%5Cu7ed5%5Cu884c1%5Cu673a%5Cu573a%5Cu9644%5Cu8fd1%5Cu7684%5Cu7a7a%5Cu57df%5Cu3002%5Cu6ce8%5Cu610f%5Cuff1a%5Cu98de%5Cu673a%5Cu672c%5Cu8eab%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu8981%5Cu964d%5Cu843d%5Cu57281%5Cu673a%5Cu573a%5Cu3002%5Cr%5Cn%21%5B%5Cu539f%5Cu9898%5Cu56fe%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.org%5C%2Fupload%5C%2Fpic%5C%2F61797.png%20%29%5Cr%5Cn%5Cu98de%5Cu884c%5Cu8fc7%5Cu7a0b%5Cu8fd8%5Cu53d7%5Cu5230%5Cu98de%5Cu673a%5Cu7684%5Cu71c3%5Cu6599%5Cu5bb9%5Cu91cf%5Cu9650%5Cu5236%5Cuff1a%5Cu5982%5Cu679c%5Cu8981%5Cu957f%5Cu8ddd%5Cu79bb%5Cu98de%5Cu884c%5Cuff0c%5Cu98de%5Cu673a%5Cu8fd8%5Cu53ef%5Cu80fd%5Cu5728%5Cu67d0%5Cu4e9b%5Cu673a%5Cu573a%5Cu4e2d%5Cu8f6c%5Cu52a0%5Cu6cb9%5Cu3002%5Cu56e0%5Cu6b64%5Cu7531%5Cu4e8e%5Cu71c3%5Cu6599%5Cu5bb9%5Cu91cf%5Cu7684%5Cu9650%5Cu5236%5Cuff0c%5Cu4ece2%5Cu98de%5Cu5f803%5Cu7684%5Cu98de%5Cu673a%5Cu53ef%5Cu80fd%5Cu9700%5Cu8981%5Cu57281%5Cu673a%5Cu573a%5Cu4e2d%5Cu8f6c%5Cuff08%5Cu4e5f%5Cu5b58%5Cu5728%5Cu4e00%5Cu79cd%5Cu53ef%5Cu80fd%5Cu5373%5Cu98de%5Cu673a%5Cu7684%5Cu71c3%5Cu6599%5Cu751a%5Cu81f3%5Cu4e0d%5Cu8db3%5Cu4ee5%5Cu4f7f%5Cu5176%5Cu4ece2%5Cu98de%5Cu5f801%5Cuff0c%5Cu90a3%5Cu4e48%5Cu8be5%5Cu822a%5Cu73ed%5Cu65e0%5Cu6cd5%5Cu5f00%5Cu901a%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn------------%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu505a%5Cu51fa%5Cu5982%5Cu4e0b%5Cu7b80%5Cu5316%5Cu7684%5Cu5047%5Cu8bbe%5Cuff1a%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu2460%5Cu5730%5Cu7403%5Cu8868%5Cu9762%5Cu662f%5Cu4e00%5Cu4e2a%5Cu534a%5Cu5f846370km%5Cu7684%5Cu7403%5Cu9762%5Cu3002%2A%2A%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu2461%5Cu65f6%5Cu95f4%5Cu548c%5Cu71c3%5Cu6599%5Cu7684%5Cu6d88%5Cu8017%5Cu4e0e%5Cu98de%5Cu884c%5Cu8def%5Cu7a0b%5Cu6210%5Cu6b63%5Cu6bd4%5Cuff0c%5Cu6362%5Cu8a00%5Cu4e4b%5Cuff0c%5Cu6211%5Cu4eec%5Cu53ea%5Cu5173%5Cu5fc3%5Cu603b%5Cu98de%5Cu884c%5Cu8def%5Cu7a0b%5Cu3002%2A%2A%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu2462%5Cu4e0d%5Cu8003%5Cu8651%5Cu98de%5Cu884c%5Cu9ad8%5Cu5ea6%5Cu5bf9%5Cu8ddd%5Cu79bb%5Cu7684%5Cu5f71%5Cu54cd%5Cuff0c%5Cu56e0%5Cu6b64%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu8ba4%5Cu4e3a%5Cu98de%5Cu673a%5Cu5728%5Cu8d34%5Cu5730%5Cu98de%5Cu884c%5Cu3002%2A%2A%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu2463%5Cu98de%5Cu673a%5Cu53ef%5Cu4ee5%5Cu5728%5Cu9014%5Cu4e2d%5Cu65e0%5Cu9650%5Cu6b21%5Cu4e2d%5Cu8f6c%5Cu52a0%5Cu6cb9%5Cuff0c%5Cu6bcf%5Cu6b21%5Cu4e2d%5Cu8f6c%5Cu540e%5Cu6cb9%5Cu7bb1%5Cu90fd%5Cu4f1a%5Cu52a0%5Cu6ee1%5Cu3002%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn------------%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570N%5Cu548cR%5Cuff0cN%5Cu4ee3%5Cu8868%5Cu673a%5Cu573a%5Cu6570%5Cu76ee%282%3C%3DN%3C%3D25%29%5Cuff0cR%5Cu8868%5Cu793a%5Cu4e0e%5Cu6700%5Cu8fd1%5Cu673a%5Cu573a%5Cu7684%5Cu8ddd%5Cu79bb%5Cu7684%5Cu6700%5Cu5927%5Cu503c%281%3C%3DR%3C%3D10000%2C%5Cu5355%5Cu4f4d%5Cu4e3akm%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4ee5%5Cu4e0bN%5Cu884c%5Cu6bcf%5Cu884c%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu03a6%5Cu548c%5Cu03b8%5Cuff0c%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu673a%5Cu573a%5Cu7ecf%5Cu7eac%5Cu5ea6%280%3C%3D%5Cu03a6%3C360%2C%20-90%3C%3D%5Cu03b8%3C%3D90%2C%5Cu5355%5Cu4f4d%5Cu5747%5Cu4e3a%5Cu5ea6%29%5Cu3002%5Cu673a%5Cu573a%5Cu6309%5Cu7167%5Cu8f93%5Cu5165%5Cu987a%5Cu5e8f%5Cu7f16%5Cu53f7%5Cuff0c%5Cu4e24%5Cu673a%5Cu573a%5Cu4e0d%5Cu4f1a%5Cu51fa%5Cu73b0%5Cu5728%5Cu5728%5Cu540c%5Cu4e00%5Cu4f4d%5Cu7f6e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4e0b%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e3a%5Cu6574%5Cu6570Q%281%3C%3DQ%3C%3D100%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765Q%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570s%2C%20t%2C%20c%5Cuff0c%5Cu8868%5Cu793a%5Cu4e00%5Cu67b6%5Cu98de%5Cu673a%5Cu4eces%5Cu98de%5Cu5f80t%5Cuff0c%5Cu71c3%5Cu6599%5Cu5bb9%5Cu91cf%5Cu9650%5Cu5236%5Cu4e3ac%281%3C%3Ds%2C%20t%20%3C%3DN%2C%20s%5Cu2260t%2C%201%3C%3Dc%3C%3D50000%2Cc%5Cu7684%5Cu5355%5Cu4f4d%5Cu4e3akm%29%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cuff0c%5Cu8f93%5Cu51fa%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu5e8f%5Cu53f7%5Cu548c%5Cu8be5%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu6240%5Cu6c42%5Cu7684s%5Cu548ct%5Cu673a%5Cu573a%5Cu95f4%5Cu7684%5Cu53d7%5Cu5230%5Cu71c3%5Cu6cb9%5Cu5bb9%5Cu91cfc%5Cu9650%5Cu5236%5Cu4e0b%5Cu7684%5Cu6700%5Cu77ed%5Cu98de%5Cu884c%5Cu8ddd%5Cu79bb%5Cuff0c%5Cu4fdd%5Cu7559%5Cu4e09%5Cu4f4d%5Cu5c0f%5Cu6570%5Cu3002%5Cu5982%5Cu679c%5Cu822a%5Cu73ed%5Cu65e0%5Cu6cd5%5Cu5f00%5Cu901a%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa%5C%22impossible%5C%22%5Cu3002%5Cr%5Cn%5Cr%5CnR%5Cu548cc%5Cu4fdd%5Cu7559%5Cu81f3%5Cu5c0f%5Cu6570%5Cu70b9%5Cu540e%5Cu4e00%5Cu4f4d%5Cu5373%5Cu53ef%5Cu6ee1%5Cu8db3%5Cu7cbe%5Cu5ea6%5Cu8981%5Cu6c42%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cuff1a%5Cr%5Cn%5Cr%5Cn3%202000%5Cr%5Cn%5Cr%5Cn0%200%5Cr%5Cn%5Cr%5Cn0%2030%5Cr%5Cn%5Cr%5Cn30%200%5Cr%5Cn%5Cr%5Cn3%5Cr%5Cn%5Cr%5Cn2%203%205000%5Cr%5Cn%5Cr%5Cn2%203%204000%5Cr%5Cn%5Cr%5Cn2%203%203000%5Cr%5Cn%5Cr%5Cn2%2010000%5Cr%5Cn%5Cr%5Cn45%2045%5Cr%5Cn%5Cr%5Cn225%20-45%5Cr%5Cn%5Cr%5Cn2%5Cr%5Cn%5Cr%5Cn1%202%2050000%5Cr%5Cn%5Cr%5Cn2%201%2050000%5Cr%5Cn%5Cr%5Cn%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%5Cuff1a%5Cr%5Cn%5Cr%5CnCase%201%3A%20%5Cr%5Cn%5Cr%5Cn4724.686%5Cr%5Cn%5Cr%5Cn6670.648%5Cr%5Cn%5Cr%5Cnimpossible%5Cr%5Cn%5Cr%5CnCase%202%3A%5Cr%5Cn%5Cr%5Cnimpossible%5Cr%5Cn%5Cr%5Cnimpossible%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22UVA1288%22%2C%22title%22%3A%22%5Cu6700%5Cu77ed%5Cu98de%5Cu884c%5Cu8def%5Cu5f84%20Shortest%20Flight%20Path%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu6700%5Cu77ed%5Cu98de%5Cu884c%5Cu8def%5Cu5f84%20Shortest%20Flight%20Path%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>最短飞行路径 Shortest Flight Path</h1>
+<h2>题意翻译</h2>
+<div>商业航班在统计学意义上很安全（考虑到死亡人数/(乘客*公里数)，只有去月球比商业航班更安全），但是安全规定和事故预防仍然是有其原因的。一条较早的规定是所谓的“60分钟原则”，要求双引擎飞机在飞行全程中任何时刻离最近的机场距离不得超过60分钟路程。还有许多类似的原则，但他们在核心问题上是一致的：**在航线上任何一点，飞机与最近的机场的距离不得超过一个给定值**。在这些规定的限制下，飞机在两机场间飞行时不一定能直达。
+在这道题目中，我们将计算考虑了“最远距离规定”情况下两机场之间的最短飞行路程。下图描述了一个样例：任何航线都不能超出三个圆的并集，因此从2机场飞往3机场的飞机必须绕行1机场附近的空域。注意：飞机本身不一定要降落在1机场。
+![原题图](https://cdn.luogu.org/upload/pic/61797.png )
+飞行过程还受到飞机的燃料容量限制：如果要长距离飞行，飞机还可能在某些机场中转加油。因此由于燃料容量的限制，从2飞往3的飞机可能需要在1机场中转（也存在一种可能即飞机的燃料甚至不足以使其从2飞往1，那么该航班无法开通）。
+------------
+我们做出如下简化的假设：
+**①地球表面是一个半径6370km的球面。**
+**②时间和燃料的消耗与飞行路程成正比，换言之，我们只关心总飞行路程。**
+**③不考虑飞行高度对距离的影响，因此你可以认为飞机在贴地飞行。**
+**④飞机可以在途中无限次中转加油，每次中转后油箱都会加满。**
+------------
+输入：
+第一行输入包含两个正整数N和R，N代表机场数目(2<=N<=25)，R表示与最近机场的距离的最大值(1<=R<=10000,单位为km)。
+以下N行每行有两个整数Φ和θ，分别表示机场经纬度(0<=Φ<360, -90<=θ<=90,单位均为度)。机场按照输入顺序编号，两机场不会出现在在同一位置。
+下一行输入为整数Q(1<=Q<=100)。
+接下来Q行每行包含三个整数s, t, c，表示一架飞机从s飞往t，燃料容量限制为c(1<=s, t <=N, s≠t, 1<=c<=50000,c的单位为km)。
+输出：
+对每个测试点，输出测试点序号和该测试点所求的s和t机场间的受到燃油容量c限制下的最短飞行距离，保留三位小数。如果航班无法开通，则输出"impossible"。
+R和c保留至小数点后一位即可满足精度要求。
+样例输入：
+3 2000
+0 0
+0 30
+30 0
+3
+2 3 5000
+2 3 4000
+2 3 3000
+2 10000
+45 45
+225 -45
+2
+1 2 50000
+2 1 50000
+样例输出：
+Case 1:
+4724.686
+6670.648
+impossible
+Case 2:
+impossible
+impossible</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=247&page=show_problem&problem=3901
+[PDF](https://uva.onlinejudge.org/external/12/p1288.pdf)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

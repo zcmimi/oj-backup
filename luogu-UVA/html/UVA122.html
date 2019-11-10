@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>树的层次遍历 Trees on the level - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573452878:PKglWolx2vhMnGecTEAMsEfRkpmRBUgZo3nLvSaZOlE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%5BproblemUrl%5D%3A%20https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Findex.php%3Foption%3Dcom_onlinejudge%26Itemid%3D8%26category%3D3%26page%3Dshow_problem%26problem%3D58%5Cn%5Cn%5BPDF%5D%28https%3A%5C%2F%5C%2Fuva.onlinejudge.org%5C%2Fexternal%5C%2F1%5C%2Fp122.pdf%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA122%5C%2F48e7a300b4328a6d2356bcc7ffb161614aeffdaf.png%29%22%2C%22inputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA122%5C%2F76f797fa1f7d6cb07ba57437f351e926b6ed7153.png%29%22%2C%22outputFormat%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FUVA122%5C%2F47734b0a2c1f2f81227113f544ba6bd871275ffe.png%29%22%2C%22samples%22%3A%5B%5B%22%2811%2CLL%29%20%287%2CLLL%29%20%288%2CR%29%5Cn%285%2C%29%20%284%2CL%29%20%2813%2CRL%29%20%282%2CLLR%29%20%281%2CRRR%29%20%284%2CRR%29%20%28%29%5Cn%283%2CL%29%20%284%2CR%29%20%28%29%22%2C%225%204%208%2011%2013%204%207%202%201%5Cnnot%20complete%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B0%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22UVA%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fuva%5C%2F122%22%2C%22id%22%3A%22122%22%7D%2C%22translation%22%3A%22%5Cu6811%5Cu72b6%5Cu7ed3%5Cu6784%5Cu5728%5Cu7535%5Cu8111%5Cu79d1%5Cu5b66%5Cu7684%5Cu8bb8%5Cu591a%5Cu9886%5Cu57df%5Cu4e2d%5Cu90fd%5Cu76f8%5Cu5f53%5Cu91cd%5Cu8981%5Cu3002%5Cu672c%5Cu95ee%5Cu9898%5Cu7275%5Cu6d89%5Cu5230%5Cu5efa%5Cu7acb%5Cu6811%5Cu53ca%5Cu8d70%5Cu8bbf%5Cu6811%5Cu3002%5Cn%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e8c%5Cu5143%5Cu6811%5Cuff0c%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5f0f%5Cu6765%5Cu5217%5Cu5370%5Cu4f9d%5Cu300c%5Cu9636%5Cu5c42%5Cuff08level-order%5Cuff09%5Cu300d%5Cu8d70%5Cu8bbf%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%5Cu5728%5Cu672c%5Cu95ee%5Cu9898%5Cu4e2d%5Cuff0c%5Cu4e8c%5Cu5143%5Cu6811%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu542b%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu5e76%5Cu4e14%5Cu8282%5Cu70b9%5Cu7684%5Cu6570%5Cu76ee%5Cu6700%5Cu5c111%5Cu4e2a%5Cuff0c%5Cu6700%5Cu591a256%5Cu4e2a%5Cu3002%5Cn%5Cn%5Cu5728%5Cu300c%5Cu9636%5Cu5c42%5Cu300d%5Cu8d70%5Cu8bbf%5Cu4e2d%5Cuff0c%5Cu4f9d%5Cu9636%5Cu5c42%5Cu4ece%5Cu4f4e%5Cu5230%5Cu9ad8%5Cuff0c%5Cu540c%5Cu9636%5Cu5c42%5Cu4ece%5Cu5de6%5Cu5230%5Cu53f3%5Cu7684%5Cu6b21%5Cu5e8f%5Cu6765%5Cu5217%5Cu5370%5Cu3002%5Cu4f8b%5Cu5982%5Cu4ee5%5Cu4e0b%5Cu7684%5Cu4e8c%5Cu5143%5Cu6811%5Cu9636%5Cu5c42%5Cu8d70%5Cu8bbf%5Cu7684%5Cu7ed3%5Cu679c%5Cu4e3a%5Cuff1a5%2C%204%2C%208%2C%2011%2C%2013%2C%204%2C%207%2C%202%2C%201%5Cn%5Cn%5Cu5728%5Cu672c%5Cu95ee%5Cu9898%5Cu4e2d%5Cuff0c%5Cu4e8c%5Cu5143%5Cu6811%5Cu4ee5%5Cu8282%5Cu70b9%5Cu6765%5Cu8868%5Cu793a%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu4ee5%5Cu4e00%5Cu5bf9%28n%2Cs%29%5Cu6765%5Cu8868%5Cu793a%5Cu3002n%5Cu4ee3%5Cu8868%5Cu6b64%5Cu8282%5Cu70b9%5Cu7684%5Cu503c%5Cuff0cs%5Cu4e3a%5Cu4e00%5Cu5b57%5Cu4e32%5Cuff0c%5Cu4ee3%5Cu8868%5Cu4ece%5Cu6839%5Cu8282%5Cu70b9%5Cu5230%5Cu8fbe%5Cu6b64%5Cu8282%5Cu70b9%5Cu7684%5Cu8def%5Cu5f84%5Cu3002%5Cu5176%5Cu4e2dL%5Cu4ee3%5Cu8868%5Cu5f80%5Cu5de6%5Cuff0cR%5Cu4ee3%5Cu8868%5Cu5f80%5Cu53f3%5Cu3002%5Cu6240%5Cu4ee5%5Cu5728%5Cu4e0a%5Cu65b9%5Cu7684%5Cu56fe%5Cu4e2d%5Cu5185%5Cu5bb9%5Cu4e3a13%5Cu7684%5Cu8282%5Cu70b9%5Cu5176%5Cu8868%5Cu793a%5Cu6cd5%5Cu4e3a%2813%2CRL%29%5Cuff0c%5Cu800c%5Cu5185%5Cu5bb9%5Cu4e3a2%5Cu7684%5Cu8282%5Cu70b9%5Cu5176%5Cu8868%5Cu793a%5Cu6cd5%5Cu4e3a%282%2CLLR%29%5Cuff0c%5Cu800c%5Cu6839%5Cu8282%5Cu70b9%5Cu4e3a%285%2C%29%5Cu3002%5Cn%5CnInput%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu542b%5Cu6709%5Cu591a%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu8d44%5Cu6599%5Cu3002%5Cu6bcf%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu8d44%5Cu6599%5Cu4e3a%5Cu82e5%5Cu5e72%5Cu8282%5Cu70b9%5Cu7684%5Cu96c6%5Cu5408%5Cu3002%5Cu5404%5Cu8282%5Cu70b9%5Cu95f4%5Cu4ee5white%20space%5Cuff08%5Cu5305%5Cu542b%5Cu7a7a%5Cu767d%5Cu3001%5Cu6362%5Cu5217%5Cu7b49%5Cu5b57%5Cu5143%5Cuff09%5Cu5206%5Cu9694%5Cu3002%5Cu6ce8%5Cu610f%5Cuff1a%5Cu5728%5Cu5404%5Cu8282%5Cu70b9%5Cu5185%5Cuff08%5Cu4e5f%5Cu5c31%5Cu662f%5Cu5de6%5Cu522e%5Cu53f7%5Cu5230%5Cu53c8%5Cu522e%5Cu53f7%5Cu4e4b%5Cu95f4%5Cuff09%5Cu4e0d%5Cu4f1a%5Cu6709white%20space%5Cu3002%5Cu5f53%5Cu9047%5Cu5230%5Cu4e00%28%29%5Cu7684%5Cu8282%5Cu70b9%5Cuff0c%5Cu4ee3%5Cu8868%5Cu8be5%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu8d44%5Cu6599%5Cu7ed3%5Cu675f%5Cu3002%5Cu8bf7%5Cu53c2%5Cu8003Sample%20Input%5Cu3002%5Cn%5CnOutput%5Cn%5Cn%5Cu5bf9%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu8d44%5Cu6599%5Cuff0c%5Cu5982%5Cu679c%5Cu8f93%5Cu5165%5Cu7684%5Cu8282%5Cu70b9%5Cu53ef%5Cu4ee5%5Cu6b63%5Cu5e38%5Cu7684%5Cu6784%5Cu6210%5Cu4e00%5Cu4e8c%5Cu5143%5Cu6811%5Cu7684%5Cu8bdd%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5Cu6309%5Cu300c%5Cu9636%5Cu5c42%5Cu300d%5Cu8d70%5Cu8bbf%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%5Cu5982%5Cu679c%5Cu8f93%5Cu5165%5Cu7684%5Cu8282%5Cu70b9%5Cu65e0%5Cu6cd5%5Cu6b63%5Cu5e38%5Cu7684%5Cu6784%5Cu6210%5Cu4e00%5Cu4e8c%5Cu5143%5Cu6811%5Cu7684%5Cu8bdd%5Cuff0c%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cu6709%5Cu67d0%5Cu4e9b%5Cu8be5%5Cu6709%5Cu7684%5Cu8282%5Cu70b9%5Cu6ca1%5Cu6709%5Cu7ed9%5Cuff0c%5Cu6216%5Cu91cd%5Cu8907%5Cu7ed9%5Cuff08%5Cu540c%5Cu4e00%5Cu8def%5Cu5f84%5Cu67092%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff09%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fanot%20complete%5Cu3002%5Cu8bf7%5Cu53c2%5Cu8003Sample%20Output%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%5Cu539f%5Cu7ffb%5Cu8bd1%5Cu8005%3Alucky%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A679%2C%22totalAccepted%22%3A205%2C%22pid%22%3A%22UVA122%22%2C%22title%22%3A%22%5Cu6811%5Cu7684%5Cu5c42%5Cu6b21%5Cu904d%5Cu5386%20Trees%20on%20the%20level%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22UVA%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A107457%2C%22title%22%3A%22%5Cu95ee%5Cu4e2a%5Cu95ee%5Cu9898%22%2C%22forum%22%3A%7B%22id%22%3A18763%2C%22name%22%3A%22UVA122%20%5Cu6811%5Cu7684%5Cu5c42%5Cu6b21%5Cu904d%5Cu5386%20Trees%20on%20the%20level%22%2C%22slug%22%3A%22UVA122%22%7D%7D%2C%7B%22id%22%3A35223%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A18763%2C%22name%22%3A%22UVA122%20%5Cu6811%5Cu7684%5Cu5c42%5Cu6b21%5Cu904d%5Cu5386%20Trees%20on%20the%20level%22%2C%22slug%22%3A%22UVA122%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22UVA297%22%2C%22title%22%3A%22%5Cu56db%5Cu5206%5Cu6811%20Quadtrees%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA548%22%2C%22title%22%3A%22%5Cu6811%20Tree%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA572%22%2C%22title%22%3A%22%5Cu6cb9%5Cu7530%20Oil%20Deposits%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA699%22%2C%22title%22%3A%22%5Cu4e0b%5Cu843d%5Cu7684%5Cu6811%5Cu53f6%20The%20Falling%20Leaves%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%2C%7B%22pid%22%3A%22UVA839%22%2C%22title%22%3A%22%5Cu5929%5Cu5e73%20Not%20so%20Mobile%22%2C%22difficulty%22%3A3%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22%5Cu6811%5Cu7684%5Cu5c42%5Cu6b21%5Cu904d%5Cu5386%20Trees%20on%20the%20level%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>树的层次遍历 Trees on the level</h1>
+<h2>题意翻译</h2>
+<div>树状结构在电脑科学的许多领域中都相当重要。本问题牵涉到建立树及走访树。
+给你一二元树，你的任务是写一个程式来列印依「阶层（level-order）」走访的结果。在本问题中，二元树的每个节点含有一个正整数，并且节点的数目最少1个，最多256个。
+在「阶层」走访中，依阶层从低到高，同阶层从左到右的次序来列印。例如以下的二元树阶层走访的结果为：5, 4, 8, 11, 13, 4, 7, 2, 1
+在本问题中，二元树以节点来表示。每个节点以一对(n,s)来表示。n代表此节点的值，s为一字串，代表从根节点到达此节点的路径。其中L代表往左，R代表往右。所以在上方的图中内容为13的节点其表示法为(13,RL)，而内容为2的节点其表示法为(2,LLR)，而根节点为(5,)。
+Input
+输入含有多组测试资料。每组测试资料为若干节点的集合。各节点间以white space（包含空白、换列等字元）分隔。注意：在各节点内（也就是左刮号到又刮号之间）不会有white space。当遇到一()的节点，代表该组测试资料结束。请参考Sample Input。
+Output
+对每一组测试资料，如果输入的节点可以正常的构成一二元树的话，请输出按「阶层」走访的结果。如果输入的节点无法正常的构成一二元树的话，也就是说有某些该有的节点没有给，或重複给（同一路径有2个节点），请输出not complete。请参考Sample Output。
+感谢原翻译者:lucky</div>
+<h2>题目描述</h2>
+<div>[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&page=show_problem&problem=58
+[PDF](https://uva.onlinejudge.org/external/1/p122.pdf)
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA122/48e7a300b4328a6d2356bcc7ffb161614aeffdaf.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA122/76f797fa1f7d6cb07ba57437f351e926b6ed7153.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA122/47734b0a2c1f2f81227113f544ba6bd871275ffe.png)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>(11,LL) (7,LLL) (8,R)
+(5,) (4,L) (13,RL) (2,LLR) (1,RRR) (4,RR) ()
+(3,L) (4,R) ()</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5 4 8 11 13 4 7 2 1
+not complete</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>
