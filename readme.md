@@ -5,7 +5,8 @@
 已经爬取的有：
 
 1. luogu题库
-2. luogu-CF题库
+2. luogu-CodeForces题库
+3. luogu-SPOJ题库
 
 会定期重新爬取，并更新
 
