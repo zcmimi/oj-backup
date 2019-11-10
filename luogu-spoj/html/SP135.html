@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MAWORK - Men at work - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449536:zLLC76Urw6jtAUlEtHWeJjR0O0kVvthtYshGZytKnBE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Every%20morning%20you%20have%20to%20drive%20to%20your%20workplace.%20Unfortunately%2C%20roads%20are%20under%20constant%20repair.%20Fortunately%2C%20administration%20is%20aware%20that%20this%20may%20cause%20trouble%20and%20they%20enforce%20a%20strict%20rule%20on%20roadblocks%3A%20roads%20must%20be%20blocked%20only%20half%20of%20the%20time.%20However%2C%20contractors%20are%20free%20to%20schedule%20their%20working%20hours%2C%20still%20they%20must%20follow%20regulations%3A%5Cn%5Cn-%20Working%20periods%20%28when%20the%20road%20is%20blocked%29%20and%20rest%20periods%20%28when%20the%20road%20is%20open%29%20must%20alternate%20and%20be%20of%20fixed%20length.%5Cn-%20The%20beginning%20of%20the%20day%20%28time%20zero%29%20must%20coincide%20with%20the%20beginning%20of%20a%20period.%5Cn%5Cn%20Write%20a%20program%20that%2C%20given%20a%20description%20of%20the%20road%20network%20and%20of%20contractors%20schedules%20outputs%20the%20minimal%20time%20needed%20to%20drive%20from%20home%20to%20work.%22%2C%22inputFormat%22%3A%22%20The%20first%20line%20of%20the%20input%20contains%20a%20number%20T%5Cn%5CnThen%20follows%20N%20lines%20of%20N%20characters%20that%20represent%20the%20road%20network%20at%20time%20zero.%20Those%20lines%20are%20made%20of%20%5C%22.%5C%22%20%28standing%20for%20open%20road%29%20and%20%5C%22%5C%5C%2A%5C%22%20%28standing%20for%20roadblock%29%20and%20they%20encode%20the%20rows%20of%20the%20grid%20in%20increasing%20order%2C%20while%20columns%20are%20also%20presented%20in%20increasing%20order.%20Conventionally%2C%20your%20home%20is%20at%20the%20position%20first%20row%2C%20first%20column%2C%20while%20your%20workplace%20is%20at%20the%20position%20last%20row%2C%20last%20column.%20Furthermore%2C%20you%20leave%20home%20at%20time%20t%3D0%2C%20that%20is%2C%20your%20starting%20position%20is%20first%20row%2C%20first%20column%20at%20time%20zero.%5Cn%5CnAt%20a%20given%20time%20t%2C%20your%20car%20must%20be%20on%20some%20%5C%22open%20road%5C%22%20cell.%20It%20takes%20one%20time%20unit%20to%20drive%20to%20any%20of%20the%20four%20adjacent%20cells%20heading%20toward%20north%2C%20south%2C%20west%20or%20east%2C%20and%20you%20may%20also%20choose%20to%20stay%20on%20the%20same%20cell%20for%20one%20time%20unit.%20Of%20course%2C%20those%20five%20moves%20are%20valid%20if%20and%20only%20if%20the%20target%20cell%20exists%20and%20is%20free%20at%20time%20t%2B1.%5Cn%5CnFinally%20comes%20N%20lines%20of%20N%20characters%20that%20represent%20the%20contractors%20schedules.%20Those%20lines%20match%20the%20ones%20of%20the%20grid%20description%20and%20are%20made%20of%20N%20characters%200%2C1%2C...%2C9%20that%20specify%20the%20duration%20of%20the%20working%20%28and%20rest%29%20period%20for%20a%20given%20cell.%20Observe%20that%200%20is%20a%20bit%20special%2C%20since%20it%20means%20that%20the%20corresponding%20cell%20status%20does%20not%20change.%22%2C%22outputFormat%22%3A%22%20The%20output%20consist%20in%20a%20single%20line%20for%20each%20test%20case%2C%20holding%20either%20the%20requested%20time%2C%20or%20NO%2C%20if%20driving%20from%20home%20to%20work%20is%20not%20possible.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn10%5Cr%5Cn.%2A%2A%2A%2A%2A%2A%2A%2A%2A%5Cr%5Cn........%2A%2A%5Cr%5Cn%2A.%2A%2A%2A%2A%2A%2A.%2A%5Cr%5Cn%2A.%2A%2A%2A%2A%2A%2A.%2A%5Cr%5Cn%2A.%2A%2A%2A%2A%2A%2A.%2A%5Cr%5Cn%2A........%2A%5Cr%5Cn%2A.%2A%2A%2A%2A%2A%2A.%2A%5Cr%5Cn%2A.%2A%2A%2A%2A%2A%2A.%2A%5Cr%5Cn%2A........%2A%5Cr%5Cn%2A%2A%2A%2A%2A%2A%2A%2A..%5Cr%5Cn0000000000%5Cr%5Cn0000000000%5Cr%5Cn0000000000%5Cr%5Cn0000000000%5Cr%5Cn0000000000%5Cr%5Cn0123456780%5Cr%5Cn0000000000%5Cr%5Cn0000000000%5Cr%5Cn0123456780%5Cr%5Cn0000000000%5Cr%5Cn3%5Cr%5Cn...%5Cr%5Cn%2A%2A.%5Cr%5Cn%2A%2A.%5Cr%5Cn021%5Cr%5Cn002%5Cr%5Cn000%22%2C%2234%5Cr%5CnNO%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B9000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F135%22%2C%22id%22%3A%22135%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5Cr%5Cn%5Cu6bcf%5Cu5929%5Cu65e9%5Cu4e0a%5Cu4f60%5Cu90fd%5Cu8981%5Cu5f00%5Cu8f66%5Cu5230%5Cu4f60%5Cu7684%5Cu5de5%5Cu4f5c%5Cu573a%5Cu6240%5Cu3002%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%5Cuff0c%5Cu9053%5Cu8def%5Cu5728%5Cu4fee%5Cu590d%5Cu3002%5Cu5e78%5Cu8fd0%5Cu7684%5Cu662f%5Cuff0c%5Cu653f%5Cu5e9c%5Cu610f%5Cu8bc6%5Cu5230%5Cu8fd9%5Cu53ef%5Cu80fd%5Cu4f1a%5Cu9020%5Cu6210%5Cu9ebb%5Cu70e6%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4ed6%5Cu4eec%5Cu5bf9%5Cu8def%5Cu969c%5Cu5b9e%5Cu65bd%5Cu4e25%5Cu683c%5Cu7684%5Cu89c4%5Cu5b9a%5Cuff1a%5Cu9053%5Cu8def%5Cu5fc5%5Cu987b%5Cu5728%5Cu4e00%5Cu534a%5Cu7684%5Cu65f6%5Cu95f4%5Cu5185%5Cu505c%5Cu6b62%5Cu7ef4%5Cu4fee%5Cu3002%5Cu4f46%5Cu662f%5Cuff0c%5Cu627f%5Cu5305%5Cu5546%5Cu53ef%5Cu4ee5%5Cu81ea%5Cu7531%5Cu5b89%5Cu6392%5Cu5de5%5Cu4f5c%5Cu65f6%5Cu95f4%5Cuff0c%5Cu4f46%5Cu4ed6%5Cu4eec%5Cu4ecd%5Cu7136%5Cu5fc5%5Cu987b%5Cu9075%5Cu5b88%5Cu4ee5%5Cu4e0b%5Cu89c4%5Cu5b9a%5Cuff1a%5Cr%5Cn%5Cr%5Cn-%20%20%5Cu5de5%5Cu4f5c%5Cu65f6%5Cu6bb5%5Cuff08%5Cu5f53%5Cu9053%5Cu8def%5Cu88ab%5Cu963b%5Cu6321%5Cu65f6%5Cuff09%5Cu548c%5Cu4f11%5Cu606f%5Cu65f6%5Cu6bb5%5Cuff08%5Cu5f53%5Cu9053%5Cu8def%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu65f6%5Cuff09%5Cu5fc5%5Cu987b%5Cu4ea4%5Cu66ff%5Cu5e76%5Cu4e14%5Cu5177%5Cu6709%5Cu56fa%5Cu5b9a%5Cu65f6%5Cu957f%5Cu3002%5Cr%5Cn-%20%20%5Cu4e00%5Cu5929%5Cu7684%5Cu5f00%5Cu59cb%5Cuff08%5Cu96f6%5Cu65f6%5Cu95f4%5Cuff09%5Cu5fc5%5Cu987b%5Cu4e0e%5Cu4e00%5Cu4e2a%5Cu4fee%5Cu8def%5Cu5de5%5Cu7a0b%5Cu7684%5Cu5f00%5Cu59cb%5Cu4e00%5Cu81f4%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cuff0c%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu9053%5Cu8def%5Cu7f51%5Cu7edc%5Cu548c%5Cu627f%5Cu5305%5Cu5546%5Cu65f6%5Cu95f4%5Cu8868%5Cu7684%5Cu63cf%5Cu8ff0%5Cu7684%5Cu60c5%5Cu51b5%5Cu4e0b%5Cu8f93%5Cu51fa%5Cu4ece%5Cu5bb6%5Cu5230%5Cu5de5%5Cu4f5c%5Cu6240%5Cu9700%5Cu7684%5Cu6700%5Cu77ed%5Cu65f6%5Cu95f4%5Cu3002%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu4e0e%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%20%20%20%23%23%20%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57T%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu6bcdN%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7b2c3%5Cu884c%5Cu5230%5Cu7b2cN%2B2%5Cu884c%5Cu662f%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3aN%20%2A%20N%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu6570%5Cu7ec4%5Cuff0c%5Cu6bcf%5Cu884c%5Cu7531%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3aN%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu7ec4%5Cu6210%5Cu3002%5Cu8868%5Cu793a%5Cu65f6%5Cu95f4%5Cu96f6%5Cu70b9%5Cu65f6%5Cu7684%5Cu9053%5Cu8def%5Cu7f51%5Cu7edc%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu7ebf%5Cu7531%5Cu201c%5Cu3002%5Cu201d%5Cu7ec4%5Cu6210%5Cu3002%5Cuff08%5Cu4ee3%5Cu8868%5Cu5f00%5Cu653e%5Cu9053%5Cu8def%5Cuff09%5Cu548c%5Cu201c%20%2A%20%5Cu201d%5Cuff08%5Cu4ee3%5Cu8868%5Cu8def%5Cu969c%5Cuff09%5Cu5e76%5Cu4e14%5Cu5b83%5Cu4eec%5Cu6309%5Cu9012%5Cu589e%5Cu987a%5Cu5e8f%5Cu7f16%5Cu7801%5Cu7f51%5Cu683c%5Cu7684%5Cu884c%5Cuff0c%5Cu800c%5Cu5217%5Cu4e5f%5Cu6309%5Cu9012%5Cu589e%5Cu987a%5Cu5e8f%5Cu5448%5Cu73b0%5Cu3002%5Cu4f60%5Cu7684%5Cu4f4f%5Cu5b85%5Cu4f4d%5Cu4e8e%5Cuff081%2C1%5Cuff09%5Cuff0c%5Cu800c%5Cu4f60%5Cu7684%5Cu5de5%5Cu4f5c%5Cu573a%5Cu6240%5Cu4f4d%5Cu4e8e%5Cu6700%5Cu540e%5Cu4e00%5Cu884c%5Cuff0c%5Cu6700%5Cu540e%5Cu4e00%5Cu5217%5Cuff08N%2CN%5Cuff09%5Cu3002%5Cu6b64%5Cu5916%5Cuff0c%5Cu4f60%5Cu5728%5Cu65f6%5Cu95f4t%20%3D%200%5Cu79bb%5Cu5f00%5Cu5bb6%5Cuff0c%5Cu4e5f%5Cu5c31%5Cu662f%5Cu8bf4%5Cuff0c%5Cu4f60%5Cu7684%5Cu8d77%5Cu59cb%5Cu4f4d%5Cu7f6e%5Cu662f%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu5217%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu65f6%5Cu95f4T%5Cu91cc%5Cuff0c%5Cu60a8%5Cu7684%5Cu8f66%5Cu5fc5%5Cu987b%5Cu5728%5Cu4e00%5Cu4e9b%5Cu201c%5Cu5f00%5Cu653e%5Cu5f0f%5Cu9053%5Cu8def%5Cu201d%5Cu5355%5Cu5143%5Cu4e0a%5Cu3002%5Cu5b83%5Cu9700%5Cu8981%5Cu4e00%5Cu4e2a%5Cu65f6%5Cu95f4%5Cu5355%5Cu4f4d%5Cu6765%5Cu9a71%5Cu52a8%5Cu524d%5Cu5f80%5Cu5317%5Cuff0c%5Cu5357%5Cuff0c%5Cu897f%5Cu6216%5Cu4e1c%5Cu7684%5Cu56db%5Cu4e2a%5Cu76f8%5Cu90bb%5Cu5355%5Cu5143%5Cu4e2d%5Cu7684%5Cu4efb%5Cu4f55%5Cu4e00%5Cu4e2a%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4f60%5Cu4e5f%5Cu53ef%5Cu4ee5%5Cu9009%5Cu62e9%5Cu5728%5Cu4e00%5Cu4e2a%5Cu9053%5Cu8def%5Cu5355%5Cu5143%5Cu4e0a%5Cu505c%5Cu7559%5Cu4efb%5Cu610f%5Cu65f6%5Cu95f4%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu540e%5Cu662fN%5Cu884cN%5Cu4e2a%5Cu5b57%5Cu7b26%5Cuff0c%5Cu4ee3%5Cu8868%5Cu627f%5Cu5305%5Cu5546%5Cu7684%5Cu65f6%5Cu95f4%5Cu8868%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu7ebf%5Cu4e0e%5Cu7f51%5Cu683c%5Cu63cf%5Cu8ff0%5Cu7684%5Cu7ebf%5Cu5339%5Cu914d%5Cuff0c%5Cu5e76%5Cu7531N%5Cu4e2a%5Cu5b57%5Cu7b260%2C1%5Cuff0c...%5Cuff0c9%5Cu7ec4%5Cu6210%5Cuff0c%5Cu5b83%5Cu4eec%5Cu4ee3%5Cu8868%5Cu5bf9%5Cu5e94%5Cu9053%5Cu8def%5Cu7684%5Cu5de5%5Cu4f5c%5Cuff08%5Cu548c%5Cu4f11%5Cu606f%5Cuff09%5Cu5468%5Cu671f%5Cu7684%5Cu6301%5Cu7eed%5Cu65f6%5Cu95f4%5Cu3002%5Cu6ce8%5Cu610f0%5Cu6709%5Cu70b9%5Cu7279%5Cu6b8a%5Cuff0c%5Cu56e0%5Cu4e3a%5Cu5b83%5Cu610f%5Cu5473%5Cu7740%5Cu76f8%5Cu5e94%5Cu7684%5Cu9053%5Cu8def%5Cu72b6%5Cu6001%5Cu4e0d%5Cu4f1a%5Cu6539%5Cu53d8%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cuff0c%5Cu8f93%5Cu51fa%5Cu53ea%5Cu6709%5Cu4e00%5Cu884c%5Cuff0c%5Cu4ece%5Cu4f60%5Cu5bb6%5Cu5230%5Cu5de5%5Cu4f5c%5Cu5355%5Cu4f4d%5Cu7684%5Cu6700%5Cu5feb%5Cu65f6%5Cu95f4%5Cu3002%5Cu5982%5Cu679c%5Cu65e0%5Cu6cd5%5Cu4ece%5Cu5bb6%5Cu5230%5Cu5de5%5Cu4f5c%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5C%22NO%5C%22%28%5Cu4e0d%5Cu5305%5Cu62ec%5Cu53cc%5Cu5f15%5Cu53f7%29%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP135%22%2C%22title%22%3A%22MAWORK%20-%20Men%20at%20work%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22MAWORK%20-%20Men%20at%20work%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>MAWORK - Men at work</h1>
+<h2>题意翻译</h2>
+<div># 题目翻译
+每天早上你都要开车到你的工作场所。不幸的是，道路在修复。幸运的是，政府意识到这可能会造成麻烦，并且他们对路障实施严格的规定：道路必须在一半的时间内停止维修。但是，承包商可以自由安排工作时间，但他们仍然必须遵守以下规定：
+- 工作时段（当道路被阻挡时）和休息时段（当道路可以通过时）必须交替并且具有固定时长。
+- 一天的开始（零时间）必须与一个修路工程的开始一致。
+编写一个程序，在给定道路网络和承包商时间表的描述的情况下输出从家到工作所需的最短时间。
+# 输入与输出格式
+## 输入格式
+输入的第一行包含一个数字T。
+第二行是一个字母N。
+第3行到第N+2行是一个长度为N * N的字符串数组，每行由一个长度为N的字符串组成。表示时间零点时的道路网络。这些线由“。”组成。（代表开放道路）和“ * ”（代表路障）并且它们按递增顺序编码网格的行，而列也按递增顺序呈现。你的住宅位于（1,1），而你的工作场所位于最后一行，最后一列（N,N）。此外，你在时间t = 0离开家，也就是说，你的起始位置是第一行，第一列。
+在给定的时间T里，您的车必须在一些“开放式道路”单元上。它需要一个时间单位来驱动前往北，南，西或东的四个相邻单元中的任何一个，并且你也可以选择在一个道路单元上停留任意时间。
+最后是N行N个字符，代表承包商的时间表。这些线与网格描述的线匹配，并由N个字符0,1，...，9组成，它们代表对应道路的工作（和休息）周期的持续时间。注意0有点特殊，因为它意味着相应的道路状态不会改变。
+## 输出格式
+对于每个测试样例，输出只有一行，从你家到工作单位的最快时间。如果无法从家到工作，请输出"NO"(不包括双引号)。</div>
+<h2>题目描述</h2>
+<div> Every morning you have to drive to your workplace. Unfortunately, roads are under constant repair. Fortunately, administration is aware that this may cause trouble and they enforce a strict rule on roadblocks: roads must be blocked only half of the time. However, contractors are free to schedule their working hours, still they must follow regulations:
+- Working periods (when the road is blocked) and rest periods (when the road is open) must alternate and be of fixed length.
+- The beginning of the day (time zero) must coincide with the beginning of a period.
+Write a program that, given a description of the road network and of contractors schedules outputs the minimal time needed to drive from home to work.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> The first line of the input contains a number T
+Then follows N lines of N characters that represent the road network at time zero. Those lines are made of "." (standing for open road) and "\*" (standing for roadblock) and they encode the rows of the grid in increasing order, while columns are also presented in increasing order. Conventionally, your home is at the position first row, first column, while your workplace is at the position last row, last column. Furthermore, you leave home at time t=0, that is, your starting position is first row, first column at time zero.
+At a given time t, your car must be on some "open road" cell. It takes one time unit to drive to any of the four adjacent cells heading toward north, south, west or east, and you may also choose to stay on the same cell for one time unit. Of course, those five moves are valid if and only if the target cell exists and is free at time t+1.
+Finally comes N lines of N characters that represent the contractors schedules. Those lines match the ones of the grid description and are made of N characters 0,1,...,9 that specify the duration of the working (and rest) period for a given cell. Observe that 0 is a bit special, since it means that the corresponding cell status does not change.</div>
+<h3>输出格式</h3>
+<br />
+<div> The output consist in a single line for each test case, holding either the requested time, or NO, if driving from home to work is not possible.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+10
+.*********
+........**
+*.******.*
+*.******.*
+*.******.*
+*........*
+*.******.*
+*.******.*
+*........*
+********..
+0000000000
+0000000000
+0000000000
+0000000000
+0000000000
+0123456780
+0000000000
+0000000000
+0123456780
+0000000000
+3
+...
+**.
+**.
+021
+002
+000</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>34
+NO</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

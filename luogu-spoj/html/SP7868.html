@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ADV04H - Join - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450066:Tc2aVWcxpNFd0cBD6aKX5fD0W+bPr/gEGeVEwNR2hh8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20are%20two%20tables.%20These%20tables%20are%20filled%20with%20numeric%20data.%20Each%20column%20of%20each%20table%20has%20a%20unique%20name.%20You%20need%20to%20implement%20JOIN%20operation%20for%20those%20tables.%20JOIN%20creates%20a%20new%20result%20table%20by%20combining%20column%20values%20of%20the%20two%20tables%20based%20upon%20the%20join-predicate.%20The%20query%20compares%20each%20row%20of%20the%20first%20table%20with%20each%20row%20of%20the%20second%20to%20find%20all%20pairs%20of%20rows%20which%20satisfy%20the%20join-predicate.%20When%20the%20join-predicate%20is%20satisfied%2C%20column%20values%20for%20each%20matched%20pair%20of%20rows%20of%20the%20table%20are%20combined%20into%20a%20result%20row.%20The%20result%20of%20the%20join%20can%20be%20defined%20as%20the%20outcome%20of%20first%20taking%20the%20Cartesian%20product%20of%20all%20records%20in%20the%20tables%20%28combining%20every%20record%20in%20the%20first%20table%20with%20every%20record%20in%20the%20second%20table%29%20-%20then%20return%20all%20the%20records%20which%20satisfy%20the%20join%20predicate.%20After%20that%20needed%20column%20are%20picked%20and%20printed%20as%20the%20result.%20Moreover%20the%20resulting%20rows%20should%20be%20output%20in%20the%20lexicographic%20order.%22%2C%22inputFormat%22%3A%22The%20input%20starts%20with%20the%20description%20of%20the%20first%20table.%20The%20first%20line%20consists%20of%20k%20%24%20_%7B1%7D%20%24%20names%20of%20the%20columns%20of%20the%20table%20separated%20with%20spaces.%20All%20the%20names%20contain%20only%20small%20latin%20letters%20and%20digits.%20Next%20line%20contain%20number%20n%20%24%20_%7B1%7D%20%24%20%5Cu2013%20the%20amount%20of%20records%20in%20the%20table.%20In%20each%20of%20the%20next%20n%20%24%20_%7B1%7D%20%24%20lines%20there%20are%20k%20%24%20_%7B1%7D%20%24%20integers%20%5Cu2013%20data%20written%20in%20the%20table.%20The%20description%20of%20the%20second%20table%20in%20the%20same%20format%20follows.%20Next%20line%20is%20number%20q%20%5Cu2013%20the%20amount%20of%20queries.%20The%20description%20of%20each%20query%20follows%20in%20the%20following%20format%3A%5Cn%5Cn%60%60%60%5Cn%5CnSELECT%20%3Clist%20of%20the%20names%20of%20columns%3E%5CnJOIN%20ON%20%3Ca%20name%20of%20the%20column%20from%20the%20first%20table%3E%3D%3Ca%20name%20of%20the%20column%20of%20the%20second%20table%3E%5Cn%60%60%60%22%2C%22outputFormat%22%3A%22For%20each%20query%20print%20the%20result%20of%20JOIN%20operation.%20You%20should%20print%20only%20the%20columns%20given%20in%20the%20query%20and%20in%20the%20appropriate%20order.%20The%20rows%20should%20be%20ordered%20lexicographically.%20The%20result%20of%20each%20query%20won%27t%20contain%20more%20than%2050000%20records.%20Print%20blank%20line%20after%20the%20answer%20for%20each%20query.%20See%20the%20example%20for%20more%20information.%22%2C%22samples%22%3A%5B%5B%22id1%20a%20b%5Cr%5Cn4%5Cr%5Cn1%202%203%5Cr%5Cn2%202%203%5Cr%5Cn3%202%204%5Cr%5Cn2%204%204%5Cr%5Cnid2%20c%20d%5Cr%5Cn3%5Cr%5Cn3%203%203%5Cr%5Cn5%202%201%5Cr%5Cn1%203%204%5Cr%5Cn3%5Cr%5CnSELECT%20a%2Cb%2Cc%5Cr%5CnJOIN%20ON%20id1%3Dd%5Cr%5CnSELECT%20id1%2Cd%5Cr%5CnJOIN%20ON%20a%3Dc%5Cr%5CnSELECT%20id2%2Cid1%2Cd%5Cr%5CnJOIN%20ON%20b%3Dc%22%2C%22a%20b%20c%5Cr%5Cn2%203%202%5Cr%5Cn2%204%203%5Cr%5Cn%5Cr%5Cnid1%20d%5Cr%5Cn1%201%5Cr%5Cn2%201%5Cr%5Cn3%201%5Cr%5Cn%5Cr%5Cnid2%20id1%20d%5Cr%5Cn1%201%204%5Cr%5Cn1%202%204%5Cr%5Cn3%201%203%5Cr%5Cn3%202%203%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B887%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F7868%22%2C%22id%22%3A%227868%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cu73b0%5Cu5728%5Cu6709%5Cu4e00%5Cu76d2%5Cu5404%5Cu4e0d%5Cu76f8%5Cu540c%5Cu7684%5Cu5a03%5Cu5a03%5Cuff0c%5Cu7b2c%24i%24%5Cu4e2a%5Cu73a9%5Cu5076%5Cu7684%5Cu957f%5Cu3001%5Cu5bbd%5Cu3001%5Cu9ad8%5Cu5206%5Cu522b%5Cu662f%24L_i%24%2C%24W_i%24%2C%24H_i%24%5Cu3002%5Cu5f53%24L_i%3CL_j%24%2C%24W_i%3CW_j%24%2C%24H_i%3CH_j%24%5Cu65f6%5Cuff0c%5Cu73a9%5Cu5076i%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu653e%5Cu5165%5Cu73a9%5Cu5076j%5Cu4e2d%5Cuff0c%5Cu540c%5Cu65f6%5Cu6bcf%5Cu4e2a%5Cu73a9%5Cu5076%5Cu4f53%5Cu5185%5Cu53ea%5Cu80fd%5Cu653e%5Cu4e00%5Cu4e2a%5Cu73a9%5Cu5076%5Cuff08%5Cu4e0d%5Cu5305%5Cu62ec%5Cu653e%5Cu8fdb%5Cu53bb%5Cu7684%5Cu73a9%5Cu5076%5Cu4f53%5Cu5185%5Cu7684%5Cu73a9%5Cu5076%5Cuff09%5Cu3002%5Cu8bf7%5Cu4f60%5Cu7f16%5Cu5199%5Cu7a0b%5Cu5e8f%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu6ca1%5Cu6709%5Cu88ab%5Cu653e%5Cu8fdb%5Cu5176%5Cu4ed6%5Cu73a9%5Cu5076%5Cu4f53%5Cu5185%5Cu7684%5Cu73a9%5Cu5076%5Cu6570%5Cu91cf%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP7868%22%2C%22title%22%3A%22ADV04H%20-%20Join%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A57099%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cuff08%5Cu53ea%5Cu6709%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A14845%2C%22name%22%3A%22SP7868%20ADV04H%20-%20Join%22%2C%22slug%22%3A%22SP7868%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22ADV04H%20-%20Join%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>ADV04H - Join</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+现在有一盒各不相同的娃娃，第$i$个玩偶的长、宽、高分别是$L_i$,$W_i$,$H_i$。当$L_i<L_j$,$W_i<W_j$,$H_i<H_j$时，玩偶i可以被放入玩偶j中，同时每个玩偶体内只能放一个玩偶（不包括放进去的玩偶体内的玩偶）。请你编写程序计算出没有被放进其他玩偶体内的玩偶数量的最小值。</div>
+<h2>题目描述</h2>
+<div>There are two tables. These tables are filled with numeric data. Each column of each table has a unique name. You need to implement JOIN operation for those tables. JOIN creates a new result table by combining column values of the two tables based upon the join-predicate. The query compares each row of the first table with each row of the second to find all pairs of rows which satisfy the join-predicate. When the join-predicate is satisfied, column values for each matched pair of rows of the table are combined into a result row. The result of the join can be defined as the outcome of first taking the Cartesian product of all records in the tables (combining every record in the first table with every record in the second table) - then return all the records which satisfy the join predicate. After that needed column are picked and printed as the result. Moreover the resulting rows should be output in the lexicographic order.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input starts with the description of the first table. The first line consists of k $ _{1} $ names of the columns of the table separated with spaces. All the names contain only small latin letters and digits. Next line contain number n $ _{1} $ – the amount of records in the table. In each of the next n $ _{1} $ lines there are k $ _{1} $ integers – data written in the table. The description of the second table in the same format follows. Next line is number q – the amount of queries. The description of each query follows in the following format:
+```
+SELECT <list of the names of columns>
+JOIN ON <a name of the column from the first table>=<a name of the column of the second table>
+```</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query print the result of JOIN operation. You should print only the columns given in the query and in the appropriate order. The rows should be ordered lexicographically. The result of each query won't contain more than 50000 records. Print blank line after the answer for each query. See the example for more information.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>id1 a b
+4
+1 2 3
+2 2 3
+3 2 4
+2 4 4
+id2 c d
+3
+3 3 3
+5 2 1
+1 3 4
+3
+SELECT a,b,c
+JOIN ON id1=d
+SELECT id1,d
+JOIN ON a=c
+SELECT id2,id1,d
+JOIN ON b=c</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>a b c
+2 3 2
+2 4 3
+
+id1 d
+1 1
+2 1
+3 1
+
+id2 id1 d
+1 1 4
+1 2 4
+3 1 3
+3 2 3</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

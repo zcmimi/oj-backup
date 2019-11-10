@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>HANOICAL - Hanoi Calls - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449697:/ZfGXb+yXsmr4j+tbtbGCtSph2nHLPyjGXu3KgUjZ30=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Theory%3A%5Cn%5Cn-%20Towers%20of%20hanoi%20is%20an%20arrangement%20consisting%20of%20three%20pegs%20and%20%2A%2AN%2A%2A%20discs%20of%20radius%201%20to%20%2A%2AN%2A%2A.%5Cn-%20Each%20peg%20can%20hold%20zero%20or%20more%20discs%2C%20but%20at%20any%20point%20of%20time%2C%20the%20radius%20of%20the%20discs%20must%20be%20in%20decreasing%20order%20from%20bottom%20to%20top.%5Cn-%20A%20move%20consists%20of%20moving%20the%20topmost%20disc%20from%20one%20peg%20to%20another.%20After%20the%20move%2C%20the%20decending%20order%20property%20of%20pegs%20must%20hold.%5Cn%5Cn%20Traditional%20problem%20is%3A%20If%20all%20discs%20are%20stacked%20up%20on%20peg%231%2C%20how%20many%20moves%20will%20it%20take%20to%20move%20all%20the%20discs%20to%20peg%232%3F%20%20%20%5Cn%20Recursive%20solution%3A%20Noting%20that%20for%20disc%20N%20to%20move%2C%20from%20peg%20%23a%20to%20peg%20%23b%2C%20all%20discs%20of%20size%201%20to%20N-1%20must%20be%20in%20peg%20%23c.%20Hence%20there%20is%20exactly%20one%20minimal%20way%20to%20move%20the%20discs.%20After%20disc%20N%20has%20moved%2C%20all%20pegs%20from%20%23c%20must%20be%20moved%20back%20to%20%23a.%20If%20moves%28N%29%20denote%20the%20number%20of%20moves%20required%20to%20transfer%20N%20discs%20between%20two%20pegs%20%28both%20sorted%20configuration%29%2C%20then%20moves%28N%29%20%3D%20moves%28N-1%29%20%2B%201%20%2B%20moves%28N-1%29%3B%20Solving%20the%20recurrence%20yields%20moves%28N%29%20%3D%202%20%24%20%5E%7BN%7D%20%24%20-1%3B%20The%20idea%20i%20am%20trying%20to%20share%20is%20that%2C%20there%20is%20exactly%20one%20such%20move%20sequence.%20%20%5Cn%20%20%5Cn%20Now%20the%20problem%20is%20that%20given%20any%20initial%20configuration%20of%20the%20discs%2C%20and%20any%20final%20configuration%2C%20Can%20you%20tell%20me%20the%20minimal%20number%20of%20moves%20required%20to%20change%20it%20from%20initial%20to%20final%20configuration%3F%20%20%20%5Cn%2A%2AInput%20Format%3A%2A%2A%20%20%5Cn%20The%20input%20file%20consists%20of%20multiple%20testcases.%20%20%20%5Cn%20The%20first%20line%20of%20each%20testcase%20contains%20one%20integer%2C%20%2A%2AN%2A%2A%20%281%20%3C%3D%20N%20%3C%3D%2030%29%20%20%20%5Cn%20The%20second%20line%20of%20each%20testcase%20contains%20N%20integers%2C%20each%20one%20of%20which%20will%20be%20between%201%20and%203.%20The%20%2A%2Ai%2A%2A-th%20integer%20tells%20you%20the%20peg%20number%20at%20which%20disc%20of%20radius%20%2A%2Ai%2A%2A%20is%20present%20in%20the%20initial%20configuration.%20%20%5Cn%20The%20third%20line%20contains%20a%20similar%20specification%20for%20the%20final%20configuration.%20%20%5Cn%20Input%20terminates%20with%20a%20line%20containing%20a%20single%20zero%2C%20which%20must%20not%20be%20processed.%20%20%20%5Cn%20%20%5Cn%2A%2AOutput%20Format%3A%2A%2A%20%20%5Cn%20For%20each%20testcase%20print%20one%20line%20containing%20a%20single%20integer%2C%20which%20is%20the%20minimal%20number%20of%20moves%20to%20make%20the%20transfer.%20%20%20%5Cn%2A%2ATestdata%3A%2A%2A%20%20%5Cn%20100%20testcases%20%20%5Cn%20%20%5Cn%2A%2ASample%20Input%3A%2A%2A%20%20%5Cn%60%60%60%5Cn%5Cn4%5Cn1%201%201%201%5Cn2%202%202%202%5Cn3%5Cn1%203%203%5Cn2%201%201%5Cn5%5Cn1%203%202%202%202%5Cn2%203%202%201%202%5Cn0%5Cn%60%60%60%5Cn%20%2A%2ASample%20Output%3A%2A%2A%20%20%5Cn%60%60%60%5Cn%5Cn15%5Cn6%5Cn14%5Cn%60%60%60%5Cn%20%2A%2AOutput%20Explanation%3A%2A%2A%20%20%5Cn%20TestCase%231%3A%20%20%20%5Cn%20This%20is%20the%20moves%284%29%20%3D%202%5E4%20-1%3B%20%20%5Cn%20TestCase%232%3A%20%20%5Cn%60%60%60%5Cn%5Cn%5Bpeg1%2C%20peg2%2C%20peg3%5D%20%3D%20%5Cn%230%20%5B%20%7B1%7D%2C%20%7B%7D%2C%20%7B3%2C2%7D%20%5D%5Cn%231%20%5B%20%7B1%7D%2C%20%7B2%7D%2C%20%7B3%7D%20%20%5D%5Cn%232%20%5B%20%7B%7D%2C%20%7B2%2C1%7D%2C%20%7B3%7D%20%5D%5Cn%233%20%5B%20%7B3%7D%2C%20%7B2%2C1%7D%2C%20%7B%7D%20%5D%5Cn%234%20%5B%20%7B3%7D%2C%20%7B2%7D%2C%20%7B1%7D%20%20%5D%5Cn%235%20%5B%20%7B3%2C2%7D%2C%20%7B%7D%2C%20%7B1%7D%20%5D%5Cn%236%20%5B%20%7B3%2C2%7D%2C%20%7B1%7D%2C%20%7B%7D%20%5D%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B194%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1880%22%2C%22id%22%3A%221880%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1880%22%2C%22title%22%3A%22HANOICAL%20-%20Hanoi%20Calls%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22HANOICAL%20-%20Hanoi%20Calls%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>HANOICAL - Hanoi Calls</h1>
+<h2>题目描述</h2>
+<div> Theory:
+- Towers of hanoi is an arrangement consisting of three pegs and **N** discs of radius 1 to **N**.
+- Each peg can hold zero or more discs, but at any point of time, the radius of the discs must be in decreasing order from bottom to top.
+- A move consists of moving the topmost disc from one peg to another. After the move, the decending order property of pegs must hold.
+Traditional problem is: If all discs are stacked up on peg#1, how many moves will it take to move all the discs to peg#2?
+Recursive solution: Noting that for disc N to move, from peg #a to peg #b, all discs of size 1 to N-1 must be in peg #c. Hence there is exactly one minimal way to move the discs. After disc N has moved, all pegs from #c must be moved back to #a. If moves(N) denote the number of moves required to transfer N discs between two pegs (both sorted configuration), then moves(N) = moves(N-1) + 1 + moves(N-1); Solving the recurrence yields moves(N) = 2 $ ^{N} $ -1; The idea i am trying to share is that, there is exactly one such move sequence.
+Now the problem is that given any initial configuration of the discs, and any final configuration, Can you tell me the minimal number of moves required to change it from initial to final configuration?
+**Input Format:**
+The input file consists of multiple testcases.
+The first line of each testcase contains one integer, **N** (1 <= N <= 30)
+The second line of each testcase contains N integers, each one of which will be between 1 and 3. The **i**-th integer tells you the peg number at which disc of radius **i** is present in the initial configuration.
+The third line contains a similar specification for the final configuration.
+Input terminates with a line containing a single zero, which must not be processed.
+**Output Format:**
+For each testcase print one line containing a single integer, which is the minimal number of moves to make the transfer.
+**Testdata:**
+100 testcases
+**Sample Input:**
+```
+4
+1 1 1 1
+2 2 2 2
+3
+1 3 3
+2 1 1
+5
+1 3 2 2 2
+2 3 2 1 2
+0
+```
+**Sample Output:**
+```
+15
+6
+14
+```
+**Output Explanation:**
+TestCase#1:
+This is the moves(4) = 2^4 -1;
+TestCase#2:
+```
+[peg1, peg2, peg3] =
+#0 [ {1}, {}, {3,2} ]
+#1 [ {1}, {2}, {3} ]
+#2 [ {}, {2,1}, {3} ]
+#3 [ {3}, {2,1}, {} ]
+#4 [ {3}, {2}, {1} ]
+#5 [ {3,2}, {}, {1} ]
+#6 [ {3,2}, {1}, {} ]
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MCU20E - Edge Detection - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450449:Nn/Uz63rQOcDci93duxb34i8cuIxufpIBHdYLWtDNRo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22IONU%20Satellite%20Imaging%2C%20Inc.%20records%20and%20stores%20very%20large%20images%20using%20run%20length%20encoding.%20You%20are%20to%20write%20a%20program%20that%20reads%20a%20compressed%20image%2C%20finds%20the%20edges%20in%20the%20image%2C%20as%20described%20below%2C%20and%20outputs%20another%20compressed%20image%20of%20the%20detected%20edges.%5Cn%5CnA%20simple%20edge%20detection%20algorithm%20sets%20an%20output%20pixel%27s%20value%20to%20be%20the%20maximum%20absolute%20value%20of%20the%20differences%20between%20it%20and%20all%20its%20surrounding%20pixels%20in%20the%20input%20image.%20Consider%20the%20input%20image%20below%3A%5Cn%5Cn%21%5B%5D%28http%3A%5C%2F%5C%2Facm.tju.edu.cn%5C%2Ftoj%5C%2F1914_edge1.gif%29%21%5B%5D%28http%3A%5C%2F%5C%2Facm.tju.edu.cn%5C%2Ftoj%5C%2F1914_edge2.gif%29The%20upper%20left%20pixel%20in%20the%20output%20image%20is%20the%20maximum%20of%20the%20values%20%7C15-15%7C%2C%20%7C15-100%7C%2C%20and%20%7C15-100%7C%2C%20which%20is%2085.%20The%20pixel%20in%20the%204th%20row%2C%202nd%20column%20is%20computed%20as%20the%20maximum%20of%20%7C175-100%7C%2C%20%7C175-100%7C%2C%20%7C175-100%7C%2C%20%7C175-175%7C%2C%20%7C175-25%7C%2C%20%7C175-175%7C%2C%20%7C175-175%7C%2C%20and%20%7C175-25%7C%2C%20which%20is%20150.%5Cn%5CnImages%20contain%202%20to%201%2C000%2C000%2C000%20%2810%20%24%20%5E%7B9%7D%20%24%20%29%20pixels.%20All%20images%20are%20encoded%20using%20run%20length%20encoding%20%28RLE%29.%20This%20is%20a%20sequence%20of%20pairs%2C%20containing%20pixel%20value%20%280-255%29%20and%20run%20length%20%281-10%20%24%20%5E%7B9%7D%20%24%20%29.%20Input%20images%20have%20at%20most%201%2C000%20of%20these%20pairs.%20Successive%20pairs%20have%20different%20pixel%20values.%20All%20lines%20in%20an%20image%20contain%20the%20same%20number%20of%20pixels.%5Cn%5CnInput%20consists%20of%20information%20for%20one%20or%20more%20images.%20Each%20image%20starts%20with%20the%20width%2C%20in%20pixels%2C%20of%20each%20image%20line.%20This%20is%20followed%20by%20the%20RLE%20pairs%2C%20one%20pair%20per%20line.%20A%20line%20with%200%200%20indicates%20the%20end%20of%20the%20data%20for%20that%20image.%20An%20image%20width%20of%200%20indicates%20there%20are%20no%20more%20images%20to%20process.%20The%20first%20image%20in%20the%20example%20input%20encodes%20the%205x7%20input%20image%20above.%5Cn%5CnOutput%20is%20a%20series%20of%20edge-detected%20images%2C%20in%20the%20same%20format%20as%20the%20input%20images%2C%20except%20that%20there%20may%20be%20more%20than%201%2C000%20RLE%20pairs.%5Cn%5Cn%2A%2AImportant%20Note%3A%2A%2A%20A%20brute%20force%20solution%20that%20attempts%20to%20compute%20an%20output%20value%20for%20every%20individual%20pixel%20will%20likely%20fail%20due%20to%20space%20or%20time%20constraints.%5Cn%5Cn%2A%2ASample%20Input%2A%2A%5Cn%5Cn%20%60%60%60%5Cn7%5Cn15%204%5Cn100%2015%5Cn25%202%5Cn175%202%5Cn25%205%5Cn175%202%5Cn25%205%5Cn0%200%5Cn10%5Cn35%20500000000%5Cn200%20500000000%5Cn0%200%5Cn3%5Cn255%201%5Cn10%201%5Cn255%202%5Cn10%201%5Cn255%202%5Cn10%201%5Cn255%201%5Cn0%200%5Cn0%5Cn%60%60%60%5Cn%2A%2ASample%20Output%2A%2A%5Cn%5Cn%20%60%60%60%5Cn7%5Cn85%205%5Cn0%202%5Cn85%205%5Cn75%2010%5Cn150%202%5Cn75%203%5Cn0%202%5Cn150%202%5Cn0%204%5Cn0%200%5Cn10%5Cn0%20499999990%5Cn165%2020%5Cn0%20499999990%5Cn0%200%5Cn3%5Cn245%209%5Cn0%200%5Cn0%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B375%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F16018%22%2C%22id%22%3A%2216018%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP16018%22%2C%22title%22%3A%22MCU20E%20-%20Edge%20Detection%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22MCU20E%20-%20Edge%20Detection%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>MCU20E - Edge Detection</h1>
+<h2>题目描述</h2>
+<div>IONU Satellite Imaging, Inc. records and stores very large images using run length encoding. You are to write a program that reads a compressed image, finds the edges in the image, as described below, and outputs another compressed image of the detected edges.
+A simple edge detection algorithm sets an output pixel's value to be the maximum absolute value of the differences between it and all its surrounding pixels in the input image. Consider the input image below:
+![](http://acm.tju.edu.cn/toj/1914_edge1.gif)![](http://acm.tju.edu.cn/toj/1914_edge2.gif)The upper left pixel in the output image is the maximum of the values |15-15|, |15-100|, and |15-100|, which is 85. The pixel in the 4th row, 2nd column is computed as the maximum of |175-100|, |175-100|, |175-100|, |175-175|, |175-25|, |175-175|, |175-175|, and |175-25|, which is 150.
+Images contain 2 to 1,000,000,000 (10 $ ^{9} $ ) pixels. All images are encoded using run length encoding (RLE). This is a sequence of pairs, containing pixel value (0-255) and run length (1-10 $ ^{9} $ ). Input images have at most 1,000 of these pairs. Successive pairs have different pixel values. All lines in an image contain the same number of pixels.
+Input consists of information for one or more images. Each image starts with the width, in pixels, of each image line. This is followed by the RLE pairs, one pair per line. A line with 0 0 indicates the end of the data for that image. An image width of 0 indicates there are no more images to process. The first image in the example input encodes the 5x7 input image above.
+Output is a series of edge-detected images, in the same format as the input images, except that there may be more than 1,000 RLE pairs.
+**Important Note:** A brute force solution that attempts to compute an output value for every individual pixel will likely fail due to space or time constraints.
+**Sample Input**
+```
+7
+15 4
+100 15
+25 2
+175 2
+25 5
+175 2
+25 5
+0 0
+10
+35 500000000
+200 500000000
+0 0
+3
+255 1
+10 1
+255 2
+10 1
+255 2
+10 1
+255 1
+0 0
+0
+```
+**Sample Output**
+```
+7
+85 5
+0 2
+85 5
+75 10
+150 2
+75 3
+0 2
+150 2
+0 4
+0 0
+10
+0 499999990
+165 20
+0 499999990
+0 0
+3
+245 9
+0 0
+0
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

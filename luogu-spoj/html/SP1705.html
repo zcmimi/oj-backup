@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GAMEFIL - The Game of Efil - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449670:HtZLoQbC/Hhw7j3H51kkE6Qa0oUtQzATwk5N6gwLHqE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Almost%20anyone%20who%20has%20ever%20taken%20a%20class%20in%20computer%20science%20is%20familiar%20with%20the%20%5Cu201cGame%20of%20Life%2C%5Cu201d%20John%20Conway%5Cu2019s%20cellular%20automata%20with%20extremely%20simple%20rules%20of%20birth%2C%20survival%2C%20and%20death%20that%20can%20give%20rise%20to%20astonishing%20complexity.%5Cn%5Cn%20The%20game%20is%20played%20on%20a%20rectangular%20field%20of%20cells%2C%20each%20of%20which%20has%20eight%20neighbors%20%28adjacent%20cells%29.%20A%20cell%20is%20either%20occupied%20or%20not.%20The%20rules%20for%20deriving%20a%20generation%20from%20the%20previous%20one%20are%3A%5Cn%5Cn-%20If%20an%20occupied%20cell%20has%200%2C%201%2C%204%2C%205%2C%206%2C%207%2C%20or%208%20occupied%20neighbors%2C%20the%20organism%20dies%20%280%2C%201%3A%20of%20loneliness%3B%204%20thru%208%3A%20of%20overcrowding%29.%5Cn-%20If%20an%20occupied%20cell%20has%20two%20or%20three%20occupied%20neighbors%2C%20the%20organism%20survives%20to%20the%20next%20gener-%20ation.%5Cn-%20If%20an%20unoccupied%20cell%20has%20three%20occupied%20neighbors%2C%20it%20becomes%20occupied%20%28a%20birth%20occurs%29.%5Cn%5Cn%20One%20of%20the%20major%20problems%20researchers%20have%20looked%20at%20over%20the%20years%20is%20the%20existence%20of%20so-called%20%5Cu201cGarden%20of%20Eden%5Cu201d%20configurations%20in%20the%20Game%20of%20Life%20%5Cu2014%20configurations%20that%20could%20not%20have%20arisen%20as%20the%20result%20of%20the%20application%20of%20the%20rules%20to%20some%20previous%20configuration.%20We%5Cu2019re%20going%20to%20extend%20this%20question%2C%20which%20we%5Cu2019ll%20call%20the%20%5Cu201cGame%20of%20Efil%5Cu201d%3A%20Given%20a%20starting%20configuration%2C%20how%20many%20possible%20parent%20configurations%20could%20it%20have%3F%20To%20make%20matters%20easier%2C%20we%20assume%20a%20finite%20grid%20in%20which%20edge%20and%20corner%20cells%20%5Cu201cwrap%20around%5Cu201d%20%28i.e.%2C%20a%20toroidal%20surface%29.%20For%20instance%2C%20the%202%20by%203%20configuration%3A%5Cn%5Cn%20%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1705%5C%2F69f58b1e8dd161545b89bd50e5f8cd3522c6166f.png%29%5Cn%5Cn%20has%20exactly%20three%20possible%20parent%20configurations%3B%20they%20are%3A%5Cn%5Cn%20%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1705%5C%2Fc1ed6c648f8e881832facbb79e3c8f5b40827c7f.png%29%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1705%5C%2F0cd8674866b6d82688720a4f713dad6e387961fc.png%29%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1705%5C%2Ff211134839105cbc03522b33785993c214ee0d4a.png%29%5Cn%5Cn%20You%20should%20note%20that%20when%20counting%20neighbors%20of%20a%20cell%2C%20another%20cell%20may%20be%20counted%20as%20a%20neighbor%20more%20than%20once%2C%20if%20it%20touches%20the%20given%20cell%20on%20more%20than%20one%20side%20due%20to%20the%20wrap%20around.%20This%20is%20the%20case%20for%20the%20configurations%20above.%22%2C%22inputFormat%22%3A%22%20There%20will%20be%20multiple%20test%20cases.%20Each%20case%20will%20start%20with%20a%20line%20containing%20a%20pair%20of%20positive%20integers%20_m_%20and%20_n_%2C%20indicating%20the%20number%20of%20rows%20and%20columns%20of%20the%20configuration%2C%20respectively.%20The%20next%20line%20will%20contain%20a%20nonnegative%20integer%20_k_%20indicating%20the%20number%20of%20%5Cu201clive%5Cu201d%20cells%20in%20the%20configuration.%20The%20following%20_k_%20lines%20each%20contain%20the%20row%20and%20column%20number%20of%20one%20live%20cell%2C%20where%20row%20and%20column%20numbering%20both%20start%20at%20zero.%20The%20final%20test%20case%20is%20followed%20by%20a%20line%20where%20_m_%20%3D%20_n_%20%3D%200%20%5Cu2014%20this%20line%20should%20not%20be%20processed.%20You%20may%20assume%20that%20the%20product%20of%20_m_%20and%20_n_%20is%20no%20more%20than%2016.%22%2C%22outputFormat%22%3A%22%20For%20each%20test%20case%20you%20should%20print%20one%20line%20of%20output%20containing%20the%20case%20number%20and%20the%20number%20of%20possible%20ancestors.%20Imitate%20the%20sample%20output%20below.%20Note%20that%20if%20there%20are%200%20ancestors%2C%20you%20should%20print%20out%5Cn%5Cn%60Garden%20of%20Eden.%60%22%2C%22samples%22%3A%5B%5B%222%203%5Cr%5Cn2%5Cr%5Cn0%200%5Cr%5Cn0%201%5Cr%5Cn3%203%5Cr%5Cn4%5Cr%5Cn0%200%5Cr%5Cn0%201%5Cr%5Cn0%202%5Cr%5Cn1%201%5Cr%5Cn3%203%5Cr%5Cn5%5Cr%5Cn0%200%5Cr%5Cn1%200%5Cr%5Cn1%202%5Cr%5Cn2%201%5Cr%5Cn2%202%5Cr%5Cn0%200%22%2C%22Case%201%3A%203%20possible%20ancestors.%5Cr%5CnCase%202%3A%201%20possible%20ancestors.%5Cr%5CnCase%203%3A%20Garden%20of%20Eden.%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B21140%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1705%22%2C%22id%22%3A%221705%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1705%22%2C%22title%22%3A%22GAMEFIL%20-%20The%20Game%20of%20Efil%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GAMEFIL%20-%20The%20Game%20of%20Efil%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GAMEFIL - The Game of Efil</h1>
+<h2>题目描述</h2>
+<div> Almost anyone who has ever taken a class in computer science is familiar with the “Game of Life,” John Conway’s cellular automata with extremely simple rules of birth, survival, and death that can give rise to astonishing complexity.
+The game is played on a rectangular field of cells, each of which has eight neighbors (adjacent cells). A cell is either occupied or not. The rules for deriving a generation from the previous one are:
+- If an occupied cell has 0, 1, 4, 5, 6, 7, or 8 occupied neighbors, the organism dies (0, 1: of loneliness; 4 thru 8: of overcrowding).
+- If an occupied cell has two or three occupied neighbors, the organism survives to the next gener- ation.
+- If an unoccupied cell has three occupied neighbors, it becomes occupied (a birth occurs).
+One of the major problems researchers have looked at over the years is the existence of so-called “Garden of Eden” configurations in the Game of Life — configurations that could not have arisen as the result of the application of the rules to some previous configuration. We’re going to extend this question, which we’ll call the “Game of Efil”: Given a starting configuration, how many possible parent configurations could it have? To make matters easier, we assume a finite grid in which edge and corner cells “wrap around” (i.e., a toroidal surface). For instance, the 2 by 3 configuration:
+![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1705/69f58b1e8dd161545b89bd50e5f8cd3522c6166f.png)
+has exactly three possible parent configurations; they are:
+![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1705/c1ed6c648f8e881832facbb79e3c8f5b40827c7f.png)![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1705/0cd8674866b6d82688720a4f713dad6e387961fc.png)![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1705/f211134839105cbc03522b33785993c214ee0d4a.png)
+You should note that when counting neighbors of a cell, another cell may be counted as a neighbor more than once, if it touches the given cell on more than one side due to the wrap around. This is the case for the configurations above.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> There will be multiple test cases. Each case will start with a line containing a pair of positive integers _m_ and _n_, indicating the number of rows and columns of the configuration, respectively. The next line will contain a nonnegative integer _k_ indicating the number of “live” cells in the configuration. The following _k_ lines each contain the row and column number of one live cell, where row and column numbering both start at zero. The final test case is followed by a line where _m_ = _n_ = 0 — this line should not be processed. You may assume that the product of _m_ and _n_ is no more than 16.</div>
+<h3>输出格式</h3>
+<br />
+<div> For each test case you should print one line of output containing the case number and the number of possible ancestors. Imitate the sample output below. Note that if there are 0 ancestors, you should print out
+`Garden of Eden.`</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 3
+2
+0 0
+0 1
+3 3
+4
+0 0
+0 1
+0 2
+1 1
+3 3
+5
+0 0
+1 0
+1 2
+2 1
+2 2
+0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case 1: 3 possible ancestors.
+Case 2: 1 possible ancestors.
+Case 3: Garden of Eden.</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

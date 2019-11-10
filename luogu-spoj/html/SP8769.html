@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>STRDIST2 - String distance - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450118:KueiVRhysgpn0ukOkFIU/F/jYPxA9au8gr0by3GwjMc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Prof.XYZ%20is%20an%20expert%20in%20sequence%20analysis.%20One%20such%20problem%20he%20works%20on%20is%20bar-coding%20DNA%20sequences.%20The%20problem%20at%20hand%20is%2C%20given%20two%20DNA%20sequences%2C%20find%20a%20way%20to%20compute%20their%20similarity%20efficiently.%20Formally%20a%20DNA%20sequence%20is%20a%20string%20%28S%29%20of%20length%20N%20where%20each%20character%20is%20from%20a%20set%20of%20symbols%20derived%20from%20a%20vocabulary%20%5Cu2211.%20We%20define%20the%20m-perturbed%20set%20of%20a%20string%20S%20to%20be%20%5Cu0394%28S%2Cm%29%20which%20contains%20the%20set%20of%20all%20strings%20S%27%20obtained%20by%20changing%20atmost%20m%20characters%20of%20S%20with%20m%3C%3DN.%20In%20other%20words%2C%20%5Cu0394%28S%2Cm%29%20is%20the%20set%20of%20all%20strings%20S%27%20such%20that%20the%20hamming%20distance%20between%20S%20and%20S%27%20%28defined%20by%20H%28S%2CS%27%29%29%20is%20atmost%20m.%5Cn%5CnProf.XYZ%20defines%20an%20order%20%28m1%2Cm2%29%20similarity%20between%20two%20N-length%20strings%20S1%20and%20S2%20to%20be%20the%20number%20of%20strings%20in%20the%20intersection%20of%20%5Cu0394%28S1%2Cm1%29%20and%20%5Cu0394%28S2%2Cm2%29.%20It%20is%20easy%20to%20see%20that%20the%20number%20of%20strings%20in%20this%20intersection%20only%20depends%20on%20the%20hamming%20distance%20between%20S1%20and%20S2%20%28rather%20than%20the%20entire%20original%20strings%20S1%20and%20S2%29.%20In%20other%20words%20%7C%5Cu0394%28S1%2Cm1%29%20%5Cu2229%20%5Cu0394%28S2%2Cm2%29%7C%20is%20only%20a%20function%20of%20N%2C%20the%20hamming%20distance%20H%28S1%2CS2%29%2C%20m1%2C%20m2%20and%20the%20alphabet%20size%20%7C%5Cu2211%7C.%20Your%20objective%20is%20to%20write%20a%20program%20that%20counts%20the%20size%20of%20this%20intersection%20given%20N%2C%20m1%2C%20m2%2C%20H%28S1%2CS2%29%20and%20%7C%5Cu2211%7C.%20Since%20the%20answer%20can%20be%20very%20large%2C%20output%20the%20answer%20modulo%201000000007.%5Cn%5Cn%23%23%23%20Input%5Cn%5CnThe%20first%20line%20of%20the%20input%20contains%20the%20number%20of%20test%20cases%20T%20%28atmost%2050%29.%20Each%20testcase%20consists%20of%205%20integers%20in%20order%5Cn%5Cn%20%281%29%20N%20%3A%20The%20length%20of%20each%20of%20the%20two%20strings.%201%3C%3DN%3C%3D1000%5Cn%5Cn%20%282%29%20m1%20%3A%20The%20allowed%20number%20of%20changes%20in%20the%20first%20string.%200%3C%3Dm1%20%3C%3D%20min%28100%2CN%5C%2F2%29%5Cn%5Cn%20%283%29%20m2%20%3A%20The%20allowed%20number%20of%20changes%20in%20the%20second%20string.%200%3C%3Dm2%20%3C%3Dmin%28100%2CN%5C%2F2%29%5Cn%5Cn%20%284%29%20H%28S1%2CS2%29%3A%20The%20hamming%20distance%20between%20the%20two%20strings.%200%3C%3DH%20%3C%3Dmin%28100%2CN%5C%2F2%29%5Cn%5Cn%20%285%29%20%7C%5Cu2211%7C%20%3A%20The%20size%20of%20the%20vocabulary.%202%3C%3D%7C%5Cu2211%7C%3C%3D1000000%5Cn%5Cn%23%23%23%20Output%5Cn%5CnFor%20each%20test-case%20output%20the%20required%20number%20of%20strings%20in%20the%20intersection%20modulo%201000000007%20in%20a%20seperate%20line.%5Cn%5Cn%23%23%23%20Example%5Cn%5Cn%20%60%3Cpre%20style%3D%5C%22text-align%3A%20justify%3B%5C%22%3E%3Cstrong%3EInput%3A%3C%5C%2Fstrong%3E%3Cbr%3E%3C%5C%2Fbr%3E3%3Cbr%3E%3C%5C%2Fbr%3E6%201%202%202%202%3Cbr%3E%3C%5C%2Fbr%3E10%202%202%203%205%3Cbr%3E%3C%5C%2Fbr%3E20%203%204%205%207%3Cbr%3E%3C%5C%2Fbr%3E%3Cbr%3E%3C%5C%2Fbr%3E%3Cbr%3E%3C%5C%2Fbr%3E%3Cstrong%3EOutput%3A%3C%5C%2Fstrong%3E%3Cbr%3E%3C%5C%2Fbr%3E3%3Cstrong%3E%3Cstrong%3E%3Cbr%3E%3C%5C%2Fbr%3E%3C%5C%2Fstrong%3E%3C%5C%2Fstrong%3E24%3Cstrong%3E%3Cstrong%3E%3Cbr%3E%3C%5C%2Fbr%3E%3C%5C%2Fstrong%3E%3C%5C%2Fstrong%3E1925%3Cstrong%3E%3Cstrong%3E%3Cbr%3E%3C%5C%2Fbr%3E%3Cbr%3E%3C%5C%2Fbr%3EExplanation%20%28for%20the%20first%20test%20case%29%3C%5C%2Fstrong%3E%3C%5C%2Fstrong%3E%60The%20length%20of%20each%20string%20is%206.%20We%20are%20allowed%20to%20perturb%20atmost%20one%20element%20from%20the%20first%20string%20and%20atmost%20two%20elements%20from%20the%20second.%20Since%20their%20hamming%20distance%20needs%20to%20be%20two%2C%20let%20S1%3D000000%20be%20the%20first%20string%20and%20S2%3D000011%20be%20the%20second.%20The%20set%20%5Cu0394%28S1%2C1%29%20is%20%7B000000%2C000001%2C000010%2C000100%2C001000%2C010000%2C100000%7D.%20Without%20enumerating%20%5Cu0394%28S2%2C2%29%2C%20we%20can%20see%20that%20the%20only%20set%20of%20strings%20in%20%5Cu0394%28S1%2C1%29%20that%20can%20be%20obtained%20by%20perturbing%20atmost%20two%20elements%20in%20S2%20are%20%7B000000%2C000001%2C000010%7D.%20Thus%20%7C%5Cu0394%28S1%2Cm1%29%20%5Cu2229%20%5Cu0394%28S2%2Cm2%29%7C%20%3D3.%5Cn%5Cn%20%60%5Cu00a0%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2846%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F8769%22%2C%22id%22%3A%228769%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP8769%22%2C%22title%22%3A%22STRDIST2%20-%20String%20distance%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22STRDIST2%20-%20String%20distance%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>STRDIST2 - String distance</h1>
+<h2>题目描述</h2>
+<div>Prof.XYZ is an expert in sequence analysis. One such problem he works on is bar-coding DNA sequences. The problem at hand is, given two DNA sequences, find a way to compute their similarity efficiently. Formally a DNA sequence is a string (S) of length N where each character is from a set of symbols derived from a vocabulary ∑. We define the m-perturbed set of a string S to be Δ(S,m) which contains the set of all strings S' obtained by changing atmost m characters of S with m<=N. In other words, Δ(S,m) is the set of all strings S' such that the hamming distance between S and S' (defined by H(S,S')) is atmost m.
+Prof.XYZ defines an order (m1,m2) similarity between two N-length strings S1 and S2 to be the number of strings in the intersection of Δ(S1,m1) and Δ(S2,m2). It is easy to see that the number of strings in this intersection only depends on the hamming distance between S1 and S2 (rather than the entire original strings S1 and S2). In other words |Δ(S1,m1) ∩ Δ(S2,m2)| is only a function of N, the hamming distance H(S1,S2), m1, m2 and the alphabet size |∑|. Your objective is to write a program that counts the size of this intersection given N, m1, m2, H(S1,S2) and |∑|. Since the answer can be very large, output the answer modulo 1000000007.
+### Input
+The first line of the input contains the number of test cases T (atmost 50). Each testcase consists of 5 integers in order
+(1) N : The length of each of the two strings. 1<=N<=1000
+(2) m1 : The allowed number of changes in the first string. 0<=m1 <= min(100,N/2)
+(3) m2 : The allowed number of changes in the second string. 0<=m2 <=min(100,N/2)
+(4) H(S1,S2): The hamming distance between the two strings. 0<=H <=min(100,N/2)
+(5) |∑| : The size of the vocabulary. 2<=|∑|<=1000000
+### Output
+For each test-case output the required number of strings in the intersection modulo 1000000007 in a seperate line.
+### Example
+`<pre style="text-align: justify;"><strong>Input:</strong><br></br>3<br></br>6 1 2 2 2<br></br>10 2 2 3 5<br></br>20 3 4 5 7<br></br><br></br><br></br><strong>Output:</strong><br></br>3<strong><strong><br></br></strong></strong>24<strong><strong><br></br></strong></strong>1925<strong><strong><br></br><br></br>Explanation (for the first test case)</strong></strong>`The length of each string is 6. We are allowed to perturb atmost one element from the first string and atmost two elements from the second. Since their hamming distance needs to be two, let S1=000000 be the first string and S2=000011 be the second. The set Δ(S1,1) is {000000,000001,000010,000100,001000,010000,100000}. Without enumerating Δ(S2,2), we can see that the only set of strings in Δ(S1,1) that can be obtained by perturbing atmost two elements in S2 are {000000,000001,000010}. Thus |Δ(S1,m1) ∩ Δ(S2,m2)| =3.
+
+ ` `</div>
+
+    <h2>输入输出格式</h2>
+    <h3>输入格式</h3>
+    <br />
+    <div></div>
+    <h3>输出格式</h3>
+    <br />
+    <div></div>
+
+    <h2>输入输出样例</h2>
+            <i>暂无测试点</i>
+    
+    </article>
+    </div>
+</div>
+<!-- <script src="//www.recaptcha.net/recaptcha/api.js?hl=zh-CN&render=explicit&onload=renderCaptcha" async defer></script> -->
+</body>
+</html>

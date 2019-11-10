@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TICKET - Ticket to Ride - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449689:kXdBk08qy3kFZVzO/tjC5C638EwpoVd9OzAlmqrkW4s=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1838%5C%2F0ce7897e9246b2e8eacdf43d0a7146c918f5a7bd.png%29%5Cn%5Cn%20Ticket%20to%20Ride%20is%20a%20board%20game%20for%20up%20to%205%20players.%20The%20goal%20of%20the%20game%20is%20to%20set%20up%20train%20lines%20%28and%20to%20thwart%20the%20opponents%27%20attempts%20at%20setting%20up%20their%20train%20lines%29.%20At%20the%20beginning%20of%20play%2C%20each%20player%20is%20assigned%20four%20train%20lines.%20A%20player%20may%20choose%20to%20discard%20as%20many%20of%20these%20four%20assignments%20as%20she%20likes.%20Each%20assignment%20has%20a%20score%2C%20corresponding%20to%20its%20difficulty%20%28so%2C%20typically%2C%20a%20train%20line%20between%20e.g.%20Stockholm%20and%20Tokyo%20would%20be%20worth%20more%20than%20a%20train%20line%20between%20e.g.%20Stockholm%20and%20Utrecht%29.%20At%20the%20end%20of%20the%20game%2C%20each%20player%20gets%20points%20for%20the%20assignments%20that%20they%20have%20successfully%20completed%2C%20and%20penalty%20points%20for%20the%20assignments%20that%20they%20have%20failed%20to%20complete.%5Cn%5Cn%20An%20assignment%20consists%20of%20a%20pair%20of%20cities%20that%20are%20to%20be%20connected%20by%20a%20series%20of%20shorter%20railway%20routes.%20A%20route%20can%20be%20claimed%20%28for%20a%20certain%20cost%20associated%20with%20the%20route%29%2C%20but%20things%20are%20complicated%20by%20the%20fact%20that%20there%20is%20only%20a%20limited%20number%20of%20routes%2C%20and%20once%20a%20player%20claims%20a%20route%2C%20none%20of%20the%20other%20players%20can%20claim%20it.%20A%20player%20has%20successfully%20set%20up%20a%20train%20line%20between%20two%20cities%20if%20there%20is%20a%20path%20between%20the%20two%20cities%20using%20only%20routes%20that%20have%20been%20claimed%20by%20this%20player.%20For%20simplicity%2C%20we%20will%20ignore%20all%20additional%20aspects%20of%20the%20game%20%28including%20the%20actual%20process%20of%20claiming%20routes%20and%20additional%20ways%20to%20score%20points%29.%5Cn%5Cn%20For%20instance%2C%20if%20your%20assignment%20is%20to%20connect%20Stockholm%20and%20Amsterdam%20in%20the%20Figure%20above%2C%20you%20would%20probably%20want%20to%20claim%20the%20routes%20between%20Stockholm%20and%20Copenhagen%2C%20and%20between%20Copenhagen%20and%20Amsterdam.%20But%20if%20another%20player%20manages%20to%20claim%20the%20route%20between%20Copenhagen%20and%20Stockholm%20before%20you%2C%20your%20train%20line%20would%20have%20to%20use%20some%20other%20routes%2C%20e.g.%20by%20going%20to%20Copenhagen%20via%20Oslo.%5Cn%5Cn%20In%20this%20problem%2C%20we%20will%20consider%20the%20rather%20bold%20strategy%20of%20trying%20to%20complete%20all%20four%20assignments%20%28typically%2C%20this%20will%20be%20quite%20hard%29.%20As%20a%20preliminary%20assessment%20of%20the%20difficulty%20of%20achieving%20this%2C%20we%20would%20like%20to%20calculate%20the%20minimum%20cost%20of%20setting%20up%20all%20four%20lines%20assuming%20that%20none%20of%20the%20other%20players%20interfere%20with%20our%20plans.%20Your%20job%20is%20to%20write%20a%20program%20to%20determine%20this%20minimum%20cost.%22%2C%22inputFormat%22%3A%22%20The%20input%20consists%20of%20several%20%28at%20most%2020%29%20games%20to%20be%20analyzed.%20Each%20game%20starts%20with%20two%20integers%201%20%5Cu2264%20_n_%20%5Cu2264%2030%2C%200%20%5Cu2264%20_m_%20%5Cu2264%201000%2C%20giving%20the%20number%20of%20cities%20and%20railway%20routes%20in%20the%20map%2C%20respectively.%20Then%20follow%20_n_%20lines%2C%20giving%20the%20names%20of%20the%20_n_%20cities.%20City%20names%20are%20at%20most%2020%20characters%20long%20and%20consist%20solely%20of%20lower%20case%20letters%20%28%27a%27-%27z%27%29.%5Cn%5Cn%20After%20this%20follow%20_m_%20lines%2C%20each%20containing%20the%20names%20of%20two%20different%20cities%20and%20an%20integer%201%20%5Cu2264%20_c_%20%5Cu2264%2010000%2C%20indicating%20that%20there%20is%20a%20railway%20route%20with%20cost%20_c_%20between%20the%20two%20cities.%20Note%20that%20there%20may%20be%20several%20railway%20routes%20between%20the%20same%20pair%20of%20cities.%20You%20may%20assume%20that%20it%20is%20always%20possible%20to%20set%20up%20a%20train%20line%20from%20any%20city%20to%20any%20other%20city.%5Cn%5Cn%20Finally%2C%20there%20will%20be%20four%20lines%2C%20each%20containing%20the%20names%20of%20two%20cities%2C%20giving%20the%20four%20train%20line%20assignments.%5Cn%5Cn%20The%20input%20is%20terminated%20by%20a%20case%20where%20_n_%20%3D%20_m_%20%3D%200.%20This%20case%20should%20not%20be%20processed.%22%2C%22outputFormat%22%3A%22%20For%20each%20game%2C%20output%20a%20single%20line%20containing%20a%20single%20integer%2C%20the%20minimum%20possible%20cost%20to%20set%20up%20all%20four%20train%20lines.%22%2C%22samples%22%3A%5B%5B%2210%2015%5Cr%5Cnstockholm%5Cr%5Cnamsterdam%5Cr%5Cnlondon%5Cr%5Cnberlin%5Cr%5Cncopenhagen%5Cr%5Cnoslo%5Cr%5Cnhelsinki%5Cr%5Cndublin%5Cr%5Cnreykjavik%5Cr%5Cnbrussels%5Cr%5Cnoslo%20stockholm%20415%5Cr%5Cnstockholm%20helsinki%20396%5Cr%5Cnoslo%20london%201153%5Cr%5Cnoslo%20copenhagen%20485%5Cr%5Cnstockholm%20copenhagen%20522%5Cr%5Cncopenhagen%20berlin%20354%5Cr%5Cncopenhagen%20amsterdam%20622%5Cr%5Cnhelsinki%20berlin%201107%5Cr%5Cnlondon%20amsterdam%20356%5Cr%5Cnberlin%20amsterdam%20575%5Cr%5Cnlondon%20dublin%20463%5Cr%5Cnreykjavik%20dublin%201498%5Cr%5Cnreykjavik%20oslo%201748%5Cr%5Cnlondon%20brussels%20318%5Cr%5Cnbrussels%20amsterdam%20173%5Cr%5Cnstockholm%20amsterdam%5Cr%5Cnoslo%20london%5Cr%5Cnreykjavik%20dublin%5Cr%5Cnbrussels%20helsinki%5Cr%5Cn2%201%5Cr%5Cnfirst%5Cr%5Cnsecond%5Cr%5Cnfirst%20second%2010%5Cr%5Cnfirst%20first%5Cr%5Cnfirst%20first%5Cr%5Cnsecond%20first%5Cr%5Cnfirst%20first%5Cr%5Cn0%200%22%2C%223907%5Cr%5Cn10%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4982%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1838%22%2C%22id%22%3A%221838%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1838%22%2C%22title%22%3A%22TICKET%20-%20Ticket%20to%20Ride%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TICKET%20-%20Ticket%20to%20Ride%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TICKET - Ticket to Ride</h1>
+<h2>题目描述</h2>
+<div> ![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1838/0ce7897e9246b2e8eacdf43d0a7146c918f5a7bd.png)
+Ticket to Ride is a board game for up to 5 players. The goal of the game is to set up train lines (and to thwart the opponents' attempts at setting up their train lines). At the beginning of play, each player is assigned four train lines. A player may choose to discard as many of these four assignments as she likes. Each assignment has a score, corresponding to its difficulty (so, typically, a train line between e.g. Stockholm and Tokyo would be worth more than a train line between e.g. Stockholm and Utrecht). At the end of the game, each player gets points for the assignments that they have successfully completed, and penalty points for the assignments that they have failed to complete.
+An assignment consists of a pair of cities that are to be connected by a series of shorter railway routes. A route can be claimed (for a certain cost associated with the route), but things are complicated by the fact that there is only a limited number of routes, and once a player claims a route, none of the other players can claim it. A player has successfully set up a train line between two cities if there is a path between the two cities using only routes that have been claimed by this player. For simplicity, we will ignore all additional aspects of the game (including the actual process of claiming routes and additional ways to score points).
+For instance, if your assignment is to connect Stockholm and Amsterdam in the Figure above, you would probably want to claim the routes between Stockholm and Copenhagen, and between Copenhagen and Amsterdam. But if another player manages to claim the route between Copenhagen and Stockholm before you, your train line would have to use some other routes, e.g. by going to Copenhagen via Oslo.
+In this problem, we will consider the rather bold strategy of trying to complete all four assignments (typically, this will be quite hard). As a preliminary assessment of the difficulty of achieving this, we would like to calculate the minimum cost of setting up all four lines assuming that none of the other players interfere with our plans. Your job is to write a program to determine this minimum cost.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> The input consists of several (at most 20) games to be analyzed. Each game starts with two integers 1 ≤ _n_ ≤ 30, 0 ≤ _m_ ≤ 1000, giving the number of cities and railway routes in the map, respectively. Then follow _n_ lines, giving the names of the _n_ cities. City names are at most 20 characters long and consist solely of lower case letters ('a'-'z').
+After this follow _m_ lines, each containing the names of two different cities and an integer 1 ≤ _c_ ≤ 10000, indicating that there is a railway route with cost _c_ between the two cities. Note that there may be several railway routes between the same pair of cities. You may assume that it is always possible to set up a train line from any city to any other city.
+Finally, there will be four lines, each containing the names of two cities, giving the four train line assignments.
+The input is terminated by a case where _n_ = _m_ = 0. This case should not be processed.</div>
+<h3>输出格式</h3>
+<br />
+<div> For each game, output a single line containing a single integer, the minimum possible cost to set up all four train lines.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10 15
+stockholm
+amsterdam
+london
+berlin
+copenhagen
+oslo
+helsinki
+dublin
+reykjavik
+brussels
+oslo stockholm 415
+stockholm helsinki 396
+oslo london 1153
+oslo copenhagen 485
+stockholm copenhagen 522
+copenhagen berlin 354
+copenhagen amsterdam 622
+helsinki berlin 1107
+london amsterdam 356
+berlin amsterdam 575
+london dublin 463
+reykjavik dublin 1498
+reykjavik oslo 1748
+london brussels 318
+brussels amsterdam 173
+stockholm amsterdam
+oslo london
+reykjavik dublin
+brussels helsinki
+2 1
+first
+second
+first second 10
+first first
+first first
+second first
+first first
+0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3907
+10</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>COD1 - Save the cows! - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450453:BcaQMJ7et4hXuAS3Ek4IWYzTQss/emC11fr9LTcPnqw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22There%20is%20a%20green%20square%20grid%20of%20size%20nXm%20with%20k%20cows%20in%20it.%5Cn%5CnThe%20objective%20of%20the%20cows%20is%20to%20escape%20the%20field.If%20any%20one%20of%20the%20cows%20escape%20all%20cows%20are%20set%20free.%5Cn%5CnThere%20is%20a%20farmer%20who%20tries%20to%20restrict%20the%20field%20by%20putting%20up%20fences%20along%20the%20border%20.Initially%20the%20grid%20is%20not%20fenced.%5Cn%5CnCows%20coordinate%20and%20think%20of%20a%20plan%20to%20escape.Cows%20get%20the%20first%20move.Cows%20and%20farmer%20move%20alternatively.At%20any%20move%20any%20one%20of%20the%20k%20cows%20can%20move%20to%20their%20neighboring%20cell%28the%20cell%20that%20shares%20an%20edge%20with%20it%29.If%20the%20cow%20is%20already%20at%20the%20edge%20of%20the%20field%20and%20the%20edge%20is%20not%20fenced%20then%20it%20can%20escape%20it%20and%20hence%20all%20cows%20are%20set%20free.After%20every%20move%20of%20the%20cows%20the%20farmer%20can%20fence%20some%20edge%20at%20the%20border%20of%20the%20field%20of%20length%201%20so%20that%20no%20cow%20is%20able%20to%20escape%20from%20that%20edge%20anymore.%5Cn%5CnThe%20question%20is%3A%5C%22Will%20the%20innocent%20cows%20manage%20to%20escape%3F%5C%22%22%2C%22inputFormat%22%3A%22First%20line%20contains%20T-number%20of%20test%20cases%280%3CT%3C%3D100%29%5Cn%5CnEach%20test%20case%20contains%203%20integers%2C%20separated%20by%20space%3A%201%22%2C%22outputFormat%22%3A%22Output%20one%20word%3A%20%5C%22YES%5C%22%20%5Cu2014%20if%20cows%20escape%2C%20%5C%22NO%5C%22%20%5Cu2014%20otherwise.%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cn2%202%2012%202%201%5Cr%5Cn1%202%22%2C%22YES%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B10000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F16134%22%2C%22id%22%3A%2216134%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu80cc%5Cu666f%5Cr%5Cn_%2A%2A~~%5Cu5728%5Cu4e00%5Cu4e2a%5Cu6708%5Cu9ed1%5Cu98ce%5Cu9ad8%5Cu7684%5Cu6674%5Cu7a7a%5Cu4e07%5Cu91cc%5Cu7684%5Cu9ec4%5Cu660f~~%2A%2A_%20~~%5Cuff08%5Cu96fe%5Cuff09~~%5Cr%5Cn%2A%2A%20_~~%5Cu519c%5Cu573a%5Cu4e3b%5Cu51b3%5Cu5b9a%5Cu5c06%5Cu8fd9%5Cu4e9b%5Cu53ef%5Cu7231%5Cu7684%5Cu5976%5Cu725b%5Cu5168%5Cu90e8%5Cu7096%5Cu6c64~~_%2A%2A~~%5Cuff08%5Cu5927%5Cu96fe%5Cuff09~~%5Cr%5Cn------------%5Cr%5Cn%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5927%5Cu5c0f%5Cu4e3an%2Am%5Cu7684%5Cu6b63%5Cu65b9%5Cu5f62%5Cu7f51%5Cu683c%5Cuff0c%5Cu91cc%5Cu9762%5Cu6709k%5Cu4e2a%5Cu5976%5Cu725b%5Cu3002%5Cr%5Cn%5Cu5976%5Cu725b%5Cu7684%5Cu76ee%5Cu6807%5Cu662f%5Cu9003%5Cu79bb%5Cu7530%5Cu5730%5Cu3002%5Cu5982%5Cu679c%5Cu4efb%5Cu4f55%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu9003%5Cu8131%5Cuff0c%5Cu6240%5Cu6709%5Cu5976%5Cu725b%5Cu90fd%5Cu4f1a%5Cu88ab%5Cu6551%5Cu51fa%5Cu6765%5Cu3002%5Cr%5Cn%5Cu5f00%5Cu59cb%5Cu65f6%5Cu7530%5Cu5730%5Cu7f51%5Cu683c%5Cu6ca1%5Cu6709%5Cu56f4%5Cu680f%5Cu3002%5Cu4f46%5Cu73b0%5Cu5728%5Cu7530%5Cu5730%5Cu7684%5Cu519c%5Cu6c11%5Cu8bd5%5Cu56fe%5Cu901a%5Cu8fc7%5Cu6cbf%5Cu8fb9%5Cu754c%5Cu8bbe%5Cu7f6e%5Cu56f4%5Cu680f%5Cu6765%5Cu9650%5Cu5236%5Cu5976%5Cu725b%5Cu3002%5Cr%5Cn%5Cu5976%5Cu725b%5Cu4eec%5Cu673a%5Cu667a%5Cu7684%5Cu8fdb%5Cu884c%5Cu4e86%5Cu534f%5Cu5546%5Cu5e76%5Cu60f3%5Cu51fa%5Cu9003%5Cu8dd1%5Cu7684%5Cu8ba1%5Cu5212%5Cu3002%5Cu5976%5Cu725b%5Cu5f00%5Cu59cb%5Cu8d70%5Cu7b2c%5Cu4e00%5Cu6b65%5Cuff0c%5Cu4e4b%5Cu540e%5Cu5976%5Cu725b%5Cu548c%5Cu519c%5Cu6c11%5Cu4ea4%5Cu66ff%5Cu884c%5Cu52a8%5Cu3002%5Cu4efb%5Cu4f55%5Cu4e00%5Cu5934%5Cu5976%5Cu725b%5Cu90fd%5Cu53ef%5Cu4ee5%5Cu79fb%5Cu52a8%5Cu5230%5Cu5b83%5Cu4eec%5Cu7684%5Cu76f8%5Cu90bb%5Cu683c%5Cu5b50%5Cuff08%5Cu4e0e%5Cu5b83%5Cu6709%5Cu540c%5Cu4e00%5Cu6761%5Cu8fb9%5Cu7684%5Cu7684%5Cu683c%5Cu5b50%5Cuff09%5Cu3002%5Cu5982%5Cu679c%5Cu725b%5Cu5df2%5Cu7ecf%5Cu5728%5Cu7530%5Cu5730%5Cu7684%5Cu8fb9%5Cu7f18%5Cu4e14%5Cu8fb9%5Cu7f18%5Cu6ca1%5Cu6709%5Cu56f4%5Cu680f%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5b83%5Cu53ef%5Cu4ee5%5Cu9003%5Cu8131%5Cu7530%5Cu5730%5Cu5e76%5Cu4e14%5Cu62ef%5Cu6551%2A%2A~~%5Cu4e16%5Cu754c~~%2A%2A%5Cu5176%5Cu4ed6%5Cu5976%5Cu725b%5Cu3002%5Cu5728%5Cu6bcf%5Cu6b21%5Cu79fb%5Cu52a8%5Cu5976%5Cu725b%5Cu540e%5Cuff0c%5Cu519c%5Cu6c11%5Cu53ef%5Cu4ee5%5Cu5728%5Cu7530%5Cu5730%5Cu7684%5Cu8fb9%5Cu7f18%5Cu5904%5Cu56f4%5Cu4f4f%5Cu4e00%5Cu6761%5Cu957f%5Cu5ea6%5Cu4e3a1%5Cu7684%5Cu8fb9%5Cu7f18%5Cu3002%5Cu4e4b%5Cu540e%5Cu6ca1%5Cu6709%5Cu5976%5Cu725b%5Cu80fd%5Cu591f%5Cu4ece%5Cu90a3%5Cu4e2a%5Cu8fb9%5Cu7f18%5Cu9003%5Cu8131%5Cu4e86%5Cu3002%5Cr%5Cn%23%23%23%23%23%23%20%5Cu95ee%5Cu9898%5Cu662f%5Cuff1a%5Cu201c%5Cu673a%5Cu667a%5Cu7684%5Cu5976%5Cu725b%5Cu4f1a%5Cu9003%5Cu8131%5Cu5417%5Cuff1f%5Cu201d%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542bT%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cuff080%20%3CT%20%3C%3D%20100%5Cuff09%5Cr%5Cn%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cu5305%5Cu542b3%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu6574%5Cu6570%5Cu4e4b%5Cu95f4%5Cu7528%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu8bcd%5Cuff1a%5Cr%5Cn-%20%5Cu5982%5Cu679c%5Cu5976%5Cu725b%5Cu9003%5Cu8131%5Cu8f93%5Cu51fa%5Cr%5CnYES%5Cr%5Cn-%20%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%5Cr%5CnNO%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP16134%22%2C%22title%22%3A%22COD1%20-%20Save%20the%20cows%21%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22COD1%20-%20Save%20the%20cows%21%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>COD1 - Save the cows!</h1>
+<h2>题意翻译</h2>
+<div># 题目背景
+_**~~在一个月黑风高的晴空万里的黄昏~~**_ ~~（雾）~~
+** _~~农场主决定将这些可爱的奶牛全部炖汤~~_**~~（大雾）~~
+------------
+# 题目描述
+有一个大小为n*m的正方形网格，里面有k个奶牛。
+奶牛的目标是逃离田地。如果任何一头奶牛逃脱，所有奶牛都会被救出来。
+开始时田地网格没有围栏。但现在田地的农民试图通过沿边界设置围栏来限制奶牛。
+奶牛们机智的进行了协商并想出逃跑的计划。奶牛开始走第一步，之后奶牛和农民交替行动。任何一头奶牛都可以移动到它们的相邻格子（与它有同一条边的的格子）。如果牛已经在田地的边缘且边缘没有围栏，那么它可以逃脱田地并且拯救**~~世界~~**其他奶牛。在每次移动奶牛后，农民可以在田地的边缘处围住一条长度为1的边缘。之后没有奶牛能够从那个边缘逃脱了。
+###### 问题是：“机智的奶牛会逃脱吗？”
+# 输入输出格式
+输入格式：
+第一行包含T个测试用例（0 <T <=100） 每个测试用例包含3个整数，每个整数之间用一个空格分隔 输出格式： 输出一个词： - 如果奶牛逃脱输出 YES - 否则输出 NO</div>
+<h2>题目描述</h2>
+<div>There is a green square grid of size nXm with k cows in it.
+The objective of the cows is to escape the field.If any one of the cows escape all cows are set free.
+There is a farmer who tries to restrict the field by putting up fences along the border .Initially the grid is not fenced.
+Cows coordinate and think of a plan to escape.Cows get the first move.Cows and farmer move alternatively.At any move any one of the k cows can move to their neighboring cell(the cell that shares an edge with it).If the cow is already at the edge of the field and the edge is not fenced then it can escape it and hence all cows are set free.After every move of the cows the farmer can fence some edge at the border of the field of length 1 so that no cow is able to escape from that edge anymore.
+The question is:"Will the innocent cows manage to escape?"</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line contains T-number of test cases(0<T<=100) Each test case contains 3 integers, separated by space: 1</div>
+<h3>输出格式</h3>
+<br />
+<div>Output one word: "YES" — if cows escape, "NO" — otherwise.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+2 2 12 2 1
+1 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

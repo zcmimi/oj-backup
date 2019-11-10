@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>DRAGON - Greedy Hydra - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449648:0Cc/eTHs8h2mL014S7SLu6c2ZEw63ZX3Hdylcu+Busk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Hydra%20is%20some%20very%20greedy%20animal.%20A%20hydra%20has%209%20heads%20when%20he%20is%20born%2C%20and%20many%20more%20new%20heads%20will%20come%20out%20when%20he%20grows%20up.%20Of%20course%2C%20some%20old%20heads%20will%20break%20off%20because%20of%20caducidy.%5Cn%5CnOne%20day%2C%20a%20hydra%20with%20M%20heads%20finds%20a%20tree%20with%20N%20fruits%20on%20it.%20He%20is%20very%20delighted%20and%20wants%20to%20eat%20this%20tree%20instantly.%20Since%20he%20has%20M%20heads%2C%20he%20must%20divide%20these%20N%20fruit%20into%20M%20groups%2C%20each%20group%20contains%20at%20least%201%20fruit%2C%20and%20each%20head%20will%20eat%20a%20group%20of%20fruits.%5Cn%5CnThe%20biggest%20head%20among%20the%20M%20heads%20is%20named%20%5C%22Boss%5C%22%2C%20it%20must%20eat%20neither%20more%20nor%20less%20than%20K%20fruits%2C%20and%2C%20in%20the%20nature%20of%20things%2C%20the%20biggest%20fruit%20included.%20These%20fruits%20are%20connected%20by%20N-1%20branches%2C%20and%20there%20exists%20a%20path%20made%20up%20with%20branches%20between%20each%20pair%20of%20fruit.%5Cn%5CnIf%20two%20fruit%20connected%20by%20a%20single%20branch%20is%20put%20in%20different%20groups%2C%20the%20corresponding%20two%20heads%20will%20break%20the%20branch%20and%20eat%20the%20two%20fruits%2C%20otherwise%20the%20corresponding%20head%20will%20eat%20the%20two%20fruits%20without%20breaking%20the%20branch.%20Eating%20branches%20is%20not%20very%20comfortable%20of%20course%2C%20so%20every%20branch%20has%20a%20weight%20of%20illness%2C%20and%20the%20weight%20of%20illness%20of%20this%20hydra%20is%20the%20sum%20of%20the%20weights%20of%20illness%20of%20all%20brances%20he%20has%20eaten.%5Cn%5CnYour%20task%20is%20to%20help%20the%20hydra%20to%20minimize%20his%20weight%20of%20illness.%5Cn%5CnThe%20picture%20below%20is%20an%20example.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1461%5C%2F7bbb76ce762b159b1283ba39d2d24ba5cc416096.png%29%5Cn%5CnN%3D8%2CM%3D2%2CK%3D4.The%20bigger%20head%20eats%204%20fruits%28full%20points%29%2C%20the%20smaller%20head%20eats%204%20fruits%28empty%20points%29.%20The%20branch%20signed%20by%20a%20thin%20segment%20is%20eaten%20by%20the%20hydra.%22%2C%22inputFormat%22%3A%22Ten%20test%20cases%28Given%20one%20after%20another%2C%20you%20have%20to%20process%20all%21%29.%20For%20each%20test%20case%20the%20first%20line%20contains%203%20integers%20N%281%3C%3DN%3C%3D300%29%2CM%282%3C%3DM%3C%3DN%29%2CK%281%3C%3DK%3C%3DN%29%2C%20separated%20by%20single%20spaces.%20The%20N%20fruits%20are%20numbered%201..N%2C%20and%20the%20biggest%20fruit%20is%20always%20numbered%201.%20N-1%20lines%20follow%2C%20each%20contains%203%20integers%20i%2Cj%2Ck%20separated%20by%20spaces%20denoted%20that%20there%20is%20a%20branch%20between%20fruit%20i%281%3C%3Di%3C%3DN%29%20and%20fruit%20j%281%3C%3Dj%3C%3DN%29%20and%20the%20weight%20of%20illness%20of%20this%20branch%20is%20k%280%3C%3Dk%3C%3D100000%29.%22%2C%22outputFormat%22%3A%22Ten%20lines%2C%20each%20contains%20a%20single%20integer%20-%20the%20minimum%20weight%20of%20illness%20of%20the%20hydra.%20If%20we%20can%27t%20divide%20the%20fruit%20into%20M%20groups%2C%20output%20%5C%22-1%5C%22%28without%20quotes%29.%22%2C%22samples%22%3A%5B%5B%228%202%204%5Cr%5Cn1%202%2020%5Cr%5Cn1%203%204%20%5Cr%5Cn1%204%2013%5Cr%5Cn2%205%2010%5Cr%5Cn2%206%2012%5Cr%5Cn3%207%2015%5Cr%5Cn3%208%205%5Cr%5Cn%5Band%209%20test%20cases%20more%5D%22%2C%224%5Cr%5Cn%5Band%209%20test%20cases%20more%5D%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B9000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1461%22%2C%22id%22%3A%221461%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1461%22%2C%22title%22%3A%22DRAGON%20-%20Greedy%20Hydra%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22DRAGON%20-%20Greedy%20Hydra%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>DRAGON - Greedy Hydra</h1>
+<h2>题目描述</h2>
+<div>Hydra is some very greedy animal. A hydra has 9 heads when he is born, and many more new heads will come out when he grows up. Of course, some old heads will break off because of caducidy.
+One day, a hydra with M heads finds a tree with N fruits on it. He is very delighted and wants to eat this tree instantly. Since he has M heads, he must divide these N fruit into M groups, each group contains at least 1 fruit, and each head will eat a group of fruits.
+The biggest head among the M heads is named "Boss", it must eat neither more nor less than K fruits, and, in the nature of things, the biggest fruit included. These fruits are connected by N-1 branches, and there exists a path made up with branches between each pair of fruit.
+If two fruit connected by a single branch is put in different groups, the corresponding two heads will break the branch and eat the two fruits, otherwise the corresponding head will eat the two fruits without breaking the branch. Eating branches is not very comfortable of course, so every branch has a weight of illness, and the weight of illness of this hydra is the sum of the weights of illness of all brances he has eaten.
+Your task is to help the hydra to minimize his weight of illness.
+The picture below is an example.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1461/7bbb76ce762b159b1283ba39d2d24ba5cc416096.png)
+N=8,M=2,K=4.The bigger head eats 4 fruits(full points), the smaller head eats 4 fruits(empty points). The branch signed by a thin segment is eaten by the hydra.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Ten test cases(Given one after another, you have to process all!). For each test case the first line contains 3 integers N(1<=N<=300),M(2<=M<=N),K(1<=K<=N), separated by single spaces. The N fruits are numbered 1..N, and the biggest fruit is always numbered 1. N-1 lines follow, each contains 3 integers i,j,k separated by spaces denoted that there is a branch between fruit i(1<=i<=N) and fruit j(1<=j<=N) and the weight of illness of this branch is k(0<=k<=100000).</div>
+<h3>输出格式</h3>
+<br />
+<div>Ten lines, each contains a single integer - the minimum weight of illness of the hydra. If we can't divide the fruit into M groups, output "-1"(without quotes).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8 2 4
+1 2 20
+1 3 4 
+1 4 13
+2 5 10
+2 6 12
+3 7 15
+3 8 5
+[and 9 test cases more]</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4
+[and 9 test cases more]</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

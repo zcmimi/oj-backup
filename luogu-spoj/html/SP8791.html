@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>DYNALCA - Dynamic LCA - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450119:IG/G7iiWg4EoMmP4WbKZgVKzBcjJKoZBmY7N5Z+v8N4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22A%20forest%20of%20rooted%20trees%20initially%20consists%20of%20N%20%281%5Cn%5CnYou%20must%20process%20the%20following%20queries%2C%20where%20%281%5Cn%5Cn-%20%2A%2Alink%2A%2A%20A%20B%20%3A%20add%20an%20edge%20from%20vertex%20A%20to%20B%2C%20making%20A%20a%20child%20of%20B%2C%20where%20initially%20A%20is%20a%20root%20vertex%2C%20A%20and%20B%20are%20in%20different%20trees.%5Cn-%20%2A%2Acut%2A%2A%20A%20%3A%20remove%20edge%20from%20A%20to%20its%20parent%2C%20where%20initially%20A%20is%20a%20non-root%20vertex.%5Cn-%20%2A%2Alca%2A%2A%20A%20B%20%3A%20print%20the%20lowest%20common%20ancestor%20of%20A%20and%20B%2C%20where%20A%20and%20B%20are%20in%20the%20same%20tree.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20the%20number%20of%20initial%20single-vertex%20trees%20N%20and%20the%20number%20of%20queries%20M%20%281%22%2C%22outputFormat%22%3A%22For%20each%20%2A%2Alca%2A%2A%20query%20output%20the%20lowest%20common%20ancestor%20%28vertex%20number%20between%201%20and%20N%29.%22%2C%22samples%22%3A%5B%5B%225%209%5Cnlca%201%201%5Cnlink%201%202%5Cnlink%203%202%5Cnlink%204%203%5Cnlca%201%204%5Cnlca%203%204%5Cncut%204%5Cnlink%205%203%5Cnlca%201%205%22%2C%221%5Cn2%5Cn3%5Cn2%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B367%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F8791%22%2C%22id%22%3A%228791%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu4e2a%5Cu68ee%5Cu6797%5Cu6700%5Cu521d%5Cu7531%20%24n%20%281%20%5C%5Cle%20n%20%5C%5Cle%20100000%29%24%20%5Cu4e2a%5Cu4e92%5Cu4e0d%5Cu76f8%5Cu8fde%5Cu7684%5Cu70b9%5Cu6784%5Cu6210%5Cn%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu5904%5Cu7406%5Cu4ee5%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn%5Cn-%20%2A%2Alink%20A%20B%2A%2A%5Cuff1a%5Cu6dfb%5Cu52a0%5Cu4ece%5Cu9876%5Cu70b9A%5Cu5230B%5Cu7684%5Cu8fb9%5Cuff0c%5Cu4f7fA%5Cu6210%5Cu4e3aB%5Cu7684%5Cu5b50%5Cu8282%5Cu70b9%5Cuff0c%5Cu5176%5Cu4e2d%5Cu4fdd%5Cu8bc1A%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6839%5Cu9876%5Cu70b9%5Cuff0cA%5Cu548cB%5Cu5728%5Cu4e0d%5Cu540c%5Cu7684%5Cu6811%5Cu4e2d%5Cu3002%5Cn%5Cn-%20%2A%2Acut%20A%2A%2A%5Cuff1a%5Cu5207%5Cu65ad%5Cu70b9A%5Cu5230%5Cu5176%5Cu7236%5Cu8282%5Cu70b9%5Cu7684%5Cu8fb9%5Cuff0c%5Cu4fdd%5Cu8bc1A%5Cu662f%5Cu4e00%5Cu4e2a%5Cu975e%5Cu6839%5Cu8282%5Cu70b9%5Cu3002%5Cn%5Cn-%20%2A%2Alca%20A%20B%2A%2A%5Cuff1a%5Cu8f93%5Cu51faA%5Cu548cB%5Cu7684%5Cu6700%5Cu8fd1%5Cu5171%5Cu540c%5Cu7956%5Cu5148%5Cuff0c%5Cu4fdd%5Cu8bc1A%5Cu548cB%5Cu5728%5Cu540c%5Cu4e00%5Cu68f5%5Cu6811%5Cu4e2d%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40Chtholly_Nota%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A309%2C%22totalAccepted%22%3A100%2C%22pid%22%3A%22SP8791%22%2C%22title%22%3A%22DYNALCA%20-%20Dynamic%20LCA%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A166060%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A16147%2C%22name%22%3A%22SP8791%20DYNALCA%20-%20Dynamic%20LCA%22%2C%22slug%22%3A%22SP8791%22%7D%7D%2C%7B%22id%22%3A165235%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%5Cuff0c%5Cu8fd8%5Cu662fTLE%22%2C%22forum%22%3A%7B%22id%22%3A16147%2C%22name%22%3A%22SP8791%20DYNALCA%20-%20Dynamic%20LCA%22%2C%22slug%22%3A%22SP8791%22%7D%7D%2C%7B%22id%22%3A165162%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9LCA%22%2C%22forum%22%3A%7B%22id%22%3A16147%2C%22name%22%3A%22SP8791%20DYNALCA%20-%20Dynamic%20LCA%22%2C%22slug%22%3A%22SP8791%22%7D%7D%2C%7B%22id%22%3A100143%2C%22title%22%3A%22%5Cu840c%5Cu65b0%5Cu6c42%5Cu67e5%5Cu9519Q%5Cu03c9Q%22%2C%22forum%22%3A%7B%22id%22%3A16147%2C%22name%22%3A%22SP8791%20DYNALCA%20-%20Dynamic%20LCA%22%2C%22slug%22%3A%22SP8791%22%7D%7D%2C%7B%22id%22%3A87603%2C%22title%22%3A%22%5Cu9898%5Cu9762%5Cu51fa%5Cu9505%22%2C%22forum%22%3A%7B%22id%22%3A16147%2C%22name%22%3A%22SP8791%20DYNALCA%20-%20Dynamic%20LCA%22%2C%22slug%22%3A%22SP8791%22%7D%7D%2C%7B%22id%22%3A87071%2C%22title%22%3A%22tle%5Cu6c42%5Cu52a9qaq%22%2C%22forum%22%3A%7B%22id%22%3A16147%2C%22name%22%3A%22SP8791%20DYNALCA%20-%20Dynamic%20LCA%22%2C%22slug%22%3A%22SP8791%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1501%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5DTree%20II%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4151%22%2C%22title%22%3A%22%5BWC2011%5D%5Cu6700%5Cu5927XOR%5Cu548c%5Cu8def%5Cu5f84%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4847%22%2C%22title%22%3A%22%5Cu94f6%5Cu6cb3%5Cu82f1%5Cu96c4%5Cu4f20%5Cu8bf4V2%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF1017G%22%2C%22title%22%3A%22The%20Tree%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P5212%22%2C%22title%22%3A%22SubString%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22DYNALCA%20-%20Dynamic%20LCA%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>DYNALCA - Dynamic LCA</h1>
+<h2>题意翻译</h2>
+<div>有一个森林最初由 $n (1 \le n \le 100000)$ 个互不相连的点构成
+你需要处理以下操作：
+- **link A B**：添加从顶点A到B的边，使A成为B的子节点，其中保证A是一个根顶点，A和B在不同的树中。
+- **cut A**：切断点A到其父节点的边，保证A是一个非根节点。
+- **lca A B**：输出A和B的最近共同祖先，保证A和B在同一棵树中。
+感谢@Chtholly_Nota 提供的翻译</div>
+<h2>题目描述</h2>
+<div>A forest of rooted trees initially consists of N (1
+You must process the following queries, where (1
+- **link** A B : add an edge from vertex A to B, making A a child of B, where initially A is a root vertex, A and B are in different trees.
+- **cut** A : remove edge from A to its parent, where initially A is a non-root vertex.
+- **lca** A B : print the lowest common ancestor of A and B, where A and B are in the same tree.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains the number of initial single-vertex trees N and the number of queries M (1</div>
+<h3>输出格式</h3>
+<br />
+<div>For each **lca** query output the lowest common ancestor (vertex number between 1 and N).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 9
+lca 1 1
+link 1 2
+link 3 2
+link 4 3
+lca 1 4
+lca 3 4
+cut 4
+link 5 3
+lca 1 5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+2
+3
+2</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FN16MARS - What Really Happened on Mars? - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450659:8gczPuDWwIShcCqp5Xzvd50SPBcEuWi7+kmBx72C4SM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Real-time%20software%20in%20the%20Mars%20Pathfinder%20spacecraft%20suffered%20from%20an%20issue%20known%20as%20priority%20inversion.%20One%20technique%20to%20address%20this%20issue%20is%20to%20use%20the%20Priority%20Ceiling%20Protocol.%5Cn%5CnIn%20this%20problem%2C%20you%20will%20simulate%20the%20execution%20of%20multiple%20tasks%20according%20to%20this%20protocol.%20The%20tasks%20share%20a%20collection%20of%20resources%2C%20each%20of%20which%20can%20be%20used%20by%20only%20one%20task%20at%20a%20time.%20To%20ensure%20this%2C%20resources%20must%20be%20locked%20before%20use%20and%20unlocked%20after%20use.%20Each%20task%20is%20defined%20by%20a%20start%20time%2C%20a%20unique%20_base%20priority_%2C%20and%20a%20sequence%20of%20instructions.%20Each%20task%20also%20has%20a%20_current%20priority_%2C%20which%20may%20change%20during%20execution.%20Instructions%20come%20in%20three%20types%3A%5Cn%5Cn-%20_compute_%20%5Cu2013%20perform%20a%20computation%20for%20one%20microsecond%5Cn-%20_lock%20%24%20k%20%24_%20%20%5Cu2013%20lock%20resource%20%24%20k%20%24%20%28which%20takes%20no%20processor%20time%29%5Cn-%20_unlock%20%24%20k%20%24_%20%20%5Cu2013%20unlock%20resource%20%24%20k%20%24%20%28which%20takes%20no%20processor%20time%29%5Cn%5CnAfter%20locking%20a%20resource%2C%20a%20task%20is%20said%20to%20_own_%20the%20resource%20until%20the%20task%20unlocks%20it.%20A%20task%20will%20unlock%20only%20the%20owned%20resource%20it%20most%20recently%20locked%2C%20will%20not%20lock%20a%20resource%20it%20already%20owns%2C%20and%20will%20complete%20with%20no%20owned%20resources.%5Cn%5CnEach%20resource%20has%20a%20fixed%20_priority%20ceiling_%2C%20which%20is%20the%20highest%20base%20priority%20of%20any%20task%20that%20contains%20an%20instruction%20to%20lock%20that%20resource.%5Cn%5CnThere%20is%20a%20single%20processor%20that%20executes%20the%20tasks.%20When%20the%20processor%20starts%2C%20it%20initializes%20its%20clock%20to%20zero%20and%20then%20runs%20an%20infinite%20loop%20with%20the%20following%20steps%3A%5Cn%5Cn%20Step%201.%20Identify%20_running_%20tasks.%20A%20task%20is%20running%20if%20its%20start%20time%20is%20less%20than%20or%20equal%20to%20the%20current%20processor%20clock%20and%20not%20all%20of%20its%20instructions%20have%20been%20executed.%5Cn%5Cn%20%20Step%202.%20Determine%20the%20current%20priorities%20of%20the%20running%20tasks%20and%20which%20of%20the%20running%20tasks%20are%20_blocked_.%20A%20running%20task%20%24%20T%20%24%20is%20blocked%20if%20the%20next%20instruction%20in%20%24%20T%20%24%20is%20to%20lock%20resource%20%24%20k%20%24%20and%20either%20resource%20%24%20k%20%24%20is%20already%20owned%20or%20at%20least%20one%20other%20task%20owns%20a%20resource%20%24%20%5C%5Cell%20%24%20whose%20priority%20ceiling%20is%20greater%20than%20or%20equal%20to%20the%20current%20priority%20of%20%24%20T%20%24%20.%20If%20%24%20T%20%24%20is%20blocked%2C%20it%20is%20said%20to%20be%20blocked%20by%20every%20task%20owning%20such%20%24%20k%20%24%20or%20%24%20%5C%5Cell%20%24%20.%20The%20current%20priority%20of%20a%20task%20%24%20T%20%24%20is%20the%20maximum%20of%20%24%20T%20%24%20%5Cu2019s%20base%20priority%20and%20the%20current%20priorities%20of%20all%20tasks%20that%20%24%20T%20%24%20blocks.%5Cn%5Cn%20%20Step%203.%20Execute%20the%20next%20instruction%20of%20the%20non-blocked%20running%20task%20%28if%20any%29%20with%20the%20highest%20current%20priority.%20If%20there%20was%20no%20such%20task%20or%20if%20a%20compute%20instruction%20was%20executed%2C%20increment%20the%20processor%20clock%20by%20one%20microsecond.%20If%20a%20lock%20or%20unlock%20instruction%20was%20executed%2C%20do%20not%20increment%20the%20clock.%5Cn%5Cn%20The%20Priority%20Ceiling%20Protocol%20defined%20above%20has%20the%20following%20properties%3A%5Cn%5Cn-%20Current%20priority%20is%20defined%20in%20terms%20of%20current%20priority%20and%20blocking%2C%20and%20blocking%20is%20defined%20in%20terms%20of%20current%20priority.%20While%20this%20may%20appear%20circular%2C%20there%20will%20always%20be%20a%20unique%20set%20of%20current%20priorities%20that%20satisfy%20the%20definitions.%5Cn-%20All%20tasks%20will%20eventually%20complete.%5Cn-%20There%20will%20never%20be%20a%20tie%20in%20step%203.%22%2C%22inputFormat%22%3A%22Multiple%20test%20cases.%20Please%20process%20until%20EOF%20is%20reached.%20For%20each%20test%20case%3A%5Cn%5CnThe%20first%20line%20of%20the%20input%20contains%20two%20integers%20%24%20t%20%24%20%24%20%281%20%5C%5Cleq%20t%20%5C%5Cleq%2020%29%20%24%20%2C%20which%20is%20the%20number%20of%20tasks%2C%20and%20%24%20r%20%24%20%28%20%24%201%20%5C%5Cleq%20r%20%5C%5Cleq%2020%20%24%20%29%2C%20which%20is%20the%20number%20of%20resources.%20This%20is%20followed%20by%20%24%20t%20%24%20lines%2C%20where%20the%20%24%20i%5E%5C%5Ctext%20%7Bth%7D%20%24%20of%20these%20lines%20describes%20task%20%24%20i%20%24%20.%20The%20description%20of%20a%20task%20begins%20with%20three%20integers%3A%20the%20task%5Cu2019s%20start%20time%20%24%20s%20%24%20%28%20%24%201%20%5C%5Cleq%20s%20%5C%5Cleq%2010%5C%5C%2C%20%20%20%20%20000%20%24%20%29%2C%20its%20base%20priority%20%24%20b%20%24%20%28%20%24%201%20%20%20%20%20%5C%5Cleq%20b%20%5C%5Cleq%20t%20%24%20%29%2C%20and%20an%20integer%20%24%20a%20%24%20%28%20%24%201%20%20%20%20%20%5C%5Cleq%20a%20%5C%5Cleq%20100%20%24%20%29.%20A%20task%20description%20is%20concluded%20by%20a%20sequence%20of%20%24%20a%20%24%20strings%20describing%20the%20instructions.%20Each%20string%20is%20a%20letter%20%28C%20or%20L%20or%20U%29%20followed%20by%20an%20integer.%20The%20string%20C%20%24%20n%20%24%20%28%20%24%201%20%20%20%20%20%5C%5Cleq%20n%20%5C%5Cleq%20100%20%24%20%29%20indicates%20a%20sequence%20of%20%24%20n%20%24%20compute%20instructions.%20The%20strings%20L%20%24%20k%20%24%20and%20U%20%24%20k%20%24%20%28%20%24%201%20%5C%5Cleq%20k%20%5C%5Cleq%20r%20%24%20%29%20indicate%20instructions%20locking%20and%20unlocking%20resource%20%24%20k%20%24%20respectively.%5Cn%5CnNo%20two%20tasks%20have%20the%20same%20base%20priority.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%3A%5Cn%5CnFor%20each%20task%2C%20display%20the%20time%20it%20completes%20execution%2C%20in%20the%20same%20order%20that%20the%20tasks%20are%20given%20in%20the%20input.%22%2C%22samples%22%3A%5B%5B%223%201%5Cr%5Cn50%202%205%20C1%20L1%20C1%20U1%20C1%5Cr%5Cn1%201%205%20C1%20L1%20C100%20U1%20C1%5Cr%5Cn70%203%201%20C1%5Cr%5Cn3%203%5Cr%5Cn5%203%205%20C1%20L1%20C1%20U1%20C1%5Cr%5Cn3%202%209%20C1%20L2%20C1%20L3%20C1%20U3%20C1%20U2%20C1%5Cr%5Cn1%201%209%20C1%20L3%20C3%20L2%20C1%20U2%20C1%20U3%20C1%22%2C%22106%5Cr%5Cn107%5Cr%5Cn71%5Cr%5Cn8%5Cr%5Cn15%5Cr%5Cn16%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B4000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F27103%22%2C%22id%22%3A%2227103%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP27103%22%2C%22title%22%3A%22FN16MARS%20-%20What%20Really%20Happened%20on%20Mars%3F%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22FN16MARS%20-%20What%20Really%20Happened%20on%20Mars%3F%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>FN16MARS - What Really Happened on Mars?</h1>
+<h2>题目描述</h2>
+<div>Real-time software in the Mars Pathfinder spacecraft suffered from an issue known as priority inversion. One technique to address this issue is to use the Priority Ceiling Protocol.
+In this problem, you will simulate the execution of multiple tasks according to this protocol. The tasks share a collection of resources, each of which can be used by only one task at a time. To ensure this, resources must be locked before use and unlocked after use. Each task is defined by a start time, a unique _base priority_, and a sequence of instructions. Each task also has a _current priority_, which may change during execution. Instructions come in three types:
+- _compute_ – perform a computation for one microsecond
+- _lock $ k $_ – lock resource $ k $ (which takes no processor time)
+- _unlock $ k $_ – unlock resource $ k $ (which takes no processor time)
+After locking a resource, a task is said to _own_ the resource until the task unlocks it. A task will unlock only the owned resource it most recently locked, will not lock a resource it already owns, and will complete with no owned resources.
+Each resource has a fixed _priority ceiling_, which is the highest base priority of any task that contains an instruction to lock that resource.
+There is a single processor that executes the tasks. When the processor starts, it initializes its clock to zero and then runs an infinite loop with the following steps:
+Step 1. Identify _running_ tasks. A task is running if its start time is less than or equal to the current processor clock and not all of its instructions have been executed.
+Step 2. Determine the current priorities of the running tasks and which of the running tasks are _blocked_. A running task $ T $ is blocked if the next instruction in $ T $ is to lock resource $ k $ and either resource $ k $ is already owned or at least one other task owns a resource $ \ell $ whose priority ceiling is greater than or equal to the current priority of $ T $ . If $ T $ is blocked, it is said to be blocked by every task owning such $ k $ or $ \ell $ . The current priority of a task $ T $ is the maximum of $ T $ ’s base priority and the current priorities of all tasks that $ T $ blocks.
+Step 3. Execute the next instruction of the non-blocked running task (if any) with the highest current priority. If there was no such task or if a compute instruction was executed, increment the processor clock by one microsecond. If a lock or unlock instruction was executed, do not increment the clock.
+The Priority Ceiling Protocol defined above has the following properties:
+- Current priority is defined in terms of current priority and blocking, and blocking is defined in terms of current priority. While this may appear circular, there will always be a unique set of current priorities that satisfy the definitions.
+- All tasks will eventually complete.
+- There will never be a tie in step 3.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Multiple test cases. Please process until EOF is reached. For each test case:
+The first line of the input contains two integers $ t $ $ (1 \leq t \leq 20) $ , which is the number of tasks, and $ r $ ( $ 1 \leq r \leq 20 $ ), which is the number of resources. This is followed by $ t $ lines, where the $ i^\text {th} $ of these lines describes task $ i $ . The description of a task begins with three integers: the task’s start time $ s $ ( $ 1 \leq s \leq 10\, 000 $ ), its base priority $ b $ ( $ 1 \leq b \leq t $ ), and an integer $ a $ ( $ 1 \leq a \leq 100 $ ). A task description is concluded by a sequence of $ a $ strings describing the instructions. Each string is a letter (C or L or U) followed by an integer. The string C $ n $ ( $ 1 \leq n \leq 100 $ ) indicates a sequence of $ n $ compute instructions. The strings L $ k $ and U $ k $ ( $ 1 \leq k \leq r $ ) indicate instructions locking and unlocking resource $ k $ respectively.
+No two tasks have the same base priority.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case:
+For each task, display the time it completes execution, in the same order that the tasks are given in the input.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 1
+50 2 5 C1 L1 C1 U1 C1
+1 1 5 C1 L1 C100 U1 C1
+70 3 1 C1
+3 3
+5 3 5 C1 L1 C1 U1 C1
+3 2 9 C1 L2 C1 L3 C1 U3 C1 U2 C1
+1 1 9 C1 L3 C3 L2 C1 U2 C1 U3 C1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>106
+107
+71
+8
+15
+16</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

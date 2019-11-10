@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SBW - Super Borboletas World - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450367:F8NgFuZacOxaLgsKiOb+AgklLYQQg0TCv+IQdXYqHUc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%60%60%60%5Cn%5Cn%5Cu00a0Super%20Borboleta%20World%5CnThe%20input%5C%2Foutput%20were%20broken%2C%20I%27ve%20fixed%20it%20and%20rejudged%20all%20submissions.%5Cu00a0%5Cu00a0%5CnRaphaell%20is%20a%20well-known%20programmer%20who%20created%20the%20biggest%20game%20development%20company%20in%20the%20world%2C%20BGM%20%28Boboleta%27s%20GameMaker%29.%20As%20recently%20one%20of%20its%20game%20%5Cu2013%20S.B.W%20%28Super%20Borboleta%27s%20World%29%20-%20has%20became%20very%20popular%2C%20Raphaell%20decided%20to%20make%20an%20online%20version%20of%20S.B.W%27s%20game.%20In%20order%20to%20do%20this%20he%27ll%20expose%20the%20source%20code%20and%20the%20mechanism%20of%20that%20game%20so%20anyone%20is%20able%20to%20improve%20it.%5Cn%20At%20first%20the%20game%20is%20made%20of%20three%20main%20operations%20in%20which%20the%20user%20is%20able%20to%20call%20as%20much%20as%20necessary.%20As%20the%20game%20is%20composed%20by%20K%20arrays%20of%20lists%20where%20each%20list%20has%20at%20most%20N%20integers%20on%20it%2C%20the%20three%20operations%20can%20be%20described%20in%20the%20following%20way%3A%5Cn-%20Operation%20%3C2%3E%20%3Cx%3E%20%3Cy%3E%3A%20Insert%20the%20integer%20%3Cy%3E%20to%20the%20end%20of%20the%20%3Cx%3E-th%20list.%5Cn-%20Operation%20%3C1%3E%20%3Cx%3E%20%3Cy%3E%3A%20Clean%20every%20list%20whose%20index%20lie%20on%20the%20range%20between%20%3Cx%3E%20and%20%3Cy%3E%20%28inclusive%29.%5Cn-%20Operation%20%3C0%3E%20%3Cx%3E%20%3Cy%3E%3A%20In%20each%20list%20between%20%3Cx%3E%20and%20%3Cy%3E%20calculate%20all%20the%20possible%20consecutive%20XOR%20sum%27s%2C%20where%20XOR%20stands%20for%20the%20operation%20Exclusive%20OR%2C%20and%20return%20the%20maximum%20value%20of%20all%20possible%20XOR%20sum%27s.%5Cn%20Raphaell%20has%20access%20to%20the%20original%20pseudocode%20which%20is%20given%20bellow%3A%5Cn%5Cu00a0%5Cnm%20%3C-%20array%28%20array%28%29%20%29%5Cn%5Cndef%20insert%28x%2Cy%29%3A%5Cn%20%20%20%20%20%20%20%20insert%20y%20to%20m%5Bx%5D%5Cn%5Cndef%20clear%28x%2Cy%29%3A%5Cn%20%20%20%20%20%20%20%20for%20i%3C-x%20to%20y%3A%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20clear%20m%5Bi%5D%5Cn%5Cndef%20max_xor%28x%2Cy%29%3A%5Cn%20%20%20%20%20%20%20%20best%20%3C-%200%5Cn%20%20%20%20%20%20%20%20for%20i%3C-0%20to%20sizeOf%20m%5Bx%5D%3A%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sum_xor%20%3C-%200%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20j%3C-i%20to%20sizeOf%20m%5Bx%5D%3A%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sum_xor%20%3C-%20sum_xor%20%28xor%29%20m%5Bx%5D%5Bj%5D%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20best%20%3C-%20max%28best%2Csum_xor%29%5Cn%20%20%20%20%20%20%20%20if%20x%20%3C%20y%3A%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20best%20%3C-%20max%28best%2C%20max_xor%28x%2B1%2Cy%29%29%5Cn%20%20%20%20%20%20%20%20return%20best%5Cn%60%60%60%5CnThis%20implementation%20was%20efficient%20to%20the%20offline%20version%20of%20the%20game.%20However%2C%20as%20the%20online%20version%20may%20receive%20a%20thousands%20of%20players%20at%20once%2C%20it%27s%20necessary%20many%20optimizations%20to%20run%20the%20game%20properly.%20Even%20though%20his%20friend%20has%20already%20tried%20really%20hard%20to%20figure%20a%20way%20to%20improve%20the%20performance%2C%20he%20hasn%27t%20got%20any%20good%20results%20till%20now.%5Cn%5Cn%2A%2AInput%2A%2A%5Cn%5Cn%20The%20input%20contains%20several%20test%20cases.%20A%20test%20case%20begins%20with%20a%20line%20containing%20an%20integer%20Q%20%281%20%20Q%20%2010%5E5%29%2C%20where%20Q%20represents%20the%20number%20of%20operations%20that%20are%20going%20to%20be%20performed.%20Then%20follow%20Q%20lines%2C%20each%20containing%20an%20operation.%20%20All%20the%20operations%20are%20as%20described%20above%3A%5Cn%5Cn%5C%5C-%200%20x%20y%3A%20In%20each%20list%20between%20x%20and%20y%20calculate%20all%20the%20possible%20consecutive%20XOR%20sum%27s%20and%20return%20the%20maximum%20possible%20value.%5Cn%5Cn%5C%5C-%201%20x%20y%3A%20Clean%20every%20list%20whose%20index%20lie%20on%20the%20range%20between%20x%20and%20y%20inclusive.%5Cn%5Cn%5C%5C-%202%20x%20y%3A%20Insert%20the%20integer%20y%20to%20the%20end%20of%20the%20x-th%20list.%5Cn%5Cn%20Both%20x%20and%20y%20in%20every%20operation%20will%20never%20exceed%2010%5E14.%20The%20last%20test%20case%20is%20followed%20by%20a%20line%20containing%20a%20single%200.%5Cn%5Cn%2A%2AOutput%2A%2A%5Cn%5Cn%20For%20each%20query%20%3C0%3E%20%3Cx%3E%20%3Cy%3E%20print%20a%20line%20containing%20a%20single%20integer%20representing%20the%20maximum%20possible%20XOR%20as%20described%20above.%5Cn%5Cn%2A%2AExample%2A%2A%5Cn%5Cn%20Input%5Cn%5Cn%20%20Output%5Cn%5Cn%20%2014%5Cn%5Cn2%202%201%5Cn%5Cn2%202%202%5Cn%5Cn2%202%201%5Cn%5Cn2%202%201%5Cn%5Cn2%202%202%5Cn%5Cn2%203%201%5Cn%5Cn2%203%202%5Cn%5Cn2%203%207%5Cn%5Cn0%201%202%5Cn%5Cn0%202%203%5Cn%5Cn1%203%203%5Cn%5Cn0%201%203%5Cn%5Cn1%201%203%5Cn%5Cn0%201%203%5Cn%5Cn0%5Cn%5Cn%20%203%5Cn%5Cn7%5Cn%5Cn3%5Cn%5Cn0%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B10000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F13833%22%2C%22id%22%3A%2213833%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP13833%22%2C%22title%22%3A%22SBW%20-%20Super%20Borboletas%20World%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SBW%20-%20Super%20Borboletas%20World%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SBW - Super Borboletas World</h1>
+<h2>题目描述</h2>
+<div>```
+ Super Borboleta World
+The input/output were broken, I've fixed it and rejudged all submissions.  
+Raphaell is a well-known programmer who created the biggest game development company in the world, BGM (Boboleta's GameMaker). As recently one of its game – S.B.W (Super Borboleta's World) - has became very popular, Raphaell decided to make an online version of S.B.W's game. In order to do this he'll expose the source code and the mechanism of that game so anyone is able to improve it.
+At first the game is made of three main operations in which the user is able to call as much as necessary. As the game is composed by K arrays of lists where each list has at most N integers on it, the three operations can be described in the following way:
+- Operation <2> <x> <y>: Insert the integer <y> to the end of the <x>-th list.
+- Operation <1> <x> <y>: Clean every list whose index lie on the range between <x> and <y> (inclusive).
+- Operation <0> <x> <y>: In each list between <x> and <y> calculate all the possible consecutive XOR sum's, where XOR stands for the operation Exclusive OR, and return the maximum value of all possible XOR sum's.
+Raphaell has access to the original pseudocode which is given bellow:
+ 
+m <- array( array() )
+def insert(x,y):
+insert y to m[x]
+def clear(x,y):
+for i<-x to y:
+clear m[i]
+def max_xor(x,y):
+best <- 0
+for i<-0 to sizeOf m[x]:
+sum_xor <- 0
+for j<-i to sizeOf m[x]:
+sum_xor <- sum_xor (xor) m[x][j]
+best <- max(best,sum_xor)
+if x < y:
+best <- max(best, max_xor(x+1,y))
+return best
+```
+This implementation was efficient to the offline version of the game. However, as the online version may receive a thousands of players at once, it's necessary many optimizations to run the game properly. Even though his friend has already tried really hard to figure a way to improve the performance, he hasn't got any good results till now.
+**Input**
+The input contains several test cases. A test case begins with a line containing an integer Q (1 Q 10^5), where Q represents the number of operations that are going to be performed. Then follow Q lines, each containing an operation. All the operations are as described above:
+\- 0 x y: In each list between x and y calculate all the possible consecutive XOR sum's and return the maximum possible value.
+\- 1 x y: Clean every list whose index lie on the range between x and y inclusive.
+\- 2 x y: Insert the integer y to the end of the x-th list.
+Both x and y in every operation will never exceed 10^14. The last test case is followed by a line containing a single 0.
+**Output**
+For each query <0> <x> <y> print a line containing a single integer representing the maximum possible XOR as described above.
+**Example**
+Input
+Output
+14
+2 2 1
+2 2 2
+2 2 1
+2 2 1
+2 2 2
+2 3 1
+2 3 2
+2 3 7
+0 1 2
+0 2 3
+1 3 3
+0 1 3
+1 1 3
+0 1 3
+0
+3
+7
+3
+0</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

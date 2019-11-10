@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MTOTALF - Total Flow - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449825:CNgRrq7B7XWPTNh71j5Q3qNvhuUahdxgJ1bi43fOaGE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BEnglish%5D%28%5C%2Fproblems%5C%2FMTOTALF%5C%2Fen%5C%2F%29%20%5BVietnamese%5D%28%5C%2Fproblems%5C%2FMTOTALF%5C%2Fvn%5C%2F%29%20%60%60%60%5Cn%5CnFarmer%20John%20always%20wants%20his%20cows%20to%20have%20enough%20water%20and%20thus%20has%5Cnmade%20a%20map%20of%20the%20N%20%281%20%3C%3D%20N%20%3C%3D%20700%29%20water%20pipes%20on%20the%20farm%20that%5Cnconnect%20the%20well%20to%20the%20barn.%20He%20was%20surprised%20to%20find%20a%20wild%20mess%5Cnof%20different%20size%20pipes%20connected%20in%20an%20apparently%20haphazard%20way.%5CnHe%20wants%20to%20calculate%20the%20flow%20through%20the%20pipes.%5Cn%5CnTwo%20pipes%20connected%20in%20a%20row%20allow%20water%20flow%20that%20is%20the%20minimum%5Cnof%20the%20values%20of%20the%20two%20pipe%27s%20flow%20values.%20The%20example%20of%20a%20pipe%5Cnwith%20flow%20capacity%205%20connecting%20to%20a%20pipe%20of%20flow%20capacity%203%20can%5Cnbe%20reduced%20logically%20to%20a%20single%20pipe%20of%20flow%20capacity%203%3A%5Cn%5Cn%20%20%2B---5---%2B---3---%2B%20%20%20%20-%3E%20%20%20%20%2B---3---%2B%5Cn%5CnSimilarly%2C%20pipes%20in%20parallel%20let%20through%20water%20that%20is%20the%20sum%20of%5Cntheir%20flow%20capacities%3A%5Cn%5Cn%20%20%20%20%2B---5---%2B%5Cn%20---%2B%20%20%20%20%20%20%20%2B---%20%20%20%20-%3E%20%20%20%20%2B---8---%2B%5Cn%20%20%20%20%2B---3---%2B%5Cn%5CnFinally%2C%20a%20pipe%20that%20connects%20to%20nothing%20else%20can%20be%20removed%3B%20it%5Cncontributes%20no%20flow%20to%20the%20final%20overall%20capacity%3A%5Cn%5Cn%20%20%20%20%2B---5---%2B%5Cn%20---%2B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20-%3E%20%20%20%20%2B---3---%2B%5Cn%20%20%20%20%2B---3---%2B--%5Cn%5CnAll%20the%20pipes%20in%20the%20many%20mazes%20of%20plumbing%20can%20be%20reduced%20using%5Cnthese%20ideas%20into%20a%20single%20total%20flow%20capacity.%5Cn%5CnGiven%20a%20map%20of%20the%20pipes%2C%20determine%20the%20flow%20capacity%20between%20the%5Cnwell%20%28A%29%20and%20the%20barn%20%28Z%29.%5Cn%5CnConsider%20this%20example%20where%20node%20names%20are%20labeled%20with%20letters%3A%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B-----------6-----------%2B%5Cn%20%20%20%20%20%20%20%20A%2B---3---%2BB%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2BZ%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B---3---%2B---5---%2B---4---%2B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20C%20%20%20%20%20%20%20D%5Cn%5CnPipe%20BC%20and%20CD%20can%20be%20combined%3A%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B-----------6-----------%2B%5Cn%20%20%20%20%20%20%20%20A%2B---3---%2BB%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2BZ%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B-----3-----%2B-----4-----%2B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20D%5Cn%5CnThen%20BD%20and%20DZ%20can%20be%20combined%3A%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B-----------6-----------%2B%5Cn%20%20%20%20%20%20%20%20A%2B---3---%2BB%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2BZ%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B-----------3-----------%2B%5Cn%5CnThen%20two%20legs%20of%20BZ%20can%20be%20combined%3A%5Cn%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20B%5Cn%20%20%20%20%20%20%20%20A%2B---3---%2B---9---%2BZ%5Cn%5CnThen%20AB%20and%20BZ%20can%20be%20combined%20to%20yield%20a%20net%20capacity%20of%203%3A%5Cn%5Cn%20%20%20%20%20%20%20%20A%2B---3---%2BZ%5Cn%5CnWrite%20a%20program%20to%20read%20in%20a%20set%20of%20pipes%20described%20as%20two%20endpoints%5Cnand%20then%20calculate%20the%20net%20flow%20capacity%20from%20%27A%27%20to%20%27Z%27.%20All%5Cnnetworks%20in%20the%20test%20data%20can%20be%20reduced%20using%20the%20rules%20here.%5Cn%5CnPipe%20i%20connects%20two%20different%20nodes%20a_i%20and%20b_i%20%28a_i%20in%20range%5Cn%27A-Za-z%27%3B%20b_i%20in%20range%20%27A-Za-z%27%29%20and%20has%20flow%20F_i%20%281%20%3C%3D%20F_i%20%3C%3D%5Cn1%2C000%29.%20Note%20that%20lower-%20and%20upper-case%20node%20names%20are%20intended%5Cnto%20be%20treated%20as%20different.%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%60%60%60%5Cn%5Cn%2A%20Line%201%3A%20A%20single%20integer%3A%20N%5Cn%5Cn%2A%20Lines%202..N%20%2B%201%3A%20Line%20i%2B1%20describes%20pipe%20i%20with%20two%20letters%20and%20an%5Cn%20%20%20%20%20%20%20%20integer%2C%20all%20space-separated%3A%20a_i%2C%20b_i%2C%20and%20F_i%5Cn%5CnSAMPLE%20INPUT%20%20%5Cn%5Cn5%5CnA%20B%203%5CnB%20C%203%5CnC%20D%205%5CnD%20Z%204%5CnB%20Z%206%5Cn%5Cn%60%60%60%22%2C%22outputFormat%22%3A%22%60%60%60%5Cn%5Cn%2A%20Line%201%3A%20A%20single%20integer%20that%20the%20maximum%20flow%20from%20the%20well%20%28%27A%27%29%5Cn%20%20%20%20%20%20%20%20to%20the%20barn%20%28%27Z%27%29%5Cn%5CnSAMPLE%20OUTPUT%20%20%5Cn%5Cn3%5Cn%60%60%60%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B252%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3868%22%2C%22id%22%3A%223868%22%7D%2C%22translation%22%3A%22Description%5Cn%5Cn%21%5B%5D%28http%3A%5C%2F%5C%2Fgdgzoi.com%5C%2FJudgeOnline%5C%2Fupload%5C%2Fattachment%5C%2Fimage%5C%2F20170620%5C%2F20170620090034_92158.jpg%29%5Cn%21%5B%5D%28http%3A%5C%2F%5C%2Fgdgzoi.com%5C%2FJudgeOnline%5C%2Fupload%5C%2Fattachment%5C%2Fimage%5C%2F20170620%5C%2F20170620090043_74979.jpg%29%5CnInput%5Cn%5Cn%5Cu7b2c1%5Cu884c%5Cu8f93%5Cu5165N%5Cuff0c%5Cu4e4b%5Cu540eN%5Cu884c%5Cu6bcf%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e00%5Cu6761%5Cu6c34%5Cu7ba1%5Cuff0c%5Cu524d%5Cu4e24%5Cu4e2a%5Cu82f1%5Cu6587%5Cu5b57%5Cu6bcd%5Cu8868%5Cu793a%5Cu6c34%5Cu7ba1%5Cu7684%5Cu4e24%5Cu7aef%5Cuff08%5Cu5927%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcd%5Cu662f%5Cu4e0d%5Cu4e00%5Cu6837%5Cu7684%5Cuff09%5Cuff0c%5Cu540e%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%5Cu6c34%5Cu7ba1%5Cu7684%5Cu6d41%5Cu91cf%5Cuff0c%5Cu6d41%5Cu91cf%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc71000.%5Cn%5CnOutput%5Cn%5Cn%20%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu603b%5Cu6d41%5Cu91cf%5Cuff0e%5Cn%20%5CnSample%20Input%5Cn%5Cn5%5Cn%5CnA%20B%203%5Cn%5CnB%20C%203%5Cn%5CnC%20D%205%5Cn%5CnD%20Z%204%5Cn%5CnB%20Z%206%5Cn%5CnSample%20Output%5Cn%5Cn3%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A33%2C%22totalAccepted%22%3A22%2C%22pid%22%3A%22SP3868%22%2C%22title%22%3A%22MTOTALF%20-%20Total%20Flow%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A54169%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A13937%2C%22name%22%3A%22SP3868%20MTOTALF%20-%20Total%20Flow%22%2C%22slug%22%3A%22SP3868%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22MTOTALF%20-%20Total%20Flow%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>MTOTALF - Total Flow</h1>
+<h2>题意翻译</h2>
+<div>Description
+![](http://gdgzoi.com/JudgeOnline/upload/attachment/image/20170620/20170620090034_92158.jpg)
+![](http://gdgzoi.com/JudgeOnline/upload/attachment/image/20170620/20170620090043_74979.jpg)
+Input
+第1行输入N，之后N行每行描述一条水管，前两个英文字母表示水管的两端（大小写字母是不一样的），后一个整数表示水管的流量，流量不会超过1000.
+Output
+一个整数，表示总流量．
+Sample Input
+5
+A B 3
+B C 3
+C D 5
+D Z 4
+B Z 6
+Sample Output
+3</div>
+<h2>题目描述</h2>
+<div>[English](/problems/MTOTALF/en/) [Vietnamese](/problems/MTOTALF/vn/) ```
+Farmer John always wants his cows to have enough water and thus has
+made a map of the N (1 <= N <= 700) water pipes on the farm that
+connect the well to the barn. He was surprised to find a wild mess
+of different size pipes connected in an apparently haphazard way.
+He wants to calculate the flow through the pipes.
+Two pipes connected in a row allow water flow that is the minimum
+of the values of the two pipe's flow values. The example of a pipe
+with flow capacity 5 connecting to a pipe of flow capacity 3 can
+be reduced logically to a single pipe of flow capacity 3:
++---5---+---3---+ -> +---3---+
+Similarly, pipes in parallel let through water that is the sum of
+their flow capacities:
++---5---+
+---+ +--- -> +---8---+
++---3---+
+Finally, a pipe that connects to nothing else can be removed; it
+contributes no flow to the final overall capacity:
++---5---+
+---+ -> +---3---+
++---3---+--
+All the pipes in the many mazes of plumbing can be reduced using
+these ideas into a single total flow capacity.
+Given a map of the pipes, determine the flow capacity between the
+well (A) and the barn (Z).
+Consider this example where node names are labeled with letters:
++-----------6-----------+
+A+---3---+B +Z
++---3---+---5---+---4---+
+C D
+Pipe BC and CD can be combined:
++-----------6-----------+
+A+---3---+B +Z
++-----3-----+-----4-----+
+D
+Then BD and DZ can be combined:
++-----------6-----------+
+A+---3---+B +Z
++-----------3-----------+
+Then two legs of BZ can be combined:
+B
+A+---3---+---9---+Z
+Then AB and BZ can be combined to yield a net capacity of 3:
+A+---3---+Z
+Write a program to read in a set of pipes described as two endpoints
+and then calculate the net flow capacity from 'A' to 'Z'. All
+networks in the test data can be reduced using the rules here.
+Pipe i connects two different nodes a_i and b_i (a_i in range
+'A-Za-z'; b_i in range 'A-Za-z') and has flow F_i (1 <= F_i <=
+1,000). Note that lower- and upper-case node names are intended
+to be treated as different.
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>```
+* Line 1: A single integer: N
+* Lines 2..N + 1: Line i+1 describes pipe i with two letters and an
+integer, all space-separated: a_i, b_i, and F_i
+SAMPLE INPUT
+5
+A B 3
+B C 3
+C D 5
+D Z 4
+B Z 6
+```</div>
+<h3>输出格式</h3>
+<br />
+<div>```
+* Line 1: A single integer that the maximum flow from the well ('A')
+to the barn ('Z')
+SAMPLE OUTPUT
+3
+```</div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

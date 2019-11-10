@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TRSTAGE - Traveling by Stagecoach - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449668:4Xw6bUABu5pbw6KpoXsmHlVM0oOgdxLJ005hSSIn+Xc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Once%20upon%20a%20time%2C%20there%20was%20a%20traveler.%20%20%20%5Cn%20%20%5Cn%20He%20plans%20to%20travel%20using%20stagecoaches%20%28horse%20wagons%29.%20His%20starting%20point%20and%20destination%20are%20fixed%2C%20but%20he%20cannot%20determine%20his%20route.%20Your%20job%20in%20this%20problem%20is%20to%20write%20a%20program%20which%20determines%20the%20route%20for%20him.%20%20%20%5Cn%20%20%5Cn%20There%20are%20several%20cities%20in%20the%20country%2C%20and%20a%20road%20network%20connecting%20them.%20If%20there%20is%20a%20road%20between%20two%20cities%2C%20one%20can%20travel%20by%20a%20stagecoach%20from%20one%20of%20them%20to%20the%20other.%20A%20coach%20ticket%20is%20needed%20for%20a%20coach%20ride.%20The%20number%20of%20horses%20is%20specified%20in%20each%20of%20the%20tickets.%20Of%20course%2C%20with%20more%20horses%2C%20the%20coach%20runs%20faster.%20%20%20%5Cn%20%20%5Cn%20At%20the%20starting%20point%2C%20the%20traveler%20has%20a%20number%20of%20coach%20tickets.%20By%20considering%20these%20tickets%20and%20the%20information%20on%20the%20road%20network%2C%20you%20should%20find%20the%20best%20possible%20route%20that%20takes%20him%20to%20the%20destination%20in%20the%20shortest%20time.%20The%20usage%20of%20coach%20tickets%20should%20be%20taken%20into%20account.%20%20%20%5Cn%20%20%5Cn%20The%20following%20conditions%20are%20assumed.%5Cn%5Cn-%20A%20coach%20ride%20takes%20the%20traveler%20from%20one%20city%20to%20another%20directly%20connected%20by%20a%20road.%20In%20other%20words%2C%20on%20each%20arrival%20to%20a%20city%2C%20he%20must%20change%20the%20coach.%5Cn-%20Only%20one%20ticket%20can%20be%20used%20for%20a%20coach%20ride%20between%20two%20cities%20directly%20connected%20by%20a%20road.%5Cn-%20Each%20ticket%20can%20be%20used%20only%20once.%5Cn-%20The%20time%20needed%20for%20a%20coach%20ride%20is%20the%20distance%20between%20two%20cities%20divided%20by%20the%20number%20of%20horses.%5Cn-%20The%20time%20needed%20for%20the%20coach%20change%20should%20be%20ignored.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20multiple%20datasets%2C%20each%20in%20the%20following%20format.%20The%20last%20dataset%20is%20followed%20by%20a%20line%20containing%20five%20zeros%20%28separated%20by%20a%20space%29.%20%20%20%5Cn%20%20%5Cn%20n%20m%20p%20a%20b%20%20%5Cn%20t1%20t2%20...%20tn%20%20%5Cn%20x1%20y1%20z1%20%20%5Cn%20x2%20y2%20z2%20%20%5Cn%20...%20%20%5Cn%20xp%20yp%20zp%20%20%5Cn%20%20%5Cn%20%20%5Cn%20Every%20input%20item%20in%20a%20dataset%20is%20a%20non-negative%20integer.%20If%20a%20line%20contains%20two%20or%20more%20input%20items%2C%20they%20are%20separated%20by%20a%20space.%20%20%5Cn%20%20%5Cn%20n%20is%20the%20number%20of%20coach%20tickets.%20You%20can%20assume%20that%20the%20number%20of%20tickets%20is%20between%201%20and%208.%20m%20is%20the%20number%20of%20cities%20in%20the%20network.%20You%20can%20assume%20that%20the%20number%20of%20cities%20is%20between%202%20and%2030.%20p%20is%20the%20number%20of%20roads%20between%20cities%2C%20which%20may%20be%20zero.%20%20%20%5Cn%20%20%5Cn%20a%20is%20the%20city%20index%20of%20the%20starting%20city.%20b%20is%20the%20city%20index%20of%20the%20destination%20city.%20a%20is%20not%20equal%20to%20b.%20You%20can%20assume%20that%20all%20city%20indices%20in%20a%20dataset%20%28including%20the%20above%20two%29%20are%20between%201%20and%20m.%20%20%20%5Cn%20%20%5Cn%20The%20second%20line%20of%20a%20dataset%20gives%20the%20details%20of%20coach%20tickets.%20ti%20is%20the%20number%20of%20horses%20specified%20in%20the%20i-th%20coach%20ticket%20%281%3C%3Di%3C%3Dn%29.%20You%20can%20assume%20that%20the%20number%20of%20horses%20is%20between%201%20and%2010.%20%20%20%5Cn%20%20%5Cn%20The%20following%20p%20lines%20give%20the%20details%20of%20roads%20between%20cities.%20The%20i-th%20road%20connects%20two%20cities%20with%20city%20indices%20xi%20and%20yi%2C%20and%20has%20a%20distance%20zi%20%281%3C%3Di%3C%3Dp%29.%20You%20can%20assume%20that%20the%20distance%20is%20between%201%20and%20100.%20%20%20%5Cn%20%20%5Cn%20No%20two%20roads%20connect%20the%20same%20pair%20of%20cities.%20A%20road%20never%20connects%20a%20city%20with%20itself.%20Each%20road%20can%20be%20traveled%20in%20both%20directions.%22%2C%22outputFormat%22%3A%22%20For%20each%20dataset%20in%20the%20input%2C%20one%20line%20should%20be%20output%20as%20specified%20below.%20An%20output%20line%20should%20not%20contain%20extra%20characters%20such%20as%20spaces.%20%20%20%5Cn%20%20%5Cn%20If%20the%20traveler%20can%20reach%20the%20destination%2C%20the%20time%20needed%20for%20the%20best%20route%20%28a%20route%20with%20the%20shortest%20time%29%20should%20be%20printed.%20The%20answer%20should%20not%20have%20an%20error%20greater%20than%200.001.%20You%20may%20output%20any%20number%20of%20digits%20after%20the%20decimal%20point%2C%20provided%20that%20the%20above%20accuracy%20condition%20is%20satisfied.%20%20%20%5Cn%20%20%5Cn%20If%20the%20traveler%20cannot%20reach%20the%20destination%2C%20the%20string%20%5C%22Impossible%5C%22%20should%20be%20printed.%20One%20cannot%20reach%20the%20destination%20either%20when%20there%20are%20no%20routes%20leading%20to%20the%20destination%2C%20or%20when%20the%20number%20of%20tickets%20is%20not%20sufficient.%20Note%20that%20the%20first%20letter%20of%20%5C%22Impossible%5C%22%20is%20in%20uppercase%2C%20while%20the%20other%20letters%20are%20in%20lowercase.%22%2C%22samples%22%3A%5B%5B%223%204%203%201%204%5Cr%5Cn3%201%202%5Cr%5Cn1%202%2010%5Cr%5Cn2%203%2030%5Cr%5Cn3%204%2020%5Cr%5Cn2%204%204%202%201%5Cr%5Cn3%201%5Cr%5Cn2%203%203%5Cr%5Cn1%203%203%5Cr%5Cn4%201%202%5Cr%5Cn4%202%205%5Cr%5Cn2%204%203%204%201%5Cr%5Cn5%205%5Cr%5Cn1%202%2010%5Cr%5Cn2%203%2010%5Cr%5Cn3%204%2010%5Cr%5Cn1%202%200%201%202%5Cr%5Cn1%5Cr%5Cn8%205%2010%201%205%5Cr%5Cn2%207%201%208%204%205%206%203%5Cr%5Cn1%202%205%5Cr%5Cn2%203%204%5Cr%5Cn3%204%207%5Cr%5Cn4%205%203%5Cr%5Cn1%203%2025%5Cr%5Cn2%204%2023%5Cr%5Cn3%205%2022%5Cr%5Cn1%204%2045%5Cr%5Cn2%205%2051%5Cr%5Cn1%205%2099%5Cr%5Cn0%200%200%200%200%22%2C%2230.000%5Cr%5Cn3.667%5Cr%5CnImpossible%5Cr%5CnImpossible%5Cr%5Cn2.856%5Cr%5Cn%5Cr%5CnSince%20the%20number%20of%20digits%20after%20the%20decimal%20point%20is%5Cr%5Cnnot%20specified%2C%20the%20above%20result%20is%20not%20the%20only%5Cr%5Cnsolution.%20For%20example%2C%20the%20following%20result%20is%20also%20acceptable.%5Cr%5Cn%5Cr%5Cn30.0%5Cr%5Cn3.66667%5Cr%5CnImpossible%5Cr%5CnImpossible%5Cr%5Cn2.85595%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B529%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1700%22%2C%22id%22%3A%221700%22%7D%2C%22translation%22%3A%22%5Cu6709%5Cu4e00%5Cu4e2a%5Cu65c5%5Cu884c%5Cu5bb6%5Cu8ba1%5Cu5212%5Cu4e58%5Cu9a6c%5Cu8f66%5Cu65c5%5Cu884c%5Cu3002%5Cu4ed6%5Cu6240%5Cu5728%5Cu7684%5Cu56fd%5Cu5bb6%5Cu91cc%5Cu5171%5Cu6709m%5Cu4e2a%5Cu57ce%5Cu5e02%5Cuff0c%5Cu5728%5Cu57ce%5Cu5e02%5Cu4e4b%5Cu95f4%5Cu6709%5Cu82e5%5Cu5e72%5Cu6761%5Cu9053%5Cu8def%5Cu76f8%5Cu8fde%5Cu3002%5Cu4ece%5Cu67d0%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu6cbf%5Cu7740%5Cu67d0%5Cu6761%5Cu9053%5Cu8def%5Cu5230%5Cu76f8%5Cu90bb%5Cu7684%5Cu57ce%5Cu5e02%5Cu9700%5Cu8981%5Cu4e58%5Cu5750%5Cu9a6c%5Cu8f66%5Cu3002%5Cu800c%5Cu4e58%5Cu5750%5Cu9a6c%5Cu8f66%5Cu9700%5Cu8981%5Cu4f7f%5Cu7528%5Cu8f66%5Cu7968%5Cuff0c%5Cu6bcf%5Cu7528%5Cu4e00%5Cu5f20%5Cu8f66%5Cu7968%5Cu53ea%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu4e00%5Cu6761%5Cu9053%5Cu8def%5Cu3002%5Cu6bcf%5Cu5f20%5Cu8f66%5Cu7968%5Cu4e0a%5Cu90fd%5Cu8bb0%5Cu6709%5Cu9a6c%5Cu7684%5Cu5339%5Cu6570%5Cuff0c%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu79fb%5Cu52a8%5Cu5230%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu7684%5Cu6240%5Cu9700%5Cu65f6%5Cu95f4%5Cu7b49%5Cu4e8e%5Cu57ce%5Cu5e02%5Cu4e4b%5Cu95f4%5Cu7684%5Cu9053%5Cu8def%5Cu957f%5Cu5ea6%5Cu9664%5Cu4ee5%5Cu9a6c%5Cu7684%5Cu6570%5Cu91cf%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%5Cu8fd9%5Cu4f4d%5Cu65c5%5Cu884c%5Cu5bb6%5Cu4e00%5Cu5171%5Cu6709n%5Cu5f20%5Cu8f66%5Cu7968%5Cuff0c%5Cu7b2ci%5Cu5f20%5Cu8f66%5Cu7968%5Cu4e0a%5Cu9a6c%5Cu7684%5Cu5339%5Cu662fti%5Cu3002%5Cu4e00%5Cu5f20%5Cu8f66%5Cu7968%5Cu53ea%5Cu80fd%5Cu4f7f%5Cu7528%5Cu4e00%5Cu6b21%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4e58%5Cu6362%5Cu6240%5Cu9700%5Cu8981%5Cu7684%5Cu65f6%5Cu95f4%5Cu53ef%5Cu4ee5%5Cu5ffd%5Cu7565%5Cu3002%5Cu6c42%5Cu4ece%5Cu57ce%5Cu5e02a%5Cu5230%5Cu57ce%5Cu5e02b%5Cu6240%5Cu9700%5Cu8981%5Cu7684%5Cu6700%5Cu77ed%5Cu65f6%5Cu95f4%5Cu3002%5Cu5982%5Cu679c%5Cu65e0%5Cu6cd5%5Cu5230%5Cu8fbe%5Cu8f93%5Cu51fa%5Cu201cImpossible%5Cu201d%5Cu3002%5Cn1%3C%3Dn%3C%3D8%3B%5Cn2%3C%3Dm%3C%3D30%3B%5Cn1%3C%3Da%2Cb%3C%3Dm%28a%21%3Db%29%5Cn1%3C%3Dti%3C%3D10%3B%5Cn1%3C%3D%5Cu8def%5Cu957f%3C%3D100%5Cn%22%2C%22tags%22%3A%5B151%2C155%2C160%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A165%2C%22totalAccepted%22%3A62%2C%22pid%22%3A%22SP1700%22%2C%22title%22%3A%22TRSTAGE%20-%20Traveling%20by%20Stagecoach%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A65405%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A13367%2C%22name%22%3A%22SP1700%20TRSTAGE%20-%20Traveling%20by%20Stagecoach%22%2C%22slug%22%3A%22SP1700%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1879%22%2C%22title%22%3A%22%5BUSACO06NOV%5D%5Cu7389%5Cu7c73%5Cu7530Corn%20Fields%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2051%22%2C%22title%22%3A%22%5BAHOI2009%5D%5Cu4e2d%5Cu56fd%5Cu8c61%5Cu68cb%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2704%22%2C%22title%22%3A%22%5BNOI2001%5D%5Cu70ae%5Cu5175%5Cu9635%5Cu5730%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF65A%22%2C%22title%22%3A%22Harry%20Potter%20and%20Three%20Spells%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1248B%22%2C%22title%22%3A%22Grow%20The%20Tree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TRSTAGE%20-%20Traveling%20by%20Stagecoach%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TRSTAGE - Traveling by Stagecoach</h1>
+<h2>题意翻译</h2>
+<div>有一个旅行家计划乘马车旅行。他所在的国家里共有m个城市，在城市之间有若干条道路相连。从某个城市沿着某条道路到相邻的城市需要乘坐马车。而乘坐马车需要使用车票，每用一张车票只可以通过一条道路。每张车票上都记有马的匹数，从一个城市移动到另一个城市的所需时间等于城市之间的道路长度除以马的数量的结果。这位旅行家一共有n张车票，第i张车票上马的匹是ti。一张车票只能使用一次，并且乘换所需要的时间可以忽略。求从城市a到城市b所需要的最短时间。如果无法到达输出“Impossible”。
+1<=n<=8;
+2<=m<=30;
+1<=a,b<=m(a!=b)
+1<=ti<=10;
+1<=路长<=100
+</div>
+<h2>题目描述</h2>
+<div>Once upon a time, there was a traveler.
+He plans to travel using stagecoaches (horse wagons). His starting point and destination are fixed, but he cannot determine his route. Your job in this problem is to write a program which determines the route for him.
+There are several cities in the country, and a road network connecting them. If there is a road between two cities, one can travel by a stagecoach from one of them to the other. A coach ticket is needed for a coach ride. The number of horses is specified in each of the tickets. Of course, with more horses, the coach runs faster.
+At the starting point, the traveler has a number of coach tickets. By considering these tickets and the information on the road network, you should find the best possible route that takes him to the destination in the shortest time. The usage of coach tickets should be taken into account.
+The following conditions are assumed.
+- A coach ride takes the traveler from one city to another directly connected by a road. In other words, on each arrival to a city, he must change the coach.
+- Only one ticket can be used for a coach ride between two cities directly connected by a road.
+- Each ticket can be used only once.
+- The time needed for a coach ride is the distance between two cities divided by the number of horses.
+- The time needed for the coach change should be ignored.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of multiple datasets, each in the following format. The last dataset is followed by a line containing five zeros (separated by a space).
+n m p a b
+t1 t2 ... tn
+x1 y1 z1
+x2 y2 z2
+...
+xp yp zp
+Every input item in a dataset is a non-negative integer. If a line contains two or more input items, they are separated by a space.
+n is the number of coach tickets. You can assume that the number of tickets is between 1 and 8. m is the number of cities in the network. You can assume that the number of cities is between 2 and 30. p is the number of roads between cities, which may be zero.
+a is the city index of the starting city. b is the city index of the destination city. a is not equal to b. You can assume that all city indices in a dataset (including the above two) are between 1 and m.
+The second line of a dataset gives the details of coach tickets. ti is the number of horses specified in the i-th coach ticket (1<=i<=n). You can assume that the number of horses is between 1 and 10.
+The following p lines give the details of roads between cities. The i-th road connects two cities with city indices xi and yi, and has a distance zi (1<=i<=p). You can assume that the distance is between 1 and 100.
+No two roads connect the same pair of cities. A road never connects a city with itself. Each road can be traveled in both directions.</div>
+<h3>输出格式</h3>
+<br />
+<div> For each dataset in the input, one line should be output as specified below. An output line should not contain extra characters such as spaces.
+If the traveler can reach the destination, the time needed for the best route (a route with the shortest time) should be printed. The answer should not have an error greater than 0.001. You may output any number of digits after the decimal point, provided that the above accuracy condition is satisfied.
+If the traveler cannot reach the destination, the string "Impossible" should be printed. One cannot reach the destination either when there are no routes leading to the destination, or when the number of tickets is not sufficient. Note that the first letter of "Impossible" is in uppercase, while the other letters are in lowercase.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 4 3 1 4
+3 1 2
+1 2 10
+2 3 30
+3 4 20
+2 4 4 2 1
+3 1
+2 3 3
+1 3 3
+4 1 2
+4 2 5
+2 4 3 4 1
+5 5
+1 2 10
+2 3 10
+3 4 10
+1 2 0 1 2
+1
+8 5 10 1 5
+2 7 1 8 4 5 6 3
+1 2 5
+2 3 4
+3 4 7
+4 5 3
+1 3 25
+2 4 23
+3 5 22
+1 4 45
+2 5 51
+1 5 99
+0 0 0 0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>30.000
+3.667
+Impossible
+Impossible
+2.856
+
+Since the number of digits after the decimal point is
+not specified, the above result is not the only
+solution. For example, the following result is also acceptable.
+
+30.0
+3.66667
+Impossible
+Impossible
+2.85595</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

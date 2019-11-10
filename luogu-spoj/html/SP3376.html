@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PARKINGL - Parking Lot - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449794:KK2MerBFvpM53Ngo7B0TL26SEHTuaty5LH+f1fX6710=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22At%20a%20certain%20college%2C%20a%20small%20parking%20lot%20is%20arranged%20in%20a%20rectangular%20shape%2C%20with%2020%20spaces%20numbered%201%2C%202%2C%203.....%2019%2C%2020.%20Traffic%20flow%20is%20one%20way%20in%20a%20counter-%20clockwise%20direction.%20The%20lot%20looks%20something%20like%20this%3A%5Cn%5Cn%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP3376%5C%2Fb27f9dad683a5444fa9beaf76437d81b53462852.png%29%5C%2F%3E%20%20%20%20%5Cn%20Note%20that%20the%20first%20position%20encountered%20upon%20entering%20is%201%20and%20the%20last%20is%2020.%20Cars%20may%20exit%20or%20continue%20to%20drive%20in%20a%20counter-clockwise%20direction.%20The%20following%20assumptions%20apply%20to%20this%20problem%3A%20%20%20%5Cn%20%20%5Cn%20%5Cu2022%20At%20the%20start%2C%20class%20is%20in%20session%20and%20the%20lot%20is%20full%20%28all%2020%20spaces%20are%20occupied%20by%20parked%20cars%29.%20%20%5Cn%20%20%5Cn%20%5Cu2022%20In%20addition%20to%20the%20%2820%29%20cars%20already%20parked%20in%20the%20lot%2C%20K%20autos%20are%20in%20the%20lot%20waiting%20for%20positions%20to%20become%20available%20%281%20%5Cu2264%20K%20%5Cu2264%2020%29.%20%20%5Cn%20%20%5Cn%20%5Cu2022%20Each%20waiting%20auto%20is%20positioned%20behind%20one%20of%20the%20occupied%20spaces.%20When%20a%20position%20empties%2C%20the%20space%20is%20filled%20either%20by%20the%20car%20waiting%20at%20that%20position%20or%2C%20if%20no%20car%20is%20waiting%20at%20that%20position%2C%20by%20the%20closest%20car%2C%20bearing%20in%20mind%20that%20the%20traffic%20flow%20is%20one%20way.%20%28There%20is%20sufficient%20room%20at%20each%20position%20for%20the%20car%20parked%20in%20that%20position%20to%20leave%20and%20the%20car%20waiting%20at%20that%20position%20to%20then%20park.%29%20%20%5Cn%20%20%5Cn%20%5Cu2022%20When%20an%20auto%20advances%20N%20positions%20to%20a%20free%20spot%2C%20all%20other%20cars%20advance%20N%20positions.%20Since%20the%20lot%20is%20circular%2C%20advancing%204%20positions%20from%20position%2018%20means%20advancing%20to%20position%202.%20%20%5Cn%20%20%5Cn%20%5Cu2022%20None%20of%20the%20waiting%20cars%20exits.%22%2C%22inputFormat%22%3A%22Write%20a%20program%20that%20reads%20data%20from%20standard%20input.%20Input%20consist%20of%20a%20line%20indicating%20the%20number%20of%20datasets%2C%20a%20blank%20line%2C%20and%20the%20datasets%20separated%20by%20a%20blank%20line.%20Each%20dataset%20is%20in%20two%20parts.%20The%20first%20part%20consists%20of%20integers%2C%20one%20per%20line%20beginning%20in%20column%201%2C%20representing%20initial%20positions%20of%20waiting%20autos.%20An%20integer%2099%20signals%20the%20end%20of%20this%20part%20of%20the%20data.%20The%20second%20part%20consists%20of%20integers%2C%20in%20the%20same%20format%2C%20representing%20positions%20vacated.%20Positions%20are%20vacated%20in%20the%20order%20in%20which%20their%20numbers%20appear%20in%20the%20second%20part%20of%20the%20data.%22%2C%22outputFormat%22%3A%22The%20output%20of%20each%20dataset%20should%20consist%20a%20series%20of%20lines%20giving%2C%20for%20each%20initial%20%28waiting%29%20car%20posi-%20tion%2C%20the%20initial%20position%20and%20the%20final%20position%20of%20that%20car%20based%20on%20the%20description%20and%20assumptions%20stated%20above.%20The%20output%20lines%20must%20appear%20in%20the%20same%20order%20as%20the%20order%20of%20the%20initial%20positions%20given%20in%20the%20input.%20Print%20a%20blank%20line%20between%20datasets.%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cn%5Cr%5Cn6%5Cr%5Cn19%5Cr%5Cn17%5Cr%5Cn13%5Cr%5Cn1%5Cr%5Cn99%5Cr%5Cn1%5Cr%5Cn3%5Cr%5Cn20%5Cr%5Cn16%22%2C%22Original%20position%206%20parked%20in%2016%5Cr%5CnOriginal%20position%2019%20parked%20in%203%5Cr%5CnOriginal%20position%2017%20did%20not%20park%5Cr%5CnOriginal%20position%2013%20parked%20in%2020%5Cr%5CnOriginal%20position%201%20parked%20in%201%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3376%22%2C%22id%22%3A%223376%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP3376%22%2C%22title%22%3A%22PARKINGL%20-%20Parking%20Lot%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PARKINGL%20-%20Parking%20Lot%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PARKINGL - Parking Lot</h1>
+<h2>题目描述</h2>
+<div>At a certain college, a small parking lot is arranged in a rectangular shape, with 20 spaces numbered 1, 2, 3..... 19, 20. Traffic flow is one way in a counter- clockwise direction. The lot looks something like this:
+![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP3376/b27f9dad683a5444fa9beaf76437d81b53462852.png)/>
+Note that the first position encountered upon entering is 1 and the last is 20. Cars may exit or continue to drive in a counter-clockwise direction. The following assumptions apply to this problem:
+• At the start, class is in session and the lot is full (all 20 spaces are occupied by parked cars).
+• In addition to the (20) cars already parked in the lot, K autos are in the lot waiting for positions to become available (1 ≤ K ≤ 20).
+• Each waiting auto is positioned behind one of the occupied spaces. When a position empties, the space is filled either by the car waiting at that position or, if no car is waiting at that position, by the closest car, bearing in mind that the traffic flow is one way. (There is sufficient room at each position for the car parked in that position to leave and the car waiting at that position to then park.)
+• When an auto advances N positions to a free spot, all other cars advance N positions. Since the lot is circular, advancing 4 positions from position 18 means advancing to position 2.
+• None of the waiting cars exits.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Write a program that reads data from standard input. Input consist of a line indicating the number of datasets, a blank line, and the datasets separated by a blank line. Each dataset is in two parts. The first part consists of integers, one per line beginning in column 1, representing initial positions of waiting autos. An integer 99 signals the end of this part of the data. The second part consists of integers, in the same format, representing positions vacated. Positions are vacated in the order in which their numbers appear in the second part of the data.</div>
+<h3>输出格式</h3>
+<br />
+<div>The output of each dataset should consist a series of lines giving, for each initial (waiting) car posi- tion, the initial position and the final position of that car based on the description and assumptions stated above. The output lines must appear in the same order as the order of the initial positions given in the input. Print a blank line between datasets.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+
+6
+19
+17
+13
+1
+99
+1
+3
+20
+16</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Original position 6 parked in 16
+Original position 19 parked in 3
+Original position 17 did not park
+Original position 13 parked in 20
+Original position 1 parked in 1</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

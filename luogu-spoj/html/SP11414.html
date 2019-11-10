@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>COT3 - Combat on a tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450267:zTMBjNnZDr/F1myKbQGQH2hIPbckiQh84RXq40CPCf4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Alice%20and%20Bob%20are%20playing%20a%20game%20on%20a%20tree%20of%20n%20nodes.Each%20node%20is%20either%20black%20or%20white%20initially.%5Cn%5CnThey%20take%20turns%20to%20do%20the%20following%20operation%3A%20%20%5CnChoose%20a%20white%20node%20v%20from%20the%20current%20tree%3B%20%20%5CnColor%20all%20white%20nodes%20on%20Path%281%2Cv%29%20to%20black.%5Cn%5CnThe%20player%20who%20takes%20the%20last%20turn%20wins.%5Cn%5CnNow%20Alice%20takes%20the%20first%20turn.Help%20her%20find%20out%20if%20she%20can%20win%20when%20they%20both%20use%20optimal%20strategy.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20a%20integer%20n%20representing%20the%20number%20of%20nodes%20in%20the%20tree.%201%3C%3Dn%3C%3D100000%5Cn%5CnThe%20second%20line%20contains%20n%20intergers%20c1%2Cc2%2C..cn.0%3C%3Dci%3C%3D1.%20%20%5Cnci%3D0%20means%20the%20ith%20node%20is%20white%20initially%20and%20ci%3D1%20means%20black.%5Cn%5CnNext%20n-1%20lines%20describes%20n-1%20edges%20in%20the%20tree.Each%20line%20contains%20two%20integers%20u%20and%20v%2Cmeans%20there%20is%20a%20edge%20connecting%20u%20and%20v.%22%2C%22outputFormat%22%3A%22If%20Alice%20can%27t%20win%20print%20-1.%5Cn%5CnOtherwise%20determine%20all%20the%20nodes%20she%20can%20choose%20in%20the%20first%20turn%20in%20order%20to%20win.Print%20them%20in%20ascending%20order.%22%2C%22samples%22%3A%5B%5B%228%5Cn1%201%200%201%200%200%201%200%5Cn1%202%5Cn1%203%5Cn2%206%5Cn3%204%5Cn3%205%5Cn5%207%5Cn7%208%5Cu00a0%22%2C%225%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B124%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F11414%22%2C%22id%22%3A%2211414%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu9762%5Cu63cf%5Cu8ff0%5CnAlice%5Cu548cBob%5Cu5728%5Cu4e00%5Cu68f5%24n%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cu7684%5Cu6811%5Cu4e0a%5Cu73a9%5Cu6e38%5Cu620f%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu6700%5Cu521d%5Cu90fd%5Cu662f%5Cu9ed1%5Cu8272%5Cu6216%5Cu767d%5Cu8272%5Cu3002%5Cn%5Cu4ed6%5Cu4eec%5Cu8f6e%5Cu6d41%5Cu6267%5Cu884c%5Cu4ee5%5Cu4e0b%5Cu64cd%5Cu4f5c%3A%5Cn%5Cu4ece%5Cu5f53%5Cu524d%5Cu6811%5Cu4e2d%5Cu9009%5Cu62e9%5Cu4e00%5Cu4e2a%5Cu767d%5Cu8272%5Cu8282%5Cu70b9%24v%24%2C%5Cu5c06%5Cu8def%5Cu5f84%24%281%2Cv%29%24%5Cu4e0a%5Cu7684%5Cu6240%5Cu6709%5Cu767d%5Cu8272%5Cu8282%5Cu70b9%5Cu90fd%5Cu53d8%5Cu4e3a%5Cu9ed1%5Cu8272.%5Cu6700%5Cu540e%5Cu64cd%5Cu4f5c%5Cu7684%5Cu73a9%5Cu5bb6%5Cu83b7%5Cu80dc.%5Cu7231%5Cu4e3d%5Cu4e1d%5Cu5148%5Cu624b%5Cu3002%5Cu5f53%5Cu4ed6%5Cu4eec%5Cu90fd%5Cu4f7f%5Cu7528%5Cu6700%5Cu4f73%5Cu7b56%5Cu7565%5Cu65f6%2C%5Cu6c42%5Cu662f%5Cu5426%5Cu80fd%5Cu591f%5Cu5fc5%5Cu80dc%2C%5Cu5e76%5Cu6c42%5Cu51fa%5Cu7b2c%5Cu4e00%5Cu6b65%5Cu7684%5Cu65b9%5Cu6848.%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%3A%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24%2C%5Cu8868%5Cu793a%5Cu6811%5Cu4e2d%5Cu8282%5Cu70b9%5Cu7684%5Cu6570%5Cu91cf.%241%20%5C%5Cle%20N%20%5C%5Cle%2010%5E5%24%5Cn%5Cn%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542bn%5Cu4e2a%5Cu6574%5Cu6570%24c_1%2Cc_2%2C%5C%5Cdots%20c_n%24.%24%200%20%5C%5Cle%20c_i%20%5C%5Cle%201%24%2C%5Cn%24c_i%20%3D%200%24%5Cu8868%5Cu793a%5Cu7b2c%24i%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cu521d%5Cu59cb%5Cu4e3a%5Cu767d%5Cu8272%2C%24c_i%20%3D%201%24%5Cu8868%5Cu793a%5Cu9ed1%5Cu8272%5Cu3002%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24n-1%24%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24u%24%5Cu548c%24v%24%2C%5Cu8868%5Cu793a%5Cu6811%5Cu4e0a%5Cu7684%5Cu8fb9%24%28u%2Cv%29%24.%5Cn%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cu5982%5Cu679c%5Cu65e0%5Cu6cd5%5Cu53d6%5Cu80dc%5Cu8f93%5Cu51fa%24-1%24.%5Cn%5Cu5426%5Cu5219%5Cu8f93%5Cu51faAlice%5Cu7b2c%5Cu4e00%5Cu6b65%5Cu6240%5Cu6709%5Cu53ef%5Cu9009%5Cu7684%5Cu8282%5Cu70b9.%5Cn%5Cn%5Cu611f%5Cu8c22%40The_Unbeatable%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A53%2C%22totalAccepted%22%3A20%2C%22pid%22%3A%22SP11414%22%2C%22title%22%3A%22COT3%20-%20Combat%20on%20a%20tree%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A87369%2C%22title%22%3A%22%5Cu8bf7%5Cu6c42%5Cu6837%5Cu4f8b%5Cu4fee%5Cu6b63%22%2C%22forum%22%3A%7B%22id%22%3A14438%2C%22name%22%3A%22SP11414%20COT3%20-%20Combat%20on%20a%20tree%22%2C%22slug%22%3A%22SP11414%22%7D%7D%2C%7B%22id%22%3A36231%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A14438%2C%22name%22%3A%22SP11414%20COT3%20-%20Combat%20on%20a%20tree%22%2C%22slug%22%3A%22SP11414%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3700%22%2C%22title%22%3A%22%5BCQOI2017%5D%5Cu5c0fQ%5Cu7684%5Cu8868%5Cu683c%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2490%22%2C%22title%22%3A%22%5BSDOI2011%5D%5Cu9ed1%5Cu767d%5Cu68cb%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF917D%22%2C%22title%22%3A%22Stranger%20Trees%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22P4389%22%2C%22title%22%3A%22%5Cu4ed8%5Cu516c%5Cu4e3b%5Cu7684%5Cu80cc%5Cu5305%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4827%22%2C%22title%22%3A%22%5B%5Cu56fd%5Cu5bb6%5Cu96c6%5Cu8bad%5Cu961f%5D%20Crash%20%5Cu7684%5Cu6587%5Cu660e%5Cu4e16%5Cu754c%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22COT3%20-%20Combat%20on%20a%20tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>COT3 - Combat on a tree</h1>
+<h2>题意翻译</h2>
+<div>## 题面描述
+Alice和Bob在一棵$n$个节点的树上玩游戏。每个节点最初都是黑色或白色。
+他们轮流执行以下操作:
+从当前树中选择一个白色节点$v$,将路径$(1,v)$上的所有白色节点都变为黑色.最后操作的玩家获胜.爱丽丝先手。当他们都使用最佳策略时,求是否能够必胜,并求出第一步的方案.
+## 输入格式:
+第一行输入包含一个整数$n$,表示树中节点的数量.$1 \le N \le 10^5$
+第二行包含n个整数$c_1,c_2,\dots c_n$.$ 0 \le c_i \le 1$,
+$c_i = 0$表示第$i$个节点初始为白色,$c_i = 1$表示黑色。
+接下来$n-1$行每行包含两个整数$u$和$v$,表示树上的边$(u,v)$.
+## 输出格式
+如果无法取胜输出$-1$.
+否则输出Alice第一步所有可选的节点.
+感谢@The_Unbeatable 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Alice and Bob are playing a game on a tree of n nodes.Each node is either black or white initially.
+They take turns to do the following operation:
+Choose a white node v from the current tree;
+Color all white nodes on Path(1,v) to black.
+The player who takes the last turn wins.
+Now Alice takes the first turn.Help her find out if she can win when they both use optimal strategy.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains a integer n representing the number of nodes in the tree. 1<=n<=100000
+The second line contains n intergers c1,c2,..cn.0<=ci<=1.
+ci=0 means the ith node is white initially and ci=1 means black.
+Next n-1 lines describes n-1 edges in the tree.Each line contains two integers u and v,means there is a edge connecting u and v.</div>
+<h3>输出格式</h3>
+<br />
+<div>If Alice can't win print -1.
+Otherwise determine all the nodes she can choose in the first turn in order to win.Print them in ascending order.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8
+1 1 0 1 0 0 1 0
+1 2
+1 3
+2 6
+3 4
+3 5
+5 7
+7 8 </code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

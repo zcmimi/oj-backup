@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TPGA - The Permutation Game Again - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450717:hQedb2O0f2veJVIpKF6wOmxMLSeEnZ+au2rMzlzsFDA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Since%20YoMamaSoFat%20was%20able%20to%20answer%20Blackhood%27s%20and%20Kira%27s%20question%20as%20in%20http%3A%5C%2F%5C%2Fwww.spoj.com%5C%2Fproblems%5C%2FTPGAME%5C%2F%20%28though%20with%20a%20little%20help%20from%20your%20side%29%2C%20it%20was%20my%20turn%20to%20ask%20him%20a%20question.%20This%20would%20again%20be%20a%20coding%20question%20as%20you%20might%20be%20knowing%20he%20is%20a%20noob%20in%20coding.%20I%20gave%20him%20a%20permutation%20of%20N%20distinct%20integers%20from%201...N%20and%20asked%20him%20the%20rank%20of%20the%20permutation%20when%20all%20possible%20permutations%20of%20the%20integers%20are%20arranged%20lexicographically.%20eg%20for%20N%3D3%2C%20all%20possible%20permutations%20arranged%20lexicographically%20would%20be%3A-%20%20%5Cn%20%20%5Cn1%202%203%20%20%5Cn%20%20%5Cn1%203%202%20%20%5Cn%20%20%5Cn2%201%203%20%20%5Cn%20%20%5Cn2%203%201%20%20%5Cn%20%20%5Cn3%201%202%20%20%5Cn%20%20%5Cn3%202%201%20%20%5Cn%20%20%5CnFrom%20the%20above%2C%20rank%20of%201%202%203%20would%20be%201%2C%20rank%20of%201%203%202%20would%20be%202%20and%20so%20on...%20%20%5Cn%20%20%5Cn%2A%2AHELP%20HIM%21%2A%2A%20%20%5Cn%20%20%5Cn%2A%2ANOTE%3A-%20You%20may%20assume%20it%20is%20the%20same%20permutation%20which%20Blackhood%20gave%20him%20in%20http%3A%5C%2F%5C%2Fwww.spoj.com%5C%2Fproblems%5C%2FTPGAME%5C%2F%20to%20tell%20the%20no.%20of%20inversions%20for%20each%20integer%20in%20it.%21%5BWink%5D%28..%5C%2F..%5C%2F..%5C%2Fgfx%5C%2Fjscripts%5C%2Ftiny_mce%5C%2Fplugins%5C%2Femotions%5C%2Fimg%5C%2Fsmiley-wink.gif%20%5C%22Wink%5C%22%29%2A%2A%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B159%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F32086%22%2C%22id%22%3A%2232086%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu610f%5Cr%5Cn%5Cr%5Cn%5Cu6709%5Cu4e00%5Cu7c7b%5Cu6570%5Cu7ec4%5Cuff0c%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu6761%5Cu4ef6%5Cuff1a%5Cu5047%5Cu8bbe%5Cu5b83%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e3a%24len%24%5Cuff0c%5Cu5219%5Cu6b63%5Cu6574%5Cu6570%241%20%5C%5Cdots%20len%24%5Cu5728%5Cu5176%5Cu4e2d%5Cu6709%5Cu4e14%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cuff08%5Cu5168%5Cu6392%5Cu5217%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%24n%24%5Cu4ee5%5Cu53ca%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu8fd9%5Cu7c7b%5Cu6570%5Cu7ec4%24arr%24%5Cu3002%5Cu5728%5Cu6240%5Cu6709%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%5Cu7684%5Cu8fd9%5Cu7c7b%5Cu6570%5Cu7ec4%5Cu4e2d%5Cuff0c%5Cu6c42%24arr%24%5Cu6309%5Cu5b57%5Cu5178%5Cu5e8f%5Cu7684%5Cu6392%5Cu540d%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cr%5Cn%5Cr%5Cn%5Cu9996%5Cu5148%5Cu4e00%5Cu4e2a%5Cu6570%24T%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu636e%5Cu7ec4%5Cu6570%5Cuff0c%5Cu63a5%5Cu4e0b%5Cu6765%5Cu6709%24T%24%5Cu7ec4%5Cu6570%5Cu636e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu5148%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6570%24n%24%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%24n%24%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%24arr_%7B1%20%5C%5Cdots%20n%7D%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu6240%5Cu6c42%5Cu7684%5Cu6392%5Cu540d%5Cu6a21%241000000007%24%5Cu7684%5Cu503c%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu6837%5Cu4f8b%5Cr%5Cn%5Cr%5Cn%60%60%60cpp%5Cr%5CnInput%3A%5Cr%5Cn3%5Cr%5Cn1%5Cr%5Cn1%5Cr%5Cn3%5Cr%5Cn3%202%201%5Cr%5Cn4%5Cr%5Cn2%201%204%203%5Cr%5CnOutput%3A%5Cr%5Cn1%5Cr%5Cn6%5Cr%5Cn8%5Cr%5Cn%60%60%60%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cr%5Cn%5Cr%5Cn%241%3C%3DT%3C%3D10%2C1%3C%3Dn%3C%3D200000%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP32086%22%2C%22title%22%3A%22TPGA%20-%20The%20Permutation%20Game%20Again%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TPGA%20-%20The%20Permutation%20Game%20Again%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TPGA - The Permutation Game Again</h1>
+<h2>题意翻译</h2>
+<div>### 题意
+有一类数组，满足以下条件：假设它的长度为$len$，则正整数$1 \dots len$在其中有且只有一个（全排列）。
+给你一个正整数$n$以及一个长度为$n$的这类数组$arr$。在所有长度为$n$的这类数组中，求$arr$按字典序的排名。
+### 输入
+首先一个数$T$，表示数据组数，接下来有$T$组数据。
+每组数据先是一个数$n$。接下来$n$个数，表示$arr_{1 \dots n}$。
+### 输出
+对于每一组数据，输出所求的排名模$1000000007$的值。
+### 样例
+```cpp
+Input:
+3
+1
+1
+3
+3 2 1
+4
+2 1 4 3
+Output:
+1
+6
+8
+```
+### 数据范围
+$1<=T<=10,1<=n<=200000$</div>
+<h2>题目描述</h2>
+<div>Since YoMamaSoFat was able to answer Blackhood's and Kira's question as in http://www.spoj.com/problems/TPGAME/ (though with a little help from your side), it was my turn to ask him a question. This would again be a coding question as you might be knowing he is a noob in coding. I gave him a permutation of N distinct integers from 1...N and asked him the rank of the permutation when all possible permutations of the integers are arranged lexicographically. eg for N=3, all possible permutations arranged lexicographically would be:-
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+From the above, rank of 1 2 3 would be 1, rank of 1 3 2 would be 2 and so on...
+**HELP HIM!**
+**NOTE:- You may assume it is the same permutation which Blackhood gave him in http://www.spoj.com/problems/TPGAME/ to tell the no. of inversions for each integer in it.![Wink](../../../gfx/jscripts/tiny_mce/plugins/emotions/img/smiley-wink.gif "Wink")**</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

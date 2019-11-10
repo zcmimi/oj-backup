@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SA04C - Roman Patrollers - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449788:keAjkJrMa/5onSmV2HJ7xoHuOoTo7fxQ3AWMQzTzvVw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20ancient%20times%2C%20patrollers%20were%20used%20to%20ensure%20that%20all%20the%20cities%20of%20the%20Roman%20Empire%20were%20under%20control.%20A%20patroller%5Cu2019s%20job%20consisted%20in%20continuously%20visiting%20the%20cities%20of%20the%20empire%2C%20trying%20to%20minimise%20the%20interval%20between%20two%20visits%20to%20each%20city.%20The%20Military%20Society%20%28MS%29%20wants%20to%20simulate%20the%20behavior%20of%20one%20such%20patroller%20to%20see%20how%20effective%20they%20were.%20%20%5Cn%20%20%5Cn%20Each%20cycle%20of%20the%20simulation%20corresponds%20to%20one%20time%20unit.%20The%20instantaneous%20city%20idleness%20%28ICI%29%20for%20a%20city%20X%20after%20T%20cycles%20of%20the%20simulation%20is%20the%20number%20of%20cycles%20elapsed%20since%20the%20last%20visit%20of%20the%20patroller%20to%20the%20city%20X%20%28i.e.%20the%20number%20of%20time%20units%20the%20city%20X%20remained%20unvisited%29.%20All%20of%20the%20cities%20have%20initial%20instantaneous%20city%20idleness%20equal%20to%20zero%20at%20the%20start%20of%20the%20simulation.%20The%20instantaneous%20empire%20idleness%20%28IEI%29%20after%20each%20given%20cycle%20is%20the%20sum%20of%20the%20instantaneous%20city%20idleness%20of%20all%20cities%20after%20that%20given%20cycle.%20Finally%2C%20the%20empire%20idleness%20%28EI%29%20for%20an%20N-cycle%20simulation%20is%20the%20sum%20of%20the%20instantaneous%20empire%20idleness%20after%20each%20of%20the%20N%20cycles%20of%20simulation.%20%20%5Cn%20%20%5Cn%20After%20visiting%20a%20city%20X%2C%20the%20patroller%20always%20chooses%20to%20visit%20the%20neighbour%20city%20Y%20with%20the%20highest%20instantaneous%20city%20idleness%20%28if%20more%20than%20one%20city%20has%20the%20highest%20idleness%2C%20the%20one%20with%20the%20lowest%20identifier%20is%20chosen%29.%20Cities%20X%20and%20Y%20are%20neighbour%20if%20there%20is%20a%20road%20linking%20the%20two%20cities%20directly%2C%20without%20going%20through%20any%20intermediate%20city.%20In%20the%20beginning%20of%20the%20simulation%2C%20the%20patroller%20is%20located%20in%20one%20of%20the%20cities%2C%20and%20is%20given%20a%20map%20of%20the%20Roman%20Empire%20containing%20a%20description%20of%20all%20the%20roads%20in%20the%20empire%2C%20indicating%20the%20length%20%28in%20kilometers%29%20and%20which%20two%20cities%20each%20road%20connects.%20A%20road%20between%20cities%20X%20and%20Y%20can%20be%20used%20both%20to%20go%20from%20X%20to%20Y%20and%20from%20Y%20to%20X.%20%20%5Cn%20%20%5Cn%20Assuming%20that%20a%20patroller%20travels%20one%20kilometer%20in%20one%20time%20unit%20%28one%20simulation%20cycle%29%20and%20that%20the%20time%20to%20visit%20a%20city%20is%20negligible%20%28equal%20to%20zero%29%2C%20MS%20asks%20you%20to%20determine%20the%20empire%20idleness%20after%20an%20N-cycle%20simulation.%20%20%5Cn%20%20%5Cn%20For%20clarity%2C%20consider%20the%20example%20of%20an%20empire%20which%20contains%203%20cities%20%281%2C%202%20and%203%29%20and%20two%20roads%20of%20length%201%20km.%20The%20first%20road%20connects%20cities%201%20and%202%2C%20while%20the%20second%20road%20connects%20cities%202%20and%203.%20Below%20you%20find%20a%20trace%20of%20a%203-cycle%20simulation%20for%20such%20a%20scenario%2C%20considering%20that%20the%20patroller%20starts%20at%20city%201.%20%20%20%5Cn%20%20%5Cn%20Start%20of%20the%20simulation%20%20%5Cn%20Patroller%20at%3A%201%20%20%5Cn%20ICI1%20%3D%200%2C%20ICI2%20%3D%200%2C%20ICI3%20%3D%200%20%20%5Cn%20IEI%20%3D%200%20%20%5Cn%20EI%20%3D%200%20%20%20%5Cn%20%20%5Cn%20After%20cycle%201%20%20%5Cn%20Patroller%20at%3A%202%20%20%5Cn%20ICI1%20%3D%201%2C%20ICI2%20%3D%200%2C%20ICI3%20%3D%201%20%20%5Cn%20IEI%20%3D%202%20%20%5Cn%20EI%20%3D%202%20%20%20%5Cn%20%20%5Cn%20After%20cycle%202%20%20%5Cn%20Patroller%20at%3A%201%20%20%5Cn%20ICI1%20%3D%200%2C%20ICI2%20%3D%201%2C%20ICI3%20%3D%202%20%20%5Cn%20IEI%20%3D%203%20%20%5Cn%20EI%20%3D%205%20%20%20%5Cn%20%20%5Cn%20After%20cycle%203%20Patroller%20at%3A%202%20%20%5Cn%20ICI1%20%3D%201%2C%20ICI2%20%3D%200%2C%20ICI3%20%3D%203%20%20%5Cn%20IEI%20%3D%204%20%20%5Cn%20EI%20%3D%209%20%20%20%5Cn%20%20%5Cn%20Therefore%2C%20for%20such%20a%20scenario%2C%20after%203%20simulation%20cycles%20the%20empire%20idleness%20is%209.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20several%20test%20cases.%20The%20first%20line%20of%20a%20test%20case%20contains%20four%20integers%20C%2CR%2CN%2C%20and%20S%2C%20indicating%20respectively%20the%20quantity%20of%20cities%20in%20the%20empire%20%282%20%5Cu00b7%20C%20%5Cu00b7%201000%29%2C%20the%20number%20of%20roads%20%281%20%5Cu00b7%20R%20%5Cu00b7%20C%28C%20%5Cu2212%201%29%5C%2F2%29%2C%20the%20number%20of%20cycles%20to%20be%20simulated%20%281%20%5Cu00b7%20N%20%5Cu00b7%201000%29%20and%20the%20identifier%20of%20the%20starting%20city%20of%20the%20patroller%20%281%20%5Cu00b7%20S%20%5Cu00b7%20C%29.%20Each%20city%20is%20identified%20by%20a%20distinct%20integer%20from%201%20to%20C.%20Each%20of%20the%20following%20R%20lines%20contains%20three%20integers%20X%2C%20Y%20and%20D%20describing%20a%20road%3B%20X%20and%20Y%20represent%20cities%20%281%20%5Cu00b7%20X%206%3D%20Y%20%5Cu00b7%20C%29%20and%20D%20represents%20the%20distance%20%281%20%5Cu00b7%20D%20%5Cu00b7%201000%29%2C%20in%20kilometers%2C%20of%20the%20road%20that%20connects%20X%20and%20Y%20directly%2C%20without%20passing%20through%20any%20other%20city.%20Each%20pair%20of%20cities%20X%20and%20Y%20will%20appear%20at%20most%20once%20in%20a%20road%20description.%20You%20can%20assume%20that%20it%20is%20always%20possible%20to%20travel%20from%20any%20city%20to%20any%20other%20city%20in%20the%20empire%20using%20the%20roads%20available.%20The%20end%20of%20input%20is%20indicated%20by%20C%20%3D%20R%20%3D%20N%20%3D%20S%20%3D%200.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20in%20the%20input%2C%20your%20program%20must%20produce%20one%20line%20containing%20the%20empire%20idleness%20after%20the%20N-cycle%20simulation.%22%2C%22samples%22%3A%5B%5B%222%201%201%201%5Cr%5Cn1%202%202%5Cr%5Cn2%201%202%201%5Cr%5Cn1%202%202%5Cr%5Cn2%201%203%201%5Cr%5Cn1%202%202%5Cr%5Cn2%201%204%201%5Cr%5Cn1%202%202%5Cr%5Cn3%202%203%201%5Cr%5Cn1%202%201%5Cr%5Cn2%203%201%5Cr%5Cn0%200%200%200%22%2C%222%5Cr%5Cn4%5Cr%5Cn8%5Cr%5Cn10%5Cr%5Cn9%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B816%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3305%22%2C%22id%22%3A%223305%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP3305%22%2C%22title%22%3A%22SA04C%20-%20Roman%20Patrollers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SA04C%20-%20Roman%20Patrollers%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SA04C - Roman Patrollers</h1>
+<h2>题目描述</h2>
+<div>In ancient times, patrollers were used to ensure that all the cities of the Roman Empire were under control. A patroller’s job consisted in continuously visiting the cities of the empire, trying to minimise the interval between two visits to each city. The Military Society (MS) wants to simulate the behavior of one such patroller to see how effective they were.
+Each cycle of the simulation corresponds to one time unit. The instantaneous city idleness (ICI) for a city X after T cycles of the simulation is the number of cycles elapsed since the last visit of the patroller to the city X (i.e. the number of time units the city X remained unvisited). All of the cities have initial instantaneous city idleness equal to zero at the start of the simulation. The instantaneous empire idleness (IEI) after each given cycle is the sum of the instantaneous city idleness of all cities after that given cycle. Finally, the empire idleness (EI) for an N-cycle simulation is the sum of the instantaneous empire idleness after each of the N cycles of simulation.
+After visiting a city X, the patroller always chooses to visit the neighbour city Y with the highest instantaneous city idleness (if more than one city has the highest idleness, the one with the lowest identifier is chosen). Cities X and Y are neighbour if there is a road linking the two cities directly, without going through any intermediate city. In the beginning of the simulation, the patroller is located in one of the cities, and is given a map of the Roman Empire containing a description of all the roads in the empire, indicating the length (in kilometers) and which two cities each road connects. A road between cities X and Y can be used both to go from X to Y and from Y to X.
+Assuming that a patroller travels one kilometer in one time unit (one simulation cycle) and that the time to visit a city is negligible (equal to zero), MS asks you to determine the empire idleness after an N-cycle simulation.
+For clarity, consider the example of an empire which contains 3 cities (1, 2 and 3) and two roads of length 1 km. The first road connects cities 1 and 2, while the second road connects cities 2 and 3. Below you find a trace of a 3-cycle simulation for such a scenario, considering that the patroller starts at city 1.
+Start of the simulation
+Patroller at: 1
+ICI1 = 0, ICI2 = 0, ICI3 = 0
+IEI = 0
+EI = 0
+After cycle 1
+Patroller at: 2
+ICI1 = 1, ICI2 = 0, ICI3 = 1
+IEI = 2
+EI = 2
+After cycle 2
+Patroller at: 1
+ICI1 = 0, ICI2 = 1, ICI3 = 2
+IEI = 3
+EI = 5
+After cycle 3 Patroller at: 2
+ICI1 = 1, ICI2 = 0, ICI3 = 3
+IEI = 4
+EI = 9
+Therefore, for such a scenario, after 3 simulation cycles the empire idleness is 9.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of several test cases. The first line of a test case contains four integers C,R,N, and S, indicating respectively the quantity of cities in the empire (2 · C · 1000), the number of roads (1 · R · C(C − 1)/2), the number of cycles to be simulated (1 · N · 1000) and the identifier of the starting city of the patroller (1 · S · C). Each city is identified by a distinct integer from 1 to C. Each of the following R lines contains three integers X, Y and D describing a road; X and Y represent cities (1 · X 6= Y · C) and D represents the distance (1 · D · 1000), in kilometers, of the road that connects X and Y directly, without passing through any other city. Each pair of cities X and Y will appear at most once in a road description. You can assume that it is always possible to travel from any city to any other city in the empire using the roads available. The end of input is indicated by C = R = N = S = 0.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case in the input, your program must produce one line containing the empire idleness after the N-cycle simulation.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 1 1 1
+1 2 2
+2 1 2 1
+1 2 2
+2 1 3 1
+1 2 2
+2 1 4 1
+1 2 2
+3 2 3 1
+1 2 1
+2 3 1
+0 0 0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+4
+8
+10
+9</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GNYR04H - Mr Youngs Picture Permutations - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450437:QhS2vSmz2YIvmQuj3OUNLs+T2dtOfK9tnHPOoxb7HNA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Mr.%20Young%20wishes%20to%20take%20a%20picture%20of%20his%20class.%20The%20students%20will%20stand%20in%20rows%2C%20with%20each%20row%20no%20longer%20than%20the%20row%20behind%20it%20and%20the%20left%20ends%20of%20the%20rows%20aligned.%20For%20instance%2C%2012%20students%20could%20be%20arranged%20in%20rows%20%28from%20back%20to%20front%29%20of%205%2C%203%2C%203%20and%201%20students.%5Cn%5Cn%20%60%60%60%5CnX%20X%20X%20X%20X%5CnX%20X%20X%5CnX%20X%20X%5CnX%5Cn%60%60%60%5CnIn%20addition%2C%20Mr.%20Young%20wants%20the%20students%20in%20each%20row%20arranged%20so%20that%20heights%20decrease%20from%20left%20to%20right.%20Also%2C%20student%20heights%20should%20decrease%20from%20the%20back%20to%20the%20front.%20Thinking%20about%20it%2C%20Mr.%20Young%20sees%20that%20for%20the%2012-student%20example%2C%20there%20are%20at%20least%20two%20ways%20to%20arrange%20the%20students%20%28numbers%20represent%20heights%2C%20with%201%20meaning%20the%20tallest%29%3A%5Cn%5Cn%20%60%60%60%5Cn%201%20%202%20%203%20%204%20%205%20%20%20%20%201%20%205%20%208%2011%2012%5Cn%206%20%207%20%208%20%20%20%20%20%20%20%20%20%20%202%20%206%20%209%5Cn%209%2010%2011%20%20%20%20%20%20%20%20%20%20%203%20%207%2010%5Cn12%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%204%5Cn%60%60%60%5CnMr.%20Young%20wonders%20how%20many%20different%20arrangements%20of%20the%20students%20there%20might%20be%20for%20a%20given%20arrangement%20of%20rows.%20He%20tries%20counting%20by%20hand%20starting%20with%20rows%20of%20lengths%203%2C%202%20and%201%20and%20counts%2016%20arrangements%3A%5Cn%5Cn%20%60%60%60%5Cn123%20123%20124%20124%20125%20125%20126%20126%20134%20134%20135%20135%20136%20136%20145%20146%5Cn45%20%2046%20%2035%20%2036%20%2034%20%2036%20%2034%20%2035%20%2025%20%2026%20%2024%20%2026%20%2024%20%2025%20%2026%20%2025%5Cn6%20%20%205%20%20%206%20%20%205%20%20%206%20%20%204%20%20%205%20%20%204%20%20%206%20%20%205%20%20%206%20%20%204%20%20%205%20%20%204%20%20%203%20%20%203%5Cn%60%60%60%5CnMr.%20Young%20sees%20that%20counting%20by%20hand%20is%20not%20going%20to%20be%20very%20effective%20for%20any%20reasonable%20number%20of%20students.%20He%20asks%20you%20to%20help%20out%20by%20writing%20a%20computer%20program%20to%20determine%20the%20number%20of%20different%20arrangements%20of%20students%20for%20a%20given%20set%20of%20rows.%5Cn%5Cn%20%20%20%5CnInput%5Cn%3D%3D%3D%3D%3D%5Cn%5CnThe%20input%20describes%20a%20series%20of%20test%2C%20each%20described%20in%20two%20lines.%20The%20first%20line%20gives%20the%20number%20of%20rows%2C%20_k_%2C%20as%20a%20decimal%20integer.%20The%20second%20line%20contains%20the%20lengths%20of%20the%20rows%20from%20back%20to%20front%20%28_n_%20%24%20_%7B1%7D%20%24%20%2C_n_%20%24%20_%7B2%7D%20%24%20%2C...%2C%20_n_%20%24%20_%7Bk%7D%20%24%20%29%20as%20decimal%20integers%20separated%20by%20single%20spaces.%20The%20problem%20set%20ends%20with%20a%20line%20with%20a%20row%20count%20of%200.%20There%20will%20never%20be%20more%20than%205%20rows%20and%20the%20total%20number%20of%20students%2C%20_N_%2C%20%28sum%20of%20the%20row%20lengths%29%20will%20be%20at%20most%2030.%5Cn%5Cn%20%20%20%5CnOutput%5Cn%3D%3D%3D%3D%3D%3D%5Cn%5CnFor%20each%20test%20case%20output%20a%20single%20integer%3A%20The%20number%20of%20arrangements%20of%20_N_%20students%20into%20the%20given%20rows%2C%20so%20that%20the%20heights%20decrease%20along%20each%20row%20from%20left%20to%20right%20and%20along%20each%20column%20from%20back%20to%20front%20%28assume%20that%20all%20heights%20are%20distinct%29.%20The%20results%20should%20be%20in%20separate%20lines.%20The%20input%20data%20will%20be%20chosen%20so%20that%20the%20result%20will%20always%20fit%20in%20an%20unsigned%2032-bit%20integer.%5Cn%5Cn%20%20%20%5CnSample%5Cn%3D%3D%3D%3D%3D%3D%5Cn%5CnInput%5Cn%5Cn%20%60%60%60%5Cn1%5Cn30%5Cn5%5Cn1%201%201%201%201%5Cn3%5Cn3%202%201%5Cn4%5Cn5%203%203%201%5Cn5%5Cn6%205%204%203%202%5Cn2%5Cn15%2015%5Cn0%5Cn%60%60%60%5CnOutput%5Cn%5Cn%20%60%60%60%5Cn1%5Cn1%5Cn16%5Cn4158%5Cn141892608%5Cn9694845%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B562%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F15637%22%2C%22id%22%3A%2215637%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cu6768%5Cu5148%5Cu751f%5Cu5e0c%5Cu671b%5Cu4e3a%5Cu4ed6%5Cu7684%5Cu73ed%5Cu7ea7%5Cu62cd%5Cu7167%5Cu3002%5Cu5b66%5Cu751f%5Cu5c06%5Cu6392%5Cu6210%5Cu4e00%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e0d%5Cu8d85%5Cu8fc7%5Cu540e%5Cu9762%5Cu7684%5Cu884c%5Cuff0c%5Cu5e76%5Cu4e14%5Cu884c%5Cu7684%5Cu5de6%5Cu7aef%5Cu5bf9%5Cu9f50%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu5b89%5Cu639212%5Cu540d%5Cu5b66%5Cu751f%5Cu6392%5Cu5217%5Cuff08%5Cu4ece%5Cu540e%5Cu5230%5Cu524d%5Cuff095%2C3%2C3%5Cu548c1%5Cu540d%5Cu5b66%5Cu751f%5Cu3002%5Cn%60%60%60%5CnX%20X%20X%20X%20X%5CnX%20X%20X%5CnX%20X%20X%5CnX%5Cn%60%60%60%5Cn------------%5Cn%5Cu6b64%5Cu5916%5Cuff0c%5Cu6768%5Cu5148%5Cu751f%5Cu5e0c%5Cu671b%5Cu6bcf%5Cu6392%5Cu5b66%5Cu751f%5Cu5b89%5Cu6392%5Cu9ad8%5Cu5ea6%5Cu4ece%5Cu5de6%5Cu5230%5Cu53f3%5Cu51cf%5Cu5c11%5Cu3002%5Cu6b64%5Cu5916%5Cuff0c%5Cu5b66%5Cu751f%5Cu8eab%5Cu9ad8%5Cu5e94%5Cu4ece%5Cu540e%5Cu5411%5Cu524d%5Cu51cf%5Cu5c11%5Cu3002%5Cu60f3%5Cu60f3%5Cu770b%5Cuff0c%5Cu6768%5Cu5148%5Cu751f%5Cu770b%5Cu5230%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu8fd9%5Cu4e2a12%5Cu4eba%5Cu7684%5Cu4f8b%5Cu5b50%5Cuff0c%5Cu81f3%5Cu5c11%5Cu6709%5Cu4e24%5Cu79cd%5Cu5b89%5Cu6392%5Cu5b66%5Cu751f%5Cu7684%5Cu65b9%5Cu5f0f%5Cuff08%5Cu6570%5Cu5b57%5Cu4ee3%5Cu8868%5Cu9ad8%5Cu5ea6%5Cuff0c%5Cu5176%5Cu4e2d1%5Cu4ee3%5Cu8868%5Cu6700%5Cu9ad8%5Cuff09%5Cuff1a%5Cn%60%60%60%5Cn%201%20%202%20%203%20%204%20%205%20%20%20%20%201%20%205%20%208%2011%2012%5Cn%206%20%207%20%208%20%20%20%20%20%20%20%20%20%20%202%20%206%20%209%5Cn%209%2010%2011%20%20%20%20%20%20%20%20%20%20%203%20%207%2010%5Cn12%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%204%5Cn%60%60%60%5Cn------------%5Cn%5Cu6768%5Cu5148%5Cu751f%5Cu60f3%5Cu77e5%5Cu9053%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu7ed9%5Cu5b9a%5Cu6392%5Cu5217%5Cu7684%5Cu6392%5Cu5217%5Cuff0c%5Cu53ef%5Cu80fd%5Cu6709%5Cu591a%5Cu5c11%5Cu4e0d%5Cu540c%5Cu7684%5Cu5b66%5Cu751f%5Cu5b89%5Cu6392%5Cu3002%5Cu4ed6%5Cu5c1d%5Cu8bd5%5Cu7528%5Cu957f%5Cu5ea6%5Cu4e3a3%2C2%5Cu548c1%5Cu7684%5Cu884c%5Cu5f00%5Cu59cb%5Cu8ba1%5Cu6570%5Cuff0c%5Cu5e76%5Cu8ba1%5Cu657016%5Cu4e2a%5Cu6392%5Cu5217%5Cuff1a%5Cn%5Cn%60%60%60%5Cn123%20123%20124%20124%20125%20125%20126%20126%20134%20134%20135%20135%20136%20136%20145%20146%5Cn45%20%2046%20%2035%20%2036%20%2034%20%2036%20%2034%20%2035%20%2025%20%2026%20%2024%20%2026%20%2024%20%2025%20%2026%20%2025%5Cn6%20%20%205%20%20%206%20%20%205%20%20%206%20%20%204%20%20%205%20%20%204%20%20%206%20%20%205%20%20%206%20%20%204%20%20%205%20%20%204%20%20%203%20%20%203%5Cn%60%60%60%5Cn%5Cn------------%5Cn%5Cu6768%5Cu5148%5Cu751f%5Cu8ba4%5Cu4e3a%5Cuff0c%5Cu624b%5Cu52a8%5Cu70b9%5Cu6570%5Cu5bf9%5Cu4e8e%5Cu4efb%5Cu4f55%5Cu5408%5Cu7406%5Cu6570%5Cu91cf%5Cu7684%5Cu5b66%5Cu751f%5Cu6765%5Cu8bf4%5Cu90fd%5Cu4e0d%5Cu4f1a%5Cu5f88%5Cu6709%5Cu6548%5Cu3002%5Cu4ed6%5Cu901a%5Cu8fc7%5Cu7f16%5Cu5199%5Cu8ba1%5Cu7b97%5Cu673a%5Cu7a0b%5Cu5e8f%5Cu6765%5Cu5e2e%5Cu52a9%5Cu4f60%5Cu786e%5Cu5b9a%5Cu4e00%5Cu7ec4%5Cu7ed9%5Cu5b9a%5Cu884c%5Cu7684%5Cu5b66%5Cu751f%5Cu7684%5Cu4e0d%5Cu540c%5Cu5b89%5Cu6392%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cn%5Cn------------%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu4e00%5Cu7cfb%5Cu5217%5Cu6d4b%5Cu8bd5%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu5206%5Cu4e24%5Cu884c%5Cu63cf%5Cu8ff0%5Cu3002%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5c06%5Cu884c%5Cu6570k%5Cu4f5c%5Cu4e3a%5Cu5341%5Cu8fdb%5Cu5236%5Cu6574%5Cu6570%5Cu3002%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu5305%5Cu542b%5Cu4ece%5Cu540e%5Cu5230%5Cu524d%5Cu7684%5Cu884c%5Cu7684%5Cu957f%5Cu5ea6%5Cuff08n%20_%20%7B1%7D%20%5Cn1%5Cn%20%5Cuff0cn%20_%20%7B2%7D%20%5Cn2%5Cn%20%5Cuff0c...%5Cuff0cn%20_%20%7BK%7D%20%5Cn%5Cu0137%5Cn%20%5Cuff09%5Cu4f5c%5Cu4e3a%5Cu7531%5Cu5355%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu7684%5Cu5341%5Cu8fdb%5Cu5236%5Cu6574%5Cu6570%5Cu3002%5Cu95ee%5Cu9898%5Cu96c6%5Cu4ee5%5Cu884c%5Cu8ba1%5Cu6570%5Cu4e3a0%5Cu7684%5Cu884c%5Cu7ed3%5Cu675f%5Cu3002%5Cu6700%5Cu591a%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc75%5Cu884c%5Cuff0c%5Cu5b66%5Cu751f%5Cu603b%5Cu6570N%5Cuff08%5Cu884c%5Cu957f%5Cu5ea6%5Cu603b%5Cu548c%5Cuff09%5Cu6700%5Cu591a%5Cu4e0d%5Cu8d85%5Cu8fc730%5Cu884c%5Cu3002%5Cn%20%5Cn------------%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff1aN%5Cu4e2a%5Cu5b66%5Cu751f%5Cu6392%5Cu5217%5Cu5728%5Cu7ed9%5Cu5b9a%5Cu884c%5Cu4e2d%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu4ee5%5Cu4fbf%5Cu9ad8%5Cu5ea6%5Cu4ece%5Cu5de6%5Cu5230%5Cu53f3%5Cu6cbf%5Cu7740%5Cu6bcf%5Cu884c%5Cu51cf%5Cu5c11%5Cuff0c%5Cu5e76%5Cu4e14%5Cu4ece%5Cu540e%5Cu5230%5Cu524d%5Cu6cbf%5Cu7740%5Cu6bcf%5Cu5217%5Cu51cf%5Cu5c0f%5Cuff08%5Cu5047%5Cu5b9a%5Cu6240%5Cu6709%5Cu9ad8%5Cu5ea6%5Cu90fd%5Cu4e0d%5Cu540c%5Cuff09%5Cu3002%5Cu7ed3%5Cu679c%5Cu5e94%5Cu8be5%5Cu5206%5Cu5f00%5Cu3002%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu5c06%5Cu88ab%5Cu9009%5Cu62e9%5Cuff0c%5Cu4ee5%5Cu4fbf%5Cu7ed3%5Cu679c%5Cu603b%5Cu662f%5Cu9002%5Cu5408%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu7b26%5Cu53f7%5Cu768432%5Cu4f4d%5Cu6574%5Cu6570%5Cu3002%5Cn%5Cn%5Cn------------%5Cn%23%23%23%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cn%5Cn1%5Cn%5Cn30%5Cn%5Cn5%5Cn%5Cn1%201%201%201%201%5Cn%5Cn3%5Cn%5Cn3%202%201%5Cn%5Cn4%5Cn%5Cn5%203%203%201%5Cn%5Cn5%5Cn%5Cn6%205%204%203%202%5Cn%5Cn2%5Cn%5Cn15%2015%5Cn%5Cn0%5Cn%5Cn%5Cn------------%5Cn%23%23%23%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%5Cn%5Cn1%5Cn%5Cn1%5Cn%5Cn16%5Cn%5Cn4158%5Cn%5Cn141892608%5Cn%5Cn9694845%5Cn%5Cn%5Cu7ffb%5Cu8bd1by%40%5B%5C%5C_UMR_%5D%28https%3A%5C%2F%5C%2Fwww.luogu.org%5C%2Fspace%5C%2Fshow%3Fuid%3D89910%29%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A554%2C%22totalAccepted%22%3A248%2C%22pid%22%3A%22SP15637%22%2C%22title%22%3A%22GNYR04H%20-%20Mr%20Youngs%20Picture%20Permutations%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A120692%2C%22title%22%3A%22%5Cu6b64%5Cu9898%5Cu6269%5Cu5c55%22%2C%22forum%22%3A%7B%22id%22%3A15761%2C%22name%22%3A%22SP15637%20GNYR04H%20-%20Mr%20Youngs%20Picture%20Permutations%22%2C%22slug%22%3A%22SP15637%22%7D%7D%2C%7B%22id%22%3A58391%2C%22title%22%3A%22%5Cu6ce8%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A15761%2C%22name%22%3A%22SP15637%20GNYR04H%20-%20Mr%20Youngs%20Picture%20Permutations%22%2C%22slug%22%3A%22SP15637%22%7D%7D%2C%7B%22id%22%3A57691%2C%22title%22%3A%22%5Cu6709%5Cu6ca1%5Cu6709%5Cu8def%5Cu8fc7%5Cu7684dalao%5Cu80fd%5Cu5e2e%5Cu672c%5Cu849f%5Cu770b%5Cu770b%5Cu8fd9%5Cu9053%5Cu9898~%3F%22%2C%22forum%22%3A%7B%22id%22%3A15761%2C%22name%22%3A%22SP15637%20GNYR04H%20-%20Mr%20Youngs%20Picture%20Permutations%22%2C%22slug%22%3A%22SP15637%22%7D%7D%2C%7B%22id%22%3A41381%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1SP15637%20GNYR04H-Mr%20Youngs%20Picture%20Permutations%5Cuff1a%22%2C%22forum%22%3A%7B%22id%22%3A15761%2C%22name%22%3A%22SP15637%20GNYR04H%20-%20Mr%20Youngs%20Picture%20Permutations%22%2C%22slug%22%3A%22SP15637%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1006%22%2C%22title%22%3A%22%5Cu4f20%5Cu7eb8%5Cu6761%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2893%22%2C%22title%22%3A%22%5BUSACO08FEB%5D%5Cu4fee%5Cu8defMaking%20the%20Grade%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22CF10D%22%2C%22title%22%3A%22LCIS%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22SP703%22%2C%22title%22%3A%22SERVICE%20-%20Mobile%20Service%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22P4342%22%2C%22title%22%3A%22%5BIOI1998%5DPolygon%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GNYR04H%20-%20Mr%20Youngs%20Picture%20Permutations%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GNYR04H - Mr Youngs Picture Permutations</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述
+杨先生希望为他的班级拍照。学生将排成一行，每行不超过后面的行，并且行的左端对齐。例如，可以安排12名学生排列（从后到前）5,3,3和1名学生。
+```
+X X X X X
+X X X
+X X X
+X
+```
+------------
+此外，杨先生希望每排学生安排高度从左到右减少。此外，学生身高应从后向前减少。想想看，杨先生看到，对于这个12人的例子，至少有两种安排学生的方式（数字代表高度，其中1代表最高）：
+```
+1 2 3 4 5 1 5 8 11 12
+6 7 8 2 6 9
+9 10 11 3 7 10
+12 4
+```
+------------
+杨先生想知道，对于给定排列的排列，可能有多少不同的学生安排。他尝试用长度为3,2和1的行开始计数，并计数16个排列：
+```
+123 123 124 124 125 125 126 126 134 134 135 135 136 136 145 146
+45 46 35 36 34 36 34 35 25 26 24 26 24 25 26 25
+6 5 6 5 6 4 5 4 6 5 6 4 5 4 3 3
+```
+------------
+杨先生认为，手动点数对于任何合理数量的学生来说都不会很有效。他通过编写计算机程序来帮助你确定一组给定行的学生的不同安排数量。
+------------
+### 输入
+输入描述了一系列测试，每个测试分两行描述。第一行将行数k作为十进制整数。第二行包含从后到前的行的长度（n _ {1}
+1
+，n _ {2}
+2
+，...，n _ {K}
+ķ
+）作为由单个空格分隔的十进制整数。问题集以行计数为0的行结束。最多不会超过5行，学生总数N（行长度总和）最多不超过30行。
+------------
+### 输出
+对于每个测试用例输出一个整数：N个学生排列在给定行中的数量，以便高度从左到右沿着每行减少，并且从后到前沿着每列减小（假定所有高度都不同）。结果应该分开。输入数据将被选择，以便结果总是适合一个无符号的32位整数。
+------------
+### 样例输入
+1
+30
+5
+1 1 1 1 1
+3
+3 2 1
+4
+5 3 3 1
+5
+6 5 4 3 2
+2
+15 15
+0
+------------
+### 样例输出
+1
+1
+16
+4158
+141892608
+9694845
+翻译by@[\_UMR_](https://www.luogu.org/space/show?uid=89910)</div>
+<h2>题目描述</h2>
+<div>Mr. Young wishes to take a picture of his class. The students will stand in rows, with each row no longer than the row behind it and the left ends of the rows aligned. For instance, 12 students could be arranged in rows (from back to front) of 5, 3, 3 and 1 students.
+```
+X X X X X
+X X X
+X X X
+X
+```
+In addition, Mr. Young wants the students in each row arranged so that heights decrease from left to right. Also, student heights should decrease from the back to the front. Thinking about it, Mr. Young sees that for the 12-student example, there are at least two ways to arrange the students (numbers represent heights, with 1 meaning the tallest):
+```
+1 2 3 4 5 1 5 8 11 12
+6 7 8 2 6 9
+9 10 11 3 7 10
+12 4
+```
+Mr. Young wonders how many different arrangements of the students there might be for a given arrangement of rows. He tries counting by hand starting with rows of lengths 3, 2 and 1 and counts 16 arrangements:
+```
+123 123 124 124 125 125 126 126 134 134 135 135 136 136 145 146
+45 46 35 36 34 36 34 35 25 26 24 26 24 25 26 25
+6 5 6 5 6 4 5 4 6 5 6 4 5 4 3 3
+```
+Mr. Young sees that counting by hand is not going to be very effective for any reasonable number of students. He asks you to help out by writing a computer program to determine the number of different arrangements of students for a given set of rows.
+Input
+=====
+The input describes a series of test, each described in two lines. The first line gives the number of rows, _k_, as a decimal integer. The second line contains the lengths of the rows from back to front (_n_ $ _{1} $ ,_n_ $ _{2} $ ,..., _n_ $ _{k} $ ) as decimal integers separated by single spaces. The problem set ends with a line with a row count of 0. There will never be more than 5 rows and the total number of students, _N_, (sum of the row lengths) will be at most 30.
+Output
+======
+For each test case output a single integer: The number of arrangements of _N_ students into the given rows, so that the heights decrease along each row from left to right and along each column from back to front (assume that all heights are distinct). The results should be in separate lines. The input data will be chosen so that the result will always fit in an unsigned 32-bit integer.
+Sample
+======
+Input
+```
+1
+30
+5
+1 1 1 1 1
+3
+3 2 1
+4
+5 3 3 1
+5
+6 5 4 3 2
+2
+15 15
+0
+```
+Output
+```
+1
+1
+16
+4158
+141892608
+9694845
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

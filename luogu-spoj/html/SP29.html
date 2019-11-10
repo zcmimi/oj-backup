@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>HASHIT - Hash it! - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449503:RjPFbYDMXS+LEBZ0JIq2yw90Zqit/hXT5SAqoNw7BmE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Your%20task%20is%20to%20calculate%20the%20result%20of%20the%20hashing%20process%20in%20a%20table%20of%20101%20elements%2C%20containing%20keys%20that%20are%20strings%20of%20length%20at%20most%2015%20letters%20%28ASCII%20codes%20%27_A_%27%2C...%2C%27_z_%27%29.%20Implement%20the%20following%20operations%3A%5Cn%5Cn-%20find%20the%20index%20of%20the%20element%20defined%20by%20the%20key%20%28ignore%2C%20if%20no%20such%20element%29%2C%5Cn-%20insert%20a%20new%20key%20into%20the%20table%20%28ignore%20insertion%20of%20the%20key%20that%20already%20exists%29%2C%5Cn-%20delete%20a%20key%20from%20the%20table%20%28without%20moving%20the%20others%29%2C%20by%20marking%20the%20position%20in%20table%20as%20_empty_%20%28ignore%20non-existing%20keys%20in%20the%20table%29%5Cn%5Cn%5Cn%5CnWhen%20performing%20find%2C%20insert%20and%20delete%20operations%20define%20the%20following%20function%3A%20%20%20%5Cn_integer%20Hash%28string%20key%29_%2C%20%20%5Cnwhich%20for%20a%20string%20_key_%3D_a_%20%24%20_%7B1%7D%20%24%20..._a%20%24%20_%7Bn%7D%20%24_%20%20returns%20the%20value%3A%20%20%5Cn_Hash_%28_key_%29%3D_h_%28_key_%29%20mod%20101%2C%20where%20%20%20%5Cn_h_%28_key_%29%3D19%20%5C%5C%2A%28ASCII%28_a_%20%24%20_%7B1%7D%20%24%20%29%5C%5C%2A1%2B...%2BASCII%28_a%20%24%20_%7Bn%7D%20%24_%20%29%5C%5C%2A_n_%29.%20%20%5CnResolve%20collisions%20using%20the%20open%20addressing%20method%2C%20i.e.%20try%20to%20insert%20the%20key%20into%20the%20table%20at%20the%20first%20free%20position%3A%20%28_Hash_%28_key_%29%2B_j_%20%24%20%5E%7B2%7D%20%24%20%2B23%5C%5C%2A_j_%29%20mod%20101%2C%20for%20_j_%3D1%2C...%2C19.%20After%20examining%20of%20at%20least%2020%20table%20entries%2C%20we%20assume%20that%20the%20insert%20operation%20cannot%20be%20performed.%22%2C%22inputFormat%22%3A%22%20%20%20%5Cn_t_%20%5C%5C%5Bthe%20number%20of%20test%20cases%20%3C%3D%20100%5C%5C%5D%20%20%20%5Cn_n_%20%24%20_%7B1%7D%20%24%20%5C%5C%5Bthe%20number%20of%20operations%20%28one%20per%20line%29%5C%5C%5B%3C%3D%201000%5C%5C%5D%20%20%20%5CnADD%3Astring%20%20%20%5Cn%5C%5C%5Bor%5C%5C%5D%20%20%20%5CnDEL%3Astring%20%5C%5C%5Bother%20test%20cases%2C%20without%20empty%20lines%20betwee%20series%5C%5C%5D%22%2C%22outputFormat%22%3A%22%20For%20every%20test%20case%20you%20have%20to%20create%20a%20new%20table%2C%20insert%20or%20delete%20keys%2C%20and%20write%20to%20the%20output%3A%20%20%20%5Cn%20the%20number%20of%20keys%20in%20the%20table%20%5C%5C%5Bfirst%20line%5C%5C%5D%20%20%20%5Cnindex%3Akey%20%5C%5C%5Bsorted%20by%20indices%5C%5C%5D%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cn11%5Cr%5CnADD%3Amarsz%5Cr%5CnADD%3Amarsz%5Cr%5CnADD%3ADabrowski%5Cr%5CnADD%3Az%5Cr%5CnADD%3Aziemii%5Cr%5CnADD%3Awloskiej%5Cr%5CnADD%3Ado%5Cr%5CnADD%3APolski%5Cr%5CnDEL%3Aod%5Cr%5CnDEL%3Ado%5Cr%5CnDEL%3Awloskiej%22%2C%225%5Cr%5Cn34%3ADabrowski%5Cr%5Cn46%3APolski%5Cr%5Cn63%3Amarsz%5Cr%5Cn76%3Aziemii%5Cr%5Cn96%3Az%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F29%22%2C%22id%22%3A%2229%22%7D%2C%22translation%22%3A%22%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu8ba1%5Cu7b97%5Cu4e00%5Cu4e2a%5Cu5305%5Cu542b101%5Cu4e2a%5Cu5143%5Cu7d20%5Cu7684%5Cu54c8%5Cu5e0c%5Cu8868%5Cuff0c%5Cu5176%5Cu4e2d%5Cu5305%5Cu62ec%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu8d85%5Cu8fc715%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cuff08ASCII%5Cu7801%20%27A%27%5Cu2026%5Cu2026%27z%27%29%5Cu7684key%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cu5176%5Cu4e2d%5Cu53ef%5Cu80fd%5Cu5305%5Cu542b%5Cu4ee5%5Cu4e0b%5Cu64cd%5Cu4f5c%5Cuff1a%5Cr%5Cn%2A%20%5Cu67e5%5Cu627e%5Cu8be5key%5Cu503c%5Cu6307%5Cu5411%5Cu7684%5Cu5143%5Cu7d20%5Cuff08%5Cu5982%5Cu679c%5Cu8be5%5Cu5143%5Cu7d20%5Cu4e0d%5Cu5b58%5Cu5728%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5ffd%5Cu7565%5Cu6389%5Cu8fd9%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff09%5Cuff0c%5Cr%5Cn%2A%20%5Cu5728%5Cu8fd9%5Cu4e2a%5Cu8868%5Cu4e2d%5Cu63d2%5Cu5165%5Cu4e00%5Cu4e2akey%5Cuff08%5Cu5982%5Cu679c%5Cu8be5key%5Cu5df2%5Cu5b58%5Cu5728%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5ffd%5Cu7565%5Cu6389%5Cu8fd9%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff09%5Cuff0c%5Cr%5Cn%2A%20%5Cu5728%5Cu4e0d%5Cu79fb%5Cu52a8%5Cu5176%5Cu4ed6key%5Cu7684%5Cu524d%5Cu63d0%5Cu4e0b%5Cuff0c%5Cu901a%5Cu8fc7%5Cu5c06key%5Cu6307%5Cu5411%5Cu7684%5Cu5143%5Cu7d20%5Cu6807%5Cu8bb0%5Cu4e3a%5Cu7a7a%5Cu6765%5Cu5220%5Cu9664%5Cu4e00%5Cu4e2akey%5Cuff08%5Cu5982%5Cu679c%5Cu8be5key%5Cu4e0d%5Cu5b58%5Cu5728%5Cuff0c%5Cu90a3%5Cu4e48%5Cu5ffd%5Cu7565%5Cu6389%5Cu8fd9%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu67e5%5Cu627e%5Cu3001%5Cu63d2%5Cu5165%5Cu3001%5Cu5220%5Cu9664%5Cu64cd%5Cu4f5c%5Cu5b9a%5Cu4e49%5Cu5982%5Cu4e0b%5Cuff1a%5Cr%5Cn%5Cr%5Cn%24integer%24%20%24Hash%28string%24%20%24key%29%24%5Cuff0c%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2akey%5Cu5b57%5Cu7b26%5Cu4e32%24a_1%24......%24a_n%24%5Cuff0c%24Hash%28key%29%3Dh%28key%29%24%20%24mod%24%20%24101%24%5Cu3002%5Cu5176%5Cu4e2d%24h%28key%29%24%20%3D%20%2419%24%5Cu00d7%24%28ASCII%28%24%24%24a_1%24%24%29%24%5Cu00d7%241%2B......%24ASCII%24%28%24a_n%24%5Cu00d7%24n%24%29%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu54c8%5Cu5e0c%5Cu51b2%5Cu7a81%5Cuff0c%5Cu6211%5Cu4eec%5Cu91c7%5Cu7528%5Cu5f00%5Cu653e%5Cu5730%5Cu5740%5Cu7684%5Cu65b9%5Cu6cd5%5Cu89e3%5Cu51b3%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5f53%5Cu6211%5Cu4eec%5Cu5c1d%5Cu8bd5%5Cu5c06key%5Cu63d2%5Cu5165%5Cu5230%5Cu54c8%5Cu5e0c%5Cu8868%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu4f4d%5Cu7f6e%5Cu65f6%5Cuff1a%5Cu5bf9%5Cu4e8e%24j%24%20%3D%20%241%2C%20...%2C%2019%24%5Cuff0c%5Cu6211%5Cu4eec%5Cu4ee4%24%28Hash%28key%29%20%2B%20j%5E2%20%2B%2023%2Aj%29%24%20%24%20mod%24%20%24101%24%5Cuff0c%5Cu5728%5Cu68c0%5Cu67e520%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu540e%5Cuff0c%5Cu6211%5Cu4eec%5Cu5c31%5Cu8ba4%5Cu4e3a%5Cu8fd9%5Cu6b21%5Cu63d2%5Cu5165%5Cu64cd%5Cu4f5c%5Cu65e0%5Cu6cd5%5Cu8fdb%5Cu884c%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu6d4b%5Cu8bd5%5Cu7ec4%5Cu6570%24t%24%20%24%28t%20%3C%3D%20100%29%24%5Cr%5Cn%5Cr%5Cn%5Cu64cd%5Cu4f5c%5Cu6570%24n_1%24%5Cuff0c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu3002%5Cu64cd%5Cu4f5c%5Cu6709%5Cu4e24%5Cu79cd%5Cu5f62%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu63d2%5Cu5165%5Cr%5CnADD%3Astring%5Cr%5Cn%5Cr%5Cn%5Cu6216%5Cr%5Cn%5Cr%5Cn%5Cu5220%5Cu9664%5Cr%5CnDEL%3Astring%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6240%5Cu6709%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cuff0c%5Cu884c%5Cu4e0e%5Cu884c%5Cu4e4b%5Cu95f4%5Cu4e0d%5Cu5b58%5Cu5728%5Cu7a7a%5Cu884c%5Cu3002%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cuff0c%5Cu4f60%5Cu90fd%5Cu5e94%5Cu8be5%5Cu5efa%5Cu7acb%5Cu4e00%5Cu4e2a%5Cu65b0%5Cu7684%5Cu54c8%5Cu5e0c%5Cu8868%5Cu6765%5Cu63d2%5Cu5165%5Cu6216%5Cu5220%5Cu9664key%5Cuff0c%5Cu5e76%5Cu4e14%5Cu8f93%5Cu51fa%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57%5Cuff0c%5Cu4ee3%5Cu8868%5Cu8be5%5Cu54c8%5Cu5e0c%5Cu8868%5Cu4e2d%5Cu7684key%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu82e5%5Cu5e72%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu7ec4%20%24Hash%24%5Cu503c%24%3Akey%24%5Cuff0c%5Cu6309%24Hash%24%5Cu503c%5Cu987a%5Cu5e8f%5Cu8f93%5Cu51fa%5Cu8fd9%5Cu4e2a%5Cu54c8%5Cu5e0c%5Cu8868%5Cu3002%20%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A8%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP29%22%2C%22title%22%3A%22HASHIT%20-%20Hash%20it%21%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A37113%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12872%2C%22name%22%3A%22SP29%20HASHIT%20-%20Hash%20it%21%22%2C%22slug%22%3A%22SP29%22%7D%7D%2C%7B%22id%22%3A34935%2C%22title%22%3A%22%5Cu8bd5%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12872%2C%22name%22%3A%22SP29%20HASHIT%20-%20Hash%20it%21%22%2C%22slug%22%3A%22SP29%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22HASHIT%20-%20Hash%20it%21%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>HASHIT - Hash it!</h1>
+<h2>题意翻译</h2>
+<div>你的任务是计算一个包含101个元素的哈希表，其中包括若干个长度不超过15个字母（ASCII码 'A'……'z')的key字符串。其中可能包含以下操作：
+* 查找该key值指向的元素（如果该元素不存在，那么忽略掉这次操作），
+* 在这个表中插入一个key（如果该key已存在，那么忽略掉这次操作），
+* 在不移动其他key的前提下，通过将key指向的元素标记为空来删除一个key（如果该key不存在，那么忽略掉这次操作）
+查找、插入、删除操作定义如下：
+$integer$ $Hash(string$ $key)$，
+对于每一个key字符串$a_1$......$a_n$，$Hash(key)=h(key)$ $mod$ $101$。其中$h(key)$ = $19$×$(ASCII($$$a_1$$)$×$1+......$ASCII$($a_n$×$n$)
+对于哈希冲突，我们采用开放地址的方法解决。例如，当我们尝试将key插入到哈希表第一个空位置时：对于$j$ = $1, ..., 19$，我们令$(Hash(key) + j^2 + 23*j)$ $ mod$ $101$，在检查20个位置后，我们就认为这次插入操作无法进行。
+## 输入输出格式
+### 输入格式：
+测试组数$t$ $(t <= 100)$
+操作数$n_1$，一行包含一次操作。操作有两种形式：
+插入
+ADD:string
+或
+删除
+DEL:string
+对于所有测试数据，行与行之间不存在空行。
+### 输出格式：
+对于每一组测试，你都应该建立一个新的哈希表来插入或删除key，并且输出：
+第一行包含一个数字，代表该哈希表中的key数量。
+接下来若干行，每行输出一组 $Hash$值$:key$，按$Hash$值顺序输出这个哈希表。
+</div>
+<h2>题目描述</h2>
+<div> Your task is to calculate the result of the hashing process in a table of 101 elements, containing keys that are strings of length at most 15 letters (ASCII codes '_A_',...,'_z_'). Implement the following operations:
+- find the index of the element defined by the key (ignore, if no such element),
+- insert a new key into the table (ignore insertion of the key that already exists),
+- delete a key from the table (without moving the others), by marking the position in table as _empty_ (ignore non-existing keys in the table)
+When performing find, insert and delete operations define the following function:
+_integer Hash(string key)_,
+which for a string _key_=_a_ $ _{1} $ ..._a $ _{n} $_ returns the value:
+_Hash_(_key_)=_h_(_key_) mod 101, where
+_h_(_key_)=19 \*(ASCII(_a_ $ _{1} $ )\*1+...+ASCII(_a $ _{n} $_ )\*_n_).
+Resolve collisions using the open addressing method, i.e. try to insert the key into the table at the first free position: (_Hash_(_key_)+_j_ $ ^{2} $ +23\*_j_) mod 101, for _j_=1,...,19. After examining of at least 20 table entries, we assume that the insert operation cannot be performed.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>
+_t_ \[the number of test cases <= 100\]
+_n_ $ _{1} $ \[the number of operations (one per line)\[<= 1000\]
+ADD:string
+\[or\]
+DEL:string \[other test cases, without empty lines betwee series\]</div>
+<h3>输出格式</h3>
+<br />
+<div> For every test case you have to create a new table, insert or delete keys, and write to the output:
+the number of keys in the table \[first line\]
+index:key \[sorted by indices\]</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+11
+ADD:marsz
+ADD:marsz
+ADD:Dabrowski
+ADD:z
+ADD:ziemii
+ADD:wloskiej
+ADD:do
+ADD:Polski
+DEL:od
+DEL:do
+DEL:wloskiej</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+34:Dabrowski
+46:Polski
+63:marsz
+76:ziemii
+96:z</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BLOCK_D - BLOCK_D SOLVER - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450370:qLEzBPrKO+Oju9bxZuaxRCRp21lISLAgyNYMiO4xnOY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20board%20of%20order%20mxn%20full%20of%20coloured%20blocks.%5Cn%5Cn%20%20%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP13886%5C%2Fd59e3bed8ffcb6a403b113afb2c51ac1076b0931.png%29%5Cn%5Cn%20%20%5CnAt%20each%20move%2C%20you%20have%20to%20select%20a%20block%20of%20any%20colour%20which%20has%20atleast%20one%20of%20it%27s%20immediate%20neighbours%20of%20same%20colour.%20If%20you%20select%20a%20block%2C%20all%20the%20connected%20blocks%28not%20just%20the%20immediate%20neighbours%29%20of%20same%20colour%20gets%20destroyed.%20A%20block%20is%20connected%20to%20all%20the%20blocks%20that%20share%20an%20edge%20with%20it.%20Any%20block%20will%20fall%20directly%20down%20if%20there%20is%20no%20block%20immediately%20below%20it.%20If%20a%20complete%20column%20becomes%20empty%2C%20you%20must%20either%20push%20all%20the%20columns%20to%20it%27s%20left%20once%20in%20the%20right%20side%20or%20push%20all%20the%20columns%20to%20it%27s%20right%20once%20in%20the%20left%20side%28These%20pushes%20are%20not%20considered%20as%20a%20moves.%20At%20each%20move%2C%20you%20will%20destroy%20more%20than%20one%20block%29.%5Cn%5Cn%20%20%5CnYou%20will%20win%20the%20game%20if%20the%20remaining%20number%20of%20blocks%20becomes%20zero%20after%20making%20the%20moves.%20Find%20the%20minimum%20number%20of%20moves%20to%20win%20the%20game.%20If%20it%20is%20impossible%20to%20win%20the%20game%2C%20print%20-1.%5Cn%5CnFor%20better%20understanding%20of%20gameplay%20you%20may%20have%20a%20look%20at%20this%20%5Bvideo%5D%28https%3A%5C%2F%5C%2Fwww.youtube.com%5C%2Fwatch%3Fv%3DP2-mO3K04KQ%29.%20%28optional%29%20%20%5Cn%20%20%5Cn%2A%2AInput%3A%2A%2A%5Cn%5CnThe%20first%20line%20consists%20of%20an%20integer%20t%2C%20the%20number%20of%20test%20cases.%20For%20each%20test%20case%20the%20first%20line%20consists%20of%20two%20integers%20m%2C%20n%20the%20number%20of%20rows%20and%20columns%20respectively%20followed%20by%20the%20matrix%20representing%20the%20coloured%20blocks.%20Colour%5C%5C%5Bi%5C%5C%5D%5C%5C%5Bj%5C%5C%5D%20contains%20any%20character%20between%20%27a%27%20and%20%27e%27%20inclusive.%20%20%5Cn%20%20%5Cn%2A%2AOutput%3A%2A%2A%5Cn%5CnFor%20each%20test%20case%20print%20the%20minimum%20number%20of%20moves%20to%20win%20the%20game.%20If%20it%20is%20impossible%20to%20win%2C%20print%20-1.%5Cn%5Cn%20%20%5Cn%2A%2AInput%20Constraints%3A%2A%2A%5Cn%5Cn1%3C%3Dt%3C%3D10%5Cn%5Cn1%3C%3Dm%2Cn%3C%3D8%5Cn%5Cn%27a%27%3C%3DColour%5C%5C%5Bi%5C%5C%5D%5C%5C%5Bj%5C%5C%5D%3C%3D%27e%27%5Cn%5Cn%2A%2ASample%20Input%3A%2A%2A%5Cn%5Cn2%5Cn%5Cn5%205%5Cn%5Cnaaaba%5Cn%5Cnaaaba%5Cn%5Cnaaaba%5Cn%5Cnaaaba%5Cn%5Cnaaaba%5Cn%5Cn5%205%5Cn%5Cnbbbbb%5Cn%5Cnbaabb%5Cn%5Cnbbbab%5Cn%5Cnbbbaa%5Cn%5Cnaabab%5Cn%5Cn%2A%2ASample%20Output%3A%2A%2A%5Cn%5Cn2%5Cn%5Cn3%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B10000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F13886%22%2C%22id%22%3A%2213886%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP13886%22%2C%22title%22%3A%22BLOCK_D%20-%20BLOCK_D%20SOLVER%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22BLOCK_D%20-%20BLOCK_D%20SOLVER%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>BLOCK_D - BLOCK_D SOLVER</h1>
+<h2>题目描述</h2>
+<div>You are given a board of order mxn full of coloured blocks.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP13886/d59e3bed8ffcb6a403b113afb2c51ac1076b0931.png)
+At each move, you have to select a block of any colour which has atleast one of it's immediate neighbours of same colour. If you select a block, all the connected blocks(not just the immediate neighbours) of same colour gets destroyed. A block is connected to all the blocks that share an edge with it. Any block will fall directly down if there is no block immediately below it. If a complete column becomes empty, you must either push all the columns to it's left once in the right side or push all the columns to it's right once in the left side(These pushes are not considered as a moves. At each move, you will destroy more than one block).
+You will win the game if the remaining number of blocks becomes zero after making the moves. Find the minimum number of moves to win the game. If it is impossible to win the game, print -1.
+For better understanding of gameplay you may have a look at this [video](https://www.youtube.com/watch?v=P2-mO3K04KQ). (optional)
+**Input:**
+The first line consists of an integer t, the number of test cases. For each test case the first line consists of two integers m, n the number of rows and columns respectively followed by the matrix representing the coloured blocks. Colour\[i\]\[j\] contains any character between 'a' and 'e' inclusive.
+**Output:**
+For each test case print the minimum number of moves to win the game. If it is impossible to win, print -1.
+**Input Constraints:**
+1<=t<=10
+1<=m,n<=8
+'a'<=Colour\[i\]\[j\]<='e'
+**Sample Input:**
+2
+5 5
+aaaba
+aaaba
+aaaba
+aaaba
+aaaba
+5 5
+bbbbb
+baabb
+bbbab
+bbbaa
+aabab
+**Sample Output:**
+2
+3</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GCJ082A - Cheating a Boolean Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450481:PyJoHc/iQ6pmaPqGNHyQguyyGzK27F2rAznU/8MzUiY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22For%20this%20problem%20we%20will%20consider%20a%20type%20of%20binary%20tree%20that%20we%20will%20call%20a%20boolean%20tree.%20In%20this%20tree%2C%20every%20row%20is%20completely%20filled%2C%20except%20possibly%20the%20last%20%28deepest%29%20row%2C%20and%20the%20nodes%20in%20the%20last%20row%20are%20as%20far%20to%20the%20left%20as%20possible.%20Additionally%2C%20every%20node%20in%20the%20tree%20will%20either%20have%200%20or%202%20children.%5Cn%5CnWhat%20makes%20a%20boolean%20tree%20special%20is%20that%20each%20node%20has%20a%20boolean%20value%20associated%20with%20it%2C%201%20or%200.%20In%20addition%2C%20each%20interior%20node%20has%20either%20an%20%5C%22AND%5C%22%20or%20an%20%5C%22OR%5C%22%20gate%20associated%20with%20it.%20The%20value%20of%20an%20%5C%22AND%5C%22%20gate%20node%20is%20given%20by%20the%20logical%20AND%20of%20its%20two%20children%27s%20values.%20The%20value%20of%20an%20%5C%22OR%5C%22%20gate%20likewise%20is%20given%20by%20the%20logical%20OR%20of%20its%20two%20children%27s%20values.%20The%20value%20of%20all%20of%20the%20leaf%20nodes%20will%20be%20given%20as%20input%20so%20that%20the%20value%20of%20all%20nodes%20can%20be%20calculated%20up%20the%20tree.%5Cn%5CnThe%20root%20of%20the%20tree%20is%20of%20particular%20interest%20to%20us.%20We%20would%20really%20like%20for%20the%20root%20to%20have%20the%20value%20%2A%2AV%2A%2A%2C%20either%201%20or%200.%20Unfortunately%2C%20this%20may%20not%20be%20the%20value%20the%20root%20actually%20has.%20Luckily%20for%20us%2C%20we%20can%20cheat%20and%20change%20the%20type%20of%20gate%20for%20some%20of%20the%20nodes%3B%20we%20can%20change%20an%20AND%20gate%20to%20an%20OR%20gate%20or%20an%20OR%20gate%20to%20an%20AND%20gate.%5Cn%5CnGiven%20a%20description%20of%20a%20boolean%20tree%20and%20what%20gates%20can%20be%20changed%2C%20find%20the%20minimum%20number%20of%20gates%20that%20need%20to%20be%20changed%20to%20make%20the%20value%20of%20the%20root%20node%20%2A%2AV%2A%2A.%20If%20this%20is%20impossible%2C%20output%20%5C%22IMPOSSIBLE%5C%22%20%28quotes%20for%20clarity%29.%5Cn%5Cn%2A%2AInput%2A%2A%5Cn%5CnThe%20first%20line%20of%20the%20input%20file%20contains%20the%20number%20of%20cases%2C%20%2A%2AN%2A%2A.%20%2A%2AN%2A%2A%20test%20cases%20follow.%5Cn%5CnEach%20case%20begins%20with%20%2A%2AM%2A%2A%20and%20%2A%2AV%2A%2A.%20%2A%2AM%2A%2A%20represents%20the%20number%20of%20nodes%20in%20the%20tree%20and%20will%20be%20odd%20to%20ensure%20all%20nodes%20have%200%20or%202%20children.%20%2A%2AV%2A%2A%20is%20the%20desired%20value%20for%20the%20root%20node%2C%200%20or%201.%5Cn%5Cn%2A%2AM%2A%2A%20lines%20follow%20describing%20each%20of%20the%20tree%27s%20nodes.%20The%20X%20%24%20%5E%7Bth%7D%20%24%20line%20will%20describe%20node%20X%2C%20starting%20with%20node%201%20on%20the%20first%20line.%5Cn%5CnThe%20first%20%28%2A%2AM%2A%2A%5Cu22121%29%5C%2F2%20lines%20describe%20the%20interior%20nodes.%20Each%20line%20contains%20%2A%2AG%2A%2A%20and%20%2A%2AC%2A%2A%2C%20each%20being%20either%200%20or%201.%20If%20%2A%2AG%2A%2A%20is%201%20then%20the%20gate%20for%20this%20node%20is%20an%20AND%20gate%2C%20otherwise%20it%20is%20an%20OR%20gate.%20If%20%2A%2AC%2A%2A%20is%201%20then%20the%20gate%20for%20this%20node%20is%20changeable%2C%20otherwise%20it%20is%20not.%20Interior%20node%20X%20has%20nodes%202X%20and%202X%2B1%20as%20children.%5Cn%5CnThe%20next%20%28%2A%2AM%2A%2A%2B1%29%5C%2F2%20lines%20describe%20the%20leaf%20nodes.%20Each%20line%20contains%20one%20value%20%2A%2AI%2A%2A%2C%200%20or%201%2C%20the%20value%20of%20the%20leaf%20node.%5Cn%5CnTo%20help%20visualize%2C%20here%20is%20a%20picture%20of%20the%20tree%20in%20the%20first%20sample%20input.%20%20%5Cn%20%20%5Cn%20%20%5Cn%21%5B%5D%28http%3A%5C%2F%5C%2Fcode.google.com%5C%2Fcodejam%5C%2Fcontest%5C%2Fimages%5C%2F%3Fimage%3Dbooleantree.png%26p%3D24439%26c%3D32001%29%5Cn%5Cn%2A%2AOutput%2A%2A%5Cn%5CnFor%20each%20test%20case%2C%20you%20should%20output%3A%5Cn%5Cn%20%60Case%20%23X%3A%20Y%60where%20%2A%2AX%2A%2A%20is%20the%20number%20of%20the%20test%20case%20and%20%2A%2AY%2A%2A%20is%20the%20minimum%20number%20of%20gates%20that%20must%20be%20changed%20to%20make%20the%20output%20of%20the%20root%20node%20%2A%2AV%2A%2A%2C%20or%20%5C%22IMPOSSIBLE%5C%22%20%28quotes%20for%20clarity%29%20if%20this%20is%20impossible.%5Cn%5Cn%2A%2ALimits%2A%2A%5Cn%5Cn1%20%3C%20%2A%2AN%2A%2A%5Cn%5Cn2%20%3C%20%2A%2AM%2A%2A%20%3C%2010000%5Cn%5CnSample%5Cn%5Cn%20%20%20%5CnInput%20%20%20%5Cn%20%20%20%20%5CnOutput%20%20%20%5Cn%20%20%60%202%3Cbr%3E%3C%5C%2Fbr%3E%209%201%3Cbr%3E%3C%5C%2Fbr%3E%201%200%3Cbr%3E%3C%5C%2Fbr%3E%201%201%3Cbr%3E%3C%5C%2Fbr%3E%201%201%3Cbr%3E%3C%5C%2Fbr%3E%200%200%3Cbr%3E%3C%5C%2Fbr%3E%201%3Cbr%3E%3C%5C%2Fbr%3E%200%3Cbr%3E%3C%5C%2Fbr%3E%201%3Cbr%3E%3C%5C%2Fbr%3E%200%3Cbr%3E%3C%5C%2Fbr%3E%201%3Cbr%3E%3C%5C%2Fbr%3E%205%200%3Cbr%3E%3C%5C%2Fbr%3E%201%201%3Cbr%3E%3C%5C%2Fbr%3E%200%200%3Cbr%3E%3C%5C%2Fbr%3E%201%3Cbr%3E%3C%5C%2Fbr%3E%201%3Cbr%3E%3C%5C%2Fbr%3E%200%3Cbr%3E%3C%5C%2Fbr%3E%3Cbr%3E%3C%5C%2Fbr%3E%60%20%60%20Case%20%231%3A%201%3Cbr%3E%3C%5C%2Fbr%3E%20Case%20%232%3A%20IMPOSSIBLE%3Cbr%3E%3C%5C%2Fbr%3E%3Cbr%3E%3C%5C%2Fbr%3E%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F17406%22%2C%22id%22%3A%2217406%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP17406%22%2C%22title%22%3A%22GCJ082A%20-%20Cheating%20a%20Boolean%20Tree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GCJ082A%20-%20Cheating%20a%20Boolean%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GCJ082A - Cheating a Boolean Tree</h1>
+<h2>题目描述</h2>
+<div>For this problem we will consider a type of binary tree that we will call a boolean tree. In this tree, every row is completely filled, except possibly the last (deepest) row, and the nodes in the last row are as far to the left as possible. Additionally, every node in the tree will either have 0 or 2 children.
+What makes a boolean tree special is that each node has a boolean value associated with it, 1 or 0. In addition, each interior node has either an "AND" or an "OR" gate associated with it. The value of an "AND" gate node is given by the logical AND of its two children's values. The value of an "OR" gate likewise is given by the logical OR of its two children's values. The value of all of the leaf nodes will be given as input so that the value of all nodes can be calculated up the tree.
+The root of the tree is of particular interest to us. We would really like for the root to have the value **V**, either 1 or 0. Unfortunately, this may not be the value the root actually has. Luckily for us, we can cheat and change the type of gate for some of the nodes; we can change an AND gate to an OR gate or an OR gate to an AND gate.
+Given a description of a boolean tree and what gates can be changed, find the minimum number of gates that need to be changed to make the value of the root node **V**. If this is impossible, output "IMPOSSIBLE" (quotes for clarity).
+**Input**
+The first line of the input file contains the number of cases, **N**. **N** test cases follow.
+Each case begins with **M** and **V**. **M** represents the number of nodes in the tree and will be odd to ensure all nodes have 0 or 2 children. **V** is the desired value for the root node, 0 or 1.
+**M** lines follow describing each of the tree's nodes. The X $ ^{th} $ line will describe node X, starting with node 1 on the first line.
+The first (**M**−1)/2 lines describe the interior nodes. Each line contains **G** and **C**, each being either 0 or 1. If **G** is 1 then the gate for this node is an AND gate, otherwise it is an OR gate. If **C** is 1 then the gate for this node is changeable, otherwise it is not. Interior node X has nodes 2X and 2X+1 as children.
+The next (**M**+1)/2 lines describe the leaf nodes. Each line contains one value **I**, 0 or 1, the value of the leaf node.
+To help visualize, here is a picture of the tree in the first sample input.
+![](http://code.google.com/codejam/contest/images/?image=booleantree.png&p=24439&c=32001)
+**Output**
+For each test case, you should output:
+`Case #X: Y`where **X** is the number of the test case and **Y** is the minimum number of gates that must be changed to make the output of the root node **V**, or "IMPOSSIBLE" (quotes for clarity) if this is impossible.
+**Limits**
+1 < **N**
+2 < **M** < 10000
+Sample
+Input
+Output
+` 2<br></br> 9 1<br></br> 1 0<br></br> 1 1<br></br> 1 1<br></br> 0 0<br></br> 1<br></br> 0<br></br> 1<br></br> 0<br></br> 1<br></br> 5 0<br></br> 1 1<br></br> 0 0<br></br> 1<br></br> 1<br></br> 0<br></br><br></br>` ` Case #1: 1<br></br> Case #2: IMPOSSIBLE<br></br><br></br>`</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

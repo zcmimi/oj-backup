@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ZZPERM2 - Zig-Zag Permutation 2 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450292:HlKJiYPUbPmYd/6ZqMYUjk2tBC3339UOMJvD+I4x6jg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22See%20%5BZZPERM%5D%28..%5C%2FZZPERM%5C%2F%29%20problem%20description.%20This%20an%20improved%20version%20with%20more%20demanding%20test%20cases.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20at%20most%2015%20test%20cases.%20Each%20case%20contains%20a%20word%20%28W%29%20not%20longer%20than%2064%20letters%20and%20one%20positive%20number%20%28D%20%3C%3D%201000000000%29.%20The%20letters%20of%20each%20word%20are%20in%20increasing%20order.%20Input%20is%20terminated%20by%20EOF.%22%2C%22outputFormat%22%3A%22For%20each%20case%20output%20all%20of%20the%20zig-zag%20permutations%20of%20W%20whose%20rank%20is%20divisible%20by%20D%2C%20in%20increasing%20lexicographic%20order%2C%20one%20word%20per%20line.%20In%20the%20next%20line%20print%20the%20total%20number%20of%20zig-zag%20permutations%20of%20W.%20There%20is%20no%20case%20that%20produces%20more%20than%20365%20lines%20of%20output.%20Print%20an%20empty%20line%20after%20each%20case.%22%2C%22samples%22%3A%5B%5B%22j%201%5Cr%5Cnabc%202%5Cr%5Cnaaabc%201%5Cr%5Cnaaabb%202%5Cr%5Cnaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbcccdd%20123456%5Cr%5Cnaaaaaaaaabbbbbbbbbcccccccccddddddddd%201000000000%22%2C%22j%5Cr%5Cn1%5Cr%5Cn%5Cr%5Cnbac%5Cr%5Cncab%5Cr%5Cn4%5Cr%5Cn%5Cr%5Cnabaca%5Cr%5Cnacaba%5Cr%5Cn2%5Cr%5Cn%5Cr%5Cn1%5Cr%5Cn%5Cr%5Cnbabacbcabacabadabababababababababadab%5Cr%5Cn213216%5Cr%5Cn%5Cr%5Cnabacbcacbdadcdbcadbdacbdacbdadbcbcad%5Cr%5Cnabadadcdcdcdbdbdadbcabacacbdbcbcacab%5Cr%5Cnacabacbcbdbcbdcdadadacbcadbcbcadadbd%5Cr%5Cnacacbcbdacbdcdacbcadbdbcbcadadbdabad%5Cr%5Cnacadbcadbdbcacadbdbcacbdbdacbdbcadac%5Cr%5Cnacbcacbcadbdadadadbcbdcdabacacbdbdbc%5Cr%5Cnacbcbdadbdcdbcbcbcacbdadadadadbcacab%5Cr%5Cnacbdadcdcdadadbdababacbcbcbcacbdbdac%5Cr%5Cnacbdcdbdbcacbcbcadabadbcabadbdcdacad%5Cr%5Cnadacbcacbcbcbdcdcdbdadadabadbdbcacab%5Cr%5Cnadadbcbcadbcabacadbdbcbdabadcdcdacbc%5Cr%5Cnadbcadbcabacbdacacbcbcbdcdadbdadbdac%5Cr%5Cnadbdacababacadadcdbcbcadbdacbcbdcdbc%5Cr%5Cnadbdcdacbdbcbdbcadadadbcadacbcacbcab%5Cr%5Cnadcdbdacadacbdbcbdadacbcbcadbdbcacab%5Cr%5Cnbabacbdcdbdcdbcadcdbcabacacadadbdacb%5Cr%5Cnbacacadbdcdbcbdbdcdacbdacabacadbcadb%5Cr%5Cnbacadcdbcbdabacbcacacadadadcdbdbdbcb%5Cr%5Cnbacbdadacabacadacbdcdbcadbcbdbcbdadc%5Cr%5Cnbadacadbcadacbcbdadbdbcacbcbdcdabadc%5Cr%5Cnbadbcacbdabadcdbcadbdacabacbdacbdcdc%5Cr%5Cnbadbdcdbdadacbcbcacacbdbdacbdadbcaca%5Cr%5Cnbcabacadbdbdacacbdadcdadbcbcbcadacbd%5Cr%5Cnbcacadacbcbdcdbdbcbdbdadadabacbdacac%5Cr%5Cnbcacbdbdcdcdababadacbcadacacbdbdbcad%5Cr%5Cnbcadbcadbdbdcdcdadbcbcacbcababadacad%5Cr%5Cnbcbcabadacadcdadacbdadbcbdcdbcacbdab%5Cr%5Cnbcbcbcadbcadbcadbdadbcbcadabacadadcd%5Cr%5Cnbcbdacbdacbdbcbdadacacbdcdbdadacabac%5Cr%5Cnbcbdbdbdcdacacacbdbcadadbcababacadcd%5Cr%5Cnbdabadcdbdadbcadcdbcbdcdbcabacabacac%5Cr%5Cnbdacbcbcbcadadbcadcdabadbcacbdcdabad%5Cr%5Cnbdadbcabacbcbcababadacadcdcdbdcdacbd%5Cr%5Cnbdbcacacbdbcadbcbdabacbcadacadadbdcd%5Cr%5Cnbdbcbdacacbdadbdcdababadadcdbcacbcac%5Cr%5Cnbdbdbcadbcacadbcadacadbdbdcdbcacacab%5Cr%5Cnbdcdacbdadadbcbcacacbcacabadbdbcadbd%5Cr%5Cnbdcdcdadacadcdbdbcababadbcacbcadbcab%5Cr%5Cncabacbdcdbdadacacadbcbcacadbcbdbdadb%5Cr%5Cncacabadcdbdbdbcbcbdacabadbdacbdacadc%5Cr%5Cncacadcdbcbcbdcdacababacbcadbdbdbdada%5Cr%5Cncacbdadbdadacbdababacbcbdcdcdcdabacb%5Cr%5Cncadacadbdabacbcacbdbdcdadbcadadbcbcb%5Cr%5Cncadbcacbcbdcdbdbcadbcbdadabacbdacada%5Cr%5Cncadbdbcbdacadbdacadacbdbcbcadbcabadc%5Cr%5Cncbcabacbcbdadabacbcadbdadcdcdadacbdb%5Cr%5Cncbcadacadadbdbcacbcadbdbdacbcabadcdb%5Cr%5Cncbcbcadacbcadadadbcbdacadbcbdbdacadb%5Cr%5Cncbcbdbcadcdacbdadacbdbcacadacbdabadb%5Cr%5Cncbdacadacbcbdcdbdabadbcbcacabadcdadb%5Cr%5Cncbdadbdadabadcdabadcdacbcbcabacbcbdc%5Cr%5Cncbdbcbdcdbcbdacacbdadadcdababacabadc%5Cr%5Cncbdcdacbdbcbdadacacadbcabababadcdbdc%5Cr%5Cncdabadacabadcdbdcdbdbcabadbcbcacadbc%5Cr%5Cncdacbcbcadabadcdbdbcbcacbdadadabadbc%5Cr%5Cncdadbcacacbcadadbdbdbcabadbcbcbcadad%5Cr%5Cncdbcacadbcbdbcadbdadadbdbcacbcadabac%5Cr%5Cncdbcbdadadacbdbcabacbcbcabadacadcdbd%5Cr%5Cncdbdbcabadcdbdbdcdacacababadbdacacbc%5Cr%5Cncdcdacacbcadbcabadbdcdbcbcabadadbdab%5Cr%5Cndababacbcbcadbdacacbcacbdbdcdadcdadb%5Cr%5Cndabadbdcdacacadabadcdbdbcbcbcacbdbca%5Cr%5Cndacadacbdbdbcacbcadbdbcacbcadbdcdaba%5Cr%5Cndacbcbdadadcdbdacadcdababacbcacbdbcb%5Cr%5Cndadabadbcbcadcdbdacbcadacadbcbcbdbca%5Cr%5Cndadbcadadbdcdcdabacbcbdbcacbdbcabaca%5Cr%5Cndadcdbcacabadadbcabadbcadcdadbcbcbcb%5Cr%5Cndbcacbcadacadbcacbdadacbcbdacbdbdadb%5Cr%5Cndbcadcdbcbdbdadbdadbcacbcacacbcabada%5Cr%5Cndbcbdacbcadbdacbdadbdacbcadbcacadacb%5Cr%5Cndbdacacbdadbcbcbcbcadbdadbcadbcadaca%5Cr%5Cndbdbcacadacabacbcadacbdadcdbdbdbcbca%5Cr%5Cndbdcdabacadadbcbdcdbcacacbcbdbdacaba%5Cr%5Cndcdacadadbcbcabacbcacbdbcbdbcadadadb%5Cr%5Cndcdbcadadbcbcadbcbcadabadbdcdbcacaba%5Cr%5Cndcdcdacabadbdbdacacbcacbdababadbcbdc%5Cr%5Cn76317369490%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2274%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F11946%22%2C%22id%22%3A%2211946%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP11946%22%2C%22title%22%3A%22ZZPERM2%20-%20Zig-Zag%20Permutation%202%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22ZZPERM2%20-%20Zig-Zag%20Permutation%202%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>ZZPERM2 - Zig-Zag Permutation 2</h1>
+<h2>题目描述</h2>
+<div>See [ZZPERM](../ZZPERM/) problem description. This an improved version with more demanding test cases.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of at most 15 test cases. Each case contains a word (W) not longer than 64 letters and one positive number (D <= 1000000000). The letters of each word are in increasing order. Input is terminated by EOF.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each case output all of the zig-zag permutations of W whose rank is divisible by D, in increasing lexicographic order, one word per line. In the next line print the total number of zig-zag permutations of W. There is no case that produces more than 365 lines of output. Print an empty line after each case.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>j 1
+abc 2
+aaabc 1
+aaabb 2
+aaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbcccdd 123456
+aaaaaaaaabbbbbbbbbcccccccccddddddddd 1000000000</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>j
+1
+
+bac
+cab
+4
+
+abaca
+acaba
+2
+
+1
+
+babacbcabacabadabababababababababadab
+213216
+
+abacbcacbdadcdbcadbdacbdacbdadbcbcad
+abadadcdcdcdbdbdadbcabacacbdbcbcacab
+acabacbcbdbcbdcdadadacbcadbcbcadadbd
+acacbcbdacbdcdacbcadbdbcbcadadbdabad
+acadbcadbdbcacadbdbcacbdbdacbdbcadac
+acbcacbcadbdadadadbcbdcdabacacbdbdbc
+acbcbdadbdcdbcbcbcacbdadadadadbcacab
+acbdadcdcdadadbdababacbcbcbcacbdbdac
+acbdcdbdbcacbcbcadabadbcabadbdcdacad
+adacbcacbcbcbdcdcdbdadadabadbdbcacab
+adadbcbcadbcabacadbdbcbdabadcdcdacbc
+adbcadbcabacbdacacbcbcbdcdadbdadbdac
+adbdacababacadadcdbcbcadbdacbcbdcdbc
+adbdcdacbdbcbdbcadadadbcadacbcacbcab
+adcdbdacadacbdbcbdadacbcbcadbdbcacab
+babacbdcdbdcdbcadcdbcabacacadadbdacb
+bacacadbdcdbcbdbdcdacbdacabacadbcadb
+bacadcdbcbdabacbcacacadadadcdbdbdbcb
+bacbdadacabacadacbdcdbcadbcbdbcbdadc
+badacadbcadacbcbdadbdbcacbcbdcdabadc
+badbcacbdabadcdbcadbdacabacbdacbdcdc
+badbdcdbdadacbcbcacacbdbdacbdadbcaca
+bcabacadbdbdacacbdadcdadbcbcbcadacbd
+bcacadacbcbdcdbdbcbdbdadadabacbdacac
+bcacbdbdcdcdababadacbcadacacbdbdbcad
+bcadbcadbdbdcdcdadbcbcacbcababadacad
+bcbcabadacadcdadacbdadbcbdcdbcacbdab
+bcbcbcadbcadbcadbdadbcbcadabacadadcd
+bcbdacbdacbdbcbdadacacbdcdbdadacabac
+bcbdbdbdcdacacacbdbcadadbcababacadcd
+bdabadcdbdadbcadcdbcbdcdbcabacabacac
+bdacbcbcbcadadbcadcdabadbcacbdcdabad
+bdadbcabacbcbcababadacadcdcdbdcdacbd
+bdbcacacbdbcadbcbdabacbcadacadadbdcd
+bdbcbdacacbdadbdcdababadadcdbcacbcac
+bdbdbcadbcacadbcadacadbdbdcdbcacacab
+bdcdacbdadadbcbcacacbcacabadbdbcadbd
+bdcdcdadacadcdbdbcababadbcacbcadbcab
+cabacbdcdbdadacacadbcbcacadbcbdbdadb
+cacabadcdbdbdbcbcbdacabadbdacbdacadc
+cacadcdbcbcbdcdacababacbcadbdbdbdada
+cacbdadbdadacbdababacbcbdcdcdcdabacb
+cadacadbdabacbcacbdbdcdadbcadadbcbcb
+cadbcacbcbdcdbdbcadbcbdadabacbdacada
+cadbdbcbdacadbdacadacbdbcbcadbcabadc
+cbcabacbcbdadabacbcadbdadcdcdadacbdb
+cbcadacadadbdbcacbcadbdbdacbcabadcdb
+cbcbcadacbcadadadbcbdacadbcbdbdacadb
+cbcbdbcadcdacbdadacbdbcacadacbdabadb
+cbdacadacbcbdcdbdabadbcbcacabadcdadb
+cbdadbdadabadcdabadcdacbcbcabacbcbdc
+cbdbcbdcdbcbdacacbdadadcdababacabadc
+cbdcdacbdbcbdadacacadbcabababadcdbdc
+cdabadacabadcdbdcdbdbcabadbcbcacadbc
+cdacbcbcadabadcdbdbcbcacbdadadabadbc
+cdadbcacacbcadadbdbdbcabadbcbcbcadad
+cdbcacadbcbdbcadbdadadbdbcacbcadabac
+cdbcbdadadacbdbcabacbcbcabadacadcdbd
+cdbdbcabadcdbdbdcdacacababadbdacacbc
+cdcdacacbcadbcabadbdcdbcbcabadadbdab
+dababacbcbcadbdacacbcacbdbdcdadcdadb
+dabadbdcdacacadabadcdbdbcbcbcacbdbca
+dacadacbdbdbcacbcadbdbcacbcadbdcdaba
+dacbcbdadadcdbdacadcdababacbcacbdbcb
+dadabadbcbcadcdbdacbcadacadbcbcbdbca
+dadbcadadbdcdcdabacbcbdbcacbdbcabaca
+dadcdbcacabadadbcabadbcadcdadbcbcbcb
+dbcacbcadacadbcacbdadacbcbdacbdbdadb
+dbcadcdbcbdbdadbdadbcacbcacacbcabada
+dbcbdacbcadbdacbdadbdacbcadbcacadacb
+dbdacacbdadbcbcbcbcadbdadbcadbcadaca
+dbdbcacadacabacbcadacbdadcdbdbdbcbca
+dbdcdabacadadbcbdcdbcacacbcbdbdacaba
+dcdacadadbcbcabacbcacbdbcbdbcadadadb
+dcdbcadadbcbcadbcbcadabadbdcdbcacaba
+dcdcdacabadbdbdacacbcacbdababadbcbdc
+76317369490</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

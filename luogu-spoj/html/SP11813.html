@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>CNTPATHS - Count weighted paths - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450284:I8slvUyhhhwTJfMEw3OaJwuNTr/t3IMrX2Po97+uIcU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22John%20likes%20to%20take%20a%20walk%20from%20his%20house%20to%20university.%20He%20needs%20to%20arrive%20his%20university%20in%20at%20most%20%2A%2AT%2A%2A%20seconds%20after%20leaving%20his%20home.%20We%20can%20represent%20the%20situation%20as%20a%20%2A%2AN%2A%2A%20vertices%20graph.%20Vertex%200%20of%20the%20graph%20will%20be%20John%27s%20home%20and%20vertex%201%20John%27s%20university.%20There%20can%20be%20bidirectional%20roads%20connecting%20pairs%20of%20vertices%2C%20each%20road%20will%20take%20John%20some%20seconds%20to%20cross.%5Cn%5CnJohn%20likes%20variety.%20We%20consider%20a%20valid%20path%20to%20be%20a%20sequence%20of%20vertices%20that%20starts%20with%20vertex%200%20%28John%27s%20house%29%20and%20finishes%20with%20vertex%201%20%28The%20University%29%20and%20there%20exists%20a%20road%20connecting%20each%20pair%20of%20consecutive%20vertices%20in%20the%20sequences%20%28Note%20that%20a%20vertex%20may%20appear%20multiple%20times%20in%20the%20path%29.%20The%20total%20time%20John%20needs%20to%20traverse%20a%20path%20is%20equal%20to%20the%20sum%20of%20the%20times%20needed%20to%20cross%20each%20individual%20road%20in%20it.%20Please%20count%20the%20total%20number%20of%20different%20paths%20that%20need%20at%20most%20%2A%2AT%2A%2A%20minutes%20to%20be%20traversed%20in%20total.%20Two%20paths%20are%20different%20if%20there%20is%20at%20least%20one%20moment%20at%20which%20they%20visit%20different%20vertices.%5Cn%5CnGiven%20%2A%2AT%2A%2A%2C%20%2A%2AN%2A%2A%20and%20the%20roads%20between%20the%20vertices%2C%20%5Cu00bfHow%20many%20different%20paths%20that%20need%20at%20most%20%2A%2AT%2A%2A%20seconds%20exist%3F%20Print%20the%20result%20modulo%201000000007%20%2810%20%24%20%5E%7B9%7D%20%24%20%2B7%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20consists%20of%20a%20integer%20%2A%2ATOTAL%2A%2A%2C%20the%20total%20number%20of%20test%20cases%20%281%20%3C%3D%20%2A%2AN%2A%2A%20%3C%3D%2010%29.%5Cn%5CnEach%20of%20the%20following%20test%20cases%20begins%20with%20a%20single%20line%20that%20contains%20two%20integers%20%3A%20%2A%2AN%2A%2A%20and%20%2A%2AT%2A%2A.%20%282%20%3C%3D%20%2A%2AN%2A%2A%20%3C%3D%205%29%2C%20%281%20%3C%3D%20%2A%2AT%2A%2A%20%3C%3D%201000000000%20%2810%20%24%20%5E%7B9%7D%20%24%20%29%20%29.%5Cn%5CnThe%20%2A%2AN%2A%2A%20following%20lines%20are%20indexed%20from%20%2A%2Ai%2A%2A%3D0%20to%20%2A%2AN%2A%2A-1.%20The%20%2A%2Ai-th%2A%2A%20line%20will%20represent%20the%20roads%20that%20connect%20vertex%20%2A%2Ai%2A%2A%20with%20other%20vertices.%20The%20line%20will%20consist%20of%20%2A%2AN%2A%2A%20character%20indexed%20from%20%2A%2Aj%3D%2A%2A0%20to%20%2A%2AN%2A%2A-1%2A%2A.%2A%2A%20%20The%20%2A%2Aj%2A%2A-th%20character%20of%20the%20%2A%2Ai%2A%2A-th%20line%20represents%20the%20road%20connecting%20vertex%20%2A%2Ai%2A%2A%20with%20vertex%20%2A%2Aj%2A%2A.%20If%20the%20character%20is%20%27-%27%2C%20this%20means%20no%20road%20connectes%20vertices%20%2A%2Ai%2A%2A%20and%20%2A%2Aj%2A%2A.%20Otherwise%2C%20the%20character%20will%20be%20a%20digit%20equal%20to%201%2C2%20or%203%2C%20determining%20the%20number%20of%20minutes%20it%20takes%20John%20to%20move%20between%20vertices%20%2A%2Ai%2A%2A%20and%20%2A%2Aj%2A%2A.%5Cn%5CnFor%20every%20pair%20%28%2A%2Ai%2A%2A%2C%2A%2Aj%2A%2A%29%2C%20the%20road%20character%20between%20%2A%2Ai%2A%2A%20and%20%2A%2Aj%2A%2A%20will%20be%20the%20same%20as%20the%20one%20between%20%2A%2Aj%2A%2A%20and%20%2A%2Ai%2A%2A.%5Cn%5CnFor%20each%20%2A%2Ai%2A%2A%2C%20there%20will%20never%20be%20a%20road%20cannecting%20vertex%20%2A%2Ai%2A%2A%20with%20itself.%5Cn%5CnVertex%200%20represents%20John%27s%20house%20and%20Vertex%201%20John%27s%20university.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20show%20in%20a%20single%20line%3A%20%5C%22Case%20%23i%3A%20R%5C%22%2C%20where%20R%20is%20the%20total%20number%20of%20valid%20paths%20between%20vertices%200%20and%201%20donde%20R%20that%20need%20a%20quantity%20of%20at%20most%20%2A%2AT%2A%2A%20segundos%20.%22%2C%22samples%22%3A%5B%5B%223%5C%5Cn2%209%5C%5Cn-3%5C%5Cn3-%5C%5Cn5%204%5C%5Cn--123%5C%5Cn--123%5C%5Cn11---%5C%5Cn22---%5C%5Cn33---%5C%5Cn3%20100%5C%5Cn-21%5C%5Cn2-3%5C%5Cn13-%22%2C%22Case%20%231%3A%202%5C%5CnCase%20%232%3A%204%5C%5CnCase%20%233%3A%20924247768%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B100%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F11813%22%2C%22id%22%3A%2211813%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP11813%22%2C%22title%22%3A%22CNTPATHS%20-%20Count%20weighted%20paths%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22CNTPATHS%20-%20Count%20weighted%20paths%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>CNTPATHS - Count weighted paths</h1>
+<h2>题目描述</h2>
+<div>John likes to take a walk from his house to university. He needs to arrive his university in at most **T** seconds after leaving his home. We can represent the situation as a **N** vertices graph. Vertex 0 of the graph will be John's home and vertex 1 John's university. There can be bidirectional roads connecting pairs of vertices, each road will take John some seconds to cross.
+John likes variety. We consider a valid path to be a sequence of vertices that starts with vertex 0 (John's house) and finishes with vertex 1 (The University) and there exists a road connecting each pair of consecutive vertices in the sequences (Note that a vertex may appear multiple times in the path). The total time John needs to traverse a path is equal to the sum of the times needed to cross each individual road in it. Please count the total number of different paths that need at most **T** minutes to be traversed in total. Two paths are different if there is at least one moment at which they visit different vertices.
+Given **T**, **N** and the roads between the vertices, ¿How many different paths that need at most **T** seconds exist? Print the result modulo 1000000007 (10 $ ^{9} $ +7).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line consists of a integer **TOTAL**, the total number of test cases (1 <= **N** <= 10).
+Each of the following test cases begins with a single line that contains two integers : **N** and **T**. (2 <= **N** <= 5), (1 <= **T** <= 1000000000 (10 $ ^{9} $ ) ).
+The **N** following lines are indexed from **i**=0 to **N**-1. The **i-th** line will represent the roads that connect vertex **i** with other vertices. The line will consist of **N** character indexed from **j=**0 to **N**-1**.** The **j**-th character of the **i**-th line represents the road connecting vertex **i** with vertex **j**. If the character is '-', this means no road connectes vertices **i** and **j**. Otherwise, the character will be a digit equal to 1,2 or 3, determining the number of minutes it takes John to move between vertices **i** and **j**.
+For every pair (**i**,**j**), the road character between **i** and **j** will be the same as the one between **j** and **i**.
+For each **i**, there will never be a road cannecting vertex **i** with itself.
+Vertex 0 represents John's house and Vertex 1 John's university.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, show in a single line: "Case #i: R", where R is the total number of valid paths between vertices 0 and 1 donde R that need a quantity of at most **T** segundos .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3\n2 9\n-3\n3-\n5 4\n--123\n--123\n11---\n22---\n33---\n3 100\n-21\n2-3\n13-</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case #1: 2\nCase #2: 4\nCase #3: 924247768</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SORTBIT - Sorted bit squence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449635:BLJGYQxeWA2Bhng8BNe1kOmQHv8CCFfj3OdPdSszfqI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%27s%20consider%20the%2032%20bit%20representation%20of%20all%20integers%20i%20from%20m%20up%20to%20n%20inclusive%20%28m%20%5Cu2264%20i%20%5Cu2264%20n%3B%20m%20%5Cu00d7%20n%20%5Cu2265%200%2C%20-2%5E31%20%5Cu2264%20m%20%5Cu2264%20n%20%5Cu2264%202%5E31-1%29.%20Note%20that%20a%20negative%20number%20is%20represented%20in%2032%20bit%20Additional%20Code.%20That%20is%20the%2032%20bit%20sequence%2C%20the%20binary%20sum%20of%20which%20and%20the%2032%20bit%20representation%20of%20the%20corresponding%20positive%20number%20is%202%5E32%20%281%200000%200000%200000%200000%200000%200000%200000%200000%20in%20binary%29.%5Cn%5CnFor%20example%2C%20the%2032%20bit%20representation%20of%206%20is%20%200000%200000%200000%200000%200000%200000%200000%200110%5Cn%5Cn%20and%20the%2032%20bit%20representation%20of%20-6%20is%201111%201111%201111%201111%201111%201111%201111%201010%5Cn%5Cn%20because%5Cn%5Cn%20%200000%200000%200000%200000%200000%200000%200000%200110%20%286%29%20%20%20%5Cn%5C%5C%2B%20%20%20%5Cn%201111%201111%201111%201111%201111%201111%201111%201010%20%28-6%29%20%20%20%5Cn%5C%5C-------------------------------------------------%20%20%5Cn%3D%201%200000%200000%200000%200000%200000%200000%200000%200000%20%282%5E32%29%5Cn%5CnLet%27s%20sort%20the%2032%20bit%20representations%20of%20these%20numbers%20in%20increasing%20order%20of%20the%20number%20of%20bit%201.%20If%20two%2032%20bit%20representations%20that%20have%20the%20same%20number%20of%20bit%201%2C%20they%20are%20sorted%20in%20lexicographical%20order.%5Cn%5CnFor%20example%2C%20with%20m%20%3D%200%20and%20n%20%3D%205%2C%20the%20result%20of%20the%20sorting%20will%20be%5Cn%5Cn%20%20No.%5Cn%5Cn%20%20Decimal%20number%5Cn%5Cn%20%20Binary%2032%20bit%20representation%5Cn%5Cn%20%201%5Cn%5Cn%20%200%5Cn%5Cn%20%200000%200000%200000%200000%200000%200000%200000%200000%5Cn%5Cn%20%202%5Cn%5Cn%20%201%5Cn%5Cn%20%200000%200000%200000%200000%200000%200000%200000%200001%5Cn%5Cn%20%203%5Cn%5Cn%20%202%5Cn%5Cn%20%200000%200000%200000%200000%200000%200000%200000%200010%5Cn%5Cn%20%204%5Cn%5Cn%20%204%5Cn%5Cn%20%200000%200000%200000%200000%200000%200000%200000%200100%5Cn%5Cn%20%205%5Cn%5Cn%20%203%5Cn%5Cn%20%200000%200000%200000%200000%200000%200000%200000%200011%5Cn%5Cn%20%206%5Cn%5Cn%20%205%5Cn%5Cn%20%200000%200000%200000%200000%200000%200000%200000%200101%5Cn%5Cn%20with%20m%20%3D%20-5%20and%20n%20%3D%20-2%2C%20the%20result%20of%20the%20sorting%20will%20be%5Cn%5Cn%20%20No.%5Cn%5Cn%20%20Decimal%20number%5Cn%5Cn%20%20Binary%2032%20bit%20representation%5Cn%5Cn%20%201%5Cn%5Cn%20%20-4%5Cn%5Cn%20%201111%201111%201111%201111%201111%201111%201111%201100%5Cn%5Cn%20%202%5Cn%5Cn%20%20-5%5Cn%5Cn%20%201111%201111%201111%201111%201111%201111%201111%201011%5Cn%5Cn%20%203%5Cn%5Cn%20%20-3%5Cn%5Cn%20%201111%201111%201111%201111%201111%201111%201111%201101%5Cn%5Cn%20%204%5Cn%5Cn%20%20-2%5Cn%5Cn%20%201111%201111%201111%201111%201111%201111%201111%201110%5Cn%5Cn%20Given%20m%2C%20n%20and%20k%20%281%20%5Cu2264%20k%20%5Cu2264%20min%7Bn%20%5Cu2212%20m%20%2B%201%2C%202%20147%20473%20547%7D%29%2C%20your%20task%20is%20to%20write%20a%20program%20to%20find%20a%20number%20corresponding%20to%20k-th%20representation%20in%20the%20sorted%20sequence.%22%2C%22inputFormat%22%3A%22%20The%20input%20consists%20of%20several%20data%20sets.%20The%20first%20line%20of%20the%20input%20file%20contains%20the%20number%20of%20data%20sets%20which%20is%20a%20positive%20integer%20and%20is%20not%20bigger%20than%201000.%20The%20following%20lines%20describe%20the%20data%20sets.%5Cn%5Cn%20For%20each%20data%20set%2C%20the%20only%20line%20contains%203%20integers%20m%2C%20n%20and%20k%20separated%20by%20space.%22%2C%22outputFormat%22%3A%22%20For%20each%20data%20set%2C%20write%20in%20one%20line%20the%20k-th%20number%20of%20the%20sorted%20numbers.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn0%205%203%5Cr%5Cn-5%20-2%202%22%2C%222%5Cr%5Cn-5%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5064%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1182%22%2C%22id%22%3A%221182%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu5927%5Cu610f%5Cuff1a%5Cr%5Cn------------%5Cr%5Cn%5Cu5c06%5Cu533a%5Cu95f4%5Bm%2Cn%5D%5Cu7684%5Cu6240%5Cu6709%5Cu6574%5Cu6570%5Cu6309%5Cu7167%5Cu5176%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu4f4d%5Cu8868%5Cu793a%5Cu7684%5Cu6570%5Cu4e2d1%5Cu7684%5Cu6570%5Cu91cf%5Cu4ece%5Cu5c0f%5Cu5230%5Cu5927%5Cu6392%5Cu5e8f%5Cu3002%5Cu5982%5Cu679c1%5Cu7684%5Cu6570%5Cu91cf%5Cu76f8%5Cu540c%5Cuff0c%5Cu5219%5Cu6309%5Cu7167%5Cu6570%5Cu7684%5Cu5927%5Cu5c0f%5Cu6392%5Cu5e8f%5Cu3002%5Cu6c42%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7b2ck%5Cu4e2a%5Cu6570%5Cu3002%5Cu5176%5Cu4e2d%5Cuff0c%5Cu8d1f%5Cu6570%5Cu4f7f%5Cu7528%5Cu8865%5Cu7801%5Cu6765%5Cu8868%5Cu793a%5Cuff1a%5Cu4e00%5Cu4e2a%5Cu8d1f%5Cu6570%5Cu7684%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu6570%5Cu4e0e%5Cu5176%5Cu76f8%5Cu53cd%5Cu6570%5Cu7684%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu6570%5Cu4e4b%5Cu548c%5Cu6070%5Cu597d%5Cu7b49%5Cu4e8e%20%242%5E%7B32%7D%24%5Cu3002%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cuff1a%5Cr%5Cn------------%5Cr%5Cn%5Cu5f53m%3D0%5Cu548cn%3D5%5Cu65f6%5Cuff0c%5Cu6392%5Cu5e8f%5Cu7ed3%5Cu679c%5Cu5c06%5Cu4e3a%5Cuff1a%5Cr%5Cn%5Cr%5Cn%7C%20%5Cu7f16%5Cu53f7%20%7C%20%5Cu5341%5Cu8fdb%5Cu5236%5Cu6570%20%7C%20%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu8868%5Cu793a%20%7C%5Cr%5Cn%7C%20%3A----------%3A%20%7C%20%3A----------%3A%20%7C%20%3A----------%3A%5Cr%5Cn%7C%201%20%7C%200%20%7C%200000%20%7C%5Cr%5Cn%7C%202%20%7C%201%20%7C%200001%20%7C%5Cr%5Cn%7C%203%20%7C%202%20%7C%200010%20%7C%5Cr%5Cn%7C%204%20%7C%204%20%7C%200100%20%7C%5Cr%5Cn%7C%205%20%7C%203%20%7C%200011%20%7C%5Cr%5Cn%7C%206%20%7C%205%20%7C%200101%20%7C%5Cr%5Cn%5Cu5f53m%3D-5%5Cu548cn%3D-2%5Cu65f6%5Cuff0c%5Cu6392%5Cu5e8f%5Cu7ed3%5Cu679c%5Cu5c06%5Cu4e3a%5Cuff1a%5Cr%5Cn%5Cr%5Cn%7C%20%5Cu7f16%5Cu53f7%20%7C%20%5Cu5341%5Cu8fdb%5Cu5236%5Cu6570%20%7C%20%5Cu4e8c%5Cu8fdb%5Cu5236%5Cu8868%5Cu793a%20%7C%5Cr%5Cn%7C%20%3A----------%3A%20%7C%20%3A----------%3A%20%7C%20%3A----------%3A%20%7C%5Cr%5Cn%7C%201%20%7C%20-4%20%7C%201100%20%7C%5Cr%5Cn%7C%202%20%7C%20-5%20%7C%201011%20%7C%5Cr%5Cn%7C%203%20%7C%20-3%20%7C%201101%20%7C%5Cr%5Cn%7C%204%20%7C%20-2%20%7C%201110%20%7C%5Cr%5Cn%5Cu8f93%5Cu5165%5Cuff1a%5Cr%5Cn------------%5Cr%5Cn%5Cu7531%5Cu591a%5Cu4e2a%5Cu6570%5Cu636e%5Cu96c6%5Cu7ec4%5Cu6210%5Cu3002%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu4e0d%5Cu5927%5Cu4e8e1000%5Cu7684%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu636e%5Cu96c6%5Cuff0c%5Cu552f%5Cu4e00%5Cu7684%5Cu4e00%5Cu884c%5Cu5305%5Cu542b3%5Cu4e2a%5Cu6574%5Cu6570m%5Cu3001n%5Cu548ck%5Cuff0c%5Cu7528%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu3002%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cuff1a%5Cr%5Cn------------%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6570%5Cu636e%5Cu96c6%5Cuff0c%5Cu8f93%5Cu51fa%5Cu6392%5Cu5e8f%5Cu540e%5Cu7684%5Cu5e8f%5Cu5217%5Cu4e2d%5Cu7b2ck%5Cu4e2a%5Cu6570%5Cu3002%5Cr%5Cn%5Cu6570%5Cu636e%5Cu89c4%5Cu6a21%5Cuff1a%5Cr%5Cn------------%5Cr%5Cnm%5Cu00d7n%5Cu22650%5Cuff0c%24-2%5E%7B31%7D%24%5Cu2264m%5Cu2264n%5Cu2264%242%5E%7B31%7D%24-1%5Cuff0c1%5Cu2264k%5Cu2264min%7Bn%5Cu2212m%2B1%2C2147473547%7D%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A7%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22SP1182%22%2C%22title%22%3A%22SORTBIT%20-%20Sorted%20bit%20squence%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A52439%2C%22title%22%3A%22Sorted%20bit%20squence%22%2C%22forum%22%3A%7B%22id%22%3A13275%2C%22name%22%3A%22SP1182%20SORTBIT%20-%20Sorted%20bit%20squence%22%2C%22slug%22%3A%22SP1182%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SORTBIT%20-%20Sorted%20bit%20squence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SORTBIT - Sorted bit squence</h1>
+<h2>题意翻译</h2>
+<div>题目大意：
+------------
+将区间[m,n]的所有整数按照其二进制位表示的数中1的数量从小到大排序。如果1的数量相同，则按照数的大小排序。求序列中第k个数。其中，负数使用补码来表示：一个负数的二进制数与其相反数的二进制数之和恰好等于 $2^{32}$。
+例如：
+------------
+当m=0和n=5时，排序结果将为：
+| 编号 | 十进制数 | 二进制表示 |
+| :----------: | :----------: | :----------:
+| 1 | 0 | 0000 |
+| 2 | 1 | 0001 |
+| 3 | 2 | 0010 |
+| 4 | 4 | 0100 |
+| 5 | 3 | 0011 |
+| 6 | 5 | 0101 |
+当m=-5和n=-2时，排序结果将为：
+| 编号 | 十进制数 | 二进制表示 |
+| :----------: | :----------: | :----------: |
+| 1 | -4 | 1100 |
+| 2 | -5 | 1011 |
+| 3 | -3 | 1101 |
+| 4 | -2 | 1110 |
+输入：
+------------
+由多个数据集组成。输入文件的第一行包含一个不大于1000的正整数，表示测试数据的数量。
+对于每个数据集，唯一的一行包含3个整数m、n和k，用空格分隔。
+输出：
+------------
+对于每个数据集，输出排序后的序列中第k个数。
+数据规模：
+------------
+m×n≥0，$-2^{31}$≤m≤n≤$2^{31}$-1，1≤k≤min{n−m+1,2147473547}
+</div>
+<h2>题目描述</h2>
+<div>Let's consider the 32 bit representation of all integers i from m up to n inclusive (m ≤ i ≤ n; m × n ≥ 0, -2^31 ≤ m ≤ n ≤ 2^31-1). Note that a negative number is represented in 32 bit Additional Code. That is the 32 bit sequence, the binary sum of which and the 32 bit representation of the corresponding positive number is 2^32 (1 0000 0000 0000 0000 0000 0000 0000 0000 in binary).
+For example, the 32 bit representation of 6 is 0000 0000 0000 0000 0000 0000 0000 0110
+and the 32 bit representation of -6 is 1111 1111 1111 1111 1111 1111 1111 1010
+because
+0000 0000 0000 0000 0000 0000 0000 0110 (6)
+\+
+1111 1111 1111 1111 1111 1111 1111 1010 (-6)
+\-------------------------------------------------
+= 1 0000 0000 0000 0000 0000 0000 0000 0000 (2^32)
+Let's sort the 32 bit representations of these numbers in increasing order of the number of bit 1. If two 32 bit representations that have the same number of bit 1, they are sorted in lexicographical order.
+For example, with m = 0 and n = 5, the result of the sorting will be
+No.
+Decimal number
+Binary 32 bit representation
+1
+0
+0000 0000 0000 0000 0000 0000 0000 0000
+2
+1
+0000 0000 0000 0000 0000 0000 0000 0001
+3
+2
+0000 0000 0000 0000 0000 0000 0000 0010
+4
+4
+0000 0000 0000 0000 0000 0000 0000 0100
+5
+3
+0000 0000 0000 0000 0000 0000 0000 0011
+6
+5
+0000 0000 0000 0000 0000 0000 0000 0101
+with m = -5 and n = -2, the result of the sorting will be
+No.
+Decimal number
+Binary 32 bit representation
+1
+-4
+1111 1111 1111 1111 1111 1111 1111 1100
+2
+-5
+1111 1111 1111 1111 1111 1111 1111 1011
+3
+-3
+1111 1111 1111 1111 1111 1111 1111 1101
+4
+-2
+1111 1111 1111 1111 1111 1111 1111 1110
+Given m, n and k (1 ≤ k ≤ min{n − m + 1, 2 147 473 547}), your task is to write a program to find a number corresponding to k-th representation in the sorted sequence.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> The input consists of several data sets. The first line of the input file contains the number of data sets which is a positive integer and is not bigger than 1000. The following lines describe the data sets.
+For each data set, the only line contains 3 integers m, n and k separated by space.</div>
+<h3>输出格式</h3>
+<br />
+<div> For each data set, write in one line the k-th number of the sorted numbers.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+0 5 3
+-5 -2 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+-5</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

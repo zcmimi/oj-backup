@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PT07Z - Longest path in a tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449643:JYLRNBqdDZkrjs2glL5Zmk1EkNzeUBejW99ZL95I/ls=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%20You%20are%20given%20an%20unweighted%2C%20undirected%20tree.%20Write%20a%20program%20to%20output%20the%20length%20of%20the%20longest%20path%20%28from%20one%20node%20to%20another%29%20in%20that%20tree.%20The%20length%20of%20a%20path%20in%20this%20case%20is%20number%20of%20edges%20we%20traverse%20from%20source%20to%20destination.%22%2C%22inputFormat%22%3A%22%20The%20first%20line%20of%20the%20input%20file%20contains%20one%20integer%20_N_%20---%20number%20of%20nodes%20in%20the%20tree%20%280%20%3C%20_N_%20%3C%3D%2010000%29.%20Next%20_N_-1%20lines%20contain%20_N_-1%20edges%20of%20that%20tree%20---%20Each%20line%20contains%20a%20pair%20%28_u_%2C%20_v_%29%20means%20there%20is%20an%20edge%20between%20node%20_u_%20and%20node%20_v_%20%281%20%3C%3D%20_u_%2C%20_v_%20%3C%3D%20_N_%29.%22%2C%22outputFormat%22%3A%22%20Print%20the%20length%20of%20the%20longest%20path%20on%20one%20line.%22%2C%22samples%22%3A%5B%5B%223%5Cn1%202%5Cn2%203%22%2C%222%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B181%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1437%22%2C%22id%22%3A%221437%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu65e0%5Cu6743%5Cu65e0%5Cu5411%5Cu7684%5Cu6811%5Cu3002%5Cu7f16%5Cu5199%5Cu7a0b%5Cu5e8f%5Cu4ee5%5Cu8f93%5Cu51fa%5Cu8be5%5Cu6811%5Cu4e2d%5Cu6700%5Cu957f%5Cu8def%5Cu5f84%5Cuff08%5Cu4ece%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu5230%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff09%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cu5728%5Cu8fd9%5Cu79cd%5Cu60c5%5Cu51b5%5Cu4e0b%5Cuff0c%5Cu8def%5Cu5f84%5Cu7684%5Cu957f%5Cu5ea6%5Cu662f%5Cu6211%5Cu4eec%5Cu4ece%5Cu5f00%5Cu59cb%5Cu5230%5Cu76ee%5Cu7684%5Cu5730%5Cu7684%5Cu904d%5Cu5386%5Cu8fb9%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570N%20---%5Cu6811%5Cu4e2d%5Cu7684%5Cu8282%5Cu70b9%5Cu6570%5Cuff080%20%3C%20N%20%3C%3D%2010000%5Cuff09%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765N%20-1%5Cu884c%5Cu5305%5Cu542b%5Cu8be5%5Cu6811%5Cu7684N%20-1%5Cu4e2a%5Cu8fb9---%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu5bf9%5Cuff08u%5Cuff0cv%5Cuff09%5Cuff0c%5Cu8868%5Cu793a%5Cu5728%5Cu8282%5Cu70b9u%5Cu548c%5Cu8282%5Cu70b9v%5Cu4e4b%5Cu95f4%5Cu5b58%5Cu5728%5Cu8fb9%5Cuff081%20%3C%3D%20u%5Cuff0cv%20%3C%3D%20N%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu4e00%5Cu884c%5Cuff1a%5Cu8f93%5Cu51fa%5Cu6700%5Cu957f%5Cu8def%5Cu5f84%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cr%5Cn%22%2C%22tags%22%3A%5B213%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A671%2C%22totalAccepted%22%3A371%2C%22pid%22%3A%22SP1437%22%2C%22title%22%3A%22PT07Z%20-%20Longest%20path%20in%20a%20tree%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A160333%2C%22title%22%3A%22%5Cu6c42%5Cu52a9%5Cuff01%5Cuff01%5Cu8fd9RE%5Cu7b80%5Cu76f4%5Cu7edd%5Cu4e86%22%2C%22forum%22%3A%7B%22id%22%3A13298%2C%22name%22%3A%22SP1437%20PT07Z%20-%20Longest%20path%20in%20a%20tree%22%2C%22slug%22%3A%22SP1437%22%7D%7D%2C%7B%22id%22%3A118621%2C%22title%22%3A%22unaccepted%5Cu6c42%5Cu52a9%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A13298%2C%22name%22%3A%22SP1437%20PT07Z%20-%20Longest%20path%20in%20a%20tree%22%2C%22slug%22%3A%22SP1437%22%7D%7D%2C%7B%22id%22%3A45736%2C%22title%22%3A%22%5Cu3010%5Cu7ffb%5Cu8bd1%5Cu3011%22%2C%22forum%22%3A%7B%22id%22%3A13298%2C%22name%22%3A%22SP1437%20PT07Z%20-%20Longest%20path%20in%20a%20tree%22%2C%22slug%22%3A%22SP1437%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1099%22%2C%22title%22%3A%22%5Cu6811%5Cu7f51%5Cu7684%5Cu6838%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2014%22%2C%22title%22%3A%22%5Cu9009%5Cu8bfe%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2015%22%2C%22title%22%3A%22%5Cu4e8c%5Cu53c9%5Cu82f9%5Cu679c%5Cu6811%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2657%22%2C%22title%22%3A%22%5BSCOI2009%5Dwindy%5Cu6570%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4408%22%2C%22title%22%3A%22%5BNOI2003%5D%5Cu9003%5Cu5b66%5Cu7684%5Cu5c0f%5Cu5b69%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PT07Z%20-%20Longest%20path%20in%20a%20tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PT07Z - Longest path in a tree</h1>
+<h2>题意翻译</h2>
+<div>题目描述
+给你一个无权无向的树。编写程序以输出该树中最长路径（从一个节点到另一个节点）的长度。在这种情况下，路径的长度是我们从开始到目的地的遍历边数。
+输入输出格式
+输入格式：
+输入文件的第一行包含一个整数N ---树中的节点数（0 < N <= 10000）。接下来N -1行包含该树的N -1个边---每行包含一对（u，v），表示在节点u和节点v之间存在边（1 <= u，v <= N）。
+输出格式：
+一行：输出最长路径的长度。
+</div>
+<h2>题目描述</h2>
+<div> You are given an unweighted, undirected tree. Write a program to output the length of the longest path (from one node to another) in that tree. The length of a path in this case is number of edges we traverse from source to destination.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> The first line of the input file contains one integer _N_ --- number of nodes in the tree (0 < _N_ <= 10000). Next _N_-1 lines contain _N_-1 edges of that tree --- Each line contains a pair (_u_, _v_) means there is an edge between node _u_ and node _v_ (1 <= _u_, _v_ <= _N_).</div>
+<h3>输出格式</h3>
+<br />
+<div> Print the length of the longest path on one line.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 2
+2 3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

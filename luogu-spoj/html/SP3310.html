@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SERIALN - Serial Numbers - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449789:C3ZOvzOYHre4V8rpvdQpQKdWnyt5kX5yH2/67x/gUP0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20manufacturer%20keeps%20an%20ordered%20table%20of%20serial%20numbers%20by%20listing%20in%20each%20row%20of%20the%20table%20a%20range%20of%20serial%20numbers%20along%20with%20two%20corresponding%20pieces%20of%20information%20called%20the%20status%20code%20and%20the%20transfer%20code.%20A%20four-column%20table%20stores%20information%20about%20ranges%20of%20serial%20numbers%20in%20this%20order%3A%20starting%20serial%20number%2C%20ending%20serial%20number%2C%20status%20code%2C%20transfer%20code.%20Serial%20numbers%20as%20well%20as%20transfer%20codes%20are%20integers%20from%201%20to%202%20%24%20%5E%7B31%7D%20%24%20-1%20%282%20%24%20%5E%7B31%7D%20%24%20-1%20%3D%202147483647%29%2C%20and%20status%20codes%20are%20a%20single%20upper-case%20letter.%20The%20table%20is%20maintained%20in%20increasing%20order%20of%20serial%20numbers%2C%20serial%20number%20ranges%20are%20never%20allowed%20to%20overlap%2C%20and%20for%20any%20given%20serial%20number%2C%20the%20table%20must%20always%20accurately%20represent%20the%20most%20recent%20data%20%28status%20code%20and%20transfer%20code%29%20for%20that%20serial%20number.%5Cn%5CnLet%27s%20say%20that%20100%2C000%20serial%20numbers%20are%20created%20with%20a%20status%20of%20%5C%22A%5C%22%20and%20a%20transfer%20code%20of%20%5C%221%5C%22.%20An%20entry%20for%20those%20serial%20numbers%20might%20look%20like%20this%3A%5Cn%5Cn%20%601%20100000%20A%201%60This%20is%20obviously%20far%20more%20efficient%20than%20storing%20100%2C000%20individual%20rows%20all%20with%20the%20same%20status%20and%20transfer%20codes.%20The%20challenge%20arises%20when%20serial%20numbers%20within%20already%20defined%20ranges%20need%20to%20be%20given%20different%20status%20or%20transfer%20codes.%20For%20example%2C%20if%20serial%20number%2012345%20needs%20to%20change%20to%20status%20B%2C%20the%20above%20table%20would%20need%20to%20become%20three%20separate%20entries%3A%5Cn%5Cn%20%60%60%60%5Cn1%2012344%20A%201%5Cn12345%2012345%20B%201%5Cn12346%20100000%20A%201%5Cn%60%60%60%5CnNow%20let%27s%20change%20the%20transfer%20code%20of%20all%20serial%20numbers%20in%20the%20range%2012000%20to%2012999%20to%202.%20This%20gets%20us%3A%5Cn%5Cn%20%60%60%60%5Cn1%2011999%20A%201%5Cn12000%2012344%20A%202%5Cn12345%2012345%20B%202%5Cn12346%2012999%20A%202%5Cn13000%20100000%20A%201%5Cn%60%60%60%5CnNow%20change%20all%20existing%20serial%20numbers%20from%2010000%20to%20100000%20to%20status%20C%20and%20transfer%20code%202%3A%5Cn%5Cn%20%60%60%60%5Cn1%209999%20A%201%5Cn10000%20100000%20C%202%5Cn%60%60%60%5CnOnce%20created%20a%20serial%20number%20will%20never%20be%20deleted%2C%20but%20it%20is%20possible%20to%20have%20ranges%20of%20undefined%20serial%20numbers%20between%20ranges%20of%20defined%20ones.%20To%20demonstrate%2C%20let%27s%20now%20set%20all%20serial%20numbers%20from%201000000%20to%201999999%20to%20status%20Z%20and%20transfer%20code%2099%3A%5Cn%5Cn%20%60%60%60%5Cn1%209999%20A%201%5Cn10000%20100000%20C%202%5Cn1000000%201999999%20Z%2099%5Cn%60%60%60%5CnFinally%2C%20the%20table%20is%20always%20maintained%20with%20a%20minimal%20number%20of%20rows%2C%20meaning%20specifically%20that%20there%20will%20never%20be%20two%20adjacent%20rows%20in%20the%20table%20where%20one%20would%20suffice.%20For%20example%2C%20consider%20the%20following%20serial%20number%20table%3A%5Cn%5Cn%20%60%60%60%5Cn1%2010%20A%201%5Cn11%2020%20A%201%5Cn21%2030%20B%201%5Cn%60%60%60%5CnThe%20first%20two%20rows%20could%20actually%20be%20represented%20by%20a%20single%20row%2C%20meaning%20that%20the%20table%20above%20does%20not%20have%20a%20minimal%20number%20of%20rows.%20The%20same%20data%20represented%20by%20a%20minimal%20number%20of%20rows%20would%20look%20like%20this%3A%5Cn%5Cn%20%60%60%60%5Cn1%2020%20A%201%5Cn21%2030%20B%201%5Cn%60%60%60%5CnThe%20following%20table%2C%20however%2C%20because%20the%20first%20two%20rows%20have%20non-matching%20transfer%20codes%2C%20already%20contains%20the%20minimal%20number%20of%20rows%3A%5Cn%5Cn%20%60%60%60%5Cn1%2010%20A%201%5Cn11%2020%20A%202%5Cn21%2030%20B%201%5Cn%60%60%60%5CnSimilarly%2C%20the%20following%20table%20cannot%20be%20reduced%20further%20because%20the%20first%20two%20rows%20do%20not%20represent%20a%20continuous%20series%20of%20serial%20numbers%3A%5Cn%5Cn%20%60%60%60%5Cn1%2010%20A%201%5Cn12%2020%20A%201%5Cn21%2030%20B%201%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%20Each%20input%20case%20begins%20with%20a%20single%20line%20that%20is%20a%20character%20string%20naming%20the%20test%20case.%20This%20string%20contains%20at%20most%2080%20characters.%20The%20name%20%5C%22END%5C%22%20marks%20the%20end%20of%20the%20input.%20Following%20this%20will%20be%201%20to%20100%20lines%20of%20the%20form%20%5C%22A%20B%20S%20T%5C%22%2C%20where%20A%2C%20B%2C%20and%20T%20are%20integers%20in%20the%20range%201%20to%202%20%24%20%5E%7B31%7D%20%24%20-1%2C%20S%20is%20an%20uppercase%20letter%2C%20and%20A%3C%3DB.%20These%20lines%20are%2C%20in%20the%20order%20they%20are%20to%20be%20applied%2C%20the%20serial%20number%20transactions%20to%20be%20recorded%2C%20where%20A%20is%20the%20start%20of%20the%20serial%20number%20range%2C%20B%20is%20the%20end%20of%20the%20serial%20number%20range%2C%20S%20is%20the%20status%20code%2C%20and%20T%20is%20the%20transfer%20code.%20The%20list%20of%20serial%20number%20transactions%20is%20terminated%20by%20a%20line%20containing%20only%20a%200%20%28zero%29%20character.%22%2C%22outputFormat%22%3A%22For%20each%20input%20case%2C%20echo%20the%20test%20case%20name%20to%20the%20output%20on%20a%20line%20by%20itself%2C%20followed%20by%20the%20resulting%20minimal-rows%20serial%20number%20table%20that%20results%20after%20all%20serial%20number%20transactions%20have%20been%20applied.%22%2C%22samples%22%3A%5B%5B%22First%20Example%5Cr%5Cn1%20100000%20A%201%5Cr%5Cn12345%2012345%20B%201%5Cr%5Cn0%5Cr%5CnAnd%20Another%5Cr%5Cn1%20100000%20A%201%5Cr%5Cn12345%2012345%20B%201%5Cr%5Cn12000%2012999%20A%202%5Cr%5Cn12345%2012345%20B%202%5Cr%5Cn0%5Cr%5CnTest%20Case%20Three%5Cr%5Cn1%20100000%20A%201%5Cr%5Cn12345%2012345%20B%201%5Cr%5Cn12000%2012999%20A%202%5Cr%5Cn12345%2012345%20B%202%5Cr%5Cn10000%20100000%20C%202%5Cr%5Cn0%5Cr%5CnExample%20Four%5Cr%5Cn1%20100000%20A%201%5Cr%5Cn12345%2012345%20B%201%5Cr%5Cn12000%2012999%20A%202%5Cr%5Cn12345%2012345%20B%202%5Cr%5Cn10000%20100000%20C%202%5Cr%5Cn1000000%201999999%20Z%2099%5Cr%5Cn0%5Cr%5CnExample%205%5Cr%5Cn1%2010%20A%201%5Cr%5Cn21%2030%20B%201%5Cr%5Cn11%2020%20A%201%5Cr%5Cn0%5Cr%5CnExample%206%5Cr%5Cn21%2030%20B%201%5Cr%5Cn1%2010%20A%201%5Cr%5Cn11%2020%20A%202%5Cr%5Cn0%5Cr%5CnExample%207%5Cr%5Cn12%2020%20A%201%5Cr%5Cn21%2030%20B%201%5Cr%5Cn1%2010%20A%201%5Cr%5Cn0%5Cr%5CnEND%22%2C%22First%20Example%5Cr%5Cn1%2012344%20A%201%5Cr%5Cn12345%2012345%20B%201%5Cr%5Cn12346%20100000%20A%201%5Cr%5CnAnd%20Another%5Cr%5Cn1%2011999%20A%201%5Cr%5Cn12000%2012344%20A%202%5Cr%5Cn12345%2012345%20B%202%5Cr%5Cn12346%2012999%20A%202%5Cr%5Cn13000%20100000%20A%201%5Cr%5CnTest%20Case%20Three%5Cr%5Cn1%209999%20A%201%5Cr%5Cn10000%20100000%20C%202%5Cr%5CnExample%20Four%5Cr%5Cn1%209999%20A%201%5Cr%5Cn10000%20100000%20C%202%5Cr%5Cn1000000%201999999%20Z%2099%5Cr%5CnExample%205%5Cr%5Cn1%2020%20A%201%5Cr%5Cn21%2030%20B%201%5Cr%5CnExample%206%5Cr%5Cn1%2010%20A%201%5Cr%5Cn11%2020%20A%202%5Cr%5Cn21%2030%20B%201%5Cr%5CnExample%207%5Cr%5Cn1%2010%20A%201%5Cr%5Cn12%2020%20A%201%5Cr%5Cn21%2030%20B%201%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1111%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3310%22%2C%22id%22%3A%223310%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP3310%22%2C%22title%22%3A%22SERIALN%20-%20Serial%20Numbers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SERIALN%20-%20Serial%20Numbers%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SERIALN - Serial Numbers</h1>
+<h2>题目描述</h2>
+<div>A manufacturer keeps an ordered table of serial numbers by listing in each row of the table a range of serial numbers along with two corresponding pieces of information called the status code and the transfer code. A four-column table stores information about ranges of serial numbers in this order: starting serial number, ending serial number, status code, transfer code. Serial numbers as well as transfer codes are integers from 1 to 2 $ ^{31} $ -1 (2 $ ^{31} $ -1 = 2147483647), and status codes are a single upper-case letter. The table is maintained in increasing order of serial numbers, serial number ranges are never allowed to overlap, and for any given serial number, the table must always accurately represent the most recent data (status code and transfer code) for that serial number.
+Let's say that 100,000 serial numbers are created with a status of "A" and a transfer code of "1". An entry for those serial numbers might look like this:
+`1 100000 A 1`This is obviously far more efficient than storing 100,000 individual rows all with the same status and transfer codes. The challenge arises when serial numbers within already defined ranges need to be given different status or transfer codes. For example, if serial number 12345 needs to change to status B, the above table would need to become three separate entries:
+```
+1 12344 A 1
+12345 12345 B 1
+12346 100000 A 1
+```
+Now let's change the transfer code of all serial numbers in the range 12000 to 12999 to 2. This gets us:
+```
+1 11999 A 1
+12000 12344 A 2
+12345 12345 B 2
+12346 12999 A 2
+13000 100000 A 1
+```
+Now change all existing serial numbers from 10000 to 100000 to status C and transfer code 2:
+```
+1 9999 A 1
+10000 100000 C 2
+```
+Once created a serial number will never be deleted, but it is possible to have ranges of undefined serial numbers between ranges of defined ones. To demonstrate, let's now set all serial numbers from 1000000 to 1999999 to status Z and transfer code 99:
+```
+1 9999 A 1
+10000 100000 C 2
+1000000 1999999 Z 99
+```
+Finally, the table is always maintained with a minimal number of rows, meaning specifically that there will never be two adjacent rows in the table where one would suffice. For example, consider the following serial number table:
+```
+1 10 A 1
+11 20 A 1
+21 30 B 1
+```
+The first two rows could actually be represented by a single row, meaning that the table above does not have a minimal number of rows. The same data represented by a minimal number of rows would look like this:
+```
+1 20 A 1
+21 30 B 1
+```
+The following table, however, because the first two rows have non-matching transfer codes, already contains the minimal number of rows:
+```
+1 10 A 1
+11 20 A 2
+21 30 B 1
+```
+Similarly, the following table cannot be reduced further because the first two rows do not represent a continuous series of serial numbers:
+```
+1 10 A 1
+12 20 A 1
+21 30 B 1
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> Each input case begins with a single line that is a character string naming the test case. This string contains at most 80 characters. The name "END" marks the end of the input. Following this will be 1 to 100 lines of the form "A B S T", where A, B, and T are integers in the range 1 to 2 $ ^{31} $ -1, S is an uppercase letter, and A<=B. These lines are, in the order they are to be applied, the serial number transactions to be recorded, where A is the start of the serial number range, B is the end of the serial number range, S is the status code, and T is the transfer code. The list of serial number transactions is terminated by a line containing only a 0 (zero) character.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each input case, echo the test case name to the output on a line by itself, followed by the resulting minimal-rows serial number table that results after all serial number transactions have been applied.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>First Example
+1 100000 A 1
+12345 12345 B 1
+0
+And Another
+1 100000 A 1
+12345 12345 B 1
+12000 12999 A 2
+12345 12345 B 2
+0
+Test Case Three
+1 100000 A 1
+12345 12345 B 1
+12000 12999 A 2
+12345 12345 B 2
+10000 100000 C 2
+0
+Example Four
+1 100000 A 1
+12345 12345 B 1
+12000 12999 A 2
+12345 12345 B 2
+10000 100000 C 2
+1000000 1999999 Z 99
+0
+Example 5
+1 10 A 1
+21 30 B 1
+11 20 A 1
+0
+Example 6
+21 30 B 1
+1 10 A 1
+11 20 A 2
+0
+Example 7
+12 20 A 1
+21 30 B 1
+1 10 A 1
+0
+END</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>First Example
+1 12344 A 1
+12345 12345 B 1
+12346 100000 A 1
+And Another
+1 11999 A 1
+12000 12344 A 2
+12345 12345 B 2
+12346 12999 A 2
+13000 100000 A 1
+Test Case Three
+1 9999 A 1
+10000 100000 C 2
+Example Four
+1 9999 A 1
+10000 100000 C 2
+1000000 1999999 Z 99
+Example 5
+1 20 A 1
+21 30 B 1
+Example 6
+1 10 A 1
+11 20 A 2
+21 30 B 1
+Example 7
+1 10 A 1
+12 20 A 1
+21 30 B 1</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

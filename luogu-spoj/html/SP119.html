@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SERVERS - Servers - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449532:x1PpULnZuGLipH7rl4rwYk0OSk2TVW/0XqBiW8YF4M8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20The%20Kingdom%20of%20Byteland%20decided%20to%20develop%20a%20large%20computer%20network%20of%20servers%20offering%20various%20services.%5Cn%5Cn%20The%20network%20is%20built%20of%20n%20servers%20connected%20by%20bidirectional%20wires.%20Two%20servers%20can%20be%20directly%20connected%20by%20at%20most%20one%20wire.%20Each%20server%20can%20be%20directly%20connected%20to%20at%20most%2010%20other%20servers%20and%20every%20two%20servers%20are%20connected%20with%20some%20path%20in%20the%20network.%20Each%20wire%20has%20a%20fixed%20positive%20data%20transmission%20time%20measured%20in%20milliseconds.%20The%20distance%20%28in%20milliseconds%29%20D%28V%2C%20W%29%20between%20two%20servers%20V%20and%20W%20is%20defined%20as%20the%20length%20of%20the%20shortest%20%28transmission%20time-wise%29%20path%20connecting%20V%20and%20W%20in%20the%20network.%20For%20convenience%20we%20let%20D%28V%2C%20V%29%20%3D%200%20for%20all%20V.%5Cn%5Cn%20Some%20servers%20offer%20more%20services%20than%20others.%20Therefore%20each%20server%20V%20is%20marked%20with%20a%20natural%20number%20r%28V%29%2C%20called%20a%20rank.%20The%20bigger%20the%20rank%20the%20more%20powerful%20a%20server%20is.%5Cn%5Cn%20At%20each%20server%2C%20data%20about%20nearby%20servers%20should%20be%20stored.%20However%2C%20not%20all%20servers%20are%20interesting.%20The%20data%20about%20distant%20servers%20with%20low%20ranks%20do%20not%20have%20to%20be%20stored.%20More%20specifically%2C%20a%20server%20W%20is%20interesting%20for%20a%20server%20V%20if%20for%20every%20server%20U%20such%20that%20D%28V%2C%20U%29%20%3C%3D%20D%28V%2C%20W%29%20we%20have%20r%28U%29%20%3C%3D%20r%28W%29.%5Cn%5Cn%20For%20example%2C%20all%20servers%20of%20the%20maximal%20rank%20are%20interesting%20to%20all%20servers.%20If%20a%20server%20V%20has%20the%20maximal%20rank%2C%20then%20exactly%20the%20servers%20of%20the%20maximal%20rank%20are%20interesting%20for%20V%20.%20Let%20B%28V%29%20denote%20the%20set%20of%20servers%20interesting%20for%20a%20server%20V.%5Cn%5Cn%20We%20want%20to%20compute%20the%20total%20amount%20of%20data%20about%20servers%20that%20need%20to%20be%20stored%20in%20the%20network%20being%20the%20total%20sum%20of%20sizes%20of%20all%20sets%20B%28V%29.%20The%20Kingdom%20of%20Byteland%20wanted%20the%20data%20to%20be%20quite%20small%20so%20it%20built%20the%20network%20in%20such%20a%20way%20that%20this%20sum%20does%20not%20exceed%2030%5C%5C%2An.%5Cn%5Cn%20%20%20%5Cn%23%23%23%20Task%5Cn%5CnWrite%20a%20program%20that%3A%5Cn%5Cn-%20reads%20the%20description%20of%20a%20server%20network%20from%20the%20standard%20input%2C%5Cn-%20computes%20the%20total%20amount%20of%20data%20about%20servers%20that%20need%20to%20be%20stored%20in%20the%20network%2C%5Cn-%20writes%20the%20result%20to%20the%20standard%20output.%22%2C%22inputFormat%22%3A%22%20The%20input%20begins%20with%20the%20integer%20z%2C%20the%20number%20of%20test%20cases.%20Then%20z%20test%20cases%20follow.%5Cn%5Cn%20For%20each%20test%20case%2C%20in%20the%20first%20line%20there%20are%20two%20natural%20numbers%20n%2C%20m%2C%20where%20n%20is%20the%20number%20of%20servers%20in%20the%20network%20%281%20%3C%3D%20n%20%3C%3D%2030000%29%20and%20m%20is%20the%20number%20of%20wires%20%281%20%3C%3D%20m%20%3C%3D%205n%29.%20The%20numbers%20are%20separated%20by%20single%20space.%5Cn%5Cn%20In%20the%20next%20n%20lines%20the%20ranks%20of%20the%20servers%20are%20given.%20Line%20i%20contains%20one%20integer%20r%20%24%20_%7Bi%7D%20%24%20%281%20%3C%3D%20r%20%24%20_%7Bi%7D%20%24%20%3C%3D%2010%29%20-%20the%20rank%20of%20i-th%20server.%5Cn%5Cn%20In%20the%20following%20m%20lines%20the%20wires%20are%20described.%20Each%20wire%20is%20described%20by%20three%20numbers%20a%2C%20b%2C%20t%20%281%20%3C%3D%20t%20%3C%3D%201000%2C%201%20%3C%3D%20a%2C%20b%20%3C%3D%20n%2C%20a%20%3C%3E%20b%29%2C%20where%20a%20and%20b%20are%20numbers%20of%20the%20servers%20connected%20by%20the%20wire%20and%20t%20is%20the%20transmission%20time%20of%20the%20wire%20in%20milliseconds.%22%2C%22outputFormat%22%3A%22%20For%20each%20test%20case%20the%20output%20consists%20of%20a%20single%20integer%20equal%20to%20the%20total%20amount%20of%20data%20about%20servers%20that%20need%20to%20be%20stored%20in%20the%20network.%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cn4%203%5Cr%5Cn2%5Cr%5Cn3%5Cr%5Cn1%5Cr%5Cn1%5Cr%5Cn1%204%2030%5Cr%5Cn2%203%2020%5Cr%5Cn3%204%2020%22%2C%229%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1335%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F119%22%2C%22id%22%3A%22119%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP119%22%2C%22title%22%3A%22SERVERS%20-%20Servers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SERVERS%20-%20Servers%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SERVERS - Servers</h1>
+<h2>题目描述</h2>
+<div> The Kingdom of Byteland decided to develop a large computer network of servers offering various services.
+The network is built of n servers connected by bidirectional wires. Two servers can be directly connected by at most one wire. Each server can be directly connected to at most 10 other servers and every two servers are connected with some path in the network. Each wire has a fixed positive data transmission time measured in milliseconds. The distance (in milliseconds) D(V, W) between two servers V and W is defined as the length of the shortest (transmission time-wise) path connecting V and W in the network. For convenience we let D(V, V) = 0 for all V.
+Some servers offer more services than others. Therefore each server V is marked with a natural number r(V), called a rank. The bigger the rank the more powerful a server is.
+At each server, data about nearby servers should be stored. However, not all servers are interesting. The data about distant servers with low ranks do not have to be stored. More specifically, a server W is interesting for a server V if for every server U such that D(V, U) <= D(V, W) we have r(U) <= r(W).
+For example, all servers of the maximal rank are interesting to all servers. If a server V has the maximal rank, then exactly the servers of the maximal rank are interesting for V . Let B(V) denote the set of servers interesting for a server V.
+We want to compute the total amount of data about servers that need to be stored in the network being the total sum of sizes of all sets B(V). The Kingdom of Byteland wanted the data to be quite small so it built the network in such a way that this sum does not exceed 30\*n.
+### Task
+Write a program that:
+- reads the description of a server network from the standard input,
+- computes the total amount of data about servers that need to be stored in the network,
+- writes the result to the standard output.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> The input begins with the integer z, the number of test cases. Then z test cases follow.
+For each test case, in the first line there are two natural numbers n, m, where n is the number of servers in the network (1 <= n <= 30000) and m is the number of wires (1 <= m <= 5n). The numbers are separated by single space.
+In the next n lines the ranks of the servers are given. Line i contains one integer r $ _{i} $ (1 <= r $ _{i} $ <= 10) - the rank of i-th server.
+In the following m lines the wires are described. Each wire is described by three numbers a, b, t (1 <= t <= 1000, 1 <= a, b <= n, a <> b), where a and b are numbers of the servers connected by the wire and t is the transmission time of the wire in milliseconds.</div>
+<h3>输出格式</h3>
+<br />
+<div> For each test case the output consists of a single integer equal to the total amount of data about servers that need to be stored in the network.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+4 3
+2
+3
+1
+1
+1 4 30
+2 3 20
+3 4 20</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>9</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

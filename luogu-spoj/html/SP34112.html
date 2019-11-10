@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>UDIVSUM - The Sum of Unitary Divisors - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450745:rlmGcSvGUGE2ugx8MaCIBcM4YW/xqtd4pipzSX81GI4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20natural%20number%20%24%20d%20%24%20is%20a%20unitary%20divisor%20of%20%24%20n%20%24%20if%20%24%20d%20%24%20is%20a%20divisor%20of%20%24%20n%20%24%20and%20if%20%24%20d%20%24%20and%20%24%20%5C%5Cfrac%7Bn%7D%7Bd%7D%20%24%20are%20coprime.%5Cn%5CnLet%20%24%20%5C%5Csigma%5E%7B%2A%7D%28n%29%20%24%20be%20the%20sum%20of%20the%20unitary%20divisors%20of%20%24%20n%20%24%20.%20For%20example%2C%20%24%20%5C%5Csigma%5E%7B%2A%7D%281%29%20%3D%201%20%24%20%2C%20%24%20%5C%5Csigma%5E%7B%2A%7D%282%29%20%3D%203%20%24%20and%20%24%20%5C%5Csigma%5E%7B%2A%7D%286%29%20%3D%2012%20%24%20.%5Cn%5CnLet%20%24%24%20S%28n%29%20%3D%20%5C%5Csum_%7Bi%3D1%7D%5En%20%5C%5Csigma%5E%7B%2A%7D%28i%29.%20%24%24%5Cn%5CnGiven%20%24%20n%20%24%20%2C%20find%20%24%20S%28n%29%20%5C%5Cbmod%202%5E%7B64%7D%20%24%20.%22%2C%22inputFormat%22%3A%22There%20are%20multiple%20test%20cases.%20The%20first%20line%20of%20input%20contains%20an%20integer%20%24%20T%20%24%20%28%20%24%201%20%5C%5Cle%20T%20%5C%5Cle%2050000%20%24%20%29%2C%20indicating%20the%20number%20of%20test%20cases.%20For%20each%20test%20case%3A%5Cn%5CnThe%20first%20line%20contains%20an%20integer%20%24%20n%20%24%20%28%20%24%201%20%5C%5Cle%20n%20%5C%5Cle%205%20%5C%5Ctimes%2010%5E%7B13%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20a%20single%20line%20containing%20%24%20S%28n%29%20%5C%5Cbmod%202%5E%7B64%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%227%5Cr%5Cn1%5Cr%5Cn2%5Cr%5Cn3%5Cr%5Cn4%5Cr%5Cn5%5Cr%5Cn100%5Cr%5Cn100000%22%2C%221%5Cr%5Cn4%5Cr%5Cn8%5Cr%5Cn13%5Cr%5Cn19%5Cr%5Cn6889%5Cr%5Cn6842185909%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B10000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F34112%22%2C%22id%22%3A%2234112%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu81ea%5Cu7136%5Cu6570%24n%24%5Cuff0c%5Cu5982%5Cu679c%24d%5C%5Cmid%20n%24%5Cuff0c%5Cu4e14%24%5C%5Cgcd%20%5C%5Cleft%28d%2C%5C%5Cfrac%7Bn%7D%7Bd%7D%5C%5Cright%29%3D1%24%5Cuff0c%5Cu5219%5Cu79f0%24d%24%5Cu4e3a%24n%24%5Cu7684%5Cu201c%5Cu5143%5Cu56e0%5Cu5b50%5Cu201d%5Cr%5Cn%5Cr%5Cn%5Cu6211%5Cu4eec%5Cu5b9a%5Cu4e49%5Cu51fd%5Cu6570%24%5C%5Csigma%5E%2A%28n%29%24%5Cu8868%5Cu793a%24n%24%5Cu7684%5Cu5143%5Cu56e0%5Cu5b50%5Cu4e2a%5Cu6570%5Cu3002%5Cu4f8b%5Cu5982%24%5C%5Csigma%5E%2A%281%29%3D1%2C%20%5C%5Csigma%5E%2A%282%29%3D3%2C%20%5C%5Csigma%5E%2A%286%29%3D12%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5b9a%5Cu4e49%5Cr%5Cn%5Cr%5Cn%24%24S%28n%29%3D%5C%5Csum%5En_%7Bi%3D1%7D%5C%5Csigma%5E%2A%28i%29%24%24%5Cr%5Cn%5Cr%5Cn%5Cu73b0%5Cu7ed9%5Cu5b9a%24n%24%5Cuff0c%5Cu6c42%24S%28n%29%20%5C%5Cbmod%202%5E%7B64%7D%24%5Cr%5Cn%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu5305%5Cu542b%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24T%24%5Cuff0c%5Cu8868%5Cu793a%5Cu6570%5Cu636e%5Cu7684%5Cu7ec4%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24T%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24n%24%5Cuff0c%5Cu8868%5Cu793a%5Cu4e00%5Cu7ec4%5Cu8be2%5Cu95ee%5Cr%5Cn%5Cr%5Cn%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%24T%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu8868%5Cu793a%5Cu4e00%5Cu7ec4%5Cu8be2%5Cu95ee%5Cu7684%5Cu89e3%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6570%5Cu636e%5Cuff0c%5Cu6709%5Cuff1a%5Cr%5Cn%24%24T%5C%5Cleqslant%205%5C%5Ctimes%2010%5E4%2C%20n%5C%5Cleqslant%205%5C%5Ctimes10%5E%7B13%7D%24%24%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP34112%22%2C%22title%22%3A%22UDIVSUM%20-%20The%20Sum%20of%20Unitary%20Divisors%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A126103%2C%22title%22%3A%22%5Cu9898%5Cu76ee%5Cu7ffb%5Cu8bd1%5Cu6709%5Cu8bef%22%2C%22forum%22%3A%7B%22id%22%3A15991%2C%22name%22%3A%22SP34112%20UDIVSUM%20-%20The%20Sum%20of%20Unitary%20Divisors%22%2C%22slug%22%3A%22SP34112%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22UDIVSUM%20-%20The%20Sum%20of%20Unitary%20Divisors%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>UDIVSUM - The Sum of Unitary Divisors</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+对于一个自然数$n$，如果$d\mid n$，且$\gcd \left(d,\frac{n}{d}\right)=1$，则称$d$为$n$的“元因子”
+我们定义函数$\sigma^*(n)$表示$n$的元因子个数。例如$\sigma^*(1)=1, \sigma^*(2)=3, \sigma^*(6)=12$。
+定义
+$$S(n)=\sum^n_{i=1}\sigma^*(i)$$
+现给定$n$，求$S(n) \bmod 2^{64}$
+# 输入格式
+输入包含多组数据。
+输入的第一行包含一个整数$T$，表示数据的组数。
+接下来$T$行，每行包含一个整数$n$，表示一组询问
+# 输出格式
+输出$T$行，每行表示一组询问的解。
+# 数据范围
+对于数据，有：
+$$T\leqslant 5\times 10^4, n\leqslant 5\times10^{13}$$</div>
+<h2>题目描述</h2>
+<div>A natural number $ d $ is a unitary divisor of $ n $ if $ d $ is a divisor of $ n $ and if $ d $ and $ \frac{n}{d} $ are coprime.
+Let $ \sigma^{*}(n) $ be the sum of the unitary divisors of $ n $ . For example, $ \sigma^{*}(1) = 1 $ , $ \sigma^{*}(2) = 3 $ and $ \sigma^{*}(6) = 12 $ .
+Let $$ S(n) = \sum_{i=1}^n \sigma^{*}(i). $$
+Given $ n $ , find $ S(n) \bmod 2^{64} $ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>There are multiple test cases. The first line of input contains an integer $ T $ ( $ 1 \le T \le 50000 $ ), indicating the number of test cases. For each test case:
+The first line contains an integer $ n $ ( $ 1 \le n \le 5 \times 10^{13} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output a single line containing $ S(n) \bmod 2^{64} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7
+1
+2
+3
+4
+5
+100
+100000</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+4
+8
+13
+19
+6889
+6842185909</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

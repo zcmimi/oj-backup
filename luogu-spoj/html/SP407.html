@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>RNUMBER - Random Number - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449592:dAjUV7eu56ocOB8oWZWMHgQvK0fTcLQUhPvDs3YXJL8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20Black%20Box%20algorithm%20supposes%20that%20natural%20number%20sequence%20%21%5B%24u%281%29%2C%20u%282%29%2C%20dots%2C%20u%28N%29%24%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP407%5C%2F007d5bad8aa9896127a4c95039a901178b2dfddc.png%29%20is%20sorted%20in%20non-descending%20order%2C%20%21%5B%24N%20le%20M%24%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP407%5C%2F3c3496270b38cc16c79fcc1526ea5cb55b151ea8.png%29%20and%20for%20each%20_p_%20%28%20%21%5B%241%20le%20p%20le%20N%24%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP407%5C%2F6926209ba2ce331e001bb9fbe66017c1ee203c3b.png%29%29%20an%20inequality%20%21%5B%24p%20le%20u%28p%29%20le%20M%24%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP407%5C%2Fa3dd1666fa708c004c29322a0ddb257036350f9b.png%29%20is%20valid.%5Cn%5Cn%20%20%20%5Cn%20Making%20tests%20for%20this%20algorithm%20we%20have%20met%20with%20the%20following%20problem.%20For%20setting%20a%20random%20sequence%20%21%5B%24%7Bu%28i%29%7D%24%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP407%5C%2F9f7a9e6d27c1006e9bd3d23173bbffa4cbd8becd.png%29%20a%20usual%20random%20data%20generator%20did%20not%20fit.%20As%20the%20sequence%20itself%20had%20been%20imposed%20certain%20restrictions%2C%20the%20method%20of%20choosing%20the%20next%20random%20element%20%28in%20the%20interval%20defined%20by%20restrictions%29%20did%20not%20give%20the%20random%20sequence%20as%20a%20whole.%5Cn%5Cn%20%20%20%5Cn%20We%20have%20come%20to%20a%20conclusion%20that%20the%20problem%20can%20be%20solved%20in%20the%20following%20way.%20If%20we%20arrange%20all%20possible%20sequences%20in%20certain%20order%20%28for%20example%2C%20in%20lexicographical%20order%29%20and%20assign%20each%20sequence%20its%20number%2C%20after%20choice%20of%20the%20random%20number%20it%20is%20possible%20to%20take%20the%20correspondent%20sequence%20for%20the%20random%20one.%20At%20the%20first%20glance%20it%20seems%20enough%20to%20make%20up%20a%20program%20generating%20all%20these%20sequences%20in%20such%20order.%20Alas%21%20Even%20having%20not%20great%20values%20of%20_M_%20and%20_N_%20it%20would%20have%20taken%20any%20powerful%20modern%20computer%20centuries%20to%20enumerate%20all%20such%20sequences.%20It%20turned%20out%20it%20was%20possible%20to%20avoid%20generating%20all%20sequences%20if%20we%20managed%20to%20create%20required%20sequence%20according%20to%20its%20number%20immediately.%20But%20even%20this%20statement%20does%20not%20cover%20all.%20As%20the%20amount%20of%20sequences%20is%20quite%20large%2C%20the%20number%20can%20be%20a%20long%20one%2C%20composed%20of%20hundreds%20decimal%20digits%2C%20though%20our%20random%20data%20generator%20could%20give%20only%20normal%20numbers.%20We%20decided%20to%20produce%20a%20long%20random%20number%20from%20a%20real%20random%20number%20distributed%20in%20%5C%5C%5B0%2C1%5C%5C%5D.%20Namely%2C%20present%20the%20number%20in%20binary%20notation%3A%20%21%5B%240.b%281%29b%282%29dots%24%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP407%5C%2Ffbe6882689874df4f67012a69a256855f9b29482.png%29%2C%20where%20all%20_b_%28_i_%29%20%3D%200%20or%201.%20Let%20us%20set%20a%20regulation%20to%20associate%20such%20real%20number%20to%20an%20integer%20from%20%5C%5C%5B_A_%2C_B_%5C%5C%5D%20segment%3A%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20is%20an%20integer%20K%20%5Cu2264%2010%2C%20followed%20by%20K%20datasets.%5Cn%5CnThe%20first%20line%20of%20each%20dataset%20contains%20_M_%20and%20_N_.%20The%20second%20line%20contains%20binary%20real%20number%20%21%5B%240.b%281%29b%282%29dots%20b%28p%29%24%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP407%5C%2Fe7f6ecaf55bd6f30f8424becc48060a18140532c.png%29%20%28without%20leading%2C%20trailing%20and%20other%20spaces%29.%22%2C%22outputFormat%22%3A%22For%20each%20dataset%2C%20write%20into%20the%20output%20data%20file%20the%20corresponding%20sequence%20%21%5B%24u%281%29%2C%20u%282%29%2C%20dots%2C%20u%28N%29%24%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP407%5C%2F007d5bad8aa9896127a4c95039a901178b2dfddc.png%29.%20The%20sequence%20numbers%20should%20be%20separated%20with%20spaces%20and%20end-of-line%20characters.%20There%20should%20be%20up%20to%2020%20numbers%20in%20each%20line.%20If%20neccesary%2C%20the%20numbers%20will%20have%20leading%20blanks%20to%20occupy%203%20characters.%22%2C%22samples%22%3A%5B%5B%22The%20first%20line%20of%20the%20input%20is%20an%20integer%20K%20%26%238804%3B%2010%2C%20followed%20by%20K%20datasets.%5Cr%5CnThe%20first%20line%20of%20each%20dataset%20contains%20M%20and%20N.%20The%20second%20line%5Cr%5Cncontains%20binary%20real%5Cr%5Cnnumber%20%5Cr%5Cn%5Cr%5Cn%28without%20leading%2C%20trailing%20and%20other%20spaces%29.%22%2C%22For%20each%20dataset%2C%20write%20into%20the%20output%20data%20file%20the%20corresponding%20sequence%5Cr%5Cn.%5Cr%5CnThe%5Cr%5Cnsequence%20numbers%20should%20be%20separated%20with%20spaces%20and%20end-of-line%20characters.%5Cr%5CnThere%20should%20be%20up%20to%2020%20numbers%20in%20each%20line.%20If%20neccesary%2C%20the%20numbers%20will%20have%20leading%20blanks%20to%20occupy%203%20characters.%5Cr%5Cn%5Cr%5CnExample%5Cr%5Cn%5Cr%5Cn%5Cr%5CnInput%3A%5Cr%5Cn%5Cr%5Cn1%5Cr%5Cn4%203%5Cr%5Cn0.01101101011110010001101010001011010%5Cr%5Cn%5Cr%5CnOutput%3A%5Cr%5Cn%5Cr%5Cn%20%202%20%20%202%20%20%204%22%5D%2C%5B%221%5Cr%5Cn4%203%5Cr%5Cn0.01101101011110010001101010001011010%22%2Cnull%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B685%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F407%22%2C%22id%22%3A%22407%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP407%22%2C%22title%22%3A%22RNUMBER%20-%20Random%20Number%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22RNUMBER%20-%20Random%20Number%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>RNUMBER - Random Number</h1>
+<h2>题目描述</h2>
+<div>A Black Box algorithm supposes that natural number sequence ![$u(1), u(2), dots, u(N)$](https://cdn.luogu.com.cn/upload/vjudge_pic/SP407/007d5bad8aa9896127a4c95039a901178b2dfddc.png) is sorted in non-descending order, ![$N le M$](https://cdn.luogu.com.cn/upload/vjudge_pic/SP407/3c3496270b38cc16c79fcc1526ea5cb55b151ea8.png) and for each _p_ ( ![$1 le p le N$](https://cdn.luogu.com.cn/upload/vjudge_pic/SP407/6926209ba2ce331e001bb9fbe66017c1ee203c3b.png)) an inequality ![$p le u(p) le M$](https://cdn.luogu.com.cn/upload/vjudge_pic/SP407/a3dd1666fa708c004c29322a0ddb257036350f9b.png) is valid.
+Making tests for this algorithm we have met with the following problem. For setting a random sequence ![${u(i)}$](https://cdn.luogu.com.cn/upload/vjudge_pic/SP407/9f7a9e6d27c1006e9bd3d23173bbffa4cbd8becd.png) a usual random data generator did not fit. As the sequence itself had been imposed certain restrictions, the method of choosing the next random element (in the interval defined by restrictions) did not give the random sequence as a whole.
+We have come to a conclusion that the problem can be solved in the following way. If we arrange all possible sequences in certain order (for example, in lexicographical order) and assign each sequence its number, after choice of the random number it is possible to take the correspondent sequence for the random one. At the first glance it seems enough to make up a program generating all these sequences in such order. Alas! Even having not great values of _M_ and _N_ it would have taken any powerful modern computer centuries to enumerate all such sequences. It turned out it was possible to avoid generating all sequences if we managed to create required sequence according to its number immediately. But even this statement does not cover all. As the amount of sequences is quite large, the number can be a long one, composed of hundreds decimal digits, though our random data generator could give only normal numbers. We decided to produce a long random number from a real random number distributed in \[0,1\]. Namely, present the number in binary notation: ![$0.b(1)b(2)dots$](https://cdn.luogu.com.cn/upload/vjudge_pic/SP407/fbe6882689874df4f67012a69a256855f9b29482.png), where all _b_(_i_) = 0 or 1. Let us set a regulation to associate such real number to an integer from \[_A_,_B_\] segment:</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input is an integer K ≤ 10, followed by K datasets.
+The first line of each dataset contains _M_ and _N_. The second line contains binary real number ![$0.b(1)b(2)dots b(p)$](https://cdn.luogu.com.cn/upload/vjudge_pic/SP407/e7f6ecaf55bd6f30f8424becc48060a18140532c.png) (without leading, trailing and other spaces).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each dataset, write into the output data file the corresponding sequence ![$u(1), u(2), dots, u(N)$](https://cdn.luogu.com.cn/upload/vjudge_pic/SP407/007d5bad8aa9896127a4c95039a901178b2dfddc.png). The sequence numbers should be separated with spaces and end-of-line characters. There should be up to 20 numbers in each line. If neccesary, the numbers will have leading blanks to occupy 3 characters.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>The first line of the input is an integer K &amp;#8804; 10, followed by K datasets.
+The first line of each dataset contains M and N. The second line
+contains binary real
+number 
+
+(without leading, trailing and other spaces).</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>For each dataset, write into the output data file the corresponding sequence
+.
+The
+sequence numbers should be separated with spaces and end-of-line characters.
+There should be up to 20 numbers in each line. If neccesary, the numbers will have leading blanks to occupy 3 characters.
+
+Example
+
+
+Input:
+
+1
+4 3
+0.01101101011110010001101010001011010
+
+Output:
+
+  2   2   4</code></pre>
+<h3>输入样例 #2</h3>
+<pre><code>1
+4 3
+0.01101101011110010001101010001011010</code></pre>
+<h3>输出样例 #2</h3>
+<pre><code></code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>LCS3 - Long Common Subsequence - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450137:yvk50oZg3EcV2yiX09F7SQqCqSsfU0K5ewBRMSqkm90=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Given%20a%20sequence%20of%20N%281%3C%3DN%3C%3D1000000%29%20numbers%20range%20from%200%20to%2010000%20and%20several%20other%20sequence%20of%20M%280%3C%3DM%3C%3D5%29%20numbers%2C%20you%20have%20to%20compute%20the%20Longest%20Common%20Subsequence%20of%20this%20sequences%20with%20the%20main%20sequence.%22%2C%22inputFormat%22%3A%22First%20line%20of%20the%20input%20will%20be%20N%20the%20number%20of%20elements%20of%20the%20main%20sequence.%20After%20that%20line%20there%20will%20be%20N%20numbers%20in%20one%20or%20more%20lines.%20Each%20of%20this%20number%20will%20be%20between%200%20to%2010000%28inclusive%29.%20Then%20there%20will%20be%20Q%281%3C%3DQ%3C%3D5000%29%20the%20number%20of%20query.%20Then%20following%20Q%20lines%20will%20be%20queries.%20In%20each%20query%2C%20start%20with%20a%20number%20M%280%3C%3DM%3C%3D5%29%2C%20followed%20by%20M%20numbers%20also%20between%200%20to%2010000%28inclusive%29.%22%2C%22outputFormat%22%3A%22For%20each%20query%20first%20print%20the%20number%20of%20elements%20in%20the%20longest%20common%20subsequence%20of%20the%20main%20and%20query%20sequences.%20Then%20print%20the%20subsequence.%20If%20there%20is%20more%20then%20one%20then%20print%20the%20lexicographically%20smallest.%22%2C%22samples%22%3A%5B%5B%2210%5Cn5%201%204%203%202%206%205%205%200%207%5Cn5%5Cn1%205%5Cn1%2010%5Cn4%205%200%204%207%5Cn5%204%201%202%203%205%5Cn5%202%206%205%200%207%5Cn%5Cu00a0%22%2C%221%205%5Cn0%5Cn3%205%200%207%5Cn3%201%202%205%5Cn5%202%206%205%200%207%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B252%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F9098%22%2C%22id%22%3A%229098%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3a%24n%24%20%5Cu7684%5Cu5e8f%5Cu5217%24a%24%20%2C%24q%24%20%5Cu6b21%5Cu8be2%5Cu95ee%5Cu4e00%5Cu4e9b%5Cu957f%5Cu5ea6%5Cu4e3a%24m%24%20%5Cu7684%5Cu5e8f%5Cu5217%24b%24%20%2C%5Cu95ee%24b%24%20%5Cu4e0e%24a%24%20%5Cu7684%5Cu6700%5Cu957f%5Cu516c%5Cu5171%5Cu5b50%5Cu5e8f%5Cu5217%5Cu957f%5Cu5ea6%2C%5Cu5e76%5Cu8f93%5Cu51fa%5Cu4e00%5Cu7ec4%5Cu65b9%5Cu6848%5Cn%5Cn%24n%5C%5Cle10%5E6%2Cq%5C%5Cle5%5C%5Ctimes10%5E3%2Cm%5C%5Cle5%2Ca_i%2Cb_i%5C%5Cle10%5E5%24%20%5Cn%5Cntranslated%20by%20%40Kelin%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A21%2C%22totalAccepted%22%3A10%2C%22pid%22%3A%22SP9098%22%2C%22title%22%3A%22LCS3%20-%20Long%20Common%20Subsequence%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A37235%2C%22title%22%3A%22%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A16293%2C%22name%22%3A%22SP9098%20LCS3%20-%20Long%20Common%20Subsequence%22%2C%22slug%22%3A%22SP9098%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22LCS3%20-%20Long%20Common%20Subsequence%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>LCS3 - Long Common Subsequence</h1>
+<h2>题意翻译</h2>
+<div>给你一个长度为$n$ 的序列$a$ ,$q$ 次询问一些长度为$m$ 的序列$b$ ,问$b$ 与$a$ 的最长公共子序列长度,并输出一组方案
+$n\le10^6,q\le5\times10^3,m\le5,a_i,b_i\le10^5$
+translated by @Kelin </div>
+<h2>题目描述</h2>
+<div>Given a sequence of N(1<=N<=1000000) numbers range from 0 to 10000 and several other sequence of M(0<=M<=5) numbers, you have to compute the Longest Common Subsequence of this sequences with the main sequence.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line of the input will be N the number of elements of the main sequence. After that line there will be N numbers in one or more lines. Each of this number will be between 0 to 10000(inclusive). Then there will be Q(1<=Q<=5000) the number of query. Then following Q lines will be queries. In each query, start with a number M(0<=M<=5), followed by M numbers also between 0 to 10000(inclusive).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query first print the number of elements in the longest common subsequence of the main and query sequences. Then print the subsequence. If there is more then one then print the lexicographically smallest.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>10
+5 1 4 3 2 6 5 5 0 7
+5
+1 5
+1 10
+4 5 0 4 7
+5 4 1 2 3 5
+5 2 6 5 0 7
+ </code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 5
+0
+3 5 0 7
+3 1 2 5
+5 2 6 5 0 7</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ABCPATH - ABC Path - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450182:dNCpQxJlCQd1lP3qAj5ZrFPnfU5mxiCvdwj6dH31/VI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20will%20be%20given%20a%202-dimensional%20grid%20of%20letters.%20Find%20the%20length%20of%20the%20longest%20path%20of%20consecutive%20letters%2C%20starting%20at%20%27A%27.%20Paths%20can%20step%20from%20one%20letter%20in%20the%20grid%20to%20any%20adjacent%20letter%20%28horizontally%2C%20vertically%2C%20or%20diagonally%29.%5Cn%5CnFor%20example%2C%20in%20the%20following%20grid%2C%20there%20are%20several%20paths%20from%20%27A%27%20to%20%27D%27%2C%20but%20none%20from%20%27A%27%20to%20%27E%27%3A%5Cn%5Cn%21%5BABC%5D%28http%3A%5C%2F%5C%2Fi39.tinypic.com%5C%2Fmuxvfm.png%20%5C%22ABC%5C%22%29%22%2C%22inputFormat%22%3A%22Each%20test%20case%20will%20start%20with%20a%20line%20contains%20two%20integers%20H%2C%20W%20the%20height%20and%20width%20of%20the%20grid%20respectively%201%20%3C%3D%20H%2C%20W%20%3C%3D%2050.%20Then%20H%20lines%20follow%20each%20of%20W%20uppercase%20letters%20only.%20Input%20terminates%20with%20H%20%3D%200%20and%20W%20%3D%200.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20print%20%5Cu201cCase%20C%3A%20X%5Cu201d%20without%20quotes%20where%20C%20is%20the%20case%20number%20starting%20with%201%20and%20X%20is%20the%20solution.%22%2C%22samples%22%3A%5B%5B%224%203%5CnABE%5CnCFG%5CnBDH%5CnABC%5Cn0%200%22%2C%22Case%201%3A%204%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B458%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F9921%22%2C%22id%22%3A%229921%22%7D%2C%22translation%22%3A%22%23%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%20%20%20%20%5Cu4f60%5Cu5c06%5Cu5f97%5Cu5230%5Cu4e00%5Cu4e2a%5Cu4e8c%5Cu7ef4%5Cu7f51%5Cu683c%5Cu7684%5Cu5b57%5Cu6bcd%5Cu3002%5Cu627e%5Cu51fa%5Cu540c%5Cu4e00%5Cu6761%5Cu8def%5Cu5f84%5Cu4e0a%5Cu7684%5Cu6700%5Cu957f%5Cu7684%5Cu8fde%5Cu7eed%5Cu5b57%5Cu6bcd%5Cuff0c%5Cu4ece%5Cu201ca%5Cu201d%5Cu5f00%5Cu59cb%5Cu3002%5Cu8def%5Cu5f84%5Cu53ef%5Cu4ee5%5Cu4ece%5Cu7f51%5Cu683c%5Cu4e2d%5Cu7684%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu6bcd%5Cu5230%5Cu4efb%5Cu610f%5Cu76f8%5Cu90bb%5Cu7684%5Cu5b57%5Cu6bcd%5Cuff08%5Cu6c34%5Cu5e73%5Cu3001%5Cu5782%5Cu76f4%5Cu6216%5Cu5bf9%5Cu89d2%5Cuff09%5Cu3002%5Cn%20%20%20%20%5Cn%20%20%20%20%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5728%5Cu4e0b%5Cu9762%5Cu7684%5Cu7f51%5Cu683c%5Cu4e2d%5Cuff0c%5Cu6709%5Cu51e0%5Cu4e2a%5Cu8def%5Cu5f84%5Cu4ece%5Cu201ca%5Cu201d%5Cu5230%5Cu201cd%5Cu201d%5Cuff0c%5Cu4f46%5Cu6ca1%5Cu6709%5Cu4ece%5Cu201ca%5Cu201d%5Cu5230%5Cu201ce%5Cu201d%5Cu7684%5Cu8def%5Cu5f84%5Cuff1a%5Cn%20%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%20%20%20%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570H%5Cuff0cw%5Cn%20%20%20%20%5Cu63a5%5Cu4e0b%5Cu6765%5Cu662f%5Cu4e00%5Cu4e2a%5Cu7f51%5Cu683c%5Cuff0c%5Cu7f51%5Cu683c%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu662fH%5Cuff0c1%20%3C%3D%20H%2C%5Cu7f51%5Cu683c%5Cu7684%5Cu5bbd%5Cu5ea6%5Cu662fwW%20%3C%3D%2050%5Cu3002%5Cu6700%5Cu540e%5Cu4ee5H%3D0%5Cu548cw%3D0%5Cu7ed3%5Cu675f%5Cu3002%5Cn%20%20%20%20%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%20%20%20%20%5Cu8f93%5Cu51fa%5Cu201cCase%20C%5Cuff1aX%5Cu201d%5Cuff08%5Cu6ca1%5Cu6709%5Cu5f15%5Cu53f7%5Cuff09%5Cuff0c%5Cu5176%5Cu4e2dC%5Cu662f%5Cu4ece1%5Cu5f00%5Cu59cb%5Cu7684%5Cu60c5%5Cu51b5%5Cu53f7%5Cuff0cX%5Cu662f%5Cu89e3%5Cu51b3%5Cu65b9%5Cu6848%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40%5Cu9648%5Cu701a%5Cu777f%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A5%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP9921%22%2C%22title%22%3A%22ABCPATH%20-%20ABC%20Path%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A42591%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%5Cuff08ABC%5Cu8def%5Cu5f84%5Cuff09%22%2C%22forum%22%3A%7B%22id%22%3A16518%2C%22name%22%3A%22SP9921%20ABCPATH%20-%20ABC%20Path%22%2C%22slug%22%3A%22SP9921%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22ABCPATH%20-%20ABC%20Path%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>ABCPATH - ABC Path</h1>
+<h2>题意翻译</h2>
+<div>### 题目描述
+你将得到一个二维网格的字母。找出同一条路径上的最长的连续字母，从“a”开始。路径可以从网格中的一个字母到任意相邻的字母（水平、垂直或对角）。
+例如，在下面的网格中，有几个路径从“a”到“d”，但没有从“a”到“e”的路径：
+### 输入格式
+第一行包含两个整数H，w
+接下来是一个网格，网格的高度是H，1 <= H,网格的宽度是wW <= 50。最后以H=0和w=0结束。
+### 输出格式
+输出“Case C：X”（没有引号），其中C是从1开始的情况号，X是解决方案。
+感谢@陈瀚睿 提供的翻译</div>
+<h2>题目描述</h2>
+<div>You will be given a 2-dimensional grid of letters. Find the length of the longest path of consecutive letters, starting at 'A'. Paths can step from one letter in the grid to any adjacent letter (horizontally, vertically, or diagonally).
+For example, in the following grid, there are several paths from 'A' to 'D', but none from 'A' to 'E':
+![ABC](http://i39.tinypic.com/muxvfm.png "ABC")</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Each test case will start with a line contains two integers H, W the height and width of the grid respectively 1 <= H, W <= 50. Then H lines follow each of W uppercase letters only. Input terminates with H = 0 and W = 0.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case print “Case C: X” without quotes where C is the case number starting with 1 and X is the solution.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 3
+ABE
+CFG
+BDH
+ABC
+0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case 1: 4</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

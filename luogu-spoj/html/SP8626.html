@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>NY10D - Show Me The Fax - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450112:CcVPxJoxP5O8KbhDIo1usmFBeomhJ5TJYWj65Sec1yM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Fax%20machines%20use%20a%20form%20of%20compression%20based%20on%20run-length%20encoding.%20Run-length%20encoding%20%28RLE%29%20is%20a%20very%20simple%20form%20of%20data%20compression%20in%20which%20runs%20of%20data%20%28that%20is%2C%20sequences%20in%20which%20the%20same%20data%20value%20occurs%20in%20many%20consecutive%20data%20elements%29%20are%20stored%20as%20a%20single%20data%20value%20and%20count%2C%20rather%20than%20as%20the%20original%20run.%20This%20is%20most%20useful%20on%20data%20that%20contains%20many%20such%20runs%3A%20for%20example%2C%20relatively%20simple%20graphic%20images%20such%20as%20icons%2C%20text%2C%20and%20line%20drawings.%20It%20is%20not%20useful%20with%20files%20that%20don%27t%20have%20many%20runs%20as%20it%20could%20potentially%20double%20the%20file%20size%20%28photograph%2C%20for%20example%29.%5Cn%5CnFor%20this%20problem%2C%20you%20will%20write%20a%20program%20that%20decodes%20a%20block%20of%20data%20using%20a%20very%20simple%20RLE%20algorithm.%20A%20run%20is%20encoded%20using%20a%20two%20byte%20sequence.%20The%20first%20byte%20of%20the%20sequence%20contains%20the%20count%2C%20and%20the%20second%20contains%20the%20value%20to%20repeat.%20The%20count%20is%20encoded%20using%20an%208%20bit%20value%20with%20the%20high%20order%20bit%20set%20to%201.%20The%20remaining%207%20bits%20represent%20the%20count-3.%20This%20gives%20a%20maximum%20run%20count%20of%20130%20per%202%20byte%20sequence.%20%28This%20implies%20that%20the%20minimum%20run%20count%20is%203%29.%20Bytes%20that%20are%20not%20part%20of%20a%20run%20are%20encoded%20as-is%20with%20a%20prefix%20byte%20indicating%20the%20count%20of%20bytes%20in%20the%20non-run%20minus%201%2C%200%20through%20127%2C%20representing%20a%20range%20of%201%20-%20128%20%28the%20high%20order%20bit%20will%20always%20be%200%20in%20the%20case%20of%20non-run%20data%29.%5Cn%5Cn%20%20%20%5CnInput%5Cn-----%5Cn%5CnThe%20first%20line%20of%20input%20contains%20a%20single%20integer%20_P_%2C%20%281%21%5B%24%20%5C%5Cle%24%5D%28http%3A%5C%2F%5C%2Facmicpc-live-archive.uva.es%5C%2Fnuevoportal%5C%2Fdata%5C%2F4876img1.png%29_P_%21%5B%24%20%5C%5Cle%24%5D%28http%3A%5C%2F%5C%2Facmicpc-live-archive.uva.es%5C%2Fnuevoportal%5C%2Fdata%5C%2F4876img1.png%291000%29%2C%20which%20is%20the%20number%20of%20data%20sets%20that%20follow.%20Each%20data%20set%20consists%20of%20multiple%20lines.%20The%20first%20line%20contains%20two%20%282%29%20decimal%20integer%20values%3A%20the%20problem%20number%2C%20followed%20by%20a%20space%2C%20followed%20by%20the%20number%20of%20bytes%20_B_%2C%20%281%21%5B%24%20%5C%5Cle%24%5D%28http%3A%5C%2F%5C%2Facmicpc-live-archive.uva.es%5C%2Fnuevoportal%5C%2Fdata%5C%2F4876img1.png%29_B_%21%5B%24%20%5C%5Cle%24%5D%28http%3A%5C%2F%5C%2Facmicpc-live-archive.uva.es%5C%2Fnuevoportal%5C%2Fdata%5C%2F4876img1.png%295000%29%2C%20to%20decode.%20The%20remaining%20line%28s%29%20contain%28s%29%20the%20data%20to%20be%20decoded.%20Each%20line%20of%20data%20to%20decode%20contains%2080%20hexadecimal%20digits%20%28except%20the%20last%20line%2C%20which%20may%20contain%20less%29.%202%20hexadecimal%20digits%20are%20used%20to%20represent%20each%20byte.%20Hexadecimal%20digits%20are%3A%200%2C%201%2C%202%2C%203%2C%204%2C%205%2C%206%2C%207%2C8%2C%209%2C%20A%2C%20B%2C%20C%2C%20D%2C%20E%2C%20F%5Cn%5Cn%20%20%20%5CnOutput%5Cn------%5Cn%5CnFor%20each%20data%20set%2C%20there%20are%20multiple%20lines%20of%20output.%20The%20first%20line%20contains%20a%20decimal%20integer%20giving%20the%20data%20set%20number%20followed%20by%20a%20single%20space%2C%20followed%20by%20a%20decimal%20integer%20giving%20the%20total%20number%20of%20decoded%20bytes.%20The%20remaining%20lines%20contain%20the%20decoded%20data%2C%2080%20hexadecimal%20digits%20per%20line%2C%20except%20the%20last%20line%20which%20may%20contain%20less.%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5B%224%20%5Cr%5Cn1%202%20%5Cr%5Cn0007%20%5Cr%5Cn2%204%20%5Cr%5Cn00F481A5%20%5Cr%5Cn3%2032%20%5Cr%5Cn850080FF016666825A0A717273747580080110111384550301020399807700CC%20%5Cr%5Cn4%202%20%5Cr%5CnA568%22%2C%221%201%20%5Cr%5Cn07%20%5Cr%5Cn2%205%20%5Cr%5CnF4A5A5A5A5%20%5Cr%5Cn3%2044%20%5Cr%5Cn0000000000000000FFFFFF66665A5A5A5A5A71727374758008011011135555555555555501020399%20%5Cr%5Cn777777CC%20%5Cr%5Cn4%2040%20%5Cr%5Cn68686868686868686868686868686868686868686868686868686868686868686868686868686868%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2275%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F8626%22%2C%22id%22%3A%228626%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP8626%22%2C%22title%22%3A%22NY10D%20-%20Show%20Me%20The%20Fax%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22NY10D%20-%20Show%20Me%20The%20Fax%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>NY10D - Show Me The Fax</h1>
+<h2>题目描述</h2>
+<div>Fax machines use a form of compression based on run-length encoding. Run-length encoding (RLE) is a very simple form of data compression in which runs of data (that is, sequences in which the same data value occurs in many consecutive data elements) are stored as a single data value and count, rather than as the original run. This is most useful on data that contains many such runs: for example, relatively simple graphic images such as icons, text, and line drawings. It is not useful with files that don't have many runs as it could potentially double the file size (photograph, for example).
+For this problem, you will write a program that decodes a block of data using a very simple RLE algorithm. A run is encoded using a two byte sequence. The first byte of the sequence contains the count, and the second contains the value to repeat. The count is encoded using an 8 bit value with the high order bit set to 1. The remaining 7 bits represent the count-3. This gives a maximum run count of 130 per 2 byte sequence. (This implies that the minimum run count is 3). Bytes that are not part of a run are encoded as-is with a prefix byte indicating the count of bytes in the non-run minus 1, 0 through 127, representing a range of 1 - 128 (the high order bit will always be 0 in the case of non-run data).
+Input
+-----
+The first line of input contains a single integer _P_, (1![$ \le$](http://acmicpc-live-archive.uva.es/nuevoportal/data/4876img1.png)_P_![$ \le$](http://acmicpc-live-archive.uva.es/nuevoportal/data/4876img1.png)1000), which is the number of data sets that follow. Each data set consists of multiple lines. The first line contains two (2) decimal integer values: the problem number, followed by a space, followed by the number of bytes _B_, (1![$ \le$](http://acmicpc-live-archive.uva.es/nuevoportal/data/4876img1.png)_B_![$ \le$](http://acmicpc-live-archive.uva.es/nuevoportal/data/4876img1.png)5000), to decode. The remaining line(s) contain(s) the data to be decoded. Each line of data to decode contains 80 hexadecimal digits (except the last line, which may contain less). 2 hexadecimal digits are used to represent each byte. Hexadecimal digits are: 0, 1, 2, 3, 4, 5, 6, 7,8, 9, A, B, C, D, E, F
+Output
+------
+For each data set, there are multiple lines of output. The first line contains a decimal integer giving the data set number followed by a single space, followed by a decimal integer giving the total number of decoded bytes. The remaining lines contain the decoded data, 80 hexadecimal digits per line, except the last line which may contain less.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 
+1 2 
+0007 
+2 4 
+00F481A5 
+3 32 
+850080FF016666825A0A717273747580080110111384550301020399807700CC 
+4 2 
+A568</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 1 
+07 
+2 5 
+F4A5A5A5A5 
+3 44 
+0000000000000000FFFFFF66665A5A5A5A5A71727374758008011011135555555555555501020399 
+777777CC 
+4 40 
+68686868686868686868686868686868686868686868686868686868686868686868686868686868</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

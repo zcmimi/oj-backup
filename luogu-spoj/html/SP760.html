@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>CH3D - Convex Hull 3D - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449618:sw/RRFrovjGmQdZcGb8dxllmm4IXk2Uca4GKIx3N9H0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Bytelandian%20scientists%20have%20developed%20a%20brand%20new%20method%20for%20determining%20the%20volume%20of%20a%20person%27s%20lungs.%20The%20idea%20is%20simple%3A%20the%20patient%20is%20asked%20to%20inhale%20a%20sufficiently%20large%20number%20of%20nanobots%2C%20which%20then%20transmit%20their%20exact%203D-coordinates%20to%20an%20external%20sensor.%20Early%20clinical%20tests%20proved%20rather%20fun%20%28especially%20for%20the%20scientists%20who%20were%20watching%20the%20process%20of%20nanobot%20inhalation%29%2C%20but%20gave%20rise%20to%20several%20problems%20of%20an%20algorithmic%20nature.%20In%20other%20words%2C%20nobody%20had%20any%20idea%20of%20how%20the%20volume%20of%20the%20lungs%20should%20be%20determined%20afterwards.%20A%20lung%20consists%20of%20a%20large%20number%20of%20disjoint%20alveoli%20%28which%20can%20for%20our%20purposes%20be%20regarded%20as%20little%20hollows%29%2C%20and%20inhaled%20nanobots%20tend%20to%20float%20around%20aimlessly%20within%20the%20alveolus%20they%20happened%20to%20fall%20into.%20Whereas%20it%20is%20relatively%20simple%20to%20distinguish%20between%20different%20alveoli%2C%20establishing%20the%20volume%20of%20a%20single%20alveolus%20is%20a%20tough%20task.%5Cn%5CnOne%20way%20to%20estimate%20the%20shape%20and%20volume%20of%20an%20alveolus%20is%20to%20smear%20all%20nanobots%20with%20a%20little%20liquid%20glue%20and%20see%20what%20they%20end%20up%20stuck%20to.%20Another%20%28arguably%20more%20humane%29%20method%20is%20to%20calculate%20the%20_convex%20hull_%20of%20the%20set%20of%20points%20representing%20nanobot%20coordinates%2C%20its%20volume%20and%20surface%20area.%20A%20convex%20hull%20of%20given%20set%20of%20points%20in%203D%20is%20the%20convex%20set%20of%20minimum%20volume%20which%20contains%20all%20these%20points.%5Cn%5Cn%21%5BLung%201%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP760%5C%2Fc81998d7fa7cc4ece8f5e96b89737644c1be5ba3.png%29%20%20%5Cn%21%5Barrow%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP760%5C%2Ff2442f3c8ac565cc51325bdf4a5e8663b5ff083e.png%29%20%20%5Cn%21%5BLung%202%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP760%5C%2Fe7e79805fd7453ddbe377e5cb483cb6e9806d86d.png%29%20%20%5Cn%21%5Barrow%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP760%5C%2Ff2442f3c8ac565cc51325bdf4a5e8663b5ff083e.png%29%20%20%5Cn%21%5BLung%203%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP760%5C%2F37ebd961ddf198d65cb7362a5c0693d730080934.png%29%22%2C%22inputFormat%22%3A%22_t_%20%5Cu2013%20number%20of%20test%20cases%20%5C%5C%5B_t_%20%3C%3D%20100%5C%5C%5D%2C%20then%20_t_%20tests%20follow.%20%20%5Cn%20Each%20test%20starts%20with%20integer%20_N_%20-%20the%20number%20of%20given%20points%20%5C%5C%5B10%20%3C%3D%20N%20%3C%3D%201000%5C%5C%5D.%20Then%20exactly%20N%20lines%20follow%20with%203%20real%20numbers%20Xi%2C%20Yi%2C%20Zi%20in%20each%20of%20them%2C%20where%20%5C%5C%5B-10.0%20%3C%3D%20Xi%2C%20Yi%2C%20Zi%20%3C%3D%2010.0%5C%5C%5D.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20you%20should%20output%202%20real%20numbers%3A%20the%20surface%20area%20and%20volume%20of%20the%20hull%20with%20precision%200.01.%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cn10%5Cr%5Cn0.00000%200.00000%200.00000%5Cr%5Cn1.00000%200.00000%200.00000%5Cr%5Cn0.00000%201.00000%200.00000%5Cr%5Cn0.00000%200.00000%201.00000%5Cr%5Cn1.00000%201.00000%200.00000%5Cr%5Cn1.00000%200.00000%201.00000%5Cr%5Cn0.00000%201.00000%201.00000%5Cr%5Cn1.00000%201.00000%201.00000%5Cr%5Cn0.50000%200.50000%200.50000%5Cr%5Cn0.66666%200.77777%200.88888%22%2C%226.0000%201.0000%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B876%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F760%22%2C%22id%22%3A%22760%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP760%22%2C%22title%22%3A%22CH3D%20-%20Convex%20Hull%203D%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22CH3D%20-%20Convex%20Hull%203D%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>CH3D - Convex Hull 3D</h1>
+<h2>题目描述</h2>
+<div>Bytelandian scientists have developed a brand new method for determining the volume of a person's lungs. The idea is simple: the patient is asked to inhale a sufficiently large number of nanobots, which then transmit their exact 3D-coordinates to an external sensor. Early clinical tests proved rather fun (especially for the scientists who were watching the process of nanobot inhalation), but gave rise to several problems of an algorithmic nature. In other words, nobody had any idea of how the volume of the lungs should be determined afterwards. A lung consists of a large number of disjoint alveoli (which can for our purposes be regarded as little hollows), and inhaled nanobots tend to float around aimlessly within the alveolus they happened to fall into. Whereas it is relatively simple to distinguish between different alveoli, establishing the volume of a single alveolus is a tough task.
+One way to estimate the shape and volume of an alveolus is to smear all nanobots with a little liquid glue and see what they end up stuck to. Another (arguably more humane) method is to calculate the _convex hull_ of the set of points representing nanobot coordinates, its volume and surface area. A convex hull of given set of points in 3D is the convex set of minimum volume which contains all these points.
+![Lung 1](https://cdn.luogu.com.cn/upload/vjudge_pic/SP760/c81998d7fa7cc4ece8f5e96b89737644c1be5ba3.png)
+![arrow](https://cdn.luogu.com.cn/upload/vjudge_pic/SP760/f2442f3c8ac565cc51325bdf4a5e8663b5ff083e.png)
+![Lung 2](https://cdn.luogu.com.cn/upload/vjudge_pic/SP760/e7e79805fd7453ddbe377e5cb483cb6e9806d86d.png)
+![arrow](https://cdn.luogu.com.cn/upload/vjudge_pic/SP760/f2442f3c8ac565cc51325bdf4a5e8663b5ff083e.png)
+![Lung 3](https://cdn.luogu.com.cn/upload/vjudge_pic/SP760/37ebd961ddf198d65cb7362a5c0693d730080934.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>_t_ – number of test cases \[_t_ <= 100\], then _t_ tests follow.
+Each test starts with integer _N_ - the number of given points \[10 <= N <= 1000\]. Then exactly N lines follow with 3 real numbers Xi, Yi, Zi in each of them, where \[-10.0 <= Xi, Yi, Zi <= 10.0\].</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case you should output 2 real numbers: the surface area and volume of the hull with precision 0.01.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+10
+0.00000 0.00000 0.00000
+1.00000 0.00000 0.00000
+0.00000 1.00000 0.00000
+0.00000 0.00000 1.00000
+1.00000 1.00000 0.00000
+1.00000 0.00000 1.00000
+0.00000 1.00000 1.00000
+1.00000 1.00000 1.00000
+0.50000 0.50000 0.50000
+0.66666 0.77777 0.88888</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6.0000 1.0000</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>POLYTABL - Polynomial Table - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450586:/bzimxEb07iVZmF38Wc0BgpAiMkmW6lgpB5iURsLiqM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Given%20a%20polynomial%2C%20your%20task%20is%20to%20print%20a%20table%20of%20some%20of%20its%20calculated%20values.%22%2C%22inputFormat%22%3A%22Input%20starts%20with%20a%20positive%20integer%20t%3C1000%2C%20the%20number%20of%20testcases%2C%20then%20t%20testcases%20follow.%20Every%20testcase%20contains%20the%20representation%20of%20a%20polynomial%20of%20at%20most%20fourth%20degree%20in%20%5C%22pretty%20printing%5C%22%20notation.%20Coefficients%20are%20either%20given%20as%20integers%20or%20fractions.%20The%20absolute%20values%20of%20all%20numbers%20including%20numerator%20and%20denominator%20are%20not%20larger%20than%20100.%5Cn%5CnIf%20all%20coefficients%20are%20integers%20and%20degree%20is%20not%20larger%20than%201%2C%20a%20polynomial%20%28which%20means%20a%20testcase%29%20is%20given%20in%20a%20single%20line%20%28the%20_base%20line_%29.%20%20%5Cn%20If%20all%20coefficients%20are%20integers%2C%20but%20degree%20is%20larger%20than%201%2C%20a%20polynomial%20is%20given%20in%20two%20lines.%20The%20first%20of%20these%20contains%20only%20the%20exponents%2C%20the%20second%20line%20is%20the%20_base%20line_.%20%20%5Cn%20If%20at%20least%20one%20coefficient%20is%20given%20as%20a%20fraction%2C%20a%20polynomial%20is%20given%20in%20three%20lines.%20The%20first%20line%20contains%20the%20exponents%20%28if%20there%20are%20any%29%20and%20the%20numerators%2C%20the%20last%20line%20the%20denominators.%5Cn%5CnPolynomials%20are%20given%20in%20%2A%2Acanonical%20form%2A%2A%2C%20which%20means%3A%20%20%5Cn%20%5Cu21e2%20powers%20of%20x%20are%20given%20in%20decreasing%20order%20and%20do%20not%20appear%20more%20than%20once%20%20%5Cn%20%5Cu21e2%20there%20is%20always%20exactly%20one%20operator%20%28either%20%2B%20or%20-%29%20between%20consecutive%20summands%20%20%5Cn%20%5Cu21e2%20coefficients%20with%20an%20absolute%20value%20of%201%20are%20left%20out%20%20%5Cn%20%5Cu21e2%20summands%20with%20coefficients%20with%20a%20value%20of%200%20are%20left%20out%20except%20for%20the%20null%20polynomial%20%20%5Cn%20%5Cu21e2%20there%20are%20no%20whitespaces%20in%20the%20base%20line%20except%20those%20below%20exponents%5Cn%5CnThe%20fraction%20bar%20is%20formed%20by%20as%20many%20dashes%20as%20there%20are%20digits%20in%20numerator%20respectively%20denominator.%20If%20the%20number%20of%20digits%20in%20numerator%20and%20denominator%20is%20different%2C%20the%20fraction%20bar%20is%20as%20long%20as%20the%20larger%20value%3B%20the%20smaller%20one%20is%20aligned%20to%20the%20right.%5Cn%5Cn%20%60%60%60%5Cn%3Cpre%20style%3D%5C%22color%3Agreen%3B%20font-weight%3Abold%5C%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%204%20%202%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%20%2010%20%20%20%20%20%20%20%202%5CnValid%20polynomials%20are%3A%20%20%20--x%20%2Bx%20%20%20%20%20-x%2B2%20%20%20%20%20%205x%20%2B---%20%20%20%20%20%20%20x%20-5%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%205%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20100%5Cn%60%60%60%5Cn%20%60%60%60%5Cn%3Cpre%20style%3D%5C%22color%3Ared%3B%20font-weight%3Abold%5C%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20-3%204%20%202%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%5CnInvalid%20polynomials%20are%3A%20%20-x%20%2Bx%20%20%20%20%20%20%20%20x%2B3x%20%20%20%20%20%20x---%20%20%20%20%20%204x%20-13%20%20%20%20%20%202x%20%2B-5%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%205%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%207%5Cn%60%60%60%5CnThe%20base%20line%20of%20the%20polynomial%20is%20followed%20by%20a%20single%20space%2C%20then%20the%20information%20about%20the%20range%20of%20calculation%20is%20given.%20It%20is%20denoted%20as%20%5C%22%5C%5C%5Ba%3Bb%3Bm%5C%5C%5D%5C%22%2C%20where%20a%2Cb%20and%20m%20are%20integer%20values%20with%20-10%5Cn%5Cn_Note%3A%20There%20are%20no%20trailing%20whitespaces%20and%20every%20testcase%20is%20followed%20by%20a%20blank%20line._%22%2C%22outputFormat%22%3A%22For%20every%20testcase%20print%20a%20table%20with%20the%20polynomial%27s%20values%20as%20shown%20in%20the%20example%20below.%20The%20output%20for%20every%20testcase%20consists%20of%20nine%20lines.%20The%20first%20and%20the%20last%20line%20are%20an%20identical%20sequence%20of%20dashes.%20All%20other%20lines%20start%20and%20end%20with%20%5C%22%7C%5C%22%2C%20columns%20are%20also%20separated%20by%20%5C%22%7C%5C%22%20resp.%20%5C%22%2B%5C%22%20in%20the%20fifth%20line%20that%20separates%20the%20rows.%20The%20leftmost%20column%20contains%20x%20in%20the%20top%20row%20and%20the%20polynomial%20%28exactly%20as%20given%20in%20the%20input%29%20in%20the%20bottom%20row.%20The%20other%20columns%20are%20filled%20with%20the%20x-values%20in%20the%20top%20row%20in%20increasing%20order%20and%20the%20corresponding%20y-values%20in%20the%20bottom%20row.%20The%20width%20of%20a%20column%20depends%20on%20the%20maximum%20width%20of%20the%20values%20inside%20%28may%20be%20in%20the%20top%20or%20bottom%20row%29%20plus%20an%20additional%20space%20to%20the%20left%20and%20to%20the%20right.%20If%20the%20corresponding%20value%20in%20the%20other%20row%20needs%20less%20space%2C%20it%20is%20aligned%20to%20the%20right.%5Cn%5CnRegardless%20of%20the%20type%20of%20value%20%5Cu2013%20integer%20or%20fraction%20%5Cu2013%20the%20rows%20are%20always%20three%20lines%20in%20height.%20Integer%20values%2C%20fraction%20bars%20and%20signs%20are%20always%20printed%20in%20the%20middle%20line%2C%20numerator%20and%20denominator%20one%20line%20above%20resp.%20below.%20Fractions%20must%20be%20printed%20in%20lowest%20terms.%20If%20the%20value%20of%20a%20fraction%20is%20an%20integer%20value%2C%20it%20has%20to%20be%20printed%20as%20integer.%20No%20%28intermediate%29%20value%20will%20have%20an%20absolute%20value%20larger%20than%2010%5Cu00b9%5Cu2078%2C%20if%20calculations%20are%20done%20carefully.%20The%20width%20of%20the%20fraction%20bar%20and%20alignment%20of%20numerator%20resp.%20denominator%20follow%20the%20same%20rules%20as%20explained%20in%20the%20input%20section.%20_Print%20a%20blank%20line%20after%20every%20testcase%20except%20the%20last%20one._%5Cn%5CnNote%3A%20The%20%5C%22exact%20judge%5C%22%20is%20used%20here%2C%20so%20the%20output%20format%20must%20be%20precisely%20observed.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn%203%20%20%202%5Cr%5Cnx%20-4x%20%20%5B-2%3B3%3B5%5D%5Cr%5Cn%5Cr%5Cn%203%202%20%20%203%5Cr%5Cn--x%20%2Bx%2B-%20%5B-1%3B4%3B10%5D%5Cr%5Cn%208%20%20%20%20%208%22%2C%22----------------------------------------%5Cr%5Cn%7C%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%7C%20%20%20%20%7C%20%20%20%7C%20%20%20%20%7C%20%20%20%20%7C%20%20%20%20%7C%5Cr%5Cn%7C%20%20%20%20%20%20x%20%7C%20%20-2%20%7C%20-1%20%7C%200%20%7C%20%201%20%7C%20%202%20%7C%20%203%20%7C%5Cr%5Cn%7C%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%7C%20%20%20%20%7C%20%20%20%7C%20%20%20%20%7C%20%20%20%20%7C%20%20%20%20%7C%5Cr%5Cn%7C--------%2B-----%2B----%2B---%2B----%2B----%2B----%7C%5Cr%5Cn%7C%20%203%20%20%202%20%7C%20%20%20%20%20%7C%20%20%20%20%7C%20%20%20%7C%20%20%20%20%7C%20%20%20%20%7C%20%20%20%20%7C%5Cr%5Cn%7C%20x%20-4x%20%20%7C%20-24%20%7C%20-5%20%7C%200%20%7C%20-3%20%7C%20-8%20%7C%20-9%20%7C%5Cr%5Cn%7C%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%7C%20%20%20%20%7C%20%20%20%7C%20%20%20%20%7C%20%20%20%20%7C%20%20%20%20%7C%5Cr%5Cn----------------------------------------%5Cr%5Cn%5Cr%5Cn------------------------------------------------------------------%5Cr%5Cn%7C%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%7C%20%20%201%20%7C%20%20%20%7C%20%201%20%7C%20%20%20%7C%20%203%20%7C%20%20%20%7C%20%205%20%7C%20%20%20%7C%20%20%207%20%7C%20%20%20%20%20%7C%5Cr%5Cn%7C%20%20%20%20%20%20%20%20x%20%7C%20-1%20%7C%20%20--%20%7C%200%20%7C%20%20-%20%7C%201%20%7C%20%20-%20%7C%202%20%7C%20%20-%20%7C%203%20%7C%20%20%20-%20%7C%20%20%204%20%7C%5Cr%5Cn%7C%20%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%7C%20%20%202%20%7C%20%20%20%7C%20%202%20%7C%20%20%20%7C%20%202%20%7C%20%20%20%7C%20%202%20%7C%20%20%20%7C%20%20%202%20%7C%20%20%20%20%20%7C%5Cr%5Cn%7C----------%2B----%2B-----%2B---%2B----%2B---%2B----%2B---%2B----%2B---%2B-----%2B-----%7C%5Cr%5Cn%7C%20%203%202%20%20%203%20%7C%20%20%20%20%7C%20%20%207%20%7C%203%20%7C%2025%20%7C%20%20%20%7C%2033%20%7C%207%20%7C%2017%20%7C%20%20%20%7C%20%2023%20%7C%20%2013%20%7C%5Cr%5Cn%7C%20--x%20%2Bx%2B-%20%7C%20-1%20%7C%20---%20%7C%20-%20%7C%20--%20%7C%201%20%7C%20--%20%7C%20-%20%7C%20--%20%7C%200%20%7C%20---%20%7C%20---%20%7C%5Cr%5Cn%7C%20%208%20%20%20%20%208%20%7C%20%20%20%20%7C%20%2032%20%7C%208%20%7C%2032%20%7C%20%20%20%7C%2032%20%7C%208%20%7C%2032%20%7C%20%20%20%7C%20%2032%20%7C%20%20%208%20%7C%5Cr%5Cn------------------------------------------------------------------%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F22319%22%2C%22id%22%3A%2222319%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP22319%22%2C%22title%22%3A%22POLYTABL%20-%20Polynomial%20Table%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22POLYTABL%20-%20Polynomial%20Table%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>POLYTABL - Polynomial Table</h1>
+<h2>题目描述</h2>
+<div>Given a polynomial, your task is to print a table of some of its calculated values.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Input starts with a positive integer t<1000, the number of testcases, then t testcases follow. Every testcase contains the representation of a polynomial of at most fourth degree in "pretty printing" notation. Coefficients are either given as integers or fractions. The absolute values of all numbers including numerator and denominator are not larger than 100.
+If all coefficients are integers and degree is not larger than 1, a polynomial (which means a testcase) is given in a single line (the _base line_).
+If all coefficients are integers, but degree is larger than 1, a polynomial is given in two lines. The first of these contains only the exponents, the second line is the _base line_.
+If at least one coefficient is given as a fraction, a polynomial is given in three lines. The first line contains the exponents (if there are any) and the numerators, the last line the denominators.
+Polynomials are given in **canonical form**, which means:
+⇢ powers of x are given in decreasing order and do not appear more than once
+⇢ there is always exactly one operator (either + or -) between consecutive summands
+⇢ coefficients with an absolute value of 1 are left out
+⇢ summands with coefficients with a value of 0 are left out except for the null polynomial
+⇢ there are no whitespaces in the base line except those below exponents
+The fraction bar is formed by as many dashes as there are digits in numerator respectively denominator. If the number of digits in numerator and denominator is different, the fraction bar is as long as the larger value; the smaller one is aligned to the right.
+```
+<pre style="color:green; font-weight:bold">                          3 4  2                3  10        2
+Valid polynomials are:   --x +x     -x+2      5x +---       x -5
+                          5                       100
+```
+ ```
+<pre style="color:red; font-weight:bold">                         -3 4  2        2           1                    3
+Invalid polynomials are:  -x +x        x+3x      x---      4x -13      2x +-5
+                          5                         7
+```
+The base line of the polynomial is followed by a single space, then the information about the range of calculation is given. It is denoted as "\[a;b;m\]", where a,b and m are integer values with -10
+
+_Note: There are no trailing whitespaces and every testcase is followed by a blank line._</div>
+    <h3>输出格式</h3>
+    <br />
+    <div>For every testcase print a table with the polynomial's values as shown in the example below. The output for every testcase consists of nine lines. The first and the last line are an identical sequence of dashes. All other lines start and end with "|", columns are also separated by "|" resp. "+" in the fifth line that separates the rows. The leftmost column contains x in the top row and the polynomial (exactly as given in the input) in the bottom row. The other columns are filled with the x-values in the top row in increasing order and the corresponding y-values in the bottom row. The width of a column depends on the maximum width of the values inside (may be in the top or bottom row) plus an additional space to the left and to the right. If the corresponding value in the other row needs less space, it is aligned to the right.
+
+Regardless of the type of value – integer or fraction – the rows are always three lines in height. Integer values, fraction bars and signs are always printed in the middle line, numerator and denominator one line above resp. below. Fractions must be printed in lowest terms. If the value of a fraction is an integer value, it has to be printed as integer. No (intermediate) value will have an absolute value larger than 10¹⁸, if calculations are done carefully. The width of the fraction bar and alignment of numerator resp. denominator follow the same rules as explained in the input section. _Print a blank line after every testcase except the last one._
+
+Note: The "exact judge" is used here, so the output format must be precisely observed.</div>
+
+    <h2>输入输出样例</h2>
+                        <h3>输入样例 #1</h3>
+            <pre><code>2
+ 3   2
+x -4x  [-2;3;5]
+
+ 3 2   3
+--x +x+- [-1;4;10]
+ 8     8</code></pre>
+            <h3>输出样例 #1</h3>
+            <pre><code>----------------------------------------
+|        |     |    |   |    |    |    |
+|      x |  -2 | -1 | 0 |  1 |  2 |  3 |
+|        |     |    |   |    |    |    |
+|--------+-----+----+---+----+----+----|
+|  3   2 |     |    |   |    |    |    |
+| x -4x  | -24 | -5 | 0 | -3 | -8 | -9 |
+|        |     |    |   |    |    |    |
+----------------------------------------
+
+------------------------------------------------------------------
+|          |    |   1 |   |  1 |   |  3 |   |  5 |   |   7 |     |
+|        x | -1 |  -- | 0 |  - | 1 |  - | 2 |  - | 3 |   - |   4 |
+|          |    |   2 |   |  2 |   |  2 |   |  2 |   |   2 |     |
+|----------+----+-----+---+----+---+----+---+----+---+-----+-----|
+|  3 2   3 |    |   7 | 3 | 25 |   | 33 | 7 | 17 |   |  23 |  13 |
+| --x +x+- | -1 | --- | - | -- | 1 | -- | - | -- | 0 | --- | --- |
+|  8     8 |    |  32 | 8 | 32 |   | 32 | 8 | 32 |   |  32 |   8 |
+------------------------------------------------------------------</code></pre>
+            
+    </article>
+    </div>
+</div>
+<!-- <script src="//www.recaptcha.net/recaptcha/api.js?hl=zh-CN&render=explicit&onload=renderCaptcha" async defer></script> -->
+</body>
+</html>

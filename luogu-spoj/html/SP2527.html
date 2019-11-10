@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GNY07E - Flipping Burned Pancakes - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449744:JnbLMsGCldCm3Uj0WzAY4IdBp5G1gy9bf3WjcZ87U4A=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20cook%20at%20the%20_Frobbozz%20Magic%20Pancake%20House_%20sometimes%20falls%20asleep%20on%20the%20job%20while%20cooking%20pancakes.%20As%20a%20result%2C%20one%20side%20of%20a%20stack%20of%20pancakes%20is%20often%20burned.%20Clearly%2C%20it%20is%20bad%20business%20to%20serve%20visibly%20burned%20pancakes%20to%20the%20patrons.%20Before%20serving%2C%20the%20waitress%20will%20arrange%20the%20stacks%20of%20pancakes%20so%20that%20the%20burned%20sides%20are%20facing%20down.%20You%20must%20write%20a%20program%20to%20aid%20the%20waitress%20in%20stacking%20the%20pancakes%20correctly.%5Cn%5CnWe%20start%20with%20a%20stack%20of%20%2A%2A_N_%2A%2A%20pancakes%20of%20distinct%20sizes%2C%20each%20of%20which%20is%20burned%20on%20one%20side.%20The%20problem%20is%20to%20convert%20the%20stack%20to%20one%20in%20which%20the%20pancakes%20are%20in%20size%20order%20with%20the%20smallest%20on%20the%20top%20and%20the%20largest%20on%20the%20bottom%20and%20burned%20side%20down%20for%20each%20pancake.%20To%20do%20this%2C%20we%20are%20allowed%20to%20flip%20the%20top%20%2A%2A_k_%2A%2A%20pancakes%20over%20as%20a%20unit%20%28so%20the%20%2A%2A_k-th_%2A%2A%20pancake%20is%20now%20on%20top%20and%20the%20pancake%20previously%20on%20top%20is%20now%20in%20the%20%2A%2A_k-th_%2A%2A%20position%20and%20the%20burned%20side%20goes%20from%20top%20to%20bottom%20and%20vice%20versa%29.%5Cn%5CnFor%20example%20%28%2B%20indicates%20burned%20bottom%2C%20-%20a%20burned%20top%29%3A%5Cn%5Cn%60%60%60%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2B1%20-3%20-2%20%5Bflip%202%5D%20%5Cu21d2%20%2B3%20-1%20-2%20%5Bflip%201%5D%20%5Cu21d2%20-3%20-1%20-2%20%5Bflip%203%5D%20%5Cu21d2%5Cn%20%20%20%20%20%20%20%20%20%2B2%20%2B1%20%2B3%20%5Bflip%201%5D%20%5Cu21d2%20-2%20%2B1%20%2B3%20%5Bflip%202%5D%20%5Cu21d2%20-1%20%2B2%20%2B3%20%5Bflip%201%5D%20%5Cu21d2%20%2B1%20%2B2%20%2B3%5Cn%60%60%60%5Cn%20You%20must%20write%20a%20program%20which%20finds%20a%20sequence%20of%20at%20most%20%2A%2A_%283n%20%5Cu2013%202%29_%2A%2A%20flips%2C%20which%20converts%20a%20given%20stack%20of%20pancakes%20to%20a%20sorted%20stack%20with%20burned%20sides%20down.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20decimal%20integer%2C%20N%2C%20the%20number%20of%20problem%20instances%20to%20follow.%20Each%20of%20the%20following%20N%20lines%20gives%20a%20separate%20dataset%20as%20a%20sequence%20of%20numbers%20separated%20by%20spaces.%20The%20first%20number%20on%20each%20line%20gives%20the%20number%2C%20M%2C%20of%20pancakes%20in%20the%20data%20set.%20The%20remainder%20of%20the%20data%20set%20is%20the%20numbers%201%20through%20M%20in%20some%20order%2C%20each%20with%20a%20plus%20or%20minus%20sign%2C%20giving%20the%20initial%20pancake%20stack.%20The%20numbers%20indicate%20the%20relative%20sizes%20of%20the%20pancakes%20and%20the%20signs%20indicate%20whether%20the%20burned%20side%20is%20up%20%28-%29%20or%20down%20%28%2B%29.%20M%20will%20be%2C%20at%20most%2C%2030.%22%2C%22outputFormat%22%3A%22For%20each%20dataset%2C%20you%20should%20generate%20one%20line%20of%20output%20with%20the%20following%20values%3A%20The%20dataset%20number%20as%20a%20decimal%20integer%20%28start%20counting%20at%20one%29%2C%20a%20space%2C%20the%20number%20of%20flips%20%28K%2C%20where%20K%20%3E%3D%200%29%20required%20to%20sort%20the%20pancakes%20and%20a%20sequence%20of%20K%20numbers%2C%20each%20of%20which%20gives%20the%20number%20of%20pancakes%20to%20flip%20on%20the%20corresponding%20sorting%20step.%20There%20may%20be%20several%20correct%20solutions%20for%20some%20datasets.%20For%20instance%203%202%203%20is%20also%20a%20solution%20to%20the%20first%20problem%20below.%22%2C%22samples%22%3A%5B%5B%223%5Cr%5Cn3%20%2B1%20%26%238211%3B3%20%26%238211%3B2%5Cr%5Cn4%20%26%238211%3B3%20%2B1%20%26%238211%3B2%20%26%238211%3B4%5Cr%5Cn5%20%2B1%20%2B2%20%2B3%20%2B4%20-5%22%2C%221%206%202%201%203%201%202%201%5Cr%5Cn2%206%204%201%204%203%201%202%5Cr%5Cn3%203%205%201%205%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B10900%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F2527%22%2C%22id%22%3A%222527%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP2527%22%2C%22title%22%3A%22GNY07E%20-%20Flipping%20Burned%20Pancakes%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GNY07E%20-%20Flipping%20Burned%20Pancakes%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GNY07E - Flipping Burned Pancakes</h1>
+<h2>题目描述</h2>
+<div>The cook at the _Frobbozz Magic Pancake House_ sometimes falls asleep on the job while cooking pancakes. As a result, one side of a stack of pancakes is often burned. Clearly, it is bad business to serve visibly burned pancakes to the patrons. Before serving, the waitress will arrange the stacks of pancakes so that the burned sides are facing down. You must write a program to aid the waitress in stacking the pancakes correctly.
+We start with a stack of **_N_** pancakes of distinct sizes, each of which is burned on one side. The problem is to convert the stack to one in which the pancakes are in size order with the smallest on the top and the largest on the bottom and burned side down for each pancake. To do this, we are allowed to flip the top **_k_** pancakes over as a unit (so the **_k-th_** pancake is now on top and the pancake previously on top is now in the **_k-th_** position and the burned side goes from top to bottom and vice versa).
+For example (+ indicates burned bottom, - a burned top):
+```
++1 -3 -2 [flip 2] ⇒ +3 -1 -2 [flip 1] ⇒ -3 -1 -2 [flip 3] ⇒
++2 +1 +3 [flip 1] ⇒ -2 +1 +3 [flip 2] ⇒ -1 +2 +3 [flip 1] ⇒ +1 +2 +3
+```
+You must write a program which finds a sequence of at most **_(3n – 2)_** flips, which converts a given stack of pancakes to a sorted stack with burned sides down.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single decimal integer, N, the number of problem instances to follow. Each of the following N lines gives a separate dataset as a sequence of numbers separated by spaces. The first number on each line gives the number, M, of pancakes in the data set. The remainder of the data set is the numbers 1 through M in some order, each with a plus or minus sign, giving the initial pancake stack. The numbers indicate the relative sizes of the pancakes and the signs indicate whether the burned side is up (-) or down (+). M will be, at most, 30.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each dataset, you should generate one line of output with the following values: The dataset number as a decimal integer (start counting at one), a space, the number of flips (K, where K >= 0) required to sort the pancakes and a sequence of K numbers, each of which gives the number of pancakes to flip on the corresponding sorting step. There may be several correct solutions for some datasets. For instance 3 2 3 is also a solution to the first problem below.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+3 +1 &amp;#8211;3 &amp;#8211;2
+4 &amp;#8211;3 +1 &amp;#8211;2 &amp;#8211;4
+5 +1 +2 +3 +4 -5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1 6 2 1 3 1 2 1
+2 6 4 1 4 3 1 2
+3 3 5 1 5</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

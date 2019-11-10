@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>INDEXGEN - Index Generation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449623:x5Z2C5CANpU6Ja1iVS/UddDbktkbH9mOyygPtPyfuUE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Most%20nonfiction%20and%20reference%20books%20have%20an%20_index_%20to%20help%20readers%20find%20references%20to%20specific%20terms%20or%20concepts%20in%20the%20text.%20Here%20is%20a%20sample%20index.%5Cn%5Cn%3E%20%60%60%60%5Cn%3E%20larch%2C%204%2C%20237%2C%20238%2C%20414%5Cn%3E%20%2B%20Monty%20Python%20and%2C%2064%2C%2065%2C%2066%5Cn%3E%20%2B%20planting%20of%2C%2017%5Cn%3E%20Lenny%20Kravitz%2C%2050%5Cn%3E%20%2B%20going%20his%20way%2C%2053%5Cn%3E%20lumbago%2C%20107%5Cn%3E%20mango%5Cn%3E%20%2B%20Chris%20Kattan%2C%20380%5Cn%3E%20%2B%20storage%20of%2C%2087%2C%2090%5Cn%3E%20%2B%20use%20in%20Nethack%2C%20500%2C%20501%5Cn%3E%20%2B%20Vitamin%20C%20content%2C%20192%5Cn%3E%20%60%60%60%5Cn%5CnEach%20index%20entry%20contains%20a%20%2A%2A_primary%20entry_%2A%2A%20followed%20by%20zero%20or%20more%20%2A%2A_secondary%20entries_%2A%2A%2C%20which%20begin%20with%20a%20%27%2B%27.%20Entries%20will%20normally%20be%20followed%20by%20a%20list%20of%20page%20references%2C%20but%20a%20primary%20entry%20might%20not%20be%20if%20at%20least%20one%20secondary%20entry%20is%20present%20%28as%20is%20the%20case%20with%20_mango_%2C%20above%29.%20Primary%20entries%20are%20sorted%2C%20and%20secondary%20entries%20following%20a%20primary%20entry%20are%20also%20sorted.%20Sorting%20is%20case-insensitive.%20Page%20references%20for%20an%20entry%20are%20in%20ascending%20order%20and%20do%20not%20include%20duplicates.%20%28A%20duplicate%20could%20occur%20if%20there%20are%20two%20or%20more%20identical%20entries%20on%20the%20same%20page.%29%5Cn%5CnYour%20task%20is%20to%20read%20a%20document%20that%20has%20index%20information%20embedded%20within%20it%20and%20produce%20the%20index.%20Documents%20consist%20of%20one%20or%20more%20lines%20of%20ASCII%20text.%20The%20page%20number%20starts%20at%201%2C%20and%20the%20character%20%27%26%27%20indicates%20the%20start%20of%20a%20new%20page%20%28which%20adds%201%20to%20the%20current%20page%20number%29.%20Index%20entries%20are%20indicated%20by%20a%20%2A%2A_marker_%2A%2A%2C%20which%20in%20its%20most%20elaborate%20form%20has%20the%20following%20syntax%3A%5Cn%5Cn%3E%20%7B_text_%25_primary_%24_secondary_%7D%5Cn%5CnHere%20_text_%20is%20the%20text%20to%20be%20indexed%2C%20_primary_%20is%20an%20alternative%20primary%20entry%2C%20and%20_secondary_%20is%20a%20secondary%20entry.%20Both%20%27%25_primary_%27%20and%20%27%24_secondary_%27%20are%20optional%2C%20but%20if%20both%20are%20present%20they%20must%20appear%20in%20the%20order%20given.%20If%20_primary_%20is%20present%20then%20it%20is%20used%20as%20the%20primary%20entry%2C%20and%20if%20not%20then%20_text_%20is%20used%20as%20the%20primary%20entry.%20If%20_secondary_%20is%20present%20then%20the%20marker%20adds%20a%20page%20reference%20for%20that%20secondary%20entry%3B%20otherwise%20it%20adds%20a%20page%20reference%20for%20the%20primary%20entry.%20A%20single%20marker%20cannot%20add%20a%20page%20reference%20for%20both%20a%20primary%20and%20secondary%20entry.%20Here%20are%20examples%20of%20each%20of%20the%20four%20possible%20types%20of%20marker%2C%20which%20correspond%20to%20four%20of%20the%20entries%20in%20the%20sample%20index%20above.%5Cn%5Cn%3E%20%60%60%60%5Cn%3E%20...%20his%20%7Blumbago%7D%20was%20acting%20up%2C%20so%20...%5Cn%3E%20...%20%7BLenny%25Lenny%20Kravitz%7D%20lit%20up%20the%20crowd%20with%20his%20version%20of%20...%5Cn%3E%20...%20Monty%20Python%20often%20used%20the%20%7Blarch%24Monty%20Python%20and%7D%20in%20...%5Cn%3E%20...%20when%20storing%20%7Bmangos%25mango%24storage%20of%7D%2C%20be%20sure%20to%20...%5Cn%3E%20%60%60%60%5Cn%5CnThe%20input%20consists%20of%20one%20or%20more%20documents%2C%20followed%20by%20a%20line%20containing%20only%20%27%5C%5C%2A%5C%5C%2A%27%20that%20signals%20the%20end%20of%20the%20input.%20Documents%20are%20implictly%20numbered%20starting%20with%201.%20Each%20document%20consists%20of%20one%20or%20more%20lines%20of%20text%20followed%20by%20a%20line%20containing%20only%20%27%5C%5C%2A%27.%20Each%20line%20of%20text%20will%20be%20at%20most%2079%20characters%20long%2C%20not%20counting%20end-of-line%20characters.%20For%20document%20_i_%2C%20output%20the%20line%20%27DOCUMENT%20_i_%27%20followed%20by%20the%20sorted%20index%20using%20the%20exact%20output%20format%20shown%20in%20the%20examples.%5Cn%5CnBe%20sure%20to%20read%20%5B_Notes%20to%20Teams_%5D%28..%5C%2Fnotes%5C%2Fteams.html%29%2C%20which%20has%20general%20formatting%20guidelines%20that%20pertain%20to%20all%20problem%20input%20files%2C%20including%20this%20one.%20Also%20note%3A%5Cn%5Cn-%20A%20document%20will%20contain%20at%20most%20100%20markers%2C%20with%20at%20most%2020%20primary%20entries.%5Cn-%20A%20primary%20entry%20will%20have%20at%20most%205%20secondary%20entries.%5Cn-%20An%20entry%20will%20have%20at%20most%2010%20unique%20page%20references%20%28not%20including%20duplicates%29.%5Cn-%20The%20character%20%27%26%27%20will%20not%20appear%20anywhere%20within%20a%20marker%2C%20and%20will%20appear%20at%20most%20500%20times%20within%20a%20document.%5Cn-%20The%20character%20%27%5C%5C%2A%27%20is%20used%20only%20to%20signal%20the%20end%20of%20a%20document%20or%20the%20end%20of%20the%20input.%5Cn-%20The%20characters%20%27%7B%27%2C%20%27%7D%27%2C%20%27%25%27%2C%20and%20%27%24%27%20will%20only%20be%20used%20to%20define%20markers%2C%20and%20will%20not%20appear%20in%20any%20text%20or%20entries.%5Cn-%20A%20marker%20may%20span%20one%20or%20more%20lines.%20Every%20end-of-line%20within%20a%20marker%20must%20be%20converted%20to%20a%20single%20space.%5Cn-%20A%20space%20within%20a%20marker%20%28including%20a%20converted%20end-of-line%29%20is%20normally%20included%20in%20the%20text%5C%2Fentry%2C%20just%20like%20any%20other%20character.%20However%2C%20any%20space%20that%20immediately%20follows%20%27%7B%27%2C%20immediately%20precedes%20%27%7D%27%2C%20or%20is%20immediately%20adjacent%20to%20%27%25%27%20or%20%27%24%27%20must%20be%20ignored.%5Cn-%20The%20total%20length%20of%20a%20marker%2C%20measured%20from%20the%20opening%20%27%7B%27%20to%20the%20closing%20%27%7D%27%2C%20and%20in%20which%20all%20embedded%20end-of-lines%20are%20converted%20to%20spaces%2C%20will%20be%20at%20most%2079%20characters.%5Cn%20%5Cn%60%60%60%5Cn%5CnInput%3A%5CnCall%20me%20Ishmael.%5Cn%2A%5CnOne%20%7Bfish%20%24unary%7D%2C%20two%20%7Bfish%24%20binary%7D%2C%26red%20%7Bfish%20%24%20scarlet%7D%2C%20blue%20%7Bfish%24%5Cnazure%7D.%20%26%20By%20%7B%20Dr.%20Seuss%20%7D.%5Cn%2A%5CnThis%20is%20a%20%7Bsimple%20%7D%20%26%20%26%20%7B%20document%7D%20that%20%26%7B%5Cnsimply%20%25simple%5Cn%24adverb%5Cn%7D%20%26%20%7Billustrates%20%25vision%7D%20%26%26%26%26%26%20one%20%7Bsimple-minded%25%20simple%7D%20%7BJudge%7D%27s%20%7Bvision%7D%20%5Cnfor%20what%20a%20%7Bdocument%20%7D%20might%20%7B%20look%20%25%20vision%7D%20like.%5Cn%2A%5Cn%2A%2A%5Cn%5Cn%60%60%60%5Cn%20%60%60%60%5Cn%5CnOutput%3A%5CnDOCUMENT%201%5CnDOCUMENT%202%5CnDr.%20Seuss%2C%203%5Cnfish%5Cn%2B%20azure%2C%202%5Cn%2B%20binary%2C%201%5Cn%2B%20scarlet%2C%202%5Cn%2B%20unary%2C%201%5CnDOCUMENT%203%5Cndocument%2C%203%2C%2010%5CnJudge%2C%2010%5Cnsimple%2C%201%2C%2010%5Cn%2B%20adverb%2C%204%5Cnvision%2C%205%2C%2010%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B142%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F901%22%2C%22id%22%3A%22901%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP901%22%2C%22title%22%3A%22INDEXGEN%20-%20Index%20Generation%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22INDEXGEN%20-%20Index%20Generation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>INDEXGEN - Index Generation</h1>
+<h2>题目描述</h2>
+<div>Most nonfiction and reference books have an _index_ to help readers find references to specific terms or concepts in the text. Here is a sample index.
+> ```
+> larch, 4, 237, 238, 414
+> + Monty Python and, 64, 65, 66
+> + planting of, 17
+> Lenny Kravitz, 50
+> + going his way, 53
+> lumbago, 107
+> mango
+> + Chris Kattan, 380
+> + storage of, 87, 90
+> + use in Nethack, 500, 501
+> + Vitamin C content, 192
+> ```
+Each index entry contains a **_primary entry_** followed by zero or more **_secondary entries_**, which begin with a '+'. Entries will normally be followed by a list of page references, but a primary entry might not be if at least one secondary entry is present (as is the case with _mango_, above). Primary entries are sorted, and secondary entries following a primary entry are also sorted. Sorting is case-insensitive. Page references for an entry are in ascending order and do not include duplicates. (A duplicate could occur if there are two or more identical entries on the same page.)
+Your task is to read a document that has index information embedded within it and produce the index. Documents consist of one or more lines of ASCII text. The page number starts at 1, and the character '&' indicates the start of a new page (which adds 1 to the current page number). Index entries are indicated by a **_marker_**, which in its most elaborate form has the following syntax:
+> {_text_%_primary_$_secondary_}
+Here _text_ is the text to be indexed, _primary_ is an alternative primary entry, and _secondary_ is a secondary entry. Both '%_primary_' and '$_secondary_' are optional, but if both are present they must appear in the order given. If _primary_ is present then it is used as the primary entry, and if not then _text_ is used as the primary entry. If _secondary_ is present then the marker adds a page reference for that secondary entry; otherwise it adds a page reference for the primary entry. A single marker cannot add a page reference for both a primary and secondary entry. Here are examples of each of the four possible types of marker, which correspond to four of the entries in the sample index above.
+> ```
+> ... his {lumbago} was acting up, so ...
+> ... {Lenny%Lenny Kravitz} lit up the crowd with his version of ...
+> ... Monty Python often used the {larch$Monty Python and} in ...
+> ... when storing {mangos%mango$storage of}, be sure to ...
+> ```
+The input consists of one or more documents, followed by a line containing only '\*\*' that signals the end of the input. Documents are implictly numbered starting with 1. Each document consists of one or more lines of text followed by a line containing only '\*'. Each line of text will be at most 79 characters long, not counting end-of-line characters. For document _i_, output the line 'DOCUMENT _i_' followed by the sorted index using the exact output format shown in the examples.
+Be sure to read [_Notes to Teams_](../notes/teams.html), which has general formatting guidelines that pertain to all problem input files, including this one. Also note:
+- A document will contain at most 100 markers, with at most 20 primary entries.
+- A primary entry will have at most 5 secondary entries.
+- An entry will have at most 10 unique page references (not including duplicates).
+- The character '&' will not appear anywhere within a marker, and will appear at most 500 times within a document.
+- The character '\*' is used only to signal the end of a document or the end of the input.
+- The characters '{', '}', '%', and '$' will only be used to define markers, and will not appear in any text or entries.
+- A marker may span one or more lines. Every end-of-line within a marker must be converted to a single space.
+- A space within a marker (including a converted end-of-line) is normally included in the text/entry, just like any other character. However, any space that immediately follows '{', immediately precedes '}', or is immediately adjacent to '%' or '$' must be ignored.
+- The total length of a marker, measured from the opening '{' to the closing '}', and in which all embedded end-of-lines are converted to spaces, will be at most 79 characters.
+```
+Input:
+Call me Ishmael.
+*
+One {fish $unary}, two {fish$ binary},&red {fish $ scarlet}, blue {fish$
+azure}. & By { Dr. Seuss }.
+*
+This is a {simple } & & { document} that &{
+simply %simple
+$adverb
+} & {illustrates %vision} &&&&& one {simple-minded% simple} {Judge}'s {vision}
+for what a {document } might { look % vision} like.
+*
+**
+```
+```
+Output:
+DOCUMENT 1
+DOCUMENT 2
+Dr. Seuss, 3
+fish
++ azure, 2
++ binary, 1
++ scarlet, 2
++ unary, 1
+DOCUMENT 3
+document, 3, 10
+Judge, 10
+simple, 1, 10
++ adverb, 4
+vision, 5, 10
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

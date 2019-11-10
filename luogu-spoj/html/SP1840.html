@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PQUEUE - Printer Queue - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449690:Xg4Dleo4foyEj7UyKLTm5NWoYg0NdwajEBnQ9cm83gY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1840%5C%2F3be29d089410f30e1776a4aaa83e8e7c01430643.png%29%5Cn%5Cn%20The%20only%20printer%20in%20the%20computer%20science%20students%27%20union%20is%20experiencing%20an%20extremely%20heavy%20workload.%20Sometimes%20there%20are%20a%20hundred%20jobs%20in%20the%20printer%20queue%20and%20you%20may%20have%20to%20wait%20for%20hours%20to%20get%20a%20single%20page%20of%20output.%5Cn%5Cn%20Because%20some%20jobs%20are%20more%20important%20than%20others%2C%20the%20Hacker%20General%20has%20invented%20and%20implemented%20a%20simple%20priority%20system%20for%20the%20print%20job%20queue.%20Now%2C%20each%20job%20is%20assigned%20a%20priority%20between%201%20and%209%20%28with%209%20being%20the%20highest%20priority%2C%20and%201%20being%20the%20lowest%29%2C%20and%20the%20printer%20operates%20as%20follows.%5Cn%5Cn-%20The%20first%20job%20_J_%20in%20queue%20is%20taken%20from%20the%20queue.%5Cn-%20If%20there%20is%20some%20job%20in%20the%20queue%20with%20a%20higher%20priority%20than%20job%20_J_%2C%20then%20move%20_J_%20to%20the%20end%20of%20the%20queue%20without%20printing%20it.%5Cn-%20Otherwise%2C%20print%20job%20_J_%20%28and%20do%20not%20put%20it%20back%20in%20the%20queue%29.%5Cn%5Cn%20In%20this%20way%2C%20all%20those%20important%20muffin%20recipes%20that%20the%20Hacker%20General%20is%20printing%20get%20printed%20very%20quickly.%20Of%20course%2C%20those%20annoying%20term%20papers%20that%20others%20are%20printing%20may%20have%20to%20wait%20for%20quite%20some%20time%20to%20get%20printed%2C%20but%20that%27s%20life.%5Cn%5Cn%20Your%20problem%20with%20the%20new%20policy%20is%20that%20it%20has%20become%20quite%20tricky%20to%20determine%20when%20your%20print%20job%20will%20actually%20be%20completed.%20You%20decide%20to%20write%20a%20program%20to%20figure%20this%20out.%20The%20program%20will%20be%20given%20the%20current%20queue%20%28as%20a%20list%20of%20priorities%29%20as%20well%20as%20the%20position%20of%20your%20job%20in%20the%20queue%2C%20and%20must%20then%20calculate%20how%20long%20it%20will%20take%20until%20your%20job%20is%20printed%2C%20assuming%20that%20no%20additional%20jobs%20will%20be%20added%20to%20the%20queue.%20To%20simplify%20matters%2C%20we%20assume%20that%20printing%20a%20job%20always%20takes%20exactly%20one%20minute%2C%20and%20that%20adding%20and%20removing%20jobs%20from%20the%20queue%20is%20instantaneous.%22%2C%22inputFormat%22%3A%22%20One%20line%20with%20a%20positive%20integer%3A%20the%20number%20of%20test%20cases%20%28at%20most%20100%29.%20Then%20for%20each%20test%20case%3A%5Cn%5Cn-%20One%20line%20with%20two%20integers%20_n_%20and%20_m_%2C%20where%20_n_%20is%20the%20number%20of%20jobs%20in%20the%20queue%20%281%20%5Cu2264%20_n_%20%5Cu2264%20100%29%20and%20_m_%20is%20the%20position%20of%20your%20job%20%280%20%5Cu2264%20m%20%5Cu2264%20n-1%29.%20The%20first%20position%20in%20the%20queue%20is%20number%200%2C%20the%20second%20is%20number%201%2C%20and%20so%20on.%5Cn-%20One%20line%20with%20_n_%20integers%20in%20the%20range%201%20to%209%2C%20giving%20the%20priorities%20of%20the%20jobs%20in%20the%20queue.%20The%20first%20integer%20gives%20the%20priority%20of%20the%20first%20job%2C%20the%20second%20integer%20the%20priority%20of%20the%20second%20job%2C%20and%20so%20on.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20print%20one%20line%20with%20a%20single%20integer%3B%20the%20number%20of%20minutes%20until%20your%20job%20is%20completely%20printed%2C%20assuming%20that%20no%20additional%20print%20jobs%20will%20arrive.%22%2C%22samples%22%3A%5B%5B%223%5Cr%5Cn1%200%5Cr%5Cn5%5Cr%5Cn4%202%5Cr%5Cn1%202%203%204%5Cr%5Cn6%200%5Cr%5Cn1%201%209%201%201%201%22%2C%221%5Cr%5Cn2%5Cr%5Cn5%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B285%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1840%22%2C%22id%22%3A%221840%22%7D%2C%22translation%22%3A%22%5Cu5b66%5Cu751f%5Cu4f1a%5Cu91cc%5Cu53ea%5Cu6709%5Cu4e00%5Cu53f0%5Cu6253%5Cu5370%5Cu673a%5Cuff0c%5Cu4f46%5Cu662f%5Cu6709%5Cu5f88%5Cu591a%5Cu6587%5Cu4ef6%5Cu9700%5Cu8981%5Cu6253%5Cu5370%5Cuff0c%5Cu56e0%5Cu6b64%5Cu6253%5Cu5370%5Cu4efb%5Cu52a1%5Cu4e0d%5Cu53ef%5Cu907f%5Cu514d%5Cu5730%5Cu9700%5Cu8981%5Cu7b49%5Cu5f85%5Cu3002%5Cu6709%5Cu4e9b%5Cu6253%5Cu5370%5Cu4efb%5Cu52a1%5Cu6bd4%5Cu8f83%5Cu6025%5Cuff0c%5Cu6709%5Cu4e9b%5Cu4e0d%5Cu90a3%5Cu4e48%5Cu6025%5Cuff0c%5Cu6240%5Cu4ee5%5Cu6bcf%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a1%5Cuff5e9%5Cu95f4%5Cu7684%5Cu4f18%5Cu5148%5Cu7ea7%5Cuff0c%5Cu4f18%5Cu5148%5Cu7ea7%5Cu8d8a%5Cu9ad8%5Cu8868%5Cu793a%5Cu4efb%5Cu52a1%5Cu8d8a%5Cu6025%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6253%5Cu5370%5Cu673a%5Cu7684%5Cu8fd0%5Cu4f5c%5Cu65b9%5Cu5f0f%5Cu5982%5Cu4e0b%5Cuff1a%5Cu9996%5Cu5148%5Cu4ece%5Cu6253%5Cu5370%5Cu961f%5Cu5217%5Cu91cc%5Cu53d6%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu4efb%5Cu52a1J%5Cuff0c%5Cu5982%5Cu679c%5Cu961f%5Cu5217%5Cu91cc%5Cu6709%5Cu6bd4J%5Cu66f4%5Cu6025%5Cu7684%5Cu4efb%5Cu52a1%5Cuff0c%5Cu5219%5Cu76f4%5Cu63a5%5Cu628aJ%5Cu653e%5Cu5230%5Cu6253%5Cu5370%5Cu961f%5Cu5217%5Cu5c3e%5Cu90e8%5Cuff0c%5Cu5426%5Cu5219%5Cu6253%5Cu5370%5Cu4efb%5Cu52a1J%5Cuff08%5Cu6b64%5Cu65f6%5Cu4e0d%5Cu4f1a%5Cu628a%5Cu5b83%5Cu653e%5Cu56de%5Cu6253%5Cu5370%5Cu961f%5Cu5217%5Cuff09%5Cu3002%20%5Cu8f93%5Cu5165%5Cu6253%5Cu5370%5Cu961f%5Cu5217%5Cu4e2d%5Cu5404%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu7684%5Cu4f18%5Cu5148%5Cu7ea7%5Cu4ee5%5Cu53ca%5Cu6240%5Cu5173%5Cu6ce8%5Cu7684%5Cu4efb%5Cu52a1%5Cu5728%5Cu961f%5Cu5217%5Cu4e2d%5Cu7684%5Cu4f4d%5Cu7f6e%5Cuff08%5Cu961f%5Cu9996%5Cu4f4d%5Cu7f6e%5Cu4e3a0%5Cuff09%5Cuff0c%5Cu8f93%5Cu51fa%5Cu8be5%5Cu4efb%5Cu52a1%5Cu5b8c%5Cu6210%5Cu7684%5Cu65f6%5Cu523b%5Cu3002%5Cu6240%5Cu6709%5Cu4efb%5Cu52a1%5Cu90fd%5Cu9700%5Cu89811%5Cu5206%5Cu949f%5Cu6253%5Cu5370%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu6253%5Cu5370%5Cu961f%5Cu5217%5Cu4e3a%7B1%2C1%2C9%2C1%2C1%2C1%7D%5Cuff0c%5Cu76ee%5Cu524d%5Cu5904%5Cu4e8e%5Cu961f%5Cu9996%5Cu7684%5Cu4efb%5Cu52a1%5Cu6700%5Cu7ec8%5Cu5b8c%5Cu6210%5Cu65f6%5Cu523b%5Cu4e3a5%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165T%20%5Cu63a5%5Cu4e0b%5Cu6765T%5Cu7ec4%5Cu6570%5Cu636e%20%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu8f93%5Cu5165N%5Cuff0cTOP%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765N%5Cu4e2a%5Cu6570%5Cuff0cTOP%5Cu4ee3%5Cu8868%5Cu961f%5Cu5217%5Cu9996%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A2%2C%22pid%22%3A%22SP1840%22%2C%22title%22%3A%22PQUEUE%20-%20Printer%20Queue%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PQUEUE%20-%20Printer%20Queue%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PQUEUE - Printer Queue</h1>
+<h2>题意翻译</h2>
+<div>学生会里只有一台打印机，但是有很多文件需要打印，因此打印任务不可避免地需要等待。有些打印任务比较急，有些不那么急，所以每个任务都有一个1～9间的优先级，优先级越高表示任务越急。
+打印机的运作方式如下：首先从打印队列里取出一个任务J，如果队列里有比J更急的任务，则直接把J放到打印队列尾部，否则打印任务J（此时不会把它放回打印队列）。 输入打印队列中各个任务的优先级以及所关注的任务在队列中的位置（队首位置为0），输出该任务完成的时刻。所有任务都需要1分钟打印。例如，打印队列为{1,1,9,1,1,1}，目前处于队首的任务最终完成时刻为5。
+输入T 接下来T组数据 每组数据输入N，TOP。接下来N个数，TOP代表队列首</div>
+<h2>题目描述</h2>
+<div> ![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1840/3be29d089410f30e1776a4aaa83e8e7c01430643.png)
+The only printer in the computer science students' union is experiencing an extremely heavy workload. Sometimes there are a hundred jobs in the printer queue and you may have to wait for hours to get a single page of output.
+Because some jobs are more important than others, the Hacker General has invented and implemented a simple priority system for the print job queue. Now, each job is assigned a priority between 1 and 9 (with 9 being the highest priority, and 1 being the lowest), and the printer operates as follows.
+- The first job _J_ in queue is taken from the queue.
+- If there is some job in the queue with a higher priority than job _J_, then move _J_ to the end of the queue without printing it.
+- Otherwise, print job _J_ (and do not put it back in the queue).
+In this way, all those important muffin recipes that the Hacker General is printing get printed very quickly. Of course, those annoying term papers that others are printing may have to wait for quite some time to get printed, but that's life.
+Your problem with the new policy is that it has become quite tricky to determine when your print job will actually be completed. You decide to write a program to figure this out. The program will be given the current queue (as a list of priorities) as well as the position of your job in the queue, and must then calculate how long it will take until your job is printed, assuming that no additional jobs will be added to the queue. To simplify matters, we assume that printing a job always takes exactly one minute, and that adding and removing jobs from the queue is instantaneous.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> One line with a positive integer: the number of test cases (at most 100). Then for each test case:
+- One line with two integers _n_ and _m_, where _n_ is the number of jobs in the queue (1 ≤ _n_ ≤ 100) and _m_ is the position of your job (0 ≤ m ≤ n-1). The first position in the queue is number 0, the second is number 1, and so on.
+- One line with _n_ integers in the range 1 to 9, giving the priorities of the jobs in the queue. The first integer gives the priority of the first job, the second integer the priority of the second job, and so on.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, print one line with a single integer; the number of minutes until your job is completely printed, assuming that no additional print jobs will arrive.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1 0
+5
+4 2
+1 2 3 4
+6 0
+1 1 9 1 1 1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+2
+5</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

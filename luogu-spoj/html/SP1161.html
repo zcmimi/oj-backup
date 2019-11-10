@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TOE1 - Tic-Tac-Toe ( I ) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449634:17Xof9P+0q5g+MmOpIHGw770IckwAZ46Tnp13Tx0rto=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Tic%20Tac%20Toe%20is%20a%20child%27s%20game%20played%20on%20a%203%20by%203%20grid.%20One%20player%2C%20X%2C%20starts%20by%20placing%20an%20X%20at%20an%20unoccupied%20grid%20position.%20Then%20the%20other%20player%2C%20O%2C%20places%20an%20O%20at%20an%20unoccupied%20grid%20position.%20Play%20alternates%20between%20X%20and%20O%20until%20the%20grid%20is%20filled%20or%20one%20player%27s%20symbols%20occupy%20an%20entire%20line%20%28vertical%2C%20horizontal%2C%20or%20diagonal%29%20in%20the%20grid.%5Cn%5Cn%20%20%5CnWe%20will%20denote%20the%20initial%20empty%20Tic%20Tac%20Toe%20grid%20with%20nine%20dots.%20Whenever%20X%20or%20O%20plays%20we%20fill%20in%20an%20X%20or%20an%20O%20in%20the%20appropriate%20position.%20The%20example%20below%20illustrates%20each%20grid%20configuration%20from%20the%20beginning%20to%20the%20end%20of%20a%20game%20in%20which%20X%20wins.%5Cn%5Cn%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1161%5C%2Ffee8c62f27b87e59e3d70559ff57ce948d33ce64.png%29%20%20%5Cn%20%20%5Cn%20Your%20job%20is%20to%20read%20a%20grid%20and%20to%20determine%20whether%20or%20not%20it%20could%20possibly%20be%20part%20of%20a%20valid%20Tic%20Tac%20Toe%20game.%20That%20is%2C%20is%20there%20a%20series%20of%20plays%20that%20can%20yield%20this%20grid%20somewhere%20between%20the%20start%20and%20end%20of%20the%20game%3F%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20N%2C%20the%20number%20of%20test%20cases.%204N-1%20lines%20follow%2C%20specifying%20N%20grid%20configurations%20separated%20by%20empty%20lines.%22%2C%22outputFormat%22%3A%22For%20each%20case%20print%20%5C%22yes%5C%22%20or%20%5C%22no%5C%22%20on%20a%20line%20by%20itself%2C%20indicating%20whether%20or%20not%20the%20configuration%20could%20be%20part%20of%20a%20Tic%20Tac%20Toe%20game.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5CnX.O%5Cr%5CnOO.%5Cr%5CnXXX%5Cr%5Cn%5Cr%5CnO.X%5Cr%5CnXX.%5Cr%5CnOOO%22%2C%22yes%5Cr%5Cnno%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B161%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1161%22%2C%22id%22%3A%221161%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu51fa%5Cu4e00%5Cu4e2a9%2A9%5Cu7684%5Cu68cb%5Cu76d8%5Cuff0c%5Cu5224%5Cu65ad%5Cu8fd9%5Cu4e2a%5Cu68cb%5Cu76d8%5Cu80fd%5Cu5426%5Cu6210%5Cu4e3a%5Cu4e95%5Cu5b57%5Cu68cb%5Cu6e38%5Cu620f%5Cu7684%5Cu4e00%5Cu90e8%5Cu5206%5Cuff0c%5Cu5176%5Cu4e2dX%5Cu5148%5Cu4e0b%5Cuff0cO%5Cu540e%5Cu4e0b%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6570n%2C%5Cu8868%5Cu793a%5Cu8f93%5Cu5165%5Cu7684%5Cu68cb%5Cu76d8%5Cu603b%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu591a%5Cu884c%5Cu8868%5Cu793a%5Cu68cb%5Cu76d8%5Cuff0c%5Cu6bcf%5Cu4e24%5Cu4e2a%5Cu68cb%5Cu76d8%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6362%5Cu884c%5Cu3002%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%5Cuff0c%5Cu8f93%5Cu51fa%27yes%27%5Cu6216%27no%27%2C%5Cu8868%5Cu793a%5Cu8fd9%5Cu80fd%5Cu5426%5Cu6210%5Cu4e3a%5Cu4e95%5Cu5b57%5Cu68cb%5Cu6e38%5Cu620f%5Cu7684%5Cu4e00%5Cu90e8%5Cu5206%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A14%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22SP1161%22%2C%22title%22%3A%22TOE1%20-%20Tic-Tac-Toe%20%28%20I%20%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TOE1%20-%20Tic-Tac-Toe%20%28%20I%20%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TOE1 - Tic-Tac-Toe ( I )</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+给出一个9*9的棋盘，判断这个棋盘能否成为井字棋游戏的一部分，其中X先下，O后下。
+## 输入输出格式
+### 输入格式：
+第一行输入一个数n,表示输入的棋盘总数。
+接下来多行表示棋盘，每两个棋盘之间有一个换行。
+### 输出格式：
+对于每个输入样例，输出'yes'或'no',表示这能否成为井字棋游戏的一部分。</div>
+<h2>题目描述</h2>
+<div>Tic Tac Toe is a child's game played on a 3 by 3 grid. One player, X, starts by placing an X at an unoccupied grid position. Then the other player, O, places an O at an unoccupied grid position. Play alternates between X and O until the grid is filled or one player's symbols occupy an entire line (vertical, horizontal, or diagonal) in the grid.
+We will denote the initial empty Tic Tac Toe grid with nine dots. Whenever X or O plays we fill in an X or an O in the appropriate position. The example below illustrates each grid configuration from the beginning to the end of a game in which X wins.
+![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1161/fee8c62f27b87e59e3d70559ff57ce948d33ce64.png)
+Your job is to read a grid and to determine whether or not it could possibly be part of a valid Tic Tac Toe game. That is, is there a series of plays that can yield this grid somewhere between the start and end of the game?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains N, the number of test cases. 4N-1 lines follow, specifying N grid configurations separated by empty lines.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each case print "yes" or "no" on a line by itself, indicating whether or not the configuration could be part of a Tic Tac Toe game.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+X.O
+OO.
+XXX
+
+O.X
+XX.
+OOO</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>yes
+no</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

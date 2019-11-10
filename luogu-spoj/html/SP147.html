@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TAUT - Tautology - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449540:i0XJUJWz2VEO91grwkCHpmTyDjNMwAXFOCHUShjWJTA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Write%20a%20program%20that%20checks%20if%20the%20given%20logical%20expression%20is%20a%20tautology.%20The%20logical%20expression%20is%20a%20tautology%20if%20it%20is%20always%20true%2C%20regardless%20of%20logical%20value%20of%20its%20variables.%22%2C%22inputFormat%22%3A%22%20On%20the%20first%20line%20there%20is%20the%20number%20of%20expressions%20to%20check%20%28at%20most%2035%29.%20The%20expression%20is%20in%20a%20prefix%20notation%2C%20that%20means%20that%20operator%20precedes%20its%20arguments.%20The%20following%20logical%20operators%20will%20be%20used%3A%5Cn%5Cn%20%60%60%60%5Cn%5CnC%20-%20and%20%5CnD%20-%20or%5CnI%20-%20implies%5CnE%20-%20if%2C%20and%20only%20if%5CnN%20-%20not%5Cn%60%60%60%5Cn%20The%20variables%20will%20be%20lowercase%20letters%20%28a-z%29.%20There%20will%20be%20no%20more%20than%2016%20different%20letters%20in%20the%20expression.%20The%20length%20of%20the%20expression%20will%20not%20exceed%20111%20characters.%22%2C%22outputFormat%22%3A%22%20For%20each%20expression%20write%20one%20word%3A%20YES%20if%20it%20is%20a%20tautology%2C%20NO%20in%20other%20case.%22%2C%22samples%22%3A%5B%5B%227%5Cr%5CnIIpqDpNp%5Cr%5CnNCNpp%5Cr%5CnIaz%5Cr%5CnNNNNNNNp%5Cr%5CnIIqrIIpqIpr%5Cr%5CnIpp%5Cr%5CnEzz%22%2C%22YES%5Cr%5CnYES%5Cr%5CnNO%5Cr%5CnNO%5Cr%5CnYES%5Cr%5CnYES%5Cr%5CnYES%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3463%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F147%22%2C%22id%22%3A%22147%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu7f16%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cu6765%5Cu68c0%5Cu67e5%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu903b%5Cu8f91%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu662f%5Cu5426%5Cu662f%5Cu91cd%5Cu8a00%5Cu5f0f%5Cu3002%5Cr%5Cn%5Cu5982%5Cu679c%5Cu5bf9%5Cu4e8e%5Cu4e00%5Cu4e2a%5Cu903b%5Cu8f91%5Cu8868%5Cu8fbe%5Cu5f0f%5Cuff0c%5Cu65e0%5Cu8bba%5Cu5176%5Cu53d8%5Cu91cf%5Cu7684%5Cu903b%5Cu8f91%5Cu503c%5Cu5982%5Cu4f55%5Cuff0c%5Cu5176%5Cu503c%5Cu59cb%5Cu7ec8%5Cu4e3a%5Cu771f%5Cuff0c%5Cu90a3%5Cu4e48%5Cu8fd9%5Cu4e2a%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu662f%5Cu4e00%5Cu4e2a%5Cu91cd%5Cu8a00%5Cu5f0f%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%2A%2Aq%2A%2A%280%3Cq%3C%3D35%29%5Cuff0c%5Cu8868%5Cu793a%5Cu8be2%5Cu95ee%5Cu7684%5Cu6570%5Cu91cf%5Cuff0c%5Cu5373%5Cu9700%5Cu8981%5Cu68c0%5Cu67e5%5Cu7684%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu7684%5Cu6570%5Cu91cf%3B%5Cr%5Cn%5Cu4e0b%5Cu9762q%5Cu884c%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu884c%5Cu4ee3%5Cu8868%5Cu4e00%5Cu4e2a%5Cu8868%5Cu8fbe%5Cu5f0f%5Cr%5Cn%5Cu5176%5Cu4e2d%5Cuff0c%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu683c%5Cu5f0f%5Cu4e3a%5Cu524d%5Cu7f00%5Cu8868%5Cu8fbe%5Cu5f0f%5Cuff08%5Cu8fd0%5Cu7b97%5Cu7b26%5Cu5728%5Cu5176%5Cu53c2%5Cu6570%5Cu4e4b%5Cu524d%5Cuff09%5Cr%5Cn%5Cu5c06%5Cu4f7f%5Cu7528%5Cu4ee5%5Cu4e0b%5Cu903b%5Cu8f91%5Cu8fd0%5Cu7b97%5Cu7b26%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cu8fd0%5Cu7b97%5Cu7b26%5Cu7684%5Cu53c2%5Cu6570%5Cu4e3a%5Cu5c0f%5Cu5199%5Cu82f1%5Cu6587%5Cu5b57%5Cu6bcd%5Cu3002%5Cr%5Cn%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu4e2d%5Cu6240%5Cu5305%5Cu542b%5Cu7684%5Cu4e0d%5Cu540c%5Cu5b57%5Cu6bcd%5Cu6570%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc716%5Cuff0c%5Cr%5Cn%5Cu4e14%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu7684%5Cu957f%5Cu5ea6%5Cu4e0d%5Cu4f1a%5Cu8d85%5Cu8fc7111%5Cu4e2a%5Cu5b57%5Cu7b26%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu8868%5Cu8fbe%5Cu5f0f%5Cuff0c%5Cu5bf9%5Cu5e94%5Cu4e00%5Cu884c%5Cu8f93%5Cu51fa%5Cu3002%5Cr%5Cn%5Cu82e5%5Cu8be5%5Cu8868%5Cu8fbe%5Cu5f0f%5Cu4e3a%5Cu91cd%5Cu8a00%5Cu5f0f%5Cuff0c%5Cu5219%5Cu8f93%5Cu51faYES%2C%5Cu5426%5Cu5219%5Cu8f93%5Cu51faNO%5Cu3002%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP147%22%2C%22title%22%3A%22TAUT%20-%20Tautology%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TAUT%20-%20Tautology%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TAUT - Tautology</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+编写一个程序来检查给定的逻辑表达式是否是重言式。
+如果对于一个逻辑表达式，无论其变量的逻辑值如何，其值始终为真，那么这个表达式是一个重言式。
+## 输入输出格式
+### 输入格式：
+第一行为一个正整数**q**(0<q<=35)，表示询问的数量，即需要检查的表达式的数量; 下面q行，每一行代表一个表达式 其中，表达式格式为前缀表达式（运算符在其参数之前） 将使用以下逻辑运算符： 运算符的参数为小写英文字母。 表达式中所包含的不同字母数不会超过16， 且表达式的长度不会超过111个字符 ### 输出格式 对于每一个表达式，对应一行输出。 若该表达式为重言式，则输出YES,否则输出NO。 </div>
+<h2>题目描述</h2>
+<div> Write a program that checks if the given logical expression is a tautology. The logical expression is a tautology if it is always true, regardless of logical value of its variables.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> On the first line there is the number of expressions to check (at most 35). The expression is in a prefix notation, that means that operator precedes its arguments. The following logical operators will be used:
+```
+C - and
+D - or
+I - implies
+E - if, and only if
+N - not
+```
+The variables will be lowercase letters (a-z). There will be no more than 16 different letters in the expression. The length of the expression will not exceed 111 characters.</div>
+<h3>输出格式</h3>
+<br />
+<div> For each expression write one word: YES if it is a tautology, NO in other case.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7
+IIpqDpNp
+NCNpp
+Iaz
+NNNNNNNp
+IIqrIIpqIpr
+Ipp
+Ezz</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>YES
+YES
+NO
+NO
+YES
+YES
+YES</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ANARC09H - Land Division - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450061:p9/hnzF5oF1Knx1XWRcyy+sul8cU3B9pvXKPfO3/I/Q=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20king%20of%20the%20Far%2C%20Far%20Away%20Kingdom%20has%20passed-away%20and%20the%20kingdom%20must%20be%20split%20amongst%20his%20K%20sons.%20The%20kingdom%2C%20which%20can%20be%20drawn%20on%20a%20rectangular%20map%2C%20consists%20of%20N%20cities.%20To%20divide%20the%20land%2C%20they%20will%20draw%20K%20%5Cu2212%201%20straight%20segments%20on%20the%20map%2C%20all%20of%20them%20parallel%20to%20either%20%20%5Cnthe%20vertical%20or%20the%20horizontal%20axis%20of%20the%20map.%20This%20divides%20the%20map%20into%20exactly%20K%20rectangles%2C%20all%20having%20equal%20heights%20%28if%20the%20dividing%20lines%20where%20vertical%29%2C%20or%20equal%20widths%20%28if%20the%20dividing%20lines%20where%20horizontal%29.%20No%20segment%20should%20pass%20through%20any%20of%20the%20cities.%20Each%20son%20will%20then%20be%20assigned%20one%20random%20region%20out%20of%20the%20K%20regions%20and%20the%20cities%20inside%20that%20region%20will%20be%20his%20share.%20Of%20course%2C%20they%20want%20the%20division%20to%20be%20as%20fair%20as%20possible%3A%20theoretically%2C%20in%20the%20fairest%20division%2C%20each%20son%20should%20get%20N%5C%2FK%20cities%20%28we%5Cu2019ll%20call%20this%20value%20the%20baseline%29%2C%20but%20since%20the%20baseline%20isn%5Cu2019t%20always%20a%20whole%20number%2C%20each%20of%20the%20sons%20wants%20to%20be%20as%20close%20as%20possible%20to%20the%20baseline.%20We%20will%20calculate%20the%20unfairness%20of%20each%20son%20as%20the%20absolute%20difference%20between%20the%20number%20of%20cities%20assigned%20to%20him%20and%20the%20baseline.%20The%20fairest%20division%20is%20the%20one%20that%20minimizes%20the%20average%20unfairness%20of%20all%20the%20sons.%5Cn%5Cn%21%5BLand%20division%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP7778%5C%2Fed605786cfb8a2d6aa0a69acdee07286f471440b.png%29%5Cn%5CnConsider%20the%20example%20above%20with%203%20sons%20and%206%20cities%20%28so%20the%20baseline%20is%206%5C%2F3%20%3D%202.0%29%20Figure%20%28a%29%20is%20the%20original%20map.%20Figure%20%28b%29%20shows%20a%20non-optimal%20division%20%28the%20dashed%20lines%20are%20the%202%20dividing%20lines.%29%20In%20this%20case%2C%20the%20middle%20region%20contains%203%20cities%20%28unfairness%20of%20%7C3%20%5Cu2212%202%7C%20%3D%201%29%2C%20the%20left%20region%20contains%201%20city%20%28unfairness%20of%20%7C1%20%5Cu2212%202%7C%20%3D%201%29%2C%20while%20the%20right%20region%20contains%202%20cities%20%28perfectly%20fair%2C%20unfairness%20of%200%29%2C%20so%20the%20average%20unfairness%20is%202%5C%2F3.%20%20%5CnFigure%20%28c%29%20on%20the%20right%20shows%20the%20optimal%20division%20since%20all%20three%20regions%20contain%20the%20same%20number%20of%20cities%20for%20an%20average%20unfairness%20of%200.%20Write%20a%20program%20to%20determine%20the%20fairest%20land%20division%20for%20a%20given%20kingdom.%22%2C%22inputFormat%22%3A%22Your%20program%20will%20be%20tested%20on%20one%20or%20more%20test%20cases.%20Each%20test%20case%20is%20described%20on%20N%20%2B%201%20lines.%20The%20first%20line%20of%20each%20test%20case%20specifies%20two%20positive%20integers%3A%20%28N%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20print%20the%20following%20line%3A%20%20%5Cnk.%20A%5C%2FB%20%20%5CnWhere%20k%20is%20the%20test%20case%20number%20%28starting%20at%20one%2C%29%20and%20A%5C%2FB%20is%20the%20minimum%20average%20that%20could%20be%20obtained.%20A%5C%2FB%20should%20be%20an%20irreducible%20fraction.%20Let%20B%3D1%20when%20the%20result%20is%20a%20whole%20number.%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn6%203%5C%5Cn0%204%5C%5Cn1%203%5C%5Cn2%203%5C%5Cn3%201%5C%5Cn4%204%5C%5Cn5%200%5C%5Cn4%203%5C%5Cn0%200%5C%5Cn0%201%5C%5Cn1%201%5C%5Cn1%200%5C%5Cn0%200%5C%5Cn%5C%5Cn%22%2C%22%5C%5Cn1.%200%5C%2F1%5C%5Cn2.%208%5C%2F9%5C%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1328%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F7778%22%2C%22id%22%3A%227778%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP7778%22%2C%22title%22%3A%22ANARC09H%20-%20Land%20Division%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22ANARC09H%20-%20Land%20Division%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>ANARC09H - Land Division</h1>
+<h2>题目描述</h2>
+<div>The king of the Far, Far Away Kingdom has passed-away and the kingdom must be split amongst his K sons. The kingdom, which can be drawn on a rectangular map, consists of N cities. To divide the land, they will draw K − 1 straight segments on the map, all of them parallel to either
+the vertical or the horizontal axis of the map. This divides the map into exactly K rectangles, all having equal heights (if the dividing lines where vertical), or equal widths (if the dividing lines where horizontal). No segment should pass through any of the cities. Each son will then be assigned one random region out of the K regions and the cities inside that region will be his share. Of course, they want the division to be as fair as possible: theoretically, in the fairest division, each son should get N/K cities (we’ll call this value the baseline), but since the baseline isn’t always a whole number, each of the sons wants to be as close as possible to the baseline. We will calculate the unfairness of each son as the absolute difference between the number of cities assigned to him and the baseline. The fairest division is the one that minimizes the average unfairness of all the sons.
+![Land division](https://cdn.luogu.com.cn/upload/vjudge_pic/SP7778/ed605786cfb8a2d6aa0a69acdee07286f471440b.png)
+Consider the example above with 3 sons and 6 cities (so the baseline is 6/3 = 2.0) Figure (a) is the original map. Figure (b) shows a non-optimal division (the dashed lines are the 2 dividing lines.) In this case, the middle region contains 3 cities (unfairness of |3 − 2| = 1), the left region contains 1 city (unfairness of |1 − 2| = 1), while the right region contains 2 cities (perfectly fair, unfairness of 0), so the average unfairness is 2/3.
+Figure (c) on the right shows the optimal division since all three regions contain the same number of cities for an average unfairness of 0. Write a program to determine the fairest land division for a given kingdom.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Your program will be tested on one or more test cases. Each test case is described on N + 1 lines. The first line of each test case specifies two positive integers: (N</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, print the following line:
+k. A/B
+Where k is the test case number (starting at one,) and A/B is the minimum average that could be obtained. A/B should be an irreducible fraction. Let B=1 when the result is a whole number.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n6 3\n0 4\n1 3\n2 3\n3 1\n4 4\n5 0\n4 3\n0 0\n0 1\n1 1\n1 0\n0 0\n\n</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>\n1. 0/1\n2. 8/9\n</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

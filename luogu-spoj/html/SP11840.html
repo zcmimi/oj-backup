@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SEGSQRSS - Sum of Squares with Segment Tree - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450286:Iht5DDQ+DcfI/XspdOGLr/YItZxMk8HMdls8Hi3p6C4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Segment%20trees%20are%20extremely%20useful.%20In%20particular%20%5C%22Lazy%20Propagation%5C%22%20%28i.e.%20%5Bsee%20here%2C%20for%20example%5D%28http%3A%5C%2F%5C%2Fstackoverflow.com%5C%2Fquestions%5C%2F10832954%5C%2Fdata-mapping-and-lazy-propagation-in-segment-tree%29%29%20allows%20one%20to%20compute%20sums%20over%20a%20range%20in%20O%28lg%28n%29%29%2C%20and%20update%20ranges%20in%20O%28lg%28n%29%29%20as%20well.%20In%20this%20problem%20you%20will%20compute%20something%20much%20harder%3A%5Cn%5Cn%2A%2AThe%20sum%20of%20squares%20over%20a%20range%20with%20range%20updates%20of%202%20types%3A%2A%2A%5Cn%5Cn%2A%2A1%29%20increment%20in%20a%20range%2A%2A%5Cn%5Cn%2A%2A2%29%20set%20all%20numbers%20the%20same%20in%20a%20range.%2A%2A%22%2C%22inputFormat%22%3A%22%20There%20will%20be%20%2A%2AT%2A%2A%20%28%2A%2AT%2A%2A%20%3C%3D%2025%29%20test%20cases%20in%20the%20input%20file.%20First%20line%20of%20the%20input%20contains%20two%20positive%20integers%2C%20%2A%2AN%2A%2A%20%28%2A%2AN%2A%2A%20%3C%3D%20100%2C000%29%20and%20%2A%2AQ%2A%2A%20%28%2A%2AQ%2A%2A%20%3C%3D%20100%2C000%29.%20The%20next%20line%20contains%20%2A%2AN%2A%2A%20integers%2C%20each%20at%20most%201000.%20Each%20of%20the%20next%20%2A%2AQ%2A%2A%20lines%20starts%20with%20a%20number%2C%20which%20indicates%20the%20type%20of%20operation%3A%5Cn%5Cn%202%20%2A%2Ast%20nd%2A%2A%20--%20return%20the%20sum%20of%20the%20squares%20of%20the%20numbers%20with%20indices%20in%20%5C%5C%5B%2A%2Ast%2A%2A%2C%20%2A%2And%2A%2A%5C%5C%5D%20%7Bi.e.%2C%20from%20%2A%2Ast%2A%2A%20to%20%2A%2And%2A%2A%20inclusive%7D%20%281%20%3C%3D%20%2A%2Ast%2A%2A%20%3C%3D%20%2A%2And%2A%2A%20%3C%3D%20%2A%2AN%2A%2A%29.%5Cn%5Cn%201%20%2A%2Ast%20nd%20x%2A%2A%20--%20add%20%5C%22x%5C%22%20to%20all%20numbers%20with%20indices%20in%20%5C%5C%5B%2A%2Ast%2A%2A%2C%20%2A%2And%2A%2A%5C%5C%5D%20%281%20%3C%3D%20%2A%2Ast%2A%2A%20%3C%3D%20%2A%2And%2A%2A%20%3C%3D%20%2A%2AN%2A%2A%2C%20and%20-1%2C000%20%3C%3D%20%2A%2Ax%2A%2A%20%3C%3D%201%2C000%29.%5Cn%5Cn%200%20%2A%2Ast%20nd%20x%2A%2A%20--%20set%20all%20numbers%20with%20indices%20in%20%5C%5C%5B%2A%2Ast%2A%2A%2C%20%2A%2And%2A%2A%5C%5C%5D%20to%20%5C%22%2A%2Ax%2A%2A%5C%22%20%281%20%3C%3D%20%2A%2Ast%2A%2A%20%3C%3D%20%2A%2And%2A%2A%20%3C%3D%20%2A%2AN%2A%2A%2C%20and%20-1%2C000%20%3C%3D%20%2A%2Ax%2A%2A%20%3C%3D%201%2C000%29.%22%2C%22outputFormat%22%3A%22%20For%20each%20test%20case%20output%20the%20%5Cu201cCase%20%3Ccaseno%3E%3A%5Cu201d%20in%20the%20first%20line%20and%20from%20the%20second%20line%20output%20the%20sum%20of%20squares%20for%20each%20operation%20of%20type%202.%20Intermediate%20overflow%20will%20not%20occur%20with%20proper%20use%20of%2064-bit%20signed%20integer.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn4%205%5Cr%5Cn1%202%203%204%5Cr%5Cn2%201%204%5Cr%5Cn0%203%204%201%5Cr%5Cn2%201%204%5Cr%5Cn1%203%204%201%5Cr%5Cn2%201%204%5Cr%5Cn1%201%5Cr%5Cn1%5Cr%5Cn2%201%201%22%2C%22Case%201%3A%5Cr%5Cn30%5Cr%5Cn7%5Cr%5Cn13%5Cr%5CnCase%202%3A%5Cr%5Cn1%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1106%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F11840%22%2C%22id%22%3A%2211840%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP11840%22%2C%22title%22%3A%22SEGSQRSS%20-%20Sum%20of%20Squares%20with%20Segment%20Tree%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SEGSQRSS%20-%20Sum%20of%20Squares%20with%20Segment%20Tree%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SEGSQRSS - Sum of Squares with Segment Tree</h1>
+<h2>题目描述</h2>
+<div> Segment trees are extremely useful. In particular "Lazy Propagation" (i.e. [see here, for example](http://stackoverflow.com/questions/10832954/data-mapping-and-lazy-propagation-in-segment-tree)) allows one to compute sums over a range in O(lg(n)), and update ranges in O(lg(n)) as well. In this problem you will compute something much harder:
+**The sum of squares over a range with range updates of 2 types:**
+**1) increment in a range**
+**2) set all numbers the same in a range.**</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> There will be **T** (**T** <= 25) test cases in the input file. First line of the input contains two positive integers, **N** (**N** <= 100,000) and **Q** (**Q** <= 100,000). The next line contains **N** integers, each at most 1000. Each of the next **Q** lines starts with a number, which indicates the type of operation:
+2 **st nd** -- return the sum of the squares of the numbers with indices in \[**st**, **nd**\] {i.e., from **st** to **nd** inclusive} (1 <= **st** <= **nd** <= **N**).
+1 **st nd x** -- add "x" to all numbers with indices in \[**st**, **nd**\] (1 <= **st** <= **nd** <= **N**, and -1,000 <= **x** <= 1,000).
+0 **st nd x** -- set all numbers with indices in \[**st**, **nd**\] to "**x**" (1 <= **st** <= **nd** <= **N**, and -1,000 <= **x** <= 1,000).</div>
+<h3>输出格式</h3>
+<br />
+<div> For each test case output the “Case <caseno>:” in the first line and from the second line output the sum of squares for each operation of type 2. Intermediate overflow will not occur with proper use of 64-bit signed integer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+4 5
+1 2 3 4
+2 1 4
+0 3 4 1
+2 1 4
+1 3 4 1
+2 1 4
+1 1
+1
+2 1 1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case 1:
+30
+7
+13
+Case 2:
+1</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

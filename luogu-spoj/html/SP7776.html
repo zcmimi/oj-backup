@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ANARC09I - Kind of a blur - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450060:LOiozzm25k+sVP0gTLUWSc7vjsGQx4ZxfIn+qIwROq4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%21%5BOrigin%20and%20Blured%20Image%5D%28http%3A%5C%2F%5C%2Fvn.spoj.com%5C%2Fcontent%5C%2Fanarc09i2.jpg%20%5C%22OnB%5C%22%29%5Cn%5CnImage%20blurring%20occurs%20when%20the%20object%20being%20captured%20is%20out%20of%20the%20camera%5Cu2019s%20focus.%20The%20top%20two%20figures%20on%20the%20right%20are%20an%20example%20of%20an%20image%20and%20its%20blurred%20version.%20Restoring%20the%20original%20image%20given%20only%20the%20blurred%20version%20is%20one%20of%20the%20most%20interesting%20topics%20in%20image%20processing.%20This%20process%20is%20called%20deblurring%2C%20which%20will%20be%20your%20task%20for%20this%20problem.%5Cn%5Cn%20%20%5CnIn%20this%20problem%2C%20all%20images%20are%20in%20grey-scale%20%28no%20colours%29.%20Images%20are%20represented%20as%20a%202%20dimensional%20matrix%20of%20real%20numbers%2C%20where%20each%20cell%20corresponds%20to%20the%20brightness%20of%20the%20corresponding%20pixel.%20Although%20not%20mathematically%20accurate%2C%20one%20way%20to%20describe%20a%20blurred%20image%20is%20through%20averaging%20all%20the%20pixels%20that%20are%20within%20%28less%20than%20or%20equal%20to%29%20a%20certain%20Manhattan%20distance%5Cu2020%20from%20each%20pixel%20%28including%20the%20pixel%20itself%20%29.%20Here%5Cu2019s%20an%20example%20of%20how%20to%20calculate%20the%20blurring%20of%20a%203x3%20image%20with%20a%20blurring%20distance%20of%201%3A%5Cn%5Cn%21%5BHow%20to%20compute%5D%28http%3A%5C%2F%5C%2Fvn.spoj.com%5C%2Fcontent%5C%2Fanarc09i1.jpg%20%5C%22HowTo%5C%22%29%5Cn%5Cn%20%60%60%60%5Cn%60%60%60%5CnGiven%20the%20blurred%20version%20of%20an%20image%2C%20we%20are%20interested%20in%20reconstructing%20the%20original%20version%20assuming%20that%20the%20image%20was%20blurred%20as%20explained%20above.%22%2C%22inputFormat%22%3A%22Input%20consists%20of%20several%20test%20cases.%20Each%20case%20is%20specified%20on%20H%20%2B%201%20lines.%20The%20first%20line%20specifies%20three%20non%20negative%20integers%20specifying%20the%20width%20W%20%2C%20the%20height%20H%20of%20the%20blurred%20image%20and%20the%20blurring%20distance%20D%20respectively%20where%20%281%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20print%20a%20W%20%5Cu00d7%20H%20matrix%20of%20real%20numbers%20specifying%20the%20deblurred%20version%20of%20the%20image.%20Each%20element%20in%20the%20matrix%20should%20be%20approximated%20to%202%20decimal%20places%20and%20right%20justified%20in%20a%20field%20of%20width%208.%20Separate%20the%20output%20of%20each%20two%20consecutive%20test%20cases%20by%20an%20empty%20line.%20Do%20not%20print%20an%20empty%20line%20after%20the%20last%20test%20case.%20It%20is%20guaranteed%20that%20there%20is%20exactly%20one%20unique%20solution%20for%20every%20test%20case.%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn2%202%201%5C%5Cn1%201%5C%5Cn1%201%5C%5Cn3%203%201%5C%5Cn19%2014%2020%5C%5Cn12%2015%2018%5C%5Cn13%2014%2016%5C%5Cn4%204%202%5C%5Cn14%2015%2014%2015%5C%5Cn14%2015%2014%2015%5C%5Cn14%2015%2014%2015%5C%5Cn14%2015%2014%2015%5C%5Cn0%200%200%5C%5Cn%5C%5Cn%22%2C%22%5C%5Cn%20%20%20%201.00%20%20%20%201.00%20%5C%5Cn%20%20%20%201.00%20%20%20%201.00%5C%5Cn%5C%5Cn%20%20%20%202.00%20%20%2030.00%20%20%2017.00%5C%5Cn%20%20%2025.00%20%20%20%207.00%20%20%2013.00%5C%5Cn%20%20%2014.00%20%20%20%200.00%20%20%2035.00%5C%5Cn%5C%5Cn%20%20%20%201.00%20%20%2027.00%20%20%20%202.00%20%20%2028.00%5C%5Cn%20%20%2021.00%20%20%2012.00%20%20%2017.00%20%20%20%208.00%5C%5Cn%20%20%2021.00%20%20%2012.00%20%20%2017.00%20%20%20%208.00%5C%5Cn%20%20%20%201.00%20%20%2027.00%20%20%20%202.00%20%20%2028.00%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1435%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F7776%22%2C%22id%22%3A%227776%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A10%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22SP7776%22%2C%22title%22%3A%22ANARC09I%20-%20Kind%20of%20a%20blur%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22ANARC09I%20-%20Kind%20of%20a%20blur%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>ANARC09I - Kind of a blur</h1>
+<h2>题目描述</h2>
+<div>![Origin and Blured Image](http://vn.spoj.com/content/anarc09i2.jpg "OnB")
+Image blurring occurs when the object being captured is out of the camera’s focus. The top two figures on the right are an example of an image and its blurred version. Restoring the original image given only the blurred version is one of the most interesting topics in image processing. This process is called deblurring, which will be your task for this problem.
+In this problem, all images are in grey-scale (no colours). Images are represented as a 2 dimensional matrix of real numbers, where each cell corresponds to the brightness of the corresponding pixel. Although not mathematically accurate, one way to describe a blurred image is through averaging all the pixels that are within (less than or equal to) a certain Manhattan distance† from each pixel (including the pixel itself ). Here’s an example of how to calculate the blurring of a 3x3 image with a blurring distance of 1:
+![How to compute](http://vn.spoj.com/content/anarc09i1.jpg "HowTo")
+```
+```
+Given the blurred version of an image, we are interested in reconstructing the original version assuming that the image was blurred as explained above.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Input consists of several test cases. Each case is specified on H + 1 lines. The first line specifies three non negative integers specifying the width W , the height H of the blurred image and the blurring distance D respectively where (1</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, print a W × H matrix of real numbers specifying the deblurred version of the image. Each element in the matrix should be approximated to 2 decimal places and right justified in a field of width 8. Separate the output of each two consecutive test cases by an empty line. Do not print an empty line after the last test case. It is guaranteed that there is exactly one unique solution for every test case.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n2 2 1\n1 1\n1 1\n3 3 1\n19 14 20\n12 15 18\n13 14 16\n4 4 2\n14 15 14 15\n14 15 14 15\n14 15 14 15\n14 15 14 15\n0 0 0\n\n</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>\n    1.00    1.00 \n    1.00    1.00\n\n    2.00   30.00   17.00\n   25.00    7.00   13.00\n   14.00    0.00   35.00\n\n    1.00   27.00    2.00   28.00\n   21.00   12.00   17.00    8.00\n   21.00   12.00   17.00    8.00\n    1.00   27.00    2.00   28.00</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

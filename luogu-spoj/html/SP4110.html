@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FASTFLOW - Fast Maximum Flow - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449855:NXQ+zL2aZ9WwjmxvaIZfylKmO1XEjkFSuMndT8tWX+M=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Given%20a%20graph%20with%20N%20%282%20%5Cu2264%20N%20%5Cu2264%205%2C000%29%20vertices%20numbered%201%20to%20N%20and%20M%20%281%20%5Cu2264%20M%20%5Cu2264%2030%2C000%29%20undirected%2C%20weighted%20edges%2C%20compute%20the%20%5Bmaximum%20flow%20%5C%2F%20minimum%20cut%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FMaximum_flow_problem%29%20from%20vertex%201%20to%20vertex%20N.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20two%20integers%20N%20and%20M.%20The%20next%20M%20lines%20each%20contain%20three%20integers%20A%2C%20B%2C%20and%20C%2C%20denoting%20that%20there%20is%20an%20edge%20of%20capacity%20C%20%281%20%5Cu2264%20C%20%5Cu2264%2010%20%24%20%5E%7B9%7D%20%24%20%29%20between%20nodes%20A%20and%20B%20%281%20%5Cu2264%20A%2C%20B%20%5Cu2264%20N%29.%20Note%20that%20it%20is%20possible%20for%20there%20to%20be%20duplicate%20edges%2C%20as%20well%20as%20an%20edge%20from%20a%20node%20to%20itself.%22%2C%22outputFormat%22%3A%22Print%20a%20single%20integer%20%28which%20may%20not%20fit%20into%20a%2032-bit%20integer%29%20denoting%20the%20maximum%20flow%20%5C%2F%20minimum%20cut%20between%201%20and%20N.%22%2C%22samples%22%3A%5B%5B%224%206%5Cn1%202%203%5Cn2%203%204%5Cn3%201%202%5Cn2%202%205%5Cn3%204%203%5Cn4%203%203%22%2C%225%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2766%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F4110%22%2C%22id%22%3A%224110%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu610f%5Cn%5Cn%5Cu7ed9%5Cu4e00%5Cu5f20n%5Cu4e2a%5Cu70b9m%5Cu6761%5Cu8fb9%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cuff08%242%20%5C%5Cleq%20n%20%5C%5Cleq%205000%24%20%5Cuff0c%241%20%5C%5Cleq%20m%20%5C%5Cleq%2030000%24%20%5Cuff09%5Cuff0c%5Cu8bf7%5Cu8ba1%5Cu7b97%5Cu4ece1%5Cu53f7%5Cu70b9%5Cu5230n%5Cu53f7%5Cu70b9%5Cu7684%5Cu6700%5Cu5927%5Cu6d41%5C%2F%5Cu6700%5Cu5c0f%5Cu5272%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570n%5Cu3001m%5Cu3002%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765m%5Cu884c%5Cu6bcf%5Cu884c%5Cu4e09%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570a%5Cu3001b%5Cu3001c%5Cuff0c%5Cu8868%5Cu793a%5Cu5728a%5Cu3001b%5Cu4e24%5Cu70b9%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu5bb9%5Cu91cf%5Cu4e3ac%5Cu7684%5Cu8fb9%5Cu3002%5Cuff08%241%20%5C%5Cleq%20a%2Cb%20%5C%5Cleq%20n%24%20%5Cuff0c%241%20%5C%5Cleq%20c%20%5C%5Cleq%2010%5E9%24%20%5Cuff09%5Cn%5Cn%5Cu8bf7%5Cu6ce8%5Cu610f%5Cu56fe%5Cu4e2d%5Cu6709%5Cu53ef%5Cu80fd%5Cu6709%5Cu91cd%5Cu8fb9%5Cu548c%5Cu81ea%5Cu73af%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a1%5Cu53f7%5Cu70b9%5Cu5230n%5Cu53f7%5Cu70b9%5Cu7684%5Cu6700%5Cu5927%5Cu6d41%5C%2F%5Cu6700%5Cu5c0f%5Cu5272%5Cu3002%5Cuff08%5Cu8bf7%5Cu6ce8%5Cu610f%5Cu8fd9%5Cu4e2a%5Cu6570%5Cu4e0d%5Cu4e00%5Cu5b9a%5Cu80fd%5Cu752832%5Cu4f4d%5Cu6574%5Cu6570%5Cuff0c%5Cu5373C%2B%2B%5Cu7684int%5Cu6216pascal%5Cu7684longint%5Cu5b58%5Cu4e0b%5Cuff09%5Cn%5CnTranslated%20by%20%40fjzzq2002%20%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A13%2C%22totalAccepted%22%3A7%2C%22pid%22%3A%22SP4110%22%2C%22title%22%3A%22FASTFLOW%20-%20Fast%20Maximum%20Flow%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32735%2C%22title%22%3A%22%5Cu3010%5Cu7ffb%5Cu8bd1%5Cu3011%22%2C%22forum%22%3A%7B%22id%22%3A14026%2C%22name%22%3A%22SP4110%20FASTFLOW%20-%20Fast%20Maximum%20Flow%22%2C%22slug%22%3A%22SP4110%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22FASTFLOW%20-%20Fast%20Maximum%20Flow%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>FASTFLOW - Fast Maximum Flow</h1>
+<h2>题意翻译</h2>
+<div>题意
+给一张n个点m条边的无向图（$2 \leq n \leq 5000$ ，$1 \leq m \leq 30000$ ），请计算从1号点到n号点的最大流/最小割。
+输入
+第一行包含两个整数n、m。
+接下来m行每行三个正整数a、b、c，表示在a、b两点间有一条容量为c的边。（$1 \leq a,b \leq n$ ，$1 \leq c \leq 10^9$ ）
+请注意图中有可能有重边和自环。
+输出
+输出一个整数表示1号点到n号点的最大流/最小割。（请注意这个数不一定能用32位整数，即C++的int或pascal的longint存下）
+Translated by @fjzzq2002 </div>
+<h2>题目描述</h2>
+<div>Given a graph with N (2 ≤ N ≤ 5,000) vertices numbered 1 to N and M (1 ≤ M ≤ 30,000) undirected, weighted edges, compute the [maximum flow / minimum cut](http://en.wikipedia.org/wiki/Maximum_flow_problem) from vertex 1 to vertex N.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the two integers N and M. The next M lines each contain three integers A, B, and C, denoting that there is an edge of capacity C (1 ≤ C ≤ 10 $ ^{9} $ ) between nodes A and B (1 ≤ A, B ≤ N). Note that it is possible for there to be duplicate edges, as well as an edge from a node to itself.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print a single integer (which may not fit into a 32-bit integer) denoting the maximum flow / minimum cut between 1 and N.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4 6
+1 2 3
+2 3 4
+3 1 2
+2 2 5
+3 4 3
+4 3 3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

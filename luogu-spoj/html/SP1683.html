@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>EXPRESS - Expressions - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449664:Vj9KuRzrZlQZpGXFUrLIOIE2IkMtD5cPs9EQl5DlgUs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Arithmetic%20expressions%20are%20usually%20written%20with%20the%20operators%20in%20between%20the%20two%20operands%20%28which%20is%20called%20infix%20notation%29.%20For%20example%2C%20_%28x%2By%29%5C%5C%2A%28z-w%29_%20is%20an%20arithmetic%20expression%20in%20infix%20notation.%20However%2C%20it%20is%20easier%20to%20write%20a%20program%20to%20evaluate%20an%20expression%20if%20the%20expression%20is%20written%20in%20postfix%20notation%20%28also%20known%20as%20reverse%20polish%20notation%29.%20In%20postfix%20notation%2C%20an%20operator%20is%20written%20behind%20its%20two%20operands%2C%20which%20may%20be%20expressions%20themselves.%20For%20example%2C%20_x%20y%20%2B%20z%20w%20-%20%5C%5C%2A_%20is%20a%20postfix%20notation%20of%20the%20arithmetic%20expression%20given%20above.%20Note%20that%20in%20this%20case%20parentheses%20are%20not%20required.%5Cn%5CnTo%20evaluate%20an%20expression%20written%20in%20postfix%20notation%2C%20an%20algorithm%20operating%20on%20a%20stack%20can%20be%20used.%20A%20stack%20is%20a%20data%20structure%20which%20supports%20two%20operations%3A%5Cn%5Cn1.%20%2A%2Apush%2A%2A%3A%20a%20number%20is%20inserted%20at%20the%20top%20of%20the%20stack.%5Cn2.%20%2A%2Apop%2A%2A%3A%20the%20number%20from%20the%20top%20of%20the%20stack%20is%20taken%20out.%5Cn%5CnDuring%20the%20evaluation%2C%20we%20process%20the%20expression%20from%20left%20to%20right.%20If%20we%20encounter%20a%20number%2C%20we%20push%20it%20onto%20the%20stack.%20If%20we%20encounter%20an%20operator%2C%20we%20pop%20the%20first%20two%20numbers%20from%20the%20stack%2C%20apply%20the%20operator%20on%20them%2C%20and%20push%20the%20result%20back%20onto%20the%20stack.%20More%20specifically%2C%20the%20following%20pseudocode%20shows%20how%20to%20handle%20the%20case%20when%20we%20encounter%20an%20operator%20O%3A%5Cn%5Cn%20%60%60%60%5Cna%20%3A%3D%20pop%28%29%3B%5Cnb%20%3A%3D%20pop%28%29%3B%5Cnpush%28b%20O%20a%29%3B%5Cn%60%60%60%5CnThe%20result%20of%20the%20expression%20will%20be%20left%20as%20the%20only%20number%20on%20the%20stack.%5Cn%5CnNow%20imagine%20that%20we%20use%20a%20queue%20instead%20of%20the%20stack.%20A%20queue%20also%20has%20a%20push%20and%20pop%20operation%2C%20but%20their%20meaning%20is%20different%3A%5Cn%5Cn1.%20%2A%2Apush%2A%2A%3A%20a%20number%20is%20inserted%20at%20the%20end%20of%20the%20queue.%5Cn2.%20%2A%2Apop%2A%2A%3A%20the%20number%20from%20the%20front%20of%20the%20queue%20is%20taken%20out%20of%20the%20queue.%5Cn%5CnCan%20you%20rewrite%20the%20given%20expression%20such%20that%20the%20result%20of%20the%20algorithm%20using%20the%20queue%20is%20the%20same%20as%20the%20result%20of%20the%20original%20expression%20evaluated%20using%20the%20algorithm%20with%20the%20stack%3F%5Cn%5Cn%20%20%20%5Cn%23%23%23%23%20Input%20Specification%5Cn%5CnThe%20first%20line%20of%20the%20input%20contains%20a%20number%20%2A%2AT%2A%2A%20%28_T%20%5Cu2264%20200_%29.%20The%20following%20%2A%2AT%2A%2A%20lines%20each%20contain%20one%20expression%20in%20postfix%20notation.%20Arithmetic%20operators%20are%20represented%20by%20uppercase%20letters%2C%20numbers%20are%20represented%20by%20lowercase%20letters.%20You%20may%20assume%20that%20the%20length%20of%20each%20expression%20is%20less%20than%20_10000_%20characters.%5Cn%5Cn%20%20%20%5Cn%23%23%23%23%20Output%20Specification%5Cn%5CnFor%20each%20given%20expression%2C%20print%20the%20expression%20with%20the%20equivalent%20result%20when%20using%20the%20algorithm%20with%20the%20queue%20instead%20of%20the%20stack.%20To%20make%20the%20solution%20unique%2C%20you%20are%20not%20allowed%20to%20assume%20that%20the%20operators%20are%20associative%20or%20commutative.%5Cn%5Cn%20%20%20%5Cn%23%23%23%23%20Sample%20Input%5Cn%5Cn%20%60%60%60%5Cn2%5CnxyPzwIM%5CnabcABdefgCDEF%5Cn%60%60%60%5Cn%20%20%20%5Cn%23%23%23%23%20Sample%20Output%5Cn%5Cn%20%60%60%60%5CnwzyxIPM%5CngfCecbDdAaEBF%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3108%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1683%22%2C%22id%22%3A%221683%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1683%22%2C%22title%22%3A%22EXPRESS%20-%20Expressions%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22EXPRESS%20-%20Expressions%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>EXPRESS - Expressions</h1>
+<h2>题目描述</h2>
+<div>Arithmetic expressions are usually written with the operators in between the two operands (which is called infix notation). For example, _(x+y)\*(z-w)_ is an arithmetic expression in infix notation. However, it is easier to write a program to evaluate an expression if the expression is written in postfix notation (also known as reverse polish notation). In postfix notation, an operator is written behind its two operands, which may be expressions themselves. For example, _x y + z w - \*_ is a postfix notation of the arithmetic expression given above. Note that in this case parentheses are not required.
+To evaluate an expression written in postfix notation, an algorithm operating on a stack can be used. A stack is a data structure which supports two operations:
+1. **push**: a number is inserted at the top of the stack.
+2. **pop**: the number from the top of the stack is taken out.
+During the evaluation, we process the expression from left to right. If we encounter a number, we push it onto the stack. If we encounter an operator, we pop the first two numbers from the stack, apply the operator on them, and push the result back onto the stack. More specifically, the following pseudocode shows how to handle the case when we encounter an operator O:
+```
+a := pop();
+b := pop();
+push(b O a);
+```
+The result of the expression will be left as the only number on the stack.
+Now imagine that we use a queue instead of the stack. A queue also has a push and pop operation, but their meaning is different:
+1. **push**: a number is inserted at the end of the queue.
+2. **pop**: the number from the front of the queue is taken out of the queue.
+Can you rewrite the given expression such that the result of the algorithm using the queue is the same as the result of the original expression evaluated using the algorithm with the stack?
+#### Input Specification
+The first line of the input contains a number **T** (_T ≤ 200_). The following **T** lines each contain one expression in postfix notation. Arithmetic operators are represented by uppercase letters, numbers are represented by lowercase letters. You may assume that the length of each expression is less than _10000_ characters.
+#### Output Specification
+For each given expression, print the expression with the equivalent result when using the algorithm with the queue instead of the stack. To make the solution unique, you are not allowed to assume that the operators are associative or commutative.
+#### Sample Input
+```
+2
+xyPzwIM
+abcABdefgCDEF
+```
+#### Sample Output
+```
+wzyxIPM
+gfCecbDdAaEBF
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GNYR04I - Histology Assistant - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450437:be7+oPPEDG2ZbpsS+wb55g5qowFH97QO0Py7WHjws1o=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22An%20application%20to%20assist%20in%20the%20analysis%20of%20tissue%20samples%20is%20to%20work%20as%20follows.%20A%20digital%20microphotograph%20of%20a%20stained%20tissue%20sample%20is%20scanned%20to%20identify%20stained%20pixels.%20For%20each%20region%20of%20stained%20pixels%2C%20an%20outline%20of%20the%20region%20is%20obtained.%20The%20outline%20is%20then%20analyzed%20for%20shape%20indicators%20of%20disease%20and%20the%20outlines%20%28color-coded%20for%20possible%20disease%29%20are%20overlaid%20on%20the%20microphotograph%20as%20it%20is%20displayed%20to%20the%20pathologist.%5Cn%5CnThis%20problem%20is%20to%20write%20a%20program%2C%20which%20processes%20a%20bitmap%20of%20stained%20and%20unstained%20pixels%2C%20finds%20regions%20of%20stained%20pixels%20and%2C%20for%20each%20region%2C%20outputs%20the%20outline%20of%20the%20region.%20Regions%20with%20fewer%20stained%20pixels%20than%20a%20minimum%20size%20are%20ignored.%20Only%20the%20outer%20boundary%20is%20computed%20%28interior%20holes%20are%20ignored%29.%5Cn%5CnA%20pixel%20is%20adjacent%20to%20another%20pixel%20if%20the%20second%20pixel%20is%20directly%20above%2C%20directly%20below%2C%20directly%20left%20or%20directly%20right%20of%20the%20first%20pixel.%20Two%20stained%20pixels%20are%20connected%20if%20there%20is%20a%20sequence%20of%20stained%20pixels%20starting%20with%20one%20of%20the%20pixels%20and%20ending%20with%20the%20other%20for%20which%20each%20pixel%20in%20the%20sequence%20is%20adjacent%20to%20the%20next.%20A%20regionof%20stained%20pixels%20is%20a%20set%20of%20stained%20pixels%2C%20all%20of%20which%20are%20connected%20to%20a%20single%20stained%20pixel.%20A%20stained%20pixel%20is%20a%20boundary%20pixel%20of%20its%20region%20if%20at%20least%20one%20of%20the%20pixels%20adjacent%20to%20it%20is%20not%20stained.%20%28All%20pixels%20immediately%20outside%20the%20bitmap%20are%20considered%20unstained%20so%20that%20pixels%20on%20the%20edge%20of%20the%20bitmap%20are%20boundary%20pixels.%29%20In%20the%20example%20below%2C%20there%20are%204%20regions%20%28stained%20pixels%20are%20%60X%27%2C%20unstained%20are%20%60.%27%29.%5Cn%5Cn%20%60%60%60%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20........................................%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.XX.....................................%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20..X.................XXX......XXX........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.....................XXX....XXX.........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.......XXX............XXX..XXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.....XXXXXXX...........XXXXXX...........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20....XXXXXXXXX...........XXXX............%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20...XXXX...XXXX...........XX.............%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20..XXX.......XXX.........................%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20..XXX.......XXX........XXXXXXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.XXX.........XXX.......XXXXXXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.XXX.........XXX.......XXXXXXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.XXX.........XXX.......XXXXXXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20..XXX.......XXX...........X.............%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20..XXX.......XXX...........X.............%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20...XXXX...XXXX.........XXXXXXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20....XXXXXXXXX..........XXXXXXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.....XXXXXXX...........XXXXXXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.......XXX.............XXXXXXX..........%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20........................................%5Cn%60%60%60%5CnOutlines%20are%20to%20be%20specified%20as%20the%20left%20most%20point%20of%20the%20top%20most%20line%20of%20the%20region%2C%20a%20count%20of%20boundary%20pixels%20and%20a%20sequence%20of%20moves%20from%20one%20boundary%20pixel%20to%20the%20next%20clockwise%20using%20the%20codes%20%28up%20%3D%20A%2C%20up%20right%20%3D%20B%2C%20etc.%29%3A%5Cn%5Cn%20%60%60%60%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20H%20%20A%20%20B%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20G%20%20%20%20%20C%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20F%20%20E%20%20D%5Cn%60%60%60%5CnRows%20are%20numbered%20from%20top%20to%20bottom%20beginning%20with%201.%20Columns%20are%20numbered%20from%20left%20to%20right%20beginning%20with%201.%20For%20example%20the%20outline%20of%20the%20%27v%27%20shaped%20region%20above%20would%20be%3A%5Cn%5Cn%20%60%60%60%5Cn3%2021%2022%5CnCCDDDCBBBCCFFFFFGHHHHH%5Cn%60%60%60%5Cninput%5Cn-----%5Cn%5CnInput%20is%20a%20sequence%20of%20problem%20instances.%20Each%20problem%20instance%20begins%20with%20a%20line%20containing%203%20decimal%20numbers%3A%20row-count%2Ccolumn-count%20and%20minimum-number-of-pixels.%20This%20line%20is%20followed%20by%20row-count%20lines%20of%20column-count%20characters.%20Each%20character%20is%20either%20a%20period%20%28.%29%20for%20an%20unstained%20pixel%20or%20an%20upper-case%20%60X%27%20for%20a%20stained%20pixel.%20The%20input%20ends%20when%20the%20row-count%20is%200.%20Row-countwill%20be%20at%20most%2047%2C%20column-count%20will%20be%20at%20most%2063%20and%20minimum-%20number-of-pixels%20will%20be%20at%20least%202.%5Cn%5Cnoutput%5Cn------%5Cn%5CnFor%20each%20problem%20instance%2C%20the%20output%20begins%20with%20a%20line%20starting%20with%20a%20decimal%20integer%20giving%20the%20number%20of%20components%20of%20at%20leastminimum-number-of-pixels%20stained%20pixels.%20This%20is%20followed%20by%20the%20description%20of%20the%20boundary%20of%20each%20component.%20The%20boundaries%20are%20to%20be%20listed%20in%20the%20order%20that%20a%20first%20pixel%20of%20the%20component%20appears%20while%20scanning%20across%20lines%20from%20left%20to%20right%20with%20line%20scanned%20from%20top%20to%20bottom.%20For%20each%20component%2C%20the%20output%20begins%20with%20a%20line%20giving%20the%20row%20number%20of%20the%20start%20pixel%2C%20thecolumn%20number%20of%20the%20start%20pixel%20and%20the%20number%20of%20pixels%20in%20the%20boundary%20as%20decimal%20integers%20separated%20by%20a%20single%20space.%20This%20line%20is%20followed%20by%20lines%20of%20direction%20codes%20%60A%27%20through%20%60H%27.%20Each%20line%20shall%20have%2040%20characters%20except%20the%20last%20line.%5Cn%5Cninput%20sample%5Cn%5Cn%20%60%60%60%5Cn20%2040%204%5Cn........................................%5Cn.XX.....................................%5Cn..X.................XXX......XXX........%5Cn.....................XXX....XXX.........%5Cn.......XXX............XXX..XXX..........%5Cn.....XXXXXXX...........XXXXXX...........%5Cn....XXXXXXXXX...........XXXX............%5Cn...XXXX...XXXX...........XX.............%5Cn..XXX.......XXX.........................%5Cn..XXX.......XXX........XXXXXXX..........%5Cn.XXX.........XXX.......XXXXXXX..........%5Cn.XXX.........XXX.......XXXXXXX..........%5Cn.XXX.........XXX.......XXXXXXX..........%5Cn..XXX.......XXX...........X.............%5Cn..XXX.......XXX...........X.............%5Cn...XXXX...XXXX.........XXXXXXX..........%5Cn....XXXXXXXXX..........XXXXXXX..........%5Cn.....XXXXXXX...........XXXXXXX..........%5Cn.......XXX.............XXXXXXX..........%5Cn........................................%5Cn12%2040%204%5Cn.X.X.X.X.X.X......XX...XXXXXXXXXXXXXXXX.%5Cn.XXX.XXX.XXX......XX..XXXXXXXXXXXXXXXXXX%5Cn.X...X...X........XX..XX.............XXX%5Cn.X.X.X.X.X.X......XX..XX...XXXXXXXX...XX%5Cn.XXX.XXX.XXX......XX..XX..XXXXXXXXXX..XX%5Cn.X...X...X........XX..XX..XX......XX..XX%5Cn.X.X.X.X.X.X......XX..XXX........XXX..XX%5Cn.XXX.XXX.XXX......XX..XXXXXXXXXXXXXX..XX%5Cn.X...X...X........XX...XXXXXXXXXXXX...XX%5Cn.X.X.X.X.X.X......XXX................XXX%5Cn.XXXXXXXXXXX......XXXXXXXXXXXXXXXXXXXXXX%5Cn...................XXXXXXXXXXXXXXXXXXXX.%5Cn0%200%200%5Cn%60%60%60%5Cnoutput%20sample%5Cn%5Cn%20%60%60%60%5Cn3%5Cn3%2021%2022%5CnCCDDDCBBBCCFFFFFGHHHHH%5Cn5%208%2036%5CnCCDCDDDEDEEFEFFFGFGGHGHHHAHAABABBBCB%5Cn10%2024%2038%5CnCCCCCCEEEGGFEDCCEEEGGGGGGAAACCBAHGGAAA%5Cn2%5Cn1%202%20103%5CnDBEGFEDBEGFEDBEGFEDBDBAAAAAAAAADBEGFEDBE%5CnGFEDBEGFEDBDBAAAAAAAAADBEGFEDBEGFEDBEGFE%5CnDBEGGGGGGGGGGAAAAAAAAAA%5Cn1%2019%20159%5CnCEEEEEEEEDDCCCCCCCCCCCCCCCBBAAAAAHHGGGGG%5CnGGGGGGGFEEEDDCCCCCCCBBHGGGGGFGABCCCCCCCD%5CnEEEFGGGGGGGGGGGHAAAAAABCCCCCCCCCCCCCCCDE%5CnEEEEEEEEFGGGGGGGGGGGGGGGGGGGHAAAAAAAAAA%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B100%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F15636%22%2C%22id%22%3A%2215636%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP15636%22%2C%22title%22%3A%22GNYR04I%20-%20Histology%20Assistant%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GNYR04I%20-%20Histology%20Assistant%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GNYR04I - Histology Assistant</h1>
+<h2>题目描述</h2>
+<div>An application to assist in the analysis of tissue samples is to work as follows. A digital microphotograph of a stained tissue sample is scanned to identify stained pixels. For each region of stained pixels, an outline of the region is obtained. The outline is then analyzed for shape indicators of disease and the outlines (color-coded for possible disease) are overlaid on the microphotograph as it is displayed to the pathologist.
+This problem is to write a program, which processes a bitmap of stained and unstained pixels, finds regions of stained pixels and, for each region, outputs the outline of the region. Regions with fewer stained pixels than a minimum size are ignored. Only the outer boundary is computed (interior holes are ignored).
+A pixel is adjacent to another pixel if the second pixel is directly above, directly below, directly left or directly right of the first pixel. Two stained pixels are connected if there is a sequence of stained pixels starting with one of the pixels and ending with the other for which each pixel in the sequence is adjacent to the next. A regionof stained pixels is a set of stained pixels, all of which are connected to a single stained pixel. A stained pixel is a boundary pixel of its region if at least one of the pixels adjacent to it is not stained. (All pixels immediately outside the bitmap are considered unstained so that pixels on the edge of the bitmap are boundary pixels.) In the example below, there are 4 regions (stained pixels are `X', unstained are `.').
+```
+........................................
+.XX.....................................
+..X.................XXX......XXX........
+.....................XXX....XXX.........
+.......XXX............XXX..XXX..........
+.....XXXXXXX...........XXXXXX...........
+....XXXXXXXXX...........XXXX............
+...XXXX...XXXX...........XX.............
+..XXX.......XXX.........................
+..XXX.......XXX........XXXXXXX..........
+.XXX.........XXX.......XXXXXXX..........
+.XXX.........XXX.......XXXXXXX..........
+.XXX.........XXX.......XXXXXXX..........
+..XXX.......XXX...........X.............
+..XXX.......XXX...........X.............
+...XXXX...XXXX.........XXXXXXX..........
+....XXXXXXXXX..........XXXXXXX..........
+.....XXXXXXX...........XXXXXXX..........
+.......XXX.............XXXXXXX..........
+........................................
+```
+Outlines are to be specified as the left most point of the top most line of the region, a count of boundary pixels and a sequence of moves from one boundary pixel to the next clockwise using the codes (up = A, up right = B, etc.):
+```
+H A B
+G C
+F E D
+```
+Rows are numbered from top to bottom beginning with 1. Columns are numbered from left to right beginning with 1. For example the outline of the 'v' shaped region above would be:
+```
+3 21 22
+CCDDDCBBBCCFFFFFGHHHHH
+```
+input
+-----
+Input is a sequence of problem instances. Each problem instance begins with a line containing 3 decimal numbers: row-count,column-count and minimum-number-of-pixels. This line is followed by row-count lines of column-count characters. Each character is either a period (.) for an unstained pixel or an upper-case `X' for a stained pixel. The input ends when the row-count is 0. Row-countwill be at most 47, column-count will be at most 63 and minimum- number-of-pixels will be at least 2.
+output
+------
+For each problem instance, the output begins with a line starting with a decimal integer giving the number of components of at leastminimum-number-of-pixels stained pixels. This is followed by the description of the boundary of each component. The boundaries are to be listed in the order that a first pixel of the component appears while scanning across lines from left to right with line scanned from top to bottom. For each component, the output begins with a line giving the row number of the start pixel, thecolumn number of the start pixel and the number of pixels in the boundary as decimal integers separated by a single space. This line is followed by lines of direction codes `A' through `H'. Each line shall have 40 characters except the last line.
+input sample
+```
+20 40 4
+........................................
+.XX.....................................
+..X.................XXX......XXX........
+.....................XXX....XXX.........
+.......XXX............XXX..XXX..........
+.....XXXXXXX...........XXXXXX...........
+....XXXXXXXXX...........XXXX............
+...XXXX...XXXX...........XX.............
+..XXX.......XXX.........................
+..XXX.......XXX........XXXXXXX..........
+.XXX.........XXX.......XXXXXXX..........
+.XXX.........XXX.......XXXXXXX..........
+.XXX.........XXX.......XXXXXXX..........
+..XXX.......XXX...........X.............
+..XXX.......XXX...........X.............
+...XXXX...XXXX.........XXXXXXX..........
+....XXXXXXXXX..........XXXXXXX..........
+.....XXXXXXX...........XXXXXXX..........
+.......XXX.............XXXXXXX..........
+........................................
+12 40 4
+.X.X.X.X.X.X......XX...XXXXXXXXXXXXXXXX.
+.XXX.XXX.XXX......XX..XXXXXXXXXXXXXXXXXX
+.X...X...X........XX..XX.............XXX
+.X.X.X.X.X.X......XX..XX...XXXXXXXX...XX
+.XXX.XXX.XXX......XX..XX..XXXXXXXXXX..XX
+.X...X...X........XX..XX..XX......XX..XX
+.X.X.X.X.X.X......XX..XXX........XXX..XX
+.XXX.XXX.XXX......XX..XXXXXXXXXXXXXX..XX
+.X...X...X........XX...XXXXXXXXXXXX...XX
+.X.X.X.X.X.X......XXX................XXX
+.XXXXXXXXXXX......XXXXXXXXXXXXXXXXXXXXXX
+...................XXXXXXXXXXXXXXXXXXXX.
+0 0 0
+```
+output sample
+```
+3
+3 21 22
+CCDDDCBBBCCFFFFFGHHHHH
+5 8 36
+CCDCDDDEDEEFEFFFGFGGHGHHHAHAABABBBCB
+10 24 38
+CCCCCCEEEGGFEDCCEEEGGGGGGAAACCBAHGGAAA
+2
+1 2 103
+DBEGFEDBEGFEDBEGFEDBDBAAAAAAAAADBEGFEDBE
+GFEDBEGFEDBDBAAAAAAAAADBEGFEDBEGFEDBEGFE
+DBEGGGGGGGGGGAAAAAAAAAA
+1 19 159
+CEEEEEEEEDDCCCCCCCCCCCCCCCBBAAAAAHHGGGGG
+GGGGGGGFEEEDDCCCCCCCBBHGGGGGFGABCCCCCCCD
+EEEFGGGGGGGGGGGHAAAAAABCCCCCCCCCCCCCCCDE
+EEEEEEEEFGGGGGGGGGGGGGGGGGGGHAAAAAAAAAA
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>POLYDRAW - Polynomial Drawing - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450587:7GE3I5ooJsKkrKzugbwrnswhSlphikqIC7MIIrPbCg0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22If%20you%20like%20polynomials%2C%20you%20might%20have%20solved%20problems%20like%20%5BPOLEVAL%5D%28..%5C%2F..%5C%2Fproblems%5C%2FPOLEVAL%5C%2F%29%2C%20%5BPOLYNOM%5D%28..%5C%2F..%5C%2Fproblems%5C%2FPOLYNOM%5C%2F%29%20or%20%5BPOLYTABL%5D%28..%5C%2F..%5C%2Fproblems%5C%2FPOLYTABL%5C%2F%29.%20But%20if%20you%20are%20especially%20interested%20in%20graphs%20of%20polynomials%2C%20here%20is%20the%20problem%20for%20you%3A%20%20%5Cn%20Given%20a%20polynomial%2C%20your%20task%20is%20to%20create%20an%20image%20file%20of%20its%20graph.%22%2C%22inputFormat%22%3A%22Input%20starts%20with%20a%20positive%20integer%20t%3C100%2C%20the%20number%20of%20testcases%2C%20then%20t%20testcases%20follow.%20Every%20testcase%20contains%20the%20representation%20of%20a%20polynomial%20of%20at%20most%20fourth%20degree%20in%20%5C%22pretty%20printing%5C%22%20notation.%20Coefficients%20are%20either%20given%20as%20integers%20or%20fractions.%20The%20absolute%20values%20of%20all%20numbers%20including%20numerator%20and%20denominator%20are%20not%20larger%20than%20100.%5Cn%5CnIf%20all%20coefficients%20are%20integers%20and%20degree%20is%20not%20larger%20than%201%2C%20a%20polynomial%20%28which%20means%20a%20testcase%29%20is%20given%20in%20a%20single%20line%20%28the%20_base%20line_%29.%20%20%5Cn%20If%20all%20coefficients%20are%20integers%2C%20but%20degree%20is%20larger%20than%201%2C%20a%20polynomial%20is%20given%20in%20two%20lines.%20The%20first%20of%20these%20contains%20only%20the%20exponents%2C%20the%20second%20line%20is%20the%20_base%20line_.%20%20%5Cn%20If%20at%20least%20one%20coefficient%20is%20given%20as%20a%20fraction%2C%20a%20polynomial%20is%20given%20in%20three%20lines.%20The%20first%20line%20contains%20the%20exponents%20%28if%20there%20are%20any%29%20and%20the%20numerators%2C%20the%20last%20line%20the%20denominators.%5Cn%5CnPolynomials%20are%20given%20in%20%2A%2Acanonical%20form%2A%2A%2C%20which%20means%3A%20%20%5Cn%20%5Cu21e2%20powers%20of%20x%20are%20given%20in%20decreasing%20order%20and%20do%20not%20appear%20more%20than%20once%20%20%5Cn%20%5Cu21e2%20there%20is%20always%20exactly%20one%20operator%20%28either%20%2B%20or%20-%29%20between%20consecutive%20summands%20%20%5Cn%20%5Cu21e2%20coefficients%20with%20an%20absolute%20value%20of%201%20are%20left%20out%20%20%5Cn%20%5Cu21e2%20summands%20with%20coefficients%20with%20a%20value%20of%200%20are%20left%20out%20except%20for%20the%20null%20polynomial%20%20%5Cn%20%5Cu21e2%20there%20are%20no%20whitespaces%20in%20the%20base%20line%20except%20those%20below%20exponents%5Cn%5CnThe%20fraction%20bar%20is%20formed%20by%20as%20many%20dashes%20as%20there%20are%20digits%20in%20numerator%20respectively%20denominator.%20If%20the%20number%20of%20digits%20in%20numerator%20and%20denominator%20is%20different%2C%20the%20fraction%20bar%20is%20as%20long%20as%20the%20larger%20value%3B%20the%20smaller%20one%20is%20aligned%20to%20the%20right.%5Cn%5Cn%20%60%60%60%5Cn%3Cpre%20style%3D%5C%22color%3Agreen%3B%20font-weight%3Abold%5C%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%204%20%202%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%20%2010%20%20%20%20%20%20%20%202%5CnValid%20polynomials%20are%3A%20%20%20--x%20%2Bx%20%20%20%20%20-x%2B2%20%20%20%20%20%205x%20%2B---%20%20%20%20%20%20%20x%20-5%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%205%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20100%5Cn%60%60%60%5Cn%20%60%60%60%5Cn%3Cpre%20style%3D%5C%22color%3Ared%3B%20font-weight%3Abold%5C%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20-3%204%20%202%20%20%20%20%20%20%20%202%20%20%20%20%20%20%20%20%20%20%201%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%5CnInvalid%20polynomials%20are%3A%20%20-x%20%2Bx%20%20%20%20%20%20%20%20x%2B3x%20%20%20%20%20%20x---%20%20%20%20%20%204x%20-13%20%20%20%20%20%202x%20%2B-5%5Cn%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%205%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%207%5Cn%60%60%60%5CnThe%20base%20line%20of%20the%20polynomial%20is%20followed%20by%20a%20single%20space%2C%20then%20the%20information%20about%20the%20drawing%20range%20is%20given.%20It%20is%20denoted%20as%20%5C%22%5C%5C%5Ba%3Bb%5C%5C%5D%5C%22%2C%20where%20a%20and%20b%20are%20integer%20values%20with%20-10%5Cn%5Cn_Note%3A%20There%20are%20no%20trailing%20whitespaces%20and%20every%20testcase%20is%20followed%20by%20a%20blank%20line._%22%2C%22outputFormat%22%3A%22For%20every%20testcase%20you%20have%20to%20generate%20a%20compressed%20version%20of%20a%20%5Bpgm-imagefile%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FNetpbm_format%23PGM_example%29%20%28type%20P2%29%20showing%20the%20polynomial%27s%20graph.%20The%20first%20line%20of%20output%20is%20the%20pgm-header%20printed%20in%20a%20single%20line%3A%20%5C%22P2%20%5C%5C%5Bw%5C%5C%5D%20%5C%5C%5Bh%5C%5C%5D%202%5C%22%2C%20where%20%5C%5C%5Bw%5C%5C%5D%20and%20%5C%5C%5Bh%5C%5C%5D%20have%20to%20be%20replaced%20by%20the%20width%20and%20height%20of%20the%20image%20%28see%20example%20below%29.%20%20%5Cn%20The%20following%20one%20to%20three%20lines%20contain%20the%20polynomial%27s%20term%20and%20drawing%20interval%20exactly%20as%20given%20in%20the%20input.%20As%20this%20would%20make%20the%20pgm-file%20invalid%2C%20each%20of%20these%20lines%20has%20to%20start%20with%20a%20leading%20%5C%22%23%5C%22%20followed%20by%20a%20whitespace.%5Cn%5CnAfter%20that%20h%20lines%20of%20data%20follow.%20Every%20line%20consists%20of%20w%20values%20separated%20by%20single%20spaces.%20Each%20value%20is%20either%200%20%28black%29%2C%201%20%28gray%29%20or%202%20%28white%29%20and%20represents%20a%20single%20pixel%20of%20the%20image.%5Cn%5CnThe%20width%20of%20the%20image%20is%20derived%20from%20the%20given%20interval%20%5C%5C%5Ba%3Bb%5C%5C%5D.%20For%20all%20images%20we%20take%2020px%20as%20size%20of%20one%20unit%20in%20x-%20and%20y-direction.%20For%20every%20pixel%20in%20horizontal%20direction%20calculate%20the%20correponding%20y-value%20and%20mark%20that%20point%20of%20the%20graph%20by%20a%20black%20pixel.%20If%20a%20calculated%20y-value%20does%20not%20exactly%20match%20to%20the%20position%20of%20a%20pixel%2C%20you%20always%20choose%20the%20pixel%20with%20least%20vertical%20distance.%20If%20there%20is%20more%20than%20one%20of%20these%20pixels%2C%20take%20the%20pixel%20that%20represents%20the%20lower%20value.%20No%20%28intermediate%29%20value%20will%20have%20an%20absolute%20value%20larger%20than%2010%5Cu00b9%5Cu2078%2C%20if%20calculations%20are%20done%20carefully.%5Cn%5CnThe%20height%20of%20the%20image%20depends%20on%20the%20minimum%20and%20maximum%20values%20of%20the%20polynomial%20in%20the%20given%20drawing%20interval%2C%20where%20%5C%22value%5C%22%20refers%20to%20the%20y-value%20of%20the%20drawn%20point%2C%20not%20to%20the%20exact%20y-value%20of%20the%20corresponding%20x-value%20if%20that%20differs.%20The%20range%20for%20the%20y-values%20reaches%20from%20the%20largest%20integer%20smaller%20than%20the%20minimum%20value%20to%20the%20smallest%20integer%20value%20larger%20than%20the%20maximum%20value.%20So%2C%20if%20y%20%24%20_%7Bmin%7D%20%24%20%3D-3.2%20and%20y%20%24%20_%7Bmax%7D%20%24%20%3D4%20the%20range%20for%20the%20y-values%20reaches%20from%20-4%20to%205%20and%20results%20in%20h%3D181.%20The%20value%20of%20h%20will%20always%20be%20less%20than%201000.%5Cn%5CnThe%20background%20of%20the%20image%20is%20white.%20All%20lattice%20points%20of%20the%20coordinate%20system%20are%20marked%20with%20a%20single%20gray%20pixel.%20If%20the%20given%20x-intervall%20or%20the%20calculated%20y-range%20include%20zero%2C%20the%20x-%20and%5C%2For%20y-axis%20are%20drawn%20as%20gray%20line%20with%201px%20linewidth.%20After%20drawing%20the%20coordinate%20system%20including%20the%20grid%2C%20the%20graph%20of%20the%20polynomial%20is%20drawn.%20For%20every%20pixel%20in%20x-direction%20the%20corresponding%20y-value%20is%20calculated%20and%20the%20resulting%20point%20drawn%20as%20a%20single%20black%20pixel.%5Cn%5CnAs%20this%20valid%20pgm%20image%20representation%20produces%20rather%20large%20image%20files%2C%20it%20has%20to%20be%20printed%20in%20%2A%2Aegg-format%2A%2A%20%28_encoded%20grayscale%20graphics_%29%2C%20which%20uses%20a%20two-pass%20run%20length%20encoding%20compression.%5Cn%5CnThe%20header%20gets%20an%20additional%20information%20about%20the%20egg-format%3A%20The%20pgm%20header%20line%20is%20followed%20by%20a%20single%20space%20and%20an%20indication%20of%20the%20format%20%5C%22%28egg%29%5C%22.%20The%20second%20line%20of%20the%20egg-file%20is%20a%20new%20additional%20comment%20containing%20information%20about%20compression%20rate%3A%20%5C%22%23%20Compression%3A%20xx.xx%25%5C%22.%20The%20compression%20rate%20is%20calculated%20as%20%5C%221-%28egg-size%5C%2Fpgm-size%29%5C%22%2C%20where%20%5C%22size%5C%22%20refers%20to%20the%20pure%20image%20size%20without%20header%2C%20comments%20and%20newline%20characters.%20The%20compression%20rate%20has%20to%20be%20denoted%20as%20percentage%20with%20an%20accurary%20of%20two%20digits%20after%20the%20decimal%20point.%5Cn%5CnIn%20_pass%20one_%2C%20every%20row%20is%20encoded.%20First%20all%20spaces%20between%20the%20pixel%20values%20are%20removed.%20Then%20every%20consecutive%20sequence%20of%20the%20same%20color%20that%20is%20longer%20than%20three%20pixels%20is%20replaced%20by%20brackets%20including%20the%20total%20value%20of%20consecutive%20pixels%20of%20that%20color.%20For%20identification%20of%20color%2C%20different%20typs%20of%20brackets%20are%20used%3A%20round%20brackets%20for%20white%20pixels%2C%20braces%20for%20gray%20pixels%20and%20square%20brackets%20for%20black%20pixels.%20%20%20%5Cn%2A%2AExample%2A%2A%3A%200%200%200%200%200%202%202%202%202%201%201%201%202%202%201%201%201%201%201%201%201%20is%20encoded%20to%20%5C%5C%5B5%5C%5C%5D%284%2911122%7B7%7D%5Cn%5CnIn%20_pass%20two_%20consecutive%20rows%20are%20encoded%2C%20if%20there%20are%20%28at%20least%20two%29%20consecutive%20identical%20rows.%20In%20that%20case%2C%20only%20the%20first%20row%20is%20used%2C%20followed%20by%20the%20total%20number%20of%20identical%20consecutive%20rows%20in%20angle%20brackets%20%5C%22%3C%20%3E%5C%22.%5Cn%5Cn%21%5B%5D%28http%3A%5C%2F%5C%2Fdidax.heliohost.org%5C%2Feggviewer%5C%2Fpolydraw-example-3x.png%29%20Unfortunately%20the%20egg-format%20is%20not%20widely%20spread%2C%20in%20fact%20there%20is%20actually%20no%20image%20viewer%20that%20is%20able%20to%20handle%20images%20in%20egg-format%2C%20except%20the%20%5Bonline%20egg-viewer%5D%28http%3A%5C%2F%5C%2Fdidax.heliohost.org%5C%2Feggviewer%29.%20So%2C%20if%20you%20want%20to%20make%20your%20egg-files%20visible%2C%20I%20recommend%20the%20egg-viewer%3A%20just%20paste%20your%20egg%20data%20and%20make%20the%20image%20visible.%20The%20figure%20on%20the%20right%20shows%20the%20graph%20of%20the%20example%20output%20%28scaled%20by%20a%20factor%20of%203%20for%20better%20recognition%20of%20single%20pixels%29.%5Cn%5Cn_Note%3A%20Print%20a%20blank%20line%20after%20every%20testcase%20except%20the%20last%20one._%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cn%201%203%20%20%201%5Cr%5Cn--x%20%2Bx%2B-%20%5B-3%3B3%5D%5Cr%5Cn%208%20%20%20%20%202%22%2C%22P2%20121%2061%202%20%28egg%29%5Cr%5Cn%23%20Compression%3A%2093.95%25%5Cr%5Cn%23%20%201%203%20%20%201%5Cr%5Cn%23%20--x%20%2Bx%2B-%20%5B-3%3B3%5D%5Cr%5Cn%23%20%208%20%20%20%20%202%5Cr%5Cn1%2819%291%2819%291%2819%291%2819%291%2819%291%2819%291%5Cr%5Cn%2860%291%2860%29%26lt%3B7%26gt%3B%5Cr%5Cn%2860%291%2829%29%5B6%5D%2825%29%5Cr%5Cn%2860%291%2825%29%5B4%5D%286%29000%2822%29%5Cr%5Cn%2860%291%2823%2900%2813%2900%2820%29%5Cr%5Cn%2860%291%2821%2900%2817%2900%2818%29%5Cr%5Cn%2860%291%2820%290%2821%290%2817%29%5Cr%5Cn%2860%291%2818%2900%2823%2900%2815%29%5Cr%5Cn%2860%291%2817%290%2827%290%2814%29%5Cr%5Cn%2860%291%2815%2900%2829%290%2813%29%5Cr%5Cn%2860%291%2814%290%2845%29%5Cr%5Cn%2860%291%2813%290%2833%290%2812%29%5Cr%5Cn%2860%291%2812%290%2835%290%2811%29%5Cr%5Cn%2860%291%2810%2900%2837%290%2810%29%5Cr%5Cn1%2819%291%2819%291%2819%291%289%290%289%291%2819%291%2810%290%288%291%5Cr%5Cn%2860%291%288%290%2851%29%5Cr%5Cn%2860%291%287%290%2843%290%288%29%5Cr%5Cn0%2859%291%286%290%2853%29%5Cr%5Cn%2860%291%285%290%2846%290%287%29%5Cr%5Cn20%2858%291%284%290%2848%290%286%29%5Cr%5Cn%2860%2912220%2856%29%5Cr%5Cn220%2857%291220%2851%290%285%29%5Cr%5Cn%2860%29120%2858%29%5Cr%5Cn2220%2856%2910%2854%290%284%29%5Cr%5Cn%2860%290%2860%29%5Cr%5Cn%284%290%2854%2901%2856%290222%5Cr%5Cn%2858%29021%2860%29%5Cr%5Cn%285%290%2851%290221%2857%29022%5Cr%5Cn%2856%2902221%2860%29%5Cr%5Cn%286%290%2848%290%284%291%2858%2902%5Cr%5Cn%287%290%2846%290%285%291%2860%29%5Cr%5Cn%2853%290%286%291%2860%29%5Cr%5Cn%288%290%2843%290%287%291%2859%290%5Cr%5Cn%2851%290%288%291%2860%29%5Cr%5Cn%7B9%7D0%7B40%7D0%7B70%7D%5Cr%5Cn%2810%290%2837%2900%2810%291%2860%29%5Cr%5Cn%2811%290%2835%290%2812%291%2860%29%5Cr%5Cn%2812%290%2833%290%2813%291%2860%29%5Cr%5Cn%2845%290%2814%291%2860%29%5Cr%5Cn%2813%290%2829%2900%2815%291%2860%29%5Cr%5Cn%2814%290%2827%290%2817%291%2860%29%5Cr%5Cn%2815%2900%2824%290%2818%291%2860%29%5Cr%5Cn%2817%290%2821%2900%2819%291%2860%29%5Cr%5Cn%2818%2900%2817%2900%2821%291%2860%29%5Cr%5Cn%2820%2900%2813%2900%2823%291%2860%29%5Cr%5Cn%2822%29000%286%29%5B4%5D%2825%291%2860%29%5Cr%5Cn%2825%29%5B6%5D%2829%291%2860%29%5Cr%5Cn%2860%291%2860%29%26lt%3B7%26gt%3B%5Cr%5Cn1%2819%291%2819%291%2819%291%2819%291%2819%291%2819%291%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F22320%22%2C%22id%22%3A%2222320%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP22320%22%2C%22title%22%3A%22POLYDRAW%20-%20Polynomial%20Drawing%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22POLYDRAW%20-%20Polynomial%20Drawing%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>POLYDRAW - Polynomial Drawing</h1>
+<h2>题目描述</h2>
+<div>If you like polynomials, you might have solved problems like [POLEVAL](../../problems/POLEVAL/), [POLYNOM](../../problems/POLYNOM/) or [POLYTABL](../../problems/POLYTABL/). But if you are especially interested in graphs of polynomials, here is the problem for you:
+Given a polynomial, your task is to create an image file of its graph.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Input starts with a positive integer t<100, the number of testcases, then t testcases follow. Every testcase contains the representation of a polynomial of at most fourth degree in "pretty printing" notation. Coefficients are either given as integers or fractions. The absolute values of all numbers including numerator and denominator are not larger than 100.
+If all coefficients are integers and degree is not larger than 1, a polynomial (which means a testcase) is given in a single line (the _base line_).
+If all coefficients are integers, but degree is larger than 1, a polynomial is given in two lines. The first of these contains only the exponents, the second line is the _base line_.
+If at least one coefficient is given as a fraction, a polynomial is given in three lines. The first line contains the exponents (if there are any) and the numerators, the last line the denominators.
+Polynomials are given in **canonical form**, which means:
+⇢ powers of x are given in decreasing order and do not appear more than once
+⇢ there is always exactly one operator (either + or -) between consecutive summands
+⇢ coefficients with an absolute value of 1 are left out
+⇢ summands with coefficients with a value of 0 are left out except for the null polynomial
+⇢ there are no whitespaces in the base line except those below exponents
+The fraction bar is formed by as many dashes as there are digits in numerator respectively denominator. If the number of digits in numerator and denominator is different, the fraction bar is as long as the larger value; the smaller one is aligned to the right.
+```
+<pre style="color:green; font-weight:bold">                          3 4  2                3  10        2
+Valid polynomials are:   --x +x     -x+2      5x +---       x -5
+                          5                       100
+```
+ ```
+<pre style="color:red; font-weight:bold">                         -3 4  2        2           1                    3
+Invalid polynomials are:  -x +x        x+3x      x---      4x -13      2x +-5
+                          5                         7
+```
+The base line of the polynomial is followed by a single space, then the information about the drawing range is given. It is denoted as "\[a;b\]", where a and b are integer values with -10
+
+_Note: There are no trailing whitespaces and every testcase is followed by a blank line._</div>
+    <h3>输出格式</h3>
+    <br />
+    <div>For every testcase you have to generate a compressed version of a [pgm-imagefile](http://en.wikipedia.org/wiki/Netpbm_format#PGM_example) (type P2) showing the polynomial's graph. The first line of output is the pgm-header printed in a single line: "P2 \[w\] \[h\] 2", where \[w\] and \[h\] have to be replaced by the width and height of the image (see example below).  
+ The following one to three lines contain the polynomial's term and drawing interval exactly as given in the input. As this would make the pgm-file invalid, each of these lines has to start with a leading "#" followed by a whitespace.
+
+After that h lines of data follow. Every line consists of w values separated by single spaces. Each value is either 0 (black), 1 (gray) or 2 (white) and represents a single pixel of the image.
+
+The width of the image is derived from the given interval \[a;b\]. For all images we take 20px as size of one unit in x- and y-direction. For every pixel in horizontal direction calculate the correponding y-value and mark that point of the graph by a black pixel. If a calculated y-value does not exactly match to the position of a pixel, you always choose the pixel with least vertical distance. If there is more than one of these pixels, take the pixel that represents the lower value. No (intermediate) value will have an absolute value larger than 10¹⁸, if calculations are done carefully.
+
+The height of the image depends on the minimum and maximum values of the polynomial in the given drawing interval, where "value" refers to the y-value of the drawn point, not to the exact y-value of the corresponding x-value if that differs. The range for the y-values reaches from the largest integer smaller than the minimum value to the smallest integer value larger than the maximum value. So, if y $ _{min} $ =-3.2 and y $ _{max} $ =4 the range for the y-values reaches from -4 to 5 and results in h=181. The value of h will always be less than 1000.
+
+The background of the image is white. All lattice points of the coordinate system are marked with a single gray pixel. If the given x-intervall or the calculated y-range include zero, the x- and/or y-axis are drawn as gray line with 1px linewidth. After drawing the coordinate system including the grid, the graph of the polynomial is drawn. For every pixel in x-direction the corresponding y-value is calculated and the resulting point drawn as a single black pixel.
+
+As this valid pgm image representation produces rather large image files, it has to be printed in **egg-format** (_encoded grayscale graphics_), which uses a two-pass run length encoding compression.
+
+The header gets an additional information about the egg-format: The pgm header line is followed by a single space and an indication of the format "(egg)". The second line of the egg-file is a new additional comment containing information about compression rate: "# Compression: xx.xx%". The compression rate is calculated as "1-(egg-size/pgm-size)", where "size" refers to the pure image size without header, comments and newline characters. The compression rate has to be denoted as percentage with an accurary of two digits after the decimal point.
+
+In _pass one_, every row is encoded. First all spaces between the pixel values are removed. Then every consecutive sequence of the same color that is longer than three pixels is replaced by brackets including the total value of consecutive pixels of that color. For identification of color, different typs of brackets are used: round brackets for white pixels, braces for gray pixels and square brackets for black pixels.   
+**Example**: 0 0 0 0 0 2 2 2 2 1 1 1 2 2 1 1 1 1 1 1 1 is encoded to \[5\](4)11122{7}
+
+In _pass two_ consecutive rows are encoded, if there are (at least two) consecutive identical rows. In that case, only the first row is used, followed by the total number of identical consecutive rows in angle brackets "< >".
+
+![](http://didax.heliohost.org/eggviewer/polydraw-example-3x.png) Unfortunately the egg-format is not widely spread, in fact there is actually no image viewer that is able to handle images in egg-format, except the [online egg-viewer](http://didax.heliohost.org/eggviewer). So, if you want to make your egg-files visible, I recommend the egg-viewer: just paste your egg data and make the image visible. The figure on the right shows the graph of the example output (scaled by a factor of 3 for better recognition of single pixels).
+
+_Note: Print a blank line after every testcase except the last one._</div>
+
+    <h2>输入输出样例</h2>
+                        <h3>输入样例 #1</h3>
+            <pre><code>1
+ 1 3   1
+--x +x+- [-3;3]
+ 8     2</code></pre>
+            <h3>输出样例 #1</h3>
+            <pre><code>P2 121 61 2 (egg)
+# Compression: 93.95%
+#  1 3   1
+# --x +x+- [-3;3]
+#  8     2
+1(19)1(19)1(19)1(19)1(19)1(19)1
+(60)1(60)&amp;lt;7&amp;gt;
+(60)1(29)[6](25)
+(60)1(25)[4](6)000(22)
+(60)1(23)00(13)00(20)
+(60)1(21)00(17)00(18)
+(60)1(20)0(21)0(17)
+(60)1(18)00(23)00(15)
+(60)1(17)0(27)0(14)
+(60)1(15)00(29)0(13)
+(60)1(14)0(45)
+(60)1(13)0(33)0(12)
+(60)1(12)0(35)0(11)
+(60)1(10)00(37)0(10)
+1(19)1(19)1(19)1(9)0(9)1(19)1(10)0(8)1
+(60)1(8)0(51)
+(60)1(7)0(43)0(8)
+0(59)1(6)0(53)
+(60)1(5)0(46)0(7)
+20(58)1(4)0(48)0(6)
+(60)12220(56)
+220(57)1220(51)0(5)
+(60)120(58)
+2220(56)10(54)0(4)
+(60)0(60)
+(4)0(54)01(56)0222
+(58)021(60)
+(5)0(51)0221(57)022
+(56)02221(60)
+(6)0(48)0(4)1(58)02
+(7)0(46)0(5)1(60)
+(53)0(6)1(60)
+(8)0(43)0(7)1(59)0
+(51)0(8)1(60)
+{9}0{40}0{70}
+(10)0(37)00(10)1(60)
+(11)0(35)0(12)1(60)
+(12)0(33)0(13)1(60)
+(45)0(14)1(60)
+(13)0(29)00(15)1(60)
+(14)0(27)0(17)1(60)
+(15)00(24)0(18)1(60)
+(17)0(21)00(19)1(60)
+(18)00(17)00(21)1(60)
+(20)00(13)00(23)1(60)
+(22)000(6)[4](25)1(60)
+(25)[6](29)1(60)
+(60)1(60)&amp;lt;7&amp;gt;
+1(19)1(19)1(19)1(19)1(19)1(19)1</code></pre>
+            
+    </article>
+    </div>
+</div>
+<!-- <script src="//www.recaptcha.net/recaptcha/api.js?hl=zh-CN&render=explicit&onload=renderCaptcha" async defer></script> -->
+</body>
+</html>

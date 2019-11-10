@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>DCEPCA02 - Ant Colony Optimization - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450330:qtGZ4ZQndg1rSPGlAg49SPHEcSmCLnt446IbA6GOaGY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Ants%20are%20known%20to%20move%20in%20groups%20and%20in%20perfect%20order.%20However%2C%20in%20our%20problem%20the%20ants%20can%20move%20only%20in%20directions%20Left%28L%29%2C%20Right%28R%29%2C%20Up%28U%29%2C%20Down%28D%29.%20The%20place%20is%20a%20rectangular%20grid.%20There%20lives%202%20types%20of%20ants%20%3A%20Type%20A%20and%20Type%20B.%20Each%20ant%20type%20has%20its%20own%20queen%20ant%20which%20defines%20the%202%20directions%20at%20which%20their%20type%20of%20ants%20can%20reproduce%20ants.%5Cn%5CnA%20starting%20cell%20is%20given%20where%20one%20ant%20of%20each%20type%20is%20standing%20%28A%20and%20B%29.%20When%20the%20process%20begins%2C%20each%20type%20of%20ant%20produces%204%20ants%2C%202%20ants%20of%20their%20type%20in%20the%202%20directions%20%281%20ant%20per%20direction%29%20specified%20by%20their%20queen%20ant%20and%202%20ants%20of%20the%20other%20type%20in%20the%20remaining%202%20directions.%20So%20if%20queen%20ant%20of%20type%20A%20says%20LR%20and%20queen%20ant%20of%20type%20B%20says%20UD%20then%20A%20ant%20produces%20new%20type%20A%20ants%20at%20left%20cell%20and%20right%20cell%20and%20new%20type%20B%20ants%20at%20up%20cell%20and%20down%20cell%20of%20the%20original%20cell.%20Similarly%2C%20type%20B%20ant%20produces%202%20new%20type%20A%20ants%20in%20left%20and%20right%20cell%20and%202%20new%20type%20B%20ants%20in%20up%20cell%20and%20down%20cell.%20The%20ants%20produced%20again%20reproduce%20more%20ants%20at%20their%20adjacent%20cells%20according%20to%20the%20same%20directions%20given%20by%20the%20their%20queen%20ant.%5Cn%5CnReproducing%20ants%20at%20adjacent%20cells%20take%201%20time%20unit.%20You%20need%20to%20find%20the%20sum%20of%20the%20minimum%20time%20in%20which%20type%20A%20ant%20reaches%20the%20endpoint%20and%20the%20minimum%20time%20in%20which%20type%20B%20ant%20reaches%20the%20endpoint.%20If%20any%20type%20of%20ant%20cannot%20reach%20endpoint%2C%20the%20answer%20is%20-1.%22%2C%22inputFormat%22%3A%22T%20denotes%20the%20number%20of%20testcases.%20%20%5Cn%20Each%20testcase%20consists%20of%204%20lines.%20%20%5Cn%20First%20line%20gives%20M%20%2C%20N%20which%20is%20the%20size%20of%20grid%20%20%20%5Cn%20Second%20line%20gives%20starting%20cell%20cordinates.%20SX%20%2C%20SY%20%20%20%5Cn%20Third%20line%20gives%20endpoint%20cell%20cordinates%20EX%20%2C%20EY%20%20%5Cn%20Fourth%20line%20gives%20a%20permutation%20of%20LRUD%20denoting%20the%20directions%20provided%20by%20queen%20ant%20to%20move.%20The%20first%20two%20characters%20of%20the%20string%20gives%20the%20directions%20of%20queen%20ant%20type%20A%20and%20last%20two%20characters%20gives%20direction%20of%20queen%20ant%20type%20B.%22%2C%22outputFormat%22%3A%22Print%20T%20lines%20each%20giving%20the%20minimum%20time%20in%20which%20ant%20of%20both%20types%20can%20reach%20the%20ending%20cell%20for%20each%20testcase%20ie.%20Find%20sum%20of%20%28minimum%20time%20at%20which%20A%20type%20ant%20reaches%20endpoint%20%2B%20minimum%20time%20at%20which%20B%20type%20ant%20reaches%20endpoint%29%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn3%5C%5Cn5%205%5C%5Cn1%201%20%5C%5Cn3%204%5C%5CnLRUD%5C%5Cn2%204%5C%5Cn0%202%5C%5Cn0%203%5C%5CnRULD%5C%5Cn2%204%5C%5Cn0%202%5C%5Cn1%201%20%5C%5CnURDL%5C%5Cn%5C%5Cn%22%2C%22%5C%5Cn10%5C%5Cn-1%5C%5Cn6%5C%5Cn%5C%5CnExplanation%3A%5C%5Cn%5C%5CnTestCase%201%20%3A%20Minimum%20time%20at%20which%20A%20type%20ant%20reaches%20end%20point%20%3D%205%20%5C%5CnMinimum%20time%20at%20which%20B%20type%20ant%20reaches%20endpoint%20%3D%205%5C%5CnTestCase%202%20%3A%20B%20cannot%20reach%20endpoint.%20Hence%20answer%20is%20-1.%5C%5CnTestCase%203%20%3A%20Minimum%20time%20at%20which%20A%20type%20ant%20reaches%20end%20point%20%3D%204%5C%5CnMinimum%20time%20at%20which%20B%20type%20ant%20reaches%20endpoint%20%3D%202%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B280%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F12887%22%2C%22id%22%3A%2212887%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP12887%22%2C%22title%22%3A%22DCEPCA02%20-%20Ant%20Colony%20Optimization%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22DCEPCA02%20-%20Ant%20Colony%20Optimization%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>DCEPCA02 - Ant Colony Optimization</h1>
+<h2>题目描述</h2>
+<div>Ants are known to move in groups and in perfect order. However, in our problem the ants can move only in directions Left(L), Right(R), Up(U), Down(D). The place is a rectangular grid. There lives 2 types of ants : Type A and Type B. Each ant type has its own queen ant which defines the 2 directions at which their type of ants can reproduce ants.
+A starting cell is given where one ant of each type is standing (A and B). When the process begins, each type of ant produces 4 ants, 2 ants of their type in the 2 directions (1 ant per direction) specified by their queen ant and 2 ants of the other type in the remaining 2 directions. So if queen ant of type A says LR and queen ant of type B says UD then A ant produces new type A ants at left cell and right cell and new type B ants at up cell and down cell of the original cell. Similarly, type B ant produces 2 new type A ants in left and right cell and 2 new type B ants in up cell and down cell. The ants produced again reproduce more ants at their adjacent cells according to the same directions given by the their queen ant.
+Reproducing ants at adjacent cells take 1 time unit. You need to find the sum of the minimum time in which type A ant reaches the endpoint and the minimum time in which type B ant reaches the endpoint. If any type of ant cannot reach endpoint, the answer is -1.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>T denotes the number of testcases.
+Each testcase consists of 4 lines.
+First line gives M , N which is the size of grid
+Second line gives starting cell cordinates. SX , SY
+Third line gives endpoint cell cordinates EX , EY
+Fourth line gives a permutation of LRUD denoting the directions provided by queen ant to move. The first two characters of the string gives the directions of queen ant type A and last two characters gives direction of queen ant type B.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print T lines each giving the minimum time in which ant of both types can reach the ending cell for each testcase ie. Find sum of (minimum time at which A type ant reaches endpoint + minimum time at which B type ant reaches endpoint)</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n3\n5 5\n1 1 \n3 4\nLRUD\n2 4\n0 2\n0 3\nRULD\n2 4\n0 2\n1 1 \nURDL\n\n</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>\n10\n-1\n6\n\nExplanation:\n\nTestCase 1 : Minimum time at which A type ant reaches end point = 5 \nMinimum time at which B type ant reaches endpoint = 5\nTestCase 2 : B cannot reach endpoint. Hence answer is -1.\nTestCase 3 : Minimum time at which A type ant reaches end point = 4\nMinimum time at which B type ant reaches endpoint = 2</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

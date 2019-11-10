@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ONEINSTR - One Instruction Computer Simulator - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449705:8OJtLOc1SJ+zPIYH0X86edYsoAIqoAKBlHs0Gq9wlb0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20A%20computer%20with%20only%20one%20instruction%21%20The%20instruction%20is%3A%5Cn%5Cn%60%60%60%5Cn%5CnSUBLEQ%20A%20B%20C%5Cn%60%60%60%5CnThis%20means%3A%20subtract%20the%20value%20in%20M%28A%29%20from%20M%28B%29%20and%20store%20it%20in%20M%28B%29%3B%20if%20the%20result%20is%20non-positive%20jump%20to%20the%20instruction%20in%20position%20C.%20M%28i%29%20represents%20the%20value%20stored%20in%20memory%20position%20i.%20The%20computer%20has%20a%20memory%20of%209999%20integer%20positions%2C%20numbered%20from%200%20to%209998.%20C%20%3E%209996%2C%20indicates%20the%20end%20of%20the%20program.%20Also%2C%20if%20A%20is%20negative%2C%20then%20the%20value%20of%20A%20is%20directly%20subtracted%20from%20M%28B%29.%5Cn%5Cn%20Since%20there%20is%20only%20one%20instruction%2C%20it%20is%20unnecessary%20to%20represent%20its%20opcode%20explicitely%20in%20memory.%20Therefore%2C%20an%20instruction%20is%20stored%20in%20main%20memory%20using%20three%20consecutive%20memory%20positions%2C%20which%20correspond%20to%20the%20three%20instruction%20parameters.%20The%20memory%20is%20organized%20as%20follows%3A%5Cn%5Cn%60%60%60%5Cn%5CnPosition%20Content%5Cn0-8%20%20%20%20%20%20input%5C%2Foutput%20variables%20%28M0%20to%20M8%29%5Cn9-9998%20%20%20program%20memory%20%28instructions%2Bdata%29%5Cn%60%60%60%5CnThe%20following%20pseudo-code%20shows%20the%20one%20instruction%20computer%20simulator%3A%5Cn%5Cn%60%60%60%5Cn%5Cnsimulate%28integer%20M%5B0..9998%5D%29%5Cn%20%20%20integer%20pc%2CA%2CB%2CC%5Cn%20%20%20pc%20%3D%209%5Cn%20%20%20while%20%28pc%3D0%29%20%5Cn%20%20%20%20%20%20%20%20%20M%5BB%5D%20%3D%20M%5BB%5D%20-%20M%5BA%5D%5Cn%20%20%20%20%20%20else%5Cn%20%20%20%20%20%20%20%20%20M%5BB%5D%20%3D%20M%5BB%5D%20-%20A%5Cn%20%20%20%20%20%20if%20%28M%5BB%5D%3E0%29%5Cn%20%20%20%20%20%20%20%20%20pc%20%3D%20pc%20%2B%203%5Cn%20%20%20%20%20%20else%5Cn%20%20%20%20%20%20%20%20%20pc%20%3D%20C%5Cn%20%20%20%20%20%20end_if%5Cn%20%20%20end_while%5Cnend_simulate%5Cn%60%60%60%5CnEach%20iteration%20of%20the%20above%20while%20instruction%20is%20called%20a%20simulation%20cycle.%20You%20are%20to%20translate%20postfix%20instructions%20into%20this%20machine%20language.%20There%20are%20at%20most%20100%20arithematic%20terms%20and%2099%20operators.%20Numerical%20constants%20are%20non-negative%20and%20less%20than%20or%20equal%20to%2010000.%22%2C%22inputFormat%22%3A%22The%20input%20has%20several%20test%20cases%2C%20one%20test%20case%20per%20line.%20Each%20test%20case%20corresponds%20to%20an%20arithmetic%20expression%20in%20postfix%20notation.%20An%20expression%20may%20contain%20constants%20%28integer%20values%29%2C%20input%20variables%20%28M0%20to%20M8%29%20and%20arithmetic%20operators%20%28%2B%2C%20-%2C%20%5C%5C%2A%2C%20%5C%2F%29.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20a%20program%20must%20be%20printed%20using%20the%20following%20format%3A%20First%20line%20indicates%20m%2C%20the%20number%20of%20instructions%20of%20the%20program%3B%20and%20the%20following%20m%20lines%20contain%20the%20program%2C%20one%20instruction%20per%20line%2C%20where%20each%20instruction%20is%20represented%20by%203%20integer%20values%20separated%20by%20one%20blank%20space.%20Your%20outputed%20program%20must%20finish%20within%2010%5E7%20simlation%20cycles%20for%20each%20test%20case.%22%2C%22samples%22%3A%5B%5B%22100%5Cr%5CnM1%20M2%20-%22%2C%223%5Cr%5Cn0%200%2012%5Cr%5Cn-100%200%200%5Cr%5Cn19%2019%2010000%5Cr%5Cn%5Cr%5Cn4%5Cr%5Cn0%200%2012%5Cr%5Cn1%202%2015%5Cr%5Cn2%200%2018%5Cr%5Cn21%2021%2010000%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B114%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F2023%22%2C%22id%22%3A%222023%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP2023%22%2C%22title%22%3A%22ONEINSTR%20-%20One%20Instruction%20Computer%20Simulator%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22ONEINSTR%20-%20One%20Instruction%20Computer%20Simulator%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>ONEINSTR - One Instruction Computer Simulator</h1>
+<h2>题目描述</h2>
+<div> A computer with only one instruction! The instruction is:
+```
+SUBLEQ A B C
+```
+This means: subtract the value in M(A) from M(B) and store it in M(B); if the result is non-positive jump to the instruction in position C. M(i) represents the value stored in memory position i. The computer has a memory of 9999 integer positions, numbered from 0 to 9998. C > 9996, indicates the end of the program. Also, if A is negative, then the value of A is directly subtracted from M(B).
+Since there is only one instruction, it is unnecessary to represent its opcode explicitely in memory. Therefore, an instruction is stored in main memory using three consecutive memory positions, which correspond to the three instruction parameters. The memory is organized as follows:
+```
+Position Content
+0-8 input/output variables (M0 to M8)
+9-9998 program memory (instructions+data)
+```
+The following pseudo-code shows the one instruction computer simulator:
+```
+simulate(integer M[0..9998])
+integer pc,A,B,C
+pc = 9
+while (pc=0)
+M[B] = M[B] - M[A]
+else
+M[B] = M[B] - A
+if (M[B]>0)
+pc = pc + 3
+else
+pc = C
+end_if
+end_while
+end_simulate
+```
+Each iteration of the above while instruction is called a simulation cycle. You are to translate postfix instructions into this machine language. There are at most 100 arithematic terms and 99 operators. Numerical constants are non-negative and less than or equal to 10000.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input has several test cases, one test case per line. Each test case corresponds to an arithmetic expression in postfix notation. An expression may contain constants (integer values), input variables (M0 to M8) and arithmetic operators (+, -, \*, /).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, a program must be printed using the following format: First line indicates m, the number of instructions of the program; and the following m lines contain the program, one instruction per line, where each instruction is represented by 3 integer values separated by one blank space. Your outputed program must finish within 10^7 simlation cycles for each test case.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>100
+M1 M2 -</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+0 0 12
+-100 0 0
+19 19 10000
+
+4
+0 0 12
+1 2 15
+2 0 18
+21 21 10000</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

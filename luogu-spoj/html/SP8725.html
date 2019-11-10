@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>CLOPPAIR - Closest Point Pair - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450115:GbL5EfY1z0Bfpc2HG8yUPjtwqc+yVZBFSNnQkVf77Tk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20N%20points%20on%20a%20plane%20and%20your%20task%20is%20to%20find%20a%20pair%20of%20points%20with%20the%20smallest%20euclidean%20distance%20between%20them.%5Cn%5CnAll%20points%20will%20be%20unique%20and%20there%20is%20only%20one%20pair%20with%20the%20smallest%20distance.%22%2C%22inputFormat%22%3A%22First%20line%20of%20input%20will%20contain%20N%20%282%3C%3DN%3C%3D50000%29%20and%20then%20N%20lines%20follow%20each%20line%20contains%20two%20integers%20giving%20the%20X%20and%20Y%20coordinate%20of%20the%20point.%20Absolute%20value%20of%20X%2CY%20will%20be%20atmost%2010%5E6.%22%2C%22outputFormat%22%3A%22Output%203%20numbers%20a%20b%20c%2C%20where%20a%2Cb%20%28a%3Cb%29%20are%20the%20indexes%20%280%20based%29%20of%20the%20point%20pair%20in%20the%20input%20and%20c%20is%20the%20distance%20between%20them.%20Round%20c%20to%206%20decimal%20digits.%5Cn%5CnSee%20samples%20for%20more%20clarification.%5Cn%5Cn%20%60%60%60%5CnInput%3A%20%5Cn5%20%5Cn0%200%5Cn0%201%5Cn100%2045%5Cn2%203%5Cn9%209%5Cn%5CnOutput%3A%20%5Cn0%201%201.000000%5CnInput%3A%20%5Cn5%5Cn0%200%5Cn-4%201%5Cn-7%20-2%5Cn4%205%5Cn1%201%5Cn%5CnOutput%3A%20%5Cn0%204%201.414214%5Cn%60%60%60%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B169%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F8725%22%2C%22id%22%3A%228725%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5Cn%5Cu7ed9%5Cu4f60%24n%24%5Cu4e2a%5Cu70b9%5Cuff0c%5Cu627e%5Cu51fa%5Cu4e00%5Cu5bf9%5Cu5b83%5Cu4eec%5Cu4e4b%5Cu95f4%5Cu6b27%5Cu5f0f%5Cu8ddd%5Cu79bb%5Cu6700%5Cu77ed%5Cu7684%5Cu70b9%5Cu5bf9%5Cuff08%5Cu5373%5Cu6c42%5Cu6700%5Cu8fd1%5Cu70b9%5Cu5bf9%5Cuff09%5Cr%5Cn%5Cr%5Cn%5Cu4fdd%5Cu8bc1%5Cu6240%5Cu6709%5Cu70b9%5Cu90fd%5Cu662f%5Cu552f%5Cu4e00%5Cu7684%5Cuff0c%5Cu4e14%5Cu53ea%5Cu6709%5Cu4e00%5Cu5bf9%5Cu8ddd%5Cu79bb%5Cu6700%5Cu77ed%5Cr%5Cn%2A%2A%2A%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3a%5Cu6574%5Cu6570%24n%282%5C%5Cleq%20n%5C%5Cleq%205%5C%5Ccdot10%5E4%29%24%3B%5Cr%5Cn%5Cr%5Cn%5Cu7136%5Cu540e%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6570%24x%2Cy%24%5Cuff0c%5Cu8868%5Cu793a%5Cu8fd9%5Cu4e2a%5Cu70b9%5Cu7684%24x%24%5Cu5750%5Cu6807%5Cu548c%24y%24%5Cu5750%5Cu6807%5Cuff0c%24%7Cx-y%7C%5C%5Cleq10%5E6%24%5Cu3002%5Cr%5Cn%2A%2A%2A%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e09%5Cu4e2a%5Cu6570%24a%2Cb%2Cc%24%5Cuff0c%5Cu5176%5Cu4e2d%24a%2Cb%24%5Cu8868%5Cu793a%5Cu6700%5Cu8fd1%5Cu7684%5Cu70b9%5Cu5bf9%5Cuff0c%24c%24%5Cu8868%5Cu793a%5Cu8fd9%5Cu4e24%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8ddd%5Cu79bb%5Cuff08%5Cu5373%5Cu8f93%5Cu51fa%5Cu6700%5Cu8fd1%5Cu70b9%5Cu5bf9%5Cu53ca%5Cu5176%5Cu8ddd%5Cu79bb%5Cuff09%5Cu3002%24c%24%5Cu4fdd%5Cu7559%246%24%5Cu4f4d%5Cu5c0f%5Cu6570%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A7%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22SP8725%22%2C%22title%22%3A%22CLOPPAIR%20-%20Closest%20Point%20Pair%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22CLOPPAIR%20-%20Closest%20Point%20Pair%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>CLOPPAIR - Closest Point Pair</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+给你$n$个点，找出一对它们之间欧式距离最短的点对（即求最近点对）
+保证所有点都是唯一的，且只有一对距离最短
+***
+## 输入格式：
+第一行为整数$n(2\leq n\leq 5\cdot10^4)$;
+然后每行两个数$x,y$，表示这个点的$x$坐标和$y$坐标，$|x-y|\leq10^6$。
+***
+## 输出格式：
+输出三个数$a,b,c$，其中$a,b$表示最近的点对，$c$表示这两点之间的距离（即输出最近点对及其距离）。$c$保留$6$位小数。</div>
+<h2>题目描述</h2>
+<div>You are given N points on a plane and your task is to find a pair of points with the smallest euclidean distance between them.
+All points will be unique and there is only one pair with the smallest distance.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line of input will contain N (2<=N<=50000) and then N lines follow each line contains two integers giving the X and Y coordinate of the point. Absolute value of X,Y will be atmost 10^6.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output 3 numbers a b c, where a,b (a<b) are the indexes (0 based) of the point pair in the input and c is the distance between them. Round c to 6 decimal digits. See samples for more clarification. ``` Input: 5 0 0 0 1 100 45 2 3 9 9 Output: 0 1 1.000000 Input: 5 0 0 -4 1 -7 -2 4 5 1 1 Output: 0 4 1.414214 ```</div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

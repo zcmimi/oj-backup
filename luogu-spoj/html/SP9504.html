@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PAINTWAL - Paint on a Wall - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450153:mcwyTTv+bitVam/pz9Cgaq405/Jm8Fbi+i16LrqMSSg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Annie%20wants%20to%20paint%20her%20wall%20to%20an%20expected%20pattern.%20The%20wall%20can%20be%20represented%20as%20a%202%5C%5C%2A%2A%2An%2A%2A%20grid%20and%20each%20grid%20will%20be%20painted%20only%20one%20color.%20Annie%20has%20a%20brush%20which%20could%20paint%20a%20rectangular%20area%20of%20the%20wall%20at%20a%20single%20step.%20The%20paint%20could%20be%20overlap%20and%20the%20newly%20painted%20color%20will%20replace%20the%20older%20one.%5Cn%5CnFor%20a%20given%20pattern%20of%20the%20wall%2C%20your%20task%20is%20to%20help%20Annie%20find%20out%20the%20minimum%20possible%20number%20of%20painting%20steps.%20You%20can%20assume%20that%20the%20wall%20remains%20unpainted%20until%20Annie%20paint%20some%20colors%20on%20it.%22%2C%22inputFormat%22%3A%22There%20are%20multiple%20test%20cases%20in%20the%20input.%20The%20first%20line%20contains%20the%20number%20of%20test%20cases.%5Cn%5CnFor%20each%20test%20case%2C%20the%20first%20line%20contains%20the%20only%20integer%20%2A%2An%2A%2A%20indicating%20the%20length%20of%20the%20wall.%20%281%20%3C%3D%20%2A%2An%2A%2A%20%3C%3D%208%29%5Cn%5CnTwo%20lines%20follow%2C%20denoting%20the%20expected%20pattern%20of%20the%20wall.%20The%20color%20is%20represented%20by%20a%20single%20capital%20letter.%5Cn%5CnSee%20the%20sample%20input%20for%20further%20details.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20only%20one%20integer%20denoting%20the%20minimum%20number%20of%20steps.%22%2C%22samples%22%3A%5B%5B%223%5Cr%5Cn3%5Cr%5CnABA%5Cr%5CnCBC%5Cr%5Cn3%5Cr%5CnBAA%5Cr%5CnCCB%5Cr%5Cn3%5Cr%5CnBBB%5Cr%5CnBAB%22%2C%22Case%20%231%3A%203%5Cr%5CnCase%20%232%3A%203%5Cr%5CnCase%20%233%3A%202%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F9504%22%2C%22id%22%3A%229504%22%7D%2C%22translation%22%3A%22Alan%5Cu60f3%5Cu8981%5Cu628a%5Cu4e00%5Cu97622%2An%5Cu7684%5Cu7a7a%5Cu767d%5Cu5899%5Cu5237%5Cu6210%5Cu6307%5Cu5b9a%5Cu7684%5Cu989c%5Cu8272%2C%5Cu4ed6%5Cu6709%5Cu4e00%5Cu628a%5Cu795e%5Cu5947%5Cu7684%5Cu5237%5Cu5b50%2C%5Cu4ed6%5Cu6bcf%5Cu6b21%5Cu53ef%5Cu4ee5%5Cu5237%5Cu4e00%5Cu4e2a%5Cu6307%5Cu5b9a%5Cu7684%5Cu77e9%5Cu5f62%5Cu533a%5Cu57df%2C%5Cu88ab%5Cu4ed6%5Cu5237%5Cu8fc7%5Cu7684%5Cu77e9%5Cu5f62%5Cu533a%5Cu57df%5Cu4f1a%5Cu90fd%5Cu53d8%5Cu6210%5Cu4ed6%5Cu6307%5Cu5b9a%5Cu7684%5Cu989c%5Cu8272%2C%5Cu539f%5Cu672c%5Cu7684%5Cu989c%5Cu8272%5Cu4e5f%5Cu4f1a%5Cu88ab%5Cu8986%5Cu76d6%5Cu6389%3B%5Cr%5Cn%5Cu4ed6%5Cu73b0%5Cu5728%5Cu60f3%5Cu77e5%5Cu9053%5Cu6700%5Cu5c11%5Cu7684%5Cu64cd%5Cu4f5c%5Cu6b65%5Cu6570%3B%5Cr%5Cn%5Cu8bfb%5Cu5165%5Cu6570%5Cu636e%5Cu4e2d%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570t%2C%5Cu8868%5Cu793a%5Cu6709t%5Cu7ec4%5Cu6570%5Cu636e%2C%5Cu7136%5Cu540e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu5f00%5Cu5934%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%2C%5Cu7136%5Cu540e%5Cu67092%5Cu884c%2Cn%5Cu5217%5Cu7684%5Cu7531%5Cu5927%5Cu5199%5Cu5b57%5Cu6bcd%5Cu7ec4%5Cu6210%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cu77e9%5Cu9635%5Cu8868%5Cu793a%5Cu76ee%5Cu6807%5Cu5899%5Cu7684%5Cu989c%5Cu8272%3B%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%5Cu6700%5Cu5c0f%5Cu64cd%5Cu4f5c%5Cu6570%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22SP9504%22%2C%22title%22%3A%22PAINTWAL%20-%20Paint%20on%20a%20Wall%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PAINTWAL%20-%20Paint%20on%20a%20Wall%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PAINTWAL - Paint on a Wall</h1>
+<h2>题意翻译</h2>
+<div>Alan想要把一面2*n的空白墙刷成指定的颜色,他有一把神奇的刷子,他每次可以刷一个指定的矩形区域,被他刷过的矩形区域会都变成他指定的颜色,原本的颜色也会被覆盖掉;
+他现在想知道最少的操作步数;
+读入数据中第一行有一个整数t,表示有t组数据,然后每组数据开头有一个整数n,然后有2行,n列的由大写字母组成的字符串矩阵表示目标墙的颜色;
+对于每组样例输出最小操作数</div>
+<h2>题目描述</h2>
+<div>Annie wants to paint her wall to an expected pattern. The wall can be represented as a 2\***n** grid and each grid will be painted only one color. Annie has a brush which could paint a rectangular area of the wall at a single step. The paint could be overlap and the newly painted color will replace the older one.
+For a given pattern of the wall, your task is to help Annie find out the minimum possible number of painting steps. You can assume that the wall remains unpainted until Annie paint some colors on it.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>There are multiple test cases in the input. The first line contains the number of test cases.
+For each test case, the first line contains the only integer **n** indicating the length of the wall. (1 <= **n** <= 8)
+Two lines follow, denoting the expected pattern of the wall. The color is represented by a single capital letter.
+See the sample input for further details.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output only one integer denoting the minimum number of steps.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+3
+ABA
+CBC
+3
+BAA
+CCB
+3
+BBB
+BAB</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case #1: 3
+Case #2: 3
+Case #3: 2</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

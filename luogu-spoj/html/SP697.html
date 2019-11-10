@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MWORDS - Matrix Words - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449609:suJlsEQfuuq8bwZhGhfrNYKUYIPiJGN3LM0oHFU+lI8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Given%20an%20NxN%20matrix%20of%20characters.%20We%20start%20at%20position%20%281%2C1%29%20and%20want%20to%20reach%20%28N%2CN%29%20in%20exactly%202N-1%20moves.%20Each%20move%20consists%20of%20movement%20in%20one%20of%20the%20four%20standard%20directions.%20As%20we%20move%2C%20we%20collect%20the%20characters%20found%20in%20our%20positions%20forming%20a%20string.%20We%20now%20constrain%20our%20attention%20to%20all%20paths%20that%20do%20not%20cross%20the%20diagonal%20of%20the%20matrix.%20However%20the%20parts%20of%20the%20path%20can%20be%20on%20the%20diagonal%20line.%20These%20paths%20can%20be%20classified%20into%20two%20partitions%3B%20the%20paths%20that%20lie%20above%20and%20paths%20that%20lie%20below%20the%20diagonal.%20Each%20path%20is%20represented%20by%20a%20string%20of%20characters%20formed%20by%20the%20ordered%20concatenation%20of%20characters%20found%20on%20the%20way.%20If%20we%20consider%20the%20set%20of%20all%20valid%20paths%2C%20%28both%20upper%20and%20lower%29%20get%20their%20corresponding%20strings%2C%20sort%20them%20all%20in%20alphabetical%20order%2C%20we%20obtain%20the%20%28ordered%29%20master%20set.%20Note%20that%20the%20master%20set%20might%20contain%20duplicates%2C%20and%20all%20strings%20in%20the%20master%20set%20consist%20of%20exactly%202N-1%20characters.%20Let%20M%20be%20the%20total%20number%20of%20strings%20in%20the%20master%20set%2C%20given%20an%20integer%20I%2C%20we%20need%20to%20find%20the%20string%20with%20index%20%3D%20I%20%28modulo%20M%29%20within%20the%20master%20set.%20%20%5Cn%20If%20Master%20Set%20%3D%20%7B%20%5Cu201cA%5Cu201d%2C%5Cu201dB%5Cu201d%2C%5Cu201dB%5Cu201d%2C%5Cu201dC%5Cu201d%20%7D%20%28although%20this%20set%20can%20never%20be%20a%20master%20set%21%29%20%20%5Cn%20I%3D0%20produces%20%5Cu201cA%5Cu201d%2C%20while%20I%3D2%20and%20I%3D5%2C%20produces%20%5Cu201cB%5Cu201d.%5Cn%5Cn%2A%2AConstraints%3A%2A%2A%20%20%20%5Cn%20N%3C%3D30.%20%20%5Cn%20I%3C%3D10%20%24%20%5E%7B18%7D%20%24%20.%20%5Cu2018I%5Cu2019%20will%20fit%20into%20a%2064-bit%20integer.%22%2C%22inputFormat%22%3A%22%20T-number%20of%20test%20cases%20%20%5Cn%20N%20I%20%20%5Cn%20Next%20is%20the%20NxN%20matrix%20of%20characters%2C%20N%20characters%20per%20line.%20%20%5Cn%20All%20characters%20are%20between%20%5Cu2018A%5Cu2019-%5Cu2018Z%5Cu2019%20%28only%20uppercase%29.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20output%20the%20corresponding%20string%20sought%20for%20in%20the%20master%20set.%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn%5Cr%5Cn%20%202%20%5C%5Cn%5Cr%5Cn%20%203%2018%5C%5Cn%5Cr%5Cn%20%20DAA%5C%5Cn%5Cr%5Cn%20%20BDA%5C%5Cn%5Cr%5Cn%20%20BBD%20%5C%5Cn%5Cr%5Cn%5Cr%5Cn%20%203%2018%5C%5Cn%5Cr%5Cn%20%20DAA%5C%5Cn%5Cr%5Cn%20%20ADA%5C%5Cn%5Cr%5Cn%20%20AAD%22%2C%22%5C%5Cn%5Cr%5Cn%20%20DBBBD%5C%5Cn%5Cr%5Cn%5Cr%5Cn%20%20DADAD%5Cr%5Cn%5Cr%5CnExplanation%3A%20%5C%5Cn%5Cr%5Cn%20%20Test%20case%20I%3A%20Master%20Set%20%3D%20%7B%20%26%238220%3BDAAAD%26%238221%3B%2C%20%26%238220%3BDADAD%26%238221%3B%2C%26%238221%3BDBBBD%26%238221%3B%2C%26%238221%3BDBDBD%26%238221%3B%7D%5C%5Cn%5Cr%5Cn%20%20Test%20case%20II%3A%20Master%20Set%20%3D%20%7B%20%26%238220%3BDAAAD%26%238221%3B%2C%26%238221%3BDAAAD%26%238221%3B%2C%26%238221%3BDADAD%26%238221%3B%2C%26%238221%3BDADAD%26%238221%3B%7D%5C%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B212%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F697%22%2C%22id%22%3A%22697%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP697%22%2C%22title%22%3A%22MWORDS%20-%20Matrix%20Words%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22MWORDS%20-%20Matrix%20Words%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>MWORDS - Matrix Words</h1>
+<h2>题目描述</h2>
+<div>Given an NxN matrix of characters. We start at position (1,1) and want to reach (N,N) in exactly 2N-1 moves. Each move consists of movement in one of the four standard directions. As we move, we collect the characters found in our positions forming a string. We now constrain our attention to all paths that do not cross the diagonal of the matrix. However the parts of the path can be on the diagonal line. These paths can be classified into two partitions; the paths that lie above and paths that lie below the diagonal. Each path is represented by a string of characters formed by the ordered concatenation of characters found on the way. If we consider the set of all valid paths, (both upper and lower) get their corresponding strings, sort them all in alphabetical order, we obtain the (ordered) master set. Note that the master set might contain duplicates, and all strings in the master set consist of exactly 2N-1 characters. Let M be the total number of strings in the master set, given an integer I, we need to find the string with index = I (modulo M) within the master set.
+If Master Set = { “A”,”B”,”B”,”C” } (although this set can never be a master set!)
+I=0 produces “A”, while I=2 and I=5, produces “B”.
+**Constraints:**
+N<=30.
+I<=10 $ ^{18} $ . ‘I’ will fit into a 64-bit integer.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> T-number of test cases
+N I
+Next is the NxN matrix of characters, N characters per line.
+All characters are between ‘A’-‘Z’ (only uppercase).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case output the corresponding string sought for in the master set.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n
+  2 \n
+  3 18\n
+  DAA\n
+  BDA\n
+  BBD \n
+
+  3 18\n
+  DAA\n
+  ADA\n
+  AAD</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>\n
+  DBBBD\n
+
+  DADAD
+
+Explanation: \n
+  Test case I: Master Set = { &amp;#8220;DAAAD&amp;#8221;, &amp;#8220;DADAD&amp;#8221;,&amp;#8221;DBBBD&amp;#8221;,&amp;#8221;DBDBD&amp;#8221;}\n
+  Test case II: Master Set = { &amp;#8220;DAAAD&amp;#8221;,&amp;#8221;DAAAD&amp;#8221;,&amp;#8221;DADAD&amp;#8221;,&amp;#8221;DADAD&amp;#8221;}\n</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>DYNACON2 - Dynamic Graph Connectivity - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450161:CfJMvmNVSmN8Q+a4SjAOtuP6Oljjpt1Mq5ZVmsOu2IA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20graph%20initially%20consists%20of%20N%20%281%5Cn%5CnYour%20task%20is%20to%20maintain%20that%20graph%20and%20answer%20connectivity%20queries.%5Cn%5CnAll%20edges%20in%20the%20problem%20are%20%2A%2Aundirected%2A%2A.%5Cn%5CnYou%20will%20receive%20the%20following%20queries%2C%20where%20%281%5Cn%5Cn-%20%2A%2Aadd%2A%2A%20A%20B%20%3A%20add%20an%20edge%20between%20vertices%20A%20and%20B%2C%20where%20initially%20there%20is%20no%20path%20between%20A%20and%20B.%5Cn-%20%2A%2Arem%2A%2A%20A%20B%20%3A%20remove%20edge%20between%20vertices%20A%20and%20B%2C%20where%20initially%20there%20is%20an%20edge%20between%20A%20and%20B.%5Cn-%20%2A%2Aconn%2A%2A%20A%20B%20%3A%20print%20%2A%2AYES%2A%2A%20if%20there%20is%20a%20path%20between%20A%20and%20B%20and%20%2A%2ANO%2A%2A%20otherwise%2C%20where%20A%20and%20B%20are%20different.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20the%20number%20of%20vertices%20N%20and%20the%20number%20of%20queries%20M%20%281%22%2C%22outputFormat%22%3A%22For%20each%20%2A%2Aconn%2A%2A%20query%20output%20%2A%2AYES%2A%2A%20or%20%2A%2ANO%2A%2A.%20Pay%20attention%20to%20letter%20case.%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn4%2011%5C%5Cnadd%201%202%5C%5Cnadd%202%203%5C%5Cnadd%203%204%5C%5Cnadd%201%204%5C%5Cnconn%204%202%5C%5Cnrem%201%202%5C%5Cnconn%202%204%5C%5Cnrem%203%204%5C%5Cnconn%204%202%5C%5Cnadd%202%204%5C%5Cnconn%204%202%5C%5Cn%5C%5Cn%22%2C%22%5C%5CnYES%5C%5CnYES%5C%5CnNO%5C%5CnYES%5C%5Cn%5C%5CnThis%20example%20will%20be%20the%20first%20test%20case.%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B347%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F9576%22%2C%22id%22%3A%229576%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cr%5CnEntropyIncreaser%20%5Cu6709%5Cu4e00%5Cu4e2a%20%24n%24%20%5Cu4e2a%5Cu70b9%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu521d%5Cu59cb%5Cu6ca1%5Cu6709%5Cu8fb9%5Cu3002%20%20%5Cr%5Cn%20%20%5Cr%5Cn%5Cu5979%5Cu73b0%5Cu5728%5Cu8981%5Cu5bf9%5Cu8fd9%5Cu4e2a%5Cu56fe%5Cu8fdb%5Cu884c%24m%24%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu5177%5Cu4f53%5Cu5982%5Cu4e0b%5Cuff1a%20%20%5Cr%5Cn%5Cr%5Cn%24%5C%5Ctexttt%7Badd%7D%24%20%24u%24%20%24v%24%5Cuff1a%5Cu8868%5Cu793a%5Cu5728%20%24u%24%20%5Cu548c%20%24v%24%20%5Cu8282%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu8fde%5Cu4e00%5Cu6761%5Cu8fb9%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu6b64%5Cu65f6%20%24u%2Cv%24%20%5Cu4e4b%5Cu95f4%5Cu6ca1%5Cu6709%5Cu8fb9%5Cu3002%20%20%20%20%5Cr%5Cn%24%5C%5Ctexttt%7Brem%7D%24%20%24u%24%20%24v%24%5Cuff1a%5Cu8868%5Cu793a%5Cu5220%5Cu9664%20%24u%24%20%5Cu548c%20%24v%24%20%5Cu8282%5Cu70b9%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8fb9%5Cuff0c%5Cu4fdd%5Cu8bc1%5Cu6b64%5Cu65f6%20%24u%2Cv%24%20%5Cu4e4b%5Cu95f4%5Cu5b58%5Cu5728%5Cu8fb9%5Cu3002%20%20%5Cr%5Cn%24%5C%5Ctexttt%7Bconn%7D%24%20%24u%24%20%24v%24%5Cuff1a%5Cu8868%5Cu793a%5Cu67e5%5Cu8be2%20%24u%24%20%5Cu548c%20%24v%24%20%20%5Cu8282%5Cu70b9%5Cu662f%5Cu5426%5Cu8fde%5Cu901a%5Cu3002%5Cu5982%5Cu679c%5Cu8fde%5Cu901a%5Cu5219%5Cu8f93%5Cu51fa%60YES%60%5Cuff0c%5Cu5426%5Cu5219%5Cu8f93%5Cu51fa%60NO%60%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cu7531%5Cu4e8e%5Cu5979%5Cu8fd8%5Cu8981%5Cu51c6%5Cu5907%5Cu53bb%5Cu963f%5Cu514bNOI%5Cuff0c%5Cu4e0d%5Cu60f3%5Cu505a%5Cu8fd9%5Cu4e48%5Cu7b80%5Cu5355%5Cu7684%5Cu95ee%5Cu9898%5Cu6d6a%5Cu8d39%5Cu65f6%5Cu95f4%5Cu3002%20%20%5Cr%5Cn%5Cu4e8e%5Cu662f%5Cu8fd9%5Cu4e2a%5Cu4efb%5Cu52a1%5Cu5c31%5Cu4ea4%5Cu7ed9%5Cu4f60%5Cu4e86%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%20%20%5Cr%5Cn%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%20%24n%2Cm%24%5Cuff0c%5Cu8868%5Cu793a%5Cu56fe%5Cu7684%5Cu8282%5Cu70b9%5Cu6570%5Cu548c%5Cu64cd%5Cu4f5c%5Cu6570%5Cu3002%20%20%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%20%24m%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu548c%5Cu4e24%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu4e00%5Cu6b21%5Cu64cd%5Cu4f5c%5Cu3002%20%20%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%20%20%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%20%24%5C%5Ctexttt%7Bconn%7D%24%20%5Cu64cd%5Cu4f5c%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%60YES%60%5Cu6216%60NO%60%5Cu8868%5Cu793a%5Cu7b54%5Cu6848%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%20%20%5Cr%5Cn%5Cu6837%5Cu4f8b%5Cu6709%5Cu9505%5Cu3002%20%20%5Cr%5Cn%5Cr%5Cn%5Cu771f%5Cu6b63%5Cu7684%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%5Cu4e3a%5Cuff1a%20%20%5Cr%5Cn%60%60%60cpp%5Cr%5Cn4%2011%5Cr%5Cnadd%201%202%5Cr%5Cnadd%202%203%5Cr%5Cnadd%203%204%5Cr%5Cnadd%201%204%5Cr%5Cnconn%204%202%5Cr%5Cnrem%201%202%5Cr%5Cnconn%202%204%5Cr%5Cnrem%203%204%5Cr%5Cnconn%204%202%5Cr%5Cnadd%202%204%5Cr%5Cnconn%204%202%5Cr%5Cn%60%60%60%20%20%5Cr%5Cn%5Cu771f%5Cu6b63%5Cu7684%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cu4e3a%5Cuff1a%20%20%5Cr%5Cn%60%60%60cpp%5Cr%5CnYES%5Cr%5CnYES%5Cr%5CnNO%5Cr%5CnYES%5Cr%5Cn%60%60%60%20%20%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu4e3a%5Cu6837%5Cu4f8b%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A16%2C%22totalAccepted%22%3A6%2C%22pid%22%3A%22SP9576%22%2C%22title%22%3A%22DYNACON2%20-%20Dynamic%20Graph%20Connectivity%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A125593%2C%22title%22%3A%22%5Cu52a8%5Cu6001%5Cu56fe%5Cu8054%5Cu901aWA%5Cu6c42%5Cu52a9%5Cu5927%5Cu4f6c%22%2C%22forum%22%3A%7B%22id%22%3A16455%2C%22name%22%3A%22SP9576%20DYNACON2%20-%20Dynamic%20Graph%20Connectivity%22%2C%22slug%22%3A%22SP9576%22%7D%7D%2C%7B%22id%22%3A119346%2C%22title%22%3A%22%5Cu8be5%5Cu9898%5Cu76ee%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu5168%5Cu662f%5Cu9505%22%2C%22forum%22%3A%7B%22id%22%3A16455%2C%22name%22%3A%22SP9576%20DYNACON2%20-%20Dynamic%20Graph%20Connectivity%22%2C%22slug%22%3A%22SP9576%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22DYNACON2%20-%20Dynamic%20Graph%20Connectivity%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>DYNACON2 - Dynamic Graph Connectivity</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+EntropyIncreaser 有一个 $n$ 个点的无向图，初始没有边。
+她现在要对这个图进行$m$次操作，具体如下：
+$\texttt{add}$ $u$ $v$：表示在 $u$ 和 $v$ 节点之间连一条边，保证此时 $u,v$ 之间没有边。
+$\texttt{rem}$ $u$ $v$：表示删除 $u$ 和 $v$ 节点之间的边，保证此时 $u,v$ 之间存在边。
+$\texttt{conn}$ $u$ $v$：表示查询 $u$ 和 $v$ 节点是否连通。如果连通则输出`YES`，否则输出`NO`。
+由于她还要准备去阿克NOI，不想做这么简单的问题浪费时间。
+于是这个任务就交给你了。
+## 输入输出格式
+### 输入格式
+第一行两个正整数 $n,m$，表示图的节点数和操作数。
+接下来 $m$ 行，每行有一个字符串和两个正整数，表示一次操作。
+### 输出格式
+对于每个 $\texttt{conn}$ 操作，输出一行一个`YES`或`NO`表示答案。
+## 说明
+样例有锅。
+真正的输入样例为：
+```cpp
+4 11
+add 1 2
+add 2 3
+add 3 4
+add 1 4
+conn 4 2
+rem 1 2
+conn 2 4
+rem 3 4
+conn 4 2
+add 2 4
+conn 4 2
+```
+真正的输出样例为：
+```cpp
+YES
+YES
+NO
+YES
+```
+第一个测试点为样例。</div>
+<h2>题目描述</h2>
+<div>A graph initially consists of N (1
+Your task is to maintain that graph and answer connectivity queries.
+All edges in the problem are **undirected**.
+You will receive the following queries, where (1
+- **add** A B : add an edge between vertices A and B, where initially there is no path between A and B.
+- **rem** A B : remove edge between vertices A and B, where initially there is an edge between A and B.
+- **conn** A B : print **YES** if there is a path between A and B and **NO** otherwise, where A and B are different.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains the number of vertices N and the number of queries M (1</div>
+<h3>输出格式</h3>
+<br />
+<div>For each **conn** query output **YES** or **NO**. Pay attention to letter case.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n4 11\nadd 1 2\nadd 2 3\nadd 3 4\nadd 1 4\nconn 4 2\nrem 1 2\nconn 2 4\nrem 3 4\nconn 4 2\nadd 2 4\nconn 4 2\n\n</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>\nYES\nYES\nNO\nYES\n\nThis example will be the first test case.</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

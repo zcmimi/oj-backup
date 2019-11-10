@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PARTYTIM - Party Time - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450370:ocLyd1YBDqkLHv0T1YW2kM+Rfl2NVBRbyrRnWUgQBwY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22In%20a%20n-storey%20resort%20a%20grand%20party%20is%20arranged%20in%20the%20nth%20floor%20of%20the%20building%20and%20two%20magical%20elevators%20A%20and%20B%20are%20stationed%20at%20the%20ground%20floor%20%28zero%20th%20floor%29.%5Cn%5CnThere%20are%20people%20waiting%20in%20all%20floors%20from%20to%200%20to%20n-1%20for%20attending%20the%20party.%20These%20two%20magical%20elevators%20are%20used%20for%20getting%20these%20people%20to%20the%20party.%20These%20elevators%20can%20be%20moved%20from%20one%20floor%20to%20any%20other%20floor.%20The%20time%20it%20takes%20to%20move%20any%20elevator%20from%20i%20th%20floor%20to%20j%20th%20floor%20is%20abs%28j%20-%20i%29%20time%20units.%5Cn%5CnAlso%20there%20is%20a%20cost%20associated%20with%20moving%20the%20elevator%20from%20i%20th%20floor%20to%20j%20th%20floor.%5Cn%5CnIf%20the%20elevator%20A%20moves%20from%20floor%20i%20to%20floor%20j%20with%20x%20people%2C%20then%20cost%20equals%20A%5C%5C%5Bi%5C%5C%5D%20%5E%20A%5C%5C%5Bj%5C%5C%5D%20%5E%20x%2C%20where%20%27%5E%27%20is%20the%20bitwise%20XOR%20operator.%20Similarly%20for%20the%20elevator%20B%2C%20it%20is%20B%5C%5C%5Bi%5C%5C%5D%20%5E%20B%5C%5C%5Bj%5C%5C%5D%20%5E%20x.%20However%2C%20if%20the%20lift%20stops%20on%20the%20k%27th%20floor%20and%20%27a%27%20people%20get%20on%20the%20elevator%20and%20%27b%27%20people%20get%20off%20the%20elevator%2C%20to%20make%20a%20new%20count%20of%20%27y%27%20people%2C%20then%20new%20cost%20is%20%28A%5C%5C%5Bi%5C%5C%5D%20%5E%20A%5C%5C%5Bk%5C%5C%5D%20%5E%20x%29%20%2B%20%28A%5C%5C%5Bk%5C%5C%5D%20%5E%20A%5C%5C%5Bj%5C%5C%5D%20%5E%20y%29.%20%28see%20notes%29.%5Cn%5CnPeople%20who%20are%20inside%20the%20elevator%20can%20be%20made%20to%20get%20down%20from%20it%20at%20any%20floor%20that%20it%20stops.%20It%20takes%20zero%20time%20for%20people%20to%20get%20into%20or%20out%20of%20the%20elevator.%5Cn%5CnAll%20persons%20who%20are%20waiting%20have%20to%20be%20taken%20to%20the%20nth%20floor.%20As%20the%20party%20is%20going%20to%20start%20immediately%20the%20resort%20manager%20wants%20everyone%20to%20be%20there%20in%20the%20party%20in%20the%20least%20time%20possible.%20It%20is%20your%20job%20to%20control%20these%20elevators%20in%20such%20a%20way%20that%20everyone%20is%20there%20in%20the%20party%20in%20the%20least%20time%20possible%20and%20also%20minimize%20the%20cost%20of%20controlling%20these%20elevators.%5Cn%5Cn%2A%2ANotes%3A%2A%2A%5Cn%5Cn1%5C%5C.%20The%20objective%20is%20to%20get%20all%20the%20people%20waiting%20in%20floors%200%2C%201....n%20-%201%20to%20floor%20n.%5Cn%5Cn2%5C%5C.%20The%20elevators%20can%20move%20up%20or%20down.%5Cn%5Cn3%5C%5C.%20It%20takes%20zero%20time%20for%20the%20elevator%20to%20stop%20at%20any%20floor%20and%20for%20people%20to%20get%20down%20or%20get%20into%20the%20elevator.%5Cn%5Cn4%5C%5C.%20If%20Lift%20A%20carries%205%20persons%20from%202nd%20floor%20to%206th%20floor%2C%20cost%20%3D%20A%5C%5C%5B2%5C%5C%5D%20%5E%20A%5C%5C%5B6%5C%5C%5D%20%5E%205%5Cn%5Cn5%5C%5C.%20If%201%20more%20person%20enters%20Lift%20A%20on%20the%204th%20floor%2C%20the%20cost%20will%20be%20%28A%5C%5C%5B2%5C%5C%5D%20%5E%20A%5C%5C%5B4%5C%5C%5D%20%5E%205%29%20%2B%20%28A%5C%5C%5B4%5C%5C%5D%20%5E%20A%5C%5C%5B6%5C%5C%5D%20%5E%206%29%22%2C%22inputFormat%22%3A%22First%20Line%20consists%20of%20an%20integer%20denoting%20the%20number%20of%20test%20cases%28atmost%2010%29.%5Cn%5CnEvery%20test%20case%20will%20be%20of%20the%20following%20form.%5Cn%5CnFirst%20line%20contains%20n%20the%20number%20of%20floors%20in%20the%20building.%5Cn%5CnSecond%20line%20contains%20n%2B1%20integers%3A%20A%5C%5C%5B0%5C%5C%5D%2C%20A%5C%5C%5B1%5C%5C%5D.....A%5C%5C%5Bn%5C%5C%5D.%5Cn%5CnThird%20line%20contains%20n%2B1%20integers%3A%20B%5C%5C%5B0%5C%5C%5D%2C%20B%5C%5C%5B1%5C%5C%5D......B%5C%5C%5Bn%5C%5C%5D.%5Cn%5CnFourth%20line%20contains%20n%20integers%3A%20The%20number%20of%20persons%20waiting%20in%20each%20floor%20from%200%20to%20n%20-%201.%22%2C%22outputFormat%22%3A%22For%20every%20test%20case%20output%20one%20integer%20on%20a%20new%20line%3A%20the%20minimum%20cost%20for%20operating%20the%20elevators%20and%20ensuring%20that%20all%20people%20reach%20the%20n%27th%20floor.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn2%5Cr%5Cn0%201%203%5Cr%5Cn0%201%205%5Cr%5Cn2%201%5Cr%5Cn4%5Cr%5Cn1%203%205%207%209%5Cr%5Cn2%204%206%208%2010%5Cr%5Cn1%202%203%204%22%2C%221%5Cr%5Cn16%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F13895%22%2C%22id%22%3A%2213895%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP13895%22%2C%22title%22%3A%22PARTYTIM%20-%20Party%20Time%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PARTYTIM%20-%20Party%20Time%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PARTYTIM - Party Time</h1>
+<h2>题目描述</h2>
+<div>In a n-storey resort a grand party is arranged in the nth floor of the building and two magical elevators A and B are stationed at the ground floor (zero th floor).
+There are people waiting in all floors from to 0 to n-1 for attending the party. These two magical elevators are used for getting these people to the party. These elevators can be moved from one floor to any other floor. The time it takes to move any elevator from i th floor to j th floor is abs(j - i) time units.
+Also there is a cost associated with moving the elevator from i th floor to j th floor.
+If the elevator A moves from floor i to floor j with x people, then cost equals A\[i\] ^ A\[j\] ^ x, where '^' is the bitwise XOR operator. Similarly for the elevator B, it is B\[i\] ^ B\[j\] ^ x. However, if the lift stops on the k'th floor and 'a' people get on the elevator and 'b' people get off the elevator, to make a new count of 'y' people, then new cost is (A\[i\] ^ A\[k\] ^ x) + (A\[k\] ^ A\[j\] ^ y). (see notes).
+People who are inside the elevator can be made to get down from it at any floor that it stops. It takes zero time for people to get into or out of the elevator.
+All persons who are waiting have to be taken to the nth floor. As the party is going to start immediately the resort manager wants everyone to be there in the party in the least time possible. It is your job to control these elevators in such a way that everyone is there in the party in the least time possible and also minimize the cost of controlling these elevators.
+**Notes:**
+1\. The objective is to get all the people waiting in floors 0, 1....n - 1 to floor n.
+2\. The elevators can move up or down.
+3\. It takes zero time for the elevator to stop at any floor and for people to get down or get into the elevator.
+4\. If Lift A carries 5 persons from 2nd floor to 6th floor, cost = A\[2\] ^ A\[6\] ^ 5
+5\. If 1 more person enters Lift A on the 4th floor, the cost will be (A\[2\] ^ A\[4\] ^ 5) + (A\[4\] ^ A\[6\] ^ 6)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First Line consists of an integer denoting the number of test cases(atmost 10).
+Every test case will be of the following form.
+First line contains n the number of floors in the building.
+Second line contains n+1 integers: A\[0\], A\[1\].....A\[n\].
+Third line contains n+1 integers: B\[0\], B\[1\]......B\[n\].
+Fourth line contains n integers: The number of persons waiting in each floor from 0 to n - 1.</div>
+<h3>输出格式</h3>
+<br />
+<div>For every test case output one integer on a new line: the minimum cost for operating the elevators and ensuring that all people reach the n'th floor.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+2
+0 1 3
+0 1 5
+2 1
+4
+1 3 5 7 9
+2 4 6 8 10
+1 2 3 4</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+16</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

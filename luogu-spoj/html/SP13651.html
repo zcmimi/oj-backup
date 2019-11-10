@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>KNGCHECK - Check - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450360:CBmxNHMLv20IV11Dd4DwnLqp++ii4S4YYz1FljybtbI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Chess%20is%20a%20two-player%20strategy%20board%20game%20played%20on%20a%20chessboard%2C%20a%20square%20checkered%20game%20board%20with%2064%20squares%20arranged%20in%20an%20eight-by-eight%20grid.%20It%20is%20one%20of%20the%20world%27s%20most%20popular%20games%2C%20played%20by%20millions%20of%20people%20worldwide%20at%20home%2C%20in%20clubs%2C%20online%2C%20by%20correspondence%2C%20and%20in%20tournaments.%20Each%20player%20begins%20the%20game%20with%2016%20pieces%3A%20one%20king%2C%20one%20queen%2C%20two%20rooks%2C%20two%20knights%2C%20two%20bishops%2C%20and%20eight%20pawns.%20Each%20of%20the%20six%20piece%20types%20moves%20differently.%20Pieces%20are%20used%20to%20attack%20and%20capture%20the%20opponent%27s%20pieces%2C%20with%20the%20objective%20to%20%27checkmate%27%20the%20opponent%27s%20king%20by%20placing%20it%20under%20an%20inescapable%20threat%20of%20capture.%20In%20addition%20to%20checkmate%2C%20the%20game%20can%20be%20won%20by%20the%20voluntary%20resignation%20of%20the%20opponent%2C%20which%20typically%20occurs%20when%20too%20much%20material%20is%20lost%2C%20or%20if%20checkmate%20appears%20unavoidable.%20A%20game%20may%20also%20result%20in%20a%20draw%20in%20several%20ways%2C%20where%20neither%20player%20wins.%20The%20course%20of%20the%20game%20is%20divided%20into%20three%20phases%3A%20opening%2C%20middle%20game%2C%20and%20endgame.%20Source%20Wikipedia%5Cn%5CnTo%20simplify%20this%20problem%20you%20will%20only%20deal%20with%20Kings%2C%20Knights%20and%20Pawns%20of%20the%20Black%20and%20the%20White%20Players.%20Assume%20that%20the%20White%20Player%20starts%20at%20the%20lower%20half%20of%20the%20board%20and%20the%20Black%20Player%20starts%20at%20the%20upper%20half.%20Given%20the%20state%20of%20the%20board%2C%20your%20task%20is%20to%20determine%20whether%20the%20black%20king%20is%20checked%20or%20not.%20For%20Clarity%20a%20%27Check%27%20occurs%20when%20the%20King%27s%20square%20can%20be%20attacked%20by%20any%20of%20the%20opponent%27s%20pieces%20for%20his%20next%20move%2C%20and%20note%20that%20in%20this%20problem%20we%20will%20ignore%20the%20consequences%20which%20will%20follow%2C%20we%20don%5Cu2019t%20even%20care%20whose%20turn%20is%20now%20but%20only%20consider%20the%20board%20state%20%28out%20of%20chess%20rules%29.%5Cn%5CnThe%20Knight%20moves%20like%20an%20%5C%22L%5C%22%2C%20it%20moves%20from%20cell%20%28r1%2C%20c1%29%20to%20cell%20%28r2%2C%20c2%29%20if%20and%20only%20if%20%28r1%20-%20r2%29%20%24%20%5E%7B2%7D%20%24%20%2B%20%28c1-c2%29%20%24%20%5E%7B2%7D%20%24%20%3D%205%20%288%20possible%20moves%29.%5Cn%5CnThe%20King%20can%20move%20only%20one%20move%20in%20its%20four%20main%20directions%20and%20its%20four%20diagonals%20%288%20possible%20moves%29.%5Cn%5CnThe%20Pawn%20attacks%20only%20one%20move%20diagonally%20and%20only%20to%20the%20oppenent%20direction%20%282%20possible%20moves%29.%5Cn%5CnThis%20problem%20is%20%2A%2ANOT%2A%2A%20following%20all%20chess%20rules%2C%20for%20example%20in%20real%20chess%20third%20case%20in%20the%20sample%20is%20INVALID%2C%20so%20please%20assume%20that%20the%20given%20board%20is%20always%20valid%2C%20just%20check%20the%20black%20king%20state.%22%2C%22inputFormat%22%3A%22You%20are%20given%20an%208x8%20Board%20with%20Chess%20Pieces%20denoted%20as%20following%3A%20BK%20%3D%20Black%20King%2C%20WK%20%3D%20White%20King%2C%20BH%20%3D%20Black%20Knight%2C%20WH%20%3D%20White%20Knight%2C%20BP%20%3D%20Black%20Pawn%2C%20WP%20%3D%20White%20Pawn.%20We%20ensure%20that%20there%20is%20one%20and%20only%20one%20Black%20King%20in%20the%20Chess%20Board.%20Blank%20fields%20are%20denoted%20by%20%5Cu201c-%5Cu201d.%20Cases%20are%20seperated%20by%20blank%20lines.%22%2C%22outputFormat%22%3A%22You%20should%20output%20%5Cu201cCheck%5Cu201d%20if%20a%20Check%20exists%20or%20%5Cu201cNot%20Check%5Cu201d%20if%20no%20check%20exists.%20Follow%20the%20output%20format%20described%20in%20the%20sample%20tests.%22%2C%22samples%22%3A%5B%5B%223%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20BH%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20BK%20-%20-%20-%20-%5Cr%5Cn-%20-%20WP%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5CnBH%20-%20-%20BH%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20BK%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20WP%20-%20-%20-%20-%20WH%20-%5Cr%5Cn-%20-%20-%20WK%20-%20-%20-%20-%5Cr%5Cn%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20BK%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20WK%20-%20-%20-%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20WH%20-%5Cr%5Cn-%20-%20-%20-%20-%20-%20-%20-%5Cr%5Cn-%20WP%20-%20-%20-%20-%20WH%20-%22%2C%22Case%20%231%3A%20Check%5Cr%5CnCase%20%232%3A%20Not%20Check%5Cr%5CnCase%20%233%3A%20Check%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B241%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F13651%22%2C%22id%22%3A%2213651%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP13651%22%2C%22title%22%3A%22KNGCHECK%20-%20Check%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22KNGCHECK%20-%20Check%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>KNGCHECK - Check</h1>
+<h2>题目描述</h2>
+<div>Chess is a two-player strategy board game played on a chessboard, a square checkered game board with 64 squares arranged in an eight-by-eight grid. It is one of the world's most popular games, played by millions of people worldwide at home, in clubs, online, by correspondence, and in tournaments. Each player begins the game with 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns. Each of the six piece types moves differently. Pieces are used to attack and capture the opponent's pieces, with the objective to 'checkmate' the opponent's king by placing it under an inescapable threat of capture. In addition to checkmate, the game can be won by the voluntary resignation of the opponent, which typically occurs when too much material is lost, or if checkmate appears unavoidable. A game may also result in a draw in several ways, where neither player wins. The course of the game is divided into three phases: opening, middle game, and endgame. Source Wikipedia
+To simplify this problem you will only deal with Kings, Knights and Pawns of the Black and the White Players. Assume that the White Player starts at the lower half of the board and the Black Player starts at the upper half. Given the state of the board, your task is to determine whether the black king is checked or not. For Clarity a 'Check' occurs when the King's square can be attacked by any of the opponent's pieces for his next move, and note that in this problem we will ignore the consequences which will follow, we don’t even care whose turn is now but only consider the board state (out of chess rules).
+The Knight moves like an "L", it moves from cell (r1, c1) to cell (r2, c2) if and only if (r1 - r2) $ ^{2} $ + (c1-c2) $ ^{2} $ = 5 (8 possible moves).
+The King can move only one move in its four main directions and its four diagonals (8 possible moves).
+The Pawn attacks only one move diagonally and only to the oppenent direction (2 possible moves).
+This problem is **NOT** following all chess rules, for example in real chess third case in the sample is INVALID, so please assume that the given board is always valid, just check the black king state.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>You are given an 8x8 Board with Chess Pieces denoted as following: BK = Black King, WK = White King, BH = Black Knight, WH = White Knight, BP = Black Pawn, WP = White Pawn. We ensure that there is one and only one Black King in the Chess Board. Blank fields are denoted by “-”. Cases are seperated by blank lines.</div>
+<h3>输出格式</h3>
+<br />
+<div>You should output “Check” if a Check exists or “Not Check” if no check exists. Follow the output format described in the sample tests.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+- - - - - - - -
+- - - - - - - -
+- - - - - - - -
+- BH - - - - - -
+- - - BK - - - -
+- - WP - - - - -
+- - - - - - - -
+- - - - - - - -
+
+- - - - - - - -
+BH - - BH - - - -
+- - - - - - - -
+- - - - - - - -
+- - - BK - - - -
+- - - - - - - -
+- WP - - - - WH -
+- - - WK - - - -
+
+- - - - - - - -
+- - - - - - - -
+- - - - - - - -
+- - - - - - - -
+- - - BK - - - -
+- - - WK - - - -
+- - - - - - WH -
+- - - - - - - -
+- WP - - - - WH -</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case #1: Check
+Case #2: Not Check
+Case #3: Check</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

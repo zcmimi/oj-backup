@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FILTER - Median Filter - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449772:fqdA7YX0oFkmSVb/6BJbjI8SW7bKMlSSZgBxwj18qbs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20median%20filter%20is%20a%20nonlinear%20digital%20filter%20used%20to%20reduce%20noise%20in%20images%2C%20sounds%2C%20and%20other%20kinds%20of%20signals.%20It%20examines%20each%20sample%20of%20the%20input%20through%20a%20_window_%20and%20then%20emits%20the%20_median_%20of%20the%20samples%20in%20the%20window.%20Roughly%20speaking%2C%20a%20window%20is%20an%20interval%20that%20contains%20a%20target%20sample%20and%20its%20preceding%20and%20succeeding%20samples%3B%20the%20median%20of%20a%20series%20of%20values%20is%20given%20by%20the%20middle%20value%20of%20the%20series%20arranged%20in%20ascending%20%28or%20descending%29%20order.%5Cn%5CnLet%20us%20focus%20on%20a%20typical%20median%20filter%20for%20black-and-white%20raster%20images.%20The%20typical%20filter%20uses%20a%203%20%5Cu00d7%203%20window%2C%20which%20contains%20a%20target%20pixel%20and%20the%20eight%20adjacent%20pixels.%20The%20filter%20examines%20each%20pixel%20in%20turn%20through%20this%203%20%5Cu00d7%203%20window%2C%20and%20outputs%20the%20median%20of%20the%20nine%20pixel%20values%2C%20i.e.%20the%20fifth%20lowest%20%28or%20highest%29%20pixel%20value%2C%20to%20the%20corresponding%20pixel.%20We%20should%20note%20that%20the%20output%20is%20just%20given%20by%20the%20pixel%20value%20in%20majority%20for%20black-andwhite%20images%2C%20since%20there%20are%20only%20two%20possible%20pixel%20values%20%28i.e.%20black%20and%20white%29.%20The%20figure%20below%20illustrates%20how%20the%20filter%20works.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP3003%5C%2F53185b7d6664fea677a24a1e44d86d879564d3d5.png%29The%20edges%20of%20images%20need%20to%20be%20specially%20processed%20due%20to%20lack%20of%20the%20adjacent%20pixels.%20In%20this%20problem%2C%20we%20extends%20the%20original%20images%20by%20repeating%20pixels%20on%20the%20edges%20as%20shown%20in%20the%20figure%20below.%20In%20other%20words%2C%20the%20lacked%20pixels%20take%20the%20same%20values%20as%20the%20nearest%20available%20pixels%20in%20the%20original%20images.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP3003%5C%2F7ee7e6dcd400deaaff1904f782ac85560425cd44.png%29You%20are%20requested%20to%20write%20a%20program%20that%20reads%20images%20to%20which%20the%20filter%20is%20applied%2C%20then%20finds%20the%20original%20images%20containing%20the%20greatest%20and%20smallest%20number%20of%20black%20pixels%20among%20all%20possible%20ones%2C%20and%20reports%20the%20difference%20in%20the%20numbers%20of%20black%20pixels.%22%2C%22inputFormat%22%3A%22The%20input%20contains%20a%20series%20of%20test%20cases.%5Cn%5CnThe%20first%20line%20of%20each%20test%20case%20contains%20two%20integers%20W%20and%20H%20%281%20%5Cu2264%20W%2C%20H%20%5Cu2264%208%29%2C%20which%20indicates%20the%20width%20and%20height%20of%20the%20image%20respectively.%20Then%20H%20lines%20follow%20to%20describe%20the%20filtered%20image.%20The%20_i_-th%20line%20represents%20the%20_i_-th%20scan%20line%20and%20contains%20exactly%20W%20characters%2C%20each%20of%20which%20is%20either%20%27%23%27%20%28representing%20black%29%20or%20%27.%27%20%28representing%20white%29.%5Cn%5CnThe%20input%20is%20terminated%20by%20a%20line%20with%20two%20zeros.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20print%20a%20line%20that%20contains%20the%20case%20number%20followed%20by%20the%20difference%20of%20black%20pixels.%20If%20there%20are%20no%20original%20images%20possible%20for%20the%20given%20filtered%20image%2C%20print%20%5C%22Impossible%5C%22%20instead.%5Cn%5CnObey%20the%20format%20as%20shown%20in%20the%20sample%20output.%22%2C%22samples%22%3A%5B%5B%225%205%5Cr%5Cn%23%23%23%23%23%5Cr%5Cn%23%23%23%23%23%5Cr%5Cn%23%23%23%23%23%5Cr%5Cn%23%23%23%23%23%5Cr%5Cn%23%23%23%23%23%5Cr%5Cn4%204%5Cr%5Cn%23%23%23%23%5Cr%5Cn%23%23%23%23%5Cr%5Cn%23%23%23%23%5Cr%5Cn%23%23%23%23%5Cr%5Cn4%204%5Cr%5Cn%23...%5Cr%5Cn....%5Cr%5Cn....%5Cr%5Cn...%23%5Cr%5Cn4%204%5Cr%5Cn.%23.%23%5Cr%5Cn%23.%23.%5Cr%5Cn.%23.%23%5Cr%5Cn%23.%23.%5Cr%5Cn0%200%22%2C%22Case%201%3A%2010%5Cr%5CnCase%202%3A%206%5Cr%5CnCase%203%3A%202%5Cr%5CnCase%204%3A%20Impossible%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3567%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3003%22%2C%22id%22%3A%223003%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP3003%22%2C%22title%22%3A%22FILTER%20-%20Median%20Filter%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22FILTER%20-%20Median%20Filter%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>FILTER - Median Filter</h1>
+<h2>题目描述</h2>
+<div>The median filter is a nonlinear digital filter used to reduce noise in images, sounds, and other kinds of signals. It examines each sample of the input through a _window_ and then emits the _median_ of the samples in the window. Roughly speaking, a window is an interval that contains a target sample and its preceding and succeeding samples; the median of a series of values is given by the middle value of the series arranged in ascending (or descending) order.
+Let us focus on a typical median filter for black-and-white raster images. The typical filter uses a 3 × 3 window, which contains a target pixel and the eight adjacent pixels. The filter examines each pixel in turn through this 3 × 3 window, and outputs the median of the nine pixel values, i.e. the fifth lowest (or highest) pixel value, to the corresponding pixel. We should note that the output is just given by the pixel value in majority for black-andwhite images, since there are only two possible pixel values (i.e. black and white). The figure below illustrates how the filter works.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP3003/53185b7d6664fea677a24a1e44d86d879564d3d5.png)The edges of images need to be specially processed due to lack of the adjacent pixels. In this problem, we extends the original images by repeating pixels on the edges as shown in the figure below. In other words, the lacked pixels take the same values as the nearest available pixels in the original images.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP3003/7ee7e6dcd400deaaff1904f782ac85560425cd44.png)You are requested to write a program that reads images to which the filter is applied, then finds the original images containing the greatest and smallest number of black pixels among all possible ones, and reports the difference in the numbers of black pixels.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input contains a series of test cases.
+The first line of each test case contains two integers W and H (1 ≤ W, H ≤ 8), which indicates the width and height of the image respectively. Then H lines follow to describe the filtered image. The _i_-th line represents the _i_-th scan line and contains exactly W characters, each of which is either '#' (representing black) or '.' (representing white).
+The input is terminated by a line with two zeros.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, print a line that contains the case number followed by the difference of black pixels. If there are no original images possible for the given filtered image, print "Impossible" instead.
+Obey the format as shown in the sample output.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5 5
+#####
+#####
+#####
+#####
+#####
+4 4
+####
+####
+####
+####
+4 4
+#...
+....
+....
+...#
+4 4
+.#.#
+#.#.
+.#.#
+#.#.
+0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case 1: 10
+Case 2: 6
+Case 3: 2
+Case 4: Impossible</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

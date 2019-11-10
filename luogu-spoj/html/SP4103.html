@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>EPALIN - Extend to Palindrome - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449855:5PWXwx7gyVDt9Lcq+7TxmsEb28SBBg0rROzrvKWOYkI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Your%20task%20is%2C%20given%20an%20integer%20N%2C%20to%20make%20a%20palindrome%20%28word%20that%20reads%20the%20same%20when%20you%20reverse%20it%29%20of%20length%20at%20least%20N%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29.%20Any%20palindrome%20will%20do.%5Cn%5Cn%20Easy%2C%20isn%27t%20it%3F%20That%27s%20what%20you%20thought%20before%20you%20passed%20it%20on%20to%20your%20inexperienced%20team-mate.%20When%20the%20contest%20is%20almost%20over%2C%20you%20find%20out%20that%20that%20problem%20still%20isn%27t%20solved.%20The%20problem%20with%20the%20code%20is%20that%20the%20strings%20generated%20are%20often%20not%20palindromic.%20There%27s%20not%20enough%20time%20to%20start%20again%20from%20scratch%20or%20to%20debug%20his%20messy%20code.%5Cn%5Cn%20Seeing%20that%20the%20situation%20is%20desperate%2C%20you%20decide%20to%20simply%20write%20some%20additional%20code%20that%20takes%20the%20output%20and%20adds%20just%20enough%20extra%20characters%20to%20it%20to%20make%20it%20a%20palindrome%20and%20hope%20for%20the%20best.%20Your%20solution%20should%20take%20as%20its%20input%20a%20string%20and%20produce%20the%20smallest%20palindrome%20that%20can%20be%20formed%20by%20adding%20zero%20or%20more%20characters%20at%20its%20end.%20The%20input%20string%20will%20consist%20of%20only%20upper%20and%20lower%20case%20letters.%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5B%22aaaa%5Cr%5Cnabba%5Cr%5Cnamanaplanacanal%5Cr%5Cnxyz%22%2C%22aaaa%5Cr%5Cnabba%5Cr%5Cnamanaplanacanalpanama%5Cr%5Cnxyzyx%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B450%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F4103%22%2C%22id%22%3A%224103%22%7D%2C%22translation%22%3A%22%5Cu8f93%5Cu5165%5Cu591a%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%20%20%24S%24%20%20%5Cuff0c%5Cu6c42%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%20%20%24S%5E%2A%24%20%20%5Cuff0c%20%20%24S%5E%2A%24%20%20%5Cu9700%5Cu8981%5Cu6ee1%5Cu8db3%5Cuff1a%5Cr%5Cn%5Cr%5Cn1.%20%20%20%24S%24%20%20%5Cu4e3a%20%20%24S%5E%2A%24%20%20%5Cu7684%5Cu524d%5Cu7f00%5Cuff1b%5Cr%5Cn2.%20%20%20%24S%5E%2A%24%20%20%5Cu662f%5Cu4e00%5Cu4e2a%5Cu56de%5Cu6587%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff1b%5Cr%5Cn3.%20%20%20%24%7CS%5E%2A%7C%24%20%20%5Cuff08%24S%5E%2A%24%5Cu7684%5Cu957f%5Cu5ea6%5Cuff09%5Cu5e94%5Cu5c3d%5Cu53ef%5Cu80fd%5Cu5c0f%5Cuff1b%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%20%20%24S%24%20%20%5Cuff0c%5Cu8f93%5Cu51fa%20%20%24S%5E%2A%24%20%20%5Cuff0c%5Cu6bcf%5Cu884c%5Cu8f93%5Cu51fa%5Cu4ee5%5Cu6362%5Cu884c%5Cu7b26%5Cu7ed3%5Cu5c3e%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A14%2C%22totalAccepted%22%3A8%2C%22pid%22%3A%22SP4103%22%2C%22title%22%3A%22EPALIN%20-%20Extend%20to%20Palindrome%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22EPALIN%20-%20Extend%20to%20Palindrome%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>EPALIN - Extend to Palindrome</h1>
+<h2>题意翻译</h2>
+<div>输入多个字符串。
+对于每个字符串 $S$ ，求出一个字符串 $S^*$ ， $S^*$ 需要满足：
+1. $S$ 为 $S^*$ 的前缀；
+2. $S^*$ 是一个回文字符串；
+3. $|S^*|$ （$S^*$的长度）应尽可能小；
+对于每个 $S$ ，输出 $S^*$ ，每行输出以换行符结尾。</div>
+<h2>题目描述</h2>
+<div> Your task is, given an integer N, to make a palindrome (word that reads the same when you reverse it) of length at least N (1 <= N <= 100,000). Any palindrome will do.
+Easy, isn't it? That's what you thought before you passed it on to your inexperienced team-mate. When the contest is almost over, you find out that that problem still isn't solved. The problem with the code is that the strings generated are often not palindromic. There's not enough time to start again from scratch or to debug his messy code.
+Seeing that the situation is desperate, you decide to simply write some additional code that takes the output and adds just enough extra characters to it to make it a palindrome and hope for the best. Your solution should take as its input a string and produce the smallest palindrome that can be formed by adding zero or more characters at its end. The input string will consist of only upper and lower case letters.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>aaaa
+abba
+amanaplanacanal
+xyz</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>aaaa
+abba
+amanaplanacanalpanama
+xyzyx</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

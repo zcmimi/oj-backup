@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TREE - Another Counting Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449615:19HgJYblX26VLsbZ/ovU7o4E4huboUTIUVT1tvYp8XE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Tree%20is%20an%20important%20data%20structure%20in%20Computer%20Science.%20Of%20all%20trees%20we%20work%20with%2C%20Binary%20Tree%20is%20probably%20the%20most%20popular%20one.%20A%20Binary%20Tree%20is%20called%20a%20%2A%2AStrictly%20Binary%20Tree%2A%2A%20if%20every%20nonleaf%20node%20in%20a%20binary%20tree%20has%20nonempty%20left%20and%20right%20subtrees.%20Let%20us%20define%20%2A%2Aa%20Strictly%20Binary%20Tree%20of%20depth%20d%2A%2A%2C%20as%20a%20Strictly%20Binary%20Tree%20that%20has%20at%20least%20one%20root%20to%20leaf%20path%20of%20length%20%2A%2Ad%2A%2A%2C%20and%20no%20root%20to%20leaf%20path%20in%20that%20tree%20is%20longer%20than%20%2A%2Ad%2A%2A.%20So%20let%20us%20use%20a%20similar%20reasoning%20to%20define%20a%20generalized%20structure.%5Cn%5CnAn%20n-ary%20Tree%20is%20called%20a%20%2A%2AStrictly%20n-ary%20Tree%2A%2A%20if%20every%20nonleaf%20node%20in%20an%20n-ary%20tree%20has%20n%20children%20each.%20A%20%2A%2AStrictly%20n-ary%20Tree%20of%20depth%20d%2A%2A%20can%20now%20be%20defined%20as%20a%20Strictly%20n-ary%20Tree%20that%20has%20at%20least%20one%20root%20to%20leaf%20path%20of%20length%20d%2C%20and%20no%20root%20to%20leaf%20path%20in%20that%20tree%20is%20longer%20than%20d.%5Cn%5CnGiven%20the%20value%20of%20n%20and%20depth%20d%2C%20your%20task%20is%20to%20find%20the%20number%20of%20different%20strictly%20n-ary%20trees%20of%20depth%20d.%5Cn%5CnThe%20figure%20below%20shows%20the%203%20different%20strictly%20binary%20trees%20of%20depth%202.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP738%5C%2Fb4ef4deb7dfc02143b1a2e4b26957c5add201235.png%29%22%2C%22inputFormat%22%3A%22%20Input%20consists%20of%20several%20test%20cases.%20Each%20test%20case%20consists%20of%20two%20integers%20%2A%2An%20%280%20%3C%20n%20%3C%3D%2032%29%2C%20d%20%280%20%3C%3D%20d%20%3C%3D%2016%29%2A%2A.%20Input%20is%20terminated%20a%20test%20case%20where%20n%3D0%20and%20d%3D0%2C%20you%20must%20not%20process%20this%20test%20case.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20print%20three%20integers%2C%20n%2C%20d%20and%20the%20number%20of%20different%20strictly%20n-ary%20trees%20of%20level%20d%2C%20in%20a%20single%20line.%20There%20will%20be%20a%20single%20space%20in%20between%20two%20integers%20of%20a%20line.%20You%20can%20assume%20that%20you%20would%20not%20be%20asked%20about%20cases%20where%20you%20had%20to%20consider%20trees%20that%20may%20have%20more%20than%202%20%24%20%5E%7B10%7D%20%24%20nodes%20in%20a%20level%20of%20the%20tree.%20You%20may%20also%20find%20it%20useful%20to%20know%20that%20the%20answer%20for%20each%20test%20case%20will%20always%20fit%20in%20a%20200%20digit%20integer.%22%2C%22samples%22%3A%5B%5B%222%200%5Cr%5Cn2%201%5Cr%5Cn2%202%5Cr%5Cn2%203%5Cr%5Cn3%205%5Cr%5Cn0%200%22%2C%222%200%201%5Cr%5Cn2%201%201%5Cr%5Cn2%202%203%5Cr%5Cn2%203%2021%5Cr%5Cn3%205%2058871587162270592645034001%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B500%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F738%22%2C%22id%22%3A%22738%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP738%22%2C%22title%22%3A%22TREE%20-%20Another%20Counting%20Problem%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TREE%20-%20Another%20Counting%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TREE - Another Counting Problem</h1>
+<h2>题目描述</h2>
+<div>Tree is an important data structure in Computer Science. Of all trees we work with, Binary Tree is probably the most popular one. A Binary Tree is called a **Strictly Binary Tree** if every nonleaf node in a binary tree has nonempty left and right subtrees. Let us define **a Strictly Binary Tree of depth d**, as a Strictly Binary Tree that has at least one root to leaf path of length **d**, and no root to leaf path in that tree is longer than **d**. So let us use a similar reasoning to define a generalized structure.
+An n-ary Tree is called a **Strictly n-ary Tree** if every nonleaf node in an n-ary tree has n children each. A **Strictly n-ary Tree of depth d** can now be defined as a Strictly n-ary Tree that has at least one root to leaf path of length d, and no root to leaf path in that tree is longer than d.
+Given the value of n and depth d, your task is to find the number of different strictly n-ary trees of depth d.
+The figure below shows the 3 different strictly binary trees of depth 2.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP738/b4ef4deb7dfc02143b1a2e4b26957c5add201235.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> Input consists of several test cases. Each test case consists of two integers **n (0 < n <= 32), d (0 <= d <= 16)**. Input is terminated a test case where n=0 and d=0, you must not process this test case.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, print three integers, n, d and the number of different strictly n-ary trees of level d, in a single line. There will be a single space in between two integers of a line. You can assume that you would not be asked about cases where you had to consider trees that may have more than 2 $ ^{10} $ nodes in a level of the tree. You may also find it useful to know that the answer for each test case will always fit in a 200 digit integer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 0
+2 1
+2 2
+2 3
+3 5
+0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2 0 1
+2 1 1
+2 2 3
+2 3 21
+3 5 58871587162270592645034001</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

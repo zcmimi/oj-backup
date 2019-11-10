@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TETRIS3D - Tetris 3D - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449677:gypZ9PZFjTFKDwIRADGL//No7UMJGZmLjjwyjpkvhOo=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20authors%20of%20the%20game%20%5C%22Tetris%5C%22%20have%20decided%20to%20make%20a%20new%2C%20three-dimensional%20version%2C%20in%20which%20cuboids%20would%20fall%20down%20on%20a%20rectangular%20platform.%20The%20blocks%20fall%20down%20separately%20in%20a%20certain%20order%2C%20just%20like%20in%20the%20two-dimensional%20game.%20A%20block%20falls%20down%20until%20it%20reaches%20an%20obstacle%3A%20the%20platform%20or%20another%20block%2C%20that%20has%20already%20stopped%20-%20then%20it%20stops%20and%20remains%20in%20this%20exact%20position%20till%20the%20game%20is%20over.%20%20%20%5Cn%20However%2C%20the%20authors%20wanted%20to%20change%20the%20spirit%20of%20the%20game%2C%20turning%20it%20from%20a%20simple%20arcade-game%20into%20a%20play%20far%20more%20puzzling.%20Knowing%20the%20order%20of%20the%20falling%20blocks%20and%20their%20flight%20path%20the%20player%27s%20task%20is%20to%20tell%20the%20height%20of%20the%20highest%20point%20of%20the%20arrangement%20after%20all%20blocks%20have%20fallen%20down%20%28and%20stopped%29.%20All%20the%20blocks%20are%20falling%20down%20vertically%20and%20do%20not%20rotate%20while%20falling.%20For%20convenience%20we%27ll%20introduce%20a%20cartesian%20coordinate%20system%20on%20the%20platform%2C%20with%20the%20center%20in%20one%20of%20the%20platform%27s%20corners%20and%20the%20axes%20parallel%20to%20the%20platform%27s%20edges.%20%20%20%5Cn%20Write%20a%20program%20that%3A%20%20%20%5Cn%20%5Cu2022%20reads%20the%20descriptions%20of%20subsequent%20falling%20blocks%20from%20the%20standard%20input%2C%20%20%20%5Cn%20%5Cu2022%20determines%20the%20height%20of%20the%20highest%20point%20of%20the%20arrangement%20of%20blocks%20after%20all%20have%20fallen%20down%20and%20stopped%2C%20%20%20%5Cn%20%5Cu2022%20writes%20the%20result%20to%20the%20standard%20output.%22%2C%22inputFormat%22%3A%22In%20the%20first%20line%20of%20the%20input%20there%20are%20three%20integers%20D%2C%20S%20and%20N%20%28%201%3C%3DN%3C%3D20%20000%2C%201%3C%3DD%2C%20S%3C%3D1%20000%29%2C%20separated%20by%20single%20spaces%20and%20denoting%20respectively%3A%20the%20length%20and%20the%20depth%20of%20the%20platform%20and%20the%20number%20of%20blocks%20that%20are%20going%20to%20fall%20down%20on%20it.%20In%20the%20following%20N%20lines%20the%20descriptions%20of%20subsequent%20blocks%20are%20given%2C%20one%20in%20each%20line.%20%20%20%5Cn%20Each%20description%20of%20a%20block%20consists%20of%20five%20integers%3A%20d%2C%20s%2C%20w%2C%20x%20and%20y%20%281%3C%3Dd%2C%200%3C%3Dx%2Cd%2Bx%3C%3DD%2C%201%3C%3Ds%2C0%3C%3Dy%2Cs%2By%3C%3DS%2C%201%3C%3Dw%3C%3D100%20000%29%2C%20representing%20a%20block%20of%20length%20d%20depth%20s%20and%20height%20w%20This%20very%20block%20will%20be%20falling%20down%20on%20the%20platform%20with%20its%20d%5Cu00d7s%20face%20as%20the%20bottom%2C%20where%20the%20length%20and%20depth%20of%20the%20block%20are%20parallel%20to%20those%20of%20the%20platform.%20The%20coordinates%20of%20the%20vertices%20of%20the%20projection%20of%20the%20block%20on%20the%20platform%20are%3A%20%28x%2C%20y%29%2C%20%28x%20%2B%20d%2C%20y%29%2C%20%28x%2C%20y%20%2B%20s%29%20and%20%28x%20%2B%20d%2C%20y%20%2B%20s%29.%22%2C%22outputFormat%22%3A%22The%20first%20and%20only%20line%20of%20the%20standard%20output%20should%20contain%20exactly%20one%20integer%2C%20the%20height%20of%20the%20highest%20point%20of%20the%20arrangement%20of%20blocks%20after%20all%20have%20fallen%20down%20ad%20stopped.%22%2C%22samples%22%3A%5B%5B%227%205%204%5Cr%5Cn4%203%202%200%200%5Cr%5Cn3%203%201%203%200%5Cr%5Cn7%201%202%200%203%5Cr%5Cn2%203%203%202%202%22%2C%226%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B520%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1741%22%2C%22id%22%3A%221741%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu201c%5Cu4fc4%5Cu7f57%5Cu65af%5Cu65b9%5Cu5757%5Cu201d%5Cu7684%5Cu4f5c%5Cu8005%5Cu51b3%5Cu5b9a%5Cu5236%5Cu4f5c%5Cu4e00%5Cu4e2a3D%5Cu7248%5Cu672c%5Cu7684%5Cu201c%5Cu4fc4%5Cu7f57%5Cu65af%5Cu65b9%5Cu5757%5Cu201d%5Cu3002%5Cu6709%5Cu82e5%5Cu5e72%5Cu4e2a%5Cu957f%5Cu65b9%5Cu4f53%5Cu79ef%5Cu6728%5Cuff0c%5Cu5b83%5Cu4eec%5Cu5c06%5Cu4ee5%5Cu4e00%5Cu5b9a%5Cu7684%5Cu987a%5Cu5e8f%5Cu4e0b%5Cu843d%5Cuff0c%5Cu6700%5Cu5e95%5Cu7aef%5Cu662f%5Cu4e00%5Cu4e2a%5Cu77e9%5Cu5f62%5Cu5e73%5Cu53f0%5Cu3002%5Cu79ef%5Cu6728%5Cu505c%5Cu6b62%5Cu4e0b%5Cu843d%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5b83%5Cu78b0%5Cu5230%5Cu4e86%5Cu77e9%5Cu5f62%5Cu5e73%5Cu53f0%5Cu6216%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu5df2%5Cu7ecf%5Cu505c%5Cu6b62%5Cu4e0b%5Cu843d%5Cu7684%5Cu79ef%5Cu6728%5Cu3002%5Cu5b83%5Cu5c06%5Cu4fdd%5Cu6301%5Cu8fd9%5Cu4e2a%5Cu4f4d%5Cu7f6e%5Cu4e0d%5Cu53d8%5Cu76f4%5Cu81f3%5Cu6e38%5Cu620f%5Cu7ed3%5Cu675f%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7136%5Cu800c%5Cu4f5c%5Cu8005%5Cu60f3%5Cu8981%5Cu6539%5Cu53d8%5Cu8fd9%5Cu4e2a%5Cu6e38%5Cu620f%5Cu7684%5Cu73a9%5Cu6cd5%5Cu3002%5Cu5df2%5Cu77e5%5Cu79ef%5Cu6728%5Cu7684%5Cu4e0b%5Cu964d%5Cu987a%5Cu5e8f%5Cu4ee5%5Cu53ca%5Cu79ef%5Cu6728%5Cu7684%5Cu8d77%5Cu59cb%5Cu91ca%5Cu653e%5Cu4f4d%5Cu7f6e%5Cuff0c%5Cu6c42%5Cu6e38%5Cu620f%5Cu7ed3%5Cu675f%5Cu540e%5Cu79ef%5Cu6728%5Cu5806%5Cu6700%5Cu9ad8%5Cu70b9%5Cu7684%5Cu9ad8%5Cu5ea6%5Cu3002%5Cu5047%5Cu8bbe%5Cu79ef%5Cu6728%5Cu7ad6%5Cu76f4%5Cu4e0b%5Cu843d%5Cu4e14%5Cu4e0d%5Cu65cb%5Cu8f6c%5Cu3002%5Cu4e3a%5Cu4e86%5Cu63cf%5Cu8ff0%5Cu65b9%5Cu4fbf%5Cu8d77%5Cu89c1%5Cuff0c%5Cu6211%5Cu4eec%5Cu5f15%5Cu5165%5Cu4e00%5Cu4e2a%5Cu7b1b%5Cu5361%5Cu5c14%5Cu5750%5Cu6807%5Cu7cfb%5Cuff0c%5Cu539f%5Cu70b9%5Cu4e3a%5Cu5e73%5Cu53f0%5Cu7684%5Cu9876%5Cu70b9%5Cuff0c%5Cu8f74%5Cu4e0e%5Cu5e73%5Cu53f0%5Cu8fb9%5Cu7f18%5Cu5e73%5Cu884c%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu67093%5Cu4e2a%5Cu6574%5Cu6570%24D%2CS%2CN%24%5Cuff0c%5Cu5206%5Cu522b%5Cu4ee3%5Cu8868%5Cu77e9%5Cu5f62%5Cu5e73%5Cu53f0%5Cu7684%5Cu957f%5Cu3001%5Cu5bbd%5Cu548c%5Cu79ef%5Cu6728%5Cu6570%5Cu3002%5Cu5176%5Cu4e2d%241%5C%5Cleq%20N%20%5C%5Cleq%2020000%2C1%5C%5Cleq%20D%2CS%5C%5Cleq%201000%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24N%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c5%5Cu4e2a%5Cu6574%5Cu6570%24d%2Cs%2Cw%2Cx%2Cy%24%5Cu63cf%5Cu8ff0%5Cu4e86%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu79ef%5Cu6728%5Cu3002%241%5C%5Cleq%20d%2Cs%24%2C%241%5C%5Cleq%20w%20%5C%5Cleq%20100000%24%2C%240%5C%5Cleq%20x%2Cd%2Bx%5C%5Cleq%20D%24%2C%5Cr%5Cn%240%5C%5Cleq%20y%2Cs%2By%5C%5Cleq%20S%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6570%5Cu636e%5Cu8bf4%5Cu660e%5Cu8fd9%5Cu4e2a%5Cu79ef%5Cu6728%5Cu7684%5Cu957f%5Cu5bbd%5Cu9ad8%5Cu5206%5Cu522b%5Cu4e3a%24d%2Cs%2Cw%24%5Cuff0c%5Cu4e14%5Cu9876%5Cu70b9%5Cu5728%5Cu5e73%5Cu53f0%5Cu4e0a%5Cu7684%5Cu6295%5Cu5f71%5Cu5750%5Cu6807%5Cu4e3a%24%28x%2Cy%29%2C%28x%2Bd%2Cy%29%2C%28x%2Cy%2Bs%29%2C%28x%2Bd%2Cy%2Bs%29%24%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu4ec51%5Cu884c1%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5373%5Cu79ef%5Cu6728%5Cu5806%5Cu6700%5Cu9ad8%5Cu70b9%5Cu9ad8%5Cu5ea6%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A44%2C%22totalAccepted%22%3A31%2C%22pid%22%3A%22SP1741%22%2C%22title%22%3A%22TETRIS3D%20-%20Tetris%203D%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TETRIS3D%20-%20Tetris%203D%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TETRIS3D - Tetris 3D</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+“俄罗斯方块”的作者决定制作一个3D版本的“俄罗斯方块”。有若干个长方体积木，它们将以一定的顺序下落，最底端是一个矩形平台。积木停止下落当且仅当它碰到了矩形平台或另一个已经停止下落的积木。它将保持这个位置不变直至游戏结束。
+然而作者想要改变这个游戏的玩法。已知积木的下降顺序以及积木的起始释放位置，求游戏结束后积木堆最高点的高度。假设积木竖直下落且不旋转。为了描述方便起见，我们引入一个笛卡尔坐标系，原点为平台的顶点，轴与平台边缘平行。
+# 输入格式
+第一行有3个整数$D,S,N$，分别代表矩形平台的长、宽和积木数。其中$1\leq N \leq 20000,1\leq D,S\leq 1000$。
+接下来$N$行，每行5个整数$d,s,w,x,y$描述了
+一个积木。$1\leq d,s$,$1\leq w \leq 100000$,$0\leq x,d+x\leq D$,
+$0\leq y,s+y\leq S$。
+数据说明这个积木的长宽高分别为$d,s,w$，且顶点在平台上的投影坐标为$(x,y),(x+d,y),(x,y+s),(x+d,y+s)$。
+# 输出格式
+仅1行1个整数，即积木堆最高点高度。
+</div>
+<h2>题目描述</h2>
+<div>The authors of the game "Tetris" have decided to make a new, three-dimensional version, in which cuboids would fall down on a rectangular platform. The blocks fall down separately in a certain order, just like in the two-dimensional game. A block falls down until it reaches an obstacle: the platform or another block, that has already stopped - then it stops and remains in this exact position till the game is over.
+However, the authors wanted to change the spirit of the game, turning it from a simple arcade-game into a play far more puzzling. Knowing the order of the falling blocks and their flight path the player's task is to tell the height of the highest point of the arrangement after all blocks have fallen down (and stopped). All the blocks are falling down vertically and do not rotate while falling. For convenience we'll introduce a cartesian coordinate system on the platform, with the center in one of the platform's corners and the axes parallel to the platform's edges.
+Write a program that:
+• reads the descriptions of subsequent falling blocks from the standard input,
+• determines the height of the highest point of the arrangement of blocks after all have fallen down and stopped,
+• writes the result to the standard output.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>In the first line of the input there are three integers D, S and N ( 1<=N<=20 000, 1<=D, S<=1 000), separated by single spaces and denoting respectively: the length and the depth of the platform and the number of blocks that are going to fall down on it. In the following N lines the descriptions of subsequent blocks are given, one in each line.
+Each description of a block consists of five integers: d, s, w, x and y (1<=d, 0<=x,d+x<=D, 1<=s,0<=y,s+y<=S, 1<=w<=100 000), representing a block of length d depth s and height w This very block will be falling down on the platform with its d×s face as the bottom, where the length and depth of the block are parallel to those of the platform. The coordinates of the vertices of the projection of the block on the platform are: (x, y), (x + d, y), (x, y + s) and (x + d, y + s).</div>
+<h3>输出格式</h3>
+<br />
+<div>The first and only line of the standard output should contain exactly one integer, the height of the highest point of the arrangement of blocks after all have fallen down ad stopped.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 5 4
+4 3 2 0 0
+3 3 1 3 0
+7 1 2 0 3
+2 3 3 2 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

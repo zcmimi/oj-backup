@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SHORTCIR - Shortest Circuit Evaluation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450151:fiaFy1evMZL7OCRX2pk1eh9O8vj+qA7P7WPyOtXjlrk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Short%20circuit%20evaluation%20of%20Boolean%20expressions%20denotes%20the%20semantic%20in%20which%20the%20second%20argument%20of%20some%20Boolean%20operator%20is%20not%20evaluated%20if%20the%20value%20of%20the%20first%20argument%20is%20enough%20to%20have%20the%20result.%20This%20technique%20is%20used%20in%20many%20programming%20languages%20to%20optimize%20the%20evaluation%20of%20Boolean%20expressions.%20Specifically%20for%20%5C%22A%20and%20B%5C%22%2C%20if%20A%20is%20false%20we%20know%20that%20the%20whole%20expression%20is%20false%20and%20we%20don%27t%20need%20to%20evaluate%20B.%20For%20%5C%22A%20or%20B%5C%22%2C%20if%20A%20is%20true%20we%20know%20the%20result%20to%20be%20true.%20Now%20having%20that%20those%20Boolean%20operations%20are%20commutative%20we%20may%20actually%20evaluate%20B%20first%20and%20not%20evaluate%20A%20in%20case%20B%20gives%20us%20the%20result.%20Moving%20the%20idea%20further%20if%20we%20have%20%5C%22A1%20or%20A2%20or...or%20An%5C%22%20we%20can%20evaluate%20the%20variables%20in%20any%20order%20and%20as%20soon%20as%20we%20have%20one%20of%20them%20as%20true%20we%20know%20that%20the%20whole%20expression%20is%20true.%20We%20can%20do%20similarly%20for%20and%20operation.%20Now%20let%27s%20consider%20some%20complex%20Boolean%20expression.%20We%20will%20fix%20the%20order%20in%20which%20we%20will%20evaluate%20the%20variables%20of%20the%20expression.%20Then%20we%20evaluate%20those%20variables%20in%20that%20order%20and%20we%20won%27t%20evaluate%20the%20variables%20that%20give%20us%20no%20new%20information%20about%20the%20value%20of%20the%20whole%20expression%20in%20the%20process.%20For%20example%2C%20assume%20we%20have%20%5C%22A%20and%20B%20or%20C%5C%22%20and%20we%20fix%20the%20order%20of%20evaluation%20B%2C%20A%2C%20C.%20First%20we%20evaluate%20B%2C%20if%20it%27s%20false%20we%20don%27t%20have%20to%20evaluate%20A%20and%20only%20evaluate%20C.%20However%20if%20B%20is%20true%20we%20will%20need%20to%20evaluate%20A.%20If%20A%20is%20true%20we%20know%20the%20expression%20is%20true%20and%20won%27t%20evaluate%20C%2C%20otherwise%20we%20evaluate%20C%20to%20have%20the%20value%20of%20the%20expression.%20Now%20your%20task%20is%20having%20some%20complex%20Boolean%20expression%20containing%20and%2C%20or%2C%20not%20operations%20and%20for%20each%20variable%20having%20the%20probability%20that%20this%20variable%20is%20true%2C%20you%20need%20to%20find%20the%20order%20of%20evaluation%20for%20which%20the%20expected%20number%20of%20evaluations%20in%20the%20process%20described%20above%20will%20be%20minimal.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20file%20contains%20number%20t%20-%20the%20amount%20of%20test%20cases.%20Then%20t%20test%20cases%20follow.%20The%20first%20line%20of%20each%20test%20case%20will%20contain%20the%20Boolean%20expression.%20The%20expression%20will%20be%20valid%20and%20will%20consist%20of%20and%2C%20or%2C%20not%20operations%2C%20brackets%20and%20variable%20names.%20All%20the%20variable%20names%20in%20one%20expression%20will%20be%20distinct.%20Then%20for%20each%20variable%20present%20in%20the%20expression%20there%20will%20be%20a%20line%20in%20the%20input%20in%20the%20format%20s%20p%2C%20where%20s%20-%20the%20name%20of%20the%20variable%20and%20p%20-%20is%20the%20probability%20that%20the%20variable%20will%20be%20true.%20The%20names%20of%20the%20variables%20will%20consist%20of%20small%20Latin%20letters%20only.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20output%20the%20expected%20number%20of%20evaluations%20for%20the%20optimal%20order%20of%20evaluation%20of%20variables%20for%20short%20circuit%20evaluation%20process%20described%20above.%20Output%20the%20answer%20with%206%20digits%20after%20the%20dot.%22%2C%22samples%22%3A%5B%5B%223%5Cr%5Cn%28a%20and%20b%29%20or%20c%5Cr%5Cna%200.3%5Cr%5Cnb%200.4%5Cr%5Cnc%200.5%5Cr%5Cn%28a%20or%20b%29%20and%20%28not%20d%20or%20c%29%5Cr%5Cna%200.5%5Cr%5Cnb%200.3%5Cr%5Cnc%200.8%5Cr%5Cnd%200.25%5Cr%5Cnab%20or%20bc%20or%20cd%5Cr%5Cnab%200.3%5Cr%5Cnbc%200.1%5Cr%5Cncd%200.2%22%2C%221.650000%5Cr%5Cn2.280000%5Cr%5Cn2.260000%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B609%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F9446%22%2C%22id%22%3A%229446%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP9446%22%2C%22title%22%3A%22SHORTCIR%20-%20Shortest%20Circuit%20Evaluation%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SHORTCIR%20-%20Shortest%20Circuit%20Evaluation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SHORTCIR - Shortest Circuit Evaluation</h1>
+<h2>题目描述</h2>
+<div>Short circuit evaluation of Boolean expressions denotes the semantic in which the second argument of some Boolean operator is not evaluated if the value of the first argument is enough to have the result. This technique is used in many programming languages to optimize the evaluation of Boolean expressions. Specifically for "A and B", if A is false we know that the whole expression is false and we don't need to evaluate B. For "A or B", if A is true we know the result to be true. Now having that those Boolean operations are commutative we may actually evaluate B first and not evaluate A in case B gives us the result. Moving the idea further if we have "A1 or A2 or...or An" we can evaluate the variables in any order and as soon as we have one of them as true we know that the whole expression is true. We can do similarly for and operation. Now let's consider some complex Boolean expression. We will fix the order in which we will evaluate the variables of the expression. Then we evaluate those variables in that order and we won't evaluate the variables that give us no new information about the value of the whole expression in the process. For example, assume we have "A and B or C" and we fix the order of evaluation B, A, C. First we evaluate B, if it's false we don't have to evaluate A and only evaluate C. However if B is true we will need to evaluate A. If A is true we know the expression is true and won't evaluate C, otherwise we evaluate C to have the value of the expression. Now your task is having some complex Boolean expression containing and, or, not operations and for each variable having the probability that this variable is true, you need to find the order of evaluation for which the expected number of evaluations in the process described above will be minimal.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input file contains number t - the amount of test cases. Then t test cases follow. The first line of each test case will contain the Boolean expression. The expression will be valid and will consist of and, or, not operations, brackets and variable names. All the variable names in one expression will be distinct. Then for each variable present in the expression there will be a line in the input in the format s p, where s - the name of the variable and p - is the probability that the variable will be true. The names of the variables will consist of small Latin letters only.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case output the expected number of evaluations for the optimal order of evaluation of variables for short circuit evaluation process described above. Output the answer with 6 digits after the dot.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+(a and b) or c
+a 0.3
+b 0.4
+c 0.5
+(a or b) and (not d or c)
+a 0.5
+b 0.3
+c 0.8
+d 0.25
+ab or bc or cd
+ab 0.3
+bc 0.1
+cd 0.2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1.650000
+2.280000
+2.260000</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

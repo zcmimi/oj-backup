@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MINDIST - Minimum Distance - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449710:I2u7Rt6as0I7c8C26f9O3mzpzzb5pqxCzTu7DkaWN3o=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Given%20an%20weighted%20tree%2C%20you%20are%20to%20find%20two%20nodes%20A%20and%20B%20of%20the%20tree%28A%20and%20B%20needn%27t%20to%20be%20different%29%2C%20such%20that%20the%20length%20of%20the%20path%20between%20A%20and%20B%20is%20less%20than%20or%20equals%20to%20a%20given%20integer%20S%2C%20and%20the%20maximum%20distance%20from%20each%20node%20of%20the%20tree%20to%20this%20path%20is%20minimum.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20contains%20a%20single%20integer%20T%2C%20the%20number%20of%20test%20cases.%20T%20blocks%20follow.%5Cn%5CnFor%20each%20test%20case%2C%20the%20first%20line%20contains%20two%20space-separated%20integer%20N%20%281%3C%3DN%3C%3D100000%29%20and%20S%280%3C%3DS%3C%3D100000000%29.N-1%20lines%20follow%2C%20each%20contains%20three%20integers%20X%281%3C%3DX%3C%3DN%29%2C%20Y%281%3C%3DY%3C%3DN%29%20and%20Z%281%3C%3DZ%3C%3D1000%29%2C%20denotes%20that%20there%20is%20an%20%28undirected%29%20edge%20weighted%20Z%20between%20node%20X%20and%20Y.%20The%20input%20is%20correct.%22%2C%22outputFormat%22%3A%22T%20lines%2C%20each%20contains%20a%20single%20integer%20denoted%20the%20minimum%20distance.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn5%202%5Cr%5Cn1%202%205%5Cr%5Cn2%203%202%5Cr%5Cn2%204%204%5Cr%5Cn2%205%203%5Cr%5Cn8%206%5Cr%5Cn1%203%202%5Cr%5Cn2%203%202%5Cr%5Cn3%204%206%5Cr%5Cn4%205%203%5Cr%5Cn4%206%204%5Cr%5Cn4%207%202%5Cr%5Cn7%208%203%22%2C%225%5Cr%5Cn5%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F2070%22%2C%22id%22%3A%222070%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e2a%5Cu52a0%5Cu6743%5Cu6811%5Cuff0c%5Cu4f60%5Cu8981%5Cu627e%5Cu5230%5Cu6811%5Cu7684%5Cu4e24%5Cu4e2a%5Cu8282%5Cu70b9a%5Cu548cb%5Cuff08a%5Cu548cb%5Cu4e0d%5Cu5fc5%5Cu4e0d%5Cu540c%5Cuff09%5Cuff0c%5Cu8fd9%5Cu6837a%5Cu548cb%5Cu4e4b%5Cu95f4%5Cu7684%5Cu8def%5Cu5f84%5Cu957f%5Cu5ea6%5Cu5c0f%5Cu4e8e%5Cu6216%5Cu7b49%5Cu4e8e%5Cu7ed9%5Cu5b9a%5Cu7684%5Cu6574%5Cu6570s%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6811%5Cu7684%5Cu6bcf%5Cu4e2a%5Cu8282%5Cu70b9%5Cu5230%5Cu8be5%5Cu8def%5Cu5f84%5Cu7684%5Cu6700%5Cu5927%5Cu8ddd%5Cu79bb%5Cu662f%5Cu6700%5Cu5c0f%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570t%5Cuff0c%5Cu5373%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu5206%5Cu9694%5Cu7684%5Cu6574%5Cu6570n%5Cuff081%3C%3Dn%3C%3D100000%5Cuff09%5Cu548cs%5Cuff080%3C%3Ds%3C%3D10000000%5Cuff09%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu662fn-1%5Cu884c%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu6574%5Cu6570x%5Cuff081%3C%3Dx%3C%3Dn%5Cuff09%5Cu3001y%5Cuff081%3C%3Dy%3C%3Dn%5Cuff09%5Cu548cz%5Cuff081%3C%3Dz%3C%3D1000%5Cuff09%5Cuff0c%5Cu8868%5Cu793a%5Cu5728%5Cu8282%5Cu70b9x%5Cu548cy%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu4e2a%5Cuff08%5Cu65e0%5Cu5411%5Cuff09%5Cu8fb9%5Cu7f18%5Cu52a0%5Cu6743z%5Cu3002%5Cu8f93%5Cu5165%5Cu6b63%5Cu786e%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cr%5Cn%5Cr%5CnT%5Cu884c%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu8868%5Cu793a%5Cu6700%5Cu5c0f%5Cu8ddd%5Cu79bb%5Cu7684%5Cu6574%5Cu6570%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP2070%22%2C%22title%22%3A%22MINDIST%20-%20Minimum%20Distance%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22MINDIST%20-%20Minimum%20Distance%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>MINDIST - Minimum Distance</h1>
+<h2>题意翻译</h2>
+<div>给定一个加权树，你要找到树的两个节点a和b（a和b不必不同），这样a和b之间的路径长度小于或等于给定的整数s，并且树的每个节点到该路径的最大距离是最小的。
+输入输出格式
+输入格式：
+输入的第一行包含一个整数t，即测试用例数。
+对于每个测试用例，第一行包含两个空格分隔的整数n（1<=n<=100000）和s（0<=s<=10000000）。接下来是n-1行，每个包含三个整数x（1<=x<=n）、y（1<=y<=n）和z（1<=z<=1000），表示在节点x和y之间有一个（无向）边缘加权z。输入正确。
+输出格式：
+T行，每个包含一个表示最小距离的整数。</div>
+<h2>题目描述</h2>
+<div>Given an weighted tree, you are to find two nodes A and B of the tree(A and B needn't to be different), such that the length of the path between A and B is less than or equals to a given integer S, and the maximum distance from each node of the tree to this path is minimum.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input contains a single integer T, the number of test cases. T blocks follow.
+For each test case, the first line contains two space-separated integer N (1<=N<=100000) and S(0<=S<=100000000).N-1 lines follow, each contains three integers X(1<=X<=N), Y(1<=Y<=N) and Z(1<=Z<=1000), denotes that there is an (undirected) edge weighted Z between node X and Y. The input is correct.</div>
+<h3>输出格式</h3>
+<br />
+<div>T lines, each contains a single integer denoted the minimum distance.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+5 2
+1 2 5
+2 3 2
+2 4 4
+2 5 3
+8 6
+1 3 2
+2 3 2
+3 4 6
+4 5 3
+4 6 4
+4 7 2
+7 8 3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+5</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

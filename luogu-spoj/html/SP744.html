@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>LPERMUT - Longest Permutation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449617:xF4VS0D5A9cKviAw3hZWkPpdFC3xrRjzMSP8PE6scr8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20sequence%20A%20of%20n%20integer%20numbers%20%281%3C%3DA%20%24%20_%7Bi%7D%20%24%20%3C%3Dn%29.%20A%20subsequence%20of%20A%20has%20the%20form%20A%20%24%20_%7Bu%7D%20%24%20%2C%20A%20%24%20_%7Bu%2B1%7D%20%24%20...%20%2C%20A%20%24%20_%7Bv%7D%20%24%20%281%3C%3Du%3C%3Dv%3C%3Dn%29.%20We%20are%20interested%20in%20subsequences%20that%20are%20permutations%20of%201%2C%202%2C%20..%2C%20k%20%28k%20is%20the%20length%20of%20the%20subsequence%29.%5Cn%5Cn%20Your%20task%20is%20to%20find%20the%20longest%20subsequence%20of%20this%20type.%22%2C%22inputFormat%22%3A%22-%20Line%201%3A%20n%20%281%3C%3Dn%3C%3D100000%29%5Cn-%20Line%202%3A%20n%20numbers%20A%20%24%20_%7B1%7D%20%24%20%2C%20A%20%24%20_%7B2%7D%20%24%20%2C%20...%20%2CA%20%24%20_%7Bn%7D%20%24%20%281%3C%3DA%20%24%20_%7Bi%7D%20%24%20%3C%3Dn%29%22%2C%22outputFormat%22%3A%22A%20single%20integer%20that%20is%20the%20length%20of%20the%20longest%20permutation%22%2C%22samples%22%3A%5B%5B%225%5Cr%5Cn4%201%203%201%202%22%2C%223%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B139%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F744%22%2C%22id%22%3A%22744%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu9762%5Cuff1a%5Cr%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%5Cu5e8f%5Cu5217A%5Cu542b%5Cu6709n%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%281%3C%3DAi%3C%3Dn%29%5Cu3002A%5Cu7684%5Cu5b50%5Cu96c6%5Cu5f62%5Cu5f0f%5Cu7c7b%5Cu5982Au%2C%20Au%2B1%20...%20%2C%20Av%20%281%3C%3Du%3C%3Dv%3C%3Dn%29%5Cuff0c%5Cu5373%5Cu5fc5%5Cu987b%5Cu662f%5Cu8fde%5Cu7eed%5Cu7684%5Cu3002%5Cu6211%5Cu4eec%5Cu611f%5Cu5174%5Cu8da3%5Cu7684%5Cu662f%5Cu4e00%5Cu79cd%5Cu5b50%5Cu96c6%5Cuff0c%5Cu5b83%5Cu542b%5Cu6709%5Cu5143%5Cu7d20%5Cu5305%5Cu62ec1%2C2%2C%5Cu2026k%5Cu3002%5Cuff08k%5Cu662f%5Cu5b50%5Cu96c6%5Cu7684%5Cu5927%5Cu5c0f%5Cuff09%5Cu3002%20%5Cu4f60%5Cu7684%5Cu4efb%5Cu52a1%5Cu662f%5Cu627e%5Cu5230%5Cu8fd9%5Cu79cd%5Cu7c7b%5Cu578b%5Cu7684%5Cu6700%5Cu957f%5Cu7684%5Cu5b50%5Cu96c6%5Cu3002%5Cr%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cuff1a%5Cr%5CnInput%20%20%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu6570n%5Cuff0c%5Cu8868%5Cu793a%5Cu5e8f%5Cu5217A%5Cu7684%5Cu957f%5Cu5ea6%20%5Cu7b2c%5Cu4e8c%5Cu884c%5Cuff0cn%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7b2cI%5Cu4e2a%5Cu6570%5Cu8868%5Cu793a%5Cu5143%5Cu7d20Ai%20%20%5Cr%5CnOutput%20%20%5Cr%5Cn%5Cu4e00%5Cu4e2a%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu53ef%5Cu9009%5Cu5b50%5Cu96c6%5Cu7684%5Cu957f%5Cu5ea6%5Cr%5Cn%23%23%20%5Cu8bf4%5Cu660e%5Cr%5Cn%5Cu4f60%5Cu53ef%5Cu4ee5%5Cu9009%5Cu5f97%5Cu5b50%5Cu96c6%5Cu4eceA1%5Cu5f00%5Cu59cb%5Cu5230A4%2C%5Cu8fd9%5Cu4e2a%5Cu5b50%5Cu96c6%5Cu957f%5Cu5ea6%5Cu4e3a4%5Cuff0c%5Cu5305%5Cu542b%5Cu4e861%5Cuff0c2%5Cuff0c3%5Cuff0c4%20%20%5Cr%5Cn1%3C%3Dn%3C%3D100010%22%2C%22tags%22%3A%5B41%2C111%2C233%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A53%2C%22totalAccepted%22%3A16%2C%22pid%22%3A%22SP744%22%2C%22title%22%3A%22LPERMUT%20-%20Longest%20Permutation%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A46799%2C%22title%22%3A%22%5Cu7c98%5Cu4e00%5Cu4e0bbzoj%5Cu7684%5Cu9898%5Cu610f%22%2C%22forum%22%3A%7B%22id%22%3A13220%2C%22name%22%3A%22SP744%20LPERMUT%20-%20Longest%20Permutation%22%2C%22slug%22%3A%22SP744%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2048%22%2C%22title%22%3A%22%5BNOI2010%5D%5Cu8d85%5Cu7ea7%5Cu94a2%5Cu7434%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2948%22%2C%22title%22%3A%22%5BUSACO09OPEN%5D%5Cu6ed1%5Cu96ea%5Cu8bfeSki%20Lessons%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22AT2134%22%2C%22title%22%3A%22Zigzag%20MST%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22AT%22%7D%2C%7B%22pid%22%3A%22CF1000F%22%2C%22title%22%3A%22One%20Occurrence%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%2C%7B%22pid%22%3A%22CF1051F%22%2C%22title%22%3A%22The%20Shortest%20Statement%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22CF%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22LPERMUT%20-%20Longest%20Permutation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>LPERMUT - Longest Permutation</h1>
+<h2>题意翻译</h2>
+<div>## 题面：
+给你一个序列A含有n个正整数(1<=Ai<=n)。A的子集形式类如Au, Au+1 ... , Av (1<=u<=v<=n)，即必须是连续的。我们感兴趣的是一种子集，它含有元素包括1,2,…k。（k是子集的大小）。 你的任务是找到这种类型的最长的子集。
+## 输入输出：
+Input
+第一行，一个数n，表示序列A的长度 第二行，n个数，第I个数表示元素Ai
+Output
+一个数，表示可选子集的长度
+## 说明
+你可以选得子集从A1开始到A4,这个子集长度为4，包含了1，2，3，4
+1<=n<=100010</div>
+<h2>题目描述</h2>
+<div>You are given a sequence A of n integer numbers (1<=A $ _{i} $ <=n). A subsequence of A has the form A $ _{u} $ , A $ _{u+1} $ ... , A $ _{v} $ (1<=u<=v<=n). We are interested in subsequences that are permutations of 1, 2, .., k (k is the length of the subsequence).
+Your task is to find the longest subsequence of this type.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>- Line 1: n (1<=n<=100000)
+- Line 2: n numbers A $ _{1} $ , A $ _{2} $ , ... ,A $ _{n} $ (1<=A $ _{i} $ <=n)</div>
+<h3>输出格式</h3>
+<br />
+<div>A single integer that is the length of the longest permutation</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+4 1 3 1 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

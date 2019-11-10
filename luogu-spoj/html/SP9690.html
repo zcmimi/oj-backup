@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>UQAS - Universal Question Answering System - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450167:NWGhcSKf+ui7xdB3uLcir3b2727B5hIStb6OF6DwRBA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Every%20student%20needs%20help%20from%20getting%20new%20knowledge%20by%20asking%20questions.%20Surveys%20are%20suggesting%20that%20some%20similar%20questions%20are%20repeated%20frequently.%20So%20it%20will%20be%20nice%20to%20develop%20an%20automatic%20question-answering%20system%20to%20answer%20these%20questions.%20Your%20algorithm%20should%20not%20have%20any%20prior%20knowledge%2C%20but%20it%20must%20be%20able%20to%20read%20sentences%20and%20remember%20the%20mentioned%20facts.%20Whenever%20the%20question%20is%20asked%20about%20such%20a%20fact%2C%20the%20system%20has%20to%20answer%20it%20properly.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20many%20dialogues.%5Cn%5CnThere%20is%20a%20single%20positive%20integer%20T%20on%20the%20first%20line%20of%20input%2C%20which%20denotes%20the%20number%20of%20following%20dialogues.%28T%20%3C%3D%20500%2C%20but%20note%20that%2095%25%20of%20them%20are%20relatively%20small.%29%20Each%20dialogue%20includes%20one%20or%20more%20lines.%20Each%20line%20contains%20one%20sentence%3A%20either%20a%20statement%20or%20a%20question.%20Statements%20end%20with%20a%20dot%20character%20%28.%29%20while%20questions%20end%20with%20a%20question%20mark%20%28%3F%29.%20There%20is%20one%20extra%20line%20after%20each%20dialogue.%20That%20line%20ends%20with%20an%20exclamation%20mark%20%28%21%29.%20The%20definitions%20of%20the%20statements%20and%20questions%20will%20be%20discussed%20later.%5Cn%5CnSentences%20can%20contain%20words%2C%20spaces%20and%20punctuation%20characters.%20All%20words%20contain%20only%20Latin%20letters%20and%20are%20case-sensitive.%20%2A%2AUnlike%20the%20normal%20English%20writing%20rules%2C%20the%20first%20letter%20of%20a%20sentence%20should%20keep%20lowercase%20unless%20the%20first%20word%20itself%20should%20begin%20with%20a%20capital%20letter.%2A%2A%20There%20are%20no%20extra%20spaces%20between%20words.%20No%20word%20will%20have%20more%20than%2010%20characters.%20There%20will%20be%20at%20most%201000%20lines%20per%20dialogue.%5Cn%5Cn%2A%2AStatements%2A%2A%5Cn%5CnEach%20statement%20has%20one%20of%20the%20following%20forms%3A%5Cn%5Cn%20%60%60%60%5Cn%5Cnnoun_phrase%20are%20noun_phrase.%5Cnnoun_phrase%20can%20verb_phrase.%5Cneverything%20which%20can%20verb_phrase%20can%20verb_phrase.%5Cneverything%20which%20can%20verb_phrase%20are%20noun_phrase.%5Cn%60%60%60%5Cn%2A%2Anoun%5C%5C_phrase%20and%20verb%5C%5C_phrase%20are%20both%20single%20word.%2A%2A%20The%20meanings%20of%20the%20four%20forms%20are%3A%5Cn%5Cn%20%60%60%60%5CnA%20are%20B%3A%20If%20X%20is%20A%2C%20then%20X%20is%20B.%5CnA%20can%20B%3A%20If%20X%20is%20A%2C%20then%20X%20has%20the%20ability%20to%20B.%5Cneverything%20which%20can%20A%20can%20B%3A%20If%20X%20has%20the%20ability%20to%20A%2C%20X%20has%20the%20ability%20to%20B.%5Cneverything%20which%20can%20A%20are%20B%3A%20If%20X%20has%20the%20ability%20to%20A%2C%20X%20is%20B.%5Cn%60%60%60%5Cn%2A%2AQuestions%2A%2A%5Cn%5CnEach%20question%20has%20one%20of%20the%20following%20forms%3A%5Cn%5Cn%20%60%60%60%5Cn%5Cnare%20noun_phrase%20noun_phrase%3F%5Cncan%20noun_phrase%20verb_phrase%3F%5Cncan%20everything%20which%20can%20verb_phrase%20verb_phrase%3F%5Cnare%20everything%20which%20can%20verb_phrase%20noun_phrase%3F%5Cn%60%60%60%5CnThey%20are%20the%20question%20forms%20of%20the%20statements.%5Cn%5CnIn%20each%20test%20case%2C%20the%20number%20of%20different%20noun%20phrases%20will%20not%20exceed%20100%3B%20the%20number%20of%20different%20verb%20phrases%20will%20not%20exceed%20100.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20two%20lines.%20The%20first%20line%20describes%20the%20test%20case%20number%20counting%20from%201%2C%20while%20the%20second%20line%20contains%20the%20same%20number%20of%20characters%20as%20the%20number%20of%20questions%20in%20this%20test%20case.%20Each%20character%20is%20either%20%2A%2AY%2A%2A%28denoting%20you%20can%20get%20that%20fact%20logically%29%20or%20%2A%2AM%2A%2A%28otherwise%29%2C%20without%20quotes.%20See%20the%20example.%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cnflies%20can%20fly.%5Cr%5Cnflies%20are%20insects.%5Cr%5Cneverything%20which%20can%20fly%20are%20animals.%5Cr%5Cnare%20everything%20which%20can%20fly%20insects%3F%5Cr%5Cnare%20flies%20animals%3F%5Cr%5Cncan%20flies%20eat%3F%5Cr%5Cneverything%20which%20can%20fly%20can%20eat.%5Cr%5Cncan%20flies%20eat%3F%5Cr%5CnBye%21%22%2C%22Case%20%231%3A%5Cr%5CnMYMY%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F9690%22%2C%22id%22%3A%229690%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP9690%22%2C%22title%22%3A%22UQAS%20-%20Universal%20Question%20Answering%20System%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22UQAS%20-%20Universal%20Question%20Answering%20System%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>UQAS - Universal Question Answering System</h1>
+<h2>题目描述</h2>
+<div>Every student needs help from getting new knowledge by asking questions. Surveys are suggesting that some similar questions are repeated frequently. So it will be nice to develop an automatic question-answering system to answer these questions. Your algorithm should not have any prior knowledge, but it must be able to read sentences and remember the mentioned facts. Whenever the question is asked about such a fact, the system has to answer it properly.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of many dialogues.
+There is a single positive integer T on the first line of input, which denotes the number of following dialogues.(T <= 500, but note that 95% of them are relatively small.) Each dialogue includes one or more lines. Each line contains one sentence: either a statement or a question. Statements end with a dot character (.) while questions end with a question mark (?). There is one extra line after each dialogue. That line ends with an exclamation mark (!). The definitions of the statements and questions will be discussed later.
+Sentences can contain words, spaces and punctuation characters. All words contain only Latin letters and are case-sensitive. **Unlike the normal English writing rules, the first letter of a sentence should keep lowercase unless the first word itself should begin with a capital letter.** There are no extra spaces between words. No word will have more than 10 characters. There will be at most 1000 lines per dialogue.
+**Statements**
+Each statement has one of the following forms:
+```
+noun_phrase are noun_phrase.
+noun_phrase can verb_phrase.
+everything which can verb_phrase can verb_phrase.
+everything which can verb_phrase are noun_phrase.
+```
+**noun\_phrase and verb\_phrase are both single word.** The meanings of the four forms are:
+```
+A are B: If X is A, then X is B.
+A can B: If X is A, then X has the ability to B.
+everything which can A can B: If X has the ability to A, X has the ability to B.
+everything which can A are B: If X has the ability to A, X is B.
+```
+**Questions**
+Each question has one of the following forms:
+```
+are noun_phrase noun_phrase?
+can noun_phrase verb_phrase?
+can everything which can verb_phrase verb_phrase?
+are everything which can verb_phrase noun_phrase?
+```
+They are the question forms of the statements.
+In each test case, the number of different noun phrases will not exceed 100; the number of different verb phrases will not exceed 100.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output two lines. The first line describes the test case number counting from 1, while the second line contains the same number of characters as the number of questions in this test case. Each character is either **Y**(denoting you can get that fact logically) or **M**(otherwise), without quotes. See the example.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+flies can fly.
+flies are insects.
+everything which can fly are animals.
+are everything which can fly insects?
+are flies animals?
+can flies eat?
+everything which can fly can eat.
+can flies eat?
+Bye!</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case #1:
+MYMY</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>APCER - MayanCalendar - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450353:rE36gbVvHKDQRkIRiOFA7ujcIpY9HARYjRTiqBz7Et0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Problem%20Statement%3A%5Cn%5CnThe%20Maya%20is%20a%20Mesoamerican%20civilization%20noted%20for%20its%20art%2C%20architecture%2C%20mathematics%20and%20astronomical%20systems.%20In%20the%20recent%20past%20their%20calendar%20system%20has%20been%20quite%20in%20the%20news%20because%20of%20the%20misinterpretation%20of%20their%20Long%20count%20calendar%2C%20which%20gave%20way%20for%20a%20popular%20belief%20that%20a%20cataclysm%20will%20take%20place%20on%20December%2021%2C%202012.%20Many%20speculated%20it%20will%20mark%20the%20end%20of%20human%20civilization%21%5Cn%5CnBut%20we%20now%20know%20it%20did%20not%20happen%20as%20we%20are%20still%20alive%21%20Note%20this%20date%2C%20it%20falls%20on%20a%20Friday.Since%20human%20civilization%20may%20have%20ended%20on%20that%20day%2C%20we%20will%20call%20every%20Friday%20the%2021st%20as%20a%20_vulnerable_%20day.%20Similarly%20we%20define%20a%20_safe_%20day%20which%20is%20not%20a%20vulnerable%20day.%20Your%20task%20is%20given%20two%20years%20M%20and%20N%2C%20you%20need%20to%20find%20how%20many%20safe%20days%20are%20there%20between%20any%20given%20years%20M%20and%20N%20%28inclusive%29.%5Cn%5CnTo%20honor%20the%20Mayan%20civilization%20you%20should%20write%20the%20total%20number%20of%20safe%20days%20in%20Mayan%20Long%20Count%20notation.%20The%20Long%20Count%20calendar%20identifies%20a%20date%20by%20counting%20the%20number%20of%20days%20from%20the%20Mayan%20creation%20date.%20But%20instead%20of%20using%20a%20base-10%20scheme%20like%20Western%20numbering%2C%20the%20Long%20Count%20days%20were%20tallied%20in%20a%20modified%20base-20%20scheme.%20As%20a%20matter%20of%20fact%20December%2021%2C%202012%20is%20simply%20the%20day%20that%20the%20calendar%20will%20go%20to%20the%20next%20B%27ak%27tun.%20You%20do%20not%20need%20to%20bother%20about%20creation%20date%20but%20simply%20represent%20your%20answer%20in%20Long%20Count%20notation.%20See%20the%20below%20example%20and%20table%20for%20clarification%3A%5Cn%5Cn%20%2A%2ADays%2A%2A%5Cn%5Cn%20%20%2A%2APlace%2A%2A%5Cn%5Cn%20%20%2A%2ALong%20Count%20unit%2A%2A%5Cn%5Cn%20%201%5Cn%5Cn%20%20%200%5Cn%5Cn%20%201%20K%27in%5Cn%5Cn%20%2020%5Cn%5Cn%20%20%201%5Cn%5Cn%20%20%2A%2A1%20Winal%2A%2A%5Cn%5Cn%20%20360%5Cn%5Cn%20%20%202%5Cn%5Cn%20%201%20Tun%5Cn%5Cn%20%207%2C200%5Cn%5Cn%20%20%203%5Cn%5Cn%20%201%20K%27atun%5Cn%5Cn%20%20144%2C000%5Cn%5Cn%20%20%204%5Cn%5Cn%20%201%20B%27ak%27tun%5Cn%5Cn%20%2A%2ATable%20of%20Long%20Count%20units%2A%2A%5Cn%5CnCheck%20the%20full%20list%20here%3A%20%5Bhttp%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FMaya%5C%5C_calendar%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FMaya_calendar%29%20%28not%20needed%20for%20this%20problem%29.%5Cn%5Cn%2A%2AConversion%2A%2A%3A%5Cn%5CnFor%20this%20problem%20you%20can%20consider%20numbers%20in%20the%20Long%20Count%20to%20be%20represented%20in%20base%2020%20except%20for%20the%20%2A%2AWinal%2A%2A%20place%20which%20is%20to%20be%20taken%20in%20base%2018.%20Below%20example%20will%20clarify%20how%20to%20convert%20your%20answer%20into%20Long%20Count%20Notation.%5Cn%5CnFor%20instance%2C%20if%20safe%20days%20comes%20out%20to%20be%201454%20your%20output%20must%20be%3A%20%5C%220.0.4.0.14%5C%22%20%28without%20quotes%29.%20%281%5C%5C%2A14%20%2B%2020%5C%5C%2A0%20%2B%20360%5C%5C%2A4%20%2B%207200%5C%5C%2A0%20%2B%20144000%5C%5C%2A0%20%3D%201454%29%5Cn%5CnFor%20360%20output%20must%20be%20%5C%220.0.1.0.0%5C%22%28without%20quotes%29.%5Cn%5CnFor%2020%20output%20must%20be%20%5Cu201c0.0.0.1.0%5Cu201d%20%28without%20quotes%29.%5Cn%5CnAs%20you%20can%20see%20all%20the%20places%20are%20in%20base%2010%20except%20the%201%20%24%20%5E%7Bst%7D%20%24%20place%20which%20is%20base%2018.%5Cn%5Cn%2A%2AInput%20Specification%2A%2A%3A%20First%20line%20of%20input%20contains%200%3CT%3C500%2C%20number%20of%20test%20cases%20on%20which%20your%20program%20will%20run.%20Followed%20by%20two%20integers%20M%20and%20N%20where%201901%3C%3DM%2C%20N%3C%3D2300%2C%20where%20M%3C%3DN%2C%20if%20M%3DN%20you%20need%20to%20tell%20for%20that%20particular%20year%20only.%5Cn%5Cn%2A%2AOutput%20Specification%2A%2A%3A%20For%20every%20test%20case%20output%3A%20A%20single%20line%20containing%20the%20number%20of%20safe%20days%20between%20the%20year%20M%20and%20N%28inclusive%29%20in%20Long%20count%20notation%20explained%20above.%20It%20is%20guaranteed%20that%20the%20number%20of%20safe%20days%20could%20always%20be%20represented%20up%20to%20fourth%20place%20%28B%27ak%27tun%20place%29%20in%20the%20above%20given%20notation.%5Cn%5Cn%5C%22a.b.c.d.e%5C%22%20%28without%20quotes%29%20where%200%3C%3D%20a%2C%20b%2C%20c%2C%20e%20%3C20%2C%200%3C%3Dd%3C18.%5Cn%5Cn%2A%2AFacts%2A%2A%3A%5Cn%5Cn1.%20Jan%201%2C%201901%20was%20Tuesday.%5Cn2.%20All%20calculations%20must%20be%20done%20following%20Gregorian%20calendar%20which%20is%20the%20current%20standard%20calendar%20in%20the%20world%20including%20ours.%5Cn3.%20If%20you%20don%27t%20know%20how%20to%20calculate%20leap%20year%20see%20this%20link%3A%20%3C%5Bhttp%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FLeap%5C%5C_year%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FLeap_year%29%3E%5Cn%5Cn%2A%2ASample%20Test%20cases%3A%2A%2A%5Cn%5Cn%2A%2AInput%3A%2A%2A%5Cn%5Cn3%5Cn%5Cn2011%202012%5Cn%5Cn2012%202012%5Cn%5Cn2000%202020%5Cn%5Cn%2A%2AOutput%3A%2A%2A%5Cn%5Cn0.0.2.0.7%5Cn%5Cn0.0.1.0.4%5Cn%5Cn0.1.1.3.14%5Cn%5Cn%2A%2AExplanation%3A%2A%2A%5Cn%5CnFor%20case%201%3A%20there%20are%20727%20safe%20days%20which%20can%20be%20represented%20as%200.0.2.0.7%5Cn%5CnThere%20are%204%20vulnerable%20days%20between%3A%20January%202011%20to%20December%202012.%5Cn%5CnThese%20are%3A%2021%20%24%20%5E%7Bst%7D%20%24%20January%202011%2C%2021%20%24%20%5E%7Bst%7D%20%24%20October%202011%2C%2021%20%24%20%5E%7Bst%7D%20%24%20September%202012%20and%2021st%20December%202012.%5Cn%5CnTotal%20number%20of%20days%20between%3A%20January%202011%20to%20December%202012%20are%20731.%5Cn%5CnTherefore%20the%20number%20of%20safe%20days%20are%20731-4%20%3D%20727.%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F13405%22%2C%22id%22%3A%2213405%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP13405%22%2C%22title%22%3A%22APCER%20-%20MayanCalendar%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22APCER%20-%20MayanCalendar%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>APCER - MayanCalendar</h1>
+<h2>题目描述</h2>
+<div> Problem Statement:
+The Maya is a Mesoamerican civilization noted for its art, architecture, mathematics and astronomical systems. In the recent past their calendar system has been quite in the news because of the misinterpretation of their Long count calendar, which gave way for a popular belief that a cataclysm will take place on December 21, 2012. Many speculated it will mark the end of human civilization!
+But we now know it did not happen as we are still alive! Note this date, it falls on a Friday.Since human civilization may have ended on that day, we will call every Friday the 21st as a _vulnerable_ day. Similarly we define a _safe_ day which is not a vulnerable day. Your task is given two years M and N, you need to find how many safe days are there between any given years M and N (inclusive).
+To honor the Mayan civilization you should write the total number of safe days in Mayan Long Count notation. The Long Count calendar identifies a date by counting the number of days from the Mayan creation date. But instead of using a base-10 scheme like Western numbering, the Long Count days were tallied in a modified base-20 scheme. As a matter of fact December 21, 2012 is simply the day that the calendar will go to the next B'ak'tun. You do not need to bother about creation date but simply represent your answer in Long Count notation. See the below example and table for clarification:
+**Days**
+**Place**
+**Long Count unit**
+1
+0
+1 K'in
+20
+1
+**1 Winal**
+360
+2
+1 Tun
+7,200
+3
+1 K'atun
+144,000
+4
+1 B'ak'tun
+**Table of Long Count units**
+Check the full list here: [http://en.wikipedia.org/wiki/Maya\_calendar](http://en.wikipedia.org/wiki/Maya_calendar) (not needed for this problem).
+**Conversion**:
+For this problem you can consider numbers in the Long Count to be represented in base 20 except for the **Winal** place which is to be taken in base 18. Below example will clarify how to convert your answer into Long Count Notation.
+For instance, if safe days comes out to be 1454 your output must be: "0.0.4.0.14" (without quotes). (1\*14 + 20\*0 + 360\*4 + 7200\*0 + 144000\*0 = 1454)
+For 360 output must be "0.0.1.0.0"(without quotes).
+For 20 output must be “0.0.0.1.0” (without quotes).
+As you can see all the places are in base 10 except the 1 $ ^{st} $ place which is base 18.
+**Input Specification**: First line of input contains 0<T<500, number of test cases on which your program will run. Followed by two integers M and N where 1901<=M, N<=2300, where M<=N, if M=N you need to tell for that particular year only. **Output Specification**: For every test case output: A single line containing the number of safe days between the year M and N(inclusive) in Long count notation explained above. It is guaranteed that the number of safe days could always be represented up to fourth place (B'ak'tun place) in the above given notation. "a.b.c.d.e" (without quotes) where 0<=a, b, c, e <20, 0<=d<18. **Facts**: 1. Jan 1, 1901 was Tuesday. 2. All calculations must be done following Gregorian calendar which is the current standard calendar in the world including ours. 3. If you don't know how to calculate leap year see this link: <[http://en.wikipedia.org/wiki/Leap\_year](http://en.wikipedia.org/wiki/Leap_year)>
+
+**Sample Test cases:**
+
+**Input:**
+
+3
+
+2011 2012
+
+2012 2012
+
+2000 2020
+
+**Output:**
+
+0.0.2.0.7
+
+0.0.1.0.4
+
+0.1.1.3.14
+
+**Explanation:**
+
+For case 1: there are 727 safe days which can be represented as 0.0.2.0.7
+
+There are 4 vulnerable days between: January 2011 to December 2012.
+
+These are: 21 $ ^{st} $ January 2011, 21 $ ^{st} $ October 2011, 21 $ ^{st} $ September 2012 and 21st December 2012.
+
+Total number of days between: January 2011 to December 2012 are 731.
+
+Therefore the number of safe days are 731-4 = 727.</div>
+
+    <h2>输入输出格式</h2>
+    <h3>输入格式</h3>
+    <br />
+    <div></div>
+    <h3>输出格式</h3>
+    <br />
+    <div></div>
+
+    <h2>输入输出样例</h2>
+            <i>暂无测试点</i>
+    
+    </article>
+    </div>
+</div>
+<!-- <script src="//www.recaptcha.net/recaptcha/api.js?hl=zh-CN&render=explicit&onload=renderCaptcha" async defer></script> -->
+</body>
+</html>

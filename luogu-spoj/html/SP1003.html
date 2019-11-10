@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>QUILT - Little Quilt - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449628:sljv59iOB0l0sQSNzD+hvuKYT5NwGrLJPUMhAmlm4vI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22_Little%20Quilt_%20is%20a%20small%20language%20introduced%20by%20Ravi%20Sethi%20in%20his%20book%20%5Cu2018Programming%20Languages%5Cu2019.%5Cn%5Cn%20%20%5CnHere%2C%20a%20restricted%20version%20of%20Little%20Quilt%20is%20presented.%20The%20language%20is%20defined%20by%20the%20following%20BNF%20grammar%3A%5Cn%5Cn%20%20%5Cn%20%3C%20QUILT%20%3E%20%3A%3A%3D%20A%20%7C%20B%20%7C%20turn%28%3C%20QUILT%20%3E%29%20%7C%20sew%28%3C%20QUILT%20%3E%2C%3C%20QUILT%20%3E%29%5Cn%5Cn%20%20%5CnA%20and%20B%20represent%20the%20two%20primitive%20quilts.%20Each%20primitive%20quilt%20corresponds%20to%20a%20matricial%20arrangement%20of%202%20%5Cu00d7%202%20characters.%20turn%28%29%20and%20sew%28%29%20are%20operations%20over%20quilts.%5Cn%5Cn%20%20%5CnThe%20instruction%20turn%28x%29%20turns%20the%20quilt%20x%2090%20degrees%20clockwise.%20The%20following%20table%20illustrates%20the%20primitive%20quilts%20as%20well%20as%20examples%20of%20the%20effect%20of%20the%20turn%28%29%20operation%3A%5Cn%5Cn%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1003%5C%2F9c1a8c0ffb27a1b5d3bc2e9eabf05791aa72faa7.png%29%20%20%5Cn%20Accordingly%2C%20the%20instruction%20sew%28x%2Cy%29%20sews%20quilt%20x%20to%20the%20left%20of%20quilt%20y.%20Both%20x%20and%20y%20must%20have%20the%20same%20height%2C%20otherwise%20an%20error%20will%20be%20generated.%20The%20following%20figure%20represents%20the%20result%20of%20sew%28A%2Cturn%28B%29%29%3A%5Cn%5Cn%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1003%5C%2F33e81d2606c3f34ac71f7e51b03f32cda106d258.png%29%20%20%5Cnwhile%20the%20sew%28turn%28sew%28B%2Cturn%28B%29%29%29%2CA%29%20generates%20an%20error%20message.%5Cn%5Cn%20%20%5CnYour%20job%20is%20to%20build%20an%20interpreter%20of%20the%20Little%20Quilt%20language.%22%2C%22inputFormat%22%3A%22The%20input%20file%20will%20be%20a%20text%20file%20containing%20different%20Little%20Quilt%20expressions%2C%20each%20one%20ended%20by%20a%20semicolon%20character%20%28%3B%29.%20Space%20and%20new%20line%20characters%20must%20be%20ignored%3B%20this%20means%20that%20an%20expression%20may%20span%20several%20lines.%22%2C%22outputFormat%22%3A%22The%20output%20file%20contains%20the%20quilts%20produced%20as%20a%20result%20of%20interpreting%20the%20input%20expressions.%5Cn%5Cn%20%20%5CnEach%20quilt%20must%20be%20preceded%20by%20a%20line%2C%20left%20aligned%2C%20with%20the%20format%5Cn%5Cn%20%20%5CnQuilt%20i%3A%20%20%20%5Cnwhere%20i%20is%20the%20quilt%20number%2C%20starting%20at%201.%20If%20the%20expression%20interpretation%20generates%20and%20error%2C%20the%20word%5Cn%5Cn%20%20%5Cnerror%20%20%20%5Cnmust%20be%20printed.%22%2C%22samples%22%3A%5B%5B%22sew%28turn%28sew%28B%2Cturn%28B%29%29%29%2C%5Cr%5Cnturn%28sew%28turn%28B%29%2CB%29%29%29%20%3B%5Cr%5Cn%5C%5Cn%5C%5Cn%5Cr%5Cnsew%28turn%28sew%28B%2Cturn%28B%29%29%29%2CA%29%3B%5Cr%5Cnsew%28turn%28sew%28A%2Cturn%28A%29%29%29%2C%5Cr%5Cnturn%28turn%28%5Cr%5Cn%5C%5Cn%5Cr%5Cnturn%28sew%28A%2Cturn%28A%29%29%29%29%29%29%5Cr%5Cn%3B%22%2C%22Quilt%201%3A%5Cr%5Cn%7C%7C--%5Cr%5Cn%7C%7C--%5Cr%5Cn--%7C%7C%5Cr%5Cn--%7C%7C%5Cr%5CnQuilt%202%3A%5Cr%5Cnerror%5Cr%5CnQuilt%203%3A%5Cr%5Cn%5C%5C%5C%5C%5C%2F%5C%2F%5Cr%5Cn%2B%5C%5C%5C%2F%2B%5Cr%5Cn%2B%5C%2F%5C%5C%2B%5Cr%5Cn%5C%2F%5C%2F%5C%5C%5C%5C%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B400%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1003%22%2C%22id%22%3A%221003%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1003%22%2C%22title%22%3A%22QUILT%20-%20Little%20Quilt%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22QUILT%20-%20Little%20Quilt%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>QUILT - Little Quilt</h1>
+<h2>题目描述</h2>
+<div>_Little Quilt_ is a small language introduced by Ravi Sethi in his book ‘Programming Languages’.
+Here, a restricted version of Little Quilt is presented. The language is defined by the following BNF grammar:
+< QUILT > ::= A | B | turn(< QUILT >) | sew(< QUILT >,< QUILT >)
+A and B represent the two primitive quilts. Each primitive quilt corresponds to a matricial arrangement of 2 × 2 characters. turn() and sew() are operations over quilts.
+The instruction turn(x) turns the quilt x 90 degrees clockwise. The following table illustrates the primitive quilts as well as examples of the effect of the turn() operation:
+![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1003/9c1a8c0ffb27a1b5d3bc2e9eabf05791aa72faa7.png)
+Accordingly, the instruction sew(x,y) sews quilt x to the left of quilt y. Both x and y must have the same height, otherwise an error will be generated. The following figure represents the result of sew(A,turn(B)):
+![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1003/33e81d2606c3f34ac71f7e51b03f32cda106d258.png)
+while the sew(turn(sew(B,turn(B))),A) generates an error message.
+Your job is to build an interpreter of the Little Quilt language.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input file will be a text file containing different Little Quilt expressions, each one ended by a semicolon character (;). Space and new line characters must be ignored; this means that an expression may span several lines.</div>
+<h3>输出格式</h3>
+<br />
+<div>The output file contains the quilts produced as a result of interpreting the input expressions.
+Each quilt must be preceded by a line, left aligned, with the format
+Quilt i:
+where i is the quilt number, starting at 1. If the expression interpretation generates and error, the word
+error
+must be printed.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>sew(turn(sew(B,turn(B))),
+turn(sew(turn(B),B))) ;
+\n\n
+sew(turn(sew(B,turn(B))),A);
+sew(turn(sew(A,turn(A))),
+turn(turn(
+\n
+turn(sew(A,turn(A))))))
+;</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Quilt 1:
+||--
+||--
+--||
+--||
+Quilt 2:
+error
+Quilt 3:
+\\//
++\/+
++/\+
+//\\</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

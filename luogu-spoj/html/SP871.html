@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SEQUENCE - Letter Sequence Analysis - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449621:bYyHu8Qf/alTXXu/C6VVHzCs05+Vt25Cz4FJkutFVjk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20Cryptographic%20analysis%20makes%20extensive%20use%20of%20the%20frequency%20with%20which%20letters%20and%20letter%20sequences%20occur%20in%20a%20language.%20If%20an%20encrypted%20text%20is%20known%20to%20be%20in%20english%2C%20for%20example%2C%20a%20great%20deal%20can%20be%20learned%20from%20the%20fact%20that%20the%20letters%20E%2C%20L%2C%20N%2C%20R%2C%20S%2C%20and%20T%20are%20the%20most%20common%20ones%20used%20in%20written%20english.%20Even%20more%20can%20be%20learned%20if%20common%20letter%20pairs%2C%20triplets%2C%20etc.%20are%20known.%5Cn%5Cn%20For%20this%20problem%20you%20are%20to%20write%20a%20program%20which%20accepts%20as%20input%20a%20text%20file%20of%20unspecified%20length%20and%20performs%20letter%20sequence%20analysis%20on%20the%20text.%20The%20program%20will%20report%20the%20five%20most%20frequent%20letter%20sequences%20for%20each%20set%20of%20sequences%20from%20one%20to%20five%20letters.%20That%20is%20it%20will%20report%20the%20individual%20characters%20which%20occur%20with%20the%20five%20highest%20frequencies%2C%20the%20pairs%20of%20characters%20which%20occur%20with%20the%20five%20highest%20frequencies%2C%20and%20so%20on%20up%20to%20the%20letter%20sequences%20of%20five%20characters%20which%20occur%20with%20the%20five%20highest%20frequencies.%5Cn%5Cn%20The%20program%20should%20consider%20contiguous%20sequences%20of%20alphabetic%20characters%20only%2C%20and%20case%20should%20be%20ignored%20%28e.g.%20an%20%60a%27%20is%20the%20same%20as%20an%20%60A%27%29.%20A%20report%20should%20be%20produced%20using%20the%20format%20shown%20in%20the%20example%20at%20the%20end%20of%20this%20problem%20description.%20For%20each%20sequence%20length%20from%20one%20to%20five%2C%20the%20report%20should%20list%20the%20sequences%20in%20descending%20order%20of%20frequency.%20If%20there%20are%20several%20sequences%20with%20the%20same%20frequency%20then%20all%20sequences%20should%20be%20listed%20in%20alphabetical%20order%20as%20shown%20%28list%20all%20sequences%20in%20upper%20case%29.%20Finally%2C%20if%20there%20are%20less%20than%20five%20distinct%20frequencies%20for%20a%20particular%20sequence%20length%2C%20simply%20report%20as%20many%20distinct%20frequency%20lists%20as%20possible.%5Cn%5Cn%20When%20a%20text%20file%20containing%20simply%20the%20line%20%60%60Peter%20Piper%20Picks%20Pickles%21%27%27%20is%20used%20as%20input%2C%20the%20output%20should%20appear%20as%20shown%20here%3A%5Cn%5Cn%60%60%60%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%201%5Cn-----------------------------------------%5CnFrequency%20%3D%205%2C%20Sequence%28s%29%20%3D%20%28P%29%5CnFrequency%20%3D%204%2C%20Sequence%28s%29%20%3D%20%28E%29%5CnFrequency%20%3D%203%2C%20Sequence%28s%29%20%3D%20%28I%29%5CnFrequency%20%3D%202%2C%20Sequence%28s%29%20%3D%20%28C%2CK%2CR%2CS%29%5CnFrequency%20%3D%201%2C%20Sequence%28s%29%20%3D%20%28L%2CT%29%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%202%5Cn-----------------------------------------%5CnFrequency%20%3D%203%2C%20Sequence%28s%29%20%3D%20%28PI%29%5CnFrequency%20%3D%202%2C%20Sequence%28s%29%20%3D%20%28CK%2CER%2CIC%2CPE%29%5CnFrequency%20%3D%201%2C%20Sequence%28s%29%20%3D%20%28ES%2CET%2CIP%2CKL%2CKS%2CLE%2CTE%29%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%203%5Cn-----------------------------------------%5CnFrequency%20%3D%202%2C%20Sequence%28s%29%20%3D%20%28ICK%2CPIC%29%5CnFrequency%20%3D%201%2C%20Sequence%28s%29%20%3D%20%28CKL%2CCKS%2CETE%2CIPE%2CKLE%2CLES%2CPER%2CPET%2CPIP%2CTER%29%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%204%5Cn-----------------------------------------%5CnFrequency%20%3D%202%2C%20Sequence%28s%29%20%3D%20%28PICK%29%5CnFrequency%20%3D%201%2C%20Sequence%28s%29%20%3D%20%28CKLE%2CETER%2CICKL%2CICKS%2CIPER%2CKLES%2CPETE%2CPIPE%29%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%205%5Cn-----------------------------------------%5CnFrequency%20%3D%201%2C%20Sequence%28s%29%20%3D%20%28CKLES%2CICKLE%2CPETER%2CPICKL%2CPICKS%2CPIPER%29%5Cn%60%60%60%5Cn%20When%20the%20first%20three%20paragraphs%20of%20this%20problem%20description%20are%20used%20as%20input%2C%20the%20output%20should%20appear%20as%20shown%20here%3A%20%60%60%60%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%201%5Cn-----------------------------------------%5CnFrequency%20%3D%20201%2C%20Sequence%28s%29%20%3D%20%28E%29%5CnFrequency%20%3D%20112%2C%20Sequence%28s%29%20%3D%20%28T%29%5CnFrequency%20%3D%2096%2C%20Sequence%28s%29%20%3D%20%28S%29%5CnFrequency%20%3D%2090%2C%20Sequence%28s%29%20%3D%20%28R%29%5CnFrequency%20%3D%2084%2C%20Sequence%28s%29%20%3D%20%28N%29%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%202%5Cn-----------------------------------------%5CnFrequency%20%3D%2037%2C%20Sequence%28s%29%20%3D%20%28TH%29%5CnFrequency%20%3D%2033%2C%20Sequence%28s%29%20%3D%20%28EN%29%5CnFrequency%20%3D%2027%2C%20Sequence%28s%29%20%3D%20%28HE%29%5CnFrequency%20%3D%2024%2C%20Sequence%28s%29%20%3D%20%28RE%29%5CnFrequency%20%3D%2023%2C%20Sequence%28s%29%20%3D%20%28NC%29%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%203%5Cn-----------------------------------------%5CnFrequency%20%3D%2024%2C%20Sequence%28s%29%20%3D%20%28THE%29%5CnFrequency%20%3D%2021%2C%20Sequence%28s%29%20%3D%20%28ENC%2CEQU%2CQUE%2CUEN%29%5CnFrequency%20%3D%2012%2C%20Sequence%28s%29%20%3D%20%28NCE%2CSEQ%2CTER%29%5CnFrequency%20%3D%209%2C%20Sequence%28s%29%20%3D%20%28CES%2CFRE%2CIVE%2CLET%2CREQ%2CTTE%29%5CnFrequency%20%3D%208%2C%20Sequence%28s%29%20%3D%20%28ETT%2CFIV%29%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%204%5Cn-----------------------------------------%5CnFrequency%20%3D%2021%2C%20Sequence%28s%29%20%3D%20%28EQUE%2CQUEN%29%5CnFrequency%20%3D%2020%2C%20Sequence%28s%29%20%3D%20%28UENC%29%5CnFrequency%20%3D%2012%2C%20Sequence%28s%29%20%3D%20%28ENCE%2CSEQU%29%5CnFrequency%20%3D%209%2C%20Sequence%28s%29%20%3D%20%28FREQ%2CNCES%2CREQU%29%5CnFrequency%20%3D%208%2C%20Sequence%28s%29%20%3D%20%28ETTE%2CFIVE%2CLETT%2CTTER%29%5Cn%5CnAnalysis%20for%20Letter%20Sequences%20of%20Length%205%5Cn-----------------------------------------%5CnFrequency%20%3D%2021%2C%20Sequence%28s%29%20%3D%20%28EQUEN%29%5CnFrequency%20%3D%2020%2C%20Sequence%28s%29%20%3D%20%28QUENC%29%5CnFrequency%20%3D%2012%2C%20Sequence%28s%29%20%3D%20%28SEQUE%2CUENCE%29%5CnFrequency%20%3D%209%2C%20Sequence%28s%29%20%3D%20%28ENCES%2CFREQU%2CREQUE%29%5CnFrequency%20%3D%208%2C%20Sequence%28s%29%20%3D%20%28ETTER%2CLETTE%29%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B870%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F871%22%2C%22id%22%3A%22871%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP871%22%2C%22title%22%3A%22SEQUENCE%20-%20Letter%20Sequence%20Analysis%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SEQUENCE%20-%20Letter%20Sequence%20Analysis%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SEQUENCE - Letter Sequence Analysis</h1>
+<h2>题目描述</h2>
+<div> Cryptographic analysis makes extensive use of the frequency with which letters and letter sequences occur in a language. If an encrypted text is known to be in english, for example, a great deal can be learned from the fact that the letters E, L, N, R, S, and T are the most common ones used in written english. Even more can be learned if common letter pairs, triplets, etc. are known.
+For this problem you are to write a program which accepts as input a text file of unspecified length and performs letter sequence analysis on the text. The program will report the five most frequent letter sequences for each set of sequences from one to five letters. That is it will report the individual characters which occur with the five highest frequencies, the pairs of characters which occur with the five highest frequencies, and so on up to the letter sequences of five characters which occur with the five highest frequencies.
+The program should consider contiguous sequences of alphabetic characters only, and case should be ignored (e.g. an `a' is the same as an `A'). A report should be produced using the format shown in the example at the end of this problem description. For each sequence length from one to five, the report should list the sequences in descending order of frequency. If there are several sequences with the same frequency then all sequences should be listed in alphabetical order as shown (list all sequences in upper case). Finally, if there are less than five distinct frequencies for a particular sequence length, simply report as many distinct frequency lists as possible.
+When a text file containing simply the line ``Peter Piper Picks Pickles!'' is used as input, the output should appear as shown here:
+```
+Analysis for Letter Sequences of Length 1
+-----------------------------------------
+Frequency = 5, Sequence(s) = (P)
+Frequency = 4, Sequence(s) = (E)
+Frequency = 3, Sequence(s) = (I)
+Frequency = 2, Sequence(s) = (C,K,R,S)
+Frequency = 1, Sequence(s) = (L,T)
+Analysis for Letter Sequences of Length 2
+-----------------------------------------
+Frequency = 3, Sequence(s) = (PI)
+Frequency = 2, Sequence(s) = (CK,ER,IC,PE)
+Frequency = 1, Sequence(s) = (ES,ET,IP,KL,KS,LE,TE)
+Analysis for Letter Sequences of Length 3
+-----------------------------------------
+Frequency = 2, Sequence(s) = (ICK,PIC)
+Frequency = 1, Sequence(s) = (CKL,CKS,ETE,IPE,KLE,LES,PER,PET,PIP,TER)
+Analysis for Letter Sequences of Length 4
+-----------------------------------------
+Frequency = 2, Sequence(s) = (PICK)
+Frequency = 1, Sequence(s) = (CKLE,ETER,ICKL,ICKS,IPER,KLES,PETE,PIPE)
+Analysis for Letter Sequences of Length 5
+-----------------------------------------
+Frequency = 1, Sequence(s) = (CKLES,ICKLE,PETER,PICKL,PICKS,PIPER)
+```
+When the first three paragraphs of this problem description are used as input, the output should appear as shown here: ```
+Analysis for Letter Sequences of Length 1
+-----------------------------------------
+Frequency = 201, Sequence(s) = (E)
+Frequency = 112, Sequence(s) = (T)
+Frequency = 96, Sequence(s) = (S)
+Frequency = 90, Sequence(s) = (R)
+Frequency = 84, Sequence(s) = (N)
+Analysis for Letter Sequences of Length 2
+-----------------------------------------
+Frequency = 37, Sequence(s) = (TH)
+Frequency = 33, Sequence(s) = (EN)
+Frequency = 27, Sequence(s) = (HE)
+Frequency = 24, Sequence(s) = (RE)
+Frequency = 23, Sequence(s) = (NC)
+Analysis for Letter Sequences of Length 3
+-----------------------------------------
+Frequency = 24, Sequence(s) = (THE)
+Frequency = 21, Sequence(s) = (ENC,EQU,QUE,UEN)
+Frequency = 12, Sequence(s) = (NCE,SEQ,TER)
+Frequency = 9, Sequence(s) = (CES,FRE,IVE,LET,REQ,TTE)
+Frequency = 8, Sequence(s) = (ETT,FIV)
+Analysis for Letter Sequences of Length 4
+-----------------------------------------
+Frequency = 21, Sequence(s) = (EQUE,QUEN)
+Frequency = 20, Sequence(s) = (UENC)
+Frequency = 12, Sequence(s) = (ENCE,SEQU)
+Frequency = 9, Sequence(s) = (FREQ,NCES,REQU)
+Frequency = 8, Sequence(s) = (ETTE,FIVE,LETT,TTER)
+Analysis for Letter Sequences of Length 5
+-----------------------------------------
+Frequency = 21, Sequence(s) = (EQUEN)
+Frequency = 20, Sequence(s) = (QUENC)
+Frequency = 12, Sequence(s) = (SEQUE,UENCE)
+Frequency = 9, Sequence(s) = (ENCES,FREQU,REQUE)
+Frequency = 8, Sequence(s) = (ETTER,LETTE)
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

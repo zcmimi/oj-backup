@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TMSUM - The Maximize Sum - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450655:g/btO2QzvtCtfywBK0M/Xvo5wVUm2m5cOnsI5FzWysw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20a%20set%20S%20of%20n%20elements.%20Do%20you%20know%20how%20many%20subsets%20the%20set%20has%3F%20It%20is%202%5En%20where%20n%20is%20the%20number%20of%20elements%20in%20S.%5Cn%5CnFor%20example%2C%20consider%20a%20set%20S%20of%203%20elements.%20S%3D%20%7B1%2C%202%2C%203%7D%20so%20S%20has%202%5E3%3D8%20subsets.%20They%20are%20%7B1%7D%2C%20%7B2%7D%2C%20%7B3%7D%2C%20%7B1%2C2%7D%2C%20%7B2%2C3%7D%2C%20%7B1%2C3%7D%2C%20%7B1%2C2%2C3%7D%2C%20%7B%7D.%20Here%20%7B%7D%20is%20empty%20set.%5Cn%5CnIn%20the%20above%20example%20number%20of%20subsets%20of%20S%20having%20at%20most%202%20elements%20excluding%20empty%20set%20are%20%7B1%7D%2C%20%7B2%7D%2C%20%7B3%7D%2C%20%7B1%2C2%7D%2C%20%7B2%2C3%7D%2C%20%7B1%2C3%7D.%5Cn%5CnFind%20subsets%20which%20have%20at%20most%202%20elements%20excluding%20empty%20set%20in%20which%20each%20element%20of%20S%20must%20belong%20to%20a%20single%20a%20subset%20i.e.%20if%20we%20take%20subset%20for%20example%20%7B1%7D%20then%20we%20can%5Cu2019t%20take%20other%20subsets%20containing%20element%201.%20Now%20sum%20the%20product%20of%20the%20subsets%20containing%202%20elements%20with%20the%20value%20of%20subsets%20containing%20single%20element.%20Your%20target%20will%20be%20maximizing%20this%20sum.%5Cn%5CnFor%20example%20consider%20a%20set%20S%3D%20%7B1%2C%202%2C%203%2C%204%2C%205%2C%206%7D.%20So%20the%20subsets%20of%20S%20having%20at%20most%202%20elements%20excluding%20empty%20set%20are%20%7B1%7D%2C%20%7B2%7D%2C%20%7B3%7D%2C%20%7B4%7D%2C%20%7B5%7D%2C%20%7B6%7D%2C%20%7B1%2C2%7D%2C%20%7B1%2C3%7D%2C%20%7B1%2C4%7D%2C%20%7B1%2C5%7D%2C%20%7B1%2C6%7D%2C%20%7B2%2C3%7D%2C%20%7B2%2C4%7D%2C%20%7B2%2C5%7D%2C%20%7B2%2C6%7D%2C%20%7B3%2C4%7D%2C%20%7B3%2C5%7D%2C%20%7B3%2C6%7D%2C%20%7B4%2C5%7D%2C%20%7B4%2C6%7D%2C%20%7B5%2C6%7D.%5Cn%5CnNow%20we%20can%20take%20subsets%20of%20%7B5%2C6%7D%2C%20%7B4%2C3%7D%20and%20%7B1%2C2%7D%20which%20contains%20all%206%20elements%20of%20S%20then%20total%20sum%20will%20be%20%3D%20%285%5C%5C%2A6%29%2B%284%5C%5C%2A3%29%2B%281%5C%5C%2A2%29%20%3D%2044.%20On%20the%20other%20hand%20if%20we%20take%20subsets%20of%20%7B5%2C%206%7D%2C%20%7B4%2C%203%7D%20and%20%7B1%7D%20%26%20%7B2%7D%20then%20total%20sum%20will%20be%3D%20%285%5C%5C%2A6%29%20%2B%20%284%5C%5C%2A3%29%20%2B1%2B2%3D45%20which%20is%20greater%20than%20the%20previous%20one.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20the%20input%20will%20be%20an%20integer%20T%20to%20represent%20the%20number%20of%20test%20cases.%20For%20each%20case%20there%20will%20be%20two%20lines.%20The%20first%20line%20contains%20integer%20_n_%20%5Cu2014%20the%20number%20of%20distinct%20elements%20in%20the%20given%20set%20S.%20The%20second%20line%20contains%20_n_%20integers%20s%20%24%20_%7Bi%7D%20%24%20%28i%3D1%2C2%2C%5Cu2026..%2C%20n%29%20%5Cu2014%20the%20elements%20of%20the%20S.%22%2C%22outputFormat%22%3A%22In%20a%20single%20line%2C%20output%20the%20maximum%20sum.%5Cn%5Cn%2A%2AConstraints%2A%2A%5Cn%5Cn-%201%20%3C%3D%20T%20%3C%3D%20100%5Cn-%201%20%3C%3D%20n%20%3C%3D%20100%5Cn-%20-10000%20%3C%3D%20s%20%24%20_%7Bi%7D%20%24%20%3C%3D%2010000%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn6%5Cr%5Cn1%202%203%204%205%206%5Cr%5Cn3%5Cr%5Cn1%202%203%5C%5Cn%26nbsp%3B%22%2C%2245%5Cr%5Cn7%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B500%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F26955%22%2C%22id%22%3A%2226955%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP26955%22%2C%22title%22%3A%22TMSUM%20-%20The%20Maximize%20Sum%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TMSUM%20-%20The%20Maximize%20Sum%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TMSUM - The Maximize Sum</h1>
+<h2>题目描述</h2>
+<div>You are given a set S of n elements. Do you know how many subsets the set has? It is 2^n where n is the number of elements in S.
+For example, consider a set S of 3 elements. S= {1, 2, 3} so S has 2^3=8 subsets. They are {1}, {2}, {3}, {1,2}, {2,3}, {1,3}, {1,2,3}, {}. Here {} is empty set.
+In the above example number of subsets of S having at most 2 elements excluding empty set are {1}, {2}, {3}, {1,2}, {2,3}, {1,3}.
+Find subsets which have at most 2 elements excluding empty set in which each element of S must belong to a single a subset i.e. if we take subset for example {1} then we can’t take other subsets containing element 1. Now sum the product of the subsets containing 2 elements with the value of subsets containing single element. Your target will be maximizing this sum.
+For example consider a set S= {1, 2, 3, 4, 5, 6}. So the subsets of S having at most 2 elements excluding empty set are {1}, {2}, {3}, {4}, {5}, {6}, {1,2}, {1,3}, {1,4}, {1,5}, {1,6}, {2,3}, {2,4}, {2,5}, {2,6}, {3,4}, {3,5}, {3,6}, {4,5}, {4,6}, {5,6}.
+Now we can take subsets of {5,6}, {4,3} and {1,2} which contains all 6 elements of S then total sum will be = (5\*6)+(4\*3)+(1\*2) = 44. On the other hand if we take subsets of {5, 6}, {4, 3} and {1} & {2} then total sum will be= (5\*6) + (4\*3) +1+2=45 which is greater than the previous one.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of the input will be an integer T to represent the number of test cases. For each case there will be two lines. The first line contains integer _n_ — the number of distinct elements in the given set S. The second line contains _n_ integers s $ _{i} $ (i=1,2,….., n) — the elements of the S.</div>
+<h3>输出格式</h3>
+<br />
+<div>In a single line, output the maximum sum.
+**Constraints**
+- 1 <= T <= 100
+- 1 <= n <= 100
+- -10000 <= s $ _{i} $ <= 10000</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+6
+1 2 3 4 5 6
+3
+1 2 3\n&amp;nbsp;</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>45
+7</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

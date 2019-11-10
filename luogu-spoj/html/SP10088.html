@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ASSEMBLY - Assembly Line - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450195:FY6HRgvV0w0MzpwBkSTR8nL6pyiYDh6sUNaNI8u90sc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20last%20worker%20in%20a%20production%20line%20at%20the%20factory%20of%20Automated%20Composed%20Machinery%20is%20worried.%20She%20knows%20that%20her%20job%20hangs%20in%20the%20balance%20unless%20her%20productivity%20increases.%20Her%20work%20consists%20of%20assembling%20a%20set%20of%20pieces%20in%20a%20given%20sequence%2C%20but%20the%20time%20spent%20on%20assembling%20pieces%20_a_%20and%20_b_%20and%20then%20_c_%20may%20not%20the%20same%20as%20that%20on%20assembling%20pieces%20_b_%20and%20_c_%2C%20and%20then%20assembling%20_a_%20with%20the%20resulting%20component.%20Only%20two%20consecutive%20pieces%20may%20be%20assembled%20at%20a%20time%2C%20and%20once%20they%20are%20assembled%20they%20behave%20as%20another%20piece%20in%20terms%20of%20the%20time%20needed%20for%20further%20assembly.%5Cn%5CnIn%20order%20to%20aid%20her%2C%20you%20need%20to%20find%20the%20optimal%20way%20to%20assemble%20all%20components.%20The%20input%20to%20your%20program%20will%20be%20a%20set%20of%20symbols%20representing%20%28types%20of%29%20pieces%2C%20and%20a%20so-called%20assembly%20table%20representing%20the%20time%20it%20takes%20to%20assemble%20them%2C%20as%20well%20as%20the%20type%20of%20the%20resulting%20component.%20For%20instance%2C%20we%20may%20have%20two%20symbols%20%7B_a_%2C_b_%7D%2C%20and%20the%20following%20table%3A%5Cn%5Cn%20%20%20_a_%20_b_%20_a_%203%60-%60_b_%205%60-%60_b_%20_b_%206%60-%60_a_%202%60-%60_b_%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B21640%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F10088%22%2C%22id%22%3A%2210088%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP10088%22%2C%22title%22%3A%22ASSEMBLY%20-%20Assembly%20Line%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22ASSEMBLY%20-%20Assembly%20Line%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>ASSEMBLY - Assembly Line</h1>
+<h2>题目描述</h2>
+<div>The last worker in a production line at the factory of Automated Composed Machinery is worried. She knows that her job hangs in the balance unless her productivity increases. Her work consists of assembling a set of pieces in a given sequence, but the time spent on assembling pieces _a_ and _b_ and then _c_ may not the same as that on assembling pieces _b_ and _c_, and then assembling _a_ with the resulting component. Only two consecutive pieces may be assembled at a time, and once they are assembled they behave as another piece in terms of the time needed for further assembly.
+In order to aid her, you need to find the optimal way to assemble all components. The input to your program will be a set of symbols representing (types of) pieces, and a so-called assembly table representing the time it takes to assemble them, as well as the type of the resulting component. For instance, we may have two symbols {_a_,_b_}, and the following table:
+_a_ _b_ _a_ 3`-`_b_ 5`-`_b_ _b_ 6`-`_a_ 2`-`_b_</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

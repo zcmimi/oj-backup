@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FOUROW - Four in a row - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450108:pjRhBUNijsgaayRCNl1WJqLMw1jvWVWYYoaq/oOISNE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%21%5BFour%20in%20a%20row%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP8574%5C%2F38274ced29594551f9afa6f03e8c6ca0e0424d1b.png%29%5Cn%5CnYou%20probably%20know%20the%20popular%20two-players%20game%20%5C%22Four%20in%20a%20row%5C%22.%20Each%20player%20gets%2021%20chips%20of%20the%20same%20color%20at%20the%20beginning.%20Then%20the%20two%20players%20take%20turns%20in%20putting%20a%20chip%20into%20one%20of%20seven%20slots%20%28each%20one%20six%20cells%20in%20height%29%2C%20trying%20to%20get%20at%20least%20four%20of%20their%20chips%20%5C%22in%20a%20row%5C%22%2C%20i.e.%20horizontally%2C%20vertically%20or%20diagonally.%20%20%5Cn%20Given%20a%20series%20of%20moves%2C%20your%20task%20is%20to%20first%20check%2C%20if%20this%20is%20a%20valid%20game.%20A%20game%20is%20_invalid_%2C%20if%20one%20or%20more%20moves%20are%20made%20after%20a%20player%20has%20already%20won%20the%20game%20or%20if%20more%20than%20six%20chips%20are%20put%20into%20a%20single%20slot.%20If%20a%20game%20is%20valid%2C%20check%20if%20the%20game%20is%20over.%20A%20game%20is%20over%2C%20if%20one%20of%20the%20players%20got%20at%20least%20four%20chips%20%5C%22in%20a%20row%5C%22%20with%20his%20last%20move%20%28i.e.%20he%20is%20the%20winner%20of%20the%20game%29%20or%20if%20all%20slots%20are%20filled.%20If%20a%20game%20is%20over%2C%20check%20if%20there%20is%20a%20winner%20and%20if%20so%2C%20who%20it%20is.%20If%20there%20is%20a%20winner%2C%20then%20print%20the%20final%20state%20of%20the%20game.%20%20%5Cn%20The%20picture%20shows%20the%20final%20state%20of%20a%20game%2C%20won%20by%20the%20first%20player%20%28yellow%20chips%29.%22%2C%22inputFormat%22%3A%22Input%20starts%20with%20a%20positive%20integer%20t%3C100%20in%20a%20single%20line%2C%20then%20t%20testcases%20follow.%20Every%20testcase%20starts%20with%20%5C%22Game%20%23n%3A%20%5C%22%2C%20where%20n%20is%20the%20number%20of%20the%20game%2C%20numbered%20from%201%20to%20t.%20Then%20the%20description%20of%20a%20game%20follows%2C%20given%20as%20a%20series%20of%20digits%201%20to%207%20indicating%20the%20number%20of%20the%20slot%20%28as%20noted%20in%20the%20picture%29%2C%20in%20which%20the%20player%20puts%20his%20chip.%20The%20players%20are%20taking%20turns%20and%20the%20number%20of%20moves%20%28i.e.%20the%20number%20of%20chips%20put%20into%20the%20slots%29%20will%20be%20at%20most%2042.%22%2C%22outputFormat%22%3A%22For%20each%20testcase%20print%20exactly%20one%20of%20the%20following%20five%20lines%2C%20where%20n%20has%20to%20be%20replaced%20by%20the%20game%27s%20number%3A%20%20%5Cn%20Game%20%23n%20is%20invalid.%20%20%5Cn%20Game%20%23n%20is%20over.%20There%20is%20no%20winner.%20%20%5Cn%20Game%20%23n%20is%20over.%20The%20first%20player%20won.%20%20%5Cn%20Game%20%23n%20is%20over.%20The%20second%20player%20won.%20%20%5Cn%20Game%20%23n%20is%20not%20over%2C%20yet.%5Cn%5CnIf%20there%20is%20a%20winner%2C%20you%20also%20have%20to%20print%20a%20snapshot%20of%20the%20game%27s%20final%20state.%20A%20game%27s%20state%20consists%20of%20at%20most%20six%20lines%20representing%20the%20%28horizontal%29%20rows%20of%20the%20game%27s%20grid%20plus%20a%20leading%20and%20a%20trailing%20line%20containing%20seven%20hyphens.%20Every%20line%20has%20a%20length%20of%20exactly%20seven%20characters.%20Use%20%5C%22x%5C%22%20for%20the%20chips%20of%20the%20first%20player%2C%20%5C%22o%5C%22%20for%20those%20of%20the%20second%20player%2C%20whitespaces%20for%20all%20cells%20without%20a%20chip.%20If%20a%20%28horizontal%29%20row%20contains%20only%20whitespaces%2C%20it%20must%20not%20be%20printed.%5Cn%5CnTo%20make%20it%20easier%20to%20find%20the%20winning%20row%20in%20the%20grid%2C%20_all_%20chips%20that%20belong%20to%20the%20winning%20row%28s%29%20have%20to%20be%20marked%20either%20by%20%5C%22X%5C%22%20%28instead%20of%20%5C%22x%5C%22%2C%20if%20the%20first%20player%20has%20won%29%20or%20by%20%5C%22O%5C%22%20%28instead%20of%20%5C%22o%5C%22%2C%20if%20the%20second%20player%20has%20won%29.%20Be%20aware%20that%20there%20can%20be%20more%20than%20four%20chips%20in%20a%20winning%20row%20and%20more%20than%20one%20winning%20row%21%22%2C%22samples%22%3A%5B%5B%222%5Cr%5CnGame%20%231%3A%202143563445575%5Cr%5CnGame%20%232%3A%20123456%22%2C%22Game%20%231%20is%20over.%20The%20first%20player%20won.%5Cr%5Cn-------%5Cr%5Cn%20%20%20%20X%20%20%5Cr%5Cn%20%20%20Xx%20%20%5Cr%5Cn%20%20Xoo%20%20%5Cr%5CnoXoxxoo%5Cr%5Cn-------%5Cr%5CnGame%20%232%20is%20not%20over%2C%20yet.%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B200%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F8574%22%2C%22id%22%3A%228574%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP8574%22%2C%22title%22%3A%22FOUROW%20-%20Four%20in%20a%20row%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22FOUROW%20-%20Four%20in%20a%20row%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>FOUROW - Four in a row</h1>
+<h2>题目描述</h2>
+<div>![Four in a row](https://cdn.luogu.com.cn/upload/vjudge_pic/SP8574/38274ced29594551f9afa6f03e8c6ca0e0424d1b.png)
+You probably know the popular two-players game "Four in a row". Each player gets 21 chips of the same color at the beginning. Then the two players take turns in putting a chip into one of seven slots (each one six cells in height), trying to get at least four of their chips "in a row", i.e. horizontally, vertically or diagonally.
+Given a series of moves, your task is to first check, if this is a valid game. A game is _invalid_, if one or more moves are made after a player has already won the game or if more than six chips are put into a single slot. If a game is valid, check if the game is over. A game is over, if one of the players got at least four chips "in a row" with his last move (i.e. he is the winner of the game) or if all slots are filled. If a game is over, check if there is a winner and if so, who it is. If there is a winner, then print the final state of the game.
+The picture shows the final state of a game, won by the first player (yellow chips).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Input starts with a positive integer t<100 in a single line, then t testcases follow. Every testcase starts with "Game #n: ", where n is the number of the game, numbered from 1 to t. Then the description of a game follows, given as a series of digits 1 to 7 indicating the number of the slot (as noted in the picture), in which the player puts his chip. The players are taking turns and the number of moves (i.e. the number of chips put into the slots) will be at most 42.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each testcase print exactly one of the following five lines, where n has to be replaced by the game's number:
+Game #n is invalid.
+Game #n is over. There is no winner.
+Game #n is over. The first player won.
+Game #n is over. The second player won.
+Game #n is not over, yet.
+If there is a winner, you also have to print a snapshot of the game's final state. A game's state consists of at most six lines representing the (horizontal) rows of the game's grid plus a leading and a trailing line containing seven hyphens. Every line has a length of exactly seven characters. Use "x" for the chips of the first player, "o" for those of the second player, whitespaces for all cells without a chip. If a (horizontal) row contains only whitespaces, it must not be printed.
+To make it easier to find the winning row in the grid, _all_ chips that belong to the winning row(s) have to be marked either by "X" (instead of "x", if the first player has won) or by "O" (instead of "o", if the second player has won). Be aware that there can be more than four chips in a winning row and more than one winning row!</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+Game #1: 2143563445575
+Game #2: 123456</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Game #1 is over. The first player won.
+-------
+    X  
+   Xx  
+  Xoo  
+oXoxxoo
+-------
+Game #2 is not over, yet.</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

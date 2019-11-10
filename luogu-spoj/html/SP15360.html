@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>WRLUNCH - World Record Lunch - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450420:5LLp6kYdHcz8hM+GnflS75Ja7lUfgEqIwYK2KGSKtLY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20group%20of%20people%20is%20trying%20to%20beat%20the%20world%20record%20for%20the%20largest%20number%20of%20people%20having%20lunch%20at%20the%20same%20time.%20In%20order%20achieve%20this%20goal%2C%20they%20are%20using%20the%20country%27s%20largest%20bridge%20and%20they%20have%20decided%20to%20arrange%20the%20tables%20following%20the%20shape%20of%20the%20letter%20%27S%27.%5Cn%5CnThe%20table%20layout%20can%20be%20described%20by%204%20integers%3A%20%2A%2ANH%2A%2A%2C%20%2A%2ANV%2A%2A%2C%20%2A%2AH%2A%2A%20and%20%2A%2AV%2A%2A.%20The%20two%20first%20integers%2C%20%2A%2ANH%2A%2A%20and%20%2A%2ANV%2A%2A%2C%20represent%20respectively%20the%20number%20or%20rows%20and%20number%20of%20columns%20in%20the%20layout.%20The%20last%20two%20integers%20represent%20respectively%20the%20number%20of%20tables%20in%20each%20row%20and%20column.%20For%20a%20given%20layout%2C%20the%20tables%20are%20numbered%20consecutively%2C%20starting%20with%20table%20%231%20in%20the%20top-right%20corner.%20The%20following%20figure%20illustrates%20several%20possible%20layouts%3A%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15360%5C%2Fd95a34e854b42b59acda21c9382f33c0cc49cc85.png%29%5Cn%5CnThousands%20of%20groups%20of%20people%20are%20expected%20to%20come%2C%20and%20the%20organizers%20have%20to%20define%20where%20to%20seat%20everyone.%20Each%20group%20needs%20a%20certain%20number%20of%20tables%20and%20they%20do%20not%20share%20tables%20with%20other%20groups.%20Furthermore%2C%20a%20group%20wants%20their%20tables%20to%20be%20together%20and%20not%20split%20among%20rows%20and%20columns%2C%20that%20is%2C%20they%20want%20a%20set%20of%20consecutive%20tables%20either%20on%20the%20same%20row%20or%20on%20the%20same%20column.%20If%20this%20condition%20cannot%20be%20met%2C%20the%20group%20prefers%20to%20go%20away%20and%20have%20lunch%20at%20another%20place.%20The%20groups%20also%20enjoy%20having%20some%20privacy%20and%20prefer%20unoccupied%20adjacent%20tables%2C%20that%20is%2C%20no%20one%20at%20the%20table%20exactly%20before%20the%20first%20table%20of%20the%20group%2C%20and%20no%20one%20at%20the%20table%20exactly%20after%20the%20last%20table%20of%20the%20group.%20If%20this%20happens%2C%20we%20say%20that%20the%20group%20found%20a%20%2A%2Aprivate%2A%2A%20place.%5Cn%5CnWhenever%20a%20group%20arrives%2C%20the%20organization%20must%20decide%20where%20to%20seat%20that%20group%20based%20solely%20on%20the%20table%20occupation%20at%20the%20moment%2C%20without%20taking%20into%20account%20further%20groups%20that%20may%20be%20coming.%20Since%20a%20group%20will%20always%20be%20seated%20on%20consecutive%20tables%2C%20the%20position%20of%20a%20group%20can%20be%20defined%20by%20the%20index%20of%20the%20first%20table%20of%20the%20group.%20So%2C%20when%20a%20group%20arrive%2C%20the%20organization%20wants%20the%20following%3A%5Cn%5Cn-%20If%20there%20is%20a%20suitable%20private%20place%20for%20the%20group%2C%20then%20choose%20the%20lowest%20possible%20index%20guaranteeing%20privacy%3B%5Cn-%20If%20no%20privacy%20can%20be%20ensured%2C%20but%20there%20is%20space%20for%20the%20group%2C%20then%20choose%20the%20lowest%20possible%20index%20with%20space%20for%20the%20entire%20group%3B%5Cn-%20If%20there%20is%20no%20space%20available%20on%20a%20single%20row%20or%20column%20where%20the%20group%20would%20fit%2C%20then%20the%20organizers%20must%20send%20the%20group%20away.%5Cn%5CnAn%20example%20would%20be%20the%20following.%20Imagine%20a%20layout%20with%20%2A%2ANH%2A%2A%3D3%2C%20%2A%2ANV%2A%2A%3D2%2C%20%2A%2AH%2A%2A%3D5%20and%20%2A%2AV%2A%2A%3D3%20%28the%20first%20layout%20give%20on%20the%20figure%20above%29.%20And%20now%20imagine%20that%20groups%20needing%205%2C%202%2C%203%2C%205%2C%204%20and%202%20tables%20arrive%2C%20in%20that%20order.%20This%20is%20what%20happens%3A%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15360%5C%2Fd6f3abdbf56a8afe547917a528493abc86294c90.png%29%20In%20the%20beginning%20all%20tables%20are%20empty%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15360%5C%2F39a7b0e99f80bef50e8f18ab7cd4a26d3803e467.png%29%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15360%5C%2F0c64c4c931cfbe4915c84fbb1c7507b25c5b45fe.png%29%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15360%5C%2F85098df69d07e77c3508e12170dea1523aa26fbe.png%29%20Group%201%20needs%205%20tables.%20It%20is%20put%20on%20index%201.%20%20%5Cn%20Group%202%20needs%202%20tables.%20It%20is%20put%20on%20index%207.%20%20%5Cn%20Group%203%20needs%203%20tables.%20It%20is%20put%20on%20index%2011.%20%20%5Cn%20Group%204%20needs%205%20tables.%20No%20position%20is%20available.%20%20%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15360%5C%2Fc8b56c9cb9e5d22f09c6456b9d7af9605c93b457.png%29%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15360%5C%2Fd0ae4986f69056afe6786b08a3064254dff831a5.png%29%20Group%205%20needs%204%20tables.%20It%20is%20put%20on%20index%2014%20%28with%20no%20privacy%29.%20%20%5Cn%20Group%206%20needs%202%20tables.%20It%20is%20put%20on%20index%209%20%28with%20no%20privacy%29.%20%20%5CnCan%20you%20help%20the%20organizers%20on%20this%20task%3F%5Cn%5Cn%20%20%20%5CnThe%20Problem%5Cn-----------%5Cn%5CnGiven%20a%20table%20layout%20%28number%20of%20rows%2C%20columns%20and%20number%20of%20tables%20per%20row%20and%20column%29%20and%20the%20description%20of%20groups%20arriving%20%28specifying%20number%20of%20tables%20needed%20per%20group%29%2C%20your%20task%20is%20to%20calculate%20where%20each%20group%20should%20be%20seated%20following%20the%20rules%20described%20above.%5Cn%5Cn%20%20%20%5CnInput%5Cn-----%5Cn%5CnThe%20first%20line%20contains%205%20integers%20%2A%2ANH%20NV%20H%20V%20N%2A%2A%2C%20separated%20by%20single%20spaces.%20%2A%2ANH%2A%2A%20and%20%2A%2ANV%2A%2A%20indicate%20respectively%20the%20number%20of%20rows%20and%20columns%20of%20the%20table%20layout.%20%2A%2AH%2A%2A%20and%20%2A%2AV%2A%2A%20indicate%20respectively%20the%20number%20of%20tables%20per%20row%20and%20column.%20%2A%2AN%2A%2A%20indicates%20the%20number%20of%20groups%20arriving.%5Cn%5CnThen%20come%20%2A%2AN%2A%2A%20lines%2C%20each%20one%20indicating%20%2A%2AG%20%24%20_%7Bi%7D%20%24%2A%2A%20%2C%20the%20number%20of%20tables%20the%20_i_-th%20group%20needs.%20These%20lines%20come%20in%20order%20of%20arrival%20of%20the%20groups.%5Cn%5Cn%20%20%20%5CnOutput%5Cn------%5Cn%5CnThe%20output%20should%20have%20exactly%20%2A%2AN%2A%2A%20lines%2C%20each%20one%20indicating%20where%20the%20respective%20group%20should%20seat.%20If%20there%20is%20a%20suitable%20position%2C%20the%20line%20should%20contain%20an%20integer%20indicating%20the%20index%20of%20the%20first%20table%20of%20the%20group.%20If%20no%20position%20is%20available%2C%20the%20line%20should%20contain%20the%20string%20%5C%22no%5C%22%2C%20without%20the%20quotes.%5Cn%5Cn%20%20%20%5CnRestrictions%5Cn------------%5Cn%5CnThe%20following%20limits%20are%20guaranteed%20for%20all%20the%20test%20cases%20that%20will%20be%20used%20for%20evaluating%20your%20program%3A%5Cn%5Cn%20%2A%2A1%2A%2A%20%20%20%20Number%20of%20rows%20%2A%2ANH-1%2A%2A%20%20%20%20Number%20of%20columns%20%2A%2A3%2A%2A%20%20%20%20Number%20of%20tables%20in%20each%20row%5C%2Fcolumn%20%2A%2A1%2A%2A%20%20%20%20Number%20of%20groups%20%2A%2A1%2A%2A%20%20%20%20Number%20of%20tables%20each%20group%20needs%20%20%20%20%5CnExample%20Input%201%5Cn---------------%5Cn%5Cn%20%60%60%60%5Cn3%202%205%203%206%5Cn5%5Cn2%5Cn3%5Cn5%5Cn4%5Cn2%5Cn%60%60%60%5Cn%20%20%20%5CnExample%20Output%201%5Cn----------------%5Cn%5Cn%20%60%60%60%5Cn1%5Cn7%5Cn11%5Cnno%5Cn14%5Cn9%5Cn%60%60%60%5Cn%20%20%20%5CnInput%20Explanation%201%5Cn-------------------%5Cn%5CnIt%20is%20the%20example%20given%20before%20in%20the%20problem%20statement.%5Cn%5Cn%20%20%20%20%20%20%20%5CnExample%20Input%202%5Cn---------------%5Cn%5Cn%20%60%60%60%5Cn2%202%203%203%203%5Cn3%5Cn3%5Cn1%5Cn%60%60%60%5Cn%20%20%20%5CnExample%20Output%202%5Cn----------------%5Cn%5Cn%20%60%60%60%5Cn1%5Cn5%5Cn9%5Cn%60%60%60%5Cn%20%20%20%5CnInput%20Explanation%202%5Cn-------------------%5Cn%5CnIn%20the%20end%20the%20tables%20would%20look%20like%20this%3A%20%20%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15360%5C%2Fae9732020b62eefd5f197dba754ca98a200730eb.png%29%5Cn%5Cn%20A%20few%20notes%3A%5Cn%5Cn-%20This%20is%20the%20first%20problem%20I%20add%20to%20SPOJ%2C%20hope%20you%20like%20it%20%3A%29%5Cn-%20The%20time%20limit%20is%20at%20least%206x%20the%20runtime%20of%20my%20C%2B%2B%20solution%20with%20no%20low-level%20optimizations%20or%20fast%20input%5C%2Foutput.%20I%20have%20a%20Java%20solution%20passing%20within%20these%20time%20limits.%5Cn-%20I%27m%20not%20proficient%20enough%20in%20languages%20like%20Python%20to%20ensure%20the%20time%20limit%20is%20ok%20for%20those%20languages.%20I%20can%20increase%20the%20limits%20if%20needed.%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B620%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F15360%22%2C%22id%22%3A%2215360%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP15360%22%2C%22title%22%3A%22WRLUNCH%20-%20World%20Record%20Lunch%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22WRLUNCH%20-%20World%20Record%20Lunch%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>WRLUNCH - World Record Lunch</h1>
+<h2>题目描述</h2>
+<div>A group of people is trying to beat the world record for the largest number of people having lunch at the same time. In order achieve this goal, they are using the country's largest bridge and they have decided to arrange the tables following the shape of the letter 'S'.
+The table layout can be described by 4 integers: **NH**, **NV**, **H** and **V**. The two first integers, **NH** and **NV**, represent respectively the number or rows and number of columns in the layout. The last two integers represent respectively the number of tables in each row and column. For a given layout, the tables are numbered consecutively, starting with table #1 in the top-right corner. The following figure illustrates several possible layouts:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15360/d95a34e854b42b59acda21c9382f33c0cc49cc85.png)
+Thousands of groups of people are expected to come, and the organizers have to define where to seat everyone. Each group needs a certain number of tables and they do not share tables with other groups. Furthermore, a group wants their tables to be together and not split among rows and columns, that is, they want a set of consecutive tables either on the same row or on the same column. If this condition cannot be met, the group prefers to go away and have lunch at another place. The groups also enjoy having some privacy and prefer unoccupied adjacent tables, that is, no one at the table exactly before the first table of the group, and no one at the table exactly after the last table of the group. If this happens, we say that the group found a **private** place.
+Whenever a group arrives, the organization must decide where to seat that group based solely on the table occupation at the moment, without taking into account further groups that may be coming. Since a group will always be seated on consecutive tables, the position of a group can be defined by the index of the first table of the group. So, when a group arrive, the organization wants the following:
+- If there is a suitable private place for the group, then choose the lowest possible index guaranteeing privacy;
+- If no privacy can be ensured, but there is space for the group, then choose the lowest possible index with space for the entire group;
+- If there is no space available on a single row or column where the group would fit, then the organizers must send the group away.
+An example would be the following. Imagine a layout with **NH**=3, **NV**=2, **H**=5 and **V**=3 (the first layout give on the figure above). And now imagine that groups needing 5, 2, 3, 5, 4 and 2 tables arrive, in that order. This is what happens:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15360/d6f3abdbf56a8afe547917a528493abc86294c90.png) In the beginning all tables are empty ![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15360/39a7b0e99f80bef50e8f18ab7cd4a26d3803e467.png)![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15360/0c64c4c931cfbe4915c84fbb1c7507b25c5b45fe.png)![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15360/85098df69d07e77c3508e12170dea1523aa26fbe.png) Group 1 needs 5 tables. It is put on index 1.
+Group 2 needs 2 tables. It is put on index 7.
+Group 3 needs 3 tables. It is put on index 11.
+Group 4 needs 5 tables. No position is available.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15360/c8b56c9cb9e5d22f09c6456b9d7af9605c93b457.png)![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15360/d0ae4986f69056afe6786b08a3064254dff831a5.png) Group 5 needs 4 tables. It is put on index 14 (with no privacy).
+Group 6 needs 2 tables. It is put on index 9 (with no privacy).
+Can you help the organizers on this task?
+The Problem
+-----------
+Given a table layout (number of rows, columns and number of tables per row and column) and the description of groups arriving (specifying number of tables needed per group), your task is to calculate where each group should be seated following the rules described above.
+Input
+-----
+The first line contains 5 integers **NH NV H V N**, separated by single spaces. **NH** and **NV** indicate respectively the number of rows and columns of the table layout. **H** and **V** indicate respectively the number of tables per row and column. **N** indicates the number of groups arriving.
+Then come **N** lines, each one indicating **G $ _{i} $** , the number of tables the _i_-th group needs. These lines come in order of arrival of the groups.
+Output
+------
+The output should have exactly **N** lines, each one indicating where the respective group should seat. If there is a suitable position, the line should contain an integer indicating the index of the first table of the group. If no position is available, the line should contain the string "no", without the quotes.
+Restrictions
+------------
+The following limits are guaranteed for all the test cases that will be used for evaluating your program:
+**1** Number of rows **NH-1** Number of columns **3** Number of tables in each row/column **1** Number of groups **1** Number of tables each group needs
+Example Input 1
+---------------
+```
+3 2 5 3 6
+5
+2
+3
+5
+4
+2
+```
+Example Output 1
+----------------
+```
+1
+7
+11
+no
+14
+9
+```
+Input Explanation 1
+-------------------
+It is the example given before in the problem statement.
+Example Input 2
+---------------
+```
+2 2 3 3 3
+3
+3
+1
+```
+Example Output 2
+----------------
+```
+1
+5
+9
+```
+Input Explanation 2
+-------------------
+In the end the tables would look like this:
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15360/ae9732020b62eefd5f197dba754ca98a200730eb.png)
+A few notes:
+- This is the first problem I add to SPOJ, hope you like it :)
+- The time limit is at least 6x the runtime of my C++ solution with no low-level optimizations or fast input/output. I have a Java solution passing within these time limits.
+- I'm not proficient enough in languages like Python to ensure the time limit is ok for those languages. I can increase the limits if needed.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

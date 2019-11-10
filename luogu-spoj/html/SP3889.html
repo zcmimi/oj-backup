@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MCLONUM - Closest Number - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449829:AdxQfflwQnMjXwurOH5xeidc3kTd5l/RC3IITcSsKEY=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BEnglish%5D%28%5C%2Fproblems%5C%2FMCLONUM%5C%2Fen%5C%2F%29%20%5BVietnamese%5D%28%5C%2Fproblems%5C%2FMCLONUM%5C%2Fvn%5C%2F%29%20%60%60%60%5Cn%5CnConsider%20%20two%20n-digit%20positive%20decimal%20%20integers%20A%20and%20B%20with%20no%20%20leading%5Cnzeroes.%20We%20need%20%20to%20%20find%20%20the%20two%20closest%20to%20A%20n-digit%20numbers%20%28the%20%5Cnfirst%20one%20%5Cu2013%20greater%20or%20equal%20to%20A%2C%20the%20other%20%5Cu2013%20strictly%20less%20than%20A%29%2C%20%5Cnwith%20decimal%20writings%20containing%20all%20the%20digits%20of%20B%20in%20some%20order.%20%20%5CnFor%20example%20%20if%20A%3D3022%20%20and%20B%3D1232%2C%20using%20B%5Cu2019s%20digits%20we%20can%20obtain%20%20%5Cnthe%20%20following%204-digit%20numbers%3A%201223%2C%20%201232%2C%20%201322%2C%20%202123%2C%20%202132%2C%20%202213%2C%5Cn2231%2C%20%202312%2C%20%202321%2C%20%203122%2C%20%203212%20%20and%20%203221.%20%20The%20%20least%20%20number%20greater%20%5Cnor%20equal%20to%20A%20obtained%20by%20B%5Cu2019s%20digits%20is%203122%2C%20and%20the%20biggest%20one%2C%20%5Cnstrictly%20less%20then%20A%20is%202321.%20If%20A%3D1232%20and%20B%3D3022%2C%20the%20possible%20numbers%5Cnare%202023%2C%202032%2C%202203%2C%202230%2C%202302%2C%202320%2C%203022%2C%203202%20and%20%5Cn3220.%20The%20%20least%20number%20greater%20or%20equal%20%20to%20A%20obtained%20by%20B%5Cu2019s%20digits%5Cnis%202023%2C%20and%20%20there%20%20is%20no%20number%20less%20than%20A.%20%5CnWrite%20a%20program%20closest%20%20to%20find%20%20these%20%5Cu201cclosest%20%20to%20A%5Cu201d%20numbers%20for%5Cngiven%20A%20and%20B%2C%20or%20%20to%20determine%20that%20one%20of%20them%20does%20not%20exist.%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%60%60%60%5Cn%5CnTwo%20lines%20are%20read%20from%20the%20standard%20input%2C%20each%20of%20them%20containing%20an%5Cnn-digit%20positive%20integer%20with%20no%20leading%20zeroes%2C%20with%20A%20read%20from%20the%5Cnfirst%2C%20and%20B%20read%20from%20the%20second%20line%20%281%5Cu2264n%20%5Cu2264%2060%29.%5Cn%60%60%60%5Cn%20%60%60%60%5Cn%5CnSAMPLE%20INPUT%5CnExample%201%20%20%20%20%20%20%20%20Example%202%5Cn3075%20%20%20%20%20%20%20%20%20%20%20%20%203000203%20%5Cn6604%20%20%20%20%20%20%20%20%20%20%20%20%204562454%5Cn%60%60%60%22%2C%22outputFormat%22%3A%22%60%60%60%5Cn%5CnWrite%20to%20the%20standard%20output%3A%20%5Cn-%20%20Line%20%201%3A%20%20the%20%20least%20%20n-digit%20%20number%20with%20%20no%20%20leading%20%20zeroes%2C%5Cnnot%20%20less%20%20than%20%20A%2C%20%20containing%20%20all%20%20the%20digits%20of%20B%20in%20some%20order.%20%5CnIf%20such%20number%20does%20not%20exist%2C%20the%20output%20should%20be%200.%20%5Cn-%20%20Line%202%3A%20the%20biggest%20n-digit%20number%20with%20no%20leading%20zeroes%2C%20less%5Cnthan%20A%2C%20containing%20all%20the%20digits%20of%20B%20in%20some%20order.%20If%20such%20number%20%5Cndoes%20not%20exist%2C%20the%20output%20should%20be%200.%5CnSAMPLE%20OUTPUT%5CnExample%201%20%20%20%20%20%20Example%202%5Cn4066%20%20%20%20%20%20%20%20%20%20%204244556%20%5Cn0%20%20%20%20%20%20%20%20%20%20%20%20%20%202655444%20%5Cn%60%60%60%5Cn%20%2A%2AProblem%20for%20kid%20-%20Please%2C%20think%20like%20kid.%2A%2A%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B377%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3889%22%2C%22id%22%3A%223889%22%7D%2C%22translation%22%3A%22%23%20%5Cu95ee%5Cu9898%5Cu63cf%5Cu8ff0%5Cuff1a%5Cr%5Cn%5Cu6709%5Cu4e24%5Cu4e2a%5Cu6ca1%5Cu6709%5Cu524d%5Cu5bfc0%5Cu7684n%5Cu4f4d%5Cu5341%5Cu8fdb%5Cu5236%5Cu6570A%5Cu548cB%5Cu3002%5Cu6211%5Cu4eec%5Cu9700%5Cu8981%5Cu627e%5Cu5230%5Cu4e24%5Cu4e2a%5Cu6700%5Cu63a5%5Cu8fd1A%5Cu7684n%5Cu4f4d%5Cu6570%28%5Cu7b2c1%5Cu4e2a%5Cu5927%5Cu4e8e%5Cu7b49%5Cu4e8eA%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu5c0f%5Cu4e8eA%29%5Cuff0c%5Cu5305%5Cu542bB%5Cu7684%5Cu6240%5Cu6709%5Cu6570%5Cu5b57%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu4f8b%5Cu5982%5Cuff0c%5Cu5982%5Cu679cA%3D3022%5Cuff0cB%3D1232%5Cuff0c%5Cu91c7%5Cu7528B%5Cu7684%5Cu6570%5Cu5b57%5Cuff0c%5Cu6211%5Cu4eec%5Cu53ef%5Cu4ee5%5Cu5f97%5Cu5230%5Cu4ee5%5Cu4e0b4%5Cu4f4d%5Cu6570%3A1223%5Cuff0c1232%5Cuff0c1322%5Cuff0c2123%5Cuff0c2132%5Cuff0c2213%5Cuff0c2231%5Cuff0c2312%5Cuff0c2321%5Cuff0c3122%5Cuff0c3212%5Cu548c3221%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu5c0f%5Cu7684%5Cu5927%5Cu4e8e%5Cu7b49%5Cu4e8eA%5Cu662f3122%5Cuff0c%5Cu6700%5Cu5927%5Cu5c0f%5Cu4e8eA%5Cu7684%5Cu662f2321%5Cu3002%5Cr%5Cn%5Cu5982%5Cu679cA%3D1232%5Cuff0c%5Cu800cB%3D3022%5Cuff0c%5Cu53ef%5Cu80fd%5Cu76844%5Cu4f4d%5Cu6570%5Cu662f2023%5Cuff0c2032%5Cuff0c2203%5Cuff0c2230%5Cuff0c2302%5Cuff0c2320%5Cuff0c3022%5Cuff0c3202%5Cu548c3220%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu5c0f%5Cu7684%5Cu5927%5Cu4e8e%5Cu7b49%5Cu4e8eA%5Cu662f3122%5Cuff0c%5Cu6700%5Cu5927%5Cu5c0f%5Cu4e8eA%5Cu7684%5Cu662f2023%5Cu3002%5Cu4e0d%5Cu5b58%5Cu5728%5Cu5c0f%5Cu4e8eA%5Cu7684%5Cu6570%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu7f16%5Cu5199%5Cu7a0b%5Cu5e8f%5Cuff0c%5Cu5bf9%5Cu4e8e%5Cu7ed9%5Cu5b9a%5Cu7684A%5Cu548cB%5Cuff0c%5Cu627e%5Cu51fa%5Cu6700%5Cu63a5%5Cu8fd1A%5Cu7684%5Cu5305%5Cu542bB%5Cu7684%5Cu6240%5Cu6709%5Cu6570%5Cu5b57%5Cu7684%5Cu6570%5Cuff0c%5Cu6216%5Cu8005%5Cu786e%5Cu5b9a%5Cu5176%5Cu4e2d%5Cu4e00%5Cu4e2a%5Cu662f%5Cu4e0d%5Cu5b58%5Cu5728%5Cu7684%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu4e24%5Cu884c%5Cuff0c%5Cu90fd%5Cu662f%5Cu6ca1%5Cu6709%5Cu524d%5Cu5bfc0%5Cu7684n%281%20n%2060%29%5Cu4f4d%5Cu6b63%5Cu6574%5Cu6570%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu662fA%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu662fB%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu4e24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2a%5Cu5341%5Cu8fdb%5Cu5236%5Cu6570%5Cu3002%5Cr%5Cn%5Cu7b2c1%5Cu884c%5Cu662f%5Cu6700%5Cu5c0f%5Cu7684%5Cu5927%5Cu4e8e%5Cu7b49%5Cu4e8eA%5Cu7684%5Cu6ca1%5Cu6709%5Cu524d%5Cu5bfc0%5Cu7684%5Cuff0c%5Cu5305%5Cu542bB%5Cu6240%5Cu6709%5Cu6570%5Cu5b57%5Cu7684n%5Cu4f4d%5Cu5341%5Cu8fdb%5Cu5236%5Cu6570%5Cu3002%5Cu5982%5Cu679c%5Cu8fd9%5Cu6837%5Cu7684%5Cu6570%5Cu4e0d%5Cu5b58%5Cu5728%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa0%5Cu3002%5Cr%5Cn%5Cu7b2c2%5Cu884c%5Cu662f%5Cu6700%5Cu5927%5Cu7684%5Cu5c0f%5Cu4e8eA%5Cu7684%5Cu6ca1%5Cu6709%5Cu524d%5Cu5bfc0%5Cu7684%5Cuff0c%5Cu5305%5Cu542bB%5Cu6240%5Cu6709%5Cu6570%5Cu5b57%5Cu7684n%5Cu4f4d%5Cu5341%5Cu8fdb%5Cu5236%5Cu6570%5Cu3002%5Cu5982%5Cu679c%5Cu8fd9%5Cu6837%5Cu7684%5Cu6570%5Cu4e0d%5Cu5b58%5Cu5728%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa0%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cuff1a%5Cr%5Cn%60%60%60%5Cr%5CnClosest1.in%5Cr%5Cn3075%5Cr%5Cn6604%5Cr%5Cn%5Cr%5CnClosest1.out%5Cr%5Cn4066%5Cr%5Cn0%5Cr%5Cn%5Cr%5CnClosest2.in%5Cr%5Cn3000203%5Cr%5Cn4562454%5Cr%5Cn%5Cr%5CnClosest2.out%5Cr%5Cn4244556%5Cr%5Cn2655444%5Cr%5Cn%60%60%60%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A53%2C%22totalAccepted%22%3A17%2C%22pid%22%3A%22SP3889%22%2C%22title%22%3A%22MCLONUM%20-%20Closest%20Number%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A115809%2C%22title%22%3A%22%5Cu641c%5Cu7d22%5Cu6c42%5Cu6551%5Cu2026%5Cu2026%22%2C%22forum%22%3A%7B%22id%22%3A13949%2C%22name%22%3A%22SP3889%20MCLONUM%20-%20Closest%20Number%22%2C%22slug%22%3A%22SP3889%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1120%22%2C%22title%22%3A%22%5Cu5c0f%5Cu6728%5Cu68cd%20%5Cuff3b%5Cu6570%5Cu636e%5Cu52a0%5Cu5f3a%5Cu7248%5Cuff3d%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P1352%22%2C%22title%22%3A%22%5Cu6ca1%5Cu6709%5Cu4e0a%5Cu53f8%5Cu7684%5Cu821e%5Cu4f1a%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2756%22%2C%22title%22%3A%22%5Cu98de%5Cu884c%5Cu5458%5Cu914d%5Cu5bf9%5Cu65b9%5Cu6848%5Cu95ee%5Cu9898%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3460%22%2C%22title%22%3A%22%5BPOI2007%5DTET-Tetris%20Attack%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22UVA307%22%2C%22title%22%3A%22%5Cu5c0f%5Cu6728%5Cu68cd%20Sticks%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22UVA%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22MCLONUM%20-%20Closest%20Number%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>MCLONUM - Closest Number</h1>
+<h2>题意翻译</h2>
+<div># 问题描述：
+有两个没有前导0的n位十进制数A和B。我们需要找到两个最接近A的n位数(第1个大于等于A，第二小于A)，包含B的所有数字。
+例如，如果A=3022，B=1232，采用B的数字，我们可以得到以下4位数:1223，1232，1322，2123，2132，2213，2231，2312，2321，3122，3212和3221。
+最小的大于等于A是3122，最大小于A的是2321。
+如果A=1232，而B=3022，可能的4位数是2023，2032，2203，2230，2302，2320，3022，3202和3220。
+最小的大于等于A是3122，最大小于A的是2023。不存在小于A的数。
+编写程序，对于给定的A和B，找出最接近A的包含B的所有数字的数，或者确定其中一个是不存在的。
+# 输入格式：
+输入两行，都是没有前导0的n(1 n 60)位正整数，第一行是A，第二行是B。
+# 输出格式：
+输出两行，每行一个十进制数。
+第1行是最小的大于等于A的没有前导0的，包含B所有数字的n位十进制数。如果这样的数不存在，则输出0。
+第2行是最大的小于A的没有前导0的，包含B所有数字的n位十进制数。如果这样的数不存在，则输出0。
+# 样例输入输出：
+```
+Closest1.in
+3075
+6604
+Closest1.out
+4066
+0
+Closest2.in
+3000203
+4562454
+Closest2.out
+4244556
+2655444
+```</div>
+<h2>题目描述</h2>
+<div>[English](/problems/MCLONUM/en/) [Vietnamese](/problems/MCLONUM/vn/) ```
+Consider two n-digit positive decimal integers A and B with no leading
+zeroes. We need to find the two closest to A n-digit numbers (the
+first one – greater or equal to A, the other – strictly less than A),
+with decimal writings containing all the digits of B in some order.
+For example if A=3022 and B=1232, using B’s digits we can obtain
+the following 4-digit numbers: 1223, 1232, 1322, 2123, 2132, 2213,
+2231, 2312, 2321, 3122, 3212 and 3221. The least number greater
+or equal to A obtained by B’s digits is 3122, and the biggest one,
+strictly less then A is 2321. If A=1232 and B=3022, the possible numbers
+are 2023, 2032, 2203, 2230, 2302, 2320, 3022, 3202 and
+3220. The least number greater or equal to A obtained by B’s digits
+is 2023, and there is no number less than A.
+Write a program closest to find these “closest to A” numbers for
+given A and B, or to determine that one of them does not exist.
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>```
+Two lines are read from the standard input, each of them containing an
+n-digit positive integer with no leading zeroes, with A read from the
+first, and B read from the second line (1≤n ≤ 60).
+```
+```
+SAMPLE INPUT
+Example 1 Example 2
+3075 3000203
+6604 4562454
+```</div>
+<h3>输出格式</h3>
+<br />
+<div>```
+Write to the standard output:
+- Line 1: the least n-digit number with no leading zeroes,
+not less than A, containing all the digits of B in some order.
+If such number does not exist, the output should be 0.
+- Line 2: the biggest n-digit number with no leading zeroes, less
+than A, containing all the digits of B in some order. If such number
+does not exist, the output should be 0.
+SAMPLE OUTPUT
+Example 1 Example 2
+4066 4244556
+0 2655444
+```
+**Problem for kid - Please, think like kid.**</div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

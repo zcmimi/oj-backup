@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>HIGH - Highways - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449528:tkgtFQ2BAYCuVfqujcuxUY0zYp9wf6lYek2iV1sx1cQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22%20In%20some%20countries%20building%20highways%20takes%20a%20lot%20of%20time...%20Maybe%20that%27s%20because%20there%20are%20many%20possiblities%20to%20construct%20a%20network%20of%20highways%20and%20engineers%20can%27t%20make%20up%20their%20minds%20which%20one%20to%20choose.%20Suppose%20we%20have%20a%20list%20of%20cities%20that%20can%20be%20connected%20directly.%20Your%20task%20is%20to%20count%20how%20many%20ways%20there%20are%20to%20build%20such%20a%20network%20that%20between%20every%20two%20cities%20there%20exists%20exactly%20one%20path.%20Two%20networks%20differ%20if%20there%20are%20two%20cities%20that%20are%20connected%20directly%20in%20the%20first%20case%20and%20aren%27t%20in%20the%20second%20case.%20At%20most%20one%20highway%20connects%20two%20cities.%20No%20highway%20connects%20a%20city%20to%20itself.%20Highways%20are%20two-way.%22%2C%22inputFormat%22%3A%22%20The%20input%20begins%20with%20the%20integer%20t%2C%20the%20number%20of%20test%20cases%20%28equal%20to%20about%201000%29.%20Then%20t%20test%20cases%20follow.%20The%20first%20line%20of%20each%20test%20case%20contains%20two%20integers%2C%20the%20number%20of%20cities%20%281%3C%3Dn%3C%3D12%29%20and%20the%20number%20of%20direct%20connections%20between%20them.%20Each%20next%20line%20contains%20two%20integers%20a%20and%20b%2C%20which%20are%20numbers%20of%20cities%20that%20can%20be%20connected.%20Cities%20are%20numbered%20from%201%20to%20n.%20Consecutive%20test%20cases%20are%20separated%20with%20one%20blank%20line.%22%2C%22outputFormat%22%3A%22%20The%20number%20of%20ways%20to%20build%20the%20network%2C%20for%20every%20test%20case%20in%20a%20separate%20line.%20Assume%20that%20when%20there%20is%20only%20one%20city%2C%20the%20answer%20should%20be%201.%20The%20answer%20will%20fit%20in%20a%20signed%2064-bit%20integer.%22%2C%22samples%22%3A%5B%5B%224%5Cn4%205%5Cn3%204%5Cn4%202%5Cn2%203%5Cn1%202%5Cn1%203%5Cn%5Cn2%201%5Cn2%201%5Cn%5Cn1%200%5Cn%5Cn3%203%5Cn1%202%5Cn2%203%5Cn3%201%22%2C%228%5Cn1%5Cn1%5Cn3%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B7000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F104%22%2C%22id%22%3A%22104%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu5f20%5Cu65e0%5Cu5411%5Cu56fe%5Cuff0c%5Cu6c42%5Cu51fa%5Cu5176%5Cu751f%5Cu6210%5Cu6811%5Cu7684%5Cu4e2a%5Cu6570%5Cn%28%5Cu8bf7%5Cu4f7f%5Cu7528Matrix%5Cu5b9a%5Cu7406%5Cu6c42%5Cu89e3%29%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570T%5Cuff0c%5Cu8868%5Cu793a%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7684%5Cu4e2a%5Cu6570%5Cn%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7b2c%5Cu4e00%5Cu884c%5Cu7ed9%5Cu51fa%24n%2Cm%24%20%5Cu5206%5Cu522b%5Cu8868%5Cu793a%5Cu70b9%5Cu6570%5Cu4e0e%5Cu8fb9%5Cu6570%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24m%24%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu7ed9%5Cu51fa%5Cu4e24%5Cu4e2a%5Cu6570%24a%2Cb%24%20%5Cuff0c%5Cu8868%5Cu793a%24a%2Cb%24%20%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu65e0%5Cu5411%5Cu8fb9%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu7ed9%5Cu51fa%5Cu7684%5Cu65e0%5Cu5411%5Cu56fe%5Cu7684%5Cu751f%5Cu6210%5Cu6811%5Cu7684%5Cu4e2a%5Cu6570%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A464%2C%22totalAccepted%22%3A122%2C%22pid%22%3A%22SP104%22%2C%22title%22%3A%22HIGH%20-%20Highways%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A47465%2C%22title%22%3A%22longlong%5Cu6bc1%5Cu4e00%5Cu751f%22%2C%22forum%22%3A%7B%22id%22%3A12937%2C%22name%22%3A%22SP104%20HIGH%20-%20Highways%22%2C%22slug%22%3A%22SP104%22%7D%7D%2C%7B%22id%22%3A43040%2C%22title%22%3A%22CE%3F%3F%3F%21%21%22%2C%22forum%22%3A%7B%22id%22%3A12937%2C%22name%22%3A%22SP104%20HIGH%20-%20Highways%22%2C%22slug%22%3A%22SP104%22%7D%7D%2C%7B%22id%22%3A34576%2C%22title%22%3A%22%5Cu63d0%5Cu4f9b%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12937%2C%22name%22%3A%22SP104%20HIGH%20-%20Highways%22%2C%22slug%22%3A%22SP104%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3645%22%2C%22title%22%3A%22%5BAPIO2015%5D%5Cu96c5%5Cu52a0%5Cu8fbe%5Cu7684%5Cu6469%5Cu5929%5Cu697c%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3628%22%2C%22title%22%3A%22%5BAPIO2010%5D%5Cu7279%5Cu522b%5Cu884c%5Cu52a8%5Cu961f%20%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4111%22%2C%22title%22%3A%22%5BHEOI2015%5D%5Cu5c0fZ%5Cu7684%5Cu623f%5Cu95f4%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4336%22%2C%22title%22%3A%22%5BSHOI2016%5D%5Cu9ed1%5Cu6697%5Cu524d%5Cu7684%5Cu5e7b%5Cu60f3%5Cu4e61%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4455%22%2C%22title%22%3A%22%5BCQOI2018%5D%5Cu793e%5Cu4ea4%5Cu7f51%5Cu7edc%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22HIGH%20-%20Highways%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>HIGH - Highways</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+给定一张无向图，求出其生成树的个数
+(请使用Matrix定理求解)
+## 输入输出格式
+### 输入格式：
+第一行一个整数T，表示测试数据的个数
+每个测试数据第一行给出$n,m$ 分别表示点数与边数
+接下来$m$ 行，每行给出两个数$a,b$ ，表示$a,b$ 之间有一条无向边
+### 输出格式：
+每个测试数据，输出一个整数，表示给出的无向图的生成树的个数</div>
+<h2>题目描述</h2>
+<div> In some countries building highways takes a lot of time... Maybe that's because there are many possiblities to construct a network of highways and engineers can't make up their minds which one to choose. Suppose we have a list of cities that can be connected directly. Your task is to count how many ways there are to build such a network that between every two cities there exists exactly one path. Two networks differ if there are two cities that are connected directly in the first case and aren't in the second case. At most one highway connects two cities. No highway connects a city to itself. Highways are two-way.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> The input begins with the integer t, the number of test cases (equal to about 1000). Then t test cases follow. The first line of each test case contains two integers, the number of cities (1<=n<=12) and the number of direct connections between them. Each next line contains two integers a and b, which are numbers of cities that can be connected. Cities are numbered from 1 to n. Consecutive test cases are separated with one blank line.</div>
+<h3>输出格式</h3>
+<br />
+<div> The number of ways to build the network, for every test case in a separate line. Assume that when there is only one city, the answer should be 1. The answer will fit in a signed 64-bit integer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+4 5
+3 4
+4 2
+2 3
+1 2
+1 3
+
+2 1
+2 1
+
+1 0
+
+3 3
+1 2
+2 3
+3 1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>8
+1
+1
+3</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TREESUM - Tree Sum - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450035:4FAk3NJ6bv4zvp9fvMpShO5YzNmqz9SmNoE965r8eFU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%20Lx%20denote%20the%20level%20of%20a%20node%20x%20in%20a%20rooted%20tree.%20Lx%20is%201%20if%20x%20is%20the%20root%2C%20otherwise%20Lx%20%3D%201%20%2B%20Ly%2C%20where%20y%20is%20the%20parent%20of%20x%20in%20the%20rooted%20tree.%5Cn%5CnYou%20need%20to%20calculate%20the%20sum%20Lx%20%5E%20K%20for%20all%20nodes%20x%20in%20the%20tree.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20the%20number%20of%20test%20cases%20T.%20T%20test%20cases%20follow.%20The%20first%20line%20of%20each%20test%20case%20contains%20N%20and%20K%2C%20where%20N%20is%20the%20number%20of%20nodes%20in%20the%20tree.%20The%20following%20N%20-%201%20lines%20contain%20two%20integers%20ai%20and%20bi%2C%20indicating%20an%20edge%20between%20nodes%20ai%20and%20bi%20in%20the%20tree.%20There%20is%20a%20blank%20line%20after%20each%20test%20case.%22%2C%22outputFormat%22%3A%22Output%20N%20lines%20for%20each%20test%20case.%20The%20i-th%20line%20should%20contain%20the%20required%20sum%20if%20the%20tree%20is%20rooted%20at%20node%20i.%20Output%20all%20values%20modulo%201000000007.%20Output%20a%20blank%20line%20after%20each%20test%20case.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn3%202%5Cr%5Cn0%201%5Cr%5Cn1%202%5Cr%5Cn%5Cr%5Cn3%203%5Cr%5Cn0%201%5Cr%5Cn0%202%22%2C%2214%5Cr%5Cn9%5Cr%5Cn14%5Cr%5Cn%5Cr%5Cn17%5Cr%5Cn36%5Cr%5Cn36%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1570%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F7363%22%2C%22id%22%3A%227363%22%7D%2C%22translation%22%3A%22%24l_x%24%5Cu8868%5Cu793a%5Cu6709%5Cu6839%5Cu6811%5Cu4e2d%5Cu8282%5Cu70b9%24x%24%5Cu7684%5Cu6df1%5Cu5ea6%5Cu3002%5Cu5982%5Cu679c%24x%24%5Cu662f%5Cu6839%5Cuff0c%5Cu90a3%5Cu4e48%24l_x%24%5Cu662f%241%24%5Cuff0c%5Cu5426%5Cu5219%24l_x%3D1%2Bl_y%24%5Cuff0c%5Cu5176%5Cu4e2d%24y%24%5Cu662f%5Cu6709%5Cu6839%5Cu6811%5Cu4e2d%24x%24%5Cu7684%5Cu7236%5Cu8282%5Cu70b9%5Cu3002%20%20%5Cr%5Cn%5Cu73b0%5Cu5728%5Cuff0c%5Cu4f60%5Cu9700%5Cu8981%5Cu8ba1%5Cu7b97%5Cu5bf9%5Cu4e8e%5Cu6811%5Cu4e2d%5Cu6240%5Cu6709%5Cu8282%5Cu70b9%24%7Bx%7D%24%5Cu7684%24%7B%7Bl_x%7D%5Ek%7D%24%5Cu603b%5Cu548c%5Cu3002%20%20%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%2A%2A%5Cuff1a%20%20%5Cr%5Cn%5Ct%5Cu7b2c%5Cu4e00%5Cu884c%5Cu7ed9%5Cu51fa%5Cu6570%5Cu636e%5Cu7ec4%5Cu6570%24T%24%5Cu3002%20%20%5Cr%5Cn%20%20%20%20%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6570%5Cu636e%5Cu7b2c%5Cu4e00%5Cu884c%5Cu90fd%5Cu5305%5Cu542b%24n%24%2C%24k%24%5Cu4e24%5Cu4e2a%5Cu6570%5Cuff0c%24n%24%5Cu8868%5Cu793a%5Cu8282%5Cu70b9%5Cu603b%5Cu6570%5Cu3002%20%20%20%20%5Cr%5Cn%20%20%20%20%5Cu63a5%5Cu4e0b%5Cu6765n-1%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu6570%24%7Ba_i%7D%24%5Cu548c%24%7Bb_i%7D%24%5Cuff0c%5Cu8868%5Cu793a%24%7Ba_i%7D%24%5Cu548c%24%7Bb_i%7D%24%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cu3002%20%20%5Cr%5Cn%20%20%20%20%2A%2A%5Cu6bcf%5Cu4e24%5Cu7ec4%5Cu6570%5Cu636e%5Cu95f4%5Cu6709%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu884c%5Cuff01%5Cuff01%5Cuff01%5Cuff01%5Cuff01%5Cuff01%5Cuff01%2A%2A%20%20%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Cuff1a%20%20%5Cr%5Cn%5Ct%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu8f93%5Cu51fa%24n%24%5Cu884c%5Cu3002%20%20%5Cr%5Cn%20%20%20%20%5Cu7b2c%24i%24%5Cu884c%5Cu8f93%5Cu51fa%5Cu82e5%5Cu7b2c%24i%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cu4f5c%5Cu4e3a%5Cu6839%5Cu8282%5Cu70b9%5Cu6240%5Cu8ba1%5Cu7b97%5Cu51fa%5Cu7684%5Cu7ed3%5Cu679c%5Cu3002%20%20%5Cr%5Cn%20%20%20%20%5Cu8f93%5Cu51fa%5Cu7ed3%5Cu679c%5Cu5e94%5Cu5bf9%2410%5E9%2B7%24%5Cu53d6%5Cu6a21%5Cu3002%20%20%5Cr%5Cn%20%20%20%20%2A%2A%5Cu6bcf%5Cu4e24%5Cu7ec4%5Cu6570%5Cu636e%5Cu95f4%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu7a7a%5Cu884c%5Cuff01%5Cuff01%5Cuff01%5Cuff01%5Cuff01%5Cuff01%2A%2A%20%20%5Cr%5Cn%2A%2A%5Cu6570%5Cu636e%5Cu8303%5Cu56f4%2A%2A%5Cuff1a%20%20%5Cr%5Cn%241%20%3C%3D%20T%20%3C%3D%2010%24%20%20%5Cr%5Cn%241%20%3C%3D%20N%20%3C%3D%2020000%24%20%20%5Cr%5Cn%241%20%3C%3D%20K%20%3C%3D%2020%24%20%20%5Cr%5Cn%240%20%3C%3D%20a_i%2Cb_i%20%3C%20N%24%20%20%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A4%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22SP7363%22%2C%22title%22%3A%22TREESUM%20-%20Tree%20Sum%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A112329%2C%22title%22%3A%22%5Cu63d0%5Cu4ea4%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A14550%2C%22name%22%3A%22SP7363%20TREESUM%20-%20Tree%20Sum%22%2C%22slug%22%3A%22SP7363%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TREESUM%20-%20Tree%20Sum%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TREESUM - Tree Sum</h1>
+<h2>题意翻译</h2>
+<div>$l_x$表示有根树中节点$x$的深度。如果$x$是根，那么$l_x$是$1$，否则$l_x=1+l_y$，其中$y$是有根树中$x$的父节点。
+现在，你需要计算对于树中所有节点${x}$的${{l_x}^k}$总和。
+**输入格式**：
+第一行给出数据组数$T$。
+每一组数据第一行都包含$n$,$k$两个数，$n$表示节点总数。
+接下来n-1行每行包含两个数${a_i}$和${b_i}$，表示${a_i}$和${b_i}$间有一条边。
+**每两组数据间有一个空行！！！！！！！**
+**输出格式**：
+每组数据输出$n$行。
+第$i$行输出若第$i$个节点作为根节点所计算出的结果。
+输出结果应对$10^9+7$取模。
+**每两组数据间输出一个空行！！！！！！**
+**数据范围**：
+$1 <= T <= 10$
+$1 <= N <= 20000$
+$1 <= K <= 20$
+$0 <= a_i,b_i < N$
+</div>
+<h2>题目描述</h2>
+<div>Let Lx denote the level of a node x in a rooted tree. Lx is 1 if x is the root, otherwise Lx = 1 + Ly, where y is the parent of x in the rooted tree.
+You need to calculate the sum Lx ^ K for all nodes x in the tree.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains the number of test cases T. T test cases follow. The first line of each test case contains N and K, where N is the number of nodes in the tree. The following N - 1 lines contain two integers ai and bi, indicating an edge between nodes ai and bi in the tree. There is a blank line after each test case.</div>
+<h3>输出格式</h3>
+<br />
+<div>Output N lines for each test case. The i-th line should contain the required sum if the tree is rooted at node i. Output all values modulo 1000000007. Output a blank line after each test case.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+3 2
+0 1
+1 2
+
+3 3
+0 1
+0 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>14
+9
+14
+
+17
+36
+36</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

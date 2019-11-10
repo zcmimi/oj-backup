@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MCONSTR - Search of Concatenated Strings - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449839:/w+ZEH6fOX1Q9P4tVmMYCmgxcSaDDpAtaeEjN6d6LUw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BEnglish%5D%28%5C%2Fproblems%5C%2FMCONSTR%5C%2Fen%5C%2F%29%20%5BVietnamese%5D%28%5C%2Fproblems%5C%2FMCONSTR%5C%2Fvn%5C%2F%29%20The%20amount%20of%20information%20on%20the%20World%20Wide%20Web%20is%20growing%20quite%20rapidly.%20In%20this%20information%20explosion%20age%2C%20we%20must%20survive%20by%20accessing%20only%20the%20Web%20pages%20containing%20information%20relevant%20to%20our%20own%20needs.%20One%20of%20the%20key%20technologies%20for%20this%20purpose%20is%20keyword%20search.%20By%20using%20well-known%20search%20engines%2C%20we%20can%20easily%20access%20those%20pages%20containing%20useful%20information%20about%20the%20topic%20we%20want%20to%20know.%5Cn%5Cn%20There%20are%20many%20variations%20in%20keyword%20search%20problems.%20If%20a%20single%20string%20is%20searched%20in%20a%20given%20text%2C%20the%20problem%20is%20quite%20easy.%20If%20the%20pattern%20to%20be%20searched%20consists%20of%20multiple%20strings%2C%20or%20is%20given%20by%20some%20powerful%20notation%20such%20as%20regular%20expressions%2C%20the%20task%20requires%20elaborate%20algorithms%20to%20accomplish%20e%5Cufb03ciently.%5Cn%5Cn%20In%20our%20problem%2C%20a%20number%20of%20strings%20%28element%20strings%29%20are%20given%2C%20but%20they%20are%20not%20directly%20searched%20for.%20Concatenations%20of%20all%20the%20element%20strings%20in%20any%20order%20are%20the%20targets%20of%20the%20search%20here.%5Cn%5Cn%20For%20example%2C%20consider%20three%20element%20strings%20aa%2C%20b%20and%20ccc%20are%20given.%20In%20this%20case%2C%20the%20following%20six%20concatenated%20strings%20are%20the%20targets%20of%20the%20search%2C%20i.e.%20they%20should%20be%20searched%20in%20the%20text.%5Cn%5Cn%60%60%60%5Cn%5Cnaabccc%5Cnaacccb%5Cnbaaccc%5Cnbcccaa%5Cncccaab%5Cncccbaa%5Cn%60%60%60%5Cn%20The%20text%20may%20contain%20several%20occurrences%20of%20these%20strings.%20You%20are%20requested%20to%20count%20the%20number%20of%20occurrences%20of%20these%20strings%2C%20or%20speaking%20more%20precisely%2C%20the%20number%20of%20positions%20of%20occurrences%20in%20the%20text.%20Two%20or%20more%20concatenated%20strings%20may%20be%20identical.%20In%20such%20cases%2C%20it%20is%20necessary%20to%20consider%20subtle%20aspects%20of%20the%20above%20problem%20statement.%20For%20example%2C%20if%20two%20element%20strings%20are%20x%20and%20xx%2C%20the%20string%20xxx%20is%20an%20occurrence%20of%20both%20the%20concatenation%20of%20x%20and%20xx%20and%20that%20of%20xx%20and%20x.%20Since%20the%20number%20of%20positions%20of%20occurrences%20should%20be%20counted%2C%20this%20case%20is%20counted%20as%20one%2C%20not%20two.%5Cn%5Cn%20Two%20occurrences%20may%20overlap.%20For%20example%2C%20the%20string%20xxxx%20has%20occurrences%20of%20the%20concatenation%20xxx%20in%20two%20di%5Cufb00erent%20positions.%20This%20case%20is%20counted%20as%20two.%22%2C%22inputFormat%22%3A%22%20The%20input%20consists%20of%20a%20number%20of%20datasets%2C%20each%20giving%20a%20set%20of%20element%20strings%20and%20a%20text.%20The%20format%20of%20a%20dataset%20is%20as%20follows.%5Cn%5Cn%60%60%60%5Cn%5Cnn%20m%5Cne1%5Cne2%5Cn.%5Cn.%5Cn.%5Cnen%5Cnt1%5Cnt2%5Cn.%5Cn.%5Cn.%5Cntm%5Cn%60%60%60%5Cn%20The%20%5Cufb01rst%20line%20contains%20two%20integers%20separated%20by%20a%20space.%20n%20is%20the%20number%20of%20element%20strings.%20m%20is%20the%20number%20of%20lines%20used%20to%20represent%20the%20text.%20n%20is%20between%201%20and%2012%2C%20inclusive.%20Each%20of%20the%20following%20n%20lines%20gives%20an%20element%20string.%20The%20length%20%28number%20of%20characters%29%20of%20an%20element%20string%20is%20between%201%20and%2020%2C%20inclusive.%20The%20last%20m%20lines%20as%20a%20whole%20give%20the%20text.%5Cn%5CnSince%20it%20is%20not%20desirable%20to%20have%20a%20very%20long%20line%2C%20the%20text%20is%20separated%20into%20m%20lines%20by%20newlines%2C%20but%20these%20newlines%20should%20be%20ignored.%20They%20are%20not%20parts%20of%20the%20text.%5Cn%5Cn%20The%20length%20of%20each%20of%20these%20lines%20%28not%20including%20the%20newline%29%20is%20between%201%20and%20100%2C%20inclusive.%5Cn%5Cn%20The%20length%20of%20the%20text%20is%20between%201%20and%205000%2C%20inclusive.%20The%20element%20strings%20and%20the%20text%20do%20not%20contain%20characters%20other%20than%20lowercase%20letters.%5Cn%5Cn%20The%20end%20of%20the%20input%20is%20indicated%20by%20a%20line%20containing%20two%20zeros%20separated%20by%20a%20space.%5Cn%5Cn%60%60%60%5Cn%5CnSAMPLE%20INPUT%5Cn3%201%5Cnaa%5Cnb%5Cnccc%5Cnaabccczbaacccbaazaabbcccaa%5Cn3%201%5Cna%5Cnb%5Cnc%5Cncbbcbcbabaacabccaccbaacbccbcaaaccccbcbcbbcacbaacccaccbbcaacbbabbabaccc%5Cn3%204%5Cnaaaaaaaaaaaaaaaaaaaa%5Cnaaaaaaaaaaaaaaaaaaaa%5Cnaaaaaaaaaaaaaaaaaaaa%5Cnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa%5Cnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa%5Cnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa%5Cnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa%5Cn0%200%5Cn%5Cn%60%60%60%22%2C%22outputFormat%22%3A%22%20For%20each%20dataset%20in%20the%20input%2C%20one%20line%20containing%20the%20number%20of%20matched%20positions%20should%20be%20output.%20An%20output%20line%20should%20not%20contain%20extra%20characters.%5Cn%5Cn%60%60%60%5Cn%5Cn%5CnSAMPLE%20OUTPUT%5Cn5%5Cn12%5Cn197%5Cn%60%60%60%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2442%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3939%22%2C%22id%22%3A%223939%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP3939%22%2C%22title%22%3A%22MCONSTR%20-%20Search%20of%20Concatenated%20Strings%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22MCONSTR%20-%20Search%20of%20Concatenated%20Strings%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>MCONSTR - Search of Concatenated Strings</h1>
+<h2>题目描述</h2>
+<div>[English](/problems/MCONSTR/en/) [Vietnamese](/problems/MCONSTR/vn/) The amount of information on the World Wide Web is growing quite rapidly. In this information explosion age, we must survive by accessing only the Web pages containing information relevant to our own needs. One of the key technologies for this purpose is keyword search. By using well-known search engines, we can easily access those pages containing useful information about the topic we want to know.
+There are many variations in keyword search problems. If a single string is searched in a given text, the problem is quite easy. If the pattern to be searched consists of multiple strings, or is given by some powerful notation such as regular expressions, the task requires elaborate algorithms to accomplish eﬃciently.
+In our problem, a number of strings (element strings) are given, but they are not directly searched for. Concatenations of all the element strings in any order are the targets of the search here.
+For example, consider three element strings aa, b and ccc are given. In this case, the following six concatenated strings are the targets of the search, i.e. they should be searched in the text.
+```
+aabccc
+aacccb
+baaccc
+bcccaa
+cccaab
+cccbaa
+```
+The text may contain several occurrences of these strings. You are requested to count the number of occurrences of these strings, or speaking more precisely, the number of positions of occurrences in the text. Two or more concatenated strings may be identical. In such cases, it is necessary to consider subtle aspects of the above problem statement. For example, if two element strings are x and xx, the string xxx is an occurrence of both the concatenation of x and xx and that of xx and x. Since the number of positions of occurrences should be counted, this case is counted as one, not two.
+Two occurrences may overlap. For example, the string xxxx has occurrences of the concatenation xxx in two diﬀerent positions. This case is counted as two.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> The input consists of a number of datasets, each giving a set of element strings and a text. The format of a dataset is as follows.
+```
+n m
+e1
+e2
+.
+.
+.
+en
+t1
+t2
+.
+.
+.
+tm
+```
+The ﬁrst line contains two integers separated by a space. n is the number of element strings. m is the number of lines used to represent the text. n is between 1 and 12, inclusive. Each of the following n lines gives an element string. The length (number of characters) of an element string is between 1 and 20, inclusive. The last m lines as a whole give the text.
+Since it is not desirable to have a very long line, the text is separated into m lines by newlines, but these newlines should be ignored. They are not parts of the text.
+The length of each of these lines (not including the newline) is between 1 and 100, inclusive.
+The length of the text is between 1 and 5000, inclusive. The element strings and the text do not contain characters other than lowercase letters.
+The end of the input is indicated by a line containing two zeros separated by a space.
+```
+SAMPLE INPUT
+3 1
+aa
+b
+ccc
+aabccczbaacccbaazaabbcccaa
+3 1
+a
+b
+c
+cbbcbcbabaacabccaccbaacbccbcaaaccccbcbcbbcacbaacccaccbbcaacbbabbabaccc
+3 4
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+0 0
+```</div>
+<h3>输出格式</h3>
+<br />
+<div> For each dataset in the input, one line containing the number of matched positions should be output. An output line should not contain extra characters.
+```
+SAMPLE OUTPUT
+5
+12
+197
+```</div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

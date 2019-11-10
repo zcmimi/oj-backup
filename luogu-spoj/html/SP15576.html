@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>STC09 - Aesthetic Text - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450434:WArZhCWQgfrxLQr7boCrz14nLZkQ46BYhu9YJdxdKMc=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%20us%20consider%20a%20text%20consisting%20of%20N%20words%20numbered%20from%201%20to%20N.%20We%20represent%20any%20of%20its%20decompositions%20into%20K%20lines%20by%20a%20sequence%20of%20numbers%20%28a%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B3%7D%20%24%20%2C%20...%2C%20a%20%24%20_%7Bk-1%7D%20%24%20%29%2C%20such%20that%20the%20words%20with%20numbers%20from%201%20to%20a%20%24%20_%7B1%7D%20%24%20are%20in%20the%20first%20line%2C%20the%20words%20with%20numbers%20from%20a%20%24%20_%7B1%7D%20%24%20%2B1%20to%20a%20%24%20_%7B2%7D%20%24%20are%20in%20the%20second%20line%2C%20and%20so%20on%2C%20and%20finally%2C%20the%20words%20with%20numbers%20from%20a%20%24%20_%7BK%7D%20%24%20-1%20to%20N%20are%20in%20the%20last%2C%20K-th%20line.%5Cn%5CnEach%20word%20has%20a%20certain%20length%20%28measured%20in%20the%20number%20of%20characters%29.%20Let%20length%28x%29%20denote%20the%20length%20of%20the%20word%20no.%20x.%20Furthermore%2C%20every%20two%20subsequent%20words%20in%20a%20line%20are%20separated%20by%20a%20space%20of%20width%20of%20a%20single%20character.%20By%20length%20of%20the%20line%20we%20denote%20the%20sum%20of%20lengths%20of%20the%20words%20in%20this%20line%2C%20increased%20by%20the%20number%20of%20spaces%20between%20them.%20Let%20line%28w%29%20denote%20the%20length%20of%20the%20line%20no.%20w.%20I.e.%2C%20if%20the%20line%20no.%20w%20contains%20the%20words%20with%20numbers%20from%20i%20to%20j%20inclusive%2C%20its%20length%20is%3A%5Cn%5Cnline%28w%29%3Dlength%28i%29%2Blength%28i%2B1%29%2B...%2Blength%28j%29%2B%28j-i%29%5Cn%5CnAs%20an%20example%2C%20let%20us%20consider%20a%20text%20consisting%20of%204%20words%20of%20lengths%204%2C%203%2C%202%20and%205%2C%20respectively%2C%20and%20its%20decomposition%20%281%2C%203%29%20into%203%20lines.%20Then%20the%20length%20of%20the%20first%20line%20is%204%2C%20second%20-%206%2C%20and%20third%20-%205%3A%5Cn%5CnXXXX%20%281st%20line%29%20%20%5CnXXX%20XX%20%282nd%20line%29%20%20%5CnXXXXX%20%283rd%20line%29%5Cn%5CnWe%20shall%20refer%20to%20the%20number%5Cn%5Cn%7Cline%281%29-line%282%29%7C%2B%7Cline%282%29-line%283%29%7C%2B...%2B%7Cline%28K-1%29-line%28K%29%7C%5Cn%5Cnas%20the%20coefficient%20of%20aestheticism%20of%20a%20decomposition%20of%20the%20given%20text%20into%20K%20lines.%20Particularly%2C%20if%20the%20decomposition%20has%20only%20one%20line%2C%20its%20coefficient%20of%20aestheticism%20is%200.%5Cn%5CnNeedles%20to%20say%2C%20the%20smaller%20the%20coefficient%2C%20the%20more%20aesthetical%20the%20decomposition.%20We%20shall%20consider%20only%20these%20decompositions%20that%20have%20no%20line%20whose%20length%20exceeds%20some%20constant%20M.%20Of%20all%20such%20decompositions%20of%20a%20given%20text%20into%20any%20number%20of%20lines%20we%20seek%20the%20one%20most%20aesthetical%2C%20i.e.%20the%20one%20with%20the%20smallest%20coefficient%20of%20aestheticism.%20The%20aforementioned%20examplary%20decomposition%27s%20coefficient%20is%203%2C%20and%20that%20is%20exactly%20the%20minimum%20coefficient%20of%20aestheticism%20for%20M%20%3D%206%20and%20M%20%3D%207.%5Cn%5Cn%20%20%20%5CnTask%5Cn----%5Cn%5CnWrite%20a%20programme%20that%3A%5Cn%5Cn-%20reads%20from%20the%20standard%20input%20the%20numbers%20N%20and%20M%20and%20the%20lengths%20of%20the%20words%2C%5Cn-%20determines%20the%20minimum%20coefficient%20of%20aestheticism%20for%20those%20decompositions%2C%20whose%20every%20line%20is%20of%20length%20not%20exceeding%20M%2C%5Cn-%20writes%20the%20result%20to%20the%20standard%20output.%5Cn%5Cn%20%20%20%5CnInput%5Cn-----%5Cn%5CnThe%20first%20line%20of%20the%20standard%20input%20contains%20the%20numbers%20N%20and%20M%2C%201%20%3C%3D%20N%20%3C%3D%202000%2C%201%20%3C%3D%20M%20%3C%3D%201000000%2C%20separated%20by%20a%20single%20space.%20The%20second%2C%20last%20line%20of%20the%20standard%20input%20contains%20M%20integers%2C%20denoting%20the%20lengths%20of%20subsequent%20words%2C%201%20%3C%3D%20length%28i%29%20%3C%3D%20M%20for%20i%20%3D%201%2C%202%2C%203%2C%20...%20M%2C%20separated%20by%20single%20spaces.%5Cn%5Cn%20%20%20%5CnOutput%5Cn------%5Cn%5CnThe%20first%20and%20only%20line%20of%20the%20standard%20output%20should%20contain%20exactly%20one%20integer%3A%20the%20minimum%20coefficient%20of%20aestheticism%20for%20those%20decompositions%2C%20whose%20every%20line%27s%20length%20does%20not%20exceed%20M.%5Cn%5Cn%20%20%20%5CnExample%5Cn-------%5Cn%5CnFor%20the%20input%20data%3A%5Cn%5Cn%20%60%60%60%5Cn6%204%5Cn4%203%202%205%5Cn%60%60%60%5Cnthe%20correct%20result%20is%3A%5Cn%5Cn%20%603%60while%20for%20the%20following%20input%20data%3A%5Cn%5Cn%20%60%60%60%5Cn4%202%5Cn1%202%5Cn%60%60%60%5Cnthe%20correct%20result%20is%3A%5Cn%5Cn%20%600%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F15576%22%2C%22id%22%3A%2215576%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP15576%22%2C%22title%22%3A%22STC09%20-%20Aesthetic%20Text%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22STC09%20-%20Aesthetic%20Text%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>STC09 - Aesthetic Text</h1>
+<h2>题目描述</h2>
+<div>Let us consider a text consisting of N words numbered from 1 to N. We represent any of its decompositions into K lines by a sequence of numbers (a $ _{1} $ , a $ _{2} $ , a $ _{3} $ , ..., a $ _{k-1} $ ), such that the words with numbers from 1 to a $ _{1} $ are in the first line, the words with numbers from a $ _{1} $ +1 to a $ _{2} $ are in the second line, and so on, and finally, the words with numbers from a $ _{K} $ -1 to N are in the last, K-th line.
+Each word has a certain length (measured in the number of characters). Let length(x) denote the length of the word no. x. Furthermore, every two subsequent words in a line are separated by a space of width of a single character. By length of the line we denote the sum of lengths of the words in this line, increased by the number of spaces between them. Let line(w) denote the length of the line no. w. I.e., if the line no. w contains the words with numbers from i to j inclusive, its length is:
+line(w)=length(i)+length(i+1)+...+length(j)+(j-i)
+As an example, let us consider a text consisting of 4 words of lengths 4, 3, 2 and 5, respectively, and its decomposition (1, 3) into 3 lines. Then the length of the first line is 4, second - 6, and third - 5:
+XXXX (1st line)
+XXX XX (2nd line)
+XXXXX (3rd line)
+We shall refer to the number
+|line(1)-line(2)|+|line(2)-line(3)|+...+|line(K-1)-line(K)|
+as the coefficient of aestheticism of a decomposition of the given text into K lines. Particularly, if the decomposition has only one line, its coefficient of aestheticism is 0.
+Needles to say, the smaller the coefficient, the more aesthetical the decomposition. We shall consider only these decompositions that have no line whose length exceeds some constant M. Of all such decompositions of a given text into any number of lines we seek the one most aesthetical, i.e. the one with the smallest coefficient of aestheticism. The aforementioned examplary decomposition's coefficient is 3, and that is exactly the minimum coefficient of aestheticism for M = 6 and M = 7.
+Task
+----
+Write a programme that:
+- reads from the standard input the numbers N and M and the lengths of the words,
+- determines the minimum coefficient of aestheticism for those decompositions, whose every line is of length not exceeding M,
+- writes the result to the standard output.
+Input
+-----
+The first line of the standard input contains the numbers N and M, 1 <= N <= 2000, 1 <= M <= 1000000, separated by a single space. The second, last line of the standard input contains M integers, denoting the lengths of subsequent words, 1 <= length(i) <= M for i = 1, 2, 3, ... M, separated by single spaces.
+Output
+------
+The first and only line of the standard output should contain exactly one integer: the minimum coefficient of aestheticism for those decompositions, whose every line's length does not exceed M.
+Example
+-------
+For the input data:
+```
+6 4
+4 3 2 5
+```
+the correct result is:
+`3`while for the following input data:
+```
+4 2
+1 2
+```
+the correct result is:
+`0`</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

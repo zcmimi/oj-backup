@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>JPIX - Pixel Shuffle - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449721:mBzCsLjzFbIzjdk1SKCLYawqOaIu96i7J/FG9YARFuQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2F35273a4a0cb45de5f69e7e442d9ddb8a59707031.png%29%5Cn%5CnShuffling%20the%20pixels%20in%20a%20bitmap%20image%20sometimes%20yields%20random%20looking%20images.%20However%2C%20by%20repeating%20the%20shuffling%20enough%20times%2C%20one%20finally%20recovers%20the%20original%20images.%20This%20should%20be%20no%20surprise%2C%20since%20%5C%22shuffling%5C%22%20means%20applying%20a%20one-to-one%20mapping%20%28or%20permutation%29%20over%20the%20cells%20of%20the%20image%2C%20which%20come%20in%20finite%20number.%5Cn%5CnYour%20program%20should%20read%20a%20number%20n%20%2C%20and%20a%20series%20of%20elementary%20transformations%20that%20define%20a%20%5C%22shuffling%5C%22%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2F598fb30f65716b2690333cbde24b47b998008bf8.png%29%20of%20n%20%5C%5C%2A%20n%20images.%20Then%2C%20your%20program%20should%20compute%20the%20minimal%20number%20m%20%28m%20%3E%200%29%20%2C%20such%20that%20m%20applications%20of%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2F598fb30f65716b2690333cbde24b47b998008bf8.png%29%20always%20yield%20the%20original%20n%20%5C%5C%2A%20n%20image.%5Cn%5CnFor%20instance%20if%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2F598fb30f65716b2690333cbde24b47b998008bf8.png%29%20is%20counter-clockwise%2090%20%24%20%5E%7Bo%7D%20%24%20rotation%20then%20m%20%3D%204.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2F81c6ff4e922996a836a6330d195cd68c52a6c23d.png%29%22%2C%22inputFormat%22%3A%22Test%20cases%20are%20given%20one%20after%20another%2C%20and%20a%20single%200%20denotes%20the%20end%20of%20the%20input.%20For%20each%20test%20case%3A%5Cn%5CnInput%20is%20made%20of%20two%20lines%2C%20the%20first%20line%20is%20number%20n%20%282%20%3C%3D%20n%20%3C%3D%202%20%24%20%5E%7B10%7D%20%24%20%2C%20n%20even%29.%20The%20number%20n%20is%20the%20size%20of%20images%2C%20one%20image%20is%20represented%20internally%20by%20a%20n%20%5C%5C%2A%20n%20pixel%20matrix%20%28a%20%24%20%5E%7Bj%7D%20%24%20%24%20_%7Bi%7D%20%24%20%29%20%2C%20where%20i%20is%20the%20row%20number%20and%20j%20is%20the%20column%20number.%20The%20pixel%20at%20the%20upper%20left%20corner%20is%20at%20row%200%20and%20column%200.%5Cn%5CnThe%20second%20line%20is%20a%20non-empty%20list%20of%20at%20most%2032%20words%2C%20separated%20by%20spaces.%20Valid%20words%20are%20the%20keywords%20%2A%2Aid%2A%2A%2C%20%2A%2Arot%2A%2A%2C%20%2A%2Asym%2A%2A%2C%20%2A%2Abhsym%2A%2A%2C%20%2A%2Abvsym%2A%2A%2C%20%2A%2Adiv%2A%2A%20and%20%2A%2Amix%2A%2A%2C%20or%20a%20keyword%20followed%20by%20%2A%2A-%2A%2A.%20Each%20keyword%20%2A%2Akey%2A%2A%20designates%20an%20elementary%20transform%20%28as%20defined%20by%20Figure%201%29%2C%20and%20%2A%2Akey-%2A%2A%20designates%20the%20inverse%20of%20transform%20%2A%2Akey%2A%2A.%20For%20instance%2C%20%2A%2Arot-%2A%2A%20is%20the%20inverse%20of%20counter-clockwise%2090%20%24%20%5E%7Bo%7D%20%24%20rotation%2C%20that%20is%20clockwise%2090%20%24%20%5E%7Bo%7D%20%24%20rotation.%20Finally%2C%20the%20list%20k%20%24%20_%7B1%7D%20%24%20%2C%20k%20%24%20_%7B2%7D%20%24%20%2C%20...%2C%20k%20%24%20_%7Bp%7D%20%24%20designates%20the%20compound%20transform%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2F598fb30f65716b2690333cbde24b47b998008bf8.png%29%20%3D%20k%20%24%20_%7B1%7D%20%24%20ok%20%24%20_%7B2%7D%20%24%20o%20...%20ok%20%24%20_%7Bp%7D%20%24%20.%20For%20instance%2C%20%5C%22bvsym%20rot-%5C%22%20is%20the%20transform%20that%20first%20performs%20clockwise%2090o%20rotation%20and%20then%20vertical%20symmetry%20on%20the%20lower%20half%20of%20the%20image.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2Fb1be13997c7ce5746b1d6c403d076be6aac7358d.png%29%5Cn%5CnFigure%201%3A%20Transformations%20of%20image%20%28a%20%24%20%5E%7Bj%7D%20%24%20%24%20_%7Bi%7D%20%24%20%29%20into%20image%20%28b%20%24%20%5E%7Bj%7D%20%24%20%24%20_%7Bi%7D%20%24%20%29%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2Fc3d491b700d27fc23bce533c30605a4268a4e90e.png%29%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%3A%5Cn%5CnYour%20program%20should%20output%20a%20single%20line%20whose%20contents%20is%20the%20minimal%20number%20m%20%28m%20%3E%200%29%20such%20that%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2161%5C%2F598fb30f65716b2690333cbde24b47b998008bf8.png%29%20is%20the%20identity.%20You%20may%20assume%20that%2C%20for%20all%20test%20input%2C%20you%20have%20m%20%3C%202%20%24%20%5E%7B31%7D%20%24%20.%22%2C%22samples%22%3A%5B%5B%22256%5Cr%5Cnrot-%20div%20rot%20div%5Cr%5Cn256%5Cr%5Cnbvsym%20div%20mix%5Cr%5Cn0%22%2C%228%5Cr%5Cn63457%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F2161%22%2C%22id%22%3A%222161%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP2161%22%2C%22title%22%3A%22JPIX%20-%20Pixel%20Shuffle%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22JPIX%20-%20Pixel%20Shuffle%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>JPIX - Pixel Shuffle</h1>
+<h2>题目描述</h2>
+<div>![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/35273a4a0cb45de5f69e7e442d9ddb8a59707031.png)
+Shuffling the pixels in a bitmap image sometimes yields random looking images. However, by repeating the shuffling enough times, one finally recovers the original images. This should be no surprise, since "shuffling" means applying a one-to-one mapping (or permutation) over the cells of the image, which come in finite number.
+Your program should read a number n , and a series of elementary transformations that define a "shuffling" ![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/598fb30f65716b2690333cbde24b47b998008bf8.png) of n \* n images. Then, your program should compute the minimal number m (m > 0) , such that m applications of ![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/598fb30f65716b2690333cbde24b47b998008bf8.png) always yield the original n \* n image.
+For instance if ![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/598fb30f65716b2690333cbde24b47b998008bf8.png) is counter-clockwise 90 $ ^{o} $ rotation then m = 4.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/81c6ff4e922996a836a6330d195cd68c52a6c23d.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Test cases are given one after another, and a single 0 denotes the end of the input. For each test case:
+Input is made of two lines, the first line is number n (2 <= n <= 2 $ ^{10} $ , n even). The number n is the size of images, one image is represented internally by a n \* n pixel matrix (a $ ^{j} $ $ _{i} $ ) , where i is the row number and j is the column number. The pixel at the upper left corner is at row 0 and column 0.
+The second line is a non-empty list of at most 32 words, separated by spaces. Valid words are the keywords **id**, **rot**, **sym**, **bhsym**, **bvsym**, **div** and **mix**, or a keyword followed by **-**. Each keyword **key** designates an elementary transform (as defined by Figure 1), and **key-** designates the inverse of transform **key**. For instance, **rot-** is the inverse of counter-clockwise 90 $ ^{o} $ rotation, that is clockwise 90 $ ^{o} $ rotation. Finally, the list k $ _{1} $ , k $ _{2} $ , ..., k $ _{p} $ designates the compound transform ![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/598fb30f65716b2690333cbde24b47b998008bf8.png) = k $ _{1} $ ok $ _{2} $ o ... ok $ _{p} $ . For instance, "bvsym rot-" is the transform that first performs clockwise 90o rotation and then vertical symmetry on the lower half of the image.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/b1be13997c7ce5746b1d6c403d076be6aac7358d.png)
+Figure 1: Transformations of image (a $ ^{j} $ $ _{i} $ ) into image (b $ ^{j} $ $ _{i} $ )
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/c3d491b700d27fc23bce533c30605a4268a4e90e.png)</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case:
+Your program should output a single line whose contents is the minimal number m (m > 0) such that ![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2161/598fb30f65716b2690333cbde24b47b998008bf8.png) is the identity. You may assume that, for all test input, you have m < 2 $ ^{31} $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>256
+rot- div rot div
+256
+bvsym div mix
+0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>8
+63457</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

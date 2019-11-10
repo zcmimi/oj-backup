@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PT07H - Search in XML - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449655:wXy8TZv93mFvzS0/c5kK7v5jwB0JNnbnrqJli0c3dEg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20The%20XML%20%28eXtensible%20Markup%20Language%29%20is%20gaining%20popularity%20as%20a%20new%20standard%20for%20data%20representation%20and%20exchange%20on%20the%20internet.%20XML%20provides%20a%20text-based%20means%20to%20describe%20and%20apply%20a%20tree-based%20structure%20to%20information.%20The%20XML%20document%20consists%20of%20nested%20elements%2C%20some%20of%20which%20usually%20have%20attributes%20and%20content.%20But%20for%20simplifying%20this%20problem%2C%20we%20needn%27t%20consider%20the%20attributes%20and%20content%2C%20i.e.%20only%20tags%20allowed.%20An%20element%20typically%20consists%20of%20two%20tags%2C%20a%20start%20tag%20and%20an%20end%20tag.%20The%20start%20tag%20consists%20of%20a%20name%20surrounded%20by%20angle%20brackets%2C%20like%20%5C%22%3Ctag%3E%5C%22%3B%20the%20end%20tag%20consists%20of%20the%20same%20name%20surrounded%20by%20angle%20brackets%2C%20but%20with%20a%20slash%20preceding%20the%20name%2C%20like%20%5C%22%3C%5C%2Ftag%3E%5C%22.%20The%20element%27s%20content%20is%20empty%20or%20other%20sub-element%20%28child%29%20that%20appears%20between%20the%20start%20tag%20and%20the%20end%20tag.%20Specially%2C%20no%20XML%20element%20that%20has%20the%20same%20tag%20in%20its%20direct%20sub-elements%20%28children%29%2C%20i.e.%20All%20sibling%20elements%20have%20different%20tag%20names.%20The%20following%20is%20an%20valid%20example%20for%20XML%20documents.%5Cn%5Cn%20%60%60%60%5Cn%3CTHU%3E%5Cn%5Ct%3CTeam%3E%5Cn%5Ct%5Ct%3CACRush%3E%3C%5C%2FACRush%3E%5Cn%5Ct%5Ct%3CJelly%3E%3C%5C%2FJelly%3E%5Cn%5Ct%5Ct%3CCooly%3E%3C%5C%2FCooly%3E%5Cn%5Ct%3C%5C%2FTeam%3E%5Cn%5Ct%3CJiaJia%3E%5Cn%5Ct%5Ct%3CTeam%3E%5Cn%5Ct%5Ct%5Ct%3CAhyangyi%3E%3C%5C%2FAhyangyi%3E%5Cn%5Ct%5Ct%5Ct%3CDragon%3E%3C%5C%2FDragon%3E%5Cn%5Ct%5Ct%5Ct%3CCooly%3E%3CAmber%3E%3C%5C%2FAmber%3E%3C%5C%2FCooly%3E%5Cn%5Ct%5Ct%3C%5C%2FTeam%3E%5Cn%5Ct%3C%5C%2FJiaJia%3E%5Cn%3C%5C%2FTHU%3E%5Cn%5Cn%60%60%60%5Cn%20For%20identifying%20the%20elements%20in%20a%20document%2C%20we%20number%20the%20elements%20in%20according%20to%20the%20order%20that%20the%20start%20tags%20of%20the%20elements%20appear%20in%20the%20document.%20For%20instances%2C%20%5C%22THU%5C%22%20is%20numbered%201.%20The%20first%20%5C%22Team%5C%22%20is%20numbered%202.%20%5C%22ACRush%5C%22%20is%20numbered%203.%20%5C%22Ahyangyi%5C%22%20is%20numbered%208.%5Cn%5Cn%20The%20problem%20of%20querying%20XML%20documents%20has%20been%20given%20much%20attention%20by%20researchers.%20Now%20we%20are%20given%20a%20querying%20pattern%20of%20XML%20documents%20and%20a%20text%20of%20XML%20documents.%20The%20following%20is%20an%20valid%20example%20for%20pattern.%5Cn%5Cn%20%60%3CTeam%3E%3CCooly%3E%3C%5C%2FCooly%3E%3C%5C%2FTeam%3E%60%20And%20we%20are%20requested%20to%20find%20all%20occurrences%20of%20the%20pattern%20in%20the%20text%20of%20XML%20documents.%20Here%2C%20the%20pattern%20occurs%20at%20a%20particular%20text%20position%20if%20placing%20the%20pattern%20with%20root%20element%20at%20that%20text%20position%20leads%20to%20a%20situation%20in%20which%20each%20pattern%20element%20overlaps%20some%20text%20element%20with%20the%20same%20label.%20Because%20the%20sibling%20elements%20have%20different%20labels%2C%20there%20is%20only%20one%20way%20to%20put%20the%20pattern%20into%20the%20text.%22%2C%22inputFormat%22%3A%22%20There%20are%20two%20parts%20in%20the%20input%20file.%20The%20first%20part%20is%20a%20valid%20XML%20documents%20with%20exactly%20one%20root%20element.%20The%20second%20part%20is%20a%20valid%20XML%20documents%20as%20querying%20pattern%20with%20exactly%20one%20root%20element.%20Please%20ignore%20all%20whitespaces%20%28unvisiable%20characters%29%20in%20the%20input%20file%2C%20i.e.%20only%20consider%20the%20uppercase%20and%20lowercase%20letter%20and%20%5C%22%5C%2F%5C%22%2C%20%5C%22%3C%5C%22%2C%20%5C%22%3E%5C%22.%20Assume%20XML%20documents%20is%20always%20strictly%20a%20rooted%20tree.%20The%20input%20file%20is%20less%20than%20100kb.%22%2C%22outputFormat%22%3A%22%20Output%20all%20the%20occurrences%20of%20pattern%20in%20a%20text%20of%20XML%20documents.%20The%20first%20line%20consists%20of%20an%20integer%20_n_%20that%20denotes%20the%20number%20of%20the%20occurrences.%20Then%20the%20next%20_n_%20line%2C%20each%20line%20consists%20of%20an%20id%20number%20of%20an%20element%20that%20occurs%20the%20query%20pattern.%20Please%20print%20them%20in%20increasing%20order.%22%2C%22samples%22%3A%5B%5B%22%26lt%3BTHU%3E%5C%5Cn%5Ct%26lt%3BTeam%3E%5C%5Cn%5Ct%5Ct%26lt%3BACRush%3E%26lt%3B%5C%2FACRush%3E%5C%5Cn%5Ct%5Ct%26lt%3BJelly%3E%26lt%3B%5C%2FJelly%3E%5C%5Cn%5Ct%5Ct%26lt%3BCooly%3E%26lt%3B%5C%2FCooly%3E%5C%5Cn%5Ct%26lt%3B%5C%2FTeam%3E%5C%5Cn%5Ct%26lt%3BJiaJia%3E%5C%5Cn%5Ct%5Ct%26lt%3BTeam%3E%5C%5Cn%5Ct%5Ct%5Ct%26lt%3BAhyangyi%3E%26lt%3B%5C%2FAhyangyi%3E%5C%5Cn%5Ct%5Ct%5Ct%26lt%3BDragon%3E%26lt%3B%5C%2FDragon%3E%5C%5Cn%5Ct%5Ct%5Ct%26lt%3BCooly%3E%26lt%3BAmber%3E%26lt%3B%5C%2FAmber%3E%26lt%3B%5C%2FCooly%3E%5C%5Cn%5Ct%5Ct%26lt%3B%5C%2FTeam%3E%5C%5Cn%5Ct%26lt%3B%5C%2FJiaJia%3E%5C%5Cn%26lt%3B%5C%2FTHU%3E%5Cr%5Cn%26lt%3BTeam%3E%26lt%3BCooly%3E%26lt%3B%5C%2FCooly%3E%26lt%3B%5C%2FTeam%3E%22%2C%222%5Cr%5Cn2%5Cr%5Cn7%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B413%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1484%22%2C%22id%22%3A%221484%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1484%22%2C%22title%22%3A%22PT07H%20-%20Search%20in%20XML%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PT07H%20-%20Search%20in%20XML%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PT07H - Search in XML</h1>
+<h2>题目描述</h2>
+<div> The XML (eXtensible Markup Language) is gaining popularity as a new standard for data representation and exchange on the internet. XML provides a text-based means to describe and apply a tree-based structure to information. The XML document consists of nested elements, some of which usually have attributes and content. But for simplifying this problem, we needn't consider the attributes and content, i.e. only tags allowed. An element typically consists of two tags, a start tag and an end tag. The start tag consists of a name surrounded by angle brackets, like "<tag>"; the end tag consists of the same name surrounded by angle brackets, but with a slash preceding the name, like "</tag>". The element's content is empty or other sub-element (child) that appears between the start tag and the end tag. Specially, no XML element that has the same tag in its direct sub-elements (children), i.e. All sibling elements have different tag names. The following is an valid example for XML documents.
+```
+<THU>
+<Team>
+<ACRush></ACRush>
+<Jelly></Jelly>
+<Cooly></Cooly>
+</Team>
+<JiaJia>
+<Team>
+<Ahyangyi></Ahyangyi>
+<Dragon></Dragon>
+<Cooly><Amber></Amber></Cooly>
+</Team>
+</JiaJia>
+</THU>
+```
+For identifying the elements in a document, we number the elements in according to the order that the start tags of the elements appear in the document. For instances, "THU" is numbered 1. The first "Team" is numbered 2. "ACRush" is numbered 3. "Ahyangyi" is numbered 8.
+The problem of querying XML documents has been given much attention by researchers. Now we are given a querying pattern of XML documents and a text of XML documents. The following is an valid example for pattern.
+`<Team><Cooly></Cooly></Team>` And we are requested to find all occurrences of the pattern in the text of XML documents. Here, the pattern occurs at a particular text position if placing the pattern with root element at that text position leads to a situation in which each pattern element overlaps some text element with the same label. Because the sibling elements have different labels, there is only one way to put the pattern into the text.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> There are two parts in the input file. The first part is a valid XML documents with exactly one root element. The second part is a valid XML documents as querying pattern with exactly one root element. Please ignore all whitespaces (unvisiable characters) in the input file, i.e. only consider the uppercase and lowercase letter and "/", "<", ">". Assume XML documents is always strictly a rooted tree. The input file is less than 100kb.</div>
+<h3>输出格式</h3>
+<br />
+<div> Output all the occurrences of pattern in a text of XML documents. The first line consists of an integer _n_ that denotes the number of the occurrences. Then the next _n_ line, each line consists of an id number of an element that occurs the query pattern. Please print them in increasing order.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>&amp;lt;THU&gt;\n	&amp;lt;Team&gt;\n		&amp;lt;ACRush&gt;&amp;lt;/ACRush&gt;\n		&amp;lt;Jelly&gt;&amp;lt;/Jelly&gt;\n		&amp;lt;Cooly&gt;&amp;lt;/Cooly&gt;\n	&amp;lt;/Team&gt;\n	&amp;lt;JiaJia&gt;\n		&amp;lt;Team&gt;\n			&amp;lt;Ahyangyi&gt;&amp;lt;/Ahyangyi&gt;\n			&amp;lt;Dragon&gt;&amp;lt;/Dragon&gt;\n			&amp;lt;Cooly&gt;&amp;lt;Amber&gt;&amp;lt;/Amber&gt;&amp;lt;/Cooly&gt;\n		&amp;lt;/Team&gt;\n	&amp;lt;/JiaJia&gt;\n&amp;lt;/THU&gt;
+&amp;lt;Team&gt;&amp;lt;Cooly&gt;&amp;lt;/Cooly&gt;&amp;lt;/Team&gt;</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>2
+2
+7</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

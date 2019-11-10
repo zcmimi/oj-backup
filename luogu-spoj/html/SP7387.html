@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PKA - Airplane Parking - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450036:HyGKUvyZaeWWugxMjcqmxM/2c2LOqw4Lp1eZ+LKtzpg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22During%20this%20economic%20crisis%20time%2C%20Jack%20has%20started%20an%20incredible%20new%20business%20related%20to%20air%20travel%2C%20a%20parking-lot%20for%20airplane.%20He%20bought%20a%20very%20large%20land%20to%20park%20airplanes.%20However%20the%20land%20is%20very%20narrow%2C%20so%20that%20the%20only%20way%20airplanes%20can%20go%20in%20or%20go%20out%20of%20the%20parking%20lot%20must%20be%20in%20the%20Last-In%20First-Out%20fashion%20%28see%20picture%20below%29.%20He%20only%20has%20spaces%20in%20the%20parking%20lot%20so%20he%20cannot%20take%20some%20airplane%20at%20the%20end%20out%20so%20that%20other%20airplanes%20can%20move.%20Because%20of%20the%20limitation%20of%20the%20parking%20lot%2C%20it%20is%20not%20possible%20to%20accommodate%20all%20requests%20for%20parking.%20Each%20request%20consists%20of%20the%20planned%20arrival%20time%20and%20planned%20departure%20time%2C%20which%20are%20the%20times%20the%20airplane%20arrives%20at%20the%20parking%20lot.%5Cn%5CnAn%20example%20below%20shows%20a%20request%20table%20for%204%20planes.%20%20%5CnAirplane%20Arrival%20Departure%20%20%5Cn1%201%2010%20%20%5Cn2%202%205%20%20%5Cn3%203%207%20%20%5Cn4%206%209%20%20%5CnIn%20this%20case%2C%20it%20is%20possible%20to%20accommodate%20airplane%201%2C%202%2C%20and%204.%20But%20it%20is%20not%20possible%20to%20accommodate%20both%20airplanes%202%20and%203.%20It%20is%20possible%20that%20different%20planes%20plan%20to%20arrive%20or%20depart%20the%20parking%20lot%20at%20the%20same%20time.%20Jack%20has%20the%20best%20crews%20working%20with%20him%2C%20so%20that%20they%20will%20manage%20to%20arrange%20the%20plane%20to%20the%20parking%20lot%20in%20the%20best%20way%20that%20if%20it%20is%20possible%20to%20park%20and%20take%20out%20the%20planes%20they%20will%20be%20able%20to%20do%20it.%5Cn%5CnConsider%20another%20example.%20%20%5CnAirplane%20Arrival%20Departure%20%20%5Cn5%2010%2012%20%20%5Cn6%2010%2015%20%20%5Cn7%2013%2017%5Cn%5CnAlthough%20airplane%205%20and%206%20arrive%20at%20the%20same%20time%2C%20Jack%27s%20crews%20know%20that%20airplane%205%20will%20have%20to%20be%20out%20before%20airplane%206%2C%20so%20when%20both%20airplanes%20arrive%20they%20put%20airplane%206%20in%20first%2C%20following%20by%20airplane%205.%5Cn%5Cn%20%20%5CnGiven%20a%20list%20of%20parking%20requests%2C%20you%20want%20to%20find%20the%20maximum%20number%20of%20airplanes%20that%20can%20be%20parked%20in%20this%20parking%20lot%2C%20provided%20that%20they%20can%20only%20depart%20in%20the%20Last-In%20First-Out%20fashion.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20an%20integer%20T%2C%20the%20number%20of%20test%20cases%20%281%20%3C%20T%20%3C%205%29.%20Each%20test%20case%20is%20in%20the%20following%20format.%20The%20first%20line%20starts%20with%20an%20integer%20N%20%281%20%3C%20N%20%3C%20300%29%20denoting%20the%20number%20of%20airplanes.%20The%20next%20%20%5CnN%20lines%20describe%20the%20request%20table.%20Each%20line%201%20%2B%20i%2C%20for%201%20%3C%20i%20%3C%20N%2C%20contains%20two%20integer%20Si%20and%20Ti%2C%20%280%20%3C%20Si%20%3C%20Ti%20%3C%201%2C000%2C000%2C000%29%20which%20are%20the%20planned%20arrival%20time%20and%20planned%20departing%20time%20for%20airplane%20i.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20you%20program%20must%20output%20a%20single%20line%20consisting%20of%20one%20integer%2C%20the%20maximum%20number%20of%20airplanes%20that%20can%20be%20parked%20in%20Jack%27s%20parking%20lot.%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn2%5C%5Cn4%5C%5Cn1%2010%5C%5Cn2%205%5C%5Cn3%207%5C%5Cn6%209%5C%5Cn3%5C%5Cn10%2012%5C%5Cn10%2015%5C%5Cn13%2017%5Cr%5Cn%5C%5Cn%22%2C%22%5C%5Cn3%5C%5Cn2%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B714%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F7387%22%2C%22id%22%3A%227387%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP7387%22%2C%22title%22%3A%22PKA%20-%20Airplane%20Parking%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PKA%20-%20Airplane%20Parking%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PKA - Airplane Parking</h1>
+<h2>题目描述</h2>
+<div>During this economic crisis time, Jack has started an incredible new business related to air travel, a parking-lot for airplane. He bought a very large land to park airplanes. However the land is very narrow, so that the only way airplanes can go in or go out of the parking lot must be in the Last-In First-Out fashion (see picture below). He only has spaces in the parking lot so he cannot take some airplane at the end out so that other airplanes can move. Because of the limitation of the parking lot, it is not possible to accommodate all requests for parking. Each request consists of the planned arrival time and planned departure time, which are the times the airplane arrives at the parking lot.
+An example below shows a request table for 4 planes.
+Airplane Arrival Departure
+1 1 10
+2 2 5
+3 3 7
+4 6 9
+In this case, it is possible to accommodate airplane 1, 2, and 4. But it is not possible to accommodate both airplanes 2 and 3. It is possible that different planes plan to arrive or depart the parking lot at the same time. Jack has the best crews working with him, so that they will manage to arrange the plane to the parking lot in the best way that if it is possible to park and take out the planes they will be able to do it.
+Consider another example.
+Airplane Arrival Departure
+5 10 12
+6 10 15
+7 13 17
+Although airplane 5 and 6 arrive at the same time, Jack's crews know that airplane 5 will have to be out before airplane 6, so when both airplanes arrive they put airplane 6 in first, following by airplane 5.
+Given a list of parking requests, you want to find the maximum number of airplanes that can be parked in this parking lot, provided that they can only depart in the Last-In First-Out fashion.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains an integer T, the number of test cases (1 < T < 5). Each test case is in the following format. The first line starts with an integer N (1 < N < 300) denoting the number of airplanes. The next
+N lines describe the request table. Each line 1 + i, for 1 < i < N, contains two integer Si and Ti, (0 < Si < Ti < 1,000,000,000) which are the planned arrival time and planned departing time for airplane i.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, you program must output a single line consisting of one integer, the maximum number of airplanes that can be parked in Jack's parking lot.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n2\n4\n1 10\n2 5\n3 7\n6 9\n3\n10 12\n10 15\n13 17
+\n</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>\n3\n2</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

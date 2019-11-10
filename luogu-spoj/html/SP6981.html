@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>RNDORDER - The Least Number - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450010:7Hjx0pXfRGZDPjiwMaWIAEqEE+YQNUzt5vdQPr3YGic=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20n%20symbols%20a%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B2%7D%20%24%20%2C...%2C%20a%20%24%20_%7Bn%7D%20%24%20.%20You%20are%20told%20that%20there%20is%20a%20total%20ordering%20of%20the%20symbols.%20That%20is%2C%20there%20is%20a%20permutation%20%5C%5C%5BP1%2C%20P2%2C...%2C%20Pn%5C%5C%5D%20of%20%5C%5C%5B1%2C2%2C...%2Cn%5C%5C%5D%20such%20that%20a%20%24%20_%7BP1%7D%20%24%20%3C%20a%20%24%20_%7BP2%7D%20%24%20%3C...%3C%20a%20%24%20_%7BPn%7D%20%24%20.%20You%20are%20trying%20to%20figure%20out%20the%20order%20by%20doing%20comparisons.%20The%20process%20you%20follow%20for%20determining%20the%20order%20is%20as%20follows%3A%5Cn%5Cn-%20Compare%20%5C%5C%5Ba%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B2%7D%20%24%20%5C%5C%5D%5Cn-%20Compare%20%5C%5C%5Ba%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B3%7D%20%24%20%5C%5C%5D%2C%20%5C%5C%5Ba%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B3%7D%20%24%20%5C%5C%5D%5Cn-%20Compare%20%5C%5C%5Ba%20%24%20_%7B3%7D%20%24%20%2C%20a%20%24%20_%7B4%7D%20%24%20%5C%5C%5D%2C%20%5C%5C%5Ba%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B4%7D%20%24%20%5C%5C%5D%2C%20%5C%5C%5Ba%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B4%7D%20%24%20%5C%5C%5D%5Cn-%20....%5Cn-%20....%5Cn-%20Compare%20%5C%5C%5Ba%20%24%20_%7Bn-1%7D%20%24%20%2Ca%20%24%20_%7Bn%7D%20%24%20%5C%5C%5D%2C%20%5C%5C%5Ba%20%24%20_%7Bn-2%7D%20%24%20%2Ca%20%24%20_%7Bn%7D%20%24%20%5C%5C%5D%2C...%2C%20%5C%5C%5Ba%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7Bn%7D%20%24%20%5C%5C%5D%5Cn%5CnNote%20that%20you%20compare%20in%20the%20order%20specified.%20That%20is%20you%20compare%20%5C%5C%5Ba%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B3%7D%20%24%20%5C%5C%5D%2C%20then%20and%20only%20then%20do%20you%20compare%20%5C%5C%5Ba%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B3%7D%20%24%20%5C%5C%5D.%5Cn%5CnDefinition%20of%20Compare%5C%5C%5Ba%20%24%20_%7Bi%7D%20%24%20%2C%20a%20%24%20_%7Bj%7D%20%24%20%5C%5C%5D%20%28i%20%3C%20j%29%5Cn%5Cn-%20If%20Compare%20%5C%5C%5Ba%20%24%20_%7Bi%7D%20%24%20%2C%20a%20%24%20_%7Bj%7D%20%24%20%5C%5C%5D%20%3D%201%2C%20it%20means%20a%20%24%20_%7Bi%7D%20%24%20%3E%20a%20%24%20_%7Bj%7D%20%24%20.%20If%20Compare%5C%5C%5Ba%20%24%20_%7Bi%7D%20%24%20%2C%20a%20%24%20_%7Bj%7D%20%24%20%5C%5C%5D%20%3D%20-1%2C%20it%20means%20a%20%24%20_%7Bi%7D%20%24%20%3C%20a%20%24%20_%7Bj%7D%20%24%20.%5Cn-%20Compare%20is%20consistent.%20Suppose%2C%20that%20you%20queried%20%5C%5C%5Ba%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B6%7D%20%24%20%5C%5C%5D%20and%20it%20was%20already%20established%20%5C%5C%5Ba%20%24%20_%7B2%7D%20%24%20%3C%20a%20%24%20_%7B6%7D%20%24%20%5C%5C%5D%20%28because%20for%20example%20a%20%24%20_%7B2%7D%20%24%20%3C%20a%20%24%20_%7B5%7D%20%24%20and%20a%20%24%20_%7B5%7D%20%24%20%3C%20a%20%24%20_%7B6%7D%20%24%20-%20since%20both%20of%20these%20comparisons%20happen%20earlier%29%2C%20then%20%5C%5C%5Ba%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B6%7D%20%24%20%5C%5C%5D%20returns%20-1.%5Cn-%20If%20no%20relationship%20is%20known%20between%20a%20%24%20_%7Bi%7D%20%24%20and%20a%20%24%20_%7Bj%7D%20%24%20%2C%20Compare%5C%5C%5Ba%20%24%20_%7Bi%7D%20%24%20%2C%20a%20%24%20_%7Bj%7D%20%24%20%5C%5C%5D%20%3D%201%20with%20probablity%201%5C%2F2%20and%20-1%20with%20probability%201%5C%2F2%5Cn%5CnYour%20task%20is%20to%20output%20the%20probability%20that%20a%20%24%20_%7B1%7D%20%24%20is%20the%20smallest%20element%20of%20the%20final%20ordering%20so%20obtained.%22%2C%22inputFormat%22%3A%22First%20line%20contains%20T%2C%20the%20number%20of%20test%20cases%5Cn%5CnEach%20of%20the%20next%20T%20lines%20contains%20one%20number%20each%2C%20%2A%2An%2A%2A%281%20%3C%3D%20n%20%3C%3D%201000%29.%22%2C%22outputFormat%22%3A%22Output%20T%20lines%20in%20total%2C%20one%20per%20test%20case%3A%20Probability%20that%20a%20%24%20_%7B1%7D%20%24%20is%20indeed%20the%20smallest%20element%20at%20the%20end%20of%20the%20comparisons.%20Your%20output%20will%20be%20judged%20correct%20if%20it%20differs%20by%20no%20more%20than%2010%20%24%20%5E%7B-9%7D%20%24%20to%20the%20reference%20answer.%22%2C%22samples%22%3A%5B%5B%223%5Cr%5Cn1%5Cr%5Cn2%5Cr%5Cn3%22%2C%22%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B166%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F6981%22%2C%22id%22%3A%226981%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP6981%22%2C%22title%22%3A%22RNDORDER%20-%20The%20Least%20Number%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22RNDORDER%20-%20The%20Least%20Number%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>RNDORDER - The Least Number</h1>
+<h2>题目描述</h2>
+<div>You are given n symbols a $ _{1} $ , a $ _{2} $ ,..., a $ _{n} $ . You are told that there is a total ordering of the symbols. That is, there is a permutation \[P1, P2,..., Pn\] of \[1,2,...,n\] such that a $ _{P1} $ < a $ _{P2} $ <...< a $ _{Pn} $ . You are trying to figure out the order by doing comparisons. The process you follow for determining the order is as follows:
+- Compare \[a $ _{1} $ , a $ _{2} $ \]
+- Compare \[a $ _{2} $ , a $ _{3} $ \], \[a $ _{1} $ , a $ _{3} $ \]
+- Compare \[a $ _{3} $ , a $ _{4} $ \], \[a $ _{2} $ , a $ _{4} $ \], \[a $ _{1} $ , a $ _{4} $ \]
+- ....
+- ....
+- Compare \[a $ _{n-1} $ ,a $ _{n} $ \], \[a $ _{n-2} $ ,a $ _{n} $ \],..., \[a $ _{1} $ , a $ _{n} $ \]
+Note that you compare in the order specified. That is you compare \[a $ _{2} $ , a $ _{3} $ \], then and only then do you compare \[a $ _{1} $ , a $ _{3} $ \].
+Definition of Compare\[a $ _{i} $ , a $ _{j} $ \] (i < j)
+- If Compare \[a $ _{i} $ , a $ _{j} $ \] = 1, it means a $ _{i} $ > a $ _{j} $ . If Compare\[a $ _{i} $ , a $ _{j} $ \] = -1, it means a $ _{i} $ < a $ _{j} $ .
+- Compare is consistent. Suppose, that you queried \[a $ _{2} $ , a $ _{6} $ \] and it was already established \[a $ _{2} $ < a $ _{6} $ \] (because for example a $ _{2} $ < a $ _{5} $ and a $ _{5} $ < a $ _{6} $ - since both of these comparisons happen earlier), then \[a $ _{2} $ , a $ _{6} $ \] returns -1.
+- If no relationship is known between a $ _{i} $ and a $ _{j} $ , Compare\[a $ _{i} $ , a $ _{j} $ \] = 1 with probablity 1/2 and -1 with probability 1/2
+Your task is to output the probability that a $ _{1} $ is the smallest element of the final ordering so obtained.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line contains T, the number of test cases
+Each of the next T lines contains one number each, **n**(1 <= n <= 1000).</div>
+<h3>输出格式</h3>
+<br />
+<div>Output T lines in total, one per test case: Probability that a $ _{1} $ is indeed the smallest element at the end of the comparisons. Your output will be judged correct if it differs by no more than 10 $ ^{-9} $ to the reference answer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1
+2
+3</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code></code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

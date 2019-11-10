@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>CRYPTO6 - Cryptography Reloaded (Act I) - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449907:JQrCU7EWP2HtdIpyqeCtnShv++eqnqPzpDerxRNDsys=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22MathJax.Hub.Config%28%7B%5Cr%5Cn%20%20tex2jax%3A%20%7B%5Cr%5Cn%20%20%20%20inlineMath%3A%20%5B%5B%27%24%27%2C%27%24%27%5D%2C%20%5B%27%5C%5C%5C%5C%28%27%2C%27%5C%5C%5C%5C%29%27%5D%5D%2C%5Cr%5Cn%20%20%20%20skipTags%3A%20%5B%5C%22script%5C%22%2C%5C%22noscript%5C%22%2C%5C%22style%5C%22%2C%5C%22textarea%5C%22%2C%5C%22code%5C%22%5D%5Cr%5Cn%20%20%7D%5Cr%5Cn%7D%29%3B%5Cr%5CnPlease%20click%20%5Bhere%5D%28http%3A%5C%2F%5C%2Fwww.spoj.com%5C%2Fcontent%5C%2Fjohn_jones%3Ahangzhou2008.pdf%29%20to%20download%20a%20PDF%20version%20of%20the%20contest%20problems.%20The%20problem%20is%20problem%20C%20in%20the%20PDF.%20Remember%20that%20you%20must%20use%20stdin%5C%2Fstdout%20at%20SPOJ.%5Cn%5Cn-%20-%20-%20-%20-%20-%5Cn%5Cn%20What%20do%20researchers%20working%20at%20ICPC%20%28Institute%20for%20Cryptographic%20Programming%20and%20Computing%29%20do%20for%20fun%3F%20Well%2C%20as%20you%20probably%20have%20expected%2C%20in%20addition%20to%20solving%20algorithm-related%20problems%20on%20online%20judges%2C%20they%20also%20like%20to%20toy%20with%20various%20cryptographic%20schemes.%20Recently%20one%20of%20the%20researchers%2C%20Tom%2C%20has%20become%20interested%20in%20RSA%20algorithm%20implementations%20used%20in%20handheld%20devices.%5Cn%5CnNote%20that%20the%20description%20of%20the%20general%20RSA%20algorithm%20is%20as%20follows%3A%5Cn%5Cn1.%20Choose%20two%20distinct%20prime%20numbers%20%24p%24%20and%20%24q%24%2C%20and%20let%20%24n%20%3D%20pq%24%3B%5Cn2.%20Choose%20an%20integer%20%24e%24%20such%20that%20%24%5C%5C%5C%5Cgcd%28e%2C%20%28p%20-%201%29%28q%20-%201%29%29%20%3D%201%24%3B%5Cn3.%20Compute%20the%20integer%20%24d%24%20that%20satisfies%20the%20congruence%20relation%20%24de%20%5C%5C%5C%5Cequiv%201%20%5C%5C%5C%5Cpmod%7B%28p%20-%201%29%20%28q%20-%201%29%7D%24.%5Cn%5Cn%20Then%2C%20if%20person%20A%20wants%20to%20give%20person%20B%20a%20way%20to%20send%20an%20encrypted%20message%20to%20him%2C%20A%20can%20follow%20the%20above%20steps%20and%20release%20%24%28n%2C%20e%29%24%20as%20his%20public%20key.%20Upon%20receiving%20A%5Cu2019s%20public%20key%2C%20B%20can%20simply%20encrypt%20message%20%24x%24%20%28%240%20%5C%5C%5C%5Cle%20x%20%3C%20n%24%29%20by%20computing%20%24y%20%3D%20x%5Ee%20%5C%5C%5C%5Cmod%20n%24.%20This%20would%20result%20in%20a%20message%20which%20ideally%20only%20A%20could%20decrypt%20with%20his%20private%20key%20%24d%24%3A%20%24x%20%3D%20y%5Ed%20%5C%5C%5C%5Cmod%20n%24%20.%5Cn%5Cn%20As%20the%20computation%20power%20of%20handheld%20devices%20is%20usually%20limited%2C%20a%20relatively%20small%20%24e%24%20is%20usually%20used%20to%20encrypt%20data.%20However%20this%20can%20lead%20to%20great%20security%20risks.%20For%20example%2C%20it%20is%20quite%20simple%20to%20recover%20%24p%24%20and%20%24q%24%20%28i.e.%2C%20factor%20%24n%24%29%20when%20you%20have%20both%20the%20public%20key%20%24%28n%2C%20e%29%24%20and%20the%20private%20key%20%24d%24.%20Could%20you%20help%20Tom%20write%20a%20program%20to%20demonstrate%20this%3F%22%2C%22inputFormat%22%3A%22There%20are%20multiple%20test%20cases%20in%20the%20input%20file.%5Cn%5CnEach%20test%20case%20contains%20three%20integers%2C%20%24n%24%2C%20%24d%24%2C%20and%20%24e%24%20%28%24n%20%5C%5C%5C%5Cle%2010%5E%7B100%7D%2C%203%20%5C%5C%5C%5Cle%20e%20%5C%5C%5C%5Cle%2031%24%29.%20All%20three%20integers%20are%20given%20without%20any%20preceding%20zeros.%20It%20is%20guaranteed%20that%20all%20numbers%20satisfy%20the%20condition%20as%20given%20in%20the%20problem%20statement.%5Cn%5Cn%20Two%20successive%20test%20cases%20are%20separated%20by%20a%20blank%20line.%20A%20case%20with%20%24n%20%3D%200%24%2C%20%24d%20%3D%200%24%20and%20%24e%20%3D%200%24%20indicates%20the%20end%20of%20the%20input%20file%2C%20and%20should%20not%20be%20processed%20by%20your%20program.%5Cn%5Cn%20For%20each%20test%20case%2C%20please%20print%20two%20prime%20numbers%2C%20%24p%24%20and%20%24q%24%2C%20such%20that%20%24n%20%3D%20pq%24%20and%20%24p%20%3C%20q%24%2C%20in%20the%20format%20as%20illustrated%20below.%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5B%2255%2027%203%5Cr%5Cn%5Cr%5Cn290203%20168101%205%5Cr%5Cn%5Cr%5Cn0%200%200%22%2C%22for%20the%20Sample%20Input%5Cr%5CnCase%20%231%3A%205%2011%5Cr%5CnCase%20%232%3A%2029%2010007%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F5144%22%2C%22id%22%3A%225144%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP5144%22%2C%22title%22%3A%22CRYPTO6%20-%20Cryptography%20Reloaded%20%28Act%20I%29%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22CRYPTO6%20-%20Cryptography%20Reloaded%20%28Act%20I%29%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>CRYPTO6 - Cryptography Reloaded (Act I)</h1>
+<h2>题目描述</h2>
+<div>MathJax.Hub.Config({
+tex2jax: {
+inlineMath: [['$','$'], ['\\(','\\)']],
+skipTags: ["script","noscript","style","textarea","code"]
+}
+});
+Please click [here](http://www.spoj.com/content/john_jones:hangzhou2008.pdf) to download a PDF version of the contest problems. The problem is problem C in the PDF. Remember that you must use stdin/stdout at SPOJ.
+- - - - - -
+What do researchers working at ICPC (Institute for Cryptographic Programming and Computing) do for fun? Well, as you probably have expected, in addition to solving algorithm-related problems on online judges, they also like to toy with various cryptographic schemes. Recently one of the researchers, Tom, has become interested in RSA algorithm implementations used in handheld devices.
+Note that the description of the general RSA algorithm is as follows:
+1. Choose two distinct prime numbers $p$ and $q$, and let $n = pq$;
+2. Choose an integer $e$ such that $\\gcd(e, (p - 1)(q - 1)) = 1$;
+3. Compute the integer $d$ that satisfies the congruence relation $de \\equiv 1 \\pmod{(p - 1) (q - 1)}$.
+Then, if person A wants to give person B a way to send an encrypted message to him, A can follow the above steps and release $(n, e)$ as his public key. Upon receiving A’s public key, B can simply encrypt message $x$ ($0 \\le x < n$) by computing $y = x^e \\mod n$. This would result in a message which ideally only A could decrypt with his private key $d$: $x = y^d \\mod n$ .
+As the computation power of handheld devices is usually limited, a relatively small $e$ is usually used to encrypt data. However this can lead to great security risks. For example, it is quite simple to recover $p$ and $q$ (i.e., factor $n$) when you have both the public key $(n, e)$ and the private key $d$. Could you help Tom write a program to demonstrate this?</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>There are multiple test cases in the input file.
+Each test case contains three integers, $n$, $d$, and $e$ ($n \\le 10^{100}, 3 \\le e \\le 31$). All three integers are given without any preceding zeros. It is guaranteed that all numbers satisfy the condition as given in the problem statement.
+Two successive test cases are separated by a blank line. A case with $n = 0$, $d = 0$ and $e = 0$ indicates the end of the input file, and should not be processed by your program.
+For each test case, please print two prime numbers, $p$ and $q$, such that $n = pq$ and $p < q$, in the format as illustrated below.</div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>55 27 3
+
+290203 168101 5
+
+0 0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>for the Sample Input
+Case #1: 5 11
+Case #2: 29 10007</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

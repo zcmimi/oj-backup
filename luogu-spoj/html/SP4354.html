@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TWINSNOW - Snowflakes - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449873:yfgALMGRpJiBabt9zIFxr+69YyaTnalSAZCi/MWyDGQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%5BEnglish%5D%28%5C%2Fproblems%5C%2FTWINSNOW%5C%2Fen%5C%2F%29%20%5BTi%5Cu1ebfng%20Vi%5Cu1ec7t%5D%28%5C%2Fproblems%5C%2FTWINSNOW%5C%2Fvn%5C%2F%29%20You%20may%20have%20heard%20that%20no%20two%20snowflakes%20are%20alike.%20Your%20task%20is%20to%20write%20a%20program%20to%20determine%20whether%20this%20is%20really%20true.%20Your%20program%20will%20read%20information%20about%20a%20collection%20of%20snowflakes%2C%20and%20search%20for%20a%20pair%20that%20may%20be%20identical.%20Each%20snowflake%20has%20six%20arms.%20For%20each%20snowflake%2C%20your%20program%20will%20be%20provided%20with%20a%20measurement%20of%20the%20length%20of%20each%20of%20the%20six%20arms.%20Any%20pair%20of%20snowflakes%20which%20have%20the%20same%20lengths%20of%20corresponding%20arms%20should%20be%20agged%20by%20your%20program%20as%20possibly%20identical.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP4354%5C%2F8df72d004b3913b79d312c0d11665e7662064ce7.png%29%22%2C%22inputFormat%22%3A%22%5C%5C-%20The%20first%20line%20of%20input%20will%20contain%20a%20single%20integer%20n%3B%20the%20number%20of%20snowflakes%20to%20follow.%20%20%20%5Cn%5C%5C-%20This%20will%20be%20followed%20by%20n%20lines%2C%20each%20describing%20a%20snowflake.%20Each%20snowflake%20will%20be%20described%20by%20a%20line%20containing%20six%20integers%20%28each%20integer%20is%20at%20least%200%20and%20less%20than%2010000000%29%2C%20the%20lengths%20of%20the%20arms%20of%20the%20snowflake.%20The%20lengths%20of%20the%20arms%20will%20be%20given%20in%20order%20around%20the%20snowflake%20%28either%20clockwise%20or%20counterclockwise%29%2C%20but%20they%20may%20begin%20with%20any%20of%20the%20six%20arms.%20For%20example%2C%20the%20same%20snowflake%20could%20be%20described%20as%201%202%203%204%205%206%20or%204%203%202%201%206%205.%22%2C%22outputFormat%22%3A%22%20If%20all%20of%20the%20snowflakes%20are%20distinct%2C%20your%20program%20should%20print%20the%20message%3A%5Cn%5Cn%20%60No%20two%20snowflakes%20are%20alike.%60%20If%20there%20is%20a%20pair%20of%20possibly%20identical%20snowflakes%2C%20your%20program%20should%20print%20the%20message%3A%5Cn%5Cn%20%60Twin%20snowflakes%20found.%60%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B231%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F4354%22%2C%22id%22%3A%224354%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cr%5Cn%5Cu4f60%5Cu53ef%5Cu80fd%5Cu542c%5Cu8bf4%5Cu8fc7%5Cuff0c%5Cu6ca1%5Cu6709%5Cu4e24%5Cu7247%5Cu96ea%5Cu82b1%5Cu662f%5Cu76f8%5Cu540c%5Cu7684%5Cu3002%5Cu4f60%5Cu8981%5Cu5199%5Cu4e00%5Cu4e2a%5Cu7a0b%5Cu5e8f%5Cuff0c%5Cu5224%5Cu65ad%5Cu8fd9%5Cu662f%5Cu4e0d%5Cu662f%5Cu771f%5Cu7684%5Cu3002%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu4f1a%5Cu8bfb%5Cu5230%5Cu4e00%5Cu4e9b%5Cu6709%5Cu5173%5Cu4e8e%5Cu8fd9%5Cu4e9b%5Cu96ea%5Cu82b1%5Cu7684%5Cu4fe1%5Cu606f%5Cuff0c%5Cu627e%5Cu5230%5Cu4e00%5Cu5bf9%5Cu5b8c%5Cu5168%5Cu76f8%5Cu540c%5Cu7684%5Cu96ea%5Cu82b1%5Cu3002%5Cu6bcf%5Cu7247%5Cu96ea%5Cu82b1%5Cu6709%5Cu516d%5Cu4e2a%5Cu89d2%5Cu3002%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu96ea%5Cu82b1%5Cuff0c%5Cu4f60%5Cu7684%5Cu7a0b%5Cu5e8f%5Cu4f1a%5Cu83b7%5Cu5f97%5Cu6bcf%5Cu4e2a%5Cu89d2%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cu6211%5Cu4eec%5Cu8ba4%5Cu4e3a%5Cu4e24%5Cu7247%5Cu96ea%5Cu82b1%5Cu76f8%5Cu540c%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5b83%5Cu4eec%5Cu5404%5Cu81ea%5Cu4ece%5Cu67d0%5Cu4e00%5Cu4e2a%5Cu89d2%5Cu5f00%5Cu59cb%5Cuff0c%5Cu9006%5Cu65f6%5Cu9488%5Cu6216%5Cu987a%5Cu65f6%5Cu9488%5Cu8bb0%5Cu5f55%5Cu957f%5Cu5ea6%5Cuff0c%5Cu80fd%5Cu5f97%5Cu5230%5Cu4e24%5Cu4e2a%5Cu76f8%5Cu540c%5Cu7684%5Cu516d%5Cu5143%5Cu7ec4%5Cu3002%5Cr%5Cn%20%20%20%20%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn-%5Cu7b2c%5Cu4e00%5Cu884c%5Cu53ea%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6570%5Cu5b57n%5Cuff0c%5Cu4ee3%5Cu8868%5Cu96ea%5Cu82b1%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn-%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4f1a%5Cu6709n%5Cu884c%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu884c%5Cu63cf%5Cu8ff0%5Cu4e86%5Cu4e00%5Cu7247%5Cu96ea%5Cu82b1%5Cu3002%5Cu6bcf%5Cu7247%5Cu96ea%5Cu82b1%5Cu4f1a%5Cu6309%5Cu9006%5Cu65f6%5Cu9488%5Cu6216%5Cu987a%5Cu65f6%5Cu9488%5Cu7ed9%5Cu51fa%5Cu516d%5Cu4e2a%5Cu89d2%5Cu7684%5Cu957f%5Cu5ea6a1%2Ca2...a6%5Cu3002%5Cu6211%5Cu4eec%5Cu8ba4%5Cu4e3a%5Cu4e24%5Cu7247%5Cu96ea%5Cu82b1%5Cu76f8%5Cu540c%5Cuff0c%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53%5Cu5b83%5Cu4eec%5Cu5404%5Cu81ea%5Cu4ece%5Cu67d0%5Cu4e00%5Cu4e2a%5Cu89d2%5Cu5f00%5Cu59cb%5Cuff0c%5Cu9006%5Cu65f6%5Cu9488%5Cu6216%5Cu987a%5Cu65f6%5Cu9488%5Cu8bb0%5Cu5f55%5Cu957f%5Cu5ea6%5Cuff0c%5Cu80fd%5Cu5f97%5Cu5230%5Cu4e24%5Cu4e2a%5Cu76f8%5Cu540c%5Cu7684%5Cu516d%5Cu5143%5Cu7ec4%5Cu3002%5Cu4f8b%5Cu5982%5Cuff0c%5Cu540c%5Cu4e00%5Cu7247%5Cu96ea%5Cu82b1%5Cu53ef%5Cu4ee5%5Cu88ab%5Cu63cf%5Cu8ff0%5Cu4e3a1%202%203%204%205%206%20%5Cu6216%204%203%202%201%206%205%5Cu3002%5Cr%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cu5982%5Cu679c%5Cu6ca1%5Cu6709%5Cu4e24%5Cu7247%5Cu96ea%5Cu82b1%5Cu662f%5Cu76f8%5Cu540c%5Cu7684%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%20%20%3A%20%20%5Cr%5Cn_No%20two%20snowflakes%20are%20alike.%20_%5Cr%5Cn%5Cr%5Cn%5Cu5426%5Cu5219%5Cuff0c%5Cu8bf7%5Cu8f93%5Cu51fa%5Cuff1a%5Cr%5Cn%5Cr%5Cn_Twin%20snowflakes%20found._%5Cr%5Cn%5Cr%5Cn%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cr%5Cn%5Cu6682%5Cu65e0%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cr%5Cn%22%2C%22tags%22%3A%5B2%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A381%2C%22totalAccepted%22%3A133%2C%22pid%22%3A%22SP4354%22%2C%22title%22%3A%22TWINSNOW%20-%20Snowflakes%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A80925%2C%22title%22%3A%22%5Cu600e%5Cu4e48%5Cu8fd8%5Cu6709tieng%20viet%20version%5Cu7684%22%2C%22forum%22%3A%7B%22id%22%3A14081%2C%22name%22%3A%22SP4354%20TWINSNOW%20-%20Snowflakes%22%2C%22slug%22%3A%22SP4354%22%7D%7D%2C%7B%22id%22%3A58340%2C%22title%22%3A%22%5Cu9898%5Cu610f%5Cu7b80%5Cu8ff0%22%2C%22forum%22%3A%7B%22id%22%3A14081%2C%22name%22%3A%22SP4354%20TWINSNOW%20-%20Snowflakes%22%2C%22slug%22%3A%22SP4354%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P1368%22%2C%22title%22%3A%22%5Cu5de5%5Cu827a%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P2168%22%2C%22title%22%3A%22%5BNOI2015%5D%5Cu8377%5Cu9a6c%5Cu53f2%5Cu8bd7%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3375%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011KMP%5Cu5b57%5Cu7b26%5Cu4e32%5Cu5339%5Cu914d%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P3805%22%2C%22title%22%3A%22%5Cu3010%5Cu6a21%5Cu677f%5Cu3011manacher%5Cu7b97%5Cu6cd5%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4551%22%2C%22title%22%3A%22%5Cu6700%5Cu957f%5Cu5f02%5Cu6216%5Cu8def%5Cu5f84%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TWINSNOW%20-%20Snowflakes%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TWINSNOW - Snowflakes</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+你可能听说过，没有两片雪花是相同的。你要写一个程序，判断这是不是真的。你的程序会读到一些有关于这些雪花的信息，找到一对完全相同的雪花。每片雪花有六个角。对于每个雪花，你的程序会获得每个角的长度。我们认为两片雪花相同，当且仅当它们各自从某一个角开始，逆时针或顺时针记录长度，能得到两个相同的六元组。
+# 输入输出格式
+### 输入格式：
+-第一行只有一个数字n，代表雪花的数量。
+-接下来会有n行，每一行描述了一片雪花。每片雪花会按逆时针或顺时针给出六个角的长度a1,a2...a6。我们认为两片雪花相同，当且仅当它们各自从某一个角开始，逆时针或顺时针记录长度，能得到两个相同的六元组。例如，同一片雪花可以被描述为1 2 3 4 5 6 或 4 3 2 1 6 5。
+### 输出格式
+如果没有两片雪花是相同的，请输出 :
+_No two snowflakes are alike. _
+否则，请输出：
+_Twin snowflakes found._
+# 输入输出样例
+暂无测试点
+</div>
+<h2>题目描述</h2>
+<div>[English](/problems/TWINSNOW/en/) [Tiếng Việt](/problems/TWINSNOW/vn/) You may have heard that no two snowflakes are alike. Your task is to write a program to determine whether this is really true. Your program will read information about a collection of snowflakes, and search for a pair that may be identical. Each snowflake has six arms. For each snowflake, your program will be provided with a measurement of the length of each of the six arms. Any pair of snowflakes which have the same lengths of corresponding arms should be agged by your program as possibly identical.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP4354/8df72d004b3913b79d312c0d11665e7662064ce7.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\- The first line of input will contain a single integer n; the number of snowflakes to follow.
+\- This will be followed by n lines, each describing a snowflake. Each snowflake will be described by a line containing six integers (each integer is at least 0 and less than 10000000), the lengths of the arms of the snowflake. The lengths of the arms will be given in order around the snowflake (either clockwise or counterclockwise), but they may begin with any of the six arms. For example, the same snowflake could be described as 1 2 3 4 5 6 or 4 3 2 1 6 5.</div>
+<h3>输出格式</h3>
+<br />
+<div> If all of the snowflakes are distinct, your program should print the message:
+`No two snowflakes are alike.` If there is a pair of possibly identical snowflakes, your program should print the message:
+`Twin snowflakes found.`</div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

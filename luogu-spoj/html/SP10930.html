@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>DIXDOOM - Dixon Dominoes - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450251:9TP2EFya77xzWI+wB8Yu8o6+oueebsKp0UCHQUuygZE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Dixon%20was%20in%20his%20house%2C%20he%20was%20a%20little%20bored%2C%20so%20he%20took%20some%20dominoes%20from%20the%20case%20and%20started%20thinking%3A%20%5Cu201cIt%20is%20possible%20to%20use%20Qx%20pieces%20from%20the%20Dominoes%20so%20it%20can%20make%20a%20simulation%20of%20a%20game%3F%5Cu201d%20so%2C%20Dixon%20is%20not%20a%20super%20programmer%2C%20but%20he%20knows%20a%20little%20bit%20of%20constraints%20in%20the%20problems%2C%20so%20he%20will%20give%20it%20to%20you%2C%20your%20task%2C%20if%20you%20choose%20to%20accept%20it%2C%20is%20to%20find%20all%20the%20possible%20ways%20of%20some%20N%20pieces%20of%20Domino%20can%20be%20joined%20together%20to%20make%20a%20game%20simulation%20using%20exactly%20Qx%20dominoes%20pieces.%20If%20you%20can%5Cu2019t%20do%20this%2C%20you%20should%20print%20%5Cu201c0%5Cu201d%5Cn%5Cn%21%5BDominoes%5D%28http%3A%5C%2F%5C%2Fi39.tinypic.com%5C%2F2mgmtcw.jpg%20%5C%22Dominoes%5C%22%29%5Cn%5CnINPUT%3A%5Cn%5CnThe%20input%20will%20consists%20of%20an%20integer%20T%2C%20denoting%20the%20number%20of%20test%20cases%2C%20next%2C%20T%20cases%20will%20follow%2C%20every%20case%20starts%20with%202%20lines%20N%20and%20Q%2C%20being%20N%20the%20number%20of%20dominoes%20David%20has%20and%20Q%20the%20number%20of%20queries%20you%20should%20do%2C%20then%2C%20N%20lines%20will%20follow%2C%20denoting%20the%20two%20parts%20of%20a%20domino%20piece%2C%20as%20you%20may%20know%2C%20the%20domino%20piece%20is%20split%20in%20two%2C%20so%20you%20can%20join%20by%20any%20side%20another%20piece%2C%20after%20this%2C%20Q%20lines%20will%20follow%2C%20denoting%20the%20number%20of%20piece%20you%20must%20use%20to%20build%20the%20game%20simulation.%5Cn%5Cn%2A%2ACONSTRAINTS%3A%2A%2A%5Cn%5Cn1%3C%3DT%3C%3D100%5Cn%5Cn1%3C%3DN%3C%3D16%5Cn%5Cn1%3C%3DQ%3C%3D16%5Cn%5Cn0%3C%3DN1%2C%5Cu2026%2CNN%3C%3D6%5Cn%5Cn1%3C%3DQ1%2C%5Cu2026%2CQN%3C%3DN%5Cn%5Cn%2A%2AOUTPUT%3A%2A%2A%5Cn%5CnYou%20should%20output%20%2A%2Aall%2A%2A%20the%20possible%20ways%20to%20form%20a%20game%20using%20Qx%20pieces%20%28with%20any%20possible%20permutation%20too%29%2C%20as%20this%20number%20can%20grow%20very%20huge%2C%20we%20need%20you%20to%20print%20the%20output%20modulo%2031337.%5Cn%5Cn%2A%2ASample%20Input%3A%2A%2A%5Cn%5Cn3%20%20%5Cn4%203%20%20%5Cn2%203%20%20%5Cn3%201%20%20%5Cn1%204%20%20%5Cn4%203%20%20%5Cn1%20%20%5Cn3%20%20%5Cn4%20%20%5Cn2%201%20%20%5Cn1%202%20%20%5Cn1%202%20%20%5Cn2%20%20%5Cn2%201%20%20%5Cn1%201%20%20%5Cn1%201%20%20%5Cn2%5Cn%5Cn%2A%2ASample%20Output%3A%2A%2A%5Cn%5Cn8%5Cn%5Cn10%5Cn%5Cn4%5Cn%5Cn4%5Cn%5Cn8%5Cn%5CnDomino%20idea%20credits%20goes%20to%3A%20%5BDaniel%20Ampuero%5D%28..%5C%2F..%5C%2Fusers%5C%2Fdanielmaxx%5C%2F%29%20and%20%5BLuis%20Arguello%5D%28..%5C%2F..%5C%2Fusers%5C%2Fel_primo%5C%2F%29%5Cn%5CnExample%20of%20the%20output%20with%20the%20first%20case%20and%20Q%3D4%5Cn%5Cnsolution%201%3A%20joining%20the%20pieces%201%2C2%2C3%20and%204%5Cn%5Cnsolution%202%3A%20joining%20the%20pieces%204%2C3%2C2%20and%201%5Cn%5Cnsolution%203%3A%20joining%20the%20pieces%202%2C3%2C4%20and%201%5Cn%5Cnsolution%204%3A%20joining%20the%20pieces%201%2C4%2C3%20and%202%5Cn%5Cn%2A%2ATip%3A%2A%2A%20In%20the%20case%20with%20one%20piece%20only%2C%20you%20can%20form%20a%20game%20starting%20with%20the%20two%20faces%20of%20every%20single%20piece%2C%20i.e.%20if%20we%20want%20to%20form%20a%20game%20using%20just%20the%20piece%20%5C%222%201%5C%22%2C%20one%20possible%20game%20is%20%5C%222%201%5C%22%20and%20the%20other%20%5C%221%202%5C%22%2C%20resulting%20in%20two%20different%20ways.%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B353%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F10930%22%2C%22id%22%3A%2210930%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP10930%22%2C%22title%22%3A%22DIXDOOM%20-%20Dixon%20Dominoes%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22DIXDOOM%20-%20Dixon%20Dominoes%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>DIXDOOM - Dixon Dominoes</h1>
+<h2>题目描述</h2>
+<div>Dixon was in his house, he was a little bored, so he took some dominoes from the case and started thinking: “It is possible to use Qx pieces from the Dominoes so it can make a simulation of a game?” so, Dixon is not a super programmer, but he knows a little bit of constraints in the problems, so he will give it to you, your task, if you choose to accept it, is to find all the possible ways of some N pieces of Domino can be joined together to make a game simulation using exactly Qx dominoes pieces. If you can’t do this, you should print “0”
+![Dominoes](http://i39.tinypic.com/2mgmtcw.jpg "Dominoes")
+INPUT:
+The input will consists of an integer T, denoting the number of test cases, next, T cases will follow, every case starts with 2 lines N and Q, being N the number of dominoes David has and Q the number of queries you should do, then, N lines will follow, denoting the two parts of a domino piece, as you may know, the domino piece is split in two, so you can join by any side another piece, after this, Q lines will follow, denoting the number of piece you must use to build the game simulation.
+**CONSTRAINTS:**
+1<=T<=100
+1<=N<=16
+1<=Q<=16
+0<=N1,…,NN<=6
+1<=Q1,…,QN<=N
+**OUTPUT:**
+You should output **all** the possible ways to form a game using Qx pieces (with any possible permutation too), as this number can grow very huge, we need you to print the output modulo 31337.
+**Sample Input:**
+3
+4 3
+2 3
+3 1
+1 4
+4 3
+1
+3
+4
+2 1
+1 2
+1 2
+2
+2 1
+1 1
+1 1
+2
+**Sample Output:**
+8
+10
+4
+4
+8
+Domino idea credits goes to: [Daniel Ampuero](../../users/danielmaxx/) and [Luis Arguello](../../users/el_primo/)
+Example of the output with the first case and Q=4
+solution 1: joining the pieces 1,2,3 and 4
+solution 2: joining the pieces 4,3,2 and 1
+solution 3: joining the pieces 2,3,4 and 1
+solution 4: joining the pieces 1,4,3 and 2
+**Tip:** In the case with one piece only, you can form a game starting with the two faces of every single piece, i.e. if we want to form a game using just the piece "2 1", one possible game is "2 1" and the other "1 2", resulting in two different ways.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

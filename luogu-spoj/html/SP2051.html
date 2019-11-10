@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>CERC07C - Cell Phone - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449707:iO70Jl7HbDQBCadgHqSrTg383N0cvpaSpC7/ryCIGuM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Nowadays%2C%20everyone%20has%20a%20cellphone%2C%20or%20even%20two%20or%20three.%20You%20probably%20know%20where%20their%20name%20comes%20from.%20Do%20you.%20Cellphones%20can%20be%20moved%20%28they%20are%20%5C%22mobile%5C%22%29%20and%20they%20use%20wireless%20connection%20to%20static%20stations%20called%20BTS%20%28Base%20Transceiver%20Station%29.%20Each%20BTS%20covers%20an%20area%20around%20it%20and%20that%20area%20is%20called%20a%20cell.%5Cn%5CnThe%20Czech%20Technical%20University%20runs%20an%20experimental%20private%20GSM%20network%20with%20a%20BTS%20right%20on%20top%20of%20the%20building%20you%20are%20in%20just%20now.%20Since%20the%20placement%20of%20base%20stations%20is%20very%20important%20for%20the%20network%20coverage%2C%20your%20task%20is%20to%20create%20a%20program%20that%20will%20find%20the%20optimal%20position%20for%20a%20BTS.%20The%20program%20will%20be%20given%20coordinates%20of%20%5C%22points%20of%20interest%5C%22.%20The%20goal%20is%20to%20find%20a%20position%20that%20will%20cover%20the%20maximal%20number%20of%20these%20points.%20It%20is%20supposed%20that%20a%20BTS%20can%20cover%20all%20points%20that%20are%20no%20further%20than%20some%20given%20distance%20R.%20Therefore%2C%20the%20cell%20has%20a%20circular%20shape.%5Cn%5Cn%21%5Bexample%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP2051%5C%2Fe5a8d5d4ce226512ceda6de782140bfbe3d12c05.png%29The%20picture%20above%20shows%20eight%20points%20of%20interest%20%28little%20circles%29%20and%20one%20of%20the%20possible%20optimal%20BTS%20positions%20%28small%20triangle%29.%20For%20the%20given%20distance%20R%2C%20it%20is%20not%20possible%20to%20cover%20more%20than%20four%20points.%20Notice%20that%20the%20BTS%20does%20not%20need%20to%20be%20placed%20in%20an%20existing%20point%20of%20interest.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20several%20scenarios.%20Each%20scenario%20begins%20with%20a%20line%20containing%20two%20integer%20numbers%20N%20and%20R.%20N%20is%20the%20number%20of%20points%20of%20interest%2C1%20%3C%3D%20N%20%3C%3D%202%20000.%20R%20is%20the%20maximal%20distance%20the%20BTS%20is%20able%20to%20cover%2C%200%20%3C%3D%20R%20%3C%2010%20000.%20Then%20there%20are%20N%20lines%2C%20each%20containing%20two%20integer%20numbers%20X%5C%5C_i%2C%20Y%5C%5C_i%20giving%20coordinates%20of%20the%20i-th%20point%2C%20%7CX%5C%5C_i%7C%2C%20%7CY%5C%5C_i%7C%20%3C%2010%20000.%20All%20points%20are%20distinct%2C%20i.e.%2C%20no%20two%20of%20them%20will%20have%20the%20same%20coordinates.%5Cn%5CnThe%20scenario%20is%20followed%20by%20one%20empty%20line%20and%20then%20the%20next%20scenario%20begins.%20The%20last%20one%20is%20followed%20by%20a%20line%20containing%20two%20zeros.%5Cn%5CnA%20point%20lying%20at%20the%20circle%20boundary%20%28exactly%20in%20the%20distance%20R%29%20is%20considered%20covered.%20To%20avoid%20floating-point%20inaccuracies%2C%20the%20input%20points%20will%20be%20selected%20in%20such%20a%20way%20that%20for%20any%20possible%20subset%20of%20points%20S%20that%20can%20be%20covered%20by%20a%20circle%20with%20the%20radius%20R%20%2B0.001%2C%20there%20will%20always%20exist%20a%20circle%20with%20the%20radius%20R%20that%20also%20covers%20them.%22%2C%22outputFormat%22%3A%22For%20each%20scenario%2C%20print%20one%20line%20containing%20the%20sentence%20%5C%22It%20is%20possible%20to%20cover%20M%20points.%5C%22%2C%20where%20M%20is%20the%20maximal%20number%20of%20points%20of%20interest%20that%20may%20be%20covered%20by%20a%20single%20BTS.%22%2C%22samples%22%3A%5B%5B%228%202%5Cr%5Cn1%202%5Cr%5Cn5%203%5Cr%5Cn5%204%5Cr%5Cn1%204%5Cr%5Cn8%202%5Cr%5Cn4%205%5Cr%5Cn7%205%5Cr%5Cn3%203%5Cr%5Cn%5Cr%5Cn2%20100%5Cr%5Cn0%20100%5Cr%5Cn0%20-100%5Cr%5Cn%5Cr%5Cn0%200%22%2C%22It%20is%20possible%20to%20cover%204%20points.%5Cr%5CnIt%20is%20possible%20to%20cover%202%20points.%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3196%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F2051%22%2C%22id%22%3A%222051%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A2%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22SP2051%22%2C%22title%22%3A%22CERC07C%20-%20Cell%20Phone%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22CERC07C%20-%20Cell%20Phone%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>CERC07C - Cell Phone</h1>
+<h2>题目描述</h2>
+<div>Nowadays, everyone has a cellphone, or even two or three. You probably know where their name comes from. Do you. Cellphones can be moved (they are "mobile") and they use wireless connection to static stations called BTS (Base Transceiver Station). Each BTS covers an area around it and that area is called a cell.
+The Czech Technical University runs an experimental private GSM network with a BTS right on top of the building you are in just now. Since the placement of base stations is very important for the network coverage, your task is to create a program that will find the optimal position for a BTS. The program will be given coordinates of "points of interest". The goal is to find a position that will cover the maximal number of these points. It is supposed that a BTS can cover all points that are no further than some given distance R. Therefore, the cell has a circular shape.
+![example](https://cdn.luogu.com.cn/upload/vjudge_pic/SP2051/e5a8d5d4ce226512ceda6de782140bfbe3d12c05.png)The picture above shows eight points of interest (little circles) and one of the possible optimal BTS positions (small triangle). For the given distance R, it is not possible to cover more than four points. Notice that the BTS does not need to be placed in an existing point of interest.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of several scenarios. Each scenario begins with a line containing two integer numbers N and R. N is the number of points of interest,1 <= N <= 2 000. R is the maximal distance the BTS is able to cover, 0 <= R < 10 000. Then there are N lines, each containing two integer numbers X\_i, Y\_i giving coordinates of the i-th point, |X\_i|, |Y\_i| < 10 000. All points are distinct, i.e., no two of them will have the same coordinates.
+The scenario is followed by one empty line and then the next scenario begins. The last one is followed by a line containing two zeros.
+A point lying at the circle boundary (exactly in the distance R) is considered covered. To avoid floating-point inaccuracies, the input points will be selected in such a way that for any possible subset of points S that can be covered by a circle with the radius R +0.001, there will always exist a circle with the radius R that also covers them.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each scenario, print one line containing the sentence "It is possible to cover M points.", where M is the maximal number of points of interest that may be covered by a single BTS.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8 2
+1 2
+5 3
+5 4
+1 4
+8 2
+4 5
+7 5
+3 3
+
+2 100
+0 100
+0 -100
+
+0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>It is possible to cover 4 points.
+It is possible to cover 2 points.</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

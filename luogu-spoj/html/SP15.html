@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SHPATH - The Shortest Path - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449499:+6ZO6WElsZl3cH5Vq2M826JDtQ857AKmRjVLwT9SiXg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20a%20list%20of%20cities.%20Each%20direct%20connection%20between%20two%20cities%20has%20its%20transportation%20cost%20%28an%20integer%20bigger%20than%200%29.%20The%20goal%20is%20to%20find%20the%20paths%20of%20minimum%20cost%20between%20pairs%20of%20cities.%20Assume%20that%20the%20cost%20of%20each%20path%20%28which%20is%20the%20sum%20of%20costs%20of%20all%20direct%20connections%20belongning%20to%20this%20path%29%20is%20at%20most%20200000.%20The%20name%20of%20a%20city%20is%20a%20string%20containing%20characters%20a%2C...%2Cz%20and%20is%20at%20most%2010%20characters%20long.%22%2C%22inputFormat%22%3A%22%20%60%60%60%5Cns%20%5Bthe%20number%20of%20tests%20%3C%3D%2010%5D%5Cnn%20%5Bthe%20number%20of%20cities%20%3C%3D%2010000%5D%5CnNAME%20%5Bcity%20name%5D%5Cnp%20%5Bthe%20number%20of%20neighbours%20of%20city%20NAME%5D%5Cnnr%20cost%20%5Bnr%20-%20index%20of%20a%20city%20connected%20to%20NAME%20%28the%20index%20of%20the%20first%20city%20is%201%29%5D%5Cn%20%20%20%20%20%20%20%20%20%20%20%5Bcost%20-%20the%20transportation%20cost%5D%5Cnr%20%5Bthe%20number%20of%20paths%20to%20find%20%3C%3D%20100%5D%5CnNAME1%20NAME2%20%5BNAME1%20-%20source%2C%20NAME2%20-%20destination%5D%5Cn%5Bempty%20line%20separating%20the%20tests%5D%5Cn%60%60%60%22%2C%22outputFormat%22%3A%22%20%60%60%60%5Cncost%20%5Bthe%20minimum%20transportation%20cost%20from%20city%20NAME1%20to%20city%20NAME2%20%28one%20per%20line%29%5D%5Cn%60%60%60%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cn4%5Cr%5Cngdansk%5Cr%5Cn2%5Cr%5Cn2%201%5Cr%5Cn3%203%5Cr%5Cnbydgoszcz%5Cr%5Cn3%5Cr%5Cn1%201%5Cr%5Cn3%201%5Cr%5Cn4%204%5Cr%5Cntorun%5Cr%5Cn3%5Cr%5Cn1%203%5Cr%5Cn2%201%5Cr%5Cn4%201%5Cr%5Cnwarszawa%5Cr%5Cn2%5Cr%5Cn2%204%5Cr%5Cn3%201%5Cr%5Cn2%5Cr%5Cngdansk%20warszawa%5Cr%5Cnbydgoszcz%20warszawa%22%2C%223%5Cr%5Cn2%22%5D%5D%2C%22hint%22%3A%22%2A%2AWarning%3A%20large%20Input%5C%2FOutput%20data%2C%20be%20careful%20with%20certain%20languages%2A%2A%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1500%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F15%22%2C%22id%22%3A%2215%22%7D%2C%22translation%22%3A%22%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cuff1a%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu4e9b%5Cu57ce%5Cu5e02%5Cu3002%5Cu6bcf%5Cu4e00%5Cu6761%5Cu76f4%5Cu63a5%5Cu8fde%5Cu63a5%5Cu4e24%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu7684%5Cu4ea4%5Cu901a%5Cu7ebf%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu5927%5Cu4e8e%5Cu96f6%5Cu7684%5Cu4ea4%5Cu901a%5Cu8d39%5Cu7528%5Cu3002%5Cu9700%5Cu8981%5Cu627e%5Cu51fa%5Cu82e5%5Cu5e72%5Cu5bf9%5Cu57ce%5Cu5e02%5Cu95f4%5Cu7684%5Cu6700%5Cu5c0f%5Cu4ea4%5Cu901a%5Cu8d39%5Cu7528%5Cu3002%5Cn%5Cu6bcf%5Cu6761%5Cu57ce%5Cu5e02%5Cu95f4%5Cu4ea4%5Cu901a%5Cu8def%5Cu5f84%5Cu7684%5Cu8d39%5Cu7528%5Cu548c%5Cu6700%5Cu591a%5Cu4e3a200000%5Cu3002%5Cu6bcf%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu7684%5Cu540d%5Cu79f0%5Cu662f%5Cu4e00%5Cu4e2a%5Cu5305%5Cu542b%5Cu5c0f%5Cu5199%5Cu5b57%5Cu6bcda~z%5Cu7684%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu957f%5Cu5ea6%5Cu6700%5Cu591a%5Cu4e3a10%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6570s%5Cuff0c%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7684%5Cu7ec4%5Cu6570%5Cu3002%5Cuff08s%3C%3D10%5Cuff09%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6570n%5Cuff0c%5Cu57ce%5Cu5e02%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cuff08n%3C%3D10000%5Cuff09%5Cn%5Cu4e4b%5Cu540e%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2an%5Cuff0c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32p%5Cuff0c%5Cu5373%5Cu57ce%5Cu5e02%5Cu7684%5Cu540d%5Cu79f0%5Cu3002%5Cn%5Cu4e0b%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6570p%5Cuff0c%5Cu4e0e%5Cu8fd9%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu76f4%5Cu63a5%5Cu76f8%5Cu90bb%5Cu7684%5Cu57ce%5Cu5e02%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cn%5Cu4e4b%5Cu540ep%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu6570nr%5Cu548ccost%5Cu3002nr%5Cu4e3a%5Cu4e0e%5Cu8be5%5Cu57ce%5Cu5e02%5Cu76f8%5Cu90bb%5Cu7684%5Cu57ce%5Cu5e02%5Cu7684%5Cu7f16%5Cu53f7%5Cuff08%5Cu7f16%5Cu53f7%5Cu6309%5Cu8f93%5Cu5165%5Cu987a%5Cu5e8f%5Cu4ece1%5Cu5f00%5Cu59cb%5Cuff09%5Cuff0ccost%5Cu4e3a%5Cu8fd9%5Cu6761%5Cu8def%5Cu5f84%5Cu7684%5Cu4ea4%5Cu901a%5Cu8d39%5Cu7528%5Cu3002%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6570r%5Cuff0c%5Cu67e5%5Cu8be2%5Cu7ec4%5Cu6570%5Cu3002%5Cuff08r%3C%3D100%5Cuff09%5Cn%5Cu4e4b%5Cu540er%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu8f93%5Cu5165%5Cu4e24%5Cu4e2a%5Cu5b57%5Cu7b26%5Cu4e32%5Cuff0c%5Cu8d77%5Cu70b9%5Cu548c%5Cu7ec8%5Cu70b9%5Cu57ce%5Cu5e02%5Cu7684%5Cu540d%5Cu79f0%5Cu3002%5Cn%5Cu6bcf%5Cu4e24%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu4e4b%5Cu95f4%5Cu7528%5Cu7a7a%5Cu884c%5Cu9694%5Cu5f00%5Cu3002%5Cn%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu67e5%5Cu8be2%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cuff0c%5Cu4e24%5Cu4e2a%5Cu57ce%5Cu5e02%5Cu95f4%5Cu6700%5Cu5c0f%5Cu7684%5Cu4ea4%5Cu901a%5Cu8d39%5Cu7528%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A17%2C%22totalAccepted%22%3A10%2C%22pid%22%3A%22SP15%22%2C%22title%22%3A%22SHPATH%20-%20The%20Shortest%20Path%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A32785%2C%22title%22%3A%22%5Cu8d21%5Cu732e%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A12859%2C%22name%22%3A%22SP15%20SHPATH%20-%20The%20Shortest%20Path%22%2C%22slug%22%3A%22SP15%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SHPATH%20-%20The%20Shortest%20Path%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SHPATH - The Shortest Path</h1>
+<h2>题意翻译</h2>
+<div>题目描述：
+给定一些城市。每一条直接连接两个城市的交通线都有一个大于零的交通费用。需要找出若干对城市间的最小交通费用。
+每条城市间交通路径的费用和最多为200000。每个城市的名称是一个包含小写字母a~z的字符串，长度最多为10。
+输入格式：
+第一行输入一个数s，测试数据的组数。（s<=10）
+对于每一组测试数据，第一行输入一个数n，城市的数量。（n<=10000）
+之后对于每个n，输入一个字符串p，即城市的名称。
+下一行输入一个数p，与这个城市直接相邻的城市的数量。
+之后p行，每行输入两个数nr和cost。nr为与该城市相邻的城市的编号（编号按输入顺序从1开始），cost为这条路径的交通费用。
+接下来输入一个数r，查询组数。（r<=100）
+之后r行，每行输入两个字符串，起点和终点城市的名称。
+每两组测试数据之间用空行隔开。
+输出格式：
+对于每一个查询，输出一行，两个城市间最小的交通费用。</div>
+<h2>题目描述</h2>
+<div>You are given a list of cities. Each direct connection between two cities has its transportation cost (an integer bigger than 0). The goal is to find the paths of minimum cost between pairs of cities. Assume that the cost of each path (which is the sum of costs of all direct connections belongning to this path) is at most 200000. The name of a city is a string containing characters a,...,z and is at most 10 characters long.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div> ```
+s [the number of tests <= 10]
+n [the number of cities <= 10000]
+NAME [city name]
+p [the number of neighbours of city NAME]
+nr cost [nr - index of a city connected to NAME (the index of the first city is 1)]
+[cost - the transportation cost]
+r [the number of paths to find <= 100]
+NAME1 NAME2 [NAME1 - source, NAME2 - destination]
+[empty line separating the tests]
+```</div>
+<h3>输出格式</h3>
+<br />
+<div> ```
+cost [the minimum transportation cost from city NAME1 to city NAME2 (one per line)]
+```</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+4
+gdansk
+2
+2 1
+3 3
+bydgoszcz
+3
+1 1
+3 1
+4 4
+torun
+3
+1 3
+2 1
+4 1
+warszawa
+2
+2 4
+3 1
+2
+gdansk warszawa
+bydgoszcz warszawa</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3
+2</code></pre>
+<h2>说明</h2>
+<div>**Warning: large Input/Output data, be careful with certain languages**</div>
+</article>
+</div>
+</div>
+</body>
+</html>

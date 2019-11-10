@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GOLDG - Goldbach graphs - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449997://JM903cHko6Z595pJRw67eImpdjlqzDcQ3b8qVkAcQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Christian%20Goldbach%20sent%20a%20letter%20to%20Leonhard%20Euler%20in%201742%20in%20which%20he%20made%20the%20following%20conjecture%3A%5Cn%5Cn%3E%20_%5C%22Every%20even%20number%20greater%20than%204%20can%20be%20written%20as%20the%20sum%20of%20two%20odd%20prime%20numbers%5C%22_%5Cn%5CnTo%20find%20the%20solutions%20of%20Goldbach%27s%20conjecture%20for%20a%20given%20even%20number%20_n_%20%28_n_%20%3E%200%29%2C%20let%20us%20define%20the%20directed%20graph%20GG%28_n_%29%20%28the%20Goldbach%20Graph%20of%20_n_%29%20as%20follows%3A%5Cn%5CnNodes%20are%20prime%20numbers%20_p_%20such%20that%201%20%3C%20_p_%20%3C%20_n_.%20%20%5CnFor%20each%20node%20_p_%20there%20are%20zero%20or%20more%20outgoing%20edges%2C%20determined%20by%20the%20following%20rules%3A%20%20%5CnIf%20_p_%20%2B%20_q_%20%3D%20_n_%20and%20_q_%20%3D%201%2C%20then%20no%20outgoing%20edges%20are%20related%20to%20_p_.%20%20%5CnIf%20_p_%20%2B%20_q_%20%3D%20_n_%20and%20_q_%20%3D%20_p_%20%24%20_%7B1%7D%20%24%20_p_%20%24%20_%7B2%7D%20%24%20_p_%20%24%20_%7B3%7D%20%24%20....%20_p_%20%24%20_%7Bk%7D%20%24%20is%20the%20prime%20factorization%20of%20_q_%20%28asuming%20_q_%20%3E%201%29%2C%20then%20for%20each%20_i_%20%3D%201.._k_%20an%20edge%20_p_-%3E_p%20%24%20_%7Bi%7D%20%24_%20%20is%20added%20to%20graph%20GG%28_n_%29.%20Notice%20that%20each%20_p%20%24%20_%7Bi%7D%20%24_%20%20must%20be%20a%20prime%20number.%20Besides%2C%20if%20_k_%20%3D%201%20then%20_q_%20is%20prime%20and%20we%20have%20a%20solution%20to%20Goldbach%27s%20conjecture.%5Cn%5Cn%2A%2AFor%20example%3A%2A%2A%5Cn%5Cn-%20GG%282%29%20is%20empty%20%28it%20has%20zero%20nodes%29%5Cn-%20GG%284%29%20has%20two%20nodes%20and%20one%20edge.%20%20%5Cn%20%20%20nodes%20%3D%20%7B2%2C%203%7D%20%20%5Cn%20%20%20edges%20%3D%20%7B2-%3E2%7D%5Cn-%20GG%286%29%20has%20three%20nodes%20and%20three%20edges%20%20%5Cn%20%20%20nodes%20%3D%20%7B2%2C%203%2C%205%7D%20%20%5Cn%20%20%20edges%20%3D%20%7B2-%3E2%2C%202-%3E2%2C%203-%3E3%7D%20%20%5Cn%20%20Notice%20that%20edge%202-%3E2%20appears%20twice%20in%20GG%286%29%20because%20when%20_p_%20%3D%202%20then%20_q_%20%3D%204%20%3D%202%5C%5C%2A2%5Cn%5CnSolutions%20to%20Goldbach%27s%20conjecture%20are%20cycles%20in%20graph%20GG%28_n_%29%20of%20the%20following%20types%3A%5Cn%5Cn-%20Single-node%20cycles%20%28Type%20I%29%3A%20a%20node%20_p_%20with%20only%20one%20outgoing%20edge%20_p_-%3E_p_.%5Cn-%20Double-node%20cycles%20%28Type%20II%29%3A%20two%20nodes%20_p_%20%24%20_%7B1%7D%20%24%20and%20_p_%20%24%20_%7B2%7D%20%24%20%2C%20such%20that%20each%20one%20has%20a%20unique%20outgoing%20edge%20%28_p_%20%24%20_%7B1%7D%20%24%20-%3E_p_%20%24%20_%7B2%7D%20%24%20%2C%20%24%20_%7B%7D%20%24%20_p_%20%24%20_%7B2%7D%20%24%20-%3E_p_%20%24%20_%7B1%7D%20%24%20%29.%5Cn%5CnYour%20task%20is%20to%20inspect%20the%20directed%20graph%20GG%28_n_%29%20starting%20from%20a%20given%20node%20_x_%20and%20searching%20every%20node%20reachable%20from%20_x_%20for%20a%20solution%20to%20Goldbach%27s%20conjecture.%20The%20procedure%20is%20successfull%20if%20a%20node%20belonging%20to%20a%20Type%20I%20or%20Type%20II%20cycle%20is%20found.%20In%20such%20a%20case%20the%20minimum%20distance%20from%20_x_%20to%20the%20first%20node%20of%20the%20cycle%20found%20must%20be%20reported.%20Otherwise%20it%20should%20be%20stated%20that%20a%20solution%20can%20not%20be%20found.%5Cn%5CnYour%20algorithm%20should%20take%20into%20account%20that%20GG%28_n_%29%20can%20contain%20other%20types%20of%20cycles%20besides%20the%20ones%20described%20here.%20Otherwise%2C%20it%20can%20run%20forever.%22%2C%22inputFormat%22%3A%22The%20input%20contains%20several%20lines%20each%20one%20with%20a%20different%20test%20case.%20Each%20line%20includes%20a%20pair%20of%20numbers%20representing%20the%20values%20_n_%20and%20_x_.%20You%20should%20assume%20that%20_n_%20is%20even%20and%20also%20that%202%20%3C%3D%20_n_%20%3C%3D%201000.%20Although%200%20%3C%20_x_%20%3C%20_n_%20is%20true%2C%20do%20not%20assume%20that%20_x_%20is%20a%20valid%20node%20of%20GG%28_n_%29.%20The%20last%20line%20of%20the%20input%20contains%20the%20number%200%20%28it%20is%20not%20a%20test%20case%29.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20output%20a%20single%20line%20with%20one%20of%20the%20following%3A%5Cn%5Cn-%20Solution%20found%20at%20distance%20_D_.%5Cn-%20Solution%20not%20reachable.%5Cn-%20_x_%20is%20not%20a%20node%21%5Cn%5CnWhere%20_D_%20is%20the%20minimum%20distance%20from%20_x_%20to%20the%20solution%20found%2C%20as%20described%20before.%22%2C%22samples%22%3A%5B%5B%222%201%5C%5Cn4%202%5C%5Cn6%202%5C%5Cn6%203%5C%5Cn12%203%5C%5Cn12%2011%5C%5Cn14%207%5C%5Cn20%205%5C%5Cn38%2011%5C%5Cn50%2017%5C%5Cn540%20340%5C%5Cn540%2031%5C%5Cn540%2033%5C%5Cn0%22%2C%22%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1094%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F6726%22%2C%22id%22%3A%226726%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP6726%22%2C%22title%22%3A%22GOLDG%20-%20Goldbach%20graphs%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GOLDG%20-%20Goldbach%20graphs%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GOLDG - Goldbach graphs</h1>
+<h2>题目描述</h2>
+<div>Christian Goldbach sent a letter to Leonhard Euler in 1742 in which he made the following conjecture:
+> _"Every even number greater than 4 can be written as the sum of two odd prime numbers"_
+To find the solutions of Goldbach's conjecture for a given even number _n_ (_n_ > 0), let us define the directed graph GG(_n_) (the Goldbach Graph of _n_) as follows:
+Nodes are prime numbers _p_ such that 1 < _p_ < _n_.
+For each node _p_ there are zero or more outgoing edges, determined by the following rules:
+If _p_ + _q_ = _n_ and _q_ = 1, then no outgoing edges are related to _p_.
+If _p_ + _q_ = _n_ and _q_ = _p_ $ _{1} $ _p_ $ _{2} $ _p_ $ _{3} $ .... _p_ $ _{k} $ is the prime factorization of _q_ (asuming _q_ > 1), then for each _i_ = 1.._k_ an edge _p_->_p $ _{i} $_ is added to graph GG(_n_). Notice that each _p $ _{i} $_ must be a prime number. Besides, if _k_ = 1 then _q_ is prime and we have a solution to Goldbach's conjecture.
+**For example:**
+- GG(2) is empty (it has zero nodes)
+- GG(4) has two nodes and one edge.
+nodes = {2, 3}
+edges = {2->2}
+- GG(6) has three nodes and three edges
+nodes = {2, 3, 5}
+edges = {2->2, 2->2, 3->3}
+Notice that edge 2->2 appears twice in GG(6) because when _p_ = 2 then _q_ = 4 = 2\*2
+Solutions to Goldbach's conjecture are cycles in graph GG(_n_) of the following types:
+- Single-node cycles (Type I): a node _p_ with only one outgoing edge _p_->_p_.
+- Double-node cycles (Type II): two nodes _p_ $ _{1} $ and _p_ $ _{2} $ , such that each one has a unique outgoing edge (_p_ $ _{1} $ ->_p_ $ _{2} $ , $ _{} $ _p_ $ _{2} $ ->_p_ $ _{1} $ ).
+Your task is to inspect the directed graph GG(_n_) starting from a given node _x_ and searching every node reachable from _x_ for a solution to Goldbach's conjecture. The procedure is successfull if a node belonging to a Type I or Type II cycle is found. In such a case the minimum distance from _x_ to the first node of the cycle found must be reported. Otherwise it should be stated that a solution can not be found.
+Your algorithm should take into account that GG(_n_) can contain other types of cycles besides the ones described here. Otherwise, it can run forever.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input contains several lines each one with a different test case. Each line includes a pair of numbers representing the values _n_ and _x_. You should assume that _n_ is even and also that 2 <= _n_ <= 1000. Although 0 < _x_ < _n_ is true, do not assume that _x_ is a valid node of GG(_n_). The last line of the input contains the number 0 (it is not a test case).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case output a single line with one of the following:
+- Solution found at distance _D_.
+- Solution not reachable.
+- _x_ is not a node!
+Where _D_ is the minimum distance from _x_ to the solution found, as described before.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2 1\n4 2\n6 2\n6 3\n12 3\n12 11\n14 7\n20 5\n38 11\n50 17\n540 340\n540 31\n540 33\n0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code></code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

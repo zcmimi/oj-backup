@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>AHOCUR - Aho-Corasick Trie - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450279:0CdcKpQOak4KRKL2M96u7Mb4m47WCxg0kwqjftBlMPw=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22The%20%2A%2AAho%5Cu2013Corasick%20string%20matching%20algorithm%2A%2A%20is%20a%20%5Bstring%20searching%20algorithm%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FString_searching_algorithm%20%5C%22String%20searching%20algorithm%5C%22%29%20invented%20by%20%5BAlfred%20V.%20Aho%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FAlfred_V._Aho%20%5C%22Alfred%20V.%20Aho%5C%22%29%20and%20%5BMargaret%20J.%20Corasick%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FMargaret_J._Corasick%20%5C%22Margaret%20J.%20Corasick%5C%22%29.%20It%20is%20a%20kind%20of%20dictionary-matching%20algorithm%20that%20locates%20elements%20of%20a%20finite%20set%20of%20strings%20%28the%20%5C%22dictionary%5C%22%29%20within%20an%20input%20text.%20It%20matches%20all%20patterns%20simultaneously.%5Cn%5CnThe%20Algorithm%20described%20above%2C%20requires%20an%20input%20file%20generator.%20The%20generator%20generates%20a%20text%20of%20length%20_L_%2C%20by%20choosing%20_L_%20characters%20randomly.%20Probability%20of%20choosing%20each%20character%20is%20given%20as%20priori%2C%20and%20independent%20of%20choosing%20others.%20Now%2C%20given%20a%20set%20of%20patterns%2C%20calculate%20the%20probability%20of%20a%20valid%20program%20generating%20%5Cu201cno%5Cu201d.%22%2C%22inputFormat%22%3A%22First%20line%20contains%20an%20integer%20_T_%2C%20the%20number%20of%20test%20cases.%20Each%20case%20starts%20with%20an%20integer%20_K_%2C%20the%20number%20of%20pattern%20strings.%20Next%20_K_%20lines%20each%20contain%20a%20pattern%20string%2C%20followed%20by%20an%20integer%20_N_%2C%20number%20of%20valid%20characters.%20Next%20_N_%20lines%20each%20contain%20a%20character%20and%20the%20probability%20of%20selecting%20that%20character%2C%20_p%20%24%20_%7Bi%7D%20%24_%20.%20Next%20an%20integer%20_L_%2C%20the%20length%20of%20the%20string%20generated.%20The%20generated%20text%20can%20consist%20of%20only%20the%20valid%20characters%2C%20given%20above.%20There%20will%20be%20a%20blank%20line%20after%20each%20test%20case.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20the%20number%20of%20test%20case%2C%20and%20the%20probability%20of%20getting%20a%20%5Cu201cno%5Cu201d.%5Cn%5Cn%2A%2AConstraints%2A%2A%5Cn%5Cn-%20T%5Cn-%20K%5Cn-%20Length%20of%20each%20pattern%20string%20is%20between%201%20and%2020%5Cn-%20Each%20pattern%20string%20consists%20of%20only%20alphanumeric%20characters%20%28%5Cu2018a%5Cu2019%20to%20%5Cu2018z%5Cu2019%2C%20%5Cu2018A%5Cu2019%20to%20%5Cu2018Z%5Cu2019%2C%5Cu20190%5Cu2019%20to%20%5Cu20189%5Cu2019%29%5Cn-%20Valid%20characters%20are%20all%20alphanumeric%20characters%5Cn-%20%5Cu2211p%20%24%20_%7Bi%26nbsp%3B%7D%20%24%20%3D%201%5Cn-%20L%22%2C%22samples%22%3A%5B%5B%22%26nbsp%3B%5Cr%5Cn2%5Cr%5Cn1%5Cr%5Cna%5Cr%5Cn2%5Cr%5Cna%200.5%5Cr%5Cnb%200.5%5Cr%5Cn2%5Cr%5Cn%20%5Cr%5Cn2%5Cr%5Cnab%5Cr%5Cnab%5Cr%5Cn2%5Cr%5Cna%200.2%5Cr%5Cnb%200.8%5Cr%5Cn2%22%2C%22%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B262%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F11613%22%2C%22id%22%3A%2211613%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP11613%22%2C%22title%22%3A%22AHOCUR%20-%20Aho-Corasick%20Trie%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22AHOCUR%20-%20Aho-Corasick%20Trie%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>AHOCUR - Aho-Corasick Trie</h1>
+<h2>题目描述</h2>
+<div>The **Aho–Corasick string matching algorithm** is a [string searching algorithm](http://en.wikipedia.org/wiki/String_searching_algorithm "String searching algorithm") invented by [Alfred V. Aho](http://en.wikipedia.org/wiki/Alfred_V._Aho "Alfred V. Aho") and [Margaret J. Corasick](http://en.wikipedia.org/wiki/Margaret_J._Corasick "Margaret J. Corasick"). It is a kind of dictionary-matching algorithm that locates elements of a finite set of strings (the "dictionary") within an input text. It matches all patterns simultaneously.
+The Algorithm described above, requires an input file generator. The generator generates a text of length _L_, by choosing _L_ characters randomly. Probability of choosing each character is given as priori, and independent of choosing others. Now, given a set of patterns, calculate the probability of a valid program generating “no”.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>First line contains an integer _T_, the number of test cases. Each case starts with an integer _K_, the number of pattern strings. Next _K_ lines each contain a pattern string, followed by an integer _N_, number of valid characters. Next _N_ lines each contain a character and the probability of selecting that character, _p $ _{i} $_ . Next an integer _L_, the length of the string generated. The generated text can consist of only the valid characters, given above. There will be a blank line after each test case.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output the number of test case, and the probability of getting a “no”.
+**Constraints**
+- T
+- K
+- Length of each pattern string is between 1 and 20
+- Each pattern string consists of only alphanumeric characters (‘a’ to ‘z’, ‘A’ to ‘Z’,’0’ to ‘9’)
+- Valid characters are all alphanumeric characters
+- ∑p $ _{i&nbsp;} $ = 1
+- L</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>&amp;nbsp;
+2
+1
+a
+2
+a 0.5
+b 0.5
+2
+ 
+2
+ab
+ab
+2
+a 0.2
+b 0.8
+2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code></code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

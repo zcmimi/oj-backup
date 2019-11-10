@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GSS7 - Can you answer these queries VII - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449999:expFoZrhsu2prsFmCXEse6M63Cq1imlDUPEoGXhVetI=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Given%20a%20tree%20with%20N%20%28_N_%20%3C%3D%20100000%29%20nodes.%20Each%20node%20has%20a%20interger%20value%20x%5C%5C_i%20%28_%7Cx%5C%5C_i%7C_%20%3C%3D%2010000%29.%5Cn%5CnYou%20have%20to%20apply%20Q%20%28_Q_%20%3C%3D%20100000%29%20operations%3A%5Cn%5Cn1%5C%5C.%20_1%20a%20b_%20%3A%20answer%20the%20maximum%20contiguous%20sum%20%28maybe%20empty%2Cwill%20always%20larger%20than%20or%20equal%20to%200%20%29%20from%20the%20path%20_a-%3Eb_%20%28%20inclusive%20%29.%5Cn%5Cn2%5C%5C.%20_2%20a%20b%20c_%20%3A%20change%20all%20value%20in%20the%20path%20_a-%3Eb_%20%28%20inclusive%20%29%20to%20_c_.%20%28_%7Cc%7C_%20%3C%3D%2010000%29%22%2C%22inputFormat%22%3A%22first%20line%20consists%20one%20interger%20N.%5Cn%5Cnnext%20line%20consists%20N%20interger%20x%5C%5C_i.%5Cn%5Cnnext%20N-1%20line%20%2C%20each%20consists%20two%20interger%20u%2Cv%20%2C%20means%20that%20node%20u%20and%20node%20v%20are%20connected%5Cn%5Cnnext%20line%20consists%201%20interger%20Q.%5Cn%5Cnnext%20Q%20line%20%3A%20_1%20a%20b_%20or%20_2%20a%20b%20c_%20.%22%2C%22outputFormat%22%3A%22For%20each%20query%2C%20output%20one%20line%20the%20maximum%20contiguous%20sum.%22%2C%22samples%22%3A%5B%5B%225%5Cn-3%20-2%201%202%203%5Cn1%202%5Cn2%203%5Cn1%204%5Cn4%205%5Cn3%5Cn1%202%205%5Cn2%203%204%202%5Cn1%202%205%22%2C%225%5Cn9%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B570%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F6779%22%2C%22id%22%3A%226779%22%7D%2C%22translation%22%3A%22%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu7ed9%5Cu5b9a%5Cu4e00%5Cu68f5%5Cu6811%5Cuff0c%5Cu6709%24N%28N%20%5C%5Cle%20100000%29%24%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cu90fd%5Cu6709%5Cu4e00%5Cu4e2a%5Cu6743%5Cu503c%24x_i%20%28%7Cx_i%7C%20%5C%5Cle%2010000%29%24%5Cn%5Cn%5Cu4f60%5Cu9700%5Cu8981%5Cu6267%5Cu884c%24Q%20%28Q%20%5C%5Cle%20100000%29%24%5Cu6b21%5Cu64cd%5Cu4f5c%5Cuff1a%5Cn%5Cn1.%20%601%20a%20b%60%20%5Cu67e5%5Cu8be2%60%28a%2Cb%29%60%5Cu8fd9%5Cu6761%5Cu94fe%5Cu4e0a%5Cu7684%5Cu6700%5Cu5927%5Cu5b50%5Cu6bb5%5Cu548c%5Cuff0c%5Cu53ef%5Cu4ee5%5Cu4e3a%5Cu7a7a%5Cuff08%5Cu5373%5Cu8f93%5Cu51fa%240%24%5Cuff09%5Cn2.%20%602%20a%20b%20c%60%20%5Cu5c06%60%28a%2Cb%29%60%5Cu8fd9%5Cu6761%5Cu94fe%5Cu4e0a%5Cu7684%5Cu6240%5Cu6709%5Cu70b9%5Cu6743%5Cu53d8%5Cu4e3a%60c%60%20%24%28%7Cc%7C%20%3C%3D%2010000%29%24%5Cn%5Cn%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24N%24%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%5Cu6709%24N%24%5Cu4e2a%5Cu6574%5Cu6570%5Cu8868%5Cu793a%24x_i%24%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%24N-1%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%24u%2Cv%24%5Cu8868%5Cu793a%24u%24%5Cu548c%24v%24%5Cu4e4b%5Cu95f4%5Cu6709%5Cu4e00%5Cu6761%5Cu8fb9%5Cu76f8%5Cu8fde%5Cn%5Cn%5Cu63a5%5Cu4e0b%5Cu6765%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%24Q%24%5Cn%5Cn%5Cu4e4b%5Cu540e%5Cu6709%24Q%24%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu8bf8%5Cu5982%601%20a%20b%60%5Cu6216%5Cu8005%602%20a%20b%20c%60%5Cn%5Cn%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu8be2%5Cu95ee%5Cuff0c%5Cu8f93%5Cu51fa%5Cu7b54%5Cu6848%5Cn%5Cn%23%20%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%5Cn%5Cn%60%60%60%20plain%5Cn5%5Cn-3%20-2%201%202%203%5Cn1%202%5Cn2%203%5Cn1%204%5Cn4%205%5Cn3%5Cn1%202%205%5Cn2%203%204%202%5Cn1%202%205%5Cn%60%60%60%5Cn%5Cn%23%20%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cn%5Cn%60%60%60%20plain%5Cn5%5Cn9%5Cn%60%60%60%22%2C%22tags%22%3A%5B42%2C228%2C229%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1109%2C%22totalAccepted%22%3A243%2C%22pid%22%3A%22SP6779%22%2C%22title%22%3A%22GSS7%20-%20Can%20you%20answer%20these%20queries%20VII%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A159940%2C%22title%22%3A%22WA%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A14365%2C%22name%22%3A%22SP6779%20GSS7%20-%20Can%20you%20answer%20these%20queries%20VII%22%2C%22slug%22%3A%22SP6779%22%7D%7D%2C%7B%22id%22%3A152710%2C%22title%22%3A%22TLE%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A14365%2C%22name%22%3A%22SP6779%20GSS7%20-%20Can%20you%20answer%20these%20queries%20VII%22%2C%22slug%22%3A%22SP6779%22%7D%7D%2C%7B%22id%22%3A152173%2C%22title%22%3A%22%5Cu635e%5Cu5e16%22%2C%22forum%22%3A%7B%22id%22%3A14365%2C%22name%22%3A%22SP6779%20GSS7%20-%20Can%20you%20answer%20these%20queries%20VII%22%2C%22slug%22%3A%22SP6779%22%7D%7D%2C%7B%22id%22%3A152160%2C%22title%22%3A%22%5Cu849f%5Cu84bb%5Cu840c%5Cu65b0%5Cu6c42%5Cu52a9%22%2C%22forum%22%3A%7B%22id%22%3A14365%2C%22name%22%3A%22SP6779%20GSS7%20-%20Can%20you%20answer%20these%20queries%20VII%22%2C%22slug%22%3A%22SP6779%22%7D%7D%2C%7B%22id%22%3A151546%2C%22title%22%3A%22Help%5Cuff01%5Cuff01GSS7%22%2C%22forum%22%3A%7B%22id%22%3A14365%2C%22name%22%3A%22SP6779%20GSS7%20-%20Can%20you%20answer%20these%20queries%20VII%22%2C%22slug%22%3A%22SP6779%22%7D%7D%2C%7B%22id%22%3A147055%2C%22title%22%3A%22%5Cu53ef%5Cu8010%5Cu7684%5Cu59b9%5Cu7eb8%5Cu4eec%5Cuff0c%5Cu5e2e%5Cu6211%5Cu67e5%5Cu4e0b%5Cu9519%5Cuff01%5Cuff01%5Cuff01%22%2C%22forum%22%3A%7B%22id%22%3A14365%2C%22name%22%3A%22SP6779%20GSS7%20-%20Can%20you%20answer%20these%20queries%20VII%22%2C%22slug%22%3A%22SP6779%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P2486%22%2C%22title%22%3A%22%5BSDOI2011%5D%5Cu67d3%5Cu8272%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22SP2713%22%2C%22title%22%3A%22GSS4%20-%20Can%20you%20answer%20these%20queries%20IV%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22SP2916%22%2C%22title%22%3A%22GSS5%20-%20Can%20you%20answer%20these%20queries%20V%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22SP4487%22%2C%22title%22%3A%22GSS6%20-%20Can%20you%20answer%20these%20queries%20VI%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%2C%7B%22pid%22%3A%22SP19543%22%2C%22title%22%3A%22GSS8%20-%20Can%20you%20answer%20these%20queries%20VIII%22%2C%22difficulty%22%3A7%2C%22type%22%3A%22SP%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GSS7%20-%20Can%20you%20answer%20these%20queries%20VII%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GSS7 - Can you answer these queries VII</h1>
+<h2>题意翻译</h2>
+<div># 题目描述
+给定一棵树，有$N(N \le 100000)$个节点，每一个节点都有一个权值$x_i (|x_i| \le 10000)$
+你需要执行$Q (Q \le 100000)$次操作：
+1. `1 a b` 查询`(a,b)`这条链上的最大子段和，可以为空（即输出$0$）
+2. `2 a b c` 将`(a,b)`这条链上的所有点权变为`c` $(|c| <= 10000)$
+# 输入格式：
+第一行一个整数$N$
+接下来一行有$N$个整数表示$x_i$
+接下来$N-1$行，每行两个整数$u,v$表示$u$和$v$之间有一条边相连
+接下来一行一个整数$Q$
+之后有$Q$行，每行诸如`1 a b`或者`2 a b c`
+# 输出格式
+对于每一个询问，输出答案
+# 输入样例
+``` plain
+5
+-3 -2 1 2 3
+1 2
+2 3
+1 4
+4 5
+3
+1 2 5
+2 3 4 2
+1 2 5
+```
+# 输出样例
+``` plain
+5
+9
+```</div>
+<h2>题目描述</h2>
+<div>Given a tree with N (_N_ <= 100000) nodes. Each node has a interger value x\_i (_|x\_i|_ <= 10000).
+You have to apply Q (_Q_ <= 100000) operations:
+1\. _1 a b_ : answer the maximum contiguous sum (maybe empty,will always larger than or equal to 0 ) from the path _a->b_ ( inclusive ).
+2\. _2 a b c_ : change all value in the path _a->b_ ( inclusive ) to _c_. (_|c|_ <= 10000)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>first line consists one interger N.
+next line consists N interger x\_i.
+next N-1 line , each consists two interger u,v , means that node u and node v are connected
+next line consists 1 interger Q.
+next Q line : _1 a b_ or _2 a b c_ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query, output one line the maximum contiguous sum.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+-3 -2 1 2 3
+1 2
+2 3
+1 4
+4 5
+3
+1 2 5
+2 3 4 2
+1 2 5</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+9</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

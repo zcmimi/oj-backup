@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>STC07 - Railway - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450433:mn5LOJe7KPxR8ppb/rm3jEG1cMu7cD8OSzclPS9WJKs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20railroad%20siding%20consists%20of%20two%20%28dead-end%29%20sidetracks%201%20and%202.%20The%20siding%20is%20entered%20by%20track%20A%2C%20and%20left%20by%20track%20B.%5Cn%5Cn%20%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP15574%5C%2Fc8779f9ad775b52601d3b83071a1670d00468d4c.png%29There%20are%20N%20cars%20on%20track%20A%2C%20numbered%20from%201%20to%20N.%20They%20are%20arranged%20in%20such%20a%20way%20that%20they%20enter%20the%20siding%20in%20the%20order%20a%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B3%7D%20%24%20%2C%20...%2C%20a%20%24%20_%7BN%7D%20%24%20.%20The%20cars%20are%20to%20be%20transferred%20to%20the%20siding%2C%20so%20that%20they%20leave%20it%20by%20track%20B%20in%20the%20order%201%2C%202%2C%203%2C%20...%2C%20N.%20Each%20car%20is%20to%20be%20transferred%20once%20from%20track%20A%20to%20one%20of%20the%20sidetracks%201%20or%202%2C%20and%20later%20%28possibly%20after%20some%20transfers%20of%20the%20remaining%20cars%29%20once%20from%20that%20sidetrack%20to%20the%20track%20B.%20The%20sidetracks%20are%20long%20enough%20to%20store%20even%20the%20longest%20trains%2C%20so%20there%20is%20no%20need%20to%20worry%20about%20their%20capacity.%5Cn%5Cn%20%20%20%5CnInput%5Cn-----%5Cn%5CnThe%20first%20line%20of%20the%20standard%20input%20holds%20one%20integer%20N%20%281%20%3C%3D%20N%20%3C%3D%2010%20%24%20%5E%7B5%7D%20%24%20%29%20that%20denotes%20the%20number%20of%20cars%20for%20transfer.%20The%20second%20line%20stores%20the%20numbers%20a%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B3%7D%20%24%20%2C%20...%2C%20a%20%24%20_%7BN%7D%20%24%20that%20are%20a%20permutation%20of%201%2C%202%2C%203%2C%20...%2C%20N%20%28i.e.%2C%20each%20a%20%24%20_%7Bi%7D%20%24%20belongs%20to%20%7B1%2C%202%2C%203%2C%20...%2C%20N%7D%2C%20and%20all%20these%20numbers%20are%20unique%29%2C%20separated%20by%20single%20spaces.%5Cn%5Cn%20%20%20%5CnOutput%5Cn------%5Cn%5CnThe%20first%20line%20of%20the%20standard%20output%20should%20contain%20the%20word%20TAK%20%28_yes_%20in%20Polish%29%20if%20there%20is%20a%20way%20of%20transferring%20the%20cars%20so%20that%20they%20enter%20track%20B%20in%20the%20order%201%2C%202%2C%203%2C%20...%2C%20N%2C%20or%20the%20word%20NIE%20%28_no_%20in%20Polish%29%20if%20it%20is%20impossible.%20If%20the%20answer%20is%20TAK%2C%20the%20second%20line%20should%20give%2C%20separated%20by%20single%20spaces%2C%20the%20numbers%20of%20sidetracks%20%281%20or%202%29%20to%20which%20successive%20cars%20a%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B2%7D%20%24%20%2C%20a%20%24%20_%7B3%7D%20%24%20%2C%20...%2C%20a%20%24%20_%7BN%7D%20%24%20are%20moved%20in%20a%20correct%20transfer.%20If%20there%20are%20several%20ways%20of%20making%20the%20transfer%2C%20choose%20lexicographically%20smallest.%5Cn%5Cn%20%20%20%5CnExample%5Cn-------%5Cn%5CnFor%20the%20input%20data%3A%5Cn%5Cn%20%60%60%60%5Cn4%5Cn1%203%204%202%5Cn%60%60%60%5Cnthe%20correct%20result%20is%3A%5Cn%5Cn%20%60%60%60%5CnTAK%5Cn1%201%202%201%5Cn%60%60%60%5CnAnd%20for%20the%20input%3A%5Cn%5Cn%20%60%60%60%5Cn4%5Cn2%203%204%201%5Cn%60%60%60%5Cnthe%20correct%20result%20is%3A%5Cn%5Cn%20%60NIE%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F15574%22%2C%22id%22%3A%2215574%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu56fe%5Cuff0c%5Cu4e00%5Cu4e2a%5Cu94c1%5Cu8def%5Cu5305%5Cu542b%5Cu4e24%5Cu4e2a%5Cu4fa7%5Cu7ebf1%5Cu548c2%5Cuff0c%5Cu53f3%5Cu8fb9%5Cu7531A%5Cu8fdb%5Cu5165%5Cuff0c%5Cu5de6%5Cu8fb9%5Cu7531B%5Cu51fa%5Cu53bb%2C%5Cu6709n%5Cu4e2a%5Cu8f66%5Cu53a2%5Cu5728%5Cu901a%5Cu9053A%5Cu4e0a%5Cuff0c%5Cu7f16%5Cu53f7%5Cu4e3a1%5Cu5230n%5Cuff0c%5Cu5b83%5Cu4eec%5Cu88ab%5Cu5b89%5Cu6392%5Cu6309%5Cu7167%5Cu8981%5Cu6c42%5Cu7684%5Cu987a%5Cu5e8f%5Cuff08a1%20%2C%20a2%20%2C%20a3%20%2C%20a4%20.%20.%20.%20.%20an%5Cuff09%5Cu8fdb%5Cu5165%5Cu4fa7%5Cu7ebf%5Cuff0c%5Cu8fdb%5Cu53bb%5Cu518d%5Cu51fa%5Cu6765%5Cuff0c%5Cu7ecf%5Cu8fc7%5Cu4e00%5Cu5b9a%5Cu65b9%5Cu5f0f%5Cuff0c%5Cu5b83%5Cu4eec%5Cu8981%5Cu6309%5Cu7167%5Cu7f16%5Cu53f7%5Cu987a%5Cu5e8f%5Cuff081%5Cuff0c2%5Cuff0c3%5Cuff0c4%5Cuff0c5%20.%20.%20.%20n%5Cuff09%5Cu4ece%5Cu901a%5Cu9053B%5Cu51fa%5Cu53bb%5Cu3002%5Cu4ed6%5Cu4eec%5Cu4eceA%5Cu52301%5Cu62162%5Cuff0c%5Cu7136%5Cu540e%5Cu7ecf%5Cu8fc7%5Cu4e00%5Cu7cfb%5Cu5217%5Cu8f6c%5Cu79fb%5Cu4eceB%5Cu51fa%5Cu53bb%28%5Cu4fa7%5Cu7ebf1%2C2%5Cu7684%5Cu5bb9%5Cu91cf%5Cu4e0d%5Cu9650%29%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu5165%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570n%5Cuff081%3C%3Dn%3C%3D100000%5Cuff09%5Cu8868%5Cu793a%5Cu8981%5Cu8f6c%5Cu79fb%5Cu7684%5Cu8f66%5Cu53a2%5Cu603b%5Cu6570%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3a%5Cu8fdb%5Cu5165%5Cu4fa7%5Cu7ebf%5Cu7684%5Cu8981%5Cu6c42%5Cu987a%5Cu5e8fa1%20%5Cuff0ca2%20%5Cuff0c%20%20a3%5Cuff0c%20a4%20.%20.%20.%20.%20an%5Cuff0c%5Cu7531%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu8f93%5Cu51fa%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu5982%5Cu679c%5Cu53ef%5Cu4ee5%5Cu6309%5Cu7167%5Cu7f16%5Cu53f7%5Cu987a%5Cu5e8f%5Cu5230%5Cu901a%5Cu9053B%5Cuff0c%5Cu5219%5Cu8f93%5Cu51fa%5Cu4e24%5Cu884c%5Cuff0c%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3aTAK%5Cuff0c%5Cu7b2c%5Cu4e8c%5Cu884c%5Cu4e3an%5Cu4e2a%5Cu7531%5Cu7a7a%5Cu683c%5Cu9694%5Cu5f00%5Cu7684%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6bcf%5Cu4e2a%5Cu8f66%5Cu53a2%5Cu8fdb%5Cu5165%5Cu7684%5Cu4fa7%5Cu7ebf%5Cu7f16%5Cu53f7%5Cuff081%2C2%5Cuff09%5Cu3002%5Cu5426%5Cu5219%5Cu8f93%5Cu51faNIE%5Cu3002%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu6837%5Cu4f8b%5Cu8f93%5Cu5165%2A%2A%5Cr%5Cn%5Cr%5Cn%5B%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51651%5D%5Cr%5Cn%5Cr%5Cn4%5Cr%5Cn%5Cr%5Cn1%203%204%202%5Cr%5Cn%5Cr%5Cn%5B%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51652%5D%5Cr%5Cn%5Cr%5Cn4%5Cr%5Cn%5Cr%5Cn2%203%204%201%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa%2A%2A%5Cr%5Cn%5Cr%5Cn%5B%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa1%5D%5Cr%5Cn%5Cr%5CnTAK%5Cr%5Cn%5Cr%5Cn1%201%202%201%5Cr%5Cn%5Cr%5Cn%5B%5Cu6837%5Cu4f8b%5Cu8f93%5Cu51fa2%5D%5Cr%5Cn%5Cr%5CnNIE%5Cr%5Cn%5Cr%5Cn%2A%2A%5Cu63d0%5Cu793a%2A%2A%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6837%5Cu4f8b1%5Cuff0c%5Cr%5Cn%5Cr%5Cn1%5Cu53f7%5Cu7ebf%5Cu8fdb%5Cu5230%5Cu4fa7%5Cu7ebf1%5Cuff0c%5Cu7136%5Cu540e%5Cu51fa%5Cu6765%5Cuff1b%5Cr%5Cn%5Cr%5Cn3%5Cu53f7%5Cu8fdb%5Cu5165%5Cu4fa7%5Cu7ebf1%2C4%5Cu53f7%5Cu8fdb%5Cu5165%5Cu4fa7%5Cu7ebf2%2C2%5Cu53f7%5Cu8fdb%5Cu5165%5Cu4fa7%5Cu7ebf1%5Cuff0c%5Cu7136%5Cu540e%5Cu51fa%5Cu6765%5Cuff1b%5Cr%5Cn%5Cr%5Cn%5Cu6700%5Cu540e3%5Cu53f7%5Cu51fa%5Cu6765%5Cuff0c4%5Cu53f7%5Cu51fa%5Cu6765%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A1%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22SP15574%22%2C%22title%22%3A%22STC07%20-%20Railway%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22STC07%20-%20Railway%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>STC07 - Railway</h1>
+<h2>题意翻译</h2>
+<div>**题目描述**
+如图，一个铁路包含两个侧线1和2，右边由A进入，左边由B出去,有n个车厢在通道A上，编号为1到n，它们被安排按照要求的顺序（a1 , a2 , a3 , a4 . . . . an）进入侧线，进去再出来，经过一定方式，它们要按照编号顺序（1，2，3，4，5 . . . n）从通道B出去。他们从A到1或2，然后经过一系列转移从B出去(侧线1,2的容量不限)
+**输入**
+第一行一个整数n（1<=n<=100000）表示要转移的车厢总数，第二行为进入侧线的要求顺序a1 ，a2 ， a3， a4 . . . . an，由空格隔开。
+**输出**
+如果可以按照编号顺序到通道B，则输出两行，第一行为TAK，第二行为n个由空格隔开的整数，表示每个车厢进入的侧线编号（1,2）。否则输出NIE。
+**样例输入**
+[样例输入1]
+4
+1 3 4 2
+[样例输入2]
+4
+2 3 4 1
+**样例输出**
+[样例输出1]
+TAK
+1 1 2 1
+[样例输出2]
+NIE
+**提示**
+对于样例1，
+1号线进到侧线1，然后出来；
+3号进入侧线1,4号进入侧线2,2号进入侧线1，然后出来；
+最后3号出来，4号出来。</div>
+<h2>题目描述</h2>
+<div>A railroad siding consists of two (dead-end) sidetracks 1 and 2. The siding is entered by track A, and left by track B.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP15574/c8779f9ad775b52601d3b83071a1670d00468d4c.png)There are N cars on track A, numbered from 1 to N. They are arranged in such a way that they enter the siding in the order a $ _{1} $ , a $ _{2} $ , a $ _{3} $ , ..., a $ _{N} $ . The cars are to be transferred to the siding, so that they leave it by track B in the order 1, 2, 3, ..., N. Each car is to be transferred once from track A to one of the sidetracks 1 or 2, and later (possibly after some transfers of the remaining cars) once from that sidetrack to the track B. The sidetracks are long enough to store even the longest trains, so there is no need to worry about their capacity.
+Input
+-----
+The first line of the standard input holds one integer N (1 <= N <= 10 $ ^{5} $ ) that denotes the number of cars for transfer. The second line stores the numbers a $ _{1} $ , a $ _{2} $ , a $ _{3} $ , ..., a $ _{N} $ that are a permutation of 1, 2, 3, ..., N (i.e., each a $ _{i} $ belongs to {1, 2, 3, ..., N}, and all these numbers are unique), separated by single spaces.
+Output
+------
+The first line of the standard output should contain the word TAK (_yes_ in Polish) if there is a way of transferring the cars so that they enter track B in the order 1, 2, 3, ..., N, or the word NIE (_no_ in Polish) if it is impossible. If the answer is TAK, the second line should give, separated by single spaces, the numbers of sidetracks (1 or 2) to which successive cars a $ _{1} $ , a $ _{2} $ , a $ _{3} $ , ..., a $ _{N} $ are moved in a correct transfer. If there are several ways of making the transfer, choose lexicographically smallest.
+Example
+-------
+For the input data:
+```
+4
+1 3 4 2
+```
+the correct result is:
+```
+TAK
+1 1 2 1
+```
+And for the input:
+```
+4
+2 3 4 1
+```
+the correct result is:
+`NIE`</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

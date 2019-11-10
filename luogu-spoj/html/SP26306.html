@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>INC2015F - Pointers - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450641:U8WthYw3i9vgDXezaDI20JfmeTBMAS+2pIF1DU+UITE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%20are%20given%20an%20R%20rows%20x%20C%20columns%20grid%20map%20where%20each%20cell%20contains%20an%20arrow%20%28one%20of%20the%20following%3A%20%27%5E%27%2C%20%27%3E%27%2C%20%27%3C%27%2C%20or%20%27v%27%29.%20If%20one%20stands%20on%20a%20cell%2C%20then%20he%5C%2Fshe%20has%20to%20go%20to%20the%20neighbouring%20cell%20pointed%20by%20the%20arrow%20in%20the%20cell%20where%20he%5C%2Fshe%20stands.%20Supposed%20you%20are%20at%20cell%20%28r%2C%20c%29%20%5Cu2013%20row%20r%20and%20column%20c%2C%20then%3A%5Cn%5Cn-%20%27%5E%27%20means%20you%20should%20go%20to%20cell%20%28r-1%2C%20c%29.%5Cn-%20%27%3E%27%20means%20you%20should%20go%20to%20cell%20%28r%2C%20c%2B1%29.%5Cn-%20%27%3C%27%20means%20you%20should%20go%20to%20cell%20%28r%2C%20c-1%29.%5Cn-%20%27v%27%20means%20you%20should%20go%20to%20cell%20%28r%2B1%2C%20c%29.%5Cn%5CnIf%20the%20new%20cell%20is%20out%20of%20the%20grid%20map%2C%20then%20you%20fall%20out%20of%20the%20map.%20%20%5CnYour%20task%20is%20to%20modify%20the%20arrows%2C%20such%20that%20if%20you%20start%20from%20any%20cell%20in%20the%20map%20and%20follow%20the%20arrows%2C%20then%20you%20will%20get%20back%20to%20the%20starting%20point.%20Determine%20the%20minimum%20number%20of%20arrows%20that%20you%20will%20have%20to%20change.%5Cn%5CnFor%20example%2C%20consider%20the%20following%20map%20of%204%20x%202.%5Cn%5Cn%5C%5C%3Ev%5Cn%5Cn%20v%3C%5Cn%5Cn%5C%5C%3Ev%5Cn%5Cn%5C%5C%3E%3C%5Cn%5CnThere%20are%20several%20ways%20to%20accomplish%20our%20goal%3B%20here%20are%203%20solution%20examples%3A%5Cn%5Cn%5C%5C%3E%3C%20v%3C%20%3Ev%5Cn%5Cn%5C%5C%3E%3C%20v%5E%20%5E%3C%5Cn%5Cn%5C%5C%3E%3C%20v%5E%20%3E%3C%5Cn%5Cn%5C%5C%3E%3C%20%3E%5E%20%3E%3C%5Cn%5CnIn%20the%20first%20solution%20example%2C%20we%20have%20to%20change%203%20arrows%3A%20%7B%281%2C%202%29%2C%20%282%2C%201%29%2C%20%283%2C%202%29%7D.%20In%20the%20second%20one%2C%20we%20have%20to%20change%206%20arrows%3A%20%7B%281%2C%201%29%2C%20%281%2C%202%29%2C%20%282%2C%202%29%2C%20%283%2C%201%29%2C%20%283%2C%202%29%2C%20%284%2C%202%29%7D.%20In%20the%20last%20one%2C%20we%20have%20to%20change%202%20arrows%3A%20%7B%282%2C%201%29%2C%20%283%2C%202%29%7D.%20There%20are%20many%20other%20solution%20examples%2C%20but%20among%20those%2C%20the%20minimum%20number%20of%20arrows%20you%20need%20to%20change%20is%202%20%28as%20in%20solution%20example%203%29.%5Cn%5CnIf%20the%20new%20cell%20is%20out%20of%20the%20grid%20map%2C%20then%20you%20fall%20out%20of%20the%20map.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20an%20integer%20T%20%28T%22%2C%22outputFormat%22%3A%22For%20each%20case%2C%20output%20in%20a%20line%20%5C%22Case%20%23X%3A%20Y%5C%22%20where%20X%20is%20the%20case%20number%2C%20starts%20from%201.%20and%20Y%20is%20the%20minimum%20number%20of%20arrows%20you%20need%20to%20change%20to%20accomplish%20the%20given%20goal.%20Output%20-1%20for%20Y%2C%20if%20it%27s%20not%20possible%20to%20do%20so.%22%2C%22samples%22%3A%5B%5B%224%5Cr%5Cn4%202%5Cr%5Cn%26gt%3Bv%5Cr%5Cnv%26lt%3B%5Cr%5Cn%26gt%3Bv%5Cr%5Cn%26gt%3B%26lt%3B%5Cr%5Cn3%204%5Cr%5Cnv%26lt%3B%26gt%3Bv%5Cr%5Cnv%5E%5Ev%5Cr%5Cn%26gt%3B%5E%5E%26lt%3B%5Cr%5Cn3%204%5Cr%5Cnv%26lt%3B%26lt%3B%26lt%3B%5Cr%5Cnv%5Ev%26lt%3B%5Cr%5Cn%26gt%3B%26gt%3B%26gt%3B%5E%5Cr%5Cn1%202%5Cr%5Cn%26gt%3B%26gt%3B%22%2C%22Case%20%231%3A%202%5Cr%5CnCase%20%232%3A%200%5Cr%5CnCase%20%233%3A%202%5Cr%5CnCase%20%234%3A%201%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B5000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F26306%22%2C%22id%22%3A%2226306%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP26306%22%2C%22title%22%3A%22INC2015F%20-%20Pointers%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22INC2015F%20-%20Pointers%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>INC2015F - Pointers</h1>
+<h2>题目描述</h2>
+<div>You are given an R rows x C columns grid map where each cell contains an arrow (one of the following: '^', '>', '<', or 'v'). If one stands on a cell, then he/she has to go to the neighbouring cell pointed by the arrow in the cell where he/she stands. Supposed you are at cell (r, c) – row r and column c, then:
+- '^' means you should go to cell (r-1, c).
+- '>' means you should go to cell (r, c+1).
+- '<' means you should go to cell (r, c-1).
+- 'v' means you should go to cell (r+1, c).
+If the new cell is out of the grid map, then you fall out of the map.
+Your task is to modify the arrows, such that if you start from any cell in the map and follow the arrows, then you will get back to the starting point. Determine the minimum number of arrows that you will have to change.
+For example, consider the following map of 4 x 2.
+\>v
+v<
+\>v
+\><
+There are several ways to accomplish our goal; here are 3 solution examples:
+\>< v< >v
+\>< v^ ^<
+\>< v^ ><
+\>< >^ ><
+In the first solution example, we have to change 3 arrows: {(1, 2), (2, 1), (3, 2)}. In the second one, we have to change 6 arrows: {(1, 1), (1, 2), (2, 2), (3, 1), (3, 2), (4, 2)}. In the last one, we have to change 2 arrows: {(2, 1), (3, 2)}. There are many other solution examples, but among those, the minimum number of arrows you need to change is 2 (as in solution example 3).
+If the new cell is out of the grid map, then you fall out of the map.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains an integer T (T</div>
+<h3>输出格式</h3>
+<br />
+<div>For each case, output in a line "Case #X: Y" where X is the case number, starts from 1. and Y is the minimum number of arrows you need to change to accomplish the given goal. Output -1 for Y, if it's not possible to do so.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>4
+4 2
+&amp;gt;v
+v&amp;lt;
+&amp;gt;v
+&amp;gt;&amp;lt;
+3 4
+v&amp;lt;&amp;gt;v
+v^^v
+&amp;gt;^^&amp;lt;
+3 4
+v&amp;lt;&amp;lt;&amp;lt;
+v^v&amp;lt;
+&amp;gt;&amp;gt;&amp;gt;^
+1 2
+&amp;gt;&amp;gt;</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case #1: 2
+Case #2: 0
+Case #3: 2
+Case #4: 1</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

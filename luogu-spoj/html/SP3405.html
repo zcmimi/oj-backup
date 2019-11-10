@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SAMER08A - Almost Shortest Path - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449798:EkAdJn7ig4nUBrWs/SbjTOuWsn9QLs4mmfCQw7CteJM=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Finding%20the%20shortest%20path%20that%20goes%20from%20a%20starting%20point%20to%20a%20destination%20point%20given%20a%20set%20of%20points%20and%20route%20lengths%20connecting%20them%20is%20an%20already%20well%20known%20problem%2C%20and%20it%27s%20even%20part%20of%20our%20daily%20lives%2C%20as%20shortest%20path%20programs%20are%20widely%20available%20nowadays.%20%20%5Cn%20%20%5Cn%20Most%20people%20usually%20like%20very%20much%20these%20applications%20as%20they%20make%20their%20lives%20easier.%20Well%2C%20maybe%20not%20that%20much%20easier.%20%20%5Cn%20%20%5Cn%20Now%20that%20almost%20everyone%20can%20have%20access%20to%20GPS%20navigation%20devices%20able%20to%20calculate%20shortest%20paths%2C%20most%20routes%20that%20form%20the%20shortest%20path%20are%20getting%20slower%20because%20of%20heavy%20traffic.%20As%20most%20people%20try%20to%20follow%20the%20same%20path%2C%20it%27s%20not%20worth%20it%20anymore%20to%20follow%20these%20directions.%20%20%5Cn%20%20%5Cn%20With%20this%20in%20his%20mind%2C%20your%20boss%20asks%20you%20to%20develop%20a%20new%20application%20that%20only%20he%20will%20have%20access%20to%2C%20thus%20saving%20him%20time%20whenever%20he%20has%20a%20meeting%20or%20any%20urgent%20event.%20He%20asks%20you%20that%20the%20program%20must%20answer%20not%20the%20shortest%20path%2C%20but%20the%20almost%20shortest%20path.%20He%20defines%20the%20almost%20shortest%20path%20as%20the%20shortest%20path%20that%20goes%20from%20a%20starting%20point%20to%20a%20destination%20point%20such%20that%20no%20route%20between%20two%20consecutive%20points%20belongs%20to%20any%20shortest%20path%20from%20the%20starting%20point%20to%20the%20destination.%20%20%5Cn%20%20%5Cn%20For%20example%2C%20suppose%20the%20figure%20below%20represents%20the%20map%20given%2C%20with%20circles%20representing%20location%20points%2C%20and%20lines%20representing%20direct%2C%20one-way%20routes%20with%20lengths%20indicated.%20The%20starting%20point%20is%20marked%20as%20S%20and%20the%20destination%20point%20is%20marked%20as%20D.%20The%20bold%20lines%20belong%20to%20a%20shortest%20path%20%28in%20this%20case%20there%20are%20two%20shortest%20paths%2C%20each%20with%20total%20length%204%29.%20Thus%2C%20the%20almost%20shortest%20path%20would%20be%20the%20one%20indicated%20by%20dashed%20lines%20%28total%20length%205%29%2C%20as%20no%20route%20between%20two%20consecutive%20points%20belongs%20to%20any%20shortest%20path.%20Notice%20that%20there%20could%20exist%20more%20than%20one%20possible%20answer%2C%20for%20instance%20if%20the%20route%20with%20length%203%20had%20length%201.%20There%20could%20exist%20no%20possible%20answer%20as%20well.%5Cn%5Cn%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP3405%5C%2F2b874d97913ca10482abe72aaebd45aa5420e856.png%29%22%2C%22inputFormat%22%3A%22The%20input%20contains%20several%20test%20cases.%20The%20first%20line%20of%20a%20test%20case%20contains%20two%20integers%20_N_%20%282%20N%20M%20%281%20M%20N%20-1.%20The%20second%20line%20contains%20two%20integers%20_S_%20and%20_D_%2C%20separated%20by%20a%20single%20space%2C%20indicating%20respectively%20the%20starting%20and%20the%20destination%20points%20%28_S_%20%5Cu2260%20_D_%3B%200%20S%2C%20_D_%20%3C%20_N_%29.%20%20%20%5Cn%20%20%5Cn%20Each%20one%20of%20the%20following%20_M_%20lines%20contains%20three%20integers%20_U_%2C%20_V_%20and%20_P_%20%28_U_%20%5Cu2260%20_V_%3B%200%20U%2C%20_V_%20%3C%20_N_%3B%201%20P%20U%20to%20_V_%20with%20distance%20_P_.%20There%20is%20at%20most%20one%20route%20from%20a%20given%20point%20_U_%20to%20a%20given%20point%20_V_%2C%20but%20notice%20that%20the%20existence%20of%20a%20route%20from%20_U_%20to%20_V_%20does%20not%20imply%20there%20is%20a%20route%20from%20_V_%20to%20_U_%2C%20and%2C%20if%20such%20road%20exists%2C%20it%20can%20have%20a%20different%20length.%20The%20end%20of%20input%20is%20indicated%20by%20a%20line%20containing%20only%20two%20zeros%20separated%20by%20a%20single%20space.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%20in%20the%20input%2C%20your%20program%20must%20print%20a%20single%20line%2C%20containing%20-1%20if%20it%20is%20not%20possible%20to%20match%20the%20requirements%2C%20or%20an%20integer%20representing%20the%20length%20of%20the%20almost%20shortest%20path%20found.%22%2C%22samples%22%3A%5B%5B%227%209%5Cr%5Cn0%206%5Cr%5Cn0%201%201%5Cr%5Cn0%202%201%5Cr%5Cn0%203%202%5Cr%5Cn0%204%203%5Cr%5Cn1%205%202%5Cr%5Cn2%206%204%5Cr%5Cn3%206%202%5Cr%5Cn4%206%204%5Cr%5Cn5%206%201%5Cr%5Cn4%206%5Cr%5Cn0%202%5Cr%5Cn0%201%201%5Cr%5Cn1%202%201%5Cr%5Cn1%203%201%5Cr%5Cn3%202%201%5Cr%5Cn2%200%203%5Cr%5Cn3%200%202%5Cr%5Cn6%208%5Cr%5Cn0%201%5Cr%5Cn0%201%201%5Cr%5Cn0%202%202%5Cr%5Cn0%203%203%5Cr%5Cn2%205%203%5Cr%5Cn3%204%202%5Cr%5Cn4%201%201%5Cr%5Cn5%201%201%5Cr%5Cn3%200%201%5Cr%5Cn0%200%22%2C%225%5Cr%5Cn-1%5Cr%5Cn6%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B199%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3405%22%2C%22id%22%3A%223405%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP3405%22%2C%22title%22%3A%22SAMER08A%20-%20Almost%20Shortest%20Path%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SAMER08A%20-%20Almost%20Shortest%20Path%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SAMER08A - Almost Shortest Path</h1>
+<h2>题目描述</h2>
+<div>Finding the shortest path that goes from a starting point to a destination point given a set of points and route lengths connecting them is an already well known problem, and it's even part of our daily lives, as shortest path programs are widely available nowadays.
+Most people usually like very much these applications as they make their lives easier. Well, maybe not that much easier.
+Now that almost everyone can have access to GPS navigation devices able to calculate shortest paths, most routes that form the shortest path are getting slower because of heavy traffic. As most people try to follow the same path, it's not worth it anymore to follow these directions.
+With this in his mind, your boss asks you to develop a new application that only he will have access to, thus saving him time whenever he has a meeting or any urgent event. He asks you that the program must answer not the shortest path, but the almost shortest path. He defines the almost shortest path as the shortest path that goes from a starting point to a destination point such that no route between two consecutive points belongs to any shortest path from the starting point to the destination.
+For example, suppose the figure below represents the map given, with circles representing location points, and lines representing direct, one-way routes with lengths indicated. The starting point is marked as S and the destination point is marked as D. The bold lines belong to a shortest path (in this case there are two shortest paths, each with total length 4). Thus, the almost shortest path would be the one indicated by dashed lines (total length 5), as no route between two consecutive points belongs to any shortest path. Notice that there could exist more than one possible answer, for instance if the route with length 3 had length 1. There could exist no possible answer as well.
+![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP3405/2b874d97913ca10482abe72aaebd45aa5420e856.png)</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input contains several test cases. The first line of a test case contains two integers _N_ (2 N M (1 M N -1. The second line contains two integers _S_ and _D_, separated by a single space, indicating respectively the starting and the destination points (_S_ ≠ _D_; 0 S, _D_ < _N_).
+Each one of the following _M_ lines contains three integers _U_, _V_ and _P_ (_U_ ≠ _V_; 0 U, _V_ < _N_; 1 P U to _V_ with distance _P_. There is at most one route from a given point _U_ to a given point _V_, but notice that the existence of a route from _U_ to _V_ does not imply there is a route from _V_ to _U_, and, if such road exists, it can have a different length. The end of input is indicated by a line containing only two zeros separated by a single space.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case in the input, your program must print a single line, containing -1 if it is not possible to match the requirements, or an integer representing the length of the almost shortest path found.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>7 9
+0 6
+0 1 1
+0 2 1
+0 3 2
+0 4 3
+1 5 2
+2 6 4
+3 6 2
+4 6 4
+5 6 1
+4 6
+0 2
+0 1 1
+1 2 1
+1 3 1
+3 2 1
+2 0 3
+3 0 2
+6 8
+0 1
+0 1 1
+0 2 2
+0 3 3
+2 5 3
+3 4 2
+4 1 1
+5 1 1
+3 0 1
+0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>5
+-1
+6</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

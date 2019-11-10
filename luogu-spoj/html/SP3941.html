@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MKTHPATH - Kth Shortest Path - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449839:hy4JbDEXG79Gqrj/Ud9Fzip+nRkewsvTyNo3CQEFGVQ=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20%5BEnglish%5D%28%5C%2Fproblems%5C%2FMKTHPATH%5C%2Fen%5C%2F%29%20%5BVietnamese%5D%28%5C%2Fproblems%5C%2FMKTHPATH%5C%2Fvn%5C%2F%29%20%60%60%60%5CnIsaac%20is%20tired%20of%20his%20daily%20trip%20to%20his%20office%2C%20using%20the%20same%20shortest%20route%20everyday.%20%5CnAlthough%20this%20saves%20his%20time%2C%20he%20must%20see%20the%20same%20scenery%20again%5Cnand%20again.%20He%20cannot%20stand%20such%20a%20boring%20commutation%20any%20more.%20%5Cn%5CnOne%20day%2C%20he%20decided%20to%20improve%20the%20situation.%20He%20would%20change%20his%20route%20%5Cneveryday%20at%20least%20slightly.%20His%20new%20scheme%20is%20as%20follows.%20On%20the%20first%20day%2C%20%5Cnhe%20uses%20the%20shortest%20route.%20On%20the%20second%20day%2C%20he%20uses%20the%20second%20shortest%5Cnroute%2C%20namely%20the%20shortest%20except%20one%20used%20on%20the%20first%20day.%20In%20general%2C%20%5Cnon%20the%20k-th%20day%2C%20the%20k-th%20shortest%20route%20is%20chosen.%20Visiting%20the%20same%20%5Cnplace%20twice%20on%20a%20route%20should%20be%20avoided%2C%20of%20course.%5Cn%5CnYou%20are%20invited%20to%20help%20Isaac%2C%20by%20writing%20a%20program%20which%20finds%20his%20route%5Cnon%20the%20k-th%20day.%20The%20problem%20is%20easily%20modeled%20using%20terms%20in%20the%20%5Cngraph%20theory.%20Your%20program%20should%20find%20the%20k-th%20shortest%20path%20in%20the%20given%20directed%20graph.%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%60%60%60%5CnThe%20input%20consists%20of%20multiple%20datasets%2C%20each%20in%20the%20following%20format.%5Cn%5Cn%20%20%20%20n%5Ctm%5Ctk%5Cta%5Ctb%5Cn%20%20%20%20x1%5Cty1%5Ctd1%5Ct%5Cn%20%20%20%20x2%5Cty2%5Ctd2%5Cn%5Cn%20%20%20%20%5Cu2026%5Cn%20%20%20%20xm%5Ctym%5Ctdm%5Cn%5CnEvery%20input%20item%20in%20a%20dataset%20is%20a%20non-negative%20integer.%20Two%20or%20more%20input%5Cnitems%20in%20a%20line%20are%20separated%20by%20a%20space.%5Cn%5Cnn%20is%20the%20number%20of%20nodes%20in%20the%20graph.%20You%20can%20assume%20the%20inequality%202%20%5Cn%60%60%60%22%2C%22outputFormat%22%3A%22%60%60%60%5Cn%20%5CnFor%20each%20dataset%20in%20the%20input%2C%20one%20line%20should%20be%20output%20as%20specified%20below.%5CnAn%20output%20line%20should%20not%20contain%20extra%20characters%20such%20as%20spaces.%5Cn%5CnIf%20the%20number%20of%20distinct%20paths%20from%20a%20to%20b%20is%20less%20than%20k%2C%20the%20string%20%5C%22None%5C%22%20%5Cnshould%20be%20printed.%20Note%20that%20the%20first%20letter%20of%20None%20is%20in%20uppercase%2C%20%5Cnwhile%20the%20other%20letters%20are%20in%20lowercase.%5Cn%5CnIf%20the%20number%20of%20distinct%20paths%20from%20a%20to%20b%20is%20k%20or%20more%2C%20the%20node%20numbers%20%5Cnvisited%20in%20the%20k-th%20shortest%20path%20should%20be%20printed%20in%20the%20visited%20order%2C%20%5Cnseparated%20by%20a%20hyphen%20%28minus%20sign%29.%20Note%20that%20a%20must%20be%20the%20first%2C%20%5Cnand%20b%20must%20be%20the%20last%20in%20the%20printed%20line.%5Cn%5CnIn%20this%20problem%20the%20term%20shorter%20%28thus%20shortest%20also%29%20has%20a%20special%20meaning.%20%5CnA%20path%20P%20is%20defined%20to%20be%20shorter%20than%20Q%2C%20if%20and%20only%20if%20one%20of%20the%20following%5Cnconditions%20holds.%5Cn%5Cn%20%20%201.%20The%20length%20of%20P%20is%20less%20than%20the%20length%20of%20Q.%20The%20length%20of%20a%20path%20%5Cnis%20defined%20to%20be%20the%20sum%20of%20lengths%20of%20edges%20on%20the%20path.%5Cn%20%20%202.%20The%20length%20of%20P%20is%20equal%20to%20the%20length%20of%20Q%2C%20and%20P%5Cu2019s%20sequence%20of%5Cnnode%20numbers%20comes%20earlier%20than%20Q%5Cu2019s%20in%20the%20dictionary%20order.%20Let%5Cu2019s%20specify%20%5Cnthe%20latter%20condition%20more%20precisely.%20Denote%20P%5Cu2019s%20sequence%20%5Cnof%20node%20numbers%20by%20%5Cnp1%2C%20p2%2C%20%5Cu2026%2C%20ps%2C%20and%20Q%5Cu2019s%20by%20q1%2C%20q2%2C%20%5Cu2026%2C%20qt.%20p1%20%3D%20q1%20%3D%20a%20and%20ps%20%3D%20qt%20%3D%20b%20should%5Cnbe%20observed.%20The%20sequence%20P%20comes%20earlier%20than%20Q%20in%20the%20dictionary%20order%2C%20%5Cnif%20for%20some%20r%20%281%20%5Cn%60%60%60%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B600%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3941%22%2C%22id%22%3A%223941%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP3941%22%2C%22title%22%3A%22MKTHPATH%20-%20Kth%20Shortest%20Path%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22MKTHPATH%20-%20Kth%20Shortest%20Path%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>MKTHPATH - Kth Shortest Path</h1>
+<h2>题目描述</h2>
+<div> [English](/problems/MKTHPATH/en/) [Vietnamese](/problems/MKTHPATH/vn/) ```
+Isaac is tired of his daily trip to his office, using the same shortest route everyday.
+Although this saves his time, he must see the same scenery again
+and again. He cannot stand such a boring commutation any more.
+One day, he decided to improve the situation. He would change his route
+everyday at least slightly. His new scheme is as follows. On the first day,
+he uses the shortest route. On the second day, he uses the second shortest
+route, namely the shortest except one used on the first day. In general,
+on the k-th day, the k-th shortest route is chosen. Visiting the same
+place twice on a route should be avoided, of course.
+You are invited to help Isaac, by writing a program which finds his route
+on the k-th day. The problem is easily modeled using terms in the
+graph theory. Your program should find the k-th shortest path in the given directed graph.
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>```
+The input consists of multiple datasets, each in the following format.
+n m k a b
+x1 y1 d1
+x2 y2 d2
+…
+xm ym dm
+Every input item in a dataset is a non-negative integer. Two or more input
+items in a line are separated by a space.
+n is the number of nodes in the graph. You can assume the inequality 2
+```</div>
+<h3>输出格式</h3>
+<br />
+<div>```
+For each dataset in the input, one line should be output as specified below.
+An output line should not contain extra characters such as spaces.
+If the number of distinct paths from a to b is less than k, the string "None"
+should be printed. Note that the first letter of None is in uppercase,
+while the other letters are in lowercase.
+If the number of distinct paths from a to b is k or more, the node numbers
+visited in the k-th shortest path should be printed in the visited order,
+separated by a hyphen (minus sign). Note that a must be the first,
+and b must be the last in the printed line.
+In this problem the term shorter (thus shortest also) has a special meaning.
+A path P is defined to be shorter than Q, if and only if one of the following
+conditions holds.
+1. The length of P is less than the length of Q. The length of a path
+is defined to be the sum of lengths of edges on the path.
+2. The length of P is equal to the length of Q, and P’s sequence of
+node numbers comes earlier than Q’s in the dictionary order. Let’s specify
+the latter condition more precisely. Denote P’s sequence
+of node numbers by
+p1, p2, …, ps, and Q’s by q1, q2, …, qt. p1 = q1 = a and ps = qt = b should
+be observed. The sequence P comes earlier than Q in the dictionary order,
+if for some r (1
+```</div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

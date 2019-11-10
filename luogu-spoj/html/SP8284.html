@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>WEIGHT - Weighted Sum - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450086:62quEOlDKBJ7X4akEB4cMWzr0xG6OxaxHKHOwoeBct4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22You%20are%20given%20N%20integers%2C%20A%5C%5C%5B1%5C%5C%5D%20to%20A%5C%5C%5BN%5C%5C%5D.%20You%20have%20to%20assign%20weights%20to%20these%20integers%20such%20that%20their%20weighted%20sum%20is%20maximized.%20The%20weights%20should%20satisfy%20the%20following%20conditions%20%3A%5Cn%5Cn1.%20Each%20weight%20should%20be%20an%20positive%20integer.%5Cn2.%20W%5C%5C%5B1%5C%5C%5D%20%3D%201%5Cn3.%20W%5C%5C%5Bi%5C%5C%5D%20should%20be%20in%20the%20range%20%5C%5C%5B2%2C%20W%5C%5C%5Bi-1%5C%5C%5D%20%2B%201%5C%5C%5D%20for%20i%20%3E%201%5Cn%5CnWeighted%20sum%20is%20defined%20as%20S%20%3D%20A%5C%5C%5B1%5C%5C%5D%20%5C%5C%2A%20W%5C%5C%5B1%5C%5C%5D%20%2B%20A%5C%5C%5B2%5C%5C%5D%20%5C%5C%2A%20W%5C%5C%5B2%5C%5C%5D%20%2B%20...%20%2B%20A%5C%5C%5BN%5C%5C%5D%20%5C%5C%2A%20W%5C%5C%5BN%5C%5C%5D%22%2C%22inputFormat%22%3A%22There%20are%20multiple%20test%20cases.%20%20%20%5Cn%20First%20line%20contains%20the%20number%20of%20test%20cases%20%20%20%5Cn%20Each%20test%20case%20consists%20of%20a%20single%20line%20containing%20N.%20%20%20%5Cn%20This%20is%20followed%20by%20N%20lines%2C%20each%20containing%20A%5C%5C%5Bi%5C%5C%5D%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20one%20line%20-%20the%20maximum%20weighted%20sum.%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn1%20%5C%5Cn4%20%5C%5Cn1%20%5C%5Cn2%20%5C%5Cn3%20%5C%5Cn-4%5C%5Cn%22%2C%226%5C%5CnExplanation%5C%5CnThe%20weights%20are%201%2C2%2C3%2C2%5C%5Cn%5C%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B280%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F8284%22%2C%22id%22%3A%228284%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu610f%5Cu63cf%5Cu8ff0%5Cn%5Cn%5Cu7ed9%5Cu51fa%5Cu957f%5Cu5ea6%5Cu4e3an%28n%3C%3D1e6%29%5Cu7684%5Cu5e8f%5Cu5217A%5Cuff0c%20A%5Cu4e2d%5Cu5143%5Cu7d20%5Cu53ef%5Cu80fd%5Cu4e3a%5Cu6b63%5Cu6570%5Cuff0c%5Cu53ef%5Cu4e3a%5Cu8d1f%5Cu6570%5Cu62160%5Cuff0c%5Cu3002%5Cu8ba9%5Cu4f60%5Cu6784%5Cu9020%5Cu4e00%5Cu4e2a%5Cu957f%5Cu5ea6%5Cu4e3an%5Cu7684%5Cu5e8f%5Cu5217W%5Cuff0c%5Cu7ed9%5Cu8fd9%5Cu4e9b%5Cu6574%5Cu6570A%5Cu8d4b%5Cu6743%5Cuff0c%5Cu4f7f%5Cu5b83%5Cu4eec%5Cu7684%5Cu52a0%5Cu6743%5Cu548c%5Cu6700%5Cu5927%5Cu5316%5Cu3002%5Cu6743%5Cu91cdW%5Cu5e94%5Cu6ee1%5Cu8db3%5Cu4ee5%5Cu4e0b%5Cu6761%5Cu4ef6%5Cuff1a%5Cn%5Cn-%20%5Cu6bcf%5Cu4e2a%5Cu6743%5Cu91cd%5Cu90fd%5Cu5e94%5Cu8be5%5Cu662f%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570%5Cu3002%28W%5Cu4e2d%5Cu6bcf%5Cu4e2a%5Cu5143%5Cu7d20%5Cu90fd%5Cu662f%5Cu6b63%5Cu6570%29%5Cn%5Cn-%20W%5B1%5D%3D1%5Cn%5Cn-%20%5Cu5bf9%5Cu4e8ei%3E1%5Cuff0cW%5Bi%5D%5Cu5e94%5Cu5728%5Cu8303%5Cu56f4%5B2%5Cuff0cW%5Bi-1%5D%2B1%5D%5Cu5185%5Cu3002%28%5CnW%5Bi%5D%20%5Cu2208%5B2%2CW%5Bi-1%5D%2B1%5D%20%28i%3E1%29%29%5Cn%5Cn%5Cu8ba9%5Cu4f60%5Cu6784%5Cu9020%5Cu4e00%5Cu4e2a%5Cu6ee1%5Cu8db3%5Cu8fd9%5Cu6837%5Cu6761%5Cu4ef6%5Cu7684%5Cu5e8f%5Cu5217W%5Cuff0c%20%5Cu4f7f%5Cu5f97%5Cu03a3A%5Bi%5D%5Cu00d7W%5Bi%5D%5Cu6700%5Cu5927%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu6709%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cu3002%5Cn%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu6570%5Cu636e%5Cu7ec4%5Cu6570%5Cn%5Cn%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu7b2c%5Cu4e00%5Cu884c%5Cu4e3an%5Cuff0c%5Cn%5Cn%5Cu540e%5Cu9762%5Cu662fn%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e00%5Cu4e2aA%5Bi%5D%5Cn%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cuff1a%5Cu6700%5Cu5927%5Cu52a0%5Cu6743%5Cu548c%5Cuff1b%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu6837%5Cu4f8b%5Cn%20%5Cn%5Cn%60%60%60%5Cn1%5Cn4%5Cn1%5Cn2%5Cn3%5Cn-4%5Cn%60%60%60%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu6837%5Cu4f8b%5Cn%5Cn%60%60%60%5Cn6%5Cn%60%60%60%5Cn%5Cn%5Cu7ffb%5Cu8bd1%5Cuff1a%5BSo_what%5D%28https%3A%5C%2F%5C%2Fwww.luogu.org%5C%2Fspace%5C%2Fshow%3Fuid%3D68706%29%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A8%2C%22totalAccepted%22%3A4%2C%22pid%22%3A%22SP8284%22%2C%22title%22%3A%22WEIGHT%20-%20Weighted%20Sum%22%2C%22difficulty%22%3A4%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22WEIGHT%20-%20Weighted%20Sum%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>WEIGHT - Weighted Sum</h1>
+<h2>题意翻译</h2>
+<div>## 题意描述
+给出长度为n(n<=1e6)的序列A， A中元素可能为正数，可为负数或0，。让你构造一个长度为n的序列W，给这些整数A赋权，使它们的加权和最大化。权重W应满足以下条件：
+- 每个权重都应该是一个正整数。(W中每个元素都是正数)
+- W[1]=1
+- 对于i>1，W[i]应在范围[2，W[i-1]+1]内。(
+W[i] ∈[2,W[i-1]+1] (i>1))
+让你构造一个满足这样条件的序列W， 使得ΣA[i]×W[i]最大
+## 输入格式
+有多组数据。
+第一行数据组数
+每组数据第一行为n，
+后面是n行，每行一个A[i]
+## 输出格式
+对于每组数据，输出一行：最大加权和；
+### 输入样例
+```
+1
+4
+1
+2
+3
+-4
+```
+### 输出样例
+```
+6
+```
+翻译：[So_what](https://www.luogu.org/space/show?uid=68706)</div>
+<h2>题目描述</h2>
+<div>You are given N integers, A\[1\] to A\[N\]. You have to assign weights to these integers such that their weighted sum is maximized. The weights should satisfy the following conditions :
+1. Each weight should be an positive integer.
+2. W\[1\] = 1
+3. W\[i\] should be in the range \[2, W\[i-1\] + 1\] for i > 1
+Weighted sum is defined as S = A\[1\] \* W\[1\] + A\[2\] \* W\[2\] + ... + A\[N\] \* W\[N\]</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>There are multiple test cases.
+First line contains the number of test cases
+Each test case consists of a single line containing N.
+This is followed by N lines, each containing A\[i\]</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output one line - the maximum weighted sum.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n1 \n4 \n1 \n2 \n3 \n-4\n</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>6\nExplanation\nThe weights are 1,2,3,2\n\n</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

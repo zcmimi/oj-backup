@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>RESTACK - Restacking haybales 2012 - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450255:Bd8dzcXwdYC1mkGW0pGi/kdlMO3OAwXeHQkjEeyBLKk=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Farmer%20John%20has%20just%20ordered%20a%20large%20number%20of%20bales%20of%20hay.%20He%20would%20like%20%20%5Cnto%20organize%20these%20into%20N%20piles%20%281%20%3C%3D%20N%20%3C%3D%20100%2C000%29%20arranged%20in%20a%20circle%2C%20%20%5Cnwhere%20pile%20i%20contains%20B%5C%5C_i%20bales%20of%20hay.%20Unfortunately%2C%20the%20truck%20driver%20%20%5Cndelivering%20the%20hay%20was%20not%20listening%20carefully%20when%20Farmer%20John%20provided%20%20%5Cnthis%20information%2C%20and%20only%20remembered%20to%20leave%20the%20hay%20in%20N%20piles%20arranged%20%20%5Cnin%20a%20circle.%20After%20delivery%2C%20Farmer%20John%20notes%20that%20pile%20i%20contains%20A%5C%5C_i%20%20%5Cnbales%20of%20hay.%20Of%20course%2C%20the%20A%5C%5C_i%27s%20and%20the%20B%5C%5C_i%27s%20have%20the%20same%20sum.%5Cn%5CnFarmer%20John%20would%20like%20to%20move%20the%20bales%20of%20hay%20from%20their%20current%20%20%5Cnconfiguration%20%28described%20by%20the%20A%5C%5C_i%27s%29%20into%20his%20desired%20target%20%20%5Cnconfiguration%20%28described%20by%20the%20B%5C%5C_i%27s%29.%20It%20takes%20him%20x%20units%20of%20work%20to%20%20%5Cnmove%20one%20hay%20bale%20from%20one%20pile%20to%20a%20pile%20that%20is%20x%20steps%20away%20around%20the%20%20%5Cncircle.%20Please%20help%20him%20compute%20the%20minimum%20amount%20of%20work%20he%20will%20need%20to%20%20%5Cnspend.%22%2C%22inputFormat%22%3A%22%5C%5C%2A%20Line%201%3A%20The%20single%20integer%20N.%5Cn%5Cn%5C%5C%2A%20Lines%202..1%2BN%3A%20Line%20i%2B1%20contains%20the%20two%20integers%20A%5C%5C_i%20and%20B%5C%5C_i%20%281%20%3C%3D%20%20%5Cn%20A%5C%5C_i%2C%20B%5C%5C_i%20%3C%3D%201000%29.%5Cn%5CnExample%3A%5Cn%5Cn4%20%20%5Cn7%201%20%20%5Cn3%204%20%20%5Cn9%202%20%20%5Cn1%2013%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B230%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F11117%22%2C%22id%22%3A%2211117%22%7D%2C%22translation%22%3A%22%2A%2A%5Cu3010%5Cu9898%5Cu76ee%5Cu6765%5Cu6e90%5Cu3011%2A%2A%5Cr%5Cn%5Cr%5Cn%5CtUsaco-2012-Mar%5Cr%5Cn%2A%2A%5Cu3010%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cu3011%2A%2A%5Cr%5Cn%5Cr%5Cn%5Ct%20%20FJ%5Cu4e70%5Cu4e86%5Cu4e00%5Cu4e9b%5Cu5e72%5Cu8349%5Cu5806%5Cuff0c%5Cu4ed6%5Cu60f3%5Cu628a%5Cu8fd9%5Cu4e9b%5Cu5e72%5Cu8349%5Cu5806%5Cu5206%5Cu6210N%5Cu5806%281%3C%3DN%3C%3D100%2C000%29%5Cu6446%5Cu6210%5Cu4e00%5Cu5708%5Cuff0c%5Cu5176%5Cu4e2d%5Cu7b2ci%5Cu5806%5Cu6709B_i%5Cu6570%5Cu91cf%5Cu7684%5Cu5e72%5Cu8349%5Cu3002%5Cu4e0d%5Cu5e78%5Cu7684%5Cu662f%5Cuff0c%5Cu8d1f%5Cu8d23%5Cu8fd0%5Cu8d27%5Cu7684%5Cu53f8%5Cu673a%5Cu7531%5Cu4e8e%5Cu6ca1%5Cu6709%5Cu542c%5Cu6e05FJ%5Cu7684%5Cu8981%5Cu6c42%5Cuff0c%5Cu53ea%5Cu8bb0%5Cu4f4f%5Cu5206%5Cu6210N%5Cu5806%5Cu6446%5Cu6210%5Cu4e00%5Cu5708%5Cu8fd9%5Cu4e2a%5Cu8981%5Cu6c42%5Cuff0c%5Cu800c%5Cu6bcf%5Cu4e00%5Cu5806%5Cu7684%5Cu6570%5Cu91cf%5Cu5374%5Cu662fA_i%281%3C%3Di%3C%3DN%29%5Cu3002%5Cu5f53%5Cu7136A_i%5Cu7684%5Cu603b%5Cu548c%5Cu80af%5Cu5b9a%5Cu7b49%5Cu4e8eB_i%5Cu7684%5Cu603b%5Cu548c%5Cu3002%5Cr%5Cn%5Ct%20%20FJ%5Cu53ef%5Cu4ee5%5Cu901a%5Cu8fc7%5Cu79fb%5Cu52a8%5Cu5e72%5Cu8349%5Cu6765%5Cu8fbe%5Cu5230%5Cu8981%5Cu6c42%5Cuff0c%5Cu5373%5Cu4f7f%5Cu5f97A_i%3DB_i%5Cuff0c%5Cu5df2%5Cu77e5%5Cu628a%5Cu4e00%5Cu4e2a%5Cu5e72%5Cu8349%5Cu79fb%5Cu52a8x%5Cu6b65%5Cu9700%5Cu8981%5Cu6d88%5Cu8017x%5Cu6570%5Cu91cf%5Cu7684%5Cu4f53%5Cu529b%5Cuff0c%5Cu76f8%5Cu90bb%5Cu4e24%5Cu4e2a%5Cu5e72%5Cu8349%5Cu5806%5Cu4e4b%5Cu95f4%5Cu7684%5Cu6b65%5Cu6570%5Cu4e3a1%5Cu3002%5Cr%5Cn%5Ct%20%20%5Cu8bf7%5Cu5e2e%5Cu52a9FJ%5Cu8ba1%5Cu7b97%5Cu6700%5Cu5c11%5Cu9700%5Cu8981%5Cu6d88%5Cu8017%5Cu591a%5Cu5c11%5Cu4f53%5Cu529b%5Cu624d%5Cu80fd%5Cu5b8c%5Cu6210%5Cu4efb%5Cu52a1%5Cu3002%5Cr%5Cn%2A%2A%5Cu3010%5Cu8f93%5Cu5165%5Cu3011%2A%2A%5Cr%5Cn%5Cr%5Cn%5Ct%20%20%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570N%5Cu3002%5Cr%5Cn%5Ct%20%20%5Cu63a5%5Cu4e0b%5Cu6765N%5Cu884c%5Cuff0c%5Cu6bcf%5Cu884c%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu5176%5Cu4e2d%5Cu7b2ci%2B1%5Cu884c%5Cu63cf%5Cu8ff0A_i%5Cu548cB_i%281%3C%3DA_i%2CB_i%3C%3D1000%29%5Cu3002%5Cr%5Cn%2A%2A%5Cu3010%5Cu8f93%5Cu51fa%5Cu3011%2A%2A%5Cr%5Cn%5Cr%5Cn%5Ct%20%20%20%20%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6570%5Cu8868%5Cu793a%5Cu6700%5Cu5c11%5Cu9700%5Cu8981%5Cu6d88%5Cu8017%5Cu7684%5Cu4f53%5Cu529b%5Cu3002%5Cr%5Cn%2A%2A%5Cu3010%5Cu6837%5Cu4f8b%5Cu8bf4%5Cu660e%5Cu3011%2A%2A%5Cr%5Cn%5Cr%5Cn%5Ct%20%20%20%20%5Cu4ece%5Cu7b2c1%5Cu5806%5Cu4e2d%5Cu79fb%5Cu52a86%5Cu4e2a%5Cu5e72%5Cu8349%5Cu5230%5Cu7b2c4%5Cu5806%5Cuff0c%5Cu4ece%5Cu7b2c3%5Cu5806%5Cu4e2d%5Cu79fb%5Cu52a81%5Cu4e2a%5Cu5e72%5Cu8349%5Cu5230%5Cu7b2c2%5Cu5806%5Cuff0c%5Cu4ece%5Cu7b2c3%5Cu5806%5Cu4e2d%5Cu79fb%5Cu52a86%5Cu4e2a%5Cu5e72%5Cu8349%5Cu5230%5Cu7b2c4%5Cu5806%5Cu4e2d%5Cu3002%22%2C%22tags%22%3A%5B12%2C273%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A29%2C%22totalAccepted%22%3A15%2C%22pid%22%3A%22SP11117%22%2C%22title%22%3A%22RESTACK%20-%20Restacking%20haybales%202012%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A81676%2C%22title%22%3A%22%5Cu521a%5Cu5b66OI%5Cuff0c%5Cu63a8%5Cu8350%5Cu4f60%5Cu4eec%5Cu7785%5Cu7785%5Cu8fd9%5Cu9053%5Cu5965%5Cu6570%5Cu9898qwq%5Cu89e3%5Cu6cd5%5Cu8d85%5Cu5999%5Cu7684qwq%22%2C%22forum%22%3A%7B%22id%22%3A14239%2C%22name%22%3A%22SP11117%20RESTACK%20-%20Restacking%20haybales%202012%22%2C%22slug%22%3A%22SP11117%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22RESTACK%20-%20Restacking%20haybales%202012%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>RESTACK - Restacking haybales 2012</h1>
+<h2>题意翻译</h2>
+<div>**【题目来源】**
+Usaco-2012-Mar
+**【题目描述】**
+FJ买了一些干草堆，他想把这些干草堆分成N堆(1<=N<=100,000)摆成一圈，其中第i堆有B_i数量的干草。不幸的是，负责运货的司机由于没有听清FJ的要求，只记住分成N堆摆成一圈这个要求，而每一堆的数量却是A_i(1<=i<=N)。当然A_i的总和肯定等于B_i的总和。
+FJ可以通过移动干草来达到要求，即使得A_i=B_i，已知把一个干草移动x步需要消耗x数量的体力，相邻两个干草堆之间的步数为1。
+请帮助FJ计算最少需要消耗多少体力才能完成任务。
+**【输入】**
+第一行输入一个整数N。
+接下来N行，每行两个整数，其中第i+1行描述A_i和B_i(1<=A_i,B_i<=1000)。
+**【输出】**
+输出一个数表示最少需要消耗的体力。
+**【样例说明】**
+从第1堆中移动6个干草到第4堆，从第3堆中移动1个干草到第2堆，从第3堆中移动6个干草到第4堆中。</div>
+<h2>题目描述</h2>
+<div>Farmer John has just ordered a large number of bales of hay. He would like
+to organize these into N piles (1 <= N <= 100,000) arranged in a circle,
+where pile i contains B\_i bales of hay. Unfortunately, the truck driver
+delivering the hay was not listening carefully when Farmer John provided
+this information, and only remembered to leave the hay in N piles arranged
+in a circle. After delivery, Farmer John notes that pile i contains A\_i
+bales of hay. Of course, the A\_i's and the B\_i's have the same sum.
+Farmer John would like to move the bales of hay from their current
+configuration (described by the A\_i's) into his desired target
+configuration (described by the B\_i's). It takes him x units of work to
+move one hay bale from one pile to a pile that is x steps away around the
+circle. Please help him compute the minimum amount of work he will need to
+spend.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>\* Line 1: The single integer N.
+\* Lines 2..1+N: Line i+1 contains the two integers A\_i and B\_i (1 <=
+A\_i, B\_i <= 1000).
+Example:
+4
+7 1
+3 4
+9 2
+1 13</div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>LWAR - Lethal Warfare - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449608:BNlx3xcdNW3Hj0aOLqsXjy/9Dwh9o6/7/MiFacaIQrg=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20major%20cosmic%20battle%20was%20getting%20over.%20The%20InterGalactic%20SuperPower%20had%20been%20under%20attack%2C%20but%20it%20had%20defended%20itself%20quite%20well.%20It%20was%20about%20to%20launch%20its%20final%20retaliatory%20assault.%20But%20the%20number%20of%20enemy%20ships%20was%20quite%20large%20and%20they%20could%20scatter%20very%20easily.%20Their%20only%20hope%2C%20or%20so%20their%20Space%20Warfare%20expert%20said%2C%20was%20to%20bomb%20the%20enemies%20%28who%20happened%20to%20be%20lined%20up%20in%20a%20long%20line%21%29%20using%20the%20strategy%20described%20below.%5Cn%5CnBecause%20the%20number%20of%20ships%20will%20be%20a%20power%20of%202%2C%20to%20bomb%20all%20the%20ships%20%28numbered%200%20to%202%20%24%20%5E%7BN%7D%20%24%20-1%29%2C%20the%20strategy%20to%20be%20used%2C%20which%20we%20will%20call%20%2A%2ABombStrat%2A%2A%2C%20goes%20like%20this%3A%20%20%5Cn%201.%20Bomb%20it%5Cu2019s%20first%20half%2C%20%5C%5C%5B0%20to%202%20%24%20%5E%7BN-1%7D%20%24%20-1%5C%5C%5D%2C%20in%20the%20left%20to%20right%20direction.%20%20%5Cn%202.%20Of%20the%20remaining%20half%2C%20bomb%20its%20latter%20half%20part%20in%20reverse%20direction%2C%20i.e.%2C%20bomb%20ships%202%20%24%20%5E%7BN%7D%20%24%20-1%2C%202%20%24%20%5E%7BN%7D%20%24%20-2%2C....%2C%202%20%24%20%5E%7BN-1%7D%20%24%20%2B2%20%24%20%5E%7BN-2%7D%20%24%20in%20that%20order.%20%20%5Cn%203.%20Then%20use%20%2A%2ABombStrat%2A%2A%20on%20the%20remaining%20ships%3A%20%5C%5C%5B2%20%24%20%5E%7BN-1%7D%20%24%20to%202%20%24%20%5E%7BN-1%7D%20%24%20%2B%202%20%24%20%5E%7BN-2%7D%20%24%20-1%20%5C%5C%5D%5Cn%5CnFor%20example%2C%20when%20N%3D3%2C%20i.e.%2C%20with%20ships%20numbered%20from%200%20to%202%20%24%20%5E%7B3%7D%20%24%20-1%2C%20this%20is%20what%20happens%3A%20%20%5Cn%20Step%201%3A%20Ships%200%2C1%2C2%2C3%20get%20bombed%20in%20that%20order.%20%20%5Cn%20Step%202%3A%20Ships%207%2C%206%20go%20down%20next.%20%20%5Cn%20Step%203%3A%20Now%2C%20the%20remaining%20ships%20%5C%5C%5B4%2C%205%5C%5C%5D%20are%20destroyed%20using%20the%20same%20strategy.%5Cn%5CnSo%20the%20bombing%20is%20done%20in%20the%20order%200%20-%3E%201%20-%3E%202%20-%3E%203%20-%3E%207%20-%3E%206%20-%3E%204%20-%3E%205.%20To%20make%20the%20job%20easier%20for%20the%20InterGalactic%20SuperPower%5Cu2019s%20ships%5Cu2019%20pilots%2C%20they%20want%20to%20find%20which%20ship%20should%20be%20bombed%20when.%20This%20is%20your%20task.%20Given%20N%2C%20and%20the%20description%20of%20a%20ship%2C%20return%20the%200-based%20serial%20number%20of%20the%20bomb%20will%20blast%20it.%22%2C%22inputFormat%22%3A%22T%20%5Cu2013%20the%20number%20of%20test%20cases%2C%20T%3C%3D50.%20%20%5Cn%20For%20each%20test%20case%3A%5Cn%5CnOne%20line%20containing%20a%20binary%20number%2C%20describing%20the%20number%20of%20the%20place.%20The%20length%20of%20this%20string%20will%20equal%20N%20%28it%20will%20be%20padded%20with%20leading%20zeroes%20if%20necessary%29.%20N%3C%3D30000.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20the%20index%20of%20a%20bomb%2C%20represented%20in%20the%20same%20format%2C%20as%20binary%20digits%2C%20whose%20length%20is%20exactly%20N.%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn%5Cr%5Cn%20%203%5C%5Cn%5Cr%5Cn%20%20111%5C%5Cn%5Cr%5Cn%20%20100%5C%5Cn%5Cr%5Cn%5Cr%5Cn%20%201100%22%2C%22%5C%5Cn%5Cr%5Cn%20%20100%5C%5Cn%5Cr%5Cn%20%20110%5C%5Cn%5Cr%5Cn%20%201011%5C%5Cn%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B449%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F693%22%2C%22id%22%3A%22693%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP693%22%2C%22title%22%3A%22LWAR%20-%20Lethal%20Warfare%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22LWAR%20-%20Lethal%20Warfare%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>LWAR - Lethal Warfare</h1>
+<h2>题目描述</h2>
+<div>A major cosmic battle was getting over. The InterGalactic SuperPower had been under attack, but it had defended itself quite well. It was about to launch its final retaliatory assault. But the number of enemy ships was quite large and they could scatter very easily. Their only hope, or so their Space Warfare expert said, was to bomb the enemies (who happened to be lined up in a long line!) using the strategy described below.
+Because the number of ships will be a power of 2, to bomb all the ships (numbered 0 to 2 $ ^{N} $ -1), the strategy to be used, which we will call **BombStrat**, goes like this:
+1. Bomb it’s first half, \[0 to 2 $ ^{N-1} $ -1\], in the left to right direction.
+2. Of the remaining half, bomb its latter half part in reverse direction, i.e., bomb ships 2 $ ^{N} $ -1, 2 $ ^{N} $ -2,...., 2 $ ^{N-1} $ +2 $ ^{N-2} $ in that order.
+3. Then use **BombStrat** on the remaining ships: \[2 $ ^{N-1} $ to 2 $ ^{N-1} $ + 2 $ ^{N-2} $ -1 \]
+For example, when N=3, i.e., with ships numbered from 0 to 2 $ ^{3} $ -1, this is what happens:
+Step 1: Ships 0,1,2,3 get bombed in that order.
+Step 2: Ships 7, 6 go down next.
+Step 3: Now, the remaining ships \[4, 5\] are destroyed using the same strategy.
+So the bombing is done in the order 0 -> 1 -> 2 -> 3 -> 7 -> 6 -> 4 -> 5. To make the job easier for the InterGalactic SuperPower’s ships’ pilots, they want to find which ship should be bombed when. This is your task. Given N, and the description of a ship, return the 0-based serial number of the bomb will blast it.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>T – the number of test cases, T<=50.
+For each test case:
+One line containing a binary number, describing the number of the place. The length of this string will equal N (it will be padded with leading zeroes if necessary). N<=30000.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output the index of a bomb, represented in the same format, as binary digits, whose length is exactly N.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n
+  3\n
+  111\n
+  100\n
+
+  1100</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>\n
+  100\n
+  110\n
+  1011\n</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

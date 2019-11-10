@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>PAIRSORT - Double Sorting - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449918:jhr+Fnhtybw9PCzxVVR+0dJcJsYxNBHDfrf/gj0Ah+U=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Here%20we%20describe%20a%20typical%20problem.%20There%20are%20_n_%20balls%20and%20_n_%20boxes.%20Each%20ball%20is%20labeled%20by%20a%20unique%20number%20from%201%20to%20_n_.%20Initially%20each%20box%20contains%20one%20of%20these%20balls.%20We%20can%20swap%20two%20balls%20in%20adjacent%20boxes.%20We%20are%20to%20sort%20these%20balls%20in%20increasing%20order%20by%20swaps%2C%20i.e.%20move%20the%20ball%20labeled%20by%201%20to%20the%20first%20box%2C%20labeled%20by%202%20to%20the%20second%20box%2C%20and%20so%20forth.%20The%20question%20is%20how%20many%20swaps%20are%20needed.%5Cn%5CnNow%20let%20us%20consider%20the%20situation%20where%20the%20balls%20are%20doubled%2C%20that%20is%2C%20there%20are%20_2n_%20balls%20and%20_n_%20boxes%2C%20exactly%20two%20balls%20are%20labeled%20by%20_k_%20for%20each%201%20%5Cu2264%20_k_%20%5Cu2264%20_n_%2C%20and%20the%20boxes%20contain%20two%20balls%20each.%20We%20can%20swap%20two%20balls%20in%20adjacent%20boxes%2C%20one%20ball%20from%20each%20box.%20We%20are%20to%20move%20the%20both%20balls%20labeled%20by%201%20to%20the%20first%20box%2C%20labeled%20by%202%20to%20the%20second%20box%2C%20and%20so%20forth.%20The%20question%20is%20again%20how%20many%20swaps%20are%20needed.%5Cn%5CnHere%20is%20one%20interesting%20fact.%20We%20need%2010%20swaps%20to%20sort%20%5C%5C%5B5%3B%204%3B%203%3B%202%3B%201%5C%5C%5D%20%28the%20state%20with%205%20in%20the%20first%20box%2C%204%20in%20the%20second%20box%2C%20and%20so%20forth%29%3A%20swapping%205%20and%204%2C%20then%205%20and%203%2C%205%20and%202%2C%205%20and%201%2C%204%20and%203%2C%204%20and%202%2C%204%20and%201%2C%203%20and%202%2C%203%20and%201%2Cand%20finally%202%20and%201.%20Then%20how%20many%20swaps%20we%20need%20to%20sort%20%5C%5C%5B5%2C%205%3B%204%2C%204%3B%203%2C%203%3B%202%2C%202%3B%201%2C%201%5C%5C%5D%20%28the%20state%20with%20two%205%5Cu2019s%20in%20the%20first%20box%2C%20two%204%5Cu2019s%20in%20the%20second%20box%2C%20and%20so%20forth%29%3F%20Some%20of%20you%20might%20think%2020%20swaps%20%5Cu2014%20this%20is%20not%20true%2C%20but%20the%20actual%20number%20is%2015.%5Cn%5CnWrite%20a%20program%20that%20calculates%20the%20number%20of%20swaps%20for%20the%20two-ball%20version%20and%20verify%20the%20above%20fact.%22%2C%22inputFormat%22%3A%22The%20input%20has%20the%20following%20format%3A%5Cn%5Cn%60%60%60%5Cn%5Cn%20%20%20%20%20%20%20n%5Cn%20%20%20%20%20%20%20ball1%2C1%20ball1%2C2%5Cn%20%20%20%20%20%20%20ball2%2C1%20ball2%2C2%5Cn%20%20%20%20%20%20%20...%5Cn%20%20%20%20%20%20%20balln%2C1%20balln%2C2%5Cn%60%60%60%5Cn_n_%20is%20the%20number%20of%20boxes%20%281%20%5Cu2264%20_n_%20%5Cu2264%208%29.%20ball%20%24%20_%7Bi%2C1%7D%20%24%20and%20balli%2C2%20%2C%20for%201%20%5Cu2264%20_i_%20%5Cu2264%20_n_%2C%20are%20the%20labels%20of%20two%20balls%20initially%20contained%20by%20the%20_i_-th%20box.%22%2C%22outputFormat%22%3A%22Print%20the%20minumum%20possible%20number%20of%20swaps.%22%2C%22samples%22%3A%5B%5B%225%5Cr%5Cn5%205%5Cr%5Cn4%204%5Cr%5Cn3%203%5Cr%5Cn2%202%5Cr%5Cn1%201%22%2C%2215%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B200%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F5182%22%2C%22id%22%3A%225182%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP5182%22%2C%22title%22%3A%22PAIRSORT%20-%20Double%20Sorting%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22PAIRSORT%20-%20Double%20Sorting%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>PAIRSORT - Double Sorting</h1>
+<h2>题目描述</h2>
+<div>Here we describe a typical problem. There are _n_ balls and _n_ boxes. Each ball is labeled by a unique number from 1 to _n_. Initially each box contains one of these balls. We can swap two balls in adjacent boxes. We are to sort these balls in increasing order by swaps, i.e. move the ball labeled by 1 to the first box, labeled by 2 to the second box, and so forth. The question is how many swaps are needed.
+Now let us consider the situation where the balls are doubled, that is, there are _2n_ balls and _n_ boxes, exactly two balls are labeled by _k_ for each 1 ≤ _k_ ≤ _n_, and the boxes contain two balls each. We can swap two balls in adjacent boxes, one ball from each box. We are to move the both balls labeled by 1 to the first box, labeled by 2 to the second box, and so forth. The question is again how many swaps are needed.
+Here is one interesting fact. We need 10 swaps to sort \[5; 4; 3; 2; 1\] (the state with 5 in the first box, 4 in the second box, and so forth): swapping 5 and 4, then 5 and 3, 5 and 2, 5 and 1, 4 and 3, 4 and 2, 4 and 1, 3 and 2, 3 and 1,and finally 2 and 1. Then how many swaps we need to sort \[5, 5; 4, 4; 3, 3; 2, 2; 1, 1\] (the state with two 5’s in the first box, two 4’s in the second box, and so forth)? Some of you might think 20 swaps — this is not true, but the actual number is 15.
+Write a program that calculates the number of swaps for the two-ball version and verify the above fact.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input has the following format:
+```
+n
+ball1,1 ball1,2
+ball2,1 ball2,2
+...
+balln,1 balln,2
+```
+_n_ is the number of boxes (1 ≤ _n_ ≤ 8). ball $ _{i,1} $ and balli,2 , for 1 ≤ _i_ ≤ _n_, are the labels of two balls initially contained by the _i_-th box.</div>
+<h3>输出格式</h3>
+<br />
+<div>Print the minumum possible number of swaps.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>5
+5 5
+4 4
+3 3
+2 2
+1 1</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>15</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

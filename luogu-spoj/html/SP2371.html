@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>LIS2 - Another Longest Increasing Subsequence Problem - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449735:U+5lqKqQawP4uteR6oJOOF595PfreWNJbjQGRDmobEA=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Given%20a%20sequence%20of%20%2A%2AN%2A%2A%20pairs%20of%20integers%2C%20find%20the%20length%20of%20the%20%2A%2Alongest%20increasing%20subsequence%2A%2A%20of%20it.%5Cn%5CnAn%20%2A%2Aincreasing%20sequence%2A%2A%20_A%20%24%20_%7B1%7D%20%24%20..A%20%24%20_%7Bn%7D%20%24_%20%20is%20a%20sequence%20such%20that%20for%20every%20%20_i%20%3C%20j_%2C%20_A%20%24%20_%7Bi%7D%20%24%20%3C%20A%20%24%20_%7Bj%7D%20%24_%20.%5Cn%5CnA%20%2A%2Asubsequence%2A%2A%20of%20a%20sequence%20is%20a%20sequence%20that%20appears%20in%20the%20same%20relative%20order%2C%20but%20not%20necessarily%20contiguous.%5Cn%5CnA%20pair%20of%20integers%20%20_%28x%20%24%20_%7B1%7D%20%24%20%2C%20y%20%24%20_%7B1%7D%20%24%20%29_%20is%20less%20than%20%20_%28x%20%24%20_%7B2%7D%20%24%20%2C%20y%20%24%20_%7B2%7D%20%24%20%29_%20%2A%2Aiff%2A%2A%20_x%20%24%20_%7B1%7D%20%24%20%3C%20x%20%24%20_%7B2%7D%20%24_%20%20and%20%20_y%20%24%20_%7B1%7D%20%24%20%3C%20y%20%24%20_%7B2%7D%20%24_%20.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20an%20integer%20%20%2A%2AN%2A%2A%20%282%20%5Cu2264%20%20%2A%2AN%2A%2A%20%5Cu2264%20100000%29.%5Cn%5CnThe%20following%20%20%2A%2AN%2A%2A%20lines%20consist%20of%20%20%2A%2AN%2A%2A%20pairs%20of%20integers%20_%28x%20%24%20_%7Bi%7D%20%24%20%2C%20y%20%24%20_%7Bi%7D%20%24%20%29_%20%28-10%20%24%20%5E%7B9%7D%20%24%20%5Cu2264%20_x%20%24%20_%7Bi%7D%20%24%20%2C%20y%20%24%20_%7Bi%7D%20%24_%20%20%5Cu2264%2010%20%24%20%5E%7B9%7D%20%24%20%29.%22%2C%22outputFormat%22%3A%22The%20output%20contains%20an%20integer%3A%20the%20length%20of%20the%20longest%20increasing%20subsequence%20of%20the%20given%20sequence.%22%2C%22samples%22%3A%5B%5B%228%5Cr%5Cn1%203%5Cr%5Cn3%202%5Cr%5Cn1%201%5Cr%5Cn4%205%5Cr%5Cn6%203%5Cr%5Cn9%209%5Cr%5Cn8%207%5Cr%5Cn7%206%22%2C%223%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B345%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F2371%22%2C%22id%22%3A%222371%22%7D%2C%22translation%22%3A%22%5Cu7ed9%5Cu5b9a%20%24N%24%20%5Cu4e2a%5Cu6570%5Cu5bf9%20%24%28x_i%2C%20y_i%29%24%5Cuff0c%5Cu6c42%5Cu6700%5Cu957f%5Cu4e0a%5Cu5347%5Cu5b50%5Cu5e8f%5Cu5217%5Cu7684%5Cu957f%5Cu5ea6%5Cu3002%5Cu4e0a%5Cu5347%5Cu5e8f%5Cu5217%5Cu5b9a%5Cu4e49%5Cu4e3a%20%24%5C%5C%7B%28x_i%2C%20y_i%29%5C%5C%7D%24%20%5Cu6ee1%5Cu8db3%5Cu5bf9%20%24i%3Cj%24%20%5Cu6709%20%24x_i%3Cx_j%24%20%5Cu4e14%20%24y_i%3Cy_j%24%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A63%2C%22totalAccepted%22%3A21%2C%22pid%22%3A%22SP2371%22%2C%22title%22%3A%22LIS2%20-%20Another%20Longest%20Increasing%20Subsequence%20Problem%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%7B%22pid%22%3A%22P3403%22%2C%22title%22%3A%22%5Cu8df3%5Cu697c%5Cu673a%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4070%22%2C%22title%22%3A%22%5BSDOI2016%5D%5Cu751f%5Cu6210%5Cu9b54%5Cu5492%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4169%22%2C%22title%22%3A%22%5BViolet%5D%5Cu5929%5Cu4f7f%5Cu73a9%5Cu5076%5C%2FSJY%5Cu6446%5Cu68cb%5Cu5b50%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4322%22%2C%22title%22%3A%22%5BJSOI2016%5D%5Cu6700%5Cu4f73%5Cu56e2%5Cu4f53%22%2C%22difficulty%22%3A6%2C%22type%22%3A%22P%22%7D%2C%7B%22pid%22%3A%22P4644%22%2C%22title%22%3A%22%5BUSACO05DEC%5DCleaning%20Shifts%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22P%22%7D%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22LIS2%20-%20Another%20Longest%20Increasing%20Subsequence%20Problem%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>LIS2 - Another Longest Increasing Subsequence Problem</h1>
+<h2>题意翻译</h2>
+<div>给定 $N$ 个数对 $(x_i, y_i)$，求最长上升子序列的长度。上升序列定义为 $\{(x_i, y_i)\}$ 满足对 $i<j$ 有 $x_i<x_j$ 且 $y_i<y_j$。</div>
+<h2>题目描述</h2>
+<div>Given a sequence of **N** pairs of integers, find the length of the **longest increasing subsequence** of it.
+An **increasing sequence** _A $ _{1} $ ..A $ _{n} $_ is a sequence such that for every _i < j_, _A $ _{i} $ < A $ _{j} $_ .
+A **subsequence** of a sequence is a sequence that appears in the same relative order, but not necessarily contiguous.
+A pair of integers _(x $ _{1} $ , y $ _{1} $ )_ is less than _(x $ _{2} $ , y $ _{2} $ )_ **iff** _x $ _{1} $ < x $ _{2} $_ and _y $ _{1} $ < y $ _{2} $_ .</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains an integer **N** (2 ≤ **N** ≤ 100000).
+The following **N** lines consist of **N** pairs of integers _(x $ _{i} $ , y $ _{i} $ )_ (-10 $ ^{9} $ ≤ _x $ _{i} $ , y $ _{i} $_ ≤ 10 $ ^{9} $ ).</div>
+<h3>输出格式</h3>
+<br />
+<div>The output contains an integer: the length of the longest increasing subsequence of the given sequence.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>8
+1 3
+3 2
+1 1
+4 5
+6 3
+9 9
+8 7
+7 6</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>3</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

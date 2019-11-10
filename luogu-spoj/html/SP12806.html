@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BLACJACK - Blackjack - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450327:1gJrRSqg4VVAodH19FYuBPb7Hvh71ehv9kfTd1ig7Ps=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22You%2C%20as%20a%20great%20mathematician%20and%20a%20former%20member%20of%20Blackjack%20Team%2C%20are%20recently%20declared%20%5C%22unwelcome%20person%5C%22%20by%20managers%20of%20local%20casinos.%20Extremely%20bored%2C%20you%20reminded%20of%20your%20life%20forming%20a%20team%20beating%20casinos%20at%20blackjack%20worldwide%2C%20and%20decided%20to%20help%20your%20friends%20in%20winning%20blackjack%20games.%5Cn%5CnBlackjack%2C%20also%20known%20as%20twenty-one%2C%20is%20a%20game%20frequently%20seen%20in%20casinos%2C%20played%20with%20one%20deck%2C%20or%20several%20decks%20of%2052%20cards.%20The%20version%20your%20friend%20plays%20is%20slightly%20different%20from%20what%20we%20used%20to%20see%20in%20usual%20casinos.%20In%20this%20version%2C%20the%20game%20is%20played%20between%20a%20player%20and%20a%20dealer%20with%20a%20deck%20of%20n%20cards%2C%20namely%20a%20%24%20_%7B1%7D%20%24%20%2C%20a%20%24%20_%7B2%7D%20%24%20%2C%20...%20%2C%20a%20%24%20_%7Bn%7D%20%24%20%2C%20instead%20of%20regular%20decks%20of%2052%20cards%20in%20standard%20version.%20The%20_i_-th%20card%20has%20the%20unique%20numeric%20value%20a%20%24%20_%7Bi%7D%20%24%20%2C%20which%20is%20important%20in%20following%20description%20of%20rules.%5Cn%5CnThe%20game%20is%20played%20in%20several%20rounds%20as%20long%20as%20not%20less%20than%20k%20%28k%20%3E%3D%2010%29%20cards%20left%20in%20the%20deck.%20Cards%20are%20dealt%20from%20a%20%24%20_%7B1%7D%20%24%20to%20a%20%24%20_%7Bn%7D%20%24%20%2C%20while%20each%20card%20is%20dealt%20out%20at%20most%20once.%20In%20each%20round%2C%20the%20player%20is%20dealt%20one%20card%2C%20then%20the%20dealer%2C%20then%20the%20player%2C%20then%20dealer.%20They%20now%20have%20two%20cards%20in%20their%20hand%20respectively.%20Then%20the%20player%20would%20keep%20on%20taking%20a%20hit%20until%20he%20busts%20%28total%20value%20of%20his%20hand%20exceeds%2021%20points%29%20or%20he%20feels%20it%20is%20enough%20%28total%20value%20of%20his%20hand%20exceeds%2015%20points%29%20or%20he%20has%20taken%203%20hits%20already.%20He%20immediately%20loses%20the%20round%20if%20he%20busts.%20If%20he%20has%20taken%203%20hits%20without%20bust%2C%20making%20his%20hand%20consist%20of%205%20cards%2C%20he%20wins%20the%20round%2C%20ending%20the%20round%20right%20away.%20Then%20the%20dealer%20will%20use%20the%20exactly%20same%20strategy%20as%20the%20player.%20Of%20course%2C%20the%20dealer%20loses%20the%20round%20immediately%20if%20he%20busts%2C%20wins%20the%20round%20at%20once%20if%20his%20hand%20consists%20of%205%20cards%2C%20with%20the%20same%20rule%20applying.%20If%20after%20taking%20hits%20neither%20the%20player%20nor%20the%20dealer%20wins%20or%20loses%2C%20sums%20of%20points%20%28described%20below%29%20in%20their%20hands%20will%20be%20compared%2C%20and%20the%20person%20with%20larger%20one%20will%20win%20the%20round.%20In%20case%20of%20tie%2C%20neither%20wins%20or%20loses.%20Of%20course%2C%20this%20ends%20the%20current%20round.%5Cn%5CnIn%20the%20casino%20your%20friend%20plays%2C%20there%20is%20a%20special%20rule%3A%20before%20the%20game%20starts%2C%20the%20player%20is%20required%20to%20cut%20the%20deck%20of%20card%20exactly%20once.%20By%20saying%20cut%20the%20deck%20we%20mean%20to%20change%20deck%20of%20cards%20from%5Cn%5Cn%20%60%60%60%5Cna1%2C%20a2%2C%20...%20%2C%20an%5Cn%60%60%60%5Cnto%5Cn%5Cn%20%60%60%60%5Cnap%2C%20ap%2B1%2C%20...%20%2C%20aq%2C%20a1%2C%20a2%2C%20...%20%2C%20ap-1%2C%20aq%2B1%2C%20...%20%2C%20an%281%20%3C%20p%20%3C%3D%20q%20%3C%20n%29%5Cn%60%60%60%5CnWith%20your%20super%20power%20%28in%20hacking%29%20you%20now%20know%20the%20deck%20of%20cards%20to%20play.%20Now%20you%20want%20to%20instruct%20your%20friend%20to%20cut%20the%20cards%20by%20telling%20your%20friend%20p%20and%20q%20in%20a%20secret%20manner%2C%20in%20order%20to%20maximize%20number%20of%20rounds%20he%20wins.%22%2C%22inputFormat%22%3A%22There%20are%20several%20test%20cases%2C%20the%20number%20of%20them%20is%20about%2015.%5Cn%5CnFor%20each%20test%20case%2C%20the%20first%20line%20contains%20two%20integers%2C%20namely%20n%20%2820%20%3C%3D%20n%20%3C%3D%202000%29%20and%20k%20%2810%20%3C%3D%20k%20%3C%3D%20n%29.%5Cn%5CnThe%20following%20lines%20contain%20totally%20n%20characters%20separated%20by%20spaces%20or%20line%20breaks.%20Characters%20can%20be%20any%20of%20A%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2CT%2CJ%2CQ%2CK%20where%20A%20stands%20for%20numeric%201%20and%20T%2CJ%2CQ%2CK%20stands%20for%20numeric%2010.%5Cn%5CnInput%20is%20terminated%20by%20EOF.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20one%20line%20%5C%22Case%20X%3A%20Y%5C%22%20where%20X%20is%20the%20test%20case%20number%20%28starting%20from%201%29%20and%20Y%20is%20a%20number%20indicating%20the%20desired%20answer.%22%2C%22samples%22%3A%5B%5B%2220%2010%5Cr%5Cn8%204%207%208%208%20K%205%20A%20Q%20Q%20A%20Q%206%204%20J%206%209%205%5Cr%5Cn3%209%5Cr%5Cn40%2010%5Cr%5Cn3%20J%207%207%202%20T%20J%206%20A%204%204%208%20J%20T%206%20A%206%202%20K%209%5Cr%5Cn6%205%207%20J%20T%203%205%205%203%207%207%20J%205%203%20A%205%209%20Q%206%207%22%2C%22Case%201%3A%203%5Cr%5CnCase%202%3A%206%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B3000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F12806%22%2C%22id%22%3A%2212806%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP12806%22%2C%22title%22%3A%22BLACJACK%20-%20Blackjack%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22BLACJACK%20-%20Blackjack%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>BLACJACK - Blackjack</h1>
+<h2>题目描述</h2>
+<div>You, as a great mathematician and a former member of Blackjack Team, are recently declared "unwelcome person" by managers of local casinos. Extremely bored, you reminded of your life forming a team beating casinos at blackjack worldwide, and decided to help your friends in winning blackjack games.
+Blackjack, also known as twenty-one, is a game frequently seen in casinos, played with one deck, or several decks of 52 cards. The version your friend plays is slightly different from what we used to see in usual casinos. In this version, the game is played between a player and a dealer with a deck of n cards, namely a $ _{1} $ , a $ _{2} $ , ... , a $ _{n} $ , instead of regular decks of 52 cards in standard version. The _i_-th card has the unique numeric value a $ _{i} $ , which is important in following description of rules.
+The game is played in several rounds as long as not less than k (k >= 10) cards left in the deck. Cards are dealt from a $ _{1} $ to a $ _{n} $ , while each card is dealt out at most once. In each round, the player is dealt one card, then the dealer, then the player, then dealer. They now have two cards in their hand respectively. Then the player would keep on taking a hit until he busts (total value of his hand exceeds 21 points) or he feels it is enough (total value of his hand exceeds 15 points) or he has taken 3 hits already. He immediately loses the round if he busts. If he has taken 3 hits without bust, making his hand consist of 5 cards, he wins the round, ending the round right away. Then the dealer will use the exactly same strategy as the player. Of course, the dealer loses the round immediately if he busts, wins the round at once if his hand consists of 5 cards, with the same rule applying. If after taking hits neither the player nor the dealer wins or loses, sums of points (described below) in their hands will be compared, and the person with larger one will win the round. In case of tie, neither wins or loses. Of course, this ends the current round.
+In the casino your friend plays, there is a special rule: before the game starts, the player is required to cut the deck of card exactly once. By saying cut the deck we mean to change deck of cards from
+```
+a1, a2, ... , an
+```
+to
+```
+ap, ap+1, ... , aq, a1, a2, ... , ap-1, aq+1, ... , an(1 < p <= q < n)
+```
+With your super power (in hacking) you now know the deck of cards to play. Now you want to instruct your friend to cut the cards by telling your friend p and q in a secret manner, in order to maximize number of rounds he wins.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>There are several test cases, the number of them is about 15.
+For each test case, the first line contains two integers, namely n (20 <= n <= 2000) and k (10 <= k <= n).
+The following lines contain totally n characters separated by spaces or line breaks. Characters can be any of A,2,3,4,5,6,7,8,9,T,J,Q,K where A stands for numeric 1 and T,J,Q,K stands for numeric 10.
+Input is terminated by EOF.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output one line "Case X: Y" where X is the test case number (starting from 1) and Y is a number indicating the desired answer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>20 10
+8 4 7 8 8 K 5 A Q Q A Q 6 4 J 6 9 5
+3 9
+40 10
+3 J 7 7 2 T J 6 A 4 4 8 J T 6 A 6 2 K 9
+6 5 7 J T 3 5 5 3 7 7 J 5 3 A 5 9 Q 6 7</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>Case 1: 3
+Case 2: 6</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

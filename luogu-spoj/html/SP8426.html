@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BTCODE_H - Trie Expectation - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450100:J0TgsDjPYUXI+nWRVg5snFkELrC7stEB08xLDRf6bfU=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22What%20is%20the%20expected%20number%20of%20nodes%20in%20a%20trie%20when%20%27N%27%20words%2C%20each%20of%20length%20%27L%27%20are%20inserted%20into%20it.%20The%20words%20are%20made%20up%20only%20of%200%27s%20and%201%27s.%20The%20words%20may%20be%20repeated%20and%20all%20possible%20permutations%20of%20words%20are%20equally%20likely.%20Initially%20the%20trie%20consists%20of%20only%20one%20node%20%28root%20node%29.%22%2C%22inputFormat%22%3A%22The%20first%20line%20of%20input%20contains%20an%20integer%20%27t%27%2C%20denoting%20the%20number%20of%20test%20cases.%20Each%20of%20the%20next%20%27t%27%20lines%20contain%202%20space%20separated%20integers%20%27N%27%20and%20%27L%27.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20output%20one%20floating%20point%20value%20denoting%20the%20expected%20number%20of%20nodes%20in%20the%20trie.%20Output%20the%20values%20rounded%20off%20to%202%20decimal%20places.%20Always%20print%202%20digits%20after%20the%20decimal%20point.%5Cn%5CnTo%20know%20more%20about%20tries%20visit%20%5Bhere%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FTrie%29.%22%2C%22samples%22%3A%5B%5B%222%5Cr%5Cn1%203%5Cr%5Cn2%202%22%2C%224.00%5Cr%5Cn4.25%5Cr%5Cn%5Cr%5CnConstraints%3A%5Cr%5Cnt%20%26lt%3B%3D%2025%5Cr%5Cn1%20%26lt%3B%3D%20N%20%26lt%3B%3D%20300%5Cr%5Cn1%20%26lt%3B%3D%20L%20%26lt%3B%3D%20300%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B640%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F8426%22%2C%22id%22%3A%228426%22%7D%2C%22translation%22%3A%22%23%20%2A%2A%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%2A%2A%5Cr%5Cn%5Cu5f00%5Cu59cb%5Cu4e00%5Cu5171%5Cu6709%27N%27%5Cu4e2a%5Cu5355%5Cu8bcd%5Cuff0c%5Cu6c42%5Cu63d2%5Cu5165%5Cu957f%5Cu5ea6%5Cu4e3a%27L%27%5Cu7684%5Cu5355%5Cu8bcd%5Cu65f6%5Cuff0ctrie%5Cu4e2d%5Cu7684%5Cu8282%5Cu70b9%5Cu7684%5Cu9884%5Cu671f%5Cu6570%5Cu91cf%5Cu662f%5Cu591a%5Cu5c11%5Cu3002%5Cu8fd9%5Cu4e9b%5Cu5355%5Cu8bcd%5Cu4ec5%5Cu75310%5Cu548c1%5Cu7ec4%5Cu6210%5Cu3002%5Cu5355%5Cu8bcd%5Cu53ef%5Cu4ee5%5Cu91cd%5Cu590d%5Cuff0c%5Cu5e76%5Cu4e14%5Cu6240%5Cu6709%5Cu7684%5Cu5355%5Cu8bcd%5Cu6392%5Cu5217%5Cu90fd%5Cu662f%5Cu6709%5Cu53ef%5Cu80fd%5Cu7684%5Cu3002%5Cu6700%5Cu521d%5Cuff0ctrie%5Cu53ea%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu8282%5Cu70b9%5Cuff08%5Cu6839%5Cu8282%5Cu70b9%5Cuff09%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%20%2A%2A%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%2A%2A%5Cr%5Cn%5Cr%5Cn%23%23%20%2A%2A%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%2A%2A%5Cr%5Cn%5Cu7b2c%5Cu4e00%5Cu884c%5Cu8f93%5Cu5165%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%27t%27%5Cuff0c%5Cu8868%5Cu793a%5Cu6d4b%5Cu8bd5%5Cu7528%5Cu4f8b%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn2~t%2B1%5Cu884c%5Cu91cc%5Cu5305%5Cu62ec%5Cu4e24%5Cu4e2a%5Cu6574%5Cu6570%5Cu2018N%5Cu2019%5Cu548c%5Cu2018L%5Cu2019%5Cu3002%5Cu6574%5Cu6570%5Cu4ee52%5Cu4e2a%5Cu7a7a%5Cu683c%5Cu5206%5Cu5f00%5Cu3002%5Cr%5Cn%5Cr%5Cn%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cr%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6837%5Cu4f8b%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu4e2a%5Cu6d6e%5Cu70b9%5Cu503c%5Cuff0c%5Cu8868%5Cu793atrie%5Cu4e2d%5Cu7684%5Cu9884%5Cu671f%20%5Cu8282%5Cu70b9%5Cu6570%5Cu3002%5Cu8f93%5Cu51fa%5Cu56db%5Cu820d%5Cu4e94%5Cu5165%5Cu5230%5Cu4e24%5Cu4f4d%5Cu5c0f%5Cu6570%5Cu7684%5Cu503c%5Cu3002%5Cu59cb%5Cu7ec8%5Cu4fdd%5Cu7559%5Cu5c0f%5Cu6570%5Cu540e%5Cu4e24%5Cu4f4d%5Cu3002%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP8426%22%2C%22title%22%3A%22BTCODE_H%20-%20Trie%20Expectation%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22BTCODE_H%20-%20Trie%20Expectation%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>BTCODE_H - Trie Expectation</h1>
+<h2>题意翻译</h2>
+<div># **题目描述**
+开始一共有'N'个单词，求插入长度为'L'的单词时，trie中的节点的预期数量是多少。这些单词仅由0和1组成。单词可以重复，并且所有的单词排列都是有可能的。最初，trie只包含一个节点（根节点）。
+# **输入输出格式**
+## **输入格式：**
+第一行输入包含一个整数't'，表示测试用例的数量。
+2~t+1行里包括两个整数‘N’和‘L’。整数以2个空格分开。
+## 输出格式：
+对于每个测试样例，输出一个浮点值，表示trie中的预期 节点数。输出四舍五入到两位小数的值。始终保留小数后两位。</div>
+<h2>题目描述</h2>
+<div>What is the expected number of nodes in a trie when 'N' words, each of length 'L' are inserted into it. The words are made up only of 0's and 1's. The words may be repeated and all possible permutations of words are equally likely. Initially the trie consists of only one node (root node).</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line of input contains an integer 't', denoting the number of test cases. Each of the next 't' lines contain 2 space separated integers 'N' and 'L'.</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, output one floating point value denoting the expected number of nodes in the trie. Output the values rounded off to 2 decimal places. Always print 2 digits after the decimal point.
+To know more about tries visit [here](http://en.wikipedia.org/wiki/Trie).</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>2
+1 3
+2 2</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>4.00
+4.25
+
+Constraints:
+t &amp;lt;= 25
+1 &amp;lt;= N &amp;lt;= 300
+1 &amp;lt;= L &amp;lt;= 300</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>EOWAMRT - Earth Observation with a Mobile Robot Team - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449668:Uji3xvtiETqsMSpK1TfyiZ09256Uevd3RioBbXGtF/A=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22A%20new%20type%20of%20mobile%20robot%20has%20been%20developed%20for%20environmental%20earth%20observation.%20It%20moves%20around%20on%20the%20ground%2C%20acquiring%20and%20recording%20various%20sorts%20of%20observational%20data%20using%20high%20precision%20sensors.%20Robots%20of%20this%20type%20have%20short%20range%20wireless%20communication%20devices%20and%20can%20exchange%20observational%20data%20with%20ones%20nearby.%20They%20also%20have%20large%20capacity%20memory%20units%2C%20on%20which%20they%20record%20data%20observed%20by%20themselves%20and%20those%20received%20from%20others.%5Cn%5Cn%20Figure%201%20illustrates%20the%20current%20positions%20of%20three%20robots%20A%2C%20B%2C%20and%20C%20and%20the%20geographic%20coverage%20of%20their%20wireless%20devices.%20Each%20circle%20represents%20the%20wireless%20coverage%20of%20a%20robot%2C%20with%20its%20center%20representing%20the%20position%20of%20the%20robot.%20In%20this%20figure%2C%20two%20robots%20A%20and%20B%20are%20in%20the%20positions%20where%20A%20can%20transmit%20data%20to%20B%2C%20and%20vice%20versa.%20In%20contrast%2C%20C%20cannot%20communicate%20with%20A%20or%20B%2C%20since%20it%20is%20too%20remote%20from%20them.%20Still%2C%20however%2C%20once%20B%20moves%20towards%20C%20as%20in%20Figure%202%2C%20B%20and%20C%20can%20start%20communicating%20with%20each%20other.%20In%20this%20manner%2C%20B%20can%20relay%20observational%20data%20from%20A%20to%20C.%20Figure%203%20shows%20another%20example%2C%20in%20which%20data%20propagate%20among%20several%20robots%20instantaneously.%5Cn%5Cn%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1701%5C%2F52f1380e686769cab5c76d513384610f958b9c4a.png%29%20%20%5CnFigure%201%3A%20The%20initial%20configuration%20of%20three%20robots%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1701%5C%2F0065470bb7c3e58bb811d8554e03b0737817c0d9.png%29%20%20%5CnFigure%202%3A%20Mobile%20relaying%21%5Bsubir%20imagenes%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP1701%5C%2Fddbe0e9a1e1e36a8f462505986dde480c922278c.png%29%20%20%5CnFigure%203%3A%20Instantaneous%20relaying%20among%20multiple%20robots%20As%20you%20may%20notice%20from%20these%20examples%2C%20if%20a%20team%20of%20robots%20move%20properly%2C%20observational%20data%20quickly%20spread%20over%20a%20large%20number%20of%20them.%20Your%20mission%20is%20to%20write%20a%20program%20that%20simulates%20how%20information%20spreads%20among%20robots.%20Suppose%20that%2C%20regardless%20of%20data%20size%2C%20the%20time%20necessary%20for%20communication%20is%20negligible.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20multiple%20datasets%2C%20each%20in%20the%20following%20format.%5Cn%5Cn%20_N%20T%20R%20%20%5Cn%20nickname%20and%20travel%20route%20of%20the%20first%20robot%20%20%5Cn%20nickname%20and%20travel%20route%20of%20the%20second%20robot%20%20%5Cn%20...%20%20%5Cn%20nickname%20and%20travel%20route%20of%20the%20N-th%20robot_%5Cn%5Cn%20%20%5Cn%20The%20first%20line%20contains%20three%20integers%20_N%2C%20T%2C%20and%20R_%20that%20are%20the%20number%20of%20robots%2C%20the%20length%20of%20the%20simulation%20period%2C%20and%20the%20maximum%20distance%20wireless%20signals%20can%20reach%2C%20respectively%2C%20and%20satisfy%20that%201%20%3C%3D%20_N_%20%3C%3D%20100%2C%201%20%3C%3D%20_T_%20%3C%3D%201000%2C%20and%201%20%3C%3D%20_R_%20%3C%3D%2010.%5Cn%5Cn%20The%20_nickname%20and%20travel%20route_%20of%20each%20robot%20are%20given%20in%20the%20following%20format.%5Cn%5Cn%20_nickname%20%20%5Cn%20t0%20x0%20y0%20%20%5Cn%20t1%20vx1%20vy1%20%20%5Cn%20t2%20vx2%20vy2%20%20%5Cn%20...%20%20%5Cn%20tk%20vxk%20vyk_%5Cn%5Cn%20_Nickname_%20is%20a%20character%20string%20of%20length%20between%20one%20and%20eight%20that%20only%20contains%20lowercase%20letters.%20No%20two%20robots%20in%20a%20dataset%20may%20have%20the%20same%20nickname.%20Each%20of%20the%20lines%20following%20nickname%20contains%20three%20integers%2C%20satisfying%20the%20following%20conditions.%5Cn%5Cn%20_0%20%3D%20t%20%24%20_%7B0%7D%20%24%20%3C%20t%20%24%20_%7B1%7D%20%24%20%3C%20...%20%3C%20t%20%24%20_%7Bk%7D%20%24%20%3D%20T%20%20%5Cn%20-10%20%3C%3D%20vx%20%24%20_%7B1%7D%20%24%20%2C%20vy%20%24%20_%7B1%7D%20%24%20%2C%20...%2C%20vx%20%24%20_%7Bk%7D%20%24%20%2C%20vy%20%24%20_%7Bk%7D%20%24%20%3C%3D%2010_%5Cn%5Cn%20A%20robot%20moves%20around%20on%20a%20two%20dimensional%20plane.%20%28x%20%24%20_%7B0%7D%20%24%20%2C%20y%20%24%20_%7B0%7D%20%24%20%29%20is%20the%20location%20of%20the%20robot%20at%20time%200.%20From%20time%20t%20%24%20_%7Bi-1%7D%20%24%20to%20t%20%24%20_%7Bi%7D%20%24%20%280%20%3C%20i%20%3C%3D%20k%29%2C%20the%20velocities%20in%20the%20x%20and%20y%20directions%20are%20vx%20%24%20_%7Bi%7D%20%24%20and%20vy%20%24%20_%7Bi%7D%20%24%20%2C%20respectively.%20Therefore%2C%20the%20travel%20route%20of%20a%20robot%20is%20piecewise%20linear.%20Note%20that%20it%20may%20self-overlap%20or%20self-intersect.%5Cn%5Cn%20You%20may%20assume%20that%20each%20dataset%20satisfies%20the%20following%20conditions.%5Cn%5Cn-%20The%20distance%20between%20any%20two%20robots%20at%20time%200%20is%20not%20exactly%20R.%5Cn-%20The%20x-%20and%20y-coordinates%20of%20each%20robot%20are%20always%20between%20-500%20and%20500%2C%20inclusive.%5Cn-%20Once%20any%20robot%20approaches%20within%20R%20%2B%2010%20%24%20%5E%7B-6%7D%20%24%20.%20of%20any%20other%2C%20the%20distance%20between%20them%20will%20become%20smaller%20than%20R%20-%2010%20%24%20%5E%7B-6%7D%20%24%20.%20while%20maintaining%20the%20velocities.%5Cn-%20Once%20any%20robot%20moves%20away%20up%20to%20R%20-%2010%20%24%20%5E%7B-6%7D%20%24%20.%20of%20any%20other%2C%20the%20distance%20between%20them%20will%20become%20larger%20than%20R%20%2B%2010%20%24%20%5E%7B-6%7D%20%24%20.%20while%20maintaining%20the%20velocities.%5Cn-%20If%20any%20pair%20of%20robots%20mutually%20enter%20the%20wireless%20area%20of%20the%20opposite%20ones%20at%20time%20t%20and%20any%20pair%2C%20which%20may%20share%20one%20or%20two%20members%20with%20the%20aforementioned%20pair%2C%20mutually%20leave%20the%20wireless%20area%20of%20the%20opposite%20ones%20at%20time%20t%27%2C%20the%20difference%20between%20t%20and%20t%27%20is%20no%20smaller%20than%2010%20%24%20%5E%7B-6%7D%20%24%20.%20time%20unit%2C%20that%20is%2C%20%7Ct%20-%20t%27%20%7C%20%3E%3D%2010%20%24%20%5E%7B-6%7D%20%24%20.%5Cn%5Cn%20A%20dataset%20may%20include%20two%20or%20more%20robots%20that%20share%20the%20same%20location%20at%20the%20same%20time.%20However%2C%20you%20should%20still%20consider%20that%20they%20can%20move%20with%20the%20designated%20velocities.%5Cn%5Cn%20The%20end%20of%20the%20input%20is%20indicated%20by%20a%20line%20containing%20three%20zeros.%22%2C%22outputFormat%22%3A%22%20For%20each%20dataset%20in%20the%20input%2C%20your%20program%20should%20print%20the%20nickname%20of%20each%20robot%20that%20have%20got%20until%20time%20_T_%20the%20observational%20data%20originally%20acquired%20by%20the%20first%20robot%20at%20time%200.%20Each%20nickname%20should%20be%20written%20in%20a%20separate%20line%20in%20dictionary%20order%20without%20any%20superfluous%20characters%20such%20as%20leading%20or%20trailing%20spaces.%22%2C%22samples%22%3A%5B%5B%223%205%2010%5Cr%5Cnred%5Cr%5Cn0%200%200%5Cr%5Cn5%200%200%5Cr%5Cngreen%5Cr%5Cn0%205%205%5Cr%5Cn5%206%201%5Cr%5Cnblue%5Cr%5Cn0%2040%205%5Cr%5Cn5%200%200%5Cr%5Cn3%2010%205%5Cr%5Cnatom%5Cr%5Cn0%2047%2032%5Cr%5Cn5%20-10%20-7%5Cr%5Cn10%201%200%5Cr%5Cnpluto%5Cr%5Cn0%200%200%5Cr%5Cn7%200%200%5Cr%5Cn10%203%203%5Cr%5Cngesicht%5Cr%5Cn0%2025%207%5Cr%5Cn5%20-7%20-2%5Cr%5Cn10%20-1%2010%5Cr%5Cn4%20100%207%5Cr%5Cnimpulse%5Cr%5Cn0%20-500%200%5Cr%5Cn100%2010%201%5Cr%5Cnfreedom%5Cr%5Cn0%20-491%200%5Cr%5Cn100%209%202%5Cr%5Cndestiny%5Cr%5Cn0%20-472%200%5Cr%5Cn100%207%204%5Cr%5Cnstrike%5Cr%5Cn0%20-482%200%5Cr%5Cn100%208%203%5Cr%5Cn0%200%200%22%2C%22blue%5Cr%5Cngreen%5Cr%5Cnred%5Cr%5Cnatom%5Cr%5Cngesicht%5Cr%5Cnpluto%5Cr%5Cnfreedom%5Cr%5Cnimpulse%5Cr%5Cnstrike%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B829%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1701%22%2C%22id%22%3A%221701%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1701%22%2C%22title%22%3A%22EOWAMRT%20-%20Earth%20Observation%20with%20a%20Mobile%20Robot%20Team%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22EOWAMRT%20-%20Earth%20Observation%20with%20a%20Mobile%20Robot%20Team%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>EOWAMRT - Earth Observation with a Mobile Robot Team</h1>
+<h2>题目描述</h2>
+<div>A new type of mobile robot has been developed for environmental earth observation. It moves around on the ground, acquiring and recording various sorts of observational data using high precision sensors. Robots of this type have short range wireless communication devices and can exchange observational data with ones nearby. They also have large capacity memory units, on which they record data observed by themselves and those received from others.
+Figure 1 illustrates the current positions of three robots A, B, and C and the geographic coverage of their wireless devices. Each circle represents the wireless coverage of a robot, with its center representing the position of the robot. In this figure, two robots A and B are in the positions where A can transmit data to B, and vice versa. In contrast, C cannot communicate with A or B, since it is too remote from them. Still, however, once B moves towards C as in Figure 2, B and C can start communicating with each other. In this manner, B can relay observational data from A to C. Figure 3 shows another example, in which data propagate among several robots instantaneously.
+![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1701/52f1380e686769cab5c76d513384610f958b9c4a.png)
+Figure 1: The initial configuration of three robots![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1701/0065470bb7c3e58bb811d8554e03b0737817c0d9.png)
+Figure 2: Mobile relaying![subir imagenes](https://cdn.luogu.com.cn/upload/vjudge_pic/SP1701/ddbe0e9a1e1e36a8f462505986dde480c922278c.png)
+Figure 3: Instantaneous relaying among multiple robots As you may notice from these examples, if a team of robots move properly, observational data quickly spread over a large number of them. Your mission is to write a program that simulates how information spreads among robots. Suppose that, regardless of data size, the time necessary for communication is negligible.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of multiple datasets, each in the following format.
+_N T R
+nickname and travel route of the first robot
+nickname and travel route of the second robot
+...
+nickname and travel route of the N-th robot_
+The first line contains three integers _N, T, and R_ that are the number of robots, the length of the simulation period, and the maximum distance wireless signals can reach, respectively, and satisfy that 1 <= _N_ <= 100, 1 <= _T_ <= 1000, and 1 <= _R_ <= 10.
+The _nickname and travel route_ of each robot are given in the following format.
+_nickname
+t0 x0 y0
+t1 vx1 vy1
+t2 vx2 vy2
+...
+tk vxk vyk_
+_Nickname_ is a character string of length between one and eight that only contains lowercase letters. No two robots in a dataset may have the same nickname. Each of the lines following nickname contains three integers, satisfying the following conditions.
+_0 = t $ _{0} $ < t $ _{1} $ < ... < t $ _{k} $ = T
+-10 <= vx $ _{1} $ , vy $ _{1} $ , ..., vx $ _{k} $ , vy $ _{k} $ <= 10_
+A robot moves around on a two dimensional plane. (x $ _{0} $ , y $ _{0} $ ) is the location of the robot at time 0. From time t $ _{i-1} $ to t $ _{i} $ (0 < i <= k), the velocities in the x and y directions are vx $ _{i} $ and vy $ _{i} $ , respectively. Therefore, the travel route of a robot is piecewise linear. Note that it may self-overlap or self-intersect.
+You may assume that each dataset satisfies the following conditions.
+- The distance between any two robots at time 0 is not exactly R.
+- The x- and y-coordinates of each robot are always between -500 and 500, inclusive.
+- Once any robot approaches within R + 10 $ ^{-6} $ . of any other, the distance between them will become smaller than R - 10 $ ^{-6} $ . while maintaining the velocities.
+- Once any robot moves away up to R - 10 $ ^{-6} $ . of any other, the distance between them will become larger than R + 10 $ ^{-6} $ . while maintaining the velocities.
+- If any pair of robots mutually enter the wireless area of the opposite ones at time t and any pair, which may share one or two members with the aforementioned pair, mutually leave the wireless area of the opposite ones at time t', the difference between t and t' is no smaller than 10 $ ^{-6} $ . time unit, that is, |t - t' | >= 10 $ ^{-6} $ .
+A dataset may include two or more robots that share the same location at the same time. However, you should still consider that they can move with the designated velocities.
+The end of the input is indicated by a line containing three zeros.</div>
+<h3>输出格式</h3>
+<br />
+<div> For each dataset in the input, your program should print the nickname of each robot that have got until time _T_ the observational data originally acquired by the first robot at time 0. Each nickname should be written in a separate line in dictionary order without any superfluous characters such as leading or trailing spaces.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3 5 10
+red
+0 0 0
+5 0 0
+green
+0 5 5
+5 6 1
+blue
+0 40 5
+5 0 0
+3 10 5
+atom
+0 47 32
+5 -10 -7
+10 1 0
+pluto
+0 0 0
+7 0 0
+10 3 3
+gesicht
+0 25 7
+5 -7 -2
+10 -1 10
+4 100 7
+impulse
+0 -500 0
+100 10 1
+freedom
+0 -491 0
+100 9 2
+destiny
+0 -472 0
+100 7 4
+strike
+0 -482 0
+100 8 3
+0 0 0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>blue
+green
+red
+atom
+gesicht
+pluto
+freedom
+impulse
+strike</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

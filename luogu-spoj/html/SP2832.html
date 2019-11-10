@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>DETER3 - Find The Determinant III - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449760:idR4kIe9Qdd9IKkWnOKMvyejP37nJjhWhbAea72Tc7g=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3A%22%22%2C%22description%22%3A%22Given%20a%20NxN%20matrix%20A%2C%20find%20the%20%5BDeterminant%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FDeterminant%29%20of%20A%20%25%20P.%22%2C%22inputFormat%22%3A%22Multiple%20test%20cases%20%28the%20size%20of%20input%20file%20is%20about%203MB%2C%20all%20numbers%20in%20each%20matrix%20are%20generated%20randomly%29.%5Cn%5CnThe%20first%20line%20of%20every%20test%20case%20contains%20two%20integers%20%2C%20representing%20N%20%280%20%3C%20N%20%3C%20201%29%20and%20P%20%280%20%3C%20P%20%3C%201%2C000%2C000%2C001%29.%20The%20following%20N%20lines%20each%20contain%20N%20integers%2C%20the%20j-th%20number%20in%20i-th%20line%20represents%20A%5C%5C%5Bi%5C%5C%5D%5C%5C%5Bj%5C%5C%5D%20%28-%201%2C000%2C000%2C001%20%3C%20A%5C%5C%5Bi%5C%5C%5D%5C%5C%5Bj%5C%5C%5D%20%3C%201%2C000%2C000%2C001%29.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20print%20a%20single%20line%20contains%20the%20answer.%22%2C%22samples%22%3A%5B%5B%221%2010%5Cn-528261590%5Cn2%202%5Cn595698392%20-398355861%5Cn603279964%20-232703411%5Cn3%204%5Cn-840419217%20-895520213%20-303215897%5Cn537496093%20181887787%20-957451145%5Cn-305184545%20584351123%20-257712188%22%2C%220%5Cn0%5Cn2%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B2541%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F2832%22%2C%22id%22%3A%222832%22%7D%2C%22translation%22%3A%22%23%23%20%5Cu9898%5Cu76ee%5Cu63cf%5Cu8ff0%5Cn%5CnGiven%20a%20NxN%20matrix%20A%2C%20find%20the%20Determinant%20of%20A%20%25%20P.%5Cn%5Cn%5Cu7ed9%5Cu4f60%5Cu4e00%5Cu4e2a%20%24%20N%5C%5Ctimes%20N%20%24%20%20%5Cu7684%5Cu77e9%5Cu9635%20%24%20A%20%24%20%20%5Cuff0c%5Cu6c42%5Cu51fa%20%24%20A%20%24%20%20%5Cu7684%5B%5Cu884c%5Cu5217%5Cu5f0f%5Cu7684%5Cu503c%5D%28https%3A%5C%2F%5C%2Fzh.wikipedia.org%5C%2Fzh-cn%5C%2F%25E8%25A1%258C%25E5%2588%2597%25E5%25BC%258F%29%5Cu6a21%20%24%20P%20%24%20%20%5Cu3002%5Cn%5Cn%23%23%20%5Cu8f93%5Cu5165%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5CnMultiple%20test%20cases%20%28the%20size%20of%20input%20file%20is%20about%203MB%2C%20all%20numbers%20in%20each%20matrix%20are%20generated%20randomly%29.%5Cn%5Cn%5Cu591a%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%28%5Cu8f93%5Cu5165%5Cu6587%5Cu4ef6%5Cu7684%5Cu5927%5Cu5c0f%5Cu5927%5Cu6982%5Cu4e3a3MB%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu77e9%5Cu9635%5Cu7684%5Cu6240%5Cu6709%5Cu7684%5Cu6570%5Cu90fd%5Cu662f%5Cu968f%5Cu673a%5Cu751f%5Cu6210%5Cu7684%29%5Cu3002%5Cn%5CnThe%20first%20line%20of%20every%20test%20case%20contains%20two%20integers%20%2C%20representing%20N%20%280%20%3C%20N%20%3C%20201%29%20and%20P%20%280%20%3C%20P%20%3C%201%2C000%2C000%2C001%29.%20The%20following%20N%20lines%20each%20contain%20N%20integers%2C%20the%20j-th%20number%20in%20i-th%20line%20represents%20A%5Bi%5D%5Bj%5D%20%28-%201%2C000%2C000%2C001%20%3C%20A%5Bi%5D%5Bj%5D%20%3C%201%2C000%2C000%2C001%29.%5Cn%5Cn%5Cu5728%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu7684%5Cu7b2c%5Cu4e00%5Cu884c%5Cu67092%5Cu4e2a%5Cu6574%5Cu6570%20%24%20N%20%24%20%20%5Cu548c%20%24%20P%20%24%20%20%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765%5Cu6709%20%24%20N%20%24%20%20%5Cu884c%5Cuff0c%5Cu6bcf%5Cu4e00%5Cu884c%5Cu6709%20%24%20N%20%24%20%20%5Cu4e2a%5Cu6570%5Cuff0c%5Cu7b2c%20%24%20i%20%24%20%20%5Cu884c%5Cu7684%5Cu7b2c%20%24%20j%20%24%20%20%5Cu4e2a%5Cu6570%5Cu4ee3%5Cu8868%20%24%20A_%7Bi%2Cj%7D%20%24%20%20%24%20%28-10%5E9-1%20%3C%20A_%7Bi%2Cj%7D%20%3C%2010%5E9%2B1%20%29%20%24%20%20%5Cu3002%5Cn%5Cn%23%23%23%20%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cuff1a%5Cn%5CnFor%20each%20test%20case%2C%20print%20a%20single%20line%20contains%20the%20answer.%5Cn%5Cn%5Cu5bf9%5Cu4e8e%5Cu6bcf%5Cu4e00%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cu8f93%5Cu51fa1%5Cu884c%5Cuff0c%5Cu4e3a%5Cu884c%5Cu5217%5Cu5f0f%5Cu7684%5Cu503c%5Cu3002%5Cn%5Cn%5Cu611f%5Cu8c22%40IsaacOriTang%20%5Cu63d0%5Cu4f9b%5Cu7684%5Cu7ffb%5Cu8bd1%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A11%2C%22totalAccepted%22%3A3%2C%22pid%22%3A%22SP2832%22%2C%22title%22%3A%22DETER3%20-%20Find%20The%20Determinant%20III%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%7B%22id%22%3A38177%2C%22title%22%3A%22%5Cu7ffb%5Cu8bd1%22%2C%22forum%22%3A%7B%22id%22%3A13757%2C%22name%22%3A%22SP2832%20DETER3%20-%20Find%20The%20Determinant%20III%22%2C%22slug%22%3A%22SP2832%22%7D%7D%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22DETER3%20-%20Find%20The%20Determinant%20III%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>DETER3 - Find The Determinant III</h1>
+<h2>题意翻译</h2>
+<div>## 题目描述
+Given a NxN matrix A, find the Determinant of A % P.
+给你一个 $ N\times N $ 的矩阵 $ A $ ，求出 $ A $ 的[行列式的值](https://zh.wikipedia.org/zh-cn/%E8%A1%8C%E5%88%97%E5%BC%8F)模 $ P $ 。
+## 输入输出格式
+### 输入格式：
+Multiple test cases (the size of input file is about 3MB, all numbers in each matrix are generated randomly).
+多组测试数据(输入文件的大小大概为3MB，每个矩阵的所有的数都是随机生成的)。
+The first line of every test case contains two integers , representing N (0 < N < 201) and P (0 < P < 1,000,000,001). The following N lines each contain N integers, the j-th number in i-th line represents A[i][j] (- 1,000,000,001 < A[i][j] < 1,000,000,001).
+在每一个测试数据的第一行有2个整数 $ N $ 和 $ P $ 。接下来有 $ N $ 行，每一行有 $ N $ 个数，第 $ i $ 行的第 $ j $ 个数代表 $ A_{i,j} $ $ (-10^9-1 < A_{i,j} < 10^9+1 ) $ 。
+### 输出格式：
+For each test case, print a single line contains the answer.
+对于每一个测试数据输出1行，为行列式的值。
+感谢@IsaacOriTang 提供的翻译</div>
+<h2>题目描述</h2>
+<div>Given a NxN matrix A, find the [Determinant](http://en.wikipedia.org/wiki/Determinant) of A % P.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>Multiple test cases (the size of input file is about 3MB, all numbers in each matrix are generated randomly).
+The first line of every test case contains two integers , representing N (0 < N < 201) and P (0 < P < 1,000,000,001). The following N lines each contain N integers, the j-th number in i-th line represents A\[i\]\[j\] (- 1,000,000,001 < A\[i\]\[j\] < 1,000,000,001).</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, print a single line contains the answer.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1 10
+-528261590
+2 2
+595698392 -398355861
+603279964 -232703411
+3 4
+-840419217 -895520213 -303215897
+537496093 181887787 -957451145
+-305184545 584351123 -257712188</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>0
+0
+2</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

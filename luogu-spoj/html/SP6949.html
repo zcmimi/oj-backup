@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>CTOI10D2 - PIN - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450008:MyumT/6l7krEtUJWkzJh/DGWNwqR9cmtwrrravBf4/8=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Martin%20has%20just%20been%20hired%20as%20a%20computer%20administrator%20in%20a%20big%20company.%20The%20company%20did%20not%20change%20its%20authorization%20system%20since%201980s.%20Every%20person%20has%20a%20four-digit%20personal%20identification%20number%20%28PIN%29.%20Nobody%20uses%20usernames%20or%20passwords%2C%20you%20can%20login%20just%20by%20typing%20your%20PIN.%20As%20the%20company%20grew%2C%20they%20added%20the%20possibility%20to%20use%20letters%20as%20well%2C%20but%20the%20length%20of%20the%20PIN%20remained%20the%20same.%5Cn%5CnMartin%20is%20not%20happy%20with%20the%20situation.%20Suppose%20there%20are%20people%20whose%20PINs%20differ%20only%20at%20a%20single%20place%2C%20for%20example%2061ab%20and%2062ab.%20If%20the%20first%20person%20accidentally%20presses%202%20instead%20of%201%2C%20the%20system%20would%20still%20let%20him%20in.%20Martin%20would%20like%20to%20make%20the%20statistics%20about%20the%20PINs%20currently%20in%20use%2C%20in%20particular%2C%20compute%20the%20number%20of%20pairs%20of%20PINs%20that%20differ%20at%201%2C%202%2C%203%20or%204%20positions.%20He%20hopes%20that%20these%20numbers%20will%20be%20alarming%20enough%20to%20convince%20his%20boss%20to%20invest%20in%20a%20better%20system.%5Cn%5Cn%3Ca%20id%3D%5C%22Task_specification%5C%22%20name%3D%5C%22Task_specification%5C%22%3E%3C%5C%2Fa%3E%5Cn%5Cn%20%20%20%5Cn%2A%2ATask%20specification%2A%2A%5Cn----------------------%5Cn%5CnGiven%20the%20list%20of%20PINs%20and%20an%20integer%20_D_%2C%20find%20the%20number%20of%20pairs%20of%20PINs%20that%20differ%20at%20exactly%20_D_%20positions.%5Cn%5Cn%3Ca%20id%3D%5C%22Input_specification%5C%22%20name%3D%5C%22Input_specification%5C%22%3E%3C%5C%2Fa%3E%5Cn%5Cn%20%20%20%5Cn%2A%2AInput%20specification%2A%2A%5Cn-----------------------%5Cn%5CnThe%20first%20line%20of%20the%20input%20contains%20two%20space-separated%20positive%20integers%20_N_%20and%20_D_%2C%20where%20_N_%20is%20the%20number%20of%20PINs%20and%20_D_%20is%20the%20chosen%20number%20of%20differences.%20Each%20of%20the%20following%20_N_%20lines%20contains%20a%20single%20PIN.%5Cn%5Cn%3Ca%20id%3D%5C%22Constraints%5C%22%20name%3D%5C%22Constraints%5C%22%3E%3C%5C%2Fa%3E%5Cn%5Cn%20%20%20%5Cn%2A%2AConstraints%2A%2A%5Cn---------------%5Cn%5CnYou%20may%20assume%20that%20in%20all%20test%20cases%20%21%5B2%5C%5Cleq%20%20N%5C%5Cleq%2050%5C%5C%2C000%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP6949%5C%2F724a91186d56c46e93587076974c2be1b3598c30.png%29%20and%20%21%5B1%20%5C%5Cle%20D%20%5C%5Cle%204%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP6949%5C%2Fedd5b6b98df4f60fbde0b87adc3d362431b930b7.png%29.%5Cn%5CnEach%20PIN%20is%20of%20length%204%20and%20each%20character%20is%20either%20a%20digit%20or%20a%20lowercase%20letter%20between%20%27a%27%20and%20%27z%27%2C%20inclusive.%20You%20may%20assume%20that%20all%20PINs%20in%20the%20input%20are%20different.%5Cn%5CnIn%20test%20cases%20worth%2015%20points%2C%20%21%5BN%5C%5Cleq%202000%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP6949%5C%2F1a270f9c8dfe25fbbfb9ae895a7fe1d982247f2c.png%29.%5Cn%5CnIn%20test%20cases%20worth%2060%20points%2C%20%21%5BD%5C%5Cleq%202%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP6949%5C%2F461693dbaacc9353c2b9cc1581b5cf114069c2e3.png%29.%20Out%20of%20those%2C%20in%20test%20cases%20worth%2030%20points%2C%20_D_%20%3D%201.%5Cn%5CnIn%20test%20cases%20worth%2075%20points%2C%20every%20PIN%20will%20only%20consist%20of%20digits%20or%20lowercase%20letters%20between%20%27a%27%20and%20%27f%27%2C%20inclusive.%20Thus%20it%20can%20be%20viewed%20as%20a%20hexadecimal%20number.%5Cn%5Cn%3Ca%20id%3D%5C%22Output_specification%5C%22%20name%3D%5C%22Output_specification%5C%22%3E%3C%5C%2Fa%3E%5Cn%5Cn%20%20%20%5Cn%2A%2AOutput%20specification%2A%2A%5Cn------------------------%5Cn%5CnOutput%20a%20single%20line%20with%20a%20single%20number%3A%20the%20number%20of%20pairs%20of%20PINs%20that%20differ%20at%20%2A%2Aexactly%2A%2A%20_D_%20positions.%5Cn%5Cn%3Ca%20id%3D%5C%22Examples%5C%22%20name%3D%5C%22Examples%5C%22%3E%3C%5C%2Fa%3E%5Cn%5Cn%20%20%20%5Cn%2A%2AExamples%2A%2A%5Cn------------%5Cn%5Cn%2A%2Ainput%3A%2A%2A%5Cn%5Cn%20%60%60%60%5Cn4%201%5Cn0000%5Cna010%5Cn0202%5Cna0e2%5Cn%60%60%60%5Cn%2A%2Aoutput%3A%2A%2A%5Cn%5Cn%20%60%60%60%5Cn0%5Cn%60%60%60%5Cn_For%20these%20PINs%20each%20pair%20of%20PINs%20differs%20at%20more%20than%20one%20position._%5Cn%5Cn%2A%2Ainput%3A%2A%2A%5Cn%5Cn%20%60%60%60%5Cn4%202%5Cn0000%5Cna010%5Cn0202%5Cna0e2%5Cn%60%60%60%5Cn%2A%2Aoutput%3A%2A%2A%5Cn%5Cn%20%60%60%60%5Cn3%5Cn%60%60%60%5Cn_There%20are%20three%20pairs%20that%20differ%20at%20exactly%202%20positions%3A%20%280000%2C_a_010%29%2C%20%280000%2C0202%29%2C%20and%20%28_a_010%2C_a_0_e_2%29._%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B140%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F6949%22%2C%22id%22%3A%226949%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A6%2C%22totalAccepted%22%3A5%2C%22pid%22%3A%22SP6949%22%2C%22title%22%3A%22CTOI10D2%20-%20PIN%22%2C%22difficulty%22%3A5%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22CTOI10D2%20-%20PIN%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>CTOI10D2 - PIN</h1>
+<h2>题目描述</h2>
+<div>Martin has just been hired as a computer administrator in a big company. The company did not change its authorization system since 1980s. Every person has a four-digit personal identification number (PIN). Nobody uses usernames or passwords, you can login just by typing your PIN. As the company grew, they added the possibility to use letters as well, but the length of the PIN remained the same.
+Martin is not happy with the situation. Suppose there are people whose PINs differ only at a single place, for example 61ab and 62ab. If the first person accidentally presses 2 instead of 1, the system would still let him in. Martin would like to make the statistics about the PINs currently in use, in particular, compute the number of pairs of PINs that differ at 1, 2, 3 or 4 positions. He hopes that these numbers will be alarming enough to convince his boss to invest in a better system.
+<a id="Task_specification" name="Task_specification"></a>
+**Task specification**
+----------------------
+Given the list of PINs and an integer _D_, find the number of pairs of PINs that differ at exactly _D_ positions.
+<a id="Input_specification" name="Input_specification"></a>
+**Input specification**
+-----------------------
+The first line of the input contains two space-separated positive integers _N_ and _D_, where _N_ is the number of PINs and _D_ is the chosen number of differences. Each of the following _N_ lines contains a single PIN.
+<a id="Constraints" name="Constraints"></a>
+**Constraints**
+---------------
+You may assume that in all test cases ![2\leq N\leq 50\,000](https://cdn.luogu.com.cn/upload/vjudge_pic/SP6949/724a91186d56c46e93587076974c2be1b3598c30.png) and ![1 \le D \le 4](https://cdn.luogu.com.cn/upload/vjudge_pic/SP6949/edd5b6b98df4f60fbde0b87adc3d362431b930b7.png).
+Each PIN is of length 4 and each character is either a digit or a lowercase letter between 'a' and 'z', inclusive. You may assume that all PINs in the input are different.
+In test cases worth 15 points, ![N\leq 2000](https://cdn.luogu.com.cn/upload/vjudge_pic/SP6949/1a270f9c8dfe25fbbfb9ae895a7fe1d982247f2c.png).
+In test cases worth 60 points, ![D\leq 2](https://cdn.luogu.com.cn/upload/vjudge_pic/SP6949/461693dbaacc9353c2b9cc1581b5cf114069c2e3.png). Out of those, in test cases worth 30 points, _D_ = 1.
+In test cases worth 75 points, every PIN will only consist of digits or lowercase letters between 'a' and 'f', inclusive. Thus it can be viewed as a hexadecimal number.
+<a id="Output_specification" name="Output_specification"></a>
+**Output specification**
+------------------------
+Output a single line with a single number: the number of pairs of PINs that differ at **exactly** _D_ positions.
+<a id="Examples" name="Examples"></a>
+**Examples**
+------------
+**input:**
+```
+4 1
+0000
+a010
+0202
+a0e2
+```
+**output:**
+```
+0
+```
+_For these PINs each pair of PINs differs at more than one position._
+**input:**
+```
+4 2
+0000
+a010
+0202
+a0e2
+```
+**output:**
+```
+3
+```
+_There are three pairs that differ at exactly 2 positions: (0000,_a_010), (0000,0202), and (_a_010,_a_0_e_2)._</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>TEMPLEQ - Temple Queues - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450096:LUoWonsm4orzjGHEc8i0cr/aLRlE2pnFHbXOHWutHvE=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%21%5Bmain-destinations-tirupati%5D%28http%3A%5C%2F%5C%2Ffarm6.static.flickr.com%5C%2F5056%5C%2F5472021008_bcb05d7fb5.jpg%29%20The%20%5BTirumala%20temple%5D%28http%3A%5C%2F%5C%2Fen.wikipedia.org%5C%2Fwiki%5C%2FTirumala_Venkateswara_Temple%29%20is%20the%20most%20visited%20place%20of%20worship%20in%20the%20world.%20As%20the%20number%20of%20pilgrims%20who%20visit%20the%20temple%20each%20day%20is%20very%20high%2C%20the%20head%20of%20the%20temple%20should%20keep%20monitoring%20the%20queue%20system.%20Today%20is%20another%20lovely%20day%20and%20he%20has%20started%20his%20work.%20There%20are%20%2A%2AN%2A%2A%20queues%20at%20the%20entrance%20of%20the%20temple%20and%20some%20of%20them%20are%20already%20filled%20with%20pilgrims.%20Each%20queue%20has%20a%20metal%20door%20at%20the%20beginning%2C%20which%20leads%20to%20the%20temple.%20When%20the%20door%20is%20opened%2C%20it%20allows%20only%20one%20pilgrim%20to%20get%20through%20it%20and%20it%20gets%20closed%20immediately%20after%20that.%5Cn%5Cn%20New%20pilgrims%20are%20rushing%20in%20to%20the%20queues%20and%20the%20head%20needs%20to%20monitor%20the%20current%20sizes%20of%20the%20queues%20and%20decide%20which%20doors%20to%20be%20opened.%20At%20any%20time%2C%20he%20wants%20to%20know%20how%20many%20queues%20currently%20have%20at%20least%20%2A%2AX%2A%2A%20pilgrims.%20He%20also%20decides%20an%20integer%20%2A%2AY%2A%2A%20and%20wants%20to%20open%20the%20doors%20of%20all%20the%20queues%20having%20at%20least%20%2A%2AY%2A%2A%20pilgrims%20at%20that%20time.%20You%20are%20the%20controller%20of%20the%20queue%20system%20and%20are%20following%20his%20instructions.%20Respond%20quickly%20and%20win%20yourself%20a%20big%20laddu%20%28sweet%29%20from%20him%20%3A%29%20.%5Cn%5Cn%20%20%5Cn%20Read%20the%20input%20section%20for%20rest%20of%20the%20details.%22%2C%22inputFormat%22%3A%22The%20first%20line%20contains%20two%20integers%20N%20and%20Q.%20N%20-%20The%20number%20of%20queues%20%5C%5C%5B%201%20%3C%3D%20N%20%3C%3D%20100%2C000%20%5C%5C%5D%2C%20Q%20-%20The%20number%20of%20queries%20%5C%5C%5B%200%20%3C%3D%20Q%20%3C%3D%20500%2C000%20%5C%5C%5D%20.%20The%20second%20line%20contains%20N%20integers%2C%20which%20are%20the%20initial%20sizes%20of%20the%20queues.%20ith%20integer%20%28%201-based%20%29%20is%20the%20initial%20size%20of%20queue%20i%20%5C%5C%5B%200%20%3C%3D%20initial%20size%20%3C%3D%20100%2C000%2C000%20%5C%5C%5D%20%20%20%5Cn%20%20%5Cn%20Each%20of%20the%20next%20Q%20lines%20is%20one%20of%20the%20following%20%20%20%5Cn%20%20%5Cn%201%20A%20%5C%5C%5B%20One%20pilgrim%20enters%20the%20queue%23%20A%20%28%201%20%3C%3D%20A%20%3C%3D%20N%20%29%20%5C%5C%5D%20%20%20%5Cn%20%20%5Cn%202%20X%20%5C%5C%5B%20Find%20the%20number%20of%20queues%20having%20atleast%20X%20pilgrims%20currently%20%28%200%20%3C%3D%20X%20%3C%3D%201%2C000%2C000%2C000%20%29%20%5C%5C%5D%20%20%20%5Cn%20%20%5Cn%203%20Y%20%5C%5C%5B%20Open%20the%20doors%20of%20all%20the%20queues%20having%20atleast%20Y%20pilgrims%20%28%201%20%3C%3D%20Y%20%3C%3D%201%2C000%2C000%2C000%20%29%2C%20and%20thus%20allowing%20only%20one%20pilgrim%20to%20enter%20the%20temple%20from%20each%20of%20them%20%5C%5C%5D%22%2C%22outputFormat%22%3A%22For%20each%20query%20of%20type%20%5C%222%20X%5C%22%20%2C%20print%20the%20answer%20in%20a%20new%20line.%22%2C%22samples%22%3A%5B%5B%22%5C%5Cn5%206%5C%5Cn20%2030%2010%2050%2040%5C%5Cn2%2031%5C%5Cn1%202%5C%5Cn2%2031%5C%5Cn3%2011%5C%5Cn2%2020%5C%5Cn2%2050%5C%5Cn%5C%5Cn%22%2C%22%5C%5Cn2%5C%5Cn3%5C%5Cn3%5C%5Cn0%5C%5Cn%5C%5CnNote%20%3A%20Ideal%20time%20limit%20should%20be%202s.%20It%20has%20been%20increased%20to%207s%2C%20to%20let%20Java%20solutions%20pass%2C%20as%20the%20i%5C%2Fo%20is%20huge.%5C%5Cn%5C%5Cn%2A%20There%20are%20multiple%20test%20sets%2C%20and%20the%20judge%20shows%20the%20sum%20of%20the%20time%20taken%20over%20all%20test%20sets%20of%20your%20submission%2C%20if%20Accepted.%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B935%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F8406%22%2C%22id%22%3A%228406%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP8406%22%2C%22title%22%3A%22TEMPLEQ%20-%20Temple%20Queues%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22TEMPLEQ%20-%20Temple%20Queues%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>TEMPLEQ - Temple Queues</h1>
+<h2>题目描述</h2>
+<div>![main-destinations-tirupati](http://farm6.static.flickr.com/5056/5472021008_bcb05d7fb5.jpg) The [Tirumala temple](http://en.wikipedia.org/wiki/Tirumala_Venkateswara_Temple) is the most visited place of worship in the world. As the number of pilgrims who visit the temple each day is very high, the head of the temple should keep monitoring the queue system. Today is another lovely day and he has started his work. There are **N** queues at the entrance of the temple and some of them are already filled with pilgrims. Each queue has a metal door at the beginning, which leads to the temple. When the door is opened, it allows only one pilgrim to get through it and it gets closed immediately after that.
+New pilgrims are rushing in to the queues and the head needs to monitor the current sizes of the queues and decide which doors to be opened. At any time, he wants to know how many queues currently have at least **X** pilgrims. He also decides an integer **Y** and wants to open the doors of all the queues having at least **Y** pilgrims at that time. You are the controller of the queue system and are following his instructions. Respond quickly and win yourself a big laddu (sweet) from him :) .
+Read the input section for rest of the details.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The first line contains two integers N and Q. N - The number of queues \[ 1 <= N <= 100,000 \], Q - The number of queries \[ 0 <= Q <= 500,000 \] . The second line contains N integers, which are the initial sizes of the queues. ith integer ( 1-based ) is the initial size of queue i \[ 0 <= initial size <= 100,000,000 \]
+Each of the next Q lines is one of the following
+1 A \[ One pilgrim enters the queue# A ( 1 <= A <= N ) \]
+2 X \[ Find the number of queues having atleast X pilgrims currently ( 0 <= X <= 1,000,000,000 ) \]
+3 Y \[ Open the doors of all the queues having atleast Y pilgrims ( 1 <= Y <= 1,000,000,000 ), and thus allowing only one pilgrim to enter the temple from each of them \]</div>
+<h3>输出格式</h3>
+<br />
+<div>For each query of type "2 X" , print the answer in a new line.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>\n5 6\n20 30 10 50 40\n2 31\n1 2\n2 31\n3 11\n2 20\n2 50\n\n</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>\n2\n3\n3\n0\n\nNote : Ideal time limit should be 2s. It has been increased to 7s, to let Java solutions pass, as the i/o is huge.\n\n* There are multiple test sets, and the judge shows the sum of the time taken over all test sets of your submission, if Accepted.</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GCATC - Gray Code and Twos Complement - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450745:S6rwkqpi+T6TY8DHKlXTw1VIGpihj0vt/bhESA5eBes=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Let%20%24%20x%20%24%20is%20a%20binary%20number%20with%20%24%20n%20%24%20digits%20%28%20%24%20a_na_%7Bn-1%7Da_%7Bn-2%7D...a_2a_1%20%24%20%29.%20And%20we%20can%20encode%20it%20as%20%24%20G%28x%29%20%3D%20x%20%5C%5Coplus%20%5C%5Clfloor%20%5C%5Cfrac%7Bx%7D%7B2%7D%20%5C%5Crfloor%20%24%20or%20as%20%24%20C%28x%29%20%3D%20%282%5En%20-%20x%29%20%5C%5Cbmod%202%5En%20%24%20%2C%20where%20%5C%22%20%24%20%5C%5Coplus%20%24%20%5C%22%20is%20bitwise%20XOR%20operation%20and%20%5C%22%20%24%20%5C%5Clfloor%20x%20%5C%5Crfloor%20%24%20%5C%22%20indicates%20the%20largest%20integer%20which%20is%20not%20greater%20than%20%24%20x%20%24%20.%5Cn%5CnFor%20some%20reasons%2C%20Chiaki%20encodes%20her%20password%20%24%20P%20%24%20into%20%24%20G%28P%29%20%24%20and%20%24%20C%28P%29%20%24%20.%20Then%20she%20writes%20%24%20G%28P%29%20%24%20and%20%24%20C%28P%29%20%24%20in%20a%20paper.%20However%2C%20something%20terrible%20happened.%20A%20bug%20ate%20some%20parts%20of%20the%20paper%2C%20so%20some%20digits%20are%20unreadable%20now.%20Chiaki%20is%20so%20worried%20that%20she%20want%20you%20to%20determine%20the%20values%20of%20these%20digits%20using%20the%20readable%20digits.%22%2C%22inputFormat%22%3A%22There%20are%20multiple%20test%20cases.%20The%20first%20line%20of%20input%20contains%20an%20integer%20%24%20T%20%24%20%2C%20indicating%20the%20number%20of%20test%20cases.%20For%20each%20test%20case%3A%5Cn%5CnThere%20are%20%24%202%20%24%20lines%20of%20same%20number%20of%20digits%20describe%20%24%20G%28P%29%20%24%20and%20%24%20C%28P%29%20%24%20.%20In%20every%20line%2C%20it%20only%20contains%20%271%27%2C%20%270%27%20and%20%27%3F%27.%20Unreadable%20digits%20are%20denoted%20with%20symbol%20%27%3F%27.%20Digits%20are%20given%20from%20the%20most%20significant%20digit%20to%20the%20least%20significant%20digit.%5Cn%5CnIt%20is%20guaranteed%20that%20the%20sum%20of%20all%20%24%20%7CG%28P%29%7C%20%24%20does%20not%20exceed%20%24%2010%5E6%20%24%20.%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20if%20it%20is%20impossible%20to%20restore%20%24%20G%28P%29%20%24%20and%20%24%20C%28P%29%20%24%20%2C%20you%20should%20output%20%5C%22IMPOSSIBLE%5C%22%20%28without%20the%20quotes%29.%5Cn%5CnIf%20%24%20G%28P%29%20%24%20is%20unique%2C%20you%20should%20output%20%5C%22UNIQUE%5C%22%20%28without%20the%20quotes%29%20in%20the%20first%20line.%20Then%20output%20restored%20%24%20G%28P%29%20%24%20and%20%24%20C%28P%29%20%24%20in%20the%20same%20format.%5Cn%5CnIf%20there%20are%20two%20or%20more%20possible%20%24%20G%28P%29%20%24%20that%20can%20be%20restored%20using%20the%20readable%20digits.%20You%20should%20output%20%5C%22AMBIGUOUS%5C%22%20%28without%20the%20quotes%29%20and%20the%20number%20of%20possible%20%24%20G%28P%29%20%24%20.%20The%20number%20may%20be%20very%20large%2C%20so%20the%20answer%20should%20modulo%20%24%2010%5E9%20%2B%207%20%24%20.%22%2C%22samples%22%3A%5B%5B%223%5Cr%5Cn1110%5Cr%5Cn0101%5Cr%5Cn11%3F%3F%5Cr%5Cn01%3F%3F%5Cr%5Cn111%3F%5Cr%5Cn100%3F%22%2C%22UNIQUE%5Cr%5Cn1110%5Cr%5Cn0101%5Cr%5CnAMBIGUOUS%203%5Cr%5CnIMPOSSIBLE%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F34127%22%2C%22id%22%3A%2234127%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP34127%22%2C%22title%22%3A%22GCATC%20-%20Gray%20Code%20and%20Twos%20Complement%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22GCATC%20-%20Gray%20Code%20and%20Twos%20Complement%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>GCATC - Gray Code and Twos Complement</h1>
+<h2>题目描述</h2>
+<div>Let $ x $ is a binary number with $ n $ digits ( $ a_na_{n-1}a_{n-2}...a_2a_1 $ ). And we can encode it as $ G(x) = x \oplus \lfloor \frac{x}{2} \rfloor $ or as $ C(x) = (2^n - x) \bmod 2^n $ , where " $ \oplus $ " is bitwise XOR operation and " $ \lfloor x \rfloor $ " indicates the largest integer which is not greater than $ x $ .
+For some reasons, Chiaki encodes her password $ P $ into $ G(P) $ and $ C(P) $ . Then she writes $ G(P) $ and $ C(P) $ in a paper. However, something terrible happened. A bug ate some parts of the paper, so some digits are unreadable now. Chiaki is so worried that she want you to determine the values of these digits using the readable digits.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>There are multiple test cases. The first line of input contains an integer $ T $ , indicating the number of test cases. For each test case:
+There are $ 2 $ lines of same number of digits describe $ G(P) $ and $ C(P) $ . In every line, it only contains '1', '0' and '?'. Unreadable digits are denoted with symbol '?'. Digits are given from the most significant digit to the least significant digit.
+It is guaranteed that the sum of all $ |G(P)| $ does not exceed $ 10^6 $ .</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, if it is impossible to restore $ G(P) $ and $ C(P) $ , you should output "IMPOSSIBLE" (without the quotes).
+If $ G(P) $ is unique, you should output "UNIQUE" (without the quotes) in the first line. Then output restored $ G(P) $ and $ C(P) $ in the same format.
+If there are two or more possible $ G(P) $ that can be restored using the readable digits. You should output "AMBIGUOUS" (without the quotes) and the number of possible $ G(P) $ . The number may be very large, so the answer should modulo $ 10^9 + 7 $ .</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+1110
+0101
+11??
+01??
+111?
+100?</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>UNIQUE
+1110
+0101
+AMBIGUOUS 3
+IMPOSSIBLE</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

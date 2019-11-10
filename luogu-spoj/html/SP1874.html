@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BWHEELER - Burrows Wheeler Precompression - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449695:fTKAm0HHdlzQIfBzihzoTf417zLGxi2/tI58DM5Q+b4=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20The%20%2A%2ABurrows-Wheeler%20transform%2A%2A%20%28%2A%2ABWT%2A%2A%2C%20also%20called%20%2A%2Ablock-sorting%20compression%2A%2A%29%2C%20is%20an%20algorithm%20used%20in%20data%20compression%20techniques%20such%20as%20bzip2.%20It%20was%20invented%20by%20Michael%20Burrows%20and%20David%20Wheeler.%5Cn%5CnWhen%20a%20character%20string%20is%20transformed%20by%20the%20BWT%2C%20none%20of%20its%20characters%20change%20value.%20The%20transformation%20permutes%20the%20order%20of%20the%20characters.%20If%20the%20original%20string%20had%20several%20substrings%20that%20occurred%20often%2C%20then%20the%20transformed%20string%20will%20have%20several%20places%20where%20a%20single%20character%20is%20repeated%20multiple%20times%20in%20a%20row.%20This%20is%20useful%20for%20compression%2C%20since%20it%20tends%20to%20be%20easy%20to%20compress%20a%20string%20that%20has%20runs%20of%20repeated%20characters%20by%20techniques%20such%20as%20move-to-front%20transform%20and%20run-length%20encoding.%5Cn%5CnFor%20example%2C%20the%20string%3A%5Cn%5Cn%20%60%60%60%5CnSIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES%5Cn%60%60%60%5Cncould%20be%20transformed%20into%20this%20string%2C%20which%20is%20easier%20to%20compress%20because%20it%20has%20many%20repeated%20characters%3A%5Cn%5Cn%20%60%60%60%5Cn%20TEXYDST.E.IXIXIXXSSMPPS.B..E.S.EUSFXDIIOIIIT%5Cn%60%60%60%5Cn%20Now%20the%20Burrows-Wheeler%20algorithm%20works%20as%20follows%3A%5Cn%5Cn-%20Given%20an%20input%20string%20%2A%2AS%2A%2A%2C%20eg%3A%20%5C%22abcba%5C%22.%5Cn-%20Find%20all%20rotations%20of%20%2A%2AS%2A%2A.%20%20%20%5Cn%20%20%60%60%60%5Cn%20%20%5Cn%20%20eg%3A%20%5C%22abcba%5C%22%2C%20%5C%22bcbaa%5C%22%2C%20%5C%22cbaab%5C%22%2C%20%5C%22baabc%5C%22%2C%20%5C%22aabcb%5C%22%5Cn%20%20%60%60%60%5Cn-%20Now%20sort%20the%20strings%20hence%20produced.%20%60%60%60%5Cn%20%20%5Cn%20%20eg%3A%20%5C%22aabcb%5C%22%2C%20%5C%22abcba%5C%22%2C%20%5C%22baabc%5C%22%2C%20%5C%22bcbaa%5C%22%2C%20%5C%22cbaab%5C%22%5Cn%20%20%60%60%60%5Cn-%20Arrange%20the%20strings%20in%20a%20len%28S%29%20x%20len%28S%29%20grid.%20%60%60%60%5Cn%20%20%5Cn%20%20aabcb%5Cn%20%20abcba%5Cn%20%20baabc%5Cn%20%20bcbaa%5Cn%20%20cbaab%5Cn%20%20%60%60%60%5Cn-%20Output%20the%20row%20number%20%281-based%20indexing%29%20containing%20the%20original%20input%20string.%20Also%20output%20the%20strings%20formed%20by%20characters%20in%20the%20last%20column.%20%20%5Cn%20%20%20eg%3A%202%20bacab%5Cn%5Cn%20%20%5Cn%20Now%20given%20the%20output%20of%20Burrows-Wheeler%2C%20can%20you%20recover%20the%20orginal%20string%3F%20%20%5Cn%20%20%5Cn%20%2A%2AInput%20Format%3A%2A%2A%20%20%5Cn%20The%20input%20file%20consists%20of%20multiple%20testcases.%20%20%20%5Cn%20The%20first%20line%20of%20each%20testcase%20contains%20one%20integer%2C%20%2A%2AR%2A%2A%2C%20indicating%20the%20row%20number%20containing%20the%20original%20input%20string%20in%20the%20sorted%20matrix.%20%20%20%5Cn%20The%20second%20line%20of%20each%20testcase%20contains%20one%20string%2C%20%2A%2ACol%2A%2A%2C%20which%20is%20the%20last%20column%20of%20the%20grid.%20%281%20%3C%3D%20len%28Col%29%20%3C%3D%201000%29%20%20%20%5Cn%2A%2ACol%2A%2A%20contains%20only%20lowercase%20characters.%201%20%3C%3D%20%2A%2AR%2A%2A%20%3C%3D%20len%28Col%29.%20%20%5Cn%20Input%20terminates%20with%20a%20line%20containing%20R%3D0%20which%20must%20not%20be%20processed.%20%20%20%5Cn%20%20%5Cn%2A%2AOutput%20Format%3A%2A%2A%20%20%5Cn%20Print%20the%20original%20input%20string%20to%20the%20burrow%20wheeler%27s%20algorithm.%20%20%5Cn%20%20%5Cn%2A%2ATestdata%3A%2A%2A%20%20%5Cn%2030%20testcases%20%20%5Cn%2A%2ASample%20Input%3A%2A%2A%20%20%5Cn%60%60%60%5Cn%5Cn2%5Cnbacab%5Cn3%5Cnrwlb%5Cn11%5Cnbaaabaaaabbbaba%5Cn0%5Cn%60%60%60%5Cn%20%2A%2ASample%20Output%3A%2A%2A%20%20%5Cn%60%60%60%5Cn%5Cnabcba%5Cnrbwl%5Cnbaaabbbbaaaaaab%5Cn%60%60%60%22%2C%22inputFormat%22%3A%22%22%2C%22outputFormat%22%3A%22%22%2C%22samples%22%3A%5B%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B148%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F1874%22%2C%22id%22%3A%221874%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP1874%22%2C%22title%22%3A%22BWHEELER%20-%20Burrows%20Wheeler%20Precompression%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22BWHEELER%20-%20Burrows%20Wheeler%20Precompression%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>BWHEELER - Burrows Wheeler Precompression</h1>
+<h2>题目描述</h2>
+<div> The **Burrows-Wheeler transform** (**BWT**, also called **block-sorting compression**), is an algorithm used in data compression techniques such as bzip2. It was invented by Michael Burrows and David Wheeler.
+When a character string is transformed by the BWT, none of its characters change value. The transformation permutes the order of the characters. If the original string had several substrings that occurred often, then the transformed string will have several places where a single character is repeated multiple times in a row. This is useful for compression, since it tends to be easy to compress a string that has runs of repeated characters by techniques such as move-to-front transform and run-length encoding.
+For example, the string:
+```
+SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
+```
+could be transformed into this string, which is easier to compress because it has many repeated characters:
+```
+TEXYDST.E.IXIXIXXSSMPPS.B..E.S.EUSFXDIIOIIIT
+```
+Now the Burrows-Wheeler algorithm works as follows:
+- Given an input string **S**, eg: "abcba".
+- Find all rotations of **S**.
+```
+eg: "abcba", "bcbaa", "cbaab", "baabc", "aabcb"
+```
+- Now sort the strings hence produced. ```
+eg: "aabcb", "abcba", "baabc", "bcbaa", "cbaab"
+```
+- Arrange the strings in a len(S) x len(S) grid. ```
+aabcb
+abcba
+baabc
+bcbaa
+cbaab
+```
+- Output the row number (1-based indexing) containing the original input string. Also output the strings formed by characters in the last column.
+eg: 2 bacab
+Now given the output of Burrows-Wheeler, can you recover the orginal string?
+**Input Format:**
+The input file consists of multiple testcases.
+The first line of each testcase contains one integer, **R**, indicating the row number containing the original input string in the sorted matrix.
+The second line of each testcase contains one string, **Col**, which is the last column of the grid. (1 <= len(Col) <= 1000)
+**Col** contains only lowercase characters. 1 <= **R** <= len(Col).
+Input terminates with a line containing R=0 which must not be processed.
+**Output Format:**
+Print the original input string to the burrow wheeler's algorithm.
+**Testdata:**
+30 testcases
+**Sample Input:**
+```
+2
+bacab
+3
+rwlb
+11
+baaabaaaabbbaba
+0
+```
+**Sample Output:**
+```
+abcba
+rbwl
+baaabbbbaaaaaab
+```</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div></div>
+<h3>输出格式</h3>
+<br />
+<div></div>
+<h2>输入输出样例</h2>
+<i>暂无测试点</i>
+</article>
+</div>
+</div>
+</body>
+</html>

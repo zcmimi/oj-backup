@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SCPC11H - Dolls - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573450174:GbnKp60ejDCLKINrCElIqzGlFxvZEktQRTY1DPf1YT0=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22Do%20you%20remember%20the%20box%20of%20Matryoshka%20dolls%20last%20week%3F%20Adam%20just%20got%20another%20box%20of%20dolls%20from%20Matryona.%20This%20time%2C%20the%20dolls%20have%20different%20shapes%20and%20sizes%3A%20some%20are%20skinny%2C%20some%20are%20fat%2C%20and%20some%20look%20as%20though%20they%20were%20attened.%20Specifically%2C%20doll%20i%20can%20be%20represented%20by%20three%20numbers%20wi%2C%20li%2C%20and%20hi%2C%20denoting%20its%20width%2C%20length%2C%20and%20height.%20Doll%20i%20can%20fit%20inside%20another%20doll%20j%20if%20and%20only%20if%20wi%20%3C%20wj%20%2C%20li%20%3C%20lj%20%2C%20and%20hi%20%3C%20hj%20.%20That%20is%2C%20the%20dolls%20cannot%20be%20rotated%20when%20fitting%20one%20inside%20another.%20Of%20course%2C%20each%20doll%20may%20contain%20at%20most%20one%20doll%20right%20inside%20it.%20Your%20goal%20is%20to%20fit%20dolls%20inside%20each%20other%20so%20that%20you%20minimize%20the%20number%20of%20outermost%20dolls.%22%2C%22inputFormat%22%3A%22The%20input%20consists%20of%20multiple%20test%20cases.%20Each%20test%20case%20begins%20with%20a%20line%20with%20a%20single%20integer%20N%2C%201%22%2C%22outputFormat%22%3A%22For%20each%20test%20case%2C%20print%20out%20a%20single%20line%20with%20an%20integer%20denoting%20the%20minimum%20number%20of%20outermost%20dolls%20that%20can%20be%20obtained%20by%20optimally%20nesting%20the%20given%20dolls.%22%2C%22samples%22%3A%5B%5B%223%5Cr%5Cn5%204%208%5Cr%5Cn27%2010%2010%5Cr%5Cn100%2032%20523%5Cr%5Cn3%5Cr%5Cn1%202%201%5Cr%5Cn2%201%201%5Cr%5Cn1%201%202%5Cr%5Cn4%5Cr%5Cn1%201%201%5Cr%5Cn2%203%202%5Cr%5Cn3%202%202%5Cr%5Cn4%204%204%5Cr%5Cn0%22%2C%221%5Cr%5Cn3%5Cr%5Cn2%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B462%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F9761%22%2C%22id%22%3A%229761%22%7D%2C%22translation%22%3A%22%23%20%5Cu5957%5Cu5a03%5Cr%5Cn%5Cr%5Cn%5Cu4e9a%5Cu5f53%5Cu521a%5Cu4ece%20Matryona%20%5Cu62ff%5Cu4e86%5Cu4e00%5Cu76d2%5Cu5957%5Cu5a03%5Cuff0c%5Cu6bcf%5Cu4e2a%5Cu5a03%5Cu5a03%5Cu6709%5Cu4e0d%5Cu540c%5Cu7684%5Cu5f62%5Cu72b6%5Cu548c%5Cu5927%5Cu5c0f%5Cu3002%5Cu5177%5Cu4f53%5Cu6765%5Cu8bf4%2C%20%5Cu7f16%5Cu53f7%5Cu4e3ai%5Cu7684%5Cu5a03%5Cu5a03%5Cu53ef%5Cu4ee5%5Cu7528%20wi%5Cuff0cli%20%5Cu548c%20hi%2C%20%5Cu8868%5Cu793a%5Cu5176%5Cu5bbd%5Cu5ea6%5Cu3001%5Cu957f%5Cu5ea6%5Cu548c%5Cu9ad8%5Cu5ea6%5Cu3002%5Cu5a03%5Cu5a03i%5Cu53ef%5Cu4ee5%5Cu5957%5Cu5728%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu5a03%5Cu5a03%20j%20%5Cu4e2d%5Cu5f53%5Cu4e14%5Cu4ec5%5Cu5f53wi%3Cwj%2Cli%3Clj%2Chi%3Chj%5Cu3002%5Cu5728%5Cu5c06%5Cu5a03%5Cu5a03%5Cu88c5%5Cu5165%5Cu53e6%5Cu4e00%5Cu4e2a%5Cu5a03%5Cu5a03%5Cu5185%5Cu90e8%5Cu65f6%2C%20%5Cu5a03%5Cu5a03%5Cu4e0d%5Cu80fd%5Cu65cb%5Cu8f6c%5Cu3002%5Cu5f53%5Cu7136%2C%20%5Cu6bcf%5Cu4e2a%5Cu5a03%5Cu5a03%5Cu91cc%5Cu6700%5Cu591a%5Cu5bb9%5Cu7eb3%5Cu4e00%5Cu4e2a%5Cu5a03%5Cu5a03%5Cu3002%5Cu4f60%5Cu7684%5Cu76ee%5Cu6807%5Cu662f%5Cu628a%5Cu5a03%5Cu5a03%5Cu4e92%5Cu76f8%5Cu5957%5Cu88c5%2C%20%5Cu5c3d%5Cu91cf%5Cu51cf%5Cu5c11%5Cu6700%5Cu5916%5Cu5c42%5Cu5a03%5Cu5a03%5Cu7684%5Cu6570%5Cu91cf%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu5165%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu6bcf%5Cu4e2a%5Cu6d4b%5Cu8bd5%5Cu70b9%5Cu5305%5Cu542b%5Cu591a%5Cu7ec4%5Cu6570%5Cu636e%5Cuff0c%5Cu6bcf%5Cu7ec4%5Cu6570%5Cu636e%5Cu7b2c%5Cu4e00%5Cu884c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570N%5Cuff0c%5Cu8868%5Cu793a%5Cu5957%5Cu5a03%5Cu6570%5Cu91cf%5Cu3002%5Cu63a5%5Cu4e0b%5Cu6765N%5Cu884c%5Cu6bcf%5Cu884c%5Cu5305%5Cu542b%5Cu4e09%5Cu4e2a%5Cu6b63%5Cu6574%5Cu6570wi%5Cuff0cli%5Cuff0chi%281%20%5Cu2264%20wi%3B%20li%3B%20hi%20%5Cu2264%2010%2C000%29%5Cuff0c%5Cu8868%5Cu793a%5Cu7b2ci%5Cu4e2a%5Cu5a03%5Cu5a03%5Cu7684%5Cu5bbd%5Cu5ea6%5Cuff0c%5Cu957f%5Cu5ea6%5Cu548c%5Cu9ad8%5Cu5ea6%5Cu3002%5Cu8f93%5Cu5165%5Cu6570%5Cu636e%5Cu6700%5Cu540e%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2aN%3D0%5Cuff0c%5Cu4e0d%5Cu9700%5Cu5bf9%5Cu5176%5Cu5904%5Cu7406%5Cu3002%5Cr%5Cn%5Cr%5Cn%5Cu8f93%5Cu51fa%5Cu683c%5Cu5f0f%5Cr%5Cn%5Cr%5Cn%5Cu5bf9%5Cu6bcf%5Cu4e00%5Cu7ec4%5Cu6d4b%5Cu8bd5%5Cu6570%5Cu636e%5Cuff0c%5Cu8f93%5Cu51fa%5Cu4e00%5Cu884c%5Cuff0c%5Cu5305%5Cu542b%5Cu4e00%5Cu4e2a%5Cu6574%5Cu6570%5Cuff0c%5Cu8868%5Cu793a%5Cu6700%5Cu5916%5Cu5c42%5Cu5a03%5Cu5a03%5Cu4e2a%5Cu6570%5Cu7684%5Cu6700%5Cu5c0f%5Cu503c%5Cr%5Cn%22%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Afalse%2C%22totalSubmit%22%3A5%2C%22totalAccepted%22%3A1%2C%22pid%22%3A%22SP9761%22%2C%22title%22%3A%22SCPC11H%20-%20Dolls%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22SCPC11H%20-%20Dolls%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1573363392;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>SCPC11H - Dolls</h1>
+<h2>题意翻译</h2>
+<div># 套娃
+亚当刚从 Matryona 拿了一盒套娃，每个娃娃有不同的形状和大小。具体来说, 编号为i的娃娃可以用 wi，li 和 hi, 表示其宽度、长度和高度。娃娃i可以套在另一个娃娃 j 中当且仅当wi<wj,li<lj,hi<hj。在将娃娃装入另一个娃娃内部时, 娃娃不能旋转。当然, 每个娃娃里最多容纳一个娃娃。你的目标是把娃娃互相套装, 尽量减少最外层娃娃的数量。 输入格式 每个测试点包含多组数据，每组数据第一行包含一个正整数N，表示套娃数量。接下来N行每行包含三个正整数wi，li，hi(1 ≤ wi; li; hi ≤ 10,000)，表示第i个娃娃的宽度，长度和高度。输入数据最后包含一个N=0，不需对其处理。 输出格式 对每一组测试数据，输出一行，包含一个整数，表示最外层娃娃个数的最小值 </div>
+<h2>题目描述</h2>
+<div>Do you remember the box of Matryoshka dolls last week? Adam just got another box of dolls from Matryona. This time, the dolls have different shapes and sizes: some are skinny, some are fat, and some look as though they were attened. Specifically, doll i can be represented by three numbers wi, li, and hi, denoting its width, length, and height. Doll i can fit inside another doll j if and only if wi < wj , li < lj , and hi < hj . That is, the dolls cannot be rotated when fitting one inside another. Of course, each doll may contain at most one doll right inside it. Your goal is to fit dolls inside each other so that you minimize the number of outermost dolls.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input consists of multiple test cases. Each test case begins with a line with a single integer N, 1</div>
+<h3>输出格式</h3>
+<br />
+<div>For each test case, print out a single line with an integer denoting the minimum number of outermost dolls that can be obtained by optimally nesting the given dolls.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>3
+5 4 8
+27 10 10
+100 32 523
+3
+1 2 1
+2 1 1
+1 1 2
+4
+1 1 1
+2 3 2
+3 2 2
+4 4 4
+0</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>1
+3
+2</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>

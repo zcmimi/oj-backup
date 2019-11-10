@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>HNSUBWAY - Hanoi Subway System Construction - 洛谷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="csrf-token" content="1573449815:xzUs1MT0/XCXRJRFHYxPuRZWU6I8U45jf75m1acE1gs=">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" media="screen"/>
+<link rel="stylesheet" href="https://cdn.luogu.com.cn/fe/loader.css?ver=20191106">
+<script>window._feInjection = JSON.parse(decodeURIComponent("%7B%22code%22%3A200%2C%22currentTemplate%22%3A%22ProblemShow%22%2C%22currentData%22%3A%7B%22problem%22%3A%7B%22background%22%3Anull%2C%22description%22%3A%22%20%5BEnglish%5D%28%5C%2Fproblems%5C%2FHNSUBWAY%5C%2Fen%5C%2F%29%20%5BVietnamese%5D%28%5C%2Fproblems%5C%2FHNSUBWAY%5C%2Fvn%5C%2F%29Hanoi%20is%20constructing%20a%20subway%20system.%20The%20subway%20system%20consists%20of%20M%20stations%20which%20are%20numbered%20from%201%20to%20M%20and%20K%20two-way%20subway%20lines%20connecting%20pairs%20of%20stations%20directly.%20Hanoi%20metropolitan%20area%20is%20covered%20by%20T%20separated%20resident%20blocks%20each%20described%20as%20convex%20polygons.%20Subway%20lines%20can%20run%20under%20resident%20blocks.%20When%20running%20under%20resident%20blocks%20including%20their%20boundary%2C%20the%20speed%20of%20the%20subway%20train%20is%20v1%20while%20its%20speed%20is%20v2%20when%20running%20under%20other%20parts%20%28v1%20%3C%20v2%29.%20The%20travel%20time%20between%20two%20stations%20a%20and%20b%20is%20the%20shortest%20time%20to%20go%20from%20a%20to%20b%2C%20possibly%20via%20intermediate%20stations%20%28the%20transit%20time%20is%20not%20significant%29.%20They%20now%20have%20to%20select%20the%20central%20station%20from%20those%20existing%20stations%20so%20that%20the%20travel%20time%20from%20the%20central%20station%20to%20the%20farthest%20station%2C%20whose%20travel%20time%20to%20the%20central%20station%20is%20longest%2C%20is%20shortest.%5Cn%5CnThe%20figure%20below%20describes%20a%20subway%20system%20with%20four%20subway%20stations%20and%20four%20subway%20lines.%20There%20are%20three%20resident%20blocks%20in%20the%20metropolitan%20area.%20In%20this%20figure%2C%20there%20are%20two%20segments%20of%20subway%20lines%20under%20resident%20blocks%20where%20the%20subway%20train%20has%20to%20travel%20with%20speed%20of%20v1.%5Cn%5Cn%21%5B%5D%28https%3A%5C%2F%5C%2Fcdn.luogu.com.cn%5C%2Fupload%5C%2Fvjudge_pic%5C%2FSP3640%5C%2Fe60d81d94c9f6a4dbd33e264d5846db819052829.png%29%5Cn%5CnGiven%20a%20subway%20system%2C%20your%20task%20is%20to%20write%20a%20program%20to%20find%20the%20central%20station%20and%20to%20find%20the%20travel%20time%20from%20the%20farthest%20station%20to%20the%20central%20station.%22%2C%22inputFormat%22%3A%22The%20input%20file%20consists%20of%20several%20data%20sets.%20The%20first%20line%20of%20the%20input%20file%20contains%20the%20number%20of%20data%20sets%20which%20is%20a%20positive%20integer%20and%20is%20not%20bigger%20than%2020.%20The%20following%20lines%20describe%20the%20data%20sets.%5Cn%5CnFor%20each%20data%20set%2C%20the%20first%20line%20contains%20five%20integers%20M%2C%20K%2C%20T%2C%20v1%2C%20v2%20%28M%20%3C%2031%2C%20K%20%3C%2050%2C%20T%20%3C%2010%2C%200%20%3C%20v1%20%3C%20v2%20%3C%20100%29%20separated%20by%20space%20indicating%20number%20of%20stations%2C%20number%20of%20subway%20lines%2C%20number%20of%20resident%20blocks%2C%20the%20subway%20train%20speed%20when%20travelling%20under%20resident%20blocks%2C%20and%20the%20subway%20train%20speed%20when%20not%20travelling%20under%20resident%20blocks%20respectively.%20The%20ith%20line%20of%20the%20following%20M%20lines%20contains%20two%20integers%20Xi%20and%20Yi%20%28-10000%22%2C%22outputFormat%22%3A%22For%20each%20data%20set%2C%20write%20in%20one%20line%20an%20integer%20indicating%20the%20integer%20part%20of%20%28tmax%20%5C%5C%2A%20100%29%20where%20tmax%20is%20the%20travel%20time%20from%20the%20farthest%20station%20to%20the%20central%20station.%22%2C%22samples%22%3A%5B%5B%221%5Cr%5Cn4%204%203%201%202%5Cr%5Cn1%208%5Cr%5Cn7%208%5Cr%5Cn7%201%5Cr%5Cn14%208%5Cr%5Cn1%202%5Cr%5Cn2%203%5Cr%5Cn2%204%5Cr%5Cn3%204%5Cr%5Cn3%204%208%206%205%202%205%5Cr%5Cn4%207%206%209%206%209%204%207%204%5Cr%5Cn6%2010%208%2011%209%2012%209%2013%208%2012%207%2011%207%22%2C%22500%22%5D%5D%2C%22hint%22%3A%22%22%2C%22provider%22%3A%7B%22uid%22%3A3%2C%22name%22%3A%22%5Cu6d1b%5Cu8c37%22%2C%22slogan%22%3A%22%22%2C%22badge%22%3A%22%22%2C%22isAdmin%22%3Atrue%2C%22color%22%3A%22Purple%22%2C%22ccfLevel%22%3A0%7D%2C%22canEdit%22%3Afalse%2C%22limits%22%3A%7B%22time%22%3A%5B1000%5D%2C%22memory%22%3A%5B1536000%5D%7D%2C%22stdCode%22%3A%22%22%2C%22vjudge%22%3A%7B%22origin%22%3A%22SPOJ%22%2C%22link%22%3A%22%5C%2Fjump%5C%2Fspoj%5C%2F3640%22%2C%22id%22%3A%223640%22%7D%2C%22tags%22%3A%5B%5D%2C%22wantsTranslation%22%3Atrue%2C%22totalSubmit%22%3A0%2C%22totalAccepted%22%3A0%2C%22pid%22%3A%22SP3640%22%2C%22title%22%3A%22HNSUBWAY%20-%20Hanoi%20Subway%20System%20Construction%22%2C%22difficulty%22%3A0%2C%22type%22%3A%22SP%22%7D%2C%22contest%22%3Anull%2C%22discussions%22%3A%5B%5D%2C%22bookmarked%22%3Afalse%2C%22vjudgeUsername%22%3Anull%2C%22recommendations%22%3A%5B%5D%2C%22lastLanguage%22%3A%22%22%2C%22lastCode%22%3A%22%22%7D%2C%22currentTitle%22%3A%22HNSUBWAY%20-%20Hanoi%20Subway%20System%20Construction%22%2C%22currentTheme%22%3Anull%7D"));window._feConfigVersion=1572920822;</script>
+<script src="https://cdn.luogu.com.cn/fe/loader.js?ver=20191106" charset="utf-8" defer></script>
+</head>
+<body>
+<div id="app">
+<div class="lg-container">
+<article>
+<h1>HNSUBWAY - Hanoi Subway System Construction</h1>
+<h2>题目描述</h2>
+<div> [English](/problems/HNSUBWAY/en/) [Vietnamese](/problems/HNSUBWAY/vn/)Hanoi is constructing a subway system. The subway system consists of M stations which are numbered from 1 to M and K two-way subway lines connecting pairs of stations directly. Hanoi metropolitan area is covered by T separated resident blocks each described as convex polygons. Subway lines can run under resident blocks. When running under resident blocks including their boundary, the speed of the subway train is v1 while its speed is v2 when running under other parts (v1 < v2). The travel time between two stations a and b is the shortest time to go from a to b, possibly via intermediate stations (the transit time is not significant). They now have to select the central station from those existing stations so that the travel time from the central station to the farthest station, whose travel time to the central station is longest, is shortest.
+The figure below describes a subway system with four subway stations and four subway lines. There are three resident blocks in the metropolitan area. In this figure, there are two segments of subway lines under resident blocks where the subway train has to travel with speed of v1.
+![](https://cdn.luogu.com.cn/upload/vjudge_pic/SP3640/e60d81d94c9f6a4dbd33e264d5846db819052829.png)
+Given a subway system, your task is to write a program to find the central station and to find the travel time from the farthest station to the central station.</div>
+<h2>输入输出格式</h2>
+<h3>输入格式</h3>
+<br />
+<div>The input file consists of several data sets. The first line of the input file contains the number of data sets which is a positive integer and is not bigger than 20. The following lines describe the data sets.
+For each data set, the first line contains five integers M, K, T, v1, v2 (M < 31, K < 50, T < 10, 0 < v1 < v2 < 100) separated by space indicating number of stations, number of subway lines, number of resident blocks, the subway train speed when travelling under resident blocks, and the subway train speed when not travelling under resident blocks respectively. The ith line of the following M lines contains two integers Xi and Yi (-10000</div>
+<h3>输出格式</h3>
+<br />
+<div>For each data set, write in one line an integer indicating the integer part of (tmax \* 100) where tmax is the travel time from the farthest station to the central station.</div>
+<h2>输入输出样例</h2>
+<h3>输入样例 #1</h3>
+<pre><code>1
+4 4 3 1 2
+1 8
+7 8
+7 1
+14 8
+1 2
+2 3
+2 4
+3 4
+3 4 8 6 5 2 5
+4 7 6 9 6 9 4 7 4
+6 10 8 11 9 12 9 13 8 12 7 11 7</code></pre>
+<h3>输出样例 #1</h3>
+<pre><code>500</code></pre>
+</article>
+</div>
+</div>
+</body>
+</html>
